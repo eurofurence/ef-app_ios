@@ -1,0 +1,21 @@
+PODS:
+  - Dip (5.1)
+  - Dip-UI (1.1):
+    - Dip (~> 5.0)
+  - EVReflection (4.9.1):
+    - EVReflection/Core (= 4.9.1)
+  - EVReflection/Core (4.9.1)
+
+DEPENDENCIES:
+  - Dip
+  - Dip-UI
+  - EVReflection
+
+SPEC CHECKSUMS:
+  Dip: f5a7bd4e1a8af48516e4adc0952d6efc29015589
+  Dip-UI: 1c64807d98d493281e87651921b80e1c2dce1f2c
+  EVReflection: f656ab71b7ed34c0922c6c4836bb77e9b33ca66c
+
+PODFILE CHECKSUM: 3bb6c798ef0c5eca5012991a1b5c71919c2b55fa
+
+COCOAPODS: 1.2.1

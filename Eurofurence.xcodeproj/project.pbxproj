@@ -1,0 +1,636 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99371EBE172D006FC958 /* AppDelegate.swift */; };
+		9ACF993A1EBE172D006FC958 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99391EBE172D006FC958 /* ViewController.swift */; };
+		9ACF993D1EBE172D006FC958 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF993B1EBE172D006FC958 /* Main.storyboard */; };
+		9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF993E1EBE172D006FC958 /* Assets.xcassets */; };
+		9ACF99421EBE172D006FC958 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF99401EBE172D006FC958 /* LaunchScreen.storyboard */; };
+		9ACF994D1EBE172D006FC958 /* EurofurenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF994C1EBE172D006FC958 /* EurofurenceTests.swift */; };
+		9ACF99681EBE3479006FC958 /* EntityBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF995C1EBE3479006FC958 /* EntityBase.swift */; };
+		9ACF99761EBE3B4C006FC958 /* SharedFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99751EBE3B4C006FC958 /* SharedFunctions.swift */; };
+		9ACF99791EBE4BCD006FC958 /* IApiConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99781EBE4BCD006FC958 /* IApiConnection.swift */; };
+		9ACF997B1EC1C53C006FC958 /* IDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF997A1EC1C53C006FC958 /* IDataStore.swift */; };
+		9ACF997D1EC650C7006FC958 /* IDataContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF997C1EC650C7006FC958 /* IDataContext.swift */; };
+		9ACF998D1EC858B2006FC958 /* KnowledgeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99811EC858B2006FC958 /* KnowledgeGroup.swift */; };
+		9ACF998E1EC858B2006FC958 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99821EC858B2006FC958 /* Event.swift */; };
+		9ACF998F1EC858B2006FC958 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99831EC858B2006FC958 /* Announcement.swift */; };
+		9ACF99901EC858B2006FC958 /* KnowledgeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99841EC858B2006FC958 /* KnowledgeEntry.swift */; };
+		9ACF99911EC858B2006FC958 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99851EC858B2006FC958 /* Image.swift */; };
+		9ACF99921EC858B2006FC958 /* EventConferenceDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99861EC858B2006FC958 /* EventConferenceDay.swift */; };
+		9ACF99931EC858B2006FC958 /* Dealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99871EC858B2006FC958 /* Dealer.swift */; };
+		9ACF99941EC858B2006FC958 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99881EC858B2006FC958 /* Link.swift */; };
+		9ACF99951EC858B2006FC958 /* EventConferenceRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99891EC858B2006FC958 /* EventConferenceRoom.swift */; };
+		9ACF99961EC858B2006FC958 /* EventConferenceTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF998A1EC858B2006FC958 /* EventConferenceTrack.swift */; };
+		9ACF99971EC858B2006FC958 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF998B1EC858B2006FC958 /* Map.swift */; };
+		9ACF99981EC858B2006FC958 /* MapEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF998C1EC858B2006FC958 /* MapEntry.swift */; };
+		9ACF999A1EC858C4006FC958 /* ISortOrderKeyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99991EC858C4006FC958 /* ISortOrderKeyProvider.swift */; };
+		A034379A14212C5E996E6321 /* Pods_Eurofurence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9ACF99491EBE172D006FC958 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9ACF992C1EBE172D006FC958 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9ACF99331EBE172D006FC958;
+			remoteInfo = Eurofurence;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		27C948D12455A352D46AF5B6 /* Pods-Eurofurence.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence.release.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence.release.xcconfig"; sourceTree = "<group>"; };
+		513BAD2C582D99F2993B8162 /* Pods-Eurofurence.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence.debug.xcconfig"; sourceTree = "<group>"; };
+		9ACF99341EBE172D006FC958 /* Eurofurence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eurofurence.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9ACF99371EBE172D006FC958 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9ACF99391EBE172D006FC958 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9ACF993C1EBE172D006FC958 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9ACF993E1EBE172D006FC958 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9ACF99411EBE172D006FC958 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9ACF99431EBE172D006FC958 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9ACF99481EBE172D006FC958 /* EurofurenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9ACF994C1EBE172D006FC958 /* EurofurenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceTests.swift; sourceTree = "<group>"; };
+		9ACF994E1EBE172D006FC958 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9ACF995C1EBE3479006FC958 /* EntityBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityBase.swift; sourceTree = "<group>"; };
+		9ACF99751EBE3B4C006FC958 /* SharedFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedFunctions.swift; sourceTree = "<group>"; };
+		9ACF99781EBE4BCD006FC958 /* IApiConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IApiConnection.swift; path = ../IApiConnection.swift; sourceTree = "<group>"; };
+		9ACF997A1EC1C53C006FC958 /* IDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IDataStore.swift; path = ../IDataStore.swift; sourceTree = "<group>"; };
+		9ACF997C1EC650C7006FC958 /* IDataContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IDataContext.swift; path = ../IDataContext.swift; sourceTree = "<group>"; };
+		9ACF99811EC858B2006FC958 /* KnowledgeGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeGroup.swift; sourceTree = "<group>"; };
+		9ACF99821EC858B2006FC958 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		9ACF99831EC858B2006FC958 /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
+		9ACF99841EC858B2006FC958 /* KnowledgeEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeEntry.swift; sourceTree = "<group>"; };
+		9ACF99851EC858B2006FC958 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		9ACF99861EC858B2006FC958 /* EventConferenceDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventConferenceDay.swift; sourceTree = "<group>"; };
+		9ACF99871EC858B2006FC958 /* Dealer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dealer.swift; sourceTree = "<group>"; };
+		9ACF99881EC858B2006FC958 /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
+		9ACF99891EC858B2006FC958 /* EventConferenceRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventConferenceRoom.swift; sourceTree = "<group>"; };
+		9ACF998A1EC858B2006FC958 /* EventConferenceTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventConferenceTrack.swift; sourceTree = "<group>"; };
+		9ACF998B1EC858B2006FC958 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		9ACF998C1EC858B2006FC958 /* MapEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapEntry.swift; sourceTree = "<group>"; };
+		9ACF99991EC858C4006FC958 /* ISortOrderKeyProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISortOrderKeyProvider.swift; sourceTree = "<group>"; };
+		A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eurofurence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9ACF99311EBE172D006FC958 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A034379A14212C5E996E6321 /* Pods_Eurofurence.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9ACF99451EBE172D006FC958 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		164F3A1C0E53F6ADD4C20674 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2A4A738C931BBD9059F30151 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				513BAD2C582D99F2993B8162 /* Pods-Eurofurence.debug.xcconfig */,
+				27C948D12455A352D46AF5B6 /* Pods-Eurofurence.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9ACF992B1EBE172D006FC958 = {
+			isa = PBXGroup;
+			children = (
+				9ACF99361EBE172D006FC958 /* Eurofurence */,
+				9ACF994B1EBE172D006FC958 /* EurofurenceTests */,
+				9ACF99351EBE172D006FC958 /* Products */,
+				2A4A738C931BBD9059F30151 /* Pods */,
+				164F3A1C0E53F6ADD4C20674 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9ACF99351EBE172D006FC958 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9ACF99341EBE172D006FC958 /* Eurofurence.app */,
+				9ACF99481EBE172D006FC958 /* EurofurenceTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9ACF99361EBE172D006FC958 /* Eurofurence */ = {
+			isa = PBXGroup;
+			children = (
+				9ACF99591EBE32FE006FC958 /* Views */,
+				9ACF99581EBE32F3006FC958 /* ViewModel */,
+				9ACF99571EBE32ED006FC958 /* DataModel */,
+				9ACF99771EBE4B98006FC958 /* DataStore */,
+				9ACF99371EBE172D006FC958 /* AppDelegate.swift */,
+				9ACF99391EBE172D006FC958 /* ViewController.swift */,
+				9ACF993B1EBE172D006FC958 /* Main.storyboard */,
+				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
+				9ACF99401EBE172D006FC958 /* LaunchScreen.storyboard */,
+				9ACF99431EBE172D006FC958 /* Info.plist */,
+				9ACF99751EBE3B4C006FC958 /* SharedFunctions.swift */,
+			);
+			path = Eurofurence;
+			sourceTree = "<group>";
+		};
+		9ACF994B1EBE172D006FC958 /* EurofurenceTests */ = {
+			isa = PBXGroup;
+			children = (
+				9ACF994C1EBE172D006FC958 /* EurofurenceTests.swift */,
+				9ACF994E1EBE172D006FC958 /* Info.plist */,
+			);
+			path = EurofurenceTests;
+			sourceTree = "<group>";
+		};
+		9ACF99571EBE32ED006FC958 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				9ACF99801EC857B0006FC958 /* Abstractions */,
+				9ACF997F1EC75B81006FC958 /* Api */,
+				9ACF995C1EBE3479006FC958 /* EntityBase.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		9ACF99581EBE32F3006FC958 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9ACF99591EBE32FE006FC958 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9ACF99771EBE4B98006FC958 /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				9ACF997E1EC75447006FC958 /* Abstractions */,
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
+		9ACF997E1EC75447006FC958 /* Abstractions */ = {
+			isa = PBXGroup;
+			children = (
+				9ACF99781EBE4BCD006FC958 /* IApiConnection.swift */,
+				9ACF997A1EC1C53C006FC958 /* IDataStore.swift */,
+				9ACF997C1EC650C7006FC958 /* IDataContext.swift */,
+			);
+			path = Abstractions;
+			sourceTree = "<group>";
+		};
+		9ACF997F1EC75B81006FC958 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				9ACF99811EC858B2006FC958 /* KnowledgeGroup.swift */,
+				9ACF99821EC858B2006FC958 /* Event.swift */,
+				9ACF99831EC858B2006FC958 /* Announcement.swift */,
+				9ACF99841EC858B2006FC958 /* KnowledgeEntry.swift */,
+				9ACF99851EC858B2006FC958 /* Image.swift */,
+				9ACF99861EC858B2006FC958 /* EventConferenceDay.swift */,
+				9ACF99871EC858B2006FC958 /* Dealer.swift */,
+				9ACF99881EC858B2006FC958 /* Link.swift */,
+				9ACF99891EC858B2006FC958 /* EventConferenceRoom.swift */,
+				9ACF998A1EC858B2006FC958 /* EventConferenceTrack.swift */,
+				9ACF998B1EC858B2006FC958 /* Map.swift */,
+				9ACF998C1EC858B2006FC958 /* MapEntry.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		9ACF99801EC857B0006FC958 /* Abstractions */ = {
+			isa = PBXGroup;
+			children = (
+				9ACF99991EC858C4006FC958 /* ISortOrderKeyProvider.swift */,
+			);
+			path = Abstractions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9ACF99331EBE172D006FC958 /* Eurofurence */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9ACF99511EBE172D006FC958 /* Build configuration list for PBXNativeTarget "Eurofurence" */;
+			buildPhases = (
+				AB8BAC5DE2C718F04F373F4A /* [CP] Check Pods Manifest.lock */,
+				9ACF99301EBE172D006FC958 /* Sources */,
+				9ACF99311EBE172D006FC958 /* Frameworks */,
+				9ACF99321EBE172D006FC958 /* Resources */,
+				AD43207D87B13D6AADFF543F /* [CP] Embed Pods Frameworks */,
+				ADF6132ECB7A0047F93FE8DD /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Eurofurence;
+			productName = Eurofurence;
+			productReference = 9ACF99341EBE172D006FC958 /* Eurofurence.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9ACF99471EBE172D006FC958 /* EurofurenceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9ACF99541EBE172D006FC958 /* Build configuration list for PBXNativeTarget "EurofurenceTests" */;
+			buildPhases = (
+				9ACF99441EBE172D006FC958 /* Sources */,
+				9ACF99451EBE172D006FC958 /* Frameworks */,
+				9ACF99461EBE172D006FC958 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9ACF994A1EBE172D006FC958 /* PBXTargetDependency */,
+			);
+			name = EurofurenceTests;
+			productName = EurofurenceTests;
+			productReference = 9ACF99481EBE172D006FC958 /* EurofurenceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9ACF992C1EBE172D006FC958 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Dominik Schöner";
+				TargetAttributes = {
+					9ACF99331EBE172D006FC958 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 557SGQG5H4;
+						ProvisioningStyle = Automatic;
+					};
+					9ACF99471EBE172D006FC958 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 557SGQG5H4;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 9ACF99331EBE172D006FC958;
+					};
+				};
+			};
+			buildConfigurationList = 9ACF992F1EBE172D006FC958 /* Build configuration list for PBXProject "Eurofurence" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9ACF992B1EBE172D006FC958;
+			productRefGroup = 9ACF99351EBE172D006FC958 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9ACF99331EBE172D006FC958 /* Eurofurence */,
+				9ACF99471EBE172D006FC958 /* EurofurenceTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9ACF99321EBE172D006FC958 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9ACF99421EBE172D006FC958 /* LaunchScreen.storyboard in Resources */,
+				9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */,
+				9ACF993D1EBE172D006FC958 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9ACF99461EBE172D006FC958 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AB8BAC5DE2C718F04F373F4A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AD43207D87B13D6AADFF543F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ADF6132ECB7A0047F93FE8DD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9ACF99301EBE172D006FC958 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9ACF99761EBE3B4C006FC958 /* SharedFunctions.swift in Sources */,
+				9ACF99961EC858B2006FC958 /* EventConferenceTrack.swift in Sources */,
+				9ACF99911EC858B2006FC958 /* Image.swift in Sources */,
+				9ACF99931EC858B2006FC958 /* Dealer.swift in Sources */,
+				9ACF998E1EC858B2006FC958 /* Event.swift in Sources */,
+				9ACF99791EBE4BCD006FC958 /* IApiConnection.swift in Sources */,
+				9ACF997B1EC1C53C006FC958 /* IDataStore.swift in Sources */,
+				9ACF99681EBE3479006FC958 /* EntityBase.swift in Sources */,
+				9ACF99921EC858B2006FC958 /* EventConferenceDay.swift in Sources */,
+				9ACF998D1EC858B2006FC958 /* KnowledgeGroup.swift in Sources */,
+				9ACF99941EC858B2006FC958 /* Link.swift in Sources */,
+				9ACF997D1EC650C7006FC958 /* IDataContext.swift in Sources */,
+				9ACF99951EC858B2006FC958 /* EventConferenceRoom.swift in Sources */,
+				9ACF99901EC858B2006FC958 /* KnowledgeEntry.swift in Sources */,
+				9ACF993A1EBE172D006FC958 /* ViewController.swift in Sources */,
+				9ACF998F1EC858B2006FC958 /* Announcement.swift in Sources */,
+				9ACF99971EC858B2006FC958 /* Map.swift in Sources */,
+				9ACF99981EC858B2006FC958 /* MapEntry.swift in Sources */,
+				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
+				9ACF999A1EC858C4006FC958 /* ISortOrderKeyProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9ACF99441EBE172D006FC958 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9ACF994D1EBE172D006FC958 /* EurofurenceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9ACF994A1EBE172D006FC958 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9ACF99331EBE172D006FC958 /* Eurofurence */;
+			targetProxy = 9ACF99491EBE172D006FC958 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9ACF993B1EBE172D006FC958 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9ACF993C1EBE172D006FC958 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9ACF99401EBE172D006FC958 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9ACF99411EBE172D006FC958 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9ACF994F1EBE172D006FC958 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9ACF99501EBE172D006FC958 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9ACF99521EBE172D006FC958 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 513BAD2C582D99F2993B8162 /* Pods-Eurofurence.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 557SGQG5H4;
+				INFOPLIST_FILE = Eurofurence/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.Eurofurence;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		9ACF99531EBE172D006FC958 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27C948D12455A352D46AF5B6 /* Pods-Eurofurence.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 557SGQG5H4;
+				INFOPLIST_FILE = Eurofurence/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.Eurofurence;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		9ACF99551EBE172D006FC958 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 557SGQG5H4;
+				INFOPLIST_FILE = EurofurenceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Eurofurence.app/Eurofurence";
+			};
+			name = Debug;
+		};
+		9ACF99561EBE172D006FC958 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 557SGQG5H4;
+				INFOPLIST_FILE = EurofurenceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Eurofurence.app/Eurofurence";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9ACF992F1EBE172D006FC958 /* Build configuration list for PBXProject "Eurofurence" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9ACF994F1EBE172D006FC958 /* Debug */,
+				9ACF99501EBE172D006FC958 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9ACF99511EBE172D006FC958 /* Build configuration list for PBXNativeTarget "Eurofurence" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9ACF99521EBE172D006FC958 /* Debug */,
+				9ACF99531EBE172D006FC958 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9ACF99541EBE172D006FC958 /* Build configuration list for PBXNativeTarget "EurofurenceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9ACF99551EBE172D006FC958 /* Debug */,
+				9ACF99561EBE172D006FC958 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9ACF992C1EBE172D006FC958 /* Project object */;
+}
