@@ -31,3 +31,9 @@ class Dealer: EntityBase {
 	var ArtistThumbnailImage : Image?
 	var ArtPreviewImage : Image?
 }
+
+extension Dealer : Comparable {
+	static func < (lhs: Dealer, rhs: Dealer) -> Bool {
+		return lhs.DisplayName < rhs.DisplayName
+	}
+}

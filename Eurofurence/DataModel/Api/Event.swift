@@ -31,3 +31,9 @@ class Event : EntityBase {
     var ConferenceTrack : EventConferenceTrack? = nil
     var ConferenceRoom : EventConferenceRoom? = nil
 }
+
+extension Event : Comparable {
+	static func < (lhs: Event, rhs: Event) -> Bool {
+		return lhs.StartDateTimeUtc < rhs.StartDateTimeUtc
+	}
+}

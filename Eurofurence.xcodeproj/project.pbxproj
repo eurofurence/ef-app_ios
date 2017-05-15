@@ -30,7 +30,6 @@
 		9ACF99961EC858B2006FC958 /* EventConferenceTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF998A1EC858B2006FC958 /* EventConferenceTrack.swift */; };
 		9ACF99971EC858B2006FC958 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF998B1EC858B2006FC958 /* Map.swift */; };
 		9ACF99981EC858B2006FC958 /* MapEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF998C1EC858B2006FC958 /* MapEntry.swift */; };
-		9ACF999A1EC858C4006FC958 /* ISortOrderKeyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99991EC858C4006FC958 /* ISortOrderKeyProvider.swift */; };
 		A034379A14212C5E996E6321 /* Pods_Eurofurence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,7 +73,6 @@
 		9ACF998A1EC858B2006FC958 /* EventConferenceTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventConferenceTrack.swift; sourceTree = "<group>"; };
 		9ACF998B1EC858B2006FC958 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		9ACF998C1EC858B2006FC958 /* MapEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapEntry.swift; sourceTree = "<group>"; };
-		9ACF99991EC858C4006FC958 /* ISortOrderKeyProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISortOrderKeyProvider.swift; sourceTree = "<group>"; };
 		A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eurofurence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -225,7 +223,6 @@
 		9ACF99801EC857B0006FC958 /* Abstractions */ = {
 			isa = PBXGroup;
 			children = (
-				9ACF99991EC858C4006FC958 /* ISortOrderKeyProvider.swift */,
 			);
 			path = Abstractions;
 			sourceTree = "<group>";
@@ -405,7 +402,6 @@
 				9ACF99971EC858B2006FC958 /* Map.swift in Sources */,
 				9ACF99981EC858B2006FC958 /* MapEntry.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
-				9ACF999A1EC858C4006FC958 /* ISortOrderKeyProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

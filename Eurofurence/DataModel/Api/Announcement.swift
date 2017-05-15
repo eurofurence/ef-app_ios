@@ -15,6 +15,14 @@ class Announcement: EntityBase {
 	var Title : String = ""
 	var ValidFromDateTimeUtc : Date = Date()
 	var ValidUntilDateTimeUtc : Date = Date()
+	
+	
+}
+
+extension Announcement : Comparable {
+	static func < (lhs: Announcement, rhs: Announcement) -> Bool {
+		return lhs.ValidFromDateTimeUtc < rhs.ValidFromDateTimeUtc
+	}
 }
 
 extension Announcement {

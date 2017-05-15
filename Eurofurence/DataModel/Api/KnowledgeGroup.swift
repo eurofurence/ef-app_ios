@@ -17,3 +17,9 @@ class KnowledgeGroup: EntityBase {
     
 	var KnowledgeEntries : [KnowledgeEntry]? = nil
 }
+
+extension KnowledgeGroup : Comparable {
+	static func < (lhs: KnowledgeGroup, rhs: KnowledgeGroup) -> Bool {
+		return lhs.Order < rhs.Order
+	}
+}

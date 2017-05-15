@@ -7,11 +7,14 @@
 //
 
 import Foundation
-import EVReflection
 
-class EntityBase {
+class EntityBase : Equatable {
     var Id : UUID = ""
     var LastChangeDateTimeUtc : Date = Date()
 	
 	var IsDeleted : Bool = false
+	
+	static func == (lhs: EntityBase, rhs: EntityBase) -> Bool {
+		return lhs.Id == rhs.Id
+	}
 }

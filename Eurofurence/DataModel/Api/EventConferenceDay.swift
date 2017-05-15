@@ -9,8 +9,14 @@
 import Foundation
 
 class EventConferenceDay: EntityBase {
-	var Date = NSDate()
+	var Date = Foundation.Date()
     var Name = ""
 	
 	var Events : [Event]? = nil
+}
+
+extension EventConferenceDay : Comparable {
+	static func < (lhs: EventConferenceDay, rhs: EventConferenceDay) -> Bool {
+		return lhs.Date < rhs.Date
+	}
 }
