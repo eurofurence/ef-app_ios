@@ -9,14 +9,11 @@
 import Foundation
 
 class MapEntry: EntityBase {
-    var MapId = ""
-    var MarkerType = ""
     var RelativeTapRadius = 0.0
     var RelativeX = 0.0
     var RelativeY = 0.0
-    var TargetDescription: String?
-    var TargetId = ""
-    
+	var Link : LinkFragment = LinkFragment()
+	
 	let Map : Map? = nil
 	
 	override public func propertyMapping() -> [(keyInObject: String?,

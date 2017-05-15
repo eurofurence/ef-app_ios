@@ -11,14 +11,13 @@ import Foundation
 class Map: EntityBase {
     var Description = ""
     var ImageId = ""
-    var IsBrowseable = true
-    
+	var IsBrowseable = true
+	var Entries : [MapEntry] = []
+	
     var Image : Image? = nil
-	var MapEntries : [MapEntry]? = nil
 	
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {
-			return [(keyInObject: "Image",keyInResource: nil),
-			        (keyInObject: "MapEntries",keyInResource: nil)]
+			return [(keyInObject: "Image",keyInResource: nil)]
 	}
 }
