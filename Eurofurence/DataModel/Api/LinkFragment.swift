@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import EVReflection
 
-class LinkFragment {
+class LinkFragment : EVObject {
 	enum LinkFragmentType {
 		case WebExternal
 		case MapExternal

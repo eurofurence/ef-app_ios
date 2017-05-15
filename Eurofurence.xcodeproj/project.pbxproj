@@ -25,7 +25,7 @@
 		9ACF99911EC858B2006FC958 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99851EC858B2006FC958 /* Image.swift */; };
 		9ACF99921EC858B2006FC958 /* EventConferenceDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99861EC858B2006FC958 /* EventConferenceDay.swift */; };
 		9ACF99931EC858B2006FC958 /* Dealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99871EC858B2006FC958 /* Dealer.swift */; };
-		9ACF99941EC858B2006FC958 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99881EC858B2006FC958 /* Link.swift */; };
+		9ACF99941EC858B2006FC958 /* LinkFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99881EC858B2006FC958 /* LinkFragment.swift */; };
 		9ACF99951EC858B2006FC958 /* EventConferenceRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99891EC858B2006FC958 /* EventConferenceRoom.swift */; };
 		9ACF99961EC858B2006FC958 /* EventConferenceTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF998A1EC858B2006FC958 /* EventConferenceTrack.swift */; };
 		9ACF99971EC858B2006FC958 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF998B1EC858B2006FC958 /* Map.swift */; };
@@ -68,7 +68,7 @@
 		9ACF99851EC858B2006FC958 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		9ACF99861EC858B2006FC958 /* EventConferenceDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventConferenceDay.swift; sourceTree = "<group>"; };
 		9ACF99871EC858B2006FC958 /* Dealer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dealer.swift; sourceTree = "<group>"; };
-		9ACF99881EC858B2006FC958 /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
+		9ACF99881EC858B2006FC958 /* LinkFragment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkFragment.swift; sourceTree = "<group>"; };
 		9ACF99891EC858B2006FC958 /* EventConferenceRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventConferenceRoom.swift; sourceTree = "<group>"; };
 		9ACF998A1EC858B2006FC958 /* EventConferenceTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventConferenceTrack.swift; sourceTree = "<group>"; };
 		9ACF998B1EC858B2006FC958 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
@@ -211,7 +211,7 @@
 				9ACF99851EC858B2006FC958 /* Image.swift */,
 				9ACF99861EC858B2006FC958 /* EventConferenceDay.swift */,
 				9ACF99871EC858B2006FC958 /* Dealer.swift */,
-				9ACF99881EC858B2006FC958 /* Link.swift */,
+				9ACF99881EC858B2006FC958 /* LinkFragment.swift */,
 				9ACF99891EC858B2006FC958 /* EventConferenceRoom.swift */,
 				9ACF998A1EC858B2006FC958 /* EventConferenceTrack.swift */,
 				9ACF998B1EC858B2006FC958 /* Map.swift */,
@@ -393,7 +393,7 @@
 				9ACF99681EBE3479006FC958 /* EntityBase.swift in Sources */,
 				9ACF99921EC858B2006FC958 /* EventConferenceDay.swift in Sources */,
 				9ACF998D1EC858B2006FC958 /* KnowledgeGroup.swift in Sources */,
-				9ACF99941EC858B2006FC958 /* Link.swift in Sources */,
+				9ACF99941EC858B2006FC958 /* LinkFragment.swift in Sources */,
 				9ACF997D1EC650C7006FC958 /* IDataContext.swift in Sources */,
 				9ACF99951EC858B2006FC958 /* EventConferenceRoom.swift in Sources */,
 				9ACF99901EC858B2006FC958 /* KnowledgeEntry.swift in Sources */,

@@ -13,6 +13,11 @@ class EventConferenceDay: EntityBase {
     var Name = ""
 	
 	var Events : [Event]? = nil
+	
+	override public func propertyMapping() -> [(keyInObject: String?,
+		keyInResource: String?)] {
+			return [(keyInObject: "Events",keyInResource: nil)]
+	}
 }
 
 extension EventConferenceDay : Comparable {

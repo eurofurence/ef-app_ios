@@ -30,6 +30,13 @@ class Dealer: EntityBase {
     var ArtistImage : Image?
 	var ArtistThumbnailImage : Image?
 	var ArtPreviewImage : Image?
+	
+	override public func propertyMapping() -> [(keyInObject: String?,
+		keyInResource: String?)] {
+			return [(keyInObject: "ArtistImage",keyInResource: nil),
+			        (keyInObject: "ArtistThumbnailImage",keyInResource: nil),
+			        (keyInObject: "ArtPreviewImage",keyInResource: nil)]
+	}
 }
 
 extension Dealer : Comparable {

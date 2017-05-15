@@ -16,6 +16,11 @@ class KnowledgeGroup: EntityBase {
 	var ShowInHamburgerMenu : Bool = false
     
 	var KnowledgeEntries : [KnowledgeEntry]? = nil
+	
+	override public func propertyMapping() -> [(keyInObject: String?,
+			keyInResource: String?)] {
+		return [(keyInObject: "KnowledgeEntries",keyInResource: nil)]
+	}
 }
 
 extension KnowledgeGroup : Comparable {

@@ -29,7 +29,14 @@ class Event : EntityBase {
 	
     var ConferenceDay : EventConferenceDay? = nil
     var ConferenceTrack : EventConferenceTrack? = nil
-    var ConferenceRoom : EventConferenceRoom? = nil
+	var ConferenceRoom : EventConferenceRoom? = nil
+	
+	override public func propertyMapping() -> [(keyInObject: String?,
+		keyInResource: String?)] {
+			return [(keyInObject: "ConferenceDay",keyInResource: nil),
+			        (keyInObject: "ConferenceTrack",keyInResource: nil),
+					(keyInObject: "ConferenceRoom",keyInResource: nil)]
+	}
 }
 
 extension Event : Comparable {

@@ -15,8 +15,6 @@ class Announcement: EntityBase {
 	var Title : String = ""
 	var ValidFromDateTimeUtc : Date = Date()
 	var ValidUntilDateTimeUtc : Date = Date()
-	
-	
 }
 
 extension Announcement : Comparable {

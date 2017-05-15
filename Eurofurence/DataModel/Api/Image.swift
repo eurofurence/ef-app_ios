@@ -19,4 +19,9 @@ class Image: EntityBase {
 	var Width : Int = 0
 	
 	var Entities : [EntityBase]? = nil
+	
+	override public func propertyMapping() -> [(keyInObject: String?,
+		keyInResource: String?)] {
+			return [(keyInObject: "Entities",keyInResource: nil)]
+	}
 }

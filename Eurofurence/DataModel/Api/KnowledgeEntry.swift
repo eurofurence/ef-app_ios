@@ -16,7 +16,12 @@ class KnowledgeEntry: EntityBase {
     
 	var Links : [LinkFragment] = []
     
-    var KnowledgeGroup : KnowledgeGroup? = nil
+	var KnowledgeGroup : KnowledgeGroup? = nil
+	
+	override public func propertyMapping() -> [(keyInObject: String?,
+		keyInResource: String?)] {
+			return [(keyInObject: "KnowledgeGroup",keyInResource: nil)]
+	}
 }
 
 extension KnowledgeEntry : Comparable {

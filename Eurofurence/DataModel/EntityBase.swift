@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import EVReflection
 
-class EntityBase : Equatable {
-    var Id : UUID = ""
+class EntityBase : EVObject {
+    var Id : UUID = UUID()
     var LastChangeDateTimeUtc : Date = Date()
 	
 	var IsDeleted : Bool = false

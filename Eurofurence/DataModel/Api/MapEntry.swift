@@ -17,5 +17,10 @@ class MapEntry: EntityBase {
     var TargetDescription: String?
     var TargetId = ""
     
-    let Map : Map? = nil
+	let Map : Map? = nil
+	
+	override public func propertyMapping() -> [(keyInObject: String?,
+		keyInResource: String?)] {
+			return [(keyInObject: "Map",keyInResource: nil)]
+	}
 }
