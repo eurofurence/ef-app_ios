@@ -15,17 +15,11 @@ class Sync: EVObject {
 	var Dealers : SyncEntityDelta<Dealer> = SyncEntityDelta()
 	var Events : SyncEntityDelta<Event> = SyncEntityDelta()
 	var EventConferenceDays : SyncEntityDelta<EventConferenceDay> = SyncEntityDelta()
-	var EventsConferenceRooms : SyncEntityDelta<EventConferenceRoom> = SyncEntityDelta()
-	var EventsConferenceTracks : SyncEntityDelta<EventConferenceTrack> = SyncEntityDelta()
+	var EventConferenceRooms : SyncEntityDelta<EventConferenceRoom> = SyncEntityDelta()
+	var EventConferenceTracks : SyncEntityDelta<EventConferenceTrack> = SyncEntityDelta()
 	var Images : SyncEntityDelta<Image> = SyncEntityDelta()
 	var KnowledgeEntries : SyncEntityDelta<KnowledgeEntry> = SyncEntityDelta()
 	var KnowledgeGroups : SyncEntityDelta<KnowledgeGroup> = SyncEntityDelta()
+	var Maps : SyncEntityDelta<Map> = SyncEntityDelta()
 	var Since : Date? = nil
-	
-	let Map : Map? = nil
-	
-	override public func propertyMapping() -> [(keyInObject: String?,
-		keyInResource: String?)] {
-			return [(keyInObject: "Map",keyInResource: nil)]
-	}
 }

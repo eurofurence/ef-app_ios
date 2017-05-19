@@ -16,7 +16,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        return true
+		
+		let apiConnection = MockApiConnection(apiUrl: "", syncEndpoint: "Sync")
+		
+		var sync : Sync? = nil
+		apiConnection.doSyncGetAsync(apiResponse: { (data, error) in
+			guard let syncData = data?["Sync"] as! Sync? else {
+				print(error ?? "An error occurred")
+				return
+			}
+			
+			sync = syncData
+		}, progressHandler: nil)
+		
+		print(sync?.toJsonString() ?? "{\"Error\": \"No data\"}")
+		
+		exit(0)
+		
+        // return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

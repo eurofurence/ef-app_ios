@@ -11,10 +11,10 @@ import Foundation
 class Dealer: EntityBase {
     var AboutTheArtistText : String = ""
     var AboutTheArtText : String = ""
-    var ArtistImageId : UUID? = nil
-    var ArtistThumbnailImageId : UUID? = nil
+    var ArtistImageId : String = ""
+    var ArtistThumbnailImageId : String = ""
     var ArtPreviewCaption : String = ""
-    var ArtPreviewImageId : UUID? = nil
+    var ArtPreviewImageId : String = ""
 	var AttendeeNickname : String = ""
 	var AttendsOnFriday : Bool = true
 	var AttendsOnSaturday : Bool = true

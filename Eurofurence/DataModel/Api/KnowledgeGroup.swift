@@ -19,7 +19,7 @@ class KnowledgeGroup: EntityBase {
 	
 	override public func propertyMapping() -> [(keyInObject: String?,
 			keyInResource: String?)] {
-		return [(keyInObject: "KnowledgeEntries",keyInResource: nil)]
+		return [(keyInObject: "KnowledgeEntries", keyInResource: nil)]
 	}
 }
 

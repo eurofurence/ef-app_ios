@@ -9,7 +9,7 @@
 import Foundation
 
 class KnowledgeEntry: EntityBase {
-	var KnowledgeGroupId : UUID = UUID()
+	var KnowledgeGroupId : String = ""
 	var Order : Int = 0
 	var Text : String = ""
 	var Title : String = ""

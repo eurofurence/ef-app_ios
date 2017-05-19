@@ -10,7 +10,7 @@ import Foundation
 import EVReflection
 
 class EntityBase : EVObject {
-    var Id : UUID = UUID()
+    var Id : String = ""
     var LastChangeDateTimeUtc : Date = Date()
 	
 	var IsDeleted : Bool = false

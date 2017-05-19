@@ -10,12 +10,12 @@ import Foundation
 
 class Event : EntityBase {
 	var Abstract : String = ""
-    var ConferenceDayId : UUID = UUID()
-    var ConferenceTrackId : UUID = UUID()
-    var ConferenceRoomId : UUID = UUID()
+    var ConferenceDayId : String = ""
+    var ConferenceTrackId : String = ""
+    var ConferenceRoomId : String = ""
     var Description : String = ""
 	var Duration : Int = 0
-	var EndTimeDateTimeUtc : Date = Date()
+	var EndDateTimeUtc : Date = Date()
 	var EndTime : String = ""
 	var IsDeviatingFromConBook : Bool = false
     var PanelHosts : String = ""
