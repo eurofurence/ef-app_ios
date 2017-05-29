@@ -2,13 +2,14 @@
 //  Iso8601DateFormatter.swift
 //  Eurofurence
 //
-//  Created by Dominik Schöner on 19.05.17.
+//  Created by Dominik Schöner on 2017-05-19.
 //  Copyright © 2017 Dominik Schöner. All rights reserved.
 //
 
 import Foundation
 
 class Iso8601DateFormatter : DateFormatter {
+	static let instance = Iso8601DateFormatter()
 	let noFractionsDateFormatter = DateFormatter()
 	
 	override init() {

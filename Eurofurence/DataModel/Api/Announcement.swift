@@ -31,7 +31,7 @@ extension Announcement {
 	///     and `ValidUntilDateTimeUtc` inclusive. If either boundary is invalid,
 	///     it will be ignored.
 	func isValidAtDateTimeUtcString(_ dateTimeUtcString: String)->Bool {
-		let dateTimeUtc = NSDate(isoString: dateTimeUtcString)
+		let dateTimeUtc = Iso8601DateFormatter.instance.date(from: dateTimeUtcString)
 		
 		return dateTimeUtc != nil && isValidAtDateTimeUtc(dateTimeUtc!)
 	}
@@ -41,10 +41,10 @@ extension Announcement {
 	/// - returns: true if `dateTimeUtc` is between `ValidFromDateTimeUtc` inclusive
 	///     and `ValidUntilDateTimeUtc` inclusive. If either boundary is invalid,
 	///     it will be ignored.
-	func isValidAtDateTimeUtc(_ dateTimeUtc: NSDate)->Bool {
-		return (dateTimeUtc.compare(ValidFromDateTimeUtc as Date) == ComparisonResult.orderedDescending ||
-			dateTimeUtc.compare(ValidFromDateTimeUtc as Date) == ComparisonResult.orderedSame) &&
-			(dateTimeUtc.compare(ValidUntilDateTimeUtc as Date) == ComparisonResult.orderedAscending ||
-				dateTimeUtc.compare(ValidUntilDateTimeUtc as Date) == ComparisonResult.orderedSame)
+	func isValidAtDateTimeUtc(_ dateTimeUtc: Date) -> Bool {
+		return (dateTimeUtc.compare(ValidFromDateTimeUtc) == ComparisonResult.orderedDescending ||
+				dateTimeUtc.compare(ValidFromDateTimeUtc) == ComparisonResult.orderedSame) &&
+				(dateTimeUtc.compare(ValidUntilDateTimeUtc) == ComparisonResult.orderedAscending ||
+						dateTimeUtc.compare(ValidUntilDateTimeUtc) == ComparisonResult.orderedSame)
 	}
 }

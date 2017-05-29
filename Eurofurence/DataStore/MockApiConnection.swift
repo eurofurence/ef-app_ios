@@ -2,50 +2,66 @@
 //  MockApiConnection.swift
 //  Eurofurence
 //
-//  Created by Dominik Schöner on 16.05.17.
+//  Created by Dominik Schöner on 2017-05-16.
 //  Copyright © 2017 Dominik Schöner. All rights reserved.
 //
 
 import Foundation
 import EVReflection
+import ReactiveSwift
+import Alamofire
 
 class MockApiConnection : IApiConnection {
-	var apiUrl: String = ""
-	var syncEndpoint: String = "Sync"
-	
+	fileprivate let apiUrl: String = "mock://api"
+	fileprivate let syncEndpoint: String = "Sync"
+
+	private(set) lazy var syncGet: SignalProducer<Sync, NSError> =
+			SignalProducer { observer, disposable in
+				if let json = self.getJsonFromFile(endpoint: self.syncEndpoint) {
+					observer.send(value: Sync(json: json))
+					observer.sendCompleted()
+				} else {
+					observer.send(error: NSError(domain: "EfApi", code: 404, userInfo:
+					["text": "Sync endpoint not found!", "endpoint": self.syncEndpoint,
+					 "apiUrl": self.apiUrl]))
+				}
+			}
+
+
+	private(set) lazy var endpointGet: Action<String, EntityBase, NSError> =
+			Action { endpoint in
+				return SignalProducer { observer, disposable in
+					if let json = self.getJsonFromFile(endpoint: endpoint),
+					   let entityType = self.getEntityType(name: endpoint) {
+						observer.send(value: entityType.init(json: json))
+						observer.sendCompleted()
+					} else {
+						observer.send(error: NSError(domain: "EfApi", code: 404, userInfo:
+						["text": "Endpoint not found!", "endpoint": endpoint,
+						 "apiUrl": self.apiUrl]))
+					}
+				}
+			}
+
+	private(set) lazy var endpointPost: Action<(String, EVReflectable?), EntityBase, NSError> =
+			Action { (endpoint, payload) in
+				return SignalProducer { observer, disposable in
+					observer.send(error: NSError(domain: "EfApi", code: 0, userInfo:
+					["text": "Not Implemented!"]))
+				}
+			}
+
 	required init(apiUrl: String, syncEndpoint: String) {
 		EVReflection.setDateFormatter(Iso8601DateFormatter())
-	}
-
-	func doSyncGet(apiResponse: (NSDictionary?, NSError?) -> Void, progressHandler: IApiConnection.ProgressHandler?) {
-		
-		if let json = getJsonFromFile(endpoint: syncEndpoint) {
-			apiResponse([syncEndpoint : Sync(json: json)], nil)
-		} else {
-			apiResponse(nil, NSError(domain: "EfApi", code: 404, userInfo: ["text" : "Sync endpoint not found!", "endpoint" : syncEndpoint, "apiUrl" : apiUrl]))
-		}
-	}
-	
-	func doEndpointGet(endpoint: String, apiResponse: (NSDictionary?, NSError?) -> Void, progressHandler: IApiConnection.ProgressHandler?) {
-		
-		if let json = getJsonFromFile(endpoint: endpoint), let entityType = getEntityType(name: endpoint) {
-			apiResponse([endpoint : entityType.init(json: json)], nil)
-		} else {
-			apiResponse(nil, NSError(domain: "EfApi", code: 404, userInfo: ["text" : "Endpoint not found!", "endpoint" : endpoint, "apiUrl" : apiUrl]))
-		}
-	}
-	
-	func doEndpointPost(endpoint: String, apiResponse: (NSDictionary?, NSError?) -> Void, progressHandler: IApiConnection.ProgressHandler?) {
-		
-		apiResponse(nil, NSError(domain: "EfApi", code: 0, userInfo: ["text" : "Not implemented!"]))
 	}
 	
 	private func getJsonFromFile(endpoint : String) -> String? {
 		if let path = Bundle.main.path(forResource: endpoint + ".mock", ofType: "json"){
 			do {
 				return try String(contentsOfFile: path, encoding: String.Encoding.utf8)
+			} catch {
+				/* nothing to handle, either there is data or there is nil */
 			}
-			catch { }
 		}
 		return nil
 	}

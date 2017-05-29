@@ -18,4 +18,9 @@ class EntityBase : EVObject {
 	static func == (lhs: EntityBase, rhs: EntityBase) -> Bool {
 		return lhs.Id == rhs.Id
 	}
+
+	override public func propertyMapping() -> [(keyInObject: String?,
+	                                            keyInResource: String?)] {
+		return [(keyInObject: "IsDeleted", keyInResource: nil)]
+	}
 }

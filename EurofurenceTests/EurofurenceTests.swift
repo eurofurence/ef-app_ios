@@ -2,7 +2,7 @@
 //  EurofurenceTests.swift
 //  EurofurenceTests
 //
-//  Created by Dominik Schöner on 06.05.17.
+//  Created by Dominik Schöner on 2017-05-06.
 //  Copyright © 2017 Dominik Schöner. All rights reserved.
 //
 

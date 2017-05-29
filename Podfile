@@ -9,5 +9,6 @@ target 'Eurofurence' do
 	pod 'Dip-UI'
 	pod 'EVReflection'
     pod 'EVReflection/Alamofire'
+    pod 'ReactiveSwift', '~> 1.1'
 end
 

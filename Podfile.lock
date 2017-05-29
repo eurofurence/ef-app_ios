@@ -11,6 +11,9 @@ PODS:
     - Alamofire (~> 4.2)
     - EVReflection/Core
   - EVReflection/Core (4.9.1)
+  - ReactiveSwift (1.1.1):
+    - Result (~> 3.2)
+  - Result (3.2.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
@@ -19,6 +22,7 @@ DEPENDENCIES:
   - Dip-UI
   - EVReflection
   - EVReflection/Alamofire
+  - ReactiveSwift (~> 1.1)
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
@@ -26,7 +30,9 @@ SPEC CHECKSUMS:
   Dip: f5a7bd4e1a8af48516e4adc0952d6efc29015589
   Dip-UI: 1c64807d98d493281e87651921b80e1c2dce1f2c
   EVReflection: f656ab71b7ed34c0922c6c4836bb77e9b33ca66c
+  ReactiveSwift: 2489549e3231a6ff68ec99f3d320bb264f10ba0a
+  Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
 
-PODFILE CHECKSUM: c3d329cccdbd303f5f8eec95445cf986e59b0a57
+PODFILE CHECKSUM: 650f191e1e05bedf31f56193a58bdbb66561c83d
 
 COCOAPODS: 1.2.1
