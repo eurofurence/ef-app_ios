@@ -12,35 +12,84 @@ import ReactiveSwift
 import Alamofire
 
 class WebApiConnection: IApiConnection {
-	fileprivate var apiUrl: String
-	fileprivate var syncEndpoint: String
+	let apiUrl: URL
+	let syncEndpoint: String
 
-	private(set) lazy var syncGet: SignalProducer<Sync, NSError> =
-			SignalProducer { observer, disposable in
-				observer.send(error: NSError(domain: "EfApi", code: 0, userInfo:
-				["text": "Not Implemented!"]))
-			}
+	// MARK: Initializers
 
-	private(set) lazy var endpointGet: Action<String, EntityBase, NSError> =
-			Action { endpoint in
-				return SignalProducer { observer, disposable in
-					observer.send(error: NSError(domain: "EfApi", code: 0, userInfo:
-					["text": "Not Implemented!"]))
-				}
-			}
+	required convenience init?(_ apiUrlString: String, _ syncEndpoint: String) {
+		guard let apiUrl = URL(string: apiUrlString) else {
+			return nil
+		}
 
-	private(set) lazy var endpointPost: Action<(String, EVReflectable?), EntityBase, NSError> =
-			Action { (endpoint, payload) in
-				return SignalProducer { observer, disposable in
-					observer.send(error: NSError(domain: "EfApi", code: 0, userInfo:
-					["text": "Not Implemented!"]))
-				}
-			}
+		self.init(apiUrl, syncEndpoint)
+	}
 
-	required init(apiUrl: String, syncEndpoint: String) {
+	required init(_ apiUrl: URL, _ syncEndpoint: String) {
 		EVReflection.setDateFormatter(Iso8601DateFormatter())
 
 		self.apiUrl = apiUrl
 		self.syncEndpoint = syncEndpoint
+	}
+
+	// MARK: Custom API operations
+
+	func doGetSync(parameters : Parameters? = nil) -> SignalProducer<Sync, ApiConnectionError> {
+		return SignalProducer { observer, disposable in
+			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
+		}
+	}
+	func doGetAnnouncements(by id : String) -> SignalProducer<Announcement, ApiConnectionError> {
+		return SignalProducer { observer, disposable in
+			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
+		}
+	}
+	func doGetImageContent(by id : String) -> SignalProducer<UIImage, ApiConnectionError> {
+		return SignalProducer { observer, disposable in
+			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
+		}
+	}
+
+	// MARK: General HTTP verbs
+
+	func doGet(_ endpoint : String, parameters : Parameters? = nil) -> SignalProducer<EVObject, ApiConnectionError> {
+		return SignalProducer { observer, disposable in
+			do {
+				let json = try self.getJsonFromApi(endpointName: self.syncEndpoint)
+			} catch let error as ApiConnectionError {
+				observer.send(error: error)
+			} catch let error {
+				observer.send(error: ApiConnectionError.UnknownError(functionName: #function,
+						description: error.localizedDescription))
+			}
+			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
+		}
+	}
+	func doPost(_ endpoint : String, payload : EVReflectable? = nil, parameters : Parameters? = nil) -> SignalProducer<EVObject, ApiConnectionError> {
+		return SignalProducer { observer, disposable in
+			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
+		}
+	}
+	func doPut(_ endpoint : String, payload : EVReflectable? = nil, parameters : Parameters? = nil) -> SignalProducer<EVObject, ApiConnectionError> {
+		return SignalProducer { observer, disposable in
+			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
+		}
+	}
+	func doDelete(_ endpoint : String, parameters : Parameters? = nil) -> SignalProducer<EVObject, ApiConnectionError> {
+		return SignalProducer { observer, disposable in
+			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
+		}
+	}
+
+	// MARK: Internal implementation
+
+	private func getJsonFromApi(endpointName : String) throws -> EntityBase? {
+		let getUrl = apiUrl.appendingPathComponent(endpointName)
+
+		var parameters = ["since" : "0"]
+
+		Alamofire.request(getUrl, method: .get, parameters: parameters)
+
+		return nil
 	}
 }

@@ -5,15 +5,17 @@ PODS:
   - Dip (5.1)
   - Dip-UI (1.1):
     - Dip (~> 5.0)
-  - EVReflection (4.9.1):
-    - EVReflection/Core (= 4.9.1)
-  - EVReflection/Alamofire (4.9.1):
-    - Alamofire (~> 4.2)
+  - EVReflection (4.16.3):
+    - EVReflection/Core (= 4.16.3)
+  - EVReflection/Alamofire (4.16.3):
+    - Alamofire
     - EVReflection/Core
-  - EVReflection/Core (4.9.1)
-  - ReactiveSwift (1.1.1):
+  - EVReflection/Core (4.16.3)
+  - ReactiveCocoa (5.0.3):
+    - ReactiveSwift (~> 1.1)
+  - ReactiveSwift (1.1.3):
     - Result (~> 3.2)
-  - Result (3.2.1)
+  - Result (3.2.3)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
@@ -22,6 +24,7 @@ DEPENDENCIES:
   - Dip-UI
   - EVReflection
   - EVReflection/Alamofire
+  - ReactiveCocoa (~> 5.0.0)
   - ReactiveSwift (~> 1.1)
 
 SPEC CHECKSUMS:
@@ -29,10 +32,11 @@ SPEC CHECKSUMS:
   AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
   Dip: f5a7bd4e1a8af48516e4adc0952d6efc29015589
   Dip-UI: 1c64807d98d493281e87651921b80e1c2dce1f2c
-  EVReflection: f656ab71b7ed34c0922c6c4836bb77e9b33ca66c
-  ReactiveSwift: 2489549e3231a6ff68ec99f3d320bb264f10ba0a
-  Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
+  EVReflection: 78a60b3c628a2e765652cdc554a903a3e40b16c8
+  ReactiveCocoa: 066a855f613fb72f68258771095805fdb10312d2
+  ReactiveSwift: f54ba12c2e799003432930fa55495315ae44f32b
+  Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
 
-PODFILE CHECKSUM: 650f191e1e05bedf31f56193a58bdbb66561c83d
+PODFILE CHECKSUM: 4cb58ef17176fe52e2504c42a4fbc9d459e56453
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.0.beta.1

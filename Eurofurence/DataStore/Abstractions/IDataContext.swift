@@ -32,6 +32,8 @@ protocol IDataContext {
 	func saveToStore(_ areas: DataContextArea) -> SignalProducer<Progress, DataStoreError>
 
 	func applySync(data: Sync, saveBefore: Bool)
+
+	func clearAll()
 }
 
 extension IDataContext {

@@ -21,7 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window = UIWindow(frame: UIScreen.main.bounds)
 		if let window = window {
 			window.backgroundColor = UIColor.white
-			window.rootViewController = ViewController()
+			let viewController = try AnnouncementsViewController()
+			viewController.setViewModel(try! ViewModelResolver.container.resolve())
+			window.rootViewController = viewController
 			window.makeKeyAndVisible()
 		}
 
@@ -35,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			case let .failed(error):
 				print("Failed: \(error)")
 
-				contextManager.syncWithApi?.start({ event in
+				contextManager.syncWithApi?.apply(1234).start({ event in
 					guard let value = event.value else {
 						print("Error: \(String(describing: event.error))")
 						return

@@ -11,13 +11,28 @@ import EVReflection
 import ReactiveSwift
 
 protocol IApiConnection {
-	init(apiUrl : String, syncEndpoint : String)
+	typealias Parameters = [String: Any]
 
-	var syncGet: SignalProducer<Sync, NSError> { get }
+	var apiUrl : URL { get }
+	var syncEndpoint : String { get }
 
-	var endpointGet: Action<String, EntityBase, NSError> { get }
+	// MARK: Initializers
 
-	var endpointPost: Action<(String, EVReflectable?), EntityBase, NSError> { get }
+	init(_ apiUrl : URL, _ syncEndpoint : String)
+	init?(_ apiUrlString : String, _ syncEndpoint : String)
+
+	// MARK: Custom API operations
+
+	func doGetSync(parameters : Parameters?) -> SignalProducer<Sync, ApiConnectionError>
+	func doGetAnnouncements(by id : String) -> SignalProducer<Announcement, ApiConnectionError>
+	func doGetImageContent(by id : String) -> SignalProducer<UIImage, ApiConnectionError>
+
+	// MARK: General HTTP verbs
+
+	func doGet(_ endpoint : String, parameters : Parameters?) -> SignalProducer<EVObject, ApiConnectionError>
+	func doPost(_ endpoint : String, payload : EVReflectable?, parameters : Parameters?) -> SignalProducer<EVObject, ApiConnectionError>
+	func doPut(_ endpoint : String, payload : EVReflectable?, parameters : Parameters?) -> SignalProducer<EVObject, ApiConnectionError>
+	func doDelete(_ endpoint : String, parameters : Parameters?) -> SignalProducer<EVObject, ApiConnectionError>
 }
 
 extension IApiConnection {
@@ -26,7 +41,7 @@ extension IApiConnection {
 	- parameter name: endpoint to be mapped to an entity type
 	- return nil if endpoint name can not be mapped to
 	*/
-	func getEntityType(name: String) -> EntityBase.Type? {
+	func getEntityType(name: String) -> EVObject.Type? {
 		switch (name) {
 		case "Announcements":
 			return Announcement.self
@@ -48,6 +63,8 @@ extension IApiConnection {
 			return KnowledgeGroup.self
 		case "Maps":
 			return Map.self
+		case "Sync":
+			return Sync.self
 		default:
 			return nil
 		}
@@ -58,7 +75,7 @@ extension IApiConnection {
 	- parameter name: entity type to be mapped to an endpoint name
 	- return nil if entity type can not be mapped
 	*/
-	func getEndpoint(entityType: EntityBase.Type) -> String? {
+	func getEndpoint(entityType: EVObject.Type) -> String? {
 		if (entityType is Announcement.Type) {
 			return "Announcements"
 		} else if (entityType is Dealer.Type) {
@@ -79,8 +96,60 @@ extension IApiConnection {
 			return "KnowledgeGroups"
 		} else if (entityType is Map.Type) {
 			return "Maps"
+		} else if (entityType is Sync.Type) {
+			return "Sync"
 		} else {
 			return nil
+		}
+	}
+
+	func getEndpointName(url : URL) -> String {
+		return getEndpointName(urlString: url.absoluteString)
+	}
+
+	func getEndpointName(urlString : String) -> String {
+		return ""
+	}
+}
+
+
+enum ApiConnectionError: CustomNSError {
+	case InvalidParameter(functionName: String, description: String?)
+	case NotFound(entityType: String, description: String?)
+	case NotImplemented(functionName: String)
+	case UnknownError(functionName: String, description: String?)
+
+	static var errorDomain: String {
+		return "ApiConnectionError"
+	}
+
+	var errorCode: Int {
+		switch self {
+		case .InvalidParameter:
+			return 400
+		case .NotFound:
+			return 404
+		case .NotImplemented:
+		    return 501
+		case .UnknownError:
+			return Int.max
+		}
+	}
+
+	var errorUserInfo: [String : AnyObject] {
+		switch self {
+		case .InvalidParameter(let functionName, let description):
+			return ["message" : "Invalid parameter for function \(functionName)" as NSString,
+					"description" : (description ?? "") as NSString]
+		case .NotFound(let entityType, let description):
+			return ["message" : "Entity of type \(entityType) could not be found" as NSString,
+			        "description" : (description ?? "") as NSString]
+		case .NotImplemented(let functionName):
+			return ["message" : "Function \(functionName) is not (yet) implemented" as NSString,
+			        "description" : "" as NSString]
+		case .UnknownError(let functionName, let description):
+			return ["message" : "An unknown error occurred in function \(functionName)" as NSString,
+			        "description" : (description ?? "") as NSString]
 		}
 	}
 }

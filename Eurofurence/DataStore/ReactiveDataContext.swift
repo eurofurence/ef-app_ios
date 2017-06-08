@@ -53,6 +53,16 @@ class ReactiveDataContext: IDataContext {
 				producers.append(self.dataStore.load(EventConferenceTrack.self))
 				producers.append(self.dataStore.load(Event.self))
 			}
+			if areas.contains(.Images) {
+				producers.append(self.dataStore.load(Image.self))
+			}
+			if areas.contains(.Knowledge) {
+				producers.append(self.dataStore.load(KnowledgeEntry.self))
+				producers.append(self.dataStore.load(KnowledgeGroup.self))
+			}
+			if areas.contains(.Maps) {
+				producers.append(self.dataStore.load(Map.self))
+			}
 
 			let overallProgress = Progress(totalUnitCount: Int64(exactly: producers.count + 1)!)
 			let resultsProducer = SignalProducer<SignalProducer<DataStoreResult, DataStoreError>, NoError>(producers)
@@ -74,6 +84,14 @@ class ReactiveDataContext: IDataContext {
 						self.EventConferenceTracks.swap(value.entityData as! [EventConferenceTrack])
 					case is Event.Type:
 						self.Events.swap(value.entityData as! [Event])
+					case is Image.Type:
+						self.Images.swap(value.entityData as! [Image])
+					case is KnowledgeEntry.Type:
+						self.KnowledgeEntries.swap(value.entityData as! [KnowledgeEntry])
+					case is KnowledgeGroup.Type:
+						self.KnowledgeGroups.swap(value.entityData as! [KnowledgeGroup])
+					case is Map.Type:
+						self.Maps.swap(value.entityData as! [Map])
 					default:
 						print("Attempted to load unknown entity") // This should never happen *ducks*
 					}
@@ -112,6 +130,16 @@ class ReactiveDataContext: IDataContext {
 				producers.append(self.dataStore.save(EventConferenceTrack.self, entityData: self.EventConferenceTracks.value))
 				producers.append(self.dataStore.save(Event.self, entityData: self.Events.value))
 			}
+			if areas.contains(.Images) {
+				producers.append(self.dataStore.save(Image.self, entityData: self.Images.value))
+			}
+			if areas.contains(.Knowledge) {
+				producers.append(self.dataStore.save(KnowledgeEntry.self, entityData: self.KnowledgeEntries.value))
+				producers.append(self.dataStore.save(KnowledgeGroup.self, entityData: self.KnowledgeGroups.value))
+			}
+			if areas.contains(.Maps) {
+				producers.append(self.dataStore.save(Map.self, entityData: self.Maps.value))
+			}
 
 			let overallProgress = Progress(totalUnitCount: Int64(exactly: producers.count)!)
 			let resultsProducer = SignalProducer<SignalProducer<DataStoreResult, DataStoreError>, NoError>(producers)
@@ -136,7 +164,7 @@ class ReactiveDataContext: IDataContext {
 	}
 
 	func applySync(data: Sync, saveBefore: Bool = true) {
-		let overallProgress = Progress(totalUnitCount: 9)
+		let overallProgress = Progress(totalUnitCount: 13)
 		var affectedAreas: DataContextArea = []
 
 		affectedAreas.insert(applySyncEntity(syncEntityDelta: data.Announcements, syncTarget: Announcements))
@@ -151,6 +179,14 @@ class ReactiveDataContext: IDataContext {
 		overallProgress.completedUnitCount += 1
 		affectedAreas.insert(applySyncEntity(syncEntityDelta: data.Events, syncTarget: Events))
 		overallProgress.completedUnitCount += 1
+		affectedAreas.insert(applySyncEntity(syncEntityDelta: data.Images, syncTarget: Images))
+		overallProgress.completedUnitCount += 1
+		affectedAreas.insert(applySyncEntity(syncEntityDelta: data.KnowledgeEntries, syncTarget: KnowledgeEntries))
+		overallProgress.completedUnitCount += 1
+		affectedAreas.insert(applySyncEntity(syncEntityDelta: data.KnowledgeGroups, syncTarget: KnowledgeGroups))
+		overallProgress.completedUnitCount += 1
+		affectedAreas.insert(applySyncEntity(syncEntityDelta: data.Maps, syncTarget: Maps))
+		overallProgress.completedUnitCount += 1
 
 		navigationResolver.resolve(dataContext: self)
 		overallProgress.completedUnitCount += 1
@@ -160,6 +196,19 @@ class ReactiveDataContext: IDataContext {
 
 		refreshedInput.send(value: affectedAreas)
 		overallProgress.completedUnitCount += 1
+	}
+
+	func clearAll() {
+		Announcements.swap([])
+		Dealers.swap([])
+		EventConferenceDays.swap([])
+		EventConferenceRooms.swap([])
+		EventConferenceTracks.swap([])
+		Events.swap([])
+		Images.swap([])
+		KnowledgeEntries.swap([])
+		KnowledgeGroups.swap([])
+		Maps.swap([])
 	}
 
 	private func applySyncEntity<EntityType:EntityBase>(syncEntityDelta: SyncEntityDelta<EntityType>, syncTarget: MutableProperty<[EntityType]>) -> DataContextArea {
