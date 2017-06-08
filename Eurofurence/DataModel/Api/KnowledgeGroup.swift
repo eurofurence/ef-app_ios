@@ -15,7 +15,7 @@ class KnowledgeGroup: EntityBase {
 	var Order : Int = 0
 	var ShowInHamburgerMenu : Bool = false
     
-	var KnowledgeEntries : [KnowledgeEntry]? = nil
+	var KnowledgeEntries : [KnowledgeEntry] = []
 	
 	override public func propertyMapping() -> [(keyInObject: String?,
 			keyInResource: String?)] {

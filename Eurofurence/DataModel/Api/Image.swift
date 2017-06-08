@@ -18,7 +18,7 @@ class Image: EntityBase {
     var Url = ""
 	var Width : Int = 0
 	
-	var Entities : [EntityBase]? = nil
+	var Entities : [EntityBase] = []
 	
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {

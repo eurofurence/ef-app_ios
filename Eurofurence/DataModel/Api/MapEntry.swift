@@ -14,7 +14,7 @@ class MapEntry: EntityBase {
     var RelativeY = 0.0
 	var Link : LinkFragment = LinkFragment()
 	
-	let Map : Map? = nil
+	var Map : Map? = nil
 	
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {

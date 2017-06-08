@@ -12,7 +12,7 @@ class EventConferenceDay: EntityBase {
 	var Date = Foundation.Date()
     var Name = ""
 	
-	var Events : [Event]? = nil
+	var Events : [Event] = []
 	
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {
