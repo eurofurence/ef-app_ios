@@ -1,0 +1,5 @@
+language: swift
+osx_image: xcode8.3
+xcode_sdk: iphonesimulator10.3
+xcode_workspace: Eurofurence.xcworkspace
+xcode_scheme: Eurofurence
