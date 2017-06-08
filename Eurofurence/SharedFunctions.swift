@@ -31,3 +31,13 @@ extension QueueScheduler {
 			QueueScheduler(qos: .default, name: "concurrent")
 	])
 }
+
+extension URL {
+	mutating func setExcludedFromBackup(_ exclude: Bool) throws {
+		if FileManager.default.fileExists(atPath: self.path) {
+			var resourceValues = URLResourceValues()
+			resourceValues.isExcludedFromBackup = true
+			try self.setResourceValues(resourceValues)
+		}
+	}
+}
