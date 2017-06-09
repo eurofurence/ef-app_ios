@@ -8,6 +8,7 @@
 
 import UIKit
 import ReactiveSwift
+import EVReflection
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,11 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+		PrintOptions.Active = .None
+
 		window = UIWindow(frame: UIScreen.main.bounds)
 		if let window = window {
 			window.backgroundColor = UIColor.white
-			let viewController = try AnnouncementsViewController()
-			viewController.setViewModel(try! ViewModelResolver.container.resolve())
+			let viewController = AnnouncementsViewController()
 			window.rootViewController = viewController
 			window.makeKeyAndVisible()
 		}

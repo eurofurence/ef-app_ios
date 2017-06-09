@@ -13,17 +13,13 @@ import UIKit
 
 class AnnouncementsViewController: UIViewController {
 
-    private var viewModel: AnnouncementsViewModel? = nil
-
-	func setViewModel(_ viewModel: AnnouncementsViewModel) {
-		self.viewModel = viewModel
-	}
+    private var viewModel: AnnouncementsViewModel = try! ViewModelResolver.container.resolve()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
 	    let textView = UITextView()
-	    textView.reactive.text <~ viewModel!.Announcements.map({ announcements in
+	    textView.reactive.text <~ viewModel.Announcements.map({ announcements in
 		    if let announcement = announcements.last as Announcement? {
 			    return announcement.Title
 		    } else {
@@ -35,7 +31,6 @@ class AnnouncementsViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 
