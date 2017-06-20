@@ -21,38 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		PrintOptions.Active = .None
 
-		window = UIWindow(frame: UIScreen.main.bounds)
-		if let window = window {
-			window.backgroundColor = UIColor.white
-			let viewController = AnnouncementsViewController()
-			window.rootViewController = viewController
-			window.makeKeyAndVisible()
-		}
-
-		let contextManager = try! ContextResolver.container.resolve(tag: Environment.Development) as ContextManager
-		let dataContext = try! ContextResolver.container.resolve() as IDataContext
-
-		dataContext.loadFromStore().start(on: QueueScheduler.concurrent).start({ event in
-			switch event {
-			case let .value(value):
-				print("Loading completed by \(value.fractionCompleted)")
-			case let .failed(error):
-				print("Failed: \(error)")
-
-				contextManager.syncWithApi?.apply(1234).start({ event in
-					guard let value = event.value else {
-						print("Error: \(String(describing: event.error))")
-						return
-					}
-					print("Sync completed by \(value.fractionCompleted)")
-				})
-			case .completed:
-				print("Completed")
-			case .interrupted:
-				print("Interrupted")
-			}
-		})
-
 		return true
 	}
 

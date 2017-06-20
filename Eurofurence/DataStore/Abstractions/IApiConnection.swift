@@ -13,26 +13,23 @@ import ReactiveSwift
 protocol IApiConnection {
 	typealias Parameters = [String: Any]
 
-	var apiUrl : URL { get }
-	var syncEndpoint : String { get }
+	var apiUrl: URL { get }
 
 	// MARK: Initializers
 
-	init(_ apiUrl : URL, _ syncEndpoint : String)
-	init?(_ apiUrlString : String, _ syncEndpoint : String)
+	init(_ apiUrl: URL)
 
-	// MARK: Custom API operations
-
-	func doGetSync(parameters : Parameters?) -> SignalProducer<Sync, ApiConnectionError>
-	func doGetAnnouncements(by id : String) -> SignalProducer<Announcement, ApiConnectionError>
-	func doGetImageContent(by id : String) -> SignalProducer<UIImage, ApiConnectionError>
+	init?(_ apiUrlString: String)
 
 	// MARK: General HTTP verbs
 
-	func doGet(_ endpoint : String, parameters : Parameters?) -> SignalProducer<EVObject, ApiConnectionError>
-	func doPost(_ endpoint : String, payload : EVReflectable?, parameters : Parameters?) -> SignalProducer<EVObject, ApiConnectionError>
-	func doPut(_ endpoint : String, payload : EVReflectable?, parameters : Parameters?) -> SignalProducer<EVObject, ApiConnectionError>
-	func doDelete(_ endpoint : String, parameters : Parameters?) -> SignalProducer<EVObject, ApiConnectionError>
+	func doGet<EntityType:EVNetworkingObject>(_ endpoint: String, parameters: Parameters?) -> SignalProducer<EntityType, ApiConnectionError>
+
+	func doPost<EntityType:EVNetworkingObject>(_ endpoint: String, payload: EVReflectable?, parameters: Parameters?) -> SignalProducer<EntityType, ApiConnectionError>
+
+	func doPut<EntityType:EVNetworkingObject>(_ endpoint: String, payload: EVReflectable?, parameters: Parameters?) -> SignalProducer<EntityType, ApiConnectionError>
+
+	func doDelete<EntityType:EVNetworkingObject>(_ endpoint: String, parameters: Parameters?) -> SignalProducer<EntityType, ApiConnectionError>
 }
 
 extension IApiConnection {
@@ -103,11 +100,11 @@ extension IApiConnection {
 		}
 	}
 
-	func getEndpointName(url : URL) -> String {
+	func getEndpointName(url: URL) -> String {
 		return getEndpointName(urlString: url.absoluteString)
 	}
 
-	func getEndpointName(urlString : String) -> String {
+	func getEndpointName(urlString: String) -> String {
 		return ""
 	}
 }
@@ -118,6 +115,7 @@ enum ApiConnectionError: CustomNSError {
 	case NotFound(entityType: String, description: String?)
 	case NotImplemented(functionName: String)
 	case UnknownError(functionName: String, description: String?)
+	case HttpError(endpoint: String, verb: String, description: String?)
 
 	static var errorDomain: String {
 		return "ApiConnectionError"
@@ -130,26 +128,31 @@ enum ApiConnectionError: CustomNSError {
 		case .NotFound:
 			return 404
 		case .NotImplemented:
-		    return 501
+			return 501
 		case .UnknownError:
 			return Int.max
+		case .HttpError:
+			return 1
 		}
 	}
 
-	var errorUserInfo: [String : AnyObject] {
+	var errorUserInfo: [String: AnyObject] {
 		switch self {
 		case .InvalidParameter(let functionName, let description):
-			return ["message" : "Invalid parameter for function \(functionName)" as NSString,
-					"description" : (description ?? "") as NSString]
+			return ["message": "Invalid parameter for function \(functionName)" as NSString,
+			        "description": (description ?? "") as NSString]
 		case .NotFound(let entityType, let description):
-			return ["message" : "Entity of type \(entityType) could not be found" as NSString,
-			        "description" : (description ?? "") as NSString]
+			return ["message": "Entity of type \(entityType) could not be found" as NSString,
+			        "description": (description ?? "") as NSString]
 		case .NotImplemented(let functionName):
-			return ["message" : "Function \(functionName) is not (yet) implemented" as NSString,
-			        "description" : "" as NSString]
+			return ["message": "Function \(functionName) is not (yet) implemented" as NSString,
+			        "description": "" as NSString]
 		case .UnknownError(let functionName, let description):
-			return ["message" : "An unknown error occurred in function \(functionName)" as NSString,
-			        "description" : (description ?? "") as NSString]
+			return ["message": "An unknown error occurred in function \(functionName)" as NSString,
+			        "description": (description ?? "") as NSString]
+		case .HttpError(let endpoint, let verb, let description):
+			return ["message": "An error occurred while processing a HTTP \(verb) request on endpoint \(endpoint)" as NSString,
+			        "description": (description ?? "") as NSString]
 		}
 	}
 }

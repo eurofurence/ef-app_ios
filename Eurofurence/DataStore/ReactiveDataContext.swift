@@ -29,6 +29,66 @@ class ReactiveDataContext: IDataContext {
 	let refreshed: Signal<DataContextArea, NoError>
 	fileprivate let refreshedInput: Observer<DataContextArea, NoError>
 
+	private(set) lazy var applySync: Action<Sync, Progress, DataStoreError> =
+			Action<Sync, Progress, DataStoreError> { data in
+				return SignalProducer<Progress, DataStoreError> { observer, disposable in
+					let progress = Progress(totalUnitCount: 22)
+					var affectedAreas: DataContextArea = []
+
+					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.Announcements, syncTarget: self.Announcements))
+					progress.completedUnitCount += 1
+					observer.send(value: progress)
+					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.Dealers, syncTarget: self.Dealers))
+					progress.completedUnitCount += 1
+					observer.send(value: progress)
+					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.EventConferenceDays, syncTarget: self.EventConferenceDays))
+					progress.completedUnitCount += 1
+					observer.send(value: progress)
+					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.EventConferenceRooms, syncTarget: self.EventConferenceRooms))
+					progress.completedUnitCount += 1
+					observer.send(value: progress)
+					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.EventConferenceTracks, syncTarget: self.EventConferenceTracks))
+					progress.completedUnitCount += 1
+					observer.send(value: progress)
+					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.Events, syncTarget: self.Events))
+					progress.completedUnitCount += 1
+					observer.send(value: progress)
+					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.Images, syncTarget: self.Images))
+					progress.completedUnitCount += 1
+					observer.send(value: progress)
+					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.KnowledgeEntries, syncTarget: self.KnowledgeEntries))
+					progress.completedUnitCount += 1
+					observer.send(value: progress)
+					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.KnowledgeGroups, syncTarget: self.KnowledgeGroups))
+					progress.completedUnitCount += 1
+					observer.send(value: progress)
+					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.Maps, syncTarget: self.Maps))
+					progress.completedUnitCount += 1
+					observer.send(value: progress)
+
+					self.navigationResolver.resolve(dataContext: self)
+					progress.completedUnitCount += 1
+					observer.send(value: progress)
+
+					self.saveToStore(affectedAreas).start({ result in
+						if let value = result.value {
+							progress.completedUnitCount += 1
+							observer.send(value: progress)
+						} else if let error = result.error {
+							observer.send(error: error)
+							progress.cancel()
+						}
+
+						if result.isCompleted {
+							self.refreshedInput.send(value: affectedAreas)
+							progress.completedUnitCount += 1
+							observer.sendCompleted()
+						}
+					})
+				}
+			}
+
+
 	required init(dataStore: IDataStore, navigationResolver: INavigationResolver) {
 		(refreshed, refreshedInput) = Signal<DataContextArea, NoError>.pipe()
 
@@ -164,7 +224,7 @@ class ReactiveDataContext: IDataContext {
 	}
 
 	func applySync(data: Sync, saveBefore: Bool = true) {
-		let overallProgress = Progress(totalUnitCount: 13)
+		let overallProgress = Progress(totalUnitCount: 22)
 		var affectedAreas: DataContextArea = []
 
 		affectedAreas.insert(applySyncEntity(syncEntityDelta: data.Announcements, syncTarget: Announcements))
@@ -191,11 +251,19 @@ class ReactiveDataContext: IDataContext {
 		navigationResolver.resolve(dataContext: self)
 		overallProgress.completedUnitCount += 1
 
-		saveToStore(affectedAreas).start()
-		overallProgress.completedUnitCount += 1
+		saveToStore(affectedAreas).start({ result in
+			if let value = result.value as Progress? {
+				overallProgress.completedUnitCount += 1
+			} else if let error = result.error {
+				overallProgress.cancel()
+			}
 
-		refreshedInput.send(value: affectedAreas)
-		overallProgress.completedUnitCount += 1
+			if result.isCompleted {
+				self.refreshedInput.send(value: affectedAreas)
+				overallProgress.completedUnitCount += 1
+			}
+		})
+
 	}
 
 	func clearAll() {

@@ -9,7 +9,7 @@
 import Foundation
 import EVReflection
 
-class Sync: EVObject {
+class Sync: EVNetworkingObject {
 	var Announcements : SyncEntityDelta<Announcement> = SyncEntityDelta()
 	var CurrentDateTimeUtc : Date = Date()
 	var Dealers : SyncEntityDelta<Dealer> = SyncEntityDelta()

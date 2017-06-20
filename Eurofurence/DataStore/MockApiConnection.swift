@@ -11,54 +11,26 @@ import EVReflection
 import ReactiveSwift
 import Alamofire
 
-class MockApiConnection : IApiConnection {
+class MockApiConnection: IApiConnection {
 	static let defaultApiUrl = URL(string: "mock://api")!
 	let apiUrl: URL = defaultApiUrl
-	let syncEndpoint: String = "Sync"
 
 	// MARK: Initializers
 
-	required convenience init?(_ apiUrlString: String = "", _ syncEndpoint: String = "") {
-		self.init(MockApiConnection.defaultApiUrl, syncEndpoint)
+	required convenience init?(_ apiUrlString: String = "") {
+		self.init(MockApiConnection.defaultApiUrl)
 	}
 
-	required init( _ apiUrl: URL, _ syncEndpoint: String) {
+	required init(_ apiUrl: URL) {
 		EVReflection.setDateFormatter(Iso8601DateFormatter())
-	}
-
-	// MARK: Custom API operations
-
-	func doGetSync(parameters : Parameters? = nil) -> SignalProducer<Sync, ApiConnectionError> {
-		return SignalProducer { observer, disposable in
-			if let json = self.getJsonFromFile(self.syncEndpoint) {
-				observer.send(value: Sync(json: json))
-				observer.sendCompleted()
-			} else {
-				observer.send(error: ApiConnectionError.NotFound(entityType: self.syncEndpoint,
-						description: "No JSON file named \(self.syncEndpoint).mock could be found."))
-			}
-		}
-	}
-
-	func doGetAnnouncements(by id : String) -> SignalProducer<Announcement, ApiConnectionError> {
-		return SignalProducer { observer, disposable in
-			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
-		}
-	}
-
-	func doGetImageContent(by id : String) -> SignalProducer<UIImage, ApiConnectionError> {
-		return SignalProducer { observer, disposable in
-			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
-		}
 	}
 
 	// MARK: General HTTP verbs
 
-	func doGet(_ endpoint : String, parameters : Parameters? = nil) -> SignalProducer<EVObject, ApiConnectionError> {
+	func doGet<EntityType:EVNetworkingObject>(_ endpoint: String, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
 		return SignalProducer { observer, disposable in
-			if let json = self.getJsonFromFile(endpoint),
-			   let entityType = self.getEntityType(name: endpoint) {
-				observer.send(value: entityType.init(json: json))
+			if let json = self.getJsonFromFile(endpoint) {
+				observer.send(value: EntityType.init(json: json))
 				observer.sendCompleted()
 			} else {
 				observer.send(error: ApiConnectionError.NotFound(entityType: endpoint,
@@ -67,28 +39,28 @@ class MockApiConnection : IApiConnection {
 		}
 	}
 
-	func doPost(_ endpoint : String, payload : EVReflectable? = nil, parameters : Parameters? = nil) -> SignalProducer<EVObject, ApiConnectionError> {
+	func doPost<EntityType:EVNetworkingObject>(_ endpoint: String, payload: EVReflectable? = nil, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
 		return SignalProducer { observer, disposable in
 			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
 		}
 	}
 
-	func doPut(_ endpoint : String, payload : EVReflectable? = nil, parameters : Parameters? = nil) -> SignalProducer<EVObject, ApiConnectionError> {
+	func doPut<EntityType:EVNetworkingObject>(_ endpoint: String, payload: EVReflectable? = nil, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
 		return SignalProducer { observer, disposable in
 			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
 		}
 	}
 
-	func doDelete(_ endpoint : String, parameters : Parameters? = nil) -> SignalProducer<EVObject, ApiConnectionError> {
+	func doDelete<EntityType:EVNetworkingObject>(_ endpoint: String, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
 		return SignalProducer { observer, disposable in
 			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
 		}
 	}
 
 	// MARK: Internal implementation
-	
-	private func getJsonFromFile(_ endpoint : String) -> String? {
-		if let path = Bundle.main.path(forResource: endpoint + ".mock", ofType: "json"){
+
+	private func getJsonFromFile(_ endpoint: String) -> String? {
+		if let path = Bundle.main.path(forResource: endpoint + ".mock", ofType: "json") {
 			do {
 				return try String(contentsOfFile: path, encoding: String.Encoding.utf8)
 			} catch {

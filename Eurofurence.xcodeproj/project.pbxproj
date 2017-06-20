@@ -41,11 +41,17 @@
 		9ACF99971EC858B2006FC958 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF998B1EC858B2006FC958 /* Map.swift */; };
 		9ACF99981EC858B2006FC958 /* MapEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF998C1EC858B2006FC958 /* MapEntry.swift */; };
 		9ACF999D1ECA25E1006FC958 /* Sync.mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF999C1ECA25E1006FC958 /* Sync.mock.json */; };
+		9AE11B581EEFBE780037A9EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AE11B571EEFBE780037A9EF /* Main.storyboard */; };
+		9AF159ED1EF5BE7F00DB287D /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF159EC1EF5BE7F00DB287D /* EventCell.swift */; };
 		A034379A14212C5E996E6321 /* Pods_Eurofurence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */; };
-		D6F3D3219ACF5C602832D85E /* AnnouncementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D81755FCEF23910D2D04 /* AnnouncementsViewController.swift */; };
+		D6F3D04524461B08CD8E07B7 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D52AE57F767D8C22A556 /* Environment.swift */; };
+		D6F3D3219ACF5C602832D85E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D81755FCEF23910D2D04 /* HomeViewController.swift */; };
+		D6F3D4C7FF8BB27C46EF4D3D /* ServiceResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DB1B292BBFBF5D69F557 /* ServiceResolver.swift */; };
 		D6F3D5CDFE398DB6CDBDBC77 /* AnnouncementsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DD1B5AE618FC0076FA4D /* AnnouncementsViewModel.swift */; };
 		D6F3D6ADD1B889C901EE841A /* DataStoreResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D8101460A96C0D9A7612 /* DataStoreResult.swift */; };
 		D6F3DAE595E6664666DA523F /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = D6F3D21513FCE6CCDC157C6A /* .travis.yml */; };
+		D6F3DD6B0659E1A44E01075B /* CurrentEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DDB3580D567F21C9B273 /* CurrentEventsViewModel.swift */; };
+		D6F3DFB53E62A8C16F211819 /* TimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DC7147FE454A5FAA2EA4 /* TimeService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,11 +105,17 @@
 		9ACF998B1EC858B2006FC958 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		9ACF998C1EC858B2006FC958 /* MapEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapEntry.swift; sourceTree = "<group>"; };
 		9ACF999C1ECA25E1006FC958 /* Sync.mock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Sync.mock.json; sourceTree = "<group>"; };
+		9AE11B571EEFBE780037A9EF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		9AF159EC1EF5BE7F00DB287D /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eurofurence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6F3D21513FCE6CCDC157C6A /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = file.yml; path = .travis.yml; sourceTree = "<group>"; };
+		D6F3D52AE57F767D8C22A556 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		D6F3D8101460A96C0D9A7612 /* DataStoreResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreResult.swift; sourceTree = "<group>"; };
-		D6F3D81755FCEF23910D2D04 /* AnnouncementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementsViewController.swift; sourceTree = "<group>"; };
+		D6F3D81755FCEF23910D2D04 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D6F3DB1B292BBFBF5D69F557 /* ServiceResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceResolver.swift; sourceTree = "<group>"; };
+		D6F3DC7147FE454A5FAA2EA4 /* TimeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeService.swift; sourceTree = "<group>"; };
 		D6F3DD1B5AE618FC0076FA4D /* AnnouncementsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementsViewModel.swift; sourceTree = "<group>"; };
+		D6F3DDB3580D567F21C9B273 /* CurrentEventsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentEventsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +159,8 @@
 			children = (
 				9A34B97E1ED06946004A249E /* ContextResolver.swift */,
 				9A34B9801ED06956004A249E /* ViewModelResolver.swift */,
+				D6F3DB1B292BBFBF5D69F557 /* ServiceResolver.swift */,
+				D6F3D52AE57F767D8C22A556 /* Environment.swift */,
 			);
 			path = DependencyResolution;
 			sourceTree = "<group>";
@@ -158,7 +172,6 @@
 				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
 				9ACF99371EBE172D006FC958 /* AppDelegate.swift */,
 				9ACF99431EBE172D006FC958 /* Info.plist */,
-				9ACF99401EBE172D006FC958 /* LaunchScreen.storyboard */,
 				9ACF99751EBE3B4C006FC958 /* SharedFunctions.swift */,
 				9ACF994B1EBE172D006FC958 /* EurofurenceTests */,
 				9ACF99351EBE172D006FC958 /* Products */,
@@ -186,6 +199,7 @@
 				9ACF999B1ECA259C006FC958 /* Resources */,
 				9ACF99581EBE32F3006FC958 /* ViewModel */,
 				9ACF99591EBE32FE006FC958 /* Views */,
+				D6F3D0327856D0D0294EF5E6 /* Services */,
 			);
 			path = Eurofurence;
 			sourceTree = "<group>";
@@ -214,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				D6F3DD1B5AE618FC0076FA4D /* AnnouncementsViewModel.swift */,
+				D6F3DDB3580D567F21C9B273 /* CurrentEventsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -221,7 +236,10 @@
 		9ACF99591EBE32FE006FC958 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9AF159E91EF5B3AE00DB287D /* Cells */,
 				D6F3DE4616D9A2E243387004 /* Controllers */,
+				9ACF99401EBE172D006FC958 /* LaunchScreen.storyboard */,
+				9AE11B571EEFBE780037A9EF /* Main.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -288,10 +306,26 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		9AF159E91EF5B3AE00DB287D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9AF159EC1EF5BE7F00DB287D /* EventCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D6F3D0327856D0D0294EF5E6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D6F3DC7147FE454A5FAA2EA4 /* TimeService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		D6F3DE4616D9A2E243387004 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D6F3D81755FCEF23910D2D04 /* AnnouncementsViewController.swift */,
+				D6F3D81755FCEF23910D2D04 /* HomeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -385,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9ACF99421EBE172D006FC958 /* LaunchScreen.storyboard in Resources */,
+				9AE11B581EEFBE780037A9EF /* Main.storyboard in Resources */,
 				9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */,
 				9ACF999D1ECA25E1006FC958 /* Sync.mock.json in Resources */,
 				D6F3DAE595E6664666DA523F /* .travis.yml in Resources */,
@@ -479,13 +514,18 @@
 				9ACF99941EC858B2006FC958 /* LinkFragment.swift in Sources */,
 				9ACF99951EC858B2006FC958 /* EventConferenceRoom.swift in Sources */,
 				9ACF99901EC858B2006FC958 /* KnowledgeEntry.swift in Sources */,
+				9AF159ED1EF5BE7F00DB287D /* EventCell.swift in Sources */,
 				9ACF998F1EC858B2006FC958 /* Announcement.swift in Sources */,
 				9ACF99971EC858B2006FC958 /* Map.swift in Sources */,
 				9ACF99981EC858B2006FC958 /* MapEntry.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
 				D6F3D6ADD1B889C901EE841A /* DataStoreResult.swift in Sources */,
-				D6F3D3219ACF5C602832D85E /* AnnouncementsViewController.swift in Sources */,
+				D6F3D3219ACF5C602832D85E /* HomeViewController.swift in Sources */,
 				D6F3D5CDFE398DB6CDBDBC77 /* AnnouncementsViewModel.swift in Sources */,
+				D6F3DD6B0659E1A44E01075B /* CurrentEventsViewModel.swift in Sources */,
+				D6F3DFB53E62A8C16F211819 /* TimeService.swift in Sources */,
+				D6F3D4C7FF8BB27C46EF4D3D /* ServiceResolver.swift in Sources */,
+				D6F3D04524461B08CD8E07B7 /* Environment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,7 +554,7 @@
 				9ACF99411EBE172D006FC958 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			path = Eurofurence;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -561,10 +601,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos10.3;
+				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -606,9 +646,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos10.3;
+				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

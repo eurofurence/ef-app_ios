@@ -9,11 +9,6 @@
 import Foundation
 import Dip
 
-enum Environment: String, DependencyTagConvertible {
-	case Production
-	case Development
-}
-
 /**
 Dependency container with registered instances for all data contexts and related classes
 */
@@ -27,10 +22,10 @@ class ContextResolver {
 
 	private init() {
 		_container.register(.singleton, tag: Environment.Development) { apiUrl in
-			MockApiConnection("mock://api", "")! as IApiConnection
+			MockApiConnection("mock://api")! as IApiConnection
 		}
 		_container.register(.singleton, tag: Environment.Production) { apiUrl in
-			WebApiConnection(URL(string: "https://app.eurofurence.org/api/v2/")!, "Sync") as IApiConnection
+			WebApiConnection(URL(string: "https://app.eurofurence.org/api/v2/")!) as IApiConnection
 		}
 
 		_container.register(.singleton) {

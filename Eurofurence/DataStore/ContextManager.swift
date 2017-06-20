@@ -8,6 +8,7 @@
 
 import Foundation
 import ReactiveSwift
+import Result
 
 class ContextManager {
 	private var apiConnection: IApiConnection
@@ -15,11 +16,11 @@ class ContextManager {
 	private var dataStore: IDataStore
 
 	private(set) lazy var syncWithApi: Action<Int, Progress, NSError>? =
-			 Action { since in
-				 return SignalProducer<Progress, NSError> { observer, disposable in
+			Action { since in
+				return SignalProducer<Progress, NSError> { observer, disposable in
 					let progress = Progress(totalUnitCount: 3)
 
-					let apiResult = self.apiConnection.doGetSync(parameters: ["since": since]).last()
+					let apiResult: Result<Sync, ApiConnectionError>? = self.apiConnection.doGet("Sync", parameters: ["since": since]).last()
 					progress.completedUnitCount += 1
 					observer.send(value: progress)
 
@@ -30,7 +31,7 @@ class ContextManager {
 					} else {
 						observer.send(error: apiResult?.error as NSError? ??
 								ApiConnectionError.UnknownError(functionName: #function,
-										description: "Unexpectedly empty value on sync result") as NSError)
+										description: "Unexpected empty value on sync result") as NSError)
 					}
 
 					// TODO: Download images

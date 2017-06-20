@@ -24,5 +24,8 @@ class ViewModelResolver {
 		_container.register(.singleton) {
 			try AnnouncementsViewModel(dataContext: ContextResolver.container.resolve())
 		}
+		_container.register(.singleton) {
+			try CurrentEventsViewModel(dataContext: ContextResolver.container.resolve())
+		}
 	}
 }

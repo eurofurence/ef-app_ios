@@ -13,83 +13,55 @@ import Alamofire
 
 class WebApiConnection: IApiConnection {
 	let apiUrl: URL
-	let syncEndpoint: String
 
-	// MARK: Initializers
-
-	required convenience init?(_ apiUrlString: String, _ syncEndpoint: String) {
+	required convenience init?(_ apiUrlString: String) {
 		guard let apiUrl = URL(string: apiUrlString) else {
 			return nil
 		}
 
-		self.init(apiUrl, syncEndpoint)
+		self.init(apiUrl)
 	}
 
-	required init(_ apiUrl: URL, _ syncEndpoint: String) {
+	required init(_ apiUrl: URL) {
 		EVReflection.setDateFormatter(Iso8601DateFormatter())
 
 		self.apiUrl = apiUrl
-		self.syncEndpoint = syncEndpoint
 	}
 
-	// MARK: Custom API operations
+	func doGet<EntityType:EVNetworkingObject>(_ endpoint: String, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
+		return SignalProducer { observer, disposable in
+			let getUrl = self.apiUrl.appendingPathComponent(endpoint)
+			Alamofire.request(getUrl, method: .get, parameters: parameters).responseObject(completionHandler: {
+				(response: DataResponse<EntityType>) in
+				if let result = response.value {
+					observer.send(value: result)
+					observer.sendCompleted()
+				} else if let error = response.error {
+					observer.send(error: ApiConnectionError.HttpError(endpoint: endpoint, verb: #function,
+							description: error.localizedDescription))
+				} else {
+					observer.send(error: ApiConnectionError.UnknownError(functionName: #function,
+							description: nil))
+				}
+			})
+		}
+	}
 
-	func doGetSync(parameters : Parameters? = nil) -> SignalProducer<Sync, ApiConnectionError> {
-		return SignalProducer { observer, disposable in
-			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
-		}
-	}
-	func doGetAnnouncements(by id : String) -> SignalProducer<Announcement, ApiConnectionError> {
-		return SignalProducer { observer, disposable in
-			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
-		}
-	}
-	func doGetImageContent(by id : String) -> SignalProducer<UIImage, ApiConnectionError> {
-		return SignalProducer { observer, disposable in
-			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
-		}
-	}
-
-	// MARK: General HTTP verbs
-
-	func doGet(_ endpoint : String, parameters : Parameters? = nil) -> SignalProducer<EVObject, ApiConnectionError> {
-		return SignalProducer { observer, disposable in
-			do {
-				let json = try self.getJsonFromApi(endpointName: self.syncEndpoint)
-			} catch let error as ApiConnectionError {
-				observer.send(error: error)
-			} catch let error {
-				observer.send(error: ApiConnectionError.UnknownError(functionName: #function,
-						description: error.localizedDescription))
-			}
-			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
-		}
-	}
-	func doPost(_ endpoint : String, payload : EVReflectable? = nil, parameters : Parameters? = nil) -> SignalProducer<EVObject, ApiConnectionError> {
-		return SignalProducer { observer, disposable in
-			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
-		}
-	}
-	func doPut(_ endpoint : String, payload : EVReflectable? = nil, parameters : Parameters? = nil) -> SignalProducer<EVObject, ApiConnectionError> {
-		return SignalProducer { observer, disposable in
-			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
-		}
-	}
-	func doDelete(_ endpoint : String, parameters : Parameters? = nil) -> SignalProducer<EVObject, ApiConnectionError> {
+	func doPost<EntityType:EVNetworkingObject>(_ endpoint: String, payload: EVReflectable? = nil, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
 		return SignalProducer { observer, disposable in
 			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
 		}
 	}
 
-	// MARK: Internal implementation
+	func doPut<EntityType:EVNetworkingObject>(_ endpoint: String, payload: EVReflectable? = nil, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
+		return SignalProducer { observer, disposable in
+			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
+		}
+	}
 
-	private func getJsonFromApi(endpointName : String) throws -> EntityBase? {
-		let getUrl = apiUrl.appendingPathComponent(endpointName)
-
-		var parameters = ["since" : "0"]
-
-		Alamofire.request(getUrl, method: .get, parameters: parameters)
-
-		return nil
+	func doDelete<EntityType:EVNetworkingObject>(_ endpoint: String, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
+		return SignalProducer { observer, disposable in
+			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
+		}
 	}
 }
