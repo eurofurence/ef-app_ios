@@ -1,5 +1,5 @@
 //
-//  InfoViewController.swift
+//  KnowledgeEntryViewController.swift
 //  Eurofurence
 //
 //  Copyright © 2017 Eurofurence. All rights reserved.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InfoViewController: UIViewController {
+class KnowledgeEntryViewController: UIViewController {
     @IBOutlet weak var groupLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
@@ -72,7 +72,7 @@ class InfoViewController: UIViewController {
         imageView.sizeToFit()
         
         do {
-            let htmlText = WikiText.transformToHtml(knowledgeEntry.Text, style: InfoViewController.htmlStyle)
+            let htmlText = WikiText.transformToHtml(knowledgeEntry.Text, style: KnowledgeEntryViewController.htmlStyle)
             textView.attributedText = try NSAttributedString(
                 data: htmlText.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
                 options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],

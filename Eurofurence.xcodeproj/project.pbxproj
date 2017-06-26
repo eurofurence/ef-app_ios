@@ -26,6 +26,8 @@
 		9A7FFD571EFC5B46007ABA36 /* CalendarAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7FFD561EFC5B46007ABA36 /* CalendarAccess.swift */; };
 		9A8477981ED99EDE00F0DF3F /* NavigationResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8477971ED99EDE00F0DF3F /* NavigationResolver.swift */; };
 		9AB64BC91EFE6592004E8D91 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB64BC81EFE6592004E8D91 /* EventsViewModel.swift */; };
+		9AB64BCB1F018135004E8D91 /* KnowledgeGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB64BCA1F018135004E8D91 /* KnowledgeGroupCell.swift */; };
+		9AB64BCD1F018365004E8D91 /* KnowledgeEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB64BCC1F018365004E8D91 /* KnowledgeEntryCell.swift */; };
 		9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99371EBE172D006FC958 /* AppDelegate.swift */; };
 		9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF993E1EBE172D006FC958 /* Assets.xcassets */; };
 		9ACF99421EBE172D006FC958 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF99401EBE172D006FC958 /* LaunchScreen.storyboard */; };
@@ -51,7 +53,7 @@
 		D6F3D04524461B08CD8E07B7 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D52AE57F767D8C22A556 /* Environment.swift */; };
 		D6F3D13186949132FE4694AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6F3D756F99A68B2DC5B7359 /* Main.storyboard */; };
 		D6F3D13A59E359E69EA66D7E /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D7AF46BAD0F1F9918A76 /* MenuTableViewCell.swift */; };
-		D6F3D204D352FE26C3F90906 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DD137095A2765149B6DE /* InfoTableViewController.swift */; };
+		D6F3D204D352FE26C3F90906 /* KnowledgeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DD137095A2765149B6DE /* KnowledgeTableViewController.swift */; };
 		D6F3D2440B74E17B9A008DE0 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DF8454D3F83FD7294CD0 /* NewsViewController.swift */; };
 		D6F3D2601B0ABAB38B14F44B /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D39AED1B35B9582E107D /* EventCollectionViewCell.swift */; };
 		D6F3D275FF81A313B9213277 /* AnnouncementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DEF39B7EA2ED63CA72D7 /* AnnouncementCell.swift */; };
@@ -64,7 +66,7 @@
 		D6F3D523BDCDDA3A2A163E55 /* TimeLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D694C5DA66BE24929466 /* TimeLabelCell.swift */; };
 		D6F3D5CDFE398DB6CDBDBC77 /* AnnouncementsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DD1B5AE618FC0076FA4D /* AnnouncementsViewModel.swift */; };
 		D6F3D620BA994A6570325C66 /* DealersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D15DBA1AA6254F83C20A /* DealersTableViewCell.swift */; };
-		D6F3D62A784F07D9C7A84DC8 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DB48EF811D49364AFB9D /* InfoViewController.swift */; };
+		D6F3D62A784F07D9C7A84DC8 /* KnowledgeEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DB48EF811D49364AFB9D /* KnowledgeEntryViewController.swift */; };
 		D6F3D6ADD1B889C901EE841A /* DataStoreResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D8101460A96C0D9A7612 /* DataStoreResult.swift */; };
 		D6F3D6E53AD96306E39C8B22 /* InfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D4DA3BFF58CFCA748548 /* InfoCollectionViewCell.swift */; };
 		D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D46D42184018C6E237CD /* RoutingAppChooser.swift */; };
@@ -113,6 +115,8 @@
 		9A7FFD561EFC5B46007ABA36 /* CalendarAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarAccess.swift; sourceTree = "<group>"; };
 		9A8477971ED99EDE00F0DF3F /* NavigationResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationResolver.swift; sourceTree = "<group>"; };
 		9AB64BC81EFE6592004E8D91 /* EventsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
+		9AB64BCA1F018135004E8D91 /* KnowledgeGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupCell.swift; sourceTree = "<group>"; };
+		9AB64BCC1F018365004E8D91 /* KnowledgeEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryCell.swift; sourceTree = "<group>"; };
 		9ACF99341EBE172D006FC958 /* Eurofurence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eurofurence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ACF99371EBE172D006FC958 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Eurofurence/AppDelegate.swift; sourceTree = "<group>"; };
 		9ACF993E1EBE172D006FC958 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Eurofurence/Assets.xcassets; sourceTree = "<group>"; };
@@ -160,9 +164,9 @@
 		D6F3D8101460A96C0D9A7612 /* DataStoreResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreResult.swift; sourceTree = "<group>"; };
 		D6F3D831FC85BC47C1D346C1 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		D6F3DB1B292BBFBF5D69F557 /* ServiceResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceResolver.swift; sourceTree = "<group>"; };
-		D6F3DB48EF811D49364AFB9D /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		D6F3DB48EF811D49364AFB9D /* KnowledgeEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryViewController.swift; sourceTree = "<group>"; };
 		D6F3DC7147FE454A5FAA2EA4 /* TimeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeService.swift; sourceTree = "<group>"; };
-		D6F3DD137095A2765149B6DE /* InfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
+		D6F3DD137095A2765149B6DE /* KnowledgeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeTableViewController.swift; sourceTree = "<group>"; };
 		D6F3DD1B5AE618FC0076FA4D /* AnnouncementsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementsViewModel.swift; sourceTree = "<group>"; };
 		D6F3DDB3580D567F21C9B273 /* CurrentEventsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentEventsViewModel.swift; sourceTree = "<group>"; };
 		D6F3DE9723F934424C183CD4 /* EventHeaderCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHeaderCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -376,6 +380,8 @@
 				D6F3DEF39B7EA2ED63CA72D7 /* AnnouncementCell.swift */,
 				9AF159EC1EF5BE7F00DB287D /* SimpleEventCell.swift */,
 				D6F3D694C5DA66BE24929466 /* TimeLabelCell.swift */,
+				9AB64BCA1F018135004E8D91 /* KnowledgeGroupCell.swift */,
+				9AB64BCC1F018365004E8D91 /* KnowledgeEntryCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -408,8 +414,8 @@
 				D6F3D66312CF86A43D699F2C /* DealerViewController.swift */,
 				D6F3D831FC85BC47C1D346C1 /* EventTableViewController.swift */,
 				D6F3DFA70EA419105E0019F3 /* EventViewController.swift */,
-				D6F3DD137095A2765149B6DE /* InfoTableViewController.swift */,
-				D6F3DB48EF811D49364AFB9D /* InfoViewController.swift */,
+				D6F3DD137095A2765149B6DE /* KnowledgeTableViewController.swift */,
+				D6F3DB48EF811D49364AFB9D /* KnowledgeEntryViewController.swift */,
 				D6F3D7EA60D21CE770225E11 /* LeftViewController.swift */,
 				9A7FFD541EFC5A9E007ABA36 /* MapViewController.swift */,
 				D6F3DF71A249A0F1DE8D51FB /* NewsTableViewController.swift */,
@@ -615,8 +621,10 @@
 				9A7FFD531EF97CD4007ABA36 /* UserSettings.swift in Sources */,
 				D6F3D5CDFE398DB6CDBDBC77 /* AnnouncementsViewModel.swift in Sources */,
 				D6F3DD6B0659E1A44E01075B /* CurrentEventsViewModel.swift in Sources */,
+				9AB64BCD1F018365004E8D91 /* KnowledgeEntryCell.swift in Sources */,
 				D6F3DFB53E62A8C16F211819 /* TimeService.swift in Sources */,
 				D6F3D4C7FF8BB27C46EF4D3D /* ServiceResolver.swift in Sources */,
+				9AB64BCB1F018135004E8D91 /* KnowledgeGroupCell.swift in Sources */,
 				D6F3D04524461B08CD8E07B7 /* Environment.swift in Sources */,
 				D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */,
 				D6F3DB838A1BDAFC6DAC2F61 /* CountryAlpha3Converter.swift in Sources */,
@@ -631,7 +639,7 @@
 				D6F3D2601B0ABAB38B14F44B /* EventCollectionViewCell.swift in Sources */,
 				D6F3D6E53AD96306E39C8B22 /* InfoCollectionViewCell.swift in Sources */,
 				D6F3DAD590C051C8D0060172 /* EventViewController.swift in Sources */,
-				D6F3D62A784F07D9C7A84DC8 /* InfoViewController.swift in Sources */,
+				D6F3D62A784F07D9C7A84DC8 /* KnowledgeEntryViewController.swift in Sources */,
 				D6F3D2440B74E17B9A008DE0 /* NewsViewController.swift in Sources */,
 				D6F3D3D11CAB2B06852D0EF9 /* DealerTableViewController.swift in Sources */,
 				9A7FFD551EFC5A9E007ABA36 /* MapViewController.swift in Sources */,
@@ -639,7 +647,7 @@
 				D6F3D40D3515E7ABE9565906 /* AboutViewController.swift in Sources */,
 				D6F3DEED2F3250C61DB692D9 /* DealerViewController.swift in Sources */,
 				D6F3D2C86BE68A102D2D6312 /* EventTableViewController.swift in Sources */,
-				D6F3D204D352FE26C3F90906 /* InfoTableViewController.swift in Sources */,
+				D6F3D204D352FE26C3F90906 /* KnowledgeTableViewController.swift in Sources */,
 				D6F3D31AF756EC1131851C5A /* LeftViewController.swift in Sources */,
 				D6F3DF2779D7CE09AA5507F9 /* NewsTableViewController.swift in Sources */,
 			);

@@ -1,5 +1,5 @@
 //
-//  InfoTableViewController.swift
+//  KnowledgeTableViewController.swift
 //  Eurofurence
 //
 //  Copyright © 2017 Eurofurence. All rights reserved.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InfoTableViewController: UITableViewController {
+class KnowledgeTableViewController: UITableViewController {
 	let dataContext: IDataContext = try! ContextResolver.container.resolve()
 
     override func viewDidLoad() {
@@ -34,12 +34,8 @@ class InfoTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath)
-        cell.backgroundColor = UIColor(red: 35/255.0, green: 36/255.0, blue: 38/255.0, alpha: 1.0)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "KnowledgeEntryCell", for: indexPath)
 		cell.textLabel!.text = dataContext.KnowledgeGroups.value[indexPath.section].KnowledgeEntries[indexPath.row].Title
-		
-        // Configure the cell...
-        
         return cell
     }
     
@@ -59,22 +55,17 @@ class InfoTableViewController: UITableViewController {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "KnowledgeGroupCell") as? KnowledgeGroupCell else {
+			return nil
+		}
+		
+		cell.knowledgeGroup = dataContext.KnowledgeGroups.value[section]
+		
+        //let headerTapped = UITapGestureRecognizer (target: self, action:#selector(InfoTableViewController.sectionHeaderTapped(_:)))
+        //cell.addGestureRecognizer(headerTapped)
         
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 60))
-        headerView.backgroundColor = UIColor.gray
-        headerView.tag = section
-        
-        let headerString = UILabel(frame: CGRect(x: 10, y: 10, width: tableView.frame.size.width-10, height: 30)) as UILabel
-        headerString.text = dataContext.KnowledgeGroups.value[section].Name
-        headerString.textColor = UIColor.white
-        headerString.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
-        headerView.addSubview(headerString)
-        
-        let headerTapped = UITapGestureRecognizer (target: self, action:#selector(InfoTableViewController.sectionHeaderTapped(_:)))
-        headerView.addGestureRecognizer(headerTapped)
-        
-        return headerView
+        return cell
     }
     
     func sectionHeaderTapped(_ recognizer: UITapGestureRecognizer) {
@@ -109,10 +100,9 @@ class InfoTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "infosListToViewSegue" {
-            if let destinationVC = segue.destination as? InfoViewController {
-                let indexPath = self.tableView.indexPathForSelectedRow!
-				destinationVC.knowledgeEntry = dataContext.KnowledgeGroups.value[indexPath.section].KnowledgeEntries[indexPath.row]
+        if segue.identifier == "KnowledgeEntryDetailSegue" {
+            if let destinationVC = segue.destination as? InfoViewController, let cell = sender as? KnowledgeEntryCell, let knowledgeEntry = cell.knowledgeEntry {
+				destinationVC.knowledgeEntry = knowledgeEntry
             }
         }
     }
