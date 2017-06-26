@@ -1,9 +1,8 @@
 //
 //  Dealer.swift
-//  eurofurence
+//  Eurofurence
 //
-//  Created by Dominik Schöner on 2017-05-06.
-//  Copyright © 2017 eurofurence. All rights reserved.
+//  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 import Foundation
@@ -30,6 +29,7 @@ class Dealer: EntityBase {
     var ArtistImage : Image?
 	var ArtistThumbnailImage : Image?
 	var ArtPreviewImage : Image?
+	var MapEntry: MapEntry?
 	
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {
@@ -39,8 +39,10 @@ class Dealer: EntityBase {
 	}
 }
 
-extension Dealer : Comparable {
-	static func < (lhs: Dealer, rhs: Dealer) -> Bool {
-		return lhs.DisplayName < rhs.DisplayName
+extension Dealer: Sortable {
+	override public func lessThan(_ rhs: EntityBase) -> Bool {
+		return (rhs as? Dealer).map {
+			return self.DisplayName < $0.DisplayName
+			} ?? super.lessThan(rhs)
 	}
 }

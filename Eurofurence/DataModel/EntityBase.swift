@@ -1,22 +1,33 @@
 //
 //  EntityBase.swift
-//  eurofurence
+//  Eurofurence
 //
-//  Created by Dominik Schöner on 2017-05-06.
-//  Copyright © 2017 eurofurence. All rights reserved.
+//  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 import Foundation
 import EVReflection
 
-class EntityBase : EVObject {
+class EntityBase : EVObject, Comparable {
     var Id : String = ""
     var LastChangeDateTimeUtc : Date = Date()
 	
 	var IsDeleted : Bool = false
 	
 	static func == (lhs: EntityBase, rhs: EntityBase) -> Bool {
-		return lhs.Id == rhs.Id
+		return lhs.equalTo(rhs)
+	}
+	
+	public dynamic func equalTo(_ rhs: EntityBase) -> Bool {
+		return self.Id == rhs.Id
+	}
+	
+	static func < (lhs: EntityBase, rhs: EntityBase) -> Bool {
+		return lhs.lessThan(rhs)
+	}
+	
+	public dynamic func lessThan(_ rhs: EntityBase) -> Bool {
+		return self.Id < rhs.Id
 	}
 
 	override public func propertyMapping() -> [(keyInObject: String?,
@@ -24,3 +35,5 @@ class EntityBase : EVObject {
 		return [(keyInObject: "IsDeleted", keyInResource: nil)]
 	}
 }
+
+protocol Sortable {}

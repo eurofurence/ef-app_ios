@@ -1,9 +1,8 @@
 //
 //  KnowledgeEntry.swift
-//  eurofurence
+//  Eurofurence
 //
-//  Created by Dominik Schöner on 2017-05-06.
-//  Copyright © 2017 eurofurence. All rights reserved.
+//  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 import Foundation
@@ -24,8 +23,10 @@ class KnowledgeEntry: EntityBase {
 	}
 }
 
-extension KnowledgeEntry : Comparable {
-	static func < (lhs: KnowledgeEntry, rhs: KnowledgeEntry) -> Bool {
-		return lhs.Order < rhs.Order
+extension KnowledgeEntry: Sortable {
+	override public func lessThan(_ rhs: EntityBase) -> Bool {
+		return (rhs as? KnowledgeEntry).map {
+			return self.Order < $0.Order
+			} ?? super.lessThan(rhs)
 	}
 }

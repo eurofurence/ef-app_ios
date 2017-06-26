@@ -1,9 +1,8 @@
 //
 //  EventConferenceDay.swift
-//  eurofurence
+//  Eurofurence
 //
-//  Created by Dominik Schöner on 2017-05-06.
-//  Copyright © 2017 eurofurence. All rights reserved.
+//  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 import Foundation
@@ -20,8 +19,10 @@ class EventConferenceDay: EntityBase {
 	}
 }
 
-extension EventConferenceDay : Comparable {
-	static func < (lhs: EventConferenceDay, rhs: EventConferenceDay) -> Bool {
-		return lhs.Date < rhs.Date
+extension EventConferenceDay: Sortable {
+	override public func lessThan(_ rhs: EntityBase) -> Bool {
+		return (rhs as? EventConferenceDay).map {
+			return self.Date < $0.Date
+			} ?? super.lessThan(rhs)
 	}
 }

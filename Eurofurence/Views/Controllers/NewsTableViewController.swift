@@ -1,0 +1,294 @@
+//
+//  HomeViewController.swift
+//  Eurofurence
+//
+//  Copyright © 2017 Eurofurence. All rights reserved.
+//
+
+import Result
+import ReactiveCocoa
+import ReactiveSwift
+import UIKit
+import Changeset
+
+class NewsTableViewController: UITableViewController {
+	
+    private var announcementsViewModel: AnnouncementsViewModel = try! ViewModelResolver.container.resolve()
+	private var currentEventsViewModel: CurrentEventsViewModel = try! ViewModelResolver.container.resolve()
+	
+	private var disposables = CompositeDisposable()
+	
+    override func viewDidLoad() {
+        super.viewDidLoad()
+		
+		tableView.backgroundColor = UIColor.black
+        tableView.estimatedRowHeight = 70;
+        tableView.rowHeight = UITableViewAutomaticDimension;
+		
+        self.refreshControl?.addTarget(self, action: #selector(NewsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        // Reset the application badge because all announcements can be assumed seen
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        UIApplication.shared.cancelAllLocalNotifications()
+    }
+	
+	// TODO: Pull into super class for all refreshable ViewControllers
+    /// Initiates sync with API via refreshControl
+    func refresh(_ sender:AnyObject) {
+		guard let refreshControl = self.refreshControl else {
+			return
+		}
+		
+		let contextManager = try! ContextResolver.container.resolve() as ContextManager
+		disposables += contextManager.syncWithApi?.apply(1234).observe(on: QueueScheduler.concurrent).start({ result in
+			if result.isCompleted {
+				print("Sync completed")
+				DispatchQueue.main.async {
+					refreshControl.endRefreshing()
+				}
+			} else if let value = result.value {
+				print("Sync completed by \(value.fractionCompleted)")
+			} else {
+				print("Error during sync: \(String(describing: result.error))")
+				DispatchQueue.main.async {
+					refreshControl.endRefreshing()
+				}
+			}
+		})
+    }
+    
+    func notifyAnnouncements(_ announcements: [Announcement]) {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        if UserSettings<Bool>.NotifyOnAnnouncement.currentValue() {
+            for announcement in announcements {
+				let notification = UILocalNotification()
+				notification.alertBody = announcement.Title
+				notification.timeZone = TimeZone(abbreviation: "UTC")
+				notification.fireDate = announcement.ValidFromDateTimeUtc
+				notification.soundName = UILocalNotificationDefaultSoundName
+				notification.userInfo = ["Announcement": announcement ]
+				notification.applicationIconBadgeNumber = UIApplication.shared.applicationIconBadgeNumber + 1
+                    
+				UIApplication.shared.presentLocalNotificationNow(notification)
+            }
+        } else if announcements.count > 0 {
+            UIApplication.shared.applicationIconBadgeNumber = announcements.count
+        }
+        
+        
+        if let tabBarItem = self.navigationController?.tabBarItem , announcements.count > 0 {
+            tabBarItem.badgeValue = String(announcements.count)
+        }
+	}
+	
+	func getLastRefreshString(_ lastRefresh: Date)->String {
+		// TODO: Externalise strings for i18n
+		let lastUpdateSeconds = -1 * Int(lastRefresh.timeIntervalSinceNow)
+		let lastUpdateMinutes = Int(lastUpdateSeconds / 60)
+		let lastUpdateHours = Int(lastUpdateMinutes / 60)
+		let lastUpdateDays = Int(lastUpdateHours / 24)
+		let lastUpdateWeeks = Int(lastUpdateDays / 7)
+		let lastUpdateYears = Int(lastUpdateWeeks / 52)
+		
+		if lastUpdateYears == 1 {
+			return "Last refresh 1 year ago"
+		} else if lastUpdateYears > 1 {
+			return "Last refresh " + String(lastUpdateYears) + " years ago"
+		} else if lastUpdateWeeks == 1 {
+			return "Last refresh 1 week ago"
+		} else if lastUpdateWeeks > 1 {
+			return "Last refresh " + String(lastUpdateWeeks) + " weeks ago"
+		} else if lastUpdateDays == 1 {
+			return "Last refresh 1 day ago"
+		} else if lastUpdateDays > 1 {
+			return "Last refresh " + String(lastUpdateDays) + " days ago"
+		} else if lastUpdateHours == 1 {
+			return "Last refresh 1 hour ago"
+		} else if lastUpdateHours > 1 {
+			return "Last refresh " + String(lastUpdateHours) + " hours ago"
+		} else if lastUpdateMinutes == 1 {
+			return "Last refresh 1 minute ago"
+		} else if lastUpdateMinutes > 1 {
+			return "Last refresh " + String(lastUpdateMinutes) + " minutes ago"
+		} else if lastUpdateSeconds == 1 {
+			return "Last refresh 1 second ago"
+		} else {
+			return "Last refresh " + String(lastUpdateSeconds) + " seconds ago"
+		}
+	}
+
+	
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		if !disposables.isDisposed {
+			disposables.dispose()
+		}
+		disposables = CompositeDisposable()
+		
+		disposables += announcementsViewModel.AnnouncementsEdits.signal.observe(on: QueueScheduler.concurrent).observe({ [weak self] observer in
+			guard let strongSelf = self else { return }
+			
+			if let edits = observer.value {
+				var newAnnouncements: [Announcement] = []
+				for edit in edits {
+					if edit.operation == EditOperation.insertion ||
+						edit.operation == EditOperation.substitution {
+						newAnnouncements.append(edit.value)
+					}
+				}
+				DispatchQueue.main.async {
+					strongSelf.tableView.update(with: edits)
+					strongSelf.tableView.reloadData();
+					
+					if !newAnnouncements.isEmpty {
+						strongSelf.notifyAnnouncements(newAnnouncements)
+					}
+				}
+			}
+			
+		})
+		
+		if let tabBarItem = self.navigationController?.tabBarItem {
+			tabBarItem.badgeValue = nil
+		}
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		disposables.dispose()
+		
+		super.viewWillDisappear(animated)
+		if let tabBarItem = self.navigationController?.tabBarItem {
+			tabBarItem.badgeValue = nil
+		}
+	}
+	
+    // MARK: - Table view data source
+	
+    override func numberOfSections(in tableView: UITableView) -> Int {
+		/*
+			0 - header image and inbox notification
+			1 - personal inbox
+			2 - announcements
+			3 - running events
+			4 - upcoming events
+		*/
+		
+		// TODO: Do we display a static message in case of empty sections or do we hide the sections?
+		
+        return 5
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		switch section {
+		case 1:
+			// TODO: Check for state of inbox
+			return 1
+		case 2:
+			return max(1, announcementsViewModel.Announcements.value.count)
+		case 3:
+			return max(1, currentEventsViewModel.RunningEvents.value.count)
+		case 4:
+			return max(1, currentEventsViewModel.UpcomingEvents.value.count)
+		default: // Unknown section
+			return 0
+		}
+    }
+	
+	override func tableView(_ tableView: UITableView,  titleForHeaderInSection section: Int) -> String {
+		// TODO: Externalise strings for i18n
+		switch section {
+		case 2:
+			return "Announcements"
+		case 3:
+			return "Running Events"
+		case 4:
+			return "Upcoming Events"
+		default: // Unknown section or header
+			return ""
+		}
+	}
+	
+	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		// No title, no visible section header
+		return self.tableView(tableView, titleForHeaderInSection: section).isEmpty ? 0.0 : 20.0
+	}
+	
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		if indexPath.section == 0 {
+			let cell = tableView.dequeueReusableCell(withIdentifier: "NewsHeaderTableViewCell", for: indexPath) as! NewsHeaderTableViewCell
+			let defaults = UserDefaults.standard
+			if let lastDatabaseUpdate = defaults.object(forKey: ContextManager.LAST_SYNC_DEFAULT) as? Date {
+				cell.newsLastRefreshLabel.text = getLastRefreshString(lastDatabaseUpdate)
+			} else {
+				cell.newsLastRefreshLabel.text = nil
+			}
+			return cell
+		} else if indexPath.section == 2 {
+			if announcementsViewModel.Announcements.value.isEmpty {
+				return tableView.dequeueReusableCell(withIdentifier: "NoAnnouncementsCell", for: indexPath)
+			} else {
+				let cell = tableView.dequeueReusableCell(withIdentifier: "AnnouncementCell", for: indexPath) as! AnnouncementCell
+				cell.announcement = announcementsViewModel.Announcements.value[indexPath.row]
+				return cell
+			}
+		} else if indexPath.section == 3 {
+			if currentEventsViewModel.RunningEvents.value.isEmpty {
+				return tableView.dequeueReusableCell(withIdentifier: "NoRunningEventsCell", for: indexPath)
+			} else {
+				let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleEventCell", for: indexPath) as! SimpleEventCell
+				cell.event = currentEventsViewModel.RunningEvents.value[indexPath.row]
+				return cell
+			}
+		} else if indexPath.section == 4 {
+			if currentEventsViewModel.UpcomingEvents.value.isEmpty {
+				return tableView.dequeueReusableCell(withIdentifier: "NoUpcomingEventsCell", for: indexPath)
+			} else {
+				let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleEventCell", for: indexPath) as! SimpleEventCell
+				cell.event = currentEventsViewModel.UpcomingEvents.value[indexPath.row]
+				return cell
+			}
+		} else {
+				return tableView.dequeueReusableCell(withIdentifier: "NoAnnouncementsCell", for: indexPath)
+		}
+	}
+	
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		guard let segueIdentifier = segue.identifier, let cell = sender as? UITableViewCell else {
+			return
+		}
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+		switch segueIdentifier {
+		case "AnnouncementDetailSegue" :
+            if let destinationVC = segue.destination as? NewsViewController, let cell = cell as? AnnouncementCell, let announcement = cell.announcement {
+                destinationVC.news = announcement
+            }
+		case "EventDetailSegue":
+			if let destinationVC = segue.destination as? EventViewController, let cell = cell as? SimpleEventCell, let event = cell.event {
+				destinationVC.event = event
+			}
+		default:
+			break
+        }
+    }
+    
+    @IBAction func openMenu(_ sender: AnyObject) {
+        if let _ = self.slideMenuController() {
+            self.slideMenuController()?.openLeft()
+        }
+    }
+	
+	deinit {
+		disposables.dispose()
+	}
+}

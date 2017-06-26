@@ -2,8 +2,7 @@
 //  TimeLabelCell.swift
 //  Eurofurence
 //
-//  Created by Dominik Schöner on 2017-07-17.
-//  Copyright © 2017 Dominik Schöner. All rights reserved.
+//  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 import UIKit

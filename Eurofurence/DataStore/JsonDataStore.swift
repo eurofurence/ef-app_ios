@@ -2,8 +2,7 @@
 //  JsonDataStore.swift
 //  Eurofurence
 //
-//  Created by Dominik Schöner on 2017-05-20.
-//  Copyright © 2017 Dominik Schöner. All rights reserved.
+//  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 // TODO: versioning for data store model -> detect incompatibility between stored data and current model

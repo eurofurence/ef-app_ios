@@ -2,8 +2,7 @@
 //  Service.swift
 //  Eurofurence
 //
-//  Created by Dominik Schöner on 2017-06-19.
-//  Copyright © 2017 Dominik Schöner. All rights reserved.
+//  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 import Foundation

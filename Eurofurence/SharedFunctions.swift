@@ -2,12 +2,28 @@
 //  SharedFunctions.swift
 //  Eurofurence
 //
-//  Created by Dominik Schöner on 2017-05-06.
-//  Copyright © 2017 Dominik Schöner. All rights reserved.
+//  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 import Foundation
 import ReactiveSwift
+import Changeset
+
+class DateFormatters {
+	public static let hourMinute: DateFormatter = {
+		let formatter = DateFormatter()
+		formatter.dateFormat = "HH:mm"
+		formatter.timeZone = TimeZone(abbreviation: "UTC")
+		return formatter
+	}()
+	
+	public static let dayMonthLong: DateFormatter = {
+		let formatter = DateFormatter()
+		formatter.dateFormat = "EEEE dd MMMM"
+		formatter.timeZone = TimeZone(abbreviation: "UTC")
+		return formatter
+	}()
+}
 
 extension QueueScheduler {
 	static var concurrent: QueueScheduler {
@@ -39,5 +55,35 @@ extension URL {
 			resourceValues.isExcludedFromBackup = true
 			try self.setResourceValues(resourceValues)
 		}
+	}
+}
+
+extension EditOperation : Equatable {}
+
+public func ==(lhs: EditOperation, rhs: EditOperation) -> Bool {
+	switch (lhs, rhs) {
+	case (.insertion, .insertion):
+		return true
+	case (.deletion, .deletion):
+		return true
+	case (.substitution, .substitution):
+		return true
+	case (let .move(lhsOrigin), let .move(rhsOrigin)):
+		return lhsOrigin == rhsOrigin
+	default:
+		return false
+	}
+}
+
+extension UIView {
+	var isViewEmpty : Bool {
+		return  self.subviews.count == 0 ;
+	}
+}
+
+public extension UITableView {
+	func registerCellClass(_ cellClass: AnyClass) {
+		let identifier = String(describing: cellClass)
+		self.register(cellClass, forCellReuseIdentifier: identifier)
 	}
 }

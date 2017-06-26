@@ -2,8 +2,7 @@
 //  CurrentEventsViewModel.swift
 //  Eurofurence
 //
-//  Created by Dominik Schöner on 2017-06-17.
-//  Copyright © 2017 Dominik Schöner. All rights reserved.
+//  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 import Foundation
@@ -24,20 +23,20 @@ class CurrentEventsViewModel {
 		self.dataContext = dataContext
 		timedEventsSignal = Signal.combineLatest(timeService.currentTime.signal, dataContext.Events.signal).observe(on: QueueScheduler.main)
 
-		RunningEvents <~ timedEventsSignal.map { (time, events) -> [Event] in
-			return events.filter({ $0.StartDateTimeUtc < time && $0.EndDateTimeUtc > time })
+		RunningEvents <~ timedEventsSignal.map { (time, items) -> [Event] in
+			return items.filter({ $0.StartDateTimeUtc < time && $0.EndDateTimeUtc > time })
 		}
 
-		RunningEventsEdits <~ RunningEvents.combinePrevious([] as [Event]).map { (eventsOld, eventsNew) -> [Edit<Event>] in
-			return Changeset.edits(from: eventsOld, to: eventsNew)
+		RunningEventsEdits <~ RunningEvents.combinePrevious([] as [Event]).map { (old, new) -> [Edit<Event>] in
+			return Changeset.edits(from: old, to: new)
 		}
 
-		UpcomingEvents <~ timedEventsSignal.map({ (time, events) in
-			return Array(events.filter({ $0.StartDateTimeUtc > time })[0..<10])
+		UpcomingEvents <~ timedEventsSignal.map({ (time, items) in
+			return Array(items.filter({ $0.StartDateTimeUtc > time })[0..<10])
 		})
 
-		UpcomingEventsEdits <~ UpcomingEvents.combinePrevious([] as [Event]).map { (eventsOld, eventsNew) -> [Edit<Event>] in
-			return Changeset.edits(from: eventsOld, to: eventsNew)
+		UpcomingEventsEdits <~ UpcomingEvents.combinePrevious([] as [Event]).map { (old, new) -> [Edit<Event>] in
+			return Changeset.edits(from: old, to: new)
 		}
 	}
 }

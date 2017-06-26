@@ -2,8 +2,7 @@
 //  IDataContext.swift
 //  Eurofurence
 //
-//  Created by Dominik Schöner on 2017-05-12.
-//  Copyright © 2017 Dominik Schöner. All rights reserved.
+//  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 import Foundation
@@ -21,6 +20,8 @@ protocol IDataContext {
 	var KnowledgeEntries: MutableProperty<[KnowledgeEntry]> { get }
 	var KnowledgeGroups: MutableProperty<[KnowledgeGroup]> { get }
 	var Maps: MutableProperty<[Map]> { get }
+	
+	var applySync: Action<Sync, Progress, DataStoreError> { get }
 
 	var refreshed: Signal<DataContextArea, NoError> { get }
 
@@ -30,8 +31,6 @@ protocol IDataContext {
 	func loadFromStore(_ areas: DataContextArea) -> SignalProducer<Progress, DataStoreError>
 
 	func saveToStore(_ areas: DataContextArea) -> SignalProducer<Progress, DataStoreError>
-
-	func applySync(data: Sync, saveBefore: Bool)
 
 	func clearAll()
 }
@@ -46,7 +45,7 @@ extension IDataContext {
 	}
 }
 
-struct DataContextArea: OptionSet {
+struct DataContextArea: OptionSet, CustomStringConvertible {
 	let rawValue: Int
 
 	static let All = DataContextArea(rawValue: 0b111111)
@@ -82,6 +81,32 @@ struct DataContextArea: OptionSet {
 			return self.Maps
 		default:
 			return self.None
+		}
+	}
+	
+	var description: String { get {
+			var areasStrings: [String] = []
+			
+			if self.contains(DataContextArea.Announcements) {
+				areasStrings.append("Announcements")
+			}
+			if self.contains(DataContextArea.Dealers) {
+				areasStrings.append("Dealers")
+			}
+			if self.contains(DataContextArea.Events) {
+				areasStrings.append("Events")
+			}
+			if self.contains(DataContextArea.Images) {
+				areasStrings.append("Images")
+			}
+			if self.contains(DataContextArea.Knowledge) {
+				areasStrings.append("Knowledge")
+			}
+			if self.contains(DataContextArea.Maps) {
+				areasStrings.append("Maps")
+			}
+			
+			return "DataContextArea(\(areasStrings.joined(separator: ", ")))"
 		}
 	}
 }

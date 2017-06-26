@@ -2,8 +2,7 @@
 //  ViewModelResolver.swift
 //  Eurofurence
 //
-//  Created by Dominik Schöner on 2017-05-20.
-//  Copyright © 2017 Dominik Schöner. All rights reserved.
+//  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 import Foundation
@@ -26,6 +25,9 @@ class ViewModelResolver {
 		}
 		_container.register(.singleton) {
 			try CurrentEventsViewModel(dataContext: ContextResolver.container.resolve())
+		}
+		_container.register(.singleton) {
+			try EventsViewModel(dataContext: ContextResolver.container.resolve())
 		}
 	}
 }

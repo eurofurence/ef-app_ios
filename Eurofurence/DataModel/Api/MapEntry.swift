@@ -1,12 +1,12 @@
 //
 //  MapEntry.swift
-//  eurofurence
+//  Eurofurence
 //
-//  Created by Dominik Schöner on 2017-05-06.
-//  Copyright © 2017 eurofurence. All rights reserved.
+//  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 import Foundation
+import UIKit
 
 class MapEntry: EntityBase {
     var RelativeTapRadius = 0.0
@@ -19,5 +19,15 @@ class MapEntry: EntityBase {
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {
 			return [(keyInObject: "Map",keyInResource: nil)]
+	}
+}
+
+extension MapEntry {
+	func getAbsoluteLocationForImage(_ image: UIImage) -> CGPoint {
+		return CGPoint(x: CGFloat(RelativeX/100) * image.size.width, y: CGFloat(RelativeY/100) * image.size.height)
+	}
+	
+	func getAbsoluteTapRadiusForImage(_ image: UIImage) -> CGFloat {
+		return CGFloat(RelativeTapRadius) * image.size.height
 	}
 }

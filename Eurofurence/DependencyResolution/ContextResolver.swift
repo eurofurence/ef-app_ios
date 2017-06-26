@@ -2,8 +2,7 @@
 //  ContextResolver.swift
 //  Eurofurence
 //
-//  Created by Dominik Schöner on 2017-05-20.
-//  Copyright © 2017 Dominik Schöner. All rights reserved.
+//  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 import Foundation
@@ -21,11 +20,16 @@ class ContextResolver {
 	private let _container = DependencyContainer()
 
 	private init() {
-		_container.register(.singleton, tag: Environment.Development) { apiUrl in
+		/*_container.register(.singleton, tag: Environment.Development) { apiUrl in
 			MockApiConnection("mock://api")! as IApiConnection
-		}
-		_container.register(.singleton, tag: Environment.Production) { apiUrl in
-			WebApiConnection(URL(string: "https://app.eurofurence.org/api/v2/")!) as IApiConnection
+		}*/
+		
+		/*_container.register(.singleton, tag: Environment.Production) { apiUrl in
+		WebApiConnection(URL(string: "https://app.eurofurence.org/api/v2/")!) as IApiConnection
+		}*/
+		
+		_container.register(.singleton) { apiUrl in
+		WebApiConnection(URL(string: "https://app.eurofurence.org/api/v2/")!) as IApiConnection
 		}
 
 		_container.register(.singleton) {

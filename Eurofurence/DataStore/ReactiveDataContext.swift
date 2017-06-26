@@ -2,8 +2,7 @@
 //  ReactiveDataContext.swift
 //  Eurofurence
 //
-//  Created by Dominik Schöner on 2017-05-22.
-//  Copyright © 2017 Dominik Schöner. All rights reserved.
+//  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 import Foundation
@@ -11,6 +10,7 @@ import ReactiveSwift
 import Result
 
 class ReactiveDataContext: IDataContext {
+	private static let scheduler = QueueScheduler(qos: .userInitiated, name: "org.eurofurence.app.ReactiveDataContextScheduler")
 	private let (lifetime, token) = Lifetime.make()
 	fileprivate let dataStore: IDataStore
 	fileprivate let navigationResolver: INavigationResolver
@@ -34,58 +34,74 @@ class ReactiveDataContext: IDataContext {
 				return SignalProducer<Progress, DataStoreError> { observer, disposable in
 					let progress = Progress(totalUnitCount: 22)
 					var affectedAreas: DataContextArea = []
-
+					print("Applying sync data from \(data.CurrentDateTimeUtc).")
+					
+					print("Syncing Announcements")
 					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.Announcements, syncTarget: self.Announcements))
 					progress.completedUnitCount += 1
 					observer.send(value: progress)
+					print("Syncing Dealers")
 					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.Dealers, syncTarget: self.Dealers))
 					progress.completedUnitCount += 1
 					observer.send(value: progress)
+					print("Syncing EventConferenceDays")
 					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.EventConferenceDays, syncTarget: self.EventConferenceDays))
 					progress.completedUnitCount += 1
 					observer.send(value: progress)
+					print("Syncing EventConferenceRooms")
 					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.EventConferenceRooms, syncTarget: self.EventConferenceRooms))
 					progress.completedUnitCount += 1
 					observer.send(value: progress)
+					print("Syncing EventConferenceTracks")
 					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.EventConferenceTracks, syncTarget: self.EventConferenceTracks))
 					progress.completedUnitCount += 1
 					observer.send(value: progress)
+					print("Syncing Events")
 					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.Events, syncTarget: self.Events))
 					progress.completedUnitCount += 1
 					observer.send(value: progress)
+					print("Syncing Images")
 					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.Images, syncTarget: self.Images))
 					progress.completedUnitCount += 1
 					observer.send(value: progress)
+					print("Syncing KnowledgeEntries")
 					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.KnowledgeEntries, syncTarget: self.KnowledgeEntries))
 					progress.completedUnitCount += 1
 					observer.send(value: progress)
+					print("Syncing KnowledgeGroups")
 					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.KnowledgeGroups, syncTarget: self.KnowledgeGroups))
 					progress.completedUnitCount += 1
 					observer.send(value: progress)
+					print("Syncing Maps")
 					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.Maps, syncTarget: self.Maps))
 					progress.completedUnitCount += 1
 					observer.send(value: progress)
 
+					print("Resolving entity references")
 					self.navigationResolver.resolve(dataContext: self)
 					progress.completedUnitCount += 1
 					observer.send(value: progress)
 
+					print("Saving data to store")
 					self.saveToStore(affectedAreas).start({ result in
 						if let value = result.value {
 							progress.completedUnitCount += 1
 							observer.send(value: progress)
+							print("Storing completed by \(value.fractionCompleted)")
 						} else if let error = result.error {
 							observer.send(error: error)
 							progress.cancel()
+							print("Storing failed: \(error)")
 						}
 
 						if result.isCompleted {
 							self.refreshedInput.send(value: affectedAreas)
 							progress.completedUnitCount += 1
 							observer.sendCompleted()
+							print("Finished saving data to store for \(String(describing: affectedAreas))")
 						}
 					})
-				}
+				}.observe(on: ReactiveDataContext.scheduler)
 			}
 
 
@@ -130,7 +146,7 @@ class ReactiveDataContext: IDataContext {
 			resultsProducer.flatten(.merge).start({ event in
 				switch event {
 				case let .value(value):
-					print("Value: \(value)")
+					print("Loaded \(value) from store")
 					switch value.entityType {
 					case is Announcement.Type:
 						self.Announcements.swap(value.entityData as! [Announcement])
@@ -158,19 +174,21 @@ class ReactiveDataContext: IDataContext {
 					overallProgress.completedUnitCount += 1
 					observer.send(value: overallProgress)
 				case let .failed(error):
-					print("Failed: \(error)")
+					print("Failed to load data from store: \(error)")
 					observer.send(error: error)
 				case .completed:
+					print("Resolving entity relations")
 					self.navigationResolver.resolve(dataContext: self)
 					overallProgress.completedUnitCount += 1
 					observer.send(value: overallProgress)
 					observer.sendCompleted()
+					print("Finished loading from store")
 				case .interrupted:
-					print("Interrupted")
+					print("Loading interrupted")
 					observer.sendInterrupted()
 				}
 			})
-		}
+		}.observe(on: ReactiveDataContext.scheduler)
 	}
 
 	func saveToStore(_ areas: DataContextArea = DataContextArea.All) -> SignalProducer<Progress, DataStoreError> {
@@ -216,54 +234,11 @@ class ReactiveDataContext: IDataContext {
 				case .completed:
 					observer.sendCompleted()
 				case .interrupted:
-					print("Interrupted")
+					print("Storing interrupted")
 					observer.sendInterrupted()
 				}
 			})
-		}
-	}
-
-	func applySync(data: Sync, saveBefore: Bool = true) {
-		let overallProgress = Progress(totalUnitCount: 22)
-		var affectedAreas: DataContextArea = []
-
-		affectedAreas.insert(applySyncEntity(syncEntityDelta: data.Announcements, syncTarget: Announcements))
-		overallProgress.completedUnitCount += 1
-		affectedAreas.insert(applySyncEntity(syncEntityDelta: data.Dealers, syncTarget: Dealers))
-		overallProgress.completedUnitCount += 1
-		affectedAreas.insert(applySyncEntity(syncEntityDelta: data.EventConferenceDays, syncTarget: EventConferenceDays))
-		overallProgress.completedUnitCount += 1
-		affectedAreas.insert(applySyncEntity(syncEntityDelta: data.EventConferenceRooms, syncTarget: EventConferenceRooms))
-		overallProgress.completedUnitCount += 1
-		affectedAreas.insert(applySyncEntity(syncEntityDelta: data.EventConferenceTracks, syncTarget: EventConferenceTracks))
-		overallProgress.completedUnitCount += 1
-		affectedAreas.insert(applySyncEntity(syncEntityDelta: data.Events, syncTarget: Events))
-		overallProgress.completedUnitCount += 1
-		affectedAreas.insert(applySyncEntity(syncEntityDelta: data.Images, syncTarget: Images))
-		overallProgress.completedUnitCount += 1
-		affectedAreas.insert(applySyncEntity(syncEntityDelta: data.KnowledgeEntries, syncTarget: KnowledgeEntries))
-		overallProgress.completedUnitCount += 1
-		affectedAreas.insert(applySyncEntity(syncEntityDelta: data.KnowledgeGroups, syncTarget: KnowledgeGroups))
-		overallProgress.completedUnitCount += 1
-		affectedAreas.insert(applySyncEntity(syncEntityDelta: data.Maps, syncTarget: Maps))
-		overallProgress.completedUnitCount += 1
-
-		navigationResolver.resolve(dataContext: self)
-		overallProgress.completedUnitCount += 1
-
-		saveToStore(affectedAreas).start({ result in
-			if let value = result.value as Progress? {
-				overallProgress.completedUnitCount += 1
-			} else if let error = result.error {
-				overallProgress.cancel()
-			}
-
-			if result.isCompleted {
-				self.refreshedInput.send(value: affectedAreas)
-				overallProgress.completedUnitCount += 1
-			}
-		})
-
+		}.observe(on: ReactiveDataContext.scheduler)
 	}
 
 	func clearAll() {
@@ -279,11 +254,18 @@ class ReactiveDataContext: IDataContext {
 		Maps.swap([])
 	}
 
-	private func applySyncEntity<EntityType:EntityBase>(syncEntityDelta: SyncEntityDelta<EntityType>, syncTarget: MutableProperty<[EntityType]>) -> DataContextArea {
+	private func applySyncEntity<EntityType: EntityBase>(syncEntityDelta: SyncEntityDelta<EntityType>, syncTarget: MutableProperty<[EntityType]>) -> DataContextArea {
 		var affectedAreas: DataContextArea = []
 
 		if syncEntityDelta.RemoveAllBeforeInsert {
-			syncTarget.swap(syncEntityDelta.ChangedEntities)
+			if let _ = syncEntityDelta.ChangedEntities as? [Sortable] {
+				print("Sortable type \(String(describing: EntityType.self))")
+				let sortedEntities = (syncEntityDelta.ChangedEntities as [EntityType]).sorted()
+				syncTarget.swap(sortedEntities)
+			} else {
+				print("Non-sortable type \(String(describing: EntityType.self))")
+				syncTarget.swap(syncEntityDelta.ChangedEntities)
+			}
 			affectedAreas.insert(DataContextArea.get(for: EntityType.self))
 		} else {
 			var updatedEntities: [EntityType] = []
@@ -300,7 +282,14 @@ class ReactiveDataContext: IDataContext {
 			}
 
 			if updatedEntitiesCount > 0 {
-				syncTarget.swap(updatedEntities)
+				if let _ = syncEntityDelta.ChangedEntities as? [Sortable] {
+					print("Sortable type \(String(describing: EntityType.self))")
+					syncTarget.swap(syncEntityDelta.ChangedEntities.sorted())
+					syncTarget.swap(updatedEntities.sorted())
+				} else {
+					print("Non-sortable type \(String(describing: EntityType.self))")
+					syncTarget.swap(updatedEntities)
+				}
 				affectedAreas.insert(DataContextArea.get(for: EntityType.self))
 			}
 		}

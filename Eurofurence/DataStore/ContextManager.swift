@@ -2,8 +2,7 @@
 //  ContextManager.swift
 //  Eurofurence
 //
-//  Created by Dominik Schöner on 2017-05-19.
-//  Copyright © 2017 Dominik Schöner. All rights reserved.
+//  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 import Foundation
@@ -11,6 +10,9 @@ import ReactiveSwift
 import Result
 
 class ContextManager {
+	static let LAST_SYNC_DEFAULT = "lastSync"
+	
+	private static let scheduler = QueueScheduler(qos: .userInitiated, name: "org.eurofurence.app.ContextManagerScheduler")
 	private var apiConnection: IApiConnection
 	private var dataContext: IDataContext
 	private var dataStore: IDataStore
@@ -20,25 +22,30 @@ class ContextManager {
 				return SignalProducer<Progress, NSError> { observer, disposable in
 					let progress = Progress(totalUnitCount: 3)
 
-					let apiResult: Result<Sync, ApiConnectionError>? = self.apiConnection.doGet("Sync", parameters: ["since": since]).last()
-					progress.completedUnitCount += 1
-					observer.send(value: progress)
-
-					if let sync = apiResult?.value {
-						self.dataContext.applySync(data: sync, saveBefore: true)
+					disposable += self.apiConnection.doGet("Sync", parameters: ["since": since]).observe(on: ContextManager.scheduler).startWithResult({ (apiResult: Result<Sync, ApiConnectionError>) -> Void in
+						
 						progress.completedUnitCount += 1
 						observer.send(value: progress)
-					} else {
-						observer.send(error: apiResult?.error as NSError? ??
+						
+						if let sync = apiResult.value {
+							disposable += self.dataContext.applySync.apply(sync).startWithCompleted{
+								progress.completedUnitCount += 1
+								observer.send(value: progress)
+								UserDefaults.standard.set(sync.CurrentDateTimeUtc, forKey: ContextManager.LAST_SYNC_DEFAULT)
+								
+								// TODO: Download images
+								progress.completedUnitCount += 1
+								observer.send(value: progress)
+								observer.sendCompleted()
+							}
+						} else {
+							// TODO: Rollback to last persisted state in order to maintain consistency
+							observer.send(error: apiResult.error as NSError? ??
 								ApiConnectionError.UnknownError(functionName: #function,
-										description: "Unexpected empty value on sync result") as NSError)
-					}
-
-					// TODO: Download images
-					progress.completedUnitCount += 1
-					observer.send(value: progress)
-
-				}
+								                                description: "Unexpected empty value on sync result") as NSError)
+						}
+					})
+				}.observe(on: ContextManager.scheduler)
 			}
 
 	init(apiConnection: IApiConnection, dataContext: IDataContext,
@@ -49,7 +56,8 @@ class ContextManager {
 	}
 
 	func clearAll() {
-		dataStore.clearAll().last()
-		dataContext.clearAll()
+		dataStore.clearAll().startWithCompleted {
+			self.dataContext.clearAll()
+		}
 	}
 }

@@ -1,9 +1,8 @@
 //
 //  Announcement.swift
-//  eurofurence
+//  Eurofurence
 //
-//  Created by Dominik Schöner on 2017-05-06.
-//  Copyright © 2017 eurofurence. All rights reserved.
+//  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 import Foundation
@@ -17,9 +16,11 @@ class Announcement: EntityBase {
 	var ValidUntilDateTimeUtc : Date = Date()
 }
 
-extension Announcement : Comparable {
-	static func < (lhs: Announcement, rhs: Announcement) -> Bool {
-		return lhs.ValidFromDateTimeUtc < rhs.ValidFromDateTimeUtc
+extension Announcement: Sortable {
+	override public func lessThan(_ rhs: EntityBase) -> Bool {
+		return (rhs as? Announcement).map {
+			return self.ValidFromDateTimeUtc < $0.ValidFromDateTimeUtc
+			} ?? super.lessThan(rhs)
 	}
 }
 

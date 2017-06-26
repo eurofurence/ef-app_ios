@@ -2,8 +2,7 @@
 //  SyncEntityDelta.swift
 //  Eurofurence
 //
-//  Created by Dominik Schöner on 2017-05-15.
-//  Copyright © 2017 eurofurence. All rights reserved.
+//  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 import Foundation

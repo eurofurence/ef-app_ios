@@ -2,8 +2,7 @@
 //  MockApiConnection.swift
 //  Eurofurence
 //
-//  Created by Dominik Schöner on 2017-05-16.
-//  Copyright © 2017 Dominik Schöner. All rights reserved.
+//  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 import Foundation

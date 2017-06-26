@@ -1,9 +1,8 @@
 //
 //  KnowledgeGroup.swift
-//  eurofurence
+//  Eurofurence
 //
-//  Created by Dominik Schöner on 2017-05-06.
-//  Copyright © 2017 eurofurence. All rights reserved.
+//  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 import Foundation
@@ -23,8 +22,10 @@ class KnowledgeGroup: EntityBase {
 	}
 }
 
-extension KnowledgeGroup : Comparable {
-	static func < (lhs: KnowledgeGroup, rhs: KnowledgeGroup) -> Bool {
-		return lhs.Order < rhs.Order
+extension KnowledgeGroup: Sortable {
+	override public func lessThan(_ rhs: EntityBase) -> Bool {
+		return (rhs as? KnowledgeGroup).map {
+			return self.Order < $0.Order
+			} ?? super.lessThan(rhs)
 	}
 }

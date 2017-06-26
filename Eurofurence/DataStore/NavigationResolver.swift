@@ -2,14 +2,14 @@
 //  NavigationResolver.swift
 //  Eurofurence
 //
-//  Created by Dominik Schöner on 2017-05-27.
-//  Copyright © 2017 Dominik Schöner. All rights reserved.
+//  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 import Foundation
 
 class NavigationResolver: INavigationResolver {
 	func resolve(dataContext: IDataContext) {
+		// TODO: Resolve links to MapEntry
 		dataContext.Dealers.modify({ value in
 			for e in value {
 				e.ArtistImage = dataContext.Images.value.first(where: { $0.Id == e.ArtistImageId })
