@@ -9,10 +9,11 @@ import UIKit
 
 class KnowledgeGroupCell: UITableViewCell {
 	
+	@IBOutlet weak var iconLabel: UILabel!
 	@IBOutlet weak var nameLabel: UILabel!
 	@IBOutlet weak var descriptionLabel: UILabel!
 	
-	private var _knowledgeGroup: KnowledgeGroup?
+	weak private var _knowledgeGroup: KnowledgeGroup?
 	
 	var knowledgeGroup: KnowledgeGroup? {
 		get {
@@ -20,6 +21,7 @@ class KnowledgeGroupCell: UITableViewCell {
 		}
 		set(knowledgeGroup) {
 			_knowledgeGroup = knowledgeGroup
+			iconLabel.text = knowledgeGroup?.FontAwesomeIconCharacter
 			nameLabel.text = knowledgeGroup?.Name
 			descriptionLabel.text = knowledgeGroup?.Description
 		}

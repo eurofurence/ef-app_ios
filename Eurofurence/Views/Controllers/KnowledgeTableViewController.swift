@@ -34,8 +34,10 @@ class KnowledgeTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "KnowledgeEntryCell", for: indexPath)
-		cell.textLabel!.text = dataContext.KnowledgeGroups.value[indexPath.section].KnowledgeEntries[indexPath.row].Title
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "KnowledgeEntryCell", for: indexPath) as? KnowledgeEntryCell else {
+			return UITableViewCell(frame: .zero)
+		}
+		cell.knowledgeEntry = dataContext.KnowledgeGroups.value[indexPath.section].KnowledgeEntries[indexPath.row]
         return cell
     }
     
@@ -101,9 +103,9 @@ class KnowledgeTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "KnowledgeEntryDetailSegue" {
-            if let destinationVC = segue.destination as? InfoViewController, let cell = sender as? KnowledgeEntryCell, let knowledgeEntry = cell.knowledgeEntry {
+			if let destinationVC = segue.destination as? KnowledgeEntryViewController, let cell = sender as? KnowledgeEntryCell, let knowledgeEntry = cell.knowledgeEntry {
 				destinationVC.knowledgeEntry = knowledgeEntry
-            }
+			}
         }
     }
 	

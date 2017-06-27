@@ -26,10 +26,10 @@ class Dealer: EntityBase {
 	var TwitterHandle : String = ""
 	var TelegramHandle : String = ""
 	
-    var ArtistImage : Image?
-	var ArtistThumbnailImage : Image?
-	var ArtPreviewImage : Image?
-	var MapEntry: MapEntry?
+    weak var ArtistImage : Image?
+	weak var ArtistThumbnailImage : Image?
+	weak var ArtPreviewImage : Image?
+	weak var MapEntry: MapEntry?
 	
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {

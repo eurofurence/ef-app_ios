@@ -26,9 +26,9 @@ class Event : EntityBase {
     
     var IsFavorite : Bool = false
 	
-    var ConferenceDay : EventConferenceDay? = nil
-    var ConferenceTrack : EventConferenceTrack? = nil
-	var ConferenceRoom : EventConferenceRoom? = nil
+    weak var ConferenceDay : EventConferenceDay? = nil
+    weak var ConferenceTrack : EventConferenceTrack? = nil
+	weak var ConferenceRoom : EventConferenceRoom? = nil
 	
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {

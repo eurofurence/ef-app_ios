@@ -14,7 +14,7 @@ class DealerTableViewController: UITableViewController {
 	let dataContext: IDataContext = try! ContextResolver.container.resolve()
 	var dealersByLetter: [String: [Dealer]] = [:]
 	var sortedKeys: [String] = []
-	var disposables = CompositeDisposable()
+	var disposable = CompositeDisposable()
 		
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class DealerTableViewController: UITableViewController {
 		}
 		
 		let contextManager = try! ContextResolver.container.resolve() as ContextManager
-		disposables += contextManager.syncWithApi?.apply(1234).observe(on: QueueScheduler.concurrent).start({ result in
+		disposable += contextManager.syncWithApi?.apply(1234).observe(on: QueueScheduler.concurrent).start({ result in
 			if result.isCompleted {
 				print("Sync completed")
 				DispatchQueue.main.async {
@@ -90,12 +90,12 @@ class DealerTableViewController: UITableViewController {
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
-		if !disposables.isDisposed {
-			disposables.dispose()
+		if !disposable.isDisposed {
+			disposable.dispose()
 		}
-		disposables = CompositeDisposable()
+		disposable = CompositeDisposable()
 		
-		disposables += dataContext.Dealers.signal
+		disposable += dataContext.Dealers.signal
 			.observe(on: QueueScheduler.concurrent).observe({ [weak self] observer in
 				guard let strongSelf = self else { return }
 				strongSelf.orderDealersAlphabeticaly(strongSelf.dataContext.Dealers.value)
@@ -107,7 +107,7 @@ class DealerTableViewController: UITableViewController {
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
-		disposables.dispose()
+		disposable.dispose()
 		
 		super.viewWillDisappear(animated)
 	}
@@ -134,34 +134,10 @@ class DealerTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DealersTableViewCell", for: indexPath) as! DealersTableViewCell
-        let dealer = self.dealersByLetter[sortedKeys[(indexPath as NSIndexPath).section]]![(indexPath as NSIndexPath).row]
-        
-        
-        if !dealer.DisplayName.isEmpty {
-            cell.displayNameDealerLabel!.text = dealer.DisplayName
-            cell.subnameDealerLabel!.text = dealer.AttendeeNickname
-        } else {
-            cell.displayNameDealerLabel!.text = dealer.AttendeeNickname
-            cell.subnameDealerLabel!.text = nil
-        }
-        
-        cell.backgroundColor =  UIColor(red: 35/255.0, green: 36/255.0, blue: 38/255.0, alpha: 1.0)
-        cell.shortDescriptionDealerLabel!.text = dealer.ShortDescription;
-		// TODO: Implement image caching
-        /*if let artistThumbnailImage = dealer.ArtistThumbnailImage {
-            let optionalDealerImage = ImageManager.sharedInstance.retrieveFromCache(artistThumbnailImage.Id, imagePlaceholder: UIImage(named: "defaultAvatar"))
-            if let dealerImage = optionalDealerImage {
-                cell.artistDealerImage.image = dealerImage.af_imageRoundedIntoCircle().af_imageRoundedIntoCircle();
-            }
-            
-        }
-        else {*/
-            cell.artistDealerImage.image = UIImage(named: "defaultAvatar")!.af_imageRoundedIntoCircle();
-        //}
-        
+        cell.dealer = self.dealersByLetter[sortedKeys[(indexPath as NSIndexPath).section]]?[(indexPath as NSIndexPath).row]
         return cell
     }
-    
+	
     override func tableView( _ tableView : UITableView,  titleForHeaderInSection section: Int)->String {
         return sortedKeys[section]
     }
@@ -189,4 +165,8 @@ class DealerTableViewController: UITableViewController {
             self.slideMenuController()?.openLeft()
         }
     }
+	
+	deinit {
+		disposable.dispose()
+	}
 }

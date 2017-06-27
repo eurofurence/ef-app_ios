@@ -24,9 +24,6 @@ open class MenuTableViewCell : UITableViewCell {
         setup()
     }
     
-    open override func awakeFromNib() {
-    }
-    
     open func setup() {
         self.menuIcon.updateValue(UIImage(named: "Settings")!, forKey: "Settings");
         self.menuIcon.updateValue(UIImage(named: "AboutUs")!, forKey: "About");

@@ -13,7 +13,7 @@ class DealerViewController: UIViewController {
     /// Higher numbers zoom out farther
     static var MAP_SEGMENT_ZOOM = CGFloat(8.0)
     
-    var dealer = Dealer();
+	weak var dealer: Dealer? = nil
     @IBOutlet weak var artistImage: UIImageView!
     @IBOutlet weak var displayName: UILabel!
     @IBOutlet weak var attendeeNickname: UILabel!
@@ -66,25 +66,13 @@ class DealerViewController: UIViewController {
             artistImage.image = UIImage(named: "defaultAvatarBig")!;
         //}
         
-        if !dealer.DisplayName.isEmpty {
-            displayName.text = dealer.DisplayName
-            attendeeNickname.text = dealer.AttendeeNickname
-        } else {
-            displayName.text = dealer.AttendeeNickname
-            attendeeNickname.text = nil
-        }
-        
-        let shortDescription = dealer.ShortDescription.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init)
-        let finalStringShortDescription = shortDescription.joined(separator: "\n");
-        if (finalStringShortDescription == "") {
-            artistShortDescription.text = nil
-        }
-        else {
-            artistShortDescription.text = finalStringShortDescription;
-        }
+		displayName.text = dealer?.DisplayName ?? dealer?.AttendeeNickname
+		attendeeNickname.text = dealer?.AttendeeNickname
+		
+        artistShortDescription.text = dealer?.ShortDescription.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init).joined(separator: "\n")
         artistShortDescription.sizeToFit();
         
-        let aboutArtistText = dealer.AboutTheArtistText.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init).joined(separator: "\n");
+        let aboutArtistText = dealer?.AboutTheArtistText.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init).joined(separator: "\n");
         if (aboutArtistText == "") {
 			// TODO: Externalise strings for i18n
             aboutArtist.text = "The artist did not provide any information about themselves to be shown here."
@@ -119,20 +107,19 @@ class DealerViewController: UIViewController {
             artPreviewImageView.addConstraint(heightConstraint)
         //}
         
-        let AboutArt = dealer.AboutTheArtText.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init)
-        let finalStringAboutArt = AboutArt.joined(separator: "\n");
-        if (finalStringAboutArt == "") {
-            self.aboutArt.text = nil
-            
-            // if neither text nor image have been provided, hide the entire about art section
-            if artPreviewImage == nil || artPreviewImage.image == nil {
-                aboutArtLabel.text = nil
-                aboutArtLabelTopConstraint.constant = 0
-                dealersDenLabelTopConstraint.constant = 0
-            }
+        let aboutArtText = dealer?.AboutTheArtText.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init).joined(separator: "\n")
+        if let aboutArtText = aboutArtText, !aboutArtText.isEmpty {
+			aboutArt.text = aboutArtText
+			aboutArt.sizeToFit()
         } else {
-            self.aboutArt.text = finalStringAboutArt;
-            self.aboutArt.sizeToFit();
+			aboutArt.text = nil
+			
+			// if neither text nor image have been provided, hide the entire about art section
+			if artPreviewImage == nil || artPreviewImage.image == nil {
+				aboutArtLabel.text = nil
+				aboutArtLabelTopConstraint.constant = 0
+				dealersDenLabelTopConstraint.constant = 0
+			}
         }
 		
 		// TODO: Implement image caching
@@ -172,7 +159,7 @@ class DealerViewController: UIViewController {
     }
     
     func showOnMap(_ tapGesture: UITapGestureRecognizer) {
-        if let mapEntry = dealer.MapEntry {
+        if let mapEntry = dealer?.MapEntry {
             self.performSegue(withIdentifier: "DealerDetailViewToMapSegue", sender: mapEntry)
         }
     }

@@ -10,6 +10,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="fontawesome-webfont.ttf">
+            <string>FontAwesome</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Dealer Detail-->
         <scene sceneID="RX0-RE-OCL">
@@ -357,7 +362,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="94P-b3-hmf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="News" image="News" id="Ol8-Ge-n39"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VvY-tj-bHj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="VvY-tj-bHj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -822,7 +827,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iMR-zC-1Ej" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Events" image="Calendar" selectedImage="Calendar" id="yEq-gs-mhK"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rxF-d1-yLf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rxF-d1-yLf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -931,7 +936,7 @@
                                     <outlet property="headerCellLabel" destination="sEE-D0-acQ" id="h0I-Ac-JK3"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="EventTableViewCell" id="4b5-LU-wZb" customClass="EventTableViewCell" customModule="Eurofurence">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="EventCell" id="4b5-LU-wZb" customClass="EventCell" customModule="Eurofurence" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="60" width="375" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" tableViewCell="4b5-LU-wZb" id="iMn-cD-xum">
@@ -1322,7 +1327,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NtC-f2-fnQ" userLabel="Infos" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Info" image="Info" id="Ial-UE-gFz"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dXi-qr-kai">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dXi-qr-kai">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1352,31 +1357,44 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="This is a Section Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzz-Mr-suu">
-                                            <rect key="frame" x="8" y="8" width="359" height="21"/>
+                                            <rect key="frame" x="42" y="8" width="325" height="21"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A section usually needs a good description …" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hW-0f-0AZ">
-                                            <rect key="frame" x="8" y="29" width="359" height="25"/>
+                                            <rect key="frame" x="42" y="29" width="325" height="25"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="O" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="peT-5z-QMh">
+                                            <rect key="frame" x="8" y="8" width="31.5" height="47"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="qrq-50-dxH"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="30"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="9hW-0f-0AZ" firstAttribute="leading" secondItem="JON-2m-sfr" secondAttribute="leadingMargin" id="0Z6-Je-UGq"/>
+                                        <constraint firstItem="kzz-Mr-suu" firstAttribute="leading" secondItem="peT-5z-QMh" secondAttribute="trailing" constant="2.5" id="32P-1R-sXa"/>
                                         <constraint firstItem="9hW-0f-0AZ" firstAttribute="top" secondItem="kzz-Mr-suu" secondAttribute="bottom" id="5FX-D4-xVt"/>
-                                        <constraint firstItem="kzz-Mr-suu" firstAttribute="leading" secondItem="JON-2m-sfr" secondAttribute="leadingMargin" id="PCt-rp-Y6V"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="peT-5z-QMh" secondAttribute="bottom" id="OyT-bT-tb7"/>
+                                        <constraint firstItem="peT-5z-QMh" firstAttribute="leading" secondItem="JON-2m-sfr" secondAttribute="leadingMargin" id="Pr5-RM-qmL"/>
                                         <constraint firstItem="kzz-Mr-suu" firstAttribute="top" secondItem="JON-2m-sfr" secondAttribute="topMargin" id="R9l-1d-jMZ"/>
+                                        <constraint firstItem="9hW-0f-0AZ" firstAttribute="leading" secondItem="peT-5z-QMh" secondAttribute="trailing" constant="2.5" id="WvN-p7-OZA"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="kzz-Mr-suu" secondAttribute="trailing" id="acN-sz-Msj"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="9hW-0f-0AZ" secondAttribute="trailing" id="n2E-Pw-HKj"/>
+                                        <constraint firstItem="peT-5z-QMh" firstAttribute="top" secondItem="JON-2m-sfr" secondAttribute="topMargin" id="uj4-kX-uS7"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="9hW-0f-0AZ" secondAttribute="bottom" id="wCu-bH-Vbp"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="descriptionLabel" destination="9hW-0f-0AZ" id="Wrv-XZ-9oG"/>
+                                    <outlet property="iconLabel" destination="peT-5z-QMh" id="sQe-SR-2wj"/>
                                     <outlet property="nameLabel" destination="kzz-Mr-suu" id="Zg2-pP-vkJ"/>
                                 </connections>
                             </tableViewCell>
@@ -1564,7 +1582,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="scG-Tu-b4g" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Maps" image="Map" id="NKC-Fb-cj9"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Y4Z-KE-Ggo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Y4Z-KE-Ggo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1583,7 +1601,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="n6b-Bd-NxQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Dealers" image="dealers" id="6sr-5r-BhR"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DWe-Q3-xcm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DWe-Q3-xcm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1614,8 +1632,8 @@
         <image name="ef-bg-news" width="540" height="181"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XQS-QK-9wj"/>
-        <segue reference="ycx-tm-4B6"/>
+        <segue reference="axY-Ep-U4v"/>
         <segue reference="ZpL-XF-CgK"/>
+        <segue reference="ycx-tm-4B6"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -11,7 +11,7 @@ class KnowledgeEntryCell: UITableViewCell {
 	
 	@IBOutlet weak var titleLabel: UILabel!
 	
-	private var _knowledgeEntry: KnowledgeEntry?
+	weak private var _knowledgeEntry: KnowledgeEntry?
 	
 	var knowledgeEntry: KnowledgeEntry? {
 		get {

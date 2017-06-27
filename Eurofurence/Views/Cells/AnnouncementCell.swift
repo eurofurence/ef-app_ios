@@ -11,7 +11,7 @@ class AnnouncementCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
 	
-	private var _announcement: Announcement?
+	weak private var _announcement: Announcement?
 	
 	var announcement: Announcement? {
 		get {

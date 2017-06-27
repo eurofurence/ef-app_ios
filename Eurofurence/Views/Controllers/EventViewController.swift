@@ -22,7 +22,7 @@ class EventViewController: UIViewController {
     var singleTapLocation: UITapGestureRecognizer!
     var singleTapLocationIcon: UITapGestureRecognizer!
 	
-	var event = Event()
+	weak var event: Event? = nil
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +48,10 @@ class EventViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+		guard let event = event else {
+			return
+		}
+		
         self.tabBarController?.tabBar.isHidden = true
         let eventDurationHours = floor(Double(event.Duration) / 60.0 / 60.0)
         let eventDurationMinutes = (Double(event.Duration) / 60.0).truncatingRemainder(dividingBy: 60.0)
@@ -78,11 +82,14 @@ class EventViewController: UIViewController {
     }
     
     @IBAction func exportAsEvent(_ sender: AnyObject) {
+		guard let event = event else {
+			return
+		}
 		// TODO: externalise strings for i18n
         let alert = UIAlertController(title: "Export event", message: "Export the event to the calendar?", preferredStyle: UIAlertControllerStyle.actionSheet)
         alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: nil))
 		alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: {
-			alert in CalendarAccess.instance.insert(event: self.event)
+			alert in CalendarAccess.instance.insert(event: event)
 		}))
         self.present(alert, animated: true, completion: nil)
     }
@@ -98,10 +105,11 @@ class EventViewController: UIViewController {
     }
     
     
-    func showOnMap(_ tapGesture: UITapGestureRecognizer) {
-        if let mapEntry = event.ConferenceRoom?.MapEntry {
-            self.performSegue(withIdentifier: "EventDetailViewToMapSegue", sender: mapEntry)
-        }
+	func showOnMap(_ tapGesture: UITapGestureRecognizer) {
+		guard let event = event, let mapEntry = event.ConferenceRoom?.MapEntry else {
+			return
+		}
+		self.performSegue(withIdentifier: "EventDetailViewToMapSegue", sender: mapEntry)
     }
     
     /*

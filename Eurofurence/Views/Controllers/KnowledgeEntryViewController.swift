@@ -15,8 +15,9 @@ class KnowledgeEntryViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var linkLabel: UILabel!
     @IBOutlet weak var linkView: UIView!
+	
+	weak var knowledgeEntry = KnowledgeEntry()
     var imageViewDefaultHeight = CGFloat(0.0)
-    var knowledgeEntry = KnowledgeEntry()
     var linkViewLastButton: UIButton? = nil
     var linkViewLastBottomConstraint: NSLayoutConstraint? = nil
     var buttonUrls: [UIButton:URL] = [:]
@@ -53,8 +54,8 @@ class KnowledgeEntryViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         super.viewWillAppear(animated)
         
-        groupLabel.text = knowledgeEntry.KnowledgeGroup?.Name
-        titleLabel.text = knowledgeEntry.Title
+        groupLabel.text = knowledgeEntry?.KnowledgeGroup?.Name
+        titleLabel.text = knowledgeEntry?.Title
         
         // TODO: how are images handled in KnowledgeEntry? 
 //        if let imageId = knowledgeEntry.imageIdsAlternative.first {
@@ -72,13 +73,13 @@ class KnowledgeEntryViewController: UIViewController {
         imageView.sizeToFit()
         
         do {
-            let htmlText = WikiText.transformToHtml(knowledgeEntry.Text, style: KnowledgeEntryViewController.htmlStyle)
+            let htmlText = WikiText.transformToHtml(knowledgeEntry?.Text ?? "", style: KnowledgeEntryViewController.htmlStyle)
             textView.attributedText = try NSAttributedString(
                 data: htmlText.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
                 options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
                 documentAttributes: nil)
         } catch {
-            textView.text = knowledgeEntry.Text
+            textView.text = knowledgeEntry?.Text
         }
         
         for subview in linkView.subviews {
@@ -89,10 +90,12 @@ class KnowledgeEntryViewController: UIViewController {
         buttonUrls = [:]
         
         linkView.translatesAutoresizingMaskIntoConstraints = false
-        for knowledgeLink in knowledgeEntry.Links {
-            addLinkButton(knowledgeLink)
-        }
-        
+		if let links = knowledgeEntry?.Links {
+			for knowledgeLink in links {
+				addLinkButton(knowledgeLink)
+			}
+		}
+		
         linkLabel.isHidden = buttonUrls.count == 0
     }
     
@@ -107,7 +110,7 @@ class KnowledgeEntryViewController: UIViewController {
         linkButton.setTitle(linkFragment.Name, for: UIControlState())
         linkButton.accessibilityIdentifier = linkFragment.Name
         linkButton.translatesAutoresizingMaskIntoConstraints = false
-        linkButton.addTarget(self, action: #selector(InfoViewController.urlButtonAction(_:)), for: .touchUpInside)
+        linkButton.addTarget(self, action: #selector(KnowledgeEntryViewController.urlButtonAction(_:)), for: .touchUpInside)
 
         linkView.addSubview(linkButton)
         

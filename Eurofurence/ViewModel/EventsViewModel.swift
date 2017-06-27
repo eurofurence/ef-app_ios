@@ -19,21 +19,22 @@ class EventsViewModel {
 	private let dataContext: IDataContext
 	private let timeService: TimeService = try! ServiceResolver.container.resolve()
 	private var timedEventsSignal: Signal<(Date, [Event]), NoError>
+	private var disposable = CompositeDisposable()
 	
 	init(dataContext: IDataContext) {
 		self.dataContext = dataContext
 		timedEventsSignal = Signal.combineLatest(timeService.currentTime.signal, dataContext.Events.signal).observe(on: QueueScheduler.main)
 		
-		Events <~ dataContext.Events
+		disposable += Events <~ dataContext.Events
+				
+		disposable += EventConferenceDays <~ dataContext.EventConferenceDays
 		
-		EventsEdits <~ Events.combinePrevious([] as [Event]).map { (old, new) -> [Edit<Event>] in
-			return Changeset.edits(from: old, to: new)
-		}
+		disposable += EventConferenceRooms <~ dataContext.EventConferenceRooms
 		
-		EventConferenceDays <~ dataContext.EventConferenceDays
-		
-		EventConferenceRooms <~ dataContext.EventConferenceRooms
-		
-		EventConferenceTracks <~ dataContext.EventConferenceTracks
+		disposable += EventConferenceTracks <~ dataContext.EventConferenceTracks
+	}
+	
+	deinit {
+		disposable.dispose()
 	}
 }

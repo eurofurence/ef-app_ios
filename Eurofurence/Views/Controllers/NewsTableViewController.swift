@@ -132,8 +132,7 @@ class NewsTableViewController: UITableViewController {
 			disposables.dispose()
 		}
 		disposables = CompositeDisposable()
-		
-		disposables += announcementsViewModel.AnnouncementsEdits.signal.observe(on: QueueScheduler.concurrent).observe({ [weak self] observer in
+		/*disposables += announcementsViewModel.AnnouncementsEdits.signal.observe(on: QueueScheduler.concurrent).observe({ [weak self] observer in
 			guard let strongSelf = self else { return }
 			
 			if let edits = observer.value {
@@ -145,7 +144,7 @@ class NewsTableViewController: UITableViewController {
 					}
 				}
 				DispatchQueue.main.async {
-					strongSelf.tableView.update(with: edits)
+					strongSelf.tableView.update(with: edits, in: 2)
 					strongSelf.tableView.reloadData();
 					
 					if !newAnnouncements.isEmpty {
@@ -154,7 +153,7 @@ class NewsTableViewController: UITableViewController {
 				}
 			}
 			
-		})
+		})*/
 		
 		if let tabBarItem = self.navigationController?.tabBarItem {
 			tabBarItem.badgeValue = nil
@@ -162,12 +161,12 @@ class NewsTableViewController: UITableViewController {
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
-		disposables.dispose()
-		
 		super.viewWillDisappear(animated)
 		if let tabBarItem = self.navigationController?.tabBarItem {
 			tabBarItem.badgeValue = nil
 		}
+		
+		disposables.dispose()
 	}
 	
     // MARK: - Table view data source
@@ -197,7 +196,7 @@ class NewsTableViewController: UITableViewController {
 			return max(1, currentEventsViewModel.RunningEvents.value.count)
 		case 4:
 			return max(1, currentEventsViewModel.UpcomingEvents.value.count)
-		default: // Unknown section
+		default: // Header or unknown section
 			return 0
 		}
     }

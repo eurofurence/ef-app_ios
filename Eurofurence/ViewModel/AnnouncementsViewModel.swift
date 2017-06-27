@@ -16,17 +16,18 @@ class AnnouncementsViewModel {
 	private let dataContext: IDataContext
 	private let timeService: TimeService = try! ServiceResolver.container.resolve()
 	private var timedAnnouncementsSignal: Signal<(Date, [Announcement]), NoError>
+	private var disposable = CompositeDisposable()
 
 	init(dataContext: IDataContext) {
 		self.dataContext = dataContext
 		timedAnnouncementsSignal = Signal.combineLatest(timeService.currentTime.signal, dataContext.Announcements.signal)
 
-		Announcements <~ timedAnnouncementsSignal.map({ (time, items) in
+		disposable += Announcements <~ timedAnnouncementsSignal.map({ (time, items) in
 			return items.filter({$0.ValidFromDateTimeUtc < time && $0.ValidUntilDateTimeUtc > time})
 		})
-		
-		AnnouncementsEdits <~ Announcements.combinePrevious([] as [Announcement]).map { (old, new) -> [Edit<Announcement>] in
-			return Changeset.edits(from: old, to: new)
-		}
+	}
+	
+	deinit {
+		disposable.dispose()
 	}
 }

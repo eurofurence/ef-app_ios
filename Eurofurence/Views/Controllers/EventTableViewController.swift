@@ -16,38 +16,38 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
     var eventTypeKey = ""
 	
 	let viewModel: EventsViewModel = try! ViewModelResolver.container.resolve()
-	private var disposables = CompositeDisposable()
+	private var disposable = CompositeDisposable()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		// TODO: Make search bar comply to reactive paradigm
-        self.searchController.searchBar.showsScopeBar = false;
-        self.searchController.searchResultsUpdater = self
-        self.searchController.dimsBackgroundDuringPresentation = false
-        self.searchController.searchBar.delegate = self
-        self.searchController.searchBar.tintColor = UIColor.white;
-		self.searchController.searchBar.scopeButtonTitles = ["Day", "Room", "Track"]
+        searchController.searchBar.showsScopeBar = false;
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        searchController.searchBar.tintColor = UIColor.white;
+		searchController.searchBar.scopeButtonTitles = ["Day", "Room", "Track"]
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
-        self.tableView.rowHeight = UITableViewAutomaticDimension;
-        self.tableView.estimatedRowHeight = 120.0;
-        self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension;
-        self.tableView.estimatedSectionHeaderHeight = 100.0;
-        self.tableView.backgroundColor =  UIColor(red: 35/255.0, green: 36/255.0, blue: 38/255.0, alpha: 1.0)
-        self.refreshControl?.addTarget(self, action: #selector(EventTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
-        self.refreshControl?.backgroundColor = UIColor.clear
+        tableView.rowHeight = UITableViewAutomaticDimension;
+        tableView.estimatedRowHeight = 120.0;
+        tableView.sectionHeaderHeight = UITableViewAutomaticDimension;
+        tableView.estimatedSectionHeaderHeight = 100.0;
+        tableView.backgroundColor =  UIColor(red: 35/255.0, green: 36/255.0, blue: 38/255.0, alpha: 1.0)
+        refreshControl?.addTarget(self, action: #selector(EventTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
+        refreshControl?.backgroundColor = UIColor.clear
 	}
 	
 	// TODO: Pull into super class for all refreshable ViewControllers
 	/// Initiates sync with API via refreshControl
 	func refresh(_ sender:AnyObject) {
-		guard let refreshControl = self.refreshControl else {
+		guard let refreshControl = refreshControl else {
 			return
 		}
 		
 		let contextManager = try! ContextResolver.container.resolve() as ContextManager
-		disposables += contextManager.syncWithApi?.apply(1234).observe(on: QueueScheduler.concurrent).start({ result in
+		disposable += contextManager.syncWithApi?.apply(1234).observe(on: QueueScheduler.concurrent).start({ result in
 			if result.isCompleted {
 				print("Sync completed")
 				DispatchQueue.main.async {
@@ -66,7 +66,9 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
 	
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+		
+		disposable.dispose()
+		disposable = CompositeDisposable()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,11 +81,23 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
 			self.searchController.searchBar.selectedScopeButtonIndex = 0;
         }
 		
+		disposable += viewModel.Events.signal.observeResult({[unowned self] result in
+			print("Events changed!")
+			self.tableView.reloadData()
+		})
+		
 		// TODO: Observe viewModel.Events for changes while view is displayed
 		// TODO: Update view by days based on TimeService ticks?
         
         tableView.reloadData()
     }
+	
+	override func viewDidDisappear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		disposable.dispose()
+		disposable = CompositeDisposable()
+	}
 	
     // MARK: - Table view data source
     
@@ -136,9 +150,8 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "EventTableViewCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! EventTableViewCell
-        let event: Event
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
+        let event: Event?
         if searchController.isActive && searchController.searchBar.text != "" {
             event = self.filteredEvents[(indexPath as NSIndexPath).row]
         } else {
@@ -161,47 +174,7 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
             }
             
         }
-        if let conferenceDay = event.ConferenceDay, searchController.isActive && searchController.searchBar.text != "" {
-			cell.eventDayLabel.isHidden = false;
-			cell.eventDayLabel.text = "\(conferenceDay.Name) – \(DateFormatters.dayMonthLong.string(from: conferenceDay.Date))"
-			
-			if cell.eventDayLabelHeightConstraint != nil {
-				cell.eventDayLabelHeightConstraint!.isActive = false
-			}
-        }
-        cell.eventNameLabel.text = event.Title
-        
-        if event.SubTitle.isEmpty {
-            if cell.eventSubNameLabelHeightConstraint != nil {
-                cell.eventSubNameLabelHeightConstraint!.isActive = true
-            } else {
-                cell.eventSubNameLabelHeightConstraint = NSLayoutConstraint(item: cell.eventSubNameLabel, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
-                cell.addConstraint(cell.eventSubNameLabelHeightConstraint!)
-            }
-        } else {
-            if cell.eventSubNameLabelHeightConstraint != nil {
-                cell.eventSubNameLabelHeightConstraint!.isActive = false
-            }
-            cell.eventSubNameLabel.text = event.SubTitle
-        }
-        cell.eventDateLabel.text = "Starting at \(DateFormatters.hourMinute.string(from: event.StartDateTimeUtc))"
-        if let room = event.ConferenceRoom {
-            cell.eventRoomLabel.text = "in \(room.Name)"
-        } else {
-            cell.eventRoomLabel.text = "n/a"
-		}
-		let durationHours = (event.Duration / 60 / 60)
-		let durationMinutes = (event.Duration / 60 % 60)
-		cell.eventDurationLabel.text = "for \(durationHours) hour\(durationHours == 1 ? "" : "s") \(durationMinutes) minute\(durationMinutes == 1 ? "" : "s")"
-        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-        if event.IsDeviatingFromConBook {
-            cell.eventDateLabel.textColor = UIColor.orange
-            cell.eventDateLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
-		} else {
-			cell.eventDateLabel.textColor = UIColor.white
-			cell.eventDateLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
-		}
-        cell.tintColor = UIColor.white
+		cell.event = event
         
         return cell
     }
@@ -277,5 +250,8 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
             self.slideMenuController()?.openLeft()
         }
     }
-    
+	
+	deinit {
+		disposable.dispose()
+	}
 }

@@ -11,7 +11,7 @@ class EventConferenceRoom: EntityBase {
 	var Name = ""
     
 	var Events : [Event] = []
-	var MapEntry : MapEntry?
+	weak var MapEntry : MapEntry?
 	
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {
