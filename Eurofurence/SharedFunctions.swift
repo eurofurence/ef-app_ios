@@ -155,3 +155,15 @@ extension TimeInterval {
 		return stringParts.joined(separator: " ")
 		}}
 }
+
+extension Character {
+	/// Create a new Character from the string representation of its unicode
+	/// address.
+	init?(unicodeScalarString: String) {
+		guard let intValue = Int.init(unicodeScalarString, radix: 16),
+			let unicodeScalar = UnicodeScalar.init(intValue) else {
+				return nil
+		}
+		self = Character.init(unicodeScalar)
+	}
+}

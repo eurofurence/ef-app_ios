@@ -21,7 +21,7 @@ class KnowledgeGroupCell: UITableViewCell {
 		}
 		set(knowledgeGroup) {
 			_knowledgeGroup = knowledgeGroup
-			iconLabel.text = knowledgeGroup?.FontAwesomeIconCharacter
+			iconLabel.text = knowledgeGroup?.FontAwesomeIconCharacterUnicodeAddress
 			nameLabel.text = knowledgeGroup?.Name
 			descriptionLabel.text = knowledgeGroup?.Description
 		}
