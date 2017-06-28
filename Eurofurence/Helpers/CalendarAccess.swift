@@ -9,7 +9,9 @@ import Foundation
 import EventKit
 import UIKit
 
-/// Export Events to the iOS calendar using EventKit.
+/**
+Export Events to the iOS calendar using EventKit.
+*/
 class CalendarAccess {
 	static let instance = CalendarAccess()
 	
@@ -57,10 +59,11 @@ class CalendarAccess {
 		}
 	}
 	
-	/// Attempts to insert given event into the user's calendar.
-	/// Will ask for permission on first attempt and fail silently thereafter.
-	///
-	/// - Parameter event: Event for which to create and insert a calendar entry
+	/**
+	Attempts to insert given event into the user's calendar.
+	Will ask for permission on first attempt and fail silently thereafter.
+	- Parameter event: Event for which to create and insert a calendar entry
+	*/
 	func insert(event: Event) {
 		let ekEvent = EKEvent(eventStore: eventStore.self)
 		ekEvent.title = event.Title;

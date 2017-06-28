@@ -10,27 +10,39 @@ import ReactiveSwift
 
 protocol IDataStore {
 	/**
-	Takes an array of entities to be stored.
+	Stores all entities in given array to the data store.
 	
 	- parameters:
 		- entityType: type of entity to be persisted
 		- entityData: array of entityType to be stored
-	- returns: Signal which may yield true or false depending on success of the operation
+	- Returns: SignalProducer which will produce a DataStoreResult event with
+	the outcome of the operation.
 	*/
 	func save<EntityType:EntityBase>(_ entityType: EntityType.Type, entityData: [EntityType]) -> SignalProducer<DataStoreResult, DataStoreError>
 
 	/**
-	Retrieves all entities of EntityType from the store.
+	Loads all entities of given type from the data store.
+	
+	- Parameter entityType: type of entities to be retrieved
+	- Returns: SignalProducer which will produce a DataStoreResult event with
+	the outcome of the operation.
 	*/
 	func load<EntityType: EntityBase>(_ entityType: EntityType.Type) -> SignalProducer<DataStoreResult, DataStoreError>
 
 	/**
 	Deletes all entities from the store.
+	
+	- Returns: SignalProducer which will produce a DataStoreResult event with
+		the outcome of the operation.
 	*/
 	func clearAll() -> SignalProducer<DataStoreResult, DataStoreError>
 
 	/**
 	Deletes all entities of entityType from the store.
+	
+	- Parameter entityType: type of entities to be deleted
+	- Returns: SignalProducer which will produce a DataStoreResult event with
+	the outcome of the operation.
 	*/
 	func clear(_ entityType: EntityBase.Type) -> SignalProducer<DataStoreResult, DataStoreError>
 

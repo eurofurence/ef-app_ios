@@ -98,14 +98,6 @@ extension IApiConnection {
 			return nil
 		}
 	}
-
-	func getEndpointName(url: URL) -> String {
-		return getEndpointName(urlString: url.absoluteString)
-	}
-
-	func getEndpointName(urlString: String) -> String {
-		return ""
-	}
 }
 
 

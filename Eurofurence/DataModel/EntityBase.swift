@@ -8,6 +8,11 @@
 import Foundation
 import EVReflection
 
+/**
+Base type for allv unique entities supplied by the API.
+Provides basic comparability by Id. Override in subclasses when proper
+sortability is required and implement Sortable protocol!
+*/
 class EntityBase : EVObject, Comparable {
     var Id : String = ""
     var LastChangeDateTimeUtc : Date = Date()
@@ -36,4 +41,8 @@ class EntityBase : EVObject, Comparable {
 	}
 }
 
+/**
+Marker protocol signifying that the entity provides a proper implementation
+of the Comparable protocol and should be sorted where necessary.
+*/
 protocol Sortable {}
