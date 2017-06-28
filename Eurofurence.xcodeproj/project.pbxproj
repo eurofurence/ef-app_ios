@@ -51,7 +51,6 @@
 		9AF159ED1EF5BE7F00DB287D /* SimpleEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF159EC1EF5BE7F00DB287D /* SimpleEventCell.swift */; };
 		A034379A14212C5E996E6321 /* Pods_Eurofurence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */; };
 		D6F3D01BC5E1E9E409955664 /* NewsHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D1F6D5BD062AF11A5804 /* NewsHeaderTableViewCell.swift */; };
-		D6F3D04524461B08CD8E07B7 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D52AE57F767D8C22A556 /* Environment.swift */; };
 		D6F3D13186949132FE4694AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6F3D756F99A68B2DC5B7359 /* Main.storyboard */; };
 		D6F3D13A59E359E69EA66D7E /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D7AF46BAD0F1F9918A76 /* MenuTableViewCell.swift */; };
 		D6F3D204D352FE26C3F90906 /* KnowledgeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DD137095A2765149B6DE /* KnowledgeTableViewController.swift */; };
@@ -152,7 +151,6 @@
 		D6F3D46D42184018C6E237CD /* RoutingAppChooser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutingAppChooser.swift; sourceTree = "<group>"; };
 		D6F3D49E9A7962D15CE8C3EF /* WikiText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WikiText.swift; sourceTree = "<group>"; };
 		D6F3D4F55CFC5A5BDBB3F1A8 /* DealerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealerTableViewController.swift; sourceTree = "<group>"; };
-		D6F3D52AE57F767D8C22A556 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		D6F3D61F42888D38B5B2E9BD /* SlideMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SlideMenu.storyboard; sourceTree = "<group>"; };
 		D6F3D66312CF86A43D699F2C /* DealerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealerViewController.swift; sourceTree = "<group>"; };
 		D6F3D694C5DA66BE24929466 /* TimeLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLabelCell.swift; sourceTree = "<group>"; };
@@ -216,7 +214,6 @@
 				9A34B97E1ED06946004A249E /* ContextResolver.swift */,
 				9A34B9801ED06956004A249E /* ViewModelResolver.swift */,
 				D6F3DB1B292BBFBF5D69F557 /* ServiceResolver.swift */,
-				D6F3D52AE57F767D8C22A556 /* Environment.swift */,
 			);
 			path = DependencyResolution;
 			sourceTree = "<group>";
@@ -623,7 +620,6 @@
 				D6F3DFB53E62A8C16F211819 /* TimeService.swift in Sources */,
 				D6F3D4C7FF8BB27C46EF4D3D /* ServiceResolver.swift in Sources */,
 				9AB64BCB1F018135004E8D91 /* KnowledgeGroupCell.swift in Sources */,
-				D6F3D04524461B08CD8E07B7 /* Environment.swift in Sources */,
 				D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */,
 				D6F3DB838A1BDAFC6DAC2F61 /* CountryAlpha3Converter.swift in Sources */,
 				D6F3DEDDAFE507E873CB3806 /* WikiText.swift in Sources */,
@@ -783,6 +779,7 @@
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = Eurofurence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.Eurofurence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos10.3;

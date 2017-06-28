@@ -3458,7 +3458,7 @@
 							"Description": "Helpful things all about and around the convention",
 							"Order": 0,
 							"ShowInHamburgerMenu": false,
-							"FontAwesomeIconCharacter": "\u0000"
+							"FontAwesomeIconCharacter": "\uf000"
 							},
 							{
 							"Id": "3f733bc5-d41f-e233-3cae-1df9ee5c39b6",
@@ -3467,7 +3467,7 @@
 							"Description": "Relevant information for our suiters",
 							"Order": 1,
 							"ShowInHamburgerMenu": false,
-							"FontAwesomeIconCharacter": "\u0000"
+							"FontAwesomeIconCharacter": "\uf001"
 							},
 							{
 							"Id": "72cdaaba-e980-fa1a-ce94-7a1cc19d0f79",

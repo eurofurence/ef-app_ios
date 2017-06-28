@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let timeService = try! ServiceResolver.container.resolve() as TimeService
 		timeService.offset = Date(timeIntervalSince1970: 1503081000.0).timeIntervalSince(Date())
 
-		let contextManager = try! ContextResolver.container.resolve(tag: Environment.Development) as ContextManager
+		let contextManager = try! ContextResolver.container.resolve() as ContextManager
 		let dataContext = try! ContextResolver.container.resolve() as IDataContext
 		
 		dataContext.loadFromStore().start(on: QueueScheduler.concurrent).start({ event in

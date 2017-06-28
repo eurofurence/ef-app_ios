@@ -20,17 +20,15 @@ class ContextResolver {
 	private let _container = DependencyContainer()
 
 	private init() {
-		/*_container.register(.singleton, tag: Environment.Development) { apiUrl in
-			MockApiConnection("mock://api")! as IApiConnection
-		}*/
-		
-		/*_container.register(.singleton, tag: Environment.Production) { apiUrl in
-		WebApiConnection(URL(string: "https://app.eurofurence.org/api/v2/")!) as IApiConnection
-		}*/
-		
-		_container.register(.singleton) { apiUrl in
-		WebApiConnection(URL(string: "https://app.eurofurence.org/api/v2/")!) as IApiConnection
-		}
+		#if OFFLINE
+			_container.register(.singleton) { apiUrl in
+				MockApiConnection("mock://api")! as IApiConnection
+			}
+		#else
+			_container.register(.singleton) { apiUrl in
+				WebApiConnection(URL(string: "https://app.eurofurence.org/api/v2/")!) as IApiConnection
+			}
+		#endif
 
 		_container.register(.singleton) {
 			JsonDataStore() as IDataStore
