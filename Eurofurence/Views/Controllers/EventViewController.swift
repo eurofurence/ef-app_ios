@@ -53,8 +53,6 @@ class EventViewController: UIViewController {
 		}
 		
         self.tabBarController?.tabBar.isHidden = true
-        let eventDurationHours = floor(Double(event.Duration) / 60.0 / 60.0)
-        let eventDurationMinutes = (Double(event.Duration) / 60.0).truncatingRemainder(dividingBy: 60.0)
         
         if let _ = event.ConferenceRoom {
             eventLocationLabel.textColor = eventLocationLabel.tintColor
@@ -62,8 +60,13 @@ class EventViewController: UIViewController {
         
         self.eventLocationLabel.text = event.ConferenceRoom?.Name
         self.eventStartTimeLabel.text = DateFormatters.hourMinute.string(from: event.StartDateTimeUtc)
-        self.eventDurationLabel.text = "\(eventDurationHours) hour(s) \(eventDurationMinutes) minute(s)"
-        self.title = event.ConferenceDay?.Name
+		
+		eventDurationLabel.text = event.Duration.dhmString
+		if let eventDurationLabelText = eventDurationLabel.text, eventDurationLabelText.isEmpty {
+			eventDurationLabel.text = "n/a"
+		}
+		
+		self.title = event.ConferenceDay?.Name
         self.eventHostLabel.text = event.PanelHosts
         self.eventTitleLabel.text = event.Title
         self.eventSubTitleLabel.text = event.SubTitle

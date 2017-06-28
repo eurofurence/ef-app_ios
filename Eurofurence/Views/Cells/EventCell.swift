@@ -62,13 +62,12 @@ class EventCell: UITableViewCell {
 			} else {
 				eventRoomLabel.text = "n/a"
 			}
-			let durationHours = ((event?.Duration ?? 0) / 60 / 60)
-			let durationMinutes = ((event?.Duration ?? 0) / 60 % 60)
-			if durationHours == 0 && durationMinutes == 0 {
+			
+			eventDurationLabel.text = event?.Duration.dhmString
+			if let eventDurationLabelText = eventDurationLabel.text, eventDurationLabelText.isEmpty {
 				eventDurationLabel.text = "n/a"
-			} else {
-				eventDurationLabel.text = "for \(durationHours) hour\(durationHours == 1 ? "" : "s") \(durationMinutes) minute\(durationMinutes == 1 ? "" : "s")"
 			}
+			
 			accessoryType = UITableViewCellAccessoryType.disclosureIndicator
 			if let isDeviatingFromConBook = event?.IsDeviatingFromConBook, isDeviatingFromConBook {
 				eventDateLabel.textColor = UIColor.orange

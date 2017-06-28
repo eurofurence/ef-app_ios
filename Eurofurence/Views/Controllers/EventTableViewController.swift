@@ -30,9 +30,9 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
 		searchController.searchBar.scopeButtonTitles = ["Day", "Room", "Track"]
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
-        tableView.rowHeight = UITableViewAutomaticDimension;
+        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120.0;
-        tableView.sectionHeaderHeight = UITableViewAutomaticDimension;
+        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         tableView.estimatedSectionHeaderHeight = 100.0;
         tableView.backgroundColor =  UIColor(red: 35/255.0, green: 36/255.0, blue: 38/255.0, alpha: 1.0)
         refreshControl?.addTarget(self, action: #selector(EventTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
@@ -82,7 +82,6 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
         }
 		
 		disposable += viewModel.Events.signal.observeResult({[unowned self] result in
-			print("Events changed!")
 			self.tableView.reloadData()
 		})
 		
@@ -179,11 +178,10 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
         return cell
     }
     
-     func updateSearchResults(for searchController: UISearchController) {
+	func updateSearchResults(for searchController: UISearchController) {
         let searchResults = viewModel.Events.value.filter({$0.Title.contains(searchController.searchBar.text!)})
-		let edits = Changeset.edits(from: filteredEvents, to: searchResults)
 		filteredEvents = searchResults
-		tableView.update(with: edits)
+		tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
