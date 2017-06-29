@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 	var lifetime = Lifetime.make()
 
-
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
 		PrintOptions.Active = .None
@@ -50,6 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			}
 		})
 		
+		setupSlideMenu()
+		
 		return true
 	}
 
@@ -75,6 +76,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	}
 
-
+	private func setupSlideMenu() {
+		let menuStoryboard = UIStoryboard(name: "SlideMenu", bundle: nil);
+		let mainStoryboard = UIStoryboard(name: "Main", bundle: nil);
+		let mainViewController = mainStoryboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+		let leftViewController = menuStoryboard.instantiateViewController(withIdentifier: "LeftView") as! LeftViewController
+		
+		let slideMenuController = SlideMenuController(mainViewController: mainViewController, leftMenuViewController: leftViewController);
+		window?.rootViewController = slideMenuController;
+		window?.makeKeyAndVisible()
+	}
 }
 
