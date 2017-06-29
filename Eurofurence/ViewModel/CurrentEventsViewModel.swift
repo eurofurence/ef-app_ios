@@ -8,21 +8,19 @@
 import Foundation
 import ReactiveSwift
 import Result
-import Changeset
 
 class CurrentEventsViewModel {
 	let RunningEvents = MutableProperty<[Event]>([])
 	let UpcomingEvents = MutableProperty<[Event]>([])
-	let RunningEventsEdits = MutableProperty<[Edit<Event>]>([])
-	let UpcomingEventsEdits = MutableProperty<[Edit<Event>]>([])
 	private let dataContext: IDataContext
 	private let timeService: TimeService = try! ServiceResolver.container.resolve()
 	private var timedEventsSignal: Signal<(Date, [Event]), NoError>
 	private var disposable = CompositeDisposable()
+	private let scheduler = QueueScheduler(qos: .background, name: "org.eurofurence.app.CurrentEventsViewModelScheduler")
 
 	init(dataContext: IDataContext) {
 		self.dataContext = dataContext
-		timedEventsSignal = Signal.combineLatest(timeService.currentTime.signal, dataContext.Events.signal).observe(on: QueueScheduler.main)
+		timedEventsSignal = Signal.combineLatest(timeService.currentTime.signal, dataContext.Events.signal).observe(on: scheduler)
 
 		disposable += RunningEvents <~ timedEventsSignal.map { (time, items) -> [Event] in
 			return items.filter({ $0.StartDateTimeUtc < time && $0.EndDateTimeUtc > time })
