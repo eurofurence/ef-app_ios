@@ -44,7 +44,7 @@ class NewsTableViewController: UITableViewController {
 		}
 		
 		let contextManager = try! ContextResolver.container.resolve() as ContextManager
-		disposables += contextManager.syncWithApi?.apply(1234).observe(on: QueueScheduler.concurrent).start({ result in
+		disposables += contextManager.syncWithApi?.apply(UserDefaults.standard.integer(forKey: ContextManager.LAST_SYNC_DEFAULT)).observe(on: QueueScheduler.concurrent).start({ result in
 			if result.isCompleted {
 				print("Sync completed")
 				DispatchQueue.main.async {
@@ -63,7 +63,7 @@ class NewsTableViewController: UITableViewController {
     
     func notifyAnnouncements(_ announcements: [Announcement]) {
         UIApplication.shared.applicationIconBadgeNumber = 0
-        if UserSettings<Bool>.NotifyOnAnnouncement.currentValue() {
+        if UserSettings.NotifyOnAnnouncement.currentValue() {
             for announcement in announcements {
 				let notification = UILocalNotification()
 				notification.alertBody = announcement.Title
@@ -136,28 +136,27 @@ class NewsTableViewController: UITableViewController {
 			disposables.dispose()
 		}
 		disposables = CompositeDisposable()
-		/*disposables += announcementsViewModel.AnnouncementsEdits.signal.observe(on: QueueScheduler.concurrent).observe({ [weak self] observer in
+		disposables += announcementsViewModel.Announcements.signal.observeValues({
+			[weak self] value in
 			guard let strongSelf = self else { return }
-			
-			if let edits = observer.value {
-				var newAnnouncements: [Announcement] = []
-				for edit in edits {
-					if edit.operation == EditOperation.insertion ||
-						edit.operation == EditOperation.substitution {
-						newAnnouncements.append(edit.value)
-					}
-				}
-				DispatchQueue.main.async {
-					strongSelf.tableView.update(with: edits, in: 2)
-					strongSelf.tableView.reloadData();
-					
-					if !newAnnouncements.isEmpty {
-						strongSelf.notifyAnnouncements(newAnnouncements)
-					}
-				}
+			DispatchQueue.main.async {
+				strongSelf.tableView.reloadData()
 			}
-			
-		})*/
+		})
+		disposables += currentEventsViewModel.RunningEvents.signal.observeValues({
+			[weak self] value in
+			guard let strongSelf = self else { return }
+			DispatchQueue.main.async {
+				strongSelf.tableView.reloadData()
+			}
+		})
+		disposables += currentEventsViewModel.UpcomingEvents.signal.observeValues({
+			[weak self] value in
+			guard let strongSelf = self else { return }
+			DispatchQueue.main.async {
+				strongSelf.tableView.reloadData()
+			}
+		})
 		
 		if let tabBarItem = self.navigationController?.tabBarItem {
 			tabBarItem.badgeValue = nil

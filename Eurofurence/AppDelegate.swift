@@ -32,8 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				print("Loading completed by \(value.fractionCompleted)")
 			case let .failed(error):
 				print("Failed to load data from store: \(error)")
-				print("Performing full reload from API")
 				
+				// TODO: Prompt user for required initialisation
+				// TODO: Check WiFi connection and prompt user if on mobile
+				print("Performing full reload from API")
 				contextManager.syncWithApi?.apply(0).start({ event in
 					guard let value = event.value else {
 						print("Error during sync: \(String(describing: event.error))")
@@ -44,6 +46,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				})
 			case .completed:
 				print("Loading completed")
+				// TODO: Check WiFi connection and prompt user if on mobile
+				if UserSettings.UpdateOnStart.currentValue() {
+					contextManager.syncWithApi?.apply(UserDefaults.standard.integer(forKey: ContextManager.LAST_SYNC_DEFAULT)).start({ event in
+						guard let value = event.value else {
+							print("Error during sync: \(String(describing: event.error))")
+							// TODO: Display error message and option to retry sync
+							return
+						}
+						print("Sync completed by \(value.fractionCompleted)")
+					})
+				}
 			case .interrupted:
 				print("Loading interrupted")
 			}

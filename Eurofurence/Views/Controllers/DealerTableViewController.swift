@@ -35,7 +35,7 @@ class DealerTableViewController: UITableViewController {
 		}
 		
 		let contextManager = try! ContextResolver.container.resolve() as ContextManager
-		disposable += contextManager.syncWithApi?.apply(1234).observe(on: QueueScheduler.concurrent).start({ result in
+		disposable += contextManager.syncWithApi?.apply(UserDefaults.standard.integer(forKey: ContextManager.LAST_SYNC_DEFAULT)).observe(on: QueueScheduler.concurrent).start({ result in
 			if result.isCompleted {
 				print("Sync completed")
 				DispatchQueue.main.async {
