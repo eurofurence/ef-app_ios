@@ -125,8 +125,8 @@ class SettingsTableViewController: FormViewController {
                 row.value = UserSettings.RefreshInBackground.currentValue()
                 }.onChange { row in
                     if let value = row.value {
-                        UserSettings.RefreshInBackground.setValue(row.value!)
-                        if row.value! {
+                        UserSettings.RefreshInBackground.setValue(value)
+                        if value {
                             UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
                         } else {
                             UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalNever)
@@ -153,6 +153,19 @@ class SettingsTableViewController: FormViewController {
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
                     cell.backgroundColor = UIColor.lightText
 			}
+			+++ Section(header:"Debugging", footer: "These settings are intended for debugging purposes only and may cause instability or unexpected behaviour if changed!")
+			<<< TimeIntervalRow("timeIntervalRowTimeOffset") { row in      // initializer
+				row.title = "Time Offset"
+				row.value = UserSettings.DebugTimeOffset.currentValue()
+				}.onChange { row in
+					if let value = row.value {
+						UserSettings.DebugTimeOffset.setValue(value)
+					}
+					row.updateCell()
+				}.cellUpdate { cell, row in
+					cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
+					cell.backgroundColor = UIColor.lightText
+		}
         // Do any additional setup after loading the view.
     }
 	

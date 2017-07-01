@@ -10,11 +10,16 @@ import ReactiveSwift
 import Changeset
 
 class DateFormatters {
+	/// UTC based DateFormatter using a YYYY-MM-dd HH:mm:ss format
+	public static let dateTimeShort: DateFormatter = {
+		let formatter = DateFormatter()
+		formatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+		return formatter
+	}()
 	/// UTC based DateFormatter using a HH:mm format
 	public static let hourMinute: DateFormatter = {
 		let formatter = DateFormatter()
 		formatter.dateFormat = "HH:mm"
-		formatter.timeZone = TimeZone(abbreviation: "UTC")
 		return formatter
 	}()
 	
@@ -22,7 +27,6 @@ class DateFormatters {
 	public static let dayMonthLong: DateFormatter = {
 		let formatter = DateFormatter()
 		formatter.dateFormat = "EEEE dd MMMM"
-		formatter.timeZone = TimeZone(abbreviation: "UTC")
 		return formatter
 	}()
 }

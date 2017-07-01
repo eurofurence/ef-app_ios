@@ -19,9 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
 		PrintOptions.Active = .None
-		
-		let timeService = try! ServiceResolver.container.resolve() as TimeService
-		timeService.offset = Date(timeIntervalSince1970: 1503081000.0).timeIntervalSince(Date())
 
 		let contextManager = try! ContextResolver.container.resolve() as ContextManager
 		let dataContext = try! ContextResolver.container.resolve() as IDataContext
@@ -36,25 +33,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				// TODO: Prompt user for required initialisation
 				// TODO: Check WiFi connection and prompt user if on mobile
 				print("Performing full reload from API")
-				contextManager.syncWithApi?.apply(0).start({ event in
-					guard let value = event.value else {
-						print("Error during sync: \(String(describing: event.error))")
-						// TODO: Display error message and option to retry sync
-						return
+				contextManager.syncWithApi?.apply(0).start({ result in
+					if result.isCompleted {
+						print("Sync completed")
+					} else if let value = result.value {
+						print("Sync completed by \(value.fractionCompleted)")
+					} else {
+						print("Error during sync: \(String(describing: result.error))")
 					}
-					print("Sync completed by \(value.fractionCompleted)")
 				})
 			case .completed:
 				print("Loading completed")
 				// TODO: Check WiFi connection and prompt user if on mobile
 				if UserSettings.UpdateOnStart.currentValue() {
-					contextManager.syncWithApi?.apply(UserDefaults.standard.integer(forKey: ContextManager.LAST_SYNC_DEFAULT)).start({ event in
-						guard let value = event.value else {
-							print("Error during sync: \(String(describing: event.error))")
-							// TODO: Display error message and option to retry sync
-							return
+					contextManager.syncWithApi?.apply(UserDefaults.standard.integer(forKey: ContextManager.LAST_SYNC_DEFAULT)).start({ result in
+						if result.isCompleted {
+							print("Sync completed")
+						} else if let value = result.value {
+							print("Sync completed by \(value.fractionCompleted)")
+						} else {
+							print("Error during sync: \(String(describing: result.error))")
 						}
-						print("Sync completed by \(value.fractionCompleted)")
 					})
 				}
 			case .interrupted:

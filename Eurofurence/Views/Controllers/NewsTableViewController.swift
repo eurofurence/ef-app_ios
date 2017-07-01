@@ -13,8 +13,9 @@ import Changeset
 
 class NewsTableViewController: UITableViewController {
 	
-    private var announcementsViewModel: AnnouncementsViewModel = try! ViewModelResolver.container.resolve()
+	private var announcementsViewModel: AnnouncementsViewModel = try! ViewModelResolver.container.resolve()
 	private var currentEventsViewModel: CurrentEventsViewModel = try! ViewModelResolver.container.resolve()
+	private var timeService: TimeService = try! ServiceResolver.container.resolve()
 	
 	private var disposables = CompositeDisposable()
 	
@@ -155,6 +156,17 @@ class NewsTableViewController: UITableViewController {
 			guard let strongSelf = self else { return }
 			DispatchQueue.main.async {
 				strongSelf.tableView.reloadData()
+			}
+		})
+		disposables += timeService.currentTime.signal.observeValues({
+			[weak self] value in
+			guard let strongSelf = self else { return }
+			DispatchQueue.main.async {
+				if strongSelf.timeService.offset != 0.0 {
+					strongSelf.navigationItem.title = "News @ \(DateFormatters.hourMinute.string(from: value))"
+				} else {
+					strongSelf.navigationItem.title = "News"
+				}
 			}
 		})
 		

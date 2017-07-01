@@ -12,7 +12,7 @@ import ReactiveSwift
 Service which allows the app to travel through time.
 (Strictly for debugging purposes!)
 */
-class TimeService {
+class TimeService: NSObject {
 	let currentTime = MutableProperty(Date())
 	
 	/// Changes the offset with respect to current local time.
@@ -29,11 +29,20 @@ class TimeService {
 	}
 
 	private var lastTime = Date()
-	private var _offset = TimeInterval(0)
+	private var _offset: TimeInterval = 0.0
 	private var timer: Timer? = nil
 
-	init() {
+	override init() {
+		super.init()
+		UserDefaults.standard.addObserver(self, forKeyPath: UserSettings.DebugTimeOffset.rawValue, options: NSKeyValueObservingOptions.new, context: nil)
+		offset = UserSettings.DebugTimeOffset.currentValue()
 		resume()
+	}
+	
+	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+		if let change = change, let firstChange = change.first, let newOffset = firstChange.value as? TimeInterval, keyPath == UserSettings.DebugTimeOffset.rawValue {
+			offset = newOffset
+		}
 	}
 
 	/**

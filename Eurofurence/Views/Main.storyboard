@@ -370,7 +370,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="94P-b3-hmf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="News" image="News" id="Ol8-Ge-n39"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="VvY-tj-bHj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VvY-tj-bHj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -840,7 +840,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iMR-zC-1Ej" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Events" image="Calendar" selectedImage="Calendar" id="yEq-gs-mhK"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rxF-d1-yLf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rxF-d1-yLf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1340,7 +1340,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NtC-f2-fnQ" userLabel="Infos" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Info" image="Info" id="Ial-UE-gFz"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dXi-qr-kai">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dXi-qr-kai">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1585,7 +1585,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="scG-Tu-b4g" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Maps" image="Map" id="NKC-Fb-cj9"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Y4Z-KE-Ggo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Y4Z-KE-Ggo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1604,7 +1604,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="n6b-Bd-NxQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Dealers" image="dealers" id="6sr-5r-BhR"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DWe-Q3-xcm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DWe-Q3-xcm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1637,6 +1637,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="JLI-w3-u9Q"/>
         <segue reference="ZpL-XF-CgK"/>
-        <segue reference="axY-Ep-U4v"/>
+        <segue reference="XQS-QK-9wj"/>
     </inferredMetricsTieBreakers>
 </document>
