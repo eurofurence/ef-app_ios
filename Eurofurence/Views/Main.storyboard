@@ -29,7 +29,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="x27-ve-1W5">
-                                <rect key="frame" x="0.0" y="20" width="414" height="1280"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="1187"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AoI-8K-uoH" userLabel="Container View">
                                         <rect key="frame" x="8" y="0.0" width="398" height="1064.5"/>
@@ -206,34 +206,42 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="x27-ve-1W5" secondAttribute="trailing" constant="-20" id="4yZ-Sc-koP"/>
+                            <constraint firstItem="x27-ve-1W5" firstAttribute="top" secondItem="u3O-ye-lGf" secondAttribute="bottom" id="PhN-Lb-0fx"/>
                             <constraint firstItem="x27-ve-1W5" firstAttribute="leading" secondItem="56l-fy-TI6" secondAttribute="leadingMargin" constant="-20" id="YwX-K7-SIY"/>
-                            <constraint firstItem="x27-ve-1W5" firstAttribute="top" secondItem="u3O-ye-lGf" secondAttribute="bottom" id="avD-dx-Dnn"/>
                             <constraint firstItem="x27-ve-1W5" firstAttribute="centerX" secondItem="56l-fy-TI6" secondAttribute="centerX" id="eAe-B8-pl6"/>
                             <constraint firstItem="RfQ-96-wN7" firstAttribute="top" secondItem="x27-ve-1W5" secondAttribute="bottom" id="hXe-IC-O2w"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Dealer Details" id="n9P-b1-HGk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="zDt-ff-8vy">
+                            <connections>
+                                <action selector="exportAsEvent:" destination="TBc-XK-CZJ" id="FCK-Tp-UlU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="1300"/>
                     <connections>
-                        <outlet property="aboutArt" destination="JfM-Xq-vKA" id="m4n-vl-aES"/>
-                        <outlet property="aboutArtLabel" destination="mgO-gq-Npb" id="fla-ti-4wm"/>
+                        <outlet property="aboutArtLabel" destination="JfM-Xq-vKA" id="wpn-cF-rPo"/>
                         <outlet property="aboutArtLabelTopConstraint" destination="74N-QI-xVl" id="lhX-7I-nPe"/>
-                        <outlet property="aboutArtist" destination="T1F-Hp-C7x" id="NfH-eX-QZ9"/>
+                        <outlet property="aboutArtTitleLabel" destination="mgO-gq-Npb" id="vS2-ol-DSM"/>
+                        <outlet property="aboutArtistLabel" destination="T1F-Hp-C7x" id="BaZ-oE-tOZ"/>
                         <outlet property="artPreviewCaption" destination="Y7D-Xh-R2Z" id="X1z-AB-HAA"/>
                         <outlet property="artPreviewImage" destination="86v-jq-7qI" id="5Lv-WZ-xf9"/>
                         <outlet property="artPreviewImageView" destination="elb-bv-yFh" id="KyB-Id-gZb"/>
-                        <outlet property="artistImage" destination="MTt-MM-Sht" id="7kQ-ze-plz"/>
-                        <outlet property="artistShortDescription" destination="fMg-Yj-gMo" id="jec-qq-HvM"/>
-                        <outlet property="attendeeNickname" destination="qHQ-OV-O0E" id="LMx-iJ-mUe"/>
+                        <outlet property="artistImageView" destination="MTt-MM-Sht" id="h6F-M4-pYf"/>
+                        <outlet property="artistShortDescriptionLabel" destination="fMg-Yj-gMo" id="xBy-Ot-ph0"/>
+                        <outlet property="attendeeNicknameLabel" destination="qHQ-OV-O0E" id="akx-15-b8U"/>
                         <outlet property="dealersDenLabelTopConstraint" destination="9Ir-IV-8WN" id="481-34-cha"/>
-                        <outlet property="dealersDenMapImage" destination="Mxk-6q-DQR" id="A8P-Rg-N46"/>
-                        <outlet property="displayName" destination="lDk-Ck-TAi" id="hnG-Zf-gZk"/>
+                        <outlet property="dealersDenMapImageView" destination="Mxk-6q-DQR" id="ITk-fF-3i0"/>
+                        <outlet property="displayNameLabel" destination="lDk-Ck-TAi" id="NSo-q7-eKh"/>
                         <segue destination="7qp-Gf-BX9" kind="show" identifier="DealerDetailViewToMapSegue" id="ZpL-XF-CgK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YRN-wH-gJT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2750" y="-2548"/>
+            <point key="canvasLocation" x="2748.8000000000002" y="-2548.4257871064469"/>
         </scene>
         <!--Dealers List-->
         <scene sceneID="CIf-XG-25F">
@@ -659,7 +667,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="exG-bm-1cJ">
-                                <rect key="frame" x="0.0" y="164" width="375" height="454"/>
+                                <rect key="frame" x="0.0" y="164" width="375" height="459"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" indicatorStyle="white" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ztL-43-R2Q">
                                         <rect key="frame" x="16" y="155" width="343" height="302"/>
@@ -809,6 +817,11 @@
                             </mask>
                         </variation>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Announcement" id="I7O-oI-bF0">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="SCA-9e-mzp"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="areaLabel" destination="axO-Kf-Xyf" id="o0N-Nm-UHt"/>
                         <outlet property="authorLabel" destination="8th-qb-cXJ" id="e51-86-dhW"/>
@@ -849,15 +862,15 @@
                         <viewControllerLayoutGuide type="bottom" id="obc-LS-xAB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aFv-9D-bDX">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" tag="1" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="UPi-G5-x8h" userLabel="MapContainer" customClass="UIScrollView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <segmentedControl opaque="NO" tag="2" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dID-qv-DXc" userLabel="MapSwitch">
-                                <rect key="frame" x="250" y="562" width="101" height="29"/>
+                                <rect key="frame" x="250" y="449" width="101" height="29"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <segments>
                                     <segment title="Default"/>
@@ -1451,18 +1464,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Knowledge Group Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nqD-SB-8Gd">
-                                <rect key="frame" x="0.0" y="64" width="600" height="30"/>
-                                <color key="backgroundColor" red="0.13725490200000001" green="0.14117647059999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Jvr-qE-as4"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Knowledge Entry Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Sae-9p-oY2">
-                                <rect key="frame" x="0.0" y="94" width="600" height="70"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="70"/>
                                 <color key="backgroundColor" red="0.19215686274509802" green="0.19607843137254902" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="6yy-0u-I0q"/>
@@ -1472,7 +1475,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lI8-yj-TB2">
-                                <rect key="frame" x="0.0" y="164" width="600" height="587"/>
+                                <rect key="frame" x="0.0" y="134" width="600" height="622"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ef" translatesAutoresizingMaskIntoConstraints="NO" id="qG7-dS-lXB">
                                         <rect key="frame" x="8" y="8" width="584" height="200"/>
@@ -1549,21 +1552,21 @@
                             <constraint firstItem="Sae-9p-oY2" firstAttribute="centerX" secondItem="a2J-gA-Stu" secondAttribute="centerX" id="8nL-KH-MEs"/>
                             <constraint firstItem="lI8-yj-TB2" firstAttribute="top" secondItem="Sae-9p-oY2" secondAttribute="bottom" id="EAe-t2-zns"/>
                             <constraint firstItem="bie-i3-4Uv" firstAttribute="top" secondItem="lI8-yj-TB2" secondAttribute="bottom" id="I2C-IH-CbE"/>
-                            <constraint firstItem="nqD-SB-8Gd" firstAttribute="centerX" secondItem="a2J-gA-Stu" secondAttribute="centerX" id="JwG-RI-qRD"/>
-                            <constraint firstItem="Sae-9p-oY2" firstAttribute="top" secondItem="nqD-SB-8Gd" secondAttribute="bottom" id="LbC-TC-O39"/>
-                            <constraint firstItem="nqD-SB-8Gd" firstAttribute="leading" secondItem="a2J-gA-Stu" secondAttribute="leading" id="TlJ-Cn-FW6"/>
+                            <constraint firstItem="Sae-9p-oY2" firstAttribute="top" secondItem="UUd-l0-GNc" secondAttribute="bottom" id="Thk-0i-IdI"/>
                             <constraint firstItem="lI8-yj-TB2" firstAttribute="leading" secondItem="a2J-gA-Stu" secondAttribute="leading" id="Xkn-oW-AyH"/>
                             <constraint firstItem="Sae-9p-oY2" firstAttribute="leading" secondItem="a2J-gA-Stu" secondAttribute="leading" id="jD8-dr-YDG"/>
-                            <constraint firstItem="nqD-SB-8Gd" firstAttribute="top" secondItem="UUd-l0-GNc" secondAttribute="bottom" id="k3x-tU-5nt"/>
-                            <constraint firstAttribute="trailing" secondItem="nqD-SB-8Gd" secondAttribute="trailing" id="ngB-yR-Mgd"/>
                             <constraint firstItem="lI8-yj-TB2" firstAttribute="centerX" secondItem="a2J-gA-Stu" secondAttribute="centerX" id="o0J-eQ-JkP"/>
                             <constraint firstAttribute="trailing" secondItem="Sae-9p-oY2" secondAttribute="trailing" id="xkR-Ug-lT1"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Knowledge Group Name" id="gjH-TE-AMA">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="x9j-5B-UNi"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
                     <connections>
-                        <outlet property="groupLabel" destination="nqD-SB-8Gd" id="z8B-am-1Wx"/>
                         <outlet property="imageView" destination="qG7-dS-lXB" id="S5S-Gp-l66"/>
                         <outlet property="imageViewHeightConstraint" destination="7bq-qP-c6r" id="89Y-MW-ivU"/>
                         <outlet property="linkLabel" destination="rJv-xc-24q" id="32u-HG-h3b"/>
@@ -1632,8 +1635,8 @@
         <image name="ef-bg-news" width="540" height="181"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="axY-Ep-U4v"/>
+        <segue reference="JLI-w3-u9Q"/>
         <segue reference="ZpL-XF-CgK"/>
-        <segue reference="ycx-tm-4B6"/>
+        <segue reference="axY-Ep-U4v"/>
     </inferredMetricsTieBreakers>
 </document>

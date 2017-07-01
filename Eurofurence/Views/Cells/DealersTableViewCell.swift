@@ -22,11 +22,16 @@ class DealersTableViewCell: UITableViewCell {
 		set(dealer) {
 			_dealer = dealer
 			
-			displayNameDealerLabel!.text = dealer?.DisplayName ?? dealer?.AttendeeNickname
-			subnameDealerLabel!.text = dealer?.AttendeeNickname
+			if let displayName = dealer?.DisplayName, !displayName.isEmpty {
+				displayNameDealerLabel.text = displayName
+				subnameDealerLabel.text = dealer?.AttendeeNickname
+			} else {
+				displayNameDealerLabel.text = dealer?.AttendeeNickname
+				subnameDealerLabel.text = nil
+			}
 			
 			self.backgroundColor =  UIColor(red: 35/255.0, green: 36/255.0, blue: 38/255.0, alpha: 1.0)
-			shortDescriptionDealerLabel!.text = dealer?.ShortDescription
+			shortDescriptionDealerLabel.text = dealer?.ShortDescription
 			
 			// TODO: Implement image caching
 			/*if let artistThumbnailImage = dealer.ArtistThumbnailImage {

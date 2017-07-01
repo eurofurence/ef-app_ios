@@ -8,7 +8,6 @@
 import UIKit
 
 class KnowledgeEntryViewController: UIViewController {
-    @IBOutlet weak var groupLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
@@ -53,8 +52,8 @@ class KnowledgeEntryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
         super.viewWillAppear(animated)
-        
-        groupLabel.text = knowledgeEntry?.KnowledgeGroup?.Name
+		
+		navigationItem.title = knowledgeEntry?.KnowledgeGroup?.Name
         titleLabel.text = knowledgeEntry?.Title
         
         // TODO: how are images handled in KnowledgeEntry? 

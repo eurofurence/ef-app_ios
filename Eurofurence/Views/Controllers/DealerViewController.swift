@@ -14,19 +14,19 @@ class DealerViewController: UIViewController {
     static var MAP_SEGMENT_ZOOM = CGFloat(8.0)
     
 	weak var dealer: Dealer? = nil
-    @IBOutlet weak var artistImage: UIImageView!
-    @IBOutlet weak var displayName: UILabel!
-    @IBOutlet weak var attendeeNickname: UILabel!
-    @IBOutlet weak var artistShortDescription: UILabel!
-    @IBOutlet weak var aboutArtist: UILabel!
+    @IBOutlet weak var artistImageView: UIImageView!
+    @IBOutlet weak var displayNameLabel: UILabel!
+    @IBOutlet weak var attendeeNicknameLabel: UILabel!
+    @IBOutlet weak var artistShortDescriptionLabel: UILabel!
+    @IBOutlet weak var aboutArtistLabel: UILabel!
     @IBOutlet weak var artPreviewImageView: UIView!
     @IBOutlet weak var artPreviewImage: UIImageView!
     @IBOutlet weak var artPreviewCaption: UILabel!
+    @IBOutlet weak var aboutArtTitleLabel: UILabel!
     @IBOutlet weak var aboutArtLabel: UILabel!
-    @IBOutlet weak var aboutArt: UILabel!
     @IBOutlet weak var aboutArtLabelTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var dealersDenLabelTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var dealersDenMapImage: UIImageView!
+    @IBOutlet weak var dealersDenMapImageView: UIImageView!
     var singleTap: UITapGestureRecognizer!
     
     func canRotate()->Bool {
@@ -39,8 +39,8 @@ class DealerViewController: UIViewController {
         
         // add jump to map on single tap on map segment
         singleTap = UITapGestureRecognizer(target: self, action: #selector(DealerViewController.showOnMap(_:)))
-        dealersDenMapImage!.addGestureRecognizer(singleTap!)
-        dealersDenMapImage!.isUserInteractionEnabled = true
+        dealersDenMapImageView!.addGestureRecognizer(singleTap!)
+        dealersDenMapImageView!.isUserInteractionEnabled = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -63,23 +63,28 @@ class DealerViewController: UIViewController {
         /*if let  artistImageId = dealer.ArtistImageId {
             artistImage.image = ImageManager.sharedInstance.retrieveFromCache(artistImageId, imagePlaceholder: UIImage(named: "defaultAvatarBig"))
         } else {*/
-            artistImage.image = UIImage(named: "defaultAvatarBig")!;
+            artistImageView.image = UIImage(named: "defaultAvatarBig")!;
         //}
-        
-		displayName.text = dealer?.DisplayName ?? dealer?.AttendeeNickname
-		attendeeNickname.text = dealer?.AttendeeNickname
 		
-        artistShortDescription.text = dealer?.ShortDescription.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init).joined(separator: "\n")
-        artistShortDescription.sizeToFit();
+		if let _ = dealer?.DisplayName, !dealer!.DisplayName.isEmpty {
+			displayNameLabel.text = dealer?.DisplayName
+			attendeeNicknameLabel.text = dealer?.AttendeeNickname
+		} else {
+			displayNameLabel.text = dealer?.AttendeeNickname
+			attendeeNicknameLabel.text = nil
+		}
+		
+        artistShortDescriptionLabel.text = dealer?.ShortDescription.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init).joined(separator: "\n")
+        artistShortDescriptionLabel.sizeToFit();
         
         let aboutArtistText = dealer?.AboutTheArtistText.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init).joined(separator: "\n");
         if (aboutArtistText == "") {
 			// TODO: Externalise strings for i18n
-            aboutArtist.text = "The artist did not provide any information about themselves to be shown here."
+            aboutArtistLabel.text = "The artist did not provide any information about themselves to be shown here."
         } else {
-            aboutArtist.text = aboutArtistText;
+            aboutArtistLabel.text = aboutArtistText;
         }
-        aboutArtist.sizeToFit();
+        aboutArtistLabel.sizeToFit();
 		
 		// TODO: Implement image caching
         /*if let artPreviewImageId = self.dealer.ArtPreviewImageId, let artPreviewImage = ImageManager.sharedInstance.retrieveFromCache(artPreviewImageId) {
@@ -109,14 +114,14 @@ class DealerViewController: UIViewController {
         
         let aboutArtText = dealer?.AboutTheArtText.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init).joined(separator: "\n")
         if let aboutArtText = aboutArtText, !aboutArtText.isEmpty {
-			aboutArt.text = aboutArtText
-			aboutArt.sizeToFit()
+			aboutArtLabel.text = aboutArtText
+			aboutArtLabel.sizeToFit()
         } else {
-			aboutArt.text = nil
+			aboutArtLabel.text = nil
 			
 			// if neither text nor image have been provided, hide the entire about art section
 			if artPreviewImage == nil || artPreviewImage.image == nil {
-				aboutArtLabel.text = nil
+				aboutArtTitleLabel.text = nil
 				aboutArtLabelTopConstraint.constant = 0
 				dealersDenLabelTopConstraint.constant = 0
 			}
