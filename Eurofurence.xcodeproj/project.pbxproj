@@ -306,13 +306,13 @@
 			isa = PBXGroup;
 			children = (
 				9ACF997E1EC75447006FC958 /* Abstractions */,
-				9A0525441ECB090700578798 /* WebApiConnection.swift */,
-				9A0525461ECB091900578798 /* MockApiConnection.swift */,
 				9A34B9791ECF87B1004A249E /* ContextManager.swift */,
-				9A34B9861ED08C7E004A249E /* JsonDataStore.swift */,
-				9A34B9881ED35FE0004A249E /* ReactiveDataContext.swift */,
-				9A8477971ED99EDE00F0DF3F /* NavigationResolver.swift */,
 				D6F3D8101460A96C0D9A7612 /* DataStoreResult.swift */,
+				9A34B9861ED08C7E004A249E /* JsonDataStore.swift */,
+				9A0525461ECB091900578798 /* MockApiConnection.swift */,
+				9A8477971ED99EDE00F0DF3F /* NavigationResolver.swift */,
+				9A34B9881ED35FE0004A249E /* ReactiveDataContext.swift */,
+				9A0525441ECB090700578798 /* WebApiConnection.swift */,
 			);
 			path = DataStore;
 			sourceTree = "<group>";
@@ -368,16 +368,16 @@
 		9AF159E91EF5B3AE00DB287D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D6F3DEF39B7EA2ED63CA72D7 /* AnnouncementCell.swift */,
 				D6F3D15DBA1AA6254F83C20A /* DealersTableViewCell.swift */,
-				D6F3DE9723F934424C183CD4 /* EventHeaderCellTableViewCell.swift */,
 				D6F3D20D882CACF3DC8F7C8F /* EventCell.swift */,
+				D6F3DE9723F934424C183CD4 /* EventHeaderCellTableViewCell.swift */,
+				9AB64BCC1F018365004E8D91 /* KnowledgeEntryCell.swift */,
+				9AB64BCA1F018135004E8D91 /* KnowledgeGroupCell.swift */,
 				D6F3D7AF46BAD0F1F9918A76 /* MenuTableViewCell.swift */,
 				D6F3D1F6D5BD062AF11A5804 /* NewsHeaderTableViewCell.swift */,
-				D6F3DEF39B7EA2ED63CA72D7 /* AnnouncementCell.swift */,
 				9AF159EC1EF5BE7F00DB287D /* SimpleEventCell.swift */,
 				D6F3D694C5DA66BE24929466 /* TimeLabelCell.swift */,
-				9AB64BCA1F018135004E8D91 /* KnowledgeGroupCell.swift */,
-				9AB64BCC1F018365004E8D91 /* KnowledgeEntryCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -394,11 +394,11 @@
 			isa = PBXGroup;
 			children = (
 				9A7FFD561EFC5B46007ABA36 /* CalendarAccess.swift */,
-				9A7FFD521EF97CD4007ABA36 /* UserSettings.swift */,
-				D6F3D46D42184018C6E237CD /* RoutingAppChooser.swift */,
 				D6F3D3FF0CFC133874118590 /* CountryAlpha3Converter.swift */,
-				D6F3D49E9A7962D15CE8C3EF /* WikiText.swift */,
+				D6F3D46D42184018C6E237CD /* RoutingAppChooser.swift */,
 				9AF0B4FD1F08459D000AAA0A /* TimeIntervalRow.swift */,
+				9A7FFD521EF97CD4007ABA36 /* UserSettings.swift */,
+				D6F3D49E9A7962D15CE8C3EF /* WikiText.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -411,8 +411,8 @@
 				D6F3D66312CF86A43D699F2C /* DealerViewController.swift */,
 				D6F3D831FC85BC47C1D346C1 /* EventTableViewController.swift */,
 				D6F3DFA70EA419105E0019F3 /* EventViewController.swift */,
-				D6F3DD137095A2765149B6DE /* KnowledgeTableViewController.swift */,
 				D6F3DB48EF811D49364AFB9D /* KnowledgeEntryViewController.swift */,
+				D6F3DD137095A2765149B6DE /* KnowledgeTableViewController.swift */,
 				D6F3D7EA60D21CE770225E11 /* LeftViewController.swift */,
 				9A7FFD541EFC5A9E007ABA36 /* MapViewController.swift */,
 				D6F3DF71A249A0F1DE8D51FB /* NewsTableViewController.swift */,

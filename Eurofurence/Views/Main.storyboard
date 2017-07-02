@@ -862,15 +862,15 @@
                         <viewControllerLayoutGuide type="bottom" id="obc-LS-xAB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aFv-9D-bDX">
-                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" tag="1" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="UPi-G5-x8h" userLabel="MapContainer" customClass="UIScrollView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <segmentedControl opaque="NO" tag="2" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dID-qv-DXc" userLabel="MapSwitch">
-                                <rect key="frame" x="250" y="449" width="101" height="29"/>
+                                <rect key="frame" x="137" y="516" width="101" height="29"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <segments>
                                     <segment title="Default"/>
@@ -900,8 +900,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="600"/>
+                    <splitViewDetailSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="mapContainerView" destination="UPi-G5-x8h" id="A4a-c2-bKl"/>
                         <outlet property="mapSwitchControl" destination="dID-qv-DXc" id="Djz-7f-oZf"/>
@@ -1461,11 +1460,11 @@
                         <viewControllerLayoutGuide type="bottom" id="bie-i3-4Uv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="a2J-gA-Stu">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="850"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Knowledge Entry Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Sae-9p-oY2">
-                                <rect key="frame" x="0.0" y="64" width="600" height="70"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="70"/>
                                 <color key="backgroundColor" red="0.19215686274509802" green="0.19607843137254902" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="6yy-0u-I0q"/>
@@ -1475,40 +1474,40 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lI8-yj-TB2">
-                                <rect key="frame" x="0.0" y="134" width="600" height="622"/>
+                                <rect key="frame" x="0.0" y="134" width="375" height="667"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ef" translatesAutoresizingMaskIntoConstraints="NO" id="qG7-dS-lXB">
-                                        <rect key="frame" x="8" y="8" width="584" height="200"/>
+                                        <rect key="frame" x="8" y="8" width="359" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="7bq-qP-c6r"/>
                                         </constraints>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" scrollEnabled="NO" indicatorStyle="white" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zU6-H9-knQ">
-                                        <rect key="frame" x="8" y="216" width="584" height="192"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" scrollEnabled="NO" indicatorStyle="white" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zU6-H9-knQ">
+                                        <rect key="frame" x="8" y="216" width="359" height="280"/>
                                         <color key="tintColor" red="0.0" green="0.38431372549999998" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Links" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJv-xc-24q">
-                                        <rect key="frame" x="16" y="416" width="568" height="26"/>
+                                        <rect key="frame" x="16" y="504" width="343" height="26"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="nuu-ER-LeG">
-                                        <rect key="frame" x="16" y="446" width="568" height="64"/>
+                                        <rect key="frame" x="16" y="534" width="343" height="64"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXW-Kq-7IC">
-                                                <rect key="frame" x="0.0" y="0.0" width="568" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                                 <color key="backgroundColor" red="0.15000000596046448" green="0.15000000596046448" blue="0.15000000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="0.0" green="0.38431372549999998" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Button"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gx-Vy-AUW">
-                                                <rect key="frame" x="0.0" y="34" width="568" height="30"/>
+                                                <rect key="frame" x="0.0" y="34" width="343" height="30"/>
                                                 <color key="backgroundColor" red="0.15000000596046448" green="0.15000000596046448" blue="0.15000000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="0.0" green="0.38431372549999998" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Button"/>
@@ -1563,9 +1562,8 @@
                     <navigationItem key="navigationItem" title="Knowledge Group Name" id="gjH-TE-AMA">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="x9j-5B-UNi"/>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="800"/>
+                    <size key="freeformSize" width="375" height="850"/>
                     <connections>
                         <outlet property="imageView" destination="qG7-dS-lXB" id="S5S-Gp-l66"/>
                         <outlet property="imageViewHeightConstraint" destination="7bq-qP-c6r" id="89Y-MW-ivU"/>
