@@ -35,7 +35,7 @@ class TimeService: NSObject {
 	override init() {
 		super.init()
 		UserDefaults.standard.addObserver(self, forKeyPath: UserSettings.DebugTimeOffset.rawValue, options: NSKeyValueObservingOptions.new, context: nil)
-		offset = UserSettings.DebugTimeOffset.currentValue()
+		offset = UserSettings.DebugTimeOffset.currentValueOrDefault()
 		resume()
 	}
 	

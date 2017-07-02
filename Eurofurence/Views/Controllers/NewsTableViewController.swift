@@ -45,7 +45,8 @@ class NewsTableViewController: UITableViewController {
 		}
 		
 		let contextManager = try! ContextResolver.container.resolve() as ContextManager
-		disposables += contextManager.syncWithApi?.apply(UserDefaults.standard.integer(forKey: ContextManager.LAST_SYNC_DEFAULT)).observe(on: QueueScheduler.concurrent).start({ result in
+		disposables += contextManager.syncWithApi?.apply(UserSettings.LastSyncDate.currentValue())
+			.observe(on: QueueScheduler.concurrent).start({ result in
 			if result.isCompleted {
 				print("Sync completed")
 				DispatchQueue.main.async {
@@ -64,7 +65,7 @@ class NewsTableViewController: UITableViewController {
     
     func notifyAnnouncements(_ announcements: [Announcement]) {
         UIApplication.shared.applicationIconBadgeNumber = 0
-        if UserSettings.NotifyOnAnnouncement.currentValue() {
+        if UserSettings.NotifyOnAnnouncement.currentValueOrDefault() {
             for announcement in announcements {
 				let notification = UILocalNotification()
 				notification.alertBody = announcement.Title
@@ -238,12 +239,7 @@ class NewsTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if indexPath.section == 0 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "NewsHeaderTableViewCell", for: indexPath) as! NewsHeaderTableViewCell
-			let defaults = UserDefaults.standard
-			if let lastDatabaseUpdate = defaults.object(forKey: ContextManager.LAST_SYNC_DEFAULT) as? Date {
-				cell.newsLastRefreshLabel.text = getLastRefreshString(lastDatabaseUpdate)
-			} else {
-				cell.newsLastRefreshLabel.text = nil
-			}
+			cell.newsLastRefreshLabel.text = getLastRefreshString(UserSettings.LastSyncDate.currentValueOrDefault())
 			return cell
 		} else if indexPath.section == 2 {
 			if announcementsViewModel.Announcements.value.isEmpty {

@@ -57,14 +57,14 @@ class SettingsTableViewController: FormViewController {
                     
                     // TODO: BUG! Label becomes empty when currently selected entry is selected again
                     
-					var refreshSeconds: Int = UserSettings.RefreshTimer.currentValue()
+					var refreshSeconds: Int = UserSettings.RefreshTimer.currentValueOrDefault()
                     if let value = row.value {
                         refreshSeconds = value
                     } else {
                         row.value = refreshSeconds
                     }
                     UserSettings.RefreshTimer.setValue(refreshSeconds)
-                    if refreshSeconds > 0 && UserSettings.RefreshInBackground.currentValue() {
+                    if refreshSeconds > 0 && UserSettings.RefreshInBackground.currentValueOrDefault() {
                         UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
                     } else {
                         UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalNever)
