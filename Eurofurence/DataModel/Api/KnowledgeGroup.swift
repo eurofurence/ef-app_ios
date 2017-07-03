@@ -27,7 +27,9 @@ class KnowledgeGroup: EntityBase {
 			 decodeConverter: {
 				guard let value = $0 as? String, let character = Character.init(unicodeScalarString: value) else { return }
 				self.FontAwesomeIconCharacterUnicodeAddress = String.init(character) },
-			 encodeConverter: { return self.FontAwesomeIconCharacterUnicodeAddress.unicodeScalars.first ?? "" })
+			 encodeConverter: {
+				return String(format:"%X", self.FontAwesomeIconCharacterUnicodeAddress.unicodeScalars.first?.value ?? 0)
+			})
 		]
 	}
 }
