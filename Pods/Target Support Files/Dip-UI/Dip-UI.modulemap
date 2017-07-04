@@ -1,0 +1,6 @@
+framework module Dip_UI {
+  umbrella header "Dip-UI-umbrella.h"
+
+  export *
+  module * { export * }
+}
