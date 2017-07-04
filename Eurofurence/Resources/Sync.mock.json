@@ -3458,7 +3458,7 @@
 							"Description": "Helpful things all about and around the convention",
 							"Order": 0,
 							"ShowInHamburgerMenu": false,
-							"FontAwesomeIconCharacter": "\u0000"
+							"FontAwesomeIconCharacterUnicodeAddress": "f000"
 							},
 							{
 							"Id": "3f733bc5-d41f-e233-3cae-1df9ee5c39b6",
@@ -3467,16 +3467,16 @@
 							"Description": "Relevant information for our suiters",
 							"Order": 1,
 							"ShowInHamburgerMenu": false,
-							"FontAwesomeIconCharacter": "\u0000"
+							"FontAwesomeIconCharacterUnicodeAddress": "f001"
 							},
-							{
+							{ 
 							"Id": "72cdaaba-e980-fa1a-ce94-7a1cc19d0f79",
 							"LastChangeDateTimeUtc": "2017-04-20T06:33:59.519Z",
 							"Name": "Parking",
 							"Description": "Where to leave your car",
 							"Order": 2,
 							"ShowInHamburgerMenu": false,
-							"FontAwesomeIconCharacter": "\u0000"
+							"FontAwesomeIconCharacterUnicodeAddress": "0000"
 							},
 							{
 							"Id": "66e14f56-743c-1ece-a50c-b691143a3f93",
@@ -3485,7 +3485,7 @@
 							"Description": "All you need to know",
 							"Order": 3,
 							"ShowInHamburgerMenu": false,
-							"FontAwesomeIconCharacter": "\u0000"
+							"FontAwesomeIconCharacterUnicodeAddress": "0000"
 							},
 							{
 							"Id": "9bf9b01f-e655-bec2-35ae-d72ebe38c245",
@@ -3494,7 +3494,7 @@
 							"Description": "Helpful things & adresses",
 							"Order": 4,
 							"ShowInHamburgerMenu": false,
-							"FontAwesomeIconCharacter": "\u0000"
+							"FontAwesomeIconCharacterUnicodeAddress": "0000"
 							},
 							{
 							"Id": "d3c10dde-0c9b-1111-1a61-33b76a562a3c",
@@ -3503,7 +3503,7 @@
 							"Description": "The Painted Dog Conservation",
 							"Order": 5,
 							"ShowInHamburgerMenu": false,
-							"FontAwesomeIconCharacter": "\u0000"
+							"FontAwesomeIconCharacterUnicodeAddress": "0000"
 							},
 							{
 							"Id": "f56f05e9-f929-0504-72bb-6ddbe6f676a1",
@@ -3512,7 +3512,7 @@
 							"Description": "Places where your con-badge will get you a discount.",
 							"Order": 6,
 							"ShowInHamburgerMenu": false,
-							"FontAwesomeIconCharacter": "\u0000"
+							"FontAwesomeIconCharacterUnicodeAddress": "0000"
 							}
 							],
 		"DeletedEntities": []

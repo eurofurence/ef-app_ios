@@ -7,8 +7,10 @@
 
 import Foundation
 
-/// Simple, hacky fix to support creating Dates from ISO8601 timestamps with and
-/// without fractional seconds.
+/**
+Simple, hacky fix to support creating Dates from ISO8601 timestamps with and
+without fractional seconds.
+*/
 class Iso8601DateFormatter : DateFormatter {
 	static let instance = Iso8601DateFormatter()
 	let noFractionsDateFormatter = DateFormatter()

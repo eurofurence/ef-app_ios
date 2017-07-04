@@ -24,7 +24,6 @@ class WebApiConnection: IApiConnection {
 
 	required init(_ apiUrl: URL) {
 		EVReflection.setDateFormatter(Iso8601DateFormatter())
-
 		self.apiUrl = apiUrl
 	}
 

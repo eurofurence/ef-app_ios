@@ -20,11 +20,12 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
     var burgerMenuItem: UIBarButtonItem!
     var mapIdToIndex: [String:Int] = [:]
     var mapViews: [UIImageView] = []
+	// TODO: Should be weak references!
     var mapEntries: [[MapEntry]] = []
     var doubleTap: UITapGestureRecognizer!
     var singleTap: UITapGestureRecognizer!
     var currentMap: Int = 0
-    var currentMapEntry: MapEntry? = nil
+    weak var currentMapEntry: MapEntry? = nil
     var currentMapEntryRadiusMultiplier = CGFloat(1.0)
 	
 	let dataContext: IDataContext = try! ContextResolver.container.resolve()

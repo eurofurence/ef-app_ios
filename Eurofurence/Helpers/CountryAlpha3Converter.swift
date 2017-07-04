@@ -7,6 +7,9 @@
 
 import Foundation
 
+/**
+Provides a static mapping between country names and their alpha3 code.
+*/
 class CountryAlpha3Converter {
     static let countryToAlpha3: [String:String] = [
         "Aruba":"ABW",

@@ -8,7 +8,7 @@
 import UIKit
 
 class NewsViewController: UIViewController {
-    var news = Announcement()
+	weak var news: Announcement? = nil
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var areaLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
@@ -32,21 +32,25 @@ class NewsViewController: UIViewController {
     override func willMove(toParentViewController parent: UIViewController?) {
         super.willMove(toParentViewController: parent)
         if parent == nil {
-            self.tabBarController?.tabBar.isHidden = false
+            tabBarController?.tabBar.isHidden = false
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = true
-        self.titleLabel.text = news.Title
-        self.areaLabel.text = news.Area
-        self.authorLabel.text = news.Author
-        self.lastChangeLabel.text = DateFormatter.localizedString(
-            from: news.LastChangeDateTimeUtc as Date, dateStyle: DateFormatter.Style.medium,
-            timeStyle: DateFormatter.Style.short)
-        self.descriptionLabel.text = news.Content
+        tabBarController?.tabBar.isHidden = true
+        titleLabel.text = news?.Title
+        areaLabel.text = news?.Area
+        authorLabel.text = news?.Author
+        descriptionLabel.text = news?.Content
+		if let news = news {
+			self.lastChangeLabel.text = DateFormatter.localizedString(
+				from: news.LastChangeDateTimeUtc as Date, dateStyle: DateFormatter.Style.medium,
+				timeStyle: DateFormatter.Style.short)
+		} else {
+			lastChangeLabel.text = nil
+		}
     }
-    
+	
     /*
      // MARK: - Navigation
      

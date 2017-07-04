@@ -10,6 +10,7 @@ import Foundation
 class NavigationResolver: INavigationResolver {
 	func resolve(dataContext: IDataContext) {
 		// TODO: Resolve links to MapEntry
+		print("\(#function): Resolving Dealers")
 		dataContext.Dealers.modify({ value in
 			for e in value {
 				e.ArtistImage = dataContext.Images.value.first(where: { $0.Id == e.ArtistImageId })
@@ -17,22 +18,26 @@ class NavigationResolver: INavigationResolver {
 				e.ArtPreviewImage = dataContext.Images.value.first(where: { $0.Id == e.ArtPreviewImageId })
 			}
 		})
-
+		
+		print("\(#function): Resolving EventConferenceDays")
 		dataContext.EventConferenceDays.modify({ value in
 			for e in value {
 				e.Events.removeAll()
 			}
 		})
+		print("\(#function): Resolving EventConferenceRooms")
 		dataContext.EventConferenceRooms.modify({ value in
 			for e in value {
 				e.Events.removeAll()
 			}
 		})
+		print("\(#function): Resolving EventConferenceTracks")
 		dataContext.EventConferenceTracks.modify({ value in
 			for e in value {
 				e.Events.removeAll()
 			}
 		})
+		print("\(#function): Resolving Events")
 		dataContext.Events.modify({ value in
 			for e in value {
 				e.ConferenceDay = dataContext.EventConferenceDays.value.first(where: { $0.Id == e.ConferenceDayId })
@@ -45,19 +50,22 @@ class NavigationResolver: INavigationResolver {
 			}
 		})
 
-
+		
+		print("\(#function): Resolving KnowledgeGroups")
 		dataContext.KnowledgeGroups.modify({ value in
 			for e in value {
 				e.KnowledgeEntries.removeAll()
 			}
 		})
+		print("\(#function): Resolving KnowledgeEntries")
 		dataContext.KnowledgeEntries.modify({ value in
 			for e in value {
 				e.KnowledgeGroup = dataContext.KnowledgeGroups.value.first(where: { $0.Id == e.KnowledgeGroupId })
 				e.KnowledgeGroup?.KnowledgeEntries.append(e)
 			}
 		})
-
+		
+		print("\(#function): Resolving Maps")
 		dataContext.Maps.modify({ value in
 			for e in value {
 				e.Image = dataContext.Images.value.first(where: { $0.Id == e.ImageId })

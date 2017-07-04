@@ -8,25 +8,25 @@
 import Foundation
 import ReactiveSwift
 import Result
-import Changeset
 
 class AnnouncementsViewModel {
 	let Announcements = MutableProperty<[Announcement]>([])
-	let AnnouncementsEdits = MutableProperty<[Edit<Announcement>]>([])
 	private let dataContext: IDataContext
 	private let timeService: TimeService = try! ServiceResolver.container.resolve()
 	private var timedAnnouncementsSignal: Signal<(Date, [Announcement]), NoError>
+	private var disposable = CompositeDisposable()
+	private let scheduler = QueueScheduler(qos: .background, name: "org.eurofurence.app.AnnouncementsViewModelScheduler")
 
 	init(dataContext: IDataContext) {
 		self.dataContext = dataContext
-		timedAnnouncementsSignal = Signal.combineLatest(timeService.currentTime.signal, dataContext.Announcements.signal)
+		timedAnnouncementsSignal = Signal.combineLatest(timeService.currentTime.signal, dataContext.Announcements.signal).observe(on: scheduler)
 
-		Announcements <~ timedAnnouncementsSignal.map({ (time, items) in
+		disposable += Announcements <~ timedAnnouncementsSignal.map({ (time, items) in
 			return items.filter({$0.ValidFromDateTimeUtc < time && $0.ValidUntilDateTimeUtc > time})
 		})
-		
-		AnnouncementsEdits <~ Announcements.combinePrevious([] as [Announcement]).map { (old, new) -> [Edit<Announcement>] in
-			return Changeset.edits(from: old, to: new)
-		}
+	}
+	
+	deinit {
+		disposable.dispose()
 	}
 }

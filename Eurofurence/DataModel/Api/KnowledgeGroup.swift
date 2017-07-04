@@ -9,7 +9,7 @@ import Foundation
 
 class KnowledgeGroup: EntityBase {
 	var Description : String = ""
-	var FontAwesomeIconCharacter : String = ""
+	var FontAwesomeIconCharacterUnicodeAddress : String = ""
 	var Name : String = ""
 	var Order : Int = 0
 	var ShowInHamburgerMenu : Bool = false
@@ -19,6 +19,18 @@ class KnowledgeGroup: EntityBase {
 	override public func propertyMapping() -> [(keyInObject: String?,
 			keyInResource: String?)] {
 		return [(keyInObject: "KnowledgeEntries", keyInResource: nil)]
+	}
+	
+	override func propertyConverters() -> [(key: String, decodeConverter: ((Any?) -> ()), encodeConverter: (() -> Any?))] {
+		return [
+			(key: "FontAwesomeIconCharacterUnicodeAddress",
+			 decodeConverter: {
+				guard let value = $0 as? String, let character = Character.init(unicodeScalarString: value) else { return }
+				self.FontAwesomeIconCharacterUnicodeAddress = String.init(character) },
+			 encodeConverter: {
+				return String(format:"%X", self.FontAwesomeIconCharacterUnicodeAddress.unicodeScalars.first?.value ?? 0)
+			})
+		]
 	}
 }
 

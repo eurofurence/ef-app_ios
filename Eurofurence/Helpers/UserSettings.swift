@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum UserSettings<T>: String {
+enum UserSettings: String {
     case UpdateOnStart
     case AutomaticRefreshOnMobile
     case AutomaticRefreshOnMobileAsked
@@ -15,8 +15,10 @@ enum UserSettings<T>: String {
     case RefreshInBackground
     case NotifyOnAnnouncement
     case RefreshInBackgroundOnMobile
+	case DebugTimeOffset
+	case LastSyncDate
     
-    func defaultValue()->T {
+    func defaultValue<T>()->T {
         switch self {
         case .UpdateOnStart:
             return true as! T
@@ -29,25 +31,34 @@ enum UserSettings<T>: String {
         case .RefreshInBackground:
             return false as! T
         case .NotifyOnAnnouncement:
-            return true as! T
-        case .RefreshInBackgroundOnMobile:
-            return true as! T
+			return true as! T
+		case .RefreshInBackgroundOnMobile:
+			return true as! T
+		case .DebugTimeOffset:
+			return 0.0 as! T
+		case .LastSyncDate:
+			return Date(timeIntervalSince1970: 0) as! T
         }
-    }
-    
-    func currentValue()->T {
-        let defaults = UserDefaults.standard
-        if let value = defaults.object(forKey: self.rawValue) {
-            return value as! T
-        } else {
-            return self.defaultValue()
-        }
-    }
+	}
+	
+	func currentValueOrDefault<T>()->T {
+		let defaults = UserDefaults.standard
+		if let value = defaults.object(forKey: self.rawValue) {
+			return value as! T
+		} else {
+			return self.defaultValue()
+		}
+	}
+	
+	func currentValue<T>()->T? {
+		let defaults = UserDefaults.standard
+		return defaults.object(forKey: self.rawValue) as? T
+	}
 	
 	@discardableResult
-    func setValue(_ value: T)->T {
+    func setValue<T>(_ value: T)->T? {
         let defaults = UserDefaults.standard
-        let oldValue = self.currentValue()
+		let oldValue: T? = self.currentValue()
         defaults.set(value, forKey: self.rawValue)
         return oldValue
     }

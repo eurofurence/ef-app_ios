@@ -21,8 +21,10 @@ protocol IDataContext {
 	var KnowledgeGroups: MutableProperty<[KnowledgeGroup]> { get }
 	var Maps: MutableProperty<[Map]> { get }
 	
+	/// Action for synchronising with the API (apply parameter: since)
 	var applySync: Action<Sync, Progress, DataStoreError> { get }
 
+	/// Signal to be triggered upon changes in any DataContextArea
 	var refreshed: Signal<DataContextArea, NoError> { get }
 
 	init(dataStore: IDataStore, navigationResolver: INavigationResolver)

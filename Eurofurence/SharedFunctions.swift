@@ -10,17 +10,23 @@ import ReactiveSwift
 import Changeset
 
 class DateFormatters {
+	/// UTC based DateFormatter using a YYYY-MM-dd HH:mm:ss format
+	public static let dateTimeShort: DateFormatter = {
+		let formatter = DateFormatter()
+		formatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+		return formatter
+	}()
+	/// UTC based DateFormatter using a HH:mm format
 	public static let hourMinute: DateFormatter = {
 		let formatter = DateFormatter()
 		formatter.dateFormat = "HH:mm"
-		formatter.timeZone = TimeZone(abbreviation: "UTC")
 		return formatter
 	}()
 	
+	/// UTC based DateFormatter using an EEE dd MMMM format
 	public static let dayMonthLong: DateFormatter = {
 		let formatter = DateFormatter()
 		formatter.dateFormat = "EEEE dd MMMM"
-		formatter.timeZone = TimeZone(abbreviation: "UTC")
 		return formatter
 	}()
 }
@@ -49,6 +55,8 @@ extension QueueScheduler {
 }
 
 extension URL {
+	/// Sets the isExcludedFromBackup ResourceValue to exclude for the resource
+	/// represented by the URL.
 	mutating func setExcludedFromBackup(_ exclude: Bool) throws {
 		if FileManager.default.fileExists(atPath: self.path) {
 			var resourceValues = URLResourceValues()
@@ -60,6 +68,7 @@ extension URL {
 
 extension EditOperation : Equatable {}
 
+/// Makes Changeset's EditOperation equatable
 public func ==(lhs: EditOperation, rhs: EditOperation) -> Bool {
 	switch (lhs, rhs) {
 	case (.insertion, .insertion):
@@ -76,14 +85,89 @@ public func ==(lhs: EditOperation, rhs: EditOperation) -> Bool {
 }
 
 extension UIView {
+	/// Checks if the view contains any subviews
 	var isViewEmpty : Bool {
-		return  self.subviews.count == 0 ;
+		return  self.subviews.count == 0
 	}
 }
 
 public extension UITableView {
+	/// Registers cellClass using its name as identifier for the call to
+	/// register(:AnyClass:String).
 	func registerCellClass(_ cellClass: AnyClass) {
 		let identifier = String(describing: cellClass)
 		self.register(cellClass, forCellReuseIdentifier: identifier)
+	}
+}
+
+extension Collection where Indices.Iterator.Element == Index {
+	/// Checks whether index is within the collection's bounds and returns null if not.
+	subscript (safe index: Index) -> Generator.Element? {
+		return indices.contains(index) ? self[index] : nil
+	}
+}
+
+extension TimeInterval {
+	/// Converts a timespan represented in H:i:s format to seconds, defaulting to
+	/// a value of 0 upon failure.
+	init(timeString: String) {
+		self = 0
+		guard !timeString.isEmpty else {
+			return
+		}
+		
+		let parts = timeString.components(separatedBy: ":")
+		for (index, part) in parts.reversed().enumerated() {
+			if index > 2 { break }
+			self += (Double(part) ?? 0) * pow(Double(60), Double(index))
+		}
+	}
+	
+	/// Interval in seconds
+	var seconds: Double { get { return self }}
+	/// Interval in seconds
+	var minutes: Double { get { return seconds / 60 }}
+	/// Interval in seconds
+	var hours: Double { get { return minutes / 60 }}
+	/// Interval in seconds
+	var days: Double { get { return hours / 24 }}
+	
+	/// Seconds part of TimeInterval representation
+	var secondsPart: Int { get { return Int(seconds.truncatingRemainder(dividingBy: 60)) }}
+	/// Minutes part of TimeInterval representation
+	var minutesPart: Int { get { return Int(minutes.truncatingRemainder(dividingBy: 60)) }}
+	/// Hours part of TimeInterval representation
+	var hoursPart: Int { get { return Int(hours.truncatingRemainder(dividingBy: 24)) }}
+	/// Days part of TimeInterval representation
+	var daysPart: Int { get { return Int(days) }}
+	
+	/// String representation of interval's days, hours and minutes in the form
+	/// of "[[$daysPart day[s]] $hoursPart hour[s]] $minutesPart minute[s]" or
+	/// an empty string for a duration of less than a minute. 
+	var dhmString: String { get {
+		var stringParts: [String] = []
+		if daysPart > 0 {
+			stringParts.append("\(daysPart) day\(daysPart == 1 ? "" : "s")")
+		}
+		if hoursPart > 0 {
+			stringParts.append("\(hoursPart) hour\(hoursPart == 1 ? "" : "s")")
+		}
+		if minutesPart > 0 {
+			stringParts.append("\(minutesPart) minute\(minutesPart == 1 ? "" : "s")")
+		}
+		
+		return stringParts.joined(separator: " ")
+		}}
+}
+
+extension Character {
+	/// Create a new Character from the string representation of its unicode
+	/// address.
+	init?(unicodeScalarString: String) {
+		guard let intValue = Int.init(unicodeScalarString, radix: 16),
+			let unicodeScalar = UnicodeScalar.init(intValue) else {
+				return nil
+		}
+		self = Character.init(unicodeScalar)
 	}
 }

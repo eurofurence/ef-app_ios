@@ -26,6 +26,9 @@
 		9A7FFD571EFC5B46007ABA36 /* CalendarAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7FFD561EFC5B46007ABA36 /* CalendarAccess.swift */; };
 		9A8477981ED99EDE00F0DF3F /* NavigationResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8477971ED99EDE00F0DF3F /* NavigationResolver.swift */; };
 		9AB64BC91EFE6592004E8D91 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB64BC81EFE6592004E8D91 /* EventsViewModel.swift */; };
+		9AB64BCB1F018135004E8D91 /* KnowledgeGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB64BCA1F018135004E8D91 /* KnowledgeGroupCell.swift */; };
+		9AB64BCD1F018365004E8D91 /* KnowledgeEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB64BCC1F018365004E8D91 /* KnowledgeEntryCell.swift */; };
+		9AB64BCF1F0272A5004E8D91 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AB64BCE1F02665D004E8D91 /* fontawesome-webfont.ttf */; };
 		9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99371EBE172D006FC958 /* AppDelegate.swift */; };
 		9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF993E1EBE172D006FC958 /* Assets.xcassets */; };
 		9ACF99421EBE172D006FC958 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF99401EBE172D006FC958 /* LaunchScreen.storyboard */; };
@@ -45,15 +48,14 @@
 		9ACF99971EC858B2006FC958 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF998B1EC858B2006FC958 /* Map.swift */; };
 		9ACF99981EC858B2006FC958 /* MapEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF998C1EC858B2006FC958 /* MapEntry.swift */; };
 		9ACF999D1ECA25E1006FC958 /* Sync.mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF999C1ECA25E1006FC958 /* Sync.mock.json */; };
+		9AF0B4FE1F08459D000AAA0A /* TimeIntervalRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF0B4FD1F08459D000AAA0A /* TimeIntervalRow.swift */; };
 		9AF159ED1EF5BE7F00DB287D /* SimpleEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF159EC1EF5BE7F00DB287D /* SimpleEventCell.swift */; };
 		A034379A14212C5E996E6321 /* Pods_Eurofurence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */; };
 		D6F3D01BC5E1E9E409955664 /* NewsHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D1F6D5BD062AF11A5804 /* NewsHeaderTableViewCell.swift */; };
-		D6F3D04524461B08CD8E07B7 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D52AE57F767D8C22A556 /* Environment.swift */; };
 		D6F3D13186949132FE4694AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6F3D756F99A68B2DC5B7359 /* Main.storyboard */; };
 		D6F3D13A59E359E69EA66D7E /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D7AF46BAD0F1F9918A76 /* MenuTableViewCell.swift */; };
-		D6F3D204D352FE26C3F90906 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DD137095A2765149B6DE /* InfoTableViewController.swift */; };
+		D6F3D204D352FE26C3F90906 /* KnowledgeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DD137095A2765149B6DE /* KnowledgeTableViewController.swift */; };
 		D6F3D2440B74E17B9A008DE0 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DF8454D3F83FD7294CD0 /* NewsViewController.swift */; };
-		D6F3D2601B0ABAB38B14F44B /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D39AED1B35B9582E107D /* EventCollectionViewCell.swift */; };
 		D6F3D275FF81A313B9213277 /* AnnouncementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DEF39B7EA2ED63CA72D7 /* AnnouncementCell.swift */; };
 		D6F3D2C86BE68A102D2D6312 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D831FC85BC47C1D346C1 /* EventTableViewController.swift */; };
 		D6F3D31AF756EC1131851C5A /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D7EA60D21CE770225E11 /* LeftViewController.swift */; };
@@ -64,15 +66,14 @@
 		D6F3D523BDCDDA3A2A163E55 /* TimeLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D694C5DA66BE24929466 /* TimeLabelCell.swift */; };
 		D6F3D5CDFE398DB6CDBDBC77 /* AnnouncementsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DD1B5AE618FC0076FA4D /* AnnouncementsViewModel.swift */; };
 		D6F3D620BA994A6570325C66 /* DealersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D15DBA1AA6254F83C20A /* DealersTableViewCell.swift */; };
-		D6F3D62A784F07D9C7A84DC8 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DB48EF811D49364AFB9D /* InfoViewController.swift */; };
+		D6F3D62A784F07D9C7A84DC8 /* KnowledgeEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DB48EF811D49364AFB9D /* KnowledgeEntryViewController.swift */; };
 		D6F3D6ADD1B889C901EE841A /* DataStoreResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D8101460A96C0D9A7612 /* DataStoreResult.swift */; };
-		D6F3D6E53AD96306E39C8B22 /* InfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D4DA3BFF58CFCA748548 /* InfoCollectionViewCell.swift */; };
 		D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D46D42184018C6E237CD /* RoutingAppChooser.swift */; };
 		D6F3D875324C6F14833865FB /* SlideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6F3D61F42888D38B5B2E9BD /* SlideMenu.storyboard */; };
 		D6F3DAD590C051C8D0060172 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DFA70EA419105E0019F3 /* EventViewController.swift */; };
 		D6F3DAE595E6664666DA523F /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = D6F3D21513FCE6CCDC157C6A /* .travis.yml */; };
 		D6F3DB838A1BDAFC6DAC2F61 /* CountryAlpha3Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D3FF0CFC133874118590 /* CountryAlpha3Converter.swift */; };
-		D6F3DBB69290DF1E0448A3CC /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D20D882CACF3DC8F7C8F /* EventTableViewCell.swift */; };
+		D6F3DBB69290DF1E0448A3CC /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D20D882CACF3DC8F7C8F /* EventCell.swift */; };
 		D6F3DD6B0659E1A44E01075B /* CurrentEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DDB3580D567F21C9B273 /* CurrentEventsViewModel.swift */; };
 		D6F3DDCB5EF23B138BD25865 /* EventHeaderCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DE9723F934424C183CD4 /* EventHeaderCellTableViewCell.swift */; };
 		D6F3DEDDAFE507E873CB3806 /* WikiText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D49E9A7962D15CE8C3EF /* WikiText.swift */; };
@@ -113,6 +114,9 @@
 		9A7FFD561EFC5B46007ABA36 /* CalendarAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarAccess.swift; sourceTree = "<group>"; };
 		9A8477971ED99EDE00F0DF3F /* NavigationResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationResolver.swift; sourceTree = "<group>"; };
 		9AB64BC81EFE6592004E8D91 /* EventsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
+		9AB64BCA1F018135004E8D91 /* KnowledgeGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupCell.swift; sourceTree = "<group>"; };
+		9AB64BCC1F018365004E8D91 /* KnowledgeEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryCell.swift; sourceTree = "<group>"; };
+		9AB64BCE1F02665D004E8D91 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		9ACF99341EBE172D006FC958 /* Eurofurence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eurofurence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ACF99371EBE172D006FC958 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Eurofurence/AppDelegate.swift; sourceTree = "<group>"; };
 		9ACF993E1EBE172D006FC958 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Eurofurence/Assets.xcassets; sourceTree = "<group>"; };
@@ -136,21 +140,19 @@
 		9ACF998B1EC858B2006FC958 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		9ACF998C1EC858B2006FC958 /* MapEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapEntry.swift; sourceTree = "<group>"; };
 		9ACF999C1ECA25E1006FC958 /* Sync.mock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Sync.mock.json; sourceTree = "<group>"; };
+		9AF0B4FD1F08459D000AAA0A /* TimeIntervalRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeIntervalRow.swift; sourceTree = "<group>"; };
 		9AF159EC1EF5BE7F00DB287D /* SimpleEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleEventCell.swift; sourceTree = "<group>"; };
 		A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eurofurence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6F3D0A32DC83843688B347C /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		D6F3D15DBA1AA6254F83C20A /* DealersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealersTableViewCell.swift; sourceTree = "<group>"; };
 		D6F3D1F6D5BD062AF11A5804 /* NewsHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsHeaderTableViewCell.swift; sourceTree = "<group>"; };
-		D6F3D20D882CACF3DC8F7C8F /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		D6F3D20D882CACF3DC8F7C8F /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		D6F3D21513FCE6CCDC157C6A /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = file.yml; path = .travis.yml; sourceTree = "<group>"; };
 		D6F3D3312E7C5B416B722B85 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
-		D6F3D39AED1B35B9582E107D /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCell.swift; sourceTree = "<group>"; };
 		D6F3D3FF0CFC133874118590 /* CountryAlpha3Converter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryAlpha3Converter.swift; sourceTree = "<group>"; };
 		D6F3D46D42184018C6E237CD /* RoutingAppChooser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutingAppChooser.swift; sourceTree = "<group>"; };
 		D6F3D49E9A7962D15CE8C3EF /* WikiText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WikiText.swift; sourceTree = "<group>"; };
-		D6F3D4DA3BFF58CFCA748548 /* InfoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		D6F3D4F55CFC5A5BDBB3F1A8 /* DealerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealerTableViewController.swift; sourceTree = "<group>"; };
-		D6F3D52AE57F767D8C22A556 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		D6F3D61F42888D38B5B2E9BD /* SlideMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SlideMenu.storyboard; sourceTree = "<group>"; };
 		D6F3D66312CF86A43D699F2C /* DealerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealerViewController.swift; sourceTree = "<group>"; };
 		D6F3D694C5DA66BE24929466 /* TimeLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLabelCell.swift; sourceTree = "<group>"; };
@@ -160,9 +162,9 @@
 		D6F3D8101460A96C0D9A7612 /* DataStoreResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreResult.swift; sourceTree = "<group>"; };
 		D6F3D831FC85BC47C1D346C1 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		D6F3DB1B292BBFBF5D69F557 /* ServiceResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceResolver.swift; sourceTree = "<group>"; };
-		D6F3DB48EF811D49364AFB9D /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		D6F3DB48EF811D49364AFB9D /* KnowledgeEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryViewController.swift; sourceTree = "<group>"; };
 		D6F3DC7147FE454A5FAA2EA4 /* TimeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeService.swift; sourceTree = "<group>"; };
-		D6F3DD137095A2765149B6DE /* InfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
+		D6F3DD137095A2765149B6DE /* KnowledgeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeTableViewController.swift; sourceTree = "<group>"; };
 		D6F3DD1B5AE618FC0076FA4D /* AnnouncementsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementsViewModel.swift; sourceTree = "<group>"; };
 		D6F3DDB3580D567F21C9B273 /* CurrentEventsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentEventsViewModel.swift; sourceTree = "<group>"; };
 		D6F3DE9723F934424C183CD4 /* EventHeaderCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHeaderCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -214,7 +216,6 @@
 				9A34B97E1ED06946004A249E /* ContextResolver.swift */,
 				9A34B9801ED06956004A249E /* ViewModelResolver.swift */,
 				D6F3DB1B292BBFBF5D69F557 /* ServiceResolver.swift */,
-				D6F3D52AE57F767D8C22A556 /* Environment.swift */,
 			);
 			path = DependencyResolution;
 			sourceTree = "<group>";
@@ -250,10 +251,10 @@
 				9ACF99571EBE32ED006FC958 /* DataModel */,
 				9ACF99771EBE4B98006FC958 /* DataStore */,
 				9A34B97B1ED066B7004A249E /* DependencyResolution */,
-				9ACF999B1ECA259C006FC958 /* Resources */,
-				9ACF99581EBE32F3006FC958 /* ViewModel */,
 				D6F3D4066A20EACF140E773F /* Helpers */,
+				9ACF999B1ECA259C006FC958 /* Resources */,
 				D6F3D0327856D0D0294EF5E6 /* Services */,
+				9ACF99581EBE32F3006FC958 /* ViewModel */,
 				9ACF99591EBE32FE006FC958 /* Views */,
 			);
 			path = Eurofurence;
@@ -305,13 +306,13 @@
 			isa = PBXGroup;
 			children = (
 				9ACF997E1EC75447006FC958 /* Abstractions */,
-				9A0525441ECB090700578798 /* WebApiConnection.swift */,
-				9A0525461ECB091900578798 /* MockApiConnection.swift */,
 				9A34B9791ECF87B1004A249E /* ContextManager.swift */,
-				9A34B9861ED08C7E004A249E /* JsonDataStore.swift */,
-				9A34B9881ED35FE0004A249E /* ReactiveDataContext.swift */,
-				9A8477971ED99EDE00F0DF3F /* NavigationResolver.swift */,
 				D6F3D8101460A96C0D9A7612 /* DataStoreResult.swift */,
+				9A34B9861ED08C7E004A249E /* JsonDataStore.swift */,
+				9A0525461ECB091900578798 /* MockApiConnection.swift */,
+				9A8477971ED99EDE00F0DF3F /* NavigationResolver.swift */,
+				9A34B9881ED35FE0004A249E /* ReactiveDataContext.swift */,
+				9A0525441ECB090700578798 /* WebApiConnection.swift */,
 			);
 			path = DataStore;
 			sourceTree = "<group>";
@@ -358,6 +359,7 @@
 		9ACF999B1ECA259C006FC958 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9AB64BCE1F02665D004E8D91 /* fontawesome-webfont.ttf */,
 				9ACF999C1ECA25E1006FC958 /* Sync.mock.json */,
 			);
 			path = Resources;
@@ -366,14 +368,14 @@
 		9AF159E91EF5B3AE00DB287D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D6F3DEF39B7EA2ED63CA72D7 /* AnnouncementCell.swift */,
 				D6F3D15DBA1AA6254F83C20A /* DealersTableViewCell.swift */,
-				D6F3D39AED1B35B9582E107D /* EventCollectionViewCell.swift */,
+				D6F3D20D882CACF3DC8F7C8F /* EventCell.swift */,
 				D6F3DE9723F934424C183CD4 /* EventHeaderCellTableViewCell.swift */,
-				D6F3D20D882CACF3DC8F7C8F /* EventTableViewCell.swift */,
-				D6F3D4DA3BFF58CFCA748548 /* InfoCollectionViewCell.swift */,
+				9AB64BCC1F018365004E8D91 /* KnowledgeEntryCell.swift */,
+				9AB64BCA1F018135004E8D91 /* KnowledgeGroupCell.swift */,
 				D6F3D7AF46BAD0F1F9918A76 /* MenuTableViewCell.swift */,
 				D6F3D1F6D5BD062AF11A5804 /* NewsHeaderTableViewCell.swift */,
-				D6F3DEF39B7EA2ED63CA72D7 /* AnnouncementCell.swift */,
 				9AF159EC1EF5BE7F00DB287D /* SimpleEventCell.swift */,
 				D6F3D694C5DA66BE24929466 /* TimeLabelCell.swift */,
 			);
@@ -392,9 +394,10 @@
 			isa = PBXGroup;
 			children = (
 				9A7FFD561EFC5B46007ABA36 /* CalendarAccess.swift */,
-				9A7FFD521EF97CD4007ABA36 /* UserSettings.swift */,
-				D6F3D46D42184018C6E237CD /* RoutingAppChooser.swift */,
 				D6F3D3FF0CFC133874118590 /* CountryAlpha3Converter.swift */,
+				D6F3D46D42184018C6E237CD /* RoutingAppChooser.swift */,
+				9AF0B4FD1F08459D000AAA0A /* TimeIntervalRow.swift */,
+				9A7FFD521EF97CD4007ABA36 /* UserSettings.swift */,
 				D6F3D49E9A7962D15CE8C3EF /* WikiText.swift */,
 			);
 			path = Helpers;
@@ -408,8 +411,8 @@
 				D6F3D66312CF86A43D699F2C /* DealerViewController.swift */,
 				D6F3D831FC85BC47C1D346C1 /* EventTableViewController.swift */,
 				D6F3DFA70EA419105E0019F3 /* EventViewController.swift */,
-				D6F3DD137095A2765149B6DE /* InfoTableViewController.swift */,
-				D6F3DB48EF811D49364AFB9D /* InfoViewController.swift */,
+				D6F3DB48EF811D49364AFB9D /* KnowledgeEntryViewController.swift */,
+				D6F3DD137095A2765149B6DE /* KnowledgeTableViewController.swift */,
 				D6F3D7EA60D21CE770225E11 /* LeftViewController.swift */,
 				9A7FFD541EFC5A9E007ABA36 /* MapViewController.swift */,
 				D6F3DF71A249A0F1DE8D51FB /* NewsTableViewController.swift */,
@@ -507,6 +510,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AB64BCF1F0272A5004E8D91 /* fontawesome-webfont.ttf in Resources */,
 				9ACF99421EBE172D006FC958 /* LaunchScreen.storyboard in Resources */,
 				9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */,
 				9ACF999D1ECA25E1006FC958 /* Sync.mock.json in Resources */,
@@ -532,13 +536,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Eurofurence-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AD43207D87B13D6AADFF543F /* [CP] Embed Pods Frameworks */ = {
@@ -547,9 +554,34 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Changeset/Changeset.framework",
+				"${BUILT_PRODUCTS_DIR}/Dip/Dip.framework",
+				"${BUILT_PRODUCTS_DIR}/Dip-UI/Dip_UI.framework",
+				"${BUILT_PRODUCTS_DIR}/EVReflection/EVReflection.framework",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/ReachabilitySwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SlideMenuControllerSwift/SlideMenuControllerSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Changeset.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dip.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dip_UI.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EVReflection.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReachabilitySwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SlideMenuControllerSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -606,6 +638,7 @@
 				9ACF99941EC858B2006FC958 /* LinkFragment.swift in Sources */,
 				9ACF99951EC858B2006FC958 /* EventConferenceRoom.swift in Sources */,
 				9ACF99901EC858B2006FC958 /* KnowledgeEntry.swift in Sources */,
+				9AF0B4FE1F08459D000AAA0A /* TimeIntervalRow.swift in Sources */,
 				9AF159ED1EF5BE7F00DB287D /* SimpleEventCell.swift in Sources */,
 				9ACF998F1EC858B2006FC958 /* Announcement.swift in Sources */,
 				9ACF99971EC858B2006FC958 /* Map.swift in Sources */,
@@ -615,23 +648,22 @@
 				9A7FFD531EF97CD4007ABA36 /* UserSettings.swift in Sources */,
 				D6F3D5CDFE398DB6CDBDBC77 /* AnnouncementsViewModel.swift in Sources */,
 				D6F3DD6B0659E1A44E01075B /* CurrentEventsViewModel.swift in Sources */,
+				9AB64BCD1F018365004E8D91 /* KnowledgeEntryCell.swift in Sources */,
 				D6F3DFB53E62A8C16F211819 /* TimeService.swift in Sources */,
 				D6F3D4C7FF8BB27C46EF4D3D /* ServiceResolver.swift in Sources */,
-				D6F3D04524461B08CD8E07B7 /* Environment.swift in Sources */,
+				9AB64BCB1F018135004E8D91 /* KnowledgeGroupCell.swift in Sources */,
 				D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */,
 				D6F3DB838A1BDAFC6DAC2F61 /* CountryAlpha3Converter.swift in Sources */,
 				D6F3DEDDAFE507E873CB3806 /* WikiText.swift in Sources */,
 				D6F3D523BDCDDA3A2A163E55 /* TimeLabelCell.swift in Sources */,
 				D6F3D620BA994A6570325C66 /* DealersTableViewCell.swift in Sources */,
 				D6F3DDCB5EF23B138BD25865 /* EventHeaderCellTableViewCell.swift in Sources */,
-				D6F3DBB69290DF1E0448A3CC /* EventTableViewCell.swift in Sources */,
+				D6F3DBB69290DF1E0448A3CC /* EventCell.swift in Sources */,
 				D6F3D13A59E359E69EA66D7E /* MenuTableViewCell.swift in Sources */,
 				D6F3D01BC5E1E9E409955664 /* NewsHeaderTableViewCell.swift in Sources */,
 				D6F3D275FF81A313B9213277 /* AnnouncementCell.swift in Sources */,
-				D6F3D2601B0ABAB38B14F44B /* EventCollectionViewCell.swift in Sources */,
-				D6F3D6E53AD96306E39C8B22 /* InfoCollectionViewCell.swift in Sources */,
 				D6F3DAD590C051C8D0060172 /* EventViewController.swift in Sources */,
-				D6F3D62A784F07D9C7A84DC8 /* InfoViewController.swift in Sources */,
+				D6F3D62A784F07D9C7A84DC8 /* KnowledgeEntryViewController.swift in Sources */,
 				D6F3D2440B74E17B9A008DE0 /* NewsViewController.swift in Sources */,
 				D6F3D3D11CAB2B06852D0EF9 /* DealerTableViewController.swift in Sources */,
 				9A7FFD551EFC5A9E007ABA36 /* MapViewController.swift in Sources */,
@@ -639,7 +671,7 @@
 				D6F3D40D3515E7ABE9565906 /* AboutViewController.swift in Sources */,
 				D6F3DEED2F3250C61DB692D9 /* DealerViewController.swift in Sources */,
 				D6F3D2C86BE68A102D2D6312 /* EventTableViewController.swift in Sources */,
-				D6F3D204D352FE26C3F90906 /* InfoTableViewController.swift in Sources */,
+				D6F3D204D352FE26C3F90906 /* KnowledgeTableViewController.swift in Sources */,
 				D6F3D31AF756EC1131851C5A /* LeftViewController.swift in Sources */,
 				D6F3DF2779D7CE09AA5507F9 /* NewsTableViewController.swift in Sources */,
 			);
@@ -779,6 +811,7 @@
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = Eurofurence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.Eurofurence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos10.3;

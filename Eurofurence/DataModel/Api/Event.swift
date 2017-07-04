@@ -13,7 +13,7 @@ class Event : EntityBase {
     var ConferenceTrackId : String = ""
     var ConferenceRoomId : String = ""
     var Description : String = ""
-	var Duration : Int = 0
+	var Duration : TimeInterval = 0.0
 	var EndDateTimeUtc : Date = Date()
 	var EndTime : String = ""
 	var IsDeviatingFromConBook : Bool = false
@@ -26,15 +26,25 @@ class Event : EntityBase {
     
     var IsFavorite : Bool = false
 	
-    var ConferenceDay : EventConferenceDay? = nil
-    var ConferenceTrack : EventConferenceTrack? = nil
-	var ConferenceRoom : EventConferenceRoom? = nil
+    weak var ConferenceDay : EventConferenceDay? = nil
+    weak var ConferenceTrack : EventConferenceTrack? = nil
+	weak var ConferenceRoom : EventConferenceRoom? = nil
 	
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {
 			return [(keyInObject: "ConferenceDay",keyInResource: nil),
 			        (keyInObject: "ConferenceTrack",keyInResource: nil),
 					(keyInObject: "ConferenceRoom",keyInResource: nil)]
+	}
+	
+	override func propertyConverters() -> [(key: String, decodeConverter: ((Any?) -> ()), encodeConverter: (() -> Any?))] {
+		return [
+			(key: "Duration",
+			 decodeConverter: {
+				guard let timeString = $0 as? String else { return }
+				self.Duration = TimeInterval.init(timeString: timeString) },
+			 encodeConverter: { return "\(self.Duration.hoursPart):\(self.Duration.minutesPart):\(self.Duration.secondsPart)"})
+		]
 	}
 }
 

@@ -10,19 +10,24 @@ import ReactiveSwift
 import Result
 
 class ContextManager {
-	static let LAST_SYNC_DEFAULT = "lastSync"
-	
 	private static let scheduler = QueueScheduler(qos: .userInitiated, name: "org.eurofurence.app.ContextManagerScheduler")
 	private var apiConnection: IApiConnection
 	private var dataContext: IDataContext
 	private var dataStore: IDataStore
 
-	private(set) lazy var syncWithApi: Action<Int, Progress, NSError>? =
-			Action { since in
+	private(set) lazy var syncWithApi: Action<Date?, Progress, NSError>? =
+			Action { sinceDate in
 				return SignalProducer<Progress, NSError> { observer, disposable in
 					let progress = Progress(totalUnitCount: 3)
+					let parameters: IApiConnection.Parameters?
+					if let sinceDate = sinceDate {
+						let since = Iso8601DateFormatter.instance.string(from: sinceDate)
+						parameters = ["since": since]
+					} else {
+						parameters = nil
+					}
 
-					disposable += self.apiConnection.doGet("Sync", parameters: ["since": since]).observe(on: ContextManager.scheduler).startWithResult({ (apiResult: Result<Sync, ApiConnectionError>) -> Void in
+					disposable += self.apiConnection.doGet("Sync", parameters: parameters).observe(on: ContextManager.scheduler).startWithResult({ (apiResult: Result<Sync, ApiConnectionError>) -> Void in
 						
 						progress.completedUnitCount += 1
 						observer.send(value: progress)
@@ -31,7 +36,7 @@ class ContextManager {
 							disposable += self.dataContext.applySync.apply(sync).startWithCompleted{
 								progress.completedUnitCount += 1
 								observer.send(value: progress)
-								UserDefaults.standard.set(sync.CurrentDateTimeUtc, forKey: ContextManager.LAST_SYNC_DEFAULT)
+								UserSettings.LastSyncDate.setValue(sync.CurrentDateTimeUtc)
 								
 								// TODO: Download images
 								progress.completedUnitCount += 1

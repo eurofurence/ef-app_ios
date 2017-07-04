@@ -15,18 +15,18 @@ class SettingsTableViewController: FormViewController {
         form +++ Section("Network")
             <<< SwitchRow("switchRowUpdateOnStart") { row in      // initializer
                 row.title = "Automaticaly update on start"
-                row.value = UserSettings<Bool>.UpdateOnStart.currentValue()
+                row.value = UserSettings.UpdateOnStart.currentValue()
                 }.onChange { row in
-                    UserSettings<Bool>.UpdateOnStart.setValue(row.value!)
+                    UserSettings.UpdateOnStart.setValue(row.value!)
                     row.updateCell()
                 }.cellUpdate { cell, row in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
             }
             <<< SwitchRow("SwitchRow") { row in      // initializer
                 row.title = "Auto-update on mobile"
-                row.value = UserSettings<Bool>.AutomaticRefreshOnMobile.currentValue()
+                row.value = UserSettings.AutomaticRefreshOnMobile.currentValue()
                 }.onChange { row in
-                    UserSettings<Bool>.AutomaticRefreshOnMobile.setValue(row.value!)
+                    UserSettings.AutomaticRefreshOnMobile.setValue(row.value!)
                     row.updateCell()
                 }.cellUpdate { cell, row in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
@@ -52,19 +52,19 @@ class SettingsTableViewController: FormViewController {
                 
                 row.options = [-1, 300, 600, 900, 1800, 3600]
                 
-                row.value = UserSettings<Int>.RefreshTimer.currentValue()
+                row.value = UserSettings.RefreshTimer.currentValue()
                 }.onChange { row in
                     
                     // TODO: BUG! Label becomes empty when currently selected entry is selected again
                     
-                    var refreshSeconds = UserSettings<Int>.RefreshTimer.currentValue()
+					var refreshSeconds: Int = UserSettings.RefreshTimer.currentValueOrDefault()
                     if let value = row.value {
                         refreshSeconds = value
                     } else {
                         row.value = refreshSeconds
                     }
-                    UserSettings<Int>.RefreshTimer.setValue(refreshSeconds)
-                    if refreshSeconds > 0 && UserSettings<Bool>.RefreshInBackground.currentValue() {
+                    UserSettings.RefreshTimer.setValue(refreshSeconds)
+                    if refreshSeconds > 0 && UserSettings.RefreshInBackground.currentValueOrDefault() {
                         UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
                     } else {
                         UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalNever)
@@ -78,14 +78,14 @@ class SettingsTableViewController: FormViewController {
 
             <<< SwitchRow("switchRowNotifyOnAnnouncement") { row in      // initializer
                 row.title = "Notify on new announcements"
-                row.value = UserSettings<Bool>.NotifyOnAnnouncement.currentValue()
+                row.value = UserSettings.NotifyOnAnnouncement.currentValue()
                 row.hidden = Condition.function(["pushRowRefreshTimer"], { form in
                     let value = (form.rowBy(tag: "pushRowRefreshTimer") as? PushRow<Int>)?.value
                     return (value != nil) && value! <= 0
                 })
                 }.onChange { row in
                     if let value = row.value {
-                        UserSettings<Bool>.NotifyOnAnnouncement.setValue(value)
+                        UserSettings.NotifyOnAnnouncement.setValue(value)
                         if !value {
                             (self.form.rowBy(tag: "switchRowRefreshInBackground") as? SwitchRow)?.value = false
                         }
@@ -122,11 +122,11 @@ class SettingsTableViewController: FormViewController {
             +++ Section(header:"Experimental features", footer: "Allowing the app to try refreshing in background will only consume a small amount of data. This allows us to keep you updated on the latest announcements regarding delays and other important events at the con. Please note that background refreshing may not always work and can be unreliable!")
             <<< SwitchRow("switchRowRefreshInBackground") { row in      // initializer
                 row.title = "Refresh in background"
-                row.value = UserSettings<Bool>.RefreshInBackground.currentValue()
+                row.value = UserSettings.RefreshInBackground.currentValue()
                 }.onChange { row in
                     if let value = row.value {
-                        UserSettings<Bool>.RefreshInBackground.setValue(row.value!)
-                        if row.value! {
+                        UserSettings.RefreshInBackground.setValue(value)
+                        if value {
                             UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
                         } else {
                             UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalNever)
@@ -142,29 +142,42 @@ class SettingsTableViewController: FormViewController {
             }
             <<< SwitchRow("switchRowRefreshInBackgroundOnMobile") { row in      // initializer
                 row.title = "Background refresh on mobile"
-                row.value = UserSettings<Bool>.RefreshInBackgroundOnMobile.currentValue()
+                row.value = UserSettings.RefreshInBackgroundOnMobile.currentValue()
                 row.hidden = Condition.function(["pushRowRefreshTimer", "switchRowRefreshInBackground"], { form in
                     return !((form.rowBy(tag: "switchRowNotifyOnAnnouncement") as? SwitchRow)?.value ?? true) || !((form.rowBy(tag: "switchRowRefreshInBackground") as? SwitchRow)?.value ?? true)
                 })
                 }.onChange { row in
-                    UserSettings<Bool>.RefreshInBackgroundOnMobile.setValue(row.value!)
+                    UserSettings.RefreshInBackgroundOnMobile.setValue(row.value!)
                     row.updateCell()
                 }.cellUpdate { cell, row in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
                     cell.backgroundColor = UIColor.lightText
-        }
+			}
+			+++ Section(header:"Debugging", footer: "These settings are intended for debugging purposes only and may cause instability or unexpected behaviour if changed!")
+			<<< TimeIntervalRow("timeIntervalRowTimeOffset") { row in      // initializer
+				row.title = "Time Offset"
+				row.value = UserSettings.DebugTimeOffset.currentValue()
+				}.onChange { row in
+					if let value = row.value {
+						UserSettings.DebugTimeOffset.setValue(value)
+					}
+					row.updateCell()
+				}.cellUpdate { cell, row in
+					cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
+					cell.backgroundColor = UIColor.lightText
+		}
         // Do any additional setup after loading the view.
     }
-    
+	
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
+	
+	
     /*
      // MARK: - Navigation
-     
+	
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
      // Get the new view controller using segue.destinationViewController.

@@ -8,6 +8,9 @@
 import Foundation
 import EVReflection
 
+/**
+Provides a generic wrapper for entity deltas supplied by Sync
+*/
 class SyncEntityDelta<EntityType>: SyncEntityDeltaBase, EVGenericsKVC where EntityType: NSObject {
 	var ChangedEntities: [EntityType] = []
 
@@ -25,6 +28,10 @@ class SyncEntityDelta<EntityType>: SyncEntityDeltaBase, EVGenericsKVC where Enti
 	}
 }
 
+/**
+Base protocol for generic wrapper. Necessary due to internal implementation
+details of EVReflection (see documentation for details).
+*/
 class SyncEntityDeltaBase: EVNetworkingObject {
 	var DeletedEntities: [String] = []
 	var RemoveAllBeforeInsert: Bool = true

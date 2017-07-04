@@ -16,15 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 	var lifetime = Lifetime.make()
 
-
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
 		PrintOptions.Active = .None
-		
-		let timeService = try! ServiceResolver.container.resolve() as TimeService
-		timeService.offset = Date(timeIntervalSince1970: 1503081000.0).timeIntervalSince(Date())
 
-		let contextManager = try! ContextResolver.container.resolve(tag: Environment.Development) as ContextManager
+		let contextManager = try! ContextResolver.container.resolve() as ContextManager
 		let dataContext = try! ContextResolver.container.resolve() as IDataContext
 		
 		dataContext.loadFromStore().start(on: QueueScheduler.concurrent).start({ event in
@@ -33,22 +29,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				print("Loading completed by \(value.fractionCompleted)")
 			case let .failed(error):
 				print("Failed to load data from store: \(error)")
-				print("Performing full reload from API")
 				
-				contextManager.syncWithApi?.apply(0).start({ event in
-					guard let value = event.value else {
-						print("Error during sync: \(String(describing: event.error))")
-						// TODO: Display error message and option to retry sync
-						return
+				// TODO: Prompt user for required initialisation
+				// TODO: Check WiFi connection and prompt user if on mobile
+				print("Performing full reload from API")
+				contextManager.syncWithApi?.apply(nil).start({ result in
+					if result.isCompleted {
+						print("Sync completed")
+					} else if let value = result.value {
+						print("Sync completed by \(value.fractionCompleted)")
+					} else {
+						print("Error during sync: \(String(describing: result.error))")
 					}
-					print("Sync completed by \(value.fractionCompleted)")
 				})
 			case .completed:
 				print("Loading completed")
+				// TODO: Check WiFi connection and prompt user if on mobile
+				if UserSettings.UpdateOnStart.currentValueOrDefault() {
+					contextManager.syncWithApi?.apply(UserSettings.LastSyncDate.currentValue()).start({ result in
+						if result.isCompleted {
+							print("Sync completed")
+						} else if let value = result.value {
+							print("Sync completed by \(value.fractionCompleted)")
+						} else {
+							print("Error during sync: \(String(describing: result.error))")
+						}
+					})
+				}
 			case .interrupted:
 				print("Loading interrupted")
 			}
 		})
+		
+		setupSlideMenu()
 		
 		return true
 	}
@@ -75,6 +88,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	}
 
-
+	private func setupSlideMenu() {
+		let menuStoryboard = UIStoryboard(name: "SlideMenu", bundle: nil);
+		let mainStoryboard = UIStoryboard(name: "Main", bundle: nil);
+		let mainViewController = mainStoryboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+		let leftViewController = menuStoryboard.instantiateViewController(withIdentifier: "LeftView") as! LeftViewController
+		
+		let slideMenuController = SlideMenuController(mainViewController: mainViewController, leftMenuViewController: leftViewController);
+		window?.rootViewController = slideMenuController;
+		window?.makeKeyAndVisible()
+	}
 }
 

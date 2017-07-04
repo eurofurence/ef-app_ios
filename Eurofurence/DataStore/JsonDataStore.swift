@@ -11,14 +11,17 @@ import Foundation
 import ReactiveSwift
 import EVReflection
 
+/**
+JSON-based implementation for offline, on-device data storage.
+*/
 class JsonDataStore: IDataStore {
 	private let scheduler = QueueScheduler(qos: .userInitiated, name: "DataStore")
 	private let baseDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 	private var storeDirectory : URL? = nil
-	//  private let baseDirectory = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])
 	private let storeDirectoryName = "Store"
 	private let fileExtension = ".json"
 
+	
 	func load<EntityType: EntityBase>(_ entityType: EntityType.Type) -> SignalProducer<DataStoreResult, DataStoreError> {
 		return SignalProducer<DataStoreResult, DataStoreError>.init({ (observer, disposable) in
 			do {
