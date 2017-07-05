@@ -4,6 +4,11 @@ branches:
 
 language: swift
 osx_image: xcode8.3
-xcode_sdk: iphonesimulator8.4
 xcode_workspace: Eurofurence.xcworkspace
 xcode_scheme: Eurofurence
+
+install:
+  - gem install xcpretty
+
+script:
+  - xcodebuild -workspace Eurofurence.xcworkspace -scheme Eurofurence -destination "platform=iOS Simulator,name=iPhone 7" clean test | xcpretty
