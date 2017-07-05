@@ -22,7 +22,7 @@ class DateFormatters {
 		formatter.dateFormat = "HH:mm"
 		return formatter
 	}()
-	
+
 	/// UTC based DateFormatter using an EEE dd MMMM format
 	public static let dayMonthLong: DateFormatter = {
 		let formatter = DateFormatter()
@@ -86,7 +86,7 @@ public func ==(lhs: EditOperation, rhs: EditOperation) -> Bool {
 
 extension UIView {
 	/// Checks if the view contains any subviews
-	var isViewEmpty : Bool {
+	var isViewEmpty: Bool {
 		return  self.subviews.count == 0
 	}
 }
@@ -115,14 +115,14 @@ extension TimeInterval {
 		guard !timeString.isEmpty else {
 			return
 		}
-		
+
 		let parts = timeString.components(separatedBy: ":")
 		for (index, part) in parts.reversed().enumerated() {
 			if index > 2 { break }
 			self += (Double(part) ?? 0) * pow(Double(60), Double(index))
 		}
 	}
-	
+
 	/// Interval in seconds
 	var seconds: Double { get { return self }}
 	/// Interval in seconds
@@ -131,7 +131,7 @@ extension TimeInterval {
 	var hours: Double { get { return minutes / 60 }}
 	/// Interval in seconds
 	var days: Double { get { return hours / 24 }}
-	
+
 	/// Seconds part of TimeInterval representation
 	var secondsPart: Int { get { return Int(seconds.truncatingRemainder(dividingBy: 60)) }}
 	/// Minutes part of TimeInterval representation
@@ -140,7 +140,7 @@ extension TimeInterval {
 	var hoursPart: Int { get { return Int(hours.truncatingRemainder(dividingBy: 24)) }}
 	/// Days part of TimeInterval representation
 	var daysPart: Int { get { return Int(days) }}
-	
+
 	/// String representation of interval's days, hours and minutes in the form
 	/// of "[[$daysPart day[s]] $hoursPart hour[s]] $minutesPart minute[s]" or
 	/// an empty string for a duration of less than a minute. 
@@ -155,7 +155,7 @@ extension TimeInterval {
 		if minutesPart > 0 {
 			stringParts.append("\(minutesPart) minute\(minutesPart == 1 ? "" : "s")")
 		}
-		
+
 		return stringParts.joined(separator: " ")
 		}}
 }

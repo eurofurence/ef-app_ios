@@ -17,43 +17,43 @@ protocol LeftMenuProtocol : class {
     func changeViewController(_ menu: LeftMenu)
 }
 
-class LeftViewController : UIViewController, LeftMenuProtocol {
-    
+class LeftViewController: UIViewController, LeftMenuProtocol {
+
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     let slideMenuStoryboard = UIStoryboard(name: "SlideMenu", bundle: nil)
-    
+
     var menus = ["Settings", "About"]
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.delegate = self;
-        self.tableView.dataSource = self;
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         self.tableView.separatorColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1.0)
         self.tableView.registerCellClass(MenuTableViewCell.self)
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
 		// TODO: Implement VersionProvider
         self.versionLabel.text = "Version: " /*+ ConfigManager.sharedInstance.appVersion*/
         super.viewWillAppear(animated)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.view.layoutIfNeeded()
     }
-    
+
     func changeViewController(_ menu: LeftMenu) {
         let destinationViewController: UIViewController
         switch menu {
@@ -88,7 +88,7 @@ extension LeftViewController : UITableViewDelegate {
         }
         return 0
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let menu = LeftMenu(rawValue: (indexPath as NSIndexPath).item) {
             self.changeViewController(menu)
@@ -97,13 +97,13 @@ extension LeftViewController : UITableViewDelegate {
 }
 
 extension LeftViewController : UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menus.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         if let menu = LeftMenu(rawValue: (indexPath as NSIndexPath).item) {
             switch menu {
         case .settings, .about:
@@ -117,10 +117,10 @@ extension LeftViewController : UITableViewDataSource {
 }
 
 extension LeftViewController: UIScrollViewDelegate {
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if self.tableView == scrollView {
-            
+
         }
     }
 }

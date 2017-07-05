@@ -20,7 +20,7 @@ protocol DataContextProtocol {
 	var KnowledgeEntries: MutableProperty<[KnowledgeEntry]> { get }
 	var KnowledgeGroups: MutableProperty<[KnowledgeGroup]> { get }
 	var Maps: MutableProperty<[Map]> { get }
-	
+
 	/// Action for synchronising with the API (apply parameter: since)
 	var applySync: Action<Sync, Progress, DataStoreError> { get }
 
@@ -28,7 +28,6 @@ protocol DataContextProtocol {
 	var refreshed: Signal<DataContextArea, NoError> { get }
 
 	init(dataStore: DataStoreProtocol, navigationResolver: NavigationResolverProtocol)
-
 
 	func loadFromStore(_ areas: DataContextArea) -> SignalProducer<Progress, DataStoreError>
 
@@ -85,10 +84,10 @@ struct DataContextArea: OptionSet, CustomStringConvertible {
 			return self.None
 		}
 	}
-	
+
 	var description: String { get {
 			var areasStrings: [String] = []
-			
+
 			if self.contains(DataContextArea.Announcements) {
 				areasStrings.append("Announcements")
 			}
@@ -107,7 +106,7 @@ struct DataContextArea: OptionSet, CustomStringConvertible {
 			if self.contains(DataContextArea.Maps) {
 				areasStrings.append("Maps")
 			}
-			
+
 			return "DataContextArea(\(areasStrings.joined(separator: ", ")))"
 		}
 	}

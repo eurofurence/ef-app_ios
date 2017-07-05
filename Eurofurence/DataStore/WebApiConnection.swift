@@ -11,7 +11,7 @@ import ReactiveSwift
 import Alamofire
 
 class WebApiConnection: ApiConnectionProtocol {
-	
+
 	let scheduler = QueueScheduler(qos: .userInitiated, name: "org.eurofurence.app.WebApiScheduler")
 	let apiUrl: URL
 
@@ -28,8 +28,8 @@ class WebApiConnection: ApiConnectionProtocol {
 		self.apiUrl = apiUrl
 	}
 
-	func doGet<EntityType:EVNetworkingObject>(_ endpoint: String, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
-		return SignalProducer { observer, disposable in
+	func doGet<EntityType: EVNetworkingObject>(_ endpoint: String, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
+		return SignalProducer { observer, _ in
 			let getUrl = self.apiUrl.appendingPathComponent(endpoint)
 			print("Retrieving \(getUrl) from API via GET using parameters \(String(describing: parameters)).")
 			Alamofire.request(getUrl, method: .get, parameters: parameters).responseObject(completionHandler: {
@@ -51,20 +51,20 @@ class WebApiConnection: ApiConnectionProtocol {
 		}.observe(on: scheduler)
 	}
 
-	func doPost<EntityType:EVNetworkingObject>(_ endpoint: String, payload: EVReflectable? = nil, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
-		return SignalProducer { observer, disposable in
+	func doPost<EntityType: EVNetworkingObject>(_ endpoint: String, payload: EVReflectable? = nil, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
+		return SignalProducer { observer, _ in
 			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
 		}.observe(on: scheduler)
 	}
 
-	func doPut<EntityType:EVNetworkingObject>(_ endpoint: String, payload: EVReflectable? = nil, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
-		return SignalProducer { observer, disposable in
+	func doPut<EntityType: EVNetworkingObject>(_ endpoint: String, payload: EVReflectable? = nil, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
+		return SignalProducer { observer, _ in
 			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
 		}.observe(on: scheduler)
 	}
 
-	func doDelete<EntityType:EVNetworkingObject>(_ endpoint: String, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
-		return SignalProducer { observer, disposable in
+	func doDelete<EntityType: EVNetworkingObject>(_ endpoint: String, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
+		return SignalProducer { observer, _ in
 			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
 		}.observe(on: scheduler)
 	}

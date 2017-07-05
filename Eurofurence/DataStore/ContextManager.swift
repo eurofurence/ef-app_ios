@@ -28,16 +28,16 @@ class ContextManager {
 					}
 
 					disposable += self.apiConnection.doGet("Sync", parameters: parameters).observe(on: ContextManager.scheduler).startWithResult({ (apiResult: Result<Sync, ApiConnectionError>) -> Void in
-						
+
 						progress.completedUnitCount += 1
 						observer.send(value: progress)
-						
+
 						if let sync = apiResult.value {
-							disposable += self.dataContext.applySync.apply(sync).startWithCompleted{
+							disposable += self.dataContext.applySync.apply(sync).startWithCompleted {
 								progress.completedUnitCount += 1
 								observer.send(value: progress)
 								UserSettings.LastSyncDate.setValue(sync.CurrentDateTimeUtc)
-								
+
 								// TODO: Download images
 								progress.completedUnitCount += 1
 								observer.send(value: progress)

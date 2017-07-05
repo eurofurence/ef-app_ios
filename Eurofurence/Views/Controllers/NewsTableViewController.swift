@@ -12,38 +12,38 @@ import UIKit
 import Changeset
 
 class NewsTableViewController: UITableViewController {
-	
+
 	private var announcementsViewModel: AnnouncementsViewModel = try! ViewModelResolver.container.resolve()
 	private var currentEventsViewModel: CurrentEventsViewModel = try! ViewModelResolver.container.resolve()
 	private var timeService: TimeService = try! ServiceResolver.container.resolve()
-	
+
 	private var disposables = CompositeDisposable()
-	
+
     override func viewDidLoad() {
         super.viewDidLoad()
-		
+
 		tableView.backgroundColor = UIColor.black
-        tableView.estimatedRowHeight = 70;
-        tableView.rowHeight = UITableViewAutomaticDimension;
-		
+        tableView.estimatedRowHeight = 70
+        tableView.rowHeight = UITableViewAutomaticDimension
+
         self.refreshControl?.addTarget(self, action: #selector(NewsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+
         // Reset the application badge because all announcements can be assumed seen
         UIApplication.shared.applicationIconBadgeNumber = 0
         UIApplication.shared.cancelAllLocalNotifications()
     }
-	
+
 	// TODO: Pull into super class for all refreshable ViewControllers
     /// Initiates sync with API via refreshControl
-    func refresh(_ sender:AnyObject) {
+    func refresh(_ sender: AnyObject) {
 		guard let refreshControl = self.refreshControl else {
 			return
 		}
-		
+
 		let contextManager = try! ContextResolver.container.resolve() as ContextManager
 		disposables += contextManager.syncWithApi?.apply(UserSettings.LastSyncDate.currentValue())
 			.observe(on: QueueScheduler.concurrent).start({ result in
@@ -62,7 +62,7 @@ class NewsTableViewController: UITableViewController {
 			}
 		})
     }
-    
+
     func notifyAnnouncements(_ announcements: [Announcement]) {
         UIApplication.shared.applicationIconBadgeNumber = 0
         if UserSettings.NotifyOnAnnouncement.currentValueOrDefault() {
@@ -74,20 +74,19 @@ class NewsTableViewController: UITableViewController {
 				notification.soundName = UILocalNotificationDefaultSoundName
 				notification.userInfo = ["Announcement": announcement ]
 				notification.applicationIconBadgeNumber = UIApplication.shared.applicationIconBadgeNumber + 1
-                    
+
 				UIApplication.shared.presentLocalNotificationNow(notification)
             }
         } else if announcements.count > 0 {
             UIApplication.shared.applicationIconBadgeNumber = announcements.count
         }
-        
-        
-        if let tabBarItem = self.navigationController?.tabBarItem , announcements.count > 0 {
+
+        if let tabBarItem = self.navigationController?.tabBarItem, announcements.count > 0 {
             tabBarItem.badgeValue = String(announcements.count)
         }
 	}
-	
-	func getLastRefreshString(_ lastRefresh: Date)->String {
+
+	func getLastRefreshString(_ lastRefresh: Date) -> String {
 		// TODO: Externalise strings for i18n
 		let lastUpdateSeconds = -1 * Int(lastRefresh.timeIntervalSinceNow)
 		let lastUpdateMinutes = Int(lastUpdateSeconds / 60)
@@ -95,7 +94,7 @@ class NewsTableViewController: UITableViewController {
 		let lastUpdateDays = Int(lastUpdateHours / 24)
 		let lastUpdateWeeks = Int(lastUpdateDays / 7)
 		let lastUpdateYears = Int(lastUpdateWeeks / 52)
-		
+
 		if lastUpdateYears == 1 {
 			return "Last refresh 1 year ago"
 		} else if lastUpdateYears > 1 {
@@ -123,37 +122,36 @@ class NewsTableViewController: UITableViewController {
 		}
 	}
 
-	
     override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
-		
+
 		if !disposables.isDisposed {
 			disposables.dispose()
 		}
 		disposables = CompositeDisposable()
 	}
-	
+
 	override func viewWillAppear(_ animated: Bool) {
 		if !disposables.isDisposed {
 			disposables.dispose()
 		}
 		disposables = CompositeDisposable()
 		disposables += announcementsViewModel.Announcements.signal.observeValues({
-			[weak self] value in
+			[weak self] _ in
 			guard let strongSelf = self else { return }
 			DispatchQueue.main.async {
 				strongSelf.tableView.reloadData()
 			}
 		})
 		disposables += currentEventsViewModel.RunningEvents.signal.observeValues({
-			[weak self] value in
+			[weak self] _ in
 			guard let strongSelf = self else { return }
 			DispatchQueue.main.async {
 				strongSelf.tableView.reloadData()
 			}
 		})
 		disposables += currentEventsViewModel.UpcomingEvents.signal.observeValues({
-			[weak self] value in
+			[weak self] _ in
 			guard let strongSelf = self else { return }
 			DispatchQueue.main.async {
 				strongSelf.tableView.reloadData()
@@ -170,23 +168,23 @@ class NewsTableViewController: UITableViewController {
 				}
 			}
 		})
-		
+
 		if let tabBarItem = self.navigationController?.tabBarItem {
 			tabBarItem.badgeValue = nil
 		}
 	}
-	
+
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		if let tabBarItem = self.navigationController?.tabBarItem {
 			tabBarItem.badgeValue = nil
 		}
-		
+
 		disposables.dispose()
 	}
-	
+
     // MARK: - Table view data source
-	
+
     override func numberOfSections(in tableView: UITableView) -> Int {
 		/*
 			0 - header image and inbox notification
@@ -195,12 +193,12 @@ class NewsTableViewController: UITableViewController {
 			3 - running events
 			4 - upcoming events
 		*/
-		
+
 		// TODO: Do we display a static message in case of empty sections or do we hide the sections?
-		
+
         return 5
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		switch section {
 		case 1:
@@ -216,8 +214,8 @@ class NewsTableViewController: UITableViewController {
 			return 0
 		}
     }
-	
-	override func tableView(_ tableView: UITableView,  titleForHeaderInSection section: Int) -> String {
+
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String {
 		// TODO: Externalise strings for i18n
 		switch section {
 		case 2:
@@ -230,12 +228,12 @@ class NewsTableViewController: UITableViewController {
 			return ""
 		}
 	}
-	
+
 	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		// No title, no visible section header
 		return self.tableView(tableView, titleForHeaderInSection: section).isEmpty ? 0.0 : 20.0
 	}
-	
+
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if indexPath.section == 0 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "NewsHeaderTableViewCell", for: indexPath) as! NewsHeaderTableViewCell
@@ -269,7 +267,7 @@ class NewsTableViewController: UITableViewController {
 				return tableView.dequeueReusableCell(withIdentifier: "NoAnnouncementsCell", for: indexPath)
 		}
 	}
-	
+
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -291,13 +289,13 @@ class NewsTableViewController: UITableViewController {
 			break
         }
     }
-    
+
     @IBAction func openMenu(_ sender: AnyObject) {
         if let _ = self.slideMenuController() {
             self.slideMenuController()?.openLeft()
         }
     }
-	
+
 	deinit {
 		disposables.dispose()
 	}

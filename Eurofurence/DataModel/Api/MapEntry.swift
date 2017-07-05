@@ -11,12 +11,12 @@ class MapEntry: EntityBase {
     var TapRadius = 0.0
     var X = 0.0
     var Y = 0.0
-	var Links : [LinkFragment] = []
-	
-	weak var Map : Map? = nil
-	
+	var Links: [LinkFragment] = []
+
+	weak var Map: Map?
+
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {
-			return [(keyInObject: "Map",keyInResource: nil)]
+			return [(keyInObject: "Map", keyInResource: nil)]
 	}
 }

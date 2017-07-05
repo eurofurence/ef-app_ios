@@ -29,7 +29,7 @@ class SettingsTableViewController: FormViewController {
                 }.onChange { row in
                     UserSettings.UpdateOnStart.setValue(row.value!)
                     row.updateCell()
-                }.cellUpdate { cell, row in
+                }.cellUpdate { cell, _ in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
             }
             <<< SwitchRow("SwitchRow") { row in
@@ -38,7 +38,7 @@ class SettingsTableViewController: FormViewController {
                 }.onChange { row in
                     UserSettings.AutomaticRefreshOnMobile.setValue(row.value!)
                     row.updateCell()
-                }.cellUpdate { cell, row in
+                }.cellUpdate { cell, _ in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
             }
             <<< PushRow<Int>("pushRowRefreshTimer") { row in
@@ -82,7 +82,7 @@ class SettingsTableViewController: FormViewController {
                     // TODO: Reimplement timed refresh (maybe X minutes after last push-triggered refresh?)
                     /*AutomaticRefresh.sharedInstance.updateTimer()*/
                     row.updateCell()
-                }.cellUpdate { cell, row in
+                }.cellUpdate { cell, _ in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
             }
 
@@ -101,35 +101,35 @@ class SettingsTableViewController: FormViewController {
                         }
                     }
                     row.updateCell()
-                }.cellUpdate { cell, row in
+                }.cellUpdate { cell, _ in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         }
     }
 
     private func makeDataStorageSection() {
         form +++ Section("Data Storage")
-            <<< ButtonRow(){
+            <<< ButtonRow {
                 $0.title = "Download Database"
-                }.onCellSelection { row in
+                }.onCellSelection { _ in
                     // TODO: Perform sync without since
                     /*ApiManager.sharedInstance.updateAllEntities(true, completion: nil)*/
-                }.cellUpdate { cell, row in
+                }.cellUpdate { cell, _ in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
             }
-            <<< ButtonRow(){
+            <<< ButtonRow {
                 $0.title = "Clear Database and Cache"
-                }.onCellSelection { row in
+                }.onCellSelection { _ in
                     // TODO: Clear cache and storage
                     /*ApiManager.sharedInstance.clearCache()*/
-                }.cellUpdate { cell, row in
+                }.cellUpdate { cell, _ in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
                     cell.textLabel?.textColor = UIColor.red
             }
             +++ Section("Other")
-            <<< LabelRow() { row in
+            <<< LabelRow { row in
                 // TODO: VersionProvider?
                 row.title = "Version: " /*+ ConfigManager.sharedInstance.appVersion*/
-                }.cellUpdate { cell, row in
+                }.cellUpdate { cell, _ in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
         }
     }
@@ -152,7 +152,7 @@ class SettingsTableViewController: FormViewController {
                         }
                     }
                     row.updateCell()
-                }.cellUpdate { cell, row in
+                }.cellUpdate { cell, _ in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
                     cell.backgroundColor = UIColor.lightText
             }
@@ -165,7 +165,7 @@ class SettingsTableViewController: FormViewController {
                 }.onChange { row in
                     UserSettings.RefreshInBackgroundOnMobile.setValue(row.value!)
                     row.updateCell()
-                }.cellUpdate { cell, row in
+                }.cellUpdate { cell, _ in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
                     cell.backgroundColor = UIColor.lightText
         }
@@ -181,14 +181,14 @@ class SettingsTableViewController: FormViewController {
                         UserSettings.DebugTimeOffset.setValue(value)
                     }
                     row.updateCell()
-                }.cellUpdate { cell, row in
+                }.cellUpdate { cell, _ in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
                     cell.backgroundColor = UIColor.lightText
         }
     }
 
     @IBAction func openMenu(_ sender: AnyObject) {
-        showApp();
+        showApp()
     }
 
     func showApp() {

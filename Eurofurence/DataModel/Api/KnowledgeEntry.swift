@@ -8,18 +8,18 @@
 import Foundation
 
 class KnowledgeEntry: EntityBase {
-	var KnowledgeGroupId : String = ""
-	var Order : Int = 0
-	var Text : String = ""
-	var Title : String = ""
-    
-	var Links : [LinkFragment] = []
-    
-	weak var KnowledgeGroup : KnowledgeGroup? = nil
-	
+	var KnowledgeGroupId: String = ""
+	var Order: Int = 0
+	var Text: String = ""
+	var Title: String = ""
+
+	var Links: [LinkFragment] = []
+
+	weak var KnowledgeGroup: KnowledgeGroup?
+
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {
-			return [(keyInObject: "KnowledgeGroup",keyInResource: nil)]
+			return [(keyInObject: "KnowledgeGroup", keyInResource: nil)]
 	}
 }
 

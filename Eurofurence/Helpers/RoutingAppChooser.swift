@@ -10,12 +10,12 @@ import UIKit
 
 class RoutingAppChooser {
     static let sharedInstance = RoutingAppChooser()
-    
+
     private let customAllowedSet =  CharacterSet(charactersIn:"=\"#%/<>?@\\^`{|}").inverted
-    private var routingApps : [String:String] = [:]
-    private var currentURLs : [String:URL] = [:]
-    var selectionAlert : UIAlertController!
-    
+    private var routingApps: [String:String] = [:]
+    private var currentURLs: [String:URL] = [:]
+    var selectionAlert: UIAlertController!
+
     private init() {
         /*
          Placeholders to be used in app URL pattern
@@ -29,7 +29,7 @@ class RoutingAppChooser {
          %lat%        - latitude
          %lon%        - longitude
          */
-        
+
         /* Need support for more routing apps? Open for any suggestions! =D */
         routingApps["Apple Maps"] = "http://maps.apple.com/?q=%name%,%house%,%street%,%city%,%country%"
         routingApps["Google Maps"] = "comgooglemaps://?q=%name%,%house%,%street%,%city%,%country%"
@@ -37,14 +37,14 @@ class RoutingAppChooser {
         routingApps["Garmin StreetPilot"] = "garminonboardwesterneurope://gm?action=map&name=%name%&address=%street%+%house%&%city=%city%" // this is purely guesswork and might potentially not work
         routingApps["Navmii"] = "navmii://%lat%,%lon%"
         routingApps["Waze"] = "waze://?q=%name%,%house%,%street%,%city%,%country%"
-        
+
         pruneUnavailableApps()
-        
+
         selectionAlert = UIAlertController(title: "Choose Routing Application", message: "Choose which app you would like to open the location of the convention in. Please note that not all of these apps may work offline!", preferredStyle: .alert)
-        
+
         addAppActions()
     }
-    
+
     private func pruneUnavailableApps() {
         var pruneCount = 0
         for routingApp in routingApps.keys {
@@ -56,38 +56,38 @@ class RoutingAppChooser {
         }
         print("Pruned", pruneCount, "unavailable routing apps")
     }
-    
+
     private func addAppActions() {
         for routingApp in routingApps.keys {
-            let action = UIAlertAction(title: routingApp, style: .default) { (alert: UIAlertAction!) -> Void in
+            let action = UIAlertAction(title: routingApp, style: .default) { (_: UIAlertAction!) -> Void in
                 if self.currentURLs[routingApp] != nil {
                     UIApplication.shared.openURL(self.currentURLs[routingApp]!)
                 } else {
                     print("Currently no URL for", routingApp, "available!")
                 }
             }
-            selectionAlert.addAction(action);
+            selectionAlert.addAction(action)
         }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (alert: UIAlertAction!) -> Void in
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (_: UIAlertAction!) -> Void in
             ()
         }
         selectionAlert.addAction(cancelAction)
     }
-    
-    func isAppAvailable(_ routingApp: String)->Bool {
+
+    func isAppAvailable(_ routingApp: String) -> Bool {
         return routingApps[routingApp] != nil && UIApplication.shared.canOpenURL(URL(string: routingApps[routingApp]!.replacingOccurrences(of: "%", with: ""))!)
     }
-    
-    private func validateForURL(_ text: String?)->String {
+
+    private func validateForURL(_ text: String?) -> String {
         if text == nil || text!.isEmpty {
             return ""
         } else {
             return text!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         }
     }
-    
-    func getAppURLForAddress(_ routingApp: String, name: String, house: String, street: String, zip: String, city: String, country: String, lat: CGFloat, lon: CGFloat)->URL? {
+
+    func getAppURLForAddress(_ routingApp: String, name: String, house: String, street: String, zip: String, city: String, country: String, lat: CGFloat, lon: CGFloat) -> URL? {
         return getAppURLForAddress(
             routingApp,
             name: validateForURL(name),
@@ -100,8 +100,8 @@ class RoutingAppChooser {
             lat: lat,
             lon: lon)
     }
-    
-    private func getAppURLForAddress(_ routingApp: String, name: String, house: String, street: String, zip: String, city: String, country: String, countryAlpha3: String, lat: CGFloat, lon: CGFloat)->URL? {
+
+    private func getAppURLForAddress(_ routingApp: String, name: String, house: String, street: String, zip: String, city: String, country: String, countryAlpha3: String, lat: CGFloat, lon: CGFloat) -> URL? {
         if routingApps[routingApp] == nil {
             return nil
         } else {
@@ -115,19 +115,19 @@ class RoutingAppChooser {
                 .replacingOccurrences(of: "%country-a3%", with: countryAlpha3)
                 .replacingOccurrences(of: "%lat%", with: String(describing: lat))
                 .replacingOccurrences(of: "%lon%", with: String(describing: lon))
-            
+
             return URL(string: appURL)
         }
     }
-    
+
     private func generateURLsForAddress(_ name: String, house: String, street: String, zip: String, city: String, country: String, countryAlpha3: String, lat: CGFloat, lon: CGFloat) {
         currentURLs = [:]
         for routingApp in routingApps.keys {
             currentURLs[routingApp] = getAppURLForAddress(routingApp, name: name, house: house, street: street, zip: zip, city: city, country: country, countryAlpha3: countryAlpha3, lat: lat, lon: lon)
         }
     }
-    
-    func getAlertForAddress(_ name: String, house: String, street: String, zip: String, city: String, country: String, lat: CGFloat, lon: CGFloat)->UIAlertController {
+
+    func getAlertForAddress(_ name: String, house: String, street: String, zip: String, city: String, country: String, lat: CGFloat, lon: CGFloat) -> UIAlertController {
         generateURLsForAddress(
             validateForURL(name),
             house: validateForURL(house),

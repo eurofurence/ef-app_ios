@@ -433,6 +433,7 @@
 			buildConfigurationList = 9ACF99511EBE172D006FC958 /* Build configuration list for PBXNativeTarget "Eurofurence" */;
 			buildPhases = (
 				AB8BAC5DE2C718F04F373F4A /* [CP] Check Pods Manifest.lock */,
+				78CA0D0B1F0D7D81006DFD64 /* Swiftlint */,
 				9ACF99301EBE172D006FC958 /* Sources */,
 				9ACF99311EBE172D006FC958 /* Frameworks */,
 				9ACF99321EBE172D006FC958 /* Resources */,
@@ -533,6 +534,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		78CA0D0B1F0D7D81006DFD64 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    cd Eurofurence\n    swiftlint autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
 		AB8BAC5DE2C718F04F373F4A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

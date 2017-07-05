@@ -8,11 +8,11 @@
 import UIKit
 
 class KnowledgeEntryCell: UITableViewCell {
-	
+
 	@IBOutlet weak var titleLabel: UILabel!
-	
+
 	weak private var _knowledgeEntry: KnowledgeEntry?
-	
+
 	var knowledgeEntry: KnowledgeEntry? {
 		get {
 			return _knowledgeEntry

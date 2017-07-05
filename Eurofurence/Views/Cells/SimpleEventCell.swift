@@ -8,14 +8,14 @@
 import UIKit
 
 class SimpleEventCell: UITableViewCell {
-	
+
 	@IBOutlet weak var startTimeLabel: UILabel!
 	@IBOutlet weak var endTimeLabel: UILabel!
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var subTitleLabel: UILabel!
-	
+
 	weak private var _event: Event?
-	
+
 	var event: Event? {
 		get {
 			return _event

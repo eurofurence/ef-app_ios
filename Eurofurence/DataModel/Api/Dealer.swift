@@ -8,34 +8,34 @@
 import Foundation
 
 class Dealer: EntityBase {
-    var AboutTheArtistText : String = ""
-    var AboutTheArtText : String = ""
-    var ArtistImageId : String = ""
-    var ArtistThumbnailImageId : String = ""
-    var ArtPreviewCaption : String = ""
-    var ArtPreviewImageId : String = ""
-	var AttendeeNickname : String = ""
-	var AttendsOnFriday : Bool = true
-	var AttendsOnSaturday : Bool = true
-	var AttendsOnThursday : Bool = true
-    var DisplayName : String = ""
-	var Links : [LinkFragment] = []
-	var Merchandise : String = ""
-	var RegistrationNumber : String = ""
-	var ShortDescription : String = ""
-	var TwitterHandle : String = ""
-	var TelegramHandle : String = ""
-	
-    weak var ArtistImage : Image?
-	weak var ArtistThumbnailImage : Image?
-	weak var ArtPreviewImage : Image?
+    var AboutTheArtistText: String = ""
+    var AboutTheArtText: String = ""
+    var ArtistImageId: String = ""
+    var ArtistThumbnailImageId: String = ""
+    var ArtPreviewCaption: String = ""
+    var ArtPreviewImageId: String = ""
+	var AttendeeNickname: String = ""
+	var AttendsOnFriday: Bool = true
+	var AttendsOnSaturday: Bool = true
+	var AttendsOnThursday: Bool = true
+    var DisplayName: String = ""
+	var Links: [LinkFragment] = []
+	var Merchandise: String = ""
+	var RegistrationNumber: String = ""
+	var ShortDescription: String = ""
+	var TwitterHandle: String = ""
+	var TelegramHandle: String = ""
+
+    weak var ArtistImage: Image?
+	weak var ArtistThumbnailImage: Image?
+	weak var ArtPreviewImage: Image?
 	weak var MapEntry: MapEntry?
-	
+
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {
-			return [(keyInObject: "ArtistImage",keyInResource: nil),
-			        (keyInObject: "ArtistThumbnailImage",keyInResource: nil),
-			        (keyInObject: "ArtPreviewImage",keyInResource: nil)]
+			return [(keyInObject: "ArtistImage", keyInResource: nil),
+			        (keyInObject: "ArtistThumbnailImage", keyInResource: nil),
+			        (keyInObject: "ArtPreviewImage", keyInResource: nil)]
 	}
 }
 

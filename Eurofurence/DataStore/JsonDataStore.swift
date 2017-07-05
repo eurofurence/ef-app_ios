@@ -17,13 +17,12 @@ JSON-based implementation for offline, on-device data storage.
 class JsonDataStore: DataStoreProtocol {
 	private let scheduler = QueueScheduler(qos: .userInitiated, name: "DataStore")
 	private let baseDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-	private var storeDirectory : URL? = nil
+	private var storeDirectory: URL?
 	private let storeDirectoryName = "Store"
 	private let fileExtension = ".json"
 
-	
 	func load<EntityType: EntityBase>(_ entityType: EntityType.Type) -> SignalProducer<DataStoreResult, DataStoreError> {
-		return SignalProducer<DataStoreResult, DataStoreError>.init({ (observer, disposable) in
+		return SignalProducer<DataStoreResult, DataStoreError>.init({ (observer, _) in
 			do {
 				observer.send(value: try self.handleLoad(entityType))
 				observer.sendCompleted()
@@ -34,7 +33,7 @@ class JsonDataStore: DataStoreProtocol {
 	}
 
 	func save<EntityType: EntityBase>(_ entityType: EntityType.Type, entityData: [EntityType]) -> SignalProducer<DataStoreResult, DataStoreError> {
-		return SignalProducer<DataStoreResult, DataStoreError>.init({ (observer, disposable) in
+		return SignalProducer<DataStoreResult, DataStoreError>.init({ (observer, _) in
 			do {
 				observer.send(value: try self.handleSave(entityType, entityData: entityData))
 				observer.sendCompleted()
@@ -45,7 +44,7 @@ class JsonDataStore: DataStoreProtocol {
 	}
 
 	func clear(_ entityType: EntityBase.Type) -> SignalProducer<DataStoreResult, DataStoreError> {
-		return SignalProducer<DataStoreResult, DataStoreError>.init({ (observer, disposable) in
+		return SignalProducer<DataStoreResult, DataStoreError>.init({ (observer, _) in
 			do {
 				observer.send(value: try self.handleClear(entityType))
 				observer.sendCompleted()
@@ -56,7 +55,7 @@ class JsonDataStore: DataStoreProtocol {
 	}
 
 	func clearAll() -> SignalProducer<DataStoreResult, DataStoreError> {
-		return SignalProducer<DataStoreResult, DataStoreError>.init({ (observer, disposable) in
+		return SignalProducer<DataStoreResult, DataStoreError>.init({ (observer, _) in
 			do {
 				observer.send(value: try self.handleClearAll())
 				observer.sendCompleted()

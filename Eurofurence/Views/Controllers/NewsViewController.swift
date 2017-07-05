@@ -8,7 +8,7 @@
 import UIKit
 
 class NewsViewController: UIViewController {
-	weak var news: Announcement? = nil
+	weak var news: Announcement?
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var areaLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
@@ -16,26 +16,26 @@ class NewsViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
     }
-    
-    func canRotate()->Bool {
+
+    func canRotate() -> Bool {
         return true
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func willMove(toParentViewController parent: UIViewController?) {
         super.willMove(toParentViewController: parent)
         if parent == nil {
             tabBarController?.tabBar.isHidden = false
         }
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = true
         titleLabel.text = news?.Title
@@ -50,7 +50,7 @@ class NewsViewController: UIViewController {
 			lastChangeLabel.text = nil
 		}
     }
-	
+
     /*
      // MARK: - Navigation
      
@@ -60,5 +60,5 @@ class NewsViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
-    
+
 }

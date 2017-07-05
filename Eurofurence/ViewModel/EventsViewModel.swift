@@ -16,19 +16,19 @@ class EventsViewModel {
 	let EventConferenceTracks = MutableProperty<[EventConferenceTrack]>([])
 	private let dataContext: DataContextProtocol
 	private var disposable = CompositeDisposable()
-	
+
 	init(dataContext: DataContextProtocol) {
 		self.dataContext = dataContext
-		
+
 		disposable += Events <~ dataContext.Events
-				
+
 		disposable += EventConferenceDays <~ dataContext.EventConferenceDays
-		
+
 		disposable += EventConferenceRooms <~ dataContext.EventConferenceRooms
-		
+
 		disposable += EventConferenceTracks <~ dataContext.EventConferenceTracks
 	}
-	
+
 	deinit {
 		disposable.dispose()
 	}

@@ -25,7 +25,7 @@ class AnnouncementsViewModel {
 			return items.filter({$0.ValidFromDateTimeUtc < time && $0.ValidUntilDateTimeUtc > time})
 		})
 	}
-	
+
 	deinit {
 		disposable.dispose()
 	}

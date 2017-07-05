@@ -10,7 +10,7 @@ import UIKit
 class NewsHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var newsHeaderLabel: UILabel!
     @IBOutlet weak var newsLastRefreshLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -8,13 +8,13 @@
 import UIKit
 
 class KnowledgeGroupCell: UITableViewCell {
-	
+
 	@IBOutlet weak var iconLabel: UILabel!
 	@IBOutlet weak var nameLabel: UILabel!
 	@IBOutlet weak var descriptionLabel: UILabel!
-	
+
 	weak private var _knowledgeGroup: KnowledgeGroup?
-	
+
 	var knowledgeGroup: KnowledgeGroup? {
 		get {
 			return _knowledgeGroup

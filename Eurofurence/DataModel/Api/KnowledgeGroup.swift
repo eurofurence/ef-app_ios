@@ -8,20 +8,20 @@
 import Foundation
 
 class KnowledgeGroup: EntityBase {
-	var Description : String = ""
-	var FontAwesomeIconCharacterUnicodeAddress : String = ""
-	var Name : String = ""
-	var Order : Int = 0
-	var ShowInHamburgerMenu : Bool = false
-    
-	var KnowledgeEntries : [KnowledgeEntry] = []
-	
+	var Description: String = ""
+	var FontAwesomeIconCharacterUnicodeAddress: String = ""
+	var Name: String = ""
+	var Order: Int = 0
+	var ShowInHamburgerMenu: Bool = false
+
+	var KnowledgeEntries: [KnowledgeEntry] = []
+
 	override public func propertyMapping() -> [(keyInObject: String?,
 			keyInResource: String?)] {
 		return [(keyInObject: "KnowledgeEntries", keyInResource: nil)]
 	}
-	
-	override func propertyConverters() -> [(key: String, decodeConverter: ((Any?) -> ()), encodeConverter: (() -> Any?))] {
+
+	override func propertyConverters() -> [(key: String, decodeConverter: ((Any?) -> Void), encodeConverter: (() -> Any?))] {
 		return [
 			(key: "FontAwesomeIconCharacterUnicodeAddress",
 			 decodeConverter: {

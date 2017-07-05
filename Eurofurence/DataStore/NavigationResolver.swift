@@ -10,18 +10,18 @@ import Foundation
 class NavigationResolver: NavigationResolverProtocol {
 	func resolve(dataContext: DataContextProtocol) {
 		var linkFragments: [LinkFragment] = []
-		
+
 		print("\(#function): Resolving Dealers")
 		dataContext.Dealers.modify({ value in
 			for e in value {
 				e.ArtistImage = dataContext.Images.value.first(where: { $0.Id == e.ArtistImageId })
 				e.ArtistThumbnailImage = dataContext.Images.value.first(where: { $0.Id == e.ArtistThumbnailImageId })
 				e.ArtPreviewImage = dataContext.Images.value.first(where: { $0.Id == e.ArtPreviewImageId })
-				
+
 				linkFragments.append(contentsOf: e.Links)
 			}
 		})
-		
+
 		print("\(#function): Resolving EventConferenceDays")
 		dataContext.EventConferenceDays.modify({ value in
 			for e in value {
@@ -53,7 +53,6 @@ class NavigationResolver: NavigationResolverProtocol {
 			}
 		})
 
-		
 		print("\(#function): Resolving KnowledgeGroups")
 		dataContext.KnowledgeGroups.modify({ value in
 			for e in value {
@@ -65,11 +64,11 @@ class NavigationResolver: NavigationResolverProtocol {
 			for e in value {
 				e.KnowledgeGroup = dataContext.KnowledgeGroups.value.first(where: { $0.Id == e.KnowledgeGroupId })
 				e.KnowledgeGroup?.KnowledgeEntries.append(e)
-				
+
 				linkFragments.append(contentsOf: e.Links)
 			}
 		})
-		
+
 		print("\(#function): Resolving Maps")
 		var mapEntries: [String:MapEntry] = [:]
 		dataContext.Maps.modify({ value in
@@ -81,18 +80,18 @@ class NavigationResolver: NavigationResolverProtocol {
 					mapEntries[mapEntry.Id] = mapEntry
 				}
 			}
-			
+
 			for (_, mapEntry) in mapEntries {
 				for link in mapEntry.Links {
 					linkFragments.append(link)
-					
+
 					if link.FragmentType == .DealerDetail, let dealer = dataContext.Dealers.value.first(where: { $0.Id == link.Target }) {
 						dealer.MapEntry = mapEntry
 					}
 				}
 			}
 		})
-		
+
 		print("\(#function): Resolving LinkFragments")
 		for link in linkFragments {
 			switch link.FragmentType {

@@ -9,13 +9,13 @@ import Foundation
 
 class EventConferenceRoom: EntityBase {
 	var Name = ""
-    
-	var Events : [Event] = []
-	weak var MapEntry : MapEntry?
-	
+
+	var Events: [Event] = []
+	weak var MapEntry: MapEntry?
+
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {
-			return [(keyInObject: "Events",keyInResource: nil)]
+			return [(keyInObject: "Events", keyInResource: nil)]
 	}
 }
 

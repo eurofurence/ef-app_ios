@@ -17,26 +17,26 @@ class EventCell: UITableViewCell {
     @IBOutlet weak var eventDayLabel: UILabel!
     @IBOutlet weak var eventDayLabelHeightConstraint: NSLayoutConstraint!
 	@IBOutlet weak var eventSubNameLabelHeightConstraint: NSLayoutConstraint!
-	
+
 	weak private var _event: Event?
-	
+
 	var event: Event? {
 		get {
 			return _event
 		}
 		set(event) {
 			_event = event
-			
+
 			if let conferenceDay = event?.ConferenceDay/*, searchController.isActive && searchController.searchBar.text != ""*/ {
-				eventDayLabel.isHidden = false;
+				eventDayLabel.isHidden = false
 				eventDayLabel.text = "\(conferenceDay.Name) – \(DateFormatters.dayMonthLong.string(from: conferenceDay.Date))"
-				
+
 				if eventDayLabelHeightConstraint != nil {
 					eventDayLabelHeightConstraint!.isActive = false
 				}
 			}
 			eventNameLabel.text = event?.Title
-			
+
 			if let subTitle = event?.SubTitle, !subTitle.isEmpty {
 				if eventSubNameLabelHeightConstraint != nil {
 					eventSubNameLabelHeightConstraint!.isActive = false
@@ -50,24 +50,24 @@ class EventCell: UITableViewCell {
 					addConstraint(eventSubNameLabelHeightConstraint!)
 				}
 			}
-			
+
 			if let startDateTimeUtc = event?.StartDateTimeUtc {
 				eventDateLabel.text = "Starting at \(DateFormatters.hourMinute.string(from: startDateTimeUtc))"
 			} else {
 				eventDateLabel.text = nil
 			}
-			
+
 			if let roomName = event?.ConferenceRoom?.Name {
 				eventRoomLabel.text = "in \(roomName)"
 			} else {
 				eventRoomLabel.text = "n/a"
 			}
-			
+
 			eventDurationLabel.text = event?.Duration.dhmString
 			if let eventDurationLabelText = eventDurationLabel.text, eventDurationLabelText.isEmpty {
 				eventDurationLabel.text = "n/a"
 			}
-			
+
 			accessoryType = UITableViewCellAccessoryType.disclosureIndicator
 			if let isDeviatingFromConBook = event?.IsDeviatingFromConBook, isDeviatingFromConBook {
 				eventDateLabel.textColor = UIColor.orange

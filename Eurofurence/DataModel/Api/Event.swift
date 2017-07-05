@@ -7,37 +7,37 @@
 
 import Foundation
 
-class Event : EntityBase {
-	var Abstract : String = ""
-    var ConferenceDayId : String = ""
-    var ConferenceTrackId : String = ""
-    var ConferenceRoomId : String = ""
-    var Description : String = ""
-	var Duration : TimeInterval = 0.0
-	var EndDateTimeUtc : Date = Date()
-	var EndTime : String = ""
-	var IsDeviatingFromConBook : Bool = false
-    var PanelHosts : String = ""
-    var Slug : String = ""
-	var SubTitle : String = ""
-	var StartDateTimeUtc : Date = Date()
-	var StartTime : String = ""
-    var Title : String = ""
-    
-    var IsFavorite : Bool = false
-	
-    weak var ConferenceDay : EventConferenceDay? = nil
-    weak var ConferenceTrack : EventConferenceTrack? = nil
-	weak var ConferenceRoom : EventConferenceRoom? = nil
-	
+class Event: EntityBase {
+	var Abstract: String = ""
+    var ConferenceDayId: String = ""
+    var ConferenceTrackId: String = ""
+    var ConferenceRoomId: String = ""
+    var Description: String = ""
+	var Duration: TimeInterval = 0.0
+	var EndDateTimeUtc: Date = Date()
+	var EndTime: String = ""
+	var IsDeviatingFromConBook: Bool = false
+    var PanelHosts: String = ""
+    var Slug: String = ""
+	var SubTitle: String = ""
+	var StartDateTimeUtc: Date = Date()
+	var StartTime: String = ""
+    var Title: String = ""
+
+    var IsFavorite: Bool = false
+
+    weak var ConferenceDay: EventConferenceDay?
+    weak var ConferenceTrack: EventConferenceTrack?
+	weak var ConferenceRoom: EventConferenceRoom?
+
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {
-			return [(keyInObject: "ConferenceDay",keyInResource: nil),
-			        (keyInObject: "ConferenceTrack",keyInResource: nil),
-					(keyInObject: "ConferenceRoom",keyInResource: nil)]
+			return [(keyInObject: "ConferenceDay", keyInResource: nil),
+			        (keyInObject: "ConferenceTrack", keyInResource: nil),
+					(keyInObject: "ConferenceRoom", keyInResource: nil)]
 	}
-	
-	override func propertyConverters() -> [(key: String, decodeConverter: ((Any?) -> ()), encodeConverter: (() -> Any?))] {
+
+	override func propertyConverters() -> [(key: String, decodeConverter: ((Any?) -> Void), encodeConverter: (() -> Any?))] {
 		return [
 			(key: "Duration",
 			 decodeConverter: {

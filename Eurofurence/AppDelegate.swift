@@ -22,14 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		let contextManager = try! ContextResolver.container.resolve() as ContextManager
 		let dataContext = try! ContextResolver.container.resolve() as DataContextProtocol
-		
+
 		dataContext.loadFromStore().start(on: QueueScheduler.concurrent).start({ event in
 			switch event {
 			case let .value(value):
 				print("Loading completed by \(value.fractionCompleted)")
 			case let .failed(error):
 				print("Failed to load data from store: \(error)")
-				
+
 				// TODO: Prompt user for required initialisation
 				// TODO: Check WiFi connection and prompt user if on mobile
 				print("Performing full reload from API")
@@ -60,9 +60,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				print("Loading interrupted")
 			}
 		})
-		
+
 		setupSlideMenu()
-		
+
 		return true
 	}
 
@@ -89,14 +89,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 	private func setupSlideMenu() {
-		let menuStoryboard = UIStoryboard(name: "SlideMenu", bundle: nil);
-		let mainStoryboard = UIStoryboard(name: "Main", bundle: nil);
+		let menuStoryboard = UIStoryboard(name: "SlideMenu", bundle: nil)
+		let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
 		let mainViewController = mainStoryboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
 		let leftViewController = menuStoryboard.instantiateViewController(withIdentifier: "LeftView") as! LeftViewController
-		
-		let slideMenuController = SlideMenuController(mainViewController: mainViewController, leftMenuViewController: leftViewController);
-		window?.rootViewController = slideMenuController;
+
+		let slideMenuController = SlideMenuController(mainViewController: mainViewController, leftMenuViewController: leftViewController)
+		window?.rootViewController = slideMenuController
 		window?.makeKeyAndVisible()
 	}
 }
-

@@ -14,7 +14,7 @@ Export Events to the iOS calendar using EventKit.
 */
 class CalendarAccess {
 	static let instance = CalendarAccess()
-	
+
 	/// Checks whether calendar access has been denied.
 	var isDenied: Bool {
 		let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
@@ -25,11 +25,11 @@ class CalendarAccess {
 			return true
 		}
 	}
-	
+
 	private var eventStore = EKEventStore()
-	
+
 	private init() {}
-	
+
 	private func requestAccess(_ completion: @escaping ((_ accessGranted: Bool) -> Void)) {
 		eventStore.requestAccess(to: EKEntityType.event) { (accessGranted, _) in
             DispatchQueue.main.async {
@@ -37,7 +37,7 @@ class CalendarAccess {
             }
 		}
 	}
-	
+
 	/**
 	Attempts to insert given event into the user's calendar.
 	Will ask for permission on first attempt and fail silently thereafter.
@@ -86,13 +86,13 @@ class CalendarAccess {
 
     private func makeEvent(for event: Event) -> EKEvent {
         let ekEvent = EKEvent(eventStore: eventStore)
-        ekEvent.title = event.Title;
-        ekEvent.notes = event.Description;
-        ekEvent.location = event.ConferenceRoom?.Name;
-        ekEvent.startDate = event.StartDateTimeUtc;
-        ekEvent.endDate = event.EndDateTimeUtc;
-        ekEvent.addAlarm(EKAlarm(absoluteDate: ekEvent.startDate.addingTimeInterval( -30 * 60)));
-        ekEvent.calendar = self.eventStore.defaultCalendarForNewEvents;
+        ekEvent.title = event.Title
+        ekEvent.notes = event.Description
+        ekEvent.location = event.ConferenceRoom?.Name
+        ekEvent.startDate = event.StartDateTimeUtc
+        ekEvent.endDate = event.EndDateTimeUtc
+        ekEvent.addAlarm(EKAlarm(absoluteDate: ekEvent.startDate.addingTimeInterval( -30 * 60)))
+        ekEvent.calendar = self.eventStore.defaultCalendarForNewEvents
 
         return ekEvent
     }

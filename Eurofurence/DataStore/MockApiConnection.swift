@@ -26,8 +26,8 @@ class MockApiConnection: ApiConnectionProtocol {
 
 	// MARK: General HTTP verbs
 
-	func doGet<EntityType:EVNetworkingObject>(_ endpoint: String, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
-		return SignalProducer { observer, disposable in
+	func doGet<EntityType: EVNetworkingObject>(_ endpoint: String, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
+		return SignalProducer { observer, _ in
 			if let json = self.getJsonFromFile(endpoint) {
 				observer.send(value: EntityType.init(json: json))
 				observer.sendCompleted()
@@ -38,20 +38,20 @@ class MockApiConnection: ApiConnectionProtocol {
 		}
 	}
 
-	func doPost<EntityType:EVNetworkingObject>(_ endpoint: String, payload: EVReflectable? = nil, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
-		return SignalProducer { observer, disposable in
+	func doPost<EntityType: EVNetworkingObject>(_ endpoint: String, payload: EVReflectable? = nil, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
+		return SignalProducer { observer, _ in
 			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
 		}
 	}
 
-	func doPut<EntityType:EVNetworkingObject>(_ endpoint: String, payload: EVReflectable? = nil, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
-		return SignalProducer { observer, disposable in
+	func doPut<EntityType: EVNetworkingObject>(_ endpoint: String, payload: EVReflectable? = nil, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
+		return SignalProducer { observer, _ in
 			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
 		}
 	}
 
-	func doDelete<EntityType:EVNetworkingObject>(_ endpoint: String, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
-		return SignalProducer { observer, disposable in
+	func doDelete<EntityType: EVNetworkingObject>(_ endpoint: String, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
+		return SignalProducer { observer, _ in
 			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
 		}
 	}

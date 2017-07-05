@@ -13,24 +13,24 @@ Base type for allv unique entities supplied by the API.
 Provides basic comparability by Id. Override in subclasses when proper
 sortability is required and implement Sortable protocol!
 */
-class EntityBase : EVObject, Comparable {
-    var Id : String = ""
-    var LastChangeDateTimeUtc : Date = Date()
-	
-	var IsDeleted : Bool = false
-	
+class EntityBase: EVObject, Comparable {
+    var Id: String = ""
+    var LastChangeDateTimeUtc: Date = Date()
+
+	var IsDeleted: Bool = false
+
 	static func == (lhs: EntityBase, rhs: EntityBase) -> Bool {
 		return lhs.equalTo(rhs)
 	}
-	
+
 	public dynamic func equalTo(_ rhs: EntityBase) -> Bool {
 		return self.Id == rhs.Id
 	}
-	
+
 	static func < (lhs: EntityBase, rhs: EntityBase) -> Bool {
 		return lhs.lessThan(rhs)
 	}
-	
+
 	public dynamic func lessThan(_ rhs: EntityBase) -> Bool {
 		return self.Id < rhs.Id
 	}

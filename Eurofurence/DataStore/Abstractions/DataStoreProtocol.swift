@@ -18,7 +18,7 @@ protocol DataStoreProtocol {
 	- Returns: SignalProducer which will produce a DataStoreResult event with
 	the outcome of the operation.
 	*/
-	func save<EntityType:EntityBase>(_ entityType: EntityType.Type, entityData: [EntityType]) -> SignalProducer<DataStoreResult, DataStoreError>
+	func save<EntityType: EntityBase>(_ entityType: EntityType.Type, entityData: [EntityType]) -> SignalProducer<DataStoreResult, DataStoreError>
 
 	/**
 	Loads all entities of given type from the data store.
@@ -77,20 +77,20 @@ enum DataStoreError: CustomNSError {
 	var errorUserInfo: [String : AnyObject] {
 		switch self {
 		case .FailedCreate(let url, let description):
-			return ["message" : "File or directory at \(url) could not be created" as NSString,
-			        "description" : (description ?? "") as NSString]
+			return ["message": "File or directory at \(url) could not be created" as NSString,
+			        "description": (description ?? "") as NSString]
 		case .FailedRead(let entityType, let description):
-			return ["message" : "Entity of type \(entityType) could not be read" as NSString,
-			        "description" : (description ?? "") as NSString]
+			return ["message": "Entity of type \(entityType) could not be read" as NSString,
+			        "description": (description ?? "") as NSString]
 		case .FailedWrite(let entityType, let description):
-			return ["message" : "Entity of type \(entityType) could not be written" as NSString,
-			        "description" : (description ?? "") as NSString]
+			return ["message": "Entity of type \(entityType) could not be written" as NSString,
+			        "description": (description ?? "") as NSString]
 		case .InvalidParameter(let functionName, let description):
-			return ["message" : "Invalid parameter for function \(functionName)" as NSString,
-			        "description" : (description ?? "") as NSString]
+			return ["message": "Invalid parameter for function \(functionName)" as NSString,
+			        "description": (description ?? "") as NSString]
 		case .NotImplemented(let functionName):
-			return ["message" : "Function \(functionName) is not (yet) implemented" as NSString,
-			        "description" : "" as NSString]
+			return ["message": "Function \(functionName) is not (yet) implemented" as NSString,
+			        "description": "" as NSString]
 		}
 	}
 }

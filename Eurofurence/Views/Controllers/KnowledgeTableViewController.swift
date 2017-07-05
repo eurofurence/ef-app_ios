@@ -13,26 +13,25 @@ class KnowledgeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     // MARK: - Table view data source
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return dataContext.KnowledgeGroups.value.count
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return dataContext.KnowledgeGroups.value[section].KnowledgeEntries.count
     }
-    
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "KnowledgeEntryCell", for: indexPath) as? KnowledgeEntryCell else {
 			return UITableViewCell(frame: .zero)
@@ -40,36 +39,36 @@ class KnowledgeTableViewController: UITableViewController {
 		cell.knowledgeEntry = dataContext.KnowledgeGroups.value[indexPath.section].KnowledgeEntries[indexPath.row]
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView(frame: .zero)
     }
-    
-    override func tableView( _ tableView : UITableView,  titleForHeaderInSection section: Int)->String {
+
+    override func tableView( _ tableView: UITableView, titleForHeaderInSection section: Int) -> String {
         return dataContext.KnowledgeGroups.value[section].Name
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 1
     }
-    
+
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "KnowledgeGroupCell") as? KnowledgeGroupCell else {
 			return nil
 		}
-		
+
 		cell.knowledgeGroup = dataContext.KnowledgeGroups.value[section]
-		
+
         //let headerTapped = UITapGestureRecognizer (target: self, action:#selector(InfoTableViewController.sectionHeaderTapped(_:)))
         //cell.addGestureRecognizer(headerTapped)
-        
+
         return cell
     }
-    
+
     func sectionHeaderTapped(_ recognizer: UITapGestureRecognizer) {
         //print("Tapping working")
         //print(recognizer.view?.tag)
@@ -88,7 +87,7 @@ class KnowledgeTableViewController: UITableViewController {
          }
          **/
     }
-    
+
     /*
      // MARK: - Navigation
      
@@ -98,7 +97,7 @@ class KnowledgeTableViewController: UITableViewController {
      // Pass the selected object to the new view controller.
      }
      */
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
@@ -108,12 +107,11 @@ class KnowledgeTableViewController: UITableViewController {
 			}
         }
     }
-	
+
     @IBAction func openMenu(_ sender: AnyObject) {
         if let _ = self.slideMenuController() {
             self.slideMenuController()?.openLeft()
         }
     }
-    
-    
+
 }

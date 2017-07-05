@@ -31,11 +31,11 @@ class ReactiveDataContext: DataContextProtocol {
 
 	private(set) lazy var applySync: Action<Sync, Progress, DataStoreError> =
 			Action<Sync, Progress, DataStoreError> { data in
-				return SignalProducer<Progress, DataStoreError> { observer, disposable in
+				return SignalProducer<Progress, DataStoreError> { observer, _ in
 					let progress = Progress(totalUnitCount: 22)
 					var affectedAreas: DataContextArea = []
 					print("Applying sync data from \(data.CurrentDateTimeUtc).")
-					
+
 					print("Syncing Announcements")
 					affectedAreas.insert(self.applySyncEntity(syncEntityDelta: data.Announcements, syncTarget: self.Announcements))
 					progress.completedUnitCount += 1
@@ -104,7 +104,6 @@ class ReactiveDataContext: DataContextProtocol {
 				}.observe(on: ReactiveDataContext.scheduler)
 			}
 
-
 	required init(dataStore: DataStoreProtocol, navigationResolver: NavigationResolverProtocol) {
 		(refreshed, refreshedInput) = Signal<DataContextArea, NoError>.pipe()
 
@@ -113,7 +112,7 @@ class ReactiveDataContext: DataContextProtocol {
 	}
 
 	func loadFromStore(_ areas: DataContextArea = DataContextArea.All) -> SignalProducer<Progress, DataStoreError> {
-		return SignalProducer { observer, disposable in
+		return SignalProducer { observer, _ in
 
 			var producers: [SignalProducer<DataStoreResult, DataStoreError>] = []
 
@@ -192,7 +191,7 @@ class ReactiveDataContext: DataContextProtocol {
 	}
 
 	func saveToStore(_ areas: DataContextArea = DataContextArea.All) -> SignalProducer<Progress, DataStoreError> {
-		return SignalProducer { observer, disposable in
+		return SignalProducer { observer, _ in
 
 			var producers: [SignalProducer<DataStoreResult, DataStoreError>] = []
 
@@ -273,11 +272,11 @@ class ReactiveDataContext: DataContextProtocol {
 			for entity in syncTarget.value {
 				if let index = syncEntityDelta.ChangedEntities.index(of: entity) {
 					updatedEntities.append(syncEntityDelta.ChangedEntities[index])
-					updatedEntitiesCount += 1;
+					updatedEntitiesCount += 1
 				} else if !syncEntityDelta.DeletedEntities.contains(entity.Id) {
 					updatedEntities.append(entity)
 				} else {
-					updatedEntitiesCount += 1;
+					updatedEntitiesCount += 1
 				}
 			}
 

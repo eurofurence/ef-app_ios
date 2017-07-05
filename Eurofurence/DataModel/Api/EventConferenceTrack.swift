@@ -9,12 +9,12 @@ import Foundation
 
 class EventConferenceTrack: EntityBase {
 	var Name = ""
-    
-	var Events : [Event] = []
-	
+
+	var Events: [Event] = []
+
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {
-			return [(keyInObject: "Events",keyInResource: nil)]
+			return [(keyInObject: "Events", keyInResource: nil)]
 	}
 }
 

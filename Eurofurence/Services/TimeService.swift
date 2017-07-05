@@ -14,7 +14,7 @@ Service which allows the app to travel through time.
 */
 class TimeService: NSObject {
 	let currentTime = MutableProperty(Date())
-	
+
 	/// Changes the offset with respect to current local time.
 	var offset: TimeInterval {
 		get {
@@ -30,7 +30,7 @@ class TimeService: NSObject {
 
 	private var lastTime = Date()
 	private var _offset: TimeInterval = 0.0
-	private var timer: Timer? = nil
+	private var timer: Timer?
 
 	override init() {
 		super.init()
@@ -38,7 +38,7 @@ class TimeService: NSObject {
 		offset = UserSettings.DebugTimeOffset.currentValueOrDefault()
 		resume()
 	}
-	
+
 	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
 		if let change = change, let firstChange = change.first, let newOffset = firstChange.value as? TimeInterval, keyPath == UserSettings.DebugTimeOffset.rawValue {
 			offset = newOffset

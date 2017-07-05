@@ -31,7 +31,7 @@ class CurrentEventsViewModel {
 			return Array(filteredItems[0..<min(10, filteredItems.count)])
 		})
 	}
-	
+
 	deinit {
 		disposable.dispose()
 	}

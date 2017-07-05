@@ -19,14 +19,14 @@ class LinkFragment: EVObject {
 	var FragmentType: LinkFragmentType = LinkFragmentType.WebExternal
 	var Name: String = ""
 	var Target: String = ""
-	
-	weak var TargetObject: AnyObject? = nil
-	
+
+	weak var TargetObject: AnyObject?
+
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {
 			return [(keyInObject: "TargetObject", keyInResource: nil)]
 	}
-	
+
 	override func setValue(_ value: Any!, forUndefinedKey key: String) {
 		switch key {
 		case "FragmentType":

@@ -21,11 +21,11 @@ class ContextResolver {
 
 	private init() {
 		#if OFFLINE
-			_container.register(.singleton) { apiUrl in
+			_container.register(.singleton) { _ in
 				MockApiConnection("mock://api")! as ApiConnectionProtocol
 			}
 		#else
-			_container.register(.singleton) { apiUrl in
+			_container.register(.singleton) { _ in
 				WebApiConnection(URL(string: "https://app.eurofurence.org/api/v2/")!) as ApiConnectionProtocol
 			}
 		#endif

@@ -10,12 +10,12 @@ import Foundation
 class EventConferenceDay: EntityBase {
 	var Date = Foundation.Date()
     var Name = ""
-	
-	var Events : [Event] = []
-	
+
+	var Events: [Event] = []
+
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {
-			return [(keyInObject: "Events",keyInResource: nil)]
+			return [(keyInObject: "Events", keyInResource: nil)]
 	}
 }
 

@@ -17,8 +17,8 @@ enum UserSettings: String {
     case RefreshInBackgroundOnMobile
 	case DebugTimeOffset
 	case LastSyncDate
-    
-    func defaultValue<T>()->T {
+
+    func defaultValue<T>() -> T {
         switch self {
         case .UpdateOnStart:
             return true as! T
@@ -40,8 +40,8 @@ enum UserSettings: String {
 			return Date(timeIntervalSince1970: 0) as! T
         }
 	}
-	
-	func currentValueOrDefault<T>()->T {
+
+	func currentValueOrDefault<T>() -> T {
 		let defaults = UserDefaults.standard
 		if let value = defaults.object(forKey: self.rawValue) {
 			return value as! T
@@ -49,14 +49,14 @@ enum UserSettings: String {
 			return self.defaultValue()
 		}
 	}
-	
-	func currentValue<T>()->T? {
+
+	func currentValue<T>() -> T? {
 		let defaults = UserDefaults.standard
 		return defaults.object(forKey: self.rawValue) as? T
 	}
-	
+
 	@discardableResult
-    func setValue<T>(_ value: T)->T? {
+    func setValue<T>(_ value: T) -> T? {
         let defaults = UserDefaults.standard
 		let oldValue: T? = self.currentValue()
         defaults.set(value, forKey: self.rawValue)

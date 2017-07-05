@@ -11,7 +11,7 @@ import Foundation
 import ReactiveSwift
 
 protocol ApiConnectionProtocol {
-	
+
 	typealias AFImage = AlamofireImage.Image
 	typealias Parameters = [String: Any]
 
@@ -25,13 +25,13 @@ protocol ApiConnectionProtocol {
 
 	// MARK: General HTTP verbs
 
-	func doGet<EntityType:EVNetworkingObject>(_ endpoint: String, parameters: Parameters?) -> SignalProducer<EntityType, ApiConnectionError>
+	func doGet<EntityType: EVNetworkingObject>(_ endpoint: String, parameters: Parameters?) -> SignalProducer<EntityType, ApiConnectionError>
 
-	func doPost<EntityType:EVNetworkingObject>(_ endpoint: String, payload: EVReflectable?, parameters: Parameters?) -> SignalProducer<EntityType, ApiConnectionError>
+	func doPost<EntityType: EVNetworkingObject>(_ endpoint: String, payload: EVReflectable?, parameters: Parameters?) -> SignalProducer<EntityType, ApiConnectionError>
 
-	func doPut<EntityType:EVNetworkingObject>(_ endpoint: String, payload: EVReflectable?, parameters: Parameters?) -> SignalProducer<EntityType, ApiConnectionError>
+	func doPut<EntityType: EVNetworkingObject>(_ endpoint: String, payload: EVReflectable?, parameters: Parameters?) -> SignalProducer<EntityType, ApiConnectionError>
 
-	func doDelete<EntityType:EVNetworkingObject>(_ endpoint: String, parameters: Parameters?) -> SignalProducer<EntityType, ApiConnectionError>
+	func doDelete<EntityType: EVNetworkingObject>(_ endpoint: String, parameters: Parameters?) -> SignalProducer<EntityType, ApiConnectionError>
 }
 
 extension ApiConnectionProtocol {
@@ -102,7 +102,6 @@ extension ApiConnectionProtocol {
 		}
 	}
 }
-
 
 enum ApiConnectionError: CustomNSError {
 	case InvalidParameter(functionName: String, description: String?)

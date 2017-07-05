@@ -19,7 +19,6 @@ class AboutViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation
@@ -32,12 +31,12 @@ class AboutViewController: UIViewController {
     */
 
     @IBAction func openMenu(_ sender: AnyObject) {
-        showApp();
+        showApp()
     }
-    
+
     func showApp() {
         let rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
             self.slideMenuController()?.changeMainViewController(rootVC, close: true)
     }
-    
+
 }
