@@ -21,10 +21,9 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
     
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    let slideMenuStoryboard = UIStoryboard(name: "SlideMenu", bundle: nil)
     
     var menus = ["Settings", "About"]
-    var settingsTableViewController: UIViewController!
-    var aboutViewController: UIViewController!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -32,17 +31,10 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         self.tableView.separatorColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1.0)
-        
-        let storyboard = UIStoryboard(name: "SlideMenu", bundle: nil)
-        let settingsTableViewController = storyboard.instantiateViewController(withIdentifier: "SettingsTableView") as! SettingsTableViewController
-        self.settingsTableViewController = UINavigationController(rootViewController: settingsTableViewController)
-        //self.settingsTableViewController = UINavigationController(rootViewController: settingsTableViewController)
-        
-        let aboutViewController = storyboard.instantiateViewController(withIdentifier: "AboutView") as! AboutViewController
-        self.aboutViewController = UINavigationController(rootViewController: aboutViewController)
         self.tableView.registerCellClass(MenuTableViewCell.self)
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
@@ -63,13 +55,27 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
     }
     
     func changeViewController(_ menu: LeftMenu) {
+        let destinationViewController: UIViewController
         switch menu {
         case .settings:
-            self.slideMenuController()?.changeMainViewController(self.settingsTableViewController, close: true)
+            destinationViewController = makeSettingsViewController()
         case .about:
-            self.slideMenuController()?.changeMainViewController(self.aboutViewController, close: true)
+            destinationViewController = makeAboutViewController()
         }
+
+        slideMenuController()?.changeMainViewController(destinationViewController, close: true)
     }
+
+    private func makeAboutViewController() -> UIViewController {
+        let aboutViewController = slideMenuStoryboard.instantiateViewController(withIdentifier: "AboutView") as! AboutViewController
+        return UINavigationController(rootViewController: aboutViewController)
+    }
+
+    private func makeSettingsViewController() -> UIViewController {
+        let settingsTableViewController = slideMenuStoryboard.instantiateViewController(withIdentifier: "SettingsTableView") as! SettingsTableViewController
+        return UINavigationController(rootViewController: settingsTableViewController)
+    }
+
 }
 
 extension LeftViewController : UITableViewDelegate {
