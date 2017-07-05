@@ -9,13 +9,13 @@
 @testable import Eurofurence
 import XCTest
 
-protocol Calendar {
+protocol CalendarPort {
 
     func requestAccessToEvents()
 
 }
 
-class CapturingCalendar: Calendar {
+class CapturingCalendarPort: CalendarPort {
 
     private(set) var wasAskedForEventsPermissions = false
     func requestAccessToEvents() {
@@ -26,9 +26,9 @@ class CapturingCalendar: Calendar {
 
 class CalendarService {
 
-    private let calendar: Calendar
+    private let calendar: CalendarPort
 
-    init(calendar: Calendar) {
+    init(calendar: CalendarPort) {
         self.calendar = calendar
     }
 
@@ -41,7 +41,7 @@ class CalendarService {
 class CalendarServiceTests: XCTestCase {
     
     func testAddingEventShouldRequestEventsPermissionsFromTheCalendar() {
-        let capturingCalendar = CapturingCalendar()
+        let capturingCalendar = CapturingCalendarPort()
         let service = CalendarService(calendar: capturingCalendar)
         let event = Event()
         service.add(event: event)
@@ -50,7 +50,7 @@ class CalendarServiceTests: XCTestCase {
     }
 
     func testEventsPermissionsShouldNotBeRequestedUntilAttemptingToAddEvent() {
-        let capturingCalendar = CapturingCalendar()
+        let capturingCalendar = CapturingCalendarPort()
         _ = CalendarService(calendar: capturingCalendar)
 
         XCTAssertFalse(capturingCalendar.wasAskedForEventsPermissions)
