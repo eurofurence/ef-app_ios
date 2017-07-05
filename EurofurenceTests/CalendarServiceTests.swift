@@ -10,18 +10,36 @@
 import XCTest
 
 protocol CalendarPort {
+    
+    var isAuthorizedForEventsAccess: Bool { get }
 
     func requestAccessToEvents()
 
 }
 
 class CapturingCalendarPort: CalendarPort {
+    
+    var isAuthorizedForEventsAccess: Bool {
+        get {
+            return false
+        }
+    }
 
     private(set) var wasAskedForEventsPermissions = false
     func requestAccessToEvents() {
         wasAskedForEventsPermissions = true
     }
 
+}
+
+class AuthorizedCalendarPort: CapturingCalendarPort {
+    
+    override var isAuthorizedForEventsAccess: Bool {
+        get {
+            return true
+        }
+    }
+    
 }
 
 class CalendarService {
@@ -33,7 +51,9 @@ class CalendarService {
     }
 
     func add(event: Any) {
-        calendar.requestAccessToEvents()
+        if !calendar.isAuthorizedForEventsAccess {
+            calendar.requestAccessToEvents()
+        }
     }
 
 }
@@ -53,6 +73,15 @@ class CalendarServiceTests: XCTestCase {
         let capturingCalendar = CapturingCalendarPort()
         _ = CalendarService(calendar: capturingCalendar)
 
+        XCTAssertFalse(capturingCalendar.wasAskedForEventsPermissions)
+    }
+    
+    func testEventsPermissionsShouldNotBeRequestedWhenAddingEventWhenTheCalendarIndicatesWeAreAlreadyAuthorized() {
+        let capturingCalendar = AuthorizedCalendarPort()
+        let service = CalendarService(calendar: capturingCalendar)
+        let event = Event()
+        service.add(event: event)
+        
         XCTAssertFalse(capturingCalendar.wasAskedForEventsPermissions)
     }
     
