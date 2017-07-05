@@ -26,37 +26,15 @@ class CalendarAccess {
 		}
 	}
 	
-	private let eventStore = EKEventStore()
+	private var eventStore = EKEventStore()
 	
 	private init() {}
 	
 	private func requestAccess(_ completion: @escaping ((_ accessGranted: Bool) -> Void)) {
-		eventStore.requestAccess(to: EKEntityType.event, completion: {
-			(accessGranted: Bool, error: Error?) in
-			
-			if accessGranted == true {
-				DispatchQueue.main.async(execute: {
-					completion(true);
-				})
-			} else {
-				DispatchQueue.main.async(execute: {
-					completion(false);
-				})
-			}
-		})
-	}
-	
-	private func insert(_ ekEvent: EKEvent) {
-		do {
-			try self.eventStore.save(ekEvent, span: .thisEvent)
-
-			let alert = UIAlertController(title: "Export succes", message: "Event exported succefuly", preferredStyle: UIAlertControllerStyle.alert)
-			alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
-			//self.presentViewController(alert, animated: true, completion: nil)
-		} catch let specError as NSError {
-			print("A specific error occurred: \(specError)")
-		} catch {
-			print("An error occurred")
+		eventStore.requestAccess(to: EKEntityType.event) { (accessGranted, _) in
+            DispatchQueue.main.async {
+                completion(accessGranted)
+            }
 		}
 	}
 	
@@ -66,27 +44,57 @@ class CalendarAccess {
 	- Parameter event: Event for which to create and insert a calendar entry
 	*/
 	func insert(event: Event) {
-		let ekEvent = EKEvent(eventStore: eventStore.self)
-		ekEvent.title = event.Title;
-		ekEvent.notes = event.Description;
-		ekEvent.location = event.ConferenceRoom?.Name;
-		ekEvent.startDate = event.StartDateTimeUtc;
-		ekEvent.endDate = event.EndDateTimeUtc;
-		ekEvent.addAlarm(EKAlarm(absoluteDate: ekEvent.startDate.addingTimeInterval( -30 * 60)));
-		ekEvent.calendar = self.eventStore.defaultCalendarForNewEvents;
-		
-		let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
-		switch (status) {
-		case EKAuthorizationStatus.notDetermined:
-			requestAccess() { accessGranted in
-				if (accessGranted) {
-					self.insert(ekEvent);
-				}
-			}
-		case EKAuthorizationStatus.authorized:
-			insert(ekEvent)
-		case EKAuthorizationStatus.restricted, EKAuthorizationStatus.denied:
-			break
-		}
+        verifyEventPermissions { (authorized) in
+            if authorized {
+                self.createAndInsertEvent(event)
+            }
+        }
 	}
+
+    private func verifyEventPermissions(_ completionHandler: @escaping (_ authorized: Bool) -> Void) {
+        switch EKEventStore.authorizationStatus(for: EKEntityType.event) {
+        case .authorized:
+            completionHandler(true)
+
+        case .notDetermined:
+            requestAccess(completionHandler)
+
+        default:
+            completionHandler(false)
+        }
+    }
+
+    private func createAndInsertEvent(_ event: Event) {
+        performPermissionsChangedWorkroundIfNecessary()
+        let eventToInsert = makeEvent(for: event)
+
+        do {
+            try eventStore.save(eventToInsert, span: .thisEvent)
+        } catch let specError as NSError {
+            print("A specific error occurred: \(specError)")
+        } catch {
+            print("An error occurred")
+        }
+    }
+
+    private func performPermissionsChangedWorkroundIfNecessary() {
+        let calendar: EKCalendar? = eventStore.defaultCalendarForNewEvents
+        if calendar == nil {
+            eventStore = EKEventStore()
+        }
+    }
+
+    private func makeEvent(for event: Event) -> EKEvent {
+        let ekEvent = EKEvent(eventStore: eventStore)
+        ekEvent.title = event.Title;
+        ekEvent.notes = event.Description;
+        ekEvent.location = event.ConferenceRoom?.Name;
+        ekEvent.startDate = event.StartDateTimeUtc;
+        ekEvent.endDate = event.EndDateTimeUtc;
+        ekEvent.addAlarm(EKAlarm(absoluteDate: ekEvent.startDate.addingTimeInterval( -30 * 60)));
+        ekEvent.calendar = self.eventStore.defaultCalendarForNewEvents;
+
+        return ekEvent
+    }
+
 }
