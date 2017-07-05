@@ -19,7 +19,8 @@ class KnowledgeEntryViewController: UIViewController {
     var imageViewDefaultHeight = CGFloat(0.0)
     var linkViewLastButton: UIButton? = nil
     var linkViewLastBottomConstraint: NSLayoutConstraint? = nil
-    var buttonUrls: [UIButton:URL] = [:]
+	// TODO: This is somewhat nasty and might require refactoring at some point
+    var buttonLinks: [UIButton:LinkFragment] = [:]
     
     static let htmlStyle = "<style>"
         + "html, p, ul, li { font: -apple-system-body; color: #FFF; }"
@@ -73,6 +74,7 @@ class KnowledgeEntryViewController: UIViewController {
         
         do {
             let htmlText = WikiText.transformToHtml(knowledgeEntry?.Text ?? "", style: KnowledgeEntryViewController.htmlStyle)
+			// FIXME: This somehow seems to trigger initialisation of a WebView inside textView, causing severe lag upon first call
             textView.attributedText = try NSAttributedString(
                 data: htmlText.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
                 options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
@@ -86,7 +88,7 @@ class KnowledgeEntryViewController: UIViewController {
         }
         linkViewLastButton = nil
         linkViewLastBottomConstraint = nil
-        buttonUrls = [:]
+        buttonLinks = [:]
         
         linkView.translatesAutoresizingMaskIntoConstraints = false
 		if let links = knowledgeEntry?.Links {
@@ -95,12 +97,28 @@ class KnowledgeEntryViewController: UIViewController {
 			}
 		}
 		
-        linkLabel.isHidden = buttonUrls.count == 0
+        linkLabel.isHidden = buttonLinks.count == 0
     }
     
     func urlButtonAction(_ button: UIButton) {
-        if let url = buttonUrls[button] {
-            UIApplication.shared.openURL(url)
+        if let link = buttonLinks[button] {
+			switch link.FragmentType {
+			case .DealerDetail:
+				if let dealer: Dealer = link.getTarget() {
+					performSegue(withIdentifier: "KnowledgeEntryToDealerSegue", sender: dealer)
+				}
+			case .MapInternal:
+				if let mapEntry: MapEntry = link.getTarget() {
+					performSegue(withIdentifier: "KnowledgeEntryToMapSegue", sender: mapEntry)
+				}
+			case .WebExternal:
+				if let url: URL = link.getTarget() {
+					UIApplication.shared.openURL(url)
+				}
+			default:
+				// TODO: Provide option for .MapExternal
+				break
+			}
         }
     }
     
@@ -132,7 +150,7 @@ class KnowledgeEntryViewController: UIViewController {
         NSLayoutConstraint(item: linkButton, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: linkView, attribute: NSLayoutAttribute.trailingMargin, multiplier: 1.0, constant: 0).isActive = true
         
         linkViewLastButton = linkButton
-        buttonUrls[linkButton] = URL(string: linkFragment.Target)
+        buttonLinks[linkButton] = linkFragment
         
         linkView.layoutSubviews()
         
@@ -142,5 +160,24 @@ class KnowledgeEntryViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		guard let identifier = segue.identifier else { return }
+		
+		switch identifier {
+		case "KnowledgeEntryToDealerSegue":
+			if let destinationVC = segue.destination as? DealerViewController, let dealer = sender as? Dealer {
+				destinationVC.dealer = dealer
+				self.tabBarController?.tabBar.isHidden = false
+			}
+		case "KnowledgeEntryToMapSegue":
+			if let destinationVC = segue.destination as? MapViewController, let mapEntry = sender as? MapEntry {
+				destinationVC.currentMapEntry = mapEntry
+				destinationVC.currentMapEntryRadiusMultiplier = 10.0
+				self.tabBarController?.tabBar.isHidden = false
+			}
+		default:
+			break
+		}
+	}
 }
