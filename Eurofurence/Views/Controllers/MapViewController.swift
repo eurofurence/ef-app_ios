@@ -126,8 +126,8 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
         
 		if let currentMapEntry = currentMapEntry, let currentMap = currentMapEntry.Map, let mapIndex = mapIdToIndex[currentMap.Id], let mapImage = mapViews[mapIndex].image {
 			
-			let mapEntryLocation = currentMapEntry.getAbsoluteLocationForImage(mapImage)
-			let tapRadius = currentMapEntry.getAbsoluteTapRadiusForImage(mapImage)
+			let mapEntryLocation = CGPoint(x: CGFloat(currentMapEntry.X), y: CGFloat(currentMapEntry.Y))
+			let tapRadius = CGFloat(currentMapEntry.TapRadius)
             
             var height: CGFloat!
             var width: CGFloat!
@@ -191,20 +191,19 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func checkMapEntries(_ tapGesture: UITapGestureRecognizer) {
-        if let mapImageView = mapContainerView.subviews.first as? UIImageView, let mapImage = mapImageView.image , currentMap < mapEntries.count && !mapEntries[currentMap].isEmpty {
+        if let mapImageView = mapContainerView.subviews.first as? UIImageView, currentMap < mapEntries.count && !mapEntries[currentMap].isEmpty {
             
             let tapLocation = tapGesture.location(in: mapImageView)
             var nearestMapEntry: MapEntry? = nil
             var nearestMapEntryDistanceSquared = CGFloat(-1.0)
             for mapEntry in mapEntries[currentMap] {
-                let mapEntryLocation = mapEntry.getAbsoluteLocationForImage(mapImage)
-				let relativeTapRadius = CGFloat(mapEntry.RelativeTapRadius)
+				let mapEntryLocation = CGPoint(x: CGFloat(mapEntry.X), y: CGFloat(mapEntry.Y))
+				let tapRadius = CGFloat(mapEntry.TapRadius)
                     
 				let deltaX = abs(tapLocation.x - mapEntryLocation.x)
 				let deltaY = abs(tapLocation.y - mapEntryLocation.y)
 				let distanceSquared = deltaX * deltaX + deltaY * deltaY
 				
-				let tapRadius = relativeTapRadius * mapImage.size.height
 				if distanceSquared <= tapRadius * tapRadius && (nearestMapEntry == nil || distanceSquared < nearestMapEntryDistanceSquared) {
 					
 					nearestMapEntryDistanceSquared = distanceSquared
