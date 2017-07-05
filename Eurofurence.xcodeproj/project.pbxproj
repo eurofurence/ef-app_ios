@@ -30,7 +30,6 @@
 		9AB64BCB1F018135004E8D91 /* KnowledgeGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB64BCA1F018135004E8D91 /* KnowledgeGroupCell.swift */; };
 		9AB64BCD1F018365004E8D91 /* KnowledgeEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB64BCC1F018365004E8D91 /* KnowledgeEntryCell.swift */; };
 		9AB64BCF1F0272A5004E8D91 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AB64BCE1F02665D004E8D91 /* fontawesome-webfont.ttf */; };
-		9AB83B0A1F0D24B5001823B1 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB83B091F0D24B5001823B1 /* ImageService.swift */; };
 		9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99371EBE172D006FC958 /* AppDelegate.swift */; };
 		9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF993E1EBE172D006FC958 /* Assets.xcassets */; };
 		9ACF99421EBE172D006FC958 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF99401EBE172D006FC958 /* LaunchScreen.storyboard */; };
@@ -62,7 +61,6 @@
 		D6F3D2C86BE68A102D2D6312 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D831FC85BC47C1D346C1 /* EventTableViewController.swift */; };
 		D6F3D31AF756EC1131851C5A /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D7EA60D21CE770225E11 /* LeftViewController.swift */; };
 		D6F3D339BFBA2C299453B6BA /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D3312E7C5B416B722B85 /* SettingsTableViewController.swift */; };
-		D6F3D34832F430CDBAC8A8D3 /* ImageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D4D75D66F5A707E107CF /* ImageServiceProtocol.swift */; };
 		D6F3D3D11CAB2B06852D0EF9 /* DealerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D4F55CFC5A5BDBB3F1A8 /* DealerTableViewController.swift */; };
 		D6F3D40D3515E7ABE9565906 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D0A32DC83843688B347C /* AboutViewController.swift */; };
 		D6F3D4C7FF8BB27C46EF4D3D /* ServiceResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DB1B292BBFBF5D69F557 /* ServiceResolver.swift */; };
@@ -476,7 +474,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = "Dominik Schöner";
+				ORGANIZATIONNAME = Eurofurence;
 				TargetAttributes = {
 					9ACF99331EBE172D006FC958 = {
 						CreatedOnToolsVersion = 8.3.2;
