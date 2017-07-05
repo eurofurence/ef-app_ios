@@ -32,7 +32,7 @@ class CalendarAccess {
 	
 	private func requestAccess(_ completion: @escaping ((_ accessGranted: Bool) -> Void)) {
 		eventStore.requestAccess(to: EKEntityType.event, completion: {
-			(accessGranted: Bool, error: NSError?) in
+			(accessGranted: Bool, error: Error?) in
 			
 			if accessGranted == true {
 				DispatchQueue.main.async(execute: {
@@ -43,12 +43,13 @@ class CalendarAccess {
 					completion(false);
 				})
 			}
-		} as! EKEventStoreRequestAccessCompletionHandler)
+		})
 	}
 	
 	private func insert(_ ekEvent: EKEvent) {
 		do {
 			try self.eventStore.save(ekEvent, span: .thisEvent)
+
 			let alert = UIAlertController(title: "Export succes", message: "Event exported succefuly", preferredStyle: UIAlertControllerStyle.alert)
 			alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil))
 			//self.presentViewController(alert, animated: true, completion: nil)
