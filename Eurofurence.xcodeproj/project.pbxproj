@@ -34,7 +34,6 @@
 		9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99371EBE172D006FC958 /* AppDelegate.swift */; };
 		9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF993E1EBE172D006FC958 /* Assets.xcassets */; };
 		9ACF99421EBE172D006FC958 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF99401EBE172D006FC958 /* LaunchScreen.storyboard */; };
-		9ACF994D1EBE172D006FC958 /* EurofurenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF994C1EBE172D006FC958 /* EurofurenceTests.swift */; };
 		9ACF99681EBE3479006FC958 /* EntityBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF995C1EBE3479006FC958 /* EntityBase.swift */; };
 		9ACF99761EBE3B4C006FC958 /* SharedFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99751EBE3B4C006FC958 /* SharedFunctions.swift */; };
 		9ACF998D1EC858B2006FC958 /* KnowledgeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99811EC858B2006FC958 /* KnowledgeGroup.swift */; };
@@ -127,7 +126,6 @@
 		9ACF99411EBE172D006FC958 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9ACF99431EBE172D006FC958 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Eurofurence/Info.plist; sourceTree = "<group>"; };
 		9ACF99481EBE172D006FC958 /* EurofurenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9ACF994C1EBE172D006FC958 /* EurofurenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceTests.swift; sourceTree = "<group>"; };
 		9ACF994E1EBE172D006FC958 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9ACF995C1EBE3479006FC958 /* EntityBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityBase.swift; sourceTree = "<group>"; };
 		9ACF99751EBE3B4C006FC958 /* SharedFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedFunctions.swift; path = Eurofurence/SharedFunctions.swift; sourceTree = "<group>"; };
@@ -267,7 +265,6 @@
 		9ACF994B1EBE172D006FC958 /* EurofurenceTests */ = {
 			isa = PBXGroup;
 			children = (
-				9ACF994C1EBE172D006FC958 /* EurofurenceTests.swift */,
 				9ACF994E1EBE172D006FC958 /* Info.plist */,
 				78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */,
 				78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */,
@@ -704,7 +701,6 @@
 			files = (
 				78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */,
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
-				9ACF994D1EBE172D006FC958 /* EurofurenceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
