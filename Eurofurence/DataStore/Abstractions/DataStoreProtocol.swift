@@ -1,5 +1,5 @@
 //
-//  IDataStore.swift
+//  DataStoreProtocol.swift
 //  Eurofurence
 //
 //  Copyright © 2017 Eurofurence. All rights reserved.
@@ -8,7 +8,7 @@
 import Foundation
 import ReactiveSwift
 
-protocol IDataStore {
+protocol DataStoreProtocol {
 	/**
 	Stores all entities in given array to the data store.
 	

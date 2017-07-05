@@ -10,7 +10,8 @@ import EVReflection
 import ReactiveSwift
 import Alamofire
 
-class WebApiConnection: IApiConnection {
+class WebApiConnection: ApiConnectionProtocol {
+	
 	let scheduler = QueueScheduler(qos: .userInitiated, name: "org.eurofurence.app.WebApiScheduler")
 	let apiUrl: URL
 

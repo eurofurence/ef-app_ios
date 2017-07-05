@@ -11,15 +11,15 @@ import Result
 
 class ContextManager {
 	private static let scheduler = QueueScheduler(qos: .userInitiated, name: "org.eurofurence.app.ContextManagerScheduler")
-	private var apiConnection: IApiConnection
-	private var dataContext: IDataContext
-	private var dataStore: IDataStore
+	private var apiConnection: ApiConnectionProtocol
+	private var dataContext: DataContextProtocol
+	private var dataStore: DataStoreProtocol
 
 	private(set) lazy var syncWithApi: Action<Date?, Progress, NSError>? =
 			Action { sinceDate in
 				return SignalProducer<Progress, NSError> { observer, disposable in
 					let progress = Progress(totalUnitCount: 3)
-					let parameters: IApiConnection.Parameters?
+					let parameters: ApiConnectionProtocol.Parameters?
 					if let sinceDate = sinceDate {
 						let since = Iso8601DateFormatter.instance.string(from: sinceDate)
 						parameters = ["since": since]
@@ -53,8 +53,8 @@ class ContextManager {
 				}.observe(on: ContextManager.scheduler)
 			}
 
-	init(apiConnection: IApiConnection, dataContext: IDataContext,
-	     dataStore: IDataStore) {
+	init(apiConnection: ApiConnectionProtocol, dataContext: DataContextProtocol,
+	     dataStore: DataStoreProtocol) {
 		self.apiConnection = apiConnection
 		self.dataContext = dataContext
 		self.dataStore = dataStore

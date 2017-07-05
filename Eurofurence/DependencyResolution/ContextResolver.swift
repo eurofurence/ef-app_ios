@@ -22,28 +22,28 @@ class ContextResolver {
 	private init() {
 		#if OFFLINE
 			_container.register(.singleton) { apiUrl in
-				MockApiConnection("mock://api")! as IApiConnection
+				MockApiConnection("mock://api")! as ApiConnectionProtocol
 			}
 		#else
 			_container.register(.singleton) { apiUrl in
-				WebApiConnection(URL(string: "https://app.eurofurence.org/api/v2/")!) as IApiConnection
+				WebApiConnection(URL(string: "https://app.eurofurence.org/api/v2/")!) as ApiConnectionProtocol
 			}
 		#endif
 
 		_container.register(.singleton) {
-			JsonDataStore() as IDataStore
+			JsonDataStore() as DataStoreProtocol
 		}
 		_container.register(.singleton) {
-			NavigationResolver() as INavigationResolver
-		}
-
-		_container.register(.singleton) {
-			ReactiveDataContext(dataStore: $0, navigationResolver: $1) as IDataContext
+			NavigationResolver() as NavigationResolverProtocol
 		}
 
 		_container.register(.singleton) {
-			try ContextManager(apiConnection: $0, dataContext: self._container.resolve() as IDataContext,
-					dataStore: self._container.resolve() as IDataStore)
+			ReactiveDataContext(dataStore: $0, navigationResolver: $1) as DataContextProtocol
+		}
+
+		_container.register(.singleton) {
+			try ContextManager(apiConnection: $0, dataContext: self._container.resolve() as DataContextProtocol,
+					dataStore: self._container.resolve() as DataStoreProtocol)
 		}
 	}
 }

@@ -11,13 +11,13 @@ import Result
 
 class AnnouncementsViewModel {
 	let Announcements = MutableProperty<[Announcement]>([])
-	private let dataContext: IDataContext
+	private let dataContext: DataContextProtocol
 	private let timeService: TimeService = try! ServiceResolver.container.resolve()
 	private var timedAnnouncementsSignal: Signal<(Date, [Announcement]), NoError>
 	private var disposable = CompositeDisposable()
 	private let scheduler = QueueScheduler(qos: .background, name: "org.eurofurence.app.AnnouncementsViewModelScheduler")
 
-	init(dataContext: IDataContext) {
+	init(dataContext: DataContextProtocol) {
 		self.dataContext = dataContext
 		timedAnnouncementsSignal = Signal.combineLatest(timeService.currentTime.signal, dataContext.Announcements.signal).observe(on: scheduler)
 

@@ -1,5 +1,5 @@
 //
-//  IDataContext.swift
+//  DataContextProtocol.swift
 //  Eurofurence
 //
 //  Copyright © 2017 Eurofurence. All rights reserved.
@@ -9,7 +9,7 @@ import Foundation
 import ReactiveSwift
 import Result
 
-protocol IDataContext {
+protocol DataContextProtocol {
 	var Announcements: MutableProperty<[Announcement]> { get }
 	var Dealers: MutableProperty<[Dealer]> { get }
 	var Events: MutableProperty<[Event]> { get }
@@ -27,7 +27,7 @@ protocol IDataContext {
 	/// Signal to be triggered upon changes in any DataContextArea
 	var refreshed: Signal<DataContextArea, NoError> { get }
 
-	init(dataStore: IDataStore, navigationResolver: INavigationResolver)
+	init(dataStore: DataStoreProtocol, navigationResolver: NavigationResolverProtocol)
 
 
 	func loadFromStore(_ areas: DataContextArea) -> SignalProducer<Progress, DataStoreError>
@@ -37,7 +37,7 @@ protocol IDataContext {
 	func clearAll()
 }
 
-extension IDataContext {
+extension DataContextProtocol {
 	func loadFromStore() -> SignalProducer<Progress, DataStoreError> {
 		return loadFromStore(DataContextArea.All)
 	}

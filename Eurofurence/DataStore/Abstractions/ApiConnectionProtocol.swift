@@ -1,15 +1,18 @@
 //
-//  ApiConnection.swift
+//  ApiConnectionProtocol.swift
 //  Eurofurence
 //
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-import Foundation
+import AlamofireImage
 import EVReflection
+import Foundation
 import ReactiveSwift
 
-protocol IApiConnection {
+protocol ApiConnectionProtocol {
+	
+	typealias AFImage = AlamofireImage.Image
 	typealias Parameters = [String: Any]
 
 	var apiUrl: URL { get }
@@ -29,9 +32,13 @@ protocol IApiConnection {
 	func doPut<EntityType:EVNetworkingObject>(_ endpoint: String, payload: EVReflectable?, parameters: Parameters?) -> SignalProducer<EntityType, ApiConnectionError>
 
 	func doDelete<EntityType:EVNetworkingObject>(_ endpoint: String, parameters: Parameters?) -> SignalProducer<EntityType, ApiConnectionError>
+	
+	// MARK: Specialised functions
+	
+	func downloadImage(image: Image) -> SignalProducer<AFImage, ApiConnectionError>
 }
 
-extension IApiConnection {
+extension ApiConnectionProtocol {
 	/**
 	Maps the given endpoint name to its corresponding EntityBase subclass.
 	- parameter name: endpoint to be mapped to an entity type

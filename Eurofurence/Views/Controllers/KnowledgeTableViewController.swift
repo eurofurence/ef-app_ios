@@ -8,7 +8,7 @@
 import UIKit
 
 class KnowledgeTableViewController: UITableViewController {
-	let dataContext: IDataContext = try! ContextResolver.container.resolve()
+	let dataContext: DataContextProtocol = try! ContextResolver.container.resolve()
 
     override func viewDidLoad() {
         super.viewDidLoad()

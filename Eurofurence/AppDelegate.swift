@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		PrintOptions.Active = .None
 
 		let contextManager = try! ContextResolver.container.resolve() as ContextManager
-		let dataContext = try! ContextResolver.container.resolve() as IDataContext
+		let dataContext = try! ContextResolver.container.resolve() as DataContextProtocol
 		
 		dataContext.loadFromStore().start(on: QueueScheduler.concurrent).start({ event in
 			switch event {

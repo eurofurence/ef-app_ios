@@ -28,7 +28,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
     weak var currentMapEntry: MapEntry? = nil
     var currentMapEntryRadiusMultiplier = CGFloat(1.0)
 	
-	let dataContext: IDataContext = try! ContextResolver.container.resolve()
+	let dataContext: DataContextProtocol = try! ContextResolver.container.resolve()
 
     override func viewDidLoad() {
         super.viewDidLoad()

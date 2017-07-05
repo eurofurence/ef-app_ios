@@ -9,11 +9,11 @@ import Foundation
 import ReactiveSwift
 import Result
 
-class ReactiveDataContext: IDataContext {
+class ReactiveDataContext: DataContextProtocol {
 	private static let scheduler = QueueScheduler(qos: .userInitiated, name: "org.eurofurence.app.ReactiveDataContextScheduler")
 	private let (lifetime, token) = Lifetime.make()
-	fileprivate let dataStore: IDataStore
-	fileprivate let navigationResolver: INavigationResolver
+	fileprivate let dataStore: DataStoreProtocol
+	fileprivate let navigationResolver: NavigationResolverProtocol
 
 	let Announcements = MutableProperty<[Announcement]>([])
 	let Dealers = MutableProperty<[Dealer]>([])
@@ -105,7 +105,7 @@ class ReactiveDataContext: IDataContext {
 			}
 
 
-	required init(dataStore: IDataStore, navigationResolver: INavigationResolver) {
+	required init(dataStore: DataStoreProtocol, navigationResolver: NavigationResolverProtocol) {
 		(refreshed, refreshedInput) = Signal<DataContextArea, NoError>.pipe()
 
 		self.dataStore = dataStore

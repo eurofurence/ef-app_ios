@@ -11,7 +11,7 @@ import AlamofireImage
 import ReactiveSwift
 
 class DealerTableViewController: UITableViewController {
-	let dataContext: IDataContext = try! ContextResolver.container.resolve()
+	let dataContext: DataContextProtocol = try! ContextResolver.container.resolve()
 	var dealersByLetter: [String: [Dealer]] = [:]
 	var sortedKeys: [String] = []
 	var disposable = CompositeDisposable()

@@ -14,10 +14,10 @@ class EventsViewModel {
 	let EventConferenceDays = MutableProperty<[EventConferenceDay]>([])
 	let EventConferenceRooms = MutableProperty<[EventConferenceRoom]>([])
 	let EventConferenceTracks = MutableProperty<[EventConferenceTrack]>([])
-	private let dataContext: IDataContext
+	private let dataContext: DataContextProtocol
 	private var disposable = CompositeDisposable()
 	
-	init(dataContext: IDataContext) {
+	init(dataContext: DataContextProtocol) {
 		self.dataContext = dataContext
 		
 		disposable += Events <~ dataContext.Events

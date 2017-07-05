@@ -7,8 +7,8 @@
 
 import Foundation
 
-class NavigationResolver: INavigationResolver {
-	func resolve(dataContext: IDataContext) {
+class NavigationResolver: NavigationResolverProtocol {
+	func resolve(dataContext: DataContextProtocol) {
 		var linkFragments: [LinkFragment] = []
 		
 		print("\(#function): Resolving Dealers")

@@ -14,7 +14,7 @@ import EVReflection
 /**
 JSON-based implementation for offline, on-device data storage.
 */
-class JsonDataStore: IDataStore {
+class JsonDataStore: DataStoreProtocol {
 	private let scheduler = QueueScheduler(qos: .userInitiated, name: "DataStore")
 	private let baseDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 	private var storeDirectory : URL? = nil

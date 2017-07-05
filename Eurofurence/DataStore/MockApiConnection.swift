@@ -10,7 +10,7 @@ import EVReflection
 import ReactiveSwift
 import Alamofire
 
-class MockApiConnection: IApiConnection {
+class MockApiConnection: ApiConnectionProtocol {
 	static let defaultApiUrl = URL(string: "mock://api")!
 	let apiUrl: URL = defaultApiUrl
 
