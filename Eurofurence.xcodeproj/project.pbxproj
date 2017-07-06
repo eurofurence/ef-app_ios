@@ -71,7 +71,6 @@
 		D6F3D62A784F07D9C7A84DC8 /* KnowledgeEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DB48EF811D49364AFB9D /* KnowledgeEntryViewController.swift */; };
 		D6F3D6ADD1B889C901EE841A /* DataStoreResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D8101460A96C0D9A7612 /* DataStoreResult.swift */; };
 		D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D46D42184018C6E237CD /* RoutingAppChooser.swift */; };
-		D6F3DAE595E6664666DA523F /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = D6F3D21513FCE6CCDC157C6A /* .travis.yml */; };
 		D6F3D875324C6F14833865FB /* SlideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6F3D61F42888D38B5B2E9BD /* SlideMenu.storyboard */; };
 		D6F3DAD590C051C8D0060172 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DFA70EA419105E0019F3 /* EventViewController.swift */; };
 		D6F3DB838A1BDAFC6DAC2F61 /* CountryAlpha3Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D3FF0CFC133874118590 /* CountryAlpha3Converter.swift */; };
