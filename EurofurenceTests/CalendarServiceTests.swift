@@ -9,182 +9,63 @@
 @testable import Eurofurence
 import XCTest
 
-protocol CalendarPort {
-    
-    var isAuthorizedForEventsAccess: Bool { get }
-
-    func requestAccessToEvents(completionHandler: (Bool) -> Void)
-    func makeEvent() -> CalendarEvent
-    func save(event: CalendarEvent)
-    func reloadStore()
-
-}
-
-protocol CalendarEvent {
-    
-    var isAssociatedToCalendar: Bool { get }
-    
-}
-
-class CapturingCalendarPort: CalendarPort {
-    
-    var isAuthorizedForEventsAccess: Bool {
-        get {
-            return false
-        }
-    }
-
-    private(set) var wasAskedForEventsPermissions = false
-    func requestAccessToEvents(completionHandler: (Bool) -> Void) {
-        wasAskedForEventsPermissions = true
-    }
-    
-    private(set) var didMakeEvent = false
-    var createdEvent: CalendarEvent = CalendarEventWithAssociatedCalendar()
-    func makeEvent() -> CalendarEvent {
-        didMakeEvent = true
-        return createdEvent
-    }
-    
-    private(set) var savedEvent: CalendarEvent?
-    func save(event: CalendarEvent) {
-        savedEvent = event
-    }
-    
-    private(set) var didReloadStore = false
-    func reloadStore() {
-        didReloadStore = true
-    }
-
-}
-
-class StubCalendarEvent: CalendarEvent {
-    
-    init(associatedToCalendar: Bool) {
-        isAssociatedToCalendar = associatedToCalendar
-    }
-    
-    private(set) var isAssociatedToCalendar: Bool
-    
-}
-
-class CalendarEventWithAssociatedCalendar: StubCalendarEvent {
-    
-    convenience init() {
-        self.init(associatedToCalendar: true)
-    }
-    
-}
-
-class CalendarEventWithoutAssociatedCalendar: StubCalendarEvent {
-    
-    convenience init() {
-        self.init(associatedToCalendar: false)
-    }
-    
-}
-
-class AuthorizedCalendarPort: CapturingCalendarPort {
-    
-    override var isAuthorizedForEventsAccess: Bool {
-        get {
-            return true
-        }
-    }
-    
-}
-
-class UnauthorizedCalendarPort: CapturingCalendarPort {
-    
-    override var isAuthorizedForEventsAccess: Bool {
-        get {
-            return false
-        }
-    }
-    
-}
-
-class PermissionGrantingCalendarPort: CapturingCalendarPort {
-    
-    override func requestAccessToEvents(completionHandler: (Bool) -> Void) {
-        super.requestAccessToEvents(completionHandler: completionHandler)
-        completionHandler(true)
-    }
-    
-}
-
-class PermissionDenyingCalendarPort: CapturingCalendarPort {
-    
-    override func requestAccessToEvents(completionHandler: (Bool) -> Void) {
-        super.requestAccessToEvents(completionHandler: completionHandler)
-        completionHandler(false)
-    }
-    
-}
-
-class CalendarService {
-
-    private let calendar: CalendarPort
-
-    init(calendar: CalendarPort) {
-        self.calendar = calendar
-    }
-
-    func add(event: Any) {
-        if calendar.isAuthorizedForEventsAccess {
-            makeAndInsertEvent(event)
-        }
-        else {
-            calendar.requestAccessToEvents() { authorized in
-                if authorized {
-                    makeAndInsertEvent(event)
-                }
-            }
-        }
-    }
-    
-    private func makeAndInsertEvent(_ event: Any) {
-        let calendarEvent = calendar.makeEvent()
-        
-        if !calendarEvent.isAssociatedToCalendar {
-            calendar.reloadStore()
-        }
-        
-        calendar.save(event: calendarEvent)
-    }
-
-}
-
 class CalendarServiceTests: XCTestCase {
+
+    private func makeEventWithTestableValues() -> Event {
+        let event = Event()
+        event.Title = "Title"
+        event.Description = "Notes"
+        event.StartDateTimeUtc = .distantPast
+        event.EndDateTimeUtc = .distantFuture
+
+        let room = EventConferenceRoom()
+        room.Name = "Some Room"
+        event.ConferenceRoom = room
+
+        return event
+    }
+
+    private func makeCalendarEventCreationTest(event: Event,
+                                               assertion: @escaping (CalendarEvent) -> Bool) -> SaveAssertingCalendar {
+        let permissions = AuthorizedCalendarPermissionsProviding()
+        let calendar = SaveAssertingCalendar(assertion: assertion)
+        let service = CalendarService(calendarPermissionsProviding: permissions, calendarStore: calendar)
+        service.add(event: event)
+
+        return calendar
+    }
     
-    func testAddingEventShouldRequestEventsPermissionsFromTheCalendar() {
-        let capturingCalendar = CapturingCalendarPort()
-        let service = CalendarService(calendar: capturingCalendar)
+    func testAddingEventWhenUnauthorizedShouldRequestEventsPermissionsFromTheCalendar() {
+        let capturingPermissionsProviding = CapturingCalendarPermissionsProviding()
+        capturingPermissionsProviding.isAuthorizedForEventsAccess = false
+        let capturingCalendar = CapturingCalendarStore()
+        let service = CalendarService(calendarPermissionsProviding: capturingPermissionsProviding, calendarStore: capturingCalendar)
         let event = Event()
         service.add(event: event)
 
-        XCTAssertTrue(capturingCalendar.wasAskedForEventsPermissions)
+        XCTAssertTrue(capturingPermissionsProviding.wasAskedForEventsPermissions)
     }
 
     func testEventsPermissionsShouldNotBeRequestedUntilAttemptingToAddEvent() {
-        let capturingCalendar = CapturingCalendarPort()
-        _ = CalendarService(calendar: capturingCalendar)
+        let capturingPermissionsProviding = CapturingCalendarPermissionsProviding()
+        let capturingCalendar = CapturingCalendarStore()
+        _ = CalendarService(calendarPermissionsProviding: capturingPermissionsProviding, calendarStore: capturingCalendar)
 
-        XCTAssertFalse(capturingCalendar.wasAskedForEventsPermissions)
+        XCTAssertFalse(capturingPermissionsProviding.wasAskedForEventsPermissions)
     }
     
     func testEventsPermissionsShouldNotBeRequestedWhenAddingEventWhenTheCalendarIndicatesWeAreAlreadyAuthorized() {
-        let capturingCalendar = AuthorizedCalendarPort()
-        let service = CalendarService(calendar: capturingCalendar)
+        let authorizedPermissions = AuthorizedCalendarPermissionsProviding()
+        let service = CalendarService(calendarPermissionsProviding: authorizedPermissions, calendarStore: CapturingCalendarStore())
         let event = Event()
         service.add(event: event)
         
-        XCTAssertFalse(capturingCalendar.wasAskedForEventsPermissions)
+        XCTAssertFalse(authorizedPermissions.wasAskedForEventsPermissions)
     }
     
     func testHavingEventsPermissionsWhenAddingEventShouldRequestCreationOfCalendarEvent() {
-        let capturingCalendar = AuthorizedCalendarPort()
-        let service = CalendarService(calendar: capturingCalendar)
+        let capturingCalendar = CapturingCalendarStore()
+        let service = CalendarService(calendarPermissionsProviding: AuthorizedCalendarPermissionsProviding(), calendarStore: capturingCalendar)
         let event = Event()
         service.add(event: event)
         
@@ -192,8 +73,8 @@ class CalendarServiceTests: XCTestCase {
     }
     
     func testHavingEventsPermissionsWhenAddingEventShouldTellTheCalendarToSaveItsCreatedEvent() {
-        let capturingCalendar = AuthorizedCalendarPort()
-        let service = CalendarService(calendar: capturingCalendar)
+        let capturingCalendar = CapturingCalendarStore()
+        let service = CalendarService(calendarPermissionsProviding: AuthorizedCalendarPermissionsProviding(), calendarStore: capturingCalendar)
         let event = Event()
         let stubbedCalendarEvent = CalendarEventWithAssociatedCalendar()
         capturingCalendar.createdEvent = stubbedCalendarEvent
@@ -203,8 +84,8 @@ class CalendarServiceTests: XCTestCase {
     }
     
     func testNotHavingEventsPermissionsShouldNotMakeEventFromCalendar() {
-        let capturingCalendar = UnauthorizedCalendarPort()
-        let service = CalendarService(calendar: capturingCalendar)
+        let capturingCalendar = CapturingCalendarStore()
+        let service = CalendarService(calendarPermissionsProviding: UnauthorizedCalendarPermissionsProviding(), calendarStore: capturingCalendar)
         let event = Event()
         service.add(event: event)
         
@@ -212,8 +93,8 @@ class CalendarServiceTests: XCTestCase {
     }
     
     func testRequestingPermissionWhenAddingEventThenBeingGrantedItShouldMakeTheEvent() {
-        let capturingCalendar = PermissionGrantingCalendarPort()
-        let service = CalendarService(calendar: capturingCalendar)
+        let capturingCalendar = CapturingCalendarStore()
+        let service = CalendarService(calendarPermissionsProviding: AuthorizedCalendarPermissionsProviding(), calendarStore: capturingCalendar)
         let event = Event()
         service.add(event: event)
         
@@ -221,8 +102,8 @@ class CalendarServiceTests: XCTestCase {
     }
     
     func testRequestingPermissionWhenAddingEventThenBeingDeniedItShouldNotMakeTheEvent() {
-        let capturingCalendar = PermissionDenyingCalendarPort()
-        let service = CalendarService(calendar: capturingCalendar)
+        let capturingCalendar = CapturingCalendarStore()
+        let service = CalendarService(calendarPermissionsProviding: UnauthorizedCalendarPermissionsProviding(), calendarStore: capturingCalendar)
         let event = Event()
         service.add(event: event)
         
@@ -230,8 +111,8 @@ class CalendarServiceTests: XCTestCase {
     }
     
     func testRequestingPermissionWhenAddingEventThenBeingGrantedItShouldSaveTheCreatedEvent() {
-        let capturingCalendar = PermissionGrantingCalendarPort()
-        let service = CalendarService(calendar: capturingCalendar)
+        let capturingCalendar = CapturingCalendarStore()
+        let service = CalendarService(calendarPermissionsProviding: AuthorizedCalendarPermissionsProviding(), calendarStore: capturingCalendar)
         let event = Event()
         let stubbedCalendarEvent = CalendarEventWithAssociatedCalendar()
         capturingCalendar.createdEvent = stubbedCalendarEvent
@@ -241,8 +122,8 @@ class CalendarServiceTests: XCTestCase {
     }
     
     func testTheCalendarShouldBeToldToReloadItsStoreWhenTheCreatedEventDoesNotHaveCalendar() {
-        let capturingCalendar = AuthorizedCalendarPort()
-        let service = CalendarService(calendar: capturingCalendar)
+        let capturingCalendar = CapturingCalendarStore()
+        let service = CalendarService(calendarPermissionsProviding: AuthorizedCalendarPermissionsProviding(), calendarStore: capturingCalendar)
         let event = Event()
         let stubbedCalendarEvent = CalendarEventWithoutAssociatedCalendar()
         capturingCalendar.createdEvent = stubbedCalendarEvent
@@ -252,14 +133,78 @@ class CalendarServiceTests: XCTestCase {
     }
     
     func testTheCalendarShouldNotBeToldToReloadItsStoreWhenTheCreatedEventDoesHaveCalendar() {
-        let capturingCalendar = AuthorizedCalendarPort()
-        let service = CalendarService(calendar: capturingCalendar)
+        let capturingCalendar = CapturingCalendarStore()
+        let service = CalendarService(calendarPermissionsProviding: AuthorizedCalendarPermissionsProviding(), calendarStore: capturingCalendar)
         let event = Event()
         let stubbedCalendarEvent = CalendarEventWithAssociatedCalendar()
         capturingCalendar.createdEvent = stubbedCalendarEvent
         service.add(event: event)
         
         XCTAssertFalse(capturingCalendar.didReloadStore)
+    }
+
+    func testTheTitleFromTheEventShouldBeSetOntoTheCalendarEvent() {
+        let event = makeEventWithTestableValues()
+        let eventAssertion = makeCalendarEventCreationTest(event: event,
+                                                           assertion: { $0.title == event.Title })
+
+        XCTAssertTrue(eventAssertion.isSatisfied)
+    }
+
+    func testTheNotesFromTheEventShouldBeSetOntoTheCalendarEvent() {
+        let event = makeEventWithTestableValues()
+        let eventAssertion = makeCalendarEventCreationTest(event: event,
+                                                           assertion: { $0.notes == event.Description })
+
+        XCTAssertTrue(eventAssertion.isSatisfied)
+    }
+
+    func testTheLocationFromTheEventShouldBeSetOntoTheCalendarEvent() {
+        let event = makeEventWithTestableValues()
+        let eventAssertion = makeCalendarEventCreationTest(event: event,
+                                                           assertion: { $0.location == event.ConferenceRoom?.Name })
+
+        XCTAssertTrue(eventAssertion.isSatisfied)
+    }
+
+    func testTheStartDateFromTheEventShouldBeSetOntoTheCalendarEvent() {
+        let event = makeEventWithTestableValues()
+        let eventAssertion = makeCalendarEventCreationTest(event: event,
+                                                           assertion: { $0.startDate == event.StartDateTimeUtc })
+
+        XCTAssertTrue(eventAssertion.isSatisfied)
+    }
+
+    func testTheEndDateFromTheEventShouldBeSetOntoTheCalendarEvent() {
+        let event = makeEventWithTestableValues()
+        let eventAssertion = makeCalendarEventCreationTest(event: event,
+                                                           assertion: { $0.endDate == event.EndDateTimeUtc })
+
+        XCTAssertTrue(eventAssertion.isSatisfied)
+    }
+
+    func testTheEventIsGivenAnAlarmWithHalfAnHourPriorToTheStartTime() {
+        let event = makeEventWithTestableValues()
+        let expectedRelativeOffsetFromStartTime: TimeInterval = -1800
+        let assertion: (CalendarEvent) -> Bool = { event in
+            return (event as? StubCalendarEvent)?.addedRelativeAlarmTime == expectedRelativeOffsetFromStartTime
+        }
+
+        let eventAssertion = makeCalendarEventCreationTest(event: event,
+                                                           assertion: assertion)
+
+        XCTAssertTrue(eventAssertion.isSatisfied)
+    }
+    
+    func testAddingEventWhenStoreNeedsReloadingSavesSecondEventCreatedFromStore() {
+        let firstEvent = CalendarEventWithoutAssociatedCalendar()
+        let secondEvent = CalendarEventWithAssociatedCalendar()
+        let capturingCalendar = MultipleEventCreationCalendarStore(events: [firstEvent, secondEvent])
+        let service = CalendarService(calendarPermissionsProviding: AuthorizedCalendarPermissionsProviding(), calendarStore: capturingCalendar)
+        let event = Event()
+        service.add(event: event)
+        
+        XCTAssertTrue(secondEvent === (capturingCalendar.savedEvent as? CalendarEventWithAssociatedCalendar))
     }
     
 }
