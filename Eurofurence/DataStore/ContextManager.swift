@@ -18,7 +18,7 @@ class ContextManager {
 
 	private(set) lazy var syncWithApi: Action<Date?, Progress, NSError>? =
 			Action { sinceDate in
-				return SignalProducer<Progress, NSError> { [unowned self] observer, disposable in					
+				return SignalProducer<Progress, NSError> { [unowned self] observer, disposable in
 					let progress = Progress(totalUnitCount: 3)
 					let parameters: ApiConnectionProtocol.Parameters?
 					if let sinceDate = sinceDate {

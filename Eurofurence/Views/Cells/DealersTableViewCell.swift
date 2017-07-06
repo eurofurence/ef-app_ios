@@ -16,8 +16,8 @@ class DealersTableViewCell: UITableViewCell {
 	@IBOutlet weak var shortDescriptionDealerLabel: UILabel!
 
 	weak private var _dealer: Dealer?
-	
-	private var disposable: Disposable? = nil
+
+	private var disposable: Disposable?
 
 	var dealer: Dealer? {
 		get {
@@ -27,7 +27,7 @@ class DealersTableViewCell: UITableViewCell {
 			if let disposable = disposable, !disposable.isDisposed {
 				disposable.dispose()
 			}
-			
+
 			_dealer = dealer
 
 			if let displayName = dealer?.DisplayName, !displayName.isEmpty {

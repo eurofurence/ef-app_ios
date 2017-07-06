@@ -39,8 +39,8 @@ class DealerViewController: UIViewController {
 
         // add jump to map on single tap on map segment
         singleTap = UITapGestureRecognizer(target: self, action: #selector(DealerViewController.showOnMap(_:)))
-        dealersDenMapImageView!.addGestureRecognizer(singleTap!)
-        dealersDenMapImageView!.isUserInteractionEnabled = true
+		dealersDenMapImageView!.addGestureRecognizer(singleTap!)
+		dealersDenMapImageView!.isUserInteractionEnabled = true
     }
 
     override func didReceiveMemoryWarning() {

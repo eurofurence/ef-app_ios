@@ -12,11 +12,10 @@ import UIKit
 protocol ImageServiceProtocol {
 	init(dataContext: DataContextProtocol, apiConnection: ApiConnectionProtocol) throws
 	func refreshCache(for images: [Image]) -> SignalProducer<Progress, ImageServiceError>
-	func retrieve(for image:Image) -> SignalProducer<UIImage, ImageServiceError>
+	func retrieve(for image: Image) -> SignalProducer<UIImage, ImageServiceError>
 	func validateCache(for image: Image) -> Bool
 	func pruneCache(for image: Image)
 }
-
 
 enum ImageServiceError: CustomNSError {
 	case FailedConvert(image: Image, description: String?)

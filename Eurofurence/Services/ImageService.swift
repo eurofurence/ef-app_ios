@@ -32,11 +32,11 @@ class ImageService: ImageServiceProtocol {
 			}
 		}
 	}
-	
+
 	func refreshCache(for images: [Image]) -> SignalProducer<Progress, ImageServiceError> {
 		return SignalProducer { [unowned self] observer, disposable in
 			var currentCache = try! FileManager.default.contentsOfDirectory(atPath: self.cacheDirectory.path)
-			
+
 			var producers: [SignalProducer<UIImage, ImageServiceError>] = []
 			for image in images {
 				producers.append(self.retrieve(for: image))
@@ -44,11 +44,11 @@ class ImageService: ImageServiceProtocol {
 					currentCache.remove(at: index)
 				}
 			}
-			
+
 			let progress = Progress(totalUnitCount: Int64(producers.count + 2))
 			progress.completedUnitCount += 1
 			observer.send(value: progress)
-			
+
 			print("Pruning \(currentCache.count) images from cache.")
 			for imageId in currentCache {
 				self.pruneCache(for: imageId)
@@ -56,7 +56,7 @@ class ImageService: ImageServiceProtocol {
 			print("Pruning done.")
 			progress.completedUnitCount += 1
 			observer.send(value: progress)
-			
+
 			let resultsProducer = SignalProducer<SignalProducer<UIImage, ImageServiceError>, NoError>(producers)
 			disposable += resultsProducer.flatten(.merge).start({ event in
 				switch event {
@@ -133,7 +133,7 @@ class ImageService: ImageServiceProtocol {
 			return false
 		}
 	}
-	
+
 	func pruneCache(for image: Image) {
 		do {
 			try FileManager.default.removeItem(at: getUrl(for: image))
@@ -141,7 +141,7 @@ class ImageService: ImageServiceProtocol {
 			/* */
 		}
 	}
-	
+
 	func pruneCache(for imageId: String) {
 		do {
 			try FileManager.default.removeItem(at: cacheDirectory.appendingPathComponent(imageId, isDirectory: false))

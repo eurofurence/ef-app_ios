@@ -28,7 +28,7 @@ class WebApiConnection: ApiConnectionProtocol {
 		EVReflection.setDateFormatter(Iso8601DateFormatter())
 		self.apiUrl = apiUrl
 	}
-	
+
 	func downloadImage(for image: Image) -> SignalProducer<AFImage, ApiConnectionError> {
 		return SignalProducer { observer, disposable in
 			let imageUrl = self.apiUrl.appendingPathComponent("Images/\(image.Id)/Content")

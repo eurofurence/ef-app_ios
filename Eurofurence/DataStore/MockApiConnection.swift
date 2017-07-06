@@ -55,11 +55,11 @@ class MockApiConnection: ApiConnectionProtocol {
 			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
 		}
 	}
-	
+
 	// MARK: Specialised functions
-	
+
 	func downloadImage(for image: Image) -> SignalProducer<AFImage, ApiConnectionError> {
-		return SignalProducer { observer, disposable in
+		return SignalProducer { observer, _ in
 			observer.send(error: ApiConnectionError.NotImplemented(functionName: #function))
 		}
 	}
