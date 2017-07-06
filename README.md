@@ -18,7 +18,7 @@ To build the app, you'll need:
 Once you have the tools, to build the app from source you'll need to:
 
 - Clone this repository (duh)
-- Run `pod install` in the root of the directory to bring down the [Swiftlint](https://github.com/realm/SwiftLint) pod (providing automatica linting as you build)
+- Run `pod install` in the root of the directory to bring down the [Swiftlint](https://github.com/realm/SwiftLint) pod (providing automatic linting as you build)
 - Open `Eurofurence.xcworkspace`, activate the Eurofurence scheme if it isn't already
 - Build and run the scheme on the simulator of your choice
 - Sit back with a cold one 🍻
