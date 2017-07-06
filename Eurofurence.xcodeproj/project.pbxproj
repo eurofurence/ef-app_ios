@@ -83,6 +83,7 @@
 		D6F3DEED2F3250C61DB692D9 /* DealerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D66312CF86A43D699F2C /* DealerViewController.swift */; };
 		D6F3DF2779D7CE09AA5507F9 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DF71A249A0F1DE8D51FB /* NewsTableViewController.swift */; };
 		D6F3DFB53E62A8C16F211819 /* TimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DC7147FE454A5FAA2EA4 /* TimeService.swift */; };
+		DE53838D7196118A73CF0A5B /* Pods_EurofurenceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BE2399E8F0912910303B02 /* Pods_EurofurenceTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,7 +148,10 @@
 		9ACF999C1ECA25E1006FC958 /* Sync.mock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Sync.mock.json; sourceTree = "<group>"; };
 		9AF0B4FD1F08459D000AAA0A /* TimeIntervalRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeIntervalRow.swift; sourceTree = "<group>"; };
 		9AF159EC1EF5BE7F00DB287D /* SimpleEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleEventCell.swift; sourceTree = "<group>"; };
+		A4BE2399E8F0912910303B02 /* Pods_EurofurenceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurofurenceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5BC6AE61AB3CCDF97473815 /* Pods-EurofurenceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.release.xcconfig"; sourceTree = "<group>"; };
 		A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eurofurence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4939A463603D9F022E19825 /* Pods-EurofurenceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D6F3D0A32DC83843688B347C /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		D6F3D15DBA1AA6254F83C20A /* DealersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealersTableViewCell.swift; sourceTree = "<group>"; };
 		D6F3D1CE9C98163AA2B6DF7D /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE53838D7196118A73CF0A5B /* Pods_EurofurenceTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */,
+				A4BE2399E8F0912910303B02 /* Pods_EurofurenceTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -213,6 +219,8 @@
 			children = (
 				513BAD2C582D99F2993B8162 /* Pods-Eurofurence.debug.xcconfig */,
 				27C948D12455A352D46AF5B6 /* Pods-Eurofurence.release.xcconfig */,
+				B4939A463603D9F022E19825 /* Pods-EurofurenceTests.debug.xcconfig */,
+				A5BC6AE61AB3CCDF97473815 /* Pods-EurofurenceTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -469,9 +477,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9ACF99541EBE172D006FC958 /* Build configuration list for PBXNativeTarget "EurofurenceTests" */;
 			buildPhases = (
+				C7E1F661EF44B237C2B087D7 /* [CP] Check Pods Manifest.lock */,
 				9ACF99441EBE172D006FC958 /* Sources */,
 				9ACF99451EBE172D006FC958 /* Frameworks */,
 				9ACF99461EBE172D006FC958 /* Resources */,
+				BDC90942719266E31144DD55 /* [CP] Embed Pods Frameworks */,
+				46436FF0A5D09F5B6924508F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -550,6 +561,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		46436FF0A5D09F5B6924508F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		78CA0D0B1F0D7D81006DFD64 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -639,6 +665,44 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BDC90942719266E31144DD55 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C7E1F661EF44B237C2B087D7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EurofurenceTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -877,6 +941,7 @@
 		};
 		9ACF99551EBE172D006FC958 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4939A463603D9F022E19825 /* Pods-EurofurenceTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -892,6 +957,7 @@
 		};
 		9ACF99561EBE172D006FC958 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5BC6AE61AB3CCDF97473815 /* Pods-EurofurenceTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

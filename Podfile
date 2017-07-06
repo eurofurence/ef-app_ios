@@ -19,5 +19,11 @@ target 'Eurofurence' do
 	pod 'ReactiveCocoa', '~> 5.0.0'
 	pod 'Firebase/Core'
 	pod 'Firebase/Crash'
-end
 
+    target :EurofurenceTests do
+        inherit! :search_paths
+
+        pod 'Firebase/Core'
+        pod 'Firebase/Crash'
+    end
+end
