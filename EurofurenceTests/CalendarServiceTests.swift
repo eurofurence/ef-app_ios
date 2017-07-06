@@ -102,16 +102,20 @@ class CalendarService {
 
     func add(event: Any) {
         if calendar.isAuthorizedForEventsAccess {
-            let calendarEvent = calendar.makeEvent()
-            calendar.save(event: calendarEvent)
+            makeAndInsertEvent(event)
         }
         else {
             calendar.requestAccessToEvents() { authorized in
                 if authorized {
-                    _ = calendar.makeEvent()
+                    makeAndInsertEvent(event)
                 }
             }
         }
+    }
+    
+    private func makeAndInsertEvent(_ event: Any) {
+        let calendarEvent = calendar.makeEvent()
+        calendar.save(event: calendarEvent)
     }
 
 }
@@ -188,6 +192,17 @@ class CalendarServiceTests: XCTestCase {
         service.add(event: event)
         
         XCTAssertFalse(capturingCalendar.didMakeEvent)
+    }
+    
+    func testRequestingPermissionWhenAddingEventThenBeingGrantedItShouldSaveTheCreatedEvent() {
+        let capturingCalendar = PermissionGrantingCalendarPort()
+        let service = CalendarService(calendar: capturingCalendar)
+        let event = Event()
+        let stubbedCalendarEvent = StubCalendarEvent()
+        capturingCalendar.createdEvent = stubbedCalendarEvent
+        service.add(event: event)
+        
+        XCTAssertTrue(stubbedCalendarEvent === capturingCalendar.savedEvent as? StubCalendarEvent)
     }
     
 }
