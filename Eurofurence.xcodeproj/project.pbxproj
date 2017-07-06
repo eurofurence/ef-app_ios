@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6EF96CC81F0EDAE800EE6134 /* CalendarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CC71F0EDAE800EE6134 /* CalendarStore.swift */; };
+		6EF96CCA1F0EDAF800EE6134 /* CalendarPermissionsProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CC91F0EDAF800EE6134 /* CalendarPermissionsProviding.swift */; };
+		6EF96CCC1F0EDB0500EE6134 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CCB1F0EDB0500EE6134 /* CalendarEvent.swift */; };
+		6EF96CCF1F0EDB2000EE6134 /* CalendarTestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CCE1F0EDB2000EE6134 /* CalendarTestDoubles.swift */; };
+		6EF96CD11F0EDB4C00EE6134 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CD01F0EDB4C00EE6134 /* CalendarService.swift */; };
 		78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */; };
 		78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */; };
 		78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */; };
@@ -99,6 +104,11 @@
 /* Begin PBXFileReference section */
 		27C948D12455A352D46AF5B6 /* Pods-Eurofurence.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence.release.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence.release.xcconfig"; sourceTree = "<group>"; };
 		513BAD2C582D99F2993B8162 /* Pods-Eurofurence.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence.debug.xcconfig"; sourceTree = "<group>"; };
+		6EF96CC71F0EDAE800EE6134 /* CalendarStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarStore.swift; path = Calendar/CalendarStore.swift; sourceTree = "<group>"; };
+		6EF96CC91F0EDAF800EE6134 /* CalendarPermissionsProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPermissionsProviding.swift; path = Calendar/CalendarPermissionsProviding.swift; sourceTree = "<group>"; };
+		6EF96CCB1F0EDB0500EE6134 /* CalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarEvent.swift; path = Calendar/CalendarEvent.swift; sourceTree = "<group>"; };
+		6EF96CCE1F0EDB2000EE6134 /* CalendarTestDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarTestDoubles.swift; path = "Test Doubles/CalendarTestDoubles.swift"; sourceTree = "<group>"; };
+		6EF96CD01F0EDB4C00EE6134 /* CalendarService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarService.swift; path = Calendar/CalendarService.swift; sourceTree = "<group>"; };
 		78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInfoPropertyListShould.swift; sourceTree = "<group>"; };
 		78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarServiceTests.swift; sourceTree = "<group>"; };
 		78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -225,6 +235,25 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6EF96CC61F0EDAC600EE6134 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				6EF96CC71F0EDAE800EE6134 /* CalendarStore.swift */,
+				6EF96CC91F0EDAF800EE6134 /* CalendarPermissionsProviding.swift */,
+				6EF96CCB1F0EDB0500EE6134 /* CalendarEvent.swift */,
+				6EF96CD01F0EDB4C00EE6134 /* CalendarService.swift */,
+			);
+			name = Calendar;
+			sourceTree = "<group>";
+		};
+		6EF96CCD1F0EDB1300EE6134 /* Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				6EF96CCE1F0EDB2000EE6134 /* CalendarTestDoubles.swift */,
+			);
+			name = "Test Doubles";
+			sourceTree = "<group>";
+		};
 		9A34B97B1ED066B7004A249E /* DependencyResolution */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +308,7 @@
 		9ACF994B1EBE172D006FC958 /* EurofurenceTests */ = {
 			isa = PBXGroup;
 			children = (
+				6EF96CCD1F0EDB1300EE6134 /* Test Doubles */,
 				9ACF994E1EBE172D006FC958 /* Info.plist */,
 				78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */,
 				78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */,
@@ -403,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				D6F3D99887787EEDAC891182 /* Abstractions */,
+				6EF96CC61F0EDAC600EE6134 /* Calendar */,
 				D6F3DC7147FE454A5FAA2EA4 /* TimeService.swift */,
 				D6F3D1CE9C98163AA2B6DF7D /* ImageService.swift */,
 			);
@@ -713,6 +744,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A7FFD571EFC5B46007ABA36 /* CalendarAccess.swift in Sources */,
+				6EF96CCC1F0EDB0500EE6134 /* CalendarEvent.swift in Sources */,
 				9ACF99761EBE3B4C006FC958 /* SharedFunctions.swift in Sources */,
 				9A34B97A1ECF87B2004A249E /* ContextManager.swift in Sources */,
 				9AB64BC91EFE6592004E8D91 /* EventsViewModel.swift in Sources */,
@@ -723,6 +755,7 @@
 				9A34B9891ED35FE0004A249E /* ReactiveDataContext.swift in Sources */,
 				9A05254D1ECB097500578798 /* DataContextProtocol.swift in Sources */,
 				9A34B97F1ED06946004A249E /* ContextResolver.swift in Sources */,
+				6EF96CC81F0EDAE800EE6134 /* CalendarStore.swift in Sources */,
 				9ACF998E1EC858B2006FC958 /* Event.swift in Sources */,
 				9ACF99681EBE3479006FC958 /* EntityBase.swift in Sources */,
 				9A05254C1ECB097500578798 /* DataStoreProtocol.swift in Sources */,
@@ -743,6 +776,7 @@
 				9AF0B4FE1F08459D000AAA0A /* TimeIntervalRow.swift in Sources */,
 				9AF159ED1EF5BE7F00DB287D /* SimpleEventCell.swift in Sources */,
 				9ACF998F1EC858B2006FC958 /* Announcement.swift in Sources */,
+				6EF96CD11F0EDB4C00EE6134 /* CalendarService.swift in Sources */,
 				9ACF99971EC858B2006FC958 /* Map.swift in Sources */,
 				9ACF99981EC858B2006FC958 /* MapEntry.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
@@ -768,6 +802,7 @@
 				D6F3D62A784F07D9C7A84DC8 /* KnowledgeEntryViewController.swift in Sources */,
 				D6F3D2440B74E17B9A008DE0 /* NewsViewController.swift in Sources */,
 				D6F3D3D11CAB2B06852D0EF9 /* DealerTableViewController.swift in Sources */,
+				6EF96CCA1F0EDAF800EE6134 /* CalendarPermissionsProviding.swift in Sources */,
 				9A7FFD551EFC5A9E007ABA36 /* MapViewController.swift in Sources */,
 				D6F3D339BFBA2C299453B6BA /* SettingsTableViewController.swift in Sources */,
 				D6F3D40D3515E7ABE9565906 /* AboutViewController.swift in Sources */,
@@ -787,6 +822,7 @@
 			files = (
 				78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */,
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
+				6EF96CCF1F0EDB2000EE6134 /* CalendarTestDoubles.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
