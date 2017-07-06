@@ -16,10 +16,13 @@ protocol CalendarPort {
     func requestAccessToEvents(completionHandler: (Bool) -> Void)
     func makeEvent() -> CalendarEvent
     func save(event: CalendarEvent)
+    func reloadStore()
 
 }
 
 protocol CalendarEvent {
+    
+    var isAssociatedToCalendar: Bool { get }
     
 }
 
@@ -37,7 +40,7 @@ class CapturingCalendarPort: CalendarPort {
     }
     
     private(set) var didMakeEvent = false
-    var createdEvent: CalendarEvent = StubCalendarEvent()
+    var createdEvent: CalendarEvent = CalendarEventWithAssociatedCalendar()
     func makeEvent() -> CalendarEvent {
         didMakeEvent = true
         return createdEvent
@@ -47,10 +50,37 @@ class CapturingCalendarPort: CalendarPort {
     func save(event: CalendarEvent) {
         savedEvent = event
     }
+    
+    private(set) var didReloadStore = false
+    func reloadStore() {
+        didReloadStore = true
+    }
 
 }
 
 class StubCalendarEvent: CalendarEvent {
+    
+    init(associatedToCalendar: Bool) {
+        isAssociatedToCalendar = associatedToCalendar
+    }
+    
+    private(set) var isAssociatedToCalendar: Bool
+    
+}
+
+class CalendarEventWithAssociatedCalendar: StubCalendarEvent {
+    
+    convenience init() {
+        self.init(associatedToCalendar: true)
+    }
+    
+}
+
+class CalendarEventWithoutAssociatedCalendar: StubCalendarEvent {
+    
+    convenience init() {
+        self.init(associatedToCalendar: false)
+    }
     
 }
 
@@ -115,6 +145,11 @@ class CalendarService {
     
     private func makeAndInsertEvent(_ event: Any) {
         let calendarEvent = calendar.makeEvent()
+        
+        if !calendarEvent.isAssociatedToCalendar {
+            calendar.reloadStore()
+        }
+        
         calendar.save(event: calendarEvent)
     }
 
@@ -160,7 +195,7 @@ class CalendarServiceTests: XCTestCase {
         let capturingCalendar = AuthorizedCalendarPort()
         let service = CalendarService(calendar: capturingCalendar)
         let event = Event()
-        let stubbedCalendarEvent = StubCalendarEvent()
+        let stubbedCalendarEvent = CalendarEventWithAssociatedCalendar()
         capturingCalendar.createdEvent = stubbedCalendarEvent
         service.add(event: event)
         
@@ -198,11 +233,33 @@ class CalendarServiceTests: XCTestCase {
         let capturingCalendar = PermissionGrantingCalendarPort()
         let service = CalendarService(calendar: capturingCalendar)
         let event = Event()
-        let stubbedCalendarEvent = StubCalendarEvent()
+        let stubbedCalendarEvent = CalendarEventWithAssociatedCalendar()
         capturingCalendar.createdEvent = stubbedCalendarEvent
         service.add(event: event)
         
         XCTAssertTrue(stubbedCalendarEvent === capturingCalendar.savedEvent as? StubCalendarEvent)
+    }
+    
+    func testTheCalendarShouldBeToldToReloadItsStoreWhenTheCreatedEventDoesNotHaveCalendar() {
+        let capturingCalendar = AuthorizedCalendarPort()
+        let service = CalendarService(calendar: capturingCalendar)
+        let event = Event()
+        let stubbedCalendarEvent = CalendarEventWithoutAssociatedCalendar()
+        capturingCalendar.createdEvent = stubbedCalendarEvent
+        service.add(event: event)
+        
+        XCTAssertTrue(capturingCalendar.didReloadStore)
+    }
+    
+    func testTheCalendarShouldNotBeToldToReloadItsStoreWhenTheCreatedEventDoesHaveCalendar() {
+        let capturingCalendar = AuthorizedCalendarPort()
+        let service = CalendarService(calendar: capturingCalendar)
+        let event = Event()
+        let stubbedCalendarEvent = CalendarEventWithAssociatedCalendar()
+        capturingCalendar.createdEvent = stubbedCalendarEvent
+        service.add(event: event)
+        
+        XCTAssertFalse(capturingCalendar.didReloadStore)
     }
     
 }
