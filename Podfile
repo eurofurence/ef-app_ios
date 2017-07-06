@@ -17,5 +17,6 @@ target 'Eurofurence' do
 	pod 'ReactiveSwift', '~> 1.1'
 	pod 'ReactiveCocoa', '~> 5.0.0'
 	pod 'Firebase/Core'
+	pod 'Firebase/Crash'
 end
 
