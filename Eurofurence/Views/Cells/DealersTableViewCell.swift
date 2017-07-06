@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import ReactiveSwift
+import AlamofireImage
 
 class DealersTableViewCell: UITableViewCell {
     @IBOutlet weak var subnameDealerLabel: UILabel!
@@ -14,12 +16,18 @@ class DealersTableViewCell: UITableViewCell {
 	@IBOutlet weak var shortDescriptionDealerLabel: UILabel!
 
 	weak private var _dealer: Dealer?
+	
+	private var disposable: Disposable? = nil
 
 	var dealer: Dealer? {
 		get {
 			return _dealer
 		}
 		set(dealer) {
+			if let disposable = disposable, !disposable.isDisposed {
+				disposable.dispose()
+			}
+			
 			_dealer = dealer
 
 			if let displayName = dealer?.DisplayName, !displayName.isEmpty {
@@ -34,16 +42,26 @@ class DealersTableViewCell: UITableViewCell {
 			shortDescriptionDealerLabel.text = dealer?.ShortDescription
 
 			// TODO: Implement image caching
-			/*if let artistThumbnailImage = dealer.ArtistThumbnailImage {
-			let optionalDealerImage = ImageManager.sharedInstance.retrieveFromCache(artistThumbnailImage.Id, imagePlaceholder: UIImage(named: "defaultAvatar"))
-			if let dealerImage = optionalDealerImage {
-			cell.artistDealerImage.image = dealerImage.af_imageRoundedIntoCircle().af_imageRoundedIntoCircle();
+			artistDealerImage.image = UIImage(named: "defaultAvatar")!.af_imageRoundedIntoCircle()
+			do {
+				let imageService = try ServiceResolver.container.resolve() as ImageServiceProtocol
+				if let artistThumbnailImage = dealer?.ArtistThumbnailImage {
+					disposable = imageService.retrieve(for: artistThumbnailImage).startWithResult { [weak self] result in
+						guard let strongSelf = self else {
+							return
+						}
+						switch result {
+						case let .success(value):
+							DispatchQueue.main.async {
+								strongSelf.artistDealerImage.image = value.af_imageRoundedIntoCircle()
+							}
+						case .failure:
+							break
+						}
+					}
+				}
+			} catch {
 			}
-			
-			}
-			else {*/
-				artistDealerImage.image = UIImage(named: "defaultAvatar")!.af_imageRoundedIntoCircle()
-			//}
 		}
 	}
 }
