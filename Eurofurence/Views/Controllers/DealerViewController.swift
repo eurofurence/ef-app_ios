@@ -6,8 +6,7 @@
 //
 
 import UIKit
-import Alamofire
-import AlamofireImage
+import ReactiveSwift
 
 class DealerViewController: UIViewController {
     /// Higher numbers zoom out farther
@@ -28,6 +27,9 @@ class DealerViewController: UIViewController {
     @IBOutlet weak var dealersDenLabelTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var dealersDenMapImageView: UIImageView!
     var singleTap: UITapGestureRecognizer!
+
+	private var disposables = CompositeDisposable()
+	private let imageService: ImageServiceProtocol = try! ServiceResolver.container.resolve()
 
     func canRotate() -> Bool {
         return true
@@ -55,7 +57,20 @@ class DealerViewController: UIViewController {
         }
     }
 
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+
+		disposables.dispose()
+	}
+
     override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+
+		if !disposables.isDisposed {
+			disposables.dispose()
+		}
+		disposables = CompositeDisposable()
+
         tabBarController?.tabBar.isHidden = true
         let newlineChars = CharacterSet.newlines
 
@@ -127,40 +142,46 @@ class DealerViewController: UIViewController {
 			}
         }
 
-		// TODO: Implement image caching
-        /*if let mapEntry = MapEntry.getByTargetId(self.dealer.Id), let map = Map.getById(mapEntry.MapId), let mapImage = ImageManager.sharedInstance.retrieveFromCache(map.ImageId!), let mapEntryLocation = mapEntry.getAbsoluteLocationForImage(mapImage), let tapRadius = mapEntry.getAbsoluteTapRadiusForImage(mapImage) {
-            
-            let ratio = self.dealersDenMapImage.bounds.width / self.dealersDenMapImage.bounds.height
-            
-            let segmentHeight = tapRadius * DealerViewController.MAP_SEGMENT_ZOOM
-            let segmentWidth = segmentHeight * ratio
-            
-            let offsetX = min(max(0.0, mapEntryLocation.x - segmentWidth / 2.0), mapImage.size.width - segmentWidth)
-            let offsetY = min(max(0.0, mapEntryLocation.y - segmentHeight / 2.0), mapImage.size.height - segmentHeight)
-            
-            if let croppedMap = (mapImage.cgImage)?.cropping(to: CGRect(x: offsetX, y: offsetY, width: segmentWidth, height: segmentHeight)) {
-            
-                // Initialise the context
-                let size = CGSize(width: segmentWidth, height: segmentHeight)
-                let opaque = true
-                let scale: CGFloat = 0
-                UIGraphicsBeginImageContextWithOptions(size, opaque, scale)
-                let context = UIGraphicsGetCurrentContext()
-                
-                // Draw the map segment
-                UIImage(cgImage: croppedMap).draw(in: CGRect(origin: CGPoint.zero, size: size))
-                
-                context?.setStrokeColor(UIColor.red.cgColor)
-                context?.setLineWidth(2.0)
-                
-                let highlightRect = CGRect(x: mapEntryLocation.x - offsetX - tapRadius, y: mapEntryLocation.y - offsetY - tapRadius, width: tapRadius * 2, height: tapRadius * 2)
-                context?.strokeEllipse(in: highlightRect)
-                
-                // Drawing complete, retrieve the finished image and cleanup
-                self.dealersDenMapImage.image = UIGraphicsGetImageFromCurrentImageContext()
-                UIGraphicsEndImageContext()
-            }
-        }*/
+        if let mapEntry = dealer?.MapEntry, let map = mapEntry.Map, let mapImage = map.Image {
+
+			disposables += imageService.retrieve(for: mapImage).startWithResult({ result in
+				switch result {
+				case let .success(value):
+					let ratio = self.dealersDenMapImageView.bounds.width / self.dealersDenMapImageView.bounds.height
+
+					let segmentHeight = mapEntry.CGTapRadius * DealerViewController.MAP_SEGMENT_ZOOM
+					let segmentWidth = segmentHeight * ratio
+
+					let offsetX = min(max(0.0, mapEntry.CGX - segmentWidth / 2.0), value.size.width - segmentWidth)
+					let offsetY = min(max(0.0, mapEntry.CGY - segmentHeight / 2.0), value.size.height - segmentHeight)
+
+					if let croppedMap = (value.cgImage)?.cropping(to: CGRect(x: offsetX, y: offsetY, width: segmentWidth, height: segmentHeight)) {
+
+						// Initialise the context
+						let size = CGSize(width: segmentWidth, height: segmentHeight)
+						let opaque = true
+						let scale: CGFloat = 0
+						UIGraphicsBeginImageContextWithOptions(size, opaque, scale)
+						let context = UIGraphicsGetCurrentContext()
+
+						// Draw the map segment
+						UIImage(cgImage: croppedMap).draw(in: CGRect(origin: CGPoint.zero, size: size))
+
+						context?.setStrokeColor(UIColor.red.cgColor)
+						context?.setLineWidth(2.0)
+
+						let highlightRect = CGRect(x: mapEntry.CGX - offsetX - mapEntry.CGTapRadius, y: mapEntry.CGY - offsetY - mapEntry.CGTapRadius, width: mapEntry.CGTapRadius * 2, height: mapEntry.CGTapRadius * 2)
+						context?.strokeEllipse(in: highlightRect)
+
+						// Drawing complete, retrieve the finished image and cleanup
+						self.dealersDenMapImageView.image = UIGraphicsGetImageFromCurrentImageContext()
+						UIGraphicsEndImageContext()
+					}
+				case .failure:
+					break
+				}
+			})
+        }
     }
 
     func showOnMap(_ tapGesture: UITapGestureRecognizer) {
