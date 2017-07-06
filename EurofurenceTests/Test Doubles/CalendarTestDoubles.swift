@@ -49,7 +49,7 @@ class StubCalendarEvent: CalendarEvent {
     
     private(set) var isAssociatedToCalendar: Bool
     var title: String = ""
-    var notes: String = ""
+    var notes: String?
     var location: String?
     var startDate: Date = Date()
     var endDate: Date = Date()

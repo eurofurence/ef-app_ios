@@ -27,16 +27,16 @@ class EventKitCalendarEvent: CalendarEvent {
             return event.title
         }
         set {
-            
+            event.title = newValue
         }
     }
     
-    var notes: String {
+    var notes: String? {
         get {
-            return ""
+            return event.notes
         }
         set {
-            
+            event.notes = newValue
         }
     }
     
@@ -67,7 +67,7 @@ class EventKitCalendarEvent: CalendarEvent {
         }
     }
     
-    func addAlarm(relativeOffsetFromStartDate relativeOffset: TimeInterval){
+    func addAlarm(relativeOffsetFromStartDate relativeOffset: TimeInterval) {
         
     }
     
@@ -75,13 +75,45 @@ class EventKitCalendarEvent: CalendarEvent {
 
 class EventKitCalendarEventTests: XCTestCase {
     
-    func testAccessingTheEventTitleShouldReturnTheTitleFromTheUnderlyingEvent() {
+    private func makeTestEvent() -> EKEvent {
         let eventStore = EKEventStore()
         let event = EKEvent(eventStore: eventStore)
         event.title = "Some Title"
+        event.notes = "Some Notes"
+        
+        return event
+    }
+    
+    func testAccessingTheEventTitleShouldReturnTheTitleFromTheUnderlyingEvent() {
+        let event = makeTestEvent()
         let adapter = EventKitCalendarEvent(event: event)
         
         XCTAssertEqual(event.title, adapter.title)
+    }
+    
+    func testSettingTheEventTitleShouldUpdateTheTitleOnTheUnderlyingEvent() {
+        let event = makeTestEvent()
+        let adapter = EventKitCalendarEvent(event: event)
+        let expectedTitle = "Some other title"
+        adapter.title = expectedTitle
+        
+        XCTAssertEqual(expectedTitle, adapter.title)
+    }
+    
+    func testAccessingTheEventNotesShouldReturnTheNotesFromTheUnderlyingEvent() {
+        let event = makeTestEvent()
+        let adapter = EventKitCalendarEvent(event: event)
+        
+        XCTAssertEqual(event.notes, adapter.notes)
+    }
+    
+    func testSettingTheEventNotesShouldUpdateTheNotesOnTheUnderlyingEvent() {
+        let event = makeTestEvent()
+        let adapter = EventKitCalendarEvent(event: event)
+        let expectedNotes = "Some other notes"
+        adapter.notes = expectedNotes
+        
+        XCTAssertEqual(expectedNotes, adapter.notes)
     }
     
 }

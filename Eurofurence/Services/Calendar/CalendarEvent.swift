@@ -13,7 +13,7 @@ protocol CalendarEvent {
     var isAssociatedToCalendar: Bool { get }
 
     var title: String { get set }
-    var notes: String { get set }
+    var notes: String? { get set }
     var location: String? { get set }
     var startDate: Date { get set }
     var endDate: Date { get set }
