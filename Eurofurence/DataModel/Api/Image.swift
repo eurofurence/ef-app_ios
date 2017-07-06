@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 class Image: EntityBase {
 	var ContentHashSha1: String = ""
@@ -21,4 +22,10 @@ class Image: EntityBase {
 		keyInResource: String?)] {
 			return [(keyInObject: "Entities", keyInResource: nil)]
 	}
+}
+
+extension Image {
+	var CGSize: CoreGraphics.CGSize { get { return CoreGraphics.CGSize(width: Width, height: Height) } }
+	var CGHeight: CGFloat { get { return CGFloat(Height) } }
+	var CGWidth: CGFloat { get { return CGFloat(Width) } }
 }
