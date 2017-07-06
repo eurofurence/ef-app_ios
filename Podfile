@@ -16,5 +16,6 @@ target 'Eurofurence' do
 	pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift'
 	pod 'ReactiveSwift', '~> 1.1'
 	pod 'ReactiveCocoa', '~> 5.0.0'
+	pod 'Firebase/Core'
 end
 
