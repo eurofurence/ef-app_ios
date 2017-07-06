@@ -46,6 +46,7 @@ PODS:
     - Result (~> 3.2)
   - Result (3.2.3)
   - SlideMenuControllerSwift (3.0.1)
+  - SwiftLint (0.20.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
@@ -62,6 +63,7 @@ DEPENDENCIES:
   - ReactiveCocoa (~> 5.0.0)
   - ReactiveSwift (~> 1.1)
   - SlideMenuControllerSwift (~> 3.0)
+  - SwiftLint
 
 EXTERNAL SOURCES:
   Eureka:
@@ -97,7 +99,8 @@ SPEC CHECKSUMS:
   ReactiveSwift: f54ba12c2e799003432930fa55495315ae44f32b
   Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
   SlideMenuControllerSwift: 9a163b16d54afab734add42858cba7ef7c307755
+  SwiftLint: f60095dc173a3f3ec505bb34f5229c3dfd779a54
 
-PODFILE CHECKSUM: 4025401b50f96d0de660df79fdd11308f8efeb89
+PODFILE CHECKSUM: f0a9bf930d8f26ebbcf6cdcb41f20f668365b420
 
 COCOAPODS: 1.3.0.beta.2

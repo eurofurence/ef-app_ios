@@ -13,6 +13,7 @@ target 'Eurofurence' do
 	pod 'EVReflection'
 	pod 'EVReflection/Alamofire'
 	pod 'SlideMenuControllerSwift', '~> 3.0'
+	pod 'SwiftLint'
 	pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift'
 	pod 'ReactiveSwift', '~> 1.1'
 	pod 'ReactiveCocoa', '~> 5.0.0'
