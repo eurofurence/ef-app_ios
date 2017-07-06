@@ -25,6 +25,9 @@ protocol CalendarEvent {
     var isAssociatedToCalendar: Bool { get }
     var title: String { get set }
     var notes: String { get set }
+    var location: String? { get set }
+    var startDate: Date { get set }
+    var endDate: Date { get set }
     
 }
 
@@ -69,6 +72,9 @@ class StubCalendarEvent: CalendarEvent {
     private(set) var isAssociatedToCalendar: Bool
     var title: String = ""
     var notes: String = ""
+    var location: String?
+    var startDate: Date = Date()
+    var endDate: Date = Date()
     
 }
 
@@ -172,6 +178,9 @@ class CalendarService {
 
         calendarEvent.title = event.Title
         calendarEvent.notes = event.Description
+        calendarEvent.location = event.ConferenceRoom?.Name
+        calendarEvent.startDate = event.StartDateTimeUtc
+        calendarEvent.endDate = event.EndDateTimeUtc
 
         calendar.save(event: calendarEvent)
     }
@@ -184,6 +193,12 @@ class CalendarServiceTests: XCTestCase {
         let event = Event()
         event.Title = "Title"
         event.Description = "Notes"
+        event.StartDateTimeUtc = .distantPast
+        event.EndDateTimeUtc = .distantFuture
+
+        let room = EventConferenceRoom()
+        room.Name = "Some Room"
+        event.ConferenceRoom = room
 
         return event
     }
@@ -304,7 +319,7 @@ class CalendarServiceTests: XCTestCase {
         XCTAssertFalse(capturingCalendar.didReloadStore)
     }
 
-    func testTheTitleFromTheEventShouldBeSetOntoTheCalendarEventBeforeSavingTheEvent() {
+    func testTheTitleFromTheEventShouldBeSetOntoTheCalendarEvent() {
         let event = makeEventWithValues()
         let eventAssertion = makeCalendarEventCreationTest(event: event,
                                                            assertion: { $0.title == event.Title })
@@ -312,10 +327,34 @@ class CalendarServiceTests: XCTestCase {
         XCTAssertTrue(eventAssertion.isSatisfied)
     }
 
-    func testTheNotesFromTheEventShouldBeSetOntoTheCalendarEventBeforeSavingTheEvent() {
+    func testTheNotesFromTheEventShouldBeSetOntoTheCalendarEvent() {
         let event = makeEventWithValues()
         let eventAssertion = makeCalendarEventCreationTest(event: event,
                                                            assertion: { $0.notes == event.Description })
+
+        XCTAssertTrue(eventAssertion.isSatisfied)
+    }
+
+    func testTheLocationFromTheEventShouldBeSetOntoTheCalendarEvent() {
+        let event = makeEventWithValues()
+        let eventAssertion = makeCalendarEventCreationTest(event: event,
+                                                           assertion: { $0.location == event.ConferenceRoom?.Name })
+
+        XCTAssertTrue(eventAssertion.isSatisfied)
+    }
+
+    func testTheStartDateFromTheEventShouldBeSetOntoTheCalendarEvent() {
+        let event = makeEventWithValues()
+        let eventAssertion = makeCalendarEventCreationTest(event: event,
+                                                           assertion: { $0.startDate == event.StartDateTimeUtc })
+
+        XCTAssertTrue(eventAssertion.isSatisfied)
+    }
+
+    func testTheEndDateFromTheEventShouldBeSetOntoTheCalendarEvent() {
+        let event = makeEventWithValues()
+        let eventAssertion = makeCalendarEventCreationTest(event: event,
+                                                           assertion: { $0.endDate == event.EndDateTimeUtc })
 
         XCTAssertTrue(eventAssertion.isSatisfied)
     }
