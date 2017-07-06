@@ -23,6 +23,7 @@ protocol CalendarPort {
 protocol CalendarEvent {
     
     var isAssociatedToCalendar: Bool { get }
+    var title: String { get set }
     
 }
 
@@ -65,6 +66,7 @@ class StubCalendarEvent: CalendarEvent {
     }
     
     private(set) var isAssociatedToCalendar: Bool
+    var title: String = ""
     
 }
 
@@ -122,6 +124,22 @@ class PermissionDenyingCalendarPort: CapturingCalendarPort {
     
 }
 
+class SaveAssertingCalendar: AuthorizedCalendarPort {
+
+    private let assertion: (CalendarEvent) -> Bool
+    private(set) var isSatisfied = false
+
+    init(assertion: @escaping (CalendarEvent) -> Bool) {
+        self.assertion = assertion
+    }
+
+    override func save(event: CalendarEvent) {
+        super.save(event: event)
+        isSatisfied = assertion(event)
+    }
+
+}
+
 class CalendarService {
 
     private let calendar: CalendarPort
@@ -130,7 +148,7 @@ class CalendarService {
         self.calendar = calendar
     }
 
-    func add(event: Any) {
+    func add(event: Event) {
         if calendar.isAuthorizedForEventsAccess {
             makeAndInsertEvent(event)
         }
@@ -143,19 +161,28 @@ class CalendarService {
         }
     }
     
-    private func makeAndInsertEvent(_ event: Any) {
-        let calendarEvent = calendar.makeEvent()
+    private func makeAndInsertEvent(_ event: Event) {
+        var calendarEvent = calendar.makeEvent()
         
         if !calendarEvent.isAssociatedToCalendar {
             calendar.reloadStore()
         }
-        
+
+        calendarEvent.title = event.Title
+
         calendar.save(event: calendarEvent)
     }
 
 }
 
 class CalendarServiceTests: XCTestCase {
+
+    private func makeEventWithValues() -> Event {
+        let event = Event()
+        event.Title = "Title"
+
+        return event
+    }
     
     func testAddingEventShouldRequestEventsPermissionsFromTheCalendar() {
         let capturingCalendar = CapturingCalendarPort()
@@ -260,6 +287,17 @@ class CalendarServiceTests: XCTestCase {
         service.add(event: event)
         
         XCTAssertFalse(capturingCalendar.didReloadStore)
+    }
+
+    func testTheTitleFromTheEventShouldBeSetOntoTheCalendarEventBeforeSavingTheEvent() {
+        let event = makeEventWithValues()
+        let eventAssertion = SaveAssertingCalendar(assertion: { $0.title == event.Title })
+        let service = CalendarService(calendar: eventAssertion)
+        let stubbedCalendarEvent = CalendarEventWithAssociatedCalendar()
+        eventAssertion.createdEvent = stubbedCalendarEvent
+        service.add(event: event)
+
+        XCTAssertTrue(eventAssertion.isSatisfied)
     }
     
 }
