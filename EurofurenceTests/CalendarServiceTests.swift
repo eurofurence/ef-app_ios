@@ -23,11 +23,14 @@ protocol CalendarPort {
 protocol CalendarEvent {
     
     var isAssociatedToCalendar: Bool { get }
+
     var title: String { get set }
     var notes: String { get set }
     var location: String? { get set }
     var startDate: Date { get set }
     var endDate: Date { get set }
+
+    func addAlarm(relativeOffsetFromStartDate relativeOffset: TimeInterval)
     
 }
 
@@ -75,6 +78,11 @@ class StubCalendarEvent: CalendarEvent {
     var location: String?
     var startDate: Date = Date()
     var endDate: Date = Date()
+
+    private(set) var addedRelativeAlarmTime: TimeInterval?
+    func addAlarm(relativeOffsetFromStartDate relativeOffset: TimeInterval) {
+        addedRelativeAlarmTime = relativeOffset
+    }
     
 }
 
@@ -181,6 +189,9 @@ class CalendarService {
         calendarEvent.location = event.ConferenceRoom?.Name
         calendarEvent.startDate = event.StartDateTimeUtc
         calendarEvent.endDate = event.EndDateTimeUtc
+
+        let thirtyMinutesPrior: TimeInterval = -1800
+        calendarEvent.addAlarm(relativeOffsetFromStartDate: thirtyMinutesPrior)
 
         calendar.save(event: calendarEvent)
     }
@@ -355,6 +366,19 @@ class CalendarServiceTests: XCTestCase {
         let event = makeEventWithValues()
         let eventAssertion = makeCalendarEventCreationTest(event: event,
                                                            assertion: { $0.endDate == event.EndDateTimeUtc })
+
+        XCTAssertTrue(eventAssertion.isSatisfied)
+    }
+
+    func testTheEventIsGivenAnAlarmWithHalfAnHourPriorToTheStartTime() {
+        let event = makeEventWithValues()
+        let expectedRelativeOffsetFromStartTime: TimeInterval = -1800
+        let assertion: (CalendarEvent) -> Bool = { event in
+            return (event as? StubCalendarEvent)?.addedRelativeAlarmTime == expectedRelativeOffsetFromStartTime
+        }
+
+        let eventAssertion = makeCalendarEventCreationTest(event: event,
+                                                           assertion: assertion)
 
         XCTAssertTrue(eventAssertion.isSatisfied)
     }
