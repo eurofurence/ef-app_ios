@@ -24,7 +24,7 @@ class CalendarService {
         } else {
             calendarPermissionsProviding.requestAccessToEvents { authorized in
                 if authorized {
-                    makeAndInsertEvent(event)
+                    self.makeAndInsertEvent(event)
                 }
             }
         }

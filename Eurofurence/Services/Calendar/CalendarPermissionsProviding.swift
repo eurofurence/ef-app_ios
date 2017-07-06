@@ -12,6 +12,6 @@ protocol CalendarPermissionsProviding {
 
     var isAuthorizedForEventsAccess: Bool { get }
 
-    func requestAccessToEvents(completionHandler: (Bool) -> Void)
+    func requestAccessToEvents(completionHandler: @escaping (Bool) -> Void)
 
 }

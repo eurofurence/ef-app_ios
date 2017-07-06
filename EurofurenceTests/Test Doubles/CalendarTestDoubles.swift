@@ -35,7 +35,7 @@ class CapturingCalendarPermissionsProviding: CalendarPermissionsProviding {
     var isAuthorizedForEventsAccess: Bool = true
     
     private(set) var wasAskedForEventsPermissions = false
-    func requestAccessToEvents(completionHandler: (Bool) -> Void) {
+    func requestAccessToEvents(completionHandler: @escaping (Bool) -> Void) {
         wasAskedForEventsPermissions = true
     }
     
@@ -86,7 +86,7 @@ class AuthorizedCalendarPermissionsProviding: CalendarPermissionsProviding {
     }
     
     private(set) var wasAskedForEventsPermissions = false
-    func requestAccessToEvents(completionHandler: (Bool) -> Void) {
+    func requestAccessToEvents(completionHandler: @escaping (Bool) -> Void) {
         wasAskedForEventsPermissions = true
         completionHandler(true)
     }
@@ -101,7 +101,7 @@ class UnauthorizedCalendarPermissionsProviding: CalendarPermissionsProviding {
         }
     }
     
-    func requestAccessToEvents(completionHandler: (Bool) -> Void) {
+    func requestAccessToEvents(completionHandler: @escaping (Bool) -> Void) {
         completionHandler(false)
     }
     
