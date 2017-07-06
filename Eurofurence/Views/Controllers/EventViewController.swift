@@ -126,7 +126,7 @@ class EventViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EventDetailViewToMapSegue" {
             if let destinationVC = segue.destination as? MapViewController, let mapEntry = sender as? MapEntry {
-                destinationVC.currentMapEntry = mapEntry
+                destinationVC.mapEntry = mapEntry
                 destinationVC.currentMapEntryRadiusMultiplier = 30.0
                 self.tabBarController?.tabBar.isHidden = false
             }

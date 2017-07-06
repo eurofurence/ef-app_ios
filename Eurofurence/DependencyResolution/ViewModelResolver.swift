@@ -30,5 +30,8 @@ class ViewModelResolver {
 		_container.register(.singleton) {
 			try EventsViewModel(dataContext: ContextResolver.container.resolve())
 		}
+		_container.register(.singleton) {
+			try MapViewModel(dataContext: ContextResolver.container.resolve())
+		}
 	}
 }

@@ -203,7 +203,7 @@ class DealerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DealerDetailViewToMapSegue" {
             if let destinationVC = segue.destination as? MapViewController, let mapEntry = sender as? MapEntry {
-                destinationVC.currentMapEntry = mapEntry
+                destinationVC.mapEntry = mapEntry
                 destinationVC.currentMapEntryRadiusMultiplier = 10.0
                 self.tabBarController?.tabBar.isHidden = false
             }

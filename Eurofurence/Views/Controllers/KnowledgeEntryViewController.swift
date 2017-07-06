@@ -172,7 +172,7 @@ class KnowledgeEntryViewController: UIViewController {
 			}
 		case "KnowledgeEntryToMapSegue":
 			if let destinationVC = segue.destination as? MapViewController, let mapEntry = sender as? MapEntry {
-				destinationVC.currentMapEntry = mapEntry
+				destinationVC.mapEntry = mapEntry
 				destinationVC.currentMapEntryRadiusMultiplier = 10.0
 				self.tabBarController?.tabBar.isHidden = false
 			}
