@@ -13,9 +13,7 @@ class Image: EntityBase {
 	var InternalReference: String = ""
     var MimeType = ""
 	var SizeInBytes: Int = 0
-    var Title = ""
-    var Url = ""
-	var Width: Int = 0
+    var Width: Int = 0
 
 	var Entities: [EntityBase] = []
 

@@ -42,8 +42,10 @@ class ContextResolver {
 		}
 
 		_container.register(.singleton) {
-			try ContextManager(apiConnection: $0, dataContext: self._container.resolve() as DataContextProtocol,
-					dataStore: self._container.resolve() as DataStoreProtocol)
+			ContextManager(apiConnection: $0,
+			                   dataContext: $1,
+			                   dataStore: $2,
+			                   imageService: $3)
 		}
 	}
 }

@@ -20,8 +20,13 @@ class ServiceResolver {
 	private let _container = DependencyContainer()
 
 	private init() {
+		_container.collaborate(with: ContextResolver.container)
+		ContextResolver.container.collaborate(with: _container)
 		_container.register(.singleton) {
 			TimeService()
+		}
+		_container.register(.eagerSingleton) {
+			try! ImageService(dataContext: $0, apiConnection: $1) as ImageServiceProtocol
 		}
 	}
 }

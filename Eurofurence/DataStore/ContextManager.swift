@@ -14,10 +14,11 @@ class ContextManager {
 	private var apiConnection: ApiConnectionProtocol
 	private var dataContext: DataContextProtocol
 	private var dataStore: DataStoreProtocol
+	private var imageService: ImageServiceProtocol
 
 	private(set) lazy var syncWithApi: Action<Date?, Progress, NSError>? =
 			Action { sinceDate in
-				return SignalProducer<Progress, NSError> { observer, disposable in
+				return SignalProducer<Progress, NSError> { [unowned self] observer, disposable in					
 					let progress = Progress(totalUnitCount: 3)
 					let parameters: ApiConnectionProtocol.Parameters?
 					if let sinceDate = sinceDate {
@@ -38,10 +39,11 @@ class ContextManager {
 								observer.send(value: progress)
 								UserSettings.LastSyncDate.setValue(sync.CurrentDateTimeUtc)
 
-								// TODO: Download images
-								progress.completedUnitCount += 1
-								observer.send(value: progress)
-								observer.sendCompleted()
+								disposable += self.imageService.refreshCache(for: self.dataContext.Images.value).startWithCompleted {
+									progress.completedUnitCount += 1
+									observer.send(value: progress)
+									observer.sendCompleted()
+								}
 							}
 						} else {
 							// TODO: Rollback to last persisted state in order to maintain consistency
@@ -54,10 +56,11 @@ class ContextManager {
 			}
 
 	init(apiConnection: ApiConnectionProtocol, dataContext: DataContextProtocol,
-	     dataStore: DataStoreProtocol) {
+	     dataStore: DataStoreProtocol, imageService: ImageServiceProtocol) {
 		self.apiConnection = apiConnection
 		self.dataContext = dataContext
 		self.dataStore = dataStore
+		self.imageService = imageService
 	}
 
 	func clearAll() {

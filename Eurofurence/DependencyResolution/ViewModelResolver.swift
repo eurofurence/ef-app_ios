@@ -20,6 +20,7 @@ class ViewModelResolver {
 	private let _container = DependencyContainer()
 
 	private init() {
+		_container.collaborate(with: ContextResolver.container)
 		_container.register(.singleton) {
 			try AnnouncementsViewModel(dataContext: ContextResolver.container.resolve())
 		}

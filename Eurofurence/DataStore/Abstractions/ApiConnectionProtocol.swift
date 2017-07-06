@@ -32,6 +32,9 @@ protocol ApiConnectionProtocol {
 	func doPut<EntityType: EVNetworkingObject>(_ endpoint: String, payload: EVReflectable?, parameters: Parameters?) -> SignalProducer<EntityType, ApiConnectionError>
 
 	func doDelete<EntityType: EVNetworkingObject>(_ endpoint: String, parameters: Parameters?) -> SignalProducer<EntityType, ApiConnectionError>
+
+	// MARK: Specialised functions
+	func downloadImage(for image: Image) -> SignalProducer<AFImage, ApiConnectionError>
 }
 
 extension ApiConnectionProtocol {

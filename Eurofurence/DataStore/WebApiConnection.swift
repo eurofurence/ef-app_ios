@@ -9,6 +9,7 @@ import Foundation
 import EVReflection
 import ReactiveSwift
 import Alamofire
+import AlamofireImage
 
 class WebApiConnection: ApiConnectionProtocol {
 
@@ -26,6 +27,30 @@ class WebApiConnection: ApiConnectionProtocol {
 	required init(_ apiUrl: URL) {
 		EVReflection.setDateFormatter(Iso8601DateFormatter())
 		self.apiUrl = apiUrl
+	}
+	
+	func downloadImage(for image: Image) -> SignalProducer<AFImage, ApiConnectionError> {
+		return SignalProducer { observer, disposable in
+			let imageUrl = self.apiUrl.appendingPathComponent("Images/\(image.Id)/Content")
+			print("Retrieving image for id \(image.Id) from API.")
+			let request = Alamofire.request(imageUrl).responseImage(completionHandler: {
+				(response: DataResponse<AFImage>) in
+				if let result = response.value {
+					observer.send(value: result)
+					observer.sendCompleted()
+					print("Successfully retrieved image for at \(imageUrl).")
+				} else if let error = response.error {
+					observer.send(error: ApiConnectionError.HttpError(endpoint: "Image/Content", verb: #function,
+							description: "Failed to retrieve image for at \(imageUrl): \(error.localizedDescription)"))
+					print("Failed to retrieve image for at \(imageUrl): \(error.localizedDescription)")
+				} else {
+					observer.send(error: ApiConnectionError.UnknownError(functionName: #function,
+							description: "Failed to retrieve image for at \(imageUrl)."))
+					print("Failed to retrieve image for at \(imageUrl).")
+				}
+			})
+			disposable.add({request.cancel()})
+		}.start(on: scheduler)
 	}
 
 	func doGet<EntityType: EVNetworkingObject>(_ endpoint: String, parameters: Parameters? = nil) -> SignalProducer<EntityType, ApiConnectionError> {
