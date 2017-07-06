@@ -24,6 +24,7 @@ protocol CalendarEvent {
     
     var isAssociatedToCalendar: Bool { get }
     var title: String { get set }
+    var notes: String { get set }
     
 }
 
@@ -67,6 +68,7 @@ class StubCalendarEvent: CalendarEvent {
     
     private(set) var isAssociatedToCalendar: Bool
     var title: String = ""
+    var notes: String = ""
     
 }
 
@@ -169,6 +171,7 @@ class CalendarService {
         }
 
         calendarEvent.title = event.Title
+        calendarEvent.notes = event.Description
 
         calendar.save(event: calendarEvent)
     }
@@ -180,8 +183,20 @@ class CalendarServiceTests: XCTestCase {
     private func makeEventWithValues() -> Event {
         let event = Event()
         event.Title = "Title"
+        event.Description = "Notes"
 
         return event
+    }
+
+    private func makeCalendarEventCreationTest(event: Event,
+                                               assertion: @escaping (CalendarEvent) -> Bool) -> SaveAssertingCalendar {
+        let eventAssertion = SaveAssertingCalendar(assertion: assertion)
+        let service = CalendarService(calendar: eventAssertion)
+        let stubbedCalendarEvent = CalendarEventWithAssociatedCalendar()
+        eventAssertion.createdEvent = stubbedCalendarEvent
+        service.add(event: event)
+
+        return eventAssertion
     }
     
     func testAddingEventShouldRequestEventsPermissionsFromTheCalendar() {
@@ -291,11 +306,16 @@ class CalendarServiceTests: XCTestCase {
 
     func testTheTitleFromTheEventShouldBeSetOntoTheCalendarEventBeforeSavingTheEvent() {
         let event = makeEventWithValues()
-        let eventAssertion = SaveAssertingCalendar(assertion: { $0.title == event.Title })
-        let service = CalendarService(calendar: eventAssertion)
-        let stubbedCalendarEvent = CalendarEventWithAssociatedCalendar()
-        eventAssertion.createdEvent = stubbedCalendarEvent
-        service.add(event: event)
+        let eventAssertion = makeCalendarEventCreationTest(event: event,
+                                                           assertion: { $0.title == event.Title })
+
+        XCTAssertTrue(eventAssertion.isSatisfied)
+    }
+
+    func testTheNotesFromTheEventShouldBeSetOntoTheCalendarEventBeforeSavingTheEvent() {
+        let event = makeEventWithValues()
+        let eventAssertion = makeCalendarEventCreationTest(event: event,
+                                                           assertion: { $0.notes == event.Description })
 
         XCTAssertTrue(eventAssertion.isSatisfied)
     }
