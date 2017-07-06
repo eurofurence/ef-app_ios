@@ -9,6 +9,7 @@ import UIKit
 import ReactiveSwift
 import EVReflection
 import SlideMenuControllerSwift
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var lifetime = Lifetime.make()
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        FirebaseApp.configure()
 
 		PrintOptions.Active = .None
 
