@@ -196,4 +196,36 @@ class CalendarServiceTests: XCTestCase {
         XCTAssertTrue(eventAssertion.isSatisfied)
     }
     
+    func testAddingEventWhenStoreNeedsReloadingSavesSecondEventCreatedFromStore() {
+        class MultipleEventCreationCalendarStore: CalendarStore {
+            
+            var events: [CalendarEvent]
+            
+            init(events: [CalendarEvent]) {
+                self.events = events
+            }
+            
+            func makeEvent() -> CalendarEvent {
+                return events.removeFirst()
+            }
+            
+            private(set) var savedEvent: CalendarEvent?
+            func save(event: CalendarEvent) {
+                savedEvent = event
+            }
+            
+            func reloadStore() { }
+            
+        }
+        
+        let firstEvent = CalendarEventWithoutAssociatedCalendar()
+        let secondEvent = CalendarEventWithAssociatedCalendar()
+        let capturingCalendar = MultipleEventCreationCalendarStore(events: [firstEvent, secondEvent])
+        let service = CalendarService(calendarPermissionsProviding: AuthorizedCalendarPermissionsProviding(), calendarStore: capturingCalendar)
+        let event = Event()
+        service.add(event: event)
+        
+        XCTAssertTrue(secondEvent === (capturingCalendar.savedEvent as? CalendarEventWithAssociatedCalendar))
+    }
+    
 }

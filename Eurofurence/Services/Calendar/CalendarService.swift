@@ -35,6 +35,7 @@ class CalendarService {
 
         if !calendarEvent.isAssociatedToCalendar {
             calendarStore.reloadStore()
+            calendarEvent = calendarStore.makeEvent()
         }
 
         calendarEvent.title = event.Title
