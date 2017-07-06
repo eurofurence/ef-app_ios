@@ -11,7 +11,7 @@ import XCTest
 
 class CalendarServiceTests: XCTestCase {
 
-    private func makeEventWithValues() -> Event {
+    private func makeEventWithTestableValues() -> Event {
         let event = Event()
         event.Title = "Title"
         event.Description = "Notes"
@@ -144,7 +144,7 @@ class CalendarServiceTests: XCTestCase {
     }
 
     func testTheTitleFromTheEventShouldBeSetOntoTheCalendarEvent() {
-        let event = makeEventWithValues()
+        let event = makeEventWithTestableValues()
         let eventAssertion = makeCalendarEventCreationTest(event: event,
                                                            assertion: { $0.title == event.Title })
 
@@ -152,7 +152,7 @@ class CalendarServiceTests: XCTestCase {
     }
 
     func testTheNotesFromTheEventShouldBeSetOntoTheCalendarEvent() {
-        let event = makeEventWithValues()
+        let event = makeEventWithTestableValues()
         let eventAssertion = makeCalendarEventCreationTest(event: event,
                                                            assertion: { $0.notes == event.Description })
 
@@ -160,7 +160,7 @@ class CalendarServiceTests: XCTestCase {
     }
 
     func testTheLocationFromTheEventShouldBeSetOntoTheCalendarEvent() {
-        let event = makeEventWithValues()
+        let event = makeEventWithTestableValues()
         let eventAssertion = makeCalendarEventCreationTest(event: event,
                                                            assertion: { $0.location == event.ConferenceRoom?.Name })
 
@@ -168,7 +168,7 @@ class CalendarServiceTests: XCTestCase {
     }
 
     func testTheStartDateFromTheEventShouldBeSetOntoTheCalendarEvent() {
-        let event = makeEventWithValues()
+        let event = makeEventWithTestableValues()
         let eventAssertion = makeCalendarEventCreationTest(event: event,
                                                            assertion: { $0.startDate == event.StartDateTimeUtc })
 
@@ -176,7 +176,7 @@ class CalendarServiceTests: XCTestCase {
     }
 
     func testTheEndDateFromTheEventShouldBeSetOntoTheCalendarEvent() {
-        let event = makeEventWithValues()
+        let event = makeEventWithTestableValues()
         let eventAssertion = makeCalendarEventCreationTest(event: event,
                                                            assertion: { $0.endDate == event.EndDateTimeUtc })
 
@@ -184,7 +184,7 @@ class CalendarServiceTests: XCTestCase {
     }
 
     func testTheEventIsGivenAnAlarmWithHalfAnHourPriorToTheStartTime() {
-        let event = makeEventWithValues()
+        let event = makeEventWithTestableValues()
         let expectedRelativeOffsetFromStartTime: TimeInterval = -1800
         let assertion: (CalendarEvent) -> Bool = { event in
             return (event as? StubCalendarEvent)?.addedRelativeAlarmTime == expectedRelativeOffsetFromStartTime
@@ -197,27 +197,6 @@ class CalendarServiceTests: XCTestCase {
     }
     
     func testAddingEventWhenStoreNeedsReloadingSavesSecondEventCreatedFromStore() {
-        class MultipleEventCreationCalendarStore: CalendarStore {
-            
-            var events: [CalendarEvent]
-            
-            init(events: [CalendarEvent]) {
-                self.events = events
-            }
-            
-            func makeEvent() -> CalendarEvent {
-                return events.removeFirst()
-            }
-            
-            private(set) var savedEvent: CalendarEvent?
-            func save(event: CalendarEvent) {
-                savedEvent = event
-            }
-            
-            func reloadStore() { }
-            
-        }
-        
         let firstEvent = CalendarEventWithoutAssociatedCalendar()
         let secondEvent = CalendarEventWithAssociatedCalendar()
         let capturingCalendar = MultipleEventCreationCalendarStore(events: [firstEvent, secondEvent])

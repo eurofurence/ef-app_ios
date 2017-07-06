@@ -127,3 +127,24 @@ class SaveAssertingCalendar: CalendarStore {
     func reloadStore() { }
     
 }
+
+class MultipleEventCreationCalendarStore: CalendarStore {
+    
+    var events: [CalendarEvent]
+    
+    init(events: [CalendarEvent]) {
+        self.events = events
+    }
+    
+    func makeEvent() -> CalendarEvent {
+        return events.removeFirst()
+    }
+    
+    private(set) var savedEvent: CalendarEvent?
+    func save(event: CalendarEvent) {
+        savedEvent = event
+    }
+    
+    func reloadStore() { }
+    
+}

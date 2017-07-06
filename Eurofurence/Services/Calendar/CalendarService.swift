@@ -12,6 +12,7 @@ class CalendarService {
 
     private let calendarPermissionsProviding: CalendarPermissionsProviding
     private let calendarStore: CalendarStore
+    private static let thirtyMinutesBeforeEvent: TimeInterval = -1800
 
     init(calendarPermissionsProviding: CalendarPermissionsProviding, calendarStore: CalendarStore) {
         self.calendarPermissionsProviding = calendarPermissionsProviding
@@ -31,6 +32,12 @@ class CalendarService {
     }
 
     private func makeAndInsertEvent(_ event: Event) {
+        let calendarEvent = makeCalendarStoreEvent()
+        copyEventInformationFromEvent(event, intoCalendarEvent: calendarEvent)
+        calendarStore.save(event: calendarEvent)
+    }
+
+    private func makeCalendarStoreEvent() -> CalendarEvent {
         var calendarEvent = calendarStore.makeEvent()
 
         if !calendarEvent.isAssociatedToCalendar {
@@ -38,16 +45,17 @@ class CalendarService {
             calendarEvent = calendarStore.makeEvent()
         }
 
+        return calendarEvent
+    }
+
+    private func copyEventInformationFromEvent(_ event: Event, intoCalendarEvent calendarEvent: CalendarEvent) {
+        var calendarEvent = calendarEvent
         calendarEvent.title = event.Title
         calendarEvent.notes = event.Description
         calendarEvent.location = event.ConferenceRoom?.Name
         calendarEvent.startDate = event.StartDateTimeUtc
         calendarEvent.endDate = event.EndDateTimeUtc
-
-        let thirtyMinutesPrior: TimeInterval = -1800
-        calendarEvent.addAlarm(relativeOffsetFromStartDate: thirtyMinutesPrior)
-
-        calendarStore.save(event: calendarEvent)
+        calendarEvent.addAlarm(relativeOffsetFromStartDate: CalendarService.thirtyMinutesBeforeEvent)
     }
 
 }
