@@ -63,7 +63,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			}
 		})
 
-		setupSlideMenu()
+        window?.rootViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "MainTabBarController")
+        window?.makeKeyAndVisible()
 
 		return true
 	}
@@ -90,14 +91,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	}
 
-	private func setupSlideMenu() {
-		let menuStoryboard = UIStoryboard(name: "SlideMenu", bundle: nil)
-		let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-		let mainViewController = mainStoryboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
-		let leftViewController = menuStoryboard.instantiateViewController(withIdentifier: "LeftView") as! LeftViewController
-
-		let slideMenuController = SlideMenuController(mainViewController: mainViewController, leftMenuViewController: leftViewController)
-		window?.rootViewController = slideMenuController
-		window?.makeKeyAndVisible()
-	}
 }
