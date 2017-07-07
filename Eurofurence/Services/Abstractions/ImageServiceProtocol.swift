@@ -57,8 +57,8 @@ enum ImageServiceError: CustomNSError {
 		case .FailedConvert(let image, let description):
 			return ["message": "Image with ID \(image.Id) could not be converted" as NSString,
 			        "description": (description ?? "") as NSString]
-		case .FailedCacheDirectory(_, let description):
-			return ["message": "Failed to create or access cache directory" as NSString,
+		case .FailedCacheDirectory(let url, let description):
+			return ["message": "Failed to create or access cache directory at \(url.path)" as NSString,
 			        "description": (description ?? "") as NSString]
 		case .FailedDownload(let image, let description):
 			return ["message": "Image with ID \(image.Id) failed to download from API" as NSString,
