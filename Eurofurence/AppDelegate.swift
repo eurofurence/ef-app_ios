@@ -39,15 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				print("Loading completed")
 				// TODO: Check WiFi connection and prompt user if on mobile
 				if UserSettings.UpdateOnStart.currentValueOrDefault() {
-					contextManager.syncWithApi?.apply(UserSettings.LastSyncDate.currentValue()).start({ result in
-						if result.isCompleted {
-							print("Sync completed")
-						} else if let value = result.value {
-							print("Sync completed by \(value.fractionCompleted)")
-						} else {
-							print("Error during sync: \(String(describing: result.error))")
-						}
-					})
+					DataStoreRefreshController.shared.refreshStore()
 				}
 			case .interrupted:
 				print("Loading interrupted")
