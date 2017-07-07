@@ -317,13 +317,7 @@
                             <outlet property="delegate" destination="fbh-19-XeE" id="r89-Qy-GsG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Dealer's Den" id="E1g-dV-CWP">
-                        <barButtonItem key="leftBarButtonItem" image="Burger Menu" id="aaa-9N-KLa">
-                            <connections>
-                                <action selector="openMenu:" destination="fbh-19-XeE" id="vA6-Nq-CAq"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Dealer's Den" id="E1g-dV-CWP"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="SDt-e5-KzB">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -621,13 +615,7 @@
                             <outlet property="delegate" destination="83V-W9-tcx" id="2h4-cL-mSp"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="News" id="7BE-Jk-IfU">
-                        <barButtonItem key="leftBarButtonItem" image="Burger Menu" id="cMK-5e-PRC">
-                            <connections>
-                                <action selector="openMenu:" destination="83V-W9-tcx" id="kLi-vE-oOO"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="News" id="7BE-Jk-IfU"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Lib-z5-LMC">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -895,13 +883,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Maps" id="PQi-Sz-LWX">
-                        <barButtonItem key="leftBarButtonItem" image="Burger Menu" id="Fac-Rl-ohY">
-                            <connections>
-                                <action selector="openMenu:" destination="7qp-Gf-BX9" id="F4T-56-uAV"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Maps" id="PQi-Sz-LWX"/>
                     <splitViewDetailSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="mapContainerView" destination="UPi-G5-x8h" id="A4a-c2-bKl"/>
@@ -1102,13 +1084,7 @@
                             <outlet property="delegate" destination="R6H-1L-KBn" id="sHd-XX-KEg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Events" id="DYu-28-d1N">
-                        <barButtonItem key="leftBarButtonItem" image="Burger Menu" id="Wcg-wP-QYb">
-                            <connections>
-                                <action selector="openMenu:" destination="R6H-1L-KBn" id="Vjd-3F-CSV"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Events" id="DYu-28-d1N"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Y1E-e3-P8J">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1441,13 +1417,7 @@
                             <outlet property="delegate" destination="glr-b0-rOQ" id="gR8-ly-7mZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Convention Information" id="Xba-8H-gAR">
-                        <barButtonItem key="leftBarButtonItem" image="Burger Menu" id="T57-Mk-EwG">
-                            <connections>
-                                <action selector="openMenu:" destination="glr-b0-rOQ" id="aTV-vl-xkV"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Convention Information" id="Xba-8H-gAR"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6JV-FJ-aAY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1621,13 +1591,7 @@
         <scene sceneID="e2y-tZ-8wm">
             <objects>
                 <tableViewController storyboardIdentifier="SettingsTableView" id="fzc-my-2gc" customClass="SettingsTableViewController" customModule="Eurofurence" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Settings" id="9fQ-N3-BQG">
-                        <barButtonItem key="leftBarButtonItem" title="Close" id="Yxr-3S-QsL">
-                            <connections>
-                                <action selector="openMenu:" destination="fzc-my-2gc" id="OtH-G2-wiw"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Settings" id="9fQ-N3-BQG"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MBz-75-Utm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2029,13 +1993,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</stri
                             <constraint firstItem="v5Y-I7-JOW" firstAttribute="top" secondItem="hbs-hF-p0c" secondAttribute="bottom" id="jai-w5-N6o"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="About" id="6lP-yv-k5i">
-                        <barButtonItem key="leftBarButtonItem" title="Close" id="3lH-SW-TjL">
-                            <connections>
-                                <action selector="openMenu:" destination="M4i-6n-Fj1" id="1RP-cZ-Wew"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="About" id="6lP-yv-k5i"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="950"/>
                 </viewController>
@@ -2050,7 +2008,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</stri
                     <tabBarItem key="tabBarItem" title="About" image="AboutUs" id="dTW-Ju-Qnj"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eJj-iN-mYf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="eJj-iN-mYf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2070,7 +2028,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</stri
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings" id="AQQ-Sm-HkW"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bXG-ex-oFy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bXG-ex-oFy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2086,7 +2044,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</stri
     </scenes>
     <resources>
         <image name="AboutUs" width="25" height="25"/>
-        <image name="Burger Menu" width="25" height="25"/>
         <image name="Calendar" width="25" height="25"/>
         <image name="Center Direction-50" width="25" height="25"/>
         <image name="Future-50" width="25" height="25"/>
@@ -2105,8 +2062,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</stri
         <image name="ef-bg-news" width="540" height="181"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="JLI-w3-u9Q"/>
         <segue reference="XQS-QK-9wj"/>
         <segue reference="KTE-6a-a6w"/>
-        <segue reference="JLI-w3-u9Q"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -30,13 +30,4 @@ class AboutViewController: UIViewController {
     }
     */
 
-    @IBAction func openMenu(_ sender: AnyObject) {
-        showApp()
-    }
-
-    func showApp() {
-        let rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
-            self.slideMenuController()?.changeMainViewController(rootVC, close: true)
-    }
-
 }

@@ -108,10 +108,4 @@ class KnowledgeTableViewController: UITableViewController {
         }
     }
 
-    @IBAction func openMenu(_ sender: AnyObject) {
-        if let _ = self.slideMenuController() {
-            self.slideMenuController()?.openLeft()
-        }
-    }
-
 }
