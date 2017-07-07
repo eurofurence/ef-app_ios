@@ -24,6 +24,7 @@ class DataStoreRefreshController {
 
     private let contextManager: ContextManager
     private var refreshingDelegates = [DataStoreRefreshDelegate]()
+    private var isRefreshing = false
 
     private init() {
         contextManager = try! ContextResolver.container.resolve()
@@ -31,9 +32,14 @@ class DataStoreRefreshController {
 
     func add(_ delegate: DataStoreRefreshDelegate) {
         refreshingDelegates.append(delegate)
+
+        if isRefreshing {
+            delegate.dataStoreRefreshDidBegin()
+        }
     }
 
     func refreshStore() {
+        isRefreshing = true
         refreshingDelegates.forEach({ $0.dataStoreRefreshDidBegin() })
 
         contextManager
@@ -42,10 +48,12 @@ class DataStoreRefreshController {
             .observe(on: QueueScheduler.main)
             .start { result in
                 if result.isCompleted {
+                    self.isRefreshing = false
                     self.refreshingDelegates.forEach({ $0.dataStoreRefreshDidFinish() })
                 } else if let value = result.value {
                     self.refreshingDelegates.forEach({ $0.dataStoreRefreshDidProduceProgress(value) })
                 } else if let error = result.error {
+                    self.isRefreshing = false
                     self.refreshingDelegates.forEach({ $0.dataStoreRefreshDidFailWithError(error) })
                 }
             }

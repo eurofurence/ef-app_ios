@@ -34,15 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				// TODO: Prompt user for required initialisation
 				// TODO: Check WiFi connection and prompt user if on mobile
 				print("Performing full reload from API")
-				contextManager.syncWithApi?.apply(nil).start({ result in
-					if result.isCompleted {
-						print("Sync completed")
-					} else if let value = result.value {
-						print("Sync completed by \(value.fractionCompleted)")
-					} else {
-						print("Error during sync: \(String(describing: result.error))")
-					}
-				})
+				DataStoreRefreshController.shared.refreshStore()
 			case .completed:
 				print("Loading completed")
 				// TODO: Check WiFi connection and prompt user if on mobile
