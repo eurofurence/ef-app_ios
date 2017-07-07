@@ -10,6 +10,9 @@ import Eureka
 
 class SettingsTableViewController: FormViewController {
 
+	private let contextManager: ContextManager = try! ContextResolver.container.resolve()
+	private let imageService: ImageServiceProtocol = try! ServiceResolver.container.resolve()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -108,22 +111,50 @@ class SettingsTableViewController: FormViewController {
     private func makeDataStorageSection() {
         form +++ Section("Data Storage")
             <<< ButtonRow {
-                $0.title = "Download Database"
+                $0.title = "Force Full Synchronisation"
                 }.onCellSelection { _ in
-                    // TODO: Perform sync without since
-                    /*ApiManager.sharedInstance.updateAllEntities(true, completion: nil)*/
+					// TODO: Provide feedback about background operations
+					let confirmationAlert = UIAlertController(title: "Force Full Synchronisation", message: "All data and all images missing from cache will be downloaded from the server.", preferredStyle: UIAlertControllerStyle.alert)
+					confirmationAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_: UIAlertAction!) in
+						self.contextManager.syncWithApi?.apply(nil).startWithCompleted {
+							print("Successfully performed full synchronisation.")
+						}
+					}))
+					confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+					self.present(confirmationAlert, animated: true, completion: nil)
+
                 }.cellUpdate { cell, _ in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
-            }
-            <<< ButtonRow {
-                $0.title = "Clear Database and Cache"
-                }.onCellSelection { _ in
-                    // TODO: Clear cache and storage
-                    /*ApiManager.sharedInstance.clearCache()*/
-                }.cellUpdate { cell, _ in
-                    cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
-                    cell.textLabel?.textColor = UIColor.red
-            }
+			}
+			<<< ButtonRow {
+				$0.title = "Clear Storage and Cache"
+				}.onCellSelection { _ in
+					// TODO: Provide feedback about background operations
+					// TODO: Segue to start screen, asking the user to confirm inital sync
+					let confirmationAlert = UIAlertController(title: "Clear Storage and Cache", message: "All offline data will be deleted and must be downloaded again afterwards, before the app can be used again!", preferredStyle: UIAlertControllerStyle.alert)
+					confirmationAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_: UIAlertAction!) in
+						self.contextManager.clearAll()
+					}))
+					confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+					self.present(confirmationAlert, animated: true, completion: nil)
+				}.cellUpdate { cell, _ in
+					cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+					cell.textLabel?.textColor = UIColor.red
+			}
+			<<< ButtonRow {
+				$0.title = "Clear Image Cache"
+				}.onCellSelection { _ in
+					// TODO: Provide feedback about background operations
+					let confirmationAlert = UIAlertController(title: "Clear Image Cache", message: "All cached images will be deleted and must be downloaded again!", preferredStyle: UIAlertControllerStyle.alert)
+					confirmationAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_: UIAlertAction!) in
+						self.imageService.clearCache()
+					}))
+					confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+					self.present(confirmationAlert, animated: true, completion: nil)
+				}.cellUpdate { cell, _ in
+					cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+					cell.textLabel?.textColor = UIColor.red
+			}
             +++ Section("Other")
             <<< LabelRow { row in
                 // TODO: VersionProvider?

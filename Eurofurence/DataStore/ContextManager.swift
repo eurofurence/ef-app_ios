@@ -34,15 +34,31 @@ class ContextManager {
 						observer.send(value: progress)
 
 						if let sync = apiResult.value {
-							disposable += self.dataContext.applySync.apply(sync).startWithCompleted {
-								progress.completedUnitCount += 1
-								observer.send(value: progress)
-								UserSettings.LastSyncDate.setValue(sync.CurrentDateTimeUtc)
-
-								disposable += self.imageService.refreshCache(for: self.dataContext.Images.value).startWithCompleted {
+							disposable += self.dataContext.applySync.apply(sync).start { event in
+								switch event {
+								case let .value(value):
+									print("Data context sync completed by \(value.fractionCompleted)")
+								case let .failed(error):
+									observer.send(error: error as NSError)
+								case .completed:
 									progress.completedUnitCount += 1
 									observer.send(value: progress)
-									observer.sendCompleted()
+									UserSettings.LastSyncDate.setValue(sync.CurrentDateTimeUtc)
+
+									disposable += self.imageService.refreshCache(for: self.dataContext.Images.value).start { event in
+										switch event {
+										case let .failed(error):
+											observer.send(error: error as NSError)
+										case .completed:
+											progress.completedUnitCount += 1
+											observer.send(value: progress)
+											observer.sendCompleted()
+										default:
+											break
+										}
+									}
+								default:
+									break
 								}
 							}
 						} else {
@@ -66,6 +82,7 @@ class ContextManager {
 	func clearAll() {
 		dataStore.clearAll().startWithCompleted {
 			self.dataContext.clearAll()
+			self.imageService.clearCache()
 		}
 	}
 }
