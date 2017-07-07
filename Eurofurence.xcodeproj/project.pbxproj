@@ -70,7 +70,6 @@
 		D6F3D2440B74E17B9A008DE0 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DF8454D3F83FD7294CD0 /* NewsViewController.swift */; };
 		D6F3D275FF81A313B9213277 /* AnnouncementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DEF39B7EA2ED63CA72D7 /* AnnouncementCell.swift */; };
 		D6F3D2C86BE68A102D2D6312 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D831FC85BC47C1D346C1 /* EventTableViewController.swift */; };
-		D6F3D31AF756EC1131851C5A /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D7EA60D21CE770225E11 /* LeftViewController.swift */; };
 		D6F3D339BFBA2C299453B6BA /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D3312E7C5B416B722B85 /* SettingsTableViewController.swift */; };
 		D6F3D3D11CAB2B06852D0EF9 /* DealerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D4F55CFC5A5BDBB3F1A8 /* DealerTableViewController.swift */; };
 		D6F3D40D3515E7ABE9565906 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D0A32DC83843688B347C /* AboutViewController.swift */; };
@@ -82,7 +81,6 @@
 		D6F3D6ADD1B889C901EE841A /* DataStoreResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D8101460A96C0D9A7612 /* DataStoreResult.swift */; };
 		D6F3D749FF814981E076850E /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D1CE9C98163AA2B6DF7D /* ImageService.swift */; };
 		D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D46D42184018C6E237CD /* RoutingAppChooser.swift */; };
-		D6F3D875324C6F14833865FB /* SlideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6F3D61F42888D38B5B2E9BD /* SlideMenu.storyboard */; };
 		D6F3DAD590C051C8D0060172 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DFA70EA419105E0019F3 /* EventViewController.swift */; };
 		D6F3DB838A1BDAFC6DAC2F61 /* CountryAlpha3Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D3FF0CFC133874118590 /* CountryAlpha3Converter.swift */; };
 		D6F3DBB69290DF1E0448A3CC /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D20D882CACF3DC8F7C8F /* EventCell.swift */; };
@@ -181,13 +179,11 @@
 		D6F3D46D42184018C6E237CD /* RoutingAppChooser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutingAppChooser.swift; sourceTree = "<group>"; };
 		D6F3D49E9A7962D15CE8C3EF /* WikiText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WikiText.swift; sourceTree = "<group>"; };
 		D6F3D4F55CFC5A5BDBB3F1A8 /* DealerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealerTableViewController.swift; sourceTree = "<group>"; };
-		D6F3D61F42888D38B5B2E9BD /* SlideMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SlideMenu.storyboard; sourceTree = "<group>"; };
 		D6F3D64B03CB7EFAF70CC756 /* ImageServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageServiceProtocol.swift; sourceTree = "<group>"; };
 		D6F3D66312CF86A43D699F2C /* DealerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealerViewController.swift; sourceTree = "<group>"; };
 		D6F3D694C5DA66BE24929466 /* TimeLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLabelCell.swift; sourceTree = "<group>"; };
 		D6F3D756F99A68B2DC5B7359 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D6F3D7AF46BAD0F1F9918A76 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
-		D6F3D7EA60D21CE770225E11 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		D6F3D8101460A96C0D9A7612 /* DataStoreResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreResult.swift; sourceTree = "<group>"; };
 		D6F3D831FC85BC47C1D346C1 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		D6F3DB1B292BBFBF5D69F557 /* ServiceResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceResolver.swift; sourceTree = "<group>"; };
@@ -363,7 +359,6 @@
 				9AF159E91EF5B3AE00DB287D /* Cells */,
 				D6F3DE4616D9A2E243387004 /* Controllers */,
 				9ACF99401EBE172D006FC958 /* LaunchScreen.storyboard */,
-				D6F3D61F42888D38B5B2E9BD /* SlideMenu.storyboard */,
 				D6F3D756F99A68B2DC5B7359 /* Main.storyboard */,
 			);
 			path = Views;
@@ -491,7 +486,6 @@
 				D6F3DFA70EA419105E0019F3 /* EventViewController.swift */,
 				D6F3DB48EF811D49364AFB9D /* KnowledgeEntryViewController.swift */,
 				D6F3DD137095A2765149B6DE /* KnowledgeTableViewController.swift */,
-				D6F3D7EA60D21CE770225E11 /* LeftViewController.swift */,
 				9A7FFD541EFC5A9E007ABA36 /* MapViewController.swift */,
 				D6F3DF71A249A0F1DE8D51FB /* NewsTableViewController.swift */,
 				D6F3DF8454D3F83FD7294CD0 /* NewsViewController.swift */,
@@ -597,7 +591,6 @@
 				9ACF99421EBE172D006FC958 /* LaunchScreen.storyboard in Resources */,
 				9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */,
 				9ACF999D1ECA25E1006FC958 /* Sync.mock.json in Resources */,
-				D6F3D875324C6F14833865FB /* SlideMenu.storyboard in Resources */,
 				D6F3D13186949132FE4694AD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -832,7 +825,6 @@
 				D6F3DEED2F3250C61DB692D9 /* DealerViewController.swift in Sources */,
 				D6F3D2C86BE68A102D2D6312 /* EventTableViewController.swift in Sources */,
 				D6F3D204D352FE26C3F90906 /* KnowledgeTableViewController.swift in Sources */,
-				D6F3D31AF756EC1131851C5A /* LeftViewController.swift in Sources */,
 				D6F3DF2779D7CE09AA5507F9 /* NewsTableViewController.swift in Sources */,
 				D6F3D0434C71907BD410190E /* ImageServiceProtocol.swift in Sources */,
 				D6F3D749FF814981E076850E /* ImageService.swift in Sources */,
