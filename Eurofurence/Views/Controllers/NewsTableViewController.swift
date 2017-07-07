@@ -11,28 +11,6 @@ import ReactiveSwift
 import UIKit
 import Changeset
 
-struct RefreshControlDataStoreDelegate: DataStoreRefreshDelegate {
-
-    var refreshControl: UIRefreshControl
-
-    func dataStoreRefreshDidBegin() {
-        refreshControl.beginRefreshing()
-    }
-
-    func dataStoreRefreshDidFinish() {
-        refreshControl.endRefreshing()
-    }
-
-    func dataStoreRefreshDidProduceProgress(_ progress: Progress) {
-
-    }
-
-    func dataStoreRefreshDidFailWithError(_ error: Error) {
-        refreshControl.endRefreshing()
-    }
-
-}
-
 class NewsTableViewController: UITableViewController {
 
 	private var announcementsViewModel: AnnouncementsViewModel = try! ViewModelResolver.container.resolve()
