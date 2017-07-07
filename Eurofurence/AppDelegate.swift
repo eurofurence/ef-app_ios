@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		PrintOptions.Active = .None
 
+        DataStoreRefreshController.shared.add(ApplicationActivityIndicatorRefreshDelegate())
+
 		let contextManager = try! ContextResolver.container.resolve() as ContextManager
 		let dataContext = try! ContextResolver.container.resolve() as DataContextProtocol
 

@@ -18,6 +18,7 @@
 		78567B3D1F100BAF00EBA31D /* DataStoreRefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78567B3C1F100BAF00EBA31D /* DataStoreRefreshController.swift */; };
 		78567B3F1F1016B000EBA31D /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78567B3E1F1016B000EBA31D /* TabViewController.swift */; };
 		78567B411F10212100EBA31D /* ProgressViewRefreshDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78567B401F10212100EBA31D /* ProgressViewRefreshDelegate.swift */; };
+		78567B431F10303600EBA31D /* ApplicationActivityIndicatorRefreshDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78567B421F10303600EBA31D /* ApplicationActivityIndicatorRefreshDelegate.swift */; };
 		78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */; };
 		78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */; };
 		78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */; };
@@ -120,6 +121,7 @@
 		78567B3C1F100BAF00EBA31D /* DataStoreRefreshController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreRefreshController.swift; sourceTree = "<group>"; };
 		78567B3E1F1016B000EBA31D /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		78567B401F10212100EBA31D /* ProgressViewRefreshDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressViewRefreshDelegate.swift; sourceTree = "<group>"; };
+		78567B421F10303600EBA31D /* ApplicationActivityIndicatorRefreshDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationActivityIndicatorRefreshDelegate.swift; sourceTree = "<group>"; };
 		78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInfoPropertyListShould.swift; sourceTree = "<group>"; };
 		78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarServiceTests.swift; sourceTree = "<group>"; };
 		78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 				D6F3D3312E7C5B416B722B85 /* SettingsTableViewController.swift */,
 				78567B3E1F1016B000EBA31D /* TabViewController.swift */,
 				78567B401F10212100EBA31D /* ProgressViewRefreshDelegate.swift */,
+				78567B421F10303600EBA31D /* ApplicationActivityIndicatorRefreshDelegate.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -811,6 +814,7 @@
 				D6F3DD6B0659E1A44E01075B /* CurrentEventsViewModel.swift in Sources */,
 				9AB64BCD1F018365004E8D91 /* KnowledgeEntryCell.swift in Sources */,
 				D6F3DFB53E62A8C16F211819 /* TimeService.swift in Sources */,
+				78567B431F10303600EBA31D /* ApplicationActivityIndicatorRefreshDelegate.swift in Sources */,
 				D6F3D4C7FF8BB27C46EF4D3D /* ServiceResolver.swift in Sources */,
 				9AB64BCB1F018135004E8D91 /* KnowledgeGroupCell.swift in Sources */,
 				D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */,
