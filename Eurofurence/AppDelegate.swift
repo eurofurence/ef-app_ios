@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         DataStoreRefreshController.shared.add(ApplicationActivityIndicatorRefreshDelegate())
 
-		let contextManager = try! ContextResolver.container.resolve() as ContextManager
 		let dataContext = try! ContextResolver.container.resolve() as DataContextProtocol
 
 		dataContext.loadFromStore().start(on: QueueScheduler.concurrent).start({ event in
