@@ -12,14 +12,17 @@ import UIKit
 protocol ImageServiceProtocol {
 	init(dataContext: DataContextProtocol, apiConnection: ApiConnectionProtocol) throws
 	func refreshCache(for images: [Image]) -> SignalProducer<Progress, ImageServiceError>
+	func download(image: Image) -> SignalProducer<UIImage, ImageServiceError>
 	func retrieve(for image: Image) -> SignalProducer<UIImage, ImageServiceError>
 	func validateCache(for image: Image) -> Bool
-	func pruneCache(for image: Image)
+	func clearCache(for image: Image)
+	func clearCache(for imageId: String)
+	func clearCache()
 }
 
 enum ImageServiceError: CustomNSError {
 	case FailedConvert(image: Image, description: String?)
-	case FailedCreate(url: URL, description: String?)
+	case FailedCacheDirectory(url: URL, description: String?)
 	case FailedDownload(image: Image, description: String?)
 	case FailedRead(image: Image, description: String?)
 	case FailedWrite(image: Image, description: String?)
@@ -34,7 +37,7 @@ enum ImageServiceError: CustomNSError {
 		switch self {
 		case .FailedConvert:
 			return 4
-		case .FailedCreate:
+		case .FailedCacheDirectory:
 			return 2
 		case .FailedDownload:
 			return 3
@@ -54,8 +57,8 @@ enum ImageServiceError: CustomNSError {
 		case .FailedConvert(let image, let description):
 			return ["message": "Image with ID \(image.Id) could not be converted" as NSString,
 			        "description": (description ?? "") as NSString]
-		case .FailedCreate(let url, let description):
-			return ["message": "File or directory at \(url) could not be created" as NSString,
+		case .FailedCacheDirectory(let url, let description):
+			return ["message": "Failed to create or access cache directory" as NSString,
 			        "description": (description ?? "") as NSString]
 		case .FailedDownload(let image, let description):
 			return ["message": "Image with ID \(image.Id) failed to download from API" as NSString,
