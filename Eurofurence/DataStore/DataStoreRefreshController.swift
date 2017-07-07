@@ -39,6 +39,8 @@ class DataStoreRefreshController {
     }
 
     func refreshStore() {
+        guard !isRefreshing else { return }
+
         isRefreshing = true
         refreshingDelegates.forEach({ $0.dataStoreRefreshDidBegin() })
 
