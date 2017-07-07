@@ -56,7 +56,7 @@ enum UserSettings: String {
 	}
 
 	@discardableResult
-    func setValue<T>(_ value: T) -> T? {
+    func setValue<T>(_ value: T?) -> T? {
         let defaults = UserDefaults.standard
 		let oldValue: T? = self.currentValue()
         defaults.set(value, forKey: self.rawValue)
