@@ -68,7 +68,9 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
         }
 
 		disposable += viewModel.Events.signal.observeResult({[unowned self] _ in
-			self.tableView.reloadData()
+			DispatchQueue.main.async {
+				self.tableView.reloadData()
+			}
 		})
 
 		// TODO: Observe viewModel.Events for changes while view is displayed
