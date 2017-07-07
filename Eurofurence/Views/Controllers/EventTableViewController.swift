@@ -37,31 +37,17 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
         tableView.backgroundColor =  UIColor(red: 35/255.0, green: 36/255.0, blue: 38/255.0, alpha: 1.0)
         refreshControl?.addTarget(self, action: #selector(EventTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         refreshControl?.backgroundColor = UIColor.clear
+
+        guard let refreshControl = refreshControl else { return }
+
+        let refreshControlVisibilityDelegate = RefreshControlDataStoreDelegate(refreshControl: refreshControl)
+        DataStoreRefreshController.shared.add(refreshControlVisibilityDelegate)
 	}
 
 	// TODO: Pull into super class for all refreshable ViewControllers
 	/// Initiates sync with API via refreshControl
 	func refresh(_ sender: AnyObject) {
-		guard let refreshControl = refreshControl else {
-			return
-		}
-
-		let contextManager = try! ContextResolver.container.resolve() as ContextManager
-		disposable += contextManager.syncWithApi?.apply(UserSettings.LastSyncDate.currentValue()).observe(on: QueueScheduler.concurrent).start({ result in
-			if result.isCompleted {
-				print("Sync completed")
-				DispatchQueue.main.async {
-					refreshControl.endRefreshing()
-				}
-			} else if let value = result.value {
-				print("Sync completed by \(value.fractionCompleted)")
-			} else {
-				print("Error during sync: \(String(describing: result.error))")
-				DispatchQueue.main.async {
-					refreshControl.endRefreshing()
-				}
-			}
-		})
+		DataStoreRefreshController.shared.refreshStore()
 	}
 
     override func didReceiveMemoryWarning() {

@@ -15,6 +15,7 @@
 		6EF96CD91F0EDCB300EE6134 /* EventKitCalendarPermissionsProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CD81F0EDCB300EE6134 /* EventKitCalendarPermissionsProviding.swift */; };
 		6EF96CDB1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CDA1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift */; };
 		6EF96CDD1F0F544B00EE6134 /* EventKitCalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CDC1F0F544B00EE6134 /* EventKitCalendarEvent.swift */; };
+		78567B3D1F100BAF00EBA31D /* DataStoreRefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78567B3C1F100BAF00EBA31D /* DataStoreRefreshController.swift */; };
 		78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */; };
 		78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */; };
 		78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */; };
@@ -114,6 +115,7 @@
 		6EF96CD81F0EDCB300EE6134 /* EventKitCalendarPermissionsProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventKitCalendarPermissionsProviding.swift; path = "Calendar/EventKit Adapters/EventKitCalendarPermissionsProviding.swift"; sourceTree = "<group>"; };
 		6EF96CDA1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventKitCalendarEventTests.swift; sourceTree = "<group>"; };
 		6EF96CDC1F0F544B00EE6134 /* EventKitCalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventKitCalendarEvent.swift; path = "Calendar/EventKit Adapters/EventKitCalendarEvent.swift"; sourceTree = "<group>"; };
+		78567B3C1F100BAF00EBA31D /* DataStoreRefreshController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreRefreshController.swift; sourceTree = "<group>"; };
 		78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInfoPropertyListShould.swift; sourceTree = "<group>"; };
 		78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarServiceTests.swift; sourceTree = "<group>"; };
 		78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 				9A8477971ED99EDE00F0DF3F /* NavigationResolver.swift */,
 				9A34B9881ED35FE0004A249E /* ReactiveDataContext.swift */,
 				9A0525441ECB090700578798 /* WebApiConnection.swift */,
+				78567B3C1F100BAF00EBA31D /* DataStoreRefreshController.swift */,
 			);
 			path = DataStore;
 			sourceTree = "<group>";
@@ -769,6 +772,7 @@
 				6EF96CC81F0EDAE800EE6134 /* CalendarStore.swift in Sources */,
 				9ACF998E1EC858B2006FC958 /* Event.swift in Sources */,
 				9ACF99681EBE3479006FC958 /* EntityBase.swift in Sources */,
+				78567B3D1F100BAF00EBA31D /* DataStoreRefreshController.swift in Sources */,
 				9A05254C1ECB097500578798 /* DataStoreProtocol.swift in Sources */,
 				9A34B9781ECF6E3B004A249E /* Iso8601DateFormatter.swift in Sources */,
 				9A0525431ECA2C5A00578798 /* SyncEntityDelta.swift in Sources */,

@@ -11,12 +11,33 @@ import ReactiveSwift
 import UIKit
 import Changeset
 
+struct RefreshControlDataStoreDelegate: DataStoreRefreshDelegate {
+
+    var refreshControl: UIRefreshControl
+
+    func dataStoreRefreshDidBegin() {
+        refreshControl.beginRefreshing()
+    }
+
+    func dataStoreRefreshDidFinish() {
+        refreshControl.endRefreshing()
+    }
+
+    func dataStoreRefreshDidProduceProgress(_ progress: Progress) {
+
+    }
+
+    func dataStoreRefreshDidFailWithError(_ error: Error) {
+        refreshControl.endRefreshing()
+    }
+
+}
+
 class NewsTableViewController: UITableViewController {
 
 	private var announcementsViewModel: AnnouncementsViewModel = try! ViewModelResolver.container.resolve()
 	private var currentEventsViewModel: CurrentEventsViewModel = try! ViewModelResolver.container.resolve()
 	private var timeService: TimeService = try! ServiceResolver.container.resolve()
-
 	private var disposables = CompositeDisposable()
 
     override func viewDidLoad() {
@@ -27,6 +48,11 @@ class NewsTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
 
         self.refreshControl?.addTarget(self, action: #selector(NewsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
+
+        guard let refreshControl = refreshControl else { return }
+
+        let refreshControlVisibilityDelegate = RefreshControlDataStoreDelegate(refreshControl: refreshControl)
+        DataStoreRefreshController.shared.add(refreshControlVisibilityDelegate)
     }
 
     override func viewDidLayoutSubviews() {
@@ -40,27 +66,7 @@ class NewsTableViewController: UITableViewController {
 	// TODO: Pull into super class for all refreshable ViewControllers
     /// Initiates sync with API via refreshControl
     func refresh(_ sender: AnyObject) {
-		guard let refreshControl = self.refreshControl else {
-			return
-		}
-
-		let contextManager = try! ContextResolver.container.resolve() as ContextManager
-		disposables += contextManager.syncWithApi?.apply(UserSettings.LastSyncDate.currentValue())
-			.observe(on: QueueScheduler.concurrent).start({ result in
-			if result.isCompleted {
-				print("Sync completed")
-				DispatchQueue.main.async {
-					refreshControl.endRefreshing()
-				}
-			} else if let value = result.value {
-				print("Sync completed by \(value.fractionCompleted)")
-			} else {
-				print("Error during sync: \(String(describing: result.error))")
-				DispatchQueue.main.async {
-					refreshControl.endRefreshing()
-				}
-			}
-		})
+		DataStoreRefreshController.shared.refreshStore()
     }
 
     func notifyAnnouncements(_ announcements: [Announcement]) {
@@ -176,11 +182,10 @@ class NewsTableViewController: UITableViewController {
 
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
+
 		if let tabBarItem = self.navigationController?.tabBarItem {
 			tabBarItem.badgeValue = nil
 		}
-
-		disposables.dispose()
 	}
 
     // MARK: - Table view data source
