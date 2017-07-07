@@ -66,12 +66,20 @@ class DealerViewController: UIViewController {
 
         let newlineChars = CharacterSet.newlines
 
-		// TODO: Implement image caching
-        /*if let  artistImageId = dealer.ArtistImageId {
-            artistImage.image = ImageManager.sharedInstance.retrieveFromCache(artistImageId, imagePlaceholder: UIImage(named: "defaultAvatarBig"))
-        } else {*/
-            artistImageView.image = UIImage(named: "defaultAvatarBig")!
-        //}
+		artistImageView.image = UIImage(named: "defaultAvatarBig")!
+		if let artistImage = dealer?.ArtistImage {
+			disposables += imageService.retrieve(for: artistImage).startWithResult({ [weak self] result in
+				guard let strongSelf = self else { return }
+				switch result {
+				case let .success(value):
+					DispatchQueue.main.async {
+						strongSelf.artistImageView.image = value
+					}
+				case .failure:
+					break
+				}
+			})
+		}
 
 		if let _ = dealer?.DisplayName, !dealer!.DisplayName.isEmpty {
 			displayNameLabel.text = dealer?.DisplayName
@@ -93,31 +101,29 @@ class DealerViewController: UIViewController {
         }
         aboutArtistLabel.sizeToFit()
 
-		// TODO: Implement image caching
-        /*if let artPreviewImageId = self.dealer.ArtPreviewImageId, let artPreviewImage = ImageManager.sharedInstance.retrieveFromCache(artPreviewImageId) {
-            self.artPreviewImage.image = artPreviewImage
-            self.artPreviewImage.sizeToFit()
-            
-            let artPreviewCaption = self.dealer.ArtPreviewCaption!.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init)
-            let finalStringArtPreviewCaption = artPreviewCaption.joined(separator: "\n");
-            if (finalStringArtPreviewCaption == "") {
-                self.artPreviewCaption.text = ""
-            }
-            else {
-                self.artPreviewCaption.text = finalStringArtPreviewCaption;
-            }
-            self.artPreviewCaption.sizeToFit();
-        } else {*/
-            // if no image has been provided, hide the image section along with the caption
-            if(self.artPreviewImage != nil) {
-                artPreviewImage.image = nil
-            }
-            for subview in artPreviewImageView.subviews {
-                subview.removeFromSuperview()
-            }
-            let heightConstraint = NSLayoutConstraint(item: artPreviewImageView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
-            artPreviewImageView.addConstraint(heightConstraint)
-        //}
+		let heightConstraint = NSLayoutConstraint(item: artPreviewImageView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
+		artPreviewImageView.addConstraint(heightConstraint)
+
+		if let artPreviewImage = dealer?.ArtPreviewImage {
+			disposables += imageService.retrieve(for: artPreviewImage).startWithResult({ [weak self] result in
+				guard let strongSelf = self else { return }
+				switch result {
+				case let .success(value):
+					DispatchQueue.main.async {
+						heightConstraint.isActive = false
+						strongSelf.artPreviewImage.image = value
+						strongSelf.artPreviewImageView.sizeToFit()
+
+						if let artPreviewCaption = strongSelf.dealer?.ArtPreviewCaption {
+							strongSelf.artPreviewCaption.text = artPreviewCaption.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init).joined(separator: "\n")
+						}
+						strongSelf.artPreviewCaption.sizeToFit()
+					}
+				case .failure:
+					break
+				}
+			})
+		}
 
         let aboutArtText = dealer?.AboutTheArtText.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init).joined(separator: "\n")
         if let aboutArtText = aboutArtText, !aboutArtText.isEmpty {
@@ -136,10 +142,11 @@ class DealerViewController: UIViewController {
 
         if let mapEntry = dealer?.MapEntry, let map = mapEntry.Map, let mapImage = map.Image {
 
-			disposables += imageService.retrieve(for: mapImage).startWithResult({ result in
+			disposables += imageService.retrieve(for: mapImage).startWithResult({ [weak self] result in
+				guard let strongSelf = self else { return }
 				switch result {
 				case let .success(value):
-					let ratio = self.dealersDenMapImageView.bounds.width / self.dealersDenMapImageView.bounds.height
+					let ratio = strongSelf.dealersDenMapImageView.bounds.width / strongSelf.dealersDenMapImageView.bounds.height
 
 					let segmentHeight = mapEntry.CGTapRadius * DealerViewController.MAP_SEGMENT_ZOOM
 					let segmentWidth = segmentHeight * ratio
@@ -166,7 +173,7 @@ class DealerViewController: UIViewController {
 						context?.strokeEllipse(in: highlightRect)
 
 						// Drawing complete, retrieve the finished image and cleanup
-						self.dealersDenMapImageView.image = UIGraphicsGetImageFromCurrentImageContext()
+						strongSelf.dealersDenMapImageView.image = UIGraphicsGetImageFromCurrentImageContext()
 						UIGraphicsEndImageContext()
 					}
 				case .failure:
