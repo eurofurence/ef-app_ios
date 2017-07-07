@@ -12,7 +12,6 @@ target 'Eurofurence' do
 	pod 'Eureka', :git => 'https://github.com/xmartlabs/Eureka.git'
 	pod 'EVReflection'
 	pod 'EVReflection/Alamofire'
-	pod 'SlideMenuControllerSwift', '~> 3.0'
 	pod 'SwiftLint'
 	pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift'
 	pod 'ReactiveSwift', '~> 1.1'

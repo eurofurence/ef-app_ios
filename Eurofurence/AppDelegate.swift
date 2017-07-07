@@ -8,7 +8,6 @@
 import UIKit
 import ReactiveSwift
 import EVReflection
-import SlideMenuControllerSwift
 import Firebase
 
 @UIApplicationMain
