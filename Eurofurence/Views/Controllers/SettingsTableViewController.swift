@@ -130,7 +130,7 @@ class SettingsTableViewController: FormViewController {
 					// TODO: Provide feedback about background operations
 					// TODO: Segue to start screen, asking the user to confirm inital sync
 					let confirmationAlert = UIAlertController(title: "Clear Storage and Cache", message: "All offline data will be deleted and must be downloaded again afterwards, before the app can be used again!", preferredStyle: UIAlertControllerStyle.alert)
-					confirmationAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_: UIAlertAction!) in
+					confirmationAlert.addAction(UIAlertAction(title: "Clear All", style: .destructive, handler: { (_: UIAlertAction!) in
 						self.contextManager.clearAll()
 					}))
 					confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -144,7 +144,7 @@ class SettingsTableViewController: FormViewController {
 				}.onCellSelection { _ in
 					// TODO: Provide feedback about background operations
 					let confirmationAlert = UIAlertController(title: "Clear Image Cache", message: "All cached images will be deleted and must be downloaded again!", preferredStyle: UIAlertControllerStyle.alert)
-					confirmationAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_: UIAlertAction!) in
+					confirmationAlert.addAction(UIAlertAction(title: "Clear Cache", style: .destructive, handler: { (_: UIAlertAction!) in
 						self.imageService.clearCache()
 					}))
 					confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
