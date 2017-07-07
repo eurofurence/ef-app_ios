@@ -22,16 +22,16 @@ class ViewModelResolver {
 	private init() {
 		_container.collaborate(with: ContextResolver.container)
 		_container.register(.singleton) {
-			try AnnouncementsViewModel(dataContext: ContextResolver.container.resolve())
+			AnnouncementsViewModel(dataContext: $0)
 		}
 		_container.register(.singleton) {
-			try CurrentEventsViewModel(dataContext: ContextResolver.container.resolve())
+			CurrentEventsViewModel(dataContext: $0)
 		}
 		_container.register(.singleton) {
-			try EventsViewModel(dataContext: ContextResolver.container.resolve())
+			EventsViewModel(dataContext: $0)
 		}
 		_container.register(.singleton) {
-			try MapViewModel(dataContext: ContextResolver.container.resolve())
+			MapViewModel(dataContext: $0)
 		}
 	}
 }
