@@ -49,11 +49,10 @@ class SettingsTableViewController: FormViewController {
 
                     if let value = value {
                         minutes = Int(value/60)
-                        if value <= 0 {
-                            return "Never"
-                        }
-                    }
-                    if minutes == 1 {
+					}
+					if minutes <= 0 {
+						return "Never"
+					} else if minutes == 1 {
                         return "Every 1 Minute"
                     } else {
                         return "Every " + String(minutes) + " Minutes"
