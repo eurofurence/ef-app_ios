@@ -58,6 +58,11 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+		if !disposables.isDisposed {
+			disposables.dispose()
+		}
+		disposables = CompositeDisposable()
+
 		disposables += viewModel.BrowsableMaps.signal.observeResult({[unowned self] _ in
 			DispatchQueue.main.async {
 				self.reloadData()
@@ -101,7 +106,6 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 
 		mapEntry = nil
 		disposables.dispose()
-		disposables = CompositeDisposable()
 	}
 
 	private func getMapEntryTargetRect() -> CGRect? {
@@ -201,10 +205,21 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 		return mapView
 	}
 
+	func show(mapEntry: MapEntry, animated: Bool = true) {
+		guard let map = mapEntry.Map, map.IsBrowseable else {
+			print("MapEntry without associated map or non-browsable map!")
+			return
+		}
+
+		self.mapEntry = mapEntry
+		show(map: map, animated: animated)
+	}
+
     /// Switches the view to map. Will do reload map if
     /// given map is already being displayed.
     /// - parameters:
-    ///   - map: map to be displayed
+    ///		- map: map to be displayed
+	///		- animated: should zooming and panning the new map to fit be animated?
 	func show(map: Map?, animated: Bool = false) {
         mapContainerView.subviews.forEach({ $0.removeFromSuperview() })
 		mapView = createMapView(for: MapViewController.imagePlaceholder)
@@ -217,6 +232,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 		}
 
 		guard let map = map, let mapImage = map.Image else {
+			print("No map or map without image! Resorting to default placeholder…")
 			return
 		}
 
@@ -243,6 +259,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 
     @IBAction func mapSwitchChanged(_ segmentedControl: UISegmentedControl) {
 		let maps = viewModel.BrowsableMaps.value
+		mapEntry = nil
         if segmentedControl.selectedSegmentIndex == segmentedControl.numberOfSegments - 1 {
             present(RoutingAppChooser.sharedInstance.getAlertForAddress("Estrel Hotel Berlin", house: "225", street: "Sonnenallee", zip: "12057", city: "Berlin", country: "Germany", lat: 52.473336, lon: 13.458729), animated: true, completion:nil)
 			if let map = map, let currentMapIndex = maps.index(of: map) {
@@ -254,7 +271,6 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 			}
         } else if segmentedControl.selectedSegmentIndex <= maps.count {
 			show(map: maps[segmentedControl.selectedSegmentIndex])
-            mapEntry = nil
             currentMapEntryRadiusMultiplier = 1.0
             navigationItem.leftBarButtonItems = [burgerMenuItem]
         }
@@ -280,32 +296,83 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 			}
 		}
 
-		// TODO: Reimplement with LinkFragment types
-		/*if let nearestMapEntry = nearestMapEntry {
-			switch nearestMapEntry.MarkerType {
-			case "Dealer":
-				if let dealer = Dealer.getById(nearestMapEntry.TargetId) {
-					self.performSegue(withIdentifier: "MapToDealerDetailViewSegue", sender: dealer)
-				}
-				break
-			case "EventConferenceRoom":
-				if let mapEntry = MapEntry.getByTargetId(nearestMapEntry.Id) {
-					currentMapEntry = mapEntry
-					currentMapEntryRadiusMultiplier = 30.0
-					viewDidLayoutSubviews()
-				}
-				break
-			case "MapEntry":
-				if let mapEntry = MapEntry.getById(nearestMapEntry.TargetId) {
-					currentMapEntry = mapEntry
-					currentMapEntryRadiusMultiplier = 30.0
-					viewDidLayoutSubviews()
-				}
-			default:
-				print("Unsupported MarkerType", nearestMapEntry.MarkerType)
+		if let nearestMapEntry = nearestMapEntry, nearestMapEntry.Links.count > 0 {
+			if let link = nearestMapEntry.Links.first, nearestMapEntry.Links.count == 1 {
+				performLinkFragmentAction(for: link)
+			} else {
+				showMapEntryActionSheet(for: nearestMapEntry.Links)
 			}
-		}*/
+		}
     }
+
+	func performLinkFragmentAction(for linkFragment: LinkFragment) {
+		switch linkFragment.FragmentType {
+		case .DealerDetail:
+			if let dealer: Dealer = linkFragment.getTarget() {
+				self.performSegue(withIdentifier: "MapToDealerDetailViewSegue", sender: dealer)
+			}
+		case .MapExternal:
+			break
+		case .MapInternal:
+			if let linkMapEntry: MapEntry = linkFragment.getTarget() {
+				currentMapEntryRadiusMultiplier = 10.0
+				self.show(mapEntry: linkMapEntry)
+			}
+		case .WebExternal:
+			if let url: URL = linkFragment.getTarget() {
+				UIApplication.shared.openURL(url)
+			}
+		}
+	}
+
+	func showMapEntryActionSheet(for mapEntryLinks: [LinkFragment]) {
+		guard mapEntryLinks.count > 0 else { return }
+
+		let optionMenu = UIAlertController(title: nil, message: "Select a map entry", preferredStyle: .actionSheet)
+
+		for link in mapEntryLinks {
+			// TODO: Prepend FontAwesome icon depending on LinkFragment.Type
+			var actionTitle = link.Name
+			switch link.FragmentType {
+			case .DealerDetail:
+				if let _: Dealer = link.getTarget() {
+					actionTitle = "Dealer: \(actionTitle)"
+				} else {
+					continue
+				}
+			case .MapExternal:
+				// TODO: How can the target string be parsed to a location?
+				continue
+			case .MapInternal:
+				if let _: MapEntry = link.getTarget() {
+					actionTitle = "Map: \(actionTitle)"
+				} else {
+					continue
+				}
+			case .WebExternal:
+				if let _: URL = link.getTarget() {
+					actionTitle = "Web: \(actionTitle)"
+				} else {
+					continue
+				}
+			}
+
+			let linkAction = UIAlertAction(title: actionTitle, style: .default, handler: {
+				(_: UIAlertAction!) -> Void in
+				DispatchQueue.main.async {
+					self.performLinkFragmentAction(for: link)
+				}
+			})
+			optionMenu.addAction(linkAction)
+		}
+
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+			(_: UIAlertAction!) -> Void in
+		})
+		optionMenu.addAction(cancelAction)
+
+		self.present(optionMenu, animated: true, completion: nil)
+	}
 
 	func viewForZooming(in scrollView: UIScrollView) -> UIView? {
 		return scrollView.subviews.first
@@ -322,6 +389,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+		disposables.dispose()
     }
 
     /*
