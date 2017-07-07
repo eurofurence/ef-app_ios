@@ -50,13 +50,6 @@ class DealerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    override func willMove(toParentViewController parent: UIViewController?) {
-        super.willMove(toParentViewController: parent)
-        if parent == nil {
-            self.tabBarController?.tabBar.isHidden = false
-        }
-    }
-
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 
@@ -71,7 +64,6 @@ class DealerViewController: UIViewController {
 		}
 		disposables = CompositeDisposable()
 
-        tabBarController?.tabBar.isHidden = true
         let newlineChars = CharacterSet.newlines
 
 		// TODO: Implement image caching

@@ -39,19 +39,10 @@ class EventViewController: UIViewController {
         eventLocationIconImageView!.isUserInteractionEnabled = true
     }
 
-    override func willMove(toParentViewController parent: UIViewController?) {
-        super.willMove(toParentViewController: parent)
-        if parent == nil {
-            self.tabBarController?.tabBar.isHidden = false
-        }
-    }
-
     override func viewWillAppear(_ animated: Bool) {
 		guard let event = event else {
 			return
 		}
-
-        self.tabBarController?.tabBar.isHidden = true
 
         if let _ = event.ConferenceRoom {
             eventLocationLabel.textColor = eventLocationLabel.tintColor
@@ -128,7 +119,6 @@ class EventViewController: UIViewController {
             if let destinationVC = segue.destination as? MapViewController, let mapEntry = sender as? MapEntry {
                 destinationVC.mapEntry = mapEntry
                 destinationVC.currentMapEntryRadiusMultiplier = 30.0
-                self.tabBarController?.tabBar.isHidden = false
             }
         }
     }

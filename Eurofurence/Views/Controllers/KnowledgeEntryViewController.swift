@@ -43,15 +43,7 @@ class KnowledgeEntryViewController: UIViewController {
         return true
     }
 
-    override func willMove(toParentViewController parent: UIViewController?) {
-        super.willMove(toParentViewController: parent)
-        if parent == nil {
-            self.tabBarController?.tabBar.isHidden = false
-        }
-    }
-
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = true
         super.viewWillAppear(animated)
 
 		navigationItem.title = knowledgeEntry?.KnowledgeGroup?.Name
@@ -168,13 +160,11 @@ class KnowledgeEntryViewController: UIViewController {
 		case "KnowledgeEntryToDealerSegue":
 			if let destinationVC = segue.destination as? DealerViewController, let dealer = sender as? Dealer {
 				destinationVC.dealer = dealer
-				self.tabBarController?.tabBar.isHidden = false
 			}
 		case "KnowledgeEntryToMapSegue":
 			if let destinationVC = segue.destination as? MapViewController, let mapEntry = sender as? MapEntry {
 				destinationVC.mapEntry = mapEntry
 				destinationVC.currentMapEntryRadiusMultiplier = 10.0
-				self.tabBarController?.tabBar.isHidden = false
 			}
 		default:
 			break

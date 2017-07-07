@@ -29,15 +29,7 @@ class NewsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    override func willMove(toParentViewController parent: UIViewController?) {
-        super.willMove(toParentViewController: parent)
-        if parent == nil {
-            tabBarController?.tabBar.isHidden = false
-        }
-    }
-
     override func viewWillAppear(_ animated: Bool) {
-        tabBarController?.tabBar.isHidden = true
         titleLabel.text = news?.Title
         areaLabel.text = news?.Area
         authorLabel.text = news?.Author
