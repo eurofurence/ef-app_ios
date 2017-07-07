@@ -21,7 +21,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
     var singleTap: UITapGestureRecognizer!
 	weak var map: Map?
     weak var mapEntry: MapEntry?
-	weak var mapView: UIImageView?
+	var mapView: UIImageView?
     var currentMapEntryRadiusMultiplier = CGFloat(1.0)
 	var disposables = CompositeDisposable()
 
@@ -39,12 +39,12 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 
         // add zoom on double tap
         doubleTap = UITapGestureRecognizer(target: self, action: #selector(MapViewController.zoom(_:)))
-        doubleTap!.numberOfTapsRequired = 2
-        mapContainerView!.addGestureRecognizer(doubleTap!)
+        doubleTap.numberOfTapsRequired = 2
+        mapContainerView.addGestureRecognizer(doubleTap!)
 
         // add map entry on single tap
         singleTap = UITapGestureRecognizer(target: self, action: #selector(MapViewController.checkMapEntries(_:)))
-        mapContainerView!.addGestureRecognizer(singleTap!)
+        mapContainerView.addGestureRecognizer(singleTap!)
 
         NotificationCenter.default.addObserver(self, selector: #selector(MapViewController.notificationRefresh(_:)), name:NSNotification.Name(rawValue: "reloadData"), object: nil)
         mapSwitchControl.removeSegment(at: 0, animated: false)
@@ -65,7 +65,36 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 		})
 
         reloadData()
-    }
+	}
+
+	func reloadData() {
+		let maps = viewModel.BrowsableMaps.value
+
+		//mapSwitchControl.isHidden = false
+		mapSwitchControl.removeAllSegments()
+		mapSwitchControl.insertSegment(withTitle: "Area", at: 0, animated: false)
+
+		for map in maps {
+			mapSwitchControl.insertSegment(withTitle: map.Description, at: mapSwitchControl.numberOfSegments - 1, animated: false)
+		}
+
+		var animated = false
+		if let mapEntry = mapEntry, let map = mapEntry.Map {
+			self.map = map
+			animated = true
+			navigationItem.leftBarButtonItem = nil
+			mapSwitchControl.isHidden = true
+		} else if map == nil && maps.count > 0 {
+			map = maps[0]
+		}
+
+		if let map = map, let selectedIndex = maps.index(of: map) {
+			mapSwitchControl.selectedSegmentIndex = selectedIndex
+			show(map: map, animated: animated)
+		} else {
+			show(map: nil)
+		}
+	}
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -101,14 +130,13 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 		)
 	}
 
-	func adjustZoom(_ animated: Bool = false) {
-		guard let image = mapView?.image else {
+	func adjustZoom(animated: Bool = false, doPanAndZoom: Bool = true) {
+		guard let mapImage = mapView?.image else {
 			return
 		}
-
 		var zoomFactor: CGFloat!
 
-		let imageRect = CGRect(origin: CGPoint.zero, size: image.size)
+		let imageRect = CGRect(origin: CGPoint.zero, size: mapImage.size)
 		zoomFactor = CGFloat(min(1.0, computeZoomFactor(imageRect, container: mapContainerView.bounds)))
 		mapContainerView.minimumZoomScale = zoomFactor * MapViewController.MIN_ZOOM_SCALE_FACTOR
 
@@ -122,16 +150,20 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 				height: mapContainerView.bounds.height
 			)
 		} else {
-			mapContainerView.maximumZoomScale = zoomFactor * MapViewController.MAX_ZOOM_SCALE_FACTOR
 			zoomedTargetRect = CGRect(
-				x: image.size.width * zoomFactor / 2 - mapContainerView.bounds.width / 2,
-				y: image.size.height * zoomFactor / 2 - mapContainerView.bounds.height / 2,
+				x: (imageRect.width * zoomFactor - mapContainerView.bounds.width) / 2.0,
+				y: (imageRect.height * zoomFactor - mapContainerView.bounds.height) / 2.0,
 				width: mapContainerView.bounds.width,
 				height: mapContainerView.bounds.height
 			)
 		}
-		mapContainerView.setZoomScale(zoomFactor, animated: animated)
-		mapContainerView.scrollRectToVisible(zoomedTargetRect, animated: animated)
+
+		mapContainerView.maximumZoomScale = zoomFactor * MapViewController.MAX_ZOOM_SCALE_FACTOR
+
+		if doPanAndZoom {
+			mapContainerView.setZoomScale(zoomFactor, animated: animated)
+			mapContainerView.scrollRectToVisible(zoomedTargetRect, animated: animated)
+		}
 	}
 
 	func computeZoomFactor(_ target: CGRect, container: CGRect) -> CGFloat {
@@ -148,30 +180,6 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 		}
 	}
 
-	func reloadData() {
-		let maps = viewModel.BrowsableMaps.value
-
-		mapSwitchControl.removeAllSegments()
-		mapSwitchControl.insertSegment(withTitle: "Area", at: 0, animated: false)
-
-		for map in maps {
-			mapSwitchControl.insertSegment(withTitle: map.Description, at: mapSwitchControl.numberOfSegments - 1, animated: false)
-		}
-
-		if let mapEntry = mapEntry, let map = mapEntry.Map {
-			self.map = map
-		} else if map == nil && maps.count > 0 {
-			map = maps[0]
-		}
-
-		if let map = map, let selectedIndex = maps.index(of: map) {
-			mapSwitchControl.selectedSegmentIndex = selectedIndex
-			show(map: map)
-		} else {
-			show(map: nil)
-		}
-	}
-
     func notificationRefresh(_ notification: Notification) {
         DispatchQueue.main.async {
             self.reloadData()
@@ -181,20 +189,26 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-		adjustZoom(true)
+		adjustZoom(doPanAndZoom: false)
     }
+
+	private func createMapView(for image: UIImage?) -> UIImageView {
+		let mapView = UIImageView(image: image)
+		mapView.contentMode = UIViewContentMode.scaleAspectFit
+		mapView.layer.cornerRadius = 11.0
+		mapView.clipsToBounds = false
+		mapView.backgroundColor = UIColor.white
+		return mapView
+	}
 
     /// Switches the view to map. Will do reload map if
     /// given map is already being displayed.
     /// - parameters:
     ///   - map: map to be displayed
-    func show(map: Map?) {
+	func show(map: Map?, animated: Bool = false) {
         mapContainerView.subviews.forEach({ $0.removeFromSuperview() })
-		let mapView = UIImageView(image: MapViewController.imagePlaceholder)
-		mapView.contentMode = UIViewContentMode.scaleAspectFit
-		mapView.layer.cornerRadius = 11.0
-		mapView.clipsToBounds = false
-		mapView.backgroundColor = UIColor.white
+		mapView = createMapView(for: MapViewController.imagePlaceholder)
+		guard let mapView = mapView else { return }
 		mapContainerView.contentSize = mapView.bounds.size
 		mapContainerView.addSubview(mapView)
 
@@ -211,11 +225,13 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 			switch result {
 			case let .success(value):
 				DispatchQueue.main.async {
-					mapView.sizeThatFits(value.size)
-					mapView.image = value
+					self.mapContainerView.subviews.forEach({ $0.removeFromSuperview() })
+					self.mapView = self.createMapView(for: value)
+					guard let mapView = self.mapView else { return }
 					self.mapContainerView.contentSize = mapView.bounds.size
+					self.mapContainerView.addSubview(mapView)
 					self.map = map
-					self.adjustZoom(true)
+					self.adjustZoom(animated: animated)
 				}
 				break
 			case .failure:
@@ -290,6 +306,10 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 			}
 		}*/
     }
+
+	func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+		return scrollView.subviews.first
+	}
 
     func zoom(_ tapGesture: UITapGestureRecognizer) {
         if (mapContainerView.zoomScale < mapContainerView.maximumZoomScale) {

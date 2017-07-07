@@ -205,7 +205,6 @@ class DealerViewController: UIViewController {
             if let destinationVC = segue.destination as? MapViewController, let mapEntry = sender as? MapEntry {
                 destinationVC.mapEntry = mapEntry
                 destinationVC.currentMapEntryRadiusMultiplier = 10.0
-                self.tabBarController?.tabBar.isHidden = false
             }
         }
     }
