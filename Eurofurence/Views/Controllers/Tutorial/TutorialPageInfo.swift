@@ -14,23 +14,34 @@ struct TutorialPageInfo {
     var title: String?
     var description: String?
     private var primaryAction: TutorialPageAction?
+    private var secondaryAction: TutorialPageAction?
 
     init(image: UIImage?,
          title: String?,
          description: String?,
-         primaryAction: TutorialPageAction?) {
+         primaryAction: TutorialPageAction? = nil,
+         secondaryAction: TutorialPageAction? = nil) {
         self.image = image
         self.title = title
         self.description = description
         self.primaryAction = primaryAction
+        self.secondaryAction = secondaryAction
     }
 
     var primaryActionDescription: String? {
         return primaryAction?.actionDescription
     }
 
+    var secondaryActionDescription: String? {
+        return secondaryAction?.actionDescription
+    }
+
     func runPrimaryAction() {
         primaryAction?.runAction()
+    }
+
+    func runSecondaryAction() {
+        secondaryAction?.runAction()
     }
 
 }

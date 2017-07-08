@@ -61,8 +61,8 @@
                                     <constraint firstItem="OnK-sr-Cwd" firstAttribute="top" secondItem="gTB-GC-mil" secondAttribute="top" id="wnF-ly-afG"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="898-Zd-9w2">
-                                <rect key="frame" x="20" y="671" width="374" height="45"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="898-Zd-9w2">
+                                <rect key="frame" x="20" y="619" width="374" height="97"/>
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSI-zC-nJr" customClass="RoundedCornerButton" customModule="Eurofurence" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="45"/>
@@ -81,6 +81,26 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="performPrimaryAction:" destination="Iys-fY-Grz" eventType="touchUpInside" id="9PS-UB-PcV"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8g-TT-6Mo" customClass="RoundedCornerButton" customModule="Eurofurence" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="52" width="374" height="45"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="Fsd-hs-Wpk"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <state key="normal" title="Secondary Action">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="7"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="performPrimaryAction:" destination="Iys-fY-Grz" eventType="touchUpInside" id="2Mt-RU-kTf"/>
+                                            <action selector="performSecondaryAction:" destination="Iys-fY-Grz" eventType="touchUpInside" id="rOt-U3-E2S"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -102,6 +122,7 @@
                     </view>
                     <connections>
                         <outlet property="primaryActionButton" destination="qSI-zC-nJr" id="1EX-V1-yO6"/>
+                        <outlet property="secondaryActionButton" destination="A8g-TT-6Mo" id="kJt-ol-dpb"/>
                         <outlet property="tutorialPageDescriptionLabel" destination="my2-22-Ed0" id="N7N-ZQ-FBS"/>
                         <outlet property="tutorialPageImageView" destination="OnK-sr-Cwd" id="I9S-f9-QcL"/>
                         <outlet property="tutorialPageTitleLabel" destination="smY-TB-Co4" id="kcI-lQ-FaQ"/>

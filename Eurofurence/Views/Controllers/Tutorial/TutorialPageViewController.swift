@@ -16,11 +16,16 @@ class TutorialPageViewController: UIViewController {
     @IBOutlet weak var tutorialPageTitleLabel: UILabel!
     @IBOutlet weak var tutorialPageDescriptionLabel: UILabel!
     @IBOutlet weak var primaryActionButton: UIButton!
+    @IBOutlet weak var secondaryActionButton: RoundedCornerButton!
 
     // MARK: IBActions
 
     @IBAction func performPrimaryAction(_ sender: Any) {
         pageInfo?.runPrimaryAction()
+    }
+
+    @IBAction func performSecondaryAction(_ sender: Any) {
+        pageInfo?.runSecondaryAction()
     }
 
     // MARK: Properties
@@ -36,6 +41,13 @@ class TutorialPageViewController: UIViewController {
                 primaryActionButton.titleLabel?.text = primaryActionDescription
             } else {
                 primaryActionButton.isHidden = true
+            }
+
+            if let secondaryActionDescription = pageInfo?.secondaryActionDescription {
+                secondaryActionButton.isHidden = false
+                secondaryActionButton.titleLabel?.text = secondaryActionDescription
+            } else {
+                secondaryActionButton.isHidden = true
             }
         }
     }
