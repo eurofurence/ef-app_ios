@@ -40,5 +40,12 @@ class UserDefaultsTutorialStateProviderTests: XCTestCase {
         defaults.set(false, forKey: UserDefaultsTutorialStateProvider.FinishedTutorialKey)
         XCTAssertFalse(launchStateProvider.userHasCompletedTutorial)
     }
+
+    func testTellingProviderToMakeTutorialAsCompletedShouldSetAppropriateDefault() {
+        defaults.set(false, forKey: UserDefaultsTutorialStateProvider.FinishedTutorialKey)
+        launchStateProvider.markTutorialAsComplete()
+
+        XCTAssertTrue(defaults.bool(forKey: UserDefaultsTutorialStateProvider.FinishedTutorialKey))
+    }
     
 }

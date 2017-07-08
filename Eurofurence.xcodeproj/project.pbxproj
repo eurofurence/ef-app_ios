@@ -42,6 +42,8 @@
 		78567B471F10D1C400EBA31D /* DataStoreLoadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78567B461F10D1C400EBA31D /* DataStoreLoadController.swift */; };
 		78C86D4C1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D4B1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift */; };
 		78C86D4E1F119B68003A20E6 /* StoryboardSplashScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D4D1F119B68003A20E6 /* StoryboardSplashScreenRouter.swift */; };
+		78C86D501F119F2A003A20E6 /* TutorialBlockActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D4F1F119F2A003A20E6 /* TutorialBlockActionTests.swift */; };
+		78C86D521F11A065003A20E6 /* TutorialBlockAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D511F11A065003A20E6 /* TutorialBlockAction.swift */; };
 		78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */; };
 		78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */; };
 		78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */; };
@@ -170,6 +172,8 @@
 		78567B461F10D1C400EBA31D /* DataStoreLoadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreLoadController.swift; sourceTree = "<group>"; };
 		78C86D4B1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardSplashScreenRouterTests.swift; sourceTree = "<group>"; };
 		78C86D4D1F119B68003A20E6 /* StoryboardSplashScreenRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoryboardSplashScreenRouter.swift; path = Routers/Storyboard/StoryboardSplashScreenRouter.swift; sourceTree = "<group>"; };
+		78C86D4F1F119F2A003A20E6 /* TutorialBlockActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialBlockActionTests.swift; sourceTree = "<group>"; };
+		78C86D511F11A065003A20E6 /* TutorialBlockAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialBlockAction.swift; path = Views/Controllers/Tutorial/TutorialBlockAction.swift; sourceTree = "<group>"; };
 		78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInfoPropertyListShould.swift; sourceTree = "<group>"; };
 		78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarServiceTests.swift; sourceTree = "<group>"; };
 		78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -338,6 +342,7 @@
 				78455B5A1F117E27005BE2D7 /* TutorialPageViewController.swift */,
 				78455B5E1F118578005BE2D7 /* TutorialPageInfo.swift */,
 				78455B631F118D11005BE2D7 /* TutorialAction.swift */,
+				78C86D511F11A065003A20E6 /* TutorialBlockAction.swift */,
 			);
 			name = Tutorial;
 			path = ../..;
@@ -450,6 +455,7 @@
 				78455B511F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift */,
 				78455B5C1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift */,
 				78C86D4B1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift */,
+				78C86D4F1F119F2A003A20E6 /* TutorialBlockActionTests.swift */,
 			);
 			path = EurofurenceTests;
 			sourceTree = "<group>";
@@ -962,6 +968,7 @@
 				78455B641F118D11005BE2D7 /* TutorialAction.swift in Sources */,
 				D6F3DBB69290DF1E0448A3CC /* EventCell.swift in Sources */,
 				D6F3D13A59E359E69EA66D7E /* MenuTableViewCell.swift in Sources */,
+				78C86D521F11A065003A20E6 /* TutorialBlockAction.swift in Sources */,
 				D6F3D01BC5E1E9E409955664 /* NewsHeaderTableViewCell.swift in Sources */,
 				D6F3D275FF81A313B9213277 /* AnnouncementCell.swift in Sources */,
 				D6F3DAD590C051C8D0060172 /* EventViewController.swift in Sources */,
@@ -1001,6 +1008,7 @@
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
 				6EF96CCF1F0EDB2000EE6134 /* CalendarTestDoubles.swift in Sources */,
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
+				78C86D501F119F2A003A20E6 /* TutorialBlockActionTests.swift in Sources */,
 				78455B4B1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

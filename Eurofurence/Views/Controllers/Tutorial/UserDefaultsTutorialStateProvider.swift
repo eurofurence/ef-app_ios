@@ -22,4 +22,8 @@ struct UserDefaultsTutorialStateProvider: UserCompletedTutorialStateProviding {
         return userDefaults.bool(forKey: UserDefaultsTutorialStateProvider.FinishedTutorialKey)
     }
 
+    func markTutorialAsComplete() {
+        userDefaults.set(true, forKey: UserDefaultsTutorialStateProvider.FinishedTutorialKey)
+    }
+
 }

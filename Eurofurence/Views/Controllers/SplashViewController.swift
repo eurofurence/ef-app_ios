@@ -8,7 +8,9 @@
 
 import UIKit
 
-class SplashViewController: UIViewController, DataStoreLoadDelegate {
+class SplashViewController: UIViewController,
+                            DataStoreLoadDelegate,
+                            DataStoreRefreshDelegate {
 
     // MARK: IBOutlets
 
@@ -17,6 +19,7 @@ class SplashViewController: UIViewController, DataStoreLoadDelegate {
     // MARK: Properties
 
     private lazy var loadController = DataStoreLoadController.shared
+    private lazy var refreshController = DataStoreRefreshController.shared
 
     // MARK: Overrides
 
@@ -36,6 +39,7 @@ class SplashViewController: UIViewController, DataStoreLoadDelegate {
         super.viewDidAppear(true)
 
         loadController.add(self)
+        refreshController.add(self)
         loadController.loadFromStore()
     }
 
@@ -50,12 +54,25 @@ class SplashViewController: UIViewController, DataStoreLoadDelegate {
 
     }
 
-    func dataStoreRefreshDidProduceProgress(_ progress: Progress) {
+    func dataStoreLoadDidProduceProgress(_ progress: Progress) {
         loadingProgressView.progress = Float(progress.fractionCompleted)
     }
 
     func dataStoreLoadDidFinish() {
         performSegue(withIdentifier: "ShowTabBarControllerSegue", sender: self)
     }
+
+    // MARK: DataStoreRefreshDelegate
+
+    func dataStoreRefreshDidFinish() {
+        performSegue(withIdentifier: "ShowTabBarControllerSegue", sender: self)
+    }
+
+    func dataStoreRefreshDidProduceProgress(_ progress: Progress) {
+        loadingProgressView.progress = Float(progress.fractionCompleted)
+    }
+
+    func dataStoreRefreshDidBegin() { }
+    func dataStoreRefreshDidFailWithError(_ error: Error) { }
 
 }

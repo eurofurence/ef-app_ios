@@ -12,5 +12,9 @@ import Foundation
 struct StubFirstTimeLaunchStateProvider: UserCompletedTutorialStateProviding {
 
     var userHasCompletedTutorial: Bool
+
+    func markTutorialAsComplete() {
+        
+    }
     
 }

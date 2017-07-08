@@ -12,7 +12,7 @@ import ReactiveSwift
 protocol DataStoreLoadDelegate: class {
 
     func dataStoreLoadDidBegin()
-    func dataStoreRefreshDidProduceProgress(_ progress: Progress)
+    func dataStoreLoadDidProduceProgress(_ progress: Progress)
     func dataStoreLoadDidFinish()
 
 }
@@ -47,7 +47,7 @@ class DataStoreLoadController {
             .start({ event in
             switch event {
             case let .value(value):
-                self.delegates.forEach({ $0.dataStoreRefreshDidProduceProgress(value) })
+                self.delegates.forEach({ $0.dataStoreLoadDidProduceProgress(value) })
             case let .failed(error):
                 print("Failed to load data from store: \(error)")
 

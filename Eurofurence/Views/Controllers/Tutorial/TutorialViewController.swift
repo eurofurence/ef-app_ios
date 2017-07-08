@@ -10,4 +10,34 @@ import UIKit
 
 class TutorialViewController: UIPageViewController {
 
+    // MARK: Overrides
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let action = TutorialBlockAction(block: temporaryWorkaroundIntoAppUntilTutorialIsFinished)
+        let beginDownloadAction = TutorialPageAction(actionDescription: "Let's Go",
+                                                     action: action)
+        let beginDownloadItem = TutorialPageInfo(image: nil,
+                                                 title: "Hello!",
+                                                 description: "This is a work in progress, hit the button below to skip this for now.",
+                                                 primaryAction: beginDownloadAction)
+
+        let viewController = storyboard?.instantiateViewController(withIdentifier: "TutorialPageViewController") as! TutorialPageViewController
+        viewController.loadView()
+        viewController.pageInfo = beginDownloadItem
+        setViewControllers([viewController], direction: .forward, animated: false)
+    }
+
+    // MARK: Private
+
+    private func temporaryWorkaroundIntoAppUntilTutorialIsFinished() {
+        let finishedTutorialAccessor = UserDefaultsTutorialStateProvider(userDefaults: .standard)
+        finishedTutorialAccessor.markTutorialAsComplete()
+        let delegate = UIApplication.shared.delegate!
+        let window = delegate.window!!
+
+        StoryboardSplashScreenRouter(window: window).showSplashScreen()
+    }
+
 }
