@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,7 +30,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTB-GC-mil">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTB-GC-mil" userLabel="Page Data Container">
                                 <rect key="frame" x="148" y="213" width="119" height="311"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="my2-22-Ed0">
@@ -61,16 +62,39 @@
                                     <constraint firstItem="OnK-sr-Cwd" firstAttribute="top" secondItem="gTB-GC-mil" secondAttribute="top" id="wnF-ly-afG"/>
                                 </constraints>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSI-zC-nJr" customClass="RoundedCornerButton" customModule="Eurofurence" customModuleProvider="target">
+                                <rect key="frame" x="20" y="671" width="374" height="45"/>
+                                <color key="backgroundColor" red="0.014190219340000001" green="0.46771413090000002" blue="0.97947782279999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="RF5-nA-75D"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <state key="normal" title="Primary Action">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="performPrimaryAction:" destination="Iys-fY-Grz" eventType="touchUpInside" id="9PS-UB-PcV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.02872892283" green="0.38192152979999999" blue="0.33358526230000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gTB-GC-mil" firstAttribute="centerX" secondItem="JeE-14-GOc" secondAttribute="centerX" id="2Is-4w-arT"/>
                             <constraint firstItem="gTB-GC-mil" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wD8-yJ-ZSG" secondAttribute="bottom" id="8t6-Zg-Q8y"/>
+                            <constraint firstItem="qSI-zC-nJr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gTB-GC-mil" secondAttribute="bottom" constant="8" id="ObC-Pa-q1i"/>
+                            <constraint firstItem="qSI-zC-nJr" firstAttribute="trailing" secondItem="JeE-14-GOc" secondAttribute="trailingMargin" id="SNM-Um-gKl"/>
+                            <constraint firstItem="qSI-zC-nJr" firstAttribute="leading" secondItem="JeE-14-GOc" secondAttribute="leadingMargin" id="ScM-da-pVi"/>
+                            <constraint firstItem="Ztw-x3-74B" firstAttribute="top" secondItem="qSI-zC-nJr" secondAttribute="bottom" constant="20" id="VFb-ui-5na"/>
                             <constraint firstItem="gTB-GC-mil" firstAttribute="centerY" secondItem="JeE-14-GOc" secondAttribute="centerY" id="fGa-sU-Oa9"/>
-                            <constraint firstItem="Ztw-x3-74B" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gTB-GC-mil" secondAttribute="bottom" id="pUI-s1-vfu"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="primaryActionButton" destination="qSI-zC-nJr" id="1EX-V1-yO6"/>
                         <outlet property="tutorialPageDescriptionLabel" destination="my2-22-Ed0" id="N7N-ZQ-FBS"/>
                         <outlet property="tutorialPageImageView" destination="OnK-sr-Cwd" id="I9S-f9-QcL"/>
                         <outlet property="tutorialPageTitleLabel" destination="smY-TB-Co4" id="kcI-lQ-FaQ"/>

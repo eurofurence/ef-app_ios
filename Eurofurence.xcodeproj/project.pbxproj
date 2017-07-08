@@ -32,6 +32,8 @@
 		78455B5B1F117E27005BE2D7 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B5A1F117E27005BE2D7 /* TutorialPageViewController.swift */; };
 		78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B5C1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift */; };
 		78455B5F1F118578005BE2D7 /* TutorialPageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B5E1F118578005BE2D7 /* TutorialPageInfo.swift */; };
+		78455B621F118699005BE2D7 /* RoundedCornerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B611F118699005BE2D7 /* RoundedCornerButton.swift */; };
+		78455B641F118D11005BE2D7 /* TutorialAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B631F118D11005BE2D7 /* TutorialAction.swift */; };
 		78567B3D1F100BAF00EBA31D /* DataStoreRefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78567B3C1F100BAF00EBA31D /* DataStoreRefreshController.swift */; };
 		78567B3F1F1016B000EBA31D /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78567B3E1F1016B000EBA31D /* TabViewController.swift */; };
 		78567B411F10212100EBA31D /* ProgressViewRefreshDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78567B401F10212100EBA31D /* ProgressViewRefreshDelegate.swift */; };
@@ -156,6 +158,8 @@
 		78455B5A1F117E27005BE2D7 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialPageViewController.swift; path = Views/Controllers/Tutorial/TutorialPageViewController.swift; sourceTree = "<group>"; };
 		78455B5C1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewControllerTests.swift; sourceTree = "<group>"; };
 		78455B5E1F118578005BE2D7 /* TutorialPageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialPageInfo.swift; path = Views/Controllers/Tutorial/TutorialPageInfo.swift; sourceTree = "<group>"; };
+		78455B611F118699005BE2D7 /* RoundedCornerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundedCornerButton.swift; path = Controls/RoundedCornerButton.swift; sourceTree = "<group>"; };
+		78455B631F118D11005BE2D7 /* TutorialAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialAction.swift; path = Views/Controllers/Tutorial/TutorialAction.swift; sourceTree = "<group>"; };
 		78567B3C1F100BAF00EBA31D /* DataStoreRefreshController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreRefreshController.swift; sourceTree = "<group>"; };
 		78567B3E1F1016B000EBA31D /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		78567B401F10212100EBA31D /* ProgressViewRefreshDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressViewRefreshDelegate.swift; sourceTree = "<group>"; };
@@ -329,6 +333,7 @@
 				78455B531F117A35005BE2D7 /* TutorialViewController.swift */,
 				78455B5A1F117E27005BE2D7 /* TutorialPageViewController.swift */,
 				78455B5E1F118578005BE2D7 /* TutorialPageInfo.swift */,
+				78455B631F118D11005BE2D7 /* TutorialAction.swift */,
 			);
 			name = Tutorial;
 			path = ../..;
@@ -358,6 +363,14 @@
 				78455B581F117BCF005BE2D7 /* StoryboardTutorialRouter.swift */,
 			);
 			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		78455B601F118685005BE2D7 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				78455B611F118699005BE2D7 /* RoundedCornerButton.swift */,
+			);
+			name = Controls;
 			sourceTree = "<group>";
 		};
 		78F555971F10D59000BDA7D4 /* Segues */ = {
@@ -460,6 +473,7 @@
 		9ACF99591EBE32FE006FC958 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				78455B601F118685005BE2D7 /* Controls */,
 				78455B4E1F117843005BE2D7 /* Presenters */,
 				78455B431F11777D005BE2D7 /* Routers */,
 				78F555971F10D59000BDA7D4 /* Segues */,
@@ -919,6 +933,7 @@
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
 				D6F3D6ADD1B889C901EE841A /* DataStoreResult.swift in Sources */,
 				9A7FFD531EF97CD4007ABA36 /* UserSettings.swift in Sources */,
+				78455B621F118699005BE2D7 /* RoundedCornerButton.swift in Sources */,
 				D6F3D5CDFE398DB6CDBDBC77 /* AnnouncementsViewModel.swift in Sources */,
 				78455B471F11779D005BE2D7 /* SplashScreenRouter.swift in Sources */,
 				D6F3DD6B0659E1A44E01075B /* CurrentEventsViewModel.swift in Sources */,
@@ -938,6 +953,7 @@
 				78455B501F117851005BE2D7 /* BootstrappingPresenter.swift in Sources */,
 				D6F3D620BA994A6570325C66 /* DealersTableViewCell.swift in Sources */,
 				D6F3DDCB5EF23B138BD25865 /* EventHeaderCellTableViewCell.swift in Sources */,
+				78455B641F118D11005BE2D7 /* TutorialAction.swift in Sources */,
 				D6F3DBB69290DF1E0448A3CC /* EventCell.swift in Sources */,
 				D6F3D13A59E359E69EA66D7E /* MenuTableViewCell.swift in Sources */,
 				D6F3D01BC5E1E9E409955664 /* NewsHeaderTableViewCell.swift in Sources */,
