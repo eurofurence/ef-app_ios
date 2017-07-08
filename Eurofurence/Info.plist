@@ -16,8 +16,6 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>2.0</string>
-	<key>NSCalendarsUsageDescription</key>
-	<string>Eurofurence uses your calendar to add events and alerts</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -30,6 +28,8 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Eurofurence uses your calendar to add events and alerts</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>fontawesome-webfont.ttf</string>
@@ -42,6 +42,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
