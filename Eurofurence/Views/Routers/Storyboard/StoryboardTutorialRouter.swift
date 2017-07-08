@@ -19,7 +19,7 @@ struct StoryboardTutorialRouter: TutorialRouter {
     func showTutorial() {
         let storyboardBundle = Bundle(for: TutorialViewController.self)
         let storyboard = UIStoryboard(name: "Tutorial", bundle: storyboardBundle)
-        window.rootViewController = storyboard.instantiateViewController(withIdentifier: "TutorialViewController")
+        window.rootViewController = storyboard.instantiateInitialViewController()
     }
 
 }
