@@ -10,11 +10,27 @@ import UIKit
 
 class SplashViewController: UIViewController, DataStoreLoadDelegate {
 
+    // MARK: IBOutlets
+
+    @IBOutlet weak var loadingProgressView: UIProgressView!
+
     // MARK: Properties
 
     private lazy var loadController = DataStoreLoadController.shared
 
     // MARK: Overrides
+
+    override var prefersStatusBarHidden: Bool {
+        get {
+            return true
+        }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        loadingProgressView.progress = 0
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -35,7 +51,7 @@ class SplashViewController: UIViewController, DataStoreLoadDelegate {
     }
 
     func dataStoreRefreshDidProduceProgress(_ progress: Progress) {
-
+        loadingProgressView.progress = Float(progress.fractionCompleted)
     }
 
     func dataStoreLoadDidFinish() {
