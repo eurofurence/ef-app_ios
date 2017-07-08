@@ -22,31 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		PrintOptions.Active = .None
 
         DataStoreRefreshController.shared.add(ApplicationActivityIndicatorRefreshDelegate())
-
-		try! ServiceResolver.container.bootstrap()
-		let dataContext = try! ContextResolver.container.resolve() as DataContextProtocol
-
-		dataContext.loadFromStore().start(on: QueueScheduler.concurrent).start({ event in
-			switch event {
-			case let .value(value):
-				print("Loading completed by \(value.fractionCompleted)")
-			case let .failed(error):
-				print("Failed to load data from store: \(error)")
-
-				// TODO: Prompt user for required initialisation
-				// TODO: Check WiFi connection and prompt user if on mobile
-				print("Performing full reload from API")
-				DataStoreRefreshController.shared.refreshStore()
-			case .completed:
-				print("Loading completed")
-				// TODO: Check WiFi connection and prompt user if on mobile
-				if UserSettings.UpdateOnStart.currentValueOrDefault() {
-					DataStoreRefreshController.shared.refreshStore()
-				}
-			case .interrupted:
-				print("Loading interrupted")
-			}
-		})
+		DataStoreLoadController.shared.loadFromStore()
 
         window?.rootViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "MainTabBarController")
         window?.makeKeyAndVisible()
