@@ -32,23 +32,38 @@ class TutorialPageViewController: UIViewController {
 
     var pageInfo: TutorialPageInfo? {
         didSet {
-            tutorialPageImageView.image = pageInfo?.image
-            tutorialPageTitleLabel.text = pageInfo?.title
-            tutorialPageDescriptionLabel.text = pageInfo?.description
+            updatePage()
+        }
+    }
 
-            if let primaryActionDescription = pageInfo?.primaryActionDescription {
-                primaryActionButton.isHidden = false
-                primaryActionButton.titleLabel?.text = primaryActionDescription
-            } else {
-                primaryActionButton.isHidden = true
-            }
+    // MARK: Private
 
-            if let secondaryActionDescription = pageInfo?.secondaryActionDescription {
-                secondaryActionButton.isHidden = false
-                secondaryActionButton.titleLabel?.text = secondaryActionDescription
-            } else {
-                secondaryActionButton.isHidden = true
-            }
+    private func updatePage() {
+        updateStaticInformationViews()
+        updatePrimaryButton()
+        updateSecondaryButton()
+    }
+
+    private func updateStaticInformationViews() {
+        tutorialPageImageView.image = pageInfo?.image
+        tutorialPageTitleLabel.text = pageInfo?.title
+        tutorialPageDescriptionLabel.text = pageInfo?.description
+    }
+
+    private func updatePrimaryButton() {
+        update(button: primaryActionButton, title: pageInfo?.primaryActionDescription)
+    }
+
+    private func updateSecondaryButton() {
+        update(button: secondaryActionButton, title: pageInfo?.secondaryActionDescription)
+    }
+
+    private func update(button: UIButton, title: String?) {
+        if let title = title {
+            button.isHidden = false
+            button.titleLabel?.text = title
+        } else {
+            button.isHidden = true
         }
     }
 
