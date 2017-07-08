@@ -30,6 +30,8 @@
 		78455B561F117B24005BE2D7 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78455B551F117B24005BE2D7 /* Tutorial.storyboard */; };
 		78455B591F117BCF005BE2D7 /* StoryboardTutorialRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B581F117BCF005BE2D7 /* StoryboardTutorialRouter.swift */; };
 		78455B5B1F117E27005BE2D7 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B5A1F117E27005BE2D7 /* TutorialPageViewController.swift */; };
+		78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B5C1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift */; };
+		78455B5F1F118578005BE2D7 /* TutorialPageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B5E1F118578005BE2D7 /* TutorialPageInfo.swift */; };
 		78567B3D1F100BAF00EBA31D /* DataStoreRefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78567B3C1F100BAF00EBA31D /* DataStoreRefreshController.swift */; };
 		78567B3F1F1016B000EBA31D /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78567B3E1F1016B000EBA31D /* TabViewController.swift */; };
 		78567B411F10212100EBA31D /* ProgressViewRefreshDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78567B401F10212100EBA31D /* ProgressViewRefreshDelegate.swift */; };
@@ -152,6 +154,8 @@
 		78455B551F117B24005BE2D7 /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		78455B581F117BCF005BE2D7 /* StoryboardTutorialRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoryboardTutorialRouter.swift; path = Routers/Storyboard/StoryboardTutorialRouter.swift; sourceTree = "<group>"; };
 		78455B5A1F117E27005BE2D7 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialPageViewController.swift; path = Views/Controllers/Tutorial/TutorialPageViewController.swift; sourceTree = "<group>"; };
+		78455B5C1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewControllerTests.swift; sourceTree = "<group>"; };
+		78455B5E1F118578005BE2D7 /* TutorialPageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialPageInfo.swift; path = Views/Controllers/Tutorial/TutorialPageInfo.swift; sourceTree = "<group>"; };
 		78567B3C1F100BAF00EBA31D /* DataStoreRefreshController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreRefreshController.swift; sourceTree = "<group>"; };
 		78567B3E1F1016B000EBA31D /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		78567B401F10212100EBA31D /* ProgressViewRefreshDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressViewRefreshDelegate.swift; sourceTree = "<group>"; };
@@ -324,6 +328,7 @@
 				78455B3E1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift */,
 				78455B531F117A35005BE2D7 /* TutorialViewController.swift */,
 				78455B5A1F117E27005BE2D7 /* TutorialPageViewController.swift */,
+				78455B5E1F118578005BE2D7 /* TutorialPageInfo.swift */,
 			);
 			name = Tutorial;
 			path = ../..;
@@ -425,6 +430,7 @@
 				78455B391F116A7E005BE2D7 /* BootstrappingPresenterTests.swift */,
 				78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */,
 				78455B511F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift */,
+				78455B5C1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift */,
 			);
 			path = EurofurenceTests;
 			sourceTree = "<group>";
@@ -925,6 +931,7 @@
 				D6F3DB838A1BDAFC6DAC2F61 /* CountryAlpha3Converter.swift in Sources */,
 				D6F3DEDDAFE507E873CB3806 /* WikiText.swift in Sources */,
 				D6F3D523BDCDDA3A2A163E55 /* TimeLabelCell.swift in Sources */,
+				78455B5F1F118578005BE2D7 /* TutorialPageInfo.swift in Sources */,
 				78567B451F103C3800EBA31D /* RefreshControlDataStoreDelegate.swift in Sources */,
 				78455B411F117742005BE2D7 /* UserCompletedTutorialStateProviding.swift in Sources */,
 				78455B5B1F117E27005BE2D7 /* TutorialPageViewController.swift in Sources */,
@@ -965,6 +972,7 @@
 				6EF96CDB1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift in Sources */,
 				78455B521F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift in Sources */,
 				78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */,
+				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,
 				78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */,
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
 				6EF96CCF1F0EDB2000EE6134 /* CalendarTestDoubles.swift in Sources */,

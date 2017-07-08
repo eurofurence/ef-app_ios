@@ -16,4 +16,14 @@ class TutorialPageViewController: UIViewController {
     @IBOutlet weak var tutorialPageTitleLabel: UILabel!
     @IBOutlet weak var tutorialPageDescriptionLabel: UILabel!
 
+    // MARK: Properties
+
+    var pageInfo: TutorialPageInfo? {
+        didSet {
+            tutorialPageImageView.image = pageInfo?.image
+            tutorialPageTitleLabel.text = pageInfo?.title
+            tutorialPageDescriptionLabel.text = pageInfo?.description
+        }
+    }
+
 }
