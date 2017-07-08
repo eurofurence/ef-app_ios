@@ -38,6 +38,12 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
         refreshControl?.addTarget(self, action: #selector(EventTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         refreshControl?.backgroundColor = UIColor.clear
 
+        disposable += viewModel.Events.signal.observeResult({[unowned self] _ in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+
         guard let refreshControl = refreshControl else { return }
 
         let refreshControlVisibilityDelegate = RefreshControlDataStoreDelegate(refreshControl: refreshControl)
@@ -50,13 +56,6 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
 		DataStoreRefreshController.shared.refreshStore()
 	}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
-		disposable.dispose()
-		disposable = CompositeDisposable()
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         switch self.eventByType {
         case "Room":
@@ -67,24 +66,9 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
 			self.searchController.searchBar.selectedScopeButtonIndex = 0
         }
 
-		disposable += viewModel.Events.signal.observeResult({[unowned self] _ in
-			DispatchQueue.main.async {
-				self.tableView.reloadData()
-			}
-		})
-
 		// TODO: Observe viewModel.Events for changes while view is displayed
 		// TODO: Update view by days based on TimeService ticks?
-
-        tableView.reloadData()
     }
-
-	override func viewDidDisappear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-
-		disposable.dispose()
-		disposable = CompositeDisposable()
-	}
 
     // MARK: - Table view data source
 

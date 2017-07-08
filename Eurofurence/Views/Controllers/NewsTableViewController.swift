@@ -27,6 +27,39 @@ class NewsTableViewController: UITableViewController {
 
         self.refreshControl?.addTarget(self, action: #selector(NewsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
 
+        disposables += announcementsViewModel.Announcements.signal.observeValues({
+            [weak self] _ in
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+                strongSelf.tableView.reloadData()
+            }
+        })
+        disposables += currentEventsViewModel.RunningEvents.signal.observeValues({
+            [weak self] _ in
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+                strongSelf.tableView.reloadData()
+            }
+        })
+        disposables += currentEventsViewModel.UpcomingEvents.signal.observeValues({
+            [weak self] _ in
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+                strongSelf.tableView.reloadData()
+            }
+        })
+        disposables += timeService.currentTime.signal.observeValues({
+            [weak self] value in
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+                if strongSelf.timeService.offset != 0.0 {
+                    strongSelf.navigationItem.title = "News @ \(DateFormatters.hourMinute.string(from: value))"
+                } else {
+                    strongSelf.navigationItem.title = "News"
+                }
+            }
+        })
+
         guard let refreshControl = refreshControl else { return }
 
         let refreshControlVisibilityDelegate = RefreshControlDataStoreDelegate(refreshControl: refreshControl)
@@ -106,52 +139,8 @@ class NewsTableViewController: UITableViewController {
 		}
 	}
 
-    override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-
-		if !disposables.isDisposed {
-			disposables.dispose()
-		}
-		disposables = CompositeDisposable()
-	}
-
 	override func viewWillAppear(_ animated: Bool) {
-		if !disposables.isDisposed {
-			disposables.dispose()
-		}
-		disposables = CompositeDisposable()
-		disposables += announcementsViewModel.Announcements.signal.observeValues({
-			[weak self] _ in
-			guard let strongSelf = self else { return }
-			DispatchQueue.main.async {
-				strongSelf.tableView.reloadData()
-			}
-		})
-		disposables += currentEventsViewModel.RunningEvents.signal.observeValues({
-			[weak self] _ in
-			guard let strongSelf = self else { return }
-			DispatchQueue.main.async {
-				strongSelf.tableView.reloadData()
-			}
-		})
-		disposables += currentEventsViewModel.UpcomingEvents.signal.observeValues({
-			[weak self] _ in
-			guard let strongSelf = self else { return }
-			DispatchQueue.main.async {
-				strongSelf.tableView.reloadData()
-			}
-		})
-		disposables += timeService.currentTime.signal.observeValues({
-			[weak self] value in
-			guard let strongSelf = self else { return }
-			DispatchQueue.main.async {
-				if strongSelf.timeService.offset != 0.0 {
-					strongSelf.navigationItem.title = "News @ \(DateFormatters.hourMinute.string(from: value))"
-				} else {
-					strongSelf.navigationItem.title = "News"
-				}
-			}
-		})
+		super.viewWillAppear(true)
 
 		if let tabBarItem = self.navigationController?.tabBarItem {
 			tabBarItem.badgeValue = nil

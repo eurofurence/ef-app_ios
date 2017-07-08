@@ -16,11 +16,25 @@ class DealerTableViewController: UITableViewController {
 	var sortedKeys: [String] = []
 	var disposable = CompositeDisposable()
 
+    deinit {
+        disposable.dispose()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.backgroundColor =  UIColor(red: 35/255.0, green: 36/255.0, blue: 38/255.0, alpha: 1.0)
         self.refreshControl?.addTarget(self, action: #selector(DealerTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         self.tableView.sectionIndexColor = UIColor.white
+
+        disposable += dataContext.Dealers.signal
+            .observe(on: QueueScheduler.concurrent).observe({ [weak self] _ in
+                guard let strongSelf = self else { return }
+                strongSelf.orderDealersAlphabeticaly(strongSelf.dataContext.Dealers.value)
+                strongSelf.tableView.reloadData()
+            })
+
+        orderDealersAlphabeticaly(dataContext.Dealers.value)
+        tableView.reloadData()
 
         guard let refreshControl = refreshControl else { return }
 
@@ -75,29 +89,6 @@ class DealerTableViewController: UITableViewController {
 		sortedKeys = dealersByLetter.keys.sorted()
 	}
 
-	override func viewWillAppear(_ animated: Bool) {
-		if !disposable.isDisposed {
-			disposable.dispose()
-		}
-		disposable = CompositeDisposable()
-
-		disposable += dataContext.Dealers.signal
-			.observe(on: QueueScheduler.concurrent).observe({ [weak self] _ in
-				guard let strongSelf = self else { return }
-				strongSelf.orderDealersAlphabeticaly(strongSelf.dataContext.Dealers.value)
-				strongSelf.tableView.reloadData()
-		})
-
-		orderDealersAlphabeticaly(dataContext.Dealers.value)
-		tableView.reloadData()
-	}
-
-	override func viewWillDisappear(_ animated: Bool) {
-		disposable.dispose()
-
-		super.viewWillDisappear(animated)
-	}
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -145,7 +136,4 @@ class DealerTableViewController: UITableViewController {
         }
     }
 
-	deinit {
-		disposable.dispose()
-	}
 }
