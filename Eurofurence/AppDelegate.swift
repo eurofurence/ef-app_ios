@@ -18,13 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        try! ServiceResolver.container.bootstrap()
 
 		PrintOptions.Active = .None
 
         DataStoreRefreshController.shared.add(ApplicationActivityIndicatorRefreshDelegate())
-		DataStoreLoadController.shared.loadFromStore()
 
-        window?.rootViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "MainTabBarController")
+        window?.rootViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "RootNavigationController")
         window?.makeKeyAndVisible()
 
 		return true

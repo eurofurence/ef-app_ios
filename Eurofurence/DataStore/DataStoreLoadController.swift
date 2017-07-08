@@ -9,7 +9,7 @@
 import Foundation
 import ReactiveSwift
 
-protocol DataStoreLoadDelegate {
+protocol DataStoreLoadDelegate: class {
 
     func dataStoreLoadDidBegin()
     func dataStoreRefreshDidProduceProgress(_ progress: Progress)
@@ -30,6 +30,11 @@ class DataStoreLoadController {
 
     func add(_ delegate: DataStoreLoadDelegate) {
         delegates.append(delegate)
+    }
+
+    func remove(_ delegate: DataStoreLoadDelegate) {
+        guard let index = delegates.index(where: { $0 === delegate }) else { return }
+        delegates.remove(at: index)
     }
 
     func loadFromStore() {
