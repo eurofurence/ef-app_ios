@@ -24,9 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         DataStoreRefreshController.shared.add(ApplicationActivityIndicatorRefreshDelegate())
 
-        window?.rootViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "RootNavigationController")
-        window?.makeKeyAndVisible()
-
 		return true
 	}
 
