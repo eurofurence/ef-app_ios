@@ -55,8 +55,12 @@ class BootstrappingPresenter {
     init(firstTimeLaunchProviding: FirstTimeLaunchStateProviding,
          tutorialRouter: TutorialRouter,
          splashScreenRouter: SplashScreenRouter) {
-        tutorialRouter.showTutorial()
-        splashScreenRouter.showSplashScreen()
+        if firstTimeLaunchProviding.userHasOpenedAppBefore {
+            splashScreenRouter.showSplashScreen()
+        }
+        else {
+            tutorialRouter.showTutorial()
+        }
     }
 
 }
@@ -81,6 +85,26 @@ class BootstrappingPresenterTests: XCTestCase {
                                    splashScreenRouter: splashScreenRouter)
 
         XCTAssertTrue(splashScreenRouter.wasToldToShowSplashScreen)
+    }
+
+    func testWhenTheAppHasNotRunBeforeTheTheSplashScreenRouterShouldNotBeToldToShowTheSplashScree () {
+        let splashScreenRouter = CapturingSplashScreenRouter()
+        let initialAppStateProvider = StubFirstTimeLaunchStateProvider(userHasOpenedAppBefore: false)
+        _ = BootstrappingPresenter(firstTimeLaunchProviding: initialAppStateProvider,
+                                   tutorialRouter: CapturingTutorialRouter(),
+                                   splashScreenRouter: splashScreenRouter)
+
+        XCTAssertFalse(splashScreenRouter.wasToldToShowSplashScreen)
+    }
+
+    func testWhenTheAppHasRunBeforeTheTutorialRouterShouldNotBeToldToShowTheTutorial() {
+        let tutorialRouter = CapturingTutorialRouter()
+        let initialAppStateProvider = StubFirstTimeLaunchStateProvider(userHasOpenedAppBefore: true)
+        _ = BootstrappingPresenter(firstTimeLaunchProviding: initialAppStateProvider,
+                                   tutorialRouter: tutorialRouter,
+                                   splashScreenRouter: CapturingSplashScreenRouter())
+
+        XCTAssertFalse(tutorialRouter.wasToldToShowTutorial)
     }
     
 }
