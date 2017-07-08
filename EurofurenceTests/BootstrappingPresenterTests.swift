@@ -6,64 +6,8 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
+@testable import Eurofurence
 import XCTest
-
-protocol UserCompletedTutorialStateProviding {
-
-    var userHasCompletedTutorial: Bool { get }
-
-}
-
-protocol TutorialRouter {
-
-    func showTutorial()
-
-}
-
-protocol SplashScreenRouter {
-
-    func showSplashScreen()
-
-}
-
-class CapturingTutorialRouter: TutorialRouter {
-
-    private(set) var wasToldToShowTutorial = false
-    func showTutorial() {
-        wasToldToShowTutorial = true
-    }
-
-}
-
-class CapturingSplashScreenRouter: SplashScreenRouter {
-
-    private(set) var wasToldToShowSplashScreen = false
-    func showSplashScreen() {
-        wasToldToShowSplashScreen = true
-    }
-
-}
-
-struct StubFirstTimeLaunchStateProvider: UserCompletedTutorialStateProviding {
-
-    var userHasCompletedTutorial: Bool
-
-}
-
-class BootstrappingPresenter {
-
-    init(firstTimeLaunchProviding: UserCompletedTutorialStateProviding,
-         tutorialRouter: TutorialRouter,
-         splashScreenRouter: SplashScreenRouter) {
-        if firstTimeLaunchProviding.userHasCompletedTutorial {
-            splashScreenRouter.showSplashScreen()
-        }
-        else {
-            tutorialRouter.showTutorial()
-        }
-    }
-
-}
 
 class BootstrappingPresenterTests: XCTestCase {
     
