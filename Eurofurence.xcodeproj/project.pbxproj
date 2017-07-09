@@ -15,6 +15,7 @@
 		6EF96CD91F0EDCB300EE6134 /* EventKitCalendarPermissionsProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CD81F0EDCB300EE6134 /* EventKitCalendarPermissionsProviding.swift */; };
 		6EF96CDB1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CDA1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift */; };
 		6EF96CDD1F0F544B00EE6134 /* EventKitCalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CDC1F0F544B00EE6134 /* EventKitCalendarEvent.swift */; };
+		6EF96CDF1F12637100EE6134 /* PresentationTier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CDE1F12637100EE6134 /* PresentationTier.swift */; };
 		78455B3A1F116A7E005BE2D7 /* WhenTheAppLaunches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */; };
 		78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */; };
 		78455B3F1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B3E1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift */; };
@@ -156,6 +157,7 @@
 		6EF96CD81F0EDCB300EE6134 /* EventKitCalendarPermissionsProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventKitCalendarPermissionsProviding.swift; path = "Calendar/EventKit Adapters/EventKitCalendarPermissionsProviding.swift"; sourceTree = "<group>"; };
 		6EF96CDA1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventKitCalendarEventTests.swift; sourceTree = "<group>"; };
 		6EF96CDC1F0F544B00EE6134 /* EventKitCalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventKitCalendarEvent.swift; path = "Calendar/EventKit Adapters/EventKitCalendarEvent.swift"; sourceTree = "<group>"; };
+		6EF96CDE1F12637100EE6134 /* PresentationTier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentationTier.swift; path = Presenters/PresentationTier.swift; sourceTree = "<group>"; };
 		78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenTheAppLaunches.swift; path = "Presenter Tests/WhenTheAppLaunches.swift"; sourceTree = "<group>"; };
 		78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsTutorialStateProvider.swift; sourceTree = "<group>"; };
 		78455B3E1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsTutorialStateProvider.swift; path = Views/Controllers/Tutorial/UserDefaultsTutorialStateProvider.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				78C86D611F123895003A20E6 /* Scenes */,
 				78C86D681F123F68003A20E6 /* ApplicationContext.swift */,
 				78455B4F1F117851005BE2D7 /* BootstrappingPresenter.swift */,
+				6EF96CDE1F12637100EE6134 /* PresentationTier.swift */,
 			);
 			name = Presenters;
 			sourceTree = "<group>";
@@ -1003,6 +1006,7 @@
 				78C86D581F12338D003A20E6 /* StoryboardRouters.swift in Sources */,
 				9ACF99951EC858B2006FC958 /* EventConferenceRoom.swift in Sources */,
 				78455B451F11778D005BE2D7 /* TutorialRouter.swift in Sources */,
+				6EF96CDF1F12637100EE6134 /* PresentationTier.swift in Sources */,
 				9ACF99901EC858B2006FC958 /* KnowledgeEntry.swift in Sources */,
 				9AF0B4FE1F08459D000AAA0A /* TimeIntervalRow.swift in Sources */,
 				9AF159ED1EF5BE7F00DB287D /* SimpleEventCell.swift in Sources */,

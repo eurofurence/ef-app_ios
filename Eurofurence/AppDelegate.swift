@@ -15,34 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	var lifetime = Lifetime.make()
-    private var bootstrappingPresenter: BootstrappingPresenter?
-
-    private func navigateToInitialViewController() {
-        let userDefaults = UserDefaults.standard
-        let finishedTutorialProvider = UserDefaultsTutorialStateProvider(userDefaults: userDefaults)
-
-        let action = TutorialBlockAction(block: temporaryWorkaroundIntoAppUntilTutorialIsFinished)
-        let beginDownloadAction = TutorialPageAction(actionDescription: "Let's Go",
-                                                     action: action)
-        let beginDownloadItem = TutorialPageInfo(image: nil,
-                                                 title: "Hello!",
-                                                 description: "This is a work in progress, hit the button below to skip this for now.",
-                                                 primaryAction: beginDownloadAction)
-
-        let appContext = ApplicationContext(firstTimeLaunchProviding: finishedTutorialProvider, tutorialItems: [beginDownloadItem])
-
-        let routers = StoryboardRouters(window: window!)
-        bootstrappingPresenter = BootstrappingPresenter(context: appContext, routers: routers)
-    }
-
-    private func temporaryWorkaroundIntoAppUntilTutorialIsFinished() {
-        let finishedTutorialAccessor = UserDefaultsTutorialStateProvider(userDefaults: .standard)
-        finishedTutorialAccessor.markTutorialAsComplete()
-        let delegate = UIApplication.shared.delegate!
-        let window = delegate.window!!
-
-        StoryboardSplashScreenRouter(window: window).showSplashScreen()
-    }
+    private var presentationTier: PresentationTier?
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
@@ -52,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		PrintOptions.Active = .None
 
         DataStoreRefreshController.shared.add(ApplicationActivityIndicatorRefreshDelegate())
-        navigateToInitialViewController()
+        presentationTier = PresentationTier.assemble(window: window!)
 
 		return true
 	}
