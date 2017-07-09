@@ -19,11 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func navigateToInitialViewController() {
         let userDefaults = UserDefaults.standard
         let finishedTutorialProvider = UserDefaultsTutorialStateProvider(userDefaults: userDefaults)
-        let tutorialRouter = StoryboardTutorialRouter(window: window!)
-        let splashRouter = StoryboardSplashScreenRouter(window: window!)
+        let routers = StoryboardRouters(window: window!)
         _ = BootstrappingPresenter(firstTimeLaunchProviding: finishedTutorialProvider,
-                                   tutorialRouter: tutorialRouter,
-                                   splashScreenRouter: splashRouter)
+                                   routers: routers)
     }
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

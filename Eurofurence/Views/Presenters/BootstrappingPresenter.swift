@@ -11,12 +11,11 @@ import Foundation
 struct BootstrappingPresenter {
 
     init(firstTimeLaunchProviding: UserCompletedTutorialStateProviding,
-         tutorialRouter: TutorialRouter,
-         splashScreenRouter: SplashScreenRouter) {
+         routers: Routers) {
         if firstTimeLaunchProviding.userHasCompletedTutorial {
-            splashScreenRouter.showSplashScreen()
+            routers.splashScreenRouter.showSplashScreen()
         } else {
-            tutorialRouter.showTutorial()
+            routers.tutorialRouter.showTutorial()
         }
     }
 

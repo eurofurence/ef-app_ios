@@ -45,6 +45,9 @@
 		78C86D501F119F2A003A20E6 /* TutorialBlockActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D4F1F119F2A003A20E6 /* TutorialBlockActionTests.swift */; };
 		78C86D521F11A065003A20E6 /* TutorialBlockAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D511F11A065003A20E6 /* TutorialBlockAction.swift */; };
 		78C86D541F1228B0003A20E6 /* TutorialViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D531F1228B0003A20E6 /* TutorialViewControllerTests.swift */; };
+		78C86D561F12334D003A20E6 /* Routers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D551F12334D003A20E6 /* Routers.swift */; };
+		78C86D581F12338D003A20E6 /* StoryboardRouters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D571F12338D003A20E6 /* StoryboardRouters.swift */; };
+		78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D591F1234F0003A20E6 /* StubRouters.swift */; };
 		78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */; };
 		78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */; };
 		78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */; };
@@ -176,6 +179,9 @@
 		78C86D4F1F119F2A003A20E6 /* TutorialBlockActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialBlockActionTests.swift; sourceTree = "<group>"; };
 		78C86D511F11A065003A20E6 /* TutorialBlockAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialBlockAction.swift; path = Views/Controllers/Tutorial/TutorialBlockAction.swift; sourceTree = "<group>"; };
 		78C86D531F1228B0003A20E6 /* TutorialViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewControllerTests.swift; sourceTree = "<group>"; };
+		78C86D551F12334D003A20E6 /* Routers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Routers.swift; path = Routers/Routers.swift; sourceTree = "<group>"; };
+		78C86D571F12338D003A20E6 /* StoryboardRouters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoryboardRouters.swift; path = Routers/Storyboard/StoryboardRouters.swift; sourceTree = "<group>"; };
+		78C86D591F1234F0003A20E6 /* StubRouters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubRouters.swift; path = "Test Doubles/StubRouters.swift"; sourceTree = "<group>"; };
 		78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInfoPropertyListShould.swift; sourceTree = "<group>"; };
 		78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarServiceTests.swift; sourceTree = "<group>"; };
 		78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -322,6 +328,7 @@
 				78455B481F1177AD005BE2D7 /* CapturingTutorialRouter.swift */,
 				78455B4A1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift */,
 				78455B4C1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift */,
+				78C86D591F1234F0003A20E6 /* StubRouters.swift */,
 			);
 			name = "Test Doubles";
 			sourceTree = "<group>";
@@ -354,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				78455B571F117BC0005BE2D7 /* Storyboard */,
+				78C86D551F12334D003A20E6 /* Routers.swift */,
 				78455B441F11778D005BE2D7 /* TutorialRouter.swift */,
 				78455B461F11779D005BE2D7 /* SplashScreenRouter.swift */,
 			);
@@ -371,6 +379,7 @@
 		78455B571F117BC0005BE2D7 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				78C86D571F12338D003A20E6 /* StoryboardRouters.swift */,
 				78455B581F117BCF005BE2D7 /* StoryboardTutorialRouter.swift */,
 				78C86D4D1F119B68003A20E6 /* StoryboardSplashScreenRouter.swift */,
 			);
@@ -924,6 +933,7 @@
 				9A8477981ED99EDE00F0DF3F /* NavigationResolver.swift in Sources */,
 				9ACF99921EC858B2006FC958 /* EventConferenceDay.swift in Sources */,
 				9ACF998D1EC858B2006FC958 /* KnowledgeGroup.swift in Sources */,
+				78C86D561F12334D003A20E6 /* Routers.swift in Sources */,
 				78455B591F117BCF005BE2D7 /* StoryboardTutorialRouter.swift in Sources */,
 				9A34B9851ED089BB004A249E /* NavigationResolverProtocol.swift in Sources */,
 				78567B411F10212100EBA31D /* ProgressViewRefreshDelegate.swift in Sources */,
@@ -935,6 +945,7 @@
 				9ACF99941EC858B2006FC958 /* LinkFragment.swift in Sources */,
 				6EF96CDD1F0F544B00EE6134 /* EventKitCalendarEvent.swift in Sources */,
 				6EF96CD91F0EDCB300EE6134 /* EventKitCalendarPermissionsProviding.swift in Sources */,
+				78C86D581F12338D003A20E6 /* StoryboardRouters.swift in Sources */,
 				9ACF99951EC858B2006FC958 /* EventConferenceRoom.swift in Sources */,
 				78455B451F11778D005BE2D7 /* TutorialRouter.swift in Sources */,
 				9ACF99901EC858B2006FC958 /* KnowledgeEntry.swift in Sources */,
@@ -1013,6 +1024,7 @@
 				6EF96CCF1F0EDB2000EE6134 /* CalendarTestDoubles.swift in Sources */,
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
 				78C86D501F119F2A003A20E6 /* TutorialBlockActionTests.swift in Sources */,
+				78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */,
 				78455B4B1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
