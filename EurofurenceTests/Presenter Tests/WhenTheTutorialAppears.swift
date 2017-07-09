@@ -10,13 +10,6 @@
 import XCTest
 
 class WhenTheTutorialAppears: XCTestCase {
-    
-    var presenter: BootstrappingPresenter!
-    
-    override func tearDown() {
-        super.tearDown()
-        presenter = nil
-    }
 
     private func showTutorial(_ items: [TutorialPageInfo] = []) -> (tutorial: CapturingTutorialScene,
                                                                     page: CapturingTutorialPageScene) {
@@ -26,7 +19,7 @@ class WhenTheTutorialAppears: XCTestCase {
             .forShowingTutorial()
             .withTutorialItems(items)
             .build()
-        presenter = BootstrappingPresenter(context: context, routers: routers)
+        BootstrappingModule.bootstrap(context: context, routers: routers)
 
         return (tutorial: tutorialRouter.tutorialScene, page: tutorialRouter.tutorialScene.tutorialPage)
     }

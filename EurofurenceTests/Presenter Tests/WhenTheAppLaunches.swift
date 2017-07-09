@@ -15,7 +15,7 @@ class WhenTheAppLaunches: XCTestCase {
         let tutorialRouter = CapturingTutorialRouter()
         let routers = StubRouters(tutorialRouter: tutorialRouter)
         let context = TestingApplicationContextBuilder().forShowingTutorial().build()
-        _ = BootstrappingPresenter(context: context, routers: routers)
+        BootstrappingModule.bootstrap(context: context, routers: routers)
 
         XCTAssertTrue(tutorialRouter.wasToldToShowTutorial)
     }
@@ -24,7 +24,7 @@ class WhenTheAppLaunches: XCTestCase {
         let splashScreenRouter = CapturingSplashScreenRouter()
         let routers = StubRouters(splashScreenRouter: splashScreenRouter)
         let context = TestingApplicationContextBuilder().build()
-        _ = BootstrappingPresenter(context: context, routers: routers)
+        BootstrappingModule.bootstrap(context: context, routers: routers)
 
         XCTAssertTrue(splashScreenRouter.wasToldToShowSplashScreen)
     }
@@ -33,7 +33,7 @@ class WhenTheAppLaunches: XCTestCase {
         let splashScreenRouter = CapturingSplashScreenRouter()
         let routers = StubRouters(splashScreenRouter: splashScreenRouter)
         let context = TestingApplicationContextBuilder().forShowingTutorial().build()
-        _ = BootstrappingPresenter(context: context, routers: routers)
+        BootstrappingModule.bootstrap(context: context, routers: routers)
 
         XCTAssertFalse(splashScreenRouter.wasToldToShowSplashScreen)
     }
@@ -42,7 +42,7 @@ class WhenTheAppLaunches: XCTestCase {
         let tutorialRouter = CapturingTutorialRouter()
         let routers = StubRouters(tutorialRouter: tutorialRouter)
         let context = TestingApplicationContextBuilder().build()
-        _ = BootstrappingPresenter(context: context, routers: routers)
+        BootstrappingModule.bootstrap(context: context, routers: routers)
 
         XCTAssertFalse(tutorialRouter.wasToldToShowTutorial)
     }

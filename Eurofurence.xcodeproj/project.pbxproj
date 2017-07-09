@@ -28,7 +28,6 @@
 		78455B491F1177AD005BE2D7 /* CapturingTutorialRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B481F1177AD005BE2D7 /* CapturingTutorialRouter.swift */; };
 		78455B4B1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B4A1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift */; };
 		78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B4C1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift */; };
-		78455B501F117851005BE2D7 /* BootstrappingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B4F1F117851005BE2D7 /* BootstrappingPresenter.swift */; };
 		78455B521F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B511F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift */; };
 		78455B541F117A35005BE2D7 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B531F117A35005BE2D7 /* TutorialViewController.swift */; };
 		78455B561F117B24005BE2D7 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78455B551F117B24005BE2D7 /* Tutorial.storyboard */; };
@@ -173,7 +172,6 @@
 		78455B481F1177AD005BE2D7 /* CapturingTutorialRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingTutorialRouter.swift; path = "Test Doubles/CapturingTutorialRouter.swift"; sourceTree = "<group>"; };
 		78455B4A1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingSplashScreenRouter.swift; path = "Test Doubles/CapturingSplashScreenRouter.swift"; sourceTree = "<group>"; };
 		78455B4C1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubFirstTimeLaunchStateProvider.swift; path = "Test Doubles/StubFirstTimeLaunchStateProvider.swift"; sourceTree = "<group>"; };
-		78455B4F1F117851005BE2D7 /* BootstrappingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BootstrappingPresenter.swift; path = Presenters/BootstrappingPresenter.swift; sourceTree = "<group>"; };
 		78455B511F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardTutorialRouterTests.swift; sourceTree = "<group>"; };
 		78455B531F117A35005BE2D7 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = Views/Controllers/Tutorial/TutorialViewController.swift; sourceTree = "<group>"; };
 		78455B551F117B24005BE2D7 /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
@@ -423,7 +421,6 @@
 				6EF96CE01F12688700EE6134 /* Modules */,
 				78C86D611F123895003A20E6 /* Scenes */,
 				78C86D681F123F68003A20E6 /* ApplicationContext.swift */,
-				78455B4F1F117851005BE2D7 /* BootstrappingPresenter.swift */,
 				6EF96CDE1F12637100EE6134 /* PresentationTier.swift */,
 			);
 			name = Presenters;
@@ -1070,7 +1067,6 @@
 				78567B451F103C3800EBA31D /* RefreshControlDataStoreDelegate.swift in Sources */,
 				78455B411F117742005BE2D7 /* UserCompletedTutorialStateProviding.swift in Sources */,
 				78455B5B1F117E27005BE2D7 /* TutorialPageViewController.swift in Sources */,
-				78455B501F117851005BE2D7 /* BootstrappingPresenter.swift in Sources */,
 				D6F3D620BA994A6570325C66 /* DealersTableViewCell.swift in Sources */,
 				D6F3DDCB5EF23B138BD25865 /* EventHeaderCellTableViewCell.swift in Sources */,
 				78455B641F118D11005BE2D7 /* TutorialAction.swift in Sources */,
