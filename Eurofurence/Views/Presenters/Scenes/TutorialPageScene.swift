@@ -11,6 +11,8 @@ import UIKit
 
 protocol TutorialPageScene {
 
+    weak var tutorialPageSceneDelegate: TutorialPageSceneDelegate? { get set }
+
     func showPageTitle(_ title: String?)
     func showPageDescription(_ description: String?)
     func showPageImage(_ image: UIImage?)
@@ -20,5 +22,12 @@ protocol TutorialPageScene {
 
     func showSecondaryActionButton()
     func showSecondaryActionDescription(_ secondaryActionDescription: String)
+
+}
+
+protocol TutorialPageSceneDelegate: class {
+
+    func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene)
+    func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene)
 
 }

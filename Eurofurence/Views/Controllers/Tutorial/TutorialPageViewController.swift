@@ -21,14 +21,18 @@ class TutorialPageViewController: UIViewController, TutorialPageScene {
     // MARK: IBActions
 
     @IBAction func performPrimaryAction(_ sender: Any) {
+        tutorialPageSceneDelegate?.tutorialPageSceneDidTapPrimaryActionButton(self)
         pageInfo?.runPrimaryAction()
     }
 
     @IBAction func performSecondaryAction(_ sender: Any) {
+        tutorialPageSceneDelegate?.tutorialPageSceneDidTapSecondaryActionButton(self)
         pageInfo?.runSecondaryAction()
     }
 
     // MARK: TutorialPageScene
+
+    weak var tutorialPageSceneDelegate: TutorialPageSceneDelegate?
 
     func showPageTitle(_ title: String?) {
         tutorialPageTitleLabel.text = title

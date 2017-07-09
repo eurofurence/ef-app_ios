@@ -10,6 +10,13 @@
 import XCTest
 
 class WhenTheTutorialAppears: XCTestCase {
+    
+    var presenter: BootstrappingPresenter!
+    
+    override func tearDown() {
+        super.tearDown()
+        presenter = nil
+    }
 
     private func showTutorial(_ items: [TutorialPageInfo] = []) -> (tutorial: CapturingTutorialScene,
                                                                     page: CapturingTutorialPageScene) {
@@ -19,7 +26,7 @@ class WhenTheTutorialAppears: XCTestCase {
             .forShowingTutorial()
             .withTutorialItems(items)
             .build()
-        _ = BootstrappingPresenter(context: context, routers: routers)
+        presenter = BootstrappingPresenter(context: context, routers: routers)
 
         return (tutorial: tutorialRouter.tutorialScene, page: tutorialRouter.tutorialScene.tutorialPage)
     }
@@ -99,6 +106,26 @@ class WhenTheTutorialAppears: XCTestCase {
         let setup = showTutorial([firstTutorialItem])
         
         XCTAssertEqual(expectedActionDescription, setup.page.capturedSecondaryActionDescription)
+    }
+    
+    func testTappingThePrimaryActionButtonShouldInvokeThePrimaryActionForTheFirstPage() {
+        let capturingAction = CapturingAction()
+        let action = TutorialPageAction(actionDescription: "", action: capturingAction)
+        let firstTutorialItem = TutorialPageInfo(image: nil, title: nil, description: nil, primaryAction: action)
+        let setup = showTutorial([firstTutorialItem])
+        setup.page.simulateTappingPrimaryActionButton()
+        
+        XCTAssertTrue(capturingAction.didRun)
+    }
+    
+    func testTappingTheSecondaryActionButtonShouldInvokeTheSeoncdaryActionForTheFirstPage() {
+        let capturingAction = CapturingAction()
+        let action = TutorialPageAction(actionDescription: "", action: capturingAction)
+        let firstTutorialItem = TutorialPageInfo(image: nil, title: nil, description: nil, secondaryAction: action)
+        let setup = showTutorial([firstTutorialItem])
+        setup.page.simulateTappingSecondaryActionButton()
+        
+        XCTAssertTrue(capturingAction.didRun)
     }
 
 }

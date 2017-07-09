@@ -18,9 +18,24 @@ class CapturingAction: TutorialAction {
 
 }
 
+class CapturingTutorialPageSceneDelegate: TutorialPageSceneDelegate {
+    
+    private(set) var primaryActionButtonTapped = false
+    func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
+        primaryActionButtonTapped = true
+    }
+    
+    private(set) var secondaryActionButtonTapped = false
+    func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) {
+        secondaryActionButtonTapped = true
+    }
+    
+}
+
 class TutorialPageViewControllerTests: XCTestCase {
 
     var tutorialPageController: TutorialPageViewController!
+    var delegate: CapturingTutorialPageSceneDelegate!
 
     override func setUp() {
         super.setUp()
@@ -29,6 +44,9 @@ class TutorialPageViewControllerTests: XCTestCase {
         let storyboard = UIStoryboard(name: "Tutorial", bundle: bundle)
         tutorialPageController = storyboard.instantiateViewController(withIdentifier: "TutorialPageViewController") as? TutorialPageViewController
         tutorialPageController.loadView()
+        
+        delegate = CapturingTutorialPageSceneDelegate()
+        tutorialPageController.tutorialPageSceneDelegate = delegate
     }
 
     func testTellingTheSceneToShowThePageTitleShouldSetItOntoTheTitleLabel() {
@@ -82,6 +100,16 @@ class TutorialPageViewControllerTests: XCTestCase {
         tutorialPageController.showSecondaryActionDescription(secondaryActionDescription)
         
         XCTAssertEqual(secondaryActionDescription, tutorialPageController.secondaryActionButton.title(for: .normal))
+    }
+    
+    func testTappingThePrimaryActionButtonShouldTellTheDelegateAboutIt() {
+        tutorialPageController.primaryActionButton.sendActions(for: .touchUpInside)
+        XCTAssertTrue(delegate.primaryActionButtonTapped)
+    }
+    
+    func testTappingTheSecondaryActionButtonShouldTellTheDelegateAboutIt() {
+        tutorialPageController.secondaryActionButton.sendActions(for: .touchUpInside)
+        XCTAssertTrue(delegate.secondaryActionButtonTapped)
     }
 
 }

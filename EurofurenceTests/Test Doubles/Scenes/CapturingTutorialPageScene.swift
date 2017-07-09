@@ -11,6 +11,8 @@ import Foundation
 import UIKit
 
 class CapturingTutorialPageScene: TutorialPageScene {
+    
+    weak var tutorialPageSceneDelegate: TutorialPageSceneDelegate?
 
     private(set) var capturedPageTitle: String?
     func showPageTitle(_ title: String?) {
@@ -45,6 +47,14 @@ class CapturingTutorialPageScene: TutorialPageScene {
     private(set) var capturedSecondaryActionDescription: String?
     func showSecondaryActionDescription(_ secondaryActionDescription: String) {
         capturedSecondaryActionDescription = secondaryActionDescription
+    }
+    
+    func simulateTappingPrimaryActionButton() {
+        tutorialPageSceneDelegate?.tutorialPageSceneDidTapPrimaryActionButton(self)
+    }
+    
+    func simulateTappingSecondaryActionButton() {
+        tutorialPageSceneDelegate?.tutorialPageSceneDidTapSecondaryActionButton(self)
     }
 
 }
