@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TutorialPresenter: TutorialPageSceneDelegate, TutorialActionDelegate {
+class TutorialPresenter: TutorialPageSceneDelegate {
 
     // MARK: Nested Types
 
@@ -55,12 +55,9 @@ class TutorialPresenter: TutorialPageSceneDelegate, TutorialActionDelegate {
     }
 
     func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) {
-        currentSecondaryAction?.runAction(self)
+        let delegate = CompleteTutorialActionDelegate(splashScreenRouter: splashScreenRouter, tutorialStateProviding: tutorialStateProviding)
+        currentSecondaryAction?.runAction(delegate)
     }
-
-    // MARK: TutorialActionDelegate
-
-    func tutorialActionDidFinish(_ action: TutorialAction) { }
 
     // MARK: Private
 
