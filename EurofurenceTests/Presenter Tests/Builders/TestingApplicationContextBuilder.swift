@@ -23,6 +23,11 @@ class TestingApplicationContextBuilder {
         firstTimeLaunchProviding = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
         return self
     }
+    
+    func withUserCompletedTutorialStateProviding(_ firstTimeLaunchProviding: UserCompletedTutorialStateProviding) -> TestingApplicationContextBuilder {
+        self.firstTimeLaunchProviding = firstTimeLaunchProviding
+        return self
+    }
 
     func withTutorialItems(_ tutorialItems: [TutorialPageInfo]) -> TestingApplicationContextBuilder {
         self.tutorialItems = tutorialItems

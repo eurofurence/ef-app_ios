@@ -27,11 +27,7 @@ struct PresentationTier {
     }
 
     private func makeTutorialItems() -> [TutorialPageInfo] {
-        func temporaryWorkaroundIntoAppUntilTutorialIsFinished() {
-            finishedTutorialProvider.markTutorialAsComplete()
-        }
-
-        let action = TutorialBlockAction(block: temporaryWorkaroundIntoAppUntilTutorialIsFinished)
+        let action = TutorialBlockAction { }
         let beginDownloadAction = TutorialPageAction(actionDescription: "Let's Go",
                                                      action: action)
         let beginDownloadItem = TutorialPageInfo(image: #imageLiteral(resourceName: "tuto01_notificationIcon"),

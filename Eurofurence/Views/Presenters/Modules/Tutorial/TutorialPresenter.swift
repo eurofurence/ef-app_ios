@@ -16,14 +16,17 @@ class TutorialPresenter: TutorialPageSceneDelegate, TutorialActionDelegate {
     private var currentPrimaryAction: TutorialPageAction?
     private var currentSecondaryAction: TutorialPageAction?
     private var splashScreenRouter: SplashScreenRouter
+    private var tutorialStateProviding: UserCompletedTutorialStateProviding
 
     // MARK: Initialization
 
     init(tutorialScene: TutorialScene,
          tutorialPages: [TutorialPageInfo],
-         splashScreenRouter: SplashScreenRouter) {
+         splashScreenRouter: SplashScreenRouter,
+         tutorialStateProviding: UserCompletedTutorialStateProviding) {
         tutorialPage = tutorialScene.showTutorialPage()
         self.splashScreenRouter = splashScreenRouter
+        self.tutorialStateProviding = tutorialStateProviding
 
         if let pageInfo = tutorialPages.first {
             show(page: pageInfo)
@@ -35,6 +38,7 @@ class TutorialPresenter: TutorialPageSceneDelegate, TutorialActionDelegate {
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
         currentPrimaryAction?.runAction(self)
         splashScreenRouter.showSplashScreen()
+        tutorialStateProviding.markTutorialAsComplete()
     }
 
     func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) {

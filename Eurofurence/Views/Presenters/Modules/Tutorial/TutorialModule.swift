@@ -15,7 +15,8 @@ struct TutorialModule {
         let tutorialPages = context.tutorialItems
         _ = TutorialPresenter(tutorialScene: tutorialScene,
                               tutorialPages: tutorialPages,
-                              splashScreenRouter: routers.splashScreenRouter)
+                              splashScreenRouter: routers.splashScreenRouter,
+                              tutorialStateProviding: context.firstTimeLaunchProviding)
     }
 
 }
