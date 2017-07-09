@@ -8,7 +8,21 @@
 
 import Foundation
 
-class TutorialPresenter: TutorialPageSceneDelegate, TutorialActionDelegate {
+class TutorialPresenter: TutorialPageSceneDelegate {
+
+    // MARK: Nested Types
+
+    struct CompleteTutorialActionDelegate: TutorialActionDelegate {
+
+        var splashScreenRouter: SplashScreenRouter
+        var tutorialStateProviding: UserCompletedTutorialStateProviding
+
+        func tutorialActionDidFinish(_ action: TutorialAction) {
+            splashScreenRouter.showSplashScreen()
+            tutorialStateProviding.markTutorialAsComplete()
+        }
+
+    }
 
     // MARK: Properties
 
@@ -36,19 +50,13 @@ class TutorialPresenter: TutorialPageSceneDelegate, TutorialActionDelegate {
     // MARK: TutorialPageSceneDelegate
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
-        currentPrimaryAction?.runAction(self)
-        splashScreenRouter.showSplashScreen()
-        tutorialStateProviding.markTutorialAsComplete()
+        let delegate = CompleteTutorialActionDelegate(splashScreenRouter: splashScreenRouter, tutorialStateProviding: tutorialStateProviding)
+        currentPrimaryAction?.runAction(delegate)
     }
 
     func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) {
-        currentSecondaryAction?.runAction(self)
-    }
-
-    // MARK: TutorialActionDelegate
-
-    func tutorialActionDidFinish(_ action: TutorialAction) {
-
+        let delegate = CompleteTutorialActionDelegate(splashScreenRouter: splashScreenRouter, tutorialStateProviding: tutorialStateProviding)
+        currentSecondaryAction?.runAction(delegate)
     }
 
     // MARK: Private
