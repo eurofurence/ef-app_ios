@@ -12,23 +12,6 @@ class TutorialViewController: UIPageViewController, TutorialScene {
 
     // MARK: Overrides
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-
-        let action = TutorialBlockAction(block: temporaryWorkaroundIntoAppUntilTutorialIsFinished)
-        let beginDownloadAction = TutorialPageAction(actionDescription: "Let's Go",
-                                                     action: action)
-        let beginDownloadItem = TutorialPageInfo(image: nil,
-                                                 title: "Hello!",
-                                                 description: "This is a work in progress, hit the button below to skip this for now.",
-                                                 primaryAction: beginDownloadAction)
-
-        let viewController = storyboard?.instantiateViewController(withIdentifier: "TutorialPageViewController") as! TutorialPageViewController
-        viewController.view.frame = view.bounds
-        viewController.pageInfo = beginDownloadItem
-        setViewControllers([viewController], direction: .forward, animated: false)
-    }
-
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -44,17 +27,6 @@ class TutorialViewController: UIPageViewController, TutorialScene {
         setViewControllers([tutorialController], direction: .forward, animated: true)
 
         return tutorialController
-    }
-
-    // MARK: Private
-
-    private func temporaryWorkaroundIntoAppUntilTutorialIsFinished() {
-        let finishedTutorialAccessor = UserDefaultsTutorialStateProvider(userDefaults: .standard)
-        finishedTutorialAccessor.markTutorialAsComplete()
-        let delegate = UIApplication.shared.delegate!
-        let window = delegate.window!!
-
-        StoryboardSplashScreenRouter(window: window).showSplashScreen()
     }
 
 }

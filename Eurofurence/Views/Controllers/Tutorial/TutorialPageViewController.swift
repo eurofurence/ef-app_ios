@@ -22,12 +22,10 @@ class TutorialPageViewController: UIViewController, TutorialPageScene {
 
     @IBAction func performPrimaryAction(_ sender: Any) {
         tutorialPageSceneDelegate?.tutorialPageSceneDidTapPrimaryActionButton(self)
-        pageInfo?.runPrimaryAction()
     }
 
     @IBAction func performSecondaryAction(_ sender: Any) {
         tutorialPageSceneDelegate?.tutorialPageSceneDidTapSecondaryActionButton(self)
-        pageInfo?.runSecondaryAction()
     }
 
     // MARK: TutorialPageScene
@@ -60,45 +58,6 @@ class TutorialPageViewController: UIViewController, TutorialPageScene {
 
     func showSecondaryActionDescription(_ secondaryActionDescription: String) {
         secondaryActionButton.setTitle(secondaryActionDescription, for: .normal)
-    }
-
-    // MARK: Properties
-
-    var pageInfo: TutorialPageInfo? {
-        didSet {
-            updatePage()
-        }
-    }
-
-    // MARK: Private
-
-    private func updatePage() {
-        updateStaticInformationViews()
-        updatePrimaryButton()
-        updateSecondaryButton()
-    }
-
-    private func updateStaticInformationViews() {
-        tutorialPageImageView.image = pageInfo?.image
-        tutorialPageTitleLabel.text = pageInfo?.title
-        tutorialPageDescriptionLabel.text = pageInfo?.description
-    }
-
-    private func updatePrimaryButton() {
-        update(button: primaryActionButton, title: pageInfo?.primaryActionDescription)
-    }
-
-    private func updateSecondaryButton() {
-        update(button: secondaryActionButton, title: pageInfo?.secondaryActionDescription)
-    }
-
-    private func update(button: UIButton, title: String?) {
-        if let title = title {
-            button.isHidden = false
-            button.setTitle(title, for: .normal)
-        } else {
-            button.isHidden = true
-        }
     }
 
 }
