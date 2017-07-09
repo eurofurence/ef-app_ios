@@ -13,7 +13,7 @@ struct TutorialPageInfo {
     var image: UIImage?
     var title: String?
     var description: String?
-    private var primaryAction: TutorialPageAction?
+    var primaryAction: TutorialPageAction?
     private var secondaryAction: TutorialPageAction?
 
     init(image: UIImage?,

@@ -42,6 +42,14 @@ class TutorialPageViewController: UIViewController, TutorialPageScene {
 
     }
 
+    func showPrimaryActionButton() {
+
+    }
+
+    func showPrimaryActionDescription(_ primaryActionDescription: String) {
+
+    }
+
     // MARK: Properties
 
     var pageInfo: TutorialPageInfo? {

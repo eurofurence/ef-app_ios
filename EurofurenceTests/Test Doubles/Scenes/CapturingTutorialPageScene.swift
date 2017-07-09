@@ -26,5 +26,15 @@ class CapturingTutorialPageScene: TutorialPageScene {
     func showPageImage(_ image: UIImage?) {
         capturedPageImage = image
     }
+    
+    private(set) var didShowPrimaryActionButton = false
+    func showPrimaryActionButton() {
+        didShowPrimaryActionButton = true
+    }
+    
+    private(set) var capturedPrimaryActionDescription: String?
+    func showPrimaryActionDescription(_ primaryActionDescription: String) {
+        capturedPrimaryActionDescription = primaryActionDescription
+    }
 
 }

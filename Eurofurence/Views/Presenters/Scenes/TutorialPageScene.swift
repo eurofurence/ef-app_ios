@@ -15,4 +15,7 @@ protocol TutorialPageScene {
     func showPageDescription(_ description: String?)
     func showPageImage(_ image: UIImage?)
 
+    func showPrimaryActionButton()
+    func showPrimaryActionDescription(_ primaryActionDescription: String)
+
 }
