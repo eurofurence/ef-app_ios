@@ -88,13 +88,13 @@ class TutorialPageViewControllerTests: XCTestCase {
         XCTAssertTrue(tutorialPageController.primaryActionButton.isHidden)
     }
 
-    func testTellingTheTutorialPageToShowTutorialInfoWithPrimaryActionShouldSetTheActionNameOntoThePrimaryActionButton() {
+    func testTellingTheTutorialPageToShowTutorialInfoWithPrimaryActionShouldSetTheActionNameOntoThePrimaryActionButtonForTheNormalControlState() {
         let primaryActionDescription = "Do some voodoo"
         let primaryAction = TutorialPageAction(actionDescription: primaryActionDescription, action: CapturingAction())
         let pageInfo = makeTutorialPageInfo(primaryAction: primaryAction)
         tutorialPageController.pageInfo = pageInfo
 
-        XCTAssertEqual(primaryActionDescription, tutorialPageController.primaryActionButton.titleLabel?.text)
+        XCTAssertEqual(primaryActionDescription, tutorialPageController.primaryActionButton.title(for: .normal))
     }
 
     func testTellingTheTutorialPageToShowTutorialInfoWithPrimaryActionShouldInvokeTheActionWhenTappingTheButton() {
@@ -134,7 +134,7 @@ class TutorialPageViewControllerTests: XCTestCase {
         let pageInfo = makeTutorialPageInfo(secondaryAction: primaryAction)
         tutorialPageController.pageInfo = pageInfo
 
-        XCTAssertEqual(primaryActionDescription, tutorialPageController.secondaryActionButton.titleLabel?.text)
+        XCTAssertEqual(primaryActionDescription, tutorialPageController.secondaryActionButton.title(for: .normal))
     }
 
     func testTellingTheTutorialPageToShowTutorialInfoWithSecondaryActionShouldInvokeTheActionWhenTappingTheButton() {

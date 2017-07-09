@@ -61,7 +61,7 @@ class TutorialPageViewController: UIViewController {
     private func update(button: UIButton, title: String?) {
         if let title = title {
             button.isHidden = false
-            button.titleLabel?.text = title
+            button.setTitle(title, for: .normal)
         } else {
             button.isHidden = true
         }
