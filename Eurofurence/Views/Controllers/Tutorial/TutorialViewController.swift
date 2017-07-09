@@ -41,6 +41,8 @@ class TutorialViewController: UIPageViewController, TutorialScene {
             fatalError("Unable to resolve \(TutorialPageViewController.self) from Storyboard")
         }
 
+        setViewControllers([tutorialController], direction: .forward, animated: true)
+
         return tutorialController
     }
 

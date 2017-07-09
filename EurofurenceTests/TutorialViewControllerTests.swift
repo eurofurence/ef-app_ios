@@ -34,5 +34,14 @@ class TutorialViewControllerTests: XCTestCase {
         let viewController = tutorialController.showTutorialPage() as? UIViewController
         XCTAssertNotNil(viewController?.storyboard)
     }
+
+    func testShowingTutorialPageShouldSetTheReturnedPageAsViewControllerOntoPageViewController() {
+        guard let viewController = tutorialController.showTutorialPage() as? UIViewController else {
+            XCTFail("Returned page was not a UIViewController subclass")
+            return
+        }
+
+        XCTAssertEqual(true, tutorialController.viewControllers?.contains(viewController))
+    }
     
 }
