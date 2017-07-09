@@ -25,6 +25,11 @@ struct BootstrappingPresenter {
                 tutorialPage.showPrimaryActionButton()
                 tutorialPage.showPrimaryActionDescription(action.actionDescription)
             }
+
+            if let action = pageInfo.secondaryAction {
+                tutorialPage.showSecondaryActionButton()
+                tutorialPage.showSecondaryActionDescription(action.actionDescription)
+            }
         }
     }
 

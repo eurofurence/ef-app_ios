@@ -36,5 +36,15 @@ class CapturingTutorialPageScene: TutorialPageScene {
     func showPrimaryActionDescription(_ primaryActionDescription: String) {
         capturedPrimaryActionDescription = primaryActionDescription
     }
+    
+    private(set) var didShowSecondaryActionButton = false
+    func showSecondaryActionButton() {
+        didShowSecondaryActionButton = true
+    }
+    
+    private(set) var capturedSecondaryActionDescription: String?
+    func showSecondaryActionDescription(_ secondaryActionDescription: String) {
+        capturedSecondaryActionDescription = secondaryActionDescription
+    }
 
 }

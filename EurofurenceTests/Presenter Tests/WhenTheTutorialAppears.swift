@@ -76,5 +76,29 @@ class WhenTheTutorialAppears: XCTestCase {
         
         XCTAssertEqual(expectedActionDescription, setup.page.capturedPrimaryActionDescription)
     }
+    
+    func testItShouldTellTheFirstTutorialPageToShowTheSecondaryActionButtonWhenSecondaryActionAvailable() {
+        let action = TutorialPageAction(actionDescription: "", action: CapturingAction())
+        let firstTutorialItem = TutorialPageInfo(image: nil, title: nil, description: nil, secondaryAction: action)
+        let setup = showTutorial([firstTutorialItem])
+        
+        XCTAssertTrue(setup.page.didShowSecondaryActionButton)
+    }
+    
+    func testItShouldNotTellTheFirstTutorialPageToShowTheSeondaryActionButtonWhenSecondaryActionIsNotAvailable() {
+        let firstTutorialItem = TutorialPageInfo(image: nil, title: nil, description: nil, secondaryAction: nil)
+        let setup = showTutorial([firstTutorialItem])
+        
+        XCTAssertFalse(setup.page.didShowSecondaryActionButton)
+    }
+
+    func testItShouldTellTheTutorialPageToShowTheSecondaryActionTextWhenSecondaryActionAvailable() {
+        let expectedActionDescription = "Do voodoo"
+        let action = TutorialPageAction(actionDescription: expectedActionDescription, action: CapturingAction())
+        let firstTutorialItem = TutorialPageInfo(image: nil, title: nil, description: nil, secondaryAction: action)
+        let setup = showTutorial([firstTutorialItem])
+        
+        XCTAssertEqual(expectedActionDescription, setup.page.capturedSecondaryActionDescription)
+    }
 
 }

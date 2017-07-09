@@ -18,4 +18,7 @@ protocol TutorialPageScene {
     func showPrimaryActionButton()
     func showPrimaryActionDescription(_ primaryActionDescription: String)
 
+    func showSecondaryActionButton()
+    func showSecondaryActionDescription(_ secondaryActionDescription: String)
+
 }

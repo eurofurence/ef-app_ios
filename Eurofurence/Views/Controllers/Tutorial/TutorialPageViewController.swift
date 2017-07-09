@@ -50,6 +50,14 @@ class TutorialPageViewController: UIViewController, TutorialPageScene {
 
     }
 
+    func showSecondaryActionButton() {
+
+    }
+
+    func showSecondaryActionDescription(_ secondaryActionDescription: String) {
+
+    }
+
     // MARK: Properties
 
     var pageInfo: TutorialPageInfo? {
