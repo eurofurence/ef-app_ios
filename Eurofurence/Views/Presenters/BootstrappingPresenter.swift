@@ -19,6 +19,7 @@ struct BootstrappingPresenter {
 
             tutorialPage.showPageTitle(pageInfo.title)
             tutorialPage.showPageDescription(pageInfo.description)
+            tutorialPage.showPageImage(pageInfo.image)
         }
     }
 

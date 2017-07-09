@@ -8,6 +8,7 @@
 
 @testable import Eurofurence
 import Foundation
+import UIKit
 
 class CapturingTutorialPageScene: TutorialPageScene {
 
@@ -19,6 +20,11 @@ class CapturingTutorialPageScene: TutorialPageScene {
     private(set) var capturedPageDescription: String?
     func showPageDescription(_ description: String?) {
         capturedPageDescription = description
+    }
+
+    private(set) var capturedPageImage: UIImage?
+    func showPageImage(_ image: UIImage?) {
+        capturedPageImage = image
     }
 
 }

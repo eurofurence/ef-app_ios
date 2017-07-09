@@ -45,4 +45,12 @@ class WhenTheTutorialAppears: XCTestCase {
         XCTAssertEqual(expectedDescription, setup.page.capturedPageDescription)
     }
 
+    func testItShouldTellTheFirstTutorialPageToShowTheImageFromTheFirstTutorialItem() {
+        let expectedImage = UIImage()
+        let firstTutorialItem = TutorialPageInfo(image: expectedImage, title: nil, description: nil)
+        let setup = showTutorial([firstTutorialItem])
+
+        XCTAssertEqual(expectedImage, setup.page.capturedPageImage)
+    }
+
 }

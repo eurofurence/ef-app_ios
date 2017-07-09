@@ -38,6 +38,10 @@ class TutorialPageViewController: UIViewController, TutorialPageScene {
 
     }
 
+    func showPageImage(_ image: UIImage?) {
+
+    }
+
     // MARK: Properties
 
     var pageInfo: TutorialPageInfo? {

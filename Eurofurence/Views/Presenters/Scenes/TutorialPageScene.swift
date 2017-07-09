@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import UIKit
 
 protocol TutorialPageScene {
 
     func showPageTitle(_ title: String?)
     func showPageDescription(_ description: String?)
+    func showPageImage(_ image: UIImage?)
 
 }
