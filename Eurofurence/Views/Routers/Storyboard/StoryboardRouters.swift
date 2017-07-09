@@ -11,8 +11,9 @@ import UIKit
 struct StoryboardRouters: Routers {
 
     init(window: UIWindow) {
-        tutorialRouter = StoryboardTutorialRouter(window: window)
-        splashScreenRouter = StoryboardSplashScreenRouter(window: window)
+        let animator = RootViewControllerAnimator(window: window)
+        tutorialRouter = StoryboardTutorialRouter(animator: animator)
+        splashScreenRouter = StoryboardSplashScreenRouter(animator: animator)
     }
 
     var tutorialRouter: TutorialRouter

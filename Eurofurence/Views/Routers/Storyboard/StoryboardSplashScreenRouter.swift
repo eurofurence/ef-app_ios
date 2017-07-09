@@ -10,16 +10,12 @@ import UIKit
 
 struct StoryboardSplashScreenRouter: SplashScreenRouter {
 
-    var window: UIWindow
-
-    init(window: UIWindow) {
-        self.window = window
-    }
+    var animator: RootViewControllerAnimator
 
     func showSplashScreen() {
         let storyboardBundle = Bundle(for: SplashViewController.self)
         let storyboard = UIStoryboard(name: "Main", bundle: storyboardBundle)
-        window.rootViewController = storyboard.instantiateInitialViewController()
+        animator.animateTransition(to: storyboard.instantiateInitialViewController()!)
     }
 
 }

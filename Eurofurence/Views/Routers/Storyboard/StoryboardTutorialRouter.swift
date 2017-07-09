@@ -10,10 +10,10 @@ import UIKit
 
 struct StoryboardTutorialRouter: TutorialRouter {
 
-    var window: UIWindow
+    var animator: RootViewControllerAnimator
 
-    init(window: UIWindow) {
-        self.window = window
+    init(animator: RootViewControllerAnimator) {
+        self.animator = animator
     }
 
     func showTutorial() -> TutorialScene {
@@ -23,7 +23,7 @@ struct StoryboardTutorialRouter: TutorialRouter {
             fatalError("Expected initial view controller of Tutorial storyboard to be instance of \(TutorialViewController.self)")
         }
 
-        window.rootViewController = tutorialController
+        animator.animateTransition(to: tutorialController)
 
         return tutorialController
     }
