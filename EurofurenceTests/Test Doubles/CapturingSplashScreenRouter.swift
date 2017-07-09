@@ -11,9 +11,12 @@ import Foundation
 
 class CapturingSplashScreenRouter: SplashScreenRouter {
 
+    let splashScene = CapturingSplashScene()
+
     private(set) var wasToldToShowSplashScreen = false
-    func showSplashScreen() {
+    func showSplashScreen() -> SplashScene {
         wasToldToShowSplashScreen = true
+        return splashScene
     }
     
 }

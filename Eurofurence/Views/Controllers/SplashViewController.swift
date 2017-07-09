@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SplashViewController: UIViewController,
+class SplashViewController: UIViewController, SplashScene,
                             DataStoreLoadDelegate,
                             DataStoreRefreshDelegate {
 
@@ -46,6 +46,12 @@ class SplashViewController: UIViewController,
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         loadController.remove(self)
+    }
+
+    // MARK: SplashScene
+
+    func showQuote(_ quote: String) {
+
     }
 
     // MARK: DataStoreLoadDelegate

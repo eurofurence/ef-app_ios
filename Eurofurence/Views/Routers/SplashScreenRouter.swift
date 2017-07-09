@@ -10,6 +10,6 @@ import Foundation
 
 protocol SplashScreenRouter {
 
-    func showSplashScreen()
+    func showSplashScreen() -> SplashScene
 
 }

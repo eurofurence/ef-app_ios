@@ -14,10 +14,18 @@ class StoryboardSplashScreenRouterTests: XCTestCase {
     func testShowingTheSplashScreenShouldSetTheNavigationControllerContainingTheSplashViewControllerAsTheWindowsRootViewController() {
         let window = UIWindow(frame: .zero)
         let splashRouter = StoryboardRouters(window: window).splashScreenRouter
-        splashRouter.showSplashScreen()
+        _ = splashRouter.showSplashScreen()
         let navigationController = window.rootViewController as? UINavigationController
 
         XCTAssertTrue(navigationController?.topViewController is SplashViewController)
+    }
+
+    func testShowingTheSplashScreenShouldReturnTheSplashViewController() {
+        let window = UIWindow(frame: .zero)
+        let splashRouter = StoryboardRouters(window: window).splashScreenRouter
+        let splashScreen = splashRouter.showSplashScreen()
+
+        XCTAssertTrue(splashScreen is SplashViewController)
     }
 
 }

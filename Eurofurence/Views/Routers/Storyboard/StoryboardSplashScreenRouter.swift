@@ -12,10 +12,20 @@ struct StoryboardSplashScreenRouter: SplashScreenRouter {
 
     var animator: RootViewControllerAnimator
 
-    func showSplashScreen() {
+    func showSplashScreen() -> SplashScene {
         let storyboardBundle = Bundle(for: SplashViewController.self)
         let storyboard = UIStoryboard(name: "Main", bundle: storyboardBundle)
-        animator.animateTransition(to: storyboard.instantiateInitialViewController()!)
+        guard let root = storyboard.instantiateInitialViewController() as? UINavigationController else {
+            fatalError("Unexpected entry point into Main storyboard")
+        }
+
+        guard let splash = root.topViewController as? SplashViewController else {
+            fatalError("Expected \(SplashViewController.self) as root of UINavigationController")
+        }
+
+        animator.animateTransition(to: root)
+
+        return splash
     }
 
 }

@@ -1,5 +1,5 @@
 //
-//  QuoteGenerator.swift
+//  SplashScene.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 09/07/2017.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-protocol QuoteGenerator {
+protocol SplashScene {
 
-    func makeQuote() -> String
+    func showQuote(_ quote: String)
 
 }

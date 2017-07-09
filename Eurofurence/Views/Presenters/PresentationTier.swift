@@ -11,8 +11,8 @@ import UIKit
 
 struct DummyQuoteGenerator: QuoteGenerator {
 
-    func makeQuote() {
-
+    func makeQuote() -> String {
+        return ""
     }
 
 }
