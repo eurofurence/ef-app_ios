@@ -53,6 +53,8 @@
 		78C86D631F12389E003A20E6 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D621F12389E003A20E6 /* TutorialScene.swift */; };
 		78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D641F123B20003A20E6 /* CapturingTutorialPageScene.swift */; };
 		78C86D671F123B55003A20E6 /* TutorialPageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D661F123B55003A20E6 /* TutorialPageScene.swift */; };
+		78C86D691F123F68003A20E6 /* ApplicationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D681F123F68003A20E6 /* ApplicationContext.swift */; };
+		78C86D6C1F123FD8003A20E6 /* TestingApplicationContextBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D6B1F123FD8003A20E6 /* TestingApplicationContextBuilder.swift */; };
 		78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */; };
 		78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */; };
 		78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */; };
@@ -192,6 +194,8 @@
 		78C86D621F12389E003A20E6 /* TutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialScene.swift; path = Presenters/Scenes/TutorialScene.swift; sourceTree = "<group>"; };
 		78C86D641F123B20003A20E6 /* CapturingTutorialPageScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingTutorialPageScene.swift; path = "Test Doubles/Scenes/CapturingTutorialPageScene.swift"; sourceTree = "<group>"; };
 		78C86D661F123B55003A20E6 /* TutorialPageScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialPageScene.swift; path = Presenters/Scenes/TutorialPageScene.swift; sourceTree = "<group>"; };
+		78C86D681F123F68003A20E6 /* ApplicationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationContext.swift; path = Presenters/ApplicationContext.swift; sourceTree = "<group>"; };
+		78C86D6B1F123FD8003A20E6 /* TestingApplicationContextBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestingApplicationContextBuilder.swift; path = "Presenter Tests/Builders/TestingApplicationContextBuilder.swift"; sourceTree = "<group>"; };
 		78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInfoPropertyListShould.swift; sourceTree = "<group>"; };
 		78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarServiceTests.swift; sourceTree = "<group>"; };
 		78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -383,6 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				78C86D611F123895003A20E6 /* Scenes */,
+				78C86D681F123F68003A20E6 /* ApplicationContext.swift */,
 				78455B4F1F117851005BE2D7 /* BootstrappingPresenter.swift */,
 			);
 			name = Presenters;
@@ -409,6 +414,7 @@
 		78C86D5B1F12355C003A20E6 /* Presenter Tests */ = {
 			isa = PBXGroup;
 			children = (
+				78C86D6A1F123FC4003A20E6 /* Builders */,
 				78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */,
 				78C86D5C1F123686003A20E6 /* WhenTheTutorialAppears.swift */,
 			);
@@ -431,6 +437,14 @@
 				78C86D661F123B55003A20E6 /* TutorialPageScene.swift */,
 			);
 			name = Scenes;
+			sourceTree = "<group>";
+		};
+		78C86D6A1F123FC4003A20E6 /* Builders */ = {
+			isa = PBXGroup;
+			children = (
+				78C86D6B1F123FD8003A20E6 /* TestingApplicationContextBuilder.swift */,
+			);
+			name = Builders;
 			sourceTree = "<group>";
 		};
 		78F555971F10D59000BDA7D4 /* Segues */ = {
@@ -950,6 +964,7 @@
 			files = (
 				9A7FFD571EFC5B46007ABA36 /* CalendarAccess.swift in Sources */,
 				6EF96CCC1F0EDB0500EE6134 /* CalendarEvent.swift in Sources */,
+				78C86D691F123F68003A20E6 /* ApplicationContext.swift in Sources */,
 				9ACF99761EBE3B4C006FC958 /* SharedFunctions.swift in Sources */,
 				9A34B97A1ECF87B2004A249E /* ContextManager.swift in Sources */,
 				9AB64BC91EFE6592004E8D91 /* EventsViewModel.swift in Sources */,
@@ -1058,6 +1073,7 @@
 				6EF96CDB1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift in Sources */,
 				78455B521F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift in Sources */,
 				78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */,
+				78C86D6C1F123FD8003A20E6 /* TestingApplicationContextBuilder.swift in Sources */,
 				78C86D4C1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift in Sources */,
 				78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */,
 				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,

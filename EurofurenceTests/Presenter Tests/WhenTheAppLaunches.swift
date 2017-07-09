@@ -14,10 +14,8 @@ class WhenTheAppLaunches: XCTestCase {
     func testAndTheUserHasNotFinishedTheTutorialTheTutorialRouterIsToldToShowTheTutorial() {
         let tutorialRouter = CapturingTutorialRouter()
         let routers = StubRouters(tutorialRouter: tutorialRouter)
-        let initialAppStateProvider = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
-        _ = BootstrappingPresenter(firstTimeLaunchProviding: initialAppStateProvider,
-                                   tutorialItems: [],
-                                   routers: routers)
+        let context = TestingApplicationContextBuilder().forShowingTutorial().build()
+        _ = BootstrappingPresenter(context: context, routers: routers)
 
         XCTAssertTrue(tutorialRouter.wasToldToShowTutorial)
     }
@@ -25,10 +23,8 @@ class WhenTheAppLaunches: XCTestCase {
     func testAndTheUserHasPreviouslyFinishedTheTutorialTheSplashRouterIsToldToShowTheSplashScreen() {
         let splashScreenRouter = CapturingSplashScreenRouter()
         let routers = StubRouters(splashScreenRouter: splashScreenRouter)
-        let initialAppStateProvider = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
-        _ = BootstrappingPresenter(firstTimeLaunchProviding: initialAppStateProvider,
-                                   tutorialItems: [],
-                                   routers: routers)
+        let context = TestingApplicationContextBuilder().build()
+        _ = BootstrappingPresenter(context: context, routers: routers)
 
         XCTAssertTrue(splashScreenRouter.wasToldToShowSplashScreen)
     }
@@ -36,10 +32,8 @@ class WhenTheAppLaunches: XCTestCase {
     func testAndTheUserHasNotFinishedTheTutorialTheSplashScreenRouterShouldNotBeToldToShowTheSplashScreen() {
         let splashScreenRouter = CapturingSplashScreenRouter()
         let routers = StubRouters(splashScreenRouter: splashScreenRouter)
-        let initialAppStateProvider = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
-        _ = BootstrappingPresenter(firstTimeLaunchProviding: initialAppStateProvider,
-                                   tutorialItems: [],
-                                   routers: routers)
+        let context = TestingApplicationContextBuilder().forShowingTutorial().build()
+        _ = BootstrappingPresenter(context: context, routers: routers)
 
         XCTAssertFalse(splashScreenRouter.wasToldToShowSplashScreen)
     }
@@ -47,10 +41,8 @@ class WhenTheAppLaunches: XCTestCase {
     func testAndTheUserHasPreviouslyFinishedTheTutorialTheTutorialRouterShouldNotBeToldToShowTheTutorial() {
         let tutorialRouter = CapturingTutorialRouter()
         let routers = StubRouters(tutorialRouter: tutorialRouter)
-        let initialAppStateProvider = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
-        _ = BootstrappingPresenter(firstTimeLaunchProviding: initialAppStateProvider,
-                                   tutorialItems: [],
-                                   routers: routers)
+        let context = TestingApplicationContextBuilder().build()
+        _ = BootstrappingPresenter(context: context, routers: routers)
 
         XCTAssertFalse(tutorialRouter.wasToldToShowTutorial)
     }
