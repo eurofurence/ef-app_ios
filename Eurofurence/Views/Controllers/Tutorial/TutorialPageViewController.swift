@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TutorialPageViewController: UIViewController {
+class TutorialPageViewController: UIViewController, TutorialPageScene {
 
     // MARK: IBOutlets
 
@@ -26,6 +26,12 @@ class TutorialPageViewController: UIViewController {
 
     @IBAction func performSecondaryAction(_ sender: Any) {
         pageInfo?.runSecondaryAction()
+    }
+
+    // MARK: TutorialPageScene
+
+    func showPageTitle(_ title: String?) {
+
     }
 
     // MARK: Properties

@@ -24,5 +24,15 @@ class TutorialViewControllerTests: XCTestCase {
     func testTheViewControllerShouldPreferTheLightStatusBarStyle() {
         XCTAssertEqual(tutorialController.preferredStatusBarStyle, .lightContent)
     }
+
+    func testShowingTutorialPageShouldReturnTutorialPageViewController() {
+        let page = tutorialController.showTutorialPage()
+        XCTAssertTrue(page is TutorialPageViewController)
+    }
+
+    func testShowingTutorialPageShouldReturnTutorialPageViewControllerFromStoryboard() {
+        let viewController = tutorialController.showTutorialPage() as? UIViewController
+        XCTAssertNotNil(viewController?.storyboard)
+    }
     
 }

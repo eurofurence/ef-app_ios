@@ -36,11 +36,12 @@ class TutorialViewController: UIPageViewController, TutorialScene {
     // MARK: TutorialScene
 
     func showTutorialPage() -> TutorialPageScene {
-        class Dummy: TutorialPageScene {
-            func showPageTitle(_ title: String?) { }
+        let viewController = storyboard?.instantiateViewController(withIdentifier: "TutorialPageViewController")
+        guard let tutorialController = viewController as? TutorialPageViewController else {
+            fatalError("Unable to resolve \(TutorialPageViewController.self) from Storyboard")
         }
 
-        return Dummy()
+        return tutorialController
     }
 
     // MARK: Private
