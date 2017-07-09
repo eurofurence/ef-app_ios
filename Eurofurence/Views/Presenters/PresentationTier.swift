@@ -28,11 +28,11 @@ struct PresentationTier {
 
     private func makeTutorialItems() -> [TutorialPageInfo] {
         let action = TutorialBlockAction { }
-        let beginDownloadAction = TutorialPageAction(actionDescription: "Let's Go",
+        let beginDownloadAction = TutorialPageAction(actionDescription: "Begin Download",
                                                      action: action)
-        let beginDownloadItem = TutorialPageInfo(image: #imageLiteral(resourceName: "tuto01_notificationIcon"),
-                                                 title: "Hello!",
-                                                 description: "This is a work in progress, hit the button below to skip this for now.",
+        let beginDownloadItem = TutorialPageInfo(image: #imageLiteral(resourceName: "tuto02_informationIcon"),
+                                                 title: "Offline Usage",
+                                                 description: "The Eurofurence app is intended to remain fully functional while offline. To do this, we need to download a few megabytes of data. This may take several minutes depending upon the speed of your connection.",
                                                  primaryAction: beginDownloadAction)
 
         return [beginDownloadItem]
