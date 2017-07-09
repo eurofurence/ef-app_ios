@@ -29,7 +29,7 @@ class DataStoreRefreshController {
 
     private init() {
         contextManager = try! ContextResolver.container.resolve()
-		lastSyncDateProvider = contextManager
+		lastSyncDateProvider = try! ContextResolver.container.resolve()
     }
 
     func add(_ delegate: DataStoreRefreshDelegate) {

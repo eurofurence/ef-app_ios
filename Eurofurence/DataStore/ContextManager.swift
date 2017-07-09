@@ -9,18 +9,12 @@ import Foundation
 import ReactiveSwift
 import Result
 
-class ContextManager: LastSyncDateProviding {
+class ContextManager {
 	private static let scheduler = QueueScheduler(qos: .userInitiated, name: "org.eurofurence.app.ContextManagerScheduler")
 	private var apiConnection: ApiConnectionProtocol
 	private var dataContext: DataContextProtocol
 	private var dataStore: DataStoreProtocol
 	private var imageService: ImageServiceProtocol
-
-	var lastSyncDate: Date? {
-		get {
-			return dataContext.SyncState.value.LastSyncDate
-		}
-	}
 
 	private(set) lazy var syncWithApi: Action<Date?, Progress, NSError>? =
 			Action { sinceDate in

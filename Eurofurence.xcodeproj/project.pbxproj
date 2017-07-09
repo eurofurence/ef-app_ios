@@ -82,6 +82,7 @@
 		9A05254D1ECB097500578798 /* DataContextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A05254A1ECB097500578798 /* DataContextProtocol.swift */; };
 		9A2A94871F12CBC0004D66FB /* SyncState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2A94861F12CBC0004D66FB /* SyncState.swift */; };
 		9A2A94891F12D152004D66FB /* LastSyncDateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2A94881F12D152004D66FB /* LastSyncDateProviding.swift */; };
+		9A2A94911F12E7D6004D66FB /* SyncStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2A94901F12E7D6004D66FB /* SyncStateProvider.swift */; };
 		9A34B9781ECF6E3B004A249E /* Iso8601DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A34B9771ECF6E3B004A249E /* Iso8601DateFormatter.swift */; };
 		9A34B97A1ECF87B2004A249E /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A34B9791ECF87B1004A249E /* ContextManager.swift */; };
 		9A34B97F1ED06946004A249E /* ContextResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A34B97E1ED06946004A249E /* ContextResolver.swift */; };
@@ -238,6 +239,7 @@
 		9A05254A1ECB097500578798 /* DataContextProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataContextProtocol.swift; sourceTree = "<group>"; };
 		9A2A94861F12CBC0004D66FB /* SyncState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncState.swift; sourceTree = "<group>"; };
 		9A2A94881F12D152004D66FB /* LastSyncDateProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastSyncDateProviding.swift; sourceTree = "<group>"; };
+		9A2A94901F12E7D6004D66FB /* SyncStateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncStateProvider.swift; sourceTree = "<group>"; };
 		9A34B9771ECF6E3B004A249E /* Iso8601DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Iso8601DateFormatter.swift; sourceTree = "<group>"; };
 		9A34B9791ECF87B1004A249E /* ContextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
 		9A34B97E1ED06946004A249E /* ContextResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextResolver.swift; sourceTree = "<group>"; };
@@ -658,6 +660,7 @@
 				9A0525441ECB090700578798 /* WebApiConnection.swift */,
 				78567B3C1F100BAF00EBA31D /* DataStoreRefreshController.swift */,
 				78567B461F10D1C400EBA31D /* DataStoreLoadController.swift */,
+				9A2A94901F12E7D6004D66FB /* SyncStateProvider.swift */,
 			);
 			path = DataStore;
 			sourceTree = "<group>";
@@ -1098,6 +1101,7 @@
 				9ACF99901EC858B2006FC958 /* KnowledgeEntry.swift in Sources */,
 				9AF0B4FE1F08459D000AAA0A /* TimeIntervalRow.swift in Sources */,
 				9AF159ED1EF5BE7F00DB287D /* SimpleEventCell.swift in Sources */,
+				9A2A94911F12E7D6004D66FB /* SyncStateProvider.swift in Sources */,
 				9ACF998F1EC858B2006FC958 /* Announcement.swift in Sources */,
 				78C86D7D1F12B8FD003A20E6 /* EgyptianQuoteGenerator.swift in Sources */,
 				6EF96CD11F0EDB4C00EE6134 /* CalendarService.swift in Sources */,

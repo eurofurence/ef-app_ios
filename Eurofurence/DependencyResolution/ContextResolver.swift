@@ -47,5 +47,9 @@ class ContextResolver {
 			                   dataStore: $2,
 			                   imageService: $3)
 		}
+
+		_container.register(.singleton) {
+			SyncStateProvider(dataContext: $0) as LastSyncDateProviding
+		}
 	}
 }
