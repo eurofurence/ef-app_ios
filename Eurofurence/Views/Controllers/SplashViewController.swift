@@ -15,6 +15,7 @@ class SplashViewController: UIViewController, SplashScene,
     // MARK: IBOutlets
 
     @IBOutlet weak var loadingProgressView: UIProgressView!
+    @IBOutlet weak var quoteLabel: UILabel!
 
     // MARK: Properties
 
@@ -51,7 +52,7 @@ class SplashViewController: UIViewController, SplashScene,
     // MARK: SplashScene
 
     func showQuote(_ quote: String) {
-
+        quoteLabel.text = quote
     }
 
     // MARK: DataStoreLoadDelegate

@@ -23,6 +23,7 @@ struct StoryboardSplashScreenRouter: SplashScreenRouter {
             fatalError("Expected \(SplashViewController.self) as root of UINavigationController")
         }
 
+        splash.loadViewIfNeeded()
         animator.animateTransition(to: root)
 
         return splash
