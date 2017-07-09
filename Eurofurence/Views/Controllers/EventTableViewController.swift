@@ -70,6 +70,10 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
 		// TODO: Update view by days based on TimeService ticks?
     }
 
+	override func viewWillDisappear(_ animated: Bool) {
+		refreshControl?.endRefreshing()
+	}
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -153,6 +153,8 @@ class NewsTableViewController: UITableViewController {
 		if let tabBarItem = self.navigationController?.tabBarItem {
 			tabBarItem.badgeValue = nil
 		}
+
+		refreshControl?.endRefreshing()
 	}
 
     // MARK: - Table view data source

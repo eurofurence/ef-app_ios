@@ -52,6 +52,10 @@ class DealerTableViewController: UITableViewController {
 		DataStoreRefreshController.shared.refreshStore()
 	}
 
+	override func viewWillDisappear(_ animated: Bool) {
+		refreshControl?.endRefreshing()
+	}
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
