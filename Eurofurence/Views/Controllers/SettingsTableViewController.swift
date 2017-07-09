@@ -116,7 +116,7 @@ class SettingsTableViewController: FormViewController {
 					// TODO: Provide feedback about background operations
 					let confirmationAlert = UIAlertController(title: "Force Full Synchronisation", message: "All data and all images missing from cache will be downloaded from the server.", preferredStyle: UIAlertControllerStyle.alert)
 					confirmationAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_: UIAlertAction!) in
-						DataStoreRefreshController.shared.refreshStore()
+						DataStoreRefreshController.shared.refreshStore(withDelta: false)
 					}))
 					confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 					self.present(confirmationAlert, animated: true, completion: nil)

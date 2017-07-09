@@ -54,7 +54,7 @@ class DataStoreLoadController {
                 // TODO: Prompt user for required initialisation
                 // TODO: Check WiFi connection and prompt user if on mobile
                 print("Performing full reload from API")
-                DataStoreRefreshController.shared.refreshStore()
+                DataStoreRefreshController.shared.refreshStore(withDelta: false)
             case .completed:
                 self.delegates.forEach({ $0.dataStoreLoadDidFinish() })
 

@@ -12,7 +12,7 @@ struct RefreshControlDataStoreDelegate: DataStoreRefreshDelegate {
 
     var refreshControl: UIRefreshControl
 
-    func dataStoreRefreshDidBegin() {
+	func dataStoreRefreshDidBegin(_ lastSync: Date?) {
         refreshControl.beginRefreshing()
     }
 

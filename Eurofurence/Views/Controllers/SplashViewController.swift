@@ -84,7 +84,7 @@ class SplashViewController: UIViewController, SplashScene,
         loadingProgressView.progress = Float(progress.fractionCompleted)
     }
 
-    func dataStoreRefreshDidBegin() { }
+	func dataStoreRefreshDidBegin(_ lastSync: Date?) { }
     func dataStoreRefreshDidFailWithError(_ error: Error) { }
 
     // MARK: Private

@@ -10,6 +10,8 @@ import ReactiveSwift
 import Result
 
 protocol DataContextProtocol {
+	var SyncState: MutableProperty<SyncState> { get }
+
 	var Announcements: MutableProperty<[Announcement]> { get }
 	var Dealers: MutableProperty<[Dealer]> { get }
 	var Events: MutableProperty<[Event]> { get }

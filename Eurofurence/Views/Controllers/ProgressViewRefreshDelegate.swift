@@ -12,7 +12,7 @@ struct ProgressViewRefreshDelegate: DataStoreRefreshDelegate {
 
     var progressView: UIProgressView
 
-    func dataStoreRefreshDidBegin() {
+	func dataStoreRefreshDidBegin(_ lastSync: Date?) {
         progressView.progress = 0
         progressView.alpha = 1
     }

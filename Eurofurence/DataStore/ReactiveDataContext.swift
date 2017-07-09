@@ -15,6 +15,8 @@ class ReactiveDataContext: DataContextProtocol {
 	fileprivate let dataStore: DataStoreProtocol
 	fileprivate let navigationResolver: NavigationResolverProtocol
 
+	let SyncState = MutableProperty<SyncState>(Eurofurence.SyncState())
+
 	let Announcements = MutableProperty<[Announcement]>([])
 	let Dealers = MutableProperty<[Dealer]>([])
 	let EventConferenceDays = MutableProperty<[EventConferenceDay]>([])
@@ -77,6 +79,11 @@ class ReactiveDataContext: DataContextProtocol {
 					progress.completedUnitCount += 1
 					observer.send(value: progress)
 
+					self.SyncState.modify {
+						$0.LastSyncDate = data.CurrentDateTimeUtc
+						$0.LastChangeDateTimeUtc = Date()
+					}
+
 					print("Resolving entity references")
 					self.navigationResolver.resolve(dataContext: self)
 					progress.completedUnitCount += 1
@@ -85,7 +92,7 @@ class ReactiveDataContext: DataContextProtocol {
 					print("Saving data to store")
 					self.saveToStore(affectedAreas).start({ result in
 						if let value = result.value {
-							progress.completedUnitCount += 1
+							progress.completedUnitCount = 11 + Int64(10 * value.fractionCompleted)
 							observer.send(value: progress)
 							print("Storing completed by \(value.fractionCompleted)")
 						} else if let error = result.error {
@@ -96,7 +103,7 @@ class ReactiveDataContext: DataContextProtocol {
 
 						if result.isCompleted {
 							self.refreshedInput.send(value: affectedAreas)
-							progress.completedUnitCount += 1
+							progress.completedUnitCount = progress.totalUnitCount
 							observer.sendCompleted()
 							print("Finished saving data to store for \(String(describing: affectedAreas))")
 						}
@@ -139,6 +146,8 @@ class ReactiveDataContext: DataContextProtocol {
 				producers.append(self.dataStore.load(Map.self))
 			}
 
+			producers.append(self.dataStore.load(Eurofurence.SyncState.self))
+
 			let overallProgress = Progress(totalUnitCount: Int64(exactly: producers.count + 1)!)
 			let resultsProducer = SignalProducer<SignalProducer<DataStoreResult, DataStoreError>, NoError>(producers)
 
@@ -167,6 +176,10 @@ class ReactiveDataContext: DataContextProtocol {
 						self.KnowledgeGroups.swap(value.entityData as! [KnowledgeGroup])
 					case is Map.Type:
 						self.Maps.swap(value.entityData as! [Map])
+					case is Eurofurence.SyncState.Type:
+						if let syncStateResult = value.entityData?.first as? Eurofurence.SyncState {
+							self.SyncState.swap(syncStateResult)
+						}
 					default:
 						print("Attempted to load unknown entity") // This should never happen *ducks*
 					}
@@ -217,6 +230,8 @@ class ReactiveDataContext: DataContextProtocol {
 			if areas.contains(.Maps) {
 				producers.append(self.dataStore.save(Map.self, entityData: self.Maps.value))
 			}
+
+			producers.append(self.dataStore.save(Eurofurence.SyncState.self, entityData: [self.SyncState.value]))
 
 			let overallProgress = Progress(totalUnitCount: Int64(exactly: producers.count)!)
 			let resultsProducer = SignalProducer<SignalProducer<DataStoreResult, DataStoreError>, NoError>(producers)
