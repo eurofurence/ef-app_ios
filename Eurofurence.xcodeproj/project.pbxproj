@@ -61,6 +61,7 @@
 		78C86D691F123F68003A20E6 /* ApplicationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D681F123F68003A20E6 /* ApplicationContext.swift */; };
 		78C86D6C1F123FD8003A20E6 /* TestingApplicationContextBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D6B1F123FD8003A20E6 /* TestingApplicationContextBuilder.swift */; };
 		78C86D6E1F12A71E003A20E6 /* RootViewControllerAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D6D1F12A71E003A20E6 /* RootViewControllerAnimator.swift */; };
+		78C86D701F12AA6C003A20E6 /* Hieroglify.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78C86D6F1F12AA68003A20E6 /* Hieroglify.ttf */; };
 		78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */; };
 		78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */; };
 		78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */; };
@@ -208,6 +209,7 @@
 		78C86D681F123F68003A20E6 /* ApplicationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationContext.swift; path = Presenters/ApplicationContext.swift; sourceTree = "<group>"; };
 		78C86D6B1F123FD8003A20E6 /* TestingApplicationContextBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestingApplicationContextBuilder.swift; path = "Presenter Tests/Builders/TestingApplicationContextBuilder.swift"; sourceTree = "<group>"; };
 		78C86D6D1F12A71E003A20E6 /* RootViewControllerAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootViewControllerAnimator.swift; path = Routers/Storyboard/RootViewControllerAnimator.swift; sourceTree = "<group>"; };
+		78C86D6F1F12AA68003A20E6 /* Hieroglify.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hieroglify.ttf; sourceTree = "<group>"; };
 		78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInfoPropertyListShould.swift; sourceTree = "<group>"; };
 		78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarServiceTests.swift; sourceTree = "<group>"; };
 		78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -664,6 +666,7 @@
 		9ACF999B1ECA259C006FC958 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				78C86D6F1F12AA68003A20E6 /* Hieroglify.ttf */,
 				9AB64BCE1F02665D004E8D91 /* fontawesome-webfont.ttf */,
 				9ACF999C1ECA25E1006FC958 /* Sync.mock.json */,
 			);
@@ -839,6 +842,7 @@
 				78455B561F117B24005BE2D7 /* Tutorial.storyboard in Resources */,
 				78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */,
 				9ACF99421EBE172D006FC958 /* LaunchScreen.storyboard in Resources */,
+				78C86D701F12AA6C003A20E6 /* Hieroglify.ttf in Resources */,
 				9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */,
 				9ACF999D1ECA25E1006FC958 /* Sync.mock.json in Resources */,
 				D6F3D13186949132FE4694AD /* Main.storyboard in Resources */,
