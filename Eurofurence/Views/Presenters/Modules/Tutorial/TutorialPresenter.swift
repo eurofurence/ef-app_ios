@@ -37,8 +37,6 @@ class TutorialPresenter: TutorialPageSceneDelegate, TutorialActionDelegate {
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
         currentPrimaryAction?.runAction(self)
-        splashScreenRouter.showSplashScreen()
-        tutorialStateProviding.markTutorialAsComplete()
     }
 
     func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) {
@@ -48,7 +46,8 @@ class TutorialPresenter: TutorialPageSceneDelegate, TutorialActionDelegate {
     // MARK: TutorialActionDelegate
 
     func tutorialActionDidFinish(_ action: TutorialAction) {
-
+        splashScreenRouter.showSplashScreen()
+        tutorialStateProviding.markTutorialAsComplete()
     }
 
     // MARK: Private
