@@ -9,6 +9,14 @@
 import Foundation
 import UIKit
 
+struct DummyQuoteGenerator: QuoteGenerator {
+
+    func makeQuote() {
+
+    }
+
+}
+
 struct PresentationTier {
 
     static func assemble(window: UIWindow) -> PresentationTier {
@@ -21,7 +29,9 @@ struct PresentationTier {
     private init(window: UIWindow) {
         self.routers = StoryboardRouters(window: window)
         self.finishedTutorialProvider = UserDefaultsTutorialStateProvider(userDefaults: .standard)
-        let appContext = ApplicationContext(firstTimeLaunchProviding: finishedTutorialProvider, tutorialItems: makeTutorialItems())
+        let appContext = ApplicationContext(firstTimeLaunchProviding: finishedTutorialProvider,
+                                            tutorialItems: makeTutorialItems(),
+                                            quoteGenerator: DummyQuoteGenerator())
 
         BootstrappingModule.bootstrap(context: appContext, routers: routers)
     }

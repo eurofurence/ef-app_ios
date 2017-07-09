@@ -12,6 +12,7 @@ struct BootstrappingModule {
 
     static func bootstrap(context: ApplicationContext, routers: Routers) {
         if context.firstTimeLaunchProviding.userHasCompletedTutorial {
+            context.quoteGenerator.makeQuote()
             routers.splashScreenRouter.showSplashScreen()
         } else {
             TutorialModule.initialize(context: context, routers: routers)
