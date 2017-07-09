@@ -11,11 +11,15 @@ import Foundation
 struct BootstrappingPresenter {
 
     init(firstTimeLaunchProviding: UserCompletedTutorialStateProviding,
+         tutorialItems: [TutorialPageInfo],
          routers: Routers) {
         if firstTimeLaunchProviding.userHasCompletedTutorial {
             routers.splashScreenRouter.showSplashScreen()
         } else {
-            routers.tutorialRouter.showTutorial().showTutorialPage()
+            let tutorialPage = routers.tutorialRouter.showTutorial().showTutorialPage()
+            guard let pageInfo = tutorialItems.first else { return }
+
+            tutorialPage.showPageTitle(pageInfo.title)
         }
     }
 

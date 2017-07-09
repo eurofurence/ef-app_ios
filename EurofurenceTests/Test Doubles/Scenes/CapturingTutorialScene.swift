@@ -11,9 +11,12 @@ import Foundation
 
 class CapturingTutorialScene: TutorialScene {
 
+    let tutorialPage = CapturingTutorialPageScene()
+
     private(set) var wasToldToShowTutorialPage = false
-    func showTutorialPage() {
+    func showTutorialPage() -> TutorialPageScene {
         wasToldToShowTutorialPage = true
+        return tutorialPage
     }
 
 }

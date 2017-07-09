@@ -51,6 +51,8 @@
 		78C86D5D1F123686003A20E6 /* WhenTheTutorialAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D5C1F123686003A20E6 /* WhenTheTutorialAppears.swift */; };
 		78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D5F1F123859003A20E6 /* CapturingTutorialScene.swift */; };
 		78C86D631F12389E003A20E6 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D621F12389E003A20E6 /* TutorialScene.swift */; };
+		78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D641F123B20003A20E6 /* CapturingTutorialPageScene.swift */; };
+		78C86D671F123B55003A20E6 /* TutorialPageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D661F123B55003A20E6 /* TutorialPageScene.swift */; };
 		78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */; };
 		78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */; };
 		78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */; };
@@ -188,6 +190,8 @@
 		78C86D5C1F123686003A20E6 /* WhenTheTutorialAppears.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenTheTutorialAppears.swift; path = "Presenter Tests/WhenTheTutorialAppears.swift"; sourceTree = "<group>"; };
 		78C86D5F1F123859003A20E6 /* CapturingTutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingTutorialScene.swift; path = "Test Doubles/Scenes/CapturingTutorialScene.swift"; sourceTree = "<group>"; };
 		78C86D621F12389E003A20E6 /* TutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialScene.swift; path = Presenters/Scenes/TutorialScene.swift; sourceTree = "<group>"; };
+		78C86D641F123B20003A20E6 /* CapturingTutorialPageScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingTutorialPageScene.swift; path = "Test Doubles/Scenes/CapturingTutorialPageScene.swift"; sourceTree = "<group>"; };
+		78C86D661F123B55003A20E6 /* TutorialPageScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialPageScene.swift; path = Presenters/Scenes/TutorialPageScene.swift; sourceTree = "<group>"; };
 		78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInfoPropertyListShould.swift; sourceTree = "<group>"; };
 		78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarServiceTests.swift; sourceTree = "<group>"; };
 		78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -415,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				78C86D5F1F123859003A20E6 /* CapturingTutorialScene.swift */,
+				78C86D641F123B20003A20E6 /* CapturingTutorialPageScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -423,6 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				78C86D621F12389E003A20E6 /* TutorialScene.swift */,
+				78C86D661F123B55003A20E6 /* TutorialPageScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -1035,6 +1041,7 @@
 				D6F3D204D352FE26C3F90906 /* KnowledgeTableViewController.swift in Sources */,
 				78567B471F10D1C400EBA31D /* DataStoreLoadController.swift in Sources */,
 				D6F3DF2779D7CE09AA5507F9 /* NewsTableViewController.swift in Sources */,
+				78C86D671F123B55003A20E6 /* TutorialPageScene.swift in Sources */,
 				D6F3D0434C71907BD410190E /* ImageServiceProtocol.swift in Sources */,
 				D6F3D749FF814981E076850E /* ImageService.swift in Sources */,
 				78F5559B1F10D65900BDA7D4 /* SplashViewController.swift in Sources */,
@@ -1059,6 +1066,7 @@
 				78C86D5D1F123686003A20E6 /* WhenTheTutorialAppears.swift in Sources */,
 				6EF96CCF1F0EDB2000EE6134 /* CalendarTestDoubles.swift in Sources */,
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
+				78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */,
 				78C86D501F119F2A003A20E6 /* TutorialBlockActionTests.swift in Sources */,
 				78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */,
 				78455B4B1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift in Sources */,

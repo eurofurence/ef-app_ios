@@ -16,9 +16,23 @@ class WhenTheTutorialAppears: XCTestCase {
         let routers = StubRouters(tutorialRouter: tutorialRouter)
         let initialAppStateProvider = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
         _ = BootstrappingPresenter(firstTimeLaunchProviding: initialAppStateProvider,
+                                   tutorialItems: [],
                                    routers: routers)
 
         XCTAssertTrue(tutorialRouter.tutorialScene.wasToldToShowTutorialPage)
+    }
+
+    func testItShouldTellTheFirstTutorialPageToShowTheTitleFromTheFirstTutorialItem() {
+        let expectedTitle = "Tutorial title"
+        let firstTutorialItem = TutorialPageInfo(image: nil, title: expectedTitle, description: nil)
+        let tutorialRouter = CapturingTutorialRouter()
+        let routers = StubRouters(tutorialRouter: tutorialRouter)
+        let initialAppStateProvider = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
+        _ = BootstrappingPresenter(firstTimeLaunchProviding: initialAppStateProvider,
+                                   tutorialItems: [firstTutorialItem],
+                                   routers: routers)
+
+        XCTAssertEqual(expectedTitle, tutorialRouter.tutorialScene.tutorialPage.capturedPageTitle)
     }
     
 }

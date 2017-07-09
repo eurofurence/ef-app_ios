@@ -16,6 +16,7 @@ class WhenTheAppLaunches: XCTestCase {
         let routers = StubRouters(tutorialRouter: tutorialRouter)
         let initialAppStateProvider = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
         _ = BootstrappingPresenter(firstTimeLaunchProviding: initialAppStateProvider,
+                                   tutorialItems: [],
                                    routers: routers)
 
         XCTAssertTrue(tutorialRouter.wasToldToShowTutorial)
@@ -26,6 +27,7 @@ class WhenTheAppLaunches: XCTestCase {
         let routers = StubRouters(splashScreenRouter: splashScreenRouter)
         let initialAppStateProvider = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
         _ = BootstrappingPresenter(firstTimeLaunchProviding: initialAppStateProvider,
+                                   tutorialItems: [],
                                    routers: routers)
 
         XCTAssertTrue(splashScreenRouter.wasToldToShowSplashScreen)
@@ -36,6 +38,7 @@ class WhenTheAppLaunches: XCTestCase {
         let routers = StubRouters(splashScreenRouter: splashScreenRouter)
         let initialAppStateProvider = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
         _ = BootstrappingPresenter(firstTimeLaunchProviding: initialAppStateProvider,
+                                   tutorialItems: [],
                                    routers: routers)
 
         XCTAssertFalse(splashScreenRouter.wasToldToShowSplashScreen)
@@ -46,6 +49,7 @@ class WhenTheAppLaunches: XCTestCase {
         let routers = StubRouters(tutorialRouter: tutorialRouter)
         let initialAppStateProvider = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
         _ = BootstrappingPresenter(firstTimeLaunchProviding: initialAppStateProvider,
+                                   tutorialItems: [],
                                    routers: routers)
 
         XCTAssertFalse(tutorialRouter.wasToldToShowTutorial)

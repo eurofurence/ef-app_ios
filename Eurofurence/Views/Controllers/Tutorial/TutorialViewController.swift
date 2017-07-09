@@ -35,8 +35,12 @@ class TutorialViewController: UIPageViewController, TutorialScene {
 
     // MARK: TutorialScene
 
-    func showTutorialPage() {
+    func showTutorialPage() -> TutorialPageScene {
+        class Dummy: TutorialPageScene {
+            func showPageTitle(_ title: String?) { }
+        }
 
+        return Dummy()
     }
 
     // MARK: Private

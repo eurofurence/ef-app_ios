@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let finishedTutorialProvider = UserDefaultsTutorialStateProvider(userDefaults: userDefaults)
         let routers = StoryboardRouters(window: window!)
         _ = BootstrappingPresenter(firstTimeLaunchProviding: finishedTutorialProvider,
+                                   tutorialItems: [],
                                    routers: routers)
     }
 
