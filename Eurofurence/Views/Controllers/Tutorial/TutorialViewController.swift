@@ -24,7 +24,7 @@ class TutorialViewController: UIPageViewController {
                                                  primaryAction: beginDownloadAction)
 
         let viewController = storyboard?.instantiateViewController(withIdentifier: "TutorialPageViewController") as! TutorialPageViewController
-        viewController.loadView()
+        viewController.view.frame = view.bounds
         viewController.pageInfo = beginDownloadItem
         setViewControllers([viewController], direction: .forward, animated: false)
     }
