@@ -17,8 +17,14 @@ class MapViewModel {
 	init(dataContext: DataContextProtocol) {
 		self.dataContext = dataContext
 
+		BrowsableMaps.swap(MapViewModel.filterBrowsableMaps(dataContext.Maps.value))
+
 		disposable += BrowsableMaps <~ dataContext.Maps.signal
-			.map({ return $0.filter({ return $0.IsBrowseable && $0.Image != nil })})
+			.map(MapViewModel.filterBrowsableMaps)
+	}
+
+	static private func filterBrowsableMaps(_ maps: [Map]) -> [Map] {
+		return maps.filter({ return $0.IsBrowseable && $0.Image != nil })
 	}
 
 	deinit {

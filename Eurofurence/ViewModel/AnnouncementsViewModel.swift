@@ -19,11 +19,15 @@ class AnnouncementsViewModel {
 
 	init(dataContext: DataContextProtocol) {
 		self.dataContext = dataContext
+		Announcements.swap(AnnouncementsViewModel.filterValidAnnouncements(timeService.currentTime.value, dataContext.Announcements.value))
+
 		timedAnnouncementsSignal = Signal.combineLatest(timeService.currentTime.signal, dataContext.Announcements.signal).observe(on: scheduler)
 
-		disposable += Announcements <~ timedAnnouncementsSignal.map({ (time, items) in
-			return items.filter({$0.ValidFromDateTimeUtc < time && $0.ValidUntilDateTimeUtc > time})
-		})
+		disposable += Announcements <~ timedAnnouncementsSignal.map(AnnouncementsViewModel.filterValidAnnouncements)
+	}
+
+	private static func filterValidAnnouncements(_ time: Date, _ announcements: [Announcement]) -> [Announcement] {
+		return announcements.filter({$0.ValidFromDateTimeUtc < time && $0.ValidUntilDateTimeUtc > time})
 	}
 
 	deinit {
