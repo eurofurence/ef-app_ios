@@ -34,6 +34,10 @@ class TutorialPageViewController: UIViewController, TutorialPageScene {
 
     }
 
+    func showPageDescription(_ description: String?) {
+
+    }
+
     // MARK: Properties
 
     var pageInfo: TutorialPageInfo? {

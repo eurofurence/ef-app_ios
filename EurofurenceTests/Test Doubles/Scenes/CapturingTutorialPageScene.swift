@@ -16,4 +16,9 @@ class CapturingTutorialPageScene: TutorialPageScene {
         capturedPageTitle = title
     }
 
+    private(set) var capturedPageDescription: String?
+    func showPageDescription(_ description: String?) {
+        capturedPageDescription = description
+    }
+
 }

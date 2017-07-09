@@ -11,5 +11,6 @@ import Foundation
 protocol TutorialPageScene {
 
     func showPageTitle(_ title: String?)
+    func showPageDescription(_ description: String?)
 
 }

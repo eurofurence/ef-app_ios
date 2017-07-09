@@ -18,6 +18,7 @@ struct BootstrappingPresenter {
             guard let pageInfo = context.tutorialItems.first else { return }
 
             tutorialPage.showPageTitle(pageInfo.title)
+            tutorialPage.showPageDescription(pageInfo.description)
         }
     }
 
