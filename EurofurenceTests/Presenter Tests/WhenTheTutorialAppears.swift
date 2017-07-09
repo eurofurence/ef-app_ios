@@ -120,5 +120,23 @@ class WhenTheTutorialAppears: XCTestCase {
         
         XCTAssertTrue(capturingAction.didRun)
     }
+    
+    func testWhenThePrimaryActionCompletesWithOnlyOnePageInTheTutorialTheSplashRouterIsToldToShowTheSplashScreen() {
+        let capturingAction = CapturingAction()
+        let action = TutorialPageAction(actionDescription: "", action: capturingAction)
+        let firstTutorialItem = TutorialPageInfo(image: nil, title: nil, description: nil, primaryAction: action)
+        let tutorialRouter = CapturingTutorialRouter()
+        let splashRouter = CapturingSplashScreenRouter()
+        let routers = StubRouters(tutorialRouter: tutorialRouter, splashScreenRouter: splashRouter)
+        let context = TestingApplicationContextBuilder()
+            .forShowingTutorial()
+            .withTutorialItems([firstTutorialItem])
+            .build()
+        BootstrappingModule.bootstrap(context: context, routers: routers)
+        tutorialRouter.tutorialScene.tutorialPage.simulateTappingPrimaryActionButton()
+        capturingAction.notifyHandlerActionDidFinish()
+        
+        XCTAssertTrue(splashRouter.wasToldToShowSplashScreen)
+    }
 
 }

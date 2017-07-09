@@ -13,7 +13,9 @@ struct TutorialModule {
     static func initialize(context: ApplicationContext, routers: Routers) {
         let tutorialScene = routers.tutorialRouter.showTutorial()
         let tutorialPages = context.tutorialItems
-        _ = TutorialPresenter(tutorialScene: tutorialScene, tutorialPages: tutorialPages)
+        _ = TutorialPresenter(tutorialScene: tutorialScene,
+                              tutorialPages: tutorialPages,
+                              splashScreenRouter: routers.splashScreenRouter)
     }
 
 }

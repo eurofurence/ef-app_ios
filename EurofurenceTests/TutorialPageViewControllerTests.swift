@@ -9,29 +9,6 @@
 @testable import Eurofurence
 import XCTest
 
-class CapturingAction: TutorialAction {
-
-    private(set) var didRun = false
-    func run() {
-        didRun = true
-    }
-
-}
-
-class CapturingTutorialPageSceneDelegate: TutorialPageSceneDelegate {
-    
-    private(set) var primaryActionButtonTapped = false
-    func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
-        primaryActionButtonTapped = true
-    }
-    
-    private(set) var secondaryActionButtonTapped = false
-    func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) {
-        secondaryActionButtonTapped = true
-    }
-    
-}
-
 class TutorialPageViewControllerTests: XCTestCase {
 
     var tutorialPageController: TutorialPageViewController!

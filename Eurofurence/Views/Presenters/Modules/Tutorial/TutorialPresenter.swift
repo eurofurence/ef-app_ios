@@ -8,18 +8,22 @@
 
 import Foundation
 
-class TutorialPresenter: TutorialPageSceneDelegate {
+class TutorialPresenter: TutorialPageSceneDelegate, TutorialActionDelegate {
 
     // MARK: Properties
 
     private var tutorialPage: TutorialPageScene
     private var currentPrimaryAction: TutorialPageAction?
     private var currentSecondaryAction: TutorialPageAction?
+    private var splashScreenRouter: SplashScreenRouter
 
     // MARK: Initialization
 
-    init(tutorialScene: TutorialScene, tutorialPages: [TutorialPageInfo]) {
+    init(tutorialScene: TutorialScene,
+         tutorialPages: [TutorialPageInfo],
+         splashScreenRouter: SplashScreenRouter) {
         tutorialPage = tutorialScene.showTutorialPage()
+        self.splashScreenRouter = splashScreenRouter
 
         if let pageInfo = tutorialPages.first {
             show(page: pageInfo)
@@ -29,11 +33,18 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     // MARK: TutorialPageSceneDelegate
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
-        currentPrimaryAction?.runAction()
+        currentPrimaryAction?.runAction(self)
+        splashScreenRouter.showSplashScreen()
     }
 
     func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) {
-        currentSecondaryAction?.runAction()
+        currentSecondaryAction?.runAction(self)
+    }
+
+    // MARK: TutorialActionDelegate
+
+    func tutorialActionDidFinish(_ action: TutorialAction) {
+
     }
 
     // MARK: Private

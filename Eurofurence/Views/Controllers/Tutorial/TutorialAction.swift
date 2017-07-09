@@ -10,6 +10,12 @@ import Foundation
 
 protocol TutorialAction {
 
-    func run()
+    func run(_ delegate: TutorialActionDelegate)
+
+}
+
+protocol TutorialActionDelegate {
+
+    func tutorialActionDidFinish(_ action: TutorialAction)
 
 }

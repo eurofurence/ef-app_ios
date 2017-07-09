@@ -17,9 +17,29 @@ class TutorialBlockActionTests: XCTestCase {
             invoked = true
         }
 
-        action.run()
+        action.run(CapturingTutorialActionDelegate())
 
         XCTAssertTrue(invoked)
+    }
+    
+    func testRunningTheActionShouldTellTheDelegateTheActionDidFinish() {
+        let action = TutorialBlockAction { }
+        let delegate = CapturingTutorialActionDelegate()
+        action.run(delegate)
+        
+        XCTAssertTrue(delegate.actionDidFinish)
+    }
+    
+    func testRunningTheActionShouldNotTellTheDelegateTheActionDidFinishBeforeTheBlockReturns() {
+        let delegate = CapturingTutorialActionDelegate()
+        var wasNotifiedTooSoon = false
+        let action = TutorialBlockAction {
+            wasNotifiedTooSoon = delegate.actionDidFinish
+        }
+        
+        action.run(delegate)
+        
+        XCTAssertFalse(wasNotifiedTooSoon)
     }
     
 }

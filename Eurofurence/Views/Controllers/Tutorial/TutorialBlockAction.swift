@@ -14,8 +14,9 @@ struct TutorialBlockAction: TutorialAction {
         self.block = block
     }
 
-    func run() {
+    func run(_ delegate: TutorialActionDelegate) {
         block()
+        delegate.tutorialActionDidFinish(self)
     }
 
 }

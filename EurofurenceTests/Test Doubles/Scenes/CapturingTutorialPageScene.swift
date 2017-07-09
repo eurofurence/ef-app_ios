@@ -10,6 +10,20 @@
 import Foundation
 import UIKit
 
+class CapturingTutorialPageSceneDelegate: TutorialPageSceneDelegate {
+    
+    private(set) var primaryActionButtonTapped = false
+    func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
+        primaryActionButtonTapped = true
+    }
+    
+    private(set) var secondaryActionButtonTapped = false
+    func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) {
+        secondaryActionButtonTapped = true
+    }
+    
+}
+
 class CapturingTutorialPageScene: TutorialPageScene {
     
     var tutorialPageSceneDelegate: TutorialPageSceneDelegate?

@@ -28,22 +28,6 @@ struct TutorialPageInfo {
         self.secondaryAction = secondaryAction
     }
 
-    var primaryActionDescription: String? {
-        return primaryAction?.actionDescription
-    }
-
-    var secondaryActionDescription: String? {
-        return secondaryAction?.actionDescription
-    }
-
-    func runPrimaryAction() {
-        primaryAction?.runAction()
-    }
-
-    func runSecondaryAction() {
-        secondaryAction?.runAction()
-    }
-
 }
 
 struct TutorialPageAction {
@@ -56,8 +40,8 @@ struct TutorialPageAction {
         self.action = action
     }
 
-    func runAction() {
-        action.run()
+    func runAction(_ delegate: TutorialActionDelegate) {
+        action.run(delegate)
     }
 
 }

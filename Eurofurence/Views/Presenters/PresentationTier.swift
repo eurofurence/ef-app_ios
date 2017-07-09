@@ -29,7 +29,6 @@ struct PresentationTier {
     private func makeTutorialItems() -> [TutorialPageInfo] {
         func temporaryWorkaroundIntoAppUntilTutorialIsFinished() {
             finishedTutorialProvider.markTutorialAsComplete()
-            routers.splashScreenRouter.showSplashScreen()
         }
 
         let action = TutorialBlockAction(block: temporaryWorkaroundIntoAppUntilTutorialIsFinished)
