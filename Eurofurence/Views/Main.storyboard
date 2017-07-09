@@ -7,9 +7,13 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Hieroglify.ttf">
+            <string>Hieroglify</string>
+        </array>
         <array key="fontawesome-webfont.ttf">
             <string>FontAwesome</string>
         </array>
@@ -363,37 +367,68 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="P9V-9d-vYK">
-                                <rect key="frame" x="32" y="283" width="256" height="2"/>
+                                <rect key="frame" x="32" y="331" width="256" height="2"/>
                                 <color key="progressTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="trackTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;For knowledge... you should know that peace is an indispensable condition of getting it.&quot;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HkQ-ZW-e0c">
-                                <rect key="frame" x="32" y="309" width="256" height="87"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;For knowledge... you should know that peace is an indispensable condition of getting it.&quot;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HkQ-ZW-e0c">
+                                <rect key="frame" x="32" y="357" width="256" height="87"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Egyptian Proverb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zlw-1G-Ets">
-                                <rect key="frame" x="160" y="404" width="128" height="18"/>
+                                <rect key="frame" x="160" y="452" width="128" height="18"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FE3-gC-42u">
+                                <rect key="frame" x="96" y="88" width="129" height="219"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" name="Hieroglify" family="Hieroglify" pointSize="196"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.097791883680555552" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="P9V-9d-vYK" firstAttribute="top" secondItem="FE3-gC-42u" secondAttribute="bottom" constant="24" id="6MM-vu-47w"/>
                             <constraint firstAttribute="trailingMargin" secondItem="P9V-9d-vYK" secondAttribute="trailing" constant="16" id="Dyb-Fn-dJi"/>
+                            <constraint firstItem="FE3-gC-42u" firstAttribute="centerX" secondItem="P9V-9d-vYK" secondAttribute="centerX" id="Ee2-cG-BKz"/>
+                            <constraint firstItem="HkQ-ZW-e0c" firstAttribute="leading" secondItem="P9V-9d-vYK" secondAttribute="leading" multiplier="0.66" constant="12" id="HcO-z6-TrY"/>
                             <constraint firstItem="Zlw-1G-Ets" firstAttribute="top" secondItem="HkQ-ZW-e0c" secondAttribute="bottom" constant="8" id="JNr-Sx-FCP"/>
                             <constraint firstItem="Zlw-1G-Ets" firstAttribute="trailing" secondItem="HkQ-ZW-e0c" secondAttribute="trailing" id="MEk-qd-1bK"/>
                             <constraint firstItem="HkQ-ZW-e0c" firstAttribute="top" secondItem="P9V-9d-vYK" secondAttribute="bottom" constant="24" id="RDP-OO-LEA"/>
                             <constraint firstItem="HkQ-ZW-e0c" firstAttribute="leading" secondItem="P9V-9d-vYK" secondAttribute="leading" id="afI-gb-pgT"/>
-                            <constraint firstItem="P9V-9d-vYK" firstAttribute="centerY" secondItem="BUN-81-yjx" secondAttribute="centerY" id="hQp-NY-nXM"/>
+                            <constraint firstItem="P9V-9d-vYK" firstAttribute="centerY" secondItem="BUN-81-yjx" secondAttribute="centerY" constant="48" id="hQp-NY-nXM">
+                                <variation key="heightClass=compact" constant="-24"/>
+                            </constraint>
                             <constraint firstItem="HkQ-ZW-e0c" firstAttribute="trailing" secondItem="P9V-9d-vYK" secondAttribute="trailing" id="kGK-MT-zcs"/>
                             <constraint firstItem="P9V-9d-vYK" firstAttribute="leading" secondItem="BUN-81-yjx" secondAttribute="leadingMargin" constant="16" id="xvY-Pe-kcR"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="HcO-z6-TrY"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="subviews">
+                                <exclude reference="FE3-gC-42u"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="HcO-z6-TrY"/>
+                                <exclude reference="afI-gb-pgT"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="0WF-5l-7tP"/>
                     <connections>
+                        <outlet property="hieroglyphLabel" destination="FE3-gC-42u" id="oYl-FA-BDn"/>
                         <outlet property="loadingProgressView" destination="P9V-9d-vYK" id="93p-x2-nr0"/>
                         <outlet property="quoteLabel" destination="HkQ-ZW-e0c" id="ucd-7N-0rV"/>
                         <segue destination="gjr-9L-0Tf" kind="custom" identifier="ShowTabBarControllerSegue" customClass="ReplaceViewControllersSegue" customModule="Eurofurence" customModuleProvider="target" id="cxJ-lN-lbO"/>
@@ -918,7 +953,7 @@
                         <viewControllerLayoutGuide type="top" id="utz-1H-XtR"/>
                         <viewControllerLayoutGuide type="bottom" id="obc-LS-xAB"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="aFv-9D-bDX">
+                    <view key="view" contentMode="scaleToFill" id="aFv-9D-bDX">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -2136,7 +2171,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</stri
         <image name="Settings" width="25" height="25"/>
         <image name="Time Span-50" width="25" height="25"/>
         <image name="ava_fenrikur" width="60" height="60"/>
-        <image name="ava_shez" width="16" height="16"/>
+        <image name="ava_shez" width="60" height="60"/>
         <image name="dealers" width="25" height="25"/>
         <image name="defaultAvatar" width="50" height="50"/>
         <image name="defaultAvatarBig" width="333" height="333"/>

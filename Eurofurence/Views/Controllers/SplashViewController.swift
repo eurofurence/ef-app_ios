@@ -6,6 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
+import Darwin
 import UIKit
 
 class SplashViewController: UIViewController, SplashScene,
@@ -16,6 +17,7 @@ class SplashViewController: UIViewController, SplashScene,
 
     @IBOutlet weak var loadingProgressView: UIProgressView!
     @IBOutlet weak var quoteLabel: UILabel!
+    @IBOutlet weak var hieroglyphLabel: UILabel!
 
     // MARK: Properties
 
@@ -34,6 +36,9 @@ class SplashViewController: UIViewController, SplashScene,
         super.viewDidLoad()
 
         loadingProgressView.progress = 0
+
+        let string = String(makeRandomHieroglyphCharacter())
+        hieroglyphLabel.text = string
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -81,5 +86,16 @@ class SplashViewController: UIViewController, SplashScene,
 
     func dataStoreRefreshDidBegin() { }
     func dataStoreRefreshDidFailWithError(_ error: Error) { }
+
+    // MARK: Private
+
+    private func makeRandomHieroglyphCharacter() -> Character {
+        let hieroglyphRange = 80...123
+        let lower = UInt32(hieroglyphRange.lowerBound)
+        let upper = UInt32(hieroglyphRange.upperBound)
+        let randomisedValueInRange = lower + arc4random_uniform(upper - lower + 1)
+        let scalar = UnicodeScalar(randomisedValueInRange)!
+        return Character(scalar)
+    }
 
 }
