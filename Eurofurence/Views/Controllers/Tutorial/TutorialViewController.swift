@@ -29,6 +29,10 @@ class TutorialViewController: UIPageViewController {
         setViewControllers([viewController], direction: .forward, animated: false)
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
     // MARK: Private
 
     private func temporaryWorkaroundIntoAppUntilTutorialIsFinished() {

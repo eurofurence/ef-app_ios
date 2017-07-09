@@ -44,6 +44,7 @@
 		78C86D4E1F119B68003A20E6 /* StoryboardSplashScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D4D1F119B68003A20E6 /* StoryboardSplashScreenRouter.swift */; };
 		78C86D501F119F2A003A20E6 /* TutorialBlockActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D4F1F119F2A003A20E6 /* TutorialBlockActionTests.swift */; };
 		78C86D521F11A065003A20E6 /* TutorialBlockAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D511F11A065003A20E6 /* TutorialBlockAction.swift */; };
+		78C86D541F1228B0003A20E6 /* TutorialViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D531F1228B0003A20E6 /* TutorialViewControllerTests.swift */; };
 		78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */; };
 		78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */; };
 		78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */; };
@@ -174,6 +175,7 @@
 		78C86D4D1F119B68003A20E6 /* StoryboardSplashScreenRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoryboardSplashScreenRouter.swift; path = Routers/Storyboard/StoryboardSplashScreenRouter.swift; sourceTree = "<group>"; };
 		78C86D4F1F119F2A003A20E6 /* TutorialBlockActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialBlockActionTests.swift; sourceTree = "<group>"; };
 		78C86D511F11A065003A20E6 /* TutorialBlockAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialBlockAction.swift; path = Views/Controllers/Tutorial/TutorialBlockAction.swift; sourceTree = "<group>"; };
+		78C86D531F1228B0003A20E6 /* TutorialViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewControllerTests.swift; sourceTree = "<group>"; };
 		78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInfoPropertyListShould.swift; sourceTree = "<group>"; };
 		78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarServiceTests.swift; sourceTree = "<group>"; };
 		78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 				78455B5C1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift */,
 				78C86D4B1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift */,
 				78C86D4F1F119F2A003A20E6 /* TutorialBlockActionTests.swift */,
+				78C86D531F1228B0003A20E6 /* TutorialViewControllerTests.swift */,
 			);
 			path = EurofurenceTests;
 			sourceTree = "<group>";
@@ -997,6 +1000,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78C86D541F1228B0003A20E6 /* TutorialViewControllerTests.swift in Sources */,
 				78455B3A1F116A7E005BE2D7 /* BootstrappingPresenterTests.swift in Sources */,
 				78455B491F1177AD005BE2D7 /* CapturingTutorialRouter.swift in Sources */,
 				6EF96CDB1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift in Sources */,
