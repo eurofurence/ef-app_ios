@@ -30,7 +30,7 @@ class TutorialPageViewController: UIViewController, TutorialPageScene {
 
     // MARK: TutorialPageScene
 
-    weak var tutorialPageSceneDelegate: TutorialPageSceneDelegate?
+    var tutorialPageSceneDelegate: TutorialPageSceneDelegate?
 
     func showPageTitle(_ title: String?) {
         tutorialPageTitleLabel.text = title

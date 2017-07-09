@@ -1,16 +1,16 @@
 //
-//  BootstrappingPresenter.swift
+//  BootstrappingModule.swift
 //  Eurofurence
 //
-//  Created by Thomas Sherwood on 08/07/2017.
+//  Created by Thomas Sherwood on 09/07/2017.
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
 import Foundation
 
-struct BootstrappingPresenter {
+struct BootstrappingModule {
 
-    init(context: ApplicationContext, routers: Routers) {
+    static func bootstrap(context: ApplicationContext, routers: Routers) {
         if context.firstTimeLaunchProviding.userHasCompletedTutorial {
             routers.splashScreenRouter.showSplashScreen()
         } else {

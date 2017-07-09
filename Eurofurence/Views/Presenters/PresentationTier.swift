@@ -9,14 +9,13 @@
 import Foundation
 import UIKit
 
-class PresentationTier {
+struct PresentationTier {
 
-    class func assemble(window: UIWindow) -> PresentationTier {
+    static func assemble(window: UIWindow) -> PresentationTier {
         return PresentationTier(window: window)
     }
 
     private var routers: StoryboardRouters
-    private var root: BootstrappingPresenter?
     private var finishedTutorialProvider: UserDefaultsTutorialStateProvider
 
     private init(window: UIWindow) {
@@ -24,7 +23,7 @@ class PresentationTier {
         self.finishedTutorialProvider = UserDefaultsTutorialStateProvider(userDefaults: .standard)
         let appContext = ApplicationContext(firstTimeLaunchProviding: finishedTutorialProvider, tutorialItems: makeTutorialItems())
 
-        root = BootstrappingPresenter(context: appContext, routers: routers)
+        BootstrappingModule.bootstrap(context: appContext, routers: routers)
     }
 
     private func makeTutorialItems() -> [TutorialPageInfo] {
@@ -36,7 +35,7 @@ class PresentationTier {
         let action = TutorialBlockAction(block: temporaryWorkaroundIntoAppUntilTutorialIsFinished)
         let beginDownloadAction = TutorialPageAction(actionDescription: "Let's Go",
                                                      action: action)
-        let beginDownloadItem = TutorialPageInfo(image: nil,
+        let beginDownloadItem = TutorialPageInfo(image: #imageLiteral(resourceName: "tuto01_notificationIcon"),
                                                  title: "Hello!",
                                                  description: "This is a work in progress, hit the button below to skip this for now.",
                                                  primaryAction: beginDownloadAction)

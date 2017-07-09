@@ -12,7 +12,7 @@ import UIKit
 
 class CapturingTutorialPageScene: TutorialPageScene {
     
-    weak var tutorialPageSceneDelegate: TutorialPageSceneDelegate?
+    var tutorialPageSceneDelegate: TutorialPageSceneDelegate?
 
     private(set) var capturedPageTitle: String?
     func showPageTitle(_ title: String?) {
