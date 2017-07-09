@@ -31,120 +31,57 @@ class TutorialPageViewControllerTests: XCTestCase {
         tutorialPageController.loadView()
     }
 
-    private func makeTutorialPageInfo(image: UIImage? = nil,
-                                      title: String? = nil,
-                                      description: String? = nil,
-                                      primaryAction: TutorialPageAction? = nil,
-                                      secondaryAction: TutorialPageAction? = nil) -> TutorialPageInfo {
-        return TutorialPageInfo(image: image,
-                                title: title,
-                                description: description,
-                                primaryAction: primaryAction,
-                                secondaryAction: secondaryAction)
+    func testTellingTheSceneToShowThePageTitleShouldSetItOntoTheTitleLabel() {
+        let expectedTitle = "Some title"
+        tutorialPageController.showPageTitle(expectedTitle)
+        
+        XCTAssertEqual(expectedTitle, tutorialPageController.tutorialPageTitleLabel.text)
     }
     
-    func testTellingTheTutorialPageToShowTutorialInfoWithAnImageShouldSetTheImageOntoTheImageView() {
-        let image = UIImage()
-        let pageInfo = makeTutorialPageInfo(image: image)
-        tutorialPageController.pageInfo = pageInfo
-
-        XCTAssertEqual(image, tutorialPageController.tutorialPageImageView.image)
+    func testTellingTheSceneToShowThePageDescriptionShouldSetItOntoTheDescriptionLabel() {
+        let expectedDescription = "Some description"
+        tutorialPageController.showPageDescription(expectedDescription)
+        
+        XCTAssertEqual(expectedDescription, tutorialPageController.tutorialPageDescriptionLabel.text)
     }
-
-    func testTellingTheTutorialPageToShowTutorialInfoWithTitleShouldSetTheTitleOntoTheTitleLabel() {
-        let title = "Some page title"
-        let pageInfo = makeTutorialPageInfo(title: title)
-        tutorialPageController.pageInfo = pageInfo
-
-        XCTAssertEqual(title, tutorialPageController.tutorialPageTitleLabel.text)
+    
+    func testTellingTheSceneToShowThePageImageShouldSetItOntoTheImageView() {
+        let expectedImage = UIImage()
+        tutorialPageController.showPageImage(expectedImage)
+        
+        XCTAssertEqual(expectedImage, tutorialPageController.tutorialPageImageView.image)
     }
-
-    func testTellingTheTutorialPageToShowTutorialInfoWithDescriptionShouldSetTheDescriptionOntoTheDescriptionLabel() {
-        let description = "Some page description"
-        let pageInfo = makeTutorialPageInfo(description: description)
-        tutorialPageController.pageInfo = pageInfo
-
-        XCTAssertEqual(description, tutorialPageController.tutorialPageDescriptionLabel.text)
-    }
-
-    func testThePrimaryActionButtonShouldBeHiddenByDefault() {
+    
+    func testThePrimaryActionButtonShouldBeHidden() {
         XCTAssertTrue(tutorialPageController.primaryActionButton.isHidden)
     }
-
-    func testTellingTheTutorialPageToShowTutorialInfoWithPrimaryActionShouldShowThePrimaryActionButton() {
-        let primaryAction = TutorialPageAction(actionDescription: "", action: CapturingAction())
-        let pageInfo = makeTutorialPageInfo(primaryAction: primaryAction)
-        tutorialPageController.pageInfo = pageInfo
-
+    
+    func testTellingTheSceneToShowThePrimaryActionButtonShouldShowIt() {
+        tutorialPageController.showPrimaryActionButton()
         XCTAssertFalse(tutorialPageController.primaryActionButton.isHidden)
     }
-
-    func testTellingTheTutorialPageToShowTutorialInfoWithPrimaryActionThenAnotherInfoWithoutPrimaryActionShouldHideThePrimaryActionButton() {
-        let primaryAction = TutorialPageAction(actionDescription: "", action: CapturingAction())
-        let pageInfo = makeTutorialPageInfo(primaryAction: primaryAction)
-        tutorialPageController.pageInfo = pageInfo
-        tutorialPageController.pageInfo = makeTutorialPageInfo()
-
-        XCTAssertTrue(tutorialPageController.primaryActionButton.isHidden)
-    }
-
-    func testTellingTheTutorialPageToShowTutorialInfoWithPrimaryActionShouldSetTheActionNameOntoThePrimaryActionButtonForTheNormalControlState() {
-        let primaryActionDescription = "Do some voodoo"
-        let primaryAction = TutorialPageAction(actionDescription: primaryActionDescription, action: CapturingAction())
-        let pageInfo = makeTutorialPageInfo(primaryAction: primaryAction)
-        tutorialPageController.pageInfo = pageInfo
-
+    
+    func testTellingTheSceneToShowThePrimaryActionDescriptionShouldSetItOntoThePrimaryActionButton() {
+        let primaryActionDescription = "Do voodoo"
+        tutorialPageController.showPrimaryActionDescription(primaryActionDescription)
+        
         XCTAssertEqual(primaryActionDescription, tutorialPageController.primaryActionButton.title(for: .normal))
     }
-
-    func testTellingTheTutorialPageToShowTutorialInfoWithPrimaryActionShouldInvokeTheActionWhenTappingTheButton() {
-        let capturingAction = CapturingAction()
-        let primaryAction = TutorialPageAction(actionDescription: "", action: capturingAction)
-        let pageInfo = makeTutorialPageInfo(primaryAction: primaryAction)
-        tutorialPageController.pageInfo = pageInfo
-        tutorialPageController.primaryActionButton.sendActions(for: .touchUpInside)
-
-        XCTAssertTrue(capturingAction.didRun)
-    }
-
-    func testTheSecondaryActionButtonShouldBeHiddenByDefault() {
+    
+    func testTheSecondaryActionButtonShouldBeHidden() {
         XCTAssertTrue(tutorialPageController.secondaryActionButton.isHidden)
     }
-
-    func testTellingTheTutorialPageToShowTutorialInfoWithSecondaryActionShouldShowTheSecondaryActionButton() {
-        let primaryAction = TutorialPageAction(actionDescription: "", action: CapturingAction())
-        let pageInfo = makeTutorialPageInfo(secondaryAction: primaryAction)
-        tutorialPageController.pageInfo = pageInfo
-
+    
+    func testTellingTheSceneToShowTheSecondaryActionButtonShouldShowIt() {
+        tutorialPageController.showSecondaryActionButton()
         XCTAssertFalse(tutorialPageController.secondaryActionButton.isHidden)
     }
-
-    func testTellingTheTutorialPageToShowTutorialInfoWithSecondaryActionThenAnotherInfoWithoutSecondaryActionShouldHideTheSecondaryActionButton() {
-        let primaryAction = TutorialPageAction(actionDescription: "", action: CapturingAction())
-        let pageInfo = makeTutorialPageInfo(secondaryAction: primaryAction)
-        tutorialPageController.pageInfo = pageInfo
-        tutorialPageController.pageInfo = makeTutorialPageInfo()
-
-        XCTAssertTrue(tutorialPageController.secondaryActionButton.isHidden)
-    }
-
-    func testTellingTheTutorialPageToShowTutorialInfoWithSecondaryActionShouldSetTheActionNameOntoTheSecondaryActionButton() {
-        let primaryActionDescription = "Do some voodoo"
-        let primaryAction = TutorialPageAction(actionDescription: primaryActionDescription, action: CapturingAction())
-        let pageInfo = makeTutorialPageInfo(secondaryAction: primaryAction)
-        tutorialPageController.pageInfo = pageInfo
-
-        XCTAssertEqual(primaryActionDescription, tutorialPageController.secondaryActionButton.title(for: .normal))
-    }
-
-    func testTellingTheTutorialPageToShowTutorialInfoWithSecondaryActionShouldInvokeTheActionWhenTappingTheButton() {
-        let capturingAction = CapturingAction()
-        let primaryAction = TutorialPageAction(actionDescription: "", action: capturingAction)
-        let pageInfo = makeTutorialPageInfo(secondaryAction: primaryAction)
-        tutorialPageController.pageInfo = pageInfo
-        tutorialPageController.secondaryActionButton.sendActions(for: .touchUpInside)
-
-        XCTAssertTrue(capturingAction.didRun)
+    
+    func testTellingTheSceneToShowTheSecondaryActionDescriptionShouldSetItOntoThePrimaryActionButton() {
+        let secondaryActionDescription = "Do voodoo"
+        tutorialPageController.showSecondaryActionDescription(secondaryActionDescription)
+        
+        XCTAssertEqual(secondaryActionDescription, tutorialPageController.secondaryActionButton.title(for: .normal))
     }
 
 }

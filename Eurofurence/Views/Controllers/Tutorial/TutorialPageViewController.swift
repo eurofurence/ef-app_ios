@@ -31,31 +31,31 @@ class TutorialPageViewController: UIViewController, TutorialPageScene {
     // MARK: TutorialPageScene
 
     func showPageTitle(_ title: String?) {
-
+        tutorialPageTitleLabel.text = title
     }
 
     func showPageDescription(_ description: String?) {
-
+        tutorialPageDescriptionLabel.text = description
     }
 
     func showPageImage(_ image: UIImage?) {
-
+        tutorialPageImageView.image = image
     }
 
     func showPrimaryActionButton() {
-
+        primaryActionButton.isHidden = false
     }
 
     func showPrimaryActionDescription(_ primaryActionDescription: String) {
-
+        primaryActionButton.setTitle(primaryActionDescription, for: .normal)
     }
 
     func showSecondaryActionButton() {
-
+        secondaryActionButton.isHidden = false
     }
 
     func showSecondaryActionDescription(_ secondaryActionDescription: String) {
-
+        secondaryActionButton.setTitle(secondaryActionDescription, for: .normal)
     }
 
     // MARK: Properties
