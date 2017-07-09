@@ -1,5 +1,5 @@
 //
-//  BootstrappingPresenterTests.swift
+//  WhenTheAppLaunches.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 08/07/2017.
@@ -9,9 +9,9 @@
 @testable import Eurofurence
 import XCTest
 
-class BootstrappingPresenterTests: XCTestCase {
+class WhenTheAppLaunches: XCTestCase {
     
-    func testWhenTheAppHasNotRunBeforeTheTutorialRouterIsToldToShowTheTutorial() {
+    func testAndTheUserHasNotFinishedTheTutorialTheTutorialRouterIsToldToShowTheTutorial() {
         let tutorialRouter = CapturingTutorialRouter()
         let routers = StubRouters(tutorialRouter: tutorialRouter)
         let initialAppStateProvider = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
@@ -21,7 +21,7 @@ class BootstrappingPresenterTests: XCTestCase {
         XCTAssertTrue(tutorialRouter.wasToldToShowTutorial)
     }
 
-    func testWhenTheAppHasRunBeforeTheSplashScreenRouterIsToldToShowTheSplashScreen() {
+    func testAndTheUserHasPreviouslyFinishedTheTutorialTheSplashRouterIsToldToShowTheSplashScreen() {
         let splashScreenRouter = CapturingSplashScreenRouter()
         let routers = StubRouters(splashScreenRouter: splashScreenRouter)
         let initialAppStateProvider = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
@@ -31,7 +31,7 @@ class BootstrappingPresenterTests: XCTestCase {
         XCTAssertTrue(splashScreenRouter.wasToldToShowSplashScreen)
     }
 
-    func testWhenTheAppHasNotRunBeforeTheTheSplashScreenRouterShouldNotBeToldToShowTheSplashScree () {
+    func testAndTheUserHasNotFinishedTheTutorialTheSplashScreenRouterShouldNotBeToldToShowTheSplashScreen() {
         let splashScreenRouter = CapturingSplashScreenRouter()
         let routers = StubRouters(splashScreenRouter: splashScreenRouter)
         let initialAppStateProvider = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
@@ -41,7 +41,7 @@ class BootstrappingPresenterTests: XCTestCase {
         XCTAssertFalse(splashScreenRouter.wasToldToShowSplashScreen)
     }
 
-    func testWhenTheAppHasRunBeforeTheTutorialRouterShouldNotBeToldToShowTheTutorial() {
+    func testAndTheUserHasPreviouslyFinishedTheTutorialTheTutorialRouterShouldNotBeToldToShowTheTutorial() {
         let tutorialRouter = CapturingTutorialRouter()
         let routers = StubRouters(tutorialRouter: tutorialRouter)
         let initialAppStateProvider = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
