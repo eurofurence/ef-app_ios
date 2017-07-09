@@ -19,7 +19,7 @@ class ContextManager {
 	private(set) lazy var syncWithApi: Action<Date?, Progress, NSError>? =
 			Action { sinceDate in
 				return SignalProducer<Progress, NSError> { [unowned self] observer, disposable in
-					let progress = Progress(totalUnitCount: 3)
+					let progress = Progress(totalUnitCount: 200)
 					let parameters: ApiConnectionProtocol.Parameters?
 					if let sinceDate = sinceDate {
 						let since = Iso8601DateFormatter.instance.string(from: sinceDate)
@@ -30,7 +30,7 @@ class ContextManager {
 
 					disposable += self.apiConnection.doGet("Sync", parameters: parameters).observe(on: ContextManager.scheduler).startWithResult({ (apiResult: Result<Sync, ApiConnectionError>) -> Void in
 
-						progress.completedUnitCount += 1
+						progress.completedUnitCount += 50
 						observer.send(value: progress)
 
 						if let sync = apiResult.value {
@@ -41,7 +41,7 @@ class ContextManager {
 								case let .failed(error):
 									observer.send(error: error as NSError)
 								case .completed:
-									progress.completedUnitCount += 1
+									progress.completedUnitCount += 50
 									observer.send(value: progress)
 									UserSettings.LastSyncDate.setValue(sync.CurrentDateTimeUtc)
 
@@ -50,9 +50,12 @@ class ContextManager {
 										case let .failed(error):
 											observer.send(error: error as NSError)
 										case .completed:
-											progress.completedUnitCount += 1
+											progress.completedUnitCount = progress.totalUnitCount
 											observer.send(value: progress)
 											observer.sendCompleted()
+										case let .value(imageProgress):
+											progress.completedUnitCount = 100 + Int64(imageProgress.fractionCompleted * 100)
+											observer.send(value: progress)
 										default:
 											break
 										}
