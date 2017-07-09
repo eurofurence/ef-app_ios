@@ -9,14 +9,6 @@
 import Foundation
 import UIKit
 
-struct DummyQuoteGenerator: QuoteGenerator {
-
-    func makeQuote() -> String {
-        return ""
-    }
-
-}
-
 struct PresentationTier {
 
     static func assemble(window: UIWindow) -> PresentationTier {
@@ -31,7 +23,7 @@ struct PresentationTier {
         self.finishedTutorialProvider = UserDefaultsTutorialStateProvider(userDefaults: .standard)
         let appContext = ApplicationContext(firstTimeLaunchProviding: finishedTutorialProvider,
                                             tutorialItems: makeTutorialItems(),
-                                            quoteGenerator: DummyQuoteGenerator())
+                                            quoteGenerator: EgyptianQuoteGenerator())
 
         BootstrappingModule.bootstrap(context: appContext, routers: routers)
     }
