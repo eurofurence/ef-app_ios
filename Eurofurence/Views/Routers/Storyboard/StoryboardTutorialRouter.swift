@@ -16,10 +16,16 @@ struct StoryboardTutorialRouter: TutorialRouter {
         self.window = window
     }
 
-    func showTutorial() {
+    func showTutorial() -> TutorialScene {
         let storyboardBundle = Bundle(for: TutorialViewController.self)
         let storyboard = UIStoryboard(name: "Tutorial", bundle: storyboardBundle)
-        window.rootViewController = storyboard.instantiateInitialViewController()
+        guard let tutorialController = storyboard.instantiateInitialViewController() as? TutorialViewController else {
+            fatalError("Expected initial view controller of Tutorial storyboard to be instance of \(TutorialViewController.self)")
+        }
+
+        window.rootViewController = tutorialController
+
+        return tutorialController
     }
 
 }

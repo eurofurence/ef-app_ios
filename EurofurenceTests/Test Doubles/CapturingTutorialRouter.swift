@@ -11,9 +11,12 @@ import Foundation
 
 class CapturingTutorialRouter: TutorialRouter {
 
+    let tutorialScene = CapturingTutorialScene()
+
     private(set) var wasToldToShowTutorial = false
-    func showTutorial() {
+    func showTutorial() -> TutorialScene {
         wasToldToShowTutorial = true
+        return tutorialScene
     }
     
 }

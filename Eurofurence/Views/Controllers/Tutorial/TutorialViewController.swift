@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TutorialViewController: UIPageViewController {
+class TutorialViewController: UIPageViewController, TutorialScene {
 
     // MARK: Overrides
 
@@ -31,6 +31,12 @@ class TutorialViewController: UIPageViewController {
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+
+    // MARK: TutorialScene
+
+    func showTutorialPage() {
+
     }
 
     // MARK: Private

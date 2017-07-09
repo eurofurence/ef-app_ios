@@ -10,6 +10,6 @@ import Foundation
 
 protocol TutorialRouter {
 
-    func showTutorial()
+    func showTutorial() -> TutorialScene
 
 }

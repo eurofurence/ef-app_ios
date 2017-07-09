@@ -48,6 +48,9 @@
 		78C86D561F12334D003A20E6 /* Routers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D551F12334D003A20E6 /* Routers.swift */; };
 		78C86D581F12338D003A20E6 /* StoryboardRouters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D571F12338D003A20E6 /* StoryboardRouters.swift */; };
 		78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D591F1234F0003A20E6 /* StubRouters.swift */; };
+		78C86D5D1F123686003A20E6 /* WhenTheTutorialAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D5C1F123686003A20E6 /* WhenTheTutorialAppears.swift */; };
+		78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D5F1F123859003A20E6 /* CapturingTutorialScene.swift */; };
+		78C86D631F12389E003A20E6 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D621F12389E003A20E6 /* TutorialScene.swift */; };
 		78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */; };
 		78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */; };
 		78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */; };
@@ -182,6 +185,9 @@
 		78C86D551F12334D003A20E6 /* Routers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Routers.swift; path = Routers/Routers.swift; sourceTree = "<group>"; };
 		78C86D571F12338D003A20E6 /* StoryboardRouters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoryboardRouters.swift; path = Routers/Storyboard/StoryboardRouters.swift; sourceTree = "<group>"; };
 		78C86D591F1234F0003A20E6 /* StubRouters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubRouters.swift; path = "Test Doubles/StubRouters.swift"; sourceTree = "<group>"; };
+		78C86D5C1F123686003A20E6 /* WhenTheTutorialAppears.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenTheTutorialAppears.swift; path = "Presenter Tests/WhenTheTutorialAppears.swift"; sourceTree = "<group>"; };
+		78C86D5F1F123859003A20E6 /* CapturingTutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingTutorialScene.swift; path = "Test Doubles/Scenes/CapturingTutorialScene.swift"; sourceTree = "<group>"; };
+		78C86D621F12389E003A20E6 /* TutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialScene.swift; path = Presenters/Scenes/TutorialScene.swift; sourceTree = "<group>"; };
 		78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInfoPropertyListShould.swift; sourceTree = "<group>"; };
 		78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarServiceTests.swift; sourceTree = "<group>"; };
 		78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -324,6 +330,7 @@
 		6EF96CCD1F0EDB1300EE6134 /* Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
+				78C86D5E1F12384C003A20E6 /* Scenes */,
 				6EF96CCE1F0EDB2000EE6134 /* CalendarTestDoubles.swift */,
 				78455B481F1177AD005BE2D7 /* CapturingTutorialRouter.swift */,
 				78455B4A1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift */,
@@ -371,6 +378,7 @@
 		78455B4E1F117843005BE2D7 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
+				78C86D611F123895003A20E6 /* Scenes */,
 				78455B4F1F117851005BE2D7 /* BootstrappingPresenter.swift */,
 			);
 			name = Presenters;
@@ -398,8 +406,25 @@
 			isa = PBXGroup;
 			children = (
 				78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */,
+				78C86D5C1F123686003A20E6 /* WhenTheTutorialAppears.swift */,
 			);
 			name = "Presenter Tests";
+			sourceTree = "<group>";
+		};
+		78C86D5E1F12384C003A20E6 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				78C86D5F1F123859003A20E6 /* CapturingTutorialScene.swift */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		78C86D611F123895003A20E6 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				78C86D621F12389E003A20E6 /* TutorialScene.swift */,
+			);
+			name = Scenes;
 			sourceTree = "<group>";
 		};
 		78F555971F10D59000BDA7D4 /* Segues */ = {
@@ -933,6 +958,7 @@
 				9ACF998E1EC858B2006FC958 /* Event.swift in Sources */,
 				9ACF99681EBE3479006FC958 /* EntityBase.swift in Sources */,
 				78567B3D1F100BAF00EBA31D /* DataStoreRefreshController.swift in Sources */,
+				78C86D631F12389E003A20E6 /* TutorialScene.swift in Sources */,
 				9A05254C1ECB097500578798 /* DataStoreProtocol.swift in Sources */,
 				9A34B9781ECF6E3B004A249E /* Iso8601DateFormatter.swift in Sources */,
 				9A0525431ECA2C5A00578798 /* SyncEntityDelta.swift in Sources */,
@@ -1024,11 +1050,13 @@
 				78455B491F1177AD005BE2D7 /* CapturingTutorialRouter.swift in Sources */,
 				6EF96CDB1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift in Sources */,
 				78455B521F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift in Sources */,
+				78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */,
 				78C86D4C1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift in Sources */,
 				78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */,
 				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,
 				78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */,
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
+				78C86D5D1F123686003A20E6 /* WhenTheTutorialAppears.swift in Sources */,
 				6EF96CCF1F0EDB2000EE6134 /* CalendarTestDoubles.swift in Sources */,
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
 				78C86D501F119F2A003A20E6 /* TutorialBlockActionTests.swift in Sources */,

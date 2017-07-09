@@ -15,7 +15,7 @@ struct BootstrappingPresenter {
         if firstTimeLaunchProviding.userHasCompletedTutorial {
             routers.splashScreenRouter.showSplashScreen()
         } else {
-            routers.tutorialRouter.showTutorial()
+            routers.tutorialRouter.showTutorial().showTutorialPage()
         }
     }
 

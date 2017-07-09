@@ -15,7 +15,7 @@ class StoryboardTutorialRouterTests: XCTestCase {
     func testShowingTheTutorialShouldSetTheTutorialViewControllerAsTheWindowsRootViewController() {
         let window = UIWindow(frame: .zero)
         let tutorialRouter = StoryboardTutorialRouter(window: window)
-        tutorialRouter.showTutorial()
+        _ = tutorialRouter.showTutorial()
 
         XCTAssertTrue(window.rootViewController is TutorialViewController)
     }
@@ -23,9 +23,17 @@ class StoryboardTutorialRouterTests: XCTestCase {
     func testShowingTheTutorialShouldUseTheTutorialViewControllerFromTheStoryboard() {
         let window = UIWindow(frame: .zero)
         let tutorialRouter = StoryboardTutorialRouter(window: window)
-        tutorialRouter.showTutorial()
+        _ = tutorialRouter.showTutorial()
 
         XCTAssertNotNil(window.rootViewController?.storyboard)
+    }
+
+    func testShowingTheTutorialShouldReturnTheTutorialViewControllerSetOntoTheWindow() {
+        let window = UIWindow(frame: .zero)
+        let tutorialRouter = StoryboardTutorialRouter(window: window)
+        let tutorialScene = tutorialRouter.showTutorial()
+
+        XCTAssertTrue((tutorialScene as? UIViewController) === window.rootViewController)
     }
     
 }
