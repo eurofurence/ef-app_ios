@@ -10,27 +10,11 @@ import Foundation
 
 class TutorialPresenter: TutorialPageSceneDelegate {
 
-    // MARK: Nested Types
-
-    struct CompleteTutorialActionDelegate: TutorialActionDelegate {
-
-        var splashScreenRouter: SplashScreenRouter
-        var tutorialStateProviding: UserCompletedTutorialStateProviding
-
-        func tutorialActionDidFinish(_ action: TutorialAction) {
-            _ = splashScreenRouter.showSplashScreen()
-            tutorialStateProviding.markTutorialAsComplete()
-        }
-
-    }
-
     // MARK: Properties
 
-    private var tutorialPage: TutorialPageScene
+    private var tutorialScene: TutorialScene
     private var presentationStrings: PresentationStrings
     private var presentationAssets: PresentationAssets
-    private var currentPrimaryAction: TutorialPageAction?
-    private var currentSecondaryAction: TutorialPageAction?
     private var splashScreenRouter: SplashScreenRouter
     private var alertRouter: AlertRouter
     private var tutorialStateProviding: UserCompletedTutorialStateProviding
@@ -39,14 +23,13 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     // MARK: Initialization
 
     init(tutorialScene: TutorialScene,
-         tutorialPages: [TutorialPageInfo],
          presentationStrings: PresentationStrings,
          presentationAssets: PresentationAssets,
          splashScreenRouter: SplashScreenRouter,
          alertRouter: AlertRouter,
          tutorialStateProviding: UserCompletedTutorialStateProviding,
          networkReachability: NetworkReachability) {
-        tutorialPage = tutorialScene.showTutorialPage()
+        self.tutorialScene = tutorialScene
         self.presentationStrings = presentationStrings
         self.presentationAssets = presentationAssets
         self.splashScreenRouter = splashScreenRouter
@@ -54,11 +37,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
         self.tutorialStateProviding = tutorialStateProviding
         self.networkReachability = networkReachability
 
-        if let pageInfo = tutorialPages.first {
-            show(page: pageInfo)
-        } else {
-            showInitiateDownloadPage()
-        }
+        showInitiateDownloadPage()
     }
 
     // MARK: TutorialPageSceneDelegate
@@ -79,37 +58,16 @@ class TutorialPresenter: TutorialPageSceneDelegate {
         }
     }
 
-    func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) {
-        let delegate = CompleteTutorialActionDelegate(splashScreenRouter: splashScreenRouter, tutorialStateProviding: tutorialStateProviding)
-        currentSecondaryAction?.runAction(delegate)
-    }
+    func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) { }
 
     // MARK: Private
-
-    private func show(page pageInfo: TutorialPageInfo) {
-        tutorialPage.tutorialPageSceneDelegate = self
-        tutorialPage.showPageTitle(presentationStrings.presentationString(for: .tutorialInitialLoadTitle))
-        tutorialPage.showPageDescription(presentationStrings.presentationString(for: .tutorialInitialLoadDescription))
-        tutorialPage.showPageImage(pageInfo.image)
-
-        if let action = pageInfo.primaryAction {
-            currentPrimaryAction = action
-            tutorialPage.showPrimaryActionButton()
-            tutorialPage.showPrimaryActionDescription(presentationStrings.presentationString(for: .tutorialInitialLoadBeginDownload))
-        }
-
-        if let action = pageInfo.secondaryAction {
-            currentSecondaryAction = action
-            tutorialPage.showSecondaryActionButton()
-            tutorialPage.showSecondaryActionDescription(action.actionDescription)
-        }
-    }
 
     private func string(for scenario: PresentationScenario) -> String {
         return presentationStrings.presentationString(for: scenario)
     }
 
     private func showInitiateDownloadPage() {
+        var tutorialPage = tutorialScene.showTutorialPage()
         tutorialPage.tutorialPageSceneDelegate = self
         tutorialPage.showPageImage(presentationAssets.initialLoadInformationAsset)
         tutorialPage.showPageTitle(string(for: .tutorialInitialLoadTitle))

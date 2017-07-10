@@ -26,25 +26,12 @@ struct PresentationTier {
         self.routers = StoryboardRouters(window: window)
         self.finishedTutorialProvider = UserDefaultsTutorialStateProvider(userDefaults: .standard)
         let appContext = ApplicationContext(firstTimeLaunchProviding: finishedTutorialProvider,
-                                            tutorialItems: makeTutorialItems(),
                                             quoteGenerator: EgyptianQuoteGenerator(),
                                             presentationStrings: UnlocalizedPresentationStrings(),
                                             presentationAssets: ApplicationPresentationAssets(),
                                             networkReachability: DummyNetworkReachability())
 
         BootstrappingModule.bootstrap(context: appContext, routers: routers)
-    }
-
-    private func makeTutorialItems() -> [TutorialPageInfo] {
-        let action = TutorialBlockAction { }
-        let beginDownloadAction = TutorialPageAction(actionDescription: "Begin Download",
-                                                     action: action)
-        let beginDownloadItem = TutorialPageInfo(image: #imageLiteral(resourceName: "tuto02_informationIcon"),
-                                                 title: "Offline Usage",
-                                                 description: "The Eurofurence app is intended to remain fully functional while offline. To do this, we need to download a few megabytes of data. This may take several minutes depending upon the speed of your connection.",
-                                                 primaryAction: beginDownloadAction)
-
-        return [beginDownloadItem]
     }
 
 }

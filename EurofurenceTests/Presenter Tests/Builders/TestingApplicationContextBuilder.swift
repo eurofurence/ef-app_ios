@@ -12,7 +12,6 @@ import Foundation
 class TestingApplicationContextBuilder {
 
     var firstTimeLaunchProviding: UserCompletedTutorialStateProviding
-    var tutorialItems: [TutorialPageInfo]
     var quoteGenerator: QuoteGenerator
     var presentationStrings: PresentationStrings
     var presentationAssets: PresentationAssets
@@ -20,7 +19,6 @@ class TestingApplicationContextBuilder {
 
     init() {
         firstTimeLaunchProviding = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
-        tutorialItems = []
         quoteGenerator = CapturingQuoteGenerator()
         presentationStrings = StubPresentationStrings()
         presentationAssets = StubPresentationAssets()
@@ -37,11 +35,6 @@ class TestingApplicationContextBuilder {
         return self
     }
 
-    func withTutorialItems(_ tutorialItems: [TutorialPageInfo]) -> TestingApplicationContextBuilder {
-        self.tutorialItems = tutorialItems
-        return self
-    }
-
     func withQuoteGenerator(_ quoteGenerator: QuoteGenerator) -> TestingApplicationContextBuilder {
         self.quoteGenerator = quoteGenerator
         return self
@@ -54,7 +47,6 @@ class TestingApplicationContextBuilder {
 
     func build() -> ApplicationContext {
         return ApplicationContext(firstTimeLaunchProviding: firstTimeLaunchProviding,
-                                  tutorialItems: tutorialItems,
                                   quoteGenerator: quoteGenerator,
                                   presentationStrings: presentationStrings,
                                   presentationAssets: presentationAssets,

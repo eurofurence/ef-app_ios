@@ -20,8 +20,7 @@ class WhenTheTutorialAppears: XCTestCase {
         var alertRouter: CapturingAlertRouter
     }
 
-    private func showTutorial(_ items: [TutorialPageInfo] = [],
-                              _ networkReachability: NetworkReachability = StubNetworkReachability(),
+    private func showTutorial(_ networkReachability: NetworkReachability = StubNetworkReachability(),
                               _ splashRouter: CapturingSplashScreenRouter = CapturingSplashScreenRouter()) -> TutorialTestContext {
         let tutorialRouter = CapturingTutorialRouter()
         let alertRouter = CapturingAlertRouter()
@@ -30,7 +29,6 @@ class WhenTheTutorialAppears: XCTestCase {
                                   alertRouter: alertRouter)
         let context = TestingApplicationContextBuilder()
             .forShowingTutorial()
-            .withTutorialItems(items)
             .withNetworkReachability(networkReachability)
             .build()
         BootstrappingModule.bootstrap(context: context, routers: routers)
@@ -43,51 +41,39 @@ class WhenTheTutorialAppears: XCTestCase {
                                    alertRouter: alertRouter)
     }
     
-    private func makeTutorialItemWithPrimaryCapturingAction() -> (item: TutorialPageInfo, action: CapturingAction) {
-        let capturingAction = CapturingAction()
-        let action = TutorialPageAction(actionDescription: "", action: capturingAction)
-        return (item: TutorialPageInfo(image: nil, title: nil, description: nil, primaryAction: action), action: capturingAction)
-    }
-    
-    private func makeTutorialItemWithSecondaryCapturingAction() -> (item: TutorialPageInfo, action: CapturingAction) {
-        let capturingAction = CapturingAction()
-        let action = TutorialPageAction(actionDescription: "", action: capturingAction)
-        return (item: TutorialPageInfo(image: nil, title: nil, description: nil, secondaryAction: action), action: capturingAction)
-    }
-    
     func testItShouldBeToldToShowTheTutorialPage() {
         let setup = showTutorial()
         XCTAssertTrue(setup.tutorial.wasToldToShowTutorialPage)
     }
 
     func testItShouldTellTheFirstTutorialPageToShowTheTitleForBeginningInitialLoad() {
-        let setup = showTutorial([])
+        let setup = showTutorial()
 
         XCTAssertEqual(setup.strings.presentationString(for: .tutorialInitialLoadTitle),
                        setup.page.capturedPageTitle)
     }
 
     func testItShouldTellTheFirstTutorialPageToShowTheDescriptionForBeginningInitialLoad() {
-        let setup = showTutorial([])
+        let setup = showTutorial()
 
         XCTAssertEqual(setup.strings.presentationString(for: .tutorialInitialLoadDescription),
                        setup.page.capturedPageDescription)
     }
 
     func testItShouldShowTheInformationImageForBeginningInitialLoad() {
-        let setup = showTutorial([])
+        let setup = showTutorial()
 
         XCTAssertEqual(setup.assets.initialLoadInformationAsset,
                        setup.page.capturedPageImage)
     }
     
     func testItShouldShowThePrimaryActionButtonForTheInitiateDownloadTutorialPage() {
-        let setup = showTutorial([])
+        let setup = showTutorial()
         XCTAssertTrue(setup.page.didShowPrimaryActionButton)
     }
     
     func testItShouldTellTheTutorialPageToShowTheBeginDownloadTextOnThePrimaryActionButton() {
-        let setup = showTutorial([])
+        let setup = showTutorial()
         
         XCTAssertEqual(setup.strings.presentationString(for: .tutorialInitialLoadBeginDownload),
                        setup.page.capturedPrimaryActionDescription)
@@ -97,7 +83,7 @@ class WhenTheTutorialAppears: XCTestCase {
         var networkReachability = StubNetworkReachability()
         networkReachability.wifiReachable = true
         let splashRouter = CapturingSplashScreenRouter()
-        let setup = showTutorial([], networkReachability, splashRouter)
+        let setup = showTutorial(networkReachability, splashRouter)
         setup.page.simulateTappingPrimaryActionButton()
 
         XCTAssertTrue(splashRouter.wasToldToShowSplashScreen)
@@ -107,7 +93,7 @@ class WhenTheTutorialAppears: XCTestCase {
         var networkReachability = StubNetworkReachability()
         networkReachability.wifiReachable = false
         let splashRouter = CapturingSplashScreenRouter()
-        let setup = showTutorial([], networkReachability, splashRouter)
+        let setup = showTutorial(networkReachability, splashRouter)
         setup.page.simulateTappingPrimaryActionButton()
 
         XCTAssertTrue(setup.alertRouter.didShowAlert)
@@ -117,7 +103,7 @@ class WhenTheTutorialAppears: XCTestCase {
         var networkReachability = StubNetworkReachability()
         networkReachability.wifiReachable = false
         let splashRouter = CapturingSplashScreenRouter()
-        let setup = showTutorial([], networkReachability, splashRouter)
+        let setup = showTutorial(networkReachability, splashRouter)
         setup.page.simulateTappingPrimaryActionButton()
 
         XCTAssertFalse(splashRouter.wasToldToShowSplashScreen)
@@ -127,7 +113,7 @@ class WhenTheTutorialAppears: XCTestCase {
         var networkReachability = StubNetworkReachability()
         networkReachability.wifiReachable = true
         let splashRouter = CapturingSplashScreenRouter()
-        let setup = showTutorial([], networkReachability, splashRouter)
+        let setup = showTutorial(networkReachability, splashRouter)
         setup.page.simulateTappingPrimaryActionButton()
 
         XCTAssertFalse(setup.alertRouter.didShowAlert)
@@ -137,7 +123,7 @@ class WhenTheTutorialAppears: XCTestCase {
         var networkReachability = StubNetworkReachability()
         networkReachability.wifiReachable = false
         let splashRouter = CapturingSplashScreenRouter()
-        let setup = showTutorial([], networkReachability, splashRouter)
+        let setup = showTutorial(networkReachability, splashRouter)
         setup.page.simulateTappingPrimaryActionButton()
 
         XCTAssertEqual(setup.strings.presentationString(for: .cellularDownloadAlertTitle),
@@ -148,7 +134,7 @@ class WhenTheTutorialAppears: XCTestCase {
         var networkReachability = StubNetworkReachability()
         networkReachability.wifiReachable = false
         let splashRouter = CapturingSplashScreenRouter()
-        let setup = showTutorial([], networkReachability, splashRouter)
+        let setup = showTutorial(networkReachability, splashRouter)
         setup.page.simulateTappingPrimaryActionButton()
 
         XCTAssertEqual(setup.strings.presentationString(for: .cellularDownloadAlertMessage),
@@ -159,7 +145,7 @@ class WhenTheTutorialAppears: XCTestCase {
         var networkReachability = StubNetworkReachability()
         networkReachability.wifiReachable = false
         let splashRouter = CapturingSplashScreenRouter()
-        let setup = showTutorial([], networkReachability, splashRouter)
+        let setup = showTutorial(networkReachability, splashRouter)
         setup.page.simulateTappingPrimaryActionButton()
         let action = setup.alertRouter.presentedActions.first
 
@@ -171,7 +157,7 @@ class WhenTheTutorialAppears: XCTestCase {
         var networkReachability = StubNetworkReachability()
         networkReachability.wifiReachable = false
         let splashRouter = CapturingSplashScreenRouter()
-        let setup = showTutorial([], networkReachability, splashRouter)
+        let setup = showTutorial(networkReachability, splashRouter)
         setup.page.simulateTappingPrimaryActionButton()
         let action = setup.alertRouter.presentedActions.last
 
@@ -183,121 +169,11 @@ class WhenTheTutorialAppears: XCTestCase {
         var networkReachability = StubNetworkReachability()
         networkReachability.wifiReachable = false
         let splashRouter = CapturingSplashScreenRouter()
-        let setup = showTutorial([], networkReachability, splashRouter)
+        let setup = showTutorial(networkReachability, splashRouter)
         setup.page.simulateTappingPrimaryActionButton()
         setup.alertRouter.presentedActions.first?.invoke()
 
         XCTAssertTrue(setup.splashRouter.wasToldToShowSplashScreen)
-    }
-
-    // TODO: Rework
-    
-    func testItShouldTellTheFirstTutorialPageToShowTheSecondaryActionButtonWhenSecondaryActionAvailable() {
-        let firstTutorialItem = makeTutorialItemWithSecondaryCapturingAction().item
-        let setup = showTutorial([firstTutorialItem])
-        
-        XCTAssertTrue(setup.page.didShowSecondaryActionButton)
-    }
-    
-    func testItShouldNotTellTheFirstTutorialPageToShowTheSeondaryActionButtonWhenSecondaryActionIsNotAvailable() {
-        let firstTutorialItem = TutorialPageInfo(image: nil, title: nil, description: nil, secondaryAction: nil)
-        let setup = showTutorial([firstTutorialItem])
-        
-        XCTAssertFalse(setup.page.didShowSecondaryActionButton)
-    }
-
-    func testItShouldTellTheTutorialPageToShowTheSecondaryActionTextWhenSecondaryActionAvailable() {
-        let expectedActionDescription = "Do voodoo"
-        let action = TutorialPageAction(actionDescription: expectedActionDescription, action: CapturingAction())
-        let firstTutorialItem = TutorialPageInfo(image: nil, title: nil, description: nil, secondaryAction: action)
-        let setup = showTutorial([firstTutorialItem])
-        
-        XCTAssertEqual(expectedActionDescription, setup.page.capturedSecondaryActionDescription)
-    }
-    
-    func testTappingTheSecondaryActionButtonShouldInvokeTheSecondaryActionForTheFirstPage() {
-        let actionSetup = makeTutorialItemWithSecondaryCapturingAction()
-        let setup = showTutorial([actionSetup.item])
-        setup.page.simulateTappingSecondaryActionButton()
-        
-        XCTAssertTrue(actionSetup.action.didRun)
-    }
-    
-    func testWhenThePrimaryActionIsInstigatedButHasNotFinishedWithOnlyOnePageInTheTutorialTheTutorialStateProviderIsNotToldToMarkTheTutorialAsComplete() {
-        let setup = makeTutorialItemWithPrimaryCapturingAction()
-        let tutorialRouter = CapturingTutorialRouter()
-        let finishedTutorialProvider = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
-        let routers = StubRouters(tutorialRouter: tutorialRouter)
-        let context = TestingApplicationContextBuilder()
-            .withUserCompletedTutorialStateProviding(finishedTutorialProvider)
-            .withTutorialItems([setup.item])
-            .build()
-        BootstrappingModule.bootstrap(context: context, routers: routers)
-        tutorialRouter.tutorialScene.tutorialPage.simulateTappingPrimaryActionButton()
-        
-        XCTAssertFalse(finishedTutorialProvider.didMarkTutorialAsComplete)
-    }
-    
-    func testWhenTheSecondaryActionCompletesWithOnlyOnePageInTheTutorialTheSplashRouterIsToldToShowTheSplashScreen() {
-        let setup = makeTutorialItemWithSecondaryCapturingAction()
-        let tutorialRouter = CapturingTutorialRouter()
-        let splashRouter = CapturingSplashScreenRouter()
-        let routers = StubRouters(tutorialRouter: tutorialRouter, splashScreenRouter: splashRouter)
-        let context = TestingApplicationContextBuilder()
-            .forShowingTutorial()
-            .withTutorialItems([setup.item])
-            .build()
-        BootstrappingModule.bootstrap(context: context, routers: routers)
-        tutorialRouter.tutorialScene.tutorialPage.simulateTappingSecondaryActionButton()
-        setup.action.notifyHandlerActionDidFinish()
-        
-        XCTAssertTrue(splashRouter.wasToldToShowSplashScreen)
-    }
-    
-    func testWhenTheSecondaryActionCompletesWithOnlyOnePageInTheTutorialTheTutorialStateProviderIsToldToMarkTheTutorialAsComplete() {
-        let setup = makeTutorialItemWithSecondaryCapturingAction()
-        let tutorialRouter = CapturingTutorialRouter()
-        let finishedTutorialProvider = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
-        let routers = StubRouters(tutorialRouter: tutorialRouter)
-        let context = TestingApplicationContextBuilder()
-            .withUserCompletedTutorialStateProviding(finishedTutorialProvider)
-            .withTutorialItems([setup.item])
-            .build()
-        BootstrappingModule.bootstrap(context: context, routers: routers)
-        tutorialRouter.tutorialScene.tutorialPage.simulateTappingSecondaryActionButton()
-        setup.action.notifyHandlerActionDidFinish()
-        
-        XCTAssertTrue(finishedTutorialProvider.didMarkTutorialAsComplete)
-    }
-    
-    func testWhenTheSecondaryActionIsInstigatedButHasNotFinishedWithOnlyOnePageInTheTutorialTheSplashRouterIsNotToldToShowTheSplashScreen() {
-        let setup = makeTutorialItemWithSecondaryCapturingAction()
-        let tutorialRouter = CapturingTutorialRouter()
-        let splashRouter = CapturingSplashScreenRouter()
-        let routers = StubRouters(tutorialRouter: tutorialRouter, splashScreenRouter: splashRouter)
-        let context = TestingApplicationContextBuilder()
-            .forShowingTutorial()
-            .withTutorialItems([setup.item])
-            .build()
-        BootstrappingModule.bootstrap(context: context, routers: routers)
-        tutorialRouter.tutorialScene.tutorialPage.simulateTappingSecondaryActionButton()
-        
-        XCTAssertFalse(splashRouter.wasToldToShowSplashScreen)
-    }
-    
-    func testWhenTheSecondaryActionIsInstigatedButHasNotFinishedWithOnlyOnePageInTheTutorialTheTutorialStateProviderIsNotToldToMarkTheTutorialAsComplete() {
-        let setup = makeTutorialItemWithSecondaryCapturingAction()
-        let tutorialRouter = CapturingTutorialRouter()
-        let finishedTutorialProvider = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
-        let routers = StubRouters(tutorialRouter: tutorialRouter)
-        let context = TestingApplicationContextBuilder()
-            .withUserCompletedTutorialStateProviding(finishedTutorialProvider)
-            .withTutorialItems([setup.item])
-            .build()
-        BootstrappingModule.bootstrap(context: context, routers: routers)
-        tutorialRouter.tutorialScene.tutorialPage.simulateTappingSecondaryActionButton()
-        
-        XCTAssertFalse(finishedTutorialProvider.didMarkTutorialAsComplete)
     }
 
 }

@@ -11,20 +11,17 @@ import Foundation
 struct ApplicationContext {
 
     var firstTimeLaunchProviding: UserCompletedTutorialStateProviding
-    var tutorialItems: [TutorialPageInfo]
     var quoteGenerator: QuoteGenerator
     var presentationStrings: PresentationStrings
     var presentationAssets: PresentationAssets
     var networkReachability: NetworkReachability
 
     init(firstTimeLaunchProviding: UserCompletedTutorialStateProviding,
-         tutorialItems: [TutorialPageInfo],
          quoteGenerator: QuoteGenerator,
          presentationStrings: PresentationStrings,
          presentationAssets: PresentationAssets,
          networkReachability: NetworkReachability) {
         self.firstTimeLaunchProviding = firstTimeLaunchProviding
-        self.tutorialItems = tutorialItems
         self.quoteGenerator = quoteGenerator
         self.presentationStrings = presentationStrings
         self.presentationAssets = presentationAssets

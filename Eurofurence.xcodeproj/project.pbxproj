@@ -19,8 +19,6 @@
 		6EF96CE51F1268CC00EE6134 /* TutorialPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CE41F1268CC00EE6134 /* TutorialPresenter.swift */; };
 		6EF96CE71F1269FD00EE6134 /* TutorialModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CE61F1269FD00EE6134 /* TutorialModule.swift */; };
 		6EF96CEA1F126B1A00EE6134 /* BootstrappingModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CE91F126B1A00EE6134 /* BootstrappingModule.swift */; };
-		6EF96CED1F12730400EE6134 /* CapturingTutorialActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CEC1F12730400EE6134 /* CapturingTutorialActionDelegate.swift */; };
-		6EF96CEF1F12731D00EE6134 /* CapturingAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CEE1F12731D00EE6134 /* CapturingAction.swift */; };
 		7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6DA1F13F4DE004C0FB5 /* StubPresentationAssets.swift */; };
 		7820A6DD1F13F544004C0FB5 /* PresentationAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6DC1F13F544004C0FB5 /* PresentationAssets.swift */; };
 		7820A6DF1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6DE1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift */; };
@@ -45,9 +43,7 @@
 		78455B591F117BCF005BE2D7 /* StoryboardTutorialRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B581F117BCF005BE2D7 /* StoryboardTutorialRouter.swift */; };
 		78455B5B1F117E27005BE2D7 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B5A1F117E27005BE2D7 /* TutorialPageViewController.swift */; };
 		78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B5C1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift */; };
-		78455B5F1F118578005BE2D7 /* TutorialPageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B5E1F118578005BE2D7 /* TutorialPageInfo.swift */; };
 		78455B621F118699005BE2D7 /* RoundedCornerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B611F118699005BE2D7 /* RoundedCornerButton.swift */; };
-		78455B641F118D11005BE2D7 /* TutorialAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B631F118D11005BE2D7 /* TutorialAction.swift */; };
 		78567B3D1F100BAF00EBA31D /* DataStoreRefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78567B3C1F100BAF00EBA31D /* DataStoreRefreshController.swift */; };
 		78567B3F1F1016B000EBA31D /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78567B3E1F1016B000EBA31D /* TabViewController.swift */; };
 		78567B411F10212100EBA31D /* ProgressViewRefreshDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78567B401F10212100EBA31D /* ProgressViewRefreshDelegate.swift */; };
@@ -56,8 +52,6 @@
 		78567B471F10D1C400EBA31D /* DataStoreLoadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78567B461F10D1C400EBA31D /* DataStoreLoadController.swift */; };
 		78C86D4C1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D4B1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift */; };
 		78C86D4E1F119B68003A20E6 /* StoryboardSplashScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D4D1F119B68003A20E6 /* StoryboardSplashScreenRouter.swift */; };
-		78C86D501F119F2A003A20E6 /* TutorialBlockActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D4F1F119F2A003A20E6 /* TutorialBlockActionTests.swift */; };
-		78C86D521F11A065003A20E6 /* TutorialBlockAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D511F11A065003A20E6 /* TutorialBlockAction.swift */; };
 		78C86D541F1228B0003A20E6 /* TutorialViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D531F1228B0003A20E6 /* TutorialViewControllerTests.swift */; };
 		78C86D561F12334D003A20E6 /* Routers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D551F12334D003A20E6 /* Routers.swift */; };
 		78C86D581F12338D003A20E6 /* StoryboardRouters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D571F12338D003A20E6 /* StoryboardRouters.swift */; };
@@ -188,8 +182,6 @@
 		6EF96CE41F1268CC00EE6134 /* TutorialPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialPresenter.swift; path = Presenters/Modules/Tutorial/TutorialPresenter.swift; sourceTree = "<group>"; };
 		6EF96CE61F1269FD00EE6134 /* TutorialModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialModule.swift; path = Presenters/Modules/Tutorial/TutorialModule.swift; sourceTree = "<group>"; };
 		6EF96CE91F126B1A00EE6134 /* BootstrappingModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BootstrappingModule.swift; path = Presenters/Modules/Bootstrap/BootstrappingModule.swift; sourceTree = "<group>"; };
-		6EF96CEC1F12730400EE6134 /* CapturingTutorialActionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingTutorialActionDelegate.swift; path = "Test Doubles/CapturingTutorialActionDelegate.swift"; sourceTree = "<group>"; };
-		6EF96CEE1F12731D00EE6134 /* CapturingAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingAction.swift; path = "Test Doubles/CapturingAction.swift"; sourceTree = "<group>"; };
 		7820A6DA1F13F4DE004C0FB5 /* StubPresentationAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubPresentationAssets.swift; path = "Test Doubles/StubPresentationAssets.swift"; sourceTree = "<group>"; };
 		7820A6DC1F13F544004C0FB5 /* PresentationAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentationAssets.swift; path = Presenters/PresentationAssets.swift; sourceTree = "<group>"; };
 		7820A6DE1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationPresentationAssetsTests.swift; sourceTree = "<group>"; };
@@ -214,9 +206,7 @@
 		78455B581F117BCF005BE2D7 /* StoryboardTutorialRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoryboardTutorialRouter.swift; path = Routers/Storyboard/StoryboardTutorialRouter.swift; sourceTree = "<group>"; };
 		78455B5A1F117E27005BE2D7 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialPageViewController.swift; path = Views/Controllers/Tutorial/TutorialPageViewController.swift; sourceTree = "<group>"; };
 		78455B5C1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewControllerTests.swift; sourceTree = "<group>"; };
-		78455B5E1F118578005BE2D7 /* TutorialPageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialPageInfo.swift; path = Views/Controllers/Tutorial/TutorialPageInfo.swift; sourceTree = "<group>"; };
 		78455B611F118699005BE2D7 /* RoundedCornerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundedCornerButton.swift; path = Controls/RoundedCornerButton.swift; sourceTree = "<group>"; };
-		78455B631F118D11005BE2D7 /* TutorialAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialAction.swift; path = Views/Controllers/Tutorial/TutorialAction.swift; sourceTree = "<group>"; };
 		78567B3C1F100BAF00EBA31D /* DataStoreRefreshController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreRefreshController.swift; sourceTree = "<group>"; };
 		78567B3E1F1016B000EBA31D /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		78567B401F10212100EBA31D /* ProgressViewRefreshDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressViewRefreshDelegate.swift; sourceTree = "<group>"; };
@@ -225,8 +215,6 @@
 		78567B461F10D1C400EBA31D /* DataStoreLoadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreLoadController.swift; sourceTree = "<group>"; };
 		78C86D4B1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardSplashScreenRouterTests.swift; sourceTree = "<group>"; };
 		78C86D4D1F119B68003A20E6 /* StoryboardSplashScreenRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoryboardSplashScreenRouter.swift; path = Routers/Storyboard/StoryboardSplashScreenRouter.swift; sourceTree = "<group>"; };
-		78C86D4F1F119F2A003A20E6 /* TutorialBlockActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialBlockActionTests.swift; sourceTree = "<group>"; };
-		78C86D511F11A065003A20E6 /* TutorialBlockAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialBlockAction.swift; path = Views/Controllers/Tutorial/TutorialBlockAction.swift; sourceTree = "<group>"; };
 		78C86D531F1228B0003A20E6 /* TutorialViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewControllerTests.swift; sourceTree = "<group>"; };
 		78C86D551F12334D003A20E6 /* Routers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Routers.swift; path = Routers/Routers.swift; sourceTree = "<group>"; };
 		78C86D571F12338D003A20E6 /* StoryboardRouters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoryboardRouters.swift; path = Routers/Storyboard/StoryboardRouters.swift; sourceTree = "<group>"; };
@@ -400,8 +388,6 @@
 				78455B4A1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift */,
 				78455B4C1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift */,
 				78C86D591F1234F0003A20E6 /* StubRouters.swift */,
-				6EF96CEC1F12730400EE6134 /* CapturingTutorialActionDelegate.swift */,
-				6EF96CEE1F12731D00EE6134 /* CapturingAction.swift */,
 				78C86D801F13A0CE003A20E6 /* StubPresentationStrings.swift */,
 				7820A6DA1F13F4DE004C0FB5 /* StubPresentationAssets.swift */,
 				7820A6E01F13FC7F004C0FB5 /* StubNetworkReachability.swift */,
@@ -448,9 +434,6 @@
 		78455B3D1F11770C005BE2D7 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				78455B631F118D11005BE2D7 /* TutorialAction.swift */,
-				78C86D511F11A065003A20E6 /* TutorialBlockAction.swift */,
-				78455B5E1F118578005BE2D7 /* TutorialPageInfo.swift */,
 				78455B5A1F117E27005BE2D7 /* TutorialPageViewController.swift */,
 				78455B531F117A35005BE2D7 /* TutorialViewController.swift */,
 				78455B401F117742005BE2D7 /* UserCompletedTutorialStateProviding.swift */,
@@ -634,7 +617,6 @@
 				78455B511F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift */,
 				78455B5C1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift */,
 				78C86D4B1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift */,
-				78C86D4F1F119F2A003A20E6 /* TutorialBlockActionTests.swift */,
 				78C86D531F1228B0003A20E6 /* TutorialViewControllerTests.swift */,
 				78C86D7A1F12B2A2003A20E6 /* SplashViewControllerTests.swift */,
 				78C86D821F13A35F003A20E6 /* UnlocalizedPresentationStringsShould.swift */,
@@ -1164,20 +1146,17 @@
 				D6F3DB838A1BDAFC6DAC2F61 /* CountryAlpha3Converter.swift in Sources */,
 				D6F3DEDDAFE507E873CB3806 /* WikiText.swift in Sources */,
 				D6F3D523BDCDDA3A2A163E55 /* TimeLabelCell.swift in Sources */,
-				78455B5F1F118578005BE2D7 /* TutorialPageInfo.swift in Sources */,
 				78567B451F103C3800EBA31D /* RefreshControlDataStoreDelegate.swift in Sources */,
 				78455B411F117742005BE2D7 /* UserCompletedTutorialStateProviding.swift in Sources */,
 				7820A6E31F13FD2C004C0FB5 /* NetworkReachability.swift in Sources */,
 				78455B5B1F117E27005BE2D7 /* TutorialPageViewController.swift in Sources */,
 				D6F3D620BA994A6570325C66 /* DealersTableViewCell.swift in Sources */,
 				D6F3DDCB5EF23B138BD25865 /* EventHeaderCellTableViewCell.swift in Sources */,
-				78455B641F118D11005BE2D7 /* TutorialAction.swift in Sources */,
 				9A2A94891F12D152004D66FB /* LastSyncDateProviding.swift in Sources */,
 				D6F3DBB69290DF1E0448A3CC /* EventCell.swift in Sources */,
 				9A2A94871F12CBC0004D66FB /* SyncState.swift in Sources */,
 				D6F3D13A59E359E69EA66D7E /* MenuTableViewCell.swift in Sources */,
 				6EF96CE71F1269FD00EE6134 /* TutorialModule.swift in Sources */,
-				78C86D521F11A065003A20E6 /* TutorialBlockAction.swift in Sources */,
 				7820A6E71F1400A8004C0FB5 /* AlertRouter.swift in Sources */,
 				D6F3D275FF81A313B9213277 /* AnnouncementCell.swift in Sources */,
 				D6F3DAD590C051C8D0060172 /* EventViewController.swift in Sources */,
@@ -1209,7 +1188,6 @@
 			files = (
 				78C86D541F1228B0003A20E6 /* TutorialViewControllerTests.swift in Sources */,
 				78455B3A1F116A7E005BE2D7 /* WhenTheAppLaunches.swift in Sources */,
-				6EF96CEF1F12731D00EE6134 /* CapturingAction.swift in Sources */,
 				78455B491F1177AD005BE2D7 /* CapturingTutorialRouter.swift in Sources */,
 				78C86D721F12AACA003A20E6 /* WhenTheSplashScreenAppears.swift in Sources */,
 				6EF96CDB1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift in Sources */,
@@ -1223,7 +1201,6 @@
 				78C86D4C1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift in Sources */,
 				78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */,
 				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,
-				6EF96CED1F12730400EE6134 /* CapturingTutorialActionDelegate.swift in Sources */,
 				7820A6E51F140056004C0FB5 /* CapturingAlertRouter.swift in Sources */,
 				78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */,
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
@@ -1233,7 +1210,6 @@
 				6EF96CCF1F0EDB2000EE6134 /* CalendarTestDoubles.swift in Sources */,
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
 				78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */,
-				78C86D501F119F2A003A20E6 /* TutorialBlockActionTests.swift in Sources */,
 				7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */,
 				78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */,
 				78455B4B1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift in Sources */,
