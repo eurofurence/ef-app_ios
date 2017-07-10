@@ -7,8 +7,11 @@ osx_image: xcode8.3
 xcode_workspace: Eurofurence.xcworkspace
 xcode_scheme: Eurofurence
 
+install:
+  - gem install xcpretty
+
 script:
-  - xcodebuild -workspace Eurofurence.xcworkspace -scheme Eurofurence -destination "platform=iOS Simulator,name=iPhone 7" clean test
+  - xcodebuild -workspace Eurofurence.xcworkspace -scheme Eurofurence -destination "platform=iOS Simulator,name=iPhone 7" clean test | xcpretty && exit ${PIPESTATUS[0]}
 
 deploy:
   provider: firebase
