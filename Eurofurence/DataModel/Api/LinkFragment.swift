@@ -8,7 +8,9 @@
 import Foundation
 import EVReflection
 
-class LinkFragment: EVObject {
+class LinkFragment: EVObject, VersionedDataModel {
+	class var DataModelVersion: Int { return 1 }
+
 	enum LinkFragmentType: String, EVRaw {
 		case DealerDetail
 		case MapExternal

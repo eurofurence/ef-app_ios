@@ -8,6 +8,8 @@
 import Foundation
 
 class Announcement: EntityBase {
+	override class var DataModelVersion: Int { return 1 + super.DataModelVersion }
+
 	var Area: String = ""
 	var Author: String = ""
 	var Content: String = ""

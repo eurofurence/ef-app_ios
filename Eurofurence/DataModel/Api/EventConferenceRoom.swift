@@ -8,6 +8,8 @@
 import Foundation
 
 class EventConferenceRoom: EntityBase {
+	override class var DataModelVersion: Int { return 1 + super.DataModelVersion }
+
 	var Name = ""
 
 	var Events: [Event] = []

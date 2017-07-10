@@ -8,6 +8,8 @@
 import Foundation
 
 class EventConferenceTrack: EntityBase {
+	override class var DataModelVersion: Int { return 1 + super.DataModelVersion }
+
 	var Name = ""
 
 	var Events: [Event] = []

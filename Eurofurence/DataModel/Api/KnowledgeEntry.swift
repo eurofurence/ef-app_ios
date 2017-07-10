@@ -8,6 +8,9 @@
 import Foundation
 
 class KnowledgeEntry: EntityBase {
+	/// Force reload if wrapped type LinkFragment changes
+	override class var DataModelVersion: Int { return 1 + super.DataModelVersion + LinkFragment.DataModelVersion }
+
 	var KnowledgeGroupId: String = ""
 	var Order: Int = 0
 	var Text: String = ""

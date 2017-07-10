@@ -8,6 +8,8 @@
 import Foundation
 
 class KnowledgeGroup: EntityBase {
+	override class var DataModelVersion: Int { return 1 + super.DataModelVersion }
+
 	var Description: String = ""
 	var FontAwesomeIconCharacterUnicodeAddress: String = ""
 	var Name: String = ""

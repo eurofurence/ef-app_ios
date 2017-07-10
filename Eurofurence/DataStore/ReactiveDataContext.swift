@@ -146,15 +146,32 @@ class ReactiveDataContext: DataContextProtocol {
 				producers.append(self.dataStore.load(Map.self))
 			}
 
-			producers.append(self.dataStore.load(Eurofurence.SyncState.self))
-
-			let overallProgress = Progress(totalUnitCount: Int64(exactly: producers.count + 1)!)
+			let overallProgress = Progress(totalUnitCount: Int64(exactly: producers.count + 2)!)
 			let resultsProducer = SignalProducer<SignalProducer<DataStoreResult, DataStoreError>, NoError>(producers)
+
+			// SyncState must be successfully loaded from store before consistency
+			// checking becomes available (without it, load will always fail).
+			if let syncStateResult = self.dataStore.load(Eurofurence.SyncState.self).last() {
+				switch syncStateResult {
+				case let .success(value):
+					if let syncStateValue = value.entityData?.first as? Eurofurence.SyncState {
+						self.SyncState.swap(syncStateValue)
+					} else {
+						observer.send(error: DataStoreError.FailedRead(entityType: String(describing: Eurofurence.SyncState), description: "No sync state in store."))
+					}
+					overallProgress.completedUnitCount += 1
+					observer.send(value: overallProgress)
+				case let .failure(error):
+					observer.send(error: error)
+				}
+			} else {
+				observer.send(error: DataStoreError.FailedRead(entityType: String(describing: Eurofurence.SyncState), description: "Attempted to load sync state, but got no results."))
+			}
 
 			resultsProducer.flatten(.merge).start({ event in
 				switch event {
 				case let .value(value):
-					print("Loaded \(value) from store")
+					print("Loaded \(String(describing:value.entityType)) from store")
 					switch value.entityType {
 					case is Announcement.Type:
 						self.Announcements.swap(value.entityData as! [Announcement])
@@ -176,10 +193,6 @@ class ReactiveDataContext: DataContextProtocol {
 						self.KnowledgeGroups.swap(value.entityData as! [KnowledgeGroup])
 					case is Map.Type:
 						self.Maps.swap(value.entityData as! [Map])
-					case is Eurofurence.SyncState.Type:
-						if let syncStateResult = value.entityData?.first as? Eurofurence.SyncState {
-							self.SyncState.swap(syncStateResult)
-						}
 					default:
 						print("Attempted to load unknown entity") // This should never happen *ducks*
 					}
@@ -231,9 +244,7 @@ class ReactiveDataContext: DataContextProtocol {
 				producers.append(self.dataStore.save(Map.self, entityData: self.Maps.value))
 			}
 
-			producers.append(self.dataStore.save(Eurofurence.SyncState.self, entityData: [self.SyncState.value]))
-
-			let overallProgress = Progress(totalUnitCount: Int64(exactly: producers.count)!)
+			let overallProgress = Progress(totalUnitCount: Int64(exactly: producers.count + 1)!)
 			let resultsProducer = SignalProducer<SignalProducer<DataStoreResult, DataStoreError>, NoError>(producers)
 
 			resultsProducer.flatten(.merge).start({ event in
@@ -246,7 +257,22 @@ class ReactiveDataContext: DataContextProtocol {
 					print("Error while storing: \(error)")
 					observer.send(error: error)
 				case .completed:
-					observer.sendCompleted()
+					self.dataStore.save(Eurofurence.SyncState.self, entityData: [self.SyncState.value]).start({ event in
+						switch event {
+						case .value:
+							print("Stored SyncState")
+							overallProgress.completedUnitCount += 1
+							observer.send(value: overallProgress)
+						case let .failed(error):
+							print("Error while storing SyncState: \(error)")
+							observer.send(error: error)
+						case .completed:
+							observer.sendCompleted()
+						case .interrupted:
+							print("Storing of SyncState interrupted")
+							observer.sendInterrupted()
+						}
+					})
 				case .interrupted:
 					print("Storing interrupted")
 					observer.sendInterrupted()

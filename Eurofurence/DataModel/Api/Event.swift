@@ -8,6 +8,8 @@
 import Foundation
 
 class Event: EntityBase {
+	override class var DataModelVersion: Int { return 1 + super.DataModelVersion }
+
 	var Abstract: String = ""
     var ConferenceDayId: String = ""
     var ConferenceTrackId: String = ""

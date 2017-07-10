@@ -21,23 +21,23 @@ class ContextResolver {
 
 	private init() {
 		#if OFFLINE
-			_container.register(.singleton) { _ in
+			_container.register(.eagerSingleton) { _ in
 				MockApiConnection("mock://api")! as ApiConnectionProtocol
 			}
 		#else
-			_container.register(.singleton) { _ in
+			_container.register(.eagerSingleton) { _ in
 				WebApiConnection(URL(string: "https://app.eurofurence.org/api/v2/")!) as ApiConnectionProtocol
 			}
 		#endif
 
-		_container.register(.singleton) {
+		_container.register(.eagerSingleton) {
 			JsonDataStore() as DataStoreProtocol
 		}
-		_container.register(.singleton) {
+		_container.register(.eagerSingleton) {
 			NavigationResolver() as NavigationResolverProtocol
 		}
 
-		_container.register(.singleton) {
+		_container.register(.eagerSingleton) {
 			ReactiveDataContext(dataStore: $0, navigationResolver: $1) as DataContextProtocol
 		}
 
@@ -48,8 +48,12 @@ class ContextResolver {
 			                   imageService: $3)
 		}
 
-		_container.register(.singleton) {
+		_container.register(.eagerSingleton) {
 			SyncStateProvider(dataContext: $0) as LastSyncDateProviding
+		}
+
+		_container.register(.eagerSingleton) {
+			SyncStateProvider(dataContext: $0) as DataModelVersionProviding
 		}
 	}
 }

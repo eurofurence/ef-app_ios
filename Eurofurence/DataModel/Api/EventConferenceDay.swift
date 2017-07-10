@@ -8,6 +8,8 @@
 import Foundation
 
 class EventConferenceDay: EntityBase {
+	override class var DataModelVersion: Int { return 1 + super.DataModelVersion }
+
 	var Date = Foundation.Date()
     var Name = ""
 

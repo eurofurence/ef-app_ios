@@ -9,6 +9,8 @@ import Foundation
 import CoreGraphics
 
 class Image: EntityBase {
+	override class var DataModelVersion: Int { return 1 + super.DataModelVersion }
+
 	var ContentHashSha1: String = ""
 	var Height: Int = 0
 	var InternalReference: String = ""

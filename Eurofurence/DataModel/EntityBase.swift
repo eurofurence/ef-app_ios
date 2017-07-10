@@ -13,7 +13,9 @@ Base type for allv unique entities supplied by the API.
 Provides basic comparability by Id. Override in subclasses when proper
 sortability is required and implement Sortable protocol!
 */
-class EntityBase: EVObject, Comparable {
+class EntityBase: EVObject, Comparable, VersionedDataModel {
+	class var DataModelVersion: Int { return 1 }
+
     var Id: String = ""
     var LastChangeDateTimeUtc: Date = Date()
 
@@ -39,6 +41,10 @@ class EntityBase: EVObject, Comparable {
 	                                            keyInResource: String?)] {
 		return [(keyInObject: "IsDeleted", keyInResource: nil)]
 	}
+}
+
+protocol VersionedDataModel {
+	static var DataModelVersion: Int {get}
 }
 
 /**

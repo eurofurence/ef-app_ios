@@ -20,6 +20,7 @@ class JsonDataStore: DataStoreProtocol {
 	private var storeDirectory: URL?
 	private let storeDirectoryName = "Store"
 	private let fileExtension = ".json"
+	private lazy var dataModelVersionProvider: DataModelVersionProviding = try! ContextResolver.container.resolve()
 
 	func load<EntityType: EntityBase>(_ entityType: EntityType.Type) -> SignalProducer<DataStoreResult, DataStoreError> {
 		return SignalProducer<DataStoreResult, DataStoreError>.init({ (observer, _) in
@@ -91,6 +92,18 @@ class JsonDataStore: DataStoreProtocol {
 	private func handleLoad<EntityType: EntityBase>(_ entityType: EntityType.Type) throws -> DataStoreResult {
 		print("Handling load request for \(String(describing: entityType))")
 
+		let entityDataModelVersion = self.dataModelVersionProvider.getDataModelVersion(for: String(describing: entityType)) ?? -1
+		print("Version of \(String(describing: entityType)) is \(entityDataModelVersion)")
+
+		// We can not validate the potentially not yet loaded SyncState against itself
+		if !(entityType is SyncState.Type) {
+			// TODO: Find a way to more elegantly handle this and potentially validate SyncState as well
+			guard entityDataModelVersion == entityType.DataModelVersion else {
+				throw DataStoreError.FailedRead(entityType: String(describing: entityType),
+												description: "Persisted version \(entityDataModelVersion) is not equal to the version \(entityType.DataModelVersion) provided by the implementation.")
+			}
+		}
+
 		do {
 			let storePath = try getStorePath(entityType)
 			let json = try String(contentsOf: storePath, encoding: .utf8)
@@ -114,6 +127,9 @@ class JsonDataStore: DataStoreProtocol {
 			var storePath = try getStorePath(entityType)
 			try entityData.toJsonString().write(to: storePath, atomically: true, encoding: .utf8)
 			try storePath.setExcludedFromBackup(true)
+			if !self.dataModelVersionProvider.setDataModelVersion(for: String(describing: entityType), version: entityType.DataModelVersion) {
+				throw DataStoreError.FailedWrite(entityType: String(describing: entityType), description: "Failed to update DataModelVersion for entity to \(entityType.DataModelVersion).")
+			}
 			return try DataStoreResult(.save, entityType: entityType)
 		} catch let error as DataStoreError {
 			throw error

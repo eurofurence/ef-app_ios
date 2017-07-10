@@ -9,6 +9,9 @@ import Foundation
 import CoreGraphics
 
 class MapEntry: EntityBase {
+	/// Force reload if wrapped type LinkFragment changes
+	override class var DataModelVersion: Int { return 1 + super.DataModelVersion + LinkFragment.DataModelVersion }
+
     var TapRadius = 0.0
     var X = 0.0
     var Y = 0.0

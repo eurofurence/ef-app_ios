@@ -8,6 +8,9 @@
 import Foundation
 
 class Dealer: EntityBase {
+	/// Force reload if wrapped type LinkFragment changes
+	override class var DataModelVersion: Int { return 1 + super.DataModelVersion + LinkFragment.DataModelVersion }
+
     var AboutTheArtistText: String = ""
     var AboutTheArtText: String = ""
     var ArtistImageId: String = ""

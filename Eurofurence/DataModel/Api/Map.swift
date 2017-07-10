@@ -8,6 +8,8 @@
 import Foundation
 
 class Map: EntityBase {
+	override class var DataModelVersion: Int { return 1 + super.DataModelVersion }
+
     var Description = ""
     var ImageId = ""
 	var IsBrowseable = true
