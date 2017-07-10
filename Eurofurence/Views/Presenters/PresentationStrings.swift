@@ -18,6 +18,9 @@ enum PresentationScenario {
     case tutorialInitialLoadTitle
     case tutorialInitialLoadDescription
     case tutorialInitialLoadBeginDownload
+
+    case cellularDownloadAlertTitle
+    case cellularDownloadAlertMessage
 }
 
 struct UnlocalizedPresentationStrings: PresentationStrings {
@@ -25,7 +28,8 @@ struct UnlocalizedPresentationStrings: PresentationStrings {
     private static let strings: [PresentationScenario : String] = [
         .tutorialInitialLoadTitle: "Offline Usage",
         .tutorialInitialLoadDescription: "The Eurofurence app is intended to remain fully functional while offline. To do this, we need to download a few megabytes of data. This may take several minutes depending upon the speed of your connection.",
-        .tutorialInitialLoadBeginDownload: "Begin Download"
+        .tutorialInitialLoadBeginDownload: "Begin Download",
+        .cellularDownloadAlertTitle: ""
     ]
 
     func presentationString(for scenario: PresentationScenario) -> String {

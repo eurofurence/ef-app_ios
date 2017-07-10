@@ -133,6 +133,28 @@ class WhenTheTutorialAppears: XCTestCase {
         XCTAssertFalse(setup.alertRouter.didShowAlert)
     }
 
+    func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiUnavailableTellsAlertRouterToShowAlertWithWarnUserAboutCellularDownloadsTitle() {
+        var networkReachability = StubNetworkReachability()
+        networkReachability.wifiReachable = false
+        let splashRouter = CapturingSplashScreenRouter()
+        let setup = showTutorial([], networkReachability, splashRouter)
+        setup.page.simulateTappingPrimaryActionButton()
+
+        XCTAssertEqual(setup.strings.presentationString(for: .cellularDownloadAlertTitle),
+                       setup.alertRouter.presentedAlertTitle)
+    }
+
+    func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiUnavailableTellsAlertRouterToShowAlertWithWarnUserAboutCellularDownloadsMessage() {
+        var networkReachability = StubNetworkReachability()
+        networkReachability.wifiReachable = false
+        let splashRouter = CapturingSplashScreenRouter()
+        let setup = showTutorial([], networkReachability, splashRouter)
+        setup.page.simulateTappingPrimaryActionButton()
+
+        XCTAssertEqual(setup.strings.presentationString(for: .cellularDownloadAlertMessage),
+                       setup.alertRouter.presentedAlertMessage)
+    }
+
     // TODO: Rework
     
     func testItShouldTellTheFirstTutorialPageToShowTheSecondaryActionButtonWhenSecondaryActionAvailable() {

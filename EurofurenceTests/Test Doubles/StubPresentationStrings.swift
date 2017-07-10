@@ -17,6 +17,8 @@ class StubPresentationStrings: PresentationStrings {
         stub("Tutorial initial load title", for: .tutorialInitialLoadTitle)
         stub("Tutorial initial load description", for: .tutorialInitialLoadDescription)
         stub("Tutorial initial load begin download", for: .tutorialInitialLoadBeginDownload)
+        stub("Cellular download alert title", for: .cellularDownloadAlertTitle)
+        stub("Cellular download alert message", for: .cellularDownloadAlertMessage)
     }
 
     private func stub(_ string: String, for scenario: PresentationScenario) {

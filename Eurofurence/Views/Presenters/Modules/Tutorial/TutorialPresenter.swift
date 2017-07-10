@@ -67,7 +67,8 @@ class TutorialPresenter: TutorialPageSceneDelegate {
         if networkReachability.wifiReachable {
             _ = splashScreenRouter.showSplashScreen()
         } else {
-            alertRouter.showAlert()
+            alertRouter.showAlert(title: string(for: .cellularDownloadAlertTitle),
+                                  message: string(for: .cellularDownloadAlertMessage))
         }
     }
 

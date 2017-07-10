@@ -11,8 +11,12 @@
 class CapturingAlertRouter: AlertRouter {
 
     private(set) var didShowAlert = false
-    func showAlert() {
+    private(set) var presentedAlertTitle: String?
+    private(set) var presentedAlertMessage: String?
+    func showAlert(title: String, message: String) {
         didShowAlert = true
+        presentedAlertTitle = title
+        presentedAlertMessage = message
     }
     
 }

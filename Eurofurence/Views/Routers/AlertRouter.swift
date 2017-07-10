@@ -10,6 +10,6 @@ import Foundation
 
 protocol AlertRouter {
 
-    func showAlert()
+    func showAlert(title: String, message: String)
 
 }
