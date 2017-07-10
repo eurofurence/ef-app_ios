@@ -9,7 +9,6 @@ import UIKit
 import ReactiveSwift
 
 class MapViewController: UIViewController, UIScrollViewDelegate {
-    static let imagePlaceholder = UIImage(named: "ef")
     static let ZOOM_STEPS = 3
     static let MAX_ZOOM_SCALE_FACTOR: CGFloat = 5.0
     static let MIN_ZOOM_SCALE_FACTOR: CGFloat = 1.0
@@ -220,10 +219,6 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 	///		- animated: should zooming and panning the new map to fit be animated?
 	func show(map: Map?, animated: Bool = false) {
         mapContainerView.subviews.forEach({ $0.removeFromSuperview() })
-		mapView = createMapView(for: MapViewController.imagePlaceholder)
-		guard let mapView = mapView else { return }
-		mapContainerView.contentSize = mapView.bounds.size
-		mapContainerView.addSubview(mapView)
 
 		if let mapEntry = mapEntry, mapEntry.Map == nil || mapEntry.Map != map {
 			self.mapEntry = nil
