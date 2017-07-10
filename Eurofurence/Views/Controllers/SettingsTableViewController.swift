@@ -155,8 +155,8 @@ class SettingsTableViewController: FormViewController {
 			}
             +++ Section("Other")
             <<< LabelRow { row in
-                // TODO: VersionProvider?
-                row.title = "Version: " /*+ ConfigManager.sharedInstance.appVersion*/
+                let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
+                row.title = "Version: \(version)"
                 }.cellUpdate { cell, _ in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
         }
