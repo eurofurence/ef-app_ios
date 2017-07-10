@@ -8,19 +8,13 @@
 
 import UIKit
 
-struct DummyAlertRouter: AlertRouter {
-    func showAlert(title: String, message: String, actions: AlertAction ...) {
-
-    }
-}
-
 struct StoryboardRouters: Routers {
 
     init(window: UIWindow) {
         let animator = RootViewControllerAnimator(window: window)
         tutorialRouter = StoryboardTutorialRouter(animator: animator)
         splashScreenRouter = StoryboardSplashScreenRouter(animator: animator)
-        alertRouter = DummyAlertRouter()
+        alertRouter = WindowAlertRouter(window: window)
     }
 
     var tutorialRouter: TutorialRouter
