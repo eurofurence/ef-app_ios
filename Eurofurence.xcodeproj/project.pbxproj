@@ -448,13 +448,13 @@
 		78455B3D1F11770C005BE2D7 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				78455B401F117742005BE2D7 /* UserCompletedTutorialStateProviding.swift */,
-				78455B3E1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift */,
-				78455B531F117A35005BE2D7 /* TutorialViewController.swift */,
-				78455B5A1F117E27005BE2D7 /* TutorialPageViewController.swift */,
-				78455B5E1F118578005BE2D7 /* TutorialPageInfo.swift */,
 				78455B631F118D11005BE2D7 /* TutorialAction.swift */,
 				78C86D511F11A065003A20E6 /* TutorialBlockAction.swift */,
+				78455B5E1F118578005BE2D7 /* TutorialPageInfo.swift */,
+				78455B5A1F117E27005BE2D7 /* TutorialPageViewController.swift */,
+				78455B531F117A35005BE2D7 /* TutorialViewController.swift */,
+				78455B401F117742005BE2D7 /* UserCompletedTutorialStateProviding.swift */,
+				78455B3E1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift */,
 			);
 			name = Tutorial;
 			path = ../..;
@@ -464,10 +464,10 @@
 			isa = PBXGroup;
 			children = (
 				78455B571F117BC0005BE2D7 /* Storyboard */,
-				78C86D551F12334D003A20E6 /* Routers.swift */,
-				78455B441F11778D005BE2D7 /* TutorialRouter.swift */,
-				78455B461F11779D005BE2D7 /* SplashScreenRouter.swift */,
 				7820A6E61F1400A8004C0FB5 /* AlertRouter.swift */,
+				78C86D551F12334D003A20E6 /* Routers.swift */,
+				78455B461F11779D005BE2D7 /* SplashScreenRouter.swift */,
+				78455B441F11778D005BE2D7 /* TutorialRouter.swift */,
 			);
 			name = Routers;
 			sourceTree = "<group>";
@@ -478,10 +478,10 @@
 				6EF96CE01F12688700EE6134 /* Modules */,
 				78C86D611F123895003A20E6 /* Scenes */,
 				78C86D681F123F68003A20E6 /* ApplicationContext.swift */,
-				6EF96CDE1F12637100EE6134 /* PresentationTier.swift */,
-				78C86D7E1F13A096003A20E6 /* PresentationStrings.swift */,
-				7820A6DC1F13F544004C0FB5 /* PresentationAssets.swift */,
 				7820A6E21F13FD2C004C0FB5 /* NetworkReachability.swift */,
+				7820A6DC1F13F544004C0FB5 /* PresentationAssets.swift */,
+				78C86D7E1F13A096003A20E6 /* PresentationStrings.swift */,
+				6EF96CDE1F12637100EE6134 /* PresentationTier.swift */,
 			);
 			name = Presenters;
 			sourceTree = "<group>";
@@ -491,8 +491,8 @@
 			children = (
 				78C86D6D1F12A71E003A20E6 /* RootViewControllerAnimator.swift */,
 				78C86D571F12338D003A20E6 /* StoryboardRouters.swift */,
-				78455B581F117BCF005BE2D7 /* StoryboardTutorialRouter.swift */,
 				78C86D4D1F119B68003A20E6 /* StoryboardSplashScreenRouter.swift */,
+				78455B581F117BCF005BE2D7 /* StoryboardTutorialRouter.swift */,
 				7820A6EA1F141AD4004C0FB5 /* WindowAlertRouter.swift */,
 			);
 			name = Storyboard;
@@ -530,9 +530,9 @@
 		78C86D611F123895003A20E6 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				78C86D621F12389E003A20E6 /* TutorialScene.swift */,
-				78C86D661F123B55003A20E6 /* TutorialPageScene.swift */,
 				78C86D761F12AD80003A20E6 /* SplashScene.swift */,
+				78C86D661F123B55003A20E6 /* TutorialPageScene.swift */,
+				78C86D621F12389E003A20E6 /* TutorialScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -670,12 +670,12 @@
 		9ACF99591EBE32FE006FC958 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9AF159E91EF5B3AE00DB287D /* Cells */,
+				D6F3DE4616D9A2E243387004 /* Controllers */,
 				78455B601F118685005BE2D7 /* Controls */,
 				78455B4E1F117843005BE2D7 /* Presenters */,
 				78455B431F11777D005BE2D7 /* Routers */,
 				78F555971F10D59000BDA7D4 /* Segues */,
-				9AF159E91EF5B3AE00DB287D /* Cells */,
-				D6F3DE4616D9A2E243387004 /* Controllers */,
 				9ACF99401EBE172D006FC958 /* LaunchScreen.storyboard */,
 				D6F3D756F99A68B2DC5B7359 /* Main.storyboard */,
 				78455B551F117B24005BE2D7 /* Tutorial.storyboard */,
@@ -688,15 +688,15 @@
 			children = (
 				9ACF997E1EC75447006FC958 /* Abstractions */,
 				9A34B9791ECF87B1004A249E /* ContextManager.swift */,
+				78567B461F10D1C400EBA31D /* DataStoreLoadController.swift */,
+				78567B3C1F100BAF00EBA31D /* DataStoreRefreshController.swift */,
 				D6F3D8101460A96C0D9A7612 /* DataStoreResult.swift */,
 				9A34B9861ED08C7E004A249E /* JsonDataStore.swift */,
 				9A0525461ECB091900578798 /* MockApiConnection.swift */,
 				9A8477971ED99EDE00F0DF3F /* NavigationResolver.swift */,
 				9A34B9881ED35FE0004A249E /* ReactiveDataContext.swift */,
-				9A0525441ECB090700578798 /* WebApiConnection.swift */,
-				78567B3C1F100BAF00EBA31D /* DataStoreRefreshController.swift */,
-				78567B461F10D1C400EBA31D /* DataStoreLoadController.swift */,
 				9A2A94901F12E7D6004D66FB /* SyncStateProvider.swift */,
+				9A0525441ECB090700578798 /* WebApiConnection.swift */,
 			);
 			path = DataStore;
 			sourceTree = "<group>";
@@ -745,8 +745,8 @@
 		9ACF999B1ECA259C006FC958 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				78C86D6F1F12AA68003A20E6 /* Hieroglify.ttf */,
 				9AB64BCE1F02665D004E8D91 /* fontawesome-webfont.ttf */,
+				78C86D6F1F12AA68003A20E6 /* Hieroglify.ttf */,
 				9ACF999C1ECA25E1006FC958 /* Sync.mock.json */,
 			);
 			path = Resources;
@@ -771,11 +771,11 @@
 		D6F3D0327856D0D0294EF5E6 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				78C86D731F12ABF5003A20E6 /* Quotes */,
 				D6F3D99887787EEDAC891182 /* Abstractions */,
 				6EF96CC61F0EDAC600EE6134 /* Calendar */,
-				D6F3DC7147FE454A5FAA2EA4 /* TimeService.swift */,
+				78C86D731F12ABF5003A20E6 /* Quotes */,
 				D6F3D1CE9C98163AA2B6DF7D /* ImageService.swift */,
+				D6F3DC7147FE454A5FAA2EA4 /* TimeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -806,6 +806,7 @@
 			children = (
 				78455B3D1F11770C005BE2D7 /* Tutorial */,
 				D6F3D0A32DC83843688B347C /* AboutViewController.swift */,
+				78567B421F10303600EBA31D /* ApplicationActivityIndicatorRefreshDelegate.swift */,
 				D6F3D4F55CFC5A5BDBB3F1A8 /* DealerTableViewController.swift */,
 				D6F3D66312CF86A43D699F2C /* DealerViewController.swift */,
 				D6F3D831FC85BC47C1D346C1 /* EventTableViewController.swift */,
@@ -815,12 +816,11 @@
 				9A7FFD541EFC5A9E007ABA36 /* MapViewController.swift */,
 				D6F3DF71A249A0F1DE8D51FB /* NewsTableViewController.swift */,
 				D6F3DF8454D3F83FD7294CD0 /* NewsViewController.swift */,
-				D6F3D3312E7C5B416B722B85 /* SettingsTableViewController.swift */,
-				78567B3E1F1016B000EBA31D /* TabViewController.swift */,
 				78567B401F10212100EBA31D /* ProgressViewRefreshDelegate.swift */,
-				78567B421F10303600EBA31D /* ApplicationActivityIndicatorRefreshDelegate.swift */,
 				78567B441F103C3800EBA31D /* RefreshControlDataStoreDelegate.swift */,
+				D6F3D3312E7C5B416B722B85 /* SettingsTableViewController.swift */,
 				78F5559A1F10D65900BDA7D4 /* SplashViewController.swift */,
+				78567B3E1F1016B000EBA31D /* TabViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
