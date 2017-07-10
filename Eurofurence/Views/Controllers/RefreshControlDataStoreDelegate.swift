@@ -13,10 +13,21 @@ struct RefreshControlDataStoreDelegate: DataStoreRefreshDelegate {
     var refreshControl: UIRefreshControl
 
 	func dataStoreRefreshDidBegin(_ lastSync: Date?) {
+		var lastSyncText = "never"
+		if let lastSync = lastSync {
+			lastSyncText = DateFormatters.dateTimeShort.string(from: lastSync)
+		}
+
+		refreshControl.attributedTitle = NSAttributedString(string: "Last sync: \(lastSyncText)", attributes: [
+			NSForegroundColorAttributeName: UIColor.lightText
+			])
         refreshControl.beginRefreshing()
     }
 
-    func dataStoreRefreshDidFinish() {
+	func dataStoreRefreshDidFinish() {
+		refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [
+			NSForegroundColorAttributeName: UIColor.lightText
+			])
         refreshControl.endRefreshing()
     }
 
