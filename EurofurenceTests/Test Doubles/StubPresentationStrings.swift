@@ -15,14 +15,16 @@ class StubPresentationStrings: PresentationStrings {
 
     init() {
         stub("Tutorial initial load title", for: .tutorialInitialLoadTitle)
+        stub("Tutorial initial load description", for: .tutorialInitialLoadDescription)
+        stub("Tutorial initial load begin download", for: .tutorialInitialLoadBeginDownload)
     }
 
     private func stub(_ string: String, for scenario: PresentationScenario) {
         strings[scenario] = string
     }
 
-    func presentationString(for scenario: PresentationScenario) -> String? {
-        return strings[scenario]
+    func presentationString(for scenario: PresentationScenario) -> String {
+        return strings[scenario]!
     }
 
 }

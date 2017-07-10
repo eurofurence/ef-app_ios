@@ -18,7 +18,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
         var tutorialStateProviding: UserCompletedTutorialStateProviding
 
         func tutorialActionDidFinish(_ action: TutorialAction) {
-            splashScreenRouter.showSplashScreen()
+            _ = splashScreenRouter.showSplashScreen()
             tutorialStateProviding.markTutorialAsComplete()
         }
 
@@ -47,6 +47,8 @@ class TutorialPresenter: TutorialPageSceneDelegate {
 
         if let pageInfo = tutorialPages.first {
             show(page: pageInfo)
+        } else {
+            showInitiateDownloadPage()
         }
     }
 
@@ -67,13 +69,13 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     private func show(page pageInfo: TutorialPageInfo) {
         tutorialPage.tutorialPageSceneDelegate = self
         tutorialPage.showPageTitle(presentationStrings.presentationString(for: .tutorialInitialLoadTitle))
-        tutorialPage.showPageDescription(pageInfo.description)
+        tutorialPage.showPageDescription(presentationStrings.presentationString(for: .tutorialInitialLoadDescription))
         tutorialPage.showPageImage(pageInfo.image)
 
         if let action = pageInfo.primaryAction {
             currentPrimaryAction = action
             tutorialPage.showPrimaryActionButton()
-            tutorialPage.showPrimaryActionDescription(action.actionDescription)
+            tutorialPage.showPrimaryActionDescription(presentationStrings.presentationString(for: .tutorialInitialLoadBeginDownload))
         }
 
         if let action = pageInfo.secondaryAction {
@@ -81,6 +83,17 @@ class TutorialPresenter: TutorialPageSceneDelegate {
             tutorialPage.showSecondaryActionButton()
             tutorialPage.showSecondaryActionDescription(action.actionDescription)
         }
+    }
+
+    private func string(for scenario: PresentationScenario) -> String {
+        return presentationStrings.presentationString(for: scenario)
+    }
+
+    private func showInitiateDownloadPage() {
+        tutorialPage.showPageTitle(string(for: .tutorialInitialLoadTitle))
+        tutorialPage.showPageDescription(string(for: .tutorialInitialLoadDescription))
+        tutorialPage.showPrimaryActionButton()
+        tutorialPage.showPrimaryActionDescription(string(for: .tutorialInitialLoadBeginDownload))
     }
 
 }

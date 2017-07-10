@@ -56,12 +56,11 @@ class WhenTheTutorialAppears: XCTestCase {
                        setup.page.capturedPageTitle)
     }
 
-    func testItShouldTellTheFirstTutorialPageToShowTheDescriptionFromTheFirstTutorialItem() {
-        let expectedDescription = "Tutorial title"
-        let firstTutorialItem = TutorialPageInfo(image: nil, title: nil, description: expectedDescription)
-        let setup = showTutorial([firstTutorialItem])
+    func testItShouldTellTheFirstTutorialPageToShowTheDescriptionForBeginningInitialLoad() {
+        let setup = showTutorial([])
 
-        XCTAssertEqual(expectedDescription, setup.page.capturedPageDescription)
+        XCTAssertEqual(setup.strings.presentationString(for: .tutorialInitialLoadDescription),
+                       setup.page.capturedPageDescription)
     }
 
     func testItShouldTellTheFirstTutorialPageToShowTheImageFromTheFirstTutorialItem() {
@@ -72,27 +71,16 @@ class WhenTheTutorialAppears: XCTestCase {
         XCTAssertEqual(expectedImage, setup.page.capturedPageImage)
     }
     
-    func testItShouldTellTheFirstTutorialPageToShowThePrimaryActionButtonWhenPrimaryActionAvailable() {
-        let firstTutorialItem = makeTutorialItemWithPrimaryCapturingAction().item
-        let setup = showTutorial([firstTutorialItem])
-        
+    func testItShouldShowThePrimaryActionButtonForTheInitiateDownloadTutorialPage() {
+        let setup = showTutorial([])
         XCTAssertTrue(setup.page.didShowPrimaryActionButton)
     }
     
-    func testItShouldNotTellTheFirstTutorialPageToShowThePrimaryActionButtonWhenPrimaryActionIsNotAvailable() {
-        let firstTutorialItem = TutorialPageInfo(image: nil, title: nil, description: nil, primaryAction: nil)
-        let setup = showTutorial([firstTutorialItem])
+    func testItShouldTellTheTutorialPageToShowTheBeginDownloadTextOnThePrimaryActionButton() {
+        let setup = showTutorial([])
         
-        XCTAssertFalse(setup.page.didShowPrimaryActionButton)
-    }
-    
-    func testItShouldTellTheTutorialPageToShowThePrimaryActionTextWhenPrimaryActionAvailable() {
-        let expectedActionDescription = "Do voodoo"
-        let action = TutorialPageAction(actionDescription: expectedActionDescription, action: CapturingAction())
-        let firstTutorialItem = TutorialPageInfo(image: nil, title: nil, description: nil, primaryAction: action)
-        let setup = showTutorial([firstTutorialItem])
-        
-        XCTAssertEqual(expectedActionDescription, setup.page.capturedPrimaryActionDescription)
+        XCTAssertEqual(setup.strings.presentationString(for: .tutorialInitialLoadBeginDownload),
+                       setup.page.capturedPrimaryActionDescription)
     }
     
     func testItShouldTellTheFirstTutorialPageToShowTheSecondaryActionButtonWhenSecondaryActionAvailable() {

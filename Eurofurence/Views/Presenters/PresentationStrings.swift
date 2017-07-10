@@ -10,18 +10,26 @@ import Foundation
 
 protocol PresentationStrings {
 
-    func presentationString(for scenario: PresentationScenario) -> String?
+    func presentationString(for scenario: PresentationScenario) -> String
 
 }
 
 enum PresentationScenario {
     case tutorialInitialLoadTitle
+    case tutorialInitialLoadDescription
+    case tutorialInitialLoadBeginDownload
 }
 
 struct UnlocalizedPresentationStrings: PresentationStrings {
-    
-    func presentationString(for scenario: PresentationScenario) -> String? {
-        return "Offline Usage"
+
+    private static let strings: [PresentationScenario : String] = [
+        .tutorialInitialLoadTitle: "Offline Usage",
+        .tutorialInitialLoadDescription: "The Eurofurence app is intended to remain fully functional while offline. To do this, we need to download a few megabytes of data. This may take several minutes depending upon the speed of your connection.",
+        .tutorialInitialLoadBeginDownload: "Begin Download"
+    ]
+
+    func presentationString(for scenario: PresentationScenario) -> String {
+        return UnlocalizedPresentationStrings.strings[scenario]!
     }
 
 }
