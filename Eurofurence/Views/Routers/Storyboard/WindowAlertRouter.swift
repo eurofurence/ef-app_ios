@@ -17,6 +17,7 @@ struct WindowAlertRouter: AlertRouter {
             alert.addAction(UIAlertAction(title: action.title, style: .default, handler: { (_) in
                 // TODO: Figure out a nice way of testing this as UIAlertAction does not expose the handler
                 action.invoke()
+                alert.dismiss(animated: true)
             }))
         }
 

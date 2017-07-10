@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 struct DummyNetworkReachability: NetworkReachability {
-    var wifiReachable: Bool = false
+    var wifiReachable: Bool = true
 }
 
 struct PresentationTier {
