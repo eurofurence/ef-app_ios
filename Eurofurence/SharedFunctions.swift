@@ -131,6 +131,8 @@ extension TimeInterval {
 	var hours: Double { get { return minutes / 60 }}
 	/// Interval in seconds
 	var days: Double { get { return hours / 24 }}
+	/// Interval in years (365 days per year)
+	var years: Double { get { return days / 365 }}
 
 	/// Seconds part of TimeInterval representation
 	var secondsPart: Int { get { return Int(seconds.truncatingRemainder(dividingBy: 60)) }}
@@ -139,25 +141,45 @@ extension TimeInterval {
 	/// Hours part of TimeInterval representation
 	var hoursPart: Int { get { return Int(hours.truncatingRemainder(dividingBy: 24)) }}
 	/// Days part of TimeInterval representation
-	var daysPart: Int { get { return Int(days) }}
+	var daysPart: Int { get { return Int(days.truncatingRemainder(dividingBy: 365)) }}
+	/// Years part of TimeInterval representation
+	var yearsPart: Int { get { return Int(years) }}
 
 	/// String representation of interval's days, hours and minutes in the form
 	/// of "[[$daysPart day[s]] $hoursPart hour[s]] $minutesPart minute[s]" or
 	/// an empty string for a duration of less than a minute. 
-	var dhmString: String { get {
-		var stringParts: [String] = []
-		if daysPart > 0 {
-			stringParts.append("\(daysPart) day\(daysPart == 1 ? "" : "s")")
-		}
-		if hoursPart > 0 {
-			stringParts.append("\(hoursPart) hour\(hoursPart == 1 ? "" : "s")")
-		}
-		if minutesPart > 0 {
-			stringParts.append("\(minutesPart) minute\(minutesPart == 1 ? "" : "s")")
-		}
+	var dhmString: String {
+		get {
+			var stringParts: [String] = []
+			if daysPart > 0 {
+				stringParts.append("\(daysPart) day\(daysPart == 1 ? "" : "s")")
+			}
+			if hoursPart > 0 {
+				stringParts.append("\(hoursPart) hour\(hoursPart == 1 ? "" : "s")")
+			}
+			if minutesPart > 0 {
+				stringParts.append("\(minutesPart) minute\(minutesPart == 1 ? "" : "s")")
+			}
 
-		return stringParts.joined(separator: " ")
-		}}
+			return stringParts.joined(separator: " ")
+		}
+	}
+
+	/// String representing the biggest time unit which is capable of
+	/// representing the TimeInterval with a value greater than zero.
+	var biggestUnitString: String {
+		if yearsPart >= 1 {
+			return "\(yearsPart) year\(yearsPart == 1 ? "" : "s")"
+		} else if daysPart >= 1 {
+			return "\(daysPart) day\(daysPart == 1 ? "" : "s")"
+		} else if hoursPart >= 1 {
+			return "\(hoursPart) hour\(hoursPart == 1 ? "" : "s")"
+		} else if minutesPart >= 1 {
+			return "\(minutesPart) minute\(minutesPart == 1 ? "" : "s")"
+		} else {
+			return "\(secondsPart) second\(secondsPart == 1 ? "" : "s")"
+		}
+	}
 }
 
 extension Character {

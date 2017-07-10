@@ -18,6 +18,8 @@ class NewsTableViewController: UITableViewController {
 	private var timeService: TimeService = try! ServiceResolver.container.resolve()
 	private var disposables = CompositeDisposable()
 
+	@IBOutlet weak var lastSyncLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +28,14 @@ class NewsTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
 
         self.refreshControl?.addTarget(self, action: #selector(NewsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
+
+		disposables += lastSyncLabel.reactive.text <~ announcementsViewModel.TimeSinceLastSync.map({
+			(timeSinceLastSync: TimeInterval) in
+			if timeSinceLastSync > 0.0 {
+				return "Last refreshed \(timeSinceLastSync.biggestUnitString) ago"
+			}
+			return "Last refreshed now"
+		})
 
         disposables += announcementsViewModel.Announcements.signal.observeValues({
             [weak self] _ in
@@ -161,28 +171,23 @@ class NewsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
 		/*
-			0 - header image and inbox notification
-			1 - personal inbox
-			2 - announcements
-			3 - running events
-			4 - upcoming events
+			0 - announcements
+			1 - running events
+			2 - upcoming events
 		*/
 
 		// TODO: Do we display a static message in case of empty sections or do we hide the sections?
 
-        return 5
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		switch section {
-		case 1:
-			// TODO: Check for state of inbox
-			return 1
-		case 2:
+		case 0:
 			return max(1, announcementsViewModel.Announcements.value.count)
-		case 3:
+		case 1:
 			return max(1, currentEventsViewModel.RunningEvents.value.count)
-		case 4:
+		case 2:
 			return max(1, currentEventsViewModel.UpcomingEvents.value.count)
 		default: // Header or unknown section
 			return 0
@@ -192,11 +197,11 @@ class NewsTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String {
 		// TODO: Externalise strings for i18n
 		switch section {
-		case 2:
+		case 0:
 			return "Announcements"
-		case 3:
+		case 1:
 			return "Running Events"
-		case 4:
+		case 2:
 			return "Upcoming Events"
 		default: // Unknown section or header
 			return ""
@@ -209,10 +214,8 @@ class NewsTableViewController: UITableViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		if indexPath.section == 0 {
-			let cell = tableView.dequeueReusableCell(withIdentifier: "NewsHeaderTableViewCell", for: indexPath) as! NewsHeaderTableViewCell
-			return cell
-		} else if indexPath.section == 2 {
+		switch indexPath.section {
+		case 0:
 			if announcementsViewModel.Announcements.value.isEmpty {
 				return tableView.dequeueReusableCell(withIdentifier: "NoAnnouncementsCell", for: indexPath)
 			} else {
@@ -220,7 +223,7 @@ class NewsTableViewController: UITableViewController {
 				cell.announcement = announcementsViewModel.Announcements.value[indexPath.row]
 				return cell
 			}
-		} else if indexPath.section == 3 {
+		case 1:
 			if currentEventsViewModel.RunningEvents.value.isEmpty {
 				return tableView.dequeueReusableCell(withIdentifier: "NoRunningEventsCell", for: indexPath)
 			} else {
@@ -228,7 +231,7 @@ class NewsTableViewController: UITableViewController {
 				cell.event = currentEventsViewModel.RunningEvents.value[indexPath.row]
 				return cell
 			}
-		} else if indexPath.section == 4 {
+		case 2:
 			if currentEventsViewModel.UpcomingEvents.value.isEmpty {
 				return tableView.dequeueReusableCell(withIdentifier: "NoUpcomingEventsCell", for: indexPath)
 			} else {
@@ -236,8 +239,8 @@ class NewsTableViewController: UITableViewController {
 				cell.event = currentEventsViewModel.UpcomingEvents.value[indexPath.row]
 				return cell
 			}
-		} else {
-				return tableView.dequeueReusableCell(withIdentifier: "NoAnnouncementsCell", for: indexPath)
+		default: // Unknown section or header
+			return UITableViewCell()
 		}
 	}
 

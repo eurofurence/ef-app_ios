@@ -22,7 +22,7 @@ class ViewModelResolver {
 	private init() {
 		_container.collaborate(with: ContextResolver.container)
 		_container.register(.singleton) {
-			AnnouncementsViewModel(dataContext: $0)
+			AnnouncementsViewModel(dataContext: $0, lastSyncDateProvider: $1)
 		}
 		_container.register(.singleton) {
 			CurrentEventsViewModel(dataContext: $0)
