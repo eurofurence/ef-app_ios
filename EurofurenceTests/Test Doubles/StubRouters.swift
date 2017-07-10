@@ -11,12 +11,15 @@
 struct StubRouters: Routers {
 
     init(tutorialRouter: TutorialRouter = CapturingTutorialRouter(),
-         splashScreenRouter: SplashScreenRouter = CapturingSplashScreenRouter()) {
+         splashScreenRouter: SplashScreenRouter = CapturingSplashScreenRouter(),
+         alertRouter: AlertRouter = CapturingAlertRouter()) {
         self.tutorialRouter = tutorialRouter
         self.splashScreenRouter = splashScreenRouter
+        self.alertRouter = alertRouter
     }
 
     var tutorialRouter: TutorialRouter
     var splashScreenRouter: SplashScreenRouter
+    var alertRouter: AlertRouter
     
 }

@@ -12,5 +12,6 @@ protocol Routers {
 
     var tutorialRouter: TutorialRouter { get }
     var splashScreenRouter: SplashScreenRouter { get }
+    var alertRouter: AlertRouter { get }
 
 }

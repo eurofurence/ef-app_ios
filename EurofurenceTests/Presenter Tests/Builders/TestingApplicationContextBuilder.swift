@@ -16,6 +16,7 @@ class TestingApplicationContextBuilder {
     var quoteGenerator: QuoteGenerator
     var presentationStrings: PresentationStrings
     var presentationAssets: PresentationAssets
+    var networkReachability: NetworkReachability
 
     init() {
         firstTimeLaunchProviding = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
@@ -23,6 +24,7 @@ class TestingApplicationContextBuilder {
         quoteGenerator = CapturingQuoteGenerator()
         presentationStrings = StubPresentationStrings()
         presentationAssets = StubPresentationAssets()
+        networkReachability = StubNetworkReachability()
     }
 
     func forShowingTutorial() -> TestingApplicationContextBuilder {
@@ -45,12 +47,18 @@ class TestingApplicationContextBuilder {
         return self
     }
 
+    func withNetworkReachability(_ networkReachability: NetworkReachability) -> TestingApplicationContextBuilder {
+        self.networkReachability = networkReachability
+        return self
+    }
+
     func build() -> ApplicationContext {
         return ApplicationContext(firstTimeLaunchProviding: firstTimeLaunchProviding,
                                   tutorialItems: tutorialItems,
                                   quoteGenerator: quoteGenerator,
                                   presentationStrings: presentationStrings,
-                                  presentationAssets: presentationAssets)
+                                  presentationAssets: presentationAssets,
+                                  networkReachability: networkReachability)
     }
 
 }

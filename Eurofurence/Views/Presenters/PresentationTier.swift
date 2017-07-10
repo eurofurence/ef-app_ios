@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+struct DummyNetworkReachability: NetworkReachability {
+    var wifiReachable: Bool = false
+}
+
 struct PresentationTier {
 
     static func assemble(window: UIWindow) -> PresentationTier {
@@ -25,7 +29,8 @@ struct PresentationTier {
                                             tutorialItems: makeTutorialItems(),
                                             quoteGenerator: EgyptianQuoteGenerator(),
                                             presentationStrings: UnlocalizedPresentationStrings(),
-                                            presentationAssets: ApplicationPresentationAssets())
+                                            presentationAssets: ApplicationPresentationAssets(),
+                                            networkReachability: DummyNetworkReachability())
 
         BootstrappingModule.bootstrap(context: appContext, routers: routers)
     }

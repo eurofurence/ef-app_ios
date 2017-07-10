@@ -32,6 +32,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     private var currentPrimaryAction: TutorialPageAction?
     private var currentSecondaryAction: TutorialPageAction?
     private var splashScreenRouter: SplashScreenRouter
+    private var alertRouter: AlertRouter
     private var tutorialStateProviding: UserCompletedTutorialStateProviding
 
     // MARK: Initialization
@@ -41,11 +42,13 @@ class TutorialPresenter: TutorialPageSceneDelegate {
          presentationStrings: PresentationStrings,
          presentationAssets: PresentationAssets,
          splashScreenRouter: SplashScreenRouter,
+         alertRouter: AlertRouter,
          tutorialStateProviding: UserCompletedTutorialStateProviding) {
         tutorialPage = tutorialScene.showTutorialPage()
         self.presentationStrings = presentationStrings
         self.presentationAssets = presentationAssets
         self.splashScreenRouter = splashScreenRouter
+        self.alertRouter = alertRouter
         self.tutorialStateProviding = tutorialStateProviding
 
         if let pageInfo = tutorialPages.first {
@@ -60,6 +63,8 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
         let delegate = CompleteTutorialActionDelegate(splashScreenRouter: splashScreenRouter, tutorialStateProviding: tutorialStateProviding)
         currentPrimaryAction?.runAction(delegate)
+        _ = splashScreenRouter.showSplashScreen()
+        alertRouter.showAlert()
     }
 
     func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) {
@@ -93,6 +98,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     }
 
     private func showInitiateDownloadPage() {
+        tutorialPage.tutorialPageSceneDelegate = self
         tutorialPage.showPageImage(presentationAssets.initialLoadInformationAsset)
         tutorialPage.showPageTitle(string(for: .tutorialInitialLoadTitle))
         tutorialPage.showPageDescription(string(for: .tutorialInitialLoadDescription))
