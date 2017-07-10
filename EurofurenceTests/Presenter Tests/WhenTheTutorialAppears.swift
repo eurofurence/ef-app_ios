@@ -15,6 +15,7 @@ class WhenTheTutorialAppears: XCTestCase {
         var tutorial: CapturingTutorialScene
         var page: CapturingTutorialPageScene
         var strings: PresentationStrings
+        var assets: PresentationAssets
     }
 
     private func showTutorial(_ items: [TutorialPageInfo] = []) -> TutorialTestContext {
@@ -28,7 +29,8 @@ class WhenTheTutorialAppears: XCTestCase {
 
         return TutorialTestContext(tutorial: tutorialRouter.tutorialScene,
                                    page: tutorialRouter.tutorialScene.tutorialPage,
-                                   strings: context.presentationStrings)
+                                   strings: context.presentationStrings,
+                                   assets: context.presentationAssets)
     }
     
     private func makeTutorialItemWithPrimaryCapturingAction() -> (item: TutorialPageInfo, action: CapturingAction) {
@@ -49,8 +51,7 @@ class WhenTheTutorialAppears: XCTestCase {
     }
 
     func testItShouldTellTheFirstTutorialPageToShowTheTitleForBeginningInitialLoad() {
-        let firstTutorialItem = TutorialPageInfo(image: nil, title: nil, description: nil)
-        let setup = showTutorial([firstTutorialItem])
+        let setup = showTutorial([])
 
         XCTAssertEqual(setup.strings.presentationString(for: .tutorialInitialLoadTitle),
                        setup.page.capturedPageTitle)
@@ -63,12 +64,11 @@ class WhenTheTutorialAppears: XCTestCase {
                        setup.page.capturedPageDescription)
     }
 
-    func testItShouldTellTheFirstTutorialPageToShowTheImageFromTheFirstTutorialItem() {
-        let expectedImage = UIImage()
-        let firstTutorialItem = TutorialPageInfo(image: expectedImage, title: nil, description: nil)
-        let setup = showTutorial([firstTutorialItem])
+    func testItShouldShowTheInformationImageForBeginningInitialLoad() {
+        let setup = showTutorial([])
 
-        XCTAssertEqual(expectedImage, setup.page.capturedPageImage)
+        XCTAssertEqual(setup.assets.initialLoadInformationAsset,
+                       setup.page.capturedPageImage)
     }
     
     func testItShouldShowThePrimaryActionButtonForTheInitiateDownloadTutorialPage() {

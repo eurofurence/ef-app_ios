@@ -28,6 +28,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
 
     private var tutorialPage: TutorialPageScene
     private var presentationStrings: PresentationStrings
+    private var presentationAssets: PresentationAssets
     private var currentPrimaryAction: TutorialPageAction?
     private var currentSecondaryAction: TutorialPageAction?
     private var splashScreenRouter: SplashScreenRouter
@@ -38,10 +39,12 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     init(tutorialScene: TutorialScene,
          tutorialPages: [TutorialPageInfo],
          presentationStrings: PresentationStrings,
+         presentationAssets: PresentationAssets,
          splashScreenRouter: SplashScreenRouter,
          tutorialStateProviding: UserCompletedTutorialStateProviding) {
         tutorialPage = tutorialScene.showTutorialPage()
         self.presentationStrings = presentationStrings
+        self.presentationAssets = presentationAssets
         self.splashScreenRouter = splashScreenRouter
         self.tutorialStateProviding = tutorialStateProviding
 
@@ -90,6 +93,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     }
 
     private func showInitiateDownloadPage() {
+        tutorialPage.showPageImage(presentationAssets.initialLoadInformationAsset)
         tutorialPage.showPageTitle(string(for: .tutorialInitialLoadTitle))
         tutorialPage.showPageDescription(string(for: .tutorialInitialLoadDescription))
         tutorialPage.showPrimaryActionButton()

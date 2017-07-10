@@ -16,6 +16,7 @@ struct TutorialModule {
         _ = TutorialPresenter(tutorialScene: tutorialScene,
                               tutorialPages: tutorialPages,
                               presentationStrings: context.presentationStrings,
+                              presentationAssets: context.presentationAssets,
                               splashScreenRouter: routers.splashScreenRouter,
                               tutorialStateProviding: context.firstTimeLaunchProviding)
     }

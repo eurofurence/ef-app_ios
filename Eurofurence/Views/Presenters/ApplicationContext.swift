@@ -14,15 +14,18 @@ struct ApplicationContext {
     var tutorialItems: [TutorialPageInfo]
     var quoteGenerator: QuoteGenerator
     var presentationStrings: PresentationStrings
+    var presentationAssets: PresentationAssets
 
     init(firstTimeLaunchProviding: UserCompletedTutorialStateProviding,
          tutorialItems: [TutorialPageInfo],
          quoteGenerator: QuoteGenerator,
-         presentationStrings: PresentationStrings) {
+         presentationStrings: PresentationStrings,
+         presentationAssets: PresentationAssets) {
         self.firstTimeLaunchProviding = firstTimeLaunchProviding
         self.tutorialItems = tutorialItems
         self.quoteGenerator = quoteGenerator
         self.presentationStrings = presentationStrings
+        self.presentationAssets = presentationAssets
     }
 
 }

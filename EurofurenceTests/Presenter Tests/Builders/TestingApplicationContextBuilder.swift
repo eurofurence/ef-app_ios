@@ -15,12 +15,14 @@ class TestingApplicationContextBuilder {
     var tutorialItems: [TutorialPageInfo]
     var quoteGenerator: QuoteGenerator
     var presentationStrings: PresentationStrings
+    var presentationAssets: PresentationAssets
 
     init() {
         firstTimeLaunchProviding = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
         tutorialItems = []
         quoteGenerator = CapturingQuoteGenerator()
         presentationStrings = StubPresentationStrings()
+        presentationAssets = StubPresentationAssets()
     }
 
     func forShowingTutorial() -> TestingApplicationContextBuilder {
@@ -47,7 +49,8 @@ class TestingApplicationContextBuilder {
         return ApplicationContext(firstTimeLaunchProviding: firstTimeLaunchProviding,
                                   tutorialItems: tutorialItems,
                                   quoteGenerator: quoteGenerator,
-                                  presentationStrings: presentationStrings)
+                                  presentationStrings: presentationStrings,
+                                  presentationAssets: presentationAssets)
     }
 
 }

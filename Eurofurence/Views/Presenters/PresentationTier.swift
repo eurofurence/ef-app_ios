@@ -24,7 +24,8 @@ struct PresentationTier {
         let appContext = ApplicationContext(firstTimeLaunchProviding: finishedTutorialProvider,
                                             tutorialItems: makeTutorialItems(),
                                             quoteGenerator: EgyptianQuoteGenerator(),
-                                            presentationStrings: UnlocalizedPresentationStrings())
+                                            presentationStrings: UnlocalizedPresentationStrings(),
+                                            presentationAssets: ApplicationPresentationAssets())
 
         BootstrappingModule.bootstrap(context: appContext, routers: routers)
     }
