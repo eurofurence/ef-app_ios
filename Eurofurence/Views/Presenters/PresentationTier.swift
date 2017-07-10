@@ -23,7 +23,8 @@ struct PresentationTier {
         self.finishedTutorialProvider = UserDefaultsTutorialStateProvider(userDefaults: .standard)
         let appContext = ApplicationContext(firstTimeLaunchProviding: finishedTutorialProvider,
                                             tutorialItems: makeTutorialItems(),
-                                            quoteGenerator: EgyptianQuoteGenerator())
+                                            quoteGenerator: EgyptianQuoteGenerator(),
+                                            presentationStrings: UnlocalizedPresentationStrings())
 
         BootstrappingModule.bootstrap(context: appContext, routers: routers)
     }

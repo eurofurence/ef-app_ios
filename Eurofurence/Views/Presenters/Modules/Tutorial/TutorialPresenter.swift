@@ -27,6 +27,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     // MARK: Properties
 
     private var tutorialPage: TutorialPageScene
+    private var presentationStrings: PresentationStrings
     private var currentPrimaryAction: TutorialPageAction?
     private var currentSecondaryAction: TutorialPageAction?
     private var splashScreenRouter: SplashScreenRouter
@@ -36,9 +37,11 @@ class TutorialPresenter: TutorialPageSceneDelegate {
 
     init(tutorialScene: TutorialScene,
          tutorialPages: [TutorialPageInfo],
+         presentationStrings: PresentationStrings,
          splashScreenRouter: SplashScreenRouter,
          tutorialStateProviding: UserCompletedTutorialStateProviding) {
         tutorialPage = tutorialScene.showTutorialPage()
+        self.presentationStrings = presentationStrings
         self.splashScreenRouter = splashScreenRouter
         self.tutorialStateProviding = tutorialStateProviding
 
@@ -63,7 +66,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
 
     private func show(page pageInfo: TutorialPageInfo) {
         tutorialPage.tutorialPageSceneDelegate = self
-        tutorialPage.showPageTitle(pageInfo.title)
+        tutorialPage.showPageTitle(presentationStrings.presentationString(for: .tutorialInitialLoadTitle))
         tutorialPage.showPageDescription(pageInfo.description)
         tutorialPage.showPageImage(pageInfo.image)
 

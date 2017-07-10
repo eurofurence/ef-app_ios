@@ -11,8 +11,13 @@ import XCTest
 
 class WhenTheTutorialAppears: XCTestCase {
 
-    private func showTutorial(_ items: [TutorialPageInfo] = []) -> (tutorial: CapturingTutorialScene,
-                                                                    page: CapturingTutorialPageScene) {
+    struct TutorialTestContext {
+        var tutorial: CapturingTutorialScene
+        var page: CapturingTutorialPageScene
+        var strings: PresentationStrings
+    }
+
+    private func showTutorial(_ items: [TutorialPageInfo] = []) -> TutorialTestContext {
         let tutorialRouter = CapturingTutorialRouter()
         let routers = StubRouters(tutorialRouter: tutorialRouter)
         let context = TestingApplicationContextBuilder()
@@ -21,7 +26,9 @@ class WhenTheTutorialAppears: XCTestCase {
             .build()
         BootstrappingModule.bootstrap(context: context, routers: routers)
 
-        return (tutorial: tutorialRouter.tutorialScene, page: tutorialRouter.tutorialScene.tutorialPage)
+        return TutorialTestContext(tutorial: tutorialRouter.tutorialScene,
+                                   page: tutorialRouter.tutorialScene.tutorialPage,
+                                   strings: context.presentationStrings)
     }
     
     private func makeTutorialItemWithPrimaryCapturingAction() -> (item: TutorialPageInfo, action: CapturingAction) {
@@ -41,12 +48,12 @@ class WhenTheTutorialAppears: XCTestCase {
         XCTAssertTrue(setup.tutorial.wasToldToShowTutorialPage)
     }
 
-    func testItShouldTellTheFirstTutorialPageToShowTheTitleFromTheFirstTutorialItem() {
-        let expectedTitle = "Tutorial title"
-        let firstTutorialItem = TutorialPageInfo(image: nil, title: expectedTitle, description: nil)
+    func testItShouldTellTheFirstTutorialPageToShowTheTitleForBeginningInitialLoad() {
+        let firstTutorialItem = TutorialPageInfo(image: nil, title: nil, description: nil)
         let setup = showTutorial([firstTutorialItem])
 
-        XCTAssertEqual(expectedTitle, setup.page.capturedPageTitle)
+        XCTAssertEqual(setup.strings.presentationString(for: .tutorialInitialLoadTitle),
+                       setup.page.capturedPageTitle)
     }
 
     func testItShouldTellTheFirstTutorialPageToShowTheDescriptionFromTheFirstTutorialItem() {
