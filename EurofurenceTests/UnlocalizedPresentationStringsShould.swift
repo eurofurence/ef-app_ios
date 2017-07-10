@@ -14,6 +14,11 @@ class UnlocalizedPresentationStringsShould: XCTestCase {
     private func string(for scenario: PresentationScenario) -> String {
         return UnlocalizedPresentationStrings().presentationString(for: scenario)
     }
+
+    func testProvideAppropriateStringForCancel() {
+        let expected = "Cancel"
+        XCTAssertEqual(expected, string(for: .cancel))
+    }
     
     func testProvideAppropriateStringForTutorialInitialLoadTitle() {
         let expected = "Offline Usage"
@@ -28,6 +33,21 @@ class UnlocalizedPresentationStringsShould: XCTestCase {
     func testProvideAppropriateStringForTutorialInitialDownloadBeginDownload() {
         let expected = "Begin Download"
         XCTAssertEqual(expected, string(for: .tutorialInitialLoadBeginDownload))
+    }
+
+    func testProvideAppropriateStringForCellularDownloadAlertTitle() {
+        let expected = "Use Cellular Data?"
+        XCTAssertEqual(expected, string(for: .cellularDownloadAlertTitle))
+    }
+
+    func testProvideAppropriateStringForCellularDownloadAlertMessage() {
+        let expected = "Proceeding with the initial download will consume several megabytes of data."
+        XCTAssertEqual(expected, string(for: .cellularDownloadAlertMessage))
+    }
+
+    func testProviderAppropriateStringForCellularDownloadAlertContinueOverCellularTitle() {
+        let expected = "Continue Over Cellular"
+        XCTAssertEqual(expected, string(for: .cellularDownloadAlertContinueOverCellularTitle))
     }
     
 }
