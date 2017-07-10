@@ -29,10 +29,15 @@ enum PresentationScenario {
 struct UnlocalizedPresentationStrings: PresentationStrings {
 
     private static let strings: [PresentationScenario : String] = [
+        .cancel: "Cancel",
+
         .tutorialInitialLoadTitle: "Offline Usage",
         .tutorialInitialLoadDescription: "The Eurofurence app is intended to remain fully functional while offline. To do this, we need to download a few megabytes of data. This may take several minutes depending upon the speed of your connection.",
         .tutorialInitialLoadBeginDownload: "Begin Download",
-        .cellularDownloadAlertTitle: ""
+
+        .cellularDownloadAlertTitle: "Use Cellular Data?",
+        .cellularDownloadAlertMessage: "Proceeding with the initial download will consume several megabytes of data.",
+        .cellularDownloadAlertContinueOverCellularTitle: "Continue Over Cellular"
     ]
 
     func presentationString(for scenario: PresentationScenario) -> String {
