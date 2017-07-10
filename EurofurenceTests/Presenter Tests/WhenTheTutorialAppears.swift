@@ -158,52 +158,12 @@ class WhenTheTutorialAppears: XCTestCase {
         XCTAssertEqual(expectedActionDescription, setup.page.capturedSecondaryActionDescription)
     }
     
-    func testTappingThePrimaryActionButtonShouldInvokeThePrimaryActionForTheFirstPage() {
-        let actionSetup = makeTutorialItemWithPrimaryCapturingAction()
-        let setup = showTutorial([actionSetup.item])
-        setup.page.simulateTappingPrimaryActionButton()
-        
-        XCTAssertTrue(actionSetup.action.didRun)
-    }
-    
     func testTappingTheSecondaryActionButtonShouldInvokeTheSecondaryActionForTheFirstPage() {
         let actionSetup = makeTutorialItemWithSecondaryCapturingAction()
         let setup = showTutorial([actionSetup.item])
         setup.page.simulateTappingSecondaryActionButton()
         
         XCTAssertTrue(actionSetup.action.didRun)
-    }
-    
-    func testWhenThePrimaryActionCompletesWithOnlyOnePageInTheTutorialTheSplashRouterIsToldToShowTheSplashScreen() {
-        let setup = makeTutorialItemWithPrimaryCapturingAction()
-        let tutorialRouter = CapturingTutorialRouter()
-        let splashRouter = CapturingSplashScreenRouter()
-        let routers = StubRouters(tutorialRouter: tutorialRouter, splashScreenRouter: splashRouter)
-        let context = TestingApplicationContextBuilder()
-            .forShowingTutorial()
-            .withTutorialItems([setup.item])
-            .build()
-        BootstrappingModule.bootstrap(context: context, routers: routers)
-        tutorialRouter.tutorialScene.tutorialPage.simulateTappingPrimaryActionButton()
-        setup.action.notifyHandlerActionDidFinish()
-        
-        XCTAssertTrue(splashRouter.wasToldToShowSplashScreen)
-    }
-    
-    func testWhenThePrimaryActionCompletesWithOnlyOnePageInTheTutorialTheTutorialStateProviderIsToldToMarkTheTutorialAsComplete() {
-        let setup = makeTutorialItemWithPrimaryCapturingAction()
-        let tutorialRouter = CapturingTutorialRouter()
-        let finishedTutorialProvider = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
-        let routers = StubRouters(tutorialRouter: tutorialRouter)
-        let context = TestingApplicationContextBuilder()
-            .withUserCompletedTutorialStateProviding(finishedTutorialProvider)
-            .withTutorialItems([setup.item])
-            .build()
-        BootstrappingModule.bootstrap(context: context, routers: routers)
-        tutorialRouter.tutorialScene.tutorialPage.simulateTappingPrimaryActionButton()
-        setup.action.notifyHandlerActionDidFinish()
-        
-        XCTAssertTrue(finishedTutorialProvider.didMarkTutorialAsComplete)
     }
     
     func testWhenThePrimaryActionIsInstigatedButHasNotFinishedWithOnlyOnePageInTheTutorialTheTutorialStateProviderIsNotToldToMarkTheTutorialAsComplete() {

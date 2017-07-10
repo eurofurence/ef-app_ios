@@ -64,9 +64,6 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     // MARK: TutorialPageSceneDelegate
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
-        let delegate = CompleteTutorialActionDelegate(splashScreenRouter: splashScreenRouter, tutorialStateProviding: tutorialStateProviding)
-        currentPrimaryAction?.runAction(delegate)
-
         if networkReachability.wifiReachable {
             _ = splashScreenRouter.showSplashScreen()
         } else {
