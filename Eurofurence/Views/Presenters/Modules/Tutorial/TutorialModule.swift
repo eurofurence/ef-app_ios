@@ -19,7 +19,8 @@ struct TutorialModule {
                               presentationAssets: context.presentationAssets,
                               splashScreenRouter: routers.splashScreenRouter,
                               alertRouter: routers.alertRouter,
-                              tutorialStateProviding: context.firstTimeLaunchProviding)
+                              tutorialStateProviding: context.firstTimeLaunchProviding,
+                              networkReachability: context.networkReachability)
     }
 
 }

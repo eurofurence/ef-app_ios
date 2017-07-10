@@ -34,6 +34,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     private var splashScreenRouter: SplashScreenRouter
     private var alertRouter: AlertRouter
     private var tutorialStateProviding: UserCompletedTutorialStateProviding
+    private var networkReachability: NetworkReachability
 
     // MARK: Initialization
 
@@ -43,13 +44,15 @@ class TutorialPresenter: TutorialPageSceneDelegate {
          presentationAssets: PresentationAssets,
          splashScreenRouter: SplashScreenRouter,
          alertRouter: AlertRouter,
-         tutorialStateProviding: UserCompletedTutorialStateProviding) {
+         tutorialStateProviding: UserCompletedTutorialStateProviding,
+         networkReachability: NetworkReachability) {
         tutorialPage = tutorialScene.showTutorialPage()
         self.presentationStrings = presentationStrings
         self.presentationAssets = presentationAssets
         self.splashScreenRouter = splashScreenRouter
         self.alertRouter = alertRouter
         self.tutorialStateProviding = tutorialStateProviding
+        self.networkReachability = networkReachability
 
         if let pageInfo = tutorialPages.first {
             show(page: pageInfo)
@@ -63,8 +66,12 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
         let delegate = CompleteTutorialActionDelegate(splashScreenRouter: splashScreenRouter, tutorialStateProviding: tutorialStateProviding)
         currentPrimaryAction?.runAction(delegate)
-        _ = splashScreenRouter.showSplashScreen()
-        alertRouter.showAlert()
+
+        if networkReachability.wifiReachable {
+            _ = splashScreenRouter.showSplashScreen()
+        } else {
+            alertRouter.showAlert()
+        }
     }
 
     func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) {
