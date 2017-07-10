@@ -282,6 +282,7 @@ class ReactiveDataContext: DataContextProtocol {
 	}
 
 	func clearAll() {
+		SyncState.swap(Eurofurence.SyncState())
 		Announcements.swap([])
 		Dealers.swap([])
 		EventConferenceDays.swap([])
