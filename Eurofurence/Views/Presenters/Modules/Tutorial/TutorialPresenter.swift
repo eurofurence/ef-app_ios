@@ -67,7 +67,11 @@ class TutorialPresenter: TutorialPageSceneDelegate {
         if networkReachability.wifiReachable {
             _ = splashScreenRouter.showSplashScreen()
         } else {
-            let allowDownloadOverCellular = AlertAction(title: string(for: .cellularDownloadAlertContinueOverCellularTitle))
+            let allowDownloadMessage = string(for: .cellularDownloadAlertContinueOverCellularTitle)
+            let allowDownloadOverCellular = AlertAction(title: allowDownloadMessage) {
+                _ = self.splashScreenRouter.showSplashScreen()
+            }
+
             let cancel = AlertAction(title: string(for: .cancel))
             alertRouter.showAlert(title: string(for: .cellularDownloadAlertTitle),
                                   message: string(for: .cellularDownloadAlertMessage),

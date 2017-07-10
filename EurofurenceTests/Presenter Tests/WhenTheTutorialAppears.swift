@@ -179,6 +179,17 @@ class WhenTheTutorialAppears: XCTestCase {
                        action?.title)
     }
 
+    func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiUnavailableThenInvokingFirstActionShouldTellTheSplashRouterToShowTheSplashScreen() {
+        var networkReachability = StubNetworkReachability()
+        networkReachability.wifiReachable = false
+        let splashRouter = CapturingSplashScreenRouter()
+        let setup = showTutorial([], networkReachability, splashRouter)
+        setup.page.simulateTappingPrimaryActionButton()
+        setup.alertRouter.presentedActions.first?.invoke()
+
+        XCTAssertTrue(setup.splashRouter.wasToldToShowSplashScreen)
+    }
+
     // TODO: Rework
     
     func testItShouldTellTheFirstTutorialPageToShowTheSecondaryActionButtonWhenSecondaryActionAvailable() {

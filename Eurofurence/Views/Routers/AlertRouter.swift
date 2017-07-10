@@ -17,5 +17,15 @@ protocol AlertRouter {
 struct AlertAction {
 
     var title: String
+    private var action: (() -> Void)?
+
+    init(title: String, action: (() -> Void)? = nil) {
+        self.title = title
+        self.action = action
+    }
+
+    func invoke() {
+        action?()
+    }
 
 }
