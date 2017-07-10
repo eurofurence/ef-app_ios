@@ -10,28 +10,22 @@ import Foundation
 import UIKit
 
 struct DummyNetworkReachability: NetworkReachability {
-    var wifiReachable: Bool = true
+    var wifiReachable: Bool = false
 }
 
 struct PresentationTier {
 
-    static func assemble(window: UIWindow) -> PresentationTier {
-        return PresentationTier(window: window)
+    static func assemble(window: UIWindow) {
+        BootstrappingModule.bootstrap(context: makeAppContext(),
+                                      routers: StoryboardRouters(window: window))
     }
 
-    private var routers: StoryboardRouters
-    private var finishedTutorialProvider: UserDefaultsTutorialStateProvider
-
-    private init(window: UIWindow) {
-        self.routers = StoryboardRouters(window: window)
-        self.finishedTutorialProvider = UserDefaultsTutorialStateProvider(userDefaults: .standard)
-        let appContext = ApplicationContext(firstTimeLaunchProviding: finishedTutorialProvider,
-                                            quoteGenerator: EgyptianQuoteGenerator(),
-                                            presentationStrings: UnlocalizedPresentationStrings(),
-                                            presentationAssets: ApplicationPresentationAssets(),
-                                            networkReachability: DummyNetworkReachability())
-
-        BootstrappingModule.bootstrap(context: appContext, routers: routers)
+    private static func makeAppContext() -> ApplicationContext {
+        return ApplicationContext(firstTimeLaunchProviding: UserDefaultsTutorialStateProvider(userDefaults: .standard),
+                                  quoteGenerator: EgyptianQuoteGenerator(),
+                                  presentationStrings: UnlocalizedPresentationStrings(),
+                                  presentationAssets: ApplicationPresentationAssets(),
+                                  networkReachability: DummyNetworkReachability())
     }
 
 }

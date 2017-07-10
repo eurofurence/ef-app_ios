@@ -18,17 +18,19 @@ class WhenTheTutorialAppears: XCTestCase {
         var assets: PresentationAssets
         var splashRouter: CapturingSplashScreenRouter
         var alertRouter: CapturingAlertRouter
+        var tutorialStateProviding: StubFirstTimeLaunchStateProvider
     }
 
     private func showTutorial(_ networkReachability: NetworkReachability = StubNetworkReachability(),
                               _ splashRouter: CapturingSplashScreenRouter = CapturingSplashScreenRouter()) -> TutorialTestContext {
         let tutorialRouter = CapturingTutorialRouter()
         let alertRouter = CapturingAlertRouter()
+        let stateProviding = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
         let routers = StubRouters(tutorialRouter: tutorialRouter,
                                   splashScreenRouter: splashRouter,
                                   alertRouter: alertRouter)
         let context = TestingApplicationContextBuilder()
-            .forShowingTutorial()
+            .withUserCompletedTutorialStateProviding(stateProviding)
             .withNetworkReachability(networkReachability)
             .build()
         BootstrappingModule.bootstrap(context: context, routers: routers)
@@ -38,7 +40,8 @@ class WhenTheTutorialAppears: XCTestCase {
                                    strings: context.presentationStrings,
                                    assets: context.presentationAssets,
                                    splashRouter: splashRouter,
-                                   alertRouter: alertRouter)
+                                   alertRouter: alertRouter,
+                                   tutorialStateProviding: stateProviding)
     }
     
     func testItShouldBeToldToShowTheTutorialPage() {
@@ -87,6 +90,16 @@ class WhenTheTutorialAppears: XCTestCase {
         setup.page.simulateTappingPrimaryActionButton()
 
         XCTAssertTrue(splashRouter.wasToldToShowSplashScreen)
+    }
+    
+    func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiAvailableTellsTutorialCompletionProvidingToMarkTutorialAsComplete() {
+        var networkReachability = StubNetworkReachability()
+        networkReachability.wifiReachable = true
+        let splashRouter = CapturingSplashScreenRouter()
+        let setup = showTutorial(networkReachability, splashRouter)
+        setup.page.simulateTappingPrimaryActionButton()
+        
+        XCTAssertTrue(setup.tutorialStateProviding.didMarkTutorialAsComplete)
     }
 
     func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiUnavailableTellsAlertRouterToShowAlert() {
@@ -174,6 +187,17 @@ class WhenTheTutorialAppears: XCTestCase {
         setup.alertRouter.presentedActions.first?.invoke()
 
         XCTAssertTrue(setup.splashRouter.wasToldToShowSplashScreen)
+    }
+    
+    func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiUnavailableThenInvokingFirstActionShouldMarkTheTutorialAsComplete() {
+        var networkReachability = StubNetworkReachability()
+        networkReachability.wifiReachable = false
+        let splashRouter = CapturingSplashScreenRouter()
+        let setup = showTutorial(networkReachability, splashRouter)
+        setup.page.simulateTappingPrimaryActionButton()
+        setup.alertRouter.presentedActions.first?.invoke()
+        
+        XCTAssertTrue(setup.tutorialStateProviding.didMarkTutorialAsComplete)
     }
 
 }

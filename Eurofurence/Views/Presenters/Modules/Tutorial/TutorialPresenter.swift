@@ -44,13 +44,10 @@ class TutorialPresenter: TutorialPageSceneDelegate {
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
         if networkReachability.wifiReachable {
-            _ = splashScreenRouter.showSplashScreen()
+            completeTutorial()
         } else {
             let allowDownloadMessage = string(for: .cellularDownloadAlertContinueOverCellularTitle)
-            let allowDownloadOverCellular = AlertAction(title: allowDownloadMessage) {
-                _ = self.splashScreenRouter.showSplashScreen()
-            }
-
+            let allowDownloadOverCellular = AlertAction(title: allowDownloadMessage, action: completeTutorial)
             let cancel = AlertAction(title: string(for: .cancel))
             alertRouter.showAlert(title: string(for: .cellularDownloadAlertTitle),
                                   message: string(for: .cellularDownloadAlertMessage),
@@ -74,6 +71,11 @@ class TutorialPresenter: TutorialPageSceneDelegate {
         tutorialPage.showPageDescription(string(for: .tutorialInitialLoadDescription))
         tutorialPage.showPrimaryActionButton()
         tutorialPage.showPrimaryActionDescription(string(for: .tutorialInitialLoadBeginDownload))
+    }
+
+    private func completeTutorial() {
+        _ = splashScreenRouter.showSplashScreen()
+        tutorialStateProviding.markTutorialAsComplete()
     }
 
 }

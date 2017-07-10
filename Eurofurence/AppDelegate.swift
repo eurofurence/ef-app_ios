@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	var lifetime = Lifetime.make()
-    private var presentationTier: PresentationTier?
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
@@ -25,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		PrintOptions.Active = .None
 
         DataStoreRefreshController.shared.add(ApplicationActivityIndicatorRefreshDelegate())
-        presentationTier = PresentationTier.assemble(window: window!)
+        PresentationTier.assemble(window: window!)
 
 		return true
 	}
