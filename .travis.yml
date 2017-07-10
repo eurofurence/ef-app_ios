@@ -12,8 +12,3 @@ install:
 
 script:
   - xcodebuild -workspace Eurofurence.xcworkspace -scheme Eurofurence -destination "platform=iOS Simulator,name=iPhone 7" clean test | xcpretty && exit ${PIPESTATUS[0]}
-
-deploy:
-  provider: firebase
-  token:
-    secure: "TYURkR7FGzsB6aa3JYjkFNF650l98wpzOGoi9b92icXbeMDR2ddEQDlgHi6efpNO3mYPHZ+LnQ6XFWtmyoKAAQf3fZNERTDhnsiJiFbzFd4c2zob/loz6qXtmS5Zw7xaH1ik/1JKF4Sz9fQHlkN/UMpzmW6gx57pR+vcQFz0IHhq3YgzQm/IphOAtyoysI7zio3hANEe9DErWV+SD4ZH08vHhUBhxRqtwaV45wPSGW3c01NoUDSuC/nW661m3/owiCwPYh3LK4x4njH2TAWR4vKenNZuYURULhBJgSi3u3cGogHU/79V0WkVTOZSAB6wvYT1WmYId0oIIaxYkXvprQOJs3X3/mFbG7Bknn9kS/T47A0LlSVqQao+6v03zwzEBZR224CdbrZ0Q++YcIVkyWoRX8Fne8plTluZzDN3s1OL1Cb2/hLjNitS7Sqktq/pSU3ptWocv5KxlfNGfxe9U8nvpY08N0OucLMoroCckeWpjjnrWT7HAXiyNELJIOKdwkht5Qjgc1g6MaoaYL3PLsJWdhScPs7J9Sx4v+elDOL5sGocQGWfdcbF/di3fFVVUhiUqhfqr7A78+wYv0JVVrnKkoOikyE4LfCiW61Xsu3/A6rij5q3d6Kbg3kTN39Vr1HcOFErViYknWQYcA8N9/G1UwObTWeEBDvnxG6/cwE="
