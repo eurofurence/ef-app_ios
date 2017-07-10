@@ -15,12 +15,15 @@ protocol PresentationStrings {
 }
 
 enum PresentationScenario {
+    case cancel
+
     case tutorialInitialLoadTitle
     case tutorialInitialLoadDescription
     case tutorialInitialLoadBeginDownload
 
     case cellularDownloadAlertTitle
     case cellularDownloadAlertMessage
+    case cellularDownloadAlertContinueOverCellularTitle
 }
 
 struct UnlocalizedPresentationStrings: PresentationStrings {

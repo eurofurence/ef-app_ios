@@ -14,11 +14,13 @@ class StubPresentationStrings: PresentationStrings {
     private var strings = [PresentationScenario : String]()
 
     init() {
+        stub("Cancel", for: .cancel)
         stub("Tutorial initial load title", for: .tutorialInitialLoadTitle)
         stub("Tutorial initial load description", for: .tutorialInitialLoadDescription)
         stub("Tutorial initial load begin download", for: .tutorialInitialLoadBeginDownload)
         stub("Cellular download alert title", for: .cellularDownloadAlertTitle)
         stub("Cellular download alert message", for: .cellularDownloadAlertMessage)
+        stub("Cellular download alert continue over cellular", for: .cellularDownloadAlertContinueOverCellularTitle)
     }
 
     private func stub(_ string: String, for scenario: PresentationScenario) {

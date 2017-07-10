@@ -9,7 +9,7 @@
 import UIKit
 
 struct DummyAlertRouter: AlertRouter {
-    func showAlert(title: String, message: String) {
+    func showAlert(title: String, message: String, actions: AlertAction ...) {
 
     }
 }

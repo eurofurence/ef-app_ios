@@ -10,6 +10,12 @@ import Foundation
 
 protocol AlertRouter {
 
-    func showAlert(title: String, message: String)
+    func showAlert(title: String, message: String, actions: AlertAction ...)
+
+}
+
+struct AlertAction {
+
+    var title: String
 
 }
