@@ -16,7 +16,6 @@ enum UserSettings: String {
     case NotifyOnAnnouncement
     case RefreshInBackgroundOnMobile
 	case DebugTimeOffset
-	case LastSyncDate
 
     func defaultValue<T>() -> T {
         switch self {
@@ -36,8 +35,6 @@ enum UserSettings: String {
 			return true as! T
 		case .DebugTimeOffset:
 			return 0.0 as! T
-		case .LastSyncDate:
-			return Date(timeIntervalSince1970: 0) as! T
         }
 	}
 

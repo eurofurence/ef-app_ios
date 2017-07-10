@@ -211,7 +211,6 @@ class NewsTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if indexPath.section == 0 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "NewsHeaderTableViewCell", for: indexPath) as! NewsHeaderTableViewCell
-			cell.newsLastRefreshLabel.text = getLastRefreshString(UserSettings.LastSyncDate.currentValueOrDefault())
 			return cell
 		} else if indexPath.section == 2 {
 			if announcementsViewModel.Announcements.value.isEmpty {

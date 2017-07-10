@@ -82,7 +82,6 @@ class ContextManager {
 	}
 
 	func clearAll() {
-		UserSettings.LastSyncDate.setValue(nil as Date?)
 		dataStore.clearAll().startWithCompleted {
 			self.dataContext.clearAll()
 			self.imageService.clearCache()
