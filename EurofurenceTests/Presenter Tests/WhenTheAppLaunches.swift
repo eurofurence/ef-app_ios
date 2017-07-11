@@ -14,8 +14,7 @@ class WhenTheAppLaunches: XCTestCase {
     func testAndTheUserHasNotFinishedTheTutorialTheTutorialRouterIsToldToShowTheTutorial() {
         let tutorialRouter = CapturingTutorialRouter()
         let routers = StubRouters(tutorialRouter: tutorialRouter)
-        let context = TestingApplicationContextBuilder().forShowingTutorial().build()
-        BootstrappingModule.bootstrap(context: context, routers: routers)
+        PresentationTestBuilder().withRouters(routers).forShowingTutorial().build().bootstrap()
 
         XCTAssertTrue(tutorialRouter.wasToldToShowTutorial)
     }
@@ -23,8 +22,7 @@ class WhenTheAppLaunches: XCTestCase {
     func testAndTheUserHasPreviouslyFinishedTheTutorialTheSplashRouterIsToldToShowTheSplashScreen() {
         let splashScreenRouter = CapturingSplashScreenRouter()
         let routers = StubRouters(splashScreenRouter: splashScreenRouter)
-        let context = TestingApplicationContextBuilder().build()
-        BootstrappingModule.bootstrap(context: context, routers: routers)
+        PresentationTestBuilder().withRouters(routers).build().bootstrap()
 
         XCTAssertTrue(splashScreenRouter.wasToldToShowSplashScreen)
     }
@@ -32,8 +30,7 @@ class WhenTheAppLaunches: XCTestCase {
     func testAndTheUserHasNotFinishedTheTutorialTheSplashScreenRouterShouldNotBeToldToShowTheSplashScreen() {
         let splashScreenRouter = CapturingSplashScreenRouter()
         let routers = StubRouters(splashScreenRouter: splashScreenRouter)
-        let context = TestingApplicationContextBuilder().forShowingTutorial().build()
-        BootstrappingModule.bootstrap(context: context, routers: routers)
+        PresentationTestBuilder().withRouters(routers).forShowingTutorial().build().bootstrap()
 
         XCTAssertFalse(splashScreenRouter.wasToldToShowSplashScreen)
     }
@@ -41,8 +38,7 @@ class WhenTheAppLaunches: XCTestCase {
     func testAndTheUserHasPreviouslyFinishedTheTutorialTheTutorialRouterShouldNotBeToldToShowTheTutorial() {
         let tutorialRouter = CapturingTutorialRouter()
         let routers = StubRouters(tutorialRouter: tutorialRouter)
-        let context = TestingApplicationContextBuilder().build()
-        BootstrappingModule.bootstrap(context: context, routers: routers)
+        PresentationTestBuilder().withRouters(routers).build().bootstrap()
 
         XCTAssertFalse(tutorialRouter.wasToldToShowTutorial)
     }

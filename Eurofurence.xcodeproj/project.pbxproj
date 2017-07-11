@@ -29,6 +29,7 @@
 		7820A6E71F1400A8004C0FB5 /* AlertRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6E61F1400A8004C0FB5 /* AlertRouter.swift */; };
 		7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6E81F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift */; };
 		7820A6EB1F141AD5004C0FB5 /* WindowAlertRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6EA1F141AD4004C0FB5 /* WindowAlertRouter.swift */; };
+		7820A6ED1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6EC1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift */; };
 		78455B3A1F116A7E005BE2D7 /* WhenTheAppLaunches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */; };
 		78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */; };
 		78455B3F1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B3E1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift */; };
@@ -63,7 +64,7 @@
 		78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D641F123B20003A20E6 /* CapturingTutorialPageScene.swift */; };
 		78C86D671F123B55003A20E6 /* TutorialPageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D661F123B55003A20E6 /* TutorialPageScene.swift */; };
 		78C86D691F123F68003A20E6 /* ApplicationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D681F123F68003A20E6 /* ApplicationContext.swift */; };
-		78C86D6C1F123FD8003A20E6 /* TestingApplicationContextBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D6B1F123FD8003A20E6 /* TestingApplicationContextBuilder.swift */; };
+		78C86D6C1F123FD8003A20E6 /* PresentationTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D6B1F123FD8003A20E6 /* PresentationTestBuilder.swift */; };
 		78C86D6E1F12A71E003A20E6 /* RootViewControllerAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D6D1F12A71E003A20E6 /* RootViewControllerAnimator.swift */; };
 		78C86D701F12AA6C003A20E6 /* Hieroglify.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78C86D6F1F12AA68003A20E6 /* Hieroglify.ttf */; };
 		78C86D721F12AACA003A20E6 /* WhenTheSplashScreenAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D711F12AACA003A20E6 /* WhenTheSplashScreenAppears.swift */; };
@@ -193,6 +194,7 @@
 		7820A6E61F1400A8004C0FB5 /* AlertRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertRouter.swift; path = Routers/AlertRouter.swift; sourceTree = "<group>"; };
 		7820A6E81F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardAlertRouterTests.swift; sourceTree = "<group>"; };
 		7820A6EA1F141AD4004C0FB5 /* WindowAlertRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WindowAlertRouter.swift; path = Routers/Storyboard/WindowAlertRouter.swift; sourceTree = "<group>"; };
+		7820A6EC1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingQuoteGenerator.swift; path = "Test Doubles/CapturingQuoteGenerator.swift"; sourceTree = "<group>"; };
 		78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenTheAppLaunches.swift; path = "Presenter Tests/WhenTheAppLaunches.swift"; sourceTree = "<group>"; };
 		78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsTutorialStateProvider.swift; sourceTree = "<group>"; };
 		78455B3E1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsTutorialStateProvider.swift; path = Views/Controllers/Tutorial/UserDefaultsTutorialStateProvider.swift; sourceTree = "<group>"; };
@@ -227,7 +229,7 @@
 		78C86D641F123B20003A20E6 /* CapturingTutorialPageScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingTutorialPageScene.swift; path = "Test Doubles/Scenes/CapturingTutorialPageScene.swift"; sourceTree = "<group>"; };
 		78C86D661F123B55003A20E6 /* TutorialPageScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialPageScene.swift; path = Presenters/Scenes/TutorialPageScene.swift; sourceTree = "<group>"; };
 		78C86D681F123F68003A20E6 /* ApplicationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationContext.swift; path = Presenters/ApplicationContext.swift; sourceTree = "<group>"; };
-		78C86D6B1F123FD8003A20E6 /* TestingApplicationContextBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestingApplicationContextBuilder.swift; path = "Presenter Tests/Builders/TestingApplicationContextBuilder.swift"; sourceTree = "<group>"; };
+		78C86D6B1F123FD8003A20E6 /* PresentationTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentationTestBuilder.swift; path = "Presenter Tests/Builders/PresentationTestBuilder.swift"; sourceTree = "<group>"; };
 		78C86D6D1F12A71E003A20E6 /* RootViewControllerAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootViewControllerAnimator.swift; path = Routers/Storyboard/RootViewControllerAnimator.swift; sourceTree = "<group>"; };
 		78C86D6F1F12AA68003A20E6 /* Hieroglify.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hieroglify.ttf; sourceTree = "<group>"; };
 		78C86D711F12AACA003A20E6 /* WhenTheSplashScreenAppears.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenTheSplashScreenAppears.swift; path = "Presenter Tests/WhenTheSplashScreenAppears.swift"; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 				7820A6DA1F13F4DE004C0FB5 /* StubPresentationAssets.swift */,
 				7820A6E01F13FC7F004C0FB5 /* StubNetworkReachability.swift */,
 				7820A6E41F140056004C0FB5 /* CapturingAlertRouter.swift */,
+				7820A6EC1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift */,
 			);
 			name = "Test Doubles";
 			sourceTree = "<group>";
@@ -525,7 +528,7 @@
 		78C86D6A1F123FC4003A20E6 /* Builders */ = {
 			isa = PBXGroup;
 			children = (
-				78C86D6B1F123FD8003A20E6 /* TestingApplicationContextBuilder.swift */,
+				78C86D6B1F123FD8003A20E6 /* PresentationTestBuilder.swift */,
 			);
 			name = Builders;
 			sourceTree = "<group>";
@@ -1200,7 +1203,7 @@
 				78C86D811F13A0CE003A20E6 /* StubPresentationStrings.swift in Sources */,
 				7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */,
 				78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */,
-				78C86D6C1F123FD8003A20E6 /* TestingApplicationContextBuilder.swift in Sources */,
+				78C86D6C1F123FD8003A20E6 /* PresentationTestBuilder.swift in Sources */,
 				78C86D791F12ADF8003A20E6 /* CapturingSplashScene.swift in Sources */,
 				78C86D4C1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift in Sources */,
 				78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */,
@@ -1215,6 +1218,7 @@
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
 				78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */,
 				7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */,
+				7820A6ED1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift in Sources */,
 				78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */,
 				78455B4B1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift in Sources */,
 				7820A6E11F13FC7F004C0FB5 /* StubNetworkReachability.swift in Sources */,

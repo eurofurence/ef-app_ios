@@ -29,11 +29,12 @@ class WhenTheTutorialAppears: XCTestCase {
         let routers = StubRouters(tutorialRouter: tutorialRouter,
                                   splashScreenRouter: splashRouter,
                                   alertRouter: alertRouter)
-        let context = TestingApplicationContextBuilder()
+        let context = PresentationTestBuilder()
+            .withRouters(routers)
             .withUserCompletedTutorialStateProviding(stateProviding)
             .withNetworkReachability(networkReachability)
             .build()
-        BootstrappingModule.bootstrap(context: context, routers: routers)
+        context.bootstrap()
 
         return TutorialTestContext(tutorial: tutorialRouter.tutorialScene,
                                    page: tutorialRouter.tutorialScene.tutorialPage,
