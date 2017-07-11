@@ -136,9 +136,10 @@ class SettingsTableViewController: FormViewController {
                         // TODO: Perform this resetting of tutorial flag/transition inside presentation tier
                         let tutorialFinishedKey = UserDefaultsTutorialStateProvider.FinishedTutorialKey
                         UserDefaults.standard.set(false, forKey: tutorialFinishedKey)
+                        UserDefaults.standard.synchronize()
 
                         let window = UIApplication.shared.delegate!.window!
-                        _ = PresentationTier.assemble(window: window!)
+                        PresentationTier.assemble(window: window!)
 					}))
 					confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 					self.present(confirmationAlert, animated: true, completion: nil)
