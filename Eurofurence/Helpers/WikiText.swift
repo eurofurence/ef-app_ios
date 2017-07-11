@@ -8,34 +8,66 @@
 //
 
 import Foundation
+import UIKit
 
 class WikiText {
-    private static let _regexPreceedFirstListItemWithLineBreaks = try! NSRegularExpression(pattern: "(?<=\\n)(?<!  \\* )([^\\n]+)(\\n)((  \\* [^\\n]+\\n)+(?!  \\* ))", options: [])
-    private static let _regexSucceedLastListItemWithLineBreaks = try! NSRegularExpression(pattern: "(\\n  \\*[^\\n]+\\n)(?!  \\* )", options: [])
-    private static let _regexParseListItems = try! NSRegularExpression(pattern: "\n  \\* ([^\\n]*)", options: [])
-    private static let _regexBoldItems = try! NSRegularExpression(pattern: "\\*\\*([^\\*]*)\\*\\*", options: [])
-    private static let _regexItalics = try! NSRegularExpression(pattern: "\\*([^\\*\\n]*)\\*", options: [])
+    private static let _regexListItems = try! NSRegularExpression(pattern: "\\n  \\* ([^\\n]*)", options: [])
+    private static let _regexBold = try! NSRegularExpression(pattern: "\\*\\*([^\\*]*)\\*\\*", options: [])
+    private static let _regexItalic = try! NSRegularExpression(pattern: "\\*([^\\*\\n]*)\\*", options: [])
 
-    static func transformToHtml(_ wikiText: String, style: String = "") -> String {
-        if !wikiText.isEmpty {
-            // Normalize line breaks
-            let htmlText = NSMutableString(string: "<html>\n" + style + wikiText + "\n</html>")
-            htmlText.replaceOccurrences(of: "\n\n", with: "<br>\n<br>\n", options: [], range: NSRange(location: 0, length: htmlText.length))
-            htmlText.replaceOccurrences(of: "\\\\", with: "<br>", options: [], range: NSRange(location: 0, length: htmlText.length))
+    static func transform(_ wikiText: String, style: String = "") -> NSAttributedString {
+        guard !wikiText.isEmpty else {
+			return NSAttributedString()
+		}
+		let mutableText = NSMutableString(string: wikiText)
+		mutableText.replaceOccurrences(of: "\\\\", with: "\n", options: [], range: NSRange(location: 0, length: mutableText.length))
+		WikiText._regexListItems.replaceMatches(in: mutableText, options: [], range: NSRange(location: 0, length: mutableText.length), withTemplate: "\n  • $1")
 
-            //print("before <ul>:\n", htmlText, "\n\n")
-            WikiText._regexPreceedFirstListItemWithLineBreaks.replaceMatches(in: htmlText, options: [], range: NSRange(location: 0, length: htmlText.length), withTemplate: "$1<br>\n<ul>$2$3")
-            //print("after <ul>:\n", htmlText, "\n\n")
-            WikiText._regexSucceedLastListItemWithLineBreaks.replaceMatches(in: htmlText, options: [], range: NSRange(location: 0, length: htmlText.length), withTemplate: "$1</ul>\n")
-            //print("after </ul>:\n", htmlText, "\n\n")
-            WikiText._regexParseListItems.replaceMatches(in: htmlText, options: [], range: NSRange(location: 0, length: htmlText.length), withTemplate: "\n<li>$1</li>")
-            WikiText._regexBoldItems.replaceMatches(in: htmlText, options: [], range: NSRange(location: 0, length: htmlText.length), withTemplate: "<b>$1</b>")
-            WikiText._regexItalics.replaceMatches(in: htmlText, options: [], range: NSRange(location: 0, length: htmlText.length), withTemplate: "<i>$1</i>")
+		let attributes = [
+			NSFontAttributeName: UIFont.preferredFont(forTextStyle: .body),
+			NSForegroundColorAttributeName: UIColor.lightText
+		]
+		let attributedString = NSMutableAttributedString(string: mutableText as String, attributes: attributes)
 
-            return String(htmlText)
-        }
+		if let boldFontDescriptor = UIFont.preferredFont(forTextStyle: .body).fontDescriptor.withSymbolicTraits(.traitBold) {
+			let boldFont = UIFont(descriptor: boldFontDescriptor, size: 0)
+			let attributes = [NSFontAttributeName: boldFont]
+			attributedString.apply(regex: _regexBold, attributes: attributes, captureGroup: 1)
+		}
 
-        return ""
+		if let italicFontDescriptor = UIFont.preferredFont(forTextStyle: .body).fontDescriptor.withSymbolicTraits(.traitItalic) {
+			let italicFont = UIFont(descriptor: italicFontDescriptor, size: 0)
+			let attributes = [NSFontAttributeName: italicFont]
+			attributedString.apply(regex: _regexItalic, attributes: attributes, captureGroup: 1)
+		}
+
+		return attributedString
     }
 
+}
+
+extension NSMutableAttributedString {
+
+	/// Applies the given attributes to every match of the regular expression
+	/// and replaces the entire match with the content of the capture group at
+	/// the given index.
+	///
+	/// - Parameters:
+	///   - regex: regular expression to be matched against the string
+	///   - attributes: attributes to be applied to matches
+	///   - captureGroup: capture group containing the replacement
+	func apply(regex: NSRegularExpression, attributes: [String:Any], captureGroup: Int = 0) {
+		var rangeOffset: Int = 0
+		regex.matches(in: mutableString as String, options: [], range: NSRange(location: 0, length: mutableString.length)).forEach({ (result) in
+
+			let replacementRange = NSRange(location: result.rangeAt(captureGroup).location - rangeOffset, length: result.rangeAt(captureGroup).length)
+			let replacementString = mutableString.substring(with: replacementRange)
+
+			let offsetRange = NSRange(location: result.range.location - rangeOffset, length: result.range.length)
+			addAttributes(attributes, range: offsetRange)
+			replaceCharacters(in: offsetRange, with: replacementString)
+
+			rangeOffset += result.range.length - replacementString.characters.count
+		})
+	}
 }

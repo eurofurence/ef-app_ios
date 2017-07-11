@@ -22,14 +22,6 @@ class KnowledgeEntryViewController: UIViewController {
 	// TODO: This is somewhat nasty and might require refactoring at some point
     var buttonLinks: [UIButton:LinkFragment] = [:]
 
-    static let htmlStyle = "<style>"
-        + "html, p, ul, li { font: -apple-system-body; color: #FFF; }"
-        + "h1 { font: -apple-system-headline; color: #FFF; }"
-        + "h2 { font: -apple-system-subheadline; color: #FFF; }"
-        + "h3 { font: -apple-system-body; color: #FFF; }"
-        + "h4 { font: -apple-system-body; color: #FFF; }"
-        + "</style>"
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -64,16 +56,7 @@ class KnowledgeEntryViewController: UIViewController {
 //        }
         imageView.sizeToFit()
 
-        do {
-            let htmlText = WikiText.transformToHtml(knowledgeEntry?.Text ?? "", style: KnowledgeEntryViewController.htmlStyle)
-			// FIXME: This somehow seems to trigger initialisation of a WebView inside textView, causing severe lag upon first call
-            textView.attributedText = try NSAttributedString(
-                data: htmlText.data(using: String.Encoding.unicode, allowLossyConversion: true)!,
-                options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
-                documentAttributes: nil)
-        } catch {
-            textView.text = knowledgeEntry?.Text
-        }
+		textView.attributedText = WikiText.transform(knowledgeEntry?.Text ?? "")
 
         for subview in linkView.subviews {
             subview.removeFromSuperview()
