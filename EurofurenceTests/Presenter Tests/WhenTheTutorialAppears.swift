@@ -21,10 +21,10 @@ class WhenTheTutorialAppears: XCTestCase {
         var tutorialStateProviding: StubFirstTimeLaunchStateProvider
     }
 
-    private func showTutorial(_ networkReachability: NetworkReachability = StubNetworkReachability(),
-                              _ splashRouter: CapturingSplashScreenRouter = CapturingSplashScreenRouter()) -> TutorialTestContext {
+    private func showTutorial(_ networkReachability: NetworkReachability = StubNetworkReachability()) -> TutorialTestContext {
         let tutorialRouter = CapturingTutorialRouter()
         let alertRouter = CapturingAlertRouter()
+        let splashRouter = CapturingSplashScreenRouter()
         let stateProviding = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
         let routers = StubRouters(tutorialRouter: tutorialRouter,
                                   splashScreenRouter: splashRouter,
@@ -86,18 +86,16 @@ class WhenTheTutorialAppears: XCTestCase {
     func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiAvailableTellsSplashRouterToShowTheSplashScreen() {
         var networkReachability = StubNetworkReachability()
         networkReachability.wifiReachable = true
-        let splashRouter = CapturingSplashScreenRouter()
-        let setup = showTutorial(networkReachability, splashRouter)
+        let setup = showTutorial(networkReachability)
         setup.page.simulateTappingPrimaryActionButton()
 
-        XCTAssertTrue(splashRouter.wasToldToShowSplashScreen)
+        XCTAssertTrue(setup.splashRouter.wasToldToShowSplashScreen)
     }
     
     func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiAvailableTellsTutorialCompletionProvidingToMarkTutorialAsComplete() {
         var networkReachability = StubNetworkReachability()
         networkReachability.wifiReachable = true
-        let splashRouter = CapturingSplashScreenRouter()
-        let setup = showTutorial(networkReachability, splashRouter)
+        let setup = showTutorial(networkReachability)
         setup.page.simulateTappingPrimaryActionButton()
         
         XCTAssertTrue(setup.tutorialStateProviding.didMarkTutorialAsComplete)
@@ -106,8 +104,7 @@ class WhenTheTutorialAppears: XCTestCase {
     func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiUnavailableTellsAlertRouterToShowAlert() {
         var networkReachability = StubNetworkReachability()
         networkReachability.wifiReachable = false
-        let splashRouter = CapturingSplashScreenRouter()
-        let setup = showTutorial(networkReachability, splashRouter)
+        let setup = showTutorial(networkReachability)
         setup.page.simulateTappingPrimaryActionButton()
 
         XCTAssertTrue(setup.alertRouter.didShowAlert)
@@ -116,18 +113,16 @@ class WhenTheTutorialAppears: XCTestCase {
     func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiUnavailableShouldNotTellSplashScreenRouterToShowTheSplashScreen() {
         var networkReachability = StubNetworkReachability()
         networkReachability.wifiReachable = false
-        let splashRouter = CapturingSplashScreenRouter()
-        let setup = showTutorial(networkReachability, splashRouter)
+        let setup = showTutorial(networkReachability)
         setup.page.simulateTappingPrimaryActionButton()
 
-        XCTAssertFalse(splashRouter.wasToldToShowSplashScreen)
+        XCTAssertFalse(setup.splashRouter.wasToldToShowSplashScreen)
     }
 
     func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiAvailableDoesNotTellAlertRouterToShowAlert() {
         var networkReachability = StubNetworkReachability()
         networkReachability.wifiReachable = true
-        let splashRouter = CapturingSplashScreenRouter()
-        let setup = showTutorial(networkReachability, splashRouter)
+        let setup = showTutorial(networkReachability)
         setup.page.simulateTappingPrimaryActionButton()
 
         XCTAssertFalse(setup.alertRouter.didShowAlert)
@@ -136,8 +131,7 @@ class WhenTheTutorialAppears: XCTestCase {
     func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiUnavailableTellsAlertRouterToShowAlertWithWarnUserAboutCellularDownloadsTitle() {
         var networkReachability = StubNetworkReachability()
         networkReachability.wifiReachable = false
-        let splashRouter = CapturingSplashScreenRouter()
-        let setup = showTutorial(networkReachability, splashRouter)
+        let setup = showTutorial(networkReachability)
         setup.page.simulateTappingPrimaryActionButton()
 
         XCTAssertEqual(setup.strings.presentationString(for: .cellularDownloadAlertTitle),
@@ -147,8 +141,7 @@ class WhenTheTutorialAppears: XCTestCase {
     func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiUnavailableTellsAlertRouterToShowAlertWithWarnUserAboutCellularDownloadsMessage() {
         var networkReachability = StubNetworkReachability()
         networkReachability.wifiReachable = false
-        let splashRouter = CapturingSplashScreenRouter()
-        let setup = showTutorial(networkReachability, splashRouter)
+        let setup = showTutorial(networkReachability)
         setup.page.simulateTappingPrimaryActionButton()
 
         XCTAssertEqual(setup.strings.presentationString(for: .cellularDownloadAlertMessage),
@@ -158,8 +151,7 @@ class WhenTheTutorialAppears: XCTestCase {
     func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiUnavailableTellsAlertRouterToShowAlertWithContinueDownloadOverCellularAction() {
         var networkReachability = StubNetworkReachability()
         networkReachability.wifiReachable = false
-        let splashRouter = CapturingSplashScreenRouter()
-        let setup = showTutorial(networkReachability, splashRouter)
+        let setup = showTutorial(networkReachability)
         setup.page.simulateTappingPrimaryActionButton()
         let action = setup.alertRouter.presentedActions.first
 
@@ -170,8 +162,7 @@ class WhenTheTutorialAppears: XCTestCase {
     func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiUnavailableTellsAlertRouterToShowAlertWithCancelAction() {
         var networkReachability = StubNetworkReachability()
         networkReachability.wifiReachable = false
-        let splashRouter = CapturingSplashScreenRouter()
-        let setup = showTutorial(networkReachability, splashRouter)
+        let setup = showTutorial(networkReachability)
         setup.page.simulateTappingPrimaryActionButton()
         let action = setup.alertRouter.presentedActions.last
 
@@ -182,8 +173,7 @@ class WhenTheTutorialAppears: XCTestCase {
     func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiUnavailableThenInvokingFirstActionShouldTellTheSplashRouterToShowTheSplashScreen() {
         var networkReachability = StubNetworkReachability()
         networkReachability.wifiReachable = false
-        let splashRouter = CapturingSplashScreenRouter()
-        let setup = showTutorial(networkReachability, splashRouter)
+        let setup = showTutorial(networkReachability)
         setup.page.simulateTappingPrimaryActionButton()
         setup.alertRouter.presentedActions.first?.invoke()
 
@@ -193,8 +183,7 @@ class WhenTheTutorialAppears: XCTestCase {
     func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiUnavailableThenInvokingFirstActionShouldMarkTheTutorialAsComplete() {
         var networkReachability = StubNetworkReachability()
         networkReachability.wifiReachable = false
-        let splashRouter = CapturingSplashScreenRouter()
-        let setup = showTutorial(networkReachability, splashRouter)
+        let setup = showTutorial(networkReachability)
         setup.page.simulateTappingPrimaryActionButton()
         setup.alertRouter.presentedActions.first?.invoke()
         
