@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 class KnowledgeEntryViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
@@ -15,7 +16,10 @@ class KnowledgeEntryViewController: UIViewController {
     @IBOutlet weak var linkLabel: UILabel!
     @IBOutlet weak var linkView: UIView!
 
+	let imageService: ImageServiceProtocol = try! ServiceResolver.container.resolve()
 	weak var knowledgeEntry = KnowledgeEntry()
+	var disposables = CompositeDisposable()
+
     var imageViewDefaultHeight = CGFloat(0.0)
     var linkViewLastButton: UIButton?
     var linkViewLastBottomConstraint: NSLayoutConstraint?
@@ -38,22 +42,36 @@ class KnowledgeEntryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+		if !disposables.isDisposed {
+			disposables.dispose()
+		}
+		disposables = CompositeDisposable()
+
 		navigationItem.title = knowledgeEntry?.KnowledgeGroup?.Name
         titleLabel.text = knowledgeEntry?.Title
 
-        // TODO: how are images handled in KnowledgeEntry? 
-//        if let imageId = knowledgeEntry.imageIdsAlternative.first {
-//            imageView.image = ImageManager.sharedInstance.retrieveFromCache(imageId.Id)
-//            if imageViewDefaultHeight > 0 {
-//                imageViewHeightConstraint.constant = imageViewDefaultHeight
-//            }
-//        } else {
-            imageView.image = nil
-            if imageViewDefaultHeight == 0 {
-                imageViewDefaultHeight = imageViewHeightConstraint.constant
-            }
-            imageViewHeightConstraint.constant = 0.0
-//        }
+        // TODO: How should multiple images be handled?
+        if let image = knowledgeEntry?.Images?.first {
+			imageService.retrieve(for: image).startWithResult({ [unowned self] result in
+				switch result {
+				case let .success(uiImage):
+					DispatchQueue.main.async {
+						self.imageView.image = uiImage
+						if self.imageViewDefaultHeight > 0 {
+							self.imageViewHeightConstraint.constant = self.imageViewDefaultHeight
+						}
+					}
+				case let .failure(error):
+					print("Failed to retrieve image for KnowledgeEntry \(self.knowledgeEntry?.Title ?? ""): \(error)")
+				}
+			})
+        }
+
+		imageView.image = nil
+		if imageViewDefaultHeight == 0 {
+			imageViewDefaultHeight = imageViewHeightConstraint.constant
+		}
+		imageViewHeightConstraint.constant = 0.0
         imageView.sizeToFit()
 
 		textView.attributedText = WikiText.transform(knowledgeEntry?.Text ?? "")
@@ -74,6 +92,12 @@ class KnowledgeEntryViewController: UIViewController {
 
         linkLabel.isHidden = buttonLinks.count == 0
     }
+
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+
+		disposables.dispose()
+	}
 
     func urlButtonAction(_ button: UIButton) {
         if let link = buttonLinks[button] {
