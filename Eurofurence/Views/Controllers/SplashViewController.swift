@@ -60,6 +60,10 @@ class SplashViewController: UIViewController, SplashScene,
         quoteLabel.text = quote
     }
 
+    func showQuoteAuthor(_ author: String) {
+
+    }
+
     // MARK: DataStoreLoadDelegate
 
     func dataStoreLoadDidBegin() {

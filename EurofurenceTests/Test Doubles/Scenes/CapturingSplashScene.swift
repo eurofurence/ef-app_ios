@@ -15,5 +15,10 @@ class CapturingSplashScene: SplashScene {
     func showQuote(_ quote: String) {
         shownQuote = quote
     }
+
+    private(set) var shownQuoteAuthor: String?
+    func showQuoteAuthor(_ author: String) {
+        shownQuoteAuthor = author
+    }
     
 }

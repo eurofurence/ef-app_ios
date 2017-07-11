@@ -11,5 +11,6 @@ import Foundation
 protocol SplashScene {
 
     func showQuote(_ quote: String)
+    func showQuoteAuthor(_ author: String)
 
 }

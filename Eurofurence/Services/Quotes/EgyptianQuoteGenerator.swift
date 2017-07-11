@@ -38,7 +38,7 @@ struct EgyptianQuoteGenerator: QuoteGenerator {
 
         let index = arc4random_uniform(UInt32(quotes.count))
         let chosenQuote = quotes[Int(index)]
-        return Quote(message: chosenQuote)
+        return Quote(author: "Egyptian Proverb", message: chosenQuote)
     }
 
 }

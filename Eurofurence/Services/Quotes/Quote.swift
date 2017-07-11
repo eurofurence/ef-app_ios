@@ -10,6 +10,7 @@ import Foundation
 
 struct Quote {
 
+    var author: String
     var message: String
 
 }

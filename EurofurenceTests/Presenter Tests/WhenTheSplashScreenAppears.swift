@@ -25,7 +25,7 @@ class WhenTheSplashScreenAppears: XCTestCase {
     }
 
     func testTheQuoteFromTheGeneratorIsSetOntoTheSplashScene() {
-        let someQuote = Quote(message: "Life is short, eat dessert first")
+        let someQuote = Quote(author: "", message: "Life is short, eat dessert first")
         let capturingQuotesDataSource = CapturingQuoteGenerator()
         capturingQuotesDataSource.quoteToMake = someQuote
         let splashRouter = CapturingSplashScreenRouter()
@@ -37,6 +37,21 @@ class WhenTheSplashScreenAppears: XCTestCase {
             .bootstrap()
 
         XCTAssertEqual(someQuote.message, splashRouter.splashScene.shownQuote)
+    }
+
+    func testTheQuoteAuthorFromTheGeneratorIsSetOntoTheSplashScene() {
+        let someQuote = Quote(author: "A wise man", message: "Life is short, eat dessert first")
+        let capturingQuotesDataSource = CapturingQuoteGenerator()
+        capturingQuotesDataSource.quoteToMake = someQuote
+        let splashRouter = CapturingSplashScreenRouter()
+        let routers = StubRouters(splashScreenRouter: splashRouter)
+        PresentationTestBuilder()
+            .withRouters(routers)
+            .withQuoteGenerator(capturingQuotesDataSource)
+            .build()
+            .bootstrap()
+
+        XCTAssertEqual(someQuote.author, splashRouter.splashScene.shownQuoteAuthor)
     }
     
 }
