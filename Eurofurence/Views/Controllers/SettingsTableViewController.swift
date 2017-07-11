@@ -132,6 +132,13 @@ class SettingsTableViewController: FormViewController {
 					let confirmationAlert = UIAlertController(title: "Clear Storage and Cache", message: "All offline data will be deleted and must be downloaded again afterwards, before the app can be used again!", preferredStyle: UIAlertControllerStyle.alert)
 					confirmationAlert.addAction(UIAlertAction(title: "Clear All", style: .destructive, handler: { (_: UIAlertAction!) in
 						self.contextManager.clearAll()
+
+                        // TODO: Perform this resetting of tutorial flag/transition inside presentation tier
+                        let tutorialFinishedKey = UserDefaultsTutorialStateProvider.FinishedTutorialKey
+                        UserDefaults.standard.set(false, forKey: tutorialFinishedKey)
+
+                        let window = UIApplication.shared.delegate!.window!
+                        _ = PresentationTier.assemble(window: window!)
 					}))
 					confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 					self.present(confirmationAlert, animated: true, completion: nil)
