@@ -9,10 +9,6 @@
 import Foundation
 import UIKit
 
-struct DummyNetworkReachability: NetworkReachability {
-    var wifiReachable: Bool = false
-}
-
 struct PresentationTier {
 
     static func assemble(window: UIWindow) {
@@ -25,7 +21,7 @@ struct PresentationTier {
                                   quoteGenerator: EgyptianQuoteGenerator(),
                                   presentationStrings: UnlocalizedPresentationStrings(),
                                   presentationAssets: ApplicationPresentationAssets(),
-                                  networkReachability: DummyNetworkReachability())
+                                  networkReachability: SwiftNetworkReachability.shared)
     }
 
 }
