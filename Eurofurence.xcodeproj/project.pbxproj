@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6EEC6D9A1F157AC000205F2D /* UserAcknowledgedPushPermissionsRequestStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6D991F157AC000205F2D /* UserAcknowledgedPushPermissionsRequestStateProviding.swift */; };
 		6EF96CC81F0EDAE800EE6134 /* CalendarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CC71F0EDAE800EE6134 /* CalendarStore.swift */; };
 		6EF96CCA1F0EDAF800EE6134 /* CalendarPermissionsProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CC91F0EDAF800EE6134 /* CalendarPermissionsProviding.swift */; };
 		6EF96CCC1F0EDB0500EE6134 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CCB1F0EDB0500EE6134 /* CalendarEvent.swift */; };
@@ -173,6 +174,7 @@
 /* Begin PBXFileReference section */
 		27C948D12455A352D46AF5B6 /* Pods-Eurofurence.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence.release.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence.release.xcconfig"; sourceTree = "<group>"; };
 		513BAD2C582D99F2993B8162 /* Pods-Eurofurence.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence.debug.xcconfig"; sourceTree = "<group>"; };
+		6EEC6D991F157AC000205F2D /* UserAcknowledgedPushPermissionsRequestStateProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserAcknowledgedPushPermissionsRequestStateProviding.swift; path = Views/Controllers/Tutorial/UserAcknowledgedPushPermissionsRequestStateProviding.swift; sourceTree = "<group>"; };
 		6EF96CC71F0EDAE800EE6134 /* CalendarStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarStore.swift; path = Calendar/CalendarStore.swift; sourceTree = "<group>"; };
 		6EF96CC91F0EDAF800EE6134 /* CalendarPermissionsProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPermissionsProviding.swift; path = Calendar/CalendarPermissionsProviding.swift; sourceTree = "<group>"; };
 		6EF96CCB1F0EDB0500EE6134 /* CalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarEvent.swift; path = Calendar/CalendarEvent.swift; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 				78455B531F117A35005BE2D7 /* TutorialViewController.swift */,
 				78455B401F117742005BE2D7 /* UserCompletedTutorialStateProviding.swift */,
 				78455B3E1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift */,
+				6EEC6D991F157AC000205F2D /* UserAcknowledgedPushPermissionsRequestStateProviding.swift */,
 			);
 			name = Tutorial;
 			path = ../..;
@@ -1185,6 +1188,7 @@
 				D6F3D2C86BE68A102D2D6312 /* EventTableViewController.swift in Sources */,
 				D6F3D204D352FE26C3F90906 /* KnowledgeTableViewController.swift in Sources */,
 				78567B471F10D1C400EBA31D /* DataStoreLoadController.swift in Sources */,
+				6EEC6D9A1F157AC000205F2D /* UserAcknowledgedPushPermissionsRequestStateProviding.swift in Sources */,
 				D6F3DF2779D7CE09AA5507F9 /* NewsTableViewController.swift in Sources */,
 				78C86D671F123B55003A20E6 /* TutorialPageScene.swift in Sources */,
 				D6F3D0434C71907BD410190E /* ImageServiceProtocol.swift in Sources */,

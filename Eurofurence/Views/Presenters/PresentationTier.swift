@@ -9,6 +9,14 @@
 import Foundation
 import UIKit
 
+struct DummyUserAcknowledgedPushPermissionsRequestStateProviding: UserAcknowledgedPushPermissionsRequestStateProviding {
+
+    var userHasAcknowledgedRequestForPushPermissions: Bool {
+        return true
+    }
+
+}
+
 struct PresentationTier {
 
     static func assemble(window: UIWindow) {
@@ -18,6 +26,7 @@ struct PresentationTier {
 
     private static func makeAppContext() -> ApplicationContext {
         return ApplicationContext(firstTimeLaunchProviding: UserDefaultsTutorialStateProvider(userDefaults: .standard),
+                                  userAcknowledgedPushPermissionsRequest: DummyUserAcknowledgedPushPermissionsRequestStateProviding(),
                                   quoteGenerator: EgyptianQuoteGenerator(),
                                   presentationStrings: UnlocalizedPresentationStrings(),
                                   presentationAssets: ApplicationPresentationAssets(),

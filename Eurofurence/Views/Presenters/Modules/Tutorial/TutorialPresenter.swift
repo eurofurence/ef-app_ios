@@ -28,6 +28,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
          splashScreenRouter: SplashScreenRouter,
          alertRouter: AlertRouter,
          tutorialStateProviding: UserCompletedTutorialStateProviding,
+         userAcknowledgedPushPermissionsRequest: UserAcknowledgedPushPermissionsRequestStateProviding,
          networkReachability: NetworkReachability) {
         self.tutorialScene = tutorialScene
         self.presentationStrings = presentationStrings
@@ -37,7 +38,11 @@ class TutorialPresenter: TutorialPageSceneDelegate {
         self.tutorialStateProviding = tutorialStateProviding
         self.networkReachability = networkReachability
 
-        showInitiateDownloadPage()
+        if userAcknowledgedPushPermissionsRequest.userHasAcknowledgedRequestForPushPermissions {
+            showInitiateDownloadPage()
+        } else {
+            showRequestPushPermissionsPage()
+        }
     }
 
     // MARK: TutorialPageSceneDelegate
@@ -71,6 +76,11 @@ class TutorialPresenter: TutorialPageSceneDelegate {
         tutorialPage.showPageDescription(string(for: .tutorialInitialLoadDescription))
         tutorialPage.showPrimaryActionButton()
         tutorialPage.showPrimaryActionDescription(string(for: .tutorialInitialLoadBeginDownload))
+    }
+
+    private func showRequestPushPermissionsPage() {
+        let tutorialPage = tutorialScene.showTutorialPage()
+        tutorialPage.showPageTitle(string(for: .tutorialPushPermissionsRequestTitle))
     }
 
     private func completeTutorial() {

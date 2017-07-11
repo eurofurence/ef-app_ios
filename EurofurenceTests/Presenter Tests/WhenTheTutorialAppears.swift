@@ -9,6 +9,22 @@
 @testable import Eurofurence
 import XCTest
 
+struct UserNotAcknowledgedPushPermissions: UserAcknowledgedPushPermissionsRequestStateProviding {
+    
+    var userHasAcknowledgedRequestForPushPermissions: Bool {
+        return false
+    }
+    
+}
+
+struct UserAcknowledgedPushPermissions: UserAcknowledgedPushPermissionsRequestStateProviding {
+    
+    var userHasAcknowledgedRequestForPushPermissions: Bool {
+        return true
+    }
+    
+}
+
 class WhenTheTutorialAppears: XCTestCase {
 
     struct TutorialTestContext {
@@ -21,7 +37,8 @@ class WhenTheTutorialAppears: XCTestCase {
         var tutorialStateProviding: StubFirstTimeLaunchStateProvider
     }
 
-    private func showTutorial(_ networkReachability: NetworkReachability = ReachableWiFiNetwork()) -> TutorialTestContext {
+    private func showTutorial(_ networkReachability: NetworkReachability = ReachableWiFiNetwork(),
+                              _ pushPermissionsRequestStateProviding: UserAcknowledgedPushPermissionsRequestStateProviding = UserNotAcknowledgedPushPermissions()) -> TutorialTestContext {
         let tutorialRouter = CapturingTutorialRouter()
         let alertRouter = CapturingAlertRouter()
         let splashRouter = CapturingSplashScreenRouter()
@@ -32,6 +49,7 @@ class WhenTheTutorialAppears: XCTestCase {
         let context = PresentationTestBuilder()
             .withRouters(routers)
             .withUserCompletedTutorialStateProviding(stateProviding)
+            .withUserAcknowledgedPushPermissionsRequest(pushPermissionsRequestStateProviding)
             .withNetworkReachability(networkReachability)
             .build()
         context.bootstrap()
@@ -45,17 +63,29 @@ class WhenTheTutorialAppears: XCTestCase {
                                    tutorialStateProviding: stateProviding)
     }
     
+    private func showRequestPushPermissionsTutorialPage() -> TutorialTestContext {
+        return showTutorial(ReachableWiFiNetwork(), UserNotAcknowledgedPushPermissions())
+    }
+    
     private func showBeginInitialDownloadTutorialPage(_ networkReachability: NetworkReachability = ReachableWiFiNetwork()) -> TutorialTestContext {
-        // For now this is the same as showTutorial(_:), however soon it'll be deffered to a later page.
-        return showTutorial(networkReachability)
+        return showTutorial(networkReachability, UserAcknowledgedPushPermissions())
+    }
+    
+    func testItShouldBeToldToShowTheTutorialPage() {
+        let setup = showTutorial()
+        XCTAssertTrue(setup.tutorial.wasToldToShowTutorialPage)
+    }
+    
+    // MARK: Request push permissions page
+    
+    func testShowingThePushPermissionsRequestPageShouldSetThePushPermissionsTitleOntoTheTutorialPage() {
+        let setup = showRequestPushPermissionsTutorialPage()
+        
+        XCTAssertEqual(setup.strings.presentationString(for: .tutorialPushPermissionsRequestTitle),
+                       setup.page.capturedPageTitle)
     }
     
     // MARK: Prepare for initial download page
-    
-    func testItShouldBeToldToShowTheTutorialPage() {
-        let setup = showBeginInitialDownloadTutorialPage()
-        XCTAssertTrue(setup.tutorial.wasToldToShowTutorialPage)
-    }
 
     func testItShouldTellTheFirstTutorialPageToShowTheTitleForBeginningInitialLoad() {
         let setup = showBeginInitialDownloadTutorialPage()

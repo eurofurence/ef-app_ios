@@ -17,6 +17,8 @@ protocol PresentationStrings {
 enum PresentationScenario {
     case cancel
 
+    case tutorialPushPermissionsRequestTitle
+
     case tutorialInitialLoadTitle
     case tutorialInitialLoadDescription
     case tutorialInitialLoadBeginDownload
@@ -30,6 +32,8 @@ struct UnlocalizedPresentationStrings: PresentationStrings {
 
     private static let strings: [PresentationScenario : String] = [
         .cancel: "Cancel",
+
+        .tutorialPushPermissionsRequestTitle: "Push Notifications",
 
         .tutorialInitialLoadTitle: "Offline Usage",
         .tutorialInitialLoadDescription: "The Eurofurence app is intended to remain fully functional while offline. To do this, we need to download a few megabytes of data. This may take several minutes depending upon the speed of your connection.",

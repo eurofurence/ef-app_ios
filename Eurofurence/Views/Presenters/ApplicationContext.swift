@@ -11,17 +11,20 @@ import Foundation
 struct ApplicationContext {
 
     var firstTimeLaunchProviding: UserCompletedTutorialStateProviding
+    var userAcknowledgedPushPermissionsRequest: UserAcknowledgedPushPermissionsRequestStateProviding
     var quoteGenerator: QuoteGenerator
     var presentationStrings: PresentationStrings
     var presentationAssets: PresentationAssets
     var networkReachability: NetworkReachability
 
     init(firstTimeLaunchProviding: UserCompletedTutorialStateProviding,
+         userAcknowledgedPushPermissionsRequest: UserAcknowledgedPushPermissionsRequestStateProviding,
          quoteGenerator: QuoteGenerator,
          presentationStrings: PresentationStrings,
          presentationAssets: PresentationAssets,
          networkReachability: NetworkReachability) {
         self.firstTimeLaunchProviding = firstTimeLaunchProviding
+        self.userAcknowledgedPushPermissionsRequest = userAcknowledgedPushPermissionsRequest
         self.quoteGenerator = quoteGenerator
         self.presentationStrings = presentationStrings
         self.presentationAssets = presentationAssets

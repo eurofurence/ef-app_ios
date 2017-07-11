@@ -26,6 +26,7 @@ class PresentationTestBuilder {
 
     private var routers: Routers
     private var firstTimeLaunchProviding: UserCompletedTutorialStateProviding
+    private var userAcknowledgedPushPermissionsRequest: UserAcknowledgedPushPermissionsRequestStateProviding
     private var quoteGenerator: QuoteGenerator
     private var presentationStrings: PresentationStrings
     private var presentationAssets: PresentationAssets
@@ -34,6 +35,7 @@ class PresentationTestBuilder {
     init() {
         routers = StubRouters()
         firstTimeLaunchProviding = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
+        userAcknowledgedPushPermissionsRequest = UserNotAcknowledgedPushPermissions()
         quoteGenerator = CapturingQuoteGenerator()
         presentationStrings = StubPresentationStrings()
         presentationAssets = StubPresentationAssets()
@@ -54,6 +56,11 @@ class PresentationTestBuilder {
         self.firstTimeLaunchProviding = firstTimeLaunchProviding
         return self
     }
+    
+    func withUserAcknowledgedPushPermissionsRequest(_ userAcknowledgedPushPermissionsRequest: UserAcknowledgedPushPermissionsRequestStateProviding) -> PresentationTestBuilder {
+        self.userAcknowledgedPushPermissionsRequest = userAcknowledgedPushPermissionsRequest
+        return self
+    }
 
     func withQuoteGenerator(_ quoteGenerator: QuoteGenerator) -> PresentationTestBuilder {
         self.quoteGenerator = quoteGenerator
@@ -67,6 +74,7 @@ class PresentationTestBuilder {
 
     func build() -> PresentationTestContext {
         let appContext =  ApplicationContext(firstTimeLaunchProviding: firstTimeLaunchProviding,
+                                             userAcknowledgedPushPermissionsRequest: userAcknowledgedPushPermissionsRequest,
                                              quoteGenerator: quoteGenerator,
                                              presentationStrings: presentationStrings,
                                              presentationAssets: presentationAssets,
