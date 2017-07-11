@@ -26,7 +26,7 @@ class SettingsTableViewController: FormViewController {
 
     private func makeNetworkSection() {
         form +++ Section("Network")
-            <<< SwitchRow("switchRowUpdateOnStart") { row in
+            <<< SwitchRow("UpdateOnStart") { row in
                 row.title = "Auto-Update on Launch"
 				row.value = UserSettings.UpdateOnStart.currentValue()
 				row.disabled = true
@@ -36,7 +36,7 @@ class SettingsTableViewController: FormViewController {
                 }.cellUpdate { cell, _ in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
             }
-            <<< SwitchRow("SwitchRow") { row in
+            <<< SwitchRow("UpdateOnMobile") { row in
                 row.title = "Auto-Update on Mobile"
 				row.value = UserSettings.AutomaticRefreshOnMobile.currentValue()
 				row.disabled = true
@@ -46,7 +46,7 @@ class SettingsTableViewController: FormViewController {
                 }.cellUpdate { cell, _ in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
             }
-            <<< PushRow<Int>("pushRowRefreshTimer") { row in
+            <<< PushRow<Int>("RefreshTimer") { row in
                 row.title = "Refresh Interval"
 				row.displayValueFor = { value in
                     var minutes = -1
@@ -89,19 +89,19 @@ class SettingsTableViewController: FormViewController {
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
             }
 
-            <<< SwitchRow("switchRowNotifyOnAnnouncement") { row in
+            <<< SwitchRow("NotifyOnAnnouncement") { row in
                 row.title = "Notify on New Announcements"
                 row.value = UserSettings.NotifyOnAnnouncement.currentValue()
 				row.disabled = true
-                row.hidden = Condition.function(["pushRowRefreshTimer"], { form in
-                    let value = (form.rowBy(tag: "pushRowRefreshTimer") as? PushRow<Int>)?.value
+                row.hidden = Condition.function(["RefreshTimer"], { form in
+                    let value = (form.rowBy(tag: "RefreshTimer") as? PushRow<Int>)?.value
                     return (value != nil) && value! <= 0
                 })
                 }.onChange { row in
                     if let value = row.value {
                         UserSettings.NotifyOnAnnouncement.setValue(value)
                         if !value {
-                            (self.form.rowBy(tag: "switchRowRefreshInBackground") as? SwitchRow)?.value = false
+                            (self.form.rowBy(tag: "RefreshInBackground") as? SwitchRow)?.value = false
                         }
                     }
                     row.updateCell()
@@ -174,7 +174,7 @@ class SettingsTableViewController: FormViewController {
 
     private func makeExperimentalFeaturesSection() {
         form +++ Section(header:"Experimental Features", footer: "Allowing the app to try refreshing in background will only consume a small amount of data. This allows us to keep you updated on the latest announcements regarding delays and other important events at the con. Please note that background refreshing may not always work and can be unreliable.")
-            <<< SwitchRow("switchRowRefreshInBackground") { row in
+            <<< SwitchRow("RefreshInBackground") { row in
                 row.title = "Refresh in background"
 				row.value = UserSettings.RefreshInBackground.currentValue()
 				row.disabled = true
@@ -187,7 +187,7 @@ class SettingsTableViewController: FormViewController {
                             UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalNever)
                         }
                         if value {
-                            (self.form.rowBy(tag: "switchRowNotifyOnAnnouncement") as? SwitchRow)?.value = true
+                            (self.form.rowBy(tag: "NotifyOnAnnouncement") as? SwitchRow)?.value = true
                         }
                     }
                     row.updateCell()
@@ -195,12 +195,12 @@ class SettingsTableViewController: FormViewController {
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
                     cell.backgroundColor = UIColor.lightText
             }
-            <<< SwitchRow("switchRowRefreshInBackgroundOnMobile") { row in
+            <<< SwitchRow("RefreshInBackgroundOnMobile") { row in
                 row.title = "Background Refresh on Mobile"
 				row.value = UserSettings.RefreshInBackgroundOnMobile.currentValue()
 				row.disabled = true
-                row.hidden = Condition.function(["pushRowRefreshTimer", "switchRowRefreshInBackground"], { form in
-                    return !((form.rowBy(tag: "switchRowNotifyOnAnnouncement") as? SwitchRow)?.value ?? true) || !((form.rowBy(tag: "switchRowRefreshInBackground") as? SwitchRow)?.value ?? true)
+                row.hidden = Condition.function(["RefreshTimer", "RefreshInBackground"], { form in
+                    return !((form.rowBy(tag: "NotifyOnAnnouncement") as? SwitchRow)?.value ?? true) || !((form.rowBy(tag: "RefreshInBackground") as? SwitchRow)?.value ?? true)
                 })
                 }.onChange { row in
                     UserSettings.RefreshInBackgroundOnMobile.setValue(row.value!)
@@ -213,7 +213,7 @@ class SettingsTableViewController: FormViewController {
 
     private func makeDebuggingSettingsSection() {
         form +++ Section(header:"Debugging", footer: "These settings are intended for debugging purposes only and may cause instability or unexpected behaviour if changed!")
-            <<< TimeIntervalRow("timeIntervalRowTimeOffset") { row in
+            <<< TimeIntervalRow("TimeOffset") { row in
                 row.title = "Time Offset"
                 row.value = UserSettings.DebugTimeOffset.currentValue()
                 }.onChange { row in
