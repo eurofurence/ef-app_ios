@@ -9,20 +9,23 @@ import Foundation
 
 class KnowledgeEntry: EntityBase {
 	/// Force reload if wrapped type LinkFragment changes
-	override class var DataModelVersion: Int { return 1 + super.DataModelVersion + LinkFragment.DataModelVersion }
+	override class var DataModelVersion: Int { return 2 + super.DataModelVersion + LinkFragment.DataModelVersion }
 
 	var KnowledgeGroupId: String = ""
 	var Order: Int = 0
 	var Text: String = ""
 	var Title: String = ""
 
+	var ImageIds: [String] = []
 	var Links: [LinkFragment] = []
 
+	var Images: [Image]?
 	weak var KnowledgeGroup: KnowledgeGroup?
 
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {
-			return [(keyInObject: "KnowledgeGroup", keyInResource: nil)]
+			return [(keyInObject: "KnowledgeGroup", keyInResource: nil),
+			        (keyInObject: "Images", keyInResource: nil)]
 	}
 }
 
