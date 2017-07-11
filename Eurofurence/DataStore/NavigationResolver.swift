@@ -43,6 +43,9 @@ class NavigationResolver: NavigationResolverProtocol {
 		print("\(#function): Resolving Events")
 		dataContext.Events.modify({ value in
 			for e in value {
+				e.BannerImage = dataContext.Images.value.first(where: { $0.Id == e.BannerImageId })
+				e.PosterImage = dataContext.Images.value.first(where: { $0.Id == e.PosterImageId })
+
 				e.ConferenceDay = dataContext.EventConferenceDays.value.first(where: { $0.Id == e.ConferenceDayId })
 				e.ConferenceRoom = dataContext.EventConferenceRooms.value.first(where: { $0.Id == e.ConferenceRoomId })
 				e.ConferenceTrack = dataContext.EventConferenceTracks.value.first(where: { $0.Id == e.ConferenceTrackId })

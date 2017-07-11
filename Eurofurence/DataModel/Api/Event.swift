@@ -27,7 +27,7 @@ class Event: EntityBase {
 	var StartDateTimeUtc: Date = Date()
 	var StartTime: String = ""
     var Title: String = ""
-	
+
 	var IsFavorite: Bool = false
 
 	weak var BannerImage: Image?
@@ -38,9 +38,11 @@ class Event: EntityBase {
 
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {
-			return [(keyInObject: "ConferenceDay", keyInResource: nil),
+			return [(keyInObject: "BannerImage", keyInResource: nil),
+			        (keyInObject: "ConferenceDay", keyInResource: nil),
 			        (keyInObject: "ConferenceTrack", keyInResource: nil),
-					(keyInObject: "ConferenceRoom", keyInResource: nil)]
+			        (keyInObject: "ConferenceRoom", keyInResource: nil),
+			        (keyInObject: "PosterImage", keyInResource: nil)]
 	}
 
 	override func propertyConverters() -> [(key: String, decodeConverter: ((Any?) -> Void), encodeConverter: (() -> Any?))] {
