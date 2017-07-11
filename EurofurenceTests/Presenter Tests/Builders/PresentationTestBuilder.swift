@@ -37,7 +37,7 @@ class PresentationTestBuilder {
         quoteGenerator = CapturingQuoteGenerator()
         presentationStrings = StubPresentationStrings()
         presentationAssets = StubPresentationAssets()
-        networkReachability = StubNetworkReachability()
+        networkReachability = ReachableWiFiNetwork()
     }
 
     func withRouters(_ routers: Routers) -> PresentationTestBuilder {
