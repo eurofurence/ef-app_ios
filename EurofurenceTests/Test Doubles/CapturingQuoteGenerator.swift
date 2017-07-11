@@ -11,9 +11,9 @@ import Foundation
 
 class CapturingQuoteGenerator: QuoteGenerator {
 
-    var quoteToMake = ""
+    var quoteToMake = Quote(message: "")
     private(set) var toldToMakeQuote = false
-    func makeQuote() -> String {
+    func makeQuote() -> Quote {
         toldToMakeQuote = true
         return quoteToMake
     }

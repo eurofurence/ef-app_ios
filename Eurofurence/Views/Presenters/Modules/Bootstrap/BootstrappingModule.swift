@@ -14,7 +14,7 @@ struct BootstrappingModule {
         if context.firstTimeLaunchProviding.userHasCompletedTutorial {
             let quote = context.quoteGenerator.makeQuote()
             let splashScreen = routers.splashScreenRouter.showSplashScreen()
-            splashScreen.showQuote(quote)
+            splashScreen.showQuote(quote.message)
         } else {
             TutorialModule.initialize(context: context, routers: routers)
         }

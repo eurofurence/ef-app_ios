@@ -25,7 +25,7 @@ class WhenTheSplashScreenAppears: XCTestCase {
     }
 
     func testTheQuoteFromTheGeneratorIsSetOntoTheSplashScene() {
-        let someQuote = "Life is short, eat dessert first"
+        let someQuote = Quote(message: "Life is short, eat dessert first")
         let capturingQuotesDataSource = CapturingQuoteGenerator()
         capturingQuotesDataSource.quoteToMake = someQuote
         let splashRouter = CapturingSplashScreenRouter()
@@ -36,7 +36,7 @@ class WhenTheSplashScreenAppears: XCTestCase {
             .build()
             .bootstrap()
 
-        XCTAssertEqual(someQuote, splashRouter.splashScene.shownQuote)
+        XCTAssertEqual(someQuote.message, splashRouter.splashScene.shownQuote)
     }
     
 }

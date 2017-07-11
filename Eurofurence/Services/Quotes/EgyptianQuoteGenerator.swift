@@ -11,7 +11,7 @@ import Foundation
 
 struct EgyptianQuoteGenerator: QuoteGenerator {
 
-    func makeQuote() -> String {
+    func makeQuote() -> Quote {
         let quotes = [
             "If you search for the laws of harmony, you will find knowledge.",
             "The best and shortest road towards knowledge of truth is Nature.",
@@ -37,7 +37,8 @@ struct EgyptianQuoteGenerator: QuoteGenerator {
         ]
 
         let index = arc4random_uniform(UInt32(quotes.count))
-        return quotes[Int(index)]
+        let chosenQuote = quotes[Int(index)]
+        return Quote(message: chosenQuote)
     }
 
 }

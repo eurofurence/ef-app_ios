@@ -10,6 +10,6 @@ import Foundation
 
 protocol QuoteGenerator {
 
-    func makeQuote() -> String
+    func makeQuote() -> Quote
 
 }
