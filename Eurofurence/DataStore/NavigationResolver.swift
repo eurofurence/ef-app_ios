@@ -65,6 +65,13 @@ class NavigationResolver: NavigationResolverProtocol {
 				e.KnowledgeGroup = dataContext.KnowledgeGroups.value.first(where: { $0.Id == e.KnowledgeGroupId })
 				e.KnowledgeGroup?.KnowledgeEntries.append(e)
 
+				if !e.ImageIds.isEmpty {
+					let images = dataContext.Images.value.filter({e.ImageIds.contains($0.Id)})
+					if !images.isEmpty {
+						e.Images = images
+					}
+				}
+
 				linkFragments.append(contentsOf: e.Links)
 			}
 		})
