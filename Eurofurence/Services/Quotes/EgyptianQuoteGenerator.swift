@@ -27,6 +27,7 @@ struct EgyptianQuoteGenerator: QuoteGenerator {
         quote("One foot isn't enough to walk with."),
         quote("Our senses serve to affirm, not to know."),
         quote("All seed answer light, but the color is different."),
+        Quote(author: "Teal'c", message: "Indeed."),
         quote("The plant reveals what is in the seed."),
         quote("Seek peacefully, you will find."),
         quote("Always watch and follow nature."),

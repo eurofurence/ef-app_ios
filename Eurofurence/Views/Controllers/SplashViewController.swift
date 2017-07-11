@@ -17,6 +17,7 @@ class SplashViewController: UIViewController, SplashScene,
 
     @IBOutlet weak var loadingProgressView: UIProgressView!
     @IBOutlet weak var quoteLabel: UILabel!
+    @IBOutlet weak var quoteAuthorLabel: UILabel!
     @IBOutlet weak var hieroglyphLabel: UILabel!
 
     // MARK: Properties
@@ -61,7 +62,7 @@ class SplashViewController: UIViewController, SplashScene,
     }
 
     func showQuoteAuthor(_ author: String) {
-
+        quoteAuthorLabel.text = "- \(author)"
     }
 
     // MARK: DataStoreLoadDelegate
