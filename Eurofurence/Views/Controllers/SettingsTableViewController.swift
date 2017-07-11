@@ -28,7 +28,8 @@ class SettingsTableViewController: FormViewController {
         form +++ Section("Network")
             <<< SwitchRow("switchRowUpdateOnStart") { row in
                 row.title = "Auto-Update on Launch"
-                row.value = UserSettings.UpdateOnStart.currentValue()
+				row.value = UserSettings.UpdateOnStart.currentValue()
+				row.disabled = true
                 }.onChange { row in
                     UserSettings.UpdateOnStart.setValue(row.value!)
                     row.updateCell()
@@ -37,7 +38,8 @@ class SettingsTableViewController: FormViewController {
             }
             <<< SwitchRow("SwitchRow") { row in
                 row.title = "Auto-Update on Mobile"
-                row.value = UserSettings.AutomaticRefreshOnMobile.currentValue()
+				row.value = UserSettings.AutomaticRefreshOnMobile.currentValue()
+				row.disabled = true
                 }.onChange { row in
                     UserSettings.AutomaticRefreshOnMobile.setValue(row.value!)
                     row.updateCell()
@@ -46,8 +48,7 @@ class SettingsTableViewController: FormViewController {
             }
             <<< PushRow<Int>("pushRowRefreshTimer") { row in
                 row.title = "Refresh Interval"
-
-                row.displayValueFor = { value in
+				row.displayValueFor = { value in
                     var minutes = -1
 
                     if let value = value {
@@ -61,10 +62,10 @@ class SettingsTableViewController: FormViewController {
                         return "Every " + String(minutes) + " Minutes"
                     }
                 }
-
                 row.options = [-1, 300, 600, 900, 1800, 3600]
 
-                row.value = UserSettings.RefreshTimer.currentValue()
+				row.value = UserSettings.RefreshTimer.currentValue()
+				row.disabled = true
                 }.onChange { row in
 
                     // TODO: BUG! Label becomes empty when currently selected entry is selected again
@@ -91,6 +92,7 @@ class SettingsTableViewController: FormViewController {
             <<< SwitchRow("switchRowNotifyOnAnnouncement") { row in
                 row.title = "Notify on New Announcements"
                 row.value = UserSettings.NotifyOnAnnouncement.currentValue()
+				row.disabled = true
                 row.hidden = Condition.function(["pushRowRefreshTimer"], { form in
                     let value = (form.rowBy(tag: "pushRowRefreshTimer") as? PushRow<Int>)?.value
                     return (value != nil) && value! <= 0
@@ -174,7 +176,8 @@ class SettingsTableViewController: FormViewController {
         form +++ Section(header:"Experimental Features", footer: "Allowing the app to try refreshing in background will only consume a small amount of data. This allows us to keep you updated on the latest announcements regarding delays and other important events at the con. Please note that background refreshing may not always work and can be unreliable.")
             <<< SwitchRow("switchRowRefreshInBackground") { row in
                 row.title = "Refresh in background"
-                row.value = UserSettings.RefreshInBackground.currentValue()
+				row.value = UserSettings.RefreshInBackground.currentValue()
+				row.disabled = true
                 }.onChange { row in
                     if let value = row.value {
                         UserSettings.RefreshInBackground.setValue(value)
@@ -194,7 +197,8 @@ class SettingsTableViewController: FormViewController {
             }
             <<< SwitchRow("switchRowRefreshInBackgroundOnMobile") { row in
                 row.title = "Background Refresh on Mobile"
-                row.value = UserSettings.RefreshInBackgroundOnMobile.currentValue()
+				row.value = UserSettings.RefreshInBackgroundOnMobile.currentValue()
+				row.disabled = true
                 row.hidden = Condition.function(["pushRowRefreshTimer", "switchRowRefreshInBackground"], { form in
                     return !((form.rowBy(tag: "switchRowNotifyOnAnnouncement") as? SwitchRow)?.value ?? true) || !((form.rowBy(tag: "switchRowRefreshInBackground") as? SwitchRow)?.value ?? true)
                 })
