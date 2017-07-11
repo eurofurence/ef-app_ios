@@ -8,9 +8,10 @@
 import Foundation
 
 class Event: EntityBase {
-	override class var DataModelVersion: Int { return 1 + super.DataModelVersion }
+	override class var DataModelVersion: Int { return 2 + super.DataModelVersion }
 
 	var Abstract: String = ""
+	var BannerImageId: String = ""
     var ConferenceDayId: String = ""
     var ConferenceTrackId: String = ""
     var ConferenceRoomId: String = ""
@@ -20,17 +21,20 @@ class Event: EntityBase {
 	var EndTime: String = ""
 	var IsDeviatingFromConBook: Bool = false
     var PanelHosts: String = ""
+	var PosterImageId: String = ""
     var Slug: String = ""
 	var SubTitle: String = ""
 	var StartDateTimeUtc: Date = Date()
 	var StartTime: String = ""
     var Title: String = ""
+	
+	var IsFavorite: Bool = false
 
-    var IsFavorite: Bool = false
-
+	weak var BannerImage: Image?
     weak var ConferenceDay: EventConferenceDay?
     weak var ConferenceTrack: EventConferenceTrack?
 	weak var ConferenceRoom: EventConferenceRoom?
+	weak var PosterImage: Image?
 
 	override public func propertyMapping() -> [(keyInObject: String?,
 		keyInResource: String?)] {
