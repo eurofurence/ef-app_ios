@@ -9,6 +9,14 @@
 import Foundation
 import UIKit
 
+struct DummyUserPushPermissionsState: UserPushPermissionsState {
+
+    func markPermittedRegisteringForPushNotifications() {
+
+    }
+
+}
+
 struct PresentationTier {
 
     static let pushRequesting = ApplicationPushPermissionsRequesting()
@@ -25,7 +33,8 @@ struct PresentationTier {
                                   presentationStrings: UnlocalizedPresentationStrings(),
                                   presentationAssets: ApplicationPresentationAssets(),
                                   networkReachability: SwiftNetworkReachability.shared,
-                                  pushPermissionsRequesting: pushRequesting)
+                                  pushPermissionsRequesting: pushRequesting,
+                                  userPushPermissionsState: DummyUserPushPermissionsState())
     }
 
 }

@@ -21,6 +21,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     private var networkReachability: NetworkReachability
     private var pushPermissionsRequesting: PushPermissionsRequesting
     private var userAcknowledgedPushPermissionsRequest: UserAcknowledgedPushPermissionsRequestStateProviding
+    private var userPushPermissionsState: UserPushPermissionsState
 
     // MARK: Initialization
 
@@ -32,7 +33,8 @@ class TutorialPresenter: TutorialPageSceneDelegate {
          tutorialStateProviding: UserCompletedTutorialStateProviding,
          userAcknowledgedPushPermissionsRequest: UserAcknowledgedPushPermissionsRequestStateProviding,
          networkReachability: NetworkReachability,
-         pushPermissionsRequesting: PushPermissionsRequesting) {
+         pushPermissionsRequesting: PushPermissionsRequesting,
+         userPushPermissionsState: UserPushPermissionsState) {
         self.tutorialScene = tutorialScene
         self.presentationStrings = presentationStrings
         self.presentationAssets = presentationAssets
@@ -42,6 +44,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
         self.networkReachability = networkReachability
         self.pushPermissionsRequesting = pushPermissionsRequesting
         self.userAcknowledgedPushPermissionsRequest = userAcknowledgedPushPermissionsRequest
+        self.userPushPermissionsState = userPushPermissionsState
 
         if userAcknowledgedPushPermissionsRequest.userHasAcknowledgedRequestForPushPermissions {
             showInitiateDownloadPage()
@@ -54,6 +57,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
         guard userAcknowledgedPushPermissionsRequest.userHasAcknowledgedRequestForPushPermissions else {
+            userPushPermissionsState.markPermittedRegisteringForPushNotifications()
             pushPermissionsRequesting.requestPushPermissions {
                 self.userAcknowledgedPushPermissionsRequest.markUserAsAcknowledgingPushPermissionsRequest()
                 self.showInitiateDownloadPage()

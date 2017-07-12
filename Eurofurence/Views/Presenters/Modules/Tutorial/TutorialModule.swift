@@ -19,7 +19,8 @@ struct TutorialModule {
                               tutorialStateProviding: context.firstTimeLaunchProviding,
                               userAcknowledgedPushPermissionsRequest: context.userAcknowledgedPushPermissionsRequest,
                               networkReachability: context.networkReachability,
-                              pushPermissionsRequesting: context.pushPermissionsRequesting)
+                              pushPermissionsRequesting: context.pushPermissionsRequesting,
+                              userPushPermissionsState: context.userPushPermissionsState)
     }
 
 }
