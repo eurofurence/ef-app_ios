@@ -207,6 +207,7 @@
 		7820A6F31F16B10D004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsUserAcknowledgedPushPermissionsRequestStateProviding.swift; path = Views/Controllers/Tutorial/UserDefaultsUserAcknowledgedPushPermissionsRequestStateProviding.swift; sourceTree = "<group>"; };
 		7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift; sourceTree = "<group>"; };
 		7820A6F71F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationPushPermissionsRequesting.swift; path = "Push Permissions/ApplicationPushPermissionsRequesting.swift"; sourceTree = "<group>"; };
+		7820A6F91F16B8A0004C0FB5 /* Eurofurence.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Eurofurence.entitlements; path = ../Eurofurence.entitlements; sourceTree = "<group>"; };
 		78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenTheAppLaunches.swift; path = "Presenter Tests/WhenTheAppLaunches.swift"; sourceTree = "<group>"; };
 		78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsTutorialStateProvider.swift; sourceTree = "<group>"; };
 		78455B3E1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsTutorialStateProvider.swift; path = Views/Controllers/Tutorial/UserDefaultsTutorialStateProvider.swift; sourceTree = "<group>"; };
@@ -757,6 +758,7 @@
 		9ACF999B1ECA259C006FC958 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7820A6F91F16B8A0004C0FB5 /* Eurofurence.entitlements */,
 				9AB64BCE1F02665D004E8D91 /* fontawesome-webfont.ttf */,
 				78C86D6F1F12AA68003A20E6 /* Hieroglify.ttf */,
 				9ACF999C1ECA25E1006FC958 /* Sync.mock.json */,
@@ -898,6 +900,14 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 557SGQG5H4;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					9ACF99471EBE172D006FC958 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -1380,6 +1390,7 @@
 			baseConfigurationReference = 513BAD2C582D99F2993B8162 /* Pods-Eurofurence.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = Eurofurence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1396,6 +1407,7 @@
 			baseConfigurationReference = 27C948D12455A352D46AF5B6 /* Pods-Eurofurence.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = Eurofurence/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
