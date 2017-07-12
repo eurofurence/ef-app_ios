@@ -98,6 +98,29 @@ class WhenTheTutorialAppears: XCTestCase {
         XCTAssertEqual(setup.assets.requestPushNotificationPermissionsAsset,
                        setup.page.capturedPageImage)
     }
+
+    func testShowingThePushPermissionsRequestPageShouldShowThePrimaryActionButton() {
+        let setup = showRequestPushPermissionsTutorialPage()
+        XCTAssertTrue(setup.page.didShowPrimaryActionButton)
+    }
+
+    func testShowingThePushPermissionsRequestPageShouldSetTheAllowPushPermissionsStringOntoThePrimaryActionButton() {
+        let setup = showRequestPushPermissionsTutorialPage()
+
+        XCTAssertEqual(setup.strings.presentationString(for: .tutorialAllowPushPermissions),
+                       setup.page.capturedPrimaryActionDescription)
+    }
+
+    func testShowingThePushPermissionsRequestPageShouldShowTheSecondaryActionButton() {
+        let setup = showRequestPushPermissionsTutorialPage()
+        XCTAssertTrue(setup.page.didShowSecondaryActionButton)
+    }
+
+    func testShowingThePushPermissionsRequestPageShouldSetTheDenyPushPermissionsStringOntoTheSecondaryActionButton() {
+        let setup = showRequestPushPermissionsTutorialPage()
+        XCTAssertEqual(setup.strings.presentationString(for: .tutorialDenyPushPermissions),
+                       setup.page.capturedSecondaryActionDescription)
+    }
     
     // MARK: Prepare for initial download page
 

@@ -17,6 +17,8 @@ class StubPresentationStrings: PresentationStrings {
         stub("Cancel", for: .cancel)
         stub("Tutorial push permissions request title", for: .tutorialPushPermissionsRequestTitle)
         stub("Tutorial push permissions request description", for: .tutorialPushPermissionsRequestDescription)
+        stub("Tutorial allow push permissions", for: .tutorialAllowPushPermissions)
+        stub("Tutorial deny push permissions", for: .tutorialDenyPushPermissions)
         stub("Tutorial initial load title", for: .tutorialInitialLoadTitle)
         stub("Tutorial initial load description", for: .tutorialInitialLoadDescription)
         stub("Tutorial initial load begin download", for: .tutorialInitialLoadBeginDownload)

@@ -83,6 +83,10 @@ class TutorialPresenter: TutorialPageSceneDelegate {
         tutorialPage.showPageTitle(string(for: .tutorialPushPermissionsRequestTitle))
         tutorialPage.showPageDescription(string(for: .tutorialPushPermissionsRequestDescription))
         tutorialPage.showPageImage(presentationAssets.requestPushNotificationPermissionsAsset)
+        tutorialPage.showPrimaryActionButton()
+        tutorialPage.showPrimaryActionDescription(string(for: .tutorialAllowPushPermissions))
+        tutorialPage.showSecondaryActionButton()
+        tutorialPage.showSecondaryActionDescription(string(for: .tutorialDenyPushPermissions))
     }
 
     private func completeTutorial() {

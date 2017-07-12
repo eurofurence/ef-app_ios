@@ -17,7 +17,7 @@ protocol PresentationAssets {
 
 struct ApplicationPresentationAssets: PresentationAssets {
 
-    var initialLoadInformationAsset: UIImage = #imageLiteral(resourceName: "tuto01_notificationIcon")
-    var requestPushNotificationPermissionsAsset: UIImage = UIImage()
+    var initialLoadInformationAsset: UIImage = #imageLiteral(resourceName: "tuto02_informationIcon")
+    var requestPushNotificationPermissionsAsset: UIImage = #imageLiteral(resourceName: "tuto01_notificationIcon")
 
 }

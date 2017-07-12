@@ -12,8 +12,13 @@ import XCTest
 class ApplicationPresentationAssetsTests: XCTestCase {
     
     func testTheInitialLoadInformationAssetShouldProvideTheInformationIconAsset() {
-        XCTAssertEqual(#imageLiteral(resourceName: "tuto01_notificationIcon"),
+        XCTAssertEqual(#imageLiteral(resourceName: "tuto02_informationIcon"),
                        ApplicationPresentationAssets().initialLoadInformationAsset)
+    }
+
+    func testTheRequestNotificationsAssetShouldProvideThePushNotificationIconAsset() {
+        XCTAssertEqual(#imageLiteral(resourceName: "tuto01_notificationIcon"),
+                       ApplicationPresentationAssets().requestPushNotificationPermissionsAsset)
     }
     
 }

@@ -24,6 +24,21 @@ class UnlocalizedPresentationStringsShould: XCTestCase {
         let expected = "Push Notifications"
         XCTAssertEqual(expected, string(for: .tutorialPushPermissionsRequestTitle))
     }
+
+    func testProvideAppropriateStringForTutorialPushPermissionsRequestDescription() {
+        let expected = "To keep you up-to-date with changes to the event schedule and other important announcements, the app requires your permission to display notifications on your device."
+        XCTAssertEqual(expected, string(for: .tutorialPushPermissionsRequestDescription))
+    }
+
+    func testProvideAppropriateStringForTutorialAllowNotificationsDescription() {
+        let expected = "Allow Notifications"
+        XCTAssertEqual(expected, string(for: .tutorialAllowPushPermissions))
+    }
+
+    func testProvideAppropriateStringForTutorialDenyNotificationsDescription() {
+        let expected = "No Thanks"
+        XCTAssertEqual(expected, string(for: .tutorialDenyPushPermissions))
+    }
     
     func testProvideAppropriateStringForTutorialInitialLoadTitle() {
         let expected = "Offline Usage"
