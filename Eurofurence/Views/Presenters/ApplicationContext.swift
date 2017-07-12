@@ -11,30 +11,30 @@ import Foundation
 struct ApplicationContext {
 
     var firstTimeLaunchProviding: UserCompletedTutorialStateProviding
-    var acknowledgedPushPermissions: AcknowledgedPushPermissionsRequest
+    var witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
     var quoteGenerator: QuoteGenerator
     var presentationStrings: PresentationStrings
     var presentationAssets: PresentationAssets
     var networkReachability: NetworkReachability
     var pushPermissionsRequesting: PushPermissionsRequesting
-    var witnessedSystemPushPermissions: UserWitnessedSystemPushPermissionsRequest
+    var witnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest
 
     init(firstTimeLaunchProviding: UserCompletedTutorialStateProviding,
-         acknowledgedPushPermissions: AcknowledgedPushPermissionsRequest,
+         witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest,
          quoteGenerator: QuoteGenerator,
          presentationStrings: PresentationStrings,
          presentationAssets: PresentationAssets,
          networkReachability: NetworkReachability,
          pushPermissionsRequesting: PushPermissionsRequesting,
-         witnessedSystemPushPermissions: UserWitnessedSystemPushPermissionsRequest) {
+         witnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest) {
         self.firstTimeLaunchProviding = firstTimeLaunchProviding
-        self.acknowledgedPushPermissions = acknowledgedPushPermissions
+        self.witnessedTutorialPushPermissionsRequest = witnessedTutorialPushPermissionsRequest
         self.quoteGenerator = quoteGenerator
         self.presentationStrings = presentationStrings
         self.presentationAssets = presentationAssets
         self.networkReachability = networkReachability
         self.pushPermissionsRequesting = pushPermissionsRequesting
-        self.witnessedSystemPushPermissions = witnessedSystemPushPermissions
+        self.witnessedSystemPushPermissionsRequest = witnessedSystemPushPermissionsRequest
     }
 
 }

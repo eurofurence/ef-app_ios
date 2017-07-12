@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6EEC6D9A1F157AC000205F2D /* UserAcknowledgedPushPermissionsRequestStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6D991F157AC000205F2D /* UserAcknowledgedPushPermissionsRequestStateProviding.swift */; };
+		6EEC6D9A1F157AC000205F2D /* WitnessedTutorialPushPermissionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6D991F157AC000205F2D /* WitnessedTutorialPushPermissionsRequest.swift */; };
 		6EF96CC81F0EDAE800EE6134 /* CalendarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CC71F0EDAE800EE6134 /* CalendarStore.swift */; };
 		6EF96CCA1F0EDAF800EE6134 /* CalendarPermissionsProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CC91F0EDAF800EE6134 /* CalendarPermissionsProviding.swift */; };
 		6EF96CCC1F0EDB0500EE6134 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CCB1F0EDB0500EE6134 /* CalendarEvent.swift */; };
@@ -33,14 +33,14 @@
 		7820A6ED1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6EC1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift */; };
 		7820A6EF1F14F15D004C0FB5 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6EE1F14F15D004C0FB5 /* Quote.swift */; };
 		7820A6F21F1696F1004C0FB5 /* PushPermissionsRequesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6F11F1696F1004C0FB5 /* PushPermissionsRequesting.swift */; };
-		7820A6F41F16B10D004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6F31F16B10D004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProviding.swift */; };
+		7820A6F41F16B10D004C0FB5 /* UserDefaultsWitnessedTutorialPushPermissionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6F31F16B10D004C0FB5 /* UserDefaultsWitnessedTutorialPushPermissionsRequest.swift */; };
 		7820A6F61F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */; };
 		7820A6F81F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6F71F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift */; };
-		7820A6FB1F16BBB2004C0FB5 /* UserWitnessedSystemPushPermissionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6FA1F16BBB2004C0FB5 /* UserWitnessedSystemPushPermissionsRequest.swift */; };
+		7820A6FB1F16BBB2004C0FB5 /* WitnessedSystemPushPermissionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6FA1F16BBB2004C0FB5 /* WitnessedSystemPushPermissionsRequest.swift */; };
 		7820A6FD1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6FC1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift */; };
 		7820A6FF1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6FE1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift */; };
 		7820A7011F16C0F0004C0FB5 /* CapturingUserOptedIntoPushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A7001F16C0F0004C0FB5 /* CapturingUserOptedIntoPushNotifications.swift */; };
-		7820A7031F16C1F3004C0FB5 /* UserDefaultsOptedIntoPushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A7021F16C1F3004C0FB5 /* UserDefaultsOptedIntoPushNotifications.swift */; };
+		7820A7031F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A7021F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift */; };
 		7820A7051F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A7041F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift */; };
 		78455B3A1F116A7E005BE2D7 /* WhenTheAppLaunches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */; };
 		78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */; };
@@ -185,7 +185,7 @@
 /* Begin PBXFileReference section */
 		27C948D12455A352D46AF5B6 /* Pods-Eurofurence.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence.release.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence.release.xcconfig"; sourceTree = "<group>"; };
 		513BAD2C582D99F2993B8162 /* Pods-Eurofurence.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence.debug.xcconfig"; sourceTree = "<group>"; };
-		6EEC6D991F157AC000205F2D /* UserAcknowledgedPushPermissionsRequestStateProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserAcknowledgedPushPermissionsRequestStateProviding.swift; path = Views/Controllers/Tutorial/UserAcknowledgedPushPermissionsRequestStateProviding.swift; sourceTree = "<group>"; };
+		6EEC6D991F157AC000205F2D /* WitnessedTutorialPushPermissionsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WitnessedTutorialPushPermissionsRequest.swift; path = Views/Controllers/Tutorial/WitnessedTutorialPushPermissionsRequest.swift; sourceTree = "<group>"; };
 		6EF96CC71F0EDAE800EE6134 /* CalendarStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarStore.swift; path = Calendar/CalendarStore.swift; sourceTree = "<group>"; };
 		6EF96CC91F0EDAF800EE6134 /* CalendarPermissionsProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPermissionsProviding.swift; path = Calendar/CalendarPermissionsProviding.swift; sourceTree = "<group>"; };
 		6EF96CCB1F0EDB0500EE6134 /* CalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarEvent.swift; path = Calendar/CalendarEvent.swift; sourceTree = "<group>"; };
@@ -211,15 +211,15 @@
 		7820A6EC1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingQuoteGenerator.swift; path = "Test Doubles/CapturingQuoteGenerator.swift"; sourceTree = "<group>"; };
 		7820A6EE1F14F15D004C0FB5 /* Quote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Quote.swift; path = Quotes/Quote.swift; sourceTree = "<group>"; };
 		7820A6F11F1696F1004C0FB5 /* PushPermissionsRequesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushPermissionsRequesting.swift; path = "Push Permissions/PushPermissionsRequesting.swift"; sourceTree = "<group>"; };
-		7820A6F31F16B10D004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsUserAcknowledgedPushPermissionsRequestStateProviding.swift; path = Views/Controllers/Tutorial/UserDefaultsUserAcknowledgedPushPermissionsRequestStateProviding.swift; sourceTree = "<group>"; };
+		7820A6F31F16B10D004C0FB5 /* UserDefaultsWitnessedTutorialPushPermissionsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsWitnessedTutorialPushPermissionsRequest.swift; path = Views/Controllers/Tutorial/UserDefaultsWitnessedTutorialPushPermissionsRequest.swift; sourceTree = "<group>"; };
 		7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift; sourceTree = "<group>"; };
 		7820A6F71F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationPushPermissionsRequesting.swift; path = "Push Permissions/ApplicationPushPermissionsRequesting.swift"; sourceTree = "<group>"; };
 		7820A6F91F16B8A0004C0FB5 /* Eurofurence.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Eurofurence.entitlements; path = ../Eurofurence.entitlements; sourceTree = "<group>"; };
-		7820A6FA1F16BBB2004C0FB5 /* UserWitnessedSystemPushPermissionsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserWitnessedSystemPushPermissionsRequest.swift; path = "Push Permissions/UserWitnessedSystemPushPermissionsRequest.swift"; sourceTree = "<group>"; };
+		7820A6FA1F16BBB2004C0FB5 /* WitnessedSystemPushPermissionsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WitnessedSystemPushPermissionsRequest.swift; path = "Push Permissions/WitnessedSystemPushPermissionsRequest.swift"; sourceTree = "<group>"; };
 		7820A6FC1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AcknowledgedPushPermissionsRequestTestDoubles.swift; path = "Test Doubles/AcknowledgedPushPermissionsRequestTestDoubles.swift"; sourceTree = "<group>"; };
 		7820A6FE1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingPushPermissionsRequesting.swift; path = "Test Doubles/CapturingPushPermissionsRequesting.swift"; sourceTree = "<group>"; };
 		7820A7001F16C0F0004C0FB5 /* CapturingUserOptedIntoPushNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingUserOptedIntoPushNotifications.swift; path = "Test Doubles/CapturingUserOptedIntoPushNotifications.swift"; sourceTree = "<group>"; };
-		7820A7021F16C1F3004C0FB5 /* UserDefaultsOptedIntoPushNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsOptedIntoPushNotifications.swift; path = "Push Permissions/UserDefaultsOptedIntoPushNotifications.swift"; sourceTree = "<group>"; };
+		7820A7021F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsWitnessedSystemPushPermissionsRequest.swift; path = "Push Permissions/UserDefaultsWitnessedSystemPushPermissionsRequest.swift"; sourceTree = "<group>"; };
 		7820A7041F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsOptedIntoPushNotificationsTests.swift; sourceTree = "<group>"; };
 		78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenTheAppLaunches.swift; path = "Presenter Tests/WhenTheAppLaunches.swift"; sourceTree = "<group>"; };
 		78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsTutorialStateProvider.swift; sourceTree = "<group>"; };
@@ -471,8 +471,8 @@
 			children = (
 				7820A6F11F1696F1004C0FB5 /* PushPermissionsRequesting.swift */,
 				7820A6F71F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift */,
-				7820A6FA1F16BBB2004C0FB5 /* UserWitnessedSystemPushPermissionsRequest.swift */,
-				7820A7021F16C1F3004C0FB5 /* UserDefaultsOptedIntoPushNotifications.swift */,
+				7820A6FA1F16BBB2004C0FB5 /* WitnessedSystemPushPermissionsRequest.swift */,
+				7820A7021F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift */,
 			);
 			name = "Push Permissions";
 			sourceTree = "<group>";
@@ -484,8 +484,8 @@
 				78455B531F117A35005BE2D7 /* TutorialViewController.swift */,
 				78455B401F117742005BE2D7 /* UserCompletedTutorialStateProviding.swift */,
 				78455B3E1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift */,
-				6EEC6D991F157AC000205F2D /* UserAcknowledgedPushPermissionsRequestStateProviding.swift */,
-				7820A6F31F16B10D004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProviding.swift */,
+				6EEC6D991F157AC000205F2D /* WitnessedTutorialPushPermissionsRequest.swift */,
+				7820A6F31F16B10D004C0FB5 /* UserDefaultsWitnessedTutorialPushPermissionsRequest.swift */,
 			);
 			name = Tutorial;
 			path = ../..;
@@ -1206,7 +1206,7 @@
 				9ACB006D1F16C23D001CE9D2 /* PrivateMessage.swift in Sources */,
 				9AB64BCD1F018365004E8D91 /* KnowledgeEntryCell.swift in Sources */,
 				D6F3DFB53E62A8C16F211819 /* TimeService.swift in Sources */,
-				7820A6FB1F16BBB2004C0FB5 /* UserWitnessedSystemPushPermissionsRequest.swift in Sources */,
+				7820A6FB1F16BBB2004C0FB5 /* WitnessedSystemPushPermissionsRequest.swift in Sources */,
 				78567B431F10303600EBA31D /* ApplicationActivityIndicatorRefreshDelegate.swift in Sources */,
 				D6F3D4C7FF8BB27C46EF4D3D /* ServiceResolver.swift in Sources */,
 				9AB64BCB1F018135004E8D91 /* KnowledgeGroupCell.swift in Sources */,
@@ -1221,7 +1221,7 @@
 				D6F3D620BA994A6570325C66 /* DealersTableViewCell.swift in Sources */,
 				D6F3DDCB5EF23B138BD25865 /* EventHeaderCellTableViewCell.swift in Sources */,
 				9A2A94891F12D152004D66FB /* LastSyncDateProviding.swift in Sources */,
-				7820A7031F16C1F3004C0FB5 /* UserDefaultsOptedIntoPushNotifications.swift in Sources */,
+				7820A7031F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift in Sources */,
 				D6F3DBB69290DF1E0448A3CC /* EventCell.swift in Sources */,
 				9A2A94871F12CBC0004D66FB /* SyncState.swift in Sources */,
 				D6F3D13A59E359E69EA66D7E /* MenuTableViewCell.swift in Sources */,
@@ -1235,7 +1235,7 @@
 				D6F3D3D11CAB2B06852D0EF9 /* DealerTableViewController.swift in Sources */,
 				9AB83B0C1F0EB47A001823B1 /* MapViewModel.swift in Sources */,
 				6EF96CCA1F0EDAF800EE6134 /* CalendarPermissionsProviding.swift in Sources */,
-				7820A6F41F16B10D004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProviding.swift in Sources */,
+				7820A6F41F16B10D004C0FB5 /* UserDefaultsWitnessedTutorialPushPermissionsRequest.swift in Sources */,
 				78C86D4E1F119B68003A20E6 /* StoryboardSplashScreenRouter.swift in Sources */,
 				9A7FFD551EFC5A9E007ABA36 /* MapViewController.swift in Sources */,
 				D6F3D339BFBA2C299453B6BA /* SettingsTableViewController.swift in Sources */,
@@ -1245,7 +1245,7 @@
 				D6F3D204D352FE26C3F90906 /* KnowledgeTableViewController.swift in Sources */,
 				7820A6F81F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift in Sources */,
 				78567B471F10D1C400EBA31D /* DataStoreLoadController.swift in Sources */,
-				6EEC6D9A1F157AC000205F2D /* UserAcknowledgedPushPermissionsRequestStateProviding.swift in Sources */,
+				6EEC6D9A1F157AC000205F2D /* WitnessedTutorialPushPermissionsRequest.swift in Sources */,
 				D6F3DF2779D7CE09AA5507F9 /* NewsTableViewController.swift in Sources */,
 				78C86D671F123B55003A20E6 /* TutorialPageScene.swift in Sources */,
 				D6F3D0434C71907BD410190E /* ImageServiceProtocol.swift in Sources */,

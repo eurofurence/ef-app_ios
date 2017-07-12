@@ -20,27 +20,27 @@ class WhenTheTutorialAppears: XCTestCase {
         var alertRouter: CapturingAlertRouter
         var tutorialStateProviding: StubFirstTimeLaunchStateProvider
         var pushRequesting: CapturingPushPermissionsRequesting
-        var witnessedSystemPushPermissions: CapturingUserWitnessedSystemPushPermissionsRequest
+        var witnessedSystemPushPermissionsRequest: CapturingWitnessedSystemPushPermissionsRequest
     }
 
     private func showTutorial(_ networkReachability: NetworkReachability = ReachableWiFiNetwork(),
-                              _ pushPermissionsRequestStateProviding: AcknowledgedPushPermissionsRequest = UserNotAcknowledgedPushPermissions()) -> TutorialTestContext {
+                              _ pushPermissionsRequestStateProviding: WitnessedTutorialPushPermissionsRequest = UserNotAcknowledgedPushPermissions()) -> TutorialTestContext {
         let tutorialRouter = CapturingTutorialRouter()
         let alertRouter = CapturingAlertRouter()
         let splashRouter = CapturingSplashScreenRouter()
         let stateProviding = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
         let pushRequesting = CapturingPushPermissionsRequesting()
-        let witnessedSystemPushPermissions = CapturingUserWitnessedSystemPushPermissionsRequest()
+        let witnessedSystemPushPermissionsRequest = CapturingWitnessedSystemPushPermissionsRequest()
         let routers = StubRouters(tutorialRouter: tutorialRouter,
                                   splashScreenRouter: splashRouter,
                                   alertRouter: alertRouter)
         let context = PresentationTestBuilder()
             .withRouters(routers)
             .withUserCompletedTutorialStateProviding(stateProviding)
-            .withUserAcknowledgedPushPermissionsRequest(pushPermissionsRequestStateProviding)
+            .withUserWitnessedTutorialPushPermissionsRequest(pushPermissionsRequestStateProviding)
             .withNetworkReachability(networkReachability)
             .withPushPermissionsRequesting(pushRequesting)
-            .withUserWitnessedSystemPushPermissionsRequest(witnessedSystemPushPermissions)
+            .withWitnessedSystemPushPermissionsRequest(witnessedSystemPushPermissionsRequest)
             .build()
         context.bootstrap()
 
@@ -52,7 +52,7 @@ class WhenTheTutorialAppears: XCTestCase {
                                    alertRouter: alertRouter,
                                    tutorialStateProviding: stateProviding,
                                    pushRequesting: pushRequesting,
-                                   witnessedSystemPushPermissions: witnessedSystemPushPermissions)
+                                   witnessedSystemPushPermissionsRequest: witnessedSystemPushPermissionsRequest)
     }
     
     private func showRequestPushPermissionsTutorialPage() -> TutorialTestContext {
@@ -191,19 +191,19 @@ class WhenTheTutorialAppears: XCTestCase {
         let setup = showTutorial(UnreachableWiFiNetwork(), UserNotAcknowledgedPushPermissions())
         setup.tutorial.tutorialPage.simulateTappingPrimaryActionButton()
 
-        XCTAssertTrue(setup.witnessedSystemPushPermissions.didPermitRegisteringForPushNotifications)
+        XCTAssertTrue(setup.witnessedSystemPushPermissionsRequest.didPermitRegisteringForPushNotifications)
     }
 
     func testAcceptingPushPermissionsShouldNotMarkUserAsAcceptingPushRegistrationRequestUntilThePrimaryButtonIsPressed() {
         let setup = showTutorial(UnreachableWiFiNetwork(), UserNotAcknowledgedPushPermissions())
-        XCTAssertFalse(setup.witnessedSystemPushPermissions.didPermitRegisteringForPushNotifications)
+        XCTAssertFalse(setup.witnessedSystemPushPermissionsRequest.didPermitRegisteringForPushNotifications)
     }
 
     func testDenyingPushPermissionsShouldNotMarkUserAsAcceptingPushRegistrationRequest() {
         let setup = showTutorial(UnreachableWiFiNetwork(), UserNotAcknowledgedPushPermissions())
         setup.tutorial.tutorialPage.simulateTappingSecondaryActionButton()
 
-        XCTAssertFalse(setup.witnessedSystemPushPermissions.didPermitRegisteringForPushNotifications)
+        XCTAssertFalse(setup.witnessedSystemPushPermissionsRequest.didPermitRegisteringForPushNotifications)
     }
 
     func testDenyingPushPermissionsThenBeginningDownloadShouldNotMarkUserAsRegisteringForNotifications() {
@@ -211,7 +211,7 @@ class WhenTheTutorialAppears: XCTestCase {
         setup.tutorial.tutorialPage.simulateTappingSecondaryActionButton()
         setup.tutorial.tutorialPage.simulateTappingPrimaryActionButton()
 
-        XCTAssertFalse(setup.witnessedSystemPushPermissions.didPermitRegisteringForPushNotifications)
+        XCTAssertFalse(setup.witnessedSystemPushPermissionsRequest.didPermitRegisteringForPushNotifications)
     }
 
     // MARK: Prepare for initial download page

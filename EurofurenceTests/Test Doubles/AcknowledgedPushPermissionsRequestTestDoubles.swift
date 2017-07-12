@@ -1,5 +1,5 @@
 //
-//  AcknowledgedPushPermissionsRequestTestDoubles.swift
+//  WitnessedTutorialPushPermissionsRequestTestDoubles.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 12/07/2017.
@@ -8,44 +8,44 @@
 
 @testable import Eurofurence
 
-class WellBehavedAcknowledgedPushPermissions: AcknowledgedPushPermissionsRequest {
+class WellBehavedAcknowledgedPushPermissions: WitnessedTutorialPushPermissionsRequest {
 
-    var pushPermissionsAcknowledged: Bool = false
+    var witnessedTutorialPushPermissionsRequest: Bool = false
 
-    func markPushPermissionsAsAcknowledged() {
-        pushPermissionsAcknowledged = true
+    func markWitnessedTutorialPushPermissionsRequest() {
+        witnessedTutorialPushPermissionsRequest = true
     }
 
 }
 
-struct UserNotAcknowledgedPushPermissions: AcknowledgedPushPermissionsRequest {
+struct UserNotAcknowledgedPushPermissions: WitnessedTutorialPushPermissionsRequest {
 
-    var pushPermissionsAcknowledged: Bool {
+    var witnessedTutorialPushPermissionsRequest: Bool {
         return false
     }
 
-    func markPushPermissionsAsAcknowledged() { }
+    func markWitnessedTutorialPushPermissionsRequest() { }
 
 }
 
-struct UserAcknowledgedPushPermissions: AcknowledgedPushPermissionsRequest {
+struct UserAcknowledgedPushPermissions: WitnessedTutorialPushPermissionsRequest {
 
-    var pushPermissionsAcknowledged: Bool {
+    var witnessedTutorialPushPermissionsRequest: Bool {
         return true
     }
 
-    func markPushPermissionsAsAcknowledged() { }
+    func markWitnessedTutorialPushPermissionsRequest() { }
 
 }
 
-class CapturingUserAcknowledgedPushPermissions: AcknowledgedPushPermissionsRequest {
+class CapturingUserAcknowledgedPushPermissions: WitnessedTutorialPushPermissionsRequest {
 
-    var pushPermissionsAcknowledged: Bool {
+    var witnessedTutorialPushPermissionsRequest: Bool {
         return false
     }
 
     private(set) var didMarkUserAsAcknowledgingPushPermissionsRequest = false
-    func markPushPermissionsAsAcknowledged() {
+    func markWitnessedTutorialPushPermissionsRequest() {
         didMarkUserAsAcknowledgingPushPermissionsRequest = true
     }
     

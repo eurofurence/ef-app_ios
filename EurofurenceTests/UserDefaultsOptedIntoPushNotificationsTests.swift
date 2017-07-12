@@ -12,13 +12,13 @@ import XCTest
 class UserDefaultsWitnessedSystemPushPermissionsRequestTests: XCTestCase {
     
     var defaults: UserDefaults!
-    var acknowledgedPushPermissionsProvider: UserDefaultsWitnessedSystemPushPermissionsRequest!
+    var witnessedTutorialPushPermissionsRequestProvider: UserDefaultsWitnessedSystemPushPermissionsRequest!
 
     override func setUp() {
         super.setUp()
 
         defaults = UserDefaults()
-        acknowledgedPushPermissionsProvider = UserDefaultsWitnessedSystemPushPermissionsRequest(userDefaults: defaults)
+        witnessedTutorialPushPermissionsRequestProvider = UserDefaultsWitnessedSystemPushPermissionsRequest(userDefaults: defaults)
 
         removeValueForOptedIntoPushNotificationsRequestKeyFromDefaults()
     }
@@ -28,22 +28,22 @@ class UserDefaultsWitnessedSystemPushPermissionsRequestTests: XCTestCase {
     }
 
     func testUserDefaultsWithoutValueForFirstTimeStateDefaultShouldIndicateAppNotOpenedBefore() {
-        XCTAssertFalse(acknowledgedPushPermissionsProvider.witnessedSystemPushPermissions)
+        XCTAssertFalse(witnessedTutorialPushPermissionsRequestProvider.witnessedSystemPushPermissionsRequest)
     }
 
     func testUserDefaultsWithTrueValueForFirstTimeStateKeyShouldIndicateAppOpenedBefore() {
         defaults.set(true, forKey: UserDefaultsWitnessedSystemPushPermissionsRequest.WitnessedSystemPushRequest)
-        XCTAssertTrue(acknowledgedPushPermissionsProvider.witnessedSystemPushPermissions)
+        XCTAssertTrue(witnessedTutorialPushPermissionsRequestProvider.witnessedSystemPushPermissionsRequest)
     }
 
     func testUserDefaultsWithFalseValueForFirstTimeStateKeyShouldIndicateAppNotOpenedBefore() {
         defaults.set(false, forKey: UserDefaultsWitnessedSystemPushPermissionsRequest.WitnessedSystemPushRequest)
-        XCTAssertFalse(acknowledgedPushPermissionsProvider.witnessedSystemPushPermissions)
+        XCTAssertFalse(witnessedTutorialPushPermissionsRequestProvider.witnessedSystemPushPermissionsRequest)
     }
 
     func testTellingProviderToMakeTutorialAsCompletedShouldSetAppropriateDefault() {
         defaults.set(false, forKey: UserDefaultsWitnessedSystemPushPermissionsRequest.WitnessedSystemPushRequest)
-        acknowledgedPushPermissionsProvider.markUserWitnessedSystemPushPermissionsRequest()
+        witnessedTutorialPushPermissionsRequestProvider.markWitnessedSystemPushPermissionsRequest()
 
         XCTAssertTrue(defaults.bool(forKey: UserDefaultsWitnessedSystemPushPermissionsRequest.WitnessedSystemPushRequest))
     }

@@ -26,24 +26,24 @@ class PresentationTestBuilder {
 
     private var routers: Routers
     private var firstTimeLaunchProviding: UserCompletedTutorialStateProviding
-    private var acknowledgedPushPermissions: AcknowledgedPushPermissionsRequest
+    private var witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
     private var quoteGenerator: QuoteGenerator
     private var presentationStrings: PresentationStrings
     private var presentationAssets: PresentationAssets
     private var networkReachability: NetworkReachability
     private var pushPermissionsRequesting: PushPermissionsRequesting
-    private var witnessedSystemPushPermissions: UserWitnessedSystemPushPermissionsRequest
+    private var witnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest
 
     init() {
         routers = StubRouters()
         firstTimeLaunchProviding = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
-        acknowledgedPushPermissions = UserNotAcknowledgedPushPermissions()
+        witnessedTutorialPushPermissionsRequest = UserNotAcknowledgedPushPermissions()
         quoteGenerator = CapturingQuoteGenerator()
         presentationStrings = StubPresentationStrings()
         presentationAssets = StubPresentationAssets()
         networkReachability = ReachableWiFiNetwork()
         pushPermissionsRequesting = CapturingPushPermissionsRequesting()
-        witnessedSystemPushPermissions = CapturingUserWitnessedSystemPushPermissionsRequest()
+        witnessedSystemPushPermissionsRequest = CapturingWitnessedSystemPushPermissionsRequest()
     }
 
     func withRouters(_ routers: Routers) -> PresentationTestBuilder {
@@ -61,8 +61,8 @@ class PresentationTestBuilder {
         return self
     }
     
-    func withUserAcknowledgedPushPermissionsRequest(_ acknowledgedPushPermissions: AcknowledgedPushPermissionsRequest) -> PresentationTestBuilder {
-        self.acknowledgedPushPermissions = acknowledgedPushPermissions
+    func withUserWitnessedTutorialPushPermissionsRequest(_ witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest) -> PresentationTestBuilder {
+        self.witnessedTutorialPushPermissionsRequest = witnessedTutorialPushPermissionsRequest
         return self
     }
 
@@ -81,20 +81,20 @@ class PresentationTestBuilder {
         return self
     }
 
-    func withUserWitnessedSystemPushPermissionsRequest(_ witnessedSystemPushPermissions: UserWitnessedSystemPushPermissionsRequest) -> PresentationTestBuilder {
-        self.witnessedSystemPushPermissions = witnessedSystemPushPermissions
+    func withWitnessedSystemPushPermissionsRequest(_ witnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest) -> PresentationTestBuilder {
+        self.witnessedSystemPushPermissionsRequest = witnessedSystemPushPermissionsRequest
         return self
     }
 
     func build() -> PresentationTestContext {
         let appContext =  ApplicationContext(firstTimeLaunchProviding: firstTimeLaunchProviding,
-                                             acknowledgedPushPermissions: acknowledgedPushPermissions,
+                                             witnessedTutorialPushPermissionsRequest: witnessedTutorialPushPermissionsRequest,
                                              quoteGenerator: quoteGenerator,
                                              presentationStrings: presentationStrings,
                                              presentationAssets: presentationAssets,
                                              networkReachability: networkReachability,
                                              pushPermissionsRequesting: pushPermissionsRequesting,
-                                             witnessedSystemPushPermissions: witnessedSystemPushPermissions)
+                                             witnessedSystemPushPermissionsRequest: witnessedSystemPushPermissionsRequest)
 
         return PresentationTestContext(applicationContext: appContext,
                                        routers: routers,

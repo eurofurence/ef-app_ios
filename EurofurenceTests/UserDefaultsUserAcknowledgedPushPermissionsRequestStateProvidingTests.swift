@@ -1,5 +1,5 @@
 //
-//  UserDefaultsAcknowledgedPushPermissionsRequestTests.swift
+//  UserDefaultsWitnessedTutorialPushPermissionsRequestTests.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 12/07/2017.
@@ -9,43 +9,43 @@
 @testable import Eurofurence
 import XCTest
 
-class UserDefaultsAcknowledgedPushPermissionsRequestTests: XCTestCase {
+class UserDefaultsWitnessedTutorialPushPermissionsRequestTests: XCTestCase {
     
     var defaults: UserDefaults!
-    var acknowledgedPushPermissionsProvider: UserDefaultsAcknowledgedPushPermissionsRequest!
+    var witnessedTutorialPushPermissionsRequestProvider: UserDefaultsWitnessedTutorialPushPermissionsRequest!
 
     override func setUp() {
         super.setUp()
 
         defaults = UserDefaults()
-        acknowledgedPushPermissionsProvider = UserDefaultsAcknowledgedPushPermissionsRequest(userDefaults: defaults)
+        witnessedTutorialPushPermissionsRequestProvider = UserDefaultsWitnessedTutorialPushPermissionsRequest(userDefaults: defaults)
 
-        removeValueForAcknowledgedPushPermissionsRequestKeyFromDefaults()
+        removeValueForWitnessedTutorialPushPermissionsRequestKeyFromDefaults()
     }
 
-    private func removeValueForAcknowledgedPushPermissionsRequestKeyFromDefaults() {
-        defaults.removeObject(forKey: UserDefaultsAcknowledgedPushPermissionsRequest.AcknowledgedPushRequestKey)
+    private func removeValueForWitnessedTutorialPushPermissionsRequestKeyFromDefaults() {
+        defaults.removeObject(forKey: UserDefaultsWitnessedTutorialPushPermissionsRequest.WitnessedTutorialPushPermissionsRequestKey)
     }
 
     func testUserDefaultsWithoutValueForFirstTimeStateDefaultShouldIndicateAppNotOpenedBefore() {
-        XCTAssertFalse(acknowledgedPushPermissionsProvider.pushPermissionsAcknowledged)
+        XCTAssertFalse(witnessedTutorialPushPermissionsRequestProvider.witnessedTutorialPushPermissionsRequest)
     }
 
     func testUserDefaultsWithTrueValueForFirstTimeStateKeyShouldIndicateAppOpenedBefore() {
-        defaults.set(true, forKey: UserDefaultsAcknowledgedPushPermissionsRequest.AcknowledgedPushRequestKey)
-        XCTAssertTrue(acknowledgedPushPermissionsProvider.pushPermissionsAcknowledged)
+        defaults.set(true, forKey: UserDefaultsWitnessedTutorialPushPermissionsRequest.WitnessedTutorialPushPermissionsRequestKey)
+        XCTAssertTrue(witnessedTutorialPushPermissionsRequestProvider.witnessedTutorialPushPermissionsRequest)
     }
 
     func testUserDefaultsWithFalseValueForFirstTimeStateKeyShouldIndicateAppNotOpenedBefore() {
-        defaults.set(false, forKey: UserDefaultsAcknowledgedPushPermissionsRequest.AcknowledgedPushRequestKey)
-        XCTAssertFalse(acknowledgedPushPermissionsProvider.pushPermissionsAcknowledged)
+        defaults.set(false, forKey: UserDefaultsWitnessedTutorialPushPermissionsRequest.WitnessedTutorialPushPermissionsRequestKey)
+        XCTAssertFalse(witnessedTutorialPushPermissionsRequestProvider.witnessedTutorialPushPermissionsRequest)
     }
 
     func testTellingProviderToMakeTutorialAsCompletedShouldSetAppropriateDefault() {
-        defaults.set(false, forKey: UserDefaultsAcknowledgedPushPermissionsRequest.AcknowledgedPushRequestKey)
-        acknowledgedPushPermissionsProvider.markPushPermissionsAsAcknowledged()
+        defaults.set(false, forKey: UserDefaultsWitnessedTutorialPushPermissionsRequest.WitnessedTutorialPushPermissionsRequestKey)
+        witnessedTutorialPushPermissionsRequestProvider.markWitnessedTutorialPushPermissionsRequest()
 
-        XCTAssertTrue(defaults.bool(forKey: UserDefaultsAcknowledgedPushPermissionsRequest.AcknowledgedPushRequestKey))
+        XCTAssertTrue(defaults.bool(forKey: UserDefaultsWitnessedTutorialPushPermissionsRequest.WitnessedTutorialPushPermissionsRequestKey))
     }
     
 }

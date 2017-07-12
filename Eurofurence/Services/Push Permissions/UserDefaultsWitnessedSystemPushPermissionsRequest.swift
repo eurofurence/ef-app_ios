@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct UserDefaultsWitnessedSystemPushPermissionsRequest: UserWitnessedSystemPushPermissionsRequest {
+struct UserDefaultsWitnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest {
 
     static let WitnessedSystemPushRequest = "Eurofurence.WitnessedSystemPushPermissions"
 
@@ -18,11 +18,11 @@ struct UserDefaultsWitnessedSystemPushPermissionsRequest: UserWitnessedSystemPus
         self.userDefaults = userDefaults
     }
 
-    var witnessedSystemPushPermissions: Bool {
+    var witnessedSystemPushPermissionsRequest: Bool {
         return userDefaults.bool(forKey: UserDefaultsWitnessedSystemPushPermissionsRequest.WitnessedSystemPushRequest)
     }
 
-    func markUserWitnessedSystemPushPermissionsRequest() {
+    func markWitnessedSystemPushPermissionsRequest() {
         userDefaults.set(true, forKey: UserDefaultsWitnessedSystemPushPermissionsRequest.WitnessedSystemPushRequest)
     }
 

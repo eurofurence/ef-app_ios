@@ -21,13 +21,13 @@ struct PresentationTier {
     private static func makeAppContext() -> ApplicationContext {
         return ApplicationContext(
                 firstTimeLaunchProviding: UserDefaultsTutorialStateProvider(userDefaults: .standard),
-                acknowledgedPushPermissions: UserDefaultsAcknowledgedPushPermissionsRequest(userDefaults: .standard),
+                witnessedTutorialPushPermissionsRequest: UserDefaultsWitnessedTutorialPushPermissionsRequest(userDefaults: .standard),
                 quoteGenerator: EgyptianQuoteGenerator(),
                 presentationStrings: UnlocalizedPresentationStrings(),
                 presentationAssets: ApplicationPresentationAssets(),
                 networkReachability: SwiftNetworkReachability.shared,
                 pushPermissionsRequesting: pushRequesting,
-                witnessedSystemPushPermissions: UserDefaultsWitnessedSystemPushPermissionsRequest(userDefaults: .standard))
+                witnessedSystemPushPermissionsRequest: UserDefaultsWitnessedSystemPushPermissionsRequest(userDefaults: .standard))
     }
 
 }

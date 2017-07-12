@@ -9,7 +9,7 @@ import Foundation
 
 class PrivateMessage: EntityBase {
 	override class var DataModelVersion: Int { return 1 }
-	
+
 	var AuthorName: String = ""
 	var CreatedDateTimeUtc: Date = Date()
 	var Message: String = ""

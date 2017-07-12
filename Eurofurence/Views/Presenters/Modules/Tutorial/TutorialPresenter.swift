@@ -20,8 +20,8 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     private var tutorialStateProviding: UserCompletedTutorialStateProviding
     private var networkReachability: NetworkReachability
     private var pushPermissionsRequesting: PushPermissionsRequesting
-    private var acknowledgedPushPermissions: AcknowledgedPushPermissionsRequest
-    private var witnessedSystemPushPermissions: UserWitnessedSystemPushPermissionsRequest
+    private var witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
+    private var witnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest
 
     // MARK: Initialization
 
@@ -31,10 +31,10 @@ class TutorialPresenter: TutorialPageSceneDelegate {
          splashScreenRouter: SplashScreenRouter,
          alertRouter: AlertRouter,
          tutorialStateProviding: UserCompletedTutorialStateProviding,
-         acknowledgedPushPermissions: AcknowledgedPushPermissionsRequest,
+         witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest,
          networkReachability: NetworkReachability,
          pushPermissionsRequesting: PushPermissionsRequesting,
-         witnessedSystemPushPermissions: UserWitnessedSystemPushPermissionsRequest) {
+         witnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest) {
         self.tutorialScene = tutorialScene
         self.presentationStrings = presentationStrings
         self.presentationAssets = presentationAssets
@@ -43,10 +43,10 @@ class TutorialPresenter: TutorialPageSceneDelegate {
         self.tutorialStateProviding = tutorialStateProviding
         self.networkReachability = networkReachability
         self.pushPermissionsRequesting = pushPermissionsRequesting
-        self.acknowledgedPushPermissions = acknowledgedPushPermissions
-        self.witnessedSystemPushPermissions = witnessedSystemPushPermissions
+        self.witnessedTutorialPushPermissionsRequest = witnessedTutorialPushPermissionsRequest
+        self.witnessedSystemPushPermissionsRequest = witnessedSystemPushPermissionsRequest
 
-        if acknowledgedPushPermissions.pushPermissionsAcknowledged {
+        if witnessedTutorialPushPermissionsRequest.witnessedTutorialPushPermissionsRequest {
             showInitiateDownloadPage()
         } else {
             showRequestPushPermissionsPage()
@@ -56,10 +56,10 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     // MARK: TutorialPageSceneDelegate
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
-        guard acknowledgedPushPermissions.pushPermissionsAcknowledged else {
-            witnessedSystemPushPermissions.markUserWitnessedSystemPushPermissionsRequest()
+        guard witnessedTutorialPushPermissionsRequest.witnessedTutorialPushPermissionsRequest else {
+            witnessedSystemPushPermissionsRequest.markWitnessedSystemPushPermissionsRequest()
             pushPermissionsRequesting.requestPushPermissions {
-                self.acknowledgedPushPermissions.markPushPermissionsAsAcknowledged()
+                self.witnessedTutorialPushPermissionsRequest.markWitnessedTutorialPushPermissionsRequest()
                 self.showInitiateDownloadPage()
             }
 
@@ -80,7 +80,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
 
     func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) {
         showInitiateDownloadPage()
-        acknowledgedPushPermissions.markPushPermissionsAsAcknowledged()
+        witnessedTutorialPushPermissionsRequest.markWitnessedTutorialPushPermissionsRequest()
     }
 
     // MARK: Private
