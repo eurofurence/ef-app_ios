@@ -32,7 +32,7 @@ class PresentationTestBuilder {
     private var presentationAssets: PresentationAssets
     private var networkReachability: NetworkReachability
     private var pushPermissionsRequesting: PushPermissionsRequesting
-    private var optedIntoPush: UserOptedIntoPushNotifications
+    private var witnessedSystemPushPermissions: UserWitnessedSystemPushPermissionsRequest
 
     init() {
         routers = StubRouters()
@@ -43,7 +43,7 @@ class PresentationTestBuilder {
         presentationAssets = StubPresentationAssets()
         networkReachability = ReachableWiFiNetwork()
         pushPermissionsRequesting = CapturingPushPermissionsRequesting()
-        optedIntoPush = CapturingUserOptedIntoPushNotifications()
+        witnessedSystemPushPermissions = CapturingUserWitnessedSystemPushPermissionsRequest()
     }
 
     func withRouters(_ routers: Routers) -> PresentationTestBuilder {
@@ -81,8 +81,8 @@ class PresentationTestBuilder {
         return self
     }
 
-    func withUserOptedIntoPushNotifications(_ optedIntoPush: UserOptedIntoPushNotifications) -> PresentationTestBuilder {
-        self.optedIntoPush = optedIntoPush
+    func withUserWitnessedSystemPushPermissionsRequest(_ witnessedSystemPushPermissions: UserWitnessedSystemPushPermissionsRequest) -> PresentationTestBuilder {
+        self.witnessedSystemPushPermissions = witnessedSystemPushPermissions
         return self
     }
 
@@ -94,7 +94,7 @@ class PresentationTestBuilder {
                                              presentationAssets: presentationAssets,
                                              networkReachability: networkReachability,
                                              pushPermissionsRequesting: pushPermissionsRequesting,
-                                             optedIntoPush: optedIntoPush)
+                                             witnessedSystemPushPermissions: witnessedSystemPushPermissions)
 
         return PresentationTestContext(applicationContext: appContext,
                                        routers: routers,

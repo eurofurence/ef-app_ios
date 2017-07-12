@@ -1,5 +1,5 @@
 //
-//  UserDefaultsOptedIntoPushNotifications.swift
+//  UserDefaultsWitnessedSystemPushPermissionsRequest.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 12/07/2017.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct UserDefaultsOptedIntoPushNotifications: UserOptedIntoPushNotifications {
+struct UserDefaultsWitnessedSystemPushPermissionsRequest: UserWitnessedSystemPushPermissionsRequest {
 
-    static let OptedIntoPushKey = "Eurofurence.UserOptedIntoPush"
+    static let WitnessedSystemPushRequest = "Eurofurence.WitnessedSystemPushPermissions"
 
     var userDefaults: UserDefaults
 
@@ -18,12 +18,12 @@ struct UserDefaultsOptedIntoPushNotifications: UserOptedIntoPushNotifications {
         self.userDefaults = userDefaults
     }
 
-    var userOptedIntoPush: Bool {
-        return userDefaults.bool(forKey: UserDefaultsOptedIntoPushNotifications.OptedIntoPushKey)
+    var witnessedSystemPushPermissions: Bool {
+        return userDefaults.bool(forKey: UserDefaultsWitnessedSystemPushPermissionsRequest.WitnessedSystemPushRequest)
     }
 
-    func markUserOptedIntoPushNotifications() {
-        userDefaults.set(true, forKey: UserDefaultsOptedIntoPushNotifications.OptedIntoPushKey)
+    func markUserWitnessedSystemPushPermissionsRequest() {
+        userDefaults.set(true, forKey: UserDefaultsWitnessedSystemPushPermissionsRequest.WitnessedSystemPushRequest)
     }
 
 }

@@ -21,7 +21,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     private var networkReachability: NetworkReachability
     private var pushPermissionsRequesting: PushPermissionsRequesting
     private var acknowledgedPushPermissions: AcknowledgedPushPermissionsRequest
-    private var optedIntoPush: UserOptedIntoPushNotifications
+    private var witnessedSystemPushPermissions: UserWitnessedSystemPushPermissionsRequest
 
     // MARK: Initialization
 
@@ -34,7 +34,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
          acknowledgedPushPermissions: AcknowledgedPushPermissionsRequest,
          networkReachability: NetworkReachability,
          pushPermissionsRequesting: PushPermissionsRequesting,
-         optedIntoPush: UserOptedIntoPushNotifications) {
+         witnessedSystemPushPermissions: UserWitnessedSystemPushPermissionsRequest) {
         self.tutorialScene = tutorialScene
         self.presentationStrings = presentationStrings
         self.presentationAssets = presentationAssets
@@ -44,7 +44,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
         self.networkReachability = networkReachability
         self.pushPermissionsRequesting = pushPermissionsRequesting
         self.acknowledgedPushPermissions = acknowledgedPushPermissions
-        self.optedIntoPush = optedIntoPush
+        self.witnessedSystemPushPermissions = witnessedSystemPushPermissions
 
         if acknowledgedPushPermissions.pushPermissionsAcknowledged {
             showInitiateDownloadPage()
@@ -57,7 +57,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
         guard acknowledgedPushPermissions.pushPermissionsAcknowledged else {
-            optedIntoPush.markUserOptedIntoPushNotifications()
+            witnessedSystemPushPermissions.markUserWitnessedSystemPushPermissionsRequest()
             pushPermissionsRequesting.requestPushPermissions {
                 self.acknowledgedPushPermissions.markPushPermissionsAsAcknowledged()
                 self.showInitiateDownloadPage()

@@ -9,14 +9,6 @@
 import Foundation
 import UIKit
 
-struct DummyUserOptedIntoPushNotifications: UserOptedIntoPushNotifications {
-
-    func markUserOptedIntoPushNotifications() {
-
-    }
-
-}
-
 struct PresentationTier {
 
     static let pushRequesting = ApplicationPushPermissionsRequesting()
@@ -27,14 +19,15 @@ struct PresentationTier {
     }
 
     private static func makeAppContext() -> ApplicationContext {
-        return ApplicationContext(firstTimeLaunchProviding: UserDefaultsTutorialStateProvider(userDefaults: .standard),
-                                  acknowledgedPushPermissions: UserDefaultsAcknowledgedPushPermissionsRequest(userDefaults: .standard),
-                                  quoteGenerator: EgyptianQuoteGenerator(),
-                                  presentationStrings: UnlocalizedPresentationStrings(),
-                                  presentationAssets: ApplicationPresentationAssets(),
-                                  networkReachability: SwiftNetworkReachability.shared,
-                                  pushPermissionsRequesting: pushRequesting,
-                                  optedIntoPush: DummyUserOptedIntoPushNotifications())
+        return ApplicationContext(
+                firstTimeLaunchProviding: UserDefaultsTutorialStateProvider(userDefaults: .standard),
+                acknowledgedPushPermissions: UserDefaultsAcknowledgedPushPermissionsRequest(userDefaults: .standard),
+                quoteGenerator: EgyptianQuoteGenerator(),
+                presentationStrings: UnlocalizedPresentationStrings(),
+                presentationAssets: ApplicationPresentationAssets(),
+                networkReachability: SwiftNetworkReachability.shared,
+                pushPermissionsRequesting: pushRequesting,
+                witnessedSystemPushPermissions: UserDefaultsWitnessedSystemPushPermissionsRequest(userDefaults: .standard))
     }
 
 }
