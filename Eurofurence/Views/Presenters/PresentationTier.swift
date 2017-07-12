@@ -19,8 +19,8 @@ struct DummyUserAcknowledgedPushPermissionsRequestStateProviding: UserAcknowledg
 
 struct DummyPushPermissionsRequesting: PushPermissionsRequesting {
 
-    func requestPushPermissions() {
-
+    func requestPushPermissions(completionHandler: @escaping () -> Void) {
+        completionHandler()
     }
 
 }

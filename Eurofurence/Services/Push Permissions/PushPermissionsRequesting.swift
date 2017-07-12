@@ -10,6 +10,6 @@ import Foundation
 
 protocol PushPermissionsRequesting {
 
-    func requestPushPermissions()
+    func requestPushPermissions(completionHandler: @escaping () -> Void)
 
 }

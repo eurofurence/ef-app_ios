@@ -28,8 +28,14 @@ struct UserAcknowledgedPushPermissions: UserAcknowledgedPushPermissionsRequestSt
 class CapturingPushPermissionsRequesting: PushPermissionsRequesting {
 
     private(set) var didRequestPermission = false
-    func requestPushPermissions() {
+    private(set) var completionHandler: (() -> Void)?
+    func requestPushPermissions(completionHandler: @escaping () -> Void) {
         didRequestPermission = true
+        self.completionHandler = completionHandler
+    }
+
+    func completeRegistrationRequest() {
+        completionHandler?()
     }
 
 }
@@ -173,6 +179,14 @@ class WhenTheTutorialAppears: XCTestCase {
         setup.tutorial.tutorialPage.simulateTappingPrimaryActionButton()
 
         XCTAssertFalse(setup.alertRouter.didShowAlert)
+    }
+
+    func testRequestingPushPermissionsFinishesShouldShowNewPage() {
+        let setup = showRequestPushPermissionsTutorialPage()
+        setup.tutorial.tutorialPage.simulateTappingPrimaryActionButton()
+        setup.pushRequesting.completeRegistrationRequest()
+
+        XCTAssertEqual(2, setup.tutorial.numberOfPagesShown)
     }
     
     // MARK: Prepare for initial download page

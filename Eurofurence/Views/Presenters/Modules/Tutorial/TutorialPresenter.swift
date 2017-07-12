@@ -54,7 +54,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
         guard userAcknowledgedPushPermissionsRequest.userHasAcknowledgedRequestForPushPermissions else {
-            pushPermissionsRequesting.requestPushPermissions()
+            pushPermissionsRequesting.requestPushPermissions(completionHandler: showInitiateDownloadPage)
             return
         }
 
