@@ -81,6 +81,8 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     private func showRequestPushPermissionsPage() {
         let tutorialPage = tutorialScene.showTutorialPage()
         tutorialPage.showPageTitle(string(for: .tutorialPushPermissionsRequestTitle))
+        tutorialPage.showPageDescription(string(for: .tutorialPushPermissionsRequestDescription))
+        tutorialPage.showPageImage(presentationAssets.requestPushNotificationPermissionsAsset)
     }
 
     private func completeTutorial() {

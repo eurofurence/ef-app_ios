@@ -11,11 +11,13 @@ import UIKit
 protocol PresentationAssets {
 
     var initialLoadInformationAsset: UIImage { get }
+    var requestPushNotificationPermissionsAsset: UIImage { get }
 
 }
 
 struct ApplicationPresentationAssets: PresentationAssets {
 
     var initialLoadInformationAsset: UIImage = #imageLiteral(resourceName: "tuto01_notificationIcon")
+    var requestPushNotificationPermissionsAsset: UIImage = UIImage()
 
 }

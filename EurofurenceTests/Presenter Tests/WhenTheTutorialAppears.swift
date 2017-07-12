@@ -85,6 +85,20 @@ class WhenTheTutorialAppears: XCTestCase {
                        setup.page.capturedPageTitle)
     }
     
+    func testShowingThePushPermissionsRequestPageShouldSetThePushPermissionsDescriptionOntoTheTutorialPage() {
+        let setup = showRequestPushPermissionsTutorialPage()
+        
+        XCTAssertEqual(setup.strings.presentationString(for: .tutorialPushPermissionsRequestDescription),
+                       setup.page.capturedPageDescription)
+    }
+    
+    func testShowingThePushPermissionsRequestPageShouldSetThePushPermissionsImageOntoTheTutorialPage() {
+        let setup = showRequestPushPermissionsTutorialPage()
+        
+        XCTAssertEqual(setup.assets.requestPushNotificationPermissionsAsset,
+                       setup.page.capturedPageImage)
+    }
+    
     // MARK: Prepare for initial download page
 
     func testItShouldTellTheFirstTutorialPageToShowTheTitleForBeginningInitialLoad() {

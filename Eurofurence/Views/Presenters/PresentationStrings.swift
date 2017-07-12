@@ -18,6 +18,7 @@ enum PresentationScenario {
     case cancel
 
     case tutorialPushPermissionsRequestTitle
+    case tutorialPushPermissionsRequestDescription
 
     case tutorialInitialLoadTitle
     case tutorialInitialLoadDescription
@@ -34,6 +35,7 @@ struct UnlocalizedPresentationStrings: PresentationStrings {
         .cancel: "Cancel",
 
         .tutorialPushPermissionsRequestTitle: "Push Notifications",
+        .tutorialPushPermissionsRequestDescription: "",
 
         .tutorialInitialLoadTitle: "Offline Usage",
         .tutorialInitialLoadDescription: "The Eurofurence app is intended to remain fully functional while offline. To do this, we need to download a few megabytes of data. This may take several minutes depending upon the speed of your connection.",
