@@ -9,27 +9,9 @@
 import Foundation
 import UIKit
 
-struct DummyUserAcknowledgedPushPermissionsRequestStateProviding: UserAcknowledgedPushPermissionsRequestStateProviding {
-
-    var userHasAcknowledgedRequestForPushPermissions: Bool {
-        return true
-    }
-
-    func markUserAsAcknowledgingPushPermissionsRequest() {
-
-    }
-
-}
-
-struct DummyPushPermissionsRequesting: PushPermissionsRequesting {
-
-    func requestPushPermissions(completionHandler: @escaping () -> Void) {
-        completionHandler()
-    }
-
-}
-
 struct PresentationTier {
+
+    static let pushRequesting = ApplicationPushPermissionsRequesting()
 
     static func assemble(window: UIWindow) {
         BootstrappingModule.bootstrap(context: makeAppContext(),
@@ -38,12 +20,12 @@ struct PresentationTier {
 
     private static func makeAppContext() -> ApplicationContext {
         return ApplicationContext(firstTimeLaunchProviding: UserDefaultsTutorialStateProvider(userDefaults: .standard),
-                                  userAcknowledgedPushPermissionsRequest: DummyUserAcknowledgedPushPermissionsRequestStateProviding(),
+                                  userAcknowledgedPushPermissionsRequest: UserDefaultsUserAcknowledgedPushPermissionsRequestStateProviding(userDefaults: .standard),
                                   quoteGenerator: EgyptianQuoteGenerator(),
                                   presentationStrings: UnlocalizedPresentationStrings(),
                                   presentationAssets: ApplicationPresentationAssets(),
                                   networkReachability: SwiftNetworkReachability.shared,
-                                  pushPermissionsRequesting: DummyPushPermissionsRequesting())
+                                  pushPermissionsRequesting: pushRequesting)
     }
 
 }
