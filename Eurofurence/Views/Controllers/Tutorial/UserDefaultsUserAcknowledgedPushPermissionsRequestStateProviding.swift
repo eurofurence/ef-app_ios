@@ -1,5 +1,5 @@
 //
-//  UserDefaultsUserAcknowledgedPushPermissionsRequestStateProviding.swift
+//  UserDefaultsAcknowledgedPushPermissionsRequest.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 12/07/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct UserDefaultsUserAcknowledgedPushPermissionsRequestStateProviding: UserAcknowledgedPushPermissionsRequestStateProviding {
+struct UserDefaultsAcknowledgedPushPermissionsRequest: AcknowledgedPushPermissionsRequest {
 
     static let AcknowledgedPushRequestKey = "Eurofurence.UserHasAcknowledgedPushPermissionsRequest"
 
@@ -18,12 +18,12 @@ struct UserDefaultsUserAcknowledgedPushPermissionsRequestStateProviding: UserAck
         self.userDefaults = userDefaults
     }
 
-    var userHasAcknowledgedRequestForPushPermissions: Bool {
-        return userDefaults.bool(forKey: UserDefaultsUserAcknowledgedPushPermissionsRequestStateProviding.AcknowledgedPushRequestKey)
+    var pushPermissionsAcknowledged: Bool {
+        return userDefaults.bool(forKey: UserDefaultsAcknowledgedPushPermissionsRequest.AcknowledgedPushRequestKey)
     }
 
-    func markUserAsAcknowledgingPushPermissionsRequest() {
-        userDefaults.set(true, forKey: UserDefaultsUserAcknowledgedPushPermissionsRequestStateProviding.AcknowledgedPushRequestKey)
+    func markPushPermissionsAsAcknowledged() {
+        userDefaults.set(true, forKey: UserDefaultsAcknowledgedPushPermissionsRequest.AcknowledgedPushRequestKey)
     }
 
 }

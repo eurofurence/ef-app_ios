@@ -9,44 +9,44 @@
 @testable import Eurofurence
 import XCTest
 
-class WellBehavedAcknowledgedPushPermissions: UserAcknowledgedPushPermissionsRequestStateProviding {
+class WellBehavedAcknowledgedPushPermissions: AcknowledgedPushPermissionsRequest {
 
-    var userHasAcknowledgedRequestForPushPermissions: Bool = false
+    var pushPermissionsAcknowledged: Bool = false
 
-    func markUserAsAcknowledgingPushPermissionsRequest() {
-        userHasAcknowledgedRequestForPushPermissions = true
+    func markPushPermissionsAsAcknowledged() {
+        pushPermissionsAcknowledged = true
     }
 
 }
 
-struct UserNotAcknowledgedPushPermissions: UserAcknowledgedPushPermissionsRequestStateProviding {
+struct UserNotAcknowledgedPushPermissions: AcknowledgedPushPermissionsRequest {
     
-    var userHasAcknowledgedRequestForPushPermissions: Bool {
+    var pushPermissionsAcknowledged: Bool {
         return false
     }
 
-    func markUserAsAcknowledgingPushPermissionsRequest() { }
+    func markPushPermissionsAsAcknowledged() { }
     
 }
 
-struct UserAcknowledgedPushPermissions: UserAcknowledgedPushPermissionsRequestStateProviding {
+struct UserAcknowledgedPushPermissions: AcknowledgedPushPermissionsRequest {
     
-    var userHasAcknowledgedRequestForPushPermissions: Bool {
+    var pushPermissionsAcknowledged: Bool {
         return true
     }
 
-    func markUserAsAcknowledgingPushPermissionsRequest() { }
+    func markPushPermissionsAsAcknowledged() { }
     
 }
 
-class CapturingUserAcknowledgedPushPermissions: UserAcknowledgedPushPermissionsRequestStateProviding {
+class CapturingUserAcknowledgedPushPermissions: AcknowledgedPushPermissionsRequest {
 
-    var userHasAcknowledgedRequestForPushPermissions: Bool {
+    var pushPermissionsAcknowledged: Bool {
         return false
     }
 
     private(set) var didMarkUserAsAcknowledgingPushPermissionsRequest = false
-    func markUserAsAcknowledgingPushPermissionsRequest() {
+    func markPushPermissionsAsAcknowledged() {
         didMarkUserAsAcknowledgingPushPermissionsRequest = true
     }
 
@@ -91,7 +91,7 @@ class WhenTheTutorialAppears: XCTestCase {
     }
 
     private func showTutorial(_ networkReachability: NetworkReachability = ReachableWiFiNetwork(),
-                              _ pushPermissionsRequestStateProviding: UserAcknowledgedPushPermissionsRequestStateProviding = UserNotAcknowledgedPushPermissions()) -> TutorialTestContext {
+                              _ pushPermissionsRequestStateProviding: AcknowledgedPushPermissionsRequest = UserNotAcknowledgedPushPermissions()) -> TutorialTestContext {
         let tutorialRouter = CapturingTutorialRouter()
         let alertRouter = CapturingAlertRouter()
         let splashRouter = CapturingSplashScreenRouter()

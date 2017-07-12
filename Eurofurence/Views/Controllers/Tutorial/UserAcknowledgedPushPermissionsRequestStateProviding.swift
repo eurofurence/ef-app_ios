@@ -1,5 +1,5 @@
 //
-//  UserAcknowledgedPushPermissionsRequestStateProviding.swift
+//  AcknowledgedPushPermissionsRequest.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 11/07/2017.
@@ -8,10 +8,10 @@
 
 import Foundation
 
-protocol UserAcknowledgedPushPermissionsRequestStateProviding {
+protocol AcknowledgedPushPermissionsRequest {
 
-    var userHasAcknowledgedRequestForPushPermissions: Bool { get }
+    var pushPermissionsAcknowledged: Bool { get }
 
-    func markUserAsAcknowledgingPushPermissionsRequest()
+    func markPushPermissionsAsAcknowledged()
 
 }

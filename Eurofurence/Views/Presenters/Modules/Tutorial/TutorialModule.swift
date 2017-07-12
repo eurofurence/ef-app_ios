@@ -17,7 +17,7 @@ struct TutorialModule {
                               splashScreenRouter: routers.splashScreenRouter,
                               alertRouter: routers.alertRouter,
                               tutorialStateProviding: context.firstTimeLaunchProviding,
-                              userAcknowledgedPushPermissionsRequest: context.userAcknowledgedPushPermissionsRequest,
+                              acknowledgedPushPermissions: context.acknowledgedPushPermissions,
                               networkReachability: context.networkReachability,
                               pushPermissionsRequesting: context.pushPermissionsRequesting,
                               optedIntoPush: context.optedIntoPush)

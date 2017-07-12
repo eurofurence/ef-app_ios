@@ -28,7 +28,7 @@ struct PresentationTier {
 
     private static func makeAppContext() -> ApplicationContext {
         return ApplicationContext(firstTimeLaunchProviding: UserDefaultsTutorialStateProvider(userDefaults: .standard),
-                                  userAcknowledgedPushPermissionsRequest: UserDefaultsUserAcknowledgedPushPermissionsRequestStateProviding(userDefaults: .standard),
+                                  acknowledgedPushPermissions: UserDefaultsAcknowledgedPushPermissionsRequest(userDefaults: .standard),
                                   quoteGenerator: EgyptianQuoteGenerator(),
                                   presentationStrings: UnlocalizedPresentationStrings(),
                                   presentationAssets: ApplicationPresentationAssets(),

@@ -20,7 +20,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     private var tutorialStateProviding: UserCompletedTutorialStateProviding
     private var networkReachability: NetworkReachability
     private var pushPermissionsRequesting: PushPermissionsRequesting
-    private var userAcknowledgedPushPermissionsRequest: UserAcknowledgedPushPermissionsRequestStateProviding
+    private var acknowledgedPushPermissions: AcknowledgedPushPermissionsRequest
     private var optedIntoPush: UserOptedIntoPushNotifications
 
     // MARK: Initialization
@@ -31,7 +31,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
          splashScreenRouter: SplashScreenRouter,
          alertRouter: AlertRouter,
          tutorialStateProviding: UserCompletedTutorialStateProviding,
-         userAcknowledgedPushPermissionsRequest: UserAcknowledgedPushPermissionsRequestStateProviding,
+         acknowledgedPushPermissions: AcknowledgedPushPermissionsRequest,
          networkReachability: NetworkReachability,
          pushPermissionsRequesting: PushPermissionsRequesting,
          optedIntoPush: UserOptedIntoPushNotifications) {
@@ -43,10 +43,10 @@ class TutorialPresenter: TutorialPageSceneDelegate {
         self.tutorialStateProviding = tutorialStateProviding
         self.networkReachability = networkReachability
         self.pushPermissionsRequesting = pushPermissionsRequesting
-        self.userAcknowledgedPushPermissionsRequest = userAcknowledgedPushPermissionsRequest
+        self.acknowledgedPushPermissions = acknowledgedPushPermissions
         self.optedIntoPush = optedIntoPush
 
-        if userAcknowledgedPushPermissionsRequest.userHasAcknowledgedRequestForPushPermissions {
+        if acknowledgedPushPermissions.pushPermissionsAcknowledged {
             showInitiateDownloadPage()
         } else {
             showRequestPushPermissionsPage()
@@ -56,10 +56,10 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     // MARK: TutorialPageSceneDelegate
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
-        guard userAcknowledgedPushPermissionsRequest.userHasAcknowledgedRequestForPushPermissions else {
+        guard acknowledgedPushPermissions.pushPermissionsAcknowledged else {
             optedIntoPush.markUserOptedIntoPushNotifications()
             pushPermissionsRequesting.requestPushPermissions {
-                self.userAcknowledgedPushPermissionsRequest.markUserAsAcknowledgingPushPermissionsRequest()
+                self.acknowledgedPushPermissions.markPushPermissionsAsAcknowledged()
                 self.showInitiateDownloadPage()
             }
 
@@ -80,7 +80,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
 
     func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) {
         showInitiateDownloadPage()
-        userAcknowledgedPushPermissionsRequest.markUserAsAcknowledgingPushPermissionsRequest()
+        acknowledgedPushPermissions.markPushPermissionsAsAcknowledged()
     }
 
     // MARK: Private

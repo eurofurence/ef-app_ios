@@ -11,7 +11,7 @@ import Foundation
 struct ApplicationContext {
 
     var firstTimeLaunchProviding: UserCompletedTutorialStateProviding
-    var userAcknowledgedPushPermissionsRequest: UserAcknowledgedPushPermissionsRequestStateProviding
+    var acknowledgedPushPermissions: AcknowledgedPushPermissionsRequest
     var quoteGenerator: QuoteGenerator
     var presentationStrings: PresentationStrings
     var presentationAssets: PresentationAssets
@@ -20,7 +20,7 @@ struct ApplicationContext {
     var optedIntoPush: UserOptedIntoPushNotifications
 
     init(firstTimeLaunchProviding: UserCompletedTutorialStateProviding,
-         userAcknowledgedPushPermissionsRequest: UserAcknowledgedPushPermissionsRequestStateProviding,
+         acknowledgedPushPermissions: AcknowledgedPushPermissionsRequest,
          quoteGenerator: QuoteGenerator,
          presentationStrings: PresentationStrings,
          presentationAssets: PresentationAssets,
@@ -28,7 +28,7 @@ struct ApplicationContext {
          pushPermissionsRequesting: PushPermissionsRequesting,
          optedIntoPush: UserOptedIntoPushNotifications) {
         self.firstTimeLaunchProviding = firstTimeLaunchProviding
-        self.userAcknowledgedPushPermissionsRequest = userAcknowledgedPushPermissionsRequest
+        self.acknowledgedPushPermissions = acknowledgedPushPermissions
         self.quoteGenerator = quoteGenerator
         self.presentationStrings = presentationStrings
         self.presentationAssets = presentationAssets
