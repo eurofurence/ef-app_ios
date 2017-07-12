@@ -1,5 +1,5 @@
 //
-//  UserPushPermissionsState.swift
+//  UserOptedIntoPushNotifications.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 12/07/2017.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-protocol UserPushPermissionsState {
+protocol UserOptedIntoPushNotifications {
 
-    func markPermittedRegisteringForPushNotifications()
+    func markUserOptedIntoPushNotifications()
 
 }

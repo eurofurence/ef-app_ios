@@ -21,7 +21,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     private var networkReachability: NetworkReachability
     private var pushPermissionsRequesting: PushPermissionsRequesting
     private var userAcknowledgedPushPermissionsRequest: UserAcknowledgedPushPermissionsRequestStateProviding
-    private var userPushPermissionsState: UserPushPermissionsState
+    private var optedIntoPush: UserOptedIntoPushNotifications
 
     // MARK: Initialization
 
@@ -34,7 +34,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
          userAcknowledgedPushPermissionsRequest: UserAcknowledgedPushPermissionsRequestStateProviding,
          networkReachability: NetworkReachability,
          pushPermissionsRequesting: PushPermissionsRequesting,
-         userPushPermissionsState: UserPushPermissionsState) {
+         optedIntoPush: UserOptedIntoPushNotifications) {
         self.tutorialScene = tutorialScene
         self.presentationStrings = presentationStrings
         self.presentationAssets = presentationAssets
@@ -44,7 +44,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
         self.networkReachability = networkReachability
         self.pushPermissionsRequesting = pushPermissionsRequesting
         self.userAcknowledgedPushPermissionsRequest = userAcknowledgedPushPermissionsRequest
-        self.userPushPermissionsState = userPushPermissionsState
+        self.optedIntoPush = optedIntoPush
 
         if userAcknowledgedPushPermissionsRequest.userHasAcknowledgedRequestForPushPermissions {
             showInitiateDownloadPage()
@@ -57,7 +57,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
         guard userAcknowledgedPushPermissionsRequest.userHasAcknowledgedRequestForPushPermissions else {
-            userPushPermissionsState.markPermittedRegisteringForPushNotifications()
+            optedIntoPush.markUserOptedIntoPushNotifications()
             pushPermissionsRequesting.requestPushPermissions {
                 self.userAcknowledgedPushPermissionsRequest.markUserAsAcknowledgingPushPermissionsRequest()
                 self.showInitiateDownloadPage()

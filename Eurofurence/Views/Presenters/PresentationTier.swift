@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-struct DummyUserPushPermissionsState: UserPushPermissionsState {
+struct DummyUserOptedIntoPushNotifications: UserOptedIntoPushNotifications {
 
-    func markPermittedRegisteringForPushNotifications() {
+    func markUserOptedIntoPushNotifications() {
 
     }
 
@@ -34,7 +34,7 @@ struct PresentationTier {
                                   presentationAssets: ApplicationPresentationAssets(),
                                   networkReachability: SwiftNetworkReachability.shared,
                                   pushPermissionsRequesting: pushRequesting,
-                                  userPushPermissionsState: DummyUserPushPermissionsState())
+                                  optedIntoPush: DummyUserOptedIntoPushNotifications())
     }
 
 }

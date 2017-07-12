@@ -20,7 +20,7 @@ struct TutorialModule {
                               userAcknowledgedPushPermissionsRequest: context.userAcknowledgedPushPermissionsRequest,
                               networkReachability: context.networkReachability,
                               pushPermissionsRequesting: context.pushPermissionsRequesting,
-                              userPushPermissionsState: context.userPushPermissionsState)
+                              optedIntoPush: context.optedIntoPush)
     }
 
 }

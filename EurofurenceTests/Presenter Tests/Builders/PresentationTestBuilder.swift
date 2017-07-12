@@ -32,7 +32,7 @@ class PresentationTestBuilder {
     private var presentationAssets: PresentationAssets
     private var networkReachability: NetworkReachability
     private var pushPermissionsRequesting: PushPermissionsRequesting
-    private var userPushPermissionsState: UserPushPermissionsState
+    private var optedIntoPush: UserOptedIntoPushNotifications
 
     init() {
         routers = StubRouters()
@@ -43,7 +43,7 @@ class PresentationTestBuilder {
         presentationAssets = StubPresentationAssets()
         networkReachability = ReachableWiFiNetwork()
         pushPermissionsRequesting = CapturingPushPermissionsRequesting()
-        userPushPermissionsState = CapturingUserPushPermissionsState()
+        optedIntoPush = CapturingUserOptedIntoPushNotifications()
     }
 
     func withRouters(_ routers: Routers) -> PresentationTestBuilder {
@@ -81,8 +81,8 @@ class PresentationTestBuilder {
         return self
     }
 
-    func withUserPushPermissionsState(_ userPushPermissionsState: UserPushPermissionsState) -> PresentationTestBuilder {
-        self.userPushPermissionsState = userPushPermissionsState
+    func withUserOptedIntoPushNotifications(_ optedIntoPush: UserOptedIntoPushNotifications) -> PresentationTestBuilder {
+        self.optedIntoPush = optedIntoPush
         return self
     }
 
@@ -94,7 +94,7 @@ class PresentationTestBuilder {
                                              presentationAssets: presentationAssets,
                                              networkReachability: networkReachability,
                                              pushPermissionsRequesting: pushPermissionsRequesting,
-                                             userPushPermissionsState: userPushPermissionsState)
+                                             optedIntoPush: optedIntoPush)
 
         return PresentationTestContext(applicationContext: appContext,
                                        routers: routers,
