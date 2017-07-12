@@ -222,7 +222,15 @@ class WhenTheTutorialAppears: XCTestCase {
 
         XCTAssertFalse(capturingPushPermissions.didMarkUserAsAcknowledgingPushPermissionsRequest)
     }
-    
+
+    func testDenyingPushPermissionsShouldMarkUserAsAcknowledgingPushPermissions() {
+        let capturingPushPermissions = CapturingUserAcknowledgedPushPermissions()
+        let setup = showTutorial(UnreachableWiFiNetwork(), capturingPushPermissions)
+        setup.tutorial.tutorialPage.simulateTappingSecondaryActionButton()
+
+        XCTAssertTrue(capturingPushPermissions.didMarkUserAsAcknowledgingPushPermissionsRequest)
+    }
+
     // MARK: Prepare for initial download page
 
     func testItShouldTellTheFirstTutorialPageToShowTheTitleForBeginningInitialLoad() {

@@ -76,6 +76,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
 
     func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) {
         showInitiateDownloadPage()
+        userAcknowledgedPushPermissionsRequest.markUserAsAcknowledgingPushPermissionsRequest()
     }
 
     // MARK: Private
