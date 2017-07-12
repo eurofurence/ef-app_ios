@@ -40,6 +40,8 @@
 		7820A6FD1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6FC1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift */; };
 		7820A6FF1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6FE1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift */; };
 		7820A7011F16C0F0004C0FB5 /* CapturingUserOptedIntoPushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A7001F16C0F0004C0FB5 /* CapturingUserOptedIntoPushNotifications.swift */; };
+		7820A7031F16C1F3004C0FB5 /* UserDefaultsOptedIntoPushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A7021F16C1F3004C0FB5 /* UserDefaultsOptedIntoPushNotifications.swift */; };
+		7820A7051F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A7041F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift */; };
 		78455B3A1F116A7E005BE2D7 /* WhenTheAppLaunches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */; };
 		78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */; };
 		78455B3F1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B3E1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift */; };
@@ -217,6 +219,8 @@
 		7820A6FC1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AcknowledgedPushPermissionsRequestTestDoubles.swift; path = "Test Doubles/AcknowledgedPushPermissionsRequestTestDoubles.swift"; sourceTree = "<group>"; };
 		7820A6FE1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingPushPermissionsRequesting.swift; path = "Test Doubles/CapturingPushPermissionsRequesting.swift"; sourceTree = "<group>"; };
 		7820A7001F16C0F0004C0FB5 /* CapturingUserOptedIntoPushNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingUserOptedIntoPushNotifications.swift; path = "Test Doubles/CapturingUserOptedIntoPushNotifications.swift"; sourceTree = "<group>"; };
+		7820A7021F16C1F3004C0FB5 /* UserDefaultsOptedIntoPushNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsOptedIntoPushNotifications.swift; path = "Push Permissions/UserDefaultsOptedIntoPushNotifications.swift"; sourceTree = "<group>"; };
+		7820A7041F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsOptedIntoPushNotificationsTests.swift; sourceTree = "<group>"; };
 		78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenTheAppLaunches.swift; path = "Presenter Tests/WhenTheAppLaunches.swift"; sourceTree = "<group>"; };
 		78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsTutorialStateProvider.swift; sourceTree = "<group>"; };
 		78455B3E1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsTutorialStateProvider.swift; path = Views/Controllers/Tutorial/UserDefaultsTutorialStateProvider.swift; sourceTree = "<group>"; };
@@ -468,6 +472,7 @@
 				7820A6F11F1696F1004C0FB5 /* PushPermissionsRequesting.swift */,
 				7820A6F71F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift */,
 				7820A6FA1F16BBB2004C0FB5 /* UserOptedIntoPushNotifications.swift */,
+				7820A7021F16C1F3004C0FB5 /* UserDefaultsOptedIntoPushNotifications.swift */,
 			);
 			name = "Push Permissions";
 			sourceTree = "<group>";
@@ -667,6 +672,7 @@
 				7820A6DE1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift */,
 				7820A6E81F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift */,
 				7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */,
+				7820A7041F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift */,
 			);
 			path = EurofurenceTests;
 			sourceTree = "<group>";
@@ -1215,6 +1221,7 @@
 				D6F3D620BA994A6570325C66 /* DealersTableViewCell.swift in Sources */,
 				D6F3DDCB5EF23B138BD25865 /* EventHeaderCellTableViewCell.swift in Sources */,
 				9A2A94891F12D152004D66FB /* LastSyncDateProviding.swift in Sources */,
+				7820A7031F16C1F3004C0FB5 /* UserDefaultsOptedIntoPushNotifications.swift in Sources */,
 				D6F3DBB69290DF1E0448A3CC /* EventCell.swift in Sources */,
 				9A2A94871F12CBC0004D66FB /* SyncState.swift in Sources */,
 				D6F3D13A59E359E69EA66D7E /* MenuTableViewCell.swift in Sources */,
@@ -1273,6 +1280,7 @@
 				78C86D831F13A35F003A20E6 /* UnlocalizedPresentationStringsShould.swift in Sources */,
 				7820A6FF1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift in Sources */,
 				7820A6FD1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift in Sources */,
+				7820A7051F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift in Sources */,
 				78C86D5D1F123686003A20E6 /* WhenTheTutorialAppears.swift in Sources */,
 				7820A6DF1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift in Sources */,
 				7820A6F61F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift in Sources */,
