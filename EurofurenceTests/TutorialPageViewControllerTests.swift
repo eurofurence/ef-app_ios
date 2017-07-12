@@ -89,4 +89,9 @@ class TutorialPageViewControllerTests: XCTestCase {
         XCTAssertTrue(delegate.secondaryActionButtonTapped)
     }
 
+    func testTappingTheSecondaryActionButtonShouldNotTellTheDelegateAboutTappingThePrimaryActionButton() {
+        tutorialPageController.secondaryActionButton.sendActions(for: .touchUpInside)
+        XCTAssertFalse(delegate.primaryActionButtonTapped)
+    }
+
 }

@@ -96,7 +96,6 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="performPrimaryAction:" destination="Iys-fY-Grz" eventType="touchUpInside" id="2Mt-RU-kTf"/>
                                             <action selector="performSecondaryAction:" destination="Iys-fY-Grz" eventType="touchUpInside" id="rOt-U3-E2S"/>
                                         </connections>
                                     </button>
