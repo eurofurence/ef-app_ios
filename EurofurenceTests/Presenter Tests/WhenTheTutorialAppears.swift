@@ -14,6 +14,8 @@ struct UserNotAcknowledgedPushPermissions: UserAcknowledgedPushPermissionsReques
     var userHasAcknowledgedRequestForPushPermissions: Bool {
         return false
     }
+
+    func markUserAsAcknowledgingPushPermissionsRequest() { }
     
 }
 
@@ -22,7 +24,22 @@ struct UserAcknowledgedPushPermissions: UserAcknowledgedPushPermissionsRequestSt
     var userHasAcknowledgedRequestForPushPermissions: Bool {
         return true
     }
+
+    func markUserAsAcknowledgingPushPermissionsRequest() { }
     
+}
+
+class CapturingUserAcknowledgedPushPermissions: UserAcknowledgedPushPermissionsRequestStateProviding {
+
+    var userHasAcknowledgedRequestForPushPermissions: Bool {
+        return false
+    }
+
+    private(set) var didMarkUserAsAcknowledgingPushPermissionsRequest = false
+    func markUserAsAcknowledgingPushPermissionsRequest() {
+        didMarkUserAsAcknowledgingPushPermissionsRequest = true
+    }
+
 }
 
 class CapturingPushPermissionsRequesting: PushPermissionsRequesting {
@@ -187,6 +204,23 @@ class WhenTheTutorialAppears: XCTestCase {
         setup.pushRequesting.completeRegistrationRequest()
 
         XCTAssertEqual(2, setup.tutorial.numberOfPagesShown)
+    }
+
+    func testRequestingPushPermissionsFinishesShouldMarkUserAsAcknowledgingPushPermissions() {
+        let capturingPushPermissions = CapturingUserAcknowledgedPushPermissions()
+        let setup = showTutorial(UnreachableWiFiNetwork(), capturingPushPermissions)
+        setup.tutorial.tutorialPage.simulateTappingPrimaryActionButton()
+        setup.pushRequesting.completeRegistrationRequest()
+
+        XCTAssertTrue(capturingPushPermissions.didMarkUserAsAcknowledgingPushPermissionsRequest)
+    }
+
+    func testUserShouldNotBeMarkedAsAcknowledgingPushPermissionsUntilRequestCompletes() {
+        let capturingPushPermissions = CapturingUserAcknowledgedPushPermissions()
+        let setup = showTutorial(UnreachableWiFiNetwork(), capturingPushPermissions)
+        setup.tutorial.tutorialPage.simulateTappingPrimaryActionButton()
+
+        XCTAssertFalse(capturingPushPermissions.didMarkUserAsAcknowledgingPushPermissionsRequest)
     }
     
     // MARK: Prepare for initial download page

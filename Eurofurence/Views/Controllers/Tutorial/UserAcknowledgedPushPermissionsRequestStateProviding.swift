@@ -12,4 +12,6 @@ protocol UserAcknowledgedPushPermissionsRequestStateProviding {
 
     var userHasAcknowledgedRequestForPushPermissions: Bool { get }
 
+    func markUserAsAcknowledgingPushPermissionsRequest()
+
 }

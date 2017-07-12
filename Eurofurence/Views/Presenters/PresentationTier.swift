@@ -15,6 +15,10 @@ struct DummyUserAcknowledgedPushPermissionsRequestStateProviding: UserAcknowledg
         return true
     }
 
+    func markUserAsAcknowledgingPushPermissionsRequest() {
+
+    }
+
 }
 
 struct DummyPushPermissionsRequesting: PushPermissionsRequesting {
