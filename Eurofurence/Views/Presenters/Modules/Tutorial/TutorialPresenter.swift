@@ -60,7 +60,9 @@ class TutorialPresenter: TutorialPageSceneDelegate {
         }
     }
 
-    func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) { }
+    func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) {
+        _ = tutorialScene.showTutorialPage()
+    }
 
     // MARK: Private
 
@@ -79,7 +81,8 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     }
 
     private func showRequestPushPermissionsPage() {
-        let tutorialPage = tutorialScene.showTutorialPage()
+        var tutorialPage = tutorialScene.showTutorialPage()
+        tutorialPage.tutorialPageSceneDelegate = self
         tutorialPage.showPageTitle(string(for: .tutorialPushPermissionsRequestTitle))
         tutorialPage.showPageDescription(string(for: .tutorialPushPermissionsRequestDescription))
         tutorialPage.showPageImage(presentationAssets.requestPushNotificationPermissionsAsset)

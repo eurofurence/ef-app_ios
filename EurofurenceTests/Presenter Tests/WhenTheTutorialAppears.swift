@@ -121,6 +121,18 @@ class WhenTheTutorialAppears: XCTestCase {
         XCTAssertEqual(setup.strings.presentationString(for: .tutorialDenyPushPermissions),
                        setup.page.capturedSecondaryActionDescription)
     }
+
+    func testShowingPushPermissionsRequestPageThenTappingSecondaryButtonShouldShowNewPage() {
+        let setup = showRequestPushPermissionsTutorialPage()
+        setup.tutorial.tutorialPage.simulateTappingSecondaryActionButton()
+
+        XCTAssertEqual(2, setup.tutorial.numberOfPagesShown)
+    }
+
+    func testShowingPushPermissionsRequestPageThenTappingSecondaryButtonShouldNotShowNewPageUntilButtonIsActuallyTapped() {
+        let setup = showRequestPushPermissionsTutorialPage()
+        XCTAssertEqual(1, setup.tutorial.numberOfPagesShown)
+    }
     
     // MARK: Prepare for initial download page
 
