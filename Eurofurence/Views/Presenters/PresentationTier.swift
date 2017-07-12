@@ -17,6 +17,14 @@ struct DummyUserAcknowledgedPushPermissionsRequestStateProviding: UserAcknowledg
 
 }
 
+struct DummyPushPermissionsRequesting: PushPermissionsRequesting {
+
+    func requestPushPermissions() {
+
+    }
+
+}
+
 struct PresentationTier {
 
     static func assemble(window: UIWindow) {
@@ -30,7 +38,8 @@ struct PresentationTier {
                                   quoteGenerator: EgyptianQuoteGenerator(),
                                   presentationStrings: UnlocalizedPresentationStrings(),
                                   presentationAssets: ApplicationPresentationAssets(),
-                                  networkReachability: SwiftNetworkReachability.shared)
+                                  networkReachability: SwiftNetworkReachability.shared,
+                                  pushPermissionsRequesting: DummyPushPermissionsRequesting())
     }
 
 }

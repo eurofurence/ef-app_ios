@@ -18,7 +18,8 @@ struct TutorialModule {
                               alertRouter: routers.alertRouter,
                               tutorialStateProviding: context.firstTimeLaunchProviding,
                               userAcknowledgedPushPermissionsRequest: context.userAcknowledgedPushPermissionsRequest,
-                              networkReachability: context.networkReachability)
+                              networkReachability: context.networkReachability,
+                              pushPermissionsRequesting: context.pushPermissionsRequesting)
     }
 
 }

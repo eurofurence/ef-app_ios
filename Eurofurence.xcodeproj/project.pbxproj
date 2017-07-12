@@ -32,6 +32,7 @@
 		7820A6EB1F141AD5004C0FB5 /* WindowAlertRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6EA1F141AD4004C0FB5 /* WindowAlertRouter.swift */; };
 		7820A6ED1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6EC1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift */; };
 		7820A6EF1F14F15D004C0FB5 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6EE1F14F15D004C0FB5 /* Quote.swift */; };
+		7820A6F21F1696F1004C0FB5 /* PushPermissionsRequesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6F11F1696F1004C0FB5 /* PushPermissionsRequesting.swift */; };
 		78455B3A1F116A7E005BE2D7 /* WhenTheAppLaunches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */; };
 		78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */; };
 		78455B3F1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B3E1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift */; };
@@ -199,6 +200,7 @@
 		7820A6EA1F141AD4004C0FB5 /* WindowAlertRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WindowAlertRouter.swift; path = Routers/Storyboard/WindowAlertRouter.swift; sourceTree = "<group>"; };
 		7820A6EC1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingQuoteGenerator.swift; path = "Test Doubles/CapturingQuoteGenerator.swift"; sourceTree = "<group>"; };
 		7820A6EE1F14F15D004C0FB5 /* Quote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Quote.swift; path = Quotes/Quote.swift; sourceTree = "<group>"; };
+		7820A6F11F1696F1004C0FB5 /* PushPermissionsRequesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushPermissionsRequesting.swift; path = "Push Permissions/PushPermissionsRequesting.swift"; sourceTree = "<group>"; };
 		78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenTheAppLaunches.swift; path = "Presenter Tests/WhenTheAppLaunches.swift"; sourceTree = "<group>"; };
 		78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsTutorialStateProvider.swift; sourceTree = "<group>"; };
 		78455B3E1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsTutorialStateProvider.swift; path = Views/Controllers/Tutorial/UserDefaultsTutorialStateProvider.swift; sourceTree = "<group>"; };
@@ -438,6 +440,14 @@
 				6EF96CE91F126B1A00EE6134 /* BootstrappingModule.swift */,
 			);
 			name = Bootstrap;
+			sourceTree = "<group>";
+		};
+		7820A6F01F1696AC004C0FB5 /* Push Permissions */ = {
+			isa = PBXGroup;
+			children = (
+				7820A6F11F1696F1004C0FB5 /* PushPermissionsRequesting.swift */,
+			);
+			name = "Push Permissions";
 			sourceTree = "<group>";
 		};
 		78455B3D1F11770C005BE2D7 /* Tutorial */ = {
@@ -764,6 +774,7 @@
 		D6F3D0327856D0D0294EF5E6 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				7820A6F01F1696AC004C0FB5 /* Push Permissions */,
 				D6F3D99887787EEDAC891182 /* Abstractions */,
 				6EF96CC61F0EDAC600EE6134 /* Calendar */,
 				78C86D731F12ABF5003A20E6 /* Quotes */,
@@ -1136,6 +1147,7 @@
 				9AF159ED1EF5BE7F00DB287D /* SimpleEventCell.swift in Sources */,
 				9A2A94911F12E7D6004D66FB /* SyncStateProvider.swift in Sources */,
 				9ACF998F1EC858B2006FC958 /* Announcement.swift in Sources */,
+				7820A6F21F1696F1004C0FB5 /* PushPermissionsRequesting.swift in Sources */,
 				78C86D7D1F12B8FD003A20E6 /* EgyptianQuoteGenerator.swift in Sources */,
 				6EF96CD11F0EDB4C00EE6134 /* CalendarService.swift in Sources */,
 				9ACF99971EC858B2006FC958 /* Map.swift in Sources */,

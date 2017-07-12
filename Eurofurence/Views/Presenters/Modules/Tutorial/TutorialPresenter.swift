@@ -19,6 +19,8 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     private var alertRouter: AlertRouter
     private var tutorialStateProviding: UserCompletedTutorialStateProviding
     private var networkReachability: NetworkReachability
+    private var pushPermissionsRequesting: PushPermissionsRequesting
+    private var userAcknowledgedPushPermissionsRequest: UserAcknowledgedPushPermissionsRequestStateProviding
 
     // MARK: Initialization
 
@@ -29,7 +31,8 @@ class TutorialPresenter: TutorialPageSceneDelegate {
          alertRouter: AlertRouter,
          tutorialStateProviding: UserCompletedTutorialStateProviding,
          userAcknowledgedPushPermissionsRequest: UserAcknowledgedPushPermissionsRequestStateProviding,
-         networkReachability: NetworkReachability) {
+         networkReachability: NetworkReachability,
+         pushPermissionsRequesting: PushPermissionsRequesting) {
         self.tutorialScene = tutorialScene
         self.presentationStrings = presentationStrings
         self.presentationAssets = presentationAssets
@@ -37,6 +40,8 @@ class TutorialPresenter: TutorialPageSceneDelegate {
         self.alertRouter = alertRouter
         self.tutorialStateProviding = tutorialStateProviding
         self.networkReachability = networkReachability
+        self.pushPermissionsRequesting = pushPermissionsRequesting
+        self.userAcknowledgedPushPermissionsRequest = userAcknowledgedPushPermissionsRequest
 
         if userAcknowledgedPushPermissionsRequest.userHasAcknowledgedRequestForPushPermissions {
             showInitiateDownloadPage()
@@ -48,15 +53,23 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     // MARK: TutorialPageSceneDelegate
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
+        if !userAcknowledgedPushPermissionsRequest.userHasAcknowledgedRequestForPushPermissions {
+            pushPermissionsRequesting.requestPushPermissions()
+        }
+
         if networkReachability.wifiReachable {
-            completeTutorial()
+            if userAcknowledgedPushPermissionsRequest.userHasAcknowledgedRequestForPushPermissions {
+                completeTutorial()
+            }
         } else {
-            let allowDownloadMessage = string(for: .cellularDownloadAlertContinueOverCellularTitle)
-            let allowDownloadOverCellular = AlertAction(title: allowDownloadMessage, action: completeTutorial)
-            let cancel = AlertAction(title: string(for: .cancel))
-            alertRouter.showAlert(title: string(for: .cellularDownloadAlertTitle),
-                                  message: string(for: .cellularDownloadAlertMessage),
-                                  actions: allowDownloadOverCellular, cancel)
+            if userAcknowledgedPushPermissionsRequest.userHasAcknowledgedRequestForPushPermissions {
+                let allowDownloadMessage = string(for: .cellularDownloadAlertContinueOverCellularTitle)
+                let allowDownloadOverCellular = AlertAction(title: allowDownloadMessage, action: completeTutorial)
+                let cancel = AlertAction(title: string(for: .cancel))
+                alertRouter.showAlert(title: string(for: .cellularDownloadAlertTitle),
+                                      message: string(for: .cellularDownloadAlertMessage),
+                                      actions: allowDownloadOverCellular, cancel)
+            }
         }
     }
 

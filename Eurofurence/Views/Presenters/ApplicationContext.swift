@@ -16,19 +16,22 @@ struct ApplicationContext {
     var presentationStrings: PresentationStrings
     var presentationAssets: PresentationAssets
     var networkReachability: NetworkReachability
+    var pushPermissionsRequesting: PushPermissionsRequesting
 
     init(firstTimeLaunchProviding: UserCompletedTutorialStateProviding,
          userAcknowledgedPushPermissionsRequest: UserAcknowledgedPushPermissionsRequestStateProviding,
          quoteGenerator: QuoteGenerator,
          presentationStrings: PresentationStrings,
          presentationAssets: PresentationAssets,
-         networkReachability: NetworkReachability) {
+         networkReachability: NetworkReachability,
+         pushPermissionsRequesting: PushPermissionsRequesting) {
         self.firstTimeLaunchProviding = firstTimeLaunchProviding
         self.userAcknowledgedPushPermissionsRequest = userAcknowledgedPushPermissionsRequest
         self.quoteGenerator = quoteGenerator
         self.presentationStrings = presentationStrings
         self.presentationAssets = presentationAssets
         self.networkReachability = networkReachability
+        self.pushPermissionsRequesting = pushPermissionsRequesting
     }
 
 }
