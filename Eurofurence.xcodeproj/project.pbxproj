@@ -118,6 +118,7 @@
 		9AB64BCD1F018365004E8D91 /* KnowledgeEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB64BCC1F018365004E8D91 /* KnowledgeEntryCell.swift */; };
 		9AB64BCF1F0272A5004E8D91 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AB64BCE1F02665D004E8D91 /* fontawesome-webfont.ttf */; };
 		9AB83B0C1F0EB47A001823B1 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB83B0B1F0EB47A001823B1 /* MapViewModel.swift */; };
+		9ACB006D1F16C23D001CE9D2 /* PrivateMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACB006C1F16C23D001CE9D2 /* PrivateMessage.swift */; };
 		9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99371EBE172D006FC958 /* AppDelegate.swift */; };
 		9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF993E1EBE172D006FC958 /* Assets.xcassets */; };
 		9ACF99421EBE172D006FC958 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF99401EBE172D006FC958 /* LaunchScreen.storyboard */; };
@@ -294,6 +295,7 @@
 		9AB64BCC1F018365004E8D91 /* KnowledgeEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryCell.swift; sourceTree = "<group>"; };
 		9AB64BCE1F02665D004E8D91 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		9AB83B0B1F0EB47A001823B1 /* MapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		9ACB006C1F16C23D001CE9D2 /* PrivateMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessage.swift; sourceTree = "<group>"; };
 		9ACF99341EBE172D006FC958 /* Eurofurence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eurofurence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ACF99371EBE172D006FC958 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Eurofurence/AppDelegate.swift; sourceTree = "<group>"; };
 		9ACF993E1EBE172D006FC958 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Eurofurence/Assets.xcassets; sourceTree = "<group>"; };
@@ -756,6 +758,7 @@
 				9ACF998C1EC858B2006FC958 /* MapEntry.swift */,
 				9A0525401ECA2AF500578798 /* Sync.swift */,
 				9A0525421ECA2C5A00578798 /* SyncEntityDelta.swift */,
+				9ACB006C1F16C23D001CE9D2 /* PrivateMessage.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -1194,6 +1197,7 @@
 				6EF96CF11F1495F400EE6134 /* SystemNetworkReachability.swift in Sources */,
 				7820A6EF1F14F15D004C0FB5 /* Quote.swift in Sources */,
 				D6F3DD6B0659E1A44E01075B /* CurrentEventsViewModel.swift in Sources */,
+				9ACB006D1F16C23D001CE9D2 /* PrivateMessage.swift in Sources */,
 				9AB64BCD1F018365004E8D91 /* KnowledgeEntryCell.swift in Sources */,
 				D6F3DFB53E62A8C16F211819 /* TimeService.swift in Sources */,
 				7820A6FB1F16BBB2004C0FB5 /* UserOptedIntoPushNotifications.swift in Sources */,
