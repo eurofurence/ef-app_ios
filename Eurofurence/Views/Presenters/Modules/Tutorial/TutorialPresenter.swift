@@ -61,7 +61,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     }
 
     func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) {
-        _ = tutorialScene.showTutorialPage()
+        showInitiateDownloadPage()
     }
 
     // MARK: Private

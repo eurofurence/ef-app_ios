@@ -68,7 +68,9 @@ class WhenTheTutorialAppears: XCTestCase {
     }
     
     private func showBeginInitialDownloadTutorialPage(_ networkReachability: NetworkReachability = ReachableWiFiNetwork()) -> TutorialTestContext {
-        return showTutorial(networkReachability, UserAcknowledgedPushPermissions())
+        let setup = showTutorial(networkReachability, UserNotAcknowledgedPushPermissions())
+        setup.tutorial.tutorialPage.simulateTappingSecondaryActionButton()
+        return setup
     }
     
     func testItShouldBeToldToShowTheTutorialPage() {
