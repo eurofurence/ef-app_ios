@@ -53,23 +53,20 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     // MARK: TutorialPageSceneDelegate
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
-        if !userAcknowledgedPushPermissionsRequest.userHasAcknowledgedRequestForPushPermissions {
+        guard userAcknowledgedPushPermissionsRequest.userHasAcknowledgedRequestForPushPermissions else {
             pushPermissionsRequesting.requestPushPermissions()
+            return
         }
 
         if networkReachability.wifiReachable {
-            if userAcknowledgedPushPermissionsRequest.userHasAcknowledgedRequestForPushPermissions {
-                completeTutorial()
-            }
+            completeTutorial()
         } else {
-            if userAcknowledgedPushPermissionsRequest.userHasAcknowledgedRequestForPushPermissions {
-                let allowDownloadMessage = string(for: .cellularDownloadAlertContinueOverCellularTitle)
-                let allowDownloadOverCellular = AlertAction(title: allowDownloadMessage, action: completeTutorial)
-                let cancel = AlertAction(title: string(for: .cancel))
-                alertRouter.showAlert(title: string(for: .cellularDownloadAlertTitle),
-                                      message: string(for: .cellularDownloadAlertMessage),
-                                      actions: allowDownloadOverCellular, cancel)
-            }
+            let allowDownloadMessage = string(for: .cellularDownloadAlertContinueOverCellularTitle)
+            let allowDownloadOverCellular = AlertAction(title: allowDownloadMessage, action: completeTutorial)
+            let cancel = AlertAction(title: string(for: .cancel))
+            alertRouter.showAlert(title: string(for: .cellularDownloadAlertTitle),
+                                  message: string(for: .cellularDownloadAlertMessage),
+                                  actions: allowDownloadOverCellular, cancel)
         }
     }
 
