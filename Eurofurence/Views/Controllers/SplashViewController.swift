@@ -27,10 +27,8 @@ class SplashViewController: UIViewController, SplashScene,
 
     // MARK: Overrides
 
-    override var prefersStatusBarHidden: Bool {
-        get {
-            return true
-        }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 
     override func viewDidLoad() {
