@@ -5,8 +5,10 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-import UIKit
 import Eureka
+import FirebaseMessaging
+import MobileCoreServices
+import UIKit
 
 class SettingsTableViewController: FormViewController {
 
@@ -21,6 +23,7 @@ class SettingsTableViewController: FormViewController {
         makeDataStorageSection()
         makeExperimentalFeaturesSection()
         #if DEBUG
+            makeFCMSection()
             makeDebuggingSettingsSection()
         #endif
     }
@@ -235,6 +238,23 @@ class SettingsTableViewController: FormViewController {
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
                     cell.backgroundColor = UIColor.lightText
         }
+    }
+
+    private func makeFCMSection() {
+        form +++ Section("FCM Token")
+            <<< ButtonRow {
+                $0.title = "Copy to Pasteboard"
+                $0.onCellSelection({ (_, _) in
+                    guard let value = Messaging.messaging().fcmToken else { return }
+                    UIPasteboard.general.setValue(value, forPasteboardType: kUTTypeRTF as String)
+
+                    let alert = UIAlertController(title: "FCM Copied",
+                                                  message: "Send this to a developer if you'd like to receive a test notification",
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+                    self.present(alert, animated: true)
+                })
+            }
     }
 
     private func makeDebuggingSettingsSection() {
