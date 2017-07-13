@@ -84,6 +84,9 @@ class EventViewController: UIViewController {
 		alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: {
 			_ in CalendarAccess.instance.insert(event: event)
 		}))
+
+        alert.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+
         self.present(alert, animated: true, completion: nil)
     }
 
