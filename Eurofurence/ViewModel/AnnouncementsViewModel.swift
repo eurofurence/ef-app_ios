@@ -26,7 +26,7 @@ class AnnouncementsViewModel {
 
 		timedAnnouncementsSignal = Signal.combineLatest(timeService.currentTime.signal, dataContext.Announcements.signal).observe(on: scheduler)
 
-		disposable += Announcements <~ timedAnnouncementsSignal.map(AnnouncementsViewModel.filterValidAnnouncements)
+		disposable += Announcements <~ timedAnnouncementsSignal.map(AnnouncementsViewModel.filterValidAnnouncements).skipRepeats({ $0.count == $1.count && $0.starts(with: $1)})
 
 		disposable += TimeSinceLastSync <~ timeService.currentTime.signal.map({ [unowned self] currentTime in
 			if let lastSyncDate = self.lastSyncDateProvider.lastSyncDate {

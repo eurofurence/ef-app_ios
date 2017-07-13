@@ -28,12 +28,12 @@ class CurrentEventsViewModel {
 
 		disposable += RunningEvents <~ timedEventsSignal.map { (time, items) -> [Event] in
 			return items.filter({ $0.StartDateTimeUtc < time && $0.EndDateTimeUtc > time })
-		}
+		}.skipRepeats({ $0.count == $1.count && $0.starts(with: $1)})
 
-		disposable += UpcomingEvents <~ timedEventsSignal.map({ (time, items) in
+		disposable += UpcomingEvents <~ timedEventsSignal.map { (time, items) in
 			let filteredItems = items.filter({ $0.StartDateTimeUtc > time })
 			return Array(filteredItems[0..<min(10, filteredItems.count)])
-		})
+		}.skipRepeats({ $0.count == $1.count && $0.starts(with: $1)})
 	}
 
 	static private func filterRunningEvents(_ time: Date, _ events: [Event]) -> [Event] {
