@@ -22,6 +22,7 @@ class ReactiveDataContext: DataContextProtocol {
 	let EventConferenceDays = MutableProperty<[EventConferenceDay]>([])
 	let EventConferenceRooms = MutableProperty<[EventConferenceRoom]>([])
 	let EventConferenceTracks = MutableProperty<[EventConferenceTrack]>([])
+	let EventFavorites: MutableProperty<[EventFavorite]> = MutableProperty<[EventFavorite]>([])
 	let Events = MutableProperty<[Event]>([])
 	let Images = MutableProperty<[Image]>([])
 	let KnowledgeEntries = MutableProperty<[KnowledgeEntry]>([])
@@ -133,6 +134,7 @@ class ReactiveDataContext: DataContextProtocol {
 				producers.append(self.dataStore.load(EventConferenceDay.self))
 				producers.append(self.dataStore.load(EventConferenceRoom.self))
 				producers.append(self.dataStore.load(EventConferenceTrack.self))
+				producers.append(self.dataStore.load(EventFavorite.self))
 				producers.append(self.dataStore.load(Event.self))
 			}
 			if areas.contains(.Images) {
@@ -183,6 +185,8 @@ class ReactiveDataContext: DataContextProtocol {
 						self.EventConferenceRooms.swap(value.entityData as! [EventConferenceRoom])
 					case is EventConferenceTrack.Type:
 						self.EventConferenceTracks.swap(value.entityData as! [EventConferenceTrack])
+					case is EventFavorite.Type:
+						self.EventFavorites.swap(value.entityData as! [EventFavorite])
 					case is Event.Type:
 						self.Events.swap(value.entityData as! [Event])
 					case is Image.Type:
@@ -231,6 +235,7 @@ class ReactiveDataContext: DataContextProtocol {
 				producers.append(self.dataStore.save(EventConferenceDay.self, entityData: self.EventConferenceDays.value))
 				producers.append(self.dataStore.save(EventConferenceRoom.self, entityData: self.EventConferenceRooms.value))
 				producers.append(self.dataStore.save(EventConferenceTrack.self, entityData: self.EventConferenceTracks.value))
+				producers.append(self.dataStore.save(EventFavorite.self, entityData: self.EventFavorites.value))
 				producers.append(self.dataStore.save(Event.self, entityData: self.Events.value))
 			}
 			if areas.contains(.Images) {
@@ -288,6 +293,7 @@ class ReactiveDataContext: DataContextProtocol {
 		EventConferenceDays.swap([])
 		EventConferenceRooms.swap([])
 		EventConferenceTracks.swap([])
+		EventFavorites.swap([])
 		Events.swap([])
 		Images.swap([])
 		KnowledgeEntries.swap([])

@@ -18,6 +18,7 @@ protocol DataContextProtocol {
 	var EventConferenceDays: MutableProperty<[EventConferenceDay]> { get }
 	var EventConferenceRooms: MutableProperty<[EventConferenceRoom]> { get }
 	var EventConferenceTracks: MutableProperty<[EventConferenceTrack]> { get }
+	var EventFavorites: MutableProperty<[EventFavorite]> { get }
 	var Images: MutableProperty<[Image]> { get }
 	var KnowledgeEntries: MutableProperty<[KnowledgeEntry]> { get }
 	var KnowledgeGroups: MutableProperty<[KnowledgeGroup]> { get }
@@ -73,6 +74,8 @@ struct DataContextArea: OptionSet, CustomStringConvertible {
 		case is EventConferenceTrack.Type:
 			return self.Events
 		case is Event.Type:
+			return self.Events
+		case is EventFavorite.Type:
 			return self.Events
 		case is Image.Type:
 			return self.Images
