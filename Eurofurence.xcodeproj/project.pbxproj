@@ -960,6 +960,7 @@
 				9ACF99321EBE172D006FC958 /* Resources */,
 				AD43207D87B13D6AADFF543F /* [CP] Embed Pods Frameworks */,
 				ADF6132ECB7A0047F93FE8DD /* [CP] Copy Pods Resources */,
+				9ACB01051F1808BA001CE9D2 /* Upload to Firebase */,
 			);
 			buildRules = (
 			);
@@ -1109,6 +1110,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ -f \"${PODS_ROOT}/SwiftLint/swiftlint\" ]; then\n    cd Eurofurence\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n    cd ..\nelse\n    echo \"warning: SwiftLint pod not installed, please run pod install in the root directory of the project!\"\nfi";
+		};
+		9ACB01051F1808BA001CE9D2 /* Upload to Firebase */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Upload to Firebase";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ] && [ -f \"ServiceAccount.json\" ]; then\n    GOOGLE_APP_ID=1:1003745003618:ios:ccb2d0faa0f89da5\n    \"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"ServiceAccount.json\"\nfi";
 		};
 		AB8BAC5DE2C718F04F373F4A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1464,6 +1479,96 @@
 			};
 			name = Release;
 		};
+		9ACB01061F180AA4001CE9D2 /* Profiling */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Profiling;
+		};
+		9ACB01071F180AA4001CE9D2 /* Profiling */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27C948D12455A352D46AF5B6 /* Pods-Eurofurence.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
+				DEVELOPMENT_TEAM = 557SGQG5H4;
+				INFOPLIST_FILE = Eurofurence/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos10.3;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Profiling;
+		};
+		9ACB01081F180AA4001CE9D2 /* Profiling */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5BC6AE61AB3CCDF97473815 /* Pods-EurofurenceTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 557SGQG5H4;
+				INFOPLIST_FILE = EurofurenceTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Eurofurence.app/Eurofurence";
+			};
+			name = Profiling;
+		};
+		9ACB01091F180AA4001CE9D2 /* Profiling */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 557SGQG5H4;
+				INFOPLIST_FILE = EurofurenceUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Eurofurence;
+			};
+			name = Profiling;
+		};
 		9ACF994F1EBE172D006FC958 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1632,14 +1737,17 @@
 			buildConfigurations = (
 				78D7EEA81F17F40C005372A9 /* Debug */,
 				78D7EEA91F17F40C005372A9 /* Release */,
+				9ACB01091F180AA4001CE9D2 /* Profiling */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9ACF992F1EBE172D006FC958 /* Build configuration list for PBXProject "Eurofurence" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9ACF994F1EBE172D006FC958 /* Debug */,
 				9ACF99501EBE172D006FC958 /* Release */,
+				9ACB01061F180AA4001CE9D2 /* Profiling */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1649,6 +1757,7 @@
 			buildConfigurations = (
 				9ACF99521EBE172D006FC958 /* Debug */,
 				9ACF99531EBE172D006FC958 /* Release */,
+				9ACB01071F180AA4001CE9D2 /* Profiling */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1658,6 +1767,7 @@
 			buildConfigurations = (
 				9ACF99551EBE172D006FC958 /* Debug */,
 				9ACF99561EBE172D006FC958 /* Release */,
+				9ACB01081F180AA4001CE9D2 /* Profiling */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

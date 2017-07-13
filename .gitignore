@@ -68,3 +68,4 @@ playground.xcworkspace
 #Pods/
 .idea
 Pods/SwiftLint
+ServiceAccount.json
