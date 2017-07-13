@@ -17,13 +17,14 @@ struct ShowInitiateDownloadTutorialPage: TutorialPageDelegate {
     var tutorialStateProviding: UserCompletedTutorialStateProviding
 
     func tutorialPageCompletedByUser(_ tutorialPage: TutorialPage) {
-        _ = InitiateDownloadTutorialPagePresenter(tutorialScene: tutorialScene,
-                                                  splashScreenRouter: splashScreenRouter,
+        let completeTutorial = CompleteTutorial(splashScreenRouter: splashScreenRouter,
+                                                tutorialStateProviding: tutorialStateProviding)
+        _ = InitiateDownloadTutorialPagePresenter(delegate: completeTutorial,
+                                                  tutorialScene: tutorialScene,
                                                   alertRouter: alertRouter,
                                                   presentationAssets: presentationAssets,
                                                   presentationStrings: presentationStrings,
-                                                  networkReachability: networkReachability,
-                                                  tutorialStateProviding: tutorialStateProviding)
+                                                  networkReachability: networkReachability)
     }
 
 }

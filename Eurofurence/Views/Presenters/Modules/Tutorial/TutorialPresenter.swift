@@ -56,13 +56,14 @@ class TutorialPresenter {
     // MARK: Private
 
     private func showInitiateDownloadPage() {
-        _ = InitiateDownloadTutorialPagePresenter(tutorialScene: tutorialScene,
-                                                  splashScreenRouter: splashScreenRouter,
+        let completeTutorial = CompleteTutorial(splashScreenRouter: splashScreenRouter,
+                                                tutorialStateProviding: tutorialStateProviding)
+        _ = InitiateDownloadTutorialPagePresenter(delegate: completeTutorial,
+                                                  tutorialScene: tutorialScene,
                                                   alertRouter: alertRouter,
                                                   presentationAssets: presentationAssets,
                                                   presentationStrings: presentationStrings,
-                                                  networkReachability: networkReachability,
-                                                  tutorialStateProviding: tutorialStateProviding)
+                                                  networkReachability: networkReachability)
     }
 
     private func showRequestPushPermissionsPage() {
