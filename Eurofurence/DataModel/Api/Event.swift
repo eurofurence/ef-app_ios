@@ -29,7 +29,10 @@ class Event: EntityBase {
     var Title: String = ""
 
 	var _EventFavorite: EventFavorite?
-	var IsFavorite: Bool { get { return _EventFavorite?.IsFavorite ?? false } }
+	var IsFavorite: Bool {
+		get { return _EventFavorite?.IsFavorite ?? false }
+		set(value) { _EventFavorite?.IsFavorite = value }
+	}
 
 	weak var BannerImage: Image?
     weak var ConferenceDay: EventConferenceDay?
@@ -43,6 +46,7 @@ class Event: EntityBase {
 			        (keyInObject: "ConferenceDay", keyInResource: nil),
 			        (keyInObject: "ConferenceTrack", keyInResource: nil),
 			        (keyInObject: "ConferenceRoom", keyInResource: nil),
+			        (keyInObject: "IsFavorite", keyInResource: nil),
 			        (keyInObject: "PosterImage", keyInResource: nil),
 			        (keyInObject: "_EventFavorite", keyInResource: nil)]
 	}
