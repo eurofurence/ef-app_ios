@@ -11,16 +11,19 @@ import Foundation
 struct TutorialModule {
 
     static func initialize(context: ApplicationContext, routers: Routers) {
-        _ = TutorialPresenter(tutorialScene: routers.tutorialRouter.showTutorial(),
-                              presentationStrings: context.presentationStrings,
-                              presentationAssets: context.presentationAssets,
-                              splashScreenRouter: routers.splashScreenRouter,
-                              alertRouter: routers.alertRouter,
-                              tutorialStateProviding: context.firstTimeLaunchProviding,
-                              witnessedTutorialPushPermissionsRequest: context.witnessedTutorialPushPermissionsRequest,
-                              networkReachability: context.networkReachability,
-                              pushPermissionsRequesting: context.pushPermissionsRequesting,
-                              witnessedSystemPushPermissionsRequest: context.witnessedSystemPushPermissionsRequest)
+        let tutorialContext = TutorialPresentationContext(
+            tutorialScene: routers.tutorialRouter.showTutorial(),
+            presentationStrings: context.presentationStrings,
+            presentationAssets: context.presentationAssets,
+            splashScreenRouter: routers.splashScreenRouter,
+            alertRouter: routers.alertRouter,
+            tutorialStateProviding: context.firstTimeLaunchProviding,
+            networkReachability: context.networkReachability,
+            pushPermissionsRequesting: context.pushPermissionsRequesting,
+            witnessedTutorialPushPermissionsRequest: context.witnessedTutorialPushPermissionsRequest,
+            witnessedSystemPushPermissionsRequest: context.witnessedSystemPushPermissionsRequest)
+
+        _ = TutorialPresenter(context: tutorialContext)
     }
 
 }

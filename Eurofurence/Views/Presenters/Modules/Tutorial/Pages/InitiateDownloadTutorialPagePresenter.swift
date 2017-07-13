@@ -8,26 +8,24 @@
 
 import Foundation
 
-struct InitiateDownloadTutorialPagePresenter: TutorialPageSceneDelegate {
+struct InitiateDownloadTutorialPagePresenter: TutorialPage,
+                                              TutorialPageSceneDelegate {
 
+    private var delegate: TutorialPageDelegate
     private var networkReachability: NetworkReachability
-    private var splashScreenRouter: SplashScreenRouter
     private var alertRouter: AlertRouter
     private var presentationStrings: PresentationStrings
-    private var tutorialStateProviding: UserCompletedTutorialStateProviding
 
-    init(tutorialScene: TutorialScene,
-         splashScreenRouter: SplashScreenRouter,
+    init(delegate: TutorialPageDelegate,
+         tutorialScene: TutorialScene,
          alertRouter: AlertRouter,
          presentationAssets: PresentationAssets,
          presentationStrings: PresentationStrings,
-         networkReachability: NetworkReachability,
-         tutorialStateProviding: UserCompletedTutorialStateProviding) {
-        self.splashScreenRouter = splashScreenRouter
+         networkReachability: NetworkReachability) {
+        self.delegate = delegate
         self.alertRouter = alertRouter
         self.presentationStrings = presentationStrings
         self.networkReachability = networkReachability
-        self.tutorialStateProviding = tutorialStateProviding
 
         var tutorialPage = tutorialScene.showTutorialPage()
         tutorialPage.tutorialPageSceneDelegate = self
@@ -40,10 +38,12 @@ struct InitiateDownloadTutorialPagePresenter: TutorialPageSceneDelegate {
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
         if networkReachability.wifiReachable {
-            completeTutorial()
+            delegate.tutorialPageCompletedByUser(self)
         } else {
             let allowDownloadMessage = presentationStrings.presentationString(for: .cellularDownloadAlertContinueOverCellularTitle)
-            let allowDownloadOverCellular = AlertAction(title: allowDownloadMessage, action: completeTutorial)
+            let allowDownloadOverCellular = AlertAction(title: allowDownloadMessage, action: {
+                self.delegate.tutorialPageCompletedByUser(self)
+            })
             let cancel = AlertAction(title: presentationStrings.presentationString(for: .cancel))
             alertRouter.showAlert(title: presentationStrings.presentationString(for: .cellularDownloadAlertTitle),
                                   message: presentationStrings.presentationString(for: .cellularDownloadAlertMessage),
@@ -52,11 +52,6 @@ struct InitiateDownloadTutorialPagePresenter: TutorialPageSceneDelegate {
     }
 
     func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) {
-    }
-
-    private func completeTutorial() {
-        _ = splashScreenRouter.showSplashScreen()
-        tutorialStateProviding.markTutorialAsComplete()
     }
 
 }
