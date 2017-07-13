@@ -19,6 +19,9 @@ PODS:
   - Firebase/Crash (4.0.3):
     - Firebase/Core
     - FirebaseCrash (= 2.0.0)
+  - Firebase/Messaging (4.0.3):
+    - Firebase/Core
+    - FirebaseMessaging (= 2.0.0)
   - FirebaseAnalytics (4.0.2):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
@@ -33,6 +36,12 @@ PODS:
     - Protobuf (~> 3.1)
   - FirebaseInstanceID (2.0.0):
     - FirebaseCore (~> 4.0)
+  - FirebaseMessaging (2.0.0):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - Protobuf (~> 3.1)
   - GoogleToolboxForMac/Defines (2.1.1)
   - GoogleToolboxForMac/Logger (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
@@ -58,6 +67,7 @@ DEPENDENCIES:
   - EVReflection/Alamofire
   - Firebase/Core
   - Firebase/Crash
+  - Firebase/Messaging
   - ReachabilitySwift (from `https://github.com/ashleymills/Reachability.swift`)
   - ReactiveCocoa (~> 5.0.0)
   - ReactiveSwift (~> 1.1)
@@ -90,6 +100,7 @@ SPEC CHECKSUMS:
   FirebaseCore: c709067051de07bdaffdc4e735cd7299a23c463a
   FirebaseCrash: 600ec2cbd8e10c3064a42de2c6ee7687bd02a076
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
+  FirebaseMessaging: 227406c05b0dc9290702d2e9f18ab5528f0c2cf2
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
@@ -98,6 +109,6 @@ SPEC CHECKSUMS:
   Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
   SwiftLint: f60095dc173a3f3ec505bb34f5229c3dfd779a54
 
-PODFILE CHECKSUM: 9414cdfc6fb9fc182c9e757fb88db5c908ece9da
+PODFILE CHECKSUM: 2533c7ba74ba0a0f9878bd68a5a75b6d195ca768
 
 COCOAPODS: 1.3.0.beta.2
