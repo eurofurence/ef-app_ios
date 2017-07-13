@@ -28,7 +28,8 @@ class Event: EntityBase {
 	var StartTime: String = ""
     var Title: String = ""
 
-	var IsFavorite: Bool = false
+	var _EventFavorite: EventFavorite?
+	var IsFavorite: Bool { get { return _EventFavorite?.IsFavorite ?? false } }
 
 	weak var BannerImage: Image?
     weak var ConferenceDay: EventConferenceDay?
@@ -42,7 +43,8 @@ class Event: EntityBase {
 			        (keyInObject: "ConferenceDay", keyInResource: nil),
 			        (keyInObject: "ConferenceTrack", keyInResource: nil),
 			        (keyInObject: "ConferenceRoom", keyInResource: nil),
-			        (keyInObject: "PosterImage", keyInResource: nil)]
+			        (keyInObject: "PosterImage", keyInResource: nil),
+			        (keyInObject: "_EventFavorite", keyInResource: nil)]
 	}
 
 	override func propertyConverters() -> [(key: String, decodeConverter: ((Any?) -> Void), encodeConverter: (() -> Any?))] {
