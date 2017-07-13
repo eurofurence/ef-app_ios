@@ -17,6 +17,7 @@ class SettingsTableViewController: FormViewController {
         super.viewDidLoad()
 
         makeNetworkSection()
+        makePushNotificationsSection()
         makeDataStorageSection()
         makeExperimentalFeaturesSection()
         #if DEBUG
@@ -108,6 +109,31 @@ class SettingsTableViewController: FormViewController {
                 }.cellUpdate { cell, _ in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         }
+    }
+
+    private func makePushNotificationsSection() {
+        let defaults = UserDefaults.standard
+        let witnessedSystemPushRequest = UserDefaultsWitnessedSystemPushPermissionsRequest(userDefaults: defaults)
+        guard !witnessedSystemPushRequest.witnessedSystemPushPermissionsRequest else { return }
+
+        let section = Section("Push Notifications")
+        section <<< ButtonRow {
+                $0.title = "Enable Push Notifications"
+            }.onCellSelection({ (_, _) in
+                if witnessedSystemPushRequest.witnessedSystemPushPermissionsRequest {
+                    let alert = UIAlertController(title: "Use Settings",
+                                                  message: "Enable or disable Eurofurence's push notification permissions in Settings",
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+                    self.present(alert, animated: true)
+                } else {
+                    ApplicationPushPermissionsRequesting().requestPushPermissions { }
+                    witnessedSystemPushRequest.markWitnessedSystemPushPermissionsRequest()
+                    defaults.synchronize()
+                }
+            })
+
+        form +++ section
     }
 
     private func makeDataStorageSection() {
