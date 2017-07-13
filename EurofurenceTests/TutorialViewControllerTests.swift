@@ -24,6 +24,10 @@ class TutorialViewControllerTests: XCTestCase {
     func testTheViewControllerShouldPreferTheLightStatusBarStyle() {
         XCTAssertEqual(tutorialController.preferredStatusBarStyle, .lightContent)
     }
+    
+    func testTheViewControllerShouldUseTheScrollingPagingStyle() {
+        XCTAssertEqual(tutorialController.transitionStyle, .scroll)
+    }
 
     func testShowingTutorialPageShouldReturnTutorialPageViewController() {
         let page = tutorialController.showTutorialPage()
