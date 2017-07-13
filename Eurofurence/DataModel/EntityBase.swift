@@ -26,7 +26,9 @@ class EntityBase: EVObject, Comparable, VersionedDataModel {
 	}
 
 	public dynamic func equalTo(_ rhs: EntityBase) -> Bool {
-		return self.Id == rhs.Id
+		return self.Id == rhs.Id &&
+			self.LastChangeDateTimeUtc == rhs.LastChangeDateTimeUtc &&
+			self.IsDeleted == rhs.IsDeleted
 	}
 
 	static func < (lhs: EntityBase, rhs: EntityBase) -> Bool {
@@ -34,7 +36,7 @@ class EntityBase: EVObject, Comparable, VersionedDataModel {
 	}
 
 	public dynamic func lessThan(_ rhs: EntityBase) -> Bool {
-		return self.Id < rhs.Id
+		return self.LastChangeDateTimeUtc < rhs.LastChangeDateTimeUtc
 	}
 
 	override public func propertyMapping() -> [(keyInObject: String?,
