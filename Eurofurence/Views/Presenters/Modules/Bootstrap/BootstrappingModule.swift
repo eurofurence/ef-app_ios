@@ -11,6 +11,12 @@ import Foundation
 struct BootstrappingModule {
 
     static func bootstrap(context: ApplicationContext, routers: Routers) {
+        if context.witnessedSystemPushPermissionsRequest.witnessedSystemPushPermissionsRequest {
+            context.pushPermissionsRequesting.requestPushPermissions {
+
+            }
+        }
+
         if context.firstTimeLaunchProviding.userHasCompletedTutorial {
             let quote = context.quoteGenerator.makeQuote()
             let splashScreen = routers.splashScreenRouter.showSplashScreen()

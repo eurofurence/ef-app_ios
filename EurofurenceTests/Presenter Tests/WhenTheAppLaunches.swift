@@ -42,5 +42,18 @@ class WhenTheAppLaunches: XCTestCase {
 
         XCTAssertFalse(tutorialRouter.wasToldToShowTutorial)
     }
+
+    func testAndTheUserHasWitnessedTheSystemPushNotificationsPromptThePushRequesterRequestsPermissionsToRegenrateDeviceToken() {
+        let witnessedSystemPushPermissions = CapturingWitnessedSystemPushPermissionsRequest()
+        witnessedSystemPushPermissions.witnessedSystemPushPermissionsRequest = true
+        let capturingPushPermissionsRequesting = CapturingPushPermissionsRequesting()
+        let context = PresentationTestBuilder()
+            .withPushPermissionsRequesting(capturingPushPermissionsRequesting)
+            .withWitnessedSystemPushPermissionsRequest(witnessedSystemPushPermissions)
+            .build()
+        context.bootstrap()
+
+        XCTAssertTrue(capturingPushPermissionsRequesting.didRequestPermission)
+    }
     
 }
