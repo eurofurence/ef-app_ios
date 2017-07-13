@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TutorialPresenter: TutorialPageSceneDelegate {
+class TutorialPresenter {
 
     // MARK: Properties
 
@@ -53,30 +53,7 @@ class TutorialPresenter: TutorialPageSceneDelegate {
         }
     }
 
-    // MARK: TutorialPageSceneDelegate
-
-    func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
-        guard witnessedTutorialPushPermissionsRequest.witnessedTutorialPushPermissionsRequest else {
-            witnessedSystemPushPermissionsRequest.markWitnessedSystemPushPermissionsRequest()
-            pushPermissionsRequesting.requestPushPermissions {
-                self.witnessedTutorialPushPermissionsRequest.markWitnessedTutorialPushPermissionsRequest()
-                self.showInitiateDownloadPage()
-            }
-
-            return
-        }
-    }
-
-    func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) {
-        showInitiateDownloadPage()
-        witnessedTutorialPushPermissionsRequest.markWitnessedTutorialPushPermissionsRequest()
-    }
-
     // MARK: Private
-
-    private func string(for scenario: PresentationScenario) -> String {
-        return presentationStrings.presentationString(for: scenario)
-    }
 
     private func showInitiateDownloadPage() {
         _ = InitiateDownloadTutorialPagePresenter(tutorialScene: tutorialScene,
@@ -89,15 +66,20 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     }
 
     private func showRequestPushPermissionsPage() {
-        var tutorialPage = tutorialScene.showTutorialPage()
-        tutorialPage.tutorialPageSceneDelegate = self
-        tutorialPage.showPageTitle(string(for: .tutorialPushPermissionsRequestTitle))
-        tutorialPage.showPageDescription(string(for: .tutorialPushPermissionsRequestDescription))
-        tutorialPage.showPageImage(presentationAssets.requestPushNotificationPermissionsAsset)
-        tutorialPage.showPrimaryActionButton()
-        tutorialPage.showPrimaryActionDescription(string(for: .tutorialAllowPushPermissions))
-        tutorialPage.showSecondaryActionButton()
-        tutorialPage.showSecondaryActionDescription(string(for: .tutorialDenyPushPermissions))
+        let delegate = ShowInitiateDownloadTutorialPage(tutorialScene: tutorialScene,
+                                                        splashScreenRouter: splashScreenRouter,
+                                                        alertRouter: alertRouter,
+                                                        presentationAssets: presentationAssets,
+                                                        presentationStrings: presentationStrings,
+                                                        networkReachability: networkReachability,
+                                                        tutorialStateProviding: tutorialStateProviding)
+        _ = RequestPushPermissionsTutorialPagePresenter(delegate: delegate,
+                                                        tutorialScene: tutorialScene,
+                                                        presentationStrings: presentationStrings,
+                                                        presentationAssets: presentationAssets,
+                                                        witnessedSystemPushPermissionsRequest: witnessedSystemPushPermissionsRequest,
+                                                        witnessedTutorialPushPermissionsRequest: witnessedTutorialPushPermissionsRequest,
+                                                        pushPermissionsRequesting: pushPermissionsRequesting)
     }
 
 }

@@ -43,6 +43,9 @@
 		7820A7011F16C0F0004C0FB5 /* CapturingUserOptedIntoPushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A7001F16C0F0004C0FB5 /* CapturingUserOptedIntoPushNotifications.swift */; };
 		7820A7031F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A7021F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift */; };
 		7820A7051F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A7041F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift */; };
+		7820A7071F17943B004C0FB5 /* TutorialPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A7061F17943B004C0FB5 /* TutorialPage.swift */; };
+		7820A7091F17946E004C0FB5 /* RequestPushPermissionsTutorialPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A7081F17946E004C0FB5 /* RequestPushPermissionsTutorialPagePresenter.swift */; };
+		7820A70C1F179496004C0FB5 /* ShowInitiateDownloadTutorialPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A70B1F179496004C0FB5 /* ShowInitiateDownloadTutorialPage.swift */; };
 		78455B3A1F116A7E005BE2D7 /* WhenTheAppLaunches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */; };
 		78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */; };
 		78455B3F1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B3E1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift */; };
@@ -223,6 +226,9 @@
 		7820A7001F16C0F0004C0FB5 /* CapturingUserOptedIntoPushNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingUserOptedIntoPushNotifications.swift; path = "Test Doubles/CapturingUserOptedIntoPushNotifications.swift"; sourceTree = "<group>"; };
 		7820A7021F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsWitnessedSystemPushPermissionsRequest.swift; path = "Push Permissions/UserDefaultsWitnessedSystemPushPermissionsRequest.swift"; sourceTree = "<group>"; };
 		7820A7041F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsOptedIntoPushNotificationsTests.swift; sourceTree = "<group>"; };
+		7820A7061F17943B004C0FB5 /* TutorialPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialPage.swift; path = Presenters/Modules/Tutorial/Pages/TutorialPage.swift; sourceTree = "<group>"; };
+		7820A7081F17946E004C0FB5 /* RequestPushPermissionsTutorialPagePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestPushPermissionsTutorialPagePresenter.swift; path = Presenters/Modules/Tutorial/Pages/RequestPushPermissionsTutorialPagePresenter.swift; sourceTree = "<group>"; };
+		7820A70B1F179496004C0FB5 /* ShowInitiateDownloadTutorialPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowInitiateDownloadTutorialPage.swift; path = Presenters/Modules/Tutorial/Pages/Actions/ShowInitiateDownloadTutorialPage.swift; sourceTree = "<group>"; };
 		78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenTheAppLaunches.swift; path = "Presenter Tests/WhenTheAppLaunches.swift"; sourceTree = "<group>"; };
 		78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsTutorialStateProvider.swift; sourceTree = "<group>"; };
 		78455B3E1F11771F005BE2D7 /* UserDefaultsTutorialStateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsTutorialStateProvider.swift; path = Views/Controllers/Tutorial/UserDefaultsTutorialStateProvider.swift; sourceTree = "<group>"; };
@@ -403,7 +409,10 @@
 		6EEC6D9B1F173DCF00205F2D /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				7820A70A1F179487004C0FB5 /* Actions */,
+				7820A7061F17943B004C0FB5 /* TutorialPage.swift */,
 				6EEC6D9C1F173DE700205F2D /* InitiateDownloadTutorialPagePresenter.swift */,
+				7820A7081F17946E004C0FB5 /* RequestPushPermissionsTutorialPagePresenter.swift */,
 			);
 			name = Pages;
 			sourceTree = "<group>";
@@ -486,6 +495,14 @@
 				7820A7021F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift */,
 			);
 			name = "Push Permissions";
+			sourceTree = "<group>";
+		};
+		7820A70A1F179487004C0FB5 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				7820A70B1F179496004C0FB5 /* ShowInitiateDownloadTutorialPage.swift */,
+			);
+			name = Actions;
 			sourceTree = "<group>";
 		};
 		78455B3D1F11770C005BE2D7 /* Tutorial */ = {
@@ -1189,6 +1206,7 @@
 				9ACF99941EC858B2006FC958 /* LinkFragment.swift in Sources */,
 				6EF96CDD1F0F544B00EE6134 /* EventKitCalendarEvent.swift in Sources */,
 				6EF96CD91F0EDCB300EE6134 /* EventKitCalendarPermissionsProviding.swift in Sources */,
+				7820A7071F17943B004C0FB5 /* TutorialPage.swift in Sources */,
 				78C86D581F12338D003A20E6 /* StoryboardRouters.swift in Sources */,
 				9ACF99951EC858B2006FC958 /* EventConferenceRoom.swift in Sources */,
 				78455B451F11778D005BE2D7 /* TutorialRouter.swift in Sources */,
@@ -1228,8 +1246,10 @@
 				D6F3D523BDCDDA3A2A163E55 /* TimeLabelCell.swift in Sources */,
 				78567B451F103C3800EBA31D /* RefreshControlDataStoreDelegate.swift in Sources */,
 				78455B411F117742005BE2D7 /* UserCompletedTutorialStateProviding.swift in Sources */,
+				7820A7091F17946E004C0FB5 /* RequestPushPermissionsTutorialPagePresenter.swift in Sources */,
 				7820A6E31F13FD2C004C0FB5 /* NetworkReachability.swift in Sources */,
 				78455B5B1F117E27005BE2D7 /* TutorialPageViewController.swift in Sources */,
+				7820A70C1F179496004C0FB5 /* ShowInitiateDownloadTutorialPage.swift in Sources */,
 				D6F3D620BA994A6570325C66 /* DealersTableViewCell.swift in Sources */,
 				D6F3DDCB5EF23B138BD25865 /* EventHeaderCellTableViewCell.swift in Sources */,
 				9A2A94891F12D152004D66FB /* LastSyncDateProviding.swift in Sources */,

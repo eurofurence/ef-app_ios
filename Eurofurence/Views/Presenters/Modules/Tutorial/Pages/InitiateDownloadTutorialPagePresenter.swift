@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct InitiateDownloadTutorialPagePresenter: TutorialPageSceneDelegate {
+struct InitiateDownloadTutorialPagePresenter: TutorialPage,
+                                              TutorialPageSceneDelegate {
 
     private var networkReachability: NetworkReachability
     private var splashScreenRouter: SplashScreenRouter
