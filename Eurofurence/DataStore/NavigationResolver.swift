@@ -41,6 +41,7 @@ class NavigationResolver: NavigationResolverProtocol {
 			}
 		})
 		print("\(#function): Resolving Events")
+		var eventFavorites: [EventFavorite] = []
 		dataContext.Events.modify({ value in
 			for e in value {
 				e.BannerImage = dataContext.Images.value.first(where: { $0.Id == e.BannerImageId })
@@ -53,8 +54,19 @@ class NavigationResolver: NavigationResolverProtocol {
 				e.ConferenceDay?.Events.append(e)
 				e.ConferenceRoom?.Events.append(e)
 				e.ConferenceTrack?.Events.append(e)
+
+				e._EventFavorite = dataContext.EventFavorites.value.first(where: { $0.EventId == e.Id })
+				if let eventFavorite = e._EventFavorite {
+					eventFavorites.append(eventFavorite)
+				} else {
+					let eventFavorite = EventFavorite(for: e)
+					e._EventFavorite = eventFavorite
+					dataContext.EventFavorites.value.append(eventFavorite)
+					eventFavorites.append(eventFavorite)
+				}
 			}
 		})
+		dataContext.EventFavorites.swap(eventFavorites)
 
 		print("\(#function): Resolving KnowledgeGroups")
 		dataContext.KnowledgeGroups.modify({ value in
