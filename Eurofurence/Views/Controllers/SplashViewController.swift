@@ -72,7 +72,7 @@ class SplashViewController: UIViewController, SplashScene,
     }
 
     func dataStoreLoadDidProduceProgress(_ progress: Progress) {
-        loadingProgressView.progress = Float(progress.fractionCompleted)
+        loadingProgressView.setProgress(Float(progress.fractionCompleted), animated: true)
     }
 
     func dataStoreLoadDidFinish() {
