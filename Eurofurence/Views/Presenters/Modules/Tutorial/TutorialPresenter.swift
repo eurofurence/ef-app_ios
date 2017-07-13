@@ -65,17 +65,6 @@ class TutorialPresenter: TutorialPageSceneDelegate {
 
             return
         }
-
-        if networkReachability.wifiReachable {
-            completeTutorial()
-        } else {
-            let allowDownloadMessage = string(for: .cellularDownloadAlertContinueOverCellularTitle)
-            let allowDownloadOverCellular = AlertAction(title: allowDownloadMessage, action: completeTutorial)
-            let cancel = AlertAction(title: string(for: .cancel))
-            alertRouter.showAlert(title: string(for: .cellularDownloadAlertTitle),
-                                  message: string(for: .cellularDownloadAlertMessage),
-                                  actions: allowDownloadOverCellular, cancel)
-        }
     }
 
     func tutorialPageSceneDidTapSecondaryActionButton(_ tutorialPageScene: TutorialPageScene) {
@@ -90,13 +79,13 @@ class TutorialPresenter: TutorialPageSceneDelegate {
     }
 
     private func showInitiateDownloadPage() {
-        var tutorialPage = tutorialScene.showTutorialPage()
-        tutorialPage.tutorialPageSceneDelegate = self
-        tutorialPage.showPageImage(presentationAssets.initialLoadInformationAsset)
-        tutorialPage.showPageTitle(string(for: .tutorialInitialLoadTitle))
-        tutorialPage.showPageDescription(string(for: .tutorialInitialLoadDescription))
-        tutorialPage.showPrimaryActionButton()
-        tutorialPage.showPrimaryActionDescription(string(for: .tutorialInitialLoadBeginDownload))
+        _ = InitiateDownloadTutorialPagePresenter(tutorialScene: tutorialScene,
+                                                  splashScreenRouter: splashScreenRouter,
+                                                  alertRouter: alertRouter,
+                                                  presentationAssets: presentationAssets,
+                                                  presentationStrings: presentationStrings,
+                                                  networkReachability: networkReachability,
+                                                  tutorialStateProviding: tutorialStateProviding)
     }
 
     private func showRequestPushPermissionsPage() {
@@ -109,11 +98,6 @@ class TutorialPresenter: TutorialPageSceneDelegate {
         tutorialPage.showPrimaryActionDescription(string(for: .tutorialAllowPushPermissions))
         tutorialPage.showSecondaryActionButton()
         tutorialPage.showSecondaryActionDescription(string(for: .tutorialDenyPushPermissions))
-    }
-
-    private func completeTutorial() {
-        _ = splashScreenRouter.showSplashScreen()
-        tutorialStateProviding.markTutorialAsComplete()
     }
 
 }
