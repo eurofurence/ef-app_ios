@@ -309,16 +309,13 @@ class ReactiveDataContext: DataContextProtocol {
 			}
 			affectedAreas.insert(DataContextArea.get(for: EntityType.self))
 		} else {
-			var updatedEntities: [EntityType] = []
-			var updatedEntitiesCount = 0
+			var updatedEntities: [EntityType] = syncEntityDelta.ChangedEntities
+			var updatedEntitiesCount = updatedEntities.count
 			for entity in syncTarget.value {
-				if let index = syncEntityDelta.ChangedEntities.index(of: entity) {
-					updatedEntities.append(syncEntityDelta.ChangedEntities[index])
+				if syncEntityDelta.DeletedEntities.contains(entity.Id) {
 					updatedEntitiesCount += 1
-				} else if !syncEntityDelta.DeletedEntities.contains(entity.Id) {
+				} else if syncEntityDelta.ChangedEntities.filter({$0.Id == entity.Id}).isEmpty {
 					updatedEntities.append(entity)
-				} else {
-					updatedEntitiesCount += 1
 				}
 			}
 
