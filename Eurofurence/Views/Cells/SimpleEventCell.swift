@@ -9,10 +9,11 @@ import UIKit
 
 class SimpleEventCell: UITableViewCell {
 
-	@IBOutlet weak var startTimeLabel: UILabel!
 	@IBOutlet weak var endTimeLabel: UILabel!
-	@IBOutlet weak var titleLabel: UILabel!
+	@IBOutlet weak var favoriteButton: UIButton!
+	@IBOutlet weak var startTimeLabel: UILabel!
 	@IBOutlet weak var subTitleLabel: UILabel!
+	@IBOutlet weak var titleLabel: UILabel!
 
 	weak private var _event: Event?
 
@@ -25,6 +26,7 @@ class SimpleEventCell: UITableViewCell {
 			if let event = event {
 				startTimeLabel.text = DateFormatters.hourMinute.string(from: event.StartDateTimeUtc)
 				endTimeLabel.text = DateFormatters.hourMinute.string(from: event.EndDateTimeUtc)
+				favoriteButton.titleLabel?.text = event.IsFavorite ? "★" : "☆"
 			} else {
 				startTimeLabel.text = nil
 				endTimeLabel.text = nil
