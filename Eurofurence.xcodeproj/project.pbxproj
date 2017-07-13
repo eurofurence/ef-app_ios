@@ -97,6 +97,7 @@
 		78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */; };
 		78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */; };
 		78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */; };
+		78D7EEA41F17F40C005372A9 /* EurofurenceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEA31F17F40C005372A9 /* EurofurenceUITests.swift */; };
 		78F555991F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F555981F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift */; };
 		78F5559B1F10D65900BDA7D4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F5559A1F10D65900BDA7D4 /* SplashViewController.swift */; };
 		9A0525411ECA2AF500578798 /* Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0525401ECA2AF500578798 /* Sync.swift */; };
@@ -180,6 +181,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		78D7EEA61F17F40C005372A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9ACF992C1EBE172D006FC958 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9ACF99331EBE172D006FC958;
+			remoteInfo = Eurofurence;
+		};
 		9ACF99491EBE172D006FC958 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9ACF992C1EBE172D006FC958 /* Project object */;
@@ -283,6 +291,9 @@
 		78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInfoPropertyListShould.swift; sourceTree = "<group>"; };
 		78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarServiceTests.swift; sourceTree = "<group>"; };
 		78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		78D7EEA11F17F40C005372A9 /* EurofurenceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		78D7EEA31F17F40C005372A9 /* EurofurenceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceUITests.swift; sourceTree = "<group>"; };
+		78D7EEA51F17F40C005372A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78F555981F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReplaceViewControllersSegue.swift; path = Segues/ReplaceViewControllersSegue.swift; sourceTree = "<group>"; };
 		78F5559A1F10D65900BDA7D4 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		9A0525401ECA2AF500578798 /* Sync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sync.swift; sourceTree = "<group>"; };
@@ -373,6 +384,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		78D7EE9E1F17F40C005372A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9ACF99311EBE172D006FC958 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -622,6 +640,15 @@
 			name = Quotes;
 			sourceTree = "<group>";
 		};
+		78D7EEA21F17F40C005372A9 /* EurofurenceUITests */ = {
+			isa = PBXGroup;
+			children = (
+				78D7EEA31F17F40C005372A9 /* EurofurenceUITests.swift */,
+				78D7EEA51F17F40C005372A9 /* Info.plist */,
+			);
+			path = EurofurenceUITests;
+			sourceTree = "<group>";
+		};
 		78F555971F10D59000BDA7D4 /* Segues */ = {
 			isa = PBXGroup;
 			children = (
@@ -659,6 +686,7 @@
 				78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */,
 				9ACF99751EBE3B4C006FC958 /* SharedFunctions.swift */,
 				9ACF994B1EBE172D006FC958 /* EurofurenceTests */,
+				78D7EEA21F17F40C005372A9 /* EurofurenceUITests */,
 				9ACF99351EBE172D006FC958 /* Products */,
 				2A4A738C931BBD9059F30151 /* Pods */,
 				164F3A1C0E53F6ADD4C20674 /* Frameworks */,
@@ -671,6 +699,7 @@
 			children = (
 				9ACF99341EBE172D006FC958 /* Eurofurence.app */,
 				9ACF99481EBE172D006FC958 /* EurofurenceTests.xctest */,
+				78D7EEA11F17F40C005372A9 /* EurofurenceUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -902,6 +931,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		78D7EEA01F17F40C005372A9 /* EurofurenceUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 78D7EEAA1F17F40C005372A9 /* Build configuration list for PBXNativeTarget "EurofurenceUITests" */;
+			buildPhases = (
+				78D7EE9D1F17F40C005372A9 /* Sources */,
+				78D7EE9E1F17F40C005372A9 /* Frameworks */,
+				78D7EE9F1F17F40C005372A9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				78D7EEA71F17F40C005372A9 /* PBXTargetDependency */,
+			);
+			name = EurofurenceUITests;
+			productName = EurofurenceUITests;
+			productReference = 78D7EEA11F17F40C005372A9 /* EurofurenceUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		9ACF99331EBE172D006FC958 /* Eurofurence */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9ACF99511EBE172D006FC958 /* Build configuration list for PBXNativeTarget "Eurofurence" */;
@@ -954,6 +1001,12 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = Eurofurence;
 				TargetAttributes = {
+					78D7EEA01F17F40C005372A9 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = 557SGQG5H4;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 9ACF99331EBE172D006FC958;
+					};
 					9ACF99331EBE172D006FC958 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 557SGQG5H4;
@@ -990,11 +1043,19 @@
 			targets = (
 				9ACF99331EBE172D006FC958 /* Eurofurence */,
 				9ACF99471EBE172D006FC958 /* EurofurenceTests */,
+				78D7EEA01F17F40C005372A9 /* EurofurenceUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		78D7EE9F1F17F40C005372A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9ACF99321EBE172D006FC958 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1165,6 +1226,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		78D7EE9D1F17F40C005372A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78D7EEA41F17F40C005372A9 /* EurofurenceUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9ACF99301EBE172D006FC958 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1342,6 +1411,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		78D7EEA71F17F40C005372A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9ACF99331EBE172D006FC958 /* Eurofurence */;
+			targetProxy = 78D7EEA61F17F40C005372A9 /* PBXContainerItemProxy */;
+		};
 		9ACF994A1EBE172D006FC958 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9ACF99331EBE172D006FC958 /* Eurofurence */;
@@ -1362,6 +1436,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		78D7EEA81F17F40C005372A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 557SGQG5H4;
+				INFOPLIST_FILE = EurofurenceUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Eurofurence;
+			};
+			name = Debug;
+		};
+		78D7EEA91F17F40C005372A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 557SGQG5H4;
+				INFOPLIST_FILE = EurofurenceUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Eurofurence;
+			};
+			name = Release;
+		};
 		9ACF994F1EBE172D006FC958 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1525,6 +1627,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		78D7EEAA1F17F40C005372A9 /* Build configuration list for PBXNativeTarget "EurofurenceUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78D7EEA81F17F40C005372A9 /* Debug */,
+				78D7EEA91F17F40C005372A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		9ACF992F1EBE172D006FC958 /* Build configuration list for PBXProject "Eurofurence" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
