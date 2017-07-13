@@ -9,6 +9,7 @@ import UIKit
 import ReactiveSwift
 import EVReflection
 import Firebase
+import FirebaseMessaging
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Messaging.messaging().setAPNSToken(deviceToken, type: MessagingAPNSTokenType.unknown)
         PresentationTier.pushRequesting.handlePushRegistrationSuccess()
     }
 
