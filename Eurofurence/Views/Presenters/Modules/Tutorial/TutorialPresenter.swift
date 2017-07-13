@@ -12,41 +12,14 @@ class TutorialPresenter {
 
     // MARK: Properties
 
-    private var tutorialScene: TutorialScene
-    private var presentationStrings: PresentationStrings
-    private var presentationAssets: PresentationAssets
-    private var splashScreenRouter: SplashScreenRouter
-    private var alertRouter: AlertRouter
-    private var tutorialStateProviding: UserCompletedTutorialStateProviding
-    private var networkReachability: NetworkReachability
-    private var pushPermissionsRequesting: PushPermissionsRequesting
-    private var witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
-    private var witnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest
+    private var context: TutorialPresentationContext
 
     // MARK: Initialization
 
-    init(tutorialScene: TutorialScene,
-         presentationStrings: PresentationStrings,
-         presentationAssets: PresentationAssets,
-         splashScreenRouter: SplashScreenRouter,
-         alertRouter: AlertRouter,
-         tutorialStateProviding: UserCompletedTutorialStateProviding,
-         witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest,
-         networkReachability: NetworkReachability,
-         pushPermissionsRequesting: PushPermissionsRequesting,
-         witnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest) {
-        self.tutorialScene = tutorialScene
-        self.presentationStrings = presentationStrings
-        self.presentationAssets = presentationAssets
-        self.splashScreenRouter = splashScreenRouter
-        self.alertRouter = alertRouter
-        self.tutorialStateProviding = tutorialStateProviding
-        self.networkReachability = networkReachability
-        self.pushPermissionsRequesting = pushPermissionsRequesting
-        self.witnessedTutorialPushPermissionsRequest = witnessedTutorialPushPermissionsRequest
-        self.witnessedSystemPushPermissionsRequest = witnessedSystemPushPermissionsRequest
+    init(context: TutorialPresentationContext) {
+        self.context = context
 
-        if witnessedTutorialPushPermissionsRequest.witnessedTutorialPushPermissionsRequest {
+        if context.witnessedTutorialPushPermissionsRequest.witnessedTutorialPushPermissionsRequest {
             showInitiateDownloadPage()
         } else {
             showRequestPushPermissionsPage()
@@ -56,31 +29,31 @@ class TutorialPresenter {
     // MARK: Private
 
     private func showInitiateDownloadPage() {
-        let completeTutorial = CompleteTutorial(splashScreenRouter: splashScreenRouter,
-                                                tutorialStateProviding: tutorialStateProviding)
+        let completeTutorial = CompleteTutorial(splashScreenRouter: context.splashScreenRouter,
+                                                tutorialStateProviding: context.tutorialStateProviding)
         _ = InitiateDownloadTutorialPagePresenter(delegate: completeTutorial,
-                                                  tutorialScene: tutorialScene,
-                                                  alertRouter: alertRouter,
-                                                  presentationAssets: presentationAssets,
-                                                  presentationStrings: presentationStrings,
-                                                  networkReachability: networkReachability)
+                                                  tutorialScene: context.tutorialScene,
+                                                  alertRouter: context.alertRouter,
+                                                  presentationAssets: context.presentationAssets,
+                                                  presentationStrings: context.presentationStrings,
+                                                  networkReachability: context.networkReachability)
     }
 
     private func showRequestPushPermissionsPage() {
-        let delegate = ShowInitiateDownloadTutorialPage(tutorialScene: tutorialScene,
-                                                        splashScreenRouter: splashScreenRouter,
-                                                        alertRouter: alertRouter,
-                                                        presentationAssets: presentationAssets,
-                                                        presentationStrings: presentationStrings,
-                                                        networkReachability: networkReachability,
-                                                        tutorialStateProviding: tutorialStateProviding)
+        let delegate = ShowInitiateDownloadTutorialPage(tutorialScene: context.tutorialScene,
+                                                        splashScreenRouter: context.splashScreenRouter,
+                                                        alertRouter: context.alertRouter,
+                                                        presentationAssets: context.presentationAssets,
+                                                        presentationStrings: context.presentationStrings,
+                                                        networkReachability: context.networkReachability,
+                                                        tutorialStateProviding: context.tutorialStateProviding)
         _ = RequestPushPermissionsTutorialPagePresenter(delegate: delegate,
-                                                        tutorialScene: tutorialScene,
-                                                        presentationStrings: presentationStrings,
-                                                        presentationAssets: presentationAssets,
-                                                        witnessedSystemPushPermissionsRequest: witnessedSystemPushPermissionsRequest,
-                                                        witnessedTutorialPushPermissionsRequest: witnessedTutorialPushPermissionsRequest,
-                                                        pushPermissionsRequesting: pushPermissionsRequesting)
+                                                        tutorialScene: context.tutorialScene,
+                                                        presentationStrings: context.presentationStrings,
+                                                        presentationAssets: context.presentationAssets,
+                                                        witnessedSystemPushPermissionsRequest: context.witnessedSystemPushPermissionsRequest,
+                                                        witnessedTutorialPushPermissionsRequest: context.witnessedTutorialPushPermissionsRequest,
+                                                        pushPermissionsRequesting: context.pushPermissionsRequesting)
     }
 
 }
