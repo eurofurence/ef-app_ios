@@ -6,17 +6,19 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 class EventCell: UITableViewCell {
-    @IBOutlet weak var eventImageView: UIImageView!
-    @IBOutlet weak var eventNameLabel: UILabel!
-    @IBOutlet weak var eventSubNameLabel: UILabel!
-    @IBOutlet weak var eventDurationLabel: UILabel!
-    @IBOutlet weak var eventDateLabel: UILabel!
-    @IBOutlet weak var eventRoomLabel: UILabel!
-    @IBOutlet weak var eventDayLabel: UILabel!
-    @IBOutlet weak var eventDayLabelHeightConstraint: NSLayoutConstraint!
-	@IBOutlet weak var eventSubNameLabelHeightConstraint: NSLayoutConstraint!
+
+	@IBOutlet weak var bannerImageView: UIImageView!
+	@IBOutlet weak var endTimeLabel: UILabel!
+	@IBOutlet weak var favoriteButton: UIButton!
+	@IBOutlet weak var startTimeLabel: UILabel!
+	@IBOutlet weak var subTitleLabel: UILabel!
+	@IBOutlet weak var titleLabel: UILabel!
+
+	var defaultHeightConstraint: NSLayoutConstraint!
+	var zeroHeightConstraint: NSLayoutConstraint!
 
 	weak private var _event: Event?
 
@@ -26,57 +28,46 @@ class EventCell: UITableViewCell {
 		}
 		set(event) {
 			_event = event
-
-			if let conferenceDay = event?.ConferenceDay/*, searchController.isActive && searchController.searchBar.text != ""*/ {
-				eventDayLabel.isHidden = false
-				eventDayLabel.text = "\(conferenceDay.Name) – \(DateFormatters.dayMonthLong.string(from: conferenceDay.Date))"
-
-				if eventDayLabelHeightConstraint != nil {
-					eventDayLabelHeightConstraint!.isActive = false
+			if let event = event {
+				startTimeLabel.text = DateFormatters.hourMinute.string(from: event.StartDateTimeUtc)
+				endTimeLabel.text = DateFormatters.hourMinute.string(from: event.EndDateTimeUtc)
+				if let eventFavorite = event.EventFavorite {
+					favoriteButton.addTarget(self, action: #selector(toggleFavorite(button:)), for: .touchUpInside)
+					favoriteButton.reactive.isSelected <~ eventFavorite.IsFavorite
 				}
-			}
-			eventNameLabel.text = event?.Title
-
-			if let subTitle = event?.SubTitle, !subTitle.isEmpty {
-				if eventSubNameLabelHeightConstraint != nil {
-					eventSubNameLabelHeightConstraint!.isActive = false
-				}
-				eventSubNameLabel.text = subTitle
-			} else {
-				if eventSubNameLabelHeightConstraint != nil {
-					eventSubNameLabelHeightConstraint!.isActive = true
+				if let _ = event.BannerImage {
+					zeroHeightConstraint.isActive = false
+					defaultHeightConstraint.isActive = true
+					bannerImageView.updateConstraints()
 				} else {
-					eventSubNameLabelHeightConstraint = NSLayoutConstraint(item: eventSubNameLabel, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
-					addConstraint(eventSubNameLabelHeightConstraint!)
+					zeroHeightConstraint.isActive = true
+					defaultHeightConstraint.isActive = false
+					bannerImageView.updateConstraints()
 				}
-			}
-
-			if let startDateTimeUtc = event?.StartDateTimeUtc {
-				eventDateLabel.text = "Starting at \(DateFormatters.hourMinute.string(from: startDateTimeUtc))"
 			} else {
-				eventDateLabel.text = nil
+				startTimeLabel.text = nil
+				endTimeLabel.text = nil
 			}
+			titleLabel.text = event?.Title
+			subTitleLabel.text = event?.SubTitle
+		}
+	}
 
-			if let roomName = event?.ConferenceRoom?.Name {
-				eventRoomLabel.text = "in \(roomName)"
-			} else {
-				eventRoomLabel.text = "n/a"
+	override func awakeFromNib() {
+		bannerImageView.constraints.forEach({ (constraint) in
+			if constraint.identifier == "HeightConstraint" {
+				self.defaultHeightConstraint = constraint
 			}
+		})
+		zeroHeightConstraint = NSLayoutConstraint(item: bannerImageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: 0)
+		zeroHeightConstraint?.isActive = false
+		bannerImageView.addConstraint(zeroHeightConstraint)
+	}
 
-			eventDurationLabel.text = event?.Duration.dhmString
-			if let eventDurationLabelText = eventDurationLabel.text, eventDurationLabelText.isEmpty {
-				eventDurationLabel.text = "n/a"
-			}
-
-			accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-			if let isDeviatingFromConBook = event?.IsDeviatingFromConBook, isDeviatingFromConBook {
-				eventDateLabel.textColor = UIColor.orange
-				eventDateLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
-			} else {
-				eventDateLabel.textColor = UIColor.white
-				eventDateLabel.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
-			}
-			tintColor = UIColor.white
+	func toggleFavorite(button: UIButton) {
+		button.isSelected = !button.isSelected
+		if let eventFavorite = event?.EventFavorite {
+			eventFavorite.IsFavorite.swap(button.isSelected)
 		}
 	}
 }

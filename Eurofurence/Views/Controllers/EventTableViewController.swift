@@ -38,6 +38,8 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
         refreshControl?.addTarget(self, action: #selector(EventTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         refreshControl?.backgroundColor = UIColor.clear
 
+		tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
+
         disposable += viewModel.Events.signal.observeResult({[unowned self] _ in
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -126,33 +128,31 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-        let event: Event?
-        if searchController.isActive && searchController.searchBar.text != "" {
-            event = self.filteredEvents[(indexPath as NSIndexPath).row]
-        } else {
-            cell.eventDayLabel.isHidden = true
-
-            if cell.eventDayLabelHeightConstraint != nil {
-                cell.eventDayLabelHeightConstraint!.isActive = true
-            } else {
-                cell.eventDayLabelHeightConstraint = NSLayoutConstraint(item: cell.eventDayLabel, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
-                cell.addConstraint(cell.eventDayLabelHeightConstraint!)
-            }
-
-            switch self.searchController.searchBar.selectedScopeButtonIndex {
-            case 1:
-                event = viewModel.EventConferenceRooms.value[indexPath.section].Events[indexPath.row]
-            case 2:
-                event = viewModel.EventConferenceTracks.value[indexPath.section].Events[indexPath.row]
-            default:
-                event = viewModel.EventConferenceDays.value[indexPath.section].Events[indexPath.row]
-            }
-
-        }
-		cell.event = event
+		cell.event = getEvent(for: indexPath)
 
         return cell
     }
+
+	func getEvent(for indexPath: IndexPath) -> Event {
+		if searchController.isActive && searchController.searchBar.text != "" {
+			return self.filteredEvents[(indexPath as NSIndexPath).row]
+		} else {
+
+			switch self.searchController.searchBar.selectedScopeButtonIndex {
+			case 1:
+				return viewModel.EventConferenceRooms.value[indexPath.section].Events[indexPath.row]
+			case 2:
+				return viewModel.EventConferenceTracks.value[indexPath.section].Events[indexPath.row]
+			default:
+				return viewModel.EventConferenceDays.value[indexPath.section].Events[indexPath.row]
+			}
+
+		}
+	}
+
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		performSegue(withIdentifier: "EventDetailSegue", sender: getEvent(for: indexPath))
+	}
 
 	func updateSearchResults(for searchController: UISearchController) {
         let searchResults = viewModel.Events.value.filter({$0.Title.contains(searchController.searchBar.text!)})
@@ -196,26 +196,11 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "EventTableViewSegue" {
-            if let destinationVC = segue.destination as? EventViewController {
-                let indexPath = self.tableView.indexPathForSelectedRow!
-                if searchController.isActive && searchController.searchBar.text != "" {
-                    destinationVC.event = self.filteredEvents[(indexPath as NSIndexPath).row]
-                } else {
-                    switch self.searchController.searchBar.selectedScopeButtonIndex {
-                    case 0:
-                        destinationVC.event = viewModel.EventConferenceDays.value[indexPath.section].Events[indexPath.row]
-                    case 1:
-                        destinationVC.event = viewModel.EventConferenceRooms.value[indexPath.section].Events[indexPath.row]
-                    case 2:
-                        destinationVC.event = viewModel.EventConferenceTracks.value[indexPath.section].Events[indexPath.row]
-					default:
-						destinationVC.event = viewModel.EventConferenceDays.value[indexPath.section].Events[indexPath.row]
-                    }
-                }
-
-            }
-        }
+		if let destinationVC = segue.destination as? EventViewController,
+				let event = sender as? Event,
+				segue.identifier == "EventDetailSegue" {
+			destinationVC.event = event
+		}
     }
 
 	deinit {

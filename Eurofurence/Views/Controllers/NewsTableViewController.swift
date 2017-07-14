@@ -23,9 +23,10 @@ class NewsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		tableView.backgroundColor = UIColor.black
         tableView.estimatedRowHeight = 70
         tableView.rowHeight = UITableViewAutomaticDimension
+
+		tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
 
         self.refreshControl?.addTarget(self, action: #selector(NewsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
 
@@ -227,7 +228,7 @@ class NewsTableViewController: UITableViewController {
 			if currentEventsViewModel.RunningEvents.value.isEmpty {
 				return tableView.dequeueReusableCell(withIdentifier: "NoRunningEventsCell", for: indexPath)
 			} else {
-				let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleEventCell", for: indexPath) as! SimpleEventCell
+				let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
 				cell.event = currentEventsViewModel.RunningEvents.value[indexPath.row]
 				return cell
 			}
@@ -235,7 +236,7 @@ class NewsTableViewController: UITableViewController {
 			if currentEventsViewModel.UpcomingEvents.value.isEmpty {
 				return tableView.dequeueReusableCell(withIdentifier: "NoUpcomingEventsCell", for: indexPath)
 			} else {
-				let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleEventCell", for: indexPath) as! SimpleEventCell
+				let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
 				cell.event = currentEventsViewModel.UpcomingEvents.value[indexPath.row]
 				return cell
 			}
@@ -244,21 +245,50 @@ class NewsTableViewController: UITableViewController {
 		}
 	}
 
+	func getData(for indexPath: IndexPath) -> EntityBase? {
+		let dataSource: [EntityBase]
+		switch indexPath.section {
+		case 0:
+			dataSource = announcementsViewModel.Announcements.value
+		case 1:
+			dataSource = currentEventsViewModel.RunningEvents.value
+		case 2:
+			dataSource = currentEventsViewModel.UpcomingEvents.value
+		default:
+			return nil
+		}
+
+		if indexPath.row < dataSource.count {
+			return dataSource[indexPath.row]
+		} else {
+			return nil
+		}
+	}
+
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		switch getData(for: indexPath) {
+		case let announcement as Announcement:
+			performSegue(withIdentifier: "AnnouncementDetailSegue", sender: announcement)
+		case let event as Event:
+			performSegue(withIdentifier: "EventDetailSegue", sender: event)
+		default:
+			break
+		}
+	}
+
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		guard let segueIdentifier = segue.identifier, let cell = sender as? UITableViewCell else {
-			return
-		}
-        // Get the new view controller using segue.destinationViewController.
+		guard let segueIdentifier = segue.identifier else { return }
+		// Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
 		switch segueIdentifier {
-		case "AnnouncementDetailSegue" :
-            if let destinationVC = segue.destination as? NewsViewController, let cell = cell as? AnnouncementCell, let announcement = cell.announcement {
+		case "AnnouncementDetailSegue":
+            if let destinationVC = segue.destination as? NewsViewController, let announcement = sender as? Announcement {
                 destinationVC.news = announcement
             }
 		case "EventDetailSegue":
-			if let destinationVC = segue.destination as? EventViewController, let cell = cell as? SimpleEventCell, let event = cell.event {
+			if let destinationVC = segue.destination as? EventViewController, let event = sender as? Event {
 				destinationVC.event = event
 			}
 		default:
