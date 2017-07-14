@@ -35,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Messaging.messaging().setAPNSToken(deviceToken, type: MessagingAPNSTokenType.unknown)
-        Messaging.messaging().subscribe(toTopic: "Debugging")
         PresentationTier.pushRequesting.handlePushRegistrationSuccess()
     }
 
