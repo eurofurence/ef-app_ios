@@ -25,6 +25,7 @@ class UserDefaultsTutorialStateProviderTests: XCTestCase {
 
     private func removeValueForFinishedTutorialKeyFromDefaults() {
         defaults.removeObject(forKey: UserDefaultsTutorialStateProvider.FinishedTutorialKey)
+        defaults.synchronize()
     }
     
     func testUserDefaultsWithoutValueForFirstTimeStateDefaultShouldIndicateAppNotOpenedBefore() {
@@ -33,16 +34,21 @@ class UserDefaultsTutorialStateProviderTests: XCTestCase {
 
     func testUserDefaultsWithTrueValueForFirstTimeStateKeyShouldIndicateAppOpenedBefore() {
         defaults.set(true, forKey: UserDefaultsTutorialStateProvider.FinishedTutorialKey)
+        defaults.synchronize()
+        
         XCTAssertTrue(launchStateProvider.userHasCompletedTutorial)
     }
 
     func testUserDefaultsWithFalseValueForFirstTimeStateKeyShouldIndicateAppNotOpenedBefore() {
         defaults.set(false, forKey: UserDefaultsTutorialStateProvider.FinishedTutorialKey)
+        defaults.synchronize()
+
         XCTAssertFalse(launchStateProvider.userHasCompletedTutorial)
     }
 
     func testTellingProviderToMakeTutorialAsCompletedShouldSetAppropriateDefault() {
         defaults.set(false, forKey: UserDefaultsTutorialStateProvider.FinishedTutorialKey)
+        defaults.synchronize()
         launchStateProvider.markTutorialAsComplete()
 
         XCTAssertTrue(defaults.bool(forKey: UserDefaultsTutorialStateProvider.FinishedTutorialKey))
