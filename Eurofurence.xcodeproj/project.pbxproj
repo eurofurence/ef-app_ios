@@ -129,6 +129,7 @@
 		9AB83B0C1F0EB47A001823B1 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB83B0B1F0EB47A001823B1 /* MapViewModel.swift */; };
 		9ACB006D1F16C23D001CE9D2 /* PrivateMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACB006C1F16C23D001CE9D2 /* PrivateMessage.swift */; };
 		9ACB006F1F16C945001CE9D2 /* EventFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACB006E1F16C945001CE9D2 /* EventFavorite.swift */; };
+		9ACB010C1F18FAB3001CE9D2 /* EventFavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACB010B1F18FAB3001CE9D2 /* EventFavoritesService.swift */; };
 		9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99371EBE172D006FC958 /* AppDelegate.swift */; };
 		9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF993E1EBE172D006FC958 /* Assets.xcassets */; };
 		9ACF99421EBE172D006FC958 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ACF99401EBE172D006FC958 /* LaunchScreen.storyboard */; };
@@ -325,6 +326,7 @@
 		9AB83B0B1F0EB47A001823B1 /* MapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		9ACB006C1F16C23D001CE9D2 /* PrivateMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessage.swift; sourceTree = "<group>"; };
 		9ACB006E1F16C945001CE9D2 /* EventFavorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFavorite.swift; sourceTree = "<group>"; };
+		9ACB010B1F18FAB3001CE9D2 /* EventFavoritesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFavoritesService.swift; sourceTree = "<group>"; };
 		9ACF99341EBE172D006FC958 /* Eurofurence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eurofurence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ACF99371EBE172D006FC958 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Eurofurence/AppDelegate.swift; sourceTree = "<group>"; };
 		9ACF993E1EBE172D006FC958 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Eurofurence/Assets.xcassets; sourceTree = "<group>"; };
@@ -676,6 +678,15 @@
 			path = DependencyResolution;
 			sourceTree = "<group>";
 		};
+		9ACB010A1F18F520001CE9D2 /* EventFavorites */ = {
+			isa = PBXGroup;
+			children = (
+				9ACB010B1F18FAB3001CE9D2 /* EventFavoritesService.swift */,
+				9A0F87D91F1912BE00FF294B /* EventNotificationTimeProviding.swift */,
+			);
+			path = EventFavorites;
+			sourceTree = "<group>";
+		};
 		9ACF992B1EBE172D006FC958 = {
 			isa = PBXGroup;
 			children = (
@@ -872,6 +883,7 @@
 		D6F3D0327856D0D0294EF5E6 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				9ACB010A1F18F520001CE9D2 /* EventFavorites */,
 				7820A6F01F1696AC004C0FB5 /* Push Permissions */,
 				D6F3D99887787EEDAC891182 /* Abstractions */,
 				6EF96CC61F0EDAC600EE6134 /* Calendar */,
@@ -1274,6 +1286,7 @@
 				9ACF99681EBE3479006FC958 /* EntityBase.swift in Sources */,
 				78567B3D1F100BAF00EBA31D /* DataStoreRefreshController.swift in Sources */,
 				78C86D631F12389E003A20E6 /* TutorialScene.swift in Sources */,
+				9ACB010C1F18FAB3001CE9D2 /* EventFavoritesService.swift in Sources */,
 				9A05254C1ECB097500578798 /* DataStoreProtocol.swift in Sources */,
 				9A34B9781ECF6E3B004A249E /* Iso8601DateFormatter.swift in Sources */,
 				9A0525431ECA2C5A00578798 /* SyncEntityDelta.swift in Sources */,
