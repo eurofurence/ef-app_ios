@@ -27,5 +27,8 @@ class ServiceResolver {
 		_container.register(.eagerSingleton) {
 			try! ImageService(dataContext: $0, apiConnection: $1) as ImageServiceProtocol
 		}
+		_container.register(.eagerSingleton) {
+			EventFavoritesService(dataContext: $0)
+		}
 	}
 }
