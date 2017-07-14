@@ -22,6 +22,8 @@ protocol BuildConfigurationProviding {
 
 protocol NotificationsService {
 
+    func register(deviceToken: Data)
+
     func subscribeToTestNotifications()
     func unsubscribeFromTestNotifications()
 
@@ -37,6 +39,11 @@ struct StubBuildConfigurationProviding: BuildConfigurationProviding {
 }
 
 class CapturingNotificationsService: NotificationsService {
+
+    private(set) var registeredDeviceToken: Data?
+    func register(deviceToken: Data) {
+        registeredDeviceToken = deviceToken
+    }
 
     private(set) var subscribedToTestNotifications = false
     func subscribeToTestNotifications() {
@@ -72,6 +79,8 @@ struct EurofurenceApplication {
     }
 
     func handleRemoteNotificationRegistration(deviceToken: Data) {
+        notificationsService.register(deviceToken: deviceToken)
+
         switch buildConfiguration.configuration {
         case .debug:
             notificationsService.subscribeToTestNotifications()
@@ -179,6 +188,14 @@ class WhenRegisteredForPushNotifications: XCTestCase {
     func testForReleaseConfigurationNotUnregisterFromTestNotificationsUntilWeActuallyReceievePushToken() {
         let context = assembleApp(configuration: .release)
         XCTAssertFalse(context.capturingNotificationService.unsubscribedFromTestNotifications)
+    }
+
+    func testSetTheTokenOntoTheNotificationsService() {
+        let context = assembleApp(configuration: .debug)
+        let deviceToken = "I'm a token".data(using: .utf8)!
+        context.registerForNotifications(deviceToken: deviceToken)
+
+        XCTAssertEqual(deviceToken, context.capturingNotificationService.registeredDeviceToken)
     }
     
 }
