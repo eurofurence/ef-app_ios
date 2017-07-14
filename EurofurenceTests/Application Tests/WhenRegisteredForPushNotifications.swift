@@ -67,45 +67,52 @@ struct EurofurenceApplication {
 }
 
 class WhenRegisteredForPushNotifications: XCTestCase {
-    
-    func testForDebugConfigurationTestNotificationsShouldBeSubscribed() {
-        let buildConfigurationProviding = StubBuildConfigurationProviding(configuration: .debug)
+
+    struct NotificationsRegistrationTestContext {
+        var app: EurofurenceApplication
+        var capturingNotificationService: CapturingNotificationsService
+
+        func registerForNotifications(deviceToken: Data = Data()) {
+            app.handleRemoteNotificationRegistration(deviceToken: deviceToken)
+        }
+    }
+
+    private func assembleApp(configuration: BuildConfiguration) -> NotificationsRegistrationTestContext {
+        let buildConfigurationProviding = StubBuildConfigurationProviding(configuration: configuration)
         let capturingNotificationService = CapturingNotificationsService()
         let app = EurofurenceApplication(buildConfiguration: buildConfigurationProviding,
                                          notificationsService: capturingNotificationService)
-        app.handleRemoteNotificationRegistration(deviceToken: Data())
 
-        XCTAssertTrue(capturingNotificationService.subscribedToTestNotifications)
+        return NotificationsRegistrationTestContext(app: app,
+                                                    capturingNotificationService: capturingNotificationService)
+    }
+    
+    func testForDebugConfigurationTestNotificationsShouldBeSubscribed() {
+        let context = assembleApp(configuration: .debug)
+        context.registerForNotifications()
+
+        XCTAssertTrue(context.capturingNotificationService.subscribedToTestNotifications)
     }
 
     func testForReleaseConfigurationLiveNotificationsShouldBeSubscribed() {
-        let buildConfigurationProviding = StubBuildConfigurationProviding(configuration: .release)
-        let capturingNotificationService = CapturingNotificationsService()
-        let app = EurofurenceApplication(buildConfiguration: buildConfigurationProviding,
-                                         notificationsService: capturingNotificationService)
-        app.handleRemoteNotificationRegistration(deviceToken: Data())
+        let context = assembleApp(configuration: .release)
+        context.registerForNotifications()
 
-        XCTAssertTrue(capturingNotificationService.subscribedToLiveNotifications)
+        XCTAssertTrue(context.capturingNotificationService.subscribedToLiveNotifications)
     }
 
     func testForDebugConfigurationLiveNotificationsShouldNotBeSubscribed() {
-        let buildConfigurationProviding = StubBuildConfigurationProviding(configuration: .debug)
-        let capturingNotificationService = CapturingNotificationsService()
-        let app = EurofurenceApplication(buildConfiguration: buildConfigurationProviding,
-                                         notificationsService: capturingNotificationService)
-        app.handleRemoteNotificationRegistration(deviceToken: Data())
+        let context = assembleApp(configuration: .debug)
+        context.registerForNotifications()
 
-        XCTAssertFalse(capturingNotificationService.subscribedToLiveNotifications)
+        XCTAssertFalse(context.capturingNotificationService.subscribedToLiveNotifications)
     }
 
     func testForReleaseConfigurationTestNotificationsShouldNotBeSubscribed() {
-        let buildConfigurationProviding = StubBuildConfigurationProviding(configuration: .release)
-        let capturingNotificationService = CapturingNotificationsService()
-        let app = EurofurenceApplication(buildConfiguration: buildConfigurationProviding,
-                                         notificationsService: capturingNotificationService)
-        app.handleRemoteNotificationRegistration(deviceToken: Data())
+        let context = assembleApp(configuration: .release)
+        context.registerForNotifications()
 
-        XCTAssertFalse(capturingNotificationService.subscribedToTestNotifications)
+        XCTAssertFalse(context.capturingNotificationService.subscribedToTestNotifications)
     }
     
 }
