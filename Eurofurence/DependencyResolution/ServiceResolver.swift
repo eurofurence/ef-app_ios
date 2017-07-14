@@ -21,7 +21,6 @@ class ServiceResolver {
 
 	private init() {
 		_container.collaborate(with: ContextResolver.container)
-		ContextResolver.container.collaborate(with: _container)
 		_container.register(.eagerSingleton) {
 			TimeService()
 		}
