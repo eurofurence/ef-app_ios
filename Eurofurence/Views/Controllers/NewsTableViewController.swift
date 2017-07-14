@@ -11,7 +11,7 @@ import ReactiveSwift
 import UIKit
 import Changeset
 
-class NewsTableViewController: UITableViewController {
+class NewsTableViewController: UITableViewController, UIViewControllerPreviewingDelegate {
 
 	private var announcementsViewModel: AnnouncementsViewModel = try! ViewModelResolver.container.resolve()
 	private var currentEventsViewModel: CurrentEventsViewModel = try! ViewModelResolver.container.resolve()
@@ -22,6 +22,10 @@ class NewsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+		if traitCollection.forceTouchCapability == .available {
+			registerForPreviewing(with: self, sourceView: view)
+		}
 
         tableView.estimatedRowHeight = 70
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -295,6 +299,37 @@ class NewsTableViewController: UITableViewController {
 			break
         }
     }
+
+	// MARK: - Previewing
+
+	func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+		guard let indexPath = tableView.indexPathForRow(at: location),
+			let data = getData(for: indexPath) else { return nil }
+
+		let viewController: UIViewController
+		switch data {
+		case let announcement as Announcement:
+			guard let announcementViewController = storyboard?.instantiateViewController(withIdentifier: "AnnouncementDetail") as? NewsViewController else {
+				return nil
+			}
+			announcementViewController.news = announcement
+			viewController = announcementViewController
+		case let event as Event:
+			guard let eventViewController = storyboard?.instantiateViewController(withIdentifier: "EventDetail") as? EventViewController else {
+				return nil
+			}
+			eventViewController.event = event
+			viewController = eventViewController
+		default:
+			return nil
+		}
+
+		return viewController
+	}
+
+	func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+		show(viewControllerToCommit, sender: self)
+	}
 
 	deinit {
 		disposables.dispose()

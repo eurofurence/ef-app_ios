@@ -23,7 +23,7 @@
         <!--Dealer Detail-->
         <scene sceneID="RX0-RE-OCL">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="vW3-to-hGL" userLabel="Dealer Detail" customClass="DealerViewController" customModule="Eurofurence" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DealerDetail" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vW3-to-hGL" userLabel="Dealer Detail" customClass="DealerViewController" customModule="Eurofurence" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="u3O-ye-lGf"/>
                         <viewControllerLayoutGuide type="bottom" id="RfQ-96-wN7"/>
@@ -672,7 +672,7 @@
         <!--Announcement Detail-->
         <scene sceneID="MVt-g1-TGT">
             <objects>
-                <viewController id="Iix-4g-IXD" userLabel="Announcement Detail" customClass="NewsViewController" customModule="Eurofurence" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AnnouncementDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Iix-4g-IXD" userLabel="Announcement Detail" customClass="NewsViewController" customModule="Eurofurence" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PNf-QN-Vca"/>
                         <viewControllerLayoutGuide type="bottom" id="eF8-jl-le2"/>
@@ -1004,10 +1004,10 @@
             </objects>
             <point key="canvasLocation" x="1618" y="-3716"/>
         </scene>
-        <!--Event Details-->
+        <!--Event Detail-->
         <scene sceneID="sY1-ps-anW">
             <objects>
-                <viewController id="TBc-XK-CZJ" customClass="EventViewController" customModule="Eurofurence" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TBc-XK-CZJ" userLabel="Event Detail" customClass="EventViewController" customModule="Eurofurence" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4cB-31-qmC"/>
                         <viewControllerLayoutGuide type="bottom" id="GZb-m5-QJx"/>
@@ -1319,7 +1319,7 @@
         <!--Knowledge Detail-->
         <scene sceneID="bnW-6L-WP5">
             <objects>
-                <viewController id="Aqh-3L-qkR" userLabel="Knowledge Detail" customClass="KnowledgeEntryViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="KnowledgeDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Aqh-3L-qkR" userLabel="Knowledge Detail" customClass="KnowledgeEntryViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UUd-l0-GNc"/>
                         <viewControllerLayoutGuide type="bottom" id="bie-i3-4Uv"/>
@@ -1972,7 +1972,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</stri
     <inferredMetricsTieBreakers>
         <segue reference="au0-CR-I6S"/>
         <segue reference="JLI-w3-u9Q"/>
+        <segue reference="ZpL-XF-CgK"/>
         <segue reference="TRw-ie-exZ"/>
-        <segue reference="KTE-6a-a6w"/>
     </inferredMetricsTieBreakers>
 </document>
