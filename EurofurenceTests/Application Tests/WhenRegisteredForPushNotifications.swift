@@ -11,15 +11,19 @@ import XCTest
 
 enum BuildConfiguration {
     case debug
+    case release
 }
 
 protocol BuildConfigurationProviding {
+
+    var configuration: BuildConfiguration { get }
 
 }
 
 protocol NotificationsService {
 
     func subscribeToTestNotifications()
+    func subscribeToLiveNotifications()
 
 }
 
@@ -36,13 +40,24 @@ class CapturingNotificationsService: NotificationsService {
         subscribedToTestNotifications = true
     }
 
+    private(set) var subscribedToLiveNotifications = false
+    func subscribeToLiveNotifications() {
+        subscribedToLiveNotifications = true
+    }
+
 }
 
 struct EurofurenceApplication {
 
     init(buildConfiguration: BuildConfigurationProviding,
          notificationsService: NotificationsService) {
-        notificationsService.subscribeToTestNotifications()
+        switch buildConfiguration.configuration {
+        case .debug:
+            notificationsService.subscribeToTestNotifications()
+
+        case .release:
+            notificationsService.subscribeToLiveNotifications()
+        }
     }
 
     func handleRemoteNotificationRegistration(deviceToken: Data) {
@@ -61,6 +76,36 @@ class WhenRegisteredForPushNotifications: XCTestCase {
         app.handleRemoteNotificationRegistration(deviceToken: Data())
 
         XCTAssertTrue(capturingNotificationService.subscribedToTestNotifications)
+    }
+
+    func testForReleaseConfigurationLiveNotificationsShouldBeSubscribed() {
+        let buildConfigurationProviding = StubBuildConfigurationProviding(configuration: .release)
+        let capturingNotificationService = CapturingNotificationsService()
+        let app = EurofurenceApplication(buildConfiguration: buildConfigurationProviding,
+                                         notificationsService: capturingNotificationService)
+        app.handleRemoteNotificationRegistration(deviceToken: Data())
+
+        XCTAssertTrue(capturingNotificationService.subscribedToLiveNotifications)
+    }
+
+    func testForDebugConfigurationLiveNotificationsShouldNotBeSubscribed() {
+        let buildConfigurationProviding = StubBuildConfigurationProviding(configuration: .debug)
+        let capturingNotificationService = CapturingNotificationsService()
+        let app = EurofurenceApplication(buildConfiguration: buildConfigurationProviding,
+                                         notificationsService: capturingNotificationService)
+        app.handleRemoteNotificationRegistration(deviceToken: Data())
+
+        XCTAssertFalse(capturingNotificationService.subscribedToLiveNotifications)
+    }
+
+    func testForReleaseConfigurationTestNotificationsShouldNotBeSubscribed() {
+        let buildConfigurationProviding = StubBuildConfigurationProviding(configuration: .release)
+        let capturingNotificationService = CapturingNotificationsService()
+        let app = EurofurenceApplication(buildConfiguration: buildConfigurationProviding,
+                                         notificationsService: capturingNotificationService)
+        app.handleRemoteNotificationRegistration(deviceToken: Data())
+
+        XCTAssertFalse(capturingNotificationService.subscribedToTestNotifications)
     }
     
 }
