@@ -19,8 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        try! ServiceResolver.container.bootstrap()
-        try! ViewModelResolver.container.bootstrap()
+
+		try! ContextResolver.container.bootstrap()
+		try! ViewModelResolver.container.bootstrap()
+		try! ServiceResolver.container.bootstrap()
 
 		PrintOptions.Active = .None
 
