@@ -10,7 +10,7 @@ import ReactiveSwift
 
 class EventFavorite: EntityBase {
 	var EventId: String = ""
-	var IsFavorite: Bool = false
+	var IsFavorite: MutableProperty<Bool> = MutableProperty(false)
 
 	required init() {
 		super.init()
@@ -20,5 +20,13 @@ class EventFavorite: EntityBase {
 	convenience init(for event: Event) {
 		self.init()
 		self.EventId = event.Id
+	}
+
+	override func propertyConverters() -> [(key: String, decodeConverter: ((Any?) -> Void), encodeConverter: (() -> Any?))] {
+		return [
+			(key: "IsFavorite",
+			 decodeConverter: { self.IsFavorite.swap(($0 as? Bool) ?? false) },
+			 encodeConverter: { return self.IsFavorite.value })
+		]
 	}
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 class SimpleEventCell: UITableViewCell {
 
@@ -26,13 +27,23 @@ class SimpleEventCell: UITableViewCell {
 			if let event = event {
 				startTimeLabel.text = DateFormatters.hourMinute.string(from: event.StartDateTimeUtc)
 				endTimeLabel.text = DateFormatters.hourMinute.string(from: event.EndDateTimeUtc)
-				favoriteButton.titleLabel?.text = event.IsFavorite ? "★" : "☆"
+				if let eventFavorite = event.EventFavorite {
+					favoriteButton.addTarget(self, action: #selector(toggleFavorite(button:)), for: .touchUpInside)
+					favoriteButton.reactive.isSelected <~ eventFavorite.IsFavorite
+				}
 			} else {
 				startTimeLabel.text = nil
 				endTimeLabel.text = nil
 			}
 			titleLabel.text = event?.Title
 			subTitleLabel.text = event?.SubTitle
+		}
+	}
+
+	func toggleFavorite(button: UIButton) {
+		button.isSelected = !button.isSelected
+		if let eventFavorite = event?.EventFavorite {
+			eventFavorite.IsFavorite.swap(button.isSelected)
 		}
 	}
 }

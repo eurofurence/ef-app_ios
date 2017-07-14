@@ -55,12 +55,12 @@ class NavigationResolver: NavigationResolverProtocol {
 				e.ConferenceRoom?.Events.append(e)
 				e.ConferenceTrack?.Events.append(e)
 
-				e._EventFavorite = dataContext.EventFavorites.value.first(where: { $0.EventId == e.Id })
-				if let eventFavorite = e._EventFavorite {
+				e.EventFavorite = dataContext.EventFavorites.value.first(where: { $0.EventId == e.Id })
+				if let eventFavorite = e.EventFavorite {
 					eventFavorites.append(eventFavorite)
 				} else {
 					let eventFavorite = EventFavorite(for: e)
-					e._EventFavorite = eventFavorite
+					e.EventFavorite = eventFavorite
 					dataContext.EventFavorites.value.append(eventFavorite)
 					eventFavorites.append(eventFavorite)
 				}
