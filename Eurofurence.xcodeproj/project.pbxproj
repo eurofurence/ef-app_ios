@@ -107,7 +107,6 @@
 		9A05254B1ECB097500578798 /* ApiConnectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0525481ECB097500578798 /* ApiConnectionProtocol.swift */; };
 		9A05254C1ECB097500578798 /* DataStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0525491ECB097500578798 /* DataStoreProtocol.swift */; };
 		9A05254D1ECB097500578798 /* DataContextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A05254A1ECB097500578798 /* DataContextProtocol.swift */; };
-		9A0F87DA1F1912BE00FF294B /* EventNotificationTimeProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0F87D91F1912BE00FF294B /* EventNotificationTimeProviding.swift */; };
 		9A0F87DC1F19311900FF294B /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0F87DB1F19311900FF294B /* EventCell.xib */; };
 		9A2A94871F12CBC0004D66FB /* SyncState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2A94861F12CBC0004D66FB /* SyncState.swift */; };
 		9A2A94891F12D152004D66FB /* LastSyncDateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2A94881F12D152004D66FB /* LastSyncDateProviding.swift */; };
@@ -305,7 +304,6 @@
 		9A0525481ECB097500578798 /* ApiConnectionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiConnectionProtocol.swift; sourceTree = "<group>"; };
 		9A0525491ECB097500578798 /* DataStoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreProtocol.swift; sourceTree = "<group>"; };
 		9A05254A1ECB097500578798 /* DataContextProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataContextProtocol.swift; sourceTree = "<group>"; };
-		9A0F87D91F1912BE00FF294B /* EventNotificationTimeProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventNotificationTimeProviding.swift; sourceTree = "<group>"; };
 		9A0F87DB1F19311900FF294B /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		9A2A94861F12CBC0004D66FB /* SyncState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncState.swift; sourceTree = "<group>"; };
 		9A2A94881F12D152004D66FB /* LastSyncDateProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastSyncDateProviding.swift; sourceTree = "<group>"; };
@@ -684,7 +682,6 @@
 			isa = PBXGroup;
 			children = (
 				9ACB010B1F18FAB3001CE9D2 /* EventFavoritesService.swift */,
-				9A0F87D91F1912BE00FF294B /* EventNotificationTimeProviding.swift */,
 			);
 			path = EventFavorites;
 			sourceTree = "<group>";
@@ -1325,7 +1322,6 @@
 				9ACF99901EC858B2006FC958 /* KnowledgeEntry.swift in Sources */,
 				9AF0B4FE1F08459D000AAA0A /* TimeIntervalRow.swift in Sources */,
 				9AF159ED1EF5BE7F00DB287D /* EventCell.swift in Sources */,
-				9A0F87DA1F1912BE00FF294B /* EventNotificationTimeProviding.swift in Sources */,
 				9A2A94911F12E7D6004D66FB /* SyncStateProvider.swift in Sources */,
 				9ACF998F1EC858B2006FC958 /* Announcement.swift in Sources */,
 				7820A6F21F1696F1004C0FB5 /* PushPermissionsRequesting.swift in Sources */,
