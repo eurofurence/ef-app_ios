@@ -23,7 +23,10 @@ protocol BuildConfigurationProviding {
 protocol NotificationsService {
 
     func subscribeToTestNotifications()
+    func unsubscribeFromTestNotifications()
+
     func subscribeToLiveNotifications()
+    func unsubscribeFromLiveNotifications()
 
 }
 
@@ -40,9 +43,19 @@ class CapturingNotificationsService: NotificationsService {
         subscribedToTestNotifications = true
     }
 
+    private(set) var unsubscribedFromTestNotifications = false
+    func unsubscribeFromTestNotifications() {
+        unsubscribedFromTestNotifications = true
+    }
+
     private(set) var subscribedToLiveNotifications = false
     func subscribeToLiveNotifications() {
         subscribedToLiveNotifications = true
+    }
+
+    private(set) var unsubscribedFromLiveNotifications = false
+    func unsubscribeFromLiveNotifications() {
+        unsubscribedFromLiveNotifications = true
     }
 
 }
@@ -54,9 +67,11 @@ struct EurofurenceApplication {
         switch buildConfiguration.configuration {
         case .debug:
             notificationsService.subscribeToTestNotifications()
+            notificationsService.unsubscribeFromLiveNotifications()
 
         case .release:
             notificationsService.subscribeToLiveNotifications()
+            notificationsService.unsubscribeFromTestNotifications()
         }
     }
 
@@ -113,6 +128,34 @@ class WhenRegisteredForPushNotifications: XCTestCase {
         context.registerForNotifications()
 
         XCTAssertFalse(context.capturingNotificationService.subscribedToTestNotifications)
+    }
+
+    func testForDebugConfigurationLiveNotificationsShouldBeUnsubscribed() {
+        let context = assembleApp(configuration: .debug)
+        context.registerForNotifications()
+
+        XCTAssertTrue(context.capturingNotificationService.unsubscribedFromLiveNotifications)
+    }
+
+    func testForReleaseConfigurationTestNotificationsShouldBeUnsubscribed() {
+        let context = assembleApp(configuration: .release)
+        context.registerForNotifications()
+
+        XCTAssertTrue(context.capturingNotificationService.unsubscribedFromTestNotifications)
+    }
+
+    func testForDebugConfigurationTestNotificationsShouldNotBeUnsubscribed() {
+        let context = assembleApp(configuration: .debug)
+        context.registerForNotifications()
+
+        XCTAssertFalse(context.capturingNotificationService.unsubscribedFromTestNotifications)
+    }
+
+    func testForReleaseConfigurationLiveNotificationsShouldNotBeUnsubscribed() {
+        let context = assembleApp(configuration: .release)
+        context.registerForNotifications()
+
+        XCTAssertFalse(context.capturingNotificationService.unsubscribedFromLiveNotifications)
     }
     
 }
