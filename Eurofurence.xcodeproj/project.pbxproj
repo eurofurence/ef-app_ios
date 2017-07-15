@@ -30,6 +30,7 @@
 		781A943E1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A943D1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift */; };
 		781A94401F1A1A72002DE70F /* FirebaseMessagingAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A943F1F1A1A72002DE70F /* FirebaseMessagingAdapter.swift */; };
 		781A94421F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A94411F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift */; };
+		781A94461F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A94451F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift */; };
 		7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6DA1F13F4DE004C0FB5 /* StubPresentationAssets.swift */; };
 		7820A6DD1F13F544004C0FB5 /* PresentationAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6DC1F13F544004C0FB5 /* PresentationAssets.swift */; };
 		7820A6DF1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6DE1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift */; };
@@ -114,7 +115,6 @@
 		78D7EEC11F196B8C005372A9 /* CapturingNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEC01F196B8C005372A9 /* CapturingNotificationsService.swift */; };
 		78D7EEC41F196C4A005372A9 /* PreprocessorBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEC31F196C4A005372A9 /* PreprocessorBuildConfigurationProviding.swift */; };
 		78D7EEC61F196D46005372A9 /* FirebaseNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEC51F196D46005372A9 /* FirebaseNotificationsService.swift */; };
-		78D7EEC81F1A0746005372A9 /* FirebaseNotificationsTokenRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEC71F1A0746005372A9 /* FirebaseNotificationsTokenRegistrationTests.swift */; };
 		78F555991F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F555981F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift */; };
 		78F5559B1F10D65900BDA7D4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F5559A1F10D65900BDA7D4 /* SplashViewController.swift */; };
 		9A0525411ECA2AF500578798 /* Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0525401ECA2AF500578798 /* Sync.swift */; };
@@ -241,6 +241,7 @@
 		781A943D1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseRemoteNotificationsTokenRegistration.swift; path = Application/Notifications/Firebase/FirebaseRemoteNotificationsTokenRegistration.swift; sourceTree = "<group>"; };
 		781A943F1F1A1A72002DE70F /* FirebaseMessagingAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseMessagingAdapter.swift; path = Application/Notifications/Firebase/FirebaseMessagingAdapter.swift; sourceTree = "<group>"; };
 		781A94411F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingRemoteNotificationsTokenRegistration.swift; path = "Test Doubles/Application/Notifications/CapturingRemoteNotificationsTokenRegistration.swift"; sourceTree = "<group>"; };
+		781A94451F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseNotificationsTokenRegistrationTests.swift; path = "Application Tests/Notifications/Firebase/FirebaseNotificationsTokenRegistrationTests.swift"; sourceTree = "<group>"; };
 		7820A6DA1F13F4DE004C0FB5 /* StubPresentationAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubPresentationAssets.swift; path = "Test Doubles/StubPresentationAssets.swift"; sourceTree = "<group>"; };
 		7820A6DC1F13F544004C0FB5 /* PresentationAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentationAssets.swift; path = Presenters/PresentationAssets.swift; sourceTree = "<group>"; };
 		7820A6DE1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationPresentationAssetsTests.swift; sourceTree = "<group>"; };
@@ -328,7 +329,6 @@
 		78D7EEC01F196B8C005372A9 /* CapturingNotificationsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingNotificationsService.swift; path = "Test Doubles/CapturingNotificationsService.swift"; sourceTree = "<group>"; };
 		78D7EEC31F196C4A005372A9 /* PreprocessorBuildConfigurationProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreprocessorBuildConfigurationProviding.swift; path = "Application/Build Config/PreprocessorBuildConfigurationProviding.swift"; sourceTree = "<group>"; };
 		78D7EEC51F196D46005372A9 /* FirebaseNotificationsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseNotificationsService.swift; path = Application/Notifications/FirebaseNotificationsService.swift; sourceTree = "<group>"; };
-		78D7EEC71F1A0746005372A9 /* FirebaseNotificationsTokenRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseNotificationsTokenRegistrationTests.swift; sourceTree = "<group>"; };
 		78F555981F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReplaceViewControllersSegue.swift; path = Segues/ReplaceViewControllersSegue.swift; sourceTree = "<group>"; };
 		78F5559A1F10D65900BDA7D4 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		9A0525401ECA2AF500578798 /* Sync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sync.swift; sourceTree = "<group>"; };
@@ -587,6 +587,22 @@
 			name = Firebase;
 			sourceTree = "<group>";
 		};
+		781A94431F1A1DC6002DE70F /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				781A94441F1A1DCE002DE70F /* Firebase */,
+			);
+			name = Notifications;
+			sourceTree = "<group>";
+		};
+		781A94441F1A1DCE002DE70F /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				781A94451F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift */,
+			);
+			name = Firebase;
+			sourceTree = "<group>";
+		};
 		7820A6F01F1696AC004C0FB5 /* Push Permissions */ = {
 			isa = PBXGroup;
 			children = (
@@ -728,6 +744,7 @@
 		78D7EEB31F195E8B005372A9 /* Application Tests */ = {
 			isa = PBXGroup;
 			children = (
+				781A94431F1A1DC6002DE70F /* Notifications */,
 				78D7EEB41F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift */,
 			);
 			name = "Application Tests";
@@ -863,7 +880,6 @@
 				7820A6E81F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift */,
 				7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */,
 				7820A7041F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift */,
-				78D7EEC71F1A0746005372A9 /* FirebaseNotificationsTokenRegistrationTests.swift */,
 			);
 			path = EurofurenceTests;
 			sourceTree = "<group>";
@@ -1555,7 +1571,6 @@
 				7820A6F61F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift in Sources */,
 				6EF96CCF1F0EDB2000EE6134 /* CalendarTestDoubles.swift in Sources */,
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
-				78D7EEC81F1A0746005372A9 /* FirebaseNotificationsTokenRegistrationTests.swift in Sources */,
 				78D7EEB51F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift in Sources */,
 				78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */,
 				7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */,
@@ -1564,6 +1579,7 @@
 				781A943A1F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift in Sources */,
 				78455B4B1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift in Sources */,
 				7820A6E11F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift in Sources */,
+				781A94461F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
