@@ -17,8 +17,7 @@ class EventCell: UITableViewCell {
 	@IBOutlet weak var subTitleLabel: UILabel!
 	@IBOutlet weak var titleLabel: UILabel!
 
-	var defaultHeightConstraint: NSLayoutConstraint!
-	var zeroHeightConstraint: NSLayoutConstraint!
+	let imageService: ImageServiceProtocol = try! ServiceResolver.container.resolve()
 
 	weak private var _event: Event?
 
@@ -36,13 +35,22 @@ class EventCell: UITableViewCell {
 				} else {
 					favoriteLabel.isHidden = true
 				}
-				if let _ = event.BannerImage {
-					zeroHeightConstraint.isActive = false
-					defaultHeightConstraint.isActive = true
-					bannerImageView.updateConstraints()
+				if let bannerImage = event.BannerImage {
+					imageService.retrieve(for: bannerImage).startWithResult({ [unowned self] (result) in
+						switch result {
+						case let .success(image):
+							DispatchQueue.main.async {
+								self.bannerImageView.image = image
+							}
+							break
+						case .failure:
+							break
+						}
+					})
 				} else {
+					let zeroHeightConstraint = NSLayoutConstraint(item: bannerImageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: 0)
 					zeroHeightConstraint.isActive = true
-					defaultHeightConstraint.isActive = false
+					bannerImageView.addConstraint(zeroHeightConstraint)
 					bannerImageView.updateConstraints()
 				}
 			} else {
@@ -52,17 +60,6 @@ class EventCell: UITableViewCell {
 			titleLabel.text = event?.Title
 			subTitleLabel.text = event?.SubTitle
 		}
-	}
-
-	override func awakeFromNib() {
-		bannerImageView.constraints.forEach({ (constraint) in
-			if constraint.identifier == "HeightConstraint" {
-				self.defaultHeightConstraint = constraint
-			}
-		})
-		zeroHeightConstraint = NSLayoutConstraint(item: bannerImageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: 0)
-		zeroHeightConstraint?.isActive = false
-		bannerImageView.addConstraint(zeroHeightConstraint)
 	}
 
 	func toggleFavorite(button: UIButton) {
