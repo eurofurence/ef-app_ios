@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="EventCell" rowHeight="158" id="pfS-f5-Ace" userLabel="EventCell" customClass="EventCell" customModule="Eurofurence" customModuleProvider="target">
+        <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="158" id="pfS-f5-Ace" userLabel="EventCell" customClass="EventCell" customModule="Eurofurence" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="158"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pfS-f5-Ace" id="s4T-35-k7j">
