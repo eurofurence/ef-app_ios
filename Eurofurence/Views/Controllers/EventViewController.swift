@@ -22,6 +22,8 @@ class EventViewController: UIViewController {
     var singleTapLocation: UITapGestureRecognizer!
     var singleTapLocationIcon: UITapGestureRecognizer!
 
+	let imageService: ImageServiceProtocol = try! ServiceResolver.container.resolve()
+
 	weak var event: Event?
 
     override func viewDidLoad() {
@@ -64,15 +66,37 @@ class EventViewController: UIViewController {
         self.eventDescTextView.scrollsToTop = true
         self.eventDescTextView.scrollRangeToVisible(NSRange(location: 0, length: 1))
 
-		//TODO: Will images be coming back to Events at some point?
+		var eventImage: Image? = event.PosterImage
+		if eventImage == nil {
+			eventImage = event.BannerImage
+		}
+
+		if let eventImage = eventImage {
+			imageService.retrieve(for: eventImage).startWithResult({ [unowned self] (result) in
+				switch result {
+				case let .success(image):
+					DispatchQueue.main.async {
+						self.eventImageView.image = image
+						self.resizeImageView(for: image)
+					}
+				case .failure:
+					break
+				}
+			})
+		}
 		eventImageView.image = nil
-        if eventImageView.image != nil {
-            eventImageHeightConstraint.constant = eventImageDefaultHeight
-            eventImageView.sizeToFit()
-        } else {
-            eventImageHeightConstraint.constant = CGFloat(0.0)
-        }
+		eventImageHeightConstraint.constant = CGFloat(0.0)
     }
+
+	private func resizeImageView(for image: UIImage) {
+		let ratio = image.size.width / image.size.height
+		if let view = eventImageView.superview {
+			let newHeight = view.frame.width / ratio
+			eventImageView.frame.size = CGSize(width: view.frame.width, height: newHeight)
+			eventImageHeightConstraint.constant = newHeight
+			eventImageView.sizeToFit()
+		}
+	}
 
     @IBAction func exportAsEvent(_ sender: AnyObject) {
 		guard let event = event else {
@@ -98,7 +122,14 @@ class EventViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.eventDescTextView.setContentOffset(CGPoint.zero, animated: false)
-    }
+	}
+
+	override func viewWillLayoutSubviews() {
+		super.viewWillLayoutSubviews()
+		if let image = eventImageView.image {
+			self.resizeImageView(for: image)
+		}
+	}
 
 	func showOnMap(_ tapGesture: UITapGestureRecognizer) {
 		guard let event = event, let mapEntry = event.ConferenceRoom?.MapEntry else {
