@@ -21,7 +21,7 @@ protocol FirebaseAdapter {
 
 protocol FCMDeviceRegistration {
 
-    func registerFCM(_ fcm: String)
+    func registerFCM(_ fcm: String, topics: [String])
 
 }
 
@@ -77,8 +77,22 @@ class CapturingFirebaseAdapter: FirebaseAdapter {
 class CapturingFCMDeviceRegistration: FCMDeviceRegistration {
 
     private(set) var capturedFCM: String?
-    func registerFCM(_ fcm: String) {
+    private var topics = [String]()
+    func registerFCM(_ fcm: String, topics: [String]) {
         capturedFCM = fcm
+        self.topics = topics
+    }
+
+    var registeredDebugTopic: Bool {
+        return topics.contains("test")
+    }
+
+    var registeredLiveTopic: Bool {
+        return topics.contains("live")
+    }
+
+    var registeredAnnouncementsTopic: Bool {
+        return topics.contains("announcements")
     }
 
 }
@@ -106,16 +120,17 @@ struct FirebaseNotificationsTokenRegistration {
     }
 
     func registerDevicePushToken(_ token: Data) {
-        fcmRegistration.registerFCM(firebaseAdapter.fcmToken)
         firebaseAdapter.setAPNSToken(deviceToken: token)
         firebaseAdapter.subscribe(toTopic: Topic.announcements.rawValue)
 
         switch buildConfiguration.configuration {
         case .debug:
+            fcmRegistration.registerFCM(firebaseAdapter.fcmToken, topics: ["announcements", "test"])
             firebaseAdapter.subscribe(toTopic: Topic.test.rawValue)
             firebaseAdapter.unsubscribe(fromTopic: Topic.live.rawValue)
 
         case .release:
+            fcmRegistration.registerFCM(firebaseAdapter.fcmToken, topics: ["announcements", "live"])
             firebaseAdapter.subscribe(toTopic: Topic.live.rawValue)
             firebaseAdapter.unsubscribe(fromTopic: Topic.test.rawValue)
         }
@@ -244,13 +259,48 @@ class FirebaseNotificationsTokenRegistrationTests: XCTestCase {
         XCTAssertFalse(context.capturingFirebaseAdapter.subscribedToAnnouncements)
     }
 
-    func testReportTheFirebaseFCMTokenToTheFCMDevicerRegister() {
+    func testReportTheFirebaseFCMTokenToTheFCMDeviceRegister() {
         let context = assembleApp(configuration: .debug)
         let stubFCMToken = "Stub token"
         context.capturingFirebaseAdapter.fcmToken = stubFCMToken
         context.registerDeviceToken()
 
         XCTAssertEqual(stubFCMToken, context.capturingFCMDeviceRegister.capturedFCM)
+    }
+
+    func testForDebugConfigurationRegisterTheDebugTopicToTheFCMDeviceRegister() {
+        let context = assembleApp(configuration: .debug)
+        context.registerDeviceToken()
+
+        XCTAssertTrue(context.capturingFCMDeviceRegister.registeredDebugTopic)
+    }
+
+    func testForDebugConfigurationRegisterTheAnnouncementsTopicToTheFCMDeviceRegister() {
+        let context = assembleApp(configuration: .debug)
+        context.registerDeviceToken()
+
+        XCTAssertTrue(context.capturingFCMDeviceRegister.registeredAnnouncementsTopic)
+    }
+
+    func testForReleaseConfigurationRegisterTheLiveTopicToTheFCMDeviceRegister() {
+        let context = assembleApp(configuration: .release)
+        context.registerDeviceToken()
+
+        XCTAssertTrue(context.capturingFCMDeviceRegister.registeredLiveTopic)
+    }
+
+    func testForReleaseConfigurationNotRegisterTheTestTopicToTheFCMDeviceRegister() {
+        let context = assembleApp(configuration: .release)
+        context.registerDeviceToken()
+
+        XCTAssertFalse(context.capturingFCMDeviceRegister.registeredDebugTopic)
+    }
+
+    func testForDebugConfigurationNotRegisterTheLiveTopicToTheFCMDeviceRegister() {
+        let context = assembleApp(configuration: .debug)
+        context.registerDeviceToken()
+
+        XCTAssertFalse(context.capturingFCMDeviceRegister.registeredLiveTopic)
     }
     
 }
