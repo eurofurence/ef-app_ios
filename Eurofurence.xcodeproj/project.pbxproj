@@ -31,6 +31,7 @@
 		781A94401F1A1A72002DE70F /* FirebaseMessagingAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A943F1F1A1A72002DE70F /* FirebaseMessagingAdapter.swift */; };
 		781A94421F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A94411F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift */; };
 		781A94461F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A94451F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift */; };
+		781A94481F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A94471F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift */; };
 		7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6DA1F13F4DE004C0FB5 /* StubPresentationAssets.swift */; };
 		7820A6DD1F13F544004C0FB5 /* PresentationAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6DC1F13F544004C0FB5 /* PresentationAssets.swift */; };
 		7820A6DF1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6DE1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift */; };
@@ -242,6 +243,7 @@
 		781A943F1F1A1A72002DE70F /* FirebaseMessagingAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseMessagingAdapter.swift; path = Application/Notifications/Firebase/FirebaseMessagingAdapter.swift; sourceTree = "<group>"; };
 		781A94411F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingRemoteNotificationsTokenRegistration.swift; path = "Test Doubles/Application/Notifications/CapturingRemoteNotificationsTokenRegistration.swift"; sourceTree = "<group>"; };
 		781A94451F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseNotificationsTokenRegistrationTests.swift; path = "Application Tests/Notifications/Firebase/FirebaseNotificationsTokenRegistrationTests.swift"; sourceTree = "<group>"; };
+		781A94471F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceFCMDeviceRegistrationTests.swift; path = "Application Tests/Notifications/Firebase/EurofurenceFCMDeviceRegistrationTests.swift"; sourceTree = "<group>"; };
 		7820A6DA1F13F4DE004C0FB5 /* StubPresentationAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubPresentationAssets.swift; path = "Test Doubles/StubPresentationAssets.swift"; sourceTree = "<group>"; };
 		7820A6DC1F13F544004C0FB5 /* PresentationAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentationAssets.swift; path = Presenters/PresentationAssets.swift; sourceTree = "<group>"; };
 		7820A6DE1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationPresentationAssetsTests.swift; sourceTree = "<group>"; };
@@ -599,6 +601,7 @@
 			isa = PBXGroup;
 			children = (
 				781A94451F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift */,
+				781A94471F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift */,
 			);
 			name = Firebase;
 			sourceTree = "<group>";
@@ -1564,6 +1567,7 @@
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
 				78C86D831F13A35F003A20E6 /* UnlocalizedPresentationStringsShould.swift in Sources */,
 				7820A6FF1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift in Sources */,
+				781A94481F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift in Sources */,
 				7820A6FD1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift in Sources */,
 				7820A7051F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift in Sources */,
 				78C86D5D1F123686003A20E6 /* WhenTheTutorialAppears.swift in Sources */,
