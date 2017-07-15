@@ -12,7 +12,7 @@ class EventCell: UITableViewCell {
 
 	@IBOutlet weak var bannerImageView: UIImageView!
 	@IBOutlet weak var endTimeLabel: UILabel!
-	@IBOutlet weak var favoriteButton: UIButton!
+	@IBOutlet weak var favoriteLabel: UILabel!
 	@IBOutlet weak var startTimeLabel: UILabel!
 	@IBOutlet weak var subTitleLabel: UILabel!
 	@IBOutlet weak var titleLabel: UILabel!
@@ -32,8 +32,9 @@ class EventCell: UITableViewCell {
 				startTimeLabel.text = DateFormatters.hourMinute.string(from: event.StartDateTimeUtc)
 				endTimeLabel.text = DateFormatters.hourMinute.string(from: event.EndDateTimeUtc)
 				if let eventFavorite = event.EventFavorite {
-					favoriteButton.addTarget(self, action: #selector(toggleFavorite(button:)), for: .touchUpInside)
-					favoriteButton.reactive.isSelected <~ eventFavorite.IsFavorite
+					favoriteLabel.reactive.isHidden <~ eventFavorite.IsFavorite.map({ !$0 })
+				} else {
+					favoriteLabel.isHidden = true
 				}
 				if let _ = event.BannerImage {
 					zeroHeightConstraint.isActive = false

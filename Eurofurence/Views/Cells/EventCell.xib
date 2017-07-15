@@ -8,11 +8,6 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="fontawesome-webfont.ttf">
-            <string>FontAwesome</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -30,7 +25,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="This is an Event Title!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrd-bS-rGX">
-                        <rect key="frame" x="95" y="8" width="184" height="20.5"/>
+                        <rect key="frame" x="70" y="8" width="181.5" height="20.5"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -42,42 +37,40 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="And here comes the teaser for this special event …" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvr-69-Grf">
-                        <rect key="frame" x="95" y="28.5" width="184" height="41"/>
+                        <rect key="frame" x="70" y="28.5" width="181.5" height="41"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnT-x2-jnX">
-                        <rect key="frame" x="65" y="1.5" width="30" height="32"/>
-                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="20"/>
-                        <state key="normal" title="☆">
-                            <color key="titleColor" red="0.0039215686269999999" green="0.38431372549999998" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                        <state key="selected" title="★"/>
-                    </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ef-bg-news" translatesAutoresizingMaskIntoConstraints="NO" id="b2g-aM-3KW">
                         <rect key="frame" x="0.0" y="74.5" width="279" height="75"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="75" identifier="HeightConstraint" id="dp6-uc-ipR"/>
                         </constraints>
                     </imageView>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="★" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eee-gS-YSF">
+                        <rect key="frame" x="256.5" y="0.0" width="22.5" height="30"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                        <color key="textColor" red="0.0039215686269999999" green="0.38431372549999998" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="fvr-69-Grf" firstAttribute="leading" secondItem="mrd-bS-rGX" secondAttribute="leading" id="0KG-hJ-Iup"/>
                     <constraint firstItem="vTR-6W-c0s" firstAttribute="width" secondItem="KHk-Kf-32U" secondAttribute="width" id="0Uo-aX-KfK"/>
-                    <constraint firstItem="mrd-bS-rGX" firstAttribute="leading" secondItem="gnT-x2-jnX" secondAttribute="trailing" id="29L-Um-nYI"/>
-                    <constraint firstItem="gnT-x2-jnX" firstAttribute="leading" secondItem="KHk-Kf-32U" secondAttribute="trailing" id="5U8-da-sMi"/>
-                    <constraint firstItem="gnT-x2-jnX" firstAttribute="baseline" secondItem="mrd-bS-rGX" secondAttribute="baseline" id="CQN-Zd-yXp"/>
+                    <constraint firstItem="mrd-bS-rGX" firstAttribute="leading" secondItem="KHk-Kf-32U" secondAttribute="trailing" constant="5" id="1lN-0E-i1c"/>
                     <constraint firstItem="fvr-69-Grf" firstAttribute="width" secondItem="mrd-bS-rGX" secondAttribute="width" id="FIy-3m-hkl"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="mrd-bS-rGX" secondAttribute="trailing" id="FM1-Ul-IqM"/>
+                    <constraint firstItem="Eee-gS-YSF" firstAttribute="baseline" secondItem="mrd-bS-rGX" secondAttribute="baseline" id="NV0-nL-FLN"/>
                     <constraint firstItem="b2g-aM-3KW" firstAttribute="top" secondItem="fvr-69-Grf" secondAttribute="bottom" constant="5" id="SZE-cS-tEo"/>
                     <constraint firstItem="vTR-6W-c0s" firstAttribute="leading" secondItem="s4T-35-k7j" secondAttribute="leadingMargin" id="UNM-CW-0bd"/>
                     <constraint firstItem="KHk-Kf-32U" firstAttribute="leading" secondItem="s4T-35-k7j" secondAttribute="leadingMargin" id="VAO-hO-m6N"/>
                     <constraint firstItem="fvr-69-Grf" firstAttribute="top" secondItem="mrd-bS-rGX" secondAttribute="bottom" id="Wva-cF-vjW"/>
                     <constraint firstItem="mrd-bS-rGX" firstAttribute="top" secondItem="s4T-35-k7j" secondAttribute="topMargin" id="a5l-zp-Cbt"/>
+                    <constraint firstItem="Eee-gS-YSF" firstAttribute="leading" secondItem="mrd-bS-rGX" secondAttribute="trailing" constant="5" id="ch8-Yt-cSH"/>
                     <constraint firstItem="KHk-Kf-32U" firstAttribute="top" secondItem="mrd-bS-rGX" secondAttribute="top" id="dzO-Wk-nnP"/>
                     <constraint firstAttribute="bottomMargin" secondItem="b2g-aM-3KW" secondAttribute="bottom" id="fDI-Yt-6NK"/>
                     <constraint firstItem="b2g-aM-3KW" firstAttribute="leading" secondItem="s4T-35-k7j" secondAttribute="leading" id="i8L-EQ-iel"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Eee-gS-YSF" secondAttribute="trailing" id="j3N-c7-cFc"/>
                     <constraint firstItem="vTR-6W-c0s" firstAttribute="top" secondItem="KHk-Kf-32U" secondAttribute="bottom" id="ozk-9P-CaB"/>
                     <constraint firstItem="b2g-aM-3KW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vTR-6W-c0s" secondAttribute="bottom" constant="5" id="uVF-sO-amE"/>
                     <constraint firstAttribute="trailingMargin" secondItem="b2g-aM-3KW" secondAttribute="trailing" id="ulr-pn-est"/>
@@ -87,7 +80,7 @@
             <connections>
                 <outlet property="bannerImageView" destination="b2g-aM-3KW" id="V0b-LB-tiF"/>
                 <outlet property="endTimeLabel" destination="vTR-6W-c0s" id="wRz-We-DUj"/>
-                <outlet property="favoriteButton" destination="gnT-x2-jnX" id="CH8-aO-KbT"/>
+                <outlet property="favoriteLabel" destination="Eee-gS-YSF" id="IiA-gn-Zkj"/>
                 <outlet property="startTimeLabel" destination="KHk-Kf-32U" id="kzS-1c-BJi"/>
                 <outlet property="subTitleLabel" destination="fvr-69-Grf" id="5zK-po-zex"/>
                 <outlet property="titleLabel" destination="mrd-bS-rGX" id="rkd-aa-uoK"/>
