@@ -1,5 +1,5 @@
 //
-//  FirebaseNotificationsTokenRegistrationTests.swift
+//  FirebaseRemoteNotificationsTokenRegistrationTests.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 15/07/2017.
@@ -103,7 +103,13 @@ class CapturingFCMDeviceRegistration: FCMDeviceRegistration {
 
 }
 
-struct FirebaseNotificationsTokenRegistration {
+protocol RemoteNotificationsTokenRegistration {
+
+    func registerRemoteNotificationsDeviceToken(_ token: Data)
+
+}
+
+struct FirebaseRemoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration {
 
     private var buildConfiguration: BuildConfigurationProviding
     private var firebaseAdapter: FirebaseAdapter
@@ -115,11 +121,9 @@ struct FirebaseNotificationsTokenRegistration {
         self.buildConfiguration = buildConfiguration
         self.firebaseAdapter = firebaseAdapter
         self.fcmRegistration = fcmRegistration
-
-
     }
 
-    func registerDevicePushToken(_ token: Data) {
+    func registerRemoteNotificationsDeviceToken(_ token: Data) {
         firebaseAdapter.setAPNSToken(deviceToken: token)
         firebaseAdapter.subscribe(toTopic: .announcements)
 
@@ -138,29 +142,29 @@ struct FirebaseNotificationsTokenRegistration {
 
 }
 
-class FirebaseNotificationsTokenRegistrationTests: XCTestCase {
+class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
     
-    struct FirebaseNotificationsTokenRegistrationTestContext {
-        var tokenRegistration: FirebaseNotificationsTokenRegistration
+    private struct Context {
+        var tokenRegistration: FirebaseRemoteNotificationsTokenRegistration
         var capturingFirebaseAdapter: CapturingFirebaseAdapter
         var capturingFCMDeviceRegister: CapturingFCMDeviceRegistration
 
         func registerDeviceToken(deviceToken: Data = Data()) {
-            tokenRegistration.registerDevicePushToken(deviceToken)
+            tokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken)
         }
     }
 
-    private func assembleApp(configuration: BuildConfiguration) -> FirebaseNotificationsTokenRegistrationTestContext {
+    private func assembleApp(configuration: BuildConfiguration) -> Context {
         let buildConfigurationProviding = StubBuildConfigurationProviding(configuration: configuration)
         let capturingFirebaseAdapter = CapturingFirebaseAdapter()
         let capturingFCMDeviceRegister = CapturingFCMDeviceRegistration()
-        let tokenRegistration = FirebaseNotificationsTokenRegistration(buildConfiguration: buildConfigurationProviding,
+        let tokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfigurationProviding,
                                                                        firebaseAdapter: capturingFirebaseAdapter,
                                                                        fcmRegistration: capturingFCMDeviceRegister)
 
-        return FirebaseNotificationsTokenRegistrationTestContext(tokenRegistration: tokenRegistration,
-                                                                 capturingFirebaseAdapter: capturingFirebaseAdapter,
-                                                                 capturingFCMDeviceRegister: capturingFCMDeviceRegister)
+        return Context(tokenRegistration: tokenRegistration,
+                       capturingFirebaseAdapter: capturingFirebaseAdapter,
+                       capturingFCMDeviceRegister: capturingFCMDeviceRegister)
     }
 
     func testForDebugConfigurationTestNotificationsShouldBeSubscribed() {
