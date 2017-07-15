@@ -9,19 +9,25 @@
 @testable import Eurofurence
 import XCTest
 
+enum FirebaseTopic: String {
+    case test
+    case live
+    case announcements
+}
+
 protocol FirebaseAdapter {
 
     var fcmToken: String { get }
 
     func setAPNSToken(deviceToken: Data)
-    func subscribe(toTopic topic: String)
-    func unsubscribe(fromTopic topic: String)
+    func subscribe(toTopic topic: FirebaseTopic)
+    func unsubscribe(fromTopic topic: FirebaseTopic)
 
 }
 
 protocol FCMDeviceRegistration {
 
-    func registerFCM(_ fcm: String, topics: [String])
+    func registerFCM(_ fcm: String, topics: [FirebaseTopic])
 
 }
 
@@ -32,44 +38,44 @@ class CapturingFirebaseAdapter: FirebaseAdapter {
         registeredDeviceToken = deviceToken
     }
 
-    private var subscribedTopics = [String]()
-    func subscribe(toTopic topic: String) {
+    private var subscribedTopics = [FirebaseTopic]()
+    func subscribe(toTopic topic: FirebaseTopic) {
         subscribedTopics.append(topic)
     }
 
-    private var unsubscribedTopics = [String]()
-    func unsubscribe(fromTopic topic: String) {
+    private var unsubscribedTopics = [FirebaseTopic]()
+    func unsubscribe(fromTopic topic: FirebaseTopic) {
         unsubscribedTopics.append(topic)
     }
 
     var fcmToken: String = ""
 
-    func didSubscribeToTopic(_ topic: String) -> Bool {
+    func didSubscribeToTopic(_ topic: FirebaseTopic) -> Bool {
         return subscribedTopics.contains(topic)
     }
 
-    func didUnsubscribeFromTopic(_ topic: String) -> Bool {
+    func didUnsubscribeFromTopic(_ topic: FirebaseTopic) -> Bool {
         return unsubscribedTopics.contains(topic)
     }
 
     var subscribedToTestNotifications: Bool {
-        return didSubscribeToTopic("test")
+        return didSubscribeToTopic(.test)
     }
 
     var subscribedToLiveNotifications: Bool {
-        return didSubscribeToTopic("live")
+        return didSubscribeToTopic(.live)
     }
 
     var unsubscribedFromTestNotifications: Bool {
-        return didUnsubscribeFromTopic("test")
+        return didUnsubscribeFromTopic(.test)
     }
 
     var unsubscribedFromLiveNotifications: Bool {
-        return didUnsubscribeFromTopic("live")
+        return didUnsubscribeFromTopic(.live)
     }
 
     var subscribedToAnnouncements: Bool {
-        return didSubscribeToTopic("announcements")
+        return didSubscribeToTopic(.announcements)
     }
 
 }
@@ -77,33 +83,27 @@ class CapturingFirebaseAdapter: FirebaseAdapter {
 class CapturingFCMDeviceRegistration: FCMDeviceRegistration {
 
     private(set) var capturedFCM: String?
-    private var topics = [String]()
-    func registerFCM(_ fcm: String, topics: [String]) {
+    private var topics = [FirebaseTopic]()
+    func registerFCM(_ fcm: String, topics: [FirebaseTopic]) {
         capturedFCM = fcm
         self.topics = topics
     }
 
     var registeredDebugTopic: Bool {
-        return topics.contains("test")
+        return topics.contains(.test)
     }
 
     var registeredLiveTopic: Bool {
-        return topics.contains("live")
+        return topics.contains(.live)
     }
 
     var registeredAnnouncementsTopic: Bool {
-        return topics.contains("announcements")
+        return topics.contains(.announcements)
     }
 
 }
 
 struct FirebaseNotificationsTokenRegistration {
-
-    private enum Topic: String {
-        case test
-        case live
-        case announcements
-    }
 
     private var buildConfiguration: BuildConfigurationProviding
     private var firebaseAdapter: FirebaseAdapter
@@ -121,18 +121,18 @@ struct FirebaseNotificationsTokenRegistration {
 
     func registerDevicePushToken(_ token: Data) {
         firebaseAdapter.setAPNSToken(deviceToken: token)
-        firebaseAdapter.subscribe(toTopic: Topic.announcements.rawValue)
+        firebaseAdapter.subscribe(toTopic: .announcements)
 
         switch buildConfiguration.configuration {
         case .debug:
-            fcmRegistration.registerFCM(firebaseAdapter.fcmToken, topics: ["announcements", "test"])
-            firebaseAdapter.subscribe(toTopic: Topic.test.rawValue)
-            firebaseAdapter.unsubscribe(fromTopic: Topic.live.rawValue)
+            fcmRegistration.registerFCM(firebaseAdapter.fcmToken, topics: [.announcements, .test])
+            firebaseAdapter.subscribe(toTopic: .test)
+            firebaseAdapter.unsubscribe(fromTopic: .live)
 
         case .release:
-            fcmRegistration.registerFCM(firebaseAdapter.fcmToken, topics: ["announcements", "live"])
-            firebaseAdapter.subscribe(toTopic: Topic.live.rawValue)
-            firebaseAdapter.unsubscribe(fromTopic: Topic.test.rawValue)
+            fcmRegistration.registerFCM(firebaseAdapter.fcmToken, topics: [.announcements, .live])
+            firebaseAdapter.subscribe(toTopic: .live)
+            firebaseAdapter.unsubscribe(fromTopic: .test)
         }
     }
 
