@@ -22,6 +22,12 @@
 		6EF96CE71F1269FD00EE6134 /* TutorialModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CE61F1269FD00EE6134 /* TutorialModule.swift */; };
 		6EF96CEA1F126B1A00EE6134 /* BootstrappingModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CE91F126B1A00EE6134 /* BootstrappingModule.swift */; };
 		6EF96CF11F1495F400EE6134 /* SystemNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CF01F1495F400EE6134 /* SystemNetworkReachability.swift */; };
+		781A94301F1A1972002DE70F /* FirebaseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A942F1F1A1972002DE70F /* FirebaseAdapter.swift */; };
+		781A94331F1A1994002DE70F /* FCMDeviceRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A94321F1A1994002DE70F /* FCMDeviceRegistration.swift */; };
+		781A94381F1A19BD002DE70F /* CapturingFirebaseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A94371F1A19BD002DE70F /* CapturingFirebaseAdapter.swift */; };
+		781A943A1F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A94391F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift */; };
+		781A943C1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A943B1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift */; };
+		781A943E1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A943D1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift */; };
 		7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6DA1F13F4DE004C0FB5 /* StubPresentationAssets.swift */; };
 		7820A6DD1F13F544004C0FB5 /* PresentationAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6DC1F13F544004C0FB5 /* PresentationAssets.swift */; };
 		7820A6DF1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6DE1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift */; };
@@ -225,6 +231,12 @@
 		6EF96CE61F1269FD00EE6134 /* TutorialModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialModule.swift; path = Presenters/Modules/Tutorial/TutorialModule.swift; sourceTree = "<group>"; };
 		6EF96CE91F126B1A00EE6134 /* BootstrappingModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BootstrappingModule.swift; path = Presenters/Modules/Bootstrap/BootstrappingModule.swift; sourceTree = "<group>"; };
 		6EF96CF01F1495F400EE6134 /* SystemNetworkReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemNetworkReachability.swift; sourceTree = "<group>"; };
+		781A942F1F1A1972002DE70F /* FirebaseAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseAdapter.swift; path = Application/Notifications/Firebase/FirebaseAdapter.swift; sourceTree = "<group>"; };
+		781A94321F1A1994002DE70F /* FCMDeviceRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FCMDeviceRegistration.swift; path = Application/Notifications/Firebase/FCMDeviceRegistration.swift; sourceTree = "<group>"; };
+		781A94371F1A19BD002DE70F /* CapturingFirebaseAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingFirebaseAdapter.swift; path = "Test Doubles/Application/Notifications/Firebase/CapturingFirebaseAdapter.swift"; sourceTree = "<group>"; };
+		781A94391F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingFCMDeviceRegistration.swift; path = "Test Doubles/Application/Notifications/Firebase/CapturingFCMDeviceRegistration.swift"; sourceTree = "<group>"; };
+		781A943B1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RemoteNotificationsTokenRegistration.swift; path = Application/Notifications/RemoteNotificationsTokenRegistration.swift; sourceTree = "<group>"; };
+		781A943D1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseRemoteNotificationsTokenRegistration.swift; path = Application/Notifications/Firebase/FirebaseRemoteNotificationsTokenRegistration.swift; sourceTree = "<group>"; };
 		7820A6DA1F13F4DE004C0FB5 /* StubPresentationAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubPresentationAssets.swift; path = "Test Doubles/StubPresentationAssets.swift"; sourceTree = "<group>"; };
 		7820A6DC1F13F544004C0FB5 /* PresentationAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentationAssets.swift; path = Presenters/PresentationAssets.swift; sourceTree = "<group>"; };
 		7820A6DE1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationPresentationAssetsTests.swift; sourceTree = "<group>"; };
@@ -476,6 +488,7 @@
 		6EF96CCD1F0EDB1300EE6134 /* Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
+				781A94341F1A19A2002DE70F /* Application */,
 				78C86D5E1F12384C003A20E6 /* Scenes */,
 				6EF96CCE1F0EDB2000EE6134 /* CalendarTestDoubles.swift */,
 				78455B481F1177AD005BE2D7 /* CapturingTutorialRouter.swift */,
@@ -531,6 +544,41 @@
 				6EF96CE91F126B1A00EE6134 /* BootstrappingModule.swift */,
 			);
 			name = Bootstrap;
+			sourceTree = "<group>";
+		};
+		781A94311F1A1981002DE70F /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				781A942F1F1A1972002DE70F /* FirebaseAdapter.swift */,
+				781A94321F1A1994002DE70F /* FCMDeviceRegistration.swift */,
+				781A943D1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift */,
+			);
+			name = Firebase;
+			sourceTree = "<group>";
+		};
+		781A94341F1A19A2002DE70F /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				781A94351F1A19A8002DE70F /* Notifications */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		781A94351F1A19A8002DE70F /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				781A94361F1A19AE002DE70F /* Firebase */,
+			);
+			name = Notifications;
+			sourceTree = "<group>";
+		};
+		781A94361F1A19AE002DE70F /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				781A94371F1A19BD002DE70F /* CapturingFirebaseAdapter.swift */,
+				781A94391F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift */,
+			);
+			name = Firebase;
 			sourceTree = "<group>";
 		};
 		7820A6F01F1696AC004C0FB5 /* Push Permissions */ = {
@@ -692,8 +740,10 @@
 		78D7EEB91F196B40005372A9 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				781A94311F1A1981002DE70F /* Firebase */,
 				78D7EEBA1F196B4E005372A9 /* NotificationsService.swift */,
 				78D7EEC51F196D46005372A9 /* FirebaseNotificationsService.swift */,
+				781A943B1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -1326,6 +1376,7 @@
 			files = (
 				6EF96CEA1F126B1A00EE6134 /* BootstrappingModule.swift in Sources */,
 				9A7FFD571EFC5B46007ABA36 /* CalendarAccess.swift in Sources */,
+				781A94331F1A1994002DE70F /* FCMDeviceRegistration.swift in Sources */,
 				6EF96CCC1F0EDB0500EE6134 /* CalendarEvent.swift in Sources */,
 				78D7EEC41F196C4A005372A9 /* PreprocessorBuildConfigurationProviding.swift in Sources */,
 				78C86D691F123F68003A20E6 /* ApplicationContext.swift in Sources */,
@@ -1375,6 +1426,7 @@
 				78455B541F117A35005BE2D7 /* TutorialViewController.swift in Sources */,
 				9ACF99941EC858B2006FC958 /* LinkFragment.swift in Sources */,
 				6EF96CDD1F0F544B00EE6134 /* EventKitCalendarEvent.swift in Sources */,
+				781A943E1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift in Sources */,
 				6EF96CD91F0EDCB300EE6134 /* EventKitCalendarPermissionsProviding.swift in Sources */,
 				7820A7071F17943B004C0FB5 /* TutorialPage.swift in Sources */,
 				78C86D581F12338D003A20E6 /* StoryboardRouters.swift in Sources */,
@@ -1404,6 +1456,7 @@
 				7820A6EF1F14F15D004C0FB5 /* Quote.swift in Sources */,
 				D6F3DD6B0659E1A44E01075B /* CurrentEventsViewModel.swift in Sources */,
 				78D7EEC61F196D46005372A9 /* FirebaseNotificationsService.swift in Sources */,
+				781A943C1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift in Sources */,
 				9ACB006D1F16C23D001CE9D2 /* PrivateMessage.swift in Sources */,
 				9AB64BCD1F018365004E8D91 /* KnowledgeEntryCell.swift in Sources */,
 				D6F3DFB53E62A8C16F211819 /* TimeService.swift in Sources */,
@@ -1422,6 +1475,7 @@
 				7820A6E31F13FD2C004C0FB5 /* NetworkReachability.swift in Sources */,
 				78455B5B1F117E27005BE2D7 /* TutorialPageViewController.swift in Sources */,
 				7820A70C1F179496004C0FB5 /* ShowInitiateDownloadTutorialPage.swift in Sources */,
+				781A94301F1A1972002DE70F /* FirebaseAdapter.swift in Sources */,
 				D6F3D620BA994A6570325C66 /* DealersTableViewCell.swift in Sources */,
 				D6F3DDCB5EF23B138BD25865 /* EventHeaderCellTableViewCell.swift in Sources */,
 				9A2A94891F12D152004D66FB /* LastSyncDateProviding.swift in Sources */,
@@ -1481,6 +1535,7 @@
 				78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */,
 				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,
 				7820A6E51F140056004C0FB5 /* CapturingAlertRouter.swift in Sources */,
+				781A94381F1A19BD002DE70F /* CapturingFirebaseAdapter.swift in Sources */,
 				78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */,
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
 				78C86D831F13A35F003A20E6 /* UnlocalizedPresentationStringsShould.swift in Sources */,
@@ -1498,6 +1553,7 @@
 				7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */,
 				7820A6ED1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift in Sources */,
 				78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */,
+				781A943A1F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift in Sources */,
 				78455B4B1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift in Sources */,
 				7820A6E11F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift in Sources */,
 			);
