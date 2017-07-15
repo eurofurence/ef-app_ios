@@ -32,5 +32,9 @@ struct FirebaseNotificationsService: NotificationsService {
     func unsubscribeFromLiveNotifications() {
         messaging.unsubscribe(fromTopic: "live")
     }
-    
+
+    func subscribeToAnnouncements() {
+        messaging.subscribe(toTopic: "announcements")
+    }
+
 }

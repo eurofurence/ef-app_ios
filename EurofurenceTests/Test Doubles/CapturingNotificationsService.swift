@@ -36,5 +36,10 @@ class CapturingNotificationsService: NotificationsService {
         unsubscribedFromLiveNotifications = true
     }
     
+    private(set) var subscribedToAnnouncements = false
+    func subscribeToAnnouncements() {
+        subscribedToAnnouncements = true
+    }
+    
 }
 

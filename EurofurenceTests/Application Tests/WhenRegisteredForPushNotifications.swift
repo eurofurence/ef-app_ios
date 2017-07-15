@@ -114,4 +114,16 @@ class WhenRegisteredForPushNotifications: XCTestCase {
         XCTAssertEqual(deviceToken, context.capturingNotificationService.registeredDeviceToken)
     }
     
+    func testForAnyConfigurationTheAnnouncementsTopicShouldBeSubscribedTo() {
+        let context = assembleApp(configuration: .debug)
+        context.registerForNotifications()
+        
+        XCTAssertTrue(context.capturingNotificationService.subscribedToAnnouncements)
+    }
+    
+    func testForAnyConfigurationTheAnnouncementsTopicShouldNotBeSubscribedToUntilWeActuallyReceievePushToken() {
+        let context = assembleApp(configuration: .debug)
+        XCTAssertFalse(context.capturingNotificationService.subscribedToAnnouncements)
+    }
+    
 }

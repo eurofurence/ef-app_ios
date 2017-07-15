@@ -18,4 +18,6 @@ protocol NotificationsService {
     func subscribeToLiveNotifications()
     func unsubscribeFromLiveNotifications()
 
+    func subscribeToAnnouncements()
+
 }

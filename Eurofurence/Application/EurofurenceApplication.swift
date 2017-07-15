@@ -21,6 +21,7 @@ struct EurofurenceApplication {
 
     func handleRemoteNotificationRegistration(deviceToken: Data) {
         notificationsService.register(deviceToken: deviceToken)
+        notificationsService.subscribeToAnnouncements()
 
         switch buildConfiguration.configuration {
         case .debug:
