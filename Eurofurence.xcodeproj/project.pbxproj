@@ -118,6 +118,9 @@
 		78D7EEC61F196D46005372A9 /* FirebaseNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEC51F196D46005372A9 /* FirebaseNotificationsService.swift */; };
 		78F555991F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F555981F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift */; };
 		78F5559B1F10D65900BDA7D4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F5559A1F10D65900BDA7D4 /* SplashViewController.swift */; };
+		78FE77CC1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77CB1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift */; };
+		78FE77CF1F1A2E8600E9A0BE /* HTTPPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77CE1F1A2E8600E9A0BE /* HTTPPoster.swift */; };
+		78FE77D31F1A2EB000E9A0BE /* CapturingHTTPPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D21F1A2EB000E9A0BE /* CapturingHTTPPoster.swift */; };
 		9A0525411ECA2AF500578798 /* Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0525401ECA2AF500578798 /* Sync.swift */; };
 		9A0525431ECA2C5A00578798 /* SyncEntityDelta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0525421ECA2C5A00578798 /* SyncEntityDelta.swift */; };
 		9A0525451ECB090700578798 /* WebApiConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0525441ECB090700578798 /* WebApiConnection.swift */; };
@@ -333,6 +336,9 @@
 		78D7EEC51F196D46005372A9 /* FirebaseNotificationsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseNotificationsService.swift; path = Application/Notifications/FirebaseNotificationsService.swift; sourceTree = "<group>"; };
 		78F555981F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReplaceViewControllersSegue.swift; path = Segues/ReplaceViewControllersSegue.swift; sourceTree = "<group>"; };
 		78F5559A1F10D65900BDA7D4 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		78FE77CB1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceFCMDeviceRegistration.swift; path = Application/Notifications/Firebase/EurofurenceFCMDeviceRegistration.swift; sourceTree = "<group>"; };
+		78FE77CE1F1A2E8600E9A0BE /* HTTPPoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPPoster.swift; path = HTTP/HTTPPoster.swift; sourceTree = "<group>"; };
+		78FE77D21F1A2EB000E9A0BE /* CapturingHTTPPoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingHTTPPoster.swift; path = "Test Doubles/Services/HTTP/CapturingHTTPPoster.swift"; sourceTree = "<group>"; };
 		9A0525401ECA2AF500578798 /* Sync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sync.swift; sourceTree = "<group>"; };
 		9A0525421ECA2C5A00578798 /* SyncEntityDelta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncEntityDelta.swift; sourceTree = "<group>"; };
 		9A0525441ECB090700578798 /* WebApiConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebApiConnection.swift; sourceTree = "<group>"; };
@@ -494,6 +500,7 @@
 		6EF96CCD1F0EDB1300EE6134 /* Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
+				78FE77D01F1A2E9500E9A0BE /* Services */,
 				781A94341F1A19A2002DE70F /* Application */,
 				78C86D5E1F12384C003A20E6 /* Scenes */,
 				6EF96CCE1F0EDB2000EE6134 /* CalendarTestDoubles.swift */,
@@ -559,6 +566,7 @@
 				781A94321F1A1994002DE70F /* FCMDeviceRegistration.swift */,
 				781A943D1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift */,
 				781A943F1F1A1A72002DE70F /* FirebaseMessagingAdapter.swift */,
+				78FE77CB1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift */,
 			);
 			name = Firebase;
 			sourceTree = "<group>";
@@ -791,6 +799,30 @@
 			name = Segues;
 			sourceTree = "<group>";
 		};
+		78FE77CD1F1A2E7900E9A0BE /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				78FE77CE1F1A2E8600E9A0BE /* HTTPPoster.swift */,
+			);
+			name = HTTP;
+			sourceTree = "<group>";
+		};
+		78FE77D01F1A2E9500E9A0BE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				78FE77D11F1A2E9C00E9A0BE /* HTTP */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		78FE77D11F1A2E9C00E9A0BE /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				78FE77D21F1A2EB000E9A0BE /* CapturingHTTPPoster.swift */,
+			);
+			name = HTTP;
+			sourceTree = "<group>";
+		};
 		9A2A94851F12CB9B004D66FB /* Local */ = {
 			isa = PBXGroup;
 			children = (
@@ -1016,6 +1048,7 @@
 		D6F3D0327856D0D0294EF5E6 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				78FE77CD1F1A2E7900E9A0BE /* HTTP */,
 				9ACB010A1F18F520001CE9D2 /* EventFavorites */,
 				7820A6F01F1696AC004C0FB5 /* Push Permissions */,
 				D6F3D99887787EEDAC891182 /* Abstractions */,
@@ -1483,6 +1516,7 @@
 				78D7EEC61F196D46005372A9 /* FirebaseNotificationsService.swift in Sources */,
 				781A943C1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift in Sources */,
 				9ACB006D1F16C23D001CE9D2 /* PrivateMessage.swift in Sources */,
+				78FE77CF1F1A2E8600E9A0BE /* HTTPPoster.swift in Sources */,
 				9AB64BCD1F018365004E8D91 /* KnowledgeEntryCell.swift in Sources */,
 				D6F3DFB53E62A8C16F211819 /* TimeService.swift in Sources */,
 				7820A6FB1F16BBB2004C0FB5 /* WitnessedSystemPushPermissionsRequest.swift in Sources */,
@@ -1502,6 +1536,7 @@
 				78455B5B1F117E27005BE2D7 /* TutorialPageViewController.swift in Sources */,
 				7820A70C1F179496004C0FB5 /* ShowInitiateDownloadTutorialPage.swift in Sources */,
 				781A94301F1A1972002DE70F /* FirebaseAdapter.swift in Sources */,
+				78FE77CC1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift in Sources */,
 				D6F3D620BA994A6570325C66 /* DealersTableViewCell.swift in Sources */,
 				D6F3DDCB5EF23B138BD25865 /* EventHeaderCellTableViewCell.swift in Sources */,
 				9A2A94891F12D152004D66FB /* LastSyncDateProviding.swift in Sources */,
@@ -1543,6 +1578,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78D7EEBF1F196B77005372A9 /* StubBuildConfigurationProviding.swift in Sources */,
+				78FE77D31F1A2EB000E9A0BE /* CapturingHTTPPoster.swift in Sources */,
 				78C86D541F1228B0003A20E6 /* TutorialViewControllerTests.swift in Sources */,
 				78455B3A1F116A7E005BE2D7 /* WhenTheAppLaunches.swift in Sources */,
 				781A94421F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */,
