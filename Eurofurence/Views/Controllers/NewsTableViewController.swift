@@ -280,6 +280,41 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 		}
 	}
 
+	// MARK: - Editing
+
+	override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+		let rowData = getData(for: indexPath)
+
+		switch rowData {
+		case let event as Event:
+			if let eventFavorite = event.EventFavorite {
+				let actionTitle = (eventFavorite.IsFavorite.value) ? "Remove Favorite" : "Add Favorite"
+				let favoriteAction = UITableViewRowAction(style: .default, title: actionTitle, handler: { (_, _) in
+					eventFavorite.IsFavorite.swap(!eventFavorite.IsFavorite.value)
+					tableView.isEditing = false
+				})
+				favoriteAction.backgroundColor = (eventFavorite.IsFavorite.value) ?
+					UIColor.init(red: 0.75, green: 0.00, blue: 0.00, alpha: 1.0) :
+					UIColor.init(red: 0.00, green: 0.75, blue: 0.00, alpha: 1.0)
+				return [favoriteAction]
+			}
+		default:
+			break
+		}
+		return nil
+	}
+
+	override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+		let rowData = getData(for: indexPath)
+
+		switch rowData {
+		case is Event:
+			return true
+		default:
+			return false
+		}
+	}
+
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

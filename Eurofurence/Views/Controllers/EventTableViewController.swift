@@ -9,7 +9,7 @@ import UIKit
 import Changeset
 import ReactiveSwift
 
-class EventTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
+class EventTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate, UIViewControllerPreviewingDelegate {
     let searchController = UISearchController(searchResultsController: nil)
     var filteredEvents: [Event] = []
     var eventByType = ""
@@ -20,6 +20,10 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+		if traitCollection.forceTouchCapability == .available {
+			registerForPreviewing(with: self, sourceView: view)
+		}
 
 		// TODO: Make search bar comply to reactive paradigm
         searchController.searchBar.showsScopeBar = false
@@ -119,21 +123,15 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
         return border
     }
 
-    func createCellCustom(_ frame: CGRect) -> UIView {
-        let whiteRoundedCornerView = UIView(frame: frame)
-        whiteRoundedCornerView.backgroundColor = UIColor(red: 35/255.0, green: 36/255.0, blue: 38/255.0, alpha: 1.0)
-        whiteRoundedCornerView.layer.masksToBounds = false
-        return whiteRoundedCornerView
-    }
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-		cell.event = getEvent(for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as? EventCell,
+			let event = getData(for: indexPath) as? Event else { return UITableViewCell() }
+		cell.event = event
 
         return cell
     }
 
-	func getEvent(for indexPath: IndexPath) -> Event {
+	func getData(for indexPath: IndexPath) -> EntityBase? {
 		if searchController.isActive && searchController.searchBar.text != "" {
 			return self.filteredEvents[(indexPath as NSIndexPath).row]
 		} else {
@@ -148,10 +146,6 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
 			}
 
 		}
-	}
-
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		performSegue(withIdentifier: "EventDetailSegue", sender: getEvent(for: indexPath))
 	}
 
 	func updateSearchResults(for searchController: UISearchController) {
@@ -181,17 +175,23 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
             headerCell.headerCellLabel.text = viewModel.EventConferenceDays.value[section].Name + "\n" + DateFormatters.dayMonthLong.string(from: viewModel.EventConferenceDays.value[section].Date)
         }
 
-        return headerCell
+        return headerCell.contentView
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40.0
-    }
+	}
 
     // MARK: - UISearchBar Delegate
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         self.tableView.reloadData()
     }
+
+	// MARK: - Navigation
+
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		performSegue(withIdentifier: "EventDetailSegue", sender: getData(for: indexPath))
+	}
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
@@ -201,7 +201,67 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
 				segue.identifier == "EventDetailSegue" {
 			destinationVC.event = event
 		}
-    }
+	}
+
+	// MARK: - Editing
+
+	override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+		let rowData = getData(for: indexPath)
+
+		switch rowData {
+		case let event as Event:
+			if let eventFavorite = event.EventFavorite {
+				let actionTitle = (eventFavorite.IsFavorite.value) ? "Remove Favorite" : "Add Favorite"
+				let favoriteAction = UITableViewRowAction(style: .default, title: actionTitle, handler: { (_, _) in
+					eventFavorite.IsFavorite.swap(!eventFavorite.IsFavorite.value)
+					tableView.isEditing = false
+				})
+				favoriteAction.backgroundColor = (eventFavorite.IsFavorite.value) ?
+					UIColor.init(red: 0.75, green: 0.00, blue: 0.00, alpha: 1.0) :
+					UIColor.init(red: 0.00, green: 0.75, blue: 0.00, alpha: 1.0)
+				return [favoriteAction]
+			}
+		default:
+			break
+		}
+		return nil
+	}
+
+	override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+		let rowData = getData(for: indexPath)
+
+		switch rowData {
+		case is Event:
+			return true
+		default:
+			return false
+		}
+	}
+
+	// MARK: - Previewing
+
+	func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+		guard let indexPath = tableView.indexPathForRow(at: location),
+			let data = getData(for: indexPath) else { return nil }
+
+		let viewController: UIViewController
+		switch data {
+		case let event as Event:
+			guard let eventViewController = storyboard?.instantiateViewController(withIdentifier: "EventDetail") as? EventViewController else {
+				return nil
+			}
+			eventViewController.event = event
+			viewController = eventViewController
+		default:
+			return nil
+		}
+
+		return viewController
+	}
+
+	func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+		show(viewControllerToCommit, sender: self)
+	}
 
 	deinit {
 		disposable.dispose()

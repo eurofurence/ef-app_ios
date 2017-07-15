@@ -126,4 +126,19 @@ class EventViewController: UIViewController {
         }
     }
 
+	// MARK: - Previewing
+	lazy var previewActions: [UIPreviewActionItem] = {
+		let favoriteActionTitle = self.event?.EventFavorite?.IsFavorite.value ?? false ? "Remove Favorite" : "Add Favorite"
+		let favoriteAction = UIPreviewAction(title: favoriteActionTitle, style: .default) { _, viewController in
+			guard let eventViewController = viewController as? EventViewController,
+				let event = eventViewController.event, let eventFavorite = event.EventFavorite else { return }
+			eventFavorite.IsFavorite.swap(!eventFavorite.IsFavorite.value)
+		}
+		return [favoriteAction]
+	}()
+
+	override var previewActionItems: [UIPreviewActionItem] {
+		return previewActions
+	}
+
 }
