@@ -11,6 +11,8 @@ import ReactiveSwift
 class EventFavorite: EntityBase {
 	var EventId: String = ""
 	var IsFavorite: MutableProperty<Bool> = MutableProperty(false)
+	
+	weak var Event: Event?
 
 	required init() {
 		super.init()
@@ -22,6 +24,11 @@ class EventFavorite: EntityBase {
 		self.EventId = event.Id
 	}
 
+	override public func propertyMapping() -> [(keyInObject: String?,
+		keyInResource: String?)] {
+			return [(keyInObject: "Event", keyInResource: nil)]
+	}
+	
 	override func propertyConverters() -> [(key: String, decodeConverter: ((Any?) -> Void), encodeConverter: (() -> Any?))] {
 		return [
 			(key: "IsFavorite",

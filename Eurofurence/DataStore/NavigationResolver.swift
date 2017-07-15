@@ -57,10 +57,12 @@ class NavigationResolver: NavigationResolverProtocol {
 
 				e.EventFavorite = dataContext.EventFavorites.value.first(where: { $0.EventId == e.Id })
 				if let eventFavorite = e.EventFavorite {
+					eventFavorite.Event = e
 					eventFavorites.append(eventFavorite)
 				} else {
 					let eventFavorite = EventFavorite(for: e)
 					e.EventFavorite = eventFavorite
+					eventFavorite.Event = e
 					dataContext.EventFavorites.value.append(eventFavorite)
 					eventFavorites.append(eventFavorite)
 				}
