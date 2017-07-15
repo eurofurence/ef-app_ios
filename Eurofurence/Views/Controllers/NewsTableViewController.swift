@@ -31,6 +31,7 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
         tableView.rowHeight = UITableViewAutomaticDimension
 
 		tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
+		tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCellWithoutBanner")
 
         self.refreshControl?.addTarget(self, action: #selector(NewsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
 
@@ -232,7 +233,8 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 			if currentEventsViewModel.RunningEvents.value.isEmpty {
 				return tableView.dequeueReusableCell(withIdentifier: "NoRunningEventsCell", for: indexPath)
 			} else {
-				let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
+				let event = getData(for: indexPath) as? Event
+				let cell = tableView.dequeueReusableCell(withIdentifier: event?.BannerImage != nil ? "EventCell" : "EventCellWithoutBanner", for: indexPath) as! EventCell
 				cell.event = currentEventsViewModel.RunningEvents.value[indexPath.row]
 				return cell
 			}
@@ -240,7 +242,8 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 			if currentEventsViewModel.UpcomingEvents.value.isEmpty {
 				return tableView.dequeueReusableCell(withIdentifier: "NoUpcomingEventsCell", for: indexPath)
 			} else {
-				let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
+				let event = getData(for: indexPath) as? Event
+				let cell = tableView.dequeueReusableCell(withIdentifier: event?.BannerImage != nil ? "EventCell" : "EventCellWithoutBanner", for: indexPath) as! EventCell
 				cell.event = currentEventsViewModel.UpcomingEvents.value[indexPath.row]
 				return cell
 			}
