@@ -43,6 +43,7 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
         refreshControl?.backgroundColor = UIColor.clear
 
 		tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
+		tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCellWithoutBanner")
 
         disposable += viewModel.Events.signal.observeResult({[unowned self] _ in
             DispatchQueue.main.async {
@@ -124,8 +125,8 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as? EventCell,
-			let event = getData(for: indexPath) as? Event else { return UITableViewCell() }
+        guard let event = getData(for: indexPath) as? Event,
+			let cell = tableView.dequeueReusableCell(withIdentifier: (event.BannerImage != nil ? "EventCell" : "EventCellWithoutBanner"), for: indexPath) as? EventCell  else { return UITableViewCell() }
 		cell.event = event
 
         return cell
