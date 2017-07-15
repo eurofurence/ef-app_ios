@@ -11,6 +11,13 @@ import XCTest
 
 class WhenRegisteredForPushNotifications: XCTestCase {
 
-    
+    func testTheApplicationTellsTheRemoteNotificationRegistrationItRegisteredWithTheDeviceToken() {
+        let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
+        let application = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration)
+        let deviceToken = Data()
+        application.registerRemoteNotifications(deviceToken: deviceToken)
+
+        XCTAssertEqual(deviceToken, capturingTokenRegistration.capturedRemoteNotificationsDeviceToken)
+    }
     
 }

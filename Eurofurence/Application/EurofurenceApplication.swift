@@ -10,4 +10,14 @@ import Foundation
 
 struct EurofurenceApplication {
 
+    private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
+
+    init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration) {
+        self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
+    }
+
+    func registerRemoteNotifications(deviceToken: Data) {
+        remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken)
+    }
+
 }
