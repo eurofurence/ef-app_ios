@@ -15,13 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	var lifetime = Lifetime.make()
-    var app: EurofurenceApplication!
+    var app: EurofurenceApplication?
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-
-        app = EurofurenceApplication(buildConfiguration: PreprocessorBuildConfigurationProviding(),
-                                     notificationsService: FirebaseNotificationsService())
 
 		try! ContextResolver.container.bootstrap()
 		try! ViewModelResolver.container.bootstrap()
@@ -37,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        app.handleRemoteNotificationRegistration(deviceToken: deviceToken)
+
         PresentationTier.pushRequesting.handlePushRegistrationSuccess()
     }
 
