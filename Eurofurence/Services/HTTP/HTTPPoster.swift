@@ -1,5 +1,5 @@
 //
-//  HTTPPoster.swift
+//  JSONPoster.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 15/07/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol HTTPPoster {
+protocol JSONPoster {
 
     func post(_ url: String, body: Data)
 

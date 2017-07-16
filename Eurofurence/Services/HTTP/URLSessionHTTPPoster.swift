@@ -1,5 +1,5 @@
 //
-//  URLSessionHTTPPoster.swift
+//  URLSessionJSONPoster.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 16/07/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct URLSessionHTTPPoster: HTTPPoster {
+struct URLSessionJSONPoster: JSONPoster {
 
     var session: URLSession = .shared
 

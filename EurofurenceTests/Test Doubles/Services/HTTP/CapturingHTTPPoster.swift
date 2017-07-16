@@ -1,5 +1,5 @@
 //
-//  CapturingHTTPPoster.swift
+//  CapturingJSONPoster.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 15/07/2017.
@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import Foundation
 
-class CapturingHTTPPoster: HTTPPoster {
+class CapturingJSONPoster: JSONPoster {
 
     private(set) var postedURL: String?
     private var postedData: Data?

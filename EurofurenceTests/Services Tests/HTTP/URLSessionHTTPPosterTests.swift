@@ -1,5 +1,5 @@
 //
-//  URLSessionHTTPPosterTests.swift
+//  URLSessionJSONPosterTests.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 16/07/2017.
@@ -98,7 +98,7 @@ class TestURLProtocol: URLProtocol {
 
 }
 
-class URLSessionHTTPPosterTests: XCTestCase {
+class URLSessionJSONPosterTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -108,7 +108,7 @@ class URLSessionHTTPPosterTests: XCTestCase {
     func testPostingURLShouldPostRequestWithURL() {
         let expectedURL = "https://www.somewhere.co.uk"
         JournallingURLRequestLogger.shared.makeExpectation(self, expectingURL: expectedURL)
-        let poster = URLSessionHTTPPoster()
+        let poster = URLSessionJSONPoster()
         poster.post(expectedURL, body: Data())
 
         waitForExpectations(timeout: 0.1)
@@ -120,7 +120,7 @@ class URLSessionHTTPPosterTests: XCTestCase {
             return request.httpMethod == "POST"
         }
 
-        let poster = URLSessionHTTPPoster()
+        let poster = URLSessionJSONPoster()
         poster.post(expectedURL, body: Data())
 
         waitForExpectations(timeout: 0.1)
@@ -150,7 +150,7 @@ class URLSessionHTTPPosterTests: XCTestCase {
             return expectedData == data
         }
 
-        let poster = URLSessionHTTPPoster()
+        let poster = URLSessionJSONPoster()
         poster.post(expectedURL, body: expectedData)
 
         waitForExpectations(timeout: 0.1)
@@ -163,7 +163,7 @@ class URLSessionHTTPPosterTests: XCTestCase {
             return request.allHTTPHeaderFields?["Content-Type"] == expectedContentType
         }
         
-        let poster = URLSessionHTTPPoster()
+        let poster = URLSessionJSONPoster()
         poster.post(expectedURL, body: Data())
         
         waitForExpectations(timeout: 0.1)
