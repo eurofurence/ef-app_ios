@@ -187,5 +187,19 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
 
         XCTAssertTrue(context.capturingFCMDeviceRegister.registeredToiOSTopic)
     }
+
+    func testRegisterTheDebugTopicForDebugBuilds() {
+        let context = assembleApp(configuration: .debug)
+        context.registerDeviceToken()
+
+        XCTAssertTrue(context.capturingFCMDeviceRegister.registeredDebugTopic)
+    }
+
+    func testNotRegisterTheDebugTopicForReleaseBuilds() {
+        let context = assembleApp(configuration: .release)
+        context.registerDeviceToken()
+
+        XCTAssertFalse(context.capturingFCMDeviceRegister.registeredDebugTopic)
+    }
     
 }

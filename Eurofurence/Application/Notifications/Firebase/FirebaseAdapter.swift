@@ -13,6 +13,7 @@ enum FirebaseTopic: String {
     case live
     case announcements
     case ios
+    case debug
 }
 
 protocol FirebaseAdapter {
