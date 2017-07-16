@@ -156,4 +156,17 @@ class URLSessionHTTPPosterTests: XCTestCase {
         waitForExpectations(timeout: 0.1)
     }
     
+    func testPostingURLShouldUseJSONContentTypeHeader() {
+        let expectedURL = "https://www.somewhere.co.uk"
+        let expectedContentType = "application/json"
+        JournallingURLRequestLogger.shared.makeExpectation(self, expectingURL: expectedURL) { request in
+            return request.allHTTPHeaderFields?["Content-Type"] == expectedContentType
+        }
+        
+        let poster = URLSessionHTTPPoster()
+        poster.post(expectedURL, body: Data())
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
 }

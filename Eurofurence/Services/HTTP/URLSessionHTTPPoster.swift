@@ -16,8 +16,10 @@ struct URLSessionHTTPPoster: HTTPPoster {
         guard let actualURL = URL(string: url) else { return }
 
         var request = URLRequest(url: actualURL)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         request.httpBody = body
+
         session.dataTask(with: request, completionHandler: { (_, _, _) in }).resume()
     }
 
