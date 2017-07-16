@@ -8,15 +8,24 @@
 
 import Foundation
 
-enum FirebaseTopic: String, CustomStringConvertible {
+enum FirebaseTopic: CustomStringConvertible {
+    
     case test
     case live
     case announcements
     case ios
     case debug
 
+    private static let descriptions: [FirebaseTopic : String] = [
+        .test: "test",
+        .live: "live",
+        .announcements: "announcements",
+        .ios: "ios",
+        .debug: "debug"
+    ]
+
     var description: String {
-        return rawValue
+        return FirebaseTopic.descriptions[self] ?? ""
     }
 
 }

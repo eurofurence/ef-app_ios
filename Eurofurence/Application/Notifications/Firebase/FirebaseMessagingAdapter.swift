@@ -22,11 +22,11 @@ struct FirebaseMessagingAdapter: FirebaseAdapter {
     }
 
     func subscribe(toTopic topic: FirebaseTopic) {
-        messaging.subscribe(toTopic: topic.rawValue)
+        messaging.subscribe(toTopic: topic.description)
     }
 
     func unsubscribe(fromTopic topic: FirebaseTopic) {
-        messaging.unsubscribe(fromTopic: topic.rawValue)
+        messaging.unsubscribe(fromTopic: topic.description)
     }
 
 }

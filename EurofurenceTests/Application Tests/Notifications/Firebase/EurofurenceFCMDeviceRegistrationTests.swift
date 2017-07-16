@@ -41,7 +41,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
         let registration = EurofurenceFCMDeviceRegistration(jsonPoster: capturingJSONPoster)
         let topic = FirebaseTopic.live
         registration.registerFCM("", topics: [topic])
-        let expected: [String] = [topic.rawValue]
+        let expected: [String] = [topic.description]
 
         XCTAssertEqual(expected, capturingJSONPoster.postedJSONValue(forKey: "Topics") ?? [])
     }
@@ -51,7 +51,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
         let registration = EurofurenceFCMDeviceRegistration(jsonPoster: capturingJSONPoster)
         let topic = FirebaseTopic.test
         registration.registerFCM("", topics: [topic])
-        let expected: [String] = [topic.rawValue]
+        let expected: [String] = [topic.description]
 
         XCTAssertEqual(expected, capturingJSONPoster.postedJSONValue(forKey: "Topics") ?? [])
     }
@@ -61,7 +61,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
         let registration = EurofurenceFCMDeviceRegistration(jsonPoster: capturingJSONPoster)
         let topics: [FirebaseTopic] = [.test, .live]
         registration.registerFCM("", topics: topics)
-        let expected: [String] = topics.map({ $0.rawValue })
+        let expected: [String] = topics.map({ $0.description })
 
         XCTAssertEqual(expected, capturingJSONPoster.postedJSONValue(forKey: "Topics") ?? [])
     }
