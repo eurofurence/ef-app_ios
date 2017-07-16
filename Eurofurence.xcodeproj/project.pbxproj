@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6EEC6D9A1F157AC000205F2D /* WitnessedTutorialPushPermissionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6D991F157AC000205F2D /* WitnessedTutorialPushPermissionsRequest.swift */; };
 		6EEC6D9D1F173DE700205F2D /* InitiateDownloadTutorialPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6D9C1F173DE700205F2D /* InitiateDownloadTutorialPagePresenter.swift */; };
+		6EEC6DA11F1BF79F00205F2D /* FirebaseTopicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA01F1BF79F00205F2D /* FirebaseTopicTests.swift */; };
 		6EF96CC81F0EDAE800EE6134 /* CalendarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CC71F0EDAE800EE6134 /* CalendarStore.swift */; };
 		6EF96CCA1F0EDAF800EE6134 /* CalendarPermissionsProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CC91F0EDAF800EE6134 /* CalendarPermissionsProviding.swift */; };
 		6EF96CCC1F0EDB0500EE6134 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CCB1F0EDB0500EE6134 /* CalendarEvent.swift */; };
@@ -223,6 +224,7 @@
 		513BAD2C582D99F2993B8162 /* Pods-Eurofurence.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence.debug.xcconfig"; sourceTree = "<group>"; };
 		6EEC6D991F157AC000205F2D /* WitnessedTutorialPushPermissionsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WitnessedTutorialPushPermissionsRequest.swift; path = Views/Controllers/Tutorial/WitnessedTutorialPushPermissionsRequest.swift; sourceTree = "<group>"; };
 		6EEC6D9C1F173DE700205F2D /* InitiateDownloadTutorialPagePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InitiateDownloadTutorialPagePresenter.swift; path = Presenters/Modules/Tutorial/Pages/InitiateDownloadTutorialPagePresenter.swift; sourceTree = "<group>"; };
+		6EEC6DA01F1BF79F00205F2D /* FirebaseTopicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseTopicTests.swift; path = "Application Tests/Notifications/Firebase/FirebaseTopicTests.swift"; sourceTree = "<group>"; };
 		6EF96CC71F0EDAE800EE6134 /* CalendarStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarStore.swift; path = Calendar/CalendarStore.swift; sourceTree = "<group>"; };
 		6EF96CC91F0EDAF800EE6134 /* CalendarPermissionsProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPermissionsProviding.swift; path = Calendar/CalendarPermissionsProviding.swift; sourceTree = "<group>"; };
 		6EF96CCB1F0EDB0500EE6134 /* CalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarEvent.swift; path = Calendar/CalendarEvent.swift; sourceTree = "<group>"; };
@@ -607,6 +609,7 @@
 			children = (
 				781A94451F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift */,
 				781A94471F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift */,
+				6EEC6DA01F1BF79F00205F2D /* FirebaseTopicTests.swift */,
 			);
 			name = Firebase;
 			sourceTree = "<group>";
@@ -1619,6 +1622,7 @@
 				7820A7051F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift in Sources */,
 				78C86D5D1F123686003A20E6 /* WhenTheTutorialAppears.swift in Sources */,
 				7820A6DF1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift in Sources */,
+				6EEC6DA11F1BF79F00205F2D /* FirebaseTopicTests.swift in Sources */,
 				7820A6F61F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift in Sources */,
 				6EF96CCF1F0EDB2000EE6134 /* CalendarTestDoubles.swift in Sources */,
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
