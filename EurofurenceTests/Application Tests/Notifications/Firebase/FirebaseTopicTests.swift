@@ -12,23 +12,23 @@ import XCTest
 class FirebaseTopicTests: XCTestCase {
     
     func testProvideAppropriateTopicNameForTestTopic() {
-        XCTAssertEqual("test", FirebaseTopic.test.rawValue)
+        XCTAssertEqual("test", FirebaseTopic.test.description)
     }
     
     func testProvideAppropriateTopicNameForLiveTopic() {
-        XCTAssertEqual("live", FirebaseTopic.live.rawValue)
+        XCTAssertEqual("live", FirebaseTopic.live.description)
     }
     
     func testProvideAppropriateTopicNameForAnnouncementsTopic() {
-        XCTAssertEqual("announcements", FirebaseTopic.announcements.rawValue)
+        XCTAssertEqual("announcements", FirebaseTopic.announcements.description)
     }
     
     func testProvideAppropriateTopicNameForiOSTopic() {
-        XCTAssertEqual("ios", FirebaseTopic.ios.rawValue)
+        XCTAssertEqual("ios", FirebaseTopic.ios.description)
     }
     
     func testProvideAppropriateTopicNameForDebugTopic() {
-        XCTAssertEqual("debug", FirebaseTopic.debug.rawValue)
+        XCTAssertEqual("debug", FirebaseTopic.debug.description)
     }
     
 }

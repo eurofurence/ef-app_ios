@@ -8,12 +8,17 @@
 
 import Foundation
 
-enum FirebaseTopic: String {
+enum FirebaseTopic: String, CustomStringConvertible {
     case test
     case live
     case announcements
     case ios
     case debug
+
+    var description: String {
+        return rawValue
+    }
+
 }
 
 protocol FirebaseAdapter {
