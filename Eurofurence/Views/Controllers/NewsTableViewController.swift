@@ -68,7 +68,7 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
             [weak self] value in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
-                if strongSelf.timeService.offset != 0.0 {
+                if strongSelf.timeService.offset.value != 0.0 {
                     strongSelf.navigationItem.title = "News @ \(DateFormatters.hourMinute.string(from: value))"
                 } else {
                     strongSelf.navigationItem.title = "News"

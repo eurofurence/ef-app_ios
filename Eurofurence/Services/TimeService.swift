@@ -15,33 +15,30 @@ Service which allows the app to travel through time.
 class TimeService: NSObject {
 	let currentTime = MutableProperty(Date())
 
-	/// Changes the offset with respect to current local time.
-	var offset: TimeInterval {
-		get {
-			return _offset
-		}
-		set(offset) {
-			_offset = offset
-			if timer != nil {
-				tick()
-			}
-		}
-	}
+	/// Represents the offset with respect to current local time
+	let offset: MutableProperty<TimeInterval> = MutableProperty(0.0)
 
 	private var lastTime = Date()
-	private var _offset: TimeInterval = 0.0
 	private var timer: Timer?
+	private let disposables = CompositeDisposable()
 
 	override init() {
 		super.init()
+
 		UserDefaults.standard.addObserver(self, forKeyPath: UserSettings.DebugTimeOffset.rawValue, options: NSKeyValueObservingOptions.new, context: nil)
-		offset = UserSettings.DebugTimeOffset.currentValueOrDefault()
+		offset.swap(UserSettings.DebugTimeOffset.currentValueOrDefault())
 		resume()
+
+		disposables += offset.signal.observeValues({ [unowned self] _ in
+			if self.timer != nil {
+				self.tick()
+			}
+		})
 	}
 
 	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
 		if let change = change, let firstChange = change.first, let newOffset = firstChange.value as? TimeInterval, keyPath == UserSettings.DebugTimeOffset.rawValue {
-			offset = newOffset
+			offset.swap(newOffset)
 		}
 	}
 
@@ -50,7 +47,7 @@ class TimeService: NSObject {
 	*/
 	@objc
 	func tick() {
-		currentTime.swap(Date().addingTimeInterval(_offset))
+		currentTime.swap(Date().addingTimeInterval(offset.value))
 	}
 
 	/**
@@ -68,5 +65,9 @@ class TimeService: NSObject {
 		if timer == nil {
 			timer = Timer.scheduledTimer(timeInterval: TimeInterval(1), target: self, selector: #selector(TimeService.tick), userInfo: nil, repeats: true)
 		}
+	}
+
+	deinit {
+		disposables.dispose()
 	}
 }
