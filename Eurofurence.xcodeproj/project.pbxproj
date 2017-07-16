@@ -122,6 +122,7 @@
 		78FE77CF1F1A2E8600E9A0BE /* HTTPPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77CE1F1A2E8600E9A0BE /* HTTPPoster.swift */; };
 		78FE77D31F1A2EB000E9A0BE /* CapturingHTTPPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D21F1A2EB000E9A0BE /* CapturingHTTPPoster.swift */; };
 		78FE77D71F1B9FA500E9A0BE /* URLSessionHTTPPosterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D61F1B9FA500E9A0BE /* URLSessionHTTPPosterTests.swift */; };
+		78FE77D91F1BB9E400E9A0BE /* URLSessionHTTPPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D81F1BB9E400E9A0BE /* URLSessionHTTPPoster.swift */; };
 		9A0525411ECA2AF500578798 /* Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0525401ECA2AF500578798 /* Sync.swift */; };
 		9A0525431ECA2C5A00578798 /* SyncEntityDelta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0525421ECA2C5A00578798 /* SyncEntityDelta.swift */; };
 		9A0525451ECB090700578798 /* WebApiConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0525441ECB090700578798 /* WebApiConnection.swift */; };
@@ -341,6 +342,7 @@
 		78FE77CE1F1A2E8600E9A0BE /* HTTPPoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPPoster.swift; path = HTTP/HTTPPoster.swift; sourceTree = "<group>"; };
 		78FE77D21F1A2EB000E9A0BE /* CapturingHTTPPoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingHTTPPoster.swift; path = "Test Doubles/Services/HTTP/CapturingHTTPPoster.swift"; sourceTree = "<group>"; };
 		78FE77D61F1B9FA500E9A0BE /* URLSessionHTTPPosterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLSessionHTTPPosterTests.swift; path = "Services Tests/HTTP/URLSessionHTTPPosterTests.swift"; sourceTree = "<group>"; };
+		78FE77D81F1BB9E400E9A0BE /* URLSessionHTTPPoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLSessionHTTPPoster.swift; path = HTTP/URLSessionHTTPPoster.swift; sourceTree = "<group>"; };
 		9A0525401ECA2AF500578798 /* Sync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sync.swift; sourceTree = "<group>"; };
 		9A0525421ECA2C5A00578798 /* SyncEntityDelta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncEntityDelta.swift; sourceTree = "<group>"; };
 		9A0525441ECB090700578798 /* WebApiConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebApiConnection.swift; sourceTree = "<group>"; };
@@ -805,6 +807,7 @@
 			isa = PBXGroup;
 			children = (
 				78FE77CE1F1A2E8600E9A0BE /* HTTPPoster.swift */,
+				78FE77D81F1BB9E400E9A0BE /* URLSessionHTTPPoster.swift */,
 			);
 			name = HTTP;
 			sourceTree = "<group>";
@@ -1570,6 +1573,7 @@
 				78F555991F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift in Sources */,
 				D6F3D2440B74E17B9A008DE0 /* NewsViewController.swift in Sources */,
 				7820A7101F1796ED004C0FB5 /* TutorialPresentationContext.swift in Sources */,
+				78FE77D91F1BB9E400E9A0BE /* URLSessionHTTPPoster.swift in Sources */,
 				D6F3D3D11CAB2B06852D0EF9 /* DealerTableViewController.swift in Sources */,
 				9AB83B0C1F0EB47A001823B1 /* MapViewModel.swift in Sources */,
 				6EF96CCA1F0EDAF800EE6134 /* CalendarPermissionsProviding.swift in Sources */,

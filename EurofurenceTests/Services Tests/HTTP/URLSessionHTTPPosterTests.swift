@@ -98,21 +98,6 @@ class TestURLProtocol: URLProtocol {
 
 }
 
-struct URLSessionHTTPPoster: HTTPPoster {
-
-    var session: URLSession = .shared
-
-    func post(_ url: String, body: Data) {
-        guard let actualURL = URL(string: url) else { return }
-
-        var request = URLRequest(url: actualURL)
-        request.httpMethod = "POST"
-        request.httpBody = body
-        session.dataTask(with: request, completionHandler: { (_, _, _) in }).resume()
-    }
-
-}
-
 class URLSessionHTTPPosterTests: XCTestCase {
 
     override func setUp() {
