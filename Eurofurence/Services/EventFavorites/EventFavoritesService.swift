@@ -75,6 +75,11 @@ class EventFavoritesService {
 		return localNotification
 	}
 
+	/// Schedules a new notification for given event.
+	///
+	/// - Parameters:
+	///     - event: event for which a notification should be scheduled
+	///     - offset: interval the app is currently offset from actual local time
 	func scheduleLocalNotification(for event: Event, offset: TimeInterval = 0.0) {
 		let localNotification = createLocalNotificaton(for: event, offset: offset)
 		localNotifications.append(localNotification)
@@ -82,6 +87,7 @@ class EventFavoritesService {
 		print("Scheduled notification for event \(event.Title) [\(event.Id)]")
 	}
 
+	/// Cancels all notifications currently scheduled for given event.
 	func cancelLocalNotifications(for event: Event) {
 		var remainingNotifications: [UILocalNotification] = []
 		localNotifications.forEach { notification in
@@ -96,10 +102,15 @@ class EventFavoritesService {
 		localNotifications = remainingNotifications
 	}
 
+	
 	/// Cancels all notifications of the EventFavoritesService category whose
 	/// events have been removed and reschedules those with changed events.
 	/// Note: This will also schedule new notifications for previously
 	/// unscheduled favourite events!
+	///
+	/// - Parameters:
+	///     - eventFavorites: array based on which updates should be performed
+	///     - offset: interval the app is currently offset from actual local time
 	func updateLocalNotifications(_ eventFavorites: [EventFavorite], offset: TimeInterval = 0.0) {
 		var updatedNotifications: [UILocalNotification] = []
 		let currentTime = Date(timeIntervalSinceNow: offset)
