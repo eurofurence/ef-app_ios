@@ -26,17 +26,20 @@ struct FirebaseRemoteNotificationsTokenRegistration: RemoteNotificationsTokenReg
         firebaseAdapter.setAPNSToken(deviceToken: token)
         firebaseAdapter.subscribe(toTopic: .announcements)
 
+        var fcmTopics: [FirebaseTopic] = [.ios, .announcements]
         switch buildConfiguration.configuration {
         case .debug:
-            fcmRegistration.registerFCM(firebaseAdapter.fcmToken, topics: [.announcements, .test, .ios])
+            fcmTopics += [.test]
             firebaseAdapter.subscribe(toTopic: .test)
             firebaseAdapter.unsubscribe(fromTopic: .live)
 
         case .release:
-            fcmRegistration.registerFCM(firebaseAdapter.fcmToken, topics: [.announcements, .live, .ios])
+            fcmTopics += [.live]
             firebaseAdapter.subscribe(toTopic: .live)
             firebaseAdapter.unsubscribe(fromTopic: .test)
         }
+
+        fcmRegistration.registerFCM(firebaseAdapter.fcmToken, topics: fcmTopics)
     }
 
 }
