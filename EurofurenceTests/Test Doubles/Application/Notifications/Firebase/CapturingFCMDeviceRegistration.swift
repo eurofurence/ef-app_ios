@@ -18,7 +18,7 @@ class CapturingFCMDeviceRegistration: FCMDeviceRegistration {
         self.topics = topics
     }
 
-    var registeredDebugTopic: Bool {
+    var registeredTestTopic: Bool {
         return topics.contains(.test)
     }
 
