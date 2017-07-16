@@ -11,8 +11,32 @@ import XCTest
 
 class JournallingURLRequestLogger {
 
+    struct ExpectedRequest: Hashable {
+        var url: String
+        var assertion: ((URLRequest) -> Bool)?
+
+        var hashValue: Int {
+            return url.hashValue
+        }
+
+        static func ==(lhs: ExpectedRequest, rhs: ExpectedRequest) -> Bool {
+            return lhs.hashValue == rhs.hashValue
+        }
+
+        func expected(_ request: URLRequest) -> Bool {
+            guard let actualURL = request.url else { return false }
+            var satisfied = actualURL.absoluteString == url
+
+            if let assertion = assertion, satisfied {
+                satisfied = assertion(request)
+            }
+
+            return satisfied
+        }
+    }
+
     static let shared = JournallingURLRequestLogger()
-    private var expectations = [String : XCTestExpectation]()
+    private var expectations = [ExpectedRequest : XCTestExpectation]()
 
     func setUp() {
         URLProtocol.registerClass(TestURLProtocol.self)
@@ -20,16 +44,25 @@ class JournallingURLRequestLogger {
     }
 
     func record(_ request: URLRequest) {
-        guard let url = request.url,
-              let expectation = expectations[url.absoluteString] else { return }
+        var requestsToRemove = [ExpectedRequest]()
+        for (expectedRequest, expectation) in expectations {
+            if expectedRequest.expected(request) {
+                expectation.fulfill()
+                requestsToRemove.append(expectedRequest)
+            }
+        }
 
-        expectations[url.absoluteString] = nil
-        expectation.fulfill()
+        for request in requestsToRemove {
+            expectations.removeValue(forKey: request)
+        }
     }
 
-    func makeExpectation(_ testCase: XCTestCase, expectingURL url: String) {
-        let expectation = testCase.expectation(description: "Expected to load url \"\(url)\"")
-        expectations[url] = expectation
+    func makeExpectation(_ testCase: XCTestCase,
+                         expectingURL url: String,
+                         assertion: ((URLRequest) -> Bool)? = nil) {
+        let expectation = ExpectedRequest(url: url, assertion: assertion)
+        let frameworkExpectation = testCase.expectation(description: "Expected to load url \"\(url)\"")
+        expectations[expectation] = frameworkExpectation
     }
 
 }
@@ -68,7 +101,8 @@ struct URLSessionHTTPPoster: HTTPPoster {
     func post(_ url: String, body: Data) {
         guard let actualURL = URL(string: url) else { return }
 
-        let request = URLRequest(url: actualURL)
+        var request = URLRequest(url: actualURL)
+        request.httpMethod = "POST"
         session.dataTask(with: request, completionHandler: { (_, _, _) in }).resume()
     }
 
@@ -84,6 +118,18 @@ class URLSessionHTTPPosterTests: XCTestCase {
     func testPostingURLShouldPostRequestWithURL() {
         let expectedURL = "https://www.somewhere.co.uk"
         JournallingURLRequestLogger.shared.makeExpectation(self, expectingURL: expectedURL)
+        let poster = URLSessionHTTPPoster()
+        poster.post(expectedURL, body: Data())
+
+        waitForExpectations(timeout: 0.1)
+    }
+
+    func testPostingURLShouldPostRequestWithPOSTHTTPMethod() {
+        let expectedURL = "https://www.somewhere.co.uk"
+        JournallingURLRequestLogger.shared.makeExpectation(self, expectingURL: expectedURL) { request in
+            return request.httpMethod == "POST"
+        }
+
         let poster = URLSessionHTTPPoster()
         poster.post(expectedURL, body: Data())
 
