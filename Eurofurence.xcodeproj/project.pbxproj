@@ -121,6 +121,7 @@
 		78FE77CC1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77CB1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift */; };
 		78FE77CF1F1A2E8600E9A0BE /* HTTPPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77CE1F1A2E8600E9A0BE /* HTTPPoster.swift */; };
 		78FE77D31F1A2EB000E9A0BE /* CapturingHTTPPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D21F1A2EB000E9A0BE /* CapturingHTTPPoster.swift */; };
+		78FE77D71F1B9FA500E9A0BE /* URLSessionHTTPPosterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D61F1B9FA500E9A0BE /* URLSessionHTTPPosterTests.swift */; };
 		9A0525411ECA2AF500578798 /* Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0525401ECA2AF500578798 /* Sync.swift */; };
 		9A0525431ECA2C5A00578798 /* SyncEntityDelta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0525421ECA2C5A00578798 /* SyncEntityDelta.swift */; };
 		9A0525451ECB090700578798 /* WebApiConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0525441ECB090700578798 /* WebApiConnection.swift */; };
@@ -339,6 +340,7 @@
 		78FE77CB1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceFCMDeviceRegistration.swift; path = Application/Notifications/Firebase/EurofurenceFCMDeviceRegistration.swift; sourceTree = "<group>"; };
 		78FE77CE1F1A2E8600E9A0BE /* HTTPPoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPPoster.swift; path = HTTP/HTTPPoster.swift; sourceTree = "<group>"; };
 		78FE77D21F1A2EB000E9A0BE /* CapturingHTTPPoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingHTTPPoster.swift; path = "Test Doubles/Services/HTTP/CapturingHTTPPoster.swift"; sourceTree = "<group>"; };
+		78FE77D61F1B9FA500E9A0BE /* URLSessionHTTPPosterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLSessionHTTPPosterTests.swift; path = "Services Tests/HTTP/URLSessionHTTPPosterTests.swift"; sourceTree = "<group>"; };
 		9A0525401ECA2AF500578798 /* Sync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sync.swift; sourceTree = "<group>"; };
 		9A0525421ECA2C5A00578798 /* SyncEntityDelta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncEntityDelta.swift; sourceTree = "<group>"; };
 		9A0525441ECB090700578798 /* WebApiConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebApiConnection.swift; sourceTree = "<group>"; };
@@ -823,6 +825,22 @@
 			name = HTTP;
 			sourceTree = "<group>";
 		};
+		78FE77D41F1B9F8A00E9A0BE /* Services Tests */ = {
+			isa = PBXGroup;
+			children = (
+				78FE77D51F1B9F9200E9A0BE /* HTTP */,
+			);
+			name = "Services Tests";
+			sourceTree = "<group>";
+		};
+		78FE77D51F1B9F9200E9A0BE /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				78FE77D61F1B9FA500E9A0BE /* URLSessionHTTPPosterTests.swift */,
+			);
+			name = HTTP;
+			sourceTree = "<group>";
+		};
 		9A2A94851F12CB9B004D66FB /* Local */ = {
 			isa = PBXGroup;
 			children = (
@@ -899,6 +917,7 @@
 			children = (
 				78D7EEB31F195E8B005372A9 /* Application Tests */,
 				78C86D5B1F12355C003A20E6 /* Presenter Tests */,
+				78FE77D41F1B9F8A00E9A0BE /* Services Tests */,
 				6EF96CCD1F0EDB1300EE6134 /* Test Doubles */,
 				9ACF994E1EBE172D006FC958 /* Info.plist */,
 				78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */,
@@ -1614,6 +1633,7 @@
 				78D7EEB51F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift in Sources */,
 				78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */,
 				7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */,
+				78FE77D71F1B9FA500E9A0BE /* URLSessionHTTPPosterTests.swift in Sources */,
 				7820A6ED1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift in Sources */,
 				78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */,
 				781A943A1F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift in Sources */,
