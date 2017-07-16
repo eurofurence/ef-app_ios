@@ -38,4 +38,8 @@ class CapturingFCMDeviceRegistration: FCMDeviceRegistration {
         return topics.contains(.debug)
     }
     
+    func registeredVersionTopic(with version: String) -> Bool {
+        return topics.contains(.version(version))
+    }
+    
 }

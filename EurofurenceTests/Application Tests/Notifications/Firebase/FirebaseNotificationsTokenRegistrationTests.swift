@@ -21,13 +21,15 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
         }
     }
 
-    private func assembleApp(configuration: BuildConfiguration) -> Context {
+    private func assembleApp(configuration: BuildConfiguration, version: String = "") -> Context {
         let buildConfigurationProviding = StubBuildConfigurationProviding(configuration: configuration)
+        let appVersionProviding = StubAppVersionProviding(version: version)
         let capturingFirebaseAdapter = CapturingFirebaseAdapter()
         let capturingFCMDeviceRegister = CapturingFCMDeviceRegistration()
         let tokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfigurationProviding,
-                                                                       firebaseAdapter: capturingFirebaseAdapter,
-                                                                       fcmRegistration: capturingFCMDeviceRegister)
+                                                                             appVersion: appVersionProviding,
+                                                                             firebaseAdapter: capturingFirebaseAdapter,
+                                                                             fcmRegistration: capturingFCMDeviceRegister)
 
         return Context(tokenRegistration: tokenRegistration,
                        capturingFirebaseAdapter: capturingFirebaseAdapter,
@@ -200,6 +202,22 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
         context.registerDeviceToken()
 
         XCTAssertFalse(context.capturingFCMDeviceRegister.registeredDebugTopic)
+    }
+    
+    func testRegisterTheVersionTopicForReleaseBuildsUsingTheVersionFromTheProvider() {
+        let version = "2.0.0"
+        let context = assembleApp(configuration: .release, version: version)
+        context.registerDeviceToken()
+        
+        XCTAssertTrue(context.capturingFCMDeviceRegister.registeredVersionTopic(with: version))
+    }
+    
+    func testRegisterTheVersionTopicForDebugBuildsUsingTheVersionFromTheProvider() {
+        let version = "2.0.0"
+        let context = assembleApp(configuration: .debug, version: version)
+        context.registerDeviceToken()
+        
+        XCTAssertTrue(context.capturingFCMDeviceRegister.registeredVersionTopic(with: version))
     }
     
 }

@@ -10,6 +10,9 @@
 		6EEC6D9A1F157AC000205F2D /* WitnessedTutorialPushPermissionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6D991F157AC000205F2D /* WitnessedTutorialPushPermissionsRequest.swift */; };
 		6EEC6D9D1F173DE700205F2D /* InitiateDownloadTutorialPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6D9C1F173DE700205F2D /* InitiateDownloadTutorialPagePresenter.swift */; };
 		6EEC6DA11F1BF79F00205F2D /* FirebaseTopicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA01F1BF79F00205F2D /* FirebaseTopicTests.swift */; };
+		6EEC6DA31F1BFC5000205F2D /* StubAppVersionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */; };
+		6EEC6DA51F1BFC7700205F2D /* AppVersionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA41F1BFC7700205F2D /* AppVersionProviding.swift */; };
+		6EEC6DA71F1BFD5D00205F2D /* BundleAppVersionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA61F1BFD5D00205F2D /* BundleAppVersionProviding.swift */; };
 		6EF96CC81F0EDAE800EE6134 /* CalendarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CC71F0EDAE800EE6134 /* CalendarStore.swift */; };
 		6EF96CCA1F0EDAF800EE6134 /* CalendarPermissionsProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CC91F0EDAF800EE6134 /* CalendarPermissionsProviding.swift */; };
 		6EF96CCC1F0EDB0500EE6134 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CCB1F0EDB0500EE6134 /* CalendarEvent.swift */; };
@@ -225,6 +228,9 @@
 		6EEC6D991F157AC000205F2D /* WitnessedTutorialPushPermissionsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WitnessedTutorialPushPermissionsRequest.swift; path = Views/Controllers/Tutorial/WitnessedTutorialPushPermissionsRequest.swift; sourceTree = "<group>"; };
 		6EEC6D9C1F173DE700205F2D /* InitiateDownloadTutorialPagePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InitiateDownloadTutorialPagePresenter.swift; path = Presenters/Modules/Tutorial/Pages/InitiateDownloadTutorialPagePresenter.swift; sourceTree = "<group>"; };
 		6EEC6DA01F1BF79F00205F2D /* FirebaseTopicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseTopicTests.swift; path = "Application Tests/Notifications/Firebase/FirebaseTopicTests.swift"; sourceTree = "<group>"; };
+		6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAppVersionProviding.swift; path = "Test Doubles/StubAppVersionProviding.swift"; sourceTree = "<group>"; };
+		6EEC6DA41F1BFC7700205F2D /* AppVersionProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppVersionProviding.swift; path = "Application/Build Config/AppVersionProviding.swift"; sourceTree = "<group>"; };
+		6EEC6DA61F1BFD5D00205F2D /* BundleAppVersionProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BundleAppVersionProviding.swift; path = "Application/Build Config/BundleAppVersionProviding.swift"; sourceTree = "<group>"; };
 		6EF96CC71F0EDAE800EE6134 /* CalendarStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarStore.swift; path = Calendar/CalendarStore.swift; sourceTree = "<group>"; };
 		6EF96CC91F0EDAF800EE6134 /* CalendarPermissionsProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPermissionsProviding.swift; path = Calendar/CalendarPermissionsProviding.swift; sourceTree = "<group>"; };
 		6EF96CCB1F0EDB0500EE6134 /* CalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarEvent.swift; path = Calendar/CalendarEvent.swift; sourceTree = "<group>"; };
@@ -517,6 +523,7 @@
 				7820A6FE1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift */,
 				7820A7001F16C0F0004C0FB5 /* CapturingWitnessedSystemPushPermissionsRequest.swift */,
 				78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */,
+				6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */,
 			);
 			name = "Test Doubles";
 			sourceTree = "<group>";
@@ -785,6 +792,8 @@
 			children = (
 				78D7EEB71F196B30005372A9 /* BuildConfigurationProviding.swift */,
 				78D7EEC31F196C4A005372A9 /* PreprocessorBuildConfigurationProviding.swift */,
+				6EEC6DA41F1BFC7700205F2D /* AppVersionProviding.swift */,
+				6EEC6DA61F1BFD5D00205F2D /* BundleAppVersionProviding.swift */,
 			);
 			name = "Build Config";
 			sourceTree = "<group>";
@@ -1449,6 +1458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EF96CEA1F126B1A00EE6134 /* BootstrappingModule.swift in Sources */,
+				6EEC6DA71F1BFD5D00205F2D /* BundleAppVersionProviding.swift in Sources */,
 				9A7FFD571EFC5B46007ABA36 /* CalendarAccess.swift in Sources */,
 				781A94331F1A1994002DE70F /* FCMDeviceRegistration.swift in Sources */,
 				6EF96CCC1F0EDB0500EE6134 /* CalendarEvent.swift in Sources */,
@@ -1517,6 +1527,7 @@
 				6EF96CD11F0EDB4C00EE6134 /* CalendarService.swift in Sources */,
 				9ACF99971EC858B2006FC958 /* Map.swift in Sources */,
 				7820A6DD1F13F544004C0FB5 /* PresentationAssets.swift in Sources */,
+				6EEC6DA51F1BFC7700205F2D /* AppVersionProviding.swift in Sources */,
 				78567B3F1F1016B000EBA31D /* TabViewController.swift in Sources */,
 				9ACF99981EC858B2006FC958 /* MapEntry.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
@@ -1609,6 +1620,7 @@
 				78C86D6C1F123FD8003A20E6 /* PresentationTestBuilder.swift in Sources */,
 				78C86D791F12ADF8003A20E6 /* CapturingSplashScene.swift in Sources */,
 				78C86D4C1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift in Sources */,
+				6EEC6DA31F1BFC5000205F2D /* StubAppVersionProviding.swift in Sources */,
 				78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */,
 				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,
 				7820A6E51F140056004C0FB5 /* CapturingAlertRouter.swift in Sources */,
