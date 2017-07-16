@@ -77,6 +77,10 @@ class TestURLProtocol: URLProtocol {
         return request
     }
 
+    override class func requestIsCacheEquivalent(_ a: URLRequest, to b: URLRequest) -> Bool {
+        return false
+    }
+
     override init(request: URLRequest,
          cachedResponse: CachedURLResponse?,
          client: URLProtocolClient?) {
@@ -103,6 +107,7 @@ struct URLSessionHTTPPoster: HTTPPoster {
 
         var request = URLRequest(url: actualURL)
         request.httpMethod = "POST"
+        request.httpBody = body
         session.dataTask(with: request, completionHandler: { (_, _, _) in }).resume()
     }
 
@@ -132,6 +137,36 @@ class URLSessionHTTPPosterTests: XCTestCase {
 
         let poster = URLSessionHTTPPoster()
         poster.post(expectedURL, body: Data())
+
+        waitForExpectations(timeout: 0.1)
+    }
+
+    func testPostingURLShouldProvideBodyWithRequest() {
+        let expectedURL = "https://www.somewhere.co.uk"
+        let expectedData = "Body contents".data(using: .utf8)!
+        JournallingURLRequestLogger.shared.makeExpectation(self, expectingURL: expectedURL) { request in
+            guard let stream = request.httpBodyStream else { return false }
+
+            stream.open()
+            let bufferSize = 1024
+            let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: bufferSize)
+
+            defer {
+                buffer.deallocate(capacity: bufferSize)
+                stream.close()
+            }
+
+            var data = Data()
+            while stream.hasBytesAvailable {
+                let read = stream.read(buffer, maxLength: bufferSize)
+                data.append(buffer, count: read)
+            }
+
+            return expectedData == data
+        }
+
+        let poster = URLSessionHTTPPoster()
+        poster.post(expectedURL, body: expectedData)
 
         waitForExpectations(timeout: 0.1)
     }
