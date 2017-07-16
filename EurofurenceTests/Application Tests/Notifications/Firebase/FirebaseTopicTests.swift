@@ -31,4 +31,9 @@ class FirebaseTopicTests: XCTestCase {
         XCTAssertEqual("debug", FirebaseTopic.debug.description)
     }
     
+    func testProvideAppropriateTopicNameForVersionTopic() {
+        let version = "2.0.0"
+        XCTAssertEqual("Version-\(version)", FirebaseTopic.version(version).description)
+    }
+    
 }
