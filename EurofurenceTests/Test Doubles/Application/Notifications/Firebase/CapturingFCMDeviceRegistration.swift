@@ -29,5 +29,9 @@ class CapturingFCMDeviceRegistration: FCMDeviceRegistration {
     var registeredAnnouncementsTopic: Bool {
         return topics.contains(.announcements)
     }
+
+    var registeredToiOSTopic: Bool {
+        return topics.contains(.ios)
+    }
     
 }
