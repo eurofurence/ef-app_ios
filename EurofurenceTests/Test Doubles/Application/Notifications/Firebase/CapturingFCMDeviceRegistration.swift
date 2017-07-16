@@ -18,7 +18,7 @@ class CapturingFCMDeviceRegistration: FCMDeviceRegistration {
         self.topics = topics
     }
 
-    var registeredDebugTopic: Bool {
+    var registeredTestTopic: Bool {
         return topics.contains(.test)
     }
 
@@ -28,6 +28,18 @@ class CapturingFCMDeviceRegistration: FCMDeviceRegistration {
 
     var registeredAnnouncementsTopic: Bool {
         return topics.contains(.announcements)
+    }
+
+    var registeredToiOSTopic: Bool {
+        return topics.contains(.ios)
+    }
+
+    var registeredDebugTopic: Bool {
+        return topics.contains(.debug)
+    }
+    
+    func registeredVersionTopic(with version: String) -> Bool {
+        return topics.contains(.version(version))
     }
     
 }

@@ -10,18 +10,18 @@ import Foundation
 
 struct EurofurenceFCMDeviceRegistration: FCMDeviceRegistration {
 
-    private var httpPoster: HTTPPoster
+    private var jsonPoster: JSONPoster
 
-    init(httpPoster: HTTPPoster) {
-        self.httpPoster = httpPoster
+    init(jsonPoster: JSONPoster) {
+        self.jsonPoster = jsonPoster
     }
 
     func registerFCM(_ fcm: String, topics: [FirebaseTopic]) {
-        let formattedTopics = topics.map({ $0.rawValue })
+        let formattedTopics = topics.map({ $0.description })
         let jsonDictionary: [String : Any] = ["DeviceId": fcm, "Topics": formattedTopics]
         let jsonData = try! JSONSerialization.data(withJSONObject: jsonDictionary, options: [])
 
-        httpPoster.post("https://app.eurofurence.org/api/v2/PushNotifications/FcmDeviceRegistration",
+        jsonPoster.post("https://app.eurofurence.org/api/v2/PushNotifications/FcmDeviceRegistration",
                         body: jsonData)
     }
 

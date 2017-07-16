@@ -8,10 +8,40 @@
 
 import Foundation
 
-enum FirebaseTopic: String {
+enum FirebaseTopic: CustomStringConvertible, Hashable {
+
     case test
     case live
     case announcements
+    case ios
+    case debug
+    case version(String)
+
+    static func ==(lhs: FirebaseTopic, rhs: FirebaseTopic) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+
+    var hashValue: Int {
+        return description.hashValue
+    }
+
+    var description: String {
+        switch self {
+        case .test:
+            return "test"
+        case .live:
+            return "live"
+        case .announcements:
+            return "announcements"
+        case .ios:
+            return "ios"
+        case .debug:
+            return "debug"
+        case .version(let version):
+            return "Version-\(version)"
+        }
+    }
+
 }
 
 protocol FirebaseAdapter {

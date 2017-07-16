@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		6EEC6D9A1F157AC000205F2D /* WitnessedTutorialPushPermissionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6D991F157AC000205F2D /* WitnessedTutorialPushPermissionsRequest.swift */; };
 		6EEC6D9D1F173DE700205F2D /* InitiateDownloadTutorialPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6D9C1F173DE700205F2D /* InitiateDownloadTutorialPagePresenter.swift */; };
+		6EEC6DA11F1BF79F00205F2D /* FirebaseTopicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA01F1BF79F00205F2D /* FirebaseTopicTests.swift */; };
+		6EEC6DA31F1BFC5000205F2D /* StubAppVersionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */; };
+		6EEC6DA51F1BFC7700205F2D /* AppVersionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA41F1BFC7700205F2D /* AppVersionProviding.swift */; };
+		6EEC6DA71F1BFD5D00205F2D /* BundleAppVersionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA61F1BFD5D00205F2D /* BundleAppVersionProviding.swift */; };
 		6EF96CC81F0EDAE800EE6134 /* CalendarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CC71F0EDAE800EE6134 /* CalendarStore.swift */; };
 		6EF96CCA1F0EDAF800EE6134 /* CalendarPermissionsProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CC91F0EDAF800EE6134 /* CalendarPermissionsProviding.swift */; };
 		6EF96CCC1F0EDB0500EE6134 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CCB1F0EDB0500EE6134 /* CalendarEvent.swift */; };
@@ -110,17 +114,16 @@
 		78D7EEA41F17F40C005372A9 /* EurofurenceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEA31F17F40C005372A9 /* EurofurenceUITests.swift */; };
 		78D7EEB51F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEB41F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift */; };
 		78D7EEB81F196B30005372A9 /* BuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEB71F196B30005372A9 /* BuildConfigurationProviding.swift */; };
-		78D7EEBB1F196B4E005372A9 /* NotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEBA1F196B4E005372A9 /* NotificationsService.swift */; };
 		78D7EEBD1F196B62005372A9 /* EurofurenceApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEBC1F196B62005372A9 /* EurofurenceApplication.swift */; };
 		78D7EEBF1F196B77005372A9 /* StubBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */; };
-		78D7EEC11F196B8C005372A9 /* CapturingNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEC01F196B8C005372A9 /* CapturingNotificationsService.swift */; };
 		78D7EEC41F196C4A005372A9 /* PreprocessorBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEC31F196C4A005372A9 /* PreprocessorBuildConfigurationProviding.swift */; };
-		78D7EEC61F196D46005372A9 /* FirebaseNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEC51F196D46005372A9 /* FirebaseNotificationsService.swift */; };
 		78F555991F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F555981F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift */; };
 		78F5559B1F10D65900BDA7D4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F5559A1F10D65900BDA7D4 /* SplashViewController.swift */; };
 		78FE77CC1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77CB1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift */; };
 		78FE77CF1F1A2E8600E9A0BE /* HTTPPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77CE1F1A2E8600E9A0BE /* HTTPPoster.swift */; };
 		78FE77D31F1A2EB000E9A0BE /* CapturingHTTPPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D21F1A2EB000E9A0BE /* CapturingHTTPPoster.swift */; };
+		78FE77D71F1B9FA500E9A0BE /* URLSessionHTTPPosterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D61F1B9FA500E9A0BE /* URLSessionHTTPPosterTests.swift */; };
+		78FE77D91F1BB9E400E9A0BE /* URLSessionHTTPPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D81F1BB9E400E9A0BE /* URLSessionHTTPPoster.swift */; };
 		9A0525411ECA2AF500578798 /* Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0525401ECA2AF500578798 /* Sync.swift */; };
 		9A0525431ECA2C5A00578798 /* SyncEntityDelta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0525421ECA2C5A00578798 /* SyncEntityDelta.swift */; };
 		9A0525451ECB090700578798 /* WebApiConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0525441ECB090700578798 /* WebApiConnection.swift */; };
@@ -226,6 +229,10 @@
 		513BAD2C582D99F2993B8162 /* Pods-Eurofurence.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence.debug.xcconfig"; sourceTree = "<group>"; };
 		6EEC6D991F157AC000205F2D /* WitnessedTutorialPushPermissionsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WitnessedTutorialPushPermissionsRequest.swift; path = Views/Controllers/Tutorial/WitnessedTutorialPushPermissionsRequest.swift; sourceTree = "<group>"; };
 		6EEC6D9C1F173DE700205F2D /* InitiateDownloadTutorialPagePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InitiateDownloadTutorialPagePresenter.swift; path = Presenters/Modules/Tutorial/Pages/InitiateDownloadTutorialPagePresenter.swift; sourceTree = "<group>"; };
+		6EEC6DA01F1BF79F00205F2D /* FirebaseTopicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseTopicTests.swift; path = "Application Tests/Notifications/Firebase/FirebaseTopicTests.swift"; sourceTree = "<group>"; };
+		6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAppVersionProviding.swift; path = "Test Doubles/StubAppVersionProviding.swift"; sourceTree = "<group>"; };
+		6EEC6DA41F1BFC7700205F2D /* AppVersionProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppVersionProviding.swift; path = "Application/Build Config/AppVersionProviding.swift"; sourceTree = "<group>"; };
+		6EEC6DA61F1BFD5D00205F2D /* BundleAppVersionProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BundleAppVersionProviding.swift; path = "Application/Build Config/BundleAppVersionProviding.swift"; sourceTree = "<group>"; };
 		6EF96CC71F0EDAE800EE6134 /* CalendarStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarStore.swift; path = Calendar/CalendarStore.swift; sourceTree = "<group>"; };
 		6EF96CC91F0EDAF800EE6134 /* CalendarPermissionsProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPermissionsProviding.swift; path = Calendar/CalendarPermissionsProviding.swift; sourceTree = "<group>"; };
 		6EF96CCB1F0EDB0500EE6134 /* CalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarEvent.swift; path = Calendar/CalendarEvent.swift; sourceTree = "<group>"; };
@@ -330,17 +337,16 @@
 		78D7EEA51F17F40C005372A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78D7EEB41F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenRegisteredForPushNotifications.swift; path = "Application Tests/WhenRegisteredForPushNotifications.swift"; sourceTree = "<group>"; };
 		78D7EEB71F196B30005372A9 /* BuildConfigurationProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BuildConfigurationProviding.swift; path = "Application/Build Config/BuildConfigurationProviding.swift"; sourceTree = "<group>"; };
-		78D7EEBA1F196B4E005372A9 /* NotificationsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsService.swift; path = Application/Notifications/NotificationsService.swift; sourceTree = "<group>"; };
 		78D7EEBC1F196B62005372A9 /* EurofurenceApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceApplication.swift; path = Application/EurofurenceApplication.swift; sourceTree = "<group>"; };
 		78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubBuildConfigurationProviding.swift; path = "Test Doubles/StubBuildConfigurationProviding.swift"; sourceTree = "<group>"; };
-		78D7EEC01F196B8C005372A9 /* CapturingNotificationsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingNotificationsService.swift; path = "Test Doubles/CapturingNotificationsService.swift"; sourceTree = "<group>"; };
 		78D7EEC31F196C4A005372A9 /* PreprocessorBuildConfigurationProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreprocessorBuildConfigurationProviding.swift; path = "Application/Build Config/PreprocessorBuildConfigurationProviding.swift"; sourceTree = "<group>"; };
-		78D7EEC51F196D46005372A9 /* FirebaseNotificationsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseNotificationsService.swift; path = Application/Notifications/FirebaseNotificationsService.swift; sourceTree = "<group>"; };
 		78F555981F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReplaceViewControllersSegue.swift; path = Segues/ReplaceViewControllersSegue.swift; sourceTree = "<group>"; };
 		78F5559A1F10D65900BDA7D4 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		78FE77CB1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceFCMDeviceRegistration.swift; path = Application/Notifications/Firebase/EurofurenceFCMDeviceRegistration.swift; sourceTree = "<group>"; };
 		78FE77CE1F1A2E8600E9A0BE /* HTTPPoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPPoster.swift; path = HTTP/HTTPPoster.swift; sourceTree = "<group>"; };
 		78FE77D21F1A2EB000E9A0BE /* CapturingHTTPPoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingHTTPPoster.swift; path = "Test Doubles/Services/HTTP/CapturingHTTPPoster.swift"; sourceTree = "<group>"; };
+		78FE77D61F1B9FA500E9A0BE /* URLSessionHTTPPosterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLSessionHTTPPosterTests.swift; path = "Services Tests/HTTP/URLSessionHTTPPosterTests.swift"; sourceTree = "<group>"; };
+		78FE77D81F1BB9E400E9A0BE /* URLSessionHTTPPoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLSessionHTTPPoster.swift; path = HTTP/URLSessionHTTPPoster.swift; sourceTree = "<group>"; };
 		9A0525401ECA2AF500578798 /* Sync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sync.swift; sourceTree = "<group>"; };
 		9A0525421ECA2C5A00578798 /* SyncEntityDelta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncEntityDelta.swift; sourceTree = "<group>"; };
 		9A0525441ECB090700578798 /* WebApiConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebApiConnection.swift; sourceTree = "<group>"; };
@@ -521,7 +527,7 @@
 				7820A6FE1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift */,
 				7820A7001F16C0F0004C0FB5 /* CapturingWitnessedSystemPushPermissionsRequest.swift */,
 				78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */,
-				78D7EEC01F196B8C005372A9 /* CapturingNotificationsService.swift */,
+				6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */,
 			);
 			name = "Test Doubles";
 			sourceTree = "<group>";
@@ -614,6 +620,7 @@
 			children = (
 				781A94451F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift */,
 				781A94471F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift */,
+				6EEC6DA01F1BF79F00205F2D /* FirebaseTopicTests.swift */,
 			);
 			name = Firebase;
 			sourceTree = "<group>";
@@ -779,8 +786,6 @@
 			isa = PBXGroup;
 			children = (
 				781A94311F1A1981002DE70F /* Firebase */,
-				78D7EEBA1F196B4E005372A9 /* NotificationsService.swift */,
-				78D7EEC51F196D46005372A9 /* FirebaseNotificationsService.swift */,
 				781A943B1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift */,
 			);
 			name = Notifications;
@@ -791,6 +796,8 @@
 			children = (
 				78D7EEB71F196B30005372A9 /* BuildConfigurationProviding.swift */,
 				78D7EEC31F196C4A005372A9 /* PreprocessorBuildConfigurationProviding.swift */,
+				6EEC6DA41F1BFC7700205F2D /* AppVersionProviding.swift */,
+				6EEC6DA61F1BFD5D00205F2D /* BundleAppVersionProviding.swift */,
 			);
 			name = "Build Config";
 			sourceTree = "<group>";
@@ -807,6 +814,7 @@
 			isa = PBXGroup;
 			children = (
 				78FE77CE1F1A2E8600E9A0BE /* HTTPPoster.swift */,
+				78FE77D81F1BB9E400E9A0BE /* URLSessionHTTPPoster.swift */,
 			);
 			name = HTTP;
 			sourceTree = "<group>";
@@ -823,6 +831,22 @@
 			isa = PBXGroup;
 			children = (
 				78FE77D21F1A2EB000E9A0BE /* CapturingHTTPPoster.swift */,
+			);
+			name = HTTP;
+			sourceTree = "<group>";
+		};
+		78FE77D41F1B9F8A00E9A0BE /* Services Tests */ = {
+			isa = PBXGroup;
+			children = (
+				78FE77D51F1B9F9200E9A0BE /* HTTP */,
+			);
+			name = "Services Tests";
+			sourceTree = "<group>";
+		};
+		78FE77D51F1B9F9200E9A0BE /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				78FE77D61F1B9FA500E9A0BE /* URLSessionHTTPPosterTests.swift */,
 			);
 			name = HTTP;
 			sourceTree = "<group>";
@@ -905,6 +929,7 @@
 			children = (
 				78D7EEB31F195E8B005372A9 /* Application Tests */,
 				78C86D5B1F12355C003A20E6 /* Presenter Tests */,
+				78FE77D41F1B9F8A00E9A0BE /* Services Tests */,
 				6EF96CCD1F0EDB1300EE6134 /* Test Doubles */,
 				9ACF994E1EBE172D006FC958 /* Info.plist */,
 				78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */,
@@ -1439,6 +1464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EF96CEA1F126B1A00EE6134 /* BootstrappingModule.swift in Sources */,
+				6EEC6DA71F1BFD5D00205F2D /* BundleAppVersionProviding.swift in Sources */,
 				9A7FFD571EFC5B46007ABA36 /* CalendarAccess.swift in Sources */,
 				781A94331F1A1994002DE70F /* FCMDeviceRegistration.swift in Sources */,
 				6EF96CCC1F0EDB0500EE6134 /* CalendarEvent.swift in Sources */,
@@ -1474,7 +1500,6 @@
 				78C86D7F1F13A096003A20E6 /* PresentationStrings.swift in Sources */,
 				9ACF99921EC858B2006FC958 /* EventConferenceDay.swift in Sources */,
 				9ACF998D1EC858B2006FC958 /* KnowledgeGroup.swift in Sources */,
-				78D7EEBB1F196B4E005372A9 /* NotificationsService.swift in Sources */,
 				78C86D561F12334D003A20E6 /* Routers.swift in Sources */,
 				78455B591F117BCF005BE2D7 /* StoryboardTutorialRouter.swift in Sources */,
 				9A34B9851ED089BB004A249E /* NavigationResolverProtocol.swift in Sources */,
@@ -1509,6 +1534,7 @@
 				6EF96CD11F0EDB4C00EE6134 /* CalendarService.swift in Sources */,
 				9ACF99971EC858B2006FC958 /* Map.swift in Sources */,
 				7820A6DD1F13F544004C0FB5 /* PresentationAssets.swift in Sources */,
+				6EEC6DA51F1BFC7700205F2D /* AppVersionProviding.swift in Sources */,
 				78567B3F1F1016B000EBA31D /* TabViewController.swift in Sources */,
 				9ACF99981EC858B2006FC958 /* MapEntry.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
@@ -1520,7 +1546,6 @@
 				6EF96CF11F1495F400EE6134 /* SystemNetworkReachability.swift in Sources */,
 				7820A6EF1F14F15D004C0FB5 /* Quote.swift in Sources */,
 				D6F3DD6B0659E1A44E01075B /* CurrentEventsViewModel.swift in Sources */,
-				78D7EEC61F196D46005372A9 /* FirebaseNotificationsService.swift in Sources */,
 				781A943C1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift in Sources */,
 				9ACB006D1F16C23D001CE9D2 /* PrivateMessage.swift in Sources */,
 				78FE77CF1F1A2E8600E9A0BE /* HTTPPoster.swift in Sources */,
@@ -1558,6 +1583,7 @@
 				9A0F87E51F1BAD2C00FF294B /* LocalNotificationStore.swift in Sources */,
 				D6F3D2440B74E17B9A008DE0 /* NewsViewController.swift in Sources */,
 				7820A7101F1796ED004C0FB5 /* TutorialPresentationContext.swift in Sources */,
+				78FE77D91F1BB9E400E9A0BE /* URLSessionHTTPPoster.swift in Sources */,
 				D6F3D3D11CAB2B06852D0EF9 /* DealerTableViewController.swift in Sources */,
 				9AB83B0C1F0EB47A001823B1 /* MapViewModel.swift in Sources */,
 				6EF96CCA1F0EDAF800EE6134 /* CalendarPermissionsProviding.swift in Sources */,
@@ -1600,9 +1626,9 @@
 				7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */,
 				78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */,
 				78C86D6C1F123FD8003A20E6 /* PresentationTestBuilder.swift in Sources */,
-				78D7EEC11F196B8C005372A9 /* CapturingNotificationsService.swift in Sources */,
 				78C86D791F12ADF8003A20E6 /* CapturingSplashScene.swift in Sources */,
 				78C86D4C1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift in Sources */,
+				6EEC6DA31F1BFC5000205F2D /* StubAppVersionProviding.swift in Sources */,
 				78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */,
 				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,
 				7820A6E51F140056004C0FB5 /* CapturingAlertRouter.swift in Sources */,
@@ -1616,12 +1642,14 @@
 				7820A7051F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift in Sources */,
 				78C86D5D1F123686003A20E6 /* WhenTheTutorialAppears.swift in Sources */,
 				7820A6DF1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift in Sources */,
+				6EEC6DA11F1BF79F00205F2D /* FirebaseTopicTests.swift in Sources */,
 				7820A6F61F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift in Sources */,
 				6EF96CCF1F0EDB2000EE6134 /* CalendarTestDoubles.swift in Sources */,
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
 				78D7EEB51F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift in Sources */,
 				78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */,
 				7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */,
+				78FE77D71F1B9FA500E9A0BE /* URLSessionHTTPPosterTests.swift in Sources */,
 				7820A6ED1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift in Sources */,
 				78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */,
 				781A943A1F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift in Sources */,

@@ -12,58 +12,58 @@ import XCTest
 class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
     
     func testRegisteringTheFCMTokenSubmitsPOSTRequestToFCMRegistrationURL() {
-        let capturingHTTPPoster = CapturingHTTPPoster()
-        let registration = EurofurenceFCMDeviceRegistration(httpPoster: capturingHTTPPoster)
+        let capturingJSONPoster = CapturingJSONPoster()
+        let registration = EurofurenceFCMDeviceRegistration(jsonPoster: capturingJSONPoster)
         registration.registerFCM("", topics: [])
         let expectedURL = "https://app.eurofurence.org/api/v2/PushNotifications/FcmDeviceRegistration"
 
-        XCTAssertEqual(expectedURL, capturingHTTPPoster.postedURL)
+        XCTAssertEqual(expectedURL, capturingJSONPoster.postedURL)
     }
 
     func testRegisteringTheFCMTokenShouldNotSubmitPOSTRequestUntilRegistrationActuallyOccurs() {
-        let capturingHTTPPoster = CapturingHTTPPoster()
-        _ = EurofurenceFCMDeviceRegistration(httpPoster: capturingHTTPPoster)
+        let capturingJSONPoster = CapturingJSONPoster()
+        _ = EurofurenceFCMDeviceRegistration(jsonPoster: capturingJSONPoster)
 
-        XCTAssertNil(capturingHTTPPoster.postedURL)
+        XCTAssertNil(capturingJSONPoster.postedURL)
     }
 
     func testRegisteringTheFCMTokenShouldPostJSONBodyWithDeviceIDAsFCMToken() {
-        let capturingHTTPPoster = CapturingHTTPPoster()
-        let registration = EurofurenceFCMDeviceRegistration(httpPoster: capturingHTTPPoster)
+        let capturingJSONPoster = CapturingJSONPoster()
+        let registration = EurofurenceFCMDeviceRegistration(jsonPoster: capturingJSONPoster)
         let fcm = "Something unique"
         registration.registerFCM(fcm, topics: [])
 
-        XCTAssertEqual(fcm, capturingHTTPPoster.postedJSONValue(forKey: "DeviceId"))
+        XCTAssertEqual(fcm, capturingJSONPoster.postedJSONValue(forKey: "DeviceId"))
     }
 
     func testRegisteringTheFCMTokenShouldSupplyTheLiveTopicWithinAnArrayUnderTheTopicsKey() {
-        let capturingHTTPPoster = CapturingHTTPPoster()
-        let registration = EurofurenceFCMDeviceRegistration(httpPoster: capturingHTTPPoster)
+        let capturingJSONPoster = CapturingJSONPoster()
+        let registration = EurofurenceFCMDeviceRegistration(jsonPoster: capturingJSONPoster)
         let topic = FirebaseTopic.live
         registration.registerFCM("", topics: [topic])
-        let expected: [String] = [topic.rawValue]
+        let expected: [String] = [topic.description]
 
-        XCTAssertEqual(expected, capturingHTTPPoster.postedJSONValue(forKey: "Topics") ?? [])
+        XCTAssertEqual(expected, capturingJSONPoster.postedJSONValue(forKey: "Topics") ?? [])
     }
 
     func testRegisteringTheFCMTokenShouldSupplyTheTestTopicWithinAnArrayUnderTheTopicsKey() {
-        let capturingHTTPPoster = CapturingHTTPPoster()
-        let registration = EurofurenceFCMDeviceRegistration(httpPoster: capturingHTTPPoster)
+        let capturingJSONPoster = CapturingJSONPoster()
+        let registration = EurofurenceFCMDeviceRegistration(jsonPoster: capturingJSONPoster)
         let topic = FirebaseTopic.test
         registration.registerFCM("", topics: [topic])
-        let expected: [String] = [topic.rawValue]
+        let expected: [String] = [topic.description]
 
-        XCTAssertEqual(expected, capturingHTTPPoster.postedJSONValue(forKey: "Topics") ?? [])
+        XCTAssertEqual(expected, capturingJSONPoster.postedJSONValue(forKey: "Topics") ?? [])
     }
 
     func testRegisteringTheFCMTokenShouldSupplyAllTopicsWithinAnArrayUnderTheTopicsKey() {
-        let capturingHTTPPoster = CapturingHTTPPoster()
-        let registration = EurofurenceFCMDeviceRegistration(httpPoster: capturingHTTPPoster)
+        let capturingJSONPoster = CapturingJSONPoster()
+        let registration = EurofurenceFCMDeviceRegistration(jsonPoster: capturingJSONPoster)
         let topics: [FirebaseTopic] = [.test, .live]
         registration.registerFCM("", topics: topics)
-        let expected: [String] = topics.map({ $0.rawValue })
+        let expected: [String] = topics.map({ $0.description })
 
-        XCTAssertEqual(expected, capturingHTTPPoster.postedJSONValue(forKey: "Topics") ?? [])
+        XCTAssertEqual(expected, capturingJSONPoster.postedJSONValue(forKey: "Topics") ?? [])
     }
     
 }
