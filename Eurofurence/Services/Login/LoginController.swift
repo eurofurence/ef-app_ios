@@ -14,8 +14,15 @@ protocol LoginController {
 
 }
 
+struct LoginCredential {
+
+    var authenticationToken: String
+    var tokenExpiryDate: Date
+
+}
+
 protocol LoginStateObserver {
 
-    func userDidLogin(authenticationToken: String, expires: Date)
+    func userDidLogin(credential: LoginCredential)
 
 }

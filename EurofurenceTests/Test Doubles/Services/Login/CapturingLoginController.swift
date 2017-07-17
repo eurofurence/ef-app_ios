@@ -17,7 +17,8 @@ class CapturingLoginController: LoginController {
     }
     
     func notifyUserLoggedIn(_ authenticationToken: String = "", expires: Date = .distantFuture) {
-        observers.forEach({ $0.userDidLogin(authenticationToken: authenticationToken, expires: expires) })
+        let credential = LoginCredential(authenticationToken: authenticationToken, tokenExpiryDate: expires)
+        observers.forEach({ $0.userDidLogin(credential: credential) })
     }
     
 }

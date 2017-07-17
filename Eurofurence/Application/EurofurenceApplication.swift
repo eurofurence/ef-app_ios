@@ -35,14 +35,14 @@ class EurofurenceApplication: LoginStateObserver {
                                                                                     userAuthenticationToken: token)
     }
 
-    func userDidLogin(authenticationToken: String, expires: Date) {
-        userAuthenticationToken = authenticationToken
-        userAuthenticationTokenValid = clock.currentDate.timeIntervalSince1970 < expires.timeIntervalSince1970
+    func userDidLogin(credential: LoginCredential) {
+        userAuthenticationToken = credential.authenticationToken
+        userAuthenticationTokenValid = clock.currentDate.timeIntervalSince1970 < credential.tokenExpiryDate.timeIntervalSince1970
 
         guard let registeredDeviceToken = registeredDeviceToken else { return }
 
         remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(registeredDeviceToken,
-                                                                                    userAuthenticationToken: authenticationToken)
+                                                                                    userAuthenticationToken: userAuthenticationToken)
     }
 
 }
