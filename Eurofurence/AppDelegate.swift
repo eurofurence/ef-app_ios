@@ -40,7 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         app = EurofurenceApplication(remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
-                                     loginController: DummyLoginController())
+                                     loginController: DummyLoginController(),
+                                     clock: SystemClock())
 
         DataStoreRefreshController.shared.add(ApplicationActivityIndicatorRefreshDelegate())
         PresentationTier.assemble(window: window!)

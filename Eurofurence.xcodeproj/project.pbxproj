@@ -183,6 +183,9 @@
 		CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */; };
 		CAD780431F1D4CA3002A8333 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780421F1D4CA3002A8333 /* LoginController.swift */; };
 		CAD780461F1D4E07002A8333 /* CapturingLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780451F1D4E07002A8333 /* CapturingLoginController.swift */; };
+		CAD780491F1D51EB002A8333 /* StubClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780481F1D51EB002A8333 /* StubClock.swift */; };
+		CAD7804C1F1D5212002A8333 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7804B1F1D5212002A8333 /* Clock.swift */; };
+		CAD7804E1F1D5227002A8333 /* SystemClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7804D1F1D5227002A8333 /* SystemClock.swift */; };
 		D6F3D0434C71907BD410190E /* ImageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D64B03CB7EFAF70CC756 /* ImageServiceProtocol.swift */; };
 		D6F3D13186949132FE4694AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6F3D756F99A68B2DC5B7359 /* Main.storyboard */; };
 		D6F3D13A59E359E69EA66D7E /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D7AF46BAD0F1F9918A76 /* MenuTableViewCell.swift */; };
@@ -418,6 +421,9 @@
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenLoginStateChanges.swift; path = "Application Tests/WhenLoginStateChanges.swift"; sourceTree = "<group>"; };
 		CAD780421F1D4CA3002A8333 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = Login/LoginController.swift; sourceTree = "<group>"; };
 		CAD780451F1D4E07002A8333 /* CapturingLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLoginController.swift; path = "Test Doubles/Services/Login/CapturingLoginController.swift"; sourceTree = "<group>"; };
+		CAD780481F1D51EB002A8333 /* StubClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubClock.swift; path = "Test Doubles/Services/Clock/StubClock.swift"; sourceTree = "<group>"; };
+		CAD7804B1F1D5212002A8333 /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clock.swift; path = Clock/Clock.swift; sourceTree = "<group>"; };
+		CAD7804D1F1D5227002A8333 /* SystemClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SystemClock.swift; path = Clock/SystemClock.swift; sourceTree = "<group>"; };
 		D6F3D0A32DC83843688B347C /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		D6F3D15DBA1AA6254F83C20A /* DealersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealersTableViewCell.swift; sourceTree = "<group>"; };
 		D6F3D1CE9C98163AA2B6DF7D /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
@@ -833,6 +839,7 @@
 		78FE77D01F1A2E9500E9A0BE /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CAD780471F1D51DB002A8333 /* Clock */,
 				CAD780441F1D4DF7002A8333 /* Login */,
 				78FE77D11F1A2E9C00E9A0BE /* HTTP */,
 			);
@@ -1104,9 +1111,27 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		CAD780471F1D51DB002A8333 /* Clock */ = {
+			isa = PBXGroup;
+			children = (
+				CAD780481F1D51EB002A8333 /* StubClock.swift */,
+			);
+			name = Clock;
+			sourceTree = "<group>";
+		};
+		CAD7804A1F1D5208002A8333 /* Clock */ = {
+			isa = PBXGroup;
+			children = (
+				CAD7804B1F1D5212002A8333 /* Clock.swift */,
+				CAD7804D1F1D5227002A8333 /* SystemClock.swift */,
+			);
+			name = Clock;
+			sourceTree = "<group>";
+		};
 		D6F3D0327856D0D0294EF5E6 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CAD7804A1F1D5208002A8333 /* Clock */,
 				CAD780411F1D4C98002A8333 /* Login */,
 				78FE77CD1F1A2E7900E9A0BE /* HTTP */,
 				9ACB010A1F18F520001CE9D2 /* EventFavorites */,
@@ -1558,12 +1583,14 @@
 				6EF96CDF1F12637100EE6134 /* PresentationTier.swift in Sources */,
 				7820A6EB1F141AD5004C0FB5 /* WindowAlertRouter.swift in Sources */,
 				9ACF99901EC858B2006FC958 /* KnowledgeEntry.swift in Sources */,
+				CAD7804C1F1D5212002A8333 /* Clock.swift in Sources */,
 				9AF0B4FE1F08459D000AAA0A /* TimeIntervalRow.swift in Sources */,
 				9AF159ED1EF5BE7F00DB287D /* EventCell.swift in Sources */,
 				9A2A94911F12E7D6004D66FB /* SyncStateProvider.swift in Sources */,
 				9ACF998F1EC858B2006FC958 /* Announcement.swift in Sources */,
 				7820A6F21F1696F1004C0FB5 /* PushPermissionsRequesting.swift in Sources */,
 				78C86D7D1F12B8FD003A20E6 /* EgyptianQuoteGenerator.swift in Sources */,
+				CAD7804E1F1D5227002A8333 /* SystemClock.swift in Sources */,
 				6EF96CD11F0EDB4C00EE6134 /* CalendarService.swift in Sources */,
 				9ACF99971EC858B2006FC958 /* Map.swift in Sources */,
 				7820A6DD1F13F544004C0FB5 /* PresentationAssets.swift in Sources */,
@@ -1681,6 +1708,7 @@
 				CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */,
 				CAD780461F1D4E07002A8333 /* CapturingLoginController.swift in Sources */,
 				6EF96CCF1F0EDB2000EE6134 /* CalendarTestDoubles.swift in Sources */,
+				CAD780491F1D51EB002A8333 /* StubClock.swift in Sources */,
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
 				78D7EEB51F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift in Sources */,
 				78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */,
