@@ -8,16 +8,22 @@
 
 import Foundation
 
-struct EurofurenceApplication {
+struct EurofurenceApplication: LoginStateObserver {
 
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
 
-    init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration) {
+    init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
+         loginController: LoginController) {
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
+        loginController.add(self)
     }
 
     func registerRemoteNotifications(deviceToken: Data) {
         remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken)
+    }
+
+    func userDidLogin() {
+        remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(Data())
     }
 
 }

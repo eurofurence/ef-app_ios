@@ -32,7 +32,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                                                                 appVersion: BundleAppVersionProviding(),
                                                                                                 firebaseAdapter: FirebaseMessagingAdapter(),
                                                                                                 fcmRegistration: fcmRegistration)
-        app = EurofurenceApplication(remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration)
+
+        struct DummyLoginController: LoginController {
+            func add(_ observer: LoginStateObserver) {
+
+            }
+        }
+
+        app = EurofurenceApplication(remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
+                                     loginController: DummyLoginController())
 
         DataStoreRefreshController.shared.add(ApplicationActivityIndicatorRefreshDelegate())
         PresentationTier.assemble(window: window!)
