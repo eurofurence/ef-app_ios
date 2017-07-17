@@ -119,15 +119,10 @@ class EventFavoritesService {
 				let eventFavorite = eventFavorites.first(where: { $0.EventId == eventId }),
 				let event = eventFavorite.Event, event.StartDateTimeUtc > currentTime {
 
-				if let lastChangeDate = notification.userInfo?["Event.LastChangeDateTimeUtc"] as? Date, (lastChangeDate < event.LastChangeDateTimeUtc || offset != 0.0) {
-
-					UIApplication.shared.cancelLocalNotification(notification)
-					let updatedNotification = createLocalNotificaton(for: event, offset: offset)
-					updatedNotifications.append(updatedNotification)
-					UIApplication.shared.scheduleLocalNotification(notification)
-				} else {
-					updatedNotifications.append(notification)
-				}
+				UIApplication.shared.cancelLocalNotification(notification)
+				let updatedNotification = createLocalNotificaton(for: event, offset: offset)
+				updatedNotifications.append(updatedNotification)
+				UIApplication.shared.scheduleLocalNotification(notification)
 			} else {
 				UIApplication.shared.cancelLocalNotification(notification)
 			}
