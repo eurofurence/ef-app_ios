@@ -26,6 +26,26 @@ class LoginViewController: UITableViewController,
                 self.passwordTextField]
     }()
 
+    private var canAttemptLogin: Bool {
+        guard let registrationNumber = registrationNumber,
+              let username = username,
+              let password = password else { return false }
+
+        return !(registrationNumber.isEmpty || username.isEmpty || password.isEmpty)
+    }
+
+    private var registrationNumber: String? {
+        return registrationNumberTextField.text
+    }
+
+    private var username: String? {
+        return usernameTextField.text
+    }
+
+    private var password: String? {
+        return passwordTextField.text
+    }
+
     // MARK: IBOutlets
 
     @IBOutlet weak var registrationNumberTextField: UITextField!
@@ -37,6 +57,10 @@ class LoginViewController: UITableViewController,
 
     @IBAction func cancelLogin(_ sender: Any) {
         loginDelegate?.loginViewControllerDidCancel(self)
+    }
+
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        performLoginButton.isEnabled = canAttemptLogin
     }
 
     // MARK: UITextFieldDelegate

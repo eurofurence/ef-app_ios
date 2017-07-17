@@ -770,6 +770,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
+                                                        <action selector="textFieldEditingChanged:" destination="Wuf-Y2-JCZ" eventType="editingChanged" id="EI1-J5-bmE"/>
                                                         <outlet property="delegate" destination="Wuf-Y2-JCZ" id="1tc-so-ogE"/>
                                                     </connections>
                                                 </textField>
@@ -803,6 +804,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
+                                                        <action selector="textFieldEditingChanged:" destination="Wuf-Y2-JCZ" eventType="editingChanged" id="NDG-oH-WsK"/>
                                                         <outlet property="delegate" destination="Wuf-Y2-JCZ" id="G1K-LG-gbF"/>
                                                     </connections>
                                                 </textField>
@@ -836,6 +838,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                     <connections>
+                                                        <action selector="textFieldEditingChanged:" destination="Wuf-Y2-JCZ" eventType="editingChanged" id="JOY-md-ZSF"/>
                                                         <outlet property="delegate" destination="Wuf-Y2-JCZ" id="IBb-U1-P1s"/>
                                                     </connections>
                                                 </textField>
