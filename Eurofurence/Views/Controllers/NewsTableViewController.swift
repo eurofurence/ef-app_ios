@@ -11,7 +11,7 @@ import ReactiveSwift
 import UIKit
 import Changeset
 
-class NewsTableViewController: UITableViewController, UIViewControllerPreviewingDelegate {
+class NewsTableViewController: UITableViewController, UIViewControllerPreviewingDelegate, MessagesViewControllerDelegate {
 
 	private var announcementsViewModel: AnnouncementsViewModel = try! ViewModelResolver.container.resolve()
 	private var currentEventsViewModel: CurrentEventsViewModel = try! ViewModelResolver.container.resolve()
@@ -337,7 +337,9 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 				destinationVC.event = event
 			}
 		default:
-			break
+            if let messages = segue.destination as? MessagesViewController {
+                messages.messagesDelegate = self
+            }
         }
     }
 
@@ -375,4 +377,9 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 	deinit {
 		disposables.dispose()
 	}
+
+    func messagesViewControllerDidRequestDismissal(_ messagesController: MessagesViewController) {
+        navigationController?.popToViewController(self, animated: true)
+    }
+
 }
