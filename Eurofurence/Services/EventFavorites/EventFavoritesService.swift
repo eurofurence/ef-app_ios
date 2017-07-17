@@ -102,7 +102,6 @@ class EventFavoritesService {
 		localNotifications = remainingNotifications
 	}
 
-	
 	/// Cancels all notifications of the EventFavoritesService category whose
 	/// events have been removed and reschedules those with changed events.
 	/// Note: This will also schedule new notifications for previously

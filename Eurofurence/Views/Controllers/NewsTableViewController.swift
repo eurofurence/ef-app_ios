@@ -184,16 +184,18 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 
 		// TODO: Do we display a static message in case of empty sections or do we hide the sections?
 
-        return 3
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		switch section {
-		case 0:
-			return max(1, announcementsViewModel.Announcements.value.count)
+        case 0:
+            return 1
 		case 1:
-			return max(1, currentEventsViewModel.RunningEvents.value.count)
+			return max(1, announcementsViewModel.Announcements.value.count)
 		case 2:
+			return max(1, currentEventsViewModel.RunningEvents.value.count)
+		case 3:
 			return max(1, currentEventsViewModel.UpcomingEvents.value.count)
 		default: // Header or unknown section
 			return 0
@@ -203,11 +205,11 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String {
 		// TODO: Externalise strings for i18n
 		switch section {
-		case 0:
-			return "Announcements"
 		case 1:
-			return "Running Events"
+			return "Announcements"
 		case 2:
+			return "Running Events"
+		case 3:
 			return "Upcoming Events"
 		default: // Unknown section or header
 			return ""
@@ -215,13 +217,14 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 	}
 
 	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-		// No title, no visible section header
-		return self.tableView(tableView, titleForHeaderInSection: section).isEmpty ? 0.0 : 20.0
+        return self.tableView(tableView, titleForHeaderInSection: section).isEmpty ? 0.0 : 20.0
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		switch indexPath.section {
-		case 0:
+        case 0:
+            return tableView.dequeueReusableCell(withIdentifier: "LoginHintCell", for: indexPath)
+		case 1:
 			if announcementsViewModel.Announcements.value.isEmpty {
 				return tableView.dequeueReusableCell(withIdentifier: "NoAnnouncementsCell", for: indexPath)
 			} else {
@@ -229,7 +232,7 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 				cell.announcement = announcementsViewModel.Announcements.value[indexPath.row]
 				return cell
 			}
-		case 1:
+		case 2:
 			if currentEventsViewModel.RunningEvents.value.isEmpty {
 				return tableView.dequeueReusableCell(withIdentifier: "NoRunningEventsCell", for: indexPath)
 			} else {
@@ -238,7 +241,7 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 				cell.event = currentEventsViewModel.RunningEvents.value[indexPath.row]
 				return cell
 			}
-		case 2:
+		case 3:
 			if currentEventsViewModel.UpcomingEvents.value.isEmpty {
 				return tableView.dequeueReusableCell(withIdentifier: "NoUpcomingEventsCell", for: indexPath)
 			} else {
@@ -255,11 +258,11 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 	func getData(for indexPath: IndexPath) -> EntityBase? {
 		let dataSource: [EntityBase]
 		switch indexPath.section {
-		case 0:
-			dataSource = announcementsViewModel.Announcements.value
 		case 1:
-			dataSource = currentEventsViewModel.RunningEvents.value
+			dataSource = announcementsViewModel.Announcements.value
 		case 2:
+			dataSource = currentEventsViewModel.RunningEvents.value
+		case 3:
 			dataSource = currentEventsViewModel.UpcomingEvents.value
 		default:
 			return nil
@@ -273,7 +276,7 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 	}
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		switch getData(for: indexPath) {
+        switch getData(for: indexPath) {
 		case let announcement as Announcement:
 			performSegue(withIdentifier: "AnnouncementDetailSegue", sender: announcement)
 		case let event as Event:

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rkh-Ff-Equ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2104" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rkh-Ff-Equ">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -531,8 +531,48 @@
                             </constraints>
                         </view>
                         <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoginHintCell" rowHeight="131" id="hE9-iK-InR">
+                                <rect key="frame" x="0.0" y="173" width="320" height="131"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hE9-iK-InR" id="n3e-8i-RQG">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Tap here to login using your registration details and receive personalized messages from Eurofurence!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifX-2O-vyq">
+                                            <rect key="frame" x="49" y="37" width="271" height="86"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="Info" translatesAutoresizingMaskIntoConstraints="NO" id="e86-AZ-hu3">
+                                            <rect key="frame" x="16" y="8" width="25" height="25"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are currently not logged in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNK-mD-Id9">
+                                            <rect key="frame" x="49" y="10" width="244.5" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="ifX-2O-vyq" firstAttribute="leading" secondItem="fNK-mD-Id9" secondAttribute="leading" id="MhA-3K-kEt"/>
+                                        <constraint firstItem="ifX-2O-vyq" firstAttribute="trailing" secondItem="n3e-8i-RQG" secondAttribute="trailingMargin" constant="8" id="OXH-Yw-mrB"/>
+                                        <constraint firstItem="fNK-mD-Id9" firstAttribute="centerY" secondItem="e86-AZ-hu3" secondAttribute="centerY" id="PH5-YE-zjP"/>
+                                        <constraint firstItem="fNK-mD-Id9" firstAttribute="leading" secondItem="e86-AZ-hu3" secondAttribute="trailing" constant="8" id="R79-7n-uq1"/>
+                                        <constraint firstItem="e86-AZ-hu3" firstAttribute="leading" secondItem="n3e-8i-RQG" secondAttribute="leadingMargin" constant="8" id="RMb-Lw-wFr"/>
+                                        <constraint firstItem="ifX-2O-vyq" firstAttribute="top" secondItem="fNK-mD-Id9" secondAttribute="bottom" constant="6" id="bwj-Nf-RKR"/>
+                                        <constraint firstAttribute="bottom" secondItem="ifX-2O-vyq" secondAttribute="bottom" constant="8" id="nKg-LX-qIU"/>
+                                        <constraint firstItem="e86-AZ-hu3" firstAttribute="top" secondItem="n3e-8i-RQG" secondAttribute="topMargin" id="tfq-Ic-rZD"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="0P0-Ze-yVl" kind="show" identifier="transitionToLogin" id="kSl-kB-c7w"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AnnouncementCell" rowHeight="78" id="3AP-Zn-j65" customClass="AnnouncementCell" customModule="Eurofurence" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="173" width="320" height="78"/>
+                                <rect key="frame" x="0.0" y="304" width="320" height="78"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3AP-Zn-j65" id="Lx8-7b-pcp">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="78"/>
@@ -583,7 +623,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoAnnouncementsCell" textLabel="QCK-FA-dap" style="IBUITableViewCellStyleDefault" id="M0f-fb-hhd">
-                                <rect key="frame" x="0.0" y="251" width="320" height="90"/>
+                                <rect key="frame" x="0.0" y="382" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M0f-fb-hhd" id="syr-gI-6iS">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
@@ -602,7 +642,7 @@
                                 <color key="backgroundColor" red="0.1450980392" green="0.14901960780000001" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoRunningEventsCell" textLabel="D7P-LS-i3k" style="IBUITableViewCellStyleDefault" id="pUU-DW-GnA">
-                                <rect key="frame" x="0.0" y="341" width="320" height="90"/>
+                                <rect key="frame" x="0.0" y="472" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pUU-DW-GnA" id="83b-cm-vga">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
@@ -621,7 +661,7 @@
                                 <color key="backgroundColor" red="0.1450980392" green="0.14901960780000001" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoUpcomingEventsCell" textLabel="LAq-aj-xo3" style="IBUITableViewCellStyleDefault" id="0nG-jT-YEb" userLabel="NoUpcomingEventsCell">
-                                <rect key="frame" x="0.0" y="431" width="320" height="90"/>
+                                <rect key="frame" x="0.0" y="562" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0nG-jT-YEb" id="Vf3-Td-aSk">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
@@ -668,6 +708,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qwK-rU-fqC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1676.25" y="-5729.5774647887329"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="pI1-5R-Azm">
+            <objects>
+                <viewController id="0P0-Ze-yVl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4BC-oz-hNg"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZFa-jC-Z03"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9vp-Tv-KxZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FT2-KM-pe6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2736" y="-6425"/>
         </scene>
         <!--Announcement Detail-->
         <scene sceneID="MVt-g1-TGT">
