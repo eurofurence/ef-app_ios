@@ -16,8 +16,8 @@ class CapturingLoginController: LoginController {
         observers.append(observer)
     }
     
-    func notifyUserLoggedIn() {
-        observers.forEach({ $0.userDidLogin() })
+    func notifyUserLoggedIn(_ authenticationToken: String = "") {
+        observers.forEach({ $0.userDidLogin(authenticationToken: authenticationToken) })
     }
     
 }

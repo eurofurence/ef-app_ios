@@ -12,9 +12,11 @@ import Foundation
 class CapturingRemoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration {
 
     private(set) var capturedRemoteNotificationsDeviceToken: Data?
+    private(set) var capturedUserAuthenticationToken: String?
     private(set) var numberOfRegistrations = 0
-    func registerRemoteNotificationsDeviceToken(_ token: Data) {
+    func registerRemoteNotificationsDeviceToken(_ token: Data, userAuthenticationToken: String?) {
         capturedRemoteNotificationsDeviceToken = token
+        capturedUserAuthenticationToken = userAuthenticationToken
         numberOfRegistrations += 1
     }
     

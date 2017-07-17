@@ -8,9 +8,10 @@
 
 import Foundation
 
-struct EurofurenceApplication: LoginStateObserver {
+class EurofurenceApplication: LoginStateObserver {
 
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
+    private var registeredDeviceToken: Data?
 
     init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
          loginController: LoginController) {
@@ -19,11 +20,13 @@ struct EurofurenceApplication: LoginStateObserver {
     }
 
     func registerRemoteNotifications(deviceToken: Data) {
-        remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken)
+        registeredDeviceToken = deviceToken
+        remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken, userAuthenticationToken: nil)
     }
 
-    func userDidLogin() {
-        remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(Data())
+    func userDidLogin(authenticationToken: String) {
+        guard let registeredDeviceToken = registeredDeviceToken else { return }
+        remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(registeredDeviceToken, userAuthenticationToken: authenticationToken)
     }
 
 }

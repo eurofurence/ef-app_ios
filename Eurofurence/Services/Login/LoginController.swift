@@ -16,6 +16,6 @@ protocol LoginController {
 
 protocol LoginStateObserver {
 
-    func userDidLogin()
+    func userDidLogin(authenticationToken: String)
 
 }

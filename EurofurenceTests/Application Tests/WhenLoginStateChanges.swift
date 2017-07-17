@@ -22,4 +22,27 @@ class WhenLoginStateChanges: XCTestCase {
         XCTAssertEqual(2, capturingTokenRegistration.numberOfRegistrations)
     }
     
+    func testLoggingInShouldReregisterTheSamePushDeviceToken() {
+        let capturingLoginController = CapturingLoginController()
+        let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
+        let application = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration, loginController: capturingLoginController)
+        let deviceToken = "Token".data(using: .utf8)!
+        application.registerRemoteNotifications(deviceToken: deviceToken)
+        capturingLoginController.notifyUserLoggedIn()
+        
+        XCTAssertEqual(deviceToken, capturingTokenRegistration.capturedRemoteNotificationsDeviceToken)
+    }
+    
+    func testLoggingInShouldReregisterTheUserAuthenticationToken() {
+        let capturingLoginController = CapturingLoginController()
+        let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
+        let application = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration, loginController: capturingLoginController)
+        let deviceToken = Data()
+        application.registerRemoteNotifications(deviceToken: deviceToken)
+        let authenticationToken = "JWT Token"
+        capturingLoginController.notifyUserLoggedIn(authenticationToken)
+        
+        XCTAssertEqual(authenticationToken, capturingTokenRegistration.capturedUserAuthenticationToken)
+    }
+    
 }

@@ -17,7 +17,7 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
         var capturingFCMDeviceRegister: CapturingFCMDeviceRegistration
 
         func registerDeviceToken(deviceToken: Data = Data()) {
-            tokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken)
+            tokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken, userAuthenticationToken: nil)
         }
     }
 
