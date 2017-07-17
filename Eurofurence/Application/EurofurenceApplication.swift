@@ -12,6 +12,7 @@ class EurofurenceApplication: LoginStateObserver {
 
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
     private var registeredDeviceToken: Data?
+    private var userAuthenticationToken: String?
 
     init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
          loginController: LoginController) {
@@ -21,12 +22,16 @@ class EurofurenceApplication: LoginStateObserver {
 
     func registerRemoteNotifications(deviceToken: Data) {
         registeredDeviceToken = deviceToken
-        remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken, userAuthenticationToken: nil)
+        remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken,
+                                                                                    userAuthenticationToken: userAuthenticationToken)
     }
 
     func userDidLogin(authenticationToken: String) {
+        userAuthenticationToken = authenticationToken
         guard let registeredDeviceToken = registeredDeviceToken else { return }
-        remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(registeredDeviceToken, userAuthenticationToken: authenticationToken)
+
+        remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(registeredDeviceToken,
+                                                                                    userAuthenticationToken: authenticationToken)
     }
 
 }

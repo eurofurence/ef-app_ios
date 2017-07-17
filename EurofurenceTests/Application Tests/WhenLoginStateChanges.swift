@@ -45,4 +45,16 @@ class WhenLoginStateChanges: XCTestCase {
         XCTAssertEqual(authenticationToken, capturingTokenRegistration.capturedUserAuthenticationToken)
     }
     
+    func testBeingLoggedInOnLaunchShouldRegisterTheExistingTokenWhenPushTokenRegistrationOccurs() {
+        let authenticationToken = "JWT Token"
+        let capturingLoginController = CapturingLoginController()
+        let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
+        let application = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration, loginController: capturingLoginController)
+        capturingLoginController.notifyUserLoggedIn(authenticationToken)
+        let deviceToken = Data()
+        application.registerRemoteNotifications(deviceToken: deviceToken)
+        
+        XCTAssertEqual(authenticationToken, capturingTokenRegistration.capturedUserAuthenticationToken)
+    }
+    
 }
