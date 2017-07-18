@@ -24,6 +24,10 @@ class WhenLoginStateChanges: XCTestCase {
         func notifyUserLoggedIn(_ token: String = "", expires: Date = .distantFuture) {
             capturingLoginController.notifyUserLoggedIn(token, expires: expires)
         }
+        
+        func notifyUserLoggedOut() {
+            capturingLoginController.notifyUserLoggedOut()
+        }
     }
     
     private func buildTestCase(currentDate: Date = Date(), persistedCredential: LoginCredential? = nil) -> Context {
@@ -119,6 +123,18 @@ class WhenLoginStateChanges: XCTestCase {
         context.registerRemoteNotifications()
         
         XCTAssertNil(context.capturingTokenRegistration.capturedUserAuthenticationToken)
+    }
+    
+    func testWhenTheUserLogsOutThePersistedCredentialIsDeleted() {
+        let context = buildTestCase()
+        context.notifyUserLoggedOut()
+        
+        XCTAssertTrue(context.capturingLoginCredentialsStore.didDeletePersistedToken)
+    }
+    
+    func testThePersistedTokenIsNotDeletedUntilTheUserActuallyLogsOut() {
+        let context = buildTestCase()
+        XCTAssertFalse(context.capturingLoginCredentialsStore.didDeletePersistedToken)
     }
     
 }

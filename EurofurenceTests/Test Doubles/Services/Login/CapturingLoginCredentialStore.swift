@@ -22,4 +22,9 @@ class CapturingLoginCredentialStore: LoginCredentialStore {
         capturedCredential = loginCredential
     }
     
+    private(set) var didDeletePersistedToken = false
+    func deletePersistedToken() {
+        didDeletePersistedToken = true
+    }
+    
 }

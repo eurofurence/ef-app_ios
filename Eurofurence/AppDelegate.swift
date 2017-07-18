@@ -45,6 +45,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             func store(_ loginCredential: LoginCredential) {
 
             }
+
+            func deletePersistedToken() {
+
+            }
         }
 
         app = EurofurenceApplication(remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,

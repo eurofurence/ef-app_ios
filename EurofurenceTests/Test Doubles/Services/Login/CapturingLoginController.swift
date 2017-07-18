@@ -21,4 +21,8 @@ class CapturingLoginController: LoginController {
         observers.forEach({ $0.userDidLogin(credential: credential) })
     }
     
+    func notifyUserLoggedOut() {
+        observers.forEach({ $0.userDidLogout() })
+    }
+    
 }

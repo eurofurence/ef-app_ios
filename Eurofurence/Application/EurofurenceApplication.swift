@@ -50,6 +50,10 @@ class EurofurenceApplication: LoginStateObserver {
                                                                                     userAuthenticationToken: userAuthenticationToken)
     }
 
+    func userDidLogout() {
+        loginCredentialStore.deletePersistedToken()
+    }
+
     private func isCredentialValid(_ credential: LoginCredential) -> Bool {
         return clock.currentDate.compare(credential.tokenExpiryDate) == .orderedAscending
     }

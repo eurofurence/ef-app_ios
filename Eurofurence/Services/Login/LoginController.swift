@@ -24,5 +24,6 @@ struct LoginCredential {
 protocol LoginStateObserver {
 
     func userDidLogin(credential: LoginCredential)
+    func userDidLogout()
 
 }
