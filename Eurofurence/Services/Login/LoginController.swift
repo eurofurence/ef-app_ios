@@ -14,10 +14,14 @@ protocol LoginController {
 
 }
 
-struct LoginCredential {
+struct LoginCredential: Equatable {
 
     var authenticationToken: String
     var tokenExpiryDate: Date
+
+    static func ==(lhs: LoginCredential, rhs: LoginCredential) -> Bool {
+        return lhs.authenticationToken == rhs.authenticationToken && lhs.tokenExpiryDate == rhs.tokenExpiryDate
+    }
 
 }
 

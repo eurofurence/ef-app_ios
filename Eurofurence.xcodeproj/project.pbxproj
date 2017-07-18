@@ -190,6 +190,8 @@
 		CAD7804E1F1D5227002A8333 /* SystemClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7804D1F1D5227002A8333 /* SystemClock.swift */; };
 		CAD780501F1E2D13002A8333 /* LoginCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7804F1F1E2D13002A8333 /* LoginCredentialStore.swift */; };
 		CAD780521F1E2D2E002A8333 /* CapturingLoginCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780511F1E2D2E002A8333 /* CapturingLoginCredentialStore.swift */; };
+		CAD7805A1F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780591F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift */; };
+		CAD7805D1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7805C1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift */; };
 		D6F3D0434C71907BD410190E /* ImageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D64B03CB7EFAF70CC756 /* ImageServiceProtocol.swift */; };
 		D6F3D13186949132FE4694AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6F3D756F99A68B2DC5B7359 /* Main.storyboard */; };
 		D6F3D13A59E359E69EA66D7E /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D7AF46BAD0F1F9918A76 /* MenuTableViewCell.swift */; };
@@ -434,6 +436,8 @@
 		CAD7804D1F1D5227002A8333 /* SystemClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SystemClock.swift; path = Clock/SystemClock.swift; sourceTree = "<group>"; };
 		CAD7804F1F1E2D13002A8333 /* LoginCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginCredentialStore.swift; path = Login/LoginCredentialStore.swift; sourceTree = "<group>"; };
 		CAD780511F1E2D2E002A8333 /* CapturingLoginCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLoginCredentialStore.swift; path = "Test Doubles/Services/Login/CapturingLoginCredentialStore.swift"; sourceTree = "<group>"; };
+		CAD780591F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainLoginCredentialStore.swift; path = Login/KeychainLoginCredentialStore.swift; sourceTree = "<group>"; };
+		CAD7805C1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainLoginCredentialStoreTests.swift; path = "Services Tests/Login/KeychainLoginCredentialStoreTests.swift"; sourceTree = "<group>"; };
 		D6F3D0A32DC83843688B347C /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		D6F3D15DBA1AA6254F83C20A /* DealersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealersTableViewCell.swift; sourceTree = "<group>"; };
 		D6F3D1CE9C98163AA2B6DF7D /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
@@ -869,6 +873,7 @@
 		78FE77D41F1B9F8A00E9A0BE /* Services Tests */ = {
 			isa = PBXGroup;
 			children = (
+				CAD7805B1F1E8EA2002A8333 /* Login */,
 				78FE77D51F1B9F9200E9A0BE /* HTTP */,
 			);
 			name = "Services Tests";
@@ -1114,6 +1119,7 @@
 			children = (
 				CAD780421F1D4CA3002A8333 /* LoginController.swift */,
 				CAD7804F1F1E2D13002A8333 /* LoginCredentialStore.swift */,
+				CAD780591F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -1142,6 +1148,14 @@
 				CAD7804D1F1D5227002A8333 /* SystemClock.swift */,
 			);
 			name = Clock;
+			sourceTree = "<group>";
+		};
+		CAD7805B1F1E8EA2002A8333 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CAD7805C1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		D6F3D0327856D0D0294EF5E6 /* Services */ = {
@@ -1613,6 +1627,7 @@
 				9ACF99971EC858B2006FC958 /* Map.swift in Sources */,
 				7820A6DD1F13F544004C0FB5 /* PresentationAssets.swift in Sources */,
 				6EEC6DA51F1BFC7700205F2D /* AppVersionProviding.swift in Sources */,
+				CAD7805A1F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift in Sources */,
 				78567B3F1F1016B000EBA31D /* TabViewController.swift in Sources */,
 				9ACF99981EC858B2006FC958 /* MapEntry.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
@@ -1699,6 +1714,7 @@
 				78455B491F1177AD005BE2D7 /* CapturingTutorialRouter.swift in Sources */,
 				78C86D721F12AACA003A20E6 /* WhenTheSplashScreenAppears.swift in Sources */,
 				6EF96CDB1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift in Sources */,
+				CAD7805D1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift in Sources */,
 				78455B521F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift in Sources */,
 				7820A7011F16C0F0004C0FB5 /* CapturingWitnessedSystemPushPermissionsRequest.swift in Sources */,
 				78C86D7B1F12B2A2003A20E6 /* SplashViewControllerTests.swift in Sources */,
