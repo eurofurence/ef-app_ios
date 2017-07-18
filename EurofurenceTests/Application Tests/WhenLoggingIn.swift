@@ -13,7 +13,7 @@ class WhenLoggingIn: XCTestCase {
     
     func testTheLoginEndpointShouldReceievePOSTRequest() {
         let context = ApplicationTestBuilder().build()
-        context.application.login(registrationNumber: 0, username: "", password: "")
+        context.login()
         
         XCTAssertEqual("https://app.eurofurence.org/api/v2/Tokens/RegSys", context.jsonPoster.postedURL)
     }
@@ -26,7 +26,7 @@ class WhenLoggingIn: XCTestCase {
     func testTheLoginRequestShouldReceieveJSONPayloadWithRegNo() {
         let context = ApplicationTestBuilder().build()
         let registrationNumber = 42
-        context.application.login(registrationNumber: registrationNumber, username: "", password: "")
+        context.login(registrationNumber: registrationNumber)
         
         XCTAssertEqual(registrationNumber, context.jsonPoster.postedJSONValue(forKey: "RegNo"))
     }
@@ -34,7 +34,7 @@ class WhenLoggingIn: XCTestCase {
     func testTheLoginRequestShouldReceieveJSONPayloadWithUsername() {
         let context = ApplicationTestBuilder().build()
         let username = "Some awesome guy"
-        context.application.login(registrationNumber: 0, username: username, password: "")
+        context.login(username: username)
         
         XCTAssertEqual(username, context.jsonPoster.postedJSONValue(forKey: "Username"))
     }
@@ -42,7 +42,7 @@ class WhenLoggingIn: XCTestCase {
     func testTheLoginRequestShouldReceieveJSONPayloadWithPassword() {
         let context = ApplicationTestBuilder().build()
         let password = "It's a secrent"
-        context.application.login(registrationNumber: 0, username: "", password: password)
+        context.login(password: password)
         
         XCTAssertEqual(password, context.jsonPoster.postedJSONValue(forKey: "Password"))
     }

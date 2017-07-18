@@ -182,6 +182,7 @@
 		A034379A14212C5E996E6321 /* Pods_Eurofurence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
 		CA2B4FA61F1EA1B300F007E1 /* ApplicationTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */; };
+		CA2B4FA81F1EA72A00F007E1 /* LoginArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */; };
 		CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780361F1D415A002A8333 /* MessagesViewController.swift */; };
 		CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780381F1D41C4002A8333 /* LoginViewController.swift */; };
 		CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */; };
@@ -430,6 +431,7 @@
 		B4939A463603D9F022E19825 /* Pods-EurofurenceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenLoggingIn.swift; path = "Application Tests/WhenLoggingIn.swift"; sourceTree = "<group>"; };
 		CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationTestBuilder.swift; path = "Application Tests/ApplicationTestBuilder.swift"; sourceTree = "<group>"; };
+		CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginArguments.swift; path = Login/LoginArguments.swift; sourceTree = "<group>"; };
 		CAD780361F1D415A002A8333 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CAD780381F1D41C4002A8333 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenLoginStateChanges.swift; path = "Application Tests/WhenLoginStateChanges.swift"; sourceTree = "<group>"; };
@@ -1126,6 +1128,7 @@
 				CAD780421F1D4CA3002A8333 /* LoginController.swift */,
 				CAD7804F1F1E2D13002A8333 /* LoginCredentialStore.swift */,
 				CAD780591F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift */,
+				CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -1680,6 +1683,7 @@
 				D6F3D275FF81A313B9213277 /* AnnouncementCell.swift in Sources */,
 				D6F3DAD590C051C8D0060172 /* EventViewController.swift in Sources */,
 				D6F3D62A784F07D9C7A84DC8 /* KnowledgeEntryViewController.swift in Sources */,
+				CA2B4FA81F1EA72A00F007E1 /* LoginArguments.swift in Sources */,
 				78F555991F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift in Sources */,
 				9A0F87E51F1BAD2C00FF294B /* LocalNotificationStore.swift in Sources */,
 				D6F3D2440B74E17B9A008DE0 /* NewsViewController.swift in Sources */,

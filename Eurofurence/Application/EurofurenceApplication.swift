@@ -35,11 +35,11 @@ class EurofurenceApplication: LoginStateObserver {
         }
     }
 
-    func login(registrationNumber: Int, username: String, password: String) {
+    func login(_ arguments: LoginArguments) {
         do {
-            let postArguments: [String : Any] = ["RegNo": registrationNumber,
-                                                 "Username": username,
-                                                 "Password": password]
+            let postArguments: [String : Any] = ["RegNo": arguments.registrationNumber,
+                                                 "Username": arguments.username,
+                                                 "Password": arguments.password]
             let jsonData = try JSONSerialization.data(withJSONObject: postArguments, options: [])
             jsonPoster.post("https://app.eurofurence.org/api/v2/Tokens/RegSys", body: jsonData)
         } catch {

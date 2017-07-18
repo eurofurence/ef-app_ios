@@ -23,6 +23,11 @@ class ApplicationTestBuilder {
             application.registerRemoteNotifications(deviceToken: deviceToken)
         }
         
+        func login(registrationNumber: Int = 0, username: String = "", password: String = "") {
+            let arguments = LoginArguments(registrationNumber: registrationNumber, username: username, password: password)
+            application.login(arguments)
+        }
+        
         func notifyUserLoggedIn(_ token: String = "", expires: Date = .distantFuture) {
             capturingLoginController.notifyUserLoggedIn(token, expires: expires)
         }
