@@ -15,6 +15,7 @@ class WhenLoginStateChanges: XCTestCase {
         var application: EurofurenceApplication
         var capturingLoginController: CapturingLoginController
         var capturingTokenRegistration: CapturingRemoteNotificationsTokenRegistration
+        var capturingLoginCredentialsStore: CapturingLoginCredentialStore
         
         func registerRemoteNotifications(_ deviceToken: Data = Data()) {
             application.registerRemoteNotifications(deviceToken: deviceToken)
@@ -28,12 +29,15 @@ class WhenLoginStateChanges: XCTestCase {
     private func buildTestCase(currentDate: Date = Date()) -> Context {
         let capturingLoginController = CapturingLoginController()
         let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
+        let capturingLoginCredentialStore = CapturingLoginCredentialStore()
         let application = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration,
                                                  loginController: capturingLoginController,
-                                                 clock: StubClock(currentDate: currentDate))
+                                                 clock: StubClock(currentDate: currentDate),
+                                                 loginCredentialStore: capturingLoginCredentialStore)
         return Context(application: application,
                        capturingLoginController: capturingLoginController,
-                       capturingTokenRegistration: capturingTokenRegistration)
+                       capturingTokenRegistration: capturingTokenRegistration,
+                       capturingLoginCredentialsStore: capturingLoginCredentialStore)
     }
     
     func testLoggingInShouldReregisterPushDeviceTokenAfterOneWasRegistered() {
@@ -81,6 +85,14 @@ class WhenLoginStateChanges: XCTestCase {
         context.registerRemoteNotifications()
         
         XCTAssertNotEqual(authenticationToken, context.capturingTokenRegistration.capturedUserAuthenticationToken)
+    }
+    
+    func testLogginInShouldStoreTheCredential() {
+        let authenticationToken = "JWT Token"
+        let context = buildTestCase()
+        context.notifyUserLoggedIn(authenticationToken)
+        
+        XCTAssertEqual(authenticationToken, context.capturingLoginCredentialsStore.capturedCredential?.authenticationToken)
     }
     
 }

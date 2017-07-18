@@ -12,15 +12,19 @@ class EurofurenceApplication: LoginStateObserver {
 
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
     private var clock: Clock
+    private var loginCredentialStore: LoginCredentialStore
     private var userAuthenticationTokenValid = false
     private var registeredDeviceToken: Data?
     private var userAuthenticationToken: String?
 
     init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
          loginController: LoginController,
-         clock: Clock) {
+         clock: Clock,
+         loginCredentialStore: LoginCredentialStore) {
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
         self.clock = clock
+        self.loginCredentialStore = loginCredentialStore
+
         loginController.add(self)
     }
 
@@ -31,6 +35,7 @@ class EurofurenceApplication: LoginStateObserver {
     }
 
     func userDidLogin(credential: LoginCredential) {
+        loginCredentialStore.store(credential)
         if isCredentialValid(credential) {
             userAuthenticationToken = credential.authenticationToken
         }

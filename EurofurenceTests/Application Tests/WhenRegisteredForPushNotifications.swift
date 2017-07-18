@@ -15,7 +15,8 @@ class WhenRegisteredForPushNotifications: XCTestCase {
         let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
         let application = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration,
                                                  loginController: CapturingLoginController(),
-                                                 clock: StubClock())
+                                                 clock: StubClock(),
+                                                 loginCredentialStore: CapturingLoginCredentialStore())
         let deviceToken = Data()
         application.registerRemoteNotifications(deviceToken: deviceToken)
 

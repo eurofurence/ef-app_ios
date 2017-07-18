@@ -39,9 +39,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
+        struct DummyLoginCredentialStore: LoginCredentialStore {
+            func store(_ loginCredential: LoginCredential) {
+
+            }
+        }
+
         app = EurofurenceApplication(remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
                                      loginController: DummyLoginController(),
-                                     clock: SystemClock())
+                                     clock: SystemClock(),
+                                     loginCredentialStore: DummyLoginCredentialStore())
 
         DataStoreRefreshController.shared.add(ApplicationActivityIndicatorRefreshDelegate())
         PresentationTier.assemble(window: window!)
