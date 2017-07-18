@@ -35,8 +35,16 @@ class EurofurenceApplication: LoginStateObserver {
         }
     }
 
-    func login() {
-        jsonPoster.post("https://app.eurofurence.org/api/v2/Tokens/RegSys", body: Data())
+    func login(registrationNumber: Int, username: String, password: String) {
+        do {
+            let postArguments: [String : Any] = ["RegNo": registrationNumber,
+                                                 "Username": username,
+                                                 "Password": password]
+            let jsonData = try JSONSerialization.data(withJSONObject: postArguments, options: [])
+            jsonPoster.post("https://app.eurofurence.org/api/v2/Tokens/RegSys", body: jsonData)
+        } catch {
+            print("Unable to perform login due to error: \(error)")
+        }
     }
 
     func registerRemoteNotifications(deviceToken: Data) {
