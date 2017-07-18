@@ -133,9 +133,8 @@ class DealerTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "DealerTableToDetailViewSegue" {
-            if let destinationVC = segue.destination as? DealerViewController {
-                let indexPath = self.tableView.indexPathForSelectedRow!
-                destinationVC.dealer = self.dealersByLetter[sortedKeys[(indexPath as NSIndexPath).section]]![(indexPath as NSIndexPath).row]
+            if let destinationVC = segue.destination as? DealerViewController, let cell = sender as? DealersTableViewCell, let dealer = cell.dealer {
+                destinationVC.dealer = dealer
             }
         }
     }

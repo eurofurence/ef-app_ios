@@ -311,7 +311,10 @@
                                     <outlet property="displayNameDealerLabel" destination="eg6-wB-97m" id="J08-j3-haD"/>
                                     <outlet property="shortDescriptionDealerLabel" destination="1M2-oq-DH1" id="T7L-LC-QlL"/>
                                     <outlet property="subnameDealerLabel" destination="Cko-EE-V9P" id="WcM-se-dvd"/>
-                                    <segue destination="vW3-to-hGL" kind="show" identifier="DealerTableToDetailViewSegue" id="JLI-w3-u9Q"/>
+                                    <segue destination="vW3-to-hGL" kind="show" identifier="DealerTableToDetailViewSegue" id="JLI-w3-u9Q">
+                                        <segue key="commit" inheritsFrom="parent" id="HL7-BP-nJI"/>
+                                        <segue key="preview" inheritsFrom="commit" id="3GE-Ku-lp9"/>
+                                    </segue>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
