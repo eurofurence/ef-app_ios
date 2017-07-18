@@ -37,7 +37,8 @@ class WhenLoginStateChanges: XCTestCase {
         let application = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration,
                                                  loginController: capturingLoginController,
                                                  clock: StubClock(currentDate: currentDate),
-                                                 loginCredentialStore: capturingLoginCredentialStore)
+                                                 loginCredentialStore: capturingLoginCredentialStore,
+                                                 jsonPoster: CapturingJSONPoster())
         return Context(application: application,
                        capturingLoginController: capturingLoginController,
                        capturingTokenRegistration: capturingTokenRegistration,

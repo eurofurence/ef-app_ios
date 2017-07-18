@@ -42,7 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         app = EurofurenceApplication(remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
                                      loginController: DummyLoginController(),
                                      clock: SystemClock(),
-                                     loginCredentialStore: KeychainLoginCredentialStore())
+                                     loginCredentialStore: KeychainLoginCredentialStore(),
+                                     jsonPoster: URLSessionJSONPoster())
 
         DataStoreRefreshController.shared.add(ApplicationActivityIndicatorRefreshDelegate())
         PresentationTier.assemble(window: window!)

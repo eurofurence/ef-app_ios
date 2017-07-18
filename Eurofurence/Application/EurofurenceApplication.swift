@@ -13,6 +13,7 @@ class EurofurenceApplication: LoginStateObserver {
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
     private var clock: Clock
     private var loginCredentialStore: LoginCredentialStore
+    private var jsonPoster: JSONPoster
     private var userAuthenticationTokenValid = false
     private var registeredDeviceToken: Data?
     private var userAuthenticationToken: String?
@@ -20,16 +21,22 @@ class EurofurenceApplication: LoginStateObserver {
     init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
          loginController: LoginController,
          clock: Clock,
-         loginCredentialStore: LoginCredentialStore) {
+         loginCredentialStore: LoginCredentialStore,
+         jsonPoster: JSONPoster) {
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
         self.clock = clock
         self.loginCredentialStore = loginCredentialStore
+        self.jsonPoster = jsonPoster
 
         loginController.add(self)
 
         if let credential = loginCredentialStore.persistedCredential, isCredentialValid(credential) {
             userAuthenticationToken = credential.authenticationToken
         }
+    }
+
+    func login() {
+        jsonPoster.post("https://app.eurofurence.org/api/v2/Tokens/RegSys", body: Data())
     }
 
     func registerRemoteNotifications(deviceToken: Data) {
