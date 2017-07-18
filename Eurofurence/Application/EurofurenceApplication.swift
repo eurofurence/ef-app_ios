@@ -26,23 +26,23 @@ class EurofurenceApplication: LoginStateObserver {
 
     func registerRemoteNotifications(deviceToken: Data) {
         registeredDeviceToken = deviceToken
-        var token: String? = nil
-        if userAuthenticationTokenValid {
-            token = userAuthenticationToken
-        }
-
         remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken,
-                                                                                    userAuthenticationToken: token)
+                                                                                    userAuthenticationToken: userAuthenticationToken)
     }
 
     func userDidLogin(credential: LoginCredential) {
-        userAuthenticationToken = credential.authenticationToken
-        userAuthenticationTokenValid = clock.currentDate.timeIntervalSince1970 < credential.tokenExpiryDate.timeIntervalSince1970
+        if isCredentialValid(credential) {
+            userAuthenticationToken = credential.authenticationToken
+        }
 
         guard let registeredDeviceToken = registeredDeviceToken else { return }
 
         remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(registeredDeviceToken,
                                                                                     userAuthenticationToken: userAuthenticationToken)
+    }
+
+    private func isCredentialValid(_ credential: LoginCredential) -> Bool {
+        return clock.currentDate.compare(credential.tokenExpiryDate) == .orderedAscending
     }
 
 }
