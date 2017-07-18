@@ -22,12 +22,12 @@ class EventFavoritesService {
 		set(notifications) {
 			localNotificationStore.storeLocalNotifications(notifications)
 			_localNotifications = notifications
-			print("There are currently \(_localNotifications.count) scheduled favorite event notifications.")
 		}
 	}
 
 	private let localNotificationStore: LocalNotificationStore = KeyedLocalNotificationStore(name: "EventFavorites")
 	private let timeService: TimeService = try! ServiceResolver.container.resolve()
+	private let eventNotificationPreferences: EventNotificationPreferences = UserDefaultsEventNotificationPreferences.instance
 
 	init(dataContext: DataContextProtocol) {
 		self.dataContext = dataContext
@@ -44,6 +44,10 @@ class EventFavoritesService {
 			[unowned self] (offset) in
 			self.updateLocalNotifications(self.dataContext.EventFavorites.value, offset: offset)
 		})
+
+		disposables += eventNotificationPreferences.signal.observe(on: scheduler).observeValues({ _, _ in
+			self.updateLocalNotifications(self.dataContext.EventFavorites.value, offset: self.timeService.offset.value)
+		})
 	}
 
 	private func observe(_ eventFavorites: [EventFavorite]) {
@@ -51,25 +55,26 @@ class EventFavoritesService {
 		eventFavoriteDisposbales = CompositeDisposable()
 		eventFavorites.forEach({ (eventFavorite) in
 			eventFavoriteDisposbales += eventFavorite.IsFavorite.signal.observe(on: scheduler).observeValues({ [unowned self] value in
-				guard let event = eventFavorite.Event else { return }
+				self.eventFavoriteDisposbales += self.dataContext.saveToStore(.Events).start()
+				guard let event = eventFavorite.Event, self.eventNotificationPreferences.notificationsEnabled else { return }
 				if value && event.StartDateTimeUtc > self.timeService.currentTime.value {
 					self.scheduleLocalNotification(for: event, offset: self.timeService.offset.value)
 				} else {
 					self.cancelLocalNotifications(for: event)
 				}
-				self.eventFavoriteDisposbales += self.dataContext.saveToStore(.Events).start()
 			})
 		})
 	}
 
 	private func createLocalNotificaton(for event: Event, offset: TimeInterval = 0.0) -> UILocalNotification {
-		let fireDate = event.StartDateTimeUtc.addingTimeInterval(-1 * offset)
-		let timeDelta = fireDate.timeIntervalSince(Date().addingTimeInterval(offset))
+		let offsetDate = event.StartDateTimeUtc.addingTimeInterval(-1 * offset)
+		let fireDate = offsetDate.addingTimeInterval(-1 * eventNotificationPreferences.notificationAheadInterval)
+		let timeDelta = offsetDate.timeIntervalSince(Date())
 
 		let localNotification = UILocalNotification()
 		localNotification.fireDate = fireDate
 		localNotification.alertAction = "Upcoming Favorite Event"
-		localNotification.alertBody = "\(event.Title) will take place \(timeDelta.minutes >= 1.0 ? "in \(timeDelta.dhmString)" : "now") at \(event.ConferenceRoom?.Name ?? "somewhere")"
+		localNotification.alertBody = "\(event.Title) will take place \(timeDelta.minutes >= 1.0 ? "in \(timeDelta.dhmString)" : "now") at \(event.ConferenceRoom?.Name ?? "someplace")"
 		localNotification.userInfo = ["Event.Id": event.Id, "Event.LastChangeDateTimeUtc": event.LastChangeDateTimeUtc]
 
 		return localNotification
@@ -102,6 +107,13 @@ class EventFavoritesService {
 		localNotifications = remainingNotifications
 	}
 
+	func cancelAllLocalNotifications() {
+		localNotifications.forEach { (notification) in
+			UIApplication.shared.cancelLocalNotification(notification)
+		}
+		localNotifications = []
+	}
+
 	/// Cancels all notifications of the EventFavoritesService category whose
 	/// events have been removed and reschedules those with changed events.
 	/// Note: This will also schedule new notifications for previously
@@ -111,13 +123,20 @@ class EventFavoritesService {
 	///     - eventFavorites: array based on which updates should be performed
 	///     - offset: interval the app is currently offset from actual local time
 	func updateLocalNotifications(_ eventFavorites: [EventFavorite], offset: TimeInterval = 0.0) {
+		guard eventNotificationPreferences.notificationsEnabled else {
+			cancelAllLocalNotifications()
+			return
+		}
+
 		var updatedNotifications: [UILocalNotification] = []
-		let currentTime = Date(timeIntervalSinceNow: offset)
+		// Adjusted for offset and ahead interval to filter by Event.StartDateTimeUtc
+		let currentEventStartTime = Date(timeIntervalSinceNow: offset)
+			.addingTimeInterval(eventNotificationPreferences.notificationAheadInterval)
 
 		localNotifications.forEach { notification in
 			if let eventId = notification.userInfo?["Event.Id"] as? String,
 				let eventFavorite = eventFavorites.first(where: { $0.EventId == eventId }),
-				let event = eventFavorite.Event, event.StartDateTimeUtc > currentTime {
+				let event = eventFavorite.Event, event.StartDateTimeUtc > currentEventStartTime {
 
 				UIApplication.shared.cancelLocalNotification(notification)
 				let updatedNotification = createLocalNotificaton(for: event, offset: offset)
@@ -130,7 +149,7 @@ class EventFavoritesService {
 
 		eventFavorites.forEach { (eventFavorite) in
 			if eventFavorite.IsFavorite.value, let event = eventFavorite.Event,
-				event.StartDateTimeUtc > currentTime,
+				event.StartDateTimeUtc > currentEventStartTime,
 				!updatedNotifications.contains(where: { $0.userInfo?["Event.Id"] as? String == eventFavorite.EventId }) {
 
 				let localNotification = createLocalNotificaton(for: event, offset: offset)

@@ -20,6 +20,7 @@ class SettingsTableViewController: FormViewController {
 
         makeNetworkSection()
         makePushNotificationsSection()
+		makeFavoriteEventsSection()
         makeDataStorageSection()
         makeExperimentalFeaturesSection()
         #if DEBUG
@@ -112,32 +113,59 @@ class SettingsTableViewController: FormViewController {
                 }.cellUpdate { cell, _ in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         }
-    }
+	}
 
-    private func makePushNotificationsSection() {
-        let defaults = UserDefaults.standard
-        let witnessedSystemPushRequest = UserDefaultsWitnessedSystemPushPermissionsRequest(userDefaults: defaults)
-        guard !witnessedSystemPushRequest.witnessedSystemPushPermissionsRequest else { return }
+	private func makePushNotificationsSection() {
+		let defaults = UserDefaults.standard
+		let witnessedSystemPushRequest = UserDefaultsWitnessedSystemPushPermissionsRequest(userDefaults: defaults)
+		guard !witnessedSystemPushRequest.witnessedSystemPushPermissionsRequest else { return }
 
-        let section = Section("Push Notifications")
-        section <<< ButtonRow {
-                $0.title = "Enable Push Notifications"
-            }.onCellSelection({ (_, _) in
-                if witnessedSystemPushRequest.witnessedSystemPushPermissionsRequest {
-                    let alert = UIAlertController(title: "Use Settings",
-                                                  message: "Enable or disable Eurofurence's push notification permissions in Settings",
-                                                  preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-                    self.present(alert, animated: true)
-                } else {
-                    ApplicationPushPermissionsRequesting().requestPushPermissions { }
-                    witnessedSystemPushRequest.markWitnessedSystemPushPermissionsRequest()
-                    defaults.synchronize()
-                }
-            })
+		let section = Section("Push Notifications")
+		section <<< ButtonRow {
+			$0.title = "Enable Push Notifications"
+			}.onCellSelection({ (_, _) in
+				if witnessedSystemPushRequest.witnessedSystemPushPermissionsRequest {
+					let alert = UIAlertController(title: "Use Settings",
+					                              message: "Enable or disable Eurofurence's push notification permissions in Settings",
+					                              preferredStyle: .alert)
+					alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+					self.present(alert, animated: true)
+				} else {
+					ApplicationPushPermissionsRequesting().requestPushPermissions { }
+					witnessedSystemPushRequest.markWitnessedSystemPushPermissionsRequest()
+					defaults.synchronize()
+				}
+			})
 
-        form +++ section
-    }
+		form +++ section
+	}
+
+	private func makeFavoriteEventsSection() {
+		let eventNotificationPreferences = UserDefaultsEventNotificationPreferences.instance
+
+		form +++ Section("Favorite Events")
+			<<< SwitchRow("FavoriteEventsNotify") {
+				$0.title = "Enable Favorite Event Notifications"
+				$0.value = eventNotificationPreferences.notificationsEnabled
+				}.onChange({ (row) in
+					if let value = row.value {
+						eventNotificationPreferences.setNotificationsEnabled(value)
+					}
+				})
+
+			<<< TimeIntervalRow("FavoriteEventsNotifyAheadInterval") {
+				$0.title = "Notify Ahead of Favorite Events"
+				$0.noValueDisplayText = "on Start"
+				$0.value = eventNotificationPreferences.notificationAheadInterval
+				$0.hidden = Condition.function(["FavoriteEventsNotify"], { (form) -> Bool in
+					return !((form.rowBy(tag: "FavoriteEventsNotify") as? SwitchRow)?.value ?? false)
+				})
+				}.onChange({ (row) in
+					if let timeInterval = row.value {
+						eventNotificationPreferences.setNotificationAheadInterval(timeInterval)
+					}
+				})
+	}
 
     private func makeDataStorageSection() {
         form +++ Section("Data Storage")
@@ -261,6 +289,7 @@ class SettingsTableViewController: FormViewController {
         form +++ Section(header:"Debugging", footer: "These settings are intended for debugging purposes only and may cause instability or unexpected behaviour if changed!")
             <<< TimeIntervalRow("TimeOffset") { row in
                 row.title = "Time Offset"
+				row.noValueDisplayText = "none"
                 row.value = UserSettings.DebugTimeOffset.currentValue()
                 }.onChange { row in
                     if let value = row.value {
