@@ -11,67 +11,76 @@ import XCTest
 
 class WhenLoginStateChanges: XCTestCase {
     
-    func testLoggingInShouldReregisterPushDeviceTokenAfterOneWasRegistered() {
+    struct Context {
+        var application: EurofurenceApplication
+        var capturingLoginController: CapturingLoginController
+        var capturingTokenRegistration: CapturingRemoteNotificationsTokenRegistration
+        
+        func registerRemoteNotifications(_ deviceToken: Data = Data()) {
+            application.registerRemoteNotifications(deviceToken: deviceToken)
+        }
+        
+        func notifyUserLoggedIn(_ token: String = "", expires: Date = .distantFuture) {
+            capturingLoginController.notifyUserLoggedIn(token, expires: expires)
+        }
+    }
+    
+    private func buildTestCase(currentDate: Date = Date()) -> Context {
         let capturingLoginController = CapturingLoginController()
         let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
-        let application = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration, loginController: capturingLoginController, clock: StubClock())
-        let deviceToken = Data()
-        application.registerRemoteNotifications(deviceToken: deviceToken)
-        capturingLoginController.notifyUserLoggedIn()
+        let application = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration,
+                                                 loginController: capturingLoginController,
+                                                 clock: StubClock(currentDate: currentDate))
+        return Context(application: application,
+                       capturingLoginController: capturingLoginController,
+                       capturingTokenRegistration: capturingTokenRegistration)
+    }
+    
+    func testLoggingInShouldReregisterPushDeviceTokenAfterOneWasRegistered() {
+        let context = buildTestCase()
+        context.registerRemoteNotifications()
+        context.notifyUserLoggedIn()
         
-        XCTAssertEqual(2, capturingTokenRegistration.numberOfRegistrations)
+        XCTAssertEqual(2, context.capturingTokenRegistration.numberOfRegistrations)
     }
     
     func testLoggingInShouldReregisterTheSamePushDeviceToken() {
-        let capturingLoginController = CapturingLoginController()
-        let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
-        let application = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration, loginController: capturingLoginController, clock: StubClock())
+        let context = buildTestCase()
         let deviceToken = "Token".data(using: .utf8)!
-        application.registerRemoteNotifications(deviceToken: deviceToken)
-        capturingLoginController.notifyUserLoggedIn()
+        context.registerRemoteNotifications(deviceToken)
+        context.notifyUserLoggedIn()
         
-        XCTAssertEqual(deviceToken, capturingTokenRegistration.capturedRemoteNotificationsDeviceToken)
+        XCTAssertEqual(deviceToken, context.capturingTokenRegistration.capturedRemoteNotificationsDeviceToken)
     }
     
     func testLoggingInShouldReregisterTheUserAuthenticationToken() {
-        let capturingLoginController = CapturingLoginController()
-        let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
-        let application = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration, loginController: capturingLoginController, clock: StubClock())
-        let deviceToken = Data()
-        application.registerRemoteNotifications(deviceToken: deviceToken)
+        let context = buildTestCase()
+        context.registerRemoteNotifications()
         let authenticationToken = "JWT Token"
-        capturingLoginController.notifyUserLoggedIn(authenticationToken)
+        context.notifyUserLoggedIn(authenticationToken)
         
-        XCTAssertEqual(authenticationToken, capturingTokenRegistration.capturedUserAuthenticationToken)
+        XCTAssertEqual(authenticationToken, context.capturingTokenRegistration.capturedUserAuthenticationToken)
     }
     
     func testBeingLoggedInOnLaunchShouldRegisterTheExistingTokenWhenPushTokenRegistrationOccurs() {
         let authenticationToken = "JWT Token"
-        let capturingLoginController = CapturingLoginController()
-        let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
-        let application = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration, loginController: capturingLoginController, clock: StubClock())
-        capturingLoginController.notifyUserLoggedIn(authenticationToken)
+        let context = buildTestCase()
+        context.notifyUserLoggedIn(authenticationToken)
         let deviceToken = Data()
-        application.registerRemoteNotifications(deviceToken: deviceToken)
+        context.registerRemoteNotifications(deviceToken)
         
-        XCTAssertEqual(authenticationToken, capturingTokenRegistration.capturedUserAuthenticationToken)
+        XCTAssertEqual(authenticationToken, context.capturingTokenRegistration.capturedUserAuthenticationToken)
     }
     
     func testBeingLoggedInOnLaunchShouldNotRegisterTheExistingTokenWhenTheTokenExpired() {
         let authenticationToken = "JWT Token"
         let expirationDate = Date()
         let simulatedDate = expirationDate.addingTimeInterval(1)
-        let clock = StubClock(currentDate: simulatedDate)
-        let capturingLoginController = CapturingLoginController()
-        let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
-        let application = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration,
-                                                 loginController: capturingLoginController,
-                                                 clock: clock)
-        capturingLoginController.notifyUserLoggedIn(authenticationToken, expires: expirationDate)
-        let deviceToken = Data()
-        application.registerRemoteNotifications(deviceToken: deviceToken)
+        let context = buildTestCase(currentDate: simulatedDate)
+        context.notifyUserLoggedIn(authenticationToken, expires: expirationDate)
+        context.registerRemoteNotifications()
         
-        XCTAssertNotEqual(authenticationToken, capturingTokenRegistration.capturedUserAuthenticationToken)
+        XCTAssertNotEqual(authenticationToken, context.capturingTokenRegistration.capturedUserAuthenticationToken)
     }
     
 }
