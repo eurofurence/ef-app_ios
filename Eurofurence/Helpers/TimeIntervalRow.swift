@@ -119,7 +119,7 @@ public final class TimeIntervalRow: Row<TimeIntervalCell>, NoValueDisplayTextCon
 	required public init(tag: String?) {
 		super.init(tag: tag)
 		displayValueFor = { value in
-			guard let val = value else { return nil }
+			guard let val = value, val.minutes >= 1.0 else { return self.noValueDisplayText }
 			return val.dhmString
 		}
 	}
