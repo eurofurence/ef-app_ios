@@ -8,6 +8,8 @@
 
 protocol LoginCredentialStore {
 
+    var persistedCredential: LoginCredential? { get }
+
     func store(_ loginCredential: LoginCredential)
 
 }

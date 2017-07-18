@@ -40,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         struct DummyLoginCredentialStore: LoginCredentialStore {
+            var persistedCredential: LoginCredential?
+
             func store(_ loginCredential: LoginCredential) {
 
             }

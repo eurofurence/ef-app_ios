@@ -26,10 +26,10 @@ class WhenLoginStateChanges: XCTestCase {
         }
     }
     
-    private func buildTestCase(currentDate: Date = Date()) -> Context {
+    private func buildTestCase(currentDate: Date = Date(), persistedCredential: LoginCredential? = nil) -> Context {
         let capturingLoginController = CapturingLoginController()
         let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
-        let capturingLoginCredentialStore = CapturingLoginCredentialStore()
+        let capturingLoginCredentialStore = CapturingLoginCredentialStore(persistedCredential: persistedCredential)
         let application = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration,
                                                  loginController: capturingLoginController,
                                                  clock: StubClock(currentDate: currentDate),
@@ -101,6 +101,24 @@ class WhenLoginStateChanges: XCTestCase {
         context.notifyUserLoggedIn(authenticationToken, expires: .distantPast)
         
         XCTAssertNil(context.capturingLoginCredentialsStore.capturedCredential)
+    }
+    
+    func testLoggingInWhenWeHaveTokenStoredShouldUseTheTokenWhenPushTokenRegistrationOccurs() {
+        let authenticationToken = "JWT Token"
+        let existingCredential = LoginCredential(authenticationToken: authenticationToken, tokenExpiryDate: .distantFuture)
+        let context = buildTestCase(persistedCredential: existingCredential)
+        context.registerRemoteNotifications()
+        
+        XCTAssertEqual(authenticationToken, context.capturingTokenRegistration.capturedUserAuthenticationToken)
+    }
+    
+    func testLoggingInWhenWeHaveTokenThatHasExpiredShouldNotUseTheTokenWhenPushTokenRegistrationOccurs() {
+        let authenticationToken = "JWT Token"
+        let existingCredential = LoginCredential(authenticationToken: authenticationToken, tokenExpiryDate: .distantPast)
+        let context = buildTestCase(persistedCredential: existingCredential)
+        context.registerRemoteNotifications()
+        
+        XCTAssertNil(context.capturingTokenRegistration.capturedUserAuthenticationToken)
     }
     
 }

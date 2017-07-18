@@ -26,6 +26,10 @@ class EurofurenceApplication: LoginStateObserver {
         self.loginCredentialStore = loginCredentialStore
 
         loginController.add(self)
+
+        if let credential = loginCredentialStore.persistedCredential, isCredentialValid(credential) {
+            userAuthenticationToken = credential.authenticationToken
+        }
     }
 
     func registerRemoteNotifications(deviceToken: Data) {
