@@ -6,18 +6,20 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 class EventViewController: UIViewController {
-    @IBOutlet weak var eventTitleLabel: UILabel!
+	@IBOutlet weak var eventDescTextView: UITextView!
+	@IBOutlet weak var eventFavoriteLabel: UILabel!
+	@IBOutlet weak var eventHostLabel: UILabel!
+	@IBOutlet weak var eventImageHeightConstraint: NSLayoutConstraint!
+	@IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var eventLocationLabel: UILabel!
-    @IBOutlet weak var eventLocationIconImageView: UIImageView!
+    @IBOutlet weak var eventLocationIconLabel: UILabel!
     @IBOutlet weak var eventSubTitleLabel: UILabel!
-    @IBOutlet weak var eventStartTimeLabel: UILabel!
-    @IBOutlet weak var eventDurationLabel: UILabel!
-    @IBOutlet weak var eventHostLabel: UILabel!
-    @IBOutlet weak var eventDescTextView: UITextView!
-    @IBOutlet weak var eventImageHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var eventImageView: UIImageView!
+	@IBOutlet weak var eventStartTimeLabel: UILabel!
+	@IBOutlet weak var eventTitleLabel: UILabel!
+    @IBOutlet weak var eventTrackLabel: UILabel!
     var eventImageDefaultHeight = CGFloat(0.0)
     var singleTapLocation: UITapGestureRecognizer!
     var singleTapLocationIcon: UITapGestureRecognizer!
@@ -37,8 +39,8 @@ class EventViewController: UIViewController {
         eventLocationLabel!.isUserInteractionEnabled = true
 
         singleTapLocationIcon = UITapGestureRecognizer(target: self, action: #selector(EventViewController.showOnMap(_:)))
-        eventLocationIconImageView!.addGestureRecognizer(singleTapLocationIcon!)
-        eventLocationIconImageView!.isUserInteractionEnabled = true
+        eventLocationIconLabel!.addGestureRecognizer(singleTapLocationIcon!)
+        eventLocationIconLabel!.isUserInteractionEnabled = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -50,16 +52,21 @@ class EventViewController: UIViewController {
             eventLocationLabel.textColor = eventLocationLabel.tintColor
         }
 
-        self.eventLocationLabel.text = event.ConferenceRoom?.Name
-        self.eventStartTimeLabel.text = DateFormatters.hourMinute.string(from: event.StartDateTimeUtc)
+		let weekday = DateFormatters.weekdayLong.string(from: event.StartDateTimeUtc)
+		let startTime = DateFormatters.hourMinute.string(from: event.StartDateTimeUtc)
+		let endTime = DateFormatters.hourMinute.string(from: event.EndDateTimeUtc)
+		self.eventStartTimeLabel.text = "\(weekday), \(startTime) to \(endTime)"
+		self.eventLocationLabel.text = event.ConferenceRoom?.Name
+		self.eventTrackLabel.text = event.ConferenceTrack?.Name
+		self.eventHostLabel.text = event.PanelHosts
 
-		eventDurationLabel.text = event.Duration.dhmString
-		if let eventDurationLabelText = eventDurationLabel.text, eventDurationLabelText.isEmpty {
-			eventDurationLabel.text = "n/a"
+		if let eventFavorite = event.EventFavorite {
+			self.eventFavoriteLabel.reactive.isHidden <~ eventFavorite.IsFavorite.map({!$0})
+		} else {
+			self.eventFavoriteLabel.isHidden = true
 		}
 
 		self.title = event.ConferenceDay?.Name
-        self.eventHostLabel.text = event.PanelHosts
         self.eventTitleLabel.text = event.Title
         self.eventSubTitleLabel.text = event.SubTitle
         self.eventDescTextView.text = event.Description
@@ -103,9 +110,16 @@ class EventViewController: UIViewController {
 			return
 		}
 		// TODO: externalise strings for i18n
-        let alert = UIAlertController(title: "Export event", message: "Export the event to the calendar?", preferredStyle: UIAlertControllerStyle.actionSheet)
-        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: nil))
-		alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: {
+        let alert = UIAlertController(title: "Event: \(event.Title)", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+		alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+		if let eventFavorite = event.EventFavorite {
+			let actionPrefix = eventFavorite.IsFavorite.value ? "Remove" : "Add"
+			alert.addAction(UIAlertAction(title: "\(actionPrefix) Favorite",
+				style: UIAlertActionStyle.default, handler: {
+				_ in eventFavorite.IsFavorite.swap(!eventFavorite.IsFavorite.value)
+			}))
+		}
+		alert.addAction(UIAlertAction(title: "Export to Calendar", style: UIAlertActionStyle.default, handler: {
 			_ in CalendarAccess.instance.insert(event: event)
 		}))
 
