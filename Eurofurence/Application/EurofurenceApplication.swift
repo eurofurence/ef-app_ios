@@ -35,9 +35,9 @@ class EurofurenceApplication: LoginStateObserver {
     }
 
     func userDidLogin(credential: LoginCredential) {
-        loginCredentialStore.store(credential)
         if isCredentialValid(credential) {
             userAuthenticationToken = credential.authenticationToken
+            loginCredentialStore.store(credential)
         }
 
         guard let registeredDeviceToken = registeredDeviceToken else { return }

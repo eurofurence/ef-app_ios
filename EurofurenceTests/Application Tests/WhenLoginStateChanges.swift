@@ -87,12 +87,20 @@ class WhenLoginStateChanges: XCTestCase {
         XCTAssertNotEqual(authenticationToken, context.capturingTokenRegistration.capturedUserAuthenticationToken)
     }
     
-    func testLogginInShouldStoreTheCredential() {
+    func testLoggingInShouldStoreTheCredential() {
         let authenticationToken = "JWT Token"
         let context = buildTestCase()
         context.notifyUserLoggedIn(authenticationToken)
         
         XCTAssertEqual(authenticationToken, context.capturingLoginCredentialsStore.capturedCredential?.authenticationToken)
+    }
+    
+    func testLoggingInShouldNotStoreTheTokenIfItHasExpired() {
+        let authenticationToken = "JWT Token"
+        let context = buildTestCase()
+        context.notifyUserLoggedIn(authenticationToken, expires: .distantPast)
+        
+        XCTAssertNil(context.capturingLoginCredentialsStore.capturedCredential)
     }
     
 }
