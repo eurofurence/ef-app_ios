@@ -22,7 +22,6 @@ class SettingsTableViewController: FormViewController {
         makePushNotificationsSection()
 		makeFavoriteEventsSection()
         makeDataStorageSection()
-        makeExperimentalFeaturesSection()
         #if DEBUG
             makeFCMSection()
             makeDebuggingSettingsSection()
@@ -32,9 +31,8 @@ class SettingsTableViewController: FormViewController {
     private func makeNetworkSection() {
         form +++ Section("Network")
             <<< SwitchRow("UpdateOnStart") { row in
-                row.title = "Auto-Update on Launch"
+                row.title = "Update on Launch"
 				row.value = UserSettings.UpdateOnStart.currentValue()
-				row.disabled = true
                 }.onChange { row in
                     UserSettings.UpdateOnStart.setValue(row.value!)
                     row.updateCell()
@@ -51,78 +49,19 @@ class SettingsTableViewController: FormViewController {
                 }.cellUpdate { cell, _ in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
             }
-            <<< PushRow<Int>("RefreshTimer") { row in
-                row.title = "Refresh Interval"
-				row.displayValueFor = { value in
-                    var minutes = -1
-
-                    if let value = value {
-                        minutes = Int(value/60)
-					}
-					if minutes <= 0 {
-						return "Never"
-					} else if minutes == 1 {
-                        return "Every 1 Minute"
-                    } else {
-                        return "Every " + String(minutes) + " Minutes"
-                    }
-                }
-                row.options = [-1, 300, 600, 900, 1800, 3600]
-
-				row.value = UserSettings.RefreshTimer.currentValue()
-				row.disabled = true
-                }.onChange { row in
-
-                    // TODO: BUG! Label becomes empty when currently selected entry is selected again
-
-                    var refreshSeconds: Int = UserSettings.RefreshTimer.currentValueOrDefault()
-                    if let value = row.value {
-                        refreshSeconds = value
-                    } else {
-                        row.value = refreshSeconds
-                    }
-                    UserSettings.RefreshTimer.setValue(refreshSeconds)
-                    if refreshSeconds > 0 && UserSettings.RefreshInBackground.currentValueOrDefault() {
-                        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
-                    } else {
-                        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalNever)
-                    }
-                    // TODO: Reimplement timed refresh (maybe X minutes after last push-triggered refresh?)
-                    /*AutomaticRefresh.sharedInstance.updateTimer()*/
-                    row.updateCell()
-                }.cellUpdate { cell, _ in
-                    cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
-            }
-
-            <<< SwitchRow("NotifyOnAnnouncement") { row in
-                row.title = "Notify on New Announcements"
-                row.value = UserSettings.NotifyOnAnnouncement.currentValue()
-				row.disabled = true
-                row.hidden = Condition.function(["RefreshTimer"], { form in
-                    let value = (form.rowBy(tag: "RefreshTimer") as? PushRow<Int>)?.value
-                    return (value != nil) && value! <= 0
-                })
-                }.onChange { row in
-                    if let value = row.value {
-                        UserSettings.NotifyOnAnnouncement.setValue(value)
-                        if !value {
-                            (self.form.rowBy(tag: "RefreshInBackground") as? SwitchRow)?.value = false
-                        }
-                    }
-                    row.updateCell()
-                }.cellUpdate { cell, _ in
-                    cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
-        }
 	}
 
 	private func makePushNotificationsSection() {
 		let defaults = UserDefaults.standard
 		let witnessedSystemPushRequest = UserDefaultsWitnessedSystemPushPermissionsRequest(userDefaults: defaults)
-		guard !witnessedSystemPushRequest.witnessedSystemPushPermissionsRequest else { return }
 
 		let section = Section("Push Notifications")
 		section <<< ButtonRow {
 			$0.title = "Enable Push Notifications"
+			if witnessedSystemPushRequest.witnessedSystemPushPermissionsRequest {
+				$0.hidden = true
+			}
+
 			}.onCellSelection({ (_, _) in
 				if witnessedSystemPushRequest.witnessedSystemPushPermissionsRequest {
 					let alert = UIAlertController(title: "Use Settings",
@@ -136,6 +75,21 @@ class SettingsTableViewController: FormViewController {
 					defaults.synchronize()
 				}
 			})
+			<<< SwitchRow("NotifyOnAnnouncement") { row in
+				row.title = "Notify on New Announcements"
+				row.value = UserSettings.NotifyOnAnnouncement.currentValue()
+				row.disabled = true
+				}.onChange { row in
+					if let value = row.value {
+						UserSettings.NotifyOnAnnouncement.setValue(value)
+						if !value {
+							(self.form.rowBy(tag: "RefreshInBackground") as? SwitchRow)?.value = false
+						}
+					}
+					row.updateCell()
+				}.cellUpdate { cell, _ in
+					cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+		}
 
 		form +++ section
 	}
@@ -226,45 +180,6 @@ class SettingsTableViewController: FormViewController {
                 row.title = "Version: \(version)"
                 }.cellUpdate { cell, _ in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
-        }
-    }
-
-    private func makeExperimentalFeaturesSection() {
-        form +++ Section(header:"Experimental Features", footer: "Allowing the app to try refreshing in background will only consume a small amount of data. This allows us to keep you updated on the latest announcements regarding delays and other important events at the con. Please note that background refreshing may not always work and can be unreliable.")
-            <<< SwitchRow("RefreshInBackground") { row in
-                row.title = "Refresh in background"
-				row.value = UserSettings.RefreshInBackground.currentValue()
-				row.disabled = true
-                }.onChange { row in
-                    if let value = row.value {
-                        UserSettings.RefreshInBackground.setValue(value)
-                        if value {
-                            UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
-                        } else {
-                            UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalNever)
-                        }
-                        if value {
-                            (self.form.rowBy(tag: "NotifyOnAnnouncement") as? SwitchRow)?.value = true
-                        }
-                    }
-                    row.updateCell()
-                }.cellUpdate { cell, _ in
-                    cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
-                    cell.backgroundColor = UIColor.lightText
-            }
-            <<< SwitchRow("RefreshInBackgroundOnMobile") { row in
-                row.title = "Background Refresh on Mobile"
-				row.value = UserSettings.RefreshInBackgroundOnMobile.currentValue()
-				row.disabled = true
-                row.hidden = Condition.function(["RefreshTimer", "RefreshInBackground"], { form in
-                    return !((form.rowBy(tag: "NotifyOnAnnouncement") as? SwitchRow)?.value ?? true) || !((form.rowBy(tag: "RefreshInBackground") as? SwitchRow)?.value ?? true)
-                })
-                }.onChange { row in
-                    UserSettings.RefreshInBackgroundOnMobile.setValue(row.value!)
-                    row.updateCell()
-                }.cellUpdate { cell, _ in
-                    cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
-                    cell.backgroundColor = UIColor.lightText
         }
     }
 
