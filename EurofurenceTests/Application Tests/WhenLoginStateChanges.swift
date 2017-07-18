@@ -11,40 +11,6 @@ import XCTest
 
 class WhenLoginStateChanges: XCTestCase {
     
-    struct Context {
-        var application: EurofurenceApplication
-        var capturingLoginController: CapturingLoginController
-        var capturingTokenRegistration: CapturingRemoteNotificationsTokenRegistration
-        var capturingLoginCredentialsStore: CapturingLoginCredentialStore
-        
-        func registerRemoteNotifications(_ deviceToken: Data = Data()) {
-            application.registerRemoteNotifications(deviceToken: deviceToken)
-        }
-        
-        func notifyUserLoggedIn(_ token: String = "", expires: Date = .distantFuture) {
-            capturingLoginController.notifyUserLoggedIn(token, expires: expires)
-        }
-        
-        func notifyUserLoggedOut() {
-            capturingLoginController.notifyUserLoggedOut()
-        }
-    }
-    
-    private func buildTestCase(currentDate: Date = Date(), persistedCredential: LoginCredential? = nil) -> Context {
-        let capturingLoginController = CapturingLoginController()
-        let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
-        let capturingLoginCredentialStore = CapturingLoginCredentialStore(persistedCredential: persistedCredential)
-        let application = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration,
-                                                 loginController: capturingLoginController,
-                                                 clock: StubClock(currentDate: currentDate),
-                                                 loginCredentialStore: capturingLoginCredentialStore,
-                                                 jsonPoster: CapturingJSONPoster())
-        return Context(application: application,
-                       capturingLoginController: capturingLoginController,
-                       capturingTokenRegistration: capturingTokenRegistration,
-                       capturingLoginCredentialsStore: capturingLoginCredentialStore)
-    }
-    
     private func makeCredential(username: String = "",
                                 registrationNumber: Int = 0,
                                 authenticationToken: String = "",
@@ -56,7 +22,7 @@ class WhenLoginStateChanges: XCTestCase {
     }
     
     func testLoggingInShouldReregisterPushDeviceTokenAfterOneWasRegistered() {
-        let context = buildTestCase()
+        let context = ApplicationTestBuilder().build()
         context.registerRemoteNotifications()
         context.notifyUserLoggedIn()
         
@@ -64,7 +30,7 @@ class WhenLoginStateChanges: XCTestCase {
     }
     
     func testLoggingInShouldReregisterTheSamePushDeviceToken() {
-        let context = buildTestCase()
+        let context = ApplicationTestBuilder().build()
         let deviceToken = "Token".data(using: .utf8)!
         context.registerRemoteNotifications(deviceToken)
         context.notifyUserLoggedIn()
@@ -73,7 +39,7 @@ class WhenLoginStateChanges: XCTestCase {
     }
     
     func testLoggingInShouldReregisterTheUserAuthenticationToken() {
-        let context = buildTestCase()
+        let context = ApplicationTestBuilder().build()
         context.registerRemoteNotifications()
         let authenticationToken = "JWT Token"
         context.notifyUserLoggedIn(authenticationToken)
@@ -83,7 +49,7 @@ class WhenLoginStateChanges: XCTestCase {
     
     func testBeingLoggedInOnLaunchShouldRegisterTheExistingTokenWhenPushTokenRegistrationOccurs() {
         let authenticationToken = "JWT Token"
-        let context = buildTestCase()
+        let context = ApplicationTestBuilder().build()
         context.notifyUserLoggedIn(authenticationToken)
         let deviceToken = Data()
         context.registerRemoteNotifications(deviceToken)
@@ -95,7 +61,7 @@ class WhenLoginStateChanges: XCTestCase {
         let authenticationToken = "JWT Token"
         let expirationDate = Date()
         let simulatedDate = expirationDate.addingTimeInterval(1)
-        let context = buildTestCase(currentDate: simulatedDate)
+        let context = ApplicationTestBuilder().with(simulatedDate).build()
         context.notifyUserLoggedIn(authenticationToken, expires: expirationDate)
         context.registerRemoteNotifications()
         
@@ -104,7 +70,7 @@ class WhenLoginStateChanges: XCTestCase {
     
     func testLoggingInShouldStoreTheCredential() {
         let authenticationToken = "JWT Token"
-        let context = buildTestCase()
+        let context = ApplicationTestBuilder().build()
         context.notifyUserLoggedIn(authenticationToken)
         
         XCTAssertEqual(authenticationToken, context.capturingLoginCredentialsStore.capturedCredential?.authenticationToken)
@@ -112,7 +78,7 @@ class WhenLoginStateChanges: XCTestCase {
     
     func testLoggingInShouldNotStoreTheTokenIfItHasExpired() {
         let authenticationToken = "JWT Token"
-        let context = buildTestCase()
+        let context = ApplicationTestBuilder().build()
         context.notifyUserLoggedIn(authenticationToken, expires: .distantPast)
         
         XCTAssertNil(context.capturingLoginCredentialsStore.capturedCredential)
@@ -121,7 +87,7 @@ class WhenLoginStateChanges: XCTestCase {
     func testLoggingInWhenWeHaveTokenStoredShouldUseTheTokenWhenPushTokenRegistrationOccurs() {
         let authenticationToken = "JWT Token"
         let existingCredential = makeCredential(authenticationToken: authenticationToken, tokenExpiryDate: .distantFuture)
-        let context = buildTestCase(persistedCredential: existingCredential)
+        let context = ApplicationTestBuilder().with(existingCredential).build()
         context.registerRemoteNotifications()
         
         XCTAssertEqual(authenticationToken, context.capturingTokenRegistration.capturedUserAuthenticationToken)
@@ -130,21 +96,21 @@ class WhenLoginStateChanges: XCTestCase {
     func testLoggingInWhenWeHaveTokenThatHasExpiredShouldNotUseTheTokenWhenPushTokenRegistrationOccurs() {
         let authenticationToken = "JWT Token"
         let existingCredential = makeCredential(authenticationToken: authenticationToken, tokenExpiryDate: .distantPast)
-        let context = buildTestCase(persistedCredential: existingCredential)
+        let context = ApplicationTestBuilder().with(existingCredential).build()
         context.registerRemoteNotifications()
         
         XCTAssertNil(context.capturingTokenRegistration.capturedUserAuthenticationToken)
     }
     
     func testWhenTheUserLogsOutThePersistedCredentialIsDeleted() {
-        let context = buildTestCase()
+        let context = ApplicationTestBuilder().build()
         context.notifyUserLoggedOut()
         
         XCTAssertTrue(context.capturingLoginCredentialsStore.didDeletePersistedToken)
     }
     
     func testThePersistedTokenIsNotDeletedUntilTheUserActuallyLogsOut() {
-        let context = buildTestCase()
+        let context = ApplicationTestBuilder().build()
         XCTAssertFalse(context.capturingLoginCredentialsStore.didDeletePersistedToken)
     }
     
