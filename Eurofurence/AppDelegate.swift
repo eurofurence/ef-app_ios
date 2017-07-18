@@ -39,22 +39,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
-        struct DummyLoginCredentialStore: LoginCredentialStore {
-            var persistedCredential: LoginCredential?
-
-            func store(_ loginCredential: LoginCredential) {
-
-            }
-
-            func deletePersistedToken() {
-
-            }
-        }
-
         app = EurofurenceApplication(remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
                                      loginController: DummyLoginController(),
                                      clock: SystemClock(),
-                                     loginCredentialStore: DummyLoginCredentialStore())
+                                     loginCredentialStore: KeychainLoginCredentialStore())
 
         DataStoreRefreshController.shared.add(ApplicationActivityIndicatorRefreshDelegate())
         PresentationTier.assemble(window: window!)
