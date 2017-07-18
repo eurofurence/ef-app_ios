@@ -23,7 +23,14 @@ class DateFormatters {
 		return formatter
 	}()
 
-	/// UTC based DateFormatter using an EEE dd MMMM format
+	/// UTC based DateFormatter using an EEEE format
+	public static let weekdayLong: DateFormatter = {
+		let formatter = DateFormatter()
+		formatter.dateFormat = "EEEE"
+		return formatter
+	}()
+
+	/// UTC based DateFormatter using an EEEE dd MMMM format
 	public static let dayMonthLong: DateFormatter = {
 		let formatter = DateFormatter()
 		formatter.dateFormat = "EEEE dd MMMM"
