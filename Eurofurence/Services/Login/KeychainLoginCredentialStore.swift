@@ -27,7 +27,7 @@ struct KeychainLoginCredentialStore: LoginCredentialStore {
     }
 
     func deletePersistedToken() {
-
+        try? Locksmith.deleteDataForUserAccount(userAccount: "Eurofurence")
     }
 
 }
