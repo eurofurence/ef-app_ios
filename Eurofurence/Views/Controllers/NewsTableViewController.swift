@@ -190,7 +190,7 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		switch section {
         case 0:
-            return 1
+            return 0
 		case 1:
 			return max(1, announcementsViewModel.Announcements.value.count)
 		case 2:
