@@ -145,7 +145,7 @@ class SettingsTableViewController: FormViewController {
 
 		form +++ Section("Favorite Events")
 			<<< SwitchRow("FavoriteEventsNotify") {
-				$0.title = "Enable Favorite Event Notifications"
+				$0.title = "Notify before Favorite Events"
 				$0.value = eventNotificationPreferences.notificationsEnabled
 				}.onChange({ (row) in
 					if let value = row.value {
@@ -154,7 +154,7 @@ class SettingsTableViewController: FormViewController {
 				})
 
 			<<< TimeIntervalRow("FavoriteEventsNotifyAheadInterval") {
-				$0.title = "Notify Ahead of Favorite Events"
+				$0.title = "Time of Notification"
 				$0.noValueDisplayText = "on Start"
 				$0.value = eventNotificationPreferences.notificationAheadInterval
 				$0.hidden = Condition.function(["FavoriteEventsNotify"], { (form) -> Bool in
