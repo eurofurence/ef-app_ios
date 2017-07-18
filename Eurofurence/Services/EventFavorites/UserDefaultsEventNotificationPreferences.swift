@@ -44,7 +44,6 @@ class UserDefaultsEventNotificationPreferences: EventNotificationPreferences {
 	func setNotificationAheadInterval(_ interval: TimeInterval) {
 		userDefaults.set(interval, forKey: UserDefaultsEventNotificationPreferences.notificationAheadIntervalKey)
 		_notificationAheadInterval = interval
-		print("New ahead interval \(interval)")
 		notify()
 	}
 
