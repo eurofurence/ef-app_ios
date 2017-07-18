@@ -44,6 +44,16 @@ class WhenLoginStateChanges: XCTestCase {
                        capturingLoginCredentialsStore: capturingLoginCredentialStore)
     }
     
+    private func makeCredential(username: String = "",
+                                registrationNumber: Int = 0,
+                                authenticationToken: String = "",
+                                tokenExpiryDate: Date = Date()) -> LoginCredential {
+        return LoginCredential(username: username,
+                               registrationNumber: registrationNumber,
+                               authenticationToken: authenticationToken,
+                               tokenExpiryDate: tokenExpiryDate)
+    }
+    
     func testLoggingInShouldReregisterPushDeviceTokenAfterOneWasRegistered() {
         let context = buildTestCase()
         context.registerRemoteNotifications()
@@ -109,7 +119,7 @@ class WhenLoginStateChanges: XCTestCase {
     
     func testLoggingInWhenWeHaveTokenStoredShouldUseTheTokenWhenPushTokenRegistrationOccurs() {
         let authenticationToken = "JWT Token"
-        let existingCredential = LoginCredential(authenticationToken: authenticationToken, tokenExpiryDate: .distantFuture)
+        let existingCredential = makeCredential(authenticationToken: authenticationToken, tokenExpiryDate: .distantFuture)
         let context = buildTestCase(persistedCredential: existingCredential)
         context.registerRemoteNotifications()
         
@@ -118,7 +128,7 @@ class WhenLoginStateChanges: XCTestCase {
     
     func testLoggingInWhenWeHaveTokenThatHasExpiredShouldNotUseTheTokenWhenPushTokenRegistrationOccurs() {
         let authenticationToken = "JWT Token"
-        let existingCredential = LoginCredential(authenticationToken: authenticationToken, tokenExpiryDate: .distantPast)
+        let existingCredential = makeCredential(authenticationToken: authenticationToken, tokenExpiryDate: .distantPast)
         let context = buildTestCase(persistedCredential: existingCredential)
         context.registerRemoteNotifications()
         

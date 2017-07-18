@@ -11,23 +11,44 @@ import Locksmith
 struct KeychainLoginCredentialStore: LoginCredentialStore {
 
     var persistedCredential: LoginCredential? {
-        if let data = Locksmith.loadDataForUserAccount(userAccount: "Eurofurence"),
-           let authenticationToken = data["authenticationToken"] as? String,
-           let tokenExpiryDate = data["tokenExpiryDate"] as? Date {
-            return LoginCredential(authenticationToken: authenticationToken, tokenExpiryDate: tokenExpiryDate)
-        } else {
+        guard let data = Locksmith.loadDataForUserAccount(userAccount: "Eurofurence") else {
             return nil
         }
+
+        return LoginCredential(keychainData: data)
     }
 
     func store(_ loginCredential: LoginCredential) {
-        let data: [String : Any] = ["authenticationToken": loginCredential.authenticationToken,
-                                    "tokenExpiryDate": loginCredential.tokenExpiryDate]
-        try? Locksmith.saveData(data: data, forUserAccount: "Eurofurence")
+        try? Locksmith.saveData(data: loginCredential.keychainData, forUserAccount: "Eurofurence")
     }
 
     func deletePersistedToken() {
         try? Locksmith.deleteDataForUserAccount(userAccount: "Eurofurence")
+    }
+
+}
+
+fileprivate extension LoginCredential {
+
+    var keychainData: [String : Any] {
+        return ["username": username,
+                "registrationNumber": registrationNumber,
+                "authenticationToken": authenticationToken,
+                "tokenExpiryDate": tokenExpiryDate]
+    }
+
+    init?(keychainData: [String : Any]) {
+        guard let username = keychainData["username"] as? String,
+              let registrationNumber = keychainData["registrationNumber"] as? Int,
+              let authenticationToken = keychainData["authenticationToken"] as? String,
+              let tokenExpiryDate = keychainData["tokenExpiryDate"] as? Date else {
+                return nil
+        }
+
+        self.username = username
+        self.registrationNumber = registrationNumber
+        self.authenticationToken = authenticationToken
+        self.tokenExpiryDate = tokenExpiryDate
     }
 
 }

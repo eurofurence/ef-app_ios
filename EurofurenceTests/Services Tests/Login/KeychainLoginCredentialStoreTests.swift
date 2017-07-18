@@ -13,7 +13,10 @@ class KeychainLoginCredentialStoreTests: XCTestCase {
     
     func testStoringLoginShouldRetainItBetweenLifetimes() {
         var store = KeychainLoginCredentialStore()
-        let credential = LoginCredential(authenticationToken: "Token", tokenExpiryDate: .distantFuture)
+        let credential = LoginCredential(username: "User",
+                                         registrationNumber: 42,
+                                         authenticationToken: "Token",
+                                         tokenExpiryDate: .distantFuture)
         store.store(credential)
         store = KeychainLoginCredentialStore()
         
@@ -22,7 +25,10 @@ class KeychainLoginCredentialStoreTests: XCTestCase {
     
     func testStoringLoginThenDeletingItShouldReturnNilToken() {
         let store = KeychainLoginCredentialStore()
-        let credential = LoginCredential(authenticationToken: "Token", tokenExpiryDate: .distantFuture)
+        let credential = LoginCredential(username: "User",
+                                         registrationNumber: 42,
+                                         authenticationToken: "Token",
+                                         tokenExpiryDate: .distantFuture)
         store.store(credential)
         store.deletePersistedToken()
         

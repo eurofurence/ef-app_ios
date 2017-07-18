@@ -16,11 +16,16 @@ protocol LoginController {
 
 struct LoginCredential: Equatable {
 
+    var username: String
+    var registrationNumber: Int
     var authenticationToken: String
     var tokenExpiryDate: Date
 
     static func ==(lhs: LoginCredential, rhs: LoginCredential) -> Bool {
-        return lhs.authenticationToken == rhs.authenticationToken && lhs.tokenExpiryDate == rhs.tokenExpiryDate
+        return lhs.username == rhs.username &&
+               lhs.registrationNumber == rhs.registrationNumber &&
+               lhs.authenticationToken == rhs.authenticationToken &&
+               lhs.tokenExpiryDate == rhs.tokenExpiryDate
     }
 
 }
