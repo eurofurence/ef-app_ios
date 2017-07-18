@@ -14,6 +14,7 @@ class SettingsTableViewController: FormViewController {
 
 	private let contextManager: ContextManager = try! ContextResolver.container.resolve()
 	private let imageService: ImageServiceProtocol = try! ServiceResolver.container.resolve()
+	private var versionTapCount = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +23,8 @@ class SettingsTableViewController: FormViewController {
         makePushNotificationsSection()
 		makeFavoriteEventsSection()
         makeDataStorageSection()
-        #if DEBUG
-            makeFCMSection()
-            makeDebuggingSettingsSection()
-        #endif
+		makeFCMSection()
+		makeDebuggingSettingsSection()
     }
 
     private func makeNetworkSection() {
@@ -178,13 +177,26 @@ class SettingsTableViewController: FormViewController {
             <<< LabelRow { row in
                 let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
                 row.title = "Version: \(version)"
-                }.cellUpdate { cell, _ in
+				}.onCellSelection { _ in
+					self.versionTapCount += 1
+					if let showDebugSettingsRow = self.form.rowBy(tag: "ShowDebugSettings") as? SwitchRow,
+						self.versionTapCount == 7 && !(showDebugSettingsRow.value ?? true) {
+
+						UserSettings.DebugSettingsEnabled.setValue(true)
+						showDebugSettingsRow.value = true
+					}
+				}.cellUpdate { cell, _ in
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
         }
     }
 
     private func makeFCMSection() {
-        form +++ Section("FCM Token")
+		form +++ Section("FCM Token") {
+			$0.hidden = Condition.function(["ShowDebugSettings"], { form in
+				return !(((form.rowBy(tag: "ShowDebugSettings") as? SwitchRow)?.value ?? false) ||
+					UserSettings.DebugSettingsEnabled.currentValueOrDefault() as Bool)
+			})
+			}
             <<< ButtonRow {
                 $0.title = "Copy to Pasteboard"
                 $0.onCellSelection({ (_, _) in
@@ -201,7 +213,23 @@ class SettingsTableViewController: FormViewController {
     }
 
     private func makeDebuggingSettingsSection() {
-        form +++ Section(header:"Debugging", footer: "These settings are intended for debugging purposes only and may cause instability or unexpected behaviour if changed!")
+		form +++ Section(header:"Debugging", footer: "These settings are intended for debugging purposes only and may cause instability or unexpected behaviour if changed!") {
+			$0.hidden = Condition.function(["ShowDebugSettings"], { form in
+				return !(((form.rowBy(tag: "ShowDebugSettings") as? SwitchRow)?.value ?? false) ||
+					UserSettings.DebugSettingsEnabled.currentValueOrDefault() as Bool)
+			})
+			}
+			<<< SwitchRow("ShowDebugSettings") {
+				$0.title = "Show Debug Settings"
+				$0.value = UserSettings.DebugSettingsEnabled.currentValueOrDefault()
+				}.onChange({ (row) in
+					if let value = row.value {
+						if !value {
+							self.versionTapCount = 0
+						}
+						UserSettings.DebugSettingsEnabled.setValue(value)
+					}
+				})
             <<< TimeIntervalRow("TimeOffset") { row in
                 row.title = "Time Offset"
 				row.noValueDisplayText = "none"
