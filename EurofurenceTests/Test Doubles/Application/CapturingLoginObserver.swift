@@ -1,5 +1,5 @@
 //
-//  CapturingLoginObserver.swift
+//  CapturingUserAuthenticationObserver.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 19/07/2017.
@@ -8,15 +8,15 @@
 
 @testable import Eurofurence
 
-class CapturingLoginObserver: LoginObserver {
+class CapturingUserAuthenticationObserver: UserAuthenticationObserver {
     
     private(set) var notifiedLoginSucceeded = false
-    func loginSucceeded() {
+    func userAuthenticationAuthorized() {
         notifiedLoginSucceeded = true
     }
     
     private(set) var notifiedLoginFailed = false
-    func loginFailed() {
+    func userAuthenticationUnauthorized() {
         notifiedLoginFailed = true
     }
     

@@ -29,25 +29,25 @@ class WhenLoggingIn: XCTestCase {
         return try! JSONSerialization.data(withJSONObject: payload, options: [])
     }
     
-    private func makeObserverForVerifyingLoginFailure(missingKey: String) -> CapturingLoginObserver {
+    private func makeObserverForVerifyingLoginFailure(missingKey: String) -> CapturingUserAuthenticationObserver {
         var payload = makeSuccessfulLoginPayload()
         payload.removeValue(forKey: missingKey)
         return makeObserverForVerifyingLoginFailure(payload)
     }
     
-    private func makeObserverForVerifyingLoginFailure(_ payload: [String : String]) -> CapturingLoginObserver {
+    private func makeObserverForVerifyingLoginFailure(_ payload: [String : String]) -> CapturingUserAuthenticationObserver {
         let data = try! JSONSerialization.data(withJSONObject: payload, options: [])
         return makeObserverForVerifyingLoginFailure(data)
     }
     
-    private func makeObserverForVerifyingLoginFailure(_ data: Data?) -> CapturingLoginObserver {
+    private func makeObserverForVerifyingLoginFailure(_ data: Data?) -> CapturingUserAuthenticationObserver {
         let context = ApplicationTestBuilder().build()
-        let loginObserver = CapturingLoginObserver()
-        context.application.add(loginObserver)
+        let userAuthenticationObserver = CapturingUserAuthenticationObserver()
+        context.application.add(userAuthenticationObserver)
         context.login()
         context.simulateJSONResponse(data)
         
-        return loginObserver
+        return userAuthenticationObserver
     }
     
     func testTheLoginEndpointShouldReceievePOSTRequest() {
@@ -87,52 +87,52 @@ class WhenLoggingIn: XCTestCase {
     }
     
     func testLoginResponseReturnsNilDataShouldTellTheObserverLoginFailed() {
-        let loginObserver = makeObserverForVerifyingLoginFailure(nil)
-        XCTAssertTrue(loginObserver.notifiedLoginFailed)
+        let userAuthenticationObserver = makeObserverForVerifyingLoginFailure(nil)
+        XCTAssertTrue(userAuthenticationObserver.notifiedLoginFailed)
     }
     
     func testLoginResponseReturnsInvalidJSONShouldTellTheObserverLoginFailed() {
-        let loginObserver = makeObserverForVerifyingLoginFailure("Not json!".data(using: .utf8))
-        XCTAssertTrue(loginObserver.notifiedLoginFailed)
+        let userAuthenticationObserver = makeObserverForVerifyingLoginFailure("Not json!".data(using: .utf8))
+        XCTAssertTrue(userAuthenticationObserver.notifiedLoginFailed)
     }
     
     func testLoginResponseReturnsWrongRootJSONTypeShouldTellTheObserverLoginFailed() {
-        let loginObserver = makeObserverForVerifyingLoginFailure("[]".data(using: .utf8))
-        XCTAssertTrue(loginObserver.notifiedLoginFailed)
+        let userAuthenticationObserver = makeObserverForVerifyingLoginFailure("[]".data(using: .utf8))
+        XCTAssertTrue(userAuthenticationObserver.notifiedLoginFailed)
     }
     
     func testLoginResponseMissingUsernameFieldShouldTellTheObserverLoginFailed() {
-        let loginObserver = makeObserverForVerifyingLoginFailure(missingKey: "Username")
-        XCTAssertTrue(loginObserver.notifiedLoginFailed)
+        let userAuthenticationObserver = makeObserverForVerifyingLoginFailure(missingKey: "Username")
+        XCTAssertTrue(userAuthenticationObserver.notifiedLoginFailed)
     }
     
     func testLoginResponseMissingUserIDFieldShouldTellTheObserverLoginFailed() {
-        let loginObserver = makeObserverForVerifyingLoginFailure(missingKey: "Uid")
-        XCTAssertTrue(loginObserver.notifiedLoginFailed)
+        let userAuthenticationObserver = makeObserverForVerifyingLoginFailure(missingKey: "Uid")
+        XCTAssertTrue(userAuthenticationObserver.notifiedLoginFailed)
     }
     
     func testLoginResponseContainingUserIDAsSomethingOtherThanIntegerShouldTellTheObserverLoginFailed() {
         let payload = makeSuccessfulLoginPayload(userID: "Not an int!")
-        let loginObserver = makeObserverForVerifyingLoginFailure(payload)
+        let userAuthenticationObserver = makeObserverForVerifyingLoginFailure(payload)
         
-        XCTAssertTrue(loginObserver.notifiedLoginFailed)
+        XCTAssertTrue(userAuthenticationObserver.notifiedLoginFailed)
     }
     
     func testLoginResponseMissingTokenFieldShouldTellTheObserverLoginFailed() {
-        let loginObserver = makeObserverForVerifyingLoginFailure(missingKey: "Token")
-        XCTAssertTrue(loginObserver.notifiedLoginFailed)
+        let userAuthenticationObserver = makeObserverForVerifyingLoginFailure(missingKey: "Token")
+        XCTAssertTrue(userAuthenticationObserver.notifiedLoginFailed)
     }
     
     func testLoginResponseMissingTokenExpiryFieldShouldTellTheObserverLoginFailed() {
-        let loginObserver = makeObserverForVerifyingLoginFailure(missingKey: "TokenValidUntil")
-        XCTAssertTrue(loginObserver.notifiedLoginFailed)
+        let userAuthenticationObserver = makeObserverForVerifyingLoginFailure(missingKey: "TokenValidUntil")
+        XCTAssertTrue(userAuthenticationObserver.notifiedLoginFailed)
     }
     
     func testLoginResponseContainingTokenExpiryAsSomethingOtherThanExpectedDateShouldTellTheObserverLoginFailed() {
         let payload = makeSuccessfulLoginPayload(validUntil: "Some weird format")
-        let loginObserver = makeObserverForVerifyingLoginFailure(payload)
+        let userAuthenticationObserver = makeObserverForVerifyingLoginFailure(payload)
         
-        XCTAssertTrue(loginObserver.notifiedLoginFailed)
+        XCTAssertTrue(userAuthenticationObserver.notifiedLoginFailed)
     }
     
     func testLoggingInSuccessfullyShouldPersistLoginCredentialWithUsername() {
@@ -183,34 +183,34 @@ class WhenLoggingIn: XCTestCase {
     
     func testLoggingInSuccessfulyShouldNotifyObserversAboutIt() {
         let context = ApplicationTestBuilder().build()
-        let loginObserver = CapturingLoginObserver()
-        context.application.add(loginObserver)
+        let userAuthenticationObserver = CapturingUserAuthenticationObserver()
+        context.application.add(userAuthenticationObserver)
         context.login()
         context.simulateJSONResponse(makeSuccessfulLoginData())
         
-        XCTAssertTrue(loginObserver.notifiedLoginSucceeded)
+        XCTAssertTrue(userAuthenticationObserver.notifiedLoginSucceeded)
     }
     
     func testLoggingInSuccessfulyShouldNotNotifyObserversAboutItUntilTokenPersistenceCompletes() {
         let context = ApplicationTestBuilder().build()
-        let loginObserver = CapturingLoginObserver()
+        let userAuthenticationObserver = CapturingUserAuthenticationObserver()
         context.capturingLoginCredentialsStore.blockToRunBeforeCompletingCredentialStorage = {
-            XCTAssertFalse(loginObserver.notifiedLoginSucceeded)
+            XCTAssertFalse(userAuthenticationObserver.notifiedLoginSucceeded)
         }
         
-        context.application.add(loginObserver)
+        context.application.add(userAuthenticationObserver)
         context.login()
         context.simulateJSONResponse(makeSuccessfulLoginData())
     }
     
     func testLoggingInSuccessfulyShouldNotNotifyObserversAboutLoginFailure() {
         let context = ApplicationTestBuilder().build()
-        let loginObserver = CapturingLoginObserver()
-        context.application.add(loginObserver)
+        let userAuthenticationObserver = CapturingUserAuthenticationObserver()
+        context.application.add(userAuthenticationObserver)
         context.login()
         context.simulateJSONResponse(makeSuccessfulLoginData())
         
-        XCTAssertFalse(loginObserver.notifiedLoginFailed)
+        XCTAssertFalse(userAuthenticationObserver.notifiedLoginFailed)
     }
     
     func testBeingLoggedInThenLoggingInShouldNotifyObserverLoginSuccessful() {
@@ -219,11 +219,11 @@ class WhenLoggingIn: XCTestCase {
                                          authenticationToken: "",
                                          tokenExpiryDate: .distantFuture)
         let context = ApplicationTestBuilder().with(credential).build()
-        let loginObserver = CapturingLoginObserver()
-        context.application.add(loginObserver)
+        let userAuthenticationObserver = CapturingUserAuthenticationObserver()
+        context.application.add(userAuthenticationObserver)
         context.login()
         
-        XCTAssertTrue(loginObserver.notifiedLoginSucceeded)
+        XCTAssertTrue(userAuthenticationObserver.notifiedLoginSucceeded)
     }
     
     func testBeingLoggedInThenLoggingInShouldNotRequestTheLoginEndpoint() {
@@ -232,8 +232,8 @@ class WhenLoggingIn: XCTestCase {
                                          authenticationToken: "",
                                          tokenExpiryDate: .distantFuture)
         let context = ApplicationTestBuilder().with(credential).build()
-        let loginObserver = CapturingLoginObserver()
-        context.application.add(loginObserver)
+        let userAuthenticationObserver = CapturingUserAuthenticationObserver()
+        context.application.add(userAuthenticationObserver)
         context.login()
         
         XCTAssertNil(context.jsonPoster.postedURL)

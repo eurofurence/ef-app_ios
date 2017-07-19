@@ -17,7 +17,7 @@ class EurofurenceApplication {
     private var userAuthenticationTokenValid = false
     private var registeredDeviceToken: Data?
     private var userAuthenticationToken: String?
-    private var loginObservers = [LoginObserver]()
+    private var userAuthenticationObservers = [UserAuthenticationObserver]()
 
     init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
          clock: Clock,
@@ -33,15 +33,15 @@ class EurofurenceApplication {
         }
     }
 
-    func add(_ loginObserver: LoginObserver) {
-        loginObservers.append(loginObserver)
+    func add(_ userAuthenticationObserver: UserAuthenticationObserver) {
+        userAuthenticationObservers.append(userAuthenticationObserver)
     }
 
     func login(_ arguments: LoginArguments) {
         if userAuthenticationToken == nil {
             performLogin(arguments: arguments)
         } else {
-            loginObservers.forEach { $0.loginSucceeded() }
+            userAuthenticationObservers.forEach { $0.userAuthenticationAuthorized() }
         }
     }
 
@@ -64,7 +64,7 @@ class EurofurenceApplication {
               let json = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments),
               let jsonDictionary = json as? [String : Any],
               let response = LoginResponse(json: jsonDictionary) else {
-            loginObservers.forEach { $0.loginFailed() }
+            userAuthenticationObservers.forEach { $0.userAuthenticationUnauthorized() }
             return
         }
 
@@ -73,7 +73,7 @@ class EurofurenceApplication {
                                          authenticationToken: response.authToken,
                                          tokenExpiryDate: response.authTokenExpiry)
         loginCredentialStore.store(credential)
-        loginObservers.forEach { $0.loginSucceeded() }
+        userAuthenticationObservers.forEach { $0.userAuthenticationAuthorized() }
         userAuthenticationToken = credential.authenticationToken
 
         if let registeredDeviceToken = registeredDeviceToken {
