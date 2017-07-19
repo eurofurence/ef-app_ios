@@ -22,7 +22,9 @@ struct URLSessionJSONPoster: JSONPoster {
         urlRequest.allHTTPHeaderFields = request.headers
 
         session.dataTask(with: urlRequest, completionHandler: { (data, _, _) in
-            completionHandler(data)
+            DispatchQueue.main.async {
+                completionHandler(data)
+            }
         }).resume()
     }
 

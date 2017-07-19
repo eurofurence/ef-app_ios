@@ -212,4 +212,18 @@ class URLSessionJSONPosterTests: XCTestCase {
         waitForExpectations(timeout: 0.1)
     }
     
+    func testLoadingCompletesSuppliesResponseDataOnMainQueue() {
+        let expectedURL = "https://www.somewhere.co.uk"
+        JournallingURLRequestLogger.shared.stubResponse(for: expectedURL, with: Data())
+        
+        let correctQueueExpectation = expectation(description: "Completion handler should be called on the main queue")
+        post(expectedURL, completionHandler: { data in
+            if Thread.current.isMainThread {
+                correctQueueExpectation.fulfill()
+            }
+        })
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
 }
