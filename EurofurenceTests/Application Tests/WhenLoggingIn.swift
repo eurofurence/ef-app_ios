@@ -11,6 +11,17 @@ import XCTest
 
 class WhenLoggingIn: XCTestCase {
     
+    private func makeSuccessfulLoginData(username: String = "",
+                                         userID: String = "0",
+                                         authToken: String = "",
+                                         validUntil: String = "2017-07-17T19:45:22.666Z") -> Data {
+        let payload = ["Username" : username,
+                       "Uid": userID,
+                       "Token" : authToken,
+                       "TokenValidUntil": validUntil]
+        return try! JSONSerialization.data(withJSONObject: payload, options: [])
+    }
+    
     func testTheLoginEndpointShouldReceievePOSTRequest() {
         let context = ApplicationTestBuilder().build()
         context.login()
@@ -51,10 +62,46 @@ class WhenLoggingIn: XCTestCase {
         let context = ApplicationTestBuilder().build()
         let expectedUsername = "Some awesome guy"
         context.login(username: expectedUsername)
-        let responsePayload = "{\"Username\":\"\(expectedUsername)\"}".data(using: .utf8)!
-        context.jsonPoster.invokeLastCompletionHandler(responseData: responsePayload)
+        context.simulateJSONResponse(makeSuccessfulLoginData(username: expectedUsername))
         
         XCTAssertEqual(expectedUsername, context.capturingLoginCredentialsStore.capturedCredential?.username)
+    }
+    
+    func testLoggingInSuccessfullyShouldPersistLoginCredentialWithUserID() {
+        let context = ApplicationTestBuilder().build()
+        let expectedUserID = 42
+        context.login(username: String(expectedUserID))
+        context.simulateJSONResponse(makeSuccessfulLoginData(userID: String(expectedUserID)))
+        
+        XCTAssertEqual(expectedUserID, context.capturingLoginCredentialsStore.capturedCredential?.registrationNumber)
+    }
+    
+    func testLoggingInSuccessfullyShouldPersistLoginToken() {
+        let context = ApplicationTestBuilder().build()
+        let expectedToken = "JWT Token"
+        context.login()
+        context.simulateJSONResponse(makeSuccessfulLoginData(authToken: expectedToken))
+        
+        XCTAssertEqual(expectedToken, context.capturingLoginCredentialsStore.capturedCredential?.authenticationToken)
+    }
+    
+    func testLoggingInSuccessfullyShouldPersistLoginTokenExpiry() {
+        let context = ApplicationTestBuilder().build()
+        let expectedTokenExpiry = "2017-07-17T19:45:22.666Z"
+        context.login()
+        context.simulateJSONResponse(makeSuccessfulLoginData(validUntil: expectedTokenExpiry))
+        
+        let expectedComponents = DateComponents(year: 2017, month: 7, day: 17, hour: 19, minute: 45, second: 22)
+        let receievedDate = context.capturingLoginCredentialsStore.capturedCredential?.tokenExpiryDate
+        var actualComponents: DateComponents?
+        let desiredComponents: [Calendar.Component] = [.year, .month, .day, .hour, .minute, .second]
+        if let receievedDate = receievedDate {
+            var calendar = Calendar(identifier: .gregorian)
+            calendar.timeZone = TimeZone(abbreviation: "GMT")!
+            actualComponents = calendar.dateComponents(Set(desiredComponents), from: receievedDate)
+        }
+        
+        XCTAssertEqual(expectedComponents, actualComponents)
     }
     
 }

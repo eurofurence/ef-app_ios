@@ -17,6 +17,7 @@ class EurofurenceApplication: LoginStateObserver {
     private var userAuthenticationTokenValid = false
     private var registeredDeviceToken: Data?
     private var userAuthenticationToken: String?
+    private let dateFormatter = Iso8601DateFormatter()
 
     init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
          loginController: LoginController,
@@ -54,11 +55,19 @@ class EurofurenceApplication: LoginStateObserver {
         guard let jsonObject = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments) else { return }
         guard let jsonDictionary = jsonObject as? [String : Any] else { return }
         guard let username = jsonDictionary["Username"] as? String else { return }
+        guard let userIDString = jsonDictionary["Uid"] as? String else { return }
+
+        var userID: Int = 0
+        guard Scanner(string: userIDString).scanInt(&userID) else { return }
+
+        guard let authToken = jsonDictionary["Token"] as? String else { return }
+        guard let dateString = jsonDictionary["TokenValidUntil"] as? String else { return }
+        guard let expiry = dateFormatter.date(from: dateString) else { return }
 
         let credential = LoginCredential(username: username,
-                                         registrationNumber: 0,
-                                         authenticationToken: "",
-                                         tokenExpiryDate: Date())
+                                         registrationNumber: userID,
+                                         authenticationToken: authToken,
+                                         tokenExpiryDate: expiry)
         loginCredentialStore.store(credential)
     }
 
