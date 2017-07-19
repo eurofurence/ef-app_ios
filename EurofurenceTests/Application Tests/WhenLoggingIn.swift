@@ -181,4 +181,36 @@ class WhenLoggingIn: XCTestCase {
         XCTAssertEqual(expectedComponents, actualComponents)
     }
     
+    func testLoggingInSuccessfulyShouldNotifyObserversAboutIt() {
+        let context = ApplicationTestBuilder().build()
+        let loginObserver = CapturingLoginObserver()
+        context.application.add(loginObserver)
+        context.login()
+        context.simulateJSONResponse(makeSuccessfulLoginData())
+        
+        XCTAssertTrue(loginObserver.notifiedLoginSucceeded)
+    }
+    
+    func testLoggingInSuccessfulyShouldNotNotifyObserversAboutItUntilTokenPersistenceCompletes() {
+        let context = ApplicationTestBuilder().build()
+        let loginObserver = CapturingLoginObserver()
+        context.capturingLoginCredentialsStore.blockToRunBeforeCompletingCredentialStorage = {
+            XCTAssertFalse(loginObserver.notifiedLoginSucceeded)
+        }
+        
+        context.application.add(loginObserver)
+        context.login()
+        context.simulateJSONResponse(makeSuccessfulLoginData())
+    }
+    
+    func testLoggingInSuccessfulyShouldNotNotifyObserversAboutLoginFailure() {
+        let context = ApplicationTestBuilder().build()
+        let loginObserver = CapturingLoginObserver()
+        context.application.add(loginObserver)
+        context.login()
+        context.simulateJSONResponse(makeSuccessfulLoginData())
+        
+        XCTAssertFalse(loginObserver.notifiedLoginFailed)
+    }
+    
 }

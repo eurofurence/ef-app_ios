@@ -8,6 +8,7 @@
 
 protocol LoginObserver {
 
+    func loginSucceeded()
     func loginFailed()
 
 }

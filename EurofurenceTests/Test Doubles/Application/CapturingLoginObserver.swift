@@ -10,6 +10,11 @@
 
 class CapturingLoginObserver: LoginObserver {
     
+    private(set) var notifiedLoginSucceeded = false
+    func loginSucceeded() {
+        notifiedLoginSucceeded = true
+    }
+    
     private(set) var notifiedLoginFailed = false
     func loginFailed() {
         notifiedLoginFailed = true
