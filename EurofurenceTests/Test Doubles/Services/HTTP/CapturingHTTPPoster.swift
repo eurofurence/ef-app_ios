@@ -28,7 +28,7 @@ class CapturingJSONPoster: JSONPoster {
         return jsonDictionary[key] as? T
     }
     
-    func invokeLastCompletionHandler(responseData: Data) {
+    func invokeLastCompletionHandler(responseData: Data?) {
         completionHandler?(responseData)
     }
     

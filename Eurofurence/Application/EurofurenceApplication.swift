@@ -18,6 +18,7 @@ class EurofurenceApplication: LoginStateObserver {
     private var registeredDeviceToken: Data?
     private var userAuthenticationToken: String?
     private let dateFormatter = Iso8601DateFormatter()
+    private var loginObservers = [LoginObserver]()
 
     init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
          loginController: LoginController,
@@ -36,6 +37,10 @@ class EurofurenceApplication: LoginStateObserver {
         }
     }
 
+    func add(_ loginObserver: LoginObserver) {
+        loginObservers.append(loginObserver)
+    }
+
     func login(_ arguments: LoginArguments) {
         do {
             let postArguments: [String : Any] = ["RegNo": arguments.registrationNumber,
@@ -51,7 +56,11 @@ class EurofurenceApplication: LoginStateObserver {
     }
 
     private func handleNetworkLoginResponse(_ responseData: Data?) {
-        guard let responseData = responseData else { return }
+        guard let responseData = responseData else {
+            loginObservers.forEach { $0.loginFailed() }
+            return
+        }
+
         guard let jsonObject = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments) else { return }
         guard let jsonDictionary = jsonObject as? [String : Any] else { return }
         guard let username = jsonDictionary["Username"] as? String else { return }

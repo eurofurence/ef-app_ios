@@ -36,7 +36,7 @@ class ApplicationTestBuilder {
             capturingLoginController.notifyUserLoggedOut()
         }
         
-        func simulateJSONResponse(_ data: Data) {
+        func simulateJSONResponse(_ data: Data?) {
             jsonPoster.invokeLastCompletionHandler(responseData: data)
         }
     }

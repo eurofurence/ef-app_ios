@@ -58,6 +58,16 @@ class WhenLoggingIn: XCTestCase {
         XCTAssertEqual(password, context.jsonPoster.postedJSONValue(forKey: "Password"))
     }
     
+    func testLoginResponseReturnsNilDataShouldTellTheObserverLoginFailed() {
+        let context = ApplicationTestBuilder().build()
+        let loginObserver = CapturingLoginObserver()
+        context.application.add(loginObserver)
+        context.login()
+        context.simulateJSONResponse(nil)
+        
+        XCTAssertTrue(loginObserver.notifiedLoginFailed)
+    }
+    
     func testLoggingInSuccessfullyShouldPersistLoginCredentialWithUsername() {
         let context = ApplicationTestBuilder().build()
         let expectedUsername = "Some awesome guy"
