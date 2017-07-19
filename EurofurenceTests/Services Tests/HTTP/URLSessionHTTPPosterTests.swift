@@ -37,6 +37,7 @@ class JournallingURLRequestLogger {
 
     static let shared = JournallingURLRequestLogger()
     private var expectations = [ExpectedRequest : XCTestExpectation]()
+    private var stubbedResponses = [String : Data]()
 
     func setUp() {
         URLProtocol.registerClass(TestURLProtocol.self)
@@ -64,6 +65,14 @@ class JournallingURLRequestLogger {
         let frameworkExpectation = testCase.expectation(description: "Expected to load url \"\(url)\"")
         expectations[expectation] = frameworkExpectation
     }
+    
+    func stubResponse(for url: String, with data: Data) {
+        stubbedResponses[url] = data
+    }
+    
+    func stubbedResponseData(for url: String) -> Data? {
+        return stubbedResponses[url]
+    }
 
 }
 
@@ -89,7 +98,10 @@ class TestURLProtocol: URLProtocol {
     }
 
     override func startLoading() {
-
+        let url = request.url?.absoluteString ?? ""
+        let data = JournallingURLRequestLogger.shared.stubbedResponseData(for: url) ?? Data()
+        client?.urlProtocol(self, didLoad: data)
+        client?.urlProtocolDidFinishLoading(self)
     }
 
     override func stopLoading() {
@@ -182,6 +194,21 @@ class URLSessionJSONPosterTests: XCTestCase {
         }
         
         post(expectedURL, headers: additionalHeaders)
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testLoadingCompletesSuppliesResponseDataToCompletionHandler() {
+        let expectedURL = "https://www.somewhere.co.uk"
+        let expectedResponseData = "Response".data(using: .utf8)!
+        JournallingURLRequestLogger.shared.stubResponse(for: expectedURL, with: expectedResponseData)
+        
+        let matchingDataExpectation = expectation(description: "Returned data from response")
+        post(expectedURL, completionHandler: { data in
+            if expectedResponseData == data {
+                matchingDataExpectation.fulfill()
+            }
+        })
+        
         waitForExpectations(timeout: 0.1)
     }
     

@@ -21,7 +21,9 @@ struct URLSessionJSONPoster: JSONPoster {
         urlRequest.httpBody = request.body
         urlRequest.allHTTPHeaderFields = request.headers
 
-        session.dataTask(with: urlRequest, completionHandler: { (_, _, _) in }).resume()
+        session.dataTask(with: urlRequest, completionHandler: { (data, _, _) in
+            completionHandler(data)
+        }).resume()
     }
 
 }
