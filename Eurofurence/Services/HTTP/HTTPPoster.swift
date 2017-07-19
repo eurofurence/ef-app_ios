@@ -10,6 +10,6 @@ import Foundation
 
 protocol JSONPoster {
 
-    func post(_ url: String, body: Data, completionHandler: @escaping (Data?) -> Void)
+    func post(_ url: String, body: Data, headers: [String : String], completionHandler: @escaping (Data?) -> Void)
 
 }

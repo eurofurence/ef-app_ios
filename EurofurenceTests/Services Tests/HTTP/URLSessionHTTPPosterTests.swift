@@ -109,7 +109,7 @@ class URLSessionJSONPosterTests: XCTestCase {
                       body: Data = Data(),
                       completionHandler: ((Data?) -> Void)? = nil) {
         let poster = URLSessionJSONPoster()
-        poster.post(url, body: body, completionHandler: { completionHandler?($0) })
+        poster.post(url, body: body, headers: [:], completionHandler: { completionHandler?($0) })
     }
     
     func testPostingURLShouldPostRequestWithURL() {
