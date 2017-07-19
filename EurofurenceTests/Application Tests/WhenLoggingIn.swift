@@ -41,10 +41,20 @@ class WhenLoggingIn: XCTestCase {
     
     func testTheLoginRequestShouldReceieveJSONPayloadWithPassword() {
         let context = ApplicationTestBuilder().build()
-        let password = "It's a secrent"
+        let password = "It's a secret"
         context.login(password: password)
         
         XCTAssertEqual(password, context.jsonPoster.postedJSONValue(forKey: "Password"))
+    }
+    
+    func testLoggingInSuccessfullyShouldPersistLoginCredentialWithUsername() {
+        let context = ApplicationTestBuilder().build()
+        let expectedUsername = "Some awesome guy"
+        context.login(username: expectedUsername)
+        let responsePayload = "{\"Username\":\"\(expectedUsername)\"}".data(using: .utf8)!
+        context.jsonPoster.invokeLastCompletionHandler(responseData: responsePayload)
+        
+        XCTAssertEqual(expectedUsername, context.capturingLoginCredentialsStore.capturedCredential?.username)
     }
     
 }

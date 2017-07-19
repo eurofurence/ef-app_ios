@@ -13,9 +13,11 @@ class CapturingJSONPoster: JSONPoster {
 
     private(set) var postedURL: String?
     private var postedData: Data?
-    func post(_ url: String, body: Data) {
+    private var completionHandler: ((Data?) -> Void)?
+    func post(_ url: String, body: Data, completionHandler: @escaping (Data?) -> Void) {
         postedURL = url
         postedData = body
+        self.completionHandler = completionHandler
     }
 
     func postedJSONValue<T>(forKey key: String) -> T? {
@@ -24,6 +26,10 @@ class CapturingJSONPoster: JSONPoster {
         guard let jsonDictionary = json as? [String : Any] else { return nil }
 
         return jsonDictionary[key] as? T
+    }
+    
+    func invokeLastCompletionHandler(responseData: Data) {
+        completionHandler?(responseData)
     }
     
 }

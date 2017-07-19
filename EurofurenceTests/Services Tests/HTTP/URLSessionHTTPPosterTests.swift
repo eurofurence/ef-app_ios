@@ -105,11 +105,17 @@ class URLSessionJSONPosterTests: XCTestCase {
         JournallingURLRequestLogger.shared.setUp()
     }
     
+    private func post(_ url: String,
+                      body: Data = Data(),
+                      completionHandler: ((Data?) -> Void)? = nil) {
+        let poster = URLSessionJSONPoster()
+        poster.post(url, body: body, completionHandler: { completionHandler?($0) })
+    }
+    
     func testPostingURLShouldPostRequestWithURL() {
         let expectedURL = "https://www.somewhere.co.uk"
         JournallingURLRequestLogger.shared.makeExpectation(self, expectingURL: expectedURL)
-        let poster = URLSessionJSONPoster()
-        poster.post(expectedURL, body: Data())
+        post(expectedURL)
 
         waitForExpectations(timeout: 0.1)
     }
@@ -120,8 +126,7 @@ class URLSessionJSONPosterTests: XCTestCase {
             return request.httpMethod == "POST"
         }
 
-        let poster = URLSessionJSONPoster()
-        poster.post(expectedURL, body: Data())
+        post(expectedURL)
 
         waitForExpectations(timeout: 0.1)
     }
@@ -150,8 +155,7 @@ class URLSessionJSONPosterTests: XCTestCase {
             return expectedData == data
         }
 
-        let poster = URLSessionJSONPoster()
-        poster.post(expectedURL, body: expectedData)
+        post(expectedURL, body: expectedData)
 
         waitForExpectations(timeout: 0.1)
     }
@@ -163,8 +167,7 @@ class URLSessionJSONPosterTests: XCTestCase {
             return request.allHTTPHeaderFields?["Content-Type"] == expectedContentType
         }
         
-        let poster = URLSessionJSONPoster()
-        poster.post(expectedURL, body: Data())
+        post(expectedURL)
         
         waitForExpectations(timeout: 0.1)
     }

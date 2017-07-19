@@ -22,7 +22,8 @@ struct EurofurenceFCMDeviceRegistration: FCMDeviceRegistration {
         let jsonData = try! JSONSerialization.data(withJSONObject: jsonDictionary, options: [])
 
         jsonPoster.post("https://app.eurofurence.org/api/v2/PushNotifications/FcmDeviceRegistration",
-                        body: jsonData)
+                        body: jsonData,
+                        completionHandler: { _ in })
     }
 
 }
