@@ -19,6 +19,7 @@ struct URLSessionJSONPoster: JSONPoster {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         request.httpBody = body
+        request.allHTTPHeaderFields = headers
 
         session.dataTask(with: request, completionHandler: { (_, _, _) in }).resume()
     }
