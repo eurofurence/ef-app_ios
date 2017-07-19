@@ -14,7 +14,6 @@ class ApplicationTestBuilder {
     struct Context {
         var application: EurofurenceApplication
         
-        var capturingLoginController: CapturingLoginController
         var capturingTokenRegistration: CapturingRemoteNotificationsTokenRegistration
         var capturingLoginCredentialsStore: CapturingLoginCredentialStore
         var jsonPoster: CapturingJSONPoster
@@ -28,20 +27,11 @@ class ApplicationTestBuilder {
             application.login(arguments)
         }
         
-        func notifyUserLoggedIn(_ token: String = "", expires: Date = .distantFuture) {
-            capturingLoginController.notifyUserLoggedIn(token, expires: expires)
-        }
-        
-        func notifyUserLoggedOut() {
-            capturingLoginController.notifyUserLoggedOut()
-        }
-        
         func simulateJSONResponse(_ data: Data?) {
             jsonPoster.invokeLastCompletionHandler(responseData: data)
         }
     }
     
-    private let capturingLoginController = CapturingLoginController()
     private let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
     private var capturingLoginCredentialsStore = CapturingLoginCredentialStore()
     private var stubClock = StubClock()
@@ -59,12 +49,10 @@ class ApplicationTestBuilder {
     
     func build() -> Context {
         let app = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration,
-                                         loginController: capturingLoginController,
                                          clock: stubClock,
                                          loginCredentialStore: capturingLoginCredentialsStore,
                                          jsonPoster: jsonPoster)
         return Context(application: app,
-                       capturingLoginController: capturingLoginController,
                        capturingTokenRegistration: capturingTokenRegistration,
                        capturingLoginCredentialsStore: capturingLoginCredentialsStore,
                        jsonPoster: jsonPoster)

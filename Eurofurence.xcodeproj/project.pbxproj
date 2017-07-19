@@ -188,8 +188,7 @@
 		CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780361F1D415A002A8333 /* MessagesViewController.swift */; };
 		CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780381F1D41C4002A8333 /* LoginViewController.swift */; };
 		CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */; };
-		CAD780431F1D4CA3002A8333 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780421F1D4CA3002A8333 /* LoginController.swift */; };
-		CAD780461F1D4E07002A8333 /* CapturingLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780451F1D4E07002A8333 /* CapturingLoginController.swift */; };
+		CAD780431F1D4CA3002A8333 /* LoginCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780421F1D4CA3002A8333 /* LoginCredential.swift */; };
 		CAD780491F1D51EB002A8333 /* StubClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780481F1D51EB002A8333 /* StubClock.swift */; };
 		CAD7804C1F1D5212002A8333 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7804B1F1D5212002A8333 /* Clock.swift */; };
 		CAD7804E1F1D5227002A8333 /* SystemClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7804D1F1D5227002A8333 /* SystemClock.swift */; };
@@ -439,8 +438,7 @@
 		CAD780361F1D415A002A8333 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CAD780381F1D41C4002A8333 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenLoginStateChanges.swift; path = "Application Tests/WhenLoginStateChanges.swift"; sourceTree = "<group>"; };
-		CAD780421F1D4CA3002A8333 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = Login/LoginController.swift; sourceTree = "<group>"; };
-		CAD780451F1D4E07002A8333 /* CapturingLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLoginController.swift; path = "Test Doubles/Services/Login/CapturingLoginController.swift"; sourceTree = "<group>"; };
+		CAD780421F1D4CA3002A8333 /* LoginCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginCredential.swift; path = Login/LoginCredential.swift; sourceTree = "<group>"; };
 		CAD780481F1D51EB002A8333 /* StubClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubClock.swift; path = "Test Doubles/Services/Clock/StubClock.swift"; sourceTree = "<group>"; };
 		CAD7804B1F1D5212002A8333 /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clock.swift; path = Clock/Clock.swift; sourceTree = "<group>"; };
 		CAD7804D1F1D5227002A8333 /* SystemClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SystemClock.swift; path = Clock/SystemClock.swift; sourceTree = "<group>"; };
@@ -1131,7 +1129,7 @@
 		CAD780411F1D4C98002A8333 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				CAD780421F1D4CA3002A8333 /* LoginController.swift */,
+				CAD780421F1D4CA3002A8333 /* LoginCredential.swift */,
 				CAD7804F1F1E2D13002A8333 /* LoginCredentialStore.swift */,
 				CAD780591F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift */,
 				CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */,
@@ -1142,7 +1140,6 @@
 		CAD780441F1D4DF7002A8333 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				CAD780451F1D4E07002A8333 /* CapturingLoginController.swift */,
 				CAD780511F1E2D2E002A8333 /* CapturingLoginCredentialStore.swift */,
 			);
 			name = Login;
@@ -1577,7 +1574,7 @@
 				9A0F87E71F1BADD200FF294B /* KeyedLocalNotificationStore.swift in Sources */,
 				9ACF99961EC858B2006FC958 /* EventConferenceTrack.swift in Sources */,
 				9ACF99911EC858B2006FC958 /* Image.swift in Sources */,
-				CAD780431F1D4CA3002A8333 /* LoginController.swift in Sources */,
+				CAD780431F1D4CA3002A8333 /* LoginCredential.swift in Sources */,
 				9ACF99931EC858B2006FC958 /* Dealer.swift in Sources */,
 				9A05254B1ECB097500578798 /* ApiConnectionProtocol.swift in Sources */,
 				9A34B9891ED35FE0004A249E /* ReactiveDataContext.swift in Sources */,
@@ -1762,7 +1759,6 @@
 				6EEC6DA11F1BF79F00205F2D /* FirebaseTopicTests.swift in Sources */,
 				7820A6F61F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift in Sources */,
 				CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */,
-				CAD780461F1D4E07002A8333 /* CapturingLoginController.swift in Sources */,
 				6EF96CCF1F0EDB2000EE6134 /* CalendarTestDoubles.swift in Sources */,
 				CAD780491F1D51EB002A8333 /* StubClock.swift in Sources */,
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,

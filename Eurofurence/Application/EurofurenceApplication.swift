@@ -8,7 +8,7 @@
 
 import Foundation
 
-class EurofurenceApplication: LoginStateObserver {
+class EurofurenceApplication {
 
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
     private var clock: Clock
@@ -20,7 +20,6 @@ class EurofurenceApplication: LoginStateObserver {
     private var loginObservers = [LoginObserver]()
 
     init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
-         loginController: LoginController,
          clock: Clock,
          loginCredentialStore: LoginCredentialStore,
          jsonPoster: JSONPoster) {
@@ -28,8 +27,6 @@ class EurofurenceApplication: LoginStateObserver {
         self.clock = clock
         self.loginCredentialStore = loginCredentialStore
         self.jsonPoster = jsonPoster
-
-        loginController.add(self)
 
         if let credential = loginCredentialStore.persistedCredential, isCredentialValid(credential) {
             userAuthenticationToken = credential.authenticationToken
@@ -89,22 +86,6 @@ class EurofurenceApplication: LoginStateObserver {
         registeredDeviceToken = deviceToken
         remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken,
                                                                                     userAuthenticationToken: userAuthenticationToken)
-    }
-
-    func userDidLogin(credential: LoginCredential) {
-        if isCredentialValid(credential) {
-            userAuthenticationToken = credential.authenticationToken
-            loginCredentialStore.store(credential)
-        }
-
-        guard let registeredDeviceToken = registeredDeviceToken else { return }
-
-        remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(registeredDeviceToken,
-                                                                                    userAuthenticationToken: userAuthenticationToken)
-    }
-
-    func userDidLogout() {
-        loginCredentialStore.deletePersistedToken()
     }
 
     private func isCredentialValid(_ credential: LoginCredential) -> Bool {

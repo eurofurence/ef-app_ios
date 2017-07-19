@@ -33,14 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                                                                 firebaseAdapter: FirebaseMessagingAdapter(),
                                                                                                 fcmRegistration: fcmRegistration)
 
-        struct DummyLoginController: LoginController {
-            func add(_ observer: LoginStateObserver) {
-
-            }
-        }
-
         app = EurofurenceApplication(remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
-                                     loginController: DummyLoginController(),
                                      clock: SystemClock(),
                                      loginCredentialStore: KeychainLoginCredentialStore(),
                                      jsonPoster: URLSessionJSONPoster())
