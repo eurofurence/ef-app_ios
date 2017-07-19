@@ -16,7 +16,7 @@ struct EurofurenceFCMDeviceRegistration: FCMDeviceRegistration {
         self.jsonPoster = jsonPoster
     }
 
-    func registerFCM(_ fcm: String, topics: [FirebaseTopic]) {
+    func registerFCM(_ fcm: String, topics: [FirebaseTopic], authenticationToken: String?) {
         let formattedTopics = topics.map({ $0.description })
         let jsonDictionary: [String : Any] = ["DeviceId": fcm, "Topics": formattedTopics]
         let jsonData = try! JSONSerialization.data(withJSONObject: jsonDictionary, options: [])

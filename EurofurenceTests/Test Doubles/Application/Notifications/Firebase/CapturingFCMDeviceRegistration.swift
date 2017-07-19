@@ -13,9 +13,11 @@ class CapturingFCMDeviceRegistration: FCMDeviceRegistration {
 
     private(set) var capturedFCM: String?
     private var topics = [FirebaseTopic]()
-    func registerFCM(_ fcm: String, topics: [FirebaseTopic]) {
+    private(set) var capturedAuthenticationToken: String?
+    func registerFCM(_ fcm: String, topics: [FirebaseTopic], authenticationToken: String?) {
         capturedFCM = fcm
         self.topics = topics
+        capturedAuthenticationToken = authenticationToken
     }
 
     var registeredTestTopic: Bool {

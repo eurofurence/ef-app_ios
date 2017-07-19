@@ -14,7 +14,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
     func testRegisteringTheFCMTokenSubmitsPOSTRequestToFCMRegistrationURL() {
         let capturingJSONPoster = CapturingJSONPoster()
         let registration = EurofurenceFCMDeviceRegistration(jsonPoster: capturingJSONPoster)
-        registration.registerFCM("", topics: [])
+        registration.registerFCM("", topics: [], authenticationToken: "")
         let expectedURL = "https://app.eurofurence.org/api/v2/PushNotifications/FcmDeviceRegistration"
 
         XCTAssertEqual(expectedURL, capturingJSONPoster.postedURL)
@@ -31,7 +31,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
         let capturingJSONPoster = CapturingJSONPoster()
         let registration = EurofurenceFCMDeviceRegistration(jsonPoster: capturingJSONPoster)
         let fcm = "Something unique"
-        registration.registerFCM(fcm, topics: [])
+        registration.registerFCM(fcm, topics: [], authenticationToken: "")
 
         XCTAssertEqual(fcm, capturingJSONPoster.postedJSONValue(forKey: "DeviceId"))
     }
@@ -40,7 +40,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
         let capturingJSONPoster = CapturingJSONPoster()
         let registration = EurofurenceFCMDeviceRegistration(jsonPoster: capturingJSONPoster)
         let topic = FirebaseTopic.live
-        registration.registerFCM("", topics: [topic])
+        registration.registerFCM("", topics: [topic], authenticationToken: "")
         let expected: [String] = [topic.description]
 
         XCTAssertEqual(expected, capturingJSONPoster.postedJSONValue(forKey: "Topics") ?? [])
@@ -50,7 +50,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
         let capturingJSONPoster = CapturingJSONPoster()
         let registration = EurofurenceFCMDeviceRegistration(jsonPoster: capturingJSONPoster)
         let topic = FirebaseTopic.test
-        registration.registerFCM("", topics: [topic])
+        registration.registerFCM("", topics: [topic], authenticationToken: "")
         let expected: [String] = [topic.description]
 
         XCTAssertEqual(expected, capturingJSONPoster.postedJSONValue(forKey: "Topics") ?? [])
@@ -60,7 +60,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
         let capturingJSONPoster = CapturingJSONPoster()
         let registration = EurofurenceFCMDeviceRegistration(jsonPoster: capturingJSONPoster)
         let topics: [FirebaseTopic] = [.test, .live]
-        registration.registerFCM("", topics: topics)
+        registration.registerFCM("", topics: topics, authenticationToken: "")
         let expected: [String] = topics.map({ $0.description })
 
         XCTAssertEqual(expected, capturingJSONPoster.postedJSONValue(forKey: "Topics") ?? [])
