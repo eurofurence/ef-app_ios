@@ -239,4 +239,24 @@ class WhenLoggingIn: XCTestCase {
         XCTAssertNil(context.jsonPoster.postedURL)
     }
     
+    func testLoggingInSuccessfullyThenRegisteringPushTokenShouldProvideAuthTokenWithPushRegistration() {
+        let context = ApplicationTestBuilder().build()
+        let expectedToken = "JWT Token"
+        context.login()
+        context.simulateJSONResponse(makeSuccessfulLoginData(authToken: expectedToken))
+        context.application.registerRemoteNotifications(deviceToken: Data())
+        
+        XCTAssertEqual(expectedToken, context.capturingTokenRegistration.capturedUserAuthenticationToken)
+    }
+    
+    func testLoggingInAfterRegisteringPushTokenShouldReRegisterThePushTokenWithTheUserAuthenticationToken() {
+        let context = ApplicationTestBuilder().build()
+        let expectedToken = "JWT Token"
+        context.application.registerRemoteNotifications(deviceToken: Data())
+        context.login()
+        context.simulateJSONResponse(makeSuccessfulLoginData(authToken: expectedToken))
+        
+        XCTAssertEqual(expectedToken, context.capturingTokenRegistration.capturedUserAuthenticationToken)
+    }
+    
 }

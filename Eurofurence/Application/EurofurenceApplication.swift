@@ -77,6 +77,12 @@ class EurofurenceApplication: LoginStateObserver {
                                          tokenExpiryDate: response.authTokenExpiry)
         loginCredentialStore.store(credential)
         loginObservers.forEach { $0.loginSucceeded() }
+        userAuthenticationToken = credential.authenticationToken
+
+        if let registeredDeviceToken = registeredDeviceToken {
+            remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(registeredDeviceToken,
+                                                                                        userAuthenticationToken: userAuthenticationToken)
+        }
     }
 
     func registerRemoteNotifications(deviceToken: Data) {
