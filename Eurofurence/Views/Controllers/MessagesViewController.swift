@@ -44,6 +44,12 @@ class MessagesViewController: UITableViewController,
 
     // MARK: LoginViewControllerDelegate
 
+    func loginViewControllerDidLoginSuccessfully(_ loginController: LoginViewController) {
+        dismiss(animated: true) {
+            // TODO: This is where we'd show messages
+        }
+    }
+
     func loginViewControllerDidCancel(_ loginController: LoginViewController) {
         dismiss(animated: true) {
             self.messagesDelegate?.messagesViewControllerDidRequestDismissal(self)
