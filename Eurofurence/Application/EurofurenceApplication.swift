@@ -61,8 +61,16 @@ class EurofurenceApplication: LoginStateObserver {
             return
         }
 
-        guard let jsonObject = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments) else { return }
-        guard let jsonDictionary = jsonObject as? [String : Any] else { return }
+        guard let jsonObject = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments) else {
+            loginObservers.forEach { $0.loginFailed() }
+            return
+        }
+
+        guard let jsonDictionary = jsonObject as? [String : Any] else {
+            loginObservers.forEach { $0.loginFailed() }
+            return
+        }
+
         guard let username = jsonDictionary["Username"] as? String else { return }
         guard let userIDString = jsonDictionary["Uid"] as? String else { return }
 

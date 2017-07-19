@@ -22,6 +22,16 @@ class WhenLoggingIn: XCTestCase {
         return try! JSONSerialization.data(withJSONObject: payload, options: [])
     }
     
+    private func makeObserverForVerifyingLoginFailure(_ data: Data?) -> CapturingLoginObserver {
+        let context = ApplicationTestBuilder().build()
+        let loginObserver = CapturingLoginObserver()
+        context.application.add(loginObserver)
+        context.login()
+        context.simulateJSONResponse(data)
+        
+        return loginObserver
+    }
+    
     func testTheLoginEndpointShouldReceievePOSTRequest() {
         let context = ApplicationTestBuilder().build()
         context.login()
@@ -59,12 +69,17 @@ class WhenLoggingIn: XCTestCase {
     }
     
     func testLoginResponseReturnsNilDataShouldTellTheObserverLoginFailed() {
-        let context = ApplicationTestBuilder().build()
-        let loginObserver = CapturingLoginObserver()
-        context.application.add(loginObserver)
-        context.login()
-        context.simulateJSONResponse(nil)
-        
+        let loginObserver = makeObserverForVerifyingLoginFailure(nil)
+        XCTAssertTrue(loginObserver.notifiedLoginFailed)
+    }
+    
+    func testLoginResponseReturnsInvalidJSONShouldTellTheObserverLoginFailed() {
+        let loginObserver = makeObserverForVerifyingLoginFailure("Not json!".data(using: .utf8))
+        XCTAssertTrue(loginObserver.notifiedLoginFailed)
+    }
+    
+    func testLoginResponseReturnsWrongRootJSONTypeShouldTellTheObserverLoginFailed() {
+        let loginObserver = makeObserverForVerifyingLoginFailure("[]".data(using: .utf8))
         XCTAssertTrue(loginObserver.notifiedLoginFailed)
     }
     
