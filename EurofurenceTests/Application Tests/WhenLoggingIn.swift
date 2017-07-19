@@ -11,15 +11,33 @@ import XCTest
 
 class WhenLoggingIn: XCTestCase {
     
+    private func makeSuccessfulLoginPayload(username: String = "",
+                                            userID: String = "0",
+                                            authToken: String = "",
+                                            validUntil: String = "2017-07-17T19:45:22.666Z") -> [String : String] {
+        return ["Username" : username,
+                "Uid": userID,
+                "Token" : authToken,
+                "TokenValidUntil": validUntil]
+    }
+    
     private func makeSuccessfulLoginData(username: String = "",
                                          userID: String = "0",
                                          authToken: String = "",
                                          validUntil: String = "2017-07-17T19:45:22.666Z") -> Data {
-        let payload = ["Username" : username,
-                       "Uid": userID,
-                       "Token" : authToken,
-                       "TokenValidUntil": validUntil]
+        let payload = makeSuccessfulLoginPayload(username: username, userID: userID, authToken: authToken, validUntil: validUntil)
         return try! JSONSerialization.data(withJSONObject: payload, options: [])
+    }
+    
+    private func makeObserverForVerifyingLoginFailure(missingKey: String) -> CapturingLoginObserver {
+        var payload = makeSuccessfulLoginPayload()
+        payload.removeValue(forKey: missingKey)
+        return makeObserverForVerifyingLoginFailure(payload)
+    }
+    
+    private func makeObserverForVerifyingLoginFailure(_ payload: [String : String]) -> CapturingLoginObserver {
+        let data = try! JSONSerialization.data(withJSONObject: payload, options: [])
+        return makeObserverForVerifyingLoginFailure(data)
     }
     
     private func makeObserverForVerifyingLoginFailure(_ data: Data?) -> CapturingLoginObserver {
@@ -80,6 +98,40 @@ class WhenLoggingIn: XCTestCase {
     
     func testLoginResponseReturnsWrongRootJSONTypeShouldTellTheObserverLoginFailed() {
         let loginObserver = makeObserverForVerifyingLoginFailure("[]".data(using: .utf8))
+        XCTAssertTrue(loginObserver.notifiedLoginFailed)
+    }
+    
+    func testLoginResponseMissingUsernameFieldShouldTellTheObserverLoginFailed() {
+        let loginObserver = makeObserverForVerifyingLoginFailure(missingKey: "Username")
+        XCTAssertTrue(loginObserver.notifiedLoginFailed)
+    }
+    
+    func testLoginResponseMissingUserIDFieldShouldTellTheObserverLoginFailed() {
+        let loginObserver = makeObserverForVerifyingLoginFailure(missingKey: "Uid")
+        XCTAssertTrue(loginObserver.notifiedLoginFailed)
+    }
+    
+    func testLoginResponseContainingUserIDAsSomethingOtherThanIntegerShouldTellTheObserverLoginFailed() {
+        let payload = makeSuccessfulLoginPayload(userID: "Not an int!")
+        let loginObserver = makeObserverForVerifyingLoginFailure(payload)
+        
+        XCTAssertTrue(loginObserver.notifiedLoginFailed)
+    }
+    
+    func testLoginResponseMissingTokenFieldShouldTellTheObserverLoginFailed() {
+        let loginObserver = makeObserverForVerifyingLoginFailure(missingKey: "Token")
+        XCTAssertTrue(loginObserver.notifiedLoginFailed)
+    }
+    
+    func testLoginResponseMissingTokenExpiryFieldShouldTellTheObserverLoginFailed() {
+        let loginObserver = makeObserverForVerifyingLoginFailure(missingKey: "TokenValidUntil")
+        XCTAssertTrue(loginObserver.notifiedLoginFailed)
+    }
+    
+    func testLoginResponseContainingTokenExpiryAsSomethingOtherThanExpectedDateShouldTellTheObserverLoginFailed() {
+        let payload = makeSuccessfulLoginPayload(validUntil: "Some weird format")
+        let loginObserver = makeObserverForVerifyingLoginFailure(payload)
+        
         XCTAssertTrue(loginObserver.notifiedLoginFailed)
     }
     

@@ -71,15 +71,36 @@ class EurofurenceApplication: LoginStateObserver {
             return
         }
 
-        guard let username = jsonDictionary["Username"] as? String else { return }
-        guard let userIDString = jsonDictionary["Uid"] as? String else { return }
+        guard let username = jsonDictionary["Username"] as? String else {
+            loginObservers.forEach { $0.loginFailed() }
+            return
+        }
+
+        guard let userIDString = jsonDictionary["Uid"] as? String else {
+            loginObservers.forEach { $0.loginFailed() }
+            return
+        }
 
         var userID: Int = 0
-        guard Scanner(string: userIDString).scanInt(&userID) else { return }
+        guard Scanner(string: userIDString).scanInt(&userID) else {
+            loginObservers.forEach { $0.loginFailed() }
+            return
+        }
 
-        guard let authToken = jsonDictionary["Token"] as? String else { return }
-        guard let dateString = jsonDictionary["TokenValidUntil"] as? String else { return }
-        guard let expiry = dateFormatter.date(from: dateString) else { return }
+        guard let authToken = jsonDictionary["Token"] as? String else {
+            loginObservers.forEach { $0.loginFailed() }
+            return
+        }
+
+        guard let dateString = jsonDictionary["TokenValidUntil"] as? String else {
+            loginObservers.forEach { $0.loginFailed() }
+            return
+        }
+
+        guard let expiry = dateFormatter.date(from: dateString) else {
+            loginObservers.forEach { $0.loginFailed() }
+            return
+        }
 
         let credential = LoginCredential(username: username,
                                          registrationNumber: userID,
