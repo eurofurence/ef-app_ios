@@ -51,10 +51,8 @@ class UserAuthenticationCoordinator {
                                                  "Username": arguments.username,
                                                  "Password": arguments.password]
             let jsonData = try JSONSerialization.data(withJSONObject: postArguments, options: [])
-            jsonPoster.post("https://app.eurofurence.org/api/v2/Tokens/RegSys",
-                            body: jsonData,
-                            headers: [:],
-                            completionHandler: handleNetworkLoginResponse)
+            let request = POSTRequest(url: "https://app.eurofurence.org/api/v2/Tokens/RegSys", body: jsonData)
+            jsonPoster.post(request, completionHandler: handleNetworkLoginResponse)
         } catch {
             print("Unable to perform login due to error: \(error)")
         }
