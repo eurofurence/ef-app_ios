@@ -213,4 +213,30 @@ class WhenLoggingIn: XCTestCase {
         XCTAssertFalse(loginObserver.notifiedLoginFailed)
     }
     
+    func testBeingLoggedInThenLoggingInShouldNotifyObserverLoginSuccessful() {
+        let credential = LoginCredential(username: "",
+                                         registrationNumber: 0,
+                                         authenticationToken: "",
+                                         tokenExpiryDate: .distantFuture)
+        let context = ApplicationTestBuilder().with(credential).build()
+        let loginObserver = CapturingLoginObserver()
+        context.application.add(loginObserver)
+        context.login()
+        
+        XCTAssertTrue(loginObserver.notifiedLoginSucceeded)
+    }
+    
+    func testBeingLoggedInThenLoggingInShouldNotRequestTheLoginEndpoint() {
+        let credential = LoginCredential(username: "",
+                                         registrationNumber: 0,
+                                         authenticationToken: "",
+                                         tokenExpiryDate: .distantFuture)
+        let context = ApplicationTestBuilder().with(credential).build()
+        let loginObserver = CapturingLoginObserver()
+        context.application.add(loginObserver)
+        context.login()
+        
+        XCTAssertNil(context.jsonPoster.postedURL)
+    }
+    
 }

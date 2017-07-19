@@ -41,6 +41,14 @@ class EurofurenceApplication: LoginStateObserver {
     }
 
     func login(_ arguments: LoginArguments) {
+        if userAuthenticationToken == nil {
+            performLogin(arguments: arguments)
+        } else {
+            loginObservers.forEach { $0.loginSucceeded() }
+        }
+    }
+
+    private func performLogin(arguments: LoginArguments) {
         do {
             let postArguments: [String : Any] = ["RegNo": arguments.registrationNumber,
                                                  "Username": arguments.username,
