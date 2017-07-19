@@ -10,6 +10,20 @@ import Foundation
 
 class EurofurenceApplication {
 
+    static var shared: EurofurenceApplication = {
+        let buildConfiguration = PreprocessorBuildConfigurationProviding()
+        let fcmRegistration = EurofurenceFCMDeviceRegistration(jsonPoster: URLSessionJSONPoster())
+        let tokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfiguration,
+                                                                             appVersion: BundleAppVersionProviding(),
+                                                                             firebaseAdapter: FirebaseMessagingAdapter(),
+                                                                             fcmRegistration: fcmRegistration)
+
+        return EurofurenceApplication(remoteNotificationsTokenRegistration: tokenRegistration,
+                                      clock: SystemClock(),
+                                      loginCredentialStore: KeychainLoginCredentialStore(),
+                                      jsonPoster: URLSessionJSONPoster())
+    }()
+
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
     private var authenticationCoordinator: UserAuthenticationCoordinator
     private var registeredDeviceToken: Data?
