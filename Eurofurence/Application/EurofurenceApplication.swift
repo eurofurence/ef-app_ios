@@ -41,8 +41,14 @@ class EurofurenceApplication {
         if userAuthenticationToken == nil {
             performLogin(arguments: arguments)
         } else {
-            userAuthenticationObservers.forEach { $0.userAuthenticationAuthorized() }
+            notifyUserAuthorized()
         }
+    }
+
+    func registerRemoteNotifications(deviceToken: Data) {
+        registeredDeviceToken = deviceToken
+        remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken,
+                                                                                    userAuthenticationToken: userAuthenticationToken)
     }
 
     private func performLogin(arguments: LoginArguments) {
@@ -63,8 +69,8 @@ class EurofurenceApplication {
         guard let responseData = responseData,
               let json = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments),
               let jsonDictionary = json as? [String : Any],
-              let response = LoginResponse(json: jsonDictionary) else {
-            userAuthenticationObservers.forEach { $0.userAuthenticationUnauthorized() }
+              let response = JSONLoginResponse(json: jsonDictionary) else {
+            notifyUserUnauthorized()
             return
         }
 
@@ -73,7 +79,7 @@ class EurofurenceApplication {
                                          authenticationToken: response.authToken,
                                          tokenExpiryDate: response.authTokenExpiry)
         loginCredentialStore.store(credential)
-        userAuthenticationObservers.forEach { $0.userAuthenticationAuthorized() }
+        notifyUserAuthorized()
         userAuthenticationToken = credential.authenticationToken
 
         if let registeredDeviceToken = registeredDeviceToken {
@@ -82,42 +88,16 @@ class EurofurenceApplication {
         }
     }
 
-    func registerRemoteNotifications(deviceToken: Data) {
-        registeredDeviceToken = deviceToken
-        remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken,
-                                                                                    userAuthenticationToken: userAuthenticationToken)
+    private func notifyUserAuthorized() {
+        userAuthenticationObservers.forEach { $0.userAuthenticationAuthorized() }
+    }
+
+    private func notifyUserUnauthorized() {
+        userAuthenticationObservers.forEach { $0.userAuthenticationUnauthorized() }
     }
 
     private func isCredentialValid(_ credential: LoginCredential) -> Bool {
         return clock.currentDate.compare(credential.tokenExpiryDate) == .orderedAscending
-    }
-
-}
-
-fileprivate struct LoginResponse {
-
-    private static let dateFormatter = Iso8601DateFormatter()
-
-    var userID: Int
-    var username: String
-    var authToken: String
-    var authTokenExpiry: Date
-
-    init?(json: [String : Any]) {
-        var userID: Int = 0
-        guard let username = json["Username"] as? String,
-               let userIDString = json["Uid"] as? String,
-               let authToken = json["Token"] as? String,
-               let dateString = json["TokenValidUntil"] as? String,
-               let expiry = LoginResponse.dateFormatter.date(from: dateString),
-               Scanner(string: userIDString).scanInt(&userID) else {
-            return nil
-        }
-
-        self.userID = userID
-        self.username = username
-        self.authToken = authToken
-        self.authTokenExpiry = expiry
     }
 
 }
