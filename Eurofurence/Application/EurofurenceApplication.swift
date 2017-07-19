@@ -17,7 +17,6 @@ class EurofurenceApplication: LoginStateObserver {
     private var userAuthenticationTokenValid = false
     private var registeredDeviceToken: Data?
     private var userAuthenticationToken: String?
-    private let dateFormatter = Iso8601DateFormatter()
     private var loginObservers = [LoginObserver]()
 
     init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
@@ -56,56 +55,18 @@ class EurofurenceApplication: LoginStateObserver {
     }
 
     private func handleNetworkLoginResponse(_ responseData: Data?) {
-        guard let responseData = responseData else {
+        guard let responseData = responseData,
+              let json = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments),
+              let jsonDictionary = json as? [String : Any],
+              let response = LoginResponse(json: jsonDictionary) else {
             loginObservers.forEach { $0.loginFailed() }
             return
         }
 
-        guard let jsonObject = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments) else {
-            loginObservers.forEach { $0.loginFailed() }
-            return
-        }
-
-        guard let jsonDictionary = jsonObject as? [String : Any] else {
-            loginObservers.forEach { $0.loginFailed() }
-            return
-        }
-
-        guard let username = jsonDictionary["Username"] as? String else {
-            loginObservers.forEach { $0.loginFailed() }
-            return
-        }
-
-        guard let userIDString = jsonDictionary["Uid"] as? String else {
-            loginObservers.forEach { $0.loginFailed() }
-            return
-        }
-
-        var userID: Int = 0
-        guard Scanner(string: userIDString).scanInt(&userID) else {
-            loginObservers.forEach { $0.loginFailed() }
-            return
-        }
-
-        guard let authToken = jsonDictionary["Token"] as? String else {
-            loginObservers.forEach { $0.loginFailed() }
-            return
-        }
-
-        guard let dateString = jsonDictionary["TokenValidUntil"] as? String else {
-            loginObservers.forEach { $0.loginFailed() }
-            return
-        }
-
-        guard let expiry = dateFormatter.date(from: dateString) else {
-            loginObservers.forEach { $0.loginFailed() }
-            return
-        }
-
-        let credential = LoginCredential(username: username,
-                                         registrationNumber: userID,
-                                         authenticationToken: authToken,
-                                         tokenExpiryDate: expiry)
+        let credential = LoginCredential(username: response.username,
+                                         registrationNumber: response.userID,
+                                         authenticationToken: response.authToken,
+                                         tokenExpiryDate: response.authTokenExpiry)
         loginCredentialStore.store(credential)
         loginObservers.forEach { $0.loginSucceeded() }
     }
@@ -134,6 +95,34 @@ class EurofurenceApplication: LoginStateObserver {
 
     private func isCredentialValid(_ credential: LoginCredential) -> Bool {
         return clock.currentDate.compare(credential.tokenExpiryDate) == .orderedAscending
+    }
+
+}
+
+fileprivate struct LoginResponse {
+
+    private static let dateFormatter = Iso8601DateFormatter()
+
+    var userID: Int
+    var username: String
+    var authToken: String
+    var authTokenExpiry: Date
+
+    init?(json: [String : Any]) {
+        var userID: Int = 0
+        guard let username = json["Username"] as? String,
+               let userIDString = json["Uid"] as? String,
+               let authToken = json["Token"] as? String,
+               let dateString = json["TokenValidUntil"] as? String,
+               let expiry = LoginResponse.dateFormatter.date(from: dateString),
+               Scanner(string: userIDString).scanInt(&userID) else {
+            return nil
+        }
+
+        self.userID = userID
+        self.username = username
+        self.authToken = authToken
+        self.authTokenExpiry = expiry
     }
 
 }
