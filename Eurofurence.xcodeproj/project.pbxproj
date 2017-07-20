@@ -151,6 +151,7 @@
 		9A8477981ED99EDE00F0DF3F /* NavigationResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8477971ED99EDE00F0DF3F /* NavigationResolver.swift */; };
 		9A9487FD1F1D5D9300119DC8 /* EventNotificationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9487FC1F1D5D9300119DC8 /* EventNotificationPreferences.swift */; };
 		9A9487FF1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9487FE1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift */; };
+		9A9488011F21382E00119DC8 /* EventsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9488001F21382E00119DC8 /* EventsEntity.swift */; };
 		9AB64BC91EFE6592004E8D91 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB64BC81EFE6592004E8D91 /* EventsViewModel.swift */; };
 		9AB64BCB1F018135004E8D91 /* KnowledgeGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB64BCA1F018135004E8D91 /* KnowledgeGroupCell.swift */; };
 		9AB64BCD1F018365004E8D91 /* KnowledgeEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB64BCC1F018365004E8D91 /* KnowledgeEntryCell.swift */; };
@@ -393,6 +394,7 @@
 		9A8477971ED99EDE00F0DF3F /* NavigationResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationResolver.swift; sourceTree = "<group>"; };
 		9A9487FC1F1D5D9300119DC8 /* EventNotificationPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventNotificationPreferences.swift; sourceTree = "<group>"; };
 		9A9487FE1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsEventNotificationPreferences.swift; sourceTree = "<group>"; };
+		9A9488001F21382E00119DC8 /* EventsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsEntity.swift; sourceTree = "<group>"; };
 		9AB64BC81EFE6592004E8D91 /* EventsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
 		9AB64BCA1F018135004E8D91 /* KnowledgeGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupCell.swift; sourceTree = "<group>"; };
 		9AB64BCC1F018365004E8D91 /* KnowledgeEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryCell.swift; sourceTree = "<group>"; };
@@ -1004,6 +1006,7 @@
 				9ACF997F1EC75B81006FC958 /* Api */,
 				9ACF995C1EBE3479006FC958 /* EntityBase.swift */,
 				9A34B9771ECF6E3B004A249E /* Iso8601DateFormatter.swift */,
+				9A9488001F21382E00119DC8 /* EventsEntity.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -1565,6 +1568,7 @@
 				6EF96CCC1F0EDB0500EE6134 /* CalendarEvent.swift in Sources */,
 				78D7EEC41F196C4A005372A9 /* PreprocessorBuildConfigurationProviding.swift in Sources */,
 				78C86D691F123F68003A20E6 /* ApplicationContext.swift in Sources */,
+				9A9488011F21382E00119DC8 /* EventsEntity.swift in Sources */,
 				9ACF99761EBE3B4C006FC958 /* SharedFunctions.swift in Sources */,
 				9A34B97A1ECF87B2004A249E /* ContextManager.swift in Sources */,
 				9AB64BC91EFE6592004E8D91 /* EventsViewModel.swift in Sources */,
