@@ -15,7 +15,7 @@ class UserAuthenticationCoordinator {
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
     private var clock: Clock
     private var loginCredentialStore: LoginCredentialStore
-    private var jsonPoster: JSONPoster
+    private var loginAPI: V2LoginAPI
     private var userAuthenticationTokenValid = false
     private var userAuthenticationObservers = [UserAuthenticationObserver]()
 
@@ -25,8 +25,8 @@ class UserAuthenticationCoordinator {
          remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration) {
         self.clock = clock
         self.loginCredentialStore = loginCredentialStore
-        self.jsonPoster = jsonPoster
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
+        loginAPI = V2LoginAPI(jsonPoster: jsonPoster)
 
         if let credential = loginCredentialStore.persistedCredential, isCredentialValid(credential) {
             userAuthenticationToken = credential.authenticationToken
@@ -51,31 +51,20 @@ class UserAuthenticationCoordinator {
     }
 
     private func performLogin(arguments: LoginArguments) {
-        do {
-            let postArguments: [String : Any] = ["RegNo": arguments.registrationNumber,
-                                                 "Username": arguments.username,
-                                                 "Password": arguments.password]
-            let jsonData = try JSONSerialization.data(withJSONObject: postArguments, options: [])
-            let request = POSTRequest(url: "https://app.eurofurence.org/api/v2/Tokens/RegSys", body: jsonData)
-            jsonPoster.post(request, completionHandler: handleNetworkLoginResponse)
-        } catch {
-            print("Unable to perform login due to error: \(error)")
+        loginAPI.performLogin(arguments: arguments, completionHandler: handleLoginResult)
+    }
+
+    private func handleLoginResult(_ result: V2LoginAPI.Result) {
+        switch result {
+        case .success(let credential):
+            processFetchedCredential(credential)
+
+        case .failure:
+            notifyUserUnauthorized()
         }
     }
 
-    private func handleNetworkLoginResponse(_ responseData: Data?) {
-        guard let responseData = responseData,
-            let json = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments),
-            let jsonDictionary = json as? [String : Any],
-            let response = JSONLoginResponse(json: jsonDictionary) else {
-                notifyUserUnauthorized()
-                return
-        }
-
-        let credential = LoginCredential(username: response.username,
-                                         registrationNumber: response.userID,
-                                         authenticationToken: response.authToken,
-                                         tokenExpiryDate: response.authTokenExpiry)
+    private func processFetchedCredential(_ credential: LoginCredential) {
         loginCredentialStore.store(credential)
         notifyUserAuthorized()
         userAuthenticationToken = credential.authenticationToken
