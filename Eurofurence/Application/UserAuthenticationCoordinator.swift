@@ -21,7 +21,6 @@ class UserAuthenticationCoordinator {
 
     init(clock: Clock,
          loginCredentialStore: LoginCredentialStore,
-         jsonPoster: JSONPoster,
          remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
          loginAPI: LoginAPI) {
         self.loginAPI = loginAPI

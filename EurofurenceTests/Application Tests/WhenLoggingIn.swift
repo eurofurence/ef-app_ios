@@ -133,7 +133,7 @@ class WhenLoggingIn: XCTestCase {
         XCTAssertTrue(userAuthenticationObserver.notifiedLoginSucceeded)
     }
     
-    func testBeingLoggedInThenLoggingInShouldNotRequestTheLoginEndpoint() {
+    func testBeingLoggedInThenLoggingInShouldNotRequestTheAPIToLogin() {
         let credential = LoginCredential(username: "",
                                          registrationNumber: 0,
                                          authenticationToken: "",
@@ -143,7 +143,7 @@ class WhenLoggingIn: XCTestCase {
         context.application.add(userAuthenticationObserver)
         context.login()
         
-        XCTAssertNil(context.jsonPoster.postedURL)
+        XCTAssertNil(context.loginAPI.capturedLoginArguments)
     }
     
     func testLoggingInSuccessfullyThenRegisteringPushTokenShouldProvideAuthTokenWithPushRegistration() {

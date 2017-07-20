@@ -21,7 +21,6 @@ class EurofurenceApplication {
         return EurofurenceApplication(remoteNotificationsTokenRegistration: tokenRegistration,
                                       clock: SystemClock(),
                                       loginCredentialStore: KeychainLoginCredentialStore(),
-                                      jsonPoster: URLSessionJSONPoster(),
                                       loginAPI: V2LoginAPI(jsonPoster: URLSessionJSONPoster()))
     }()
 
@@ -32,12 +31,10 @@ class EurofurenceApplication {
     init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
          clock: Clock,
          loginCredentialStore: LoginCredentialStore,
-         jsonPoster: JSONPoster,
          loginAPI: LoginAPI) {
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
         authenticationCoordinator = UserAuthenticationCoordinator(clock: clock,
                                                                   loginCredentialStore: loginCredentialStore,
-                                                                  jsonPoster: jsonPoster,
                                                                   remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
                                                                   loginAPI: loginAPI)
     }
