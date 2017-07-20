@@ -167,14 +167,33 @@ class WhenLoggingIn: XCTestCase {
         XCTAssertFalse(loginObserver.notifiedLoginSucceeded)
     }
     
-    func testAddingObserverAfterBeingLoggedInShouldTellObserverUserLoggedIn() {
+    func testAddingAuthenticationObserverAfterBeingLoggedInShouldTellItWeAreLoggedIn() {
         let context = ApplicationTestBuilder().build()
-        let loginObserver = CapturingLoginObserver()
+        let authenticationStateObserver = CapturingAuthenticationStateObserver()
         context.login()
         context.loginAPI.simulateResponse(makeLoginResponse())
-        context.application.add(loginObserver)
+        context.application.add(authenticationStateObserver)
         
-        XCTAssertTrue(loginObserver.notifiedLoginSucceeded)
+        XCTAssertTrue(authenticationStateObserver.didLogIn)
+    }
+    
+    func testLoggingInShouldTellAuthenticationStateObserversWeAreLoggedIn() {
+        let context = ApplicationTestBuilder().build()
+        let authenticationStateObserver = CapturingAuthenticationStateObserver()
+        context.application.add(authenticationStateObserver)
+        context.login()
+        context.loginAPI.simulateResponse(makeLoginResponse())
+        
+        XCTAssertTrue(authenticationStateObserver.didLogIn)
+    }
+    
+    func testLoggingInShouldNotTellAuthenticationStateObserversWeAreLoggedInUntilLoginSucceeds() {
+        let context = ApplicationTestBuilder().build()
+        let authenticationStateObserver = CapturingAuthenticationStateObserver()
+        context.application.add(authenticationStateObserver)
+        context.login()
+        
+        XCTAssertFalse(authenticationStateObserver.didLogIn)
     }
     
 }

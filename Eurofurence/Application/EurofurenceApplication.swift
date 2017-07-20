@@ -47,6 +47,10 @@ class EurofurenceApplication {
         authenticationCoordinator.remove(loginObserver)
     }
 
+    func add(_ authenticationStateObserver: AuthenticationStateObserver) {
+        authenticationCoordinator.add(authenticationStateObserver)
+    }
+
     func login(_ arguments: LoginArguments) {
         authenticationCoordinator.login(arguments)
     }

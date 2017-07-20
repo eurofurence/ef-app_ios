@@ -18,6 +18,7 @@ class UserAuthenticationCoordinator {
     private var loginCredentialStore: LoginCredentialStore
     private var userAuthenticationTokenValid = false
     private var loginObservers = [LoginObserver]()
+    private var authenticationStateObservers = [AuthenticationStateObserver]()
     private var userRegistrationNumber: Int?
 
     private var isLoggedIn: Bool {
@@ -40,10 +41,6 @@ class UserAuthenticationCoordinator {
 
     func add(_ loginObserver: LoginObserver) {
         loginObservers.append(loginObserver)
-
-        if isLoggedIn {
-            loginObserver.userDidLogin()
-        }
     }
 
     func remove(_ loginObserver: LoginObserver) {
@@ -51,9 +48,17 @@ class UserAuthenticationCoordinator {
         loginObservers.remove(at: idx)
     }
 
+    func add(_ authenticationStateObserver: AuthenticationStateObserver) {
+        authenticationStateObservers.append(authenticationStateObserver)
+
+        if isLoggedIn {
+            authenticationStateObserver.loggedIn()
+        }
+    }
+
     func login(_ arguments: LoginArguments) {
         if isLoggedIn {
-            notifyUserAuthorized()
+            notifyLoginSucceeded()
         } else {
             performLogin(arguments: arguments)
         }
@@ -75,7 +80,7 @@ class UserAuthenticationCoordinator {
             processLoginResponse(response)
 
         case .failure:
-            notifyUserUnauthorized()
+            notifyLoginFailed()
         }
     }
 
@@ -86,7 +91,7 @@ class UserAuthenticationCoordinator {
                                          tokenExpiryDate: response.tokenValidUntil)
 
         loginCredentialStore.store(credential)
-        notifyUserAuthorized()
+        notifyLoginSucceeded()
         userAuthenticationToken = credential.authenticationToken
 
         if let registeredDeviceToken = registeredDeviceToken {
@@ -95,11 +100,12 @@ class UserAuthenticationCoordinator {
         }
     }
 
-    private func notifyUserAuthorized() {
+    private func notifyLoginSucceeded() {
         loginObservers.forEach { $0.userDidLogin() }
+        authenticationStateObservers.forEach { $0.loggedIn() }
     }
 
-    private func notifyUserUnauthorized() {
+    private func notifyLoginFailed() {
         loginObservers.forEach { $0.userDidFailToLogIn() }
     }
 
