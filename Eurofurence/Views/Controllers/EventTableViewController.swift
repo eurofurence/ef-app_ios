@@ -11,9 +11,8 @@ import ReactiveSwift
 
 class EventTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate, UIViewControllerPreviewingDelegate {
     let searchController = UISearchController(searchResultsController: nil)
-    var filteredEvents: [Event] = []
-    var eventByType = ""
-    var eventTypeKey = ""
+	var filteredSections: [EntityBase] = []
+    var filteredEvents: [[Event]] = []
 
 	let viewModel: EventsViewModel = try! ViewModelResolver.container.resolve()
 	private var disposable = CompositeDisposable()
@@ -25,15 +24,9 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
 			registerForPreviewing(with: self, sourceView: view)
 		}
 
-		// TODO: Make search bar comply to reactive paradigm
-        searchController.searchBar.showsScopeBar = false
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.delegate = self
-        searchController.searchBar.tintColor = UIColor.white
-		searchController.searchBar.scopeButtonTitles = ["Day", "Room", "Track"]
+		configureSearchController()
+
         definesPresentationContext = true
-        tableView.tableHeaderView = searchController.searchBar
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120.0
         tableView.sectionHeaderHeight = UITableViewAutomaticDimension
@@ -57,6 +50,17 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
         DataStoreRefreshController.shared.add(refreshControlVisibilityDelegate)
 	}
 
+	private func configureSearchController() {
+		searchController.searchBar.showsScopeBar = false
+		searchController.searchResultsUpdater = self
+		searchController.dimsBackgroundDuringPresentation = false
+		searchController.searchBar.delegate = self
+		searchController.searchBar.tintColor = UIColor.white
+		searchController.searchBar.scopeButtonTitles = ["Day", "Room", "Track"]
+
+		tableView.tableHeaderView = searchController.searchBar
+	}
+
 	// TODO: Pull into super class for all refreshable ViewControllers
 	/// Initiates sync with API via refreshControl
 	func refresh(_ sender: AnyObject) {
@@ -64,15 +68,6 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
 	}
 
     override func viewWillAppear(_ animated: Bool) {
-        switch self.eventByType {
-        case "Room":
-            self.searchController.searchBar.selectedScopeButtonIndex = 1
-        case "Track":
-            self.searchController.searchBar.selectedScopeButtonIndex = 2
-        default: // "Day"
-			self.searchController.searchBar.selectedScopeButtonIndex = 0
-        }
-
 		// TODO: Observe viewModel.Events for changes while view is displayed
 		// TODO: Update view by days based on TimeService ticks?
     }
@@ -81,40 +76,51 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
 		refreshControl?.endRefreshing()
 	}
 
-    // MARK: - Table view data source
+	// MARK: - Table view data source
+
+	func getData(for indexPath: IndexPath) -> EntityBase? {
+		if searchController.isActive && searchController.searchBar.text != "" {
+			return self.filteredEvents[indexPath.section][indexPath.row]
+		} else {
+			switch self.searchController.searchBar.selectedScopeButtonIndex {
+			case 1:
+				return viewModel.EventConferenceRooms.value[indexPath.section].Events[indexPath.row]
+			case 2:
+				return viewModel.EventConferenceTracks.value[indexPath.section].Events[indexPath.row]
+			default:
+				return viewModel.EventConferenceDays.value[indexPath.section].Events[indexPath.row]
+			}
+		}
+	}
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        var eventNumber = 1
         if searchController.isActive && searchController.searchBar.text != "" {
-            return eventNumber
+            return filteredEvents.count
         }
 
-        switch self.searchController.searchBar.selectedScopeButtonIndex {
+        switch searchController.searchBar.selectedScopeButtonIndex {
         case 1:
-            eventNumber = viewModel.EventConferenceRooms.value.count
+            return viewModel.EventConferenceRooms.value.count
         case 2:
-            eventNumber = viewModel.EventConferenceTracks.value.count
+            return viewModel.EventConferenceTracks.value.count
         default:
-			eventNumber = viewModel.EventConferenceDays.value.count
+			return viewModel.EventConferenceDays.value.count
         }
-        return eventNumber
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.isActive && searchController.searchBar.text != "" {
-            return self.filteredEvents.count
-        }
-        var sectionRowCount = 0
-        switch self.searchController.searchBar.selectedScopeButtonIndex {
-        case 1:
-            sectionRowCount = viewModel.EventConferenceRooms.value[section].Events.count
-        case 2:
-            sectionRowCount = viewModel.EventConferenceTracks.value[section].Events.count
-        default:
-			sectionRowCount = viewModel.EventConferenceDays.value[section].Events.count
-        }
-        return sectionRowCount
+		if searchController.isActive && searchController.searchBar.text != "" {
+			return filteredEvents[section].count
+		}
 
+        switch searchController.searchBar.selectedScopeButtonIndex {
+        case 1:
+            return viewModel.EventConferenceRooms.value[section].Events.count
+        case 2:
+            return viewModel.EventConferenceTracks.value[section].Events.count
+        default:
+			return viewModel.EventConferenceDays.value[section].Events.count
+        }
     }
 
     private func addBorderUtility(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, color: UIColor) -> CALayer {
@@ -132,49 +138,35 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
         return cell
     }
 
-	func getData(for indexPath: IndexPath) -> EntityBase? {
-		if searchController.isActive && searchController.searchBar.text != "" {
-			return self.filteredEvents[(indexPath as NSIndexPath).row]
-		} else {
-
-			switch self.searchController.searchBar.selectedScopeButtonIndex {
-			case 1:
-				return viewModel.EventConferenceRooms.value[indexPath.section].Events[indexPath.row]
-			case 2:
-				return viewModel.EventConferenceTracks.value[indexPath.section].Events[indexPath.row]
-			default:
-				return viewModel.EventConferenceDays.value[indexPath.section].Events[indexPath.row]
-			}
-
-		}
-	}
-
-	func updateSearchResults(for searchController: UISearchController) {
-        let searchResults = viewModel.Events.value.filter({$0.Title.contains(searchController.searchBar.text!)})
-		filteredEvents = searchResults
-		tableView.reloadData()
-    }
-
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView(frame: .zero)
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let  headerCell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell") as! EventHeaderCellTableViewCell
-        if searchController.isActive && searchController.searchBar.text != "" {
-			// TODO: Externalise strings for i18n
-            headerCell.headerCellLabel.text = "Results for : " + searchController.searchBar.text!
-            return headerCell
-        }
 
-        switch self.searchController.searchBar.selectedScopeButtonIndex {
-        case 1:
-            headerCell.headerCellLabel.text = viewModel.EventConferenceRooms.value[section].Name
-        case 2:
-            headerCell.headerCellLabel.text = viewModel.EventConferenceTracks.value[section].Name
-        default:
-            headerCell.headerCellLabel.text = viewModel.EventConferenceDays.value[section].Name + "\n" + DateFormatters.dayMonthLong.string(from: viewModel.EventConferenceDays.value[section].Date)
-        }
+		if searchController.isActive && searchController.searchBar.text != "" {
+			switch filteredSections[section] {
+			case let room as EventConferenceRoom:
+				headerCell.headerCellLabel.text = room.Name
+			case let track as EventConferenceTrack:
+				headerCell.headerCellLabel.text = track.Name
+			case let day as EventConferenceDay:
+				headerCell.headerCellLabel.text = day.Name + "\n" + DateFormatters.dayMonthLong.string(from: day.Date)
+			default:
+				// This should not be possible, but we try to handle it gracefully nevertheless.
+				headerCell.headerCellLabel.text = "Other"
+			}
+		} else {
+			switch self.searchController.searchBar.selectedScopeButtonIndex {
+			case 1:
+				headerCell.headerCellLabel.text = viewModel.EventConferenceRooms.value[section].Name
+			case 2:
+				headerCell.headerCellLabel.text = viewModel.EventConferenceTracks.value[section].Name
+			default:
+				headerCell.headerCellLabel.text = viewModel.EventConferenceDays.value[section].Name + "\n" + DateFormatters.dayMonthLong.string(from: viewModel.EventConferenceDays.value[section].Date)
+			}
+		}
 
         return headerCell.contentView
     }
@@ -183,10 +175,56 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
         return 40.0
 	}
 
-    // MARK: - UISearchBar Delegate
+    // MARK: - UISearchBarDelegate
+
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+		updateSearchResults(for: searchController)
         self.tableView.reloadData()
-    }
+	}
+
+	// MARK: - UISearchResultsUpdating
+
+	func updateSearchResults(for searchController: UISearchController) {
+		guard let searchText = searchController.searchBar.text else {
+			filteredSections = []
+			filteredEvents = []
+			return
+		}
+
+		var searchResultSections: [EntityBase] = []
+		var searchResults: [[Event]] = []
+
+		switch self.searchController.searchBar.selectedScopeButtonIndex {
+		case 1:
+			viewModel.EventConferenceRooms.value.forEach({ (sectionEntity) in
+				let filteredSectionEvents = sectionEntity.Events.filter({ $0.Title.contains(searchText) })
+				if filteredSectionEvents.count > 0 {
+					searchResultSections.append(sectionEntity)
+					searchResults.append(filteredSectionEvents)
+				}
+			})
+		case 2:
+			viewModel.EventConferenceTracks.value.forEach({ (sectionEntity) in
+				let filteredSectionEvents = sectionEntity.Events.filter({ $0.Title.contains(searchText) })
+				if filteredSectionEvents.count > 0 {
+					searchResultSections.append(sectionEntity)
+					searchResults.append(filteredSectionEvents)
+				}
+			})
+		default:
+			viewModel.EventConferenceDays.value.forEach({ (sectionEntity) in
+				let filteredSectionEvents = sectionEntity.Events.filter({ $0.Title.contains(searchText) })
+				if filteredSectionEvents.count > 0 {
+					searchResultSections.append(sectionEntity)
+					searchResults.append(filteredSectionEvents)
+				}
+			})
+		}
+
+		filteredSections = searchResultSections
+		filteredEvents = searchResults
+		tableView.reloadData()
+	}
 
 	// MARK: - Navigation
 
@@ -243,7 +281,9 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
 
 	func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
 		guard let indexPath = tableView.indexPathForRow(at: location),
-			let data = getData(for: indexPath) else { return nil }
+			let data = getData(for: indexPath) else {
+				return nil
+		}
 
 		let viewController: UIViewController
 		switch data {
