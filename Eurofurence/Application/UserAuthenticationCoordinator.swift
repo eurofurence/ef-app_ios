@@ -58,6 +58,11 @@ class UserAuthenticationCoordinator {
         }
     }
 
+    func remove(_ authenticationStateObserver: AuthenticationStateObserver) {
+        guard let idx = authenticationStateObservers.index(where: { $0 === authenticationStateObserver }) else { return }
+        authenticationStateObservers.remove(at: idx)
+    }
+
     func login(_ arguments: LoginArguments) {
         if isLoggedIn {
             notifyLoginSucceeded()

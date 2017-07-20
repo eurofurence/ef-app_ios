@@ -6,7 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-protocol AuthenticationStateObserver {
+protocol AuthenticationStateObserver: class {
 
     func loggedIn(as user: User)
 

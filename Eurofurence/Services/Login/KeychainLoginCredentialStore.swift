@@ -19,11 +19,19 @@ struct KeychainLoginCredentialStore: LoginCredentialStore {
     }
 
     func store(_ loginCredential: LoginCredential) {
-        try? Locksmith.saveData(data: loginCredential.keychainData, forUserAccount: "Eurofurence")
+        do {
+            try Locksmith.saveData(data: loginCredential.keychainData, forUserAccount: "Eurofurence")
+        } catch {
+            print("Unable to save credentials to Keychain: \(error)")
+        }
     }
 
     func deletePersistedToken() {
-        try? Locksmith.deleteDataForUserAccount(userAccount: "Eurofurence")
+        do {
+            try Locksmith.deleteDataForUserAccount(userAccount: "Eurofurence")
+        } catch {
+            print("Unable to delete credential from Keychain: \(error)")
+        }
     }
 
 }

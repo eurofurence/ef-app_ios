@@ -229,4 +229,15 @@ class WhenLoggingIn: XCTestCase {
         XCTAssertEqual(expectedUser, authenticationStateObserver.loggedInUser)
     }
     
+    func testRemovingAuthenticationObserverBeforeLoggingInShouldNotTellItWeLoggedIn() {
+        let context = ApplicationTestBuilder().build()
+        let authenticationStateObserver = CapturingAuthenticationStateObserver()
+        context.application.add(authenticationStateObserver)
+        context.application.remove(authenticationStateObserver)
+        context.login()
+        context.loginAPI.simulateResponse(makeLoginResponse())
+        
+        XCTAssertFalse(authenticationStateObserver.didLogIn)
+    }
+    
 }
