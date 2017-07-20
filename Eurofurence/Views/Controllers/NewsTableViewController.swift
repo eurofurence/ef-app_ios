@@ -401,7 +401,7 @@ class NewsTableViewController: UITableViewController,
 
     // MARK: AuthenticationStateObserver
 
-    func loggedIn() {
+    func loggedIn(as user: User) {
         isLoggedIn = true
 
         let loginSectionIndex = IndexSet(integer: 0)

@@ -12,8 +12,10 @@ import Foundation
 class CapturingAuthenticationStateObserver: AuthenticationStateObserver {
     
     private(set) var didLogIn = false
-    func loggedIn() {
+    private(set) var loggedInUser: User?
+    func loggedIn(as user: User) {
         didLogIn = true
+        loggedInUser = user
     }
     
 }

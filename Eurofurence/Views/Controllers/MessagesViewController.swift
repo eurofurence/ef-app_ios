@@ -52,7 +52,7 @@ class MessagesViewController: UITableViewController,
 
     // MARK: AuthenticationStateObserver
 
-    func loggedIn() {
+    func loggedIn(as user: User) {
         isLoggedIn = true
     }
 

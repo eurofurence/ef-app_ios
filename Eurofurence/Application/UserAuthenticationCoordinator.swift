@@ -20,6 +20,8 @@ class UserAuthenticationCoordinator {
     private var loginObservers = [LoginObserver]()
     private var authenticationStateObservers = [AuthenticationStateObserver]()
     private var userRegistrationNumber: Int?
+    private var loggedInUsername: String?
+    private var loggedInUser: User?
 
     private var isLoggedIn: Bool {
         return userAuthenticationToken != nil
@@ -52,7 +54,7 @@ class UserAuthenticationCoordinator {
         authenticationStateObservers.append(authenticationStateObserver)
 
         if isLoggedIn {
-            authenticationStateObserver.loggedIn()
+            authenticationStateObserver.loggedIn(as: User(registrationNumber: 0, username: ""))
         }
     }
 
@@ -85,11 +87,14 @@ class UserAuthenticationCoordinator {
     }
 
     private func processLoginResponse(_ response: APILoginResponse) {
+        guard let userRegistrationNumber = userRegistrationNumber else { return }
+
         let credential = LoginCredential(username: response.username,
-                                         registrationNumber: userRegistrationNumber!,
+                                         registrationNumber: userRegistrationNumber,
                                          authenticationToken: response.token,
                                          tokenExpiryDate: response.tokenValidUntil)
 
+        loggedInUser = User(registrationNumber: userRegistrationNumber, username: response.username)
         loginCredentialStore.store(credential)
         notifyLoginSucceeded()
         userAuthenticationToken = credential.authenticationToken
@@ -102,7 +107,9 @@ class UserAuthenticationCoordinator {
 
     private func notifyLoginSucceeded() {
         loginObservers.forEach { $0.userDidLogin() }
-        authenticationStateObservers.forEach { $0.loggedIn() }
+
+        guard let loggedInUser = loggedInUser else { return }
+        authenticationStateObservers.forEach { $0.loggedIn(as: loggedInUser) }
     }
 
     private func notifyLoginFailed() {

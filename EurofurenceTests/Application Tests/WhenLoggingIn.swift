@@ -196,4 +196,26 @@ class WhenLoggingIn: XCTestCase {
         XCTAssertFalse(authenticationStateObserver.didLogIn)
     }
     
+    func testLoggingInShouldTellAuthenticationStateObserversWeLoggedInWithUsersName() {
+        let context = ApplicationTestBuilder().build()
+        let authenticationStateObserver = CapturingAuthenticationStateObserver()
+        context.application.add(authenticationStateObserver)
+        let username = "Some cool guy"
+        context.login()
+        context.loginAPI.simulateResponse(makeLoginResponse(username: username))
+        
+        XCTAssertEqual(username, authenticationStateObserver.loggedInUser?.username)
+    }
+    
+    func testLoggingInShouldTellAuthenticationStateObserversWeLoggedInWithUsersRegNo() {
+        let context = ApplicationTestBuilder().build()
+        let authenticationStateObserver = CapturingAuthenticationStateObserver()
+        context.application.add(authenticationStateObserver)
+        let regNo = 42
+        context.login(registrationNumber: regNo)
+        context.loginAPI.simulateResponse(makeLoginResponse())
+        
+        XCTAssertEqual(regNo, authenticationStateObserver.loggedInUser?.registrationNumber)
+    }
+    
 }

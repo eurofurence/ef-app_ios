@@ -1,13 +1,16 @@
 //
-//  AuthenticationStateObserver.swift
+//  User.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 20/07/2017.
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-protocol AuthenticationStateObserver {
+import Foundation
 
-    func loggedIn(as user: User)
+struct User {
+
+    var registrationNumber: Int
+    var username: String
 
 }

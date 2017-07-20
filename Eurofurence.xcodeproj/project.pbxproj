@@ -193,6 +193,7 @@
 		CA30EAA81F2132480053DBF6 /* StubLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA71F2132480053DBF6 /* StubLoginResponse.swift */; };
 		CA30EAAA1F2141800053DBF6 /* CapturingAuthenticationStateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA91F2141800053DBF6 /* CapturingAuthenticationStateObserver.swift */; };
 		CA30EAAC1F2141A40053DBF6 /* AuthenticationStateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAAB1F2141A40053DBF6 /* AuthenticationStateObserver.swift */; };
+		CA30EAAE1F2148780053DBF6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAAD1F2148780053DBF6 /* User.swift */; };
 		CA804DD21F20CE8F00E07A4A /* V2LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */; };
 		CA804DD41F20CF4300E07A4A /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD31F20CF4300E07A4A /* APIResponse.swift */; };
 		CA804DD61F20D10E00E07A4A /* APILoginParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD51F20D10E00E07A4A /* APILoginParameters.swift */; };
@@ -455,6 +456,7 @@
 		CA30EAA71F2132480053DBF6 /* StubLoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubLoginResponse.swift; path = "Test Doubles/Application/API/StubLoginResponse.swift"; sourceTree = "<group>"; };
 		CA30EAA91F2141800053DBF6 /* CapturingAuthenticationStateObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingAuthenticationStateObserver.swift; path = "Test Doubles/Application/CapturingAuthenticationStateObserver.swift"; sourceTree = "<group>"; };
 		CA30EAAB1F2141A40053DBF6 /* AuthenticationStateObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationStateObserver.swift; path = Application/AuthenticationStateObserver.swift; sourceTree = "<group>"; };
+		CA30EAAD1F2148780053DBF6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Application/User.swift; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
 		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/APIResponse.swift; sourceTree = "<group>"; };
 		CA804DD51F20D10E00E07A4A /* APILoginParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APILoginParameters.swift; path = Application/API/APILoginParameters.swift; sourceTree = "<group>"; };
@@ -854,6 +856,7 @@
 				CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */,
 				CA2B4FAB1F1F7F2C00F007E1 /* LoginObserver.swift */,
 				CA30EAAB1F2141A40053DBF6 /* AuthenticationStateObserver.swift */,
+				CA30EAAD1F2148780053DBF6 /* User.swift */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -1805,6 +1808,7 @@
 				D6F3D749FF814981E076850E /* ImageService.swift in Sources */,
 				78F5559B1F10D65900BDA7D4 /* SplashViewController.swift in Sources */,
 				D6F3DCE06EF6B706F0A3EF09 /* TimeService.swift in Sources */,
+				CA30EAAE1F2148780053DBF6 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
