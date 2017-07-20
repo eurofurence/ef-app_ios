@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias LoginResponseHandler = (APIResponse<LoginCredential>) -> Void
+
 class V2LoginAPI {
 
     private var jsonPoster: JSONPoster

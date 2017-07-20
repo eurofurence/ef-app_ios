@@ -11,6 +11,8 @@ import XCTest
 
 class WhenLoggingIn: XCTestCase {
     
+    // TODO: Delete below functions when behaviour for tests no longer requires them
+    
     private func makeSuccessfulLoginPayload(username: String = "",
                                             userID: String = "0",
                                             authToken: String = "",
@@ -49,6 +51,8 @@ class WhenLoggingIn: XCTestCase {
         
         return userAuthenticationObserver
     }
+    
+    // TODO: - Rework below to use API abstraction
     
     func testTheLoginEndpointShouldReceievePOSTRequest() {
         let context = ApplicationTestBuilder().build()
@@ -134,6 +138,8 @@ class WhenLoggingIn: XCTestCase {
         
         XCTAssertTrue(userAuthenticationObserver.notifiedLoginFailed)
     }
+    
+    // TODO: - Rework above tests to use API abstraction
     
     func testLoggingInSuccessfullyShouldPersistLoginCredentialWithUsername() {
         let context = ApplicationTestBuilder().build()
