@@ -21,11 +21,7 @@ struct URLSessionJSONPoster: JSONPoster {
         urlRequest.httpBody = request.body
         urlRequest.allHTTPHeaderFields = request.headers
 
-        session.dataTask(with: urlRequest, completionHandler: { (data, response, _) in
-            if let httpResponse = response as? HTTPURLResponse {
-                print("Login returned status code: \(httpResponse.statusCode)")
-            }
-
+        session.dataTask(with: urlRequest, completionHandler: { (data, _, _) in
             DispatchQueue.main.async {
                 completionHandler(data)
             }
