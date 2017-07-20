@@ -20,7 +20,7 @@ class NewsTableViewController: UITableViewController,
 	private var currentEventsViewModel: CurrentEventsViewModel = try! ViewModelResolver.container.resolve()
 	private var timeService: TimeService = try! ServiceResolver.container.resolve()
 	private var disposables = CompositeDisposable()
-    private var isLoggedIn = false
+    private var loggedInUser: User?
 
 	@IBOutlet weak var lastSyncLabel: UILabel!
 
@@ -229,8 +229,10 @@ class NewsTableViewController: UITableViewController,
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		switch indexPath.section {
         case 0:
-            if isLoggedIn {
-                return tableView.dequeueReusableCell(withIdentifier: "LoggedInCell", for: indexPath)
+            if let user = loggedInUser {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "LoggedInCell", for: indexPath) as! UnreadMessagesTableViewCell
+                cell.showUserNameSynopsis("Welcome, \(user.username) (\(user.registrationNumber))")
+                return cell
             } else {
                 return tableView.dequeueReusableCell(withIdentifier: "LoginHintCell", for: indexPath)
             }
@@ -402,7 +404,7 @@ class NewsTableViewController: UITableViewController,
     // MARK: AuthenticationStateObserver
 
     func loggedIn(as user: User) {
-        isLoggedIn = true
+        loggedInUser = user
 
         let loginSectionIndex = IndexSet(integer: 0)
         tableView.reloadSections(loginSectionIndex, with: .automatic)
