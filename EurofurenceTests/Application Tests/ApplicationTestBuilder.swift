@@ -17,6 +17,7 @@ class ApplicationTestBuilder {
         var capturingTokenRegistration: CapturingRemoteNotificationsTokenRegistration
         var capturingLoginCredentialsStore: CapturingLoginCredentialStore
         var jsonPoster: CapturingJSONPoster
+        var loginAPI: CapturingLoginAPI
         
         func registerRemoteNotifications(_ deviceToken: Data = Data()) {
             application.registerRemoteNotifications(deviceToken: deviceToken)
@@ -30,12 +31,14 @@ class ApplicationTestBuilder {
         func simulateJSONResponse(_ data: Data?) {
             jsonPoster.invokeLastCompletionHandler(responseData: data)
         }
+        
     }
     
     private let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
     private var capturingLoginCredentialsStore = CapturingLoginCredentialStore()
     private var stubClock = StubClock()
     private let jsonPoster = CapturingJSONPoster()
+    private var loginAPI = CapturingLoginAPI()
     
     func with(_ currentDate: Date) -> ApplicationTestBuilder {
         stubClock = StubClock(currentDate: currentDate)
@@ -47,15 +50,22 @@ class ApplicationTestBuilder {
         return self
     }
     
+    func with(_ loginAPI: CapturingLoginAPI) -> ApplicationTestBuilder {
+        self.loginAPI = loginAPI
+        return self
+    }
+    
     func build() -> Context {
         let app = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration,
                                          clock: stubClock,
                                          loginCredentialStore: capturingLoginCredentialsStore,
-                                         jsonPoster: jsonPoster)
+                                         jsonPoster: jsonPoster,
+                                         loginAPI: loginAPI)
         return Context(application: app,
                        capturingTokenRegistration: capturingTokenRegistration,
                        capturingLoginCredentialsStore: capturingLoginCredentialsStore,
-                       jsonPoster: jsonPoster)
+                       jsonPoster: jsonPoster,
+                       loginAPI: loginAPI)
     }
     
 }

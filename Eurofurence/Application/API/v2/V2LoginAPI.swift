@@ -8,9 +8,7 @@
 
 import Foundation
 
-typealias LoginResponseHandler = (APIResponse<APILoginResponse>) -> Void
-
-class V2LoginAPI {
+class V2LoginAPI: LoginAPI {
 
     private var jsonPoster: JSONPoster
 

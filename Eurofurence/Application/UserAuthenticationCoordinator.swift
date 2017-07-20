@@ -12,21 +12,22 @@ class UserAuthenticationCoordinator {
 
     var userAuthenticationToken: String?
     var registeredDeviceToken: Data?
+    private var loginAPI: LoginAPI
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
     private var clock: Clock
     private var loginCredentialStore: LoginCredentialStore
-    private var loginAPI: V2LoginAPI
     private var userAuthenticationTokenValid = false
     private var userAuthenticationObservers = [UserAuthenticationObserver]()
 
     init(clock: Clock,
          loginCredentialStore: LoginCredentialStore,
          jsonPoster: JSONPoster,
-         remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration) {
+         remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
+         loginAPI: LoginAPI) {
+        self.loginAPI = loginAPI
         self.clock = clock
         self.loginCredentialStore = loginCredentialStore
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
-        loginAPI = V2LoginAPI(jsonPoster: jsonPoster)
 
         if let credential = loginCredentialStore.persistedCredential, isCredentialValid(credential) {
             userAuthenticationToken = credential.authenticationToken

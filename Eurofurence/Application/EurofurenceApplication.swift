@@ -21,7 +21,8 @@ class EurofurenceApplication {
         return EurofurenceApplication(remoteNotificationsTokenRegistration: tokenRegistration,
                                       clock: SystemClock(),
                                       loginCredentialStore: KeychainLoginCredentialStore(),
-                                      jsonPoster: URLSessionJSONPoster())
+                                      jsonPoster: URLSessionJSONPoster(),
+                                      loginAPI: V2LoginAPI(jsonPoster: URLSessionJSONPoster()))
     }()
 
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
@@ -31,12 +32,14 @@ class EurofurenceApplication {
     init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
          clock: Clock,
          loginCredentialStore: LoginCredentialStore,
-         jsonPoster: JSONPoster) {
+         jsonPoster: JSONPoster,
+         loginAPI: LoginAPI) {
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
         authenticationCoordinator = UserAuthenticationCoordinator(clock: clock,
                                                                   loginCredentialStore: loginCredentialStore,
                                                                   jsonPoster: jsonPoster,
-                                                                  remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration)
+                                                                  remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
+                                                                  loginAPI: loginAPI)
     }
 
     func add(_ userAuthenticationObserver: UserAuthenticationObserver) {
