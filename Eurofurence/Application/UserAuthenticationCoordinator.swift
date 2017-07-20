@@ -53,8 +53,8 @@ class UserAuthenticationCoordinator {
     func add(_ authenticationStateObserver: AuthenticationStateObserver) {
         authenticationStateObservers.append(authenticationStateObserver)
 
-        if isLoggedIn {
-            authenticationStateObserver.loggedIn(as: User(registrationNumber: 0, username: ""))
+        if let loggedInUser = loggedInUser {
+            authenticationStateObserver.loggedIn(as: loggedInUser)
         }
     }
 
