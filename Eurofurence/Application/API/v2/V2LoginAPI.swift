@@ -19,28 +19,36 @@ class V2LoginAPI {
     func performLogin(arguments: APILoginParameters,
                       completionHandler: @escaping (APIResponse<LoginCredential>) -> Void) {
         do {
-            let postArguments: [String : Any] = ["RegNo": arguments.regNo,
-                                                 "Username": arguments.username,
-                                                 "Password": arguments.password]
-            let jsonData = try JSONSerialization.data(withJSONObject: postArguments, options: [])
-            let request = POSTRequest(url: "https://app.eurofurence.org/api/v2/Tokens/RegSys", body: jsonData)
-            jsonPoster.post(request) { data in
-                guard let responseData = data,
-                    let json = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments),
-                    let jsonDictionary = json as? [String : Any],
-                    let response = JSONLoginResponse(json: jsonDictionary) else {
-                        completionHandler(.failure)
-                        return
-                }
-
-                let credential = LoginCredential(username: response.username,
-                                                 registrationNumber: response.userID,
-                                                 authenticationToken: response.authToken,
-                                                 tokenExpiryDate: response.authTokenExpiry)
-                completionHandler(.success(credential))
-            }
+            let jsonData = try makeLoginBody(from: arguments)
+            performLogin(body: jsonData, completionHandler: completionHandler)
         } catch {
             print("Unable to perform login due to error: \(error)")
+        }
+    }
+
+    private func makeLoginBody(from arguments: APILoginParameters) throws -> Data {
+        let postArguments: [String : Any] = ["RegNo": arguments.regNo,
+                                             "Username": arguments.username,
+                                             "Password": arguments.password]
+        return try JSONSerialization.data(withJSONObject: postArguments, options: [])
+    }
+
+    private func performLogin(body: Data, completionHandler: @escaping (APIResponse<LoginCredential>) -> Void) {
+        let request = POSTRequest(url: "https://app.eurofurence.org/api/v2/Tokens/RegSys", body: body)
+        jsonPoster.post(request) { data in
+            guard let responseData = data,
+                let json = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments),
+                let jsonDictionary = json as? [String : Any],
+                let response = JSONLoginResponse(json: jsonDictionary) else {
+                    completionHandler(.failure)
+                    return
+            }
+
+            let credential = LoginCredential(username: response.username,
+                                             registrationNumber: response.userID,
+                                             authenticationToken: response.authToken,
+                                             tokenExpiryDate: response.authTokenExpiry)
+            completionHandler(.success(credential))
         }
     }
 
