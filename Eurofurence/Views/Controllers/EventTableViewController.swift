@@ -9,10 +9,23 @@ import UIKit
 import Changeset
 import ReactiveSwift
 
-class EventTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate, UIViewControllerPreviewingDelegate {
-    let searchController = UISearchController(searchResultsController: nil)
-	var filteredSections: [EntityBase] = []
+class EventTableViewController: UITableViewController, UISearchBarDelegate, UIViewControllerPreviewingDelegate {
+	@IBOutlet weak var eventsBySegmentedControl: UISegmentedControl!
+	@IBOutlet weak var favoritesOnlySegmentedControl: UISegmentedControl!
+	@IBOutlet weak var searchBar: UISearchBar!
+
+    var filteredSections: [EventsEntity] = []
     var filteredEvents: [[Event]] = []
+	var isFavoritesOnly: Bool {
+		return favoritesOnlySegmentedControl.selectedSegmentIndex == 1
+	}
+	var isSearchActive: Bool {
+		return searchBar.text != nil && searchBar.text != ""
+	}
+	var isFiltered: Bool {
+		return isSearchActive ||
+			isFavoritesOnly
+	}
 
 	let viewModel: EventsViewModel = try! ViewModelResolver.container.resolve()
 	private var disposable = CompositeDisposable()
@@ -23,8 +36,6 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
 		if traitCollection.forceTouchCapability == .available {
 			registerForPreviewing(with: self, sourceView: view)
 		}
-
-		configureSearchController()
 
         definesPresentationContext = true
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -38,8 +49,12 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
 		tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
 		tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCellWithoutBanner")
 
+		eventsBySegmentedControl.addTarget(self, action: #selector(EventTableViewController.filtersChanged), for: .valueChanged)
+		favoritesOnlySegmentedControl.addTarget(self, action: #selector(EventTableViewController.filtersChanged), for: .valueChanged)
+
         disposable += viewModel.Events.signal.observeResult({[unowned self] _ in
             DispatchQueue.main.async {
+				self.filtersChanged()
                 self.tableView.reloadData()
             }
         })
@@ -48,17 +63,6 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
 
         let refreshControlVisibilityDelegate = RefreshControlDataStoreDelegate(refreshControl: refreshControl)
         DataStoreRefreshController.shared.add(refreshControlVisibilityDelegate)
-	}
-
-	private func configureSearchController() {
-		searchController.searchBar.showsScopeBar = false
-		searchController.searchResultsUpdater = self
-		searchController.dimsBackgroundDuringPresentation = false
-		searchController.searchBar.delegate = self
-		searchController.searchBar.tintColor = UIColor.white
-		searchController.searchBar.scopeButtonTitles = ["Day", "Room", "Track"]
-
-		tableView.tableHeaderView = searchController.searchBar
 	}
 
 	// TODO: Pull into super class for all refreshable ViewControllers
@@ -79,10 +83,10 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
 	// MARK: - Table view data source
 
 	func getData(for indexPath: IndexPath) -> EntityBase? {
-		if searchController.isActive && searchController.searchBar.text != "" {
-			return self.filteredEvents[indexPath.section][indexPath.row]
+		if isFiltered {
+			return filteredEvents[indexPath.section][indexPath.row]
 		} else {
-			switch self.searchController.searchBar.selectedScopeButtonIndex {
+			switch eventsBySegmentedControl.selectedSegmentIndex {
 			case 1:
 				return viewModel.EventConferenceRooms.value[indexPath.section].Events[indexPath.row]
 			case 2:
@@ -94,11 +98,11 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
 	}
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if searchController.isActive && searchController.searchBar.text != "" {
+        if isFiltered {
             return filteredEvents.count
         }
 
-        switch searchController.searchBar.selectedScopeButtonIndex {
+        switch eventsBySegmentedControl.selectedSegmentIndex {
         case 1:
             return viewModel.EventConferenceRooms.value.count
         case 2:
@@ -109,11 +113,11 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		if searchController.isActive && searchController.searchBar.text != "" {
+		if isFiltered {
 			return filteredEvents[section].count
 		}
 
-        switch searchController.searchBar.selectedScopeButtonIndex {
+        switch eventsBySegmentedControl.selectedSegmentIndex {
         case 1:
             return viewModel.EventConferenceRooms.value[section].Events.count
         case 2:
@@ -145,20 +149,15 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let  headerCell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell") as! EventHeaderCellTableViewCell
 
-		if searchController.isActive && searchController.searchBar.text != "" {
+		if isFiltered {
 			switch filteredSections[section] {
-			case let room as EventConferenceRoom:
-				headerCell.headerCellLabel.text = room.Name
-			case let track as EventConferenceTrack:
-				headerCell.headerCellLabel.text = track.Name
 			case let day as EventConferenceDay:
 				headerCell.headerCellLabel.text = day.Name + "\n" + DateFormatters.dayMonthLong.string(from: day.Date)
 			default:
-				// This should not be possible, but we try to handle it gracefully nevertheless.
-				headerCell.headerCellLabel.text = "Other"
+				headerCell.headerCellLabel.text = filteredSections[section].Name
 			}
 		} else {
-			switch self.searchController.searchBar.selectedScopeButtonIndex {
+			switch eventsBySegmentedControl.selectedSegmentIndex {
 			case 1:
 				headerCell.headerCellLabel.text = viewModel.EventConferenceRooms.value[section].Name
 			case 2:
@@ -175,51 +174,42 @@ class EventTableViewController: UITableViewController, UISearchResultsUpdating, 
         return 40.0
 	}
 
-    // MARK: - UISearchBarDelegate
-
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-		updateSearchResults(for: searchController)
-        self.tableView.reloadData()
+    // MARK: - Search
+	func filtersChanged() {
+		searchEvents(for: searchBar.text)
 	}
 
-	// MARK: - UISearchResultsUpdating
+	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+		searchEvents(for: searchText)
+	}
 
-	func updateSearchResults(for searchController: UISearchController) {
-		guard let searchText = searchController.searchBar.text else {
-			filteredSections = []
-			filteredEvents = []
-			return
-		}
+	func searchEvents(for searchText: String?) {
+		filteredSections = []
+		filteredEvents = []
 
-		var searchResultSections: [EntityBase] = []
+		var searchResultSections: [EventsEntity] = []
 		var searchResults: [[Event]] = []
 
-		switch self.searchController.searchBar.selectedScopeButtonIndex {
+		let data: [EventsEntity]
+		switch eventsBySegmentedControl.selectedSegmentIndex {
 		case 1:
-			viewModel.EventConferenceRooms.value.forEach({ (sectionEntity) in
-				let filteredSectionEvents = sectionEntity.Events.filter({ $0.Title.contains(searchText) })
-				if filteredSectionEvents.count > 0 {
-					searchResultSections.append(sectionEntity)
-					searchResults.append(filteredSectionEvents)
-				}
-			})
+			data = viewModel.EventConferenceRooms.value
 		case 2:
-			viewModel.EventConferenceTracks.value.forEach({ (sectionEntity) in
-				let filteredSectionEvents = sectionEntity.Events.filter({ $0.Title.contains(searchText) })
-				if filteredSectionEvents.count > 0 {
-					searchResultSections.append(sectionEntity)
-					searchResults.append(filteredSectionEvents)
-				}
-			})
+			data = viewModel.EventConferenceTracks.value
 		default:
-			viewModel.EventConferenceDays.value.forEach({ (sectionEntity) in
-				let filteredSectionEvents = sectionEntity.Events.filter({ $0.Title.contains(searchText) })
-				if filteredSectionEvents.count > 0 {
-					searchResultSections.append(sectionEntity)
-					searchResults.append(filteredSectionEvents)
-				}
-			})
+			data = viewModel.EventConferenceDays.value
 		}
+
+		data.forEach({ (sectionEntity) in
+			let filteredSectionEvents = sectionEntity.Events.filter({
+				(!isSearchActive || $0.Title.localizedCaseInsensitiveContains(searchText ?? "")) &&
+					(!isFavoritesOnly || $0.EventFavorite?.IsFavorite.value ?? false)
+			})
+			if filteredSectionEvents.count > 0 {
+				searchResultSections.append(sectionEntity)
+				searchResults.append(filteredSectionEvents)
+			}
+		})
 
 		filteredSections = searchResultSections
 		filteredEvents = searchResults
