@@ -11,17 +11,23 @@ import ReactiveSwift
 import UIKit
 import Changeset
 
-class NewsTableViewController: UITableViewController, UIViewControllerPreviewingDelegate, MessagesViewControllerDelegate {
+class NewsTableViewController: UITableViewController,
+                               UIViewControllerPreviewingDelegate,
+                               MessagesViewControllerDelegate,
+                               AuthenticationStateObserver {
 
 	private var announcementsViewModel: AnnouncementsViewModel = try! ViewModelResolver.container.resolve()
 	private var currentEventsViewModel: CurrentEventsViewModel = try! ViewModelResolver.container.resolve()
 	private var timeService: TimeService = try! ServiceResolver.container.resolve()
 	private var disposables = CompositeDisposable()
+    private var isLoggedIn = false
 
 	@IBOutlet weak var lastSyncLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        EurofurenceApplication.shared.add(self)
 
 		if traitCollection.forceTouchCapability == .available {
 			registerForPreviewing(with: self, sourceView: view)
@@ -223,7 +229,11 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		switch indexPath.section {
         case 0:
-            return tableView.dequeueReusableCell(withIdentifier: "LoginHintCell", for: indexPath)
+            if isLoggedIn {
+                return tableView.dequeueReusableCell(withIdentifier: "LoggedInCell", for: indexPath)
+            } else {
+                return tableView.dequeueReusableCell(withIdentifier: "LoginHintCell", for: indexPath)
+            }
 		case 1:
 			if announcementsViewModel.Announcements.value.isEmpty {
 				return tableView.dequeueReusableCell(withIdentifier: "NoAnnouncementsCell", for: indexPath)
@@ -276,6 +286,11 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 	}
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.section != 0 else {
+            performSegue(withIdentifier: "showMessages", sender: self)
+            return
+        }
+
         switch getData(for: indexPath) {
 		case let announcement as Announcement:
 			performSegue(withIdentifier: "AnnouncementDetailSegue", sender: announcement)
@@ -378,8 +393,19 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 		disposables.dispose()
 	}
 
+    // MARK: MessagesViewControllerDelegate
+
     func messagesViewControllerDidRequestDismissal(_ messagesController: MessagesViewController) {
         navigationController?.popToViewController(self, animated: true)
+    }
+
+    // MARK: AuthenticationStateObserver
+
+    func loggedIn() {
+        isLoggedIn = true
+
+        let loginSectionIndex = IndexSet(integer: 0)
+        tableView.reloadSections(loginSectionIndex, with: .automatic)
     }
 
 }
