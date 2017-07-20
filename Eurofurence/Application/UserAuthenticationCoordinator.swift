@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UserAuthenticationCoordinator {
+class UserAuthenticationCoordinator: LoginTaskDelegate {
 
     var userAuthenticationToken: String?
     var registeredDeviceToken: Data?
@@ -16,11 +16,8 @@ class UserAuthenticationCoordinator {
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
     private var clock: Clock
     private var loginCredentialStore: LoginCredentialStore
-    private var userAuthenticationTokenValid = false
     private var loginObservers = [LoginObserver]()
     private var authenticationStateObservers = [AuthenticationStateObserver]()
-    private var userRegistrationNumber: Int?
-    private var loggedInUsername: String?
     private var loggedInUser: User?
 
     private var isLoggedIn: Bool {
@@ -68,42 +65,17 @@ class UserAuthenticationCoordinator {
         if isLoggedIn {
             notifyLoginSucceeded()
         } else {
-            performLogin(arguments: arguments)
+            LoginTask(delegate: self, arguments: arguments, loginAPI: loginAPI).start()
         }
     }
 
-    private func performLogin(arguments: LoginArguments) {
-        userRegistrationNumber = arguments.registrationNumber
-        loginAPI.performLogin(arguments: makeAPILoginParameters(from: arguments),
-                              completionHandler: handleLoginResult)
-    }
+    // MARK: LoginTaskDelegate
 
-    private func makeAPILoginParameters(from args: LoginArguments) -> APILoginParameters {
-        return APILoginParameters(regNo: args.registrationNumber, username: args.username, password: args.password)
-    }
-
-    private func handleLoginResult(_ result: APIResponse<APILoginResponse>) {
-        switch result {
-        case .success(let response):
-            processLoginResponse(response)
-
-        case .failure:
-            notifyLoginFailed()
-        }
-    }
-
-    private func processLoginResponse(_ response: APILoginResponse) {
-        guard let userRegistrationNumber = userRegistrationNumber else { return }
-
-        let credential = LoginCredential(username: response.username,
-                                         registrationNumber: userRegistrationNumber,
-                                         authenticationToken: response.token,
-                                         tokenExpiryDate: response.tokenValidUntil)
-
-        loggedInUser = User(registrationNumber: userRegistrationNumber, username: response.username)
-        loginCredentialStore.store(credential)
+    func loginTask(_ task: LoginTask, didProduce loginCredential: LoginCredential) {
+        loggedInUser = User(registrationNumber: loginCredential.registrationNumber, username: loginCredential.username)
+        loginCredentialStore.store(loginCredential)
         notifyLoginSucceeded()
-        userAuthenticationToken = credential.authenticationToken
+        userAuthenticationToken = loginCredential.authenticationToken
 
         if let registeredDeviceToken = registeredDeviceToken {
             remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(registeredDeviceToken,
@@ -111,15 +83,17 @@ class UserAuthenticationCoordinator {
         }
     }
 
+    func loginTaskDidFail(_ task: LoginTask) {
+        loginObservers.forEach { $0.userDidFailToLogIn() }
+    }
+
+    // MARK: Private
+
     private func notifyLoginSucceeded() {
         loginObservers.forEach { $0.userDidLogin() }
 
         guard let loggedInUser = loggedInUser else { return }
         authenticationStateObservers.forEach { $0.loggedIn(as: loggedInUser) }
-    }
-
-    private func notifyLoginFailed() {
-        loginObservers.forEach { $0.userDidFailToLogIn() }
     }
 
     private func isCredentialValid(_ credential: LoginCredential) -> Bool {
