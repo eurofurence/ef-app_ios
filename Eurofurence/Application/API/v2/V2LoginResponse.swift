@@ -1,5 +1,5 @@
 //
-//  JSONLoginResponse.swift
+//  V2LoginResponse.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 19/07/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct JSONLoginResponse: APILoginResponse {
+struct V2LoginResponse: APILoginResponse {
 
     private static let dateFormatter = Iso8601DateFormatter()
 
@@ -22,7 +22,7 @@ struct JSONLoginResponse: APILoginResponse {
             let uid = json["Uid"] as? String,
             let authToken = json["Token"] as? String,
             let dateString = json["TokenValidUntil"] as? String,
-            let expiry = JSONLoginResponse.dateFormatter.date(from: dateString) else {
+            let expiry = V2LoginResponse.dateFormatter.date(from: dateString) else {
                 return nil
         }
 

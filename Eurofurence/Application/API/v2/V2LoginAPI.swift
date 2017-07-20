@@ -39,7 +39,7 @@ class V2LoginAPI: LoginAPI {
             guard let responseData = data,
                 let json = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments),
                 let jsonDictionary = json as? [String : Any],
-                let response = JSONLoginResponse(json: jsonDictionary) else {
+                let response = V2LoginResponse(json: jsonDictionary) else {
                     completionHandler(.failure)
                     return
             }
