@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct JSONLoginResponse {
+struct JSONLoginResponse: APILoginResponse {
 
     private static let dateFormatter = Iso8601DateFormatter()
 
-    var userID: Int
+    var uid: Int
     var username: String
-    var authToken: String
-    var authTokenExpiry: Date
+    var token: String
+    var tokenValidUntil: Date
 
     init?(json: [String : Any]) {
         var userID: Int = 0
@@ -28,10 +28,10 @@ struct JSONLoginResponse {
                 return nil
         }
 
-        self.userID = userID
+        self.uid = userID
         self.username = username
-        self.authToken = authToken
-        self.authTokenExpiry = expiry
+        self.token = authToken
+        self.tokenValidUntil = expiry
     }
 
 }

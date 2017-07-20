@@ -47,9 +47,9 @@ class V2LoginAPI {
             }
 
             let credential = LoginCredential(username: response.username,
-                                             registrationNumber: response.userID,
-                                             authenticationToken: response.authToken,
-                                             tokenExpiryDate: response.authTokenExpiry)
+                                             registrationNumber: response.uid,
+                                             authenticationToken: response.token,
+                                             tokenExpiryDate: response.tokenValidUntil)
             completionHandler(.success(credential))
         }
     }
