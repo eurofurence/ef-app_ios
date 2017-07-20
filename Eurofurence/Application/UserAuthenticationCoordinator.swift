@@ -51,7 +51,12 @@ class UserAuthenticationCoordinator {
     }
 
     private func performLogin(arguments: LoginArguments) {
-        loginAPI.performLogin(arguments: arguments, completionHandler: handleLoginResult)
+        loginAPI.performLogin(arguments: makeAPILoginParameters(from: arguments),
+                              completionHandler: handleLoginResult)
+    }
+
+    private func makeAPILoginParameters(from args: LoginArguments) -> APILoginParameters {
+        return APILoginParameters(regNo: args.registrationNumber, username: args.username, password: args.password)
     }
 
     private func handleLoginResult(_ result: APIResponse<LoginCredential>) {

@@ -16,10 +16,10 @@ class V2LoginAPI {
         self.jsonPoster = jsonPoster
     }
 
-    func performLogin(arguments: LoginArguments,
+    func performLogin(arguments: APILoginParameters,
                       completionHandler: @escaping (APIResponse<LoginCredential>) -> Void) {
         do {
-            let postArguments: [String : Any] = ["RegNo": arguments.registrationNumber,
+            let postArguments: [String : Any] = ["RegNo": arguments.regNo,
                                                  "Username": arguments.username,
                                                  "Password": arguments.password]
             let jsonData = try JSONSerialization.data(withJSONObject: postArguments, options: [])
