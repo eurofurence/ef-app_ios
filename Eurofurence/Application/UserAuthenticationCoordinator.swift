@@ -17,7 +17,7 @@ class UserAuthenticationCoordinator {
     private var clock: Clock
     private var loginCredentialStore: LoginCredentialStore
     private var userAuthenticationTokenValid = false
-    private var userAuthenticationObservers = [UserAuthenticationObserver]()
+    private var loginObservers = [LoginObserver]()
     private var userRegistrationNumber: Int?
 
     init(clock: Clock,
@@ -34,13 +34,13 @@ class UserAuthenticationCoordinator {
         }
     }
 
-    func add(_ userAuthenticationObserver: UserAuthenticationObserver) {
-        userAuthenticationObservers.append(userAuthenticationObserver)
+    func add(_ loginObserver: LoginObserver) {
+        loginObservers.append(loginObserver)
     }
 
-    func remove(_ userAuthenticationObserver: UserAuthenticationObserver) {
-        guard let idx = userAuthenticationObservers.index(where: { $0 === userAuthenticationObserver }) else { return }
-        userAuthenticationObservers.remove(at: idx)
+    func remove(_ loginObserver: LoginObserver) {
+        guard let idx = loginObservers.index(where: { $0 === loginObserver }) else { return }
+        loginObservers.remove(at: idx)
     }
 
     func login(_ arguments: LoginArguments) {
@@ -88,11 +88,11 @@ class UserAuthenticationCoordinator {
     }
 
     private func notifyUserAuthorized() {
-        userAuthenticationObservers.forEach { $0.userAuthenticationAuthorized() }
+        loginObservers.forEach { $0.userDidLogin() }
     }
 
     private func notifyUserUnauthorized() {
-        userAuthenticationObservers.forEach { $0.userAuthenticationUnauthorized() }
+        loginObservers.forEach { $0.userDidFailToLogIn() }
     }
 
     private func isCredentialValid(_ credential: LoginCredential) -> Bool {

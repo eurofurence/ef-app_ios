@@ -39,12 +39,12 @@ class EurofurenceApplication {
                                                                   loginAPI: loginAPI)
     }
 
-    func add(_ userAuthenticationObserver: UserAuthenticationObserver) {
-        authenticationCoordinator.add(userAuthenticationObserver)
+    func add(_ loginObserver: LoginObserver) {
+        authenticationCoordinator.add(loginObserver)
     }
 
-    func remove(_ userAuthenticationObserver: UserAuthenticationObserver) {
-        authenticationCoordinator.remove(userAuthenticationObserver)
+    func remove(_ loginObserver: LoginObserver) {
+        authenticationCoordinator.remove(loginObserver)
     }
 
     func login(_ arguments: LoginArguments) {

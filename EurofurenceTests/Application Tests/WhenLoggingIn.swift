@@ -80,34 +80,34 @@ class WhenLoggingIn: XCTestCase {
     
     func testLoggingInSuccessfulyShouldNotifyObserversAboutIt() {
         let context = ApplicationTestBuilder().build()
-        let userAuthenticationObserver = CapturingUserAuthenticationObserver()
-        context.application.add(userAuthenticationObserver)
+        let loginObserver = CapturingLoginObserver()
+        context.application.add(loginObserver)
         context.login()
         context.loginAPI.simulateResponse(makeLoginResponse())
         
-        XCTAssertTrue(userAuthenticationObserver.notifiedLoginSucceeded)
+        XCTAssertTrue(loginObserver.notifiedLoginSucceeded)
     }
     
     func testLoggingInSuccessfulyShouldNotNotifyObserversAboutItUntilTokenPersistenceCompletes() {
         let context = ApplicationTestBuilder().build()
-        let userAuthenticationObserver = CapturingUserAuthenticationObserver()
+        let loginObserver = CapturingLoginObserver()
         context.capturingLoginCredentialsStore.blockToRunBeforeCompletingCredentialStorage = {
-            XCTAssertFalse(userAuthenticationObserver.notifiedLoginSucceeded)
+            XCTAssertFalse(loginObserver.notifiedLoginSucceeded)
         }
         
-        context.application.add(userAuthenticationObserver)
+        context.application.add(loginObserver)
         context.login()
         context.loginAPI.simulateResponse(makeLoginResponse())
     }
     
     func testLoggingInSuccessfulyShouldNotNotifyObserversAboutLoginFailure() {
         let context = ApplicationTestBuilder().build()
-        let userAuthenticationObserver = CapturingUserAuthenticationObserver()
-        context.application.add(userAuthenticationObserver)
+        let loginObserver = CapturingLoginObserver()
+        context.application.add(loginObserver)
         context.login()
         context.loginAPI.simulateResponse(makeLoginResponse())
         
-        XCTAssertFalse(userAuthenticationObserver.notifiedLoginFailed)
+        XCTAssertFalse(loginObserver.notifiedLoginFailed)
     }
     
     func testBeingLoggedInThenLoggingInShouldNotifyObserverLoginSuccessful() {
@@ -116,11 +116,11 @@ class WhenLoggingIn: XCTestCase {
                                          authenticationToken: "",
                                          tokenExpiryDate: .distantFuture)
         let context = ApplicationTestBuilder().with(credential).build()
-        let userAuthenticationObserver = CapturingUserAuthenticationObserver()
-        context.application.add(userAuthenticationObserver)
+        let loginObserver = CapturingLoginObserver()
+        context.application.add(loginObserver)
         context.login()
         
-        XCTAssertTrue(userAuthenticationObserver.notifiedLoginSucceeded)
+        XCTAssertTrue(loginObserver.notifiedLoginSucceeded)
     }
     
     func testBeingLoggedInThenLoggingInShouldNotRequestTheAPIToLogin() {
@@ -129,8 +129,8 @@ class WhenLoggingIn: XCTestCase {
                                          authenticationToken: "",
                                          tokenExpiryDate: .distantFuture)
         let context = ApplicationTestBuilder().with(credential).build()
-        let userAuthenticationObserver = CapturingUserAuthenticationObserver()
-        context.application.add(userAuthenticationObserver)
+        let loginObserver = CapturingLoginObserver()
+        context.application.add(loginObserver)
         context.login()
         
         XCTAssertNil(context.loginAPI.capturedLoginArguments)
@@ -158,13 +158,13 @@ class WhenLoggingIn: XCTestCase {
     
     func testRemovingTheObserverThenLoggingInShouldNotTellTheObserverAboutIt() {
         let context = ApplicationTestBuilder().build()
-        let userAuthenticationObserver = CapturingUserAuthenticationObserver()
-        context.application.add(userAuthenticationObserver)
+        let loginObserver = CapturingLoginObserver()
+        context.application.add(loginObserver)
         context.login()
-        context.application.remove(userAuthenticationObserver)
+        context.application.remove(loginObserver)
         context.loginAPI.simulateResponse(makeLoginResponse())
         
-        XCTAssertFalse(userAuthenticationObserver.notifiedLoginSucceeded)
+        XCTAssertFalse(loginObserver.notifiedLoginSucceeded)
     }
     
 }

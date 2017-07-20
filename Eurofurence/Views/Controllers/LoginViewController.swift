@@ -15,7 +15,7 @@ protocol LoginViewControllerDelegate: class {
 
 }
 
-class LoginViewController: UITableViewController, UITextFieldDelegate, UserAuthenticationObserver {
+class LoginViewController: UITableViewController, UITextFieldDelegate, LoginObserver {
 
     // MARK: Properties
 
@@ -110,15 +110,15 @@ class LoginViewController: UITableViewController, UITextFieldDelegate, UserAuthe
         textFieldResponders[indexPath.row].becomeFirstResponder()
     }
 
-    // MARK: UserAuthenticationObserver
+    // MARK: LoginObserver
 
-    func userAuthenticationAuthorized() {
+    func userDidLogin() {
         dismiss(animated: true) {
             self.loginDelegate?.loginViewControllerDidLoginSuccessfully(self)
         }
     }
 
-    func userAuthenticationUnauthorized() {
+    func userDidFailToLogIn() {
         let alert = UIAlertController(title: "Unable to Login",
                                       message: "Please verify your login details and whether you have an active internet connection",
                                       preferredStyle: .alert)
