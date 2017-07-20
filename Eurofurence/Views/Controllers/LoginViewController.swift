@@ -103,6 +103,11 @@ class LoginViewController: UITableViewController, UITextFieldDelegate, LoginObse
         EurofurenceApplication.shared.add(self)
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        EurofurenceApplication.shared.remove(self)
+    }
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.section == 0 else { return }
         guard indexPath.row < textFieldResponders.count else { return }

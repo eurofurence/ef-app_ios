@@ -38,6 +38,7 @@ class UserAuthenticationCoordinator {
 
         if let credential = loginCredentialStore.persistedCredential, isCredentialValid(credential) {
             userAuthenticationToken = credential.authenticationToken
+            loggedInUser = User(registrationNumber: credential.registrationNumber, username: credential.username)
         }
     }
 

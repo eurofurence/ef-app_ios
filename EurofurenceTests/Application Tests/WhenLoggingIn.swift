@@ -240,4 +240,30 @@ class WhenLoggingIn: XCTestCase {
         XCTAssertFalse(authenticationStateObserver.didLogIn)
     }
     
+    func testAddingAuthenticationStateObserverWhenLaunchingWithExistingCredentialShouldTellTheObserverTheUsernameWeAreLoggedInAs() {
+        let expectedUsername = "Some cool guy"
+        let credential = LoginCredential(username: expectedUsername,
+                                         registrationNumber: 0,
+                                         authenticationToken: "",
+                                         tokenExpiryDate: .distantFuture)
+        let context = ApplicationTestBuilder().with(credential).build()
+        let authenticationStateObserver = CapturingAuthenticationStateObserver()
+        context.application.add(authenticationStateObserver)
+        
+        XCTAssertEqual(expectedUsername, authenticationStateObserver.loggedInUser?.username)
+    }
+    
+    func testAddingAuthenticationStateObserverWhenLaunchingWithExistingCredentialShouldTellTheObserverTheRegNoWeAreLoggedInAs() {
+        let expectedRegNo = 42
+        let credential = LoginCredential(username: "",
+                                         registrationNumber: 42,
+                                         authenticationToken: "",
+                                         tokenExpiryDate: .distantFuture)
+        let context = ApplicationTestBuilder().with(credential).build()
+        let authenticationStateObserver = CapturingAuthenticationStateObserver()
+        context.application.add(authenticationStateObserver)
+        
+        XCTAssertEqual(expectedRegNo, authenticationStateObserver.loggedInUser?.registrationNumber)
+    }
+    
 }
