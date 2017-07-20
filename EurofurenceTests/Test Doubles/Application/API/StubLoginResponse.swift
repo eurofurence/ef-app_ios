@@ -10,7 +10,7 @@
 import Foundation
 
 struct StubLoginResponse: APILoginResponse {
-    var uid: Int
+    var uid: String
     var username: String
     var token: String
     var tokenValidUntil: Date

@@ -138,13 +138,6 @@ class V2LoginAPITests: XCTestCase {
         XCTAssertTrue(loginResponseObserver.notifiedLoginFailed)
     }
     
-    func testLoginResponseContainingUserIDAsSomethingOtherThanIntegerShouldTellTheObserverLoginFailed() {
-        let payload = makeSuccessfulLoginPayload(userID: "Not an int!")
-        let loginResponseObserver = makeObserverForVerifyingLoginResponse(payload)
-        
-        XCTAssertTrue(loginResponseObserver.notifiedLoginFailed)
-    }
-    
     func testLoginResponseMissingTokenFieldShouldTellTheObserverLoginFailed() {
         let loginResponseObserver = makeObserverForVerifyingLoginResponse(missingKey: "Token")
         XCTAssertTrue(loginResponseObserver.notifiedLoginFailed)
@@ -179,8 +172,8 @@ class V2LoginAPITests: XCTestCase {
     }
     
     func testLoggingInSuccessfullyShouldReturnResponseWithUserID() {
-        let uid = 42
-        let data = makeSuccessfulLoginData(userID: String(describing: uid))
+        let uid = "RegSys:23:99999"
+        let data = makeSuccessfulLoginData(userID: uid)
         let observer = makeObserverForVerifyingLoginResponse(data)
         
         XCTAssertEqual(uid, observer.capturedLoginResponse?.uid)

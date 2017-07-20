@@ -12,23 +12,21 @@ struct JSONLoginResponse: APILoginResponse {
 
     private static let dateFormatter = Iso8601DateFormatter()
 
-    var uid: Int
+    var uid: String
     var username: String
     var token: String
     var tokenValidUntil: Date
 
     init?(json: [String : Any]) {
-        var userID: Int = 0
         guard let username = json["Username"] as? String,
-            let userIDString = json["Uid"] as? String,
+            let uid = json["Uid"] as? String,
             let authToken = json["Token"] as? String,
             let dateString = json["TokenValidUntil"] as? String,
-            let expiry = JSONLoginResponse.dateFormatter.date(from: dateString),
-            Scanner(string: userIDString).scanInt(&userID) else {
+            let expiry = JSONLoginResponse.dateFormatter.date(from: dateString) else {
                 return nil
         }
 
-        self.uid = userID
+        self.uid = uid
         self.username = username
         self.token = authToken
         self.tokenValidUntil = expiry

@@ -18,6 +18,7 @@ class UserAuthenticationCoordinator {
     private var loginCredentialStore: LoginCredentialStore
     private var userAuthenticationTokenValid = false
     private var userAuthenticationObservers = [UserAuthenticationObserver]()
+    private var userRegistrationNumber: Int?
 
     init(clock: Clock,
          loginCredentialStore: LoginCredentialStore,
@@ -51,6 +52,7 @@ class UserAuthenticationCoordinator {
     }
 
     private func performLogin(arguments: LoginArguments) {
+        userRegistrationNumber = arguments.registrationNumber
         loginAPI.performLogin(arguments: makeAPILoginParameters(from: arguments),
                               completionHandler: handleLoginResult)
     }
@@ -71,7 +73,7 @@ class UserAuthenticationCoordinator {
 
     private func processLoginResponse(_ response: APILoginResponse) {
         let credential = LoginCredential(username: response.username,
-                                         registrationNumber: response.uid,
+                                         registrationNumber: userRegistrationNumber!,
                                          authenticationToken: response.token,
                                          tokenExpiryDate: response.tokenValidUntil)
 

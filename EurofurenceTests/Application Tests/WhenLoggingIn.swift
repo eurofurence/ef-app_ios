@@ -11,7 +11,7 @@ import XCTest
 
 class WhenLoggingIn: XCTestCase {
     
-    private func makeLoginResponse(uid: Int = 0,
+    private func makeLoginResponse(uid: String = "",
                                    username: String = "",
                                    token: String = "",
                                    tokenValidUntil: Date = Date()) -> APILoginResponse {
@@ -51,11 +51,11 @@ class WhenLoggingIn: XCTestCase {
         XCTAssertEqual(expectedUsername, context.capturingLoginCredentialsStore.capturedCredential?.username)
     }
     
-    func testLoggingInSuccessfullyShouldPersistLoginCredentialWithUserID() {
+    func testLoggingInSuccessfullyShouldPersistLoginCredentialWithUserIDFromLoginRequest() {
         let context = ApplicationTestBuilder().build()
         let expectedUserID = 42
         context.login(registrationNumber: expectedUserID)
-        context.loginAPI.simulateResponse(makeLoginResponse(uid: expectedUserID))
+        context.loginAPI.simulateResponse(makeLoginResponse(uid: "Something else"))
         
         XCTAssertEqual(expectedUserID, context.capturingLoginCredentialsStore.capturedCredential?.registrationNumber)
     }

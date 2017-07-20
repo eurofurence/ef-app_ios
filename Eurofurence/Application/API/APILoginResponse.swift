@@ -10,7 +10,7 @@ import Foundation
 
 protocol APILoginResponse {
 
-    var uid: Int { get }
+    var uid: String { get }
     var username: String { get }
     var token: String { get }
     var tokenValidUntil: Date { get }
