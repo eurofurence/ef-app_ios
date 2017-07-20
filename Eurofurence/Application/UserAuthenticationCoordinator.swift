@@ -8,14 +8,13 @@
 
 import Foundation
 
-class UserAuthenticationCoordinator: LoginTaskDelegate {
+class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDelegate {
 
     var userAuthenticationToken: String?
     var registeredDeviceToken: Data?
     private var loginAPI: LoginAPI
+    private var credentialPersister: CredentialPersister
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
-    private var clock: Clock
-    private var loginCredentialStore: LoginCredentialStore
     private var loginObservers = [LoginObserver]()
     private var authenticationStateObservers = [AuthenticationStateObserver]()
     private var loggedInUser: User?
@@ -29,14 +28,9 @@ class UserAuthenticationCoordinator: LoginTaskDelegate {
          remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
          loginAPI: LoginAPI) {
         self.loginAPI = loginAPI
-        self.clock = clock
-        self.loginCredentialStore = loginCredentialStore
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
-
-        if let credential = loginCredentialStore.persistedCredential, isCredentialValid(credential) {
-            userAuthenticationToken = credential.authenticationToken
-            loggedInUser = User(registrationNumber: credential.registrationNumber, username: credential.username)
-        }
+        credentialPersister = CredentialPersister(clock: clock, loginCredentialStore: loginCredentialStore)
+        credentialPersister.loadCredential(delegate: self)
     }
 
     func add(_ loginObserver: LoginObserver) {
@@ -73,7 +67,7 @@ class UserAuthenticationCoordinator: LoginTaskDelegate {
 
     func loginTask(_ task: LoginTask, didProduce loginCredential: LoginCredential) {
         loggedInUser = User(registrationNumber: loginCredential.registrationNumber, username: loginCredential.username)
-        loginCredentialStore.store(loginCredential)
+        credentialPersister.persist(loginCredential)
         notifyLoginSucceeded()
         userAuthenticationToken = loginCredential.authenticationToken
 
@@ -87,6 +81,13 @@ class UserAuthenticationCoordinator: LoginTaskDelegate {
         loginObservers.forEach { $0.userDidFailToLogIn() }
     }
 
+    // MARK: CredentialPersisterDelegate
+
+    func credentialPersister(_ credentialPersister: CredentialPersister, didRetrieve loginCredential: LoginCredential) {
+        userAuthenticationToken = loginCredential.authenticationToken
+        loggedInUser = User(registrationNumber: loginCredential.registrationNumber, username: loginCredential.username)
+    }
+
     // MARK: Private
 
     private func notifyLoginSucceeded() {
@@ -94,10 +95,6 @@ class UserAuthenticationCoordinator: LoginTaskDelegate {
 
         guard let loggedInUser = loggedInUser else { return }
         authenticationStateObservers.forEach { $0.loggedIn(as: loggedInUser) }
-    }
-
-    private func isCredentialValid(_ credential: LoginCredential) -> Bool {
-        return clock.currentDate.compare(credential.tokenExpiryDate) == .orderedAscending
     }
 
 }
