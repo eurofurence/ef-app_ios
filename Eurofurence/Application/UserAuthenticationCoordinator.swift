@@ -37,6 +37,11 @@ class UserAuthenticationCoordinator {
         userAuthenticationObservers.append(userAuthenticationObserver)
     }
 
+    func remove(_ userAuthenticationObserver: UserAuthenticationObserver) {
+        guard let idx = userAuthenticationObservers.index(where: { $0 === userAuthenticationObserver }) else { return }
+        userAuthenticationObservers.remove(at: idx)
+    }
+
     func login(_ arguments: LoginArguments) {
         if userAuthenticationToken == nil {
             performLogin(arguments: arguments)

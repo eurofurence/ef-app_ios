@@ -6,7 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-protocol UserAuthenticationObserver {
+protocol UserAuthenticationObserver: class {
 
     func userAuthenticationAuthorized()
     func userAuthenticationUnauthorized()

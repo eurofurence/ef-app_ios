@@ -259,4 +259,15 @@ class WhenLoggingIn: XCTestCase {
         XCTAssertEqual(expectedToken, context.capturingTokenRegistration.capturedUserAuthenticationToken)
     }
     
+    func testRemovingTheObserverThenLoggingInShouldNotTellTheObserverAboutIt() {
+        let context = ApplicationTestBuilder().build()
+        let userAuthenticationObserver = CapturingUserAuthenticationObserver()
+        context.application.add(userAuthenticationObserver)
+        context.login()
+        context.application.remove(userAuthenticationObserver)
+        context.simulateJSONResponse(makeSuccessfulLoginData())
+        
+        XCTAssertFalse(userAuthenticationObserver.notifiedLoginSucceeded)
+    }
+    
 }
