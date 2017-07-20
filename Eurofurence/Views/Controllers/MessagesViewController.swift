@@ -15,19 +15,27 @@ protocol MessagesViewControllerDelegate: class {
 }
 
 class MessagesViewController: UITableViewController,
-                                   LoginViewControllerDelegate {
+                              AuthenticationStateObserver,
+                              LoginViewControllerDelegate {
 
     // MARK: Properties
 
     weak var messagesDelegate: MessagesViewControllerDelegate?
+    private var isLoggedIn = false
     private var didShowLogin = false
 
     // MARK: Overrides
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        EurofurenceApplication.shared.add(self)
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
 
-        if !didShowLogin {
+        if !(isLoggedIn || didShowLogin) {
             didShowLogin = true
             performSegue(withIdentifier: "showTutorial", sender: self)
         }
@@ -40,6 +48,12 @@ class MessagesViewController: UITableViewController,
            let login = destination.topViewController as? LoginViewController {
             login.loginDelegate = self
         }
+    }
+
+    // MARK: AuthenticationStateObserver
+
+    func loggedIn() {
+        isLoggedIn = true
     }
 
     // MARK: LoginViewControllerDelegate
