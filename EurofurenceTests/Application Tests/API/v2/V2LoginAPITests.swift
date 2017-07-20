@@ -11,12 +11,12 @@ import XCTest
 
 class CapturingV2LoginObserver {
     
-    private(set) var capturedCredential: LoginCredential?
+    private(set) var capturedLoginResponse: APILoginResponse?
     private(set) var notifiedLoginFailed = false
-    func observe(_ result: APIResponse<LoginCredential>) {
+    func observe(_ result: APIResponse<APILoginResponse>) {
         switch result {
-        case .success(let credential):
-            capturedCredential = credential
+        case .success(let response):
+            capturedLoginResponse = response
         case .failure:
             notifiedLoginFailed = true
         }
@@ -167,7 +167,7 @@ class V2LoginAPITests: XCTestCase {
         let data = makeSuccessfulLoginData(username: username)
         let observer = makeObserverForVerifyingLoginResponse(data)
         
-        XCTAssertEqual(username, observer.capturedCredential?.username)
+        XCTAssertEqual(username, observer.capturedLoginResponse?.username)
     }
     
     func testLoggingInSuccessfullyShouldReturnResponseWithAuthToken() {
@@ -175,7 +175,7 @@ class V2LoginAPITests: XCTestCase {
         let data = makeSuccessfulLoginData(authToken: authToken)
         let observer = makeObserverForVerifyingLoginResponse(data)
         
-        XCTAssertEqual(authToken, observer.capturedCredential?.authenticationToken)
+        XCTAssertEqual(authToken, observer.capturedLoginResponse?.token)
     }
     
     func testLoggingInSuccessfullyShouldReturnResponseWithUserID() {
@@ -183,14 +183,14 @@ class V2LoginAPITests: XCTestCase {
         let data = makeSuccessfulLoginData(userID: String(describing: uid))
         let observer = makeObserverForVerifyingLoginResponse(data)
         
-        XCTAssertEqual(uid, observer.capturedCredential?.registrationNumber)
+        XCTAssertEqual(uid, observer.capturedLoginResponse?.uid)
     }
     
     func testLoggingInSuccessfullyShouldReturnResponseWithAuthTokenExpiry() {
         let data = makeSuccessfulLoginData(validUntil: "2017-07-17T19:45:22.666Z")
         let observer = makeObserverForVerifyingLoginResponse(data)
         let expectedComponents = DateComponents(year: 2017, month: 7, day: 17, hour: 19, minute: 45, second: 22)
-        let receievedDate = observer.capturedCredential?.tokenExpiryDate
+        let receievedDate = observer.capturedLoginResponse?.tokenValidUntil
         var actualComponents: DateComponents?
         let desiredComponents: [Calendar.Component] = [.year, .month, .day, .hour, .minute, .second]
         if let receievedDate = receievedDate {

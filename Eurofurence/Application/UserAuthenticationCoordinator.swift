@@ -59,17 +59,22 @@ class UserAuthenticationCoordinator {
         return APILoginParameters(regNo: args.registrationNumber, username: args.username, password: args.password)
     }
 
-    private func handleLoginResult(_ result: APIResponse<LoginCredential>) {
+    private func handleLoginResult(_ result: APIResponse<APILoginResponse>) {
         switch result {
-        case .success(let credential):
-            processFetchedCredential(credential)
+        case .success(let response):
+            processLoginResponse(response)
 
         case .failure:
             notifyUserUnauthorized()
         }
     }
 
-    private func processFetchedCredential(_ credential: LoginCredential) {
+    private func processLoginResponse(_ response: APILoginResponse) {
+        let credential = LoginCredential(username: response.username,
+                                         registrationNumber: response.uid,
+                                         authenticationToken: response.token,
+                                         tokenExpiryDate: response.tokenValidUntil)
+
         loginCredentialStore.store(credential)
         notifyUserAuthorized()
         userAuthenticationToken = credential.authenticationToken

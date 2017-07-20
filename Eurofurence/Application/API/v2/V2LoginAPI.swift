@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias LoginResponseHandler = (APIResponse<LoginCredential>) -> Void
+typealias LoginResponseHandler = (APIResponse<APILoginResponse>) -> Void
 
 class V2LoginAPI {
 
@@ -19,7 +19,7 @@ class V2LoginAPI {
     }
 
     func performLogin(arguments: APILoginParameters,
-                      completionHandler: @escaping (APIResponse<LoginCredential>) -> Void) {
+                      completionHandler: @escaping LoginResponseHandler) {
         do {
             let jsonData = try makeLoginBody(from: arguments)
             performLogin(body: jsonData, completionHandler: completionHandler)
@@ -35,7 +35,7 @@ class V2LoginAPI {
         return try JSONSerialization.data(withJSONObject: postArguments, options: [])
     }
 
-    private func performLogin(body: Data, completionHandler: @escaping (APIResponse<LoginCredential>) -> Void) {
+    private func performLogin(body: Data, completionHandler: @escaping LoginResponseHandler) {
         let request = POSTRequest(url: "https://app.eurofurence.org/api/v2/Tokens/RegSys", body: body)
         jsonPoster.post(request) { data in
             guard let responseData = data,
@@ -46,11 +46,7 @@ class V2LoginAPI {
                     return
             }
 
-            let credential = LoginCredential(username: response.username,
-                                             registrationNumber: response.uid,
-                                             authenticationToken: response.token,
-                                             tokenExpiryDate: response.tokenValidUntil)
-            completionHandler(.success(credential))
+            completionHandler(.success(response))
         }
     }
 
