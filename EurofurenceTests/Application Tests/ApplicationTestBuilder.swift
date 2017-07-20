@@ -44,11 +44,6 @@ class ApplicationTestBuilder {
         return self
     }
     
-    func with(_ loginAPI: CapturingLoginAPI) -> ApplicationTestBuilder {
-        self.loginAPI = loginAPI
-        return self
-    }
-    
     func build() -> Context {
         let app = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration,
                                          clock: stubClock,
