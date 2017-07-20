@@ -20,6 +20,10 @@ class UserAuthenticationCoordinator {
     private var loginObservers = [LoginObserver]()
     private var userRegistrationNumber: Int?
 
+    private var isLoggedIn: Bool {
+        return userAuthenticationToken != nil
+    }
+
     init(clock: Clock,
          loginCredentialStore: LoginCredentialStore,
          remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
@@ -36,6 +40,10 @@ class UserAuthenticationCoordinator {
 
     func add(_ loginObserver: LoginObserver) {
         loginObservers.append(loginObserver)
+
+        if isLoggedIn {
+            loginObserver.userDidLogin()
+        }
     }
 
     func remove(_ loginObserver: LoginObserver) {
@@ -44,10 +52,10 @@ class UserAuthenticationCoordinator {
     }
 
     func login(_ arguments: LoginArguments) {
-        if userAuthenticationToken == nil {
-            performLogin(arguments: arguments)
-        } else {
+        if isLoggedIn {
             notifyUserAuthorized()
+        } else {
+            performLogin(arguments: arguments)
         }
     }
 
