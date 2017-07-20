@@ -10,18 +10,14 @@ import Foundation
 
 class V2LoginAPI {
 
-    enum Result {
-        case success(LoginCredential)
-        case failure
-    }
-
     private var jsonPoster: JSONPoster
 
     init(jsonPoster: JSONPoster) {
         self.jsonPoster = jsonPoster
     }
 
-    func performLogin(arguments: LoginArguments, completionHandler: @escaping (Result) -> Void) {
+    func performLogin(arguments: LoginArguments,
+                      completionHandler: @escaping (APIResponse<LoginCredential>) -> Void) {
         do {
             let postArguments: [String : Any] = ["RegNo": arguments.registrationNumber,
                                                  "Username": arguments.username,

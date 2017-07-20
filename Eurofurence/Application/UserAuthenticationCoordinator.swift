@@ -54,7 +54,7 @@ class UserAuthenticationCoordinator {
         loginAPI.performLogin(arguments: arguments, completionHandler: handleLoginResult)
     }
 
-    private func handleLoginResult(_ result: V2LoginAPI.Result) {
+    private func handleLoginResult(_ result: APIResponse<LoginCredential>) {
         switch result {
         case .success(let credential):
             processFetchedCredential(credential)
