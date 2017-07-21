@@ -716,6 +716,7 @@
                         </attributedString>
                     </refreshControl>
                     <connections>
+                        <outlet property="favoritesOnlySegmentedControl" destination="Hgj-Ld-MdK" id="KVg-cv-Gy6"/>
                         <outlet property="lastSyncLabel" destination="Sb6-So-bcp" id="V3e-U2-JjT"/>
                         <segue destination="TBc-XK-CZJ" kind="show" identifier="EventDetailSegue" id="au0-CR-I6S"/>
                         <segue destination="Iix-4g-IXD" kind="show" identifier="AnnouncementDetailSegue" id="F19-Ua-bvP"/>

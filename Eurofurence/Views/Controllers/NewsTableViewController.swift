@@ -12,16 +12,23 @@ import UIKit
 import Changeset
 
 class NewsTableViewController: UITableViewController, UIViewControllerPreviewingDelegate, MessagesViewControllerDelegate {
+	@IBOutlet weak var favoritesOnlySegmentedControl: UISegmentedControl!
 
 	private var announcementsViewModel: AnnouncementsViewModel = try! ViewModelResolver.container.resolve()
 	private var currentEventsViewModel: CurrentEventsViewModel = try! ViewModelResolver.container.resolve()
 	private var timeService: TimeService = try! ServiceResolver.container.resolve()
 	private var disposables = CompositeDisposable()
 
+	private var upcomingEvents: [Event] = []
+	private var runningEvents: [Event] = []
+
 	@IBOutlet weak var lastSyncLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+		runningEvents = currentEventsViewModel.RunningEvents.value
+		upcomingEvents = currentEventsViewModel.UpcomingEvents.value
 
 		if traitCollection.forceTouchCapability == .available {
 			registerForPreviewing(with: self, sourceView: view)
@@ -33,7 +40,9 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 		tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
 		tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCellWithoutBanner")
 
-        self.refreshControl?.addTarget(self, action: #selector(NewsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
+		favoritesOnlySegmentedControl.addTarget(self, action: #selector(NewsTableViewController.filtersChanged), for: .valueChanged)
+
+        self.refreshControl?.addTarget(self, action: #selector(NewsTableViewController.refresh(_:)), for: .valueChanged)
 
 		disposables += lastSyncLabel.reactive.text <~ announcementsViewModel.TimeSinceLastSync.map({
 			(timeSinceLastSync: TimeInterval) in
@@ -44,34 +53,32 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 		})
 
         disposables += announcementsViewModel.Announcements.signal.observeValues({
-            [weak self] _ in
-            guard let strongSelf = self else { return }
+            [unowned self] _ in
             DispatchQueue.main.async {
-                strongSelf.tableView.reloadData()
+				self.tableView.reloadData()
             }
         })
-        disposables += currentEventsViewModel.RunningEvents.signal.observeValues({
-            [weak self] _ in
-            guard let strongSelf = self else { return }
+        disposables += currentEventsViewModel.RunningEventsEdits.signal.observeValues({
+            [unowned self] edits in
             DispatchQueue.main.async {
-                strongSelf.tableView.reloadData()
+				self.runningEvents = self.currentEventsViewModel.RunningEvents.value
+				self.tableView.update(with: edits, in: 2)
             }
         })
-        disposables += currentEventsViewModel.UpcomingEvents.signal.observeValues({
-            [weak self] _ in
-            guard let strongSelf = self else { return }
+        disposables += currentEventsViewModel.UpcomingEventsEdits.signal.observeValues({
+            [unowned self] edits in
             DispatchQueue.main.async {
-                strongSelf.tableView.reloadData()
+				self.upcomingEvents = self.currentEventsViewModel.UpcomingEvents.value
+				self.tableView.update(with: edits, in: 3)
             }
         })
         disposables += timeService.currentTime.signal.observeValues({
-            [weak self] value in
-            guard let strongSelf = self else { return }
+            [unowned self] value in
             DispatchQueue.main.async {
-                if strongSelf.timeService.offset.value != 0.0 {
-                    strongSelf.navigationItem.title = "News @ \(DateFormatters.hourMinute.string(from: value))"
+                if self.timeService.offset.value != 0.0 {
+                    self.navigationItem.title = "News @ \(DateFormatters.hourMinute.string(from: value))"
                 } else {
-                    strongSelf.navigationItem.title = "News"
+                    self.navigationItem.title = "News"
                 }
             }
         })
@@ -81,6 +88,11 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
         let refreshControlVisibilityDelegate = RefreshControlDataStoreDelegate(refreshControl: refreshControl)
         DataStoreRefreshController.shared.add(refreshControlVisibilityDelegate)
     }
+
+	func filtersChanged() {
+		currentEventsViewModel.isFavoritesOnly = favoritesOnlySegmentedControl.selectedSegmentIndex == 1
+		timeService.tick()
+	}
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -194,9 +206,9 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 		case 1:
 			return max(1, announcementsViewModel.Announcements.value.count)
 		case 2:
-			return max(1, currentEventsViewModel.RunningEvents.value.count)
+			return runningEvents.count
 		case 3:
-			return max(1, currentEventsViewModel.UpcomingEvents.value.count)
+			return upcomingEvents.count
 		default: // Header or unknown section
 			return 0
 		}
@@ -233,21 +245,21 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 				return cell
 			}
 		case 2:
-			if currentEventsViewModel.RunningEvents.value.isEmpty {
+			if runningEvents.isEmpty {
 				return tableView.dequeueReusableCell(withIdentifier: "NoRunningEventsCell", for: indexPath)
 			} else {
 				let event = getData(for: indexPath) as? Event
 				let cell = tableView.dequeueReusableCell(withIdentifier: event?.BannerImage != nil ? "EventCell" : "EventCellWithoutBanner", for: indexPath) as! EventCell
-				cell.event = currentEventsViewModel.RunningEvents.value[indexPath.row]
+				cell.event = event
 				return cell
 			}
 		case 3:
-			if currentEventsViewModel.UpcomingEvents.value.isEmpty {
+			if upcomingEvents.isEmpty {
 				return tableView.dequeueReusableCell(withIdentifier: "NoUpcomingEventsCell", for: indexPath)
 			} else {
 				let event = getData(for: indexPath) as? Event
 				let cell = tableView.dequeueReusableCell(withIdentifier: event?.BannerImage != nil ? "EventCell" : "EventCellWithoutBanner", for: indexPath) as! EventCell
-				cell.event = currentEventsViewModel.UpcomingEvents.value[indexPath.row]
+				cell.event = event
 				return cell
 			}
 		default: // Unknown section or header
@@ -261,9 +273,9 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 		case 1:
 			dataSource = announcementsViewModel.Announcements.value
 		case 2:
-			dataSource = currentEventsViewModel.RunningEvents.value
+			dataSource = runningEvents
 		case 3:
-			dataSource = currentEventsViewModel.UpcomingEvents.value
+			dataSource = upcomingEvents
 		default:
 			return nil
 		}

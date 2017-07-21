@@ -6,12 +6,18 @@
 //
 
 import Foundation
+import Changeset
 import ReactiveSwift
 import Result
 
 class CurrentEventsViewModel {
 	let RunningEvents = MutableProperty<[Event]>([])
+	let RunningEventsEdits = MutableProperty<[Edit<Event>]>(Changeset.edits(from: [], to: []))
 	let UpcomingEvents = MutableProperty<[Event]>([])
+	let UpcomingEventsEdits = MutableProperty<[Edit<Event>]>(Changeset.edits(from: [], to: []))
+
+	var isFavoritesOnly: Bool = false
+
 	private let dataContext: DataContextProtocol
 	private let timeService: TimeService = try! ServiceResolver.container.resolve()
 	private var timedEventsSignal: Signal<(Date, [Event]), NoError>
@@ -21,27 +27,38 @@ class CurrentEventsViewModel {
 	init(dataContext: DataContextProtocol) {
 		self.dataContext = dataContext
 
-		RunningEvents.swap(CurrentEventsViewModel.filterRunningEvents(timeService.currentTime.value, dataContext.Events.value))
-		UpcomingEvents.swap(CurrentEventsViewModel.filterUpcomingEvents(timeService.currentTime.value, dataContext.Events.value))
-
 		timedEventsSignal = Signal.combineLatest(timeService.currentTime.signal, dataContext.Events.signal).observe(on: scheduler)
 
-		disposable += RunningEvents <~ timedEventsSignal.map { (time, items) -> [Event] in
-			return items.filter({ $0.StartDateTimeUtc < time && $0.EndDateTimeUtc > time })
-		}.skipRepeats({ $0.count == $1.count && $0.starts(with: $1)})
+		RunningEvents.swap(filterRunningEvents(timeService.currentTime.value, dataContext.Events.value))
+		UpcomingEvents.swap(filterUpcomingEvents(timeService.currentTime.value, dataContext.Events.value))
+		RunningEventsEdits.swap(Changeset.edits(from: [], to: RunningEvents.value))
+		UpcomingEventsEdits.swap(Changeset.edits(from: [], to: UpcomingEvents.value))
 
-		disposable += UpcomingEvents <~ timedEventsSignal.map { (time, items) in
-			let filteredItems = items.filter({ $0.StartDateTimeUtc > time })
-			return Array(filteredItems[0..<min(10, filteredItems.count)])
-		}.skipRepeats({ $0.count == $1.count && $0.starts(with: $1)})
+		disposable += RunningEvents <~ timedEventsSignal.map(filterRunningEvents)
+			.skipRepeats({ $0.count == $1.count && $0.starts(with: $1)})
+
+		disposable += RunningEventsEdits <~ RunningEvents.combinePrevious(RunningEvents.value)
+			.map({ (oldEvents, newEvents) in
+				return Changeset.edits(from: oldEvents, to: newEvents)
+			})
+
+		disposable += UpcomingEvents <~ timedEventsSignal.map(filterUpcomingEvents)
+			.skipRepeats({ $0.count == $1.count && $0.starts(with: $1)})
+
+		disposable += UpcomingEventsEdits <~ UpcomingEvents.combinePrevious(UpcomingEvents.value)
+			.map({ (oldEvents, newEvents) in
+				return Changeset.edits(from: oldEvents, to: newEvents)
+			})
 	}
 
-	static private func filterRunningEvents(_ time: Date, _ events: [Event]) -> [Event] {
-		return events.filter({ $0.StartDateTimeUtc < time && $0.EndDateTimeUtc > time })
+	private func filterRunningEvents(_ time: Date, _ events: [Event]) -> [Event] {
+		return events.filter({ $0.StartDateTimeUtc < time && $0.EndDateTimeUtc > time &&
+			(!self.isFavoritesOnly || $0.EventFavorite?.IsFavorite.value ?? false) })
 	}
 
-	static private func filterUpcomingEvents(_ time: Date, _ events: [Event]) -> [Event] {
-		let filteredEvents = events.filter({ $0.StartDateTimeUtc > time })
+	private func filterUpcomingEvents(_ time: Date, _ events: [Event]) -> [Event] {
+		let filteredEvents = events.filter({ $0.StartDateTimeUtc > time &&
+			(!self.isFavoritesOnly || $0.EventFavorite?.IsFavorite.value ?? false) })
 		return Array(filteredEvents[0..<min(10, filteredEvents.count)])
 	}
 
