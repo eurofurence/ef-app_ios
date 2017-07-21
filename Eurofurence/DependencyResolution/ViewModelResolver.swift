@@ -21,16 +21,16 @@ class ViewModelResolver {
 
 	private init() {
 		_container.collaborate(with: ContextResolver.container)
-		_container.register(.singleton) {
+		_container.register(.eagerSingleton) {
 			AnnouncementsViewModel(dataContext: $0, lastSyncDateProvider: $1)
 		}
-		_container.register(.singleton) {
+		_container.register(.eagerSingleton) {
 			CurrentEventsViewModel(dataContext: $0)
 		}
-		_container.register(.singleton) {
+		_container.register(.eagerSingleton) {
 			EventsViewModel(dataContext: $0)
 		}
-		_container.register(.singleton) {
+		_container.register(.eagerSingleton) {
 			MapViewModel(dataContext: $0)
 		}
 	}
