@@ -18,6 +18,7 @@ class EventCell: UITableViewCell {
 	@IBOutlet weak var titleLabel: UILabel!
 
 	let imageService: ImageServiceProtocol = try! ServiceResolver.container.resolve()
+	let disposable: SerialDisposable = SerialDisposable()
 
 	weak private var _event: Event?
 
@@ -31,8 +32,9 @@ class EventCell: UITableViewCell {
 				startTimeLabel.text = DateFormatters.hourMinute.string(from: event.StartDateTimeUtc)
 				endTimeLabel.text = DateFormatters.hourMinute.string(from: event.EndDateTimeUtc)
 				if let eventFavorite = event.EventFavorite {
-					favoriteLabel.reactive.isHidden <~ eventFavorite.IsFavorite.map({ !$0 })
+					disposable.inner = favoriteLabel.reactive.isHidden <~ eventFavorite.IsFavorite.map({ !$0 })
 				} else {
+					disposable.dispose()
 					favoriteLabel.isHidden = true
 				}
 				if let bannerImage = event.BannerImage {
@@ -54,6 +56,7 @@ class EventCell: UITableViewCell {
 					bannerImageView.updateConstraints()
 				}
 			} else {
+				disposable.dispose()
 				startTimeLabel.text = nil
 				endTimeLabel.text = nil
 			}
