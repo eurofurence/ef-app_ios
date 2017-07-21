@@ -51,6 +51,16 @@ class WhenLoggingIn: XCTestCase {
         XCTAssertEqual(expectedUsername, context.capturingLoginCredentialsStore.capturedCredential?.username)
     }
     
+    func testLoggingInSuccessfullyShouldPersistLoginCredentialWithUsernameProvidedByLoginCallAndNotLoginResponse() {
+        let context = ApplicationTestBuilder().build()
+        let expectedUsername = "Some awesome guy"
+        let unexpectedUsername = "Some other guy"
+        context.login(username: expectedUsername)
+        context.loginAPI.simulateResponse(makeLoginResponse(username: unexpectedUsername))
+        
+        XCTAssertEqual(expectedUsername, context.capturingLoginCredentialsStore.capturedCredential?.username)
+    }
+    
     func testLoggingInSuccessfullyShouldPersistLoginCredentialWithUserIDFromLoginRequest() {
         let context = ApplicationTestBuilder().build()
         let expectedUserID = 42
@@ -201,8 +211,8 @@ class WhenLoggingIn: XCTestCase {
         let authenticationStateObserver = CapturingAuthenticationStateObserver()
         context.application.add(authenticationStateObserver)
         let username = "Some cool guy"
-        context.login()
-        context.loginAPI.simulateResponse(makeLoginResponse(username: username))
+        context.login(username: username)
+        context.loginAPI.simulateResponse(makeLoginResponse())
         
         XCTAssertEqual(username, authenticationStateObserver.loggedInUser?.username)
     }
@@ -222,8 +232,8 @@ class WhenLoggingIn: XCTestCase {
         let context = ApplicationTestBuilder().build()
         let authenticationStateObserver = CapturingAuthenticationStateObserver()
         let expectedUser = User(registrationNumber: 42, username: "Some cool guy")
-        context.login(registrationNumber: expectedUser.registrationNumber)
-        context.loginAPI.simulateResponse(makeLoginResponse(username: expectedUser.username))
+        context.login(registrationNumber: expectedUser.registrationNumber, username: expectedUser.username)
+        context.loginAPI.simulateResponse(makeLoginResponse())
         context.application.add(authenticationStateObserver)
         
         XCTAssertEqual(expectedUser, authenticationStateObserver.loggedInUser)

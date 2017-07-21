@@ -33,7 +33,7 @@ struct LoginTask {
     private func handleLoginResult(_ result: APIResponse<APILoginResponse>) {
         switch result {
         case .success(let response):
-            let credential = LoginCredential(username: response.username,
+            let credential = LoginCredential(username: arguments.username,
                                              registrationNumber: arguments.registrationNumber,
                                              authenticationToken: response.token,
                                              tokenExpiryDate: response.tokenValidUntil)
