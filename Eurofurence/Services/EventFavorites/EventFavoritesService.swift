@@ -23,6 +23,7 @@ class EventFavoritesService {
 		set(notifications) {
 			localNotificationStore.storeLocalNotifications(notifications)
 			_localNotifications = notifications
+			print("Currently scheduled notifications:\(notifications.count)")
 		}
 	}
 	private let (singleFavoriteChangeSignal, singleFavoriteChangeObserver) = Signal<[EventFavorite], NoError>.pipe()
@@ -62,6 +63,8 @@ class EventFavoritesService {
 		disposables += eventNotificationPreferences.signal.observe(on: scheduler).observeValues({ _, _ in
 			self.updateLocalNotifications(self.dataContext.EventFavorites.value, offset: self.timeService.offset.value)
 		})
+
+		observe(dataContext.EventFavorites.value)
 	}
 
 	private func observe(_ eventFavorites: [EventFavorite]) {
