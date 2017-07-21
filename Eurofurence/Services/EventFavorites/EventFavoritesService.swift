@@ -8,6 +8,7 @@
 import Foundation
 import UserNotificationsUI
 import ReactiveSwift
+import Result
 
 class EventFavoritesService {
 	private let dataContext: DataContextProtocol
@@ -24,6 +25,13 @@ class EventFavoritesService {
 			_localNotifications = notifications
 		}
 	}
+	private let (singleFavoriteChangeSignal, singleFavoriteChangeObserver) = Signal<[EventFavorite], NoError>.pipe()
+	private let mergedChangeSignal: Signal<[EventFavorite], NoError>
+	/// Signal with events containing changed EventFavorites and an array with
+	/// all EventFavorites on major changes (e.g. NavigationResolver).
+	var changeSignal: Signal<[EventFavorite], NoError> {
+		return mergedChangeSignal
+	}
 
 	private let localNotificationStore: LocalNotificationStore = KeyedLocalNotificationStore(name: "EventFavorites")
 	private let timeService: TimeService = try! ServiceResolver.container.resolve()
@@ -31,6 +39,12 @@ class EventFavoritesService {
 
 	init(dataContext: DataContextProtocol) {
 		self.dataContext = dataContext
+
+		let (mergeSignal, mergeObserver) = Signal<Signal<[EventFavorite], NoError>, NoError>.pipe()
+		mergedChangeSignal = mergeSignal.flatten(.merge)
+		mergeObserver.send(value: singleFavoriteChangeSignal)
+		mergeObserver.send(value: dataContext.EventFavorites.signal)
+		mergeObserver.sendCompleted()
 
 		localNotifications = localNotificationStore.loadLocalNotifications()
 
@@ -55,6 +69,7 @@ class EventFavoritesService {
 		eventFavoriteDisposbales = CompositeDisposable()
 		eventFavorites.forEach({ (eventFavorite) in
 			eventFavoriteDisposbales += eventFavorite.IsFavorite.signal.observe(on: scheduler).observeValues({ [unowned self] value in
+				self.singleFavoriteChangeObserver.send(value: [eventFavorite])
 				self.eventFavoriteDisposbales += self.dataContext.saveToStore(.Events).start()
 				guard let event = eventFavorite.Event, self.eventNotificationPreferences.notificationsEnabled else { return }
 				if value && event.StartDateTimeUtc > self.timeService.currentTime.value {
