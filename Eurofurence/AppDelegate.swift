@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
 
 		try! ContextResolver.container.bootstrap()
-		try! ViewModelResolver.container.bootstrap()
 		try! ServiceResolver.container.bootstrap()
+		try! ViewModelResolver.container.bootstrap()
 
 		PrintOptions.Active = .None
 
