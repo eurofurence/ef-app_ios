@@ -28,6 +28,7 @@ class EventTableViewController: UITableViewController, UISearchBarDelegate, UIVi
 	}
 
 	let viewModel: EventsViewModel = try! ViewModelResolver.container.resolve()
+	let eventFavoriteSerivice: EventFavoritesService = try! ServiceResolver.container.resolve()
 	private var disposable = CompositeDisposable()
 
     override func viewDidLoad() {
@@ -58,6 +59,13 @@ class EventTableViewController: UITableViewController, UISearchBarDelegate, UIVi
                 self.tableView.reloadData()
             }
         })
+
+		disposable += eventFavoriteSerivice.changeSignal.observeValues({[unowned self] _ in
+			DispatchQueue.main.async {
+				self.filtersChanged()
+				self.tableView.reloadData()
+			}
+		})
 
         guard let refreshControl = refreshControl else { return }
 
