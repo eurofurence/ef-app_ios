@@ -25,7 +25,7 @@ struct EurofurenceFCMDeviceRegistration: FCMDeviceRegistration {
         var request = POSTRequest(url: loginURL, body: jsonData)
 
         if let token = authenticationToken {
-            request.headers = ["Authorization": "Basic: \(token)"]
+            request.headers = ["Authorization": "Bearer \(token)"]
         }
 
         jsonPoster.post(request, completionHandler: { _ in })

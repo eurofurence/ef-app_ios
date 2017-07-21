@@ -72,7 +72,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
         let registration = EurofurenceFCMDeviceRegistration(jsonPoster: capturingJSONPoster)
         registration.registerFCM("", topics: [], authenticationToken: authenticationToken)
         
-        XCTAssertEqual("Basic: \(authenticationToken)", capturingJSONPoster.capturedAdditionalHeaders?["Authorization"])
+        XCTAssertEqual("Bearer \(authenticationToken)", capturingJSONPoster.capturedAdditionalHeaders?["Authorization"])
     }
     
     func testRegisteringTheFCMTokenWithoutUserAuthenticationTokenDoesNotSupplyAuthHeader() {
