@@ -15,6 +15,7 @@ class NewsTableViewController: UITableViewController,
                                UIViewControllerPreviewingDelegate,
                                MessagesViewControllerDelegate,
                                AuthenticationStateObserver {
+	@IBOutlet weak var favoritesOnlySegmentedControl: UISegmentedControl!
 
 	private var announcementsViewModel: AnnouncementsViewModel = try! ViewModelResolver.container.resolve()
 	private var currentEventsViewModel: CurrentEventsViewModel = try! ViewModelResolver.container.resolve()
