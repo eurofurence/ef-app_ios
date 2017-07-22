@@ -46,6 +46,14 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 
         NotificationCenter.default.addObserver(self, selector: #selector(MapViewController.notificationRefresh(_:)), name:NSNotification.Name(rawValue: "reloadData"), object: nil)
         mapSwitchControl.removeSegment(at: 0, animated: false)
+
+		disposables += viewModel.BrowsableMaps.signal.observeResult({[unowned self] _ in
+			DispatchQueue.main.async {
+				self.reloadData()
+			}
+		})
+
+		reloadData()
     }
 
     func canRotate() -> Bool {
@@ -55,54 +63,37 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-		if !disposables.isDisposed {
-			disposables.dispose()
+		showMap()
+	}
+
+	private func showMap() {
+		var maps = viewModel.BrowsableMaps.value
+		if let mapEntry = mapEntry, let map = mapEntry.Map, maps.contains(map) {
+			navigationItem.leftBarButtonItem = nil
+			mapSwitchControl.isHidden = true
+			show(map: map, animated: true)
+		} else if map == nil && maps.count > 0 {
+			mapSwitchControl.isHidden = false
+			show(map: maps[0], animated: false)
 		}
-		disposables = CompositeDisposable()
-
-		disposables += viewModel.BrowsableMaps.signal.observeResult({[unowned self] _ in
-			DispatchQueue.main.async {
-				self.reloadData()
-			}
-		})
-
-        reloadData()
 	}
 
 	func reloadData() {
-		let maps = viewModel.BrowsableMaps.value
-
-		//mapSwitchControl.isHidden = false
 		mapSwitchControl.removeAllSegments()
 		mapSwitchControl.insertSegment(withTitle: "Area", at: 0, animated: false)
 
-		for map in maps {
+		for map in viewModel.BrowsableMaps.value {
 			mapSwitchControl.insertSegment(withTitle: map.Description, at: mapSwitchControl.numberOfSegments - 1, animated: false)
 		}
 
-		var animated = false
-		if let mapEntry = mapEntry, let map = mapEntry.Map {
-			self.map = map
-			animated = true
-			navigationItem.leftBarButtonItem = nil
-			mapSwitchControl.isHidden = true
-		} else if map == nil && maps.count > 0 {
-			map = maps[0]
-		}
-
-		if let map = map, let selectedIndex = maps.index(of: map) {
-			mapSwitchControl.selectedSegmentIndex = selectedIndex
-			show(map: map, animated: animated)
-		} else {
-			show(map: nil)
+		if isViewLoaded && view.window != nil {
+			showMap()
 		}
 	}
 
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
 
 		mapEntry = nil
-		disposables.dispose()
 	}
 
 	private func getMapEntryTargetRect() -> CGRect? {
@@ -224,9 +215,14 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 			self.mapEntry = nil
 		}
 
-		guard let map = map, let mapImage = map.Image else {
-			print("No map or map without image! Resorting to default placeholder…")
+		guard let map = map, let mapImage = map.Image,
+			let mapIndex = viewModel.BrowsableMaps.value.index(of: map) else {
+			print("No map, map without image or non-browsable map! Falling back to default placeholder…")
 			return
+		}
+
+		DispatchQueue.main.async {
+			self.mapSwitchControl.selectedSegmentIndex = mapIndex
 		}
 
 		disposables += imageService.retrieve(for: mapImage).startWithResult({
