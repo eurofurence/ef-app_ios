@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rkh-Ff-Equ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rkh-Ff-Equ">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -380,7 +380,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FE3-gC-42u">
-                                <rect key="frame" x="96" y="88" width="128.5" height="219"/>
+                                <rect key="frame" x="96.5" y="88" width="128.5" height="219"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="NO"/>
                                 </accessibility>
@@ -1187,15 +1187,15 @@ If you do not have access to them, come to our ConOps or Security office. They c
                         <viewControllerLayoutGuide type="bottom" id="obc-LS-xAB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aFv-9D-bDX">
-                        <rect key="frame" x="0.0" y="64" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" tag="1" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="UPi-G5-x8h" userLabel="MapContainer" customClass="UIScrollView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <segmentedControl opaque="NO" tag="2" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dID-qv-DXc" userLabel="MapSwitch">
-                                <rect key="frame" x="110" y="422" width="101" height="29"/>
+                                <rect key="frame" x="110" y="417" width="101" height="29"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <segments>
                                     <segment title="Default"/>
@@ -1275,6 +1275,29 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                     <outlet property="headerCellLabel" destination="sEE-D0-acQ" id="h0I-Ac-JK3"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoSearchResults" rowHeight="62" id="bUU-Nt-y53">
+                                <rect key="frame" x="0.0" y="104" width="320" height="62"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bUU-Nt-y53" id="VQF-5l-CaG">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your search did not match any event titles." textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mjG-gs-siU">
+                                            <rect key="frame" x="8" y="8" width="304" height="46"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="mjG-gs-siU" secondAttribute="trailing" id="CJw-ld-nBQ"/>
+                                        <constraint firstItem="mjG-gs-siU" firstAttribute="top" secondItem="VQF-5l-CaG" secondAttribute="topMargin" id="SNw-KK-ydA"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="mjG-gs-siU" secondAttribute="bottom" id="mhf-aS-EFK"/>
+                                        <constraint firstItem="mjG-gs-siU" firstAttribute="leading" secondItem="VQF-5l-CaG" secondAttribute="leadingMargin" id="nZt-wn-kcd"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="R6H-1L-KBn" id="1XV-TG-abI"/>
@@ -1318,7 +1341,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TDY-Mr-eSP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1618" y="-3716"/>
+            <point key="canvasLocation" x="1616.25" y="-3716.1971830985917"/>
         </scene>
         <!--Event Detail-->
         <scene sceneID="sY1-ps-anW">
@@ -1347,7 +1370,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O6K-JR-ljF">
-                                <rect key="frame" x="20" y="135" width="374" height="721"/>
+                                <rect key="frame" x="20" y="135" width="374" height="716"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btJ-bW-910">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="133.5"/>
@@ -2292,10 +2315,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</stri
         <image name="ef-bg-news" width="360" height="509"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="au0-CR-I6S"/>
-        <segue reference="KTE-6a-a6w"/>
-        <segue reference="JLI-w3-u9Q"/>
+        <segue reference="pvl-OA-LjO"/>
         <segue reference="TRw-ie-exZ"/>
         <segue reference="JLI-w3-u9Q"/>
+        <segue reference="KTE-6a-a6w"/>
     </inferredMetricsTieBreakers>
 </document>

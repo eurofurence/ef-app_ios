@@ -92,7 +92,11 @@ class EventTableViewController: UITableViewController, UISearchBarDelegate, UIVi
 
 	func getData(for indexPath: IndexPath) -> EntityBase? {
 		if isFiltered {
-			return filteredEvents[indexPath.section][indexPath.row]
+			if filteredEvents.count > indexPath.section && filteredEvents[indexPath.section].count > indexPath.row {
+				return filteredEvents[indexPath.section][indexPath.row]
+			} else {
+				return nil
+			}
 		} else {
 			switch eventsBySegmentedControl.selectedSegmentIndex {
 			case 1:
@@ -107,7 +111,7 @@ class EventTableViewController: UITableViewController, UISearchBarDelegate, UIVi
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         if isFiltered {
-            return filteredEvents.count
+            return max(filteredEvents.count, 1)
         }
 
         switch eventsBySegmentedControl.selectedSegmentIndex {
@@ -122,7 +126,11 @@ class EventTableViewController: UITableViewController, UISearchBarDelegate, UIVi
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		if isFiltered {
-			return filteredEvents[section].count
+			if filteredEvents.count == 0 && section == 0 {
+				return 1
+			} else {
+				return filteredEvents[section].count
+			}
 		}
 
         switch eventsBySegmentedControl.selectedSegmentIndex {
@@ -143,6 +151,10 @@ class EventTableViewController: UITableViewController, UISearchBarDelegate, UIVi
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		if isFiltered && filteredEvents.count == 0 {
+			return tableView.dequeueReusableCell(withIdentifier: "NoSearchResults")!
+		}
+
         guard let event = getData(for: indexPath) as? Event,
 			let cell = tableView.dequeueReusableCell(withIdentifier: (event.BannerImage != nil ? "EventCell" : "EventCellWithoutBanner"), for: indexPath) as? EventCell  else { return UITableViewCell() }
 		cell.event = event
@@ -158,11 +170,15 @@ class EventTableViewController: UITableViewController, UISearchBarDelegate, UIVi
         let  headerCell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell") as! EventHeaderCellTableViewCell
 
 		if isFiltered {
+			if filteredSections.count > 0 {
 			switch filteredSections[section] {
 			case let day as EventConferenceDay:
 				headerCell.headerCellLabel.text = day.Name + "\n" + DateFormatters.dayMonthLong.string(from: day.Date)
 			default:
 				headerCell.headerCellLabel.text = filteredSections[section].Name
+			}
+			} else {
+				headerCell.headerCellLabel.text = "No Results for '\(searchBar.text ?? "")'"
 			}
 		} else {
 			switch eventsBySegmentedControl.selectedSegmentIndex {
