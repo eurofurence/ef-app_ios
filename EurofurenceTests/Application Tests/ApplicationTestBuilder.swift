@@ -14,10 +14,9 @@ class ApplicationTestBuilder {
     struct Context {
         var application: EurofurenceApplication
         
-        var capturingLoginController: CapturingLoginController
         var capturingTokenRegistration: CapturingRemoteNotificationsTokenRegistration
         var capturingLoginCredentialsStore: CapturingLoginCredentialStore
-        var jsonPoster: CapturingJSONPoster
+        var loginAPI: CapturingLoginAPI
         
         func registerRemoteNotifications(_ deviceToken: Data = Data()) {
             application.registerRemoteNotifications(deviceToken: deviceToken)
@@ -28,20 +27,12 @@ class ApplicationTestBuilder {
             application.login(arguments)
         }
         
-        func notifyUserLoggedIn(_ token: String = "", expires: Date = .distantFuture) {
-            capturingLoginController.notifyUserLoggedIn(token, expires: expires)
-        }
-        
-        func notifyUserLoggedOut() {
-            capturingLoginController.notifyUserLoggedOut()
-        }
     }
     
-    private let capturingLoginController = CapturingLoginController()
     private let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
     private var capturingLoginCredentialsStore = CapturingLoginCredentialStore()
     private var stubClock = StubClock()
-    private let jsonPoster = CapturingJSONPoster()
+    private var loginAPI = CapturingLoginAPI()
     
     func with(_ currentDate: Date) -> ApplicationTestBuilder {
         stubClock = StubClock(currentDate: currentDate)
@@ -55,15 +46,13 @@ class ApplicationTestBuilder {
     
     func build() -> Context {
         let app = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration,
-                                         loginController: capturingLoginController,
                                          clock: stubClock,
                                          loginCredentialStore: capturingLoginCredentialsStore,
-                                         jsonPoster: jsonPoster)
+                                         loginAPI: loginAPI)
         return Context(application: app,
-                       capturingLoginController: capturingLoginController,
                        capturingTokenRegistration: capturingTokenRegistration,
                        capturingLoginCredentialsStore: capturingLoginCredentialsStore,
-                       jsonPoster: jsonPoster)
+                       loginAPI: loginAPI)
     }
     
 }

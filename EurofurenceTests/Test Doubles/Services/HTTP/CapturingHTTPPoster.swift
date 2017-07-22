@@ -12,10 +12,14 @@ import Foundation
 class CapturingJSONPoster: JSONPoster {
 
     private(set) var postedURL: String?
+    private(set) var capturedAdditionalHeaders: [String : String]?
     private var postedData: Data?
-    func post(_ url: String, body: Data) {
-        postedURL = url
-        postedData = body
+    private var completionHandler: ((Data?) -> Void)?
+    func post(_ request: POSTRequest, completionHandler: @escaping (Data?) -> Void) {
+        postedURL = request.url
+        postedData = request.body
+        self.completionHandler = completionHandler
+        capturedAdditionalHeaders = request.headers
     }
 
     func postedJSONValue<T>(forKey key: String) -> T? {
@@ -24,6 +28,10 @@ class CapturingJSONPoster: JSONPoster {
         guard let jsonDictionary = json as? [String : Any] else { return nil }
 
         return jsonDictionary[key] as? T
+    }
+    
+    func invokeLastCompletionHandler(responseData: Data?) {
+        completionHandler?(responseData)
     }
     
 }

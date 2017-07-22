@@ -16,8 +16,9 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
         var capturingFirebaseAdapter: CapturingFirebaseAdapter
         var capturingFCMDeviceRegister: CapturingFCMDeviceRegistration
 
-        func registerDeviceToken(deviceToken: Data = Data()) {
-            tokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken, userAuthenticationToken: nil)
+        func registerDeviceToken(deviceToken: Data = Data(), userAuthenticationToken: String = "") {
+            tokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken,
+                                                                     userAuthenticationToken: userAuthenticationToken)
         }
     }
 
@@ -218,6 +219,14 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
         context.registerDeviceToken()
         
         XCTAssertTrue(context.capturingFCMDeviceRegister.registeredVersionTopic(with: version))
+    }
+    
+    func testRegisteringDeviceTokenShouldProvideTheUserAuthenticationToken() {
+        let authenticationToken = "Token"
+        let context = assembleApp(configuration: .debug)
+        context.registerDeviceToken(userAuthenticationToken: authenticationToken)
+        
+        XCTAssertEqual(authenticationToken, context.capturingFCMDeviceRegister.capturedAuthenticationToken)
     }
     
 }

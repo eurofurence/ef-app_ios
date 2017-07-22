@@ -18,8 +18,10 @@ class CapturingLoginCredentialStore: LoginCredentialStore {
     private(set) var persistedCredential: LoginCredential?
     
     private(set) var capturedCredential: LoginCredential?
+    var blockToRunBeforeCompletingCredentialStorage: (() -> Void)?
     func store(_ loginCredential: LoginCredential) {
         capturedCredential = loginCredential
+        blockToRunBeforeCompletingCredentialStorage?()
     }
     
     private(set) var didDeletePersistedToken = false

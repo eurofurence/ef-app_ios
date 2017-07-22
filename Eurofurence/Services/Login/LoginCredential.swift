@@ -1,5 +1,5 @@
 //
-//  LoginController.swift
+//  LoginCredential.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 17/07/2017.
@@ -7,12 +7,6 @@
 //
 
 import Foundation
-
-protocol LoginController {
-
-    func add(_ observer: LoginStateObserver)
-
-}
 
 struct LoginCredential: Equatable {
 
@@ -27,12 +21,5 @@ struct LoginCredential: Equatable {
                lhs.authenticationToken == rhs.authenticationToken &&
                lhs.tokenExpiryDate == rhs.tokenExpiryDate
     }
-
-}
-
-protocol LoginStateObserver {
-
-    func userDidLogin(credential: LoginCredential)
-    func userDidLogout()
 
 }

@@ -10,6 +10,20 @@ import Foundation
 
 protocol JSONPoster {
 
-    func post(_ url: String, body: Data)
+    func post(_ request: POSTRequest, completionHandler: @escaping (Data?) -> Void)
+
+}
+
+struct POSTRequest {
+
+    var url: String
+    var body: Data
+    var headers: [String : String]
+
+    init(url: String, body: Data, headers: [String : String] = [:]) {
+        self.url = url
+        self.body = body
+        self.headers = headers
+    }
 
 }

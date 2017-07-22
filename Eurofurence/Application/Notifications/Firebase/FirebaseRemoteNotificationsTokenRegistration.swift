@@ -42,7 +42,7 @@ struct FirebaseRemoteNotificationsTokenRegistration: RemoteNotificationsTokenReg
             firebaseAdapter.unsubscribe(fromTopic: .test)
         }
 
-        fcmRegistration.registerFCM(firebaseAdapter.fcmToken, topics: fcmTopics)
+        fcmRegistration.registerFCM(firebaseAdapter.fcmToken, topics: fcmTopics, authenticationToken: userAuthenticationToken)
     }
 
 }

@@ -16,13 +16,19 @@ struct EurofurenceFCMDeviceRegistration: FCMDeviceRegistration {
         self.jsonPoster = jsonPoster
     }
 
-    func registerFCM(_ fcm: String, topics: [FirebaseTopic]) {
+    func registerFCM(_ fcm: String, topics: [FirebaseTopic], authenticationToken: String?) {
         let formattedTopics = topics.map({ $0.description })
         let jsonDictionary: [String : Any] = ["DeviceId": fcm, "Topics": formattedTopics]
         let jsonData = try! JSONSerialization.data(withJSONObject: jsonDictionary, options: [])
 
-        jsonPoster.post("https://app.eurofurence.org/api/v2/PushNotifications/FcmDeviceRegistration",
-                        body: jsonData)
+        let loginURL = "https://app.eurofurence.org/api/v2/PushNotifications/FcmDeviceRegistration"
+        var request = POSTRequest(url: loginURL, body: jsonData)
+
+        if let token = authenticationToken {
+            request.headers = ["Authorization": "Bearer \(token)"]
+        }
+
+        jsonPoster.post(request, completionHandler: { _ in })
     }
 
 }

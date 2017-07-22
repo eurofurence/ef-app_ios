@@ -12,15 +12,20 @@ struct URLSessionJSONPoster: JSONPoster {
 
     var session: URLSession = .shared
 
-    func post(_ url: String, body: Data) {
-        guard let actualURL = URL(string: url) else { return }
+    func post(_ request: POSTRequest, completionHandler: @escaping (Data?) -> Void) {
+        guard let actualURL = URL(string: request.url) else { return }
 
-        var request = URLRequest(url: actualURL)
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        request.httpBody = body
+        var urlRequest = URLRequest(url: actualURL)
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.httpMethod = "POST"
+        urlRequest.httpBody = request.body
+        urlRequest.allHTTPHeaderFields = request.headers
 
-        session.dataTask(with: request, completionHandler: { (_, _, _) in }).resume()
+        session.dataTask(with: urlRequest, completionHandler: { (data, _, _) in
+            DispatchQueue.main.async {
+                completionHandler(data)
+            }
+        }).resume()
     }
 
 }

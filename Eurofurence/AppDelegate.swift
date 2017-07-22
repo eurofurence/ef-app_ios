@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	var lifetime = Lifetime.make()
-    var app: EurofurenceApplication!
+    var app: EurofurenceApplication = .shared
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
@@ -25,25 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		try! ViewModelResolver.container.bootstrap()
 
 		PrintOptions.Active = .None
-
-        let buildConfiguration = PreprocessorBuildConfigurationProviding()
-        let fcmRegistration = EurofurenceFCMDeviceRegistration(jsonPoster: URLSessionJSONPoster())
-        let remoteNotificationsTokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfiguration,
-                                                                                                appVersion: BundleAppVersionProviding(),
-                                                                                                firebaseAdapter: FirebaseMessagingAdapter(),
-                                                                                                fcmRegistration: fcmRegistration)
-
-        struct DummyLoginController: LoginController {
-            func add(_ observer: LoginStateObserver) {
-
-            }
-        }
-
-        app = EurofurenceApplication(remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
-                                     loginController: DummyLoginController(),
-                                     clock: SystemClock(),
-                                     loginCredentialStore: KeychainLoginCredentialStore(),
-                                     jsonPoster: URLSessionJSONPoster())
 
         DataStoreRefreshController.shared.add(ApplicationActivityIndicatorRefreshDelegate())
         PresentationTier.assemble(window: window!)

@@ -11,13 +11,16 @@ import ReactiveSwift
 import UIKit
 import Changeset
 
-class NewsTableViewController: UITableViewController, UIViewControllerPreviewingDelegate, MessagesViewControllerDelegate {
-	@IBOutlet weak var favoritesOnlySegmentedControl: UISegmentedControl!
+class NewsTableViewController: UITableViewController,
+                               UIViewControllerPreviewingDelegate,
+                               MessagesViewControllerDelegate,
+                               AuthenticationStateObserver {
 
 	private var announcementsViewModel: AnnouncementsViewModel = try! ViewModelResolver.container.resolve()
 	private var currentEventsViewModel: CurrentEventsViewModel = try! ViewModelResolver.container.resolve()
 	private var timeService: TimeService = try! ServiceResolver.container.resolve()
 	private var disposables = CompositeDisposable()
+    private var loggedInUser: User?
 
 	private var upcomingEvents: [Event] = []
 	private var runningEvents: [Event] = []
@@ -26,6 +29,8 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        EurofurenceApplication.shared.add(self)
 
 		runningEvents = currentEventsViewModel.RunningEvents.value
 		upcomingEvents = currentEventsViewModel.UpcomingEvents.value
@@ -202,7 +207,7 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		switch section {
         case 0:
-            return 0
+            return 1
 		case 1:
 			return max(1, announcementsViewModel.Announcements.value.count)
 		case 2:
@@ -235,7 +240,13 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		switch indexPath.section {
         case 0:
-            return tableView.dequeueReusableCell(withIdentifier: "LoginHintCell", for: indexPath)
+            if let user = loggedInUser {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "LoggedInCell", for: indexPath) as! UnreadMessagesTableViewCell
+                cell.showUserNameSynopsis("Welcome, \(user.username) (\(user.registrationNumber))")
+                return cell
+            } else {
+                return tableView.dequeueReusableCell(withIdentifier: "LoginHintCell", for: indexPath)
+            }
 		case 1:
 			if announcementsViewModel.Announcements.value.isEmpty {
 				return tableView.dequeueReusableCell(withIdentifier: "NoAnnouncementsCell", for: indexPath)
@@ -288,6 +299,11 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 	}
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.section != 0 else {
+            performSegue(withIdentifier: "showMessages", sender: self)
+            return
+        }
+
         switch getData(for: indexPath) {
 		case let announcement as Announcement:
 			performSegue(withIdentifier: "AnnouncementDetailSegue", sender: announcement)
@@ -390,8 +406,19 @@ class NewsTableViewController: UITableViewController, UIViewControllerPreviewing
 		disposables.dispose()
 	}
 
+    // MARK: MessagesViewControllerDelegate
+
     func messagesViewControllerDidRequestDismissal(_ messagesController: MessagesViewController) {
         navigationController?.popToViewController(self, animated: true)
+    }
+
+    // MARK: AuthenticationStateObserver
+
+    func loggedIn(as user: User) {
+        loggedInUser = user
+
+        let loginSectionIndex = IndexSet(integer: 0)
+        tableView.reloadSections(loginSectionIndex, with: .automatic)
     }
 
 }

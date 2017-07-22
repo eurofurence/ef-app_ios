@@ -8,69 +8,62 @@
 
 import Foundation
 
-class EurofurenceApplication: LoginStateObserver {
+class EurofurenceApplication {
+
+    static var shared: EurofurenceApplication = {
+        let buildConfiguration = PreprocessorBuildConfigurationProviding()
+        let fcmRegistration = EurofurenceFCMDeviceRegistration(jsonPoster: URLSessionJSONPoster())
+        let tokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfiguration,
+                                                                             appVersion: BundleAppVersionProviding(),
+                                                                             firebaseAdapter: FirebaseMessagingAdapter(),
+                                                                             fcmRegistration: fcmRegistration)
+
+        return EurofurenceApplication(remoteNotificationsTokenRegistration: tokenRegistration,
+                                      clock: SystemClock(),
+                                      loginCredentialStore: KeychainLoginCredentialStore(),
+                                      loginAPI: V2LoginAPI(jsonPoster: URLSessionJSONPoster()))
+    }()
 
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
-    private var clock: Clock
-    private var loginCredentialStore: LoginCredentialStore
-    private var jsonPoster: JSONPoster
-    private var userAuthenticationTokenValid = false
+    private var authenticationCoordinator: UserAuthenticationCoordinator
     private var registeredDeviceToken: Data?
-    private var userAuthenticationToken: String?
 
     init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
-         loginController: LoginController,
          clock: Clock,
          loginCredentialStore: LoginCredentialStore,
-         jsonPoster: JSONPoster) {
+         loginAPI: LoginAPI) {
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
-        self.clock = clock
-        self.loginCredentialStore = loginCredentialStore
-        self.jsonPoster = jsonPoster
+        authenticationCoordinator = UserAuthenticationCoordinator(clock: clock,
+                                                                  loginCredentialStore: loginCredentialStore,
+                                                                  remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
+                                                                  loginAPI: loginAPI)
+    }
 
-        loginController.add(self)
+    func add(_ loginObserver: LoginObserver) {
+        authenticationCoordinator.add(loginObserver)
+    }
 
-        if let credential = loginCredentialStore.persistedCredential, isCredentialValid(credential) {
-            userAuthenticationToken = credential.authenticationToken
-        }
+    func remove(_ loginObserver: LoginObserver) {
+        authenticationCoordinator.remove(loginObserver)
+    }
+
+    func add(_ authenticationStateObserver: AuthenticationStateObserver) {
+        authenticationCoordinator.add(authenticationStateObserver)
+    }
+
+    func remove(_ authenticationStateObserver: AuthenticationStateObserver) {
+        authenticationCoordinator.remove(authenticationStateObserver)
     }
 
     func login(_ arguments: LoginArguments) {
-        do {
-            let postArguments: [String : Any] = ["RegNo": arguments.registrationNumber,
-                                                 "Username": arguments.username,
-                                                 "Password": arguments.password]
-            let jsonData = try JSONSerialization.data(withJSONObject: postArguments, options: [])
-            jsonPoster.post("https://app.eurofurence.org/api/v2/Tokens/RegSys", body: jsonData)
-        } catch {
-            print("Unable to perform login due to error: \(error)")
-        }
+        authenticationCoordinator.login(arguments)
     }
 
     func registerRemoteNotifications(deviceToken: Data) {
         registeredDeviceToken = deviceToken
+        authenticationCoordinator.registeredDeviceToken = deviceToken
         remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken,
-                                                                                    userAuthenticationToken: userAuthenticationToken)
-    }
-
-    func userDidLogin(credential: LoginCredential) {
-        if isCredentialValid(credential) {
-            userAuthenticationToken = credential.authenticationToken
-            loginCredentialStore.store(credential)
-        }
-
-        guard let registeredDeviceToken = registeredDeviceToken else { return }
-
-        remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(registeredDeviceToken,
-                                                                                    userAuthenticationToken: userAuthenticationToken)
-    }
-
-    func userDidLogout() {
-        loginCredentialStore.deletePersistedToken()
-    }
-
-    private func isCredentialValid(_ credential: LoginCredential) -> Bool {
-        return clock.currentDate.compare(credential.tokenExpiryDate) == .orderedAscending
+                                                                                    userAuthenticationToken: authenticationCoordinator.userAuthenticationToken)
     }
 
 }
