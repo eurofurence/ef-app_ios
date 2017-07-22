@@ -14,6 +14,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
     static let MIN_ZOOM_SCALE_FACTOR: CGFloat = 1.0
 
     @IBOutlet weak var mapContainerView: UIScrollView!
+	@IBOutlet weak var mapResetZoomButton: UIButton!
     @IBOutlet weak var mapSwitchControl: UISegmentedControl!
     var doubleTap: UITapGestureRecognizer!
     var singleTap: UITapGestureRecognizer!
@@ -44,7 +45,11 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
         singleTap = UITapGestureRecognizer(target: self, action: #selector(MapViewController.checkMapEntries(_:)))
         mapContainerView.addGestureRecognizer(singleTap!)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(MapViewController.notificationRefresh(_:)), name:NSNotification.Name(rawValue: "reloadData"), object: nil)
+		mapResetZoomButton.addTarget(self, action: #selector(MapViewController.adjustZoom(animated:doPanAndZoom:)),
+		                             for: .touchUpInside)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(MapViewController.notificationRefresh(_:)),
+                                               name:NSNotification.Name(rawValue: "reloadData"), object: nil)
         mapSwitchControl.removeSegment(at: 0, animated: false)
 
 		disposables += viewModel.BrowsableMaps.signal.observeResult({[unowned self] _ in
@@ -120,6 +125,11 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 			width: width,
 			height: height
 		)
+	}
+
+	@IBAction func resetZoom() {
+		mapEntry = nil
+		adjustZoom(animated: true, doPanAndZoom: true)
 	}
 
 	func adjustZoom(animated: Bool = false, doPanAndZoom: Bool = true) {
