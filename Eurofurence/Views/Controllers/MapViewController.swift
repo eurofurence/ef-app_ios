@@ -326,7 +326,26 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 	func showMapEntryActionSheet(for mapEntryLinks: [LinkFragment]) {
 		guard mapEntryLinks.count > 0 else { return }
 
-		let optionMenu = UIAlertController(title: nil, message: "Select a map entry", preferredStyle: .actionSheet)
+		let firstFragmentType: LinkFragment.LinkFragmentType = mapEntryLinks[0].FragmentType
+		let hasMultipleFragmentTypes = mapEntryLinks.contains { $0.FragmentType != firstFragmentType }
+
+		let optionMenuMessage: String
+		if hasMultipleFragmentTypes {
+			optionMenuMessage = "Select a map entry"
+		} else {
+			switch firstFragmentType {
+			case .DealerDetail:
+				optionMenuMessage = "Select a dealer"
+			case .MapExternal:
+				optionMenuMessage = "Select an external map location"
+			case .MapInternal:
+				optionMenuMessage = "Select a map location"
+			case .WebExternal:
+				optionMenuMessage = "Select a web link"
+			}
+		}
+
+		let optionMenu = UIAlertController(title: nil, message: optionMenuMessage, preferredStyle: .actionSheet)
 
 		for link in mapEntryLinks {
 			// TODO: Prepend FontAwesome icon depending on LinkFragment.Type
@@ -334,7 +353,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 			switch link.FragmentType {
 			case .DealerDetail:
 				if let _: Dealer = link.getTarget() {
-					actionTitle = "Dealer: \(actionTitle)"
+					actionTitle = hasMultipleFragmentTypes ? "Dealer: \(actionTitle)" : actionTitle
 				} else {
 					continue
 				}
@@ -343,13 +362,13 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 				continue
 			case .MapInternal:
 				if let _: MapEntry = link.getTarget() {
-					actionTitle = "Map: \(actionTitle)"
+					actionTitle = hasMultipleFragmentTypes ? "Map: \(actionTitle)" : actionTitle
 				} else {
 					continue
 				}
 			case .WebExternal:
 				if let _: URL = link.getTarget() {
-					actionTitle = "Web: \(actionTitle)"
+					actionTitle = hasMultipleFragmentTypes ? "Web: \(actionTitle)" : actionTitle
 				} else {
 					continue
 				}
