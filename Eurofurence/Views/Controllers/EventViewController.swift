@@ -19,7 +19,8 @@ class EventViewController: UIViewController {
     @IBOutlet weak var eventSubTitleLabel: UILabel!
 	@IBOutlet weak var eventStartTimeLabel: UILabel!
 	@IBOutlet weak var eventTitleLabel: UILabel!
-    @IBOutlet weak var eventTrackLabel: UILabel!
+	@IBOutlet weak var eventTrackLabel: UILabel!
+	var eventLocationLabelDefaultColor: UIColor = UIColor.lightText
     var eventImageDefaultHeight = CGFloat(0.0)
     var singleTapLocation: UITapGestureRecognizer!
     var singleTapLocationIcon: UITapGestureRecognizer!
@@ -33,6 +34,7 @@ class EventViewController: UIViewController {
         // Do any additional setup after loading the view.
         eventDescTextView.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         eventImageDefaultHeight = eventImageHeightConstraint.constant
+		eventLocationLabelDefaultColor = eventLocationLabel.textColor
 
         singleTapLocation = UITapGestureRecognizer(target: self, action: #selector(EventViewController.showOnMap(_:)))
         eventLocationLabel!.addGestureRecognizer(singleTapLocation!)
@@ -48,9 +50,11 @@ class EventViewController: UIViewController {
 			return
 		}
 
-        if let _ = event.ConferenceRoom {
-            eventLocationLabel.textColor = eventLocationLabel.tintColor
-        }
+		if let _ = event.ConferenceRoom?.MapEntry {
+			eventLocationLabel.textColor = eventLocationLabel.tintColor
+		} else {
+			eventLocationLabel.textColor = eventLocationLabelDefaultColor
+		}
 
 		let weekday = DateFormatters.weekdayLong.string(from: event.StartDateTimeUtc)
 		let startTime = DateFormatters.hourMinute.string(from: event.StartDateTimeUtc)
