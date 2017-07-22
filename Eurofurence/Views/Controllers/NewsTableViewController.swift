@@ -66,14 +66,26 @@ class NewsTableViewController: UITableViewController,
         })
         disposables += currentEventsViewModel.RunningEventsEdits.signal.observeValues({
             [unowned self] edits in
-            DispatchQueue.main.async {
+			DispatchQueue.main.async {
+				var edits = edits
+				if self.runningEvents.count == 0 {
+					edits.append(Edit<Event>.init(.deletion, value: Event(), destination: 0))
+				} else if self.currentEventsViewModel.RunningEvents.value.count == 0 {
+					edits.append(Edit<Event>.init(.insertion, value: Event(), destination: 0))
+				}
 				self.runningEvents = self.currentEventsViewModel.RunningEvents.value
 				self.tableView.update(with: edits, in: 2)
             }
         })
         disposables += currentEventsViewModel.UpcomingEventsEdits.signal.observeValues({
-            [unowned self] edits in
+			[unowned self] edits in
             DispatchQueue.main.async {
+				var edits = edits
+				if self.upcomingEvents.count == 0 {
+					edits.append(Edit<Event>.init(.deletion, value: Event(), destination: 0))
+				} else if self.currentEventsViewModel.UpcomingEvents.value.count == 0 {
+					edits.append(Edit<Event>.init(.insertion, value: Event(), destination: 0))
+				}
 				self.upcomingEvents = self.currentEventsViewModel.UpcomingEvents.value
 				self.tableView.update(with: edits, in: 3)
             }
@@ -212,9 +224,9 @@ class NewsTableViewController: UITableViewController,
 		case 1:
 			return max(1, announcementsViewModel.Announcements.value.count)
 		case 2:
-			return runningEvents.count
+			return max(1, runningEvents.count)
 		case 3:
-			return upcomingEvents.count
+			return max(1, upcomingEvents.count)
 		default: // Header or unknown section
 			return 0
 		}
