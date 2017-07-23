@@ -20,6 +20,7 @@ target 'Eurofurence' do
 	pod 'Firebase/Crash'
     pod 'Firebase/Messaging'
     pod 'Locksmith'
+	pod 'Whisper'
 
     target :EurofurenceTests do
         inherit! :search_paths

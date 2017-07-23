@@ -56,6 +56,7 @@ PODS:
     - Result (~> 3.2)
   - Result (3.2.3)
   - SwiftLint (0.20.1)
+  - Whisper (5.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
@@ -74,6 +75,7 @@ DEPENDENCIES:
   - ReactiveCocoa (~> 5.0.0)
   - ReactiveSwift (~> 1.1)
   - SwiftLint
+  - Whisper
 
 EXTERNAL SOURCES:
   Eureka:
@@ -111,7 +113,8 @@ SPEC CHECKSUMS:
   ReactiveSwift: f54ba12c2e799003432930fa55495315ae44f32b
   Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
   SwiftLint: f60095dc173a3f3ec505bb34f5229c3dfd779a54
+  Whisper: 051f25e704bf8992641ffd28b20d5682ddc5f5d3
 
-PODFILE CHECKSUM: 8a2f4f9e5e9f06fd9caaca5831da0085f7ce3fba
+PODFILE CHECKSUM: b6b6003e8a6df0dfeba9fe2683b34ae0f5e40342
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.0.beta.2
