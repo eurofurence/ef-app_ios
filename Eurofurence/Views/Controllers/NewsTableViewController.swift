@@ -341,6 +341,7 @@ class NewsTableViewController: UITableViewController,
 			let readAction = UITableViewRowAction(style: .default, title: actionTitle, handler: { (_, _) in
 				announcement.IsRead = !announcement.IsRead
 				tableView.isEditing = false
+				self.announcementsViewModel.saveAnnouncements()
 			})
 			readAction.backgroundColor = (announcement.IsRead) ?
 				UIColor.lightGray :

@@ -48,6 +48,10 @@ class AnnouncementsViewModel {
 		})
 	}
 
+	func saveAnnouncements() {
+		dataContext.saveToStore(.Announcements).start()
+	}
+
 	private func filterValidAnnouncements(_ time: Date, _ announcements: [Announcement]) -> [Announcement] {
 		return announcements.filter({$0.ValidFromDateTimeUtc < time && $0.ValidUntilDateTimeUtc > time && (self.isShowAll || !$0.IsRead)})
 	}
