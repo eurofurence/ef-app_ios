@@ -9,13 +9,14 @@ import UIKit
 import ReactiveSwift
 import EVReflection
 import Firebase
+import Whisper
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
-	var lifetime = Lifetime.make()
     var app: EurofurenceApplication = .shared
+	lazy var notificationRouter: NotificationRouter = StoryboardNotificationRouter(window: self.window!)
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
@@ -28,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         DataStoreRefreshController.shared.add(ApplicationActivityIndicatorRefreshDelegate())
         PresentationTier.assemble(window: window!)
+
+		// TODO: Handle application start from (local) notification e.g. by transitioning to a target
 
 		return true
 	}
@@ -42,6 +45,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFailToRegisterForRemoteNotificationsWithError error: Error) {
         PresentationTier.pushRequesting.handlePushRegistrationFailure()
     }
+
+	func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+		if application.applicationState == .inactive {
+			notificationRouter.showLocalNotificationTarget(for: notification)
+		} else if application.applicationState == .active {
+			notificationRouter.showLocalNotification(for: notification)
+		}
+	}
 
 	func applicationWillResignActive(_ application: UIApplication) {
 		// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
