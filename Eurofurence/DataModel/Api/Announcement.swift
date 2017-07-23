@@ -8,7 +8,7 @@
 import Foundation
 
 class Announcement: EntityBase {
-	override class var DataModelVersion: Int { return 1 + super.DataModelVersion }
+	override class var DataModelVersion: Int { return 2 + super.DataModelVersion }
 
 	var Area: String = ""
 	var Author: String = ""
@@ -16,6 +16,9 @@ class Announcement: EntityBase {
 	var Title: String = ""
 	var ValidFromDateTimeUtc: Date = Date()
 	var ValidUntilDateTimeUtc: Date = Date()
+
+	/// Local property
+	var IsRead: Bool = false
 }
 
 extension Announcement: Sortable {
