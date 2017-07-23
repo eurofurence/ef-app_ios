@@ -14,6 +14,9 @@ class NewsViewController: UIViewController {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var lastChangeLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UITextView!
+
+	private var announcementsViewModel: AnnouncementsViewModel = try! ViewModelResolver.container.resolve()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,14 +46,19 @@ class NewsViewController: UIViewController {
 		}
     }
 
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+	// MARK: - Previewing
+	lazy var previewActions: [UIPreviewActionItem] = {
+		let readActionTitle = self.news?.IsRead ?? false ? "Mark as Unread" : "Mark as Read"
+		let readAction = UIPreviewAction(title: readActionTitle, style: .default) { _, viewController in
+			guard let newsViewController = viewController as? NewsViewController,
+				let news = newsViewController.news else { return }
+			news.IsRead = !news.IsRead
+			self.announcementsViewModel.saveAnnouncements()
+		}
+		return [readAction]
+	}()
 
+	override var previewActionItems: [UIPreviewActionItem] {
+		return previewActions
+	}
 }
