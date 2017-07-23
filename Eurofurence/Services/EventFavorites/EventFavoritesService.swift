@@ -91,7 +91,7 @@ class EventFavoritesService {
 
 		let localNotification = UILocalNotification()
 		localNotification.fireDate = fireDate
-		localNotification.alertAction = "Upcoming Favorite Event"
+		localNotification.alertTitle = "Upcoming Favorite Event"
 		localNotification.alertBody = "\(event.Title) will take place \(timeDelta.minutes >= 1.0 ? "in \(timeDelta.dhmString)" : "now") at \(event.ConferenceRoom?.Name ?? "someplace")"
 		localNotification.userInfo = ["Event.Id": event.Id, "Event.LastChangeDateTimeUtc": event.LastChangeDateTimeUtc]
 
