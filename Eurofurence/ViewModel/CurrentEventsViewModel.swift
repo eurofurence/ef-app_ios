@@ -12,9 +12,9 @@ import Result
 
 class CurrentEventsViewModel {
 	let RunningEvents = MutableProperty<[Event]>([])
-	let RunningEventsEdits = MutableProperty<[Edit<Event>]>(Changeset.edits(from: [], to: []))
+	let RunningEventsEdits = MutableProperty<[Edit<Event>]>([])
 	let UpcomingEvents = MutableProperty<[Event]>([])
-	let UpcomingEventsEdits = MutableProperty<[Edit<Event>]>(Changeset.edits(from: [], to: []))
+	let UpcomingEventsEdits = MutableProperty<[Edit<Event>]>([])
 
 	var isFavoritesOnly: Bool = false
 
