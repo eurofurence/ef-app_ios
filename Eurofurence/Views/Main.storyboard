@@ -23,7 +23,7 @@
         <!--Dealer Detail-->
         <scene sceneID="RX0-RE-OCL">
             <objects>
-                <viewController storyboardIdentifier="DealerDetail" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vW3-to-hGL" userLabel="Dealer Detail" customClass="DealerViewController" customModule="Eurofurence" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DealerDetailView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vW3-to-hGL" userLabel="Dealer Detail" customClass="DealerViewController" customModule="Eurofurence" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="u3O-ye-lGf"/>
                         <viewControllerLayoutGuide type="bottom" id="RfQ-96-wN7"/>
@@ -33,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="x27-ve-1W5">
-                                <rect key="frame" x="0.0" y="64" width="414" height="1192"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="1187"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AoI-8K-uoH" userLabel="Container View">
                                         <rect key="frame" x="8" y="0.0" width="398" height="1159.5"/>
@@ -249,7 +249,7 @@
         <!--Dealers List-->
         <scene sceneID="CIf-XG-25F">
             <objects>
-                <tableViewController id="fbh-19-XeE" userLabel="Dealers List" customClass="DealerTableViewController" customModule="Eurofurence" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DealerTableView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fbh-19-XeE" userLabel="Dealers List" customClass="DealerTableViewController" customModule="Eurofurence" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="dcK-x3-abR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -380,7 +380,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FE3-gC-42u">
-                                <rect key="frame" x="96" y="88" width="128.5" height="219"/>
+                                <rect key="frame" x="96.5" y="88" width="128.5" height="219"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="NO"/>
                                 </accessibility>
@@ -462,7 +462,7 @@
         <!--News-->
         <scene sceneID="Utb-Ae-NpB">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="94P-b3-hmf" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NewsNavigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="94P-b3-hmf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="News" image="News" id="Ol8-Ge-n39"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VvY-tj-bHj">
@@ -481,7 +481,7 @@
         <!--News List-->
         <scene sceneID="070-oq-k8U">
             <objects>
-                <tableViewController storyboardIdentifier="NewsTableView" id="83V-W9-tcx" userLabel="News List" customClass="NewsTableViewController" customModule="Eurofurence" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="NewsTableView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="83V-W9-tcx" userLabel="News List" customClass="NewsTableViewController" customModule="Eurofurence" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="oTh-8v-i1s">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -975,7 +975,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
         <!--Announcement Detail-->
         <scene sceneID="MVt-g1-TGT">
             <objects>
-                <viewController storyboardIdentifier="AnnouncementDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Iix-4g-IXD" userLabel="Announcement Detail" customClass="NewsViewController" customModule="Eurofurence" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AnnouncementDetailView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Iix-4g-IXD" userLabel="Announcement Detail" customClass="NewsViewController" customModule="Eurofurence" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PNf-QN-Vca"/>
                         <viewControllerLayoutGuide type="bottom" id="eF8-jl-le2"/>
@@ -1165,7 +1165,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
         <!--Events-->
         <scene sceneID="i40-5E-bkR">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iMR-zC-1Ej" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="EventNavigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iMR-zC-1Ej" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Events" image="Calendar" selectedImage="Calendar" id="yEq-gs-mhK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rxF-d1-yLf">
@@ -1184,21 +1184,21 @@ If you do not have access to them, come to our ConOps or Security office. They c
         <!--Maps-->
         <scene sceneID="yQs-fu-HTt">
             <objects>
-                <viewController id="7qp-Gf-BX9" customClass="MapViewController" customModule="Eurofurence" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7qp-Gf-BX9" customClass="MapViewController" customModule="Eurofurence" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="utz-1H-XtR"/>
                         <viewControllerLayoutGuide type="bottom" id="obc-LS-xAB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aFv-9D-bDX">
-                        <rect key="frame" x="0.0" y="64" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" tag="1" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="UPi-G5-x8h" userLabel="MapContainer" customClass="UIScrollView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <segmentedControl opaque="NO" tag="2" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dID-qv-DXc" userLabel="MapSwitch">
-                                <rect key="frame" x="110" y="422" width="101" height="29"/>
+                                <rect key="frame" x="110" y="417" width="101" height="29"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <segments>
                                     <segment title="Default"/>
@@ -1362,7 +1362,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
         <!--Event Detail-->
         <scene sceneID="sY1-ps-anW">
             <objects>
-                <viewController storyboardIdentifier="EventDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TBc-XK-CZJ" userLabel="Event Detail" customClass="EventViewController" customModule="Eurofurence" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventDetailView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TBc-XK-CZJ" userLabel="Event Detail" customClass="EventViewController" customModule="Eurofurence" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4cB-31-qmC"/>
                         <viewControllerLayoutGuide type="bottom" id="GZb-m5-QJx"/>
@@ -1567,7 +1567,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
         <!--Infos-->
         <scene sceneID="78B-LI-h3a">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NtC-f2-fnQ" userLabel="Infos" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="KnowledgeNavigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NtC-f2-fnQ" userLabel="Infos" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Convention Info" image="Info" id="Ial-UE-gFz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dXi-qr-kai">
@@ -1586,7 +1586,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
         <!--Knowledge List-->
         <scene sceneID="v0k-X7-h86">
             <objects>
-                <tableViewController id="glr-b0-rOQ" userLabel="Knowledge List" customClass="KnowledgeTableViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="KnowledgeTableView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="glr-b0-rOQ" userLabel="Knowledge List" customClass="KnowledgeTableViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="mFF-Gs-smz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1682,7 +1682,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
         <!--Knowledge Detail-->
         <scene sceneID="bnW-6L-WP5">
             <objects>
-                <viewController storyboardIdentifier="KnowledgeDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Aqh-3L-qkR" userLabel="Knowledge Detail" customClass="KnowledgeEntryViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="KnowledgeDetailView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Aqh-3L-qkR" userLabel="Knowledge Detail" customClass="KnowledgeEntryViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UUd-l0-GNc"/>
                         <viewControllerLayoutGuide type="bottom" id="bie-i3-4Uv"/>
@@ -1808,7 +1808,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
         <!--Maps-->
         <scene sceneID="pH4-vn-yCl">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="scG-Tu-b4g" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MapNavigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="scG-Tu-b4g" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Maps" image="Map" id="NKC-Fb-cj9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Y4Z-KE-Ggo">
@@ -1827,7 +1827,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
         <!--Dealers-->
         <scene sceneID="6BB-Dh-v4M">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="n6b-Bd-NxQ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="DealerNavigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="n6b-Bd-NxQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Dealers" image="dealers" id="6sr-5r-BhR"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DWe-Q3-xcm">
@@ -1857,7 +1857,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
         <!--About-->
         <scene sceneID="gkm-Fd-AGg">
             <objects>
-                <viewController storyboardIdentifier="AboutView" id="M4i-6n-Fj1" customClass="AboutViewController" customModule="Eurofurence" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M4i-6n-Fj1" customClass="AboutViewController" customModule="Eurofurence" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sxF-y1-zOe"/>
                         <viewControllerLayoutGuide type="bottom" id="v5Y-I7-JOW"/>
@@ -2275,7 +2275,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</stri
         <!--About-->
         <scene sceneID="uCg-9S-Lxj">
             <objects>
-                <navigationController storyboardIdentifier="aboutNavigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nTP-oR-g7Q" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AboutNavigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nTP-oR-g7Q" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="About" image="AboutUs" id="dTW-Ju-Qnj"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -2295,7 +2295,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</stri
         <!--Settings-->
         <scene sceneID="HVE-5G-CNP">
             <objects>
-                <navigationController storyboardIdentifier="settingsNavigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RyY-ul-kIZ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SettingsNavigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RyY-ul-kIZ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings" id="AQQ-Sm-HkW"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -2331,9 +2331,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</stri
         <image name="ef-bg-news" width="360" height="509"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TRw-ie-exZ"/>
-        <segue reference="au0-CR-I6S"/>
-        <segue reference="KTE-6a-a6w"/>
+        <segue reference="1uP-gn-3kN"/>
         <segue reference="ycx-tm-4B6"/>
+        <segue reference="au0-CR-I6S"/>
+        <segue reference="TRw-ie-exZ"/>
     </inferredMetricsTieBreakers>
 </document>

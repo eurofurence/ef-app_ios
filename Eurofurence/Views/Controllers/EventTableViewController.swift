@@ -302,7 +302,7 @@ class EventTableViewController: UITableViewController, UISearchBarDelegate, UIVi
 		let viewController: UIViewController
 		switch data {
 		case let event as Event:
-			guard let eventViewController = storyboard?.instantiateViewController(withIdentifier: "EventDetail") as? EventViewController else {
+			guard let eventViewController = storyboard?.instantiateViewController(withIdentifier: "EventDetailView") as? EventViewController else {
 				return nil
 			}
 			eventViewController.event = event
