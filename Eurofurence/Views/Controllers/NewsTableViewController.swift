@@ -16,6 +16,7 @@ class NewsTableViewController: UITableViewController,
                                MessagesViewControllerDelegate,
                                AuthenticationStateObserver {
 	@IBOutlet weak var favoritesOnlySegmentedControl: UISegmentedControl!
+	@IBOutlet weak var lastSyncLabel: UILabel!
 
 	private var announcementsViewModel: AnnouncementsViewModel = try! ViewModelResolver.container.resolve()
 	private var currentEventsViewModel: CurrentEventsViewModel = try! ViewModelResolver.container.resolve()
@@ -23,16 +24,16 @@ class NewsTableViewController: UITableViewController,
 	private var disposables = CompositeDisposable()
     private var loggedInUser: User?
 
-	private var upcomingEvents: [Event] = []
+	private var announcements: [Announcement] = []
 	private var runningEvents: [Event] = []
-
-	@IBOutlet weak var lastSyncLabel: UILabel!
+	private var upcomingEvents: [Event] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         EurofurenceApplication.shared.add(self)
 
+		announcements = announcementsViewModel.Announcements.value
 		runningEvents = currentEventsViewModel.RunningEvents.value
 		upcomingEvents = currentEventsViewModel.UpcomingEvents.value
 
@@ -46,7 +47,7 @@ class NewsTableViewController: UITableViewController,
 		tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
 		tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCellWithoutBanner")
 
-		favoritesOnlySegmentedControl.addTarget(self, action: #selector(NewsTableViewController.filtersChanged), for: .valueChanged)
+		tableView.register(UINib(nibName: "NewsSectionHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "NewsSectionHeader")
 
         self.refreshControl?.addTarget(self, action: #selector(NewsTableViewController.refresh(_:)), for: .valueChanged)
 
@@ -58,10 +59,17 @@ class NewsTableViewController: UITableViewController,
 			return "Last refreshed now"
 		})
 
-        disposables += announcementsViewModel.Announcements.signal.observeValues({
-            [unowned self] _ in
-            DispatchQueue.main.async {
-				self.tableView.reloadData()
+        disposables += announcementsViewModel.AnnouncementsEdits.signal.observeValues({
+            [unowned self] edits in
+			DispatchQueue.main.async {
+				var edits = edits
+				if self.announcements.count == 0 {
+					edits.append(Edit<Announcement>.init(.deletion, value: Announcement(), destination: 0))
+				} else if self.announcementsViewModel.Announcements.value.count == 0 {
+					edits.append(Edit<Announcement>.init(.insertion, value: Announcement(), destination: 0))
+				}
+				self.announcements = self.announcementsViewModel.Announcements.value
+				self.tableView.update(with: edits, in: 1)
             }
         })
         disposables += currentEventsViewModel.RunningEventsEdits.signal.observeValues({
@@ -107,8 +115,8 @@ class NewsTableViewController: UITableViewController,
         DataStoreRefreshController.shared.add(refreshControlVisibilityDelegate)
     }
 
-	func filtersChanged() {
-		currentEventsViewModel.isFavoritesOnly = favoritesOnlySegmentedControl.selectedSegmentIndex == 1
+	@IBAction func favoritesOnlyFilterChanged(_ sender: UISegmentedControl) {
+		currentEventsViewModel.isFavoritesOnly = sender.selectedSegmentIndex == 1
 		timeService.tick()
 	}
 
@@ -149,42 +157,6 @@ class NewsTableViewController: UITableViewController,
         }
 	}
 
-	func getLastRefreshString(_ lastRefresh: Date) -> String {
-		// TODO: Externalise strings for i18n
-		let lastUpdateSeconds = -1 * Int(lastRefresh.timeIntervalSinceNow)
-		let lastUpdateMinutes = Int(lastUpdateSeconds / 60)
-		let lastUpdateHours = Int(lastUpdateMinutes / 60)
-		let lastUpdateDays = Int(lastUpdateHours / 24)
-		let lastUpdateWeeks = Int(lastUpdateDays / 7)
-		let lastUpdateYears = Int(lastUpdateWeeks / 52)
-
-		if lastUpdateYears == 1 {
-			return "Last refresh 1 year ago"
-		} else if lastUpdateYears > 1 {
-			return "Last refresh " + String(lastUpdateYears) + " years ago"
-		} else if lastUpdateWeeks == 1 {
-			return "Last refresh 1 week ago"
-		} else if lastUpdateWeeks > 1 {
-			return "Last refresh " + String(lastUpdateWeeks) + " weeks ago"
-		} else if lastUpdateDays == 1 {
-			return "Last refresh 1 day ago"
-		} else if lastUpdateDays > 1 {
-			return "Last refresh " + String(lastUpdateDays) + " days ago"
-		} else if lastUpdateHours == 1 {
-			return "Last refresh 1 hour ago"
-		} else if lastUpdateHours > 1 {
-			return "Last refresh " + String(lastUpdateHours) + " hours ago"
-		} else if lastUpdateMinutes == 1 {
-			return "Last refresh 1 minute ago"
-		} else if lastUpdateMinutes > 1 {
-			return "Last refresh " + String(lastUpdateMinutes) + " minutes ago"
-		} else if lastUpdateSeconds == 1 {
-			return "Last refresh 1 second ago"
-		} else {
-			return "Last refresh " + String(lastUpdateSeconds) + " seconds ago"
-		}
-	}
-
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 
@@ -222,7 +194,7 @@ class NewsTableViewController: UITableViewController,
         case 0:
             return 1
 		case 1:
-			return max(1, announcementsViewModel.Announcements.value.count)
+			return max(1, announcements.count)
 		case 2:
 			return max(1, runningEvents.count)
 		case 3:
@@ -232,22 +204,40 @@ class NewsTableViewController: UITableViewController,
 		}
     }
 
-	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String {
-		// TODO: Externalise strings for i18n
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "NewsSectionHeader") as? NewsSectionHeader else { return nil }
 		switch section {
 		case 1:
-			return "Announcements"
+			cell.sectionTitle = "Announcements"
+			cell.isShowAll = announcementsViewModel.isShowAll
+			cell.toggleShowAllAction = { cell in
+				self.announcementsViewModel.isShowAll = cell.isShowAll
+				self.timeService.tick()
+			}
 		case 2:
-			return "Running Events"
+			cell.sectionTitle = "Running Events"
+			cell.toggleShowAllAction = nil
 		case 3:
-			return "Upcoming Events"
+			cell.sectionTitle = "Upcoming Events"
+			cell.toggleShowAllAction = nil
 		default: // Unknown section or header
-			return ""
+			return nil
 		}
+
+		return cell
 	}
 
 	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.tableView(tableView, titleForHeaderInSection: section).isEmpty ? 0.0 : 20.0
+		switch section {
+		case 1:
+			return 35.0
+		case 2:
+			return 35.0
+		case 3:
+			return 35.0
+		default: // Unknown section or header
+			return 0.0
+		}
 	}
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -261,11 +251,12 @@ class NewsTableViewController: UITableViewController,
                 return tableView.dequeueReusableCell(withIdentifier: "LoginHintCell", for: indexPath)
             }
 		case 1:
-			if announcementsViewModel.Announcements.value.isEmpty {
+			if announcements.isEmpty {
 				return tableView.dequeueReusableCell(withIdentifier: "NoAnnouncementsCell", for: indexPath)
 			} else {
+				let announcement = getData(for: indexPath) as? Announcement
 				let cell = tableView.dequeueReusableCell(withIdentifier: "AnnouncementCell", for: indexPath) as! AnnouncementCell
-				cell.announcement = announcementsViewModel.Announcements.value[indexPath.row]
+				cell.announcement = announcement
 				return cell
 			}
 		case 2:
@@ -295,7 +286,7 @@ class NewsTableViewController: UITableViewController,
 		let dataSource: [EntityBase]
 		switch indexPath.section {
 		case 1:
-			dataSource = announcementsViewModel.Announcements.value
+			dataSource = announcements
 		case 2:
 			dataSource = runningEvents
 		case 3:
@@ -345,6 +336,16 @@ class NewsTableViewController: UITableViewController,
 					UIColor.init(red: 0.00, green: 0.75, blue: 0.00, alpha: 1.0)
 				return [favoriteAction]
 			}
+		case let announcement as Announcement:
+			let actionTitle = (announcement.IsRead) ? "Mark as Unread" : "Mark as Read"
+			let readAction = UITableViewRowAction(style: .default, title: actionTitle, handler: { (_, _) in
+				announcement.IsRead = !announcement.IsRead
+				tableView.isEditing = false
+			})
+			readAction.backgroundColor = (announcement.IsRead) ?
+				UIColor.lightGray :
+				tableView.tintColor
+			return [readAction]
 		default:
 			break
 		}
@@ -356,6 +357,8 @@ class NewsTableViewController: UITableViewController,
 
 		switch rowData {
 		case is Event:
+			return true
+		case is Announcement:
 			return true
 		default:
 			return false
