@@ -8,6 +8,6 @@
 
 protocol PrivateMessagesAPI {
 
-    func loadPrivateMessages()
+    func loadPrivateMessages(completionHandler: @escaping (APIResponse<Any>) -> Void)
 
 }

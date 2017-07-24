@@ -12,8 +12,18 @@ import Foundation
 class CapturingPrivateMessagesAPI: PrivateMessagesAPI {
     
     private(set) var wasToldToLoadPrivateMessages = false
-    func loadPrivateMessages() {
+    private var completionHandler: ((APIResponse<Any>) -> Void)?
+    func loadPrivateMessages(completionHandler: @escaping (APIResponse<Any>) -> Void) {
         wasToldToLoadPrivateMessages = true
+        self.completionHandler = completionHandler
+    }
+    
+    func simulateSuccessfulResponse() {
+        completionHandler?(.success([Any]()))
+    }
+    
+    func simulateUnsuccessfulResponse() {
+        completionHandler?(.failure)
     }
     
 }

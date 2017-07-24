@@ -20,7 +20,7 @@ class EurofurenceApplication {
 
         struct DummyPrivateMessagesAPI: PrivateMessagesAPI {
 
-            func loadPrivateMessages() {
+            func loadPrivateMessages(completionHandler: @escaping (APIResponse<Any>) -> Void) {
 
             }
 
@@ -86,7 +86,15 @@ class EurofurenceApplication {
 
     func fetchPrivateMessages() {
         if authenticationCoordinator.isLoggedIn {
-            privateMessagesAPI.loadPrivateMessages()
+            privateMessagesAPI.loadPrivateMessages { response in
+                switch response {
+                case .success(_):
+                    break
+
+                case .failure:
+                    self.privateMessagesObservers.forEach({ $0.failedToLoadPrivateMessages() })
+                }
+            }
         }
 
         privateMessagesObservers.forEach({ $0.privateMessagesLoaded([]) })

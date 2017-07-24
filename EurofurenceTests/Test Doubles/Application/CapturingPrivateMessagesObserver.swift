@@ -16,4 +16,9 @@ class CapturingPrivateMessagesObserver: PrivateMessagesObserver {
         capturedMessages = privateMessages
     }
     
+    private(set) var wasToldFailedToLoadPrivateMessages = false
+    func failedToLoadPrivateMessages() {
+        wasToldFailedToLoadPrivateMessages = true
+    }
+    
 }

@@ -42,4 +42,24 @@ class WhenRequestingPrivateMessages: XCTestCase {
         XCTAssertFalse(context.privateMessagesAPI.wasToldToLoadPrivateMessages)
     }
     
+    func testReceievingAPIResponseWithErrorShouldTellObserversFailedToLoadPrivateMessages() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let observer = CapturingPrivateMessagesObserver()
+        context.application.add(observer)
+        context.application.fetchPrivateMessages()
+        context.privateMessagesAPI.simulateUnsuccessfulResponse()
+        
+        XCTAssertTrue(observer.wasToldFailedToLoadPrivateMessages)
+    }
+    
+    func testReceievingAPIResponseWithSuccessShouldNotTellObserversFailedToLoadPrivateMessages() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let observer = CapturingPrivateMessagesObserver()
+        context.application.add(observer)
+        context.application.fetchPrivateMessages()
+        context.privateMessagesAPI.simulateSuccessfulResponse()
+        
+        XCTAssertFalse(observer.wasToldFailedToLoadPrivateMessages)
+    }
+    
 }
