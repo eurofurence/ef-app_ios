@@ -121,11 +121,7 @@ class WhenLoggingIn: XCTestCase {
     }
     
     func testBeingLoggedInThenLoggingInShouldNotifyObserverLoginSuccessful() {
-        let credential = LoginCredential(username: "",
-                                         registrationNumber: 0,
-                                         authenticationToken: "",
-                                         tokenExpiryDate: .distantFuture)
-        let context = ApplicationTestBuilder().with(credential).build()
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let loginObserver = CapturingLoginObserver()
         context.application.add(loginObserver)
         context.login()
@@ -134,11 +130,7 @@ class WhenLoggingIn: XCTestCase {
     }
     
     func testBeingLoggedInThenLoggingInShouldNotRequestTheAPIToLogin() {
-        let credential = LoginCredential(username: "",
-                                         registrationNumber: 0,
-                                         authenticationToken: "",
-                                         tokenExpiryDate: .distantFuture)
-        let context = ApplicationTestBuilder().with(credential).build()
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let loginObserver = CapturingLoginObserver()
         context.application.add(loginObserver)
         context.login()

@@ -19,6 +19,11 @@ class ApplicationTestBuilder {
         var loginAPI: CapturingLoginAPI
         var privateMessagesAPI: CapturingPrivateMessagesAPI
         
+        var authenticationToken: String? {
+            return capturingLoginCredentialsStore.persistedCredential?.authenticationToken
+        }
+        
+        
         func registerRemoteNotifications(_ deviceToken: Data = Data()) {
             application.registerRemoteNotifications(deviceToken: deviceToken)
         }
@@ -44,6 +49,14 @@ class ApplicationTestBuilder {
     func with(_ persistedCredential: LoginCredential?) -> ApplicationTestBuilder {
         capturingLoginCredentialsStore = CapturingLoginCredentialStore(persistedCredential: persistedCredential)
         return self
+    }
+    
+    func loggedInWithValidCredential() -> ApplicationTestBuilder {
+        let credential = LoginCredential(username: "User",
+                                         registrationNumber: 42,
+                                         authenticationToken: "Token",
+                                         tokenExpiryDate: .distantFuture)
+        return with(credential)
     }
     
     func build() -> Context {

@@ -29,11 +29,7 @@ class WhenRequestingPrivateMessages: XCTestCase {
     }
     
     func testBeingLoggedInShouldRequestPrivateMessagesFromAPI() {
-        let credential = LoginCredential(username: "",
-                                         registrationNumber: 0,
-                                         authenticationToken: "",
-                                         tokenExpiryDate: .distantFuture)
-        let context = ApplicationTestBuilder().with(credential).build()
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         context.application.fetchPrivateMessages()
         
         XCTAssertTrue(context.privateMessagesAPI.wasToldToLoadPrivateMessages)
