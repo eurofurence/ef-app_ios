@@ -63,10 +63,10 @@ class NewsTableViewController: UITableViewController,
             [unowned self] edits in
 			DispatchQueue.main.async {
 				var edits = edits
-				if self.announcements.count == 0 {
-					edits.append(Edit<Announcement>.init(.deletion, value: Announcement(), destination: 0))
+				if self.announcements.count == 0 && self.announcementsViewModel.Announcements.value.count > 0 {
+					edits.append(Edit<Announcement>(.deletion, value: Announcement(), destination: 0))
 				} else if self.announcementsViewModel.Announcements.value.count == 0 {
-					edits.append(Edit<Announcement>.init(.insertion, value: Announcement(), destination: 0))
+					edits.append(Edit<Announcement>(.insertion, value: Announcement(), destination: 0))
 				}
 				self.announcements = self.announcementsViewModel.Announcements.value
 				self.tableView.update(with: edits, in: 1)
@@ -76,10 +76,10 @@ class NewsTableViewController: UITableViewController,
             [unowned self] edits in
 			DispatchQueue.main.async {
 				var edits = edits
-				if self.runningEvents.count == 0 {
-					edits.append(Edit<Event>.init(.deletion, value: Event(), destination: 0))
+				if self.runningEvents.count == 0 && self.currentEventsViewModel.RunningEvents.value.count > 0 {
+					edits.append(Edit<Event>(.deletion, value: Event(), destination: 0))
 				} else if self.currentEventsViewModel.RunningEvents.value.count == 0 {
-					edits.append(Edit<Event>.init(.insertion, value: Event(), destination: 0))
+					edits.append(Edit<Event>(.insertion, value: Event(), destination: 0))
 				}
 				self.runningEvents = self.currentEventsViewModel.RunningEvents.value
 				self.tableView.update(with: edits, in: 2)
@@ -89,10 +89,10 @@ class NewsTableViewController: UITableViewController,
 			[unowned self] edits in
             DispatchQueue.main.async {
 				var edits = edits
-				if self.upcomingEvents.count == 0 {
-					edits.append(Edit<Event>.init(.deletion, value: Event(), destination: 0))
+				if self.upcomingEvents.count == 0 && self.currentEventsViewModel.UpcomingEvents.value.count > 0 {
+					edits.append(Edit<Event>(.deletion, value: Event(), destination: 0))
 				} else if self.currentEventsViewModel.UpcomingEvents.value.count == 0 {
-					edits.append(Edit<Event>.init(.insertion, value: Event(), destination: 0))
+					edits.append(Edit<Event>(.insertion, value: Event(), destination: 0))
 				}
 				self.upcomingEvents = self.currentEventsViewModel.UpcomingEvents.value
 				self.tableView.update(with: edits, in: 3)
