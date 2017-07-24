@@ -210,6 +210,8 @@
 		CA30EAC21F266D9B0053DBF6 /* APIPrivateMessagesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAC11F266D9B0053DBF6 /* APIPrivateMessagesResponse.swift */; };
 		CA30EAC41F2672BF0053DBF6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAC31F2672BF0053DBF6 /* Message.swift */; };
 		CA30EAC61F2673010053DBF6 /* StubAPIPrivateMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAC51F2673010053DBF6 /* StubAPIPrivateMessage.swift */; };
+		CA30EACA1F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */; };
+		CA30EACC1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */; };
 		CA804DD21F20CE8F00E07A4A /* V2LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */; };
 		CA804DD41F20CF4300E07A4A /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD31F20CF4300E07A4A /* APIResponse.swift */; };
 		CA804DD61F20D10E00E07A4A /* APILoginParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD51F20D10E00E07A4A /* APILoginParameters.swift */; };
@@ -489,6 +491,8 @@
 		CA30EAC11F266D9B0053DBF6 /* APIPrivateMessagesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIPrivateMessagesResponse.swift; path = Application/API/APIPrivateMessagesResponse.swift; sourceTree = "<group>"; };
 		CA30EAC31F2672BF0053DBF6 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Application/Message.swift; sourceTree = "<group>"; };
 		CA30EAC51F2673010053DBF6 /* StubAPIPrivateMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAPIPrivateMessage.swift; path = "Test Doubles/Application/API/StubAPIPrivateMessage.swift"; sourceTree = "<group>"; };
+		CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2PrivateMessagesAPITests.swift; path = "Application Tests/API/v2/V2PrivateMessagesAPITests.swift"; sourceTree = "<group>"; };
+		CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2PrivateMessagesAPI.swift; path = Application/API/v2/V2PrivateMessagesAPI.swift; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
 		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/APIResponse.swift; sourceTree = "<group>"; };
 		CA804DD51F20D10E00E07A4A /* APILoginParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APILoginParameters.swift; path = Application/API/APILoginParameters.swift; sourceTree = "<group>"; };
@@ -1232,6 +1236,7 @@
 			children = (
 				CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */,
 				CA281B611F1FE3F10002A4E5 /* V2LoginResponse.swift */,
+				CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */,
 			);
 			name = v2;
 			sourceTree = "<group>";
@@ -1248,6 +1253,7 @@
 			isa = PBXGroup;
 			children = (
 				CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */,
+				CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */,
 			);
 			name = v2;
 			sourceTree = "<group>";
@@ -1780,6 +1786,7 @@
 				CAD7805A1F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift in Sources */,
 				9A861EB51F25550700B75A8C /* TutorialScene.swift in Sources */,
 				78567B3F1F1016B000EBA31D /* TabViewController.swift in Sources */,
+				CA30EACC1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift in Sources */,
 				9ACF99981EC858B2006FC958 /* MapEntry.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
 				CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */,
@@ -1928,6 +1935,7 @@
 				78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */,
 				781A943A1F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift in Sources */,
 				78455B4B1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift in Sources */,
+				CA30EACA1F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift in Sources */,
 				7820A6E11F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift in Sources */,
 				781A94461F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift in Sources */,
 				CA30EAA81F2132480053DBF6 /* StubLoginResponse.swift in Sources */,
