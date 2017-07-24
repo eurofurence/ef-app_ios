@@ -10,7 +10,7 @@ import Foundation
 
 protocol PrivateMessagesObserver {
 
-    func privateMessagesAvailable(_ privateMessages: [Any])
+    func privateMessagesAvailable(_ privateMessages: [Message])
     func failedToLoadPrivateMessages()
     func userNotAuthenticatedForPrivateMessages()
 

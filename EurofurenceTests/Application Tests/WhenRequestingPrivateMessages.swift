@@ -92,4 +92,17 @@ class WhenRequestingPrivateMessages: XCTestCase {
         XCTAssertFalse(observer.wasToldSuccessfullyLoadedPrivateMessages)
     }
     
+    func testReceievingAPIResponseWithSuccessShouldPropogatePrivateMessagesFromAPIToObservers() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let observer = CapturingPrivateMessagesObserver()
+        context.application.add(privateMessagesObserver: observer)
+        context.application.fetchPrivateMessages()
+        let authorName = "Some guy"
+        let message = StubAPIPrivateMessage(authorName: authorName)
+        let response = StubAPIPrivateMessagesResponse(messages: [message])
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: response)
+        
+        XCTAssertEqual(authorName, observer.capturedMessages?.first?.authorName)
+    }
+    
 }

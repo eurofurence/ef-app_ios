@@ -12,8 +12,8 @@ import Foundation
 class CapturingPrivateMessagesObserver: PrivateMessagesObserver {
     
     private(set) var wasToldSuccessfullyLoadedPrivateMessages = false
-    private(set) var capturedMessages: [Any]?
-    func privateMessagesAvailable(_ privateMessages: [Any]) {
+    private(set) var capturedMessages: [Message]?
+    func privateMessagesAvailable(_ privateMessages: [Message]) {
         wasToldSuccessfullyLoadedPrivateMessages = true
         capturedMessages = privateMessages
     }

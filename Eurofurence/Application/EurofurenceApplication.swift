@@ -20,7 +20,7 @@ class EurofurenceApplication {
 
         struct DummyPrivateMessagesAPI: PrivateMessagesAPI {
 
-            func loadPrivateMessages(completionHandler: @escaping (APIResponse<Any>) -> Void) {
+            func loadPrivateMessages(completionHandler: @escaping (APIResponse<APIPrivateMessagesResponse>) -> Void) {
 
             }
 
@@ -84,12 +84,23 @@ class EurofurenceApplication {
                                                                                     userAuthenticationToken: authenticationCoordinator.userAuthenticationToken)
     }
 
+    struct MessageAdapter: Message {
+
+        var apiMessage: APIPrivateMessage
+
+        var authorName: String {
+            return apiMessage.authorName
+        }
+
+    }
+
     func fetchPrivateMessages() {
         if authenticationCoordinator.isLoggedIn {
             privateMessagesAPI.loadPrivateMessages { response in
                 switch response {
-                case .success(_):
-                    self.privateMessagesObservers.forEach({ $0.privateMessagesAvailable([]) })
+                case .success(let response):
+                    let messages = response.messages.map(MessageAdapter.init)
+                    self.privateMessagesObservers.forEach({ $0.privateMessagesAvailable(messages) })
 
                 case .failure:
                     self.privateMessagesObservers.forEach({ $0.failedToLoadPrivateMessages() })
