@@ -89,7 +89,7 @@ class EurofurenceApplication {
             privateMessagesAPI.loadPrivateMessages { response in
                 switch response {
                 case .success(_):
-                    self.privateMessagesObservers.forEach({ $0.privateMessagesLoaded([]) })
+                    self.privateMessagesObservers.forEach({ $0.privateMessagesAvailable([]) })
 
                 case .failure:
                     self.privateMessagesObservers.forEach({ $0.failedToLoadPrivateMessages() })
