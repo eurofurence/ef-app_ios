@@ -63,14 +63,33 @@ class WhenRequestingPrivateMessages: XCTestCase {
         XCTAssertFalse(observer.wasToldFailedToLoadPrivateMessages)
     }
     
-//    func testReceievingAPIResponseWithSuccessShouldTellObserversSuccessullyLoadedPrivateMessages() {
-//        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
-//        let observer = CapturingPrivateMessagesObserver()
-//        context.application.add(observer)
-//        context.application.fetchPrivateMessages()
-//        context.privateMessagesAPI.simulateSuccessfulResponse()
-//        
-//        XCTAssertTrue(observer.wasToldSuccessfullyLoadedPrivateMessages)
-//    }
+    func testReceievingAPIResponseWithSuccessShouldTellObserversSuccessullyLoadedPrivateMessages() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let observer = CapturingPrivateMessagesObserver()
+        context.application.add(observer)
+        context.application.fetchPrivateMessages()
+        context.privateMessagesAPI.simulateSuccessfulResponse()
+        
+        XCTAssertTrue(observer.wasToldSuccessfullyLoadedPrivateMessages)
+    }
+    
+    func testRequestingPrivateMessagesWhenLoggedInShouldNotImmediatleyTellUsItLoadedMessagesBeforeAPIReturns() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let observer = CapturingPrivateMessagesObserver()
+        context.application.add(observer)
+        context.application.fetchPrivateMessages()
+        
+        XCTAssertFalse(observer.wasToldSuccessfullyLoadedPrivateMessages)
+    }
+    
+    func testReceievingAPIResponseWithErrorShouldNotTellObserversSuccessfullyLoadedPrivateMessages() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let observer = CapturingPrivateMessagesObserver()
+        context.application.add(observer)
+        context.application.fetchPrivateMessages()
+        context.privateMessagesAPI.simulateUnsuccessfulResponse()
+        
+        XCTAssertFalse(observer.wasToldSuccessfullyLoadedPrivateMessages)
+    }
     
 }
