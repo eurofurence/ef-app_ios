@@ -12,5 +12,6 @@ protocol PrivateMessagesObserver {
 
     func privateMessagesLoaded(_ privateMessages: [Any])
     func failedToLoadPrivateMessages()
+    func userNotAuthenticatedForPrivateMessages()
 
 }

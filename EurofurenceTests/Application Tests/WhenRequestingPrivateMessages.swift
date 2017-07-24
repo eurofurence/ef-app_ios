@@ -11,21 +11,22 @@ import XCTest
 
 class WhenRequestingPrivateMessages: XCTestCase {
     
-    func testBeingLoggedOutShouldProvideEmptyMessages() {
+    func testBeingLoggedOutShouldTellObserversUserNotAuthenticated() {
         let context = ApplicationTestBuilder().build()
         let capturingMessagesObserver = CapturingPrivateMessagesObserver()
         context.application.add(capturingMessagesObserver)
         context.application.fetchPrivateMessages()
         
-        XCTAssertEqual(0, capturingMessagesObserver.capturedMessages?.count)
+        XCTAssertTrue(capturingMessagesObserver.wasToldUserNotAuthenticated)
     }
     
-    func testBeingLoggedOutShouldNotProvideEmptyMessagesUntilAskingToLoadThem() {
-        let context = ApplicationTestBuilder().build()
+    func testBeingLoggedInShouldNotTellObserversUserNotAuthenticated() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let capturingMessagesObserver = CapturingPrivateMessagesObserver()
         context.application.add(capturingMessagesObserver)
+        context.application.fetchPrivateMessages()
         
-        XCTAssertNil(capturingMessagesObserver.capturedMessages)
+        XCTAssertFalse(capturingMessagesObserver.wasToldUserNotAuthenticated)
     }
     
     func testBeingLoggedInShouldRequestPrivateMessagesFromAPI() {
@@ -61,5 +62,15 @@ class WhenRequestingPrivateMessages: XCTestCase {
         
         XCTAssertFalse(observer.wasToldFailedToLoadPrivateMessages)
     }
+    
+//    func testReceievingAPIResponseWithSuccessShouldTellObserversSuccessullyLoadedPrivateMessages() {
+//        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+//        let observer = CapturingPrivateMessagesObserver()
+//        context.application.add(observer)
+//        context.application.fetchPrivateMessages()
+//        context.privateMessagesAPI.simulateSuccessfulResponse()
+//        
+//        XCTAssertTrue(observer.wasToldSuccessfullyLoadedPrivateMessages)
+//    }
     
 }

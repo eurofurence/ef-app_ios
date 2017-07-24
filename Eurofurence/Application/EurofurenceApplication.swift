@@ -95,9 +95,9 @@ class EurofurenceApplication {
                     self.privateMessagesObservers.forEach({ $0.failedToLoadPrivateMessages() })
                 }
             }
+        } else {
+            privateMessagesObservers.forEach({ $0.userNotAuthenticatedForPrivateMessages() })
         }
-
-        privateMessagesObservers.forEach({ $0.privateMessagesLoaded([]) })
     }
 
 }

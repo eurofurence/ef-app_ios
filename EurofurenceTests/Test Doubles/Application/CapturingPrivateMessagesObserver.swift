@@ -11,14 +11,21 @@ import Foundation
 
 class CapturingPrivateMessagesObserver: PrivateMessagesObserver {
     
+    private(set) var wasToldSuccessfullyLoadedPrivateMessages = false
     private(set) var capturedMessages: [Any]?
     func privateMessagesLoaded(_ privateMessages: [Any]) {
+        wasToldSuccessfullyLoadedPrivateMessages = true
         capturedMessages = privateMessages
     }
     
     private(set) var wasToldFailedToLoadPrivateMessages = false
     func failedToLoadPrivateMessages() {
         wasToldFailedToLoadPrivateMessages = true
+    }
+    
+    private(set) var wasToldUserNotAuthenticated = false
+    func userNotAuthenticatedForPrivateMessages() {
+        wasToldUserNotAuthenticated = true
     }
     
 }
