@@ -41,7 +41,8 @@ class SettingsTableViewController: FormViewController {
             <<< SwitchRow("UpdateOnMobile") { row in
                 row.title = "Auto-Update on Mobile"
 				row.value = UserSettings.AutomaticRefreshOnMobile.currentValue()
-				row.disabled = true
+				//TODO: Remove once this setting has actually been implemented properly
+				row.hidden = true
                 }.onChange { row in
                     UserSettings.AutomaticRefreshOnMobile.setValue(row.value!)
                     row.updateCell()
@@ -58,6 +59,8 @@ class SettingsTableViewController: FormViewController {
 		section <<< ButtonRow {
 			$0.title = "Enable Push Notifications"
 			if witnessedSystemPushRequest.witnessedSystemPushPermissionsRequest {
+				//TODO: Remove once we re-enable or add new settings to this section
+				section.hidden = true
 				$0.hidden = true
 			}
 
@@ -77,7 +80,8 @@ class SettingsTableViewController: FormViewController {
 			<<< SwitchRow("NotifyOnAnnouncement") { row in
 				row.title = "Notify on New Announcements"
 				row.value = UserSettings.NotifyOnAnnouncement.currentValue()
-				row.disabled = true
+				//TODO: Remove once this setting has actually been implemented properly
+				row.hidden = true
 				}.onChange { row in
 					if let value = row.value {
 						UserSettings.NotifyOnAnnouncement.setValue(value)
