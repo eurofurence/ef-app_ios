@@ -28,4 +28,22 @@ class WhenRequestingPrivateMessages: XCTestCase {
         XCTAssertNil(capturingMessagesObserver.capturedMessages)
     }
     
+    func testBeingLoggedInShouldRequestPrivateMessagesFromAPI() {
+        let credential = LoginCredential(username: "",
+                                         registrationNumber: 0,
+                                         authenticationToken: "",
+                                         tokenExpiryDate: .distantFuture)
+        let context = ApplicationTestBuilder().with(credential).build()
+        context.application.fetchPrivateMessages()
+        
+        XCTAssertTrue(context.privateMessagesAPI.wasToldToLoadPrivateMessages)
+    }
+    
+    func testBeingLoggedOutShouldNotRequestPrivateMessagesFromAPI() {
+        let context = ApplicationTestBuilder().build()
+        context.application.fetchPrivateMessages()
+        
+        XCTAssertFalse(context.privateMessagesAPI.wasToldToLoadPrivateMessages)
+    }
+    
 }

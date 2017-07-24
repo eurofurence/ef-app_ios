@@ -17,6 +17,7 @@ class ApplicationTestBuilder {
         var capturingTokenRegistration: CapturingRemoteNotificationsTokenRegistration
         var capturingLoginCredentialsStore: CapturingLoginCredentialStore
         var loginAPI: CapturingLoginAPI
+        var privateMessagesAPI: CapturingPrivateMessagesAPI
         
         func registerRemoteNotifications(_ deviceToken: Data = Data()) {
             application.registerRemoteNotifications(deviceToken: deviceToken)
@@ -32,7 +33,8 @@ class ApplicationTestBuilder {
     private let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
     private var capturingLoginCredentialsStore = CapturingLoginCredentialStore()
     private var stubClock = StubClock()
-    private var loginAPI = CapturingLoginAPI()
+    private let loginAPI = CapturingLoginAPI()
+    private let privateMessagesAPI = CapturingPrivateMessagesAPI()
     
     func with(_ currentDate: Date) -> ApplicationTestBuilder {
         stubClock = StubClock(currentDate: currentDate)
@@ -48,11 +50,13 @@ class ApplicationTestBuilder {
         let app = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration,
                                          clock: stubClock,
                                          loginCredentialStore: capturingLoginCredentialsStore,
-                                         loginAPI: loginAPI)
+                                         loginAPI: loginAPI,
+                                         privateMessagesAPI: privateMessagesAPI)
         return Context(application: app,
                        capturingTokenRegistration: capturingTokenRegistration,
                        capturingLoginCredentialsStore: capturingLoginCredentialsStore,
-                       loginAPI: loginAPI)
+                       loginAPI: loginAPI,
+                       privateMessagesAPI: privateMessagesAPI)
     }
     
 }

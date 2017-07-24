@@ -19,7 +19,7 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
     private var authenticationStateObservers = [AuthenticationStateObserver]()
     private var loggedInUser: User?
 
-    private var isLoggedIn: Bool {
+    var isLoggedIn: Bool {
         return userAuthenticationToken != nil
     }
 

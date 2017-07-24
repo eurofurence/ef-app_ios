@@ -18,22 +18,35 @@ class EurofurenceApplication {
                                                                              firebaseAdapter: FirebaseMessagingAdapter(),
                                                                              fcmRegistration: fcmRegistration)
 
+        struct DummyPrivateMessagesAPI: PrivateMessagesAPI {
+
+            func loadPrivateMessages() {
+
+            }
+
+        }
+
         return EurofurenceApplication(remoteNotificationsTokenRegistration: tokenRegistration,
                                       clock: SystemClock(),
                                       loginCredentialStore: KeychainLoginCredentialStore(),
-                                      loginAPI: V2LoginAPI(jsonPoster: URLSessionJSONPoster()))
+                                      loginAPI: V2LoginAPI(jsonPoster: URLSessionJSONPoster()),
+                                      privateMessagesAPI: DummyPrivateMessagesAPI())
     }()
 
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
     private var authenticationCoordinator: UserAuthenticationCoordinator
     private var registeredDeviceToken: Data?
     private var privateMessagesObservers = [PrivateMessagesObserver]()
+    private let privateMessagesAPI: PrivateMessagesAPI
 
     init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
          clock: Clock,
          loginCredentialStore: LoginCredentialStore,
-         loginAPI: LoginAPI) {
+         loginAPI: LoginAPI,
+         privateMessagesAPI: PrivateMessagesAPI) {
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
+        self.privateMessagesAPI = privateMessagesAPI
+
         authenticationCoordinator = UserAuthenticationCoordinator(clock: clock,
                                                                   loginCredentialStore: loginCredentialStore,
                                                                   remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
@@ -72,6 +85,10 @@ class EurofurenceApplication {
     }
 
     func fetchPrivateMessages() {
+        if authenticationCoordinator.isLoggedIn {
+            privateMessagesAPI.loadPrivateMessages()
+        }
+
         privateMessagesObservers.forEach({ $0.privateMessagesLoaded([]) })
     }
 
