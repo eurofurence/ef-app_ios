@@ -27,6 +27,7 @@ class EurofurenceApplication {
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
     private var authenticationCoordinator: UserAuthenticationCoordinator
     private var registeredDeviceToken: Data?
+    private var privateMessagesObservers = [PrivateMessagesObserver]()
 
     init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
          clock: Clock,
@@ -55,6 +56,10 @@ class EurofurenceApplication {
         authenticationCoordinator.remove(authenticationStateObserver)
     }
 
+    func add(_ privateMessagesObserver: PrivateMessagesObserver) {
+        privateMessagesObservers.append(privateMessagesObserver)
+    }
+
     func login(_ arguments: LoginArguments) {
         authenticationCoordinator.login(arguments)
     }
@@ -64,6 +69,10 @@ class EurofurenceApplication {
         authenticationCoordinator.registeredDeviceToken = deviceToken
         remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken,
                                                                                     userAuthenticationToken: authenticationCoordinator.userAuthenticationToken)
+    }
+
+    func fetchPrivateMessages() {
+        privateMessagesObservers.forEach({ $0.privateMessagesLoaded([]) })
     }
 
 }
