@@ -29,7 +29,7 @@ class MessagesViewController: UITableViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        EurofurenceApplication.shared.add(self)
+        EurofurenceApplication.shared.add(authenticationStateObserver: self)
     }
 
     override func viewDidAppear(_ animated: Bool) {

@@ -31,7 +31,7 @@ class NewsTableViewController: UITableViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        EurofurenceApplication.shared.add(self)
+        EurofurenceApplication.shared.add(authenticationStateObserver: self)
 
 		announcements = announcementsViewModel.Announcements.value
 		runningEvents = currentEventsViewModel.RunningEvents.value

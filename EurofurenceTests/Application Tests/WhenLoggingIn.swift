@@ -91,7 +91,7 @@ class WhenLoggingIn: XCTestCase {
     func testLoggingInSuccessfulyShouldNotifyObserversAboutIt() {
         let context = ApplicationTestBuilder().build()
         let loginObserver = CapturingLoginObserver()
-        context.application.add(loginObserver)
+        context.application.add(loginObserver: loginObserver)
         context.login()
         context.loginAPI.simulateResponse(makeLoginResponse())
         
@@ -105,7 +105,7 @@ class WhenLoggingIn: XCTestCase {
             XCTAssertFalse(loginObserver.notifiedLoginSucceeded)
         }
         
-        context.application.add(loginObserver)
+        context.application.add(loginObserver: loginObserver)
         context.login()
         context.loginAPI.simulateResponse(makeLoginResponse())
     }
@@ -113,7 +113,7 @@ class WhenLoggingIn: XCTestCase {
     func testLoggingInSuccessfulyShouldNotNotifyObserversAboutLoginFailure() {
         let context = ApplicationTestBuilder().build()
         let loginObserver = CapturingLoginObserver()
-        context.application.add(loginObserver)
+        context.application.add(loginObserver: loginObserver)
         context.login()
         context.loginAPI.simulateResponse(makeLoginResponse())
         
@@ -123,7 +123,7 @@ class WhenLoggingIn: XCTestCase {
     func testBeingLoggedInThenLoggingInShouldNotifyObserverLoginSuccessful() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let loginObserver = CapturingLoginObserver()
-        context.application.add(loginObserver)
+        context.application.add(loginObserver: loginObserver)
         context.login()
         
         XCTAssertTrue(loginObserver.notifiedLoginSucceeded)
@@ -132,7 +132,7 @@ class WhenLoggingIn: XCTestCase {
     func testBeingLoggedInThenLoggingInShouldNotRequestTheAPIToLogin() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let loginObserver = CapturingLoginObserver()
-        context.application.add(loginObserver)
+        context.application.add(loginObserver: loginObserver)
         context.login()
         
         XCTAssertNil(context.loginAPI.capturedLoginArguments)
@@ -161,9 +161,9 @@ class WhenLoggingIn: XCTestCase {
     func testRemovingTheObserverThenLoggingInShouldNotTellTheObserverAboutIt() {
         let context = ApplicationTestBuilder().build()
         let loginObserver = CapturingLoginObserver()
-        context.application.add(loginObserver)
+        context.application.add(loginObserver: loginObserver)
         context.login()
-        context.application.remove(loginObserver)
+        context.application.remove(loginObserver: loginObserver)
         context.loginAPI.simulateResponse(makeLoginResponse())
         
         XCTAssertFalse(loginObserver.notifiedLoginSucceeded)
@@ -174,7 +174,7 @@ class WhenLoggingIn: XCTestCase {
         let authenticationStateObserver = CapturingAuthenticationStateObserver()
         context.login()
         context.loginAPI.simulateResponse(makeLoginResponse())
-        context.application.add(authenticationStateObserver)
+        context.application.add(authenticationStateObserver: authenticationStateObserver)
         
         XCTAssertTrue(authenticationStateObserver.didLogIn)
     }
@@ -182,7 +182,7 @@ class WhenLoggingIn: XCTestCase {
     func testLoggingInShouldTellAuthenticationStateObserversWeAreLoggedIn() {
         let context = ApplicationTestBuilder().build()
         let authenticationStateObserver = CapturingAuthenticationStateObserver()
-        context.application.add(authenticationStateObserver)
+        context.application.add(authenticationStateObserver: authenticationStateObserver)
         context.login()
         context.loginAPI.simulateResponse(makeLoginResponse())
         
@@ -192,7 +192,7 @@ class WhenLoggingIn: XCTestCase {
     func testLoggingInShouldNotTellAuthenticationStateObserversWeAreLoggedInUntilLoginSucceeds() {
         let context = ApplicationTestBuilder().build()
         let authenticationStateObserver = CapturingAuthenticationStateObserver()
-        context.application.add(authenticationStateObserver)
+        context.application.add(authenticationStateObserver: authenticationStateObserver)
         context.login()
         
         XCTAssertFalse(authenticationStateObserver.didLogIn)
@@ -201,7 +201,7 @@ class WhenLoggingIn: XCTestCase {
     func testLoggingInShouldTellAuthenticationStateObserversWeLoggedInWithUsersName() {
         let context = ApplicationTestBuilder().build()
         let authenticationStateObserver = CapturingAuthenticationStateObserver()
-        context.application.add(authenticationStateObserver)
+        context.application.add(authenticationStateObserver: authenticationStateObserver)
         let username = "Some cool guy"
         context.login(username: username)
         context.loginAPI.simulateResponse(makeLoginResponse())
@@ -212,7 +212,7 @@ class WhenLoggingIn: XCTestCase {
     func testLoggingInShouldTellAuthenticationStateObserversWeLoggedInWithUsersRegNo() {
         let context = ApplicationTestBuilder().build()
         let authenticationStateObserver = CapturingAuthenticationStateObserver()
-        context.application.add(authenticationStateObserver)
+        context.application.add(authenticationStateObserver: authenticationStateObserver)
         let regNo = 42
         context.login(registrationNumber: regNo)
         context.loginAPI.simulateResponse(makeLoginResponse())
@@ -226,7 +226,7 @@ class WhenLoggingIn: XCTestCase {
         let expectedUser = User(registrationNumber: 42, username: "Some cool guy")
         context.login(registrationNumber: expectedUser.registrationNumber, username: expectedUser.username)
         context.loginAPI.simulateResponse(makeLoginResponse())
-        context.application.add(authenticationStateObserver)
+        context.application.add(authenticationStateObserver: authenticationStateObserver)
         
         XCTAssertEqual(expectedUser, authenticationStateObserver.loggedInUser)
     }
@@ -234,8 +234,8 @@ class WhenLoggingIn: XCTestCase {
     func testRemovingAuthenticationObserverBeforeLoggingInShouldNotTellItWeLoggedIn() {
         let context = ApplicationTestBuilder().build()
         let authenticationStateObserver = CapturingAuthenticationStateObserver()
-        context.application.add(authenticationStateObserver)
-        context.application.remove(authenticationStateObserver)
+        context.application.add(authenticationStateObserver: authenticationStateObserver)
+        context.application.remove(authenticationStateObserver: authenticationStateObserver)
         context.login()
         context.loginAPI.simulateResponse(makeLoginResponse())
         
@@ -250,7 +250,7 @@ class WhenLoggingIn: XCTestCase {
                                          tokenExpiryDate: .distantFuture)
         let context = ApplicationTestBuilder().with(credential).build()
         let authenticationStateObserver = CapturingAuthenticationStateObserver()
-        context.application.add(authenticationStateObserver)
+        context.application.add(authenticationStateObserver: authenticationStateObserver)
         
         XCTAssertEqual(expectedUsername, authenticationStateObserver.loggedInUser?.username)
     }
@@ -263,7 +263,7 @@ class WhenLoggingIn: XCTestCase {
                                          tokenExpiryDate: .distantFuture)
         let context = ApplicationTestBuilder().with(credential).build()
         let authenticationStateObserver = CapturingAuthenticationStateObserver()
-        context.application.add(authenticationStateObserver)
+        context.application.add(authenticationStateObserver: authenticationStateObserver)
         
         XCTAssertEqual(expectedRegNo, authenticationStateObserver.loggedInUser?.registrationNumber)
     }

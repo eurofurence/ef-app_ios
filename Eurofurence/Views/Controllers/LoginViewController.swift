@@ -100,12 +100,12 @@ class LoginViewController: UITableViewController, UITextFieldDelegate, LoginObse
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        EurofurenceApplication.shared.add(self)
+        EurofurenceApplication.shared.add(loginObserver: self)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        EurofurenceApplication.shared.remove(self)
+        EurofurenceApplication.shared.remove(loginObserver: self)
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
