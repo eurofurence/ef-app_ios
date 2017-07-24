@@ -19,11 +19,9 @@ class EurofurenceApplication {
                                                                              fcmRegistration: fcmRegistration)
 
         struct DummyPrivateMessagesAPI: PrivateMessagesAPI {
-
-            func loadPrivateMessages(completionHandler: @escaping (APIResponse<APIPrivateMessagesResponse>) -> Void) {
+            func loadPrivateMessages(authorizationToken: String, completionHandler: @escaping (APIResponse<APIPrivateMessagesResponse>) -> Void) {
 
             }
-
         }
 
         return EurofurenceApplication(remoteNotificationsTokenRegistration: tokenRegistration,
@@ -95,8 +93,8 @@ class EurofurenceApplication {
     }
 
     func fetchPrivateMessages() {
-        if authenticationCoordinator.isLoggedIn {
-            privateMessagesAPI.loadPrivateMessages { response in
+        if let token = authenticationCoordinator.userAuthenticationToken {
+            privateMessagesAPI.loadPrivateMessages(authorizationToken: token) { response in
                 switch response {
                 case .success(let response):
                     let messages = response.messages.map(MessageAdapter.init)

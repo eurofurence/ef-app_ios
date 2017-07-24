@@ -192,7 +192,7 @@ class NewsTableViewController: UITableViewController,
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		switch section {
         case 0:
-            return 0
+            return 1
 		case 1:
 			return max(1, announcements.count)
 		case 2:

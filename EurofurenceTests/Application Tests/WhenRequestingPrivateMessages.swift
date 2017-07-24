@@ -105,4 +105,13 @@ class WhenRequestingPrivateMessages: XCTestCase {
         XCTAssertEqual(authorName, observer.capturedMessages?.first?.authorName)
     }
     
+    func testRequestingPrivateMessagesShouldUseTheAuthTokenFromTheLoginCredential() {
+        let authToken = "Some super secret stuff"
+        let credential = LoginCredential(username: "", registrationNumber: 0, authenticationToken: authToken, tokenExpiryDate: .distantFuture)
+        let context = ApplicationTestBuilder().with(credential).build()
+        context.application.fetchPrivateMessages()
+        
+        XCTAssertEqual(authToken, context.privateMessagesAPI.capturedAuthToken)
+    }
+    
 }
