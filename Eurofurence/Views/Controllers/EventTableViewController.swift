@@ -39,11 +39,16 @@ class EventTableViewController: UITableViewController, UISearchBarDelegate, UIVi
 		}
 
         definesPresentationContext = true
+
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120.0
         tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         tableView.estimatedSectionHeaderHeight = 100.0
-        tableView.backgroundColor =  UIColor(red: 35/255.0, green: 36/255.0, blue: 38/255.0, alpha: 1.0)
+
+		let cancelSearchTap = UITapGestureRecognizer(target: tableView, action: #selector(self.tableView.endEditing(_:)))
+		cancelSearchTap.cancelsTouchesInView = false
+		tableView.addGestureRecognizer(cancelSearchTap)
+
         refreshControl?.addTarget(self, action: #selector(EventTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         refreshControl?.backgroundColor = UIColor.clear
 
@@ -238,6 +243,18 @@ class EventTableViewController: UITableViewController, UISearchBarDelegate, UIVi
 		filteredSections = searchResultSections
 		filteredEvents = searchResults
 		tableView.reloadData()
+	}
+
+	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+		searchBar.endEditing(true)
+	}
+
+	func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+		searchBar.setShowsCancelButton(true, animated: true)
+	}
+
+	func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+		searchBar.setShowsCancelButton(false, animated: true)
 	}
 
 	// MARK: - Navigation
