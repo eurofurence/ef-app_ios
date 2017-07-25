@@ -16,8 +16,21 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
                              completionHandler: @escaping (APIResponse<APIPrivateMessagesResponse>) -> Void) {
         var request = POSTRequest(url: "https://app.eurofurence.org/api/v2/Communication/PrivateMessages", body: Data())
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
-        jsonPoster.post(request) { _ in
+        jsonPoster.post(request) { data in
+            guard let data = data else {
+                completionHandler(.failure)
+                return
+            }
 
+            guard let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) else {
+                completionHandler(.failure)
+                return
+            }
+
+            guard let response = jsonObject as? [String : [String : Any]] else {
+                completionHandler(.failure)
+                return
+            }
         }
     }
 
