@@ -11,9 +11,9 @@ import Foundation
 class EurofurenceApplication {
 
     static var shared: EurofurenceApplication = {
-        let jsonPoster = URLSessionJSONPoster()
+        let JSONSession = URLSessionBasedJSONSession()
         let buildConfiguration = PreprocessorBuildConfigurationProviding()
-        let fcmRegistration = EurofurenceFCMDeviceRegistration(jsonPoster: jsonPoster)
+        let fcmRegistration = EurofurenceFCMDeviceRegistration(JSONSession: JSONSession)
         let tokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfiguration,
                                                                              appVersion: BundleAppVersionProviding(),
                                                                              firebaseAdapter: FirebaseMessagingAdapter(),
@@ -22,8 +22,8 @@ class EurofurenceApplication {
         return EurofurenceApplication(remoteNotificationsTokenRegistration: tokenRegistration,
                                       clock: SystemClock(),
                                       loginCredentialStore: KeychainLoginCredentialStore(),
-                                      loginAPI: V2LoginAPI(jsonPoster: jsonPoster),
-                                      privateMessagesAPI: V2PrivateMessagesAPI(jsonPoster: jsonPoster))
+                                      loginAPI: V2LoginAPI(JSONSession: JSONSession),
+                                      privateMessagesAPI: V2PrivateMessagesAPI(JSONSession: JSONSession))
     }()
 
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration

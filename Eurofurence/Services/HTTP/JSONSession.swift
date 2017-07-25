@@ -1,5 +1,5 @@
 //
-//  JSONPoster.swift
+//  JSONSession.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 15/07/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol JSONPoster {
+protocol JSONSession {
 
     func post(_ request: Request, completionHandler: @escaping (Data?) -> Void)
 

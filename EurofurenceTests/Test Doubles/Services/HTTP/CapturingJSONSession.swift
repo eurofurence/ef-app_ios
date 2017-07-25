@@ -1,5 +1,5 @@
 //
-//  CapturingJSONPoster.swift
+//  CapturingJSONSession.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 15/07/2017.
@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import Foundation
 
-class CapturingJSONPoster: JSONPoster {
+class CapturingJSONSession: JSONSession {
 
     private(set) var postedURL: String?
     private(set) var capturedAdditionalHeaders: [String : String]?

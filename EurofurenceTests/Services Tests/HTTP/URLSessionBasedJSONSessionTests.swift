@@ -1,5 +1,5 @@
 //
-//  URLSessionJSONPosterTests.swift
+//  URLSessionBasedJSONSessionTests.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 16/07/2017.
@@ -110,7 +110,7 @@ class TestURLProtocol: URLProtocol {
 
 }
 
-class URLSessionJSONPosterTests: XCTestCase {
+class URLSessionBasedJSONSessionTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -121,7 +121,7 @@ class URLSessionJSONPosterTests: XCTestCase {
                       body: Data = Data(),
                       headers: [String : String] = [:],
                       completionHandler: ((Data?) -> Void)? = nil) {
-        let poster = URLSessionJSONPoster()
+        let poster = URLSessionBasedJSONSession()
         let request = Request(url: url, body: body, headers: headers)
         poster.post(request, completionHandler: { completionHandler?($0) })
     }

@@ -92,10 +92,10 @@
 		78F555991F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F555981F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift */; };
 		78F5559B1F10D65900BDA7D4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F5559A1F10D65900BDA7D4 /* SplashViewController.swift */; };
 		78FE77CC1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77CB1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift */; };
-		78FE77CF1F1A2E8600E9A0BE /* HTTPPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77CE1F1A2E8600E9A0BE /* HTTPPoster.swift */; };
-		78FE77D31F1A2EB000E9A0BE /* CapturingHTTPPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D21F1A2EB000E9A0BE /* CapturingHTTPPoster.swift */; };
-		78FE77D71F1B9FA500E9A0BE /* URLSessionHTTPPosterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D61F1B9FA500E9A0BE /* URLSessionHTTPPosterTests.swift */; };
-		78FE77D91F1BB9E400E9A0BE /* URLSessionHTTPPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D81F1BB9E400E9A0BE /* URLSessionHTTPPoster.swift */; };
+		78FE77CF1F1A2E8600E9A0BE /* JSONSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77CE1F1A2E8600E9A0BE /* JSONSession.swift */; };
+		78FE77D31F1A2EB000E9A0BE /* CapturingJSONSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D21F1A2EB000E9A0BE /* CapturingJSONSession.swift */; };
+		78FE77D71F1B9FA500E9A0BE /* URLSessionBasedJSONSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D61F1B9FA500E9A0BE /* URLSessionBasedJSONSessionTests.swift */; };
+		78FE77D91F1BB9E400E9A0BE /* URLSessionBasedJSONSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D81F1BB9E400E9A0BE /* URLSessionBasedJSONSession.swift */; };
 		9A0525411ECA2AF500578798 /* Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0525401ECA2AF500578798 /* Sync.swift */; };
 		9A0525431ECA2C5A00578798 /* SyncEntityDelta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0525421ECA2C5A00578798 /* SyncEntityDelta.swift */; };
 		9A0525451ECB090700578798 /* WebApiConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0525441ECB090700578798 /* WebApiConnection.swift */; };
@@ -367,10 +367,10 @@
 		78F555981F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceViewControllersSegue.swift; sourceTree = "<group>"; };
 		78F5559A1F10D65900BDA7D4 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		78FE77CB1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceFCMDeviceRegistration.swift; path = Application/Notifications/Firebase/EurofurenceFCMDeviceRegistration.swift; sourceTree = "<group>"; };
-		78FE77CE1F1A2E8600E9A0BE /* HTTPPoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPPoster.swift; path = HTTP/HTTPPoster.swift; sourceTree = "<group>"; };
-		78FE77D21F1A2EB000E9A0BE /* CapturingHTTPPoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingHTTPPoster.swift; path = "Test Doubles/Services/HTTP/CapturingHTTPPoster.swift"; sourceTree = "<group>"; };
-		78FE77D61F1B9FA500E9A0BE /* URLSessionHTTPPosterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLSessionHTTPPosterTests.swift; path = "Services Tests/HTTP/URLSessionHTTPPosterTests.swift"; sourceTree = "<group>"; };
-		78FE77D81F1BB9E400E9A0BE /* URLSessionHTTPPoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLSessionHTTPPoster.swift; path = HTTP/URLSessionHTTPPoster.swift; sourceTree = "<group>"; };
+		78FE77CE1F1A2E8600E9A0BE /* JSONSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONSession.swift; path = HTTP/JSONSession.swift; sourceTree = "<group>"; };
+		78FE77D21F1A2EB000E9A0BE /* CapturingJSONSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingJSONSession.swift; path = "Test Doubles/Services/HTTP/CapturingJSONSession.swift"; sourceTree = "<group>"; };
+		78FE77D61F1B9FA500E9A0BE /* URLSessionBasedJSONSessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLSessionBasedJSONSessionTests.swift; path = "Services Tests/HTTP/URLSessionBasedJSONSessionTests.swift"; sourceTree = "<group>"; };
+		78FE77D81F1BB9E400E9A0BE /* URLSessionBasedJSONSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLSessionBasedJSONSession.swift; path = HTTP/URLSessionBasedJSONSession.swift; sourceTree = "<group>"; };
 		7B35D29A24C86C9717A690E6 /* Pods-Eurofurence.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence.profiling.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence.profiling.xcconfig"; sourceTree = "<group>"; };
 		9A0525401ECA2AF500578798 /* Sync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sync.swift; sourceTree = "<group>"; };
 		9A0525421ECA2C5A00578798 /* SyncEntityDelta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncEntityDelta.swift; sourceTree = "<group>"; };
@@ -938,8 +938,8 @@
 		78FE77CD1F1A2E7900E9A0BE /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
-				78FE77CE1F1A2E8600E9A0BE /* HTTPPoster.swift */,
-				78FE77D81F1BB9E400E9A0BE /* URLSessionHTTPPoster.swift */,
+				78FE77CE1F1A2E8600E9A0BE /* JSONSession.swift */,
+				78FE77D81F1BB9E400E9A0BE /* URLSessionBasedJSONSession.swift */,
 			);
 			name = HTTP;
 			sourceTree = "<group>";
@@ -957,7 +957,7 @@
 		78FE77D11F1A2E9C00E9A0BE /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
-				78FE77D21F1A2EB000E9A0BE /* CapturingHTTPPoster.swift */,
+				78FE77D21F1A2EB000E9A0BE /* CapturingJSONSession.swift */,
 			);
 			name = HTTP;
 			sourceTree = "<group>";
@@ -974,7 +974,7 @@
 		78FE77D51F1B9F9200E9A0BE /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
-				78FE77D61F1B9FA500E9A0BE /* URLSessionHTTPPosterTests.swift */,
+				78FE77D61F1B9FA500E9A0BE /* URLSessionBasedJSONSessionTests.swift */,
 			);
 			name = HTTP;
 			sourceTree = "<group>";
@@ -1811,7 +1811,7 @@
 				781A943C1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift in Sources */,
 				9A861ED61F25564900B75A8C /* StoryboardSplashScreenRouter.swift in Sources */,
 				9ACB006D1F16C23D001CE9D2 /* PrivateMessage.swift in Sources */,
-				78FE77CF1F1A2E8600E9A0BE /* HTTPPoster.swift in Sources */,
+				78FE77CF1F1A2E8600E9A0BE /* JSONSession.swift in Sources */,
 				9A861EBE1F25551400B75A8C /* PresentationStrings.swift in Sources */,
 				9AB64BCD1F018365004E8D91 /* KnowledgeEntryCell.swift in Sources */,
 				7820A6FB1F16BBB2004C0FB5 /* WitnessedSystemPushPermissionsRequest.swift in Sources */,
@@ -1855,7 +1855,7 @@
 				9A0F87E51F1BAD2C00FF294B /* LocalNotificationStore.swift in Sources */,
 				D6F3D2440B74E17B9A008DE0 /* NewsViewController.swift in Sources */,
 				CA281B641F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift in Sources */,
-				78FE77D91F1BB9E400E9A0BE /* URLSessionHTTPPoster.swift in Sources */,
+				78FE77D91F1BB9E400E9A0BE /* URLSessionBasedJSONSession.swift in Sources */,
 				D6F3D3D11CAB2B06852D0EF9 /* DealerTableViewController.swift in Sources */,
 				9A861EA71F2554BE00B75A8C /* TutorialPage.swift in Sources */,
 				9AB83B0C1F0EB47A001823B1 /* MapViewModel.swift in Sources */,
@@ -1889,7 +1889,7 @@
 				CA30EAC61F2673010053DBF6 /* StubAPIPrivateMessage.swift in Sources */,
 				CA30EAA61F2129C60053DBF6 /* CapturingLoginAPI.swift in Sources */,
 				78D7EEBF1F196B77005372A9 /* StubBuildConfigurationProviding.swift in Sources */,
-				78FE77D31F1A2EB000E9A0BE /* CapturingHTTPPoster.swift in Sources */,
+				78FE77D31F1A2EB000E9A0BE /* CapturingJSONSession.swift in Sources */,
 				78C86D541F1228B0003A20E6 /* TutorialViewControllerTests.swift in Sources */,
 				78455B3A1F116A7E005BE2D7 /* WhenTheAppLaunches.swift in Sources */,
 				781A94421F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */,
@@ -1938,7 +1938,7 @@
 				78D7EEB51F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift in Sources */,
 				78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */,
 				7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */,
-				78FE77D71F1B9FA500E9A0BE /* URLSessionHTTPPosterTests.swift in Sources */,
+				78FE77D71F1B9FA500E9A0BE /* URLSessionBasedJSONSessionTests.swift in Sources */,
 				7820A6ED1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift in Sources */,
 				78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */,
 				781A943A1F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift in Sources */,

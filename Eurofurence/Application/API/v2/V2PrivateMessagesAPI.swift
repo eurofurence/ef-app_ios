@@ -10,13 +10,13 @@ import Foundation
 
 struct V2PrivateMessagesAPI: PrivateMessagesAPI {
 
-    var jsonPoster: JSONPoster
+    var JSONSession: JSONSession
 
     func loadPrivateMessages(authorizationToken: String,
                              completionHandler: @escaping (APIResponse<APIPrivateMessagesResponse>) -> Void) {
         var request = Request(url: "https://app.eurofurence.org/api/v2/Communication/PrivateMessages", body: Data())
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
-        jsonPoster.post(request) { data in
+        JSONSession.post(request) { data in
             guard let data = data,
                   let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
                   let response = jsonObject as? [[String : Any]],

@@ -10,10 +10,10 @@ import Foundation
 
 struct EurofurenceFCMDeviceRegistration: FCMDeviceRegistration {
 
-    private var jsonPoster: JSONPoster
+    private var JSONSession: JSONSession
 
-    init(jsonPoster: JSONPoster) {
-        self.jsonPoster = jsonPoster
+    init(JSONSession: JSONSession) {
+        self.JSONSession = JSONSession
     }
 
     func registerFCM(_ fcm: String, topics: [FirebaseTopic], authenticationToken: String?) {
@@ -28,7 +28,7 @@ struct EurofurenceFCMDeviceRegistration: FCMDeviceRegistration {
             request.headers = ["Authorization": "Bearer \(token)"]
         }
 
-        jsonPoster.post(request, completionHandler: { _ in })
+        JSONSession.post(request, completionHandler: { _ in })
     }
 
 }
