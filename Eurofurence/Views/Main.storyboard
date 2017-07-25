@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rkh-Ff-Equ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rkh-Ff-Equ">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -749,43 +749,12 @@
                         <outlet property="lastSyncLabel" destination="Sb6-So-bcp" id="V3e-U2-JjT"/>
                         <segue destination="TBc-XK-CZJ" kind="show" identifier="EventDetailSegue" id="au0-CR-I6S"/>
                         <segue destination="Iix-4g-IXD" kind="show" identifier="AnnouncementDetailSegue" id="F19-Ua-bvP"/>
-                        <segue destination="nHK-9O-nzL" kind="show" identifier="showMessages" id="Fdj-WP-lQw"/>
+                        <segue destination="bVV-nZ-tcp" kind="show" identifier="showMessages" id="raY-zX-Xwr"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qwK-rU-fqC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1676.25" y="-5729.5774647887329"/>
-        </scene>
-        <!--Messages-->
-        <scene sceneID="Mv7-pV-R8u">
-            <objects>
-                <tableViewController title="Messages" id="nHK-9O-nzL" customClass="MessagesViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="YWn-0Z-X0b">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ryf-A3-OoH">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ryf-A3-OoH" id="j5t-m1-fnt">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="nHK-9O-nzL" id="PW8-Ca-Qww"/>
-                            <outlet property="delegate" destination="nHK-9O-nzL" id="Z4f-Y9-Gm1"/>
-                        </connections>
-                    </tableView>
-                    <connections>
-                        <segue destination="02a-fK-uN9" kind="presentation" identifier="showTutorial" modalPresentationStyle="formSheet" id="Q00-ZB-GX8"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LCu-g2-8Yr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2736" y="-6453"/>
         </scene>
         <!--Login-->
         <scene sceneID="3qL-F0-1vJ">
@@ -955,6 +924,86 @@ If you do not have access to them, come to our ConOps or Security office. They c
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dob-Os-QEM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4725" y="-6453"/>
+        </scene>
+        <!--Messages View Controller-->
+        <scene sceneID="TK4-vK-QM8">
+            <objects>
+                <viewController id="bVV-nZ-tcp" customClass="MessagesViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bKQ-o5-W0n"/>
+                        <viewControllerLayoutGuide type="bottom" id="ml4-bj-R8G"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Dm-5i-phc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ntY-Po-g3u">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="68" id="U3U-cG-f9E" customClass="MessageTableViewCell" customModule="Eurofurence" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="68"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U3U-cG-f9E" id="fz9-kc-e5r">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="67.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiw-mk-KAm">
+                                                    <rect key="frame" x="8" y="8" width="258.5" height="21"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWA-Ka-04e">
+                                                    <rect key="frame" x="274.5" y="8" width="37.5" height="18"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Xy-cF-YC1">
+                                                    <rect key="frame" x="8" y="37" width="304" height="22.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6Xy-cF-YC1" firstAttribute="top" secondItem="oiw-mk-KAm" secondAttribute="bottom" constant="8" id="4Z5-nT-lyk"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="6Xy-cF-YC1" secondAttribute="trailing" id="B0n-nW-quu"/>
+                                                <constraint firstItem="BWA-Ka-04e" firstAttribute="trailing" secondItem="fz9-kc-e5r" secondAttribute="trailingMargin" id="Eg0-8C-Rdb"/>
+                                                <constraint firstItem="BWA-Ka-04e" firstAttribute="leading" secondItem="oiw-mk-KAm" secondAttribute="trailing" constant="8" id="MWc-t0-c0B"/>
+                                                <constraint firstItem="BWA-Ka-04e" firstAttribute="top" secondItem="fz9-kc-e5r" secondAttribute="topMargin" id="RHx-h9-Lys"/>
+                                                <constraint firstItem="oiw-mk-KAm" firstAttribute="leading" secondItem="fz9-kc-e5r" secondAttribute="leadingMargin" id="UH3-FH-LCz"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="6Xy-cF-YC1" secondAttribute="bottom" id="slk-kJ-pu8"/>
+                                                <constraint firstItem="oiw-mk-KAm" firstAttribute="top" secondItem="fz9-kc-e5r" secondAttribute="topMargin" id="wwb-EW-60g"/>
+                                                <constraint firstItem="6Xy-cF-YC1" firstAttribute="leading" secondItem="oiw-mk-KAm" secondAttribute="leading" id="y9u-Qa-jl1"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="messageAuthorLabel" destination="oiw-mk-KAm" id="vVa-1x-SDv"/>
+                                            <outlet property="messageReceivedDateLabel" destination="BWA-Ka-04e" id="eoG-SE-rmY"/>
+                                            <outlet property="messageSynopsisLabel" destination="6Xy-cF-YC1" id="Zhb-cb-UQj"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ntY-Po-g3u" secondAttribute="bottom" id="2Nu-S0-7kA"/>
+                            <constraint firstAttribute="trailing" secondItem="ntY-Po-g3u" secondAttribute="trailing" id="7rt-gx-plj"/>
+                            <constraint firstItem="ntY-Po-g3u" firstAttribute="top" secondItem="0Dm-5i-phc" secondAttribute="top" id="p0T-fW-pQ1"/>
+                            <constraint firstItem="ntY-Po-g3u" firstAttribute="leading" secondItem="0Dm-5i-phc" secondAttribute="leading" id="pSZ-DZ-O7Q"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="ntY-Po-g3u" id="CKh-0s-MmE"/>
+                        <segue destination="02a-fK-uN9" kind="presentation" identifier="showTutorial" modalPresentationStyle="formSheet" id="Bcf-IV-XRV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8ZE-Cg-GGM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2735.625" y="-6453.1690140845067"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6vc-MM-zjA">
@@ -2331,9 +2380,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</stri
         <image name="ef-bg-news" width="360" height="509"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1uP-gn-3kN"/>
-        <segue reference="ycx-tm-4B6"/>
         <segue reference="au0-CR-I6S"/>
         <segue reference="TRw-ie-exZ"/>
+        <segue reference="1uP-gn-3kN"/>
+        <segue reference="ycx-tm-4B6"/>
     </inferredMetricsTieBreakers>
 </document>

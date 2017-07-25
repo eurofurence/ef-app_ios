@@ -14,13 +14,46 @@ protocol MessagesViewControllerDelegate: class {
 
 }
 
-class MessagesViewController: UITableViewController,
+class MessagesTableViewDataSource: NSObject, UITableViewDataSource {
+
+    private var messages: [Message] = []
+
+    func updateWith(messages: [Message]) {
+        self.messages = messages
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell") as? MessageTableViewCell else {
+            fatalError("Message cell not wired up in Storyboard")
+        }
+
+        let message = messages[indexPath.row]
+        cell.show(message: message)
+        return cell
+    }
+
+}
+
+class MessagesViewController: UIViewController,
                               AuthenticationStateObserver,
-                              LoginViewControllerDelegate {
+                              LoginViewControllerDelegate,
+                              PrivateMessagesObserver {
+
+    // MARK: IBOutlets
+
+    @IBOutlet weak var tableView: UITableView!
 
     // MARK: Properties
 
     weak var messagesDelegate: MessagesViewControllerDelegate?
+
+    private let app = EurofurenceApplication.shared
+    private lazy var refreshControl = UIRefreshControl()
+    private lazy var dataSource = MessagesTableViewDataSource()
     private var isLoggedIn = false
     private var didShowLogin = false
 
@@ -29,7 +62,14 @@ class MessagesViewController: UITableViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        EurofurenceApplication.shared.add(authenticationStateObserver: self)
+        refreshControl.addTarget(self,
+                                 action: #selector(instigateMessagesReload),
+                                 for: .valueChanged)
+
+        tableView.addSubview(refreshControl)
+        tableView.dataSource = dataSource
+        app.add(authenticationStateObserver: self)
+        app.add(privateMessagesObserver: self)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -38,6 +78,8 @@ class MessagesViewController: UITableViewController,
         if !(isLoggedIn || didShowLogin) {
             didShowLogin = true
             performSegue(withIdentifier: "showTutorial", sender: self)
+        } else {
+            instigateMessagesReload()
         }
     }
 
@@ -60,7 +102,7 @@ class MessagesViewController: UITableViewController,
 
     func loginViewControllerDidLoginSuccessfully(_ loginController: LoginViewController) {
         dismiss(animated: true) {
-            // TODO: This is where we'd show messages
+            self.instigateMessagesReload()
         }
     }
 
@@ -68,6 +110,28 @@ class MessagesViewController: UITableViewController,
         dismiss(animated: true) {
             self.messagesDelegate?.messagesViewControllerDidRequestDismissal(self)
         }
+    }
+
+    // MARK: PrivateMessagesObserver
+
+    func privateMessagesAvailable(_ privateMessages: [Message]) {
+        refreshControl.endRefreshing()
+        dataSource.updateWith(messages: privateMessages)
+        tableView.reloadData()
+    }
+
+    func failedToLoadPrivateMessages() {
+        refreshControl.endRefreshing()
+    }
+
+    func userNotAuthenticatedForPrivateMessages() {
+
+    }
+
+    // MARK: Functions
+
+    @objc func instigateMessagesReload() {
+        app.fetchPrivateMessages()
     }
 
 }

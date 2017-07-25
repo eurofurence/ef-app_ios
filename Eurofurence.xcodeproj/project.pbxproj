@@ -213,6 +213,7 @@
 		CA30EACA1F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */; };
 		CA30EACC1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */; };
 		CA30EACE1F27D1430053DBF6 /* V2APIPrivateMessagesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EACD1F27D1430053DBF6 /* V2APIPrivateMessagesResponse.swift */; };
+		CA30EAD01F27D8620053DBF6 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */; };
 		CA804DD21F20CE8F00E07A4A /* V2LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */; };
 		CA804DD41F20CF4300E07A4A /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD31F20CF4300E07A4A /* APIResponse.swift */; };
 		CA804DD61F20D10E00E07A4A /* APILoginParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD51F20D10E00E07A4A /* APILoginParameters.swift */; };
@@ -495,6 +496,7 @@
 		CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2PrivateMessagesAPITests.swift; path = "Application Tests/API/v2/V2PrivateMessagesAPITests.swift"; sourceTree = "<group>"; };
 		CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2PrivateMessagesAPI.swift; path = Application/API/v2/V2PrivateMessagesAPI.swift; sourceTree = "<group>"; };
 		CA30EACD1F27D1430053DBF6 /* V2APIPrivateMessagesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2APIPrivateMessagesResponse.swift; path = Application/API/v2/V2APIPrivateMessagesResponse.swift; sourceTree = "<group>"; };
+		CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
 		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/APIResponse.swift; sourceTree = "<group>"; };
 		CA804DD51F20D10E00E07A4A /* APILoginParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APILoginParameters.swift; path = Application/API/APILoginParameters.swift; sourceTree = "<group>"; };
@@ -1204,6 +1206,7 @@
 				CA30EAAF1F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift */,
 				9A861E981F24B0B800B75A8C /* NewsSectionHeader.swift */,
 				9A861E9A1F24CEB700B75A8C /* NewsSectionHeader.xib */,
+				CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1869,6 +1872,7 @@
 				78567B471F10D1C400EBA31D /* DataStoreLoadController.swift in Sources */,
 				D6F3DF2779D7CE09AA5507F9 /* NewsTableViewController.swift in Sources */,
 				9A861EA21F2554AB00B75A8C /* ShowInitiateDownloadTutorialPage.swift in Sources */,
+				CA30EAD01F27D8620053DBF6 /* MessageTableViewCell.swift in Sources */,
 				D6F3D0434C71907BD410190E /* ImageServiceProtocol.swift in Sources */,
 				D6F3D749FF814981E076850E /* ImageService.swift in Sources */,
 				78F5559B1F10D65900BDA7D4 /* SplashViewController.swift in Sources */,
