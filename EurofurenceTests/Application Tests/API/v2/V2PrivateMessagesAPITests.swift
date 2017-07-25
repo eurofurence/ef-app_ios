@@ -63,7 +63,7 @@ class V2PrivateMessagesAPITests: XCTestCase {
         "]"
     }
     
-    func testThePrivateMessagesEndpointShouldReceievePOSTRequest() {
+    func testThePrivateMessagesEndpointShouldReceieveRequest() {
         let expectedURL = "https://app.eurofurence.org/api/v2/Communication/PrivateMessages"
         let jsonPoster = CapturingJSONPoster()
         let api = V2PrivateMessagesAPI(jsonPoster: jsonPoster)

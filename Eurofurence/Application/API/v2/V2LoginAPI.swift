@@ -34,7 +34,7 @@ class V2LoginAPI: LoginAPI {
     }
 
     private func performLogin(body: Data, completionHandler: @escaping LoginResponseHandler) {
-        let request = POSTRequest(url: "https://app.eurofurence.org/api/v2/Tokens/RegSys", body: body)
+        let request = Request(url: "https://app.eurofurence.org/api/v2/Tokens/RegSys", body: body)
         jsonPoster.post(request) { data in
             guard let responseData = data,
                 let json = try? JSONSerialization.jsonObject(with: responseData, options: .allowFragments),

@@ -11,7 +11,7 @@ import XCTest
 
 class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
     
-    func testRegisteringTheFCMTokenSubmitsPOSTRequestToFCMRegistrationURL() {
+    func testRegisteringTheFCMTokenSubmitsRequestToFCMRegistrationURL() {
         let capturingJSONPoster = CapturingJSONPoster()
         let registration = EurofurenceFCMDeviceRegistration(jsonPoster: capturingJSONPoster)
         registration.registerFCM("", topics: [], authenticationToken: "")
@@ -20,7 +20,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
         XCTAssertEqual(expectedURL, capturingJSONPoster.postedURL)
     }
 
-    func testRegisteringTheFCMTokenShouldNotSubmitPOSTRequestUntilRegistrationActuallyOccurs() {
+    func testRegisteringTheFCMTokenShouldNotSubmitRequestUntilRegistrationActuallyOccurs() {
         let capturingJSONPoster = CapturingJSONPoster()
         _ = EurofurenceFCMDeviceRegistration(jsonPoster: capturingJSONPoster)
 

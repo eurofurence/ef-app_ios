@@ -14,7 +14,7 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
 
     func loadPrivateMessages(authorizationToken: String,
                              completionHandler: @escaping (APIResponse<APIPrivateMessagesResponse>) -> Void) {
-        var request = POSTRequest(url: "https://app.eurofurence.org/api/v2/Communication/PrivateMessages", body: Data())
+        var request = Request(url: "https://app.eurofurence.org/api/v2/Communication/PrivateMessages", body: Data())
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
         jsonPoster.post(request) { data in
             guard let data = data,

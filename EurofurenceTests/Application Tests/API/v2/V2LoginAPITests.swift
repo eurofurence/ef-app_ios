@@ -83,12 +83,12 @@ class V2LoginAPITests: XCTestCase {
         api.performLogin(arguments: parameters, completionHandler: completionHandler)
     }
     
-    func testTheLoginEndpointShouldReceievePOSTRequest() {
+    func testTheLoginEndpointShouldReceieveRequest() {
         performLogin(makeLoginParameters())
         XCTAssertEqual("https://app.eurofurence.org/api/v2/Tokens/RegSys", jsonPoster.postedURL)
     }
     
-    func testTheLoginEndpointShouldNotReceievePOSTRequestUntilCallingLogin() {
+    func testTheLoginEndpointShouldNotReceieveRequestUntilCallingLogin() {
         XCTAssertNil(jsonPoster.postedURL)
     }
     

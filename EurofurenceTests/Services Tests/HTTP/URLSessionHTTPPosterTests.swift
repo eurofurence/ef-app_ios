@@ -122,11 +122,11 @@ class URLSessionJSONPosterTests: XCTestCase {
                       headers: [String : String] = [:],
                       completionHandler: ((Data?) -> Void)? = nil) {
         let poster = URLSessionJSONPoster()
-        let request = POSTRequest(url: url, body: body, headers: headers)
+        let request = Request(url: url, body: body, headers: headers)
         poster.post(request, completionHandler: { completionHandler?($0) })
     }
     
-    func testPostingURLShouldPostRequestWithURL() {
+    func testPostingURLShouldRequestWithURL() {
         let expectedURL = "https://www.somewhere.co.uk"
         JournallingURLRequestLogger.shared.makeExpectation(self, expectingURL: expectedURL)
         post(expectedURL)
@@ -134,7 +134,7 @@ class URLSessionJSONPosterTests: XCTestCase {
         waitForExpectations(timeout: 0.1)
     }
 
-    func testPostingURLShouldPostRequestWithPOSTHTTPMethod() {
+    func testPostingURLShouldRequestWithPOSTHTTPMethod() {
         let expectedURL = "https://www.somewhere.co.uk"
         JournallingURLRequestLogger.shared.makeExpectation(self, expectingURL: expectedURL) { request in
             return request.httpMethod == "POST"

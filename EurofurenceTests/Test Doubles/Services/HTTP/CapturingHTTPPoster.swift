@@ -15,7 +15,7 @@ class CapturingJSONPoster: JSONPoster {
     private(set) var capturedAdditionalHeaders: [String : String]?
     private var postedData: Data?
     private var completionHandler: ((Data?) -> Void)?
-    func post(_ request: POSTRequest, completionHandler: @escaping (Data?) -> Void) {
+    func post(_ request: Request, completionHandler: @escaping (Data?) -> Void) {
         postedURL = request.url
         postedData = request.body
         self.completionHandler = completionHandler

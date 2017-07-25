@@ -12,7 +12,7 @@ struct URLSessionJSONPoster: JSONPoster {
 
     var session: URLSession = .shared
 
-    func post(_ request: POSTRequest, completionHandler: @escaping (Data?) -> Void) {
+    func post(_ request: Request, completionHandler: @escaping (Data?) -> Void) {
         guard let actualURL = URL(string: request.url) else { return }
 
         var urlRequest = URLRequest(url: actualURL)

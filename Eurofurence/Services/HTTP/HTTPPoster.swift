@@ -10,11 +10,11 @@ import Foundation
 
 protocol JSONPoster {
 
-    func post(_ request: POSTRequest, completionHandler: @escaping (Data?) -> Void)
+    func post(_ request: Request, completionHandler: @escaping (Data?) -> Void)
 
 }
 
-struct POSTRequest {
+struct Request {
 
     var url: String
     var body: Data
