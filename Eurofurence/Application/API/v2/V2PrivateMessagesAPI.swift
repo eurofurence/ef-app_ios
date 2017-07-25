@@ -10,12 +10,6 @@ import Foundation
 
 struct V2PrivateMessagesAPI: PrivateMessagesAPI {
 
-    struct JSONAPIPrivateMessagesResponse: APIPrivateMessagesResponse {
-
-        var messages: [APIPrivateMessage] = []
-
-    }
-
     var jsonPoster: JSONPoster
 
     func loadPrivateMessages(authorizationToken: String,
@@ -23,78 +17,16 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
         var request = POSTRequest(url: "https://app.eurofurence.org/api/v2/Communication/PrivateMessages", body: Data())
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
         jsonPoster.post(request) { data in
-            guard let data = data else {
+            guard let data = data,
+                  let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
+                  let response = jsonObject as? [[String : Any]],
+                  let apiResponse = V2APIPrivateMessagesResponse(json: response) else {
                 completionHandler(.failure)
                 return
             }
 
-            guard let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) else {
-                completionHandler(.failure)
-                return
-            }
-
-            guard let response = jsonObject as? [[String : Any]] else {
-                completionHandler(.failure)
-                return
-            }
-
-            var messages = [V2APIPrivateMessage]()
-            for jsonMessage in response {
-                if let message = V2APIPrivateMessage(jsonDictionary: jsonMessage) {
-                    messages.append(message)
-                } else {
-                    completionHandler(.failure)
-                    return
-                }
-            }
-
-            completionHandler(.success(JSONAPIPrivateMessagesResponse(messages: messages)))
+            completionHandler(.success(apiResponse))
         }
-    }
-
-}
-
-struct V2APIPrivateMessage: APIPrivateMessage {
-
-    static let dateFormatter = Iso8601DateFormatter()
-
-    var id: String = ""
-    var authorName: String = ""
-    var subject: String = ""
-    var message: String = ""
-    var recipientUid: String = ""
-    var lastChangeDateTime: Date = Date()
-    var createdDateTime: Date = Date()
-    var receievedDateTime: Date = Date()
-    var readDateTime: Date = Date()
-
-    init?(jsonDictionary: [String : Any]) {
-        let dateFormatter = V2APIPrivateMessage.dateFormatter
-        guard let id = jsonDictionary["Id"] as? String,
-              let authorName = jsonDictionary["AuthorName"] as? String,
-              let subject = jsonDictionary["Subject"] as? String,
-              let message = jsonDictionary["Message"] as? String,
-              let recipientUid = jsonDictionary["RecipientUid"] as? String,
-              let lastChangeDateTimeString = jsonDictionary["LastChangeDateTimeUtc"] as? String,
-              let createdDateTimeString = jsonDictionary["CreatedDateTimeUtc"] as? String,
-              let receievedDateTimeString = jsonDictionary["ReceivedDateTimeUtc"] as? String,
-              let readDateTimeString = jsonDictionary["ReadDateTimeUtc"] as? String,
-              let lastChangeDateTime = dateFormatter.date(from: lastChangeDateTimeString),
-              let createdDateTime = dateFormatter.date(from: createdDateTimeString),
-              let receievedDateTime = dateFormatter.date(from: receievedDateTimeString),
-              let readDateTime = dateFormatter.date(from: readDateTimeString) else {
-            return nil
-        }
-
-        self.id = id
-        self.authorName = authorName
-        self.subject = subject
-        self.message = message
-        self.recipientUid = recipientUid
-        self.lastChangeDateTime = lastChangeDateTime
-        self.createdDateTime = createdDateTime
-        self.receievedDateTime = receievedDateTime
-        self.readDateTime = readDateTime
     }
 
 }
