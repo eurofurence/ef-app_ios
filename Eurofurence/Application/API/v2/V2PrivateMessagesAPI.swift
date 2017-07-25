@@ -64,15 +64,25 @@ struct V2APIPrivateMessage: APIPrivateMessage {
     var message: String = ""
     var recipientUid: String = ""
     var lastChangeDateTime: Date = Date()
+    var createdDateTime: Date = Date()
+    var receievedDateTime: Date = Date()
+    var readDateTime: Date = Date()
 
     init?(jsonDictionary: [String : Any]) {
+        let dateFormatter = V2APIPrivateMessage.dateFormatter
         guard let id = jsonDictionary["Id"] as? String,
               let authorName = jsonDictionary["AuthorName"] as? String,
               let subject = jsonDictionary["Subject"] as? String,
               let message = jsonDictionary["Message"] as? String,
               let recipientUid = jsonDictionary["RecipientUid"] as? String,
               let lastChangeDateTimeString = jsonDictionary["LastChangeDateTimeUtc"] as? String,
-              let lastChangeDateTime = V2APIPrivateMessage.dateFormatter.date(from: lastChangeDateTimeString) else {
+              let createdDateTimeString = jsonDictionary["CreatedDateTimeUtc"] as? String,
+              let receievedDateTimeString = jsonDictionary["ReceivedDateTimeUtc"] as? String,
+              let readDateTimeString = jsonDictionary["ReadDateTimeUtc"] as? String,
+              let lastChangeDateTime = dateFormatter.date(from: lastChangeDateTimeString),
+              let createdDateTime = dateFormatter.date(from: createdDateTimeString),
+              let receievedDateTime = dateFormatter.date(from: receievedDateTimeString),
+              let readDateTime = dateFormatter.date(from: readDateTimeString) else {
             return nil
         }
 
@@ -82,6 +92,9 @@ struct V2APIPrivateMessage: APIPrivateMessage {
         self.message = message
         self.recipientUid = recipientUid
         self.lastChangeDateTime = lastChangeDateTime
+        self.createdDateTime = createdDateTime
+        self.receievedDateTime = receievedDateTime
+        self.readDateTime = readDateTime
     }
 
 }

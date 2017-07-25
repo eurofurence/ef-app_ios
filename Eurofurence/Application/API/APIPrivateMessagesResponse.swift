@@ -22,5 +22,8 @@ protocol APIPrivateMessage {
     var message: String { get }
     var recipientUid: String { get }
     var lastChangeDateTime: Date { get }
+    var createdDateTime: Date { get }
+    var receievedDateTime: Date { get }
+    var readDateTime: Date { get }
 
 }

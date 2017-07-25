@@ -44,15 +44,18 @@ class V2PrivateMessagesAPITests: XCTestCase {
                                         subject: String = "Subject",
                                         message: String = "Message",
                                         recipientUid: String = "Recipient",
-                                        lastChangeDateTime: String = "2017-07-25T18:45:59.050Z") -> String {
+                                        lastChangeDateTime: String = "2017-07-25T18:45:59.050Z",
+                                        createdDateTime: String = "2017-07-25T18:45:59.050Z",
+                                        receievedDateTime: String = "2017-07-25T18:45:59.050Z",
+                                        readDateTime: String = "2017-07-25T18:45:59.050Z") -> String {
         return "[" +
         "{" +
             "\"LastChangeDateTimeUtc\": \"\(lastChangeDateTime)\"," +
             "\"Id\": \"\(id)\"," +
             "\"RecipientUid\": \"\(recipientUid)\"," +
-            "\"CreatedDateTimeUtc\": \"2017-07-20T18:01:08.267Z\"," +
-            "\"ReceivedDateTimeUtc\": \"2017-07-20T18:01:08.267Z\"," +
-            "\"ReadDateTimeUtc\": \"2017-07-20T18:01:08.267Z\"," +
+            "\"CreatedDateTimeUtc\": \"\(createdDateTime)\"," +
+            "\"ReceivedDateTimeUtc\": \"\(receievedDateTime)\"," +
+            "\"ReadDateTimeUtc\": \"\(readDateTime)\"," +
             "\"AuthorName\": \"\(authorName)\"," +
             "\"Subject\": \"\(subject)\"," +
             "\"Message\": \"\(message)\"" +
@@ -145,6 +148,69 @@ class V2PrivateMessagesAPITests: XCTestCase {
         
         var actualComponents: DateComponents?
         if let receievedDate = observer.capturedMessages?.first?.lastChangeDateTime {
+            let desiredComponents: [Calendar.Component] = [.year, .month, .day, .hour, .minute, .second]
+            var calendar = Calendar(identifier: .gregorian)
+            calendar.timeZone = TimeZone(abbreviation: "GMT")!
+            actualComponents = calendar.dateComponents(Set(desiredComponents), from: receievedDate)
+        }
+        
+        XCTAssertEqual(expectedComponents, actualComponents)
+    }
+    
+    func testSuccessfulResponseWithUnsupportedCreatedDateTimeValueShouldProvideFailureResponse() {
+        let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(createdDateTime: "Not a date"))
+        XCTAssertTrue(observer.wasNotifiedResponseFailed)
+    }
+    
+    func testSuccessfulResponseWithSupportedCreatedDateTimeValueShouldProvideCreatedDateTime() {
+        let dateString =  "2017-07-25T18:45:59.050Z"
+        let expectedComponents = DateComponents(year: 2017, month: 7, day: 25, hour: 18, minute: 45, second: 59)
+        let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(createdDateTime: dateString))
+        
+        var actualComponents: DateComponents?
+        if let receievedDate = observer.capturedMessages?.first?.createdDateTime {
+            let desiredComponents: [Calendar.Component] = [.year, .month, .day, .hour, .minute, .second]
+            var calendar = Calendar(identifier: .gregorian)
+            calendar.timeZone = TimeZone(abbreviation: "GMT")!
+            actualComponents = calendar.dateComponents(Set(desiredComponents), from: receievedDate)
+        }
+        
+        XCTAssertEqual(expectedComponents, actualComponents)
+    }
+    
+    func testSuccessfulResponseWithUnsupportedReceievedDateTimeValueShouldProvideFailureResponse() {
+        let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(receievedDateTime: "Not a date"))
+        XCTAssertTrue(observer.wasNotifiedResponseFailed)
+    }
+    
+    func testSuccessfulResponseWithSupportedReceievedDateTimeValueShouldProvideReceievedDateTime() {
+        let dateString =  "2017-07-25T18:45:59.050Z"
+        let expectedComponents = DateComponents(year: 2017, month: 7, day: 25, hour: 18, minute: 45, second: 59)
+        let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(receievedDateTime: dateString))
+        
+        var actualComponents: DateComponents?
+        if let receievedDate = observer.capturedMessages?.first?.receievedDateTime {
+            let desiredComponents: [Calendar.Component] = [.year, .month, .day, .hour, .minute, .second]
+            var calendar = Calendar(identifier: .gregorian)
+            calendar.timeZone = TimeZone(abbreviation: "GMT")!
+            actualComponents = calendar.dateComponents(Set(desiredComponents), from: receievedDate)
+        }
+        
+        XCTAssertEqual(expectedComponents, actualComponents)
+    }
+    
+    func testSuccessfulResponseWithUnsupportedReadDateTimeValueShouldProvideFailureResponse() {
+        let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(readDateTime: "Not a date"))
+        XCTAssertTrue(observer.wasNotifiedResponseFailed)
+    }
+    
+    func testSuccessfulResponseWithSupportedReadDateTimeValueShouldProvideReadDateTime() {
+        let dateString =  "2017-07-25T18:45:59.050Z"
+        let expectedComponents = DateComponents(year: 2017, month: 7, day: 25, hour: 18, minute: 45, second: 59)
+        let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(receievedDateTime: dateString))
+        
+        var actualComponents: DateComponents?
+        if let receievedDate = observer.capturedMessages?.first?.readDateTime {
             let desiredComponents: [Calendar.Component] = [.year, .month, .day, .hour, .minute, .second]
             var calendar = Calendar(identifier: .gregorian)
             calendar.timeZone = TimeZone(abbreviation: "GMT")!
