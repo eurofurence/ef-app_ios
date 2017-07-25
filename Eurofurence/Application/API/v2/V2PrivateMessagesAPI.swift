@@ -38,7 +38,16 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
                 return
             }
 
-            let messages = response.flatMap(V2APIPrivateMessage.init)
+            var messages = [V2APIPrivateMessage]()
+            for jsonMessage in response {
+                if let message = V2APIPrivateMessage(jsonDictionary: jsonMessage) {
+                    messages.append(message)
+                } else {
+                    completionHandler(.failure)
+                    return
+                }
+            }
+
             completionHandler(.success(JSONAPIPrivateMessagesResponse(messages: messages)))
         }
     }
@@ -47,18 +56,23 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
 
 struct V2APIPrivateMessage: APIPrivateMessage {
 
+    static let dateFormatter = Iso8601DateFormatter()
+
     var id: String = ""
     var authorName: String = ""
     var subject: String = ""
     var message: String = ""
     var recipientUid: String = ""
+    var lastChangeDateTime: Date = Date()
 
     init?(jsonDictionary: [String : Any]) {
         guard let id = jsonDictionary["Id"] as? String,
               let authorName = jsonDictionary["AuthorName"] as? String,
               let subject = jsonDictionary["Subject"] as? String,
               let message = jsonDictionary["Message"] as? String,
-              let recipientUid = jsonDictionary["RecipientUid"] as? String else {
+              let recipientUid = jsonDictionary["RecipientUid"] as? String,
+              let lastChangeDateTimeString = jsonDictionary["LastChangeDateTimeUtc"] as? String,
+              let lastChangeDateTime = V2APIPrivateMessage.dateFormatter.date(from: lastChangeDateTimeString) else {
             return nil
         }
 
@@ -67,6 +81,7 @@ struct V2APIPrivateMessage: APIPrivateMessage {
         self.subject = subject
         self.message = message
         self.recipientUid = recipientUid
+        self.lastChangeDateTime = lastChangeDateTime
     }
 
 }

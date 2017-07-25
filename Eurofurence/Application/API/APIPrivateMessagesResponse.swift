@@ -21,5 +21,6 @@ protocol APIPrivateMessage {
     var authorName: String { get }
     var message: String { get }
     var recipientUid: String { get }
+    var lastChangeDateTime: Date { get }
 
 }

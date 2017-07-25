@@ -43,10 +43,11 @@ class V2PrivateMessagesAPITests: XCTestCase {
                                         authorName: String = "Author",
                                         subject: String = "Subject",
                                         message: String = "Message",
-                                        recipientUid: String = "Recipient") -> String {
+                                        recipientUid: String = "Recipient",
+                                        lastChangeDateTime: String = "2017-07-25T18:45:59.050Z") -> String {
         return "[" +
         "{" +
-            "\"LastChangeDateTimeUtc\": \"2017-07-20T18:01:08.267Z\"," +
+            "\"LastChangeDateTimeUtc\": \"\(lastChangeDateTime)\"," +
             "\"Id\": \"\(id)\"," +
             "\"RecipientUid\": \"\(recipientUid)\"," +
             "\"CreatedDateTimeUtc\": \"2017-07-20T18:01:08.267Z\"," +
@@ -130,6 +131,27 @@ class V2PrivateMessagesAPITests: XCTestCase {
         let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(recipientUid: recipientUid))
         
         XCTAssertEqual(recipientUid, observer.capturedMessages?.first?.recipientUid)
+    }
+    
+    func testSuccessfulResponseWithUnsupportedLastChangeDateTimeValueShouldProvideFailureResponse() {
+        let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(lastChangeDateTime: "Not a date"))
+        XCTAssertTrue(observer.wasNotifiedResponseFailed)
+    }
+    
+    func testSuccessfulResponseWithSupportedLastChangeDateTimeValueShouldProvideLastChangeDateTime() {
+        let dateString =  "2017-07-25T18:45:59.050Z"
+        let expectedComponents = DateComponents(year: 2017, month: 7, day: 25, hour: 18, minute: 45, second: 59)
+        let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(lastChangeDateTime: dateString))
+        
+        var actualComponents: DateComponents?
+        if let receievedDate = observer.capturedMessages?.first?.lastChangeDateTime {
+            let desiredComponents: [Calendar.Component] = [.year, .month, .day, .hour, .minute, .second]
+            var calendar = Calendar(identifier: .gregorian)
+            calendar.timeZone = TimeZone(abbreviation: "GMT")!
+            actualComponents = calendar.dateComponents(Set(desiredComponents), from: receievedDate)
+        }
+        
+        XCTAssertEqual(expectedComponents, actualComponents)
     }
     
 }
