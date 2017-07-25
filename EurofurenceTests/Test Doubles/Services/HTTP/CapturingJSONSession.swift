@@ -11,8 +11,13 @@ import Foundation
 
 class CapturingJSONSession: JSONSession {
     
+    private(set) var getRequestURL: String?
+    private(set) var capturedAdditionalGETHeaders: [String : String]?
+    private var GETCompletionHandler: ((Data?) -> Void)?
     func get(_ request: Request, completionHandler: @escaping (Data?) -> Void) {
-        
+        getRequestURL = request.url
+        capturedAdditionalGETHeaders = request.headers
+        GETCompletionHandler = completionHandler
     }
 
     private(set) var postedURL: String?
@@ -32,6 +37,10 @@ class CapturingJSONSession: JSONSession {
         guard let jsonDictionary = json as? [String : Any] else { return nil }
 
         return jsonDictionary[key] as? T
+    }
+    
+    func invokeLastGETCompletionHandler(responseData: Data?) {
+        GETCompletionHandler?(responseData)
     }
     
     func invokeLastPOSTCompletionHandler(responseData: Data?) {
