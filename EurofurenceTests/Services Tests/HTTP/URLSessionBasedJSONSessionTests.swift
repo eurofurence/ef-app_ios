@@ -126,6 +126,15 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
         poster.post(request, completionHandler: { completionHandler?($0) })
     }
     
+    private func get(_ url: String,
+                     body: Data = Data(),
+                     headers: [String : String] = [:],
+                     completionHandler: ((Data?) -> Void)? = nil) {
+        let session = URLSessionBasedJSONSession()
+        let request = Request(url: url, body: body, headers: headers)
+        session.get(request, completionHandler: { completionHandler?($0) })
+    }
+    
     func testPostingURLShouldRequestWithURL() {
         let expectedURL = "https://www.somewhere.co.uk"
         JournallingURLRequestLogger.shared.makeExpectation(self, expectingURL: expectedURL)
@@ -218,6 +227,77 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
         
         let correctQueueExpectation = expectation(description: "Completion handler should be called on the main queue")
         post(expectedURL, completionHandler: { data in
+            if Thread.current.isMainThread {
+                correctQueueExpectation.fulfill()
+            }
+        })
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testGettingURLShouldRequestWithURL() {
+        let expectedURL = "https://www.somewhere.co.uk"
+        JournallingURLRequestLogger.shared.makeExpectation(self, expectingURL: expectedURL)
+        get(expectedURL)
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testGettingURLShouldRequestWithGETMethod() {
+        let expectedURL = "https://www.somewhere.co.uk"
+        JournallingURLRequestLogger.shared.makeExpectation(self, expectingURL: expectedURL) { request in
+            return request.httpMethod == "GET"
+        }
+        
+        get(expectedURL)
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testGettingURLShouldUseJSONContentTypeHeader() {
+        let expectedURL = "https://www.somewhere.co.uk"
+        let expectedContentType = "application/json"
+        JournallingURLRequestLogger.shared.makeExpectation(self, expectingURL: expectedURL) { request in
+            return request.allHTTPHeaderFields?["Content-Type"] == expectedContentType
+        }
+        
+        get(expectedURL)
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testGettingURLWithAdditionalHeadersSuppliesThemWithTheRequest() {
+        let additionalHeaders = ["SomeHeader" : "SomeValue"]
+        let expectedURL = "https://www.somewhere.co.uk"
+        JournallingURLRequestLogger.shared.makeExpectation(self, expectingURL: expectedURL) { request in
+            return request.allHTTPHeaderFields?["SomeHeader"] == "SomeValue"
+        }
+        
+        get(expectedURL, headers: additionalHeaders)
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testGetRequestCompletesSuppliesResponseDataToCompletionHandler() {
+        let expectedURL = "https://www.somewhere.co.uk"
+        let expectedResponseData = "Response".data(using: .utf8)!
+        JournallingURLRequestLogger.shared.stubResponse(for: expectedURL, with: expectedResponseData)
+        
+        let matchingDataExpectation = expectation(description: "Returned data from response")
+        get(expectedURL, completionHandler: { data in
+            if expectedResponseData == data {
+                matchingDataExpectation.fulfill()
+            }
+        })
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testGettingCompletesSuppliesResponseDataOnMainQueue() {
+        let expectedURL = "https://www.somewhere.co.uk"
+        JournallingURLRequestLogger.shared.stubResponse(for: expectedURL, with: Data())
+        
+        let correctQueueExpectation = expectation(description: "Completion handler should be called on the main queue")
+        get(expectedURL, completionHandler: { data in
             if Thread.current.isMainThread {
                 correctQueueExpectation.fulfill()
             }

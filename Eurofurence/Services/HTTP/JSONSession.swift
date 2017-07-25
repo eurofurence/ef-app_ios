@@ -10,6 +10,7 @@ import Foundation
 
 protocol JSONSession {
 
+    func get(_ request: Request, completionHandler: @escaping (Data?) -> Void)
     func post(_ request: Request, completionHandler: @escaping (Data?) -> Void)
 
 }

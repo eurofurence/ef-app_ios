@@ -10,6 +10,10 @@
 import Foundation
 
 class CapturingJSONSession: JSONSession {
+    
+    func get(_ request: Request, completionHandler: @escaping (Data?) -> Void) {
+        
+    }
 
     private(set) var postedURL: String?
     private(set) var capturedAdditionalHeaders: [String : String]?

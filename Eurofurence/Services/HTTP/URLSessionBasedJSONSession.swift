@@ -12,6 +12,20 @@ struct URLSessionBasedJSONSession: JSONSession {
 
     var session: URLSession = .shared
 
+    func get(_ request: Request, completionHandler: @escaping (Data?) -> Void) {
+        guard let actualURL = URL(string: request.url) else { return }
+
+        var urlRequest = URLRequest(url: actualURL)
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.allHTTPHeaderFields = request.headers
+
+        session.dataTask(with: urlRequest, completionHandler: { (data, _, _) in
+            DispatchQueue.main.async {
+                completionHandler(data)
+            }
+        }).resume()
+    }
+
     func post(_ request: Request, completionHandler: @escaping (Data?) -> Void) {
         guard let actualURL = URL(string: request.url) else { return }
 
