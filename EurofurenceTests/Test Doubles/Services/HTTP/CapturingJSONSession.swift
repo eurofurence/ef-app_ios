@@ -16,26 +16,26 @@ class CapturingJSONSession: JSONSession {
     }
 
     private(set) var postedURL: String?
-    private(set) var capturedAdditionalHeaders: [String : String]?
-    private var postedData: Data?
-    private var completionHandler: ((Data?) -> Void)?
+    private(set) var capturedAdditionalPOSTHeaders: [String : String]?
+    private var POSTData: Data?
+    private var POSTCompletionHandler: ((Data?) -> Void)?
     func post(_ request: Request, completionHandler: @escaping (Data?) -> Void) {
         postedURL = request.url
-        postedData = request.body
-        self.completionHandler = completionHandler
-        capturedAdditionalHeaders = request.headers
+        POSTData = request.body
+        self.POSTCompletionHandler = completionHandler
+        capturedAdditionalPOSTHeaders = request.headers
     }
 
     func postedJSONValue<T>(forKey key: String) -> T? {
-        guard let postedData = postedData else { return nil }
-        guard let json = try? JSONSerialization.jsonObject(with: postedData, options: .allowFragments) else { return nil }
+        guard let POSTData = POSTData else { return nil }
+        guard let json = try? JSONSerialization.jsonObject(with: POSTData, options: .allowFragments) else { return nil }
         guard let jsonDictionary = json as? [String : Any] else { return nil }
 
         return jsonDictionary[key] as? T
     }
     
-    func invokeLastCompletionHandler(responseData: Data?) {
-        completionHandler?(responseData)
+    func invokeLastPOSTCompletionHandler(responseData: Data?) {
+        POSTCompletionHandler?(responseData)
     }
     
 }

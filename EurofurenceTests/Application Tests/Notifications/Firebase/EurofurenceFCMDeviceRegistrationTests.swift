@@ -72,7 +72,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
         let registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession)
         registration.registerFCM("", topics: [], authenticationToken: authenticationToken)
         
-        XCTAssertEqual("Bearer \(authenticationToken)", capturingJSONSession.capturedAdditionalHeaders?["Authorization"])
+        XCTAssertEqual("Bearer \(authenticationToken)", capturingJSONSession.capturedAdditionalPOSTHeaders?["Authorization"])
     }
     
     func testRegisteringTheFCMTokenWithoutUserAuthenticationTokenDoesNotSupplyAuthHeader() {
@@ -80,7 +80,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
         let registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession)
         registration.registerFCM("", topics: [], authenticationToken: nil)
         
-        XCTAssertNil(capturingJSONSession.capturedAdditionalHeaders?["Authorization"])
+        XCTAssertNil(capturingJSONSession.capturedAdditionalPOSTHeaders?["Authorization"])
     }
     
 }

@@ -34,7 +34,7 @@ class V2PrivateMessagesAPITests: XCTestCase {
         let api = V2PrivateMessagesAPI(JSONSession: JSONSession)
         let observer = CapturingV2PrivateMessagesObserver()
         api.loadPrivateMessages(authorizationToken: "", completionHandler: observer.handle)
-        JSONSession.invokeLastCompletionHandler(responseData: response?.data(using: .utf8))
+        JSONSession.invokeLastPOSTCompletionHandler(responseData: response?.data(using: .utf8))
         
         return observer
     }
@@ -78,7 +78,7 @@ class V2PrivateMessagesAPITests: XCTestCase {
         let token = "Top secret"
         api.loadPrivateMessages(authorizationToken: token, completionHandler: { _ in } )
         
-        XCTAssertEqual("Bearer \(token)", JSONSession.capturedAdditionalHeaders?["Authorization"])
+        XCTAssertEqual("Bearer \(token)", JSONSession.capturedAdditionalPOSTHeaders?["Authorization"])
     }
     
     func testResponseProvidesNilDataShouldProvideFailureResponse() {

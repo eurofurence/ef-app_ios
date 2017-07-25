@@ -68,7 +68,7 @@ class V2LoginAPITests: XCTestCase {
     private func makeObserverForVerifyingLoginResponse(_ data: Data?) -> CapturingV2LoginObserver {
         let loginResponseObserver = CapturingV2LoginObserver()
         performLogin(makeLoginParameters(), completionHandler: loginResponseObserver.observe)
-        JSONSession.invokeLastCompletionHandler(responseData: data)
+        JSONSession.invokeLastPOSTCompletionHandler(responseData: data)
         
         return loginResponseObserver
     }
