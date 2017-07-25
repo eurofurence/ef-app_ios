@@ -25,6 +25,16 @@ class CapturingV2PrivateMessagesObserver {
 
 class V2PrivateMessagesAPITests: XCTestCase {
     
+    private func makeCapturingObserverForResponse(_ response: String?) -> CapturingV2PrivateMessagesObserver {
+        let jsonPoster = CapturingJSONPoster()
+        let api = V2PrivateMessagesAPI(jsonPoster: jsonPoster)
+        let observer = CapturingV2PrivateMessagesObserver()
+        api.loadPrivateMessages(authorizationToken: "", completionHandler: observer.handle)
+        jsonPoster.invokeLastCompletionHandler(responseData: response?.data(using: .utf8))
+        
+        return observer
+    }
+    
     func testThePrivateMessagesEndpointShouldReceievePOSTRequest() {
         let expectedURL = "https://app.eurofurence.org/api/v2/Communication/PrivateMessages"
         let jsonPoster = CapturingJSONPoster()
@@ -44,34 +54,17 @@ class V2PrivateMessagesAPITests: XCTestCase {
     }
     
     func testResponseProvidesNilDataShouldProvideFailureResponse() {
-        let jsonPoster = CapturingJSONPoster()
-        let api = V2PrivateMessagesAPI(jsonPoster: jsonPoster)
-        let observer = CapturingV2PrivateMessagesObserver()
-        api.loadPrivateMessages(authorizationToken: "", completionHandler: observer.handle)
-        jsonPoster.invokeLastCompletionHandler(responseData: nil)
-        
+        let observer = makeCapturingObserverForResponse(nil)
         XCTAssertTrue(observer.wasNotifiedResponseFailed)
     }
     
     func testResponseProvidesNonJSONDataShouldProvideFailureRespone() {
-        let jsonPoster = CapturingJSONPoster()
-        let api = V2PrivateMessagesAPI(jsonPoster: jsonPoster)
-        let observer = CapturingV2PrivateMessagesObserver()
-        api.loadPrivateMessages(authorizationToken: "", completionHandler: observer.handle)
-        let data = "Not json!".data(using: .utf8)!
-        jsonPoster.invokeLastCompletionHandler(responseData: data)
-        
+        let observer = makeCapturingObserverForResponse("Not json!")
         XCTAssertTrue(observer.wasNotifiedResponseFailed)
     }
     
     func testResponseProvidesWrongRootStructureShouldProvideFailureResponse() {
-        let jsonPoster = CapturingJSONPoster()
-        let api = V2PrivateMessagesAPI(jsonPoster: jsonPoster)
-        let observer = CapturingV2PrivateMessagesObserver()
-        api.loadPrivateMessages(authorizationToken: "", completionHandler: observer.handle)
-        let data = "[{ \"key\": \"value\" }]".data(using: .utf8)!
-        jsonPoster.invokeLastCompletionHandler(responseData: data)
-        
+        let observer = makeCapturingObserverForResponse("[{ \"key\": \"value\" }]")
         XCTAssertTrue(observer.wasNotifiedResponseFailed)
     }
     
