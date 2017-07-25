@@ -16,6 +16,10 @@ protocol APIPrivateMessagesResponse {
 
 protocol APIPrivateMessage {
 
+    var id: String { get }
+    var subject: String { get }
     var authorName: String { get }
+    var message: String { get }
+    var recipientUid: String { get }
 
 }

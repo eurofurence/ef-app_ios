@@ -21,6 +21,22 @@ class StubAPIPrivateMessagesResponse: APIPrivateMessagesResponse {
 
 struct StubAPIPrivateMessage: APIPrivateMessage {
     
-    var authorName: String = ""
+    var id: String
+    var authorName: String
+    var subject: String
+    var message: String
+    var recipientUid: String
+    
+    init(id: String = "",
+         authorName: String = "",
+         subject: String = "",
+         message: String = "",
+         recipientUid: String = "") {
+        self.id = id
+        self.authorName = authorName
+        self.subject = subject
+        self.message = message
+        self.recipientUid = recipientUid
+    }
     
 }
