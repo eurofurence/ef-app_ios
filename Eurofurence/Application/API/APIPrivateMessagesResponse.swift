@@ -23,7 +23,7 @@ protocol APIPrivateMessage {
     var recipientUid: String { get }
     var lastChangeDateTime: Date { get }
     var createdDateTime: Date { get }
-    var receievedDateTime: Date { get }
+    var receivedDateTime: Date { get }
     var readDateTime: Date? { get }
 
 }

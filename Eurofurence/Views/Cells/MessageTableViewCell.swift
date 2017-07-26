@@ -10,6 +10,15 @@ import UIKit
 
 class MessageTableViewCell: UITableViewCell {
 
+    static var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.doesRelativeDateFormatting = true
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+
+        return formatter
+    }()
+
     @IBOutlet weak var messageAuthorLabel: UILabel!
     @IBOutlet weak var messageReceivedDateLabel: UILabel!
     @IBOutlet weak var messageSynopsisLabel: UILabel!
@@ -25,9 +34,12 @@ class MessageTableViewCell: UITableViewCell {
     }
 
     func show(message: Message) {
+        let receivedDateString = MessageTableViewCell.dateFormatter.string(from: message.receivedDateTime)
         messageAuthorLabel.text = message.authorName
+        messageReceivedDateLabel.text = receivedDateString
+        messageSynopsisLabel.text = message.contents
 
-        accessibilityLabel = "Message from \(message.authorName)"
+        accessibilityLabel = "Message from \(message.authorName), received \(receivedDateString)."
     }
 
 }

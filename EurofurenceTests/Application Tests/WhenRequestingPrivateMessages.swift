@@ -92,7 +92,16 @@ class WhenRequestingPrivateMessages: XCTestCase {
         XCTAssertFalse(observer.wasToldSuccessfullyLoadedPrivateMessages)
     }
     
-    func testReceievingAPIResponseWithSuccessShouldPropogatePrivateMessagesFromAPIToObservers() {
+    func testRequestingPrivateMessagesShouldUseTheAuthTokenFromTheLoginCredential() {
+        let authToken = "Some super secret stuff"
+        let credential = LoginCredential(username: "", registrationNumber: 0, authenticationToken: authToken, tokenExpiryDate: .distantFuture)
+        let context = ApplicationTestBuilder().with(credential).build()
+        context.application.fetchPrivateMessages()
+        
+        XCTAssertEqual(authToken, context.privateMessagesAPI.capturedAuthToken)
+    }
+    
+    func testReceievingAPIResponseWithSuccessShouldPropogateAuthorNameForMessage() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let observer = CapturingPrivateMessagesObserver()
         context.application.add(privateMessagesObserver: observer)
@@ -105,13 +114,30 @@ class WhenRequestingPrivateMessages: XCTestCase {
         XCTAssertEqual(authorName, observer.capturedMessages?.first?.authorName)
     }
     
-    func testRequestingPrivateMessagesShouldUseTheAuthTokenFromTheLoginCredential() {
-        let authToken = "Some super secret stuff"
-        let credential = LoginCredential(username: "", registrationNumber: 0, authenticationToken: authToken, tokenExpiryDate: .distantFuture)
-        let context = ApplicationTestBuilder().with(credential).build()
+    func testReceievingAPIResponseWithSuccessShouldPropogatereceivedDateTimeForMessage() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let observer = CapturingPrivateMessagesObserver()
+        context.application.add(privateMessagesObserver: observer)
         context.application.fetchPrivateMessages()
+        let receivedDateTime = Date.distantPast
+        let message = StubAPIPrivateMessage(receivedDateTime: receivedDateTime)
+        let response = StubAPIPrivateMessagesResponse(messages: [message])
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: response)
         
-        XCTAssertEqual(authToken, context.privateMessagesAPI.capturedAuthToken)
+        XCTAssertEqual(receivedDateTime, observer.capturedMessages?.first?.receivedDateTime)
+    }
+    
+    func testReceievingAPIResponseWithSuccessShouldPropogateContentsForMessage() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let observer = CapturingPrivateMessagesObserver()
+        context.application.add(privateMessagesObserver: observer)
+        context.application.fetchPrivateMessages()
+        let contents = "Blah blah important stuff blah blah"
+        let message = StubAPIPrivateMessage(message: contents)
+        let response = StubAPIPrivateMessagesResponse(messages: [message])
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: response)
+        
+        XCTAssertEqual(contents, observer.capturedMessages?.first?.contents)
     }
     
 }

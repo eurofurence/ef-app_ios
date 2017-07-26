@@ -28,7 +28,7 @@ struct StubAPIPrivateMessage: APIPrivateMessage {
     var recipientUid: String
     var lastChangeDateTime: Date
     var createdDateTime: Date
-    var receievedDateTime: Date
+    var receivedDateTime: Date
     var readDateTime: Date?
     
     init(id: String = "",
@@ -38,7 +38,7 @@ struct StubAPIPrivateMessage: APIPrivateMessage {
          recipientUid: String = "",
          lastChangeDateTime: Date = Date(),
          createdDateTime: Date = Date(),
-         receievedDateTime: Date = Date(),
+         receivedDateTime: Date = Date(),
          readDateTime: Date? = nil) {
         self.id = id
         self.authorName = authorName
@@ -47,7 +47,7 @@ struct StubAPIPrivateMessage: APIPrivateMessage {
         self.recipientUid = recipientUid
         self.lastChangeDateTime = lastChangeDateTime
         self.createdDateTime = createdDateTime
-        self.receievedDateTime = receievedDateTime
+        self.receivedDateTime = receivedDateTime
         self.readDateTime = readDateTime
     }
     

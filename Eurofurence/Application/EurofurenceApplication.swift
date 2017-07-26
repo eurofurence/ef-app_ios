@@ -85,6 +85,14 @@ class EurofurenceApplication {
             return apiMessage.authorName
         }
 
+        var receivedDateTime: Date {
+            return apiMessage.receivedDateTime
+        }
+
+        var contents: String {
+            return apiMessage.message
+        }
+
     }
 
     func fetchPrivateMessages() {

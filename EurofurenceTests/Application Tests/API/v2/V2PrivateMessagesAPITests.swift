@@ -46,7 +46,7 @@ class V2PrivateMessagesAPITests: XCTestCase {
                                         recipientUid: String = "Recipient",
                                         lastChangeDateTime: String = "2017-07-25T18:45:59.050Z",
                                         createdDateTime: String = "2017-07-25T18:45:59.050Z",
-                                        receievedDateTime: String = "2017-07-25T18:45:59.050Z",
+                                        receivedDateTime: String = "2017-07-25T18:45:59.050Z",
                                         readDateTime: String = "2017-07-25T18:45:59.050Z") -> String {
         return "[" +
         "{" +
@@ -54,7 +54,7 @@ class V2PrivateMessagesAPITests: XCTestCase {
             "\"Id\": \"\(id)\"," +
             "\"RecipientUid\": \"\(recipientUid)\"," +
             "\"CreatedDateTimeUtc\": \"\(createdDateTime)\"," +
-            "\"ReceivedDateTimeUtc\": \"\(receievedDateTime)\"," +
+            "\"ReceivedDateTimeUtc\": \"\(receivedDateTime)\"," +
             "\"ReadDateTimeUtc\": \"\(readDateTime)\"," +
             "\"AuthorName\": \"\(authorName)\"," +
             "\"Subject\": \"\(subject)\"," +
@@ -178,18 +178,18 @@ class V2PrivateMessagesAPITests: XCTestCase {
         XCTAssertEqual(expectedComponents, actualComponents)
     }
     
-    func testSuccessfulResponseWithUnsupportedReceievedDateTimeValueShouldProvideFailureResponse() {
-        let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(receievedDateTime: "Not a date"))
+    func testSuccessfulResponseWithUnsupportedreceivedDateTimeValueShouldProvideFailureResponse() {
+        let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(receivedDateTime: "Not a date"))
         XCTAssertTrue(observer.wasNotifiedResponseFailed)
     }
     
-    func testSuccessfulResponseWithSupportedReceievedDateTimeValueShouldProvideReceievedDateTime() {
+    func testSuccessfulResponseWithSupportedreceivedDateTimeValueShouldProvidereceivedDateTime() {
         let dateString =  "2017-07-25T18:45:59.050Z"
         let expectedComponents = DateComponents(year: 2017, month: 7, day: 25, hour: 18, minute: 45, second: 59)
-        let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(receievedDateTime: dateString))
+        let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(receivedDateTime: dateString))
         
         var actualComponents: DateComponents?
-        if let receievedDate = observer.capturedMessages?.first?.receievedDateTime {
+        if let receievedDate = observer.capturedMessages?.first?.receivedDateTime {
             let desiredComponents: [Calendar.Component] = [.year, .month, .day, .hour, .minute, .second]
             var calendar = Calendar(identifier: .gregorian)
             calendar.timeZone = TimeZone(abbreviation: "GMT")!
@@ -212,7 +212,7 @@ class V2PrivateMessagesAPITests: XCTestCase {
     func testSuccessfulResponseWithSupportedReadDateTimeValueShouldProvideReadDateTime() {
         let dateString =  "2017-07-25T18:45:59.050Z"
         let expectedComponents = DateComponents(year: 2017, month: 7, day: 25, hour: 18, minute: 45, second: 59)
-        let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(receievedDateTime: dateString))
+        let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(receivedDateTime: dateString))
         
         var actualComponents: DateComponents?
         if let receievedDate = observer.capturedMessages?.first?.readDateTime {

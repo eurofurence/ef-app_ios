@@ -11,5 +11,7 @@ import Foundation
 protocol Message {
 
     var authorName: String { get }
+    var receivedDateTime: Date { get }
+    var contents: String { get }
 
 }
