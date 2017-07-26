@@ -32,8 +32,8 @@ class DataStoreRefreshController {
 		lastSyncDateProvider = try! ContextResolver.container.resolve()
     }
 
-    func add(_ delegate: DataStoreRefreshDelegate) {
-        refreshingDelegates.append(delegate)
+	func add(_ delegate: DataStoreRefreshDelegate, doPrepend: Bool = false) {
+		doPrepend ? refreshingDelegates.insert(delegate, at: 0) : refreshingDelegates.append(delegate)
 
         if isRefreshing {
             delegate.dataStoreRefreshDidBegin(lastSyncDateProvider.lastSyncDate)

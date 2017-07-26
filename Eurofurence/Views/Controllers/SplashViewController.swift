@@ -43,13 +43,14 @@ class SplashViewController: UIViewController, SplashScene,
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
 
-        loadController.add(self)
-        refreshController.add(self)
+		loadController.add(self, doPrepend: true)
+        refreshController.add(self, doPrepend: true)
         loadController.loadFromStore()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
+		refreshController.remove(self)
         loadController.remove(self)
     }
 

@@ -28,8 +28,8 @@ class DataStoreLoadController {
         dataContext = try! ContextResolver.container.resolve() as DataContextProtocol
     }
 
-    func add(_ delegate: DataStoreLoadDelegate) {
-        delegates.append(delegate)
+	func add(_ delegate: DataStoreLoadDelegate, doPrepend: Bool = false) {
+		doPrepend ? delegates.insert(delegate, at: 0) : delegates.append(delegate)
     }
 
     func remove(_ delegate: DataStoreLoadDelegate) {
