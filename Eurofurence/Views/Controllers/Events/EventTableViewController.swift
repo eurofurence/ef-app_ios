@@ -17,10 +17,10 @@ class EventTableViewController: UITableViewController, UISearchBarDelegate, UIVi
     var filteredSections: [EventsEntity] = []
     var filteredEvents: [[Event]] = []
 	var isFavoritesOnly: Bool {
-		return favoritesOnlySegmentedControl.selectedSegmentIndex == 1
+		return eventPreferences.doFilterEventFavorites
 	}
 	var isSearchActive: Bool {
-		return searchBar.text != nil && searchBar.text != ""
+		return !(searchBar.text?.isEmpty ?? true)
 	}
 	var isFiltered: Bool {
 		return isSearchActive ||
@@ -29,6 +29,7 @@ class EventTableViewController: UITableViewController, UISearchBarDelegate, UIVi
 
 	let viewModel: EventsViewModel = try! ViewModelResolver.container.resolve()
 	let eventFavoriteSerivice: EventFavoritesService = try! ServiceResolver.container.resolve()
+	private var eventPreferences: EventTablePreferences = UserDetailsEventTablePreferences(userDefaults: UserDefaults.standard)
 	private var disposable = CompositeDisposable()
 
     override func viewDidLoad() {
@@ -39,6 +40,10 @@ class EventTableViewController: UITableViewController, UISearchBarDelegate, UIVi
 		}
 
         definesPresentationContext = true
+
+		favoritesOnlySegmentedControl.selectedSegmentIndex = eventPreferences.doFilterEventFavorites ? 1 : 0
+		eventsBySegmentedControl.selectedSegmentIndex = eventPreferences.eventGrouping.rawValue
+		filtersChanged()
 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120.0
@@ -54,9 +59,6 @@ class EventTableViewController: UITableViewController, UISearchBarDelegate, UIVi
 
 		tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
 		tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCellWithoutBanner")
-
-		eventsBySegmentedControl.addTarget(self, action: #selector(EventTableViewController.filtersChanged), for: .valueChanged)
-		favoritesOnlySegmentedControl.addTarget(self, action: #selector(EventTableViewController.filtersChanged), for: .valueChanged)
 
         disposable += viewModel.Events.signal.observeResult({[unowned self] _ in
             DispatchQueue.main.async {
@@ -203,7 +205,18 @@ class EventTableViewController: UITableViewController, UISearchBarDelegate, UIVi
         return 40.0
 	}
 
-    // MARK: - Search
+	// MARK: - Search
+
+	@IBAction func favoritesOnlyFilterChanged(_ sender: UISegmentedControl) {
+		eventPreferences.setFilterEventFavorites(sender.selectedSegmentIndex == 1)
+		filtersChanged()
+	}
+
+	@IBAction func eventGroupingChanged(_ sender: UISegmentedControl) {
+		eventPreferences.setEventGrouping(EventTableGrouping(rawValue: sender.selectedSegmentIndex) ?? EventTableGrouping.ByDays)
+		filtersChanged()
+	}
+
 	func filtersChanged() {
 		searchEvents(for: searchBar.text)
 	}

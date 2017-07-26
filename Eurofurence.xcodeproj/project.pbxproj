@@ -128,6 +128,10 @@
 		9A80EF591F291E2B00FD0D37 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A80EF581F291E2B00FD0D37 /* NewsTableViewController.swift */; };
 		9A80EF5B1F29203C00FD0D37 /* AnnouncementsShowAllProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A80EF5A1F29203C00FD0D37 /* AnnouncementsShowAllProviding.swift */; };
 		9A80EF5D1F29204900FD0D37 /* CurrentEventsFilterFavoritesProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A80EF5C1F29204900FD0D37 /* CurrentEventsFilterFavoritesProviding.swift */; };
+		9A80EF611F2922EE00FD0D37 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A80EF5F1F2922EE00FD0D37 /* EventTableViewController.swift */; };
+		9A80EF621F2922EE00FD0D37 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A80EF601F2922EE00FD0D37 /* EventViewController.swift */; };
+		9A80EF641F29230300FD0D37 /* UserDetailsEventTablePreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A80EF631F29230300FD0D37 /* UserDetailsEventTablePreferences.swift */; };
+		9A80EF661F29233F00FD0D37 /* EventTablePreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A80EF651F29233F00FD0D37 /* EventTablePreferences.swift */; };
 		9A8477981ED99EDE00F0DF3F /* NavigationResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8477971ED99EDE00F0DF3F /* NavigationResolver.swift */; };
 		9A861E991F24B0B800B75A8C /* NewsSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861E981F24B0B800B75A8C /* NewsSectionHeader.swift */; };
 		9A861E9B1F24CEB700B75A8C /* NewsSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A861E9A1F24CEB700B75A8C /* NewsSectionHeader.xib */; };
@@ -247,7 +251,6 @@
 		D6F3D204D352FE26C3F90906 /* KnowledgeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DD137095A2765149B6DE /* KnowledgeTableViewController.swift */; };
 		D6F3D2440B74E17B9A008DE0 /* AnnouncementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DF8454D3F83FD7294CD0 /* AnnouncementViewController.swift */; };
 		D6F3D275FF81A313B9213277 /* AnnouncementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DEF39B7EA2ED63CA72D7 /* AnnouncementCell.swift */; };
-		D6F3D2C86BE68A102D2D6312 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D831FC85BC47C1D346C1 /* EventTableViewController.swift */; };
 		D6F3D339BFBA2C299453B6BA /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D3312E7C5B416B722B85 /* SettingsTableViewController.swift */; };
 		D6F3D3D11CAB2B06852D0EF9 /* DealerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D4F55CFC5A5BDBB3F1A8 /* DealerTableViewController.swift */; };
 		D6F3D40D3515E7ABE9565906 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D0A32DC83843688B347C /* AboutViewController.swift */; };
@@ -259,7 +262,6 @@
 		D6F3D6ADD1B889C901EE841A /* DataStoreResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D8101460A96C0D9A7612 /* DataStoreResult.swift */; };
 		D6F3D749FF814981E076850E /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D1CE9C98163AA2B6DF7D /* ImageService.swift */; };
 		D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D46D42184018C6E237CD /* RoutingAppChooser.swift */; };
-		D6F3DAD590C051C8D0060172 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DFA70EA419105E0019F3 /* EventViewController.swift */; };
 		D6F3DB838A1BDAFC6DAC2F61 /* CountryAlpha3Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D3FF0CFC133874118590 /* CountryAlpha3Converter.swift */; };
 		D6F3DCE06EF6B706F0A3EF09 /* TimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DE21C54399842BC4445E /* TimeService.swift */; };
 		D6F3DD6B0659E1A44E01075B /* CurrentEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3DDB3580D567F21C9B273 /* CurrentEventsViewModel.swift */; };
@@ -423,6 +425,10 @@
 		9A80EF581F291E2B00FD0D37 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		9A80EF5A1F29203C00FD0D37 /* AnnouncementsShowAllProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementsShowAllProviding.swift; sourceTree = "<group>"; };
 		9A80EF5C1F29204900FD0D37 /* CurrentEventsFilterFavoritesProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentEventsFilterFavoritesProviding.swift; sourceTree = "<group>"; };
+		9A80EF5F1F2922EE00FD0D37 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
+		9A80EF601F2922EE00FD0D37 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		9A80EF631F29230300FD0D37 /* UserDetailsEventTablePreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailsEventTablePreferences.swift; sourceTree = "<group>"; };
+		9A80EF651F29233F00FD0D37 /* EventTablePreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTablePreferences.swift; sourceTree = "<group>"; };
 		9A8477971ED99EDE00F0DF3F /* NavigationResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationResolver.swift; sourceTree = "<group>"; };
 		9A861E981F24B0B800B75A8C /* NewsSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsSectionHeader.swift; sourceTree = "<group>"; };
 		9A861E9A1F24CEB700B75A8C /* NewsSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsSectionHeader.xib; sourceTree = "<group>"; };
@@ -560,7 +566,6 @@
 		D6F3D756F99A68B2DC5B7359 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D6F3D7AF46BAD0F1F9918A76 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		D6F3D8101460A96C0D9A7612 /* DataStoreResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreResult.swift; sourceTree = "<group>"; };
-		D6F3D831FC85BC47C1D346C1 /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		D6F3DB1B292BBFBF5D69F557 /* ServiceResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceResolver.swift; sourceTree = "<group>"; };
 		D6F3DB48EF811D49364AFB9D /* KnowledgeEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryViewController.swift; sourceTree = "<group>"; };
 		D6F3DD137095A2765149B6DE /* KnowledgeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeTableViewController.swift; sourceTree = "<group>"; };
@@ -570,7 +575,6 @@
 		D6F3DE9723F934424C183CD4 /* EventHeaderCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHeaderCellTableViewCell.swift; sourceTree = "<group>"; };
 		D6F3DEF39B7EA2ED63CA72D7 /* AnnouncementCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementCell.swift; sourceTree = "<group>"; };
 		D6F3DF8454D3F83FD7294CD0 /* AnnouncementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementViewController.swift; sourceTree = "<group>"; };
-		D6F3DFA70EA419105E0019F3 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		F7C381F180747E276F94C9BD /* Pods-EurofurenceTests.screenshots.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.screenshots.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.screenshots.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1051,6 +1055,17 @@
 			path = News;
 			sourceTree = "<group>";
 		};
+		9A80EF5E1F2922A200FD0D37 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				9A80EF651F29233F00FD0D37 /* EventTablePreferences.swift */,
+				9A80EF5F1F2922EE00FD0D37 /* EventTableViewController.swift */,
+				9A80EF601F2922EE00FD0D37 /* EventViewController.swift */,
+				9A80EF631F29230300FD0D37 /* UserDetailsEventTablePreferences.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
 		9ACB010A1F18F520001CE9D2 /* EventFavorites */ = {
 			isa = PBXGroup;
 			children = (
@@ -1418,6 +1433,7 @@
 		D6F3DE4616D9A2E243387004 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9A80EF5E1F2922A200FD0D37 /* Events */,
 				9A80EF511F2919C400FD0D37 /* News */,
 				78455B3D1F11770C005BE2D7 /* Tutorial */,
 				D6F3D0A32DC83843688B347C /* AboutViewController.swift */,
@@ -1425,8 +1441,6 @@
 				78567B421F10303600EBA31D /* ApplicationActivityIndicatorRefreshDelegate.swift */,
 				D6F3D4F55CFC5A5BDBB3F1A8 /* DealerTableViewController.swift */,
 				D6F3D66312CF86A43D699F2C /* DealerViewController.swift */,
-				D6F3D831FC85BC47C1D346C1 /* EventTableViewController.swift */,
-				D6F3DFA70EA419105E0019F3 /* EventViewController.swift */,
 				D6F3DB48EF811D49364AFB9D /* KnowledgeEntryViewController.swift */,
 				D6F3DD137095A2765149B6DE /* KnowledgeTableViewController.swift */,
 				CAD780381F1D41C4002A8333 /* LoginViewController.swift */,
@@ -1862,6 +1876,7 @@
 				9A861EAB1F2554D700B75A8C /* BootstrappingModule.swift in Sources */,
 				9A34B9851ED089BB004A249E /* NavigationResolverProtocol.swift in Sources */,
 				9A9487FD1F1D5D9300119DC8 /* EventNotificationPreferences.swift in Sources */,
+				9A80EF611F2922EE00FD0D37 /* EventTableViewController.swift in Sources */,
 				9A80EF4A1F289D0500FD0D37 /* NotificationSyncDataStoreRefreshDelegate.swift in Sources */,
 				78567B411F10212100EBA31D /* ProgressViewRefreshDelegate.swift in Sources */,
 				CA30EAAC1F2141A40053DBF6 /* AuthenticationStateObserver.swift in Sources */,
@@ -1907,6 +1922,7 @@
 				CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */,
 				D6F3D6ADD1B889C901EE841A /* DataStoreResult.swift in Sources */,
 				9A7FFD531EF97CD4007ABA36 /* UserSettings.swift in Sources */,
+				9A80EF621F2922EE00FD0D37 /* EventViewController.swift in Sources */,
 				78455B621F118699005BE2D7 /* RoundedCornerButton.swift in Sources */,
 				D6F3D5CDFE398DB6CDBDBC77 /* AnnouncementsViewModel.swift in Sources */,
 				CA2B4FAC1F1F7F2C00F007E1 /* LoginObserver.swift in Sources */,
@@ -1941,6 +1957,7 @@
 				D6F3D523BDCDDA3A2A163E55 /* TimeLabelCell.swift in Sources */,
 				78567B451F103C3800EBA31D /* RefreshControlDataStoreDelegate.swift in Sources */,
 				9A861E9D1F2547E200B75A8C /* NotificationRouter.swift in Sources */,
+				9A80EF641F29230300FD0D37 /* UserDetailsEventTablePreferences.swift in Sources */,
 				CA30EABE1F2660D80053DBF6 /* PrivateMessagesAPI.swift in Sources */,
 				9A861EA91F2554BE00B75A8C /* InitiateDownloadTutorialPagePresenter.swift in Sources */,
 				781A94301F1A1972002DE70F /* FirebaseAdapter.swift in Sources */,
@@ -1952,6 +1969,7 @@
 				9A861EC91F25555000B75A8C /* UserDefaultsWitnessedTutorialPushPermissionsRequest.swift in Sources */,
 				7820A7031F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift in Sources */,
 				9A2A94871F12CBC0004D66FB /* SyncState.swift in Sources */,
+				9A80EF661F29233F00FD0D37 /* EventTablePreferences.swift in Sources */,
 				D6F3D13A59E359E69EA66D7E /* MenuTableViewCell.swift in Sources */,
 				9A9487FF1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift in Sources */,
 				7820A6E71F1400A8004C0FB5 /* AlertRouter.swift in Sources */,
@@ -1959,7 +1977,6 @@
 				9A861ECD1F25555000B75A8C /* TutorialPageViewController.swift in Sources */,
 				D6F3D275FF81A313B9213277 /* AnnouncementCell.swift in Sources */,
 				9A861ED91F25564900B75A8C /* RootViewControllerAnimator.swift in Sources */,
-				D6F3DAD590C051C8D0060172 /* EventViewController.swift in Sources */,
 				D6F3D62A784F07D9C7A84DC8 /* KnowledgeEntryViewController.swift in Sources */,
 				CA2B4FA81F1EA72A00F007E1 /* LoginArguments.swift in Sources */,
 				CA30EAB81F2613500053DBF6 /* PrivateMessagesObserver.swift in Sources */,
@@ -1978,7 +1995,6 @@
 				D6F3D339BFBA2C299453B6BA /* SettingsTableViewController.swift in Sources */,
 				D6F3D40D3515E7ABE9565906 /* AboutViewController.swift in Sources */,
 				D6F3DEED2F3250C61DB692D9 /* DealerViewController.swift in Sources */,
-				D6F3D2C86BE68A102D2D6312 /* EventTableViewController.swift in Sources */,
 				D6F3D204D352FE26C3F90906 /* KnowledgeTableViewController.swift in Sources */,
 				CA9845DA1F29199E00E8821D /* ScreenshotAssistant.swift in Sources */,
 				7820A6F81F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift in Sources */,
