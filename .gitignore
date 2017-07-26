@@ -69,3 +69,6 @@ playground.xcworkspace
 .idea
 Pods/SwiftLint
 ServiceAccount.json
+
+# Fastlane
+screenshots
