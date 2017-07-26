@@ -20,6 +20,7 @@ class NewsTableViewController: UITableViewController,
 
 	private var announcementsViewModel: AnnouncementsViewModel = try! ViewModelResolver.container.resolve()
 	private var currentEventsViewModel: CurrentEventsViewModel = try! ViewModelResolver.container.resolve()
+	private var newsPreferences = UserDetailsNewsPreferences(userDefaults: UserDefaults.standard)
 	private var timeService: TimeService = try! ServiceResolver.container.resolve()
 	private var disposables = CompositeDisposable()
     private var loggedInUser: User?
@@ -32,6 +33,8 @@ class NewsTableViewController: UITableViewController,
         super.viewDidLoad()
 
         EurofurenceApplication.shared.add(authenticationStateObserver: self)
+
+		favoritesOnlySegmentedControl.selectedSegmentIndex = newsPreferences.doFilterEventFavorites ? 1 : 0
 
 		announcements = announcementsViewModel.Announcements.value
 		runningEvents = currentEventsViewModel.RunningEvents.value
@@ -116,7 +119,7 @@ class NewsTableViewController: UITableViewController,
     }
 
 	@IBAction func favoritesOnlyFilterChanged(_ sender: UISegmentedControl) {
-		currentEventsViewModel.isFavoritesOnly = sender.selectedSegmentIndex == 1
+		newsPreferences.setFilterEventFavorites(sender.selectedSegmentIndex == 1)
 		timeService.tick()
 	}
 
@@ -209,9 +212,9 @@ class NewsTableViewController: UITableViewController,
 		switch section {
 		case 1:
 			cell.sectionTitle = "Announcements"
-			cell.isShowAll = announcementsViewModel.isShowAll
+			cell.isShowAll = newsPreferences.doShowAllAnnouncements
 			cell.toggleShowAllAction = { cell in
-				self.announcementsViewModel.isShowAll = cell.isShowAll
+				self.newsPreferences.setShowAllAnnouncements(cell.isShowAll)
 				self.timeService.tick()
 			}
 		case 2:

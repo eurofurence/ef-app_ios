@@ -20,8 +20,7 @@ class AnnouncementsViewModel {
 	private var timedAnnouncementsSignal: Signal<(Date, [Announcement]), NoError>
 	private var disposable = CompositeDisposable()
 	private let scheduler = QueueScheduler(qos: .background, name: "org.eurofurence.app.AnnouncementsViewModelScheduler")
-
-	var isShowAll: Bool = false
+	private let showAll: AnnouncementsShowAllProviding = UserDetailsNewsPreferences(userDefaults: UserDefaults.standard)
 
 	init(dataContext: DataContextProtocol, lastSyncDateProvider: LastSyncDateProviding) {
 		self.dataContext = dataContext
@@ -53,7 +52,7 @@ class AnnouncementsViewModel {
 	}
 
 	private func filterValidAnnouncements(_ time: Date, _ announcements: [Announcement]) -> [Announcement] {
-		return announcements.filter({$0.ValidFromDateTimeUtc < time && $0.ValidUntilDateTimeUtc > time && (self.isShowAll || !$0.IsRead)})
+		return announcements.filter({$0.ValidFromDateTimeUtc < time && $0.ValidUntilDateTimeUtc > time && (self.showAll.doShowAllAnnouncements || !$0.IsRead)})
 	}
 
 	deinit {

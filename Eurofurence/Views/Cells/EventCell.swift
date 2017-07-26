@@ -7,6 +7,7 @@
 
 import UIKit
 import ReactiveSwift
+import ReactiveCocoa
 
 class EventCell: UITableViewCell {
 

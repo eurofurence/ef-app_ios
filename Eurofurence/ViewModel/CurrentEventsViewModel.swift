@@ -16,13 +16,12 @@ class CurrentEventsViewModel {
 	let UpcomingEvents = MutableProperty<[Event]>([])
 	let UpcomingEventsEdits = MutableProperty<[Edit<Event>]>([])
 
-	var isFavoritesOnly: Bool = false
-
 	private let dataContext: DataContextProtocol
 	private let timeService: TimeService = try! ServiceResolver.container.resolve()
 	private var timedEventsSignal: Signal<(Date, [Event]), NoError>
 	private var disposable = CompositeDisposable()
 	private let scheduler = QueueScheduler(qos: .background, name: "org.eurofurence.app.CurrentEventsViewModelScheduler")
+	private let filterFavorites: CurrentEventsFilterFavoritesProviding = UserDetailsNewsPreferences(userDefaults: UserDefaults.standard)
 
 	init(dataContext: DataContextProtocol) {
 		self.dataContext = dataContext
@@ -53,12 +52,12 @@ class CurrentEventsViewModel {
 
 	private func filterRunningEvents(_ time: Date, _ events: [Event]) -> [Event] {
 		return events.filter({ $0.StartDateTimeUtc < time && $0.EndDateTimeUtc > time &&
-			(!self.isFavoritesOnly || $0.EventFavorite?.IsFavorite.value ?? false) })
+			(!self.filterFavorites.doFilterEventFavorites || $0.EventFavorite?.IsFavorite.value ?? false) })
 	}
 
 	private func filterUpcomingEvents(_ time: Date, _ events: [Event]) -> [Event] {
 		let filteredEvents = events.filter({ $0.StartDateTimeUtc > time &&
-			(!self.isFavoritesOnly || $0.EventFavorite?.IsFavorite.value ?? false) })
+			(!self.filterFavorites.doFilterEventFavorites || $0.EventFavorite?.IsFavorite.value ?? false) })
 		return Array(filteredEvents[0..<min(10, filteredEvents.count)])
 	}
 
