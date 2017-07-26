@@ -120,6 +120,7 @@
 		9A7FFD531EF97CD4007ABA36 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7FFD521EF97CD4007ABA36 /* UserSettings.swift */; };
 		9A7FFD551EFC5A9E007ABA36 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7FFD541EFC5A9E007ABA36 /* MapViewController.swift */; };
 		9A7FFD571EFC5B46007ABA36 /* CalendarAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7FFD561EFC5B46007ABA36 /* CalendarAccess.swift */; };
+		9A80EF4A1F289D0500FD0D37 /* NotificationSyncDataStoreRefreshDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A80EF491F289D0500FD0D37 /* NotificationSyncDataStoreRefreshDelegate.swift */; };
 		9A8477981ED99EDE00F0DF3F /* NavigationResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8477971ED99EDE00F0DF3F /* NavigationResolver.swift */; };
 		9A861E991F24B0B800B75A8C /* NewsSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861E981F24B0B800B75A8C /* NewsSectionHeader.swift */; };
 		9A861E9B1F24CEB700B75A8C /* NewsSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A861E9A1F24CEB700B75A8C /* NewsSectionHeader.xib */; };
@@ -396,6 +397,7 @@
 		9A7FFD521EF97CD4007ABA36 /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		9A7FFD541EFC5A9E007ABA36 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9A7FFD561EFC5B46007ABA36 /* CalendarAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarAccess.swift; sourceTree = "<group>"; };
+		9A80EF491F289D0500FD0D37 /* NotificationSyncDataStoreRefreshDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSyncDataStoreRefreshDelegate.swift; sourceTree = "<group>"; };
 		9A8477971ED99EDE00F0DF3F /* NavigationResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationResolver.swift; sourceTree = "<group>"; };
 		9A861E981F24B0B800B75A8C /* NewsSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsSectionHeader.swift; sourceTree = "<group>"; };
 		9A861E9A1F24CEB700B75A8C /* NewsSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsSectionHeader.xib; sourceTree = "<group>"; };
@@ -1369,6 +1371,7 @@
 				78567B3E1F1016B000EBA31D /* TabViewController.swift */,
 				CAD780361F1D415A002A8333 /* MessagesViewController.swift */,
 				CAD780381F1D41C4002A8333 /* LoginViewController.swift */,
+				9A80EF491F289D0500FD0D37 /* NotificationSyncDataStoreRefreshDelegate.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1755,6 +1758,7 @@
 				9A861EAB1F2554D700B75A8C /* BootstrappingModule.swift in Sources */,
 				9A34B9851ED089BB004A249E /* NavigationResolverProtocol.swift in Sources */,
 				9A9487FD1F1D5D9300119DC8 /* EventNotificationPreferences.swift in Sources */,
+				9A80EF4A1F289D0500FD0D37 /* NotificationSyncDataStoreRefreshDelegate.swift in Sources */,
 				78567B411F10212100EBA31D /* ProgressViewRefreshDelegate.swift in Sources */,
 				CA30EAAC1F2141A40053DBF6 /* AuthenticationStateObserver.swift in Sources */,
 				9A861EA81F2554BE00B75A8C /* RequestPushPermissionsTutorialPagePresenter.swift in Sources */,

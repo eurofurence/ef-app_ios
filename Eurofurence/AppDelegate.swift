@@ -54,6 +54,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 	}
 
+	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+		if let event = userInfo["Event"] as? String {
+			switch event {
+			case "Sync": // should have content-available == 1; triggers sync
+				DataStoreRefreshController.shared.add(NotificationSyncDataStoreRefreshDelegate(completionHandler: completionHandler))
+				DataStoreRefreshController.shared.refreshStore(withDelta: true)
+			case "Announcement": // Contains announcement title and message
+				DataStoreRefreshController.shared.add(NotificationSyncDataStoreRefreshDelegate(completionHandler: completionHandler))
+				DataStoreRefreshController.shared.refreshStore(withDelta: true)
+			case "Notification": // There is something we should notify the user about, but we have no clue what it might be.
+				completionHandler(.noData)
+			default:
+				completionHandler(.noData)
+			}
+		}
+	}
+
 	func applicationWillResignActive(_ application: UIApplication) {
 		// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
 		// Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
