@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var app: EurofurenceApplication = .shared
 	lazy var notificationRouter: NotificationRouter = StoryboardNotificationRouter(window: self.window!)
 
-	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+	func application(_ application: UIApplication,
+	                 didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
 
 		try! ContextResolver.container.bootstrap()
@@ -44,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFailToRegisterForRemoteNotificationsWithError error: Error) {
         PresentationTier.pushRequesting.handlePushRegistrationFailure()
-    }
+	}
 
 	func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
 		if application.applicationState == .inactive {
@@ -57,20 +58,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 		if let event = userInfo["Event"] as? String {
 			switch event {
+
 			case "Sync": // should have content-available == 1; triggers sync
 				// TODO: Inform the user about changes to his favourite events
 				DataStoreRefreshController.shared.add(NotificationSyncDataStoreRefreshDelegate(completionHandler: completionHandler))
 				DataStoreRefreshController.shared.refreshStore(withDelta: true)
+
 			case "Announcement": // Contains announcement title and message
-				DataStoreRefreshController.shared.add(NotificationSyncDataStoreRefreshDelegate(successHandler: {
-					if application.applicationState == .active {
-						self.notificationRouter.showRemoteNotification(for: userInfo)
-					}
-				}, completionHandler: completionHandler))
-				DataStoreRefreshController.shared.refreshStore(withDelta: true)
+				if application.applicationState == .inactive {
+					// Application was launched from tapping the notification -> forward to detail view
+					notificationRouter.showRemoteNotificationTarget(for: userInfo)
+					completionHandler(.noData)
+				} else {
+					let wasAlreadyActive = application.applicationState == .active
+					// Application is either in background or was already running in foreground
+					DataStoreRefreshController.shared.add(NotificationSyncDataStoreRefreshDelegate(successHandler: {
+						// Prevent the notification from being shown again once the app has become active,
+						// if the user foregrounded it by tapping on the background notification.
+						if wasAlreadyActive {
+							self.notificationRouter.showRemoteNotification(for: userInfo)
+						}
+					}, completionHandler: completionHandler))
+					DataStoreRefreshController.shared.refreshStore(withDelta: true)
+				}
+
 			case "Notification": // There is something we should notify the user about, most likely new PMs.
 				// TODO: Pull new PMs from server
 				completionHandler(.noData)
+
 			default:
 				completionHandler(.noData)
 			}
