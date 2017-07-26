@@ -19,19 +19,36 @@ struct StoryboardNotificationRouter: NotificationRouter {
 	}
 
 	func showLocalNotification(for notification: UILocalNotification) {
-		guard let rootViewController = window.rootViewController else { return }
 
 		let notificationTitle = notification.alertTitle ?? ""
 		let notificationBody = notification.alertBody ?? ""
 
-		let announcement = Whisper.Announcement(title: notificationTitle, subtitle: notificationBody, image: UIImage.init(named: "AppIcon40x40"), duration: 10, action: { self.showLocalNotificationTarget(for: notification) })
-
-		Whisper.show(shout: announcement, to: rootViewController)
+		showNotification(title: notificationTitle, subtitle: notificationBody,
+		                 action: { self.showLocalNotificationTarget(for: notification) })
 	}
 
 	func showLocalNotificationTarget(for notification: UILocalNotification) {
 		guard let userInfo = notification.userInfo else { return }
 
+		showRemoteNotification(for: userInfo)
+	}
+
+	func showRemoteNotification(for userInfo: [AnyHashable : Any]) {
+		guard let event = userInfo["Event"] as? String else { return }
+
+		switch event {
+		case "Announcement":
+			let aps = userInfo["aps"] as? [AnyHashable : Any]
+			let alert = aps?["alert"] as? [AnyHashable : Any]
+			let title = alert?["title"] as? String ?? aps?["alert"] as? String ?? "New Announcement"
+			let body = alert?["body"] as? String ?? "Please open the app to view this announcement."
+			showNotification(title: title, subtitle: body, action: { self.showRemoteNotificationTarget(for: userInfo) })
+		default:
+			return
+		}
+	}
+
+	func showRemoteNotificationTarget(for userInfo: [AnyHashable : Any]) {
 		let viewController: UIViewController
 		let targetIdentifier: String
 		if let eventId = userInfo["Event.Id"] as? String {
@@ -44,6 +61,16 @@ struct StoryboardNotificationRouter: NotificationRouter {
 		}
 
 		pushViewControllerOnTabBar(to: targetIdentifier, viewController: viewController)
+	}
+
+	private func showNotification(title: String, subtitle: String, action: (() -> Void)?) {
+		guard let rootViewController = window.rootViewController else { return }
+
+		let announcement = Whisper.Announcement(title: title, subtitle: subtitle,
+		                                        image: UIImage.init(named: "AppIcon40x40"),
+		                                        duration: 10,
+		                                        action: action)
+		Whisper.show(shout: announcement, to: rootViewController)
 	}
 
 	private func pushViewControllerOnTabBar(to identifier: String, viewController: UIViewController) {
