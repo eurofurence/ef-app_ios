@@ -11,8 +11,10 @@ import UserNotificationsUI
 
 class NotificationSyncDataStoreRefreshDelegate: DataStoreRefreshDelegate {
 	let completionHandler: (UIBackgroundFetchResult) -> Void
+	let successHandler: (() -> Void)?
 
-	init(completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+	init(successHandler: (() -> Void)? = nil, completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+		self.successHandler = successHandler
 		self.completionHandler = completionHandler
 	}
 
@@ -25,6 +27,7 @@ class NotificationSyncDataStoreRefreshDelegate: DataStoreRefreshDelegate {
 
 	func dataStoreRefreshDidFinish() {
 		DataStoreRefreshController.shared.remove(self)
+		successHandler?()
 		completionHandler(.newData)
 	}
 
