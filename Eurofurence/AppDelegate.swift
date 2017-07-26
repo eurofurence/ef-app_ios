@@ -58,12 +58,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		if let event = userInfo["Event"] as? String {
 			switch event {
 			case "Sync": // should have content-available == 1; triggers sync
+				// TODO: Inform the user about changes to his favourite events
 				DataStoreRefreshController.shared.add(NotificationSyncDataStoreRefreshDelegate(completionHandler: completionHandler))
 				DataStoreRefreshController.shared.refreshStore(withDelta: true)
 			case "Announcement": // Contains announcement title and message
-				DataStoreRefreshController.shared.add(NotificationSyncDataStoreRefreshDelegate(completionHandler: completionHandler))
+				DataStoreRefreshController.shared.add(NotificationSyncDataStoreRefreshDelegate(successHandler: {
+					if application.applicationState == .active {
+						self.notificationRouter.showRemoteNotification(for: userInfo)
+					}
+				}, completionHandler: completionHandler))
 				DataStoreRefreshController.shared.refreshStore(withDelta: true)
-			case "Notification": // There is something we should notify the user about, but we have no clue what it might be.
+			case "Notification": // There is something we should notify the user about, most likely new PMs.
+				// TODO: Pull new PMs from server
 				completionHandler(.noData)
 			default:
 				completionHandler(.noData)
