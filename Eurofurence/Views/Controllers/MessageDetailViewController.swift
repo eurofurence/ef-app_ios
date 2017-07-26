@@ -49,6 +49,7 @@ class MessageDetailViewController: UITableViewController {
 
     func updateInterface(with message: Message) {
         title = "\(message.authorName)"
+        subjectLabel.text = message.subject
         messageLabel.text = message.contents
     }
 
