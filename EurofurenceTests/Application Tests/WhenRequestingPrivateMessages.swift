@@ -153,4 +153,28 @@ class WhenRequestingPrivateMessages: XCTestCase {
         XCTAssertEqual(subject, observer.capturedMessages?.first?.subject)
     }
     
+    func testReceivingMessageWithoutReadTimeShouldIndicateItIsNotRead() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let observer = CapturingPrivateMessagesObserver()
+        context.application.add(privateMessagesObserver: observer)
+        context.application.fetchPrivateMessages()
+        let message = StubAPIPrivateMessage(readDateTime: nil)
+        let response = StubAPIPrivateMessagesResponse(messages: [message])
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: response)
+        
+        XCTAssertEqual(false, observer.capturedMessages?.first?.isRead)
+    }
+    
+    func testReceivingMessageWithReadTimeShouldIndicateItIsRead() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let observer = CapturingPrivateMessagesObserver()
+        context.application.add(privateMessagesObserver: observer)
+        context.application.fetchPrivateMessages()
+        let message = StubAPIPrivateMessage(readDateTime: .distantPast)
+        let response = StubAPIPrivateMessagesResponse(messages: [message])
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: response)
+        
+        XCTAssertEqual(true, observer.capturedMessages?.first?.isRead)
+    }
+    
 }

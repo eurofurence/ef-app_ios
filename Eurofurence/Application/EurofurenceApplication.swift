@@ -97,6 +97,10 @@ class EurofurenceApplication {
             return apiMessage.message
         }
 
+        var isRead: Bool {
+            return apiMessage.readDateTime != nil
+        }
+
     }
 
     func fetchPrivateMessages() {

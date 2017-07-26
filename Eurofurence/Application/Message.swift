@@ -14,5 +14,6 @@ protocol Message {
     var receivedDateTime: Date { get }
     var subject: String { get }
     var contents: String { get }
+    var isRead: Bool { get }
 
 }
