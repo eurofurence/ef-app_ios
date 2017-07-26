@@ -199,9 +199,14 @@ class V2PrivateMessagesAPITests: XCTestCase {
         XCTAssertEqual(expectedComponents, actualComponents)
     }
     
-    func testSuccessfulResponseWithUnsupportedReadDateTimeValueShouldProvideFailureResponse() {
+    func testSuccessfulResponseWithUnsupportedReadDateTimeValueShouldNotProvideFailureResponse() {
         let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(readDateTime: "Not a date"))
-        XCTAssertTrue(observer.wasNotifiedResponseFailed)
+        XCTAssertFalse(observer.wasNotifiedResponseFailed)
+    }
+    
+    func testSuccessfulResponseWithUnsupportedReadDateTimeValueShouldProvideNilReadDateTime() {
+        let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(readDateTime: "Not a date"))
+        XCTAssertNil(observer.capturedMessages?.first?.readDateTime)
     }
     
     func testSuccessfulResponseWithSupportedReadDateTimeValueShouldProvideReadDateTime() {

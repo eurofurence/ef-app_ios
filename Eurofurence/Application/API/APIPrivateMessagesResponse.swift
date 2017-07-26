@@ -24,6 +24,6 @@ protocol APIPrivateMessage {
     var lastChangeDateTime: Date { get }
     var createdDateTime: Date { get }
     var receievedDateTime: Date { get }
-    var readDateTime: Date { get }
+    var readDateTime: Date? { get }
 
 }
