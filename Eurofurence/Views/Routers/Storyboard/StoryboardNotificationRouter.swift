@@ -60,8 +60,8 @@ struct StoryboardNotificationRouter: NotificationRouter {
 
 		} else if let announcementId = userInfo["Announcement.Id"] as? String {
 
-			let announcementViewController = storyboard.instantiateViewController(withIdentifier: "AnnouncementDetailView") as! NewsViewController
-			announcementViewController.news = dataContext.Announcements.value.first(where: { $0.Id == announcementId })
+			let announcementViewController = storyboard.instantiateViewController(withIdentifier: "AnnouncementDetailView") as! AnnouncementViewController
+			announcementViewController.announcement = dataContext.Announcements.value.first(where: { $0.Id == announcementId })
 			viewController = announcementViewController
 			targetIdentifier = "NewsNavigation"
 

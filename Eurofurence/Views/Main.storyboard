@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rkh-Ff-Equ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rkh-Ff-Equ">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -1036,7 +1036,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
         <!--Announcement Detail-->
         <scene sceneID="MVt-g1-TGT">
             <objects>
-                <viewController storyboardIdentifier="AnnouncementDetailView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Iix-4g-IXD" userLabel="Announcement Detail" customClass="NewsViewController" customModule="Eurofurence" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AnnouncementDetailView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Iix-4g-IXD" userLabel="Announcement Detail" customClass="AnnouncementViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PNf-QN-Vca"/>
                         <viewControllerLayoutGuide type="bottom" id="eF8-jl-le2"/>
@@ -1212,11 +1212,11 @@ If you do not have access to them, come to our ConOps or Security office. They c
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="areaLabel" destination="axO-Kf-Xyf" id="o0N-Nm-UHt"/>
-                        <outlet property="authorLabel" destination="8th-qb-cXJ" id="e51-86-dhW"/>
-                        <outlet property="descriptionLabel" destination="ztL-43-R2Q" id="jf6-tB-5Mb"/>
-                        <outlet property="lastChangeLabel" destination="Vpr-EW-gsO" id="a4w-YH-TeA"/>
-                        <outlet property="titleLabel" destination="WtH-u1-4Mq" id="DX0-jz-jWU"/>
+                        <outlet property="areaLabel" destination="axO-Kf-Xyf" id="nUo-ZL-7OA"/>
+                        <outlet property="authorLabel" destination="8th-qb-cXJ" id="fJg-Vm-bfX"/>
+                        <outlet property="descriptionLabel" destination="ztL-43-R2Q" id="tNx-Xx-v6n"/>
+                        <outlet property="lastChangeLabel" destination="Vpr-EW-gsO" id="YxO-cK-VDy"/>
+                        <outlet property="titleLabel" destination="WtH-u1-4Mq" id="0V4-0M-Qvu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h2v-3H-EDb" userLabel="First Responder" sceneMemberID="firstResponder"/>

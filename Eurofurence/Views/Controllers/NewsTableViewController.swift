@@ -374,8 +374,8 @@ class NewsTableViewController: UITableViewController,
         // Pass the selected object to the new view controller.
 		switch segueIdentifier {
 		case "AnnouncementDetailSegue":
-            if let destinationVC = segue.destination as? NewsViewController, let announcement = sender as? Announcement {
-                destinationVC.news = announcement
+            if let destinationVC = segue.destination as? AnnouncementViewController, let announcement = sender as? Announcement {
+                destinationVC.announcement = announcement
             }
 		case "EventDetailSegue":
 			if let destinationVC = segue.destination as? EventViewController, let event = sender as? Event {
@@ -397,10 +397,10 @@ class NewsTableViewController: UITableViewController,
 		let viewController: UIViewController
 		switch data {
 		case let announcement as Announcement:
-			guard let announcementViewController = storyboard?.instantiateViewController(withIdentifier: "AnnouncementDetailView") as? NewsViewController else {
+			guard let announcementViewController = storyboard?.instantiateViewController(withIdentifier: "AnnouncementDetailView") as? AnnouncementViewController else {
 				return nil
 			}
-			announcementViewController.news = announcement
+			announcementViewController.announcement = announcement
 			viewController = announcementViewController
 		case let event as Event:
 			guard let eventViewController = storyboard?.instantiateViewController(withIdentifier: "EventDetailView") as? EventViewController else {

@@ -1,5 +1,5 @@
 //
-//  NewsViewController.swift
+//  AnnouncementViewController.swift
 //  Eurofurence
 //
 //  Copyright © 2017 Eurofurence. All rights reserved.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class NewsViewController: UIViewController {
-	weak var news: Announcement?
+class AnnouncementViewController: UIViewController {
+	weak var announcement: Announcement?
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var areaLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
@@ -33,13 +33,13 @@ class NewsViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        titleLabel.text = news?.Title
-        areaLabel.text = news?.Area
-        authorLabel.text = news?.Author
-        descriptionLabel.text = news?.Content
-		if let news = news {
+        titleLabel.text = announcement?.Title
+        areaLabel.text = announcement?.Area
+        authorLabel.text = announcement?.Author
+        descriptionLabel.text = announcement?.Content
+		if let announcement = announcement {
 			self.lastChangeLabel.text = DateFormatter.localizedString(
-				from: news.LastChangeDateTimeUtc as Date, dateStyle: DateFormatter.Style.medium,
+				from: announcement.LastChangeDateTimeUtc as Date, dateStyle: DateFormatter.Style.medium,
 				timeStyle: DateFormatter.Style.short)
 		} else {
 			lastChangeLabel.text = nil
@@ -48,11 +48,11 @@ class NewsViewController: UIViewController {
 
 	// MARK: - Previewing
 	lazy var previewActions: [UIPreviewActionItem] = {
-		let readActionTitle = self.news?.IsRead ?? false ? "Mark as Unread" : "Mark as Read"
+		let readActionTitle = self.announcement?.IsRead ?? false ? "Mark as Unread" : "Mark as Read"
 		let readAction = UIPreviewAction(title: readActionTitle, style: .default) { _, viewController in
-			guard let newsViewController = viewController as? NewsViewController,
-				let news = newsViewController.news else { return }
-			news.IsRead = !news.IsRead
+			guard let announcementViewController = viewController as? AnnouncementViewController,
+				let announcement = announcementViewController.announcement else { return }
+			announcement.IsRead = !announcement.IsRead
 			self.announcementsViewModel.saveAnnouncements()
 		}
 		return [readAction]
