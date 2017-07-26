@@ -12,6 +12,7 @@ protocol Message {
 
     var authorName: String { get }
     var receivedDateTime: Date { get }
+    var subject: String { get }
     var contents: String { get }
 
 }

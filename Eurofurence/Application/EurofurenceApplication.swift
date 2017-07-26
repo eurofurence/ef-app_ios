@@ -89,6 +89,10 @@ class EurofurenceApplication {
             return apiMessage.receivedDateTime
         }
 
+        var subject: String {
+            return apiMessage.subject
+        }
+
         var contents: String {
             return apiMessage.message
         }
