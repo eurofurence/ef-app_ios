@@ -21,6 +21,8 @@ target 'Eurofurence' do
     pod 'Firebase/Messaging'
     pod 'Locksmith'
 	pod 'Whisper'
+    
+    pod 'SimulatorStatusMagic', :configurations => ['Screenshots']
 
     target :EurofurenceTests do
         inherit! :search_paths
