@@ -8,9 +8,13 @@
 
 import UIKit
 
-struct ProgressViewRefreshDelegate: DataStoreRefreshDelegate {
+class ProgressViewRefreshDelegate: DataStoreRefreshDelegate {
 
-    var progressView: UIProgressView
+    let progressView: UIProgressView
+
+	init(progressView: UIProgressView) {
+		self.progressView = progressView
+	}
 
 	func dataStoreRefreshDidBegin(_ lastSync: Date?) {
         progressView.progress = 0

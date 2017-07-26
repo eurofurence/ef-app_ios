@@ -8,9 +8,13 @@
 
 import UIKit
 
-struct RefreshControlDataStoreDelegate: DataStoreRefreshDelegate {
+class RefreshControlDataStoreDelegate: DataStoreRefreshDelegate {
 
-    var refreshControl: UIRefreshControl
+    let refreshControl: UIRefreshControl
+
+	init(refreshControl: UIRefreshControl) {
+		self.refreshControl = refreshControl
+	}
 
 	func dataStoreRefreshDidBegin(_ lastSync: Date?) {
 		var lastSyncText = "never"

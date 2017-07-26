@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct ApplicationActivityIndicatorRefreshDelegate: DataStoreRefreshDelegate {
+class ApplicationActivityIndicatorRefreshDelegate: DataStoreRefreshDelegate {
 
 	func dataStoreRefreshDidBegin(_ lastSync: Date?) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true

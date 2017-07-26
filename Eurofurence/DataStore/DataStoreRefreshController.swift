@@ -9,7 +9,7 @@
 import Foundation
 import ReactiveSwift
 
-protocol DataStoreRefreshDelegate {
+protocol DataStoreRefreshDelegate: class {
 
 	func dataStoreRefreshDidBegin(_ lastSync: Date?)
     func dataStoreRefreshDidFinish()
@@ -39,6 +39,11 @@ class DataStoreRefreshController {
             delegate.dataStoreRefreshDidBegin(lastSyncDateProvider.lastSyncDate)
         }
     }
+
+	func remove(_ delegate: DataStoreRefreshDelegate) {
+		guard let index = refreshingDelegates.index(where: { $0 === delegate }) else { return }
+		refreshingDelegates.remove(at: index)
+	}
 
 	func refreshStore(withDelta: Bool = true) {
         guard !isRefreshing else { return }
