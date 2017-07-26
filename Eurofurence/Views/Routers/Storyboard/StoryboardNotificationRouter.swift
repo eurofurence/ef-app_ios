@@ -30,7 +30,7 @@ struct StoryboardNotificationRouter: NotificationRouter {
 	func showLocalNotificationTarget(for notification: UILocalNotification) {
 		guard let userInfo = notification.userInfo else { return }
 
-		showRemoteNotification(for: userInfo)
+		showRemoteNotificationTarget(for: userInfo)
 	}
 
 	func showRemoteNotification(for userInfo: [AnyHashable : Any]) {
