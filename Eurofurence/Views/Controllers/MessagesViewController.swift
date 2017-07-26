@@ -22,6 +22,10 @@ class MessagesTableViewDataSource: NSObject, UITableViewDataSource {
         self.messages = messages
     }
 
+    func message(for indexPath: IndexPath) -> Message {
+        return messages[indexPath.row]
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
     }
@@ -31,7 +35,7 @@ class MessagesTableViewDataSource: NSObject, UITableViewDataSource {
             fatalError("Message cell not wired up in Storyboard")
         }
 
-        let message = messages[indexPath.row]
+        let message = self.message(for: indexPath)
         cell.show(message: message)
         return cell
     }
@@ -39,6 +43,7 @@ class MessagesTableViewDataSource: NSObject, UITableViewDataSource {
 }
 
 class MessagesViewController: UIViewController,
+                              UITableViewDelegate,
                               AuthenticationStateObserver,
                               LoginViewControllerDelegate,
                               PrivateMessagesObserver {
@@ -68,6 +73,7 @@ class MessagesViewController: UIViewController,
 
         tableView.addSubview(refreshControl)
         tableView.dataSource = dataSource
+        tableView.delegate = self
         app.add(authenticationStateObserver: self)
         app.add(privateMessagesObserver: self)
     }
@@ -86,10 +92,28 @@ class MessagesViewController: UIViewController,
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
 
-        if let destination = segue.destination as? UINavigationController,
-           let login = destination.topViewController as? LoginViewController {
-            login.loginDelegate = self
+        guard let identifier = segue.identifier else { return }
+
+        switch identifier {
+        case "showMessage":
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            guard let destinationViewController = segue.destination as? MessageDetailViewController else { return }
+            tableView.deselectRow(at: indexPath, animated: true)
+            let message = dataSource.message(for: indexPath)
+            destinationViewController.message = message
+
+        default:
+            if let destination = segue.destination as? UINavigationController,
+                let login = destination.topViewController as? LoginViewController {
+                login.loginDelegate = self
+            }
         }
+    }
+
+    // MARK: UITableViewDelegate
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showMessage", sender: self)
     }
 
     // MARK: AuthenticationStateObserver
