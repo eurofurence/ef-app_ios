@@ -52,10 +52,19 @@ struct StoryboardNotificationRouter: NotificationRouter {
 		let viewController: UIViewController
 		let targetIdentifier: String
 		if let eventId = userInfo["Event.Id"] as? String {
+
 			let eventViewController = storyboard.instantiateViewController(withIdentifier: "EventDetailView") as! EventViewController
 			eventViewController.event = dataContext.Events.value.first(where: { $0.Id == eventId })
 			viewController = eventViewController
 			targetIdentifier = "NewsNavigation"
+
+		} else if let announcementId = userInfo["Announcement.Id"] as? String {
+
+			let announcementViewController = storyboard.instantiateViewController(withIdentifier: "AnnouncementDetailView") as! NewsViewController
+			announcementViewController.news = dataContext.Announcements.value.first(where: { $0.Id == announcementId })
+			viewController = announcementViewController
+			targetIdentifier = "NewsNavigation"
+
 		} else {
 			return
 		}
