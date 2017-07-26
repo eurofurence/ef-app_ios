@@ -16,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
     var app: EurofurenceApplication = .shared
-	lazy var notificationRouter: NotificationRouter = StoryboardNotificationRouter(window: self.window!)
+	lazy var targetRouter: TargetRouter = StoryboardTargetRouter(window: self.window!)
+	lazy var notificationRouter: NotificationRouter = StoryboardNotificationRouter(window: self.window!, targetRouter: self.targetRouter)
 
 	func application(_ application: UIApplication,
 	                 didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -29,9 +30,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		PrintOptions.Active = .None
 
         DataStoreRefreshController.shared.add(ApplicationActivityIndicatorRefreshDelegate())
-        PresentationTier.assemble(window: window!)
+		PresentationTier.assemble(window: window!)
 
-		// TODO: Handle application start from (local) notification e.g. by transitioning to a target
+		// App was launched from local or remote notification
+		if let notification = launchOptions?[.localNotification] as? UILocalNotification {
+			// TODO: Routing will not work until ShowTabBarControllerSegue has been completed
+			notificationRouter.showLocalNotificationTarget(for: notification, doWaitForDataStore: true)
+		} else if let userInfo = launchOptions?[.remoteNotification] as? [AnyHashable : Any] {
+			// TODO: Routing will not work until ShowTabBarControllerSegue has been completed
+			notificationRouter.showRemoteNotificationTarget(for: userInfo, doWaitForDataStore: true)
+		}
 
 		return true
 	}
@@ -49,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
 		if application.applicationState == .inactive {
-			notificationRouter.showLocalNotificationTarget(for: notification)
+			notificationRouter.showLocalNotificationTarget(for: notification, doWaitForDataStore: false)
 		} else if application.applicationState == .active {
 			notificationRouter.showLocalNotification(for: notification)
 		}
@@ -67,23 +75,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			case "Announcement": // Contains announcement title and message
 				if application.applicationState == .inactive {
 					// Application was launched from tapping the notification -> forward to detail view
-					notificationRouter.showRemoteNotificationTarget(for: userInfo)
+					notificationRouter.showRemoteNotificationTarget(for: userInfo, doWaitForDataStore: false)
 					completionHandler(.noData)
 				} else {
-					let wasAlreadyActive = application.applicationState == .active
 					// Application is either in background or was already running in foreground
-					DataStoreRefreshController.shared.add(NotificationSyncDataStoreRefreshDelegate(successHandler: {
+					let wasAlreadyActive = application.applicationState == .active
+					DataStoreRefreshController.shared.add(NotificationSyncDataStoreRefreshDelegate(completionHandler: { result in
 						// Prevent the notification from being shown again once the app has become active,
 						// if the user foregrounded it by tapping on the background notification.
 						if wasAlreadyActive {
 							self.notificationRouter.showRemoteNotification(for: userInfo)
 						}
-					}, completionHandler: completionHandler))
+						completionHandler(result)
+					}))
 					DataStoreRefreshController.shared.refreshStore(withDelta: true)
 				}
 
 			case "Notification": // There is something we should notify the user about, most likely new PMs.
-				// TODO: Pull new PMs from server
+				// TODO: Pull new PMs from server and route to PM on tap
 				completionHandler(.noData)
 
 			default:

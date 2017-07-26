@@ -11,15 +11,16 @@ import Whisper
 
 struct StoryboardNotificationRouter: NotificationRouter {
 	private let window: UIWindow
+	private let targetRouter: TargetRouter
 	private let dataContext: DataContextProtocol = try! ContextResolver.container.resolve()
 	private let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
-	init(window: UIWindow) {
+	init(window: UIWindow, targetRouter: TargetRouter) {
 		self.window = window
+		self.targetRouter = targetRouter
 	}
 
 	func showLocalNotification(for notification: UILocalNotification) {
-
 		let notificationTitle = notification.alertTitle ?? ""
 		let notificationBody = notification.alertBody ?? ""
 
@@ -27,10 +28,10 @@ struct StoryboardNotificationRouter: NotificationRouter {
 		                 action: { self.showLocalNotificationTarget(for: notification) })
 	}
 
-	func showLocalNotificationTarget(for notification: UILocalNotification) {
+	func showLocalNotificationTarget(for notification: UILocalNotification, doWaitForDataStore: Bool = false) {
 		guard let userInfo = notification.userInfo else { return }
 
-		showRemoteNotificationTarget(for: userInfo)
+		showRemoteNotificationTarget(for: userInfo, doWaitForDataStore: doWaitForDataStore)
 	}
 
 	func showRemoteNotification(for userInfo: [AnyHashable : Any]) {
@@ -48,28 +49,41 @@ struct StoryboardNotificationRouter: NotificationRouter {
 		}
 	}
 
-	func showRemoteNotificationTarget(for userInfo: [AnyHashable : Any]) {
-		let viewController: UIViewController
-		let targetIdentifier: String
+	func showRemoteNotificationTarget(for userInfo: [AnyHashable : Any], doWaitForDataStore: Bool = false) {
+		let routingTarget: RoutingTarget
+		var lazyPayload: [String : ()->Any?]?
 		if let eventId = userInfo["Event.Id"] as? String {
-
-			let eventViewController = storyboard.instantiateViewController(withIdentifier: "EventDetailView") as! EventViewController
-			eventViewController.event = dataContext.Events.value.first(where: { $0.Id == eventId })
-			viewController = eventViewController
-			targetIdentifier = "NewsNavigation"
-
+			var payload: [String : Any]?
+			if let event = dataContext.Events.value.first(where: { $0.Id == eventId }) {
+				payload = ["event": event]
+			} else {
+				lazyPayload = ["event": { self.dataContext.Events.value.first(where: { $0.Id == eventId }) }]
+			}
+			routingTarget = RoutingTarget(target: "EventDetailView",
+			                                        on: "NewsNavigation",
+			                                        payload: payload)
 		} else if let announcementId = userInfo["Announcement.Id"] as? String {
-
-			let announcementViewController = storyboard.instantiateViewController(withIdentifier: "AnnouncementDetailView") as! AnnouncementViewController
-			announcementViewController.announcement = dataContext.Announcements.value.first(where: { $0.Id == announcementId })
-			viewController = announcementViewController
-			targetIdentifier = "NewsNavigation"
-
+			var payload: [String : Any]?
+			if let announcement = dataContext.Announcements.value.first(where: { $0.Id == announcementId }) {
+				payload = ["announcement": announcement]
+			} else {
+				lazyPayload = ["announcement": { self.dataContext.Announcements.value.first(where: { $0.Id == announcementId }) }]
+			}
+			routingTarget = RoutingTarget(target: "AnnouncementDetailView",
+			                                        on: "NewsNavigation",
+			                                        payload: payload)
 		} else {
 			return
 		}
 
-		pushViewControllerOnTabBar(to: targetIdentifier, viewController: viewController)
+		if doWaitForDataStore {
+			let postDataStoreRoutingDelegate = PostDataStoreRoutingDelegate(
+				targetRouter: targetRouter, target: routingTarget, lazyPayload: lazyPayload)
+			DataStoreLoadController.shared.add(postDataStoreRoutingDelegate)
+			DataStoreRefreshController.shared.add(postDataStoreRoutingDelegate)
+		} else {
+			targetRouter.show(target: routingTarget)
+		}
 	}
 
 	private func showNotification(title: String, subtitle: String, action: (() -> Void)?) {
