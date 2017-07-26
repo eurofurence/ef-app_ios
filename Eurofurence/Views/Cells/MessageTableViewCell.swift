@@ -20,6 +20,7 @@ class MessageTableViewCell: UITableViewCell {
     }()
 
     @IBOutlet weak var messageAuthorLabel: UILabel!
+    @IBOutlet weak var messageSubjectLabel: UILabel!
     @IBOutlet weak var messageReceivedDateLabel: UILabel!
     @IBOutlet weak var messageSynopsisLabel: UILabel!
     private var presentedMessage: Message?
@@ -29,6 +30,7 @@ class MessageTableViewCell: UITableViewCell {
 
         accessibilityLabel = nil
         messageAuthorLabel.text = nil
+        messageSubjectLabel.text = nil
         messageReceivedDateLabel.text = nil
         messageSynopsisLabel.text = nil
     }
@@ -36,10 +38,11 @@ class MessageTableViewCell: UITableViewCell {
     func show(message: Message) {
         let receivedDateString = MessageTableViewCell.dateFormatter.string(from: message.receivedDateTime)
         messageAuthorLabel.text = message.authorName
+        messageSubjectLabel.text = message.subject
         messageReceivedDateLabel.text = receivedDateString
         messageSynopsisLabel.text = message.contents
 
-        accessibilityLabel = "Message from \(message.authorName), received \(receivedDateString)."
+        accessibilityLabel = "Message from \(message.authorName), \"\(message.subject)\". Received \(receivedDateString)."
     }
 
 }

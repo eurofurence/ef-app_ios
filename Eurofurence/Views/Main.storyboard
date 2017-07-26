@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rkh-Ff-Equ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rkh-Ff-Equ">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -380,7 +380,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FE3-gC-42u">
-                                <rect key="frame" x="96.5" y="88" width="128.5" height="219"/>
+                                <rect key="frame" x="96" y="88" width="128.5" height="219"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="NO"/>
                                 </accessibility>
@@ -937,7 +937,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="96" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ntY-Po-g3u">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="111" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ntY-Po-g3u">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -966,24 +966,33 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Xy-cF-YC1">
-                                                    <rect key="frame" x="16" y="37" width="263" height="50.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Xy-cF-YC1">
+                                                    <rect key="frame" x="16" y="63" width="263" height="24.5"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <bool key="isElement" value="NO"/>
                                                     </accessibility>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoF-ZR-oO9">
+                                                    <rect key="frame" x="16" y="37" width="263" height="18"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="BWA-Ka-04e" secondAttribute="trailing" constant="8" id="0Uw-1S-o31"/>
-                                                <constraint firstItem="6Xy-cF-YC1" firstAttribute="top" secondItem="oiw-mk-KAm" secondAttribute="bottom" constant="8" id="4Z5-nT-lyk"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="RoF-ZR-oO9" secondAttribute="trailing" id="5mK-Bg-dYc"/>
+                                                <constraint firstItem="6Xy-cF-YC1" firstAttribute="top" secondItem="RoF-ZR-oO9" secondAttribute="bottom" constant="8" id="9XB-WS-QFv"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="6Xy-cF-YC1" secondAttribute="trailing" id="B0n-nW-quu"/>
                                                 <constraint firstItem="BWA-Ka-04e" firstAttribute="leading" secondItem="oiw-mk-KAm" secondAttribute="trailing" constant="8" id="MWc-t0-c0B"/>
                                                 <constraint firstItem="oiw-mk-KAm" firstAttribute="leading" secondItem="fz9-kc-e5r" secondAttribute="leadingMargin" constant="8" id="UH3-FH-LCz"/>
                                                 <constraint firstItem="BWA-Ka-04e" firstAttribute="centerY" secondItem="oiw-mk-KAm" secondAttribute="centerY" id="hbB-C9-ib0"/>
+                                                <constraint firstItem="RoF-ZR-oO9" firstAttribute="leading" secondItem="oiw-mk-KAm" secondAttribute="leading" id="kGJ-IL-9ab"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="6Xy-cF-YC1" secondAttribute="bottom" id="slk-kJ-pu8"/>
+                                                <constraint firstItem="RoF-ZR-oO9" firstAttribute="top" secondItem="oiw-mk-KAm" secondAttribute="bottom" constant="8" id="u07-04-a4N"/>
                                                 <constraint firstItem="oiw-mk-KAm" firstAttribute="top" secondItem="fz9-kc-e5r" secondAttribute="topMargin" id="wwb-EW-60g"/>
                                                 <constraint firstItem="6Xy-cF-YC1" firstAttribute="leading" secondItem="oiw-mk-KAm" secondAttribute="leading" id="y9u-Qa-jl1"/>
                                             </constraints>
@@ -994,6 +1003,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                         <connections>
                                             <outlet property="messageAuthorLabel" destination="oiw-mk-KAm" id="vVa-1x-SDv"/>
                                             <outlet property="messageReceivedDateLabel" destination="BWA-Ka-04e" id="eoG-SE-rmY"/>
+                                            <outlet property="messageSubjectLabel" destination="RoF-ZR-oO9" id="Kcf-Yq-AuY"/>
                                             <outlet property="messageSynopsisLabel" destination="6Xy-cF-YC1" id="Zhb-cb-UQj"/>
                                         </connections>
                                     </tableViewCell>
