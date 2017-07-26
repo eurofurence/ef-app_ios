@@ -121,6 +121,7 @@
 		9A7FFD551EFC5A9E007ABA36 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7FFD541EFC5A9E007ABA36 /* MapViewController.swift */; };
 		9A7FFD571EFC5B46007ABA36 /* CalendarAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7FFD561EFC5B46007ABA36 /* CalendarAccess.swift */; };
 		9A80EF4A1F289D0500FD0D37 /* NotificationSyncDataStoreRefreshDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A80EF491F289D0500FD0D37 /* NotificationSyncDataStoreRefreshDelegate.swift */; };
+		9A80EF4C1F28BD0300FD0D37 /* PostDataStoreRoutingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A80EF4B1F28BD0300FD0D37 /* PostDataStoreRoutingDelegate.swift */; };
 		9A80EF4E1F28C78900FD0D37 /* TargetRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A80EF4D1F28C78900FD0D37 /* TargetRouter.swift */; };
 		9A80EF501F28C9A600FD0D37 /* StoryboardTargetRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A80EF4F1F28C9A600FD0D37 /* StoryboardTargetRouter.swift */; };
 		9A8477981ED99EDE00F0DF3F /* NavigationResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8477971ED99EDE00F0DF3F /* NavigationResolver.swift */; };
@@ -401,6 +402,7 @@
 		9A7FFD541EFC5A9E007ABA36 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9A7FFD561EFC5B46007ABA36 /* CalendarAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarAccess.swift; sourceTree = "<group>"; };
 		9A80EF491F289D0500FD0D37 /* NotificationSyncDataStoreRefreshDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSyncDataStoreRefreshDelegate.swift; sourceTree = "<group>"; };
+		9A80EF4B1F28BD0300FD0D37 /* PostDataStoreRoutingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDataStoreRoutingDelegate.swift; sourceTree = "<group>"; };
 		9A80EF4D1F28C78900FD0D37 /* TargetRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetRouter.swift; sourceTree = "<group>"; };
 		9A80EF4F1F28C9A600FD0D37 /* StoryboardTargetRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardTargetRouter.swift; sourceTree = "<group>"; };
 		9A8477971ED99EDE00F0DF3F /* NavigationResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationResolver.swift; sourceTree = "<group>"; };
@@ -1381,6 +1383,7 @@
 				CA9845C11F28B16800E8821D /* MessageDetailViewController.swift */,
 				CAD780381F1D41C4002A8333 /* LoginViewController.swift */,
 				9A80EF491F289D0500FD0D37 /* NotificationSyncDataStoreRefreshDelegate.swift */,
+				9A80EF4B1F28BD0300FD0D37 /* PostDataStoreRoutingDelegate.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1836,6 +1839,7 @@
 				781A94401F1A1A72002DE70F /* FirebaseMessagingAdapter.swift in Sources */,
 				9A861EC11F25551400B75A8C /* ApplicationContext.swift in Sources */,
 				CA30EAA31F2129700053DBF6 /* LoginAPI.swift in Sources */,
+				9A80EF4C1F28BD0300FD0D37 /* PostDataStoreRoutingDelegate.swift in Sources */,
 				9AB64BCB1F018135004E8D91 /* KnowledgeGroupCell.swift in Sources */,
 				9ACB006F1F16C945001CE9D2 /* EventFavorite.swift in Sources */,
 				D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */,
