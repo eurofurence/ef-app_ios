@@ -79,36 +79,36 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
         XCTAssertTrue(context.capturingFirebaseAdapter.unsubscribedFromTestAllNotifications)
     }
 
-    func testForDebugConfigurationTestNotificationsShouldNotBeUnsubscribed() {
+    func testForDebugConfigurationTestAllNotificationsShouldNotBeUnsubscribed() {
         let context = assembleApp(configuration: .debug)
         context.registerDeviceToken()
 
-        XCTAssertFalse(context.capturingFirebaseAdapter.unsubscribedFromTestNotifications)
+        XCTAssertFalse(context.capturingFirebaseAdapter.unsubscribedFromTestAllNotifications)
     }
 
-    func testForReleaseConfigurationLiveNotificationsShouldNotBeUnsubscribed() {
+    func testForReleaseConfigurationLiveAllNotificationsShouldNotBeUnsubscribed() {
         let context = assembleApp(configuration: .release)
         context.registerDeviceToken()
 
-        XCTAssertFalse(context.capturingFirebaseAdapter.unsubscribedFromLiveNotifications)
+        XCTAssertFalse(context.capturingFirebaseAdapter.unsubscribedFromLiveAllNotifications)
     }
 
-    func testForDebugConfigurationNotRegisterForTestNotificationsUntilWeActuallyReceievePushToken() {
+    func testForDebugConfigurationNotRegisterForTestAllNotificationsUntilWeActuallyReceievePushToken() {
         let context = assembleApp(configuration: .debug)
-        XCTAssertFalse(context.capturingFirebaseAdapter.subscribedToTestNotifications)
+        XCTAssertFalse(context.capturingFirebaseAdapter.subscribedToTestAllNotifications)
     }
 
-    func testForReleaseConfigurationNotRegisterForLiveNotificationsUntilWeActuallyReceievePushToken() {
+    func testForReleaseConfigurationNotRegisterForLiveAllNotificationsUntilWeActuallyReceievePushToken() {
         let context = assembleApp(configuration: .release)
-        XCTAssertFalse(context.capturingFirebaseAdapter.subscribedToLiveNotifications)
+        XCTAssertFalse(context.capturingFirebaseAdapter.subscribedToLiveAllNotifications)
     }
 
-    func testForDebugConfigurationNotUnregisterFromLiveNotificationsUntilWeActuallyReceievePushToken() {
+    func testForDebugConfigurationNotUnregisterFromLiveAllNotificationsUntilWeActuallyReceievePushToken() {
         let context = assembleApp(configuration: .debug)
-        XCTAssertFalse(context.capturingFirebaseAdapter.unsubscribedFromLiveNotifications)
+        XCTAssertFalse(context.capturingFirebaseAdapter.unsubscribedFromLiveAllNotifications)
     }
 
-    func testForReleaseConfigurationNotUnregisterFromTestNotificationsUntilWeActuallyReceievePushToken() {
+    func testForReleaseConfigurationNotUnregisterFromTestAllNotificationsUntilWeActuallyReceievePushToken() {
         let context = assembleApp(configuration: .release)
         XCTAssertFalse(context.capturingFirebaseAdapter.unsubscribedFromTestNotifications)
     }
