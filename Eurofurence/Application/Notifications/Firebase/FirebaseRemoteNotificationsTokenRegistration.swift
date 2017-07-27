@@ -27,7 +27,6 @@ struct FirebaseRemoteNotificationsTokenRegistration: RemoteNotificationsTokenReg
 
     func registerRemoteNotificationsDeviceToken(_ token: Data, userAuthenticationToken: String?) {
         firebaseAdapter.setAPNSToken(deviceToken: token)
-        firebaseAdapter.subscribe(toTopic: .announcements)
 
         var fcmTopics: [FirebaseTopic] = [.ios, .version(appVersion.version), .announcements]
         switch buildConfiguration.configuration {

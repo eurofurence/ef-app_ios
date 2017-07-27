@@ -121,11 +121,11 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
         XCTAssertEqual(deviceToken, context.capturingFirebaseAdapter.registeredDeviceToken)
     }
 
-    func testForAnyConfigurationTheAnnouncementsTopicShouldBeSubscribedTo() {
+    func testForAnyConfigurationTheAnnouncementsTopicShouldNotBeSubscribedTo() {
         let context = assembleApp(configuration: .debug)
         context.registerDeviceToken()
 
-        XCTAssertTrue(context.capturingFirebaseAdapter.subscribedToAnnouncements)
+        XCTAssertFalse(context.capturingFirebaseAdapter.subscribedToAnnouncements)
     }
 
     func testForAnyConfigurationTheAnnouncementsTopicShouldNotBeSubscribedToUntilWeActuallyReceievePushToken() {
