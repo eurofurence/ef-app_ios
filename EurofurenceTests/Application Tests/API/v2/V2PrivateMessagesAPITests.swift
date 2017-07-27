@@ -237,4 +237,11 @@ class V2PrivateMessagesAPITests: XCTestCase {
         XCTAssertEqual(expectedURL, JSONSession.postedURL)
     }
     
+    func testMarkingAPIMessageAsReadSubmitsProvidesTheAuthorizationTokenInTheAuthorizationHeader() {
+        let token = "Top secret"
+        api.markMessageWithIdentifierAsRead("", authorizationToken: token)
+        
+        XCTAssertEqual("Bearer \(token)", JSONSession.capturedAdditionalPOSTHeaders?["Authorization"])
+    }
+    
 }
