@@ -1,4 +1,5 @@
 devices([
+   "iPhone 4s",
    "iPhone 6",
    "iPhone 6 Plus",
    "iPhone 5",
