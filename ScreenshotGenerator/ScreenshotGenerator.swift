@@ -94,6 +94,7 @@ class ScreenshotGenerator: XCTestCase {
         takeEventsScreenshot()
         takeEventDetailScreenshot()
         navigateToMapsTab()
+        takeMapsScreenshot()
         navigateToInformation()
         takeMoreInformationScreenshot()
     }
