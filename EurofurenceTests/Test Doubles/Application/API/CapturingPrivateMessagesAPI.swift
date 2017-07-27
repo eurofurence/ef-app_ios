@@ -22,8 +22,10 @@ class CapturingPrivateMessagesAPI: PrivateMessagesAPI {
     }
     
     private(set) var messageIdentifierMarkedAsRead: String?
-    func markMessageWithIdentifierAsRead(_ identifier: String) {
+    private(set) var capturedAuthTokenForMarkingMessageAsRead: String?
+    func markMessageWithIdentifierAsRead(_ identifier: String, authorizationToken: String) {
         messageIdentifierMarkedAsRead = identifier
+        capturedAuthTokenForMarkingMessageAsRead = authorizationToken
     }
     
     func simulateSuccessfulResponse(response: APIPrivateMessagesResponse = StubAPIPrivateMessagesResponse()) {

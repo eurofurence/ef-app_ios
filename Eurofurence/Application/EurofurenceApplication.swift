@@ -126,7 +126,9 @@ class EurofurenceApplication {
 
     func markMessageAsRead(_ message: Message) {
         guard let adapter = message as? MessageAdapter else { return }
-        privateMessagesAPI.markMessageWithIdentifierAsRead(adapter.identifier)
+        guard let token = authenticationCoordinator.userAuthenticationToken else { return }
+
+        privateMessagesAPI.markMessageWithIdentifierAsRead(adapter.identifier, authorizationToken: token)
     }
 
 }

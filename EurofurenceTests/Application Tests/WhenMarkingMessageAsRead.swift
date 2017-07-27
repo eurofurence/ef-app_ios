@@ -28,4 +28,23 @@ class WhenMarkingMessageAsRead: XCTestCase {
         XCTAssertEqual(identifier, context.privateMessagesAPI.messageIdentifierMarkedAsRead)
     }
     
+    func testItShouldSupplyTheUsersAuthenticationTokenToTheMarkAsReadAPI() {
+        let authenticationToken = "Some auth token"
+        let credential = LoginCredential(username: "", registrationNumber: 0, authenticationToken: authenticationToken, tokenExpiryDate: .distantFuture)
+        let context = ApplicationTestBuilder().with(credential).build()
+        let observer = CapturingPrivateMessagesObserver()
+        context.application.add(privateMessagesObserver: observer)
+        context.application.fetchPrivateMessages()
+        let identifier = "Message ID"
+        let message = StubAPIPrivateMessage(id: identifier)
+        let response = StubAPIPrivateMessagesResponse(messages: [message])
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: response)
+        
+        if let receievedMessage = observer.capturedMessages?.first {
+            context.application.markMessageAsRead(receievedMessage)
+        }
+        
+        XCTAssertEqual(authenticationToken, context.privateMessagesAPI.capturedAuthTokenForMarkingMessageAsRead)
+    }
+    
 }

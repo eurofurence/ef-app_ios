@@ -231,7 +231,7 @@ class V2PrivateMessagesAPITests: XCTestCase {
     
     func testMarkingAPIMessageAsReadSubmitsPOSTRequestToMessageReadURL() {
         let identifier = "Test"
-        api.markMessageWithIdentifierAsRead(identifier)
+        api.markMessageWithIdentifierAsRead(identifier, authorizationToken: "")
         let expectedURL = "https://app.eurofurence.org/api/v2/Communication/PrivateMessages/\(identifier)/Read"
         
         XCTAssertEqual(expectedURL, JSONSession.postedURL)
