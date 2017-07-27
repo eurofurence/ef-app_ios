@@ -151,11 +151,11 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
         XCTAssertFalse(context.capturingFCMDeviceRegister.registeredTestTopic)
     }
 
-    func testForDebugConfigurationNotRegisterTheLiveTopicToTheFCMDeviceRegister() {
+    func testForDebugConfigurationRegisterTheLiveTopicToTheFCMDeviceRegister() {
         let context = assembleApp(configuration: .debug)
         context.registerDeviceToken()
 
-        XCTAssertFalse(context.capturingFCMDeviceRegister.registeredLiveTopic)
+        XCTAssertTrue(context.capturingFCMDeviceRegister.registeredLiveTopic)
     }
 
     func testRegisterTheiOSTopicForDebugConfiguration() {

@@ -31,7 +31,7 @@ struct FirebaseRemoteNotificationsTokenRegistration: RemoteNotificationsTokenReg
         var fcmTopics: [FirebaseTopic] = [.ios, .version(appVersion.version)]
         switch buildConfiguration.configuration {
         case .debug:
-            fcmTopics += [.debug, .test]
+            fcmTopics += [.debug, .test, .live]
             firebaseAdapter.subscribe(toTopic: .testAll)
             firebaseAdapter.unsubscribe(fromTopic: .liveAll)
 
