@@ -48,16 +48,6 @@
                ReferencedContainer = "container:Eurofurence.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CA9845C61F2907A800E8821D"
-               BuildableName = "ScreenshotGenerator.xctest"
-               BlueprintName = "ScreenshotGenerator"
-               ReferencedContainer = "container:Eurofurence.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
