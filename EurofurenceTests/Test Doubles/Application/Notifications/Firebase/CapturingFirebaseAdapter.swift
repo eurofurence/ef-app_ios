@@ -39,17 +39,33 @@ class CapturingFirebaseAdapter: FirebaseAdapter {
     var subscribedToTestNotifications: Bool {
         return didSubscribeToTopic(.test)
     }
+    
+    var subscribedToTestAllNotifications: Bool {
+        return didSubscribeToTopic(.testAll)
+    }
 
     var subscribedToLiveNotifications: Bool {
         return didSubscribeToTopic(.live)
+    }
+    
+    var subscribedToLiveAllNotifications: Bool {
+        return didSubscribeToTopic(.liveAll)
     }
 
     var unsubscribedFromTestNotifications: Bool {
         return didUnsubscribeFromTopic(.test)
     }
+    
+    var unsubscribedFromTestAllNotifications: Bool {
+        return didUnsubscribeFromTopic(.testAll)
+    }
 
     var unsubscribedFromLiveNotifications: Bool {
         return didUnsubscribeFromTopic(.live)
+    }
+    
+    var unsubscribedFromLiveAllNotifications: Bool {
+        return didUnsubscribeFromTopic(.liveAll)
     }
 
     var subscribedToAnnouncements: Bool {

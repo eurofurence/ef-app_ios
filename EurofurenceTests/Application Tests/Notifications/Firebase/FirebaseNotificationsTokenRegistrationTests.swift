@@ -37,46 +37,46 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
                        capturingFCMDeviceRegister: capturingFCMDeviceRegister)
     }
 
-    func testForDebugConfigurationTestNotificationsShouldBeSubscribed() {
+    func testForDebugConfigurationTestAllNotificationsShouldBeSubscribed() {
         let context = assembleApp(configuration: .debug)
         context.registerDeviceToken()
 
-        XCTAssertTrue(context.capturingFirebaseAdapter.subscribedToTestNotifications)
+        XCTAssertTrue(context.capturingFirebaseAdapter.subscribedToTestAllNotifications)
     }
 
-    func testForReleaseConfigurationLiveNotificationsShouldBeSubscribed() {
+    func testForReleaseConfigurationLiveAllNotificationsShouldBeSubscribed() {
         let context = assembleApp(configuration: .release)
         context.registerDeviceToken()
 
-        XCTAssertTrue(context.capturingFirebaseAdapter.subscribedToLiveNotifications)
+        XCTAssertTrue(context.capturingFirebaseAdapter.subscribedToLiveAllNotifications)
     }
 
-    func testForDebugConfigurationLiveNotificationsShouldNotBeSubscribed() {
+    func testForDebugConfigurationLiveAllNotificationsShouldNotBeSubscribed() {
         let context = assembleApp(configuration: .debug)
         context.registerDeviceToken()
 
-        XCTAssertFalse(context.capturingFirebaseAdapter.subscribedToLiveNotifications)
+        XCTAssertFalse(context.capturingFirebaseAdapter.subscribedToLiveAllNotifications)
     }
 
-    func testForReleaseConfigurationTestNotificationsShouldNotBeSubscribed() {
+    func testForReleaseConfigurationTestAllNotificationsShouldNotBeSubscribed() {
         let context = assembleApp(configuration: .release)
         context.registerDeviceToken()
 
-        XCTAssertFalse(context.capturingFirebaseAdapter.subscribedToTestNotifications)
+        XCTAssertFalse(context.capturingFirebaseAdapter.subscribedToTestAllNotifications)
     }
 
-    func testForDebugConfigurationLiveNotificationsShouldBeUnsubscribed() {
+    func testForDebugConfigurationLiveAllNotificationsShouldBeUnsubscribed() {
         let context = assembleApp(configuration: .debug)
         context.registerDeviceToken()
 
-        XCTAssertTrue(context.capturingFirebaseAdapter.unsubscribedFromLiveNotifications)
+        XCTAssertTrue(context.capturingFirebaseAdapter.unsubscribedFromLiveAllNotifications)
     }
 
-    func testForReleaseConfigurationTestNotificationsShouldBeUnsubscribed() {
+    func testForReleaseConfigurationTestAllNotificationsShouldBeUnsubscribed() {
         let context = assembleApp(configuration: .release)
         context.registerDeviceToken()
 
-        XCTAssertTrue(context.capturingFirebaseAdapter.unsubscribedFromTestNotifications)
+        XCTAssertTrue(context.capturingFirebaseAdapter.unsubscribedFromTestAllNotifications)
     }
 
     func testForDebugConfigurationTestNotificationsShouldNotBeUnsubscribed() {

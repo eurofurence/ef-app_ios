@@ -33,16 +33,18 @@ struct FirebaseRemoteNotificationsTokenRegistration: RemoteNotificationsTokenReg
         switch buildConfiguration.configuration {
         case .debug:
             fcmTopics += [.debug, .test]
-            firebaseAdapter.subscribe(toTopic: .test)
-            firebaseAdapter.unsubscribe(fromTopic: .live)
+            firebaseAdapter.subscribe(toTopic: .testAll)
+            firebaseAdapter.unsubscribe(fromTopic: .liveAll)
 
         case .release:
             fcmTopics += [.live]
-            firebaseAdapter.subscribe(toTopic: .live)
-            firebaseAdapter.unsubscribe(fromTopic: .test)
+            firebaseAdapter.subscribe(toTopic: .liveAll)
+            firebaseAdapter.unsubscribe(fromTopic: .testAll)
         }
 
-        fcmRegistration.registerFCM(firebaseAdapter.fcmToken, topics: fcmTopics, authenticationToken: userAuthenticationToken)
+        fcmRegistration.registerFCM(firebaseAdapter.fcmToken,
+                                    topics: fcmTopics,
+                                    authenticationToken: userAuthenticationToken)
     }
 
 }
