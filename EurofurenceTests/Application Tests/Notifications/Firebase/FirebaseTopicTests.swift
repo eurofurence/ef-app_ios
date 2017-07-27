@@ -19,10 +19,6 @@ class FirebaseTopicTests: XCTestCase {
         XCTAssertEqual("live", FirebaseTopic.live.description)
     }
     
-    func testProvideAppropriateTopicNameForAnnouncementsTopic() {
-        XCTAssertEqual("announcements", FirebaseTopic.announcements.description)
-    }
-    
     func testProvideAppropriateTopicNameForiOSTopic() {
         XCTAssertEqual("ios", FirebaseTopic.ios.description)
     }

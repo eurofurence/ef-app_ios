@@ -14,7 +14,6 @@ enum FirebaseTopic: CustomStringConvertible, Hashable {
     case testAll
     case live
     case liveAll
-    case announcements
     case ios
     case debug
     case version(String)
@@ -37,8 +36,6 @@ enum FirebaseTopic: CustomStringConvertible, Hashable {
             return "live"
         case .liveAll:
             return "live-all"
-        case .announcements:
-            return "announcements"
         case .ios:
             return "ios"
         case .debug:

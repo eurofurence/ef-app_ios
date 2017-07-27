@@ -28,10 +28,6 @@ class CapturingFCMDeviceRegistration: FCMDeviceRegistration {
         return topics.contains(.live)
     }
 
-    var registeredAnnouncementsTopic: Bool {
-        return topics.contains(.announcements)
-    }
-
     var registeredToiOSTopic: Bool {
         return topics.contains(.ios)
     }
