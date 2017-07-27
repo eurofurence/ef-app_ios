@@ -21,6 +21,11 @@ class CapturingPrivateMessagesAPI: PrivateMessagesAPI {
         self.completionHandler = completionHandler
     }
     
+    private(set) var messageIdentifierMarkedAsRead: String?
+    func markMessageWithIdentifierAsRead(_ identifier: String) {
+        messageIdentifierMarkedAsRead = identifier
+    }
+    
     func simulateSuccessfulResponse(response: APIPrivateMessagesResponse = StubAPIPrivateMessagesResponse()) {
         completionHandler?(.success(response))
     }

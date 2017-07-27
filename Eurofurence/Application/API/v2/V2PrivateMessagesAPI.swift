@@ -29,4 +29,8 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
         }
     }
 
+    func markMessageWithIdentifierAsRead(_ identifier: String) {
+
+    }
+
 }

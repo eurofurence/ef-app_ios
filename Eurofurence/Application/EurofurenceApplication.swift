@@ -81,6 +81,10 @@ class EurofurenceApplication {
 
         var apiMessage: APIPrivateMessage
 
+        var identifier: String {
+            return apiMessage.id
+        }
+
         var authorName: String {
             return apiMessage.authorName
         }
@@ -118,6 +122,11 @@ class EurofurenceApplication {
         } else {
             privateMessagesObservers.forEach({ $0.userNotAuthenticatedForPrivateMessages() })
         }
+    }
+
+    func markMessageAsRead(_ message: Message) {
+        guard let adapter = message as? MessageAdapter else { return }
+        privateMessagesAPI.markMessageWithIdentifierAsRead(adapter.identifier)
     }
 
 }

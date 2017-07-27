@@ -234,6 +234,7 @@
 		CA9845CA1F2907A800E8821D /* ScreenshotGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */; };
 		CA9845D31F2909DB00E8821D /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */; };
 		CA9845DA1F29199E00E8821D /* ScreenshotAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */; };
+		CA9845DC1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */; };
 		CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780361F1D415A002A8333 /* MessagesViewController.swift */; };
 		CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780381F1D41C4002A8333 /* LoginViewController.swift */; };
 		CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */; };
@@ -540,6 +541,7 @@
 		CA9845CB1F2907A800E8821D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotAssistant.swift; sourceTree = "<group>"; };
+		CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenMarkingMessageAsRead.swift; path = "Application Tests/WhenMarkingMessageAsRead.swift"; sourceTree = "<group>"; };
 		CAD780361F1D415A002A8333 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CAD780381F1D41C4002A8333 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenLoginStateChanges.swift; path = "Application Tests/WhenLoginStateChanges.swift"; sourceTree = "<group>"; };
@@ -932,6 +934,7 @@
 				CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */,
 				CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */,
 				CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessages.swift */,
+				CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */,
 			);
 			name = "Application Tests";
 			sourceTree = "<group>";
@@ -2023,6 +2026,7 @@
 				781A94421F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */,
 				78455B491F1177AD005BE2D7 /* CapturingTutorialRouter.swift in Sources */,
 				78C86D721F12AACA003A20E6 /* WhenTheSplashScreenAppears.swift in Sources */,
+				CA9845DC1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift in Sources */,
 				6EF96CDB1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift in Sources */,
 				CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */,
 				CAD7805D1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift in Sources */,
