@@ -29,9 +29,17 @@ class CapturingV2PrivateMessagesObserver {
 
 class V2PrivateMessagesAPITests: XCTestCase {
     
+    var JSONSession: CapturingJSONSession!
+    var api: V2PrivateMessagesAPI!
+    
+    override func setUp() {
+        super.setUp()
+        
+        JSONSession = CapturingJSONSession()
+        api = V2PrivateMessagesAPI(JSONSession: JSONSession)
+    }
+    
     private func makeCapturingObserverForResponse(_ response: String?) -> CapturingV2PrivateMessagesObserver {
-        let JSONSession = CapturingJSONSession()
-        let api = V2PrivateMessagesAPI(JSONSession: JSONSession)
         let observer = CapturingV2PrivateMessagesObserver()
         api.loadPrivateMessages(authorizationToken: "", completionHandler: observer.handle)
         JSONSession.invokeLastGETCompletionHandler(responseData: response?.data(using: .utf8))
@@ -65,16 +73,12 @@ class V2PrivateMessagesAPITests: XCTestCase {
     
     func testThePrivateMessagesEndpointShouldReceieveRequest() {
         let expectedURL = "https://app.eurofurence.org/api/v2/Communication/PrivateMessages"
-        let JSONSession = CapturingJSONSession()
-        let api = V2PrivateMessagesAPI(JSONSession: JSONSession)
         api.loadPrivateMessages(authorizationToken: "", completionHandler: { _ in } )
         
         XCTAssertEqual(expectedURL, JSONSession.getRequestURL)
     }
     
     func testTheAuthorizationTokenShouldBeMadeAvailableInTheAuthorizationHeader() {
-        let JSONSession = CapturingJSONSession()
-        let api = V2PrivateMessagesAPI(JSONSession: JSONSession)
         let token = "Top secret"
         api.loadPrivateMessages(authorizationToken: token, completionHandler: { _ in } )
         
