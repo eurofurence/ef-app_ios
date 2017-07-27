@@ -30,7 +30,9 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
     }
 
     func markMessageWithIdentifierAsRead(_ identifier: String) {
-
+        let request = Request(url: "https://app.eurofurence.org/api/v2/Communication/PrivateMessages/\(identifier)/Read",
+                              body: Data())
+        JSONSession.post(request, completionHandler: { _ in })
     }
 
 }
