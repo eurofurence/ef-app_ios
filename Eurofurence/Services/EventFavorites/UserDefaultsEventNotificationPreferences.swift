@@ -11,6 +11,7 @@ import Result
 
 class UserDefaultsEventNotificationPreferences: EventNotificationPreferences {
 	static let notificationAheadIntervalKey = "EventNotificationPreferences.notificationAheadInterval"
+	static let notificationSound = "EventNotificationPreferences.notificationSound"
 	static let notificationsEnabledKey = "EventNotificationPreferences.notificationsEnabled"
 	static let instance = UserDefaultsEventNotificationPreferences(userDefaults: UserDefaults.standard)
 
@@ -20,6 +21,10 @@ class UserDefaultsEventNotificationPreferences: EventNotificationPreferences {
 
 	var notificationsEnabled: Bool {
 		return userDefaults.bool(forKey: UserDefaultsEventNotificationPreferences.notificationsEnabledKey)
+	}
+
+	var notificationSound: NotificationSound {
+		return NotificationSound(rawValue: userDefaults.integer(forKey: UserDefaultsEventNotificationPreferences.notificationSound)) ?? NotificationSound.None
 	}
 
 	var signal: Signal<(Bool, TimeInterval), NoError> {
@@ -33,12 +38,18 @@ class UserDefaultsEventNotificationPreferences: EventNotificationPreferences {
 		self.userDefaults = userDefaults
 		userDefaults.register(defaults: [
 			UserDefaultsEventNotificationPreferences.notificationAheadIntervalKey: 60.0 * 60.0,
+			UserDefaultsEventNotificationPreferences.notificationSound: NotificationSound.Themed.rawValue,
 			UserDefaultsEventNotificationPreferences.notificationsEnabledKey: true
 			])
 	}
 
 	func setNotificationAheadInterval(_ interval: TimeInterval) {
 		userDefaults.set(interval, forKey: UserDefaultsEventNotificationPreferences.notificationAheadIntervalKey)
+		notify()
+	}
+
+	func setNotificationSound(_ notificationSound: NotificationSound) {
+		userDefaults.set(notificationSound.rawValue, forKey: UserDefaultsEventNotificationPreferences.notificationSound)
 		notify()
 	}
 
