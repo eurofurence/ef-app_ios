@@ -26,6 +26,7 @@ struct StoryboardNotificationRouter: NotificationRouter {
 		let notificationBody = notification.alertBody ?? ""
 
 		showNotification(title: notificationTitle, subtitle: notificationBody,
+		                 soundName: notification.soundName,
 		                 action: { self.showLocalNotificationTarget(for: notification) })
 	}
 
@@ -88,14 +89,14 @@ struct StoryboardNotificationRouter: NotificationRouter {
 		}
 	}
 
-	private func showNotification(title: String, subtitle: String, action: (() -> Void)?) {
+	private func showNotification(title: String, subtitle: String, soundName: String? = nil, action: (() -> Void)? = nil) {
 		guard let rootViewController = window.rootViewController else { return }
 		let announcement = Whisper.Announcement(title: title, subtitle: subtitle,
 		                                        image: UIImage.init(named: "AppIcon40x40"),
 		                                        duration: 10,
 		                                        action: action)
 		Whisper.show(shout: announcement, to: rootViewController)
-		AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+		NotificationSoundPlayer.shared.playSound(for: soundName)
 	}
 
 	private func pushViewControllerOnTabBar(to identifier: String, viewController: UIViewController) {
