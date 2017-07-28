@@ -23,6 +23,7 @@ class MessageTableViewCell: UITableViewCell {
     @IBOutlet weak var messageSubjectLabel: UILabel!
     @IBOutlet weak var messageReceivedDateLabel: UILabel!
     @IBOutlet weak var messageSynopsisLabel: UILabel!
+    @IBOutlet weak var unreadMessageIndicator: UnreadMessageIndicator!
     private var presentedMessage: Message?
 
     override func prepareForReuse() {
@@ -41,6 +42,7 @@ class MessageTableViewCell: UITableViewCell {
         messageSubjectLabel.text = message.subject
         messageReceivedDateLabel.text = receivedDateString
         messageSynopsisLabel.text = message.contents
+        unreadMessageIndicator.isHidden = message.isRead
 
         accessibilityLabel = "Message from \(message.authorName), \"\(message.subject)\". Received \(receivedDateString)."
     }
