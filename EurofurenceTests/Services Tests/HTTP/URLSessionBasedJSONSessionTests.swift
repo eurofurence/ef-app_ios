@@ -120,19 +120,19 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
     private func post(_ url: String,
                       body: Data = Data(),
                       headers: [String : String] = [:],
-                      completionHandler: ((Data?) -> Void)? = nil) {
+                      completionHandler: ((Data?, Error?) -> Void)? = nil) {
         let poster = URLSessionBasedJSONSession()
         let request = Request(url: url, body: body, headers: headers)
-        poster.post(request, completionHandler: { completionHandler?($0) })
+        poster.post(request, completionHandler: { completionHandler?($0, $1) })
     }
     
     private func get(_ url: String,
                      body: Data = Data(),
                      headers: [String : String] = [:],
-                     completionHandler: ((Data?) -> Void)? = nil) {
+                     completionHandler: ((Data?, Error?) -> Void)? = nil) {
         let session = URLSessionBasedJSONSession()
         let request = Request(url: url, body: body, headers: headers)
-        session.get(request, completionHandler: { completionHandler?($0) })
+        session.get(request, completionHandler: { completionHandler?($0, $1) })
     }
     
     func testPostingURLShouldRequestWithURL() {
@@ -212,7 +212,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
         JournallingURLRequestLogger.shared.stubResponse(for: expectedURL, with: expectedResponseData)
         
         let matchingDataExpectation = expectation(description: "Returned data from response")
-        post(expectedURL, completionHandler: { data in
+        post(expectedURL, completionHandler: { data, _ in
             if expectedResponseData == data {
                 matchingDataExpectation.fulfill()
             }
@@ -283,7 +283,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
         JournallingURLRequestLogger.shared.stubResponse(for: expectedURL, with: expectedResponseData)
         
         let matchingDataExpectation = expectation(description: "Returned data from response")
-        get(expectedURL, completionHandler: { data in
+        get(expectedURL, completionHandler: { data, _ in
             if expectedResponseData == data {
                 matchingDataExpectation.fulfill()
             }

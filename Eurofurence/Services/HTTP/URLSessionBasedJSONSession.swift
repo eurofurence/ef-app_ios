@@ -12,15 +12,15 @@ struct URLSessionBasedJSONSession: JSONSession {
 
     var session: URLSession = .shared
 
-    func get(_ request: Request, completionHandler: @escaping (Data?) -> Void) {
+    func get(_ request: Request, completionHandler: @escaping (Data?, Error?) -> Void) {
         perform(request, method: "GET", completionHandler: completionHandler)
     }
 
-    func post(_ request: Request, completionHandler: @escaping (Data?) -> Void) {
+    func post(_ request: Request, completionHandler: @escaping (Data?, Error?) -> Void) {
         perform(request, method: "POST", completionHandler: completionHandler)
     }
 
-    private func perform(_ request: Request, method: String, completionHandler: @escaping (Data?) -> Void) {
+    private func perform(_ request: Request, method: String, completionHandler: @escaping (Data?, Error?) -> Void) {
         guard let actualURL = URL(string: request.url) else { return }
 
         var urlRequest = URLRequest(url: actualURL)
@@ -31,7 +31,7 @@ struct URLSessionBasedJSONSession: JSONSession {
 
         session.dataTask(with: urlRequest, completionHandler: { (data, _, _) in
             DispatchQueue.main.async {
-                completionHandler(data)
+                completionHandler(data, nil)
             }
         }).resume()
     }

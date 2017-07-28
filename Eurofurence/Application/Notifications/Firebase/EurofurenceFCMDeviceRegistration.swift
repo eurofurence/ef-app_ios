@@ -31,7 +31,7 @@ struct EurofurenceFCMDeviceRegistration: FCMDeviceRegistration {
             request.headers = ["Authorization": "Bearer \(token)"]
         }
 
-        JSONSession.post(request, completionHandler: { _ in })
+        JSONSession.post(request, completionHandler: { _, error in completionHandler(error) })
     }
 
 }
