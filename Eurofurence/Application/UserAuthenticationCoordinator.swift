@@ -63,6 +63,12 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
         }
     }
 
+    func logout() {
+        guard let registeredDeviceToken = registeredDeviceToken else { return }
+        remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(registeredDeviceToken,
+                                                                                    userAuthenticationToken: nil)
+    }
+
     // MARK: LoginTaskDelegate
 
     func loginTask(_ task: LoginTask, didProduce loginCredential: LoginCredential) {

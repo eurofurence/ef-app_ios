@@ -240,6 +240,7 @@
 		CA9845DA1F29199E00E8821D /* ScreenshotAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */; };
 		CA9845DC1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */; };
 		CA9845DE1F2B01BA00E8821D /* UnreadMessageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */; };
+		CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */; };
 		CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780361F1D415A002A8333 /* MessagesViewController.swift */; };
 		CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780381F1D41C4002A8333 /* LoginViewController.swift */; };
 		CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */; };
@@ -552,6 +553,7 @@
 		CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotAssistant.swift; sourceTree = "<group>"; };
 		CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenMarkingMessageAsRead.swift; path = "Application Tests/WhenMarkingMessageAsRead.swift"; sourceTree = "<group>"; };
 		CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnreadMessageIndicator.swift; sourceTree = "<group>"; };
+		CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenLoggingOut.swift; path = "Application Tests/WhenLoggingOut.swift"; sourceTree = "<group>"; };
 		CAD780361F1D415A002A8333 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CAD780381F1D41C4002A8333 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenLoginStateChanges.swift; path = "Application Tests/WhenLoginStateChanges.swift"; sourceTree = "<group>"; };
@@ -944,6 +946,7 @@
 				78D7EEB41F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift */,
 				CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */,
 				CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */,
+				CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */,
 				CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessages.swift */,
 				CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */,
 			);
@@ -2066,6 +2069,7 @@
 				6EEC6DA31F1BFC5000205F2D /* StubAppVersionProviding.swift in Sources */,
 				78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */,
 				CA2B4FA61F1EA1B300F007E1 /* ApplicationTestBuilder.swift in Sources */,
+				CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */,
 				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,
 				7820A6E51F140056004C0FB5 /* CapturingAlertRouter.swift in Sources */,
 				781A94381F1A19BD002DE70F /* CapturingFirebaseAdapter.swift in Sources */,
