@@ -101,6 +101,7 @@ class MessagesViewController: UIViewController,
             tableView.deselectRow(at: indexPath, animated: true)
             let message = dataSource.message(for: indexPath)
             destinationViewController.message = message
+            app.markMessageAsRead(message)
 
         default:
             if let destination = segue.destination as? UINavigationController,
