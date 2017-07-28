@@ -15,19 +15,17 @@ class UserDefaultsEventNotificationPreferences: EventNotificationPreferences {
 	static let instance = UserDefaultsEventNotificationPreferences(userDefaults: UserDefaults.standard)
 
 	var notificationAheadInterval: TimeInterval {
-		return _notificationAheadInterval
+		return userDefaults.double(forKey: UserDefaultsEventNotificationPreferences.notificationAheadIntervalKey)
 	}
 
 	var notificationsEnabled: Bool {
-		return _notificationsEnabled
+		return userDefaults.bool(forKey: UserDefaultsEventNotificationPreferences.notificationsEnabledKey)
 	}
 
 	var signal: Signal<(Bool, TimeInterval), NoError> {
 		return _signal
 	}
 
-	private var _notificationAheadInterval = TimeInterval(0.0)
-	private var _notificationsEnabled = false
 	private let (_signal, observer) = Signal<(Bool, TimeInterval), NoError>.pipe()
 	private let userDefaults: UserDefaults
 
@@ -37,19 +35,15 @@ class UserDefaultsEventNotificationPreferences: EventNotificationPreferences {
 			UserDefaultsEventNotificationPreferences.notificationAheadIntervalKey: 60.0 * 60.0,
 			UserDefaultsEventNotificationPreferences.notificationsEnabledKey: true
 			])
-		_notificationAheadInterval = userDefaults.double(forKey: UserDefaultsEventNotificationPreferences.notificationAheadIntervalKey)
-		_notificationsEnabled = userDefaults.bool(forKey: UserDefaultsEventNotificationPreferences.notificationsEnabledKey)
 	}
 
 	func setNotificationAheadInterval(_ interval: TimeInterval) {
 		userDefaults.set(interval, forKey: UserDefaultsEventNotificationPreferences.notificationAheadIntervalKey)
-		_notificationAheadInterval = interval
 		notify()
 	}
 
 	func setNotificationsEnabled(_ enabled: Bool) {
 		userDefaults.set(enabled, forKey: UserDefaultsEventNotificationPreferences.notificationsEnabledKey)
-		_notificationsEnabled = enabled
 		notify()
 	}
 
