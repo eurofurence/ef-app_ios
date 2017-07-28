@@ -47,17 +47,16 @@ class NotificationSoundPlayer {
 		return soundId
 	}
 
-	func copyToSoundsLibrary(_ soundName: String, targetName: String) throws {
+	func copyToSoundsLibrary(_ soundName: String?, targetName: String) throws {
 		try checkSoundsLibraryDirectory()
-		guard let soundUrl = Bundle.main.url(forResource: soundName, withExtension: nil)
-			else { return }
+		
 		let targetUrl = soundsLibraryDirectory.appendingPathComponent(targetName,
-		                                                             isDirectory: false)
-
+		                                                              isDirectory: false)
 		if FileManager.default.fileExists(atPath: targetUrl.path) {
 			try FileManager.default.removeItem(at: targetUrl)
 		}
-
+		
+		guard let soundUrl = Bundle.main.url(forResource: soundName, withExtension: nil) else { return }
 		try FileManager.default.copyItem(at: soundUrl, to: targetUrl)
 	}
 
