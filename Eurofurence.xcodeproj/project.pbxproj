@@ -165,6 +165,10 @@
 		9A861ED71F25564900B75A8C /* StoryboardRouters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861ED11F25564900B75A8C /* StoryboardRouters.swift */; };
 		9A861ED81F25564900B75A8C /* StoryboardNotificationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861ED21F25564900B75A8C /* StoryboardNotificationRouter.swift */; };
 		9A861ED91F25564900B75A8C /* RootViewControllerAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A861ED31F25564900B75A8C /* RootViewControllerAnimator.swift */; };
+		9A8ECA1E1F2BB46000351A83 /* j1_generic.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8ECA1A1F2BB44100351A83 /* j1_generic.caf */; };
+		9A8ECA1F1F2BB46000351A83 /* j1_themed.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8ECA1B1F2BB44100351A83 /* j1_themed.caf */; };
+		9A8ECA201F2BB46000351A83 /* j2_generic.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8ECA1C1F2BB44100351A83 /* j2_generic.caf */; };
+		9A8ECA211F2BB46000351A83 /* j2_themed.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8ECA1D1F2BB44100351A83 /* j2_themed.caf */; };
 		9A9487FD1F1D5D9300119DC8 /* EventNotificationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9487FC1F1D5D9300119DC8 /* EventNotificationPreferences.swift */; };
 		9A9487FF1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9487FE1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift */; };
 		9A9488011F21382E00119DC8 /* EventsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9488001F21382E00119DC8 /* EventsEntity.swift */; };
@@ -464,6 +468,10 @@
 		9A861ED11F25564900B75A8C /* StoryboardRouters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardRouters.swift; sourceTree = "<group>"; };
 		9A861ED21F25564900B75A8C /* StoryboardNotificationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardNotificationRouter.swift; sourceTree = "<group>"; };
 		9A861ED31F25564900B75A8C /* RootViewControllerAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewControllerAnimator.swift; sourceTree = "<group>"; };
+		9A8ECA1A1F2BB44100351A83 /* j1_generic.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = j1_generic.caf; sourceTree = "<group>"; };
+		9A8ECA1B1F2BB44100351A83 /* j1_themed.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = j1_themed.caf; sourceTree = "<group>"; };
+		9A8ECA1C1F2BB44100351A83 /* j2_generic.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = j2_generic.caf; sourceTree = "<group>"; };
+		9A8ECA1D1F2BB44100351A83 /* j2_themed.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = j2_themed.caf; sourceTree = "<group>"; };
 		9A9487FC1F1D5D9300119DC8 /* EventNotificationPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventNotificationPreferences.swift; sourceTree = "<group>"; };
 		9A9487FE1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsEventNotificationPreferences.swift; sourceTree = "<group>"; };
 		9A9488001F21382E00119DC8 /* EventsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsEntity.swift; sourceTree = "<group>"; };
@@ -1262,6 +1270,10 @@
 		9ACF999B1ECA259C006FC958 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9A8ECA1A1F2BB44100351A83 /* j1_generic.caf */,
+				9A8ECA1B1F2BB44100351A83 /* j1_themed.caf */,
+				9A8ECA1C1F2BB44100351A83 /* j2_generic.caf */,
+				9A8ECA1D1F2BB44100351A83 /* j2_themed.caf */,
 				7820A6F91F16B8A0004C0FB5 /* Eurofurence.entitlements */,
 				9AB64BCE1F02665D004E8D91 /* fontawesome-webfont.ttf */,
 				78C86D6F1F12AA68003A20E6 /* Hieroglify.ttf */,
@@ -1622,6 +1634,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A8ECA1E1F2BB46000351A83 /* j1_generic.caf in Resources */,
+				9A8ECA1F1F2BB46000351A83 /* j1_themed.caf in Resources */,
+				9A8ECA201F2BB46000351A83 /* j2_generic.caf in Resources */,
+				9A8ECA211F2BB46000351A83 /* j2_themed.caf in Resources */,
 				9AB64BCF1F0272A5004E8D91 /* fontawesome-webfont.ttf in Resources */,
 				78455B561F117B24005BE2D7 /* Tutorial.storyboard in Resources */,
 				78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */,
