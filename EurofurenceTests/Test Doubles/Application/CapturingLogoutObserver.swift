@@ -10,6 +10,11 @@
 
 class CapturingLogoutObserver: LogoutObserver {
     
+    private(set) var didLogout = false
+    func logoutSucceeded() {
+        didLogout = true
+    }
+    
     private(set) var didFailToLogout = false
     func logoutFailed() {
         didFailToLogout = true

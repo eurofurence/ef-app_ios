@@ -88,4 +88,26 @@ class WhenLoggingOut: XCTestCase {
         XCTAssertFalse(context.capturingLoginCredentialsStore.didDeletePersistedToken)
     }
     
+    func testSucceedingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotifyLogoutObserversUserLoggedOut() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let logoutObserver = CapturingLogoutObserver()
+        context.application.add(logoutObserver: logoutObserver)
+        context.registerRemoteNotifications()
+        context.application.logout()
+        context.capturingTokenRegistration.succeedLastRequest()
+        
+        XCTAssertTrue(logoutObserver.didLogout)
+    }
+    
+    func testFailingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotNotifyLogoutObserversUserLoggedOut() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let logoutObserver = CapturingLogoutObserver()
+        context.application.add(logoutObserver: logoutObserver)
+        context.registerRemoteNotifications()
+        context.application.logout()
+        context.capturingTokenRegistration.failLastRequest()
+        
+        XCTAssertFalse(logoutObserver.didLogout)
+    }
+    
 }

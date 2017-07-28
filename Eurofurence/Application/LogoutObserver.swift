@@ -8,6 +8,7 @@
 
 protocol LogoutObserver {
 
+    func logoutSucceeded()
     func logoutFailed()
 
 }
