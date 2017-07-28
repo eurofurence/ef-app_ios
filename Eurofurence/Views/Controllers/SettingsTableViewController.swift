@@ -54,13 +54,12 @@ class SettingsTableViewController: FormViewController {
 	private func makePushNotificationsSection() {
 		let defaults = UserDefaults.standard
 		let witnessedSystemPushRequest = UserDefaultsWitnessedSystemPushPermissionsRequest(userDefaults: defaults)
+		let remoteNotificationSoundProviding = UserDefaultsRemoteNotificationSoundProvider(userDefaults: defaults)
 
 		let section = Section("Push Notifications")
 		section <<< ButtonRow {
 			$0.title = "Enable Push Notifications"
 			if witnessedSystemPushRequest.witnessedSystemPushPermissionsRequest {
-				//TODO: Remove once we re-enable or add new settings to this section
-				section.hidden = true
 				$0.hidden = true
 			}
 
@@ -77,6 +76,30 @@ class SettingsTableViewController: FormViewController {
 					defaults.synchronize()
 				}
 			})
+
+			<<< PickerInlineRow<NotificationSound>("PushNotificationSound") {
+				$0.title = "Notification Sound"
+				$0.options = [.None, .Classic, .Themed]
+				$0.value = remoteNotificationSoundProviding.remoteNotificationSound
+				$0.displayValueFor = { notificationSound in
+					guard let notificationSound = notificationSound else {
+						return "Themed"
+					}
+					switch notificationSound {
+					case .None:
+						return "None"
+					case .Classic:
+						return "Classic"
+					case .Themed:
+						return "Themed"
+					}
+				}
+				}.onChange({ (row) in
+					if let notificationSound = row.value {
+						remoteNotificationSoundProviding.setRemoteNotificationSound(notificationSound)
+						NotificationSoundPlayer.shared.playSound(for: remoteNotificationSoundProviding.getRemoteNotificationSoundName())
+					}
+				})
 			<<< SwitchRow("NotifyOnAnnouncement") { row in
 				row.title = "Notify on New Announcements"
 				row.value = UserSettings.NotifyOnAnnouncement.currentValue()
@@ -120,6 +143,33 @@ class SettingsTableViewController: FormViewController {
 				}.onChange({ (row) in
 					if let timeInterval = row.value {
 						eventNotificationPreferences.setNotificationAheadInterval(timeInterval)
+					}
+				})
+
+			<<< PickerInlineRow<NotificationSound>("FavoriteEventsNotificationSound") {
+				$0.title = "Notification Sound"
+				$0.options = [.None, .Classic, .Themed]
+				$0.value = eventNotificationPreferences.notificationSound
+				$0.displayValueFor = { notificationSound in
+					guard let notificationSound = notificationSound else {
+						return "Themed"
+					}
+					switch notificationSound {
+					case .None:
+						return "None"
+					case .Classic:
+						return "Classic"
+					case .Themed:
+						return "Themed"
+					}
+				}
+				$0.hidden = Condition.function(["FavoriteEventsNotify"], { (form) -> Bool in
+					return !((form.rowBy(tag: "FavoriteEventsNotify") as? SwitchRow)?.value ?? false)
+				})
+				}.onChange({ (row) in
+					if let notificationSound = row.value {
+						eventNotificationPreferences.setNotificationSound(notificationSound)
+						NotificationSoundPlayer.shared.playSound(for: eventNotificationPreferences.getNotificationSoundName())
 					}
 				})
 	}
