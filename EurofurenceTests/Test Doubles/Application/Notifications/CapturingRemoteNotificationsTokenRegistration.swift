@@ -15,6 +15,7 @@ class CapturingRemoteNotificationsTokenRegistration: RemoteNotificationsTokenReg
     private(set) var capturedUserAuthenticationToken: String?
     private(set) var numberOfRegistrations = 0
     private var completionHandler: ((Error?) -> Void)?
+    private(set) var didRegisterNilPushTokenAndAuthToken = false
     func registerRemoteNotificationsDeviceToken(_ token: Data?,
                                                 userAuthenticationToken: String?,
                                                 completionHandler: @escaping (Error?) -> Void) {
@@ -22,6 +23,8 @@ class CapturingRemoteNotificationsTokenRegistration: RemoteNotificationsTokenReg
         capturedUserAuthenticationToken = userAuthenticationToken
         numberOfRegistrations += 1
         self.completionHandler = completionHandler
+        
+        didRegisterNilPushTokenAndAuthToken = token == nil && userAuthenticationToken == nil
     }
     
     func succeedLastRequest() {

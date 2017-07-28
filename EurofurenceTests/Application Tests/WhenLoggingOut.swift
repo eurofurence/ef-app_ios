@@ -110,4 +110,13 @@ class WhenLoggingOut: XCTestCase {
         XCTAssertFalse(logoutObserver.didLogout)
     }
     
+    func testWithoutHavingRegisteredForNotificationsThenTheUserShouldStillBeLoggedOut() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let logoutObserver = CapturingLogoutObserver()
+        context.application.add(logoutObserver: logoutObserver)
+        context.application.logout()
+        
+        XCTAssertTrue(context.capturingTokenRegistration.didRegisterNilPushTokenAndAuthToken)
+    }
+    
 }
