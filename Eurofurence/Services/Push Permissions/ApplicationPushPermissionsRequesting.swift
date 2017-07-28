@@ -19,7 +19,7 @@ class ApplicationPushPermissionsRequesting: PushPermissionsRequesting {
     func requestPushPermissions(completionHandler: @escaping () -> Void) {
         self.completionHandler = completionHandler
         let application = UIApplication.shared
-        let notificationSettings = UIUserNotificationSettings(types: [.alert, .badge], categories: nil)
+        let notificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
         application.registerUserNotificationSettings(notificationSettings)
         application.registerForRemoteNotifications()
     }
