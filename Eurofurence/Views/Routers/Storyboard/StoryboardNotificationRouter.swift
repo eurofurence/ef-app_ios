@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Whisper
+import AudioToolbox
 
 struct StoryboardNotificationRouter: NotificationRouter {
 	private let window: UIWindow
@@ -89,12 +90,12 @@ struct StoryboardNotificationRouter: NotificationRouter {
 
 	private func showNotification(title: String, subtitle: String, action: (() -> Void)?) {
 		guard let rootViewController = window.rootViewController else { return }
-
 		let announcement = Whisper.Announcement(title: title, subtitle: subtitle,
 		                                        image: UIImage.init(named: "AppIcon40x40"),
 		                                        duration: 10,
 		                                        action: action)
 		Whisper.show(shout: announcement, to: rootViewController)
+		AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
 	}
 
 	private func pushViewControllerOnTabBar(to identifier: String, viewController: UIViewController) {
