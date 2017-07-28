@@ -10,7 +10,7 @@ import ReactiveSwift
 
 class EventViewController: UIViewController {
 	@IBOutlet weak var eventDescTextView: UITextView!
-	@IBOutlet weak var eventFavoriteLabel: UILabel!
+	@IBOutlet weak var eventFavoriteButton: UIButton!
 	@IBOutlet weak var eventHostLabel: UILabel!
 	@IBOutlet weak var eventImageHeightConstraint: NSLayoutConstraint!
 	@IBOutlet weak var eventImageView: UIImageView!
@@ -65,9 +65,9 @@ class EventViewController: UIViewController {
 		self.eventHostLabel.text = event.PanelHosts
 
 		if let eventFavorite = event.EventFavorite {
-			self.eventFavoriteLabel.reactive.isHidden <~ eventFavorite.IsFavorite.map({!$0})
+			self.eventFavoriteButton.reactive.isSelected <~ eventFavorite.IsFavorite
 		} else {
-			self.eventFavoriteLabel.isHidden = true
+			self.eventFavoriteButton.isSelected = false
 		}
 
 		self.title = event.ConferenceDay?.Name
@@ -109,27 +109,26 @@ class EventViewController: UIViewController {
 		}
 	}
 
+	@IBAction func toggleEventFavorite(_ sender: UIButton) {
+		if let eventFavorite = event?.EventFavorite {
+			eventFavorite.IsFavorite.swap(!sender.isSelected)
+		}
+	}
+
     @IBAction func exportAsEvent(_ sender: AnyObject) {
 		guard let event = event else {
 			return
 		}
 		// TODO: externalise strings for i18n
-        let alert = UIAlertController(title: "Event: \(event.Title)", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-		alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-		if let eventFavorite = event.EventFavorite {
-			let actionPrefix = eventFavorite.IsFavorite.value ? "Remove" : "Add"
-			alert.addAction(UIAlertAction(title: "\(actionPrefix) Favorite",
-				style: UIAlertActionStyle.default, handler: {
-				_ in eventFavorite.IsFavorite.swap(!eventFavorite.IsFavorite.value)
-			}))
-		}
-		alert.addAction(UIAlertAction(title: "Export to Calendar", style: UIAlertActionStyle.default, handler: {
+		let alert = UIAlertController(title: "Export event", message: "Export the event to the calendar?", preferredStyle: UIAlertControllerStyle.actionSheet)
+		alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: nil))
+		alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: {
 			_ in CalendarAccess.instance.insert(event: event)
 		}))
 
-        alert.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+		alert.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
 
-        self.present(alert, animated: true, completion: nil)
+		self.present(alert, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
