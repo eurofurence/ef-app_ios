@@ -30,6 +30,7 @@ class TabViewController: UITabBarController {
 
         let refreshingDelegate = ProgressViewRefreshDelegate(progressView: progressView)
         DataStoreRefreshController.shared.add(refreshingDelegate)
+		DataStoreRefreshController.shared.add(StatusWhistleRefreshDelegate())
     }
 
 }

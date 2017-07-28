@@ -169,6 +169,7 @@
 		9A8ECA1F1F2BB46000351A83 /* j1_themed.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8ECA1B1F2BB44100351A83 /* j1_themed.caf */; };
 		9A8ECA201F2BB46000351A83 /* j2_generic.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8ECA1C1F2BB44100351A83 /* j2_generic.caf */; };
 		9A8ECA211F2BB46000351A83 /* j2_themed.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8ECA1D1F2BB44100351A83 /* j2_themed.caf */; };
+		9A8ECA231F2BC2BE00351A83 /* StatusWhistleRefreshDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8ECA221F2BC2BE00351A83 /* StatusWhistleRefreshDelegate.swift */; };
 		9A9487FD1F1D5D9300119DC8 /* EventNotificationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9487FC1F1D5D9300119DC8 /* EventNotificationPreferences.swift */; };
 		9A9487FF1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9487FE1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift */; };
 		9A9488011F21382E00119DC8 /* EventsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9488001F21382E00119DC8 /* EventsEntity.swift */; };
@@ -475,6 +476,7 @@
 		9A8ECA1B1F2BB44100351A83 /* j1_themed.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = j1_themed.caf; sourceTree = "<group>"; };
 		9A8ECA1C1F2BB44100351A83 /* j2_generic.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = j2_generic.caf; sourceTree = "<group>"; };
 		9A8ECA1D1F2BB44100351A83 /* j2_themed.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = j2_themed.caf; sourceTree = "<group>"; };
+		9A8ECA221F2BC2BE00351A83 /* StatusWhistleRefreshDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusWhistleRefreshDelegate.swift; sourceTree = "<group>"; };
 		9A9487FC1F1D5D9300119DC8 /* EventNotificationPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventNotificationPreferences.swift; sourceTree = "<group>"; };
 		9A9487FE1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsEventNotificationPreferences.swift; sourceTree = "<group>"; };
 		9A9488001F21382E00119DC8 /* EventsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsEntity.swift; sourceTree = "<group>"; };
@@ -1481,6 +1483,7 @@
 				D6F3D3312E7C5B416B722B85 /* SettingsTableViewController.swift */,
 				78F5559A1F10D65900BDA7D4 /* SplashViewController.swift */,
 				78567B3E1F1016B000EBA31D /* TabViewController.swift */,
+				9A8ECA221F2BC2BE00351A83 /* StatusWhistleRefreshDelegate.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1949,6 +1952,7 @@
 				CAD7805A1F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift in Sources */,
 				9A861EB51F25550700B75A8C /* TutorialScene.swift in Sources */,
 				78567B3F1F1016B000EBA31D /* TabViewController.swift in Sources */,
+				9A8ECA231F2BC2BE00351A83 /* StatusWhistleRefreshDelegate.swift in Sources */,
 				CA30EACC1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift in Sources */,
 				9ACF99981EC858B2006FC958 /* MapEntry.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
