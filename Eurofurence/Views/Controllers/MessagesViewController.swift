@@ -46,7 +46,8 @@ class MessagesViewController: UIViewController,
                               UITableViewDelegate,
                               AuthenticationStateObserver,
                               LoginViewControllerDelegate,
-                              PrivateMessagesObserver {
+                              PrivateMessagesObserver,
+                              LogoutObserver {
 
     // MARK: IBOutlets
 
@@ -62,6 +63,15 @@ class MessagesViewController: UIViewController,
     private var isLoggedIn = false
     private var didShowLogin = false
 
+    // MARK: IBActions
+
+    @IBAction func performSignOut(_ sender: Any) {
+        let alert = UIAlertController(title: "Signing Out", message: "This may take a moment.", preferredStyle: .alert)
+        present(alert, animated: true) {
+            self.app.logout()
+        }
+    }
+
     // MARK: Overrides
 
     override func viewDidLoad() {
@@ -76,6 +86,7 @@ class MessagesViewController: UIViewController,
         tableView.delegate = self
         app.add(authenticationStateObserver: self)
         app.add(privateMessagesObserver: self)
+        app.add(logoutObserver: self)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -151,6 +162,25 @@ class MessagesViewController: UIViewController,
 
     func userNotAuthenticatedForPrivateMessages() {
 
+    }
+
+    // MARK: LogoutObserver
+
+    func logoutSucceeded() {
+        dismiss(animated: true) {
+            self.messagesDelegate?.messagesViewControllerDidRequestDismissal(self)
+        }
+    }
+
+    func logoutFailed() {
+        let errorAlert = UIAlertController(title: "Couldn't Sign Out",
+                                           message: "Make sure you have an active network connection and try again.",
+                                           preferredStyle: .alert)
+        errorAlert.addAction(UIAlertAction(title: "OK", style: .cancel))
+
+        dismiss(animated: true) {
+            self.present(errorAlert, animated: true)
+        }
     }
 
     // MARK: Functions

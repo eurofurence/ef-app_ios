@@ -57,7 +57,7 @@ protocol FirebaseAdapter {
 
     var fcmToken: String { get }
 
-    func setAPNSToken(deviceToken: Data)
+    func setAPNSToken(deviceToken: Data?)
     func subscribe(toTopic topic: FirebaseTopic)
     func unsubscribe(fromTopic topic: FirebaseTopic)
 

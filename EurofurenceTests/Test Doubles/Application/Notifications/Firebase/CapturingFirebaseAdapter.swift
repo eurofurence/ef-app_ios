@@ -12,7 +12,7 @@ import Foundation
 class CapturingFirebaseAdapter: FirebaseAdapter {
 
     private(set) var registeredDeviceToken: Data?
-    func setAPNSToken(deviceToken: Data) {
+    func setAPNSToken(deviceToken: Data?) {
         registeredDeviceToken = deviceToken
     }
 

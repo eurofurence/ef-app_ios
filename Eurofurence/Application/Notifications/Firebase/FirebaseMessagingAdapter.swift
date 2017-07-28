@@ -17,8 +17,8 @@ struct FirebaseMessagingAdapter: FirebaseAdapter {
         return messaging.fcmToken ?? ""
     }
 
-    func setAPNSToken(deviceToken: Data) {
-        messaging.setAPNSToken(deviceToken, type: .unknown)
+    func setAPNSToken(deviceToken: Data?) {
+        messaging.apnsToken = deviceToken
     }
 
     func subscribe(toTopic topic: FirebaseTopic) {

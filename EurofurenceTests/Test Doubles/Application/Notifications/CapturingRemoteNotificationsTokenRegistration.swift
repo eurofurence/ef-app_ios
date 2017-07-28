@@ -15,7 +15,7 @@ class CapturingRemoteNotificationsTokenRegistration: RemoteNotificationsTokenReg
     private(set) var capturedUserAuthenticationToken: String?
     private(set) var numberOfRegistrations = 0
     private var completionHandler: ((Error?) -> Void)?
-    func registerRemoteNotificationsDeviceToken(_ token: Data,
+    func registerRemoteNotificationsDeviceToken(_ token: Data?,
                                                 userAuthenticationToken: String?,
                                                 completionHandler: @escaping (Error?) -> Void) {
         capturedRemoteNotificationsDeviceToken = token

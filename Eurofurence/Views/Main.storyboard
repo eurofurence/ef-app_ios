@@ -1030,6 +1030,19 @@ If you do not have access to them, come to our ConOps or Security office. They c
                             <constraint firstItem="ntY-Po-g3u" firstAttribute="leading" secondItem="0Dm-5i-phc" secondAttribute="leading" id="pSZ-DZ-O7Q"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Messages" id="1JL-MI-d6K">
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" style="done" id="P8c-1b-t2J">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tdu-7V-fmb">
+                                <rect key="frame" x="233" y="7" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign Out"/>
+                                <connections>
+                                    <action selector="performSignOut:" destination="bVV-nZ-tcp" eventType="touchUpInside" id="uF9-6I-6V3"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ntY-Po-g3u" id="CKh-0s-MmE"/>
                         <segue destination="02a-fK-uN9" kind="presentation" identifier="showTutorial" modalPresentationStyle="formSheet" id="Bcf-IV-XRV"/>
