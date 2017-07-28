@@ -28,12 +28,11 @@ class NotificationSoundPlayer {
 			return soundId
 		}
 
-		guard let filePath = Bundle.main.path(forResource: soundName, ofType: nil) else {
+		guard let soundUrl = Bundle.main.url(forResource: soundName, withExtension: nil) else {
 			return nil
 		}
-		let soundUrl = NSURL(fileURLWithPath: filePath)
 		var soundId = SystemSoundID(0)
-		AudioServicesCreateSystemSoundID(soundUrl, &soundId)
+		AudioServicesCreateSystemSoundID(soundUrl as CFURL, &soundId)
 		soundIds[soundName] = soundId
 
 		return soundId
