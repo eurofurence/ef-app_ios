@@ -44,7 +44,12 @@ class MessageTableViewCell: UITableViewCell {
         messageSynopsisLabel.text = message.contents
         unreadMessageIndicator.isHidden = message.isRead
 
-        accessibilityLabel = "Message from \(message.authorName), \"\(message.subject)\". Received \(receivedDateString))."
+        var messageOpening = "Message"
+        if !message.isRead {
+            messageOpening = "Unread message"
+        }
+
+        accessibilityLabel = "\(messageOpening) from \(message.authorName), \"\(message.subject)\". Received \(receivedDateString))."
     }
 
 }
