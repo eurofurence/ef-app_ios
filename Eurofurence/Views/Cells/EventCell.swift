@@ -30,8 +30,11 @@ class EventCell: UITableViewCell {
 		set(event) {
 			_event = event
 			if let event = event {
-				startTimeLabel.text = DateFormatters.hourMinute.string(from: event.StartDateTimeUtc)
-				endTimeLabel.text = DateFormatters.hourMinute.string(from: event.EndDateTimeUtc)
+                let startTimeText = DateFormatters.hourMinute.string(from: event.StartDateTimeUtc)
+                let endTimeText = DateFormatters.hourMinute.string(from: event.EndDateTimeUtc)
+
+				startTimeLabel.text = startTimeText
+				endTimeLabel.text = endTimeText
 				if let eventFavorite = event.EventFavorite {
 					disposable.inner = favoriteLabel.reactive.isHidden <~ eventFavorite.IsFavorite.map({ !$0 })
 				} else {
@@ -56,6 +59,8 @@ class EventCell: UITableViewCell {
 					bannerImageView.addConstraint(zeroHeightConstraint)
 					bannerImageView.updateConstraints()
 				}
+
+                accessibilityLabel = "\(event.Title), \(event.SubTitle). Starts at \(startTimeText), ends at \(endTimeText)"
 			} else {
 				disposable.dispose()
 				startTimeLabel.text = nil
