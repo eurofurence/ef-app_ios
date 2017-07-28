@@ -241,6 +241,8 @@
 		CA9845DC1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */; };
 		CA9845DE1F2B01BA00E8821D /* UnreadMessageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */; };
 		CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */; };
+		CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */; };
+		CACE1B091F2BBF0900DFCB60 /* LogoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B081F2BBF0900DFCB60 /* LogoutObserver.swift */; };
 		CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780361F1D415A002A8333 /* MessagesViewController.swift */; };
 		CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780381F1D41C4002A8333 /* LoginViewController.swift */; };
 		CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */; };
@@ -554,6 +556,8 @@
 		CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenMarkingMessageAsRead.swift; path = "Application Tests/WhenMarkingMessageAsRead.swift"; sourceTree = "<group>"; };
 		CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnreadMessageIndicator.swift; sourceTree = "<group>"; };
 		CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenLoggingOut.swift; path = "Application Tests/WhenLoggingOut.swift"; sourceTree = "<group>"; };
+		CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLogoutObserver.swift; path = "Test Doubles/Application/CapturingLogoutObserver.swift"; sourceTree = "<group>"; };
+		CACE1B081F2BBF0900DFCB60 /* LogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogoutObserver.swift; path = Application/LogoutObserver.swift; sourceTree = "<group>"; };
 		CAD780361F1D415A002A8333 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CAD780381F1D41C4002A8333 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenLoginStateChanges.swift; path = "Application Tests/WhenLoginStateChanges.swift"; sourceTree = "<group>"; };
@@ -753,6 +757,7 @@
 				CA30EAA41F2129B70053DBF6 /* API */,
 				781A94351F1A19A8002DE70F /* Notifications */,
 				CA2B4FA91F1F7F1200F007E1 /* CapturingLoginObserver.swift */,
+				CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */,
 				CA30EAA91F2141800053DBF6 /* CapturingAuthenticationStateObserver.swift */,
 				CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */,
 			);
@@ -968,6 +973,7 @@
 				CA30EAB11F215E680053DBF6 /* LoginTask.swift */,
 				CA30EAB31F2161F10053DBF6 /* CredentialPersister.swift */,
 				CA30EAC31F2672BF0053DBF6 /* Message.swift */,
+				CACE1B081F2BBF0900DFCB60 /* LogoutObserver.swift */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -1899,6 +1905,7 @@
 				9ACF998D1EC858B2006FC958 /* KnowledgeGroup.swift in Sources */,
 				78C86D561F12334D003A20E6 /* Routers.swift in Sources */,
 				CA30EAB01F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift in Sources */,
+				CACE1B091F2BBF0900DFCB60 /* LogoutObserver.swift in Sources */,
 				9A861EAB1F2554D700B75A8C /* BootstrappingModule.swift in Sources */,
 				9A34B9851ED089BB004A249E /* NavigationResolverProtocol.swift in Sources */,
 				9A9487FD1F1D5D9300119DC8 /* EventNotificationPreferences.swift in Sources */,
@@ -2079,6 +2086,7 @@
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
 				78C86D831F13A35F003A20E6 /* UnlocalizedPresentationStringsShould.swift in Sources */,
 				7820A6FF1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift in Sources */,
+				CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */,
 				781A94481F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift in Sources */,
 				7820A6FD1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift in Sources */,
 				7820A7051F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift in Sources */,

@@ -14,10 +14,19 @@ class CapturingRemoteNotificationsTokenRegistration: RemoteNotificationsTokenReg
     private(set) var capturedRemoteNotificationsDeviceToken: Data?
     private(set) var capturedUserAuthenticationToken: String?
     private(set) var numberOfRegistrations = 0
-    func registerRemoteNotificationsDeviceToken(_ token: Data, userAuthenticationToken: String?) {
+    private var completionHandler: ((Error?) -> Void)?
+    func registerRemoteNotificationsDeviceToken(_ token: Data,
+                                                userAuthenticationToken: String?,
+                                                completionHandler: @escaping (Error?) -> Void) {
         capturedRemoteNotificationsDeviceToken = token
         capturedUserAuthenticationToken = userAuthenticationToken
         numberOfRegistrations += 1
+        self.completionHandler = completionHandler
+    }
+    
+    func failLastRequest() {
+        struct SomeError: Error {}
+        completionHandler?(SomeError())
     }
     
 }

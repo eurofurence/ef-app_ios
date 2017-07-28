@@ -54,6 +54,10 @@ class EurofurenceApplication {
         authenticationCoordinator.remove(loginObserver)
     }
 
+    func add(logoutObserver: LogoutObserver) {
+        authenticationCoordinator.add(logoutObserver)
+    }
+
     func add(authenticationStateObserver: AuthenticationStateObserver) {
         authenticationCoordinator.add(authenticationStateObserver)
     }
@@ -78,7 +82,7 @@ class EurofurenceApplication {
         registeredDeviceToken = deviceToken
         authenticationCoordinator.registeredDeviceToken = deviceToken
         remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken,
-                                                                                    userAuthenticationToken: authenticationCoordinator.userAuthenticationToken)
+                                                                                    userAuthenticationToken: authenticationCoordinator.userAuthenticationToken) { _ in }
     }
 
     struct MessageAdapter: Message {

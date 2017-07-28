@@ -16,6 +16,7 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
     private var credentialPersister: CredentialPersister
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
     private var loginObservers = [LoginObserver]()
+    private var logoutObservers = [LogoutObserver]()
     private var authenticationStateObservers = [AuthenticationStateObserver]()
     private var loggedInUser: User?
 
@@ -42,6 +43,10 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
         loginObservers.remove(at: idx)
     }
 
+    func add(_ logoutObserver: LogoutObserver) {
+        logoutObservers.append(logoutObserver)
+    }
+
     func add(_ authenticationStateObserver: AuthenticationStateObserver) {
         authenticationStateObservers.append(authenticationStateObserver)
 
@@ -66,7 +71,9 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
     func logout() {
         guard let registeredDeviceToken = registeredDeviceToken else { return }
         remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(registeredDeviceToken,
-                                                                                    userAuthenticationToken: nil)
+                                                                                    userAuthenticationToken: nil) { _ in
+                                                                                        self.logoutObservers.forEach({ $0.logoutFailed() })
+        }
     }
 
     // MARK: LoginTaskDelegate
@@ -79,7 +86,7 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
 
         if let registeredDeviceToken = registeredDeviceToken {
             remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(registeredDeviceToken,
-                                                                                        userAuthenticationToken: userAuthenticationToken)
+                                                                                        userAuthenticationToken: userAuthenticationToken) { _ in }
         }
     }
 

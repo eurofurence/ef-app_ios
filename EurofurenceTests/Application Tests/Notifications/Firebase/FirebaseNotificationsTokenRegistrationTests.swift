@@ -18,7 +18,7 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
 
         func registerDeviceToken(deviceToken: Data = Data(), userAuthenticationToken: String = "") {
             tokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken,
-                                                                     userAuthenticationToken: userAuthenticationToken)
+                                                                     userAuthenticationToken: userAuthenticationToken) { _ in }
         }
     }
 

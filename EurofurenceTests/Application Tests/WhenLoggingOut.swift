@@ -30,4 +30,33 @@ class WhenLoggingOut: XCTestCase {
         XCTAssertEqual(deviceToken, context.capturingTokenRegistration.capturedRemoteNotificationsDeviceToken)
     }
     
+    func testFailureToUnregisterAuthTokenWithRemoteTokenRegistrationShouldIndicateLogoutFailure() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let logoutObserver = CapturingLogoutObserver()
+        context.application.add(logoutObserver: logoutObserver)
+        context.registerRemoteNotifications()
+        context.application.logout()
+        context.capturingTokenRegistration.failLastRequest()
+        
+        XCTAssertTrue(logoutObserver.didFailToLogout)
+    }
+    
+    func testFailureToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotIndicateLogoutFailureUntilActuallyLoggingOut() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let logoutObserver = CapturingLogoutObserver()
+        context.application.add(logoutObserver: logoutObserver)
+        
+        XCTAssertFalse(logoutObserver.didFailToLogout)
+    }
+    
+    func testFailureToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotIndicateLogoutFailureUntilRegistrationActuallyGails() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let logoutObserver = CapturingLogoutObserver()
+        context.application.add(logoutObserver: logoutObserver)
+        context.registerRemoteNotifications()
+        context.application.logout()
+        
+        XCTAssertFalse(logoutObserver.didFailToLogout)
+    }
+    
 }
