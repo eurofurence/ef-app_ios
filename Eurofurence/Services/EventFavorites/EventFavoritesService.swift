@@ -93,6 +93,7 @@ class EventFavoritesService {
 		localNotification.fireDate = fireDate
 		localNotification.alertTitle = "Upcoming Favorite Event"
 		localNotification.alertBody = "\(event.Title) will take place \(timeDelta.minutes >= 1.0 ? "in \(timeDelta.dhmString)" : "now") at \(event.ConferenceRoom?.Name ?? "someplace")"
+		localNotification.soundName = eventNotificationPreferences.getNotificationSoundName()
 		localNotification.userInfo = [NotificationUserInfoKey.EventId.rawValue: event.Id,
 		                              NotificationUserInfoKey.EventLastChangeDateTimeUtc.rawValue: event.LastChangeDateTimeUtc]
 
