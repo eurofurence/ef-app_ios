@@ -29,9 +29,9 @@ struct URLSessionBasedJSONSession: JSONSession {
         urlRequest.httpBody = request.body
         urlRequest.allHTTPHeaderFields = request.headers
 
-        session.dataTask(with: urlRequest, completionHandler: { (data, _, _) in
+        session.dataTask(with: urlRequest, completionHandler: { (data, _, error) in
             DispatchQueue.main.async {
-                completionHandler(data, nil)
+                completionHandler(data, error)
             }
         }).resume()
     }

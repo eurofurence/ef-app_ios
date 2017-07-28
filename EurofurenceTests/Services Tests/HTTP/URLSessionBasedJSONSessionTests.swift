@@ -38,6 +38,7 @@ class JournallingURLRequestLogger {
     static let shared = JournallingURLRequestLogger()
     private var expectations = [ExpectedRequest : XCTestExpectation]()
     private var stubbedResponses = [String : Data]()
+    private var stubbedErrors = [String : Error]()
 
     func setUp() {
         URLProtocol.registerClass(TestURLProtocol.self)
@@ -73,6 +74,14 @@ class JournallingURLRequestLogger {
     func stubbedResponseData(for url: String) -> Data? {
         return stubbedResponses[url]
     }
+    
+    func stubError(for url: String, with error: Error) {
+        stubbedErrors[url] = error
+    }
+    
+    func stubbedResponseError(for url: String) -> Error? {
+        return stubbedErrors[url]
+    }
 
 }
 
@@ -99,9 +108,16 @@ class TestURLProtocol: URLProtocol {
 
     override func startLoading() {
         let url = request.url?.absoluteString ?? ""
-        let data = JournallingURLRequestLogger.shared.stubbedResponseData(for: url) ?? Data()
-        client?.urlProtocol(self, didLoad: data)
-        client?.urlProtocolDidFinishLoading(self)
+        
+        if let error = JournallingURLRequestLogger.shared.stubbedResponseError(for: url) {
+            client?.urlProtocol(self, didFailWithError: error)
+            client?.urlProtocolDidFinishLoading(self)
+        }
+        else {
+            let data = JournallingURLRequestLogger.shared.stubbedResponseData(for: url) ?? Data()
+            client?.urlProtocol(self, didLoad: data)
+            client?.urlProtocolDidFinishLoading(self)
+        }
     }
 
     override func stopLoading() {
@@ -300,6 +316,23 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
         get(expectedURL, completionHandler: { data in
             if Thread.current.isMainThread {
                 correctQueueExpectation.fulfill()
+            }
+        })
+        
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testNetworkErrorOccursShouldPropagateErrorToCompletionHandler() {
+        let expectedURL = "https://www.somewhere.co.uk"
+        let expectedError = NSError(domain: "Test", code: 0, userInfo: nil)
+        JournallingURLRequestLogger.shared.stubError(for: expectedURL, with: expectedError)
+        
+        let errorExpectation = expectation(description: "Completion handler should be provided with error")
+        get(expectedURL, completionHandler: { _, error in
+            guard let error = error else { return }
+            
+            if (error as NSError) == expectedError {
+                errorExpectation.fulfill()
             }
         })
         
