@@ -178,14 +178,18 @@ class EventTableViewController: UITableViewController, UISearchBarDelegate, UIVi
 
 		if isFiltered {
 			if filteredSections.count > 0 {
-			switch filteredSections[section] {
-			case let day as EventConferenceDay:
-				headerCell.headerCellLabel.text = day.Name + "\n" + DateFormatters.dayMonthLong.string(from: day.Date)
-			default:
-				headerCell.headerCellLabel.text = filteredSections[section].Name
-			}
+				switch filteredSections[section] {
+				case let day as EventConferenceDay:
+					headerCell.headerCellLabel.text = day.Name + "\n" + DateFormatters.dayMonthLong.string(from: day.Date)
+				default:
+					headerCell.headerCellLabel.text = filteredSections[section].Name
+				}
+			} else if let searchText = searchBar.text, !searchText.isEmpty {
+				headerCell.headerCellLabel.text = "No Results for '\(searchText)'"
+			} else if eventPreferences.doFilterEventFavorites {
+				headerCell.headerCellLabel.text = "No Favorite Events"
 			} else {
-				headerCell.headerCellLabel.text = "No Results for '\(searchBar.text ?? "")'"
+				headerCell.headerCellLabel.text = "No Results"
 			}
 		} else {
 			switch eventsBySegmentedControl.selectedSegmentIndex {
