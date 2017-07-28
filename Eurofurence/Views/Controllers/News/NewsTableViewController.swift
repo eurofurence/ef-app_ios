@@ -15,7 +15,8 @@ class NewsTableViewController: UITableViewController,
                                UIViewControllerPreviewingDelegate,
                                MessagesViewControllerDelegate,
                                AuthenticationStateObserver,
-                               PrivateMessagesObserver {
+                               PrivateMessagesObserver,
+                               LogoutObserver {
 	@IBOutlet weak var favoritesOnlySegmentedControl: UISegmentedControl!
 	@IBOutlet weak var lastSyncLabel: UILabel!
 
@@ -36,6 +37,7 @@ class NewsTableViewController: UITableViewController,
 
         EurofurenceApplication.shared.add(authenticationStateObserver: self)
         EurofurenceApplication.shared.add(privateMessagesObserver: self)
+        EurofurenceApplication.shared.add(logoutObserver: self)
         EurofurenceApplication.shared.fetchPrivateMessages()
 
 		favoritesOnlySegmentedControl.selectedSegmentIndex = newsPreferences.doFilterEventFavorites ? 1 : 0
@@ -425,9 +427,7 @@ class NewsTableViewController: UITableViewController,
 
     func loggedIn(as user: User) {
         loggedInUser = user
-
-        let loginSectionIndex = IndexSet(integer: 0)
-        tableView.reloadSections(loginSectionIndex, with: .automatic)
+        reloadUserMessagesBanner()
     }
 
     // MARK: PrivateMessagesObserver
@@ -435,9 +435,7 @@ class NewsTableViewController: UITableViewController,
     func privateMessagesAvailable(_ privateMessages: [Message]) {
         let readCount = privateMessages.filter({ $0.isRead }).count
         unreadMessageCount = privateMessages.count - readCount
-
-        let section = IndexSet(integer: 0)
-        tableView.reloadSections(section, with: .automatic)
+        reloadUserMessagesBanner()
     }
 
     func failedToLoadPrivateMessages() {
@@ -446,6 +444,24 @@ class NewsTableViewController: UITableViewController,
 
     func userNotAuthenticatedForPrivateMessages() {
 
+    }
+
+    // MARK: LogoutObserver
+
+    func logoutSucceeded() {
+        loggedInUser = nil
+        reloadUserMessagesBanner()
+    }
+
+    func logoutFailed() {
+
+    }
+
+    // MARK: Private
+
+    private func reloadUserMessagesBanner() {
+        let section = IndexSet(integer: 0)
+        tableView.reloadSections(section, with: .automatic)
     }
 
 }
