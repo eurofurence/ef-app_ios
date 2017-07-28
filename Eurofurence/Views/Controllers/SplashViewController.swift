@@ -8,6 +8,8 @@
 
 import Darwin
 import UIKit
+import ReactiveSwift
+import Whisper
 
 class SplashViewController: UIViewController, SplashScene,
                             DataStoreLoadDelegate,
@@ -89,7 +91,29 @@ class SplashViewController: UIViewController, SplashScene,
     }
 
 	func dataStoreRefreshDidBegin(_ lastSync: Date?) { }
-    func dataStoreRefreshDidFailWithError(_ error: Error) { }
+    func dataStoreRefreshDidFailWithError(_ error: Error) {
+		if let error = error as? ActionError<NSError> {
+			switch error {
+			case let .producerFailed(error):
+				if error.domain == ApiConnectionError.errorDomain {
+					let tutorialFinishedKey = UserDefaultsTutorialStateProvider.FinishedTutorialKey
+					UserDefaults.standard.set(false, forKey: tutorialFinishedKey)
+					UserDefaults.standard.synchronize()
+
+					let window = UIApplication.shared.delegate!.window!
+					let alert = UIAlertController(title: "Download Error", message: "Failed to download data from server. Please try again.", preferredStyle: .alert)
+					alert.addAction(UIAlertAction.init(title: "Close", style: .cancel, handler: { _ in
+						PresentationTier.assemble(window: window!)
+					}))
+					window!.rootViewController!.present(alert, animated: true)
+					return
+				}
+			default:
+				break
+			}
+		}
+		performSegue(withIdentifier: "ShowTabBarControllerSegue", sender: self)
+	}
 
     // MARK: Private
 
