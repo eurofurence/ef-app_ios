@@ -11,7 +11,7 @@ import Result
 
 class UserDefaultsEventNotificationPreferences: EventNotificationPreferences {
 	static let notificationAheadIntervalKey = "EventNotificationPreferences.notificationAheadInterval"
-	static let notificationSound = "EventNotificationPreferences.notificationSound"
+	static let notificationSoundKey = "EventNotificationPreferences.notificationSound"
 	static let notificationsEnabledKey = "EventNotificationPreferences.notificationsEnabled"
 	static let instance = UserDefaultsEventNotificationPreferences(userDefaults: UserDefaults.standard)
 
@@ -24,7 +24,7 @@ class UserDefaultsEventNotificationPreferences: EventNotificationPreferences {
 	}
 
 	var notificationSound: NotificationSound {
-		return NotificationSound(rawValue: userDefaults.integer(forKey: UserDefaultsEventNotificationPreferences.notificationSound)) ?? NotificationSound.None
+		return NotificationSound(rawValue: userDefaults.integer(forKey: UserDefaultsEventNotificationPreferences.notificationSoundKey)) ?? NotificationSound.Themed
 	}
 
 	var signal: Signal<(Bool, TimeInterval), NoError> {
@@ -38,7 +38,7 @@ class UserDefaultsEventNotificationPreferences: EventNotificationPreferences {
 		self.userDefaults = userDefaults
 		userDefaults.register(defaults: [
 			UserDefaultsEventNotificationPreferences.notificationAheadIntervalKey: 60.0 * 60.0,
-			UserDefaultsEventNotificationPreferences.notificationSound: NotificationSound.Themed.rawValue,
+			UserDefaultsEventNotificationPreferences.notificationSoundKey: NotificationSound.Themed.rawValue,
 			UserDefaultsEventNotificationPreferences.notificationsEnabledKey: true
 			])
 	}
@@ -49,7 +49,7 @@ class UserDefaultsEventNotificationPreferences: EventNotificationPreferences {
 	}
 
 	func setNotificationSound(_ notificationSound: NotificationSound) {
-		userDefaults.set(notificationSound.rawValue, forKey: UserDefaultsEventNotificationPreferences.notificationSound)
+		userDefaults.set(notificationSound.rawValue, forKey: UserDefaultsEventNotificationPreferences.notificationSoundKey)
 		notify()
 	}
 
