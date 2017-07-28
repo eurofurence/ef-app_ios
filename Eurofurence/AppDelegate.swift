@@ -63,15 +63,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-		if let event = userInfo["Event"] as? String {
-			switch event {
+		if let contentTypeString = userInfo[NotificationUserInfoKey.ContentType.rawValue] as? String,
+			let contentType = NotificationContentType(rawValue: contentTypeString) {
 
-			case "Sync": // should have content-available == 1; triggers sync
+			switch contentType {
+			case .Sync: // should have content-available == 1; triggers sync
 				// TODO: Inform the user about changes to his favourite events
 				DataStoreRefreshController.shared.add(NotificationSyncDataStoreRefreshDelegate(completionHandler: completionHandler))
 				DataStoreRefreshController.shared.refreshStore(withDelta: true)
 
-			case "Announcement": // Contains announcement title and message
+			case .Announcement: // Contains announcement title and message
 				if application.applicationState == .inactive {
 					// Application was launched from tapping the notification -> forward to detail view
 					notificationRouter.showRemoteNotificationTarget(for: userInfo, doWaitForDataStore: false)
@@ -90,11 +91,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 					DataStoreRefreshController.shared.refreshStore(withDelta: true)
 				}
 
-			case "Notification": // There is something we should notify the user about, most likely new PMs.
+			case .Notification: // There is something we should notify the user about, most likely new PMs.
 				// TODO: Pull new PMs from server and route to PM on tap
-				completionHandler(.noData)
-
-			default:
 				completionHandler(.noData)
 			}
 		}

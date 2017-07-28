@@ -93,7 +93,8 @@ class EventFavoritesService {
 		localNotification.fireDate = fireDate
 		localNotification.alertTitle = "Upcoming Favorite Event"
 		localNotification.alertBody = "\(event.Title) will take place \(timeDelta.minutes >= 1.0 ? "in \(timeDelta.dhmString)" : "now") at \(event.ConferenceRoom?.Name ?? "someplace")"
-		localNotification.userInfo = ["Event.Id": event.Id, "Event.LastChangeDateTimeUtc": event.LastChangeDateTimeUtc]
+		localNotification.userInfo = [NotificationUserInfoKey.EventId.rawValue: event.Id,
+		                              NotificationUserInfoKey.EventLastChangeDateTimeUtc.rawValue: event.LastChangeDateTimeUtc]
 
 		return localNotification
 	}
@@ -114,7 +115,7 @@ class EventFavoritesService {
 	func cancelLocalNotifications(for event: Event) {
 		var remainingNotifications: [UILocalNotification] = []
 		localNotifications.forEach { notification in
-			if let eventId = notification.userInfo?["Event.Id"] as? String, eventId == event.Id {
+			if let eventId = notification.userInfo?[NotificationUserInfoKey.EventId.rawValue] as? String, eventId == event.Id {
 				UIApplication.shared.cancelLocalNotification(notification)
 			} else {
 				remainingNotifications.append(notification)
@@ -152,7 +153,7 @@ class EventFavoritesService {
 			.addingTimeInterval(eventNotificationPreferences.notificationAheadInterval)
 
 		localNotifications.forEach { notification in
-			if let eventId = notification.userInfo?["Event.Id"] as? String,
+			if let eventId = notification.userInfo?[NotificationUserInfoKey.EventId.rawValue] as? String,
 				let eventFavorite = eventFavorites.first(where: { $0.EventId == eventId }),
 				let event = eventFavorite.Event, event.StartDateTimeUtc > currentEventStartTime {
 
@@ -168,7 +169,7 @@ class EventFavoritesService {
 		eventFavorites.forEach { (eventFavorite) in
 			if eventFavorite.IsFavorite.value, let event = eventFavorite.Event,
 				event.StartDateTimeUtc > currentEventStartTime,
-				!updatedNotifications.contains(where: { $0.userInfo?["Event.Id"] as? String == eventFavorite.EventId }) {
+				!updatedNotifications.contains(where: { $0.userInfo?[NotificationUserInfoKey.EventId.rawValue] as? String == eventFavorite.EventId }) {
 
 				let localNotification = createLocalNotificaton(for: event, offset: offset)
 				updatedNotifications.append(localNotification)
