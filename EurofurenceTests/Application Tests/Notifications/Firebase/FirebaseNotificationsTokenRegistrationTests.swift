@@ -16,9 +16,11 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
         var capturingFirebaseAdapter: CapturingFirebaseAdapter
         var capturingFCMDeviceRegister: CapturingFCMDeviceRegistration
 
-        func registerDeviceToken(deviceToken: Data = Data(), userAuthenticationToken: String = "") {
+        func registerDeviceToken(deviceToken: Data = Data(),
+                                 userAuthenticationToken: String = "",
+                                 completionHandler: ((Error?) -> Void)? = nil) {
             tokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken,
-                                                                     userAuthenticationToken: userAuthenticationToken) { _ in }
+                                                                     userAuthenticationToken: userAuthenticationToken) { completionHandler?($0) }
         }
     }
 
@@ -243,6 +245,16 @@ class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {
         context.registerDeviceToken()
         
         XCTAssertTrue(context.capturingFirebaseAdapter.subscribedToLiveAllNotifications)
+    }
+    
+    func testErrorsDuringFCMRegistrationArePropogatedBackThroughTheCompletionHandler() {
+        let context = assembleApp(configuration: .debug)
+        var observedError: NSError?
+        context.registerDeviceToken() { observedError = $0! as NSError }
+        let expectedError = NSError(domain: "Test", code: 0, userInfo: nil)
+        context.capturingFCMDeviceRegister.completionHandler?(expectedError)
+        
+        XCTAssertEqual(expectedError, observedError)
     }
     
 }

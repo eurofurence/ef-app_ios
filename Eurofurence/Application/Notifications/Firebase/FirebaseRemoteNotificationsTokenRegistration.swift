@@ -46,7 +46,8 @@ struct FirebaseRemoteNotificationsTokenRegistration: RemoteNotificationsTokenReg
 
         fcmRegistration.registerFCM(firebaseAdapter.fcmToken,
                                     topics: fcmTopics,
-                                    authenticationToken: userAuthenticationToken)
+                                    authenticationToken: userAuthenticationToken,
+                                    completionHandler: completionHandler)
     }
 
 }

@@ -14,10 +14,15 @@ class CapturingFCMDeviceRegistration: FCMDeviceRegistration {
     private(set) var capturedFCM: String?
     private var topics = [FirebaseTopic]()
     private(set) var capturedAuthenticationToken: String?
-    func registerFCM(_ fcm: String, topics: [FirebaseTopic], authenticationToken: String?) {
+    private(set) var completionHandler: ((Error?) -> Void)?
+    func registerFCM(_ fcm: String,
+                     topics: [FirebaseTopic],
+                     authenticationToken: String?,
+                     completionHandler: @escaping (Error?) -> Void) {
         capturedFCM = fcm
         self.topics = topics
         capturedAuthenticationToken = authenticationToken
+        self.completionHandler = completionHandler
     }
 
     var registeredTestTopic: Bool {

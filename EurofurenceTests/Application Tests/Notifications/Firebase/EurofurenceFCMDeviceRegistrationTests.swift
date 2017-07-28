@@ -14,7 +14,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
     func testRegisteringTheFCMTokenSubmitsRequestToFCMRegistrationURL() {
         let capturingJSONSession = CapturingJSONSession()
         let registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession)
-        registration.registerFCM("", topics: [], authenticationToken: "")
+        registration.registerFCM("", topics: [], authenticationToken: "") { _ in }
         let expectedURL = "https://app.eurofurence.org/api/v2/PushNotifications/FcmDeviceRegistration"
 
         XCTAssertEqual(expectedURL, capturingJSONSession.postedURL)
@@ -31,7 +31,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
         let capturingJSONSession = CapturingJSONSession()
         let registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession)
         let fcm = "Something unique"
-        registration.registerFCM(fcm, topics: [], authenticationToken: "")
+        registration.registerFCM(fcm, topics: [], authenticationToken: "") { _ in }
 
         XCTAssertEqual(fcm, capturingJSONSession.postedJSONValue(forKey: "DeviceId"))
     }
@@ -40,7 +40,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
         let capturingJSONSession = CapturingJSONSession()
         let registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession)
         let topic = FirebaseTopic.live
-        registration.registerFCM("", topics: [topic], authenticationToken: "")
+        registration.registerFCM("", topics: [topic], authenticationToken: "") { _ in }
         let expected: [String] = [topic.description]
 
         XCTAssertEqual(expected, capturingJSONSession.postedJSONValue(forKey: "Topics") ?? [])
@@ -50,7 +50,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
         let capturingJSONSession = CapturingJSONSession()
         let registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession)
         let topic = FirebaseTopic.test
-        registration.registerFCM("", topics: [topic], authenticationToken: "")
+        registration.registerFCM("", topics: [topic], authenticationToken: "") { _ in }
         let expected: [String] = [topic.description]
 
         XCTAssertEqual(expected, capturingJSONSession.postedJSONValue(forKey: "Topics") ?? [])
@@ -60,7 +60,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
         let capturingJSONSession = CapturingJSONSession()
         let registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession)
         let topics: [FirebaseTopic] = [.test, .live]
-        registration.registerFCM("", topics: topics, authenticationToken: "")
+        registration.registerFCM("", topics: topics, authenticationToken: "") { _ in }
         let expected: [String] = topics.map({ $0.description })
 
         XCTAssertEqual(expected, capturingJSONSession.postedJSONValue(forKey: "Topics") ?? [])
@@ -70,7 +70,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
         let authenticationToken = "Token"
         let capturingJSONSession = CapturingJSONSession()
         let registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession)
-        registration.registerFCM("", topics: [], authenticationToken: authenticationToken)
+        registration.registerFCM("", topics: [], authenticationToken: authenticationToken) { _ in }
         
         XCTAssertEqual("Bearer \(authenticationToken)", capturingJSONSession.capturedAdditionalPOSTHeaders?["Authorization"])
     }
@@ -78,7 +78,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
     func testRegisteringTheFCMTokenWithoutUserAuthenticationTokenDoesNotSupplyAuthHeader() {
         let capturingJSONSession = CapturingJSONSession()
         let registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession)
-        registration.registerFCM("", topics: [], authenticationToken: nil)
+        registration.registerFCM("", topics: [], authenticationToken: nil) { _ in }
         
         XCTAssertNil(capturingJSONSession.capturedAdditionalPOSTHeaders?["Authorization"])
     }

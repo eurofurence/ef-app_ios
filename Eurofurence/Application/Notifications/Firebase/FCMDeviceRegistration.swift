@@ -10,6 +10,9 @@ import Foundation
 
 protocol FCMDeviceRegistration {
 
-    func registerFCM(_ fcm: String, topics: [FirebaseTopic], authenticationToken: String?)
+    func registerFCM(_ fcm: String,
+                     topics: [FirebaseTopic],
+                     authenticationToken: String?,
+                     completionHandler: @escaping (Error?) -> Void)
 
 }
