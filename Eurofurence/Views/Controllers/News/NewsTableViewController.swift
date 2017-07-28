@@ -14,7 +14,8 @@ import Changeset
 class NewsTableViewController: UITableViewController,
                                UIViewControllerPreviewingDelegate,
                                MessagesViewControllerDelegate,
-                               AuthenticationStateObserver {
+                               AuthenticationStateObserver,
+                               PrivateMessagesObserver {
 	@IBOutlet weak var favoritesOnlySegmentedControl: UISegmentedControl!
 	@IBOutlet weak var lastSyncLabel: UILabel!
 
@@ -28,11 +29,14 @@ class NewsTableViewController: UITableViewController,
 	private var announcements: [Announcement] = []
 	private var runningEvents: [Event] = []
 	private var upcomingEvents: [Event] = []
+    private var unreadMessageCount = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         EurofurenceApplication.shared.add(authenticationStateObserver: self)
+        EurofurenceApplication.shared.add(privateMessagesObserver: self)
+        EurofurenceApplication.shared.fetchPrivateMessages()
 
 		favoritesOnlySegmentedControl.selectedSegmentIndex = newsPreferences.doFilterEventFavorites ? 1 : 0
 
@@ -172,7 +176,7 @@ class NewsTableViewController: UITableViewController,
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		switch section {
         case 0:
-            return 0
+            return 1
 		case 1:
 			return max(1, announcements.count)
 		case 2:
@@ -226,6 +230,14 @@ class NewsTableViewController: UITableViewController,
             if let user = loggedInUser {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "LoggedInCell", for: indexPath) as! UnreadMessagesTableViewCell
                 cell.showUserNameSynopsis("Welcome, \(user.username) (\(user.registrationNumber))")
+
+                var unreadMessagesSynopsis = "You have \(unreadMessageCount) unread message"
+                if unreadMessageCount != 1 {
+                   unreadMessagesSynopsis += "s"
+                }
+
+                cell.showUnreadMessageCountSynopsis(unreadMessagesSynopsis)
+
                 return cell
             } else {
                 return tableView.dequeueReusableCell(withIdentifier: "LoginHintCell", for: indexPath)
@@ -416,6 +428,24 @@ class NewsTableViewController: UITableViewController,
 
         let loginSectionIndex = IndexSet(integer: 0)
         tableView.reloadSections(loginSectionIndex, with: .automatic)
+    }
+
+    // MARK: PrivateMessagesObserver
+
+    func privateMessagesAvailable(_ privateMessages: [Message]) {
+        let readCount = privateMessages.filter({ $0.isRead }).count
+        unreadMessageCount = privateMessages.count - readCount
+
+        let section = IndexSet(integer: 0)
+        tableView.reloadSections(section, with: .automatic)
+    }
+
+    func failedToLoadPrivateMessages() {
+
+    }
+
+    func userNotAuthenticatedForPrivateMessages() {
+
     }
 
 }

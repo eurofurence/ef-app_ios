@@ -13,11 +13,16 @@ class UnreadMessagesTableViewCell: UITableViewCell {
     // MARK: IBOutlets
 
     @IBOutlet weak var usernameSynopsisLabel: UILabel!
+    @IBOutlet weak var unreadMessageCountSynopsisLabel: UILabel!
 
     // MARK: Functions
 
     func showUserNameSynopsis(_ synopsis: String) {
         usernameSynopsisLabel.text = synopsis
+    }
+
+    func showUnreadMessageCountSynopsis(_ synopsis: String) {
+        unreadMessageCountSynopsisLabel.text = synopsis
     }
 
 }
