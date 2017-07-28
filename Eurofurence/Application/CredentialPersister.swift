@@ -34,6 +34,10 @@ struct CredentialPersister {
         loginCredentialStore.store(credential)
     }
 
+    func deleteCredential() {
+        loginCredentialStore.deletePersistedToken()
+    }
+
     private func isCredentialValid(_ credential: LoginCredential) -> Bool {
         return clock.currentDate.compare(credential.tokenExpiryDate) == .orderedAscending
     }

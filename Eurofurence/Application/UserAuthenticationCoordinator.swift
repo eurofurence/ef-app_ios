@@ -74,6 +74,8 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
                                                                                     userAuthenticationToken: nil) { error in
             if error != nil {
                 self.logoutObservers.forEach({ $0.logoutFailed() })
+            } else {
+                self.credentialPersister.deleteCredential()
             }
         }
     }
