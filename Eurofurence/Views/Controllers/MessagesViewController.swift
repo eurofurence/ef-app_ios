@@ -19,7 +19,7 @@ class MessagesTableViewDataSource: NSObject, UITableViewDataSource {
     private var messages: [Message] = []
 
     func updateWith(messages: [Message]) {
-        self.messages = messages
+        self.messages = messages.sorted(by: { $0.receivedDateTime.compare($1.receivedDateTime) == .orderedDescending })
     }
 
     func message(for indexPath: IndexPath) -> Message {
