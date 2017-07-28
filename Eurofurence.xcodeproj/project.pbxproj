@@ -171,6 +171,8 @@
 		9A8ECA211F2BB46000351A83 /* j2_themed.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8ECA1D1F2BB44100351A83 /* j2_themed.caf */; };
 		9A8ECA231F2BC2BE00351A83 /* StatusWhistleRefreshDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8ECA221F2BC2BE00351A83 /* StatusWhistleRefreshDelegate.swift */; };
 		9A8ECA251F2BE1E300351A83 /* NotificationSoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8ECA241F2BE1E300351A83 /* NotificationSoundPlayer.swift */; };
+		9A8ECA271F2BF27700351A83 /* RemoteNotificationSoundProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8ECA261F2BF27700351A83 /* RemoteNotificationSoundProviding.swift */; };
+		9A8ECA291F2BF2CA00351A83 /* UserDefaultsRemoteNotificationSoundProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8ECA281F2BF2CA00351A83 /* UserDefaultsRemoteNotificationSoundProvider.swift */; };
 		9A9487FD1F1D5D9300119DC8 /* EventNotificationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9487FC1F1D5D9300119DC8 /* EventNotificationPreferences.swift */; };
 		9A9487FF1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9487FE1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift */; };
 		9A9488011F21382E00119DC8 /* EventsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9488001F21382E00119DC8 /* EventsEntity.swift */; };
@@ -479,6 +481,8 @@
 		9A8ECA1D1F2BB44100351A83 /* j2_themed.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = j2_themed.caf; sourceTree = "<group>"; };
 		9A8ECA221F2BC2BE00351A83 /* StatusWhistleRefreshDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusWhistleRefreshDelegate.swift; sourceTree = "<group>"; };
 		9A8ECA241F2BE1E300351A83 /* NotificationSoundPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSoundPlayer.swift; sourceTree = "<group>"; };
+		9A8ECA261F2BF27700351A83 /* RemoteNotificationSoundProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteNotificationSoundProviding.swift; sourceTree = "<group>"; };
+		9A8ECA281F2BF2CA00351A83 /* UserDefaultsRemoteNotificationSoundProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsRemoteNotificationSoundProvider.swift; sourceTree = "<group>"; };
 		9A9487FC1F1D5D9300119DC8 /* EventNotificationPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventNotificationPreferences.swift; sourceTree = "<group>"; };
 		9A9487FE1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsEventNotificationPreferences.swift; sourceTree = "<group>"; };
 		9A9488001F21382E00119DC8 /* EventsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsEntity.swift; sourceTree = "<group>"; };
@@ -1483,10 +1487,12 @@
 				9A80EF4B1F28BD0300FD0D37 /* PostDataStoreRoutingDelegate.swift */,
 				78567B401F10212100EBA31D /* ProgressViewRefreshDelegate.swift */,
 				78567B441F103C3800EBA31D /* RefreshControlDataStoreDelegate.swift */,
+				9A8ECA261F2BF27700351A83 /* RemoteNotificationSoundProviding.swift */,
 				D6F3D3312E7C5B416B722B85 /* SettingsTableViewController.swift */,
 				78F5559A1F10D65900BDA7D4 /* SplashViewController.swift */,
-				78567B3E1F1016B000EBA31D /* TabViewController.swift */,
 				9A8ECA221F2BC2BE00351A83 /* StatusWhistleRefreshDelegate.swift */,
+				78567B3E1F1016B000EBA31D /* TabViewController.swift */,
+				9A8ECA281F2BF2CA00351A83 /* UserDefaultsRemoteNotificationSoundProvider.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1932,6 +1938,7 @@
 				781A943E1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift in Sources */,
 				6EF96CD91F0EDCB300EE6134 /* EventKitCalendarPermissionsProviding.swift in Sources */,
 				9A861ED41F25564900B75A8C /* WindowAlertRouter.swift in Sources */,
+				9A8ECA291F2BF2CA00351A83 /* UserDefaultsRemoteNotificationSoundProvider.swift in Sources */,
 				CA30EAB21F215E680053DBF6 /* LoginTask.swift in Sources */,
 				9A861EC01F25551400B75A8C /* NetworkReachability.swift in Sources */,
 				9ACF99951EC858B2006FC958 /* EventConferenceRoom.swift in Sources */,
@@ -1976,6 +1983,7 @@
 				9A861ED61F25564900B75A8C /* StoryboardSplashScreenRouter.swift in Sources */,
 				9A80EF591F291E2B00FD0D37 /* NewsTableViewController.swift in Sources */,
 				CA9845C21F28B16800E8821D /* MessageDetailViewController.swift in Sources */,
+				9A8ECA271F2BF27700351A83 /* RemoteNotificationSoundProviding.swift in Sources */,
 				9ACB006D1F16C23D001CE9D2 /* PrivateMessage.swift in Sources */,
 				78FE77CF1F1A2E8600E9A0BE /* JSONSession.swift in Sources */,
 				9A861EBE1F25551400B75A8C /* PresentationStrings.swift in Sources */,
