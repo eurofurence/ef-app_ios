@@ -10,10 +10,10 @@ import UIKit
 
 class MessageTableViewCell: UITableViewCell {
 
-    static var dateFormatter: DateFormatter = {
+    private static var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.doesRelativeDateFormatting = true
-        formatter.dateStyle = .short
+        formatter.dateStyle = .medium
         formatter.timeStyle = .short
 
         return formatter
@@ -44,7 +44,7 @@ class MessageTableViewCell: UITableViewCell {
         messageSynopsisLabel.text = message.contents
         unreadMessageIndicator.isHidden = message.isRead
 
-        accessibilityLabel = "Message from \(message.authorName), \"\(message.subject)\". Received \(receivedDateString)."
+        accessibilityLabel = "Message from \(message.authorName), \"\(message.subject)\". Received \(receivedDateString))."
     }
 
 }
