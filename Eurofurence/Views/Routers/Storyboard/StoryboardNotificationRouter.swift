@@ -15,6 +15,7 @@ struct StoryboardNotificationRouter: NotificationRouter {
 	private let targetRouter: TargetRouter
 	private let dataContext: DataContextProtocol = try! ContextResolver.container.resolve()
 	private let storyboard = UIStoryboard(name: "Main", bundle: nil)
+	private let remoteNotificationSoundProviding = UserDefaultsRemoteNotificationSoundProvider(userDefaults: UserDefaults.standard)
 
 	init(window: UIWindow, targetRouter: TargetRouter) {
 		self.window = window
@@ -46,7 +47,8 @@ struct StoryboardNotificationRouter: NotificationRouter {
 			let alert = aps?["alert"] as? [AnyHashable : Any]
 			let title = alert?["title"] as? String ?? aps?["alert"] as? String ?? "New Announcement"
 			let body = alert?["body"] as? String ?? "Please open the app to view this announcement."
-			showNotification(title: title, subtitle: body, action: { self.showRemoteNotificationTarget(for: userInfo) })
+			showNotification(title: title, subtitle: body, soundName: remoteNotificationSoundProviding.getRemoteNotificationSoundName(),
+			                 action: { self.showRemoteNotificationTarget(for: userInfo) })
 		default:
 			return
 		}
