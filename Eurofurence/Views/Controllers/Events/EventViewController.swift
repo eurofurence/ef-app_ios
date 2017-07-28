@@ -60,9 +60,25 @@ class EventViewController: UIViewController {
 		let startTime = DateFormatters.hourMinute.string(from: event.StartDateTimeUtc)
 		let endTime = DateFormatters.hourMinute.string(from: event.EndDateTimeUtc)
 		self.eventStartTimeLabel.text = "\(weekday), \(startTime) to \(endTime)"
+        eventStartTimeLabel.accessibilityLabel = "Takes place on \(weekday) from \(startTime) to \(endTime)"
 		self.eventLocationLabel.text = event.ConferenceRoom?.Name
+
+        if let roomName = event.ConferenceRoom?.Name {
+            eventLocationLabel.accessibilityLabel = "Takes place in \(roomName)"
+        } else {
+            eventLocationLabel.accessibilityLabel = event.ConferenceRoom?.Name
+        }
+
 		self.eventTrackLabel.text = event.ConferenceTrack?.Name
+
+        if let track = event.ConferenceTrack?.Name {
+            eventTrackLabel.accessibilityLabel = "Part of the \(track) track"
+        } else {
+            eventTrackLabel.accessibilityLabel = event.ConferenceTrack?.Name
+        }
+
 		self.eventHostLabel.text = event.PanelHosts
+        eventHostLabel.accessibilityLabel = "Hosted by \(event.PanelHosts)"
 
 		if let eventFavorite = event.EventFavorite {
 			self.eventFavoriteButton.reactive.isSelected <~ eventFavorite.IsFavorite
@@ -83,9 +99,9 @@ class EventViewController: UIViewController {
 		}
 
 		if let eventImage = eventImage {
-			imageService.retrieve(for: eventImage).startWithResult({ [unowned self] (result) in
-				switch result {
-				case let .success(image):
+            imageService.retrieve(for: eventImage).startWithResult({ [unowned self] (result) in
+                switch result {
+                case let .success(image):
 					DispatchQueue.main.async {
 						self.eventImageView.image = image
 						self.resizeImageView(for: image)
@@ -97,6 +113,8 @@ class EventViewController: UIViewController {
 		}
 		eventImageView.image = nil
 		eventImageHeightConstraint.constant = CGFloat(0.0)
+
+        updateEventFavoriteButtonAccessibilityHint()
     }
 
 	private func resizeImageView(for image: UIImage) {
@@ -112,6 +130,7 @@ class EventViewController: UIViewController {
 	@IBAction func toggleEventFavorite(_ sender: UIButton) {
 		if let eventFavorite = event?.EventFavorite {
 			eventFavorite.IsFavorite.swap(!sender.isSelected)
+            updateEventFavoriteButtonAccessibilityHint()
 		}
 	}
 
@@ -188,5 +207,16 @@ class EventViewController: UIViewController {
 	override var previewActionItems: [UIPreviewActionItem] {
 		return previewActions
 	}
+
+    private func updateEventFavoriteButtonAccessibilityHint() {
+        let hint: String
+        if let favorite = event?.EventFavorite, favorite.IsFavorite.value {
+            hint = "Double tap to remove this event from your favorites"
+        } else {
+            hint = "Double tap to add this event to your favorites"
+        }
+
+        eventFavoriteButton.accessibilityHint = hint
+    }
 
 }
