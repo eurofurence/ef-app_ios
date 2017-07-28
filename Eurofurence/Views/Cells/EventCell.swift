@@ -60,7 +60,12 @@ class EventCell: UITableViewCell {
 					bannerImageView.updateConstraints()
 				}
 
-                accessibilityLabel = "\(event.Title), \(event.SubTitle). Starts at \(startTimeText), ends at \(endTimeText)"
+                var label = "\(event.Title), \(event.SubTitle). Starts at \(startTimeText), ends at \(endTimeText)."
+                if let favorite = event.EventFavorite, favorite.IsFavorite.value {
+                    label += " Favorite event."
+                }
+
+                accessibilityLabel = label
 			} else {
 				disposable.dispose()
 				startTimeLabel.text = nil
