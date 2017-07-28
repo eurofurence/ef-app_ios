@@ -34,9 +34,3 @@ enum NotificationContentType: String {
 	/// Backend data changed; should trigger silent background sync
 	case Sync = "sync"
 }
-
-enum NotificationSound: Int {
-	case None = 0
-	case Classic = 1
-	case Themed = 2
-}

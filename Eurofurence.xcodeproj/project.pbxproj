@@ -170,6 +170,7 @@
 		9A8ECA201F2BB46000351A83 /* j2_generic.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8ECA1C1F2BB44100351A83 /* j2_generic.caf */; };
 		9A8ECA211F2BB46000351A83 /* j2_themed.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8ECA1D1F2BB44100351A83 /* j2_themed.caf */; };
 		9A8ECA231F2BC2BE00351A83 /* StatusWhistleRefreshDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8ECA221F2BC2BE00351A83 /* StatusWhistleRefreshDelegate.swift */; };
+		9A8ECA251F2BE1E300351A83 /* NotificationSoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8ECA241F2BE1E300351A83 /* NotificationSoundPlayer.swift */; };
 		9A9487FD1F1D5D9300119DC8 /* EventNotificationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9487FC1F1D5D9300119DC8 /* EventNotificationPreferences.swift */; };
 		9A9487FF1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9487FE1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift */; };
 		9A9488011F21382E00119DC8 /* EventsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9488001F21382E00119DC8 /* EventsEntity.swift */; };
@@ -477,6 +478,7 @@
 		9A8ECA1C1F2BB44100351A83 /* j2_generic.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = j2_generic.caf; sourceTree = "<group>"; };
 		9A8ECA1D1F2BB44100351A83 /* j2_themed.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = j2_themed.caf; sourceTree = "<group>"; };
 		9A8ECA221F2BC2BE00351A83 /* StatusWhistleRefreshDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusWhistleRefreshDelegate.swift; sourceTree = "<group>"; };
+		9A8ECA241F2BE1E300351A83 /* NotificationSoundPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSoundPlayer.swift; sourceTree = "<group>"; };
 		9A9487FC1F1D5D9300119DC8 /* EventNotificationPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventNotificationPreferences.swift; sourceTree = "<group>"; };
 		9A9487FE1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsEventNotificationPreferences.swift; sourceTree = "<group>"; };
 		9A9488001F21382E00119DC8 /* EventsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsEntity.swift; sourceTree = "<group>"; };
@@ -1447,6 +1449,7 @@
 				9AF0B4FD1F08459D000AAA0A /* TimeIntervalRow.swift */,
 				9A7FFD521EF97CD4007ABA36 /* UserSettings.swift */,
 				D6F3D49E9A7962D15CE8C3EF /* WikiText.swift */,
+				9A8ECA241F2BE1E300351A83 /* NotificationSoundPlayer.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -2018,6 +2021,7 @@
 				CA2B4FA81F1EA72A00F007E1 /* LoginArguments.swift in Sources */,
 				CA30EAB81F2613500053DBF6 /* PrivateMessagesObserver.swift in Sources */,
 				78F555991F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift in Sources */,
+				9A8ECA251F2BE1E300351A83 /* NotificationSoundPlayer.swift in Sources */,
 				9A0F87E51F1BAD2C00FF294B /* LocalNotificationStore.swift in Sources */,
 				D6F3D2440B74E17B9A008DE0 /* AnnouncementViewController.swift in Sources */,
 				CA281B641F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift in Sources */,
