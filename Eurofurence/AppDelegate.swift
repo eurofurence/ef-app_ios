@@ -35,10 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		// App was launched from local or remote notification
 		if let notification = launchOptions?[.localNotification] as? UILocalNotification {
-			// TODO: Routing will not work until ShowTabBarControllerSegue has been completed
 			notificationRouter.showLocalNotificationTarget(for: notification, doWaitForDataStore: true)
 		} else if let userInfo = launchOptions?[.remoteNotification] as? [AnyHashable : Any] {
-			// TODO: Routing will not work until ShowTabBarControllerSegue has been completed
 			notificationRouter.showRemoteNotificationTarget(for: userInfo, doWaitForDataStore: true)
 		}
 
