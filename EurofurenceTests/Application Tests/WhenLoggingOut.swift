@@ -59,4 +59,15 @@ class WhenLoggingOut: XCTestCase {
         XCTAssertFalse(logoutObserver.didFailToLogout)
     }
     
+    func testSucceedingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotIndicateLogoutFailure() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        let logoutObserver = CapturingLogoutObserver()
+        context.application.add(logoutObserver: logoutObserver)
+        context.registerRemoteNotifications()
+        context.application.logout()
+        context.capturingTokenRegistration.succeedLastRequest()
+        
+        XCTAssertFalse(logoutObserver.didFailToLogout)
+    }
+    
 }

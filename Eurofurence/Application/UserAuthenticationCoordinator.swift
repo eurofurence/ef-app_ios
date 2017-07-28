@@ -71,8 +71,10 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
     func logout() {
         guard let registeredDeviceToken = registeredDeviceToken else { return }
         remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(registeredDeviceToken,
-                                                                                    userAuthenticationToken: nil) { _ in
-                                                                                        self.logoutObservers.forEach({ $0.logoutFailed() })
+                                                                                    userAuthenticationToken: nil) { error in
+            if error != nil {
+                self.logoutObservers.forEach({ $0.logoutFailed() })
+            }
         }
     }
 

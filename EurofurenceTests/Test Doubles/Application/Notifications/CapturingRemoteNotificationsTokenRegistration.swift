@@ -24,6 +24,10 @@ class CapturingRemoteNotificationsTokenRegistration: RemoteNotificationsTokenReg
         self.completionHandler = completionHandler
     }
     
+    func succeedLastRequest() {
+        completionHandler?(nil)
+    }
+    
     func failLastRequest() {
         struct SomeError: Error {}
         completionHandler?(SomeError())
