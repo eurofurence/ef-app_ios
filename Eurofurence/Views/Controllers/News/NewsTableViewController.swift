@@ -137,29 +137,6 @@ class NewsTableViewController: UITableViewController,
 		DataStoreRefreshController.shared.refreshStore()
     }
 
-    func notifyAnnouncements(_ announcements: [Announcement]) {
-        UIApplication.shared.applicationIconBadgeNumber = 0
-        if UserSettings.NotifyOnAnnouncement.currentValueOrDefault() {
-            for announcement in announcements {
-				let notification = UILocalNotification()
-				notification.alertBody = announcement.Title
-				notification.timeZone = TimeZone(abbreviation: "UTC")
-				notification.fireDate = announcement.ValidFromDateTimeUtc
-				notification.soundName = UILocalNotificationDefaultSoundName
-				notification.userInfo = ["Announcement": announcement ]
-				notification.applicationIconBadgeNumber = UIApplication.shared.applicationIconBadgeNumber + 1
-
-				UIApplication.shared.presentLocalNotificationNow(notification)
-            }
-        } else if announcements.count > 0 {
-            UIApplication.shared.applicationIconBadgeNumber = announcements.count
-        }
-
-        if let tabBarItem = self.navigationController?.tabBarItem, announcements.count > 0 {
-            tabBarItem.badgeValue = String(announcements.count)
-        }
-	}
-
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
 
