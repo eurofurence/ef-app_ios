@@ -11,56 +11,60 @@ import XCTest
 
 class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
     
+    var capturingJSONSession: CapturingJSONSession!
+    var registration: EurofurenceFCMDeviceRegistration!
+    
+    override func setUp() {
+        super.setUp()
+        
+        capturingJSONSession = CapturingJSONSession()
+        registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession)
+    }
+    
+    private func performRegistration(_ fcm: String = "",
+                                     topics: [FirebaseTopic] = [],
+                                     authenticationToken: String? = "",
+                                     completionHandler: ((Error?) -> Void)? = nil) {
+        registration.registerFCM(fcm, topics: topics, authenticationToken: authenticationToken) { completionHandler?($0) }
+    }
+    
     func testRegisteringTheFCMTokenSubmitsRequestToFCMRegistrationURL() {
-        let capturingJSONSession = CapturingJSONSession()
-        let registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession)
-        registration.registerFCM("", topics: [], authenticationToken: "") { _ in }
+        performRegistration()
         let expectedURL = "https://app.eurofurence.org/api/v2/PushNotifications/FcmDeviceRegistration"
 
         XCTAssertEqual(expectedURL, capturingJSONSession.postedURL)
     }
 
     func testRegisteringTheFCMTokenShouldNotSubmitRequestUntilRegistrationActuallyOccurs() {
-        let capturingJSONSession = CapturingJSONSession()
-        _ = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession)
-
         XCTAssertNil(capturingJSONSession.postedURL)
     }
 
     func testRegisteringTheFCMTokenShouldPostJSONBodyWithDeviceIDAsFCMToken() {
-        let capturingJSONSession = CapturingJSONSession()
-        let registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession)
         let fcm = "Something unique"
-        registration.registerFCM(fcm, topics: [], authenticationToken: "") { _ in }
+        performRegistration(fcm)
 
         XCTAssertEqual(fcm, capturingJSONSession.postedJSONValue(forKey: "DeviceId"))
     }
 
     func testRegisteringTheFCMTokenShouldSupplyTheLiveTopicWithinAnArrayUnderTheTopicsKey() {
-        let capturingJSONSession = CapturingJSONSession()
-        let registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession)
         let topic = FirebaseTopic.live
-        registration.registerFCM("", topics: [topic], authenticationToken: "") { _ in }
+        performRegistration(topics: [topic])
         let expected: [String] = [topic.description]
 
         XCTAssertEqual(expected, capturingJSONSession.postedJSONValue(forKey: "Topics") ?? [])
     }
 
     func testRegisteringTheFCMTokenShouldSupplyTheTestTopicWithinAnArrayUnderTheTopicsKey() {
-        let capturingJSONSession = CapturingJSONSession()
-        let registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession)
         let topic = FirebaseTopic.test
-        registration.registerFCM("", topics: [topic], authenticationToken: "") { _ in }
+        performRegistration(topics: [topic])
         let expected: [String] = [topic.description]
 
         XCTAssertEqual(expected, capturingJSONSession.postedJSONValue(forKey: "Topics") ?? [])
     }
 
     func testRegisteringTheFCMTokenShouldSupplyAllTopicsWithinAnArrayUnderTheTopicsKey() {
-        let capturingJSONSession = CapturingJSONSession()
-        let registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession)
         let topics: [FirebaseTopic] = [.test, .live]
-        registration.registerFCM("", topics: topics, authenticationToken: "") { _ in }
+        performRegistration(topics: topics)
         let expected: [String] = topics.map({ $0.description })
 
         XCTAssertEqual(expected, capturingJSONSession.postedJSONValue(forKey: "Topics") ?? [])
@@ -68,18 +72,13 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
     
     func testRegisteringTheFCMTokenWithUserAuthenticationTokenSuppliesItUsingTheAuthHeader() {
         let authenticationToken = "Token"
-        let capturingJSONSession = CapturingJSONSession()
-        let registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession)
-        registration.registerFCM("", topics: [], authenticationToken: authenticationToken) { _ in }
+        performRegistration(authenticationToken: authenticationToken)
         
         XCTAssertEqual("Bearer \(authenticationToken)", capturingJSONSession.capturedAdditionalPOSTHeaders?["Authorization"])
     }
     
     func testRegisteringTheFCMTokenWithoutUserAuthenticationTokenDoesNotSupplyAuthHeader() {
-        let capturingJSONSession = CapturingJSONSession()
-        let registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession)
-        registration.registerFCM("", topics: [], authenticationToken: nil) { _ in }
-        
+        performRegistration(authenticationToken: nil)
         XCTAssertNil(capturingJSONSession.capturedAdditionalPOSTHeaders?["Authorization"])
     }
     
