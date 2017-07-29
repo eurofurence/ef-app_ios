@@ -92,9 +92,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				}
 
 			case .Notification: // There is something we should notify the user about, most likely new PMs.
-				if application.applicationState == .inactive {
+				switch application.applicationState {
+				case .inactive:
 					// Application was launched from tapping the notification -> forward to PM view
 					notificationRouter.showRemoteNotificationTarget(for: userInfo, doWaitForDataStore: false)
+				case .active:
+					notificationRouter.showRemoteNotification(for: userInfo)
+				case .background:
+					break
 				}
 				// TODO: Pull new PMs from server
 				completionHandler(.noData)

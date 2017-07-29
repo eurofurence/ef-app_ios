@@ -51,6 +51,11 @@ struct StoryboardNotificationRouter: NotificationRouter {
 			                 subtitle: body ?? "Please open the app to view this announcement.",
 			                 soundName: remoteNotificationSoundProviding.getRemoteNotificationSoundName(),
 			                 action: { self.showRemoteNotificationTarget(for: userInfo) })
+		case .Notification:
+			showNotification(title: title ?? "New Private Message",
+			                 subtitle: body ?? "Please open the app to view this message.",
+			                 soundName: remoteNotificationSoundProviding.getRemoteNotificationSoundName(),
+			                 action: { self.showRemoteNotificationTarget(for: userInfo) })
 		default:
 			return
 		}
