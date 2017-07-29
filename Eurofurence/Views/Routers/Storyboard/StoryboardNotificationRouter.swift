@@ -41,13 +41,15 @@ struct StoryboardNotificationRouter: NotificationRouter {
 		guard let contentTypeString = userInfo[NotificationUserInfoKey.ContentType.rawValue] as? String,
 			let contentType = NotificationContentType(rawValue: contentTypeString) else { return }
 
+		let aps = userInfo["aps"] as? [AnyHashable : Any]
+		let alert = aps?["alert"] as? [AnyHashable : Any]
+		let title = alert?["title"] as? String ?? aps?["alert"] as? String
+		let body = alert?["body"] as? String
 		switch contentType {
 		case .Announcement:
-			let aps = userInfo["aps"] as? [AnyHashable : Any]
-			let alert = aps?["alert"] as? [AnyHashable : Any]
-			let title = alert?["title"] as? String ?? aps?["alert"] as? String ?? "New Announcement"
-			let body = alert?["body"] as? String ?? "Please open the app to view this announcement."
-			showNotification(title: title, subtitle: body, soundName: remoteNotificationSoundProviding.getRemoteNotificationSoundName(),
+			showNotification(title: title ?? "New Announcement",
+			                 subtitle: body ?? "Please open the app to view this announcement.",
+			                 soundName: remoteNotificationSoundProviding.getRemoteNotificationSoundName(),
 			                 action: { self.showRemoteNotificationTarget(for: userInfo) })
 		default:
 			return
