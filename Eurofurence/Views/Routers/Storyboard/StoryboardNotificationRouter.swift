@@ -34,7 +34,7 @@ struct StoryboardNotificationRouter: NotificationRouter {
 	func showLocalNotificationTarget(for notification: UILocalNotification, doWaitForDataStore: Bool = false) {
 		guard let userInfo = notification.userInfo else { return }
 
-		showRemoteNotificationTarget(for: userInfo, doWaitForDataStore: doWaitForDataStore)
+		showNotificationTarget(for: userInfo, doWaitForDataStore: doWaitForDataStore)
 	}
 
 	func showRemoteNotification(for userInfo: [AnyHashable : Any]) {
@@ -62,36 +62,51 @@ struct StoryboardNotificationRouter: NotificationRouter {
 	}
 
 	func showRemoteNotificationTarget(for userInfo: [AnyHashable : Any], doWaitForDataStore: Bool = false) {
-		let routingTarget: RoutingTarget
-		var lazyPayload: [String : ()->Any?]?
-		if let eventId = userInfo[NotificationUserInfoKey.EventId.rawValue] as? String {
-			var payload: [String : Any]?
-			if let event = dataContext.Events.value.first(where: { $0.Id == eventId }) {
-				payload = ["event": event]
-			} else {
-				lazyPayload = ["event": { self.dataContext.Events.value.first(where: { $0.Id == eventId }) }]
-			}
-			routingTarget = RoutingTarget(target: "EventDetailView",
-			                                        on: "NewsNavigation",
-			                                        payload: payload)
-		} else if let announcementId = userInfo[NotificationUserInfoKey.AnnouncementId.rawValue] as? String {
-			var payload: [String : Any]?
-			if let announcement = dataContext.Announcements.value.first(where: { $0.Id == announcementId }) {
-				payload = ["announcement": announcement]
-			} else {
-				lazyPayload = ["announcement": { self.dataContext.Announcements.value.first(where: { $0.Id == announcementId }) }]
-			}
-			routingTarget = RoutingTarget(target: "AnnouncementDetailView",
-			                                        on: "NewsNavigation",
-			                                        payload: payload)
-		} else if let notificationType = userInfo[NotificationUserInfoKey.ContentType.rawValue] as? String,
-			notificationType == NotificationContentType.Notification.rawValue {
+		showNotificationTarget(for: userInfo, doWaitForDataStore: doWaitForDataStore)
+	}
 
-			routingTarget = RoutingTarget(target: "MessagesTableView",
-			                              on: "NewsNavigation")
-		} else {
+	private func showNotificationTarget(for userInfo: [AnyHashable : Any], doWaitForDataStore: Bool = false) {
+		guard let contentTypeString = userInfo[NotificationUserInfoKey.ContentType.rawValue] as? String,
+				let contentType = NotificationContentType(rawValue: contentTypeString) else {
 			return
 		}
+
+		var notificationRoutingTarget: RoutingTarget?
+		var lazyPayload: [String : ()->Any?]?
+
+		switch contentType {
+		case .Announcement:
+			if let announcementId = userInfo[NotificationUserInfoKey.AnnouncementId.rawValue] as? String {
+				var payload: [String : Any]?
+				if let announcement = dataContext.Announcements.value.first(where: { $0.Id == announcementId }) {
+					payload = ["announcement": announcement]
+				} else {
+					lazyPayload = ["announcement": { self.dataContext.Announcements.value.first(where: { $0.Id == announcementId }) }]
+				}
+				notificationRoutingTarget = RoutingTarget(target: "AnnouncementDetailView",
+				                              on: "NewsNavigation",
+				                              payload: payload)
+			}
+		case .EventFavorite:
+			if let eventId = userInfo[NotificationUserInfoKey.EventId.rawValue] as? String {
+				var payload: [String : Any]?
+				if let event = dataContext.Events.value.first(where: { $0.Id == eventId }) {
+					payload = ["event": event]
+				} else {
+					lazyPayload = ["event": { self.dataContext.Events.value.first(where: { $0.Id == eventId }) }]
+				}
+				notificationRoutingTarget = RoutingTarget(target: "EventDetailView",
+				                              on: "NewsNavigation",
+				                              payload: payload)
+			}
+		case .Notification:
+			notificationRoutingTarget = RoutingTarget(target: "MessagesTableView",
+				                              on: "NewsNavigation")
+		default:
+			break
+		}
+
+		guard let routingTarget = notificationRoutingTarget else { return }
 
 		if doWaitForDataStore {
 			let postDataStoreRoutingDelegate = PostDataStoreRoutingDelegate(
