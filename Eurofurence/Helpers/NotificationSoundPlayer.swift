@@ -10,6 +10,7 @@ import AudioToolbox
 class NotificationSoundPlayer {
 	static let shared = NotificationSoundPlayer()
 	private static let soundsLibraryDirectoryName = "Sounds"
+	private static let noneSoundName = "none.caf"
 
 	private let baseDirectory = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)[0]
 	private var soundsLibraryDirectory: URL
@@ -56,7 +57,9 @@ class NotificationSoundPlayer {
 			try FileManager.default.removeItem(at: targetUrl)
 		}
 
-		guard let soundUrl = Bundle.main.url(forResource: soundName, withExtension: nil) else { return }
+		guard let soundUrl = Bundle.main.url(
+				forResource: soundName ?? NotificationSoundPlayer.noneSoundName,
+				withExtension: nil) else { return }
 		try FileManager.default.copyItem(at: soundUrl, to: targetUrl)
 	}
 
