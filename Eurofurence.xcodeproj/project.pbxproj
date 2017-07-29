@@ -174,6 +174,7 @@
 		9A8ECA271F2BF27700351A83 /* RemoteNotificationSoundProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8ECA261F2BF27700351A83 /* RemoteNotificationSoundProviding.swift */; };
 		9A8ECA291F2BF2CA00351A83 /* UserDefaultsRemoteNotificationSoundProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8ECA281F2BF2CA00351A83 /* UserDefaultsRemoteNotificationSoundProvider.swift */; };
 		9A8ECA2D1F2D0A2000351A83 /* none.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8ECA2C1F2D0A2000351A83 /* none.caf */; };
+		9A8ECA2F1F2D245F00351A83 /* CollectEmAllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8ECA2E1F2D245F00351A83 /* CollectEmAllViewController.swift */; };
 		9A9487FD1F1D5D9300119DC8 /* EventNotificationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9487FC1F1D5D9300119DC8 /* EventNotificationPreferences.swift */; };
 		9A9487FF1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9487FE1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift */; };
 		9A9488011F21382E00119DC8 /* EventsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9488001F21382E00119DC8 /* EventsEntity.swift */; };
@@ -485,6 +486,7 @@
 		9A8ECA261F2BF27700351A83 /* RemoteNotificationSoundProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteNotificationSoundProviding.swift; sourceTree = "<group>"; };
 		9A8ECA281F2BF2CA00351A83 /* UserDefaultsRemoteNotificationSoundProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsRemoteNotificationSoundProvider.swift; sourceTree = "<group>"; };
 		9A8ECA2C1F2D0A2000351A83 /* none.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = none.caf; sourceTree = "<group>"; };
+		9A8ECA2E1F2D245F00351A83 /* CollectEmAllViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectEmAllViewController.swift; sourceTree = "<group>"; };
 		9A9487FC1F1D5D9300119DC8 /* EventNotificationPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventNotificationPreferences.swift; sourceTree = "<group>"; };
 		9A9487FE1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsEventNotificationPreferences.swift; sourceTree = "<group>"; };
 		9A9488001F21382E00119DC8 /* EventsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsEntity.swift; sourceTree = "<group>"; };
@@ -1478,6 +1480,7 @@
 				D6F3D0A32DC83843688B347C /* AboutViewController.swift */,
 				D6F3DF8454D3F83FD7294CD0 /* AnnouncementViewController.swift */,
 				78567B421F10303600EBA31D /* ApplicationActivityIndicatorRefreshDelegate.swift */,
+				9A8ECA2E1F2D245F00351A83 /* CollectEmAllViewController.swift */,
 				D6F3D4F55CFC5A5BDBB3F1A8 /* DealerTableViewController.swift */,
 				D6F3D66312CF86A43D699F2C /* DealerViewController.swift */,
 				D6F3DB48EF811D49364AFB9D /* KnowledgeEntryViewController.swift */,
@@ -1898,6 +1901,7 @@
 				9A80EF501F28C9A600FD0D37 /* StoryboardTargetRouter.swift in Sources */,
 				9A05254D1ECB097500578798 /* DataContextProtocol.swift in Sources */,
 				CA804DD21F20CE8F00E07A4A /* V2LoginAPI.swift in Sources */,
+				9A8ECA2F1F2D245F00351A83 /* CollectEmAllViewController.swift in Sources */,
 				9A34B97F1ED06946004A249E /* ContextResolver.swift in Sources */,
 				6EF96CC81F0EDAE800EE6134 /* CalendarStore.swift in Sources */,
 				9ACF998E1EC858B2006FC958 /* Event.swift in Sources */,
