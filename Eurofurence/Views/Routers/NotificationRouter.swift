@@ -29,6 +29,8 @@ enum NotificationUserInfoKey: String {
 enum NotificationContentType: String {
 	/// New announcement has been posted
 	case Announcement = "announcement"
+	/// Favorite event is approaching
+	case EventFavorite = "event_favorite"
 	/// Generic notification (currently only used for messages)
 	case Notification = "notification"
 	/// Backend data changed; should trigger silent background sync

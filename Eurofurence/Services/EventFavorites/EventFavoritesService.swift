@@ -95,7 +95,8 @@ class EventFavoritesService {
 		localNotification.alertBody = "\(event.Title) will take place \(timeDelta.minutes >= 1.0 ? "in \(timeDelta.dhmString)" : "now") at \(event.ConferenceRoom?.Name ?? "someplace")"
 		localNotification.soundName = eventNotificationPreferences.getNotificationSoundName()
 		localNotification.userInfo = [NotificationUserInfoKey.EventId.rawValue: event.Id,
-		                              NotificationUserInfoKey.EventLastChangeDateTimeUtc.rawValue: event.LastChangeDateTimeUtc]
+		                              NotificationUserInfoKey.EventLastChangeDateTimeUtc.rawValue: event.LastChangeDateTimeUtc,
+		                              NotificationUserInfoKey.ContentType.rawValue: NotificationContentType.EventFavorite.rawValue]
 
 		return localNotification
 	}

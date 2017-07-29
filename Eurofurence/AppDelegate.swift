@@ -103,6 +103,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				}
 				// TODO: Pull new PMs from server
 				completionHandler(.noData)
+			default:
+				completionHandler(.noData)
+				break
 			}
 		}
 	}
