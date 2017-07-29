@@ -77,6 +77,11 @@ struct StoryboardNotificationRouter: NotificationRouter {
 			routingTarget = RoutingTarget(target: "AnnouncementDetailView",
 			                                        on: "NewsNavigation",
 			                                        payload: payload)
+		} else if let notificationType = userInfo[NotificationUserInfoKey.ContentType.rawValue] as? String,
+			notificationType == NotificationContentType.Notification.rawValue {
+
+			routingTarget = RoutingTarget(target: "MessagesTableView",
+			                              on: "NewsNavigation")
 		} else {
 			return
 		}
