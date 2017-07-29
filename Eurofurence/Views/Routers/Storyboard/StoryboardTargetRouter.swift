@@ -26,7 +26,14 @@ class StoryboardTargetRouter: TargetRouter {
 			viewController.setValue(value, forKey: key)
 		})
 
-		pushViewController(viewController, to: navigationController, on: tabBarController)
+		if !navigationController.isBeingPresented {
+			tabBarController.selectedViewController = navigationController
+		}
+
+		if let identifier = viewController.restorationIdentifier,
+				identifier != navigationController.viewControllers.last?.restorationIdentifier {
+			navigationController.pushViewController(viewController, animated: true)
+		}
 	}
 
 	private func getTabBarController() -> UITabBarController? {
@@ -39,13 +46,5 @@ class StoryboardTargetRouter: TargetRouter {
 	private func getNavigationController(for navigationControllerIdentifier: String,
 	                                     on tabBarController: UITabBarController) -> UINavigationController? {
 		return tabBarController.viewControllers?.first(where: { $0.restorationIdentifier == navigationControllerIdentifier }) as? UINavigationController
-	}
-
-	private func pushViewController(_ viewController: UIViewController,
-	                                to navigationController: UINavigationController,
-	                                on tabBarController: UITabBarController) {
-
-		tabBarController.selectedViewController = navigationController
-		navigationController.pushViewController(viewController, animated: true)
 	}
 }
