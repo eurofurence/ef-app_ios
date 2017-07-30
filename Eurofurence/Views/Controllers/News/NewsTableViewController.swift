@@ -129,14 +129,6 @@ class NewsTableViewController: UITableViewController,
 		timeService.tick()
 	}
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        // Reset the application badge because all announcements can be assumed seen
-        UIApplication.shared.applicationIconBadgeNumber = 0
-        UIApplication.shared.cancelAllLocalNotifications()
-    }
-
 	// TODO: Pull into super class for all refreshable ViewControllers
     /// Initiates sync with API via refreshControl
     func refresh(_ sender: AnyObject) {
