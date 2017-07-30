@@ -15,7 +15,7 @@ class CollectEmAllViewController: UIViewController, WKUIDelegate {
 
 	// MARK: Properties
 
-	private static let baseUrl = URL(string: "https://app.eurofurence.org/collectemall/")!
+    private static let baseURLString = "https://app.eurofurence.org/collectemall/"
 	private var webView: WKWebView?
 
 	// MARK: Overrides
@@ -28,7 +28,16 @@ class CollectEmAllViewController: UIViewController, WKUIDelegate {
 		webView?.allowsLinkPreview = false
 		webView?.uiDelegate = self
 		view = webView
-		webView?.load(URLRequest(url: CollectEmAllViewController.baseUrl))
+
+        let store = KeychainLoginCredentialStore()
+        var urlString = CollectEmAllViewController.baseURLString
+        if let credential = store.persistedCredential, credential.tokenExpiryDate.compare(Date()) == .orderedDescending {
+            urlString.append("#token-\(credential.authenticationToken)")
+        }
+
+        if let url = URL(string: urlString) {
+            webView?.load(URLRequest(url: url))
+        }
 	}
 
 	@IBAction func refreshWebView(_ sender: UIButton) {
