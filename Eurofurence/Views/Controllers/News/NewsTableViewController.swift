@@ -135,20 +135,8 @@ class NewsTableViewController: UITableViewController,
 		DataStoreRefreshController.shared.refreshStore()
     }
 
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(true)
-
-		if let tabBarItem = self.navigationController?.tabBarItem {
-			tabBarItem.badgeValue = nil
-		}
-	}
-
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-
-		if let tabBarItem = self.navigationController?.tabBarItem {
-			tabBarItem.badgeValue = nil
-		}
 
 		refreshControl?.endRefreshing()
 	}
