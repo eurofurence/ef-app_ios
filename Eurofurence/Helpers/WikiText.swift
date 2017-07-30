@@ -20,7 +20,7 @@ class WikiText {
 			return NSAttributedString()
 		}
 		let mutableText = NSMutableString(string: wikiText)
-		mutableText.replaceOccurrences(of: "\\\\", with: "\n", options: [], range: NSRange(location: 0, length: mutableText.length))
+		mutableText.replaceOccurrences(of: "\\\\", with: "", options: [], range: NSRange(location: 0, length: mutableText.length))
 		WikiText._regexListItems.replaceMatches(in: mutableText, options: [], range: NSRange(location: 0, length: mutableText.length), withTemplate: "\n  • $1")
 
 		let attributes = [
