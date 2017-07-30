@@ -416,6 +416,7 @@ class NewsTableViewController: UITableViewController,
         let readCount = privateMessages.filter({ $0.isRead }).count
         unreadMessageCount = privateMessages.count - readCount
         reloadUserMessagesBanner()
+		updateBadgeCount()
     }
 
     func failedToLoadPrivateMessages() {
@@ -443,5 +444,10 @@ class NewsTableViewController: UITableViewController,
         let section = IndexSet(integer: 0)
         tableView.reloadSections(section, with: .automatic)
     }
+
+	private func updateBadgeCount() {
+		UIApplication.shared.applicationIconBadgeNumber = unreadMessageCount
+		navigationController?.tabBarItem.badgeValue = unreadMessageCount > 0 ? "\(unreadMessageCount)" : nil
+	}
 
 }
