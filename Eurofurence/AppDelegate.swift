@@ -97,9 +97,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 					// Application was launched from tapping the notification -> forward to PM view
 					notificationRouter.showRemoteNotificationTarget(for: userInfo, doWaitForDataStore: false)
 				case .active:
+					EurofurenceApplication.shared.fetchPrivateMessages()
 					notificationRouter.showRemoteNotification(for: userInfo)
 				case .background:
-					break
+					UIApplication.shared.applicationIconBadgeNumber += 1
 				}
 				// TODO: Pull new PMs from server
 				completionHandler(.noData)
