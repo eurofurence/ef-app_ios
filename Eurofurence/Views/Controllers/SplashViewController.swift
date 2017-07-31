@@ -118,12 +118,12 @@ class SplashViewController: UIViewController, SplashScene,
     // MARK: Private
 
     private func makeRandomHieroglyphCharacter() -> Character {
-        let hieroglyphRange = 80...123
-        let lower = UInt32(hieroglyphRange.lowerBound)
-        let upper = UInt32(hieroglyphRange.upperBound)
-        let randomisedValueInRange = lower + arc4random_uniform(upper - lower + 1)
-        let scalar = UnicodeScalar(randomisedValueInRange)!
-        return Character(scalar)
+        let availableChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+        let length = availableChars.characters.count
+        let index = Int(arc4random_uniform(UInt32(length)))
+        let stringIndex = availableChars.index(availableChars.startIndex, offsetBy: index)
+
+        return availableChars[stringIndex]
     }
 
 }
