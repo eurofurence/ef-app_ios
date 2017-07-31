@@ -22,7 +22,6 @@ class CollectEmAllViewController: UIViewController, WKUIDelegate {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
 		let webConfiguration = WKWebViewConfiguration()
 		webConfiguration.preferences.javaScriptEnabled = true
 		webView = WKWebView(frame: .zero, configuration: webConfiguration)
@@ -31,23 +30,17 @@ class CollectEmAllViewController: UIViewController, WKUIDelegate {
 		view = webView
 
         let store = KeychainLoginCredentialStore()
-        var token = "anonymous"
+        var urlString = CollectEmAllViewController.baseURLString
         if let credential = store.persistedCredential, credential.tokenExpiryDate.compare(Date()) == .orderedDescending {
-            token = credential.authenticationToken
+            urlString.append("#token-\(credential.authenticationToken)")
         }
 
-        let urlString = CollectEmAllViewController.baseURLString.appending("#token-\(token)")
         if let url = URL(string: urlString) {
             webView?.load(URLRequest(url: url))
         }
 	}
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        webView?.reloadFromOrigin()
-    }
-
-	@IBAction func refreshWebView(_ sender: UIButton) {
+	@IBAction func refreshWebView(_ sender: Any) {
 		webView?.reloadFromOrigin()
 	}
 }
