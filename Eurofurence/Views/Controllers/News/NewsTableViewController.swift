@@ -195,14 +195,11 @@ class NewsTableViewController: UITableViewController,
 
 	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		switch section {
-		case 1:
-			return 35.0
-		case 2:
-			return 35.0
-		case 3:
-			return 35.0
-		default: // Unknown section or header
-			return 0.0
+        case 0:
+            return 0
+		default:
+            let defaultHeight = super.tableView(tableView, heightForHeaderInSection: section)
+            return max(35.0, defaultHeight)
 		}
 	}
 
