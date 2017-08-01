@@ -15,12 +15,12 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wj8-2W-nHA">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wj8-2W-nHA">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
                     <subviews>
                         <button multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X48-Rb-Fls">
-                            <rect key="frame" x="310" y="5.5" width="57" height="24"/>
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                            <rect key="frame" x="300" y="4" width="67" height="27"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                             <inset key="contentEdgeInsets" minX="0.0" minY="3" maxX="0.0" maxY="3"/>
                             <state key="normal" title="Show all"/>
                             <connections>
@@ -28,13 +28,13 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Section Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cld-EM-7uL">
-                            <rect key="frame" x="8" y="0.0" width="302" height="35"/>
+                            <rect key="frame" x="8" y="0.0" width="292" height="35"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="0.33333333333333331" alpha="0.50139126712328763" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="X48-Rb-Fls" firstAttribute="centerY" secondItem="Wj8-2W-nHA" secondAttribute="centerY" id="2Hc-Q8-7af"/>
                         <constraint firstItem="X48-Rb-Fls" firstAttribute="leading" secondItem="cld-EM-7uL" secondAttribute="trailing" id="BTU-dX-sAc"/>

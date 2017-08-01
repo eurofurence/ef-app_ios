@@ -126,8 +126,7 @@ class DealerTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
 		guard let header = view as? UITableViewHeaderFooterView else { return }
-		header.isOpaque = false
-        header.contentView.backgroundColor = UIColor.darkGray.withAlphaComponent(0.5)
+		header.contentView.backgroundColor = UIColor.darkGray
 		header.textLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
         header.textLabel?.textColor = UIColor.white
     }
