@@ -45,6 +45,8 @@ class DealerViewController: UIViewController {
         singleTap = UITapGestureRecognizer(target: self, action: #selector(DealerViewController.showOnMap(_:)))
 		dealersDenMapImageView!.addGestureRecognizer(singleTap!)
 		dealersDenMapImageView!.isUserInteractionEnabled = true
+
+		view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "Background Tile"))
     }
 
     override func didReceiveMemoryWarning() {
