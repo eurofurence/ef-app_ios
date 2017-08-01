@@ -114,8 +114,8 @@ class DealerViewController: UIViewController {
 	}
 
 	private func setupSocialButtons() {
-		while socialButtonsView.subviews.count > 2 {
-			let removableButton = socialButtonsView.subviews[1]
+		while socialButtonsView.arrangedSubviews.count > 2 {
+			let removableButton = socialButtonsView.arrangedSubviews[1]
 			socialButtonsView.removeArrangedSubview(removableButton)
 			removableButton.removeFromSuperview()
 		}
