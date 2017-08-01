@@ -50,6 +50,8 @@ class EventTableViewController: UITableViewController, UISearchBarDelegate, UIVi
         tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         tableView.estimatedSectionHeaderHeight = 100.0
 
+		tableView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "Background Tile"))
+
 		let cancelSearchTap = UITapGestureRecognizer(target: tableView, action: #selector(self.tableView.endEditing(_:)))
 		cancelSearchTap.cancelsTouchesInView = false
 		tableView.addGestureRecognizer(cancelSearchTap)
