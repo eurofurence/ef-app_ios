@@ -11,13 +11,17 @@ import ReactiveSwift
 class DealerViewController: UIViewController {
     /// Higher numbers zoom out farther
     static var MAP_SEGMENT_ZOOM = CGFloat(8.0)
+	static let telegramLinkBase = "https://t.me/"
+	static let twitterLinkBase = "https://twitter.com/"
 
 	weak var dealer: Dealer?
     @IBOutlet weak var artistImageView: UIImageView!
     @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var attendeeNicknameLabel: UILabel!
+	@IBOutlet weak var socialButtonsView: UIStackView!
     @IBOutlet weak var artistShortDescriptionLabel: UILabel!
-    @IBOutlet weak var aboutArtistLabel: UILabel!
+	@IBOutlet weak var aboutArtistLabel: UILabel!
+	@IBOutlet weak var aboutArtSpacerView: UIView!
 	@IBOutlet weak var aboutArtTitleLabel: UILabel!
     @IBOutlet weak var artPreviewImageView: UIImageView!
     @IBOutlet weak var artPreviewCaption: UILabel!
@@ -62,8 +66,24 @@ class DealerViewController: UIViewController {
 		}
 		disposables = CompositeDisposable()
 
-        let newlineChars = CharacterSet.newlines
+		setupArtistImage()
 
+		setupArtistName()
+
+		setupSocialButtons()
+
+        setupShortDescription()
+
+		setupAbout()
+
+		setupArtPreview()
+
+		setupAboutArt()
+
+		setupMapImage()
+    }
+
+	private func setupArtistImage() {
 		artistImageView.image = #imageLiteral(resourceName: "defaultAvatarBig")
 		if let artistImage = dealer?.ArtistImage {
 			disposables += imageService.retrieve(for: artistImage).startWithResult({ [weak self] result in
@@ -78,7 +98,9 @@ class DealerViewController: UIViewController {
 				}
 			})
 		}
+	}
 
+	private func setupArtistName() {
 		if let _ = dealer?.DisplayName, !dealer!.DisplayName.isEmpty {
 			displayNameLabel.text = dealer?.DisplayName
 			attendeeNicknameLabel.text = dealer?.AttendeeNickname
@@ -87,74 +109,110 @@ class DealerViewController: UIViewController {
 			attendeeNicknameLabel.text = nil
 			attendeeNicknameLabel.isHidden = true
 		}
+	}
 
-        artistShortDescriptionLabel.text = dealer?.ShortDescription.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init).joined(separator: "\n")
-        artistShortDescriptionLabel.sizeToFit()
+	private func setupSocialButtons() {
+		while socialButtonsView.subviews.count > 2 {
+			let removableButton = socialButtonsView.subviews[1]
+			socialButtonsView.removeArrangedSubview(removableButton)
+			removableButton.removeFromSuperview()
+		}
+		if (dealer?.Links.count ?? 0) >= 1 {
+			createSocialButton(icon: "\u{f0c1}", action: #selector(openExternalLink),
+			                   accessibilityLabel: "Open External Link")
+		}
+		if let telegramName = dealer?.TelegramHandle, !telegramName.isEmpty {
+			createSocialButton(icon: "\u{f2c6}", action: #selector(openTelegramLink),
+			                   accessibilityLabel: "Open Telegram Profile")
+		}
+		if let twitterName = dealer?.TwitterHandle, !twitterName.isEmpty {
+			createSocialButton(icon: "\u{f081}", action: #selector(openTwitterLink),
+			                   accessibilityLabel: "Open Twitter Profile")
+		}
+		socialButtonsView.isHidden = socialButtonsView.subviews.count == 2
+	}
 
-        let aboutArtistText = dealer?.AboutTheArtistText.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init).joined(separator: "\n")
-        if let aboutArtistText = aboutArtistText, !aboutArtistText.isEmpty {
-			aboutArtistLabel.text = aboutArtistText
-        } else {
+	private func setupShortDescription() {
+		artistShortDescriptionLabel.text = replaceUnicodeNewlines(in: dealer?.ShortDescription)
+		artistShortDescriptionLabel.sizeToFit()
+	}
+
+	private func setupAbout() {
+		let aboutText = replaceUnicodeNewlines(in: dealer?.AboutTheArtistText)
+		if let aboutText = aboutText, !aboutText.isEmpty {
+			aboutArtistLabel.text = aboutText
+		} else {
 			// TODO: Externalise strings for i18n
 			aboutArtistLabel.text = "The artist did not provide any information about themselves to be shown here."
-        }
-        aboutArtistLabel.sizeToFit()
+		}
+		aboutArtistLabel.sizeToFit()
+	}
 
-		if let artPreviewImage = dealer?.ArtPreviewImage {
-			artPreviewImageView.image = #imageLiteral(resourceName: "ef")
-			artPreviewImageView.sizeToFit()
-			artPreviewCaption.text = nil
-			disposables += imageService.retrieve(for: artPreviewImage).startWithResult({ [weak self] result in
-				guard let strongSelf = self else { return }
-				switch result {
-				case let .success(value):
-					DispatchQueue.main.async {
-						strongSelf.artPreviewImageView.image = value
-						strongSelf.artPreviewImageView.sizeToFit()
-
-						if let artPreviewCaption = strongSelf.dealer?.ArtPreviewCaption {
-							strongSelf.artPreviewCaption.text = artPreviewCaption.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init).joined(separator: "\n")
-						}
-						strongSelf.artPreviewCaption.sizeToFit()
-					}
-				case .failure:
-					break
-				}
-			})
-		} else {
+	private func setupArtPreview() {
+		guard let artPreviewImage = dealer?.ArtPreviewImage else {
 			artPreviewImageView.isHidden = true
 			artPreviewCaption.isHidden = true
+			return
 		}
 
-        let aboutArtText = dealer?.AboutTheArtText.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init).joined(separator: "\n")
-        if let aboutArtText = aboutArtText, !aboutArtText.isEmpty {
+		artPreviewImageView.image = #imageLiteral(resourceName: "ef")
+		artPreviewImageView.sizeToFit()
+		artPreviewCaption.text = nil
+		disposables += imageService.retrieve(for: artPreviewImage).startWithResult({ [weak self] result in
+			guard let strongSelf = self else { return }
+			switch result {
+			case let .success(value):
+				DispatchQueue.main.async {
+					strongSelf.artPreviewImageView.image = value
+					strongSelf.artPreviewImageView.sizeToFit()
+
+					strongSelf.artPreviewCaption.text = strongSelf.replaceUnicodeNewlines(in: strongSelf.dealer?.ArtPreviewCaption)
+					strongSelf.artPreviewCaption.sizeToFit()
+				}
+			case .failure:
+				break
+			}
+		})
+	}
+
+	private func setupAboutArt() {
+		let aboutArtText = replaceUnicodeNewlines(in: dealer?.AboutTheArtText)
+		if let aboutArtText = aboutArtText, !aboutArtText.isEmpty {
 			aboutArtLabel.text = aboutArtText
 			aboutArtLabel.sizeToFit()
-        } else {
+		} else {
 			aboutArtLabel.isHidden = true
 
 			// if neither text nor image have been provided, hide the entire about art section
 			if artPreviewImageView.isHidden {
+				aboutArtSpacerView.isHidden = true
 				aboutArtTitleLabel.isHidden = true
 			}
-        }
+		}
+	}
 
-        if let mapEntry = dealer?.MapEntry, let map = mapEntry.Map, let mapImage = map.Image {
+	private func setupMapImage() {
+		guard let mapEntry = dealer?.MapEntry, let map = mapEntry.Map,
+			let mapImage = map.Image else {
+				dealersDenMapImageView.image = #imageLiteral(resourceName: "ef")
+				return
+		}
 
-			disposables += imageService.retrieve(for: mapImage).startWithResult({ [weak self] result in
-				guard let strongSelf = self else { return }
-				switch result {
-				case let .success(value):
-					let ratio = strongSelf.dealersDenMapImageView.bounds.width / strongSelf.dealersDenMapImageView.bounds.height
+		disposables += imageService.retrieve(for: mapImage).startWithResult({ [weak self] result in
+			guard let strongSelf = self else { return }
+			switch result {
+			case let .success(value):
+				let ratio = strongSelf.dealersDenMapImageView.bounds.width / strongSelf.dealersDenMapImageView.bounds.height
 
-					let segmentHeight = mapEntry.CGTapRadius * DealerViewController.MAP_SEGMENT_ZOOM
-					let segmentWidth = segmentHeight * ratio
+				let segmentHeight = mapEntry.CGTapRadius * DealerViewController.MAP_SEGMENT_ZOOM
+				let segmentWidth = segmentHeight * ratio
 
-					let offsetX = min(max(0.0, mapEntry.CGX - segmentWidth / 2.0), value.size.width - segmentWidth)
-					let offsetY = min(max(0.0, mapEntry.CGY - segmentHeight / 2.0), value.size.height - segmentHeight)
+				let offsetX = min(max(0.0, mapEntry.CGX - segmentWidth / 2.0), value.size.width - segmentWidth)
+				let offsetY = min(max(0.0, mapEntry.CGY - segmentHeight / 2.0), value.size.height - segmentHeight)
 
-					if let croppedMap = (value.cgImage)?.cropping(to: CGRect(x: offsetX, y: offsetY, width: segmentWidth, height: segmentHeight)) {
+				if let croppedMap = (value.cgImage)?.cropping(to: CGRect(x: offsetX, y: offsetY, width: segmentWidth, height: segmentHeight)) {
 
+					DispatchQueue.main.async {
 						// Initialise the context
 						let size = CGSize(width: segmentWidth, height: segmentHeight)
 						let opaque = true
@@ -175,18 +233,92 @@ class DealerViewController: UIViewController {
 						strongSelf.dealersDenMapImageView.image = UIGraphicsGetImageFromCurrentImageContext()
 						UIGraphicsEndImageContext()
 					}
-				case .failure:
-					break
 				}
-			})
-        }
-    }
+			case .failure:
+				break
+			}
+		})
+	}
 
-    func showOnMap(_ tapGesture: UITapGestureRecognizer) {
-        if let mapEntry = dealer?.MapEntry {
-            self.performSegue(withIdentifier: "DealerDetailViewToMapSegue", sender: mapEntry)
-        }
-    }
+	// MARK: Private
+
+	private func replaceUnicodeNewlines(in text: String?) -> String? {
+		return text?.utf16.split { CharacterSet.newlines.contains(UnicodeScalar($0)!) }
+			.flatMap(String.init).joined(separator: "\n")
+	}
+
+	private func createSocialButton(icon: String, action: Selector, accessibilityLabel: String) {
+		let socialButton = UIButton(type: .system)
+		let widthConstraint = NSLayoutConstraint(item: socialButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40)
+		let heightConstraint = NSLayoutConstraint(item: socialButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40)
+		socialButton.addConstraint(widthConstraint)
+		socialButton.addConstraint(heightConstraint)
+		socialButton.accessibilityLabel = accessibilityLabel
+		socialButton.setTitle(icon, for: .normal)
+		socialButton.titleLabel?.font = UIFont(name: "FontAwesome", size: 35.0)
+		socialButton.addTarget(self, action: action, for: .primaryActionTriggered)
+		socialButtonsView.addSubview(socialButton)
+		socialButtonsView.insertArrangedSubview(socialButton, at: 1)
+	}
+
+	private func openLinkAlert(title: String, message: String, link: URL?) {
+		guard let link = link else { return }
+
+		let alert = UIAlertController(title: title,
+		                              message: message,
+		                              preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
+			UIApplication.shared.openURL(link)
+		}))
+		self.present(alert, animated: true)
+	}
+
+	// MARK: Actions
+
+	func openTelegramLink() {
+		guard let telegramHandle = dealer?.TelegramHandle else { return }
+
+		let telegramLink = DealerViewController.telegramLinkBase.appending(telegramHandle)
+		let telegramUrl = URL(string: telegramLink)
+
+		openLinkAlert(title: "Telegram Profile",
+		              message: "This will open the Telegram profile of @\(telegramHandle).",
+					  link: telegramUrl)
+	}
+
+	func openTwitterLink() {
+		guard let twitterHandle = dealer?.TwitterHandle else { return }
+
+		let twitterLink = DealerViewController.twitterLinkBase.appending(twitterHandle)
+		let twitterUrl = URL(string: twitterLink)
+
+		openLinkAlert(title: "Twitter Profile",
+		              message: "This will open the Twitter profile of @\(twitterHandle).",
+					  link: twitterUrl)
+	}
+
+	func openExternalLink() {
+		guard let links = dealer?.Links, links.count > 0 else { return }
+
+		let linkFragment = links[0]
+
+		switch linkFragment.FragmentType {
+		case .WebExternal:
+			guard let linkUrl = URL(string: linkFragment.Target) else { return }
+			openLinkAlert(title: "External Link",
+			              message: "This will open the following link: \(linkFragment.Target)",
+						  link: linkUrl)
+		default:
+			return
+		}
+	}
+
+	func showOnMap(_ tapGesture: UITapGestureRecognizer) {
+		if let mapEntry = dealer?.MapEntry {
+			self.performSegue(withIdentifier: "DealerDetailViewToMapSegue", sender: mapEntry)
+		}
+	}
 
     /*
      // MARK: - Navigation

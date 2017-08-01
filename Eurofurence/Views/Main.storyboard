@@ -36,7 +36,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="1237"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DX4-b5-s07">
-                                        <rect key="frame" x="8" y="8" width="304" height="1188"/>
+                                        <rect key="frame" x="8" y="8" width="304" height="1228"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ef" translatesAutoresizingMaskIntoConstraints="NO" id="TQd-S1-cSW" userLabel="Avatar">
                                                 <rect key="frame" x="0.0" y="0.0" width="304" height="256"/>
@@ -56,79 +56,120 @@
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="r2s-D2-uhC">
+                                                <rect key="frame" x="0.0" y="322.5" width="304" height="35"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LbK-Sj-Bzt">
+                                                        <rect key="frame" x="0.0" y="0.0" width="79.5" height="35"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkH-J5-0EA">
+                                                        <rect key="frame" x="89.5" y="0.0" width="35" height="35"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="nkH-J5-0EA" secondAttribute="height" multiplier="1:1" id="tpc-p5-rdR"/>
+                                                            <constraint firstAttribute="width" constant="35" id="ybl-4M-W5S"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="35"/>
+                                                        <state key="normal" title=""/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Di-lM-1CC">
+                                                        <rect key="frame" x="134.5" y="0.0" width="35.5" height="35"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="5Di-lM-1CC" secondAttribute="height" multiplier="1:1" id="bG3-jn-0IO"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="35"/>
+                                                        <state key="normal" title=""/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ats-zC-pc7">
+                                                        <rect key="frame" x="180" y="0.0" width="35" height="35"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="Ats-zC-pc7" secondAttribute="height" multiplier="1:1" id="CZD-Al-JUc"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="35"/>
+                                                        <state key="normal" title=""/>
+                                                    </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hu2-H2-DbL">
+                                                        <rect key="frame" x="225" y="0.0" width="79" height="35"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="LbK-Sj-Bzt" firstAttribute="width" secondItem="Hu2-H2-DbL" secondAttribute="width" id="3rs-6I-i2q"/>
+                                                </constraints>
+                                            </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the short description given by the dealer. This is the short description given by the dealer." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wav-Y6-oXe" userLabel="Short Description">
-                                                <rect key="frame" x="0.0" y="322.5" width="304" height="64.5"/>
+                                                <rect key="frame" x="0.0" y="362.5" width="304" height="64.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qBi-rv-Lxc" userLabel="Spacer View">
-                                                <rect key="frame" x="0.0" y="392" width="304" height="10"/>
+                                                <rect key="frame" x="0.0" y="432" width="304" height="10"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="BKN-47-LdB"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About the Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ShU-lk-rX7" userLabel="About the Artist Heading">
-                                                <rect key="frame" x="0.0" y="407" width="304" height="26.5"/>
+                                                <rect key="frame" x="0.0" y="447" width="304" height="26.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCS-gW-sxV" userLabel="About the Artist Text">
-                                                <rect key="frame" x="0.0" y="438.5" width="304" height="86.5"/>
+                                                <rect key="frame" x="0.0" y="478.5" width="304" height="86.5"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zd9-U4-2wE" userLabel="Spacer View">
-                                                <rect key="frame" x="0.0" y="530" width="304" height="10"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zd9-U4-2wE" userLabel="About the Art Spacer View">
+                                                <rect key="frame" x="0.0" y="570" width="304" height="10"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="P8d-Ve-pzV"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About the Art" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ptX-lV-H8p" userLabel="About the Art Heading">
-                                                <rect key="frame" x="0.0" y="545" width="304" height="26.5"/>
+                                                <rect key="frame" x="0.0" y="585" width="304" height="26.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ef" translatesAutoresizingMaskIntoConstraints="NO" id="LQE-Ej-aqh" userLabel="About the Art Image">
-                                                <rect key="frame" x="0.0" y="576.5" width="304" height="290"/>
+                                                <rect key="frame" x="0.0" y="616.5" width="304" height="290"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="350" id="c4t-VK-tzP"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajR-dm-9LV" userLabel="About the Art Caption">
-                                                <rect key="frame" x="0.0" y="871.5" width="304" height="30.5"/>
+                                                <rect key="frame" x="0.0" y="911.5" width="304" height="30.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqu-K0-MlF" userLabel="About the Art Text">
-                                                <rect key="frame" x="0.0" y="907" width="304" height="86.5"/>
+                                                <rect key="frame" x="0.0" y="947" width="304" height="86.5"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wJF-ON-Anh" userLabel="Spacer View">
-                                                <rect key="frame" x="0.0" y="998.5" width="304" height="10"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wJF-ON-Anh" userLabel="Dealer's Den Spacer View">
+                                                <rect key="frame" x="0.0" y="1038.5" width="304" height="10"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="EGk-LP-0vL"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dealer's Den" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgh-wz-DEB" userLabel="Dealer's Den Heading">
-                                                <rect key="frame" x="0.0" y="1013.5" width="304" height="26.5"/>
+                                                <rect key="frame" x="0.0" y="1053.5" width="304" height="26.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ef" translatesAutoresizingMaskIntoConstraints="NO" id="lkw-Md-gZC" userLabel="Dealer's Den Image">
-                                                <rect key="frame" x="0.0" y="1045" width="304" height="143"/>
+                                                <rect key="frame" x="0.0" y="1085" width="304" height="143"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="lkw-Md-gZC" secondAttribute="height" multiplier="191:90" id="Dj3-2Q-Hug"/>
                                                 </constraints>
@@ -160,6 +201,7 @@
                     <size key="freeformSize" width="320" height="1350"/>
                     <connections>
                         <outlet property="aboutArtLabel" destination="aqu-K0-MlF" id="KOS-pS-d8m"/>
+                        <outlet property="aboutArtSpacerView" destination="Zd9-U4-2wE" id="rFW-xT-LUe"/>
                         <outlet property="aboutArtTitleLabel" destination="ptX-lV-H8p" id="Tce-DT-UWg"/>
                         <outlet property="aboutArtistLabel" destination="oCS-gW-sxV" id="OkO-hn-lNU"/>
                         <outlet property="artPreviewCaption" destination="ajR-dm-9LV" id="CEK-CV-emD"/>
@@ -170,6 +212,7 @@
                         <outlet property="dealersDenMapImageView" destination="lkw-Md-gZC" id="fy0-Z1-JFx"/>
                         <outlet property="dealersDenMapTitleLabel" destination="qgh-wz-DEB" id="tZy-ka-haY"/>
                         <outlet property="displayNameLabel" destination="vlo-4E-fr9" id="szO-uw-995"/>
+                        <outlet property="socialButtonsView" destination="r2s-D2-uhC" id="FgT-2a-tRY"/>
                         <segue destination="7qp-Gf-BX9" kind="show" identifier="DealerDetailViewToMapSegue" id="ClG-IO-w6u"/>
                     </connections>
                 </viewController>
