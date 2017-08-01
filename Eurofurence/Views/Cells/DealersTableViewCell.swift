@@ -38,11 +38,9 @@ class DealersTableViewCell: UITableViewCell {
 				subnameDealerLabel.text = nil
 			}
 
-			self.backgroundColor =  UIColor(red: 35/255.0, green: 36/255.0, blue: 38/255.0, alpha: 1.0)
 			shortDescriptionDealerLabel.text = dealer?.ShortDescription
 
-			// TODO: Implement image caching
-			artistDealerImage.image = UIImage(named: "defaultAvatar")!.af_imageRoundedIntoCircle()
+			artistDealerImage.image = #imageLiteral(resourceName: "defaultAvatar").af_imageRoundedIntoCircle()
 			do {
 				let imageService = try ServiceResolver.container.resolve() as ImageServiceProtocol
 				if let artistThumbnailImage = dealer?.ArtistThumbnailImage {
