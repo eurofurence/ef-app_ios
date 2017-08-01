@@ -12,7 +12,7 @@ import Result
 
 class AnnouncementsViewModel {
 	let Announcements = MutableProperty<[Announcement]>([])
-	let AnnouncementsEdits = MutableProperty<[Edit<Announcement>]>([])
+	let AnnouncementsEdits = MutableProperty<([Announcement], [Edit<Announcement>])>([] as [Announcement], [] as [Edit<Announcement>])
 	let TimeSinceLastSync = MutableProperty<TimeInterval>(-1.0)
 	private let dataContext: DataContextProtocol
 	private let lastSyncDateProvider: LastSyncDateProviding
@@ -28,14 +28,14 @@ class AnnouncementsViewModel {
 
 		timedAnnouncementsSignal = Signal.combineLatest(timeService.currentTime.signal, dataContext.Announcements.signal).observe(on: scheduler)
 		Announcements.swap(filterValidAnnouncements(timeService.currentTime.value, dataContext.Announcements.value))
-		AnnouncementsEdits.swap(Changeset.edits(from: [], to: Announcements.value))
+		AnnouncementsEdits.swap(([] as [Announcement], Changeset.edits(from: [], to: Announcements.value)))
 
 		disposable += Announcements <~ timedAnnouncementsSignal.map(filterValidAnnouncements)
 			.skipRepeats({ $0.count == $1.count && $0.starts(with: $1)})
 
 		disposable += AnnouncementsEdits <~ Announcements.combinePrevious(Announcements.value)
 			.map({ (oldAnnouncements, newAnnouncements) in
-			return Changeset.edits(from: oldAnnouncements, to: newAnnouncements)
+			return (newAnnouncements, Changeset.edits(from: oldAnnouncements, to: newAnnouncements))
 		})
 
 		disposable += TimeSinceLastSync <~ timeService.currentTime.signal.map({ [unowned self] currentTime in

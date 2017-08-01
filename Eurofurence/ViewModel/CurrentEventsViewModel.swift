@@ -12,9 +12,9 @@ import Result
 
 class CurrentEventsViewModel {
 	let RunningEvents = MutableProperty<[Event]>([])
-	let RunningEventsEdits = MutableProperty<[Edit<Event>]>([])
+	let RunningEventsEdits = MutableProperty<([Event], [Edit<Event>])>([] as [Event], [] as [Edit<Event>])
 	let UpcomingEvents = MutableProperty<[Event]>([])
-	let UpcomingEventsEdits = MutableProperty<[Edit<Event>]>([])
+	let UpcomingEventsEdits = MutableProperty<([Event], [Edit<Event>])>([] as [Event], [] as [Edit<Event>])
 
 	private let dataContext: DataContextProtocol
 	private let timeService: TimeService = try! ServiceResolver.container.resolve()
@@ -30,15 +30,15 @@ class CurrentEventsViewModel {
 
 		RunningEvents.swap(filterRunningEvents(timeService.currentTime.value, dataContext.Events.value))
 		UpcomingEvents.swap(filterUpcomingEvents(timeService.currentTime.value, dataContext.Events.value))
-		RunningEventsEdits.swap(Changeset.edits(from: [], to: RunningEvents.value))
-		UpcomingEventsEdits.swap(Changeset.edits(from: [], to: UpcomingEvents.value))
+		RunningEventsEdits.swap(([] as [Event], Changeset.edits(from: [], to: RunningEvents.value)))
+		UpcomingEventsEdits.swap(([] as [Event], Changeset.edits(from: [], to: UpcomingEvents.value)))
 
 		disposable += RunningEvents <~ timedEventsSignal.map(filterRunningEvents)
 			.skipRepeats({ $0.count == $1.count && $0.starts(with: $1)})
 
 		disposable += RunningEventsEdits <~ RunningEvents.combinePrevious(RunningEvents.value)
 			.map({ (oldEvents, newEvents) in
-				return Changeset.edits(from: oldEvents, to: newEvents)
+				return (newEvents, Changeset.edits(from: oldEvents, to: newEvents))
 			})
 
 		disposable += UpcomingEvents <~ timedEventsSignal.map(filterUpcomingEvents)
@@ -46,7 +46,7 @@ class CurrentEventsViewModel {
 
 		disposable += UpcomingEventsEdits <~ UpcomingEvents.combinePrevious(UpcomingEvents.value)
 			.map({ (oldEvents, newEvents) in
-				return Changeset.edits(from: oldEvents, to: newEvents)
+				return (newEvents, Changeset.edits(from: oldEvents, to: newEvents))
 			})
 	}
 
