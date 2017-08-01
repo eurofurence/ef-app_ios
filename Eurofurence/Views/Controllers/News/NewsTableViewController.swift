@@ -52,6 +52,7 @@ class NewsTableViewController: UITableViewController,
 
         tableView.estimatedRowHeight = 70
         tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "Background Tile"))
 
 		tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
 		tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCellWithoutBanner")
