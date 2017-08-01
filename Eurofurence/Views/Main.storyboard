@@ -1379,7 +1379,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                         <subviews>
                             <view opaque="NO" tag="1" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="UPi-G5-x8h" userLabel="MapContainer" customClass="UIScrollView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <segmentedControl opaque="NO" tag="2" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dID-qv-DXc" userLabel="MapSwitch">
                                 <rect key="frame" x="110" y="417" width="101" height="29"/>
@@ -1404,7 +1404,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="obc-LS-xAB" firstAttribute="top" secondItem="UPi-G5-x8h" secondAttribute="bottom" id="4Ny-4l-gyc"/>
                             <constraint firstItem="UPi-G5-x8h" firstAttribute="top" secondItem="utz-1H-XtR" secondAttribute="bottom" id="CUE-BK-6je"/>
@@ -1418,6 +1418,8 @@ If you do not have access to them, come to our ConOps or Security office. They c
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Maps" id="PQi-Sz-LWX"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <splitViewDetailSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="mapContainerView" destination="UPi-G5-x8h" id="A4a-c2-bKl"/>
@@ -2595,6 +2597,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</stri
         <segue reference="KTE-6a-a6w"/>
         <segue reference="pvl-OA-LjO"/>
         <segue reference="TRw-ie-exZ"/>
-        <segue reference="eF5-yz-CdI"/>
+        <segue reference="8UT-oL-gAW"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -30,9 +30,10 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+		view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "Background Tile"))
+
         // setup map container
         mapContainerView.delegate = self
-        mapContainerView.backgroundColor = UIColor(red: 236/255.0, green: 240/255.0, blue: 241/255.0, alpha: 1.0)
         mapContainerView.minimumZoomScale = 1.0
         mapContainerView.maximumZoomScale = 5.0
 
