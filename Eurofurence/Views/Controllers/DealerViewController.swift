@@ -18,14 +18,12 @@ class DealerViewController: UIViewController {
     @IBOutlet weak var attendeeNicknameLabel: UILabel!
     @IBOutlet weak var artistShortDescriptionLabel: UILabel!
     @IBOutlet weak var aboutArtistLabel: UILabel!
-    @IBOutlet weak var artPreviewImageView: UIView!
-    @IBOutlet weak var artPreviewImage: UIImageView!
+	@IBOutlet weak var aboutArtTitleLabel: UILabel!
+    @IBOutlet weak var artPreviewImageView: UIImageView!
     @IBOutlet weak var artPreviewCaption: UILabel!
-    @IBOutlet weak var aboutArtTitleLabel: UILabel!
-    @IBOutlet weak var aboutArtLabel: UILabel!
-    @IBOutlet weak var aboutArtLabelTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var dealersDenLabelTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var dealersDenMapImageView: UIImageView!
+	@IBOutlet weak var aboutArtLabel: UILabel!
+	@IBOutlet weak var dealersDenMapTitleLabel: UILabel!
+	@IBOutlet weak var dealersDenMapImageView: UIImageView!
     var singleTap: UITapGestureRecognizer!
 
 	private var disposables = CompositeDisposable()
@@ -66,7 +64,7 @@ class DealerViewController: UIViewController {
 
         let newlineChars = CharacterSet.newlines
 
-		artistImageView.image = UIImage(named: "defaultAvatarBig")!
+		artistImageView.image = #imageLiteral(resourceName: "defaultAvatarBig")
 		if let artistImage = dealer?.ArtistImage {
 			disposables += imageService.retrieve(for: artistImage).startWithResult({ [weak self] result in
 				guard let strongSelf = self else { return }
@@ -87,31 +85,31 @@ class DealerViewController: UIViewController {
 		} else {
 			displayNameLabel.text = dealer?.AttendeeNickname
 			attendeeNicknameLabel.text = nil
+			attendeeNicknameLabel.isHidden = true
 		}
 
         artistShortDescriptionLabel.text = dealer?.ShortDescription.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init).joined(separator: "\n")
         artistShortDescriptionLabel.sizeToFit()
 
         let aboutArtistText = dealer?.AboutTheArtistText.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init).joined(separator: "\n")
-        if (aboutArtistText == "") {
-			// TODO: Externalise strings for i18n
-            aboutArtistLabel.text = "The artist did not provide any information about themselves to be shown here."
+        if let aboutArtistText = aboutArtistText, !aboutArtistText.isEmpty {
+			aboutArtistLabel.text = aboutArtistText
         } else {
-            aboutArtistLabel.text = aboutArtistText
+			// TODO: Externalise strings for i18n
+			aboutArtistLabel.text = "The artist did not provide any information about themselves to be shown here."
         }
         aboutArtistLabel.sizeToFit()
 
-		let heightConstraint = NSLayoutConstraint(item: artPreviewImageView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
-		artPreviewImageView.addConstraint(heightConstraint)
-
 		if let artPreviewImage = dealer?.ArtPreviewImage {
+			artPreviewImageView.image = #imageLiteral(resourceName: "ef")
+			artPreviewImageView.sizeToFit()
+			artPreviewCaption.text = nil
 			disposables += imageService.retrieve(for: artPreviewImage).startWithResult({ [weak self] result in
 				guard let strongSelf = self else { return }
 				switch result {
 				case let .success(value):
 					DispatchQueue.main.async {
-						heightConstraint.isActive = false
-						strongSelf.artPreviewImage.image = value
+						strongSelf.artPreviewImageView.image = value
 						strongSelf.artPreviewImageView.sizeToFit()
 
 						if let artPreviewCaption = strongSelf.dealer?.ArtPreviewCaption {
@@ -123,6 +121,9 @@ class DealerViewController: UIViewController {
 					break
 				}
 			})
+		} else {
+			artPreviewImageView.isHidden = true
+			artPreviewCaption.isHidden = true
 		}
 
         let aboutArtText = dealer?.AboutTheArtText.utf16.split { newlineChars.contains(UnicodeScalar($0)!) }.flatMap(String.init).joined(separator: "\n")
@@ -130,13 +131,11 @@ class DealerViewController: UIViewController {
 			aboutArtLabel.text = aboutArtText
 			aboutArtLabel.sizeToFit()
         } else {
-			aboutArtLabel.text = nil
+			aboutArtLabel.isHidden = true
 
 			// if neither text nor image have been provided, hide the entire about art section
-			if artPreviewImage == nil || artPreviewImage.image == nil {
-				aboutArtTitleLabel.text = nil
-				aboutArtLabelTopConstraint.constant = 0
-				dealersDenLabelTopConstraint.constant = 0
+			if artPreviewImageView.isHidden {
+				aboutArtTitleLabel.isHidden = true
 			}
         }
 
