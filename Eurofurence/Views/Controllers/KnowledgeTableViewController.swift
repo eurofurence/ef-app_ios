@@ -12,6 +12,8 @@ class KnowledgeTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+		tableView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "Background Tile"))
     }
 
     override func viewWillAppear(_ animated: Bool) {

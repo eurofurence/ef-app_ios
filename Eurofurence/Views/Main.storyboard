@@ -1872,9 +1872,9 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.13725490200000001" green="0.14117647059999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.13725490200000001" green="0.14117647059999999" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="titleLabel" destination="mLJ-Po-Mxu" id="T9v-tI-MyB"/>
                                     <segue destination="Aqh-3L-qkR" kind="show" identifier="KnowledgeEntryDetailSegue" id="TRw-ie-exZ">
