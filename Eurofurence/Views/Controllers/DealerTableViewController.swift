@@ -22,9 +22,11 @@ class DealerTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.backgroundColor =  UIColor(red: 35/255.0, green: 36/255.0, blue: 38/255.0, alpha: 1.0)
-        self.refreshControl?.addTarget(self, action: #selector(DealerTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
-        self.tableView.sectionIndexColor = UIColor.white
+        tableView.backgroundColor =  UIColor(patternImage: #imageLiteral(resourceName: "Background Tile"))
+        refreshControl?.addTarget(self, action: #selector(DealerTableViewController.refresh(_:)),
+                                  for: UIControlEvents.valueChanged)
+        //tableView.sectionIndexColor = UIColor.white
+		//tableView.sectionIndexBackgroundColor = UIColor.darkGray.withAlphaComponent(0.5)
 
         disposable += dataContext.Dealers.signal
             .observe(on: QueueScheduler.concurrent).observe({ [weak self] _ in
@@ -123,10 +125,10 @@ class DealerTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView //recast your view as a UITableViewHeaderFooterView
-        header.contentView.backgroundColor = UIColor(red: 68/255, green: 69/255, blue: 72/255, alpha: 1.0) //make the background color light blue
-        header.textLabel!.textColor = UIColor.white //make the text white
-        header.alpha = 0.8 //make the header transparent
+		guard let header = view as? UITableViewHeaderFooterView else { return }
+        header.contentView.backgroundColor = UIColor.darkGray
+        header.textLabel!.textColor = UIColor.white
+        header.alpha = 0.75
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
