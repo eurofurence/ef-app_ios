@@ -12,16 +12,16 @@ class EventViewController: UIViewController {
 	@IBOutlet weak var eventDescTextView: UITextView!
 	@IBOutlet weak var eventFavoriteButton: UIButton!
 	@IBOutlet weak var eventHostLabel: UILabel!
-	@IBOutlet weak var eventImageHeightConstraint: NSLayoutConstraint!
+	@IBOutlet weak var eventImageSpacerView: UIView!
 	@IBOutlet weak var eventImageView: UIImageView!
+	@IBOutlet weak var eventImageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var eventLocationLabel: UILabel!
     @IBOutlet weak var eventLocationIconLabel: UILabel!
     @IBOutlet weak var eventSubTitleLabel: UILabel!
 	@IBOutlet weak var eventStartTimeLabel: UILabel!
 	@IBOutlet weak var eventTitleLabel: UILabel!
 	@IBOutlet weak var eventTrackLabel: UILabel!
-	var eventLocationLabelDefaultColor: UIColor = UIColor.lightText
-    var eventImageDefaultHeight = CGFloat(0.0)
+	var eventLocationLabelDefaultColor: UIColor = UIColor.white
     var singleTapLocation: UITapGestureRecognizer!
     var singleTapLocationIcon: UITapGestureRecognizer!
 
@@ -32,9 +32,9 @@ class EventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        eventDescTextView.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
-        eventImageDefaultHeight = eventImageHeightConstraint.constant
-		eventLocationLabelDefaultColor = eventLocationLabel.textColor
+        eventLocationLabelDefaultColor = eventLocationLabel.textColor
+		view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "Background Tile"))
+		eventDescTextView.textContainer.lineFragmentPadding = 0.0
 
         singleTapLocation = UITapGestureRecognizer(target: self, action: #selector(EventViewController.showOnMap(_:)))
         eventLocationLabel!.addGestureRecognizer(singleTapLocation!)
@@ -98,7 +98,9 @@ class EventViewController: UIViewController {
 			eventImage = event.BannerImage
 		}
 
+		eventImageView.image = #imageLiteral(resourceName: "ef")
 		if let eventImage = eventImage {
+			eventImageView.isHidden = false
             imageService.retrieve(for: eventImage).startWithResult({ [unowned self] (result) in
                 switch result {
                 case let .success(image):
@@ -110,9 +112,9 @@ class EventViewController: UIViewController {
 					break
 				}
 			})
+		} else {
+			eventImageView.isHidden = true
 		}
-		eventImageView.image = nil
-		eventImageHeightConstraint.constant = CGFloat(0.0)
 
         updateEventFavoriteButtonAccessibilityHint()
     }
@@ -120,9 +122,9 @@ class EventViewController: UIViewController {
 	private func resizeImageView(for image: UIImage) {
 		let ratio = image.size.width / image.size.height
 		if let view = eventImageView.superview {
-			let newHeight = view.frame.width / ratio
+			let newHeight = min(view.frame.width, image.size.width) / ratio
 			eventImageView.frame.size = CGSize(width: view.frame.width, height: newHeight)
-			eventImageHeightConstraint.constant = newHeight
+			eventImageViewHeightConstraint.constant = newHeight
 			eventImageView.sizeToFit()
 		}
 	}
