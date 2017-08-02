@@ -27,10 +27,9 @@ class KnowledgeEntryViewController: UIViewController {
 
 		view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "Background Tile"))
 
-        linkView.translatesAutoresizingMaskIntoConstraints = false
-        for subview in linkView.subviews {
-            subview.removeFromSuperview()
-        }
+		textView.textContainer.lineFragmentPadding = 0.0
+
+        clearLinks()
     }
 
     func canRotate() -> Bool {
@@ -68,11 +67,7 @@ class KnowledgeEntryViewController: UIViewController {
 
 		textView.attributedText = WikiText.transform(knowledgeEntry?.Text ?? "")
 
-        for subview in linkView.subviews {
-			linkView.removeArrangedSubview(subview)
-            subview.removeFromSuperview()
-        }
-        buttonLinks = [:]
+        clearLinks()
 
 		if let links = knowledgeEntry?.Links {
 			for knowledgeLink in links {
@@ -145,5 +140,13 @@ class KnowledgeEntryViewController: UIViewController {
 		default:
 			break
 		}
+	}
+
+	private func clearLinks() {
+		for subview in linkView.subviews {
+			linkView.removeArrangedSubview(subview)
+			subview.removeFromSuperview()
+		}
+		buttonLinks = [:]
 	}
 }
