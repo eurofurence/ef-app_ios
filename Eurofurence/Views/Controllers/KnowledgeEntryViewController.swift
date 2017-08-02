@@ -68,6 +68,7 @@ class KnowledgeEntryViewController: UIViewController {
 		}
 
 		textView.attributedText = WikiText.transform(knowledgeEntry?.Text ?? "")
+		textView.textColor = UIColor.white
 
         clearLinks()
 
