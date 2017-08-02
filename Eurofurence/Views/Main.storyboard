@@ -419,10 +419,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.88517211289999997" green="0.51351156610000004" blue="0.011388903969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="94P-b3-hmf" kind="relationship" relationship="viewControllers" id="UlN-7a-bZ7"/>
                         <segue destination="iMR-zC-1Ej" kind="relationship" relationship="viewControllers" id="2Yc-07-jvP"/>
+                        <segue destination="94P-b3-hmf" kind="relationship" relationship="viewControllers" id="UlN-7a-bZ7"/>
                         <segue destination="n6b-Bd-NxQ" kind="relationship" relationship="viewControllers" id="J1K-Fe-U2g"/>
                         <segue destination="scG-Tu-b4g" kind="relationship" relationship="viewControllers" id="zq8-Es-p2L"/>
                         <segue destination="NtC-f2-fnQ" kind="relationship" relationship="viewControllers" id="7qU-28-VxI"/>
@@ -1390,7 +1391,6 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                     <segment title="Default"/>
                                     <segment title="Area"/>
                                 </segments>
-                                <color key="tintColor" red="0.0" green="0.38431372549019605" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="mapSwitchChanged:" destination="7qp-Gf-BX9" eventType="primaryActionTriggered" id="lOy-hx-lmU"/>
                                 </connections>
@@ -1398,9 +1398,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLB-HP-26t">
                                 <rect key="frame" x="290" y="0.0" width="30" height="36"/>
                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="24"/>
-                                <state key="normal" title="">
-                                    <color key="titleColor" red="0.0039215686269999999" green="0.38431372549999998" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <state key="normal" title=""/>
                                 <connections>
                                     <action selector="resetZoom" destination="7qp-Gf-BX9" eventType="primaryActionTriggered" id="m5h-qh-TLd"/>
                                 </connections>
@@ -1652,11 +1650,9 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="30"/>
                                                 <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                                 <state key="normal" title="☆">
-                                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" red="0.88517211289999997" green="0.51351156610000004" blue="0.011388903969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
-                                                <state key="selected" title="★">
-                                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
+                                                <state key="selected" title="★"/>
                                                 <connections>
                                                     <action selector="toggleEventFavorite:" destination="TBc-XK-CZJ" eventType="primaryActionTriggered" id="Rt1-iR-9NR"/>
                                                 </connections>
@@ -1868,7 +1864,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                             <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -1909,12 +1905,12 @@ If you do not have access to them, come to our ConOps or Security office. They c
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Knowledge Entry Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Sae-9p-oY2">
                                 <rect key="frame" x="0.0" y="64" width="375" height="70"/>
-                                <color key="backgroundColor" red="0.19215686274509802" green="0.19607843137254902" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="6yy-0u-I0q"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lI8-yj-TB2">
@@ -1927,33 +1923,32 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                         </constraints>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" scrollEnabled="NO" indicatorStyle="white" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zU6-H9-knQ">
-                                        <rect key="frame" x="8" y="216" width="359" height="280"/>
-                                        <color key="tintColor" red="0.0" green="0.38431372549999998" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="8" y="216" width="359" height="302"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Links" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJv-xc-24q">
-                                        <rect key="frame" x="16" y="504" width="343" height="27"/>
+                                        <rect key="frame" x="16" y="526" width="343" height="27"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="nuu-ER-LeG">
-                                        <rect key="frame" x="16" y="535" width="343" height="64"/>
+                                        <rect key="frame" x="16" y="557" width="343" height="70"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXW-Kq-7IC">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="33"/>
                                                 <color key="backgroundColor" red="0.15000000596046448" green="0.15000000596046448" blue="0.15000000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="tintColor" red="0.0" green="0.38431372549999998" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <state key="normal" title="Button"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gx-Vy-AUW">
-                                                <rect key="frame" x="0.0" y="34" width="343" height="30"/>
+                                                <rect key="frame" x="0.0" y="37" width="343" height="33"/>
                                                 <color key="backgroundColor" red="0.15000000596046448" green="0.15000000596046448" blue="0.15000000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="tintColor" red="0.0" green="0.38431372549999998" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <state key="normal" title="Button"/>
                                             </button>
                                         </subviews>
@@ -1970,6 +1965,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="rJv-xc-24q" firstAttribute="leading" secondItem="lI8-yj-TB2" secondAttribute="leadingMargin" constant="8" id="5ez-ho-LWh"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="rJv-xc-24q" secondAttribute="trailing" constant="8" id="Aku-dg-EFp"/>
@@ -2596,9 +2592,10 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</stri
         <image name="ef-bg-news" width="360" height="509"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KTE-6a-a6w"/>
-        <segue reference="pvl-OA-LjO"/>
         <segue reference="TRw-ie-exZ"/>
-        <segue reference="xQM-um-GLe"/>
+        <segue reference="pvl-OA-LjO"/>
+        <segue reference="KTE-6a-a6w"/>
+        <segue reference="8UT-oL-gAW"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.88517211294416243" green="0.5135115660559374" blue="0.011388903970826956" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

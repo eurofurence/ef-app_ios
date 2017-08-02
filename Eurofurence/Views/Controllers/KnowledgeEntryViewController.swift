@@ -29,6 +29,8 @@ class KnowledgeEntryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+		view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "Background Tile"))
+
         linkView.translatesAutoresizingMaskIntoConstraints = false
         for subview in linkView.subviews {
             subview.removeFromSuperview()
