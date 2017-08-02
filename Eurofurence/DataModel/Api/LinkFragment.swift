@@ -9,12 +9,13 @@ import Foundation
 import EVReflection
 
 class LinkFragment: EVObject, VersionedDataModel {
-	class var DataModelVersion: Int { return 1 }
+	class var DataModelVersion: Int { return 2 }
 
 	enum LinkFragmentType: String, EVRaw {
 		case DealerDetail
+		case EventConferenceRoom
+		case MapEntry
 		case MapExternal
-		case MapInternal
 		case WebExternal
 	}
 

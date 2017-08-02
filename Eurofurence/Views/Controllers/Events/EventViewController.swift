@@ -188,7 +188,7 @@ class EventViewController: UIViewController {
         if segue.identifier == "EventDetailViewToMapSegue" {
             if let destinationVC = segue.destination as? MapViewController, let mapEntry = sender as? MapEntry {
                 destinationVC.mapEntry = mapEntry
-                destinationVC.currentMapEntryRadiusMultiplier = 30.0
+                destinationVC.currentMapEntryRadiusMultiplier = 10.0
             }
         }
     }

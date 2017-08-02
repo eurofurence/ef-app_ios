@@ -312,7 +312,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 			}
 		case .MapExternal:
 			break
-		case .MapInternal:
+		case .MapEntry:
 			if let linkMapEntry: MapEntry = linkFragment.getTarget() {
 				currentMapEntryRadiusMultiplier = 10.0
 				self.show(mapEntry: linkMapEntry)
@@ -321,6 +321,8 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 			if let url: URL = linkFragment.getTarget() {
 				UIApplication.shared.openURL(url)
 			}
+		default:
+			break
 		}
 	}
 
@@ -339,10 +341,12 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 				optionMenuMessage = "Select a dealer"
 			case .MapExternal:
 				optionMenuMessage = "Select an external map location"
-			case .MapInternal:
+			case .MapEntry:
 				optionMenuMessage = "Select a map location"
 			case .WebExternal:
 				optionMenuMessage = "Select a web link"
+			default:
+				return
 			}
 		}
 
@@ -361,7 +365,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 			case .MapExternal:
 				// TODO: How can the target string be parsed to a location?
 				continue
-			case .MapInternal:
+			case .MapEntry:
 				if let _: MapEntry = link.getTarget() {
 					actionTitle = hasMultipleFragmentTypes ? "Map: \(actionTitle)" : actionTitle
 				} else {
@@ -373,6 +377,8 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 				} else {
 					continue
 				}
+			default:
+				continue
 			}
 
 			let linkAction = UIAlertAction(title: actionTitle, style: .default, handler: {

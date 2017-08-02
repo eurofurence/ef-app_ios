@@ -109,8 +109,18 @@ class NavigationResolver: NavigationResolverProtocol {
 				for link in mapEntry.Links {
 					linkFragments.append(link)
 
-					if link.FragmentType == .DealerDetail, let dealer = dataContext.Dealers.value.first(where: { $0.Id == link.Target }) {
-						dealer.MapEntry = mapEntry
+					switch link.FragmentType {
+					case .DealerDetail:
+						if let dealer = dataContext.Dealers.value.first(where: { $0.Id == link.Target }) {
+							dealer.MapEntry = mapEntry
+							link.TargetObject = dealer
+						}
+					case .EventConferenceRoom:
+						if let eventConferenceRoom = dataContext.EventConferenceRooms.value.first(where: { $0.Id == link.Target }) {
+							eventConferenceRoom.MapEntry = mapEntry
+						}
+					default:
+						break
 					}
 				}
 			}
@@ -119,14 +129,10 @@ class NavigationResolver: NavigationResolverProtocol {
 		print("\(#function): Resolving LinkFragments")
 		for link in linkFragments {
 			switch link.FragmentType {
-			case .DealerDetail:
-				if let dealer = dataContext.Dealers.value.first(where: { $0.Id == link.Target }) {
-					link.TargetObject = dealer
-				}
 			case .MapExternal:
 				// TODO: Geographic location on map for use with RoutingAppChooser
 				break
-			case .MapInternal:
+			case .MapEntry:
 				link.TargetObject = mapEntries[link.Target]
 			default:
 				break

@@ -108,7 +108,7 @@ class KnowledgeEntryViewController: UIViewController {
 				if let dealer: Dealer = link.getTarget() {
 					performSegue(withIdentifier: "KnowledgeEntryToDealerSegue", sender: dealer)
 				}
-			case .MapInternal:
+			case .MapEntry:
 				if let mapEntry: MapEntry = link.getTarget() {
 					performSegue(withIdentifier: "KnowledgeEntryToMapSegue", sender: mapEntry)
 				}
