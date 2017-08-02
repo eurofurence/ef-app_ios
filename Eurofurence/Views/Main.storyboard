@@ -422,14 +422,14 @@
                         <color key="selectedImageTintColor" red="0.88517211289999997" green="0.51351156610000004" blue="0.011388903969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="iMR-zC-1Ej" kind="relationship" relationship="viewControllers" id="2Yc-07-jvP"/>
                         <segue destination="94P-b3-hmf" kind="relationship" relationship="viewControllers" id="UlN-7a-bZ7"/>
+                        <segue destination="iMR-zC-1Ej" kind="relationship" relationship="viewControllers" id="2Yc-07-jvP"/>
                         <segue destination="n6b-Bd-NxQ" kind="relationship" relationship="viewControllers" id="J1K-Fe-U2g"/>
                         <segue destination="scG-Tu-b4g" kind="relationship" relationship="viewControllers" id="zq8-Es-p2L"/>
                         <segue destination="NtC-f2-fnQ" kind="relationship" relationship="viewControllers" id="7qU-28-VxI"/>
+                        <segue destination="fk3-SI-YZZ" kind="relationship" relationship="viewControllers" id="B95-LS-gp9"/>
                         <segue destination="RyY-ul-kIZ" kind="relationship" relationship="viewControllers" id="OP8-uT-eZ2"/>
                         <segue destination="nTP-oR-g7Q" kind="relationship" relationship="viewControllers" id="K6n-XQ-ZNQ"/>
-                        <segue destination="fk3-SI-YZZ" kind="relationship" relationship="viewControllers" id="B95-LS-gp9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kBX-KJ-KRN" userLabel="First Responder" sceneMemberID="firstResponder"/>
