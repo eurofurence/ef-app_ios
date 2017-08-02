@@ -43,13 +43,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="And here comes the teaser for this special event …" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvr-69-Grf">
-                        <rect key="frame" x="70" y="28.5" width="184" height="41"/>
+                        <rect key="frame" x="70" y="28.5" width="184" height="43.5"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ef-bg-news" translatesAutoresizingMaskIntoConstraints="NO" id="b2g-aM-3KW">
-                        <rect key="frame" x="0.0" y="74.5" width="279" height="93"/>
+                        <rect key="frame" x="8" y="77" width="271" height="90.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="b2g-aM-3KW" secondAttribute="height" multiplier="1080:360" id="aZb-WM-0FU"/>
                         </constraints>
@@ -75,7 +75,7 @@
                     <constraint firstItem="Eee-gS-YSF" firstAttribute="leading" secondItem="mrd-bS-rGX" secondAttribute="trailing" constant="5" id="ch8-Yt-cSH"/>
                     <constraint firstItem="KHk-Kf-32U" firstAttribute="top" secondItem="mrd-bS-rGX" secondAttribute="top" id="dzO-Wk-nnP"/>
                     <constraint firstAttribute="bottomMargin" secondItem="b2g-aM-3KW" secondAttribute="bottom" id="fDI-Yt-6NK"/>
-                    <constraint firstItem="b2g-aM-3KW" firstAttribute="leading" secondItem="s4T-35-k7j" secondAttribute="leading" id="i8L-EQ-iel"/>
+                    <constraint firstItem="b2g-aM-3KW" firstAttribute="leading" secondItem="s4T-35-k7j" secondAttribute="leadingMargin" id="i8L-EQ-iel"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Eee-gS-YSF" secondAttribute="trailing" id="j3N-c7-cFc"/>
                     <constraint firstItem="vTR-6W-c0s" firstAttribute="top" secondItem="KHk-Kf-32U" secondAttribute="bottom" id="ozk-9P-CaB"/>
                     <constraint firstItem="b2g-aM-3KW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vTR-6W-c0s" secondAttribute="bottom" constant="5" id="uVF-sO-amE"/>
