@@ -307,7 +307,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqt-Bb-GAP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1702" y="-2543"/>
+            <point key="canvasLocation" x="1700.625" y="-2544.7183098591549"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HkB-yg-AE7">
@@ -1462,7 +1462,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="0.75" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="sEE-D0-acQ" firstAttribute="leading" secondItem="n7X-so-Ay4" secondAttribute="leadingMargin" id="4GR-ca-6xq"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="sEE-D0-acQ" secondAttribute="trailing" id="kgG-tI-2jL"/>
@@ -1575,7 +1575,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBW-HT-YtE">
-                                <rect key="frame" x="0.0" y="134" width="320" height="672"/>
+                                <rect key="frame" x="0.0" y="134" width="320" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QUK-UZ-xPc">
                                         <rect key="frame" x="8" y="8" width="304" height="663"/>
@@ -1846,7 +1846,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                         <constraint firstAttribute="bottomMargin" secondItem="9hW-0f-0AZ" secondAttribute="bottom" id="wCu-bH-Vbp"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="0.75" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="descriptionLabel" destination="9hW-0f-0AZ" id="Wrv-XZ-9oG"/>
                                     <outlet property="iconLabel" destination="peT-5z-QMh" id="sQe-SR-2wj"/>
@@ -2567,10 +2567,10 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</stri
         <image name="ef-bg-news" width="360" height="509"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ExM-9j-RfE"/>
-        <segue reference="P2D-Oh-Qhb"/>
+        <segue reference="cyf-ZD-phh"/>
         <segue reference="AZX-ys-8B3"/>
-        <segue reference="8UT-oL-gAW"/>
+        <segue reference="xQM-um-GLe"/>
+        <segue reference="ExM-9j-RfE"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.88517211294416243" green="0.5135115660559374" blue="0.011388903970826956" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

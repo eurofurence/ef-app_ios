@@ -25,8 +25,6 @@ class DealerTableViewController: UITableViewController {
         tableView.backgroundColor =  UIColor(patternImage: #imageLiteral(resourceName: "Background Tile"))
         refreshControl?.addTarget(self, action: #selector(DealerTableViewController.refresh(_:)),
                                   for: UIControlEvents.valueChanged)
-        //tableView.sectionIndexColor = UIColor.white
-		//tableView.sectionIndexBackgroundColor = UIColor.darkGray.withAlphaComponent(0.5)
 
         disposable += dataContext.Dealers.signal
             .observe(on: QueueScheduler.concurrent).observe({ [weak self] _ in
@@ -126,7 +124,9 @@ class DealerTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
 		guard let header = view as? UITableViewHeaderFooterView else { return }
-		header.contentView.backgroundColor = UIColor.darkGray
+		header.backgroundView?.backgroundColor = UIColor.darkGray.withAlphaComponent(0.75)
+		header.contentView.isOpaque = false
+		header.contentView.backgroundColor = UIColor.clear
 		header.textLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
         header.textLabel?.textColor = UIColor.white
     }
