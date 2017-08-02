@@ -86,7 +86,7 @@
                                                             <constraint firstAttribute="width" secondItem="Ats-zC-pc7" secondAttribute="height" multiplier="1:1" id="CZD-Al-JUc"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="35"/>
-                                                        <state key="normal" title=""/>
+                                                        <state key="normal" title=""/>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hu2-H2-DbL">
                                                         <rect key="frame" x="225" y="0.0" width="79" height="35"/>
@@ -2594,8 +2594,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</stri
     <inferredMetricsTieBreakers>
         <segue reference="TRw-ie-exZ"/>
         <segue reference="pvl-OA-LjO"/>
-        <segue reference="KTE-6a-a6w"/>
         <segue reference="8UT-oL-gAW"/>
+        <segue reference="ClG-IO-w6u"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.88517211294416243" green="0.5135115660559374" blue="0.011388903970826956" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

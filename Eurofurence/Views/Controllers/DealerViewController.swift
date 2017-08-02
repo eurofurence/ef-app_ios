@@ -120,7 +120,7 @@ class DealerViewController: UIViewController {
 			removableButton.removeFromSuperview()
 		}
 		if (dealer?.Links.count ?? 0) >= 1 {
-			createSocialButton(icon: "\u{f0c1}", action: #selector(openExternalLink),
+			createSocialButton(icon: "\u{f0ac}", action: #selector(openExternalLink),
 			                   accessibilityLabel: "Open External Link")
 		}
 		if let telegramName = dealer?.TelegramHandle, !telegramName.isEmpty {
