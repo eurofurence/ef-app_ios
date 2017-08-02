@@ -100,6 +100,7 @@ class EventViewController: UIViewController {
 
 		eventImageView.image = #imageLiteral(resourceName: "ef")
 		if let eventImage = eventImage {
+			eventImageSpacerView.isHidden = false
 			eventImageView.isHidden = false
             imageService.retrieve(for: eventImage).startWithResult({ [unowned self] (result) in
                 switch result {
@@ -113,6 +114,7 @@ class EventViewController: UIViewController {
 				}
 			})
 		} else {
+			eventImageSpacerView.isHidden = true
 			eventImageView.isHidden = true
 		}
 
