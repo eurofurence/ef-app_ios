@@ -1981,6 +1981,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                     <size key="freeformSize" width="320" height="700"/>
                     <connections>
                         <outlet property="imageView" destination="Gs5-Ns-LHj" id="hpb-xn-Wv9"/>
+                        <outlet property="imageViewHeightConstraint" destination="rUg-Ih-nJU" id="TWg-fI-yh9"/>
                         <outlet property="linkLabel" destination="yRB-my-Wb7" id="nn5-5A-sF4"/>
                         <outlet property="linkView" destination="Qnt-fw-HOg" id="Nes-c3-tzj"/>
                         <outlet property="textView" destination="gR7-KJ-KBz" id="VVq-WR-e8a"/>

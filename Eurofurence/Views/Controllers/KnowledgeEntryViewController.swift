@@ -9,8 +9,9 @@ import UIKit
 import ReactiveSwift
 
 class KnowledgeEntryViewController: UIViewController {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
+	@IBOutlet weak var titleLabel: UILabel!
+	@IBOutlet weak var imageView: UIImageView!
+	@IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var linkLabel: UILabel!
     @IBOutlet weak var linkView: UIStackView!
@@ -56,6 +57,7 @@ class KnowledgeEntryViewController: UIViewController {
 				case let .success(uiImage):
 					DispatchQueue.main.async {
 						self.imageView.image = uiImage
+						self.resizeImageView(for: uiImage)
 					}
 				case let .failure(error):
 					print("Failed to retrieve image for KnowledgeEntry \(self.knowledgeEntry?.Title ?? ""): \(error)")
@@ -107,7 +109,7 @@ class KnowledgeEntryViewController: UIViewController {
         }
     }
 
-    func addLinkButton(_ linkFragment: LinkFragment) {
+    private func addLinkButton(_ linkFragment: LinkFragment) {
         let linkButton = UIButton(type: UIButtonType.roundedRect)
         linkButton.setTitle(linkFragment.Name, for: UIControlState())
 		linkButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
@@ -117,7 +119,17 @@ class KnowledgeEntryViewController: UIViewController {
 		linkView.addArrangedSubview(linkButton)
         linkView.addSubview(linkButton)
         buttonLinks[linkButton] = linkFragment
-    }
+	}
+
+	private func resizeImageView(for image: UIImage) {
+		let ratio = image.size.width / image.size.height
+		if let view = imageView.superview {
+			let newHeight = min(view.frame.width, image.size.width) / ratio
+			imageView.frame.size = CGSize(width: view.frame.width, height: newHeight)
+			imageViewHeightConstraint.constant = newHeight
+			imageView.sizeToFit()
+		}
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
