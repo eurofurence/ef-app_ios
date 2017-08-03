@@ -117,6 +117,8 @@
 		9A34B9851ED089BB004A249E /* NavigationResolverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A34B9841ED089BB004A249E /* NavigationResolverProtocol.swift */; };
 		9A34B9871ED08C7E004A249E /* JsonDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A34B9861ED08C7E004A249E /* JsonDataStore.swift */; };
 		9A34B9891ED35FE0004A249E /* ReactiveDataContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A34B9881ED35FE0004A249E /* ReactiveDataContext.swift */; };
+		9A7FDA101F33B7020050C325 /* TabBarOrderProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7FDA0F1F33B7020050C325 /* TabBarOrderProviding.swift */; };
+		9A7FDA121F33B7630050C325 /* UserDefaultsTabBarOrderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7FDA111F33B7630050C325 /* UserDefaultsTabBarOrderProvider.swift */; };
 		9A7FFD531EF97CD4007ABA36 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7FFD521EF97CD4007ABA36 /* UserSettings.swift */; };
 		9A7FFD551EFC5A9E007ABA36 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7FFD541EFC5A9E007ABA36 /* MapViewController.swift */; };
 		9A7FFD571EFC5B46007ABA36 /* CalendarAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7FFD561EFC5B46007ABA36 /* CalendarAccess.swift */; };
@@ -429,6 +431,8 @@
 		9A34B9841ED089BB004A249E /* NavigationResolverProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationResolverProtocol.swift; sourceTree = "<group>"; };
 		9A34B9861ED08C7E004A249E /* JsonDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonDataStore.swift; sourceTree = "<group>"; };
 		9A34B9881ED35FE0004A249E /* ReactiveDataContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveDataContext.swift; sourceTree = "<group>"; };
+		9A7FDA0F1F33B7020050C325 /* TabBarOrderProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarOrderProviding.swift; sourceTree = "<group>"; };
+		9A7FDA111F33B7630050C325 /* UserDefaultsTabBarOrderProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsTabBarOrderProvider.swift; sourceTree = "<group>"; };
 		9A7FFD521EF97CD4007ABA36 /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		9A7FFD541EFC5A9E007ABA36 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9A7FFD561EFC5B46007ABA36 /* CalendarAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarAccess.swift; sourceTree = "<group>"; };
@@ -1497,8 +1501,10 @@
 				D6F3D3312E7C5B416B722B85 /* SettingsTableViewController.swift */,
 				78F5559A1F10D65900BDA7D4 /* SplashViewController.swift */,
 				9A8ECA221F2BC2BE00351A83 /* StatusWhistleRefreshDelegate.swift */,
+				9A7FDA0F1F33B7020050C325 /* TabBarOrderProviding.swift */,
 				78567B3E1F1016B000EBA31D /* TabViewController.swift */,
 				9A8ECA281F2BF2CA00351A83 /* UserDefaultsRemoteNotificationSoundProvider.swift */,
+				9A7FDA111F33B7630050C325 /* UserDefaultsTabBarOrderProvider.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1972,6 +1978,7 @@
 				78567B3F1F1016B000EBA31D /* TabViewController.swift in Sources */,
 				9A8ECA231F2BC2BE00351A83 /* StatusWhistleRefreshDelegate.swift in Sources */,
 				CA30EACC1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift in Sources */,
+				9A7FDA101F33B7020050C325 /* TabBarOrderProviding.swift in Sources */,
 				9ACF99981EC858B2006FC958 /* MapEntry.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
 				CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */,
@@ -2059,6 +2066,7 @@
 				9A861EA21F2554AB00B75A8C /* ShowInitiateDownloadTutorialPage.swift in Sources */,
 				CA30EAD01F27D8620053DBF6 /* MessageTableViewCell.swift in Sources */,
 				D6F3D0434C71907BD410190E /* ImageServiceProtocol.swift in Sources */,
+				9A7FDA121F33B7630050C325 /* UserDefaultsTabBarOrderProvider.swift in Sources */,
 				D6F3D749FF814981E076850E /* ImageService.swift in Sources */,
 				78F5559B1F10D65900BDA7D4 /* SplashViewController.swift in Sources */,
 				D6F3DCE06EF6B706F0A3EF09 /* TimeService.swift in Sources */,
