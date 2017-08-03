@@ -23,7 +23,7 @@
         <!--Dealer Details-->
         <scene sceneID="SQ8-Nq-qxE">
             <objects>
-                <viewController id="3Kl-eX-F71" customClass="DealerViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DealerDetailView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3Kl-eX-F71" customClass="DealerViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AA7-IT-m5x"/>
                         <viewControllerLayoutGuide type="bottom" id="KYX-KP-a5D"/>
@@ -1551,7 +1551,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
         <!--Event Details-->
         <scene sceneID="2ML-ea-0tl">
             <objects>
-                <viewController id="82G-K5-6DR" customClass="EventViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventDetailView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="82G-K5-6DR" customClass="EventViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZkF-JU-THN"/>
                         <viewControllerLayoutGuide type="bottom" id="bQ6-7m-UW3"/>
@@ -2568,8 +2568,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</stri
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cyf-ZD-phh"/>
-        <segue reference="AZX-ys-8B3"/>
         <segue reference="xQM-um-GLe"/>
+        <segue reference="ClG-IO-w6u"/>
         <segue reference="ExM-9j-RfE"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.88517211294416243" green="0.5135115660559374" blue="0.011388903970826956" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
