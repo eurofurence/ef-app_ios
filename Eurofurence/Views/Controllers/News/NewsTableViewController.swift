@@ -46,7 +46,7 @@ class NewsTableViewController: UITableViewController,
 		upcomingEvents = currentEventsViewModel.UpcomingEvents.value
 
 		if traitCollection.forceTouchCapability == .available {
-			registerForPreviewing(with: self, sourceView: view)
+			registerForPreviewing(with: self, sourceView: tableView)
 		}
 
         tableView.estimatedRowHeight = 70
@@ -356,6 +356,8 @@ class NewsTableViewController: UITableViewController,
 	func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
 		guard let indexPath = tableView.indexPathForRow(at: location),
 			let data = getData(for: indexPath) else { return nil }
+
+        previewingContext.sourceRect = tableView.rectForRow(at: indexPath)
 
 		let viewController: UIViewController
 		switch data {

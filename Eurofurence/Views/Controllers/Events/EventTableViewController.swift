@@ -36,7 +36,7 @@ class EventTableViewController: UITableViewController, UISearchBarDelegate, UIVi
         super.viewDidLoad()
 
 		if traitCollection.forceTouchCapability == .available {
-			registerForPreviewing(with: self, sourceView: view)
+			registerForPreviewing(with: self, sourceView: tableView)
 		}
 
         definesPresentationContext = true
@@ -334,6 +334,8 @@ class EventTableViewController: UITableViewController, UISearchBarDelegate, UIVi
 			let data = getData(for: indexPath) else {
 				return nil
 		}
+
+        previewingContext.sourceRect = tableView.rectForRow(at: indexPath)
 
 		let viewController: UIViewController
 		switch data {
