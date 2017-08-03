@@ -7,6 +7,7 @@
 
 import UIKit
 import ReactiveSwift
+import SafariServices
 
 class DealerViewController: UIViewController {
     /// Higher numbers zoom out farther
@@ -263,18 +264,26 @@ class DealerViewController: UIViewController {
 		socialButtonsView.insertArrangedSubview(socialButton, at: 1)
 	}
 
-	private func openLinkAlert(title: String, message: String, link: URL?) {
+	private func open(link: URL?) {
 		guard let link = link else { return }
 
-		let alert = UIAlertController(title: title,
-		                              message: message,
-		                              preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
-			UIApplication.shared.openURL(link)
-		}))
-		self.present(alert, animated: true)
+        attemptOpening(for: link) { (handled) in
+            if !handled {
+                let viewController = SFSafariViewController(url: link)
+                self.present(viewController, animated: true)
+            }
+        }
 	}
+
+    private func attemptOpening(for url: URL, completionHandler: @escaping (Bool) -> Void) {
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url,
+                                      options: [UIApplicationOpenURLOptionUniversalLinksOnly: true],
+                                      completionHandler: completionHandler)
+        } else {
+            completionHandler(UIApplication.shared.openURL(url))
+        }
+    }
 
 	// MARK: Actions
 
@@ -284,20 +293,14 @@ class DealerViewController: UIViewController {
 		let telegramLink = DealerViewController.telegramLinkBase.appending(telegramHandle)
 		let telegramUrl = URL(string: telegramLink)
 
-		openLinkAlert(title: "Telegram Profile",
-		              message: "This will open the Telegram profile of @\(telegramHandle).",
-					  link: telegramUrl)
+		open(link: telegramUrl)
 	}
 
 	func openTwitterLink() {
 		guard let twitterHandle = dealer?.TwitterHandle else { return }
 
 		let twitterLink = DealerViewController.twitterLinkBase.appending(twitterHandle)
-		let twitterUrl = URL(string: twitterLink)
-
-		openLinkAlert(title: "Twitter Profile",
-		              message: "This will open the Twitter profile of @\(twitterHandle).",
-					  link: twitterUrl)
+        open(link: URL(string: twitterLink))
 	}
 
 	func openExternalLink() {
@@ -308,9 +311,7 @@ class DealerViewController: UIViewController {
 		switch linkFragment.FragmentType {
 		case .WebExternal:
 			guard let linkUrl = URL(string: linkFragment.Target) else { return }
-			openLinkAlert(title: "External Link",
-			              message: "This will open the following link: \(linkFragment.Target)",
-						  link: linkUrl)
+			open(link: linkUrl)
 		default:
 			return
 		}
