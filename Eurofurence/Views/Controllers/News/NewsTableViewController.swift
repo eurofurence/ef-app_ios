@@ -18,7 +18,6 @@ class NewsTableViewController: UITableViewController,
                                PrivateMessagesObserver,
                                LogoutObserver {
 	@IBOutlet weak var favoritesOnlySegmentedControl: UISegmentedControl!
-	@IBOutlet weak var lastSyncLabel: UILabel!
 
 	private var announcementsViewModel: AnnouncementsViewModel = try! ViewModelResolver.container.resolve()
 	private var currentEventsViewModel: CurrentEventsViewModel = try! ViewModelResolver.container.resolve()
@@ -60,14 +59,6 @@ class NewsTableViewController: UITableViewController,
 		tableView.register(UINib(nibName: "NewsSectionHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "NewsSectionHeader")
 
         self.refreshControl?.addTarget(self, action: #selector(NewsTableViewController.refresh(_:)), for: .valueChanged)
-
-		disposables += lastSyncLabel.reactive.text <~ announcementsViewModel.TimeSinceLastSync.map({
-			(timeSinceLastSync: TimeInterval) in
-			if timeSinceLastSync > 0.0 {
-				return "Last refreshed \(timeSinceLastSync.biggestUnitString) ago"
-			}
-			return "Last refreshed now"
-		})
 
         disposables += announcementsViewModel.AnnouncementsEdits.signal.observeValues({
             [unowned self] (announcements, edits) in
