@@ -129,4 +129,14 @@ class WhenLoggingOut: XCTestCase {
         XCTAssertFalse(observer.didLogIn)
     }
     
+    func testLoggingInAsAnotherUserShouldRequestLoginUsingTheirDetails() {
+        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
+        context.application.logout()
+        context.capturingTokenRegistration.succeedLastRequest()
+        let secondUser = "Some other awesome guy"
+        context.login(username: secondUser)
+        
+        XCTAssertEqual(secondUser, context.loginAPI.capturedLoginArguments?.username)
+    }
+    
 }
