@@ -28,7 +28,7 @@
                         <viewControllerLayoutGuide type="top" id="AA7-IT-m5x"/>
                         <viewControllerLayoutGuide type="bottom" id="KYX-KP-a5D"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="C8O-Q4-ugM">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="C8O-Q4-ugM">
                         <rect key="frame" x="0.0" y="64" width="320" height="1237"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -36,7 +36,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="1237"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DX4-b5-s07">
-                                        <rect key="frame" x="8" y="8" width="304" height="1232"/>
+                                        <rect key="frame" x="8" y="8" width="304" height="1266"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ef" translatesAutoresizingMaskIntoConstraints="NO" id="TQd-S1-cSW" userLabel="Avatar">
                                                 <rect key="frame" x="0.0" y="0.0" width="304" height="256"/>
@@ -116,60 +116,62 @@
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCS-gW-sxV" userLabel="About the Artist Text">
-                                                <rect key="frame" x="0.0" y="480" width="304" height="87"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LXd-Pw-fR6" userLabel="About the Artist Text">
+                                                <rect key="frame" x="0.0" y="480" width="304" height="104"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                            </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zd9-U4-2wE" userLabel="About the Art Spacer View">
-                                                <rect key="frame" x="0.0" y="572" width="304" height="10"/>
+                                                <rect key="frame" x="0.0" y="589" width="304" height="10"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="P8d-Ve-pzV"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About the Art" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ptX-lV-H8p" userLabel="About the Art Heading">
-                                                <rect key="frame" x="0.0" y="587" width="304" height="27"/>
+                                                <rect key="frame" x="0.0" y="604" width="304" height="27"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ef" translatesAutoresizingMaskIntoConstraints="NO" id="LQE-Ej-aqh" userLabel="About the Art Image">
-                                                <rect key="frame" x="0.0" y="619" width="304" height="290"/>
+                                                <rect key="frame" x="0.0" y="636" width="304" height="290"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="350" id="c4t-VK-tzP"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajR-dm-9LV" userLabel="About the Art Caption">
-                                                <rect key="frame" x="0.0" y="914" width="304" height="31"/>
+                                                <rect key="frame" x="0.0" y="931" width="304" height="31"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqu-K0-MlF" userLabel="About the Art Text">
-                                                <rect key="frame" x="0.0" y="950" width="304" height="87"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nXH-VK-6Vj" userLabel="About the Art Text">
+                                                <rect key="frame" x="0.0" y="967" width="304" height="104"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                            </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wJF-ON-Anh" userLabel="Dealer's Den Spacer View">
-                                                <rect key="frame" x="0.0" y="1042" width="304" height="10"/>
+                                                <rect key="frame" x="0.0" y="1076" width="304" height="10"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="EGk-LP-0vL"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dealer's Den" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgh-wz-DEB" userLabel="Dealer's Den Heading">
-                                                <rect key="frame" x="0.0" y="1057" width="304" height="27"/>
+                                                <rect key="frame" x="0.0" y="1091" width="304" height="27"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ef" translatesAutoresizingMaskIntoConstraints="NO" id="lkw-Md-gZC" userLabel="Dealer's Den Image">
-                                                <rect key="frame" x="0.0" y="1089" width="304" height="143"/>
+                                                <rect key="frame" x="0.0" y="1123" width="304" height="143"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="lkw-Md-gZC" secondAttribute="height" multiplier="191:90" id="Dj3-2Q-Hug"/>
                                                 </constraints>
@@ -200,10 +202,10 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="1350"/>
                     <connections>
-                        <outlet property="aboutArtLabel" destination="aqu-K0-MlF" id="KOS-pS-d8m"/>
                         <outlet property="aboutArtSpacerView" destination="Zd9-U4-2wE" id="rFW-xT-LUe"/>
+                        <outlet property="aboutArtTextView" destination="nXH-VK-6Vj" id="ljc-FK-ZUE"/>
                         <outlet property="aboutArtTitleLabel" destination="ptX-lV-H8p" id="Tce-DT-UWg"/>
-                        <outlet property="aboutArtistLabel" destination="oCS-gW-sxV" id="OkO-hn-lNU"/>
+                        <outlet property="aboutArtistTextView" destination="LXd-Pw-fR6" id="jUq-EU-C9n"/>
                         <outlet property="artPreviewCaption" destination="ajR-dm-9LV" id="CEK-CV-emD"/>
                         <outlet property="artPreviewImageView" destination="LQE-Ej-aqh" id="S25-n1-03J"/>
                         <outlet property="artistImageView" destination="TQd-S1-cSW" id="Nvo-UZ-Uay"/>
@@ -355,7 +357,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FE3-gC-42u">
-                                <rect key="frame" x="106" y="78" width="109" height="229"/>
+                                <rect key="frame" x="96" y="88" width="129" height="219"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="NO"/>
                                 </accessibility>
@@ -920,7 +922,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                         <viewControllerLayoutGuide type="top" id="6PM-Mp-631"/>
                         <viewControllerLayoutGuide type="bottom" id="NI2-Of-Ai6"/>
                     </layoutGuides>
-                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="UYC-tQ-cfY">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="UYC-tQ-cfY">
                         <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1183,13 +1185,13 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                                 <rect key="frame" x="0.0" y="0.0" width="312" height="75"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Last Updated" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="s7X-0D-dgK">
-                                                        <rect key="frame" x="45" y="8" width="259" height="59"/>
+                                                        <rect key="frame" x="43" y="8" width="261" height="59"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ezp-ZN-UCE" userLabel="Updated Icon">
-                                                        <rect key="frame" x="8" y="22" width="29" height="30"/>
+                                                        <rect key="frame" x="8" y="24" width="27" height="26"/>
                                                         <accessibility key="accessibilityConfiguration">
                                                             <bool key="isElement" value="NO"/>
                                                         </accessibility>
@@ -1212,13 +1214,13 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                                 <rect key="frame" x="0.0" y="75" width="312" height="75"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="m5m-0M-x6C">
-                                                        <rect key="frame" x="45" y="8" width="259" height="59"/>
+                                                        <rect key="frame" x="43" y="8" width="261" height="59"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bck-ib-g7i" userLabel="Type Icon">
-                                                        <rect key="frame" x="8" y="23" width="29" height="30"/>
+                                                        <rect key="frame" x="8" y="25" width="27" height="26"/>
                                                         <accessibility key="accessibilityConfiguration">
                                                             <bool key="isElement" value="NO"/>
                                                         </accessibility>
@@ -1241,7 +1243,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                                 <rect key="frame" x="0.0" y="150" width="312" height="75"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uM-FH-w3o" userLabel="Author Icon">
-                                                        <rect key="frame" x="8" y="22" width="29" height="30"/>
+                                                        <rect key="frame" x="8" y="24" width="27" height="26"/>
                                                         <accessibility key="accessibilityConfiguration">
                                                             <bool key="isElement" value="NO"/>
                                                         </accessibility>
@@ -1250,7 +1252,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="g2c-gq-ptk">
-                                                        <rect key="frame" x="45" y="8" width="259" height="59"/>
+                                                        <rect key="frame" x="43" y="8" width="261" height="59"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1358,7 +1360,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                         <viewControllerLayoutGuide type="top" id="utz-1H-XtR"/>
                         <viewControllerLayoutGuide type="bottom" id="obc-LS-xAB"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="aFv-9D-bDX">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="aFv-9D-bDX">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1570,13 +1572,13 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                                 <rect key="frame" x="0.0" y="0.0" width="304" height="152"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Monday, 18:00 to 24:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sx-Ch-0vp">
-                                                        <rect key="frame" x="42" y="13" width="218" height="21"/>
+                                                        <rect key="frame" x="40" y="19" width="220" height="21"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJi-4M-y3m">
-                                                        <rect key="frame" x="8" y="8" width="29" height="31"/>
+                                                        <rect key="frame" x="8" y="8" width="27" height="43"/>
                                                         <accessibility key="accessibilityConfiguration">
                                                             <bool key="isElement" value="NO"/>
                                                         </accessibility>
@@ -1585,13 +1587,13 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Main Stage – Convention Hall Section A of the B to the C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5n-fJ-RKd">
-                                                        <rect key="frame" x="42" y="49" width="254" height="21"/>
+                                                        <rect key="frame" x="40" y="59" width="256" height="21"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ici-NN-DRa">
-                                                        <rect key="frame" x="8" y="44" width="29" height="30"/>
+                                                        <rect key="frame" x="8" y="56" width="27" height="26"/>
                                                         <accessibility key="accessibilityConfiguration">
                                                             <bool key="isElement" value="NO"/>
                                                         </accessibility>
@@ -1600,13 +1602,13 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Stage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eu-cW-xzr">
-                                                        <rect key="frame" x="42" y="84" width="254" height="21"/>
+                                                        <rect key="frame" x="40" y="90" width="256" height="21"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2R-8m-XT6">
-                                                        <rect key="frame" x="8" y="79" width="29" height="30"/>
+                                                        <rect key="frame" x="8" y="87" width="27" height="26"/>
                                                         <accessibility key="accessibilityConfiguration">
                                                             <bool key="isElement" value="NO"/>
                                                         </accessibility>
@@ -1615,7 +1617,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JCh-OY-S21">
-                                                        <rect key="frame" x="8" y="114" width="29" height="30"/>
+                                                        <rect key="frame" x="8" y="118" width="27" height="26"/>
                                                         <accessibility key="accessibilityConfiguration">
                                                             <bool key="isElement" value="NO"/>
                                                         </accessibility>
@@ -1624,13 +1626,13 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Cheetah, Jaryic, Wawik, BBF, Nightfox, Darkwing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GS3-9H-CrV">
-                                                        <rect key="frame" x="42" y="119" width="254" height="21"/>
+                                                        <rect key="frame" x="40" y="121" width="256" height="21"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dD-zA-amx">
-                                                        <rect key="frame" x="260" y="3" width="36" height="41"/>
+                                                        <rect key="frame" x="260" y="12" width="36" height="36"/>
                                                         <accessibility key="accessibilityConfiguration" label="Favorite event"/>
                                                         <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="30"/>
                                                         <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>

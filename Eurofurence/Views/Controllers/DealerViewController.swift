@@ -21,12 +21,12 @@ class DealerViewController: UIViewController {
     @IBOutlet weak var attendeeNicknameLabel: UILabel!
 	@IBOutlet weak var socialButtonsView: UIStackView!
     @IBOutlet weak var artistShortDescriptionLabel: UILabel!
-	@IBOutlet weak var aboutArtistLabel: UILabel!
+	@IBOutlet weak var aboutArtistTextView: UITextView!
 	@IBOutlet weak var aboutArtSpacerView: UIView!
 	@IBOutlet weak var aboutArtTitleLabel: UILabel!
     @IBOutlet weak var artPreviewImageView: UIImageView!
     @IBOutlet weak var artPreviewCaption: UILabel!
-	@IBOutlet weak var aboutArtLabel: UILabel!
+	@IBOutlet weak var aboutArtTextView: UITextView!
 	@IBOutlet weak var dealersDenMapTitleLabel: UILabel!
 	@IBOutlet weak var dealersDenMapImageView: UIImageView!
     var singleTap: UITapGestureRecognizer!
@@ -46,6 +46,9 @@ class DealerViewController: UIViewController {
         singleTap = UITapGestureRecognizer(target: self, action: #selector(DealerViewController.showOnMap(_:)))
 		dealersDenMapImageView!.addGestureRecognizer(singleTap!)
 		dealersDenMapImageView!.isUserInteractionEnabled = true
+
+		aboutArtistTextView.textContainer.lineFragmentPadding = 0
+		aboutArtTextView.textContainer.lineFragmentPadding = 0
 
 		view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "Background Tile"))
     }
@@ -143,12 +146,12 @@ class DealerViewController: UIViewController {
 	private func setupAbout() {
 		let aboutText = replaceUnicodeNewlines(in: dealer?.AboutTheArtistText)
 		if let aboutText = aboutText, !aboutText.isEmpty {
-			aboutArtistLabel.text = aboutText
+			aboutArtistTextView.text = aboutText
 		} else {
 			// TODO: Externalise strings for i18n
-			aboutArtistLabel.text = "The artist did not provide any information about themselves to be shown here."
+			aboutArtistTextView.text = "The artist did not provide any information about themselves to be shown here."
 		}
-		aboutArtistLabel.sizeToFit()
+		aboutArtistTextView.sizeToFit()
 	}
 
 	private func setupArtPreview() {
@@ -181,10 +184,10 @@ class DealerViewController: UIViewController {
 	private func setupAboutArt() {
 		let aboutArtText = replaceUnicodeNewlines(in: dealer?.AboutTheArtText)
 		if let aboutArtText = aboutArtText, !aboutArtText.isEmpty {
-			aboutArtLabel.text = aboutArtText
-			aboutArtLabel.sizeToFit()
+			aboutArtTextView.text = aboutArtText
+			aboutArtTextView.sizeToFit()
 		} else {
-			aboutArtLabel.isHidden = true
+			aboutArtTextView.isHidden = true
 
 			// if neither text nor image have been provided, hide the entire about art section
 			if artPreviewImageView.isHidden {
