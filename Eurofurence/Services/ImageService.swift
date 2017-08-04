@@ -146,7 +146,7 @@ class ImageService: ImageServiceProtocol {
 	func validateCache(for image: Image) -> Bool {
 		do {
 			let imageUrl = getUrl(for: image)
-			let imageAttributes = try imageUrl.resourceValues(forKeys: [.isRegularFileKey, .isReadableKey, .fileSizeKey])
+			let imageAttributes = try imageUrl.resourceValues(forKeys: [.isRegularFileKey, .isReadableKey, .fileSizeKey, .contentModificationDateKey])
 
 			guard let isRegularFile = imageAttributes.isRegularFile, isRegularFile else {
 				return false
@@ -157,6 +157,12 @@ class ImageService: ImageServiceProtocol {
 			}
 
 			guard let fileSize = imageAttributes.fileSize, fileSize != image.SizeInBytes else {
+				clearCache(for: image)
+				return false
+			}
+
+			guard let modificationDate = imageAttributes.contentModificationDate,
+					modificationDate.addingTimeInterval(1) >= image.LastChangeDateTimeUtc else {
 				clearCache(for: image)
 				return false
 			}
@@ -220,6 +226,9 @@ class ImageService: ImageServiceProtocol {
 			var imageUrl = getUrl(for: image)
 			try imageData.write(to: imageUrl)
 			try imageUrl.setExcludedFromBackup(true)
+			var urlResourceValues = URLResourceValues()
+			urlResourceValues.contentModificationDate = image.LastChangeDateTimeUtc
+			try imageUrl.setResourceValues(urlResourceValues)
 		} catch {
 			throw ImageServiceError.FailedWrite(image: image, description: "Attempted to write image to cache and exclude it from backup.")
 		}
