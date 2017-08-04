@@ -119,6 +119,7 @@
 		9A34B9891ED35FE0004A249E /* ReactiveDataContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A34B9881ED35FE0004A249E /* ReactiveDataContext.swift */; };
 		9A7FDA101F33B7020050C325 /* TabBarOrderProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7FDA0F1F33B7020050C325 /* TabBarOrderProviding.swift */; };
 		9A7FDA121F33B7630050C325 /* UserDefaultsTabBarOrderProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7FDA111F33B7630050C325 /* UserDefaultsTabBarOrderProvider.swift */; };
+		9A7FDA141F3445890050C325 /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7FDA131F3445890050C325 /* CopyableLabel.swift */; };
 		9A7FFD531EF97CD4007ABA36 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7FFD521EF97CD4007ABA36 /* UserSettings.swift */; };
 		9A7FFD551EFC5A9E007ABA36 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7FFD541EFC5A9E007ABA36 /* MapViewController.swift */; };
 		9A7FFD571EFC5B46007ABA36 /* CalendarAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7FFD561EFC5B46007ABA36 /* CalendarAccess.swift */; };
@@ -433,6 +434,7 @@
 		9A34B9881ED35FE0004A249E /* ReactiveDataContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveDataContext.swift; sourceTree = "<group>"; };
 		9A7FDA0F1F33B7020050C325 /* TabBarOrderProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarOrderProviding.swift; sourceTree = "<group>"; };
 		9A7FDA111F33B7630050C325 /* UserDefaultsTabBarOrderProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsTabBarOrderProvider.swift; sourceTree = "<group>"; };
+		9A7FDA131F3445890050C325 /* CopyableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
 		9A7FFD521EF97CD4007ABA36 /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		9A7FFD541EFC5A9E007ABA36 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9A7FFD561EFC5B46007ABA36 /* CalendarAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarAccess.swift; sourceTree = "<group>"; };
@@ -896,6 +898,7 @@
 			children = (
 				78455B611F118699005BE2D7 /* RoundedCornerButton.swift */,
 				CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */,
+				9A7FDA131F3445890050C325 /* CopyableLabel.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -1933,6 +1936,7 @@
 				CA30EAB01F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift in Sources */,
 				CACE1B091F2BBF0900DFCB60 /* LogoutObserver.swift in Sources */,
 				9A861EAB1F2554D700B75A8C /* BootstrappingModule.swift in Sources */,
+				9A7FDA141F3445890050C325 /* CopyableLabel.swift in Sources */,
 				9A34B9851ED089BB004A249E /* NavigationResolverProtocol.swift in Sources */,
 				9A9487FD1F1D5D9300119DC8 /* EventNotificationPreferences.swift in Sources */,
 				9A80EF611F2922EE00FD0D37 /* EventTableViewController.swift in Sources */,
