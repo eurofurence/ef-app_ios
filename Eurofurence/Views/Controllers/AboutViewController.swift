@@ -8,11 +8,14 @@
 import UIKit
 
 class AboutViewController: UIViewController {
+	@IBOutlet weak var licenseTextView: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "Background Tile"))
+
+		licenseTextView.textContainer.lineFragmentPadding = 0
     }
 
     override func didReceiveMemoryWarning() {
