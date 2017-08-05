@@ -7,6 +7,7 @@
 
 import Alamofire
 import Foundation
+import FirebasePerformance
 import ReactiveSwift
 import Result
 import UIKit
@@ -42,6 +43,8 @@ class ImageService: ImageServiceProtocol {
 
 	func refreshCache(for images: [Image]) -> SignalProducer<Progress, ImageServiceError> {
 		return SignalProducer { [unowned self] observer, disposable in
+			let trace = Performance.startTrace(name: "ImageService.refreshCache")
+			trace?.incrementCounter(named: "total", by: images.count)
 			do {
 				try self.checkCacheDirectory()
 				var currentCache: [String] = try FileManager.default.contentsOfDirectory(atPath: self.cacheDirectory.path)
@@ -49,6 +52,7 @@ class ImageService: ImageServiceProtocol {
 				var producers: [SignalProducer<UIImage, ImageServiceError>] = []
 				for image in images {
 					if !self.validateCache(for: image) {
+						trace?.incrementCounter(named: "scheduled")
 						producers.append(self.download(image: image))
 					}
 					if let index = currentCache.index(of: image.Id) {
@@ -62,6 +66,7 @@ class ImageService: ImageServiceProtocol {
 
 				for imageId in currentCache {
 					self.clearCache(for: imageId)
+					trace?.incrementCounter(named: "pruned")
 					print("Pruned image \(imageId) from cache.")
 				}
 				progress.completedUnitCount += 1
@@ -71,23 +76,29 @@ class ImageService: ImageServiceProtocol {
 				disposable += resultsProducer.flatten(.merge).start({ event in
 					switch event {
 					case .value:
+						trace?.incrementCounter(named: "downloaded")
 						progress.completedUnitCount += 1
 						observer.send(value: progress)
 						print("Image caching completed by \(progress.fractionCompleted)")
 					case let .failed(error):
 						print("Error while caching images from sync: \(error)")
+						trace?.stop()
 						observer.send(error: error)
 					case .completed:
 						print("Finished caching images from sync")
+						trace?.stop()
 						observer.sendCompleted()
 					case .interrupted:
 						print("Caching images from sync interrupted")
+						trace?.stop()
 						observer.sendInterrupted()
 					}
 				})
 			} catch let error as ImageServiceError {
+				trace?.stop()
 				observer.send(error: error)
 			} catch {
+				trace?.stop()
 				observer.send(error: ImageServiceError.FailedCacheDirectory(url: self.cacheDirectory, description: nil))
 			}
 		}
