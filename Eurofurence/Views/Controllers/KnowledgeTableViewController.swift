@@ -10,7 +10,6 @@ import UIKit
 class KnowledgeTableViewController: UITableViewController {
 
 	let dataContext: DataContextProtocol = try! ContextResolver.container.resolve()
-    var contentSizeDidChangeToken: NSObjectProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +19,6 @@ class KnowledgeTableViewController: UITableViewController {
         tableView.estimatedSectionHeaderHeight = 64
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.sectionHeaderHeight = UITableViewAutomaticDimension
-
-        contentSizeDidChangeToken = NotificationCenter.default.addObserver(forName: Notification.Name.UIContentSizeCategoryDidChange, object: nil, queue: .main, using: { (_) in
-            self.tableView.reloadData()
-        })
     }
 
     override func viewWillAppear(_ animated: Bool) {
