@@ -13,14 +13,8 @@ class KnowledgeGroupCell: UITableViewCell {
 	@IBOutlet weak var nameLabel: UILabel!
 	@IBOutlet weak var descriptionLabel: UILabel!
 
-	weak private var _knowledgeGroup: KnowledgeGroup?
-
 	var knowledgeGroup: KnowledgeGroup? {
-		get {
-			return _knowledgeGroup
-		}
-		set(knowledgeGroup) {
-			_knowledgeGroup = knowledgeGroup
+		didSet {
 			iconLabel.text = knowledgeGroup?.FontAwesomeIconCharacterUnicodeAddress
 			nameLabel.text = knowledgeGroup?.Name
 			descriptionLabel.text = knowledgeGroup?.Description

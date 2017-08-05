@@ -11,15 +11,15 @@ class KnowledgeEntryCell: UITableViewCell {
 
 	@IBOutlet weak var titleLabel: UILabel!
 
-	weak private var _knowledgeEntry: KnowledgeEntry?
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
+    }
 
 	var knowledgeEntry: KnowledgeEntry? {
-		get {
-			return _knowledgeEntry
-		}
-		set(knowledgeEntry) {
-			_knowledgeEntry = knowledgeEntry
-			titleLabel.text = knowledgeEntry?.Title
+		didSet {
+			titleLabel?.text = knowledgeEntry?.Title
 		}
 	}
+
 }
