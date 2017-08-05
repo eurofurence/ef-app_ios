@@ -14,6 +14,7 @@ class EventCell: UITableViewCell {
 	@IBOutlet weak var bannerImageView: UIImageView!
 	@IBOutlet weak var endTimeLabel: UILabel!
 	@IBOutlet weak var favoriteLabel: UILabel!
+	@IBOutlet weak var iconsLabel: UILabel!
 	@IBOutlet weak var startTimeLabel: UILabel!
 	@IBOutlet weak var subTitleLabel: UILabel!
 	@IBOutlet weak var titleLabel: UILabel!
@@ -65,15 +66,60 @@ class EventCell: UITableViewCell {
                     label += " Favorite event."
                 }
 
+				setupEventIcons()
+
                 accessibilityLabel = label
 			} else {
 				disposable.dispose()
 				startTimeLabel.text = nil
 				endTimeLabel.text = nil
+				iconsLabel.text = nil
 			}
 			titleLabel.text = event?.Title
 			subTitleLabel.text = event?.SubTitle
 		}
+	}
+
+	private func setupEventIcons() {
+		guard let event = event else { return }
+
+		/*
+		+------+------------------+--------------------+
+		| UTF8 | Name             | Event Type         |
+		+------+------------------+--------------------+
+		| f03e | fa-camera        | Art Show           |
+		| f07a | fa-shopping-cart | Dealers' Den       |
+		| f069 | fa-asterisk      | Stage              |
+		| f030 | fa-camera        | Photoshoot         |
+		| f219 | fa-diamond       | Supersponsor Event |
+		| f000 | fa-bug           | Onkel Kage         |
+		| f188 | fa-glass         | Onkel Kage         |
+		+------+------------------+--------------------+
+		*/
+
+		var iconText = ""
+		if let conferenceTrackName = event.ConferenceTrack?.Name {
+			switch conferenceTrackName {
+			case "Art Show":
+				iconText += "\u{f03e}"
+			case "Dealers' Den":
+				iconText += "\u{f07a}"
+			case "Stage":
+				iconText += "\u{f069}"
+			case "Photoshoot":
+				iconText += "\u{f030}"
+			case "Supersponsor Event":
+				iconText += "\u{f219}"
+			default:
+				break
+			}
+		}
+		if event.PanelHosts.contains("Onkel Kage") {
+			iconText += "\u{f000}\u{f188}"
+		}
+
+		iconsLabel.text = iconText
+		iconsLabel.isHidden = iconsLabel.text?.isEmpty ?? true
 	}
 
 	func toggleFavorite(button: UIButton) {
