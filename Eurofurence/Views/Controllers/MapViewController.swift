@@ -352,6 +352,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 
 		let optionMenu = UIAlertController(title: nil, message: optionMenuMessage, preferredStyle: .actionSheet)
 
+		var lastActionableLink: LinkFragment?
 		for link in mapEntryLinks {
 			// TODO: Prepend FontAwesome icon depending on LinkFragment.Type
 			var actionTitle = link.Name
@@ -387,7 +388,15 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 					self.performLinkFragmentAction(for: link)
 				}
 			})
+			lastActionableLink = link
 			optionMenu.addAction(linkAction)
+		}
+
+		guard optionMenu.actions.count > 1 else {
+			if let lastActionableLink = lastActionableLink {
+				performLinkFragmentAction(for: lastActionableLink)
+			}
+			return
 		}
 
 		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
