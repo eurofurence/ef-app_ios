@@ -220,21 +220,26 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
     ///		- map: map to be displayed
 	///		- animated: should zooming and panning the new map to fit be animated?
 	func show(map: Map?, animated: Bool = false) {
-        mapContainerView.subviews.forEach({ $0.removeFromSuperview() })
-
 		if let mapEntry = mapEntry, mapEntry.Map == nil || mapEntry.Map != map {
 			self.mapEntry = nil
 		}
 
 		guard let map = map, let mapImage = map.Image,
-			let mapIndex = viewModel.BrowsableMaps.value.index(of: map) else {
+				let mapIndex = viewModel.BrowsableMaps.value.index(of: map) else {
 			print("No map, map without image or non-browsable map! Falling back to default placeholder…")
+			mapContainerView.subviews.forEach({ $0.removeFromSuperview() })
 			return
 		}
 
 		DispatchQueue.main.async {
 			self.mapSwitchControl.selectedSegmentIndex = mapIndex
 		}
+
+		guard map != self.map else {
+			adjustZoom(animated: animated)
+			return
+		}
+		mapContainerView.subviews.forEach({ $0.removeFromSuperview() })
 
 		disposables += imageService.retrieve(for: mapImage).startWithResult({
 			[unowned self] result in
