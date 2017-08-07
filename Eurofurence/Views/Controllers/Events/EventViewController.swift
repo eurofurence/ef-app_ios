@@ -127,7 +127,6 @@ class EventViewController: UIViewController {
 			let newHeight = min(view.frame.width, image.size.width) / ratio
 			eventImageView.frame.size = CGSize(width: view.frame.width, height: newHeight)
 			eventImageViewHeightConstraint.constant = newHeight
-			eventImageView.sizeToFit()
 		}
 	}
 
