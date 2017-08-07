@@ -19,7 +19,6 @@ class ImageService: ImageServiceProtocol {
 	private let baseDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 	private var cacheDirectory: URL
 	private let apiConnection: ApiConnectionProtocol
-	private var refreshTrace: Trace?
 
 	required init(dataContext: DataContextProtocol, apiConnection: ApiConnectionProtocol) throws {
 		cacheDirectory = baseDirectory.appendingPathComponent(ImageService.cacheDirectoryName, isDirectory: true)
@@ -44,8 +43,8 @@ class ImageService: ImageServiceProtocol {
 
 	func refreshCache(for images: [Image]) -> SignalProducer<Progress, ImageServiceError> {
 		return SignalProducer { [unowned self] observer, disposable in
-			self.refreshTrace = Performance.startTrace(name: "ImageService.refreshCache")
-			self.refreshTrace?.incrementCounter(named: "total", by: images.count)
+			let trace = Performance.startTrace(name: "ImageService.refreshCache")
+			trace?.incrementCounter(named: "total", by: images.count)
 			do {
 				try self.checkCacheDirectory()
 				var currentCache: [String] = try FileManager.default.contentsOfDirectory(atPath: self.cacheDirectory.path)
@@ -53,7 +52,7 @@ class ImageService: ImageServiceProtocol {
 				var producers: [SignalProducer<UIImage, ImageServiceError>] = []
 				for image in images {
 					if !self.validateCache(for: image) {
-						self.refreshTrace?.incrementCounter(named: "scheduled")
+						trace?.incrementCounter(named: "scheduled")
 						producers.append(self.download(image: image))
 					}
 					if let index = currentCache.index(of: image.Id) {
@@ -67,7 +66,7 @@ class ImageService: ImageServiceProtocol {
 
 				for imageId in currentCache {
 					self.clearCache(for: imageId)
-					self.refreshTrace?.incrementCounter(named: "pruned")
+					trace?.incrementCounter(named: "pruned")
 					print("Pruned image \(imageId) from cache.")
 				}
 				progress.completedUnitCount += 1
@@ -77,34 +76,29 @@ class ImageService: ImageServiceProtocol {
 				disposable += resultsProducer.flatten(.merge).start({ event in
 					switch event {
 					case .value:
-						self.refreshTrace?.incrementCounter(named: "downloaded")
+						trace?.incrementCounter(named: "downloaded")
 						progress.completedUnitCount += 1
 						observer.send(value: progress)
 						print("Image caching completed by \(progress.fractionCompleted)")
 					case let .failed(error):
 						print("Error while caching images from sync: \(error)")
-						self.refreshTrace?.stop()
-						self.refreshTrace = nil
+						trace?.stop()
 						observer.send(error: error)
 					case .completed:
 						print("Finished caching images from sync")
-						self.refreshTrace?.stop()
-						self.refreshTrace = nil
+						trace?.stop()
 						observer.sendCompleted()
 					case .interrupted:
 						print("Caching images from sync interrupted")
-						self.refreshTrace?.stop()
-						self.refreshTrace = nil
+						trace?.stop()
 						observer.sendInterrupted()
 					}
 				})
 			} catch let error as ImageServiceError {
-				self.refreshTrace?.stop()
-				self.refreshTrace = nil
+				trace?.stop()
 				observer.send(error: error)
 			} catch {
-				self.refreshTrace?.stop()
-				self.refreshTrace = nil
+				trace?.stop()
 				observer.send(error: ImageServiceError.FailedCacheDirectory(url: self.cacheDirectory, description: nil))
 			}
 		}
@@ -131,9 +125,6 @@ class ImageService: ImageServiceProtocol {
 						let imageServiceError = ImageServiceError.FailedDownload(image: image,
 						                                                         description: error.localizedDescription)
 						print(imageServiceError)
-						if let refreshTrace = self.refreshTrace {
-							refreshTrace.incrementCounter(named: "failed")
-						}
 						observer.sendCompleted()
 					}
 				})
