@@ -53,9 +53,10 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
                                                name:NSNotification.Name(rawValue: "reloadData"), object: nil)
         mapSwitchControl.removeSegment(at: 0, animated: false)
 
-		disposables += viewModel.BrowsableMaps.signal.observeResult({[unowned self] _ in
+		disposables += viewModel.BrowsableMaps.signal.observeResult({[weak self] _ in
+			guard let strongSelf = self else { return }
 			DispatchQueue.main.async {
-				self.reloadData()
+				strongSelf.reloadData()
 			}
 		})
 
