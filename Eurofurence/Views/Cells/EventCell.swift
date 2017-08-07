@@ -87,7 +87,7 @@ class EventCell: UITableViewCell {
 		+------+------------------+--------------------+
 		| UTF8 | Name             | Event Type         |
 		+------+------------------+--------------------+
-		| f03e | fa-camera        | Art Show           |
+		| f03e | fa-picture-o     | Art Show           |
 		| f07a | fa-shopping-cart | Dealers' Den       |
 		| f069 | fa-asterisk      | Stage              |
 		| f030 | fa-camera        | Photoshoot         |
@@ -106,14 +106,17 @@ class EventCell: UITableViewCell {
 				iconText += "\u{f07a}"
 			case "Stage":
 				iconText += "\u{f069}"
-			case "Photoshoot":
-				iconText += "\u{f030}"
 			case "Supersponsor Event":
 				iconText += "\u{f219}"
 			default:
 				break
 			}
 		}
+
+		if event.Title.contains("Photoshoot") || event.Title.contains("Group Photo") {
+			iconText += "\u{f030}"
+		}
+
 		if event.PanelHosts.contains("Onkel Kage") {
 			iconText += "\u{f000}\u{f188}"
 		}
