@@ -298,22 +298,5 @@ class SettingsTableViewController: FormViewController {
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
                     cell.backgroundColor = UIColor.lightText
 			}
-			<<< ButtonRow {
-				$0.title = "Crash for Firebase"
-				$0.onCellSelection({ (_, _) in
-					let alert = UIAlertController(title: "Crash for Firebase",
-					                              message: "This will crash the app to test crash reporting with Firebase.",
-					                              preferredStyle: .alert)
-					alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-					alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { _ in
-						FirebaseCrashMessage("Firebase Crash button clicked")
-						fatalError()
-					}))
-					self.present(alert, animated: true)
-				})
-				}.cellUpdate { cell, _ in
-					cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
-					cell.textLabel?.textColor = UIColor.red
-			}
     }
 }
