@@ -128,7 +128,6 @@ class KnowledgeEntryViewController: UIViewController {
 			let newHeight = min(view.frame.width, image.size.width) / ratio
 			imageView.frame.size = CGSize(width: view.frame.width, height: newHeight)
 			imageViewHeightConstraint.constant = newHeight
-			imageView.sizeToFit()
 		}
 	}
 

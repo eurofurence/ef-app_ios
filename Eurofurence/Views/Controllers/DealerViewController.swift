@@ -140,7 +140,6 @@ class DealerViewController: UIViewController {
 
 	private func setupShortDescription() {
 		artistShortDescriptionLabel.text = replaceUnicodeNewlines(in: dealer?.ShortDescription)
-		artistShortDescriptionLabel.sizeToFit()
 	}
 
 	private func setupAbout() {
@@ -151,7 +150,6 @@ class DealerViewController: UIViewController {
 			// TODO: Externalise strings for i18n
 			aboutArtistTextView.text = "The artist did not provide any information about themselves to be shown here."
 		}
-		aboutArtistTextView.sizeToFit()
 	}
 
 	private func setupArtPreview() {
@@ -162,7 +160,6 @@ class DealerViewController: UIViewController {
 		}
 
 		artPreviewImageView.image = #imageLiteral(resourceName: "ef")
-		artPreviewImageView.sizeToFit()
 		artPreviewCaption.text = nil
 		disposables += imageService.retrieve(for: artPreviewImage).startWithResult({ [weak self] result in
 			guard let strongSelf = self else { return }
@@ -170,10 +167,8 @@ class DealerViewController: UIViewController {
 			case let .success(value):
 				DispatchQueue.main.async {
 					strongSelf.artPreviewImageView.image = value
-					strongSelf.artPreviewImageView.sizeToFit()
 
 					strongSelf.artPreviewCaption.text = strongSelf.replaceUnicodeNewlines(in: strongSelf.dealer?.ArtPreviewCaption)
-					strongSelf.artPreviewCaption.sizeToFit()
 				}
 			case .failure:
 				break
@@ -185,7 +180,6 @@ class DealerViewController: UIViewController {
 		let aboutArtText = replaceUnicodeNewlines(in: dealer?.AboutTheArtText)
 		if let aboutArtText = aboutArtText, !aboutArtText.isEmpty {
 			aboutArtTextView.text = aboutArtText
-			aboutArtTextView.sizeToFit()
 		} else {
 			aboutArtTextView.isHidden = true
 
