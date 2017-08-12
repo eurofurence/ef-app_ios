@@ -24,7 +24,7 @@ class Announcement: EntityBase {
 extension Announcement: Sortable {
 	override public func lessThan(_ rhs: EntityBase) -> Bool {
 		return (rhs as? Announcement).map {
-			return self.ValidFromDateTimeUtc < $0.ValidFromDateTimeUtc
+			return self.ValidFromDateTimeUtc > $0.ValidFromDateTimeUtc
 			} ?? super.lessThan(rhs)
 	}
 }
