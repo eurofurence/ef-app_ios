@@ -305,7 +305,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 			if let link = nearestMapEntry.Links.first, nearestMapEntry.Links.count == 1 {
 				performLinkFragmentAction(for: link)
 			} else {
-				showMapEntryActionSheet(for: nearestMapEntry.Links)
+				showMapEntryActionSheet(for: nearestMapEntry)
 			}
 		}
     }
@@ -332,7 +332,8 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 		}
 	}
 
-	func showMapEntryActionSheet(for mapEntryLinks: [LinkFragment]) {
+	func showMapEntryActionSheet(for mapEntry: MapEntry) {
+        let mapEntryLinks = mapEntry.Links
 		guard mapEntryLinks.count > 0 else { return }
 
 		let firstFragmentType: LinkFragment.LinkFragmentType = mapEntryLinks[0].FragmentType
@@ -357,6 +358,16 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 		}
 
 		let optionMenu = UIAlertController(title: nil, message: optionMenuMessage, preferredStyle: .actionSheet)
+
+        if let popoverPresentationController = optionMenu.popoverPresentationController {
+            let width = mapEntry.CGTapRadius, height = mapEntry.CGTapRadius
+            let left = mapEntry.CGLocation.x - width / 2
+            let top = mapEntry.CGLocation.y - height / 2
+            let sourceRect = CGRect(x: left, y: top, width: width, height: height)
+
+            popoverPresentationController.sourceRect = sourceRect
+            popoverPresentationController.sourceView = mapView
+        }
 
 		var lastActionableLink: LinkFragment?
 		for link in mapEntryLinks {
