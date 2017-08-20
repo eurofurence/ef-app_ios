@@ -976,15 +976,15 @@
 		78D7EEB61F196B1F005372A9 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				CA18B3451F49AF4500038E52 /* Model */,
-				CA18B3431F49AECB00038E52 /* Observers */,
+				CA30EAB31F2161F10053DBF6 /* CredentialPersister.swift */,
+				78D7EEBC1F196B62005372A9 /* EurofurenceApplication.swift */,
+				CA30EAB11F215E680053DBF6 /* LoginTask.swift */,
+				CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */,
 				CA804DCF1F20CE5F00E07A4A /* API */,
 				78D7EEC21F196BC3005372A9 /* Build Config */,
+				CA18B3451F49AF4500038E52 /* Model */,
 				78D7EEB91F196B40005372A9 /* Notifications */,
-				78D7EEBC1F196B62005372A9 /* EurofurenceApplication.swift */,
-				CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */,
-				CA30EAB11F215E680053DBF6 /* LoginTask.swift */,
-				CA30EAB31F2161F10053DBF6 /* CredentialPersister.swift */,
+				CA18B3431F49AECB00038E52 /* Observers */,
 			);
 			name = Application;
 			sourceTree = "<group>";
