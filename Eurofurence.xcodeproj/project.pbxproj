@@ -535,8 +535,8 @@
 		CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginArguments.swift; path = Login/LoginArguments.swift; sourceTree = "<group>"; };
 		CA2B4FA91F1F7F1200F007E1 /* CapturingLoginObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLoginObserver.swift; path = "Test Doubles/Application/CapturingLoginObserver.swift"; sourceTree = "<group>"; };
 		CA2B4FAB1F1F7F2C00F007E1 /* LoginObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginObserver.swift; path = Application/Observers/LoginObserver.swift; sourceTree = "<group>"; };
-		CA30EAA01F2127350053DBF6 /* APILoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APILoginResponse.swift; path = Application/API/APILoginResponse.swift; sourceTree = "<group>"; };
-		CA30EAA21F2129700053DBF6 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginAPI.swift; path = Application/API/LoginAPI.swift; sourceTree = "<group>"; };
+		CA30EAA01F2127350053DBF6 /* APILoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APILoginResponse.swift; path = Application/API/Protocols/APILoginResponse.swift; sourceTree = "<group>"; };
+		CA30EAA21F2129700053DBF6 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginAPI.swift; path = Application/API/Protocols/LoginAPI.swift; sourceTree = "<group>"; };
 		CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLoginAPI.swift; path = "Test Doubles/Application/API/CapturingLoginAPI.swift"; sourceTree = "<group>"; };
 		CA30EAA71F2132480053DBF6 /* StubLoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubLoginResponse.swift; path = "Test Doubles/Application/API/StubLoginResponse.swift"; sourceTree = "<group>"; };
 		CA30EAA91F2141800053DBF6 /* CapturingAuthenticationStateObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingAuthenticationStateObserver.swift; path = "Test Doubles/Application/CapturingAuthenticationStateObserver.swift"; sourceTree = "<group>"; };
@@ -549,8 +549,8 @@
 		CA30EAB71F2613500053DBF6 /* PrivateMessagesObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateMessagesObserver.swift; path = Application/Observers/PrivateMessagesObserver.swift; sourceTree = "<group>"; };
 		CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingPrivateMessagesObserver.swift; path = "Test Doubles/Application/CapturingPrivateMessagesObserver.swift"; sourceTree = "<group>"; };
 		CA30EABB1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingPrivateMessagesAPI.swift; path = "Test Doubles/Application/API/CapturingPrivateMessagesAPI.swift"; sourceTree = "<group>"; };
-		CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateMessagesAPI.swift; path = Application/API/PrivateMessagesAPI.swift; sourceTree = "<group>"; };
-		CA30EAC11F266D9B0053DBF6 /* APIPrivateMessagesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIPrivateMessagesResponse.swift; path = Application/API/APIPrivateMessagesResponse.swift; sourceTree = "<group>"; };
+		CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateMessagesAPI.swift; path = Application/API/Protocols/PrivateMessagesAPI.swift; sourceTree = "<group>"; };
+		CA30EAC11F266D9B0053DBF6 /* APIPrivateMessagesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIPrivateMessagesResponse.swift; path = Application/API/Protocols/APIPrivateMessagesResponse.swift; sourceTree = "<group>"; };
 		CA30EAC31F2672BF0053DBF6 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Application/Model/Message.swift; sourceTree = "<group>"; };
 		CA30EAC51F2673010053DBF6 /* StubAPIPrivateMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAPIPrivateMessage.swift; path = "Test Doubles/Application/API/StubAPIPrivateMessage.swift"; sourceTree = "<group>"; };
 		CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2PrivateMessagesAPITests.swift; path = "Application Tests/API/v2/V2PrivateMessagesAPITests.swift"; sourceTree = "<group>"; };
@@ -558,8 +558,8 @@
 		CA30EACD1F27D1430053DBF6 /* V2APIPrivateMessagesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2APIPrivateMessagesResponse.swift; path = Application/API/v2/V2APIPrivateMessagesResponse.swift; sourceTree = "<group>"; };
 		CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
-		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/APIResponse.swift; sourceTree = "<group>"; };
-		CA804DD51F20D10E00E07A4A /* APILoginParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APILoginParameters.swift; path = Application/API/APILoginParameters.swift; sourceTree = "<group>"; };
+		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/Protocols/APIResponse.swift; sourceTree = "<group>"; };
+		CA804DD51F20D10E00E07A4A /* APILoginParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APILoginParameters.swift; path = Application/API/Protocols/APILoginParameters.swift; sourceTree = "<group>"; };
 		CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPITests.swift; path = "Application Tests/API/v2/V2LoginAPITests.swift"; sourceTree = "<group>"; };
 		CA9845C11F28B16800E8821D /* MessageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
 		CA9845C71F2907A800E8821D /* ScreenshotGenerator.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScreenshotGenerator.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1341,6 +1341,19 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		CA18B3471F49FE9800038E52 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CA804DD31F20CF4300E07A4A /* APIResponse.swift */,
+				CA804DD51F20D10E00E07A4A /* APILoginParameters.swift */,
+				CA30EAA01F2127350053DBF6 /* APILoginResponse.swift */,
+				CA30EAA21F2129700053DBF6 /* LoginAPI.swift */,
+				CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */,
+				CA30EAC11F266D9B0053DBF6 /* APIPrivateMessagesResponse.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		CA30EAA41F2129B70053DBF6 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -1355,13 +1368,8 @@
 		CA804DCF1F20CE5F00E07A4A /* API */ = {
 			isa = PBXGroup;
 			children = (
+				CA18B3471F49FE9800038E52 /* Protocols */,
 				CA804DD01F20CE6600E07A4A /* v2 */,
-				CA804DD31F20CF4300E07A4A /* APIResponse.swift */,
-				CA804DD51F20D10E00E07A4A /* APILoginParameters.swift */,
-				CA30EAA01F2127350053DBF6 /* APILoginResponse.swift */,
-				CA30EAA21F2129700053DBF6 /* LoginAPI.swift */,
-				CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */,
-				CA30EAC11F266D9B0053DBF6 /* APIPrivateMessagesResponse.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
