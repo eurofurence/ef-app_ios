@@ -538,24 +538,24 @@
 		CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationTestBuilder.swift; path = "Application Tests/ApplicationTestBuilder.swift"; sourceTree = "<group>"; };
 		CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginArguments.swift; path = Login/LoginArguments.swift; sourceTree = "<group>"; };
 		CA2B4FA91F1F7F1200F007E1 /* CapturingLoginObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLoginObserver.swift; path = "Test Doubles/Application/CapturingLoginObserver.swift"; sourceTree = "<group>"; };
-		CA2B4FAB1F1F7F2C00F007E1 /* LoginObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginObserver.swift; path = Application/LoginObserver.swift; sourceTree = "<group>"; };
+		CA2B4FAB1F1F7F2C00F007E1 /* LoginObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginObserver.swift; path = Application/Observers/LoginObserver.swift; sourceTree = "<group>"; };
 		CA30EAA01F2127350053DBF6 /* APILoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APILoginResponse.swift; path = Application/API/APILoginResponse.swift; sourceTree = "<group>"; };
 		CA30EAA21F2129700053DBF6 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginAPI.swift; path = Application/API/LoginAPI.swift; sourceTree = "<group>"; };
 		CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLoginAPI.swift; path = "Test Doubles/Application/API/CapturingLoginAPI.swift"; sourceTree = "<group>"; };
 		CA30EAA71F2132480053DBF6 /* StubLoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubLoginResponse.swift; path = "Test Doubles/Application/API/StubLoginResponse.swift"; sourceTree = "<group>"; };
 		CA30EAA91F2141800053DBF6 /* CapturingAuthenticationStateObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingAuthenticationStateObserver.swift; path = "Test Doubles/Application/CapturingAuthenticationStateObserver.swift"; sourceTree = "<group>"; };
-		CA30EAAB1F2141A40053DBF6 /* AuthenticationStateObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationStateObserver.swift; path = Application/AuthenticationStateObserver.swift; sourceTree = "<group>"; };
-		CA30EAAD1F2148780053DBF6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Application/User.swift; sourceTree = "<group>"; };
+		CA30EAAB1F2141A40053DBF6 /* AuthenticationStateObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationStateObserver.swift; path = Application/Observers/AuthenticationStateObserver.swift; sourceTree = "<group>"; };
+		CA30EAAD1F2148780053DBF6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Application/Model/User.swift; sourceTree = "<group>"; };
 		CA30EAAF1F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnreadMessagesTableViewCell.swift; sourceTree = "<group>"; };
 		CA30EAB11F215E680053DBF6 /* LoginTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginTask.swift; path = Application/LoginTask.swift; sourceTree = "<group>"; };
 		CA30EAB31F2161F10053DBF6 /* CredentialPersister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CredentialPersister.swift; path = Application/CredentialPersister.swift; sourceTree = "<group>"; };
 		CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenRequestingPrivateMessages.swift; path = "Application Tests/WhenRequestingPrivateMessages.swift"; sourceTree = "<group>"; };
-		CA30EAB71F2613500053DBF6 /* PrivateMessagesObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateMessagesObserver.swift; path = Application/PrivateMessagesObserver.swift; sourceTree = "<group>"; };
+		CA30EAB71F2613500053DBF6 /* PrivateMessagesObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateMessagesObserver.swift; path = Application/Observers/PrivateMessagesObserver.swift; sourceTree = "<group>"; };
 		CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingPrivateMessagesObserver.swift; path = "Test Doubles/Application/CapturingPrivateMessagesObserver.swift"; sourceTree = "<group>"; };
 		CA30EABB1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingPrivateMessagesAPI.swift; path = "Test Doubles/Application/API/CapturingPrivateMessagesAPI.swift"; sourceTree = "<group>"; };
 		CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateMessagesAPI.swift; path = Application/API/PrivateMessagesAPI.swift; sourceTree = "<group>"; };
 		CA30EAC11F266D9B0053DBF6 /* APIPrivateMessagesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIPrivateMessagesResponse.swift; path = Application/API/APIPrivateMessagesResponse.swift; sourceTree = "<group>"; };
-		CA30EAC31F2672BF0053DBF6 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Application/Message.swift; sourceTree = "<group>"; };
+		CA30EAC31F2672BF0053DBF6 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Application/Model/Message.swift; sourceTree = "<group>"; };
 		CA30EAC51F2673010053DBF6 /* StubAPIPrivateMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAPIPrivateMessage.swift; path = "Test Doubles/Application/API/StubAPIPrivateMessage.swift"; sourceTree = "<group>"; };
 		CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2PrivateMessagesAPITests.swift; path = "Application Tests/API/v2/V2PrivateMessagesAPITests.swift"; sourceTree = "<group>"; };
 		CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2PrivateMessagesAPI.swift; path = Application/API/v2/V2PrivateMessagesAPI.swift; sourceTree = "<group>"; };
@@ -575,7 +575,7 @@
 		CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnreadMessageIndicator.swift; sourceTree = "<group>"; };
 		CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenLoggingOut.swift; path = "Application Tests/WhenLoggingOut.swift"; sourceTree = "<group>"; };
 		CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLogoutObserver.swift; path = "Test Doubles/Application/CapturingLogoutObserver.swift"; sourceTree = "<group>"; };
-		CACE1B081F2BBF0900DFCB60 /* LogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogoutObserver.swift; path = Application/LogoutObserver.swift; sourceTree = "<group>"; };
+		CACE1B081F2BBF0900DFCB60 /* LogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogoutObserver.swift; path = Application/Observers/LogoutObserver.swift; sourceTree = "<group>"; };
 		CAD780361F1D415A002A8333 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CAD780381F1D41C4002A8333 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenLoginStateChanges.swift; path = "Application Tests/WhenLoginStateChanges.swift"; sourceTree = "<group>"; };
@@ -980,19 +980,15 @@
 		78D7EEB61F196B1F005372A9 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				CA18B3451F49AF4500038E52 /* Model */,
+				CA18B3431F49AECB00038E52 /* Observers */,
 				CA804DCF1F20CE5F00E07A4A /* API */,
 				78D7EEC21F196BC3005372A9 /* Build Config */,
 				78D7EEB91F196B40005372A9 /* Notifications */,
 				78D7EEBC1F196B62005372A9 /* EurofurenceApplication.swift */,
-				CA30EAB71F2613500053DBF6 /* PrivateMessagesObserver.swift */,
 				CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */,
-				CA2B4FAB1F1F7F2C00F007E1 /* LoginObserver.swift */,
-				CA30EAAB1F2141A40053DBF6 /* AuthenticationStateObserver.swift */,
-				CA30EAAD1F2148780053DBF6 /* User.swift */,
 				CA30EAB11F215E680053DBF6 /* LoginTask.swift */,
 				CA30EAB31F2161F10053DBF6 /* CredentialPersister.swift */,
-				CA30EAC31F2672BF0053DBF6 /* Message.swift */,
-				CACE1B081F2BBF0900DFCB60 /* LogoutObserver.swift */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -1329,6 +1325,26 @@
 				CA30EAAF1F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		CA18B3431F49AECB00038E52 /* Observers */ = {
+			isa = PBXGroup;
+			children = (
+				CA30EAB71F2613500053DBF6 /* PrivateMessagesObserver.swift */,
+				CA2B4FAB1F1F7F2C00F007E1 /* LoginObserver.swift */,
+				CA30EAAB1F2141A40053DBF6 /* AuthenticationStateObserver.swift */,
+				CACE1B081F2BBF0900DFCB60 /* LogoutObserver.swift */,
+			);
+			name = Observers;
+			sourceTree = "<group>";
+		};
+		CA18B3451F49AF4500038E52 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CA30EAAD1F2148780053DBF6 /* User.swift */,
+				CA30EAC31F2672BF0053DBF6 /* Message.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		CA30EAA41F2129B70053DBF6 /* API */ = {
