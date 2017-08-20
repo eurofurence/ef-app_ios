@@ -67,7 +67,7 @@ class V2LoginAPITests: XCTestCase {
     
     private func makeObserverForVerifyingLoginResponse(_ data: Data?) -> CapturingV2LoginObserver {
         let loginResponseObserver = CapturingV2LoginObserver()
-        performLogin(makeLoginParameters(), completionHandler: loginResponseObserver.observe)
+        performLogin(makeLoginParameters(completionHandler: loginResponseObserver.observe))
         JSONSession.invokeLastPOSTCompletionHandler(responseData: data)
         
         return loginResponseObserver
@@ -75,12 +75,13 @@ class V2LoginAPITests: XCTestCase {
     
     private func makeLoginParameters(regNo: Int = 0,
                                      username: String = "Username",
-                                     password: String = "Password") -> APILoginParameters {
-        return APILoginParameters(regNo: regNo, username: username, password: password)
+                                     password: String = "Password",
+                                     completionHandler: @escaping (APIResponse<APILoginResponse>) -> Void = { _ in }) -> LoginRequest {
+        return LoginRequest(regNo: regNo, username: username, password: password, completionHandler: completionHandler)
     }
     
-    private func performLogin(_ parameters: APILoginParameters, completionHandler: @escaping LoginResponseHandler = { _ in }) {
-        api.performLogin(arguments: parameters, completionHandler: completionHandler)
+    private func performLogin(_ request: LoginRequest) {
+        api.performLogin(request: request)
     }
     
     func testTheLoginEndpointShouldReceieveRequest() {

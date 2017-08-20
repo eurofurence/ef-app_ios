@@ -11,12 +11,11 @@ import Foundation
 
 class CapturingLoginAPI: LoginAPI {
     
-    private(set) var capturedLoginArguments: APILoginParameters?
+    private(set) var capturedLoginRequest: LoginRequest?
     private var handler: LoginResponseHandler?
-    func performLogin(arguments: APILoginParameters,
-                      completionHandler: @escaping LoginResponseHandler) {
-        capturedLoginArguments = arguments
-        handler = completionHandler
+    func performLogin(request: LoginRequest) {
+        capturedLoginRequest = request
+        handler = request.completionHandler
     }
     
     func simulateResponse(_ response: APILoginResponse) {

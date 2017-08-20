@@ -16,20 +16,19 @@ class V2LoginAPI: LoginAPI {
         self.JSONSession = JSONSession
     }
 
-    func performLogin(arguments: APILoginParameters,
-                      completionHandler: @escaping LoginResponseHandler) {
+    func performLogin(request: LoginRequest) {
         do {
-            let jsonData = try makeLoginBody(from: arguments)
-            performLogin(body: jsonData, completionHandler: completionHandler)
+            let jsonData = try makeLoginBody(from: request)
+            performLogin(body: jsonData, completionHandler: request.completionHandler)
         } catch {
             print("Unable to perform login due to error: \(error)")
         }
     }
 
-    private func makeLoginBody(from arguments: APILoginParameters) throws -> Data {
-        let postArguments: [String : Any] = ["RegNo": arguments.regNo,
-                                             "Username": arguments.username,
-                                             "Password": arguments.password]
+    private func makeLoginBody(from request: LoginRequest) throws -> Data {
+        let postArguments: [String : Any] = ["RegNo": request.regNo,
+                                             "Username": request.username,
+                                             "Password": request.password]
         return try JSONSerialization.data(withJSONObject: postArguments, options: [])
     }
 

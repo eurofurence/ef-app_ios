@@ -23,7 +23,7 @@ class WhenLoggingIn: XCTestCase {
         let expectedUsername = "Some awesome guy"
         context.login(username: expectedUsername)
         
-        XCTAssertEqual(expectedUsername, context.loginAPI.capturedLoginArguments?.username)
+        XCTAssertEqual(expectedUsername, context.loginAPI.capturedLoginRequest?.username)
     }
     
     func testLoggingInShouldAttemptLoginWithProvidedRegNo() {
@@ -31,7 +31,7 @@ class WhenLoggingIn: XCTestCase {
         let expectedRegNo = 42
         context.login(registrationNumber: expectedRegNo)
         
-        XCTAssertEqual(expectedRegNo, context.loginAPI.capturedLoginArguments?.regNo)
+        XCTAssertEqual(expectedRegNo, context.loginAPI.capturedLoginRequest?.regNo)
     }
     
     func testLoggingInShouldAttemptLoginWithProvidedPassword() {
@@ -39,7 +39,7 @@ class WhenLoggingIn: XCTestCase {
         let expectedPassword = "Some awesome password"
         context.login(password: expectedPassword)
         
-        XCTAssertEqual(expectedPassword, context.loginAPI.capturedLoginArguments?.password)
+        XCTAssertEqual(expectedPassword, context.loginAPI.capturedLoginRequest?.password)
     }
     
     func testLoggingInSuccessfullyShouldPersistLoginCredentialWithUsername() {
@@ -135,7 +135,7 @@ class WhenLoggingIn: XCTestCase {
         context.application.add(loginObserver: loginObserver)
         context.login()
         
-        XCTAssertNil(context.loginAPI.capturedLoginArguments)
+        XCTAssertNil(context.loginAPI.capturedLoginRequest)
     }
     
     func testLoggingInSuccessfullyThenRegisteringPushTokenShouldProvideAuthTokenWithPushRegistration() {

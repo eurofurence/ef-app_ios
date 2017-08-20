@@ -136,7 +136,7 @@ class WhenLoggingOut: XCTestCase {
         let secondUser = "Some other awesome guy"
         context.login(username: secondUser)
         
-        XCTAssertEqual(secondUser, context.loginAPI.capturedLoginArguments?.username)
+        XCTAssertEqual(secondUser, context.loginAPI.capturedLoginRequest?.username)
     }
     
 }

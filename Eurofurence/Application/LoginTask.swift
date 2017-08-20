@@ -22,12 +22,11 @@ struct LoginTask {
     let loginAPI: LoginAPI
 
     func start() {
-        loginAPI.performLogin(arguments: makeAPILoginParameters(from: arguments),
-                              completionHandler: handleLoginResult)
-    }
-
-    private func makeAPILoginParameters(from args: LoginArguments) -> APILoginParameters {
-        return APILoginParameters(regNo: args.registrationNumber, username: args.username, password: args.password)
+        let request = LoginRequest(regNo: arguments.registrationNumber,
+                                   username: arguments.username,
+                                   password: arguments.password,
+                                   completionHandler: handleLoginResult)
+        loginAPI.performLogin(request: request)
     }
 
     private func handleLoginResult(_ result: APIResponse<APILoginResponse>) {
