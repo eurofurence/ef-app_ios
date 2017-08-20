@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        app.registerRemoteNotifications(deviceToken: deviceToken)
+        app.registerForRemoteNotifications(deviceToken: deviceToken)
         PresentationTier.pushRequesting.handlePushRegistrationSuccess()
     }
 

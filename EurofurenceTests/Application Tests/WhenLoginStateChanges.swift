@@ -24,7 +24,7 @@ class WhenLoginStateChanges: XCTestCase {
     func testLoggingInShouldReregisterTheSamePushDeviceToken() {
         let context = ApplicationTestBuilder().build()
         let deviceToken = "Token".data(using: .utf8)!
-        context.registerRemoteNotifications(deviceToken)
+        context.registerForRemoteNotifications(deviceToken)
         
         XCTAssertEqual(deviceToken, context.capturingTokenRegistration.capturedRemoteNotificationsDeviceToken)
     }
@@ -33,7 +33,7 @@ class WhenLoginStateChanges: XCTestCase {
         let authenticationToken = "JWT Token"
         let existingCredential = makeCredential(authenticationToken: authenticationToken, tokenExpiryDate: .distantFuture)
         let context = ApplicationTestBuilder().with(existingCredential).build()
-        context.registerRemoteNotifications()
+        context.registerForRemoteNotifications()
         
         XCTAssertEqual(authenticationToken, context.capturingTokenRegistration.capturedUserAuthenticationToken)
     }
@@ -42,7 +42,7 @@ class WhenLoginStateChanges: XCTestCase {
         let authenticationToken = "JWT Token"
         let existingCredential = makeCredential(authenticationToken: authenticationToken, tokenExpiryDate: .distantPast)
         let context = ApplicationTestBuilder().with(existingCredential).build()
-        context.registerRemoteNotifications()
+        context.registerForRemoteNotifications()
         
         XCTAssertNil(context.capturingTokenRegistration.capturedUserAuthenticationToken)
     }

@@ -78,7 +78,7 @@ class EurofurenceApplication {
         authenticationCoordinator.logout()
     }
 
-    func registerRemoteNotifications(deviceToken: Data) {
+    func registerForRemoteNotifications(deviceToken: Data) {
         registeredDeviceToken = deviceToken
         authenticationCoordinator.registeredDeviceToken = deviceToken
         remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken,

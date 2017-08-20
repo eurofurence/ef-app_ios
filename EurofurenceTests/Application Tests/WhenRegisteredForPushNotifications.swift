@@ -14,7 +14,7 @@ class WhenRegisteredForPushNotifications: XCTestCase {
     func testTheApplicationTellsTheRemoteNotificationRegistrationItRegisteredWithTheDeviceToken() {
         let context = ApplicationTestBuilder().build()
         let deviceToken = Data()
-        context.application.registerRemoteNotifications(deviceToken: deviceToken)
+        context.application.registerForRemoteNotifications(deviceToken: deviceToken)
 
         XCTAssertEqual(deviceToken, context.capturingTokenRegistration.capturedRemoteNotificationsDeviceToken)
     }
