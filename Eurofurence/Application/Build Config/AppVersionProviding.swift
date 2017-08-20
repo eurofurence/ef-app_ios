@@ -13,3 +13,11 @@ protocol AppVersionProviding {
     var version: String { get }
 
 }
+
+struct BundleAppVersionProviding: AppVersionProviding {
+
+    var version: String {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
+    }
+
+}

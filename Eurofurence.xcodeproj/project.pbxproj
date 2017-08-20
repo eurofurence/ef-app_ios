@@ -10,7 +10,6 @@
 		6EEC6DA11F1BF79F00205F2D /* FirebaseTopicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA01F1BF79F00205F2D /* FirebaseTopicTests.swift */; };
 		6EEC6DA31F1BFC5000205F2D /* StubAppVersionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */; };
 		6EEC6DA51F1BFC7700205F2D /* AppVersionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA41F1BFC7700205F2D /* AppVersionProviding.swift */; };
-		6EEC6DA71F1BFD5D00205F2D /* BundleAppVersionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA61F1BFD5D00205F2D /* BundleAppVersionProviding.swift */; };
 		6EF96CC81F0EDAE800EE6134 /* CalendarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CC71F0EDAE800EE6134 /* CalendarStore.swift */; };
 		6EF96CCA1F0EDAF800EE6134 /* CalendarPermissionsProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CC91F0EDAF800EE6134 /* CalendarPermissionsProviding.swift */; };
 		6EF96CCC1F0EDB0500EE6134 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF96CCB1F0EDB0500EE6134 /* CalendarEvent.swift */; };
@@ -88,7 +87,6 @@
 		78D7EEB81F196B30005372A9 /* BuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEB71F196B30005372A9 /* BuildConfigurationProviding.swift */; };
 		78D7EEBD1F196B62005372A9 /* EurofurenceApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEBC1F196B62005372A9 /* EurofurenceApplication.swift */; };
 		78D7EEBF1F196B77005372A9 /* StubBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */; };
-		78D7EEC41F196C4A005372A9 /* PreprocessorBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEC31F196C4A005372A9 /* PreprocessorBuildConfigurationProviding.swift */; };
 		78F555991F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F555981F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift */; };
 		78F5559B1F10D65900BDA7D4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F5559A1F10D65900BDA7D4 /* SplashViewController.swift */; };
 		78FE77CC1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77CB1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift */; };
@@ -321,7 +319,6 @@
 		6EEC6DA01F1BF79F00205F2D /* FirebaseTopicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseTopicTests.swift; path = "Application Tests/Notifications/Firebase/FirebaseTopicTests.swift"; sourceTree = "<group>"; };
 		6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAppVersionProviding.swift; path = "Test Doubles/StubAppVersionProviding.swift"; sourceTree = "<group>"; };
 		6EEC6DA41F1BFC7700205F2D /* AppVersionProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppVersionProviding.swift; path = "Application/Build Config/AppVersionProviding.swift"; sourceTree = "<group>"; };
-		6EEC6DA61F1BFD5D00205F2D /* BundleAppVersionProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BundleAppVersionProviding.swift; path = "Application/Build Config/BundleAppVersionProviding.swift"; sourceTree = "<group>"; };
 		6EF96CC71F0EDAE800EE6134 /* CalendarStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarStore.swift; path = Calendar/CalendarStore.swift; sourceTree = "<group>"; };
 		6EF96CC91F0EDAF800EE6134 /* CalendarPermissionsProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPermissionsProviding.swift; path = Calendar/CalendarPermissionsProviding.swift; sourceTree = "<group>"; };
 		6EF96CCB1F0EDB0500EE6134 /* CalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarEvent.swift; path = Calendar/CalendarEvent.swift; sourceTree = "<group>"; };
@@ -402,7 +399,6 @@
 		78D7EEB71F196B30005372A9 /* BuildConfigurationProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BuildConfigurationProviding.swift; path = "Application/Build Config/BuildConfigurationProviding.swift"; sourceTree = "<group>"; };
 		78D7EEBC1F196B62005372A9 /* EurofurenceApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceApplication.swift; path = Application/EurofurenceApplication.swift; sourceTree = "<group>"; };
 		78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubBuildConfigurationProviding.swift; path = "Test Doubles/StubBuildConfigurationProviding.swift"; sourceTree = "<group>"; };
-		78D7EEC31F196C4A005372A9 /* PreprocessorBuildConfigurationProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreprocessorBuildConfigurationProviding.swift; path = "Application/Build Config/PreprocessorBuildConfigurationProviding.swift"; sourceTree = "<group>"; };
 		78F555981F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceViewControllersSegue.swift; sourceTree = "<group>"; };
 		78F5559A1F10D65900BDA7D4 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		78FE77CB1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceFCMDeviceRegistration.swift; path = Application/Notifications/Firebase/EurofurenceFCMDeviceRegistration.swift; sourceTree = "<group>"; };
@@ -1006,9 +1002,7 @@
 			isa = PBXGroup;
 			children = (
 				78D7EEB71F196B30005372A9 /* BuildConfigurationProviding.swift */,
-				78D7EEC31F196C4A005372A9 /* PreprocessorBuildConfigurationProviding.swift */,
 				6EEC6DA41F1BFC7700205F2D /* AppVersionProviding.swift */,
-				6EEC6DA61F1BFD5D00205F2D /* BundleAppVersionProviding.swift */,
 			);
 			name = "Build Config";
 			sourceTree = "<group>";
@@ -1900,7 +1894,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EEC6DA71F1BFD5D00205F2D /* BundleAppVersionProviding.swift in Sources */,
 				9A7FFD571EFC5B46007ABA36 /* CalendarAccess.swift in Sources */,
 				781A94331F1A1994002DE70F /* FCMDeviceRegistration.swift in Sources */,
 				9A861EAF1F2554F900B75A8C /* TutorialPresenter.swift in Sources */,
@@ -1908,7 +1901,6 @@
 				9A861EC81F25555000B75A8C /* WitnessedTutorialPushPermissionsRequest.swift in Sources */,
 				9A861ECC1F25555000B75A8C /* TutorialViewController.swift in Sources */,
 				9A80EF5B1F29203C00FD0D37 /* AnnouncementsShowAllProviding.swift in Sources */,
-				78D7EEC41F196C4A005372A9 /* PreprocessorBuildConfigurationProviding.swift in Sources */,
 				9A861EA31F2554AB00B75A8C /* CompleteTutorial.swift in Sources */,
 				9A861ED81F25564900B75A8C /* StoryboardNotificationRouter.swift in Sources */,
 				9A9488011F21382E00119DC8 /* EventsEntity.swift in Sources */,
