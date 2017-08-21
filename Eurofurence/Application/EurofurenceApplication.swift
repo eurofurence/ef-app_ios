@@ -85,42 +85,12 @@ class EurofurenceApplication {
                                                                                     userAuthenticationToken: authenticationCoordinator.userAuthenticationToken) { _ in }
     }
 
-    struct MessageAdapter: Message {
-
-        var apiMessage: APIPrivateMessage
-
-        var identifier: String {
-            return apiMessage.id
-        }
-
-        var authorName: String {
-            return apiMessage.authorName
-        }
-
-        var receivedDateTime: Date {
-            return apiMessage.receivedDateTime
-        }
-
-        var subject: String {
-            return apiMessage.subject
-        }
-
-        var contents: String {
-            return apiMessage.message
-        }
-
-        var isRead: Bool {
-            return apiMessage.readDateTime != nil
-        }
-
-    }
-
     func fetchPrivateMessages() {
         if let token = authenticationCoordinator.userAuthenticationToken {
             privateMessagesAPI.loadPrivateMessages(authorizationToken: token) { response in
                 switch response {
                 case .success(let response):
-                    let messages = response.messages.map(MessageAdapter.init)
+                    let messages = response.messages.map(self.makeMessage)
                     self.privateMessagesObservers.forEach({ $0.privateMessagesAvailable(messages) })
 
                 case .failure:
@@ -133,10 +103,18 @@ class EurofurenceApplication {
     }
 
     func markMessageAsRead(_ message: Message) {
-        guard let adapter = message as? MessageAdapter else { return }
         guard let token = authenticationCoordinator.userAuthenticationToken else { return }
 
-        privateMessagesAPI.markMessageWithIdentifierAsRead(adapter.identifier, authorizationToken: token)
+        privateMessagesAPI.markMessageWithIdentifierAsRead(message.identifier, authorizationToken: token)
+    }
+
+    private func makeMessage(from apiMessage: APIPrivateMessage) -> Message {
+        return Message(identifier: apiMessage.id,
+                       authorName: apiMessage.authorName,
+                       receivedDateTime: apiMessage.receivedDateTime,
+                       subject: apiMessage.subject,
+                       contents: apiMessage.message,
+                       isRead: apiMessage.readDateTime != nil)
     }
 
 }

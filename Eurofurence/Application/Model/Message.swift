@@ -8,12 +8,13 @@
 
 import Foundation
 
-protocol Message {
+struct Message {
 
-    var authorName: String { get }
-    var receivedDateTime: Date { get }
-    var subject: String { get }
-    var contents: String { get }
-    var isRead: Bool { get }
+    var identifier: String
+    var authorName: String
+    var receivedDateTime: Date
+    var subject: String
+    var contents: String
+    var isRead: Bool
 
 }
