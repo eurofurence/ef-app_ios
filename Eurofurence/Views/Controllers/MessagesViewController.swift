@@ -46,7 +46,6 @@ class MessagesViewController: UIViewController,
                               UITableViewDelegate,
                               AuthenticationStateObserver,
                               LoginViewControllerDelegate,
-                              PrivateMessagesObserver,
                               LogoutObserver {
 
     // MARK: IBOutlets
@@ -85,7 +84,6 @@ class MessagesViewController: UIViewController,
         tableView.dataSource = dataSource
         tableView.delegate = self
         app.add(authenticationStateObserver: self)
-        app.add(privateMessagesObserver: self)
         app.add(logoutObserver: self)
     }
 
@@ -148,22 +146,6 @@ class MessagesViewController: UIViewController,
         }
     }
 
-    // MARK: PrivateMessagesObserver
-
-    func privateMessagesAvailable(_ privateMessages: [Message]) {
-        refreshControl.endRefreshing()
-        dataSource.updateWith(messages: privateMessages)
-        tableView.reloadData()
-    }
-
-    func failedToLoadPrivateMessages() {
-        refreshControl.endRefreshing()
-    }
-
-    func userNotAuthenticatedForPrivateMessages() {
-
-    }
-
     // MARK: LogoutObserver
 
     func logoutSucceeded() {
@@ -186,7 +168,18 @@ class MessagesViewController: UIViewController,
     // MARK: Functions
 
     @objc func instigateMessagesReload() {
-        app.fetchPrivateMessages()
+        app.fetchPrivateMessages { result in
+            self.refreshControl.endRefreshing()
+
+            switch result {
+            case .success(let messages):
+                self.dataSource.updateWith(messages: messages)
+                self.tableView.reloadData()
+
+            default:
+                break
+            }
+        }
     }
 
 }

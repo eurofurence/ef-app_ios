@@ -15,7 +15,6 @@ class NewsTableViewController: UITableViewController,
                                UIViewControllerPreviewingDelegate,
                                MessagesViewControllerDelegate,
                                AuthenticationStateObserver,
-                               PrivateMessagesObserver,
                                LogoutObserver {
 	@IBOutlet weak var favoritesOnlySegmentedControl: UISegmentedControl!
 
@@ -35,9 +34,19 @@ class NewsTableViewController: UITableViewController,
         super.viewDidLoad()
 
         EurofurenceApplication.shared.add(authenticationStateObserver: self)
-        EurofurenceApplication.shared.add(privateMessagesObserver: self)
         EurofurenceApplication.shared.add(logoutObserver: self)
-        EurofurenceApplication.shared.fetchPrivateMessages()
+        EurofurenceApplication.shared.fetchPrivateMessages { result in
+            switch result {
+            case .success(let messages):
+                let readCount = messages.filter({ $0.isRead }).count
+                self.unreadMessageCount = messages.count - readCount
+                self.reloadUserMessagesBanner()
+                self.updateBadgeCount()
+
+            default:
+                break
+            }
+        }
 
 		favoritesOnlySegmentedControl.selectedSegmentIndex = newsPreferences.doFilterEventFavorites ? 1 : 0
 

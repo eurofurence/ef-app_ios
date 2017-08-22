@@ -9,23 +9,24 @@
 @testable import Eurofurence
 import Foundation
 
-class CapturingPrivateMessagesObserver: PrivateMessagesObserver {
+class CapturingPrivateMessagesObserver {
     
     private(set) var wasToldSuccessfullyLoadedPrivateMessages = false
     private(set) var capturedMessages: [Message]?
-    func privateMessagesAvailable(_ privateMessages: [Message]) {
-        wasToldSuccessfullyLoadedPrivateMessages = true
-        capturedMessages = privateMessages
-    }
-    
     private(set) var wasToldFailedToLoadPrivateMessages = false
-    func failedToLoadPrivateMessages() {
-        wasToldFailedToLoadPrivateMessages = true
-    }
-    
     private(set) var wasToldUserNotAuthenticated = false
-    func userNotAuthenticatedForPrivateMessages() {
-        wasToldUserNotAuthenticated = true
+    func completionHandler(_ result: PrivateMessageResult) {
+        switch result {
+        case .success(let messages):
+            self.wasToldSuccessfullyLoadedPrivateMessages = true
+            self.capturedMessages = messages
+            
+        case .userNotAuthenticated:
+            self.wasToldUserNotAuthenticated = true
+            
+        case .failedToLoad:
+            self.wasToldFailedToLoadPrivateMessages = true
+        }
     }
     
 }

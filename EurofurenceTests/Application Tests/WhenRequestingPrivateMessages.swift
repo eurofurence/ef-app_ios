@@ -14,8 +14,7 @@ class WhenRequestingPrivateMessages: XCTestCase {
     func testBeingLoggedOutShouldTellObserversUserNotAuthenticated() {
         let context = ApplicationTestBuilder().build()
         let capturingMessagesObserver = CapturingPrivateMessagesObserver()
-        context.application.add(privateMessagesObserver: capturingMessagesObserver)
-        context.application.fetchPrivateMessages()
+        context.application.fetchPrivateMessages(completionHandler: capturingMessagesObserver.completionHandler)
         
         XCTAssertTrue(capturingMessagesObserver.wasToldUserNotAuthenticated)
     }
@@ -23,22 +22,21 @@ class WhenRequestingPrivateMessages: XCTestCase {
     func testBeingLoggedInShouldNotTellObserversUserNotAuthenticated() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let capturingMessagesObserver = CapturingPrivateMessagesObserver()
-        context.application.add(privateMessagesObserver: capturingMessagesObserver)
-        context.application.fetchPrivateMessages()
+        context.application.fetchPrivateMessages(completionHandler: capturingMessagesObserver.completionHandler)
         
         XCTAssertFalse(capturingMessagesObserver.wasToldUserNotAuthenticated)
     }
     
     func testBeingLoggedInShouldRequestPrivateMessagesFromAPI() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
-        context.application.fetchPrivateMessages()
+        context.application.fetchPrivateMessages() { _ in }
         
         XCTAssertTrue(context.privateMessagesAPI.wasToldToLoadPrivateMessages)
     }
     
     func testBeingLoggedOutShouldNotRequestPrivateMessagesFromAPI() {
         let context = ApplicationTestBuilder().build()
-        context.application.fetchPrivateMessages()
+        context.application.fetchPrivateMessages() { _ in }
         
         XCTAssertFalse(context.privateMessagesAPI.wasToldToLoadPrivateMessages)
     }
@@ -46,8 +44,7 @@ class WhenRequestingPrivateMessages: XCTestCase {
     func testReceievingAPIResponseWithErrorShouldTellObserversFailedToLoadPrivateMessages() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let observer = CapturingPrivateMessagesObserver()
-        context.application.add(privateMessagesObserver: observer)
-        context.application.fetchPrivateMessages()
+        context.application.fetchPrivateMessages(completionHandler: observer.completionHandler)
         context.privateMessagesAPI.simulateUnsuccessfulResponse()
         
         XCTAssertTrue(observer.wasToldFailedToLoadPrivateMessages)
@@ -56,8 +53,7 @@ class WhenRequestingPrivateMessages: XCTestCase {
     func testReceievingAPIResponseWithSuccessShouldNotTellObserversFailedToLoadPrivateMessages() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let observer = CapturingPrivateMessagesObserver()
-        context.application.add(privateMessagesObserver: observer)
-        context.application.fetchPrivateMessages()
+        context.application.fetchPrivateMessages(completionHandler: observer.completionHandler)
         context.privateMessagesAPI.simulateSuccessfulResponse()
         
         XCTAssertFalse(observer.wasToldFailedToLoadPrivateMessages)
@@ -66,8 +62,7 @@ class WhenRequestingPrivateMessages: XCTestCase {
     func testReceievingAPIResponseWithSuccessShouldTellObserversSuccessullyLoadedPrivateMessages() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let observer = CapturingPrivateMessagesObserver()
-        context.application.add(privateMessagesObserver: observer)
-        context.application.fetchPrivateMessages()
+        context.application.fetchPrivateMessages(completionHandler: observer.completionHandler)
         context.privateMessagesAPI.simulateSuccessfulResponse()
         
         XCTAssertTrue(observer.wasToldSuccessfullyLoadedPrivateMessages)
@@ -76,8 +71,7 @@ class WhenRequestingPrivateMessages: XCTestCase {
     func testRequestingPrivateMessagesWhenLoggedInShouldNotImmediatleyTellUsItLoadedMessagesBeforeAPIReturns() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let observer = CapturingPrivateMessagesObserver()
-        context.application.add(privateMessagesObserver: observer)
-        context.application.fetchPrivateMessages()
+        context.application.fetchPrivateMessages(completionHandler: observer.completionHandler)
         
         XCTAssertFalse(observer.wasToldSuccessfullyLoadedPrivateMessages)
     }
@@ -85,8 +79,7 @@ class WhenRequestingPrivateMessages: XCTestCase {
     func testReceievingAPIResponseWithErrorShouldNotTellObserversSuccessfullyLoadedPrivateMessages() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let observer = CapturingPrivateMessagesObserver()
-        context.application.add(privateMessagesObserver: observer)
-        context.application.fetchPrivateMessages()
+        context.application.fetchPrivateMessages(completionHandler: observer.completionHandler)
         context.privateMessagesAPI.simulateUnsuccessfulResponse()
         
         XCTAssertFalse(observer.wasToldSuccessfullyLoadedPrivateMessages)
@@ -96,7 +89,7 @@ class WhenRequestingPrivateMessages: XCTestCase {
         let authToken = "Some super secret stuff"
         let credential = LoginCredential(username: "", registrationNumber: 0, authenticationToken: authToken, tokenExpiryDate: .distantFuture)
         let context = ApplicationTestBuilder().with(credential).build()
-        context.application.fetchPrivateMessages()
+        context.application.fetchPrivateMessages(completionHandler: { _ in })
         
         XCTAssertEqual(authToken, context.privateMessagesAPI.capturedAuthToken)
     }
@@ -104,8 +97,7 @@ class WhenRequestingPrivateMessages: XCTestCase {
     func testReceievingAPIResponseWithSuccessShouldPropogateAuthorNameForMessage() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let observer = CapturingPrivateMessagesObserver()
-        context.application.add(privateMessagesObserver: observer)
-        context.application.fetchPrivateMessages()
+        context.application.fetchPrivateMessages(completionHandler: observer.completionHandler)
         let authorName = "Some guy"
         let message = StubAPIPrivateMessage(authorName: authorName)
         let response = StubAPIPrivateMessagesResponse(messages: [message])
@@ -117,8 +109,7 @@ class WhenRequestingPrivateMessages: XCTestCase {
     func testReceievingAPIResponseWithSuccessShouldPropogatereceivedDateTimeForMessage() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let observer = CapturingPrivateMessagesObserver()
-        context.application.add(privateMessagesObserver: observer)
-        context.application.fetchPrivateMessages()
+        context.application.fetchPrivateMessages(completionHandler: observer.completionHandler)
         let receivedDateTime = Date.distantPast
         let message = StubAPIPrivateMessage(receivedDateTime: receivedDateTime)
         let response = StubAPIPrivateMessagesResponse(messages: [message])
@@ -130,8 +121,7 @@ class WhenRequestingPrivateMessages: XCTestCase {
     func testReceievingAPIResponseWithSuccessShouldPropogateContentsForMessage() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let observer = CapturingPrivateMessagesObserver()
-        context.application.add(privateMessagesObserver: observer)
-        context.application.fetchPrivateMessages()
+        context.application.fetchPrivateMessages(completionHandler: observer.completionHandler)
         let contents = "Blah blah important stuff blah blah"
         let message = StubAPIPrivateMessage(message: contents)
         let response = StubAPIPrivateMessagesResponse(messages: [message])
@@ -143,8 +133,7 @@ class WhenRequestingPrivateMessages: XCTestCase {
     func testReceievingAPIResponseWithSuccessShouldPropogateSubjectForMessage() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let observer = CapturingPrivateMessagesObserver()
-        context.application.add(privateMessagesObserver: observer)
-        context.application.fetchPrivateMessages()
+        context.application.fetchPrivateMessages(completionHandler: observer.completionHandler)
         let subject = "You won something!!"
         let message = StubAPIPrivateMessage(subject: subject)
         let response = StubAPIPrivateMessagesResponse(messages: [message])
@@ -156,8 +145,7 @@ class WhenRequestingPrivateMessages: XCTestCase {
     func testReceivingMessageWithoutReadTimeShouldIndicateItIsNotRead() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let observer = CapturingPrivateMessagesObserver()
-        context.application.add(privateMessagesObserver: observer)
-        context.application.fetchPrivateMessages()
+        context.application.fetchPrivateMessages(completionHandler: observer.completionHandler)
         let message = StubAPIPrivateMessage(readDateTime: nil)
         let response = StubAPIPrivateMessagesResponse(messages: [message])
         context.privateMessagesAPI.simulateSuccessfulResponse(response: response)
@@ -168,8 +156,7 @@ class WhenRequestingPrivateMessages: XCTestCase {
     func testReceivingMessageWithReadTimeShouldIndicateItIsRead() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let observer = CapturingPrivateMessagesObserver()
-        context.application.add(privateMessagesObserver: observer)
-        context.application.fetchPrivateMessages()
+        context.application.fetchPrivateMessages(completionHandler: observer.completionHandler)
         let message = StubAPIPrivateMessage(readDateTime: .distantPast)
         let response = StubAPIPrivateMessagesResponse(messages: [message])
         context.privateMessagesAPI.simulateSuccessfulResponse(response: response)

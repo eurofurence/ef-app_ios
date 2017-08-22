@@ -8,6 +8,12 @@
 
 import Foundation
 
+enum PrivateMessageResult {
+    case success([Message])
+    case failedToLoad
+    case userNotAuthenticated
+}
+
 class EurofurenceApplication {
 
     static var shared: EurofurenceApplication = {
@@ -29,7 +35,6 @@ class EurofurenceApplication {
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
     private var authenticationCoordinator: UserAuthenticationCoordinator
     private var registeredDeviceToken: Data?
-    private var privateMessagesObservers = [PrivateMessagesObserver]()
     private let privateMessagesAPI: PrivateMessagesAPI
 
     init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
@@ -66,10 +71,6 @@ class EurofurenceApplication {
         authenticationCoordinator.remove(authenticationStateObserver)
     }
 
-    func add(privateMessagesObserver: PrivateMessagesObserver) {
-        privateMessagesObservers.append(privateMessagesObserver)
-    }
-
     func login(_ arguments: LoginArguments) {
         authenticationCoordinator.login(arguments)
     }
@@ -85,20 +86,20 @@ class EurofurenceApplication {
                                                                                     userAuthenticationToken: authenticationCoordinator.userAuthenticationToken) { _ in }
     }
 
-    func fetchPrivateMessages() {
+    func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {
         if let token = authenticationCoordinator.userAuthenticationToken {
             privateMessagesAPI.loadPrivateMessages(authorizationToken: token) { response in
                 switch response {
                 case .success(let response):
                     let messages = response.messages.map(self.makeMessage)
-                    self.privateMessagesObservers.forEach({ $0.privateMessagesAvailable(messages) })
+                    completionHandler(.success(messages))
 
                 case .failure:
-                    self.privateMessagesObservers.forEach({ $0.failedToLoadPrivateMessages() })
+                    completionHandler(.failedToLoad)
                 }
             }
         } else {
-            privateMessagesObservers.forEach({ $0.userNotAuthenticatedForPrivateMessages() })
+            completionHandler(.userNotAuthenticated)
         }
     }
 

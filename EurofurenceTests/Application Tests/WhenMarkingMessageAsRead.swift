@@ -14,8 +14,7 @@ class WhenMarkingMessageAsRead: XCTestCase {
     func testItShouldTellTheMarkAsReadAPIToMarkTheIdentifierOfTheMessageAsRead() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let observer = CapturingPrivateMessagesObserver()
-        context.application.add(privateMessagesObserver: observer)
-        context.application.fetchPrivateMessages()
+        context.application.fetchPrivateMessages(completionHandler: observer.completionHandler)
         let identifier = "Message ID"
         let message = StubAPIPrivateMessage(id: identifier)
         let response = StubAPIPrivateMessagesResponse(messages: [message])
@@ -33,8 +32,7 @@ class WhenMarkingMessageAsRead: XCTestCase {
         let credential = LoginCredential(username: "", registrationNumber: 0, authenticationToken: authenticationToken, tokenExpiryDate: .distantFuture)
         let context = ApplicationTestBuilder().with(credential).build()
         let observer = CapturingPrivateMessagesObserver()
-        context.application.add(privateMessagesObserver: observer)
-        context.application.fetchPrivateMessages()
+        context.application.fetchPrivateMessages(completionHandler: observer.completionHandler)
         let identifier = "Message ID"
         let message = StubAPIPrivateMessage(id: identifier)
         let response = StubAPIPrivateMessagesResponse(messages: [message])
