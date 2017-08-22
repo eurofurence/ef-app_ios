@@ -15,7 +15,7 @@ protocol LoginViewControllerDelegate: class {
 
 }
 
-class LoginViewController: UITableViewController, UITextFieldDelegate, LoginObserver {
+class LoginViewController: UITableViewController, UITextFieldDelegate {
 
     // MARK: Properties
 
@@ -71,7 +71,23 @@ class LoginViewController: UITableViewController, UITextFieldDelegate, LoginObse
 
         present(alert, animated: true) {
             let loginArgs = LoginArguments(registrationNumber: registrationNumber, username: username, password: password)
-            EurofurenceApplication.shared.login(loginArgs)
+            EurofurenceApplication.shared.login(loginArgs, completionHandler: self.handleLoginResult)
+        }
+    }
+
+    private func handleLoginResult(_ result: LoginResult) {
+        dismiss(animated: true) {
+            switch result {
+            case .success:
+                self.loginDelegate?.loginViewControllerDidLoginSuccessfully(self)
+
+            default:
+                let alert = UIAlertController(title: "Unable to Login",
+                                              message: "Please verify your login details and whether you have an active internet connection",
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+                self.present(alert, animated: true)
+            }
         }
     }
 
@@ -98,40 +114,11 @@ class LoginViewController: UITableViewController, UITextFieldDelegate, LoginObse
 
     // MARK: Overrides
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        EurofurenceApplication.shared.add(loginObserver: self)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        EurofurenceApplication.shared.remove(loginObserver: self)
-    }
-
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.section == 0 else { return }
         guard indexPath.row < textFieldResponders.count else { return }
 
         textFieldResponders[indexPath.row].becomeFirstResponder()
-    }
-
-    // MARK: LoginObserver
-
-    func userDidLogin() {
-        dismiss(animated: true) {
-            self.loginDelegate?.loginViewControllerDidLoginSuccessfully(self)
-        }
-    }
-
-    func userDidFailToLogIn() {
-        let alert = UIAlertController(title: "Unable to Login",
-                                      message: "Please verify your login details and whether you have an active internet connection",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-
-        dismiss(animated: true) {
-            self.present(alert, animated: true)
-        }
     }
 
 }

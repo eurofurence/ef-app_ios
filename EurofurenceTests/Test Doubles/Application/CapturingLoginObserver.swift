@@ -8,16 +8,17 @@
 
 @testable import Eurofurence
 
-class CapturingLoginObserver: LoginObserver {
+class CapturingLoginObserver {
     
     private(set) var notifiedLoginSucceeded = false
-    func userDidLogin() {
-        notifiedLoginSucceeded = true
-    }
-    
     private(set) var notifiedLoginFailed = false
-    func userDidFailToLogIn() {
-        notifiedLoginFailed = true
+    func completionHandler(_ result: LoginResult) {
+        switch result {
+        case .success:
+            self.notifiedLoginSucceeded = true
+        case .failure:
+            self.notifiedLoginFailed = true
+        }
     }
     
 }

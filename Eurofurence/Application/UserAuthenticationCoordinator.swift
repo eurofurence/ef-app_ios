@@ -15,10 +15,10 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
     private var loginAPI: LoginAPI
     private var credentialPersister: CredentialPersister
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
-    private var loginObservers = [LoginObserver]()
     private var logoutObservers = [LogoutObserver]()
     private var authenticationStateObservers = [AuthenticationStateObserver]()
     private var loggedInUser: User?
+    private var loginCompletionHandler: ((LoginResult) -> Void)?
 
     var isLoggedIn: Bool {
         return userAuthenticationToken != nil
@@ -32,15 +32,6 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
         credentialPersister = CredentialPersister(clock: clock, loginCredentialStore: loginCredentialStore)
         credentialPersister.loadCredential(delegate: self)
-    }
-
-    func add(_ loginObserver: LoginObserver) {
-        loginObservers.append(loginObserver)
-    }
-
-    func remove(_ loginObserver: LoginObserver) {
-        guard let idx = loginObservers.index(where: { $0 === loginObserver }) else { return }
-        loginObservers.remove(at: idx)
     }
 
     func add(_ logoutObserver: LogoutObserver) {
@@ -60,7 +51,9 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
         authenticationStateObservers.remove(at: idx)
     }
 
-    func login(_ arguments: LoginArguments) {
+    func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {
+        loginCompletionHandler = completionHandler
+
         if isLoggedIn {
             notifyLoginSucceeded()
         } else {
@@ -97,7 +90,7 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
     }
 
     func loginTaskDidFail(_ task: LoginTask) {
-        loginObservers.forEach { $0.userDidFailToLogIn() }
+        loginCompletionHandler?(.failure)
     }
 
     // MARK: CredentialPersisterDelegate
@@ -110,7 +103,7 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
     // MARK: Private
 
     private func notifyLoginSucceeded() {
-        loginObservers.forEach { $0.userDidLogin() }
+        loginCompletionHandler?(.success)
 
         guard let loggedInUser = loggedInUser else { return }
         authenticationStateObservers.forEach { $0.loggedIn(as: loggedInUser) }

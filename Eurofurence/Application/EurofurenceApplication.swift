@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum LoginResult {
+    case success
+    case failure
+}
+
 enum PrivateMessageResult {
     case success([Message])
     case failedToLoad
@@ -51,14 +56,6 @@ class EurofurenceApplication {
                                                                   loginAPI: loginAPI)
     }
 
-    func add(loginObserver: LoginObserver) {
-        authenticationCoordinator.add(loginObserver)
-    }
-
-    func remove(loginObserver: LoginObserver) {
-        authenticationCoordinator.remove(loginObserver)
-    }
-
     func add(logoutObserver: LogoutObserver) {
         authenticationCoordinator.add(logoutObserver)
     }
@@ -71,8 +68,8 @@ class EurofurenceApplication {
         authenticationCoordinator.remove(authenticationStateObserver)
     }
 
-    func login(_ arguments: LoginArguments) {
-        authenticationCoordinator.login(arguments)
+    func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {
+        authenticationCoordinator.login(arguments, completionHandler: completionHandler)
     }
 
     func logout() {

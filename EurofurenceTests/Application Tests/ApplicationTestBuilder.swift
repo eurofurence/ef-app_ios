@@ -28,9 +28,12 @@ class ApplicationTestBuilder {
             application.registerForRemoteNotifications(deviceToken: deviceToken)
         }
         
-        func login(registrationNumber: Int = 0, username: String = "", password: String = "") {
+        func login(registrationNumber: Int = 0,
+                   username: String = "",
+                   password: String = "",
+                   completionHandler: @escaping (LoginResult) -> Void = { _ in }) {
             let arguments = LoginArguments(registrationNumber: registrationNumber, username: username, password: password)
-            application.login(arguments)
+            application.login(arguments, completionHandler: completionHandler)
         }
         
     }
