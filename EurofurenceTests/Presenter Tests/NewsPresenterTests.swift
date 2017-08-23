@@ -27,21 +27,12 @@ protocol NewsScene {
     
 }
 
-class CapturingAuthService: AuthService {
+struct StubAuthService: AuthService {
     
-    private let loggedInUser: User?
-    
-    init(loggedInUser: User? = nil) {
-        self.loggedInUser = loggedInUser
-    }
+    var authState: AuthState
     
     func determineAuthState(completionHandler: @escaping (AuthState) -> Void) {
-        if let user = loggedInUser {
-            completionHandler(.loggedIn(user))
-        }
-        else {
-            completionHandler(.loggedOut)
-        }
+        completionHandler(authState)
     }
     
 }
@@ -80,7 +71,7 @@ class NewsPresenterTests: XCTestCase {
     
     func testWhenLaunchedWithLoggedInUserTheSceneIsToldToShowTheMessagesNavigationAction() {
         let user = User(registrationNumber: 42, username: "")
-        let authService = CapturingAuthService(loggedInUser: user)
+        let authService = StubAuthService(authState: .loggedIn(user))
         let newsScene = CapturingNewsScene()
         _ = NewsPresenter(authService: authService, newsScene: newsScene)
         
@@ -88,7 +79,7 @@ class NewsPresenterTests: XCTestCase {
     }
     
     func testWhenLaunchedWithLoggedOutUserTheSceneIsToldToShowTheLoginNavigationAction() {
-        let authService = CapturingAuthService()
+        let authService = StubAuthService(authState: .loggedOut)
         let newsScene = CapturingNewsScene()
         _ = NewsPresenter(authService: authService, newsScene: newsScene)
         
@@ -97,7 +88,7 @@ class NewsPresenterTests: XCTestCase {
     
     func testWhenLaunchedWithLoggedInUserTheSceneIsNotToldToShowTheLoginNavigationAction() {
         let user = User(registrationNumber: 42, username: "")
-        let authService = CapturingAuthService(loggedInUser: user)
+        let authService = StubAuthService(authState: .loggedIn(user))
         let newsScene = CapturingNewsScene()
         _ = NewsPresenter(authService: authService, newsScene: newsScene)
         
@@ -105,7 +96,7 @@ class NewsPresenterTests: XCTestCase {
     }
     
     func testWhenLaunchedWithLoggedOutUserTheSceneIsNotToldToShowTheMessagesNavigationAction() {
-        let authService = CapturingAuthService()
+        let authService = StubAuthService(authState: .loggedOut)
         let newsScene = CapturingNewsScene()
         _ = NewsPresenter(authService: authService, newsScene: newsScene)
         
