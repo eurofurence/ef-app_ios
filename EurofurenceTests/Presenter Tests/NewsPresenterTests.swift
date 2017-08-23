@@ -66,9 +66,15 @@ class CapturingNewsScene: NewsScene {
 struct NewsPresenter {
     
     init(authService: AuthService, newsScene: NewsScene) {
-        authService.determineAuthState() { _ in }
-        newsScene.showMessagesNavigationAction()
-        newsScene.showLoginNavigationAction()
+        authService.determineAuthState() { state in
+            switch state {
+            case .loggedIn(_):
+                newsScene.showMessagesNavigationAction()
+                
+            case .loggedOut:
+                newsScene.showLoginNavigationAction()
+            }
+        }
     }
     
 }
@@ -97,6 +103,23 @@ class NewsPresenterTests: XCTestCase {
         _ = NewsPresenter(authService: authService, newsScene: newsScene)
         
         XCTAssertTrue(newsScene.wasToldToShowLoginNavigationAction)
+    }
+    
+    func testWhenLaunchedWithLoggedInUserTheSceneIsNotToldToShowTheLoginNavigationAction() {
+        let user = User(registrationNumber: 42, username: "")
+        let authService = CapturingAuthService(loggedInUser: user)
+        let newsScene = CapturingNewsScene()
+        _ = NewsPresenter(authService: authService, newsScene: newsScene)
+        
+        XCTAssertFalse(newsScene.wasToldToShowLoginNavigationAction)
+    }
+    
+    func testWhenLaunchedWithLoggedOutUserTheSceneIsNotToldToShowTheMessagesNavigationAction() {
+        let authService = CapturingAuthService()
+        let newsScene = CapturingNewsScene()
+        _ = NewsPresenter(authService: authService, newsScene: newsScene)
+        
+        XCTAssertFalse(newsScene.wasToldToShowMessagesNavigationAction)
     }
     
 }
