@@ -35,10 +35,7 @@ class CapturingAuthService: AuthService {
         self.loggedInUser = loggedInUser
     }
     
-    private(set) var wasRequestedToDetermineAuthState = false
     func determineAuthState(completionHandler: @escaping (AuthState) -> Void) {
-        wasRequestedToDetermineAuthState = true
-        
         if let user = loggedInUser {
             completionHandler(.loggedIn(user))
         }
@@ -80,13 +77,6 @@ struct NewsPresenter {
 }
 
 class NewsPresenterTests: XCTestCase {
-    
-    func testWhenLaunchedTheAuthServiceIsRequestedTheLoginState() {
-        let authService = CapturingAuthService()
-        _ = NewsPresenter(authService: authService, newsScene: CapturingNewsScene())
-        
-        XCTAssertTrue(authService.wasRequestedToDetermineAuthState)
-    }
     
     func testWhenLaunchedWithLoggedInUserTheSceneIsToldToShowTheMessagesNavigationAction() {
         let user = User(registrationNumber: 42, username: "")
