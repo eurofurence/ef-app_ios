@@ -84,6 +84,7 @@ struct NewsPresenter {
             case .loggedOut:
                 newsScene.showLoginNavigationAction()
                 newsScene.hideMessagesNavigationAction()
+                newsScene.showWelcomePrompt("You are currently not logged in")
             }
         }
     }
@@ -169,6 +170,14 @@ class NewsPresenterTests: XCTestCase {
         _ = NewsPresenter(authService: authService, newsScene: newsScene)
         
         XCTAssertEqual("Welcome, \(username) (\(regNo))", newsScene.capturedWelcomePrompt)
+    }
+    
+    func testWhenLaunchedWithLoggedOutUserShouldTellTheNewsSceneToShowWelcomePromptWithLoginHint() {
+        let authService = StubAuthService(authState: .loggedOut)
+        let newsScene = CapturingNewsScene()
+        _ = NewsPresenter(authService: authService, newsScene: newsScene)
+        
+        XCTAssertEqual("You are currently not logged in", newsScene.capturedWelcomePrompt)
     }
     
 }
