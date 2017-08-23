@@ -16,7 +16,7 @@ class WhenLoggingOut: XCTestCase {
         let credential = LoginCredential(username: "", registrationNumber: 0, authenticationToken: unexpectedToken, tokenExpiryDate: .distantFuture)
         let context = ApplicationTestBuilder().with(credential).build()
         context.application.registerForRemoteNotifications(deviceToken: Data())
-        context.application.logout()
+        context.application.logout() { _ in }
         
         XCTAssertNil(context.capturingTokenRegistration.capturedUserAuthenticationToken)
     }
@@ -25,7 +25,7 @@ class WhenLoggingOut: XCTestCase {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let deviceToken = "Token time".data(using: .utf8)!
         context.application.registerForRemoteNotifications(deviceToken: deviceToken)
-        context.application.logout()
+        context.application.logout() { _ in }
         
         XCTAssertEqual(deviceToken, context.capturingTokenRegistration.capturedRemoteNotificationsDeviceToken)
     }
@@ -33,38 +33,18 @@ class WhenLoggingOut: XCTestCase {
     func testFailureToUnregisterAuthTokenWithRemoteTokenRegistrationShouldIndicateLogoutFailure() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let logoutObserver = CapturingLogoutObserver()
-        context.application.add(logoutObserver: logoutObserver)
         context.registerForRemoteNotifications()
-        context.application.logout()
+        context.application.logout(completionHandler: logoutObserver.completionHandler)
         context.capturingTokenRegistration.failLastRequest()
         
         XCTAssertTrue(logoutObserver.didFailToLogout)
     }
     
-    func testFailureToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotIndicateLogoutFailureUntilActuallyLoggingOut() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
-        let logoutObserver = CapturingLogoutObserver()
-        context.application.add(logoutObserver: logoutObserver)
-        
-        XCTAssertFalse(logoutObserver.didFailToLogout)
-    }
-    
-    func testFailureToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotIndicateLogoutFailureUntilRegistrationActuallyGails() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
-        let logoutObserver = CapturingLogoutObserver()
-        context.application.add(logoutObserver: logoutObserver)
-        context.registerForRemoteNotifications()
-        context.application.logout()
-        
-        XCTAssertFalse(logoutObserver.didFailToLogout)
-    }
-    
     func testSucceedingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotIndicateLogoutFailure() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let logoutObserver = CapturingLogoutObserver()
-        context.application.add(logoutObserver: logoutObserver)
         context.registerForRemoteNotifications()
-        context.application.logout()
+        context.application.logout(completionHandler: logoutObserver.completionHandler)
         context.capturingTokenRegistration.succeedLastRequest()
         
         XCTAssertFalse(logoutObserver.didFailToLogout)
@@ -73,7 +53,7 @@ class WhenLoggingOut: XCTestCase {
     func testSucceedingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldDeletePersistedLoginCredential() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         context.registerForRemoteNotifications()
-        context.application.logout()
+        context.application.logout() { _ in }
         context.capturingTokenRegistration.succeedLastRequest()
         
         XCTAssertTrue(context.capturingLoginCredentialsStore.didDeletePersistedToken)
@@ -82,7 +62,7 @@ class WhenLoggingOut: XCTestCase {
     func testFailingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotDeletePersistedLoginCredential() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         context.registerForRemoteNotifications()
-        context.application.logout()
+        context.application.logout() { _ in }
         context.capturingTokenRegistration.failLastRequest()
         
         XCTAssertFalse(context.capturingLoginCredentialsStore.didDeletePersistedToken)
@@ -91,9 +71,8 @@ class WhenLoggingOut: XCTestCase {
     func testSucceedingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotifyLogoutObserversUserLoggedOut() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let logoutObserver = CapturingLogoutObserver()
-        context.application.add(logoutObserver: logoutObserver)
         context.registerForRemoteNotifications()
-        context.application.logout()
+        context.application.logout(completionHandler: logoutObserver.completionHandler)
         context.capturingTokenRegistration.succeedLastRequest()
         
         XCTAssertTrue(logoutObserver.didLogout)
@@ -102,9 +81,8 @@ class WhenLoggingOut: XCTestCase {
     func testFailingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotNotifyLogoutObserversUserLoggedOut() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let logoutObserver = CapturingLogoutObserver()
-        context.application.add(logoutObserver: logoutObserver)
         context.registerForRemoteNotifications()
-        context.application.logout()
+        context.application.logout(completionHandler: logoutObserver.completionHandler)
         context.capturingTokenRegistration.failLastRequest()
         
         XCTAssertFalse(logoutObserver.didLogout)
@@ -113,15 +91,14 @@ class WhenLoggingOut: XCTestCase {
     func testWithoutHavingRegisteredForNotificationsThenTheUserShouldStillBeLoggedOut() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         let logoutObserver = CapturingLogoutObserver()
-        context.application.add(logoutObserver: logoutObserver)
-        context.application.logout()
+        context.application.logout(completionHandler: logoutObserver.completionHandler)
         
         XCTAssertTrue(context.capturingTokenRegistration.didRegisterNilPushTokenAndAuthToken)
     }
     
     func testAddingAuthenticationStateObserverOnceLoggedOutShouldNotTellItTheUserIsLoggedIn() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
-        context.application.logout()
+        context.application.logout() { _ in }
         context.capturingTokenRegistration.succeedLastRequest()
         let observer = CapturingAuthenticationStateObserver()
         context.application.add(authenticationStateObserver: observer)
@@ -131,7 +108,7 @@ class WhenLoggingOut: XCTestCase {
     
     func testLoggingInAsAnotherUserShouldRequestLoginUsingTheirDetails() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
-        context.application.logout()
+        context.application.logout() { _ in }
         context.capturingTokenRegistration.succeedLastRequest()
         let secondUser = "Some other awesome guy"
         context.login(username: secondUser)

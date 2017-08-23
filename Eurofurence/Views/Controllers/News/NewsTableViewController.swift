@@ -14,8 +14,7 @@ import Changeset
 class NewsTableViewController: UITableViewController,
                                UIViewControllerPreviewingDelegate,
                                MessagesViewControllerDelegate,
-                               AuthenticationStateObserver,
-                               LogoutObserver {
+                               AuthenticationStateObserver {
 	@IBOutlet weak var favoritesOnlySegmentedControl: UISegmentedControl!
 
 	private var announcementsViewModel: AnnouncementsViewModel = try! ViewModelResolver.container.resolve()
@@ -34,7 +33,6 @@ class NewsTableViewController: UITableViewController,
         super.viewDidLoad()
 
         EurofurenceApplication.shared.add(authenticationStateObserver: self)
-        EurofurenceApplication.shared.add(logoutObserver: self)
         EurofurenceApplication.shared.fetchPrivateMessages { result in
             switch result {
             case .success(let messages):
@@ -424,17 +422,6 @@ class NewsTableViewController: UITableViewController,
     }
 
     func userNotAuthenticatedForPrivateMessages() {
-
-    }
-
-    // MARK: LogoutObserver
-
-    func logoutSucceeded() {
-        loggedInUser = nil
-        reloadUserMessagesBanner()
-    }
-
-    func logoutFailed() {
 
     }
 

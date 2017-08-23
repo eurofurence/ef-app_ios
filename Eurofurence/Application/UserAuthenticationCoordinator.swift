@@ -15,7 +15,6 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
     private var loginAPI: LoginAPI
     private var credentialPersister: CredentialPersister
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
-    private var logoutObservers = [LogoutObserver]()
     private var authenticationStateObservers = [AuthenticationStateObserver]()
     private var loggedInUser: User?
     private var loginCompletionHandler: ((LoginResult) -> Void)?
@@ -32,10 +31,6 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
         credentialPersister = CredentialPersister(clock: clock, loginCredentialStore: loginCredentialStore)
         credentialPersister.loadCredential(delegate: self)
-    }
-
-    func add(_ logoutObserver: LogoutObserver) {
-        logoutObservers.append(logoutObserver)
     }
 
     func add(_ authenticationStateObserver: AuthenticationStateObserver) {
@@ -61,16 +56,16 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
         }
     }
 
-    func logout() {
+    func logout(completionHandler: @escaping (LogoutResult) -> Void) {
         remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(registeredDeviceToken,
                                                                                     userAuthenticationToken: nil) { error in
             if error != nil {
-                self.logoutObservers.forEach({ $0.logoutFailed() })
+                completionHandler(.failure)
             } else {
                 self.credentialPersister.deleteCredential()
                 self.loggedInUser = nil
                 self.userAuthenticationToken = nil
-                self.logoutObservers.forEach({ $0.logoutSucceeded() })
+                completionHandler(.success)
             }
         }
     }

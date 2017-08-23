@@ -8,16 +8,18 @@
 
 @testable import Eurofurence
 
-class CapturingLogoutObserver: LogoutObserver {
+class CapturingLogoutObserver {
     
     private(set) var didLogout = false
-    func logoutSucceeded() {
-        didLogout = true
-    }
-    
     private(set) var didFailToLogout = false
-    func logoutFailed() {
-        didFailToLogout = true
+    func completionHandler(_ result: LogoutResult) {
+        switch result {
+        case .success:
+            didLogout = true
+            
+        case .failure:
+            didFailToLogout = true
+        }
     }
     
 }

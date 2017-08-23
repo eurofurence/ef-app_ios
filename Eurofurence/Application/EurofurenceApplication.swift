@@ -13,6 +13,11 @@ enum LoginResult {
     case failure
 }
 
+enum LogoutResult {
+    case success
+    case failure
+}
+
 enum PrivateMessageResult {
     case success([Message])
     case failedToLoad
@@ -56,10 +61,6 @@ class EurofurenceApplication {
                                                                   loginAPI: loginAPI)
     }
 
-    func add(logoutObserver: LogoutObserver) {
-        authenticationCoordinator.add(logoutObserver)
-    }
-
     func add(authenticationStateObserver: AuthenticationStateObserver) {
         authenticationCoordinator.add(authenticationStateObserver)
     }
@@ -72,8 +73,8 @@ class EurofurenceApplication {
         authenticationCoordinator.login(arguments, completionHandler: completionHandler)
     }
 
-    func logout() {
-        authenticationCoordinator.logout()
+    func logout(completionHandler: @escaping (LogoutResult) -> Void) {
+        authenticationCoordinator.logout(completionHandler: completionHandler)
     }
 
     func registerForRemoteNotifications(deviceToken: Data) {

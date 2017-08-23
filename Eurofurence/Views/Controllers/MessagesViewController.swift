@@ -45,8 +45,7 @@ class MessagesTableViewDataSource: NSObject, UITableViewDataSource {
 class MessagesViewController: UIViewController,
                               UITableViewDelegate,
                               AuthenticationStateObserver,
-                              LoginViewControllerDelegate,
-                              LogoutObserver {
+                              LoginViewControllerDelegate {
 
     // MARK: IBOutlets
 
@@ -67,7 +66,23 @@ class MessagesViewController: UIViewController,
     @IBAction func performSignOut(_ sender: Any) {
         let alert = UIAlertController(title: "Signing Out", message: "This may take a moment.", preferredStyle: .alert)
         present(alert, animated: true) {
-            self.app.logout()
+            self.app.logout(completionHandler: self.handleLogoutResult)
+        }
+    }
+
+    private func handleLogoutResult(_ result: LogoutResult) {
+        dismiss(animated: true) {
+            switch result {
+            case .success:
+                self.messagesDelegate?.messagesViewControllerDidRequestDismissal(self)
+
+            case .failure:
+                let errorAlert = UIAlertController(title: "Couldn't Sign Out",
+                                                   message: "Make sure you have an active network connection and try again.",
+                                                   preferredStyle: .alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .cancel))
+                self.present(errorAlert, animated: true)
+            }
         }
     }
 
@@ -84,7 +99,6 @@ class MessagesViewController: UIViewController,
         tableView.dataSource = dataSource
         tableView.delegate = self
         app.add(authenticationStateObserver: self)
-        app.add(logoutObserver: self)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -143,25 +157,6 @@ class MessagesViewController: UIViewController,
     func loginViewControllerDidCancel(_ loginController: LoginViewController) {
         dismiss(animated: true) {
             self.messagesDelegate?.messagesViewControllerDidRequestDismissal(self)
-        }
-    }
-
-    // MARK: LogoutObserver
-
-    func logoutSucceeded() {
-        dismiss(animated: true) {
-            self.messagesDelegate?.messagesViewControllerDidRequestDismissal(self)
-        }
-    }
-
-    func logoutFailed() {
-        let errorAlert = UIAlertController(title: "Couldn't Sign Out",
-                                           message: "Make sure you have an active network connection and try again.",
-                                           preferredStyle: .alert)
-        errorAlert.addAction(UIAlertAction(title: "OK", style: .cancel))
-
-        dismiss(animated: true) {
-            self.present(errorAlert, animated: true)
         }
     }
 
