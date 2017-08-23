@@ -23,6 +23,7 @@ protocol AuthService {
 protocol NewsScene {
     
     func showMessagesNavigationAction()
+    func hideMessagesNavigationAction()
     
     func showLoginNavigationAction()
     func hideLoginNavigationAction()
@@ -44,6 +45,11 @@ class CapturingNewsScene: NewsScene {
     private(set) var wasToldToShowMessagesNavigationAction = false
     func showMessagesNavigationAction() {
         wasToldToShowMessagesNavigationAction = true
+    }
+    
+    private(set) var wasToldToHideMessagesNavigationAction = false
+    func hideMessagesNavigationAction() {
+        wasToldToHideMessagesNavigationAction = true
     }
     
     private(set) var wasToldToShowLoginNavigationAction = false
@@ -69,6 +75,7 @@ struct NewsPresenter {
                 
             case .loggedOut:
                 newsScene.showLoginNavigationAction()
+                newsScene.hideMessagesNavigationAction()
             }
         }
     }
@@ -126,6 +133,23 @@ class NewsPresenterTests: XCTestCase {
         _ = NewsPresenter(authService: authService, newsScene: newsScene)
         
         XCTAssertFalse(newsScene.wasToldToHideLoginNavigationAction)
+    }
+    
+    func testWhenLaunchedWithLoggedOutUserTheSceneIsToldToHideTheMessagesNavigationAction() {
+        let authService = StubAuthService(authState: .loggedOut)
+        let newsScene = CapturingNewsScene()
+        _ = NewsPresenter(authService: authService, newsScene: newsScene)
+        
+        XCTAssertTrue(newsScene.wasToldToHideMessagesNavigationAction)
+    }
+    
+    func testWhenLaunchedWithLoggedInUserTheSceneIsNotToldToHideTheMessagesNavigationAction() {
+        let user = User(registrationNumber: 42, username: "")
+        let authService = StubAuthService(authState: .loggedIn(user))
+        let newsScene = CapturingNewsScene()
+        _ = NewsPresenter(authService: authService, newsScene: newsScene)
+        
+        XCTAssertFalse(newsScene.wasToldToHideMessagesNavigationAction)
     }
     
 }
