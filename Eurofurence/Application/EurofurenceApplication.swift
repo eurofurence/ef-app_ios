@@ -9,7 +9,7 @@
 import Foundation
 
 enum LoginResult {
-    case success
+    case success(User)
     case failure
 }
 
@@ -59,14 +59,6 @@ class EurofurenceApplication {
                                                                   loginCredentialStore: loginCredentialStore,
                                                                   remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
                                                                   loginAPI: loginAPI)
-    }
-
-    func add(authenticationStateObserver: AuthenticationStateObserver) {
-        authenticationCoordinator.add(authenticationStateObserver)
-    }
-
-    func remove(authenticationStateObserver: AuthenticationStateObserver) {
-        authenticationCoordinator.remove(authenticationStateObserver)
     }
 
     func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {

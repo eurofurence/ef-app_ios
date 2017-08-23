@@ -218,8 +218,6 @@
 		CA30EAA31F2129700053DBF6 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA21F2129700053DBF6 /* LoginAPI.swift */; };
 		CA30EAA61F2129C60053DBF6 /* CapturingLoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */; };
 		CA30EAA81F2132480053DBF6 /* StubLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA71F2132480053DBF6 /* StubLoginResponse.swift */; };
-		CA30EAAA1F2141800053DBF6 /* CapturingAuthenticationStateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA91F2141800053DBF6 /* CapturingAuthenticationStateObserver.swift */; };
-		CA30EAAC1F2141A40053DBF6 /* AuthenticationStateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAAB1F2141A40053DBF6 /* AuthenticationStateObserver.swift */; };
 		CA30EAAE1F2148780053DBF6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAAD1F2148780053DBF6 /* User.swift */; };
 		CA30EAB01F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAAF1F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift */; };
 		CA30EAB21F215E680053DBF6 /* LoginTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAB11F215E680053DBF6 /* LoginTask.swift */; };
@@ -534,8 +532,6 @@
 		CA30EAA21F2129700053DBF6 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginAPI.swift; path = Application/API/Protocols/LoginAPI.swift; sourceTree = "<group>"; };
 		CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLoginAPI.swift; path = "Test Doubles/Application/API/CapturingLoginAPI.swift"; sourceTree = "<group>"; };
 		CA30EAA71F2132480053DBF6 /* StubLoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubLoginResponse.swift; path = "Test Doubles/Application/API/StubLoginResponse.swift"; sourceTree = "<group>"; };
-		CA30EAA91F2141800053DBF6 /* CapturingAuthenticationStateObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingAuthenticationStateObserver.swift; path = "Test Doubles/Application/CapturingAuthenticationStateObserver.swift"; sourceTree = "<group>"; };
-		CA30EAAB1F2141A40053DBF6 /* AuthenticationStateObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationStateObserver.swift; path = Application/Observers/AuthenticationStateObserver.swift; sourceTree = "<group>"; };
 		CA30EAAD1F2148780053DBF6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Application/Model/User.swift; sourceTree = "<group>"; };
 		CA30EAAF1F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnreadMessagesTableViewCell.swift; sourceTree = "<group>"; };
 		CA30EAB11F215E680053DBF6 /* LoginTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginTask.swift; path = Application/LoginTask.swift; sourceTree = "<group>"; };
@@ -764,7 +760,6 @@
 				781A94351F1A19A8002DE70F /* Notifications */,
 				CA2B4FA91F1F7F1200F007E1 /* CapturingLoginObserver.swift */,
 				CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */,
-				CA30EAA91F2141800053DBF6 /* CapturingAuthenticationStateObserver.swift */,
 				CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */,
 			);
 			name = Application;
@@ -976,7 +971,6 @@
 				78D7EEC21F196BC3005372A9 /* Build Config */,
 				CA18B3451F49AF4500038E52 /* Model */,
 				78D7EEB91F196B40005372A9 /* Notifications */,
-				CA18B3431F49AECB00038E52 /* Observers */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -1311,14 +1305,6 @@
 				CA30EAAF1F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		CA18B3431F49AECB00038E52 /* Observers */ = {
-			isa = PBXGroup;
-			children = (
-				CA30EAAB1F2141A40053DBF6 /* AuthenticationStateObserver.swift */,
-			);
-			name = Observers;
 			sourceTree = "<group>";
 		};
 		CA18B3451F49AF4500038E52 /* Model */ = {
@@ -1949,7 +1935,6 @@
 				9A80EF611F2922EE00FD0D37 /* EventTableViewController.swift in Sources */,
 				9A80EF4A1F289D0500FD0D37 /* NotificationSyncDataStoreRefreshDelegate.swift in Sources */,
 				78567B411F10212100EBA31D /* ProgressViewRefreshDelegate.swift in Sources */,
-				CA30EAAC1F2141A40053DBF6 /* AuthenticationStateObserver.swift in Sources */,
 				9A861EA81F2554BE00B75A8C /* RequestPushPermissionsTutorialPagePresenter.swift in Sources */,
 				9A0525471ECB091900578798 /* MockApiConnection.swift in Sources */,
 				9A34B9871ED08C7E004A249E /* JsonDataStore.swift in Sources */,
@@ -2100,7 +2085,6 @@
 				6EF96CDB1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift in Sources */,
 				CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */,
 				CAD7805D1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift in Sources */,
-				CA30EAAA1F2141800053DBF6 /* CapturingAuthenticationStateObserver.swift in Sources */,
 				78455B521F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift in Sources */,
 				7820A7011F16C0F0004C0FB5 /* CapturingWitnessedSystemPushPermissionsRequest.swift in Sources */,
 				78C86D7B1F12B2A2003A20E6 /* SplashViewControllerTests.swift in Sources */,

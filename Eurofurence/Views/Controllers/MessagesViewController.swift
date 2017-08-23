@@ -44,7 +44,6 @@ class MessagesTableViewDataSource: NSObject, UITableViewDataSource {
 
 class MessagesViewController: UIViewController,
                               UITableViewDelegate,
-                              AuthenticationStateObserver,
                               LoginViewControllerDelegate {
 
     // MARK: IBOutlets
@@ -98,7 +97,6 @@ class MessagesViewController: UIViewController,
         tableView.addSubview(refreshControl)
         tableView.dataSource = dataSource
         tableView.delegate = self
-        app.add(authenticationStateObserver: self)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -138,12 +136,6 @@ class MessagesViewController: UIViewController,
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showMessage", sender: self)
-    }
-
-    // MARK: AuthenticationStateObserver
-
-    func loggedIn(as user: User) {
-        isLoggedIn = true
     }
 
     // MARK: LoginViewControllerDelegate

@@ -96,16 +96,6 @@ class WhenLoggingOut: XCTestCase {
         XCTAssertTrue(context.capturingTokenRegistration.didRegisterNilPushTokenAndAuthToken)
     }
     
-    func testAddingAuthenticationStateObserverOnceLoggedOutShouldNotTellItTheUserIsLoggedIn() {
-        let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
-        context.application.logout() { _ in }
-        context.capturingTokenRegistration.succeedLastRequest()
-        let observer = CapturingAuthenticationStateObserver()
-        context.application.add(authenticationStateObserver: observer)
-        
-        XCTAssertFalse(observer.didLogIn)
-    }
-    
     func testLoggingInAsAnotherUserShouldRequestLoginUsingTheirDetails() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         context.application.logout() { _ in }

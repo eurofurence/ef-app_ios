@@ -13,8 +13,7 @@ import Changeset
 
 class NewsTableViewController: UITableViewController,
                                UIViewControllerPreviewingDelegate,
-                               MessagesViewControllerDelegate,
-                               AuthenticationStateObserver {
+                               MessagesViewControllerDelegate {
 	@IBOutlet weak var favoritesOnlySegmentedControl: UISegmentedControl!
 
 	private var announcementsViewModel: AnnouncementsViewModel = try! ViewModelResolver.container.resolve()
@@ -32,7 +31,6 @@ class NewsTableViewController: UITableViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        EurofurenceApplication.shared.add(authenticationStateObserver: self)
         EurofurenceApplication.shared.fetchPrivateMessages { result in
             switch result {
             case .success(let messages):
@@ -399,13 +397,6 @@ class NewsTableViewController: UITableViewController,
 
     func messagesViewControllerDidRequestDismissal(_ messagesController: MessagesViewController) {
         navigationController?.popToViewController(self, animated: true)
-    }
-
-    // MARK: AuthenticationStateObserver
-
-    func loggedIn(as user: User) {
-        loggedInUser = user
-        reloadUserMessagesBanner()
     }
 
     // MARK: PrivateMessagesObserver

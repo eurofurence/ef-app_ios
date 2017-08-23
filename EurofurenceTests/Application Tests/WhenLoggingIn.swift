@@ -153,103 +153,16 @@ class WhenLoggingIn: XCTestCase {
         XCTAssertEqual(expectedToken, context.capturingTokenRegistration.capturedUserAuthenticationToken)
     }
     
-    func testAddingAuthenticationObserverAfterBeingLoggedInShouldTellItWeAreLoggedIn() {
+    func testLoggingInSuccessfullyShouldProvideExpectedLoginToHandler() {
         let context = ApplicationTestBuilder().build()
-        let authenticationStateObserver = CapturingAuthenticationStateObserver()
-        context.login()
-        context.loginAPI.simulateResponse(makeLoginResponse())
-        context.application.add(authenticationStateObserver: authenticationStateObserver)
-        
-        XCTAssertTrue(authenticationStateObserver.didLogIn)
-    }
-    
-    func testLoggingInShouldTellAuthenticationStateObserversWeAreLoggedIn() {
-        let context = ApplicationTestBuilder().build()
-        let authenticationStateObserver = CapturingAuthenticationStateObserver()
-        context.application.add(authenticationStateObserver: authenticationStateObserver)
-        context.login()
-        context.loginAPI.simulateResponse(makeLoginResponse())
-        
-        XCTAssertTrue(authenticationStateObserver.didLogIn)
-    }
-    
-    func testLoggingInShouldNotTellAuthenticationStateObserversWeAreLoggedInUntilLoginSucceeds() {
-        let context = ApplicationTestBuilder().build()
-        let authenticationStateObserver = CapturingAuthenticationStateObserver()
-        context.application.add(authenticationStateObserver: authenticationStateObserver)
-        context.login()
-        
-        XCTAssertFalse(authenticationStateObserver.didLogIn)
-    }
-    
-    func testLoggingInShouldTellAuthenticationStateObserversWeLoggedInWithUsersName() {
-        let context = ApplicationTestBuilder().build()
-        let authenticationStateObserver = CapturingAuthenticationStateObserver()
-        context.application.add(authenticationStateObserver: authenticationStateObserver)
+        let loginObserver = CapturingLoginObserver()
         let username = "Some cool guy"
-        context.login(username: username)
-        context.loginAPI.simulateResponse(makeLoginResponse())
-        
-        XCTAssertEqual(username, authenticationStateObserver.loggedInUser?.username)
-    }
-    
-    func testLoggingInShouldTellAuthenticationStateObserversWeLoggedInWithUsersRegNo() {
-        let context = ApplicationTestBuilder().build()
-        let authenticationStateObserver = CapturingAuthenticationStateObserver()
-        context.application.add(authenticationStateObserver: authenticationStateObserver)
         let regNo = 42
-        context.login(registrationNumber: regNo)
+        let expectedUser = User(registrationNumber: regNo, username: username)
+        context.login(registrationNumber: regNo, username: username, completionHandler: loginObserver.completionHandler)
         context.loginAPI.simulateResponse(makeLoginResponse())
         
-        XCTAssertEqual(regNo, authenticationStateObserver.loggedInUser?.registrationNumber)
-    }
-    
-    func testAddingAuthenticationObserverAfterBeingLoggedInShouldTellItWhoWeAreLoggedInAs() {
-        let context = ApplicationTestBuilder().build()
-        let authenticationStateObserver = CapturingAuthenticationStateObserver()
-        let expectedUser = User(registrationNumber: 42, username: "Some cool guy")
-        context.login(registrationNumber: expectedUser.registrationNumber, username: expectedUser.username)
-        context.loginAPI.simulateResponse(makeLoginResponse())
-        context.application.add(authenticationStateObserver: authenticationStateObserver)
-        
-        XCTAssertEqual(expectedUser, authenticationStateObserver.loggedInUser)
-    }
-    
-    func testRemovingAuthenticationObserverBeforeLoggingInShouldNotTellItWeLoggedIn() {
-        let context = ApplicationTestBuilder().build()
-        let authenticationStateObserver = CapturingAuthenticationStateObserver()
-        context.application.add(authenticationStateObserver: authenticationStateObserver)
-        context.application.remove(authenticationStateObserver: authenticationStateObserver)
-        context.login()
-        context.loginAPI.simulateResponse(makeLoginResponse())
-        
-        XCTAssertFalse(authenticationStateObserver.didLogIn)
-    }
-    
-    func testAddingAuthenticationStateObserverWhenLaunchingWithExistingCredentialShouldTellTheObserverTheUsernameWeAreLoggedInAs() {
-        let expectedUsername = "Some cool guy"
-        let credential = LoginCredential(username: expectedUsername,
-                                         registrationNumber: 0,
-                                         authenticationToken: "",
-                                         tokenExpiryDate: .distantFuture)
-        let context = ApplicationTestBuilder().with(credential).build()
-        let authenticationStateObserver = CapturingAuthenticationStateObserver()
-        context.application.add(authenticationStateObserver: authenticationStateObserver)
-        
-        XCTAssertEqual(expectedUsername, authenticationStateObserver.loggedInUser?.username)
-    }
-    
-    func testAddingAuthenticationStateObserverWhenLaunchingWithExistingCredentialShouldTellTheObserverTheRegNoWeAreLoggedInAs() {
-        let expectedRegNo = 42
-        let credential = LoginCredential(username: "",
-                                         registrationNumber: 42,
-                                         authenticationToken: "",
-                                         tokenExpiryDate: .distantFuture)
-        let context = ApplicationTestBuilder().with(credential).build()
-        let authenticationStateObserver = CapturingAuthenticationStateObserver()
-        context.application.add(authenticationStateObserver: authenticationStateObserver)
-        
-        XCTAssertEqual(expectedRegNo, authenticationStateObserver.loggedInUser?.registrationNumber)
+        XCTAssertEqual(expectedUser, loginObserver.loggedInUser)
     }
     
 }

@@ -15,7 +15,6 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
     private var loginAPI: LoginAPI
     private var credentialPersister: CredentialPersister
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
-    private var authenticationStateObservers = [AuthenticationStateObserver]()
     private var loggedInUser: User?
     private var loginCompletionHandler: ((LoginResult) -> Void)?
 
@@ -33,24 +32,11 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
         credentialPersister.loadCredential(delegate: self)
     }
 
-    func add(_ authenticationStateObserver: AuthenticationStateObserver) {
-        authenticationStateObservers.append(authenticationStateObserver)
-
-        if let loggedInUser = loggedInUser {
-            authenticationStateObserver.loggedIn(as: loggedInUser)
-        }
-    }
-
-    func remove(_ authenticationStateObserver: AuthenticationStateObserver) {
-        guard let idx = authenticationStateObservers.index(where: { $0 === authenticationStateObserver }) else { return }
-        authenticationStateObservers.remove(at: idx)
-    }
-
     func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {
         loginCompletionHandler = completionHandler
 
-        if isLoggedIn {
-            notifyLoginSucceeded()
+        if let user = loggedInUser {
+            completionHandler(.success(user))
         } else {
             LoginTask(delegate: self, arguments: arguments, loginAPI: loginAPI).start()
         }
@@ -73,9 +59,11 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
     // MARK: LoginTaskDelegate
 
     func loginTask(_ task: LoginTask, didProduce loginCredential: LoginCredential) {
-        loggedInUser = User(registrationNumber: loginCredential.registrationNumber, username: loginCredential.username)
+        let user = User(registrationNumber: loginCredential.registrationNumber, username: loginCredential.username)
+        loggedInUser = user
+
         credentialPersister.persist(loginCredential)
-        notifyLoginSucceeded()
+        loginCompletionHandler?(.success(user))
         userAuthenticationToken = loginCredential.authenticationToken
 
         if let registeredDeviceToken = registeredDeviceToken {
@@ -93,15 +81,6 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
     func credentialPersister(_ credentialPersister: CredentialPersister, didRetrieve loginCredential: LoginCredential) {
         userAuthenticationToken = loginCredential.authenticationToken
         loggedInUser = User(registrationNumber: loginCredential.registrationNumber, username: loginCredential.username)
-    }
-
-    // MARK: Private
-
-    private func notifyLoginSucceeded() {
-        loginCompletionHandler?(.success)
-
-        guard let loggedInUser = loggedInUser else { return }
-        authenticationStateObservers.forEach { $0.loggedIn(as: loggedInUser) }
     }
 
 }
