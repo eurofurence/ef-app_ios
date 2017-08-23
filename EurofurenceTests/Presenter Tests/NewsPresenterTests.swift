@@ -23,6 +23,7 @@ protocol AuthService {
 protocol NewsScene {
     
     func showMessagesNavigationAction()
+    func showLoginNavigationAction()
     
 }
 
@@ -55,6 +56,11 @@ class CapturingNewsScene: NewsScene {
         wasToldToShowMessagesNavigationAction = true
     }
     
+    private(set) var wasToldToShowLoginNavigationAction = false
+    func showLoginNavigationAction() {
+        wasToldToShowLoginNavigationAction = true
+    }
+    
 }
 
 struct NewsPresenter {
@@ -62,6 +68,7 @@ struct NewsPresenter {
     init(authService: AuthService, newsScene: NewsScene) {
         authService.determineAuthState() { _ in }
         newsScene.showMessagesNavigationAction()
+        newsScene.showLoginNavigationAction()
     }
     
 }
@@ -82,6 +89,14 @@ class NewsPresenterTests: XCTestCase {
         _ = NewsPresenter(authService: authService, newsScene: newsScene)
         
         XCTAssertTrue(newsScene.wasToldToShowMessagesNavigationAction)
+    }
+    
+    func testWhenLaunchedWithLoggedOutUserTheSceneIsToldToShowTheLoginNavigationAction() {
+        let authService = CapturingAuthService()
+        let newsScene = CapturingNewsScene()
+        _ = NewsPresenter(authService: authService, newsScene: newsScene)
+        
+        XCTAssertTrue(newsScene.wasToldToShowLoginNavigationAction)
     }
     
 }
