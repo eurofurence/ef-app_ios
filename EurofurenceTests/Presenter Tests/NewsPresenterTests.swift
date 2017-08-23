@@ -28,6 +28,8 @@ protocol NewsScene {
     func showLoginNavigationAction()
     func hideLoginNavigationAction()
     
+    func showWelcomePrompt(_ prompt: String)
+    
 }
 
 struct StubAuthService: AuthService {
@@ -62,6 +64,11 @@ class CapturingNewsScene: NewsScene {
         wasToldToHideLoginNavigationAction = true
     }
     
+    private(set) var capturedWelcomePrompt: String?
+    func showWelcomePrompt(_ prompt: String) {
+        capturedWelcomePrompt = prompt
+    }
+    
 }
 
 struct NewsPresenter {
@@ -69,9 +76,10 @@ struct NewsPresenter {
     init(authService: AuthService, newsScene: NewsScene) {
         authService.determineAuthState() { state in
             switch state {
-            case .loggedIn(_):
+            case .loggedIn(let user):
                 newsScene.showMessagesNavigationAction()
                 newsScene.hideLoginNavigationAction()
+                newsScene.showWelcomePrompt("Welcome, \(user.username) (\(user.registrationNumber))")
                 
             case .loggedOut:
                 newsScene.showLoginNavigationAction()
@@ -150,6 +158,17 @@ class NewsPresenterTests: XCTestCase {
         _ = NewsPresenter(authService: authService, newsScene: newsScene)
         
         XCTAssertFalse(newsScene.wasToldToHideMessagesNavigationAction)
+    }
+    
+    func testWhenLaunchedWithLoggedInUserShouldTellTheNewsSceneToShowWelcomePromptUsingUserDetails() {
+        let regNo = 42
+        let username = "Cool dude"
+        let user = User(registrationNumber: 42, username: username)
+        let authService = StubAuthService(authState: .loggedIn(user))
+        let newsScene = CapturingNewsScene()
+        _ = NewsPresenter(authService: authService, newsScene: newsScene)
+        
+        XCTAssertEqual("Welcome, \(username) (\(regNo))", newsScene.capturedWelcomePrompt)
     }
     
 }
