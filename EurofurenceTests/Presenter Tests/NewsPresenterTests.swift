@@ -34,7 +34,7 @@ protocol NewsScene {
 
 protocol WelcomePromptStringFactory {
     
-    func makeString(for user: User)
+    func makeString(for user: User) -> String
     
 }
 
@@ -80,15 +80,17 @@ class CapturingNewsScene: NewsScene {
 class CapturingWelcomePromptStringFactory: WelcomePromptStringFactory {
     
     private(set) var capturedWelcomePromptUser: User?
-    func makeString(for user: User) {
+    var stubbedUserString = ""
+    func makeString(for user: User) -> String {
         capturedWelcomePromptUser = user
+        return stubbedUserString
     }
     
 }
 
 struct DummyWelcomePromptStringFactory: WelcomePromptStringFactory {
     
-    func makeString(for user: User) { }
+    func makeString(for user: User) -> String { return "" }
     
 }
 
@@ -100,8 +102,7 @@ struct NewsPresenter {
             case .loggedIn(let user):
                 newsScene.showMessagesNavigationAction()
                 newsScene.hideLoginNavigationAction()
-                newsScene.showWelcomePrompt("Welcome, \(user.username) (\(user.registrationNumber))")
-                welcomePromptStringFactory.makeString(for: user)
+                newsScene.showWelcomePrompt(welcomePromptStringFactory.makeString(for: user))
                 
             case .loggedOut:
                 newsScene.showLoginNavigationAction()
@@ -193,15 +194,16 @@ class NewsPresenterTests: XCTestCase {
         XCTAssertEqual(user, welcomePromptStringFactory.capturedWelcomePromptUser)
     }
     
-    func testWhenLaunchedWithLoggedInUserShouldTellTheNewsSceneToShowWelcomePromptUsingUserDetails() {
-        let regNo = 42
-        let username = "Cool dude"
-        let user = User(registrationNumber: 42, username: username)
+    func testWhenLaunchedWithLoggedInUserTheWelcomePromptShouldBeSourcedFromTheWelcomePromptStringFactory() {
+        let expected = "Welcome to the world of tomorrow"
+        let user = User(registrationNumber: 42, username: "Cool dude")
         let authService = StubAuthService(authState: .loggedIn(user))
         let newsScene = CapturingNewsScene()
-        _ = NewsPresenter(authService: authService, newsScene: newsScene, welcomePromptStringFactory: DummyWelcomePromptStringFactory())
+        let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
+        welcomePromptStringFactory.stubbedUserString = expected
+        _ = NewsPresenter(authService: authService, newsScene: newsScene, welcomePromptStringFactory: welcomePromptStringFactory)
         
-        XCTAssertEqual("Welcome, \(username) (\(regNo))", newsScene.capturedWelcomePrompt)
+        XCTAssertEqual(expected, newsScene.capturedWelcomePrompt)
     }
     
     func testWhenLaunchedWithLoggedOutUserShouldTellTheNewsSceneToShowWelcomePromptWithLoginHint() {
