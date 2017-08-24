@@ -123,106 +123,97 @@ struct NewsPresenter {
 
 class NewsPresenterTests: XCTestCase {
     
-    func testWhenLaunchedWithLoggedInUserTheSceneIsToldToShowTheMessagesNavigationAction() {
-        let user = User(registrationNumber: 42, username: "")
-        let authService = StubAuthService(authState: .loggedIn(user))
-        let newsScene = CapturingNewsScene()
-        _ = NewsPresenter(authService: authService, newsScene: newsScene, welcomePromptStringFactory: DummyWelcomePromptStringFactory())
+    struct TestContext {
         
-        XCTAssertTrue(newsScene.wasToldToShowMessagesNavigationAction)
+        var presenter: NewsPresenter
+        let newsScene = CapturingNewsScene()
+        
+        @discardableResult
+        static func makeTestCaseForAuthenticatedUser(_ user: User = User(registrationNumber: 42, username: ""),
+                                                     welcomePromptStringFactory: WelcomePromptStringFactory = DummyWelcomePromptStringFactory()) -> TestContext {
+            return TestContext(authService: StubAuthService(authState: .loggedIn(user)),
+                               welcomePromptStringFactory: welcomePromptStringFactory)
+        }
+        
+        @discardableResult
+        static func makeTestCaseForAnonymousUser(welcomePromptStringFactory: WelcomePromptStringFactory = DummyWelcomePromptStringFactory()) -> TestContext {
+            return TestContext(authService: StubAuthService(authState: .loggedOut),
+                               welcomePromptStringFactory: welcomePromptStringFactory)
+        }
+        
+        private init(authService: AuthService, welcomePromptStringFactory: WelcomePromptStringFactory) {
+            presenter = NewsPresenter(authService: authService,
+                                      newsScene: newsScene,
+                                      welcomePromptStringFactory: welcomePromptStringFactory)
+        }
+        
+    }
+    
+    func testWhenLaunchedWithLoggedInUserTheSceneIsToldToShowTheMessagesNavigationAction() {
+        let context = TestContext.makeTestCaseForAuthenticatedUser()
+        XCTAssertTrue(context.newsScene.wasToldToShowMessagesNavigationAction)
     }
     
     func testWhenLaunchedWithLoggedOutUserTheSceneIsToldToShowTheLoginNavigationAction() {
-        let authService = StubAuthService(authState: .loggedOut)
-        let newsScene = CapturingNewsScene()
-        _ = NewsPresenter(authService: authService, newsScene: newsScene, welcomePromptStringFactory: DummyWelcomePromptStringFactory())
-        
-        XCTAssertTrue(newsScene.wasToldToShowLoginNavigationAction)
+        let context = TestContext.makeTestCaseForAnonymousUser()
+        XCTAssertTrue(context.newsScene.wasToldToShowLoginNavigationAction)
     }
     
     func testWhenLaunchedWithLoggedInUserTheSceneIsNotToldToShowTheLoginNavigationAction() {
-        let user = User(registrationNumber: 42, username: "")
-        let authService = StubAuthService(authState: .loggedIn(user))
-        let newsScene = CapturingNewsScene()
-        _ = NewsPresenter(authService: authService, newsScene: newsScene, welcomePromptStringFactory: DummyWelcomePromptStringFactory())
-        
-        XCTAssertFalse(newsScene.wasToldToShowLoginNavigationAction)
+        let context = TestContext.makeTestCaseForAuthenticatedUser()
+        XCTAssertFalse(context.newsScene.wasToldToShowLoginNavigationAction)
     }
     
     func testWhenLaunchedWithLoggedOutUserTheSceneIsNotToldToShowTheMessagesNavigationAction() {
-        let authService = StubAuthService(authState: .loggedOut)
-        let newsScene = CapturingNewsScene()
-        _ = NewsPresenter(authService: authService, newsScene: newsScene, welcomePromptStringFactory: DummyWelcomePromptStringFactory())
-        
-        XCTAssertFalse(newsScene.wasToldToShowMessagesNavigationAction)
+        let context = TestContext.makeTestCaseForAnonymousUser()
+        XCTAssertFalse(context.newsScene.wasToldToShowMessagesNavigationAction)
     }
     
     func testWhenLaunchedWithLoggedInUserTheSceneIsToldToHideTheLoginNavigationAction() {
-        let user = User(registrationNumber: 42, username: "")
-        let authService = StubAuthService(authState: .loggedIn(user))
-        let newsScene = CapturingNewsScene()
-        _ = NewsPresenter(authService: authService, newsScene: newsScene, welcomePromptStringFactory: DummyWelcomePromptStringFactory())
-        
-        XCTAssertTrue(newsScene.wasToldToHideLoginNavigationAction)
+        let context = TestContext.makeTestCaseForAuthenticatedUser()
+        XCTAssertTrue(context.newsScene.wasToldToHideLoginNavigationAction)
     }
     
     func testWhenLaunchedWithLoggedOutUserTheSceneIsNotToldToHideTheLoginNavigationAction() {
-        let authService = StubAuthService(authState: .loggedOut)
-        let newsScene = CapturingNewsScene()
-        _ = NewsPresenter(authService: authService, newsScene: newsScene, welcomePromptStringFactory: DummyWelcomePromptStringFactory())
-        
-        XCTAssertFalse(newsScene.wasToldToHideLoginNavigationAction)
+        let context = TestContext.makeTestCaseForAnonymousUser()
+        XCTAssertFalse(context.newsScene.wasToldToHideLoginNavigationAction)
     }
     
     func testWhenLaunchedWithLoggedOutUserTheSceneIsToldToHideTheMessagesNavigationAction() {
-        let authService = StubAuthService(authState: .loggedOut)
-        let newsScene = CapturingNewsScene()
-        _ = NewsPresenter(authService: authService, newsScene: newsScene, welcomePromptStringFactory: DummyWelcomePromptStringFactory())
-        
-        XCTAssertTrue(newsScene.wasToldToHideMessagesNavigationAction)
+        let context = TestContext.makeTestCaseForAnonymousUser()
+        XCTAssertTrue(context.newsScene.wasToldToHideMessagesNavigationAction)
     }
     
     func testWhenLaunchedWithLoggedInUserTheSceneIsNotToldToHideTheMessagesNavigationAction() {
-        let user = User(registrationNumber: 42, username: "")
-        let authService = StubAuthService(authState: .loggedIn(user))
-        let newsScene = CapturingNewsScene()
-        _ = NewsPresenter(authService: authService, newsScene: newsScene, welcomePromptStringFactory: DummyWelcomePromptStringFactory())
-        
-        XCTAssertFalse(newsScene.wasToldToHideMessagesNavigationAction)
+        let context = TestContext.makeTestCaseForAuthenticatedUser()
+        XCTAssertFalse(context.newsScene.wasToldToHideMessagesNavigationAction)
     }
     
     func testWhenLaunchedWithLoggedInUserTheWelcomePromptShouldBeSourcedFromTheWelcomePromptStringFactoryUsingTheUser() {
         let user = User(registrationNumber: 42, username: "Cool dude")
-        let authService = StubAuthService(authState: .loggedIn(user))
-        let newsScene = CapturingNewsScene()
         let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
-        _ = NewsPresenter(authService: authService, newsScene: newsScene, welcomePromptStringFactory: welcomePromptStringFactory)
+        TestContext.makeTestCaseForAuthenticatedUser(user, welcomePromptStringFactory: welcomePromptStringFactory)
         
         XCTAssertEqual(user, welcomePromptStringFactory.capturedWelcomePromptUser)
     }
     
     func testWhenLaunchedWithLoggedInUserTheWelcomePromptShouldBeSourcedFromTheWelcomePromptStringFactory() {
         let expected = "Welcome to the world of tomorrow"
-        let user = User(registrationNumber: 42, username: "Cool dude")
-        let authService = StubAuthService(authState: .loggedIn(user))
-        let newsScene = CapturingNewsScene()
         let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
         welcomePromptStringFactory.stubbedUserString = expected
-        _ = NewsPresenter(authService: authService, newsScene: newsScene, welcomePromptStringFactory: welcomePromptStringFactory)
+        let context = TestContext.makeTestCaseForAuthenticatedUser(welcomePromptStringFactory: welcomePromptStringFactory)
         
-        XCTAssertEqual(expected, newsScene.capturedWelcomePrompt)
+        XCTAssertEqual(expected, context.newsScene.capturedWelcomePrompt)
     }
     
     func testWhenLaunchedWithLoggedOutUserShouldTellTheNewsSceneToShowWelcomePromptWithLoginHintFromStringFactory() {
         let expected = "You should totes login"
-        let authService = StubAuthService(authState: .loggedOut)
-        let newsScene = CapturingNewsScene()
         let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
         welcomePromptStringFactory.stubbedLoginString = expected
-        _ = NewsPresenter(authService: authService, newsScene: newsScene, welcomePromptStringFactory: welcomePromptStringFactory)
+        let context = TestContext.makeTestCaseForAnonymousUser(welcomePromptStringFactory: welcomePromptStringFactory)
         
-        XCTAssertEqual(expected, newsScene.capturedWelcomePrompt)
+        XCTAssertEqual(expected, context.newsScene.capturedWelcomePrompt)
     }
     
-
+    
 }
