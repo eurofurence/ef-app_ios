@@ -16,7 +16,14 @@ enum AuthState {
 
 protocol AuthService {
     
+    func add(observer: AuthStateObserver)
     func determineAuthState(completionHandler: @escaping (AuthState) -> Void)
+    
+}
+
+protocol AuthStateObserver {
+    
+    func userDidLogin()
     
 }
 
@@ -39,12 +46,25 @@ protocol WelcomePromptStringFactory {
     
 }
 
-struct StubAuthService: AuthService {
+class StubAuthService: AuthService {
     
-    var authState: AuthState
+    private let authState: AuthState
+    
+    init(authState: AuthState) {
+        self.authState = authState
+    }
+    
+    private var observers = [AuthStateObserver]()
+    func add(observer: AuthStateObserver) {
+        observers.append(observer)
+    }
     
     func determineAuthState(completionHandler: @escaping (AuthState) -> Void) {
         completionHandler(authState)
+    }
+    
+    func notifyObserversUserDidLogin() {
+        observers.forEach { $0.userDidLogin() }
     }
     
 }
@@ -101,9 +121,13 @@ struct DummyWelcomePromptStringFactory: WelcomePromptStringFactory {
     
 }
 
-struct NewsPresenter {
+struct NewsPresenter: AuthStateObserver {
+    
+    private let newsScene: NewsScene
     
     init(authService: AuthService, newsScene: NewsScene, welcomePromptStringFactory: WelcomePromptStringFactory) {
+        self.newsScene = newsScene
+        
         authService.determineAuthState() { state in
             switch state {
             case .loggedIn(let user):
@@ -117,6 +141,12 @@ struct NewsPresenter {
                 newsScene.showWelcomePrompt(welcomePromptStringFactory.makeStringForAnonymousUser())
             }
         }
+        
+        authService.add(observer: self)
+    }
+    
+    func userDidLogin() {
+        newsScene.showMessagesNavigationAction()
     }
     
 }
@@ -126,6 +156,7 @@ class NewsPresenterTests: XCTestCase {
     struct TestContext {
         
         var presenter: NewsPresenter
+        var authService: StubAuthService
         let newsScene = CapturingNewsScene()
         
         @discardableResult
@@ -141,7 +172,8 @@ class NewsPresenterTests: XCTestCase {
                                welcomePromptStringFactory: welcomePromptStringFactory)
         }
         
-        private init(authService: AuthService, welcomePromptStringFactory: WelcomePromptStringFactory) {
+        private init(authService: StubAuthService, welcomePromptStringFactory: WelcomePromptStringFactory) {
+            self.authService = authService
             presenter = NewsPresenter(authService: authService,
                                       newsScene: newsScene,
                                       welcomePromptStringFactory: welcomePromptStringFactory)
@@ -215,5 +247,11 @@ class NewsPresenterTests: XCTestCase {
         XCTAssertEqual(expected, context.newsScene.capturedWelcomePrompt)
     }
     
+    func testWhenLaunchedWithLoggedOutUserThenAuthServiceIndicatesUserLoggedInTheSceneShouldShowTheMessagesNavigationAction() {
+        let context = TestContext.makeTestCaseForAnonymousUser()
+        context.authService.notifyObserversUserDidLogin()
+        
+        XCTAssertTrue(context.newsScene.wasToldToShowMessagesNavigationAction)
+    }
     
 }
