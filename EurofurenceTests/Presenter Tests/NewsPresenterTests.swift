@@ -35,6 +35,7 @@ protocol NewsScene {
 protocol WelcomePromptStringFactory {
     
     func makeString(for user: User) -> String
+    func makeStringForAnonymousUser() -> String
     
 }
 
@@ -86,11 +87,17 @@ class CapturingWelcomePromptStringFactory: WelcomePromptStringFactory {
         return stubbedUserString
     }
     
+    var stubbedLoginString = ""
+    func makeStringForAnonymousUser() -> String {
+        return stubbedLoginString
+    }
+    
 }
 
 struct DummyWelcomePromptStringFactory: WelcomePromptStringFactory {
     
     func makeString(for user: User) -> String { return "" }
+    func makeStringForAnonymousUser() -> String { return "" }
     
 }
 
@@ -107,7 +114,7 @@ struct NewsPresenter {
             case .loggedOut:
                 newsScene.showLoginNavigationAction()
                 newsScene.hideMessagesNavigationAction()
-                newsScene.showWelcomePrompt("You are currently not logged in")
+                newsScene.showWelcomePrompt(welcomePromptStringFactory.makeStringForAnonymousUser())
             }
         }
     }
@@ -206,12 +213,16 @@ class NewsPresenterTests: XCTestCase {
         XCTAssertEqual(expected, newsScene.capturedWelcomePrompt)
     }
     
-    func testWhenLaunchedWithLoggedOutUserShouldTellTheNewsSceneToShowWelcomePromptWithLoginHint() {
+    func testWhenLaunchedWithLoggedOutUserShouldTellTheNewsSceneToShowWelcomePromptWithLoginHintFromStringFactory() {
+        let expected = "You should totes login"
         let authService = StubAuthService(authState: .loggedOut)
         let newsScene = CapturingNewsScene()
-        _ = NewsPresenter(authService: authService, newsScene: newsScene, welcomePromptStringFactory: DummyWelcomePromptStringFactory())
+        let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
+        welcomePromptStringFactory.stubbedLoginString = expected
+        _ = NewsPresenter(authService: authService, newsScene: newsScene, welcomePromptStringFactory: welcomePromptStringFactory)
         
-        XCTAssertEqual("You are currently not logged in", newsScene.capturedWelcomePrompt)
+        XCTAssertEqual(expected, newsScene.capturedWelcomePrompt)
     }
     
+
 }
