@@ -14,3 +14,15 @@ protocol WelcomePromptStringFactory {
     func makeStringForAnonymousUser() -> String
 
 }
+
+struct UnlocalizedWelcomePromptStringFactory: WelcomePromptStringFactory {
+
+    func makeString(for user: User) -> String {
+        return "Welcome, \(user.username) (\(user.registrationNumber))"
+    }
+
+    func makeStringForAnonymousUser() -> String {
+        return "You are currently not logged in"
+    }
+
+}
