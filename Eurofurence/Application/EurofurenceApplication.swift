@@ -100,9 +100,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void) {
-        if let user = authenticationCoordinator.loggedInUser {
-            completionHandler(user)
-        }
+        completionHandler(authenticationCoordinator.loggedInUser)
     }
 
     private func makeMessage(from apiMessage: APIPrivateMessage) -> Message {

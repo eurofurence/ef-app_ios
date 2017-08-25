@@ -24,4 +24,20 @@ class WhenRequestingCurrentUser: XCTestCase {
         XCTAssertEqual(expectedUser, capturedUser)
     }
     
+    func testNotBeingLoggedInShouldCallCompletionHandler() {
+        let context = ApplicationTestBuilder().build()
+        var invokedHandler = false
+        context.application.retrieveCurrentUser { _ in invokedHandler = true }
+        
+        XCTAssertTrue(invokedHandler)
+    }
+    
+    func testNotBeingLoggedInShouldCallCompletionHandlerWithNilUser() {
+        let context = ApplicationTestBuilder().build()
+        var capturedUser: User?
+        context.application.retrieveCurrentUser { capturedUser = $0 }
+        
+        XCTAssertNil(capturedUser)
+    }
+    
 }
