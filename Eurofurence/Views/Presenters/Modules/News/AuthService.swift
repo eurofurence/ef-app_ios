@@ -21,5 +21,6 @@ protocol AuthService {
 protocol AuthStateObserver {
 
     func userDidLogin(_ user: User)
+    func userDidLogout()
 
 }

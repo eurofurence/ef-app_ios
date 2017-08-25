@@ -27,6 +27,10 @@ struct NewsPresenter: AuthStateObserver {
         newsScene.showWelcomePrompt(welcomePromptStringFactory.makeString(for: user))
     }
 
+    func userDidLogout() {
+        newsScene.showLoginNavigationAction()
+    }
+
     private func authStateResolved(_ state: AuthState) {
         switch state {
         case .loggedIn(let user):

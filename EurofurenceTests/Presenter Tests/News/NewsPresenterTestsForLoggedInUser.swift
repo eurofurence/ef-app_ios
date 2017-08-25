@@ -48,4 +48,11 @@ class NewsPresenterTestsForLoggedInUser: XCTestCase {
         XCTAssertEqual(expected, context.newsScene.capturedWelcomePrompt)
     }
     
+    func testWhenAuthServiceIndicatesUserLoggedOutTheSceneIsToldToShowTheLoginNavigationAction() {
+        let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser()
+        context.authService.notifyObserversUserDidLogout()
+        
+        XCTAssertTrue(context.newsScene.wasToldToShowLoginNavigationAction)
+    }
+    
 }

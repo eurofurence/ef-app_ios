@@ -30,4 +30,8 @@ class StubAuthService: AuthService {
         observers.forEach { $0.userDidLogin(user) }
     }
     
+    func notifyObserversUserDidLogout() {
+        observers.forEach { $0.userDidLogout() }
+    }
+    
 }
