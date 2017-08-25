@@ -17,20 +17,7 @@ struct NewsPresenter: AuthStateObserver {
         self.newsScene = newsScene
         self.welcomePromptStringFactory = welcomePromptStringFactory
 
-        authService.determineAuthState { state in
-            switch state {
-            case .loggedIn(let user):
-                newsScene.showMessagesNavigationAction()
-                newsScene.hideLoginNavigationAction()
-                newsScene.showWelcomePrompt(welcomePromptStringFactory.makeString(for: user))
-
-            case .loggedOut:
-                newsScene.showLoginNavigationAction()
-                newsScene.hideMessagesNavigationAction()
-                newsScene.showWelcomePrompt(welcomePromptStringFactory.makeStringForAnonymousUser())
-            }
-        }
-
+        authService.determineAuthState(completionHandler: authStateResolved)
         authService.add(observer: self)
     }
 
@@ -38,6 +25,18 @@ struct NewsPresenter: AuthStateObserver {
         newsScene.showMessagesNavigationAction()
         newsScene.hideLoginNavigationAction()
         newsScene.showWelcomePrompt(welcomePromptStringFactory.makeString(for: user))
+    }
+
+    private func authStateResolved(_ state: AuthState) {
+        switch state {
+        case .loggedIn(let user):
+            userDidLogin(user)
+
+        case .loggedOut:
+            newsScene.showLoginNavigationAction()
+            newsScene.hideMessagesNavigationAction()
+            newsScene.showWelcomePrompt(welcomePromptStringFactory.makeStringForAnonymousUser())
+        }
     }
 
 }
