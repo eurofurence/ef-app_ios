@@ -28,7 +28,14 @@ class EurofurenceAuthService: AuthService {
     }
     
     func determineAuthState(completionHandler: @escaping (AuthState) -> Void) {
-        app.retrieveCurrentUser { _ in completionHandler(.loggedOut) }
+        app.retrieveCurrentUser { user in
+            if let user = user {
+                completionHandler(.loggedIn(user))
+            }
+            else {
+                completionHandler(.loggedOut)
+            }
+        }
     }
     
 }
@@ -80,6 +87,23 @@ class EurofurenceAuthServiceTests: XCTestCase {
         app.resolveUserRetrievalWithUser(nil)
         
         XCTAssertEqual(.loggedOut, handler.capturedState)
+    }
+    
+    func testWhenNonNilUserReturnedTheAuthStateIsNotResolvedAsLoggedOut() {
+        let handler = CapturingAuthStateHandler()
+        service.determineAuthState(completionHandler: handler.handle)
+        app.resolveUserRetrievalWithUser(User(registrationNumber: 42, username: ""))
+        
+        XCTAssertNotEqual(.loggedOut, handler.capturedState)
+    }
+    
+    func testWhenNonNilUserReturnedTheAuthStateIsResolvedAsLoggedIn() {
+        let handler = CapturingAuthStateHandler()
+        service.determineAuthState(completionHandler: handler.handle)
+        let user = User(registrationNumber: 42, username: "")
+        app.resolveUserRetrievalWithUser(user)
+        
+        XCTAssertEqual(.loggedIn(user), handler.capturedState)
     }
     
 }
