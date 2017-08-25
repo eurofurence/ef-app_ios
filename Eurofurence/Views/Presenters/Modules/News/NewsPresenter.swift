@@ -11,9 +11,11 @@ import Foundation
 struct NewsPresenter: AuthStateObserver {
 
     private let newsScene: NewsScene
+    private let welcomePromptStringFactory: WelcomePromptStringFactory
 
     init(authService: AuthService, newsScene: NewsScene, welcomePromptStringFactory: WelcomePromptStringFactory) {
         self.newsScene = newsScene
+        self.welcomePromptStringFactory = welcomePromptStringFactory
 
         authService.determineAuthState { state in
             switch state {
@@ -32,8 +34,10 @@ struct NewsPresenter: AuthStateObserver {
         authService.add(observer: self)
     }
 
-    func userDidLogin() {
+    func userDidLogin(_ user: User) {
         newsScene.showMessagesNavigationAction()
+        newsScene.hideLoginNavigationAction()
+        newsScene.showWelcomePrompt(welcomePromptStringFactory.makeString(for: user))
     }
 
 }

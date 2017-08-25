@@ -47,4 +47,30 @@ class NewsPresenterTestsForAnonymousUser: XCTestCase {
         XCTAssertTrue(context.newsScene.wasToldToShowMessagesNavigationAction)
     }
     
+    func testWhenAuthServiceIndicatesUserLoggedInTheSceneShouldHideTheLoginNavigationAction() {
+        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
+        context.authService.notifyObserversUserDidLogin()
+        
+        XCTAssertTrue(context.newsScene.wasToldToHideLoginNavigationAction)
+    }
+    
+    func testWhenAuthServiceIndicatesUserLoggedInTheWelcomePromptStringFactoryShouldUseTheLoggedInUserToGeneratePrompt() {
+        let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
+        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser(welcomePromptStringFactory: welcomePromptStringFactory)
+        let user = User(registrationNumber: 42, username: "")
+        context.authService.notifyObserversUserDidLogin(user)
+        
+        XCTAssertEqual(user, welcomePromptStringFactory.capturedWelcomePromptUser)
+    }
+    
+    func testWhenAuthServiceIndicatesUserLoggedInTheWelcomePromptShouldBeSourcedFromTheStringFactory() {
+        let expected = "Welcome to the world of tomorrow"
+        let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
+        welcomePromptStringFactory.stubbedUserString = expected
+        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser(welcomePromptStringFactory: welcomePromptStringFactory)
+        context.authService.notifyObserversUserDidLogin()
+        
+        XCTAssertEqual(expected, context.newsScene.capturedWelcomePrompt)
+    }
+    
 }

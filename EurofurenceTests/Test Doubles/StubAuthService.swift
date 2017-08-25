@@ -26,8 +26,8 @@ class StubAuthService: AuthService {
         completionHandler(authState)
     }
     
-    func notifyObserversUserDidLogin() {
-        observers.forEach { $0.userDidLogin() }
+    func notifyObserversUserDidLogin(_ user: User = User(registrationNumber: 42, username: "")) {
+        observers.forEach { $0.userDidLogin(user) }
     }
     
 }

@@ -20,6 +20,6 @@ protocol AuthService {
 
 protocol AuthStateObserver {
 
-    func userDidLogin()
+    func userDidLogin(_ user: User)
 
 }
