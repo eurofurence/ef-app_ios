@@ -233,7 +233,7 @@
 		CA30EACC1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */; };
 		CA30EACE1F27D1430053DBF6 /* V2APIPrivateMessagesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EACD1F27D1430053DBF6 /* V2APIPrivateMessagesResponse.swift */; };
 		CA30EAD01F27D8620053DBF6 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */; };
-		CA60B3581F4E2086005437BE /* NewsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60B3571F4E2086005437BE /* NewsPresenterTests.swift */; };
+		CA60B3581F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60B3571F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift */; };
 		CA804DD21F20CE8F00E07A4A /* V2LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */; };
 		CA804DD41F20CF4300E07A4A /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD31F20CF4300E07A4A /* APIResponse.swift */; };
 		CA804DDA1F20D2F500E07A4A /* V2LoginAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */; };
@@ -250,6 +250,7 @@
 		CAC1E12F1F50411900195513 /* StubAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12E1F50411900195513 /* StubAuthService.swift */; };
 		CAC1E1311F50413500195513 /* CapturingNewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1301F50413500195513 /* CapturingNewsScene.swift */; };
 		CAC1E1331F50414B00195513 /* WelcomePromptStringFactoryTestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1321F50414B00195513 /* WelcomePromptStringFactoryTestDoubles.swift */; };
+		CAC1E1371F50423200195513 /* NewsPresenterTestsForLoggedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1361F50423200195513 /* NewsPresenterTestsForLoggedInUser.swift */; };
 		CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */; };
 		CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */; };
 		CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780361F1D415A002A8333 /* MessagesViewController.swift */; };
@@ -555,7 +556,7 @@
 		CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2PrivateMessagesAPI.swift; path = Application/API/v2/V2PrivateMessagesAPI.swift; sourceTree = "<group>"; };
 		CA30EACD1F27D1430053DBF6 /* V2APIPrivateMessagesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2APIPrivateMessagesResponse.swift; path = Application/API/v2/V2APIPrivateMessagesResponse.swift; sourceTree = "<group>"; };
 		CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
-		CA60B3571F4E2086005437BE /* NewsPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenterTests.swift; path = "Presenter Tests/News/NewsPresenterTests.swift"; sourceTree = "<group>"; };
+		CA60B3571F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenterTestsForAnonymousUser.swift; path = "Presenter Tests/News/NewsPresenterTestsForAnonymousUser.swift"; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
 		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/Protocols/APIResponse.swift; sourceTree = "<group>"; };
 		CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPITests.swift; path = "Application Tests/API/v2/V2LoginAPITests.swift"; sourceTree = "<group>"; };
@@ -574,6 +575,7 @@
 		CAC1E12E1F50411900195513 /* StubAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAuthService.swift; path = "Test Doubles/StubAuthService.swift"; sourceTree = "<group>"; };
 		CAC1E1301F50413500195513 /* CapturingNewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingNewsScene.swift; path = "Test Doubles/Scenes/CapturingNewsScene.swift"; sourceTree = "<group>"; };
 		CAC1E1321F50414B00195513 /* WelcomePromptStringFactoryTestDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomePromptStringFactoryTestDoubles.swift; path = "Test Doubles/WelcomePromptStringFactoryTestDoubles.swift"; sourceTree = "<group>"; };
+		CAC1E1361F50423200195513 /* NewsPresenterTestsForLoggedInUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenterTestsForLoggedInUser.swift; path = "Presenter Tests/News/NewsPresenterTestsForLoggedInUser.swift"; sourceTree = "<group>"; };
 		CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenLoggingOut.swift; path = "Application Tests/WhenLoggingOut.swift"; sourceTree = "<group>"; };
 		CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLogoutObserver.swift; path = "Test Doubles/Application/CapturingLogoutObserver.swift"; sourceTree = "<group>"; };
 		CAD780361F1D415A002A8333 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
@@ -1410,7 +1412,8 @@
 		CAC1E1241F50405900195513 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				CA60B3571F4E2086005437BE /* NewsPresenterTests.swift */,
+				CA60B3571F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift */,
+				CAC1E1361F50423200195513 /* NewsPresenterTestsForLoggedInUser.swift */,
 			);
 			name = News;
 			sourceTree = "<group>";
@@ -2143,7 +2146,7 @@
 				78C86D4C1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift in Sources */,
 				6EEC6DA31F1BFC5000205F2D /* StubAppVersionProviding.swift in Sources */,
 				78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */,
-				CA60B3581F4E2086005437BE /* NewsPresenterTests.swift in Sources */,
+				CA60B3581F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift in Sources */,
 				CA2B4FA61F1EA1B300F007E1 /* ApplicationTestBuilder.swift in Sources */,
 				CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */,
 				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,
@@ -2165,6 +2168,7 @@
 				CA30EAB61F26128A0053DBF6 /* WhenRequestingPrivateMessages.swift in Sources */,
 				6EEC6DA11F1BF79F00205F2D /* FirebaseTopicTests.swift in Sources */,
 				7820A6F61F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift in Sources */,
+				CAC1E1371F50423200195513 /* NewsPresenterTestsForLoggedInUser.swift in Sources */,
 				CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */,
 				6EF96CCF1F0EDB2000EE6134 /* CalendarTestDoubles.swift in Sources */,
 				CAD780491F1D51EB002A8333 /* StubClock.swift in Sources */,
