@@ -11,7 +11,7 @@ import XCTest
 
 protocol EurofurenceApplicationProtocol {
     
-    func retrieveCurrentUser()
+    func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void)
     
 }
 
@@ -28,7 +28,7 @@ class EurofurenceAuthService: AuthService {
     }
     
     func determineAuthState(completionHandler: @escaping (AuthState) -> Void) {
-        app.retrieveCurrentUser()
+        app.retrieveCurrentUser { _ in completionHandler(.loggedOut) }
     }
     
 }
@@ -36,20 +36,50 @@ class EurofurenceAuthService: AuthService {
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
     
     private(set) var wasRequestedForCurrentUser = false
-    func retrieveCurrentUser() {
+    private var retrieveUserCompletionHandler: ((User?) -> Void)?
+    func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void) {
         wasRequestedForCurrentUser = true
+        retrieveUserCompletionHandler = completionHandler
+    }
+    
+    func resolveUserRetrievalWithUser(_ user: User?) {
+        retrieveUserCompletionHandler?(user)
+    }
+    
+}
+
+class CapturingAuthStateHandler {
+    
+    private(set) var capturedState: AuthState?
+    func handle(_ state: AuthState) {
+        capturedState = state
     }
     
 }
 
 class EurofurenceAuthServiceTests: XCTestCase {
     
-    func testDeterminingAuthStateRequestsUserFromApplication() {
-        let app = CapturingEurofurenceApplication()
-        let service = EurofurenceAuthService(app: app)
-        service.determineAuthState { _ in }
+    var app: CapturingEurofurenceApplication!
+    var service: EurofurenceAuthService!
+    
+    override func setUp() {
+        super.setUp()
         
+        app = CapturingEurofurenceApplication()
+        service = EurofurenceAuthService(app: app)
+    }
+    
+    func testDeterminingAuthStateRequestsUserFromApplication() {
+        service.determineAuthState { _ in }
         XCTAssertTrue(app.wasRequestedForCurrentUser)
+    }
+    
+    func testWhenNilUserReturnedTheAuthStateIsResolvedAsLoggedOut() {
+        let handler = CapturingAuthStateHandler()
+        service.determineAuthState(completionHandler: handler.handle)
+        app.resolveUserRetrievalWithUser(nil)
+        
+        XCTAssertEqual(.loggedOut, handler.capturedState)
     }
     
 }
