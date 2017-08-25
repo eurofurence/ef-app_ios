@@ -11,7 +11,7 @@ import XCTest
 
 protocol EurofurenceApplicationProtocol {
     
-    func determineAuthorization()
+    func retrieveCurrentUser()
     
 }
 
@@ -28,28 +28,28 @@ class EurofurenceAuthService: AuthService {
     }
     
     func determineAuthState(completionHandler: @escaping (AuthState) -> Void) {
-        app.determineAuthorization()
+        app.retrieveCurrentUser()
     }
     
 }
 
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
     
-    private(set) var wasRequestedForAuthState = false
-    func determineAuthorization() {
-        wasRequestedForAuthState = true
+    private(set) var wasRequestedForCurrentUser = false
+    func retrieveCurrentUser() {
+        wasRequestedForCurrentUser = true
     }
     
 }
 
 class EurofurenceAuthServiceTests: XCTestCase {
     
-    func testDeterminingAuthStateRequestsAuthStateFromApplication() {
+    func testDeterminingAuthStateRequestsUserFromApplication() {
         let app = CapturingEurofurenceApplication()
         let service = EurofurenceAuthService(app: app)
         service.determineAuthState { _ in }
         
-        XCTAssertTrue(app.wasRequestedForAuthState)
+        XCTAssertTrue(app.wasRequestedForCurrentUser)
     }
     
 }
