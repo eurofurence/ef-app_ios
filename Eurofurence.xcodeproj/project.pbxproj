@@ -243,6 +243,13 @@
 		CA9845DA1F29199E00E8821D /* ScreenshotAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */; };
 		CA9845DC1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */; };
 		CA9845DE1F2B01BA00E8821D /* UnreadMessageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */; };
+		CAC1E1271F5040BD00195513 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1261F5040BD00195513 /* NewsPresenter.swift */; };
+		CAC1E1291F5040CB00195513 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1281F5040CB00195513 /* AuthService.swift */; };
+		CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12A1F5040E100195513 /* NewsScene.swift */; };
+		CAC1E12D1F5040F500195513 /* WelcomePromptStringFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12C1F5040F500195513 /* WelcomePromptStringFactory.swift */; };
+		CAC1E12F1F50411900195513 /* StubAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12E1F50411900195513 /* StubAuthService.swift */; };
+		CAC1E1311F50413500195513 /* CapturingNewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1301F50413500195513 /* CapturingNewsScene.swift */; };
+		CAC1E1331F50414B00195513 /* WelcomePromptStringFactoryTestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1321F50414B00195513 /* WelcomePromptStringFactoryTestDoubles.swift */; };
 		CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */; };
 		CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */; };
 		CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780361F1D415A002A8333 /* MessagesViewController.swift */; };
@@ -548,7 +555,7 @@
 		CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2PrivateMessagesAPI.swift; path = Application/API/v2/V2PrivateMessagesAPI.swift; sourceTree = "<group>"; };
 		CA30EACD1F27D1430053DBF6 /* V2APIPrivateMessagesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2APIPrivateMessagesResponse.swift; path = Application/API/v2/V2APIPrivateMessagesResponse.swift; sourceTree = "<group>"; };
 		CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
-		CA60B3571F4E2086005437BE /* NewsPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenterTests.swift; path = "Presenter Tests/NewsPresenterTests.swift"; sourceTree = "<group>"; };
+		CA60B3571F4E2086005437BE /* NewsPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenterTests.swift; path = "Presenter Tests/News/NewsPresenterTests.swift"; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
 		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/Protocols/APIResponse.swift; sourceTree = "<group>"; };
 		CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPITests.swift; path = "Application Tests/API/v2/V2LoginAPITests.swift"; sourceTree = "<group>"; };
@@ -560,6 +567,13 @@
 		CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotAssistant.swift; sourceTree = "<group>"; };
 		CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenMarkingMessageAsRead.swift; path = "Application Tests/WhenMarkingMessageAsRead.swift"; sourceTree = "<group>"; };
 		CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnreadMessageIndicator.swift; sourceTree = "<group>"; };
+		CAC1E1261F5040BD00195513 /* NewsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenter.swift; path = News/NewsPresenter.swift; sourceTree = "<group>"; };
+		CAC1E1281F5040CB00195513 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = News/AuthService.swift; sourceTree = "<group>"; };
+		CAC1E12A1F5040E100195513 /* NewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsScene.swift; path = News/NewsScene.swift; sourceTree = "<group>"; };
+		CAC1E12C1F5040F500195513 /* WelcomePromptStringFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomePromptStringFactory.swift; path = News/WelcomePromptStringFactory.swift; sourceTree = "<group>"; };
+		CAC1E12E1F50411900195513 /* StubAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAuthService.swift; path = "Test Doubles/StubAuthService.swift"; sourceTree = "<group>"; };
+		CAC1E1301F50413500195513 /* CapturingNewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingNewsScene.swift; path = "Test Doubles/Scenes/CapturingNewsScene.swift"; sourceTree = "<group>"; };
+		CAC1E1321F50414B00195513 /* WelcomePromptStringFactoryTestDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomePromptStringFactoryTestDoubles.swift; path = "Test Doubles/WelcomePromptStringFactoryTestDoubles.swift"; sourceTree = "<group>"; };
 		CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenLoggingOut.swift; path = "Application Tests/WhenLoggingOut.swift"; sourceTree = "<group>"; };
 		CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLogoutObserver.swift; path = "Test Doubles/Application/CapturingLogoutObserver.swift"; sourceTree = "<group>"; };
 		CAD780361F1D415A002A8333 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
@@ -702,6 +716,8 @@
 				7820A7001F16C0F0004C0FB5 /* CapturingWitnessedSystemPushPermissionsRequest.swift */,
 				78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */,
 				6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */,
+				CAC1E12E1F50411900195513 /* StubAuthService.swift */,
+				CAC1E1321F50414B00195513 /* WelcomePromptStringFactoryTestDoubles.swift */,
 			);
 			name = "Test Doubles";
 			sourceTree = "<group>";
@@ -720,6 +736,7 @@
 			children = (
 				6EF96CE81F126B0400EE6134 /* Bootstrap */,
 				6EF96CE31F1268BA00EE6134 /* Tutorial */,
+				CAC1E1251F50409800195513 /* News */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -892,10 +909,10 @@
 			isa = PBXGroup;
 			children = (
 				78C86D6A1F123FC4003A20E6 /* Builders */,
+				CAC1E1241F50405900195513 /* News */,
 				78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */,
 				78C86D5C1F123686003A20E6 /* WhenTheTutorialAppears.swift */,
 				78C86D711F12AACA003A20E6 /* WhenTheSplashScreenAppears.swift */,
-				CA60B3571F4E2086005437BE /* NewsPresenterTests.swift */,
 			);
 			name = "Presenter Tests";
 			sourceTree = "<group>";
@@ -906,6 +923,7 @@
 				78C86D5F1F123859003A20E6 /* CapturingTutorialScene.swift */,
 				78C86D641F123B20003A20E6 /* CapturingTutorialPageScene.swift */,
 				78C86D781F12ADF8003A20E6 /* CapturingSplashScene.swift */,
+				CAC1E1301F50413500195513 /* CapturingNewsScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -1387,6 +1405,25 @@
 				CA9845CB1F2907A800E8821D /* Info.plist */,
 			);
 			path = ScreenshotGenerator;
+			sourceTree = "<group>";
+		};
+		CAC1E1241F50405900195513 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				CA60B3571F4E2086005437BE /* NewsPresenterTests.swift */,
+			);
+			name = News;
+			sourceTree = "<group>";
+		};
+		CAC1E1251F50409800195513 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				CAC1E1261F5040BD00195513 /* NewsPresenter.swift */,
+				CAC1E1281F5040CB00195513 /* AuthService.swift */,
+				CAC1E12A1F5040E100195513 /* NewsScene.swift */,
+				CAC1E12C1F5040F500195513 /* WelcomePromptStringFactory.swift */,
+			);
+			name = News;
 			sourceTree = "<group>";
 		};
 		CAD780411F1D4C98002A8333 /* Login */ = {
@@ -1946,11 +1983,13 @@
 				9A861EB61F25550700B75A8C /* TutorialPageScene.swift in Sources */,
 				9A2A948D1F12D64B004D66FB /* DataModelVersionProviding.swift in Sources */,
 				9ACF99941EC858B2006FC958 /* LinkFragment.swift in Sources */,
+				CAC1E1291F5040CB00195513 /* AuthService.swift in Sources */,
 				9A861EB71F25550700B75A8C /* SplashScene.swift in Sources */,
 				6EF96CDD1F0F544B00EE6134 /* EventKitCalendarEvent.swift in Sources */,
 				781A943E1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift in Sources */,
 				6EF96CD91F0EDCB300EE6134 /* EventKitCalendarPermissionsProviding.swift in Sources */,
 				9A861ED41F25564900B75A8C /* WindowAlertRouter.swift in Sources */,
+				CAC1E12D1F5040F500195513 /* WelcomePromptStringFactory.swift in Sources */,
 				9A8ECA291F2BF2CA00351A83 /* UserDefaultsRemoteNotificationSoundProvider.swift in Sources */,
 				CA30EAB21F215E680053DBF6 /* LoginTask.swift in Sources */,
 				9A861EC01F25551400B75A8C /* NetworkReachability.swift in Sources */,
@@ -2016,6 +2055,7 @@
 				D6F3DEDDAFE507E873CB3806 /* WikiText.swift in Sources */,
 				9A80EF4E1F28C78900FD0D37 /* TargetRouter.swift in Sources */,
 				D6F3D523BDCDDA3A2A163E55 /* TimeLabelCell.swift in Sources */,
+				CAC1E1271F5040BD00195513 /* NewsPresenter.swift in Sources */,
 				78567B451F103C3800EBA31D /* RefreshControlDataStoreDelegate.swift in Sources */,
 				9A861E9D1F2547E200B75A8C /* NotificationRouter.swift in Sources */,
 				9A80EF641F29230300FD0D37 /* UserDetailsEventTablePreferences.swift in Sources */,
@@ -2058,6 +2098,7 @@
 				D6F3D204D352FE26C3F90906 /* KnowledgeTableViewController.swift in Sources */,
 				CA9845DA1F29199E00E8821D /* ScreenshotAssistant.swift in Sources */,
 				7820A6F81F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift in Sources */,
+				CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */,
 				78567B471F10D1C400EBA31D /* DataStoreLoadController.swift in Sources */,
 				9A861EA21F2554AB00B75A8C /* ShowInitiateDownloadTutorialPage.swift in Sources */,
 				CA30EAD01F27D8620053DBF6 /* MessageTableViewCell.swift in Sources */,
@@ -2106,6 +2147,7 @@
 				CA2B4FA61F1EA1B300F007E1 /* ApplicationTestBuilder.swift in Sources */,
 				CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */,
 				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,
+				CAC1E1311F50413500195513 /* CapturingNewsScene.swift in Sources */,
 				7820A6E51F140056004C0FB5 /* CapturingAlertRouter.swift in Sources */,
 				781A94381F1A19BD002DE70F /* CapturingFirebaseAdapter.swift in Sources */,
 				CA30EABA1F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift in Sources */,
@@ -2127,6 +2169,7 @@
 				6EF96CCF1F0EDB2000EE6134 /* CalendarTestDoubles.swift in Sources */,
 				CAD780491F1D51EB002A8333 /* StubClock.swift in Sources */,
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
+				CAC1E12F1F50411900195513 /* StubAuthService.swift in Sources */,
 				78D7EEB51F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift in Sources */,
 				78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */,
 				7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */,
@@ -2139,6 +2182,7 @@
 				7820A6E11F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift in Sources */,
 				781A94461F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift in Sources */,
 				CA30EAA81F2132480053DBF6 /* StubLoginResponse.swift in Sources */,
+				CAC1E1331F50414B00195513 /* WelcomePromptStringFactoryTestDoubles.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
