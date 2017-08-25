@@ -9,52 +9,6 @@
 @testable import Eurofurence
 import XCTest
 
-protocol EurofurenceApplicationProtocol {
-    
-    func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void)
-    
-}
-
-class EurofurenceAuthService: AuthService {
-    
-    private let app: EurofurenceApplicationProtocol
-    
-    init(app: EurofurenceApplicationProtocol) {
-        self.app = app
-    }
-    
-    func add(observer: AuthStateObserver) {
-        
-    }
-    
-    func determineAuthState(completionHandler: @escaping (AuthState) -> Void) {
-        app.retrieveCurrentUser { user in
-            if let user = user {
-                completionHandler(.loggedIn(user))
-            }
-            else {
-                completionHandler(.loggedOut)
-            }
-        }
-    }
-    
-}
-
-class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
-    
-    private(set) var wasRequestedForCurrentUser = false
-    private var retrieveUserCompletionHandler: ((User?) -> Void)?
-    func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void) {
-        wasRequestedForCurrentUser = true
-        retrieveUserCompletionHandler = completionHandler
-    }
-    
-    func resolveUserRetrievalWithUser(_ user: User?) {
-        retrieveUserCompletionHandler?(user)
-    }
-    
-}
-
 class CapturingAuthStateHandler {
     
     private(set) var capturedState: AuthState?
