@@ -37,7 +37,7 @@ class NewsPresenterTestsForAnonymousUser: XCTestCase {
         welcomePromptStringFactory.stubbedLoginString = expected
         let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser(welcomePromptStringFactory: welcomePromptStringFactory)
         
-        XCTAssertEqual(expected, context.newsScene.capturedWelcomePrompt)
+        XCTAssertEqual(expected, context.newsScene.capturedLoginPrompt)
     }
     
     func testWhenAuthServiceIndicatesUserLoggedInTheSceneShouldShowTheMessagesNavigationAction() {

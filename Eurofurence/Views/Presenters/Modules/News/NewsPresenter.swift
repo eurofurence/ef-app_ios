@@ -30,7 +30,7 @@ struct NewsPresenter: AuthStateObserver {
     func userDidLogout() {
         newsScene.showLoginNavigationAction()
         newsScene.hideMessagesNavigationAction()
-        newsScene.showWelcomePrompt(welcomePromptStringFactory.makeStringForAnonymousUser())
+        newsScene.showLoginPrompt(welcomePromptStringFactory.makeStringForAnonymousUser())
     }
 
     private func authStateResolved(_ state: AuthState) {

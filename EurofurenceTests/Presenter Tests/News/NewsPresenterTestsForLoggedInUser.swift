@@ -69,7 +69,7 @@ class NewsPresenterTestsForLoggedInUser: XCTestCase {
         let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser(welcomePromptStringFactory: welcomePromptStringFactory)
         context.authService.notifyObserversUserDidLogout()
         
-        XCTAssertEqual(expected, context.newsScene.capturedWelcomePrompt)
+        XCTAssertEqual(expected, context.newsScene.capturedLoginPrompt)
     }
     
 }
