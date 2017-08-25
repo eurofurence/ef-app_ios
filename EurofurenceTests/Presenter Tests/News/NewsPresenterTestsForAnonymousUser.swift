@@ -11,44 +11,23 @@ import XCTest
 
 class NewsPresenterTestsForAnonymousUser: XCTestCase {
     
-    struct TestContext {
-        
-        var presenter: NewsPresenter
-        var authService: StubAuthService
-        let newsScene = CapturingNewsScene()
-        
-        @discardableResult
-        static func makeTestCaseForAnonymousUser(welcomePromptStringFactory: WelcomePromptStringFactory = DummyWelcomePromptStringFactory()) -> TestContext {
-            return TestContext(authService: StubAuthService(authState: .loggedOut),
-                               welcomePromptStringFactory: welcomePromptStringFactory)
-        }
-        
-        private init(authService: StubAuthService, welcomePromptStringFactory: WelcomePromptStringFactory) {
-            self.authService = authService
-            presenter = NewsPresenter(authService: authService,
-                                      newsScene: newsScene,
-                                      welcomePromptStringFactory: welcomePromptStringFactory)
-        }
-        
-    }
-    
     func testWhenLaunchedWithLoggedOutUserTheSceneIsToldToShowTheLoginNavigationAction() {
-        let context = TestContext.makeTestCaseForAnonymousUser()
+        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
         XCTAssertTrue(context.newsScene.wasToldToShowLoginNavigationAction)
     }
     
     func testWhenLaunchedWithLoggedOutUserTheSceneIsNotToldToShowTheMessagesNavigationAction() {
-        let context = TestContext.makeTestCaseForAnonymousUser()
+        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
         XCTAssertFalse(context.newsScene.wasToldToShowMessagesNavigationAction)
     }
     
     func testWhenLaunchedWithLoggedOutUserTheSceneIsNotToldToHideTheLoginNavigationAction() {
-        let context = TestContext.makeTestCaseForAnonymousUser()
+        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
         XCTAssertFalse(context.newsScene.wasToldToHideLoginNavigationAction)
     }
     
     func testWhenLaunchedWithLoggedOutUserTheSceneIsToldToHideTheMessagesNavigationAction() {
-        let context = TestContext.makeTestCaseForAnonymousUser()
+        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
         XCTAssertTrue(context.newsScene.wasToldToHideMessagesNavigationAction)
     }
     
@@ -56,13 +35,13 @@ class NewsPresenterTestsForAnonymousUser: XCTestCase {
         let expected = "You should totes login"
         let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
         welcomePromptStringFactory.stubbedLoginString = expected
-        let context = TestContext.makeTestCaseForAnonymousUser(welcomePromptStringFactory: welcomePromptStringFactory)
+        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser(welcomePromptStringFactory: welcomePromptStringFactory)
         
         XCTAssertEqual(expected, context.newsScene.capturedWelcomePrompt)
     }
     
     func testWhenLaunchedWithLoggedOutUserThenAuthServiceIndicatesUserLoggedInTheSceneShouldShowTheMessagesNavigationAction() {
-        let context = TestContext.makeTestCaseForAnonymousUser()
+        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
         context.authService.notifyObserversUserDidLogin()
         
         XCTAssertTrue(context.newsScene.wasToldToShowMessagesNavigationAction)
