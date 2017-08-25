@@ -29,6 +29,8 @@ struct NewsPresenter: AuthStateObserver {
 
     func userDidLogout() {
         newsScene.showLoginNavigationAction()
+        newsScene.hideMessagesNavigationAction()
+        newsScene.showWelcomePrompt(welcomePromptStringFactory.makeStringForAnonymousUser())
     }
 
     private func authStateResolved(_ state: AuthState) {
@@ -37,9 +39,7 @@ struct NewsPresenter: AuthStateObserver {
             userDidLogin(user)
 
         case .loggedOut:
-            newsScene.showLoginNavigationAction()
-            newsScene.hideMessagesNavigationAction()
-            newsScene.showWelcomePrompt(welcomePromptStringFactory.makeStringForAnonymousUser())
+            userDidLogout()
         }
     }
 

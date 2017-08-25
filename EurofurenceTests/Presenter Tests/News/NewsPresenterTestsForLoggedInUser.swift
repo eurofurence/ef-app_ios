@@ -55,4 +55,21 @@ class NewsPresenterTestsForLoggedInUser: XCTestCase {
         XCTAssertTrue(context.newsScene.wasToldToShowLoginNavigationAction)
     }
     
+    func testWhenAuthServiceIndicatesUserLoggedOutTheSceneIsToldToHideTheMessagesNavigationAction() {
+        let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser()
+        context.authService.notifyObserversUserDidLogout()
+        
+        XCTAssertTrue(context.newsScene.wasToldToHideMessagesNavigationAction)
+    }
+    
+    func testWhenAuthServiceIndicatesUserLoggedOutTheNewsSceneIsToldToShowWelcomePromptWithLoginHintFromStringFactory() {
+        let expected = "You should totes login"
+        let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
+        welcomePromptStringFactory.stubbedLoginString = expected
+        let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser(welcomePromptStringFactory: welcomePromptStringFactory)
+        context.authService.notifyObserversUserDidLogout()
+        
+        XCTAssertEqual(expected, context.newsScene.capturedWelcomePrompt)
+    }
+    
 }
