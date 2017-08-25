@@ -269,6 +269,7 @@
 		CAF9A9411F50B85200628833 /* EurofurenceAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9401F50B85200628833 /* EurofurenceAuthService.swift */; };
 		CAF9A9431F50B87600628833 /* EurofurenceApplicationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */; };
 		CAF9A9451F50B89000628833 /* CapturingEurofurenceApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */; };
+		CAF9A9471F50B95F00628833 /* WhenRequestingCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */; };
 		D6F3D0434C71907BD410190E /* ImageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D64B03CB7EFAF70CC756 /* ImageServiceProtocol.swift */; };
 		D6F3D13186949132FE4694AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6F3D756F99A68B2DC5B7359 /* Main.storyboard */; };
 		D6F3D13A59E359E69EA66D7E /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D7AF46BAD0F1F9918A76 /* MenuTableViewCell.swift */; };
@@ -599,6 +600,7 @@
 		CAF9A9401F50B85200628833 /* EurofurenceAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceAuthService.swift; path = Interactors/Authorization/EurofurenceAuthService.swift; sourceTree = "<group>"; };
 		CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceApplicationProtocol.swift; path = Application/EurofurenceApplicationProtocol.swift; sourceTree = "<group>"; };
 		CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingEurofurenceApplication.swift; path = "Test Doubles/Application/CapturingEurofurenceApplication.swift"; sourceTree = "<group>"; };
+		CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenRequestingCurrentUser.swift; path = "Application Tests/WhenRequestingCurrentUser.swift"; sourceTree = "<group>"; };
 		D6F3D0A32DC83843688B347C /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		D6F3D15DBA1AA6254F83C20A /* DealersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealersTableViewCell.swift; sourceTree = "<group>"; };
 		D6F3D1CE9C98163AA2B6DF7D /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
@@ -992,6 +994,7 @@
 				CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */,
 				CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessages.swift */,
 				CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */,
+				CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */,
 			);
 			name = "Application Tests";
 			sourceTree = "<group>";
@@ -2173,6 +2176,7 @@
 				6EF96CDB1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift in Sources */,
 				CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */,
 				CAD7805D1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift in Sources */,
+				CAF9A9471F50B95F00628833 /* WhenRequestingCurrentUser.swift in Sources */,
 				78455B521F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift in Sources */,
 				7820A7011F16C0F0004C0FB5 /* CapturingWitnessedSystemPushPermissionsRequest.swift in Sources */,
 				78C86D7B1F12B2A2003A20E6 /* SplashViewControllerTests.swift in Sources */,

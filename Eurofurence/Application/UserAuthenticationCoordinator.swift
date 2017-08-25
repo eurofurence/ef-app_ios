@@ -15,7 +15,7 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
     private var loginAPI: LoginAPI
     private var credentialPersister: CredentialPersister
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
-    private var loggedInUser: User?
+    var loggedInUser: User?
     private var loginCompletionHandler: ((LoginResult) -> Void)?
 
     var isLoggedIn: Bool {

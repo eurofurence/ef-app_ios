@@ -24,7 +24,7 @@ enum PrivateMessageResult {
     case userNotAuthenticated
 }
 
-class EurofurenceApplication {
+class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     static var shared: EurofurenceApplication = {
         let JSONSession = URLSessionBasedJSONSession()
@@ -97,6 +97,12 @@ class EurofurenceApplication {
         guard let token = authenticationCoordinator.userAuthenticationToken else { return }
 
         privateMessagesAPI.markMessageWithIdentifierAsRead(message.identifier, authorizationToken: token)
+    }
+
+    func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void) {
+        if let user = authenticationCoordinator.loggedInUser {
+            completionHandler(user)
+        }
     }
 
     private func makeMessage(from apiMessage: APIPrivateMessage) -> Message {
