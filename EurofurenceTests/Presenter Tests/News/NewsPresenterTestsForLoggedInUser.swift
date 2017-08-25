@@ -11,27 +11,27 @@ import XCTest
 
 class NewsPresenterTestsForLoggedInUser: XCTestCase {
     
-    func testWhenLaunchedWithLoggedInUserTheSceneIsToldToShowTheMessagesNavigationAction() {
+    func testTheSceneIsToldToShowTheMessagesNavigationAction() {
         let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser()
         XCTAssertTrue(context.newsScene.wasToldToShowMessagesNavigationAction)
     }
     
-    func testWhenLaunchedWithLoggedInUserTheSceneIsNotToldToShowTheLoginNavigationAction() {
+    func testTheSceneIsNotToldToShowTheLoginNavigationAction() {
         let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser()
         XCTAssertFalse(context.newsScene.wasToldToShowLoginNavigationAction)
     }
     
-    func testWhenLaunchedWithLoggedInUserTheSceneIsToldToHideTheLoginNavigationAction() {
+    func testTheSceneIsToldToHideTheLoginNavigationAction() {
         let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser()
         XCTAssertTrue(context.newsScene.wasToldToHideLoginNavigationAction)
     }
     
-    func testWhenLaunchedWithLoggedInUserTheSceneIsNotToldToHideTheMessagesNavigationAction() {
+    func testTheSceneIsNotToldToHideTheMessagesNavigationAction() {
         let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser()
         XCTAssertFalse(context.newsScene.wasToldToHideMessagesNavigationAction)
     }
     
-    func testWhenLaunchedWithLoggedInUserTheWelcomePromptShouldBeSourcedFromTheWelcomePromptStringFactoryUsingTheUser() {
+    func testTheWelcomePromptStringFactoryShouldGeneratePromptUsingLoggedInUser() {
         let user = User(registrationNumber: 42, username: "Cool dude")
         let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
         NewsPresenterTestContext.makeTestCaseForAuthenticatedUser(user, welcomePromptStringFactory: welcomePromptStringFactory)
@@ -39,7 +39,7 @@ class NewsPresenterTestsForLoggedInUser: XCTestCase {
         XCTAssertEqual(user, welcomePromptStringFactory.capturedWelcomePromptUser)
     }
     
-    func testWhenLaunchedWithLoggedInUserTheWelcomePromptShouldBeSourcedFromTheWelcomePromptStringFactory() {
+    func testTheWelcomePromptShouldBeSourcedFromTheWelcomePromptStringFactory() {
         let expected = "Welcome to the world of tomorrow"
         let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
         welcomePromptStringFactory.stubbedUserString = expected

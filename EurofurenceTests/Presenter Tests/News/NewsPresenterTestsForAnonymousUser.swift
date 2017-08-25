@@ -11,27 +11,27 @@ import XCTest
 
 class NewsPresenterTestsForAnonymousUser: XCTestCase {
     
-    func testWhenLaunchedWithLoggedOutUserTheSceneIsToldToShowTheLoginNavigationAction() {
+    func testTheSceneIsToldToShowTheLoginNavigationAction() {
         let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
         XCTAssertTrue(context.newsScene.wasToldToShowLoginNavigationAction)
     }
     
-    func testWhenLaunchedWithLoggedOutUserTheSceneIsNotToldToShowTheMessagesNavigationAction() {
+    func testTheSceneIsNotToldToShowTheMessagesNavigationAction() {
         let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
         XCTAssertFalse(context.newsScene.wasToldToShowMessagesNavigationAction)
     }
     
-    func testWhenLaunchedWithLoggedOutUserTheSceneIsNotToldToHideTheLoginNavigationAction() {
+    func testTheSceneIsNotToldToHideTheLoginNavigationAction() {
         let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
         XCTAssertFalse(context.newsScene.wasToldToHideLoginNavigationAction)
     }
     
-    func testWhenLaunchedWithLoggedOutUserTheSceneIsToldToHideTheMessagesNavigationAction() {
+    func testTheSceneIsToldToHideTheMessagesNavigationAction() {
         let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
         XCTAssertTrue(context.newsScene.wasToldToHideMessagesNavigationAction)
     }
     
-    func testWhenLaunchedWithLoggedOutUserShouldTellTheNewsSceneToShowWelcomePromptWithLoginHintFromStringFactory() {
+    func testTheNewsSceneIsToldToShowWelcomePromptWithLoginHintFromStringFactory() {
         let expected = "You should totes login"
         let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
         welcomePromptStringFactory.stubbedLoginString = expected
@@ -40,7 +40,7 @@ class NewsPresenterTestsForAnonymousUser: XCTestCase {
         XCTAssertEqual(expected, context.newsScene.capturedWelcomePrompt)
     }
     
-    func testWhenLaunchedWithLoggedOutUserThenAuthServiceIndicatesUserLoggedInTheSceneShouldShowTheMessagesNavigationAction() {
+    func testWhenAuthServiceIndicatesUserLoggedInTheSceneShouldShowTheMessagesNavigationAction() {
         let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
         context.authService.notifyObserversUserDidLogin()
         
