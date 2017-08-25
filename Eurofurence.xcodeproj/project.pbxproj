@@ -570,7 +570,7 @@
 		CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenMarkingMessageAsRead.swift; path = "Application Tests/WhenMarkingMessageAsRead.swift"; sourceTree = "<group>"; };
 		CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnreadMessageIndicator.swift; sourceTree = "<group>"; };
 		CAC1E1261F5040BD00195513 /* NewsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenter.swift; path = News/NewsPresenter.swift; sourceTree = "<group>"; };
-		CAC1E1281F5040CB00195513 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = News/AuthService.swift; sourceTree = "<group>"; };
+		CAC1E1281F5040CB00195513 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = Interactors/Authorization/AuthService.swift; sourceTree = "<group>"; };
 		CAC1E12A1F5040E100195513 /* NewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsScene.swift; path = News/NewsScene.swift; sourceTree = "<group>"; };
 		CAC1E12C1F5040F500195513 /* WelcomePromptStringFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomePromptStringFactory.swift; path = News/WelcomePromptStringFactory.swift; sourceTree = "<group>"; };
 		CAC1E12E1F50411900195513 /* StubAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAuthService.swift; path = "Test Doubles/StubAuthService.swift"; sourceTree = "<group>"; };
@@ -874,6 +874,7 @@
 		78455B4E1F117843005BE2D7 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
+				CAF9A93B1F50484A00628833 /* Interactors */,
 				6EF96CE01F12688700EE6134 /* Modules */,
 				78C86D611F123895003A20E6 /* Scenes */,
 				9A861EBC1F25551400B75A8C /* ApplicationContext.swift */,
@@ -1425,7 +1426,6 @@
 			isa = PBXGroup;
 			children = (
 				CAC1E1261F5040BD00195513 /* NewsPresenter.swift */,
-				CAC1E1281F5040CB00195513 /* AuthService.swift */,
 				CAC1E12A1F5040E100195513 /* NewsScene.swift */,
 				CAC1E12C1F5040F500195513 /* WelcomePromptStringFactory.swift */,
 			);
@@ -1474,6 +1474,22 @@
 				CAD7805C1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		CAF9A93B1F50484A00628833 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				CAF9A93C1F50488D00628833 /* Authorization */,
+			);
+			name = Interactors;
+			sourceTree = "<group>";
+		};
+		CAF9A93C1F50488D00628833 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				CAC1E1281F5040CB00195513 /* AuthService.swift */,
+			);
+			name = Authorization;
 			sourceTree = "<group>";
 		};
 		D6F3D0327856D0D0294EF5E6 /* Services */ = {
