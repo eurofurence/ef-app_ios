@@ -12,6 +12,7 @@ protocol WelcomePromptStringFactory {
 
     func makeString(for user: User) -> String
     func makeStringForAnonymousUser() -> String
+    func makeDescriptionForAnonymousUser() -> String
 
 }
 
@@ -23,6 +24,10 @@ struct UnlocalizedWelcomePromptStringFactory: WelcomePromptStringFactory {
 
     func makeStringForAnonymousUser() -> String {
         return "You are currently not logged in"
+    }
+
+    func makeDescriptionForAnonymousUser() -> String {
+        return "Tap here to login using your registration details and receive personalized messages from Eurofurence!"
     }
 
 }

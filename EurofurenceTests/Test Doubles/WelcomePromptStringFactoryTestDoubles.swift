@@ -13,6 +13,7 @@ struct DummyWelcomePromptStringFactory: WelcomePromptStringFactory {
     
     func makeString(for user: User) -> String { return "" }
     func makeStringForAnonymousUser() -> String { return "" }
+    func makeDescriptionForAnonymousUser() -> String { return "" }
     
 }
 
@@ -28,6 +29,11 @@ class CapturingWelcomePromptStringFactory: WelcomePromptStringFactory {
     var stubbedLoginString = ""
     func makeStringForAnonymousUser() -> String {
         return stubbedLoginString
+    }
+    
+    var stubbedLoginDescriptionString = ""
+    func makeDescriptionForAnonymousUser() -> String {
+        return stubbedLoginDescriptionString
     }
     
 }

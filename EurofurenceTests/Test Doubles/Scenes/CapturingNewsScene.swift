@@ -41,4 +41,9 @@ class CapturingNewsScene: NewsScene {
         capturedLoginPrompt = prompt
     }
     
+    private(set) var capturedLoginDescription: String?
+    func showLoginDescription(_ description: String) {
+        capturedLoginDescription = description
+    }
+    
 }
