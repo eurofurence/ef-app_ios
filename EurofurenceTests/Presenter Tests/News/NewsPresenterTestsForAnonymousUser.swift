@@ -49,6 +49,11 @@ class NewsPresenterTestsForAnonymousUser: XCTestCase {
         XCTAssertEqual(expected, context.newsScene.capturedLoginDescription)
     }
     
+    func testTheNewsSceneIsNotToldToPresentWelcomeDesciption() {
+        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
+        XCTAssertNil(context.newsScene.capturedWelcomeDescription)
+    }
+    
     func testWhenAuthServiceIndicatesUserLoggedInTheSceneShouldShowTheMessagesNavigationAction() {
         let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
         context.authService.notifyObserversUserDidLogin()

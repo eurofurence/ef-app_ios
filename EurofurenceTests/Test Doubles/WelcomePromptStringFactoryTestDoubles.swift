@@ -12,7 +12,7 @@ import Foundation
 struct DummyWelcomePromptStringFactory: WelcomePromptStringFactory {
     
     func makeString(for user: User) -> String { return "" }
-    func makeDescriptionForUnreadMessages(_ count: Int) { }
+    func makeDescriptionForUnreadMessages(_ count: Int) -> String { return "" }
     func makeStringForAnonymousUser() -> String { return "" }
     func makeDescriptionForAnonymousUser() -> String { return "" }
     
@@ -28,8 +28,10 @@ class CapturingWelcomePromptStringFactory: WelcomePromptStringFactory {
     }
     
     private(set) var capturedUnreadMessageCount: Int?
-    func makeDescriptionForUnreadMessages(_ count: Int) {
+    var stubbedUnreadMessageString = ""
+    func makeDescriptionForUnreadMessages(_ count: Int) -> String {
         capturedUnreadMessageCount = count
+        return stubbedUnreadMessageString
     }
     
     var stubbedLoginString = ""

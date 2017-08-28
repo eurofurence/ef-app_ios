@@ -11,7 +11,7 @@ import Foundation
 protocol WelcomePromptStringFactory {
 
     func makeString(for user: User) -> String
-    func makeDescriptionForUnreadMessages(_ count: Int)
+    func makeDescriptionForUnreadMessages(_ count: Int) -> String
 
     func makeStringForAnonymousUser() -> String
     func makeDescriptionForAnonymousUser() -> String
@@ -24,8 +24,8 @@ struct UnlocalizedWelcomePromptStringFactory: WelcomePromptStringFactory {
         return "Welcome, \(user.username) (\(user.registrationNumber))"
     }
 
-    func makeDescriptionForUnreadMessages(_ count: Int) {
-
+    func makeDescriptionForUnreadMessages(_ count: Int) -> String {
+        return "You have \(count) unread messages"
     }
 
     func makeStringForAnonymousUser() -> String {

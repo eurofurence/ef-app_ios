@@ -17,6 +17,7 @@ protocol NewsScene {
     func hideLoginNavigationAction()
 
     func showWelcomePrompt(_ prompt: String)
+    func showWelcomeDescription(_ description: String)
 
     func showLoginPrompt(_ prompt: String)
     func showLoginDescription(_ description: String)

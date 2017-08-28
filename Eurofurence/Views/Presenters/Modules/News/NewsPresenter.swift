@@ -12,6 +12,7 @@ struct NewsPresenter: AuthStateObserver {
 
     private let newsScene: NewsScene
     private let welcomePromptStringFactory: WelcomePromptStringFactory
+    private let privateMessagesService: PrivateMessagesService
 
     init(authService: AuthService,
          newsScene: NewsScene,
@@ -19,17 +20,20 @@ struct NewsPresenter: AuthStateObserver {
          privateMessagesService: PrivateMessagesService) {
         self.newsScene = newsScene
         self.welcomePromptStringFactory = welcomePromptStringFactory
+        self.privateMessagesService = privateMessagesService
 
         authService.determineAuthState(completionHandler: authStateResolved)
         authService.add(observer: self)
-
-        welcomePromptStringFactory.makeDescriptionForUnreadMessages(privateMessagesService.unreadMessageCount)
     }
 
     func userDidLogin(_ user: User) {
         newsScene.showMessagesNavigationAction()
         newsScene.hideLoginNavigationAction()
         newsScene.showWelcomePrompt(welcomePromptStringFactory.makeString(for: user))
+
+        let unreadMessageCount = privateMessagesService.unreadMessageCount
+        let unreadMessagesDescription = welcomePromptStringFactory.makeDescriptionForUnreadMessages(unreadMessageCount)
+        newsScene.showWelcomeDescription(unreadMessagesDescription)
     }
 
     func userDidLogout() {

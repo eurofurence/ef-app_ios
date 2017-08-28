@@ -70,6 +70,15 @@ class NewsPresenterTestsForLoggedInUser: XCTestCase {
         XCTAssertEqual(expected, context.newsScene.capturedWelcomePrompt)
     }
     
+    func testTheWelcomeDescriptionShouldbeSourcedFromTheWelcomePromptStringFactory() {
+        let expected = "You have a bunch of unread mail"
+        let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
+        welcomePromptStringFactory.stubbedUnreadMessageString = expected
+        let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser(welcomePromptStringFactory: welcomePromptStringFactory)
+        
+        XCTAssertEqual(expected, context.newsScene.capturedWelcomeDescription)
+    }
+    
     func testWhenAuthServiceIndicatesUserLoggedOutTheSceneIsToldToShowTheLoginNavigationAction() {
         let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser()
         context.authService.notifyObserversUserDidLogout()
