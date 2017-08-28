@@ -16,22 +16,28 @@ struct NewsPresenterTestContext {
     
     @discardableResult
     static func makeTestCaseForAuthenticatedUser(_ user: User = User(registrationNumber: 42, username: ""),
-                                                 welcomePromptStringFactory: WelcomePromptStringFactory = DummyWelcomePromptStringFactory()) -> NewsPresenterTestContext {
+                                                 welcomePromptStringFactory: WelcomePromptStringFactory = DummyWelcomePromptStringFactory(),
+                                                 privateMessagesService: PrivateMessagesService = DummyPrivateMessagesService()) -> NewsPresenterTestContext {
         return NewsPresenterTestContext(authService: StubAuthService(authState: .loggedIn(user)),
-                                        welcomePromptStringFactory: welcomePromptStringFactory)
+                                        welcomePromptStringFactory: welcomePromptStringFactory,
+                                        privateMessagesService: privateMessagesService)
     }
     
     @discardableResult
     static func makeTestCaseForAnonymousUser(welcomePromptStringFactory: WelcomePromptStringFactory = DummyWelcomePromptStringFactory()) -> NewsPresenterTestContext {
         return NewsPresenterTestContext(authService: StubAuthService(authState: .loggedOut),
-                                        welcomePromptStringFactory: welcomePromptStringFactory)
+                                        welcomePromptStringFactory: welcomePromptStringFactory,
+                                        privateMessagesService: DummyPrivateMessagesService())
     }
     
-    private init(authService: StubAuthService, welcomePromptStringFactory: WelcomePromptStringFactory) {
+    private init(authService: StubAuthService,
+                 welcomePromptStringFactory: WelcomePromptStringFactory,
+                 privateMessagesService: PrivateMessagesService) {
         self.authService = authService
         presenter = NewsPresenter(authService: authService,
                                   newsScene: newsScene,
-                                  welcomePromptStringFactory: welcomePromptStringFactory)
+                                  welcomePromptStringFactory: welcomePromptStringFactory,
+                                  privateMessagesService: privateMessagesService)
     }
     
 }

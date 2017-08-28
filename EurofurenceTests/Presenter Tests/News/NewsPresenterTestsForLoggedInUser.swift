@@ -6,8 +6,21 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
+import Darwin
 @testable import Eurofurence
 import XCTest
+
+struct StubPrivateMessagesService: PrivateMessagesService {
+    
+    var unreadMessageCount: Int = 0
+    
+}
+
+struct DummyPrivateMessagesService: PrivateMessagesService {
+    
+    var unreadMessageCount: Int = 0
+    
+}
 
 class NewsPresenterTestsForLoggedInUser: XCTestCase {
     
@@ -37,6 +50,15 @@ class NewsPresenterTestsForLoggedInUser: XCTestCase {
         NewsPresenterTestContext.makeTestCaseForAuthenticatedUser(user, welcomePromptStringFactory: welcomePromptStringFactory)
         
         XCTAssertEqual(user, welcomePromptStringFactory.capturedWelcomePromptUser)
+    }
+    
+    func testTheWelcomePromptStringFactoryShouldGenerateDescriptionUsingUnreadMessageCount() {
+        let unreadCount = Int(arc4random())
+        let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
+        let privateMessagesService = StubPrivateMessagesService(unreadMessageCount: unreadCount)
+        NewsPresenterTestContext.makeTestCaseForAuthenticatedUser(welcomePromptStringFactory: welcomePromptStringFactory, privateMessagesService: privateMessagesService)
+        
+        XCTAssertEqual(unreadCount, welcomePromptStringFactory.capturedUnreadMessageCount)
     }
     
     func testTheWelcomePromptShouldBeSourcedFromTheWelcomePromptStringFactory() {
