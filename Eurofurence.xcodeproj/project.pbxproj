@@ -272,6 +272,7 @@
 		CAF9A9471F50B95F00628833 /* WhenRequestingCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */; };
 		CAF9A94A1F54BB5600628833 /* PrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9491F54BB5600628833 /* PrivateMessagesService.swift */; };
 		CAF9A94C1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A94B1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift */; };
+		CAF9A94E1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A94D1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift */; };
 		D6F3D0434C71907BD410190E /* ImageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D64B03CB7EFAF70CC756 /* ImageServiceProtocol.swift */; };
 		D6F3D13186949132FE4694AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6F3D756F99A68B2DC5B7359 /* Main.storyboard */; };
 		D6F3D13A59E359E69EA66D7E /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D7AF46BAD0F1F9918A76 /* MenuTableViewCell.swift */; };
@@ -605,6 +606,7 @@
 		CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenRequestingCurrentUser.swift; path = "Application Tests/WhenRequestingCurrentUser.swift"; sourceTree = "<group>"; };
 		CAF9A9491F54BB5600628833 /* PrivateMessagesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateMessagesService.swift; path = "Interactors/Private Messages/PrivateMessagesService.swift"; sourceTree = "<group>"; };
 		CAF9A94B1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurencePrivateMessagesServiceTests.swift; path = "Presenter Tests/Interactor Tests/EurofurencePrivateMessagesServiceTests.swift"; sourceTree = "<group>"; };
+		CAF9A94D1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenRetrievingLocalPrivateMessages.swift; path = "Application Tests/WhenRetrievingLocalPrivateMessages.swift"; sourceTree = "<group>"; };
 		D6F3D0A32DC83843688B347C /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		D6F3D15DBA1AA6254F83C20A /* DealersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealersTableViewCell.swift; sourceTree = "<group>"; };
 		D6F3D1CE9C98163AA2B6DF7D /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
@@ -999,6 +1001,7 @@
 				CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessages.swift */,
 				CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */,
 				CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */,
+				CAF9A94D1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift */,
 			);
 			name = "Application Tests";
 			sourceTree = "<group>";
@@ -2200,6 +2203,7 @@
 				78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */,
 				78C86D6C1F123FD8003A20E6 /* PresentationTestBuilder.swift in Sources */,
 				CA30EABC1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift in Sources */,
+				CAF9A94E1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift in Sources */,
 				CAD780521F1E2D2E002A8333 /* CapturingLoginCredentialStore.swift in Sources */,
 				CA804DDA1F20D2F500E07A4A /* V2LoginAPITests.swift in Sources */,
 				78C86D791F12ADF8003A20E6 /* CapturingSplashScene.swift in Sources */,

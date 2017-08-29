@@ -76,7 +76,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                                                                                     userAuthenticationToken: authenticationCoordinator.userAuthenticationToken) { _ in }
     }
 
-    var localPrivateMessages: [Message] = []
+    private(set) var localPrivateMessages: [Message] = []
 
     func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {
         if let token = authenticationCoordinator.userAuthenticationToken {
@@ -84,6 +84,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                 switch response {
                 case .success(let response):
                     let messages = response.messages.map(self.makeMessage)
+                    self.localPrivateMessages = messages
                     completionHandler(.success(messages))
 
                 case .failure:

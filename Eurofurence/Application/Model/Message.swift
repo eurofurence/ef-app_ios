@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Message {
+struct Message: Equatable {
 
     var identifier: String
     var authorName: String
@@ -16,5 +16,14 @@ struct Message {
     var subject: String
     var contents: String
     var isRead: Bool
+
+    static func ==(lhs: Message, rhs: Message) -> Bool {
+        return  lhs.identifier == rhs.identifier &&
+                lhs.authorName == rhs.authorName &&
+                lhs.receivedDateTime == rhs.receivedDateTime &&
+                lhs.subject == rhs.subject &&
+                lhs.contents == rhs.contents &&
+                lhs.isRead == rhs.isRead
+    }
 
 }
