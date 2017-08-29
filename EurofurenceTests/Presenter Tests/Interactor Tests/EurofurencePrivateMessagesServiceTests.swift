@@ -6,7 +6,6 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-import Darwin
 @testable import Eurofurence
 import XCTest
 
@@ -45,7 +44,7 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
     }
     
     func testUnreadCountEqualsExpectedCountWithUnreadMessages() {
-        let unreadMessageCount = Int(arc4random_uniform(10))
+        let unreadMessageCount = Random.makeRandomNumber(upperLimit: 10)
         let messages = (0..<unreadMessageCount).map({ _ in makeMessage(read: false) })
         app.localPrivateMessages = messages
         
