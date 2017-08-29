@@ -14,10 +14,10 @@ struct NewsPresenter: AuthStateObserver {
     private let welcomePromptStringFactory: WelcomePromptStringFactory
     private let privateMessagesService: PrivateMessagesService
 
-    init(authService: AuthService,
-         newsScene: NewsScene,
-         welcomePromptStringFactory: WelcomePromptStringFactory,
-         privateMessagesService: PrivateMessagesService) {
+    init(newsScene: NewsScene,
+         authService: AuthService,
+         privateMessagesService: PrivateMessagesService,
+         welcomePromptStringFactory: WelcomePromptStringFactory) {
         self.newsScene = newsScene
         self.welcomePromptStringFactory = welcomePromptStringFactory
         self.privateMessagesService = privateMessagesService

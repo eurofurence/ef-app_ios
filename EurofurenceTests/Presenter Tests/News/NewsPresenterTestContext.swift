@@ -34,10 +34,10 @@ struct NewsPresenterTestContext {
                  welcomePromptStringFactory: WelcomePromptStringFactory,
                  privateMessagesService: PrivateMessagesService) {
         self.authService = authService
-        presenter = NewsPresenter(authService: authService,
-                                  newsScene: newsScene,
-                                  welcomePromptStringFactory: welcomePromptStringFactory,
-                                  privateMessagesService: privateMessagesService)
+        presenter = NewsPresenter(newsScene: newsScene,
+                                  authService: authService,
+                                  privateMessagesService: privateMessagesService,
+                                  welcomePromptStringFactory: welcomePromptStringFactory)
     }
     
 }
