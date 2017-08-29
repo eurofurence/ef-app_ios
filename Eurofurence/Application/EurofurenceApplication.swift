@@ -76,6 +76,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                                                                                     userAuthenticationToken: authenticationCoordinator.userAuthenticationToken) { _ in }
     }
 
+    var localPrivateMessages: [Message] = []
+
     func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {
         if let token = authenticationCoordinator.userAuthenticationToken {
             privateMessagesAPI.loadPrivateMessages(authorizationToken: token) { response in

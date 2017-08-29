@@ -8,6 +8,8 @@
 
 protocol EurofurenceApplicationProtocol {
 
+    var localPrivateMessages: [Message] { get }
+
     func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void)
 
 }

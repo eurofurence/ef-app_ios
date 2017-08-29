@@ -10,12 +10,20 @@
 
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
     
+    var localPrivateMessages: [Message] = []
+    
     private(set) var wasRequestedForCurrentUser = false
-    private var retrieveUserCompletionHandler: ((User?) -> Void)?
+    fileprivate var retrieveUserCompletionHandler: ((User?) -> Void)?
     func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void) {
         wasRequestedForCurrentUser = true
         retrieveUserCompletionHandler = completionHandler
     }
+    
+}
+
+// MARK: - Test Helpers
+
+extension CapturingEurofurenceApplication {
     
     func resolveUserRetrievalWithUser(_ user: User?) {
         retrieveUserCompletionHandler?(user)
