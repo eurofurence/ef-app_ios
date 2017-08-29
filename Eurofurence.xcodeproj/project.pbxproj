@@ -276,6 +276,7 @@
 		CAF9A9511F558E7800628833 /* RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9501F558E7800628833 /* RandomGenerator.swift */; };
 		CAF9A9531F55F3B300628833 /* EurofurencePrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9521F55F3B300628833 /* EurofurencePrivateMessagesService.swift */; };
 		CAF9A9551F55F9DB00628833 /* LoginPromptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9541F55F9DB00628833 /* LoginPromptTableViewCell.swift */; };
+		CAF9A9581F5601A700628833 /* MessagesPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9571F5601A700628833 /* MessagesPresenterTests.swift */; };
 		D6F3D0434C71907BD410190E /* ImageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D64B03CB7EFAF70CC756 /* ImageServiceProtocol.swift */; };
 		D6F3D13186949132FE4694AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6F3D756F99A68B2DC5B7359 /* Main.storyboard */; };
 		D6F3D13A59E359E69EA66D7E /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3D7AF46BAD0F1F9918A76 /* MenuTableViewCell.swift */; };
@@ -613,6 +614,7 @@
 		CAF9A9501F558E7800628833 /* RandomGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RandomGenerator.swift; path = "Test Utilities/RandomGenerator.swift"; sourceTree = "<group>"; };
 		CAF9A9521F55F3B300628833 /* EurofurencePrivateMessagesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurencePrivateMessagesService.swift; path = "Interactors/Private Messages/EurofurencePrivateMessagesService.swift"; sourceTree = "<group>"; };
 		CAF9A9541F55F9DB00628833 /* LoginPromptTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPromptTableViewCell.swift; sourceTree = "<group>"; };
+		CAF9A9571F5601A700628833 /* MessagesPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesPresenterTests.swift; path = "Presenter Tests/Messages/MessagesPresenterTests.swift"; sourceTree = "<group>"; };
 		D6F3D0A32DC83843688B347C /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		D6F3D15DBA1AA6254F83C20A /* DealersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealersTableViewCell.swift; sourceTree = "<group>"; };
 		D6F3D1CE9C98163AA2B6DF7D /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
@@ -938,6 +940,7 @@
 			children = (
 				CAF9A93D1F5048FB00628833 /* Interactor Tests */,
 				78C86D6A1F123FC4003A20E6 /* Builders */,
+				CAF9A9561F56012100628833 /* Messages */,
 				CAC1E1241F50405900195513 /* News */,
 				78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */,
 				78C86D5C1F123686003A20E6 /* WhenTheTutorialAppears.swift */,
@@ -1547,6 +1550,14 @@
 				CAF9A9501F558E7800628833 /* RandomGenerator.swift */,
 			);
 			name = "Test Utilities";
+			sourceTree = "<group>";
+		};
+		CAF9A9561F56012100628833 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				CAF9A9571F5601A700628833 /* MessagesPresenterTests.swift */,
+			);
+			name = Messages;
 			sourceTree = "<group>";
 		};
 		D6F3D0327856D0D0294EF5E6 /* Services */ = {
@@ -2242,6 +2253,7 @@
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
 				78C86D831F13A35F003A20E6 /* UnlocalizedPresentationStringsShould.swift in Sources */,
 				7820A6FF1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift in Sources */,
+				CAF9A9581F5601A700628833 /* MessagesPresenterTests.swift in Sources */,
 				CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */,
 				781A94481F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift in Sources */,
 				7820A6FD1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift in Sources */,
