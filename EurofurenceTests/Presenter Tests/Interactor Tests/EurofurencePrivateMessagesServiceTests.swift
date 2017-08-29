@@ -9,24 +9,6 @@
 @testable import Eurofurence
 import XCTest
 
-struct EurofurencePrivateMessagesService: PrivateMessagesService {
-    
-    private let app: EurofurenceApplicationProtocol
-    
-    init(app: EurofurenceApplicationProtocol) {
-        self.app = app
-    }
-    
-    var unreadMessageCount: Int {
-        return app.localPrivateMessages.filter(isUnread).count
-    }
-    
-    private func isUnread(_ message: Message) -> Bool {
-        return !message.isRead
-    }
-    
-}
-
 class EurofurencePrivateMessagesServiceTests: XCTestCase {
     
     var service: EurofurencePrivateMessagesService!
