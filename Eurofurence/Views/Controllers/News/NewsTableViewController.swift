@@ -13,7 +13,8 @@ import Changeset
 
 class NewsTableViewController: UITableViewController,
                                UIViewControllerPreviewingDelegate,
-                               MessagesViewControllerDelegate {
+                               MessagesViewControllerDelegate,
+                               NewsScene {
 	@IBOutlet weak var favoritesOnlySegmentedControl: UISegmentedControl!
 
 	private var announcementsViewModel: AnnouncementsViewModel = try! ViewModelResolver.container.resolve()
@@ -21,7 +22,14 @@ class NewsTableViewController: UITableViewController,
 	private var newsPreferences = UserDetailsNewsPreferences(userDefaults: UserDefaults.standard)
 	private var timeService: TimeService = try! ServiceResolver.container.resolve()
 	private var disposables = CompositeDisposable()
-    private var loggedInUser: User?
+
+    private var presenter: NewsPresenter?
+    private var showLoginBanner = false
+    private var showWelcomeUserBanner = false
+    private var welcomePrompt = ""
+    private var welcomeDescription = ""
+    private var loginPrompt = ""
+    private var loginDescription = ""
 
 	private var announcements: [Announcement] = []
 	private var runningEvents: [Event] = []
@@ -121,6 +129,16 @@ class NewsTableViewController: UITableViewController,
         DataStoreRefreshController.shared.add(refreshControlVisibilityDelegate)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        let app = EurofurenceApplication.shared
+        presenter = NewsPresenter(newsScene: self,
+                                  authService: EurofurenceAuthService(app: app),
+                                  privateMessagesService: EurofurencePrivateMessagesService(app: app),
+                                  welcomePromptStringFactory: UnlocalizedWelcomePromptStringFactory())
+    }
+
 	@IBAction func favoritesOnlyFilterChanged(_ sender: UISegmentedControl) {
 		newsPreferences.setFilterEventFavorites(sender.selectedSegmentIndex == 1)
 		timeService.tick()
@@ -200,23 +218,29 @@ class NewsTableViewController: UITableViewController,
 		}
 	}
 
+    private func makeWelcomeBanner(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LoggedInCell", for: indexPath) as! UnreadMessagesTableViewCell
+        cell.showUserNameSynopsis(welcomePrompt)
+        cell.showUnreadMessageCountSynopsis(welcomeDescription)
+
+        return cell
+    }
+
+    private func makeLoginBanner(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LoginHintCell", for: indexPath) as! LoginPromptTableViewCell
+        cell.showPrompt(loginPrompt)
+        cell.showDescription(loginDescription)
+
+        return cell
+    }
+
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		switch indexPath.section {
         case 0:
-            if let user = loggedInUser {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "LoggedInCell", for: indexPath) as! UnreadMessagesTableViewCell
-                cell.showUserNameSynopsis("Welcome, \(user.username) (\(user.registrationNumber))")
-
-                var unreadMessagesSynopsis = "You have \(unreadMessageCount) unread message"
-                if unreadMessageCount != 1 {
-                   unreadMessagesSynopsis += "s"
-                }
-
-                cell.showUnreadMessageCountSynopsis(unreadMessagesSynopsis)
-
-                return cell
+            if showWelcomeUserBanner {
+                return makeWelcomeBanner(indexPath)
             } else {
-                return tableView.dequeueReusableCell(withIdentifier: "LoginHintCell", for: indexPath)
+                return makeLoginBanner(indexPath)
             }
 		case 1:
 			if announcements.isEmpty {
@@ -399,21 +423,46 @@ class NewsTableViewController: UITableViewController,
         navigationController?.popToViewController(self, animated: true)
     }
 
-    // MARK: PrivateMessagesObserver
+    // MARK: NewsScene
 
-    func privateMessagesAvailable(_ privateMessages: [Message]) {
-        let readCount = privateMessages.filter({ $0.isRead }).count
-        unreadMessageCount = privateMessages.count - readCount
+    func showMessagesNavigationAction() {
+        showWelcomeUserBanner = true
         reloadUserMessagesBanner()
-		updateBadgeCount()
     }
 
-    func failedToLoadPrivateMessages() {
-
+    func hideMessagesNavigationAction() {
+        showWelcomeUserBanner = false
+        reloadUserMessagesBanner()
     }
 
-    func userNotAuthenticatedForPrivateMessages() {
+    func showLoginNavigationAction() {
+        showLoginBanner = true
+        reloadUserMessagesBanner()
+    }
 
+    func hideLoginNavigationAction() {
+        showLoginBanner = false
+        reloadUserMessagesBanner()
+    }
+
+    func showWelcomePrompt(_ prompt: String) {
+        welcomePrompt = prompt
+        reloadUserMessagesBanner()
+    }
+
+    func showWelcomeDescription(_ description: String) {
+        welcomeDescription = description
+        reloadUserMessagesBanner()
+    }
+
+    func showLoginPrompt(_ prompt: String) {
+        loginPrompt = prompt
+        reloadUserMessagesBanner()
+    }
+
+    func showLoginDescription(_ description: String) {
+        loginDescription = description
+        reloadUserMessagesBanner()
     }
 
     // MARK: Private

@@ -492,7 +492,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoginHintCell" rowHeight="144" id="hE9-iK-InR">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoginHintCell" rowHeight="144" id="hE9-iK-InR" customClass="LoginPromptTableViewCell" customModule="Eurofurence" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="173" width="320" height="144"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hE9-iK-InR" id="n3e-8i-RQG">
@@ -529,6 +529,10 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="welcomePromptDescription" destination="ifX-2O-vyq" id="fTE-ns-kdg"/>
+                                    <outlet property="welcomePromptLabel" destination="fNK-mD-Id9" id="RQz-hQ-wca"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoggedInCell" rowHeight="81" id="sUt-70-LMp" customClass="UnreadMessagesTableViewCell" customModule="Eurofurence" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="317" width="320" height="81"/>
