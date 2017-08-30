@@ -79,48 +79,50 @@ class CapturingMessagesPresenterDelegate: MessagesPresenterDelegate {
 
 class MessagesPresenterTests: XCTestCase {
     
-    func testWhenSceneAppearsForTheFirstTimeWithLoggedOutUserTheResolveUserAuthenticationActionIsRan() {
-        let resolveUserAuthenticationCommand = CapturingResolveUserAuthenticationAction()
-        let authService = StubAuthService(authState: .loggedOut)
-        _ = MessagesPresenter(authService: authService,
-                              resolveUserAuthenticationAction: resolveUserAuthenticationCommand,
-                              delegate: DummyMessagesPresenterDelegate())
+    struct Context {
         
-        XCTAssertTrue(resolveUserAuthenticationCommand.wasRan)
+        var presenter: MessagesPresenter
+        let delegate = CapturingMessagesPresenterDelegate()
+        let resolveUserAuthenticationCommand = CapturingResolveUserAuthenticationAction()
+        
+        static func makeTestCaseForUnauthenticatedUser() -> Context {
+            return Context(authState: .loggedOut)
+        }
+        
+        static func makeTestCaseForAuthenticatedUser(_ user: User = User(registrationNumber: 42, username: "")) -> Context {
+            return Context(authState: .loggedIn(user))
+        }
+        
+        private init(authState: AuthState) {
+            presenter = MessagesPresenter(authService: StubAuthService(authState: authState),
+                                          resolveUserAuthenticationAction: resolveUserAuthenticationCommand,
+                                          delegate: delegate)
+        }
+        
+    }
+    
+    func testWhenSceneAppearsForTheFirstTimeWithLoggedOutUserTheResolveUserAuthenticationActionIsRan() {
+        let context = Context.makeTestCaseForUnauthenticatedUser()
+        XCTAssertTrue(context.resolveUserAuthenticationCommand.wasRan)
     }
     
     func testWhenSceneAppearsForTheFirstTimeWithLoggedInUserTheResolveUserAuthenticationActionIsNotRan() {
-        let resolveUserAuthenticationCommand = CapturingResolveUserAuthenticationAction()
-        let authService = StubAuthService(authState: .loggedIn(User(registrationNumber: 42, username: "")))
-        _ = MessagesPresenter(authService: authService,
-                              resolveUserAuthenticationAction: resolveUserAuthenticationCommand,
-                              delegate: DummyMessagesPresenterDelegate())
-        
-        XCTAssertFalse(resolveUserAuthenticationCommand.wasRan)
+        let context = Context.makeTestCaseForAuthenticatedUser()
+        XCTAssertFalse(context.resolveUserAuthenticationCommand.wasRan)
     }
     
     func testWhenSceneAppearsForTheFirstTimeWithLoggedOutUserWhenTheResolveUserAuthenticationActionFailsTheMessagesPresenterDelegateIsToldToDismissTheMessagesScene() {
-        let resolveUserAuthenticationCommand = CapturingResolveUserAuthenticationAction()
-        let messagesPresenterDelegate = CapturingMessagesPresenterDelegate()
-        let authService = StubAuthService(authState: .loggedOut)
-        _ = MessagesPresenter(authService: authService,
-                              resolveUserAuthenticationAction: resolveUserAuthenticationCommand,
-                              delegate: messagesPresenterDelegate)
-        resolveUserAuthenticationCommand.failToResolveUser()
+        let context = Context.makeTestCaseForUnauthenticatedUser()
+        context.resolveUserAuthenticationCommand.failToResolveUser()
         
-        XCTAssertTrue(messagesPresenterDelegate.wasToldToDismissMessagesScene)
+        XCTAssertTrue(context.delegate.wasToldToDismissMessagesScene)
     }
     
     func testWhenSceneAppearsForTheFirstTimeWithLoggedOutUserWhenTheResolveUserAuthenticationActionSucceedsTheMessagesPresenterDelegateIsNotToldToDismissTheMessagesScene() {
-        let resolveUserAuthenticationCommand = CapturingResolveUserAuthenticationAction()
-        let messagesPresenterDelegate = CapturingMessagesPresenterDelegate()
-        let authService = StubAuthService(authState: .loggedOut)
-        _ = MessagesPresenter(authService: authService,
-                              resolveUserAuthenticationAction: resolveUserAuthenticationCommand,
-                              delegate: messagesPresenterDelegate)
-        resolveUserAuthenticationCommand.resolveUser()
+        let context = Context.makeTestCaseForAuthenticatedUser()
+        context.resolveUserAuthenticationCommand.resolveUser()
         
-        XCTAssertFalse(messagesPresenterDelegate.wasToldToDismissMessagesScene)
+        XCTAssertFalse(context.delegate.wasToldToDismissMessagesScene)
     }
     
 }
