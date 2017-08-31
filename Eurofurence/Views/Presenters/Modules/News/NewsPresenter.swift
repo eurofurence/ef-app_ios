@@ -13,17 +13,17 @@ struct NewsPresenter: AuthStateObserver, NewsSceneDelegate {
     private let newsScene: NewsScene
     private let welcomePromptStringFactory: WelcomePromptStringFactory
     private let privateMessagesService: PrivateMessagesService
-    private let showMessagesAction: Command
+    private let performLoginCommand: Command
 
     init(newsScene: NewsScene,
          authService: AuthService,
          privateMessagesService: PrivateMessagesService,
          welcomePromptStringFactory: WelcomePromptStringFactory,
-         showMessagesAction: Command) {
+         performLoginCommand: Command) {
         self.newsScene = newsScene
         self.welcomePromptStringFactory = welcomePromptStringFactory
         self.privateMessagesService = privateMessagesService
-        self.showMessagesAction = showMessagesAction
+        self.performLoginCommand = performLoginCommand
 
         newsScene.delegate = self
 
@@ -49,7 +49,7 @@ struct NewsPresenter: AuthStateObserver, NewsSceneDelegate {
     }
 
     func newsSceneDidTapLoginAction(_ scene: NewsScene) {
-        showMessagesAction.run()
+        performLoginCommand.run()
     }
 
     private func authStateResolved(_ state: AuthState) {

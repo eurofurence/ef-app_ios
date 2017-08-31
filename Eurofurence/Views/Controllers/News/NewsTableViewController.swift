@@ -141,7 +141,7 @@ class NewsTableViewController: UITableViewController,
                                   authService: EurofurenceAuthService(app: app),
                                   privateMessagesService: EurofurencePrivateMessagesService(app: app),
                                   welcomePromptStringFactory: UnlocalizedWelcomePromptStringFactory(),
-                                  showMessagesAction: DummyShowMessagesAction())
+                                  performLoginCommand: DummyShowMessagesAction())
     }
 
 	@IBAction func favoritesOnlyFilterChanged(_ sender: UISegmentedControl) {
