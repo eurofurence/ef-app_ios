@@ -21,15 +21,22 @@ protocol MessagesPresenterDelegate {
     
 }
 
+protocol MessagesScene {
+    
+    func showRefreshIndicator()
+    
+}
+
 struct MessagesPresenter {
     
-    init(authService: AuthService,
+    init(scene: MessagesScene,
+         authService: AuthService,
          resolveUserAuthenticationAction: ResolveUserAuthenticationAction,
          delegate: MessagesPresenterDelegate) {
         authService.determineAuthState { (state) in
             switch state {
             case .loggedIn(_):
-                break
+                scene.showRefreshIndicator()
                 
             case .loggedOut:
                 resolveUserAuthenticationAction.run { resolvedUser in
@@ -77,11 +84,21 @@ class CapturingMessagesPresenterDelegate: MessagesPresenterDelegate {
     
 }
 
+class CapturingMessagesScene: MessagesScene {
+    
+    private(set) var wasToldToShowRefreshIndicator = false
+    func showRefreshIndicator() {
+        wasToldToShowRefreshIndicator = true
+    }
+    
+}
+
 class MessagesPresenterTests: XCTestCase {
     
     struct Context {
         
         var presenter: MessagesPresenter
+        let scene = CapturingMessagesScene()
         let delegate = CapturingMessagesPresenterDelegate()
         let resolveUserAuthenticationCommand = CapturingResolveUserAuthenticationAction()
         
@@ -94,7 +111,8 @@ class MessagesPresenterTests: XCTestCase {
         }
         
         private init(authState: AuthState) {
-            presenter = MessagesPresenter(authService: StubAuthService(authState: authState),
+            presenter = MessagesPresenter(scene: scene,
+                                          authService: StubAuthService(authState: authState),
                                           resolveUserAuthenticationAction: resolveUserAuthenticationCommand,
                                           delegate: delegate)
         }
@@ -123,6 +141,16 @@ class MessagesPresenterTests: XCTestCase {
         context.resolveUserAuthenticationCommand.resolveUser()
         
         XCTAssertFalse(context.delegate.wasToldToDismissMessagesScene)
+    }
+    
+    func testWhenSceneAppearsWithLoggedInUserTheSceneIsToldToShowRefreshIndicator() {
+        let context = Context.makeTestCaseForAuthenticatedUser()
+        XCTAssertTrue(context.scene.wasToldToShowRefreshIndicator)
+    }
+    
+    func testWhenSceneAppearsWithLoggedOutUserTheSceneIsNotToldToShowRefreshIndicator() {
+        let context = Context.makeTestCaseForUnauthenticatedUser()
+        XCTAssertFalse(context.scene.wasToldToShowRefreshIndicator)
     }
     
 }
