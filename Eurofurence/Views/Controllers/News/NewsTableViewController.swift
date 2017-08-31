@@ -136,13 +136,25 @@ class NewsTableViewController: UITableViewController,
             func run() { }
         }
 
+        struct BlockCommand: Command {
+            var block: () -> Void
+
+            func run() {
+                block()
+            }
+        }
+
+        let showMessagesCommand = BlockCommand {
+            self.performSegue(withIdentifier: "showMessages", sender: self)
+        }
+
         let app = EurofurenceApplication.shared
         presenter = NewsPresenter(newsScene: self,
                                   authService: EurofurenceAuthService(app: app),
                                   privateMessagesService: EurofurencePrivateMessagesService(app: app),
                                   welcomePromptStringFactory: UnlocalizedWelcomePromptStringFactory(),
-                                  performLoginCommand: DummyCommand(),
-                                  showMessagesCommand: DummyCommand())
+                                  performLoginCommand: showMessagesCommand,
+                                  showMessagesCommand: showMessagesCommand)
     }
 
 	@IBAction func favoritesOnlyFilterChanged(_ sender: UISegmentedControl) {
@@ -302,7 +314,11 @@ class NewsTableViewController: UITableViewController,
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.section != 0 else {
-            performSegue(withIdentifier: "showMessages", sender: self)
+            if showLoginBanner {
+                delegate?.newsSceneDidTapLoginAction(self)
+            } else {
+                delegate?.newsSceneDidTapShowMessagesAction(self)
+            }
             return
         }
 
