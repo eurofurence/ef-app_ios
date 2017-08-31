@@ -132,11 +132,16 @@ class NewsTableViewController: UITableViewController,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        struct DummyShowMessagesAction: ShowMessagesAction {
+            func run() { }
+        }
+
         let app = EurofurenceApplication.shared
         presenter = NewsPresenter(newsScene: self,
                                   authService: EurofurenceAuthService(app: app),
                                   privateMessagesService: EurofurencePrivateMessagesService(app: app),
-                                  welcomePromptStringFactory: UnlocalizedWelcomePromptStringFactory())
+                                  welcomePromptStringFactory: UnlocalizedWelcomePromptStringFactory(),
+                                  showMessagesAction: DummyShowMessagesAction())
     }
 
 	@IBAction func favoritesOnlyFilterChanged(_ sender: UISegmentedControl) {
@@ -424,6 +429,8 @@ class NewsTableViewController: UITableViewController,
     }
 
     // MARK: NewsScene
+
+    var delegate: NewsSceneDelegate?
 
     func showMessagesNavigationAction() {
         showWelcomeUserBanner = true

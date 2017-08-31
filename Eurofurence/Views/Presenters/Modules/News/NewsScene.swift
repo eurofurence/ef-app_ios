@@ -8,7 +8,15 @@
 
 import Foundation
 
-protocol NewsScene {
+protocol NewsSceneDelegate {
+
+    func newsSceneDidTapLoginAction(_ scene: NewsScene)
+
+}
+
+protocol NewsScene: class {
+
+    var delegate: NewsSceneDelegate? { get set }
 
     func showMessagesNavigationAction()
     func hideMessagesNavigationAction()

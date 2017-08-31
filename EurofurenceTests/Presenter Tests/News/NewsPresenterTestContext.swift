@@ -13,6 +13,7 @@ struct NewsPresenterTestContext {
     var presenter: NewsPresenter
     var authService: StubAuthService
     let newsScene = CapturingNewsScene()
+    let showMessagesAction = CapturingShowMessagesAction()
     
     @discardableResult
     static func makeTestCaseForAuthenticatedUser(_ user: User = User(registrationNumber: 42, username: ""),
@@ -37,7 +38,8 @@ struct NewsPresenterTestContext {
         presenter = NewsPresenter(newsScene: newsScene,
                                   authService: authService,
                                   privateMessagesService: privateMessagesService,
-                                  welcomePromptStringFactory: welcomePromptStringFactory)
+                                  welcomePromptStringFactory: welcomePromptStringFactory,
+                                  showMessagesAction: showMessagesAction)
     }
     
 }

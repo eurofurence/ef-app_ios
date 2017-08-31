@@ -8,19 +8,24 @@
 
 import Foundation
 
-struct NewsPresenter: AuthStateObserver {
+struct NewsPresenter: AuthStateObserver, NewsSceneDelegate {
 
     private let newsScene: NewsScene
     private let welcomePromptStringFactory: WelcomePromptStringFactory
     private let privateMessagesService: PrivateMessagesService
+    private let showMessagesAction: ShowMessagesAction
 
     init(newsScene: NewsScene,
          authService: AuthService,
          privateMessagesService: PrivateMessagesService,
-         welcomePromptStringFactory: WelcomePromptStringFactory) {
+         welcomePromptStringFactory: WelcomePromptStringFactory,
+         showMessagesAction: ShowMessagesAction) {
         self.newsScene = newsScene
         self.welcomePromptStringFactory = welcomePromptStringFactory
         self.privateMessagesService = privateMessagesService
+        self.showMessagesAction = showMessagesAction
+
+        newsScene.delegate = self
 
         authService.determineAuthState(completionHandler: authStateResolved)
         authService.add(observer: self)
@@ -41,6 +46,10 @@ struct NewsPresenter: AuthStateObserver {
         newsScene.hideMessagesNavigationAction()
         newsScene.showLoginPrompt(welcomePromptStringFactory.makeStringForAnonymousUser())
         newsScene.showLoginDescription(welcomePromptStringFactory.makeDescriptionForAnonymousUser())
+    }
+
+    func newsSceneDidTapLoginAction(_ scene: NewsScene) {
+        showMessagesAction.run()
     }
 
     private func authStateResolved(_ state: AuthState) {

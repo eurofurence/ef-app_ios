@@ -11,6 +11,8 @@ import Foundation
 
 class CapturingNewsScene: NewsScene {
     
+    var delegate: NewsSceneDelegate?
+    
     private(set) var wasToldToShowMessagesNavigationAction = false
     func showMessagesNavigationAction() {
         wasToldToShowMessagesNavigationAction = true
@@ -49,6 +51,16 @@ class CapturingNewsScene: NewsScene {
     private(set) var capturedLoginDescription: String?
     func showLoginDescription(_ description: String) {
         capturedLoginDescription = description
+    }
+    
+}
+
+// MARK: Test Helpers
+
+extension CapturingNewsScene {
+    
+    func tapLoginAction() {
+        delegate?.newsSceneDidTapLoginAction(self)
     }
     
 }
