@@ -13,13 +13,13 @@ struct NewsPresenter: AuthStateObserver, NewsSceneDelegate {
     private let newsScene: NewsScene
     private let welcomePromptStringFactory: WelcomePromptStringFactory
     private let privateMessagesService: PrivateMessagesService
-    private let showMessagesAction: ShowMessagesAction
+    private let showMessagesAction: Command
 
     init(newsScene: NewsScene,
          authService: AuthService,
          privateMessagesService: PrivateMessagesService,
          welcomePromptStringFactory: WelcomePromptStringFactory,
-         showMessagesAction: ShowMessagesAction) {
+         showMessagesAction: Command) {
         self.newsScene = newsScene
         self.welcomePromptStringFactory = welcomePromptStringFactory
         self.privateMessagesService = privateMessagesService

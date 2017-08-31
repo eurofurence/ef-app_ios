@@ -132,7 +132,7 @@ class NewsTableViewController: UITableViewController,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        struct DummyShowMessagesAction: ShowMessagesAction {
+        struct DummyShowMessagesAction: Command {
             func run() { }
         }
 
