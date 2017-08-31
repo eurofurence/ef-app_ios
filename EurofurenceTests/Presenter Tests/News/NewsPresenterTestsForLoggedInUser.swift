@@ -102,4 +102,16 @@ class NewsPresenterTestsForLoggedInUser: XCTestCase {
         XCTAssertEqual(expected, context.newsScene.capturedLoginPrompt)
     }
     
+    func testWhenTheShowMessagesActionIsTappedTheShowMessagesCommandIsRan() {
+        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
+        context.newsScene.tapShowMessagesAction()
+        
+        XCTAssertTrue(context.showMessagesCommand.wasRan)
+    }
+    
+    func testTheShowMessagesCommandIsNotRanUntilTheShowMessagesActionIsTapped() {
+        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
+        XCTAssertFalse(context.showMessagesCommand.wasRan)
+    }
+    
 }

@@ -63,4 +63,8 @@ extension CapturingNewsScene {
         delegate?.newsSceneDidTapLoginAction(self)
     }
     
+    func tapShowMessagesAction() {
+        delegate?.newsSceneDidTapShowMessagesAction(self)
+    }
+    
 }

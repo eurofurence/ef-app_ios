@@ -132,7 +132,7 @@ class NewsTableViewController: UITableViewController,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        struct DummyShowMessagesAction: Command {
+        struct DummyCommand: Command {
             func run() { }
         }
 
@@ -141,7 +141,8 @@ class NewsTableViewController: UITableViewController,
                                   authService: EurofurenceAuthService(app: app),
                                   privateMessagesService: EurofurencePrivateMessagesService(app: app),
                                   welcomePromptStringFactory: UnlocalizedWelcomePromptStringFactory(),
-                                  performLoginCommand: DummyShowMessagesAction())
+                                  performLoginCommand: DummyCommand(),
+                                  showMessagesCommand: DummyCommand())
     }
 
 	@IBAction func favoritesOnlyFilterChanged(_ sender: UISegmentedControl) {
