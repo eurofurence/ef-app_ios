@@ -10,11 +10,15 @@ import Foundation
 
 struct NewsPresenter: AuthStateObserver, NewsSceneDelegate {
 
+    // MARK: Properties
+
     private let newsScene: NewsScene
     private let welcomePromptStringFactory: WelcomePromptStringFactory
     private let privateMessagesService: PrivateMessagesService
     private let performLoginCommand: Command
     private let showMessagesCommand: Command
+
+    // MARK: Initialization
 
     init(newsScene: NewsScene,
          authService: AuthService,
@@ -34,6 +38,8 @@ struct NewsPresenter: AuthStateObserver, NewsSceneDelegate {
         authService.add(observer: self)
     }
 
+    // MARK: AuthStateObserver
+
     func userDidLogin(_ user: User) {
         newsScene.showMessagesNavigationAction()
         newsScene.hideLoginNavigationAction()
@@ -51,6 +57,8 @@ struct NewsPresenter: AuthStateObserver, NewsSceneDelegate {
         newsScene.showLoginDescription(welcomePromptStringFactory.makeDescriptionForAnonymousUser())
     }
 
+    // MARK: NewsSceneDelegate
+
     func newsSceneDidTapLoginAction(_ scene: NewsScene) {
         performLoginCommand.run()
     }
@@ -58,6 +66,8 @@ struct NewsPresenter: AuthStateObserver, NewsSceneDelegate {
     func newsSceneDidTapShowMessagesAction(_ scene: NewsScene) {
         showMessagesCommand.run()
     }
+
+    // MARK: Private
 
     private func authStateResolved(_ state: AuthState) {
         switch state {
