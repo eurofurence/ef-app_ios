@@ -18,6 +18,10 @@ struct EurofurencePrivateMessagesService: PrivateMessagesService {
         return app.localPrivateMessages.filter(isUnread).count
     }
 
+    func refreshMessages() {
+
+    }
+
     private func isUnread(_ message: Message) -> Bool {
         return !message.isRead
     }

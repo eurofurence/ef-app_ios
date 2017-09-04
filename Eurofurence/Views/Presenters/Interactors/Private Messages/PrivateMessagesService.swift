@@ -10,4 +10,6 @@ protocol PrivateMessagesService {
 
     var unreadMessageCount: Int { get }
 
+    func refreshMessages()
+
 }

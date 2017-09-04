@@ -13,11 +13,26 @@ struct StubPrivateMessagesService: PrivateMessagesService {
     
     var unreadMessageCount: Int = 0
     
+    func refreshMessages() { }
+    
+}
+
+class CapturingPrivateMessagesService: PrivateMessagesService {
+    
+    var unreadMessageCount: Int = 0
+    
+    private(set) var wasToldToRefreshMessages = false
+    func refreshMessages() {
+        wasToldToRefreshMessages = true
+    }
+    
 }
 
 struct DummyPrivateMessagesService: PrivateMessagesService {
     
     var unreadMessageCount: Int = 0
+    
+    func refreshMessages() { }
     
 }
 

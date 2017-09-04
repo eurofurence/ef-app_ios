@@ -31,12 +31,14 @@ struct MessagesPresenter {
     
     init(scene: MessagesScene,
          authService: AuthService,
+         privateMessagesService: PrivateMessagesService,
          resolveUserAuthenticationAction: ResolveUserAuthenticationAction,
          delegate: MessagesPresenterDelegate) {
         authService.determineAuthState { (state) in
             switch state {
             case .loggedIn(_):
                 scene.showRefreshIndicator()
+                privateMessagesService.refreshMessages()
                 
             case .loggedOut:
                 resolveUserAuthenticationAction.run { resolvedUser in
@@ -101,6 +103,7 @@ class MessagesPresenterTests: XCTestCase {
         let scene = CapturingMessagesScene()
         let delegate = CapturingMessagesPresenterDelegate()
         let resolveUserAuthenticationCommand = CapturingResolveUserAuthenticationAction()
+        let privateMessagesService = CapturingPrivateMessagesService()
         
         static func makeTestCaseForUnauthenticatedUser() -> Context {
             return Context(authState: .loggedOut)
@@ -113,6 +116,7 @@ class MessagesPresenterTests: XCTestCase {
         private init(authState: AuthState) {
             presenter = MessagesPresenter(scene: scene,
                                           authService: StubAuthService(authState: authState),
+                                          privateMessagesService: privateMessagesService,
                                           resolveUserAuthenticationAction: resolveUserAuthenticationCommand,
                                           delegate: delegate)
         }
@@ -151,6 +155,16 @@ class MessagesPresenterTests: XCTestCase {
     func testWhenSceneAppearsWithLoggedOutUserTheSceneIsNotToldToShowRefreshIndicator() {
         let context = Context.makeTestCaseForUnauthenticatedUser()
         XCTAssertFalse(context.scene.wasToldToShowRefreshIndicator)
+    }
+    
+    func testWhenSceneAppearsWithLoggedInUserThePrivateMessagesServiceIsToldToRefreshMessages() {
+        let context = Context.makeTestCaseForAuthenticatedUser()
+        XCTAssertTrue(context.privateMessagesService.wasToldToRefreshMessages)
+    }
+    
+    func testWhenSceneAppearsWithLoggedOutUserThePrivateMessagesServiceIsNotToldToRefreshMessages() {
+        let context = Context.makeTestCaseForUnauthenticatedUser()
+        XCTAssertFalse(context.privateMessagesService.wasToldToRefreshMessages)
     }
     
 }
