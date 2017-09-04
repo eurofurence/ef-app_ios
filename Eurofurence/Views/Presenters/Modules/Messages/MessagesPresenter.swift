@@ -14,24 +14,38 @@ protocol MessagesPresenterDelegate {
 
 struct MessagesPresenter {
 
+    private let scene: MessagesScene
+    private let privateMessagesService: PrivateMessagesService
+    private let resolveUserAuthenticationAction: ResolveUserAuthenticationAction
+    private let delegate: MessagesPresenterDelegate
+
     init(scene: MessagesScene,
          authService: AuthService,
          privateMessagesService: PrivateMessagesService,
          resolveUserAuthenticationAction: ResolveUserAuthenticationAction,
          delegate: MessagesPresenterDelegate) {
-        authService.determineAuthState { (state) in
-            switch state {
-            case .loggedIn(_):
-                scene.showRefreshIndicator()
-                privateMessagesService.refreshMessages()
+        self.scene = scene
+        self.privateMessagesService = privateMessagesService
+        self.resolveUserAuthenticationAction = resolveUserAuthenticationAction
+        self.delegate = delegate
 
-            case .loggedOut:
-                resolveUserAuthenticationAction.run { resolvedUser in
-                    if !resolvedUser {
-                        delegate.dismissMessagesScene()
-                    }
-                }
-            }
+        authService.determineAuthState(completionHandler: authStateResolved)
+    }
+
+    private func authStateResolved(_ state: AuthState) {
+        switch state {
+        case .loggedIn(_):
+            scene.showRefreshIndicator()
+            privateMessagesService.refreshMessages()
+
+        case .loggedOut:
+            resolveUserAuthenticationAction.run(completionHandler: userResolved)
+        }
+    }
+
+    private func userResolved(_ resolved: Bool) {
+        if !resolved {
+            delegate.dismissMessagesScene()
         }
     }
 
