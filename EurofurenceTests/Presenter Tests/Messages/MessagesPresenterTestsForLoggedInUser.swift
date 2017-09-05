@@ -25,8 +25,22 @@ class MessagesPresenterTestsForLoggedInUser: XCTestCase {
         XCTAssertTrue(context.scene.wasToldToShowRefreshIndicator)
     }
     
+    func testWhenSceneAppearsTheSceneIsNotToldToHideRefreshIndicator() {
+        XCTAssertFalse(context.scene.wasToldToHideRefreshIndicator)
+    }
+    
     func testWhenSceneAppearsThePrivateMessagesServiceIsToldToRefreshMessages() {
         XCTAssertTrue(context.privateMessagesService.wasToldToRefreshMessages)
+    }
+    
+    func testWhenPrivateMessagesServiceFailsToLoadMessagesTheSceneIsToldToHideTheRefreshIndicator() {
+        context.privateMessagesService.failLastRefresh()
+        XCTAssertTrue(context.scene.wasToldToHideRefreshIndicator)
+    }
+    
+    func testWhenPrivateMessagesServiceSucceedsLoadingMessagesTheSceneIsToldToHideTheRefreshIndicator() {
+        context.privateMessagesService.succeedLastRefresh()
+        XCTAssertTrue(context.scene.wasToldToHideRefreshIndicator)
     }
     
 }

@@ -15,4 +15,9 @@ class CapturingMessagesScene: MessagesScene {
         wasToldToShowRefreshIndicator = true
     }
     
+    private(set) var wasToldToHideRefreshIndicator = false
+    func hideRefreshIndicator() {
+        wasToldToHideRefreshIndicator = true
+    }
+    
 }

@@ -36,11 +36,15 @@ struct MessagesPresenter {
         switch state {
         case .loggedIn(_):
             scene.showRefreshIndicator()
-            privateMessagesService.refreshMessages()
+            privateMessagesService.refreshMessages(completionHandler: privateMessagesDidFinishRefreshing)
 
         case .loggedOut:
             resolveUserAuthenticationAction.run(completionHandler: userResolved)
         }
+    }
+
+    private func privateMessagesDidFinishRefreshing(_ result: PrivateMessagesRefreshResult) {
+        scene.hideRefreshIndicator()
     }
 
     private func userResolved(_ resolved: Bool) {

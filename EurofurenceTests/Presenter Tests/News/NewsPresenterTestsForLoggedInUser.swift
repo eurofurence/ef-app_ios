@@ -13,7 +13,7 @@ struct StubPrivateMessagesService: PrivateMessagesService {
     
     var unreadMessageCount: Int = 0
     
-    func refreshMessages() { }
+    func refreshMessages(completionHandler: @escaping (PrivateMessagesRefreshResult) -> Void) { }
     
 }
 
@@ -22,8 +22,18 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
     var unreadMessageCount: Int = 0
     
     private(set) var wasToldToRefreshMessages = false
-    func refreshMessages() {
+    private var completionHandler: ((PrivateMessagesRefreshResult) -> Void)?
+    func refreshMessages(completionHandler: @escaping (PrivateMessagesRefreshResult) -> Void) {
         wasToldToRefreshMessages = true
+        self.completionHandler = completionHandler
+    }
+    
+    func failLastRefresh() {
+        completionHandler?(.failure)
+    }
+    
+    func succeedLastRefresh() {
+        completionHandler?(.success)
     }
     
 }
@@ -32,7 +42,7 @@ struct DummyPrivateMessagesService: PrivateMessagesService {
     
     var unreadMessageCount: Int = 0
     
-    func refreshMessages() { }
+    func refreshMessages(completionHandler: @escaping (PrivateMessagesRefreshResult) -> Void) { }
     
 }
 

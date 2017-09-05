@@ -9,5 +9,6 @@
 protocol MessagesScene {
 
     func showRefreshIndicator()
+    func hideRefreshIndicator()
 
 }

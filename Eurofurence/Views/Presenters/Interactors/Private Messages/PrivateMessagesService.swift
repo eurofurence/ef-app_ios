@@ -6,10 +6,15 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
+enum PrivateMessagesRefreshResult {
+    case success
+    case failure
+}
+
 protocol PrivateMessagesService {
 
     var unreadMessageCount: Int { get }
 
-    func refreshMessages()
+    func refreshMessages(completionHandler: @escaping (PrivateMessagesRefreshResult) -> Void)
 
 }
