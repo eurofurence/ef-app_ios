@@ -7,8 +7,11 @@
 //
 
 @testable import Eurofurence
+import Foundation
 
 class CapturingMessagesScene: MessagesScene {
+    
+    var delegate: MessagesSceneDelegate?
     
     private(set) var wasToldToShowRefreshIndicator = false
     func showRefreshIndicator() {
@@ -23,6 +26,10 @@ class CapturingMessagesScene: MessagesScene {
     private(set) var capturedMessagesViewModel: MessagesViewModel?
     func showMessages(_ viewModel: MessagesViewModel) {
         capturedMessagesViewModel = viewModel
+    }
+    
+    func tapMessage(at index: Int) {
+        delegate?.messagesSceneDidSelectMessage(at: IndexPath(indexes: [0, index]))
     }
     
 }

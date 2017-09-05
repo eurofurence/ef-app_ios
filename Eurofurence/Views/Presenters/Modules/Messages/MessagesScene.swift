@@ -6,7 +6,17 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-protocol MessagesScene {
+import Foundation
+
+protocol MessagesSceneDelegate {
+
+    func messagesSceneDidSelectMessage(at indexPath: IndexPath)
+
+}
+
+protocol MessagesScene: class {
+
+    var delegate: MessagesSceneDelegate? { get set }
 
     func showRefreshIndicator()
     func hideRefreshIndicator()

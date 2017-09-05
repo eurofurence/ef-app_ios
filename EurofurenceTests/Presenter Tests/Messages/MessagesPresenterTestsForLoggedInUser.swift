@@ -18,6 +18,10 @@ class MessagesPresenterTestsForLoggedInUser: XCTestCase {
         context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser()
     }
     
+    private func makeMessageWithIdentifier(_ identifier: String) -> Message {
+        return AppDataBuilder.makeMessage(identifier: identifier)
+    }
+    
     func testWhenSceneAppearsForTheFirstTimeTheResolveUserAuthenticationActionIsNotRan() {
         XCTAssertFalse(context.resolveUserAuthenticationCommand.wasRan)
     }
@@ -60,12 +64,20 @@ class MessagesPresenterTestsForLoggedInUser: XCTestCase {
     }
     
     func testWhenServiceSucceedsLoadingMessagesTheSceneIsProvidedWithViewModelForMessages() {
-        let makeMessage: (String) -> Message = { AppDataBuilder.makeMessage(identifier: $0) }
-        let messages = [makeMessage("A"), makeMessage("A"), makeMessage("A")]
+        let messages = [makeMessageWithIdentifier("A"), makeMessageWithIdentifier("B"), makeMessageWithIdentifier("C")]
         let expected = MessagesViewModel(messages: messages)
         context.privateMessagesService.succeedLastRefresh(messages: messages)
         
         XCTAssertEqual(expected, context.scene.capturedMessagesViewModel)
+    }
+    
+    func testWhenSceneTapsMessageAtIndexPathTheShowMessageActionIsInvokedWithTheExpectedMessage() {
+        let expectedMessage = makeMessageWithIdentifier("B")
+        let messages = [makeMessageWithIdentifier("A"), expectedMessage, makeMessageWithIdentifier("C")]
+        context.privateMessagesService.succeedLastRefresh(messages: messages)
+        context.scene.tapMessage(at: 1)
+        
+        XCTAssertEqual(expectedMessage, context.showMessageAction.capturedMessage)
     }
     
 }

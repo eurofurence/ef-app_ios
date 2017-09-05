@@ -6,30 +6,42 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
+import Foundation
+
 protocol MessagesPresenterDelegate {
 
     func dismissMessagesScene()
 
 }
 
-struct MessagesPresenter {
+class MessagesPresenter: MessagesSceneDelegate {
 
     private let scene: MessagesScene
     private let privateMessagesService: PrivateMessagesService
     private let resolveUserAuthenticationAction: ResolveUserAuthenticationAction
+    private let showMessageAction: ShowMessageAction
     private let delegate: MessagesPresenterDelegate
+    private var presentedMessages = [Message]()
 
     init(scene: MessagesScene,
          authService: AuthService,
          privateMessagesService: PrivateMessagesService,
          resolveUserAuthenticationAction: ResolveUserAuthenticationAction,
+         showMessageAction: ShowMessageAction,
          delegate: MessagesPresenterDelegate) {
         self.scene = scene
         self.privateMessagesService = privateMessagesService
         self.resolveUserAuthenticationAction = resolveUserAuthenticationAction
+        self.showMessageAction = showMessageAction
         self.delegate = delegate
 
+        scene.delegate = self
         authService.determineAuthState(completionHandler: authStateResolved)
+    }
+
+    func messagesSceneDidSelectMessage(at indexPath: IndexPath) {
+        let message = presentedMessages[indexPath[1]]
+        showMessageAction.show(message: message)
     }
 
     private func authStateResolved(_ state: AuthState) {
@@ -65,6 +77,7 @@ struct MessagesPresenter {
     }
 
     private func presentMessages(_ messages: [Message]) {
+        presentedMessages = messages
         scene.showMessages(MessagesViewModel(messages: messages))
     }
 

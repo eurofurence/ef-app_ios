@@ -15,6 +15,7 @@ struct MessagesPresenterTestContext {
     let delegate = CapturingMessagesPresenterDelegate()
     let resolveUserAuthenticationCommand = CapturingResolveUserAuthenticationAction()
     var privateMessagesService = CapturingPrivateMessagesService()
+    let showMessageAction = CapturingShowMessageAction()
     
     static func makeTestCaseForUnauthenticatedUser() -> MessagesPresenterTestContext {
         return MessagesPresenterTestContext(authState: .loggedOut)
@@ -33,6 +34,7 @@ struct MessagesPresenterTestContext {
                                       authService: StubAuthService(authState: authState),
                                       privateMessagesService: privateMessagesService,
                                       resolveUserAuthenticationAction: resolveUserAuthenticationCommand,
+                                      showMessageAction: showMessageAction,
                                       delegate: delegate)
     }
     
