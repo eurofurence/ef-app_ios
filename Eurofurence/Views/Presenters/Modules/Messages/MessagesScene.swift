@@ -11,4 +11,14 @@ protocol MessagesScene {
     func showRefreshIndicator()
     func hideRefreshIndicator()
 
+    func showMessages(_ viewModel: MessagesViewModel)
+
+}
+
+struct MessagesViewModel: Equatable {
+
+    static func ==(lhs: MessagesViewModel, rhs: MessagesViewModel) -> Bool {
+        return true
+    }
+
 }

@@ -6,6 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
+@testable import Eurofurence
 import XCTest
 
 class MessagesPresenterTestsForLoggedInUser: XCTestCase {
@@ -41,6 +42,11 @@ class MessagesPresenterTestsForLoggedInUser: XCTestCase {
     func testWhenPrivateMessagesServiceSucceedsLoadingMessagesTheSceneIsToldToHideTheRefreshIndicator() {
         context.privateMessagesService.succeedLastRefresh()
         XCTAssertTrue(context.scene.wasToldToHideRefreshIndicator)
+    }
+    
+    func testWhenServiceHasNoLocalMessagesTheSceneIsProvidedWithEmptyMessagesViewModel() {
+        let expected = MessagesViewModel()
+        XCTAssertEqual(expected, context.scene.capturedMessagesViewModel)
     }
     
 }

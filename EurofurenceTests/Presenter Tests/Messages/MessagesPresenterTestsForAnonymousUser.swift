@@ -55,4 +55,8 @@ class MessagesPresenterTestsForAnonymousUser: XCTestCase {
         XCTAssertFalse(context.privateMessagesService.wasToldToRefreshMessages)
     }
     
+    func testTheSceneShouldNotBeProvidedWithAnyMessagesViewModelsBeforeLoggingIn() {
+        XCTAssertNil(context.scene.capturedMessagesViewModel)
+    }
+    
 }

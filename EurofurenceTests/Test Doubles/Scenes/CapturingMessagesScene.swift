@@ -20,4 +20,9 @@ class CapturingMessagesScene: MessagesScene {
         wasToldToHideRefreshIndicator = true
     }
     
+    private(set) var capturedMessagesViewModel: MessagesViewModel?
+    func showMessages(_ viewModel: MessagesViewModel) {
+        capturedMessagesViewModel = viewModel
+    }
+    
 }
