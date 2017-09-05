@@ -40,4 +40,19 @@ class MessagesPresenterTestsForAnonymousUser: XCTestCase {
         XCTAssertFalse(context.privateMessagesService.wasToldToRefreshMessages)
     }
     
+    func testWhenTheResolveUserAuthenticationActionSucceedsThePrivateMessagesServiceIsToldToRefreshMessages() {
+        context.resolveUserAuthenticationCommand.resolveUser()
+        XCTAssertTrue(context.privateMessagesService.wasToldToRefreshMessages)
+    }
+    
+    func testWhenTheResolveUserAuthenticationActionSucceedsTheSceneIsToldToShowTheRefreshIndicator() {
+        context.resolveUserAuthenticationCommand.resolveUser()
+        XCTAssertTrue(context.scene.wasToldToShowRefreshIndicator)
+    }
+    
+    func testWhenTheResolveUserAuthenticationActionFailsThePrivateMessagesServiceIsNotToldToRefreshMessages() {
+        context.resolveUserAuthenticationCommand.failToResolveUser()
+        XCTAssertFalse(context.privateMessagesService.wasToldToRefreshMessages)
+    }
+    
 }

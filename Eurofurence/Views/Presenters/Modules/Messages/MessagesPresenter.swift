@@ -35,22 +35,28 @@ struct MessagesPresenter {
     private func authStateResolved(_ state: AuthState) {
         switch state {
         case .loggedIn(_):
-            scene.showRefreshIndicator()
-            privateMessagesService.refreshMessages(completionHandler: privateMessagesDidFinishRefreshing)
+            reloadPrivateMessages()
 
         case .loggedOut:
             resolveUserAuthenticationAction.run(completionHandler: userResolved)
         }
     }
 
-    private func privateMessagesDidFinishRefreshing(_ result: PrivateMessagesRefreshResult) {
-        scene.hideRefreshIndicator()
-    }
-
     private func userResolved(_ resolved: Bool) {
-        if !resolved {
+        if resolved {
+            reloadPrivateMessages()
+        } else {
             delegate.dismissMessagesScene()
         }
+    }
+
+    private func reloadPrivateMessages() {
+        scene.showRefreshIndicator()
+        privateMessagesService.refreshMessages(completionHandler: privateMessagesDidFinishRefreshing)
+    }
+
+    private func privateMessagesDidFinishRefreshing(_ result: PrivateMessagesRefreshResult) {
+        scene.hideRefreshIndicator()
     }
 
 }
