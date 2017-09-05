@@ -39,8 +39,8 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
         completionHandler?(.failure)
     }
     
-    func succeedLastRefresh() {
-        completionHandler?(.success)
+    func succeedLastRefresh(messages: [Message] = []) {
+        completionHandler?(.success(messages))
     }
     
 }

@@ -35,7 +35,7 @@ struct MessagesPresenter {
     private func authStateResolved(_ state: AuthState) {
         switch state {
         case .loggedIn(_):
-            scene.showMessages(MessagesViewModel(messages: privateMessagesService.localMessages))
+            presentMessages(privateMessagesService.localMessages)
             reloadPrivateMessages()
 
         case .loggedOut:
@@ -58,6 +58,14 @@ struct MessagesPresenter {
 
     private func privateMessagesDidFinishRefreshing(_ result: PrivateMessagesRefreshResult) {
         scene.hideRefreshIndicator()
+
+        if case .success(let messages) = result {
+            presentMessages(messages)
+        }
+    }
+
+    private func presentMessages(_ messages: [Message]) {
+        scene.showMessages(MessagesViewModel(messages: messages))
     }
 
 }

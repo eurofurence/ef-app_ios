@@ -59,4 +59,13 @@ class MessagesPresenterTestsForLoggedInUser: XCTestCase {
         XCTAssertEqual(expected, context.scene.capturedMessagesViewModel)
     }
     
+    func testWhenServiceSucceedsLoadingMessagesTheSceneIsProvidedWithViewModelForMessages() {
+        let makeMessage: (String) -> Message = { AppDataBuilder.makeMessage(identifier: $0) }
+        let messages = [makeMessage("A"), makeMessage("A"), makeMessage("A")]
+        let expected = MessagesViewModel(messages: messages)
+        context.privateMessagesService.succeedLastRefresh(messages: messages)
+        
+        XCTAssertEqual(expected, context.scene.capturedMessagesViewModel)
+    }
+    
 }

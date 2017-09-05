@@ -7,7 +7,7 @@
 //
 
 enum PrivateMessagesRefreshResult {
-    case success
+    case success([Message])
     case failure
 }
 
