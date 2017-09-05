@@ -11,7 +11,13 @@ import XCTest
 
 struct StubPrivateMessagesService: PrivateMessagesService {
     
+    init(unreadMessageCount: Int = 0, localMessages: [Message] = []) {
+        self.unreadMessageCount = unreadMessageCount
+        self.localMessages = localMessages
+    }
+    
     var unreadMessageCount: Int = 0
+    var localMessages: [Message] = []
     
     func refreshMessages(completionHandler: @escaping (PrivateMessagesRefreshResult) -> Void) { }
     
@@ -20,6 +26,7 @@ struct StubPrivateMessagesService: PrivateMessagesService {
 class CapturingPrivateMessagesService: PrivateMessagesService {
     
     var unreadMessageCount: Int = 0
+    var localMessages: [Message] = []
     
     private(set) var wasToldToRefreshMessages = false
     private var completionHandler: ((PrivateMessagesRefreshResult) -> Void)?
@@ -41,6 +48,7 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
 struct DummyPrivateMessagesService: PrivateMessagesService {
     
     var unreadMessageCount: Int = 0
+    var localMessages: [Message] = []
     
     func refreshMessages(completionHandler: @escaping (PrivateMessagesRefreshResult) -> Void) { }
     

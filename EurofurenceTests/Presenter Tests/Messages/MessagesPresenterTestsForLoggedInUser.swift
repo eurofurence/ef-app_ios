@@ -49,4 +49,14 @@ class MessagesPresenterTestsForLoggedInUser: XCTestCase {
         XCTAssertEqual(expected, context.scene.capturedMessagesViewModel)
     }
     
+    func testWhenServiceHasLocalMessageTheSceneIsProvidedWithViewModelWithMessage() {
+        let localMessage = AppDataBuilder.makeMessage()
+        let service = CapturingPrivateMessagesService()
+        service.localMessages = [localMessage]
+        context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: service)
+        let expected = MessagesViewModel(messages: [localMessage])
+        
+        XCTAssertEqual(expected, context.scene.capturedMessagesViewModel)
+    }
+    
 }

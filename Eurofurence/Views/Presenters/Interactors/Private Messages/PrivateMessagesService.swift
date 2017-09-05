@@ -14,6 +14,7 @@ enum PrivateMessagesRefreshResult {
 protocol PrivateMessagesService {
 
     var unreadMessageCount: Int { get }
+    var localMessages: [Message] { get }
 
     func refreshMessages(completionHandler: @escaping (PrivateMessagesRefreshResult) -> Void)
 

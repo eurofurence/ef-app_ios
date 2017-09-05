@@ -18,6 +18,10 @@ struct EurofurencePrivateMessagesService: PrivateMessagesService {
         return app.localPrivateMessages.filter(isUnread).count
     }
 
+    var localMessages: [Message] {
+        return []
+    }
+
     func refreshMessages(completionHandler: @escaping (PrivateMessagesRefreshResult) -> Void) {
 
     }

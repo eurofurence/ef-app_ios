@@ -21,21 +21,17 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
         service = EurofurencePrivateMessagesService(app: app)
     }
     
-    private func makeMessage(read: Bool) -> Message {
-        return Message(identifier: "", authorName: "", receivedDateTime: Date(), subject: "", contents: "", isRead: read)
-    }
-    
     func testUnreadCountEqualsExpectedCountWithUnreadMessages() {
         let unreadMessageCount = Random.makeRandomNumber(upperLimit: 10)
-        let messages = (0..<unreadMessageCount).map({ _ in makeMessage(read: false) })
+        let messages = (0..<unreadMessageCount).map({ _ in AppDataBuilder.makeMessage(read: false) })
         app.localPrivateMessages = messages
         
         XCTAssertEqual(unreadMessageCount, service.unreadMessageCount)
     }
     
     func testUnreadCountEqualsOneWithTwoMessagesWhereOneIsAlreadyRead() {
-        let unreadMessage = makeMessage(read: false)
-        let readMessage = makeMessage(read: true)
+        let unreadMessage = AppDataBuilder.makeMessage(read: false)
+        let readMessage = AppDataBuilder.makeMessage(read: true)
         app.localPrivateMessages = [unreadMessage, readMessage]
         
         XCTAssertEqual(1, service.unreadMessageCount)

@@ -14,17 +14,21 @@ struct MessagesPresenterTestContext {
     let scene = CapturingMessagesScene()
     let delegate = CapturingMessagesPresenterDelegate()
     let resolveUserAuthenticationCommand = CapturingResolveUserAuthenticationAction()
-    let privateMessagesService = CapturingPrivateMessagesService()
+    var privateMessagesService = CapturingPrivateMessagesService()
     
     static func makeTestCaseForUnauthenticatedUser() -> MessagesPresenterTestContext {
         return MessagesPresenterTestContext(authState: .loggedOut)
     }
     
-    static func makeTestCaseForAuthenticatedUser(_ user: User = User(registrationNumber: 42, username: "")) -> MessagesPresenterTestContext {
-        return MessagesPresenterTestContext(authState: .loggedIn(user))
+    static func makeTestCaseForAuthenticatedUser(_ user: User = User(registrationNumber: 42, username: ""),
+                                                 privateMessagesService: CapturingPrivateMessagesService = CapturingPrivateMessagesService()) -> MessagesPresenterTestContext {
+        return MessagesPresenterTestContext(authState: .loggedIn(user),
+                                            privateMessagesService: privateMessagesService)
     }
     
-    private init(authState: AuthState) {
+    private init(authState: AuthState,
+                 privateMessagesService: CapturingPrivateMessagesService = CapturingPrivateMessagesService()) {
+        self.privateMessagesService = privateMessagesService
         presenter = MessagesPresenter(scene: scene,
                                       authService: StubAuthService(authState: authState),
                                       privateMessagesService: privateMessagesService,
