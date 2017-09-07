@@ -19,11 +19,19 @@ struct EurofurencePrivateMessagesService: PrivateMessagesService {
     }
 
     var localMessages: [Message] {
-        return []
+        return app.localPrivateMessages
     }
 
     func refreshMessages(completionHandler: @escaping (PrivateMessagesRefreshResult) -> Void) {
+        app.fetchPrivateMessages { (result) in
+            switch result {
+            case .success(let messages):
+                completionHandler(.success(messages))
 
+            default:
+                completionHandler(.failure)
+            }
+        }
     }
 
     private func isUnread(_ message: Message) -> Bool {

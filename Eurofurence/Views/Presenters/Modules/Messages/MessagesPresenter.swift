@@ -15,7 +15,7 @@ protocol MessagesPresenterDelegate {
 }
 
 class MessagesPresenter: MessagesSceneDelegate {
-    
+
     // MARK: Properties
 
     private let scene: MessagesScene
@@ -24,7 +24,7 @@ class MessagesPresenter: MessagesSceneDelegate {
     private let showMessageAction: ShowMessageAction
     private let delegate: MessagesPresenterDelegate
     private var presentedMessages = [Message]()
-    
+
     // MARK: Initialization
 
     init(scene: MessagesScene,
@@ -42,14 +42,14 @@ class MessagesPresenter: MessagesSceneDelegate {
         scene.delegate = self
         authService.determineAuthState(completionHandler: authStateResolved)
     }
-    
+
     // MARK: MessagesSceneDelegate
 
     func messagesSceneDidSelectMessage(at indexPath: IndexPath) {
         let message = presentedMessages[indexPath[1]]
         showMessageAction.show(message: message)
     }
-    
+
     // MARK: Private
 
     private func authStateResolved(_ state: AuthState) {

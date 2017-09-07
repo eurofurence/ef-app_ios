@@ -37,4 +37,36 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
         XCTAssertEqual(1, service.unreadMessageCount)
     }
     
+    func testRefreshingPrivateMessagesWhenUserNotAuthenticatedShouldInvokeHandlerWithFailure() {
+        var result: PrivateMessagesRefreshResult?
+        service.refreshMessages { result = $0 }
+        app.resolvePrivateMessagesFetch(.userNotAuthenticated)
+        
+        XCTAssertEqual(result, .failure)
+    }
+    
+    func testFailedToLoadWhenRefreshingPrivateMessagesShouldInvokeHandlerWithFailure() {
+        var result: PrivateMessagesRefreshResult?
+        service.refreshMessages { result = $0 }
+        app.resolvePrivateMessagesFetch(.failedToLoad)
+        
+        XCTAssertEqual(result, .failure)
+    }
+    
+    func testLoadingPrivateMessagesSuccessfullyShouldProvideThemToTheCompletionHandler() {
+        let messages = [AppDataBuilder.makeMessage()]
+        var result: PrivateMessagesRefreshResult?
+        service.refreshMessages { result = $0 }
+        app.resolvePrivateMessagesFetch(.success(messages))
+        
+        XCTAssertEqual(result, .success(messages))
+    }
+    
+    func testLocalMessagesProvideMessagesFromApplication() {
+        let messages = [AppDataBuilder.makeMessage()]
+        app.localPrivateMessages = messages
+        
+        XCTAssertEqual(messages, service.localMessages)
+    }
+    
 }
