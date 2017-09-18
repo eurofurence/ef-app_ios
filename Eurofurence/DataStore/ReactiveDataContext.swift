@@ -159,7 +159,7 @@ class ReactiveDataContext: DataContextProtocol {
 					if let syncStateValue = value.entityData?.first as? Eurofurence.SyncState {
 						self.SyncState.swap(syncStateValue)
 					} else {
-						observer.send(error: DataStoreError.FailedRead(entityType: String(describing: Eurofurence.SyncState), description: "No sync state in store."))
+                        observer.send(error: DataStoreError.FailedRead(entityType: String(describing: Eurofurence.SyncState.self), description: "No sync state in store."))
 					}
 					overallProgress.completedUnitCount += 1
 					observer.send(value: overallProgress)
@@ -167,7 +167,7 @@ class ReactiveDataContext: DataContextProtocol {
 					observer.send(error: error)
 				}
 			} else {
-				observer.send(error: DataStoreError.FailedRead(entityType: String(describing: Eurofurence.SyncState), description: "Attempted to load sync state, but got no results."))
+                observer.send(error: DataStoreError.FailedRead(entityType: String(describing: Eurofurence.SyncState.self), description: "Attempted to load sync state, but got no results."))
 			}
 
 			resultsProducer.flatten(.merge).start({ event in
