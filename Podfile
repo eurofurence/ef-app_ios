@@ -9,7 +9,7 @@ target 'Eurofurence' do
 	pod 'Changeset'
 	pod 'Dip'
 	pod 'Dip-UI'
-	pod 'Eureka', :git => 'https://github.com/xmartlabs/Eureka.git'
+    pod 'Eureka', :git => 'https://github.com/xmartlabs/Eureka.git', :branch => 'feature/Xcode9-Swift3_2'
 	pod 'EVReflection'
 	pod 'EVReflection/Alamofire'
 	pod 'SwiftLint'

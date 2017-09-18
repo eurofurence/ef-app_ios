@@ -112,7 +112,7 @@ public enum ControllerProvider<VCType: UIViewController> {
 /**
  *  Responsible for the options passed to a selector view controller
  */
-public struct DataProvider<T: Equatable> {
+public struct DataProvider<T> where T: Equatable {
 
     public let arrayData: [T]?
 
@@ -325,8 +325,8 @@ public enum EurekaError: Error {
 public protocol FormViewControllerProtocol {
     var tableView: UITableView! { get }
 
-    func beginEditing<T: Equatable>(of: Cell<T>)
-    func endEditing<T: Equatable>(of: Cell<T>)
+    func beginEditing<T>(of: Cell<T>)
+    func endEditing<T>(of: Cell<T>)
 
     func insertAnimation(forRows rows: [BaseRow]) -> UITableViewRowAnimation
     func deleteAnimation(forRows rows: [BaseRow]) -> UITableViewRowAnimation
@@ -551,7 +551,7 @@ open class FormViewController: UIViewController, FormViewControllerProtocol {
     /**
     Called when a cell becomes first responder
     */
-    public final func beginEditing<T: Equatable>(of cell: Cell<T>) {
+    public final func beginEditing<T>(of cell: Cell<T>) {
         cell.row.isHighlighted = true
         cell.row.updateCell()
         RowDefaults.onCellHighlightChanged["\(type(of: cell.row!))"]?(cell, cell.row)
@@ -569,7 +569,7 @@ open class FormViewController: UIViewController, FormViewControllerProtocol {
     /**
      Called when a cell resigns first responder
      */
-    public final func endEditing<T: Equatable>(of cell: Cell<T>) {
+    public final func endEditing<T>(of cell: Cell<T>) {
         cell.row.isHighlighted = false
         cell.row.wasBlurred = true
         RowDefaults.onCellHighlightChanged["\(type(of: self))"]?(cell, cell.row)
@@ -769,10 +769,10 @@ extension FormViewController : UITableViewDelegate {
         return true
     }
 
-    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    open func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let row = form[indexPath]
-            var section = row.section!
+            let section = row.section!
             if let _ = row.baseCell.findFirstResponder() {
                 tableView.endEditing(true)
             }
@@ -801,7 +801,7 @@ extension FormViewController : UITableViewDelegate {
         }
     }
 
-    public func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+    open func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         guard let section = form[indexPath.section] as? MultivaluedSection, section.multivaluedOptions.contains(.Reorder) && section.count > 1 else {
             return false
         }
@@ -814,7 +814,7 @@ extension FormViewController : UITableViewDelegate {
         return true
     }
 
-    public func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+    open func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
         guard let section = form[sourceIndexPath.section] as? MultivaluedSection else { return sourceIndexPath }
         guard sourceIndexPath.section == proposedDestinationIndexPath.section else { return sourceIndexPath }
 
@@ -835,7 +835,7 @@ extension FormViewController : UITableViewDelegate {
         return proposedDestinationIndexPath
     }
 
-    public func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+    open func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
 
         guard var section = form[sourceIndexPath.section] as? MultivaluedSection else { return }
         if sourceIndexPath.row < section.count && destinationIndexPath.row < section.count && sourceIndexPath.row != destinationIndexPath.row {
@@ -850,7 +850,7 @@ extension FormViewController : UITableViewDelegate {
         }
     }
 
-    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    open func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         guard let section = form[indexPath.section] as? MultivaluedSection else {
             return .none
         }
@@ -863,7 +863,7 @@ extension FormViewController : UITableViewDelegate {
         return .none
     }
 
-    public func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+    open func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
         return self.tableView(tableView, editingStyleForRowAt: indexPath) != .none
     }
 }

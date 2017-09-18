@@ -1,6 +1,6 @@
 {
   "name": "ReachabilitySwift",
-  "version": "3",
+  "version": "4.0-beta1",
   "homepage": "https://github.com/ashleymills/Reachability.swift",
   "authors": {
     "Ashley Mills": "ashleymills@mac.com"
@@ -16,7 +16,7 @@
   },
   "source": {
     "git": "https://github.com/ashleymills/Reachability.swift.git",
-    "tag": "v3"
+    "tag": "v4.0-beta1"
   },
   "source_files": "Reachability/Reachability.swift",
   "frameworks": "SystemConfiguration",
