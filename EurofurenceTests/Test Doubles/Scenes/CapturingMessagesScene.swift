@@ -33,3 +33,12 @@ class CapturingMessagesScene: MessagesScene {
     }
     
 }
+
+class CapturingMessagesSceneDelegate: MessagesSceneDelegate {
+    
+    private(set) var capturedSelectedMessageIndexPath: IndexPath?
+    func messagesSceneDidSelectMessage(at indexPath: IndexPath) {
+        capturedSelectedMessageIndexPath = indexPath
+    }
+    
+}
