@@ -23,6 +23,25 @@ class MessagesViewControllerTests: XCTestCase {
         viewController.loadViewIfNeeded()
     }
     
+    private func makeMessageViewModel(author: String = "Title",
+                                      formattedReceivedDate: String = "Received",
+                                      subject: String = "Subject",
+                                      synopsis: String = "Synopsis",
+                                      isRead: Bool = true) -> MessageViewModel {
+        return MessageViewModel(author: author,
+                                formattedReceivedDate: formattedReceivedDate,
+                                subject: subject,
+                                synopsis: synopsis,
+                                isRead: isRead)
+    }
+    
+    private func showMessage(_ viewModel: MessageViewModel) -> MessageTableViewCell {
+        let viewModel = MessagesViewModel(childViewModels: [viewModel])
+        viewController.showMessages(viewModel)
+        
+        return viewController.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! MessageTableViewCell
+    }
+    
     func testTheRefreshIndicatorShouldBeEmbeddedWithinTheTableView() {
         XCTAssertTrue(viewController.refreshIndicator.isDescendant(of: viewController.tableView))
     }
@@ -55,14 +74,50 @@ class MessagesViewControllerTests: XCTestCase {
         XCTAssertEqual(randomMessageCount, viewController.tableView.numberOfRows(inSection: 0))
     }
     
-    func testUpdatingSceneWithViewModelShouldLaterDequeueCellWithTitleFromViewModel() {
-        let title = "Message title"
-        let messageViewModel = MessageViewModel(title: title)
-        let viewModel = MessagesViewModel(childViewModels: [messageViewModel])
-        viewController.showMessages(viewModel)
-        let cell = viewController.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! MessageTableViewCell
+    func testUpdatingSceneWithViewModelShouldLaterDequeueCellWithAuthorFromViewModel() {
+        let author = "Message title"
+        let messageViewModel = makeMessageViewModel(author: author)
+        let cell = showMessage(messageViewModel)
         
-        XCTAssertEqual(title, cell.messageTitleLabel.text)
+        XCTAssertEqual(author, cell.messageAuthorLabel.text)
+    }
+    
+    func testUpdatingSceneWithViewModelShouldLaterDequeueCellWithFormattedReceivedDateFromViewModel() {
+        let receivedDate = "From the future"
+        let messageViewModel = makeMessageViewModel(formattedReceivedDate: receivedDate)
+        let cell = showMessage(messageViewModel)
+        
+        XCTAssertEqual(receivedDate, cell.messageReceivedDateLabel.text)
+    }
+    
+    func testUpdatingSceneWithViewModelShouldLaterDequeueCellWithSubjectFromViewModel() {
+        let subject = "You won!"
+        let messageViewModel = makeMessageViewModel(subject: subject)
+        let cell = showMessage(messageViewModel)
+        
+        XCTAssertEqual(subject, cell.messageSubjectLabel.text)
+    }
+    
+    func testUpdatingSceneWithViewModelShouldLaterDequeueCellWithSynopsisFromViewModel() {
+        let synopsis = "Blah blah blah"
+        let messageViewModel = makeMessageViewModel(synopsis: synopsis)
+        let cell = showMessage(messageViewModel)
+        
+        XCTAssertEqual(synopsis, cell.messageSynopsisLabel.text)
+    }
+    
+    func testUpdatingSceneWithViewModelShouldLaterDequeueCellHidingTheUnreadIndicatorForReadMessage() {
+        let messageViewModel = makeMessageViewModel(isRead: true)
+        let cell = showMessage(messageViewModel)
+        
+        XCTAssertTrue(cell.unreadMessageIndicator.isHidden)
+    }
+    
+    func testUpdatingSceneWithViewModelShouldLaterDequeueCellShowingTheUnreadIndicatorForUnreadMessage() {
+        let messageViewModel = makeMessageViewModel(isRead: false)
+        let cell = showMessage(messageViewModel)
+        
+        XCTAssertFalse(cell.unreadMessageIndicator.isHidden)
     }
     
 }

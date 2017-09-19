@@ -63,22 +63,38 @@ struct MessageViewModel: Equatable {
 
     // MARK: Properties
 
-    var title: String
+    var author: String
+    var formattedReceivedDate: String
+    var subject: String
+    var synopsis: String
+    var isRead: Bool
 
     // MARK: Initialization
 
     init(message: Message) {
-        self.title = message.authorName
+        self.author = message.authorName
+        self.formattedReceivedDate = ""
+        self.subject = ""
+        self.synopsis = ""
+        self.isRead = false
     }
 
-    init(title: String) {
-        self.title = title
+    init(author: String, formattedReceivedDate: String, subject: String, synopsis: String, isRead: Bool) {
+        self.author = author
+        self.formattedReceivedDate = formattedReceivedDate
+        self.subject = subject
+        self.synopsis = synopsis
+        self.isRead = isRead
     }
 
     // MARK: Equatable
 
     static func ==(lhs: MessageViewModel, rhs: MessageViewModel) -> Bool {
-        return lhs.title == rhs.title
+        return  lhs.author == rhs.author &&
+                lhs.formattedReceivedDate == rhs.formattedReceivedDate &&
+                lhs.subject == rhs.subject &&
+                lhs.synopsis == rhs.synopsis &&
+                lhs.isRead == rhs.isRead
     }
 
 }

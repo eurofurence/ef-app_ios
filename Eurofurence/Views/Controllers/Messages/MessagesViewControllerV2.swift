@@ -62,9 +62,17 @@ class MessagesViewControllerV2: UIViewController,
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let messageViewModel = viewModel.messageViewModel(at: indexPath.row)
             let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! MessageTableViewCell
-            cell.messageTitleLabel.text = messageViewModel.title
+            bind(cell, to: messageViewModel)
 
             return cell
+        }
+
+        private func bind(_ cell: MessageTableViewCell, to messageViewModel: MessageViewModel) {
+            cell.messageAuthorLabel.text = messageViewModel.author
+            cell.messageReceivedDateLabel.text = messageViewModel.formattedReceivedDate
+            cell.messageSubjectLabel.text = messageViewModel.subject
+            cell.messageSynopsisLabel.text = messageViewModel.synopsis
+            cell.unreadMessageIndicator.isHidden = messageViewModel.isRead
         }
 
     }
