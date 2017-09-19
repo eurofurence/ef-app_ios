@@ -18,4 +18,8 @@ struct Random {
         return Int(arc4random_uniform(UInt32(upperLimit)))
     }
     
+    static func makeRandomBool() -> Bool {
+        return makeRandomNumber(upperLimit: 100) > 50
+    }
+    
 }

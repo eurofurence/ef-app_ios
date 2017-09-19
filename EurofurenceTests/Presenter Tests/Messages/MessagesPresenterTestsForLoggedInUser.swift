@@ -53,22 +53,31 @@ class MessagesPresenterTestsForLoggedInUser: XCTestCase {
         XCTAssertEqual(expected, context.scene.capturedMessagesViewModel)
     }
     
-    func testWhenServiceHasLocalMessageTheSceneIsProvidedWithViewModelWithMessage() {
+    func testWhenServiceHasLocalMessageTheSceneIsProvidedWithViewModelWithMessageAuthor() {
         let localMessage = AppDataBuilder.makeMessage()
         let service = CapturingPrivateMessagesService()
         service.localMessages = [localMessage]
         context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: service)
-        let expected = MessagesViewModel(messages: [localMessage])
         
-        XCTAssertEqual(expected, context.scene.capturedMessagesViewModel)
+        XCTAssertEqual(localMessage.authorName, context.scene.capturedMessagesViewModel?.messageViewModel(at: 0).author)
     }
     
-    func testWhenServiceSucceedsLoadingMessagesTheSceneIsProvidedWithViewModelForMessages() {
-        let messages = [makeMessageWithIdentifier("A"), makeMessageWithIdentifier("B"), makeMessageWithIdentifier("C")]
-        let expected = MessagesViewModel(messages: messages)
-        context.privateMessagesService.succeedLastRefresh(messages: messages)
+    func testWhenServiceHasLocalMessageTheSceneIsProvidedWithViewModelWithMessageSubject() {
+        let localMessage = AppDataBuilder.makeMessage()
+        let service = CapturingPrivateMessagesService()
+        service.localMessages = [localMessage]
+        context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: service)
         
-        XCTAssertEqual(expected, context.scene.capturedMessagesViewModel)
+        XCTAssertEqual(localMessage.subject, context.scene.capturedMessagesViewModel?.messageViewModel(at: 0).subject)
+    }
+    
+    func testWhenServiceHasLocalMessageTheSceneIsProvidedWithViewModelWithTheReadStatus() {
+        let localMessage = AppDataBuilder.makeMessage(read: Random.makeRandomBool())
+        let service = CapturingPrivateMessagesService()
+        service.localMessages = [localMessage]
+        context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: service)
+        
+        XCTAssertEqual(localMessage.isRead, context.scene.capturedMessagesViewModel?.messageViewModel(at: 0).isRead)
     }
     
     func testWhenSceneTapsMessageAtIndexPathTheShowMessageActionIsInvokedWithTheExpectedMessage() {

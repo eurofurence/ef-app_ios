@@ -86,7 +86,15 @@ class MessagesPresenter: MessagesSceneDelegate {
 
     private func presentMessages(_ messages: [Message]) {
         presentedMessages = messages
-        scene.showMessages(MessagesViewModel(messages: messages))
+        scene.showMessages(MessagesViewModel(childViewModels: messages.map(makeViewModel)))
+    }
+
+    private func makeViewModel(for message: Message) -> MessageViewModel {
+        return MessageViewModel(author: message.authorName,
+                                formattedReceivedDate: "",
+                                subject: message.subject,
+                                synopsis: "",
+                                isRead: message.isRead)
     }
 
 }
