@@ -26,10 +26,12 @@ class MessagesViewControllerTests: XCTestCase {
     private func makeMessageViewModel(author: String = "Title",
                                       formattedReceivedDate: String = "Received",
                                       subject: String = "Subject",
+                                      message: String = "Message",
                                       isRead: Bool = true) -> MessageViewModel {
         return MessageViewModel(author: author,
                                 formattedReceivedDate: formattedReceivedDate,
                                 subject: subject,
+                                message: message,
                                 isRead: isRead)
     }
     
@@ -94,6 +96,21 @@ class MessagesViewControllerTests: XCTestCase {
         let cell = showMessage(messageViewModel)
         
         XCTAssertEqual(subject, cell.messageSubjectLabel.text)
+    }
+    
+    func testUpdatingSceneWithViewModelShouldLaterDequeueCellWithMessageFromViewModelOntoSynopsisLabel() {
+        let message = "A fabulous prize!"
+        let messageViewModel = makeMessageViewModel(message: message)
+        let cell = showMessage(messageViewModel)
+        
+        XCTAssertEqual(message, cell.messageSynopsisLabel.text)
+    }
+    
+    func testUpdatingSceneWithViewModelShouldLaterDequeueCellWithFewerLinesLimitForSynopsisLabel() {
+        let messageViewModel = makeMessageViewModel()
+        let cell = showMessage(messageViewModel)
+        
+        XCTAssertEqual(3, cell.messageSynopsisLabel.numberOfLines)
     }
     
     func testUpdatingSceneWithViewModelShouldLaterDequeueCellHidingTheUnreadIndicatorForReadMessage() {

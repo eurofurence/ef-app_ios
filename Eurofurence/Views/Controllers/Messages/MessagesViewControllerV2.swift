@@ -71,6 +71,7 @@ class MessagesViewControllerV2: UIViewController,
             cell.messageAuthorLabel.text = messageViewModel.author
             cell.messageReceivedDateLabel.text = messageViewModel.formattedReceivedDate
             cell.messageSubjectLabel.text = messageViewModel.subject
+            cell.messageSynopsisLabel.text = messageViewModel.message
             cell.unreadMessageIndicator.isHidden = messageViewModel.isRead
         }
 
