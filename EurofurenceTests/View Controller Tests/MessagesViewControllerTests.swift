@@ -46,4 +46,23 @@ class MessagesViewControllerTests: XCTestCase {
         XCTAssertEqual(randomIndexPath, delegate.capturedSelectedMessageIndexPath)
     }
     
+    func testUpdatingSceneWithViewModelShouldUpdateNumberOfRowsInTableView() {
+        let randomMessageCount = Random.makeRandomNumber(upperLimit: 10)
+        let messages = Array(repeating: AppDataBuilder.makeMessage(), count: randomMessageCount)
+        let viewModel = MessagesViewModel(messages: messages)
+        viewController.showMessages(viewModel)
+        
+        XCTAssertEqual(randomMessageCount, viewController.tableView.numberOfRows(inSection: 0))
+    }
+    
+    func testUpdatingSceneWithViewModelShouldLaterDequeueCellWithTitleFromViewModel() {
+        let title = "Message title"
+        let messageViewModel = MessageViewModel(title: title)
+        let viewModel = MessagesViewModel(childViewModels: [messageViewModel])
+        viewController.showMessages(viewModel)
+        let cell = viewController.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! MessageTableViewCell
+        
+        XCTAssertEqual(title, cell.messageTitleLabel.text)
+    }
+    
 }

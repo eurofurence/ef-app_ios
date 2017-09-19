@@ -19,6 +19,8 @@ class MessageTableViewCell: UITableViewCell {
         return formatter
     }()
 
+    var messageTitleLabel: UILabel! { return messageAuthorLabel }
+
     @IBOutlet weak var messageAuthorLabel: UILabel!
     @IBOutlet weak var messageSubjectLabel: UILabel!
     @IBOutlet weak var messageReceivedDateLabel: UILabel!

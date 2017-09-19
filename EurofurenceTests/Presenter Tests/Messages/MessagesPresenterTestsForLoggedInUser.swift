@@ -49,7 +49,7 @@ class MessagesPresenterTestsForLoggedInUser: XCTestCase {
     }
     
     func testWhenServiceHasNoLocalMessagesTheSceneIsProvidedWithEmptyMessagesViewModel() {
-        let expected = MessagesViewModel()
+        let expected = MessagesViewModel(childViewModels: [])
         XCTAssertEqual(expected, context.scene.capturedMessagesViewModel)
     }
     

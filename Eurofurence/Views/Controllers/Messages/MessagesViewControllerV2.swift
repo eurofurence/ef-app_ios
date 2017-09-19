@@ -14,10 +14,14 @@ class MessagesViewControllerV2: UIViewController,
 
     @IBOutlet weak var tableView: UITableView!
     let refreshIndicator = UIRefreshControl(frame: .zero)
+    private lazy var dataSource: MessagesTableViewDataSource = {
+        return MessagesTableViewDataSource(tableView: self.tableView)
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.addSubview(refreshIndicator)
     }
@@ -37,6 +41,31 @@ class MessagesViewControllerV2: UIViewController,
     }
 
     func showMessages(_ viewModel: MessagesViewModel) {
+        dataSource.viewModel = viewModel
+        tableView.reloadData()
+    }
+
+    private class MessagesTableViewDataSource: NSObject, UITableViewDataSource {
+
+        var viewModel = MessagesViewModel(childViewModels: [])
+        private let cellReuseIdentifier = "MessageCell"
+
+        init(tableView: UITableView) {
+            let nib = UINib(nibName: "MessageTableViewCell", bundle: .main)
+            tableView.register(nib, forCellReuseIdentifier: cellReuseIdentifier)
+        }
+
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return viewModel.numberOfMessages
+        }
+
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let messageViewModel = viewModel.messageViewModel(at: indexPath.row)
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! MessageTableViewCell
+            cell.messageTitleLabel.text = messageViewModel.title
+
+            return cell
+        }
 
     }
 

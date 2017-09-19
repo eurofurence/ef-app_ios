@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="96" id="tMK-9O-LhN" customClass="MessageTableViewCell" customModule="Eurofurence" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tMK-9O-LhN" id="qd0-wR-ust">
+                <rect key="frame" x="0.0" y="0.0" width="287" height="95.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="225-DX-6h1">
+                        <rect key="frame" x="22" y="6" width="203" height="21"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="NO"/>
+                        </accessibility>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHc-21-BNH">
+                        <rect key="frame" x="233" y="7" width="38" height="18"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="NO"/>
+                        </accessibility>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vj-Wn-YEW">
+                        <rect key="frame" x="22" y="61" width="257" height="26"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="NO"/>
+                        </accessibility>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7G-HU-8zM">
+                        <rect key="frame" x="22" y="35" width="257" height="18"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B5y-KH-LKp" customClass="UnreadMessageIndicator" customModule="Eurofurence" customModuleProvider="target">
+                        <rect key="frame" x="8" y="12" width="8" height="8"/>
+                        <color key="backgroundColor" red="0.292688638" green="0.61336147789999995" blue="0.87063741679999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="8" id="Gxf-7e-50C"/>
+                            <constraint firstAttribute="width" constant="8" id="Q8N-kW-KVz"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="225-DX-6h1" firstAttribute="leading" secondItem="B5y-KH-LKp" secondAttribute="trailing" constant="6" id="6XH-Qh-VPz"/>
+                    <constraint firstItem="j7G-HU-8zM" firstAttribute="leading" secondItem="225-DX-6h1" secondAttribute="leading" id="6vg-RX-j5p"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="wHc-21-BNH" secondAttribute="trailing" constant="8" id="7ns-2f-R8N"/>
+                    <constraint firstItem="3vj-Wn-YEW" firstAttribute="leading" secondItem="225-DX-6h1" secondAttribute="leading" id="FYY-iq-RdI"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="j7G-HU-8zM" secondAttribute="trailing" id="GW9-VI-jF2"/>
+                    <constraint firstItem="wHc-21-BNH" firstAttribute="leading" secondItem="225-DX-6h1" secondAttribute="trailing" constant="8" id="Ie2-NA-ctq"/>
+                    <constraint firstItem="225-DX-6h1" firstAttribute="centerY" secondItem="B5y-KH-LKp" secondAttribute="centerY" id="THF-q5-OLj"/>
+                    <constraint firstItem="j7G-HU-8zM" firstAttribute="top" secondItem="225-DX-6h1" secondAttribute="bottom" constant="8" id="ahR-iM-QpC"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="3vj-Wn-YEW" secondAttribute="bottom" id="eYU-FT-m8A"/>
+                    <constraint firstItem="3vj-Wn-YEW" firstAttribute="top" secondItem="j7G-HU-8zM" secondAttribute="bottom" constant="8" id="jDL-ol-sQV"/>
+                    <constraint firstItem="B5y-KH-LKp" firstAttribute="leading" secondItem="qd0-wR-ust" secondAttribute="leading" constant="8" id="jLO-oX-0e8"/>
+                    <constraint firstItem="B5y-KH-LKp" firstAttribute="top" secondItem="qd0-wR-ust" secondAttribute="topMargin" constant="4" id="qWe-D4-2EH"/>
+                    <constraint firstItem="wHc-21-BNH" firstAttribute="centerY" secondItem="225-DX-6h1" secondAttribute="centerY" id="rqf-a5-5wl"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="3vj-Wn-YEW" secondAttribute="trailing" id="vdF-lo-Vvn"/>
+                </constraints>
+            </tableViewCellContentView>
+            <accessibility key="accessibilityConfiguration" hint="Double tap to open.">
+                <bool key="isElement" value="YES"/>
+            </accessibility>
+            <connections>
+                <outlet property="messageAuthorLabel" destination="225-DX-6h1" id="reL-LV-H8s"/>
+                <outlet property="messageReceivedDateLabel" destination="wHc-21-BNH" id="ymz-Ai-snF"/>
+                <outlet property="messageSubjectLabel" destination="j7G-HU-8zM" id="uIR-5j-2CQ"/>
+                <outlet property="messageSynopsisLabel" destination="3vj-Wn-YEW" id="yRG-7y-RSs"/>
+                <outlet property="unreadMessageIndicator" destination="B5y-KH-LKp" id="RJr-TP-kwf"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

@@ -281,6 +281,7 @@
 		CAD780521F1E2D2E002A8333 /* CapturingLoginCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780511F1E2D2E002A8333 /* CapturingLoginCredentialStore.swift */; };
 		CAD7805A1F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780591F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift */; };
 		CAD7805D1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7805C1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift */; };
+		CAD92BA81F7131C300C71B72 /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD92BA71F7131C300C71B72 /* MessageTableViewCell.xib */; };
 		CAF9A93F1F50491200628833 /* EurofurenceAuthServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A93E1F50491200628833 /* EurofurenceAuthServiceTests.swift */; };
 		CAF9A9411F50B85200628833 /* EurofurenceAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9401F50B85200628833 /* EurofurenceAuthService.swift */; };
 		CAF9A9431F50B87600628833 /* EurofurenceApplicationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */; };
@@ -635,6 +636,7 @@
 		CAD780511F1E2D2E002A8333 /* CapturingLoginCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLoginCredentialStore.swift; path = "Test Doubles/Services/Login/CapturingLoginCredentialStore.swift"; sourceTree = "<group>"; };
 		CAD780591F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainLoginCredentialStore.swift; path = Login/KeychainLoginCredentialStore.swift; sourceTree = "<group>"; };
 		CAD7805C1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainLoginCredentialStoreTests.swift; path = "Services Tests/Login/KeychainLoginCredentialStoreTests.swift"; sourceTree = "<group>"; };
+		CAD92BA71F7131C300C71B72 /* MessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
 		CAF9A93E1F50491200628833 /* EurofurenceAuthServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceAuthServiceTests.swift; path = "Presenter Tests/Interactor Tests/EurofurenceAuthServiceTests.swift"; sourceTree = "<group>"; };
 		CAF9A9401F50B85200628833 /* EurofurenceAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceAuthService.swift; path = Interactors/Authorization/EurofurenceAuthService.swift; sourceTree = "<group>"; };
 		CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceApplicationProtocol.swift; path = Application/EurofurenceApplicationProtocol.swift; sourceTree = "<group>"; };
@@ -1395,6 +1397,7 @@
 				9AB64BCA1F018135004E8D91 /* KnowledgeGroupCell.swift */,
 				D6F3D7AF46BAD0F1F9918A76 /* MenuTableViewCell.swift */,
 				CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */,
+				CAD92BA71F7131C300C71B72 /* MessageTableViewCell.xib */,
 				9A861E981F24B0B800B75A8C /* NewsSectionHeader.swift */,
 				9A861E9A1F24CEB700B75A8C /* NewsSectionHeader.xib */,
 				D6F3D694C5DA66BE24929466 /* TimeLabelCell.swift */,
@@ -1878,6 +1881,7 @@
 				9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */,
 				CA957B611F705AF9004DFD5A /* MessagesViewControllerV2.xib in Resources */,
 				9ACF999D1ECA25E1006FC958 /* Sync.mock.json in Resources */,
+				CAD92BA81F7131C300C71B72 /* MessageTableViewCell.xib in Resources */,
 				D6F3D13186949132FE4694AD /* Main.storyboard in Resources */,
 				9A861E9B1F24CEB700B75A8C /* NewsSectionHeader.xib in Resources */,
 			);

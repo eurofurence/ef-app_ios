@@ -29,18 +29,32 @@ struct MessagesViewModel: Equatable {
 
     // MARK: Properties
 
-    private var messages: [MessageViewModel]
+    private var viewModels: [MessageViewModel]
+
+    var numberOfMessages: Int {
+        return viewModels.count
+    }
 
     // MARK: Initialization
 
-    init(messages: [Message] = []) {
-        self.messages = messages.map(MessageViewModel.init)
+    init(messages: [Message]) {
+        self.viewModels = messages.map(MessageViewModel.init)
+    }
+
+    init(childViewModels: [MessageViewModel]) {
+        viewModels = childViewModels
+    }
+
+    // MARK: Functions
+
+    func messageViewModel(at index: Int) -> MessageViewModel {
+        return viewModels[index]
     }
 
     // MARK: Equatable
 
     static func ==(lhs: MessagesViewModel, rhs: MessagesViewModel) -> Bool {
-        return lhs.messages == rhs.messages
+        return lhs.viewModels == rhs.viewModels
     }
 
 }
@@ -49,18 +63,22 @@ struct MessageViewModel: Equatable {
 
     // MARK: Properties
 
-    private var message: Message
+    var title: String
 
     // MARK: Initialization
 
     init(message: Message) {
-        self.message = message
+        self.title = message.authorName
+    }
+
+    init(title: String) {
+        self.title = title
     }
 
     // MARK: Equatable
 
     static func ==(lhs: MessageViewModel, rhs: MessageViewModel) -> Bool {
-        return lhs.message == rhs.message
+        return lhs.title == rhs.title
     }
 
 }
