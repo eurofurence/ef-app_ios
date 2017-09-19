@@ -66,7 +66,6 @@ struct MessageViewModel: Equatable {
     var author: String
     var formattedReceivedDate: String
     var subject: String
-    var synopsis: String
     var isRead: Bool
 
     // MARK: Initialization
@@ -75,15 +74,13 @@ struct MessageViewModel: Equatable {
         self.author = message.authorName
         self.formattedReceivedDate = ""
         self.subject = ""
-        self.synopsis = ""
         self.isRead = false
     }
 
-    init(author: String, formattedReceivedDate: String, subject: String, synopsis: String, isRead: Bool) {
+    init(author: String, formattedReceivedDate: String, subject: String, isRead: Bool) {
         self.author = author
         self.formattedReceivedDate = formattedReceivedDate
         self.subject = subject
-        self.synopsis = synopsis
         self.isRead = isRead
     }
 
@@ -93,7 +90,6 @@ struct MessageViewModel: Equatable {
         return  lhs.author == rhs.author &&
                 lhs.formattedReceivedDate == rhs.formattedReceivedDate &&
                 lhs.subject == rhs.subject &&
-                lhs.synopsis == rhs.synopsis &&
                 lhs.isRead == rhs.isRead
     }
 

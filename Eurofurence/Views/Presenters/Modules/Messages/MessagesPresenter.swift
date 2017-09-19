@@ -93,7 +93,6 @@ class MessagesPresenter: MessagesSceneDelegate {
         return MessageViewModel(author: message.authorName,
                                 formattedReceivedDate: "",
                                 subject: message.subject,
-                                synopsis: "",
                                 isRead: message.isRead)
     }
 
