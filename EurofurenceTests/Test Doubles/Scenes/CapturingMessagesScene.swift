@@ -28,6 +28,26 @@ class CapturingMessagesScene: MessagesScene {
         capturedMessagesViewModel = viewModel
     }
     
+    private(set) var didShowMessages = false
+    func showMessagesList() {
+        didShowMessages = true
+    }
+    
+    private(set) var didHideMessages = false
+    func hideMessagesList() {
+        didHideMessages = true
+    }
+    
+    private(set) var didShowNoMessagesPlaceholder = false
+    func showNoMessagesPlaceholder() {
+        didShowNoMessagesPlaceholder = true
+    }
+    
+    private(set) var didHideNoMessagesPlaceholder = false
+    func hideNoMessagesPlaceholder() {
+        didHideNoMessagesPlaceholder = true
+    }
+    
     func tapMessage(at index: Int) {
         delegate?.messagesSceneDidSelectMessage(at: IndexPath(indexes: [0, index]))
     }

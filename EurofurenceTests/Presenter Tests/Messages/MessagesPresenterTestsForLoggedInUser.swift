@@ -48,9 +48,61 @@ class MessagesPresenterTestsForLoggedInUser: XCTestCase {
         XCTAssertTrue(context.scene.wasToldToHideRefreshIndicator)
     }
     
+    func testWhenServiceHasNoLocalMessagesTheSceneIsNotToldToShowMessagesList() {
+        XCTAssertFalse(context.scene.didShowMessages)
+    }
+    
+    func testWhenServiceHasNoLocalMessagesTheSceneIsToldToHideMessages() {
+        XCTAssertTrue(context.scene.didHideMessages)
+    }
+    
+    func testWhenServiceHasNoLocalMessagesTheSceneIsToldToShowNoMessagesPlaceholder() {
+        XCTAssertTrue(context.scene.didShowNoMessagesPlaceholder)
+    }
+    
+    func testWhenServiceHasNoLocalMessagesTheSceneIsNotToldToHideTheNoMessagesPlaceholder() {
+        XCTAssertFalse(context.scene.didHideNoMessagesPlaceholder)
+    }
+    
     func testWhenServiceHasNoLocalMessagesTheSceneIsProvidedWithEmptyMessagesViewModel() {
         let expected = MessagesViewModel(childViewModels: [])
         XCTAssertEqual(expected, context.scene.capturedMessagesViewModel)
+    }
+    
+    func testWhenServiceHasLocalMessageTheSceneIsToldToShowMessagesList() {
+        let localMessage = AppDataBuilder.makeMessage()
+        let service = CapturingPrivateMessagesService()
+        service.localMessages = [localMessage]
+        context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: service)
+        
+        XCTAssertTrue(context.scene.didShowMessages)
+    }
+    
+    func testWhenServiceHasLocalMessageTheSceneIsToldToHideTheNoMessagesPlaceholder() {
+        let localMessage = AppDataBuilder.makeMessage()
+        let service = CapturingPrivateMessagesService()
+        service.localMessages = [localMessage]
+        context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: service)
+        
+        XCTAssertTrue(context.scene.didHideNoMessagesPlaceholder)
+    }
+    
+    func testWhenServiceHasLocalMessageTheSceneIsNotToldToHideMessages() {
+        let localMessage = AppDataBuilder.makeMessage()
+        let service = CapturingPrivateMessagesService()
+        service.localMessages = [localMessage]
+        context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: service)
+        
+        XCTAssertFalse(context.scene.didHideMessages)
+    }
+    
+    func testWhenServiceHasLocalMessageTheSceneIsNotToldToShowNoMessagesPlaceholder() {
+        let localMessage = AppDataBuilder.makeMessage()
+        let service = CapturingPrivateMessagesService()
+        service.localMessages = [localMessage]
+        context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: service)
+        
+        XCTAssertFalse(context.scene.didShowNoMessagesPlaceholder)
     }
     
     func testWhenServiceHasLocalMessageTheSceneIsProvidedWithViewModelWithMessageAuthor() {

@@ -45,6 +45,22 @@ class MessagesViewControllerV2: UIViewController,
         tableView.reloadData()
     }
 
+    func showMessagesList() {
+
+    }
+
+    func hideMessagesList() {
+
+    }
+
+    func showNoMessagesPlaceholder() {
+
+    }
+
+    func hideNoMessagesPlaceholder() {
+
+    }
+
     private class MessagesTableViewDataSource: NSObject, UITableViewDataSource {
 
         var viewModel = MessagesViewModel(childViewModels: [])

@@ -87,6 +87,14 @@ class MessagesPresenter: MessagesSceneDelegate {
     private func presentMessages(_ messages: [Message]) {
         presentedMessages = messages
         scene.showMessages(MessagesViewModel(childViewModels: messages.map(makeViewModel)))
+
+        if messages.isEmpty {
+            scene.hideMessagesList()
+            scene.showNoMessagesPlaceholder()
+        } else {
+            scene.showMessagesList()
+            scene.hideNoMessagesPlaceholder()
+        }
     }
 
     private func makeViewModel(for message: Message) -> MessageViewModel {

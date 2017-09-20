@@ -23,6 +23,12 @@ protocol MessagesScene: class {
 
     func showMessages(_ viewModel: MessagesViewModel)
 
+    func showMessagesList()
+    func hideMessagesList()
+
+    func showNoMessagesPlaceholder()
+    func hideNoMessagesPlaceholder()
+
 }
 
 struct MessagesViewModel: Equatable {
