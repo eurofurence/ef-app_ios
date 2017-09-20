@@ -100,14 +100,6 @@ class MessagesPresenter: MessagesSceneDelegate {
         }
     }
 
-    private func makeViewModel(for message: Message) -> MessageViewModel {
-        return MessageViewModel(author: message.authorName,
-                                formattedReceivedDate: "",
-                                subject: message.subject,
-                                message: message.contents,
-                                isRead: message.isRead)
-    }
-
     private struct MessageBinder: MessageItemBinder {
 
         var messages: [Message]

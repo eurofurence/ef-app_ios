@@ -28,11 +28,6 @@ class CapturingMessagesScene: MessagesScene {
         capturedMessageItemBinder = binder
     }
     
-    private(set) var capturedMessagesViewModel: MessagesViewModel?
-    func showMessages(_ viewModel: MessagesViewModel) {
-        capturedMessagesViewModel = viewModel
-    }
-    
     private(set) var didShowMessages = false
     func showMessagesList() {
         didShowMessages = true

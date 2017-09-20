@@ -46,10 +46,6 @@ class MessagesViewControllerV2: UIViewController,
         tableView.reloadData()
     }
 
-    func showMessages(_ viewModel: MessagesViewModel) {
-
-    }
-
     func showMessagesList() {
         tableView.isHidden = false
     }
