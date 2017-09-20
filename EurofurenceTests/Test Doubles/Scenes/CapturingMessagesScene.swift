@@ -66,6 +66,16 @@ class CapturingMessageItemScene: MessageItemScene {
         capturedAuthor = author
     }
     
+    private(set) var capturedSubject: String?
+    func presentSubject(_ subject: String) {
+        capturedSubject = subject
+    }
+    
+    private(set) var capturedContents: String?
+    func presentContents(_ contents: String) {
+        capturedContents = contents
+    }
+    
 }
 
 class CapturingMessagesSceneDelegate: MessagesSceneDelegate {

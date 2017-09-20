@@ -111,7 +111,10 @@ class MessagesPresenter: MessagesSceneDelegate {
 
         func bind(_ scene: MessageItemScene, toMessageAt indexPath: IndexPath) {
             let message = messages[indexPath[1]]
+
             scene.presentAuthor(message.authorName)
+            scene.presentSubject(message.subject)
+            scene.presentContents(message.contents)
         }
 
     }

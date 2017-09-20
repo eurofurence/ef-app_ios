@@ -114,4 +114,32 @@ class MessagesPresenterTestsForLoggedInUser: XCTestCase {
         XCTAssertEqual(message.authorName, capturingMessageScene.capturedAuthor)
     }
     
+    func testWhenServiceHasLocalMessageTheSceneIsProvidedWithBinderThatSetsSubjectFromMessage() {
+        let localMessages = AppDataBuilder.makeRandomNumberOfMessages()
+        let service = CapturingPrivateMessagesService()
+        service.localMessages = localMessages
+        context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: service)
+        let randomIndex = Random.makeRandomNumber(upperLimit: localMessages.count)
+        let message = localMessages[randomIndex]
+        let randomIndexPath = IndexPath(row: randomIndex, section: 0)
+        let capturingMessageScene = CapturingMessageItemScene()
+        context.scene.capturedMessageItemBinder?.bind(capturingMessageScene, toMessageAt: randomIndexPath)
+        
+        XCTAssertEqual(message.subject, capturingMessageScene.capturedSubject)
+    }
+    
+    func testWhenServiceHasLocalMessageTheSceneIsProvidedWithBinderThatSetsContentsFromMessage() {
+        let localMessages = AppDataBuilder.makeRandomNumberOfMessages()
+        let service = CapturingPrivateMessagesService()
+        service.localMessages = localMessages
+        context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: service)
+        let randomIndex = Random.makeRandomNumber(upperLimit: localMessages.count)
+        let message = localMessages[randomIndex]
+        let randomIndexPath = IndexPath(row: randomIndex, section: 0)
+        let capturingMessageScene = CapturingMessageItemScene()
+        context.scene.capturedMessageItemBinder?.bind(capturingMessageScene, toMessageAt: randomIndexPath)
+        
+        XCTAssertEqual(message.contents, capturingMessageScene.capturedContents)
+    }
+    
 }

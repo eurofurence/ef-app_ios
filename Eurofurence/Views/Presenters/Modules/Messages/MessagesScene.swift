@@ -41,6 +41,8 @@ protocol MessageItemBinder {
 protocol MessageItemScene {
 
     func presentAuthor(_ author: String)
+    func presentSubject(_ subject: String)
+    func presentContents(_ contents: String)
 
 }
 
