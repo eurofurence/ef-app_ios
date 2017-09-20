@@ -127,4 +127,32 @@ class MessagesViewControllerTests: XCTestCase {
         XCTAssertFalse(cell.unreadMessageIndicator.isHidden)
     }
     
+    func testShowingMessagesListUnhidesTableView() {
+        viewController.tableView.isHidden = true
+        viewController.showMessagesList()
+        
+        XCTAssertFalse(viewController.tableView.isHidden)
+    }
+    
+    func testHidingMessagesListHidesTableView() {
+        viewController.tableView.isHidden = false
+        viewController.hideMessagesList()
+        
+        XCTAssertTrue(viewController.tableView.isHidden)
+    }
+    
+    func testShowingNoMessagesPlaceholderUnhidesThePlaceholderView() {
+        viewController.noMessagesPlaceholder.isHidden = true
+        viewController.showNoMessagesPlaceholder()
+        
+        XCTAssertFalse(viewController.noMessagesPlaceholder.isHidden)
+    }
+    
+    func testHidingNoMessagesPlaceholderHidesThePlaceholderView() {
+        viewController.noMessagesPlaceholder.isHidden = false
+        viewController.hideNoMessagesPlaceholder()
+        
+        XCTAssertTrue(viewController.noMessagesPlaceholder.isHidden)
+    }
+    
 }

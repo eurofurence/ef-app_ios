@@ -13,6 +13,7 @@ class MessagesViewControllerV2: UIViewController,
                                 MessagesScene {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noMessagesPlaceholder: UIView!
     let refreshIndicator = UIRefreshControl(frame: .zero)
     private lazy var dataSource: MessagesTableViewDataSource = {
         return MessagesTableViewDataSource(tableView: self.tableView)
@@ -50,19 +51,19 @@ class MessagesViewControllerV2: UIViewController,
     }
 
     func showMessagesList() {
-
+        tableView.isHidden = false
     }
 
     func hideMessagesList() {
-
+        tableView.isHidden = true
     }
 
     func showNoMessagesPlaceholder() {
-
+        noMessagesPlaceholder.isHidden = false
     }
 
     func hideNoMessagesPlaceholder() {
-
+        noMessagesPlaceholder.isHidden = true
     }
 
     private class MessagesTableViewDataSource: NSObject, UITableViewDataSource {
