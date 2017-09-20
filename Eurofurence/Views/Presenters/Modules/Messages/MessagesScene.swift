@@ -43,6 +43,7 @@ protocol MessageItemScene {
     func presentAuthor(_ author: String)
     func presentSubject(_ subject: String)
     func presentContents(_ contents: String)
+    func presentReceivedDateTime(_ dateTime: String)
 
 }
 

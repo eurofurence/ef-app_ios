@@ -22,6 +22,7 @@ class MessagesPresenter: MessagesSceneDelegate {
     private let privateMessagesService: PrivateMessagesService
     private let resolveUserAuthenticationAction: ResolveUserAuthenticationAction
     private let showMessageAction: ShowMessageAction
+    private let dateFormatter: DateFormatterProtocol
     private let delegate: MessagesPresenterDelegate
     private var presentedMessages = [Message]()
 
@@ -32,11 +33,13 @@ class MessagesPresenter: MessagesSceneDelegate {
          privateMessagesService: PrivateMessagesService,
          resolveUserAuthenticationAction: ResolveUserAuthenticationAction,
          showMessageAction: ShowMessageAction,
+         dateFormatter: DateFormatterProtocol,
          delegate: MessagesPresenterDelegate) {
         self.scene = scene
         self.privateMessagesService = privateMessagesService
         self.resolveUserAuthenticationAction = resolveUserAuthenticationAction
         self.showMessageAction = showMessageAction
+        self.dateFormatter = dateFormatter
         self.delegate = delegate
 
         scene.delegate = self
@@ -86,7 +89,7 @@ class MessagesPresenter: MessagesSceneDelegate {
 
     private func presentMessages(_ messages: [Message]) {
         presentedMessages = messages
-        scene.bindMessages(with: MessageBinder(messages: messages))
+        scene.bindMessages(with: MessageBinder(messages: messages, dateFormatter: dateFormatter))
 
         if messages.isEmpty {
             scene.hideMessagesList()
@@ -108,6 +111,7 @@ class MessagesPresenter: MessagesSceneDelegate {
     private struct MessageBinder: MessageItemBinder {
 
         var messages: [Message]
+        var dateFormatter: DateFormatterProtocol
 
         func bind(_ scene: MessageItemScene, toMessageAt indexPath: IndexPath) {
             let message = messages[indexPath[1]]
@@ -115,6 +119,9 @@ class MessagesPresenter: MessagesSceneDelegate {
             scene.presentAuthor(message.authorName)
             scene.presentSubject(message.subject)
             scene.presentContents(message.contents)
+
+            let formattedDateTime = dateFormatter.string(from: message.receivedDateTime)
+            scene.presentReceivedDateTime(formattedDateTime)
         }
 
     }

@@ -234,6 +234,8 @@
 		CA30EACE1F27D1430053DBF6 /* V2APIPrivateMessagesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EACD1F27D1430053DBF6 /* V2APIPrivateMessagesResponse.swift */; };
 		CA30EAD01F27D8620053DBF6 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */; };
 		CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */; };
+		CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */; };
+		CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */; };
 		CA60B3581F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60B3571F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift */; };
 		CA804DD21F20CE8F00E07A4A /* V2LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */; };
 		CA804DD41F20CF4300E07A4A /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD31F20CF4300E07A4A /* APIResponse.swift */; };
@@ -588,6 +590,8 @@
 		CA30EACD1F27D1430053DBF6 /* V2APIPrivateMessagesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2APIPrivateMessagesResponse.swift; path = Application/API/v2/V2APIPrivateMessagesResponse.swift; sourceTree = "<group>"; };
 		CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesPresenterTestsWhenBindingMessages.swift; path = "Presenter Tests/Messages/MessagesPresenterTestsWhenBindingMessages.swift"; sourceTree = "<group>"; };
+		CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingDateFormatter.swift; path = "Test Doubles/CapturingDateFormatter.swift"; sourceTree = "<group>"; };
+		CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateFormatterProtocol.swift; path = Messages/DateFormatterProtocol.swift; sourceTree = "<group>"; };
 		CA60B3571F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenterTestsForAnonymousUser.swift; path = "Presenter Tests/News/NewsPresenterTestsForAnonymousUser.swift"; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
 		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/Protocols/APIResponse.swift; sourceTree = "<group>"; };
@@ -786,6 +790,7 @@
 				CAD234321F5D7184004BB959 /* MessagesPresenterDelegateTestDoubles.swift */,
 				CAD234361F5D71BE004BB959 /* CapturingResolveUserAuthenticationAction.swift */,
 				CAD234431F5F3D1A004BB959 /* CapturingShowMessageAction.swift */,
+				CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */,
 			);
 			name = "Test Doubles";
 			sourceTree = "<group>";
@@ -1533,6 +1538,7 @@
 				CAD234451F5F3D4F004BB959 /* ShowMessageAction.swift */,
 				CAD2343B1F5D7203004BB959 /* MessagesScene.swift */,
 				CAD2343D1F5D7211004BB959 /* MessagesPresenter.swift */,
+				CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -2233,6 +2239,7 @@
 				9ACB006F1F16C945001CE9D2 /* EventFavorite.swift in Sources */,
 				D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */,
 				D6F3DB838A1BDAFC6DAC2F61 /* CountryAlpha3Converter.swift in Sources */,
+				CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */,
 				D6F3DEDDAFE507E873CB3806 /* WikiText.swift in Sources */,
 				9A80EF4E1F28C78900FD0D37 /* TargetRouter.swift in Sources */,
 				D6F3D523BDCDDA3A2A163E55 /* TimeLabelCell.swift in Sources */,
@@ -2352,6 +2359,7 @@
 				CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */,
 				CAF9A9581F5601A700628833 /* MessagesPresenterTestsForAnonymousUser.swift in Sources */,
 				CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */,
+				CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */,
 				781A94481F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift in Sources */,
 				7820A6FD1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift in Sources */,
 				7820A7051F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift in Sources */,

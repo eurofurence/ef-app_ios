@@ -16,6 +16,8 @@ struct MessagesPresenterTestContext {
     let resolveUserAuthenticationCommand = CapturingResolveUserAuthenticationAction()
     var privateMessagesService = CapturingPrivateMessagesService()
     let showMessageAction = CapturingShowMessageAction()
+    let dateFormatter = CapturingDateFormatter()
+    
     
     static func makeTestCaseForUnauthenticatedUser() -> MessagesPresenterTestContext {
         return MessagesPresenterTestContext(authState: .loggedOut)
@@ -40,6 +42,7 @@ struct MessagesPresenterTestContext {
                                       privateMessagesService: privateMessagesService,
                                       resolveUserAuthenticationAction: resolveUserAuthenticationCommand,
                                       showMessageAction: showMessageAction,
+                                      dateFormatter: dateFormatter,
                                       delegate: delegate)
     }
     

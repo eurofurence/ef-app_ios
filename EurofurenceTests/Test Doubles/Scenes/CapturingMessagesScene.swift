@@ -76,6 +76,11 @@ class CapturingMessageItemScene: MessageItemScene {
         capturedContents = contents
     }
     
+    private(set) var capturedReceivedDateTime: String?
+    func presentReceivedDateTime(_ dateTime: String) {
+        capturedReceivedDateTime = dateTime
+    }
+    
 }
 
 class CapturingMessagesSceneDelegate: MessagesSceneDelegate {

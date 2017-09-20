@@ -41,4 +41,12 @@ class MessagesPresenterTestsWhenBindingMessages: XCTestCase {
         XCTAssertEqual(message.contents, capturingMessageScene.capturedContents)
     }
     
+    func testTheReceivedDateIsProvidedToTheDateFormatter() {
+        XCTAssertEqual(message.receivedDateTime, context.dateFormatter.capturedDate)
+    }
+    
+    func testTheProducedStringFromTheDateFormatterIsProvidedToTheScene() {
+        XCTAssertEqual(context.dateFormatter.stubString, capturingMessageScene.capturedReceivedDateTime)
+    }
+    
 }
