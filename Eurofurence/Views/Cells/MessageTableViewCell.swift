@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessageTableViewCell: UITableViewCell {
+class MessageTableViewCell: UITableViewCell, MessageItemScene {
 
     private static var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -50,6 +50,22 @@ class MessageTableViewCell: UITableViewCell {
         }
 
         accessibilityLabel = "\(messageOpening) from \(message.authorName), \"\(message.subject)\". Received \(receivedDateString))."
+    }
+
+    func presentAuthor(_ author: String) {
+
+    }
+
+    func presentSubject(_ subject: String) {
+
+    }
+
+    func presentContents(_ contents: String) {
+
+    }
+
+    func presentReceivedDateTime(_ dateTime: String) {
+
     }
 
 }

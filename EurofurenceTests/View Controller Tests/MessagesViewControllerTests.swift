@@ -9,6 +9,19 @@
 @testable import Eurofurence
 import XCTest
 
+class StubMessageItemBinder: MessageItemBinder {
+
+    var numberOfMessages: Int = 0
+    
+    private(set) var capturedScene: MessageItemScene?
+    private(set) var capturedIndexPath: IndexPath?
+    func bind(_ scene: MessageItemScene, toMessageAt indexPath: IndexPath) {
+        capturedScene = scene
+        capturedIndexPath = indexPath
+    }
+    
+}
+
 class MessagesViewControllerTests: XCTestCase {
     
     var viewController: MessagesViewControllerV2!
@@ -21,25 +34,6 @@ class MessagesViewControllerTests: XCTestCase {
         viewController = MessagesViewControllerV2(nibName: nil, bundle: nil)
         viewController.delegate = delegate
         viewController.loadViewIfNeeded()
-    }
-    
-    private func makeMessageViewModel(author: String = "Title",
-                                      formattedReceivedDate: String = "Received",
-                                      subject: String = "Subject",
-                                      message: String = "Message",
-                                      isRead: Bool = true) -> MessageViewModel {
-        return MessageViewModel(author: author,
-                                formattedReceivedDate: formattedReceivedDate,
-                                subject: subject,
-                                message: message,
-                                isRead: isRead)
-    }
-    
-    private func showMessage(_ viewModel: MessageViewModel) -> MessageTableViewCell {
-        let viewModel = MessagesViewModel(childViewModels: [viewModel])
-        viewController.showMessages(viewModel)
-        
-        return viewController.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! MessageTableViewCell
     }
     
     func testTheRefreshIndicatorShouldBeEmbeddedWithinTheTableView() {
@@ -65,66 +59,32 @@ class MessagesViewControllerTests: XCTestCase {
         XCTAssertEqual(randomIndexPath, delegate.capturedSelectedMessageIndexPath)
     }
     
-    func testUpdatingSceneWithViewModelShouldUpdateNumberOfRowsInTableView() {
-        let randomMessageCount = Random.makeRandomNumber(upperLimit: 10)
-        let messages = Array(repeating: AppDataBuilder.makeMessage(), count: randomMessageCount)
-        let viewModel = MessagesViewModel(messages: messages)
-        viewController.showMessages(viewModel)
+    func testBindingMessagesShouldUpdateNumberOfRowsInTableView() {
+        let binder = StubMessageItemBinder()
+        binder.numberOfMessages = Random.makeRandomNumber(upperLimit: 10)
+        viewController.bindMessages(with: binder)
         
-        XCTAssertEqual(randomMessageCount, viewController.tableView.numberOfRows(inSection: 0))
+        XCTAssertEqual(binder.numberOfMessages, viewController.tableView.numberOfRows(inSection: 0))
     }
     
-    func testUpdatingSceneWithViewModelShouldLaterDequeueCellWithAuthorFromViewModel() {
-        let author = "Message title"
-        let messageViewModel = makeMessageViewModel(author: author)
-        let cell = showMessage(messageViewModel)
+    func testBindingMessagesShouldPassCellToBinder() {
+        let binder = StubMessageItemBinder()
+        binder.numberOfMessages = 1
+        viewController.bindMessages(with: binder)
+        let firstIndexPath = IndexPath(row: 0, section: 0)
+        let cell = viewController.tableView.cellForRow(at: firstIndexPath)
         
-        XCTAssertEqual(author, cell.messageAuthorLabel.text)
+        XCTAssertTrue((binder.capturedScene as? UITableViewCell) === cell)
     }
     
-    func testUpdatingSceneWithViewModelShouldLaterDequeueCellWithFormattedReceivedDateFromViewModel() {
-        let receivedDate = "From the future"
-        let messageViewModel = makeMessageViewModel(formattedReceivedDate: receivedDate)
-        let cell = showMessage(messageViewModel)
+    func testBindingMessagesShouldPassIndexPathOfCellToBinder() {
+        let binder = StubMessageItemBinder()
+        binder.numberOfMessages = 1
+        viewController.bindMessages(with: binder)
+        let firstIndexPath = IndexPath(row: 0, section: 0)
+        _ = viewController.tableView.cellForRow(at: firstIndexPath)
         
-        XCTAssertEqual(receivedDate, cell.messageReceivedDateLabel.text)
-    }
-    
-    func testUpdatingSceneWithViewModelShouldLaterDequeueCellWithSubjectFromViewModel() {
-        let subject = "You won!"
-        let messageViewModel = makeMessageViewModel(subject: subject)
-        let cell = showMessage(messageViewModel)
-        
-        XCTAssertEqual(subject, cell.messageSubjectLabel.text)
-    }
-    
-    func testUpdatingSceneWithViewModelShouldLaterDequeueCellWithMessageFromViewModelOntoSynopsisLabel() {
-        let message = "A fabulous prize!"
-        let messageViewModel = makeMessageViewModel(message: message)
-        let cell = showMessage(messageViewModel)
-        
-        XCTAssertEqual(message, cell.messageSynopsisLabel.text)
-    }
-    
-    func testUpdatingSceneWithViewModelShouldLaterDequeueCellWithFewerLinesLimitForSynopsisLabel() {
-        let messageViewModel = makeMessageViewModel()
-        let cell = showMessage(messageViewModel)
-        
-        XCTAssertEqual(3, cell.messageSynopsisLabel.numberOfLines)
-    }
-    
-    func testUpdatingSceneWithViewModelShouldLaterDequeueCellHidingTheUnreadIndicatorForReadMessage() {
-        let messageViewModel = makeMessageViewModel(isRead: true)
-        let cell = showMessage(messageViewModel)
-        
-        XCTAssertTrue(cell.unreadMessageIndicator.isHidden)
-    }
-    
-    func testUpdatingSceneWithViewModelShouldLaterDequeueCellShowingTheUnreadIndicatorForUnreadMessage() {
-        let messageViewModel = makeMessageViewModel(isRead: false)
-        let cell = showMessage(messageViewModel)
-        
-        XCTAssertFalse(cell.unreadMessageIndicator.isHidden)
+        XCTAssertEqual(firstIndexPath, binder.capturedIndexPath)
     }
     
     func testShowingMessagesListUnhidesTableView() {

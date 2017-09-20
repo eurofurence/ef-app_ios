@@ -42,12 +42,12 @@ class MessagesViewControllerV2: UIViewController,
     }
 
     func bindMessages(with binder: MessageItemBinder) {
-
+        dataSource.binder = binder
+        tableView.reloadData()
     }
 
     func showMessages(_ viewModel: MessagesViewModel) {
-        dataSource.viewModel = viewModel
-        tableView.reloadData()
+
     }
 
     func showMessagesList() {
@@ -68,7 +68,7 @@ class MessagesViewControllerV2: UIViewController,
 
     private class MessagesTableViewDataSource: NSObject, UITableViewDataSource {
 
-        var viewModel = MessagesViewModel(childViewModels: [])
+        var binder: MessageItemBinder?
         private let cellReuseIdentifier = "MessageCell"
 
         init(tableView: UITableView) {
@@ -77,23 +77,14 @@ class MessagesViewControllerV2: UIViewController,
         }
 
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return viewModel.numberOfMessages
+            return binder?.numberOfMessages ?? 0
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let messageViewModel = viewModel.messageViewModel(at: indexPath.row)
             let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! MessageTableViewCell
-            bind(cell, to: messageViewModel)
+            binder?.bind(cell, toMessageAt: indexPath)
 
             return cell
-        }
-
-        private func bind(_ cell: MessageTableViewCell, to messageViewModel: MessageViewModel) {
-            cell.messageAuthorLabel.text = messageViewModel.author
-            cell.messageReceivedDateLabel.text = messageViewModel.formattedReceivedDate
-            cell.messageSubjectLabel.text = messageViewModel.subject
-            cell.messageSynopsisLabel.text = messageViewModel.message
-            cell.unreadMessageIndicator.isHidden = messageViewModel.isRead
         }
 
     }
