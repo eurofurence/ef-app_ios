@@ -28,6 +28,10 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
     var unreadMessageCount: Int = 0
     var localMessages: [Message] = []
     
+    init(localMessages: [Message] = []) {
+        self.localMessages = localMessages`
+    }
+    
     private(set) var wasToldToRefreshMessages = false
     private var completionHandler: ((PrivateMessagesRefreshResult) -> Void)?
     func refreshMessages(completionHandler: @escaping (PrivateMessagesRefreshResult) -> Void) {
