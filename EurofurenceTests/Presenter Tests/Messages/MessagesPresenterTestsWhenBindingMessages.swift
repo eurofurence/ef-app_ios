@@ -12,21 +12,26 @@ import XCTest
 class MessagesPresenterTestsWhenBindingMessages: XCTestCase {
     
     var context: MessagesPresenterTestContext!
+    var allMessages: [Message]!
     var message: Message!
     var capturingMessageScene: CapturingMessageItemScene!
     
     override func setUp() {
         super.setUp()
         
-        let localMessages = AppDataBuilder.makeRandomNumberOfMessages()
-        let randomIndex = Random.makeRandomNumber(upperLimit: localMessages.count)
+        allMessages = AppDataBuilder.makeRandomNumberOfMessages()
+        let randomIndex = Random.makeRandomNumber(upperLimit: allMessages.count)
         let randomIndexPath = IndexPath(row: randomIndex, section: 0)
         
-        let service = CapturingPrivateMessagesService(localMessages: localMessages)
+        let service = CapturingPrivateMessagesService(localMessages: allMessages)
         context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: service)
-        message = localMessages[randomIndex]
+        message = allMessages[randomIndex]
         capturingMessageScene = CapturingMessageItemScene()
         context.scene.capturedMessageItemBinder?.bind(capturingMessageScene, toMessageAt: randomIndexPath)
+    }
+    
+    func testTheSceneIsProvidedWithTheMessageCountThroughTheBinder() {
+        XCTAssertEqual(allMessages.count, context.scene.capturedMessageItemBinder?.numberOfMessages)
     }
     
     func testTheSceneIsProvidedWithTheAuthor() {

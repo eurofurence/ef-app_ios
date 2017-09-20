@@ -113,6 +113,10 @@ class MessagesPresenter: MessagesSceneDelegate {
         var messages: [Message]
         var dateFormatter: DateFormatterProtocol
 
+        var numberOfMessages: Int {
+            return messages.count
+        }
+
         func bind(_ scene: MessageItemScene, toMessageAt indexPath: IndexPath) {
             let message = messages[indexPath[1]]
 

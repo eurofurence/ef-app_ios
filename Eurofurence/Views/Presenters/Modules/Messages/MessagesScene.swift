@@ -34,6 +34,8 @@ protocol MessagesScene: class {
 
 protocol MessageItemBinder {
 
+    var numberOfMessages: Int { get }
+
     func bind(_ scene: MessageItemScene, toMessageAt indexPath: IndexPath)
 
 }
