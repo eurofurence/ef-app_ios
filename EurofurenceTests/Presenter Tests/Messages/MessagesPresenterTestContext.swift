@@ -27,6 +27,11 @@ struct MessagesPresenterTestContext {
                                             privateMessagesService: privateMessagesService)
     }
     
+    static func makeTestCaseForUserWithMessages(_ messages: [Message]) -> MessagesPresenterTestContext {
+        let service = CapturingPrivateMessagesService(localMessages: messages)
+        return makeTestCaseForAuthenticatedUser(privateMessagesService: service)
+    }
+    
     private init(authState: AuthState,
                  privateMessagesService: CapturingPrivateMessagesService = CapturingPrivateMessagesService()) {
         self.privateMessagesService = privateMessagesService

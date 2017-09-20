@@ -29,7 +29,7 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
     var localMessages: [Message] = []
     
     init(localMessages: [Message] = []) {
-        self.localMessages = localMessages`
+        self.localMessages = localMessages
     }
     
     private(set) var wasToldToRefreshMessages = false

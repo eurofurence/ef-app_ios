@@ -66,36 +66,28 @@ class MessagesPresenterTestsForLoggedInUser: XCTestCase {
     
     func testWhenServiceHasLocalMessageTheSceneIsToldToShowMessagesList() {
         let localMessage = AppDataBuilder.makeMessage()
-        let service = CapturingPrivateMessagesService()
-        service.localMessages = [localMessage]
-        context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: service)
+        context = MessagesPresenterTestContext.makeTestCaseForUserWithMessages([localMessage])
         
         XCTAssertTrue(context.scene.didShowMessages)
     }
     
     func testWhenServiceHasLocalMessageTheSceneIsToldToHideTheNoMessagesPlaceholder() {
         let localMessage = AppDataBuilder.makeMessage()
-        let service = CapturingPrivateMessagesService()
-        service.localMessages = [localMessage]
-        context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: service)
+        context = MessagesPresenterTestContext.makeTestCaseForUserWithMessages([localMessage])
         
         XCTAssertTrue(context.scene.didHideNoMessagesPlaceholder)
     }
     
     func testWhenServiceHasLocalMessageTheSceneIsNotToldToHideMessages() {
         let localMessage = AppDataBuilder.makeMessage()
-        let service = CapturingPrivateMessagesService()
-        service.localMessages = [localMessage]
-        context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: service)
+        context = MessagesPresenterTestContext.makeTestCaseForUserWithMessages([localMessage])
         
         XCTAssertFalse(context.scene.didHideMessages)
     }
     
     func testWhenServiceHasLocalMessageTheSceneIsNotToldToShowNoMessagesPlaceholder() {
         let localMessage = AppDataBuilder.makeMessage()
-        let service = CapturingPrivateMessagesService()
-        service.localMessages = [localMessage]
-        context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: service)
+        context = MessagesPresenterTestContext.makeTestCaseForUserWithMessages([localMessage])
         
         XCTAssertFalse(context.scene.didShowNoMessagesPlaceholder)
     }
