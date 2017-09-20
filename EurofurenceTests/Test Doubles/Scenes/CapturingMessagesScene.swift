@@ -23,6 +23,11 @@ class CapturingMessagesScene: MessagesScene {
         wasToldToHideRefreshIndicator = true
     }
     
+    private(set) var capturedMessageItemBinder: MessageItemBinder?
+    func bindMessages(with binder: MessageItemBinder) {
+        capturedMessageItemBinder = binder
+    }
+    
     private(set) var capturedMessagesViewModel: MessagesViewModel?
     func showMessages(_ viewModel: MessagesViewModel) {
         capturedMessagesViewModel = viewModel
@@ -50,6 +55,15 @@ class CapturingMessagesScene: MessagesScene {
     
     func tapMessage(at index: Int) {
         delegate?.messagesSceneDidSelectMessage(at: IndexPath(indexes: [0, index]))
+    }
+    
+}
+
+class CapturingMessageItemScene: MessageItemScene {
+    
+    private(set) var capturedAuthor: String?
+    func presentAuthor(_ author: String) {
+        capturedAuthor = author
     }
     
 }

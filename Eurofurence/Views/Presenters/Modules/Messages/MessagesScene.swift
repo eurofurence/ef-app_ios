@@ -21,6 +21,7 @@ protocol MessagesScene: class {
     func showRefreshIndicator()
     func hideRefreshIndicator()
 
+    func bindMessages(with binder: MessageItemBinder)
     func showMessages(_ viewModel: MessagesViewModel)
 
     func showMessagesList()
@@ -28,6 +29,18 @@ protocol MessagesScene: class {
 
     func showNoMessagesPlaceholder()
     func hideNoMessagesPlaceholder()
+
+}
+
+protocol MessageItemBinder {
+
+    func bind(_ scene: MessageItemScene, toMessageAt indexPath: IndexPath)
+
+}
+
+protocol MessageItemScene {
+
+    func presentAuthor(_ author: String)
 
 }
 

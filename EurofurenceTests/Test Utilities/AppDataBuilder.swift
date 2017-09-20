@@ -25,4 +25,15 @@ struct AppDataBuilder {
                        isRead: read)
     }
     
+    static func makeRandomNumberOfMessages() -> [Message] {
+        return (0...Random.makeRandomNumber(upperLimit: 10)).map { (number) in
+            return makeMessage(identifier: String(describing: number),
+                               authorName: "Author \(number)",
+                               receivedDateTime: Date(),
+                               subject: "Subject \(number)",
+                               contents: "Contents \(number)",
+                               read: number % 2 == 0)
+        }
+    }
+    
 }

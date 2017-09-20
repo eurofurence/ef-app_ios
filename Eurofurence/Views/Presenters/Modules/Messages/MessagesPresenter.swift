@@ -86,7 +86,7 @@ class MessagesPresenter: MessagesSceneDelegate {
 
     private func presentMessages(_ messages: [Message]) {
         presentedMessages = messages
-        scene.showMessages(MessagesViewModel(childViewModels: messages.map(makeViewModel)))
+        scene.bindMessages(with: MessageBinder(messages: messages))
 
         if messages.isEmpty {
             scene.hideMessagesList()
@@ -103,6 +103,17 @@ class MessagesPresenter: MessagesSceneDelegate {
                                 subject: message.subject,
                                 message: message.contents,
                                 isRead: message.isRead)
+    }
+
+    private struct MessageBinder: MessageItemBinder {
+
+        var messages: [Message]
+
+        func bind(_ scene: MessageItemScene, toMessageAt indexPath: IndexPath) {
+            let message = messages[indexPath[1]]
+            scene.presentAuthor(message.authorName)
+        }
+
     }
 
 }

@@ -40,6 +40,10 @@ class MessagesViewControllerV2: UIViewController,
         refreshIndicator.endRefreshing()
     }
 
+    func bindMessages(with binder: MessageItemBinder) {
+
+    }
+
     func showMessages(_ viewModel: MessagesViewModel) {
         dataSource.viewModel = viewModel
         tableView.reloadData()
