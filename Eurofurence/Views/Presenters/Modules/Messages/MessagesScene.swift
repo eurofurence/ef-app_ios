@@ -45,5 +45,7 @@ protocol MessageItemScene {
     func presentSubject(_ subject: String)
     func presentContents(_ contents: String)
     func presentReceivedDateTime(_ dateTime: String)
+    func showUnreadIndicator()
+    func hideUnreadIndicator()
 
 }

@@ -116,6 +116,12 @@ class MessagesPresenter: MessagesSceneDelegate {
             scene.presentSubject(message.subject)
             scene.presentContents(message.contents)
 
+            if message.isRead {
+                scene.hideUnreadIndicator()
+            } else {
+                scene.showUnreadIndicator()
+            }
+
             let formattedDateTime = dateFormatter.string(from: message.receivedDateTime)
             scene.presentReceivedDateTime(formattedDateTime)
         }

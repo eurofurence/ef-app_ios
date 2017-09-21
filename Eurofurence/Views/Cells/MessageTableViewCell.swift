@@ -68,4 +68,12 @@ class MessageTableViewCell: UITableViewCell, MessageItemScene {
         messageReceivedDateLabel.text = dateTime
     }
 
+    func showUnreadIndicator() {
+        unreadMessageIndicator.isHidden = false
+    }
+
+    func hideUnreadIndicator() {
+        unreadMessageIndicator.isHidden = true
+    }
+
 }

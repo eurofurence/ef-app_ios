@@ -48,4 +48,18 @@ class MessageTableViewCellTests: XCTestCase {
         XCTAssertEqual(receivedDateTime, cell.messageReceivedDateLabel.text)
     }
     
+    func testTheUnreadIndicatorAppearsWhenToldTo() {
+        cell.unreadMessageIndicator.isHidden = true
+        cell.showUnreadIndicator()
+        
+        XCTAssertFalse(cell.unreadMessageIndicator.isHidden)
+    }
+    
+    func testTheUnreadIndicatorHidesWhenToldTo() {
+        cell.unreadMessageIndicator.isHidden = false
+        cell.hideUnreadIndicator()
+        
+        XCTAssertTrue(cell.unreadMessageIndicator.isHidden)
+    }
+    
 }

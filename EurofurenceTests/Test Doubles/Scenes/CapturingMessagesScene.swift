@@ -76,6 +76,16 @@ class CapturingMessageItemScene: MessageItemScene {
         capturedReceivedDateTime = dateTime
     }
     
+    private(set) var didShowUnreadIndicator = false
+    func showUnreadIndicator() {
+        didShowUnreadIndicator = true
+    }
+    
+    private(set) var didHideUnreadIndicator = false
+    func hideUnreadIndicator() {
+        didHideUnreadIndicator = true
+    }
+    
 }
 
 class CapturingMessagesSceneDelegate: MessagesSceneDelegate {
