@@ -53,19 +53,19 @@ class MessageTableViewCell: UITableViewCell, MessageItemScene {
     }
 
     func presentAuthor(_ author: String) {
-
+        messageAuthorLabel.text = author
     }
 
     func presentSubject(_ subject: String) {
-
+        messageSubjectLabel.text = subject
     }
 
     func presentContents(_ contents: String) {
-
+        messageSynopsisLabel.text = contents
     }
 
     func presentReceivedDateTime(_ dateTime: String) {
-
+        messageReceivedDateLabel.text = dateTime
     }
 
 }

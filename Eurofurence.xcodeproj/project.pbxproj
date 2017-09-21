@@ -236,6 +236,7 @@
 		CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */; };
 		CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */; };
 		CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */; };
+		CA4FBE151F7313A300D29405 /* MessageTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE141F7313A300D29405 /* MessageTableViewCellTests.swift */; };
 		CA60B3581F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60B3571F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift */; };
 		CA804DD21F20CE8F00E07A4A /* V2LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */; };
 		CA804DD41F20CF4300E07A4A /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD31F20CF4300E07A4A /* APIResponse.swift */; };
@@ -592,6 +593,7 @@
 		CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesPresenterTestsWhenBindingMessages.swift; path = "Presenter Tests/Messages/MessagesPresenterTestsWhenBindingMessages.swift"; sourceTree = "<group>"; };
 		CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingDateFormatter.swift; path = "Test Doubles/CapturingDateFormatter.swift"; sourceTree = "<group>"; };
 		CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateFormatterProtocol.swift; path = Messages/DateFormatterProtocol.swift; sourceTree = "<group>"; };
+		CA4FBE141F7313A300D29405 /* MessageTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessageTableViewCellTests.swift; path = "View Tests/MessageTableViewCellTests.swift"; sourceTree = "<group>"; };
 		CA60B3571F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenterTestsForAnonymousUser.swift; path = "Presenter Tests/News/NewsPresenterTestsForAnonymousUser.swift"; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
 		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/Protocols/APIResponse.swift; sourceTree = "<group>"; };
@@ -1255,6 +1257,7 @@
 				6EF96CCD1F0EDB1300EE6134 /* Test Doubles */,
 				CAF9A94F1F558E6200628833 /* Test Utilities */,
 				CA957B581F705A46004DFD5A /* View Controller Tests */,
+				CA4FBE131F73137D00D29405 /* View Tests */,
 				9ACF994E1EBE172D006FC958 /* Info.plist */,
 				78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */,
 				78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */,
@@ -1444,6 +1447,14 @@
 				CA30EAC51F2673010053DBF6 /* StubAPIPrivateMessage.swift */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		CA4FBE131F73137D00D29405 /* View Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CA4FBE141F7313A300D29405 /* MessageTableViewCellTests.swift */,
+			);
+			name = "View Tests";
 			sourceTree = "<group>";
 		};
 		CA804DCF1F20CE5F00E07A4A /* API */ = {
@@ -2329,6 +2340,7 @@
 				78C86D7B1F12B2A2003A20E6 /* SplashViewControllerTests.swift in Sources */,
 				78C86D811F13A0CE003A20E6 /* StubPresentationStrings.swift in Sources */,
 				CAD234441F5F3D1A004BB959 /* CapturingShowMessageAction.swift in Sources */,
+				CA4FBE151F7313A300D29405 /* MessageTableViewCellTests.swift in Sources */,
 				7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */,
 				78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */,
 				78C86D6C1F123FD8003A20E6 /* PresentationTestBuilder.swift in Sources */,
