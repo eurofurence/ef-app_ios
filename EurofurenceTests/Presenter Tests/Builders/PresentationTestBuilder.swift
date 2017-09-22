@@ -32,7 +32,6 @@ class PresentationTestBuilder {
     private var presentationAssets: PresentationAssets
     private var networkReachability: NetworkReachability
     private var pushPermissionsRequesting: PushPermissionsRequesting
-    private var pushPermissionsStateProviding: PushPermissionsStateProviding
 
     init() {
         routers = StubRouters()
@@ -43,7 +42,6 @@ class PresentationTestBuilder {
         presentationAssets = StubPresentationAssets()
         networkReachability = ReachableWiFiNetwork()
         pushPermissionsRequesting = CapturingPushPermissionsRequesting()
-        pushPermissionsStateProviding = CapturingPushPermissionsStateProviding()
     }
 
     func withRouters(_ routers: Routers) -> PresentationTestBuilder {
@@ -81,20 +79,14 @@ class PresentationTestBuilder {
         return self
     }
 
-    func withPushPermissionsStateProviding(_ pushPermissionsStateProviding: PushPermissionsStateProviding) -> PresentationTestBuilder {
-        self.pushPermissionsStateProviding = pushPermissionsStateProviding
-        return self
-    }
-
     func build() -> PresentationTestContext {
-        let appContext =  ApplicationContext(firstTimeLaunchProviding: firstTimeLaunchProviding,
-                                             witnessedTutorialPushPermissionsRequest: witnessedTutorialPushPermissionsRequest,
-                                             quoteGenerator: quoteGenerator,
-                                             presentationStrings: presentationStrings,
-                                             presentationAssets: presentationAssets,
-                                             networkReachability: networkReachability,
-                                             pushPermissionsRequesting: pushPermissionsRequesting,
-                                             pushPermissionsStateProviding: pushPermissionsStateProviding)
+        let appContext = ApplicationContext(firstTimeLaunchProviding: firstTimeLaunchProviding,
+                                            witnessedTutorialPushPermissionsRequest: witnessedTutorialPushPermissionsRequest,
+                                            quoteGenerator: quoteGenerator,
+                                            presentationStrings: presentationStrings,
+                                            presentationAssets: presentationAssets,
+                                            networkReachability: networkReachability,
+                                            pushPermissionsRequesting: pushPermissionsRequesting)
 
         return PresentationTestContext(applicationContext: appContext,
                                        routers: routers,

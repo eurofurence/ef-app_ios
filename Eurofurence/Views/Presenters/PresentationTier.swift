@@ -26,8 +26,7 @@ struct PresentationTier {
                 presentationStrings: UnlocalizedPresentationStrings(),
                 presentationAssets: ApplicationPresentationAssets(),
                 networkReachability: SwiftNetworkReachability.shared,
-                pushPermissionsRequesting: pushRequesting,
-                pushPermissionsStateProviding: UserDefaultsWitnessedSystemPushPermissionsRequest(userDefaults: .standard))
+                pushPermissionsRequesting: pushRequesting)
     }
 
 }

@@ -19,6 +19,5 @@ struct TutorialPresentationContext {
     var networkReachability: NetworkReachability
     var pushPermissionsRequesting: PushPermissionsRequesting
     var witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
-    var pushPermissionsStateProviding: PushPermissionsStateProviding
 
 }
