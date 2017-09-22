@@ -250,6 +250,9 @@
 		CA9845DA1F29199E00E8821D /* ScreenshotAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */; };
 		CA9845DC1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */; };
 		CA9845DE1F2B01BA00E8821D /* UnreadMessageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */; };
+		CAB3A72A1F7532A2005DF77B /* CapturingPushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */; };
+		CAB3A72D1F753308005DF77B /* PushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */; };
+		CAB3A72F1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */; };
 		CAC1E1271F5040BD00195513 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1261F5040BD00195513 /* NewsPresenter.swift */; };
 		CAC1E1291F5040CB00195513 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1281F5040CB00195513 /* AuthService.swift */; };
 		CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12A1F5040E100195513 /* NewsScene.swift */; };
@@ -609,6 +612,9 @@
 		CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotAssistant.swift; sourceTree = "<group>"; };
 		CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenMarkingMessageAsRead.swift; path = "Application Tests/WhenMarkingMessageAsRead.swift"; sourceTree = "<group>"; };
 		CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnreadMessageIndicator.swift; sourceTree = "<group>"; };
+		CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPushPermissionsRequester.swift; sourceTree = "<group>"; };
+		CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PushPermissionsRequester.swift; path = "Application/System Services/PushPermissionsRequester.swift"; sourceTree = "<group>"; };
+		CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationPushPermissionsRequester.swift; path = "Application/System Services/ApplicationPushPermissionsRequester.swift"; sourceTree = "<group>"; };
 		CAC1E1261F5040BD00195513 /* NewsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenter.swift; path = News/NewsPresenter.swift; sourceTree = "<group>"; };
 		CAC1E1281F5040CB00195513 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = Interactors/Authorization/AuthService.swift; sourceTree = "<group>"; };
 		CAC1E12A1F5040E100195513 /* NewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsScene.swift; path = News/NewsScene.swift; sourceTree = "<group>"; };
@@ -793,6 +799,7 @@
 				CAD234361F5D71BE004BB959 /* CapturingResolveUserAuthenticationAction.swift */,
 				CAD234431F5F3D1A004BB959 /* CapturingShowMessageAction.swift */,
 				CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */,
+				CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */,
 			);
 			name = "Test Doubles";
 			sourceTree = "<group>";
@@ -1076,6 +1083,7 @@
 				78D7EEC21F196BC3005372A9 /* Build Config */,
 				CA18B3451F49AF4500038E52 /* Model */,
 				78D7EEB91F196B40005372A9 /* Notifications */,
+				CAB3A72B1F7532DF005DF77B /* System Services */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -1519,6 +1527,15 @@
 				CA9845CB1F2907A800E8821D /* Info.plist */,
 			);
 			path = ScreenshotGenerator;
+			sourceTree = "<group>";
+		};
+		CAB3A72B1F7532DF005DF77B /* System Services */ = {
+			isa = PBXGroup;
+			children = (
+				CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */,
+				CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */,
+			);
+			name = "System Services";
 			sourceTree = "<group>";
 		};
 		CAC1E1241F50405900195513 /* News */ = {
@@ -2171,6 +2188,7 @@
 				78567B411F10212100EBA31D /* ProgressViewRefreshDelegate.swift in Sources */,
 				9A861EA81F2554BE00B75A8C /* RequestPushPermissionsTutorialPagePresenter.swift in Sources */,
 				9A0525471ECB091900578798 /* MockApiConnection.swift in Sources */,
+				CAB3A72F1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift in Sources */,
 				9A34B9871ED08C7E004A249E /* JsonDataStore.swift in Sources */,
 				9A0525411ECA2AF500578798 /* Sync.swift in Sources */,
 				9A34B9811ED06956004A249E /* ViewModelResolver.swift in Sources */,
@@ -2258,6 +2276,7 @@
 				78567B451F103C3800EBA31D /* RefreshControlDataStoreDelegate.swift in Sources */,
 				9A861E9D1F2547E200B75A8C /* NotificationRouter.swift in Sources */,
 				9A80EF641F29230300FD0D37 /* UserDetailsEventTablePreferences.swift in Sources */,
+				CAB3A72D1F753308005DF77B /* PushPermissionsRequester.swift in Sources */,
 				CA30EABE1F2660D80053DBF6 /* PrivateMessagesAPI.swift in Sources */,
 				9A861EA91F2554BE00B75A8C /* InitiateDownloadTutorialPagePresenter.swift in Sources */,
 				781A94301F1A1972002DE70F /* FirebaseAdapter.swift in Sources */,
@@ -2327,6 +2346,7 @@
 				78455B3A1F116A7E005BE2D7 /* WhenTheAppLaunches.swift in Sources */,
 				CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */,
 				781A94421F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */,
+				CAB3A72A1F7532A2005DF77B /* CapturingPushPermissionsRequester.swift in Sources */,
 				78455B491F1177AD005BE2D7 /* CapturingTutorialRouter.swift in Sources */,
 				78C86D721F12AACA003A20E6 /* WhenTheSplashScreenAppears.swift in Sources */,
 				CA9845DC1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift in Sources */,

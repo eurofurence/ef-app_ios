@@ -14,7 +14,7 @@ struct UserDefaultsWitnessedSystemPushPermissionsRequest: WitnessedSystemPushPer
 
     var userDefaults: UserDefaults
 
-    init(userDefaults: UserDefaults) {
+    init(userDefaults: UserDefaults = .standard) {
         self.userDefaults = userDefaults
     }
 

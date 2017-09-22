@@ -36,6 +36,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                                                                              fcmRegistration: fcmRegistration)
 
         return EurofurenceApplication(remoteNotificationsTokenRegistration: tokenRegistration,
+                                      pushPermissionsRequester: ApplicationPushPermissionsRequester(),
+                                      witnessedSystemPushPermissionsRequest: UserDefaultsWitnessedSystemPushPermissionsRequest(),
                                       clock: SystemClock(),
                                       loginCredentialStore: KeychainLoginCredentialStore(),
                                       loginAPI: V2LoginAPI(JSONSession: JSONSession),
@@ -46,14 +48,24 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private var authenticationCoordinator: UserAuthenticationCoordinator
     private var registeredDeviceToken: Data?
     private let privateMessagesAPI: PrivateMessagesAPI
+    private let pushPermissionsRequester: PushPermissionsRequester
+    private let witnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest
 
     init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
+         pushPermissionsRequester: PushPermissionsRequester,
+         witnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest,
          clock: Clock,
          loginCredentialStore: LoginCredentialStore,
          loginAPI: LoginAPI,
          privateMessagesAPI: PrivateMessagesAPI) {
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
         self.privateMessagesAPI = privateMessagesAPI
+        self.pushPermissionsRequester = pushPermissionsRequester
+        self.witnessedSystemPushPermissionsRequest = witnessedSystemPushPermissionsRequest
+
+        if witnessedSystemPushPermissionsRequest.witnessedSystemPushPermissionsRequest {
+            pushPermissionsRequester.requestPushPermissions()
+        }
 
         authenticationCoordinator = UserAuthenticationCoordinator(clock: clock,
                                                                   loginCredentialStore: loginCredentialStore,
@@ -67,6 +79,11 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     func logout(completionHandler: @escaping (LogoutResult) -> Void) {
         authenticationCoordinator.logout(completionHandler: completionHandler)
+    }
+
+    func requestPermissionsForPushNotifications() {
+        pushPermissionsRequester.requestPushPermissions()
+        witnessedSystemPushPermissionsRequest.markWitnessedSystemPushPermissionsRequest()
     }
 
     func storeRemoteNotificationsToken(_ deviceToken: Data) {

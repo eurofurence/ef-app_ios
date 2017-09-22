@@ -19,4 +19,47 @@ class WhenRegisteredForPushNotifications: XCTestCase {
         XCTAssertEqual(deviceToken, context.capturingTokenRegistration.capturedRemoteNotificationsDeviceToken)
     }
     
+    func testRequestingPushPermissionsTellsThePushRequesterToRequestPermissions() {
+        let permissionsRequester = CapturingPushPermissionsRequester()
+        let context = ApplicationTestBuilder().with(permissionsRequester).build()
+        context.application.requestPermissionsForPushNotifications()
+        
+        XCTAssertTrue(permissionsRequester.wasToldToRequestPushPermissions)
+    }
+    
+    func testRequestingPushPermissionsMarksPushPermissionsWitness() {
+        let witnessedSystemPushes = CapturingWitnessedSystemPushPermissionsRequest()
+        witnessedSystemPushes.witnessedSystemPushPermissionsRequest = false
+        let context = ApplicationTestBuilder().with(witnessedSystemPushes).build()
+        context.application.requestPermissionsForPushNotifications()
+        
+        XCTAssertTrue(witnessedSystemPushes.didPermitRegisteringForPushNotifications)
+    }
+    
+    func testWitnessedPushPermissionsStoreIsNotToldAboutItUntilRequestingPushPermissions() {
+        let witnessedSystemPushes = CapturingWitnessedSystemPushPermissionsRequest()
+        witnessedSystemPushes.witnessedSystemPushPermissionsRequest = false
+        ApplicationTestBuilder().with(witnessedSystemPushes).build()
+        
+        XCTAssertFalse(witnessedSystemPushes.didPermitRegisteringForPushNotifications)
+    }
+    
+    func testLaunchingTheAppWhenPushPermissionsNotRequestedBeforeShouldNotRequestPermissionAutomatically() {
+        let permissionsRequester = CapturingPushPermissionsRequester()
+        let witnessedSystemPushes = CapturingWitnessedSystemPushPermissionsRequest()
+        witnessedSystemPushes.witnessedSystemPushPermissionsRequest = false
+        ApplicationTestBuilder().with(permissionsRequester).with(witnessedSystemPushes).build()
+        
+        XCTAssertFalse(permissionsRequester.wasToldToRequestPushPermissions)
+    }
+    
+    func testLaunchingTheAppWhenPushPermissionsRequestedBeforeShouldRequestPermissionAutomatically() {
+        let permissionsRequester = CapturingPushPermissionsRequester()
+        let witnessedSystemPushes = CapturingWitnessedSystemPushPermissionsRequest()
+        witnessedSystemPushes.witnessedSystemPushPermissionsRequest = true
+        ApplicationTestBuilder().with(permissionsRequester).with(witnessedSystemPushes).build()
+        
+        XCTAssertTrue(permissionsRequester.wasToldToRequestPushPermissions)
+    }
+    
 }
