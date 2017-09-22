@@ -44,12 +44,12 @@ class WhenTheAppLaunches: XCTestCase {
     }
 
     func testAndTheUserHasWitnessedTheSystemPushNotificationsPromptThePushRequesterRequestsPermissionsToRegenrateDeviceToken() {
-        let witnessedSystemPushPermissions = CapturingWitnessedSystemPushPermissionsRequest()
-        witnessedSystemPushPermissions.witnessedSystemPushPermissionsRequest = true
+        let witnessedSystemPushPermissions = CapturingPushPermissionsStateProviding()
+        witnessedSystemPushPermissions.requestedPushNotificationAuthorization = true
         let capturingPushPermissionsRequesting = CapturingPushPermissionsRequesting()
         let context = PresentationTestBuilder()
             .withPushPermissionsRequesting(capturingPushPermissionsRequesting)
-            .withWitnessedSystemPushPermissionsRequest(witnessedSystemPushPermissions)
+            .withPushPermissionsStateProviding(witnessedSystemPushPermissions)
             .build()
         context.bootstrap()
 

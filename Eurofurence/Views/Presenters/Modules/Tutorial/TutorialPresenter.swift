@@ -51,7 +51,7 @@ class TutorialPresenter {
                                                         tutorialScene: context.tutorialScene,
                                                         presentationStrings: context.presentationStrings,
                                                         presentationAssets: context.presentationAssets,
-                                                        witnessedSystemPushPermissionsRequest: context.witnessedSystemPushPermissionsRequest,
+                                                        pushPermissionsStateProviding: context.pushPermissionsStateProviding,
                                                         witnessedTutorialPushPermissionsRequest: context.witnessedTutorialPushPermissionsRequest,
                                                         pushPermissionsRequesting: context.pushPermissionsRequesting)
     }

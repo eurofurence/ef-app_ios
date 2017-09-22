@@ -32,7 +32,7 @@ class PresentationTestBuilder {
     private var presentationAssets: PresentationAssets
     private var networkReachability: NetworkReachability
     private var pushPermissionsRequesting: PushPermissionsRequesting
-    private var witnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest
+    private var pushPermissionsStateProviding: PushPermissionsStateProviding
 
     init() {
         routers = StubRouters()
@@ -43,7 +43,7 @@ class PresentationTestBuilder {
         presentationAssets = StubPresentationAssets()
         networkReachability = ReachableWiFiNetwork()
         pushPermissionsRequesting = CapturingPushPermissionsRequesting()
-        witnessedSystemPushPermissionsRequest = CapturingWitnessedSystemPushPermissionsRequest()
+        pushPermissionsStateProviding = CapturingPushPermissionsStateProviding()
     }
 
     func withRouters(_ routers: Routers) -> PresentationTestBuilder {
@@ -81,8 +81,8 @@ class PresentationTestBuilder {
         return self
     }
 
-    func withWitnessedSystemPushPermissionsRequest(_ witnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest) -> PresentationTestBuilder {
-        self.witnessedSystemPushPermissionsRequest = witnessedSystemPushPermissionsRequest
+    func withPushPermissionsStateProviding(_ pushPermissionsStateProviding: PushPermissionsStateProviding) -> PresentationTestBuilder {
+        self.pushPermissionsStateProviding = pushPermissionsStateProviding
         return self
     }
 
@@ -94,7 +94,7 @@ class PresentationTestBuilder {
                                              presentationAssets: presentationAssets,
                                              networkReachability: networkReachability,
                                              pushPermissionsRequesting: pushPermissionsRequesting,
-                                             witnessedSystemPushPermissionsRequest: witnessedSystemPushPermissionsRequest)
+                                             pushPermissionsStateProviding: pushPermissionsStateProviding)
 
         return PresentationTestContext(applicationContext: appContext,
                                        routers: routers,

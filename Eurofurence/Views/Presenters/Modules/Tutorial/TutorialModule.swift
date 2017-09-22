@@ -21,7 +21,7 @@ struct TutorialModule {
             networkReachability: context.networkReachability,
             pushPermissionsRequesting: context.pushPermissionsRequesting,
             witnessedTutorialPushPermissionsRequest: context.witnessedTutorialPushPermissionsRequest,
-            witnessedSystemPushPermissionsRequest: context.witnessedSystemPushPermissionsRequest)
+            pushPermissionsStateProviding: context.pushPermissionsStateProviding)
 
         _ = TutorialPresenter(context: tutorialContext)
     }

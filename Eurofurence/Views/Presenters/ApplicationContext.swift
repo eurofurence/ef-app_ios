@@ -17,7 +17,7 @@ struct ApplicationContext {
     var presentationAssets: PresentationAssets
     var networkReachability: NetworkReachability
     var pushPermissionsRequesting: PushPermissionsRequesting
-    var witnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest
+    var pushPermissionsStateProviding: PushPermissionsStateProviding
 
     init(firstTimeLaunchProviding: UserCompletedTutorialStateProviding,
          witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest,
@@ -26,7 +26,7 @@ struct ApplicationContext {
          presentationAssets: PresentationAssets,
          networkReachability: NetworkReachability,
          pushPermissionsRequesting: PushPermissionsRequesting,
-         witnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest) {
+         pushPermissionsStateProviding: PushPermissionsStateProviding) {
         self.firstTimeLaunchProviding = firstTimeLaunchProviding
         self.witnessedTutorialPushPermissionsRequest = witnessedTutorialPushPermissionsRequest
         self.quoteGenerator = quoteGenerator
@@ -34,7 +34,7 @@ struct ApplicationContext {
         self.presentationAssets = presentationAssets
         self.networkReachability = networkReachability
         self.pushPermissionsRequesting = pushPermissionsRequesting
-        self.witnessedSystemPushPermissionsRequest = witnessedSystemPushPermissionsRequest
+        self.pushPermissionsStateProviding = pushPermissionsStateProviding
     }
 
 }

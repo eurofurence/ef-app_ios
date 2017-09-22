@@ -27,7 +27,7 @@ struct PresentationTier {
                 presentationAssets: ApplicationPresentationAssets(),
                 networkReachability: SwiftNetworkReachability.shared,
                 pushPermissionsRequesting: pushRequesting,
-                witnessedSystemPushPermissionsRequest: UserDefaultsWitnessedSystemPushPermissionsRequest(userDefaults: .standard))
+                pushPermissionsStateProviding: UserDefaultsWitnessedSystemPushPermissionsRequest(userDefaults: .standard))
     }
 
 }

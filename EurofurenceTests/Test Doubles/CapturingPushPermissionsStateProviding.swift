@@ -1,5 +1,5 @@
 //
-//  CapturingWitnessedSystemPushPermissionsRequest.swift
+//  CapturingPushPermissionsStateProviding.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 12/07/2017.
@@ -8,12 +8,12 @@
 
 @testable import Eurofurence
 
-class CapturingWitnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest {
+class CapturingPushPermissionsStateProviding: PushPermissionsStateProviding {
 
-    var witnessedSystemPushPermissionsRequest: Bool = false
+    var requestedPushNotificationAuthorization: Bool = false
 
     private(set) var didPermitRegisteringForPushNotifications = false
-    func markWitnessedSystemPushPermissionsRequest() {
+    func attemptedPushAuthorizationRequest() {
         didPermitRegisteringForPushNotifications = true
     }
     

@@ -60,12 +60,12 @@ class SettingsTableViewController: FormViewController {
 		let section = Section("Push Notifications")
 		section <<< ButtonRow {
 			$0.title = "Enable Push Notifications"
-			if witnessedSystemPushRequest.witnessedSystemPushPermissionsRequest {
+			if witnessedSystemPushRequest.requestedPushNotificationAuthorization {
 				$0.hidden = true
 			}
 
 			}.onCellSelection({ (_, _) in
-				if witnessedSystemPushRequest.witnessedSystemPushPermissionsRequest {
+				if witnessedSystemPushRequest.requestedPushNotificationAuthorization {
 					let alert = UIAlertController(title: "Use Settings",
 					                              message: "Enable or disable Eurofurence's push notification permissions in Settings",
 					                              preferredStyle: .alert)
@@ -73,7 +73,7 @@ class SettingsTableViewController: FormViewController {
 					self.present(alert, animated: true)
 				} else {
 					ApplicationPushPermissionsRequesting().requestPushPermissions { }
-					witnessedSystemPushRequest.markWitnessedSystemPushPermissionsRequest()
+					witnessedSystemPushRequest.attemptedPushAuthorizationRequest()
 					defaults.synchronize()
 				}
 			})

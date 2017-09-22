@@ -44,7 +44,7 @@ class ApplicationTestBuilder {
     private let loginAPI = CapturingLoginAPI()
     private let privateMessagesAPI = CapturingPrivateMessagesAPI()
     private var pushPermissionsRequester: PushPermissionsRequester = CapturingPushPermissionsRequester()
-    private var witnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest = CapturingWitnessedSystemPushPermissionsRequest()
+    private var pushPermissionsStateProviding: PushPermissionsStateProviding = CapturingPushPermissionsStateProviding()
     
     func with(_ currentDate: Date) -> ApplicationTestBuilder {
         stubClock = StubClock(currentDate: currentDate)
@@ -61,8 +61,8 @@ class ApplicationTestBuilder {
         return self
     }
     
-    func with(_ witnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest) -> ApplicationTestBuilder {
-        self.witnessedSystemPushPermissionsRequest = witnessedSystemPushPermissionsRequest
+    func with(_ pushPermissionsStateProviding: PushPermissionsStateProviding) -> ApplicationTestBuilder {
+        self.pushPermissionsStateProviding = pushPermissionsStateProviding
         return self
     }
     
@@ -78,7 +78,7 @@ class ApplicationTestBuilder {
     func build() -> Context {
         let app = EurofurenceApplication(remoteNotificationsTokenRegistration: capturingTokenRegistration,
                                          pushPermissionsRequester: pushPermissionsRequester,
-                                         witnessedSystemPushPermissionsRequest: witnessedSystemPushPermissionsRequest,
+                                         pushPermissionsStateProviding: pushPermissionsStateProviding,
                                          clock: stubClock,
                                          loginCredentialStore: capturingLoginCredentialsStore,
                                          loginAPI: loginAPI,

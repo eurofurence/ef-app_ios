@@ -11,7 +11,7 @@ import Foundation
 struct BootstrappingModule {
 
     static func bootstrap(context: ApplicationContext, routers: Routers) {
-        if context.witnessedSystemPushPermissionsRequest.witnessedSystemPushPermissionsRequest {
+        if context.pushPermissionsStateProviding.requestedPushNotificationAuthorization {
             context.pushPermissionsRequesting.requestPushPermissions {
 
             }

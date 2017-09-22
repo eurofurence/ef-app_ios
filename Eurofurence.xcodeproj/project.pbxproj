@@ -40,10 +40,10 @@
 		7820A6F21F1696F1004C0FB5 /* PushPermissionsRequesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6F11F1696F1004C0FB5 /* PushPermissionsRequesting.swift */; };
 		7820A6F61F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */; };
 		7820A6F81F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6F71F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift */; };
-		7820A6FB1F16BBB2004C0FB5 /* WitnessedSystemPushPermissionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6FA1F16BBB2004C0FB5 /* WitnessedSystemPushPermissionsRequest.swift */; };
+		7820A6FB1F16BBB2004C0FB5 /* PushPermissionsStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6FA1F16BBB2004C0FB5 /* PushPermissionsStateProviding.swift */; };
 		7820A6FD1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6FC1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift */; };
 		7820A6FF1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6FE1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift */; };
-		7820A7011F16C0F0004C0FB5 /* CapturingWitnessedSystemPushPermissionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A7001F16C0F0004C0FB5 /* CapturingWitnessedSystemPushPermissionsRequest.swift */; };
+		7820A7011F16C0F0004C0FB5 /* CapturingPushPermissionsStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A7001F16C0F0004C0FB5 /* CapturingPushPermissionsStateProviding.swift */; };
 		7820A7031F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A7021F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift */; };
 		7820A7051F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A7041F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift */; };
 		78455B3A1F116A7E005BE2D7 /* WhenTheAppLaunches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */; };
@@ -390,10 +390,10 @@
 		7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift; sourceTree = "<group>"; };
 		7820A6F71F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationPushPermissionsRequesting.swift; path = "Push Permissions/ApplicationPushPermissionsRequesting.swift"; sourceTree = "<group>"; };
 		7820A6F91F16B8A0004C0FB5 /* Eurofurence.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Eurofurence.entitlements; path = ../Eurofurence.entitlements; sourceTree = "<group>"; };
-		7820A6FA1F16BBB2004C0FB5 /* WitnessedSystemPushPermissionsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WitnessedSystemPushPermissionsRequest.swift; path = "Push Permissions/WitnessedSystemPushPermissionsRequest.swift"; sourceTree = "<group>"; };
+		7820A6FA1F16BBB2004C0FB5 /* PushPermissionsStateProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushPermissionsStateProviding.swift; path = "Push Permissions/PushPermissionsStateProviding.swift"; sourceTree = "<group>"; };
 		7820A6FC1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AcknowledgedPushPermissionsRequestTestDoubles.swift; path = "Test Doubles/AcknowledgedPushPermissionsRequestTestDoubles.swift"; sourceTree = "<group>"; };
 		7820A6FE1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingPushPermissionsRequesting.swift; path = "Test Doubles/CapturingPushPermissionsRequesting.swift"; sourceTree = "<group>"; };
-		7820A7001F16C0F0004C0FB5 /* CapturingWitnessedSystemPushPermissionsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingWitnessedSystemPushPermissionsRequest.swift; path = "Test Doubles/CapturingWitnessedSystemPushPermissionsRequest.swift"; sourceTree = "<group>"; };
+		7820A7001F16C0F0004C0FB5 /* CapturingPushPermissionsStateProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingPushPermissionsStateProviding.swift; path = "Test Doubles/CapturingPushPermissionsStateProviding.swift"; sourceTree = "<group>"; };
 		7820A7021F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsWitnessedSystemPushPermissionsRequest.swift; path = "Push Permissions/UserDefaultsWitnessedSystemPushPermissionsRequest.swift"; sourceTree = "<group>"; };
 		7820A7041F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsOptedIntoPushNotificationsTests.swift; sourceTree = "<group>"; };
 		78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenTheAppLaunches.swift; path = "Presenter Tests/WhenTheAppLaunches.swift"; sourceTree = "<group>"; };
@@ -789,7 +789,7 @@
 				7820A6EC1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift */,
 				7820A6FC1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift */,
 				7820A6FE1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift */,
-				7820A7001F16C0F0004C0FB5 /* CapturingWitnessedSystemPushPermissionsRequest.swift */,
+				7820A7001F16C0F0004C0FB5 /* CapturingPushPermissionsStateProviding.swift */,
 				78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */,
 				6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */,
 				CAC1E12E1F50411900195513 /* StubAuthService.swift */,
@@ -909,7 +909,7 @@
 			children = (
 				7820A6F11F1696F1004C0FB5 /* PushPermissionsRequesting.swift */,
 				7820A6F71F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift */,
-				7820A6FA1F16BBB2004C0FB5 /* WitnessedSystemPushPermissionsRequest.swift */,
+				7820A6FA1F16BBB2004C0FB5 /* PushPermissionsStateProviding.swift */,
 				7820A7021F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift */,
 			);
 			name = "Push Permissions";
@@ -2256,7 +2256,7 @@
 				78FE77CF1F1A2E8600E9A0BE /* JSONSession.swift in Sources */,
 				9A861EBE1F25551400B75A8C /* PresentationStrings.swift in Sources */,
 				9AB64BCD1F018365004E8D91 /* KnowledgeEntryCell.swift in Sources */,
-				7820A6FB1F16BBB2004C0FB5 /* WitnessedSystemPushPermissionsRequest.swift in Sources */,
+				7820A6FB1F16BBB2004C0FB5 /* PushPermissionsStateProviding.swift in Sources */,
 				9A861ED71F25564900B75A8C /* StoryboardRouters.swift in Sources */,
 				78567B431F10303600EBA31D /* ApplicationActivityIndicatorRefreshDelegate.swift in Sources */,
 				D6F3D4C7FF8BB27C46EF4D3D /* ServiceResolver.swift in Sources */,
@@ -2356,7 +2356,7 @@
 				CAF9A9471F50B95F00628833 /* WhenRequestingCurrentUser.swift in Sources */,
 				78455B521F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift in Sources */,
 				CAD234421F5F2FA8004BB959 /* AppDataBuilder.swift in Sources */,
-				7820A7011F16C0F0004C0FB5 /* CapturingWitnessedSystemPushPermissionsRequest.swift in Sources */,
+				7820A7011F16C0F0004C0FB5 /* CapturingPushPermissionsStateProviding.swift in Sources */,
 				78C86D7B1F12B2A2003A20E6 /* SplashViewControllerTests.swift in Sources */,
 				78C86D811F13A0CE003A20E6 /* StubPresentationStrings.swift in Sources */,
 				CAD234441F5F3D1A004BB959 /* CapturingShowMessageAction.swift in Sources */,

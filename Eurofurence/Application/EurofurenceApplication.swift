@@ -37,7 +37,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
         return EurofurenceApplication(remoteNotificationsTokenRegistration: tokenRegistration,
                                       pushPermissionsRequester: ApplicationPushPermissionsRequester(),
-                                      witnessedSystemPushPermissionsRequest: UserDefaultsWitnessedSystemPushPermissionsRequest(),
+                                      pushPermissionsStateProviding: UserDefaultsWitnessedSystemPushPermissionsRequest(),
                                       clock: SystemClock(),
                                       loginCredentialStore: KeychainLoginCredentialStore(),
                                       loginAPI: V2LoginAPI(JSONSession: JSONSession),
@@ -49,11 +49,11 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private var registeredDeviceToken: Data?
     private let privateMessagesAPI: PrivateMessagesAPI
     private let pushPermissionsRequester: PushPermissionsRequester
-    private let witnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest
+    private let pushPermissionsStateProviding: PushPermissionsStateProviding
 
     init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
          pushPermissionsRequester: PushPermissionsRequester,
-         witnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest,
+         pushPermissionsStateProviding: PushPermissionsStateProviding,
          clock: Clock,
          loginCredentialStore: LoginCredentialStore,
          loginAPI: LoginAPI,
@@ -61,9 +61,9 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
         self.privateMessagesAPI = privateMessagesAPI
         self.pushPermissionsRequester = pushPermissionsRequester
-        self.witnessedSystemPushPermissionsRequest = witnessedSystemPushPermissionsRequest
+        self.pushPermissionsStateProviding = pushPermissionsStateProviding
 
-        if witnessedSystemPushPermissionsRequest.witnessedSystemPushPermissionsRequest {
+        if pushPermissionsStateProviding.requestedPushNotificationAuthorization {
             pushPermissionsRequester.requestPushPermissions()
         }
 
@@ -83,7 +83,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     func requestPermissionsForPushNotifications() {
         pushPermissionsRequester.requestPushPermissions()
-        witnessedSystemPushPermissionsRequest.markWitnessedSystemPushPermissionsRequest()
+        pushPermissionsStateProviding.attemptedPushAuthorizationRequest()
     }
 
     func storeRemoteNotificationsToken(_ deviceToken: Data) {

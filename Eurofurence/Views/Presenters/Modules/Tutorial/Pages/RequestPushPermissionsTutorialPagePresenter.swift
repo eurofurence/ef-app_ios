@@ -12,7 +12,7 @@ TutorialPageSceneDelegate {
     private var delegate: TutorialPageDelegate
     private var presentationStrings: PresentationStrings
     private var presentationAssets: PresentationAssets
-    private var witnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest
+    private var pushPermissionsStateProviding: PushPermissionsStateProviding
     private var witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
     private var pushPermissionsRequesting: PushPermissionsRequesting
 
@@ -20,13 +20,13 @@ TutorialPageSceneDelegate {
          tutorialScene: TutorialScene,
          presentationStrings: PresentationStrings,
          presentationAssets: PresentationAssets,
-         witnessedSystemPushPermissionsRequest: WitnessedSystemPushPermissionsRequest,
+         pushPermissionsStateProviding: PushPermissionsStateProviding,
          witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest,
          pushPermissionsRequesting: PushPermissionsRequesting) {
         self.delegate = delegate
         self.presentationStrings = presentationStrings
         self.presentationAssets = presentationAssets
-        self.witnessedSystemPushPermissionsRequest = witnessedSystemPushPermissionsRequest
+        self.pushPermissionsStateProviding = pushPermissionsStateProviding
         self.witnessedTutorialPushPermissionsRequest = witnessedTutorialPushPermissionsRequest
         self.pushPermissionsRequesting = pushPermissionsRequesting
 
@@ -42,7 +42,7 @@ TutorialPageSceneDelegate {
     }
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
-        witnessedSystemPushPermissionsRequest.markWitnessedSystemPushPermissionsRequest()
+        pushPermissionsStateProviding.attemptedPushAuthorizationRequest()
         pushPermissionsRequesting.requestPushPermissions {
             self.witnessedTutorialPushPermissionsRequest.markWitnessedTutorialPushPermissionsRequest()
             self.delegate.tutorialPageCompletedByUser(self)
