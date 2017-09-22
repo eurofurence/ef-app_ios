@@ -25,7 +25,7 @@ class ApplicationTestBuilder {
         
         
         func registerForRemoteNotifications(_ deviceToken: Data = Data()) {
-            application.registerForRemoteNotifications(deviceToken: deviceToken)
+            application.storeRemoteNotificationsToken(deviceToken)
         }
         
         func login(registrationNumber: Int = 0,

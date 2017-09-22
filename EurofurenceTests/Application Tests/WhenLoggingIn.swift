@@ -138,7 +138,7 @@ class WhenLoggingIn: XCTestCase {
         let expectedToken = "JWT Token"
         context.login()
         context.loginAPI.simulateResponse(makeLoginResponse(token: expectedToken))
-        context.application.registerForRemoteNotifications(deviceToken: Data())
+        context.application.storeRemoteNotificationsToken(Data())
         
         XCTAssertEqual(expectedToken, context.capturingTokenRegistration.capturedUserAuthenticationToken)
     }
@@ -146,7 +146,7 @@ class WhenLoggingIn: XCTestCase {
     func testLoggingInAfterRegisteringPushTokenShouldReRegisterThePushTokenWithTheUserAuthenticationToken() {
         let context = ApplicationTestBuilder().build()
         let expectedToken = "JWT Token"
-        context.application.registerForRemoteNotifications(deviceToken: Data())
+        context.application.storeRemoteNotificationsToken(Data())
         context.login()
         context.loginAPI.simulateResponse(makeLoginResponse(token: expectedToken))
         
