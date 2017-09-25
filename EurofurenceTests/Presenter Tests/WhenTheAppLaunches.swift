@@ -9,16 +9,6 @@
 @testable import Eurofurence
 import XCTest
 
-protocol ModuleAttacher {
-    
-    func attach(to wireframe: PresentationWireframe)
-    
-}
-
-protocol PresentationWireframe: class {
-    
-}
-
 class StubModuleAttacher: ModuleAttacher {
 
     private(set) var attachedWireframe: PresentationWireframe?
@@ -33,6 +23,11 @@ class StubModuleAttacher: ModuleAttacher {
 }
 
 class CapturingPresentationWireframe: PresentationWireframe {
+    
+    private(set) var capturedRootScene: AnyObject?
+    func setRoot(_ scene: AnyObject) {
+        capturedRootScene = scene
+    }
     
 }
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TutorialModule {
+struct TutorialModule: ModuleAttacher {
 
     static func initialize(context: ApplicationContext, routers: Routers) {
         let tutorialContext = TutorialPresentationContext(
@@ -23,6 +23,16 @@ struct TutorialModule {
             witnessedTutorialPushPermissionsRequest: context.witnessedTutorialPushPermissionsRequest)
 
         _ = TutorialPresenter(context: tutorialContext)
+    }
+
+    private let tutorialSceneFactory: TutorialSceneFactory
+
+    init(tutorialSceneFactory: TutorialSceneFactory) {
+        self.tutorialSceneFactory = tutorialSceneFactory
+    }
+
+    func attach(to wireframe: PresentationWireframe) {
+        wireframe.setRoot(tutorialSceneFactory.makeTutorialScene())
     }
 
 }
