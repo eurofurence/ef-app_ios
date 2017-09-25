@@ -9,7 +9,79 @@
 @testable import Eurofurence
 import XCTest
 
+protocol ModuleAttacher {
+    
+    func attach(to wireframe: PresentationWireframe)
+    
+}
+
+protocol PresentationWireframe: class {
+    
+}
+
+class StubModuleAttacher: ModuleAttacher {
+
+    private(set) var attachedWireframe: PresentationWireframe?
+    func attach(to wireframe: PresentationWireframe) {
+        attachedWireframe = wireframe
+    }
+    
+    func didAttach(to wireframe: PresentationWireframe) -> Bool {
+        return wireframe === attachedWireframe
+    }
+    
+}
+
+class CapturingPresentationWireframe: PresentationWireframe {
+    
+}
+
+struct RootModule {
+    
+    init(wireframe: PresentationWireframe,
+         tutorialModuleFactory: ModuleAttacher,
+         preloadModuleFactory: ModuleAttacher,
+         firstTimeLaunchStateProviding: UserCompletedTutorialStateProviding) {
+        if firstTimeLaunchStateProviding.userHasCompletedTutorial {
+            preloadModuleFactory.attach(to: wireframe)
+        }
+        else {
+            tutorialModuleFactory.attach(to: wireframe)
+        }
+    }
+    
+}
+
 class WhenTheAppLaunches: XCTestCase {
+    
+    // MARK: New
+    
+    func testAndTheUserHasNotFinishedTheTutorialTheTutorialModuleShouldAttachToTheWireframe() {
+        let tutorialModule = StubModuleAttacher()
+        let wireframe = CapturingPresentationWireframe()
+        let notCompletedTutorial = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
+        _ = RootModule(wireframe: wireframe,
+                       tutorialModuleFactory: tutorialModule,
+                       preloadModuleFactory: StubModuleAttacher(),
+                       firstTimeLaunchStateProviding: notCompletedTutorial)
+        
+        XCTAssertTrue(tutorialModule.didAttach(to: wireframe))
+    }
+    
+    func testAndTheUserHasFinishedTheTutorialThePreloadModuleShouldAttachToTheRootWireframe() {
+        let tutorialModule = StubModuleAttacher()
+        let preloadmodule = StubModuleAttacher()
+        let wireframe = CapturingPresentationWireframe()
+        let notCompletedTutorial = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
+        _ = RootModule(wireframe: wireframe,
+                       tutorialModuleFactory: tutorialModule,
+                       preloadModuleFactory: preloadmodule,
+                       firstTimeLaunchStateProviding: notCompletedTutorial)
+
+        XCTAssertTrue(preloadmodule.didAttach(to: wireframe))
+    }
+    
+    // MARK: Old
     
     func testAndTheUserHasNotFinishedTheTutorialTheTutorialRouterIsToldToShowTheTutorial() {
         let tutorialRouter = CapturingTutorialRouter()
