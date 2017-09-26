@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SplashScene {
+protocol SplashScene: class {
 
     func showQuote(_ quote: String)
     func showQuoteAuthor(_ author: String)
