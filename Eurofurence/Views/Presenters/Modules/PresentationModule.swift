@@ -6,7 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-protocol ModuleAttacher {
+protocol PresentationModule {
 
     func attach(to wireframe: PresentationWireframe)
 
@@ -14,6 +14,6 @@ protocol ModuleAttacher {
 
 protocol PresentationWireframe: class {
 
-    func setRoot(_ scene: AnyObject)
+    func show(_ scene: AnyObject)
 
 }

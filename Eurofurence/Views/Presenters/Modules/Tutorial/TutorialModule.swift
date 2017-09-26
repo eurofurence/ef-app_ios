@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TutorialModule: ModuleAttacher {
+struct TutorialModule: PresentationModule {
 
     static func initialize(context: ApplicationContext, routers: Routers) {
         let tutorialContext = TutorialPresentationContext(
@@ -32,7 +32,7 @@ struct TutorialModule: ModuleAttacher {
     }
 
     func attach(to wireframe: PresentationWireframe) {
-        wireframe.setRoot(tutorialSceneFactory.makeTutorialScene())
+        wireframe.show(tutorialSceneFactory.makeTutorialScene())
     }
 
 }

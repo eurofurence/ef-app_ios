@@ -238,7 +238,7 @@
 		CA4FBE151F7313A300D29405 /* MessageTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE141F7313A300D29405 /* MessageTableViewCellTests.swift */; };
 		CA60B3581F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60B3571F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift */; };
 		CA7EB7D11F7997AB002674A6 /* TutorialModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D01F7997AB002674A6 /* TutorialModuleTests.swift */; };
-		CA7EB7D31F79985C002674A6 /* ModuleAttacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D21F79985C002674A6 /* ModuleAttacher.swift */; };
+		CA7EB7D31F79985C002674A6 /* PresentationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D21F79985C002674A6 /* PresentationModule.swift */; };
 		CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D41F799991002674A6 /* TutorialScene.swift */; };
 		CA804DD21F20CE8F00E07A4A /* V2LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */; };
 		CA804DD41F20CF4300E07A4A /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD31F20CF4300E07A4A /* APIResponse.swift */; };
@@ -600,7 +600,7 @@
 		CA4FBE141F7313A300D29405 /* MessageTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessageTableViewCellTests.swift; path = "View Tests/MessageTableViewCellTests.swift"; sourceTree = "<group>"; };
 		CA60B3571F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenterTestsForAnonymousUser.swift; path = "Presenter Tests/News/NewsPresenterTestsForAnonymousUser.swift"; sourceTree = "<group>"; };
 		CA7EB7D01F7997AB002674A6 /* TutorialModuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TutorialModuleTests.swift; path = "Presenter Tests/Tutorial/TutorialModuleTests.swift"; sourceTree = "<group>"; };
-		CA7EB7D21F79985C002674A6 /* ModuleAttacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleAttacher.swift; sourceTree = "<group>"; };
+		CA7EB7D21F79985C002674A6 /* PresentationModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationModule.swift; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
 		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/Protocols/APIResponse.swift; sourceTree = "<group>"; };
@@ -824,7 +824,7 @@
 				6EF96CE31F1268BA00EE6134 /* Tutorial */,
 				CAC1E1251F50409800195513 /* News */,
 				CAD234381F5D71D9004BB959 /* Messages */,
-				CA7EB7D21F79985C002674A6 /* ModuleAttacher.swift */,
+				CA7EB7D21F79985C002674A6 /* PresentationModule.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -2139,7 +2139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A7FFD571EFC5B46007ABA36 /* CalendarAccess.swift in Sources */,
-				CA7EB7D31F79985C002674A6 /* ModuleAttacher.swift in Sources */,
+				CA7EB7D31F79985C002674A6 /* PresentationModule.swift in Sources */,
 				781A94331F1A1994002DE70F /* FCMDeviceRegistration.swift in Sources */,
 				9A861EAF1F2554F900B75A8C /* TutorialPresenter.swift in Sources */,
 				6EF96CCC1F0EDB0500EE6134 /* CalendarEvent.swift in Sources */,

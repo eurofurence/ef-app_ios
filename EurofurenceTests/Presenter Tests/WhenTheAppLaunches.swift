@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import XCTest
 
-class StubModuleAttacher: ModuleAttacher {
+class CapturingPresentationModule: PresentationModule {
 
     private(set) var attachedWireframe: PresentationWireframe?
     func attach(to wireframe: PresentationWireframe) {
@@ -25,32 +25,32 @@ class StubModuleAttacher: ModuleAttacher {
 class CapturingPresentationWireframe: PresentationWireframe {
     
     private(set) var capturedRootScene: AnyObject?
-    func setRoot(_ scene: AnyObject) {
+    func show(_ scene: AnyObject) {
         capturedRootScene = scene
     }
     
 }
 
-struct RootModule: ModuleAttacher {
+struct RootModule: PresentationModule {
     
-    private let tutorialModuleFactory: ModuleAttacher
-    private let preloadModuleFactory: ModuleAttacher
+    private let tutorialModule: PresentationModule
+    private let preloadModule: PresentationModule
     private let firstTimeLaunchStateProviding: UserCompletedTutorialStateProviding
     
-    init(tutorialModuleFactory: ModuleAttacher,
-         preloadModuleFactory: ModuleAttacher,
+    init(tutorialModule: PresentationModule,
+         preloadModule: PresentationModule,
          firstTimeLaunchStateProviding: UserCompletedTutorialStateProviding) {
-        self.tutorialModuleFactory = tutorialModuleFactory
-        self.preloadModuleFactory = preloadModuleFactory
+        self.tutorialModule = tutorialModule
+        self.preloadModule = preloadModule
         self.firstTimeLaunchStateProviding = firstTimeLaunchStateProviding
     }
     
     func attach(to wireframe: PresentationWireframe) {
         if firstTimeLaunchStateProviding.userHasCompletedTutorial {
-            preloadModuleFactory.attach(to: wireframe)
+            preloadModule.attach(to: wireframe)
         }
         else {
-            tutorialModuleFactory.attach(to: wireframe)
+            tutorialModule.attach(to: wireframe)
         }
     }
     
@@ -61,11 +61,11 @@ class WhenTheAppLaunches: XCTestCase {
     // MARK: New
     
     func testAndTheUserHasNotFinishedTheTutorialTheTutorialModuleShouldAttachToTheWireframe() {
-        let tutorialModule = StubModuleAttacher()
+        let tutorialModule = CapturingPresentationModule()
         let wireframe = CapturingPresentationWireframe()
         let notCompletedTutorial = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
-        let module = RootModule(tutorialModuleFactory: tutorialModule,
-                                preloadModuleFactory: StubModuleAttacher(),
+        let module = RootModule(tutorialModule: tutorialModule,
+                                preloadModule: CapturingPresentationModule(),
                                 firstTimeLaunchStateProviding: notCompletedTutorial)
         module.attach(to: wireframe)
         
@@ -73,12 +73,12 @@ class WhenTheAppLaunches: XCTestCase {
     }
     
     func testAndTheUserHasFinishedTheTutorialThePreloadModuleShouldAttachToTheRootWireframe() {
-        let tutorialModule = StubModuleAttacher()
-        let preloadmodule = StubModuleAttacher()
+        let tutorialModule = CapturingPresentationModule()
+        let preloadmodule = CapturingPresentationModule()
         let wireframe = CapturingPresentationWireframe()
         let notCompletedTutorial = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
-        let module = RootModule(tutorialModuleFactory: tutorialModule,
-                                preloadModuleFactory: preloadmodule,
+        let module = RootModule(tutorialModule: tutorialModule,
+                                preloadModule: preloadmodule,
                                 firstTimeLaunchStateProviding: notCompletedTutorial)
         module.attach(to: wireframe)
 
