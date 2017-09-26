@@ -237,7 +237,6 @@
 		CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */; };
 		CA4FBE151F7313A300D29405 /* MessageTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE141F7313A300D29405 /* MessageTableViewCellTests.swift */; };
 		CA60B3581F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60B3571F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift */; };
-		CA7EB7D11F7997AB002674A6 /* TutorialModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D01F7997AB002674A6 /* TutorialModuleTests.swift */; };
 		CA7EB7D31F79985C002674A6 /* PresentationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D21F79985C002674A6 /* PresentationModule.swift */; };
 		CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D41F799991002674A6 /* TutorialScene.swift */; };
 		CA804DD21F20CE8F00E07A4A /* V2LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */; };
@@ -599,7 +598,6 @@
 		CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateFormatterProtocol.swift; path = Messages/DateFormatterProtocol.swift; sourceTree = "<group>"; };
 		CA4FBE141F7313A300D29405 /* MessageTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessageTableViewCellTests.swift; path = "View Tests/MessageTableViewCellTests.swift"; sourceTree = "<group>"; };
 		CA60B3571F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenterTestsForAnonymousUser.swift; path = "Presenter Tests/News/NewsPresenterTestsForAnonymousUser.swift"; sourceTree = "<group>"; };
-		CA7EB7D01F7997AB002674A6 /* TutorialModuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TutorialModuleTests.swift; path = "Presenter Tests/Tutorial/TutorialModuleTests.swift"; sourceTree = "<group>"; };
 		CA7EB7D21F79985C002674A6 /* PresentationModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationModule.swift; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
@@ -1474,7 +1472,6 @@
 		CA7EB7CF1F79977F002674A6 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				CA7EB7D01F7997AB002674A6 /* TutorialModuleTests.swift */,
 			);
 			name = Tutorial;
 			sourceTree = "<group>";
@@ -2400,7 +2397,6 @@
 				78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */,
 				CA2B4FAA1F1F7F1200F007E1 /* CapturingLoginObserver.swift in Sources */,
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
-				CA7EB7D11F7997AB002674A6 /* TutorialModuleTests.swift in Sources */,
 				78C86D831F13A35F003A20E6 /* UnlocalizedPresentationStringsShould.swift in Sources */,
 				CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */,
 				7820A6FF1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift in Sources */,
