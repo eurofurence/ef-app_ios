@@ -246,6 +246,7 @@
 		CA804DD21F20CE8F00E07A4A /* V2LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */; };
 		CA804DD41F20CF4300E07A4A /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD31F20CF4300E07A4A /* APIResponse.swift */; };
 		CA804DDA1F20D2F500E07A4A /* V2LoginAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */; };
+		CA8E17EA1F7C4D82003C348C /* WindowRootWireframeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17E91F7C4D82003C348C /* WindowRootWireframeTests.swift */; };
 		CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */; };
 		CA957B601F705AF9004DFD5A /* MessagesViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */; };
 		CA957B611F705AF9004DFD5A /* MessagesViewControllerV2.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA957B5F1F705AF9004DFD5A /* MessagesViewControllerV2.xib */; };
@@ -611,6 +612,7 @@
 		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
 		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/Protocols/APIResponse.swift; sourceTree = "<group>"; };
 		CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPITests.swift; path = "Application Tests/API/v2/V2LoginAPITests.swift"; sourceTree = "<group>"; };
+		CA8E17E91F7C4D82003C348C /* WindowRootWireframeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WindowRootWireframeTests.swift; path = "Presenter Tests/Root/WindowRootWireframeTests.swift"; sourceTree = "<group>"; };
 		CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesViewControllerTests.swift; path = "View Controller Tests/MessagesViewControllerTests.swift"; sourceTree = "<group>"; };
 		CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewControllerV2.swift; sourceTree = "<group>"; };
 		CA957B5F1F705AF9004DFD5A /* MessagesViewControllerV2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessagesViewControllerV2.xib; sourceTree = "<group>"; };
@@ -1006,6 +1008,7 @@
 		78C86D5B1F12355C003A20E6 /* Presenter Tests */ = {
 			isa = PBXGroup;
 			children = (
+				CA8E17E81F7C4D57003C348C /* Root */,
 				CAF9A93D1F5048FB00628833 /* Interactor Tests */,
 				78C86D6A1F123FC4003A20E6 /* Builders */,
 				CA7EB7CF1F79977F002674A6 /* Tutorial */,
@@ -1539,6 +1542,14 @@
 				CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */,
 			);
 			name = v2;
+			sourceTree = "<group>";
+		};
+		CA8E17E81F7C4D57003C348C /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				CA8E17E91F7C4D82003C348C /* WindowRootWireframeTests.swift */,
+			);
+			name = Root;
 			sourceTree = "<group>";
 		};
 		CA957B581F705A46004DFD5A /* View Controller Tests */ = {
@@ -2444,6 +2455,7 @@
 				CAF9A9511F558E7800628833 /* RandomGenerator.swift in Sources */,
 				7820A6DF1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift in Sources */,
 				CA30EAB61F26128A0053DBF6 /* WhenRequestingPrivateMessages.swift in Sources */,
+				CA8E17EA1F7C4D82003C348C /* WindowRootWireframeTests.swift in Sources */,
 				6EEC6DA11F1BF79F00205F2D /* FirebaseTopicTests.swift in Sources */,
 				7820A6F61F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift in Sources */,
 				CAC1E1371F50423200195513 /* NewsPresenterTestsForLoggedInUser.swift in Sources */,
