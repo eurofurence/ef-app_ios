@@ -33,11 +33,17 @@ struct PreloadModule<SceneFactory: PreloadSceneFactory>: PresentationModule {
     
     func attach(to wireframe: PresentationWireframe) {
         let preloadScene = preloadSceneFactory.makePreloadScene()
+        _ = PreloadPresenter(preloadScene: preloadScene, quote: quoteGenerator.makeQuote())
         wireframe.show(preloadScene)
+    }
+    
+    private struct PreloadPresenter {
         
-        let quote = quoteGenerator.makeQuote()
-        preloadScene.showQuote(quote.message)
-        preloadScene.showQuoteAuthor(quote.author)
+        init(preloadScene: SplashScene, quote: Quote) {
+            preloadScene.showQuote(quote.message)
+            preloadScene.showQuoteAuthor(quote.author)
+        }
+        
     }
     
 }
