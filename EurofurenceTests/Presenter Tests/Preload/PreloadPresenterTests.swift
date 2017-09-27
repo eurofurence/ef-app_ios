@@ -50,51 +50,49 @@ struct PreloadModule<SceneFactory: PreloadSceneFactory>: PresentationModule {
 
 class PreloadPresenterTests: XCTestCase {
     
-    func testThePreloadSceneIsSetOntoTheWireframe() {
+    struct PreloadPresenterTestContext {
+        
         let preloadSceneFactory = StubPreloadSceneFactory()
         let wireframe = CapturingPresentationWireframe()
-        let preloadModule = PreloadModule(preloadSceneFactory: preloadSceneFactory,
-                                          quoteGenerator: CapturingQuoteGenerator())
-        preloadModule.attach(to: wireframe)
+        let capturingQuoteGenerator = CapturingQuoteGenerator()
         
-        XCTAssertTrue(preloadSceneFactory.splashScene === wireframe.capturedRootScene)
+        func with(_ quote: Quote) -> PreloadPresenterTestContext {
+            capturingQuoteGenerator.quoteToMake = quote
+            return self
+        }
+        
+        func build() -> PreloadPresenterTestContext {
+            let module = PreloadModule(preloadSceneFactory: preloadSceneFactory,
+                                       quoteGenerator: capturingQuoteGenerator)
+            module.attach(to: wireframe)
+            
+            return self
+        }
+        
+    }
+    
+    func testThePreloadSceneIsSetOntoTheWireframe() {
+        let context = PreloadPresenterTestContext().build()
+        XCTAssertTrue(context.preloadSceneFactory.splashScene === context.wireframe.capturedRootScene)
     }
     
     func testTheQuotesDataSourceIsToldToMakeQuote() {
-        let capturingQuoteGenerator = CapturingQuoteGenerator()
-        let preloadSceneFactory = StubPreloadSceneFactory()
-        let wireframe = CapturingPresentationWireframe()
-        let preloadModule = PreloadModule(preloadSceneFactory: preloadSceneFactory,
-                                          quoteGenerator: capturingQuoteGenerator)
-        preloadModule.attach(to: wireframe)
-        
-        XCTAssertTrue(capturingQuoteGenerator.toldToMakeQuote)
+        let context = PreloadPresenterTestContext().build()
+        XCTAssertTrue(context.capturingQuoteGenerator.toldToMakeQuote)
     }
     
     func testTheQuoteFromTheGeneratorIsSetOntoTheSplashScene() {
         let someQuote = Quote(author: "", message: "Life is short, eat dessert first")
-        let capturingQuoteGenerator = CapturingQuoteGenerator()
-        capturingQuoteGenerator.quoteToMake = someQuote
-        let preloadSceneFactory = StubPreloadSceneFactory()
-        let wireframe = CapturingPresentationWireframe()
-        let preloadModule = PreloadModule(preloadSceneFactory: preloadSceneFactory,
-                                          quoteGenerator: capturingQuoteGenerator)
-        preloadModule.attach(to: wireframe)
+        let context = PreloadPresenterTestContext().with(someQuote).build()
         
-        XCTAssertEqual(someQuote.message, preloadSceneFactory.splashScene.shownQuote)
+        XCTAssertEqual(someQuote.message, context.preloadSceneFactory.splashScene.shownQuote)
     }
     
     func testTheQuoteAuthorFromTheGeneratorIsSetOntoTheSplashScene() {
         let someQuote = Quote(author: "A wise man", message: "Life is short, eat dessert first")
-        let capturingQuoteGenerator = CapturingQuoteGenerator()
-        capturingQuoteGenerator.quoteToMake = someQuote
-        let preloadSceneFactory = StubPreloadSceneFactory()
-        let wireframe = CapturingPresentationWireframe()
-        let preloadModule = PreloadModule(preloadSceneFactory: preloadSceneFactory,
-                                          quoteGenerator: capturingQuoteGenerator)
-        preloadModule.attach(to: wireframe)
+        let context = PreloadPresenterTestContext().with(someQuote).build()
 
-        XCTAssertEqual(someQuote.author, preloadSceneFactory.splashScene.shownQuoteAuthor)
+        XCTAssertEqual(someQuote.author, context.preloadSceneFactory.splashScene.shownQuoteAuthor)
     }
     
 }
