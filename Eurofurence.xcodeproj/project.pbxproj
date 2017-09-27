@@ -232,6 +232,9 @@
 		CA30EACC1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */; };
 		CA30EACE1F27D1430053DBF6 /* V2APIPrivateMessagesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EACD1F27D1430053DBF6 /* V2APIPrivateMessagesResponse.swift */; };
 		CA30EAD01F27D8620053DBF6 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */; };
+		CA321F4E1F7BC7FD0050E489 /* PhonePreloadSceneFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA321F4D1F7BC7FD0050E489 /* PhonePreloadSceneFactoryTests.swift */; };
+		CA321F511F7BC8550050E489 /* PreloadSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */; };
+		CA321F531F7BC88D0050E489 /* PhonePreloadSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA321F521F7BC88D0050E489 /* PhonePreloadSceneFactory.swift */; };
 		CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */; };
 		CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */; };
 		CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */; };
@@ -594,6 +597,9 @@
 		CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2PrivateMessagesAPI.swift; path = Application/API/v2/V2PrivateMessagesAPI.swift; sourceTree = "<group>"; };
 		CA30EACD1F27D1430053DBF6 /* V2APIPrivateMessagesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2APIPrivateMessagesResponse.swift; path = Application/API/v2/V2APIPrivateMessagesResponse.swift; sourceTree = "<group>"; };
 		CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		CA321F4D1F7BC7FD0050E489 /* PhonePreloadSceneFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhonePreloadSceneFactoryTests.swift; path = "Presenter Tests/Preload/PhonePreloadSceneFactoryTests.swift"; sourceTree = "<group>"; };
+		CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadSceneFactory.swift; sourceTree = "<group>"; };
+		CA321F521F7BC88D0050E489 /* PhonePreloadSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePreloadSceneFactory.swift; sourceTree = "<group>"; };
 		CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesPresenterTestsWhenBindingMessages.swift; path = "Presenter Tests/Messages/MessagesPresenterTestsWhenBindingMessages.swift"; sourceTree = "<group>"; };
 		CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingDateFormatter.swift; path = "Test Doubles/CapturingDateFormatter.swift"; sourceTree = "<group>"; };
 		CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateFormatterProtocol.swift; path = Messages/DateFormatterProtocol.swift; sourceTree = "<group>"; };
@@ -822,6 +828,7 @@
 			children = (
 				6EF96CE81F126B0400EE6134 /* Bootstrap */,
 				6EF96CE31F1268BA00EE6134 /* Tutorial */,
+				CA321F4F1F7BC8490050E489 /* Preload */,
 				CAC1E1251F50409800195513 /* News */,
 				CAD234381F5D71D9004BB959 /* Messages */,
 				CA7EB7D21F79985C002674A6 /* PresentationModule.swift */,
@@ -1464,6 +1471,15 @@
 			name = API;
 			sourceTree = "<group>";
 		};
+		CA321F4F1F7BC8490050E489 /* Preload */ = {
+			isa = PBXGroup;
+			children = (
+				CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */,
+				CA321F521F7BC88D0050E489 /* PhonePreloadSceneFactory.swift */,
+			);
+			path = Preload;
+			sourceTree = "<group>";
+		};
 		CA4FBE131F73137D00D29405 /* View Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1476,6 +1492,7 @@
 			isa = PBXGroup;
 			children = (
 				CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */,
+				CA321F4D1F7BC7FD0050E489 /* PhonePreloadSceneFactoryTests.swift */,
 			);
 			name = Preload;
 			sourceTree = "<group>";
@@ -2184,6 +2201,7 @@
 				9A80EF5D1F29204900FD0D37 /* CurrentEventsFilterFavoritesProviding.swift in Sources */,
 				78567B3D1F100BAF00EBA31D /* DataStoreRefreshController.swift in Sources */,
 				78D7EEBD1F196B62005372A9 /* EurofurenceApplication.swift in Sources */,
+				CA321F531F7BC88D0050E489 /* PhonePreloadSceneFactory.swift in Sources */,
 				9ACB010C1F18FAB3001CE9D2 /* EventFavoritesService.swift in Sources */,
 				9A05254C1ECB097500578798 /* DataStoreProtocol.swift in Sources */,
 				CAF9A9551F55F9DB00628833 /* LoginPromptTableViewCell.swift in Sources */,
@@ -2265,6 +2283,7 @@
 				D6F3D5CDFE398DB6CDBDBC77 /* AnnouncementsViewModel.swift in Sources */,
 				78455B471F11779D005BE2D7 /* SplashScreenRouter.swift in Sources */,
 				CA957B601F705AF9004DFD5A /* MessagesViewControllerV2.swift in Sources */,
+				CA321F511F7BC8550050E489 /* PreloadSceneFactory.swift in Sources */,
 				6EF96CF11F1495F400EE6134 /* SystemNetworkReachability.swift in Sources */,
 				9A861EBD1F25551400B75A8C /* PresentationTier.swift in Sources */,
 				7820A6EF1F14F15D004C0FB5 /* Quote.swift in Sources */,
@@ -2393,6 +2412,7 @@
 				CAD780521F1E2D2E002A8333 /* CapturingLoginCredentialStore.swift in Sources */,
 				CA804DDA1F20D2F500E07A4A /* V2LoginAPITests.swift in Sources */,
 				CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */,
+				CA321F4E1F7BC7FD0050E489 /* PhonePreloadSceneFactoryTests.swift in Sources */,
 				78C86D791F12ADF8003A20E6 /* CapturingSplashScene.swift in Sources */,
 				78C86D4C1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift in Sources */,
 				6EEC6DA31F1BFC5000205F2D /* StubAppVersionProviding.swift in Sources */,

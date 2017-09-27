@@ -9,27 +9,23 @@
 @testable import Eurofurence
 import XCTest
 
-protocol PreloadSceneFactory {
-    
-    func makePreloadScene() -> SplashScene
-    
-}
-
 class StubPreloadSceneFactory: PreloadSceneFactory {
     
+    typealias Scene = CapturingSplashScene
+    
     let splashScene = CapturingSplashScene()
-    func makePreloadScene() -> SplashScene {
+    func makePreloadScene() -> StubPreloadSceneFactory.Scene {
         return splashScene
     }
     
 }
 
-struct PreloadModule: PresentationModule {
+struct PreloadModule<SceneFactory: PreloadSceneFactory>: PresentationModule {
     
-    private let preloadSceneFactory: PreloadSceneFactory
+    private let preloadSceneFactory: SceneFactory
     private let quoteGenerator: QuoteGenerator
     
-    init(preloadSceneFactory: PreloadSceneFactory,
+    init(preloadSceneFactory: SceneFactory,
          quoteGenerator: QuoteGenerator) {
         self.preloadSceneFactory = preloadSceneFactory
         self.quoteGenerator = quoteGenerator
