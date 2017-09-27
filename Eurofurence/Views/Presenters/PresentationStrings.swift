@@ -29,6 +29,9 @@ enum PresentationScenario {
     case cellularDownloadAlertTitle
     case cellularDownloadAlertMessage
     case cellularDownloadAlertContinueOverCellularTitle
+
+    case downloadError
+    case preloadFailureMessage
 }
 
 struct UnlocalizedPresentationStrings: PresentationStrings {
@@ -47,7 +50,10 @@ struct UnlocalizedPresentationStrings: PresentationStrings {
 
         .cellularDownloadAlertTitle: "Use Cellular Data?",
         .cellularDownloadAlertMessage: "Proceeding with the initial download will consume several megabytes of data.",
-        .cellularDownloadAlertContinueOverCellularTitle: "Continue Over Cellular"
+        .cellularDownloadAlertContinueOverCellularTitle: "Continue Over Cellular",
+
+        .downloadError: "Download Error",
+        .preloadFailureMessage: "Failed to download data from server. Please try again."
     ]
 
     func presentationString(for scenario: PresentationScenario) -> String {
