@@ -58,6 +58,8 @@ class SplashViewController: UIViewController, SplashScene,
 
     // MARK: SplashScene
 
+    var delegate: SplashSceneDelegate?
+
     func showQuote(_ quote: String) {
         quoteLabel.text = quote
     }

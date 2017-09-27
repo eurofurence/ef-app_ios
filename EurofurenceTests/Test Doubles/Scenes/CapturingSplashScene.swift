@@ -10,6 +10,8 @@
 import Foundation
 
 class CapturingSplashScene: SplashScene {
+    
+    var delegate: SplashSceneDelegate?
 
     private(set) var shownQuote: String?
     func showQuote(_ quote: String) {
@@ -19,6 +21,10 @@ class CapturingSplashScene: SplashScene {
     private(set) var shownQuoteAuthor: String?
     func showQuoteAuthor(_ author: String) {
         shownQuoteAuthor = author
+    }
+    
+    func notifySceneWillAppear() {
+        delegate?.splashSceneWillAppear(self)
     }
     
 }

@@ -10,7 +10,15 @@ import Foundation
 
 protocol SplashScene: class {
 
+    var delegate: SplashSceneDelegate? { get set }
+
     func showQuote(_ quote: String)
     func showQuoteAuthor(_ author: String)
+
+}
+
+protocol SplashSceneDelegate {
+
+    func splashSceneWillAppear(_ splashScene: SplashScene)
 
 }
