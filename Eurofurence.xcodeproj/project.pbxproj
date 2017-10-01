@@ -247,6 +247,11 @@
 		CA804DD41F20CF4300E07A4A /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD31F20CF4300E07A4A /* APIResponse.swift */; };
 		CA804DDA1F20D2F500E07A4A /* V2LoginAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */; };
 		CA8E17EA1F7C4D82003C348C /* WindowRootWireframeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17E91F7C4D82003C348C /* WindowRootWireframeTests.swift */; };
+		CA8E17ED1F817A70003C348C /* PreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17EC1F817A70003C348C /* PreloadService.swift */; };
+		CA8E17EF1F817A8C003C348C /* CapturingPreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17EE1F817A8C003C348C /* CapturingPreloadService.swift */; };
+		CA8E17F11F817AA2003C348C /* CapturingPreloadModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */; };
+		CA8E17F31F817AD0003C348C /* PreloadModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17F21F817AD0003C348C /* PreloadModule.swift */; };
+		CA8E17F51F817AE8003C348C /* PreloadPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17F41F817AE8003C348C /* PreloadPresenter.swift */; };
 		CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */; };
 		CA957B601F705AF9004DFD5A /* MessagesViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */; };
 		CA957B611F705AF9004DFD5A /* MessagesViewControllerV2.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA957B5F1F705AF9004DFD5A /* MessagesViewControllerV2.xib */; };
@@ -613,6 +618,11 @@
 		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/Protocols/APIResponse.swift; sourceTree = "<group>"; };
 		CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPITests.swift; path = "Application Tests/API/v2/V2LoginAPITests.swift"; sourceTree = "<group>"; };
 		CA8E17E91F7C4D82003C348C /* WindowRootWireframeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WindowRootWireframeTests.swift; path = "Presenter Tests/Root/WindowRootWireframeTests.swift"; sourceTree = "<group>"; };
+		CA8E17EC1F817A70003C348C /* PreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreloadService.swift; path = Interactors/Preload/PreloadService.swift; sourceTree = "<group>"; };
+		CA8E17EE1F817A8C003C348C /* CapturingPreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingPreloadService.swift; path = "Test Doubles/CapturingPreloadService.swift"; sourceTree = "<group>"; };
+		CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingPreloadModuleDelegate.swift; path = "Test Doubles/CapturingPreloadModuleDelegate.swift"; sourceTree = "<group>"; };
+		CA8E17F21F817AD0003C348C /* PreloadModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadModule.swift; sourceTree = "<group>"; };
+		CA8E17F41F817AE8003C348C /* PreloadPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadPresenter.swift; sourceTree = "<group>"; };
 		CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesViewControllerTests.swift; path = "View Controller Tests/MessagesViewControllerTests.swift"; sourceTree = "<group>"; };
 		CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewControllerV2.swift; sourceTree = "<group>"; };
 		CA957B5F1F705AF9004DFD5A /* MessagesViewControllerV2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessagesViewControllerV2.xib; sourceTree = "<group>"; };
@@ -812,6 +822,8 @@
 				CAD234431F5F3D1A004BB959 /* CapturingShowMessageAction.swift */,
 				CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */,
 				CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */,
+				CA8E17EE1F817A8C003C348C /* CapturingPreloadService.swift */,
+				CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */,
 			);
 			name = "Test Doubles";
 			sourceTree = "<group>";
@@ -1479,6 +1491,8 @@
 			children = (
 				CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */,
 				CA321F521F7BC88D0050E489 /* PhonePreloadSceneFactory.swift */,
+				CA8E17F21F817AD0003C348C /* PreloadModule.swift */,
+				CA8E17F41F817AE8003C348C /* PreloadPresenter.swift */,
 			);
 			path = Preload;
 			sourceTree = "<group>";
@@ -1550,6 +1564,14 @@
 				CA8E17E91F7C4D82003C348C /* WindowRootWireframeTests.swift */,
 			);
 			name = Root;
+			sourceTree = "<group>";
+		};
+		CA8E17EB1F817A5F003C348C /* Preload */ = {
+			isa = PBXGroup;
+			children = (
+				CA8E17EC1F817A70003C348C /* PreloadService.swift */,
+			);
+			name = Preload;
 			sourceTree = "<group>";
 		};
 		CA957B581F705A46004DFD5A /* View Controller Tests */ = {
@@ -1669,6 +1691,7 @@
 			isa = PBXGroup;
 			children = (
 				CAF9A93C1F50488D00628833 /* Authorization */,
+				CA8E17EB1F817A5F003C348C /* Preload */,
 				CAF9A9481F54BB4100628833 /* Private Messages */,
 			);
 			name = Interactors;
@@ -2234,6 +2257,7 @@
 				9A861EAB1F2554D700B75A8C /* BootstrappingModule.swift in Sources */,
 				9A7FDA141F3445890050C325 /* CopyableLabel.swift in Sources */,
 				9A34B9851ED089BB004A249E /* NavigationResolverProtocol.swift in Sources */,
+				CA8E17F51F817AE8003C348C /* PreloadPresenter.swift in Sources */,
 				9A9487FD1F1D5D9300119DC8 /* EventNotificationPreferences.swift in Sources */,
 				9A80EF611F2922EE00FD0D37 /* EventTableViewController.swift in Sources */,
 				9A80EF4A1F289D0500FD0D37 /* NotificationSyncDataStoreRefreshDelegate.swift in Sources */,
@@ -2298,6 +2322,7 @@
 				6EF96CF11F1495F400EE6134 /* SystemNetworkReachability.swift in Sources */,
 				9A861EBD1F25551400B75A8C /* PresentationTier.swift in Sources */,
 				7820A6EF1F14F15D004C0FB5 /* Quote.swift in Sources */,
+				CA8E17ED1F817A70003C348C /* PreloadService.swift in Sources */,
 				D6F3DD6B0659E1A44E01075B /* CurrentEventsViewModel.swift in Sources */,
 				CA281B621F1FE3F10002A4E5 /* V2LoginResponse.swift in Sources */,
 				781A943C1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift in Sources */,
@@ -2356,6 +2381,7 @@
 				9A8ECA251F2BE1E300351A83 /* NotificationSoundPlayer.swift in Sources */,
 				9A0F87E51F1BAD2C00FF294B /* LocalNotificationStore.swift in Sources */,
 				D6F3D2440B74E17B9A008DE0 /* AnnouncementViewController.swift in Sources */,
+				CA8E17F31F817AD0003C348C /* PreloadModule.swift in Sources */,
 				CA281B641F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift in Sources */,
 				78FE77D91F1BB9E400E9A0BE /* URLSessionBasedJSONSession.swift in Sources */,
 				D6F3D3D11CAB2B06852D0EF9 /* DealerTableViewController.swift in Sources */,
@@ -2397,6 +2423,7 @@
 				78FE77D31F1A2EB000E9A0BE /* CapturingJSONSession.swift in Sources */,
 				78C86D541F1228B0003A20E6 /* TutorialViewControllerTests.swift in Sources */,
 				78455B3A1F116A7E005BE2D7 /* WhenTheAppLaunches.swift in Sources */,
+				CA8E17F11F817AA2003C348C /* CapturingPreloadModuleDelegate.swift in Sources */,
 				CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */,
 				781A94421F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */,
 				CAB3A72A1F7532A2005DF77B /* CapturingPushPermissionsRequester.swift in Sources */,
@@ -2456,6 +2483,7 @@
 				7820A6DF1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift in Sources */,
 				CA30EAB61F26128A0053DBF6 /* WhenRequestingPrivateMessages.swift in Sources */,
 				CA8E17EA1F7C4D82003C348C /* WindowRootWireframeTests.swift in Sources */,
+				CA8E17EF1F817A8C003C348C /* CapturingPreloadService.swift in Sources */,
 				6EEC6DA11F1BF79F00205F2D /* FirebaseTopicTests.swift in Sources */,
 				7820A6F61F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift in Sources */,
 				CAC1E1371F50423200195513 /* NewsPresenterTestsForLoggedInUser.swift in Sources */,

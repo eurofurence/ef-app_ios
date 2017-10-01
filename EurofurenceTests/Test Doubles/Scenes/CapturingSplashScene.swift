@@ -9,6 +9,17 @@
 @testable import Eurofurence
 import Foundation
 
+class StubPreloadSceneFactory: PreloadSceneFactory {
+    
+    typealias Scene = CapturingSplashScene
+    
+    let splashScene = CapturingSplashScene()
+    func makePreloadScene() -> StubPreloadSceneFactory.Scene {
+        return splashScene
+    }
+    
+}
+
 class CapturingSplashScene: SplashScene {
     
     var delegate: SplashSceneDelegate?
