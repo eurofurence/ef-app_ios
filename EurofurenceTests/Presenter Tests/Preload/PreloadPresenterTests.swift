@@ -36,6 +36,7 @@ protocol PreloadServiceDelegate {
 protocol PreloadModuleDelegate {
     
     func preloadModuleDidCancelPreloading()
+    func preloadModuleDidFinishPreloading()
     
 }
 
@@ -65,6 +66,11 @@ class CapturingPreloadModuleDelegate: PreloadModuleDelegate {
     private(set) var notifiedPreloadCancelled = false
     func preloadModuleDidCancelPreloading() {
         notifiedPreloadCancelled = true
+    }
+    
+    private(set) var notifiedPreloadFinished = false
+    func preloadModuleDidFinishPreloading() {
+        notifiedPreloadFinished = true
     }
     
 }
@@ -139,7 +145,7 @@ struct PreloadModule<SceneFactory: PreloadSceneFactory>: PresentationModule {
         }
         
         func preloadServiceDidFinish() {
-            
+            delegate.preloadModuleDidFinishPreloading()
         }
         
         private func beginPreloading() {
@@ -291,6 +297,19 @@ class PreloadPresenterTests: XCTestCase {
         context.alertRouter.capturedAction(title: tryAgainTitle)?.invoke()
         
         XCTAssertEqual(2, context.preloadingService.beginPreloadInvocationCount)
+    }
+    
+    func testWhenThePreloadServiceCompletesTheDelegateIsToldPreloadingFinished() {
+        let context = PreloadPresenterTestContext().build()
+        context.preloadSceneFactory.splashScene.notifySceneWillAppear()
+        context.preloadingService.notifySucceededPreload()
+        
+        XCTAssertTrue(context.delegate.notifiedPreloadFinished)
+    }
+    
+    func testTheDelegateIsNotToldPreloadFinishedUntilTheServiceTellsUsSo() {
+        let context = PreloadPresenterTestContext().build()
+        XCTAssertFalse(context.delegate.notifiedPreloadFinished)
     }
     
 }
