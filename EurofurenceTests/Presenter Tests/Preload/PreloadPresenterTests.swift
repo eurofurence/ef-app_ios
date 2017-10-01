@@ -33,6 +33,12 @@ protocol PreloadServiceDelegate {
     
 }
 
+protocol PreloadModuleDelegate {
+    
+    func preloadModuleDidCancelPreloading()
+    
+}
+
 class CapturingPreloadService: PreloadService {
     
     private(set) var didBeginPreloading = false
@@ -52,19 +58,31 @@ class CapturingPreloadService: PreloadService {
     
 }
 
+class CapturingPreloadModuleDelegate: PreloadModuleDelegate {
+    
+    private(set) var notifiedPreloadCancelled = false
+    func preloadModuleDidCancelPreloading() {
+        notifiedPreloadCancelled = true
+    }
+    
+}
+
 struct PreloadModule<SceneFactory: PreloadSceneFactory>: PresentationModule {
     
+    private let delegate: PreloadModuleDelegate
     private let preloadSceneFactory: SceneFactory
     private let quoteGenerator: QuoteGenerator
     private let preloadService: PreloadService
     private let alertRouter: AlertRouter
     private let presentationStrings: PresentationStrings
     
-    init(preloadSceneFactory: SceneFactory,
+    init(delegate: PreloadModuleDelegate,
+         preloadSceneFactory: SceneFactory,
          preloadService: PreloadService,
          alertRouter: AlertRouter,
          quoteGenerator: QuoteGenerator,
          presentationStrings: PresentationStrings) {
+        self.delegate = delegate
         self.preloadSceneFactory = preloadSceneFactory
         self.preloadService = preloadService
         self.alertRouter = alertRouter
@@ -74,7 +92,8 @@ struct PreloadModule<SceneFactory: PreloadSceneFactory>: PresentationModule {
     
     func attach(to wireframe: PresentationWireframe) {
         let preloadScene = preloadSceneFactory.makePreloadScene()
-        _ = PreloadPresenter(preloadScene: preloadScene,
+        _ = PreloadPresenter(delegate: delegate,
+                             preloadScene: preloadScene,
                              preloadService: preloadService,
                              alertRouter: alertRouter,
                              quote: quoteGenerator.makeQuote(),
@@ -84,15 +103,18 @@ struct PreloadModule<SceneFactory: PreloadSceneFactory>: PresentationModule {
     
     private struct PreloadPresenter: SplashSceneDelegate, PreloadServiceDelegate {
         
+        private let delegate: PreloadModuleDelegate
         private let preloadService: PreloadService
         private let alertRouter: AlertRouter
         private let presentationStrings: PresentationStrings
         
-        init(preloadScene: SplashScene,
+        init(delegate: PreloadModuleDelegate,
+             preloadScene: SplashScene,
              preloadService: PreloadService,
              alertRouter: AlertRouter,
              quote: Quote,
              presentationStrings: PresentationStrings) {
+            self.delegate = delegate
             self.preloadService = preloadService
             self.alertRouter = alertRouter
             self.presentationStrings = presentationStrings
@@ -107,7 +129,8 @@ struct PreloadModule<SceneFactory: PreloadSceneFactory>: PresentationModule {
         }
         
         func preloadServiceDidFail() {
-            let cancelAction = AlertAction(title: presentationStrings.presentationString(for: .cancel))
+            let cancelAction = AlertAction(title: presentationStrings.presentationString(for: .cancel),
+                                           action: notifyDelegatePreloadingCancelled)
             alertRouter.showAlert(title: presentationStrings.presentationString(for: .downloadError),
                                   message: presentationStrings.presentationString(for: .preloadFailureMessage),
                                   actions: cancelAction)
@@ -115,6 +138,10 @@ struct PreloadModule<SceneFactory: PreloadSceneFactory>: PresentationModule {
         
         func preloadServiceDidFinish() {
             
+        }
+        
+        private func notifyDelegatePreloadingCancelled() {
+            delegate.preloadModuleDidCancelPreloading()
         }
         
     }
@@ -131,6 +158,7 @@ class PreloadPresenterTests: XCTestCase {
         let preloadingService = CapturingPreloadService()
         let presentationStrings = UnlocalizedPresentationStrings()
         let alertRouter = CapturingAlertRouter()
+        let delegate = CapturingPreloadModuleDelegate()
         
         func with(_ quote: Quote) -> PreloadPresenterTestContext {
             capturingQuoteGenerator.quoteToMake = quote
@@ -138,7 +166,8 @@ class PreloadPresenterTests: XCTestCase {
         }
         
         func build() -> PreloadPresenterTestContext {
-            let module = PreloadModule(preloadSceneFactory: preloadSceneFactory,
+            let module = PreloadModule(delegate: delegate,
+                                       preloadSceneFactory: preloadSceneFactory,
                                        preloadService: preloadingService,
                                        alertRouter: alertRouter,
                                        quoteGenerator: capturingQuoteGenerator,
@@ -219,6 +248,24 @@ class PreloadPresenterTests: XCTestCase {
         context.preloadingService.notifySucceededPreload()
         
         XCTAssertFalse(context.alertRouter.didShowAlert)
+    }
+    
+    func testWhenThePreloadServiceFailsThenTheCancelActionIsInvokedTheDelegateIsToldPreloadingCancelled() {
+        let context = PreloadPresenterTestContext().build()
+        context.preloadSceneFactory.splashScene.notifySceneWillAppear()
+        context.preloadingService.notifyFailedToPreload()
+        let cancelTitle = context.presentationStrings.presentationString(for: .cancel)
+        context.alertRouter.capturedAction(title: cancelTitle)?.invoke()
+        
+        XCTAssertTrue(context.delegate.notifiedPreloadCancelled)
+    }
+    
+    func testWhenThePreloadServiceFailsTheDelegateIsNotToldPreloadCancelledUntilCancelActionInvoked() {
+        let context = PreloadPresenterTestContext().build()
+        context.preloadSceneFactory.splashScene.notifySceneWillAppear()
+        context.preloadingService.notifyFailedToPreload()
+        
+        XCTAssertFalse(context.delegate.notifiedPreloadCancelled)
     }
     
 }

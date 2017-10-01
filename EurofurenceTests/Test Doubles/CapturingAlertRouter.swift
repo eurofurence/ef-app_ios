@@ -21,4 +21,8 @@ class CapturingAlertRouter: AlertRouter {
         presentedActions = actions
     }
     
+    func capturedAction(title: String) -> AlertAction? {
+        return presentedActions.first(where: { $0.title == title })
+    }
+    
 }
