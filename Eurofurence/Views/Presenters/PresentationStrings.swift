@@ -16,6 +16,7 @@ protocol PresentationStrings {
 
 enum PresentationScenario {
     case cancel
+    case tryAgain
 
     case tutorialPushPermissionsRequestTitle
     case tutorialPushPermissionsRequestDescription
@@ -38,6 +39,7 @@ struct UnlocalizedPresentationStrings: PresentationStrings {
 
     private static let strings: [PresentationScenario : String] = [
         .cancel: "Cancel",
+        .tryAgain: "",
 
         .tutorialPushPermissionsRequestTitle: "Push Notifications",
         .tutorialPushPermissionsRequestDescription: "To keep you up-to-date with changes to the event schedule and other important announcements, the app requires your permission to display notifications on your device.",

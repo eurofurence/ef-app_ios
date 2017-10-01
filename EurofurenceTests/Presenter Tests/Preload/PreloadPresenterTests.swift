@@ -42,10 +42,12 @@ protocol PreloadModuleDelegate {
 class CapturingPreloadService: PreloadService {
     
     private(set) var didBeginPreloading = false
+    private(set) var beginPreloadInvocationCount = 0
     private var delegate: PreloadServiceDelegate?
     func beginPreloading(delegate: PreloadServiceDelegate) {
         self.delegate = delegate
         didBeginPreloading = true
+        beginPreloadInvocationCount += 1
     }
     
     func notifyFailedToPreload() {
@@ -125,19 +127,25 @@ struct PreloadModule<SceneFactory: PreloadSceneFactory>: PresentationModule {
         }
         
         func splashSceneWillAppear(_ splashScene: SplashScene) {
-            preloadService.beginPreloading(delegate: self)
+            beginPreloading()
         }
         
         func preloadServiceDidFail() {
+            let tryAgainAction = AlertAction(title: presentationStrings.presentationString(for: .tryAgain),
+                                             action: beginPreloading)
             let cancelAction = AlertAction(title: presentationStrings.presentationString(for: .cancel),
                                            action: notifyDelegatePreloadingCancelled)
             alertRouter.showAlert(title: presentationStrings.presentationString(for: .downloadError),
                                   message: presentationStrings.presentationString(for: .preloadFailureMessage),
-                                  actions: cancelAction)
+                                  actions: tryAgainAction, cancelAction)
         }
         
         func preloadServiceDidFinish() {
             
+        }
+        
+        private func beginPreloading() {
+            preloadService.beginPreloading(delegate: self)
         }
         
         private func notifyDelegatePreloadingCancelled() {
@@ -233,13 +241,22 @@ class PreloadPresenterTests: XCTestCase {
                        context.alertRouter.presentedAlertMessage)
     }
     
+    func testWhenThePreloadServiceFailsTheAlertRouterIsToldToShowAlertWithTryAgainAction() {
+        let context = PreloadPresenterTestContext().build()
+        context.preloadSceneFactory.splashScene.notifySceneWillAppear()
+        context.preloadingService.notifyFailedToPreload()
+        
+        XCTAssertEqual(context.presentationStrings.presentationString(for: .tryAgain),
+                       context.alertRouter.presentedActions.first?.title)
+    }
+    
     func testWhenThePreloadServiceFailsTheAlertRouterIsToldToShowAlertWithCancelAction() {
         let context = PreloadPresenterTestContext().build()
         context.preloadSceneFactory.splashScene.notifySceneWillAppear()
         context.preloadingService.notifyFailedToPreload()
         
         XCTAssertEqual(context.presentationStrings.presentationString(for: .cancel),
-                       context.alertRouter.presentedActions.first?.title)
+                       context.alertRouter.presentedActions.last?.title)
     }
     
     func testWhenThePreloadServiceSucceedsTheAlertRouterIsNotToldToShowAlert() {
@@ -266,6 +283,16 @@ class PreloadPresenterTests: XCTestCase {
         context.preloadingService.notifyFailedToPreload()
         
         XCTAssertFalse(context.delegate.notifiedPreloadCancelled)
+    }
+    
+    func testWhenThePreloadServiceFailsThenTheTryAgainActionIsInvokedThePreloadServiceIsToldToLoadAgain() {
+        let context = PreloadPresenterTestContext().build()
+        context.preloadSceneFactory.splashScene.notifySceneWillAppear()
+        context.preloadingService.notifyFailedToPreload()
+        let tryAgainTitle = context.presentationStrings.presentationString(for: .tryAgain)
+        context.alertRouter.capturedAction(title: tryAgainTitle)?.invoke()
+        
+        XCTAssertEqual(2, context.preloadingService.beginPreloadInvocationCount)
     }
     
 }
