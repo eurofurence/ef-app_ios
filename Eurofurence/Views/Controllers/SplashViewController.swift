@@ -68,6 +68,10 @@ class SplashViewController: UIViewController, SplashScene,
         quoteAuthorLabel.text = "- \(author)"
     }
 
+    func showProgress(_ progress: Float) {
+
+    }
+
     // MARK: DataStoreLoadDelegate
 
     func dataStoreLoadDidBegin() {

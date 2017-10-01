@@ -30,6 +30,7 @@ protocol PreloadServiceDelegate {
     
     func preloadServiceDidFail()
     func preloadServiceDidFinish()
+    func preloadServiceDidProgress(currentUnitCount: Int, totalUnitCount: Int)
     
 }
 
@@ -57,6 +58,10 @@ class CapturingPreloadService: PreloadService {
     
     func notifySucceededPreload() {
         delegate?.preloadServiceDidFinish()
+    }
+    
+    func notifyProgressMade(current: Int, total: Int) {
+        delegate?.preloadServiceDidProgress(currentUnitCount: current, totalUnitCount: total)
     }
     
 }
@@ -112,6 +117,7 @@ struct PreloadModule<SceneFactory: PreloadSceneFactory>: PresentationModule {
     private struct PreloadPresenter: SplashSceneDelegate, PreloadServiceDelegate {
         
         private let delegate: PreloadModuleDelegate
+        private let preloadScene: SplashScene
         private let preloadService: PreloadService
         private let alertRouter: AlertRouter
         private let presentationStrings: PresentationStrings
@@ -123,6 +129,7 @@ struct PreloadModule<SceneFactory: PreloadSceneFactory>: PresentationModule {
              quote: Quote,
              presentationStrings: PresentationStrings) {
             self.delegate = delegate
+            self.preloadScene = preloadScene
             self.preloadService = preloadService
             self.alertRouter = alertRouter
             self.presentationStrings = presentationStrings
@@ -146,6 +153,11 @@ struct PreloadModule<SceneFactory: PreloadSceneFactory>: PresentationModule {
         
         func preloadServiceDidFinish() {
             delegate.preloadModuleDidFinishPreloading()
+        }
+        
+        func preloadServiceDidProgress(currentUnitCount: Int, totalUnitCount: Int) {
+            let fractionalProgress = Float(currentUnitCount) / Float(totalUnitCount)
+            preloadScene.showProgress(fractionalProgress)
         }
         
         private func beginPreloading() {
@@ -310,6 +322,17 @@ class PreloadPresenterTests: XCTestCase {
     func testTheDelegateIsNotToldPreloadFinishedUntilTheServiceTellsUsSo() {
         let context = PreloadPresenterTestContext().build()
         XCTAssertFalse(context.delegate.notifiedPreloadFinished)
+    }
+    
+    func testWhenThePreloadServiceProgressesTheSceneIsToldToUpdateWithTheCurrentAndTotalUnitCount() {
+        let context = PreloadPresenterTestContext().build()
+        context.preloadSceneFactory.splashScene.notifySceneWillAppear()
+        let current = Random.makeRandomNumber(upperLimit: 100)
+        let total = Random.makeRandomNumber(upperLimit: 100 - current) + current
+        let expected = Float(current) / Float(total)
+        context.preloadingService.notifyProgressMade(current: current, total: total)
+        
+        XCTAssertEqual(expected, context.preloadSceneFactory.splashScene.capturedProgress)
     }
     
 }

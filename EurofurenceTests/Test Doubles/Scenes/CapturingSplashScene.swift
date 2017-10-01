@@ -23,6 +23,11 @@ class CapturingSplashScene: SplashScene {
         shownQuoteAuthor = author
     }
     
+    private(set) var capturedProgress: Float?
+    func showProgress(_ progress: Float) {
+        capturedProgress = progress
+    }
+    
     func notifySceneWillAppear() {
         delegate?.splashSceneWillAppear(self)
     }
