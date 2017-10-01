@@ -6,8 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-struct RequestPushPermissionsTutorialPagePresenter: TutorialPage,
-TutorialPageSceneDelegate {
+struct RequestPushPermissionsTutorialPagePresenter: TutorialPage, TutorialPageSceneDelegate {
 
     private var delegate: TutorialPageDelegate
     private var presentationStrings: PresentationStrings
@@ -29,13 +28,13 @@ TutorialPageSceneDelegate {
 
         var tutorialPage = tutorialScene.showTutorialPage()
         tutorialPage.tutorialPageSceneDelegate = self
-        tutorialPage.showPageTitle(presentationStrings.presentationString(for: .tutorialPushPermissionsRequestTitle))
-        tutorialPage.showPageDescription(presentationStrings.presentationString(for: .tutorialPushPermissionsRequestDescription))
+        tutorialPage.showPageTitle(presentationStrings[.tutorialPushPermissionsRequestTitle])
+        tutorialPage.showPageDescription(presentationStrings[.tutorialPushPermissionsRequestDescription])
         tutorialPage.showPageImage(presentationAssets.requestPushNotificationPermissionsAsset)
         tutorialPage.showPrimaryActionButton()
-        tutorialPage.showPrimaryActionDescription(presentationStrings.presentationString(for: .tutorialAllowPushPermissions))
+        tutorialPage.showPrimaryActionDescription(presentationStrings[.tutorialAllowPushPermissions])
         tutorialPage.showSecondaryActionButton()
-        tutorialPage.showSecondaryActionDescription(presentationStrings.presentationString(for: .tutorialDenyPushPermissions))
+        tutorialPage.showSecondaryActionDescription(presentationStrings[.tutorialDenyPushPermissions])
     }
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {

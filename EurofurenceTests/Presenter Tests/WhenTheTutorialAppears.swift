@@ -91,14 +91,14 @@ class WhenTheTutorialAppears: XCTestCase {
     func testShowingThePushPermissionsRequestPageShouldSetThePushPermissionsTitleOntoTheTutorialPage() {
         let setup = showRequestPushPermissionsTutorialPage()
         
-        XCTAssertEqual(setup.strings.presentationString(for: .tutorialPushPermissionsRequestTitle),
+        XCTAssertEqual(setup.strings[.tutorialPushPermissionsRequestTitle],
                        setup.page.capturedPageTitle)
     }
     
     func testShowingThePushPermissionsRequestPageShouldSetThePushPermissionsDescriptionOntoTheTutorialPage() {
         let setup = showRequestPushPermissionsTutorialPage()
         
-        XCTAssertEqual(setup.strings.presentationString(for: .tutorialPushPermissionsRequestDescription),
+        XCTAssertEqual(setup.strings[.tutorialPushPermissionsRequestDescription],
                        setup.page.capturedPageDescription)
     }
     
@@ -117,7 +117,7 @@ class WhenTheTutorialAppears: XCTestCase {
     func testShowingThePushPermissionsRequestPageShouldSetTheAllowPushPermissionsStringOntoThePrimaryActionButton() {
         let setup = showRequestPushPermissionsTutorialPage()
 
-        XCTAssertEqual(setup.strings.presentationString(for: .tutorialAllowPushPermissions),
+        XCTAssertEqual(setup.strings[.tutorialAllowPushPermissions],
                        setup.page.capturedPrimaryActionDescription)
     }
 
@@ -128,7 +128,7 @@ class WhenTheTutorialAppears: XCTestCase {
 
     func testShowingThePushPermissionsRequestPageShouldSetTheDenyPushPermissionsStringOntoTheSecondaryActionButton() {
         let setup = showRequestPushPermissionsTutorialPage()
-        XCTAssertEqual(setup.strings.presentationString(for: .tutorialDenyPushPermissions),
+        XCTAssertEqual(setup.strings[.tutorialDenyPushPermissions],
                        setup.page.capturedSecondaryActionDescription)
     }
 
@@ -208,14 +208,14 @@ class WhenTheTutorialAppears: XCTestCase {
     func testItShouldTellTheFirstTutorialPageToShowTheTitleForBeginningInitialLoad() {
         let setup = showBeginInitialDownloadTutorialPage()
 
-        XCTAssertEqual(setup.strings.presentationString(for: .tutorialInitialLoadTitle),
+        XCTAssertEqual(setup.strings[.tutorialInitialLoadTitle],
                        setup.page.capturedPageTitle)
     }
 
     func testItShouldTellTheFirstTutorialPageToShowTheDescriptionForBeginningInitialLoad() {
         let setup = showBeginInitialDownloadTutorialPage()
 
-        XCTAssertEqual(setup.strings.presentationString(for: .tutorialInitialLoadDescription),
+        XCTAssertEqual(setup.strings[.tutorialInitialLoadDescription],
                        setup.page.capturedPageDescription)
     }
 
@@ -234,7 +234,7 @@ class WhenTheTutorialAppears: XCTestCase {
     func testItShouldTellTheTutorialPageToShowTheBeginDownloadTextOnThePrimaryActionButton() {
         let setup = showBeginInitialDownloadTutorialPage()
         
-        XCTAssertEqual(setup.strings.presentationString(for: .tutorialInitialLoadBeginDownload),
+        XCTAssertEqual(setup.strings[.tutorialInitialLoadBeginDownload],
                        setup.page.capturedPrimaryActionDescription)
     }
 
@@ -285,7 +285,7 @@ class WhenTheTutorialAppears: XCTestCase {
         let setup = showTutorial(UnreachableWiFiNetwork(), UserAcknowledgedPushPermissions())
         setup.page.simulateTappingPrimaryActionButton()
 
-        XCTAssertEqual(setup.strings.presentationString(for: .cellularDownloadAlertTitle),
+        XCTAssertEqual(setup.strings[.cellularDownloadAlertTitle],
                        setup.alertRouter.presentedAlertTitle)
     }
 
@@ -293,7 +293,7 @@ class WhenTheTutorialAppears: XCTestCase {
         let setup = showTutorial(UnreachableWiFiNetwork(), UserAcknowledgedPushPermissions())
         setup.page.simulateTappingPrimaryActionButton()
 
-        XCTAssertEqual(setup.strings.presentationString(for: .cellularDownloadAlertMessage),
+        XCTAssertEqual(setup.strings[.cellularDownloadAlertMessage],
                        setup.alertRouter.presentedAlertMessage)
     }
 
@@ -302,7 +302,7 @@ class WhenTheTutorialAppears: XCTestCase {
         setup.page.simulateTappingPrimaryActionButton()
         let action = setup.alertRouter.presentedActions.first
 
-        XCTAssertEqual(setup.strings.presentationString(for: .cellularDownloadAlertContinueOverCellularTitle),
+        XCTAssertEqual(setup.strings[.cellularDownloadAlertContinueOverCellularTitle],
                        action?.title)
     }
 
@@ -311,8 +311,7 @@ class WhenTheTutorialAppears: XCTestCase {
         setup.page.simulateTappingPrimaryActionButton()
         let action = setup.alertRouter.presentedActions.last
 
-        XCTAssertEqual(setup.strings.presentationString(for: .cancel),
-                       action?.title)
+        XCTAssertEqual(setup.strings[.cancel], action?.title)
     }
 
     func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiUnavailableThenInvokingFirstActionShouldTellTheSplashRouterToShowTheSplashScreen() {

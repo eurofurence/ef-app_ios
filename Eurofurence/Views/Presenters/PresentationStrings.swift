@@ -14,6 +14,16 @@ protocol PresentationStrings {
 
 }
 
+extension PresentationStrings {
+
+    subscript (scenario: PresentationScenario) -> String {
+        get {
+            return presentationString(for: scenario)
+        }
+    }
+
+}
+
 enum PresentationScenario {
     case cancel
     case tryAgain

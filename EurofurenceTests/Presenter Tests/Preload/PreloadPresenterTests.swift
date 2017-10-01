@@ -131,12 +131,10 @@ struct PreloadModule<SceneFactory: PreloadSceneFactory>: PresentationModule {
         }
         
         func preloadServiceDidFail() {
-            let tryAgainAction = AlertAction(title: presentationStrings.presentationString(for: .tryAgain),
-                                             action: beginPreloading)
-            let cancelAction = AlertAction(title: presentationStrings.presentationString(for: .cancel),
-                                           action: notifyDelegatePreloadingCancelled)
-            alertRouter.showAlert(title: presentationStrings.presentationString(for: .downloadError),
-                                  message: presentationStrings.presentationString(for: .preloadFailureMessage),
+            let tryAgainAction = AlertAction(title: presentationStrings[.tryAgain], action: beginPreloading)
+            let cancelAction = AlertAction(title: presentationStrings[.cancel], action: notifyDelegatePreloadingCancelled)
+            alertRouter.showAlert(title: presentationStrings[.downloadError],
+                                  message: presentationStrings[.preloadFailureMessage],
                                   actions: tryAgainAction, cancelAction)
         }
         
@@ -228,7 +226,7 @@ class PreloadPresenterTests: XCTestCase {
         context.preloadSceneFactory.splashScene.notifySceneWillAppear()
         context.preloadingService.notifyFailedToPreload()
         
-        XCTAssertEqual(context.presentationStrings.presentationString(for: .downloadError),
+        XCTAssertEqual(context.presentationStrings[.downloadError],
                        context.alertRouter.presentedAlertTitle)
     }
     
@@ -237,7 +235,7 @@ class PreloadPresenterTests: XCTestCase {
         context.preloadSceneFactory.splashScene.notifySceneWillAppear()
         context.preloadingService.notifyFailedToPreload()
         
-        XCTAssertEqual(context.presentationStrings.presentationString(for: .preloadFailureMessage),
+        XCTAssertEqual(context.presentationStrings[.preloadFailureMessage],
                        context.alertRouter.presentedAlertMessage)
     }
     
@@ -246,7 +244,7 @@ class PreloadPresenterTests: XCTestCase {
         context.preloadSceneFactory.splashScene.notifySceneWillAppear()
         context.preloadingService.notifyFailedToPreload()
         
-        XCTAssertEqual(context.presentationStrings.presentationString(for: .tryAgain),
+        XCTAssertEqual(context.presentationStrings[.tryAgain],
                        context.alertRouter.presentedActions.first?.title)
     }
     
@@ -271,7 +269,7 @@ class PreloadPresenterTests: XCTestCase {
         let context = PreloadPresenterTestContext().build()
         context.preloadSceneFactory.splashScene.notifySceneWillAppear()
         context.preloadingService.notifyFailedToPreload()
-        let cancelTitle = context.presentationStrings.presentationString(for: .cancel)
+        let cancelTitle = context.presentationStrings[.cancel]
         context.alertRouter.capturedAction(title: cancelTitle)?.invoke()
         
         XCTAssertTrue(context.delegate.notifiedPreloadCancelled)
@@ -289,7 +287,7 @@ class PreloadPresenterTests: XCTestCase {
         let context = PreloadPresenterTestContext().build()
         context.preloadSceneFactory.splashScene.notifySceneWillAppear()
         context.preloadingService.notifyFailedToPreload()
-        let tryAgainTitle = context.presentationStrings.presentationString(for: .tryAgain)
+        let tryAgainTitle = context.presentationStrings[.tryAgain]
         context.alertRouter.capturedAction(title: tryAgainTitle)?.invoke()
         
         XCTAssertEqual(2, context.preloadingService.beginPreloadInvocationCount)

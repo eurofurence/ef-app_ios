@@ -30,23 +30,23 @@ struct InitiateDownloadTutorialPagePresenter: TutorialPage,
         var tutorialPage = tutorialScene.showTutorialPage()
         tutorialPage.tutorialPageSceneDelegate = self
         tutorialPage.showPageImage(presentationAssets.initialLoadInformationAsset)
-        tutorialPage.showPageTitle(presentationStrings.presentationString(for: .tutorialInitialLoadTitle))
-        tutorialPage.showPageDescription(presentationStrings.presentationString(for: .tutorialInitialLoadDescription))
+        tutorialPage.showPageTitle(presentationStrings[.tutorialInitialLoadTitle])
+        tutorialPage.showPageDescription(presentationStrings[.tutorialInitialLoadDescription])
         tutorialPage.showPrimaryActionButton()
-        tutorialPage.showPrimaryActionDescription(presentationStrings.presentationString(for: .tutorialInitialLoadBeginDownload))
+        tutorialPage.showPrimaryActionDescription(presentationStrings[.tutorialInitialLoadBeginDownload])
     }
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
         if networkReachability.wifiReachable {
             delegate.tutorialPageCompletedByUser(self)
         } else {
-            let allowDownloadMessage = presentationStrings.presentationString(for: .cellularDownloadAlertContinueOverCellularTitle)
+            let allowDownloadMessage = presentationStrings[.cellularDownloadAlertContinueOverCellularTitle]
             let allowDownloadOverCellular = AlertAction(title: allowDownloadMessage, action: {
                 self.delegate.tutorialPageCompletedByUser(self)
             })
-            let cancel = AlertAction(title: presentationStrings.presentationString(for: .cancel))
-            alertRouter.showAlert(title: presentationStrings.presentationString(for: .cellularDownloadAlertTitle),
-                                  message: presentationStrings.presentationString(for: .cellularDownloadAlertMessage),
+            let cancel = AlertAction(title: presentationStrings[.cancel])
+            alertRouter.showAlert(title: presentationStrings[.cellularDownloadAlertTitle],
+                                  message: presentationStrings[.cellularDownloadAlertMessage],
                                   actions: allowDownloadOverCellular, cancel)
         }
     }
