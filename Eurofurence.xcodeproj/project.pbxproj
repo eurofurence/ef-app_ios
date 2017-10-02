@@ -300,6 +300,7 @@
 		CAD7805D1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7805C1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift */; };
 		CAD92BA81F7131C300C71B72 /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD92BA71F7131C300C71B72 /* MessageTableViewCell.xib */; };
 		CAF7055A1F82C51900A9FEA2 /* LegacyPreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */; };
+		CAF705611F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */; };
 		CAF9A93F1F50491200628833 /* EurofurenceAuthServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A93E1F50491200628833 /* EurofurenceAuthServiceTests.swift */; };
 		CAF9A9411F50B85200628833 /* EurofurenceAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9401F50B85200628833 /* EurofurenceAuthService.swift */; };
 		CAF9A9431F50B87600628833 /* EurofurenceApplicationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */; };
@@ -673,6 +674,7 @@
 		CAD7805C1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainLoginCredentialStoreTests.swift; path = "Services Tests/Login/KeychainLoginCredentialStoreTests.swift"; sourceTree = "<group>"; };
 		CAD92BA71F7131C300C71B72 /* MessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
 		CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LegacyPreloadService.swift; path = Interactors/Preload/LegacyPreloadService.swift; sourceTree = "<group>"; };
+		CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationDirectorTests.swift; path = "Presenter Tests/Director/ApplicationDirectorTests.swift"; sourceTree = "<group>"; };
 		CAF9A93E1F50491200628833 /* EurofurenceAuthServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceAuthServiceTests.swift; path = "Presenter Tests/Interactor Tests/EurofurenceAuthServiceTests.swift"; sourceTree = "<group>"; };
 		CAF9A9401F50B85200628833 /* EurofurenceAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceAuthService.swift; path = Interactors/Authorization/EurofurenceAuthService.swift; sourceTree = "<group>"; };
 		CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceApplicationProtocol.swift; path = Application/EurofurenceApplicationProtocol.swift; sourceTree = "<group>"; };
@@ -1020,6 +1022,7 @@
 		78C86D5B1F12355C003A20E6 /* Presenter Tests */ = {
 			isa = PBXGroup;
 			children = (
+				CAF7055F1F82CBC800A9FEA2 /* Director */,
 				CAF9A93D1F5048FB00628833 /* Interactor Tests */,
 				78C86D6A1F123FC4003A20E6 /* Builders */,
 				CA7EB7CF1F79977F002674A6 /* Tutorial */,
@@ -1677,6 +1680,14 @@
 				CAD7805C1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		CAF7055F1F82CBC800A9FEA2 /* Director */ = {
+			isa = PBXGroup;
+			children = (
+				CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */,
+			);
+			name = Director;
 			sourceTree = "<group>";
 		};
 		CAF9A93B1F50484A00628833 /* Interactors */ = {
@@ -2440,6 +2451,7 @@
 				78C86D6C1F123FD8003A20E6 /* PresentationTestBuilder.swift in Sources */,
 				CA30EABC1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift in Sources */,
 				CAF9A94E1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift in Sources */,
+				CAF705611F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift in Sources */,
 				CAD780521F1E2D2E002A8333 /* CapturingLoginCredentialStore.swift in Sources */,
 				CA804DDA1F20D2F500E07A4A /* V2LoginAPITests.swift in Sources */,
 				CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */,
