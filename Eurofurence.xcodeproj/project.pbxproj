@@ -246,7 +246,6 @@
 		CA804DD21F20CE8F00E07A4A /* V2LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */; };
 		CA804DD41F20CF4300E07A4A /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD31F20CF4300E07A4A /* APIResponse.swift */; };
 		CA804DDA1F20D2F500E07A4A /* V2LoginAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */; };
-		CA8E17EA1F7C4D82003C348C /* WindowRootWireframeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17E91F7C4D82003C348C /* WindowRootWireframeTests.swift */; };
 		CA8E17ED1F817A70003C348C /* PreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17EC1F817A70003C348C /* PreloadService.swift */; };
 		CA8E17EF1F817A8C003C348C /* CapturingPreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17EE1F817A8C003C348C /* CapturingPreloadService.swift */; };
 		CA8E17F11F817AA2003C348C /* CapturingPreloadModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */; };
@@ -618,7 +617,6 @@
 		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
 		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/Protocols/APIResponse.swift; sourceTree = "<group>"; };
 		CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPITests.swift; path = "Application Tests/API/v2/V2LoginAPITests.swift"; sourceTree = "<group>"; };
-		CA8E17E91F7C4D82003C348C /* WindowRootWireframeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WindowRootWireframeTests.swift; path = "Presenter Tests/Root/WindowRootWireframeTests.swift"; sourceTree = "<group>"; };
 		CA8E17EC1F817A70003C348C /* PreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreloadService.swift; path = Interactors/Preload/PreloadService.swift; sourceTree = "<group>"; };
 		CA8E17EE1F817A8C003C348C /* CapturingPreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingPreloadService.swift; path = "Test Doubles/CapturingPreloadService.swift"; sourceTree = "<group>"; };
 		CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingPreloadModuleDelegate.swift; path = "Test Doubles/CapturingPreloadModuleDelegate.swift"; sourceTree = "<group>"; };
@@ -1022,7 +1020,6 @@
 		78C86D5B1F12355C003A20E6 /* Presenter Tests */ = {
 			isa = PBXGroup;
 			children = (
-				CA8E17E81F7C4D57003C348C /* Root */,
 				CAF9A93D1F5048FB00628833 /* Interactor Tests */,
 				78C86D6A1F123FC4003A20E6 /* Builders */,
 				CA7EB7CF1F79977F002674A6 /* Tutorial */,
@@ -1558,14 +1555,6 @@
 				CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */,
 			);
 			name = v2;
-			sourceTree = "<group>";
-		};
-		CA8E17E81F7C4D57003C348C /* Root */ = {
-			isa = PBXGroup;
-			children = (
-				CA8E17E91F7C4D82003C348C /* WindowRootWireframeTests.swift */,
-			);
-			name = Root;
 			sourceTree = "<group>";
 		};
 		CA8E17EB1F817A5F003C348C /* Preload */ = {
@@ -2486,7 +2475,6 @@
 				CAF9A9511F558E7800628833 /* RandomGenerator.swift in Sources */,
 				7820A6DF1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift in Sources */,
 				CA30EAB61F26128A0053DBF6 /* WhenRequestingPrivateMessages.swift in Sources */,
-				CA8E17EA1F7C4D82003C348C /* WindowRootWireframeTests.swift in Sources */,
 				CA8E17EF1F817A8C003C348C /* CapturingPreloadService.swift in Sources */,
 				6EEC6DA11F1BF79F00205F2D /* FirebaseTopicTests.swift in Sources */,
 				7820A6F61F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift in Sources */,

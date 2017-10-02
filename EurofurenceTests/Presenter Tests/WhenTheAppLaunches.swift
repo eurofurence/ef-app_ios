@@ -9,19 +9,6 @@
 @testable import Eurofurence
 import XCTest
 
-class CapturingPresentationModule: PresentationModule {
-
-    private(set) var attachedWireframe: PresentationWireframe?
-    func attach(to wireframe: PresentationWireframe) {
-        attachedWireframe = wireframe
-    }
-    
-    func didAttach(to wireframe: PresentationWireframe) -> Bool {
-        return wireframe === attachedWireframe
-    }
-    
-}
-
 class CapturingPresentationWireframe: PresentationWireframe {
     
     private(set) var capturedRootScene: AnyObject?
@@ -33,35 +20,35 @@ class CapturingPresentationWireframe: PresentationWireframe {
 
 struct RootModule {
     
-    init(rootWireframe: RootWireframe,
+    init(delegate: RootModuleDelegate,
          firstTimeLaunchStateProviding: UserCompletedTutorialStateProviding) {
         if firstTimeLaunchStateProviding.userHasCompletedTutorial {
-            rootWireframe.showPreloadScreen()
+            delegate.storeShouldBePreloaded()
         }
         else {
-            rootWireframe.showTutorialScreen()
+            delegate.userNeedsToWitnessTutorial()
         }
     }
     
 }
 
-protocol RootWireframe {
+protocol RootModuleDelegate {
     
-    func showTutorialScreen()
-    func showPreloadScreen()
+    func userNeedsToWitnessTutorial()
+    func storeShouldBePreloaded()
     
 }
 
-class CapturingRootWireframe: RootWireframe {
+class CapturingRootWireframe: RootModuleDelegate {
     
-    private(set) var didShowTutorial = false
-    func showTutorialScreen() {
-        didShowTutorial = true
+    private(set) var wasToldUserNeedsToWitnessTutorial = false
+    func userNeedsToWitnessTutorial() {
+        wasToldUserNeedsToWitnessTutorial = true
     }
     
-    private(set) var didShowPreload = false
-    func showPreloadScreen() {
-        didShowPreload = true
+    private(set) var wasToldToPreloadStore = false
+    func storeShouldBePreloaded() {
+        wasToldToPreloadStore = true
     }
     
 }
@@ -70,40 +57,40 @@ class WhenTheAppLaunches: XCTestCase {
     
     // MARK: New
     
-    func testAndTheUserHasNotFinishedTheTutorialTheRootWireframeIsToldToShowTheTutorialScreen() {
+    func testAndTheUserHasNotFinishedTheTutorialTheDelegateIsToldTheUserNeedsToWitnessTutorial() {
         let rootWireframe = CapturingRootWireframe()
         let notCompletedTutorial = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
-        _ = RootModule(rootWireframe: rootWireframe,
+        _ = RootModule(delegate: rootWireframe,
                        firstTimeLaunchStateProviding: notCompletedTutorial)
         
-        XCTAssertTrue(rootWireframe.didShowTutorial)
+        XCTAssertTrue(rootWireframe.wasToldUserNeedsToWitnessTutorial)
     }
     
-    func testAndTheUserHasNotFinishedTheTutorialTheRootWireframeIsNotToldToShowThePreloadScreen() {
+    func testAndTheUserHasNotFinishedTheTutorialTheDelegateIsNotToldToPreloadStore() {
         let rootWireframe = CapturingRootWireframe()
         let notCompletedTutorial = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
-        _ = RootModule(rootWireframe: rootWireframe,
+        _ = RootModule(delegate: rootWireframe,
                        firstTimeLaunchStateProviding: notCompletedTutorial)
         
-        XCTAssertFalse(rootWireframe.didShowPreload)
+        XCTAssertFalse(rootWireframe.wasToldToPreloadStore)
     }
     
-    func testAndTheUserHasFinishedTheTutorialTheRootWireframeIsToldToShowThePreloadScreen() {
+    func testAndTheUserHasFinishedTheTutorialTheDelegateIsToldToPreloadStore() {
         let rootWireframe = CapturingRootWireframe()
         let notCompletedTutorial = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
-        _ = RootModule(rootWireframe: rootWireframe,
+        _ = RootModule(delegate: rootWireframe,
                        firstTimeLaunchStateProviding: notCompletedTutorial)
 
-        XCTAssertTrue(rootWireframe.didShowPreload)
+        XCTAssertTrue(rootWireframe.wasToldToPreloadStore)
     }
     
-    func testAndTheUserHasFinishedTheTutorialTheRootWireframeIsNotToldToShowTheTutorialScreen() {
+    func testAndTheUserHasFinishedTheTutorialTheDelegateIsNotToldTheUserNeedsToWitnessTutorial() {
         let rootWireframe = CapturingRootWireframe()
         let notCompletedTutorial = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
-        _ = RootModule(rootWireframe: rootWireframe,
+        _ = RootModule(delegate: rootWireframe,
                        firstTimeLaunchStateProviding: notCompletedTutorial)
         
-        XCTAssertFalse(rootWireframe.didShowTutorial)
+        XCTAssertFalse(rootWireframe.wasToldUserNeedsToWitnessTutorial)
     }
     
     // MARK: Old
