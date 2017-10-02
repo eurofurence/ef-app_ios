@@ -6,6 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
+@testable import Eurofurence
 import XCTest
 
 struct ApplicationDirector: RootModuleDelegate {
@@ -40,24 +41,6 @@ struct ApplicationDirector: RootModuleDelegate {
 protocol WindowWireframe {
     
     func setRoot(_ viewController: UIViewController)
-    
-}
-
-protocol RootModuleFactory {
-    
-    func makeRootModule(_ delegate: RootModuleDelegate)
-    
-}
-
-protocol TutorialModuleFactory {
-    
-    func makeTutorialModule() -> UIViewController
-    
-}
-
-protocol PreloadModuleFactory {
-    
-    func makePreloadModule() -> UIViewController
     
 }
 

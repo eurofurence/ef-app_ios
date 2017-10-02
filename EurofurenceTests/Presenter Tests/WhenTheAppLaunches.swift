@@ -18,27 +18,6 @@ class CapturingPresentationWireframe: PresentationWireframe {
     
 }
 
-struct RootModule {
-    
-    init(delegate: RootModuleDelegate,
-         firstTimeLaunchStateProviding: UserCompletedTutorialStateProviding) {
-        if firstTimeLaunchStateProviding.userHasCompletedTutorial {
-            delegate.storeShouldBePreloaded()
-        }
-        else {
-            delegate.userNeedsToWitnessTutorial()
-        }
-    }
-    
-}
-
-protocol RootModuleDelegate {
-    
-    func userNeedsToWitnessTutorial()
-    func storeShouldBePreloaded()
-    
-}
-
 class CapturingRootWireframe: RootModuleDelegate {
     
     private(set) var wasToldUserNeedsToWitnessTutorial = false
