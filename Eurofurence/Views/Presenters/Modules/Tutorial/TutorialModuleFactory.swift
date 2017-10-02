@@ -10,6 +10,6 @@ import UIKit
 
 protocol TutorialModuleFactory {
 
-    func makeTutorialModule() -> UIViewController
+    func makeTutorialModule(_ delegate: TutorialModuleDelegate) -> UIViewController
 
 }

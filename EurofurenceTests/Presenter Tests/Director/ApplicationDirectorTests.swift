@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import XCTest
 
-struct ApplicationDirector: RootModuleDelegate {
+struct ApplicationDirector: RootModuleDelegate, TutorialModuleDelegate {
     
     private let windowWireframe: WindowWireframe
     private let rootModuleFactory: RootModuleFactory
@@ -28,11 +28,25 @@ struct ApplicationDirector: RootModuleDelegate {
         rootModuleFactory.makeRootModule(self)
     }
     
+    // MARK: RootModuleDelegate
+    
     func userNeedsToWitnessTutorial() {
-        windowWireframe.setRoot(tutorialModuleFactory.makeTutorialModule())
+        windowWireframe.setRoot(tutorialModuleFactory.makeTutorialModule(self))
     }
     
     func storeShouldBePreloaded() {
+        showPreloadModule()
+    }
+    
+    // MARK: TutorialModuleDelegate
+    
+    func tutorialModuleDidFinishPresentingTutorial() {
+        showPreloadModule()
+    }
+    
+    // MARK: Private
+    
+    private func showPreloadModule() {
         windowWireframe.setRoot(preloadModuleFactory.makePreloadModule())
     }
     
@@ -55,8 +69,10 @@ class StubRootModuleFactory: RootModuleFactory {
 
 class StubTutorialModuleFactory: TutorialModuleFactory {
     
-    private(set) var stubInterface: UIViewController = UIViewController()
-    func makeTutorialModule() -> UIViewController {
+    let stubInterface = UIViewController()
+    private(set) var delegate: TutorialModuleDelegate?
+    func makeTutorialModule(_ delegate: TutorialModuleDelegate) -> UIViewController {
+        self.delegate = delegate
         return stubInterface
     }
     
@@ -64,7 +80,7 @@ class StubTutorialModuleFactory: TutorialModuleFactory {
 
 class StubPreloadModuleFactory: PreloadModuleFactory {
     
-    private(set) var stubInterface: UIViewController = UIViewController()
+    let stubInterface = UIViewController()
     func makePreloadModule() -> UIViewController {
         return stubInterface
     }
@@ -111,6 +127,11 @@ class ApplicationDirectorTests: XCTestCase {
         XCTAssertEqual(preloadModuleFactory.stubInterface, windowWireframe.capturedRootInterface)
     }
     
-    
+    func testWhenTheTutorialFinishesThePreloadModuleIsSetAsRoot() {
+        rootModuleFactory.delegate?.userNeedsToWitnessTutorial()
+        tutorialModuleFactory.delegate?.tutorialModuleDidFinishPresentingTutorial()
+        
+        XCTAssertEqual(preloadModuleFactory.stubInterface, windowWireframe.capturedRootInterface)
+    }
     
 }
