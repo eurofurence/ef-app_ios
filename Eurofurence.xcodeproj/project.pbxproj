@@ -300,6 +300,7 @@
 		CAD7805A1F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780591F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift */; };
 		CAD7805D1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7805C1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift */; };
 		CAD92BA81F7131C300C71B72 /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD92BA71F7131C300C71B72 /* MessageTableViewCell.xib */; };
+		CAF7055A1F82C51900A9FEA2 /* LegacyPreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */; };
 		CAF9A93F1F50491200628833 /* EurofurenceAuthServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A93E1F50491200628833 /* EurofurenceAuthServiceTests.swift */; };
 		CAF9A9411F50B85200628833 /* EurofurenceAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9401F50B85200628833 /* EurofurenceAuthService.swift */; };
 		CAF9A9431F50B87600628833 /* EurofurenceApplicationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */; };
@@ -673,6 +674,7 @@
 		CAD780591F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainLoginCredentialStore.swift; path = Login/KeychainLoginCredentialStore.swift; sourceTree = "<group>"; };
 		CAD7805C1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainLoginCredentialStoreTests.swift; path = "Services Tests/Login/KeychainLoginCredentialStoreTests.swift"; sourceTree = "<group>"; };
 		CAD92BA71F7131C300C71B72 /* MessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
+		CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LegacyPreloadService.swift; path = Interactors/Preload/LegacyPreloadService.swift; sourceTree = "<group>"; };
 		CAF9A93E1F50491200628833 /* EurofurenceAuthServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceAuthServiceTests.swift; path = "Presenter Tests/Interactor Tests/EurofurenceAuthServiceTests.swift"; sourceTree = "<group>"; };
 		CAF9A9401F50B85200628833 /* EurofurenceAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceAuthService.swift; path = Interactors/Authorization/EurofurenceAuthService.swift; sourceTree = "<group>"; };
 		CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceApplicationProtocol.swift; path = Application/EurofurenceApplicationProtocol.swift; sourceTree = "<group>"; };
@@ -1570,6 +1572,7 @@
 			isa = PBXGroup;
 			children = (
 				CA8E17EC1F817A70003C348C /* PreloadService.swift */,
+				CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */,
 			);
 			name = Preload;
 			sourceTree = "<group>";
@@ -2199,6 +2202,7 @@
 			files = (
 				9A7FFD571EFC5B46007ABA36 /* CalendarAccess.swift in Sources */,
 				CA7EB7D31F79985C002674A6 /* PresentationModule.swift in Sources */,
+				CAF7055A1F82C51900A9FEA2 /* LegacyPreloadService.swift in Sources */,
 				781A94331F1A1994002DE70F /* FCMDeviceRegistration.swift in Sources */,
 				9A861EAF1F2554F900B75A8C /* TutorialPresenter.swift in Sources */,
 				6EF96CCC1F0EDB0500EE6134 /* CalendarEvent.swift in Sources */,
