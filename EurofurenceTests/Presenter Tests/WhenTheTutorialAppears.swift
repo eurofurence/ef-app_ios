@@ -18,16 +18,25 @@ struct StubTutorialSceneFactory: TutorialSceneFactory {
     
 }
 
+class CapturingTutorialModuleDelegate: TutorialModuleDelegate {
+    
+    private(set) var wasToldTutorialFinished = false
+    func tutorialModuleDidFinishPresentingTutorial() {
+        wasToldTutorialFinished = true
+    }
+    
+}
+
 class WhenTheTutorialAppears: XCTestCase {
 
     struct TutorialTestContext {
         var tutorialSceneFactory: StubTutorialSceneFactory
+        var delegate: CapturingTutorialModuleDelegate
         var wireframe: CapturingPresentationWireframe
         var tutorial: CapturingTutorialScene
         var page: CapturingTutorialPageScene
         var strings: PresentationStrings
         var assets: PresentationAssets
-        var splashRouter: CapturingSplashScreenRouter
         var alertRouter: CapturingAlertRouter
         var tutorialStateProviding: StubFirstTimeLaunchStateProvider
         var pushRequesting: CapturingPushPermissionsRequesting
@@ -36,17 +45,17 @@ class WhenTheTutorialAppears: XCTestCase {
     private func showTutorial(_ networkReachability: NetworkReachability = ReachableWiFiNetwork(),
                               _ pushPermissionsRequestStateProviding: WitnessedTutorialPushPermissionsRequest = UserNotAcknowledgedPushPermissions()) -> TutorialTestContext {
         let alertRouter = CapturingAlertRouter()
-        let splashRouter = CapturingSplashScreenRouter()
         let stateProviding = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
         let pushRequesting = CapturingPushPermissionsRequesting()
         let presentationStrings = StubPresentationStrings()
         let presentationAssets = StubPresentationAssets()
         let tutorialSceneFactory = StubTutorialSceneFactory()
         let wireframe = CapturingPresentationWireframe()
-        let module = TutorialModule(tutorialSceneFactory: tutorialSceneFactory,
+        let delegate = CapturingTutorialModuleDelegate()
+        let module = TutorialModule(delegate: delegate,
+                                    tutorialSceneFactory: tutorialSceneFactory,
                                     presentationStrings: presentationStrings,
                                     presentationAssets: presentationAssets,
-                                    splashScreenRouter: splashRouter,
                                     alertRouter: alertRouter,
                                     tutorialStateProviding: stateProviding,
                                     networkReachability: networkReachability,
@@ -55,12 +64,12 @@ class WhenTheTutorialAppears: XCTestCase {
         module.attach(to: wireframe)
 
         return TutorialTestContext(tutorialSceneFactory: tutorialSceneFactory,
+                                   delegate: delegate,
                                    wireframe: wireframe,
                                    tutorial: tutorialSceneFactory.tutorialScene,
                                    page: tutorialSceneFactory.tutorialScene.tutorialPage,
                                    strings: presentationStrings,
                                    assets: presentationAssets,
-                                   splashRouter: splashRouter,
                                    alertRouter: alertRouter,
                                    tutorialStateProviding: stateProviding,
                                    pushRequesting: pushRequesting)
@@ -156,11 +165,11 @@ class WhenTheTutorialAppears: XCTestCase {
         XCTAssertFalse(setup.pushRequesting.didRequestPermission)
     }
 
-    func testTappingPrimaryButtonWhenRequestingPushPermissionsWithWifiShouldNotShowSplashScreen() {
+    func testTappingPrimaryButtonWhenRequestingPushPermissionsWithWifiShouldNotCompleteTutorial() {
         let setup = showTutorial(ReachableWiFiNetwork(), UserNotAcknowledgedPushPermissions())
         setup.tutorial.tutorialPage.simulateTappingPrimaryActionButton()
 
-        XCTAssertFalse(setup.splashRouter.wasToldToShowSplashScreen)
+        XCTAssertFalse(setup.delegate.wasToldTutorialFinished)
     }
 
     func testTappingPrimaryButtonWhenRequestingPushPermissionsWithoutWifiShouldNotShowAlert() {
@@ -246,11 +255,11 @@ class WhenTheTutorialAppears: XCTestCase {
         XCTAssertFalse(setup.pushRequesting.didRequestPermission)
     }
 
-    func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiAvailableTellsSplashRouterToShowTheSplashScreen() {
+    func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiAvailableTellsTutorialDelegateTutorialFinished() {
         let setup = showTutorial(ReachableWiFiNetwork(), UserAcknowledgedPushPermissions())
         setup.page.simulateTappingPrimaryActionButton()
 
-        XCTAssertTrue(setup.splashRouter.wasToldToShowSplashScreen)
+        XCTAssertTrue(setup.delegate.wasToldTutorialFinished)
     }
     
     func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiAvailableTellsTutorialCompletionProvidingToMarkTutorialAsComplete() {
@@ -267,11 +276,11 @@ class WhenTheTutorialAppears: XCTestCase {
         XCTAssertTrue(setup.alertRouter.didShowAlert)
     }
 
-    func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiUnavailableShouldNotTellSplashScreenRouterToShowTheSplashScreen() {
+    func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiUnavailableShouldNotCompleteTutorial() {
         let setup = showBeginInitialDownloadTutorialPage(UnreachableWiFiNetwork())
         setup.page.simulateTappingPrimaryActionButton()
 
-        XCTAssertFalse(setup.splashRouter.wasToldToShowSplashScreen)
+        XCTAssertFalse(setup.delegate.wasToldTutorialFinished)
     }
 
     func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiAvailableDoesNotTellAlertRouterToShowAlert() {
@@ -314,12 +323,12 @@ class WhenTheTutorialAppears: XCTestCase {
         XCTAssertEqual(setup.strings[.cancel], action?.title)
     }
 
-    func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiUnavailableThenInvokingFirstActionShouldTellTheSplashRouterToShowTheSplashScreen() {
+    func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiUnavailableThenInvokingFirstActionShouldTellTheDelegateTheTutorialFinished() {
         let setup = showTutorial(UnreachableWiFiNetwork(), UserAcknowledgedPushPermissions())
         setup.page.simulateTappingPrimaryActionButton()
         setup.alertRouter.presentedActions.first?.invoke()
 
-        XCTAssertTrue(setup.splashRouter.wasToldToShowSplashScreen)
+        XCTAssertTrue(setup.delegate.wasToldTutorialFinished)
     }
     
     func testTappingThePrimaryButtonWhenReachabilityIndicatesWiFiUnavailableThenInvokingFirstActionShouldMarkTheTutorialAsComplete() {

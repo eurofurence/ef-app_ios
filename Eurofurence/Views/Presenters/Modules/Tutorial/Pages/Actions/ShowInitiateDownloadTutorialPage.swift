@@ -8,6 +8,7 @@
 
 struct ShowInitiateDownloadTutorialPage: TutorialPageDelegate {
 
+    var delegate: TutorialModuleDelegate
     var tutorialScene: TutorialScene
     var splashScreenRouter: SplashScreenRouter
     var alertRouter: AlertRouter
@@ -17,7 +18,8 @@ struct ShowInitiateDownloadTutorialPage: TutorialPageDelegate {
     var tutorialStateProviding: UserCompletedTutorialStateProviding
 
     func tutorialPageCompletedByUser(_ tutorialPage: TutorialPage) {
-        let completeTutorial = CompleteTutorial(splashScreenRouter: splashScreenRouter,
+        let completeTutorial = CompleteTutorial(delegate: delegate,
+                                                splashScreenRouter: splashScreenRouter,
                                                 tutorialStateProviding: tutorialStateProviding)
         _ = InitiateDownloadTutorialPagePresenter(delegate: completeTutorial,
                                                   tutorialScene: tutorialScene,

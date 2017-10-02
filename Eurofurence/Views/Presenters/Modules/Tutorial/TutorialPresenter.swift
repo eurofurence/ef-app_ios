@@ -12,11 +12,14 @@ class TutorialPresenter {
 
     // MARK: Properties
 
+    private let delegate: TutorialModuleDelegate
     private var context: TutorialPresentationContext
 
     // MARK: Initialization
 
-    init(context: TutorialPresentationContext) {
+    init(delegate: TutorialModuleDelegate,
+         context: TutorialPresentationContext) {
+        self.delegate = delegate
         self.context = context
 
         if context.witnessedTutorialPushPermissionsRequest.witnessedTutorialPushPermissionsRequest {
@@ -29,7 +32,8 @@ class TutorialPresenter {
     // MARK: Private
 
     private func showInitiateDownloadPage() {
-        let completeTutorial = CompleteTutorial(splashScreenRouter: context.splashScreenRouter,
+        let completeTutorial = CompleteTutorial(delegate: delegate,
+                                                splashScreenRouter: context.splashScreenRouter,
                                                 tutorialStateProviding: context.tutorialStateProviding)
         _ = InitiateDownloadTutorialPagePresenter(delegate: completeTutorial,
                                                   tutorialScene: context.tutorialScene,
@@ -40,7 +44,8 @@ class TutorialPresenter {
     }
 
     private func showRequestPushPermissionsPage() {
-        let delegate = ShowInitiateDownloadTutorialPage(tutorialScene: context.tutorialScene,
+        let delegate = ShowInitiateDownloadTutorialPage(delegate: self.delegate,
+                                                        tutorialScene: context.tutorialScene,
                                                         splashScreenRouter: context.splashScreenRouter,
                                                         alertRouter: context.alertRouter,
                                                         presentationAssets: context.presentationAssets,
