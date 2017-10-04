@@ -52,16 +52,15 @@ class WhenTheTutorialAppears: XCTestCase {
         let tutorialSceneFactory = StubTutorialSceneFactory()
         let wireframe = CapturingPresentationWireframe()
         let delegate = CapturingTutorialModuleDelegate()
-        let module = TutorialModule(delegate: delegate,
-                                    tutorialSceneFactory: tutorialSceneFactory,
-                                    presentationStrings: presentationStrings,
-                                    presentationAssets: presentationAssets,
-                                    alertRouter: alertRouter,
-                                    tutorialStateProviding: stateProviding,
-                                    networkReachability: networkReachability,
-                                    pushPermissionsRequesting: pushRequesting,
-                                    witnessedTutorialPushPermissionsRequest: pushPermissionsRequestStateProviding)
-        module.attach(to: wireframe)
+        let factory = PhoneTutorialModuleFactory(tutorialSceneFactory: tutorialSceneFactory,
+                                                 presentationStrings: presentationStrings,
+                                                 presentationAssets: presentationAssets,
+                                                 alertRouter: alertRouter,
+                                                 tutorialStateProviding: stateProviding,
+                                                 networkReachability: networkReachability,
+                                                 pushPermissionsRequesting: pushRequesting,
+                                                 witnessedTutorialPushPermissionsRequest: pushPermissionsRequestStateProviding)
+        _ = factory.makeTutorialModule(delegate)
 
         return TutorialTestContext(tutorialSceneFactory: tutorialSceneFactory,
                                    delegate: delegate,
@@ -83,11 +82,6 @@ class WhenTheTutorialAppears: XCTestCase {
         let setup = showTutorial(networkReachability, UserNotAcknowledgedPushPermissions())
         setup.tutorial.tutorialPage.simulateTappingSecondaryActionButton()
         return setup
-    }
-    
-    func testSetTheTutorialSceneAsTheRootOntoTheWireframe() {
-        let setup = showTutorial()
-        XCTAssertTrue(setup.tutorialSceneFactory.tutorialScene === setup.wireframe.capturedRootScene)
     }
     
     func testItShouldBeToldToShowTheTutorialPage() {

@@ -300,6 +300,7 @@
 		CAD7805D1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7805C1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift */; };
 		CAD92BA81F7131C300C71B72 /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD92BA71F7131C300C71B72 /* MessageTableViewCell.xib */; };
 		CAE27B4C1F855E0E005FDE39 /* TabModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4B1F855E0E005FDE39 /* TabModuleFactory.swift */; };
+		CAE27B4E1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4D1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift */; };
 		CAF7055A1F82C51900A9FEA2 /* LegacyPreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */; };
 		CAF705611F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */; };
 		CAF705641F82D0DF00A9FEA2 /* RootModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705631F82D0DF00A9FEA2 /* RootModuleFactory.swift */; };
@@ -679,6 +680,7 @@
 		CAD7805C1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainLoginCredentialStoreTests.swift; path = "Services Tests/Login/KeychainLoginCredentialStoreTests.swift"; sourceTree = "<group>"; };
 		CAD92BA71F7131C300C71B72 /* MessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
 		CAE27B4B1F855E0E005FDE39 /* TabModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModuleFactory.swift; sourceTree = "<group>"; };
+		CAE27B4D1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTutorialModuleFactory.swift; sourceTree = "<group>"; };
 		CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LegacyPreloadService.swift; path = Interactors/Preload/LegacyPreloadService.swift; sourceTree = "<group>"; };
 		CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationDirectorTests.swift; path = "Presenter Tests/Director/ApplicationDirectorTests.swift"; sourceTree = "<group>"; };
 		CAF705631F82D0DF00A9FEA2 /* RootModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleFactory.swift; sourceTree = "<group>"; };
@@ -869,6 +871,7 @@
 			children = (
 				6EEC6D9B1F173DCF00205F2D /* Pages */,
 				CAF705671F82D13F00A9FEA2 /* TutorialModuleFactory.swift */,
+				CAE27B4D1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift */,
 				9A861EAE1F2554F900B75A8C /* TutorialModule.swift */,
 				9A861EAD1F2554F900B75A8C /* TutorialPresentationContext.swift */,
 				9A861EAC1F2554F900B75A8C /* TutorialPresenter.swift */,
@@ -2391,6 +2394,7 @@
 				9AB64BCB1F018135004E8D91 /* KnowledgeGroupCell.swift in Sources */,
 				9ACB006F1F16C945001CE9D2 /* EventFavorite.swift in Sources */,
 				D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */,
+				CAE27B4E1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift in Sources */,
 				D6F3DB838A1BDAFC6DAC2F61 /* CountryAlpha3Converter.swift in Sources */,
 				CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */,
 				D6F3DEDDAFE507E873CB3806 /* WikiText.swift in Sources */,

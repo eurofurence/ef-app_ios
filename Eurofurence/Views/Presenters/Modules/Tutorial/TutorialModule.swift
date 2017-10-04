@@ -70,43 +70,7 @@ struct TutorialModule: PresentationModule {
     }
 
     func attach(to wireframe: PresentationWireframe) {
-        struct DummySplashScreenRouter: SplashScreenRouter {
-            func showSplashScreen() -> SplashScene {
-                class DummySplashScene: SplashScene {
-                    var delegate: SplashSceneDelegate?
 
-                    func showQuote(_ quote: String) {
-
-                    }
-
-                    func showQuoteAuthor(_ author: String) {
-
-                    }
-
-                    func showProgress(_ progress: Float) {
-
-                    }
-                }
-
-                return DummySplashScene()
-            }
-        }
-
-        let tutorialScene = tutorialSceneFactory.makeTutorialScene()
-        let tutorialContext = TutorialPresentationContext(
-            tutorialScene: tutorialScene,
-            presentationStrings: presentationStrings,
-            presentationAssets: presentationAssets,
-            splashScreenRouter: DummySplashScreenRouter(),
-            alertRouter: alertRouter,
-            tutorialStateProviding: tutorialStateProviding,
-            networkReachability: networkReachability,
-            pushPermissionsRequesting: pushPermissionsRequesting,
-            witnessedTutorialPushPermissionsRequest: witnessedTutorialPushPermissionsRequest)
-
-        _ = TutorialPresenter(delegate: delegate, context: tutorialContext)
-
-        wireframe.show(tutorialScene)
     }
 
 }
