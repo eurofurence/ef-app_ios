@@ -10,6 +10,6 @@ import UIKit
 
 protocol PreloadModuleFactory {
 
-    func makePreloadModule() -> UIViewController
+    func makePreloadModule(_ delegate: PreloadModuleDelegate) -> UIViewController
 
 }

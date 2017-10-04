@@ -299,6 +299,7 @@
 		CAD7805A1F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780591F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift */; };
 		CAD7805D1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7805C1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift */; };
 		CAD92BA81F7131C300C71B72 /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAD92BA71F7131C300C71B72 /* MessageTableViewCell.xib */; };
+		CAE27B4C1F855E0E005FDE39 /* TabModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4B1F855E0E005FDE39 /* TabModuleFactory.swift */; };
 		CAF7055A1F82C51900A9FEA2 /* LegacyPreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */; };
 		CAF705611F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */; };
 		CAF705641F82D0DF00A9FEA2 /* RootModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705631F82D0DF00A9FEA2 /* RootModuleFactory.swift */; };
@@ -677,6 +678,7 @@
 		CAD780591F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainLoginCredentialStore.swift; path = Login/KeychainLoginCredentialStore.swift; sourceTree = "<group>"; };
 		CAD7805C1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainLoginCredentialStoreTests.swift; path = "Services Tests/Login/KeychainLoginCredentialStoreTests.swift"; sourceTree = "<group>"; };
 		CAD92BA71F7131C300C71B72 /* MessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
+		CAE27B4B1F855E0E005FDE39 /* TabModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModuleFactory.swift; sourceTree = "<group>"; };
 		CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LegacyPreloadService.swift; path = Interactors/Preload/LegacyPreloadService.swift; sourceTree = "<group>"; };
 		CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationDirectorTests.swift; path = "Presenter Tests/Director/ApplicationDirectorTests.swift"; sourceTree = "<group>"; };
 		CAF705631F82D0DF00A9FEA2 /* RootModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleFactory.swift; sourceTree = "<group>"; };
@@ -850,6 +852,7 @@
 		6EF96CE01F12688700EE6134 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CAE27B4A1F855E05005FDE39 /* Tab */,
 				CAF705621F82D0D400A9FEA2 /* Root */,
 				6EF96CE81F126B0400EE6134 /* Bootstrap */,
 				6EF96CE31F1268BA00EE6134 /* Tutorial */,
@@ -1693,6 +1696,14 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		CAE27B4A1F855E05005FDE39 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				CAE27B4B1F855E0E005FDE39 /* TabModuleFactory.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
 		CAF7055F1F82CBC800A9FEA2 /* Director */ = {
 			isa = PBXGroup;
 			children = (
@@ -2290,6 +2301,7 @@
 				CA30EAB01F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift in Sources */,
 				9A861EAB1F2554D700B75A8C /* BootstrappingModule.swift in Sources */,
 				9A7FDA141F3445890050C325 /* CopyableLabel.swift in Sources */,
+				CAE27B4C1F855E0E005FDE39 /* TabModuleFactory.swift in Sources */,
 				9A34B9851ED089BB004A249E /* NavigationResolverProtocol.swift in Sources */,
 				CA8E17F51F817AE8003C348C /* PreloadPresenter.swift in Sources */,
 				9A9487FD1F1D5D9300119DC8 /* EventNotificationPreferences.swift in Sources */,

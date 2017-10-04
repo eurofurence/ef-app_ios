@@ -9,21 +9,26 @@
 @testable import Eurofurence
 import XCTest
 
-struct ApplicationDirector: RootModuleDelegate, TutorialModuleDelegate {
+struct ApplicationDirector: RootModuleDelegate,
+                            TutorialModuleDelegate,
+                            PreloadModuleDelegate {
     
     private let windowWireframe: WindowWireframe
     private let rootModuleFactory: RootModuleFactory
     private let tutorialModuleFactory: TutorialModuleFactory
     private let preloadModuleFactory: PreloadModuleFactory
+    private let tabModuleFactory: TabModuleFactory
 
     init(windowWireframe: WindowWireframe,
          rootModuleFactory: RootModuleFactory,
          tutorialModuleFactory: TutorialModuleFactory,
-         preloadModuleFactory: PreloadModuleFactory) {
+         preloadModuleFactory: PreloadModuleFactory,
+         tabModuleFactory: TabModuleFactory) {
         self.windowWireframe = windowWireframe
         self.rootModuleFactory = rootModuleFactory
         self.tutorialModuleFactory = tutorialModuleFactory
         self.preloadModuleFactory = preloadModuleFactory
+        self.tabModuleFactory = tabModuleFactory
         
         rootModuleFactory.makeRootModule(self)
     }
@@ -31,7 +36,7 @@ struct ApplicationDirector: RootModuleDelegate, TutorialModuleDelegate {
     // MARK: RootModuleDelegate
     
     func userNeedsToWitnessTutorial() {
-        windowWireframe.setRoot(tutorialModuleFactory.makeTutorialModule(self))
+        showTutorial()
     }
     
     func storeShouldBePreloaded() {
@@ -44,10 +49,24 @@ struct ApplicationDirector: RootModuleDelegate, TutorialModuleDelegate {
         showPreloadModule()
     }
     
+    // MARK: PreloadModuleDelegate
+    
+    func preloadModuleDidCancelPreloading() {
+        showTutorial()
+    }
+    
+    func preloadModuleDidFinishPreloading() {
+        windowWireframe.setRoot(tabModuleFactory.makeTabModule())
+    }
+    
     // MARK: Private
     
     private func showPreloadModule() {
-        windowWireframe.setRoot(preloadModuleFactory.makePreloadModule())
+        windowWireframe.setRoot(preloadModuleFactory.makePreloadModule(self))
+    }
+    
+    private func showTutorial() {
+        windowWireframe.setRoot(tutorialModuleFactory.makeTutorialModule(self))
     }
     
 }
@@ -81,7 +100,18 @@ class StubTutorialModuleFactory: TutorialModuleFactory {
 class StubPreloadModuleFactory: PreloadModuleFactory {
     
     let stubInterface = UIViewController()
-    func makePreloadModule() -> UIViewController {
+    private(set) var delegate: PreloadModuleDelegate?
+    func makePreloadModule(_ delegate: PreloadModuleDelegate) -> UIViewController {
+        self.delegate = delegate
+        return stubInterface
+    }
+    
+}
+
+class StubTabModuleFactory: TabModuleFactory {
+    
+    let stubInterface = UIViewController()
+    func makeTabModule() -> UIViewController {
         return stubInterface
     }
     
@@ -102,6 +132,7 @@ class ApplicationDirectorTests: XCTestCase {
     var rootModuleFactory: StubRootModuleFactory!
     var tutorialModuleFactory: StubTutorialModuleFactory!
     var preloadModuleFactory: StubPreloadModuleFactory!
+    var tabModuleFactory: StubTabModuleFactory!
     var windowWireframe: CapturingWindowWireframe!
     
     override func setUp() {
@@ -111,10 +142,12 @@ class ApplicationDirectorTests: XCTestCase {
         tutorialModuleFactory = StubTutorialModuleFactory()
         preloadModuleFactory = StubPreloadModuleFactory()
         windowWireframe = CapturingWindowWireframe()
+        tabModuleFactory = StubTabModuleFactory()
         director = ApplicationDirector(windowWireframe: windowWireframe,
                                        rootModuleFactory: rootModuleFactory,
                                        tutorialModuleFactory: tutorialModuleFactory,
-                                       preloadModuleFactory: preloadModuleFactory)
+                                       preloadModuleFactory: preloadModuleFactory,
+                                       tabModuleFactory: tabModuleFactory)
     }
     
     func testWhenRootModuleIndicatesUserNeedsToWitnessTutorialTheTutorialModuleIsSetAsRoot() {
@@ -132,6 +165,22 @@ class ApplicationDirectorTests: XCTestCase {
         tutorialModuleFactory.delegate?.tutorialModuleDidFinishPresentingTutorial()
         
         XCTAssertEqual(preloadModuleFactory.stubInterface, windowWireframe.capturedRootInterface)
+    }
+    
+    func testWhenPreloadingFailsAfterFinishingTutorialTheTutorialIsRedisplayed() {
+        rootModuleFactory.delegate?.userNeedsToWitnessTutorial()
+        tutorialModuleFactory.delegate?.tutorialModuleDidFinishPresentingTutorial()
+        preloadModuleFactory.delegate?.preloadModuleDidCancelPreloading()
+        
+        XCTAssertEqual(tutorialModuleFactory.stubInterface, windowWireframe.capturedRootInterface)
+    }
+    
+    func testWhenPreloadingSucceedsAfterFinishingTutorialTheTabWireframeIsSetAsTheRoot() {
+        rootModuleFactory.delegate?.userNeedsToWitnessTutorial()
+        tutorialModuleFactory.delegate?.tutorialModuleDidFinishPresentingTutorial()
+        preloadModuleFactory.delegate?.preloadModuleDidFinishPreloading()
+        
+        XCTAssertEqual(tabModuleFactory.stubInterface, windowWireframe.capturedRootInterface)
     }
     
 }
