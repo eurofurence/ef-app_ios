@@ -27,22 +27,16 @@ class PreloadPresenterTests: XCTestCase {
         }
         
         func build() -> PreloadPresenterTestContext {
-            let module = PreloadModule(delegate: delegate,
-                                       preloadSceneFactory: preloadSceneFactory,
-                                       preloadService: preloadingService,
-                                       alertRouter: alertRouter,
-                                       quoteGenerator: capturingQuoteGenerator,
-                                       presentationStrings: presentationStrings)
-            module.attach(to: wireframe)
+            let factory = PhonePreloadModuleFactory(preloadSceneFactory: preloadSceneFactory,
+                                                    preloadService: preloadingService,
+                                                    alertRouter: alertRouter,
+                                                    quoteGenerator: capturingQuoteGenerator,
+                                                    presentationStrings: presentationStrings)
+            _ = factory.makePreloadModule(delegate)
             
             return self
         }
         
-    }
-    
-    func testThePreloadSceneIsSetOntoTheWireframe() {
-        let context = PreloadPresenterTestContext().build()
-        XCTAssertTrue(context.preloadSceneFactory.splashScene === context.wireframe.capturedRootScene)
     }
     
     func testTheQuotesDataSourceIsToldToMakeQuote() {
