@@ -8,15 +8,15 @@
 
 import UIKit
 
-struct PhonePreloadModuleFactory<SceneFactory: PreloadSceneFactory>: PreloadModuleFactory {
+struct PhonePreloadModuleFactory: PreloadModuleFactory {
 
-    private let preloadSceneFactory: SceneFactory
+    private let preloadSceneFactory: PreloadSceneFactory
     private let preloadService: PreloadService
     private let alertRouter: AlertRouter
     private let quoteGenerator: QuoteGenerator
     private let presentationStrings: PresentationStrings
 
-    init(preloadSceneFactory: SceneFactory,
+    init(preloadSceneFactory: PreloadSceneFactory,
          preloadService: PreloadService,
          alertRouter: AlertRouter,
          quoteGenerator: QuoteGenerator,
@@ -37,7 +37,7 @@ struct PhonePreloadModuleFactory<SceneFactory: PreloadSceneFactory>: PreloadModu
                              quote: quoteGenerator.makeQuote(),
                              presentationStrings: presentationStrings)
 
-        return UIViewController()
+        return preloadScene
     }
 
 }

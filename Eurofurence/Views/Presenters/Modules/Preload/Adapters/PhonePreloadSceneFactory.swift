@@ -10,9 +10,7 @@ import UIKit
 
 struct PhonePreloadSceneFactory: PreloadSceneFactory {
 
-    typealias Scene = SplashViewController
-
-    func makePreloadScene() -> SplashViewController {
+    func makePreloadScene() -> UIViewController & SplashScene {
         let storyboardBundle = Bundle(for: SplashViewController.self)
         let storyboard = UIStoryboard(name: "Main", bundle: storyboardBundle)
         guard let root = storyboard.instantiateInitialViewController() as? UINavigationController else {

@@ -11,8 +11,9 @@ import XCTest
 
 class PreloadPresenterTests: XCTestCase {
     
-    struct PreloadPresenterTestContext {
+    class PreloadPresenterTestContext {
         
+        var preloadViewController: UIViewController?
         let preloadSceneFactory = StubPreloadSceneFactory()
         let wireframe = CapturingPresentationWireframe()
         let capturingQuoteGenerator = CapturingQuoteGenerator()
@@ -32,11 +33,16 @@ class PreloadPresenterTests: XCTestCase {
                                                     alertRouter: alertRouter,
                                                     quoteGenerator: capturingQuoteGenerator,
                                                     presentationStrings: presentationStrings)
-            _ = factory.makePreloadModule(delegate)
+            preloadViewController = factory.makePreloadModule(delegate)
             
             return self
         }
         
+    }
+    
+    func testThePreloadControllerIsReturnedFromTheFactory() {
+        let context = PreloadPresenterTestContext().build()
+        XCTAssertEqual(context.preloadViewController, context.preloadSceneFactory.splashScene)
     }
     
     func testTheQuotesDataSourceIsToldToMakeQuote() {

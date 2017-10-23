@@ -6,10 +6,10 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
+import UIKit.UIViewController
+
 protocol PreloadSceneFactory {
 
-    associatedtype Scene: SplashScene
-
-    func makePreloadScene() -> Scene
+    func makePreloadScene() -> UIViewController & SplashScene
 
 }

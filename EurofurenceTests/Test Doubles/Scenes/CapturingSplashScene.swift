@@ -7,20 +7,18 @@
 //
 
 @testable import Eurofurence
-import Foundation
+import UIKit.UIViewController
 
 class StubPreloadSceneFactory: PreloadSceneFactory {
     
-    typealias Scene = CapturingSplashScene
-    
     let splashScene = CapturingSplashScene()
-    func makePreloadScene() -> StubPreloadSceneFactory.Scene {
+    func makePreloadScene() -> UIViewController & SplashScene {
         return splashScene
     }
     
 }
 
-class CapturingSplashScene: SplashScene {
+class CapturingSplashScene: UIViewController, SplashScene {
     
     var delegate: SplashSceneDelegate?
 
