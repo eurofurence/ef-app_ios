@@ -7,9 +7,9 @@
 //
 
 @testable import Eurofurence
-import Foundation
+import UIKit
 
-class CapturingTutorialScene: TutorialScene {
+class CapturingTutorialScene: UIViewController, TutorialScene {
 
     let tutorialPage = CapturingTutorialPageScene()
 

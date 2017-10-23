@@ -12,7 +12,7 @@ import XCTest
 struct StubTutorialSceneFactory: TutorialSceneFactory {
     
     let tutorialScene = CapturingTutorialScene()
-    func makeTutorialScene() -> TutorialScene {
+    func makeTutorialScene() -> UIViewController & TutorialScene {
         return tutorialScene
     }
     
@@ -30,6 +30,7 @@ class CapturingTutorialModuleDelegate: TutorialModuleDelegate {
 class WhenTheTutorialAppears: XCTestCase {
 
     struct TutorialTestContext {
+        var tutorialViewController: UIViewController
         var tutorialSceneFactory: StubTutorialSceneFactory
         var delegate: CapturingTutorialModuleDelegate
         var wireframe: CapturingPresentationWireframe
@@ -60,9 +61,10 @@ class WhenTheTutorialAppears: XCTestCase {
                                                  networkReachability: networkReachability,
                                                  pushPermissionsRequesting: pushRequesting,
                                                  witnessedTutorialPushPermissionsRequest: pushPermissionsRequestStateProviding)
-        _ = factory.makeTutorialModule(delegate)
+        let vc = factory.makeTutorialModule(delegate)
 
-        return TutorialTestContext(tutorialSceneFactory: tutorialSceneFactory,
+        return TutorialTestContext(tutorialViewController: vc,
+                                   tutorialSceneFactory: tutorialSceneFactory,
                                    delegate: delegate,
                                    wireframe: wireframe,
                                    tutorial: tutorialSceneFactory.tutorialScene,
@@ -87,6 +89,11 @@ class WhenTheTutorialAppears: XCTestCase {
     func testItShouldBeToldToShowTheTutorialPage() {
         let setup = showTutorial()
         XCTAssertTrue(setup.tutorial.wasToldToShowTutorialPage)
+    }
+    
+    func testItShouldReturnTheViewControllerFromTheFactory() {
+        let setup = showTutorial()
+        XCTAssertEqual(setup.tutorialViewController, setup.tutorial)
     }
     
     // MARK: Request push permissions page

@@ -6,9 +6,11 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
+import UIKit.UIViewController
+
 protocol TutorialSceneFactory {
 
-    func makeTutorialScene() -> TutorialScene
+    func makeTutorialScene() -> UIViewController & TutorialScene
 
 }
 

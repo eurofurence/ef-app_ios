@@ -75,7 +75,7 @@ struct PhoneTutorialModuleFactory: TutorialModuleFactory {
 
         _ = TutorialPresenter(delegate: delegate, context: tutorialContext)
 
-        return UIViewController()
+        return tutorialScene
     }
 
 }
