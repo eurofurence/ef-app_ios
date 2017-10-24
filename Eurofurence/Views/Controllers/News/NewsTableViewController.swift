@@ -144,12 +144,19 @@ class NewsTableViewController: UITableViewController,
             }
         }
 
+        struct DummyNewsModuleDelegate: NewsModuleDelegate {
+            func newsModuleDidRequestLogin() {
+
+            }
+        }
+
         let showMessagesCommand = BlockCommand {
             self.performSegue(withIdentifier: "showMessages", sender: self)
         }
 
         let app = EurofurenceApplication.shared
-        presenter = NewsPresenter(newsScene: self,
+        presenter = NewsPresenter(delegate: DummyNewsModuleDelegate(),
+                                  newsScene: self,
                                   authService: EurofurenceAuthService(app: app),
                                   privateMessagesService: EurofurencePrivateMessagesService(app: app),
                                   welcomePromptStringFactory: UnlocalizedWelcomePromptStringFactory(),

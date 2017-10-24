@@ -12,6 +12,7 @@ struct NewsPresenter: AuthStateObserver, NewsSceneDelegate {
 
     // MARK: Properties
 
+    private let delegate: NewsModuleDelegate
     private let newsScene: NewsScene
     private let welcomePromptStringFactory: WelcomePromptStringFactory
     private let privateMessagesService: PrivateMessagesService
@@ -20,12 +21,14 @@ struct NewsPresenter: AuthStateObserver, NewsSceneDelegate {
 
     // MARK: Initialization
 
-    init(newsScene: NewsScene,
+    init(delegate: NewsModuleDelegate,
+         newsScene: NewsScene,
          authService: AuthService,
          privateMessagesService: PrivateMessagesService,
          welcomePromptStringFactory: WelcomePromptStringFactory,
          performLoginCommand: Command,
          showMessagesCommand: Command) {
+        self.delegate = delegate
         self.newsScene = newsScene
         self.welcomePromptStringFactory = welcomePromptStringFactory
         self.privateMessagesService = privateMessagesService
@@ -60,7 +63,7 @@ struct NewsPresenter: AuthStateObserver, NewsSceneDelegate {
     // MARK: NewsSceneDelegate
 
     func newsSceneDidTapLoginAction(_ scene: NewsScene) {
-        performLoginCommand.run()
+        delegate.newsModuleDidRequestLogin()
     }
 
     func newsSceneDidTapShowMessagesAction(_ scene: NewsScene) {

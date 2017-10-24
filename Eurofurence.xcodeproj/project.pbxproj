@@ -303,6 +303,8 @@
 		CAE27B4E1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4D1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift */; };
 		CAE27B501F857A99005FDE39 /* PhonePreloadModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4F1F857A99005FDE39 /* PhonePreloadModuleFactory.swift */; };
 		CAF3C7441F9F5C550008F027 /* NewsModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7431F9F5C550008F027 /* NewsModuleFactory.swift */; };
+		CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */; };
+		CAF3C74A1F9F5EEA0008F027 /* NewsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7491F9F5EEA0008F027 /* NewsModuleDelegate.swift */; };
 		CAF7055A1F82C51900A9FEA2 /* LegacyPreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */; };
 		CAF705611F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */; };
 		CAF705641F82D0DF00A9FEA2 /* RootModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705631F82D0DF00A9FEA2 /* RootModuleFactory.swift */; };
@@ -685,6 +687,8 @@
 		CAE27B4D1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTutorialModuleFactory.swift; sourceTree = "<group>"; };
 		CAE27B4F1F857A99005FDE39 /* PhonePreloadModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePreloadModuleFactory.swift; sourceTree = "<group>"; };
 		CAF3C7431F9F5C550008F027 /* NewsModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsModuleFactory.swift; path = News/NewsModuleFactory.swift; sourceTree = "<group>"; };
+		CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingNewsModuleDelegate.swift; path = "Test Doubles/CapturingNewsModuleDelegate.swift"; sourceTree = "<group>"; };
+		CAF3C7491F9F5EEA0008F027 /* NewsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsModuleDelegate.swift; path = News/NewsModuleDelegate.swift; sourceTree = "<group>"; };
 		CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LegacyPreloadService.swift; path = Interactors/Preload/LegacyPreloadService.swift; sourceTree = "<group>"; };
 		CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationDirectorTests.swift; path = "Presenter Tests/Director/ApplicationDirectorTests.swift"; sourceTree = "<group>"; };
 		CAF705631F82D0DF00A9FEA2 /* RootModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleFactory.swift; sourceTree = "<group>"; };
@@ -842,6 +846,7 @@
 				CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */,
 				CA8E17EE1F817A8C003C348C /* CapturingPreloadService.swift */,
 				CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */,
+				CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */,
 			);
 			name = "Test Doubles";
 			sourceTree = "<group>";
@@ -1645,6 +1650,7 @@
 				CAC1E12C1F5040F500195513 /* WelcomePromptStringFactory.swift */,
 				CAD2342E1F57D5E1004BB959 /* Command.swift */,
 				CAF3C7431F9F5C550008F027 /* NewsModuleFactory.swift */,
+				CAF3C7491F9F5EEA0008F027 /* NewsModuleDelegate.swift */,
 			);
 			name = News;
 			sourceTree = "<group>";
@@ -2364,6 +2370,7 @@
 				CA30EACC1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift in Sources */,
 				9A7FDA101F33B7020050C325 /* TabBarOrderProviding.swift in Sources */,
 				9ACF99981EC858B2006FC958 /* MapEntry.swift in Sources */,
+				CAF3C74A1F9F5EEA0008F027 /* NewsModuleDelegate.swift in Sources */,
 				CAD2342F1F57D5E1004BB959 /* Command.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
 				CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */,
@@ -2504,6 +2511,7 @@
 				CA4FBE151F7313A300D29405 /* MessageTableViewCellTests.swift in Sources */,
 				7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */,
 				78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */,
+				CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */,
 				78C86D6C1F123FD8003A20E6 /* PresentationTestBuilder.swift in Sources */,
 				CA30EABC1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift in Sources */,
 				CAF9A94E1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift in Sources */,

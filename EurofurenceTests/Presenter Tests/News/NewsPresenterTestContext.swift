@@ -13,6 +13,7 @@ struct NewsPresenterTestContext {
     var presenter: NewsPresenter
     var authService: StubAuthService
     let newsScene = CapturingNewsScene()
+    let delegate = CapturingNewsModuleDelegate()
     let performLoginCommand = CapturingCommand()
     let showMessagesCommand = CapturingCommand()
     
@@ -36,7 +37,8 @@ struct NewsPresenterTestContext {
                  welcomePromptStringFactory: WelcomePromptStringFactory,
                  privateMessagesService: PrivateMessagesService) {
         self.authService = authService
-        presenter = NewsPresenter(newsScene: newsScene,
+        presenter = NewsPresenter(delegate: delegate,
+                                  newsScene: newsScene,
                                   authService: authService,
                                   privateMessagesService: privateMessagesService,
                                   welcomePromptStringFactory: welcomePromptStringFactory,

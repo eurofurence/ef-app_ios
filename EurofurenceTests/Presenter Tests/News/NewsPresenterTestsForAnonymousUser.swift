@@ -91,12 +91,12 @@ class NewsPresenterTestsForAnonymousUser: XCTestCase {
         let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
         context.newsScene.tapLoginAction()
         
-        XCTAssertTrue(context.performLoginCommand.wasRan)
+        XCTAssertTrue(context.delegate.loginRequested)
     }
     
     func testThePerformLoginCommandIsNotRanUntilTheLoginActionIsTapped() {
         let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
-        XCTAssertFalse(context.performLoginCommand.wasRan)
+        XCTAssertFalse(context.delegate.loginRequested)
     }
     
 }
