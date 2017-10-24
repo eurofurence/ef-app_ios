@@ -7,9 +7,9 @@
 //
 
 @testable import Eurofurence
-import Foundation
+import UIKit.UIViewController
 
-class CapturingNewsScene: NewsScene {
+class CapturingNewsScene: UIViewController, NewsScene {
     
     var delegate: NewsSceneDelegate?
     

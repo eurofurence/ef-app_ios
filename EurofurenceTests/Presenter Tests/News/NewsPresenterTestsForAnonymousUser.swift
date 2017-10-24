@@ -11,6 +11,11 @@ import XCTest
 
 class NewsPresenterTestsForAnonymousUser: XCTestCase {
     
+    func testTheSceneIsReturnedFromTheModuleFactory() {
+        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
+        XCTAssertEqual(context.newsScene, context.sceneFactory.stubbedScene)
+    }
+    
     func testTheSceneIsToldToShowTheLoginNavigationAction() {
         let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
         XCTAssertTrue(context.newsScene.wasToldToShowLoginNavigationAction)

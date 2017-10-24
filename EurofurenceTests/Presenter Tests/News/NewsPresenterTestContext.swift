@@ -11,8 +11,10 @@
 struct NewsPresenterTestContext {
     
     var authService: StubAuthService
-    let newsScene = CapturingNewsScene()
+    let sceneFactory = StubNewsSceneFactory()
     let delegate = CapturingNewsModuleDelegate()
+    
+    var newsScene: CapturingNewsScene { return sceneFactory.stubbedScene }
     
     @discardableResult
     static func makeTestCaseForAuthenticatedUser(_ user: User = User(registrationNumber: 42, username: ""),
@@ -35,7 +37,7 @@ struct NewsPresenterTestContext {
                  privateMessagesService: PrivateMessagesService) {
         self.authService = authService
         let factory = PhoneNewsModuleFactory(delegate: delegate,
-                                             newsScene: newsScene,
+                                             newsSceneFactory: sceneFactory,
                                              authService: authService,
                                              privateMessagesService: privateMessagesService,
                                              welcomePromptStringFactory: welcomePromptStringFactory)
