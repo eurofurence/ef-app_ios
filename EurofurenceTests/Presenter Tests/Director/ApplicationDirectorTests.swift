@@ -56,7 +56,8 @@ struct ApplicationDirector: RootModuleDelegate,
     }
     
     func preloadModuleDidFinishPreloading() {
-        windowWireframe.setRoot(tabModuleFactory.makeTabModule())
+        let tabModule = tabModuleFactory.makeTabModule([])
+        windowWireframe.setRoot(tabModule)
     }
     
     // MARK: Private
@@ -111,7 +112,8 @@ class StubPreloadModuleFactory: PreloadModuleFactory {
 class StubTabModuleFactory: TabModuleFactory {
     
     let stubInterface = UIViewController()
-    func makeTabModule() -> UIViewController {
+    private(set) var capturedTabModules: [UIViewController] = []
+    func makeTabModule(_ childModules: [UIViewController]) -> UIViewController {
         return stubInterface
     }
     
@@ -181,6 +183,16 @@ class ApplicationDirectorTests: XCTestCase {
         preloadModuleFactory.delegate?.preloadModuleDidFinishPreloading()
         
         XCTAssertEqual(tabModuleFactory.stubInterface, windowWireframe.capturedRootInterface)
+    }
+    
+    func testWhenShowingTheTheTabModuleItIsInitialisedWithControllersForTabModulesNestedInNavigationControllers() {
+        rootModuleFactory.delegate?.storeShouldBePreloaded()
+        preloadModuleFactory.delegate?.preloadModuleDidFinishPreloading()
+        
+        let expected: [UIViewController] = []
+        let actual = tabModuleFactory.capturedTabModules.flatMap({ $0 as? UINavigationController }).flatMap({ $0.topViewController })
+        
+        XCTAssertEqual(expected, actual)
     }
     
 }

@@ -10,6 +10,6 @@ import UIKit
 
 protocol TabModuleFactory {
 
-    func makeTabModule() -> UIViewController
+    func makeTabModule(_ childModules: [UIViewController]) -> UIViewController
 
 }
