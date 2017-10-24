@@ -67,7 +67,7 @@ struct NewsPresenter: AuthStateObserver, NewsSceneDelegate {
     }
 
     func newsSceneDidTapShowMessagesAction(_ scene: NewsScene) {
-        showMessagesCommand.run()
+        delegate.newsModuleDidRequestShowingPrivateMessages()
     }
 
     // MARK: Private

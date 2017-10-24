@@ -148,6 +148,10 @@ class NewsTableViewController: UITableViewController,
             func newsModuleDidRequestLogin() {
 
             }
+
+            func newsModuleDidRequestShowingPrivateMessages() {
+
+            }
         }
 
         let showMessagesCommand = BlockCommand {

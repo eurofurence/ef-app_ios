@@ -143,12 +143,12 @@ class NewsPresenterTestsForLoggedInUser: XCTestCase {
         let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
         context.newsScene.tapShowMessagesAction()
         
-        XCTAssertTrue(context.showMessagesCommand.wasRan)
+        XCTAssertTrue(context.delegate.showPrivateMessagesRequested)
     }
     
     func testTheShowMessagesCommandIsNotRanUntilTheShowMessagesActionIsTapped() {
         let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
-        XCTAssertFalse(context.showMessagesCommand.wasRan)
+        XCTAssertFalse(context.delegate.showPrivateMessagesRequested)
     }
     
 }

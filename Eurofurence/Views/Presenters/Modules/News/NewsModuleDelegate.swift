@@ -9,5 +9,6 @@
 protocol NewsModuleDelegate {
 
     func newsModuleDidRequestLogin()
+    func newsModuleDidRequestShowingPrivateMessages()
 
 }

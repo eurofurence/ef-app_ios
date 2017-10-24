@@ -16,4 +16,9 @@ class CapturingNewsModuleDelegate: NewsModuleDelegate {
         loginRequested = true
     }
     
+    private(set) var showPrivateMessagesRequested = false
+    func newsModuleDidRequestShowingPrivateMessages() {
+        showPrivateMessagesRequested = true
+    }
+    
 }
