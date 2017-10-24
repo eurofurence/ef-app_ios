@@ -132,18 +132,6 @@ class NewsTableViewController: UITableViewController,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        struct DummyCommand: Command {
-            func run() { }
-        }
-
-        struct BlockCommand: Command {
-            var block: () -> Void
-
-            func run() {
-                block()
-            }
-        }
-
         struct DummyNewsModuleDelegate: NewsModuleDelegate {
             func newsModuleDidRequestLogin() {
 
@@ -154,18 +142,12 @@ class NewsTableViewController: UITableViewController,
             }
         }
 
-        let showMessagesCommand = BlockCommand {
-            self.performSegue(withIdentifier: "showMessages", sender: self)
-        }
-
         let app = EurofurenceApplication.shared
         presenter = NewsPresenter(delegate: DummyNewsModuleDelegate(),
                                   newsScene: self,
                                   authService: EurofurenceAuthService(app: app),
                                   privateMessagesService: EurofurencePrivateMessagesService(app: app),
-                                  welcomePromptStringFactory: UnlocalizedWelcomePromptStringFactory(),
-                                  performLoginCommand: showMessagesCommand,
-                                  showMessagesCommand: showMessagesCommand)
+                                  welcomePromptStringFactory: UnlocalizedWelcomePromptStringFactory())
     }
 
 	@IBAction func favoritesOnlyFilterChanged(_ sender: UISegmentedControl) {

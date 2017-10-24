@@ -16,8 +16,6 @@ struct NewsPresenter: AuthStateObserver, NewsSceneDelegate {
     private let newsScene: NewsScene
     private let welcomePromptStringFactory: WelcomePromptStringFactory
     private let privateMessagesService: PrivateMessagesService
-    private let performLoginCommand: Command
-    private let showMessagesCommand: Command
 
     // MARK: Initialization
 
@@ -25,15 +23,11 @@ struct NewsPresenter: AuthStateObserver, NewsSceneDelegate {
          newsScene: NewsScene,
          authService: AuthService,
          privateMessagesService: PrivateMessagesService,
-         welcomePromptStringFactory: WelcomePromptStringFactory,
-         performLoginCommand: Command,
-         showMessagesCommand: Command) {
+         welcomePromptStringFactory: WelcomePromptStringFactory) {
         self.delegate = delegate
         self.newsScene = newsScene
         self.welcomePromptStringFactory = welcomePromptStringFactory
         self.privateMessagesService = privateMessagesService
-        self.performLoginCommand = performLoginCommand
-        self.showMessagesCommand = showMessagesCommand
 
         newsScene.delegate = self
 

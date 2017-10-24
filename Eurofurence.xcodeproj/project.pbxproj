@@ -274,8 +274,6 @@
 		CAC1E1391F50431000195513 /* NewsPresenterTestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1381F50431000195513 /* NewsPresenterTestContext.swift */; };
 		CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */; };
 		CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */; };
-		CAD2342D1F57D53C004BB959 /* CapturingCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2342C1F57D53C004BB959 /* CapturingCommand.swift */; };
-		CAD2342F1F57D5E1004BB959 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2342E1F57D5E1004BB959 /* Command.swift */; };
 		CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */; };
 		CAD234331F5D7184004BB959 /* MessagesPresenterDelegateTestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234321F5D7184004BB959 /* MessagesPresenterDelegateTestDoubles.swift */; };
 		CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */; };
@@ -658,8 +656,6 @@
 		CAC1E1381F50431000195513 /* NewsPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenterTestContext.swift; path = "Presenter Tests/News/NewsPresenterTestContext.swift"; sourceTree = "<group>"; };
 		CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenLoggingOut.swift; path = "Application Tests/WhenLoggingOut.swift"; sourceTree = "<group>"; };
 		CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLogoutObserver.swift; path = "Test Doubles/Application/CapturingLogoutObserver.swift"; sourceTree = "<group>"; };
-		CAD2342C1F57D53C004BB959 /* CapturingCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingCommand.swift; path = "Test Doubles/CapturingCommand.swift"; sourceTree = "<group>"; };
-		CAD2342E1F57D5E1004BB959 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Command.swift; path = News/Command.swift; sourceTree = "<group>"; };
 		CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesPresenterTestContext.swift; path = "Presenter Tests/Messages/MessagesPresenterTestContext.swift"; sourceTree = "<group>"; };
 		CAD234321F5D7184004BB959 /* MessagesPresenterDelegateTestDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesPresenterDelegateTestDoubles.swift; path = "Test Doubles/MessagesPresenterDelegateTestDoubles.swift"; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingMessagesScene.swift; path = "Test Doubles/Scenes/CapturingMessagesScene.swift"; sourceTree = "<group>"; };
@@ -838,7 +834,6 @@
 				6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */,
 				CAC1E12E1F50411900195513 /* StubAuthService.swift */,
 				CAC1E1321F50414B00195513 /* WelcomePromptStringFactoryTestDoubles.swift */,
-				CAD2342C1F57D53C004BB959 /* CapturingCommand.swift */,
 				CAD234321F5D7184004BB959 /* MessagesPresenterDelegateTestDoubles.swift */,
 				CAD234361F5D71BE004BB959 /* CapturingResolveUserAuthenticationAction.swift */,
 				CAD234431F5F3D1A004BB959 /* CapturingShowMessageAction.swift */,
@@ -1648,7 +1643,6 @@
 				CAC1E1261F5040BD00195513 /* NewsPresenter.swift */,
 				CAC1E12A1F5040E100195513 /* NewsScene.swift */,
 				CAC1E12C1F5040F500195513 /* WelcomePromptStringFactory.swift */,
-				CAD2342E1F57D5E1004BB959 /* Command.swift */,
 				CAF3C7431F9F5C550008F027 /* NewsModuleFactory.swift */,
 				CAF3C7491F9F5EEA0008F027 /* NewsModuleDelegate.swift */,
 			);
@@ -2371,7 +2365,6 @@
 				9A7FDA101F33B7020050C325 /* TabBarOrderProviding.swift in Sources */,
 				9ACF99981EC858B2006FC958 /* MapEntry.swift in Sources */,
 				CAF3C74A1F9F5EEA0008F027 /* NewsModuleDelegate.swift in Sources */,
-				CAD2342F1F57D5E1004BB959 /* Command.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
 				CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */,
 				D6F3D6ADD1B889C901EE841A /* DataStoreResult.swift in Sources */,
@@ -2556,7 +2549,6 @@
 				7820A6F61F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift in Sources */,
 				CAC1E1371F50423200195513 /* NewsPresenterTestsForLoggedInUser.swift in Sources */,
 				CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */,
-				CAD2342D1F57D53C004BB959 /* CapturingCommand.swift in Sources */,
 				6EF96CCF1F0EDB2000EE6134 /* CalendarTestDoubles.swift in Sources */,
 				CAD780491F1D51EB002A8333 /* StubClock.swift in Sources */,
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
