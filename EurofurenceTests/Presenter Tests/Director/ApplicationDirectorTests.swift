@@ -9,9 +9,10 @@
 @testable import Eurofurence
 import XCTest
 
-struct ApplicationDirector: RootModuleDelegate,
-                            TutorialModuleDelegate,
-                            PreloadModuleDelegate {
+class ApplicationDirector: RootModuleDelegate,
+                           TutorialModuleDelegate,
+                           PreloadModuleDelegate,
+                           NewsModuleDelegate {
     
     private let windowWireframe: WindowWireframe
     private let rootModuleFactory: RootModuleFactory
@@ -19,19 +20,26 @@ struct ApplicationDirector: RootModuleDelegate,
     private let preloadModuleFactory: PreloadModuleFactory
     private let tabModuleFactory: TabModuleFactory
     private let newsModuleFactory: NewsModuleFactory
+    private let messagesModuleFactory: MessagesModuleFactory
+    private let newsNavigationController: UINavigationController
 
     init(windowWireframe: WindowWireframe,
+         navigationControllerFactory: NavigationControllerFactory,
          rootModuleFactory: RootModuleFactory,
          tutorialModuleFactory: TutorialModuleFactory,
          preloadModuleFactory: PreloadModuleFactory,
          tabModuleFactory: TabModuleFactory,
-         newsModuleFactory: NewsModuleFactory) {
+         newsModuleFactory: NewsModuleFactory,
+         messagesModuleFactory: MessagesModuleFactory) {
         self.windowWireframe = windowWireframe
         self.rootModuleFactory = rootModuleFactory
         self.tutorialModuleFactory = tutorialModuleFactory
         self.preloadModuleFactory = preloadModuleFactory
         self.tabModuleFactory = tabModuleFactory
         self.newsModuleFactory = newsModuleFactory
+        self.messagesModuleFactory = messagesModuleFactory
+        
+        newsNavigationController = navigationControllerFactory.makeNavigationController()
         
         rootModuleFactory.makeRootModule(self)
     }
@@ -59,11 +67,20 @@ struct ApplicationDirector: RootModuleDelegate,
     }
     
     func preloadModuleDidFinishPreloading() {
-        let childModuleControllers = [newsModuleFactory.makeNewsModule()]
-        let wrappedControllers = childModuleControllers.map(UINavigationController.init(rootViewController:))
-        let tabModule = tabModuleFactory.makeTabModule(wrappedControllers)
+        newsNavigationController.setViewControllers([newsModuleFactory.makeNewsModule(self)], animated: false)
+        let tabModule = tabModuleFactory.makeTabModule([newsNavigationController])
         
         windowWireframe.setRoot(tabModule)
+    }
+    
+    // MARK: NewsModuleDelegate
+    
+    func newsModuleDidRequestLogin() {
+        newsNavigationController.pushViewController(messagesModuleFactory.makeMessagesModule(), animated: true)
+    }
+    
+    func newsModuleDidRequestShowingPrivateMessages() {
+        
     }
     
     // MARK: Private
@@ -74,6 +91,30 @@ struct ApplicationDirector: RootModuleDelegate,
     
     private func showTutorial() {
         windowWireframe.setRoot(tutorialModuleFactory.makeTutorialModule(self))
+    }
+    
+}
+
+protocol NavigationControllerFactory {
+    
+    func makeNavigationController() -> UINavigationController
+    
+}
+
+class CapturingNavigationController: UINavigationController {
+    
+    private(set) var pushedViewControllers = [UIViewController]()
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        pushedViewControllers.append(viewController)
+        super.pushViewController(viewController, animated: animated)
+    }
+    
+}
+
+struct StubNavigationControllerFactory: NavigationControllerFactory {
+    
+    func makeNavigationController() -> UINavigationController {
+        return CapturingNavigationController()
     }
     
 }
@@ -118,7 +159,18 @@ class StubPreloadModuleFactory: PreloadModuleFactory {
 class StubNewsModuleFactory: NewsModuleFactory {
     
     let stubInterface = UIViewController()
-    func makeNewsModule() -> UIViewController {
+    private(set) var delegate: NewsModuleDelegate?
+    func makeNewsModule(_ delegate: NewsModuleDelegate) -> UIViewController {
+        self.delegate = delegate
+        return stubInterface
+    }
+    
+}
+
+class StubMessagesModuleFactory: MessagesModuleFactory {
+    
+    let stubInterface = UIViewController()
+    func makeMessagesModule() -> UIViewController {
         return stubInterface
     }
     
@@ -131,6 +183,12 @@ class StubTabModuleFactory: TabModuleFactory {
     func makeTabModule(_ childModules: [UIViewController]) -> UIViewController {
         capturedTabModules = childModules
         return stubInterface
+    }
+    
+    func navigationController(for viewController: UIViewController) -> CapturingNavigationController? {
+        return capturedTabModules
+                .flatMap({ $0 as? CapturingNavigationController })
+                .first(where: { $0.topViewController === viewController })
     }
     
 }
@@ -152,6 +210,7 @@ class ApplicationDirectorTests: XCTestCase {
     var preloadModuleFactory: StubPreloadModuleFactory!
     var tabModuleFactory: StubTabModuleFactory!
     var newsModuleFactory: StubNewsModuleFactory!
+    var messagesModuleFactory: StubMessagesModuleFactory!
     var windowWireframe: CapturingWindowWireframe!
     
     override func setUp() {
@@ -163,12 +222,15 @@ class ApplicationDirectorTests: XCTestCase {
         windowWireframe = CapturingWindowWireframe()
         tabModuleFactory = StubTabModuleFactory()
         newsModuleFactory = StubNewsModuleFactory()
+        messagesModuleFactory = StubMessagesModuleFactory()
         director = ApplicationDirector(windowWireframe: windowWireframe,
+                                       navigationControllerFactory: StubNavigationControllerFactory(),
                                        rootModuleFactory: rootModuleFactory,
                                        tutorialModuleFactory: tutorialModuleFactory,
                                        preloadModuleFactory: preloadModuleFactory,
                                        tabModuleFactory: tabModuleFactory,
-                                       newsModuleFactory: newsModuleFactory)
+                                       newsModuleFactory: newsModuleFactory,
+                                       messagesModuleFactory: messagesModuleFactory)
     }
     
     func testWhenRootModuleIndicatesUserNeedsToWitnessTutorialTheTutorialModuleIsSetAsRoot() {
@@ -212,6 +274,15 @@ class ApplicationDirectorTests: XCTestCase {
         let actual = tabModuleFactory.capturedTabModules.flatMap({ $0 as? UINavigationController }).flatMap({ $0.topViewController })
         
         XCTAssertEqual(expected, actual)
+    }
+    
+    func testWhenTheNewsModuleRequestsLoginTheMessagesControllerIsPushedOntoItsNavigationController() {
+        rootModuleFactory.delegate?.storeShouldBePreloaded()
+        preloadModuleFactory.delegate?.preloadModuleDidFinishPreloading()
+        let newsNavigationController = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
+        newsModuleFactory.delegate?.newsModuleDidRequestLogin()
+        
+        XCTAssertEqual(messagesModuleFactory.stubInterface, newsNavigationController?.pushedViewControllers.last)
     }
     
 }

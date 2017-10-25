@@ -36,12 +36,11 @@ struct NewsPresenterTestContext {
                  welcomePromptStringFactory: WelcomePromptStringFactory,
                  privateMessagesService: PrivateMessagesService) {
         self.authService = authService
-        let factory = PhoneNewsModuleFactory(delegate: delegate,
-                                             newsSceneFactory: sceneFactory,
+        let factory = PhoneNewsModuleFactory(newsSceneFactory: sceneFactory,
                                              authService: authService,
                                              privateMessagesService: privateMessagesService,
                                              welcomePromptStringFactory: welcomePromptStringFactory)
-        _ = factory.makeNewsModule()
+        _ = factory.makeNewsModule(delegate)
     }
     
 }

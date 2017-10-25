@@ -1,5 +1,5 @@
 //
-//  NewsModuleFactory.swift
+//  MessagesModuleFactory.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 24/10/2017.
@@ -8,8 +8,8 @@
 
 import UIKit.UIViewController
 
-protocol NewsModuleFactory {
+protocol MessagesModuleFactory {
 
-    func makeNewsModule(_ delegate: NewsModuleDelegate) -> UIViewController
+    func makeMessagesModule() -> UIViewController
 
 }

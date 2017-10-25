@@ -207,6 +207,7 @@
 		9AF0B4FE1F08459D000AAA0A /* TimeIntervalRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF0B4FD1F08459D000AAA0A /* TimeIntervalRow.swift */; };
 		9AF159ED1EF5BE7F00DB287D /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF159EC1EF5BE7F00DB287D /* EventCell.swift */; };
 		A034379A14212C5E996E6321 /* Pods_Eurofurence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */; };
+		CA1FE9971F9FCCA4009C7DF3 /* MessagesModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleFactory.swift */; };
 		CA281B621F1FE3F10002A4E5 /* V2LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA281B611F1FE3F10002A4E5 /* V2LoginResponse.swift */; };
 		CA281B641F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -590,6 +591,7 @@
 		A5BC6AE61AB3CCDF97473815 /* Pods-EurofurenceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.release.xcconfig"; sourceTree = "<group>"; };
 		A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eurofurence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4939A463603D9F022E19825 /* Pods-EurofurenceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesModuleFactory.swift; path = Messages/MessagesModuleFactory.swift; sourceTree = "<group>"; };
 		CA281B611F1FE3F10002A4E5 /* V2LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginResponse.swift; path = Application/API/v2/V2LoginResponse.swift; sourceTree = "<group>"; };
 		CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserAuthenticationCoordinator.swift; path = Application/UserAuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenLoggingIn.swift; path = "Application Tests/WhenLoggingIn.swift"; sourceTree = "<group>"; };
@@ -1666,6 +1668,7 @@
 				CAD2343B1F5D7203004BB959 /* MessagesScene.swift */,
 				CAD2343D1F5D7211004BB959 /* MessagesPresenter.swift */,
 				CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */,
+				CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleFactory.swift */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -2396,6 +2399,7 @@
 				9A861ED61F25564900B75A8C /* StoryboardSplashScreenRouter.swift in Sources */,
 				9A80EF591F291E2B00FD0D37 /* NewsTableViewController.swift in Sources */,
 				CA9845C21F28B16800E8821D /* MessageDetailViewController.swift in Sources */,
+				CA1FE9971F9FCCA4009C7DF3 /* MessagesModuleFactory.swift in Sources */,
 				9A8ECA271F2BF27700351A83 /* RemoteNotificationSoundProviding.swift in Sources */,
 				9ACB006D1F16C23D001CE9D2 /* PrivateMessage.swift in Sources */,
 				78FE77CF1F1A2E8600E9A0BE /* JSONSession.swift in Sources */,

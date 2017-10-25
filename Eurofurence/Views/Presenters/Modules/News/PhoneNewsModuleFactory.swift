@@ -10,13 +10,12 @@ import UIKit.UIViewController
 
 struct PhoneNewsModuleFactory: NewsModuleFactory {
 
-    var delegate: NewsModuleDelegate
     var newsSceneFactory: NewsSceneFactory
     var authService: AuthService
     var privateMessagesService: PrivateMessagesService
     var welcomePromptStringFactory: WelcomePromptStringFactory
 
-    func makeNewsModule() -> UIViewController {
+    func makeNewsModule(_ delegate: NewsModuleDelegate) -> UIViewController {
         let scene = newsSceneFactory.makeNewsScene()
         _ = NewsPresenter(delegate: delegate,
                           newsScene: scene,
