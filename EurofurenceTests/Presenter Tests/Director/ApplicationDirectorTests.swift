@@ -9,98 +9,6 @@
 @testable import Eurofurence
 import XCTest
 
-class ApplicationDirector: RootModuleDelegate,
-                           TutorialModuleDelegate,
-                           PreloadModuleDelegate,
-                           NewsModuleDelegate {
-    
-    private let windowWireframe: WindowWireframe
-    private let rootModuleFactory: RootModuleFactory
-    private let tutorialModuleFactory: TutorialModuleFactory
-    private let preloadModuleFactory: PreloadModuleFactory
-    private let tabModuleFactory: TabModuleFactory
-    private let newsModuleFactory: NewsModuleFactory
-    private let messagesModuleFactory: MessagesModuleFactory
-    private let newsNavigationController: UINavigationController
-
-    init(windowWireframe: WindowWireframe,
-         navigationControllerFactory: NavigationControllerFactory,
-         rootModuleFactory: RootModuleFactory,
-         tutorialModuleFactory: TutorialModuleFactory,
-         preloadModuleFactory: PreloadModuleFactory,
-         tabModuleFactory: TabModuleFactory,
-         newsModuleFactory: NewsModuleFactory,
-         messagesModuleFactory: MessagesModuleFactory) {
-        self.windowWireframe = windowWireframe
-        self.rootModuleFactory = rootModuleFactory
-        self.tutorialModuleFactory = tutorialModuleFactory
-        self.preloadModuleFactory = preloadModuleFactory
-        self.tabModuleFactory = tabModuleFactory
-        self.newsModuleFactory = newsModuleFactory
-        self.messagesModuleFactory = messagesModuleFactory
-        
-        newsNavigationController = navigationControllerFactory.makeNavigationController()
-        
-        rootModuleFactory.makeRootModule(self)
-    }
-    
-    // MARK: RootModuleDelegate
-    
-    func userNeedsToWitnessTutorial() {
-        showTutorial()
-    }
-    
-    func storeShouldBePreloaded() {
-        showPreloadModule()
-    }
-    
-    // MARK: TutorialModuleDelegate
-    
-    func tutorialModuleDidFinishPresentingTutorial() {
-        showPreloadModule()
-    }
-    
-    // MARK: PreloadModuleDelegate
-    
-    func preloadModuleDidCancelPreloading() {
-        showTutorial()
-    }
-    
-    func preloadModuleDidFinishPreloading() {
-        newsNavigationController.setViewControllers([newsModuleFactory.makeNewsModule(self)], animated: false)
-        let tabModule = tabModuleFactory.makeTabModule([newsNavigationController])
-        
-        windowWireframe.setRoot(tabModule)
-    }
-    
-    // MARK: NewsModuleDelegate
-    
-    func newsModuleDidRequestLogin() {
-        newsNavigationController.pushViewController(messagesModuleFactory.makeMessagesModule(), animated: true)
-    }
-    
-    func newsModuleDidRequestShowingPrivateMessages() {
-        newsNavigationController.pushViewController(messagesModuleFactory.makeMessagesModule(), animated: true)
-    }
-    
-    // MARK: Private
-    
-    private func showPreloadModule() {
-        windowWireframe.setRoot(preloadModuleFactory.makePreloadModule(self))
-    }
-    
-    private func showTutorial() {
-        windowWireframe.setRoot(tutorialModuleFactory.makeTutorialModule(self))
-    }
-    
-}
-
-protocol NavigationControllerFactory {
-    
-    func makeNavigationController() -> UINavigationController
-    
-}
-
 class CapturingNavigationController: UINavigationController {
     
     private(set) var pushedViewControllers = [UIViewController]()
@@ -116,12 +24,6 @@ struct StubNavigationControllerFactory: NavigationControllerFactory {
     func makeNavigationController() -> UINavigationController {
         return CapturingNavigationController()
     }
-    
-}
-
-protocol WindowWireframe {
-    
-    func setRoot(_ viewController: UIViewController)
     
 }
 

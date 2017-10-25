@@ -208,6 +208,9 @@
 		9AF159ED1EF5BE7F00DB287D /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF159EC1EF5BE7F00DB287D /* EventCell.swift */; };
 		A034379A14212C5E996E6321 /* Pods_Eurofurence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */; };
 		CA1FE9971F9FCCA4009C7DF3 /* MessagesModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleFactory.swift */; };
+		CA1FE9991FA0B3AE009C7DF3 /* ApplicationDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE9981FA0B3AE009C7DF3 /* ApplicationDirector.swift */; };
+		CA1FE99B1FA0B3EB009C7DF3 /* WindowWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */; };
+		CA1FE99E1FA0B41E009C7DF3 /* NavigationControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE99D1FA0B41E009C7DF3 /* NavigationControllerFactory.swift */; };
 		CA281B621F1FE3F10002A4E5 /* V2LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA281B611F1FE3F10002A4E5 /* V2LoginResponse.swift */; };
 		CA281B641F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -592,6 +595,9 @@
 		A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eurofurence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4939A463603D9F022E19825 /* Pods-EurofurenceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesModuleFactory.swift; path = Messages/MessagesModuleFactory.swift; sourceTree = "<group>"; };
+		CA1FE9981FA0B3AE009C7DF3 /* ApplicationDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationDirector.swift; path = ../Director/ApplicationDirector.swift; sourceTree = "<group>"; };
+		CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WindowWireframe.swift; path = ../Director/WindowWireframe.swift; sourceTree = "<group>"; };
+		CA1FE99D1FA0B41E009C7DF3 /* NavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigationControllerFactory.swift; path = ../Director/NavigationControllerFactory.swift; sourceTree = "<group>"; };
 		CA281B611F1FE3F10002A4E5 /* V2LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginResponse.swift; path = Application/API/v2/V2LoginResponse.swift; sourceTree = "<group>"; };
 		CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserAuthenticationCoordinator.swift; path = Application/UserAuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenLoggingIn.swift; path = "Application Tests/WhenLoggingIn.swift"; sourceTree = "<group>"; };
@@ -1020,6 +1026,7 @@
 				9A861EBA1F25551400B75A8C /* PresentationAssets.swift */,
 				9A861EB91F25551400B75A8C /* PresentationStrings.swift */,
 				9A861EB81F25551400B75A8C /* PresentationTier.swift */,
+				CA1FE99C1FA0B3F2009C7DF3 /* Director */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -1504,6 +1511,16 @@
 				CA30EAC11F266D9B0053DBF6 /* APIPrivateMessagesResponse.swift */,
 			);
 			name = Protocols;
+			sourceTree = "<group>";
+		};
+		CA1FE99C1FA0B3F2009C7DF3 /* Director */ = {
+			isa = PBXGroup;
+			children = (
+				CA1FE9981FA0B3AE009C7DF3 /* ApplicationDirector.swift */,
+				CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */,
+				CA1FE99D1FA0B41E009C7DF3 /* NavigationControllerFactory.swift */,
+			);
+			path = Director;
 			sourceTree = "<group>";
 		};
 		CA30EAA41F2129B70053DBF6 /* API */ = {
@@ -2276,6 +2293,7 @@
 				CAF3C7441F9F5C550008F027 /* NewsModuleFactory.swift in Sources */,
 				9A34B97A1ECF87B2004A249E /* ContextManager.swift in Sources */,
 				9AB64BC91EFE6592004E8D91 /* EventsViewModel.swift in Sources */,
+				CA1FE9991FA0B3AE009C7DF3 /* ApplicationDirector.swift in Sources */,
 				CAF9A9411F50B85200628833 /* EurofurenceAuthService.swift in Sources */,
 				9A80EF551F291A5500FD0D37 /* UserDetailsNewsPreferences.swift in Sources */,
 				9A0F87E71F1BADD200FF294B /* KeyedLocalNotificationStore.swift in Sources */,
@@ -2307,6 +2325,7 @@
 				CAF9A9551F55F9DB00628833 /* LoginPromptTableViewCell.swift in Sources */,
 				78D7EEB81F196B30005372A9 /* BuildConfigurationProviding.swift in Sources */,
 				CA30EAC41F2672BF0053DBF6 /* Message.swift in Sources */,
+				CA1FE99E1FA0B41E009C7DF3 /* NavigationControllerFactory.swift in Sources */,
 				9A34B9781ECF6E3B004A249E /* Iso8601DateFormatter.swift in Sources */,
 				9A861EBF1F25551400B75A8C /* PresentationAssets.swift in Sources */,
 				CAF7056A1F82D15D00A9FEA2 /* PreloadModuleFactory.swift in Sources */,
@@ -2450,6 +2469,7 @@
 				CAD2343A1F5D71F6004BB959 /* ResolveUserAuthenticationAction.swift in Sources */,
 				9A861ED91F25564900B75A8C /* RootViewControllerAnimator.swift in Sources */,
 				D6F3D62A784F07D9C7A84DC8 /* KnowledgeEntryViewController.swift in Sources */,
+				CA1FE99B1FA0B3EB009C7DF3 /* WindowWireframe.swift in Sources */,
 				CA2B4FA81F1EA72A00F007E1 /* LoginArguments.swift in Sources */,
 				78F555991F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift in Sources */,
 				9A8ECA251F2BE1E300351A83 /* NotificationSoundPlayer.swift in Sources */,
