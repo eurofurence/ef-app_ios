@@ -80,7 +80,7 @@ class ApplicationDirector: RootModuleDelegate,
     }
     
     func newsModuleDidRequestShowingPrivateMessages() {
-        
+        newsNavigationController.pushViewController(messagesModuleFactory.makeMessagesModule(), animated: true)
     }
     
     // MARK: Private
@@ -281,6 +281,15 @@ class ApplicationDirectorTests: XCTestCase {
         preloadModuleFactory.delegate?.preloadModuleDidFinishPreloading()
         let newsNavigationController = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
         newsModuleFactory.delegate?.newsModuleDidRequestLogin()
+        
+        XCTAssertEqual(messagesModuleFactory.stubInterface, newsNavigationController?.pushedViewControllers.last)
+    }
+    
+    func testWhenTheNewsModuleRequestsShowingPrivateMessagesTheMessagesControllerIsPushedOntoItsNavigationController() {
+        rootModuleFactory.delegate?.storeShouldBePreloaded()
+        preloadModuleFactory.delegate?.preloadModuleDidFinishPreloading()
+        let newsNavigationController = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
+        newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
         
         XCTAssertEqual(messagesModuleFactory.stubInterface, newsNavigationController?.pushedViewControllers.last)
     }
