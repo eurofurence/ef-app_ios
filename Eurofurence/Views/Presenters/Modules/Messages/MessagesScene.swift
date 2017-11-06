@@ -7,10 +7,17 @@
 //
 
 import Foundation
+import UIKit.UIViewController
 
 protocol MessagesSceneDelegate {
 
     func messagesSceneDidSelectMessage(at indexPath: IndexPath)
+
+}
+
+protocol MessagesSceneFactory {
+
+    func makeMessagesScene() -> UIViewController & MessagesScene
 
 }
 

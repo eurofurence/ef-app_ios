@@ -8,8 +8,18 @@
 
 @testable import Eurofurence
 import Foundation
+import UIKit.UIViewController
 
-class CapturingMessagesScene: MessagesScene {
+class StubMessagesSceneFactory: MessagesSceneFactory {
+    
+    let scene = CapturingMessagesScene()
+    func makeMessagesScene() -> UIViewController & MessagesScene {
+        return scene
+    }
+    
+}
+
+class CapturingMessagesScene: UIViewController, MessagesScene {
     
     var delegate: MessagesSceneDelegate?
     

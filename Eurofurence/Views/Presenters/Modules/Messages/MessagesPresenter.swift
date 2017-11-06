@@ -28,14 +28,14 @@ class MessagesPresenter: MessagesSceneDelegate {
 
     // MARK: Initialization
 
-    init(scene: MessagesScene,
+    init(sceneFactory: MessagesSceneFactory,
          authService: AuthService,
          privateMessagesService: PrivateMessagesService,
          resolveUserAuthenticationAction: ResolveUserAuthenticationAction,
          showMessageAction: ShowMessageAction,
          dateFormatter: DateFormatterProtocol,
          delegate: MessagesPresenterDelegate) {
-        self.scene = scene
+        self.scene = sceneFactory.makeMessagesScene()
         self.privateMessagesService = privateMessagesService
         self.resolveUserAuthenticationAction = resolveUserAuthenticationAction
         self.showMessageAction = showMessageAction

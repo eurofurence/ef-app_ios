@@ -11,13 +11,16 @@
 struct MessagesPresenterTestContext {
     
     var presenter: MessagesPresenter
-    let scene = CapturingMessagesScene()
+    let sceneFactory = StubMessagesSceneFactory()
     let delegate = CapturingMessagesPresenterDelegate()
     let resolveUserAuthenticationCommand = CapturingResolveUserAuthenticationAction()
     var privateMessagesService = CapturingPrivateMessagesService()
     let showMessageAction = CapturingShowMessageAction()
     let dateFormatter = CapturingDateFormatter()
     
+    var scene: CapturingMessagesScene {
+        return sceneFactory.scene
+    }
     
     static func makeTestCaseForUnauthenticatedUser() -> MessagesPresenterTestContext {
         return MessagesPresenterTestContext(authState: .loggedOut)
@@ -37,7 +40,7 @@ struct MessagesPresenterTestContext {
     private init(authState: AuthState,
                  privateMessagesService: CapturingPrivateMessagesService = CapturingPrivateMessagesService()) {
         self.privateMessagesService = privateMessagesService
-        presenter = MessagesPresenter(scene: scene,
+        presenter = MessagesPresenter(sceneFactory: sceneFactory,
                                       authService: StubAuthService(authState: authState),
                                       privateMessagesService: privateMessagesService,
                                       resolveUserAuthenticationAction: resolveUserAuthenticationCommand,
