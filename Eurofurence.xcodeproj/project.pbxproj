@@ -255,6 +255,8 @@
 		CA8E17F11F817AA2003C348C /* CapturingPreloadModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */; };
 		CA8E17F31F817AD0003C348C /* PreloadModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17F21F817AD0003C348C /* PreloadModule.swift */; };
 		CA8E17F51F817AE8003C348C /* PreloadPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17F41F817AE8003C348C /* PreloadPresenter.swift */; };
+		CA8E7EF41FB08D3B00F0BF10 /* PhoneWindowWireframeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EF31FB08D3B00F0BF10 /* PhoneWindowWireframeTests.swift */; };
+		CA8E7EF61FB08E2500F0BF10 /* PhoneWindowWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EF51FB08E2500F0BF10 /* PhoneWindowWireframe.swift */; };
 		CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */; };
 		CA957B601F705AF9004DFD5A /* MessagesViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */; };
 		CA957B611F705AF9004DFD5A /* MessagesViewControllerV2.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA957B5F1F705AF9004DFD5A /* MessagesViewControllerV2.xib */; };
@@ -642,6 +644,8 @@
 		CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingPreloadModuleDelegate.swift; path = "Test Doubles/CapturingPreloadModuleDelegate.swift"; sourceTree = "<group>"; };
 		CA8E17F21F817AD0003C348C /* PreloadModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadModule.swift; sourceTree = "<group>"; };
 		CA8E17F41F817AE8003C348C /* PreloadPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadPresenter.swift; sourceTree = "<group>"; };
+		CA8E7EF31FB08D3B00F0BF10 /* PhoneWindowWireframeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhoneWindowWireframeTests.swift; path = "Presenter Tests/PhoneWindowWireframeTests.swift"; sourceTree = "<group>"; };
+		CA8E7EF51FB08E2500F0BF10 /* PhoneWindowWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneWindowWireframe.swift; sourceTree = "<group>"; };
 		CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesViewControllerTests.swift; path = "View Controller Tests/MessagesViewControllerTests.swift"; sourceTree = "<group>"; };
 		CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewControllerV2.swift; sourceTree = "<group>"; };
 		CA957B5F1F705AF9004DFD5A /* MessagesViewControllerV2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessagesViewControllerV2.xib; sourceTree = "<group>"; };
@@ -1068,6 +1072,7 @@
 				78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */,
 				78C86D5C1F123686003A20E6 /* WhenTheTutorialAppears.swift */,
 				78C86D711F12AACA003A20E6 /* WhenTheSplashScreenAppears.swift */,
+				CA8E7EF31FB08D3B00F0BF10 /* PhoneWindowWireframeTests.swift */,
 			);
 			name = "Presenter Tests";
 			sourceTree = "<group>";
@@ -1519,6 +1524,7 @@
 				CA1FE9981FA0B3AE009C7DF3 /* ApplicationDirector.swift */,
 				CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */,
 				CA1FE99D1FA0B41E009C7DF3 /* NavigationControllerFactory.swift */,
+				CA8E7EF51FB08E2500F0BF10 /* PhoneWindowWireframe.swift */,
 			);
 			path = Director;
 			sourceTree = "<group>";
@@ -2504,6 +2510,7 @@
 				78F5559B1F10D65900BDA7D4 /* SplashViewController.swift in Sources */,
 				D6F3DCE06EF6B706F0A3EF09 /* TimeService.swift in Sources */,
 				CA30EAAE1F2148780053DBF6 /* User.swift in Sources */,
+				CA8E7EF61FB08E2500F0BF10 /* PhoneWindowWireframe.swift in Sources */,
 				9A861ED51F25564900B75A8C /* StoryboardTutorialRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2577,6 +2584,7 @@
 				7820A7051F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift in Sources */,
 				CAD234331F5D7184004BB959 /* MessagesPresenterDelegateTestDoubles.swift in Sources */,
 				78C86D5D1F123686003A20E6 /* WhenTheTutorialAppears.swift in Sources */,
+				CA8E7EF41FB08D3B00F0BF10 /* PhoneWindowWireframeTests.swift in Sources */,
 				CAF9A9511F558E7800628833 /* RandomGenerator.swift in Sources */,
 				7820A6DF1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift in Sources */,
 				CA30EAB61F26128A0053DBF6 /* WhenRequestingPrivateMessages.swift in Sources */,
