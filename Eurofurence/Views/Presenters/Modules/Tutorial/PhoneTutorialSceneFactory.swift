@@ -9,10 +9,10 @@
 import UIKit.UIStoryboard
 
 struct PhoneTutorialSceneFactory: TutorialSceneFactory {
-    
+
     func makeTutorialScene() -> UIViewController & TutorialScene {
         let storyboard = UIStoryboard(name: "Tutorial", bundle: .main)
         return storyboard.instantiateInitialViewController() as! TutorialViewController
     }
-    
+
 }

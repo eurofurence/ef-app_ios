@@ -9,9 +9,9 @@
 import UIKit.UINavigationController
 
 struct PhoneNavigationControllerFactory: NavigationControllerFactory {
-    
+
     func makeNavigationController() -> UINavigationController {
         return UINavigationController()
     }
-    
+
 }

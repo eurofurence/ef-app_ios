@@ -261,6 +261,8 @@
 		CA8E7EFA1FB0926E00F0BF10 /* PhoneTutorialSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EF91FB0926E00F0BF10 /* PhoneTutorialSceneFactory.swift */; };
 		CA8E7EFC1FB0932700F0BF10 /* PhoneNewsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EFB1FB0932700F0BF10 /* PhoneNewsSceneFactory.swift */; };
 		CA8E7EFE1FB093D800F0BF10 /* PhoneNavigationControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EFD1FB093D800F0BF10 /* PhoneNavigationControllerFactory.swift */; };
+		CA8E7F011FB0942000F0BF10 /* PhoneTabModuleFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7F001FB0942000F0BF10 /* PhoneTabModuleFactoryTests.swift */; };
+		CA8E7F031FB094A600F0BF10 /* PhoneTabModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7F021FB094A600F0BF10 /* PhoneTabModuleFactory.swift */; };
 		CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */; };
 		CA957B601F705AF9004DFD5A /* MessagesViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */; };
 		CA957B611F705AF9004DFD5A /* MessagesViewControllerV2.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA957B5F1F705AF9004DFD5A /* MessagesViewControllerV2.xib */; };
@@ -653,6 +655,8 @@
 		CA8E7EF91FB0926E00F0BF10 /* PhoneTutorialSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTutorialSceneFactory.swift; sourceTree = "<group>"; };
 		CA8E7EFB1FB0932700F0BF10 /* PhoneNewsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhoneNewsSceneFactory.swift; path = News/PhoneNewsSceneFactory.swift; sourceTree = "<group>"; };
 		CA8E7EFD1FB093D800F0BF10 /* PhoneNavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNavigationControllerFactory.swift; sourceTree = "<group>"; };
+		CA8E7F001FB0942000F0BF10 /* PhoneTabModuleFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhoneTabModuleFactoryTests.swift; path = "Presenter Tests/Tab/PhoneTabModuleFactoryTests.swift"; sourceTree = "<group>"; };
+		CA8E7F021FB094A600F0BF10 /* PhoneTabModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTabModuleFactory.swift; sourceTree = "<group>"; };
 		CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesViewControllerTests.swift; path = "View Controller Tests/MessagesViewControllerTests.swift"; sourceTree = "<group>"; };
 		CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewControllerV2.swift; sourceTree = "<group>"; };
 		CA957B5F1F705AF9004DFD5A /* MessagesViewControllerV2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessagesViewControllerV2.xib; sourceTree = "<group>"; };
@@ -1069,6 +1073,7 @@
 		78C86D5B1F12355C003A20E6 /* Presenter Tests */ = {
 			isa = PBXGroup;
 			children = (
+				CA8E7EFF1FB0940600F0BF10 /* Tab */,
 				CAF7055F1F82CBC800A9FEA2 /* Director */,
 				CAF9A93D1F5048FB00628833 /* Interactor Tests */,
 				78C86D6A1F123FC4003A20E6 /* Builders */,
@@ -1631,6 +1636,14 @@
 			name = Preload;
 			sourceTree = "<group>";
 		};
+		CA8E7EFF1FB0940600F0BF10 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				CA8E7F001FB0942000F0BF10 /* PhoneTabModuleFactoryTests.swift */,
+			);
+			name = Tab;
+			sourceTree = "<group>";
+		};
 		CA957B581F705A46004DFD5A /* View Controller Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1753,6 +1766,7 @@
 			isa = PBXGroup;
 			children = (
 				CAE27B4B1F855E0E005FDE39 /* TabModuleFactory.swift */,
+				CA8E7F021FB094A600F0BF10 /* PhoneTabModuleFactory.swift */,
 			);
 			path = Tab;
 			sourceTree = "<group>";
@@ -2439,6 +2453,7 @@
 				CA1FE9971F9FCCA4009C7DF3 /* MessagesModuleFactory.swift in Sources */,
 				9A8ECA271F2BF27700351A83 /* RemoteNotificationSoundProviding.swift in Sources */,
 				9ACB006D1F16C23D001CE9D2 /* PrivateMessage.swift in Sources */,
+				CA8E7F031FB094A600F0BF10 /* PhoneTabModuleFactory.swift in Sources */,
 				78FE77CF1F1A2E8600E9A0BE /* JSONSession.swift in Sources */,
 				9A861EBE1F25551400B75A8C /* PresentationStrings.swift in Sources */,
 				9AB64BCD1F018365004E8D91 /* KnowledgeEntryCell.swift in Sources */,
@@ -2581,6 +2596,7 @@
 				781A94381F1A19BD002DE70F /* CapturingFirebaseAdapter.swift in Sources */,
 				CA30EABA1F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift in Sources */,
 				78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */,
+				CA8E7F011FB0942000F0BF10 /* PhoneTabModuleFactoryTests.swift in Sources */,
 				CAF3C74E1F9FC72C0008F027 /* StubNewsSceneFactory.swift in Sources */,
 				CA2B4FAA1F1F7F1200F007E1 /* CapturingLoginObserver.swift in Sources */,
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
