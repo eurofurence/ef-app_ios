@@ -8,11 +8,19 @@
 
 @testable import Eurofurence
 
+class CapturingMessagesModuleDelegate: MessagesModuleDelegate {
+    
+    private(set) var dismissed = false
+    func messagesModuleDidRequestDismissal() {
+        dismissed = true
+    }
+    
+}
+
 struct MessagesPresenterTestContext {
     
-    var presenter: MessagesPresenter
     let sceneFactory = StubMessagesSceneFactory()
-    let delegate = CapturingMessagesPresenterDelegate()
+    let delegate = CapturingMessagesModuleDelegate()
     let resolveUserAuthenticationCommand = CapturingResolveUserAuthenticationAction()
     var privateMessagesService = CapturingPrivateMessagesService()
     let showMessageAction = CapturingShowMessageAction()
@@ -40,13 +48,13 @@ struct MessagesPresenterTestContext {
     private init(authState: AuthState,
                  privateMessagesService: CapturingPrivateMessagesService = CapturingPrivateMessagesService()) {
         self.privateMessagesService = privateMessagesService
-        presenter = MessagesPresenter(sceneFactory: sceneFactory,
-                                      authService: StubAuthService(authState: authState),
-                                      privateMessagesService: privateMessagesService,
-                                      resolveUserAuthenticationAction: resolveUserAuthenticationCommand,
-                                      showMessageAction: showMessageAction,
-                                      dateFormatter: dateFormatter,
-                                      delegate: delegate)
+        let factory = PhoneMessagesModuleFactory(sceneFactory: sceneFactory,
+                                                 authService: StubAuthService(authState: authState),
+                                                 privateMessagesService: privateMessagesService,
+                                                 resolveUserAuthenticationAction: resolveUserAuthenticationCommand,
+                                                 showMessageAction: showMessageAction,
+                                                 dateFormatter: dateFormatter)
+        _ = factory.makeMessagesModule(delegate)
     }
     
 }

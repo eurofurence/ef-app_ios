@@ -6,13 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-import Foundation
-
-protocol MessagesPresenterDelegate {
-
-    func dismissMessagesScene()
-
-}
+import Foundation.NSIndexPath
 
 class MessagesPresenter: MessagesSceneDelegate {
 
@@ -23,19 +17,19 @@ class MessagesPresenter: MessagesSceneDelegate {
     private let resolveUserAuthenticationAction: ResolveUserAuthenticationAction
     private let showMessageAction: ShowMessageAction
     private let dateFormatter: DateFormatterProtocol
-    private let delegate: MessagesPresenterDelegate
+    private let delegate: MessagesModuleDelegate
     private var presentedMessages = [Message]()
 
     // MARK: Initialization
 
-    init(sceneFactory: MessagesSceneFactory,
+    init(scene: MessagesScene,
          authService: AuthService,
          privateMessagesService: PrivateMessagesService,
          resolveUserAuthenticationAction: ResolveUserAuthenticationAction,
          showMessageAction: ShowMessageAction,
          dateFormatter: DateFormatterProtocol,
-         delegate: MessagesPresenterDelegate) {
-        self.scene = sceneFactory.makeMessagesScene()
+         delegate: MessagesModuleDelegate) {
+        self.scene = scene
         self.privateMessagesService = privateMessagesService
         self.resolveUserAuthenticationAction = resolveUserAuthenticationAction
         self.showMessageAction = showMessageAction
@@ -70,7 +64,7 @@ class MessagesPresenter: MessagesSceneDelegate {
         if resolved {
             reloadPrivateMessages()
         } else {
-            delegate.dismissMessagesScene()
+            delegate.messagesModuleDidRequestDismissal()
         }
     }
 

@@ -263,6 +263,7 @@
 		CA8E7EFE1FB093D800F0BF10 /* PhoneNavigationControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EFD1FB093D800F0BF10 /* PhoneNavigationControllerFactory.swift */; };
 		CA8E7F011FB0942000F0BF10 /* PhoneTabModuleFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7F001FB0942000F0BF10 /* PhoneTabModuleFactoryTests.swift */; };
 		CA8E7F031FB094A600F0BF10 /* PhoneTabModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7F021FB094A600F0BF10 /* PhoneTabModuleFactory.swift */; };
+		CA8E7F0A1FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7F091FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift */; };
 		CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */; };
 		CA957B601F705AF9004DFD5A /* MessagesViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */; };
 		CA957B611F705AF9004DFD5A /* MessagesViewControllerV2.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA957B5F1F705AF9004DFD5A /* MessagesViewControllerV2.xib */; };
@@ -287,7 +288,6 @@
 		CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */; };
 		CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */; };
 		CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */; };
-		CAD234331F5D7184004BB959 /* MessagesPresenterDelegateTestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234321F5D7184004BB959 /* MessagesPresenterDelegateTestDoubles.swift */; };
 		CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */; };
 		CAD234371F5D71BE004BB959 /* CapturingResolveUserAuthenticationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234361F5D71BE004BB959 /* CapturingResolveUserAuthenticationAction.swift */; };
 		CAD2343A1F5D71F6004BB959 /* ResolveUserAuthenticationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234391F5D71F6004BB959 /* ResolveUserAuthenticationAction.swift */; };
@@ -657,6 +657,7 @@
 		CA8E7EFD1FB093D800F0BF10 /* PhoneNavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNavigationControllerFactory.swift; sourceTree = "<group>"; };
 		CA8E7F001FB0942000F0BF10 /* PhoneTabModuleFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhoneTabModuleFactoryTests.swift; path = "Presenter Tests/Tab/PhoneTabModuleFactoryTests.swift"; sourceTree = "<group>"; };
 		CA8E7F021FB094A600F0BF10 /* PhoneTabModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTabModuleFactory.swift; sourceTree = "<group>"; };
+		CA8E7F091FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhoneMessagesModuleFactory.swift; path = Messages/PhoneMessagesModuleFactory.swift; sourceTree = "<group>"; };
 		CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesViewControllerTests.swift; path = "View Controller Tests/MessagesViewControllerTests.swift"; sourceTree = "<group>"; };
 		CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewControllerV2.swift; sourceTree = "<group>"; };
 		CA957B5F1F705AF9004DFD5A /* MessagesViewControllerV2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessagesViewControllerV2.xib; sourceTree = "<group>"; };
@@ -683,7 +684,6 @@
 		CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenLoggingOut.swift; path = "Application Tests/WhenLoggingOut.swift"; sourceTree = "<group>"; };
 		CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLogoutObserver.swift; path = "Test Doubles/Application/CapturingLogoutObserver.swift"; sourceTree = "<group>"; };
 		CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesPresenterTestContext.swift; path = "Presenter Tests/Messages/MessagesPresenterTestContext.swift"; sourceTree = "<group>"; };
-		CAD234321F5D7184004BB959 /* MessagesPresenterDelegateTestDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesPresenterDelegateTestDoubles.swift; path = "Test Doubles/MessagesPresenterDelegateTestDoubles.swift"; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingMessagesScene.swift; path = "Test Doubles/Scenes/CapturingMessagesScene.swift"; sourceTree = "<group>"; };
 		CAD234361F5D71BE004BB959 /* CapturingResolveUserAuthenticationAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingResolveUserAuthenticationAction.swift; path = "Test Doubles/CapturingResolveUserAuthenticationAction.swift"; sourceTree = "<group>"; };
 		CAD234391F5D71F6004BB959 /* ResolveUserAuthenticationAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResolveUserAuthenticationAction.swift; path = Messages/ResolveUserAuthenticationAction.swift; sourceTree = "<group>"; };
@@ -862,7 +862,6 @@
 				6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */,
 				CAC1E12E1F50411900195513 /* StubAuthService.swift */,
 				CAC1E1321F50414B00195513 /* WelcomePromptStringFactoryTestDoubles.swift */,
-				CAD234321F5D7184004BB959 /* MessagesPresenterDelegateTestDoubles.swift */,
 				CAD234361F5D71BE004BB959 /* CapturingResolveUserAuthenticationAction.swift */,
 				CAD234431F5F3D1A004BB959 /* CapturingShowMessageAction.swift */,
 				CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */,
@@ -1714,6 +1713,7 @@
 				CAD2343D1F5D7211004BB959 /* MessagesPresenter.swift */,
 				CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */,
 				CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleFactory.swift */,
+				CA8E7F091FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -2456,6 +2456,7 @@
 				CA8E7F031FB094A600F0BF10 /* PhoneTabModuleFactory.swift in Sources */,
 				78FE77CF1F1A2E8600E9A0BE /* JSONSession.swift in Sources */,
 				9A861EBE1F25551400B75A8C /* PresentationStrings.swift in Sources */,
+				CA8E7F0A1FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift in Sources */,
 				9AB64BCD1F018365004E8D91 /* KnowledgeEntryCell.swift in Sources */,
 				7820A6FB1F16BBB2004C0FB5 /* PushPermissionsStateProviding.swift in Sources */,
 				9A861ED71F25564900B75A8C /* StoryboardRouters.swift in Sources */,
@@ -2610,7 +2611,6 @@
 				781A94481F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift in Sources */,
 				7820A6FD1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift in Sources */,
 				7820A7051F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift in Sources */,
-				CAD234331F5D7184004BB959 /* MessagesPresenterDelegateTestDoubles.swift in Sources */,
 				78C86D5D1F123686003A20E6 /* WhenTheTutorialAppears.swift in Sources */,
 				CA8E7EF41FB08D3B00F0BF10 /* PhoneWindowWireframeTests.swift in Sources */,
 				CAF9A9511F558E7800628833 /* RandomGenerator.swift in Sources */,

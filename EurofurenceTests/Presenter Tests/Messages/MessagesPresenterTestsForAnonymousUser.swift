@@ -24,12 +24,12 @@ class MessagesPresenterTestsForAnonymousUser: XCTestCase {
     
     func testWhenTheResolveUserAuthenticationActionFailsTheDelegateIsToldToDismissTheMessagesScene() {
         context.resolveUserAuthenticationCommand.failToResolveUser()
-        XCTAssertTrue(context.delegate.wasToldToDismissMessagesScene)
+        XCTAssertTrue(context.delegate.dismissed)
     }
     
     func testWhenTheResolveUserAuthenticationActionSucceedsTheDelegateIsNotToldToDismissTheMessagesScene() {
         context.resolveUserAuthenticationCommand.resolveUser()
-        XCTAssertFalse(context.delegate.wasToldToDismissMessagesScene)
+        XCTAssertFalse(context.delegate.dismissed)
     }
     
     func testWhenSceneAppearsTheSceneIsNotToldToShowRefreshIndicator() {
