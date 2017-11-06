@@ -17,6 +17,12 @@ class CapturingNavigationController: UINavigationController {
         super.pushViewController(viewController, animated: animated)
     }
     
+    private(set) var viewControllerPoppedTo: UIViewController?
+    override func popToViewController(_ viewController: UIViewController, animated: Bool) -> [UIViewController]? {
+        viewControllerPoppedTo = viewController
+        return super.popToViewController(viewController, animated: animated)
+    }
+    
 }
 
 struct StubNavigationControllerFactory: NavigationControllerFactory {
@@ -72,7 +78,9 @@ class StubNewsModuleFactory: NewsModuleFactory {
 class StubMessagesModuleFactory: MessagesModuleFactory {
     
     let stubInterface = UIViewController()
-    func makeMessagesModule() -> UIViewController {
+    private(set) var delegate: MessagesModuleDelegate?
+    func makeMessagesModule(_ delegate: MessagesModuleDelegate) -> UIViewController {
+        self.delegate = delegate
         return stubInterface
     }
     
@@ -194,6 +202,16 @@ class ApplicationDirectorTests: XCTestCase {
         newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
         
         XCTAssertEqual(messagesModuleFactory.stubInterface, newsNavigationController?.pushedViewControllers.last)
+    }
+    
+    func testWhenTheMessagesModuleRequestsDismissalItIsPoppedOffTheStack() {
+        rootModuleFactory.delegate?.storeShouldBePreloaded()
+        preloadModuleFactory.delegate?.preloadModuleDidFinishPreloading()
+        let newsNavigationController = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
+        newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
+        messagesModuleFactory.delegate?.messagesModuleDidRequestDismissal()
+        
+        XCTAssertEqual(newsModuleFactory.stubInterface, newsNavigationController?.viewControllerPoppedTo)
     }
     
 }

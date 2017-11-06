@@ -10,6 +10,12 @@ import UIKit.UIViewController
 
 protocol MessagesModuleFactory {
 
-    func makeMessagesModule() -> UIViewController
+    func makeMessagesModule(_ delegate: MessagesModuleDelegate) -> UIViewController
+
+}
+
+protocol MessagesModuleDelegate {
+
+    func messagesModuleDidRequestDismissal()
 
 }

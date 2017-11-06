@@ -11,7 +11,8 @@ import UIKit
 class ApplicationDirector: RootModuleDelegate,
                            TutorialModuleDelegate,
                            PreloadModuleDelegate,
-                           NewsModuleDelegate {
+                           NewsModuleDelegate,
+                           MessagesModuleDelegate {
 
     private let windowWireframe: WindowWireframe
     private let rootModuleFactory: RootModuleFactory
@@ -21,6 +22,8 @@ class ApplicationDirector: RootModuleDelegate,
     private let newsModuleFactory: NewsModuleFactory
     private let messagesModuleFactory: MessagesModuleFactory
     private let newsNavigationController: UINavigationController
+
+    private var newsController: UIViewController?
 
     init(windowWireframe: WindowWireframe,
          navigationControllerFactory: NavigationControllerFactory,
@@ -66,7 +69,10 @@ class ApplicationDirector: RootModuleDelegate,
     }
 
     func preloadModuleDidFinishPreloading() {
-        newsNavigationController.setViewControllers([newsModuleFactory.makeNewsModule(self)], animated: false)
+        let newsController = newsModuleFactory.makeNewsModule(self)
+        self.newsController = newsController
+
+        newsNavigationController.setViewControllers([newsController], animated: false)
         let tabModule = tabModuleFactory.makeTabModule([newsNavigationController])
 
         windowWireframe.setRoot(tabModule)
@@ -75,11 +81,18 @@ class ApplicationDirector: RootModuleDelegate,
     // MARK: NewsModuleDelegate
 
     func newsModuleDidRequestLogin() {
-        newsNavigationController.pushViewController(messagesModuleFactory.makeMessagesModule(), animated: true)
+        newsNavigationController.pushViewController(messagesModuleFactory.makeMessagesModule(self), animated: true)
     }
 
     func newsModuleDidRequestShowingPrivateMessages() {
-        newsNavigationController.pushViewController(messagesModuleFactory.makeMessagesModule(), animated: true)
+        newsNavigationController.pushViewController(messagesModuleFactory.makeMessagesModule(self), animated: true)
+    }
+
+    // MARK: MessagesModuleDelegate
+
+    func messagesModuleDidRequestDismissal() {
+        guard let controller = newsController else { return }
+        newsNavigationController.popToViewController(controller, animated: true)
     }
 
     // MARK: Private
