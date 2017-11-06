@@ -258,6 +258,7 @@
 		CA8E7EF41FB08D3B00F0BF10 /* PhoneWindowWireframeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EF31FB08D3B00F0BF10 /* PhoneWindowWireframeTests.swift */; };
 		CA8E7EF61FB08E2500F0BF10 /* PhoneWindowWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EF51FB08E2500F0BF10 /* PhoneWindowWireframe.swift */; };
 		CA8E7EF81FB08ED700F0BF10 /* PhoneRootModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EF71FB08ED700F0BF10 /* PhoneRootModuleFactory.swift */; };
+		CA8E7EFA1FB0926E00F0BF10 /* PhoneTutorialSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E7EF91FB0926E00F0BF10 /* PhoneTutorialSceneFactory.swift */; };
 		CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */; };
 		CA957B601F705AF9004DFD5A /* MessagesViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */; };
 		CA957B611F705AF9004DFD5A /* MessagesViewControllerV2.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA957B5F1F705AF9004DFD5A /* MessagesViewControllerV2.xib */; };
@@ -647,6 +648,7 @@
 		CA8E7EF31FB08D3B00F0BF10 /* PhoneWindowWireframeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhoneWindowWireframeTests.swift; path = "Presenter Tests/PhoneWindowWireframeTests.swift"; sourceTree = "<group>"; };
 		CA8E7EF51FB08E2500F0BF10 /* PhoneWindowWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneWindowWireframe.swift; sourceTree = "<group>"; };
 		CA8E7EF71FB08ED700F0BF10 /* PhoneRootModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneRootModuleFactory.swift; sourceTree = "<group>"; };
+		CA8E7EF91FB0926E00F0BF10 /* PhoneTutorialSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTutorialSceneFactory.swift; sourceTree = "<group>"; };
 		CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesViewControllerTests.swift; path = "View Controller Tests/MessagesViewControllerTests.swift"; sourceTree = "<group>"; };
 		CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewControllerV2.swift; sourceTree = "<group>"; };
 		CA957B5F1F705AF9004DFD5A /* MessagesViewControllerV2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessagesViewControllerV2.xib; sourceTree = "<group>"; };
@@ -899,6 +901,7 @@
 				9A861EAD1F2554F900B75A8C /* TutorialPresentationContext.swift */,
 				9A861EAC1F2554F900B75A8C /* TutorialPresenter.swift */,
 				CA7EB7D41F799991002674A6 /* TutorialScene.swift */,
+				CA8E7EF91FB0926E00F0BF10 /* PhoneTutorialSceneFactory.swift */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";
@@ -2393,6 +2396,7 @@
 				CAD7804E1F1D5227002A8333 /* SystemClock.swift in Sources */,
 				6EF96CD11F0EDB4C00EE6134 /* CalendarService.swift in Sources */,
 				CA30EAB41F2161F10053DBF6 /* CredentialPersister.swift in Sources */,
+				CA8E7EFA1FB0926E00F0BF10 /* PhoneTutorialSceneFactory.swift in Sources */,
 				CA30EACE1F27D1430053DBF6 /* V2APIPrivateMessagesResponse.swift in Sources */,
 				9ACF99971EC858B2006FC958 /* Map.swift in Sources */,
 				6EEC6DA51F1BFC7700205F2D /* AppVersionProviding.swift in Sources */,
