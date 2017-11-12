@@ -10,9 +10,24 @@
 
 class CapturingMessagesModuleDelegate: MessagesModuleDelegate {
     
+    private(set) var wasToldToResolveUser = false
+    private var userResolutionCompletionHandler: ((Bool) -> Void)?
+    func messagesModuleDidRequestResolutionForUser(completionHandler: @escaping (Bool) -> Void) {
+        wasToldToResolveUser = true
+        userResolutionCompletionHandler = completionHandler
+    }
+    
     private(set) var dismissed = false
     func messagesModuleDidRequestDismissal() {
         dismissed = true
+    }
+    
+    func resolveUser() {
+        userResolutionCompletionHandler?(true)
+    }
+    
+    func failToResolveUser() {
+        userResolutionCompletionHandler?(false)
     }
     
 }
@@ -21,7 +36,6 @@ struct MessagesPresenterTestContext {
     
     let sceneFactory = StubMessagesSceneFactory()
     let delegate = CapturingMessagesModuleDelegate()
-    let resolveUserAuthenticationCommand = CapturingResolveUserAuthenticationAction()
     var privateMessagesService = CapturingPrivateMessagesService()
     let showMessageAction = CapturingShowMessageAction()
     let dateFormatter = CapturingDateFormatter()
@@ -51,7 +65,6 @@ struct MessagesPresenterTestContext {
         let factory = PhoneMessagesModuleFactory(sceneFactory: sceneFactory,
                                                  authService: StubAuthService(authState: authState),
                                                  privateMessagesService: privateMessagesService,
-                                                 resolveUserAuthenticationAction: resolveUserAuthenticationCommand,
                                                  showMessageAction: showMessageAction,
                                                  dateFormatter: dateFormatter)
         _ = factory.makeMessagesModule(delegate)

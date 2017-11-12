@@ -22,8 +22,8 @@ class MessagesPresenterTestsForLoggedInUser: XCTestCase {
         return AppDataBuilder.makeMessage(identifier: identifier)
     }
     
-    func testWhenSceneAppearsForTheFirstTimeTheResolveUserAuthenticationActionIsNotRan() {
-        XCTAssertFalse(context.resolveUserAuthenticationCommand.wasRan)
+    func testWhenSceneAppearsForTheFirstTimeTheDelegateIsNotToldToResolveUserAuthentication() {
+        XCTAssertFalse(context.delegate.wasToldToResolveUser)
     }
     
     func testWhenSceneAppearsTheSceneIsToldToShowRefreshIndicator() {

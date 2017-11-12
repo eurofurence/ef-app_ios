@@ -14,7 +14,6 @@ class MessagesPresenter: MessagesSceneDelegate {
 
     private let scene: MessagesScene
     private let privateMessagesService: PrivateMessagesService
-    private let resolveUserAuthenticationAction: ResolveUserAuthenticationAction
     private let showMessageAction: ShowMessageAction
     private let dateFormatter: DateFormatterProtocol
     private let delegate: MessagesModuleDelegate
@@ -25,13 +24,11 @@ class MessagesPresenter: MessagesSceneDelegate {
     init(scene: MessagesScene,
          authService: AuthService,
          privateMessagesService: PrivateMessagesService,
-         resolveUserAuthenticationAction: ResolveUserAuthenticationAction,
          showMessageAction: ShowMessageAction,
          dateFormatter: DateFormatterProtocol,
          delegate: MessagesModuleDelegate) {
         self.scene = scene
         self.privateMessagesService = privateMessagesService
-        self.resolveUserAuthenticationAction = resolveUserAuthenticationAction
         self.showMessageAction = showMessageAction
         self.dateFormatter = dateFormatter
         self.delegate = delegate
@@ -56,7 +53,7 @@ class MessagesPresenter: MessagesSceneDelegate {
             reloadPrivateMessages()
 
         case .loggedOut:
-            resolveUserAuthenticationAction.run(completionHandler: userResolved)
+            delegate.messagesModuleDidRequestResolutionForUser(completionHandler: userResolved)
         }
     }
 

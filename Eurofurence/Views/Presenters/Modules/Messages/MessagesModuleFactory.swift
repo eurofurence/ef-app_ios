@@ -16,6 +16,7 @@ protocol MessagesModuleFactory {
 
 protocol MessagesModuleDelegate {
 
+    func messagesModuleDidRequestResolutionForUser(completionHandler: @escaping (Bool) -> Void)
     func messagesModuleDidRequestDismissal()
 
 }

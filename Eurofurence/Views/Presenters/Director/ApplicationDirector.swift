@@ -90,6 +90,10 @@ class ApplicationDirector: RootModuleDelegate,
 
     // MARK: MessagesModuleDelegate
 
+    func messagesModuleDidRequestResolutionForUser(completionHandler: @escaping (Bool) -> Void) {
+
+    }
+
     func messagesModuleDidRequestDismissal() {
         guard let controller = newsController else { return }
         newsNavigationController.popToViewController(controller, animated: true)

@@ -291,8 +291,6 @@
 		CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */; };
 		CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */; };
 		CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */; };
-		CAD234371F5D71BE004BB959 /* CapturingResolveUserAuthenticationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234361F5D71BE004BB959 /* CapturingResolveUserAuthenticationAction.swift */; };
-		CAD2343A1F5D71F6004BB959 /* ResolveUserAuthenticationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234391F5D71F6004BB959 /* ResolveUserAuthenticationAction.swift */; };
 		CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343B1F5D7203004BB959 /* MessagesScene.swift */; };
 		CAD2343E1F5D7211004BB959 /* MessagesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343D1F5D7211004BB959 /* MessagesPresenter.swift */; };
 		CAD234401F5D726C004BB959 /* MessagesPresenterTestsForLoggedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343F1F5D726C004BB959 /* MessagesPresenterTestsForLoggedInUser.swift */; };
@@ -689,8 +687,6 @@
 		CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLogoutObserver.swift; path = "Test Doubles/Application/CapturingLogoutObserver.swift"; sourceTree = "<group>"; };
 		CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesPresenterTestContext.swift; path = "Presenter Tests/Messages/MessagesPresenterTestContext.swift"; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingMessagesScene.swift; path = "Test Doubles/Scenes/CapturingMessagesScene.swift"; sourceTree = "<group>"; };
-		CAD234361F5D71BE004BB959 /* CapturingResolveUserAuthenticationAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingResolveUserAuthenticationAction.swift; path = "Test Doubles/CapturingResolveUserAuthenticationAction.swift"; sourceTree = "<group>"; };
-		CAD234391F5D71F6004BB959 /* ResolveUserAuthenticationAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResolveUserAuthenticationAction.swift; path = Messages/ResolveUserAuthenticationAction.swift; sourceTree = "<group>"; };
 		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesScene.swift; path = Messages/MessagesScene.swift; sourceTree = "<group>"; };
 		CAD2343D1F5D7211004BB959 /* MessagesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesPresenter.swift; path = Messages/MessagesPresenter.swift; sourceTree = "<group>"; };
 		CAD2343F1F5D726C004BB959 /* MessagesPresenterTestsForLoggedInUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesPresenterTestsForLoggedInUser.swift; path = "Presenter Tests/Messages/MessagesPresenterTestsForLoggedInUser.swift"; sourceTree = "<group>"; };
@@ -866,7 +862,6 @@
 				6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */,
 				CAC1E12E1F50411900195513 /* StubAuthService.swift */,
 				CAC1E1321F50414B00195513 /* WelcomePromptStringFactoryTestDoubles.swift */,
-				CAD234361F5D71BE004BB959 /* CapturingResolveUserAuthenticationAction.swift */,
 				CAD234431F5F3D1A004BB959 /* CapturingShowMessageAction.swift */,
 				CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */,
 				CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */,
@@ -1711,7 +1706,6 @@
 		CAD234381F5D71D9004BB959 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
-				CAD234391F5D71F6004BB959 /* ResolveUserAuthenticationAction.swift */,
 				CAD234451F5F3D4F004BB959 /* ShowMessageAction.swift */,
 				CAD2343B1F5D7203004BB959 /* MessagesScene.swift */,
 				CAD2343D1F5D7211004BB959 /* MessagesPresenter.swift */,
@@ -2507,7 +2501,6 @@
 				9A861E991F24B0B800B75A8C /* NewsSectionHeader.swift in Sources */,
 				9A861ECD1F25555000B75A8C /* TutorialPageViewController.swift in Sources */,
 				D6F3D275FF81A313B9213277 /* AnnouncementCell.swift in Sources */,
-				CAD2343A1F5D71F6004BB959 /* ResolveUserAuthenticationAction.swift in Sources */,
 				9A861ED91F25564900B75A8C /* RootViewControllerAnimator.swift in Sources */,
 				D6F3D62A784F07D9C7A84DC8 /* KnowledgeEntryViewController.swift in Sources */,
 				CA1FE99B1FA0B3EB009C7DF3 /* WindowWireframe.swift in Sources */,
@@ -2634,7 +2627,6 @@
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
 				CAC1E12F1F50411900195513 /* StubAuthService.swift in Sources */,
 				78D7EEB51F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift in Sources */,
-				CAD234371F5D71BE004BB959 /* CapturingResolveUserAuthenticationAction.swift in Sources */,
 				CAC1E1391F50431000195513 /* NewsPresenterTestContext.swift in Sources */,
 				78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */,
 				CAF9A94C1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift in Sources */,
