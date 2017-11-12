@@ -14,7 +14,6 @@ class MessagesPresenter: MessagesSceneDelegate {
 
     private let scene: MessagesScene
     private let privateMessagesService: PrivateMessagesService
-    private let showMessageAction: ShowMessageAction
     private let dateFormatter: DateFormatterProtocol
     private let delegate: MessagesModuleDelegate
     private var presentedMessages = [Message]()
@@ -24,12 +23,10 @@ class MessagesPresenter: MessagesSceneDelegate {
     init(scene: MessagesScene,
          authService: AuthService,
          privateMessagesService: PrivateMessagesService,
-         showMessageAction: ShowMessageAction,
          dateFormatter: DateFormatterProtocol,
          delegate: MessagesModuleDelegate) {
         self.scene = scene
         self.privateMessagesService = privateMessagesService
-        self.showMessageAction = showMessageAction
         self.dateFormatter = dateFormatter
         self.delegate = delegate
 
@@ -41,7 +38,7 @@ class MessagesPresenter: MessagesSceneDelegate {
 
     func messagesSceneDidSelectMessage(at indexPath: IndexPath) {
         let message = presentedMessages[indexPath[1]]
-        showMessageAction.show(message: message)
+        delegate.messagesModuleDidRequestPresentation(for: message)
     }
 
     // MARK: Private

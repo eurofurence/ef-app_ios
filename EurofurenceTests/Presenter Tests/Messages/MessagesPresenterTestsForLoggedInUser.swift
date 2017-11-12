@@ -92,4 +92,12 @@ class MessagesPresenterTestsForLoggedInUser: XCTestCase {
         XCTAssertFalse(context.scene.didShowNoMessagesPlaceholder)
     }
     
+    func testWhenSceneSelectsMessageTheDelegateIsToldToShowTheChosenMessage() {
+        let localMessage = AppDataBuilder.makeMessage()
+        context = MessagesPresenterTestContext.makeTestCaseForUserWithMessages([localMessage])
+        context.scene.tapMessage(at: 0)
+        
+        XCTAssertEqual(localMessage, context.delegate.messageToShow)
+    }
+    
 }

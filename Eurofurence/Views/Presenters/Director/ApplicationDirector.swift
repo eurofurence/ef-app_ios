@@ -94,6 +94,10 @@ class ApplicationDirector: RootModuleDelegate,
 
     }
 
+    func messagesModuleDidRequestPresentation(for message: Message) {
+
+    }
+
     func messagesModuleDidRequestDismissal() {
         guard let controller = newsController else { return }
         newsNavigationController.popToViewController(controller, animated: true)

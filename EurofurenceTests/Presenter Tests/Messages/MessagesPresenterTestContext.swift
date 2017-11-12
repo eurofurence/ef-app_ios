@@ -17,6 +17,11 @@ class CapturingMessagesModuleDelegate: MessagesModuleDelegate {
         userResolutionCompletionHandler = completionHandler
     }
     
+    private(set) var messageToShow: Message?
+    func messagesModuleDidRequestPresentation(for message: Message) {
+        messageToShow = message
+    }
+    
     private(set) var dismissed = false
     func messagesModuleDidRequestDismissal() {
         dismissed = true
@@ -37,7 +42,6 @@ struct MessagesPresenterTestContext {
     let sceneFactory = StubMessagesSceneFactory()
     let delegate = CapturingMessagesModuleDelegate()
     var privateMessagesService = CapturingPrivateMessagesService()
-    let showMessageAction = CapturingShowMessageAction()
     let dateFormatter = CapturingDateFormatter()
     
     var scene: CapturingMessagesScene {
@@ -65,7 +69,6 @@ struct MessagesPresenterTestContext {
         let factory = PhoneMessagesModuleFactory(sceneFactory: sceneFactory,
                                                  authService: StubAuthService(authState: authState),
                                                  privateMessagesService: privateMessagesService,
-                                                 showMessageAction: showMessageAction,
                                                  dateFormatter: dateFormatter)
         _ = factory.makeMessagesModule(delegate)
     }
