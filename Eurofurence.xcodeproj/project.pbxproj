@@ -276,6 +276,8 @@
 		CAB3A72A1F7532A2005DF77B /* CapturingPushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */; };
 		CAB3A72D1F753308005DF77B /* PushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */; };
 		CAB3A72F1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */; };
+		CABA43811FB8468A009CB5B0 /* PhoneMessagesSceneFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43801FB8468A009CB5B0 /* PhoneMessagesSceneFactoryTests.swift */; };
+		CABA43831FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43821FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift */; };
 		CAC1E1271F5040BD00195513 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1261F5040BD00195513 /* NewsPresenter.swift */; };
 		CAC1E1291F5040CB00195513 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1281F5040CB00195513 /* AuthService.swift */; };
 		CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12A1F5040E100195513 /* NewsScene.swift */; };
@@ -672,6 +674,8 @@
 		CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPushPermissionsRequester.swift; sourceTree = "<group>"; };
 		CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PushPermissionsRequester.swift; path = "Application/System Services/PushPermissionsRequester.swift"; sourceTree = "<group>"; };
 		CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationPushPermissionsRequester.swift; path = "Application/System Services/ApplicationPushPermissionsRequester.swift"; sourceTree = "<group>"; };
+		CABA43801FB8468A009CB5B0 /* PhoneMessagesSceneFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhoneMessagesSceneFactoryTests.swift; path = "Presenter Tests/Messages/PhoneMessagesSceneFactoryTests.swift"; sourceTree = "<group>"; };
+		CABA43821FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhoneMessagesSceneFactory.swift; path = Messages/PhoneMessagesSceneFactory.swift; sourceTree = "<group>"; };
 		CAC1E1261F5040BD00195513 /* NewsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenter.swift; path = News/NewsPresenter.swift; sourceTree = "<group>"; };
 		CAC1E1281F5040CB00195513 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = Interactors/Authorization/AuthService.swift; sourceTree = "<group>"; };
 		CAC1E12A1F5040E100195513 /* NewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsScene.swift; path = News/NewsScene.swift; sourceTree = "<group>"; };
@@ -1714,6 +1718,7 @@
 				CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */,
 				CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleFactory.swift */,
 				CA8E7F091FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift */,
+				CABA43821FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -1849,6 +1854,7 @@
 				CAF9A9571F5601A700628833 /* MessagesPresenterTestsForAnonymousUser.swift */,
 				CAD2343F1F5D726C004BB959 /* MessagesPresenterTestsForLoggedInUser.swift */,
 				CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */,
+				CABA43801FB8468A009CB5B0 /* PhoneMessagesSceneFactoryTests.swift */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -2471,6 +2477,7 @@
 				D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */,
 				CAE27B4E1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift in Sources */,
 				D6F3DB838A1BDAFC6DAC2F61 /* CountryAlpha3Converter.swift in Sources */,
+				CABA43831FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift in Sources */,
 				CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */,
 				D6F3DEDDAFE507E873CB3806 /* WikiText.swift in Sources */,
 				9A80EF4E1F28C78900FD0D37 /* TargetRouter.swift in Sources */,
@@ -2602,6 +2609,7 @@
 				CA2B4FAA1F1F7F1200F007E1 /* CapturingLoginObserver.swift in Sources */,
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
 				78C86D831F13A35F003A20E6 /* UnlocalizedPresentationStringsShould.swift in Sources */,
+				CABA43811FB8468A009CB5B0 /* PhoneMessagesSceneFactoryTests.swift in Sources */,
 				CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */,
 				7820A6FF1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift in Sources */,
 				CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */,
