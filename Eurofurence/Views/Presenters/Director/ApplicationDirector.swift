@@ -96,7 +96,10 @@ class ApplicationDirector: RootModuleDelegate,
     // MARK: MessagesModuleDelegate
 
     func messagesModuleDidRequestResolutionForUser(completionHandler: @escaping (Bool) -> Void) {
-        tabController?.present(loginModuleFactory.makeLoginModule(), animated: true)
+        let loginModule = loginModuleFactory.makeLoginModule()
+        loginModule.modalPresentationStyle = .formSheet
+
+        tabController?.present(loginModule, animated: true)
     }
 
     func messagesModuleDidRequestPresentation(for message: Message) {

@@ -246,4 +246,14 @@ class ApplicationDirectorTests: XCTestCase {
         XCTAssertEqual(tabModuleFactory.stubInterface.capturedPresentedViewController, loginModuleFactory.stubInterface)
     }
     
+    func testWhenTheMessagesModuleRequestsResolutionForUserTheLoginModuleIsPresentedUsingTheFormSheetModalPresentationStyle() {
+        rootModuleFactory.delegate?.storeShouldBePreloaded()
+        preloadModuleFactory.delegate?.preloadModuleDidFinishPreloading()
+        _ = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
+        newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
+        messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: { _ in })
+        
+        XCTAssertEqual(loginModuleFactory.stubInterface.modalPresentationStyle, .formSheet)
+    }
+    
 }
