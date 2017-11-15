@@ -12,7 +12,8 @@ class ApplicationDirector: RootModuleDelegate,
                            TutorialModuleDelegate,
                            PreloadModuleDelegate,
                            NewsModuleDelegate,
-                           MessagesModuleDelegate {
+                           MessagesModuleDelegate,
+                           LoginModuleDelegate {
 
     private let windowWireframe: WindowWireframe
     private let rootModuleFactory: RootModuleFactory
@@ -95,8 +96,11 @@ class ApplicationDirector: RootModuleDelegate,
 
     // MARK: MessagesModuleDelegate
 
+    private var messagesModuleResolutionHandler: ((Bool) -> Void)?
+
     func messagesModuleDidRequestResolutionForUser(completionHandler: @escaping (Bool) -> Void) {
-        let loginModule = loginModuleFactory.makeLoginModule()
+        messagesModuleResolutionHandler = completionHandler
+        let loginModule = loginModuleFactory.makeLoginModule(self)
         loginModule.modalPresentationStyle = .formSheet
 
         tabController?.present(loginModule, animated: true)
@@ -109,6 +113,12 @@ class ApplicationDirector: RootModuleDelegate,
     func messagesModuleDidRequestDismissal() {
         guard let controller = newsController else { return }
         newsNavigationController.popToViewController(controller, animated: true)
+    }
+
+    // MARK: LoginModuleDelegate
+
+    func loginModuleDidCancelLogin() {
+        messagesModuleResolutionHandler?(false)
     }
 
     // MARK: Private

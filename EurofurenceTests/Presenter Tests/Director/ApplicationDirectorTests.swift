@@ -116,7 +116,9 @@ class StubTabModuleFactory: TabModuleFactory {
 class StubLoginModuleFactory: LoginModuleFactory {
     
     let stubInterface = UIViewController()
-    func makeLoginModule() -> UIViewController {
+    private(set) var delegate: LoginModuleDelegate?
+    func makeLoginModule(_ delegate: LoginModuleDelegate) -> UIViewController {
+        self.delegate = delegate
         return stubInterface
     }
     
@@ -254,6 +256,29 @@ class ApplicationDirectorTests: XCTestCase {
         messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: { _ in })
         
         XCTAssertEqual(loginModuleFactory.stubInterface.modalPresentationStyle, .formSheet)
+    }
+    
+    func testWhenShowingLoginForMessagesControllerWhenModuleCancelsLoginTheMessagesModuleIsToldResolutionFailed() {
+        rootModuleFactory.delegate?.storeShouldBePreloaded()
+        preloadModuleFactory.delegate?.preloadModuleDidFinishPreloading()
+        _ = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
+        newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
+        var userResolved = true
+        messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: { userResolved = $0 })
+        loginModuleFactory.delegate?.loginModuleDidCancelLogin()
+        
+        XCTAssertFalse(userResolved)
+    }
+    
+    func testWhenShowingLoginForMessagesControllerTheMessagesModuleIsNotToldResolutionFailedBeforeLoginIsCancelled() {
+        rootModuleFactory.delegate?.storeShouldBePreloaded()
+        preloadModuleFactory.delegate?.preloadModuleDidFinishPreloading()
+        _ = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
+        newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
+        var userResolved = true
+        messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: { userResolved = $0 })
+        
+        XCTAssertTrue(userResolved)
     }
     
 }

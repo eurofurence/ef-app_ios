@@ -10,6 +10,12 @@ import UIKit.UIViewController
 
 protocol LoginModuleFactory {
 
-    func makeLoginModule() -> UIViewController
+    func makeLoginModule(_ delegate: LoginModuleDelegate) -> UIViewController
+
+}
+
+protocol LoginModuleDelegate {
+
+    func loginModuleDidCancelLogin()
 
 }
