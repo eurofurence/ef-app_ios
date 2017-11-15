@@ -86,9 +86,19 @@ class StubMessagesModuleFactory: MessagesModuleFactory {
     
 }
 
+class FakeViewController: UIViewController {
+    
+    private(set) var capturedPresentedViewController: UIViewController?
+    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        capturedPresentedViewController = viewControllerToPresent
+        super.present(viewControllerToPresent, animated: flag, completion: completion)
+    }
+    
+}
+
 class StubTabModuleFactory: TabModuleFactory {
     
-    let stubInterface = UIViewController()
+    let stubInterface = FakeViewController()
     private(set) var capturedTabModules: [UIViewController] = []
     func makeTabModule(_ childModules: [UIViewController]) -> UIViewController {
         capturedTabModules = childModules
@@ -99,6 +109,15 @@ class StubTabModuleFactory: TabModuleFactory {
         return capturedTabModules
                 .flatMap({ $0 as? CapturingNavigationController })
                 .first(where: { $0.topViewController === viewController })
+    }
+    
+}
+
+class StubLoginModuleFactory: LoginModuleFactory {
+    
+    let stubInterface = UIViewController()
+    func makeLoginModule() -> UIViewController {
+        return stubInterface
     }
     
 }
@@ -121,6 +140,7 @@ class ApplicationDirectorTests: XCTestCase {
     var tabModuleFactory: StubTabModuleFactory!
     var newsModuleFactory: StubNewsModuleFactory!
     var messagesModuleFactory: StubMessagesModuleFactory!
+    var loginModuleFactory: StubLoginModuleFactory!
     var windowWireframe: CapturingWindowWireframe!
     
     override func setUp() {
@@ -133,6 +153,7 @@ class ApplicationDirectorTests: XCTestCase {
         tabModuleFactory = StubTabModuleFactory()
         newsModuleFactory = StubNewsModuleFactory()
         messagesModuleFactory = StubMessagesModuleFactory()
+        loginModuleFactory = StubLoginModuleFactory()
         director = ApplicationDirector(windowWireframe: windowWireframe,
                                        navigationControllerFactory: StubNavigationControllerFactory(),
                                        rootModuleFactory: rootModuleFactory,
@@ -140,7 +161,8 @@ class ApplicationDirectorTests: XCTestCase {
                                        preloadModuleFactory: preloadModuleFactory,
                                        tabModuleFactory: tabModuleFactory,
                                        newsModuleFactory: newsModuleFactory,
-                                       messagesModuleFactory: messagesModuleFactory)
+                                       messagesModuleFactory: messagesModuleFactory,
+                                       loginModuleFactory: loginModuleFactory)
     }
     
     func testWhenRootModuleIndicatesUserNeedsToWitnessTutorialTheTutorialModuleIsSetAsRoot() {
@@ -212,6 +234,16 @@ class ApplicationDirectorTests: XCTestCase {
         messagesModuleFactory.delegate?.messagesModuleDidRequestDismissal()
         
         XCTAssertEqual(newsModuleFactory.stubInterface, newsNavigationController?.viewControllerPoppedTo)
+    }
+    
+    func testWhenTheMessagesModuleRequestsResolutionForUserTheLoginModuleIsPresentedOnTopOfTheTabController() {
+        rootModuleFactory.delegate?.storeShouldBePreloaded()
+        preloadModuleFactory.delegate?.preloadModuleDidFinishPreloading()
+        _ = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
+        newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
+        messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: { _ in })
+        
+        XCTAssertEqual(tabModuleFactory.stubInterface.capturedPresentedViewController, loginModuleFactory.stubInterface)
     }
     
 }

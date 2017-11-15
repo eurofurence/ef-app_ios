@@ -22,7 +22,9 @@ class ApplicationDirector: RootModuleDelegate,
     private let newsModuleFactory: NewsModuleFactory
     private let messagesModuleFactory: MessagesModuleFactory
     private let newsNavigationController: UINavigationController
+    private let loginModuleFactory: LoginModuleFactory
 
+    private var tabController: UIViewController?
     private var newsController: UIViewController?
 
     init(windowWireframe: WindowWireframe,
@@ -32,7 +34,8 @@ class ApplicationDirector: RootModuleDelegate,
          preloadModuleFactory: PreloadModuleFactory,
          tabModuleFactory: TabModuleFactory,
          newsModuleFactory: NewsModuleFactory,
-         messagesModuleFactory: MessagesModuleFactory) {
+         messagesModuleFactory: MessagesModuleFactory,
+         loginModuleFactory: LoginModuleFactory) {
         self.windowWireframe = windowWireframe
         self.rootModuleFactory = rootModuleFactory
         self.tutorialModuleFactory = tutorialModuleFactory
@@ -40,6 +43,7 @@ class ApplicationDirector: RootModuleDelegate,
         self.tabModuleFactory = tabModuleFactory
         self.newsModuleFactory = newsModuleFactory
         self.messagesModuleFactory = messagesModuleFactory
+        self.loginModuleFactory = loginModuleFactory
 
         newsNavigationController = navigationControllerFactory.makeNavigationController()
 
@@ -74,6 +78,7 @@ class ApplicationDirector: RootModuleDelegate,
 
         newsNavigationController.setViewControllers([newsController], animated: false)
         let tabModule = tabModuleFactory.makeTabModule([newsNavigationController])
+        tabController = tabModule
 
         windowWireframe.setRoot(tabModule)
     }
@@ -91,7 +96,7 @@ class ApplicationDirector: RootModuleDelegate,
     // MARK: MessagesModuleDelegate
 
     func messagesModuleDidRequestResolutionForUser(completionHandler: @escaping (Bool) -> Void) {
-
+        tabController?.present(loginModuleFactory.makeLoginModule(), animated: true)
     }
 
     func messagesModuleDidRequestPresentation(for message: Message) {

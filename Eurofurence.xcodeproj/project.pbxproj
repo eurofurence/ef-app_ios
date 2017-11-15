@@ -278,6 +278,7 @@
 		CAB3A72F1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */; };
 		CABA43811FB8468A009CB5B0 /* PhoneMessagesSceneFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43801FB8468A009CB5B0 /* PhoneMessagesSceneFactoryTests.swift */; };
 		CABA43831FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43821FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift */; };
+		CABA43861FBC6FE1009CB5B0 /* LoginModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43851FBC6FE1009CB5B0 /* LoginModuleFactory.swift */; };
 		CAC1E1271F5040BD00195513 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1261F5040BD00195513 /* NewsPresenter.swift */; };
 		CAC1E1291F5040CB00195513 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1281F5040CB00195513 /* AuthService.swift */; };
 		CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12A1F5040E100195513 /* NewsScene.swift */; };
@@ -672,6 +673,7 @@
 		CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationPushPermissionsRequester.swift; path = "Application/System Services/ApplicationPushPermissionsRequester.swift"; sourceTree = "<group>"; };
 		CABA43801FB8468A009CB5B0 /* PhoneMessagesSceneFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhoneMessagesSceneFactoryTests.swift; path = "Presenter Tests/Messages/PhoneMessagesSceneFactoryTests.swift"; sourceTree = "<group>"; };
 		CABA43821FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhoneMessagesSceneFactory.swift; path = Messages/PhoneMessagesSceneFactory.swift; sourceTree = "<group>"; };
+		CABA43851FBC6FE1009CB5B0 /* LoginModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleFactory.swift; sourceTree = "<group>"; };
 		CAC1E1261F5040BD00195513 /* NewsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenter.swift; path = News/NewsPresenter.swift; sourceTree = "<group>"; };
 		CAC1E1281F5040CB00195513 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = Interactors/Authorization/AuthService.swift; sourceTree = "<group>"; };
 		CAC1E12A1F5040E100195513 /* NewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsScene.swift; path = News/NewsScene.swift; sourceTree = "<group>"; };
@@ -886,6 +888,7 @@
 				6EF96CE31F1268BA00EE6134 /* Tutorial */,
 				CA321F4F1F7BC8490050E489 /* Preload */,
 				CAC1E1251F50409800195513 /* News */,
+				CABA43841FBC6FD3009CB5B0 /* Login */,
 				CAD234381F5D71D9004BB959 /* Messages */,
 				CA7EB7D21F79985C002674A6 /* PresentationModule.swift */,
 			);
@@ -1671,6 +1674,14 @@
 				CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */,
 			);
 			name = "System Services";
+			sourceTree = "<group>";
+		};
+		CABA43841FBC6FD3009CB5B0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CABA43851FBC6FE1009CB5B0 /* LoginModuleFactory.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		CAC1E1241F50405900195513 /* News */ = {
@@ -2494,6 +2505,7 @@
 				CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */,
 				9A861E991F24B0B800B75A8C /* NewsSectionHeader.swift in Sources */,
 				9A861ECD1F25555000B75A8C /* TutorialPageViewController.swift in Sources */,
+				CABA43861FBC6FE1009CB5B0 /* LoginModuleFactory.swift in Sources */,
 				D6F3D275FF81A313B9213277 /* AnnouncementCell.swift in Sources */,
 				9A861ED91F25564900B75A8C /* RootViewControllerAnimator.swift in Sources */,
 				D6F3D62A784F07D9C7A84DC8 /* KnowledgeEntryViewController.swift in Sources */,
