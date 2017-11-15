@@ -10,6 +10,7 @@ struct LoginPresenter {
 
     init(scene: LoginScene) {
         scene.disableLoginButton()
+        scene.enableLoginButton()
     }
 
 }

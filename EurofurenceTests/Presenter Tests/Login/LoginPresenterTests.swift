@@ -20,9 +20,16 @@ class StubLoginSceneFactory: LoginSceneFactory {
 
 class CapturingLoginScene: UIViewController, LoginScene {
     
+    var delegate: LoginSceneDelegate?
+    
     private(set) var loginButtonWasDisabled = false
     func disableLoginButton() {
         loginButtonWasDisabled = true
+    }
+    
+    private(set) var loginButtonWasEnabled = false
+    func enableLoginButton() {
+        loginButtonWasEnabled = true
     }
     
 }
@@ -57,6 +64,18 @@ class LoginPresenterTests: XCTestCase {
         _ = moduleFactory.makeLoginModule(delegate)
         
         XCTAssertTrue(loginSceneFactory.stubScene.loginButtonWasDisabled)
+    }
+    
+    func testWhenSceneSuppliesAllDetailsTheLoginButtonIsEnabled() {
+        let loginSceneFactory = StubLoginSceneFactory()
+        let moduleFactory = PhoneLoginModuleFactory(sceneFactory: loginSceneFactory)
+        let delegate = CapturingLoginModuleDelegate()
+        _ = moduleFactory.makeLoginModule(delegate)
+        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateRegistrationNumber("1")
+        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateUsername("User")
+        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdatePassword("Password")
+        
+        XCTAssertTrue(loginSceneFactory.stubScene.loginButtonWasEnabled)
     }
     
 }

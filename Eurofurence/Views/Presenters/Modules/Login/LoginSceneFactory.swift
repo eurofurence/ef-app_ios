@@ -16,6 +16,17 @@ protocol LoginSceneFactory {
 
 protocol LoginScene {
 
+    var delegate: LoginSceneDelegate? { get set }
+
     func disableLoginButton()
+    func enableLoginButton()
+
+}
+
+protocol LoginSceneDelegate {
+
+    func loginSceneDidUpdateRegistrationNumber(_ registrationNumberString: String)
+    func loginSceneDidUpdateUsername(_ username: String)
+    func loginSceneDidUpdatePassword(_ password: String)
 
 }
