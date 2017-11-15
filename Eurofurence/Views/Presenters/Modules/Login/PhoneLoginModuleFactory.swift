@@ -14,7 +14,7 @@ struct PhoneLoginModuleFactory: LoginModuleFactory {
 
     func makeLoginModule(_ delegate: LoginModuleDelegate) -> UIViewController {
         let scene = sceneFactory.makeLoginScene()
-        _ = LoginPresenter(scene: scene)
+        _ = LoginPresenter(delegate: delegate, scene: scene)
 
         return scene
     }

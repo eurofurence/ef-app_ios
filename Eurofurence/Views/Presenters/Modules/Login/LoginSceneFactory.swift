@@ -14,7 +14,7 @@ protocol LoginSceneFactory {
 
 }
 
-protocol LoginScene {
+protocol LoginScene: class {
 
     var delegate: LoginSceneDelegate? { get set }
 
@@ -25,6 +25,7 @@ protocol LoginScene {
 
 protocol LoginSceneDelegate {
 
+    func loginSceneDidTapCancelButton()
     func loginSceneDidUpdateRegistrationNumber(_ registrationNumberString: String)
     func loginSceneDidUpdateUsername(_ username: String)
     func loginSceneDidUpdatePassword(_ password: String)

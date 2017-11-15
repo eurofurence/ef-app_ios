@@ -36,8 +36,9 @@ class CapturingLoginScene: UIViewController, LoginScene {
 
 class CapturingLoginModuleDelegate: LoginModuleDelegate {
     
+    private(set) var loginCancelled = false
     func loginModuleDidCancelLogin() {
-        
+        loginCancelled = true
     }
     
     func loginModuleDidLoginSuccessfully() {
@@ -50,18 +51,28 @@ class LoginPresenterTests: XCTestCase {
     
     var loginSceneFactory: StubLoginSceneFactory!
     var scene: UIViewController!
+    var delegate: CapturingLoginModuleDelegate!
     
     override func setUp() {
         super.setUp()
         
         loginSceneFactory = StubLoginSceneFactory()
         let moduleFactory = PhoneLoginModuleFactory(sceneFactory: loginSceneFactory)
-        let delegate = CapturingLoginModuleDelegate()
+        delegate = CapturingLoginModuleDelegate()
         scene = moduleFactory.makeLoginModule(delegate)
     }
     
     func testTheSceneFromTheFactoryIsReturned() {
         XCTAssertEqual(scene, loginSceneFactory.stubScene)
+    }
+    
+    func testTappingTheCancelButtonTellsDelegateLoginCancelled() {
+        loginSceneFactory.stubScene.delegate?.loginSceneDidTapCancelButton()
+        XCTAssertTrue(delegate.loginCancelled)
+    }
+    
+    func testTheDelegateIsNotToldLoginCancelledUntilUserTapsButton() {
+        XCTAssertFalse(delegate.loginCancelled)
     }
     
     func testTheLoginButtonIsDisabled() {
