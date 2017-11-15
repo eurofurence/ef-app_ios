@@ -48,29 +48,27 @@ class CapturingLoginModuleDelegate: LoginModuleDelegate {
 
 class LoginPresenterTests: XCTestCase {
     
-    func testTheSceneFromTheFactoryIsReturned() {
-        let loginSceneFactory = StubLoginSceneFactory()
+    var loginSceneFactory: StubLoginSceneFactory!
+    var scene: UIViewController!
+    
+    override func setUp() {
+        super.setUp()
+        
+        loginSceneFactory = StubLoginSceneFactory()
         let moduleFactory = PhoneLoginModuleFactory(sceneFactory: loginSceneFactory)
         let delegate = CapturingLoginModuleDelegate()
-        let scene = moduleFactory.makeLoginModule(delegate)
-        
+        scene = moduleFactory.makeLoginModule(delegate)
+    }
+    
+    func testTheSceneFromTheFactoryIsReturned() {
         XCTAssertEqual(scene, loginSceneFactory.stubScene)
     }
     
     func testTheLoginButtonIsDisabled() {
-        let loginSceneFactory = StubLoginSceneFactory()
-        let moduleFactory = PhoneLoginModuleFactory(sceneFactory: loginSceneFactory)
-        let delegate = CapturingLoginModuleDelegate()
-        _ = moduleFactory.makeLoginModule(delegate)
-        
         XCTAssertTrue(loginSceneFactory.stubScene.loginButtonWasDisabled)
     }
     
     func testWhenSceneSuppliesAllDetailsTheLoginButtonIsEnabled() {
-        let loginSceneFactory = StubLoginSceneFactory()
-        let moduleFactory = PhoneLoginModuleFactory(sceneFactory: loginSceneFactory)
-        let delegate = CapturingLoginModuleDelegate()
-        _ = moduleFactory.makeLoginModule(delegate)
         loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateRegistrationNumber("1")
         loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateUsername("User")
         loginSceneFactory.stubScene.delegate?.loginSceneDidUpdatePassword("Password")
