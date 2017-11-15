@@ -121,6 +121,10 @@ class ApplicationDirector: RootModuleDelegate,
         messagesModuleResolutionHandler?(false)
     }
 
+    func loginModuleDidLoginSuccessfully() {
+        messagesModuleResolutionHandler?(true)
+    }
+
     // MARK: Private
 
     private func showPreloadModule() {

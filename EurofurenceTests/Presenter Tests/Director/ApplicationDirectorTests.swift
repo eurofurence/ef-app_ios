@@ -277,4 +277,25 @@ class ApplicationDirectorTests: XCTestCase {
         XCTAssertTrue(userResolved)
     }
     
+    func testWhenShowingLoginForMessagesControllerWhenModuleLogsInTheMessagesModuleIsToldResolutionSucceeded() {
+        navigateToTabController()
+        _ = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
+        newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
+        var userResolved = false
+        messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: { userResolved = $0 })
+        loginModuleFactory.delegate?.loginModuleDidLoginSuccessfully()
+        
+        XCTAssertTrue(userResolved)
+    }
+    
+    func testWhenShowingLoginForMessagesControllerTheMessagesModuleIsNotToldResolutionSucceededBeforeUserLogsIn() {
+        navigateToTabController()
+        _ = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
+        newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
+        var userResolved = false
+        messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: { userResolved = $0 })
+        
+        XCTAssertFalse(userResolved)
+    }
+    
 }

@@ -17,5 +17,6 @@ protocol LoginModuleFactory {
 protocol LoginModuleDelegate {
 
     func loginModuleDidCancelLogin()
+    func loginModuleDidLoginSuccessfully()
 
 }
