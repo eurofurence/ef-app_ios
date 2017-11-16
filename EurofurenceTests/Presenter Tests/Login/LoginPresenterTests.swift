@@ -87,4 +87,20 @@ class LoginPresenterTests: XCTestCase {
         XCTAssertTrue(loginSceneFactory.stubScene.loginButtonWasEnabled)
     }
     
+    func testWhenSceneSuppliesAllDetailsWithoutRegistrationNumberTheLoginButtonShouldNotBeEnabled() {
+        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateRegistrationNumber("")
+        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateUsername("User")
+        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdatePassword("Password")
+        
+        XCTAssertFalse(loginSceneFactory.stubScene.loginButtonWasEnabled)
+    }
+    
+    func testWhenSceneSuppliesAllDetailsWithInvalidRegistrationNumberTheLoginButtonShouldNotBeEnabled() {
+        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateRegistrationNumber("?")
+        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateUsername("User")
+        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdatePassword("Password")
+        
+        XCTAssertFalse(loginSceneFactory.stubScene.loginButtonWasEnabled)
+    }
+    
 }
