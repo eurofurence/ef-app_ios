@@ -123,4 +123,12 @@ class LoginPresenterTests: XCTestCase {
         XCTAssertFalse(loginSceneFactory.stubScene.loginButtonWasEnabled)
     }
     
+    func testWhenSceneSuppliesAllDetailsWithInvalidPasswordTheLoginButtonShouldNotBeEnabled() {
+        updateRegistrationNumber("1")
+        updateUsername("User")
+        updatePassword("")
+        
+        XCTAssertFalse(loginSceneFactory.stubScene.loginButtonWasEnabled)
+    }
+    
 }

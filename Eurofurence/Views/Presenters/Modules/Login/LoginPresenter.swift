@@ -14,6 +14,7 @@ class LoginPresenter: LoginSceneDelegate {
     private let scene: LoginScene
     private var registrationNumber: Int?
     private var username: String?
+    private var password: String?
 
     init(delegate: LoginModuleDelegate, scene: LoginScene) {
         self.delegate = delegate
@@ -33,20 +34,26 @@ class LoginPresenter: LoginSceneDelegate {
         if scanner.scanInt(&container) {
             registrationNumber = container
 
-            if username != nil && !username!.isEmpty {
+            if username != nil && !username!.isEmpty && password != nil && !password!.isEmpty {
                 scene.enableLoginButton()
             }
         }
     }
 
     func loginSceneDidUpdateUsername(_ username: String) {
-        if !username.isEmpty && registrationNumber != nil {
+        self.username = username
+
+        if !username.isEmpty && registrationNumber != nil && password != nil && !password!.isEmpty {
             scene.enableLoginButton()
         }
     }
 
     func loginSceneDidUpdatePassword(_ password: String) {
+        self.password = password
 
+        if !password.isEmpty && !username!.isEmpty && registrationNumber != nil {
+            scene.enableLoginButton()
+        }
     }
 
 }
