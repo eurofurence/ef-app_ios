@@ -53,6 +53,18 @@ class LoginPresenterTests: XCTestCase {
     var scene: UIViewController!
     var delegate: CapturingLoginModuleDelegate!
     
+    private func updateRegistrationNumber(_ registrationNumber: String) {
+        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateRegistrationNumber(registrationNumber)
+    }
+    
+    private func updateUsername(_ username: String) {
+        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateUsername(username)
+    }
+    
+    private func updatePassword(_ password: String) {
+        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdatePassword(password)
+    }
+    
     override func setUp() {
         super.setUp()
         
@@ -80,25 +92,25 @@ class LoginPresenterTests: XCTestCase {
     }
     
     func testWhenSceneSuppliesAllDetailsTheLoginButtonIsEnabled() {
-        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateRegistrationNumber("1")
-        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateUsername("User")
-        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdatePassword("Password")
+        updateRegistrationNumber("1")
+        updateUsername("User")
+        updatePassword("Password")
         
         XCTAssertTrue(loginSceneFactory.stubScene.loginButtonWasEnabled)
     }
     
     func testWhenSceneSuppliesAllDetailsWithoutRegistrationNumberTheLoginButtonShouldNotBeEnabled() {
-        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateRegistrationNumber("")
-        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateUsername("User")
-        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdatePassword("Password")
+        updateRegistrationNumber("")
+        updateUsername("User")
+        updatePassword("Password")
         
         XCTAssertFalse(loginSceneFactory.stubScene.loginButtonWasEnabled)
     }
     
     func testWhenSceneSuppliesAllDetailsWithInvalidRegistrationNumberTheLoginButtonShouldNotBeEnabled() {
-        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateRegistrationNumber("?")
-        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateUsername("User")
-        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdatePassword("Password")
+        updateRegistrationNumber("?")
+        updateUsername("User")
+        updatePassword("Password")
         
         XCTAssertFalse(loginSceneFactory.stubScene.loginButtonWasEnabled)
     }
