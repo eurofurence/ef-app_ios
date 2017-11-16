@@ -46,22 +46,24 @@ struct LoginPresenter: LoginSceneDelegate {
 
     func loginSceneDidUpdateRegistrationNumber(_ registrationNumberString: String) {
         inputContainer.updateRegistrationNumber(with: registrationNumberString)
-        if inputContainer.isValid {
-            scene.enableLoginButton()
-        }
+        updateLoginButtonInteractivity()
     }
 
     func loginSceneDidUpdateUsername(_ username: String) {
         inputContainer.username = username
-        if inputContainer.isValid {
-            scene.enableLoginButton()
-        }
+        updateLoginButtonInteractivity()
     }
 
     func loginSceneDidUpdatePassword(_ password: String) {
         inputContainer.password = password
+        updateLoginButtonInteractivity()
+    }
+
+    private func updateLoginButtonInteractivity() {
         if inputContainer.isValid {
             scene.enableLoginButton()
+        } else {
+            scene.disableLoginButton()
         }
     }
 

@@ -22,7 +22,7 @@ class CapturingLoginScene: UIViewController, LoginScene {
     
     var delegate: LoginSceneDelegate?
     
-    private(set) var loginButtonWasDisabled = false
+    var loginButtonWasDisabled = false
     func disableLoginButton() {
         loginButtonWasDisabled = true
     }
@@ -129,6 +129,60 @@ class LoginPresenterTests: XCTestCase {
         updatePassword("")
         
         XCTAssertFalse(loginSceneFactory.stubScene.loginButtonWasEnabled)
+    }
+    
+    func testWhenSceneSuppliesAllDetailsWithInvalidPasswordTheLoginButtonShouldBeDisabled() {
+        updateRegistrationNumber("1")
+        updateUsername("User")
+        loginSceneFactory.stubScene.loginButtonWasDisabled = false
+        updatePassword("")
+        
+        XCTAssertTrue(loginSceneFactory.stubScene.loginButtonWasDisabled)
+    }
+    
+    func testWhenSceneSuppliesAllDetailsWithPasswordEnteredLastTheLoginButtonNotBeDisabled() {
+        updateRegistrationNumber("1")
+        updateUsername("User")
+        loginSceneFactory.stubScene.loginButtonWasDisabled = false
+        updatePassword("Password")
+        
+        XCTAssertFalse(loginSceneFactory.stubScene.loginButtonWasDisabled)
+    }
+    
+    func testWhenSceneSuppliesAllDetailsWithInvalidRegistrationNumberTheLoginButtonShouldBeDisabled() {
+        updateUsername("User")
+        updatePassword("Password")
+        loginSceneFactory.stubScene.loginButtonWasDisabled = false
+        updateRegistrationNumber("?")
+        
+        XCTAssertTrue(loginSceneFactory.stubScene.loginButtonWasDisabled)
+    }
+    
+    func testWhenSceneSuppliesAllDetailsWithRegistrationNumberEnteredLastTheLoginButtonShouldNotBeDisabled() {
+        updateUsername("User")
+        updatePassword("Password")
+        loginSceneFactory.stubScene.loginButtonWasDisabled = false
+        updateRegistrationNumber("42")
+        
+        XCTAssertFalse(loginSceneFactory.stubScene.loginButtonWasDisabled)
+    }
+    
+    func testWhenSceneSuppliesAllDetailsWithInvalidUsernameTheLoginButtonShouldBeDisabled() {
+        updateRegistrationNumber("1")
+        updatePassword("Password")
+        loginSceneFactory.stubScene.loginButtonWasDisabled = false
+        updateUsername("")
+        
+        XCTAssertTrue(loginSceneFactory.stubScene.loginButtonWasDisabled)
+    }
+    
+    func testWhenSceneSuppliesAllDetailsWithUsernameEnteredLastTheLoginButtonShouldNotBeDisabled() {
+        updateRegistrationNumber("1")
+        updatePassword("Password")
+        loginSceneFactory.stubScene.loginButtonWasDisabled = false
+        updateUsername("User")
+        
+        XCTAssertFalse(loginSceneFactory.stubScene.loginButtonWasDisabled)
     }
     
 }
