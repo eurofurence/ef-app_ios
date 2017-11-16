@@ -8,13 +8,29 @@
 
 import Foundation
 
-class LoginPresenter: LoginSceneDelegate {
+struct LoginPresenter: LoginSceneDelegate {
 
     private let delegate: LoginModuleDelegate
     private let scene: LoginScene
-    private var registrationNumber: Int?
-    private var username: String?
-    private var password: String?
+    private let inputContainer = InputContainer()
+
+    private class InputContainer {
+        var registrationNumber: Int?
+        var username: String?
+        var password: String?
+
+        var isValid: Bool {
+            guard let username = username, let password = password else { return false }
+            return registrationNumber != nil && !username.isEmpty && !password.isEmpty
+        }
+
+        func updateRegistrationNumber(with string: String) {
+            var container = 0
+            if Scanner(string: string).scanInt(&container) {
+                registrationNumber = container
+            }
+        }
+    }
 
     init(delegate: LoginModuleDelegate, scene: LoginScene) {
         self.delegate = delegate
@@ -29,29 +45,22 @@ class LoginPresenter: LoginSceneDelegate {
     }
 
     func loginSceneDidUpdateRegistrationNumber(_ registrationNumberString: String) {
-        let scanner = Scanner(string: registrationNumberString)
-        var container = 0
-        if scanner.scanInt(&container) {
-            registrationNumber = container
-
-            if username != nil && !username!.isEmpty && password != nil && !password!.isEmpty {
-                scene.enableLoginButton()
-            }
+        inputContainer.updateRegistrationNumber(with: registrationNumberString)
+        if inputContainer.isValid {
+            scene.enableLoginButton()
         }
     }
 
     func loginSceneDidUpdateUsername(_ username: String) {
-        self.username = username
-
-        if !username.isEmpty && registrationNumber != nil && password != nil && !password!.isEmpty {
+        inputContainer.username = username
+        if inputContainer.isValid {
             scene.enableLoginButton()
         }
     }
 
     func loginSceneDidUpdatePassword(_ password: String) {
-        self.password = password
-
-        if !password.isEmpty && !username!.isEmpty && registrationNumber != nil {
+        inputContainer.password = password
+        if inputContainer.isValid {
             scene.enableLoginButton()
         }
     }
