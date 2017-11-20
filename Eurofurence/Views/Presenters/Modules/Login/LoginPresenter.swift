@@ -12,6 +12,7 @@ class LoginPresenter: LoginSceneDelegate {
 
     private let delegate: LoginModuleDelegate
     private let scene: LoginScene
+    private let loginService: LoginService
     private lazy var validator = LoginValidator(validationHandler: self.loginValidationStateDidChange)
     private lazy var validationActions: [LoginValidator.Result : () -> Void] = [
         .valid: self.scene.enableLoginButton,
@@ -36,18 +37,47 @@ class LoginPresenter: LoginSceneDelegate {
             didSet { validate() }
         }
 
-        private let  validationHandler: (Result) -> Void
+        private let validationHandler: (Result) -> Void
 
         init(validationHandler: @escaping (Result) -> Void) {
             self.validationHandler = validationHandler
         }
 
-        private var isValid: Bool {
-            guard let registrationNumber = registrationNumber,
-                  let username = username,
-                  let password = password else { return false }
+        @discardableResult
+        func makeLoginRequest() throws -> LoginServiceRequest {
+            return LoginServiceRequest(registrationNumber: try retrieveRegistrationNumber(),
+                                       username: try retrieveUsername(),
+                                       password: try retrievePassword())
+        }
 
-            return Scanner(string: registrationNumber).scanInt(nil) && !username.isEmpty && !password.isEmpty
+        private struct ValidationError: Swift.Error {}
+
+        private func retrieveUsername() throws -> String {
+            guard let username = username, !username.isEmpty else { throw ValidationError() }
+            return username
+        }
+
+        private func retrievePassword() throws -> String {
+            guard let password = password, !password.isEmpty else { throw ValidationError() }
+            return password
+        }
+
+        private func retrieveRegistrationNumber() throws -> Int {
+            guard let registrationNumber = registrationNumber else { throw ValidationError() }
+
+            var regNo = 0
+            guard Scanner(string: registrationNumber).scanInt(&regNo) else { throw ValidationError() }
+
+            return regNo
+        }
+
+        private var isValid: Bool {
+            do {
+                try makeLoginRequest()
+                return true
+            } catch {
+                return false
+            }
         }
 
         private func validate() {
@@ -55,9 +85,10 @@ class LoginPresenter: LoginSceneDelegate {
         }
     }
 
-    init(delegate: LoginModuleDelegate, scene: LoginScene) {
+    init(delegate: LoginModuleDelegate, scene: LoginScene, loginService: LoginService) {
         self.delegate = delegate
         self.scene = scene
+        self.loginService = loginService
 
         scene.delegate = self
         scene.disableLoginButton()
@@ -65,6 +96,11 @@ class LoginPresenter: LoginSceneDelegate {
 
     func loginSceneDidTapCancelButton() {
         delegate.loginModuleDidCancelLogin()
+    }
+
+    func loginSceneDidTapLoginButton() {
+        guard let request = try? validator.makeLoginRequest() else { return }
+        loginService.perform(request)
     }
 
     func loginSceneDidUpdateRegistrationNumber(_ registrationNumberString: String) {

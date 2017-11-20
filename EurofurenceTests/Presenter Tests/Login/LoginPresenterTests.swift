@@ -32,6 +32,10 @@ class CapturingLoginScene: UIViewController, LoginScene {
         loginButtonWasEnabled = true
     }
     
+    func tapLoginButton() {
+        delegate?.loginSceneDidTapLoginButton()
+    }
+    
 }
 
 class CapturingLoginModuleDelegate: LoginModuleDelegate {
@@ -47,9 +51,19 @@ class CapturingLoginModuleDelegate: LoginModuleDelegate {
     
 }
 
+class CapturingLoginService: LoginService {
+    
+    private(set) var capturedRequest: LoginServiceRequest?
+    func perform(_ request: LoginServiceRequest) {
+        capturedRequest = request
+    }
+    
+}
+
 class LoginPresenterTests: XCTestCase {
     
     var loginSceneFactory: StubLoginSceneFactory!
+    var loginService: CapturingLoginService!
     var scene: UIViewController!
     var delegate: CapturingLoginModuleDelegate!
     
@@ -69,7 +83,8 @@ class LoginPresenterTests: XCTestCase {
         super.setUp()
         
         loginSceneFactory = StubLoginSceneFactory()
-        let moduleFactory = PhoneLoginModuleFactory(sceneFactory: loginSceneFactory)
+        loginService = CapturingLoginService()
+        let moduleFactory = PhoneLoginModuleFactory(sceneFactory: loginSceneFactory, loginService: loginService)
         delegate = CapturingLoginModuleDelegate()
         scene = moduleFactory.makeLoginModule(delegate)
     }
@@ -183,6 +198,19 @@ class LoginPresenterTests: XCTestCase {
         updateUsername("User")
         
         XCTAssertFalse(loginSceneFactory.stubScene.loginButtonWasDisabled)
+    }
+    
+    func testTappingLoginButtonTellsLoginServiceToPerformLoginWithEnteredValues() {
+        let regNo = 1
+        let username = "User"
+        let password = "Password"
+        updateRegistrationNumber("\(regNo)")
+        updateUsername(username)
+        updatePassword(password)
+        loginSceneFactory.stubScene.tapLoginButton()
+        let expected = LoginServiceRequest(registrationNumber: regNo, username: username, password: password)
+        
+        XCTAssertEqual(expected, loginService.capturedRequest)
     }
     
 }

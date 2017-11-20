@@ -11,10 +11,11 @@ import UIKit.UIViewController
 struct PhoneLoginModuleFactory: LoginModuleFactory {
 
     var sceneFactory: LoginSceneFactory
+    var loginService: LoginService
 
     func makeLoginModule(_ delegate: LoginModuleDelegate) -> UIViewController {
         let scene = sceneFactory.makeLoginScene()
-        _ = LoginPresenter(delegate: delegate, scene: scene)
+        _ = LoginPresenter(delegate: delegate, scene: scene, loginService: loginService)
 
         return scene
     }
