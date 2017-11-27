@@ -13,6 +13,8 @@ class LoginPresenter: LoginSceneDelegate {
     private let delegate: LoginModuleDelegate
     private let scene: LoginScene
     private let loginService: LoginService
+    private let strings: PresentationStrings
+    private let alertRouter: AlertRouter
     private lazy var validator = LoginValidator(validationHandler: self.loginValidationStateDidChange)
     private lazy var validationActions: [LoginValidator.Result : () -> Void] = [
         .valid: self.scene.enableLoginButton,
@@ -85,10 +87,16 @@ class LoginPresenter: LoginSceneDelegate {
         }
     }
 
-    init(delegate: LoginModuleDelegate, scene: LoginScene, loginService: LoginService) {
+    init(delegate: LoginModuleDelegate,
+         scene: LoginScene,
+         loginService: LoginService,
+         presentationStrings: PresentationStrings,
+         alertRouter: AlertRouter) {
         self.delegate = delegate
         self.scene = scene
         self.loginService = loginService
+        self.strings = presentationStrings
+        self.alertRouter = alertRouter
 
         scene.delegate = self
         scene.disableLoginButton()
@@ -101,6 +109,9 @@ class LoginPresenter: LoginSceneDelegate {
     func loginSceneDidTapLoginButton() {
         guard let request = try? validator.makeLoginRequest() else { return }
         loginService.perform(request)
+
+        alertRouter.showAlert(title: strings.presentationString(for: .loggingIn),
+                              message: strings.presentationString(for: .loggingInDetail))
     }
 
     func loginSceneDidUpdateRegistrationNumber(_ registrationNumberString: String) {

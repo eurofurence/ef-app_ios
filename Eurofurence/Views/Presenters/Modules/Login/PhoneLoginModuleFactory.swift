@@ -12,10 +12,16 @@ struct PhoneLoginModuleFactory: LoginModuleFactory {
 
     var sceneFactory: LoginSceneFactory
     var loginService: LoginService
+    var presentationStrings: PresentationStrings
+    var alertRouter: AlertRouter
 
     func makeLoginModule(_ delegate: LoginModuleDelegate) -> UIViewController {
         let scene = sceneFactory.makeLoginScene()
-        _ = LoginPresenter(delegate: delegate, scene: scene, loginService: loginService)
+        _ = LoginPresenter(delegate: delegate,
+                           scene: scene,
+                           loginService: loginService,
+                           presentationStrings: presentationStrings,
+                           alertRouter: alertRouter)
 
         return scene
     }

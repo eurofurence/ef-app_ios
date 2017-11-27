@@ -66,6 +66,8 @@ class LoginPresenterTests: XCTestCase {
     var loginService: CapturingLoginService!
     var scene: UIViewController!
     var delegate: CapturingLoginModuleDelegate!
+    var presentationStrings: StubPresentationStrings!
+    var alertRouter: CapturingAlertRouter!
     
     private func updateRegistrationNumber(_ registrationNumber: String) {
         loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateRegistrationNumber(registrationNumber)
@@ -84,9 +86,24 @@ class LoginPresenterTests: XCTestCase {
         
         loginSceneFactory = StubLoginSceneFactory()
         loginService = CapturingLoginService()
-        let moduleFactory = PhoneLoginModuleFactory(sceneFactory: loginSceneFactory, loginService: loginService)
+        presentationStrings = StubPresentationStrings()
+        alertRouter = CapturingAlertRouter()
+        let moduleFactory = PhoneLoginModuleFactory(sceneFactory: loginSceneFactory,
+                                                    loginService: loginService,
+                                                    presentationStrings: presentationStrings,
+                                                    alertRouter: alertRouter)
         delegate = CapturingLoginModuleDelegate()
         scene = moduleFactory.makeLoginModule(delegate)
+    }
+    
+    private func inputValidCredentials() {
+        updateRegistrationNumber("1")
+        updateUsername("Username")
+        updatePassword("Password")
+    }
+    
+    private func tapLoginButton() {
+        loginSceneFactory.stubScene.tapLoginButton()
     }
     
     func testTheSceneFromTheFactoryIsReturned() {
@@ -211,6 +228,20 @@ class LoginPresenterTests: XCTestCase {
         let expected = LoginServiceRequest(registrationNumber: regNo, username: username, password: password)
         
         XCTAssertEqual(expected, loginService.capturedRequest)
+    }
+    
+    func testAlertWithLoggingInTitleDisplayedWhenLoginServiceBeginsLoginProcedure() {
+        inputValidCredentials()
+        tapLoginButton()
+        
+        XCTAssertEqual(presentationStrings.presentationString(for: .loggingIn), alertRouter.presentedAlertTitle)
+    }
+    
+    func testAlertWithLogginInDescriptionDisplayedWhenLoginServiceBeginsLoginProcedure() {
+        inputValidCredentials()
+        tapLoginButton()
+        
+        XCTAssertEqual(presentationStrings.presentationString(for: .loggingInDetail), alertRouter.presentedAlertMessage)
     }
     
 }
