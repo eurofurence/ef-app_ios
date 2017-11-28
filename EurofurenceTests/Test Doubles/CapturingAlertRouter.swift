@@ -14,13 +14,17 @@ class CapturingAlertRouter: AlertRouter {
     private(set) var presentedAlertTitle: String?
     private(set) var presentedAlertMessage: String?
     private(set) var presentedActions = [AlertAction]()
-    private var capturedPresentationCompletedHandler: (() -> Void)?
+    private var capturedPresentationCompletedHandler: ((AlertDismissable) -> Void)?
+    private(set) var lastAlert: CapturingAlertDismissable?
     func show(_ alert: Alert) {
         didShowAlert = true
         presentedAlertTitle = alert.title
         presentedAlertMessage = alert.message
         presentedActions = alert.actions
         capturedPresentationCompletedHandler = alert.onCompletedPresentation
+        
+        let dismissable = CapturingAlertDismissable()
+        lastAlert = dismissable
     }
     
     func capturedAction(title: String) -> AlertAction? {
@@ -28,7 +32,16 @@ class CapturingAlertRouter: AlertRouter {
     }
     
     func completePendingPresentation() {
-        capturedPresentationCompletedHandler?()
+        capturedPresentationCompletedHandler?(lastAlert!)
+    }
+    
+}
+
+class CapturingAlertDismissable: AlertDismissable {
+    
+    private(set) var dismissed = false
+    func dismiss() {
+        dismissed = true
     }
     
 }

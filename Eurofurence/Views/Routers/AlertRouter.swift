@@ -14,12 +14,18 @@ protocol AlertRouter {
 
 }
 
+protocol AlertDismissable {
+
+    func dismiss()
+
+}
+
 struct Alert {
 
     var title: String
     var message: String
     var actions: [AlertAction]
-    var onCompletedPresentation: (() -> Void)?
+    var onCompletedPresentation: ((AlertDismissable) -> Void)?
 
     init(title: String, message: String, actions: [AlertAction] = []) {
         self.title = title

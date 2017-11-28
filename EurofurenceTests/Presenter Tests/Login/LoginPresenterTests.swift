@@ -54,8 +54,14 @@ class CapturingLoginModuleDelegate: LoginModuleDelegate {
 class CapturingLoginService: LoginService {
     
     private(set) var capturedRequest: LoginServiceRequest?
-    func perform(_ request: LoginServiceRequest) {
+    private var capturedCompletionHandler: ((LoginServiceResult) -> Void)?
+    func perform(_ request: LoginServiceRequest, completionHandler: @escaping (LoginServiceResult) -> Void) {
         capturedRequest = request
+        capturedCompletionHandler = completionHandler
+    }
+    
+    func fulfillRequest() {
+        capturedCompletionHandler?(.success)
     }
     
 }
@@ -250,6 +256,22 @@ class LoginPresenterTests: XCTestCase {
         tapLoginButton()
         
         XCTAssertEqual(presentationStrings.presentationString(for: .loggingInDetail), alertRouter.presentedAlertMessage)
+    }
+    
+    func testLoginServiceSucceedsWithLoginTellsAlertToDismiss() {
+        inputValidCredentials()
+        tapLoginButton()
+        alertRouter.completePendingPresentation()
+        loginService.fulfillRequest()
+        
+        XCTAssertEqual(true, alertRouter.lastAlert?.dismissed)
+    }
+    
+    func testAlertNotDismissedBeforeServiceReturns() {
+        inputValidCredentials()
+        tapLoginButton()
+        
+        XCTAssertEqual(false, alertRouter.lastAlert?.dismissed)
     }
     
 }

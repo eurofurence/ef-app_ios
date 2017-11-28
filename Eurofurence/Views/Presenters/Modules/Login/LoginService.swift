@@ -24,6 +24,10 @@ struct LoginServiceRequest: Equatable {
 
 protocol LoginService {
 
-    func perform(_ request: LoginServiceRequest)
+    func perform(_ request: LoginServiceRequest, completionHandler: @escaping (LoginServiceResult) -> Void)
 
+}
+
+enum LoginServiceResult {
+    case success
 }
