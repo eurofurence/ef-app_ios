@@ -119,7 +119,8 @@ class LoginPresenter: LoginSceneDelegate {
                         break
 
                     case .failure:
-                        let loginErrorAlert = Alert(title: self.strings.presentationString(for: .loginError), message: "")
+                        let loginErrorAlert = Alert(title: self.strings.presentationString(for: .loginError),
+                                                    message: self.strings.presentationString(for: .loginErrorDetail))
                         self.alertRouter.show(loginErrorAlert)
                     }
                 }

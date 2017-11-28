@@ -308,4 +308,14 @@ class LoginPresenterTests: XCTestCase {
         XCTAssertNotEqual(presentationStrings.presentationString(for: .loginError), alertRouter.presentedAlertTitle)
     }
     
+    func testLoginServiceFailsToLoginShowsAlertWithLoginErrorDetail() {
+        inputValidCredentials()
+        tapLoginButton()
+        alertRouter.completePendingPresentation()
+        loginService.failRequest()
+        alertRouter.lastAlert?.completeDismissal()
+        
+        XCTAssertEqual(presentationStrings.presentationString(for: .loginErrorDetail), alertRouter.presentedAlertMessage)
+    }
+    
 }
