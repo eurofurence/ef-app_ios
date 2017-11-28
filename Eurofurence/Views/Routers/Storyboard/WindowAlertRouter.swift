@@ -31,7 +31,7 @@ struct WindowAlertRouter: AlertRouter {
         var viewController: UIViewController?
 
         func dismiss(_ completionHandler: (() -> Void)?) {
-            viewController?.dismiss(animated: false)
+            viewController?.dismiss(animated: true)
         }
 
     }

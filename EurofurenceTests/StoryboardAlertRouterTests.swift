@@ -24,8 +24,10 @@ class CapturingViewController: UIViewController {
     }
     
     private(set) var didDismissPresentedController = false
+    private(set) var didDismissUsingAnimations = false
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         didDismissPresentedController = true
+        didDismissUsingAnimations = flag
     }
 
 }
@@ -127,6 +129,17 @@ class StoryboardAlertRouterTests: XCTestCase {
         capturingViewController.capturedPresentationCompletionHandler?()
         
         XCTAssertFalse(capturingViewController.didDismissPresentedController)
+    }
+    
+    func testDismissingAlertsUseAnimations() {
+        var alert = Alert(title: "", message: "")
+        var dismissable: AlertDismissable?
+        alert.onCompletedPresentation = { dismissable = $0 }
+        alertRouter.show(alert)
+        capturingViewController.capturedPresentationCompletionHandler?()
+        dismissable?.dismiss()
+        
+        XCTAssertTrue(capturingViewController.didDismissUsingAnimations)
     }
     
 }
