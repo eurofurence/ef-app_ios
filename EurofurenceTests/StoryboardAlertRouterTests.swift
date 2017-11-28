@@ -14,11 +14,13 @@ class CapturingViewController: UIViewController {
 
     private(set) var capturedPresentedAlertViewController: UIAlertController?
     private(set) var animatedTransition = false
+    private(set) var capturedPresentationCompletionHandler: (() -> Void)?
     override func present(_ viewControllerToPresent: UIViewController,
                           animated flag: Bool,
                           completion: (() -> Void)? = nil) {
         capturedPresentedAlertViewController = viewControllerToPresent as? UIAlertController
         animatedTransition = flag
+        capturedPresentationCompletionHandler = completion
     }
 
 }
@@ -81,6 +83,25 @@ class StoryboardAlertRouterTests: XCTestCase {
 
         XCTAssertEqual(firstActionTitle, actions?.first?.title)
         XCTAssertEqual(secondActionTitle, actions?.last?.title)
+    }
+    
+    func testWhenPresentationCompletesTheHandlerIsInvoked() {
+        var alert = Alert(title: "", message: "")
+        var invoked = false
+        alert.onCompletedPresentation = { _ in invoked = true }
+        alertRouter.show(alert)
+        capturingViewController.capturedPresentationCompletionHandler?()
+        
+        XCTAssertTrue(invoked)
+    }
+    
+    func testPresentationCompletedHandleNotInvokedUntilCompletionHandlerRan() {
+        var alert = Alert(title: "", message: "")
+        var invoked = false
+        alert.onCompletedPresentation = { _ in invoked = true }
+        alertRouter.show(alert)
+        
+        XCTAssertFalse(invoked)
     }
     
 }

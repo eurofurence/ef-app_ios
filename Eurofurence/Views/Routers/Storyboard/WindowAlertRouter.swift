@@ -21,6 +21,14 @@ struct WindowAlertRouter: AlertRouter {
             }))
         }
 
-        window.rootViewController?.present(alertController, animated: true)
+        struct DummyAlertDismissable: AlertDismissable {
+            func dismiss(_ completionHandler: (() -> Void)?) {
+
+            }
+        }
+
+        window.rootViewController?.present(alertController, animated: true) { (_) in
+            alert.onCompletedPresentation?(DummyAlertDismissable())
+        }
     }
 }
