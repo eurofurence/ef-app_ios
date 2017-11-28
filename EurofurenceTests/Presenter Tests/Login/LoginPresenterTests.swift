@@ -86,6 +86,7 @@ class LoginPresenterTests: XCTestCase {
         loginService = CapturingLoginService()
         presentationStrings = StubPresentationStrings()
         alertRouter = CapturingAlertRouter()
+        alertRouter.automaticallyPresentAlerts = true
         let moduleFactory = PhoneLoginModuleFactory(sceneFactory: loginSceneFactory,
                                                     loginService: loginService,
                                                     presentationStrings: presentationStrings,
@@ -265,6 +266,7 @@ class LoginPresenterTests: XCTestCase {
     }
     
     func testTappingLoginButtonWaitsForAlertPresentationToFinishBeforeAskingServiceToLogin() {
+        alertRouter.automaticallyPresentAlerts = false
         inputValidCredentials()
         tapLoginButton()
         
@@ -281,7 +283,6 @@ class LoginPresenterTests: XCTestCase {
     func testLoginServiceSucceedsWithLoginTellsAlertToDismiss() {
         inputValidCredentials()
         tapLoginButton()
-        completeAlertPresentation()
         let alert = alertRouter.lastAlert
         simulateLoginSuccess()
         
@@ -298,7 +299,6 @@ class LoginPresenterTests: XCTestCase {
     func testLoginServiceFailsToLoginShowsAlertWithLoginErrorTitle() {
         inputValidCredentials()
         tapLoginButton()
-        completeAlertPresentation()
         simulateLoginFailure()
         dismissLastAlert()
         
@@ -308,7 +308,6 @@ class LoginPresenterTests: XCTestCase {
     func testLoginSucceedsDoesNotShowLoginFailedAlert() {
         inputValidCredentials()
         tapLoginButton()
-        completeAlertPresentation()
         simulateLoginSuccess()
         dismissLastAlert()
         
@@ -318,7 +317,6 @@ class LoginPresenterTests: XCTestCase {
     func testLoginErrorAlertIsNotShownUntilPreviousAlertIsDismissed() {
         inputValidCredentials()
         tapLoginButton()
-        completeAlertPresentation()
         simulateLoginFailure()
         
         XCTAssertNotEqual(presentationStrings.presentationString(for: .loginError), alertRouter.presentedAlertTitle)
@@ -327,7 +325,6 @@ class LoginPresenterTests: XCTestCase {
     func testLoginServiceFailsToLoginShowsAlertWithLoginErrorDetail() {
         inputValidCredentials()
         tapLoginButton()
-        completeAlertPresentation()
         simulateLoginFailure()
         dismissLastAlert()
         
@@ -337,7 +334,6 @@ class LoginPresenterTests: XCTestCase {
     func testLoginServiceFailsToLoginShowsAlertWithOKAction() {
         inputValidCredentials()
         tapLoginButton()
-        completeAlertPresentation()
         simulateLoginFailure()
         dismissLastAlert()
         
