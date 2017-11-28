@@ -25,9 +25,11 @@ class CapturingViewController: UIViewController {
     
     private(set) var didDismissPresentedController = false
     private(set) var didDismissUsingAnimations = false
+    private(set) var capturedDismissalCompletionHandler: (() -> Void)?
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         didDismissPresentedController = true
         didDismissUsingAnimations = flag
+        capturedDismissalCompletionHandler = completion
     }
 
 }
@@ -140,6 +142,31 @@ class StoryboardAlertRouterTests: XCTestCase {
         dismissable?.dismiss()
         
         XCTAssertTrue(capturingViewController.didDismissUsingAnimations)
+    }
+    
+    func testDismissingAlertsInvokesHandlerOnCompletion() {
+        var alert = Alert(title: "", message: "")
+        var dismissable: AlertDismissable?
+        alert.onCompletedPresentation = { dismissable = $0 }
+        alertRouter.show(alert)
+        capturingViewController.capturedPresentationCompletionHandler?()
+        var invoked = false
+        dismissable?.dismiss() { invoked = true }
+        capturingViewController.capturedDismissalCompletionHandler?()
+        
+        XCTAssertTrue(invoked)
+    }
+    
+    func testDismissingAlertDoesNotInvokeHandlerUntilDismissalFinishes() {
+        var alert = Alert(title: "", message: "")
+        var dismissable: AlertDismissable?
+        alert.onCompletedPresentation = { dismissable = $0 }
+        alertRouter.show(alert)
+        capturingViewController.capturedPresentationCompletionHandler?()
+        var invoked = false
+        dismissable?.dismiss() { invoked = true }
+        
+        XCTAssertFalse(invoked)
     }
     
 }
