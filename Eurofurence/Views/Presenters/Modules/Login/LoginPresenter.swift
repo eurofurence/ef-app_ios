@@ -100,6 +100,7 @@ class LoginPresenter: LoginSceneDelegate {
 
         scene.delegate = self
         scene.disableLoginButton()
+
     }
 
     func loginSceneDidTapCancelButton() {
@@ -115,7 +116,7 @@ class LoginPresenter: LoginSceneDelegate {
                 dismissable.dismiss {
                     switch result {
                     case .success:
-                        break
+                        self.delegate.loginModuleDidLoginSuccessfully()
 
                     case .failure:
                         let okayAction = AlertAction(title: self.strings[.ok])

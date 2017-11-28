@@ -45,8 +45,9 @@ class CapturingLoginModuleDelegate: LoginModuleDelegate {
         loginCancelled = true
     }
     
+    private(set) var loginFinishedSuccessfully = false
     func loginModuleDidLoginSuccessfully() {
-        
+        loginFinishedSuccessfully = true
     }
     
 }
@@ -338,6 +339,24 @@ class LoginPresenterTests: XCTestCase {
         dismissLastAlert()
         
         XCTAssertNotNil(alertRouter.capturedAction(title: presentationStrings[.ok]))
+    }
+    
+    func testLoginServiceSucceedsTellsDelegateLoginSucceeded() {
+        inputValidCredentials()
+        tapLoginButton()
+        simulateLoginSuccess()
+        dismissLastAlert()
+        
+        XCTAssertTrue(delegate.loginFinishedSuccessfully)
+    }
+    
+    func testLoginServiceFailsDoesNotTellDelegateLoginSucceeded() {
+        inputValidCredentials()
+        tapLoginButton()
+        simulateLoginFailure()
+        dismissLastAlert()
+        
+        XCTAssertFalse(delegate.loginFinishedSuccessfully)
     }
     
 }
