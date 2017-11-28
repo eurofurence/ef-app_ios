@@ -108,10 +108,10 @@ class LoginPresenter: LoginSceneDelegate {
 
     func loginSceneDidTapLoginButton() {
         guard let request = try? validator.makeLoginRequest() else { return }
-        loginService.perform(request)
 
-        let alert = Alert(title: strings.presentationString(for: .loggingIn),
+        var alert = Alert(title: strings.presentationString(for: .loggingIn),
                           message: strings.presentationString(for: .loggingInDetail))
+        alert.onCompletedPresentation = { self.loginService.perform(request) }
         alertRouter.show(alert)
     }
 

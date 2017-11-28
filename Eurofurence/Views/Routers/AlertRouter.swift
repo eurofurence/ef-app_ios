@@ -19,6 +19,7 @@ struct Alert {
     var title: String
     var message: String
     var actions: [AlertAction]
+    var onCompletedPresentation: (() -> Void)?
 
     init(title: String, message: String, actions: [AlertAction] = []) {
         self.title = title

@@ -225,6 +225,7 @@ class LoginPresenterTests: XCTestCase {
         updateUsername(username)
         updatePassword(password)
         loginSceneFactory.stubScene.tapLoginButton()
+        alertRouter.completePendingPresentation()
         let expected = LoginServiceRequest(registrationNumber: regNo, username: username, password: password)
         
         XCTAssertEqual(expected, loginService.capturedRequest)
@@ -235,6 +236,13 @@ class LoginPresenterTests: XCTestCase {
         tapLoginButton()
         
         XCTAssertEqual(presentationStrings.presentationString(for: .loggingIn), alertRouter.presentedAlertTitle)
+    }
+    
+    func testTappingLoginButtonWaitsForAlertPresentationToFinishBeforeAskingServiceToLogin() {
+        inputValidCredentials()
+        tapLoginButton()
+        
+        XCTAssertNil(loginService.capturedRequest)
     }
     
     func testAlertWithLogginInDescriptionDisplayedWhenLoginServiceBeginsLoginProcedure() {
