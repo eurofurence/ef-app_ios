@@ -14,6 +14,7 @@ class StubPresentationStrings: PresentationStrings {
     private var strings = [PresentationScenario : String]()
 
     init() {
+        stub("OK", for: .ok)
         stub("Cancel", for: .cancel)
         stub("Tutorial push permissions request title", for: .tutorialPushPermissionsRequestTitle)
         stub("Tutorial push permissions request description", for: .tutorialPushPermissionsRequestDescription)

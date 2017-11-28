@@ -25,6 +25,7 @@ extension PresentationStrings {
 }
 
 enum PresentationScenario {
+    case ok
     case cancel
     case tryAgain
 
@@ -53,6 +54,7 @@ enum PresentationScenario {
 struct UnlocalizedPresentationStrings: PresentationStrings {
 
     private static let strings: [PresentationScenario : String] = [
+        .ok: "",
         .cancel: "Cancel",
         .tryAgain: "",
 
