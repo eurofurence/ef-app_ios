@@ -27,6 +27,7 @@ class StubPresentationStrings: PresentationStrings {
         stub("Cellular download alert continue over cellular", for: .cellularDownloadAlertContinueOverCellularTitle)
         stub("Logging In", for: .loggingIn)
         stub("Logging In Detail", for: .loggingInDetail)
+        stub("Login Error", for: .loginError)
     }
 
     private func stub(_ string: String, for scenario: PresentationScenario) {

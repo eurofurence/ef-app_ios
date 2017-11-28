@@ -46,6 +46,7 @@ enum PresentationScenario {
 
     case loggingIn
     case loggingInDetail
+    case loginError
 }
 
 struct UnlocalizedPresentationStrings: PresentationStrings {
@@ -70,7 +71,8 @@ struct UnlocalizedPresentationStrings: PresentationStrings {
         .downloadError: "Download Error",
         .preloadFailureMessage: "Failed to download data from server. Please try again.",
         .loggingIn: "",
-        .loggingInDetail: ""
+        .loggingInDetail: "",
+        .loginError: ""
     ]
 
     func presentationString(for scenario: PresentationScenario) -> String {

@@ -64,6 +64,10 @@ class CapturingLoginService: LoginService {
         capturedCompletionHandler?(.success)
     }
     
+    func failRequest() {
+        capturedCompletionHandler?(.failure)
+    }
+    
 }
 
 class LoginPresenterTests: XCTestCase {
@@ -262,9 +266,10 @@ class LoginPresenterTests: XCTestCase {
         inputValidCredentials()
         tapLoginButton()
         alertRouter.completePendingPresentation()
+        let alert = alertRouter.lastAlert
         loginService.fulfillRequest()
         
-        XCTAssertEqual(true, alertRouter.lastAlert?.dismissed)
+        XCTAssertEqual(true, alert?.dismissed)
     }
     
     func testAlertNotDismissedBeforeServiceReturns() {
@@ -272,6 +277,24 @@ class LoginPresenterTests: XCTestCase {
         tapLoginButton()
         
         XCTAssertEqual(false, alertRouter.lastAlert?.dismissed)
+    }
+    
+    func testLoginServiceFailsToLoginShowsAlertWithLoginErrorTitle() {
+        inputValidCredentials()
+        tapLoginButton()
+        alertRouter.completePendingPresentation()
+        loginService.failRequest()
+        
+        XCTAssertEqual(presentationStrings.presentationString(for: .loginError), alertRouter.presentedAlertTitle)
+    }
+    
+    func testLoginSucceedsDoesNotShowLoginFailedAlert() {
+        inputValidCredentials()
+        tapLoginButton()
+        alertRouter.completePendingPresentation()
+        loginService.fulfillRequest()
+        
+        XCTAssertNotEqual(presentationStrings.presentationString(for: .loginError), alertRouter.presentedAlertTitle)
     }
     
 }

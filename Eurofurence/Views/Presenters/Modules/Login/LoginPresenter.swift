@@ -111,7 +111,21 @@ class LoginPresenter: LoginSceneDelegate {
 
         var alert = Alert(title: strings.presentationString(for: .loggingIn),
                           message: strings.presentationString(for: .loggingInDetail))
-        alert.onCompletedPresentation = { (dismissable) in self.loginService.perform(request) { _ in dismissable.dismiss() } }
+        alert.onCompletedPresentation = { (dismissable) in
+            self.loginService.perform(request) { (result) in
+                dismissable.dismiss()
+
+                switch result {
+                case .success:
+                    break
+
+                case .failure:
+                    let loginErrorAlert = Alert(title: self.strings.presentationString(for: .loginError), message: "")
+                    self.alertRouter.show(loginErrorAlert)
+                }
+            }
+        }
+
         alertRouter.show(alert)
     }
 

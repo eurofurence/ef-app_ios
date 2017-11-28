@@ -30,4 +30,5 @@ protocol LoginService {
 
 enum LoginServiceResult {
     case success
+    case failure
 }
