@@ -108,7 +108,7 @@ class PreloadPresenterTests: XCTestCase {
         context.preloadSceneFactory.splashScene.notifySceneWillAppear()
         context.preloadingService.notifyFailedToPreload()
         
-        XCTAssertEqual(context.presentationStrings.presentationString(for: .cancel),
+        XCTAssertEqual(context.presentationStrings[.cancel],
                        context.alertRouter.presentedActions.last?.title)
     }
     

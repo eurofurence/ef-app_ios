@@ -12,7 +12,7 @@ import XCTest
 class UnlocalizedPresentationStringsShould: XCTestCase {
 
     private func string(for scenario: PresentationScenario) -> String {
-        return UnlocalizedPresentationStrings().presentationString(for: scenario)
+        return UnlocalizedPresentationStrings()[scenario]
     }
 
     func testProvideAppropriateStringForCancel() {
