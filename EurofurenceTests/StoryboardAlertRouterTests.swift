@@ -38,32 +38,32 @@ class StoryboardAlertRouterTests: XCTestCase {
     }
     
     func testPresentingAlertShouldShowAlertControllerWithAlertStyleOntoRootViewController() {
-        alertRouter.showAlert(title: "", message: "")
+        alertRouter.show(Alert(title: "", message: ""))
         XCTAssertEqual(capturingViewController.capturedPresentedAlertViewController?.preferredStyle, .alert)
     }
 
     func testPresentingAlertShouldShowAlertControllerWithAnimation() {
-        alertRouter.showAlert(title: "", message: "")
+        alertRouter.show(Alert(title: "", message: ""))
         XCTAssertTrue(capturingViewController.animatedTransition)
     }
 
     func testPresentingAlertShouldSetTheTitleOntoTheAlertController() {
         let expectedTitle = "Title"
-        alertRouter.showAlert(title: expectedTitle, message: "")
+        alertRouter.show(Alert(title: expectedTitle, message: ""))
 
         XCTAssertEqual(expectedTitle, capturingViewController.capturedPresentedAlertViewController?.title)
     }
 
     func testPresentingAlertShouldSetTheMessageOntoTheAlertController() {
         let expectedMessage = "Message"
-        alertRouter.showAlert(title: "", message: expectedMessage)
+        alertRouter.show(Alert(title: "", message: expectedMessage))
 
         XCTAssertEqual(expectedMessage, capturingViewController.capturedPresentedAlertViewController?.message)
     }
 
     func testPresentingAlertWithActionShouldAddActionWithActionTitle() {
         let expectedActionTitle = "Action"
-        alertRouter.showAlert(title: "", message: "", actions: AlertAction(title: expectedActionTitle))
+        alertRouter.show(Alert(title: "", message: "", actions: [AlertAction(title: expectedActionTitle)]))
         let firstAction = capturingViewController.capturedPresentedAlertViewController?.actions.first
 
         XCTAssertEqual(expectedActionTitle, firstAction?.title)
@@ -72,10 +72,10 @@ class StoryboardAlertRouterTests: XCTestCase {
     func testPresentingAlertWithMultipleActionsShouldAddActionsInTheOrderTheyAreGiven() {
         let firstActionTitle = "First action"
         let secondActionTitle = "Second action"
-        alertRouter.showAlert(title: "",
+        alertRouter.show(Alert(title: "",
                               message: "",
-                              actions: AlertAction(title: firstActionTitle),
-                                       AlertAction(title: secondActionTitle))
+                              actions: [AlertAction(title: firstActionTitle),
+                                        AlertAction(title: secondActionTitle)]))
 
         let actions = capturingViewController.capturedPresentedAlertViewController?.actions
 

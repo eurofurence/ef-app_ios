@@ -110,8 +110,9 @@ class LoginPresenter: LoginSceneDelegate {
         guard let request = try? validator.makeLoginRequest() else { return }
         loginService.perform(request)
 
-        alertRouter.showAlert(title: strings.presentationString(for: .loggingIn),
-                              message: strings.presentationString(for: .loggingInDetail))
+        let alert = Alert(title: strings.presentationString(for: .loggingIn),
+                          message: strings.presentationString(for: .loggingInDetail))
+        alertRouter.show(alert)
     }
 
     func loginSceneDidUpdateRegistrationNumber(_ registrationNumberString: String) {

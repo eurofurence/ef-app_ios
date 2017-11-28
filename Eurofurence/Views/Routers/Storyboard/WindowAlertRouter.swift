@@ -11,16 +11,16 @@ import UIKit
 struct WindowAlertRouter: AlertRouter {
     var window: UIWindow
 
-    func showAlert(title: String, message: String, actions: AlertAction ...) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        for action in actions {
-            alert.addAction(UIAlertAction(title: action.title, style: .default, handler: { (_) in
+    func show(_ alert: Alert) {
+        let alertController = UIAlertController(title: alert.title, message: alert.message, preferredStyle: .alert)
+        for action in alert.actions {
+            alertController.addAction(UIAlertAction(title: action.title, style: .default, handler: { (_) in
                 // TODO: Figure out a nice way of testing this as UIAlertAction does not expose the handler
                 action.invoke()
-                alert.dismiss(animated: true)
+                alertController.dismiss(animated: true)
             }))
         }
 
-        window.rootViewController?.present(alert, animated: true)
+        window.rootViewController?.present(alertController, animated: true)
     }
 }

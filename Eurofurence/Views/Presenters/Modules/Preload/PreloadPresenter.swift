@@ -38,9 +38,10 @@ struct PreloadPresenter: SplashSceneDelegate, PreloadServiceDelegate {
     func preloadServiceDidFail() {
         let tryAgainAction = AlertAction(title: presentationStrings[.tryAgain], action: beginPreloading)
         let cancelAction = AlertAction(title: presentationStrings[.cancel], action: notifyDelegatePreloadingCancelled)
-        alertRouter.showAlert(title: presentationStrings[.downloadError],
-                              message: presentationStrings[.preloadFailureMessage],
-                              actions: tryAgainAction, cancelAction)
+        let alert = Alert(title: presentationStrings[.downloadError],
+                          message: presentationStrings[.preloadFailureMessage],
+                          actions: [tryAgainAction, cancelAction])
+        alertRouter.show(alert)
     }
 
     func preloadServiceDidFinish() {

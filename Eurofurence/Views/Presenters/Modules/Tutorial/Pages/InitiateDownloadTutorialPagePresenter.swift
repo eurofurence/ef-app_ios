@@ -45,9 +45,11 @@ struct InitiateDownloadTutorialPagePresenter: TutorialPage,
                 self.delegate.tutorialPageCompletedByUser(self)
             })
             let cancel = AlertAction(title: presentationStrings[.cancel])
-            alertRouter.showAlert(title: presentationStrings[.cellularDownloadAlertTitle],
-                                  message: presentationStrings[.cellularDownloadAlertMessage],
-                                  actions: allowDownloadOverCellular, cancel)
+
+            let alert = Alert(title: presentationStrings[.cellularDownloadAlertTitle],
+                              message: presentationStrings[.cellularDownloadAlertMessage],
+                              actions: [allowDownloadOverCellular, cancel])
+            alertRouter.show(alert)
         }
     }
 
