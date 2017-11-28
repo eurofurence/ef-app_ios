@@ -40,8 +40,14 @@ class CapturingAlertRouter: AlertRouter {
 class CapturingAlertDismissable: AlertDismissable {
     
     private(set) var dismissed = false
-    func dismiss() {
+    private var capturedDismissalCompletionHandler: (() -> Void)?
+    func dismiss(_ completionHandler: (() -> Void)?) {
         dismissed = true
+        capturedDismissalCompletionHandler = completionHandler
+    }
+    
+    func completeDismissal() {
+        capturedDismissalCompletionHandler?()
     }
     
 }

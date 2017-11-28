@@ -16,7 +16,15 @@ protocol AlertRouter {
 
 protocol AlertDismissable {
 
-    func dismiss()
+    func dismiss(_ completionHandler: (() -> Void)?)
+
+}
+
+extension AlertDismissable {
+
+    func dismiss() {
+        dismiss(nil)
+    }
 
 }
 

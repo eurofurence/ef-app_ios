@@ -284,6 +284,7 @@ class LoginPresenterTests: XCTestCase {
         tapLoginButton()
         alertRouter.completePendingPresentation()
         loginService.failRequest()
+        alertRouter.lastAlert?.completeDismissal()
         
         XCTAssertEqual(presentationStrings.presentationString(for: .loginError), alertRouter.presentedAlertTitle)
     }
@@ -293,6 +294,16 @@ class LoginPresenterTests: XCTestCase {
         tapLoginButton()
         alertRouter.completePendingPresentation()
         loginService.fulfillRequest()
+        alertRouter.lastAlert?.completeDismissal()
+        
+        XCTAssertNotEqual(presentationStrings.presentationString(for: .loginError), alertRouter.presentedAlertTitle)
+    }
+    
+    func testLoginErrorAlertIsNotShownUntilPreviousAlertIsDismissed() {
+        inputValidCredentials()
+        tapLoginButton()
+        alertRouter.completePendingPresentation()
+        loginService.failRequest()
         
         XCTAssertNotEqual(presentationStrings.presentationString(for: .loginError), alertRouter.presentedAlertTitle)
     }
