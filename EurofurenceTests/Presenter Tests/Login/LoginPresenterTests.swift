@@ -9,68 +9,6 @@
 @testable import Eurofurence
 import XCTest
 
-class StubLoginSceneFactory: LoginSceneFactory {
-    
-    let stubScene = CapturingLoginScene()
-    func makeLoginScene() -> UIViewController & LoginScene {
-        return stubScene
-    }
-    
-}
-
-class CapturingLoginScene: UIViewController, LoginScene {
-    
-    var delegate: LoginSceneDelegate?
-    
-    var loginButtonWasDisabled = false
-    func disableLoginButton() {
-        loginButtonWasDisabled = true
-    }
-    
-    private(set) var loginButtonWasEnabled = false
-    func enableLoginButton() {
-        loginButtonWasEnabled = true
-    }
-    
-    func tapLoginButton() {
-        delegate?.loginSceneDidTapLoginButton()
-    }
-    
-}
-
-class CapturingLoginModuleDelegate: LoginModuleDelegate {
-    
-    private(set) var loginCancelled = false
-    func loginModuleDidCancelLogin() {
-        loginCancelled = true
-    }
-    
-    private(set) var loginFinishedSuccessfully = false
-    func loginModuleDidLoginSuccessfully() {
-        loginFinishedSuccessfully = true
-    }
-    
-}
-
-class CapturingLoginService: LoginService {
-    
-    private(set) var capturedRequest: LoginServiceRequest?
-    private var capturedCompletionHandler: ((LoginServiceResult) -> Void)?
-    func perform(_ request: LoginServiceRequest, completionHandler: @escaping (LoginServiceResult) -> Void) {
-        capturedRequest = request
-        capturedCompletionHandler = completionHandler
-    }
-    
-    func fulfillRequest() {
-        capturedCompletionHandler?(.success)
-    }
-    
-    func failRequest() {
-        capturedCompletionHandler?(.failure)
-    }
-    
-}
-
 class LoginPresenterTests: XCTestCase {
     
     var loginSceneFactory: StubLoginSceneFactory!

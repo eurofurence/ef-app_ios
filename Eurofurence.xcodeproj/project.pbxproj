@@ -284,6 +284,10 @@
 		CABA438D1FBCDBDF009CB5B0 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA438C1FBCDBDF009CB5B0 /* LoginPresenter.swift */; };
 		CABA438F1FBCDBEE009CB5B0 /* LoginSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA438E1FBCDBEE009CB5B0 /* LoginSceneFactory.swift */; };
 		CABA43911FC302EC009CB5B0 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43901FC302EC009CB5B0 /* LoginService.swift */; };
+		CABA43931FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43921FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift */; };
+		CABA43951FCE0A49009CB5B0 /* CapturingLoginScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43941FCE0A49009CB5B0 /* CapturingLoginScene.swift */; };
+		CABA43971FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43961FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift */; };
+		CABA43991FCE0A7B009CB5B0 /* CapturingLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43981FCE0A7B009CB5B0 /* CapturingLoginService.swift */; };
 		CAC1E1271F5040BD00195513 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1261F5040BD00195513 /* NewsPresenter.swift */; };
 		CAC1E1291F5040CB00195513 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1281F5040CB00195513 /* AuthService.swift */; };
 		CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12A1F5040E100195513 /* NewsScene.swift */; };
@@ -684,6 +688,10 @@
 		CABA438C1FBCDBDF009CB5B0 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		CABA438E1FBCDBEE009CB5B0 /* LoginSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSceneFactory.swift; sourceTree = "<group>"; };
 		CABA43901FC302EC009CB5B0 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		CABA43921FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingLoginModuleDelegate.swift; path = "Test Doubles/CapturingLoginModuleDelegate.swift"; sourceTree = "<group>"; };
+		CABA43941FCE0A49009CB5B0 /* CapturingLoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingLoginScene.swift; path = "Test Doubles/Scenes/CapturingLoginScene.swift"; sourceTree = "<group>"; };
+		CABA43961FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StubLoginSceneFactory.swift; path = "Test Doubles/StubLoginSceneFactory.swift"; sourceTree = "<group>"; };
+		CABA43981FCE0A7B009CB5B0 /* CapturingLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingLoginService.swift; path = "Test Doubles/CapturingLoginService.swift"; sourceTree = "<group>"; };
 		CAC1E1261F5040BD00195513 /* NewsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenter.swift; path = News/NewsPresenter.swift; sourceTree = "<group>"; };
 		CAC1E1281F5040CB00195513 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = Interactors/Authorization/AuthService.swift; sourceTree = "<group>"; };
 		CAC1E12A1F5040E100195513 /* NewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsScene.swift; path = News/NewsScene.swift; sourceTree = "<group>"; };
@@ -876,6 +884,9 @@
 				CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */,
 				CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */,
 				CAF3C74D1F9FC72C0008F027 /* StubNewsSceneFactory.swift */,
+				CABA43921FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift */,
+				CABA43961FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift */,
+				CABA43981FCE0A7B009CB5B0 /* CapturingLoginService.swift */,
 			);
 			name = "Test Doubles";
 			sourceTree = "<group>";
@@ -1104,6 +1115,7 @@
 				78C86D781F12ADF8003A20E6 /* CapturingSplashScene.swift */,
 				CAC1E1301F50413500195513 /* CapturingNewsScene.swift */,
 				CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */,
+				CABA43941FCE0A49009CB5B0 /* CapturingLoginScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -2591,10 +2603,12 @@
 				CAB3A72A1F7532A2005DF77B /* CapturingPushPermissionsRequester.swift in Sources */,
 				78455B491F1177AD005BE2D7 /* CapturingTutorialRouter.swift in Sources */,
 				78C86D721F12AACA003A20E6 /* WhenTheSplashScreenAppears.swift in Sources */,
+				CABA43971FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift in Sources */,
 				CA9845DC1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift in Sources */,
 				6EF96CDB1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift in Sources */,
 				CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */,
 				CAD7805D1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift in Sources */,
+				CABA43951FCE0A49009CB5B0 /* CapturingLoginScene.swift in Sources */,
 				CAF9A9471F50B95F00628833 /* WhenRequestingCurrentUser.swift in Sources */,
 				78455B521F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift in Sources */,
 				CAD234421F5F2FA8004BB959 /* AppDataBuilder.swift in Sources */,
@@ -2606,6 +2620,7 @@
 				7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */,
 				78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */,
 				CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */,
+				CABA43931FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift in Sources */,
 				78C86D6C1F123FD8003A20E6 /* PresentationTestBuilder.swift in Sources */,
 				CA30EABC1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift in Sources */,
 				CAF9A94E1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift in Sources */,
@@ -2673,6 +2688,7 @@
 				CA30EACA1F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift in Sources */,
 				7820A6E11F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift in Sources */,
 				781A94461F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift in Sources */,
+				CABA43991FCE0A7B009CB5B0 /* CapturingLoginService.swift in Sources */,
 				CA30EAA81F2132480053DBF6 /* StubLoginResponse.swift in Sources */,
 				CAC1E1331F50414B00195513 /* WelcomePromptStringFactoryTestDoubles.swift in Sources */,
 			);
