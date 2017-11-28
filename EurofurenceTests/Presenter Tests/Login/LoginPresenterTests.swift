@@ -79,18 +79,6 @@ class LoginPresenterTests: XCTestCase {
     var presentationStrings: StubPresentationStrings!
     var alertRouter: CapturingAlertRouter!
     
-    private func updateRegistrationNumber(_ registrationNumber: String) {
-        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateRegistrationNumber(registrationNumber)
-    }
-    
-    private func updateUsername(_ username: String) {
-        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateUsername(username)
-    }
-    
-    private func updatePassword(_ password: String) {
-        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdatePassword(password)
-    }
-    
     override func setUp() {
         super.setUp()
         
@@ -112,8 +100,36 @@ class LoginPresenterTests: XCTestCase {
         updatePassword("Password")
     }
     
+    private func updateRegistrationNumber(_ registrationNumber: String) {
+        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateRegistrationNumber(registrationNumber)
+    }
+    
+    private func updateUsername(_ username: String) {
+        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdateUsername(username)
+    }
+    
+    private func updatePassword(_ password: String) {
+        loginSceneFactory.stubScene.delegate?.loginSceneDidUpdatePassword(password)
+    }
+    
+    private func completeAlertPresentation() {
+        alertRouter.completePendingPresentation()
+    }
+    
+    private func simulateLoginFailure() {
+        loginService.failRequest()
+    }
+    
+    private func simulateLoginSuccess() {
+        loginService.fulfillRequest()
+    }
+    
     private func tapLoginButton() {
         loginSceneFactory.stubScene.tapLoginButton()
+    }
+    
+    private func dismissLastAlert() {
+        alertRouter.lastAlert?.completeDismissal()
     }
     
     func testTheSceneFromTheFactoryIsReturned() {
@@ -235,7 +251,7 @@ class LoginPresenterTests: XCTestCase {
         updateUsername(username)
         updatePassword(password)
         loginSceneFactory.stubScene.tapLoginButton()
-        alertRouter.completePendingPresentation()
+        completeAlertPresentation()
         let expected = LoginServiceRequest(registrationNumber: regNo, username: username, password: password)
         
         XCTAssertEqual(expected, loginService.capturedRequest)
@@ -265,9 +281,9 @@ class LoginPresenterTests: XCTestCase {
     func testLoginServiceSucceedsWithLoginTellsAlertToDismiss() {
         inputValidCredentials()
         tapLoginButton()
-        alertRouter.completePendingPresentation()
+        completeAlertPresentation()
         let alert = alertRouter.lastAlert
-        loginService.fulfillRequest()
+        simulateLoginSuccess()
         
         XCTAssertEqual(true, alert?.dismissed)
     }
@@ -282,9 +298,9 @@ class LoginPresenterTests: XCTestCase {
     func testLoginServiceFailsToLoginShowsAlertWithLoginErrorTitle() {
         inputValidCredentials()
         tapLoginButton()
-        alertRouter.completePendingPresentation()
-        loginService.failRequest()
-        alertRouter.lastAlert?.completeDismissal()
+        completeAlertPresentation()
+        simulateLoginFailure()
+        dismissLastAlert()
         
         XCTAssertEqual(presentationStrings.presentationString(for: .loginError), alertRouter.presentedAlertTitle)
     }
@@ -292,9 +308,9 @@ class LoginPresenterTests: XCTestCase {
     func testLoginSucceedsDoesNotShowLoginFailedAlert() {
         inputValidCredentials()
         tapLoginButton()
-        alertRouter.completePendingPresentation()
-        loginService.fulfillRequest()
-        alertRouter.lastAlert?.completeDismissal()
+        completeAlertPresentation()
+        simulateLoginSuccess()
+        dismissLastAlert()
         
         XCTAssertNotEqual(presentationStrings.presentationString(for: .loginError), alertRouter.presentedAlertTitle)
     }
@@ -302,8 +318,8 @@ class LoginPresenterTests: XCTestCase {
     func testLoginErrorAlertIsNotShownUntilPreviousAlertIsDismissed() {
         inputValidCredentials()
         tapLoginButton()
-        alertRouter.completePendingPresentation()
-        loginService.failRequest()
+        completeAlertPresentation()
+        simulateLoginFailure()
         
         XCTAssertNotEqual(presentationStrings.presentationString(for: .loginError), alertRouter.presentedAlertTitle)
     }
@@ -311,9 +327,9 @@ class LoginPresenterTests: XCTestCase {
     func testLoginServiceFailsToLoginShowsAlertWithLoginErrorDetail() {
         inputValidCredentials()
         tapLoginButton()
-        alertRouter.completePendingPresentation()
-        loginService.failRequest()
-        alertRouter.lastAlert?.completeDismissal()
+        completeAlertPresentation()
+        simulateLoginFailure()
+        dismissLastAlert()
         
         XCTAssertEqual(presentationStrings.presentationString(for: .loginErrorDetail), alertRouter.presentedAlertMessage)
     }
@@ -321,9 +337,9 @@ class LoginPresenterTests: XCTestCase {
     func testLoginServiceFailsToLoginShowsAlertWithOKAction() {
         inputValidCredentials()
         tapLoginButton()
-        alertRouter.completePendingPresentation()
-        loginService.failRequest()
-        alertRouter.lastAlert?.completeDismissal()
+        completeAlertPresentation()
+        simulateLoginFailure()
+        dismissLastAlert()
         
         XCTAssertNotNil(alertRouter.capturedAction(title: presentationStrings.presentationString(for: .ok)))
     }
