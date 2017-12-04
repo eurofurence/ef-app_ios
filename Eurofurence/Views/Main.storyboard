@@ -360,7 +360,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FE3-gC-42u">
-                                <rect key="frame" x="106.5" y="78.5" width="109" height="228.5"/>
+                                <rect key="frame" x="96" y="88" width="128.5" height="219"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="NO"/>
                                 </accessibility>
@@ -1192,13 +1192,13 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                                 <rect key="frame" x="0.0" y="0.0" width="312" height="75"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Last Updated" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="s7X-0D-dgK">
-                                                        <rect key="frame" x="45" y="8" width="259" height="59"/>
+                                                        <rect key="frame" x="43" y="8" width="261" height="59"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ezp-ZN-UCE" userLabel="Updated Icon">
-                                                        <rect key="frame" x="8" y="22.5" width="29" height="29.5"/>
+                                                        <rect key="frame" x="8" y="24.5" width="27" height="25.5"/>
                                                         <accessibility key="accessibilityConfiguration">
                                                             <bool key="isElement" value="NO"/>
                                                         </accessibility>
@@ -1221,13 +1221,13 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                                 <rect key="frame" x="0.0" y="75" width="312" height="75"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="m5m-0M-x6C">
-                                                        <rect key="frame" x="45" y="8" width="259" height="59"/>
+                                                        <rect key="frame" x="43" y="8" width="261" height="59"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bck-ib-g7i" userLabel="Type Icon">
-                                                        <rect key="frame" x="8" y="23.5" width="29" height="29.5"/>
+                                                        <rect key="frame" x="8" y="25.5" width="27" height="25.5"/>
                                                         <accessibility key="accessibilityConfiguration">
                                                             <bool key="isElement" value="NO"/>
                                                         </accessibility>
@@ -1250,7 +1250,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                                 <rect key="frame" x="0.0" y="150" width="312" height="75"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uM-FH-w3o" userLabel="Author Icon">
-                                                        <rect key="frame" x="8" y="22.5" width="29" height="29.5"/>
+                                                        <rect key="frame" x="8" y="24.5" width="27" height="25.5"/>
                                                         <accessibility key="accessibilityConfiguration">
                                                             <bool key="isElement" value="NO"/>
                                                         </accessibility>
@@ -1259,7 +1259,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="g2c-gq-ptk">
-                                                        <rect key="frame" x="45" y="8" width="259" height="59"/>
+                                                        <rect key="frame" x="43" y="8" width="261" height="59"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1388,7 +1388,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLB-HP-26t">
-                                <rect key="frame" x="290" y="0.0" width="30" height="40"/>
+                                <rect key="frame" x="290" y="0.0" width="30" height="36"/>
                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="24"/>
                                 <state key="normal" title=""/>
                                 <connections>

@@ -21,16 +21,19 @@ class CapturingLoginSceneDelegate: LoginSceneDelegate {
         loginButtonTapped = true
     }
     
+    private(set) var capturedRegistrationNumber: String?
     func loginSceneDidUpdateRegistrationNumber(_ registrationNumberString: String) {
-        
+        capturedRegistrationNumber = registrationNumberString
     }
     
+    private(set) var capturedUsername: String?
     func loginSceneDidUpdateUsername(_ username: String) {
-        
+        capturedUsername = username
     }
     
+    private(set) var capturedPassword: String?
     func loginSceneDidUpdatePassword(_ password: String) {
-        
+        capturedPassword = password
     }
     
 }
@@ -44,6 +47,7 @@ class LoginViewControllerTests: XCTestCase {
         super.setUp()
         
         loginViewController = LoginViewControllerV2Factory().makeLoginScene() as! LoginViewControllerV2
+        loginViewController.loadViewIfNeeded()
         delegate = CapturingLoginSceneDelegate()
         loginViewController.delegate = delegate
     }
@@ -80,6 +84,30 @@ class LoginViewControllerTests: XCTestCase {
     
     func testDelegateNotToldCancelButtonTappedTooEarly() {
         XCTAssertFalse(delegate.cancelButtonTapped)
+    }
+    
+    func testUpdatingRegistrationNumberTextTellsDelegate() {
+        let input = "\(arc4random())"
+        loginViewController.registrationNumberTextField.text = input
+        loginViewController.registrationNumberTextField.sendActions(for: .valueChanged)
+        
+        XCTAssertEqual(input, delegate.capturedRegistrationNumber)
+    }
+    
+    func testUpdatingUsernameTextTellsDelegate() {
+        let input = "\(arc4random())"
+        loginViewController.usernameTextField.text = input
+        loginViewController.usernameTextField.sendActions(for: .valueChanged)
+        
+        XCTAssertEqual(input, delegate.capturedUsername)
+    }
+    
+    func testUpdatingPasswordTextTellsDelegate() {
+        let input = "\(arc4random())"
+        loginViewController.passwordTextField.text = input
+        loginViewController.passwordTextField.sendActions(for: .valueChanged)
+        
+        XCTAssertEqual(input, delegate.capturedPassword)
     }
     
 }

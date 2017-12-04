@@ -9,12 +9,15 @@
 import UIKit.UIButton
 import UIKit.UIViewController
 
-class LoginViewControllerV2: UIViewController, LoginScene {
+class LoginViewControllerV2: UITableViewController, LoginScene {
 
     // MARK: IBOutlets
 
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var registrationNumberTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
 
     // MARK: IBActions
 
@@ -24,6 +27,21 @@ class LoginViewControllerV2: UIViewController, LoginScene {
 
     @IBAction func cancelButtonTapped(_ sender: Any) {
         delegate?.loginSceneDidTapCancelButton()
+    }
+
+    @IBAction func registrationNumberDidChange(_ sender: UITextField) {
+        guard let registrationNumber = sender.text else { return }
+        delegate?.loginSceneDidUpdateRegistrationNumber(registrationNumber)
+    }
+
+    @IBAction func usernameDidChange(_ sender: UITextField) {
+        guard let username = sender.text else { return }
+        delegate?.loginSceneDidUpdateUsername(username)
+    }
+
+    @IBAction func passwordDidChange(_ sender: UITextField) {
+        guard let password = sender.text else { return }
+        delegate?.loginSceneDidUpdatePassword(password)
     }
 
     // MARK: LoginScene
