@@ -10,20 +10,10 @@ import UIKit.UIViewController
 
 struct PhoneMessagesModuleFactory: MessagesModuleProviding {
 
-    private let sceneFactory: MessagesSceneFactory
-    private let authService: AuthService
-    private let privateMessagesService: PrivateMessagesService
-    private let dateFormatter: DateFormatterProtocol
-
-    init(sceneFactory: MessagesSceneFactory,
-         authService: AuthService,
-         privateMessagesService: PrivateMessagesService,
-         dateFormatter: DateFormatterProtocol) {
-        self.sceneFactory = sceneFactory
-        self.authService = authService
-        self.privateMessagesService = privateMessagesService
-        self.dateFormatter = dateFormatter
-    }
+    var sceneFactory: MessagesSceneFactory
+    var authService: AuthService
+    var privateMessagesService: PrivateMessagesService
+    var dateFormatter: DateFormatterProtocol
 
     func makeMessagesModule(_ delegate: MessagesModuleDelegate) -> UIViewController {
         let scene = sceneFactory.makeMessagesScene()

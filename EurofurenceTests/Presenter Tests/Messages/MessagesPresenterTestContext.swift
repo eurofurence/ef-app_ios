@@ -66,11 +66,13 @@ struct MessagesPresenterTestContext {
     private init(authState: AuthState,
                  privateMessagesService: CapturingPrivateMessagesService = CapturingPrivateMessagesService()) {
         self.privateMessagesService = privateMessagesService
-        let factory = PhoneMessagesModuleFactory(sceneFactory: sceneFactory,
-                                                 authService: StubAuthService(authState: authState),
-                                                 privateMessagesService: privateMessagesService,
-                                                 dateFormatter: dateFormatter)
-        _ = factory.makeMessagesModule(delegate)
+        _ = MessagesModuleBuilder()
+            .with(sceneFactory)
+            .with(StubAuthService(authState: authState))
+            .with(privateMessagesService)
+            .with(dateFormatter)
+            .build()
+            .makeMessagesModule(delegate)
     }
     
 }

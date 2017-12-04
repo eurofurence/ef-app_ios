@@ -288,6 +288,7 @@
 		CABA43951FCE0A49009CB5B0 /* CapturingLoginScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43941FCE0A49009CB5B0 /* CapturingLoginScene.swift */; };
 		CABA43971FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43961FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift */; };
 		CABA43991FCE0A7B009CB5B0 /* CapturingLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43981FCE0A7B009CB5B0 /* CapturingLoginService.swift */; };
+		CABA439D1FD576D0009CB5B0 /* MessagesModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA439C1FD576D0009CB5B0 /* MessagesModuleBuilder.swift */; };
 		CAC1E1271F5040BD00195513 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1261F5040BD00195513 /* NewsPresenter.swift */; };
 		CAC1E1291F5040CB00195513 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1281F5040CB00195513 /* AuthService.swift */; };
 		CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12A1F5040E100195513 /* NewsScene.swift */; };
@@ -692,6 +693,7 @@
 		CABA43941FCE0A49009CB5B0 /* CapturingLoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingLoginScene.swift; path = "Test Doubles/Scenes/CapturingLoginScene.swift"; sourceTree = "<group>"; };
 		CABA43961FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StubLoginSceneFactory.swift; path = "Test Doubles/StubLoginSceneFactory.swift"; sourceTree = "<group>"; };
 		CABA43981FCE0A7B009CB5B0 /* CapturingLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingLoginService.swift; path = "Test Doubles/CapturingLoginService.swift"; sourceTree = "<group>"; };
+		CABA439C1FD576D0009CB5B0 /* MessagesModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesModuleBuilder.swift; path = Messages/MessagesModuleBuilder.swift; sourceTree = "<group>"; };
 		CAC1E1261F5040BD00195513 /* NewsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenter.swift; path = News/NewsPresenter.swift; sourceTree = "<group>"; };
 		CAC1E1281F5040CB00195513 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = Interactors/Authorization/AuthService.swift; sourceTree = "<group>"; };
 		CAC1E12A1F5040E100195513 /* NewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsScene.swift; path = News/NewsScene.swift; sourceTree = "<group>"; };
@@ -1753,6 +1755,7 @@
 				CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleProviding.swift */,
 				CA8E7F091FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift */,
 				CABA43821FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift */,
+				CABA439C1FD576D0009CB5B0 /* MessagesModuleBuilder.swift */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -2480,6 +2483,7 @@
 				78455B471F11779D005BE2D7 /* SplashScreenRouter.swift in Sources */,
 				CA957B601F705AF9004DFD5A /* MessagesViewControllerV2.swift in Sources */,
 				CA321F511F7BC8550050E489 /* PreloadSceneFactory.swift in Sources */,
+				CABA439D1FD576D0009CB5B0 /* MessagesModuleBuilder.swift in Sources */,
 				6EF96CF11F1495F400EE6134 /* SystemNetworkReachability.swift in Sources */,
 				9A861EBD1F25551400B75A8C /* PresentationTier.swift in Sources */,
 				7820A6EF1F14F15D004C0FB5 /* Quote.swift in Sources */,
