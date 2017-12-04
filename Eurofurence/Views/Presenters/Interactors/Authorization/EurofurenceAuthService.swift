@@ -8,6 +8,8 @@
 
 class EurofurenceAuthService: AuthService {
 
+    static var shared = EurofurenceAuthService(app: EurofurenceApplication.shared)
+
     private let app: EurofurenceApplicationProtocol
 
     init(app: EurofurenceApplicationProtocol) {

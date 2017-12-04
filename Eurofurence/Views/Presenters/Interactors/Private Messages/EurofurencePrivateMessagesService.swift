@@ -8,6 +8,8 @@
 
 struct EurofurencePrivateMessagesService: PrivateMessagesService {
 
+    static var shared = EurofurencePrivateMessagesService(app: EurofurenceApplication.shared)
+
     private let app: EurofurenceApplicationProtocol
 
     init(app: EurofurenceApplicationProtocol) {
