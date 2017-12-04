@@ -275,7 +275,6 @@
 		CAB3A72A1F7532A2005DF77B /* CapturingPushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */; };
 		CAB3A72D1F753308005DF77B /* PushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */; };
 		CAB3A72F1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */; };
-		CABA43811FB8468A009CB5B0 /* PhoneMessagesSceneFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43801FB8468A009CB5B0 /* PhoneMessagesSceneFactoryTests.swift */; };
 		CABA43831FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43821FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift */; };
 		CABA43861FBC6FE1009CB5B0 /* LoginModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43851FBC6FE1009CB5B0 /* LoginModuleProviding.swift */; };
 		CABA43891FBCD94E009CB5B0 /* LoginPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43881FBCD94E009CB5B0 /* LoginPresenterTests.swift */; };
@@ -682,7 +681,6 @@
 		CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPushPermissionsRequester.swift; sourceTree = "<group>"; };
 		CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PushPermissionsRequester.swift; path = "Application/System Services/PushPermissionsRequester.swift"; sourceTree = "<group>"; };
 		CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationPushPermissionsRequester.swift; path = "Application/System Services/ApplicationPushPermissionsRequester.swift"; sourceTree = "<group>"; };
-		CABA43801FB8468A009CB5B0 /* PhoneMessagesSceneFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhoneMessagesSceneFactoryTests.swift; path = "Presenter Tests/Messages/PhoneMessagesSceneFactoryTests.swift"; sourceTree = "<group>"; };
 		CABA43821FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhoneMessagesSceneFactory.swift; path = Messages/PhoneMessagesSceneFactory.swift; sourceTree = "<group>"; };
 		CABA43851FBC6FE1009CB5B0 /* LoginModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleProviding.swift; sourceTree = "<group>"; };
 		CABA43881FBCD94E009CB5B0 /* LoginPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginPresenterTests.swift; path = "Presenter Tests/Login/LoginPresenterTests.swift"; sourceTree = "<group>"; };
@@ -864,35 +862,35 @@
 		6EF96CCD1F0EDB1300EE6134 /* Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
-				78FE77D01F1A2E9500E9A0BE /* Services */,
-				781A94341F1A19A2002DE70F /* Application */,
-				78C86D5E1F12384C003A20E6 /* Scenes */,
-				6EF96CCE1F0EDB2000EE6134 /* CalendarTestDoubles.swift */,
-				78455B481F1177AD005BE2D7 /* CapturingTutorialRouter.swift */,
-				78455B4A1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift */,
-				78455B4C1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift */,
-				78C86D591F1234F0003A20E6 /* StubRouters.swift */,
-				78C86D801F13A0CE003A20E6 /* StubPresentationStrings.swift */,
-				7820A6DA1F13F4DE004C0FB5 /* StubPresentationAssets.swift */,
-				7820A6E01F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift */,
-				7820A6E41F140056004C0FB5 /* CapturingAlertRouter.swift */,
-				7820A6EC1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift */,
 				7820A6FC1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift */,
+				6EF96CCE1F0EDB2000EE6134 /* CalendarTestDoubles.swift */,
+				7820A6E41F140056004C0FB5 /* CapturingAlertRouter.swift */,
+				CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */,
+				CABA43921FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift */,
+				CABA43981FCE0A7B009CB5B0 /* CapturingLoginService.swift */,
+				CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */,
+				CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */,
+				CA8E17EE1F817A8C003C348C /* CapturingPreloadService.swift */,
+				CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */,
 				7820A6FE1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift */,
 				7820A7001F16C0F0004C0FB5 /* CapturingPushPermissionsStateProviding.swift */,
-				78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */,
+				7820A6EC1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift */,
+				78455B4A1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift */,
+				78455B481F1177AD005BE2D7 /* CapturingTutorialRouter.swift */,
+				7820A6E01F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift */,
 				6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */,
 				CAC1E12E1F50411900195513 /* StubAuthService.swift */,
-				CAC1E1321F50414B00195513 /* WelcomePromptStringFactoryTestDoubles.swift */,
-				CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */,
-				CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */,
-				CA8E17EE1F817A8C003C348C /* CapturingPreloadService.swift */,
-				CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */,
-				CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */,
-				CAF3C74D1F9FC72C0008F027 /* StubNewsSceneFactory.swift */,
-				CABA43921FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift */,
+				78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */,
+				78455B4C1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift */,
 				CABA43961FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift */,
-				CABA43981FCE0A7B009CB5B0 /* CapturingLoginService.swift */,
+				CAF3C74D1F9FC72C0008F027 /* StubNewsSceneFactory.swift */,
+				7820A6DA1F13F4DE004C0FB5 /* StubPresentationAssets.swift */,
+				78C86D801F13A0CE003A20E6 /* StubPresentationStrings.swift */,
+				78C86D591F1234F0003A20E6 /* StubRouters.swift */,
+				CAC1E1321F50414B00195513 /* WelcomePromptStringFactoryTestDoubles.swift */,
+				781A94341F1A19A2002DE70F /* Application */,
+				78C86D5E1F12384C003A20E6 /* Scenes */,
+				78FE77D01F1A2E9500E9A0BE /* Services */,
 			);
 			name = "Test Doubles";
 			sourceTree = "<group>";
@@ -934,6 +932,7 @@
 				CA7EB7D41F799991002674A6 /* TutorialScene.swift */,
 				CA8E7EF91FB0926E00F0BF10 /* PhoneTutorialSceneFactory.swift */,
 				CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */,
+				78455B551F117B24005BE2D7 /* Tutorial.storyboard */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";
@@ -961,12 +960,12 @@
 		781A94341F1A19A2002DE70F /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				CA30EAA41F2129B70053DBF6 /* API */,
-				781A94351F1A19A8002DE70F /* Notifications */,
+				CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */,
 				CA2B4FA91F1F7F1200F007E1 /* CapturingLoginObserver.swift */,
 				CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */,
 				CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */,
-				CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */,
+				CA30EAA41F2129B70053DBF6 /* API */,
+				781A94351F1A19A8002DE70F /* Notifications */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -974,8 +973,8 @@
 		781A94351F1A19A8002DE70F /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
-				781A94361F1A19AE002DE70F /* Firebase */,
 				781A94411F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift */,
+				781A94361F1A19AE002DE70F /* Firebase */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -983,8 +982,8 @@
 		781A94361F1A19AE002DE70F /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				781A94371F1A19BD002DE70F /* CapturingFirebaseAdapter.swift */,
 				781A94391F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift */,
+				781A94371F1A19BD002DE70F /* CapturingFirebaseAdapter.swift */,
 			);
 			name = Firebase;
 			sourceTree = "<group>";
@@ -1000,8 +999,8 @@
 		781A94441F1A1DCE002DE70F /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				781A94451F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift */,
 				781A94471F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift */,
+				781A94451F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift */,
 				6EEC6DA01F1BF79F00205F2D /* FirebaseTopicTests.swift */,
 			);
 			name = Firebase;
@@ -1093,35 +1092,34 @@
 			path = Controls;
 			sourceTree = "<group>";
 		};
-		78C86D5B1F12355C003A20E6 /* Presenter Tests */ = {
+		78C86D5B1F12355C003A20E6 /* Module Tests */ = {
 			isa = PBXGroup;
 			children = (
-				CA8E7EFF1FB0940600F0BF10 /* Tab */,
+				CA8E7EF31FB08D3B00F0BF10 /* PhoneWindowWireframeTests.swift */,
+				78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */,
+				78C86D711F12AACA003A20E6 /* WhenTheSplashScreenAppears.swift */,
+				78C86D5C1F123686003A20E6 /* WhenTheTutorialAppears.swift */,
+				78C86D6A1F123FC4003A20E6 /* Builders */,
 				CAF7055F1F82CBC800A9FEA2 /* Director */,
 				CAF9A93D1F5048FB00628833 /* Interactor Tests */,
-				78C86D6A1F123FC4003A20E6 /* Builders */,
-				CA7EB7CF1F79977F002674A6 /* Tutorial */,
-				CA5BF9D31F7AEE070045DBC0 /* Preload */,
+				CABA43871FBCD930009CB5B0 /* Login */,
 				CAF9A9561F56012100628833 /* Messages */,
 				CAC1E1241F50405900195513 /* News */,
-				CABA43871FBCD930009CB5B0 /* Login */,
-				78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */,
-				78C86D5C1F123686003A20E6 /* WhenTheTutorialAppears.swift */,
-				78C86D711F12AACA003A20E6 /* WhenTheSplashScreenAppears.swift */,
-				CA8E7EF31FB08D3B00F0BF10 /* PhoneWindowWireframeTests.swift */,
+				CA5BF9D31F7AEE070045DBC0 /* Preload */,
+				CA8E7EFF1FB0940600F0BF10 /* Tab */,
 			);
-			name = "Presenter Tests";
+			name = "Module Tests";
 			sourceTree = "<group>";
 		};
 		78C86D5E1F12384C003A20E6 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				78C86D5F1F123859003A20E6 /* CapturingTutorialScene.swift */,
-				78C86D641F123B20003A20E6 /* CapturingTutorialPageScene.swift */,
-				78C86D781F12ADF8003A20E6 /* CapturingSplashScene.swift */,
-				CAC1E1301F50413500195513 /* CapturingNewsScene.swift */,
-				CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */,
 				CABA43941FCE0A49009CB5B0 /* CapturingLoginScene.swift */,
+				CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */,
+				CAC1E1301F50413500195513 /* CapturingNewsScene.swift */,
+				78C86D781F12ADF8003A20E6 /* CapturingSplashScene.swift */,
+				78C86D641F123B20003A20E6 /* CapturingTutorialPageScene.swift */,
+				78C86D5F1F123859003A20E6 /* CapturingTutorialScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -1156,17 +1154,17 @@
 		78D7EEB31F195E8B005372A9 /* Application Tests */ = {
 			isa = PBXGroup;
 			children = (
-				CA804DD71F20D2E000E07A4A /* API */,
-				781A94431F1A1DC6002DE70F /* Notifications */,
 				CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */,
-				78D7EEB41F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift */,
-				CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */,
 				CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */,
 				CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */,
-				CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessages.swift */,
+				CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */,
 				CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */,
+				78D7EEB41F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift */,
 				CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */,
+				CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessages.swift */,
 				CAF9A94D1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift */,
+				CA804DD71F20D2E000E07A4A /* API */,
+				781A94431F1A1DC6002DE70F /* Notifications */,
 			);
 			name = "Application Tests";
 			sourceTree = "<group>";
@@ -1227,8 +1225,8 @@
 			isa = PBXGroup;
 			children = (
 				CAD780471F1D51DB002A8333 /* Clock */,
-				CAD780441F1D4DF7002A8333 /* Login */,
 				78FE77D11F1A2E9C00E9A0BE /* HTTP */,
+				CAD780441F1D4DF7002A8333 /* Login */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -1359,28 +1357,26 @@
 		9ACF994B1EBE172D006FC958 /* EurofurenceTests */ = {
 			isa = PBXGroup;
 			children = (
+				9ACF994E1EBE172D006FC958 /* Info.plist */,
+				78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */,
+				7820A6DE1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift */,
+				78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */,
+				6EF96CDA1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift */,
+				78C86D7A1F12B2A2003A20E6 /* SplashViewControllerTests.swift */,
+				7820A6E81F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift */,
+				78C86D4B1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift */,
+				78455B511F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift */,
+				78455B5C1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift */,
+				78C86D531F1228B0003A20E6 /* TutorialViewControllerTests.swift */,
+				78C86D821F13A35F003A20E6 /* UnlocalizedPresentationStringsShould.swift */,
+				7820A7041F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift */,
+				78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */,
+				7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */,
 				78D7EEB31F195E8B005372A9 /* Application Tests */,
-				78C86D5B1F12355C003A20E6 /* Presenter Tests */,
+				78C86D5B1F12355C003A20E6 /* Module Tests */,
 				78FE77D41F1B9F8A00E9A0BE /* Services Tests */,
 				6EF96CCD1F0EDB1300EE6134 /* Test Doubles */,
 				CAF9A94F1F558E6200628833 /* Test Utilities */,
-				CA957B581F705A46004DFD5A /* View Controller Tests */,
-				CA4FBE131F73137D00D29405 /* View Tests */,
-				9ACF994E1EBE172D006FC958 /* Info.plist */,
-				78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */,
-				78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */,
-				6EF96CDA1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift */,
-				78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */,
-				78455B511F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift */,
-				78455B5C1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift */,
-				78C86D4B1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift */,
-				78C86D531F1228B0003A20E6 /* TutorialViewControllerTests.swift */,
-				78C86D7A1F12B2A2003A20E6 /* SplashViewControllerTests.swift */,
-				78C86D821F13A35F003A20E6 /* UnlocalizedPresentationStringsShould.swift */,
-				7820A6DE1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift */,
-				7820A6E81F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift */,
-				7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */,
-				7820A7041F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift */,
 			);
 			path = EurofurenceTests;
 			sourceTree = "<group>";
@@ -1422,7 +1418,6 @@
 				78F555971F10D59000BDA7D4 /* Segues */,
 				9ACF99401EBE172D006FC958 /* LaunchScreen.storyboard */,
 				D6F3D756F99A68B2DC5B7359 /* Main.storyboard */,
-				78455B551F117B24005BE2D7 /* Tutorial.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1562,9 +1557,9 @@
 			isa = PBXGroup;
 			children = (
 				CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */,
-				CA30EAA71F2132480053DBF6 /* StubLoginResponse.swift */,
 				CA30EABB1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift */,
 				CA30EAC51F2673010053DBF6 /* StubAPIPrivateMessage.swift */,
+				CA30EAA71F2132480053DBF6 /* StubLoginResponse.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -1581,19 +1576,11 @@
 			path = Preload;
 			sourceTree = "<group>";
 		};
-		CA4FBE131F73137D00D29405 /* View Tests */ = {
-			isa = PBXGroup;
-			children = (
-				CA4FBE141F7313A300D29405 /* MessageTableViewCellTests.swift */,
-			);
-			name = "View Tests";
-			sourceTree = "<group>";
-		};
 		CA5BF9D31F7AEE070045DBC0 /* Preload */ = {
 			isa = PBXGroup;
 			children = (
-				CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */,
 				CA321F4D1F7BC7FD0050E489 /* PhonePreloadSceneFactoryTests.swift */,
+				CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */,
 			);
 			name = Preload;
 			sourceTree = "<group>";
@@ -1630,13 +1617,6 @@
 				CABA439C1FD576D0009CB5B0 /* MessagesModuleBuilder.swift */,
 			);
 			name = Module;
-			sourceTree = "<group>";
-		};
-		CA7EB7CF1F79977F002674A6 /* Tutorial */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Tutorial;
 			sourceTree = "<group>";
 		};
 		CA804DCF1F20CE5F00E07A4A /* API */ = {
@@ -1691,14 +1671,6 @@
 				CA8E7F001FB0942000F0BF10 /* PhoneTabModuleFactoryTests.swift */,
 			);
 			name = Tab;
-			sourceTree = "<group>";
-		};
-		CA957B581F705A46004DFD5A /* View Controller Tests */ = {
-			isa = PBXGroup;
-			children = (
-				CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */,
-			);
-			name = "View Controller Tests";
 			sourceTree = "<group>";
 		};
 		CA957B5B1F705AC2004DFD5A /* Messages */ = {
@@ -1972,8 +1944,8 @@
 		CAF9A94F1F558E6200628833 /* Test Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				CAF9A9501F558E7800628833 /* RandomGenerator.swift */,
 				CAD234411F5F2FA8004BB959 /* AppDataBuilder.swift */,
+				CAF9A9501F558E7800628833 /* RandomGenerator.swift */,
 			);
 			name = "Test Utilities";
 			sourceTree = "<group>";
@@ -1985,7 +1957,8 @@
 				CAF9A9571F5601A700628833 /* MessagesPresenterTestsForAnonymousUser.swift */,
 				CAD2343F1F5D726C004BB959 /* MessagesPresenterTestsForLoggedInUser.swift */,
 				CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */,
-				CABA43801FB8468A009CB5B0 /* PhoneMessagesSceneFactoryTests.swift */,
+				CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */,
+				CA4FBE141F7313A300D29405 /* MessageTableViewCellTests.swift */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -2748,7 +2721,6 @@
 				CA2B4FAA1F1F7F1200F007E1 /* CapturingLoginObserver.swift in Sources */,
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
 				78C86D831F13A35F003A20E6 /* UnlocalizedPresentationStringsShould.swift in Sources */,
-				CABA43811FB8468A009CB5B0 /* PhoneMessagesSceneFactoryTests.swift in Sources */,
 				CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */,
 				7820A6FF1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift in Sources */,
 				CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */,
