@@ -78,7 +78,7 @@ class LoginViewControllerTests: XCTestCase {
     }
     
     func testTappingCancelButtonTellsDelegate() {
-        loginViewController.cancelButton.sendActions(for: .touchUpInside)
+        loginViewController.cancelButtonTapped(loginViewController.cancelButton)
         XCTAssertTrue(delegate.cancelButtonTapped)
     }
     

@@ -14,7 +14,7 @@ class LoginViewControllerV2: UITableViewController, LoginScene {
     // MARK: IBOutlets
 
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var registrationNumberTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
