@@ -14,6 +14,17 @@ class LoginViewControllerV2: UIViewController, LoginScene {
     // MARK: IBOutlets
 
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+
+    // MARK: IBActions
+
+    @IBAction func loginButtonTapped(_ sender: Any) {
+        delegate?.loginSceneDidTapLoginButton()
+    }
+
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        delegate?.loginSceneDidTapCancelButton()
+    }
 
     // MARK: LoginScene
 

@@ -21,16 +21,30 @@
                         <viewLayoutGuide key="safeArea" id="sr3-T2-T3e"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="dZI-xo-l39">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="1CI-qH-Za0">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kqS-M6-Jz6">
+                                <rect key="frame" x="16" y="7" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="P1u-PJ-I6i" eventType="touchUpInside" id="1Bq-dM-wCw"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" style="plain" id="rMP-Al-evX">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0VA-0n-VPH">
                                 <rect key="frame" x="313" y="7" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="loginButtonTapped:" destination="P1u-PJ-I6i" eventType="touchUpInside" id="P2i-4T-XSN"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="cancelButton" destination="kqS-M6-Jz6" id="KGh-2Y-a6n"/>
                         <outlet property="loginButton" destination="0VA-0n-VPH" id="rhx-RU-JcH"/>
                     </connections>
                 </viewController>
