@@ -13,3 +13,10 @@ protocol NewsModuleProviding {
     func makeNewsModule(_ delegate: NewsModuleDelegate) -> UIViewController
 
 }
+
+protocol NewsModuleDelegate {
+
+    func newsModuleDidRequestLogin()
+    func newsModuleDidRequestShowingPrivateMessages()
+
+}

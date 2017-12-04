@@ -292,6 +292,7 @@
 		CABA439F1FD578E1009CB5B0 /* NewsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA439E1FD578E1009CB5B0 /* NewsModuleBuilder.swift */; };
 		CABA43A11FD57A78009CB5B0 /* PreloadModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43A01FD57A78009CB5B0 /* PreloadModuleBuilder.swift */; };
 		CABA43A31FD57C65009CB5B0 /* TutorialModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */; };
+		CABA43AC1FD5DC68009CB5B0 /* LoginScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43AB1FD5DC68009CB5B0 /* LoginScene.swift */; };
 		CAC1E1271F5040BD00195513 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1261F5040BD00195513 /* NewsPresenter.swift */; };
 		CAC1E1291F5040CB00195513 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1281F5040CB00195513 /* AuthService.swift */; };
 		CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12A1F5040E100195513 /* NewsScene.swift */; };
@@ -326,7 +327,6 @@
 		CAE27B501F857A99005FDE39 /* PhonePreloadModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4F1F857A99005FDE39 /* PhonePreloadModuleFactory.swift */; };
 		CAF3C7441F9F5C550008F027 /* NewsModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7431F9F5C550008F027 /* NewsModuleProviding.swift */; };
 		CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */; };
-		CAF3C74A1F9F5EEA0008F027 /* NewsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7491F9F5EEA0008F027 /* NewsModuleDelegate.swift */; };
 		CAF3C74C1F9F619C0008F027 /* PhoneNewsModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74B1F9F619C0008F027 /* PhoneNewsModuleFactory.swift */; };
 		CAF3C74E1F9FC72C0008F027 /* StubNewsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74D1F9FC72C0008F027 /* StubNewsSceneFactory.swift */; };
 		CAF3C7501F9FC74C0008F027 /* NewsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74F1F9FC74C0008F027 /* NewsSceneFactory.swift */; };
@@ -700,6 +700,7 @@
 		CABA439E1FD578E1009CB5B0 /* NewsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsModuleBuilder.swift; path = News/NewsModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA43A01FD57A78009CB5B0 /* PreloadModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModuleBuilder.swift; sourceTree = "<group>"; };
+		CABA43AB1FD5DC68009CB5B0 /* LoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScene.swift; sourceTree = "<group>"; };
 		CAC1E1261F5040BD00195513 /* NewsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenter.swift; path = News/NewsPresenter.swift; sourceTree = "<group>"; };
 		CAC1E1281F5040CB00195513 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = Interactors/Authorization/AuthService.swift; sourceTree = "<group>"; };
 		CAC1E12A1F5040E100195513 /* NewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsScene.swift; path = News/NewsScene.swift; sourceTree = "<group>"; };
@@ -734,7 +735,6 @@
 		CAE27B4F1F857A99005FDE39 /* PhonePreloadModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePreloadModuleFactory.swift; sourceTree = "<group>"; };
 		CAF3C7431F9F5C550008F027 /* NewsModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsModuleProviding.swift; path = News/NewsModuleProviding.swift; sourceTree = "<group>"; };
 		CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingNewsModuleDelegate.swift; path = "Test Doubles/CapturingNewsModuleDelegate.swift"; sourceTree = "<group>"; };
-		CAF3C7491F9F5EEA0008F027 /* NewsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsModuleDelegate.swift; path = News/NewsModuleDelegate.swift; sourceTree = "<group>"; };
 		CAF3C74B1F9F619C0008F027 /* PhoneNewsModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhoneNewsModuleFactory.swift; path = News/PhoneNewsModuleFactory.swift; sourceTree = "<group>"; };
 		CAF3C74D1F9FC72C0008F027 /* StubNewsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StubNewsSceneFactory.swift; path = "Test Doubles/StubNewsSceneFactory.swift"; sourceTree = "<group>"; };
 		CAF3C74F1F9FC74C0008F027 /* NewsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsSceneFactory.swift; path = News/NewsSceneFactory.swift; sourceTree = "<group>"; };
@@ -1584,13 +1584,11 @@
 		CA321F4F1F7BC8490050E489 /* Preload */ = {
 			isa = PBXGroup;
 			children = (
-				CAF705691F82D15D00A9FEA2 /* PreloadModuleProviding.swift */,
-				CAE27B4F1F857A99005FDE39 /* PhonePreloadModuleFactory.swift */,
-				CA8E17F21F817AD0003C348C /* PreloadModule.swift */,
-				CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */,
-				CA8E17F41F817AE8003C348C /* PreloadPresenter.swift */,
-				CAF7056B1F82D18100A9FEA2 /* Adapters */,
 				CABA43A01FD57A78009CB5B0 /* PreloadModuleBuilder.swift */,
+				CAF705691F82D15D00A9FEA2 /* PreloadModuleProviding.swift */,
+				CABA43A61FD5DB42009CB5B0 /* Module */,
+				CABA43A51FD5DB23009CB5B0 /* Presenter */,
+				CABA43A41FD5DB1B009CB5B0 /* View */,
 			);
 			path = Preload;
 			sourceTree = "<group>";
@@ -1610,6 +1608,40 @@
 				CA321F4D1F7BC7FD0050E489 /* PhonePreloadSceneFactoryTests.swift */,
 			);
 			name = Preload;
+			sourceTree = "<group>";
+		};
+		CA6A9FEE1FD5DDF90092C6DB /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CABA43901FC302EC009CB5B0 /* LoginService.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CA6A9FEF1FD5DE0E0092C6DB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CAD2343B1F5D7203004BB959 /* MessagesScene.swift */,
+				CABA43821FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		CA6A9FF01FD5DE130092C6DB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CAD2343D1F5D7211004BB959 /* MessagesPresenter.swift */,
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
+		CA6A9FF11FD5DE1A0092C6DB /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				CA8E7F091FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift */,
+				CABA439C1FD576D0009CB5B0 /* MessagesModuleBuilder.swift */,
+			);
+			name = Module;
 			sourceTree = "<group>";
 		};
 		CA7EB7CF1F79977F002674A6 /* Tutorial */ = {
@@ -1713,10 +1745,10 @@
 			isa = PBXGroup;
 			children = (
 				CABA43851FBC6FE1009CB5B0 /* LoginModuleProviding.swift */,
-				CABA438A1FBCDBBA009CB5B0 /* PhoneLoginModuleFactory.swift */,
-				CABA438C1FBCDBDF009CB5B0 /* LoginPresenter.swift */,
-				CABA438E1FBCDBEE009CB5B0 /* LoginSceneFactory.swift */,
-				CABA43901FC302EC009CB5B0 /* LoginService.swift */,
+				CA6A9FEE1FD5DDF90092C6DB /* Interactor */,
+				CABA43AE1FD5DC96009CB5B0 /* Module */,
+				CABA43AA1FD5DB98009CB5B0 /* Presenter */,
+				CABA43AD1FD5DC7C009CB5B0 /* View */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1727,6 +1759,84 @@
 				CABA43881FBCD94E009CB5B0 /* LoginPresenterTests.swift */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		CABA43A41FD5DB1B009CB5B0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */,
+				CA321F521F7BC88D0050E489 /* PhonePreloadSceneFactory.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CABA43A51FD5DB23009CB5B0 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CA8E17F41F817AE8003C348C /* PreloadPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CABA43A61FD5DB42009CB5B0 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				CAE27B4F1F857A99005FDE39 /* PhonePreloadModuleFactory.swift */,
+				CA8E17F21F817AD0003C348C /* PreloadModule.swift */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		CABA43A71FD5DB4E009CB5B0 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CAC1E1261F5040BD00195513 /* NewsPresenter.swift */,
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
+		CABA43A81FD5DB55009CB5B0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CAC1E12A1F5040E100195513 /* NewsScene.swift */,
+				CAF3C74F1F9FC74C0008F027 /* NewsSceneFactory.swift */,
+				CA8E7EFB1FB0932700F0BF10 /* PhoneNewsSceneFactory.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		CABA43A91FD5DB78009CB5B0 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				CAF3C7431F9F5C550008F027 /* NewsModuleProviding.swift */,
+				CAF3C74B1F9F619C0008F027 /* PhoneNewsModuleFactory.swift */,
+			);
+			name = Module;
+			sourceTree = "<group>";
+		};
+		CABA43AA1FD5DB98009CB5B0 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CABA438C1FBCDBDF009CB5B0 /* LoginPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CABA43AD1FD5DC7C009CB5B0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CABA438E1FBCDBEE009CB5B0 /* LoginSceneFactory.swift */,
+				CABA43AB1FD5DC68009CB5B0 /* LoginScene.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CABA43AE1FD5DC96009CB5B0 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				CABA438A1FBCDBBA009CB5B0 /* PhoneLoginModuleFactory.swift */,
+			);
+			path = Module;
 			sourceTree = "<group>";
 		};
 		CAC1E1241F50405900195513 /* News */ = {
@@ -1742,15 +1852,11 @@
 		CAC1E1251F50409800195513 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				CAC1E1261F5040BD00195513 /* NewsPresenter.swift */,
-				CAC1E12A1F5040E100195513 /* NewsScene.swift */,
-				CAC1E12C1F5040F500195513 /* WelcomePromptStringFactory.swift */,
-				CAF3C7431F9F5C550008F027 /* NewsModuleProviding.swift */,
-				CAF3C7491F9F5EEA0008F027 /* NewsModuleDelegate.swift */,
-				CAF3C74B1F9F619C0008F027 /* PhoneNewsModuleFactory.swift */,
-				CAF3C74F1F9FC74C0008F027 /* NewsSceneFactory.swift */,
-				CA8E7EFB1FB0932700F0BF10 /* PhoneNewsSceneFactory.swift */,
 				CABA439E1FD578E1009CB5B0 /* NewsModuleBuilder.swift */,
+				CAC1E12C1F5040F500195513 /* WelcomePromptStringFactory.swift */,
+				CABA43A91FD5DB78009CB5B0 /* Module */,
+				CABA43A71FD5DB4E009CB5B0 /* Presenter */,
+				CABA43A81FD5DB55009CB5B0 /* View */,
 			);
 			name = News;
 			sourceTree = "<group>";
@@ -1758,13 +1864,11 @@
 		CAD234381F5D71D9004BB959 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
-				CAD2343B1F5D7203004BB959 /* MessagesScene.swift */,
-				CAD2343D1F5D7211004BB959 /* MessagesPresenter.swift */,
 				CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */,
 				CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleProviding.swift */,
-				CA8E7F091FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift */,
-				CABA43821FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift */,
-				CABA439C1FD576D0009CB5B0 /* MessagesModuleBuilder.swift */,
+				CA6A9FF11FD5DE1A0092C6DB /* Module */,
+				CA6A9FF01FD5DE130092C6DB /* Presenter */,
+				CA6A9FEF1FD5DE0E0092C6DB /* View */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -1837,14 +1941,6 @@
 				CA8E7EF71FB08ED700F0BF10 /* PhoneRootModuleFactory.swift */,
 			);
 			path = Root;
-			sourceTree = "<group>";
-		};
-		CAF7056B1F82D18100A9FEA2 /* Adapters */ = {
-			isa = PBXGroup;
-			children = (
-				CA321F521F7BC88D0050E489 /* PhonePreloadSceneFactory.swift */,
-			);
-			path = Adapters;
 			sourceTree = "<group>";
 		};
 		CAF9A93B1F50484A00628833 /* Interactors */ = {
@@ -2482,7 +2578,6 @@
 				CA30EACC1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift in Sources */,
 				9A7FDA101F33B7020050C325 /* TabBarOrderProviding.swift in Sources */,
 				9ACF99981EC858B2006FC958 /* MapEntry.swift in Sources */,
-				CAF3C74A1F9F5EEA0008F027 /* NewsModuleDelegate.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
 				CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */,
 				D6F3D6ADD1B889C901EE841A /* DataStoreResult.swift in Sources */,
@@ -2497,6 +2592,7 @@
 				6EF96CF11F1495F400EE6134 /* SystemNetworkReachability.swift in Sources */,
 				9A861EBD1F25551400B75A8C /* PresentationTier.swift in Sources */,
 				7820A6EF1F14F15D004C0FB5 /* Quote.swift in Sources */,
+				CABA43AC1FD5DC68009CB5B0 /* LoginScene.swift in Sources */,
 				CA8E17ED1F817A70003C348C /* PreloadService.swift in Sources */,
 				D6F3DD6B0659E1A44E01075B /* CurrentEventsViewModel.swift in Sources */,
 				CA281B621F1FE3F10002A4E5 /* V2LoginResponse.swift in Sources */,
