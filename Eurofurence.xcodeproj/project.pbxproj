@@ -290,6 +290,7 @@
 		CABA43991FCE0A7B009CB5B0 /* CapturingLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43981FCE0A7B009CB5B0 /* CapturingLoginService.swift */; };
 		CABA439D1FD576D0009CB5B0 /* MessagesModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA439C1FD576D0009CB5B0 /* MessagesModuleBuilder.swift */; };
 		CABA439F1FD578E1009CB5B0 /* NewsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA439E1FD578E1009CB5B0 /* NewsModuleBuilder.swift */; };
+		CABA43A11FD57A78009CB5B0 /* PreloadModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43A01FD57A78009CB5B0 /* PreloadModuleBuilder.swift */; };
 		CAC1E1271F5040BD00195513 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1261F5040BD00195513 /* NewsPresenter.swift */; };
 		CAC1E1291F5040CB00195513 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1281F5040CB00195513 /* AuthService.swift */; };
 		CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12A1F5040E100195513 /* NewsScene.swift */; };
@@ -696,6 +697,7 @@
 		CABA43981FCE0A7B009CB5B0 /* CapturingLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingLoginService.swift; path = "Test Doubles/CapturingLoginService.swift"; sourceTree = "<group>"; };
 		CABA439C1FD576D0009CB5B0 /* MessagesModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesModuleBuilder.swift; path = Messages/MessagesModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA439E1FD578E1009CB5B0 /* NewsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsModuleBuilder.swift; path = News/NewsModuleBuilder.swift; sourceTree = "<group>"; };
+		CABA43A01FD57A78009CB5B0 /* PreloadModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadModuleBuilder.swift; sourceTree = "<group>"; };
 		CAC1E1261F5040BD00195513 /* NewsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenter.swift; path = News/NewsPresenter.swift; sourceTree = "<group>"; };
 		CAC1E1281F5040CB00195513 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = Interactors/Authorization/AuthService.swift; sourceTree = "<group>"; };
 		CAC1E12A1F5040E100195513 /* NewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsScene.swift; path = News/NewsScene.swift; sourceTree = "<group>"; };
@@ -1585,6 +1587,7 @@
 				CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */,
 				CA8E17F41F817AE8003C348C /* PreloadPresenter.swift */,
 				CAF7056B1F82D18100A9FEA2 /* Adapters */,
+				CABA43A01FD57A78009CB5B0 /* PreloadModuleBuilder.swift */,
 			);
 			path = Preload;
 			sourceTree = "<group>";
@@ -2516,6 +2519,7 @@
 				CA30EAA31F2129700053DBF6 /* LoginAPI.swift in Sources */,
 				9A80EF4C1F28BD0300FD0D37 /* PostDataStoreRoutingDelegate.swift in Sources */,
 				9AB64BCB1F018135004E8D91 /* KnowledgeGroupCell.swift in Sources */,
+				CABA43A11FD57A78009CB5B0 /* PreloadModuleBuilder.swift in Sources */,
 				9ACB006F1F16C945001CE9D2 /* EventFavorite.swift in Sources */,
 				D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */,
 				CAE27B4E1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift in Sources */,

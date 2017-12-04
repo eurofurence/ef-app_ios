@@ -9,6 +9,12 @@
 import UIKit
 
 struct WindowAlertRouter: AlertRouter {
+
+    static var shared: WindowAlertRouter = {
+        let window = UIApplication.shared.delegate!.window!!
+        return WindowAlertRouter(window: window)
+    }()
+
     var window: UIWindow
 
     func show(_ alert: Alert) {

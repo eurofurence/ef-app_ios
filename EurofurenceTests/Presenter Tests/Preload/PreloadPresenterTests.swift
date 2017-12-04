@@ -28,12 +28,14 @@ class PreloadPresenterTests: XCTestCase {
         }
         
         func build() -> PreloadPresenterTestContext {
-            let factory = PhonePreloadModuleFactory(preloadSceneFactory: preloadSceneFactory,
-                                                    preloadService: preloadingService,
-                                                    alertRouter: alertRouter,
-                                                    quoteGenerator: capturingQuoteGenerator,
-                                                    presentationStrings: presentationStrings)
-            preloadViewController = factory.makePreloadModule(delegate)
+            preloadViewController = PreloadModuleBuilder()
+                .with(preloadSceneFactory)
+                .with(preloadingService)
+                .with(alertRouter)
+                .with(capturingQuoteGenerator)
+                .with(presentationStrings)
+                .build()
+                .makePreloadModule(delegate)
             
             return self
         }

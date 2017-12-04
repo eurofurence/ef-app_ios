@@ -10,23 +10,11 @@ import UIKit
 
 struct PhonePreloadModuleFactory: PreloadModuleProviding {
 
-    private let preloadSceneFactory: PreloadSceneFactory
-    private let preloadService: PreloadService
-    private let alertRouter: AlertRouter
-    private let quoteGenerator: QuoteGenerator
-    private let presentationStrings: PresentationStrings
-
-    init(preloadSceneFactory: PreloadSceneFactory,
-         preloadService: PreloadService,
-         alertRouter: AlertRouter,
-         quoteGenerator: QuoteGenerator,
-         presentationStrings: PresentationStrings) {
-        self.preloadSceneFactory = preloadSceneFactory
-        self.preloadService = preloadService
-        self.alertRouter = alertRouter
-        self.quoteGenerator = quoteGenerator
-        self.presentationStrings = presentationStrings
-    }
+    var preloadSceneFactory: PreloadSceneFactory
+    var preloadService: PreloadService
+    var alertRouter: AlertRouter
+    var quoteGenerator: QuoteGenerator
+    var presentationStrings: PresentationStrings
 
     func makePreloadModule(_ delegate: PreloadModuleDelegate) -> UIViewController {
         let preloadScene = preloadSceneFactory.makePreloadScene()
