@@ -11,32 +11,14 @@ import UIKit
 
 struct PhoneTutorialModuleFactory: TutorialModuleProviding {
 
-    private let tutorialSceneFactory: TutorialSceneFactory
-    private let presentationStrings: PresentationStrings
-    private let presentationAssets: PresentationAssets
-    private let alertRouter: AlertRouter
-    private let tutorialStateProviding: UserCompletedTutorialStateProviding
-    private let networkReachability: NetworkReachability
-    private let pushPermissionsRequesting: PushPermissionsRequesting
-    private let witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
-
-    init(tutorialSceneFactory: TutorialSceneFactory,
-         presentationStrings: PresentationStrings,
-         presentationAssets: PresentationAssets,
-         alertRouter: AlertRouter,
-         tutorialStateProviding: UserCompletedTutorialStateProviding,
-         networkReachability: NetworkReachability,
-         pushPermissionsRequesting: PushPermissionsRequesting,
-         witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest) {
-        self.tutorialSceneFactory = tutorialSceneFactory
-        self.presentationStrings = presentationStrings
-        self.presentationAssets = presentationAssets
-        self.alertRouter = alertRouter
-        self.tutorialStateProviding = tutorialStateProviding
-        self.networkReachability = networkReachability
-        self.pushPermissionsRequesting = pushPermissionsRequesting
-        self.witnessedTutorialPushPermissionsRequest = witnessedTutorialPushPermissionsRequest
-    }
+    var tutorialSceneFactory: TutorialSceneFactory
+    var presentationStrings: PresentationStrings
+    var presentationAssets: PresentationAssets
+    var alertRouter: AlertRouter
+    var tutorialStateProviding: UserCompletedTutorialStateProviding
+    var networkReachability: NetworkReachability
+    var pushPermissionsRequesting: PushPermissionsRequesting
+    var witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
 
     func makeTutorialModule(_ delegate: TutorialModuleDelegate) -> UIViewController {
         struct DummySplashScreenRouter: SplashScreenRouter {

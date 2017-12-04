@@ -53,15 +53,17 @@ class WhenTheTutorialAppears: XCTestCase {
         let tutorialSceneFactory = StubTutorialSceneFactory()
         let wireframe = CapturingPresentationWireframe()
         let delegate = CapturingTutorialModuleDelegate()
-        let factory = PhoneTutorialModuleFactory(tutorialSceneFactory: tutorialSceneFactory,
-                                                 presentationStrings: presentationStrings,
-                                                 presentationAssets: presentationAssets,
-                                                 alertRouter: alertRouter,
-                                                 tutorialStateProviding: stateProviding,
-                                                 networkReachability: networkReachability,
-                                                 pushPermissionsRequesting: pushRequesting,
-                                                 witnessedTutorialPushPermissionsRequest: pushPermissionsRequestStateProviding)
-        let vc = factory.makeTutorialModule(delegate)
+        let vc = TutorialModuleBuilder()
+            .with(tutorialSceneFactory)
+            .with(presentationStrings)
+            .with(presentationAssets)
+            .with(alertRouter)
+            .with(stateProviding)
+            .with(networkReachability)
+            .with(pushRequesting)
+            .with(pushPermissionsRequestStateProviding)
+            .build()
+            .makeTutorialModule(delegate)
 
         return TutorialTestContext(tutorialViewController: vc,
                                    tutorialSceneFactory: tutorialSceneFactory,
