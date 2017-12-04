@@ -8,7 +8,7 @@
 
 import UIKit.UIViewController
 
-struct PhoneLoginModuleFactory: LoginModuleFactory {
+struct PhoneLoginModuleFactory: LoginModuleProviding {
 
     var sceneFactory: LoginSceneFactory
     var loginService: LoginService

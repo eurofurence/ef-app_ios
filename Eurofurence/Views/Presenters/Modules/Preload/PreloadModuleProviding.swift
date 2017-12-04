@@ -1,5 +1,5 @@
 //
-//  PreloadModuleFactory.swift
+//  PreloadModuleProviding.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 02/10/2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PreloadModuleFactory {
+protocol PreloadModuleProviding {
 
     func makePreloadModule(_ delegate: PreloadModuleDelegate) -> UIViewController
 

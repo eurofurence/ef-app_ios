@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct PhoneTutorialModuleFactory: TutorialModuleFactory {
+struct PhoneTutorialModuleFactory: TutorialModuleProviding {
 
     private let tutorialSceneFactory: TutorialSceneFactory
     private let presentationStrings: PresentationStrings

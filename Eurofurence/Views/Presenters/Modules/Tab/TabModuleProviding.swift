@@ -1,5 +1,5 @@
 //
-//  TabModuleFactory.swift
+//  TabModuleProviding.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 04/10/2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol TabModuleFactory {
+protocol TabModuleProviding {
 
     func makeTabModule(_ childModules: [UIViewController]) -> UIViewController
 

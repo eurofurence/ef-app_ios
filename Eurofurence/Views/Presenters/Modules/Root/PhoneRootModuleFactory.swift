@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PhoneRootModuleFactory: RootModuleFactory {
+struct PhoneRootModuleFactory: RootModuleProviding {
 
     var firstTimeLaunchStateProviding: UserCompletedTutorialStateProviding
 

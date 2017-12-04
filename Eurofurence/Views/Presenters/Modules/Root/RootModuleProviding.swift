@@ -1,12 +1,12 @@
 //
-//  RootModuleFactory.swift
+//  RootModuleProviding.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 02/10/2017.
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-protocol RootModuleFactory {
+protocol RootModuleProviding {
 
     func makeRootModule(_ delegate: RootModuleDelegate)
 

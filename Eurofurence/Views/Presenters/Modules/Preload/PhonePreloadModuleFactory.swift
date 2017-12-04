@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct PhonePreloadModuleFactory: PreloadModuleFactory {
+struct PhonePreloadModuleFactory: PreloadModuleProviding {
 
     private let preloadSceneFactory: PreloadSceneFactory
     private let preloadService: PreloadService

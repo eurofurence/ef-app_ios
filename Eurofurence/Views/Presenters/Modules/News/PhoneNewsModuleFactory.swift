@@ -8,7 +8,7 @@
 
 import UIKit.UIViewController
 
-struct PhoneNewsModuleFactory: NewsModuleFactory {
+struct PhoneNewsModuleFactory: NewsModuleProviding {
 
     var newsSceneFactory: NewsSceneFactory
     var authService: AuthService

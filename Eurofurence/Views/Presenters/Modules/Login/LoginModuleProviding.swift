@@ -1,5 +1,5 @@
 //
-//  LoginModuleFactory.swift
+//  LoginModuleProviding.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 15/11/2017.
@@ -8,7 +8,7 @@
 
 import UIKit.UIViewController
 
-protocol LoginModuleFactory {
+protocol LoginModuleProviding {
 
     func makeLoginModule(_ delegate: LoginModuleDelegate) -> UIViewController
 

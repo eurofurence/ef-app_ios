@@ -33,7 +33,7 @@ struct StubNavigationControllerFactory: NavigationControllerFactory {
     
 }
 
-class StubRootModuleFactory: RootModuleFactory {
+class StubRootModuleFactory: RootModuleProviding {
     
     private(set) var delegate: RootModuleDelegate?
     func makeRootModule(_ delegate: RootModuleDelegate) {
@@ -42,7 +42,7 @@ class StubRootModuleFactory: RootModuleFactory {
     
 }
 
-class StubTutorialModuleFactory: TutorialModuleFactory {
+class StubTutorialModuleFactory: TutorialModuleProviding {
     
     let stubInterface = UIViewController()
     private(set) var delegate: TutorialModuleDelegate?
@@ -53,7 +53,7 @@ class StubTutorialModuleFactory: TutorialModuleFactory {
     
 }
 
-class StubPreloadModuleFactory: PreloadModuleFactory {
+class StubPreloadModuleFactory: PreloadModuleProviding {
     
     let stubInterface = UIViewController()
     private(set) var delegate: PreloadModuleDelegate?
@@ -64,7 +64,7 @@ class StubPreloadModuleFactory: PreloadModuleFactory {
     
 }
 
-class StubNewsModuleFactory: NewsModuleFactory {
+class StubNewsModuleFactory: NewsModuleProviding {
     
     let stubInterface = UIViewController()
     private(set) var delegate: NewsModuleDelegate?
@@ -75,7 +75,7 @@ class StubNewsModuleFactory: NewsModuleFactory {
     
 }
 
-class StubMessagesModuleFactory: MessagesModuleFactory {
+class StubMessagesModuleFactory: MessagesModuleProviding {
     
     let stubInterface = UIViewController()
     private(set) var delegate: MessagesModuleDelegate?
@@ -96,7 +96,7 @@ class FakeViewController: UIViewController {
     
 }
 
-class StubTabModuleFactory: TabModuleFactory {
+class StubTabModuleFactory: TabModuleProviding {
     
     let stubInterface = FakeViewController()
     private(set) var capturedTabModules: [UIViewController] = []
@@ -113,7 +113,7 @@ class StubTabModuleFactory: TabModuleFactory {
     
 }
 
-class StubLoginModuleFactory: LoginModuleFactory {
+class StubLoginModuleFactory: LoginModuleProviding {
     
     let stubInterface = UIViewController()
     private(set) var delegate: LoginModuleDelegate?
@@ -163,13 +163,13 @@ class ApplicationDirectorTests: XCTestCase {
         loginModuleFactory = StubLoginModuleFactory()
         director = ApplicationDirector(windowWireframe: windowWireframe,
                                        navigationControllerFactory: StubNavigationControllerFactory(),
-                                       rootModuleFactory: rootModuleFactory,
-                                       tutorialModuleFactory: tutorialModuleFactory,
-                                       preloadModuleFactory: preloadModuleFactory,
-                                       tabModuleFactory: tabModuleFactory,
-                                       newsModuleFactory: newsModuleFactory,
-                                       messagesModuleFactory: messagesModuleFactory,
-                                       loginModuleFactory: loginModuleFactory)
+                                       rootModuleProviding: rootModuleFactory,
+                                       tutorialModuleProviding: tutorialModuleFactory,
+                                       preloadModuleProviding: preloadModuleFactory,
+                                       tabModuleProviding: tabModuleFactory,
+                                       newsModuleProviding: newsModuleFactory,
+                                       messagesModuleProviding: messagesModuleFactory,
+                                       loginModuleProviding: loginModuleFactory)
     }
     
     func testWhenRootModuleIndicatesUserNeedsToWitnessTutorialTheTutorialModuleIsSetAsRoot() {

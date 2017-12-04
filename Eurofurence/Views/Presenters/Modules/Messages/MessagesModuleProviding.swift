@@ -1,5 +1,5 @@
 //
-//  MessagesModuleFactory.swift
+//  MessagesModuleProviding.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 24/10/2017.
@@ -8,7 +8,7 @@
 
 import UIKit.UIViewController
 
-protocol MessagesModuleFactory {
+protocol MessagesModuleProviding {
 
     func makeMessagesModule(_ delegate: MessagesModuleDelegate) -> UIViewController
 

@@ -16,39 +16,39 @@ class ApplicationDirector: RootModuleDelegate,
                            LoginModuleDelegate {
 
     private let windowWireframe: WindowWireframe
-    private let rootModuleFactory: RootModuleFactory
-    private let tutorialModuleFactory: TutorialModuleFactory
-    private let preloadModuleFactory: PreloadModuleFactory
-    private let tabModuleFactory: TabModuleFactory
-    private let newsModuleFactory: NewsModuleFactory
-    private let messagesModuleFactory: MessagesModuleFactory
+    private let rootModuleProviding: RootModuleProviding
+    private let tutorialModuleProviding: TutorialModuleProviding
+    private let preloadModuleProviding: PreloadModuleProviding
+    private let tabModuleProviding: TabModuleProviding
+    private let newsModuleProviding: NewsModuleProviding
+    private let messagesModuleProviding: MessagesModuleProviding
     private let newsNavigationController: UINavigationController
-    private let loginModuleFactory: LoginModuleFactory
+    private let loginModuleProviding: LoginModuleProviding
 
     private var tabController: UIViewController?
     private var newsController: UIViewController?
 
     init(windowWireframe: WindowWireframe,
          navigationControllerFactory: NavigationControllerFactory,
-         rootModuleFactory: RootModuleFactory,
-         tutorialModuleFactory: TutorialModuleFactory,
-         preloadModuleFactory: PreloadModuleFactory,
-         tabModuleFactory: TabModuleFactory,
-         newsModuleFactory: NewsModuleFactory,
-         messagesModuleFactory: MessagesModuleFactory,
-         loginModuleFactory: LoginModuleFactory) {
+         rootModuleProviding: RootModuleProviding,
+         tutorialModuleProviding: TutorialModuleProviding,
+         preloadModuleProviding: PreloadModuleProviding,
+         tabModuleProviding: TabModuleProviding,
+         newsModuleProviding: NewsModuleProviding,
+         messagesModuleProviding: MessagesModuleProviding,
+         loginModuleProviding: LoginModuleProviding) {
         self.windowWireframe = windowWireframe
-        self.rootModuleFactory = rootModuleFactory
-        self.tutorialModuleFactory = tutorialModuleFactory
-        self.preloadModuleFactory = preloadModuleFactory
-        self.tabModuleFactory = tabModuleFactory
-        self.newsModuleFactory = newsModuleFactory
-        self.messagesModuleFactory = messagesModuleFactory
-        self.loginModuleFactory = loginModuleFactory
+        self.rootModuleProviding = rootModuleProviding
+        self.tutorialModuleProviding = tutorialModuleProviding
+        self.preloadModuleProviding = preloadModuleProviding
+        self.tabModuleProviding = tabModuleProviding
+        self.newsModuleProviding = newsModuleProviding
+        self.messagesModuleProviding = messagesModuleProviding
+        self.loginModuleProviding = loginModuleProviding
 
         newsNavigationController = navigationControllerFactory.makeNavigationController()
 
-        rootModuleFactory.makeRootModule(self)
+        rootModuleProviding.makeRootModule(self)
     }
 
     // MARK: RootModuleDelegate
@@ -74,11 +74,11 @@ class ApplicationDirector: RootModuleDelegate,
     }
 
     func preloadModuleDidFinishPreloading() {
-        let newsController = newsModuleFactory.makeNewsModule(self)
+        let newsController = newsModuleProviding.makeNewsModule(self)
         self.newsController = newsController
 
         newsNavigationController.setViewControllers([newsController], animated: false)
-        let tabModule = tabModuleFactory.makeTabModule([newsNavigationController])
+        let tabModule = tabModuleProviding.makeTabModule([newsNavigationController])
         tabController = tabModule
 
         windowWireframe.setRoot(tabModule)
@@ -87,11 +87,11 @@ class ApplicationDirector: RootModuleDelegate,
     // MARK: NewsModuleDelegate
 
     func newsModuleDidRequestLogin() {
-        newsNavigationController.pushViewController(messagesModuleFactory.makeMessagesModule(self), animated: true)
+        newsNavigationController.pushViewController(messagesModuleProviding.makeMessagesModule(self), animated: true)
     }
 
     func newsModuleDidRequestShowingPrivateMessages() {
-        newsNavigationController.pushViewController(messagesModuleFactory.makeMessagesModule(self), animated: true)
+        newsNavigationController.pushViewController(messagesModuleProviding.makeMessagesModule(self), animated: true)
     }
 
     // MARK: MessagesModuleDelegate
@@ -100,7 +100,7 @@ class ApplicationDirector: RootModuleDelegate,
 
     func messagesModuleDidRequestResolutionForUser(completionHandler: @escaping (Bool) -> Void) {
         messagesModuleResolutionHandler = completionHandler
-        let loginModule = loginModuleFactory.makeLoginModule(self)
+        let loginModule = loginModuleProviding.makeLoginModule(self)
         loginModule.modalPresentationStyle = .formSheet
 
         tabController?.present(loginModule, animated: true)
@@ -128,11 +128,11 @@ class ApplicationDirector: RootModuleDelegate,
     // MARK: Private
 
     private func showPreloadModule() {
-        windowWireframe.setRoot(preloadModuleFactory.makePreloadModule(self))
+        windowWireframe.setRoot(preloadModuleProviding.makePreloadModule(self))
     }
 
     private func showTutorial() {
-        windowWireframe.setRoot(tutorialModuleFactory.makeTutorialModule(self))
+        windowWireframe.setRoot(tutorialModuleProviding.makeTutorialModule(self))
     }
 
 }

@@ -8,7 +8,7 @@
 
 import UIKit.UIViewController
 
-struct PhoneMessagesModuleFactory: MessagesModuleFactory {
+struct PhoneMessagesModuleFactory: MessagesModuleProviding {
 
     private let sceneFactory: MessagesSceneFactory
     private let authService: AuthService

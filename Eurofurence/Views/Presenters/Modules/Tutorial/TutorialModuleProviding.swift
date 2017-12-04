@@ -1,5 +1,5 @@
 //
-//  TutorialModuleFactory.swift
+//  TutorialModuleProviding.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 02/10/2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol TutorialModuleFactory {
+protocol TutorialModuleProviding {
 
     func makeTutorialModule(_ delegate: TutorialModuleDelegate) -> UIViewController
 
