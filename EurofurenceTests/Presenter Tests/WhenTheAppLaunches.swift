@@ -9,15 +9,6 @@
 @testable import Eurofurence
 import XCTest
 
-class CapturingPresentationWireframe: PresentationWireframe {
-    
-    private(set) var capturedRootScene: AnyObject?
-    func show(_ scene: AnyObject) {
-        capturedRootScene = scene
-    }
-    
-}
-
 class CapturingRootWireframe: RootModuleDelegate {
     
     private(set) var wasToldUserNeedsToWitnessTutorial = false

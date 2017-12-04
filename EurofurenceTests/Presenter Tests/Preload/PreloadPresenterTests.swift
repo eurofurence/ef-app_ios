@@ -15,7 +15,6 @@ class PreloadPresenterTests: XCTestCase {
         
         var preloadViewController: UIViewController?
         let preloadSceneFactory = StubPreloadSceneFactory()
-        let wireframe = CapturingPresentationWireframe()
         let capturingQuoteGenerator = CapturingQuoteGenerator()
         let preloadingService = CapturingPreloadService()
         let presentationStrings = UnlocalizedPresentationStrings()

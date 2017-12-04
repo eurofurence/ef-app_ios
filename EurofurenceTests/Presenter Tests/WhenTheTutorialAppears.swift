@@ -33,7 +33,6 @@ class WhenTheTutorialAppears: XCTestCase {
         var tutorialViewController: UIViewController
         var tutorialSceneFactory: StubTutorialSceneFactory
         var delegate: CapturingTutorialModuleDelegate
-        var wireframe: CapturingPresentationWireframe
         var tutorial: CapturingTutorialScene
         var page: CapturingTutorialPageScene
         var strings: PresentationStrings
@@ -51,7 +50,6 @@ class WhenTheTutorialAppears: XCTestCase {
         let presentationStrings = StubPresentationStrings()
         let presentationAssets = StubPresentationAssets()
         let tutorialSceneFactory = StubTutorialSceneFactory()
-        let wireframe = CapturingPresentationWireframe()
         let delegate = CapturingTutorialModuleDelegate()
         let vc = TutorialModuleBuilder()
             .with(tutorialSceneFactory)
@@ -68,7 +66,6 @@ class WhenTheTutorialAppears: XCTestCase {
         return TutorialTestContext(tutorialViewController: vc,
                                    tutorialSceneFactory: tutorialSceneFactory,
                                    delegate: delegate,
-                                   wireframe: wireframe,
                                    tutorial: tutorialSceneFactory.tutorialScene,
                                    page: tutorialSceneFactory.tutorialScene.tutorialPage,
                                    strings: presentationStrings,

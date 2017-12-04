@@ -13,17 +13,17 @@ protocol PreloadModuleDelegate {
 
 }
 
-struct PreloadModule<SceneFactory: PreloadSceneFactory>: PresentationModule {
+struct PreloadModule {
 
     private let delegate: PreloadModuleDelegate
-    private let preloadSceneFactory: SceneFactory
+    private let preloadSceneFactory: PreloadSceneFactory
     private let quoteGenerator: QuoteGenerator
     private let preloadService: PreloadService
     private let alertRouter: AlertRouter
     private let presentationStrings: PresentationStrings
 
     init(delegate: PreloadModuleDelegate,
-         preloadSceneFactory: SceneFactory,
+         preloadSceneFactory: PreloadSceneFactory,
          preloadService: PreloadService,
          alertRouter: AlertRouter,
          quoteGenerator: QuoteGenerator,
@@ -36,7 +36,7 @@ struct PreloadModule<SceneFactory: PreloadSceneFactory>: PresentationModule {
         self.presentationStrings = presentationStrings
     }
 
-    func attach(to wireframe: PresentationWireframe) {
+    func attach() {
         let preloadScene = preloadSceneFactory.makePreloadScene()
         _ = PreloadPresenter(delegate: delegate,
                              preloadScene: preloadScene,
@@ -44,7 +44,6 @@ struct PreloadModule<SceneFactory: PreloadSceneFactory>: PresentationModule {
                              alertRouter: alertRouter,
                              quote: quoteGenerator.makeQuote(),
                              presentationStrings: presentationStrings)
-        wireframe.show(preloadScene)
     }
 
 }

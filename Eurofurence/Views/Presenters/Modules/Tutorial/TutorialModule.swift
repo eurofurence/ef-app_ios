@@ -14,7 +14,7 @@ protocol TutorialModuleDelegate {
 
 }
 
-struct TutorialModule: PresentationModule {
+struct TutorialModule {
 
     static func initialize(context: ApplicationContext, routers: Routers) {
         struct DummyTutorialModuleDelegate: TutorialModuleDelegate {
@@ -67,10 +67,6 @@ struct TutorialModule: PresentationModule {
         self.networkReachability = networkReachability
         self.pushPermissionsRequesting = pushPermissionsRequesting
         self.witnessedTutorialPushPermissionsRequest = witnessedTutorialPushPermissionsRequest
-    }
-
-    func attach(to wireframe: PresentationWireframe) {
-
     }
 
 }
