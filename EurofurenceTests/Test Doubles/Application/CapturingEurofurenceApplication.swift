@@ -24,6 +24,11 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         privateMessageFetchCompletionHandler = completionHandler
     }
     
+    private(set) var capturedLoginArguments: LoginArguments?
+    func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {
+        capturedLoginArguments = arguments
+    }
+    
 }
 
 // MARK: - Test Helpers

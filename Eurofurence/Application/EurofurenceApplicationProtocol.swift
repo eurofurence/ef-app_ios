@@ -12,5 +12,6 @@ protocol EurofurenceApplicationProtocol {
 
     func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void)
     func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void)
+    func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void)
 
 }
