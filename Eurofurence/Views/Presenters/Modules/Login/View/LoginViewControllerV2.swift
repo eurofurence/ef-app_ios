@@ -20,11 +20,11 @@ class LoginViewControllerV2: UIViewController, LoginScene {
     var delegate: LoginSceneDelegate?
 
     func disableLoginButton() {
-
+        loginButton.isEnabled = false
     }
 
     func enableLoginButton() {
-
+        loginButton.isEnabled = true
     }
 
 }

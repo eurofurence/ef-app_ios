@@ -11,8 +11,27 @@ import XCTest
 
 class LoginViewControllerTests: XCTestCase {
     
+    var loginViewController: LoginViewControllerV2!
+    
+    override func setUp() {
+        super.setUp()
+        
+        loginViewController = LoginViewControllerV2Factory().makeLoginScene() as! LoginViewControllerV2
+    }
+    
     func testLoginButtonIsDisabledByDefault() {
-        let loginViewController = LoginViewControllerV2Factory().makeLoginScene() as! LoginViewControllerV2
+        XCTAssertFalse(loginViewController.loginButton.isEnabled)
+    }
+    
+    func testEnablingTheLoginButton() {
+        loginViewController.enableLoginButton()
+        XCTAssertTrue(loginViewController.loginButton.isEnabled)
+    }
+    
+    func testDisablingTheLoginButton() {
+        loginViewController.enableLoginButton()
+        loginViewController.disableLoginButton()
+        
         XCTAssertFalse(loginViewController.loginButton.isEnabled)
     }
     
