@@ -11,27 +11,27 @@ import XCTest
 
 class SplashViewControllerTests: XCTestCase {
     
-    var splashController: PreloadViewController!
+    var preloadViewController: PreloadViewController!
     var delegate: CapturingSplashSceneDelegate!
     
     override func setUp() {
         super.setUp()
         
-        splashController = PhonePreloadSceneFactory().makePreloadScene() as! PreloadViewController
+        preloadViewController = PhonePreloadSceneFactory().makePreloadScene() as! PreloadViewController
         delegate = CapturingSplashSceneDelegate()
-        splashController.delegate = delegate
-        splashController.loadView()
+        preloadViewController.delegate = delegate
+        preloadViewController.loadView()
     }
     
     func testTellingTheSceneToShowTheQuoteShouldSetItOntoTheQuoteLabel() {
         let quote = "Live long and eat pie"
-        splashController.showQuote(quote)
+        preloadViewController.showQuote(quote)
 
-        XCTAssertEqual(quote, splashController.quoteLabel.text)
+        XCTAssertEqual(quote, preloadViewController.quoteLabel.text)
     }
     
     func testDelegateIsToldWhenViewWillAppear() {
-        splashController.viewWillAppear(false)
+        preloadViewController.viewWillAppear(false)
         XCTAssertTrue(delegate.toldSplashSceneWillAppear)
     }
     
@@ -41,16 +41,16 @@ class SplashViewControllerTests: XCTestCase {
     
     func testTellingTheSceneToShowTheQuoteAuthorShouldSetItOntoTheQuoteAuthorLabel() {
         let author = "Some Guy"
-        splashController.showQuoteAuthor(author)
+        preloadViewController.showQuoteAuthor(author)
         
-        XCTAssertEqual(author, splashController.quoteAuthorLabel.text)
+        XCTAssertEqual(author, preloadViewController.quoteAuthorLabel.text)
     }
     
     func testTellingTheSceneToShowProgressSetsTheProgressOnTheProgressBar() {
         let progress = Float(arc4random_uniform(100) / 100)
-        splashController.showProgress(progress)
+        preloadViewController.showProgress(progress)
         
-        XCTAssertEqual(progress, splashController.progressBar.progress)
+        XCTAssertEqual(progress, preloadViewController.progressBar.progress)
     }
     
 }
