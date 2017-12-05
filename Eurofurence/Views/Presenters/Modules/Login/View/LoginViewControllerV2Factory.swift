@@ -9,7 +9,7 @@
 import UIKit.UIStoryboard
 import UIKit.UIViewController
 
-struct LoginViewControllerV2Factory {
+struct LoginViewControllerV2Factory: LoginSceneFactory {
 
     private let storyboard = UIStoryboard(name: "Login", bundle: .main)
 
