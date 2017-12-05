@@ -42,6 +42,11 @@ class SplashViewController: UIViewController, SplashScene,
         hieroglyphLabel.text = string
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        delegate?.splashSceneWillAppear(self)
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
 

@@ -42,3 +42,12 @@ class CapturingSplashScene: UIViewController, SplashScene {
     }
     
 }
+
+class CapturingSplashSceneDelegate: SplashSceneDelegate {
+    
+    private(set) var toldSplashSceneWillAppear = false
+    func splashSceneWillAppear(_ splashScene: SplashScene) {
+        toldSplashSceneWillAppear = true
+    }
+    
+}

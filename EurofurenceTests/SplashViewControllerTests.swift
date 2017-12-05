@@ -11,15 +11,28 @@ import XCTest
 
 class SplashViewControllerTests: XCTestCase {
     
-    func testTellingTheSceneToShowTheQuoteShouldSetItOntoTheQuoteLabel() {
-        let bundle = Bundle(for: SplashViewController.self)
-        let storyboard = UIStoryboard(name: "Main", bundle: bundle)
-        let splashController = storyboard.instantiateViewController(withIdentifier: "SplashViewController") as! SplashViewController
+    var splashController: SplashViewController!
+    var delegate: CapturingSplashSceneDelegate!
+    
+    override func setUp() {
+        super.setUp()
+        
+        splashController = PhonePreloadSceneFactory().makePreloadScene() as! SplashViewController
+        delegate = CapturingSplashSceneDelegate()
+        splashController.delegate = delegate
         splashController.loadView()
+    }
+    
+    func testTellingTheSceneToShowTheQuoteShouldSetItOntoTheQuoteLabel() {
         let quote = "Live long and eat pie"
         splashController.showQuote(quote)
 
         XCTAssertEqual(quote, splashController.quoteLabel.text)
+    }
+    
+    func testDelegateIsToldWhenViewWillAppear() {
+        splashController.viewWillAppear(false)
+        XCTAssertTrue(delegate.toldSplashSceneWillAppear)
     }
     
 }
