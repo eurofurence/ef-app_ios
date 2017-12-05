@@ -1,5 +1,5 @@
 //
-//  SplashViewControllerTests.swift
+//  PreloadViewControllerTests.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 09/07/2017.
@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import XCTest
 
-class SplashViewControllerTests: XCTestCase {
+class PreloadViewControllerTests: XCTestCase {
     
     var preloadViewController: PreloadViewController!
     var delegate: CapturingSplashSceneDelegate!

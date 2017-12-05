@@ -75,7 +75,6 @@
 		78C86D721F12AACA003A20E6 /* WhenTheSplashScreenAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D711F12AACA003A20E6 /* WhenTheSplashScreenAppears.swift */; };
 		78C86D751F12AC0F003A20E6 /* QuoteGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D741F12AC0F003A20E6 /* QuoteGenerator.swift */; };
 		78C86D791F12ADF8003A20E6 /* CapturingSplashScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D781F12ADF8003A20E6 /* CapturingSplashScene.swift */; };
-		78C86D7B1F12B2A2003A20E6 /* SplashViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D7A1F12B2A2003A20E6 /* SplashViewControllerTests.swift */; };
 		78C86D7D1F12B8FD003A20E6 /* EgyptianQuoteGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D7C1F12B8FD003A20E6 /* EgyptianQuoteGenerator.swift */; };
 		78C86D811F13A0CE003A20E6 /* StubPresentationStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D801F13A0CE003A20E6 /* StubPresentationStrings.swift */; };
 		78C86D831F13A35F003A20E6 /* UnlocalizedPresentationStringsShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D821F13A35F003A20E6 /* UnlocalizedPresentationStringsShould.swift */; };
@@ -256,6 +255,7 @@
 		CA6AA0061FD6C96B0092C6DB /* RootModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0051FD6C96B0092C6DB /* RootModuleBuilder.swift */; };
 		CA6AA0081FD731640092C6DB /* Preload.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6AA0071FD731640092C6DB /* Preload.storyboard */; };
 		CA6AA00A1FD731930092C6DB /* PreloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0091FD731930092C6DB /* PreloadViewController.swift */; };
+		CA6AA0101FD73CFE0092C6DB /* PreloadViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA00F1FD73CFE0092C6DB /* PreloadViewControllerTests.swift */; };
 		CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D41F799991002674A6 /* TutorialScene.swift */; };
 		CA804DD21F20CE8F00E07A4A /* V2LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */; };
 		CA804DD41F20CF4300E07A4A /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD31F20CF4300E07A4A /* APIResponse.swift */; };
@@ -480,7 +480,6 @@
 		78C86D711F12AACA003A20E6 /* WhenTheSplashScreenAppears.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenTheSplashScreenAppears.swift; path = "Presenter Tests/WhenTheSplashScreenAppears.swift"; sourceTree = "<group>"; };
 		78C86D741F12AC0F003A20E6 /* QuoteGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuoteGenerator.swift; path = Quotes/QuoteGenerator.swift; sourceTree = "<group>"; };
 		78C86D781F12ADF8003A20E6 /* CapturingSplashScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingSplashScene.swift; path = "Test Doubles/Scenes/CapturingSplashScene.swift"; sourceTree = "<group>"; };
-		78C86D7A1F12B2A2003A20E6 /* SplashViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewControllerTests.swift; sourceTree = "<group>"; };
 		78C86D7C1F12B8FD003A20E6 /* EgyptianQuoteGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EgyptianQuoteGenerator.swift; path = Quotes/EgyptianQuoteGenerator.swift; sourceTree = "<group>"; };
 		78C86D801F13A0CE003A20E6 /* StubPresentationStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubPresentationStrings.swift; path = "Test Doubles/StubPresentationStrings.swift"; sourceTree = "<group>"; };
 		78C86D821F13A35F003A20E6 /* UnlocalizedPresentationStringsShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnlocalizedPresentationStringsShould.swift; sourceTree = "<group>"; };
@@ -671,6 +670,7 @@
 		CA6AA0051FD6C96B0092C6DB /* RootModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleBuilder.swift; sourceTree = "<group>"; };
 		CA6AA0071FD731640092C6DB /* Preload.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preload.storyboard; sourceTree = "<group>"; };
 		CA6AA0091FD731930092C6DB /* PreloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadViewController.swift; sourceTree = "<group>"; };
+		CA6AA00F1FD73CFE0092C6DB /* PreloadViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreloadViewControllerTests.swift; path = "Presenter Tests/Preload/PreloadViewControllerTests.swift"; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
 		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/Protocols/APIResponse.swift; sourceTree = "<group>"; };
@@ -1384,7 +1384,6 @@
 				7820A6DE1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift */,
 				78CA0D0C1F0D8261006DFD64 /* CalendarServiceTests.swift */,
 				6EF96CDA1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift */,
-				78C86D7A1F12B2A2003A20E6 /* SplashViewControllerTests.swift */,
 				7820A6E81F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift */,
 				78C86D4B1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift */,
 				78455B511F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift */,
@@ -1604,6 +1603,7 @@
 			children = (
 				CA321F4D1F7BC7FD0050E489 /* PhonePreloadSceneFactoryTests.swift */,
 				CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */,
+				CA6AA00F1FD73CFE0092C6DB /* PreloadViewControllerTests.swift */,
 			);
 			name = Preload;
 			sourceTree = "<group>";
@@ -2730,7 +2730,6 @@
 				CAD234421F5F2FA8004BB959 /* AppDataBuilder.swift in Sources */,
 				CA5BF9D51F7AF9160045DBC0 /* PreloadPresenterTests.swift in Sources */,
 				7820A7011F16C0F0004C0FB5 /* CapturingPushPermissionsStateProviding.swift in Sources */,
-				78C86D7B1F12B2A2003A20E6 /* SplashViewControllerTests.swift in Sources */,
 				78C86D811F13A0CE003A20E6 /* StubPresentationStrings.swift in Sources */,
 				CA4FBE151F7313A300D29405 /* MessageTableViewCellTests.swift in Sources */,
 				7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */,
@@ -2758,6 +2757,7 @@
 				7820A6E51F140056004C0FB5 /* CapturingAlertRouter.swift in Sources */,
 				781A94381F1A19BD002DE70F /* CapturingFirebaseAdapter.swift in Sources */,
 				CA30EABA1F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift in Sources */,
+				CA6AA0101FD73CFE0092C6DB /* PreloadViewControllerTests.swift in Sources */,
 				78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */,
 				CA8E7F011FB0942000F0BF10 /* PhoneTabModuleFactoryTests.swift in Sources */,
 				CAF3C74E1F9FC72C0008F027 /* StubNewsSceneFactory.swift in Sources */,
