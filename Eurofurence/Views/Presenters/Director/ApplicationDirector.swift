@@ -15,6 +15,14 @@ class ApplicationDirector: RootModuleDelegate,
                            MessagesModuleDelegate,
                            LoginModuleDelegate {
 
+    private class DissolveTransitionAnimationProviding: NSObject, UINavigationControllerDelegate {
+
+        func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+            return ViewControllerDissolveTransitioning()
+        }
+
+    }
+
     private let animate: Bool
     private let windowWireframe: WindowWireframe
     private let rootModuleProviding: RootModuleProviding
@@ -27,6 +35,7 @@ class ApplicationDirector: RootModuleDelegate,
     private let loginModuleProviding: LoginModuleProviding
 
     private let rootNavigationController: UINavigationController
+    private let rootNavigationControllerDelegate = DissolveTransitionAnimationProviding()
 
     private var tabController: UIViewController?
     private var newsController: UIViewController?
@@ -52,6 +61,7 @@ class ApplicationDirector: RootModuleDelegate,
         self.loginModuleProviding = loginModuleProviding
 
         rootNavigationController = navigationControllerFactory.makeNavigationController()
+        rootNavigationController.delegate = rootNavigationControllerDelegate
         rootNavigationController.isNavigationBarHidden = true
         windowWireframe.setRoot(rootNavigationController)
 

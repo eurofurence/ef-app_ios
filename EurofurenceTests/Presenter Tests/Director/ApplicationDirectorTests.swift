@@ -222,6 +222,15 @@ class ApplicationDirectorTests: XCTestCase {
         XCTAssertEqual([tabModuleFactory.stubInterface], rootNavigationController.viewControllers)
     }
     
+    func testWhenPresentingTabControllerTheDissolveTransitionIsUsed() {
+        rootModuleFactory.delegate?.userNeedsToWitnessTutorial()
+        tutorialModuleFactory.delegate?.tutorialModuleDidFinishPresentingTutorial()
+        preloadModuleFactory.delegate?.preloadModuleDidFinishPreloading()
+        let transition = rootNavigationController.delegate?.navigationController?(rootNavigationController, animationControllerFor: .push, from: preloadModuleFactory.stubInterface, to: tabModuleFactory.stubInterface)
+
+        XCTAssertTrue(transition is ViewControllerDissolveTransitioning)
+    }
+    
     func testWhenShowingTheTheTabModuleItIsInitialisedWithControllersForTabModulesNestedInNavigationControllers() {
         navigateToTabController()
         let expected: [UIViewController] = [newsModuleFactory.stubInterface]

@@ -256,6 +256,7 @@
 		CA6AA0081FD731640092C6DB /* Preload.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6AA0071FD731640092C6DB /* Preload.storyboard */; };
 		CA6AA00A1FD731930092C6DB /* PreloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0091FD731930092C6DB /* PreloadViewController.swift */; };
 		CA6AA0101FD73CFE0092C6DB /* PreloadViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA00F1FD73CFE0092C6DB /* PreloadViewControllerTests.swift */; };
+		CA6AA0141FD74F910092C6DB /* ViewControllerDissolveTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0131FD74F910092C6DB /* ViewControllerDissolveTransitioning.swift */; };
 		CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D41F799991002674A6 /* TutorialScene.swift */; };
 		CA804DD21F20CE8F00E07A4A /* V2LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */; };
 		CA804DD41F20CF4300E07A4A /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD31F20CF4300E07A4A /* APIResponse.swift */; };
@@ -671,6 +672,7 @@
 		CA6AA0071FD731640092C6DB /* Preload.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preload.storyboard; sourceTree = "<group>"; };
 		CA6AA0091FD731930092C6DB /* PreloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadViewController.swift; sourceTree = "<group>"; };
 		CA6AA00F1FD73CFE0092C6DB /* PreloadViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreloadViewControllerTests.swift; path = "Presenter Tests/Preload/PreloadViewControllerTests.swift"; sourceTree = "<group>"; };
+		CA6AA0131FD74F910092C6DB /* ViewControllerDissolveTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDissolveTransitioning.swift; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
 		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/Protocols/APIResponse.swift; sourceTree = "<group>"; };
@@ -1431,14 +1433,15 @@
 		9ACF99591EBE32FE006FC958 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D6F3D756F99A68B2DC5B7359 /* Main.storyboard */,
 				9AF159E91EF5B3AE00DB287D /* Cells */,
 				D6F3DE4616D9A2E243387004 /* Controllers */,
 				78455B601F118685005BE2D7 /* Controls */,
+				9ACF99401EBE172D006FC958 /* LaunchScreen.storyboard */,
 				78455B4E1F117843005BE2D7 /* Presenters */,
 				78455B431F11777D005BE2D7 /* Routers */,
 				78F555971F10D59000BDA7D4 /* Segues */,
-				9ACF99401EBE172D006FC958 /* LaunchScreen.storyboard */,
-				D6F3D756F99A68B2DC5B7359 /* Main.storyboard */,
+				CA6AA0111FD74F590092C6DB /* Transitions */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1641,6 +1644,22 @@
 				CABA439C1FD576D0009CB5B0 /* MessagesModuleBuilder.swift */,
 			);
 			name = Module;
+			sourceTree = "<group>";
+		};
+		CA6AA0111FD74F590092C6DB /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				CA6AA0121FD74F660092C6DB /* Dissolve */,
+			);
+			path = Transitions;
+			sourceTree = "<group>";
+		};
+		CA6AA0121FD74F660092C6DB /* Dissolve */ = {
+			isa = PBXGroup;
+			children = (
+				CA6AA0131FD74F910092C6DB /* ViewControllerDissolveTransitioning.swift */,
+			);
+			path = Dissolve;
 			sourceTree = "<group>";
 		};
 		CA804DCF1F20CE5F00E07A4A /* API */ = {
@@ -2514,6 +2533,7 @@
 				9ACF99921EC858B2006FC958 /* EventConferenceDay.swift in Sources */,
 				9ACF998D1EC858B2006FC958 /* KnowledgeGroup.swift in Sources */,
 				78C86D561F12334D003A20E6 /* Routers.swift in Sources */,
+				CA6AA0141FD74F910092C6DB /* ViewControllerDissolveTransitioning.swift in Sources */,
 				CA30EAB01F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift in Sources */,
 				9A861EAB1F2554D700B75A8C /* BootstrappingModule.swift in Sources */,
 				9A7FDA141F3445890050C325 /* CopyableLabel.swift in Sources */,
