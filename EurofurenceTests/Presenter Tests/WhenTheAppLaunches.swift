@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import XCTest
 
-class CapturingRootWireframe: RootModuleDelegate {
+class CapturingRootModuleDelegate: RootModuleDelegate {
     
     private(set) var wasToldUserNeedsToWitnessTutorial = false
     func userNeedsToWitnessTutorial() {
@@ -27,40 +27,43 @@ class WhenTheAppLaunches: XCTestCase {
     
     // MARK: New
     
+    var delegate: CapturingRootModuleDelegate!
+    
+    override func setUp() {
+        super.setUp()
+        delegate = CapturingRootModuleDelegate()
+    }
+    
     func testAndTheUserHasNotFinishedTheTutorialTheDelegateIsToldTheUserNeedsToWitnessTutorial() {
-        let rootWireframe = CapturingRootWireframe()
         let notCompletedTutorial = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
         let factory = PhoneRootModuleFactory(firstTimeLaunchStateProviding: notCompletedTutorial)
-        _ = factory.makeRootModule(rootWireframe)
+        _ = factory.makeRootModule(delegate)
         
-        XCTAssertTrue(rootWireframe.wasToldUserNeedsToWitnessTutorial)
+        XCTAssertTrue(delegate.wasToldUserNeedsToWitnessTutorial)
     }
     
     func testAndTheUserHasNotFinishedTheTutorialTheDelegateIsNotToldToPreloadStore() {
-        let rootWireframe = CapturingRootWireframe()
         let notCompletedTutorial = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
         let factory = PhoneRootModuleFactory(firstTimeLaunchStateProviding: notCompletedTutorial)
-        _ = factory.makeRootModule(rootWireframe)
+        _ = factory.makeRootModule(delegate)
         
-        XCTAssertFalse(rootWireframe.wasToldToPreloadStore)
+        XCTAssertFalse(delegate.wasToldToPreloadStore)
     }
     
     func testAndTheUserHasFinishedTheTutorialTheDelegateIsToldToPreloadStore() {
-        let rootWireframe = CapturingRootWireframe()
         let notCompletedTutorial = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
         let factory = PhoneRootModuleFactory(firstTimeLaunchStateProviding: notCompletedTutorial)
-        _ = factory.makeRootModule(rootWireframe)
+        _ = factory.makeRootModule(delegate)
 
-        XCTAssertTrue(rootWireframe.wasToldToPreloadStore)
+        XCTAssertTrue(delegate.wasToldToPreloadStore)
     }
     
     func testAndTheUserHasFinishedTheTutorialTheDelegateIsNotToldTheUserNeedsToWitnessTutorial() {
-        let rootWireframe = CapturingRootWireframe()
         let notCompletedTutorial = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
         let factory = PhoneRootModuleFactory(firstTimeLaunchStateProviding: notCompletedTutorial)
-        _ = factory.makeRootModule(rootWireframe)
+        _ = factory.makeRootModule(delegate)
         
-        XCTAssertFalse(rootWireframe.wasToldUserNeedsToWitnessTutorial)
+        XCTAssertFalse(delegate.wasToldUserNeedsToWitnessTutorial)
     }
     
     // MARK: Old
