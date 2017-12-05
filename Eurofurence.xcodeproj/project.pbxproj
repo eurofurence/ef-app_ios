@@ -251,6 +251,7 @@
 		CA6A9FF91FD5E79F0092C6DB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6A9FF81FD5E79F0092C6DB /* Login.storyboard */; };
 		CA6A9FFD1FD5F3CB0092C6DB /* EurofurenceLoginInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FFC1FD5F3CB0092C6DB /* EurofurenceLoginInteractorTests.swift */; };
 		CA6A9FFF1FD5F5DC0092C6DB /* EurofurenceLoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FFE1FD5F5DC0092C6DB /* EurofurenceLoginInteractor.swift */; };
+		CA6AA0011FD6C5FD0092C6DB /* LoginModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0001FD6C5FD0092C6DB /* LoginModuleBuilder.swift */; };
 		CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D41F799991002674A6 /* TutorialScene.swift */; };
 		CA804DD21F20CE8F00E07A4A /* V2LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */; };
 		CA804DD41F20CF4300E07A4A /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD31F20CF4300E07A4A /* APIResponse.swift */; };
@@ -661,6 +662,7 @@
 		CA6A9FF81FD5E79F0092C6DB /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		CA6A9FFC1FD5F3CB0092C6DB /* EurofurenceLoginInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EurofurenceLoginInteractorTests.swift; path = "Presenter Tests/Login/EurofurenceLoginInteractorTests.swift"; sourceTree = "<group>"; };
 		CA6A9FFE1FD5F5DC0092C6DB /* EurofurenceLoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceLoginInteractor.swift; sourceTree = "<group>"; };
+		CA6AA0001FD6C5FD0092C6DB /* LoginModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleBuilder.swift; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
 		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/Protocols/APIResponse.swift; sourceTree = "<group>"; };
@@ -1717,6 +1719,7 @@
 		CABA43841FBC6FD3009CB5B0 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				CA6AA0001FD6C5FD0092C6DB /* LoginModuleBuilder.swift */,
 				CABA43851FBC6FE1009CB5B0 /* LoginModuleProviding.swift */,
 				CA6A9FEE1FD5DDF90092C6DB /* Interactor */,
 				CABA43AE1FD5DC96009CB5B0 /* Module */,
@@ -2673,6 +2676,7 @@
 				9A7FDA121F33B7630050C325 /* UserDefaultsTabBarOrderProvider.swift in Sources */,
 				CAE27B501F857A99005FDE39 /* PhonePreloadModuleFactory.swift in Sources */,
 				D6F3D749FF814981E076850E /* ImageService.swift in Sources */,
+				CA6AA0011FD6C5FD0092C6DB /* LoginModuleBuilder.swift in Sources */,
 				78F5559B1F10D65900BDA7D4 /* SplashViewController.swift in Sources */,
 				D6F3DCE06EF6B706F0A3EF09 /* TimeService.swift in Sources */,
 				CABA439F1FD578E1009CB5B0 /* NewsModuleBuilder.swift in Sources */,

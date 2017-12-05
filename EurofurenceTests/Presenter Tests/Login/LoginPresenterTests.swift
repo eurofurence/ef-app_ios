@@ -26,12 +26,14 @@ class LoginPresenterTests: XCTestCase {
         presentationStrings = StubPresentationStrings()
         alertRouter = CapturingAlertRouter()
         alertRouter.automaticallyPresentAlerts = true
-        let moduleFactory = PhoneLoginModuleFactory(sceneFactory: loginSceneFactory,
-                                                    loginService: loginService,
-                                                    presentationStrings: presentationStrings,
-                                                    alertRouter: alertRouter)
         delegate = CapturingLoginModuleDelegate()
-        scene = moduleFactory.makeLoginModule(delegate)
+        scene = LoginModuleBuilder()
+            .with(loginSceneFactory)
+            .with(loginService)
+            .with(presentationStrings)
+            .with(alertRouter)
+            .build()
+            .makeLoginModule(delegate)
     }
     
     private func inputValidCredentials() {
