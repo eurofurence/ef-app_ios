@@ -14,7 +14,15 @@ struct EurofurenceLoginInteractor: LoginService {
         let arguments = LoginArguments(registrationNumber: request.registrationNumber,
                                        username: request.username,
                                        password: request.password)
-        app.login(arguments, completionHandler: { _ in })
+        app.login(arguments) { (result) in
+            switch result {
+            case .success(_):
+                completionHandler(.success)
+
+            case .failure:
+                completionHandler(.failure)
+            }
+        }
     }
 
 }

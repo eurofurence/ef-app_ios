@@ -25,8 +25,10 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
     }
     
     private(set) var capturedLoginArguments: LoginArguments?
+    private(set) var capturedLoginHandler: ((LoginResult) -> Void)?
     func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {
         capturedLoginArguments = arguments
+        capturedLoginHandler = completionHandler
     }
     
 }

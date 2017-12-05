@@ -11,6 +11,16 @@ import XCTest
 
 class EurofurenceLoginInteractorTests: XCTestCase {
     
+    var interactor: EurofurenceLoginInteractor!
+    var app: CapturingEurofurenceApplication!
+    
+    override func setUp() {
+        super.setUp()
+        
+        app = CapturingEurofurenceApplication()
+        interactor = EurofurenceLoginInteractor(app: app)
+    }
+    
     func testAttemptingLoginAdaptsArguments() {
         let registrationNumber = Int(arc4random())
         let username = "User \(registrationNumber)"
@@ -21,11 +31,32 @@ class EurofurenceLoginInteractorTests: XCTestCase {
         let expected = LoginArguments(registrationNumber: registrationNumber,
                                       username: username,
                                       password: password)
-        let app = CapturingEurofurenceApplication()
-        let interactor = EurofurenceLoginInteractor(app: app)
         interactor.perform(input, completionHandler: { _ in })
         
         XCTAssertEqual(expected, app.capturedLoginArguments)
+    }
+    
+    func testSuccessfulLoginsNotifyHandler() {
+        let input = LoginServiceRequest(registrationNumber: 0,
+                                        username: "",
+                                        password: "")
+        var didLogin = false
+        interactor.perform(input, completionHandler: { didLogin = $0 == .success })
+        let user = User(registrationNumber: 0, username: "")
+        app.capturedLoginHandler?(.success(user))
+        
+        XCTAssertTrue(didLogin)
+    }
+    
+    func testFailedLoginsNotifyHandler() {
+        let input = LoginServiceRequest(registrationNumber: 0,
+                                        username: "",
+                                        password: "")
+        var didFailToLogin = false
+        interactor.perform(input, completionHandler: { didFailToLogin = $0 == .failure })
+        app.capturedLoginHandler?(.failure)
+        
+        XCTAssertTrue(didFailToLogin)
     }
     
 }
