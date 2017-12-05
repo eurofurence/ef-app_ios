@@ -15,6 +15,7 @@ class ApplicationDirector: RootModuleDelegate,
                            MessagesModuleDelegate,
                            LoginModuleDelegate {
 
+    private let animate: Bool
     private let windowWireframe: WindowWireframe
     private let rootModuleProviding: RootModuleProviding
     private let tutorialModuleProviding: TutorialModuleProviding
@@ -25,10 +26,13 @@ class ApplicationDirector: RootModuleDelegate,
     private let newsNavigationController: UINavigationController
     private let loginModuleProviding: LoginModuleProviding
 
+    private let rootNavigationController: UINavigationController
+
     private var tabController: UIViewController?
     private var newsController: UIViewController?
 
-    init(windowWireframe: WindowWireframe,
+    init(animate: Bool,
+         windowWireframe: WindowWireframe,
          navigationControllerFactory: NavigationControllerFactory,
          rootModuleProviding: RootModuleProviding,
          tutorialModuleProviding: TutorialModuleProviding,
@@ -37,6 +41,7 @@ class ApplicationDirector: RootModuleDelegate,
          newsModuleProviding: NewsModuleProviding,
          messagesModuleProviding: MessagesModuleProviding,
          loginModuleProviding: LoginModuleProviding) {
+        self.animate = animate
         self.windowWireframe = windowWireframe
         self.rootModuleProviding = rootModuleProviding
         self.tutorialModuleProviding = tutorialModuleProviding
@@ -45,6 +50,10 @@ class ApplicationDirector: RootModuleDelegate,
         self.newsModuleProviding = newsModuleProviding
         self.messagesModuleProviding = messagesModuleProviding
         self.loginModuleProviding = loginModuleProviding
+
+        rootNavigationController = navigationControllerFactory.makeNavigationController()
+        rootNavigationController.isNavigationBarHidden = true
+        windowWireframe.setRoot(rootNavigationController)
 
         newsNavigationController = navigationControllerFactory.makeNavigationController()
 
@@ -81,7 +90,7 @@ class ApplicationDirector: RootModuleDelegate,
         let tabModule = tabModuleProviding.makeTabModule([newsNavigationController])
         tabController = tabModule
 
-        windowWireframe.setRoot(tabModule)
+        rootNavigationController.setViewControllers([tabModule], animated: animate)
     }
 
     // MARK: NewsModuleDelegate
@@ -128,11 +137,13 @@ class ApplicationDirector: RootModuleDelegate,
     // MARK: Private
 
     private func showPreloadModule() {
-        windowWireframe.setRoot(preloadModuleProviding.makePreloadModule(self))
+        let preloadViewController = preloadModuleProviding.makePreloadModule(self)
+        rootNavigationController.viewControllers = [preloadViewController]
     }
 
     private func showTutorial() {
-        windowWireframe.setRoot(tutorialModuleProviding.makeTutorialModule(self))
+        let tutorialViewController = tutorialModuleProviding.makeTutorialModule(self)
+        rootNavigationController.viewControllers = [tutorialViewController]
     }
 
 }

@@ -8,6 +8,7 @@
 
 class DirectorBuilder {
 
+    private var animate: Bool
     private var windowWireframe: WindowWireframe
     private var navigationControllerFactory: NavigationControllerFactory
     private var rootModuleProviding: RootModuleProviding
@@ -19,6 +20,7 @@ class DirectorBuilder {
     private var loginModuleProviding: LoginModuleProviding
 
     init() {
+        animate = true
         windowWireframe = PhoneWindowWireframe.shared
         navigationControllerFactory = PhoneNavigationControllerFactory()
         tabModuleProviding = PhoneTabModuleFactory()
@@ -29,6 +31,12 @@ class DirectorBuilder {
         newsModuleProviding = NewsModuleBuilder().build()
         messagesModuleProviding = MessagesModuleBuilder().build()
         loginModuleProviding = LoginModuleBuilder().build()
+    }
+
+    @discardableResult
+    func withAnimations(_ animate: Bool) -> DirectorBuilder {
+        self.animate = animate
+        return self
     }
 
     @discardableResult
@@ -86,7 +94,8 @@ class DirectorBuilder {
     }
 
     func build() -> ApplicationDirector {
-        return ApplicationDirector(windowWireframe: windowWireframe,
+        return ApplicationDirector(animate: animate,
+                                   windowWireframe: windowWireframe,
                                    navigationControllerFactory: navigationControllerFactory,
                                    rootModuleProviding: rootModuleProviding,
                                    tutorialModuleProviding: tutorialModuleProviding,

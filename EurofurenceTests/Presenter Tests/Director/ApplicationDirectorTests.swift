@@ -150,6 +150,10 @@ class ApplicationDirectorTests: XCTestCase {
         preloadModuleFactory.delegate?.preloadModuleDidFinishPreloading()
     }
     
+    private var rootNavigationController: UINavigationController {
+        return windowWireframe.capturedRootInterface as! UINavigationController
+    }
+    
     override func setUp() {
         super.setUp()
         
@@ -163,6 +167,7 @@ class ApplicationDirectorTests: XCTestCase {
         loginModuleFactory = StubLoginModuleFactory()
         
         let builder = DirectorBuilder()
+        builder.withAnimations(false)
         builder.with(windowWireframe)
         builder.with(StubNavigationControllerFactory())
         builder.with(rootModuleFactory)
@@ -176,21 +181,29 @@ class ApplicationDirectorTests: XCTestCase {
         director = builder.build()
     }
     
-    func testWhenRootModuleIndicatesUserNeedsToWitnessTutorialTheTutorialModuleIsSetAsRoot() {
+    func testNavigationControllerSetAsRootOnWindow() {
+        XCTAssertTrue(windowWireframe.capturedRootInterface is UINavigationController)
+    }
+    
+    func testTheRootNavigationControllerDoesNotShowNavigationBar() {
+        XCTAssertTrue(rootNavigationController.isNavigationBarHidden)
+    }
+    
+    func testWhenRootModuleIndicatesUserNeedsToWitnessTutorialTheTutorialModuleIsSetOntoRootNavigationController() {
         rootModuleFactory.delegate?.userNeedsToWitnessTutorial()
-        XCTAssertEqual(tutorialModuleFactory.stubInterface, windowWireframe.capturedRootInterface)
+        XCTAssertEqual([tutorialModuleFactory.stubInterface], rootNavigationController.viewControllers)
     }
     
     func testWhenRootModuleIndicatesStoreShouldPreloadThePreloadModuleIsSetAsRoot() {
         rootModuleFactory.delegate?.storeShouldBePreloaded()
-        XCTAssertEqual(preloadModuleFactory.stubInterface, windowWireframe.capturedRootInterface)
+        XCTAssertEqual([preloadModuleFactory.stubInterface], rootNavigationController.viewControllers)
     }
     
     func testWhenTheTutorialFinishesThePreloadModuleIsSetAsRoot() {
         rootModuleFactory.delegate?.userNeedsToWitnessTutorial()
         tutorialModuleFactory.delegate?.tutorialModuleDidFinishPresentingTutorial()
         
-        XCTAssertEqual(preloadModuleFactory.stubInterface, windowWireframe.capturedRootInterface)
+        XCTAssertEqual([preloadModuleFactory.stubInterface], rootNavigationController.viewControllers)
     }
     
     func testWhenPreloadingFailsAfterFinishingTutorialTheTutorialIsRedisplayed() {
@@ -198,7 +211,7 @@ class ApplicationDirectorTests: XCTestCase {
         tutorialModuleFactory.delegate?.tutorialModuleDidFinishPresentingTutorial()
         preloadModuleFactory.delegate?.preloadModuleDidCancelPreloading()
         
-        XCTAssertEqual(tutorialModuleFactory.stubInterface, windowWireframe.capturedRootInterface)
+        XCTAssertEqual([tutorialModuleFactory.stubInterface], rootNavigationController.viewControllers)
     }
     
     func testWhenPreloadingSucceedsAfterFinishingTutorialTheTabWireframeIsSetAsTheRoot() {
@@ -206,7 +219,7 @@ class ApplicationDirectorTests: XCTestCase {
         tutorialModuleFactory.delegate?.tutorialModuleDidFinishPresentingTutorial()
         preloadModuleFactory.delegate?.preloadModuleDidFinishPreloading()
         
-        XCTAssertEqual(tabModuleFactory.stubInterface, windowWireframe.capturedRootInterface)
+        XCTAssertEqual([tabModuleFactory.stubInterface], rootNavigationController.viewControllers)
     }
     
     func testWhenShowingTheTheTabModuleItIsInitialisedWithControllersForTabModulesNestedInNavigationControllers() {
