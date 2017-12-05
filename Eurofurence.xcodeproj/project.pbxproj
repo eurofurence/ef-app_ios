@@ -252,6 +252,7 @@
 		CA6A9FFD1FD5F3CB0092C6DB /* EurofurenceLoginInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FFC1FD5F3CB0092C6DB /* EurofurenceLoginInteractorTests.swift */; };
 		CA6A9FFF1FD5F5DC0092C6DB /* EurofurenceLoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FFE1FD5F5DC0092C6DB /* EurofurenceLoginInteractor.swift */; };
 		CA6AA0011FD6C5FD0092C6DB /* LoginModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0001FD6C5FD0092C6DB /* LoginModuleBuilder.swift */; };
+		CA6AA0061FD6C96B0092C6DB /* RootModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0051FD6C96B0092C6DB /* RootModuleBuilder.swift */; };
 		CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D41F799991002674A6 /* TutorialScene.swift */; };
 		CA804DD21F20CE8F00E07A4A /* V2LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */; };
 		CA804DD41F20CF4300E07A4A /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD31F20CF4300E07A4A /* APIResponse.swift */; };
@@ -663,6 +664,7 @@
 		CA6A9FFC1FD5F3CB0092C6DB /* EurofurenceLoginInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EurofurenceLoginInteractorTests.swift; path = "Presenter Tests/Login/EurofurenceLoginInteractorTests.swift"; sourceTree = "<group>"; };
 		CA6A9FFE1FD5F5DC0092C6DB /* EurofurenceLoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceLoginInteractor.swift; sourceTree = "<group>"; };
 		CA6AA0001FD6C5FD0092C6DB /* LoginModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleBuilder.swift; sourceTree = "<group>"; };
+		CA6AA0051FD6C96B0092C6DB /* RootModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleBuilder.swift; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
 		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/Protocols/APIResponse.swift; sourceTree = "<group>"; };
@@ -1919,8 +1921,9 @@
 		CAF705621F82D0D400A9FEA2 /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */,
 				CA8E7EF71FB08ED700F0BF10 /* PhoneRootModuleFactory.swift */,
+				CA6AA0051FD6C96B0092C6DB /* RootModuleBuilder.swift */,
+				CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -2549,6 +2552,7 @@
 				CABA43A31FD57C65009CB5B0 /* TutorialModuleBuilder.swift in Sources */,
 				CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */,
 				78C86D7D1F12B8FD003A20E6 /* EgyptianQuoteGenerator.swift in Sources */,
+				CA6AA0061FD6C96B0092C6DB /* RootModuleBuilder.swift in Sources */,
 				CAD7804E1F1D5227002A8333 /* SystemClock.swift in Sources */,
 				6EF96CD11F0EDB4C00EE6134 /* CalendarService.swift in Sources */,
 				CA30EAB41F2161F10053DBF6 /* CredentialPersister.swift in Sources */,

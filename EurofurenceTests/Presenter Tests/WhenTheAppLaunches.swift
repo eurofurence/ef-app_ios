@@ -35,9 +35,10 @@ class WhenTheAppLaunches: XCTestCase {
     }
     
     private func makeRootModule(userHasCompletedTutorial tutorialState: Bool) {
-        let tutorialStateProviding = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: tutorialState)
-        let factory = PhoneRootModuleFactory(firstTimeLaunchStateProviding: tutorialStateProviding)
-        _ = factory.makeRootModule(delegate)
+        _ = RootModuleBuilder()
+            .with(StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: tutorialState))
+            .build()
+            .makeRootModule(delegate)
     }
     
     func testAndTheUserHasNotFinishedTheTutorialTheDelegateIsToldTheUserNeedsToWitnessTutorial() {
