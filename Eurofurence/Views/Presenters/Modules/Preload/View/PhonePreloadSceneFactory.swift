@@ -6,22 +6,15 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-import UIKit
+import UIKit.UIStoryboard
+import UIKit.UIViewController
 
 struct PhonePreloadSceneFactory: PreloadSceneFactory {
 
+    private let storyboard = UIStoryboard(name: "Preload", bundle: .main)
+
     func makePreloadScene() -> UIViewController & SplashScene {
-        let storyboardBundle = Bundle(for: SplashViewController.self)
-        let storyboard = UIStoryboard(name: "Main", bundle: storyboardBundle)
-        guard let root = storyboard.instantiateInitialViewController() as? UINavigationController else {
-            fatalError("Unexpected entry point into Main storyboard")
-        }
-
-        guard let splash = root.topViewController as? SplashViewController else {
-            fatalError("Expected \(SplashViewController.self) as root of UINavigationController")
-        }
-
-        return splash
+        return storyboard.instantiateViewController(withIdentifier: "PreloadViewController") as! PreloadViewController
     }
 
 }

@@ -11,13 +11,13 @@ import XCTest
 
 class SplashViewControllerTests: XCTestCase {
     
-    var splashController: SplashViewController!
+    var splashController: PreloadViewController!
     var delegate: CapturingSplashSceneDelegate!
     
     override func setUp() {
         super.setUp()
         
-        splashController = PhonePreloadSceneFactory().makePreloadScene() as! SplashViewController
+        splashController = PhonePreloadSceneFactory().makePreloadScene() as! PreloadViewController
         delegate = CapturingSplashSceneDelegate()
         splashController.delegate = delegate
         splashController.loadView()
@@ -33,6 +33,10 @@ class SplashViewControllerTests: XCTestCase {
     func testDelegateIsToldWhenViewWillAppear() {
         splashController.viewWillAppear(false)
         XCTAssertTrue(delegate.toldSplashSceneWillAppear)
+    }
+    
+    func testDelegateIsNotToldViewAppearedTooSoon() {
+        XCTAssertFalse(delegate.toldSplashSceneWillAppear)
     }
     
 }
