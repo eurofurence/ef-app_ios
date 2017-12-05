@@ -161,15 +161,19 @@ class ApplicationDirectorTests: XCTestCase {
         newsModuleFactory = StubNewsModuleFactory()
         messagesModuleFactory = StubMessagesModuleFactory()
         loginModuleFactory = StubLoginModuleFactory()
-        director = ApplicationDirector(windowWireframe: windowWireframe,
-                                       navigationControllerFactory: StubNavigationControllerFactory(),
-                                       rootModuleProviding: rootModuleFactory,
-                                       tutorialModuleProviding: tutorialModuleFactory,
-                                       preloadModuleProviding: preloadModuleFactory,
-                                       tabModuleProviding: tabModuleFactory,
-                                       newsModuleProviding: newsModuleFactory,
-                                       messagesModuleProviding: messagesModuleFactory,
-                                       loginModuleProviding: loginModuleFactory)
+        
+        let builder = DirectorBuilder()
+        builder.with(windowWireframe)
+        builder.with(StubNavigationControllerFactory())
+        builder.with(rootModuleFactory)
+        builder.with(tutorialModuleFactory)
+        builder.with(preloadModuleFactory)
+        builder.with(tabModuleFactory)
+        builder.with(newsModuleFactory)
+        builder.with(messagesModuleFactory)
+        builder.with(loginModuleFactory)
+        
+        director = builder.build()
     }
     
     func testWhenRootModuleIndicatesUserNeedsToWitnessTutorialTheTutorialModuleIsSetAsRoot() {

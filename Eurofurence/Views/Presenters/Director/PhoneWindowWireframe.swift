@@ -11,6 +11,11 @@ import UIKit.UIWindow
 
 struct PhoneWindowWireframe: WindowWireframe {
 
+    static var shared: PhoneWindowWireframe = {
+        let window = UIApplication.shared.delegate!.window!!
+        return PhoneWindowWireframe(window: window)
+    }()
+
     var window: UIWindow
 
     func setRoot(_ viewController: UIViewController) {

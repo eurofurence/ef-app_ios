@@ -252,6 +252,7 @@
 		CA6A9FFD1FD5F3CB0092C6DB /* EurofurenceLoginInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FFC1FD5F3CB0092C6DB /* EurofurenceLoginInteractorTests.swift */; };
 		CA6A9FFF1FD5F5DC0092C6DB /* EurofurenceLoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FFE1FD5F5DC0092C6DB /* EurofurenceLoginInteractor.swift */; };
 		CA6AA0011FD6C5FD0092C6DB /* LoginModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0001FD6C5FD0092C6DB /* LoginModuleBuilder.swift */; };
+		CA6AA0041FD6C7B50092C6DB /* DirectorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0021FD6C75C0092C6DB /* DirectorBuilder.swift */; };
 		CA6AA0061FD6C96B0092C6DB /* RootModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0051FD6C96B0092C6DB /* RootModuleBuilder.swift */; };
 		CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D41F799991002674A6 /* TutorialScene.swift */; };
 		CA804DD21F20CE8F00E07A4A /* V2LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */; };
@@ -664,6 +665,7 @@
 		CA6A9FFC1FD5F3CB0092C6DB /* EurofurenceLoginInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EurofurenceLoginInteractorTests.swift; path = "Presenter Tests/Login/EurofurenceLoginInteractorTests.swift"; sourceTree = "<group>"; };
 		CA6A9FFE1FD5F5DC0092C6DB /* EurofurenceLoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceLoginInteractor.swift; sourceTree = "<group>"; };
 		CA6AA0001FD6C5FD0092C6DB /* LoginModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleBuilder.swift; sourceTree = "<group>"; };
+		CA6AA0021FD6C75C0092C6DB /* DirectorBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorBuilder.swift; sourceTree = "<group>"; };
 		CA6AA0051FD6C96B0092C6DB /* RootModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleBuilder.swift; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
@@ -1561,10 +1563,11 @@
 			isa = PBXGroup;
 			children = (
 				CA1FE9981FA0B3AE009C7DF3 /* ApplicationDirector.swift */,
-				CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */,
+				CA6AA0021FD6C75C0092C6DB /* DirectorBuilder.swift */,
 				CA1FE99D1FA0B41E009C7DF3 /* NavigationControllerFactory.swift */,
-				CA8E7EF51FB08E2500F0BF10 /* PhoneWindowWireframe.swift */,
 				CA8E7EFD1FB093D800F0BF10 /* PhoneNavigationControllerFactory.swift */,
+				CA8E7EF51FB08E2500F0BF10 /* PhoneWindowWireframe.swift */,
+				CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */,
 			);
 			path = Director;
 			sourceTree = "<group>";
@@ -2534,6 +2537,7 @@
 				9A861ED41F25564900B75A8C /* WindowAlertRouter.swift in Sources */,
 				CAC1E12D1F5040F500195513 /* WelcomePromptStringFactory.swift in Sources */,
 				CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */,
+				CA6AA0041FD6C7B50092C6DB /* DirectorBuilder.swift in Sources */,
 				9A8ECA291F2BF2CA00351A83 /* UserDefaultsRemoteNotificationSoundProvider.swift in Sources */,
 				CA30EAB21F215E680053DBF6 /* LoginTask.swift in Sources */,
 				9A861EC01F25551400B75A8C /* NetworkReachability.swift in Sources */,
