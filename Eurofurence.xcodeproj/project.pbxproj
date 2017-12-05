@@ -256,7 +256,6 @@
 		CA6AA0061FD6C96B0092C6DB /* RootModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0051FD6C96B0092C6DB /* RootModuleBuilder.swift */; };
 		CA6AA0081FD731640092C6DB /* Preload.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6AA0071FD731640092C6DB /* Preload.storyboard */; };
 		CA6AA00A1FD731930092C6DB /* PreloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0091FD731930092C6DB /* PreloadViewController.swift */; };
-		CA6AA00C1FD736310092C6DB /* HieroglyphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA00B1FD736310092C6DB /* HieroglyphView.swift */; };
 		CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D41F799991002674A6 /* TutorialScene.swift */; };
 		CA804DD21F20CE8F00E07A4A /* V2LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */; };
 		CA804DD41F20CF4300E07A4A /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD31F20CF4300E07A4A /* APIResponse.swift */; };
@@ -672,7 +671,6 @@
 		CA6AA0051FD6C96B0092C6DB /* RootModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleBuilder.swift; sourceTree = "<group>"; };
 		CA6AA0071FD731640092C6DB /* Preload.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preload.storyboard; sourceTree = "<group>"; };
 		CA6AA0091FD731930092C6DB /* PreloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadViewController.swift; sourceTree = "<group>"; };
-		CA6AA00B1FD736310092C6DB /* HieroglyphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HieroglyphView.swift; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
 		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/Protocols/APIResponse.swift; sourceTree = "<group>"; };
@@ -1753,12 +1751,11 @@
 		CABA43A41FD5DB1B009CB5B0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CA6AA0071FD731640092C6DB /* Preload.storyboard */,
-				CA6AA00B1FD736310092C6DB /* HieroglyphView.swift */,
-				CA321F521F7BC88D0050E489 /* PhonePreloadSceneFactory.swift */,
-				CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */,
-				CA6AA0091FD731930092C6DB /* PreloadViewController.swift */,
 				9A861EB41F25550700B75A8C /* SplashScene.swift */,
+				CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */,
+				CA321F521F7BC88D0050E489 /* PhonePreloadSceneFactory.swift */,
+				CA6AA0091FD731930092C6DB /* PreloadViewController.swift */,
+				CA6AA0071FD731640092C6DB /* Preload.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2564,7 +2561,6 @@
 				9ACF998F1EC858B2006FC958 /* Announcement.swift in Sources */,
 				7820A6F21F1696F1004C0FB5 /* PushPermissionsRequesting.swift in Sources */,
 				CABA43A31FD57C65009CB5B0 /* TutorialModuleBuilder.swift in Sources */,
-				CA6AA00C1FD736310092C6DB /* HieroglyphView.swift in Sources */,
 				CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */,
 				78C86D7D1F12B8FD003A20E6 /* EgyptianQuoteGenerator.swift in Sources */,
 				CA6AA0061FD6C96B0092C6DB /* RootModuleBuilder.swift in Sources */,
