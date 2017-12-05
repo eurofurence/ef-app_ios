@@ -53,4 +53,8 @@ class PreloadViewControllerTests: XCTestCase {
         XCTAssertEqual(progress, preloadViewController.progressBar.progress)
     }
     
+    func testViewControllerShouldUseLightContentStatusBarStyle() {
+        XCTAssertEqual(preloadViewController.preferredStatusBarStyle, .lightContent)
+    }
+    
 }
