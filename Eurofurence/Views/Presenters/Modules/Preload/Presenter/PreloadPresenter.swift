@@ -13,6 +13,7 @@ struct PreloadPresenter: SplashSceneDelegate, PreloadServiceDelegate {
     private let preloadService: PreloadService
     private let alertRouter: AlertRouter
     private let presentationStrings: PresentationStrings
+    private let quote: Quote
 
     init(delegate: PreloadModuleDelegate,
          preloadScene: SplashScene,
@@ -25,13 +26,14 @@ struct PreloadPresenter: SplashSceneDelegate, PreloadServiceDelegate {
         self.preloadService = preloadService
         self.alertRouter = alertRouter
         self.presentationStrings = presentationStrings
+        self.quote = quote
 
         preloadScene.delegate = self
-        preloadScene.showQuote(quote.message)
-        preloadScene.showQuoteAuthor(quote.author)
     }
 
     func splashSceneWillAppear(_ splashScene: SplashScene) {
+        preloadScene.showQuote(quote.message)
+        preloadScene.showQuoteAuthor(quote.author)
         beginPreloading()
     }
 

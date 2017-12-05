@@ -54,15 +54,31 @@ class PreloadPresenterTests: XCTestCase {
     func testTheQuoteFromTheGeneratorIsSetOntoTheSplashScene() {
         let someQuote = Quote(author: "", message: "Life is short, eat dessert first")
         let context = PreloadPresenterTestContext().with(someQuote).build()
+        context.preloadSceneFactory.splashScene.notifySceneWillAppear()
         
         XCTAssertEqual(someQuote.message, context.preloadSceneFactory.splashScene.shownQuote)
+    }
+    
+    func testTheQuoteFromTheGeneratorIsNotSetOntoTheSplashSceneBeforeTheViewWillAppear() {
+        let someQuote = Quote(author: "", message: "Life is short, eat dessert first")
+        let context = PreloadPresenterTestContext().with(someQuote).build()
+        
+        XCTAssertNotEqual(someQuote.message, context.preloadSceneFactory.splashScene.shownQuote)
     }
     
     func testTheQuoteAuthorFromTheGeneratorIsSetOntoTheSplashScene() {
         let someQuote = Quote(author: "A wise man", message: "Life is short, eat dessert first")
         let context = PreloadPresenterTestContext().with(someQuote).build()
+        context.preloadSceneFactory.splashScene.notifySceneWillAppear()
 
         XCTAssertEqual(someQuote.author, context.preloadSceneFactory.splashScene.shownQuoteAuthor)
+    }
+    
+    func testTheQuoteAuthorFromTheGeneratorIsNotSetOntoTheSplashSceneBeforeTheViewWillAppear() {
+        let someQuote = Quote(author: "A wise man", message: "Life is short, eat dessert first")
+        let context = PreloadPresenterTestContext().with(someQuote).build()
+        
+        XCTAssertNotEqual(someQuote.author, context.preloadSceneFactory.splashScene.shownQuoteAuthor)
     }
     
     func testTellTheLoadingServiceToBeginLoadingWhenSceneIsAboutToAppear() {
