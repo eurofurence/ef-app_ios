@@ -13,6 +13,8 @@ class PreloadViewController: UIViewController, SplashScene {
     // MARK: IBOutlets
 
     @IBOutlet weak var quoteLabel: UILabel!
+    @IBOutlet weak var quoteAuthorLabel: UILabel!
+    @IBOutlet weak var progressBar: UIProgressView!
 
     // MARK: Overrides
 
@@ -30,11 +32,11 @@ class PreloadViewController: UIViewController, SplashScene {
     }
 
     func showQuoteAuthor(_ author: String) {
-
+        quoteAuthorLabel.text = author
     }
 
     func showProgress(_ progress: Float) {
-
+        progressBar.setProgress(progress, animated: true)
     }
 
 }

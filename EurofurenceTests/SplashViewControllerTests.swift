@@ -39,4 +39,18 @@ class SplashViewControllerTests: XCTestCase {
         XCTAssertFalse(delegate.toldSplashSceneWillAppear)
     }
     
+    func testTellingTheSceneToShowTheQuoteAuthorShouldSetItOntoTheQuoteAuthorLabel() {
+        let author = "Some Guy"
+        splashController.showQuoteAuthor(author)
+        
+        XCTAssertEqual(author, splashController.quoteAuthorLabel.text)
+    }
+    
+    func testTellingTheSceneToShowProgressSetsTheProgressOnTheProgressBar() {
+        let progress = Float(arc4random_uniform(100) / 100)
+        splashController.showProgress(progress)
+        
+        XCTAssertEqual(progress, splashController.progressBar.progress)
+    }
+    
 }

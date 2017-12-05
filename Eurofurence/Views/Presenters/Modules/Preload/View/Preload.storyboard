@@ -92,6 +92,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="z7a-p3-QXn"/>
                     <connections>
+                        <outlet property="progressBar" destination="iFX-9U-QZz" id="e99-hS-cmw"/>
+                        <outlet property="quoteAuthorLabel" destination="5Bq-Co-YW3" id="Woa-4b-EWd"/>
                         <outlet property="quoteLabel" destination="abY-h9-aE0" id="awi-pz-2NF"/>
                     </connections>
                 </viewController>
