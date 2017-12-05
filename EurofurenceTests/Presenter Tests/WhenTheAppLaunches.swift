@@ -34,35 +34,29 @@ class WhenTheAppLaunches: XCTestCase {
         delegate = CapturingRootModuleDelegate()
     }
     
-    func testAndTheUserHasNotFinishedTheTutorialTheDelegateIsToldTheUserNeedsToWitnessTutorial() {
-        let notCompletedTutorial = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
-        let factory = PhoneRootModuleFactory(firstTimeLaunchStateProviding: notCompletedTutorial)
+    private func makeRootModule(userHasCompletedTutorial tutorialState: Bool) {
+        let tutorialStateProviding = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: tutorialState)
+        let factory = PhoneRootModuleFactory(firstTimeLaunchStateProviding: tutorialStateProviding)
         _ = factory.makeRootModule(delegate)
-        
+    }
+    
+    func testAndTheUserHasNotFinishedTheTutorialTheDelegateIsToldTheUserNeedsToWitnessTutorial() {
+        makeRootModule(userHasCompletedTutorial: false)
         XCTAssertTrue(delegate.wasToldUserNeedsToWitnessTutorial)
     }
     
     func testAndTheUserHasNotFinishedTheTutorialTheDelegateIsNotToldToPreloadStore() {
-        let notCompletedTutorial = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
-        let factory = PhoneRootModuleFactory(firstTimeLaunchStateProviding: notCompletedTutorial)
-        _ = factory.makeRootModule(delegate)
-        
+        makeRootModule(userHasCompletedTutorial: false)
         XCTAssertFalse(delegate.wasToldToPreloadStore)
     }
     
     func testAndTheUserHasFinishedTheTutorialTheDelegateIsToldToPreloadStore() {
-        let notCompletedTutorial = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
-        let factory = PhoneRootModuleFactory(firstTimeLaunchStateProviding: notCompletedTutorial)
-        _ = factory.makeRootModule(delegate)
-
+        makeRootModule(userHasCompletedTutorial: true)
         XCTAssertTrue(delegate.wasToldToPreloadStore)
     }
     
     func testAndTheUserHasFinishedTheTutorialTheDelegateIsNotToldTheUserNeedsToWitnessTutorial() {
-        let notCompletedTutorial = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
-        let factory = PhoneRootModuleFactory(firstTimeLaunchStateProviding: notCompletedTutorial)
-        _ = factory.makeRootModule(delegate)
-        
+        makeRootModule(userHasCompletedTutorial: true)
         XCTAssertFalse(delegate.wasToldUserNeedsToWitnessTutorial)
     }
     
