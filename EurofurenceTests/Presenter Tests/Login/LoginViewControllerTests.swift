@@ -11,8 +11,9 @@ import XCTest
 
 class CapturingLoginSceneDelegate: LoginSceneDelegate {
     
+    private(set) var toldLoginSceneWillAppear = false
     func loginSceneWillAppear() {
-        
+        toldLoginSceneWillAppear = true
     }
     
     private(set) var cancelButtonTapped = false
@@ -54,6 +55,15 @@ class LoginViewControllerTests: XCTestCase {
         loginViewController.loadViewIfNeeded()
         delegate = CapturingLoginSceneDelegate()
         loginViewController.delegate = delegate
+    }
+    
+    func testDelegateIsToldWhenSceneWillAppear() {
+        loginViewController.viewWillAppear(false)
+        XCTAssertTrue(delegate.toldLoginSceneWillAppear)
+    }
+    
+    func testDelegateIsNotToldSceneWillAppearTooEarly() {
+        XCTAssertFalse(delegate.toldLoginSceneWillAppear)
     }
     
     func testLoginButtonIsDisabledByDefault() {

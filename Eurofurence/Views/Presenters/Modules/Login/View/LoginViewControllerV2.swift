@@ -44,6 +44,14 @@ class LoginViewControllerV2: UITableViewController, LoginScene {
         delegate?.loginSceneDidUpdatePassword(password)
     }
 
+    // MARK: Overrides
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        delegate?.loginSceneWillAppear()
+    }
+
     // MARK: LoginScene
 
     var delegate: LoginSceneDelegate?
