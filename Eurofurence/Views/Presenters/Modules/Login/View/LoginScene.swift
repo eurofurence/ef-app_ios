@@ -17,6 +17,7 @@ protocol LoginScene: class {
 
 protocol LoginSceneDelegate {
 
+    func loginSceneWillAppear()
     func loginSceneDidTapCancelButton()
     func loginSceneDidTapLoginButton()
     func loginSceneDidUpdateRegistrationNumber(_ registrationNumberString: String)

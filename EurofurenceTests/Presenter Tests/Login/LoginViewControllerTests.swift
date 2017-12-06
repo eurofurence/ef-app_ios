@@ -11,6 +11,10 @@ import XCTest
 
 class CapturingLoginSceneDelegate: LoginSceneDelegate {
     
+    func loginSceneWillAppear() {
+        
+    }
+    
     private(set) var cancelButtonTapped = false
     func loginSceneDidTapCancelButton() {
         cancelButtonTapped = true

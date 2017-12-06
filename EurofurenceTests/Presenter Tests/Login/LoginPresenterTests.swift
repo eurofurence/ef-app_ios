@@ -88,7 +88,12 @@ class LoginPresenterTests: XCTestCase {
     }
     
     func testTheLoginButtonIsDisabled() {
+        loginSceneFactory.stubScene.delegate?.loginSceneWillAppear()
         XCTAssertTrue(loginSceneFactory.stubScene.loginButtonWasDisabled)
+    }
+    
+    func testTheLoginButtonIsNotDisabledUntilTheSceneWillAppear() {
+        XCTAssertFalse(loginSceneFactory.stubScene.loginButtonWasDisabled)
     }
     
     func testWhenSceneSuppliesAllDetailsTheLoginButtonIsEnabled() {

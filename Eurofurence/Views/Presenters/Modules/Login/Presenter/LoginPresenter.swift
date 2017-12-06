@@ -99,8 +99,10 @@ class LoginPresenter: LoginSceneDelegate {
         self.alertRouter = alertRouter
 
         scene.delegate = self
-        scene.disableLoginButton()
+    }
 
+    func loginSceneWillAppear() {
+        scene.disableLoginButton()
     }
 
     func loginSceneDidTapCancelButton() {
