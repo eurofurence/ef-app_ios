@@ -17,15 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <stackView key="tableFooterView" opaque="NO" contentMode="scaleToFill" axis="vertical" id="3Z8-Hh-8xK">
+                        <stackView key="tableFooterView" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" id="3Z8-Hh-8xK">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gez-d3-ZHv">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6u0-ei-USj">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <connections>
                                                 <action selector="loginNavigationActionTapped:" destination="8wH-9y-r9F" eventType="touchUpInside" id="jji-Ap-7k2"/>
                                             </connections>
@@ -40,6 +40,24 @@
                                         <constraint firstItem="6u0-ei-USj" firstAttribute="top" secondItem="Gez-d3-ZHv" secondAttribute="top" id="JHm-fg-pfa"/>
                                     </constraints>
                                 </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tl4-fa-ouC">
+                                    <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FPY-OY-WBo">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <connections>
+                                                <action selector="messagesNavigationActionTapped:" destination="8wH-9y-r9F" eventType="touchUpInside" id="LY8-Lo-b8R"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="FPY-OY-WBo" firstAttribute="leading" secondItem="tl4-fa-ouC" secondAttribute="leading" id="HD2-4q-nNo"/>
+                                        <constraint firstAttribute="bottom" secondItem="FPY-OY-WBo" secondAttribute="bottom" id="IqM-n7-ACI"/>
+                                        <constraint firstAttribute="trailing" secondItem="FPY-OY-WBo" secondAttribute="trailing" id="Pni-ck-y0u"/>
+                                        <constraint firstItem="FPY-OY-WBo" firstAttribute="top" secondItem="tl4-fa-ouC" secondAttribute="top" id="dGh-Fj-GjM"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                         </stackView>
                     </tableView>
@@ -48,6 +66,8 @@
                     <connections>
                         <outlet property="loginNavigationAction" destination="Gez-d3-ZHv" id="tye-iT-ZOh"/>
                         <outlet property="loginNavigationTrigger" destination="6u0-ei-USj" id="5Js-vK-yEz"/>
+                        <outlet property="messagesNavigationAction" destination="tl4-fa-ouC" id="vrg-LG-UYg"/>
+                        <outlet property="messagesNavigationTrigger" destination="FPY-OY-WBo" id="DzQ-Gd-Meq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y28-We-3bk" userLabel="First Responder" sceneMemberID="firstResponder"/>

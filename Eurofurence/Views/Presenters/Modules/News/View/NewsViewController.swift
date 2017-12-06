@@ -15,11 +15,17 @@ class NewsViewController: UIViewController, NewsScene {
 
     @IBOutlet weak var loginNavigationAction: UIView!
     @IBOutlet weak var loginNavigationTrigger: UIButton!
+    @IBOutlet weak var messagesNavigationAction: UIView!
+    @IBOutlet weak var messagesNavigationTrigger: UIButton!
 
     // MARK: IBActions
 
     @IBAction func loginNavigationActionTapped(_ sender: Any) {
         delegate?.newsSceneDidTapLoginAction(self)
+    }
+
+    @IBAction func messagesNavigationActionTapped(_ sender: Any) {
+        delegate?.newsSceneDidTapShowMessagesAction(self)
     }
 
     // MARK: Overrides
@@ -28,6 +34,7 @@ class NewsViewController: UIViewController, NewsScene {
         super.viewDidLoad()
 
         loginNavigationAction.isHidden = true
+        messagesNavigationAction.isHidden = true
     }
 
     // MARK: NewsScene
@@ -35,11 +42,11 @@ class NewsViewController: UIViewController, NewsScene {
     var delegate: NewsSceneDelegate?
 
     func showMessagesNavigationAction() {
-
+        messagesNavigationAction.isHidden = false
     }
 
     func hideMessagesNavigationAction() {
-
+        messagesNavigationAction.isHidden = true
     }
 
     func showLoginNavigationAction() {

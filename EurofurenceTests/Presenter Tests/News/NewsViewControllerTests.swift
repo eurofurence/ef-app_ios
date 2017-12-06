@@ -16,8 +16,9 @@ class CapturingNewsSceneDelegate: NewsSceneDelegate {
         loginActionTapped = true
     }
     
+    private(set) var messagesActionTapped = false
     func newsSceneDidTapShowMessagesAction(_ scene: NewsScene) {
-        
+        messagesActionTapped = true
     }
     
 }
@@ -59,6 +60,31 @@ class NewsViewControllerTests: XCTestCase {
     
     func testNotTellDelegateLoginActionTappedTooEarly() {
         XCTAssertFalse(delegate.loginActionTapped)
+    }
+    
+    func testHideMessagesNavigationActionByDefault() {
+        XCTAssertTrue(viewController.messagesNavigationAction.isHidden)
+    }
+    
+    func testShowMessagesNavigationActionWhenToldTo() {
+        viewController.showMessagesNavigationAction()
+        XCTAssertFalse(viewController.messagesNavigationAction.isHidden)
+    }
+    
+    func testHideMessagesNavigationActionWhenToldTo() {
+        viewController.showMessagesNavigationAction()
+        viewController.hideMessagesNavigationAction()
+        
+        XCTAssertTrue(viewController.messagesNavigationAction.isHidden)
+    }
+    
+    func testTellDelegateWhenTappingMessagesNavigationAction() {
+        viewController.messagesNavigationTrigger.sendActions(for: .touchUpInside)
+        XCTAssertTrue(delegate.messagesActionTapped)
+    }
+    
+    func testNotTellDelegateMessagesNavigationActionTappedTooEarly() {
+        XCTAssertFalse(delegate.messagesActionTapped)
     }
     
 }
