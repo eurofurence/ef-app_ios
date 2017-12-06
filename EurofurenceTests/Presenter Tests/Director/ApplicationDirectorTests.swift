@@ -269,8 +269,9 @@ class ApplicationDirectorTests: XCTestCase {
         _ = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
         newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
         messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: { _ in })
+        let navController = tabModuleFactory.stubInterface.capturedPresentedViewController as? UINavigationController
         
-        XCTAssertEqual(tabModuleFactory.stubInterface.capturedPresentedViewController, loginModuleFactory.stubInterface)
+        XCTAssertEqual(navController?.topViewController, loginModuleFactory.stubInterface)
     }
     
     func testWhenTheMessagesModuleRequestsResolutionForUserTheLoginModuleIsPresentedUsingTheFormSheetModalPresentationStyle() {

@@ -122,7 +122,8 @@ class ApplicationDirector: RootModuleDelegate,
         let loginModule = loginModuleProviding.makeLoginModule(self)
         loginModule.modalPresentationStyle = .formSheet
 
-        tabController?.present(loginModule, animated: animate)
+        let navigationController = UINavigationController(rootViewController: loginModule)
+        tabController?.present(navigationController, animated: animate)
     }
 
     func messagesModuleDidRequestPresentation(for message: Message) {
