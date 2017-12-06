@@ -16,6 +16,8 @@ class ApplicationPushPermissionsRequesting: PushPermissionsRequesting {
 
     private var completionHandler: (() -> Void)?
 
+    static let shared = ApplicationPushPermissionsRequesting()
+
     func requestPushPermissions(completionHandler: @escaping () -> Void) {
         self.completionHandler = completionHandler
         let application = UIApplication.shared

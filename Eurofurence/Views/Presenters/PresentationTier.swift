@@ -11,7 +11,7 @@ import UIKit
 
 struct PresentationTier {
 
-    static let pushRequesting = ApplicationPushPermissionsRequesting()
+    static let pushRequesting = ApplicationPushPermissionsRequesting.shared
 
     static func assemble(window: UIWindow) {
         BootstrappingModule.bootstrap(context: makeAppContext(),
