@@ -260,6 +260,7 @@
 		CA6AA0161FD883390092C6DB /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0151FD883390092C6DB /* NewsViewController.swift */; };
 		CA6AA0181FD8834D0092C6DB /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6AA0171FD8834D0092C6DB /* News.storyboard */; };
 		CA6AA01A1FD885030092C6DB /* NewsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0191FD885030092C6DB /* NewsViewControllerTests.swift */; };
+		CA6AA01C1FD88D930092C6DB /* UIStoryboard+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA01B1FD88D930092C6DB /* UIStoryboard+Convenience.swift */; };
 		CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7EB7D41F799991002674A6 /* TutorialScene.swift */; };
 		CA804DD21F20CE8F00E07A4A /* V2LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */; };
 		CA804DD41F20CF4300E07A4A /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD31F20CF4300E07A4A /* APIResponse.swift */; };
@@ -679,6 +680,7 @@
 		CA6AA0151FD883390092C6DB /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsViewController.swift; path = News/View/NewsViewController.swift; sourceTree = "<group>"; };
 		CA6AA0171FD8834D0092C6DB /* News.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = News.storyboard; path = News/View/News.storyboard; sourceTree = "<group>"; };
 		CA6AA0191FD885030092C6DB /* NewsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsViewControllerTests.swift; path = "Presenter Tests/News/NewsViewControllerTests.swift"; sourceTree = "<group>"; };
+		CA6AA01B1FD88D930092C6DB /* UIStoryboard+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Convenience.swift"; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
 		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/Protocols/APIResponse.swift; sourceTree = "<group>"; };
@@ -1086,14 +1088,14 @@
 		78455B4E1F117843005BE2D7 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
-				CAF9A93B1F50484A00628833 /* Interactors */,
-				6EF96CE01F12688700EE6134 /* Modules */,
 				9A861EBC1F25551400B75A8C /* ApplicationContext.swift */,
 				9A861EBB1F25551400B75A8C /* NetworkReachability.swift */,
 				9A861EBA1F25551400B75A8C /* PresentationAssets.swift */,
 				9A861EB91F25551400B75A8C /* PresentationStrings.swift */,
 				9A861EB81F25551400B75A8C /* PresentationTier.swift */,
 				CA1FE99C1FA0B3F2009C7DF3 /* Director */,
+				CAF9A93B1F50484A00628833 /* Interactors */,
+				6EF96CE01F12688700EE6134 /* Modules */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -1440,6 +1442,7 @@
 			isa = PBXGroup;
 			children = (
 				D6F3D756F99A68B2DC5B7359 /* Main.storyboard */,
+				CA6AA01B1FD88D930092C6DB /* UIStoryboard+Convenience.swift */,
 				9AF159E91EF5B3AE00DB287D /* Cells */,
 				D6F3DE4616D9A2E243387004 /* Controllers */,
 				78455B601F118685005BE2D7 /* Controls */,
@@ -2486,6 +2489,7 @@
 				9A861EAF1F2554F900B75A8C /* TutorialPresenter.swift in Sources */,
 				6EF96CCC1F0EDB0500EE6134 /* CalendarEvent.swift in Sources */,
 				9A861EC81F25555000B75A8C /* WitnessedTutorialPushPermissionsRequest.swift in Sources */,
+				CA6AA01C1FD88D930092C6DB /* UIStoryboard+Convenience.swift in Sources */,
 				CA8E7EFE1FB093D800F0BF10 /* PhoneNavigationControllerFactory.swift in Sources */,
 				9A861ECC1F25555000B75A8C /* TutorialViewController.swift in Sources */,
 				9A80EF5B1F29203C00FD0D37 /* AnnouncementsShowAllProviding.swift in Sources */,

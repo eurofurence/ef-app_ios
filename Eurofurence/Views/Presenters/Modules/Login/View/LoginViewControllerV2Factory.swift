@@ -14,7 +14,7 @@ struct LoginViewControllerV2Factory: LoginSceneFactory {
     private let storyboard = UIStoryboard(name: "Login", bundle: .main)
 
     func makeLoginScene() -> UIViewController & LoginScene {
-        return storyboard.instantiateViewController(withIdentifier: "LoginViewControllerV2") as! LoginViewControllerV2
+        return storyboard.instantiate(LoginViewControllerV2.self)
     }
 
 }

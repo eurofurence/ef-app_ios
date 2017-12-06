@@ -14,7 +14,7 @@ struct PhonePreloadSceneFactory: PreloadSceneFactory {
     private let storyboard = UIStoryboard(name: "Preload", bundle: .main)
 
     func makePreloadScene() -> UIViewController & SplashScene {
-        return storyboard.instantiateViewController(withIdentifier: "PreloadViewController") as! PreloadViewController
+        return storyboard.instantiate(PreloadViewController.self)
     }
 
 }

@@ -13,7 +13,7 @@ struct PhoneNewsSceneFactory: NewsSceneFactory {
     private let storyboard = UIStoryboard(name: "News", bundle: .main)
 
     func makeNewsScene() -> UIViewController & NewsScene {
-        return storyboard.instantiateViewController(withIdentifier: "NewsViewController") as! NewsViewController
+        return storyboard.instantiate(NewsViewController.self)
     }
 
 }
