@@ -6,7 +6,6 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-import UIKit.UIGestureRecognizer
 import UIKit.UIViewController
 
 class NewsViewController: UIViewController, NewsScene {
@@ -17,6 +16,10 @@ class NewsViewController: UIViewController, NewsScene {
     @IBOutlet weak var loginNavigationTrigger: UIButton!
     @IBOutlet weak var messagesNavigationAction: UIView!
     @IBOutlet weak var messagesNavigationTrigger: UIButton!
+    @IBOutlet weak var welcomePromptLabel: UILabel!
+    @IBOutlet weak var welcomeDescriptionLabel: UILabel!
+    @IBOutlet weak var loginPromptLabel: UILabel!
+    @IBOutlet weak var loginPromptDescriptionLabel: UILabel!
 
     // MARK: IBActions
 
@@ -58,19 +61,19 @@ class NewsViewController: UIViewController, NewsScene {
     }
 
     func showWelcomePrompt(_ prompt: String) {
-
+        welcomePromptLabel.text = prompt
     }
 
     func showWelcomeDescription(_ description: String) {
-
+        welcomeDescriptionLabel.text = description
     }
 
     func showLoginPrompt(_ prompt: String) {
-
+        loginPromptLabel.text = prompt
     }
 
     func showLoginDescription(_ description: String) {
-
+        loginPromptDescriptionLabel.text = description
     }
 
 }

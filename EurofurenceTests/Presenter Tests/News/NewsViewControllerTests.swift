@@ -87,4 +87,32 @@ class NewsViewControllerTests: XCTestCase {
         XCTAssertFalse(delegate.messagesActionTapped)
     }
     
+    func testSetWelcomePromptOntoWelcomePromptLabel() {
+        let prompt = "\(arc4random())"
+        viewController.showWelcomePrompt(prompt)
+        
+        XCTAssertEqual(prompt, viewController.welcomePromptLabel.text)
+    }
+    
+    func testSetWelcomeDescriptionOntoWelcomeDescriptionLabel() {
+        let description = "\(arc4random())"
+        viewController.showWelcomeDescription(description)
+        
+        XCTAssertEqual(description, viewController.welcomeDescriptionLabel.text)
+    }
+    
+    func testSetLoginPromptOntoLoginPromptLabel() {
+        let prompt = "\(arc4random())"
+        viewController.showLoginPrompt(prompt)
+        
+        XCTAssertEqual(prompt, viewController.loginPromptLabel.text)
+    }
+    
+    func testSetLoginDescriptionOntoLoginDescriptionLabel() {
+        let description = "\(arc4random())"
+        viewController.showLoginDescription(description)
+        
+        XCTAssertEqual(description, viewController.loginPromptDescriptionLabel.text)
+    }
+    
 }

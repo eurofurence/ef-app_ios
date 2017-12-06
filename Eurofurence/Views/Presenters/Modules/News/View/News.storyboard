@@ -30,6 +30,20 @@
                                                 <action selector="loginNavigationActionTapped:" destination="8wH-9y-r9F" eventType="touchUpInside" id="jji-Ap-7k2"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57o-ju-jOd">
+                                            <rect key="frame" x="60" y="8" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLv-zZ-ClS">
+                                            <rect key="frame" x="60" y="23" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <gestureRecognizers/>
@@ -49,6 +63,20 @@
                                                 <action selector="messagesNavigationActionTapped:" destination="8wH-9y-r9F" eventType="touchUpInside" id="LY8-Lo-b8R"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PkN-KM-rBn">
+                                            <rect key="frame" x="59" y="0.0" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8JU-Gd-8Fa">
+                                            <rect key="frame" x="59" y="23" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
@@ -66,8 +94,12 @@
                     <connections>
                         <outlet property="loginNavigationAction" destination="Gez-d3-ZHv" id="tye-iT-ZOh"/>
                         <outlet property="loginNavigationTrigger" destination="6u0-ei-USj" id="5Js-vK-yEz"/>
+                        <outlet property="loginPromptDescriptionLabel" destination="hLv-zZ-ClS" id="1cp-9d-JH0"/>
+                        <outlet property="loginPromptLabel" destination="57o-ju-jOd" id="fZa-fZ-iYa"/>
                         <outlet property="messagesNavigationAction" destination="tl4-fa-ouC" id="vrg-LG-UYg"/>
                         <outlet property="messagesNavigationTrigger" destination="FPY-OY-WBo" id="DzQ-Gd-Meq"/>
+                        <outlet property="welcomeDescriptionLabel" destination="8JU-Gd-8Fa" id="fdq-Vr-dgL"/>
+                        <outlet property="welcomePromptLabel" destination="PkN-KM-rBn" id="HQa-vo-vEI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y28-We-3bk" userLabel="First Responder" sceneMemberID="firstResponder"/>
