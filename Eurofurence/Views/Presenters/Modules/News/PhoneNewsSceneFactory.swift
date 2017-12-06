@@ -10,9 +10,10 @@ import UIKit.UIStoryboard
 
 struct PhoneNewsSceneFactory: NewsSceneFactory {
 
+    private let storyboard = UIStoryboard(name: "News", bundle: .main)
+
     func makeNewsScene() -> UIViewController & NewsScene {
-        let storyboard = UIStoryboard(name: "Main", bundle: .main)
-        return storyboard.instantiateViewController(withIdentifier: "NewsTableView") as! NewsTableViewController
+        return storyboard.instantiateViewController(withIdentifier: "NewsViewController") as! NewsViewController
     }
 
 }
