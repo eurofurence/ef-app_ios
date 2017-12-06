@@ -15,9 +15,7 @@ class MessagesViewControllerV2: UIViewController,
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noMessagesPlaceholder: UIView!
     let refreshIndicator = UIRefreshControl(frame: .zero)
-    private lazy var dataSource: MessagesTableViewDataSource = {
-        return MessagesTableViewDataSource(tableView: self.tableView)
-    }()
+    private let dataSource = MessagesTableViewDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,11 +64,6 @@ class MessagesViewControllerV2: UIViewController,
 
         var binder: MessageItemBinder?
         private let cellReuseIdentifier = "MessageCell"
-
-        init(tableView: UITableView) {
-            let nib = UINib(nibName: "MessageTableViewCell", bundle: .main)
-            tableView.register(nib, forCellReuseIdentifier: cellReuseIdentifier)
-        }
 
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return binder?.numberOfMessages ?? 0

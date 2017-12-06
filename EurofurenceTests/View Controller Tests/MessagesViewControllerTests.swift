@@ -37,6 +37,16 @@ class MessagesViewControllerTests: XCTestCase {
         viewController.loadViewIfNeeded()
     }
     
+    private func makeAndBindCell() -> (binder: StubMessageItemBinder, cell: MessageTableViewCell?) {
+        let binder = StubMessageItemBinder()
+        binder.numberOfMessages = 1
+        viewController.bindMessages(with: binder)
+        let firstIndexPath = IndexPath(row: 0, section: 0)
+        let cell = viewController.tableView.cellForRow(at: firstIndexPath) as? MessageTableViewCell
+        
+        return (binder: binder, cell: cell)
+    }
+    
     func testTheRefreshIndicatorShouldBeEmbeddedWithinTheTableView() {
         XCTAssertTrue(viewController.refreshIndicator.isDescendant(of: viewController.tableView))
     }
@@ -68,14 +78,50 @@ class MessagesViewControllerTests: XCTestCase {
         XCTAssertEqual(binder.numberOfMessages, viewController.tableView.numberOfRows(inSection: 0))
     }
     
-    func testBindingMessagesShouldPassCellToBinder() {
-        let binder = StubMessageItemBinder()
-        binder.numberOfMessages = 1
-        viewController.bindMessages(with: binder)
-        let firstIndexPath = IndexPath(row: 0, section: 0)
-        let cell = viewController.tableView.cellForRow(at: firstIndexPath)
+    func testBindingAuthorSetsItOntoCell() {
+        let author = "Author"
+        let binding = makeAndBindCell()
+        binding.binder.capturedScene?.presentAuthor(author)
         
-        XCTAssertTrue((binder.capturedScene as? UITableViewCell) === cell)
+        XCTAssertEqual(author, binding.cell?.messageAuthorLabel.text)
+    }
+    
+    func testBindingSubjectSetsItOntoCell() {
+        let subject = "Subject"
+        let binding = makeAndBindCell()
+        binding.binder.capturedScene?.presentSubject(subject)
+        
+        XCTAssertEqual(subject, binding.cell?.messageSubjectLabel.text)
+    }
+    
+    func testBindingSynopsisSetsItOntoCell() {
+        let synopsis = "Synopsis"
+        let binding = makeAndBindCell()
+        binding.binder.capturedScene?.presentContents(synopsis)
+        
+        XCTAssertEqual(synopsis, binding.cell?.messageSynopsisLabel.text)
+    }
+    
+    func testBindingDateTimeSetsItOntoCell() {
+        let dateTime = "Date Time"
+        let binding = makeAndBindCell()
+        binding.binder.capturedScene?.presentReceivedDateTime(dateTime)
+        
+        XCTAssertEqual(dateTime, binding.cell?.messageReceivedDateLabel.text)
+    }
+    
+    func testTellingCellToShowUnreadIndicatorShowsIt() {
+        let binding = makeAndBindCell()
+        binding.binder.capturedScene?.showUnreadIndicator()
+        
+        XCTAssertEqual(false, binding.cell?.unreadMessageIndicator.isHidden)
+    }
+    
+    func testTellingCellToHideUnreadIndicatorHidesIt() {
+        let binding = makeAndBindCell()
+        binding.binder.capturedScene?.hideUnreadIndicator()
+        
+        XCTAssertEqual(true, binding.cell?.unreadMessageIndicator.isHidden)
     }
     
     func testBindingMessagesShouldPassIndexPathOfCellToBinder() {
