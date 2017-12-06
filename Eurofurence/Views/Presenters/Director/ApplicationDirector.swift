@@ -132,7 +132,9 @@ class ApplicationDirector: RootModuleDelegate,
 
     func messagesModuleDidRequestDismissal() {
         guard let controller = newsController else { return }
+
         newsNavigationController.popToViewController(controller, animated: animate)
+        tabController?.dismiss(animated: animate)
     }
 
     // MARK: LoginModuleDelegate

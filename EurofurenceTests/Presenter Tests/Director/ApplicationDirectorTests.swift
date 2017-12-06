@@ -94,6 +94,12 @@ class FakeViewController: UIViewController {
         super.present(viewControllerToPresent, animated: flag, completion: completion)
     }
     
+    private(set) var didDismissViewController = false
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        didDismissViewController = true
+        super.dismiss(animated: flag, completion: completion)
+    }
+    
 }
 
 class StubTabModuleFactory: TabModuleProviding {
@@ -255,7 +261,15 @@ class ApplicationDirectorTests: XCTestCase {
         XCTAssertEqual(messagesModuleFactory.stubInterface, newsNavigationController?.pushedViewControllers.last)
     }
     
-    func testWhenTheMessagesModuleRequestsDismissalItIsPoppedOffTheStack() {
+    func testWhenTheMessagesModuleRequestsDismissalItIsDismissedFromTheTabController() {
+        navigateToTabController()
+        newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
+        messagesModuleFactory.delegate?.messagesModuleDidRequestDismissal()
+        
+        XCTAssertTrue(tabModuleFactory.stubInterface.didDismissViewController)
+    }
+    
+    func testWhenTheMessagesModuleRequestsDismissalTheNewsNavigationControllersPopsToTheNewsModule() {
         navigateToTabController()
         let newsNavigationController = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
         newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
