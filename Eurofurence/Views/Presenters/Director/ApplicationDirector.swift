@@ -96,7 +96,7 @@ class ApplicationDirector: RootModuleDelegate,
         let newsController = newsModuleProviding.makeNewsModule(self)
         self.newsController = newsController
 
-        newsNavigationController.setViewControllers([newsController], animated: false)
+        newsNavigationController.setViewControllers([newsController], animated: animate)
         let tabModule = tabModuleProviding.makeTabModule([newsNavigationController])
         tabController = tabModule
 
@@ -106,11 +106,11 @@ class ApplicationDirector: RootModuleDelegate,
     // MARK: NewsModuleDelegate
 
     func newsModuleDidRequestLogin() {
-        newsNavigationController.pushViewController(messagesModuleProviding.makeMessagesModule(self), animated: true)
+        newsNavigationController.pushViewController(messagesModuleProviding.makeMessagesModule(self), animated: animate)
     }
 
     func newsModuleDidRequestShowingPrivateMessages() {
-        newsNavigationController.pushViewController(messagesModuleProviding.makeMessagesModule(self), animated: true)
+        newsNavigationController.pushViewController(messagesModuleProviding.makeMessagesModule(self), animated: animate)
     }
 
     // MARK: MessagesModuleDelegate
@@ -122,7 +122,7 @@ class ApplicationDirector: RootModuleDelegate,
         let loginModule = loginModuleProviding.makeLoginModule(self)
         loginModule.modalPresentationStyle = .formSheet
 
-        tabController?.present(loginModule, animated: true)
+        tabController?.present(loginModule, animated: animate)
     }
 
     func messagesModuleDidRequestPresentation(for message: Message) {
@@ -131,7 +131,7 @@ class ApplicationDirector: RootModuleDelegate,
 
     func messagesModuleDidRequestDismissal() {
         guard let controller = newsController else { return }
-        newsNavigationController.popToViewController(controller, animated: true)
+        newsNavigationController.popToViewController(controller, animated: animate)
     }
 
     // MARK: LoginModuleDelegate
@@ -148,12 +148,12 @@ class ApplicationDirector: RootModuleDelegate,
 
     private func showPreloadModule() {
         let preloadViewController = preloadModuleProviding.makePreloadModule(self)
-        rootNavigationController.viewControllers = [preloadViewController]
+        rootNavigationController.setViewControllers([preloadViewController], animated: animate)
     }
 
     private func showTutorial() {
         let tutorialViewController = tutorialModuleProviding.makeTutorialModule(self)
-        rootNavigationController.viewControllers = [tutorialViewController]
+        rootNavigationController.setViewControllers([tutorialViewController], animated: animate)
     }
 
 }
