@@ -40,6 +40,12 @@ class NewsViewController: UIViewController, NewsScene {
         messagesNavigationAction.isHidden = true
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        delegate?.newsSceneWillAppear()
+    }
+
     // MARK: NewsScene
 
     var delegate: NewsSceneDelegate?

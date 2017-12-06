@@ -11,8 +11,9 @@ import XCTest
 
 class CapturingNewsSceneDelegate: NewsSceneDelegate {
     
+    private(set) var toldNewsSceneWillAppear = false
     func newsSceneWillAppear() {
-        
+        toldNewsSceneWillAppear = true
     }
     
     private(set) var loginActionTapped = false
@@ -39,6 +40,15 @@ class NewsViewControllerTests: XCTestCase {
         delegate = CapturingNewsSceneDelegate()
         viewController.delegate = delegate
         viewController.loadViewIfNeeded()
+    }
+    
+    func testTellsTheDelegateWhenTheSceneWillAppear() {
+        viewController.viewWillAppear(false)
+        XCTAssertTrue(delegate.toldNewsSceneWillAppear)
+    }
+    
+    func testDoesNotTellTleDelegateTheSceneWillAppearTooEarly() {
+        XCTAssertFalse(delegate.toldNewsSceneWillAppear)
     }
     
     func testHideLoginNavigationActionByDefault() {
