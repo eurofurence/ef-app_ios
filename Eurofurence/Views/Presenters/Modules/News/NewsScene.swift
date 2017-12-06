@@ -10,6 +10,7 @@ import Foundation
 
 protocol NewsSceneDelegate {
 
+    func newsSceneWillAppear()
     func newsSceneDidTapLoginAction(_ scene: NewsScene)
     func newsSceneDidTapShowMessagesAction(_ scene: NewsScene)
 

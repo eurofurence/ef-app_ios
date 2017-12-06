@@ -10,12 +10,34 @@ import Foundation
 
 struct NewsPresenter: AuthStateObserver, NewsSceneDelegate {
 
+    // MARK: Nested Types
+
+    private class DetermineAuthStateOnce {
+
+        private var ran = false
+        private let authService: AuthService
+
+        init(authService: AuthService) {
+            self.authService = authService
+        }
+
+        func run(_ handler: @escaping (AuthState) -> Void) {
+            guard !ran else { return }
+
+            ran = true
+            authService.determineAuthState(completionHandler: handler)
+        }
+
+    }
+
     // MARK: Properties
 
+    private let authService: AuthService
     private let delegate: NewsModuleDelegate
     private let newsScene: NewsScene
     private let welcomePromptStringFactory: WelcomePromptStringFactory
     private let privateMessagesService: PrivateMessagesService
+    private let determineAuthStateOnce: DetermineAuthStateOnce
 
     // MARK: Initialization
 
@@ -26,12 +48,13 @@ struct NewsPresenter: AuthStateObserver, NewsSceneDelegate {
          welcomePromptStringFactory: WelcomePromptStringFactory) {
         self.delegate = delegate
         self.newsScene = newsScene
+        self.authService = authService
         self.welcomePromptStringFactory = welcomePromptStringFactory
         self.privateMessagesService = privateMessagesService
 
-        newsScene.delegate = self
+        determineAuthStateOnce = DetermineAuthStateOnce(authService: authService)
 
-        authService.determineAuthState(completionHandler: authStateResolved)
+        newsScene.delegate = self
         authService.add(observer: self)
     }
 
@@ -55,6 +78,10 @@ struct NewsPresenter: AuthStateObserver, NewsSceneDelegate {
     }
 
     // MARK: NewsSceneDelegate
+
+    func newsSceneWillAppear() {
+        determineAuthStateOnce.run(authStateResolved)
+    }
 
     func newsSceneDidTapLoginAction(_ scene: NewsScene) {
         delegate.newsModuleDidRequestLogin()

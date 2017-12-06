@@ -43,6 +43,7 @@ struct NewsPresenterTestContext {
             .with(welcomePromptStringFactory)
             .build()
             .makeNewsModule(delegate)
+        sceneFactory.stubbedScene.delegate?.newsSceneWillAppear()
     }
     
 }

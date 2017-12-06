@@ -11,6 +11,10 @@ import XCTest
 
 class CapturingNewsSceneDelegate: NewsSceneDelegate {
     
+    func newsSceneWillAppear() {
+        
+    }
+    
     private(set) var loginActionTapped = false
     func newsSceneDidTapLoginAction(_ scene: NewsScene) {
         loginActionTapped = true
