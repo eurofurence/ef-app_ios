@@ -12,6 +12,9 @@ class NewsViewController: UIViewController, NewsScene {
 
     // MARK: IBOutlets
 
+    @IBOutlet weak var tableView: UITableView!
+
+    @IBOutlet weak var bannerContainer: UIStackView!
     @IBOutlet weak var loginNavigationAction: UIView!
     @IBOutlet weak var loginNavigationTrigger: UIButton!
     @IBOutlet weak var messagesNavigationAction: UIView!
@@ -36,6 +39,7 @@ class NewsViewController: UIViewController, NewsScene {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.tableHeaderView = bannerContainer
         loginNavigationAction.isHidden = true
         messagesNavigationAction.isHidden = true
     }

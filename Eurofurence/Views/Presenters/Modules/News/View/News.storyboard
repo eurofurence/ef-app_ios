@@ -136,12 +136,14 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="bannerContainer" destination="3Z8-Hh-8xK" id="hal-tM-xME"/>
                         <outlet property="loginNavigationAction" destination="Gez-d3-ZHv" id="tye-iT-ZOh"/>
                         <outlet property="loginNavigationTrigger" destination="6u0-ei-USj" id="5Js-vK-yEz"/>
                         <outlet property="loginPromptDescriptionLabel" destination="hLv-zZ-ClS" id="1cp-9d-JH0"/>
                         <outlet property="loginPromptLabel" destination="57o-ju-jOd" id="fZa-fZ-iYa"/>
                         <outlet property="messagesNavigationAction" destination="tl4-fa-ouC" id="vrg-LG-UYg"/>
                         <outlet property="messagesNavigationTrigger" destination="FPY-OY-WBo" id="DzQ-Gd-Meq"/>
+                        <outlet property="tableView" destination="ZYK-Oh-6qy" id="pth-lQ-geb"/>
                         <outlet property="welcomeDescriptionLabel" destination="8JU-Gd-8Fa" id="fdq-Vr-dgL"/>
                         <outlet property="welcomePromptLabel" destination="PkN-KM-rBn" id="HQa-vo-vEI"/>
                     </connections>

@@ -42,6 +42,10 @@ class NewsViewControllerTests: XCTestCase {
         viewController.loadViewIfNeeded()
     }
     
+    func testSeatsBannerIntoTableViewHeader() {
+        XCTAssertEqual(viewController.tableView.tableHeaderView, viewController.bannerContainer)
+    }
+    
     func testTellsTheDelegateWhenTheSceneWillAppear() {
         viewController.viewWillAppear(false)
         XCTAssertTrue(delegate.toldNewsSceneWillAppear)
