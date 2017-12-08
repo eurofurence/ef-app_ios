@@ -31,6 +31,9 @@ class CapturingViewController: UIViewController {
         didDismissUsingAnimations = flag
         capturedDismissalCompletionHandler = completion
     }
+    
+    var _presentedViewController: UIViewController?
+    override var presentedViewController: UIViewController? { return _presentedViewController }
 
 }
 
@@ -167,6 +170,27 @@ class StoryboardAlertRouterTests: XCTestCase {
         dismissable?.dismiss() { invoked = true }
         
         XCTAssertFalse(invoked)
+    }
+    
+    func testWhenRootControllerHasPresentedSomethingThePresentedControllerIsToldToPresentAlert() {
+        let presented = CapturingViewController()
+        capturingViewController._presentedViewController = presented
+        alertRouter.show(Alert(title: "", message: ""))
+        
+        XCTAssertNotNil(presented.capturedPresentedAlertViewController)
+    }
+    
+    func testWhenRootControllerHasPresentedSomethingDismissingTheAlertShouldDismissItOnThePresentedController() {
+        let presented = CapturingViewController()
+        capturingViewController._presentedViewController = presented
+        var dismissable: AlertDismissable?
+        var alert = Alert(title: "", message: "")
+        alert.onCompletedPresentation = { dismissable = $0 }
+        alertRouter.show(alert)
+        presented.capturedPresentationCompletionHandler?()
+        dismissable?.dismiss()
+        
+        XCTAssertTrue(presented.didDismissPresentedController)
     }
     
 }

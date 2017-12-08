@@ -27,17 +27,22 @@ struct WindowAlertRouter: AlertRouter {
             }))
         }
 
-        window.rootViewController?.present(alertController, animated: true) { (_) in
-            alert.onCompletedPresentation?(Dismissable(viewController: self.window.rootViewController))
+        var presenting = window.rootViewController!
+        if let presented = presenting.presentedViewController {
+            presenting = presented
+        }
+
+        presenting.present(alertController, animated: true) { (_) in
+            alert.onCompletedPresentation?(Dismissable(viewController: presenting))
         }
     }
 
     private struct Dismissable: AlertDismissable {
 
-        var viewController: UIViewController?
+        var viewController: UIViewController
 
         func dismiss(_ completionHandler: (() -> Void)?) {
-            viewController?.dismiss(animated: true, completion: completionHandler)
+            viewController.dismiss(animated: true, completion: completionHandler)
         }
 
     }
