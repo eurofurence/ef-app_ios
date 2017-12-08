@@ -103,7 +103,7 @@ class LoginViewControllerTests: XCTestCase {
     func testUpdatingRegistrationNumberTextTellsDelegate() {
         let input = "\(arc4random())"
         loginViewController.registrationNumberTextField.text = input
-        loginViewController.registrationNumberTextField.sendActions(for: .valueChanged)
+        loginViewController.registrationNumberTextField.sendActions(for: .editingChanged)
         
         XCTAssertEqual(input, delegate.capturedRegistrationNumber)
     }
@@ -111,7 +111,7 @@ class LoginViewControllerTests: XCTestCase {
     func testUpdatingUsernameTextTellsDelegate() {
         let input = "\(arc4random())"
         loginViewController.usernameTextField.text = input
-        loginViewController.usernameTextField.sendActions(for: .valueChanged)
+        loginViewController.usernameTextField.sendActions(for: .editingChanged)
         
         XCTAssertEqual(input, delegate.capturedUsername)
     }
@@ -119,7 +119,7 @@ class LoginViewControllerTests: XCTestCase {
     func testUpdatingPasswordTextTellsDelegate() {
         let input = "\(arc4random())"
         loginViewController.passwordTextField.text = input
-        loginViewController.passwordTextField.sendActions(for: .valueChanged)
+        loginViewController.passwordTextField.sendActions(for: .editingChanged)
         
         XCTAssertEqual(input, delegate.capturedPassword)
     }
