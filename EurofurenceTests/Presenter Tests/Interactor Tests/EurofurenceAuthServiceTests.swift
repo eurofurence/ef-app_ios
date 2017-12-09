@@ -18,16 +18,32 @@ class CapturingAuthStateHandler {
     
 }
 
+class CapturingAuthenticationStateObserver: AuthenticationStateObserver {
+    
+    private(set) var capturedLoggedInUser: User?
+    func userDidLogin(_ user: User) {
+        capturedLoggedInUser = user
+    }
+    
+    func userDidLogout() {
+        
+    }
+    
+}
+
 class EurofurenceAuthServiceTests: XCTestCase {
     
     var app: CapturingEurofurenceApplication!
     var service: ApplicationAuthenticationService!
+    var observer: CapturingAuthenticationStateObserver!
     
     override func setUp() {
         super.setUp()
         
         app = CapturingEurofurenceApplication()
         service = ApplicationAuthenticationService(app: app)
+        observer = CapturingAuthenticationStateObserver()
+        service.add(observer: observer)
     }
     
     // MARK: Auth State
@@ -100,6 +116,17 @@ class EurofurenceAuthServiceTests: XCTestCase {
         app.capturedLoginHandler?(.failure)
         
         XCTAssertTrue(didFailToLogin)
+    }
+    
+    func testObserversAreToldLoginSucceeded() {
+        let input = LoginServiceRequest(registrationNumber: 0,
+                                        username: "",
+                                        password: "")
+        service.perform(input) { (_) in }
+        let user = User(registrationNumber: Int(arc4random()), username: "")
+        app.capturedLoginHandler?(.success(user))
+        
+        XCTAssertEqual(observer.capturedLoggedInUser, user)
     }
     
 }

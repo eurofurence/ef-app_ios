@@ -11,13 +11,14 @@ class ApplicationAuthenticationService: AuthenticationService {
     static let shared = ApplicationAuthenticationService(app: EurofurenceApplication.shared)
 
     private let app: EurofurenceApplicationProtocol
+    private var observers = [AuthenticationStateObserver]()
 
     init(app: EurofurenceApplicationProtocol) {
         self.app = app
     }
 
     func add(observer: AuthenticationStateObserver) {
-
+        observers.append(observer)
     }
 
     func determineAuthState(completionHandler: @escaping (AuthState) -> Void) {
@@ -36,8 +37,9 @@ class ApplicationAuthenticationService: AuthenticationService {
                                        password: request.password)
         app.login(arguments) { (result) in
             switch result {
-            case .success(_):
+            case .success(let user):
                 completionHandler(.success)
+                self.observers.forEach { $0.userDidLogin(user) }
 
             case .failure:
                 completionHandler(.failure)
