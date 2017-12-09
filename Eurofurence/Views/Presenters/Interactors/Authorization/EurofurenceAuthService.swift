@@ -6,9 +6,9 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-class EurofurenceAuthService: AuthService {
+class EurofurenceAuthService: AuthService, LoginService {
 
-    static var shared = EurofurenceAuthService(app: EurofurenceApplication.shared)
+    static let shared = EurofurenceAuthService(app: EurofurenceApplication.shared)
 
     private let app: EurofurenceApplicationProtocol
 
@@ -26,6 +26,21 @@ class EurofurenceAuthService: AuthService {
                 completionHandler(.loggedIn(user))
             } else {
                 completionHandler(.loggedOut)
+            }
+        }
+    }
+
+    func perform(_ request: LoginServiceRequest, completionHandler: @escaping (LoginServiceResult) -> Void) {
+        let arguments = LoginArguments(registrationNumber: request.registrationNumber,
+                                       username: request.username,
+                                       password: request.password)
+        app.login(arguments) { (result) in
+            switch result {
+            case .success(_):
+                completionHandler(.success)
+
+            case .failure:
+                completionHandler(.failure)
             }
         }
     }
