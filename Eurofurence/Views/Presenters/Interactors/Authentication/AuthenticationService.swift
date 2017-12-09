@@ -6,4 +6,10 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-protocol AuthenticationService: AuthService, LoginService {}
+protocol AuthenticationService {
+
+    func add(observer: AuthStateObserver)
+    func determineAuthState(completionHandler: @escaping (AuthState) -> Void)
+    func perform(_ request: LoginServiceRequest, completionHandler: @escaping (LoginServiceResult) -> Void)
+
+}

@@ -295,18 +295,15 @@
 		CABA438B1FBCDBBA009CB5B0 /* PhoneLoginModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA438A1FBCDBBA009CB5B0 /* PhoneLoginModuleFactory.swift */; };
 		CABA438D1FBCDBDF009CB5B0 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA438C1FBCDBDF009CB5B0 /* LoginPresenter.swift */; };
 		CABA438F1FBCDBEE009CB5B0 /* LoginSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA438E1FBCDBEE009CB5B0 /* LoginSceneFactory.swift */; };
-		CABA43911FC302EC009CB5B0 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43901FC302EC009CB5B0 /* LoginService.swift */; };
 		CABA43931FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43921FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift */; };
 		CABA43951FCE0A49009CB5B0 /* CapturingLoginScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43941FCE0A49009CB5B0 /* CapturingLoginScene.swift */; };
 		CABA43971FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43961FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift */; };
-		CABA43991FCE0A7B009CB5B0 /* CapturingLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43981FCE0A7B009CB5B0 /* CapturingLoginService.swift */; };
 		CABA439D1FD576D0009CB5B0 /* MessagesModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA439C1FD576D0009CB5B0 /* MessagesModuleBuilder.swift */; };
 		CABA439F1FD578E1009CB5B0 /* NewsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA439E1FD578E1009CB5B0 /* NewsModuleBuilder.swift */; };
 		CABA43A11FD57A78009CB5B0 /* PreloadModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43A01FD57A78009CB5B0 /* PreloadModuleBuilder.swift */; };
 		CABA43A31FD57C65009CB5B0 /* TutorialModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */; };
 		CABA43AC1FD5DC68009CB5B0 /* LoginScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43AB1FD5DC68009CB5B0 /* LoginScene.swift */; };
 		CAC1E1271F5040BD00195513 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1261F5040BD00195513 /* NewsPresenter.swift */; };
-		CAC1E1291F5040CB00195513 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1281F5040CB00195513 /* AuthService.swift */; };
 		CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12A1F5040E100195513 /* NewsScene.swift */; };
 		CAC1E12D1F5040F500195513 /* WelcomePromptStringFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12C1F5040F500195513 /* WelcomePromptStringFactory.swift */; };
 		CAC1E12F1F50411900195513 /* StubAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12E1F50411900195513 /* StubAuthenticationService.swift */; };
@@ -338,6 +335,9 @@
 		CAE27B501F857A99005FDE39 /* PhonePreloadModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4F1F857A99005FDE39 /* PhonePreloadModuleFactory.swift */; };
 		CAEAEBE71FDC94F800C0EE7C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */; };
 		CAEAEBE91FDC966800C0EE7C /* CapturingAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBE81FDC966800C0EE7C /* CapturingAuthenticationService.swift */; };
+		CAEAEBEB1FDC984D00C0EE7C /* AuthStateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBEA1FDC984D00C0EE7C /* AuthStateObserver.swift */; };
+		CAEAEBED1FDC985C00C0EE7C /* AuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBEC1FDC985C00C0EE7C /* AuthState.swift */; };
+		CAEAEBEF1FDC989300C0EE7C /* LoginServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBEE1FDC989300C0EE7C /* LoginServiceRequest.swift */; };
 		CAF3C7441F9F5C550008F027 /* NewsModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7431F9F5C550008F027 /* NewsModuleProviding.swift */; };
 		CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */; };
 		CAF3C74C1F9F619C0008F027 /* PhoneNewsModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74B1F9F619C0008F027 /* PhoneNewsModuleFactory.swift */; };
@@ -716,18 +716,15 @@
 		CABA438A1FBCDBBA009CB5B0 /* PhoneLoginModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneLoginModuleFactory.swift; sourceTree = "<group>"; };
 		CABA438C1FBCDBDF009CB5B0 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		CABA438E1FBCDBEE009CB5B0 /* LoginSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSceneFactory.swift; sourceTree = "<group>"; };
-		CABA43901FC302EC009CB5B0 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		CABA43921FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingLoginModuleDelegate.swift; path = "Test Doubles/CapturingLoginModuleDelegate.swift"; sourceTree = "<group>"; };
 		CABA43941FCE0A49009CB5B0 /* CapturingLoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingLoginScene.swift; path = "Test Doubles/Scenes/CapturingLoginScene.swift"; sourceTree = "<group>"; };
 		CABA43961FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StubLoginSceneFactory.swift; path = "Test Doubles/StubLoginSceneFactory.swift"; sourceTree = "<group>"; };
-		CABA43981FCE0A7B009CB5B0 /* CapturingLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingLoginService.swift; path = "Test Doubles/CapturingLoginService.swift"; sourceTree = "<group>"; };
 		CABA439C1FD576D0009CB5B0 /* MessagesModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesModuleBuilder.swift; path = Messages/MessagesModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA439E1FD578E1009CB5B0 /* NewsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsModuleBuilder.swift; path = News/NewsModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA43A01FD57A78009CB5B0 /* PreloadModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA43AB1FD5DC68009CB5B0 /* LoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScene.swift; sourceTree = "<group>"; };
 		CAC1E1261F5040BD00195513 /* NewsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenter.swift; path = News/NewsPresenter.swift; sourceTree = "<group>"; };
-		CAC1E1281F5040CB00195513 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = Interactors/Authorization/AuthService.swift; sourceTree = "<group>"; };
 		CAC1E12A1F5040E100195513 /* NewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsScene.swift; path = News/NewsScene.swift; sourceTree = "<group>"; };
 		CAC1E12C1F5040F500195513 /* WelcomePromptStringFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomePromptStringFactory.swift; path = News/WelcomePromptStringFactory.swift; sourceTree = "<group>"; };
 		CAC1E12E1F50411900195513 /* StubAuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAuthenticationService.swift; path = "Test Doubles/StubAuthenticationService.swift"; sourceTree = "<group>"; };
@@ -759,6 +756,9 @@
 		CAE27B4F1F857A99005FDE39 /* PhonePreloadModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePreloadModuleFactory.swift; sourceTree = "<group>"; };
 		CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthenticationService.swift; path = Interactors/Authentication/AuthenticationService.swift; sourceTree = "<group>"; };
 		CAEAEBE81FDC966800C0EE7C /* CapturingAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingAuthenticationService.swift; path = "Test Doubles/CapturingAuthenticationService.swift"; sourceTree = "<group>"; };
+		CAEAEBEA1FDC984D00C0EE7C /* AuthStateObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthStateObserver.swift; path = Interactors/Authentication/AuthStateObserver.swift; sourceTree = "<group>"; };
+		CAEAEBEC1FDC985C00C0EE7C /* AuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthState.swift; path = Interactors/Authentication/AuthState.swift; sourceTree = "<group>"; };
+		CAEAEBEE1FDC989300C0EE7C /* LoginServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginServiceRequest.swift; path = Interactors/Authentication/LoginServiceRequest.swift; sourceTree = "<group>"; };
 		CAF3C7431F9F5C550008F027 /* NewsModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsModuleProviding.swift; path = News/NewsModuleProviding.swift; sourceTree = "<group>"; };
 		CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingNewsModuleDelegate.swift; path = "Test Doubles/CapturingNewsModuleDelegate.swift"; sourceTree = "<group>"; };
 		CAF3C74B1F9F619C0008F027 /* PhoneNewsModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhoneNewsModuleFactory.swift; path = News/PhoneNewsModuleFactory.swift; sourceTree = "<group>"; };
@@ -897,7 +897,6 @@
 				7820A6E41F140056004C0FB5 /* CapturingAlertRouter.swift */,
 				CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */,
 				CABA43921FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift */,
-				CABA43981FCE0A7B009CB5B0 /* CapturingLoginService.swift */,
 				CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */,
 				CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */,
 				CA8E17EE1F817A8C003C348C /* CapturingPreloadService.swift */,
@@ -1618,14 +1617,6 @@
 			name = Preload;
 			sourceTree = "<group>";
 		};
-		CA6A9FEE1FD5DDF90092C6DB /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				CABA43901FC302EC009CB5B0 /* LoginService.swift */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
 		CA6A9FEF1FD5DE0E0092C6DB /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1755,7 +1746,6 @@
 			children = (
 				CA6AA0001FD6C5FD0092C6DB /* LoginModuleBuilder.swift */,
 				CABA43851FBC6FE1009CB5B0 /* LoginModuleProviding.swift */,
-				CA6A9FEE1FD5DDF90092C6DB /* Interactor */,
 				CABA43AE1FD5DC96009CB5B0 /* Module */,
 				CABA43AA1FD5DB98009CB5B0 /* Presenter */,
 				CABA43AD1FD5DC7C009CB5B0 /* View */,
@@ -1951,6 +1941,9 @@
 			isa = PBXGroup;
 			children = (
 				CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */,
+				CAEAEBEA1FDC984D00C0EE7C /* AuthStateObserver.swift */,
+				CAEAEBEC1FDC985C00C0EE7C /* AuthState.swift */,
+				CAEAEBEE1FDC989300C0EE7C /* LoginServiceRequest.swift */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -1987,7 +1980,6 @@
 		CAF9A93C1F50488D00628833 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
-				CAC1E1281F5040CB00195513 /* AuthService.swift */,
 				CAF9A9401F50B85200628833 /* EurofurenceAuthService.swift */,
 			);
 			name = Authorization;
@@ -2570,11 +2562,11 @@
 				9A34B9871ED08C7E004A249E /* JsonDataStore.swift in Sources */,
 				9A0525411ECA2AF500578798 /* Sync.swift in Sources */,
 				9A34B9811ED06956004A249E /* ViewModelResolver.swift in Sources */,
+				CAEAEBEF1FDC989300C0EE7C /* LoginServiceRequest.swift in Sources */,
 				9A861EB61F25550700B75A8C /* TutorialPageScene.swift in Sources */,
 				9A2A948D1F12D64B004D66FB /* DataModelVersionProviding.swift in Sources */,
 				9ACF99941EC858B2006FC958 /* LinkFragment.swift in Sources */,
 				CA8E7EFC1FB0932700F0BF10 /* PhoneNewsSceneFactory.swift in Sources */,
-				CAC1E1291F5040CB00195513 /* AuthService.swift in Sources */,
 				9A861EB71F25550700B75A8C /* SplashScene.swift in Sources */,
 				CAF9A9431F50B87600628833 /* EurofurenceApplicationProtocol.swift in Sources */,
 				6EF96CDD1F0F544B00EE6134 /* EventKitCalendarEvent.swift in Sources */,
@@ -2649,7 +2641,6 @@
 				CABA438F1FBCDBEE009CB5B0 /* LoginSceneFactory.swift in Sources */,
 				CA8E7F0A1FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift in Sources */,
 				9AB64BCD1F018365004E8D91 /* KnowledgeEntryCell.swift in Sources */,
-				CABA43911FC302EC009CB5B0 /* LoginService.swift in Sources */,
 				7820A6FB1F16BBB2004C0FB5 /* PushPermissionsStateProviding.swift in Sources */,
 				9A861ED71F25564900B75A8C /* StoryboardRouters.swift in Sources */,
 				78567B431F10303600EBA31D /* ApplicationActivityIndicatorRefreshDelegate.swift in Sources */,
@@ -2688,6 +2679,7 @@
 				9A2A94871F12CBC0004D66FB /* SyncState.swift in Sources */,
 				CA8E7EF81FB08ED700F0BF10 /* PhoneRootModuleFactory.swift in Sources */,
 				9A80EF661F29233F00FD0D37 /* EventTablePreferences.swift in Sources */,
+				CAEAEBEB1FDC984D00C0EE7C /* AuthStateObserver.swift in Sources */,
 				D6F3D13A59E359E69EA66D7E /* MenuTableViewCell.swift in Sources */,
 				9A9487FF1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift in Sources */,
 				7820A6E71F1400A8004C0FB5 /* AlertRouter.swift in Sources */,
@@ -2699,6 +2691,7 @@
 				9A861ED91F25564900B75A8C /* RootViewControllerAnimator.swift in Sources */,
 				D6F3D62A784F07D9C7A84DC8 /* KnowledgeEntryViewController.swift in Sources */,
 				CA1FE99B1FA0B3EB009C7DF3 /* WindowWireframe.swift in Sources */,
+				CAEAEBED1FDC985C00C0EE7C /* AuthState.swift in Sources */,
 				CA2B4FA81F1EA72A00F007E1 /* LoginArguments.swift in Sources */,
 				78F555991F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift in Sources */,
 				9A8ECA251F2BE1E300351A83 /* NotificationSoundPlayer.swift in Sources */,
@@ -2844,7 +2837,6 @@
 				CA30EACA1F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift in Sources */,
 				7820A6E11F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift in Sources */,
 				781A94461F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift in Sources */,
-				CABA43991FCE0A7B009CB5B0 /* CapturingLoginService.swift in Sources */,
 				CA30EAA81F2132480053DBF6 /* StubLoginResponse.swift in Sources */,
 				CAC1E1331F50414B00195513 /* WelcomePromptStringFactoryTestDoubles.swift in Sources */,
 			);

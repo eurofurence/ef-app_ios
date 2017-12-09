@@ -9,19 +9,6 @@
 @testable import Eurofurence
 import XCTest
 
-class CapturingAuthService: AuthService {
-    
-    func add(observer: AuthStateObserver) {
-        
-    }
-    
-    private(set) var authStateDeterminedCount = 0
-    func determineAuthState(completionHandler: @escaping (AuthState) -> Void) {
-        authStateDeterminedCount += 1
-    }
-    
-}
-
 class NewsPresenterTests: XCTestCase {
     
     func testTheAuthServiceIsNotToldToDetermineAuthStateUntilViewWillAppear() {

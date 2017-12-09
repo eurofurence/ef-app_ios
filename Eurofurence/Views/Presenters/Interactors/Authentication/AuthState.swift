@@ -1,10 +1,12 @@
 //
-//  AuthService.swift
+//  AuthState.swift
 //  Eurofurence
 //
-//  Created by Thomas Sherwood on 25/08/2017.
+//  Created by Thomas Sherwood on 09/12/2017.
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
+
+import Foundation
 
 enum AuthState: CustomStringConvertible, Equatable {
     case loggedIn(User)
@@ -31,18 +33,4 @@ enum AuthState: CustomStringConvertible, Equatable {
             return false
         }
     }
-}
-
-protocol AuthService {
-
-    func add(observer: AuthStateObserver)
-    func determineAuthState(completionHandler: @escaping (AuthState) -> Void)
-
-}
-
-protocol AuthStateObserver {
-
-    func userDidLogin(_ user: User)
-    func userDidLogout()
-
 }
