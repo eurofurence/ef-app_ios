@@ -16,9 +16,7 @@ class TutorialViewControllerTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        let bundle = Bundle(for: TutorialViewController.self)
-        let storyboard = UIStoryboard(name: "Tutorial", bundle: bundle)
-        tutorialController = storyboard.instantiateInitialViewController() as? TutorialViewController
+        tutorialController = PhoneTutorialSceneFactory().makeTutorialScene() as? TutorialViewController
     }
     
     func testTheViewControllerShouldPreferTheLightStatusBarStyle() {
