@@ -15,7 +15,7 @@ class NewsModuleBuilder {
 
     init() {
         newsSceneFactory = PhoneNewsSceneFactory()
-        authenticationService = EurofurenceAuthService.shared
+        authenticationService = ApplicationAuthenticationService.shared
         privateMessagesService = EurofurencePrivateMessagesService.shared
         welcomePromptStringFactory = UnlocalizedWelcomePromptStringFactory()
     }

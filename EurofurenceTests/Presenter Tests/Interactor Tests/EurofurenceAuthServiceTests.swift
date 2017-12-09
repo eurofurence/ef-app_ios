@@ -21,13 +21,13 @@ class CapturingAuthStateHandler {
 class EurofurenceAuthServiceTests: XCTestCase {
     
     var app: CapturingEurofurenceApplication!
-    var service: EurofurenceAuthService!
+    var service: ApplicationAuthenticationService!
     
     override func setUp() {
         super.setUp()
         
         app = CapturingEurofurenceApplication()
-        service = EurofurenceAuthService(app: app)
+        service = ApplicationAuthenticationService(app: app)
     }
     
     // MARK: Auth State
