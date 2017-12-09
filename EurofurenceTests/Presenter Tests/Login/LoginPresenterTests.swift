@@ -12,7 +12,7 @@ import XCTest
 class LoginPresenterTests: XCTestCase {
     
     var loginSceneFactory: StubLoginSceneFactory!
-    var loginService: CapturingLoginService!
+    var authenticationService: CapturingAuthenticationService!
     var scene: UIViewController!
     var delegate: CapturingLoginModuleDelegate!
     var presentationStrings: StubPresentationStrings!
@@ -22,14 +22,14 @@ class LoginPresenterTests: XCTestCase {
         super.setUp()
         
         loginSceneFactory = StubLoginSceneFactory()
-        loginService = CapturingLoginService()
+        authenticationService = CapturingAuthenticationService()
         presentationStrings = StubPresentationStrings()
         alertRouter = CapturingAlertRouter()
         alertRouter.automaticallyPresentAlerts = true
         delegate = CapturingLoginModuleDelegate()
         scene = LoginModuleBuilder()
             .with(loginSceneFactory)
-            .with(loginService)
+            .with(authenticationService)
             .with(presentationStrings)
             .with(alertRouter)
             .build()
@@ -59,11 +59,11 @@ class LoginPresenterTests: XCTestCase {
     }
     
     private func simulateLoginFailure() {
-        loginService.failRequest()
+        authenticationService.failRequest()
     }
     
     private func simulateLoginSuccess() {
-        loginService.fulfillRequest()
+        authenticationService.fulfillRequest()
     }
     
     private func tapLoginButton() {
@@ -201,7 +201,7 @@ class LoginPresenterTests: XCTestCase {
         completeAlertPresentation()
         let expected = LoginServiceRequest(registrationNumber: regNo, username: username, password: password)
         
-        XCTAssertEqual(expected, loginService.capturedRequest)
+        XCTAssertEqual(expected, authenticationService.capturedRequest)
     }
     
     func testAlertWithLoggingInTitleDisplayedWhenLoginServiceBeginsLoginProcedure() {
@@ -216,7 +216,7 @@ class LoginPresenterTests: XCTestCase {
         inputValidCredentials()
         tapLoginButton()
         
-        XCTAssertNil(loginService.capturedRequest)
+        XCTAssertNil(authenticationService.capturedRequest)
     }
     
     func testAlertWithLogginInDescriptionDisplayedWhenLoginServiceBeginsLoginProcedure() {

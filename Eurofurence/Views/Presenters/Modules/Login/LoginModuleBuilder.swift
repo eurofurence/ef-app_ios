@@ -9,13 +9,13 @@
 class LoginModuleBuilder {
 
     private var sceneFactory: LoginSceneFactory
-    private var loginService: LoginService
+    private var authenticationService: AuthenticationService
     private var presentationStrings: PresentationStrings
     private var alertRouter: AlertRouter
 
     init() {
         sceneFactory = LoginViewControllerV2Factory()
-        loginService = EurofurenceAuthService.shared
+        authenticationService = EurofurenceAuthService.shared
         presentationStrings = UnlocalizedPresentationStrings()
         alertRouter = WindowAlertRouter.shared
     }
@@ -25,8 +25,8 @@ class LoginModuleBuilder {
         return self
     }
 
-    func with(_ loginService: LoginService) -> LoginModuleBuilder {
-        self.loginService = loginService
+    func with(_ authenticationService: AuthenticationService) -> LoginModuleBuilder {
+        self.authenticationService = authenticationService
         return self
     }
 
@@ -42,7 +42,7 @@ class LoginModuleBuilder {
 
     func build() -> LoginModuleProviding {
         return PhoneLoginModuleFactory(sceneFactory: sceneFactory,
-                                       loginService: loginService,
+                                       authenticationService: authenticationService,
                                        presentationStrings: presentationStrings,
                                        alertRouter: alertRouter)
     }

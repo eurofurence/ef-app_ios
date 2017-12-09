@@ -6,7 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-class EurofurenceAuthService: AuthService, LoginService {
+class EurofurenceAuthService: AuthenticationService {
 
     static let shared = EurofurenceAuthService(app: EurofurenceApplication.shared)
 

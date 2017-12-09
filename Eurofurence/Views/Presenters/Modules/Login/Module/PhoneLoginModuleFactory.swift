@@ -11,7 +11,7 @@ import UIKit.UIViewController
 struct PhoneLoginModuleFactory: LoginModuleProviding {
 
     var sceneFactory: LoginSceneFactory
-    var loginService: LoginService
+    var authenticationService: AuthenticationService
     var presentationStrings: PresentationStrings
     var alertRouter: AlertRouter
 
@@ -19,7 +19,7 @@ struct PhoneLoginModuleFactory: LoginModuleProviding {
         let scene = sceneFactory.makeLoginScene()
         _ = LoginPresenter(delegate: delegate,
                            scene: scene,
-                           loginService: loginService,
+                           authenticationService: authenticationService,
                            presentationStrings: presentationStrings,
                            alertRouter: alertRouter)
 

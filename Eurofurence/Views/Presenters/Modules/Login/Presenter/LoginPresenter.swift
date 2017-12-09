@@ -12,7 +12,7 @@ class LoginPresenter: LoginSceneDelegate {
 
     private let delegate: LoginModuleDelegate
     private let scene: LoginScene
-    private let loginService: LoginService
+    private let authenticationService: AuthenticationService
     private let strings: PresentationStrings
     private let alertRouter: AlertRouter
     private lazy var validator = LoginValidator(validationHandler: self.loginValidationStateDidChange)
@@ -89,12 +89,12 @@ class LoginPresenter: LoginSceneDelegate {
 
     init(delegate: LoginModuleDelegate,
          scene: LoginScene,
-         loginService: LoginService,
+         authenticationService: AuthenticationService,
          presentationStrings: PresentationStrings,
          alertRouter: AlertRouter) {
         self.delegate = delegate
         self.scene = scene
-        self.loginService = loginService
+        self.authenticationService = authenticationService
         self.strings = presentationStrings
         self.alertRouter = alertRouter
 
@@ -114,7 +114,7 @@ class LoginPresenter: LoginSceneDelegate {
 
         var alert = Alert(title: strings[.loggingIn], message: strings[.loggingInDetail])
         alert.onCompletedPresentation = { (dismissable) in
-            self.loginService.perform(request) { (result) in
+            self.authenticationService.perform(request) { (result) in
                 dismissable.dismiss {
                     switch result {
                     case .success:
