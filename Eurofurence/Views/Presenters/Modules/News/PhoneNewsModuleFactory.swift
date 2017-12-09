@@ -11,7 +11,7 @@ import UIKit.UIViewController
 struct PhoneNewsModuleFactory: NewsModuleProviding {
 
     var newsSceneFactory: NewsSceneFactory
-    var authService: AuthService
+    var authenticationService: AuthenticationService
     var privateMessagesService: PrivateMessagesService
     var welcomePromptStringFactory: WelcomePromptStringFactory
 
@@ -19,7 +19,7 @@ struct PhoneNewsModuleFactory: NewsModuleProviding {
         let scene = newsSceneFactory.makeNewsScene()
         _ = NewsPresenter(delegate: delegate,
                           newsScene: scene,
-                          authService: authService,
+                          authenticationService: authenticationService,
                           privateMessagesService: privateMessagesService,
                           welcomePromptStringFactory: welcomePromptStringFactory)
 

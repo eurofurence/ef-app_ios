@@ -145,7 +145,7 @@ class NewsTableViewController: UITableViewController,
         let app = EurofurenceApplication.shared
         presenter = NewsPresenter(delegate: DummyNewsModuleDelegate(),
                                   newsScene: self,
-                                  authService: EurofurenceAuthService(app: app),
+                                  authenticationService: EurofurenceAuthService(app: app),
                                   privateMessagesService: EurofurencePrivateMessagesService(app: app),
                                   welcomePromptStringFactory: UnlocalizedWelcomePromptStringFactory())
     }

@@ -309,7 +309,7 @@
 		CAC1E1291F5040CB00195513 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1281F5040CB00195513 /* AuthService.swift */; };
 		CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12A1F5040E100195513 /* NewsScene.swift */; };
 		CAC1E12D1F5040F500195513 /* WelcomePromptStringFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12C1F5040F500195513 /* WelcomePromptStringFactory.swift */; };
-		CAC1E12F1F50411900195513 /* StubAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12E1F50411900195513 /* StubAuthService.swift */; };
+		CAC1E12F1F50411900195513 /* StubAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12E1F50411900195513 /* StubAuthenticationService.swift */; };
 		CAC1E1311F50413500195513 /* CapturingNewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1301F50413500195513 /* CapturingNewsScene.swift */; };
 		CAC1E1331F50414B00195513 /* WelcomePromptStringFactoryTestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1321F50414B00195513 /* WelcomePromptStringFactoryTestDoubles.swift */; };
 		CAC1E1371F50423200195513 /* NewsPresenterTestsForLoggedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1361F50423200195513 /* NewsPresenterTestsForLoggedInUser.swift */; };
@@ -730,7 +730,7 @@
 		CAC1E1281F5040CB00195513 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = Interactors/Authorization/AuthService.swift; sourceTree = "<group>"; };
 		CAC1E12A1F5040E100195513 /* NewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsScene.swift; path = News/NewsScene.swift; sourceTree = "<group>"; };
 		CAC1E12C1F5040F500195513 /* WelcomePromptStringFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomePromptStringFactory.swift; path = News/WelcomePromptStringFactory.swift; sourceTree = "<group>"; };
-		CAC1E12E1F50411900195513 /* StubAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAuthService.swift; path = "Test Doubles/StubAuthService.swift"; sourceTree = "<group>"; };
+		CAC1E12E1F50411900195513 /* StubAuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAuthenticationService.swift; path = "Test Doubles/StubAuthenticationService.swift"; sourceTree = "<group>"; };
 		CAC1E1301F50413500195513 /* CapturingNewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingNewsScene.swift; path = "Test Doubles/Scenes/CapturingNewsScene.swift"; sourceTree = "<group>"; };
 		CAC1E1321F50414B00195513 /* WelcomePromptStringFactoryTestDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomePromptStringFactoryTestDoubles.swift; path = "Test Doubles/WelcomePromptStringFactoryTestDoubles.swift"; sourceTree = "<group>"; };
 		CAC1E1361F50423200195513 /* NewsPresenterTestsForLoggedInUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenterTestsForLoggedInUser.swift; path = "Presenter Tests/News/NewsPresenterTestsForLoggedInUser.swift"; sourceTree = "<group>"; };
@@ -909,7 +909,7 @@
 				78455B481F1177AD005BE2D7 /* CapturingTutorialRouter.swift */,
 				7820A6E01F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift */,
 				6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */,
-				CAC1E12E1F50411900195513 /* StubAuthService.swift */,
+				CAC1E12E1F50411900195513 /* StubAuthenticationService.swift */,
 				78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */,
 				78455B4C1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift */,
 				CABA43961FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift */,
@@ -2824,7 +2824,7 @@
 				6EF96CCF1F0EDB2000EE6134 /* CalendarTestDoubles.swift in Sources */,
 				CAD780491F1D51EB002A8333 /* StubClock.swift in Sources */,
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
-				CAC1E12F1F50411900195513 /* StubAuthService.swift in Sources */,
+				CAC1E12F1F50411900195513 /* StubAuthenticationService.swift in Sources */,
 				78D7EEB51F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift in Sources */,
 				CAEAEBE91FDC966800C0EE7C /* CapturingAuthenticationService.swift in Sources */,
 				CAC1E1391F50431000195513 /* NewsPresenterTestContext.swift in Sources */,

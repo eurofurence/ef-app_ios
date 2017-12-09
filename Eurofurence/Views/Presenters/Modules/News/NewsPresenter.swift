@@ -15,24 +15,24 @@ struct NewsPresenter: AuthStateObserver, NewsSceneDelegate {
     private class DetermineAuthStateOnce {
 
         private var ran = false
-        private let authService: AuthService
+        private let authenticationService: AuthenticationService
 
-        init(authService: AuthService) {
-            self.authService = authService
+        init(authenticationService: AuthenticationService) {
+            self.authenticationService = authenticationService
         }
 
         func run(_ handler: @escaping (AuthState) -> Void) {
             guard !ran else { return }
 
             ran = true
-            authService.determineAuthState(completionHandler: handler)
+            authenticationService.determineAuthState(completionHandler: handler)
         }
 
     }
 
     // MARK: Properties
 
-    private let authService: AuthService
+    private let authenticationService: AuthenticationService
     private let delegate: NewsModuleDelegate
     private let newsScene: NewsScene
     private let welcomePromptStringFactory: WelcomePromptStringFactory
@@ -43,19 +43,19 @@ struct NewsPresenter: AuthStateObserver, NewsSceneDelegate {
 
     init(delegate: NewsModuleDelegate,
          newsScene: NewsScene,
-         authService: AuthService,
+         authenticationService: AuthenticationService,
          privateMessagesService: PrivateMessagesService,
          welcomePromptStringFactory: WelcomePromptStringFactory) {
         self.delegate = delegate
         self.newsScene = newsScene
-        self.authService = authService
+        self.authenticationService = authenticationService
         self.welcomePromptStringFactory = welcomePromptStringFactory
         self.privateMessagesService = privateMessagesService
 
-        determineAuthStateOnce = DetermineAuthStateOnce(authService: authService)
+        determineAuthStateOnce = DetermineAuthStateOnce(authenticationService: authenticationService)
 
         newsScene.delegate = self
-        authService.add(observer: self)
+        authenticationService.add(observer: self)
     }
 
     // MARK: AuthStateObserver

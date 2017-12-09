@@ -9,13 +9,13 @@
 class NewsModuleBuilder {
 
     private var newsSceneFactory: NewsSceneFactory
-    private var authService: AuthService
+    private var authenticationService: AuthenticationService
     private var privateMessagesService: PrivateMessagesService
     private var welcomePromptStringFactory: WelcomePromptStringFactory
 
     init() {
         newsSceneFactory = PhoneNewsSceneFactory()
-        authService = EurofurenceAuthService.shared
+        authenticationService = EurofurenceAuthService.shared
         privateMessagesService = EurofurencePrivateMessagesService.shared
         welcomePromptStringFactory = UnlocalizedWelcomePromptStringFactory()
     }
@@ -25,8 +25,8 @@ class NewsModuleBuilder {
         return self
     }
 
-    func with(_ authService: AuthService) -> NewsModuleBuilder {
-        self.authService = authService
+    func with(_ authenticationService: AuthenticationService) -> NewsModuleBuilder {
+        self.authenticationService = authenticationService
         return self
     }
 
@@ -42,7 +42,7 @@ class NewsModuleBuilder {
 
     func build() -> NewsModuleProviding {
         return PhoneNewsModuleFactory(newsSceneFactory: newsSceneFactory,
-                                      authService: authService,
+                                      authenticationService: authenticationService,
                                       privateMessagesService: privateMessagesService,
                                       welcomePromptStringFactory: welcomePromptStringFactory)
     }

@@ -26,26 +26,26 @@ class NewsPresenterTests: XCTestCase {
     
     func testTheAuthServiceIsNotToldToDetermineAuthStateUntilViewWillAppear() {
         let sceneFactory = StubNewsSceneFactory()
-        let authService = CapturingAuthService()
+        let authenticationService = CapturingAuthenticationService()
         let delegate = CapturingNewsModuleDelegate()
         _ = NewsModuleBuilder()
             .with(sceneFactory)
-            .with(authService)
+            .with(authenticationService)
             .with(StubPrivateMessagesService())
             .with(CapturingWelcomePromptStringFactory())
             .build()
             .makeNewsModule(delegate)
         
-        XCTAssertEqual(0, authService.authStateDeterminedCount)
+        XCTAssertEqual(0, authenticationService.authStateDeterminedCount)
     }
     
     func testTheAuthServiceIsNotDeterminedWhenSceneWillReappearAgain() {
         let sceneFactory = StubNewsSceneFactory()
-        let authService = CapturingAuthService()
+        let authenticationService = CapturingAuthenticationService()
         let delegate = CapturingNewsModuleDelegate()
         _ = NewsModuleBuilder()
             .with(sceneFactory)
-            .with(authService)
+            .with(authenticationService)
             .with(StubPrivateMessagesService())
             .with(CapturingWelcomePromptStringFactory())
             .build()
@@ -53,7 +53,7 @@ class NewsPresenterTests: XCTestCase {
         sceneFactory.stubbedScene.delegate?.newsSceneWillAppear()
         sceneFactory.stubbedScene.delegate?.newsSceneWillAppear()
         
-        XCTAssertEqual(1, authService.authStateDeterminedCount)
+        XCTAssertEqual(1, authenticationService.authStateDeterminedCount)
     }
     
 }

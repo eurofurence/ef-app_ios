@@ -10,7 +10,7 @@
 
 struct NewsPresenterTestContext {
     
-    var authService: StubAuthService
+    var authService: StubAuthenticationService
     let sceneFactory = StubNewsSceneFactory()
     let delegate = CapturingNewsModuleDelegate()
     
@@ -20,25 +20,25 @@ struct NewsPresenterTestContext {
     static func makeTestCaseForAuthenticatedUser(_ user: User = User(registrationNumber: 42, username: ""),
                                                  welcomePromptStringFactory: WelcomePromptStringFactory = DummyWelcomePromptStringFactory(),
                                                  privateMessagesService: PrivateMessagesService = DummyPrivateMessagesService()) -> NewsPresenterTestContext {
-        return NewsPresenterTestContext(authService: StubAuthService(authState: .loggedIn(user)),
+        return NewsPresenterTestContext(authenticationService: StubAuthenticationService(authState: .loggedIn(user)),
                                         welcomePromptStringFactory: welcomePromptStringFactory,
                                         privateMessagesService: privateMessagesService)
     }
     
     @discardableResult
     static func makeTestCaseForAnonymousUser(welcomePromptStringFactory: WelcomePromptStringFactory = DummyWelcomePromptStringFactory()) -> NewsPresenterTestContext {
-        return NewsPresenterTestContext(authService: StubAuthService(authState: .loggedOut),
+        return NewsPresenterTestContext(authenticationService: StubAuthenticationService(authState: .loggedOut),
                                         welcomePromptStringFactory: welcomePromptStringFactory,
                                         privateMessagesService: DummyPrivateMessagesService())
     }
     
-    private init(authService: StubAuthService,
+    private init(authenticationService: StubAuthenticationService,
                  welcomePromptStringFactory: WelcomePromptStringFactory,
                  privateMessagesService: PrivateMessagesService) {
-        self.authService = authService
+        self.authService = authenticationService
         _ = NewsModuleBuilder()
             .with(sceneFactory)
-            .with(authService)
+            .with(authenticationService)
             .with(privateMessagesService)
             .with(welcomePromptStringFactory)
             .build()

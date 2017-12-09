@@ -1,5 +1,5 @@
 //
-//  StubAuthService.swift
+//  StubAuthenticationService.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 25/08/2017.
@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import Foundation
 
-class StubAuthService: AuthService {
+class StubAuthenticationService: AuthenticationService {
     
     private let authState: AuthState
     
@@ -24,6 +24,10 @@ class StubAuthService: AuthService {
     
     func determineAuthState(completionHandler: @escaping (AuthState) -> Void) {
         completionHandler(authState)
+    }
+    
+    func perform(_ request: LoginServiceRequest, completionHandler: @escaping (LoginServiceResult) -> Void) {
+        
     }
     
     func notifyObserversUserDidLogin(_ user: User = User(registrationNumber: 42, username: "")) {
