@@ -11,14 +11,14 @@ import UIKit.UIViewController
 struct PhoneMessagesModuleFactory: MessagesModuleProviding {
 
     var sceneFactory: MessagesSceneFactory
-    var authService: AuthService
+    var authenticationService: AuthenticationService
     var privateMessagesService: PrivateMessagesService
     var dateFormatter: DateFormatterProtocol
 
     func makeMessagesModule(_ delegate: MessagesModuleDelegate) -> UIViewController {
         let scene = sceneFactory.makeMessagesScene()
         _ = MessagesPresenter(scene: scene,
-                              authService: authService,
+                              authenticationService: authenticationService,
                               privateMessagesService: privateMessagesService,
                               dateFormatter: dateFormatter,
                               delegate: delegate)

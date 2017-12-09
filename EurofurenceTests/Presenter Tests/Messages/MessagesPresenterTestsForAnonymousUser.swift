@@ -23,14 +23,14 @@ class MessagesPresenterTestsForAnonymousUser: XCTestCase {
     }
     
     func testTheAuthServiceDoesNotDetermineAuthStateUntilTheSceneWillAppear() {
-        let authService = CapturingAuthService()
+        let authenticationService = CapturingAuthenticationService()
         _ = MessagesModuleBuilder()
             .with(StubMessagesSceneFactory())
-            .with(authService)
+            .with(authenticationService)
             .build()
             .makeMessagesModule(CapturingMessagesModuleDelegate())
         
-        XCTAssertEqual(0, authService.authStateDeterminedCount)
+        XCTAssertEqual(0, authenticationService.authStateDeterminedCount)
     }
     
     func testWhenTheDelegateCannotResolveUserAuthenticationTheDelegateIsToldToDismissTheMessagesScene() {

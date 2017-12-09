@@ -13,7 +13,7 @@ class MessagesPresenter: MessagesSceneDelegate {
     // MARK: Properties
 
     private let scene: MessagesScene
-    private let authService: AuthService
+    private let authenticationService: AuthenticationService
     private let privateMessagesService: PrivateMessagesService
     private let dateFormatter: DateFormatterProtocol
     private let delegate: MessagesModuleDelegate
@@ -22,12 +22,12 @@ class MessagesPresenter: MessagesSceneDelegate {
     // MARK: Initialization
 
     init(scene: MessagesScene,
-         authService: AuthService,
+         authenticationService: AuthenticationService,
          privateMessagesService: PrivateMessagesService,
          dateFormatter: DateFormatterProtocol,
          delegate: MessagesModuleDelegate) {
         self.scene = scene
-        self.authService = authService
+        self.authenticationService = authenticationService
         self.privateMessagesService = privateMessagesService
         self.dateFormatter = dateFormatter
         self.delegate = delegate
@@ -38,7 +38,7 @@ class MessagesPresenter: MessagesSceneDelegate {
     // MARK: MessagesSceneDelegate
 
     func messagesSceneWillAppear() {
-        authService.determineAuthState(completionHandler: authStateResolved)
+        authenticationService.determineAuthState(completionHandler: authStateResolved)
     }
 
     func messagesSceneDidSelectMessage(at indexPath: IndexPath) {

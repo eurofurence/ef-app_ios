@@ -11,13 +11,13 @@ import Foundation.NSDateFormatter
 class MessagesModuleBuilder {
 
     private var sceneFactory: MessagesSceneFactory
-    private var authService: AuthService
+    private var authenticationService: AuthenticationService
     private var privateMessagesService: PrivateMessagesService
     private var dateFormatter: DateFormatterProtocol
 
     init() {
         sceneFactory = PhoneMessagesSceneFactory()
-        authService = EurofurenceAuthService.shared
+        authenticationService = EurofurenceAuthService.shared
         privateMessagesService = EurofurencePrivateMessagesService.shared
         dateFormatter = DateFormatter()
     }
@@ -27,8 +27,8 @@ class MessagesModuleBuilder {
         return self
     }
 
-    func with(_ authService: AuthService) -> MessagesModuleBuilder {
-        self.authService = authService
+    func with(_ authenticationService: AuthenticationService) -> MessagesModuleBuilder {
+        self.authenticationService = authenticationService
         return self
     }
 
@@ -45,7 +45,7 @@ class MessagesModuleBuilder {
 
     func build() -> MessagesModuleProviding {
         return PhoneMessagesModuleFactory(sceneFactory: sceneFactory,
-                                          authService: authService,
+                                          authenticationService: authenticationService,
                                           privateMessagesService: privateMessagesService,
                                           dateFormatter: dateFormatter)
     }
