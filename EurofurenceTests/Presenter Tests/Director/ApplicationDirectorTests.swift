@@ -339,4 +339,14 @@ class ApplicationDirectorTests: XCTestCase {
         XCTAssertFalse(userResolved)
     }
     
+    func testWhenShowingLoginForMessagesControllerWhenLoginSucceedsItIsDismissed() {
+        navigateToTabController()
+        _ = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
+        newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
+        messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser { (_) in }
+        loginModuleFactory.delegate?.loginModuleDidLoginSuccessfully()
+        
+        XCTAssertTrue(tabModuleFactory.stubInterface.didDismissViewController)
+    }
+    
 }

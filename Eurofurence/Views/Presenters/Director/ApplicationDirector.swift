@@ -145,6 +145,7 @@ class ApplicationDirector: RootModuleDelegate,
 
     func loginModuleDidLoginSuccessfully() {
         messagesModuleResolutionHandler?(true)
+        tabController?.dismiss(animated: animate)
     }
 
     // MARK: Private
