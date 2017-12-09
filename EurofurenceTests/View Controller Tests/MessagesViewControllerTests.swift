@@ -47,6 +47,15 @@ class MessagesViewControllerTests: XCTestCase {
         return (binder: binder, cell: cell)
     }
     
+    func testTellsTheDelegateWhenViewWillAppear() {
+        viewController.viewWillAppear(false)
+        XCTAssertTrue(delegate.toldMessagesSceneWillAppear)
+    }
+    
+    func testDoesNotTellTheDelegateTheViewWillAppearTooSoon() {
+        XCTAssertFalse(delegate.toldMessagesSceneWillAppear)
+    }
+    
     func testTheRefreshIndicatorShouldBeEmbeddedWithinTheTableView() {
         XCTAssertTrue(viewController.refreshIndicator.isDescendant(of: viewController.tableView))
     }

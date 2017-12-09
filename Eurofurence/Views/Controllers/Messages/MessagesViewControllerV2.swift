@@ -25,6 +25,11 @@ class MessagesViewControllerV2: UIViewController,
         tableView.addSubview(refreshIndicator)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        delegate?.messagesSceneWillAppear()
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.messagesSceneDidSelectMessage(at: indexPath)
     }

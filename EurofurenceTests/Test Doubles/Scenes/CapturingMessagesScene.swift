@@ -100,8 +100,9 @@ class CapturingMessageItemScene: MessageItemScene {
 
 class CapturingMessagesSceneDelegate: MessagesSceneDelegate {
     
+    private(set) var toldMessagesSceneWillAppear = false
     func messagesSceneWillAppear() {
-        
+        toldMessagesSceneWillAppear = true
     }
     
     private(set) var capturedSelectedMessageIndexPath: IndexPath?
