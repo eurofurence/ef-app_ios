@@ -13,6 +13,7 @@ class MessagesPresenter: MessagesSceneDelegate {
     // MARK: Properties
 
     private let scene: MessagesScene
+    private let authService: AuthService
     private let privateMessagesService: PrivateMessagesService
     private let dateFormatter: DateFormatterProtocol
     private let delegate: MessagesModuleDelegate
@@ -26,15 +27,19 @@ class MessagesPresenter: MessagesSceneDelegate {
          dateFormatter: DateFormatterProtocol,
          delegate: MessagesModuleDelegate) {
         self.scene = scene
+        self.authService = authService
         self.privateMessagesService = privateMessagesService
         self.dateFormatter = dateFormatter
         self.delegate = delegate
 
         scene.delegate = self
-        authService.determineAuthState(completionHandler: authStateResolved)
     }
 
     // MARK: MessagesSceneDelegate
+
+    func messagesSceneWillAppear() {
+        authService.determineAuthState(completionHandler: authStateResolved)
+    }
 
     func messagesSceneDidSelectMessage(at indexPath: IndexPath) {
         let message = presentedMessages[indexPath[1]]

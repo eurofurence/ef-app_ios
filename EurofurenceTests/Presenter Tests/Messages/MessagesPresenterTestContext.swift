@@ -73,6 +73,7 @@ struct MessagesPresenterTestContext {
             .with(dateFormatter)
             .build()
             .makeMessagesModule(delegate)
+        sceneFactory.scene.delegate?.messagesSceneWillAppear()
     }
     
 }

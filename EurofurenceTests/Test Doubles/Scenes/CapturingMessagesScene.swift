@@ -100,6 +100,10 @@ class CapturingMessageItemScene: MessageItemScene {
 
 class CapturingMessagesSceneDelegate: MessagesSceneDelegate {
     
+    func messagesSceneWillAppear() {
+        
+    }
+    
     private(set) var capturedSelectedMessageIndexPath: IndexPath?
     func messagesSceneDidSelectMessage(at indexPath: IndexPath) {
         capturedSelectedMessageIndexPath = indexPath

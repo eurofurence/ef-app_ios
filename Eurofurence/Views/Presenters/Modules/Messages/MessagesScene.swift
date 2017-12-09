@@ -11,6 +11,7 @@ import UIKit.UIViewController
 
 protocol MessagesSceneDelegate {
 
+    func messagesSceneWillAppear()
     func messagesSceneDidSelectMessage(at indexPath: IndexPath)
 
 }
