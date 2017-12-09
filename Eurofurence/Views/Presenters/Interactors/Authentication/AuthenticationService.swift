@@ -8,7 +8,7 @@
 
 protocol AuthenticationService {
 
-    func add(observer: AuthStateObserver)
+    func add(observer: AuthenticationStateObserver)
     func determineAuthState(completionHandler: @escaping (AuthState) -> Void)
     func perform(_ request: LoginServiceRequest, completionHandler: @escaping (LoginServiceResult) -> Void)
 

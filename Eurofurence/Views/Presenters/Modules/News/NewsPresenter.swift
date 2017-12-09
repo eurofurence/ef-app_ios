@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct NewsPresenter: AuthStateObserver, NewsSceneDelegate {
+struct NewsPresenter: AuthenticationStateObserver, NewsSceneDelegate {
 
     // MARK: Nested Types
 

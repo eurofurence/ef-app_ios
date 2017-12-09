@@ -10,7 +10,7 @@
 
 class CapturingAuthenticationService: AuthenticationService {
     
-    func add(observer: AuthStateObserver) {
+    func add(observer: AuthenticationStateObserver) {
         
     }
     

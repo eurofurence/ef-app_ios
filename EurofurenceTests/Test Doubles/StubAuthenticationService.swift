@@ -17,8 +17,8 @@ class StubAuthenticationService: AuthenticationService {
         self.authState = authState
     }
     
-    private var observers = [AuthStateObserver]()
-    func add(observer: AuthStateObserver) {
+    private var observers = [AuthenticationStateObserver]()
+    func add(observer: AuthenticationStateObserver) {
         observers.append(observer)
     }
     
