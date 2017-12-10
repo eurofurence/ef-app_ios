@@ -9,6 +9,15 @@
 @testable import Eurofurence
 import XCTest
 
+class CapturingPrivateMessageUnreadCountObserver: PrivateMessageUnreadCountObserver {
+    
+    private(set) var capturedUnreadMessagesCount: Int?
+    func unreadPrivateMessagesCountDidChange(to unreadCount: Int) {
+        capturedUnreadMessagesCount = unreadCount
+    }
+    
+}
+
 class EurofurencePrivateMessagesServiceTests: XCTestCase {
     
     var service: EurofurencePrivateMessagesService!
@@ -67,6 +76,28 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
         app.localPrivateMessages = messages
         
         XCTAssertEqual(messages, service.localMessages)
+    }
+    
+    func testAddingUnreadPrivateMessageCountObserverTellsItTheNumberOfCurrentlyUnreadMessages() {
+        let observer = CapturingPrivateMessageUnreadCountObserver()
+        let messages = repeatElement(AppDataBuilder.makeMessage(read: false), count: Int(arc4random_uniform(10)))
+        let expected = messages.count
+        app.localPrivateMessages = Array(messages)
+        service.add(observer)
+        
+        XCTAssertEqual(expected, observer.capturedUnreadMessagesCount)
+    }
+    
+    func testAddingObserverThenRefreshProvidesMoreUnreadMessagesTellsObserver() {
+        let observer = CapturingPrivateMessageUnreadCountObserver()
+        service.add(observer)
+        let messages = repeatElement(AppDataBuilder.makeMessage(read: false), count: Int(arc4random_uniform(10)))
+        let expected = messages.count
+        app.localPrivateMessages = Array(messages)
+        service.refreshMessages(completionHandler: { (_) in })
+        app.resolvePrivateMessagesFetch(.success([]))
+        
+        XCTAssertEqual(expected, observer.capturedUnreadMessagesCount)
     }
     
 }

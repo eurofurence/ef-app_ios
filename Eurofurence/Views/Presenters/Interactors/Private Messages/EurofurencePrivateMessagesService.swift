@@ -6,11 +6,12 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-struct EurofurencePrivateMessagesService: PrivateMessagesService {
+class EurofurencePrivateMessagesService: PrivateMessagesService {
 
     static var shared = EurofurencePrivateMessagesService(app: EurofurenceApplication.shared)
 
     private let app: EurofurenceApplicationProtocol
+    private var unreadMessageCountObservers = [PrivateMessageUnreadCountObserver]()
 
     init(app: EurofurenceApplicationProtocol) {
         self.app = app
@@ -25,7 +26,8 @@ struct EurofurencePrivateMessagesService: PrivateMessagesService {
     }
 
     func add(_ unreadMessageCountObserver: PrivateMessageUnreadCountObserver) {
-
+        unreadMessageCountObservers.append(unreadMessageCountObserver)
+        provideUnreadMessageCount(to: unreadMessageCountObserver)
     }
 
     func refreshMessages(completionHandler: @escaping (PrivateMessagesRefreshResult) -> Void) {
@@ -33,6 +35,7 @@ struct EurofurencePrivateMessagesService: PrivateMessagesService {
             switch result {
             case .success(let messages):
                 completionHandler(.success(messages))
+                self.unreadMessageCountObservers.forEach(self.provideUnreadMessageCount)
 
             default:
                 completionHandler(.failure)
@@ -42,6 +45,10 @@ struct EurofurencePrivateMessagesService: PrivateMessagesService {
 
     private func isUnread(_ message: Message) -> Bool {
         return !message.isRead
+    }
+
+    private func provideUnreadMessageCount(to unreadMessageCountObserver: PrivateMessageUnreadCountObserver) {
+        unreadMessageCountObserver.unreadPrivateMessagesCountDidChange(to: unreadMessageCount)
     }
 
 }
