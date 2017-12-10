@@ -19,6 +19,7 @@ struct StubPrivateMessagesService: PrivateMessagesService {
     var unreadMessageCount: Int = 0
     var localMessages: [Message] = []
     
+    func add(_ unreadMessageCountObserver: PrivateMessageUnreadCountObserver) { }
     func refreshMessages(completionHandler: @escaping (PrivateMessagesRefreshResult) -> Void) { }
     
 }
@@ -39,12 +40,21 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
         self.completionHandler = completionHandler
     }
     
+    private var unreadMessageCountObservers = [PrivateMessageUnreadCountObserver]()
+    func add(_ unreadMessageCountObserver: PrivateMessageUnreadCountObserver) {
+        unreadMessageCountObservers.append(unreadMessageCountObserver)
+    }
+    
     func failLastRefresh() {
         completionHandler?(.failure)
     }
     
     func succeedLastRefresh(messages: [Message] = []) {
         completionHandler?(.success(messages))
+    }
+    
+    func notifyUnreadCountDidChange(to count: Int) {
+        unreadMessageCountObservers.forEach { $0.unreadPrivateMessagesCountDidChange(to: count) }
     }
     
 }
@@ -55,6 +65,7 @@ struct DummyPrivateMessagesService: PrivateMessagesService {
     var localMessages: [Message] = []
     
     func refreshMessages(completionHandler: @escaping (PrivateMessagesRefreshResult) -> Void) { }
+    func add(_ unreadMessageCountObserver: PrivateMessageUnreadCountObserver) { }
     
 }
 
@@ -149,6 +160,45 @@ class NewsPresenterTestsForLoggedInUser: XCTestCase {
     func testTheShowMessagesCommandIsNotRanUntilTheShowMessagesActionIsTapped() {
         let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
         XCTAssertFalse(context.delegate.showPrivateMessagesRequested)
+    }
+    
+    func testWhenPrivateMessagesReloadsTheUpdatedCountIsUsedToMakeNewWelcomeDescription() {
+        let privateMessagesService = CapturingPrivateMessagesService()
+        let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
+        _ = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser(welcomePromptStringFactory: welcomePromptStringFactory, privateMessagesService: privateMessagesService)
+        let unreadCount = Random.makeRandomNumber()
+        privateMessagesService.notifyUnreadCountDidChange(to: unreadCount)
+        
+        XCTAssertEqual(unreadCount, welcomePromptStringFactory.capturedUnreadMessageCount)
+    }
+    
+    func testWhenPrivateMessagesReloadsTheUnreadCountDescriptionIsSetOntoTheScene() {
+        let expected = "You got a buncha messages!"
+        let privateMessagesService = CapturingPrivateMessagesService()
+        let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
+        let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser(welcomePromptStringFactory: welcomePromptStringFactory, privateMessagesService: privateMessagesService)
+        welcomePromptStringFactory.stubbedUnreadMessageString = expected
+        privateMessagesService.notifyUnreadCountDidChange(to: 0)
+        
+        XCTAssertEqual(expected, context.newsScene.capturedWelcomeDescription)
+    }
+    
+    func testUpdatingUnreadCountBeforeSceneAppearsDoesNotUpdateLabel() {
+        let expected = "You got a buncha messages!"
+        let privateMessagesService = CapturingPrivateMessagesService()
+        let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
+        let sceneFactory = StubNewsSceneFactory()
+        _ = NewsModuleBuilder()
+            .with(sceneFactory)
+            .with(StubAuthenticationService(authState: .loggedIn(User(registrationNumber: 0, username: ""))))
+            .with(privateMessagesService)
+            .with(welcomePromptStringFactory)
+            .build()
+            .makeNewsModule(CapturingNewsModuleDelegate())
+        welcomePromptStringFactory.stubbedUnreadMessageString = expected
+        privateMessagesService.notifyUnreadCountDidChange(to: 0)
+        
+        XCTAssertNotEqual(expected, sceneFactory.stubbedScene.capturedWelcomeDescription)
     }
     
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct NewsPresenter: AuthenticationStateObserver, NewsSceneDelegate {
+struct NewsPresenter: AuthenticationStateObserver, PrivateMessageUnreadCountObserver, NewsSceneDelegate {
 
     // MARK: Nested Types
 
@@ -64,10 +64,7 @@ struct NewsPresenter: AuthenticationStateObserver, NewsSceneDelegate {
         newsScene.showMessagesNavigationAction()
         newsScene.hideLoginNavigationAction()
         newsScene.showWelcomePrompt(welcomePromptStringFactory.makeString(for: user))
-
-        let unreadMessageCount = privateMessagesService.unreadMessageCount
-        let unreadMessagesDescription = welcomePromptStringFactory.makeDescriptionForUnreadMessages(unreadMessageCount)
-        newsScene.showWelcomeDescription(unreadMessagesDescription)
+        updateWelcomeDescriptionWithUnreadMessages(count: privateMessagesService.unreadMessageCount)
     }
 
     func userDidLogout() {
@@ -77,10 +74,17 @@ struct NewsPresenter: AuthenticationStateObserver, NewsSceneDelegate {
         newsScene.showLoginDescription(welcomePromptStringFactory.makeDescriptionForAnonymousUser())
     }
 
+    // MARK: PrivateMessageUnreadCountObserver
+
+    func unreadPrivateMessagesCountDidChange(to unreadCount: Int) {
+        updateWelcomeDescriptionWithUnreadMessages(count: unreadCount)
+    }
+
     // MARK: NewsSceneDelegate
 
     func newsSceneWillAppear() {
         determineAuthStateOnce.run(authStateResolved)
+        privateMessagesService.add(self)
     }
 
     func newsSceneDidTapLoginAction(_ scene: NewsScene) {
@@ -101,6 +105,11 @@ struct NewsPresenter: AuthenticationStateObserver, NewsSceneDelegate {
         case .loggedOut:
             userDidLogout()
         }
+    }
+
+    private func updateWelcomeDescriptionWithUnreadMessages(count: Int) {
+        let unreadMessagesDescription = welcomePromptStringFactory.makeDescriptionForUnreadMessages(count)
+        newsScene.showWelcomeDescription(unreadMessagesDescription)
     }
 
 }
