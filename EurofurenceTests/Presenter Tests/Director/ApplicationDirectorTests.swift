@@ -141,9 +141,11 @@ class CapturingWindowWireframe: WindowWireframe {
 
 class StubMessageDetailModuleProviding: MessageDetailModuleProviding {
     
+    let stubInterface = UIViewController()
     private(set) var capturedMessage: Message?
-    func makeMessageDetailModule(message: Message) {
+    func makeMessageDetailModule(message: Message) -> UIViewController {
         capturedMessage = message
+        return stubInterface
     }
     
 }
@@ -369,6 +371,16 @@ class ApplicationDirectorTests: XCTestCase {
         messagesModuleFactory.delegate?.messagesModuleDidRequestPresentation(for: message)
         
         XCTAssertEqual(message, messageDetailModuleFactory.capturedMessage)
+    }
+    
+    func testWhenMessagesModuleRequestsPresentationForMessageTheMessageDetailModuleInterfaceIsPushedOntoMessagesNavigationController() {
+        navigateToTabController()
+        _ = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
+        newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
+        messagesModuleFactory.delegate?.messagesModuleDidRequestPresentation(for: AppDataBuilder.makeMessage())
+        let navigationController = messagesModuleFactory.stubInterface.navigationController
+        
+        XCTAssertEqual(messageDetailModuleFactory.stubInterface, navigationController?.topViewController)
     }
     
 }

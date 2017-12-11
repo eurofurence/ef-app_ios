@@ -130,7 +130,8 @@ class ApplicationDirector: RootModuleDelegate,
     }
 
     func messagesModuleDidRequestPresentation(for message: Message) {
-        messageDetailModuleProviding.makeMessageDetailModule(message: message)
+        let viewController = messageDetailModuleProviding.makeMessageDetailModule(message: message)
+        newsNavigationController.pushViewController(viewController, animated: animate)
     }
 
     func messagesModuleDidRequestDismissal() {
