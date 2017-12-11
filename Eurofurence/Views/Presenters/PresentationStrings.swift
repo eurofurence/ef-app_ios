@@ -56,9 +56,9 @@ enum PresentationScenario {
 struct UnlocalizedPresentationStrings: PresentationStrings {
 
     private static let strings: [PresentationScenario : String] = [
-        .ok: "",
+        .ok: "OK",
         .cancel: "Cancel",
-        .tryAgain: "",
+        .tryAgain: "Try Again",
 
         .tutorialPushPermissionsRequestTitle: "Push Notifications",
         .tutorialPushPermissionsRequestDescription: "To keep you up-to-date with changes to the event schedule and other important announcements, the app requires your permission to display notifications on your device.",
@@ -75,10 +75,10 @@ struct UnlocalizedPresentationStrings: PresentationStrings {
 
         .downloadError: "Download Error",
         .preloadFailureMessage: "Failed to download data from server. Please try again.",
-        .loggingIn: "",
-        .loggingInDetail: "",
-        .loginError: "",
-        .loginErrorDetail: "",
+        .loggingIn: "Logging In",
+        .loggingInDetail: "This may take a few moments",
+        .loginError: "Login Error",
+        .loginErrorDetail: "Please verify your login details and make sure you are connected to the internet",
 
         .messages: "Messages"
     ]

@@ -14,10 +14,20 @@ class UnlocalizedPresentationStringsShould: XCTestCase {
     private func string(for scenario: PresentationScenario) -> String {
         return UnlocalizedPresentationStrings()[scenario]
     }
+    
+    func testProvideAppropriateStringForOK() {
+        let expected = "OK"
+        XCTAssertEqual(expected, string(for: .ok))
+    }
 
     func testProvideAppropriateStringForCancel() {
         let expected = "Cancel"
         XCTAssertEqual(expected, string(for: .cancel))
+    }
+    
+    func testProvideAppropriateStringForTryAgain() {
+        let expected = "Try Again"
+        XCTAssertEqual(expected, string(for: .tryAgain))
     }
     
     func testProvideAppropriateStringForTutorialRequestPushPermissionsTitle() {
@@ -65,9 +75,29 @@ class UnlocalizedPresentationStringsShould: XCTestCase {
         XCTAssertEqual(expected, string(for: .cellularDownloadAlertMessage))
     }
 
-    func testProviderAppropriateStringForCellularDownloadAlertContinueOverCellularTitle() {
+    func testProvideAppropriateStringForCellularDownloadAlertContinueOverCellularTitle() {
         let expected = "Continue Over Cellular"
         XCTAssertEqual(expected, string(for: .cellularDownloadAlertContinueOverCellularTitle))
+    }
+    
+    func testProvideAppropriateStringForLoggingIn() {
+        let expected = "Logging In"
+        XCTAssertEqual(expected, string(for: .loggingIn))
+    }
+    
+    func testProvideAppropriateStringForLoggingInDetail() {
+        let expected = "This may take a few moments"
+        XCTAssertEqual(expected, string(for: .loggingInDetail))
+    }
+    
+    func testProvideAppropriateStringForLoginError() {
+        let expected = "Login Error"
+        XCTAssertEqual(expected, string(for: .loginError))
+    }
+    
+    func testProvideAppropriateStringForLoginErrorDetail() {
+        let expected = "Please verify your login details and make sure you are connected to the internet"
+        XCTAssertEqual(expected, string(for: .loginErrorDetail))
     }
     
     func testProvideAppropriateStringForMessages() {
