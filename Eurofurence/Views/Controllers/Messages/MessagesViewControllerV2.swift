@@ -36,6 +36,10 @@ class MessagesViewControllerV2: UIViewController,
 
     var delegate: MessagesSceneDelegate?
 
+    func setMessagesTitle(_ title: String) {
+        super.title = title
+    }
+
     func showRefreshIndicator() {
         refreshIndicator.beginRefreshing()
     }

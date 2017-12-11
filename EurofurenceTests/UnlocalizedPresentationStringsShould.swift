@@ -70,4 +70,9 @@ class UnlocalizedPresentationStringsShould: XCTestCase {
         XCTAssertEqual(expected, string(for: .cellularDownloadAlertContinueOverCellularTitle))
     }
     
+    func testProvideAppropriateStringForMessages() {
+        let expected = "Messages"
+        XCTAssertEqual(expected, string(for: .messages))
+    }
+    
 }

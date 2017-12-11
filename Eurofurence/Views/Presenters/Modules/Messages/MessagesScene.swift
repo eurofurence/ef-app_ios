@@ -26,6 +26,8 @@ protocol MessagesScene: class {
 
     var delegate: MessagesSceneDelegate? { get set }
 
+    func setMessagesTitle(_ title: String)
+
     func showRefreshIndicator()
     func hideRefreshIndicator()
 

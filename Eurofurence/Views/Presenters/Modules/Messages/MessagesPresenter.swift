@@ -25,6 +25,7 @@ class MessagesPresenter: MessagesSceneDelegate {
          authenticationService: AuthenticationService,
          privateMessagesService: PrivateMessagesService,
          dateFormatter: DateFormatterProtocol,
+         presentationStrings: PresentationStrings,
          delegate: MessagesModuleDelegate) {
         self.scene = scene
         self.authenticationService = authenticationService
@@ -33,6 +34,7 @@ class MessagesPresenter: MessagesSceneDelegate {
         self.delegate = delegate
 
         scene.delegate = self
+        scene.setMessagesTitle(presentationStrings[.messages])
     }
 
     // MARK: MessagesSceneDelegate

@@ -49,6 +49,8 @@ enum PresentationScenario {
     case loggingInDetail
     case loginError
     case loginErrorDetail
+
+    case messages
 }
 
 struct UnlocalizedPresentationStrings: PresentationStrings {
@@ -76,7 +78,9 @@ struct UnlocalizedPresentationStrings: PresentationStrings {
         .loggingIn: "",
         .loggingInDetail: "",
         .loginError: "",
-        .loginErrorDetail: ""
+        .loginErrorDetail: "",
+
+        .messages: "Messages"
     ]
 
     func presentationString(for scenario: PresentationScenario) -> String {

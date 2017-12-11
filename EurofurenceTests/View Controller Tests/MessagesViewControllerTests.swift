@@ -171,4 +171,11 @@ class MessagesViewControllerTests: XCTestCase {
         XCTAssertTrue(viewController.noMessagesPlaceholder.isHidden)
     }
     
+    func testSetsTheTitleOntoTheViewController() {
+        let expected = "Messages"
+        viewController.setMessagesTitle(expected)
+        
+        XCTAssertEqual(expected, viewController.title)
+    }
+    
 }

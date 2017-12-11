@@ -14,6 +14,7 @@ struct PhoneMessagesModuleFactory: MessagesModuleProviding {
     var authenticationService: AuthenticationService
     var privateMessagesService: PrivateMessagesService
     var dateFormatter: DateFormatterProtocol
+    var presentationStrings: PresentationStrings
 
     func makeMessagesModule(_ delegate: MessagesModuleDelegate) -> UIViewController {
         let scene = sceneFactory.makeMessagesScene()
@@ -21,6 +22,7 @@ struct PhoneMessagesModuleFactory: MessagesModuleProviding {
                               authenticationService: authenticationService,
                               privateMessagesService: privateMessagesService,
                               dateFormatter: dateFormatter,
+                              presentationStrings: presentationStrings,
                               delegate: delegate)
 
         return scene

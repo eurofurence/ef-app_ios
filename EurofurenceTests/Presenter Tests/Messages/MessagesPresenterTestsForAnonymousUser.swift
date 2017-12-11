@@ -22,6 +22,10 @@ class MessagesPresenterTestsForAnonymousUser: XCTestCase {
         XCTAssertTrue(context.delegate.wasToldToResolveUser)
     }
     
+    func testWhenTheSceneAppearsTheMessagesTitleIsSetOntoTheScene() {
+        XCTAssertEqual(context.strings[.messages], context.scene.capturedTitle)
+    }
+    
     func testTheAuthServiceDoesNotDetermineAuthStateUntilTheSceneWillAppear() {
         let authenticationService = CapturingAuthenticationService()
         _ = MessagesModuleBuilder()

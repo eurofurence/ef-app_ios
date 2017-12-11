@@ -30,6 +30,7 @@ class StubPresentationStrings: PresentationStrings {
         stub("Logging In Detail", for: .loggingInDetail)
         stub("Login Error", for: .loginError)
         stub("Login Error Detail", for: .loginErrorDetail)
+        stub("Messages", for: .messages)
     }
 
     private func stub(_ string: String, for scenario: PresentationScenario) {

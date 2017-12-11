@@ -23,6 +23,11 @@ class CapturingMessagesScene: UIViewController, MessagesScene {
     
     var delegate: MessagesSceneDelegate?
     
+    private(set) var capturedTitle: String?
+    func setMessagesTitle(_ title: String) {
+        capturedTitle = title
+    }
+    
     private(set) var wasToldToShowRefreshIndicator = false
     func showRefreshIndicator() {
         wasToldToShowRefreshIndicator = true
