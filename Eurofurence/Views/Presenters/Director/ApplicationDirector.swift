@@ -33,6 +33,7 @@ class ApplicationDirector: RootModuleDelegate,
     private let messagesModuleProviding: MessagesModuleProviding
     private let newsNavigationController: UINavigationController
     private let loginModuleProviding: LoginModuleProviding
+    private let messageDetailModuleProviding: MessageDetailModuleProviding
 
     private let rootNavigationController: UINavigationController
     private let rootNavigationControllerDelegate = DissolveTransitionAnimationProviding()
@@ -49,7 +50,8 @@ class ApplicationDirector: RootModuleDelegate,
          tabModuleProviding: TabModuleProviding,
          newsModuleProviding: NewsModuleProviding,
          messagesModuleProviding: MessagesModuleProviding,
-         loginModuleProviding: LoginModuleProviding) {
+         loginModuleProviding: LoginModuleProviding,
+         messageDetailModuleProviding: MessageDetailModuleProviding) {
         self.animate = animate
         self.windowWireframe = windowWireframe
         self.rootModuleProviding = rootModuleProviding
@@ -59,6 +61,7 @@ class ApplicationDirector: RootModuleDelegate,
         self.newsModuleProviding = newsModuleProviding
         self.messagesModuleProviding = messagesModuleProviding
         self.loginModuleProviding = loginModuleProviding
+        self.messageDetailModuleProviding = messageDetailModuleProviding
 
         rootNavigationController = navigationControllerFactory.makeNavigationController()
         rootNavigationController.delegate = rootNavigationControllerDelegate
@@ -127,7 +130,7 @@ class ApplicationDirector: RootModuleDelegate,
     }
 
     func messagesModuleDidRequestPresentation(for message: Message) {
-
+        messageDetailModuleProviding.makeMessageDetailModule(message: message)
     }
 
     func messagesModuleDidRequestDismissal() {

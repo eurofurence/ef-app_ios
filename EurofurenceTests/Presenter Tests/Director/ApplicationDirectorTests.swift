@@ -139,6 +139,15 @@ class CapturingWindowWireframe: WindowWireframe {
     
 }
 
+class StubMessageDetailModuleProviding: MessageDetailModuleProviding {
+    
+    private(set) var capturedMessage: Message?
+    func makeMessageDetailModule(message: Message) {
+        capturedMessage = message
+    }
+    
+}
+
 class ApplicationDirectorTests: XCTestCase {
     
     var director: ApplicationDirector!
@@ -150,6 +159,7 @@ class ApplicationDirectorTests: XCTestCase {
     var messagesModuleFactory: StubMessagesModuleFactory!
     var loginModuleFactory: StubLoginModuleFactory!
     var windowWireframe: CapturingWindowWireframe!
+    var messageDetailModuleFactory: StubMessageDetailModuleProviding!
     
     private func navigateToTabController() {
         rootModuleFactory.delegate?.storeShouldBePreloaded()
@@ -171,6 +181,7 @@ class ApplicationDirectorTests: XCTestCase {
         newsModuleFactory = StubNewsModuleFactory()
         messagesModuleFactory = StubMessagesModuleFactory()
         loginModuleFactory = StubLoginModuleFactory()
+        messageDetailModuleFactory = StubMessageDetailModuleProviding()
         
         let builder = DirectorBuilder()
         builder.withAnimations(false)
@@ -183,6 +194,7 @@ class ApplicationDirectorTests: XCTestCase {
         builder.with(newsModuleFactory)
         builder.with(messagesModuleFactory)
         builder.with(loginModuleFactory)
+        builder.with(messageDetailModuleFactory)
         
         director = builder.build()
     }
@@ -347,6 +359,16 @@ class ApplicationDirectorTests: XCTestCase {
         loginModuleFactory.delegate?.loginModuleDidLoginSuccessfully()
         
         XCTAssertTrue(tabModuleFactory.stubInterface.didDismissViewController)
+    }
+    
+    func testWhenMessagesModuleRequestsPresentationForMessageTheMessageDetailModuleIsBuiltUsingChosenMessage() {
+        navigateToTabController()
+        _ = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
+        newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
+        let message = AppDataBuilder.makeMessage()
+        messagesModuleFactory.delegate?.messagesModuleDidRequestPresentation(for: message)
+        
+        XCTAssertEqual(message, messageDetailModuleFactory.capturedMessage)
     }
     
 }

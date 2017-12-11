@@ -339,6 +339,8 @@
 		CAEAEBED1FDC985C00C0EE7C /* AuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBEC1FDC985C00C0EE7C /* AuthState.swift */; };
 		CAEAEBEF1FDC989300C0EE7C /* LoginServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBEE1FDC989300C0EE7C /* LoginServiceRequest.swift */; };
 		CAEAEBF11FDC9D1600C0EE7C /* ApplicationAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF01FDC9D1600C0EE7C /* ApplicationAuthenticationService.swift */; };
+		CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */; };
+		CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */; };
 		CAF3C7441F9F5C550008F027 /* NewsModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7431F9F5C550008F027 /* NewsModuleProviding.swift */; };
 		CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */; };
 		CAF3C74C1F9F619C0008F027 /* PhoneNewsModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74B1F9F619C0008F027 /* PhoneNewsModuleFactory.swift */; };
@@ -760,6 +762,8 @@
 		CAEAEBEC1FDC985C00C0EE7C /* AuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthState.swift; path = Interactors/Authentication/AuthState.swift; sourceTree = "<group>"; };
 		CAEAEBEE1FDC989300C0EE7C /* LoginServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginServiceRequest.swift; path = Interactors/Authentication/LoginServiceRequest.swift; sourceTree = "<group>"; };
 		CAEAEBF01FDC9D1600C0EE7C /* ApplicationAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationAuthenticationService.swift; path = Interactors/Authentication/ApplicationAuthenticationService.swift; sourceTree = "<group>"; };
+		CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailModuleProviding.swift; sourceTree = "<group>"; };
+		CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailModuleBuilder.swift; sourceTree = "<group>"; };
 		CAF3C7431F9F5C550008F027 /* NewsModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsModuleProviding.swift; path = News/NewsModuleProviding.swift; sourceTree = "<group>"; };
 		CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingNewsModuleDelegate.swift; path = "Test Doubles/CapturingNewsModuleDelegate.swift"; sourceTree = "<group>"; };
 		CAF3C74B1F9F619C0008F027 /* PhoneNewsModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhoneNewsModuleFactory.swift; path = News/PhoneNewsModuleFactory.swift; sourceTree = "<group>"; };
@@ -937,6 +941,7 @@
 		6EF96CE01F12688700EE6134 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CAEAEBF21FDEB53800C0EE7C /* Message Detail */,
 				CAE27B4A1F855E05005FDE39 /* Tab */,
 				CAF705621F82D0D400A9FEA2 /* Root */,
 				6EF96CE81F126B0400EE6134 /* Bootstrap */,
@@ -1949,6 +1954,23 @@
 			name = Authentication;
 			sourceTree = "<group>";
 		};
+		CAEAEBF21FDEB53800C0EE7C /* Message Detail */ = {
+			isa = PBXGroup;
+			children = (
+				CAEAEBF31FDEB55900C0EE7C /* Module */,
+				CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */,
+			);
+			path = "Message Detail";
+			sourceTree = "<group>";
+		};
+		CAEAEBF31FDEB55900C0EE7C /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
 		CAF7055F1F82CBC800A9FEA2 /* Director */ = {
 			isa = PBXGroup;
 			children = (
@@ -2532,6 +2554,7 @@
 				CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */,
 				9A861ECB1F25555000B75A8C /* UserCompletedTutorialStateProviding.swift in Sources */,
 				9A0525451ECB090700578798 /* WebApiConnection.swift in Sources */,
+				CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */,
 				9A8477981ED99EDE00F0DF3F /* NavigationResolver.swift in Sources */,
 				9ACF99921EC858B2006FC958 /* EventConferenceDay.swift in Sources */,
 				9ACF998D1EC858B2006FC958 /* KnowledgeGroup.swift in Sources */,
@@ -2660,6 +2683,7 @@
 				CAB3A72D1F753308005DF77B /* PushPermissionsRequester.swift in Sources */,
 				CA30EABE1F2660D80053DBF6 /* PrivateMessagesAPI.swift in Sources */,
 				9A861EA91F2554BE00B75A8C /* InitiateDownloadTutorialPagePresenter.swift in Sources */,
+				CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */,
 				781A94301F1A1972002DE70F /* FirebaseAdapter.swift in Sources */,
 				78FE77CC1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift in Sources */,
 				D6F3D620BA994A6570325C66 /* DealersTableViewCell.swift in Sources */,
