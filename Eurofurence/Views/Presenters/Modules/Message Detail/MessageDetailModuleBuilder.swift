@@ -19,6 +19,10 @@ class MessageDetailModuleBuilder {
             func setMessageDetailTitle(_ title: String) {
 
             }
+
+            func setMessageSubject(_ subject: String) {
+
+            }
         }
     }
 
