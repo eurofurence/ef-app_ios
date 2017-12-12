@@ -13,8 +13,10 @@ struct MessageDetailModuleFactory: MessageDetailModuleProviding {
     var messageDetailSceneFactory: MessageDetailSceneFactory
 
     func makeMessageDetailModule(message: Message) -> UIViewController {
-        _ = MessageDetailPresenter(message: message, scene: messageDetailSceneFactory.makeMessageDetailScene())
-        return UIViewController()
+        let scene = messageDetailSceneFactory.makeMessageDetailScene()
+        _ = MessageDetailPresenter(message: message, scene: scene)
+
+        return scene
     }
 
 }

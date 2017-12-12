@@ -76,4 +76,14 @@ class MessageDetailPresenterTests: XCTestCase {
         XCTAssertEqual(expected, messageDetailSceneFactory.scene.capturedMessageContents)
     }
     
+    func testReturnTheSceneWhenBuildingTheModule() {
+        let messageDetailSceneFactory = StubMessageDetailSceneFactory()
+        let vc = MessageDetailModuleBuilder()
+            .with(messageDetailSceneFactory)
+            .build()
+            .makeMessageDetailModule(message: AppDataBuilder.makeMessage())
+        
+        XCTAssertEqual(messageDetailSceneFactory.scene, vc)
+    }
+    
 }
