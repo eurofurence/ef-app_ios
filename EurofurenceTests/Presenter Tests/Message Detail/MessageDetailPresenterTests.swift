@@ -91,4 +91,40 @@ class MessageDetailPresenterTests: XCTestCase {
         XCTAssertEqual(messageDetailSceneFactory.scene, vc)
     }
     
+    func testWaitForTheSceneToNotifyItWillAppearBeforeSettingTitle() {
+        let unexpected = "Author"
+        let message = AppDataBuilder.makeMessage(authorName: unexpected)
+        let messageDetailSceneFactory = StubMessageDetailSceneFactory()
+        _ = MessageDetailModuleBuilder()
+            .with(messageDetailSceneFactory)
+            .build()
+            .makeMessageDetailModule(message: message)
+        
+        XCTAssertNotEqual(unexpected, messageDetailSceneFactory.scene.capturedMessageDetailTitle)
+    }
+    
+    func testWaitForSceneToNotifyItWillAppearBeforeSettingSubject() {
+        let unexpected = "Subject"
+        let message = AppDataBuilder.makeMessage(subject: unexpected)
+        let messageDetailSceneFactory = StubMessageDetailSceneFactory()
+        _ = MessageDetailModuleBuilder()
+            .with(messageDetailSceneFactory)
+            .build()
+            .makeMessageDetailModule(message: message)
+        
+        XCTAssertNotEqual(unexpected, messageDetailSceneFactory.scene.capturedMessageSubject)
+    }
+    
+    func testWaitForSceneToNotifyItWillAppearBeforeSettingContents() {
+        let unexpected = "Message"
+        let message = AppDataBuilder.makeMessage(contents: unexpected)
+        let messageDetailSceneFactory = StubMessageDetailSceneFactory()
+        _ = MessageDetailModuleBuilder()
+            .with(messageDetailSceneFactory)
+            .build()
+            .makeMessageDetailModule(message: message)
+        
+        XCTAssertNotEqual(unexpected, messageDetailSceneFactory.scene.capturedMessageContents)
+    }
+    
 }
