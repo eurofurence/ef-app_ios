@@ -9,11 +9,39 @@
 @testable import Eurofurence
 import XCTest
 
+class CapturingMessageDetailSceneDelegate: MessageDetailSceneDelegate {
+    
+    private(set) var toldSceneWillAppear = false
+    func messageDetailSceneWillAppear() {
+        toldSceneWillAppear = true
+    }
+    
+}
+
 class MessageDetailViewControllerTests: XCTestCase {
     
-    func testSettingTheMessageDetailTitleSetsTheViewControllersTitle() {
-        let viewController = PhoneMessageDetailSceneFactory().makeMessageDetailScene() as! MessageDetailViewControllerV2
+    var delegate: CapturingMessageDetailSceneDelegate!
+    var viewController: MessageDetailViewControllerV2!
+    
+    override func setUp() {
+        super.setUp()
+        
+        delegate = CapturingMessageDetailSceneDelegate()
+        viewController = PhoneMessageDetailSceneFactory().makeMessageDetailScene() as! MessageDetailViewControllerV2
+        viewController.delegate = delegate
         viewController.loadViewIfNeeded()
+    }
+    
+    func testViewControllerNotifiesWhenSceneWillAppear() {
+        viewController.viewWillAppear(false)
+        XCTAssertTrue(delegate.toldSceneWillAppear)
+    }
+    
+    func testViewControllerDoesNotNotifySceneWillAppearTooSoon() {
+        XCTAssertFalse(delegate.toldSceneWillAppear)
+    }
+    
+    func testSettingTheMessageDetailTitleSetsTheViewControllersTitle() {
         let messageDetailTitle = "Message"
         viewController.setMessageDetailTitle(messageDetailTitle)
         

@@ -10,6 +10,11 @@ import UIKit.UIViewController
 
 class MessageDetailViewControllerV2: UIViewController, MessageDetailScene {
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        delegate?.messageDetailSceneWillAppear()
+    }
+
     var delegate: MessageDetailSceneDelegate?
 
     func setMessageDetailTitle(_ title: String) {
