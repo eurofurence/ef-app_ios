@@ -10,32 +10,10 @@ import UIKit.UIViewController
 
 class MessageDetailModuleBuilder {
 
-    private struct DummyMessageDetailSceneFactory: MessageDetailSceneFactory {
-        func makeMessageDetailScene() -> UIViewController & MessageDetailScene {
-            return DummyScene()
-        }
-
-        private class DummyScene: UIViewController, MessageDetailScene {
-            var delegate: MessageDetailSceneDelegate?
-
-            func setMessageDetailTitle(_ title: String) {
-
-            }
-
-            func setMessageSubject(_ subject: String) {
-
-            }
-
-            func setMessageContents(_ contents: String) {
-
-            }
-        }
-    }
-
     private var messageDetailSceneFactory: MessageDetailSceneFactory
 
     init() {
-        messageDetailSceneFactory = DummyMessageDetailSceneFactory()
+        messageDetailSceneFactory = PhoneMessageDetailSceneFactory()
     }
 
     func with(_ messageDetailSceneFactory: MessageDetailSceneFactory) -> MessageDetailModuleBuilder {
