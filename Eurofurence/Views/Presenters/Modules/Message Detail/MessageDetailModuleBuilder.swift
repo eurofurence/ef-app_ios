@@ -23,6 +23,10 @@ class MessageDetailModuleBuilder {
             func setMessageSubject(_ subject: String) {
 
             }
+
+            func setMessageContents(_ contents: String) {
+
+            }
         }
     }
 

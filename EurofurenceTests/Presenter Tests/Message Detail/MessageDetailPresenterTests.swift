@@ -31,6 +31,11 @@ class CapturingMessageDetailScene: UIViewController, MessageDetailScene {
         capturedMessageSubject = subject
     }
     
+    private(set) var capturedMessageContents: String?
+    func setMessageContents(_ contents: String) {
+        capturedMessageContents = contents
+    }
+    
 }
 
 class MessageDetailPresenterTests: XCTestCase {
@@ -57,6 +62,18 @@ class MessageDetailPresenterTests: XCTestCase {
             .makeMessageDetailModule(message: message)
         
         XCTAssertEqual(expected, messageDetailSceneFactory.scene.capturedMessageSubject)
+    }
+    
+    func testSetTheContentsOfTheMessageOntoTheScene() {
+        let expected = "Message"
+        let message = AppDataBuilder.makeMessage(contents: expected)
+        let messageDetailSceneFactory = StubMessageDetailSceneFactory()
+        _ = MessageDetailModuleBuilder()
+            .with(messageDetailSceneFactory)
+            .build()
+            .makeMessageDetailModule(message: message)
+        
+        XCTAssertEqual(expected, messageDetailSceneFactory.scene.capturedMessageContents)
     }
     
 }

@@ -11,6 +11,7 @@ struct MessageDetailPresenter {
     init(message: Message, scene: MessageDetailScene) {
         scene.setMessageDetailTitle(message.authorName)
         scene.setMessageSubject(message.subject)
+        scene.setMessageContents(message.contents)
     }
 
 }
