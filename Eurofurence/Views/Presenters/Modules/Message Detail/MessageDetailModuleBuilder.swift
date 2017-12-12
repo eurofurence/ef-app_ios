@@ -16,6 +16,8 @@ class MessageDetailModuleBuilder {
         }
 
         private class DummyScene: UIViewController, MessageDetailScene {
+            var delegate: MessageDetailSceneDelegate?
+
             func setMessageDetailTitle(_ title: String) {
 
             }

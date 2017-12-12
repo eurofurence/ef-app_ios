@@ -21,6 +21,8 @@ struct StubMessageDetailSceneFactory: MessageDetailSceneFactory {
 
 class CapturingMessageDetailScene: UIViewController, MessageDetailScene {
     
+    var delegate: MessageDetailSceneDelegate?
+    
     private(set) var capturedMessageDetailTitle: String?
     func setMessageDetailTitle(_ title: String) {
         capturedMessageDetailTitle = title
@@ -48,6 +50,7 @@ class MessageDetailPresenterTests: XCTestCase {
             .with(messageDetailSceneFactory)
             .build()
             .makeMessageDetailModule(message: message)
+        messageDetailSceneFactory.scene.delegate?.messageDetailSceneWillAppear()
         
         XCTAssertEqual(expected, messageDetailSceneFactory.scene.capturedMessageDetailTitle)
     }
@@ -60,6 +63,7 @@ class MessageDetailPresenterTests: XCTestCase {
             .with(messageDetailSceneFactory)
             .build()
             .makeMessageDetailModule(message: message)
+        messageDetailSceneFactory.scene.delegate?.messageDetailSceneWillAppear()
         
         XCTAssertEqual(expected, messageDetailSceneFactory.scene.capturedMessageSubject)
     }
@@ -72,6 +76,7 @@ class MessageDetailPresenterTests: XCTestCase {
             .with(messageDetailSceneFactory)
             .build()
             .makeMessageDetailModule(message: message)
+        messageDetailSceneFactory.scene.delegate?.messageDetailSceneWillAppear()
         
         XCTAssertEqual(expected, messageDetailSceneFactory.scene.capturedMessageContents)
     }

@@ -6,10 +6,18 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-protocol MessageDetailScene {
+protocol MessageDetailScene: class {
+
+    var delegate: MessageDetailSceneDelegate? { get set }
 
     func setMessageDetailTitle(_ title: String)
     func setMessageSubject(_ subject: String)
     func setMessageContents(_ contents: String)
+
+}
+
+protocol MessageDetailSceneDelegate {
+
+    func messageDetailSceneWillAppear()
 
 }
