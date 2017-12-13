@@ -30,6 +30,7 @@ class MessageDetailViewControllerTests: XCTestCase {
         viewController = PhoneMessageDetailSceneFactory().makeMessageDetailScene() as! MessageDetailViewControllerV2
         viewController.delegate = delegate
         viewController.loadViewIfNeeded()
+        viewController.view.layoutSubviews()
     }
     
     func testViewControllerNotifiesWhenSceneWillAppear() {
@@ -50,6 +51,22 @@ class MessageDetailViewControllerTests: XCTestCase {
     
     func testTheCollectionViewShouldHaveOneItem() {
         XCTAssertEqual(1, viewController.collectionView.numberOfItems(inSection: 0))
+    }
+    
+    func testSettingMessageSubjectSetsItOntoCell() {
+        let cell = viewController.collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? MessageBubbleCollectionViewCell
+        let subject = "Subject"
+        viewController.setMessageSubject(subject)
+        
+        XCTAssertEqual(subject, cell?.subjectLabel.text)
+    }
+    
+    func testSettingMessageContentsSetsItOntoCell() {
+        let cell = viewController.collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? MessageBubbleCollectionViewCell
+        let contents = "Subject"
+        viewController.setMessageContents(contents)
+        
+        XCTAssertEqual(contents, cell?.messageLabel.text)
     }
     
 }

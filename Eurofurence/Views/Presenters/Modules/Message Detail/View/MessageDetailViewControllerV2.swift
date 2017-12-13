@@ -15,11 +15,20 @@ class MessageDetailViewControllerV2: UIViewController,
     // MARK: IBOutlets
 
     @IBOutlet weak var collectionView: UICollectionView!
+    private var messageCell: MessageBubbleCollectionViewCell?
 
     // MARK: Overrides
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        messageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MessageCell", for: IndexPath(item: 0, section: 0)) as? MessageBubbleCollectionViewCell
+        collectionView.reloadData()
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         delegate?.messageDetailSceneWillAppear()
     }
 
@@ -30,7 +39,7 @@ class MessageDetailViewControllerV2: UIViewController,
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        return messageCell!
     }
 
     // MARK: MessageDetailScene
@@ -42,11 +51,11 @@ class MessageDetailViewControllerV2: UIViewController,
     }
 
     func setMessageSubject(_ subject: String) {
-
+        messageCell?.subjectLabel.text = subject
     }
 
     func setMessageContents(_ contents: String) {
-
+        messageCell?.messageLabel.text = contents
     }
 
 }
