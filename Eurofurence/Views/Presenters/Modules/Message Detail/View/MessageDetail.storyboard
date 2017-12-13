@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Baseline standard spacing" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2hn-2C-RFx">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2hn-2C-RFx" customClass="MessagesCollectionViewFlowLayout" customModule="Eurofurence" customModuleProvider="target">
                             <size key="itemSize" width="235" height="135"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -26,39 +28,36 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MessageCell" id="Iy6-1Y-v29" customClass="MessageBubbleCollectionViewCell" customModule="Eurofurence" customModuleProvider="target">
-                                <rect key="frame" x="70" y="14" width="235" height="135"/>
+                                <rect key="frame" x="70" y="14" width="235" height="148"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="235" height="135"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="235" height="148"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5bE-GN-nwP" customClass="MessageBubbleBackgroundView" customModule="Eurofurence" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="235" height="135"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="235" height="148"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Mj-xZ-OeB">
-                                                    <rect key="frame" x="30" y="13.000000000000002" width="191" height="20.666666666666671"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Lorem ipsum dolor sit amet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Mj-xZ-OeB">
+                                                    <rect key="frame" x="30" y="13.000000000000004" width="191" height="42.333333333333343"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" contentInsetAdjustmentBehavior="never" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4A2-AR-PjS">
-                                                    <rect key="frame" x="26" y="41.666666666666664" width="199" height="84.333333333333343"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbF-Yw-h3E">
+                                                    <rect key="frame" x="30" y="59" width="191" height="75"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
-                                                </textView>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="4A2-AR-PjS" secondAttribute="trailing" constant="10" id="BgD-8v-3ek"/>
-                                                <constraint firstAttribute="bottom" secondItem="4A2-AR-PjS" secondAttribute="bottom" constant="9" id="DI4-EQ-H3u"/>
-                                                <constraint firstItem="4A2-AR-PjS" firstAttribute="top" secondItem="2Mj-xZ-OeB" secondAttribute="bottom" constant="8" symbolType="layoutAnchor" id="Sar-Ul-H7Q"/>
+                                                <constraint firstItem="CbF-Yw-h3E" firstAttribute="leading" secondItem="2Mj-xZ-OeB" secondAttribute="leading" id="OSb-ju-amF"/>
+                                                <constraint firstAttribute="bottom" secondItem="CbF-Yw-h3E" secondAttribute="bottom" constant="14" id="RKp-wf-dul"/>
+                                                <constraint firstItem="CbF-Yw-h3E" firstAttribute="trailing" secondItem="2Mj-xZ-OeB" secondAttribute="trailing" id="Z2n-nR-KT9"/>
                                                 <constraint firstItem="2Mj-xZ-OeB" firstAttribute="top" secondItem="5bE-GN-nwP" secondAttribute="top" constant="13" id="b6i-ct-k5T"/>
                                                 <constraint firstAttribute="trailing" secondItem="2Mj-xZ-OeB" secondAttribute="trailing" constant="14" id="fyt-rO-rUa"/>
-                                                <constraint firstItem="4A2-AR-PjS" firstAttribute="leading" secondItem="5bE-GN-nwP" secondAttribute="leading" constant="26" id="nQr-yc-aSy"/>
+                                                <constraint firstItem="CbF-Yw-h3E" firstAttribute="firstBaseline" secondItem="2Mj-xZ-OeB" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="ksw-Jt-ac8"/>
                                                 <constraint firstItem="2Mj-xZ-OeB" firstAttribute="leading" secondItem="5bE-GN-nwP" secondAttribute="leading" constant="30" id="sG1-hM-GFU"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
@@ -76,9 +75,10 @@
                                     <constraint firstAttribute="bottom" secondItem="5bE-GN-nwP" secondAttribute="bottom" id="WbF-DQ-qAK"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="94t-Du-Apt"/>
-                                <size key="customSize" width="235" height="135"/>
+                                <size key="customSize" width="235" height="148"/>
                                 <connections>
-                                    <outlet property="messageLabel" destination="4A2-AR-PjS" id="dsS-Gm-MCy"/>
+                                    <outlet property="bubbleBackgroundView" destination="5bE-GN-nwP" id="fSJ-NT-kCT"/>
+                                    <outlet property="messageLabel" destination="CbF-Yw-h3E" id="zFx-xZ-6Mf"/>
                                     <outlet property="subjectLabel" destination="2Mj-xZ-OeB" id="NLP-yV-YdI"/>
                                 </connections>
                             </collectionViewCell>

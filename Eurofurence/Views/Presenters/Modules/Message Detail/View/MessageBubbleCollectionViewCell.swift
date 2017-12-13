@@ -10,7 +10,8 @@ import UIKit.UICollectionViewCell
 
 class MessageBubbleCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var bubbleBackgroundView: MessageBubbleBackgroundView!
     @IBOutlet weak var subjectLabel: UILabel!
-    @IBOutlet weak var messageLabel: UITextView!
+    @IBOutlet weak var messageLabel: UILabel!
 
 }

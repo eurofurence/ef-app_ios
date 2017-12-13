@@ -30,6 +30,7 @@ class MessageDetailViewControllerV2: UIViewController,
         super.viewWillAppear(animated)
 
         delegate?.messageDetailSceneWillAppear()
+        collectionView.layoutSubviews()
     }
 
     // MARK: UICollectionViewDataSource

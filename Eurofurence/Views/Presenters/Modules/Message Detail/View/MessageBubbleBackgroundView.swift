@@ -17,7 +17,6 @@ class MessageBubbleBackgroundView: UIView {
         }
     }
 
-    private var cachedPath: UIBezierPath?
     private let leftInset: CGFloat = 24
     private let rightInset: CGFloat = 32
     private let cornerHeight: CGFloat = 32
@@ -36,18 +35,18 @@ class MessageBubbleBackgroundView: UIView {
         backgroundColor = .clear
     }
 
-    override var frame: CGRect {
+    override var bounds: CGRect {
         didSet {
-            updateShape()
+            setNeedsDisplay()
         }
     }
 
     override func draw(_ rect: CGRect) {
         bubbleColor?.set()
-        cachedPath?.fill()
+        makeBubblePath().fill()
     }
 
-    private func updateShape() {
+    private func makeBubblePath() -> UIBezierPath {
         let width = self.bounds.width
         let height = self.bounds.height
         let innerTipHeight: CGFloat = 7
@@ -64,7 +63,7 @@ class MessageBubbleBackgroundView: UIView {
         path.addQuadCurve(to: CGPoint(x: leftInset / 2, y: cornerHeight), controlPoint: CGPoint(x: leftInset / 2, y: 0))
         path.addQuadCurve(to: CGPoint(x: 0, y: height), controlPoint: CGPoint(x: leftInset / 2, y: height - innerTipHeight))
 
-        cachedPath = path
+        return path
     }
 
 }
