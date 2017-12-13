@@ -8,12 +8,32 @@
 
 import UIKit.UIViewController
 
-class MessageDetailViewControllerV2: UIViewController, MessageDetailScene {
+class MessageDetailViewControllerV2: UIViewController,
+                                     UICollectionViewDataSource,
+                                     MessageDetailScene {
+
+    // MARK: IBOutlets
+
+    @IBOutlet weak var collectionView: UICollectionView!
+
+    // MARK: Overrides
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         delegate?.messageDetailSceneWillAppear()
     }
+
+    // MARK: UICollectionViewDataSource
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
+    }
+
+    // MARK: MessageDetailScene
 
     var delegate: MessageDetailSceneDelegate?
 

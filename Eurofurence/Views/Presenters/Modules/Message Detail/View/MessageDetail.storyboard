@@ -83,9 +83,15 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="csr-KT-1c6" id="z2K-WP-H3y"/>
+                        </connections>
                     </collectionView>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="collectionView" destination="q9s-y5-qaX" id="cIZ-Zb-JsA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cy-8b-khS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

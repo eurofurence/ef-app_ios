@@ -48,4 +48,8 @@ class MessageDetailViewControllerTests: XCTestCase {
         XCTAssertEqual(messageDetailTitle, viewController.title)
     }
     
+    func testTheCollectionViewShouldHaveOneItem() {
+        XCTAssertEqual(1, viewController.collectionView.numberOfItems(inSection: 0))
+    }
+    
 }
