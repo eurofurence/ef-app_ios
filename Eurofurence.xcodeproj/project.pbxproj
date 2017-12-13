@@ -287,7 +287,6 @@
 		CA9845DC1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */; };
 		CA9845DE1F2B01BA00E8821D /* UnreadMessageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */; };
 		CAB138101FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB1380E1FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift */; };
-		CAB138111FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAB1380F1FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.xib */; };
 		CAB3A72A1F7532A2005DF77B /* CapturingPushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */; };
 		CAB3A72D1F753308005DF77B /* PushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */; };
 		CAB3A72F1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */; };
@@ -722,7 +721,6 @@
 		CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenMarkingMessageAsRead.swift; path = "Application Tests/WhenMarkingMessageAsRead.swift"; sourceTree = "<group>"; };
 		CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnreadMessageIndicator.swift; sourceTree = "<group>"; };
 		CAB1380E1FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleCollectionViewCell.swift; sourceTree = "<group>"; };
-		CAB1380F1FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageBubbleCollectionViewCell.xib; sourceTree = "<group>"; };
 		CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPushPermissionsRequester.swift; sourceTree = "<group>"; };
 		CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PushPermissionsRequester.swift; path = "Application/System Services/PushPermissionsRequester.swift"; sourceTree = "<group>"; };
 		CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationPushPermissionsRequester.swift; path = "Application/System Services/ApplicationPushPermissionsRequester.swift"; sourceTree = "<group>"; };
@@ -2018,7 +2016,6 @@
 				CAEAEBFC1FE0043B00C0EE7C /* MessageDetailSceneFactory.swift */,
 				CAEAEC071FE06F3C00C0EE7C /* MessageDetailViewControllerV2.swift */,
 				CAEAEC091FE06FA500C0EE7C /* PhoneMessageDetailSceneFactory.swift */,
-				CAB1380F1FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2341,7 +2338,6 @@
 				CA6AA0181FD8834D0092C6DB /* News.storyboard in Resources */,
 				78455B561F117B24005BE2D7 /* Tutorial.storyboard in Resources */,
 				78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */,
-				CAB138111FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.xib in Resources */,
 				CA6A9FF91FD5E79F0092C6DB /* Login.storyboard in Resources */,
 				9ACF99421EBE172D006FC958 /* LaunchScreen.storyboard in Resources */,
 				78C86D701F12AA6C003A20E6 /* Hieroglify.ttf in Resources */,
