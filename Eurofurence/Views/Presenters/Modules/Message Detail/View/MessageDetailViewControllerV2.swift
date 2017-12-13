@@ -55,13 +55,8 @@ class MessageDetailViewControllerV2: UIViewController,
         guard let attributes = collectionViewLayout.layoutAttributesForItem(at: indexPath) else { return .zero }
 
         let width = attributes.frame.width
-        let intrinsicBubbleVerticalPadding: CGFloat = 26
         let targetSize = CGSize(width: width, height: .greatestFiniteMagnitude)
-
-        let subjectSize = messageCell.subjectLabel.systemLayoutSizeFitting(targetSize)
-        let messageSize = messageCell.messageLabel.systemLayoutSizeFitting(targetSize)
-
-        let height = intrinsicBubbleVerticalPadding + subjectSize.height + messageSize.height
+        let height = messageCell.systemLayoutSizeFitting(targetSize).height
 
         return CGSize(width: width, height: height)
     }
