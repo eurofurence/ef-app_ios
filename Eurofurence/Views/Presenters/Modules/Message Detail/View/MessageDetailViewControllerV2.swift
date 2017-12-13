@@ -10,6 +10,7 @@ import UIKit.UIViewController
 
 class MessageDetailViewControllerV2: UIViewController,
                                      UICollectionViewDataSource,
+                                     UICollectionViewDelegateFlowLayout,
                                      MessageDetailScene {
 
     // MARK: IBOutlets
@@ -30,6 +31,8 @@ class MessageDetailViewControllerV2: UIViewController,
         super.viewWillAppear(animated)
 
         delegate?.messageDetailSceneWillAppear()
+
+        collectionView.collectionViewLayout.invalidateLayout()
         collectionView.layoutSubviews()
     }
 
@@ -41,6 +44,26 @@ class MessageDetailViewControllerV2: UIViewController,
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return messageCell!
+    }
+
+    // MARK: UICollectionViewDelegateFlowLayout
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let messageCell = messageCell else { return .zero }
+        guard let attributes = collectionViewLayout.layoutAttributesForItem(at: indexPath) else { return .zero }
+
+        let width = attributes.frame.width
+        let intrinsicBubbleVerticalPadding: CGFloat = 26
+        let targetSize = CGSize(width: width, height: .greatestFiniteMagnitude)
+
+        let subjectSize = messageCell.subjectLabel.systemLayoutSizeFitting(targetSize)
+        let messageSize = messageCell.messageLabel.systemLayoutSizeFitting(targetSize)
+
+        let height = intrinsicBubbleVerticalPadding + subjectSize.height + messageSize.height
+
+        return CGSize(width: width, height: height)
     }
 
     // MARK: MessageDetailScene

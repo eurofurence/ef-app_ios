@@ -44,7 +44,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbF-Yw-h3E">
-                                                    <rect key="frame" x="30" y="59" width="191" height="75"/>
+                                                    <rect key="frame" x="30" y="59" width="191" height="76"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -53,7 +53,7 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="CbF-Yw-h3E" firstAttribute="leading" secondItem="2Mj-xZ-OeB" secondAttribute="leading" id="OSb-ju-amF"/>
-                                                <constraint firstAttribute="bottom" secondItem="CbF-Yw-h3E" secondAttribute="bottom" constant="14" id="RKp-wf-dul"/>
+                                                <constraint firstAttribute="bottom" secondItem="CbF-Yw-h3E" secondAttribute="bottom" constant="13" id="RKp-wf-dul"/>
                                                 <constraint firstItem="CbF-Yw-h3E" firstAttribute="trailing" secondItem="2Mj-xZ-OeB" secondAttribute="trailing" id="Z2n-nR-KT9"/>
                                                 <constraint firstItem="2Mj-xZ-OeB" firstAttribute="top" secondItem="5bE-GN-nwP" secondAttribute="top" constant="13" id="b6i-ct-k5T"/>
                                                 <constraint firstAttribute="trailing" secondItem="2Mj-xZ-OeB" secondAttribute="trailing" constant="14" id="fyt-rO-rUa"/>
@@ -85,6 +85,7 @@
                         </cells>
                         <connections>
                             <outlet property="dataSource" destination="csr-KT-1c6" id="z2K-WP-H3y"/>
+                            <outlet property="delegate" destination="csr-KT-1c6" id="WK9-NZ-0bR"/>
                         </connections>
                     </collectionView>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
