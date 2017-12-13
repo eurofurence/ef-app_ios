@@ -17,8 +17,8 @@ class MessageBubbleBackgroundView: UIView {
         }
     }
 
-    private let leftInset: CGFloat = 24
-    private let rightInset: CGFloat = 32
+    private let leftContentInset: CGFloat = 24
+    private let rightContentInset: CGFloat = 32
     private let cornerHeight: CGFloat = 32
 
     override init(frame: CGRect) {
@@ -53,15 +53,15 @@ class MessageBubbleBackgroundView: UIView {
 
         let path = UIBezierPath()
         path.move(to: CGPoint(x: 0, y: height))
-        path.addQuadCurve(to: CGPoint(x: leftInset, y: height - innerTipHeight), controlPoint: CGPoint(x: leftInset, y: height))
-        path.addQuadCurve(to: CGPoint(x: leftInset * 2, y: height), controlPoint: CGPoint(x: leftInset, y: height))
-        path.addLine(to: CGPoint(x: width - rightInset, y: height))
+        path.addQuadCurve(to: CGPoint(x: leftContentInset, y: height - innerTipHeight), controlPoint: CGPoint(x: leftContentInset / 2, y: height))
+        path.addQuadCurve(to: CGPoint(x: leftContentInset * 2, y: height), controlPoint: CGPoint(x: 1.25 * leftContentInset, y: height))
+        path.addLine(to: CGPoint(x: width - rightContentInset, y: height))
         path.addQuadCurve(to: CGPoint(x: width, y: height - cornerHeight), controlPoint: CGPoint(x: width, y: height))
         path.addQuadCurve(to: CGPoint(x: width, y: cornerHeight), controlPoint: CGPoint(x: width, y: 0))
-        path.addQuadCurve(to: CGPoint(x: width - rightInset, y: 0), controlPoint: CGPoint(x: width, y: 0))
-        path.addLine(to: CGPoint(x: leftInset * 2, y: 0))
-        path.addQuadCurve(to: CGPoint(x: leftInset / 2, y: cornerHeight), controlPoint: CGPoint(x: leftInset / 2, y: 0))
-        path.addQuadCurve(to: CGPoint(x: 0, y: height), controlPoint: CGPoint(x: leftInset / 2, y: height - innerTipHeight))
+        path.addQuadCurve(to: CGPoint(x: width - rightContentInset, y: 0), controlPoint: CGPoint(x: width, y: 0))
+        path.addLine(to: CGPoint(x: leftContentInset * 2, y: 0))
+        path.addQuadCurve(to: CGPoint(x: leftContentInset / 2, y: cornerHeight), controlPoint: CGPoint(x: leftContentInset / 2, y: 0))
+        path.addQuadCurve(to: CGPoint(x: 0, y: height), controlPoint: CGPoint(x: leftContentInset / 2, y: height - innerTipHeight))
 
         return path
     }
