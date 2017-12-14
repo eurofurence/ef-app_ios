@@ -40,11 +40,6 @@ class WhenViewingMessagesAndLoggedIn: XCTestCase {
         XCTAssertTrue(context.privateMessagesService.wasToldToRefreshMessages)
     }
     
-    func testFailingToLoadMessagesHidesTheRefreshIndicator() {
-        context.privateMessagesService.failLastRefresh()
-        XCTAssertTrue(context.scene.wasToldToHideRefreshIndicator)
-    }
-    
     func testSingleLocalMessageTellsSceneToShowMessagesList() {
         let localMessage = AppDataBuilder.makeMessage()
         context = MessagesPresenterTestContext.makeTestCaseForUserWithMessages([localMessage])
