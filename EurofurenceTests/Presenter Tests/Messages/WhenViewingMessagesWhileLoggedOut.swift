@@ -20,11 +20,11 @@ class WhenViewingMessagesWhileLoggedOut: XCTestCase {
         context.scene.delegate?.messagesSceneWillAppear()
     }
     
-    func testWhenSceneAppearsForTheFirstTimeTheDelegateIsToldToResolveUserAuthentication() {
+    func testTheDelegateIsToldToResolveUserAuthentication() {
         XCTAssertTrue(context.delegate.wasToldToResolveUser)
     }
     
-    func testWhenTheSceneAppearsTheMessagesTitleIsSetOntoTheScene() {
+    func testTheMessagesTitleIsSetOntoTheScene() {
         XCTAssertEqual(context.strings[.messages], context.scene.capturedTitle)
     }
     
@@ -39,35 +39,35 @@ class WhenViewingMessagesWhileLoggedOut: XCTestCase {
         XCTAssertEqual(0, authenticationService.authStateDeterminedCount)
     }
     
-    func testWhenTheDelegateCannotResolveUserAuthenticationTheDelegateIsToldToDismissTheMessagesScene() {
+    func testFailingToResolveUserTellsDelegateToDismissTheModule() {
         context.delegate.failToResolveUser()
         XCTAssertTrue(context.delegate.dismissed)
     }
     
-    func testWhenTheDelegateResolvesUserAuthenticationActionTheDelegateIsNotToldToDismissTheMessagesScene() {
+    func testResolvingUserDoesNotTellDelegateToDismissTheModule() {
         context.delegate.resolveUser()
         XCTAssertFalse(context.delegate.dismissed)
     }
     
-    func testWhenSceneAppearsTheSceneIsNotToldToShowRefreshIndicator() {
+    func testTheSceneIsNotToldToShowRefreshIndicator() {
         XCTAssertFalse(context.scene.wasToldToShowRefreshIndicator)
     }
     
-    func testWhenSceneAppearsThePrivateMessagesServiceIsNotToldToRefreshMessages() {
+    func testThePrivateMessagesServiceIsNotToldToRefreshMessages() {
         XCTAssertFalse(context.privateMessagesService.wasToldToRefreshMessages)
     }
     
-    func testWhenTheDelegateResolvesUserAuthenticationThePrivateMessagesServiceIsToldToRefreshMessages() {
+    func testResolvingUsersReloadsPrivateMessages() {
         context.delegate.resolveUser()
         XCTAssertTrue(context.privateMessagesService.wasToldToRefreshMessages)
     }
     
-    func testWhenTheDelegateResolvesUserAuthenticationTheSceneIsToldToShowTheRefreshIndicator() {
+    func testResolvingUserTellsTheSceneIsToldToShowTheRefreshIndicator() {
         context.delegate.resolveUser()
         XCTAssertTrue(context.scene.wasToldToShowRefreshIndicator)
     }
     
-    func testWhenTheDelegateDoesNotResolveUserAuthenticationThePrivateMessagesServiceIsNotToldToRefreshMessages() {
+    func testFailingToResolveUserDoesNotRefreshMessages() {
         context.delegate.failToResolveUser()
         XCTAssertFalse(context.privateMessagesService.wasToldToRefreshMessages)
     }
