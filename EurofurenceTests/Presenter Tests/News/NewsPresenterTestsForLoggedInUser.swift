@@ -34,9 +34,11 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
     }
     
     private(set) var wasToldToRefreshMessages = false
+    private(set) var refreshMessagesCount = 0
     private var completionHandler: ((PrivateMessagesRefreshResult) -> Void)?
     func refreshMessages(completionHandler: @escaping (PrivateMessagesRefreshResult) -> Void) {
         wasToldToRefreshMessages = true
+        refreshMessagesCount += 1
         self.completionHandler = completionHandler
     }
     

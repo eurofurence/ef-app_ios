@@ -115,4 +115,8 @@ class CapturingMessagesSceneDelegate: MessagesSceneDelegate {
         capturedSelectedMessageIndexPath = indexPath
     }
     
+    func messagesSceneDidPerformRefreshAction() {
+        
+    }
+    
 }

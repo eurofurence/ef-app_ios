@@ -13,6 +13,7 @@ protocol MessagesSceneDelegate {
 
     func messagesSceneWillAppear()
     func messagesSceneDidSelectMessage(at indexPath: IndexPath)
+    func messagesSceneDidPerformRefreshAction()
 
 }
 

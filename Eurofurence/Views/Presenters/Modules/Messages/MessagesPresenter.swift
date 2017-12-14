@@ -48,6 +48,10 @@ class MessagesPresenter: MessagesSceneDelegate {
         delegate.messagesModuleDidRequestPresentation(for: message)
     }
 
+    func messagesSceneDidPerformRefreshAction() {
+        privateMessagesService.refreshMessages { (_) in }
+    }
+
     // MARK: Private
 
     private func authStateResolved(_ state: AuthState) {

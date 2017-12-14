@@ -100,4 +100,9 @@ class MessagesPresenterTestsForLoggedInUser: XCTestCase {
         XCTAssertEqual(localMessage, context.delegate.messageToShow)
     }
     
+    func testWhenSceneInstigatesRefreshActionThePrivateMessagesServiceIsToldToReload() {
+        context.scene.delegate?.messagesSceneDidPerformRefreshAction()
+        XCTAssertEqual(2, context.privateMessagesService.refreshMessagesCount)
+    }
+    
 }
