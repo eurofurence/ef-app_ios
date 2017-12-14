@@ -20,10 +20,6 @@ class WhenViewingMessagesAndLoggedIn: XCTestCase {
         context.scene.delegate?.messagesSceneWillAppear()
     }
     
-    private func makeMessageWithIdentifier(_ identifier: String) -> Message {
-        return AppDataBuilder.makeMessage(identifier: identifier)
-    }
-    
     func testTheDelegateIsNotToldToResolveUserAuthentication() {
         XCTAssertFalse(context.delegate.wasToldToResolveUser)
     }
@@ -38,47 +34,6 @@ class WhenViewingMessagesAndLoggedIn: XCTestCase {
     
     func testThePrivateMessagesServiceIsToldToRefreshMessages() {
         XCTAssertTrue(context.privateMessagesService.wasToldToRefreshMessages)
-    }
-    
-    func testSingleLocalMessageTellsSceneToShowMessagesList() {
-        let localMessage = AppDataBuilder.makeMessage()
-        context = MessagesPresenterTestContext.makeTestCaseForUserWithMessages([localMessage])
-        context.scene.delegate?.messagesSceneWillAppear()
-        
-        XCTAssertTrue(context.scene.didShowMessages)
-    }
-    
-    func testSingleLocalMessageTellsSceneToHideNoMessagesPlaceholder() {
-        let localMessage = AppDataBuilder.makeMessage()
-        context = MessagesPresenterTestContext.makeTestCaseForUserWithMessages([localMessage])
-        context.scene.delegate?.messagesSceneWillAppear()
-        
-        XCTAssertTrue(context.scene.didHideNoMessagesPlaceholder)
-    }
-    
-    func testSingleLocalMessageDoesNotTellTheSceneToHideMessages() {
-        let localMessage = AppDataBuilder.makeMessage()
-        context = MessagesPresenterTestContext.makeTestCaseForUserWithMessages([localMessage])
-        context.scene.delegate?.messagesSceneWillAppear()
-        
-        XCTAssertFalse(context.scene.didHideMessages)
-    }
-    
-    func testSingleLocalMessageDoesNotTellTheSceneToShowNoMessagesPlaceholder() {
-        let localMessage = AppDataBuilder.makeMessage()
-        context = MessagesPresenterTestContext.makeTestCaseForUserWithMessages([localMessage])
-        context.scene.delegate?.messagesSceneWillAppear()
-        
-        XCTAssertFalse(context.scene.didShowNoMessagesPlaceholder)
-    }
-    
-    func testSelectingMessageTellsTheDelegateToShowTheMessage() {
-        let localMessage = AppDataBuilder.makeMessage()
-        context = MessagesPresenterTestContext.makeTestCaseForUserWithMessages([localMessage])
-        context.scene.delegate?.messagesSceneWillAppear()
-        context.scene.tapMessage(at: 0)
-        
-        XCTAssertEqual(localMessage, context.delegate.messageToShow)
     }
     
     func testWhenSceneInstigatesRefreshActionThePrivateMessagesServiceIsToldToReload() {
