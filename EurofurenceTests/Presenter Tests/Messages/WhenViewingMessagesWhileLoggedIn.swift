@@ -45,27 +45,6 @@ class WhenViewingMessagesAndLoggedIn: XCTestCase {
         XCTAssertTrue(context.scene.wasToldToHideRefreshIndicator)
     }
     
-    func testLoadingMessagesHidesTheRefreshIndicator() {
-        context.privateMessagesService.succeedLastRefresh()
-        XCTAssertTrue(context.scene.wasToldToHideRefreshIndicator)
-    }
-    
-    func testNoLocalMessagesDoesNotTellSceneToShowMessagesList() {
-        XCTAssertFalse(context.scene.didShowMessages)
-    }
-    
-    func testNoLocalMessagesTellsTheTheSceneToHideMessages() {
-        XCTAssertTrue(context.scene.didHideMessages)
-    }
-    
-    func testNoLocalMessagesTellsTheSceneToShowNoMessagesPlaceholder() {
-        XCTAssertTrue(context.scene.didShowNoMessagesPlaceholder)
-    }
-    
-    func testNoLocalMessagesDoesNotTellTheSceneToHideTheNoMessagesPlaceholder() {
-        XCTAssertFalse(context.scene.didHideNoMessagesPlaceholder)
-    }
-    
     func testSingleLocalMessageTellsSceneToShowMessagesList() {
         let localMessage = AppDataBuilder.makeMessage()
         context = MessagesPresenterTestContext.makeTestCaseForUserWithMessages([localMessage])

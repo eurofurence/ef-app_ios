@@ -206,6 +206,7 @@
 		9AF0B4FE1F08459D000AAA0A /* TimeIntervalRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF0B4FD1F08459D000AAA0A /* TimeIntervalRow.swift */; };
 		9AF159ED1EF5BE7F00DB287D /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF159EC1EF5BE7F00DB287D /* EventCell.swift */; };
 		A034379A14212C5E996E6321 /* Pods_Eurofurence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */; };
+		CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */; };
 		CA1FE9971F9FCCA4009C7DF3 /* MessagesModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleProviding.swift */; };
 		CA1FE9991FA0B3AE009C7DF3 /* ApplicationDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE9981FA0B3AE009C7DF3 /* ApplicationDirector.swift */; };
 		CA1FE99B1FA0B3EB009C7DF3 /* WindowWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */; };
@@ -639,6 +640,7 @@
 		A5BC6AE61AB3CCDF97473815 /* Pods-EurofurenceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.release.xcconfig"; sourceTree = "<group>"; };
 		A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eurofurence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4939A463603D9F022E19825 /* Pods-EurofurenceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhenInitialMessagesLoadCompletesWithNoMessages.swift; path = "Presenter Tests/Messages/WhenInitialMessagesLoadCompletesWithNoMessages.swift"; sourceTree = "<group>"; };
 		CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesModuleProviding.swift; path = Messages/MessagesModuleProviding.swift; sourceTree = "<group>"; };
 		CA1FE9981FA0B3AE009C7DF3 /* ApplicationDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationDirector.swift; path = ../Director/ApplicationDirector.swift; sourceTree = "<group>"; };
 		CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WindowWireframe.swift; path = ../Director/WindowWireframe.swift; sourceTree = "<group>"; };
@@ -2090,10 +2092,11 @@
 			isa = PBXGroup;
 			children = (
 				CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */,
-				CAF9A9571F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift */,
-				CAD2343F1F5D726C004BB959 /* WhenViewingMessagesWhileLoggedIn.swift */,
 				CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */,
 				CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */,
+				CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */,
+				CAD2343F1F5D726C004BB959 /* WhenViewingMessagesWhileLoggedIn.swift */,
+				CAF9A9571F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -2849,6 +2852,7 @@
 				CAD234421F5F2FA8004BB959 /* AppDataBuilder.swift in Sources */,
 				CA5BF9D51F7AF9160045DBC0 /* PreloadPresenterTests.swift in Sources */,
 				7820A7011F16C0F0004C0FB5 /* CapturingPushPermissionsStateProviding.swift in Sources */,
+				CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */,
 				78C86D811F13A0CE003A20E6 /* StubPresentationStrings.swift in Sources */,
 				7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */,
 				78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */,
