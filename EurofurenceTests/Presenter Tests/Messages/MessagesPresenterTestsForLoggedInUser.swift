@@ -105,4 +105,11 @@ class MessagesPresenterTestsForLoggedInUser: XCTestCase {
         XCTAssertEqual(2, context.privateMessagesService.refreshMessagesCount)
     }
     
+    func testWhenInstigatedRefreshThatFinishesTheSceneIsToldToHideTheRefreshIndicator() {
+        context.scene.delegate?.messagesSceneDidPerformRefreshAction()
+        context.privateMessagesService.succeedLastRefresh()
+        
+        XCTAssertTrue(context.scene.wasToldToHideRefreshIndicator)
+    }
+    
 }

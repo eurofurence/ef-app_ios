@@ -49,7 +49,9 @@ class MessagesPresenter: MessagesSceneDelegate {
     }
 
     func messagesSceneDidPerformRefreshAction() {
-        privateMessagesService.refreshMessages { (_) in }
+        privateMessagesService.refreshMessages { (_) in
+            self.scene.hideRefreshIndicator()
+        }
     }
 
     // MARK: Private

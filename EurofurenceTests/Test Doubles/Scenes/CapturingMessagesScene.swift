@@ -53,7 +53,7 @@ class CapturingMessagesScene: UIViewController, MessagesScene {
         didHideMessages = true
     }
     
-    private(set) var didShowNoMessagesPlaceholder = false
+    var didShowNoMessagesPlaceholder = false
     func showNoMessagesPlaceholder() {
         didShowNoMessagesPlaceholder = true
     }
