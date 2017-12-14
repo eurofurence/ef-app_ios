@@ -9,13 +9,15 @@
 @testable import Eurofurence
 import XCTest
 
-class MessagesPresenterTestsForAnonymousUser: XCTestCase {
+class WhenViewingMessagesWhileLoggedOut: XCTestCase {
     
     var context: MessagesPresenterTestContext!
     
     override func setUp() {
         super.setUp()
+        
         context = MessagesPresenterTestContext.makeTestCaseForUnauthenticatedUser()
+        context.scene.delegate?.messagesSceneWillAppear()
     }
     
     func testWhenSceneAppearsForTheFirstTimeTheDelegateIsToldToResolveUserAuthentication() {

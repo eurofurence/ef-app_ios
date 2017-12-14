@@ -75,7 +75,6 @@ struct MessagesPresenterTestContext {
             .with(strings)
             .build()
             .makeMessagesModule(delegate)
-        sceneFactory.scene.delegate?.messagesSceneWillAppear()
     }
     
 }

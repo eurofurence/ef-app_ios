@@ -32,6 +32,7 @@ class MessagesPresenterTestsWhenBindingMessages: XCTestCase {
         
         let service = CapturingPrivateMessagesService(localMessages: allMessages)
         context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: service)
+        context.scene.delegate?.messagesSceneWillAppear()
         capturingMessageScene = CapturingMessageItemScene()
         context.scene.capturedMessageItemBinder?.bind(capturingMessageScene, toMessageAt: randomIndexPath)
     }
