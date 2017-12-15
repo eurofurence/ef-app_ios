@@ -67,6 +67,16 @@ class CapturingMessagesScene: UIViewController, MessagesScene {
         delegate?.messagesSceneDidSelectMessage(at: IndexPath(indexes: [0, index]))
     }
     
+    func reset() {
+        wasToldToShowRefreshIndicator = false
+        wasToldToHideRefreshIndicator = false
+        capturedMessageItemBinder = nil
+        didShowMessages = false
+        didHideMessages = false
+        didShowNoMessagesPlaceholder = false
+        didHideNoMessagesPlaceholder = false
+    }
+    
 }
 
 class CapturingMessageItemScene: MessageItemScene {
