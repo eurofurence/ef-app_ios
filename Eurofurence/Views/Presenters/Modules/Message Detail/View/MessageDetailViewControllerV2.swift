@@ -22,6 +22,8 @@ class MessageDetailViewControllerV2: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        delegate?.messageDetailSceneDidLoad()
+
         messageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MessageCell", for: IndexPath(item: 0, section: 0)) as? MessageBubbleCollectionViewCell
 
         collectionView.reloadData()
