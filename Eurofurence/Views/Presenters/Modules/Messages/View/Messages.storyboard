@@ -10,6 +10,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeueLights.ttc">
+            <string>HelveticaNeue-Light</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Messages View ControllerV2-->
         <scene sceneID="ZCF-lZ-gTl">
@@ -102,15 +107,16 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5D-Jl-ycC">
-                                <rect key="frame" x="166" y="395.66666666666669" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have not received any messages" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5D-Jl-ycC">
+                                <rect key="frame" x="16" y="363.66666666666669" width="343" height="85"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="36"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="p5D-Jl-ycC" firstAttribute="leading" secondItem="tjl-RU-qgX" secondAttribute="leadingMargin" id="1ji-Wk-W6I"/>
                             <constraint firstItem="cta-fe-XZD" firstAttribute="trailing" secondItem="QE7-bD-SJd" secondAttribute="trailing" id="2Cv-zc-UKb"/>
                             <constraint firstItem="cta-fe-XZD" firstAttribute="bottom" secondItem="QE7-bD-SJd" secondAttribute="bottom" id="KGu-GT-yaM"/>
                             <constraint firstItem="cta-fe-XZD" firstAttribute="trailing" secondItem="QE7-bD-SJd" secondAttribute="trailing" id="Sey-88-Bxs"/>
@@ -118,6 +124,7 @@
                             <constraint firstItem="p5D-Jl-ycC" firstAttribute="centerY" secondItem="tjl-RU-qgX" secondAttribute="centerY" id="XAp-Jb-DXP"/>
                             <constraint firstItem="QE7-bD-SJd" firstAttribute="leading" secondItem="cta-fe-XZD" secondAttribute="leading" id="XZJ-Um-Rim"/>
                             <constraint firstItem="QE7-bD-SJd" firstAttribute="top" secondItem="cta-fe-XZD" secondAttribute="top" id="Z6L-Jp-mXr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p5D-Jl-ycC" secondAttribute="trailing" id="iNH-5k-sVv"/>
                             <constraint firstItem="p5D-Jl-ycC" firstAttribute="centerX" secondItem="tjl-RU-qgX" secondAttribute="centerX" id="v93-3j-aFy"/>
                             <constraint firstItem="cta-fe-XZD" firstAttribute="bottom" secondItem="QE7-bD-SJd" secondAttribute="bottom" id="w85-Nc-R4l"/>
                         </constraints>
