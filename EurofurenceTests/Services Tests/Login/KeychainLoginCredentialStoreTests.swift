@@ -11,20 +11,24 @@ import XCTest
 
 class KeychainLoginCredentialStoreTests: XCTestCase {
     
+    private func makeStore() -> KeychainLoginCredentialStore {
+        return KeychainLoginCredentialStore(userAccount: "Eurofurence.Test")
+    }
+    
     func testStoringLoginShouldRetainItBetweenLifetimes() {
-        var store = KeychainLoginCredentialStore()
+        var store = makeStore()
         let credential = LoginCredential(username: "User",
                                          registrationNumber: 42,
                                          authenticationToken: "Token",
                                          tokenExpiryDate: .distantFuture)
         store.store(credential)
-        store = KeychainLoginCredentialStore()
+        store = makeStore()
         
         XCTAssertEqual(credential, store.persistedCredential)
     }
     
     func testStoringLoginThenDeletingItShouldReturnNilToken() {
-        let store = KeychainLoginCredentialStore()
+        let store = makeStore()
         let credential = LoginCredential(username: "User",
                                          registrationNumber: 42,
                                          authenticationToken: "Token",

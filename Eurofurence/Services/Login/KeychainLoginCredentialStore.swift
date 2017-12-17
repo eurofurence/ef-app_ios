@@ -10,17 +10,23 @@ import Locksmith
 
 struct KeychainLoginCredentialStore: LoginCredentialStore {
 
+    private var userAccount: String
+
     var persistedCredential: LoginCredential? {
-        guard let data = Locksmith.loadDataForUserAccount(userAccount: "Eurofurence") else {
+        guard let data = Locksmith.loadDataForUserAccount(userAccount: userAccount) else {
             return nil
         }
 
         return LoginCredential(keychainData: data)
     }
 
+    init(userAccount: String = "Eurofurence") {
+        self.userAccount = userAccount
+    }
+
     func store(_ loginCredential: LoginCredential) {
         do {
-            try Locksmith.saveData(data: loginCredential.keychainData, forUserAccount: "Eurofurence")
+            try Locksmith.saveData(data: loginCredential.keychainData, forUserAccount: userAccount)
         } catch {
             print("Unable to save credentials to Keychain: \(error)")
         }
@@ -28,7 +34,7 @@ struct KeychainLoginCredentialStore: LoginCredentialStore {
 
     func deletePersistedToken() {
         do {
-            try Locksmith.deleteDataForUserAccount(userAccount: "Eurofurence")
+            try Locksmith.deleteDataForUserAccount(userAccount: userAccount)
         } catch {
             print("Unable to delete credential from Keychain: \(error)")
         }
