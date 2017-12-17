@@ -11,9 +11,6 @@ protocol MessageDetailScene: class {
     var delegate: MessageDetailSceneDelegate? { get set }
 
     func setMessageDetailTitle(_ title: String)
-    func setMessageSubject(_ subject: String)
-    func setMessageContents(_ contents: String)
-
     func addMessageComponent(with binder: MessageComponentBinder)
 
 }
@@ -21,6 +18,5 @@ protocol MessageDetailScene: class {
 protocol MessageDetailSceneDelegate {
 
     func messageDetailSceneDidLoad()
-    func messageDetailSceneWillAppear()
 
 }

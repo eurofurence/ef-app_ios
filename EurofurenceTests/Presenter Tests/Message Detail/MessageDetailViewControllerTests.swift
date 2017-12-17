@@ -16,11 +16,6 @@ class CapturingMessageDetailSceneDelegate: MessageDetailSceneDelegate {
         toldSceneDidLoad = true
     }
     
-    private(set) var toldSceneWillAppear = false
-    func messageDetailSceneWillAppear() {
-        toldSceneWillAppear = true
-    }
-    
 }
 
 class CapturingMessageComponentBinder: MessageComponentBinder {
@@ -48,17 +43,6 @@ class MessageDetailViewControllerTests: XCTestCase {
     private func loadView() {
         viewController.loadViewIfNeeded()
         viewController.view.layoutSubviews()
-    }
-    
-    func testViewControllerNotifiesWhenSceneWillAppear() {
-        loadView()
-        viewController.viewWillAppear(false)
-        
-        XCTAssertTrue(delegate.toldSceneWillAppear)
-    }
-    
-    func testViewControllerDoesNotNotifySceneWillAppearTooSoon() {
-        XCTAssertFalse(delegate.toldSceneWillAppear)
     }
     
     func testNotifiesWhenViewDidLoad() {

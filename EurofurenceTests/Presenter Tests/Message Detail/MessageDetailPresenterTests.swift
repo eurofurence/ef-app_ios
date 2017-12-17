@@ -28,16 +28,6 @@ class CapturingMessageDetailScene: UIViewController, MessageDetailScene {
         capturedMessageDetailTitle = title
     }
     
-    private(set) var capturedMessageSubject: String?
-    func setMessageSubject(_ subject: String) {
-        capturedMessageSubject = subject
-    }
-    
-    private(set) var capturedMessageContents: String?
-    func setMessageContents(_ contents: String) {
-        capturedMessageContents = contents
-    }
-    
     private(set) var numberOfMessageComponentsAdded = 0
     private(set) var capturedMessageBinder: MessageComponentBinder?
     func addMessageComponent(with binder: MessageComponentBinder) {
@@ -80,10 +70,6 @@ class MessageDetailPresenterTests: XCTestCase {
     
     private func simulateSceneDidLoad() {
         messageDetailSceneFactory.scene.delegate?.messageDetailSceneDidLoad()
-    }
-    
-    private func simulateSceneWillAppear() {
-        messageDetailSceneFactory.scene.delegate?.messageDetailSceneWillAppear()
     }
     
     func testReturnTheSceneWhenBuildingTheModule() {

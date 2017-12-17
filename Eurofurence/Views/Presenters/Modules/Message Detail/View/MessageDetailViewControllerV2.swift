@@ -28,7 +28,6 @@ class MessageDetailViewControllerV2: UIViewController,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        delegate?.messageDetailSceneWillAppear()
         collectionView.layoutSubviews()
     }
 
@@ -48,14 +47,6 @@ class MessageDetailViewControllerV2: UIViewController,
 
     func setMessageDetailTitle(_ title: String) {
         super.title = title
-    }
-
-    func setMessageSubject(_ subject: String) {
-        messageCell?.subjectLabel.text = subject
-    }
-
-    func setMessageContents(_ contents: String) {
-        messageCell?.messageLabel.text = contents
     }
 
     func addMessageComponent(with binder: MessageComponentBinder) {

@@ -23,11 +23,6 @@ struct MessageDetailPresenter: MessageDetailSceneDelegate {
         scene.addMessageComponent(with: MessageBinder(message: message))
     }
 
-    func messageDetailSceneWillAppear() {
-        scene.setMessageSubject(message.subject)
-        scene.setMessageContents(message.contents)
-    }
-
     private struct MessageBinder: MessageComponentBinder {
 
         var message: Message
