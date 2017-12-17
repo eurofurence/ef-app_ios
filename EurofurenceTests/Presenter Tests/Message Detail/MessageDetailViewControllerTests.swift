@@ -23,6 +23,15 @@ class CapturingMessageDetailSceneDelegate: MessageDetailSceneDelegate {
     
 }
 
+class CapturingMessageComponentBinder: MessageComponentBinder {
+    
+    private(set) var capturedMessageComponent: MessageComponent?
+    func bind(_ component: MessageComponent, toMessageAt index: Int) {
+        capturedMessageComponent = component
+    }
+    
+}
+
 class MessageDetailViewControllerTests: XCTestCase {
     
     var delegate: CapturingMessageDetailSceneDelegate!
@@ -69,25 +78,28 @@ class MessageDetailViewControllerTests: XCTestCase {
         XCTAssertEqual(messageDetailTitle, viewController.title)
     }
     
-    func testTheCollectionViewShouldHaveOneItem() {
+    func testBindingSubjectSetsItOntoCell() {
         loadView()
-        XCTAssertEqual(1, viewController.collectionView.numberOfItems(inSection: 0))
-    }
-    
-    func testSettingMessageSubjectSetsItOntoCell() {
-        loadView()
+        let binder = CapturingMessageComponentBinder()
+        viewController.addMessageComponent(with: binder)
+        viewController.view.layoutSubviews()
+        
         let cell = viewController.collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? MessageBubbleCollectionViewCell
         let subject = "Subject"
-        viewController.setMessageSubject(subject)
+        binder.capturedMessageComponent?.setMessageSubject(subject)
         
         XCTAssertEqual(subject, cell?.subjectLabel.text)
     }
     
     func testSettingMessageContentsSetsItOntoCell() {
         loadView()
+        let binder = CapturingMessageComponentBinder()
+        viewController.addMessageComponent(with: binder)
+        viewController.view.layoutSubviews()
+        
         let cell = viewController.collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? MessageBubbleCollectionViewCell
         let contents = "Subject"
-        viewController.setMessageContents(contents)
+        binder.capturedMessageComponent?.setMessageContents(contents)
         
         XCTAssertEqual(contents, cell?.messageLabel.text)
     }

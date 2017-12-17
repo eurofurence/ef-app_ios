@@ -8,11 +8,25 @@
 
 import UIKit.UICollectionViewCell
 
-class MessageBubbleCollectionViewCell: UICollectionViewCell {
+class MessageBubbleCollectionViewCell: UICollectionViewCell, MessageComponent {
+
+    // MARK: IBOutlets
 
     @IBOutlet weak var bubbleBackgroundView: MessageBubbleBackgroundView!
     @IBOutlet weak var subjectLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
+
+    // MARK: MessageComponent
+
+    func setMessageSubject(_ subject: String) {
+        subjectLabel.text = subject
+    }
+
+    func setMessageContents(_ contents: String) {
+        messageLabel.text = contents
+    }
+
+    // MARK: Overrides
 
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
         layoutIfNeeded()

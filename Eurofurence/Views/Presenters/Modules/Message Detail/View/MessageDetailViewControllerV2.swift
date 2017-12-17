@@ -16,17 +16,13 @@ class MessageDetailViewControllerV2: UIViewController,
 
     @IBOutlet weak var collectionView: UICollectionView!
     private var messageCell: MessageBubbleCollectionViewCell?
+    private var binders = [CellBinder]()
 
     // MARK: Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         delegate?.messageDetailSceneDidLoad()
-
-        messageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MessageCell", for: IndexPath(item: 0, section: 0)) as? MessageBubbleCollectionViewCell
-
-        collectionView.reloadData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -39,11 +35,11 @@ class MessageDetailViewControllerV2: UIViewController,
     // MARK: UICollectionViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return binders.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return messageCell!
+        return binders.first!.makeCell(from: collectionView, forItemAt: indexPath)
     }
 
     // MARK: MessageDetailScene
@@ -63,6 +59,22 @@ class MessageDetailViewControllerV2: UIViewController,
     }
 
     func addMessageComponent(with binder: MessageComponentBinder) {
+        binders.append(CellBinder(binder: binder))
+        collectionView.reloadData()
+    }
+
+    // MARK: Binding
+
+    private struct CellBinder {
+
+        var binder: MessageComponentBinder
+
+        func makeCell(from collectionView: UICollectionView, forItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MessageCell", for: indexPath) as! MessageBubbleCollectionViewCell
+            binder.bind(cell, toMessageAt: 0)
+
+            return cell
+        }
 
     }
 
