@@ -12,19 +12,26 @@ class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
 
     private let tipInset: CGFloat = 14
 
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
+        if #available(iOS 10.0, *) {
+            estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
+        }
+    }
+
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
 
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         guard let attributes = super.layoutAttributesForElements(in: rect) else { return nil }
-        attributes.forEach(updateItemOffset)
-        attributes.forEach(updateItemSize)
+        attributes.forEach(updateItemAttributesForMessageBubble)
 
         return attributes
     }
 
-    private func updateItemOffset(of attributes: UICollectionViewLayoutAttributes) {
+    private func updateItemAttributesForMessageBubble(_ attributes: UICollectionViewLayoutAttributes) {
         guard let collectionView = collectionView else { return }
 
         var frame = attributes.frame
@@ -34,13 +41,10 @@ class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
             frame.origin.x = tipInset
         }
 
+        let availableWidth = collectionView.frame.width - collectionView.contentInset.left - collectionView.contentInset.right - sectionInset.left - sectionInset.right
+        frame.size.width = availableWidth * 0.66
+
         attributes.frame = frame
-    }
-
-    private func updateItemSize(of attributes: UICollectionViewLayoutAttributes) {
-        guard let collectionView = collectionView else { return }
-
-        attributes.frame.size.width = max(collectionView.frame.width * 0.66, 160)
     }
 
 }

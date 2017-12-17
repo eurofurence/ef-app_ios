@@ -85,7 +85,6 @@
                         </cells>
                         <connections>
                             <outlet property="dataSource" destination="csr-KT-1c6" id="z2K-WP-H3y"/>
-                            <outlet property="delegate" destination="csr-KT-1c6" id="WK9-NZ-0bR"/>
                         </connections>
                     </collectionView>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
