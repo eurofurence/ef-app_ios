@@ -25,12 +25,6 @@ class MessageDetailViewControllerV2: UIViewController,
         delegate?.messageDetailSceneDidLoad()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        collectionView.layoutSubviews()
-    }
-
     // MARK: UICollectionViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
