@@ -60,4 +60,8 @@ class MessageDetailViewControllerV2: UIViewController,
         messageCell?.messageLabel.text = contents
     }
 
+    func addMessageComponent() {
+
+    }
+
 }

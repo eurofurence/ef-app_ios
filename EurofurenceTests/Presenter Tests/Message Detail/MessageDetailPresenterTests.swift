@@ -38,6 +38,11 @@ class CapturingMessageDetailScene: UIViewController, MessageDetailScene {
         capturedMessageContents = contents
     }
     
+    private(set) var numberOfMessageComponentsAdded = 0
+    func addMessageComponent() {
+        numberOfMessageComponentsAdded += 1
+    }
+    
 }
 
 class MessageDetailPresenterTests: XCTestCase {
@@ -53,6 +58,27 @@ class MessageDetailPresenterTests: XCTestCase {
         messageDetailSceneFactory.scene.delegate?.messageDetailSceneWillAppear()
         
         XCTAssertEqual(expected, messageDetailSceneFactory.scene.capturedMessageDetailTitle)
+    }
+    
+    func testTellTheSceneToAddMessageComponents() {
+        let messageDetailSceneFactory = StubMessageDetailSceneFactory()
+        _ = MessageDetailModuleBuilder()
+            .with(messageDetailSceneFactory)
+            .build()
+            .makeMessageDetailModule(message: AppDataBuilder.makeMessage())
+        messageDetailSceneFactory.scene.delegate?.messageDetailSceneDidLoad()
+        
+        XCTAssertEqual(1, messageDetailSceneFactory.scene.numberOfMessageComponentsAdded)
+    }
+    
+    func testWaitsUntilTheSceneLoadsBeforeAddingMessageComponent() {
+        let messageDetailSceneFactory = StubMessageDetailSceneFactory()
+        _ = MessageDetailModuleBuilder()
+            .with(messageDetailSceneFactory)
+            .build()
+            .makeMessageDetailModule(message: AppDataBuilder.makeMessage())
+        
+        XCTAssertEqual(0, messageDetailSceneFactory.scene.numberOfMessageComponentsAdded)
     }
     
     func testSetTheSubjectOntoTheScene() {

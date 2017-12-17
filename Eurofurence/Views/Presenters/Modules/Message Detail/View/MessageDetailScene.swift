@@ -14,10 +14,13 @@ protocol MessageDetailScene: class {
     func setMessageSubject(_ subject: String)
     func setMessageContents(_ contents: String)
 
+    func addMessageComponent()
+
 }
 
 protocol MessageDetailSceneDelegate {
 
+    func messageDetailSceneDidLoad()
     func messageDetailSceneWillAppear()
 
 }

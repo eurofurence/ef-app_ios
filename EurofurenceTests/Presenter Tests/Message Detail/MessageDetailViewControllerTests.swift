@@ -11,6 +11,10 @@ import XCTest
 
 class CapturingMessageDetailSceneDelegate: MessageDetailSceneDelegate {
     
+    func messageDetailSceneDidLoad() {
+        
+    }
+    
     private(set) var toldSceneWillAppear = false
     func messageDetailSceneWillAppear() {
         toldSceneWillAppear = true

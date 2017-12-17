@@ -18,6 +18,10 @@ struct MessageDetailPresenter: MessageDetailSceneDelegate {
         scene.delegate = self
     }
 
+    func messageDetailSceneDidLoad() {
+        scene.addMessageComponent()
+    }
+
     func messageDetailSceneWillAppear() {
         scene.setMessageDetailTitle(message.authorName)
         scene.setMessageSubject(message.subject)
