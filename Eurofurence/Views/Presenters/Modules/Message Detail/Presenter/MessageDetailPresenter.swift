@@ -19,11 +19,11 @@ struct MessageDetailPresenter: MessageDetailSceneDelegate {
     }
 
     func messageDetailSceneDidLoad() {
+        scene.setMessageDetailTitle(message.authorName)
         scene.addMessageComponent()
     }
 
     func messageDetailSceneWillAppear() {
-        scene.setMessageDetailTitle(message.authorName)
         scene.setMessageSubject(message.subject)
         scene.setMessageContents(message.contents)
     }

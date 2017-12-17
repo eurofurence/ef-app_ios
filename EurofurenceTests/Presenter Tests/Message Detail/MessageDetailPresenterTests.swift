@@ -71,8 +71,12 @@ class MessageDetailPresenterTests: XCTestCase {
     }
     
     func testTheAuthorIsSetAsTheTitle() {
-        simulateSceneWillAppear()
+        simulateSceneDidLoad()
         XCTAssertEqual(message.authorName, messageDetailSceneFactory.scene.capturedMessageDetailTitle)
+    }
+    
+    func testWaitForTheSceneToLoadBeforeSettingTitle() {
+        XCTAssertNotEqual(message.authorName, messageDetailSceneFactory.scene.capturedMessageDetailTitle)
     }
     
     func testTellTheSceneToAddMessageComponents() {
