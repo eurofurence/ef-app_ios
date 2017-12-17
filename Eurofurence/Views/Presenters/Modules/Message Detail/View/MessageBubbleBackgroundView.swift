@@ -17,9 +17,9 @@ class MessageBubbleBackgroundView: UIView {
         }
     }
 
-    private let leftContentInset: CGFloat = 24
-    private let rightContentInset: CGFloat = 32
-    private let cornerHeight: CGFloat = 32
+    private let leftContentInset: CGFloat = 14
+    private let rightContentInset: CGFloat = 18
+    private let cornerHeight: CGFloat = 24
 
     override init(frame: CGRect) {
         super.init(frame: frame)

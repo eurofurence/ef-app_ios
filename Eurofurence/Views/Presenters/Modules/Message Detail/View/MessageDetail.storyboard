@@ -38,13 +38,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="235" height="148"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Lorem ipsum dolor sit amet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Mj-xZ-OeB">
-                                                    <rect key="frame" x="30" y="13.000000000000004" width="191" height="42.333333333333343"/>
+                                                    <rect key="frame" x="24" y="7" width="197" height="42.333333333333336"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbF-Yw-h3E">
-                                                    <rect key="frame" x="30" y="59" width="191" height="76"/>
+                                                    <rect key="frame" x="24" y="53" width="197" height="91"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -53,12 +53,12 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="CbF-Yw-h3E" firstAttribute="leading" secondItem="2Mj-xZ-OeB" secondAttribute="leading" id="OSb-ju-amF"/>
-                                                <constraint firstAttribute="bottom" secondItem="CbF-Yw-h3E" secondAttribute="bottom" constant="13" id="RKp-wf-dul"/>
+                                                <constraint firstAttribute="bottom" secondItem="CbF-Yw-h3E" secondAttribute="bottom" constant="4" id="RKp-wf-dul"/>
                                                 <constraint firstItem="CbF-Yw-h3E" firstAttribute="trailing" secondItem="2Mj-xZ-OeB" secondAttribute="trailing" id="Z2n-nR-KT9"/>
-                                                <constraint firstItem="2Mj-xZ-OeB" firstAttribute="top" secondItem="5bE-GN-nwP" secondAttribute="top" constant="13" id="b6i-ct-k5T"/>
+                                                <constraint firstItem="2Mj-xZ-OeB" firstAttribute="top" secondItem="5bE-GN-nwP" secondAttribute="top" constant="7" id="b6i-ct-k5T"/>
                                                 <constraint firstAttribute="trailing" secondItem="2Mj-xZ-OeB" secondAttribute="trailing" constant="14" id="fyt-rO-rUa"/>
                                                 <constraint firstItem="CbF-Yw-h3E" firstAttribute="firstBaseline" secondItem="2Mj-xZ-OeB" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="ksw-Jt-ac8"/>
-                                                <constraint firstItem="2Mj-xZ-OeB" firstAttribute="leading" secondItem="5bE-GN-nwP" secondAttribute="leading" constant="30" id="sG1-hM-GFU"/>
+                                                <constraint firstItem="2Mj-xZ-OeB" firstAttribute="leading" secondItem="5bE-GN-nwP" secondAttribute="leading" constant="24" id="sG1-hM-GFU"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="bubbleColor">
