@@ -47,110 +47,67 @@ class CapturingMessageDetailScene: UIViewController, MessageDetailScene {
 
 class MessageDetailPresenterTests: XCTestCase {
     
-    func testTheAuthorIsSetAsTheTitle() {
-        let expected = "Author"
-        let message = AppDataBuilder.makeMessage(authorName: expected)
-        let messageDetailSceneFactory = StubMessageDetailSceneFactory()
-        _ = MessageDetailModuleBuilder()
+    var messageDetailSceneFactory: StubMessageDetailSceneFactory!
+    var message: Message!
+    var viewController: UIViewController!
+    
+    override func setUp() {
+        super.setUp()
+        
+        message = AppDataBuilder.makeMessage(authorName: "Author", subject: "Subject", contents: "Contents")
+        messageDetailSceneFactory = StubMessageDetailSceneFactory()
+        viewController = MessageDetailModuleBuilder()
             .with(messageDetailSceneFactory)
             .build()
             .makeMessageDetailModule(message: message)
+    }
+    
+    private func simulateSceneDidLoad() {
+        messageDetailSceneFactory.scene.delegate?.messageDetailSceneDidLoad()
+    }
+    
+    private func simulateSceneWillAppear() {
         messageDetailSceneFactory.scene.delegate?.messageDetailSceneWillAppear()
-        
-        XCTAssertEqual(expected, messageDetailSceneFactory.scene.capturedMessageDetailTitle)
+    }
+    
+    func testTheAuthorIsSetAsTheTitle() {
+        simulateSceneWillAppear()
+        XCTAssertEqual(message.authorName, messageDetailSceneFactory.scene.capturedMessageDetailTitle)
     }
     
     func testTellTheSceneToAddMessageComponents() {
-        let messageDetailSceneFactory = StubMessageDetailSceneFactory()
-        _ = MessageDetailModuleBuilder()
-            .with(messageDetailSceneFactory)
-            .build()
-            .makeMessageDetailModule(message: AppDataBuilder.makeMessage())
-        messageDetailSceneFactory.scene.delegate?.messageDetailSceneDidLoad()
-        
+        simulateSceneDidLoad()
         XCTAssertEqual(1, messageDetailSceneFactory.scene.numberOfMessageComponentsAdded)
     }
     
     func testWaitsUntilTheSceneLoadsBeforeAddingMessageComponent() {
-        let messageDetailSceneFactory = StubMessageDetailSceneFactory()
-        _ = MessageDetailModuleBuilder()
-            .with(messageDetailSceneFactory)
-            .build()
-            .makeMessageDetailModule(message: AppDataBuilder.makeMessage())
-        
         XCTAssertEqual(0, messageDetailSceneFactory.scene.numberOfMessageComponentsAdded)
     }
     
     func testSetTheSubjectOntoTheScene() {
-        let expected = "Subject"
-        let message = AppDataBuilder.makeMessage(subject: expected)
-        let messageDetailSceneFactory = StubMessageDetailSceneFactory()
-        _ = MessageDetailModuleBuilder()
-            .with(messageDetailSceneFactory)
-            .build()
-            .makeMessageDetailModule(message: message)
-        messageDetailSceneFactory.scene.delegate?.messageDetailSceneWillAppear()
-        
-        XCTAssertEqual(expected, messageDetailSceneFactory.scene.capturedMessageSubject)
+        simulateSceneWillAppear()
+        XCTAssertEqual(message.subject, messageDetailSceneFactory.scene.capturedMessageSubject)
     }
     
     func testSetTheContentsOfTheMessageOntoTheScene() {
-        let expected = "Message"
-        let message = AppDataBuilder.makeMessage(contents: expected)
-        let messageDetailSceneFactory = StubMessageDetailSceneFactory()
-        _ = MessageDetailModuleBuilder()
-            .with(messageDetailSceneFactory)
-            .build()
-            .makeMessageDetailModule(message: message)
-        messageDetailSceneFactory.scene.delegate?.messageDetailSceneWillAppear()
-        
-        XCTAssertEqual(expected, messageDetailSceneFactory.scene.capturedMessageContents)
+        simulateSceneWillAppear()
+        XCTAssertEqual(message.contents, messageDetailSceneFactory.scene.capturedMessageContents)
     }
     
     func testReturnTheSceneWhenBuildingTheModule() {
-        let messageDetailSceneFactory = StubMessageDetailSceneFactory()
-        let vc = MessageDetailModuleBuilder()
-            .with(messageDetailSceneFactory)
-            .build()
-            .makeMessageDetailModule(message: AppDataBuilder.makeMessage())
-        
-        XCTAssertEqual(messageDetailSceneFactory.scene, vc)
+        XCTAssertEqual(viewController, messageDetailSceneFactory.scene)
     }
     
     func testWaitForTheSceneToNotifyItWillAppearBeforeSettingTitle() {
-        let unexpected = "Author"
-        let message = AppDataBuilder.makeMessage(authorName: unexpected)
-        let messageDetailSceneFactory = StubMessageDetailSceneFactory()
-        _ = MessageDetailModuleBuilder()
-            .with(messageDetailSceneFactory)
-            .build()
-            .makeMessageDetailModule(message: message)
-        
-        XCTAssertNotEqual(unexpected, messageDetailSceneFactory.scene.capturedMessageDetailTitle)
+        XCTAssertNotEqual(message.authorName, messageDetailSceneFactory.scene.capturedMessageDetailTitle)
     }
     
     func testWaitForSceneToNotifyItWillAppearBeforeSettingSubject() {
-        let unexpected = "Subject"
-        let message = AppDataBuilder.makeMessage(subject: unexpected)
-        let messageDetailSceneFactory = StubMessageDetailSceneFactory()
-        _ = MessageDetailModuleBuilder()
-            .with(messageDetailSceneFactory)
-            .build()
-            .makeMessageDetailModule(message: message)
-        
-        XCTAssertNotEqual(unexpected, messageDetailSceneFactory.scene.capturedMessageSubject)
+        XCTAssertNotEqual(message.subject, messageDetailSceneFactory.scene.capturedMessageSubject)
     }
     
     func testWaitForSceneToNotifyItWillAppearBeforeSettingContents() {
-        let unexpected = "Message"
-        let message = AppDataBuilder.makeMessage(contents: unexpected)
-        let messageDetailSceneFactory = StubMessageDetailSceneFactory()
-        _ = MessageDetailModuleBuilder()
-            .with(messageDetailSceneFactory)
-            .build()
-            .makeMessageDetailModule(message: message)
-        
-        XCTAssertNotEqual(unexpected, messageDetailSceneFactory.scene.capturedMessageContents)
+        XCTAssertNotEqual(message.contents, messageDetailSceneFactory.scene.capturedMessageContents)
     }
     
 }
