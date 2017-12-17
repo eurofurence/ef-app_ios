@@ -21,7 +21,7 @@ class CapturingMessageDetailSceneDelegate: MessageDetailSceneDelegate {
 class CapturingMessageComponentBinder: MessageComponentBinder {
     
     private(set) var capturedMessageComponent: MessageComponent?
-    func bind(_ component: MessageComponent, toMessageAt index: Int) {
+    func bind(_ component: MessageComponent) {
         capturedMessageComponent = component
     }
     

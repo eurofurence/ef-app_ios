@@ -97,7 +97,7 @@ class MessageDetailPresenterTests: XCTestCase {
     func testBindTheSubjectOntoTheMessageComponent() {
         simulateSceneDidLoad()
         let component = CapturingMessageComponent()
-        messageDetailSceneFactory.scene.capturedMessageBinder?.bind(component, toMessageAt: 0)
+        messageDetailSceneFactory.scene.capturedMessageBinder?.bind(component)
         
         XCTAssertEqual(message.subject, component.capturedMessageSubject)
     }
@@ -105,7 +105,7 @@ class MessageDetailPresenterTests: XCTestCase {
     func testBindTheContentsOfTheMessageOntoTheMessageComponent() {
         simulateSceneDidLoad()
         let component = CapturingMessageComponent()
-        messageDetailSceneFactory.scene.capturedMessageBinder?.bind(component, toMessageAt: 0)
+        messageDetailSceneFactory.scene.capturedMessageBinder?.bind(component)
         
         XCTAssertEqual(message.contents, component.capturedMessageContents)
     }

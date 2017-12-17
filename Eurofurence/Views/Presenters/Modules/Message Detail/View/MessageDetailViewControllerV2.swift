@@ -56,7 +56,7 @@ class MessageDetailViewControllerV2: UIViewController,
 
         func makeCell(from collectionView: UICollectionView, forItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MessageCell", for: indexPath) as! MessageBubbleCollectionViewCell
-            binder.bind(cell, toMessageAt: 0)
+            binder.bind(cell)
 
             return cell
         }

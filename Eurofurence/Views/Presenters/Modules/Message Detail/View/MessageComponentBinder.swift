@@ -8,6 +8,6 @@
 
 protocol MessageComponentBinder {
 
-    func bind(_ component: MessageComponent, toMessageAt index: Int)
+    func bind(_ component: MessageComponent)
 
 }

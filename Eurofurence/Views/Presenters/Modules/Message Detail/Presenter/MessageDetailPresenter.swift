@@ -27,7 +27,7 @@ struct MessageDetailPresenter: MessageDetailSceneDelegate {
 
         var message: Message
 
-        func bind(_ component: MessageComponent, toMessageAt index: Int) {
+        func bind(_ component: MessageComponent) {
             component.setMessageSubject(message.subject)
             component.setMessageContents(message.contents)
         }
