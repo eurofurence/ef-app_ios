@@ -20,12 +20,23 @@ struct MessageDetailPresenter: MessageDetailSceneDelegate {
 
     func messageDetailSceneDidLoad() {
         scene.setMessageDetailTitle(message.authorName)
-        scene.addMessageComponent()
+        scene.addMessageComponent(with: MessageBinder(message: message))
     }
 
     func messageDetailSceneWillAppear() {
         scene.setMessageSubject(message.subject)
         scene.setMessageContents(message.contents)
+    }
+
+    private struct MessageBinder: MessageComponentBinder {
+
+        var message: Message
+
+        func bind(_ component: MessageComponent, toMessageAt index: Int) {
+            component.setMessageSubject(message.subject)
+            component.setMessageContents(message.contents)
+        }
+
     }
 
 }

@@ -39,8 +39,24 @@ class CapturingMessageDetailScene: UIViewController, MessageDetailScene {
     }
     
     private(set) var numberOfMessageComponentsAdded = 0
-    func addMessageComponent() {
+    private(set) var capturedMessageBinder: MessageComponentBinder?
+    func addMessageComponent(with binder: MessageComponentBinder) {
         numberOfMessageComponentsAdded += 1
+        capturedMessageBinder = binder
+    }
+    
+}
+
+class CapturingMessageComponent: MessageComponent {
+    
+    private(set) var capturedMessageSubject: String?
+    func setMessageSubject(_ subject: String) {
+        capturedMessageSubject = subject
+    }
+    
+    private(set) var capturedMessageContents: String?
+    func setMessageContents(_ contents: String) {
+        capturedMessageContents = contents
     }
     
 }
@@ -70,6 +86,10 @@ class MessageDetailPresenterTests: XCTestCase {
         messageDetailSceneFactory.scene.delegate?.messageDetailSceneWillAppear()
     }
     
+    func testReturnTheSceneWhenBuildingTheModule() {
+        XCTAssertEqual(viewController, messageDetailSceneFactory.scene)
+    }
+    
     func testTheAuthorIsSetAsTheTitle() {
         simulateSceneDidLoad()
         XCTAssertEqual(message.authorName, messageDetailSceneFactory.scene.capturedMessageDetailTitle)
@@ -88,30 +108,20 @@ class MessageDetailPresenterTests: XCTestCase {
         XCTAssertEqual(0, messageDetailSceneFactory.scene.numberOfMessageComponentsAdded)
     }
     
-    func testSetTheSubjectOntoTheScene() {
-        simulateSceneWillAppear()
-        XCTAssertEqual(message.subject, messageDetailSceneFactory.scene.capturedMessageSubject)
+    func testBindTheSubjectOntoTheMessageComponent() {
+        simulateSceneDidLoad()
+        let component = CapturingMessageComponent()
+        messageDetailSceneFactory.scene.capturedMessageBinder?.bind(component, toMessageAt: 0)
+        
+        XCTAssertEqual(message.subject, component.capturedMessageSubject)
     }
     
-    func testSetTheContentsOfTheMessageOntoTheScene() {
-        simulateSceneWillAppear()
-        XCTAssertEqual(message.contents, messageDetailSceneFactory.scene.capturedMessageContents)
-    }
-    
-    func testReturnTheSceneWhenBuildingTheModule() {
-        XCTAssertEqual(viewController, messageDetailSceneFactory.scene)
-    }
-    
-    func testWaitForTheSceneToNotifyItWillAppearBeforeSettingTitle() {
-        XCTAssertNotEqual(message.authorName, messageDetailSceneFactory.scene.capturedMessageDetailTitle)
-    }
-    
-    func testWaitForSceneToNotifyItWillAppearBeforeSettingSubject() {
-        XCTAssertNotEqual(message.subject, messageDetailSceneFactory.scene.capturedMessageSubject)
-    }
-    
-    func testWaitForSceneToNotifyItWillAppearBeforeSettingContents() {
-        XCTAssertNotEqual(message.contents, messageDetailSceneFactory.scene.capturedMessageContents)
+    func testBindTheContentsOfTheMessageOntoTheMessageComponent() {
+        simulateSceneDidLoad()
+        let component = CapturingMessageComponent()
+        messageDetailSceneFactory.scene.capturedMessageBinder?.bind(component, toMessageAt: 0)
+        
+        XCTAssertEqual(message.contents, component.capturedMessageContents)
     }
     
 }

@@ -14,7 +14,7 @@ protocol MessageDetailScene: class {
     func setMessageSubject(_ subject: String)
     func setMessageContents(_ contents: String)
 
-    func addMessageComponent()
+    func addMessageComponent(with binder: MessageComponentBinder)
 
 }
 

@@ -210,6 +210,8 @@
 		CA1ECB3F1FE333090076083A /* WhenInitialMessageLoadFails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */; };
 		CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */; };
 		CA1ECB451FE3A2880076083A /* WhenInitialMessageLoadCompletesWithMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB441FE3A2880076083A /* WhenInitialMessageLoadCompletesWithMessages.swift */; };
+		CA1ECB471FE6E7DA0076083A /* MessageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB461FE6E7DA0076083A /* MessageComponent.swift */; };
+		CA1ECB491FE6E8100076083A /* MessageComponentBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB481FE6E8100076083A /* MessageComponentBinder.swift */; };
 		CA1FE9971F9FCCA4009C7DF3 /* MessagesModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleProviding.swift */; };
 		CA1FE9991FA0B3AE009C7DF3 /* ApplicationDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE9981FA0B3AE009C7DF3 /* ApplicationDirector.swift */; };
 		CA1FE99B1FA0B3EB009C7DF3 /* WindowWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */; };
@@ -647,6 +649,8 @@
 		CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhenInitialMessageLoadFails.swift; path = "Presenter Tests/Messages/WhenInitialMessageLoadFails.swift"; sourceTree = "<group>"; };
 		CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhenViewingMessageWhileLoggedInWithLocalMessage.swift; path = "Presenter Tests/Messages/WhenViewingMessageWhileLoggedInWithLocalMessage.swift"; sourceTree = "<group>"; };
 		CA1ECB441FE3A2880076083A /* WhenInitialMessageLoadCompletesWithMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenInitialMessageLoadCompletesWithMessages.swift; path = "Presenter Tests/Messages/WhenInitialMessageLoadCompletesWithMessages.swift"; sourceTree = "<group>"; };
+		CA1ECB461FE6E7DA0076083A /* MessageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageComponent.swift; sourceTree = "<group>"; };
+		CA1ECB481FE6E8100076083A /* MessageComponentBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageComponentBinder.swift; sourceTree = "<group>"; };
 		CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesModuleProviding.swift; path = Messages/MessagesModuleProviding.swift; sourceTree = "<group>"; };
 		CA1FE9981FA0B3AE009C7DF3 /* ApplicationDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationDirector.swift; path = ../Director/ApplicationDirector.swift; sourceTree = "<group>"; };
 		CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WindowWireframe.swift; path = ../Director/WindowWireframe.swift; sourceTree = "<group>"; };
@@ -2022,6 +2026,8 @@
 				CAEAEC051FE06F2800C0EE7C /* MessageDetail.storyboard */,
 				CAEAEC0D1FE07AD700C0EE7C /* MessageBubbleBackgroundView.swift */,
 				CAB1380E1FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift */,
+				CA1ECB461FE6E7DA0076083A /* MessageComponent.swift */,
+				CA1ECB481FE6E8100076083A /* MessageComponentBinder.swift */,
 				CAEAEBFE1FE0044900C0EE7C /* MessageDetailScene.swift */,
 				CAEAEBFC1FE0043B00C0EE7C /* MessageDetailSceneFactory.swift */,
 				CAEAEC071FE06F3C00C0EE7C /* MessageDetailViewControllerV2.swift */,
@@ -2575,6 +2581,7 @@
 				9A861EC81F25555000B75A8C /* WitnessedTutorialPushPermissionsRequest.swift in Sources */,
 				CA6AA01C1FD88D930092C6DB /* UIStoryboard+Convenience.swift in Sources */,
 				CA8E7EFE1FB093D800F0BF10 /* PhoneNavigationControllerFactory.swift in Sources */,
+				CA1ECB471FE6E7DA0076083A /* MessageComponent.swift in Sources */,
 				9A861ECC1F25555000B75A8C /* TutorialViewController.swift in Sources */,
 				9A80EF5B1F29203C00FD0D37 /* AnnouncementsShowAllProviding.swift in Sources */,
 				9A861EA31F2554AB00B75A8C /* CompleteTutorial.swift in Sources */,
@@ -2655,6 +2662,7 @@
 				CAEAEBEF1FDC989300C0EE7C /* LoginServiceRequest.swift in Sources */,
 				9A861EB61F25550700B75A8C /* TutorialPageScene.swift in Sources */,
 				9A2A948D1F12D64B004D66FB /* DataModelVersionProviding.swift in Sources */,
+				CA1ECB491FE6E8100076083A /* MessageComponentBinder.swift in Sources */,
 				9ACF99941EC858B2006FC958 /* LinkFragment.swift in Sources */,
 				CA8E7EFC1FB0932700F0BF10 /* PhoneNewsSceneFactory.swift in Sources */,
 				9A861EB71F25550700B75A8C /* SplashScene.swift in Sources */,
