@@ -652,7 +652,7 @@
 		CA1ECB461FE6E7DA0076083A /* MessageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageComponent.swift; sourceTree = "<group>"; };
 		CA1ECB481FE6E8100076083A /* MessageComponentBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageComponentBinder.swift; sourceTree = "<group>"; };
 		CA1ECB4C1FE7F2A10076083A /* NewsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPresenter.swift; sourceTree = "<group>"; };
-		CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesModuleProviding.swift; path = Messages/MessagesModuleProviding.swift; sourceTree = "<group>"; };
+		CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesModuleProviding.swift; sourceTree = "<group>"; };
 		CA1FE9981FA0B3AE009C7DF3 /* ApplicationDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationDirector.swift; path = ../Director/ApplicationDirector.swift; sourceTree = "<group>"; };
 		CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WindowWireframe.swift; path = ../Director/WindowWireframe.swift; sourceTree = "<group>"; };
 		CA1FE99D1FA0B41E009C7DF3 /* NavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigationControllerFactory.swift; path = ../Director/NavigationControllerFactory.swift; sourceTree = "<group>"; };
@@ -686,7 +686,7 @@
 		CA321F521F7BC88D0050E489 /* PhonePreloadSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePreloadSceneFactory.swift; sourceTree = "<group>"; };
 		CA4FBE0D1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesPresenterTestsWhenBindingMessages.swift; path = "Presenter Tests/Messages/MessagesPresenterTestsWhenBindingMessages.swift"; sourceTree = "<group>"; };
 		CA4FBE0F1F73047700D29405 /* CapturingDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingDateFormatter.swift; path = "Test Doubles/CapturingDateFormatter.swift"; sourceTree = "<group>"; };
-		CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateFormatterProtocol.swift; path = Messages/DateFormatterProtocol.swift; sourceTree = "<group>"; };
+		CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterProtocol.swift; sourceTree = "<group>"; };
 		CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreloadPresenterTests.swift; path = "Presenter Tests/Preload/PreloadPresenterTests.swift"; sourceTree = "<group>"; };
 		CA60B3571F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsPresenterTestsForAnonymousUser.swift; path = "Presenter Tests/News/NewsPresenterTestsForAnonymousUser.swift"; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewControllerTests.swift; path = "Presenter Tests/Login/LoginViewControllerTests.swift"; sourceTree = "<group>"; };
@@ -704,7 +704,7 @@
 		CA6AA0171FD8834D0092C6DB /* News.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
 		CA6AA0191FD885030092C6DB /* NewsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsViewControllerTests.swift; path = "Presenter Tests/News/NewsViewControllerTests.swift"; sourceTree = "<group>"; };
 		CA6AA01B1FD88D930092C6DB /* UIStoryboard+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Convenience.swift"; sourceTree = "<group>"; };
-		CA6AA01D1FD88F6B0092C6DB /* Messages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Messages.storyboard; path = Messages/View/Messages.storyboard; sourceTree = "<group>"; };
+		CA6AA01D1FD88F6B0092C6DB /* Messages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
 		CA6AA01F1FD89B2D0092C6DB /* NewsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsPresenterTests.swift; path = "Presenter Tests/News/NewsPresenterTests.swift"; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
@@ -723,7 +723,7 @@
 		CA8E7EFD1FB093D800F0BF10 /* PhoneNavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNavigationControllerFactory.swift; sourceTree = "<group>"; };
 		CA8E7F001FB0942000F0BF10 /* PhoneTabModuleFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhoneTabModuleFactoryTests.swift; path = "Presenter Tests/Tab/PhoneTabModuleFactoryTests.swift"; sourceTree = "<group>"; };
 		CA8E7F021FB094A600F0BF10 /* PhoneTabModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTabModuleFactory.swift; sourceTree = "<group>"; };
-		CA8E7F091FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhoneMessagesModuleFactory.swift; path = Messages/PhoneMessagesModuleFactory.swift; sourceTree = "<group>"; };
+		CA8E7F091FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneMessagesModuleFactory.swift; sourceTree = "<group>"; };
 		CA957B591F705A6D004DFD5A /* MessagesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesViewControllerTests.swift; path = "View Controller Tests/MessagesViewControllerTests.swift"; sourceTree = "<group>"; };
 		CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewControllerV2.swift; sourceTree = "<group>"; };
 		CA9845C11F28B16800E8821D /* MessageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
@@ -739,7 +739,7 @@
 		CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPushPermissionsRequester.swift; sourceTree = "<group>"; };
 		CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PushPermissionsRequester.swift; path = "Application/System Services/PushPermissionsRequester.swift"; sourceTree = "<group>"; };
 		CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationPushPermissionsRequester.swift; path = "Application/System Services/ApplicationPushPermissionsRequester.swift"; sourceTree = "<group>"; };
-		CABA43821FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhoneMessagesSceneFactory.swift; path = Messages/PhoneMessagesSceneFactory.swift; sourceTree = "<group>"; };
+		CABA43821FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneMessagesSceneFactory.swift; sourceTree = "<group>"; };
 		CABA43851FBC6FE1009CB5B0 /* LoginModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleProviding.swift; sourceTree = "<group>"; };
 		CABA43881FBCD94E009CB5B0 /* LoginPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginPresenterTests.swift; path = "Presenter Tests/Login/LoginPresenterTests.swift"; sourceTree = "<group>"; };
 		CABA438A1FBCDBBA009CB5B0 /* PhoneLoginModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneLoginModuleFactory.swift; sourceTree = "<group>"; };
@@ -748,7 +748,7 @@
 		CABA43921FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingLoginModuleDelegate.swift; path = "Test Doubles/CapturingLoginModuleDelegate.swift"; sourceTree = "<group>"; };
 		CABA43941FCE0A49009CB5B0 /* CapturingLoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingLoginScene.swift; path = "Test Doubles/Scenes/CapturingLoginScene.swift"; sourceTree = "<group>"; };
 		CABA43961FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StubLoginSceneFactory.swift; path = "Test Doubles/StubLoginSceneFactory.swift"; sourceTree = "<group>"; };
-		CABA439C1FD576D0009CB5B0 /* MessagesModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesModuleBuilder.swift; path = Messages/MessagesModuleBuilder.swift; sourceTree = "<group>"; };
+		CABA439C1FD576D0009CB5B0 /* MessagesModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA439E1FD578E1009CB5B0 /* NewsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA43A01FD57A78009CB5B0 /* PreloadModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModuleBuilder.swift; sourceTree = "<group>"; };
@@ -764,8 +764,8 @@
 		CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLogoutObserver.swift; path = "Test Doubles/Application/CapturingLogoutObserver.swift"; sourceTree = "<group>"; };
 		CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesPresenterTestContext.swift; path = "Presenter Tests/Messages/MessagesPresenterTestContext.swift"; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingMessagesScene.swift; path = "Test Doubles/Scenes/CapturingMessagesScene.swift"; sourceTree = "<group>"; };
-		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesScene.swift; path = Messages/MessagesScene.swift; sourceTree = "<group>"; };
-		CAD2343D1F5D7211004BB959 /* MessagesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesPresenter.swift; path = Messages/MessagesPresenter.swift; sourceTree = "<group>"; };
+		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
+		CAD2343D1F5D7211004BB959 /* MessagesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenter.swift; sourceTree = "<group>"; };
 		CAD2343F1F5D726C004BB959 /* WhenViewingMessagesWhileLoggedIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenViewingMessagesWhileLoggedIn.swift; path = "Presenter Tests/Messages/WhenViewingMessagesWhileLoggedIn.swift"; sourceTree = "<group>"; };
 		CAD234411F5F2FA8004BB959 /* AppDataBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDataBuilder.swift; path = "Test Utilities/AppDataBuilder.swift"; sourceTree = "<group>"; };
 		CAD780361F1D415A002A8333 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
@@ -1664,9 +1664,10 @@
 			children = (
 				CAD2343B1F5D7203004BB959 /* MessagesScene.swift */,
 				CABA43821FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift */,
+				CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */,
 				CA6AA01D1FD88F6B0092C6DB /* Messages.storyboard */,
 			);
-			name = View;
+			path = View;
 			sourceTree = "<group>";
 		};
 		CA6A9FF01FD5DE130092C6DB /* Presenter */ = {
@@ -1674,16 +1675,16 @@
 			children = (
 				CAD2343D1F5D7211004BB959 /* MessagesPresenter.swift */,
 			);
-			name = Presenter;
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		CA6A9FF11FD5DE1A0092C6DB /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleProviding.swift */,
 				CA8E7F091FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift */,
-				CABA439C1FD576D0009CB5B0 /* MessagesModuleBuilder.swift */,
 			);
-			name = Module;
+			path = Module;
 			sourceTree = "<group>";
 		};
 		CA6AA0111FD74F590092C6DB /* Transitions */ = {
@@ -1759,7 +1760,6 @@
 		CA957B5B1F705AC2004DFD5A /* Messages */ = {
 			isa = PBXGroup;
 			children = (
-				CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -1918,12 +1918,12 @@
 			isa = PBXGroup;
 			children = (
 				CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */,
-				CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleProviding.swift */,
+				CABA439C1FD576D0009CB5B0 /* MessagesModuleBuilder.swift */,
 				CA6A9FF11FD5DE1A0092C6DB /* Module */,
 				CA6A9FF01FD5DE130092C6DB /* Presenter */,
 				CA6A9FEF1FD5DE0E0092C6DB /* View */,
 			);
-			name = Messages;
+			path = Messages;
 			sourceTree = "<group>";
 		};
 		CAD780411F1D4C98002A8333 /* Login */ = {
