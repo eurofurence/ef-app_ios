@@ -6,17 +6,22 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-import Foundation
-
 struct PhoneRootModuleFactory: RootModuleProviding {
 
-    var firstTimeLaunchStateProviding: UserCompletedTutorialStateProviding
+    var app: EurofurenceApplicationProtocol
 
     func makeRootModule(_ delegate: RootModuleDelegate) {
-        if firstTimeLaunchStateProviding.userHasCompletedTutorial {
-            delegate.storeShouldBePreloaded()
-        } else {
-            delegate.userNeedsToWitnessTutorial()
+        app.resolveDataStoreState { (state) in
+            switch state {
+            case .absent:
+                delegate.userNeedsToWitnessTutorial()
+
+            case .stale:
+                delegate.storeShouldBePreloaded()
+
+            case .available:
+                delegate.rootModuleDidDetermineRootModuleShouldBePresented()
+            }
         }
     }
 

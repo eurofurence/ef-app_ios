@@ -83,6 +83,10 @@ class ApplicationDirector: RootModuleDelegate,
         showPreloadModule()
     }
 
+    func rootModuleDidDetermineRootModuleShouldBePresented() {
+
+    }
+
     // MARK: TutorialModuleDelegate
 
     func tutorialModuleDidFinishPresentingTutorial() {

@@ -16,5 +16,6 @@ protocol RootModuleDelegate {
 
     func userNeedsToWitnessTutorial()
     func storeShouldBePreloaded()
+    func rootModuleDidDetermineRootModuleShouldBePresented()
 
 }

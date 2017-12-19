@@ -12,6 +12,11 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
     
     var localPrivateMessages: [Message] = []
     
+    private(set) var capturedStoreStateResolutionHandler: (((EurofurenceDataStoreState) -> Void))?
+    func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
+        capturedStoreStateResolutionHandler = completionHandler
+    }
+    
     private(set) var wasRequestedForCurrentUser = false
     private(set) fileprivate var retrieveUserCompletionHandler: ((User?) -> Void)?
     func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void) {

@@ -8,19 +8,20 @@
 
 class RootModuleBuilder {
 
-    private var firstTimeLaunchStateProviding: UserCompletedTutorialStateProviding
+    private var app: EurofurenceApplicationProtocol
 
     init() {
-        firstTimeLaunchStateProviding = UserDefaultsTutorialStateProvider(userDefaults: .standard)
+        app = EurofurenceApplication.shared
     }
 
-    func with(_ firstTimeLaunchStateProviding: UserCompletedTutorialStateProviding) -> RootModuleBuilder {
-        self.firstTimeLaunchStateProviding = firstTimeLaunchStateProviding
+    @discardableResult
+    func with(_ app: EurofurenceApplicationProtocol) -> RootModuleBuilder {
+        self.app = app
         return self
     }
 
     func build() -> RootModuleProviding {
-        return PhoneRootModuleFactory(firstTimeLaunchStateProviding: firstTimeLaunchStateProviding)
+        return PhoneRootModuleFactory(app: app)
     }
 
 }

@@ -73,6 +73,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                                                                   loginAPI: loginAPI)
     }
 
+    func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
+
+    }
+
     func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {
         authenticationCoordinator.login(arguments, completionHandler: completionHandler)
     }
