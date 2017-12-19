@@ -72,3 +72,15 @@ class TutorialModuleTestBuilder {
     }
     
 }
+
+extension TutorialModuleTestBuilder.Context {
+    
+    func tapPrimaryButton() {
+        tutorial.tutorialPage.simulateTappingPrimaryActionButton()
+    }
+    
+    func tapSecondaryButton() {
+        tutorial.tutorialPage.simulateTappingSecondaryActionButton()
+    }
+    
+}
