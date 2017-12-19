@@ -450,23 +450,23 @@
 		62AD5BCA61ABA2B7A2D6087A /* Pods-Eurofurence.screenshots.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence.screenshots.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence.screenshots.xcconfig"; sourceTree = "<group>"; };
 		6EEC6DA01F1BF79F00205F2D /* FirebaseTopicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseTopicTests.swift; path = "Application Tests/Notifications/Firebase/FirebaseTopicTests.swift"; sourceTree = "<group>"; };
 		6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAppVersionProviding.swift; path = "Test Doubles/StubAppVersionProviding.swift"; sourceTree = "<group>"; };
-		6EEC6DA41F1BFC7700205F2D /* AppVersionProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppVersionProviding.swift; path = "Application/Build Config/AppVersionProviding.swift"; sourceTree = "<group>"; };
-		6EF96CC71F0EDAE800EE6134 /* CalendarStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarStore.swift; path = Calendar/CalendarStore.swift; sourceTree = "<group>"; };
-		6EF96CC91F0EDAF800EE6134 /* CalendarPermissionsProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPermissionsProviding.swift; path = Calendar/CalendarPermissionsProviding.swift; sourceTree = "<group>"; };
-		6EF96CCB1F0EDB0500EE6134 /* CalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarEvent.swift; path = Calendar/CalendarEvent.swift; sourceTree = "<group>"; };
+		6EEC6DA41F1BFC7700205F2D /* AppVersionProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVersionProviding.swift; sourceTree = "<group>"; };
+		6EF96CC71F0EDAE800EE6134 /* CalendarStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarStore.swift; sourceTree = "<group>"; };
+		6EF96CC91F0EDAF800EE6134 /* CalendarPermissionsProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPermissionsProviding.swift; sourceTree = "<group>"; };
+		6EF96CCB1F0EDB0500EE6134 /* CalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
 		6EF96CCE1F0EDB2000EE6134 /* CalendarTestDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarTestDoubles.swift; path = "Test Doubles/CalendarTestDoubles.swift"; sourceTree = "<group>"; };
-		6EF96CD01F0EDB4C00EE6134 /* CalendarService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarService.swift; path = Calendar/CalendarService.swift; sourceTree = "<group>"; };
-		6EF96CD81F0EDCB300EE6134 /* EventKitCalendarPermissionsProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventKitCalendarPermissionsProviding.swift; path = "Calendar/EventKit Adapters/EventKitCalendarPermissionsProviding.swift"; sourceTree = "<group>"; };
+		6EF96CD01F0EDB4C00EE6134 /* CalendarService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		6EF96CD81F0EDCB300EE6134 /* EventKitCalendarPermissionsProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventKitCalendarPermissionsProviding.swift; sourceTree = "<group>"; };
 		6EF96CDA1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventKitCalendarEventTests.swift; sourceTree = "<group>"; };
-		6EF96CDC1F0F544B00EE6134 /* EventKitCalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventKitCalendarEvent.swift; path = "Calendar/EventKit Adapters/EventKitCalendarEvent.swift"; sourceTree = "<group>"; };
+		6EF96CDC1F0F544B00EE6134 /* EventKitCalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventKitCalendarEvent.swift; sourceTree = "<group>"; };
 		6EF96CF01F1495F400EE6134 /* SystemNetworkReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemNetworkReachability.swift; sourceTree = "<group>"; };
-		781A942F1F1A1972002DE70F /* FirebaseAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseAdapter.swift; path = Application/Notifications/Firebase/FirebaseAdapter.swift; sourceTree = "<group>"; };
-		781A94321F1A1994002DE70F /* FCMDeviceRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FCMDeviceRegistration.swift; path = Application/Notifications/Firebase/FCMDeviceRegistration.swift; sourceTree = "<group>"; };
+		781A942F1F1A1972002DE70F /* FirebaseAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAdapter.swift; sourceTree = "<group>"; };
+		781A94321F1A1994002DE70F /* FCMDeviceRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCMDeviceRegistration.swift; sourceTree = "<group>"; };
 		781A94371F1A19BD002DE70F /* CapturingFirebaseAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingFirebaseAdapter.swift; path = "Test Doubles/Application/Notifications/Firebase/CapturingFirebaseAdapter.swift"; sourceTree = "<group>"; };
 		781A94391F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingFCMDeviceRegistration.swift; path = "Test Doubles/Application/Notifications/Firebase/CapturingFCMDeviceRegistration.swift"; sourceTree = "<group>"; };
-		781A943B1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RemoteNotificationsTokenRegistration.swift; path = Application/Notifications/RemoteNotificationsTokenRegistration.swift; sourceTree = "<group>"; };
-		781A943D1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseRemoteNotificationsTokenRegistration.swift; path = Application/Notifications/Firebase/FirebaseRemoteNotificationsTokenRegistration.swift; sourceTree = "<group>"; };
-		781A943F1F1A1A72002DE70F /* FirebaseMessagingAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseMessagingAdapter.swift; path = Application/Notifications/Firebase/FirebaseMessagingAdapter.swift; sourceTree = "<group>"; };
+		781A943B1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteNotificationsTokenRegistration.swift; sourceTree = "<group>"; };
+		781A943D1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteNotificationsTokenRegistration.swift; sourceTree = "<group>"; };
+		781A943F1F1A1A72002DE70F /* FirebaseMessagingAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseMessagingAdapter.swift; sourceTree = "<group>"; };
 		781A94411F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingRemoteNotificationsTokenRegistration.swift; path = "Test Doubles/Application/Notifications/CapturingRemoteNotificationsTokenRegistration.swift"; sourceTree = "<group>"; };
 		781A94451F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseNotificationsTokenRegistrationTests.swift; path = "Application Tests/Notifications/Firebase/FirebaseNotificationsTokenRegistrationTests.swift"; sourceTree = "<group>"; };
 		781A94471F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceFCMDeviceRegistrationTests.swift; path = "Application Tests/Notifications/Firebase/EurofurenceFCMDeviceRegistrationTests.swift"; sourceTree = "<group>"; };
@@ -477,16 +477,16 @@
 		7820A6E61F1400A8004C0FB5 /* AlertRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertRouter.swift; sourceTree = "<group>"; };
 		7820A6E81F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardAlertRouterTests.swift; sourceTree = "<group>"; };
 		7820A6EC1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingQuoteGenerator.swift; path = "Test Doubles/CapturingQuoteGenerator.swift"; sourceTree = "<group>"; };
-		7820A6EE1F14F15D004C0FB5 /* Quote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Quote.swift; path = Quotes/Quote.swift; sourceTree = "<group>"; };
-		7820A6F11F1696F1004C0FB5 /* PushPermissionsRequesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushPermissionsRequesting.swift; path = "Push Permissions/PushPermissionsRequesting.swift"; sourceTree = "<group>"; };
+		7820A6EE1F14F15D004C0FB5 /* Quote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		7820A6F11F1696F1004C0FB5 /* PushPermissionsRequesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushPermissionsRequesting.swift; sourceTree = "<group>"; };
 		7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift; sourceTree = "<group>"; };
-		7820A6F71F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationPushPermissionsRequesting.swift; path = "Push Permissions/ApplicationPushPermissionsRequesting.swift"; sourceTree = "<group>"; };
+		7820A6F71F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationPushPermissionsRequesting.swift; sourceTree = "<group>"; };
 		7820A6F91F16B8A0004C0FB5 /* Eurofurence.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Eurofurence.entitlements; path = ../Eurofurence.entitlements; sourceTree = "<group>"; };
-		7820A6FA1F16BBB2004C0FB5 /* PushPermissionsStateProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PushPermissionsStateProviding.swift; path = "Push Permissions/PushPermissionsStateProviding.swift"; sourceTree = "<group>"; };
+		7820A6FA1F16BBB2004C0FB5 /* PushPermissionsStateProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushPermissionsStateProviding.swift; sourceTree = "<group>"; };
 		7820A6FC1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AcknowledgedPushPermissionsRequestTestDoubles.swift; path = "Test Doubles/AcknowledgedPushPermissionsRequestTestDoubles.swift"; sourceTree = "<group>"; };
 		7820A6FE1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingPushPermissionsRequesting.swift; path = "Test Doubles/CapturingPushPermissionsRequesting.swift"; sourceTree = "<group>"; };
 		7820A7001F16C0F0004C0FB5 /* CapturingPushPermissionsStateProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingPushPermissionsStateProviding.swift; path = "Test Doubles/CapturingPushPermissionsStateProviding.swift"; sourceTree = "<group>"; };
-		7820A7021F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsWitnessedSystemPushPermissionsRequest.swift; path = "Push Permissions/UserDefaultsWitnessedSystemPushPermissionsRequest.swift"; sourceTree = "<group>"; };
+		7820A7021F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsWitnessedSystemPushPermissionsRequest.swift; sourceTree = "<group>"; };
 		7820A7041F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsOptedIntoPushNotificationsTests.swift; sourceTree = "<group>"; };
 		78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenTheAppLaunches.swift; path = "Presenter Tests/WhenTheAppLaunches.swift"; sourceTree = "<group>"; };
 		78455B3B1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsTutorialStateProvider.swift; sourceTree = "<group>"; };
@@ -514,9 +514,9 @@
 		78C86D6B1F123FD8003A20E6 /* PresentationTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentationTestBuilder.swift; path = "Presenter Tests/Builders/PresentationTestBuilder.swift"; sourceTree = "<group>"; };
 		78C86D6F1F12AA68003A20E6 /* Hieroglify.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hieroglify.ttf; sourceTree = "<group>"; };
 		78C86D711F12AACA003A20E6 /* WhenTheSplashScreenAppears.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenTheSplashScreenAppears.swift; path = "Presenter Tests/WhenTheSplashScreenAppears.swift"; sourceTree = "<group>"; };
-		78C86D741F12AC0F003A20E6 /* QuoteGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuoteGenerator.swift; path = Quotes/QuoteGenerator.swift; sourceTree = "<group>"; };
+		78C86D741F12AC0F003A20E6 /* QuoteGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteGenerator.swift; sourceTree = "<group>"; };
 		78C86D781F12ADF8003A20E6 /* CapturingSplashScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingSplashScene.swift; path = "Test Doubles/Scenes/CapturingSplashScene.swift"; sourceTree = "<group>"; };
-		78C86D7C1F12B8FD003A20E6 /* EgyptianQuoteGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EgyptianQuoteGenerator.swift; path = Quotes/EgyptianQuoteGenerator.swift; sourceTree = "<group>"; };
+		78C86D7C1F12B8FD003A20E6 /* EgyptianQuoteGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EgyptianQuoteGenerator.swift; sourceTree = "<group>"; };
 		78C86D801F13A0CE003A20E6 /* StubPresentationStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubPresentationStrings.swift; path = "Test Doubles/StubPresentationStrings.swift"; sourceTree = "<group>"; };
 		78C86D821F13A35F003A20E6 /* UnlocalizedPresentationStringsShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnlocalizedPresentationStringsShould.swift; sourceTree = "<group>"; };
 		78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInfoPropertyListShould.swift; sourceTree = "<group>"; };
@@ -526,16 +526,16 @@
 		78D7EEA31F17F40C005372A9 /* EurofurenceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceUITests.swift; sourceTree = "<group>"; };
 		78D7EEA51F17F40C005372A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78D7EEB41F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenRegisteredForPushNotifications.swift; path = "Application Tests/WhenRegisteredForPushNotifications.swift"; sourceTree = "<group>"; };
-		78D7EEB71F196B30005372A9 /* BuildConfigurationProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BuildConfigurationProviding.swift; path = "Application/Build Config/BuildConfigurationProviding.swift"; sourceTree = "<group>"; };
-		78D7EEBC1F196B62005372A9 /* EurofurenceApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceApplication.swift; path = Application/EurofurenceApplication.swift; sourceTree = "<group>"; };
+		78D7EEB71F196B30005372A9 /* BuildConfigurationProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildConfigurationProviding.swift; sourceTree = "<group>"; };
+		78D7EEBC1F196B62005372A9 /* EurofurenceApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurofurenceApplication.swift; sourceTree = "<group>"; };
 		78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubBuildConfigurationProviding.swift; path = "Test Doubles/StubBuildConfigurationProviding.swift"; sourceTree = "<group>"; };
 		78F555981F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceViewControllersSegue.swift; sourceTree = "<group>"; };
 		78F5559A1F10D65900BDA7D4 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		78FE77CB1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceFCMDeviceRegistration.swift; path = Application/Notifications/Firebase/EurofurenceFCMDeviceRegistration.swift; sourceTree = "<group>"; };
-		78FE77CE1F1A2E8600E9A0BE /* JSONSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONSession.swift; path = HTTP/JSONSession.swift; sourceTree = "<group>"; };
+		78FE77CB1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurofurenceFCMDeviceRegistration.swift; sourceTree = "<group>"; };
+		78FE77CE1F1A2E8600E9A0BE /* JSONSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSession.swift; sourceTree = "<group>"; };
 		78FE77D21F1A2EB000E9A0BE /* CapturingJSONSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingJSONSession.swift; path = "Test Doubles/Services/HTTP/CapturingJSONSession.swift"; sourceTree = "<group>"; };
 		78FE77D61F1B9FA500E9A0BE /* URLSessionBasedJSONSessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLSessionBasedJSONSessionTests.swift; path = "Services Tests/HTTP/URLSessionBasedJSONSessionTests.swift"; sourceTree = "<group>"; };
-		78FE77D81F1BB9E400E9A0BE /* URLSessionBasedJSONSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLSessionBasedJSONSession.swift; path = HTTP/URLSessionBasedJSONSession.swift; sourceTree = "<group>"; };
+		78FE77D81F1BB9E400E9A0BE /* URLSessionBasedJSONSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionBasedJSONSession.swift; sourceTree = "<group>"; };
 		7B35D29A24C86C9717A690E6 /* Pods-Eurofurence.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence.profiling.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence.profiling.xcconfig"; sourceTree = "<group>"; };
 		9A0525401ECA2AF500578798 /* Sync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sync.swift; sourceTree = "<group>"; };
 		9A0525421ECA2C5A00578798 /* SyncEntityDelta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncEntityDelta.swift; sourceTree = "<group>"; };
@@ -668,15 +668,15 @@
 		CA1FE9981FA0B3AE009C7DF3 /* ApplicationDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationDirector.swift; path = ../Director/ApplicationDirector.swift; sourceTree = "<group>"; };
 		CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WindowWireframe.swift; path = ../Director/WindowWireframe.swift; sourceTree = "<group>"; };
 		CA1FE99D1FA0B41E009C7DF3 /* NavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigationControllerFactory.swift; path = ../Director/NavigationControllerFactory.swift; sourceTree = "<group>"; };
-		CA281B611F1FE3F10002A4E5 /* V2LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginResponse.swift; path = Application/API/v2/V2LoginResponse.swift; sourceTree = "<group>"; };
-		CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserAuthenticationCoordinator.swift; path = Application/UserAuthenticationCoordinator.swift; sourceTree = "<group>"; };
+		CA281B611F1FE3F10002A4E5 /* V2LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2LoginResponse.swift; sourceTree = "<group>"; };
+		CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenLoggingIn.swift; path = "Application Tests/WhenLoggingIn.swift"; sourceTree = "<group>"; };
 		CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationTestBuilder.swift; path = "Application Tests/ApplicationTestBuilder.swift"; sourceTree = "<group>"; };
-		CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginArguments.swift; path = Login/LoginArguments.swift; sourceTree = "<group>"; };
+		CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginArguments.swift; sourceTree = "<group>"; };
 		CA2B4FA91F1F7F1200F007E1 /* CapturingLoginObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLoginObserver.swift; path = "Test Doubles/Application/CapturingLoginObserver.swift"; sourceTree = "<group>"; };
 		CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhenResolvingDataStoreState.swift; path = "Application Tests/WhenResolvingDataStoreState.swift"; sourceTree = "<group>"; };
-		CA2D07FA1FE902ED00BFD785 /* EurofurenceDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EurofurenceDataStore.swift; path = Application/EurofurenceDataStore.swift; sourceTree = "<group>"; };
-		CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserPreferences.swift; path = Application/UserPreferences.swift; sourceTree = "<group>"; };
+		CA2D07FA1FE902ED00BFD785 /* EurofurenceDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceDataStore.swift; sourceTree = "<group>"; };
+		CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		CA2D07FF1FE94AF900BFD785 /* WhenTheAppLaunchesWithAbsentDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhenTheAppLaunchesWithAbsentDataStore.swift; path = "Presenter Tests/Root/WhenTheAppLaunchesWithAbsentDataStore.swift"; sourceTree = "<group>"; };
 		CA2D08011FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhenTheAppLaunchesWithStaleDataStore.swift; path = "Presenter Tests/Root/WhenTheAppLaunchesWithStaleDataStore.swift"; sourceTree = "<group>"; };
 		CA2D08031FE94B9100BFD785 /* WhenTheAppLaunchesWithAvailableDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhenTheAppLaunchesWithAvailableDataStore.swift; path = "Presenter Tests/Root/WhenTheAppLaunchesWithAvailableDataStore.swift"; sourceTree = "<group>"; };
@@ -686,24 +686,24 @@
 		CA2D080F1FE9511300BFD785 /* WhenThePushNotificationPermissionsPageAppearsWithUnreachableNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhenThePushNotificationPermissionsPageAppearsWithUnreachableNetwork.swift; path = "Presenter Tests/Tutorial/WhenThePushNotificationPermissionsPageAppearsWithUnreachableNetwork.swift"; sourceTree = "<group>"; };
 		CA2D08111FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhenThePerformInitialDownloadPageAppears.swift; path = "Presenter Tests/Tutorial/WhenThePerformInitialDownloadPageAppears.swift"; sourceTree = "<group>"; };
 		CA2D08131FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift; path = "Presenter Tests/Tutorial/WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift"; sourceTree = "<group>"; };
-		CA30EAA01F2127350053DBF6 /* APILoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APILoginResponse.swift; path = Application/API/Protocols/APILoginResponse.swift; sourceTree = "<group>"; };
-		CA30EAA21F2129700053DBF6 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginAPI.swift; path = Application/API/Protocols/LoginAPI.swift; sourceTree = "<group>"; };
+		CA30EAA01F2127350053DBF6 /* APILoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APILoginResponse.swift; sourceTree = "<group>"; };
+		CA30EAA21F2129700053DBF6 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLoginAPI.swift; path = "Test Doubles/Application/API/CapturingLoginAPI.swift"; sourceTree = "<group>"; };
 		CA30EAA71F2132480053DBF6 /* StubLoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubLoginResponse.swift; path = "Test Doubles/Application/API/StubLoginResponse.swift"; sourceTree = "<group>"; };
-		CA30EAAD1F2148780053DBF6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Application/Model/User.swift; sourceTree = "<group>"; };
+		CA30EAAD1F2148780053DBF6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CA30EAAF1F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnreadMessagesTableViewCell.swift; sourceTree = "<group>"; };
-		CA30EAB11F215E680053DBF6 /* LoginTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginTask.swift; path = Application/LoginTask.swift; sourceTree = "<group>"; };
-		CA30EAB31F2161F10053DBF6 /* CredentialPersister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CredentialPersister.swift; path = Application/CredentialPersister.swift; sourceTree = "<group>"; };
+		CA30EAB11F215E680053DBF6 /* LoginTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTask.swift; sourceTree = "<group>"; };
+		CA30EAB31F2161F10053DBF6 /* CredentialPersister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialPersister.swift; sourceTree = "<group>"; };
 		CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenRequestingPrivateMessages.swift; path = "Application Tests/WhenRequestingPrivateMessages.swift"; sourceTree = "<group>"; };
 		CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingPrivateMessagesObserver.swift; path = "Test Doubles/Application/CapturingPrivateMessagesObserver.swift"; sourceTree = "<group>"; };
 		CA30EABB1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingPrivateMessagesAPI.swift; path = "Test Doubles/Application/API/CapturingPrivateMessagesAPI.swift"; sourceTree = "<group>"; };
-		CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateMessagesAPI.swift; path = Application/API/Protocols/PrivateMessagesAPI.swift; sourceTree = "<group>"; };
-		CA30EAC11F266D9B0053DBF6 /* APIPrivateMessagesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIPrivateMessagesResponse.swift; path = Application/API/Protocols/APIPrivateMessagesResponse.swift; sourceTree = "<group>"; };
-		CA30EAC31F2672BF0053DBF6 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Application/Model/Message.swift; sourceTree = "<group>"; };
+		CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessagesAPI.swift; sourceTree = "<group>"; };
+		CA30EAC11F266D9B0053DBF6 /* APIPrivateMessagesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIPrivateMessagesResponse.swift; sourceTree = "<group>"; };
+		CA30EAC31F2672BF0053DBF6 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		CA30EAC51F2673010053DBF6 /* StubAPIPrivateMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubAPIPrivateMessage.swift; path = "Test Doubles/Application/API/StubAPIPrivateMessage.swift"; sourceTree = "<group>"; };
 		CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2PrivateMessagesAPITests.swift; path = "Application Tests/API/v2/V2PrivateMessagesAPITests.swift"; sourceTree = "<group>"; };
-		CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2PrivateMessagesAPI.swift; path = Application/API/v2/V2PrivateMessagesAPI.swift; sourceTree = "<group>"; };
-		CA30EACD1F27D1430053DBF6 /* V2APIPrivateMessagesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2APIPrivateMessagesResponse.swift; path = Application/API/v2/V2APIPrivateMessagesResponse.swift; sourceTree = "<group>"; };
+		CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2PrivateMessagesAPI.swift; sourceTree = "<group>"; };
+		CA30EACD1F27D1430053DBF6 /* V2APIPrivateMessagesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2APIPrivateMessagesResponse.swift; sourceTree = "<group>"; };
 		CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		CA321F4D1F7BC7FD0050E489 /* PhonePreloadSceneFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhonePreloadSceneFactoryTests.swift; path = "Presenter Tests/Preload/PhonePreloadSceneFactoryTests.swift"; sourceTree = "<group>"; };
 		CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadSceneFactory.swift; sourceTree = "<group>"; };
@@ -731,12 +731,12 @@
 		CA6AA01D1FD88F6B0092C6DB /* Messages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
 		CA6AA01F1FD89B2D0092C6DB /* NewsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsPresenterTests.swift; path = "Presenter Tests/News/NewsPresenterTests.swift"; sourceTree = "<group>"; };
 		CA7EB7D41F799991002674A6 /* TutorialScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
-		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPI.swift; path = Application/API/v2/V2LoginAPI.swift; sourceTree = "<group>"; };
-		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/Protocols/APIResponse.swift; sourceTree = "<group>"; };
+		CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2LoginAPI.swift; sourceTree = "<group>"; };
+		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPITests.swift; path = "Application Tests/API/v2/V2LoginAPITests.swift"; sourceTree = "<group>"; };
 		CA81D48D1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingTutorialModuleDelegate.swift; path = "Test Doubles/CapturingTutorialModuleDelegate.swift"; sourceTree = "<group>"; };
 		CA81D48F1FE9A91000A52A2F /* WhenTheTutorialAppears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhenTheTutorialAppears.swift; path = "Presenter Tests/Tutorial/WhenTheTutorialAppears.swift"; sourceTree = "<group>"; };
-		CA8E17EC1F817A70003C348C /* PreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreloadService.swift; path = Interactors/Preload/PreloadService.swift; sourceTree = "<group>"; };
+		CA8E17EC1F817A70003C348C /* PreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadService.swift; sourceTree = "<group>"; };
 		CA8E17EE1F817A8C003C348C /* CapturingPreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingPreloadService.swift; path = "Test Doubles/CapturingPreloadService.swift"; sourceTree = "<group>"; };
 		CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingPreloadModuleDelegate.swift; path = "Test Doubles/CapturingPreloadModuleDelegate.swift"; sourceTree = "<group>"; };
 		CA8E17F21F817AD0003C348C /* PreloadModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadModule.swift; sourceTree = "<group>"; };
@@ -763,8 +763,8 @@
 		CAB1380E1FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleCollectionViewCell.swift; sourceTree = "<group>"; };
 		CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPushPermissionsRequester.swift; sourceTree = "<group>"; };
-		CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PushPermissionsRequester.swift; path = "Application/System Services/PushPermissionsRequester.swift"; sourceTree = "<group>"; };
-		CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationPushPermissionsRequester.swift; path = "Application/System Services/ApplicationPushPermissionsRequester.swift"; sourceTree = "<group>"; };
+		CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushPermissionsRequester.swift; sourceTree = "<group>"; };
+		CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPushPermissionsRequester.swift; sourceTree = "<group>"; };
 		CABA43821FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneMessagesSceneFactory.swift; sourceTree = "<group>"; };
 		CABA43851FBC6FE1009CB5B0 /* LoginModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModuleProviding.swift; sourceTree = "<group>"; };
 		CABA43881FBCD94E009CB5B0 /* LoginPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginPresenterTests.swift; path = "Presenter Tests/Login/LoginPresenterTests.swift"; sourceTree = "<group>"; };
@@ -797,23 +797,23 @@
 		CAD780361F1D415A002A8333 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CAD780381F1D41C4002A8333 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenLoginStateChanges.swift; path = "Application Tests/WhenLoginStateChanges.swift"; sourceTree = "<group>"; };
-		CAD780421F1D4CA3002A8333 /* LoginCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginCredential.swift; path = Login/LoginCredential.swift; sourceTree = "<group>"; };
+		CAD780421F1D4CA3002A8333 /* LoginCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCredential.swift; sourceTree = "<group>"; };
 		CAD780481F1D51EB002A8333 /* StubClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubClock.swift; path = "Test Doubles/Services/Clock/StubClock.swift"; sourceTree = "<group>"; };
-		CAD7804B1F1D5212002A8333 /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clock.swift; path = Clock/Clock.swift; sourceTree = "<group>"; };
-		CAD7804D1F1D5227002A8333 /* SystemClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SystemClock.swift; path = Clock/SystemClock.swift; sourceTree = "<group>"; };
-		CAD7804F1F1E2D13002A8333 /* LoginCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginCredentialStore.swift; path = Login/LoginCredentialStore.swift; sourceTree = "<group>"; };
+		CAD7804B1F1D5212002A8333 /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
+		CAD7804D1F1D5227002A8333 /* SystemClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemClock.swift; sourceTree = "<group>"; };
+		CAD7804F1F1E2D13002A8333 /* LoginCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCredentialStore.swift; sourceTree = "<group>"; };
 		CAD780511F1E2D2E002A8333 /* CapturingLoginCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLoginCredentialStore.swift; path = "Test Doubles/Services/Login/CapturingLoginCredentialStore.swift"; sourceTree = "<group>"; };
-		CAD780591F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainLoginCredentialStore.swift; path = Login/KeychainLoginCredentialStore.swift; sourceTree = "<group>"; };
+		CAD780591F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainLoginCredentialStore.swift; sourceTree = "<group>"; };
 		CAD7805C1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainLoginCredentialStoreTests.swift; path = "Services Tests/Login/KeychainLoginCredentialStoreTests.swift"; sourceTree = "<group>"; };
 		CAE27B4B1F855E0E005FDE39 /* TabModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModuleProviding.swift; sourceTree = "<group>"; };
 		CAE27B4D1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTutorialModuleFactory.swift; sourceTree = "<group>"; };
 		CAE27B4F1F857A99005FDE39 /* PhonePreloadModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePreloadModuleFactory.swift; sourceTree = "<group>"; };
-		CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthenticationService.swift; path = Interactors/Authentication/AuthenticationService.swift; sourceTree = "<group>"; };
+		CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		CAEAEBE81FDC966800C0EE7C /* CapturingAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingAuthenticationService.swift; path = "Test Doubles/CapturingAuthenticationService.swift"; sourceTree = "<group>"; };
-		CAEAEBEA1FDC984D00C0EE7C /* AuthenticationStateObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthenticationStateObserver.swift; path = Interactors/Authentication/AuthenticationStateObserver.swift; sourceTree = "<group>"; };
-		CAEAEBEC1FDC985C00C0EE7C /* AuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthState.swift; path = Interactors/Authentication/AuthState.swift; sourceTree = "<group>"; };
-		CAEAEBEE1FDC989300C0EE7C /* LoginServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginServiceRequest.swift; path = Interactors/Authentication/LoginServiceRequest.swift; sourceTree = "<group>"; };
-		CAEAEBF01FDC9D1600C0EE7C /* ApplicationAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationAuthenticationService.swift; path = Interactors/Authentication/ApplicationAuthenticationService.swift; sourceTree = "<group>"; };
+		CAEAEBEA1FDC984D00C0EE7C /* AuthenticationStateObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationStateObserver.swift; sourceTree = "<group>"; };
+		CAEAEBEC1FDC985C00C0EE7C /* AuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthState.swift; sourceTree = "<group>"; };
+		CAEAEBEE1FDC989300C0EE7C /* LoginServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceRequest.swift; sourceTree = "<group>"; };
+		CAEAEBF01FDC9D1600C0EE7C /* ApplicationAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationAuthenticationService.swift; sourceTree = "<group>"; };
 		CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailModuleProviding.swift; sourceTree = "<group>"; };
 		CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailModuleBuilder.swift; sourceTree = "<group>"; };
 		CAEAEBF91FE0037700C0EE7C /* MessageDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessageDetailPresenterTests.swift; path = "Presenter Tests/Message Detail/MessageDetailPresenterTests.swift"; sourceTree = "<group>"; };
@@ -831,20 +831,20 @@
 		CAF3C74B1F9F619C0008F027 /* PhoneNewsModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNewsModuleFactory.swift; sourceTree = "<group>"; };
 		CAF3C74D1F9FC72C0008F027 /* StubNewsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StubNewsSceneFactory.swift; path = "Test Doubles/StubNewsSceneFactory.swift"; sourceTree = "<group>"; };
 		CAF3C74F1F9FC74C0008F027 /* NewsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSceneFactory.swift; sourceTree = "<group>"; };
-		CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LegacyPreloadService.swift; path = Interactors/Preload/LegacyPreloadService.swift; sourceTree = "<group>"; };
+		CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyPreloadService.swift; sourceTree = "<group>"; };
 		CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationDirectorTests.swift; path = "Presenter Tests/Director/ApplicationDirectorTests.swift"; sourceTree = "<group>"; };
 		CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleProviding.swift; sourceTree = "<group>"; };
 		CAF705671F82D13F00A9FEA2 /* TutorialModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModuleProviding.swift; sourceTree = "<group>"; };
 		CAF705691F82D15D00A9FEA2 /* PreloadModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadModuleProviding.swift; sourceTree = "<group>"; };
 		CAF9A93E1F50491200628833 /* EurofurenceAuthServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceAuthServiceTests.swift; path = "Presenter Tests/Interactor Tests/EurofurenceAuthServiceTests.swift"; sourceTree = "<group>"; };
-		CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurenceApplicationProtocol.swift; path = Application/EurofurenceApplicationProtocol.swift; sourceTree = "<group>"; };
+		CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurofurenceApplicationProtocol.swift; sourceTree = "<group>"; };
 		CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingEurofurenceApplication.swift; path = "Test Doubles/Application/CapturingEurofurenceApplication.swift"; sourceTree = "<group>"; };
 		CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenRequestingCurrentUser.swift; path = "Application Tests/WhenRequestingCurrentUser.swift"; sourceTree = "<group>"; };
-		CAF9A9491F54BB5600628833 /* PrivateMessagesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateMessagesService.swift; path = "Interactors/Private Messages/PrivateMessagesService.swift"; sourceTree = "<group>"; };
+		CAF9A9491F54BB5600628833 /* PrivateMessagesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessagesService.swift; sourceTree = "<group>"; };
 		CAF9A94B1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurencePrivateMessagesServiceTests.swift; path = "Presenter Tests/Interactor Tests/EurofurencePrivateMessagesServiceTests.swift"; sourceTree = "<group>"; };
 		CAF9A94D1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenRetrievingLocalPrivateMessages.swift; path = "Application Tests/WhenRetrievingLocalPrivateMessages.swift"; sourceTree = "<group>"; };
 		CAF9A9501F558E7800628833 /* RandomGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RandomGenerator.swift; path = "Test Utilities/RandomGenerator.swift"; sourceTree = "<group>"; };
-		CAF9A9521F55F3B300628833 /* EurofurencePrivateMessagesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EurofurencePrivateMessagesService.swift; path = "Interactors/Private Messages/EurofurencePrivateMessagesService.swift"; sourceTree = "<group>"; };
+		CAF9A9521F55F3B300628833 /* EurofurencePrivateMessagesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurofurencePrivateMessagesService.swift; sourceTree = "<group>"; };
 		CAF9A9541F55F9DB00628833 /* LoginPromptTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPromptTableViewCell.swift; sourceTree = "<group>"; };
 		CAF9A9571F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenViewingMessagesWhileLoggedOut.swift; path = "Presenter Tests/Messages/WhenViewingMessagesWhileLoggedOut.swift"; sourceTree = "<group>"; };
 		D6F3D0A32DC83843688B347C /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -952,7 +952,7 @@
 				6EF96CCB1F0EDB0500EE6134 /* CalendarEvent.swift */,
 				6EF96CD01F0EDB4C00EE6134 /* CalendarService.swift */,
 			);
-			name = Calendar;
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		6EF96CCD1F0EDB1300EE6134 /* Test Doubles */ = {
@@ -998,7 +998,7 @@
 				6EF96CD81F0EDCB300EE6134 /* EventKitCalendarPermissionsProviding.swift */,
 				6EF96CDC1F0F544B00EE6134 /* EventKitCalendarEvent.swift */,
 			);
-			name = "EventKit Adapters";
+			path = "EventKit Adapters";
 			sourceTree = "<group>";
 		};
 		6EF96CE01F12688700EE6134 /* Modules */ = {
@@ -1052,7 +1052,7 @@
 				781A943F1F1A1A72002DE70F /* FirebaseMessagingAdapter.swift */,
 				78FE77CB1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift */,
 			);
-			name = Firebase;
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		781A94341F1A19A2002DE70F /* Application */ = {
@@ -1112,7 +1112,7 @@
 				7820A6FA1F16BBB2004C0FB5 /* PushPermissionsStateProviding.swift */,
 				7820A7021F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift */,
 			);
-			name = "Push Permissions";
+			path = "Push Permissions";
 			sourceTree = "<group>";
 		};
 		7820A70A1F179487004C0FB5 /* Actions */ = {
@@ -1159,9 +1159,6 @@
 				9A861EBA1F25551400B75A8C /* PresentationAssets.swift */,
 				9A861EB91F25551400B75A8C /* PresentationStrings.swift */,
 				9A861EB81F25551400B75A8C /* PresentationTier.swift */,
-				CA1FE99C1FA0B3F2009C7DF3 /* Director */,
-				CAF9A93B1F50484A00628833 /* Interactors */,
-				6EF96CE01F12688700EE6134 /* Modules */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -1239,7 +1236,7 @@
 				78C86D741F12AC0F003A20E6 /* QuoteGenerator.swift */,
 				78C86D7C1F12B8FD003A20E6 /* EgyptianQuoteGenerator.swift */,
 			);
-			name = Quotes;
+			path = Quotes;
 			sourceTree = "<group>";
 		};
 		78D7EEA21F17F40C005372A9 /* EurofurenceUITests */ = {
@@ -1286,7 +1283,7 @@
 				78D7EEB91F196B40005372A9 /* Notifications */,
 				CAB3A72B1F7532DF005DF77B /* System Services */,
 			);
-			name = Application;
+			path = Application;
 			sourceTree = "<group>";
 		};
 		78D7EEB91F196B40005372A9 /* Notifications */ = {
@@ -1295,7 +1292,7 @@
 				781A94311F1A1981002DE70F /* Firebase */,
 				781A943B1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift */,
 			);
-			name = Notifications;
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		78D7EEC21F196BC3005372A9 /* Build Config */ = {
@@ -1304,7 +1301,7 @@
 				78D7EEB71F196B30005372A9 /* BuildConfigurationProviding.swift */,
 				6EEC6DA41F1BFC7700205F2D /* AppVersionProviding.swift */,
 			);
-			name = "Build Config";
+			path = "Build Config";
 			sourceTree = "<group>";
 		};
 		78F555971F10D59000BDA7D4 /* Segues */ = {
@@ -1321,7 +1318,7 @@
 				78FE77CE1F1A2E8600E9A0BE /* JSONSession.swift */,
 				78FE77D81F1BB9E400E9A0BE /* URLSessionBasedJSONSession.swift */,
 			);
-			name = HTTP;
+			path = HTTP;
 			sourceTree = "<group>";
 		};
 		78FE77D01F1A2E9500E9A0BE /* Services */ = {
@@ -1448,7 +1445,10 @@
 				9ACF99571EBE32ED006FC958 /* DataModel */,
 				9ACF99771EBE4B98006FC958 /* DataStore */,
 				9A34B97B1ED066B7004A249E /* DependencyResolution */,
+				CA1FE99C1FA0B3F2009C7DF3 /* Director */,
 				D6F3D4066A20EACF140E773F /* Helpers */,
+				CAF9A93B1F50484A00628833 /* Interactors */,
+				6EF96CE01F12688700EE6134 /* Modules */,
 				9ACF999B1ECA259C006FC958 /* Resources */,
 				D6F3D0327856D0D0294EF5E6 /* Services */,
 				9ACF99581EBE32F3006FC958 /* ViewModel */,
@@ -1629,7 +1629,7 @@
 				CA30EAAD1F2148780053DBF6 /* User.swift */,
 				CA30EAC31F2672BF0053DBF6 /* Message.swift */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CA18B3471F49FE9800038E52 /* Protocols */ = {
@@ -1641,7 +1641,7 @@
 				CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */,
 				CA30EAC11F266D9B0053DBF6 /* APIPrivateMessagesResponse.swift */,
 			);
-			name = Protocols;
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		CA1FE99C1FA0B3F2009C7DF3 /* Director */ = {
@@ -1764,7 +1764,7 @@
 				CA18B3471F49FE9800038E52 /* Protocols */,
 				CA804DD01F20CE6600E07A4A /* v2 */,
 			);
-			name = API;
+			path = API;
 			sourceTree = "<group>";
 		};
 		CA804DD01F20CE6600E07A4A /* v2 */ = {
@@ -1775,7 +1775,7 @@
 				CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */,
 				CA30EACD1F27D1430053DBF6 /* V2APIPrivateMessagesResponse.swift */,
 			);
-			name = v2;
+			path = v2;
 			sourceTree = "<group>";
 		};
 		CA804DD71F20D2E000E07A4A /* API */ = {
@@ -1801,7 +1801,7 @@
 				CA8E17EC1F817A70003C348C /* PreloadService.swift */,
 				CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */,
 			);
-			name = Preload;
+			path = Preload;
 			sourceTree = "<group>";
 		};
 		CA8E7EFF1FB0940600F0BF10 /* Tab */ = {
@@ -1835,7 +1835,7 @@
 				CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */,
 				CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */,
 			);
-			name = "System Services";
+			path = "System Services";
 			sourceTree = "<group>";
 		};
 		CABA43841FBC6FD3009CB5B0 /* Login */ = {
@@ -1989,7 +1989,7 @@
 				CAD780591F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift */,
 				CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */,
 			);
-			name = Login;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		CAD780441F1D4DF7002A8333 /* Login */ = {
@@ -2014,7 +2014,7 @@
 				CAD7804B1F1D5212002A8333 /* Clock.swift */,
 				CAD7804D1F1D5227002A8333 /* SystemClock.swift */,
 			);
-			name = Clock;
+			path = Clock;
 			sourceTree = "<group>";
 		};
 		CAD7805B1F1E8EA2002A8333 /* Login */ = {
@@ -2043,7 +2043,7 @@
 				CAEAEBEC1FDC985C00C0EE7C /* AuthState.swift */,
 				CAEAEBEE1FDC989300C0EE7C /* LoginServiceRequest.swift */,
 			);
-			name = Authentication;
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		CAEAEBF21FDEB53800C0EE7C /* Message Detail */ = {
@@ -2125,7 +2125,7 @@
 				CA8E17EB1F817A5F003C348C /* Preload */,
 				CAF9A9481F54BB4100628833 /* Private Messages */,
 			);
-			name = Interactors;
+			path = Interactors;
 			sourceTree = "<group>";
 		};
 		CAF9A93D1F5048FB00628833 /* Interactor Tests */ = {
@@ -2143,7 +2143,7 @@
 				CAF9A9491F54BB5600628833 /* PrivateMessagesService.swift */,
 				CAF9A9521F55F3B300628833 /* EurofurencePrivateMessagesService.swift */,
 			);
-			name = "Private Messages";
+			path = "Private Messages";
 			sourceTree = "<group>";
 		};
 		CAF9A94F1F558E6200628833 /* Test Utilities */ = {
