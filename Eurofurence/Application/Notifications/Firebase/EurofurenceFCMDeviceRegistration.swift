@@ -25,7 +25,7 @@ struct EurofurenceFCMDeviceRegistration: FCMDeviceRegistration {
         let jsonData = try! JSONSerialization.data(withJSONObject: jsonDictionary, options: [])
 
         let loginURL = "https://app.eurofurence.org/api/v2/PushNotifications/FcmDeviceRegistration"
-        var request = Request(url: loginURL, body: jsonData)
+        var request = JSONRequest(url: loginURL, body: jsonData)
 
         if let token = authenticationToken {
             request.headers = ["Authorization": "Bearer \(token)"]

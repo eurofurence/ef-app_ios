@@ -12,15 +12,15 @@ struct URLSessionBasedJSONSession: JSONSession {
 
     var session: URLSession = .shared
 
-    func get(_ request: Request, completionHandler: @escaping (Data?, Error?) -> Void) {
+    func get(_ request: JSONRequest, completionHandler: @escaping (Data?, Error?) -> Void) {
         perform(request, method: "GET", completionHandler: completionHandler)
     }
 
-    func post(_ request: Request, completionHandler: @escaping (Data?, Error?) -> Void) {
+    func post(_ request: JSONRequest, completionHandler: @escaping (Data?, Error?) -> Void) {
         perform(request, method: "POST", completionHandler: completionHandler)
     }
 
-    private func perform(_ request: Request, method: String, completionHandler: @escaping (Data?, Error?) -> Void) {
+    private func perform(_ request: JSONRequest, method: String, completionHandler: @escaping (Data?, Error?) -> Void) {
         guard let actualURL = URL(string: request.url) else { return }
 
         var urlRequest = URLRequest(url: actualURL)

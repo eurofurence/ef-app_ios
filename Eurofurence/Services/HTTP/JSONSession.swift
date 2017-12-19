@@ -10,12 +10,12 @@ import Foundation
 
 protocol JSONSession {
 
-    func get(_ request: Request, completionHandler: @escaping (Data?, Error?) -> Void)
-    func post(_ request: Request, completionHandler: @escaping (Data?, Error?) -> Void)
+    func get(_ request: JSONRequest, completionHandler: @escaping (Data?, Error?) -> Void)
+    func post(_ request: JSONRequest, completionHandler: @escaping (Data?, Error?) -> Void)
 
 }
 
-struct Request {
+struct JSONRequest {
 
     var url: String
     var body: Data

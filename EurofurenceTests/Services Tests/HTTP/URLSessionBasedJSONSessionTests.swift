@@ -138,7 +138,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
                       headers: [String : String] = [:],
                       completionHandler: ((Data?, Error?) -> Void)? = nil) {
         let poster = URLSessionBasedJSONSession()
-        let request = Request(url: url, body: body, headers: headers)
+        let request = JSONRequest(url: url, body: body, headers: headers)
         poster.post(request, completionHandler: { completionHandler?($0, $1) })
     }
     
@@ -147,7 +147,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
                      headers: [String : String] = [:],
                      completionHandler: ((Data?, Error?) -> Void)? = nil) {
         let session = URLSessionBasedJSONSession()
-        let request = Request(url: url, body: body, headers: headers)
+        let request = JSONRequest(url: url, body: body, headers: headers)
         session.get(request, completionHandler: { completionHandler?($0, $1) })
     }
     

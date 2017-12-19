@@ -14,7 +14,7 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
 
     func loadPrivateMessages(authorizationToken: String,
                              completionHandler: @escaping (APIResponse<APIPrivateMessagesResponse>) -> Void) {
-        var request = Request(url: "https://app.eurofurence.org/api/v2/Communication/PrivateMessages", body: Data())
+        var request = JSONRequest(url: "https://app.eurofurence.org/api/v2/Communication/PrivateMessages", body: Data())
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
         JSONSession.get(request) { data, _ in
             guard let data = data,
@@ -30,7 +30,7 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
     }
 
     func markMessageWithIdentifierAsRead(_ identifier: String, authorizationToken: String) {
-        var request = Request(url: "https://app.eurofurence.org/api/v2/Communication/PrivateMessages/\(identifier)/Read",
+        var request = JSONRequest(url: "https://app.eurofurence.org/api/v2/Communication/PrivateMessages/\(identifier)/Read",
                               body: Data())
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
         JSONSession.post(request, completionHandler: { _ in })
