@@ -230,6 +230,7 @@
 		CA2D08021FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08011FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleDataStore.swift */; };
 		CA2D08041FE94B9100BFD785 /* WhenTheAppLaunchesWithAvailableDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08031FE94B9100BFD785 /* WhenTheAppLaunchesWithAvailableDataStore.swift */; };
 		CA2D08061FE94BF000BFD785 /* RootModuleTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08051FE94BF000BFD785 /* RootModuleTestBuilder.swift */; };
+		CA2D080C1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D080B1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift */; };
 		CA30EAA11F2127350053DBF6 /* APILoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA01F2127350053DBF6 /* APILoginResponse.swift */; };
 		CA30EAA31F2129700053DBF6 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA21F2129700053DBF6 /* LoginAPI.swift */; };
 		CA30EAA61F2129C60053DBF6 /* CapturingLoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */; };
@@ -676,6 +677,7 @@
 		CA2D08011FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhenTheAppLaunchesWithStaleDataStore.swift; path = "Presenter Tests/Root/WhenTheAppLaunchesWithStaleDataStore.swift"; sourceTree = "<group>"; };
 		CA2D08031FE94B9100BFD785 /* WhenTheAppLaunchesWithAvailableDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhenTheAppLaunchesWithAvailableDataStore.swift; path = "Presenter Tests/Root/WhenTheAppLaunchesWithAvailableDataStore.swift"; sourceTree = "<group>"; };
 		CA2D08051FE94BF000BFD785 /* RootModuleTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RootModuleTestBuilder.swift; path = "Presenter Tests/Root/RootModuleTestBuilder.swift"; sourceTree = "<group>"; };
+		CA2D080B1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TutorialModuleTestBuilder.swift; path = "Presenter Tests/Tutorial/TutorialModuleTestBuilder.swift"; sourceTree = "<group>"; };
 		CA30EAA01F2127350053DBF6 /* APILoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APILoginResponse.swift; path = Application/API/Protocols/APILoginResponse.swift; sourceTree = "<group>"; };
 		CA30EAA21F2129700053DBF6 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginAPI.swift; path = Application/API/Protocols/LoginAPI.swift; sourceTree = "<group>"; };
 		CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLoginAPI.swift; path = "Test Doubles/Application/API/CapturingLoginAPI.swift"; sourceTree = "<group>"; };
@@ -1194,6 +1196,7 @@
 				CA5BF9D31F7AEE070045DBC0 /* Preload */,
 				CA2D07FE1FE94AD200BFD785 /* Root */,
 				CA8E7EFF1FB0940600F0BF10 /* Tab */,
+				CA2D080A1FE94F8800BFD785 /* Tutorial */,
 			);
 			name = "Module Tests";
 			sourceTree = "<group>";
@@ -1653,6 +1656,14 @@
 				CA2D08031FE94B9100BFD785 /* WhenTheAppLaunchesWithAvailableDataStore.swift */,
 			);
 			name = Root;
+			sourceTree = "<group>";
+		};
+		CA2D080A1FE94F8800BFD785 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				CA2D080B1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift */,
+			);
+			name = Tutorial;
 			sourceTree = "<group>";
 		};
 		CA30EAA41F2129B70053DBF6 /* API */ = {
@@ -2970,6 +2981,7 @@
 				CAC1E1391F50431000195513 /* NewsPresenterTestContext.swift in Sources */,
 				78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */,
 				CAF9A94C1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift in Sources */,
+				CA2D080C1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift in Sources */,
 				7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */,
 				78FE77D71F1B9FA500E9A0BE /* URLSessionBasedJSONSessionTests.swift in Sources */,
 				7820A6ED1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift in Sources */,

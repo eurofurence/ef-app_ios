@@ -29,57 +29,16 @@ class CapturingTutorialModuleDelegate: TutorialModuleDelegate {
 
 class WhenTheTutorialAppears: XCTestCase {
 
-    struct TutorialTestContext {
-        var tutorialViewController: UIViewController
-        var tutorialSceneFactory: StubTutorialSceneFactory
-        var delegate: CapturingTutorialModuleDelegate
-        var tutorial: CapturingTutorialScene
-        var page: CapturingTutorialPageScene
-        var strings: PresentationStrings
-        var assets: PresentationAssets
-        var alertRouter: CapturingAlertRouter
-        var tutorialStateProviding: StubFirstTimeLaunchStateProvider
-        var pushRequesting: CapturingPushPermissionsRequesting
-    }
-
     private func showTutorial(_ networkReachability: NetworkReachability = ReachableWiFiNetwork(),
-                              _ pushPermissionsRequestStateProviding: WitnessedTutorialPushPermissionsRequest = UserNotAcknowledgedPushPermissions()) -> TutorialTestContext {
-        let alertRouter = CapturingAlertRouter()
-        let stateProviding = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
-        let pushRequesting = CapturingPushPermissionsRequesting()
-        let presentationStrings = StubPresentationStrings()
-        let presentationAssets = StubPresentationAssets()
-        let tutorialSceneFactory = StubTutorialSceneFactory()
-        let delegate = CapturingTutorialModuleDelegate()
-        let vc = TutorialModuleBuilder()
-            .with(tutorialSceneFactory)
-            .with(presentationStrings)
-            .with(presentationAssets)
-            .with(alertRouter)
-            .with(stateProviding)
-            .with(networkReachability)
-            .with(pushRequesting)
-            .with(pushPermissionsRequestStateProviding)
-            .build()
-            .makeTutorialModule(delegate)
-
-        return TutorialTestContext(tutorialViewController: vc,
-                                   tutorialSceneFactory: tutorialSceneFactory,
-                                   delegate: delegate,
-                                   tutorial: tutorialSceneFactory.tutorialScene,
-                                   page: tutorialSceneFactory.tutorialScene.tutorialPage,
-                                   strings: presentationStrings,
-                                   assets: presentationAssets,
-                                   alertRouter: alertRouter,
-                                   tutorialStateProviding: stateProviding,
-                                   pushRequesting: pushRequesting)
+                              _ pushPermissionsRequestStateProviding: WitnessedTutorialPushPermissionsRequest = UserNotAcknowledgedPushPermissions()) -> TutorialModuleTestBuilder.Context {
+        return TutorialModuleTestBuilder().with(networkReachability).with(pushPermissionsRequestStateProviding).build()
     }
     
-    private func showRequestPushPermissionsTutorialPage() -> TutorialTestContext {
+    private func showRequestPushPermissionsTutorialPage() -> TutorialModuleTestBuilder.Context {
         return showTutorial(ReachableWiFiNetwork(), UserNotAcknowledgedPushPermissions())
     }
     
-    private func showBeginInitialDownloadTutorialPage(_ networkReachability: NetworkReachability = ReachableWiFiNetwork()) -> TutorialTestContext {
+    private func showBeginInitialDownloadTutorialPage(_ networkReachability: NetworkReachability = ReachableWiFiNetwork()) -> TutorialModuleTestBuilder.Context {
         let setup = showTutorial(networkReachability, UserNotAcknowledgedPushPermissions())
         setup.tutorial.tutorialPage.simulateTappingSecondaryActionButton()
         return setup
