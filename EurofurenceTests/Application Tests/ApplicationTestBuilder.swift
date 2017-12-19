@@ -45,6 +45,7 @@ class ApplicationTestBuilder {
     private let privateMessagesAPI = CapturingPrivateMessagesAPI()
     private var pushPermissionsRequester: PushPermissionsRequester = CapturingPushPermissionsRequester()
     private var pushPermissionsStateProviding: PushPermissionsStateProviding = CapturingPushPermissionsStateProviding()
+    private var dataStore: EurofurenceDataStore = CapturingEurofurenceDataStore()
     
     func with(_ currentDate: Date) -> ApplicationTestBuilder {
         stubClock = StubClock(currentDate: currentDate)
@@ -63,6 +64,12 @@ class ApplicationTestBuilder {
     
     func with(_ pushPermissionsStateProviding: PushPermissionsStateProviding) -> ApplicationTestBuilder {
         self.pushPermissionsStateProviding = pushPermissionsStateProviding
+        return self
+    }
+    
+    @discardableResult
+    func with(_ dataStore: EurofurenceDataStore) -> ApplicationTestBuilder {
+        self.dataStore = dataStore
         return self
     }
     

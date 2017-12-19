@@ -223,6 +223,8 @@
 		CA2B4FA61F1EA1B300F007E1 /* ApplicationTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */; };
 		CA2B4FA81F1EA72A00F007E1 /* LoginArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */; };
 		CA2B4FAA1F1F7F1200F007E1 /* CapturingLoginObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA91F1F7F1200F007E1 /* CapturingLoginObserver.swift */; };
+		CA2D07F91FE9021A00BFD785 /* WhenResolvingDataStoreState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */; };
+		CA2D07FB1FE902ED00BFD785 /* EurofurenceDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07FA1FE902ED00BFD785 /* EurofurenceDataStore.swift */; };
 		CA30EAA11F2127350053DBF6 /* APILoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA01F2127350053DBF6 /* APILoginResponse.swift */; };
 		CA30EAA31F2129700053DBF6 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA21F2129700053DBF6 /* LoginAPI.swift */; };
 		CA30EAA61F2129C60053DBF6 /* CapturingLoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */; };
@@ -662,6 +664,8 @@
 		CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationTestBuilder.swift; path = "Application Tests/ApplicationTestBuilder.swift"; sourceTree = "<group>"; };
 		CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginArguments.swift; path = Login/LoginArguments.swift; sourceTree = "<group>"; };
 		CA2B4FA91F1F7F1200F007E1 /* CapturingLoginObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLoginObserver.swift; path = "Test Doubles/Application/CapturingLoginObserver.swift"; sourceTree = "<group>"; };
+		CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhenResolvingDataStoreState.swift; path = "Application Tests/WhenResolvingDataStoreState.swift"; sourceTree = "<group>"; };
+		CA2D07FA1FE902ED00BFD785 /* EurofurenceDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EurofurenceDataStore.swift; path = Application/EurofurenceDataStore.swift; sourceTree = "<group>"; };
 		CA30EAA01F2127350053DBF6 /* APILoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APILoginResponse.swift; path = Application/API/Protocols/APILoginResponse.swift; sourceTree = "<group>"; };
 		CA30EAA21F2129700053DBF6 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginAPI.swift; path = Application/API/Protocols/LoginAPI.swift; sourceTree = "<group>"; };
 		CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLoginAPI.swift; path = "Test Doubles/Application/API/CapturingLoginAPI.swift"; sourceTree = "<group>"; };
@@ -1234,6 +1238,7 @@
 				78D7EEB41F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift */,
 				CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */,
 				CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessages.swift */,
+				CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */,
 				CAF9A94D1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift */,
 				CA804DD71F20D2E000E07A4A /* API */,
 				781A94431F1A1DC6002DE70F /* Notifications */,
@@ -1245,8 +1250,9 @@
 			isa = PBXGroup;
 			children = (
 				CA30EAB31F2161F10053DBF6 /* CredentialPersister.swift */,
-				CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */,
 				78D7EEBC1F196B62005372A9 /* EurofurenceApplication.swift */,
+				CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */,
+				CA2D07FA1FE902ED00BFD785 /* EurofurenceDataStore.swift */,
 				CA30EAB11F215E680053DBF6 /* LoginTask.swift */,
 				CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */,
 				CA804DCF1F20CE5F00E07A4A /* API */,
@@ -2819,6 +2825,7 @@
 				D6F3D40D3515E7ABE9565906 /* AboutViewController.swift in Sources */,
 				D6F3DEED2F3250C61DB692D9 /* DealerViewController.swift in Sources */,
 				D6F3D204D352FE26C3F90906 /* KnowledgeTableViewController.swift in Sources */,
+				CA2D07FB1FE902ED00BFD785 /* EurofurenceDataStore.swift in Sources */,
 				CABA438D1FBCDBDF009CB5B0 /* LoginPresenter.swift in Sources */,
 				CA9845DA1F29199E00E8821D /* ScreenshotAssistant.swift in Sources */,
 				7820A6F81F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift in Sources */,
@@ -2909,6 +2916,7 @@
 				7820A6FF1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift in Sources */,
 				CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */,
 				CAF9A9581F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift in Sources */,
+				CA2D07F91FE9021A00BFD785 /* WhenResolvingDataStoreState.swift in Sources */,
 				CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */,
 				CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */,
 				781A94481F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift in Sources */,

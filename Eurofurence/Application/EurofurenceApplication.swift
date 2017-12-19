@@ -74,7 +74,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
-
+        completionHandler(.absent)
     }
 
     func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {
