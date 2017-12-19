@@ -8,19 +8,13 @@
 
 import Foundation
 
-class V2LoginAPI: LoginAPI {
+struct V2LoginAPI: LoginAPI {
+    
+    // MARK: Properties
 
-    private var JSONSession: JSONSession
-
-    private struct Request: Encodable {
-        var RegNo: Int
-        var Username: String
-        var Password: String
-    }
-
-    init(JSONSession: JSONSession) {
-        self.JSONSession = JSONSession
-    }
+    var JSONSession: JSONSession
+    
+    // MARK: LoginAPI
 
     func performLogin(request: LoginRequest) {
         do {
@@ -29,6 +23,14 @@ class V2LoginAPI: LoginAPI {
         } catch {
             print("Unable to perform login due to error: \(error)")
         }
+    }
+    
+    // MARK: Private
+    
+    private struct Request: Encodable {
+        var RegNo: Int
+        var Username: String
+        var Password: String
     }
 
     private func makeLoginBody(from request: LoginRequest) throws -> Data {
