@@ -233,6 +233,8 @@
 		CA2D080C1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D080B1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift */; };
 		CA2D080E1FE9504600BFD785 /* WhenThePushNotificationPermissionsPageAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D080D1FE9504600BFD785 /* WhenThePushNotificationPermissionsPageAppears.swift */; };
 		CA2D08101FE9511300BFD785 /* WhenThePushNotificationPermissionsPageAppearsWithUnreachableNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D080F1FE9511300BFD785 /* WhenThePushNotificationPermissionsPageAppearsWithUnreachableNetwork.swift */; };
+		CA2D08121FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08111FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift */; };
+		CA2D08141FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D08131FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift */; };
 		CA30EAA11F2127350053DBF6 /* APILoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA01F2127350053DBF6 /* APILoginResponse.swift */; };
 		CA30EAA31F2129700053DBF6 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA21F2129700053DBF6 /* LoginAPI.swift */; };
 		CA30EAA61F2129C60053DBF6 /* CapturingLoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */; };
@@ -682,6 +684,8 @@
 		CA2D080B1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TutorialModuleTestBuilder.swift; path = "Presenter Tests/Tutorial/TutorialModuleTestBuilder.swift"; sourceTree = "<group>"; };
 		CA2D080D1FE9504600BFD785 /* WhenThePushNotificationPermissionsPageAppears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhenThePushNotificationPermissionsPageAppears.swift; path = "Presenter Tests/Tutorial/WhenThePushNotificationPermissionsPageAppears.swift"; sourceTree = "<group>"; };
 		CA2D080F1FE9511300BFD785 /* WhenThePushNotificationPermissionsPageAppearsWithUnreachableNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhenThePushNotificationPermissionsPageAppearsWithUnreachableNetwork.swift; path = "Presenter Tests/Tutorial/WhenThePushNotificationPermissionsPageAppearsWithUnreachableNetwork.swift"; sourceTree = "<group>"; };
+		CA2D08111FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhenThePerformInitialDownloadPageAppears.swift; path = "Presenter Tests/Tutorial/WhenThePerformInitialDownloadPageAppears.swift"; sourceTree = "<group>"; };
+		CA2D08131FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift; path = "Presenter Tests/Tutorial/WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift"; sourceTree = "<group>"; };
 		CA30EAA01F2127350053DBF6 /* APILoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APILoginResponse.swift; path = Application/API/Protocols/APILoginResponse.swift; sourceTree = "<group>"; };
 		CA30EAA21F2129700053DBF6 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginAPI.swift; path = Application/API/Protocols/LoginAPI.swift; sourceTree = "<group>"; };
 		CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingLoginAPI.swift; path = "Test Doubles/Application/API/CapturingLoginAPI.swift"; sourceTree = "<group>"; };
@@ -1668,6 +1672,8 @@
 				CA2D080B1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift */,
 				CA2D080D1FE9504600BFD785 /* WhenThePushNotificationPermissionsPageAppears.swift */,
 				CA2D080F1FE9511300BFD785 /* WhenThePushNotificationPermissionsPageAppearsWithUnreachableNetwork.swift */,
+				CA2D08111FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift */,
+				CA2D08131FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift */,
 			);
 			name = Tutorial;
 			sourceTree = "<group>";
@@ -2998,11 +3004,13 @@
 				CAF9A9451F50B89000628833 /* CapturingEurofurenceApplication.swift in Sources */,
 				78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */,
 				CABA43891FBCD94E009CB5B0 /* LoginPresenterTests.swift in Sources */,
+				CA2D08121FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift in Sources */,
 				CA6AA01A1FD885030092C6DB /* NewsViewControllerTests.swift in Sources */,
 				781A943A1F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift in Sources */,
 				CAEAEC0C1FE0702500C0EE7C /* MessageDetailViewControllerTests.swift in Sources */,
 				78455B4B1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift in Sources */,
 				CA30EACA1F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift in Sources */,
+				CA2D08141FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift in Sources */,
 				7820A6E11F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift in Sources */,
 				781A94461F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift in Sources */,
 				CA30EAA81F2132480053DBF6 /* StubLoginResponse.swift in Sources */,
