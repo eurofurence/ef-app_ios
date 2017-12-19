@@ -67,7 +67,6 @@
 		78C86D541F1228B0003A20E6 /* TutorialViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D531F1228B0003A20E6 /* TutorialViewControllerTests.swift */; };
 		78C86D561F12334D003A20E6 /* Routers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D551F12334D003A20E6 /* Routers.swift */; };
 		78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D591F1234F0003A20E6 /* StubRouters.swift */; };
-		78C86D5D1F123686003A20E6 /* WhenTheTutorialAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D5C1F123686003A20E6 /* WhenTheTutorialAppears.swift */; };
 		78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D5F1F123859003A20E6 /* CapturingTutorialScene.swift */; };
 		78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D641F123B20003A20E6 /* CapturingTutorialPageScene.swift */; };
 		78C86D6C1F123FD8003A20E6 /* PresentationTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C86D6B1F123FD8003A20E6 /* PresentationTestBuilder.swift */; };
@@ -284,6 +283,7 @@
 		CA804DD41F20CF4300E07A4A /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD31F20CF4300E07A4A /* APIResponse.swift */; };
 		CA804DDA1F20D2F500E07A4A /* V2LoginAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */; };
 		CA81D48E1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D48D1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift */; };
+		CA81D4901FE9A91000A52A2F /* WhenTheTutorialAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D48F1FE9A91000A52A2F /* WhenTheTutorialAppears.swift */; };
 		CA8E17ED1F817A70003C348C /* PreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17EC1F817A70003C348C /* PreloadService.swift */; };
 		CA8E17EF1F817A8C003C348C /* CapturingPreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17EE1F817A8C003C348C /* CapturingPreloadService.swift */; };
 		CA8E17F11F817AA2003C348C /* CapturingPreloadModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */; };
@@ -509,7 +509,6 @@
 		78C86D531F1228B0003A20E6 /* TutorialViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewControllerTests.swift; sourceTree = "<group>"; };
 		78C86D551F12334D003A20E6 /* Routers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routers.swift; sourceTree = "<group>"; };
 		78C86D591F1234F0003A20E6 /* StubRouters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubRouters.swift; path = "Test Doubles/StubRouters.swift"; sourceTree = "<group>"; };
-		78C86D5C1F123686003A20E6 /* WhenTheTutorialAppears.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WhenTheTutorialAppears.swift; path = "Presenter Tests/WhenTheTutorialAppears.swift"; sourceTree = "<group>"; };
 		78C86D5F1F123859003A20E6 /* CapturingTutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingTutorialScene.swift; path = "Test Doubles/Scenes/CapturingTutorialScene.swift"; sourceTree = "<group>"; };
 		78C86D641F123B20003A20E6 /* CapturingTutorialPageScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CapturingTutorialPageScene.swift; path = "Test Doubles/Scenes/CapturingTutorialPageScene.swift"; sourceTree = "<group>"; };
 		78C86D6B1F123FD8003A20E6 /* PresentationTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentationTestBuilder.swift; path = "Presenter Tests/Builders/PresentationTestBuilder.swift"; sourceTree = "<group>"; };
@@ -736,6 +735,7 @@
 		CA804DD31F20CF4300E07A4A /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIResponse.swift; path = Application/API/Protocols/APIResponse.swift; sourceTree = "<group>"; };
 		CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = V2LoginAPITests.swift; path = "Application Tests/API/v2/V2LoginAPITests.swift"; sourceTree = "<group>"; };
 		CA81D48D1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingTutorialModuleDelegate.swift; path = "Test Doubles/CapturingTutorialModuleDelegate.swift"; sourceTree = "<group>"; };
+		CA81D48F1FE9A91000A52A2F /* WhenTheTutorialAppears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhenTheTutorialAppears.swift; path = "Presenter Tests/Tutorial/WhenTheTutorialAppears.swift"; sourceTree = "<group>"; };
 		CA8E17EC1F817A70003C348C /* PreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PreloadService.swift; path = Interactors/Preload/PreloadService.swift; sourceTree = "<group>"; };
 		CA8E17EE1F817A8C003C348C /* CapturingPreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingPreloadService.swift; path = "Test Doubles/CapturingPreloadService.swift"; sourceTree = "<group>"; };
 		CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CapturingPreloadModuleDelegate.swift; path = "Test Doubles/CapturingPreloadModuleDelegate.swift"; sourceTree = "<group>"; };
@@ -1196,7 +1196,6 @@
 				CA8E7EF31FB08D3B00F0BF10 /* PhoneWindowWireframeTests.swift */,
 				78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */,
 				78C86D711F12AACA003A20E6 /* WhenTheSplashScreenAppears.swift */,
-				78C86D5C1F123686003A20E6 /* WhenTheTutorialAppears.swift */,
 				78C86D6A1F123FC4003A20E6 /* Builders */,
 				CAF7055F1F82CBC800A9FEA2 /* Director */,
 				CAF9A93D1F5048FB00628833 /* Interactor Tests */,
@@ -1673,6 +1672,7 @@
 			isa = PBXGroup;
 			children = (
 				CA2D080B1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift */,
+				CA81D48F1FE9A91000A52A2F /* WhenTheTutorialAppears.swift */,
 				CA2D080D1FE9504600BFD785 /* WhenThePushNotificationPermissionsPageAppears.swift */,
 				CA2D080F1FE9511300BFD785 /* WhenThePushNotificationPermissionsPageAppearsWithUnreachableNetwork.swift */,
 				CA2D08111FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift */,
@@ -2978,7 +2978,6 @@
 				781A94481F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift in Sources */,
 				7820A6FD1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift in Sources */,
 				7820A7051F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift in Sources */,
-				78C86D5D1F123686003A20E6 /* WhenTheTutorialAppears.swift in Sources */,
 				CA8E7EF41FB08D3B00F0BF10 /* PhoneWindowWireframeTests.swift in Sources */,
 				CAF9A9511F558E7800628833 /* RandomGenerator.swift in Sources */,
 				7820A6DF1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift in Sources */,
@@ -3007,6 +3006,7 @@
 				CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */,
 				CAF9A9451F50B89000628833 /* CapturingEurofurenceApplication.swift in Sources */,
 				78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */,
+				CA81D4901FE9A91000A52A2F /* WhenTheTutorialAppears.swift in Sources */,
 				CABA43891FBCD94E009CB5B0 /* LoginPresenterTests.swift in Sources */,
 				CA2D08121FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift in Sources */,
 				CA6AA01A1FD885030092C6DB /* NewsViewControllerTests.swift in Sources */,
