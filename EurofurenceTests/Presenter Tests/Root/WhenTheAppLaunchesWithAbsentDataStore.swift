@@ -11,27 +11,24 @@ import XCTest
 
 class WhenTheAppLaunchesWithAbsentDataStore: XCTestCase {
     
-    var delegate: CapturingRootModuleDelegate!
+    var context: RootModuleTestBuilder.Context!
     
     override func setUp() {
         super.setUp()
         
-        let app = CapturingEurofurenceApplication()
-        delegate = CapturingRootModuleDelegate()
-        _ = RootModuleBuilder().with(app).build().makeRootModule(delegate)
-        app.capturedStoreStateResolutionHandler?(.absent)
+        context = RootModuleTestBuilder().with(storeState: .absent).build()
     }
     
     func testTheDelegateIsToldToShowTutorial() {
-        XCTAssertTrue(delegate.toldTutorialShouldBePresented)
+        XCTAssertTrue(context.delegate.toldTutorialShouldBePresented)
     }
     
     func testTheDelegateIsNotToldToPreloadStore() {
-        XCTAssertFalse(delegate.toldStoreShouldRefresh)
+        XCTAssertFalse(context.delegate.toldStoreShouldRefresh)
     }
     
     func testTheDelegateIsNotToldToShowPrincipleModule() {
-        XCTAssertFalse(delegate.toldPrincipleModuleShouldBePresented)
+        XCTAssertFalse(context.delegate.toldPrincipleModuleShouldBePresented)
     }
     
 }
