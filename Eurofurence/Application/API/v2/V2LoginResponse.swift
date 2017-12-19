@@ -8,28 +8,29 @@
 
 import Foundation
 
-struct V2LoginResponse: APILoginResponse {
-
-    private static let dateFormatter = Iso8601DateFormatter()
+struct V2LoginResponse: APILoginResponse, Decodable {
 
     var uid: String
     var username: String
     var token: String
     var tokenValidUntil: Date
 
-    init?(json: [String : Any]) {
-        guard let username = json["Username"] as? String,
-            let uid = json["Uid"] as? String,
-            let authToken = json["Token"] as? String,
-            let dateString = json["TokenValidUntil"] as? String,
-            let expiry = V2LoginResponse.dateFormatter.date(from: dateString) else {
-                return nil
-        }
+    // Decodable Support
 
-        self.uid = uid
-        self.username = username
-        self.token = authToken
-        self.tokenValidUntil = expiry
+    static var decoder: JSONDecoder = {
+        let jsonDecoder = JSONDecoder()
+
+        // TODO: Investigate why system ios8601 formatter fails to parse our dates
+        jsonDecoder.dateDecodingStrategy = .formatted(Iso8601DateFormatter())
+
+        return jsonDecoder
+    }()
+
+    private enum CodingKeys: String, CodingKey {
+        case uid = "Uid"
+        case username = "Username"
+        case token = "Token"
+        case tokenValidUntil = "TokenValidUntil"
     }
 
 }
