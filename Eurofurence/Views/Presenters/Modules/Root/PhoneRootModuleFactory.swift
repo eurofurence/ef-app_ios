@@ -11,18 +11,13 @@ struct PhoneRootModuleFactory: RootModuleProviding {
     var app: EurofurenceApplicationProtocol
 
     func makeRootModule(_ delegate: RootModuleDelegate) {
-        app.resolveDataStoreState { (state) in
-            switch state {
-            case .absent:
-                delegate.userNeedsToWitnessTutorial()
+        let actions: [EurofurenceDataStoreState : () -> Void] = [
+            .absent: delegate.userNeedsToWitnessTutorial,
+            .stale: delegate.storeShouldBePreloaded,
+            .available: delegate.rootModuleDidDetermineRootModuleShouldBePresented
+        ]
 
-            case .stale:
-                delegate.storeShouldBePreloaded()
-
-            case .available:
-                delegate.rootModuleDidDetermineRootModuleShouldBePresented()
-            }
-        }
+        app.resolveDataStoreState { actions[$0]!() }
     }
 
 }
