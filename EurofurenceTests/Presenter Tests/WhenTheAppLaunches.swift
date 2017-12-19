@@ -11,19 +11,19 @@ import XCTest
 
 class CapturingRootModuleDelegate: RootModuleDelegate {
     
-    private(set) var wasToldUserNeedsToWitnessTutorial = false
-    func userNeedsToWitnessTutorial() {
-        wasToldUserNeedsToWitnessTutorial = true
+    private(set) var toldTutorialShouldBePresented = false
+    func rootModuleDidDetermineTutorialShouldBePresented() {
+        toldTutorialShouldBePresented = true
     }
     
-    private(set) var wasToldToPreloadStore = false
-    func storeShouldBePreloaded() {
-        wasToldToPreloadStore = true
+    private(set) var toldStoreShouldRefresh = false
+    func rootModuleDidDetermineStoreShouldRefresh() {
+        toldStoreShouldRefresh = true
     }
     
-    private(set) var wasToldToShowPrincipleModule = false
+    private(set) var toldPrincipleModuleShouldBePresented = false
     func rootModuleDidDetermineRootModuleShouldBePresented() {
-        wasToldToShowPrincipleModule = true
+        toldPrincipleModuleShouldBePresented = true
     }
     
 }
@@ -57,47 +57,47 @@ class WhenTheAppLaunches: XCTestCase {
     
     func testAndTheStoreIsStaleTheDelegateIsToldToPreloadStore() {
         simulateStaleStore()
-        XCTAssertTrue(delegate.wasToldToPreloadStore)
+        XCTAssertTrue(delegate.toldStoreShouldRefresh)
     }
     
     func testAndTheStoreIsAbsentTheDelegateIsNotToldToPreloadStore() {
         simulateAbsentStore()
-        XCTAssertFalse(delegate.wasToldToPreloadStore)
+        XCTAssertFalse(delegate.toldStoreShouldRefresh)
     }
     
     func testAndTheStoreIsAvailableTheDelegateIsNotToldToPreloadStore() {
         simulateAvailableStore()
-        XCTAssertFalse(delegate.wasToldToPreloadStore)
+        XCTAssertFalse(delegate.toldStoreShouldRefresh)
     }
     
     func testAndTheStoreIsAbsentTheDelegateIsToldToShowTutorial() {
         simulateAbsentStore()
-        XCTAssertTrue(delegate.wasToldUserNeedsToWitnessTutorial)
+        XCTAssertTrue(delegate.toldTutorialShouldBePresented)
     }
     
     func testAndTheStoreIsStaleTheDelegateIsNotToldToShowTutorial() {
         simulateStaleStore()
-        XCTAssertFalse(delegate.wasToldUserNeedsToWitnessTutorial)
+        XCTAssertFalse(delegate.toldTutorialShouldBePresented)
     }
     
     func testAndTheStoreIsAvailableTheDelegateIsNotToldToShowTutorial() {
         simulateAvailableStore()
-        XCTAssertFalse(delegate.wasToldUserNeedsToWitnessTutorial)
+        XCTAssertFalse(delegate.toldTutorialShouldBePresented)
     }
     
     func testAndTheStoreIsAbsentTheDelegateIsNotToldToShowPrincipleModule() {
         simulateAbsentStore()
-        XCTAssertFalse(delegate.wasToldToShowPrincipleModule)
+        XCTAssertFalse(delegate.toldPrincipleModuleShouldBePresented)
     }
     
     func testAndTheStoreIsStaleTheDelegateIsNotToldToShowPrincipleModule() {
         simulateStaleStore()
-        XCTAssertFalse(delegate.wasToldToShowPrincipleModule)
+        XCTAssertFalse(delegate.toldPrincipleModuleShouldBePresented)
     }
     
     func testAndTheStoreIsAvailableTheDelegateIsNotToldToShowPrincipleModule() {
         simulateAvailableStore()
-        XCTAssertTrue(delegate.wasToldToShowPrincipleModule)
+        XCTAssertTrue(delegate.toldPrincipleModuleShouldBePresented)
     }
     
     // MARK: Old

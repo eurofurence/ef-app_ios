@@ -164,7 +164,7 @@ class ApplicationDirectorTests: XCTestCase {
     var messageDetailModuleFactory: StubMessageDetailModuleProviding!
     
     private func navigateToTabController() {
-        rootModuleFactory.delegate?.storeShouldBePreloaded()
+        rootModuleFactory.delegate?.rootModuleDidDetermineStoreShouldRefresh()
         preloadModuleFactory.delegate?.preloadModuleDidFinishPreloading()
     }
     
@@ -210,24 +210,24 @@ class ApplicationDirectorTests: XCTestCase {
     }
     
     func testWhenRootModuleIndicatesUserNeedsToWitnessTutorialTheTutorialModuleIsSetOntoRootNavigationController() {
-        rootModuleFactory.delegate?.userNeedsToWitnessTutorial()
+        rootModuleFactory.delegate?.rootModuleDidDetermineTutorialShouldBePresented()
         XCTAssertEqual([tutorialModuleFactory.stubInterface], rootNavigationController.viewControllers)
     }
     
     func testWhenRootModuleIndicatesStoreShouldPreloadThePreloadModuleIsSetAsRoot() {
-        rootModuleFactory.delegate?.storeShouldBePreloaded()
+        rootModuleFactory.delegate?.rootModuleDidDetermineStoreShouldRefresh()
         XCTAssertEqual([preloadModuleFactory.stubInterface], rootNavigationController.viewControllers)
     }
     
     func testWhenTheTutorialFinishesThePreloadModuleIsSetAsRoot() {
-        rootModuleFactory.delegate?.userNeedsToWitnessTutorial()
+        rootModuleFactory.delegate?.rootModuleDidDetermineTutorialShouldBePresented()
         tutorialModuleFactory.delegate?.tutorialModuleDidFinishPresentingTutorial()
         
         XCTAssertEqual([preloadModuleFactory.stubInterface], rootNavigationController.viewControllers)
     }
     
     func testWhenPreloadingFailsAfterFinishingTutorialTheTutorialIsRedisplayed() {
-        rootModuleFactory.delegate?.userNeedsToWitnessTutorial()
+        rootModuleFactory.delegate?.rootModuleDidDetermineTutorialShouldBePresented()
         tutorialModuleFactory.delegate?.tutorialModuleDidFinishPresentingTutorial()
         preloadModuleFactory.delegate?.preloadModuleDidCancelPreloading()
         
@@ -235,7 +235,7 @@ class ApplicationDirectorTests: XCTestCase {
     }
     
     func testWhenPreloadingSucceedsAfterFinishingTutorialTheTabWireframeIsSetAsTheRoot() {
-        rootModuleFactory.delegate?.userNeedsToWitnessTutorial()
+        rootModuleFactory.delegate?.rootModuleDidDetermineTutorialShouldBePresented()
         tutorialModuleFactory.delegate?.tutorialModuleDidFinishPresentingTutorial()
         preloadModuleFactory.delegate?.preloadModuleDidFinishPreloading()
         
@@ -243,7 +243,7 @@ class ApplicationDirectorTests: XCTestCase {
     }
     
     func testWhenPresentingTabControllerTheDissolveTransitionIsUsed() {
-        rootModuleFactory.delegate?.userNeedsToWitnessTutorial()
+        rootModuleFactory.delegate?.rootModuleDidDetermineTutorialShouldBePresented()
         tutorialModuleFactory.delegate?.tutorialModuleDidFinishPresentingTutorial()
         preloadModuleFactory.delegate?.preloadModuleDidFinishPreloading()
         let transition = rootNavigationController.delegate?.navigationController?(rootNavigationController, animationControllerFor: .push, from: preloadModuleFactory.stubInterface, to: tabModuleFactory.stubInterface)

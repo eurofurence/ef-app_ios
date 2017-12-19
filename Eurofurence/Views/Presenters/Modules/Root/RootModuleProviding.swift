@@ -14,8 +14,8 @@ protocol RootModuleProviding {
 
 protocol RootModuleDelegate {
 
-    func userNeedsToWitnessTutorial()
-    func storeShouldBePreloaded()
+    func rootModuleDidDetermineTutorialShouldBePresented()
+    func rootModuleDidDetermineStoreShouldRefresh()
     func rootModuleDidDetermineRootModuleShouldBePresented()
 
 }

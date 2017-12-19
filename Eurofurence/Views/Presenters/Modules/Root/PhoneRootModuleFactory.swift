@@ -12,8 +12,8 @@ struct PhoneRootModuleFactory: RootModuleProviding {
 
     func makeRootModule(_ delegate: RootModuleDelegate) {
         let actions: [EurofurenceDataStoreState : () -> Void] = [
-            .absent: delegate.userNeedsToWitnessTutorial,
-            .stale: delegate.storeShouldBePreloaded,
+            .absent: delegate.rootModuleDidDetermineTutorialShouldBePresented,
+            .stale: delegate.rootModuleDidDetermineStoreShouldRefresh,
             .available: delegate.rootModuleDidDetermineRootModuleShouldBePresented
         ]
 

@@ -75,11 +75,11 @@ class ApplicationDirector: RootModuleDelegate,
 
     // MARK: RootModuleDelegate
 
-    func userNeedsToWitnessTutorial() {
+    func rootModuleDidDetermineTutorialShouldBePresented() {
         showTutorial()
     }
 
-    func storeShouldBePreloaded() {
+    func rootModuleDidDetermineStoreShouldRefresh() {
         showPreloadModule()
     }
 
