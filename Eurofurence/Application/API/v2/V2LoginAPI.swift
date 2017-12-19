@@ -9,44 +9,63 @@
 import Foundation
 
 struct V2LoginAPI: LoginAPI {
-    
+
     // MARK: Properties
 
     var JSONSession: JSONSession
-    
+    private static let loginEndpoint = "https://app.eurofurence.org/api/v2/Tokens/RegSys"
+
+    private static var responseDecoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+
+        // TODO: Investigate why system ios8601 formatter fails to parse our dates
+        decoder.dateDecodingStrategy = .formatted(Iso8601DateFormatter())
+
+        return decoder
+    }()
+
     // MARK: LoginAPI
 
     func performLogin(request: LoginRequest) {
-        do {
-            let jsonData = try makeLoginBody(from: request)
-            performLogin(body: jsonData, completionHandler: request.completionHandler)
-        } catch {
-            print("Unable to perform login due to error: \(error)")
+        let jsonData = try! JSONEncoder().encode(Request(from: request))
+        let jsonRequest = JSONRequest(url: V2LoginAPI.loginEndpoint, body: jsonData)
+        JSONSession.post(jsonRequest) { (data, _) in
+            if let data = data, let response = try? V2LoginAPI.responseDecoder.decode(Response.self, from: data) {
+                request.completionHandler(.success(response))
+            } else {
+                request.completionHandler(.failure)
+            }
         }
     }
-    
+
     // MARK: Private
-    
+
     private struct Request: Encodable {
         var RegNo: Int
         var Username: String
         var Password: String
-    }
 
-    private func makeLoginBody(from request: LoginRequest) throws -> Data {
-        let jsonRequest = Request(RegNo: request.regNo, Username: request.username, Password: request.password)
-        return try JSONEncoder().encode(jsonRequest)
-    }
-
-    private func performLogin(body: Data, completionHandler: @escaping LoginResponseHandler) {
-        let request = JSONRequest(url: "https://app.eurofurence.org/api/v2/Tokens/RegSys", body: body)
-        JSONSession.post(request) { (data, _) in
-            if let data = data, let response = try? V2LoginResponse.decoder.decode(V2LoginResponse.self, from: data) {
-                completionHandler(.success(response))
-            } else {
-                completionHandler(.failure)
-            }
+        init(from request: LoginRequest) {
+            RegNo = request.regNo
+            Username = request.username
+            Password = request.password
         }
+    }
+
+    private struct Response: APILoginResponse, Decodable {
+
+        var uid: String
+        var username: String
+        var token: String
+        var tokenValidUntil: Date
+
+        private enum CodingKeys: String, CodingKey {
+            case uid = "Uid"
+            case username = "Username"
+            case token = "Token"
+            case tokenValidUntil = "TokenValidUntil"
+        }
+
     }
 
 }
