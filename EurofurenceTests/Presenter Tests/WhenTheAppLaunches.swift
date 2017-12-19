@@ -41,6 +41,42 @@ class WhenTheAppLaunches: XCTestCase {
             .makeRootModule(delegate)
     }
     
+    func testAndTheStoreIsStaleTheDelegateIsToldToPreloadStore() {
+        
+    }
+    
+    func testAndTheStoreIsAbsentTheDelegateIsNotToldToPreloadStore() {
+        
+    }
+    
+    func testAndTheStoreIsAvailableTheDelegateIsNotToldToPreloadStore() {
+        
+    }
+    
+    func testAndTheStoreIsAbsentTheDelegateIsToldToShowTutorial() {
+        
+    }
+    
+    func testAndTheStoreIsStaleTheDelegateIsNotToldToShowTutorial() {
+        
+    }
+    
+    func testAndTheStoreIsAvailableTheDelegateIsNotToldToShowTutorial() {
+        
+    }
+    
+    func testAndTheStoreIsAbsentTheDelegateIsNotToldToShowPrincipleModule() {
+        
+    }
+    
+    func testAndTheStoreIsStaleTheDelegateIsNotToldToShowPrincipleModule() {
+        
+    }
+    
+    func testAndTheStoreIsAvailableTheDelegateIsNotToldToShowPrincipleModule() {
+        
+    }
+    
     func testAndTheUserHasNotFinishedTheTutorialTheDelegateIsToldTheUserNeedsToWitnessTutorial() {
         makeRootModule(userHasCompletedTutorial: false)
         XCTAssertTrue(delegate.wasToldUserNeedsToWitnessTutorial)
