@@ -9,24 +9,6 @@
 @testable import Eurofurence
 import XCTest
 
-struct StubTutorialSceneFactory: TutorialSceneFactory {
-    
-    let tutorialScene = CapturingTutorialScene()
-    func makeTutorialScene() -> UIViewController & TutorialScene {
-        return tutorialScene
-    }
-    
-}
-
-class CapturingTutorialModuleDelegate: TutorialModuleDelegate {
-    
-    private(set) var wasToldTutorialFinished = false
-    func tutorialModuleDidFinishPresentingTutorial() {
-        wasToldTutorialFinished = true
-    }
-    
-}
-
 class WhenTheTutorialAppears: XCTestCase {
 
     private func showTutorial(_ networkReachability: NetworkReachability = ReachableWiFiNetwork(),
