@@ -35,7 +35,19 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                                                                              firebaseAdapter: FirebaseMessagingAdapter(),
                                                                              fcmRegistration: fcmRegistration)
 
-        return EurofurenceApplication(remoteNotificationsTokenRegistration: tokenRegistration,
+        struct DummyUserPreferences: UserPreferences {
+            var refreshStoreOnLaunch: Bool = true
+        }
+
+        struct DummyEurofurenceDataStore: EurofurenceDataStore {
+            func resolveContentsState(completionHandler: @escaping (EurofurenceDataStoreContentsState) -> Void) {
+                completionHandler(.present)
+            }
+        }
+
+        return EurofurenceApplication(userPreferences: DummyUserPreferences(),
+                                      dataStore: DummyEurofurenceDataStore(),
+                                      remoteNotificationsTokenRegistration: tokenRegistration,
                                       pushPermissionsRequester: ApplicationPushPermissionsRequester(),
                                       pushPermissionsStateProviding: UserDefaultsWitnessedSystemPushPermissionsRequest(),
                                       clock: SystemClock(),
@@ -47,17 +59,24 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
     private var authenticationCoordinator: UserAuthenticationCoordinator
     private var registeredDeviceToken: Data?
+
+    private let userPreferences: UserPreferences
+    private let dataStore: EurofurenceDataStore
     private let privateMessagesAPI: PrivateMessagesAPI
     private let pushPermissionsRequester: PushPermissionsRequester
     private let pushPermissionsStateProviding: PushPermissionsStateProviding
 
-    init(remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
+    init(userPreferences: UserPreferences,
+         dataStore: EurofurenceDataStore,
+         remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
          pushPermissionsRequester: PushPermissionsRequester,
          pushPermissionsStateProviding: PushPermissionsStateProviding,
          clock: Clock,
          loginCredentialStore: LoginCredentialStore,
          loginAPI: LoginAPI,
          privateMessagesAPI: PrivateMessagesAPI) {
+        self.userPreferences = userPreferences
+        self.dataStore = dataStore
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
         self.privateMessagesAPI = privateMessagesAPI
         self.pushPermissionsRequester = pushPermissionsRequester
@@ -74,7 +93,19 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
-        completionHandler(.absent)
+        dataStore.resolveContentsState { (state) in
+            switch state {
+            case .empty:
+                completionHandler(.absent)
+
+            case .present:
+                if self.userPreferences.refreshStoreOnLaunch {
+                    completionHandler(.stale)
+                } else {
+                    completionHandler(.available)
+                }
+            }
+        }
     }
 
     func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {
