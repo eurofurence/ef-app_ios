@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var app: EurofurenceApplication = .shared
 	lazy var targetRouter: TargetRouter = StoryboardTargetRouter(window: self.window!)
 	lazy var notificationRouter: NotificationRouter = StoryboardNotificationRouter(window: self.window!, targetRouter: self.targetRouter)
+    private var director: ApplicationDirector?
 
 	func application(_ application: UIApplication,
 	                 didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -31,7 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		PrintOptions.Active = .None
 
         DataStoreRefreshController.shared.add(ApplicationActivityIndicatorRefreshDelegate())
-		PresentationTier.assemble(window: window!)
+
+        if UserSettings.UseDirector.currentValueOrDefault() {
+            director = DirectorBuilder().build()
+        } else {
+            PresentationTier.assemble(window: window!)
+        }
 
 		// App was launched from local or remote notification
 		if let notification = launchOptions?[.localNotification] as? UILocalNotification {

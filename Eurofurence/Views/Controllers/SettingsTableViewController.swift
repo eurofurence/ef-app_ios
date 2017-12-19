@@ -298,5 +298,15 @@ class SettingsTableViewController: FormViewController {
                     cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
                     cell.backgroundColor = UIColor.lightText
 			}
+            <<< SwitchRow("DirectorSettings") {
+                $0.title = "Enable Director"
+                $0.value = UserSettings.UseDirector.currentValueOrDefault()
+                }.onChange { (row) in
+                    if let value = row.value {
+                        UserSettings.UseDirector.setValue(value)
+                    }
+                    row.updateCell()
+                }
     }
+
 }

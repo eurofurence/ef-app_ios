@@ -17,6 +17,7 @@ enum UserSettings: String {
     case RefreshInBackgroundOnMobile
 	case DebugTimeOffset
 	case DebugSettingsEnabled
+    case UseDirector
 
     func defaultValue<T>() -> T {
         switch self {
@@ -38,6 +39,8 @@ enum UserSettings: String {
 			return 0.0 as! T
 		case .DebugSettingsEnabled:
 			return false as! T
+        case .UseDirector:
+            return false as! T
         }
 	}
 
