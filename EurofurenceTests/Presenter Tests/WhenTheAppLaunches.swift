@@ -43,63 +43,6 @@ class WhenTheAppLaunches: XCTestCase {
         _ = RootModuleBuilder().with(app).build().makeRootModule(delegate)
     }
     
-    private func simulateAbsentStore() {
-        app.capturedStoreStateResolutionHandler?(.absent)
-    }
-    
-    private func simulateStaleStore() {
-        app.capturedStoreStateResolutionHandler?(.stale)
-    }
-    
-    private func simulateAvailableStore() {
-        app.capturedStoreStateResolutionHandler?(.available)
-    }
-    
-    func testAndTheStoreIsStaleTheDelegateIsToldToPreloadStore() {
-        simulateStaleStore()
-        XCTAssertTrue(delegate.toldStoreShouldRefresh)
-    }
-    
-    func testAndTheStoreIsAbsentTheDelegateIsNotToldToPreloadStore() {
-        simulateAbsentStore()
-        XCTAssertFalse(delegate.toldStoreShouldRefresh)
-    }
-    
-    func testAndTheStoreIsAvailableTheDelegateIsNotToldToPreloadStore() {
-        simulateAvailableStore()
-        XCTAssertFalse(delegate.toldStoreShouldRefresh)
-    }
-    
-    func testAndTheStoreIsAbsentTheDelegateIsToldToShowTutorial() {
-        simulateAbsentStore()
-        XCTAssertTrue(delegate.toldTutorialShouldBePresented)
-    }
-    
-    func testAndTheStoreIsStaleTheDelegateIsNotToldToShowTutorial() {
-        simulateStaleStore()
-        XCTAssertFalse(delegate.toldTutorialShouldBePresented)
-    }
-    
-    func testAndTheStoreIsAvailableTheDelegateIsNotToldToShowTutorial() {
-        simulateAvailableStore()
-        XCTAssertFalse(delegate.toldTutorialShouldBePresented)
-    }
-    
-    func testAndTheStoreIsAbsentTheDelegateIsNotToldToShowPrincipleModule() {
-        simulateAbsentStore()
-        XCTAssertFalse(delegate.toldPrincipleModuleShouldBePresented)
-    }
-    
-    func testAndTheStoreIsStaleTheDelegateIsNotToldToShowPrincipleModule() {
-        simulateStaleStore()
-        XCTAssertFalse(delegate.toldPrincipleModuleShouldBePresented)
-    }
-    
-    func testAndTheStoreIsAvailableTheDelegateIsNotToldToShowPrincipleModule() {
-        simulateAvailableStore()
-        XCTAssertTrue(delegate.toldPrincipleModuleShouldBePresented)
-    }
-    
     // MARK: Old
     
     func testAndTheUserHasNotFinishedTheTutorialTheTutorialRouterIsToldToShowTheTutorial() {
