@@ -1,0 +1,69 @@
+//
+//  WhenRefreshingMessages.swift
+//  EurofurenceTests
+//
+//  Created by Thomas Sherwood on 20/12/2017.
+//  Copyright © 2017 Eurofurence. All rights reserved.
+//
+
+@testable import Eurofurence
+import XCTest
+
+class WhenRefreshingMessages: XCTestCase {
+    
+    var context: MessagesPresenterTestContext!
+    
+    override func setUp() {
+        super.setUp()
+        
+        context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser()
+        context.scene.delegate?.messagesSceneWillAppear()
+        context.scene.delegate?.messagesSceneDidPerformRefreshAction()
+        context.scene.reset()
+    }
+    
+    func testThePrivateMessagesServiceIsToldToReload() {
+        XCTAssertEqual(2, context.privateMessagesService.refreshMessagesCount)
+    }
+    
+    func testTheSceneIsToldToHideTheRefreshIndicatorWhenRefreshFinishes() {
+        context.privateMessagesService.succeedLastRefresh()
+        XCTAssertTrue(context.scene.wasToldToHideRefreshIndicator)
+    }
+    
+    func testWhenRefreshActionCompletesWithNoMessagesTheSceneIsToldToHideTheMessagesList() {
+        context.privateMessagesService.succeedLastRefresh()
+        XCTAssertTrue(context.scene.didHideMessages)
+    }
+    
+    func testWhenRefreshActionCompletesWithNoMessagesTheSceneIsNotToldToShowTheMessagesList() {
+        context.privateMessagesService.succeedLastRefresh()
+        XCTAssertFalse(context.scene.didShowMessages)
+    }
+    
+    func testWhenRefreshActionCompletesWithMessagesTheSceneIsToldToShowTheMessagesList() {
+        context.privateMessagesService.succeedLastRefresh(messages: [AppDataBuilder.makeMessage()])
+        XCTAssertTrue(context.scene.didShowMessages)
+    }
+    
+    func testWhenRefreshActionCompletesWithNoMessagesTheSceneIsToldShowTheNoMessagesPlaceholder() {
+        context.privateMessagesService.succeedLastRefresh()
+        XCTAssertTrue(context.scene.didShowNoMessagesPlaceholder)
+    }
+    
+    func testWhenRefreshActionCompletesWithMessagesTheSceneIsNotToldShowTheNoMessagesPlaceholder() {
+        context.privateMessagesService.succeedLastRefresh(messages: [AppDataBuilder.makeMessage()])
+        XCTAssertFalse(context.scene.didShowNoMessagesPlaceholder)
+    }
+    
+    func testWhenRefreshActionCompletesWithMessageTheSceneIsToldHideTheNoMessagesPlaceholder() {
+        context.privateMessagesService.succeedLastRefresh(messages: [AppDataBuilder.makeMessage()])
+        XCTAssertTrue(context.scene.didHideNoMessagesPlaceholder)
+    }
+    
+    func testWhenRefreshActionCompletesWithNoMessagesTheSceneIsNotToldHideTheNoMessagesPlaceholder() {
+        context.privateMessagesService.succeedLastRefresh()
+        XCTAssertFalse(context.scene.didHideNoMessagesPlaceholder)
+    }
+    
+}
