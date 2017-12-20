@@ -1251,18 +1251,13 @@
 			isa = PBXGroup;
 			children = (
 				CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */,
-				CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */,
-				CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */,
-				CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */,
-				CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */,
-				78D7EEB41F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift */,
 				CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */,
-				CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift */,
-				CA81D4931FEA92EA00A52A2F /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift */,
 				CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */,
-				CAF9A94D1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift */,
 				CA804DD71F20D2E000E07A4A /* API */,
+				CA81D4951FEA950600A52A2F /* Authentication */,
+				CA81D4971FEA952D00A52A2F /* Notification Registration */,
 				781A94431F1A1DC6002DE70F /* Notifications */,
+				CA81D4961FEA951D00A52A2F /* Private Messages */,
 			);
 			path = "Application Tests";
 			sourceTree = "<group>";
@@ -1791,6 +1786,35 @@
 				CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */,
 			);
 			path = v2;
+			sourceTree = "<group>";
+		};
+		CA81D4951FEA950600A52A2F /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */,
+				CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		CA81D4961FEA951D00A52A2F /* Private Messages */ = {
+			isa = PBXGroup;
+			children = (
+				CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */,
+				CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift */,
+				CA81D4931FEA92EA00A52A2F /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift */,
+				CAF9A94D1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift */,
+			);
+			path = "Private Messages";
+			sourceTree = "<group>";
+		};
+		CA81D4971FEA952D00A52A2F /* Notification Registration */ = {
+			isa = PBXGroup;
+			children = (
+				CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */,
+				78D7EEB41F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift */,
+			);
+			path = "Notification Registration";
 			sourceTree = "<group>";
 		};
 		CA8E17EB1F817A5F003C348C /* Preload */ = {
