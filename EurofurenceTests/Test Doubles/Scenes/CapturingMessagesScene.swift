@@ -127,8 +127,9 @@ class CapturingMessagesSceneDelegate: MessagesSceneDelegate {
         capturedSelectedMessageIndexPath = indexPath
     }
     
+    private(set) var didPerformRefreshAction = false
     func messagesSceneDidPerformRefreshAction() {
-        
+        didPerformRefreshAction = true
     }
     
 }

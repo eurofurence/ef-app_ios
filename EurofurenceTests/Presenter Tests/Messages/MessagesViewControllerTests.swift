@@ -178,4 +178,13 @@ class MessagesViewControllerTests: XCTestCase {
         XCTAssertEqual(expected, viewController.title)
     }
     
+    func testPerformingPullToRefreshActionTellsDelegate() {
+        viewController.refreshIndicator.sendActions(for: .valueChanged)
+        XCTAssertTrue(delegate.didPerformRefreshAction)
+    }
+    
+    func testDelegateIsNotToldAboutPullToRefreshActionsWithoutThemHappening() {
+        XCTAssertFalse(delegate.didPerformRefreshAction)
+    }
+    
 }

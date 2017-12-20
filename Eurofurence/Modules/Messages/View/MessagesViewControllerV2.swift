@@ -20,6 +20,7 @@ class MessagesViewControllerV2: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        refreshIndicator.addTarget(self, action: #selector(refreshControlValueDidChange), for: .valueChanged)
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.addSubview(refreshIndicator)
@@ -68,6 +69,10 @@ class MessagesViewControllerV2: UIViewController,
 
     func hideNoMessagesPlaceholder() {
         noMessagesPlaceholder.isHidden = true
+    }
+
+    @objc private func refreshControlValueDidChange() {
+        delegate?.messagesSceneDidPerformRefreshAction()
     }
 
     private class MessagesTableViewDataSource: NSObject, UITableViewDataSource {
