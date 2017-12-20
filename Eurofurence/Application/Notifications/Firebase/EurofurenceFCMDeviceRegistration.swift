@@ -10,28 +10,29 @@ import Foundation
 
 struct EurofurenceFCMDeviceRegistration: FCMDeviceRegistration {
 
-    private var JSONSession: JSONSession
-
-    init(JSONSession: JSONSession) {
-        self.JSONSession = JSONSession
-    }
+    var JSONSession: JSONSession
+    private let jsonEncoder = JSONEncoder()
 
     func registerFCM(_ fcm: String,
                      topics: [FirebaseTopic],
                      authenticationToken: String?,
                      completionHandler: @escaping (Error?) -> Void) {
-        let formattedTopics = topics.map({ $0.description })
-        let jsonDictionary: [String : Any] = ["DeviceId": fcm, "Topics": formattedTopics]
-        let jsonData = try! JSONSerialization.data(withJSONObject: jsonDictionary, options: [])
+        let registrationRequest = Request(DeviceId: fcm, Topics: topics.map({ $0.description }))
+        let jsonData = try! jsonEncoder.encode(registrationRequest)
 
-        let loginURL = "https://app.eurofurence.org/api/v2/PushNotifications/FcmDeviceRegistration"
-        var request = JSONRequest(url: loginURL, body: jsonData)
+        let registrationURL = "https://app.eurofurence.org/api/v2/PushNotifications/FcmDeviceRegistration"
+        var request = JSONRequest(url: registrationURL, body: jsonData)
 
         if let token = authenticationToken {
             request.headers = ["Authorization": "Bearer \(token)"]
         }
 
-        JSONSession.post(request, completionHandler: { _, error in completionHandler(error) })
+        JSONSession.post(request, completionHandler: { (_, error) in completionHandler(error) })
+    }
+
+    private struct Request: Encodable {
+        var DeviceId: String
+        var Topics: [String]
     }
 
 }
