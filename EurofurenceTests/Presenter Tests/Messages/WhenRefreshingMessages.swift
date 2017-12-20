@@ -66,4 +66,20 @@ class WhenRefreshingMessages: XCTestCase {
         XCTAssertFalse(context.scene.didHideNoMessagesPlaceholder)
     }
     
+    func testWhenRefreshActionCompletesWithMessagesTheSceneIsToldToBindWithTheNumberOfMessages() {
+        let messages = AppDataBuilder.makeRandomNumberOfMessages()
+        context.privateMessagesService.succeedLastRefresh(messages: messages)
+        
+        XCTAssertEqual(messages.count, context.scene.boundMessageCount)
+    }
+    
+    func testWhenRefreshActionCompletesWithMessagesTheSceneIsToldToBindWithTheMessage() {
+        let message = AppDataBuilder.makeMessage()
+        context.privateMessagesService.succeedLastRefresh(messages: [message])
+        let component = CapturingMessageItemScene()
+        context.scene.capturedMessageItemBinder?.bind(component, toMessageAt: IndexPath(row: 0, section: 0))
+        
+        XCTAssertEqual(message.subject, component.capturedSubject)
+    }
+    
 }

@@ -53,6 +53,9 @@ class MessagesPresenter: MessagesSceneDelegate {
             self.scene.hideRefreshIndicator()
 
             if case .success(let messages) = result {
+                let binder = MessageBinder(messages: messages, dateFormatter: self.dateFormatter)
+                self.scene.bindMessages(count: messages.count, with: binder)
+
                 if messages.isEmpty {
                     self.scene.hideMessagesList()
                     self.scene.showNoMessagesPlaceholder()
