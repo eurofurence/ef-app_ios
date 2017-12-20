@@ -43,9 +43,66 @@ class WhenViewingMessagesAndLoggedIn: XCTestCase {
     
     func testWhenInstigatedRefreshThatFinishesTheSceneIsToldToHideTheRefreshIndicator() {
         context.scene.delegate?.messagesSceneDidPerformRefreshAction()
+        context.scene.reset()
         context.privateMessagesService.succeedLastRefresh()
         
         XCTAssertTrue(context.scene.wasToldToHideRefreshIndicator)
+    }
+    
+    func testWhenRefreshActionCompletesWithNoMessagesTheSceneIsToldToHideTheMessagesList() {
+        context.scene.delegate?.messagesSceneDidPerformRefreshAction()
+        context.scene.reset()
+        context.privateMessagesService.succeedLastRefresh()
+        
+        XCTAssertTrue(context.scene.didHideMessages)
+    }
+    
+    func testWhenRefreshActionCompletesWithNoMessagesTheSceneIsNotToldToShowTheMessagesList() {
+        context.scene.delegate?.messagesSceneDidPerformRefreshAction()
+        context.scene.reset()
+        context.privateMessagesService.succeedLastRefresh()
+        
+        XCTAssertFalse(context.scene.didShowMessages)
+    }
+    
+    func testWhenRefreshActionCompletesWithMessagesTheSceneIsToldToShowTheMessagesList() {
+        context.scene.delegate?.messagesSceneDidPerformRefreshAction()
+        context.scene.reset()
+        context.privateMessagesService.succeedLastRefresh(messages: [AppDataBuilder.makeMessage()])
+        
+        XCTAssertTrue(context.scene.didShowMessages)
+    }
+    
+    func testWhenRefreshActionCompletesWithNoMessagesTheSceneIsToldShowTheNoMessagesPlaceholder() {
+        context.scene.delegate?.messagesSceneDidPerformRefreshAction()
+        context.scene.reset()
+        context.privateMessagesService.succeedLastRefresh()
+        
+        XCTAssertTrue(context.scene.didShowNoMessagesPlaceholder)
+    }
+    
+    func testWhenRefreshActionCompletesWithMessagesTheSceneIsNotToldShowTheNoMessagesPlaceholder() {
+        context.scene.delegate?.messagesSceneDidPerformRefreshAction()
+        context.scene.reset()
+        context.privateMessagesService.succeedLastRefresh(messages: [AppDataBuilder.makeMessage()])
+        
+        XCTAssertFalse(context.scene.didShowNoMessagesPlaceholder)
+    }
+    
+    func testWhenRefreshActionCompletesWithMessageTheSceneIsToldHideTheNoMessagesPlaceholder() {
+        context.scene.delegate?.messagesSceneDidPerformRefreshAction()
+        context.scene.reset()
+        context.privateMessagesService.succeedLastRefresh(messages: [AppDataBuilder.makeMessage()])
+        
+        XCTAssertTrue(context.scene.didHideNoMessagesPlaceholder)
+    }
+    
+    func testWhenRefreshActionCompletesWithNoMessagesTheSceneIsNotToldHideTheNoMessagesPlaceholder() {
+        context.scene.delegate?.messagesSceneDidPerformRefreshAction()
+        context.scene.reset()
+        context.privateMessagesService.succeedLastRefresh()
+        
+        XCTAssertFalse(context.scene.didHideNoMessagesPlaceholder)
     }
     
 }

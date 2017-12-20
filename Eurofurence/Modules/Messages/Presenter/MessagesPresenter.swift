@@ -49,8 +49,18 @@ class MessagesPresenter: MessagesSceneDelegate {
     }
 
     func messagesSceneDidPerformRefreshAction() {
-        privateMessagesService.refreshMessages { (_) in
+        privateMessagesService.refreshMessages { (result) in
             self.scene.hideRefreshIndicator()
+
+            if case .success(let messages) = result {
+                if messages.isEmpty {
+                    self.scene.hideMessagesList()
+                    self.scene.showNoMessagesPlaceholder()
+                } else {
+                    self.scene.showMessagesList()
+                    self.scene.hideNoMessagesPlaceholder()
+                }
+            }
         }
     }
 
