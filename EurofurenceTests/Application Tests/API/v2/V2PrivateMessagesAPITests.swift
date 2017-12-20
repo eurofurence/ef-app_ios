@@ -36,7 +36,7 @@ class V2PrivateMessagesAPITests: XCTestCase {
         super.setUp()
         
         JSONSession = CapturingJSONSession()
-        api = V2PrivateMessagesAPI(JSONSession: JSONSession)
+        api = V2PrivateMessagesAPI(jsonSession: JSONSession)
     }
     
     private func makeCapturingObserverForResponse(_ response: String?) -> CapturingV2PrivateMessagesObserver {

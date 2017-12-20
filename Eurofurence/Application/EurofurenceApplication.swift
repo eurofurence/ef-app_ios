@@ -53,7 +53,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                                       clock: SystemClock(),
                                       loginCredentialStore: KeychainLoginCredentialStore(),
                                       loginAPI: V2LoginAPI(JSONSession: JSONSession),
-                                      privateMessagesAPI: V2PrivateMessagesAPI(JSONSession: JSONSession))
+                                      privateMessagesAPI: V2PrivateMessagesAPI(jsonSession: JSONSession))
     }()
 
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
