@@ -37,8 +37,8 @@ class MessagesPresenterTestsWhenBindingMessages: XCTestCase {
         context.scene.capturedMessageItemBinder?.bind(capturingMessageScene, toMessageAt: randomIndexPath)
     }
     
-    func testTheSceneIsProvidedWithTheMessageCountThroughTheBinder() {
-        XCTAssertEqual(allMessages.count, context.scene.capturedMessageItemBinder?.numberOfMessages)
+    func testTheSceneIsProvidedWithTheMessageCount() {
+        XCTAssertEqual(allMessages.count, context.scene.boundMessageCount)
     }
     
     func testTheSceneIsProvidedWithTheAuthor() {

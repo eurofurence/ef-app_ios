@@ -90,7 +90,9 @@ class MessagesPresenter: MessagesSceneDelegate {
 
     private func presentMessages(_ messages: [Message]) {
         presentedMessages = messages
-        scene.bindMessages(with: MessageBinder(messages: messages, dateFormatter: dateFormatter))
+
+        let binder = MessageBinder(messages: messages, dateFormatter: dateFormatter)
+        scene.bindMessages(count: messages.count, with: binder)
 
         if messages.isEmpty {
             scene.hideMessagesList()
@@ -105,10 +107,6 @@ class MessagesPresenter: MessagesSceneDelegate {
 
         var messages: [Message]
         var dateFormatter: DateFormatterProtocol
-
-        var numberOfMessages: Int {
-            return messages.count
-        }
 
         func bind(_ scene: MessageItemScene, toMessageAt indexPath: IndexPath) {
             let message = messages[indexPath[1]]

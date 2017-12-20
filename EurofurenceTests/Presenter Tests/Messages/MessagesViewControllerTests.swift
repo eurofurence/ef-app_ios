@@ -40,7 +40,7 @@ class MessagesViewControllerTests: XCTestCase {
     private func makeAndBindCell() -> (binder: StubMessageItemBinder, cell: MessageTableViewCell?) {
         let binder = StubMessageItemBinder()
         binder.numberOfMessages = 1
-        viewController.bindMessages(with: binder)
+        viewController.bindMessages(count: 1, with: binder)
         let firstIndexPath = IndexPath(row: 0, section: 0)
         let cell = viewController.tableView.cellForRow(at: firstIndexPath) as? MessageTableViewCell
         
@@ -81,10 +81,10 @@ class MessagesViewControllerTests: XCTestCase {
     
     func testBindingMessagesShouldUpdateNumberOfRowsInTableView() {
         let binder = StubMessageItemBinder()
-        binder.numberOfMessages = Random.makeRandomNumber(upperLimit: 10)
-        viewController.bindMessages(with: binder)
+        let messageCount = Random.makeRandomNumber(upperLimit: 10)
+        viewController.bindMessages(count: messageCount, with: binder)
         
-        XCTAssertEqual(binder.numberOfMessages, viewController.tableView.numberOfRows(inSection: 0))
+        XCTAssertEqual(messageCount, viewController.tableView.numberOfRows(inSection: 0))
     }
     
     func testBindingAuthorSetsItOntoCell() {
@@ -136,7 +136,7 @@ class MessagesViewControllerTests: XCTestCase {
     func testBindingMessagesShouldPassIndexPathOfCellToBinder() {
         let binder = StubMessageItemBinder()
         binder.numberOfMessages = 1
-        viewController.bindMessages(with: binder)
+        viewController.bindMessages(count: 1, with: binder)
         let firstIndexPath = IndexPath(row: 0, section: 0)
         _ = viewController.tableView.cellForRow(at: firstIndexPath)
         

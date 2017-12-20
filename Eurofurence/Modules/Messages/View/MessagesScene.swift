@@ -32,7 +32,7 @@ protocol MessagesScene: class {
     func showRefreshIndicator()
     func hideRefreshIndicator()
 
-    func bindMessages(with binder: MessageItemBinder)
+    func bindMessages(count: Int, with binder: MessageItemBinder)
 
     func showMessagesList()
     func hideMessagesList()
@@ -43,8 +43,6 @@ protocol MessagesScene: class {
 }
 
 protocol MessageItemBinder {
-
-    var numberOfMessages: Int { get }
 
     func bind(_ scene: MessageItemScene, toMessageAt indexPath: IndexPath)
 

@@ -38,8 +38,10 @@ class CapturingMessagesScene: UIViewController, MessagesScene {
         wasToldToHideRefreshIndicator = true
     }
     
+    private(set) var boundMessageCount: Int?
     private(set) var capturedMessageItemBinder: MessageItemBinder?
-    func bindMessages(with binder: MessageItemBinder) {
+    func bindMessages(count: Int, with binder: MessageItemBinder) {
+        boundMessageCount = count
         capturedMessageItemBinder = binder
     }
     

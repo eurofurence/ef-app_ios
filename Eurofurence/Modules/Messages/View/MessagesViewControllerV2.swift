@@ -48,8 +48,9 @@ class MessagesViewControllerV2: UIViewController,
         refreshIndicator.endRefreshing()
     }
 
-    func bindMessages(with binder: MessageItemBinder) {
+    func bindMessages(count: Int, with binder: MessageItemBinder) {
         dataSource.binder = binder
+        dataSource.messageCount = count
         tableView.reloadData()
     }
 
@@ -72,10 +73,11 @@ class MessagesViewControllerV2: UIViewController,
     private class MessagesTableViewDataSource: NSObject, UITableViewDataSource {
 
         var binder: MessageItemBinder?
+        var messageCount = 0
         private let cellReuseIdentifier = "MessageCell"
 
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return binder?.numberOfMessages ?? 0
+            return messageCount
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
