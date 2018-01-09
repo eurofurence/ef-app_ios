@@ -13,7 +13,6 @@ class LoginPresenter: LoginSceneDelegate {
     private let delegate: LoginModuleDelegate
     private let scene: LoginScene
     private let authenticationService: AuthenticationService
-    private let strings: PresentationStrings
     private let alertRouter: AlertRouter
     private lazy var validator = LoginValidator(validationHandler: self.loginValidationStateDidChange)
     private lazy var validationActions: [LoginValidator.Result : () -> Void] = [
@@ -90,12 +89,10 @@ class LoginPresenter: LoginSceneDelegate {
     init(delegate: LoginModuleDelegate,
          scene: LoginScene,
          authenticationService: AuthenticationService,
-         presentationStrings: PresentationStrings,
          alertRouter: AlertRouter) {
         self.delegate = delegate
         self.scene = scene
         self.authenticationService = authenticationService
-        self.strings = presentationStrings
         self.alertRouter = alertRouter
 
         scene.delegate = self
@@ -112,7 +109,7 @@ class LoginPresenter: LoginSceneDelegate {
     func loginSceneDidTapLoginButton() {
         guard let request = try? validator.makeLoginRequest() else { return }
 
-        var alert = Alert(title: strings[.loggingIn], message: strings[.loggingInDetail])
+        var alert = Alert(title: LocalizedStrings.loggingIn, message: LocalizedStrings.loggingInDetail)
         alert.onCompletedPresentation = { (dismissable) in
             self.authenticationService.perform(request) { (result) in
                 dismissable.dismiss {
@@ -121,9 +118,9 @@ class LoginPresenter: LoginSceneDelegate {
                         self.delegate.loginModuleDidLoginSuccessfully()
 
                     case .failure:
-                        let okayAction = AlertAction(title: self.strings[.ok])
-                        let loginErrorAlert = Alert(title: self.strings[.loginError],
-                                                    message: self.strings[.loginErrorDetail],
+                        let okayAction = AlertAction(title: LocalizedStrings.ok)
+                        let loginErrorAlert = Alert(title: LocalizedStrings.loginError,
+                                                    message: LocalizedStrings.loginErrorDetail,
                                                     actions: [okayAction])
                         self.alertRouter.show(loginErrorAlert)
                     }

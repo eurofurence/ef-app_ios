@@ -27,7 +27,6 @@ struct TutorialModule {
 
         let tutorialContext = TutorialPresentationContext(
             tutorialScene: routers.tutorialRouter.showTutorial(),
-            presentationStrings: context.presentationStrings,
             presentationAssets: context.presentationAssets,
             splashScreenRouter: routers.splashScreenRouter,
             alertRouter: routers.alertRouter,
@@ -41,7 +40,6 @@ struct TutorialModule {
 
     private let delegate: TutorialModuleDelegate
     private let tutorialSceneFactory: TutorialSceneFactory
-    private let presentationStrings: PresentationStrings
     private let presentationAssets: PresentationAssets
     private let alertRouter: AlertRouter
     private let tutorialStateProviding: UserCompletedTutorialStateProviding
@@ -51,7 +49,6 @@ struct TutorialModule {
 
     init(delegate: TutorialModuleDelegate,
          tutorialSceneFactory: TutorialSceneFactory,
-         presentationStrings: PresentationStrings,
          presentationAssets: PresentationAssets,
          alertRouter: AlertRouter,
          tutorialStateProviding: UserCompletedTutorialStateProviding,
@@ -60,7 +57,6 @@ struct TutorialModule {
          witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest) {
         self.delegate = delegate
         self.tutorialSceneFactory = tutorialSceneFactory
-        self.presentationStrings = presentationStrings
         self.presentationAssets = presentationAssets
         self.alertRouter = alertRouter
         self.tutorialStateProviding = tutorialStateProviding

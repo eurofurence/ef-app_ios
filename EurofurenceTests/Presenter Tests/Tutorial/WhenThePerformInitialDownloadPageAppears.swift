@@ -22,12 +22,12 @@ class WhenThePerformInitialDownloadPageAppears: XCTestCase {
     }
     
     func testShouldTellTheFirstTutorialPageToShowTheTitleForBeginningInitialLoad() {
-        XCTAssertEqual(context.strings[.tutorialInitialLoadTitle],
+        XCTAssertEqual(LocalizedStrings.tutorialInitialLoadTitle,
                        context.page.capturedPageTitle)
     }
     
     func testShouldTellTheFirstTutorialPageToShowTheDescriptionForBeginningInitialLoad() {
-        XCTAssertEqual(context.strings[.tutorialInitialLoadDescription],
+        XCTAssertEqual(LocalizedStrings.tutorialInitialLoadDescription,
                        context.page.capturedPageDescription)
     }
     
@@ -41,7 +41,7 @@ class WhenThePerformInitialDownloadPageAppears: XCTestCase {
     }
     
     func testShouldTellTheTutorialPageToShowTheBeginDownloadTextOnThePrimaryActionButton() {
-        XCTAssertEqual(context.strings[.tutorialInitialLoadBeginDownload],
+        XCTAssertEqual(LocalizedStrings.tutorialInitialLoadBeginDownload,
                        context.page.capturedPrimaryActionDescription)
     }
     

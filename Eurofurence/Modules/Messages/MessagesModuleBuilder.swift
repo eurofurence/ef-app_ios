@@ -14,14 +14,12 @@ class MessagesModuleBuilder {
     private var authenticationService: AuthenticationService
     private var privateMessagesService: PrivateMessagesService
     private var dateFormatter: DateFormatterProtocol
-    private var presentationStrings: PresentationStrings
 
     init() {
         sceneFactory = PhoneMessagesSceneFactory()
         authenticationService = ApplicationAuthenticationService.shared
         privateMessagesService = EurofurencePrivateMessagesService.shared
         dateFormatter = DateFormatter()
-        presentationStrings = UnlocalizedPresentationStrings()
     }
 
     func with(_ sceneFactory: MessagesSceneFactory) -> MessagesModuleBuilder {
@@ -45,17 +43,11 @@ class MessagesModuleBuilder {
         return self
     }
 
-    func with(_ presentationStrings: PresentationStrings) -> MessagesModuleBuilder {
-        self.presentationStrings = presentationStrings
-        return self
-    }
-
     func build() -> MessagesModuleProviding {
         return PhoneMessagesModuleFactory(sceneFactory: sceneFactory,
                                           authenticationService: authenticationService,
                                           privateMessagesService: privateMessagesService,
-                                          dateFormatter: dateFormatter,
-                                          presentationStrings: presentationStrings)
+                                          dateFormatter: dateFormatter)
     }
 
 }

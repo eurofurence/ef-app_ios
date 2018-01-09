@@ -13,7 +13,6 @@ struct PresentationTestContext {
 
     var applicationContext: ApplicationContext
     var routers: Routers
-    var presentationStrings: PresentationStrings
     var presentationAssets: PresentationAssets
 
     func bootstrap() {
@@ -28,7 +27,6 @@ class PresentationTestBuilder {
     private var firstTimeLaunchProviding: UserCompletedTutorialStateProviding
     private var witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
     private var quoteGenerator: QuoteGenerator
-    private var presentationStrings: PresentationStrings
     private var presentationAssets: PresentationAssets
     private var networkReachability: NetworkReachability
     private var pushPermissionsRequesting: PushPermissionsRequesting
@@ -38,7 +36,6 @@ class PresentationTestBuilder {
         firstTimeLaunchProviding = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
         witnessedTutorialPushPermissionsRequest = UserNotAcknowledgedPushPermissions()
         quoteGenerator = CapturingQuoteGenerator()
-        presentationStrings = StubPresentationStrings()
         presentationAssets = StubPresentationAssets()
         networkReachability = ReachableWiFiNetwork()
         pushPermissionsRequesting = CapturingPushPermissionsRequesting()
@@ -83,14 +80,12 @@ class PresentationTestBuilder {
         let appContext = ApplicationContext(firstTimeLaunchProviding: firstTimeLaunchProviding,
                                             witnessedTutorialPushPermissionsRequest: witnessedTutorialPushPermissionsRequest,
                                             quoteGenerator: quoteGenerator,
-                                            presentationStrings: presentationStrings,
                                             presentationAssets: presentationAssets,
                                             networkReachability: networkReachability,
                                             pushPermissionsRequesting: pushPermissionsRequesting)
 
         return PresentationTestContext(applicationContext: appContext,
                                        routers: routers,
-                                       presentationStrings: presentationStrings,
                                        presentationAssets: presentationAssets)
     }
 

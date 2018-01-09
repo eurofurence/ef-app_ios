@@ -12,20 +12,17 @@ struct PreloadPresenter: SplashSceneDelegate, PreloadServiceDelegate {
     private let preloadScene: SplashScene
     private let preloadService: PreloadService
     private let alertRouter: AlertRouter
-    private let presentationStrings: PresentationStrings
     private let quote: Quote
 
     init(delegate: PreloadModuleDelegate,
          preloadScene: SplashScene,
          preloadService: PreloadService,
          alertRouter: AlertRouter,
-         quote: Quote,
-         presentationStrings: PresentationStrings) {
+         quote: Quote) {
         self.delegate = delegate
         self.preloadScene = preloadScene
         self.preloadService = preloadService
         self.alertRouter = alertRouter
-        self.presentationStrings = presentationStrings
         self.quote = quote
 
         preloadScene.delegate = self
@@ -38,10 +35,10 @@ struct PreloadPresenter: SplashSceneDelegate, PreloadServiceDelegate {
     }
 
     func preloadServiceDidFail() {
-        let tryAgainAction = AlertAction(title: presentationStrings[.tryAgain], action: beginPreloading)
-        let cancelAction = AlertAction(title: presentationStrings[.cancel], action: notifyDelegatePreloadingCancelled)
-        let alert = Alert(title: presentationStrings[.downloadError],
-                          message: presentationStrings[.preloadFailureMessage],
+        let tryAgainAction = AlertAction(title: LocalizedStrings.tryAgain, action: beginPreloading)
+        let cancelAction = AlertAction(title: LocalizedStrings.cancel, action: notifyDelegatePreloadingCancelled)
+        let alert = Alert(title: LocalizedStrings.downloadError,
+                          message: LocalizedStrings.preloadFailureMessage,
                           actions: [tryAgainAction, cancelAction])
         alertRouter.show(alert)
     }

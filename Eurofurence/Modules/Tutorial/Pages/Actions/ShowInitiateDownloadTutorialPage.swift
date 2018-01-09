@@ -13,7 +13,6 @@ struct ShowInitiateDownloadTutorialPage: TutorialPageDelegate {
     var splashScreenRouter: SplashScreenRouter
     var alertRouter: AlertRouter
     var presentationAssets: PresentationAssets
-    var presentationStrings: PresentationStrings
     var networkReachability: NetworkReachability
     var tutorialStateProviding: UserCompletedTutorialStateProviding
 
@@ -25,7 +24,6 @@ struct ShowInitiateDownloadTutorialPage: TutorialPageDelegate {
                                                   tutorialScene: tutorialScene,
                                                   alertRouter: alertRouter,
                                                   presentationAssets: presentationAssets,
-                                                  presentationStrings: presentationStrings,
                                                   networkReachability: networkReachability)
     }
 

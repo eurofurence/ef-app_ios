@@ -17,7 +17,6 @@ class TutorialModuleTestBuilder {
         var delegate: CapturingTutorialModuleDelegate
         var tutorial: CapturingTutorialScene
         var page: CapturingTutorialPageScene
-        var strings: PresentationStrings
         var assets: PresentationAssets
         var alertRouter: CapturingAlertRouter
         var tutorialStateProviding: StubFirstTimeLaunchStateProvider
@@ -27,7 +26,6 @@ class TutorialModuleTestBuilder {
     let alertRouter = CapturingAlertRouter()
     let stateProviding = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
     let pushRequesting = CapturingPushPermissionsRequesting()
-    let presentationStrings = StubPresentationStrings()
     let presentationAssets = StubPresentationAssets()
     let tutorialSceneFactory = StubTutorialSceneFactory()
     let delegate = CapturingTutorialModuleDelegate()
@@ -49,7 +47,6 @@ class TutorialModuleTestBuilder {
     func build() -> TutorialModuleTestBuilder.Context {
         let vc = TutorialModuleBuilder()
             .with(tutorialSceneFactory)
-            .with(presentationStrings)
             .with(presentationAssets)
             .with(alertRouter)
             .with(stateProviding)
@@ -64,7 +61,6 @@ class TutorialModuleTestBuilder {
                        delegate: delegate,
                        tutorial: tutorialSceneFactory.tutorialScene,
                        page: tutorialSceneFactory.tutorialScene.tutorialPage,
-                       strings: presentationStrings,
                        assets: presentationAssets,
                        alertRouter: alertRouter,
                        tutorialStateProviding: stateProviding,

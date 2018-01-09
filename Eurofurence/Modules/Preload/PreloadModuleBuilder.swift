@@ -14,14 +14,12 @@ class PreloadModuleBuilder {
     private var preloadService: PreloadService
     private var alertRouter: AlertRouter
     private var quoteGenerator: QuoteGenerator
-    private var presentationStrings: PresentationStrings
 
     init() {
         preloadSceneFactory = PhonePreloadSceneFactory()
         preloadService = LegacyPreloadService()
         alertRouter = WindowAlertRouter.shared
         quoteGenerator = EgyptianQuoteGenerator()
-        presentationStrings = UnlocalizedPresentationStrings()
     }
 
     func with(_ preloadSceneFactory: PreloadSceneFactory) -> PreloadModuleBuilder {
@@ -44,17 +42,11 @@ class PreloadModuleBuilder {
         return self
     }
 
-    func with(_ presentationStrings: PresentationStrings) -> PreloadModuleBuilder {
-        self.presentationStrings = presentationStrings
-        return self
-    }
-
     func build() -> PreloadModuleProviding {
         return PhonePreloadModuleFactory(preloadSceneFactory: preloadSceneFactory,
                                          preloadService: preloadService,
                                          alertRouter: alertRouter,
-                                         quoteGenerator: quoteGenerator,
-                                         presentationStrings: presentationStrings)
+                                         quoteGenerator: quoteGenerator)
 
     }
 

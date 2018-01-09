@@ -39,7 +39,6 @@ class TutorialPresenter {
                                                   tutorialScene: context.tutorialScene,
                                                   alertRouter: context.alertRouter,
                                                   presentationAssets: context.presentationAssets,
-                                                  presentationStrings: context.presentationStrings,
                                                   networkReachability: context.networkReachability)
     }
 
@@ -49,12 +48,10 @@ class TutorialPresenter {
                                                         splashScreenRouter: context.splashScreenRouter,
                                                         alertRouter: context.alertRouter,
                                                         presentationAssets: context.presentationAssets,
-                                                        presentationStrings: context.presentationStrings,
                                                         networkReachability: context.networkReachability,
                                                         tutorialStateProviding: context.tutorialStateProviding)
         _ = RequestPushPermissionsTutorialPagePresenter(delegate: delegate,
                                                         tutorialScene: context.tutorialScene,
-                                                        presentationStrings: context.presentationStrings,
                                                         presentationAssets: context.presentationAssets,
                                                         witnessedTutorialPushPermissionsRequest: context.witnessedTutorialPushPermissionsRequest,
                                                         pushPermissionsRequesting: context.pushPermissionsRequesting)

@@ -25,7 +25,7 @@ class WhenViewingMessagesWhileLoggedOut: XCTestCase {
     }
     
     func testTheMessagesTitleIsSetOntoTheScene() {
-        XCTAssertEqual(context.strings[.messages], context.scene.capturedTitle)
+        XCTAssertEqual(LocalizedStrings.messages, context.scene.capturedTitle)
     }
     
     func testTheAuthServiceDoesNotDetermineAuthStateUntilTheSceneWillAppear() {

@@ -14,40 +14,37 @@ struct InitiateDownloadTutorialPagePresenter: TutorialPage,
     private var delegate: TutorialPageDelegate
     private var networkReachability: NetworkReachability
     private var alertRouter: AlertRouter
-    private var presentationStrings: PresentationStrings
 
     init(delegate: TutorialPageDelegate,
          tutorialScene: TutorialScene,
          alertRouter: AlertRouter,
          presentationAssets: PresentationAssets,
-         presentationStrings: PresentationStrings,
          networkReachability: NetworkReachability) {
         self.delegate = delegate
         self.alertRouter = alertRouter
-        self.presentationStrings = presentationStrings
         self.networkReachability = networkReachability
 
         var tutorialPage = tutorialScene.showTutorialPage()
         tutorialPage.tutorialPageSceneDelegate = self
         tutorialPage.showPageImage(presentationAssets.initialLoadInformationAsset)
-        tutorialPage.showPageTitle(presentationStrings[.tutorialInitialLoadTitle])
-        tutorialPage.showPageDescription(presentationStrings[.tutorialInitialLoadDescription])
+        tutorialPage.showPageTitle(LocalizedStrings.tutorialInitialLoadTitle)
+        tutorialPage.showPageDescription(LocalizedStrings.tutorialInitialLoadDescription)
         tutorialPage.showPrimaryActionButton()
-        tutorialPage.showPrimaryActionDescription(presentationStrings[.tutorialInitialLoadBeginDownload])
+        tutorialPage.showPrimaryActionDescription(LocalizedStrings.tutorialInitialLoadBeginDownload)
     }
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
         if networkReachability.wifiReachable {
             delegate.tutorialPageCompletedByUser(self)
         } else {
-            let allowDownloadMessage = presentationStrings[.cellularDownloadAlertContinueOverCellularTitle]
+            let allowDownloadMessage = LocalizedStrings.cellularDownloadAlertContinueOverCellularTitle
             let allowDownloadOverCellular = AlertAction(title: allowDownloadMessage, action: {
                 self.delegate.tutorialPageCompletedByUser(self)
             })
-            let cancel = AlertAction(title: presentationStrings[.cancel])
+            let cancel = AlertAction(title: LocalizedStrings.cancel)
 
-            let alert = Alert(title: presentationStrings[.cellularDownloadAlertTitle],
-                              message: presentationStrings[.cellularDownloadAlertMessage],
+            let alert = Alert(title: LocalizedStrings.cellularDownloadAlertTitle,
+                              message: LocalizedStrings.cellularDownloadAlertMessage,
                               actions: [allowDownloadOverCellular, cancel])
             alertRouter.show(alert)
         }

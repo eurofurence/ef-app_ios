@@ -43,7 +43,6 @@ struct MessagesPresenterTestContext {
     let delegate = CapturingMessagesModuleDelegate()
     var privateMessagesService = CapturingPrivateMessagesService()
     let dateFormatter = CapturingDateFormatter()
-    let strings = StubPresentationStrings()
     
     var scene: CapturingMessagesScene {
         return sceneFactory.scene
@@ -72,7 +71,6 @@ struct MessagesPresenterTestContext {
             .with(StubAuthenticationService(authState: authState))
             .with(privateMessagesService)
             .with(dateFormatter)
-            .with(strings)
             .build()
             .makeMessagesModule(delegate)
     }

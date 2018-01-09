@@ -9,7 +9,6 @@
 class TutorialModuleBuilder {
 
     private var tutorialSceneFactory: TutorialSceneFactory
-    private var presentationStrings: PresentationStrings
     private var presentationAssets: PresentationAssets
     private var alertRouter: AlertRouter
     private var tutorialStateProviding: UserCompletedTutorialStateProviding
@@ -19,7 +18,6 @@ class TutorialModuleBuilder {
 
     init() {
         tutorialSceneFactory = PhoneTutorialSceneFactory()
-        presentationStrings = UnlocalizedPresentationStrings()
         presentationAssets = ApplicationPresentationAssets()
         alertRouter = WindowAlertRouter.shared
         tutorialStateProviding = UserDefaultsTutorialStateProvider(userDefaults: .standard)
@@ -30,11 +28,6 @@ class TutorialModuleBuilder {
 
     func with(_ tutorialSceneFactory: TutorialSceneFactory) -> TutorialModuleBuilder {
         self.tutorialSceneFactory = tutorialSceneFactory
-        return self
-    }
-
-    func with(_ presentationStrings: PresentationStrings) -> TutorialModuleBuilder {
-        self.presentationStrings = presentationStrings
         return self
     }
 
@@ -70,7 +63,6 @@ class TutorialModuleBuilder {
 
     func build() -> TutorialModuleProviding {
         return PhoneTutorialModuleFactory(tutorialSceneFactory: tutorialSceneFactory,
-                                          presentationStrings: presentationStrings,
                                           presentationAssets: presentationAssets,
                                           alertRouter: alertRouter,
                                           tutorialStateProviding: tutorialStateProviding,

@@ -14,7 +14,6 @@ struct PhonePreloadModuleFactory: PreloadModuleProviding {
     var preloadService: PreloadService
     var alertRouter: AlertRouter
     var quoteGenerator: QuoteGenerator
-    var presentationStrings: PresentationStrings
 
     func makePreloadModule(_ delegate: PreloadModuleDelegate) -> UIViewController {
         let preloadScene = preloadSceneFactory.makePreloadScene()
@@ -22,8 +21,7 @@ struct PhonePreloadModuleFactory: PreloadModuleProviding {
                              preloadScene: preloadScene,
                              preloadService: preloadService,
                              alertRouter: alertRouter,
-                             quote: quoteGenerator.makeQuote(),
-                             presentationStrings: presentationStrings)
+                             quote: quoteGenerator.makeQuote())
 
         return preloadScene
     }

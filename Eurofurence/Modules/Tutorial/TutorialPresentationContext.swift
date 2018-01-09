@@ -11,7 +11,6 @@ import Foundation
 struct TutorialPresentationContext {
 
     var tutorialScene: TutorialScene
-    var presentationStrings: PresentationStrings
     var presentationAssets: PresentationAssets
     var splashScreenRouter: SplashScreenRouter
     var alertRouter: AlertRouter

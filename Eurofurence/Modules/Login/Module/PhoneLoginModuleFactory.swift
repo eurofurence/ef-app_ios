@@ -12,7 +12,6 @@ struct PhoneLoginModuleFactory: LoginModuleProviding {
 
     var sceneFactory: LoginSceneFactory
     var authenticationService: AuthenticationService
-    var presentationStrings: PresentationStrings
     var alertRouter: AlertRouter
 
     func makeLoginModule(_ delegate: LoginModuleDelegate) -> UIViewController {
@@ -20,7 +19,6 @@ struct PhoneLoginModuleFactory: LoginModuleProviding {
         _ = LoginPresenter(delegate: delegate,
                            scene: scene,
                            authenticationService: authenticationService,
-                           presentationStrings: presentationStrings,
                            alertRouter: alertRouter)
 
         return scene

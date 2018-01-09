@@ -10,13 +10,11 @@ class LoginModuleBuilder {
 
     private var sceneFactory: LoginSceneFactory
     private var authenticationService: AuthenticationService
-    private var presentationStrings: PresentationStrings
     private var alertRouter: AlertRouter
 
     init() {
         sceneFactory = LoginViewControllerV2Factory()
         authenticationService = ApplicationAuthenticationService.shared
-        presentationStrings = UnlocalizedPresentationStrings()
         alertRouter = WindowAlertRouter.shared
     }
 
@@ -30,11 +28,6 @@ class LoginModuleBuilder {
         return self
     }
 
-    func with(_ presentationStrings: PresentationStrings) -> LoginModuleBuilder {
-        self.presentationStrings = presentationStrings
-        return self
-    }
-
     func with(_ alertRouter: AlertRouter) -> LoginModuleBuilder {
         self.alertRouter = alertRouter
         return self
@@ -43,7 +36,6 @@ class LoginModuleBuilder {
     func build() -> LoginModuleProviding {
         return PhoneLoginModuleFactory(sceneFactory: sceneFactory,
                                        authenticationService: authenticationService,
-                                       presentationStrings: presentationStrings,
                                        alertRouter: alertRouter)
     }
 

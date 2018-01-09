@@ -13,7 +13,6 @@ struct ApplicationContext {
     var firstTimeLaunchProviding: UserCompletedTutorialStateProviding
     var witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
     var quoteGenerator: QuoteGenerator
-    var presentationStrings: PresentationStrings
     var presentationAssets: PresentationAssets
     var networkReachability: NetworkReachability
     var pushPermissionsRequesting: PushPermissionsRequesting
@@ -21,14 +20,12 @@ struct ApplicationContext {
     init(firstTimeLaunchProviding: UserCompletedTutorialStateProviding,
          witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest,
          quoteGenerator: QuoteGenerator,
-         presentationStrings: PresentationStrings,
          presentationAssets: PresentationAssets,
          networkReachability: NetworkReachability,
          pushPermissionsRequesting: PushPermissionsRequesting) {
         self.firstTimeLaunchProviding = firstTimeLaunchProviding
         self.witnessedTutorialPushPermissionsRequest = witnessedTutorialPushPermissionsRequest
         self.quoteGenerator = quoteGenerator
-        self.presentationStrings = presentationStrings
         self.presentationAssets = presentationAssets
         self.networkReachability = networkReachability
         self.pushPermissionsRequesting = pushPermissionsRequesting

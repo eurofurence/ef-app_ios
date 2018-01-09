@@ -34,13 +34,13 @@ class WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork: XCTestCase
     
     func testTappingThePrimaryButtonTellsAlertRouterToShowAlertWithWarnUserAboutCellularDownloadsTitle() {
         context.page.simulateTappingPrimaryActionButton()
-        XCTAssertEqual(context.strings[.cellularDownloadAlertTitle],
+        XCTAssertEqual(LocalizedStrings.cellularDownloadAlertTitle,
                        context.alertRouter.presentedAlertTitle)
     }
     
     func testTappingThePrimaryButtonTellsAlertRouterToShowAlertWithWarnUserAboutCellularDownloadsMessage() {
         context.page.simulateTappingPrimaryActionButton()
-        XCTAssertEqual(context.strings[.cellularDownloadAlertMessage],
+        XCTAssertEqual(LocalizedStrings.cellularDownloadAlertMessage,
                        context.alertRouter.presentedAlertMessage)
     }
     
@@ -48,7 +48,7 @@ class WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork: XCTestCase
         context.page.simulateTappingPrimaryActionButton()
         let action = context.alertRouter.presentedActions.first
         
-        XCTAssertEqual(context.strings[.cellularDownloadAlertContinueOverCellularTitle],
+        XCTAssertEqual(LocalizedStrings.cellularDownloadAlertContinueOverCellularTitle,
                        action?.title)
     }
     
@@ -56,7 +56,7 @@ class WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork: XCTestCase
         context.page.simulateTappingPrimaryActionButton()
         let action = context.alertRouter.presentedActions.last
         
-        XCTAssertEqual(context.strings[.cancel], action?.title)
+        XCTAssertEqual(LocalizedStrings.cancel, action?.title)
     }
     
     func testTappingThePrimaryButtonThenInvokingFirstActionShouldTellTheDelegateTheTutorialFinished() {

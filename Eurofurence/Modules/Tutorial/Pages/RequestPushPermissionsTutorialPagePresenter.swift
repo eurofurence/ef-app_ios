@@ -9,32 +9,29 @@
 struct RequestPushPermissionsTutorialPagePresenter: TutorialPage, TutorialPageSceneDelegate {
 
     private var delegate: TutorialPageDelegate
-    private var presentationStrings: PresentationStrings
     private var presentationAssets: PresentationAssets
     private var witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
     private var pushPermissionsRequesting: PushPermissionsRequesting
 
     init(delegate: TutorialPageDelegate,
          tutorialScene: TutorialScene,
-         presentationStrings: PresentationStrings,
          presentationAssets: PresentationAssets,
          witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest,
          pushPermissionsRequesting: PushPermissionsRequesting) {
         self.delegate = delegate
-        self.presentationStrings = presentationStrings
         self.presentationAssets = presentationAssets
         self.witnessedTutorialPushPermissionsRequest = witnessedTutorialPushPermissionsRequest
         self.pushPermissionsRequesting = pushPermissionsRequesting
 
         var tutorialPage = tutorialScene.showTutorialPage()
         tutorialPage.tutorialPageSceneDelegate = self
-        tutorialPage.showPageTitle(presentationStrings[.tutorialPushPermissionsRequestTitle])
-        tutorialPage.showPageDescription(presentationStrings[.tutorialPushPermissionsRequestDescription])
+        tutorialPage.showPageTitle(LocalizedStrings.tutorialPushPermissionsRequestTitle)
+        tutorialPage.showPageDescription(LocalizedStrings.tutorialPushPermissionsRequestDescription)
         tutorialPage.showPageImage(presentationAssets.requestPushNotificationPermissionsAsset)
         tutorialPage.showPrimaryActionButton()
-        tutorialPage.showPrimaryActionDescription(presentationStrings[.tutorialAllowPushPermissions])
+        tutorialPage.showPrimaryActionDescription(LocalizedStrings.tutorialAllowPushPermissions)
         tutorialPage.showSecondaryActionButton()
-        tutorialPage.showSecondaryActionDescription(presentationStrings[.tutorialDenyPushPermissions])
+        tutorialPage.showSecondaryActionDescription(LocalizedStrings.tutorialDenyPushPermissions)
     }
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {

@@ -12,7 +12,6 @@ import UIKit
 struct PhoneTutorialModuleFactory: TutorialModuleProviding {
 
     var tutorialSceneFactory: TutorialSceneFactory
-    var presentationStrings: PresentationStrings
     var presentationAssets: PresentationAssets
     var alertRouter: AlertRouter
     var tutorialStateProviding: UserCompletedTutorialStateProviding
@@ -46,7 +45,6 @@ struct PhoneTutorialModuleFactory: TutorialModuleProviding {
         let tutorialScene = tutorialSceneFactory.makeTutorialScene()
         let tutorialContext = TutorialPresentationContext(
             tutorialScene: tutorialScene,
-            presentationStrings: presentationStrings,
             presentationAssets: presentationAssets,
             splashScreenRouter: DummySplashScreenRouter(),
             alertRouter: alertRouter,
