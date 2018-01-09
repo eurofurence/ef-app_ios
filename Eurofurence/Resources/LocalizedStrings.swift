@@ -43,12 +43,19 @@ public extension String {
 
     public static let messages = string("Messages", comment: "Messages")
 
+    private struct Formatters {
+        static var numbers = NumberFormatter()
+    }
+
     internal static func welcomePrompt(for user: User) -> String {
-        return localizedStringWithFormat(authenticatedUserLoginPromptFormat, user.username, user.registrationNumber)
+        return localizedStringWithFormat(authenticatedUserLoginPromptFormat,
+                                         user.username,
+                                         Formatters.numbers.string(from: NSNumber(value: user.registrationNumber))!)
     }
 
     internal static func welcomeDescription(messageCount: Int) -> String {
-        return localizedStringWithFormat(authentiatedUserLoginDescriptionFormat, messageCount)
+        return localizedStringWithFormat(authentiatedUserLoginDescriptionFormat,
+                                         Formatters.numbers.string(from: NSNumber(value: messageCount))!)
     }
 
     private static func string(_ key: String, comment: String) -> String {
