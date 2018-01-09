@@ -26,6 +26,8 @@
 "anonymousUserLoginPrompt" = "You are currently not logged in";
 "anonymousUserLoginDescription" = "Tap here to login using your registration details and receive personalized messages from Eurofurence!";
 
+"authenticatedUserLoginPromptFormat" = "Welcome, %@ (%li)";
+
 "downloadError" = "Download Error";
 "preloadFailureMessage" = "Failed to download data from server. Please try again.";
 "loggingIn" = "Logging In";

@@ -93,14 +93,6 @@ class NewsPresenterTestsForLoggedInUser: XCTestCase {
         XCTAssertFalse(context.newsScene.wasToldToHideMessagesNavigationAction)
     }
     
-    func testTheWelcomePromptStringFactoryShouldGeneratePromptUsingLoggedInUser() {
-        let user = User(registrationNumber: 42, username: "Cool dude")
-        let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
-        NewsPresenterTestContext.makeTestCaseForAuthenticatedUser(user, welcomePromptStringFactory: welcomePromptStringFactory)
-        
-        XCTAssertEqual(user, welcomePromptStringFactory.capturedWelcomePromptUser)
-    }
-    
     func testTheWelcomePromptStringFactoryShouldGenerateDescriptionUsingUnreadMessageCount() {
         let unreadCount = Random.makeRandomNumber()
         let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
@@ -114,9 +106,10 @@ class NewsPresenterTestsForLoggedInUser: XCTestCase {
         let expected = "Welcome to the world of tomorrow"
         let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
         welcomePromptStringFactory.stubbedUserString = expected
-        let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser(welcomePromptStringFactory: welcomePromptStringFactory)
+        let user = User(registrationNumber: 42, username: "User")
+        let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser(user, welcomePromptStringFactory: welcomePromptStringFactory)
         
-        XCTAssertEqual(expected, context.newsScene.capturedWelcomePrompt)
+        XCTAssertEqual(context.newsScene.capturedWelcomePrompt, .welcomePrompt(for: user))
     }
     
     func testTheWelcomeDescriptionShouldbeSourcedFromTheWelcomePromptStringFactory() {

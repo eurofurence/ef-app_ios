@@ -63,7 +63,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessageUnreadCountObse
     func userDidLogin(_ user: User) {
         newsScene.showMessagesNavigationAction()
         newsScene.hideLoginNavigationAction()
-        newsScene.showWelcomePrompt(welcomePromptStringFactory.makeString(for: user))
+        newsScene.showWelcomePrompt(.welcomePrompt(for: user))
         updateWelcomeDescriptionWithUnreadMessages(count: privateMessagesService.unreadMessageCount)
     }
 
