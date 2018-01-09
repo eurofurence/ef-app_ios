@@ -630,14 +630,14 @@
 		9ACB006E1F16C945001CE9D2 /* EventFavorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFavorite.swift; sourceTree = "<group>"; };
 		9ACB010B1F18FAB3001CE9D2 /* EventFavoritesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFavoritesService.swift; sourceTree = "<group>"; };
 		9ACF99341EBE172D006FC958 /* Eurofurence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eurofurence.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9ACF99371EBE172D006FC958 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Eurofurence/AppDelegate.swift; sourceTree = "<group>"; };
+		9ACF99371EBE172D006FC958 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9ACF993E1EBE172D006FC958 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Eurofurence/Assets.xcassets; sourceTree = "<group>"; };
 		9ACF99411EBE172D006FC958 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9ACF99431EBE172D006FC958 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Eurofurence/Info.plist; sourceTree = "<group>"; };
+		9ACF99431EBE172D006FC958 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9ACF99481EBE172D006FC958 /* EurofurenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ACF994E1EBE172D006FC958 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9ACF995C1EBE3479006FC958 /* EntityBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityBase.swift; sourceTree = "<group>"; };
-		9ACF99751EBE3B4C006FC958 /* SharedFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedFunctions.swift; path = Eurofurence/SharedFunctions.swift; sourceTree = "<group>"; };
+		9ACF99751EBE3B4C006FC958 /* SharedFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedFunctions.swift; sourceTree = "<group>"; };
 		9ACF99811EC858B2006FC958 /* KnowledgeGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeGroup.swift; sourceTree = "<group>"; };
 		9ACF99821EC858B2006FC958 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		9ACF99831EC858B2006FC958 /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
@@ -1409,10 +1409,7 @@
 			children = (
 				9ACF99361EBE172D006FC958 /* Eurofurence */,
 				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
-				9ACF99371EBE172D006FC958 /* AppDelegate.swift */,
-				9ACF99431EBE172D006FC958 /* Info.plist */,
 				78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */,
-				9ACF99751EBE3B4C006FC958 /* SharedFunctions.swift */,
 				CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */,
 				9ACF994B1EBE172D006FC958 /* EurofurenceTests */,
 				78D7EEA21F17F40C005372A9 /* EurofurenceUITests */,
@@ -1438,6 +1435,9 @@
 		9ACF99361EBE172D006FC958 /* Eurofurence */ = {
 			isa = PBXGroup;
 			children = (
+				9ACF99371EBE172D006FC958 /* AppDelegate.swift */,
+				9ACF99431EBE172D006FC958 /* Info.plist */,
+				9ACF99751EBE3B4C006FC958 /* SharedFunctions.swift */,
 				78D7EEB61F196B1F005372A9 /* Application */,
 				9ACF99571EBE32ED006FC958 /* DataModel */,
 				9ACF99771EBE4B98006FC958 /* DataStore */,
