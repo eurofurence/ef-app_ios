@@ -77,8 +77,8 @@ class NewsPresenterTestsForLoggedInUser: XCTestCase {
     
     func testTheWelcomeDescriptionShouldbeSourcedUsingTheUnreadMessageCount() {
         let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser()
-        XCTAssertEqual(context.newsScene.capturedWelcomeDescription,
-                       .welcomeDescription(messageCount: context.privateMessagesService.unreadMessageCount))
+        
+        XCTAssertEqual("", context.newsScene.capturedWelcomeDescription)
     }
     
     func testWhenAuthServiceIndicatesUserLoggedOutTheSceneIsToldToShowTheLoginNavigationAction() {

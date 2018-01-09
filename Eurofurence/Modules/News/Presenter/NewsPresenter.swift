@@ -61,7 +61,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessageUnreadCountObse
         newsScene.showMessagesNavigationAction()
         newsScene.hideLoginNavigationAction()
         newsScene.showWelcomePrompt(.welcomePrompt(for: user))
-        newsScene.showWelcomeDescription(.welcomeDescription(messageCount: privateMessagesService.unreadMessageCount))
+        newsScene.showWelcomeDescription("")
     }
 
     func userDidLogout() {
