@@ -96,7 +96,7 @@ class PreloadPresenterTests: XCTestCase {
         context.preloadSceneFactory.splashScene.notifySceneWillAppear()
         context.preloadingService.notifyFailedToPreload()
         
-        XCTAssertEqual(LocalizedStrings.downloadError,
+        XCTAssertEqual(.downloadError,
                        context.alertRouter.presentedAlertTitle)
     }
     
@@ -105,7 +105,7 @@ class PreloadPresenterTests: XCTestCase {
         context.preloadSceneFactory.splashScene.notifySceneWillAppear()
         context.preloadingService.notifyFailedToPreload()
         
-        XCTAssertEqual(LocalizedStrings.preloadFailureMessage,
+        XCTAssertEqual(.preloadFailureMessage,
                        context.alertRouter.presentedAlertMessage)
     }
     
@@ -114,8 +114,7 @@ class PreloadPresenterTests: XCTestCase {
         context.preloadSceneFactory.splashScene.notifySceneWillAppear()
         context.preloadingService.notifyFailedToPreload()
         
-        XCTAssertEqual(LocalizedStrings.tryAgain,
-                       context.alertRouter.presentedActions.first?.title)
+        XCTAssertEqual(context.alertRouter.presentedActions.first?.title, .tryAgain)
     }
     
     func testWhenThePreloadServiceFailsTheAlertRouterIsToldToShowAlertWithCancelAction() {
@@ -123,8 +122,7 @@ class PreloadPresenterTests: XCTestCase {
         context.preloadSceneFactory.splashScene.notifySceneWillAppear()
         context.preloadingService.notifyFailedToPreload()
         
-        XCTAssertEqual(LocalizedStrings.cancel,
-                       context.alertRouter.presentedActions.last?.title)
+        XCTAssertEqual(context.alertRouter.presentedActions.last?.title, .cancel)
     }
     
     func testWhenThePreloadServiceSucceedsTheAlertRouterIsNotToldToShowAlert() {
@@ -139,8 +137,7 @@ class PreloadPresenterTests: XCTestCase {
         let context = PreloadPresenterTestContext().build()
         context.preloadSceneFactory.splashScene.notifySceneWillAppear()
         context.preloadingService.notifyFailedToPreload()
-        let cancelTitle = LocalizedStrings.cancel
-        context.alertRouter.capturedAction(title: cancelTitle)?.invoke()
+        context.alertRouter.capturedAction(title: .cancel)?.invoke()
         
         XCTAssertTrue(context.delegate.notifiedPreloadCancelled)
     }
@@ -157,8 +154,7 @@ class PreloadPresenterTests: XCTestCase {
         let context = PreloadPresenterTestContext().build()
         context.preloadSceneFactory.splashScene.notifySceneWillAppear()
         context.preloadingService.notifyFailedToPreload()
-        let tryAgainTitle = LocalizedStrings.tryAgain
-        context.alertRouter.capturedAction(title: tryAgainTitle)?.invoke()
+        context.alertRouter.capturedAction(title: .tryAgain)?.invoke()
         
         XCTAssertEqual(2, context.preloadingService.beginPreloadInvocationCount)
     }

@@ -33,7 +33,7 @@ class MessagesPresenter: MessagesSceneDelegate {
         self.delegate = delegate
 
         scene.delegate = self
-        scene.setMessagesTitle(LocalizedStrings.messages)
+        scene.setMessagesTitle(.messages)
     }
 
     // MARK: MessagesSceneDelegate

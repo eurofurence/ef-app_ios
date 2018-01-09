@@ -109,7 +109,7 @@ class LoginPresenter: LoginSceneDelegate {
     func loginSceneDidTapLoginButton() {
         guard let request = try? validator.makeLoginRequest() else { return }
 
-        var alert = Alert(title: LocalizedStrings.loggingIn, message: LocalizedStrings.loggingInDetail)
+        var alert = Alert(title: .loggingIn, message: .loggingInDetail)
         alert.onCompletedPresentation = { (dismissable) in
             self.authenticationService.perform(request) { (result) in
                 dismissable.dismiss {
@@ -118,9 +118,9 @@ class LoginPresenter: LoginSceneDelegate {
                         self.delegate.loginModuleDidLoginSuccessfully()
 
                     case .failure:
-                        let okayAction = AlertAction(title: LocalizedStrings.ok)
-                        let loginErrorAlert = Alert(title: LocalizedStrings.loginError,
-                                                    message: LocalizedStrings.loginErrorDetail,
+                        let okayAction = AlertAction(title: .ok)
+                        let loginErrorAlert = Alert(title: .loginError,
+                                                    message: .loginErrorDetail,
                                                     actions: [okayAction])
                         self.alertRouter.show(loginErrorAlert)
                     }

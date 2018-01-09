@@ -19,12 +19,12 @@ class WhenThePushNotificationPermissionsPageAppears: XCTestCase {
     }
     
     func testThePushPermissionsTitleIsSetAsTheTitle() {
-        XCTAssertEqual(LocalizedStrings.tutorialPushPermissionsRequestTitle,
+        XCTAssertEqual(.tutorialPushPermissionsRequestTitle,
                        context.page.capturedPageTitle)
     }
     
     func testThePushPermissionsDescriptionIsSetAsTheDescription() {
-        XCTAssertEqual(LocalizedStrings.tutorialPushPermissionsRequestDescription,
+        XCTAssertEqual(.tutorialPushPermissionsRequestDescription,
                        context.page.capturedPageDescription)
     }
     
@@ -38,7 +38,7 @@ class WhenThePushNotificationPermissionsPageAppears: XCTestCase {
     }
     
     func testThePrimaryActionButtonShouldHaveTheAllowPushPermissionsStringAsTheTitle() {
-        XCTAssertEqual(LocalizedStrings.tutorialAllowPushPermissions,
+        XCTAssertEqual(.tutorialAllowPushPermissions,
                        context.page.capturedPrimaryActionDescription)
     }
     
@@ -47,7 +47,7 @@ class WhenThePushNotificationPermissionsPageAppears: XCTestCase {
     }
     
     func testTheSecondaryActionButtonShouldHaveTheDenyPushPermissionsStringAsTheTitle() {
-        XCTAssertEqual(LocalizedStrings.tutorialDenyPushPermissions,
+        XCTAssertEqual(.tutorialDenyPushPermissions,
                        context.page.capturedSecondaryActionDescription)
     }
     

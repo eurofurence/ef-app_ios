@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct LocalizedStrings {
+public extension String {
 
     public static let ok = string("ok", comment: "OK")
     public static let cancel = string("cancel", comment: "Cancel")

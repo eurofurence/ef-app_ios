@@ -25,13 +25,13 @@ struct RequestPushPermissionsTutorialPagePresenter: TutorialPage, TutorialPageSc
 
         var tutorialPage = tutorialScene.showTutorialPage()
         tutorialPage.tutorialPageSceneDelegate = self
-        tutorialPage.showPageTitle(LocalizedStrings.tutorialPushPermissionsRequestTitle)
-        tutorialPage.showPageDescription(LocalizedStrings.tutorialPushPermissionsRequestDescription)
+        tutorialPage.showPageTitle(.tutorialPushPermissionsRequestTitle)
+        tutorialPage.showPageDescription(.tutorialPushPermissionsRequestDescription)
         tutorialPage.showPageImage(presentationAssets.requestPushNotificationPermissionsAsset)
         tutorialPage.showPrimaryActionButton()
-        tutorialPage.showPrimaryActionDescription(LocalizedStrings.tutorialAllowPushPermissions)
+        tutorialPage.showPrimaryActionDescription(.tutorialAllowPushPermissions)
         tutorialPage.showSecondaryActionButton()
-        tutorialPage.showSecondaryActionDescription(LocalizedStrings.tutorialDenyPushPermissions)
+        tutorialPage.showSecondaryActionDescription(.tutorialDenyPushPermissions)
     }
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {

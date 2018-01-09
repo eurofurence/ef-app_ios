@@ -205,7 +205,7 @@ class LoginPresenterTests: XCTestCase {
         inputValidCredentials()
         tapLoginButton()
         
-        XCTAssertEqual(LocalizedStrings.loggingIn, alertRouter.presentedAlertTitle)
+        XCTAssertEqual(.loggingIn, alertRouter.presentedAlertTitle)
     }
     
     func testTappingLoginButtonWaitsForAlertPresentationToFinishBeforeAskingServiceToLogin() {
@@ -220,7 +220,7 @@ class LoginPresenterTests: XCTestCase {
         inputValidCredentials()
         tapLoginButton()
         
-        XCTAssertEqual(LocalizedStrings.loggingInDetail, alertRouter.presentedAlertMessage)
+        XCTAssertEqual(.loggingInDetail, alertRouter.presentedAlertMessage)
     }
     
     func testLoginServiceSucceedsWithLoginTellsAlertToDismiss() {
@@ -245,7 +245,7 @@ class LoginPresenterTests: XCTestCase {
         simulateLoginFailure()
         dismissLastAlert()
         
-        XCTAssertEqual(LocalizedStrings.loginError, alertRouter.presentedAlertTitle)
+        XCTAssertEqual(.loginError, alertRouter.presentedAlertTitle)
     }
     
     func testLoginSucceedsDoesNotShowLoginFailedAlert() {
@@ -254,7 +254,7 @@ class LoginPresenterTests: XCTestCase {
         simulateLoginSuccess()
         dismissLastAlert()
         
-        XCTAssertNotEqual(LocalizedStrings.loginError, alertRouter.presentedAlertTitle)
+        XCTAssertNotEqual(.loginError, alertRouter.presentedAlertTitle)
     }
     
     func testLoginErrorAlertIsNotShownUntilPreviousAlertIsDismissed() {
@@ -262,7 +262,7 @@ class LoginPresenterTests: XCTestCase {
         tapLoginButton()
         simulateLoginFailure()
         
-        XCTAssertNotEqual(LocalizedStrings.loginError, alertRouter.presentedAlertTitle)
+        XCTAssertNotEqual(.loginError, alertRouter.presentedAlertTitle)
     }
     
     func testLoginServiceFailsToLoginShowsAlertWithLoginErrorDetail() {
@@ -271,7 +271,7 @@ class LoginPresenterTests: XCTestCase {
         simulateLoginFailure()
         dismissLastAlert()
         
-        XCTAssertEqual(LocalizedStrings.loginErrorDetail, alertRouter.presentedAlertMessage)
+        XCTAssertEqual(.loginErrorDetail, alertRouter.presentedAlertMessage)
     }
     
     func testLoginServiceFailsToLoginShowsAlertWithOKAction() {
@@ -280,7 +280,7 @@ class LoginPresenterTests: XCTestCase {
         simulateLoginFailure()
         dismissLastAlert()
         
-        XCTAssertNotNil(alertRouter.capturedAction(title: LocalizedStrings.ok))
+        XCTAssertNotNil(alertRouter.capturedAction(title: .ok))
     }
     
     func testLoginServiceSucceedsTellsDelegateLoginSucceeded() {

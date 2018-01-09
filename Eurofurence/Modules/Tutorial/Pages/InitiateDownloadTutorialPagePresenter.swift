@@ -27,24 +27,23 @@ struct InitiateDownloadTutorialPagePresenter: TutorialPage,
         var tutorialPage = tutorialScene.showTutorialPage()
         tutorialPage.tutorialPageSceneDelegate = self
         tutorialPage.showPageImage(presentationAssets.initialLoadInformationAsset)
-        tutorialPage.showPageTitle(LocalizedStrings.tutorialInitialLoadTitle)
-        tutorialPage.showPageDescription(LocalizedStrings.tutorialInitialLoadDescription)
+        tutorialPage.showPageTitle(.tutorialInitialLoadTitle)
+        tutorialPage.showPageDescription(.tutorialInitialLoadDescription)
         tutorialPage.showPrimaryActionButton()
-        tutorialPage.showPrimaryActionDescription(LocalizedStrings.tutorialInitialLoadBeginDownload)
+        tutorialPage.showPrimaryActionDescription(.tutorialInitialLoadBeginDownload)
     }
 
     func tutorialPageSceneDidTapPrimaryActionButton(_ tutorialPageScene: TutorialPageScene) {
         if networkReachability.wifiReachable {
             delegate.tutorialPageCompletedByUser(self)
         } else {
-            let allowDownloadMessage = LocalizedStrings.cellularDownloadAlertContinueOverCellularTitle
-            let allowDownloadOverCellular = AlertAction(title: allowDownloadMessage, action: {
+            let allowDownloadOverCellular = AlertAction(title: .cellularDownloadAlertContinueOverCellularTitle, action: {
                 self.delegate.tutorialPageCompletedByUser(self)
             })
-            let cancel = AlertAction(title: LocalizedStrings.cancel)
+            let cancel = AlertAction(title: .cancel)
 
-            let alert = Alert(title: LocalizedStrings.cellularDownloadAlertTitle,
-                              message: LocalizedStrings.cellularDownloadAlertMessage,
+            let alert = Alert(title: .cellularDownloadAlertTitle,
+                              message: .cellularDownloadAlertMessage,
                               actions: [allowDownloadOverCellular, cancel])
             alertRouter.show(alert)
         }
