@@ -71,7 +71,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessageUnreadCountObse
         newsScene.showLoginNavigationAction()
         newsScene.hideMessagesNavigationAction()
         newsScene.showLoginPrompt(.anonymousUserLoginPrompt)
-        newsScene.showLoginDescription(welcomePromptStringFactory.makeDescriptionForAnonymousUser())
+        newsScene.showLoginDescription(.anonymousUserLoginDescription)
     }
 
     // MARK: PrivateMessageUnreadCountObserver

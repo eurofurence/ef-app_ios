@@ -51,7 +51,7 @@ class NewsPresenterTestsForAnonymousUser: XCTestCase {
         welcomePromptStringFactory.stubbedLoginDescriptionString = expected
         let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser(welcomePromptStringFactory: welcomePromptStringFactory)
         
-        XCTAssertEqual(expected, context.newsScene.capturedLoginDescription)
+        XCTAssertEqual(context.newsScene.capturedLoginDescription, .anonymousUserLoginDescription)
     }
     
     func testTheNewsSceneIsNotToldToPresentWelcomeDesciption() {
