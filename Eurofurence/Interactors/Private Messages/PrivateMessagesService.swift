@@ -26,7 +26,6 @@ enum PrivateMessagesRefreshResult: Equatable {
 
 protocol PrivateMessagesService {
 
-    var unreadMessageCount: Int { get }
     var localMessages: [Message] { get }
 
     func add(_ unreadMessageCountObserver: PrivateMessageUnreadCountObserver)

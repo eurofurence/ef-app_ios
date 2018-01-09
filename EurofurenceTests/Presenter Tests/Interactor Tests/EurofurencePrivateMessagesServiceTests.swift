@@ -31,19 +31,27 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
     }
     
     func testUnreadCountEqualsExpectedCountWithUnreadMessages() {
+        let observer = CapturingPrivateMessageUnreadCountObserver()
+        service.add(observer)
         let unreadMessageCount = Random.makeRandomNumber(upperLimit: 10)
         let messages = (0..<unreadMessageCount).map({ _ in AppDataBuilder.makeMessage(read: false) })
         app.localPrivateMessages = messages
+        service.refreshMessages(completionHandler: { (_) in })
+        app.resolvePrivateMessagesFetch(.success(messages))
         
-        XCTAssertEqual(unreadMessageCount, service.unreadMessageCount)
+        XCTAssertEqual(unreadMessageCount, observer.capturedUnreadMessagesCount)
     }
     
     func testUnreadCountEqualsOneWithTwoMessagesWhereOneIsAlreadyRead() {
+        let observer = CapturingPrivateMessageUnreadCountObserver()
+        service.add(observer)
         let unreadMessage = AppDataBuilder.makeMessage(read: false)
         let readMessage = AppDataBuilder.makeMessage(read: true)
         app.localPrivateMessages = [unreadMessage, readMessage]
+        service.refreshMessages(completionHandler: { (_) in })
+        app.resolvePrivateMessagesFetch(.success([unreadMessage, readMessage]))
         
-        XCTAssertEqual(1, service.unreadMessageCount)
+        XCTAssertEqual(1, observer.capturedUnreadMessagesCount)
     }
     
     func testRefreshingPrivateMessagesWhenUserNotAuthenticatedShouldInvokeHandlerWithFailure() {

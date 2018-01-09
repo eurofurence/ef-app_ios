@@ -17,10 +17,6 @@ class EurofurencePrivateMessagesService: PrivateMessagesService {
         self.app = app
     }
 
-    var unreadMessageCount: Int {
-        return app.localPrivateMessages.filter(isUnread).count
-    }
-
     var localMessages: [Message] {
         return app.localPrivateMessages
     }
@@ -48,7 +44,8 @@ class EurofurencePrivateMessagesService: PrivateMessagesService {
     }
 
     private func provideUnreadMessageCount(to unreadMessageCountObserver: PrivateMessageUnreadCountObserver) {
-        unreadMessageCountObserver.unreadPrivateMessagesCountDidChange(to: unreadMessageCount)
+        let count = app.localPrivateMessages.filter(isUnread).count
+        unreadMessageCountObserver.unreadPrivateMessagesCountDidChange(to: count)
     }
 
 }
