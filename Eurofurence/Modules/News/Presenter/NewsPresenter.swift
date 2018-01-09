@@ -64,7 +64,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessageUnreadCountObse
         newsScene.showMessagesNavigationAction()
         newsScene.hideLoginNavigationAction()
         newsScene.showWelcomePrompt(.welcomePrompt(for: user))
-        updateWelcomeDescriptionWithUnreadMessages(count: privateMessagesService.unreadMessageCount)
+        newsScene.showWelcomeDescription(.welcomeDescription(messageCount: privateMessagesService.unreadMessageCount))
     }
 
     func userDidLogout() {
@@ -77,7 +77,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessageUnreadCountObse
     // MARK: PrivateMessageUnreadCountObserver
 
     func unreadPrivateMessagesCountDidChange(to unreadCount: Int) {
-        updateWelcomeDescriptionWithUnreadMessages(count: unreadCount)
+        newsScene.showWelcomeDescription(.welcomeDescription(messageCount: unreadCount))
     }
 
     // MARK: NewsSceneDelegate
@@ -105,11 +105,6 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessageUnreadCountObse
         case .loggedOut:
             userDidLogout()
         }
-    }
-
-    private func updateWelcomeDescriptionWithUnreadMessages(count: Int) {
-        let unreadMessagesDescription = welcomePromptStringFactory.makeDescriptionForUnreadMessages(count)
-        newsScene.showWelcomeDescription(unreadMessagesDescription)
     }
 
 }

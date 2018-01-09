@@ -10,7 +10,8 @@
 
 struct NewsPresenterTestContext {
     
-    var authService: StubAuthenticationService
+    let authService: StubAuthenticationService
+    let privateMessagesService: CapturingPrivateMessagesService
     let sceneFactory = StubNewsSceneFactory()
     let delegate = CapturingNewsModuleDelegate()
     
@@ -19,7 +20,7 @@ struct NewsPresenterTestContext {
     @discardableResult
     static func makeTestCaseForAuthenticatedUser(_ user: User = User(registrationNumber: 42, username: ""),
                                                  welcomePromptStringFactory: WelcomePromptStringFactory = DummyWelcomePromptStringFactory(),
-                                                 privateMessagesService: PrivateMessagesService = DummyPrivateMessagesService()) -> NewsPresenterTestContext {
+                                                 privateMessagesService: CapturingPrivateMessagesService = CapturingPrivateMessagesService()) -> NewsPresenterTestContext {
         return NewsPresenterTestContext(authenticationService: StubAuthenticationService(authState: .loggedIn(user)),
                                         welcomePromptStringFactory: welcomePromptStringFactory,
                                         privateMessagesService: privateMessagesService)
@@ -29,13 +30,14 @@ struct NewsPresenterTestContext {
     static func makeTestCaseForAnonymousUser(welcomePromptStringFactory: WelcomePromptStringFactory = DummyWelcomePromptStringFactory()) -> NewsPresenterTestContext {
         return NewsPresenterTestContext(authenticationService: StubAuthenticationService(authState: .loggedOut),
                                         welcomePromptStringFactory: welcomePromptStringFactory,
-                                        privateMessagesService: DummyPrivateMessagesService())
+                                        privateMessagesService: CapturingPrivateMessagesService())
     }
     
     private init(authenticationService: StubAuthenticationService,
                  welcomePromptStringFactory: WelcomePromptStringFactory,
-                 privateMessagesService: PrivateMessagesService) {
+                 privateMessagesService: CapturingPrivateMessagesService) {
         self.authService = authenticationService
+        self.privateMessagesService = privateMessagesService
         _ = NewsModuleBuilder()
             .with(sceneFactory)
             .with(authenticationService)

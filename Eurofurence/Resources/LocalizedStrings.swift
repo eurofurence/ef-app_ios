@@ -34,6 +34,7 @@ public extension String {
     public static let anonymousUserLoginDescription = string("anonymousUserLoginDescription", comment: "Additional information for logged out users")
 
     public static let authenticatedUserLoginPromptFormat = string("authenticatedUserLoginPromptFormat", comment: "Prompt displayed for logged in users, showing their username and registration number")
+    public static let authentiatedUserLoginDescriptionFormat = string("authentiatedUserLoginDescriptionFormat", comment: "Prompt displayed to logged in users telling them how many unread messages they have")
 
     public static let loggingIn = string("loggingIn", comment: "Logging In")
     public static let loggingInDetail = string("loggingInDetail", comment: "This may take a few moments")
@@ -44,6 +45,10 @@ public extension String {
 
     internal static func welcomePrompt(for user: User) -> String {
         return localizedStringWithFormat(authenticatedUserLoginPromptFormat, user.username, user.registrationNumber)
+    }
+
+    internal static func welcomeDescription(messageCount: Int) -> String {
+        return localizedStringWithFormat(authentiatedUserLoginDescriptionFormat, messageCount)
     }
 
     private static func string(_ key: String, comment: String) -> String {
