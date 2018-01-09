@@ -149,7 +149,7 @@ class NewsPresenterTestsForLoggedInUser: XCTestCase {
         let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser(welcomePromptStringFactory: welcomePromptStringFactory)
         context.authService.notifyObserversUserDidLogout()
         
-        XCTAssertEqual(expected, context.newsScene.capturedLoginPrompt)
+        XCTAssertEqual(context.newsScene.capturedLoginPrompt, .anonymousUserLoginPrompt)
     }
     
     func testWhenTheShowMessagesActionIsTappedTheShowMessagesCommandIsRan() {

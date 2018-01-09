@@ -30,6 +30,8 @@ public extension String {
     public static let downloadError = string("downloadError", comment: "Download Error")
     public static let preloadFailureMessage = string("preloadFailureMessage", comment: "Failed to download data from server. Please try again.")
 
+    public static let anonymousUserLoginPrompt = string("anonymousUserLoginPrompt", comment: "Tells user to login for additional features")
+
     public static let loggingIn = string("loggingIn", comment: "Logging In")
     public static let loggingInDetail = string("loggingInDetail", comment: "This may take a few moments")
     public static let loginError = string("loginError", comment: "Login Error")

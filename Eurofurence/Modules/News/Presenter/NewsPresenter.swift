@@ -70,7 +70,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessageUnreadCountObse
     func userDidLogout() {
         newsScene.showLoginNavigationAction()
         newsScene.hideMessagesNavigationAction()
-        newsScene.showLoginPrompt(welcomePromptStringFactory.makeStringForAnonymousUser())
+        newsScene.showLoginPrompt(.anonymousUserLoginPrompt)
         newsScene.showLoginDescription(welcomePromptStringFactory.makeDescriptionForAnonymousUser())
     }
 
