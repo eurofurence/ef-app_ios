@@ -146,8 +146,7 @@ class NewsTableViewController: UITableViewController,
         presenter = NewsPresenter(delegate: DummyNewsModuleDelegate(),
                                   newsScene: self,
                                   authenticationService: ApplicationAuthenticationService(app: app),
-                                  privateMessagesService: EurofurencePrivateMessagesService(app: app),
-                                  welcomePromptStringFactory: UnlocalizedWelcomePromptStringFactory())
+                                  privateMessagesService: EurofurencePrivateMessagesService(app: app))
     }
 
 	@IBAction func favoritesOnlyFilterChanged(_ sender: UISegmentedControl) {

@@ -36,21 +36,13 @@ class NewsPresenterTestsForAnonymousUser: XCTestCase {
         XCTAssertTrue(context.newsScene.wasToldToHideMessagesNavigationAction)
     }
     
-    func testTheNewsSceneIsToldToShowWelcomePromptWithLoginHintFromStringFactory() {
-        let expected = "You should totes login"
-        let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
-        welcomePromptStringFactory.stubbedLoginString = expected
-        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser(welcomePromptStringFactory: welcomePromptStringFactory)
-        
+    func testTheNewsSceneIsToldToShowWelcomePrompt() {
+        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
         XCTAssertEqual(context.newsScene.capturedLoginPrompt, .anonymousUserLoginPrompt)
     }
     
-    func testTheNewsSceneIsToldToShowWelcomeDescriptionWithLoginDescriptionFromStringFactory() {
-        let expected = "Because it's awesome"
-        let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
-        welcomePromptStringFactory.stubbedLoginDescriptionString = expected
-        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser(welcomePromptStringFactory: welcomePromptStringFactory)
-        
+    func testTheNewsSceneIsToldToShowWelcomeDescription() {
+        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
         XCTAssertEqual(context.newsScene.capturedLoginDescription, .anonymousUserLoginDescription)
     }
     
@@ -73,11 +65,8 @@ class NewsPresenterTestsForAnonymousUser: XCTestCase {
         XCTAssertTrue(context.newsScene.wasToldToHideLoginNavigationAction)
     }
     
-    func testWhenAuthServiceIndicatesUserLoggedInTheWelcomePromptShouldBeSourcedFromTheStringFactory() {
-        let expected = "Welcome to the world of tomorrow"
-        let welcomePromptStringFactory = CapturingWelcomePromptStringFactory()
-        welcomePromptStringFactory.stubbedUserString = expected
-        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser(welcomePromptStringFactory: welcomePromptStringFactory)
+    func testWhenAuthServiceIndicatesUserLoggedInTheWelcomePromptShouldBeSourcedUsingTheUser() {
+        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
         let user = User(registrationNumber: 42, username: "Test")
         context.authService.notifyObserversUserDidLogin(user)
         

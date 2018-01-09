@@ -19,7 +19,6 @@ class NewsPresenterTests: XCTestCase {
             .with(sceneFactory)
             .with(authenticationService)
             .with(CapturingPrivateMessagesService())
-            .with(CapturingWelcomePromptStringFactory())
             .build()
             .makeNewsModule(delegate)
         
@@ -34,7 +33,6 @@ class NewsPresenterTests: XCTestCase {
             .with(sceneFactory)
             .with(authenticationService)
             .with(CapturingPrivateMessagesService())
-            .with(CapturingWelcomePromptStringFactory())
             .build()
             .makeNewsModule(delegate)
         sceneFactory.stubbedScene.delegate?.newsSceneWillAppear()

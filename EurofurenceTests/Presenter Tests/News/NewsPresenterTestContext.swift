@@ -19,22 +19,18 @@ struct NewsPresenterTestContext {
     
     @discardableResult
     static func makeTestCaseForAuthenticatedUser(_ user: User = User(registrationNumber: 42, username: ""),
-                                                 welcomePromptStringFactory: WelcomePromptStringFactory = DummyWelcomePromptStringFactory(),
                                                  privateMessagesService: CapturingPrivateMessagesService = CapturingPrivateMessagesService()) -> NewsPresenterTestContext {
         return NewsPresenterTestContext(authenticationService: StubAuthenticationService(authState: .loggedIn(user)),
-                                        welcomePromptStringFactory: welcomePromptStringFactory,
-                                        privateMessagesService: privateMessagesService)
+                                      privateMessagesService: privateMessagesService)
     }
     
     @discardableResult
-    static func makeTestCaseForAnonymousUser(welcomePromptStringFactory: WelcomePromptStringFactory = DummyWelcomePromptStringFactory()) -> NewsPresenterTestContext {
+    static func makeTestCaseForAnonymousUser() -> NewsPresenterTestContext {
         return NewsPresenterTestContext(authenticationService: StubAuthenticationService(authState: .loggedOut),
-                                        welcomePromptStringFactory: welcomePromptStringFactory,
-                                        privateMessagesService: CapturingPrivateMessagesService())
+                                      privateMessagesService: CapturingPrivateMessagesService())
     }
     
     private init(authenticationService: StubAuthenticationService,
-                 welcomePromptStringFactory: WelcomePromptStringFactory,
                  privateMessagesService: CapturingPrivateMessagesService) {
         self.authService = authenticationService
         self.privateMessagesService = privateMessagesService
@@ -42,7 +38,6 @@ struct NewsPresenterTestContext {
             .with(sceneFactory)
             .with(authenticationService)
             .with(privateMessagesService)
-            .with(welcomePromptStringFactory)
             .build()
             .makeNewsModule(delegate)
         sceneFactory.stubbedScene.delegate?.newsSceneWillAppear()

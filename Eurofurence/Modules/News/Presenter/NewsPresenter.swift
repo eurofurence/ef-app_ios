@@ -35,7 +35,6 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessageUnreadCountObse
     private let authenticationService: AuthenticationService
     private let delegate: NewsModuleDelegate
     private let newsScene: NewsScene
-    private let welcomePromptStringFactory: WelcomePromptStringFactory
     private let privateMessagesService: PrivateMessagesService
     private let determineAuthStateOnce: DetermineAuthStateOnce
 
@@ -44,12 +43,10 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessageUnreadCountObse
     init(delegate: NewsModuleDelegate,
          newsScene: NewsScene,
          authenticationService: AuthenticationService,
-         privateMessagesService: PrivateMessagesService,
-         welcomePromptStringFactory: WelcomePromptStringFactory) {
+         privateMessagesService: PrivateMessagesService) {
         self.delegate = delegate
         self.newsScene = newsScene
         self.authenticationService = authenticationService
-        self.welcomePromptStringFactory = welcomePromptStringFactory
         self.privateMessagesService = privateMessagesService
 
         determineAuthStateOnce = DetermineAuthStateOnce(authenticationService: authenticationService)
