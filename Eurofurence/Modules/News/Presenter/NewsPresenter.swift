@@ -81,6 +81,10 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
 
     }
 
+    func privateMessagesServiceDidFailToLoadMessages() {
+
+    }
+
     // MARK: NewsSceneDelegate
 
     func newsSceneWillAppear() {

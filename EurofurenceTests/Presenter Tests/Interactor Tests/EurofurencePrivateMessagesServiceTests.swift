@@ -20,6 +20,10 @@ class CapturingPrivateMessageUnreadCountObserver: PrivateMessagesServiceObserver
         
     }
     
+    func privateMessagesServiceDidFailToLoadMessages() {
+        
+    }
+    
 }
 
 class EurofurencePrivateMessagesServiceTests: XCTestCase {

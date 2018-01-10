@@ -63,6 +63,10 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesServiceObserver {
         presentMessages(messages)
     }
 
+    func privateMessagesServiceDidFailToLoadMessages() {
+        scene.hideRefreshIndicator()
+    }
+
     // MARK: Private
 
     private func authStateResolved(_ state: AuthState) {

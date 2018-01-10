@@ -37,5 +37,6 @@ protocol PrivateMessagesServiceObserver {
 
     func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int)
     func privateMessagesServiceDidFinishRefreshingMessages(_ messages: [Message])
+    func privateMessagesServiceDidFailToLoadMessages()
 
 }

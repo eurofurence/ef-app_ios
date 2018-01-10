@@ -33,7 +33,7 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
     }
         
     func failLastRefresh() {
-        completionHandler?(.failure)
+        unreadMessageCountObservers.forEach { $0.privateMessagesServiceDidFailToLoadMessages() }
     }
     
     func succeedLastRefresh(messages: [Message] = []) {
