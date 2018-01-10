@@ -11,7 +11,7 @@ class EurofurencePrivateMessagesService: PrivateMessagesService {
     static var shared = EurofurencePrivateMessagesService(app: EurofurenceApplication.shared)
 
     private let app: EurofurenceApplicationProtocol
-    private var unreadMessageCountObservers = [PrivateMessagesServiceObserver]()
+    private var observers = [PrivateMessagesServiceObserver]()
 
     init(app: EurofurenceApplicationProtocol) {
         self.app = app
@@ -21,20 +21,20 @@ class EurofurencePrivateMessagesService: PrivateMessagesService {
         return app.localPrivateMessages
     }
 
-    func add(_ unreadMessageCountObserver: PrivateMessagesServiceObserver) {
-        unreadMessageCountObservers.append(unreadMessageCountObserver)
-        provideUnreadMessageCount(to: unreadMessageCountObserver)
+    func add(_ observer: PrivateMessagesServiceObserver) {
+        observers.append(observer)
+        provideUnreadMessageCount(to: observer)
     }
 
     func refreshMessages() {
         app.fetchPrivateMessages { (result) in
             switch result {
             case .success(let messages):
-                self.unreadMessageCountObservers.forEach({ $0.privateMessagesServiceDidFinishRefreshingMessages(messages) })
-                self.unreadMessageCountObservers.forEach(self.provideUnreadMessageCount)
+                self.observers.forEach({ $0.privateMessagesServiceDidFinishRefreshingMessages(messages) })
+                self.observers.forEach(self.provideUnreadMessageCount)
 
             default:
-                self.unreadMessageCountObservers.forEach({ $0.privateMessagesServiceDidFailToLoadMessages() })
+                self.observers.forEach({ $0.privateMessagesServiceDidFailToLoadMessages() })
             }
         }
     }

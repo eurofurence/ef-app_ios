@@ -25,21 +25,21 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
         refreshMessagesCount += 1
     }
     
-    private var unreadMessageCountObservers = [PrivateMessagesServiceObserver]()
-    func add(_ unreadMessageCountObserver: PrivateMessagesServiceObserver) {
-        unreadMessageCountObservers.append(unreadMessageCountObserver)
+    private var observers = [PrivateMessagesServiceObserver]()
+    func add(_ observer: PrivateMessagesServiceObserver) {
+        observers.append(observer)
     }
         
     func failLastRefresh() {
-        unreadMessageCountObservers.forEach { $0.privateMessagesServiceDidFailToLoadMessages() }
+        observers.forEach { $0.privateMessagesServiceDidFailToLoadMessages() }
     }
     
     func succeedLastRefresh(messages: [Message] = []) {
-        unreadMessageCountObservers.forEach { $0.privateMessagesServiceDidFinishRefreshingMessages(messages) }
+        observers.forEach { $0.privateMessagesServiceDidFinishRefreshingMessages(messages) }
     }
     
     func notifyUnreadCountDidChange(to count: Int) {
-        unreadMessageCountObservers.forEach { $0.privateMessagesServiceDidUpdateUnreadMessageCount(to: count) }
+        observers.forEach { $0.privateMessagesServiceDidUpdateUnreadMessageCount(to: count) }
     }
     
 }

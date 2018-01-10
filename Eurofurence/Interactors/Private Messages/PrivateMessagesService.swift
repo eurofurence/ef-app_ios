@@ -10,7 +10,7 @@ protocol PrivateMessagesService {
 
     var localMessages: [Message] { get }
 
-    func add(_ unreadMessageCountObserver: PrivateMessagesServiceObserver)
+    func add(_ observer: PrivateMessagesServiceObserver)
     func refreshMessages()
 
 }
