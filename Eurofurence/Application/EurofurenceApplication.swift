@@ -135,7 +135,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             privateMessagesAPI.loadPrivateMessages(authorizationToken: token) { response in
                 switch response {
                 case .success(let response):
-                    let messages = response.messages.map(self.makeMessage)
+                    let messages = response.messages.map(self.makeMessage).sorted(by: { (first, second) -> Bool in
+                        return first.receivedDateTime.compare(second.receivedDateTime) == .orderedDescending
+                    })
+
                     self.localPrivateMessages = messages
                     completionHandler(.success(messages))
 

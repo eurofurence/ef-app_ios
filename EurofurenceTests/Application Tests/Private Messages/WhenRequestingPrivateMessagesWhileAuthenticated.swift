@@ -115,4 +115,19 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
         XCTAssertEqual(true, capturingMessagesObserver.capturedMessages?.first?.isRead)
     }
     
+    func testMessagesShouldBeSortedWithLatestMessagesFirst() {
+        let makeRandomMessage: () -> StubAPIPrivateMessage = {
+            let randomDate = Date(timeIntervalSinceNow: TimeInterval(arc4random_uniform(3600)))
+            return StubAPIPrivateMessage(receivedDateTime: randomDate)
+        }
+        
+        let messages = (0...5).map({ (_) in makeRandomMessage() })
+        let expectedDateOrdering = Array(messages.map({ $0.receivedDateTime }).sorted().reversed())
+        let response = StubAPIPrivateMessagesResponse(messages: messages)
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: response)
+        let actualDateOrdering = capturingMessagesObserver.capturedMessages?.map({ $0.receivedDateTime }) ?? []
+        
+        XCTAssertEqual(expectedDateOrdering, actualDateOrdering)
+    }
+    
 }
