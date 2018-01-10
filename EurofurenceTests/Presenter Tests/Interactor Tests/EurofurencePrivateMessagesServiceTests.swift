@@ -9,10 +9,10 @@
 @testable import Eurofurence
 import XCTest
 
-class CapturingPrivateMessageUnreadCountObserver: PrivateMessageUnreadCountObserver {
+class CapturingPrivateMessageUnreadCountObserver: PrivateMessagesServiceObserver {
     
     private(set) var capturedUnreadMessagesCount: Int?
-    func unreadPrivateMessagesCountDidChange(to unreadCount: Int) {
+    func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int) {
         capturedUnreadMessagesCount = unreadCount
     }
     

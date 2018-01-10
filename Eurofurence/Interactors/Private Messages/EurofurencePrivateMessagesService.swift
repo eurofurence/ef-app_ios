@@ -11,7 +11,7 @@ class EurofurencePrivateMessagesService: PrivateMessagesService {
     static var shared = EurofurencePrivateMessagesService(app: EurofurenceApplication.shared)
 
     private let app: EurofurenceApplicationProtocol
-    private var unreadMessageCountObservers = [PrivateMessageUnreadCountObserver]()
+    private var unreadMessageCountObservers = [PrivateMessagesServiceObserver]()
 
     init(app: EurofurenceApplicationProtocol) {
         self.app = app
@@ -21,7 +21,7 @@ class EurofurencePrivateMessagesService: PrivateMessagesService {
         return app.localPrivateMessages
     }
 
-    func add(_ unreadMessageCountObserver: PrivateMessageUnreadCountObserver) {
+    func add(_ unreadMessageCountObserver: PrivateMessagesServiceObserver) {
         unreadMessageCountObservers.append(unreadMessageCountObserver)
         provideUnreadMessageCount(to: unreadMessageCountObserver)
     }
@@ -43,9 +43,9 @@ class EurofurencePrivateMessagesService: PrivateMessagesService {
         return !message.isRead
     }
 
-    private func provideUnreadMessageCount(to unreadMessageCountObserver: PrivateMessageUnreadCountObserver) {
+    private func provideUnreadMessageCount(to unreadMessageCountObserver: PrivateMessagesServiceObserver) {
         let count = app.localPrivateMessages.filter(isUnread).count
-        unreadMessageCountObserver.unreadPrivateMessagesCountDidChange(to: count)
+        unreadMessageCountObserver.privateMessagesServiceDidUpdateUnreadMessageCount(to: count)
     }
 
 }

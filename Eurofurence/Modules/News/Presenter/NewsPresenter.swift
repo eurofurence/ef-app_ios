@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct NewsPresenter: AuthenticationStateObserver, PrivateMessageUnreadCountObserver, NewsSceneDelegate {
+struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserver, NewsSceneDelegate {
 
     // MARK: Nested Types
 
@@ -73,7 +73,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessageUnreadCountObse
 
     // MARK: PrivateMessageUnreadCountObserver
 
-    func unreadPrivateMessagesCountDidChange(to unreadCount: Int) {
+    func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int) {
         newsScene.showWelcomeDescription(.welcomeDescription(messageCount: unreadCount))
     }
 

@@ -28,13 +28,13 @@ protocol PrivateMessagesService {
 
     var localMessages: [Message] { get }
 
-    func add(_ unreadMessageCountObserver: PrivateMessageUnreadCountObserver)
+    func add(_ unreadMessageCountObserver: PrivateMessagesServiceObserver)
     func refreshMessages(completionHandler: @escaping (PrivateMessagesRefreshResult) -> Void)
 
 }
 
-protocol PrivateMessageUnreadCountObserver {
+protocol PrivateMessagesServiceObserver {
 
-    func unreadPrivateMessagesCountDidChange(to unreadCount: Int)
+    func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int)
 
 }
