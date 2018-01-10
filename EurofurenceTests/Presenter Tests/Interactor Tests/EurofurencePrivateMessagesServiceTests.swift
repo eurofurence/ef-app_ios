@@ -16,6 +16,10 @@ class CapturingPrivateMessageUnreadCountObserver: PrivateMessagesServiceObserver
         capturedUnreadMessagesCount = unreadCount
     }
     
+    func privateMessagesServiceDidFinishRefreshingMessages(_ messages: [Message]) {
+        
+    }
+    
 }
 
 class EurofurencePrivateMessagesServiceTests: XCTestCase {

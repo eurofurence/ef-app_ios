@@ -8,7 +8,7 @@
 
 import Foundation.NSIndexPath
 
-class MessagesPresenter: MessagesSceneDelegate {
+class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesServiceObserver {
 
     // MARK: Properties
 
@@ -34,6 +34,7 @@ class MessagesPresenter: MessagesSceneDelegate {
 
         scene.delegate = self
         scene.setMessagesTitle(.messages)
+        privateMessagesService.add(self)
     }
 
     // MARK: MessagesSceneDelegate
@@ -49,6 +50,17 @@ class MessagesPresenter: MessagesSceneDelegate {
 
     func messagesSceneDidPerformRefreshAction() {
         reloadPrivateMessages()
+    }
+
+    // MARK: PrivateMessagesServiceObserver
+
+    func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int) {
+
+    }
+
+    func privateMessagesServiceDidFinishRefreshingMessages(_ messages: [Message]) {
+        scene.hideRefreshIndicator()
+        presentMessages(messages)
     }
 
     // MARK: Private

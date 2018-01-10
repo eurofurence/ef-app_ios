@@ -37,7 +37,7 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
     }
     
     func succeedLastRefresh(messages: [Message] = []) {
-        completionHandler?(.success(messages))
+        unreadMessageCountObservers.forEach { $0.privateMessagesServiceDidFinishRefreshingMessages(messages) }
     }
     
     func notifyUnreadCountDidChange(to count: Int) {

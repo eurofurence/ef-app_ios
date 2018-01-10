@@ -77,6 +77,10 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
         newsScene.showWelcomeDescription(.welcomeDescription(messageCount: unreadCount))
     }
 
+    func privateMessagesServiceDidFinishRefreshingMessages(_ messages: [Message]) {
+
+    }
+
     // MARK: NewsSceneDelegate
 
     func newsSceneWillAppear() {
