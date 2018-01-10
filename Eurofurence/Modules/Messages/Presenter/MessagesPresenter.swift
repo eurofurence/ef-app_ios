@@ -90,15 +90,7 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesServiceObserver {
 
     private func reloadPrivateMessages() {
         scene.showRefreshIndicator()
-        privateMessagesService.refreshMessages(completionHandler: privateMessagesDidFinishRefreshing)
-    }
-
-    private func privateMessagesDidFinishRefreshing(_ result: PrivateMessagesRefreshResult) {
-        scene.hideRefreshIndicator()
-
-        if case .success(let messages) = result {
-            presentMessages(messages)
-        }
+        privateMessagesService.refreshMessages()
     }
 
     private func presentMessages(_ messages: [Message]) {

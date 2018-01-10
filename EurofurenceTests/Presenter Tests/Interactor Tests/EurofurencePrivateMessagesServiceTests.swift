@@ -16,12 +16,14 @@ class CapturingPrivateMessageUnreadCountObserver: PrivateMessagesServiceObserver
         capturedUnreadMessagesCount = unreadCount
     }
     
+    private(set) var loadedMessages: [Message] = []
     func privateMessagesServiceDidFinishRefreshingMessages(_ messages: [Message]) {
-        
+        loadedMessages = messages
     }
     
+    private(set) var toldLoadFailed = false
     func privateMessagesServiceDidFailToLoadMessages() {
-        
+        toldLoadFailed = true
     }
     
 }
@@ -44,7 +46,7 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
         let unreadMessageCount = Random.makeRandomNumber(upperLimit: 10)
         let messages = (0..<unreadMessageCount).map({ _ in AppDataBuilder.makeMessage(read: false) })
         app.localPrivateMessages = messages
-        service.refreshMessages(completionHandler: { (_) in })
+        service.refreshMessages()
         app.resolvePrivateMessagesFetch(.success(messages))
         
         XCTAssertEqual(unreadMessageCount, observer.capturedUnreadMessagesCount)
@@ -56,35 +58,38 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
         let unreadMessage = AppDataBuilder.makeMessage(read: false)
         let readMessage = AppDataBuilder.makeMessage(read: true)
         app.localPrivateMessages = [unreadMessage, readMessage]
-        service.refreshMessages(completionHandler: { (_) in })
+        service.refreshMessages()
         app.resolvePrivateMessagesFetch(.success([unreadMessage, readMessage]))
         
         XCTAssertEqual(1, observer.capturedUnreadMessagesCount)
     }
     
-    func testRefreshingPrivateMessagesWhenUserNotAuthenticatedShouldInvokeHandlerWithFailure() {
-        var result: PrivateMessagesRefreshResult?
-        service.refreshMessages { result = $0 }
+    func testRefreshingPrivateMessagesWhenUserNotAuthenticatedShouldTellObserverLoadFailed() {
+        let observer = CapturingPrivateMessageUnreadCountObserver()
+        service.add(observer)
+        service.refreshMessages()
         app.resolvePrivateMessagesFetch(.userNotAuthenticated)
         
-        XCTAssertEqual(result, .failure)
+        XCTAssertTrue(observer.toldLoadFailed)
     }
     
-    func testFailedToLoadWhenRefreshingPrivateMessagesShouldInvokeHandlerWithFailure() {
-        var result: PrivateMessagesRefreshResult?
-        service.refreshMessages { result = $0 }
+    func testFailedToLoadWhenRefreshingPrivateMessagesShouldTellObserverLoadFailed() {
+        let observer = CapturingPrivateMessageUnreadCountObserver()
+        service.add(observer)
+        service.refreshMessages()
         app.resolvePrivateMessagesFetch(.failedToLoad)
         
-        XCTAssertEqual(result, .failure)
+        XCTAssertTrue(observer.toldLoadFailed)
     }
     
-    func testLoadingPrivateMessagesSuccessfullyShouldProvideThemToTheCompletionHandler() {
+    func testLoadingPrivateMessagesSuccessfullyShouldTellObserverLoadSucceeded() {
         let messages = [AppDataBuilder.makeMessage()]
-        var result: PrivateMessagesRefreshResult?
-        service.refreshMessages { result = $0 }
+        let observer = CapturingPrivateMessageUnreadCountObserver()
+        service.add(observer)
+        service.refreshMessages()
         app.resolvePrivateMessagesFetch(.success(messages))
         
-        XCTAssertEqual(result, .success(messages))
+        XCTAssertEqual(messages, observer.loadedMessages)
     }
     
     func testLocalMessagesProvideMessagesFromApplication() {
@@ -110,7 +115,7 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
         let messages = repeatElement(AppDataBuilder.makeMessage(read: false), count: Int(arc4random_uniform(10)))
         let expected = messages.count
         app.localPrivateMessages = Array(messages)
-        service.refreshMessages(completionHandler: { (_) in })
+        service.refreshMessages()
         app.resolvePrivateMessagesFetch(.success([]))
         
         XCTAssertEqual(expected, observer.capturedUnreadMessagesCount)

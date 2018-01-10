@@ -26,15 +26,15 @@ class EurofurencePrivateMessagesService: PrivateMessagesService {
         provideUnreadMessageCount(to: unreadMessageCountObserver)
     }
 
-    func refreshMessages(completionHandler: @escaping (PrivateMessagesRefreshResult) -> Void) {
+    func refreshMessages() {
         app.fetchPrivateMessages { (result) in
             switch result {
             case .success(let messages):
-                completionHandler(.success(messages))
+                self.unreadMessageCountObservers.forEach({ $0.privateMessagesServiceDidFinishRefreshingMessages(messages) })
                 self.unreadMessageCountObservers.forEach(self.provideUnreadMessageCount)
 
             default:
-                completionHandler(.failure)
+                self.unreadMessageCountObservers.forEach({ $0.privateMessagesServiceDidFailToLoadMessages() })
             }
         }
     }
