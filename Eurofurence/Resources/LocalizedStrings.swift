@@ -36,6 +36,7 @@ public extension String {
     public static let authenticatedUserLoginPromptFormat = string("authenticatedUserLoginPromptFormat", comment: "Prompt displayed for logged in users, showing their username and registration number")
     public static let authentiatedUserLoginDescriptionFormat = string("authentiatedUserLoginDescriptionFormat", comment: "Prompt displayed to logged in users telling them how many unread messages they have")
 
+    public static let login = string("login", comment: "Title displayed on the view asking the user to input their login details")
     public static let loggingIn = string("loggingIn", comment: "Logging In")
     public static let loggingInDetail = string("loggingInDetail", comment: "This may take a few moments")
     public static let loginError = string("loginError", comment: "Login Error")

@@ -124,4 +124,11 @@ class LoginViewControllerTests: XCTestCase {
         XCTAssertEqual(input, delegate.capturedPassword)
     }
     
+    func testSettingLoginTitleUpdatesViewControllerTitle() {
+        let title = "\(arc4random())"
+        loginViewController.setLoginTitle(title)
+        
+        XCTAssertEqual(title, loginViewController.title)
+    }
+    
 }

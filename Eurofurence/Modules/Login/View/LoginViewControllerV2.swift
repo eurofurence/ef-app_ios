@@ -56,6 +56,10 @@ class LoginViewControllerV2: UITableViewController, LoginScene {
 
     var delegate: LoginSceneDelegate?
 
+    func setLoginTitle(_ title: String) {
+        super.title = title
+    }
+
     func disableLoginButton() {
         loginButton.isEnabled = false
     }

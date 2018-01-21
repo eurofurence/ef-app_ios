@@ -10,6 +10,7 @@ protocol LoginScene: class {
 
     var delegate: LoginSceneDelegate? { get set }
 
+    func setLoginTitle(_ title: String)
     func disableLoginButton()
     func enableLoginButton()
 

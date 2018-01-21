@@ -13,6 +13,11 @@ class CapturingLoginScene: UIViewController, LoginScene {
     
     var delegate: LoginSceneDelegate?
     
+    private(set) var capturedTitle: String?
+    func setLoginTitle(_ title: String) {
+        capturedTitle = title
+    }
+    
     var loginButtonWasDisabled = false
     func disableLoginButton() {
         loginButtonWasDisabled = true

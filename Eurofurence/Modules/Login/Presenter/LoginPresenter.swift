@@ -96,6 +96,7 @@ class LoginPresenter: LoginSceneDelegate {
         self.alertRouter = alertRouter
 
         scene.delegate = self
+        scene.setLoginTitle(.login)
     }
 
     func loginSceneWillAppear() {

@@ -75,6 +75,10 @@ class LoginPresenterTests: XCTestCase {
         XCTAssertEqual(scene, loginSceneFactory.stubScene)
     }
     
+    func testTheSceneIsToldToDisplayTheLoginTitle() {
+        XCTAssertEqual(.login, loginSceneFactory.stubScene.capturedTitle)
+    }
+    
     func testTappingTheCancelButtonTellsDelegateLoginCancelled() {
         loginSceneFactory.stubScene.delegate?.loginSceneDidTapCancelButton()
         XCTAssertTrue(delegate.loginCancelled)
