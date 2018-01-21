@@ -13,7 +13,7 @@ class WhenLoggingOut: XCTestCase {
     
     func testTheRemoteNotificationsTokenRegistrationShouldReRegisterTheDeviceTokenWithNilUserRegistrationToken() {
         let unexpectedToken = "JWT Token"
-        let credential = LoginCredential(username: "", registrationNumber: 0, authenticationToken: unexpectedToken, tokenExpiryDate: .distantFuture)
+        let credential = Credential(username: "", registrationNumber: 0, authenticationToken: unexpectedToken, tokenExpiryDate: .distantFuture)
         let context = ApplicationTestBuilder().with(credential).build()
         context.application.storeRemoteNotificationsToken(Data())
         context.application.logout() { _ in }
@@ -50,22 +50,22 @@ class WhenLoggingOut: XCTestCase {
         XCTAssertFalse(logoutObserver.didFailToLogout)
     }
     
-    func testSucceedingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldDeletePersistedLoginCredential() {
+    func testSucceedingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldDeletePersistedCredential() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         context.registerForRemoteNotifications()
         context.application.logout() { _ in }
         context.capturingTokenRegistration.succeedLastRequest()
         
-        XCTAssertTrue(context.capturingLoginCredentialsStore.didDeletePersistedToken)
+        XCTAssertTrue(context.capturingCredentialStore.didDeletePersistedToken)
     }
     
-    func testFailingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotDeletePersistedLoginCredential() {
+    func testFailingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotDeletePersistedCredential() {
         let context = ApplicationTestBuilder().loggedInWithValidCredential().build()
         context.registerForRemoteNotifications()
         context.application.logout() { _ in }
         context.capturingTokenRegistration.failLastRequest()
         
-        XCTAssertFalse(context.capturingLoginCredentialsStore.didDeletePersistedToken)
+        XCTAssertFalse(context.capturingCredentialStore.didDeletePersistedToken)
     }
     
     func testSucceedingToUnregisterAuthTokenWithRemoteTokenRegistrationShouldNotifyLogoutObserversUserLoggedOut() {

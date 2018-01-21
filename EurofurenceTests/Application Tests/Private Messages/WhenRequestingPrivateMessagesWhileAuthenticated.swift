@@ -13,12 +13,12 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
     
     var context: ApplicationTestBuilder.Context!
     var capturingMessagesObserver: CapturingPrivateMessagesObserver!
-    var credential: LoginCredential!
+    var credential: Credential!
     
     override func setUp() {
         super.setUp()
         
-        credential = LoginCredential(username: "",
+        credential = Credential(username: "",
                                      registrationNumber: 0,
                                      authenticationToken: "Some super secret stuff",
                                      tokenExpiryDate: .distantFuture)
@@ -59,7 +59,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
         XCTAssertFalse(capturingMessagesObserver.wasToldSuccessfullyLoadedPrivateMessages)
     }
     
-    func testTheAuthTokenFromTheLoginCredentialShouldBeUsedWhenLoadingMessages() {
+    func testTheAuthTokenFromTheCredentialShouldBeUsedWhenLoadingMessages() {
         XCTAssertEqual(credential.authenticationToken, context.privateMessagesAPI.capturedAuthToken)
     }
     

@@ -42,50 +42,50 @@ class WhenLoggingIn: XCTestCase {
         XCTAssertEqual(expectedPassword, context.loginAPI.capturedLoginRequest?.password)
     }
     
-    func testLoggingInSuccessfullyShouldPersistLoginCredentialWithUsername() {
+    func testLoggingInSuccessfullyShouldPersistCredentialWithUsername() {
         let context = ApplicationTestBuilder().build()
         let expectedUsername = "Some awesome guy"
         context.login(username: expectedUsername)
         context.loginAPI.simulateResponse(makeLoginResponse(username: expectedUsername))
         
-        XCTAssertEqual(expectedUsername, context.capturingLoginCredentialsStore.capturedCredential?.username)
+        XCTAssertEqual(expectedUsername, context.capturingCredentialStore.capturedCredential?.username)
     }
     
-    func testLoggingInSuccessfullyShouldPersistLoginCredentialWithUsernameProvidedByLoginCallAndNotLoginResponse() {
+    func testLoggingInSuccessfullyShouldPersistCredentialWithUsernameProvidedByLoginCallAndNotLoginResponse() {
         let context = ApplicationTestBuilder().build()
         let expectedUsername = "Some awesome guy"
         let unexpectedUsername = "Some other guy"
         context.login(username: expectedUsername)
         context.loginAPI.simulateResponse(makeLoginResponse(username: unexpectedUsername))
         
-        XCTAssertEqual(expectedUsername, context.capturingLoginCredentialsStore.capturedCredential?.username)
+        XCTAssertEqual(expectedUsername, context.capturingCredentialStore.capturedCredential?.username)
     }
     
-    func testLoggingInSuccessfullyShouldPersistLoginCredentialWithUserIDFromLoginRequest() {
+    func testLoggingInSuccessfullyShouldPersistCredentialWithUserIDFromLoginRequest() {
         let context = ApplicationTestBuilder().build()
         let expectedUserID = 42
         context.login(registrationNumber: expectedUserID)
         context.loginAPI.simulateResponse(makeLoginResponse(uid: "Something else"))
         
-        XCTAssertEqual(expectedUserID, context.capturingLoginCredentialsStore.capturedCredential?.registrationNumber)
+        XCTAssertEqual(expectedUserID, context.capturingCredentialStore.capturedCredential?.registrationNumber)
     }
     
-    func testLoggingInSuccessfullyShouldPersistLoginCredentialWithLoginToken() {
+    func testLoggingInSuccessfullyShouldPersistCredentialWithLoginToken() {
         let context = ApplicationTestBuilder().build()
         let expectedToken = "JWT Token"
         context.login()
         context.loginAPI.simulateResponse(makeLoginResponse(token: expectedToken))
         
-        XCTAssertEqual(expectedToken, context.capturingLoginCredentialsStore.capturedCredential?.authenticationToken)
+        XCTAssertEqual(expectedToken, context.capturingCredentialStore.capturedCredential?.authenticationToken)
     }
     
-    func testLoggingInSuccessfullyShouldPersistLoginCredentialWithTokenExpiry() {
+    func testLoggingInSuccessfullyShouldPersistCredentialWithTokenExpiry() {
         let context = ApplicationTestBuilder().build()
         let expectedTokenExpiry = Date.distantFuture
         context.login()
         context.loginAPI.simulateResponse(makeLoginResponse(tokenValidUntil: expectedTokenExpiry))
         
-        XCTAssertEqual(expectedTokenExpiry, context.capturingLoginCredentialsStore.capturedCredential?.tokenExpiryDate)
+        XCTAssertEqual(expectedTokenExpiry, context.capturingCredentialStore.capturedCredential?.tokenExpiryDate)
     }
     
     func testLoggingInSuccessfulyShouldNotifyObserversAboutIt() {
@@ -100,7 +100,7 @@ class WhenLoggingIn: XCTestCase {
     func testLoggingInSuccessfulyShouldNotNotifyObserversAboutItUntilTokenPersistenceCompletes() {
         let context = ApplicationTestBuilder().build()
         let loginObserver = CapturingLoginObserver()
-        context.capturingLoginCredentialsStore.blockToRunBeforeCompletingCredentialStorage = {
+        context.capturingCredentialStore.blockToRunBeforeCompletingCredentialStorage = {
             XCTAssertFalse(loginObserver.notifiedLoginSucceeded)
         }
         

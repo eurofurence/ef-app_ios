@@ -43,7 +43,7 @@ class CollectEmAllViewController: UIViewController, WKUIDelegate {
 	}
 
     private func reloadGame() {
-        let store = KeychainLoginCredentialStore()
+        let store = KeychainCredentialStore()
         var token = "anonymous"
         if let credential = store.persistedCredential, credential.tokenExpiryDate.compare(Date()) == .orderedDescending {
             token = credential.authenticationToken

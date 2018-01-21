@@ -11,9 +11,9 @@ import XCTest
 
 class WhenRequestingCurrentUser: XCTestCase {
     
-    func testBeingLoggedInShouldProvideUserWithLoginCredentials() {
+    func testBeingLoggedInShouldProvideUserWithCredentials() {
         let expectedUser = User(registrationNumber: 42, username: "Username")
-        let credential = LoginCredential(username: expectedUser.username,
+        let credential = Credential(username: expectedUser.username,
                                          registrationNumber: expectedUser.registrationNumber,
                                          authenticationToken: "Token",
                                          tokenExpiryDate: .distantFuture)

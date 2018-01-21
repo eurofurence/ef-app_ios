@@ -10,35 +10,35 @@ import Foundation
 
 protocol CredentialPersisterDelegate {
 
-    func credentialPersister(_ credentialPersister: CredentialPersister, didRetrieve loginCredential: LoginCredential)
+    func credentialPersister(_ credentialPersister: CredentialPersister, didRetrieve credential: Credential)
 
 }
 
 struct CredentialPersister {
 
     private let clock: Clock
-    private let loginCredentialStore: LoginCredentialStore
+    private let credentialStore: CredentialStore
 
-    init(clock: Clock, loginCredentialStore: LoginCredentialStore) {
+    init(clock: Clock, credentialStore: CredentialStore) {
         self.clock = clock
-        self.loginCredentialStore = loginCredentialStore
+        self.credentialStore = credentialStore
     }
 
     func loadCredential(delegate: CredentialPersisterDelegate) {
-        if let credential = loginCredentialStore.persistedCredential, isCredentialValid(credential) {
+        if let credential = credentialStore.persistedCredential, isCredentialValid(credential) {
             delegate.credentialPersister(self, didRetrieve: credential)
         }
     }
 
-    func persist(_ credential: LoginCredential) {
-        loginCredentialStore.store(credential)
+    func persist(_ credential: Credential) {
+        credentialStore.store(credential)
     }
 
     func deleteCredential() {
-        loginCredentialStore.deletePersistedToken()
+        credentialStore.deletePersistedToken()
     }
 
-    private func isCredentialValid(_ credential: LoginCredential) -> Bool {
+    private func isCredentialValid(_ credential: Credential) -> Bool {
         return clock.currentDate.compare(credential.tokenExpiryDate) == .orderedAscending
     }
 

@@ -1,5 +1,5 @@
 //
-//  KeychainLoginCredentialStoreTests.swift
+//  KeychainCredentialStoreTests.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 18/07/2017.
@@ -9,15 +9,15 @@
 @testable import Eurofurence
 import XCTest
 
-class KeychainLoginCredentialStoreTests: XCTestCase {
+class KeychainCredentialStoreTests: XCTestCase {
     
-    private func makeStore() -> KeychainLoginCredentialStore {
-        return KeychainLoginCredentialStore(userAccount: "Eurofurence.Test")
+    private func makeStore() -> KeychainCredentialStore {
+        return KeychainCredentialStore(userAccount: "Eurofurence.Test")
     }
     
     func testStoringLoginShouldRetainItBetweenLifetimes() {
         var store = makeStore()
-        let credential = LoginCredential(username: "User",
+        let credential = Credential(username: "User",
                                          registrationNumber: 42,
                                          authenticationToken: "Token",
                                          tokenExpiryDate: .distantFuture)
@@ -29,7 +29,7 @@ class KeychainLoginCredentialStoreTests: XCTestCase {
     
     func testStoringLoginThenDeletingItShouldReturnNilToken() {
         let store = makeStore()
-        let credential = LoginCredential(username: "User",
+        let credential = Credential(username: "User",
                                          registrationNumber: 42,
                                          authenticationToken: "Token",
                                          tokenExpiryDate: .distantFuture)

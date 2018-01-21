@@ -14,8 +14,8 @@ class WhenLoginStateChanges: XCTestCase {
     private func makeCredential(username: String = "",
                                 registrationNumber: Int = 0,
                                 authenticationToken: String = "",
-                                tokenExpiryDate: Date = Date()) -> LoginCredential {
-        return LoginCredential(username: username,
+                                tokenExpiryDate: Date = Date()) -> Credential {
+        return Credential(username: username,
                                registrationNumber: registrationNumber,
                                authenticationToken: authenticationToken,
                                tokenExpiryDate: tokenExpiryDate)
@@ -49,7 +49,7 @@ class WhenLoginStateChanges: XCTestCase {
     
     func testThePersistedTokenIsNotDeletedUntilTheUserActuallyLogsOut() {
         let context = ApplicationTestBuilder().build()
-        XCTAssertFalse(context.capturingLoginCredentialsStore.didDeletePersistedToken)
+        XCTAssertFalse(context.capturingCredentialStore.didDeletePersistedToken)
     }
     
 }

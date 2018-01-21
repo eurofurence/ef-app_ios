@@ -29,7 +29,7 @@ class WhenMarkingMessageAsRead: XCTestCase {
     
     func testItShouldSupplyTheUsersAuthenticationTokenToTheMarkAsReadAPI() {
         let authenticationToken = "Some auth token"
-        let credential = LoginCredential(username: "", registrationNumber: 0, authenticationToken: authenticationToken, tokenExpiryDate: .distantFuture)
+        let credential = Credential(username: "", registrationNumber: 0, authenticationToken: authenticationToken, tokenExpiryDate: .distantFuture)
         let context = ApplicationTestBuilder().with(credential).build()
         let observer = CapturingPrivateMessagesObserver()
         context.application.fetchPrivateMessages(completionHandler: observer.completionHandler)

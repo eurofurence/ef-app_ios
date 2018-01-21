@@ -10,7 +10,7 @@ import Foundation
 
 protocol LoginTaskDelegate {
 
-    func loginTask(_ task: LoginTask, didProduce loginCredential: LoginCredential)
+    func loginTask(_ task: LoginTask, didProduce credential: Credential)
     func loginTaskDidFail(_ task: LoginTask)
 
 }
@@ -32,7 +32,7 @@ struct LoginTask {
     private func handleLoginResult(_ result: APIResponse<APILoginResponse>) {
         switch result {
         case .success(let response):
-            let credential = LoginCredential(username: arguments.username,
+            let credential = Credential(username: arguments.username,
                                              registrationNumber: arguments.registrationNumber,
                                              authenticationToken: response.token,
                                              tokenExpiryDate: response.tokenValidUntil)

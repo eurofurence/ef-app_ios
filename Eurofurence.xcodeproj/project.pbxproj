@@ -340,14 +340,14 @@
 		CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780361F1D415A002A8333 /* MessagesViewController.swift */; };
 		CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780381F1D41C4002A8333 /* LoginViewController.swift */; };
 		CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */; };
-		CAD780431F1D4CA3002A8333 /* LoginCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780421F1D4CA3002A8333 /* LoginCredential.swift */; };
+		CAD780431F1D4CA3002A8333 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780421F1D4CA3002A8333 /* Credential.swift */; };
 		CAD780491F1D51EB002A8333 /* StubClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780481F1D51EB002A8333 /* StubClock.swift */; };
 		CAD7804C1F1D5212002A8333 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7804B1F1D5212002A8333 /* Clock.swift */; };
 		CAD7804E1F1D5227002A8333 /* SystemClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7804D1F1D5227002A8333 /* SystemClock.swift */; };
-		CAD780501F1E2D13002A8333 /* LoginCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7804F1F1E2D13002A8333 /* LoginCredentialStore.swift */; };
-		CAD780521F1E2D2E002A8333 /* CapturingLoginCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780511F1E2D2E002A8333 /* CapturingLoginCredentialStore.swift */; };
-		CAD7805A1F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780591F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift */; };
-		CAD7805D1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7805C1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift */; };
+		CAD780501F1E2D13002A8333 /* CredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7804F1F1E2D13002A8333 /* CredentialStore.swift */; };
+		CAD780521F1E2D2E002A8333 /* CapturingCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780511F1E2D2E002A8333 /* CapturingCredentialStore.swift */; };
+		CAD7805A1F1E8E7D002A8333 /* KeychainCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780591F1E8E7D002A8333 /* KeychainCredentialStore.swift */; };
+		CAD7805D1F1E8EB0002A8333 /* KeychainCredentialStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7805C1F1E8EB0002A8333 /* KeychainCredentialStoreTests.swift */; };
 		CAE27B4C1F855E0E005FDE39 /* TabModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4B1F855E0E005FDE39 /* TabModuleProviding.swift */; };
 		CAE27B4E1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4D1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift */; };
 		CAE27B501F857A99005FDE39 /* PhonePreloadModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4F1F857A99005FDE39 /* PhonePreloadModuleFactory.swift */; };
@@ -792,14 +792,14 @@
 		CAD780361F1D415A002A8333 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CAD780381F1D41C4002A8333 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoginStateChanges.swift; sourceTree = "<group>"; };
-		CAD780421F1D4CA3002A8333 /* LoginCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCredential.swift; sourceTree = "<group>"; };
+		CAD780421F1D4CA3002A8333 /* Credential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		CAD780481F1D51EB002A8333 /* StubClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubClock.swift; sourceTree = "<group>"; };
 		CAD7804B1F1D5212002A8333 /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 		CAD7804D1F1D5227002A8333 /* SystemClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemClock.swift; sourceTree = "<group>"; };
-		CAD7804F1F1E2D13002A8333 /* LoginCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCredentialStore.swift; sourceTree = "<group>"; };
-		CAD780511F1E2D2E002A8333 /* CapturingLoginCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingLoginCredentialStore.swift; sourceTree = "<group>"; };
-		CAD780591F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainLoginCredentialStore.swift; sourceTree = "<group>"; };
-		CAD7805C1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainLoginCredentialStoreTests.swift; sourceTree = "<group>"; };
+		CAD7804F1F1E2D13002A8333 /* CredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialStore.swift; sourceTree = "<group>"; };
+		CAD780511F1E2D2E002A8333 /* CapturingCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingCredentialStore.swift; sourceTree = "<group>"; };
+		CAD780591F1E8E7D002A8333 /* KeychainCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainCredentialStore.swift; sourceTree = "<group>"; };
+		CAD7805C1F1E8EB0002A8333 /* KeychainCredentialStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainCredentialStoreTests.swift; sourceTree = "<group>"; };
 		CAE27B4B1F855E0E005FDE39 /* TabModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModuleProviding.swift; sourceTree = "<group>"; };
 		CAE27B4D1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTutorialModuleFactory.swift; sourceTree = "<group>"; };
 		CAE27B4F1F857A99005FDE39 /* PhonePreloadModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePreloadModuleFactory.swift; sourceTree = "<group>"; };
@@ -1617,7 +1617,7 @@
 		CA18B3451F49AF4500038E52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CAD780421F1D4CA3002A8333 /* LoginCredential.swift */,
+				CAD780421F1D4CA3002A8333 /* Credential.swift */,
 				CA30EAC31F2672BF0053DBF6 /* Message.swift */,
 				CA30EAAD1F2148780053DBF6 /* User.swift */,
 			);
@@ -2002,8 +2002,8 @@
 		CAD780411F1D4C98002A8333 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				CAD7804F1F1E2D13002A8333 /* LoginCredentialStore.swift */,
-				CAD780591F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift */,
+				CAD7804F1F1E2D13002A8333 /* CredentialStore.swift */,
+				CAD780591F1E8E7D002A8333 /* KeychainCredentialStore.swift */,
 				CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */,
 			);
 			path = Login;
@@ -2012,7 +2012,7 @@
 		CAD780441F1D4DF7002A8333 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				CAD780511F1E2D2E002A8333 /* CapturingLoginCredentialStore.swift */,
+				CAD780511F1E2D2E002A8333 /* CapturingCredentialStore.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2037,7 +2037,7 @@
 		CAD7805B1F1E8EA2002A8333 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				CAD7805C1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift */,
+				CAD7805C1F1E8EB0002A8333 /* KeychainCredentialStoreTests.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2670,7 +2670,7 @@
 				9ACF99961EC858B2006FC958 /* EventConferenceTrack.swift in Sources */,
 				9ACF99911EC858B2006FC958 /* Image.swift in Sources */,
 				9A861EB01F2554F900B75A8C /* TutorialPresentationContext.swift in Sources */,
-				CAD780431F1D4CA3002A8333 /* LoginCredential.swift in Sources */,
+				CAD780431F1D4CA3002A8333 /* Credential.swift in Sources */,
 				9ACF99931EC858B2006FC958 /* Dealer.swift in Sources */,
 				CAEAEC011FE0054500C0EE7C /* MessageDetailModuleFactory.swift in Sources */,
 				CA9845DE1F2B01BA00E8821D /* UnreadMessageIndicator.swift in Sources */,
@@ -2759,7 +2759,7 @@
 				9A861EB11F2554F900B75A8C /* TutorialModule.swift in Sources */,
 				9AF159ED1EF5BE7F00DB287D /* EventCell.swift in Sources */,
 				9A2A94911F12E7D6004D66FB /* SyncStateProvider.swift in Sources */,
-				CAD780501F1E2D13002A8333 /* LoginCredentialStore.swift in Sources */,
+				CAD780501F1E2D13002A8333 /* CredentialStore.swift in Sources */,
 				9ACF998F1EC858B2006FC958 /* Announcement.swift in Sources */,
 				7820A6F21F1696F1004C0FB5 /* PushPermissionsRequesting.swift in Sources */,
 				CABA43A31FD57C65009CB5B0 /* TutorialModuleBuilder.swift in Sources */,
@@ -2775,7 +2775,7 @@
 				CAEAEBFF1FE0044900C0EE7C /* MessageDetailScene.swift in Sources */,
 				9ACF99971EC858B2006FC958 /* Map.swift in Sources */,
 				6EEC6DA51F1BFC7700205F2D /* AppVersionProviding.swift in Sources */,
-				CAD7805A1F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift in Sources */,
+				CAD7805A1F1E8E7D002A8333 /* KeychainCredentialStore.swift in Sources */,
 				CAB138101FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift in Sources */,
 				CAF9A94A1F54BB5600628833 /* PrivateMessagesService.swift in Sources */,
 				78567B3F1F1016B000EBA31D /* TabViewController.swift in Sources */,
@@ -2938,7 +2938,7 @@
 				CA81D48E1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift in Sources */,
 				6EF96CDB1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift in Sources */,
 				CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */,
-				CAD7805D1F1E8EB0002A8333 /* KeychainLoginCredentialStoreTests.swift in Sources */,
+				CAD7805D1F1E8EB0002A8333 /* KeychainCredentialStoreTests.swift in Sources */,
 				CA2D08101FE9511300BFD785 /* WhenThePushNotificationPermissionsPageAppearsWithUnreachableNetwork.swift in Sources */,
 				CABA43951FCE0A49009CB5B0 /* CapturingLoginScene.swift in Sources */,
 				CAF9A9471F50B95F00628833 /* WhenRequestingCurrentUser.swift in Sources */,
@@ -2955,7 +2955,7 @@
 				CA30EABC1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift in Sources */,
 				CAF9A94E1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift in Sources */,
 				CAF705611F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift in Sources */,
-				CAD780521F1E2D2E002A8333 /* CapturingLoginCredentialStore.swift in Sources */,
+				CAD780521F1E2D2E002A8333 /* CapturingCredentialStore.swift in Sources */,
 				CA804DDA1F20D2F500E07A4A /* V2LoginAPITests.swift in Sources */,
 				CA2D08061FE94BF000BFD785 /* RootModuleTestBuilder.swift in Sources */,
 				CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */,

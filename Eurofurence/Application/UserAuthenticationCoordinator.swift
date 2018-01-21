@@ -23,12 +23,12 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
     }
 
     init(clock: Clock,
-         loginCredentialStore: LoginCredentialStore,
+         credentialStore: CredentialStore,
          remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
          loginAPI: LoginAPI) {
         self.loginAPI = loginAPI
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
-        credentialPersister = CredentialPersister(clock: clock, loginCredentialStore: loginCredentialStore)
+        credentialPersister = CredentialPersister(clock: clock, credentialStore: credentialStore)
         credentialPersister.loadCredential(delegate: self)
     }
 
@@ -58,13 +58,13 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
 
     // MARK: LoginTaskDelegate
 
-    func loginTask(_ task: LoginTask, didProduce loginCredential: LoginCredential) {
-        let user = User(registrationNumber: loginCredential.registrationNumber, username: loginCredential.username)
+    func loginTask(_ task: LoginTask, didProduce credential: Credential) {
+        let user = User(registrationNumber: credential.registrationNumber, username: credential.username)
         loggedInUser = user
 
-        credentialPersister.persist(loginCredential)
+        credentialPersister.persist(credential)
         loginCompletionHandler?(.success(user))
-        userAuthenticationToken = loginCredential.authenticationToken
+        userAuthenticationToken = credential.authenticationToken
 
         if let registeredDeviceToken = registeredDeviceToken {
             remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(registeredDeviceToken,
@@ -78,9 +78,9 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
 
     // MARK: CredentialPersisterDelegate
 
-    func credentialPersister(_ credentialPersister: CredentialPersister, didRetrieve loginCredential: LoginCredential) {
-        userAuthenticationToken = loginCredential.authenticationToken
-        loggedInUser = User(registrationNumber: loginCredential.registrationNumber, username: loginCredential.username)
+    func credentialPersister(_ credentialPersister: CredentialPersister, didRetrieve credential: Credential) {
+        userAuthenticationToken = credential.authenticationToken
+        loggedInUser = User(registrationNumber: credential.registrationNumber, username: credential.username)
     }
 
 }

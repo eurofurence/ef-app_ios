@@ -1,5 +1,5 @@
 //
-//  KeychainLoginCredentialStore.swift
+//  KeychainCredentialStore.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 18/07/2017.
@@ -8,25 +8,25 @@
 
 import Locksmith
 
-struct KeychainLoginCredentialStore: LoginCredentialStore {
+struct KeychainCredentialStore: CredentialStore {
 
     private var userAccount: String
 
-    var persistedCredential: LoginCredential? {
+    var persistedCredential: Credential? {
         guard let data = Locksmith.loadDataForUserAccount(userAccount: userAccount) else {
             return nil
         }
 
-        return LoginCredential(keychainData: data)
+        return Credential(keychainData: data)
     }
 
     init(userAccount: String = "Eurofurence") {
         self.userAccount = userAccount
     }
 
-    func store(_ loginCredential: LoginCredential) {
+    func store(_ credential: Credential) {
         do {
-            try Locksmith.saveData(data: loginCredential.keychainData, forUserAccount: userAccount)
+            try Locksmith.saveData(data: credential.keychainData, forUserAccount: userAccount)
         } catch {
             print("Unable to save credentials to Keychain: \(error)")
         }
@@ -42,7 +42,7 @@ struct KeychainLoginCredentialStore: LoginCredentialStore {
 
 }
 
-fileprivate extension LoginCredential {
+fileprivate extension Credential {
 
     var keychainData: [String : Any] {
         return ["username": username,

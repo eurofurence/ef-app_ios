@@ -15,12 +15,12 @@ class ApplicationTestBuilder {
         var application: EurofurenceApplication
         
         var capturingTokenRegistration: CapturingRemoteNotificationsTokenRegistration
-        var capturingLoginCredentialsStore: CapturingLoginCredentialStore
+        var capturingCredentialStore: CapturingCredentialStore
         var loginAPI: CapturingLoginAPI
         var privateMessagesAPI: CapturingPrivateMessagesAPI
         
         var authenticationToken: String? {
-            return capturingLoginCredentialsStore.persistedCredential?.authenticationToken
+            return capturingCredentialStore.persistedCredential?.authenticationToken
         }
         
         
@@ -39,7 +39,7 @@ class ApplicationTestBuilder {
     }
     
     private let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
-    private var capturingLoginCredentialsStore = CapturingLoginCredentialStore()
+    private var capturingCredentialStore = CapturingCredentialStore()
     private var stubClock = StubClock()
     private let loginAPI = CapturingLoginAPI()
     private let privateMessagesAPI = CapturingPrivateMessagesAPI()
@@ -53,8 +53,8 @@ class ApplicationTestBuilder {
         return self
     }
     
-    func with(_ persistedCredential: LoginCredential?) -> ApplicationTestBuilder {
-        capturingLoginCredentialsStore = CapturingLoginCredentialStore(persistedCredential: persistedCredential)
+    func with(_ persistedCredential: Credential?) -> ApplicationTestBuilder {
+        capturingCredentialStore = CapturingCredentialStore(persistedCredential: persistedCredential)
         return self
     }
     
@@ -81,10 +81,10 @@ class ApplicationTestBuilder {
     }
     
     func loggedInWithValidCredential() -> ApplicationTestBuilder {
-        let credential = LoginCredential(username: "User",
-                                         registrationNumber: 42,
-                                         authenticationToken: "Token",
-                                         tokenExpiryDate: .distantFuture)
+        let credential = Credential(username: "User",
+                                    registrationNumber: 42,
+                                    authenticationToken: "Token",
+                                    tokenExpiryDate: .distantFuture)
         return with(credential)
     }
     
@@ -96,12 +96,12 @@ class ApplicationTestBuilder {
                                          pushPermissionsRequester: pushPermissionsRequester,
                                          pushPermissionsStateProviding: pushPermissionsStateProviding,
                                          clock: stubClock,
-                                         loginCredentialStore: capturingLoginCredentialsStore,
+                                         credentialStore: capturingCredentialStore,
                                          loginAPI: loginAPI,
                                          privateMessagesAPI: privateMessagesAPI)
         return Context(application: app,
                        capturingTokenRegistration: capturingTokenRegistration,
-                       capturingLoginCredentialsStore: capturingLoginCredentialsStore,
+                       capturingCredentialStore: capturingCredentialStore,
                        loginAPI: loginAPI,
                        privateMessagesAPI: privateMessagesAPI)
     }

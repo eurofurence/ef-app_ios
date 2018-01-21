@@ -1,5 +1,5 @@
 //
-//  LoginCredential.swift
+//  Credential.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 17/07/2017.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct LoginCredential: Equatable {
+struct Credential: Equatable {
 
     var username: String
     var registrationNumber: Int
     var authenticationToken: String
     var tokenExpiryDate: Date
 
-    static func ==(lhs: LoginCredential, rhs: LoginCredential) -> Bool {
+    static func ==(lhs: Credential, rhs: Credential) -> Bool {
         return lhs.username == rhs.username &&
                lhs.registrationNumber == rhs.registrationNumber &&
                lhs.authenticationToken == rhs.authenticationToken &&

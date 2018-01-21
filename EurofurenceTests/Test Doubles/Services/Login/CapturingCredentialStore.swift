@@ -1,5 +1,5 @@
 //
-//  CapturingLoginCredentialStore.swift
+//  CapturingCredentialStore.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 18/07/2017.
@@ -9,18 +9,18 @@
 @testable import Eurofurence
 import Foundation
 
-class CapturingLoginCredentialStore: LoginCredentialStore {
+class CapturingCredentialStore: CredentialStore {
     
-    init(persistedCredential: LoginCredential? = nil) {
+    init(persistedCredential: Credential? = nil) {
         self.persistedCredential = persistedCredential
     }
     
-    private(set) var persistedCredential: LoginCredential?
+    private(set) var persistedCredential: Credential?
     
-    private(set) var capturedCredential: LoginCredential?
+    private(set) var capturedCredential: Credential?
     var blockToRunBeforeCompletingCredentialStorage: (() -> Void)?
-    func store(_ loginCredential: LoginCredential) {
-        capturedCredential = loginCredential
+    func store(_ credential: Credential) {
+        capturedCredential = credential
         blockToRunBeforeCompletingCredentialStorage?()
     }
     

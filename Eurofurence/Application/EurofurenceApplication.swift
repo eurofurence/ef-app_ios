@@ -51,7 +51,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                                       pushPermissionsRequester: ApplicationPushPermissionsRequester(),
                                       pushPermissionsStateProviding: UserDefaultsWitnessedSystemPushPermissionsRequest(),
                                       clock: SystemClock(),
-                                      loginCredentialStore: KeychainLoginCredentialStore(),
+                                      credentialStore: KeychainCredentialStore(),
                                       loginAPI: V2LoginAPI(JSONSession: JSONSession),
                                       privateMessagesAPI: V2PrivateMessagesAPI(jsonSession: JSONSession))
     }()
@@ -72,7 +72,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
          pushPermissionsRequester: PushPermissionsRequester,
          pushPermissionsStateProviding: PushPermissionsStateProviding,
          clock: Clock,
-         loginCredentialStore: LoginCredentialStore,
+         credentialStore: CredentialStore,
          loginAPI: LoginAPI,
          privateMessagesAPI: PrivateMessagesAPI) {
         self.userPreferences = userPreferences
@@ -87,7 +87,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         }
 
         authenticationCoordinator = UserAuthenticationCoordinator(clock: clock,
-                                                                  loginCredentialStore: loginCredentialStore,
+                                                                  credentialStore: credentialStore,
                                                                   remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
                                                                   loginAPI: loginAPI)
     }
