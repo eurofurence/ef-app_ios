@@ -14,49 +14,49 @@ public extension String {
     private static let tableBundle = Bundle.main
 
     public static let ok = NSLocalizedString("ok",
-                                             comment: "OK")
+                                             comment: "Affirmative action used by prompts to accept an action")
 
     public static let cancel = NSLocalizedString("cancel",
-                                                 comment: "Cancel")
+                                                 comment: "Negative action used by prompts to decline an action")
 
     public static let tryAgain = NSLocalizedString("tryAgain",
-                                                   comment: "Try Again")
+                                                   comment: "Used by prompts when an action fails, re-instigating the failed task")
 
     public static let tutorialPushPermissionsRequestTitle = NSLocalizedString("tutorialPushPermissionsRequestTitle",
-                                                                              comment: "Push permissions tutorial page title")
+                                                                              comment: "Title used in the tutorial when asking for push permissions from the user")
 
     public static let tutorialPushPermissionsRequestDescription = NSLocalizedString("tutorialPushPermissionsRequestDescription",
-                                                                                    comment: "Push permissions tutorial page description")
+                                                                                    comment: "Description used in the tutorial when asking for push permissions from the user")
 
     public static let tutorialAllowPushPermissions = NSLocalizedString("tutorialAllowPushPermissions",
-                                                                       comment: "Allow Notifications")
+                                                                       comment: "Text used in the button where the user allows us to send them push notifications")
 
     public static let tutorialDenyPushPermissions = NSLocalizedString("tutorialDenyPushPermissions",
-                                                                      comment: "No Thanks")
+                                                                      comment: "Text used in the button where the user does not allow us to send them push notifications")
 
     public static let tutorialInitialLoadTitle = NSLocalizedString("tutorialInitialLoadTitle",
-                                                                   comment: "Required download tutorial page title")
+                                                                   comment: "Title used in the tutorial telling the user we need to perform the initial download before they can use the app")
 
     public static let tutorialInitialLoadDescription = NSLocalizedString("tutorialInitialLoadDescription",
-                                                                         comment: "Required download tutorial page description")
+                                                                         comment: "Description used in the tutorial telling the user we need to perform the initial download before they can use the app")
 
     public static let tutorialInitialLoadBeginDownload = NSLocalizedString("tutorialInitialLoadBeginDownload",
-                                                                           comment: "Begin Download")
+                                                                           comment: "Text used in the button where the user allows us to begin the initial download")
 
     public static let cellularDownloadAlertTitle = NSLocalizedString("cellularDownloadAlertTitle",
-                                                                     comment: "Use Cellular Data?")
+                                                                     comment: "Title for the prompt asking if the user wants to perform the initial download over cellular data")
 
     public static let cellularDownloadAlertMessage = NSLocalizedString("cellularDownloadAlertMessage",
-                                                                       comment: "Warning about continuing with the download over cellular")
+                                                                       comment: "Description for the prompt asking if the user wants to perform the initial download over cellular data")
 
     public static let cellularDownloadAlertContinueOverCellularTitle = NSLocalizedString("cellularDownloadAlertContinueOverCellularTitle",
-                                                                                         comment: "Continue Over Cellular")
+                                                                                         comment: "Confirmation action allowing the initial download to begin over cellular")
 
     public static let downloadError = NSLocalizedString("downloadError",
-                                                        comment: "Download Error")
+                                                        comment: "Title for the alert when the download fails")
 
     public static let preloadFailureMessage = NSLocalizedString("preloadFailureMessage",
-                                                                comment: "Failed to download data from server. Please try again.")
+                                                                comment: "Description for the alert when the download fails")
 
     public static let anonymousUserLoginPrompt = NSLocalizedString("anonymousUserLoginPrompt",
                                                                    comment: "Tells user to login for additional features")
@@ -74,19 +74,19 @@ public extension String {
                                                 comment: "Title displayed on the view asking the user to input their login details")
 
     public static let loggingIn = NSLocalizedString("loggingIn",
-                                                    comment: "Logging In")
+                                                    comment: "Title for the alert displayed as we're logging the user in")
 
     public static let loggingInDetail = NSLocalizedString("loggingInDetail",
-                                                          comment: "This may take a few moments")
+                                                          comment: "Description for the alert displayed as we're logging the user in")
 
     public static let loginError = NSLocalizedString("loginError",
-                                                     comment: "Login Error")
+                                                     comment: "Title for the alert displayed when we're unable to log the user in")
 
     public static let loginErrorDetail = NSLocalizedString("loginErrorDetail",
-                                                           comment: "Please verify your login details and make sure you are connected to the internet")
+                                                           comment: "Description for the alert displayed when we're unable to log the user in")
 
     public static let messages = NSLocalizedString("Messages",
-                                                   comment: "Messages")
+                                                   comment: "Title for the view that displays the user's private messages")
 
     private struct Formatters {
         static var numbers = NumberFormatter()
