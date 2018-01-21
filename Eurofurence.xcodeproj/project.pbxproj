@@ -304,7 +304,7 @@
 		CA9845DC1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */; };
 		CA9845DE1F2B01BA00E8821D /* UnreadMessageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */; };
 		CAA39E0820051B5C00F2F3D3 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */; };
-		CAA39E0920051C6C00F2F3D3 /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAA39E0B20051C6C00F2F3D3 /* Strings.strings */; };
+		CAA39E0920051C6C00F2F3D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAA39E0B20051C6C00F2F3D3 /* Localizable.strings */; };
 		CAB138101FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB1380E1FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift */; };
 		CAB138131FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */; };
 		CAB3A72A1F7532A2005DF77B /* CapturingPushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */; };
@@ -755,7 +755,7 @@
 		CA9845DB1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenMarkingMessageAsRead.swift; sourceTree = "<group>"; };
 		CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnreadMessageIndicator.swift; sourceTree = "<group>"; };
 		CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
-		CAA39E0A20051C6C00F2F3D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Strings.strings; sourceTree = "<group>"; };
+		CAA39E0A20051C6C00F2F3D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CAB1380E1FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleCollectionViewCell.swift; sourceTree = "<group>"; };
 		CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPushPermissionsRequester.swift; sourceTree = "<group>"; };
@@ -1585,7 +1585,7 @@
 				9AB64BCE1F02665D004E8D91 /* fontawesome-webfont.ttf */,
 				78C86D6F1F12AA68003A20E6 /* Hieroglify.ttf */,
 				9ACF999C1ECA25E1006FC958 /* Sync.mock.json */,
-				CAA39E0B20051C6C00F2F3D3 /* Strings.strings */,
+				CAA39E0B20051C6C00F2F3D3 /* Localizable.strings */,
 				CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */,
 			);
 			path = Resources;
@@ -2431,7 +2431,7 @@
 				78455B561F117B24005BE2D7 /* Tutorial.storyboard in Resources */,
 				78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */,
 				CA6A9FF91FD5E79F0092C6DB /* Login.storyboard in Resources */,
-				CAA39E0920051C6C00F2F3D3 /* Strings.strings in Resources */,
+				CAA39E0920051C6C00F2F3D3 /* Localizable.strings in Resources */,
 				9ACF99421EBE172D006FC958 /* LaunchScreen.storyboard in Resources */,
 				78C86D701F12AA6C003A20E6 /* Hieroglify.ttf in Resources */,
 				9A0F87DC1F19311900FF294B /* EventCell.xib in Resources */,
@@ -3074,12 +3074,12 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		CAA39E0B20051C6C00F2F3D3 /* Strings.strings */ = {
+		CAA39E0B20051C6C00F2F3D3 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				CAA39E0A20051C6C00F2F3D3 /* en */,
 			);
-			name = Strings.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
