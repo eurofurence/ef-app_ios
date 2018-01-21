@@ -1268,6 +1268,7 @@
 				CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */,
 				CA804DCF1F20CE5F00E07A4A /* API */,
 				78D7EEC21F196BC3005372A9 /* Build Config */,
+				CAD780411F1D4C98002A8333 /* Login */,
 				CA18B3451F49AF4500038E52 /* Model */,
 				78D7EEB91F196B40005372A9 /* Notifications */,
 				CAB3A72B1F7532DF005DF77B /* System Services */,
@@ -1616,8 +1617,9 @@
 		CA18B3451F49AF4500038E52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CA30EAAD1F2148780053DBF6 /* User.swift */,
+				CAD780421F1D4CA3002A8333 /* LoginCredential.swift */,
 				CA30EAC31F2672BF0053DBF6 /* Message.swift */,
+				CA30EAAD1F2148780053DBF6 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2000,7 +2002,6 @@
 		CAD780411F1D4C98002A8333 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				CAD780421F1D4CA3002A8333 /* LoginCredential.swift */,
 				CAD7804F1F1E2D13002A8333 /* LoginCredentialStore.swift */,
 				CAD780591F1E8E7D002A8333 /* KeychainLoginCredentialStore.swift */,
 				CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */,
@@ -2192,7 +2193,6 @@
 			isa = PBXGroup;
 			children = (
 				CAD7804A1F1D5208002A8333 /* Clock */,
-				CAD780411F1D4C98002A8333 /* Login */,
 				78FE77CD1F1A2E7900E9A0BE /* HTTP */,
 				9ACB010A1F18F520001CE9D2 /* EventFavorites */,
 				7820A6F01F1696AC004C0FB5 /* Push Permissions */,
