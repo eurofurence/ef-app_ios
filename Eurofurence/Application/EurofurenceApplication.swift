@@ -56,15 +56,14 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                                       privateMessagesAPI: V2PrivateMessagesAPI(jsonSession: JSONSession))
     }()
 
-    private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
-    private var authenticationCoordinator: UserAuthenticationCoordinator
-
     private let eventBus = EventBus()
     private let userPreferences: UserPreferences
     private let dataStore: EurofurenceDataStore
     private let privateMessagesAPI: PrivateMessagesAPI
     private let pushPermissionsRequester: PushPermissionsRequester
     private let pushPermissionsStateProviding: PushPermissionsStateProviding
+    private let remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
+    private let authenticationCoordinator: UserAuthenticationCoordinator
     private let remoteNotificationRegistrationController: RemoteNotificationRegistrationController
 
     init(userPreferences: UserPreferences,
