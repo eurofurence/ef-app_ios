@@ -15,7 +15,7 @@ import Whisper
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
-    var app: EurofurenceApplication = .shared
+    lazy var app = EurofurenceApplication.shared
 	lazy var targetRouter: TargetRouter = StoryboardTargetRouter(window: self.window!)
 	lazy var notificationRouter: NotificationRouter = StoryboardNotificationRouter(window: self.window!, targetRouter: self.targetRouter)
     private var director: ApplicationDirector?

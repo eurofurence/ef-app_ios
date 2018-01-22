@@ -384,6 +384,7 @@
 		CAF3C74E1F9FC72C0008F027 /* StubNewsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74D1F9FC72C0008F027 /* StubNewsSceneFactory.swift */; };
 		CAF3C7501F9FC74C0008F027 /* NewsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74F1F9FC74C0008F027 /* NewsSceneFactory.swift */; };
 		CAF3F63B2016797400374B4C /* PrivateMessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3F63A2016797400374B4C /* PrivateMessagesController.swift */; };
+		CAF3F63D20167B3100374B4C /* EurofurenceApplicationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3F63C20167B3100374B4C /* EurofurenceApplicationBuilder.swift */; };
 		CAF7055A1F82C51900A9FEA2 /* LegacyPreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */; };
 		CAF705611F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */; };
 		CAF705641F82D0DF00A9FEA2 /* RootModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */; };
@@ -846,6 +847,7 @@
 		CAF3C74D1F9FC72C0008F027 /* StubNewsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNewsSceneFactory.swift; sourceTree = "<group>"; };
 		CAF3C74F1F9FC74C0008F027 /* NewsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSceneFactory.swift; sourceTree = "<group>"; };
 		CAF3F63A2016797400374B4C /* PrivateMessagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateMessagesController.swift; sourceTree = "<group>"; };
+		CAF3F63C20167B3100374B4C /* EurofurenceApplicationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceApplicationBuilder.swift; sourceTree = "<group>"; };
 		CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyPreloadService.swift; sourceTree = "<group>"; };
 		CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDirectorTests.swift; sourceTree = "<group>"; };
 		CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleProviding.swift; sourceTree = "<group>"; };
@@ -1281,6 +1283,7 @@
 			children = (
 				CA30EAB31F2161F10053DBF6 /* CredentialPersister.swift */,
 				78D7EEBC1F196B62005372A9 /* EurofurenceApplication.swift */,
+				CAF3F63C20167B3100374B4C /* EurofurenceApplicationBuilder.swift */,
 				CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */,
 				CA2D07FA1FE902ED00BFD785 /* EurofurenceDataStore.swift */,
 				CAF3F63A2016797400374B4C /* PrivateMessagesController.swift */,
@@ -2940,6 +2943,7 @@
 				CA30EAC21F266D9B0053DBF6 /* APIPrivateMessagesResponse.swift in Sources */,
 				6EF96CCA1F0EDAF800EE6134 /* CalendarPermissionsProviding.swift in Sources */,
 				9A7FFD551EFC5A9E007ABA36 /* MapViewController.swift in Sources */,
+				CAF3F63D20167B3100374B4C /* EurofurenceApplicationBuilder.swift in Sources */,
 				CA8D97D3201612A70074838F /* RemoteNotificationRegistrationSucceeded.swift in Sources */,
 				CAF9A9531F55F3B300628833 /* EurofurencePrivateMessagesService.swift in Sources */,
 				D6F3D339BFBA2C299453B6BA /* SettingsTableViewController.swift in Sources */,

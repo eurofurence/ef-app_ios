@@ -26,35 +26,7 @@ enum PrivateMessageResult {
 
 class EurofurenceApplication: EurofurenceApplicationProtocol {
 
-    static var shared: EurofurenceApplication = {
-        let JSONSession = URLSessionBasedJSONSession()
-        let buildConfiguration = PreprocessorBuildConfigurationProviding()
-        let fcmRegistration = EurofurenceFCMDeviceRegistration(JSONSession: JSONSession)
-        let tokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfiguration,
-                                                                             appVersion: BundleAppVersionProviding(),
-                                                                             firebaseAdapter: FirebaseMessagingAdapter(),
-                                                                             fcmRegistration: fcmRegistration)
-
-        struct DummyUserPreferences: UserPreferences {
-            var refreshStoreOnLaunch: Bool = true
-        }
-
-        struct DummyEurofurenceDataStore: EurofurenceDataStore {
-            func resolveContentsState(completionHandler: @escaping (EurofurenceDataStoreContentsState) -> Void) {
-                completionHandler(.present)
-            }
-        }
-
-        return EurofurenceApplication(userPreferences: DummyUserPreferences(),
-                                      dataStore: DummyEurofurenceDataStore(),
-                                      remoteNotificationsTokenRegistration: tokenRegistration,
-                                      pushPermissionsRequester: ApplicationPushPermissionsRequester(),
-                                      pushPermissionsStateProviding: UserDefaultsWitnessedSystemPushPermissionsRequest(),
-                                      clock: SystemClock(),
-                                      credentialStore: KeychainCredentialStore(),
-                                      loginAPI: V2LoginAPI(JSONSession: JSONSession),
-                                      privateMessagesAPI: V2PrivateMessagesAPI(jsonSession: JSONSession))
-    }()
+    static var shared: EurofurenceApplicationProtocol = EurofurenceApplicationBuilder().build()
 
     private let eventBus = EventBus()
     private let userPreferences: UserPreferences

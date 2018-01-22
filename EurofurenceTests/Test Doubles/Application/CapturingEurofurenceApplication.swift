@@ -7,6 +7,7 @@
 //
 
 @testable import Eurofurence
+import Foundation
 
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
     
@@ -34,6 +35,18 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
     func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {
         capturedLoginArguments = arguments
         capturedLoginHandler = completionHandler
+    }
+    
+    func storeRemoteNotificationsToken(_ deviceToken: Data) {
+        
+    }
+    
+    func markMessageAsRead(_ message: Message) {
+        
+    }
+    
+    func logout(completionHandler: @escaping (LogoutResult) -> Void) {
+        
     }
     
 }
