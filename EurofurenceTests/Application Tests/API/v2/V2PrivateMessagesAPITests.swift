@@ -14,13 +14,12 @@ class CapturingV2PrivateMessagesObserver {
     private(set) var wasNotifiedResponseSucceeded = false
     private(set) var wasNotifiedResponseFailed = false
     private(set) var capturedMessages: [APIPrivateMessage]?
-    func handle(_ response: APIResponse<APIPrivateMessagesResponse>) {
-        switch response {
-        case .success(let response):
+    func handle(_ response: APIPrivateMessagesResponse?) {
+        if let response = response {
             wasNotifiedResponseSucceeded = true
             capturedMessages = response.messages
-            
-        case .failure:
+        }
+        else {
             wasNotifiedResponseFailed = true
         }
     }

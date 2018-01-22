@@ -20,17 +20,15 @@ class PrivateMessagesController {
 
     func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {
         if let token = userAuthenticationToken {
-            privateMessagesAPI.loadPrivateMessages(authorizationToken: token) { response in
-                switch response {
-                case .success(let response):
+            privateMessagesAPI.loadPrivateMessages(authorizationToken: token) { (response) in
+                if let response = response {
                     let messages = response.messages.map(self.makeMessage).sorted(by: { (first, second) -> Bool in
                         return first.receivedDateTime.compare(second.receivedDateTime) == .orderedDescending
                     })
 
                     self.localPrivateMessages = messages
                     completionHandler(.success(messages))
-
-                case .failure:
+                } else {
                     completionHandler(.failedToLoad)
                 }
             }

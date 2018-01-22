@@ -22,14 +22,14 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
     // MARK: PrivateMessagesAPI
 
     func loadPrivateMessages(authorizationToken: String,
-                             completionHandler: @escaping (APIResponse<APIPrivateMessagesResponse>) -> Void) {
+                             completionHandler: @escaping (APIPrivateMessagesResponse?) -> Void) {
         var request = JSONRequest(url: "https://app.eurofurence.org/api/v2/Communication/PrivateMessages", body: Data())
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
         jsonSession.get(request) { data, _ in
             if let data = data, let messages = try? V2PrivateMessagesAPI.responseDecoder.decode([Response.Message].self, from: data) {
-                completionHandler(.success(Response(messages: messages)))
+                completionHandler(Response(messages: messages))
             } else {
-                completionHandler(.failure)
+                completionHandler(nil)
             }
         }
     }
