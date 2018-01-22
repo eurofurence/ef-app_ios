@@ -8,12 +8,6 @@
 
 import Foundation
 
-protocol CredentialPersisterDelegate {
-
-    func credentialPersister(_ credentialPersister: CredentialPersister, didRetrieve credential: Credential)
-
-}
-
 struct CredentialPersister {
 
     private let clock: Clock
@@ -24,9 +18,9 @@ struct CredentialPersister {
         self.credentialStore = credentialStore
     }
 
-    func loadCredential(delegate: CredentialPersisterDelegate) {
+    func loadCredential(completionHandler: (Credential) -> Void) {
         if let credential = credentialStore.persistedCredential, isCredentialValid(credential) {
-            delegate.credentialPersister(self, didRetrieve: credential)
+            completionHandler(credential)
         }
     }
 

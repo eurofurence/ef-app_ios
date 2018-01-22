@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UserAuthenticationCoordinator: CredentialPersisterDelegate {
+class UserAuthenticationCoordinator {
 
     private let eventBus: EventBus
     var userAuthenticationToken: String?
@@ -17,7 +17,6 @@ class UserAuthenticationCoordinator: CredentialPersisterDelegate {
     private var credentialPersister: CredentialPersister
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
     var loggedInUser: User?
-    private var loginCompletionHandler: ((LoginResult) -> Void)?
 
     var isLoggedIn: Bool {
         return userAuthenticationToken != nil
@@ -32,37 +31,24 @@ class UserAuthenticationCoordinator: CredentialPersisterDelegate {
         self.loginAPI = loginAPI
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
         credentialPersister = CredentialPersister(clock: clock, credentialStore: credentialStore)
-        credentialPersister.loadCredential(delegate: self)
+        credentialPersister.loadCredential(completionHandler: updateCurrentUser)
     }
 
-    func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {
-        loginCompletionHandler = completionHandler
-
+    func login(_ args: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {
         if let user = loggedInUser {
             completionHandler(.success(user))
-        } else {
-            let request = LoginRequest(regNo: arguments.registrationNumber, username: arguments.username, password: arguments.password) { (result) in
-                switch result {
-                case .success(let response):
-                    let credential = Credential(username: arguments.username,
-                                                registrationNumber: arguments.registrationNumber,
-                                                authenticationToken: response.token,
-                                                tokenExpiryDate: response.tokenValidUntil)
-                    let user = User(registrationNumber: credential.registrationNumber, username: credential.username)
-                    self.loggedInUser = user
-
-                    self.credentialPersister.persist(credential)
-                    completionHandler(.success(user))
-                    self.userAuthenticationToken = credential.authenticationToken
-                    self.eventBus.post(DomainEvent.LoggedIn(user: user, authenticationToken: credential.authenticationToken))
-
-                case .failure:
-                    completionHandler(.failure)
-                }
-            }
-
-            loginAPI.performLogin(request: request)
+            return
         }
+
+        let request = LoginRequest(regNo: args.registrationNumber, username: args.username, password: args.password) { (result) in
+            if case .success(let response) = result {
+                self.handleLoginSuccess(args, response: response, completionHandler: completionHandler)
+            } else {
+                completionHandler(.failure)
+            }
+        }
+
+        loginAPI.performLogin(request: request)
     }
 
     func logout(completionHandler: @escaping (LogoutResult) -> Void) {
@@ -79,9 +65,21 @@ class UserAuthenticationCoordinator: CredentialPersisterDelegate {
         }
     }
 
-    // MARK: CredentialPersisterDelegate
+    // MARK: Private
 
-    func credentialPersister(_ credentialPersister: CredentialPersister, didRetrieve credential: Credential) {
+    private func handleLoginSuccess(_ args: LoginArguments,
+                                    response: APILoginResponse,
+                                    completionHandler: @escaping (LoginResult) -> Void) {
+        let credential = Credential(username: args.username,
+                                    registrationNumber: args.registrationNumber,
+                                    authenticationToken: response.token,
+                                    tokenExpiryDate: response.tokenValidUntil)
+        credentialPersister.persist(credential)
+        updateCurrentUser(from: credential)
+        completionHandler(.success(loggedInUser!))
+    }
+
+    private func updateCurrentUser(from credential: Credential) {
         userAuthenticationToken = credential.authenticationToken
         let user = User(registrationNumber: credential.registrationNumber, username: credential.username)
         loggedInUser = user
