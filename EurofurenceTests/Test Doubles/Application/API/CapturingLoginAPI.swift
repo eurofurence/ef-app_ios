@@ -13,9 +13,9 @@ class CapturingLoginAPI: LoginAPI {
     
     private(set) var capturedLoginRequest: LoginRequest?
     private var handler: ((LoginResponse?) -> Void)?
-    func performLogin(request: LoginRequest) {
+    func performLogin(request: LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void) {
         capturedLoginRequest = request
-        handler = request.completionHandler
+        handler = completionHandler
     }
     
     func simulateResponse(_ response: LoginResponse) {

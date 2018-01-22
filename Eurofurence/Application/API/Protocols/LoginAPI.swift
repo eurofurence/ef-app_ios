@@ -8,7 +8,7 @@
 
 protocol LoginAPI {
 
-    func performLogin(request: LoginRequest)
+    func performLogin(request: LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void)
 
 }
 
@@ -17,6 +17,5 @@ struct LoginRequest {
     var regNo: Int
     var username: String
     var password: String
-    var completionHandler: (LoginResponse?) -> Void
 
 }

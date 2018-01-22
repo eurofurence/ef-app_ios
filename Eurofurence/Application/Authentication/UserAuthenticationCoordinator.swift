@@ -37,15 +37,14 @@ class UserAuthenticationCoordinator {
             return
         }
 
-        let request = LoginRequest(regNo: args.registrationNumber, username: args.username, password: args.password) { (response) in
+        let request = LoginRequest(regNo: args.registrationNumber, username: args.username, password: args.password)
+        loginAPI.performLogin(request: request) { (response) in
             if let response = response {
                 self.handleLoginSuccess(args, response: response, completionHandler: completionHandler)
             } else {
                 completionHandler(.failure)
             }
         }
-
-        loginAPI.performLogin(request: request)
     }
 
     func logout(completionHandler: @escaping (LogoutResult) -> Void) {

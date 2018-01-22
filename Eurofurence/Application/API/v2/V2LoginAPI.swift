@@ -26,14 +26,14 @@ struct V2LoginAPI: LoginAPI {
 
     // MARK: LoginAPI
 
-    func performLogin(request: LoginRequest) {
+    func performLogin(request: LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void) {
         let jsonData = try! JSONEncoder().encode(Request(from: request))
         let jsonRequest = JSONRequest(url: V2LoginAPI.loginEndpoint, body: jsonData)
         JSONSession.post(jsonRequest) { (data, _) in
             if let data = data, let response = try? V2LoginAPI.responseDecoder.decode(JSONResponse.self, from: data) {
-                request.completionHandler(response.makeDomainLoginResponse())
+                completionHandler(response.makeDomainLoginResponse())
             } else {
-                request.completionHandler(nil)
+                completionHandler(nil)
             }
         }
     }
