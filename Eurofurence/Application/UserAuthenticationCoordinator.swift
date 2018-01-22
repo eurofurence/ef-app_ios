@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDelegate {
+class UserAuthenticationCoordinator: CredentialPersisterDelegate {
 
     private let eventBus: EventBus
     var userAuthenticationToken: String?
@@ -41,7 +41,27 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
         if let user = loggedInUser {
             completionHandler(.success(user))
         } else {
-            LoginTask(delegate: self, arguments: arguments, loginAPI: loginAPI).start()
+            let request = LoginRequest(regNo: arguments.registrationNumber, username: arguments.username, password: arguments.password) { (result) in
+                switch result {
+                case .success(let response):
+                    let credential = Credential(username: arguments.username,
+                                                registrationNumber: arguments.registrationNumber,
+                                                authenticationToken: response.token,
+                                                tokenExpiryDate: response.tokenValidUntil)
+                    let user = User(registrationNumber: credential.registrationNumber, username: credential.username)
+                    self.loggedInUser = user
+
+                    self.credentialPersister.persist(credential)
+                    completionHandler(.success(user))
+                    self.userAuthenticationToken = credential.authenticationToken
+                    self.eventBus.post(DomainEvent.LoggedIn(user: user, authenticationToken: credential.authenticationToken))
+
+                case .failure:
+                    completionHandler(.failure)
+                }
+            }
+
+            loginAPI.performLogin(request: request)
         }
     }
 
@@ -57,22 +77,6 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
                 completionHandler(.success)
             }
         }
-    }
-
-    // MARK: LoginTaskDelegate
-
-    func loginTask(_ task: LoginTask, didProduce credential: Credential) {
-        let user = User(registrationNumber: credential.registrationNumber, username: credential.username)
-        loggedInUser = user
-
-        credentialPersister.persist(credential)
-        loginCompletionHandler?(.success(user))
-        userAuthenticationToken = credential.authenticationToken
-        eventBus.post(DomainEvent.LoggedIn(user: user, authenticationToken: credential.authenticationToken))
-    }
-
-    func loginTaskDidFail(_ task: LoginTask) {
-        loginCompletionHandler?(.failure)
     }
 
     // MARK: CredentialPersisterDelegate

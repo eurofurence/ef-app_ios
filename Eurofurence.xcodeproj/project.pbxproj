@@ -237,7 +237,6 @@
 		CA30EAA81F2132480053DBF6 /* StubLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA71F2132480053DBF6 /* StubLoginResponse.swift */; };
 		CA30EAAE1F2148780053DBF6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAAD1F2148780053DBF6 /* User.swift */; };
 		CA30EAB01F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAAF1F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift */; };
-		CA30EAB21F215E680053DBF6 /* LoginTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAB11F215E680053DBF6 /* LoginTask.swift */; };
 		CA30EAB41F2161F10053DBF6 /* CredentialPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAB31F2161F10053DBF6 /* CredentialPersister.swift */; };
 		CA30EAB61F26128A0053DBF6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift */; };
 		CA30EABA1F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */; };
@@ -696,7 +695,6 @@
 		CA30EAA71F2132480053DBF6 /* StubLoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubLoginResponse.swift; sourceTree = "<group>"; };
 		CA30EAAD1F2148780053DBF6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CA30EAAF1F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnreadMessagesTableViewCell.swift; sourceTree = "<group>"; };
-		CA30EAB11F215E680053DBF6 /* LoginTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTask.swift; sourceTree = "<group>"; };
 		CA30EAB31F2161F10053DBF6 /* CredentialPersister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialPersister.swift; sourceTree = "<group>"; };
 		CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenRequestingPrivateMessagesWhileAuthenticated.swift; sourceTree = "<group>"; };
 		CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesObserver.swift; sourceTree = "<group>"; };
@@ -1283,7 +1281,6 @@
 				78D7EEBC1F196B62005372A9 /* EurofurenceApplication.swift */,
 				CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */,
 				CA2D07FA1FE902ED00BFD785 /* EurofurenceDataStore.swift */,
-				CA30EAB11F215E680053DBF6 /* LoginTask.swift */,
 				CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */,
 				CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */,
 				CA804DCF1F20CE5F00E07A4A /* API */,
@@ -2800,7 +2797,6 @@
 				CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */,
 				CA6AA0041FD6C7B50092C6DB /* DirectorBuilder.swift in Sources */,
 				9A8ECA291F2BF2CA00351A83 /* UserDefaultsRemoteNotificationSoundProvider.swift in Sources */,
-				CA30EAB21F215E680053DBF6 /* LoginTask.swift in Sources */,
 				9A861EC01F25551400B75A8C /* NetworkReachability.swift in Sources */,
 				9ACF99951EC858B2006FC958 /* EventConferenceRoom.swift in Sources */,
 				CAF3C74C1F9F619C0008F027 /* PhoneNewsModuleFactory.swift in Sources */,
