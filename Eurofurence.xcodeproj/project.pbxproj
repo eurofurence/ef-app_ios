@@ -383,6 +383,7 @@
 		CAF3C74C1F9F619C0008F027 /* PhoneNewsModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74B1F9F619C0008F027 /* PhoneNewsModuleFactory.swift */; };
 		CAF3C74E1F9FC72C0008F027 /* StubNewsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74D1F9FC72C0008F027 /* StubNewsSceneFactory.swift */; };
 		CAF3C7501F9FC74C0008F027 /* NewsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74F1F9FC74C0008F027 /* NewsSceneFactory.swift */; };
+		CAF3F63B2016797400374B4C /* PrivateMessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3F63A2016797400374B4C /* PrivateMessagesController.swift */; };
 		CAF7055A1F82C51900A9FEA2 /* LegacyPreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */; };
 		CAF705611F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */; };
 		CAF705641F82D0DF00A9FEA2 /* RootModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */; };
@@ -844,6 +845,7 @@
 		CAF3C74B1F9F619C0008F027 /* PhoneNewsModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNewsModuleFactory.swift; sourceTree = "<group>"; };
 		CAF3C74D1F9FC72C0008F027 /* StubNewsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNewsSceneFactory.swift; sourceTree = "<group>"; };
 		CAF3C74F1F9FC74C0008F027 /* NewsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSceneFactory.swift; sourceTree = "<group>"; };
+		CAF3F63A2016797400374B4C /* PrivateMessagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateMessagesController.swift; sourceTree = "<group>"; };
 		CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyPreloadService.swift; sourceTree = "<group>"; };
 		CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDirectorTests.swift; sourceTree = "<group>"; };
 		CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleProviding.swift; sourceTree = "<group>"; };
@@ -1281,6 +1283,7 @@
 				78D7EEBC1F196B62005372A9 /* EurofurenceApplication.swift */,
 				CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */,
 				CA2D07FA1FE902ED00BFD785 /* EurofurenceDataStore.swift */,
+				CAF3F63A2016797400374B4C /* PrivateMessagesController.swift */,
 				CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */,
 				CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */,
 				CA804DCF1F20CE5F00E07A4A /* API */,
@@ -2911,6 +2914,7 @@
 				7820A6E71F1400A8004C0FB5 /* AlertRouter.swift in Sources */,
 				CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */,
 				9A861E991F24B0B800B75A8C /* NewsSectionHeader.swift in Sources */,
+				CAF3F63B2016797400374B4C /* PrivateMessagesController.swift in Sources */,
 				9A861ECD1F25555000B75A8C /* TutorialPageViewController.swift in Sources */,
 				CABA43861FBC6FE1009CB5B0 /* LoginModuleProviding.swift in Sources */,
 				D6F3D275FF81A313B9213277 /* AnnouncementCell.swift in Sources */,

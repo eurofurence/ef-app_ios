@@ -65,6 +65,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private let remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
     private let authenticationCoordinator: UserAuthenticationCoordinator
     private let remoteNotificationRegistrationController: RemoteNotificationRegistrationController
+    private let privateMessagesController: PrivateMessagesController
 
     init(userPreferences: UserPreferences,
          dataStore: EurofurenceDataStore,
@@ -88,6 +89,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
         remoteNotificationRegistrationController = RemoteNotificationRegistrationController(eventBus: eventBus,
                                                                                             remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration)
+        privateMessagesController = PrivateMessagesController(eventBus: eventBus, privateMessagesAPI: privateMessagesAPI)
         authenticationCoordinator = UserAuthenticationCoordinator(eventBus: eventBus,
                                                                   clock: clock,
                                                                   credentialStore: credentialStore,
@@ -129,27 +131,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         authenticationCoordinator.registeredDeviceToken = deviceToken
     }
 
-    private(set) var localPrivateMessages: [Message] = []
+    var localPrivateMessages: [Message] { return privateMessagesController.localPrivateMessages }
 
     func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {
-        if let token = authenticationCoordinator.userAuthenticationToken {
-            privateMessagesAPI.loadPrivateMessages(authorizationToken: token) { response in
-                switch response {
-                case .success(let response):
-                    let messages = response.messages.map(self.makeMessage).sorted(by: { (first, second) -> Bool in
-                        return first.receivedDateTime.compare(second.receivedDateTime) == .orderedDescending
-                    })
-
-                    self.localPrivateMessages = messages
-                    completionHandler(.success(messages))
-
-                case .failure:
-                    completionHandler(.failedToLoad)
-                }
-            }
-        } else {
-            completionHandler(.userNotAuthenticated)
-        }
+        privateMessagesController.fetchPrivateMessages(completionHandler: completionHandler)
     }
 
     func markMessageAsRead(_ message: Message) {
@@ -160,15 +145,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void) {
         completionHandler(authenticationCoordinator.loggedInUser)
-    }
-
-    private func makeMessage(from apiMessage: APIPrivateMessage) -> Message {
-        return Message(identifier: apiMessage.id,
-                       authorName: apiMessage.authorName,
-                       receivedDateTime: apiMessage.receivedDateTime,
-                       subject: apiMessage.subject,
-                       contents: apiMessage.message,
-                       isRead: apiMessage.readDateTime != nil)
     }
 
 }
