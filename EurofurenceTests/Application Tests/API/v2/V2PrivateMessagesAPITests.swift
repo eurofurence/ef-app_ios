@@ -132,16 +132,6 @@ class V2PrivateMessagesAPITests: XCTestCase {
         XCTAssertEqual(message, observer.capturedMessages?.first?.contents)
     }
     
-    func testSuccessfulResponseWithUnsupportedLastChangeDateTimeValueShouldProvideFailureResponse() {
-        let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(lastChangeDateTime: "Not a date"))
-        XCTAssertTrue(observer.wasNotifiedResponseFailed)
-    }
-    
-    func testSuccessfulResponseWithUnsupportedCreatedDateTimeValueShouldProvideFailureResponse() {
-        let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(createdDateTime: "Not a date"))
-        XCTAssertTrue(observer.wasNotifiedResponseFailed)
-    }
-    
     func testSuccessfulResponseWithUnsupportedreceivedDateTimeValueShouldProvideFailureResponse() {
         let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(receivedDateTime: "Not a date"))
         XCTAssertTrue(observer.wasNotifiedResponseFailed)
