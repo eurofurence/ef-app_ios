@@ -22,4 +22,8 @@ struct Credential: Equatable {
                lhs.tokenExpiryDate == rhs.tokenExpiryDate
     }
 
+    func isValid(currentDate: Date) -> Bool {
+        return currentDate < tokenExpiryDate
+    }
+
 }

@@ -11,6 +11,7 @@ import Foundation
 class UserAuthenticationCoordinator {
 
     private let eventBus: EventBus
+    private let clock: Clock
     private let credentialStore: CredentialStore
     private let loginAPI: LoginAPI
     private let remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
@@ -24,14 +25,12 @@ class UserAuthenticationCoordinator {
          remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
          loginAPI: LoginAPI) {
         self.eventBus = eventBus
+        self.clock = clock
         self.credentialStore = credentialStore
         self.loginAPI = loginAPI
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
 
-        if let credential = credentialStore.persistedCredential, clock.currentDate.compare(credential.tokenExpiryDate) == .orderedAscending {
-            updateCurrentUser(from: credential)
-        }
-
+        loadPersistedCredential()
         eventBus.subscribe(consumer: BlockEventConsumer(block: remoteNotificationTokenDidChange))
     }
 
@@ -70,6 +69,12 @@ class UserAuthenticationCoordinator {
     }
 
     // MARK: Private
+
+    private func loadPersistedCredential() {
+        if let credential = credentialStore.persistedCredential, credential.isValid(currentDate: clock.currentDate) {
+            updateCurrentUser(from: credential)
+        }
+    }
 
     private func remoteNotificationTokenDidChange(_ event: DomainEvent.RemoteNotificationRegistrationSucceeded) {
         registeredDeviceToken = event.deviceToken
