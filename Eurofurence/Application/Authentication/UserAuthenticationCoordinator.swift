@@ -11,12 +11,12 @@ import Foundation
 class UserAuthenticationCoordinator {
 
     private let eventBus: EventBus
+    private let loginAPI: LoginAPI
+    private let remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
+    private let credentialPersister: CredentialPersister
     private var userAuthenticationToken: String?
-    var registeredDeviceToken: Data?
-    private var loginAPI: LoginAPI
-    private var credentialPersister: CredentialPersister
-    private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
-    var loggedInUser: User?
+    private var registeredDeviceToken: Data?
+    private var loggedInUser: User?
 
     init(eventBus: EventBus,
          clock: Clock,
@@ -59,6 +59,10 @@ class UserAuthenticationCoordinator {
                 completionHandler(.success)
             }
         }
+    }
+
+    func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void) {
+        completionHandler(loggedInUser)
     }
 
     // MARK: Private

@@ -109,7 +109,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void) {
-        completionHandler(authenticationCoordinator.loggedInUser)
+        authenticationCoordinator.retrieveCurrentUser(completionHandler: completionHandler)
     }
 
 }
