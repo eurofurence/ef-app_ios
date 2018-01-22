@@ -11,7 +11,7 @@ import Foundation
 class UserAuthenticationCoordinator {
 
     private let eventBus: EventBus
-    var userAuthenticationToken: String?
+    private var userAuthenticationToken: String?
     var registeredDeviceToken: Data?
     private var loginAPI: LoginAPI
     private var credentialPersister: CredentialPersister
@@ -28,6 +28,7 @@ class UserAuthenticationCoordinator {
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
         credentialPersister = CredentialPersister(clock: clock, credentialStore: credentialStore)
         credentialPersister.loadCredential(completionHandler: updateCurrentUser)
+        eventBus.subscribe(consumer: BlockEventConsumer(block: remoteNotificationTokenDidChange))
     }
 
     func login(_ args: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {
@@ -62,6 +63,10 @@ class UserAuthenticationCoordinator {
     }
 
     // MARK: Private
+
+    private func remoteNotificationTokenDidChange(_ event: DomainEvent.RemoteNotificationRegistrationSucceeded) {
+        registeredDeviceToken = event.deviceToken
+    }
 
     private func handleLoginSuccess(_ args: LoginArguments,
                                     response: APILoginResponse,

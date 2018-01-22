@@ -39,6 +39,11 @@ class PrivateMessagesController {
         }
     }
 
+    func markMessageAsRead(_ message: Message) {
+        guard let token = userAuthenticationToken else { return }
+        privateMessagesAPI.markMessageWithIdentifierAsRead(message.identifier, authorizationToken: token)
+    }
+
     private func userLoggedIn(_ event: DomainEvent.LoggedIn) {
         userAuthenticationToken = event.authenticationToken
     }

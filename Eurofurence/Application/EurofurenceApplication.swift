@@ -128,7 +128,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     func storeRemoteNotificationsToken(_ deviceToken: Data) {
         eventBus.post(DomainEvent.RemoteNotificationRegistrationSucceeded(deviceToken: deviceToken))
-        authenticationCoordinator.registeredDeviceToken = deviceToken
     }
 
     var localPrivateMessages: [Message] { return privateMessagesController.localPrivateMessages }
@@ -138,9 +137,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func markMessageAsRead(_ message: Message) {
-        guard let token = authenticationCoordinator.userAuthenticationToken else { return }
-
-        privateMessagesAPI.markMessageWithIdentifierAsRead(message.identifier, authorizationToken: token)
+        privateMessagesController.markMessageAsRead(message)
     }
 
     func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void) {
