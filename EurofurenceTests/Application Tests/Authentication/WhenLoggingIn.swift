@@ -15,7 +15,7 @@ class WhenLoggingIn: XCTestCase {
                                    username: String = "",
                                    token: String = "",
                                    tokenValidUntil: Date = Date()) -> LoginResponse {
-        return StubLoginResponse(uid: uid, username: username, token: token, tokenValidUntil: tokenValidUntil)
+        return LoginResponse(userIdentifier: uid, username: username, token: token, tokenValidUntil: tokenValidUntil)
     }
     
     func testLoggingInShouldAttemptLoginWithProvidedUsername() {

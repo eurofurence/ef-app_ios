@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol LoginResponse {
+struct LoginResponse {
 
-    var uid: String { get }
-    var username: String { get }
-    var token: String { get }
-    var tokenValidUntil: Date { get }
+    var userIdentifier: String
+    var username: String
+    var token: String
+    var tokenValidUntil: Date
 
 }

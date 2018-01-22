@@ -234,7 +234,6 @@
 		CA30EAA11F2127350053DBF6 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA01F2127350053DBF6 /* LoginResponse.swift */; };
 		CA30EAA31F2129700053DBF6 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA21F2129700053DBF6 /* LoginAPI.swift */; };
 		CA30EAA61F2129C60053DBF6 /* CapturingLoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */; };
-		CA30EAA81F2132480053DBF6 /* StubLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA71F2132480053DBF6 /* StubLoginResponse.swift */; };
 		CA30EAAE1F2148780053DBF6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAAD1F2148780053DBF6 /* User.swift */; };
 		CA30EAB01F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAAF1F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift */; };
 		CA30EAB41F2161F10053DBF6 /* CredentialPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAB31F2161F10053DBF6 /* CredentialPersister.swift */; };
@@ -691,7 +690,6 @@
 		CA30EAA01F2127350053DBF6 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		CA30EAA21F2129700053DBF6 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingLoginAPI.swift; sourceTree = "<group>"; };
-		CA30EAA71F2132480053DBF6 /* StubLoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubLoginResponse.swift; sourceTree = "<group>"; };
 		CA30EAAD1F2148780053DBF6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CA30EAAF1F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnreadMessagesTableViewCell.swift; sourceTree = "<group>"; };
 		CA30EAB31F2161F10053DBF6 /* CredentialPersister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialPersister.swift; sourceTree = "<group>"; };
@@ -1694,7 +1692,6 @@
 			children = (
 				CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */,
 				CA30EABB1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift */,
-				CA30EAA71F2132480053DBF6 /* StubLoginResponse.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -3088,7 +3085,6 @@
 				CA2D08141FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift in Sources */,
 				7820A6E11F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift in Sources */,
 				781A94461F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift in Sources */,
-				CA30EAA81F2132480053DBF6 /* StubLoginResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

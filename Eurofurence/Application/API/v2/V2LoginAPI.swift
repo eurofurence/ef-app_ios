@@ -30,8 +30,8 @@ struct V2LoginAPI: LoginAPI {
         let jsonData = try! JSONEncoder().encode(Request(from: request))
         let jsonRequest = JSONRequest(url: V2LoginAPI.loginEndpoint, body: jsonData)
         JSONSession.post(jsonRequest) { (data, _) in
-            if let data = data, let response = try? V2LoginAPI.responseDecoder.decode(Response.self, from: data) {
-                request.completionHandler(response)
+            if let data = data, let response = try? V2LoginAPI.responseDecoder.decode(JSONResponse.self, from: data) {
+                request.completionHandler(response.makeDomainLoginResponse())
             } else {
                 request.completionHandler(nil)
             }
@@ -52,7 +52,7 @@ struct V2LoginAPI: LoginAPI {
         }
     }
 
-    private struct Response: LoginResponse, Decodable {
+    private struct JSONResponse: Decodable {
 
         var uid: String
         var username: String
@@ -64,6 +64,13 @@ struct V2LoginAPI: LoginAPI {
             case username = "Username"
             case token = "Token"
             case tokenValidUntil = "TokenValidUntil"
+        }
+
+        func makeDomainLoginResponse() -> LoginResponse {
+            return LoginResponse(userIdentifier: uid,
+                                 username: username,
+                                 token: token,
+                                 tokenValidUntil: tokenValidUntil)
         }
 
     }

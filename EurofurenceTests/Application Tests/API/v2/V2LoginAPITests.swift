@@ -173,7 +173,7 @@ class V2LoginAPITests: XCTestCase {
         let data = makeSuccessfulLoginData(userID: uid)
         let observer = makeObserverForVerifyingLoginResponse(data)
         
-        XCTAssertEqual(uid, observer.capturedLoginResponse?.uid)
+        XCTAssertEqual(uid, observer.capturedLoginResponse?.userIdentifier)
     }
     
     func testLoggingInSuccessfullyShouldReturnResponseWithAuthTokenExpiry() {
