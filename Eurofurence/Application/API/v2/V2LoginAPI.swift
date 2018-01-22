@@ -31,9 +31,9 @@ struct V2LoginAPI: LoginAPI {
         let jsonRequest = JSONRequest(url: V2LoginAPI.loginEndpoint, body: jsonData)
         JSONSession.post(jsonRequest) { (data, _) in
             if let data = data, let response = try? V2LoginAPI.responseDecoder.decode(Response.self, from: data) {
-                request.completionHandler(.success(response))
+                request.completionHandler(response)
             } else {
-                request.completionHandler(.failure)
+                request.completionHandler(nil)
             }
         }
     }

@@ -13,13 +13,9 @@ class CapturingV2LoginObserver {
     
     private(set) var capturedLoginResponse: LoginResponse?
     private(set) var notifiedLoginFailed = false
-    func observe(_ result: APIResponse<LoginResponse>) {
-        switch result {
-        case .success(let response):
-            capturedLoginResponse = response
-        case .failure:
-            notifiedLoginFailed = true
-        }
+    func observe(_ result: LoginResponse?) {
+        capturedLoginResponse = result
+        notifiedLoginFailed = result == nil
     }
     
 }
@@ -76,7 +72,7 @@ class V2LoginAPITests: XCTestCase {
     private func makeLoginParameters(regNo: Int = 0,
                                      username: String = "Username",
                                      password: String = "Password",
-                                     completionHandler: @escaping (APIResponse<LoginResponse>) -> Void = { _ in }) -> LoginRequest {
+                                     completionHandler: @escaping (LoginResponse?) -> Void = { _ in }) -> LoginRequest {
         return LoginRequest(regNo: regNo, username: username, password: password, completionHandler: completionHandler)
     }
     

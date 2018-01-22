@@ -37,8 +37,8 @@ class UserAuthenticationCoordinator {
             return
         }
 
-        let request = LoginRequest(regNo: args.registrationNumber, username: args.username, password: args.password) { (result) in
-            if case .success(let response) = result {
+        let request = LoginRequest(regNo: args.registrationNumber, username: args.username, password: args.password) { (response) in
+            if let response = response {
                 self.handleLoginSuccess(args, response: response, completionHandler: completionHandler)
             } else {
                 completionHandler(.failure)

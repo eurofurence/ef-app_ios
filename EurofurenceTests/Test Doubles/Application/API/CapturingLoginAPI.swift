@@ -12,18 +12,18 @@ import Foundation
 class CapturingLoginAPI: LoginAPI {
     
     private(set) var capturedLoginRequest: LoginRequest?
-    private var handler: LoginResponseHandler?
+    private var handler: ((LoginResponse?) -> Void)?
     func performLogin(request: LoginRequest) {
         capturedLoginRequest = request
         handler = request.completionHandler
     }
     
     func simulateResponse(_ response: LoginResponse) {
-        handler?(.success(response))
+        handler?(response)
     }
     
     func simulateFailure() {
-        handler?(.failure)
+        handler?(nil)
     }
     
 }
