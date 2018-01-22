@@ -23,13 +23,13 @@ class CapturingV2LoginObserver {
 class V2LoginAPITests: XCTestCase {
     
     var api: V2LoginAPI!
-    var JSONSession: CapturingJSONSession!
+    var jsonSession: CapturingJSONSession!
     
     override func setUp() {
         super.setUp()
         
-        JSONSession = CapturingJSONSession()
-        api = V2LoginAPI(JSONSession: JSONSession)
+        jsonSession = CapturingJSONSession()
+        api = V2LoginAPI(jsonSession: jsonSession)
     }
     
     private func makeSuccessfulLoginPayload(username: String = "",
@@ -64,7 +64,7 @@ class V2LoginAPITests: XCTestCase {
     private func makeObserverForVerifyingLoginResponse(_ data: Data?) -> CapturingV2LoginObserver {
         let loginResponseObserver = CapturingV2LoginObserver()
         performLogin(makeLoginParameters(), completionHandler: loginResponseObserver.observe)
-        JSONSession.invokeLastPOSTCompletionHandler(responseData: data)
+        jsonSession.invokeLastPOSTCompletionHandler(responseData: data)
         
         return loginResponseObserver
     }
@@ -81,32 +81,32 @@ class V2LoginAPITests: XCTestCase {
     
     func testTheLoginEndpointShouldReceieveRequest() {
         performLogin(makeLoginParameters())
-        XCTAssertEqual("https://app.eurofurence.org/api/v2/Tokens/RegSys", JSONSession.postedURL)
+        XCTAssertEqual("https://app.eurofurence.org/api/v2/Tokens/RegSys", jsonSession.postedURL)
     }
     
     func testTheLoginEndpointShouldNotReceieveRequestUntilCallingLogin() {
-        XCTAssertNil(JSONSession.postedURL)
+        XCTAssertNil(jsonSession.postedURL)
     }
     
     func testTheLoginRequestShouldReceieveJSONPayloadWithRegNo() {
         let registrationNumber = 42
         performLogin(makeLoginParameters(regNo: registrationNumber))
         
-        XCTAssertEqual(registrationNumber, JSONSession.postedJSONValue(forKey: "RegNo"))
+        XCTAssertEqual(registrationNumber, jsonSession.postedJSONValue(forKey: "RegNo"))
     }
     
     func testTheLoginRequestShouldReceieveJSONPayloadWithUsername() {
         let username = "Some awesome guy"
         performLogin(makeLoginParameters(username: username))
         
-        XCTAssertEqual(username, JSONSession.postedJSONValue(forKey: "Username"))
+        XCTAssertEqual(username, jsonSession.postedJSONValue(forKey: "Username"))
     }
     
     func testTheLoginRequestShouldReceieveJSONPayloadWithPassword() {
         let password = "It's a secret"
         performLogin(makeLoginParameters(password: password))
         
-        XCTAssertEqual(password, JSONSession.postedJSONValue(forKey: "Password"))
+        XCTAssertEqual(password, jsonSession.postedJSONValue(forKey: "Password"))
     }
     
     func testLoginResponseReturnsNilDataShouldTellTheObserverLoginFailed() {

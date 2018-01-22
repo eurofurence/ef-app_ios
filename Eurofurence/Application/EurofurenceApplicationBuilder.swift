@@ -44,7 +44,7 @@ class EurofurenceApplicationBuilder {
         pushPermissionsStateProviding = UserDefaultsWitnessedSystemPushPermissionsRequest()
         clock = SystemClock()
         credentialStore = KeychainCredentialStore()
-        loginAPI = V2LoginAPI(JSONSession: jsonSession)
+        loginAPI = V2LoginAPI(jsonSession: jsonSession)
         privateMessagesAPI = V2PrivateMessagesAPI(jsonSession: jsonSession)
     }
 

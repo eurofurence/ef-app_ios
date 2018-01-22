@@ -12,25 +12,30 @@ struct V2LoginAPI: LoginAPI {
 
     // MARK: Properties
 
-    var JSONSession: JSONSession
-    private static let loginEndpoint = "https://app.eurofurence.org/api/v2/Tokens/RegSys"
+    private let jsonSession: JSONSession
+    private let decoder: JSONDecoder
+    private let encoder: JSONEncoder
 
-    private static var responseDecoder: JSONDecoder = {
-        let decoder = JSONDecoder()
+    // MARK: Initialization
+
+    init(jsonSession: JSONSession) {
+        self.jsonSession = jsonSession
 
         // TODO: Investigate why system ios8601 formatter fails to parse our dates
+        decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(Iso8601DateFormatter())
 
-        return decoder
-    }()
+        encoder = JSONEncoder()
+    }
 
     // MARK: LoginAPI
 
     func performLogin(request: LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void) {
-        let jsonData = try! JSONEncoder().encode(Request(from: request))
-        let jsonRequest = JSONRequest(url: V2LoginAPI.loginEndpoint, body: jsonData)
-        JSONSession.post(jsonRequest) { (data, _) in
-            if let data = data, let response = try? V2LoginAPI.responseDecoder.decode(JSONResponse.self, from: data) {
+        let url = "https://app.eurofurence.org/api/v2/Tokens/RegSys"
+        let jsonData = try! encoder.encode(Request(from: request))
+        let jsonRequest = JSONRequest(url: url, body: jsonData)
+        jsonSession.post(jsonRequest) { (data, _) in
+            if let data = data, let response = try? self.decoder.decode(JSONResponse.self, from: data) {
                 completionHandler(response.makeDomainLoginResponse())
             } else {
                 completionHandler(nil)
