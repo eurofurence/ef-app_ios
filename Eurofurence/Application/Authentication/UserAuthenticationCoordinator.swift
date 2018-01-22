@@ -11,9 +11,9 @@ import Foundation
 class UserAuthenticationCoordinator {
 
     private let eventBus: EventBus
+    private let credentialStore: CredentialStore
     private let loginAPI: LoginAPI
     private let remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
-    private let credentialPersister: CredentialPersister
     private var userAuthenticationToken: String?
     private var registeredDeviceToken: Data?
     private var loggedInUser: User?
@@ -24,10 +24,14 @@ class UserAuthenticationCoordinator {
          remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
          loginAPI: LoginAPI) {
         self.eventBus = eventBus
+        self.credentialStore = credentialStore
         self.loginAPI = loginAPI
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
-        credentialPersister = CredentialPersister(clock: clock, credentialStore: credentialStore)
-        credentialPersister.loadCredential(completionHandler: updateCurrentUser)
+
+        if let credential = credentialStore.persistedCredential, clock.currentDate.compare(credential.tokenExpiryDate) == .orderedAscending {
+            updateCurrentUser(from: credential)
+        }
+
         eventBus.subscribe(consumer: BlockEventConsumer(block: remoteNotificationTokenDidChange))
     }
 
@@ -53,7 +57,7 @@ class UserAuthenticationCoordinator {
             if error != nil {
                 completionHandler(.failure)
             } else {
-                self.credentialPersister.deleteCredential()
+                self.credentialStore.deletePersistedToken()
                 self.loggedInUser = nil
                 self.userAuthenticationToken = nil
                 completionHandler(.success)
@@ -78,7 +82,7 @@ class UserAuthenticationCoordinator {
                                     registrationNumber: args.registrationNumber,
                                     authenticationToken: response.token,
                                     tokenExpiryDate: response.tokenValidUntil)
-        credentialPersister.persist(credential)
+        credentialStore.store(credential)
         updateCurrentUser(from: credential)
         completionHandler(.success(loggedInUser!))
     }

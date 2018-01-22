@@ -236,7 +236,6 @@
 		CA30EAA61F2129C60053DBF6 /* CapturingLoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */; };
 		CA30EAAE1F2148780053DBF6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAAD1F2148780053DBF6 /* User.swift */; };
 		CA30EAB01F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAAF1F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift */; };
-		CA30EAB41F2161F10053DBF6 /* CredentialPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAB31F2161F10053DBF6 /* CredentialPersister.swift */; };
 		CA30EAB61F26128A0053DBF6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift */; };
 		CA30EABA1F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */; };
 		CA30EABC1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EABB1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift */; };
@@ -692,7 +691,6 @@
 		CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingLoginAPI.swift; sourceTree = "<group>"; };
 		CA30EAAD1F2148780053DBF6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CA30EAAF1F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnreadMessagesTableViewCell.swift; sourceTree = "<group>"; };
-		CA30EAB31F2161F10053DBF6 /* CredentialPersister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialPersister.swift; sourceTree = "<group>"; };
 		CA30EAB51F26128A0053DBF6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenRequestingPrivateMessagesWhileAuthenticated.swift; sourceTree = "<group>"; };
 		CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesObserver.swift; sourceTree = "<group>"; };
 		CA30EABB1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesAPI.swift; sourceTree = "<group>"; };
@@ -2145,7 +2143,6 @@
 		CAF3F63E20167E7000374B4C /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				CA30EAB31F2161F10053DBF6 /* CredentialPersister.swift */,
 				CAD7804F1F1E2D13002A8333 /* CredentialStore.swift */,
 				CAD780591F1E8E7D002A8333 /* KeychainCredentialStore.swift */,
 				CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */,
@@ -2820,7 +2817,6 @@
 				CA6AA0061FD6C96B0092C6DB /* RootModuleBuilder.swift in Sources */,
 				CAD7804E1F1D5227002A8333 /* SystemClock.swift in Sources */,
 				6EF96CD11F0EDB4C00EE6134 /* CalendarService.swift in Sources */,
-				CA30EAB41F2161F10053DBF6 /* CredentialPersister.swift in Sources */,
 				CA6AA00A1FD731930092C6DB /* PreloadViewController.swift in Sources */,
 				CA8E7EFA1FB0926E00F0BF10 /* PhoneTutorialSceneFactory.swift in Sources */,
 				CAEAEBFF1FE0044900C0EE7C /* MessageDetailScene.swift in Sources */,
