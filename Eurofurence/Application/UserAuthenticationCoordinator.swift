@@ -18,10 +18,6 @@ class UserAuthenticationCoordinator {
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
     var loggedInUser: User?
 
-    var isLoggedIn: Bool {
-        return userAuthenticationToken != nil
-    }
-
     init(eventBus: EventBus,
          clock: Clock,
          credentialStore: CredentialStore,
