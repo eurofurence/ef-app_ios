@@ -1281,18 +1281,16 @@
 		78D7EEB61F196B1F005372A9 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				CA30EAB31F2161F10053DBF6 /* CredentialPersister.swift */,
 				78D7EEBC1F196B62005372A9 /* EurofurenceApplication.swift */,
 				CAF3F63C20167B3100374B4C /* EurofurenceApplicationBuilder.swift */,
 				CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */,
-				CA2D07FA1FE902ED00BFD785 /* EurofurenceDataStore.swift */,
 				CAF3F63A2016797400374B4C /* PrivateMessagesController.swift */,
-				CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */,
 				CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */,
 				CA804DCF1F20CE5F00E07A4A /* API */,
+				CAF3F63E20167E7000374B4C /* Authentication */,
 				78D7EEC21F196BC3005372A9 /* Build Config */,
+				CAF3F63F20167EF700374B4C /* Data Store */,
 				CA8D97C9201610C80074838F /* Domain Events */,
-				CAD780411F1D4C98002A8333 /* Login */,
 				CA18B3451F49AF4500038E52 /* Model */,
 				78D7EEB91F196B40005372A9 /* Notifications */,
 				CAB3A72B1F7532DF005DF77B /* System Services */,
@@ -2048,16 +2046,6 @@
 			path = Messages;
 			sourceTree = "<group>";
 		};
-		CAD780411F1D4C98002A8333 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				CAD7804F1F1E2D13002A8333 /* CredentialStore.swift */,
-				CAD780591F1E8E7D002A8333 /* KeychainCredentialStore.swift */,
-				CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
 		CAD780441F1D4DF7002A8333 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -2164,6 +2152,26 @@
 				CAEAEC031FE0057800C0EE7C /* MessageDetailPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CAF3F63E20167E7000374B4C /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				CA30EAB31F2161F10053DBF6 /* CredentialPersister.swift */,
+				CAD7804F1F1E2D13002A8333 /* CredentialStore.swift */,
+				CAD780591F1E8E7D002A8333 /* KeychainCredentialStore.swift */,
+				CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */,
+				CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		CAF3F63F20167EF700374B4C /* Data Store */ = {
+			isa = PBXGroup;
+			children = (
+				CA2D07FA1FE902ED00BFD785 /* EurofurenceDataStore.swift */,
+			);
+			path = "Data Store";
 			sourceTree = "<group>";
 		};
 		CAF7055F1F82CBC800A9FEA2 /* Director */ = {
