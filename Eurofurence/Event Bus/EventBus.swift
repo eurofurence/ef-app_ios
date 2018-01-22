@@ -93,7 +93,7 @@ public class EventBus {
                  reference types that conform to the `NSCopying` protocol, each 
                  consumer will consume unique copies of the event.
     */
-    public func post(event: Any) {
+    public func post(_ event: Any) {
         storage.filter({ $0.supports(event) }).forEach { (registration) in
             var dispatchable = event
             if let copyable = event as? NSCopying {

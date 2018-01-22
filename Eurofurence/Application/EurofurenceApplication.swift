@@ -125,7 +125,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func storeRemoteNotificationsToken(_ deviceToken: Data) {
-        eventBus.post(event: DomainEvent.RemoteNotificationRegistrationSucceeded(deviceToken: deviceToken))
+        eventBus.post(DomainEvent.RemoteNotificationRegistrationSucceeded(deviceToken: deviceToken))
         authenticationCoordinator.registeredDeviceToken = deviceToken
     }
 

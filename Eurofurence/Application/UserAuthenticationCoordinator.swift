@@ -68,7 +68,7 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
         credentialPersister.persist(credential)
         loginCompletionHandler?(.success(user))
         userAuthenticationToken = credential.authenticationToken
-        eventBus.post(event: DomainEvent.LoggedIn(user: user, authenticationToken: credential.authenticationToken))
+        eventBus.post(DomainEvent.LoggedIn(user: user, authenticationToken: credential.authenticationToken))
     }
 
     func loginTaskDidFail(_ task: LoginTask) {
@@ -81,7 +81,7 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
         userAuthenticationToken = credential.authenticationToken
         let user = User(registrationNumber: credential.registrationNumber, username: credential.username)
         loggedInUser = user
-        eventBus.post(event: DomainEvent.LoggedIn(user: user, authenticationToken: credential.authenticationToken))
+        eventBus.post(DomainEvent.LoggedIn(user: user, authenticationToken: credential.authenticationToken))
     }
 
 }
