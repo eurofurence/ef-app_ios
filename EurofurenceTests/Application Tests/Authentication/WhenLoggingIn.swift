@@ -14,7 +14,7 @@ class WhenLoggingIn: XCTestCase {
     private func makeLoginResponse(uid: String = "",
                                    username: String = "",
                                    token: String = "",
-                                   tokenValidUntil: Date = Date()) -> APILoginResponse {
+                                   tokenValidUntil: Date = Date()) -> LoginResponse {
         return StubLoginResponse(uid: uid, username: username, token: token, tokenValidUntil: tokenValidUntil)
     }
     

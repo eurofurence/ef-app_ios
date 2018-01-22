@@ -18,7 +18,7 @@ class CapturingLoginAPI: LoginAPI {
         handler = request.completionHandler
     }
     
-    func simulateResponse(_ response: APILoginResponse) {
+    func simulateResponse(_ response: LoginResponse) {
         handler?(.success(response))
     }
     

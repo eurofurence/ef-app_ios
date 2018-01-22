@@ -52,7 +52,7 @@ struct V2LoginAPI: LoginAPI {
         }
     }
 
-    private struct Response: APILoginResponse, Decodable {
+    private struct Response: LoginResponse, Decodable {
 
         var uid: String
         var username: String

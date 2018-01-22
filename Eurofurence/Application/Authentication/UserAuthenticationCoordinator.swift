@@ -69,7 +69,7 @@ class UserAuthenticationCoordinator {
     }
 
     private func handleLoginSuccess(_ args: LoginArguments,
-                                    response: APILoginResponse,
+                                    response: LoginResponse,
                                     completionHandler: @escaping (LoginResult) -> Void) {
         let credential = Credential(username: args.username,
                                     registrationNumber: args.registrationNumber,

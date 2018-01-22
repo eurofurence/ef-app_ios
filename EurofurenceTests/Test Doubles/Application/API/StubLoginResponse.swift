@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import Foundation
 
-struct StubLoginResponse: APILoginResponse {
+struct StubLoginResponse: LoginResponse {
     var uid: String
     var username: String
     var token: String

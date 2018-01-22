@@ -1,5 +1,5 @@
 //
-//  APILoginResponse.swift
+//  LoginResponse.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 20/07/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol APILoginResponse {
+protocol LoginResponse {
 
     var uid: String { get }
     var username: String { get }

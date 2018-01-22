@@ -6,7 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-typealias LoginResponseHandler = (APIResponse<APILoginResponse>) -> Void
+typealias LoginResponseHandler = (APIResponse<LoginResponse>) -> Void
 
 protocol LoginAPI {
 
@@ -19,6 +19,6 @@ struct LoginRequest {
     var regNo: Int
     var username: String
     var password: String
-    var completionHandler: (APIResponse<APILoginResponse>) -> Void
+    var completionHandler: (APIResponse<LoginResponse>) -> Void
 
 }

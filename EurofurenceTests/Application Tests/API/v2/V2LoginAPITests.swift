@@ -11,9 +11,9 @@ import XCTest
 
 class CapturingV2LoginObserver {
     
-    private(set) var capturedLoginResponse: APILoginResponse?
+    private(set) var capturedLoginResponse: LoginResponse?
     private(set) var notifiedLoginFailed = false
-    func observe(_ result: APIResponse<APILoginResponse>) {
+    func observe(_ result: APIResponse<LoginResponse>) {
         switch result {
         case .success(let response):
             capturedLoginResponse = response
@@ -76,7 +76,7 @@ class V2LoginAPITests: XCTestCase {
     private func makeLoginParameters(regNo: Int = 0,
                                      username: String = "Username",
                                      password: String = "Password",
-                                     completionHandler: @escaping (APIResponse<APILoginResponse>) -> Void = { _ in }) -> LoginRequest {
+                                     completionHandler: @escaping (APIResponse<LoginResponse>) -> Void = { _ in }) -> LoginRequest {
         return LoginRequest(regNo: regNo, username: username, password: password, completionHandler: completionHandler)
     }
     
