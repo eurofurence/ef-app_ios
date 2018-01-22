@@ -20,15 +20,8 @@ class WhenRetrievingLocalPrivateMessages: XCTestCase {
                                subject: "Subject",
                                contents: "Contents",
                                isRead: false)
-        let message = StubAPIPrivateMessage(id: expected.identifier,
-                                            authorName: expected.authorName,
-                                            subject: expected.subject,
-                                            message: expected.contents,
-                                            receivedDateTime: receivedDate,
-                                            readDateTime: nil)
-        let response = StubAPIPrivateMessagesResponse(messages: [message])
-        context.application.fetchPrivateMessages { _ in }
-        context.privateMessagesAPI.simulateSuccessfulResponse(response: response)
+        context.application.fetchPrivateMessages { (_) in }
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: [expected])
         
         XCTAssertEqual([expected], context.application.localPrivateMessages)
     }

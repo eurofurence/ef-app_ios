@@ -16,9 +16,7 @@ class WhenMarkingMessageAsRead: XCTestCase {
         let observer = CapturingPrivateMessagesObserver()
         context.application.fetchPrivateMessages(completionHandler: observer.completionHandler)
         let identifier = "Message ID"
-        let message = StubAPIPrivateMessage(id: identifier)
-        let response = StubAPIPrivateMessagesResponse(messages: [message])
-        context.privateMessagesAPI.simulateSuccessfulResponse(response: response)
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: [AppDataBuilder.makeMessage(identifier: identifier)])
         
         if let receievedMessage = observer.capturedMessages?.first {
             context.application.markMessageAsRead(receievedMessage)
@@ -34,9 +32,7 @@ class WhenMarkingMessageAsRead: XCTestCase {
         let observer = CapturingPrivateMessagesObserver()
         context.application.fetchPrivateMessages(completionHandler: observer.completionHandler)
         let identifier = "Message ID"
-        let message = StubAPIPrivateMessage(id: identifier)
-        let response = StubAPIPrivateMessagesResponse(messages: [message])
-        context.privateMessagesAPI.simulateSuccessfulResponse(response: response)
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: [AppDataBuilder.makeMessage(identifier: identifier)])
         
         if let receievedMessage = observer.capturedMessages?.first {
             context.application.markMessageAsRead(receievedMessage)

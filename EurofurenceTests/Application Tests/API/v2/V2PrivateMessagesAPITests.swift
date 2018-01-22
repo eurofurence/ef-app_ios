@@ -13,11 +13,11 @@ class CapturingV2PrivateMessagesObserver {
     
     private(set) var wasNotifiedResponseSucceeded = false
     private(set) var wasNotifiedResponseFailed = false
-    private(set) var capturedMessages: [APIPrivateMessage]?
-    func handle(_ response: APIPrivateMessagesResponse?) {
-        if let response = response {
+    private(set) var capturedMessages: [Message]?
+    func handle(_ messages: [Message]?) {
+        if let messages = messages {
             wasNotifiedResponseSucceeded = true
-            capturedMessages = response.messages
+            capturedMessages = messages
         }
         else {
             wasNotifiedResponseFailed = true
@@ -108,7 +108,7 @@ class V2PrivateMessagesAPITests: XCTestCase {
         let identifier = "Some identifier"
         let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(id: identifier))
         
-        XCTAssertEqual(identifier, observer.capturedMessages?.first?.id)
+        XCTAssertEqual(identifier, observer.capturedMessages?.first?.identifier)
     }
     
     func testSuccessfulResponseShouldProvideMessageWithAuthorName() {
@@ -129,14 +129,7 @@ class V2PrivateMessagesAPITests: XCTestCase {
         let message = "Some content"
         let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(message: message))
         
-        XCTAssertEqual(message, observer.capturedMessages?.first?.message)
-    }
-    
-    func testSuccessfulResponseShouldProvideMessageWithRecipientIdentifier() {
-        let recipientUid = "Some recepient"
-        let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(recipientUid: recipientUid))
-        
-        XCTAssertEqual(recipientUid, observer.capturedMessages?.first?.recipientUid)
+        XCTAssertEqual(message, observer.capturedMessages?.first?.contents)
     }
     
     func testSuccessfulResponseWithUnsupportedLastChangeDateTimeValueShouldProvideFailureResponse() {
@@ -144,41 +137,9 @@ class V2PrivateMessagesAPITests: XCTestCase {
         XCTAssertTrue(observer.wasNotifiedResponseFailed)
     }
     
-    func testSuccessfulResponseWithSupportedLastChangeDateTimeValueShouldProvideLastChangeDateTime() {
-        let dateString =  "2017-07-25T18:45:59.050Z"
-        let expectedComponents = DateComponents(year: 2017, month: 7, day: 25, hour: 18, minute: 45, second: 59)
-        let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(lastChangeDateTime: dateString))
-        
-        var actualComponents: DateComponents?
-        if let receievedDate = observer.capturedMessages?.first?.lastChangeDateTime {
-            let desiredComponents: [Calendar.Component] = [.year, .month, .day, .hour, .minute, .second]
-            var calendar = Calendar(identifier: .gregorian)
-            calendar.timeZone = TimeZone(abbreviation: "GMT")!
-            actualComponents = calendar.dateComponents(Set(desiredComponents), from: receievedDate)
-        }
-        
-        XCTAssertEqual(expectedComponents, actualComponents)
-    }
-    
     func testSuccessfulResponseWithUnsupportedCreatedDateTimeValueShouldProvideFailureResponse() {
         let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(createdDateTime: "Not a date"))
         XCTAssertTrue(observer.wasNotifiedResponseFailed)
-    }
-    
-    func testSuccessfulResponseWithSupportedCreatedDateTimeValueShouldProvideCreatedDateTime() {
-        let dateString =  "2017-07-25T18:45:59.050Z"
-        let expectedComponents = DateComponents(year: 2017, month: 7, day: 25, hour: 18, minute: 45, second: 59)
-        let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(createdDateTime: dateString))
-        
-        var actualComponents: DateComponents?
-        if let receievedDate = observer.capturedMessages?.first?.createdDateTime {
-            let desiredComponents: [Calendar.Component] = [.year, .month, .day, .hour, .minute, .second]
-            var calendar = Calendar(identifier: .gregorian)
-            calendar.timeZone = TimeZone(abbreviation: "GMT")!
-            actualComponents = calendar.dateComponents(Set(desiredComponents), from: receievedDate)
-        }
-        
-        XCTAssertEqual(expectedComponents, actualComponents)
     }
     
     func testSuccessfulResponseWithUnsupportedreceivedDateTimeValueShouldProvideFailureResponse() {
@@ -207,25 +168,16 @@ class V2PrivateMessagesAPITests: XCTestCase {
         XCTAssertFalse(observer.wasNotifiedResponseFailed)
     }
     
-    func testSuccessfulResponseWithUnsupportedReadDateTimeValueShouldProvideNilReadDateTime() {
+    func testSuccessfulResponseWithUnsupportedReadDateTimeValueShouldIndicateUnread() {
         let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(readDateTime: "Not a date"))
-        XCTAssertNil(observer.capturedMessages?.first?.readDateTime)
+        XCTAssertEqual(false, observer.capturedMessages?.first?.isRead)
     }
     
-    func testSuccessfulResponseWithSupportedReadDateTimeValueShouldProvideReadDateTime() {
+    func testSuccessfulResponseWithSupportedReadDateTimeValueShouldIndicateIsRead() {
         let dateString =  "2017-07-25T18:45:59.050Z"
-        let expectedComponents = DateComponents(year: 2017, month: 7, day: 25, hour: 18, minute: 45, second: 59)
         let observer = makeCapturingObserverForResponse(makeSuccessfulResponse(receivedDateTime: dateString))
         
-        var actualComponents: DateComponents?
-        if let receievedDate = observer.capturedMessages?.first?.readDateTime {
-            let desiredComponents: [Calendar.Component] = [.year, .month, .day, .hour, .minute, .second]
-            var calendar = Calendar(identifier: .gregorian)
-            calendar.timeZone = TimeZone(abbreviation: "GMT")!
-            actualComponents = calendar.dateComponents(Set(desiredComponents), from: receievedDate)
-        }
-        
-        XCTAssertEqual(expectedComponents, actualComponents)
+        XCTAssertEqual(true, observer.capturedMessages?.first?.isRead)
     }
     
     func testMarkingAPIMessageAsReadSubmitsPOSTRequestToMessageReadURL() {

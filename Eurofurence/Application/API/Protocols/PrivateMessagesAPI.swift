@@ -9,7 +9,7 @@
 protocol PrivateMessagesAPI {
 
     func loadPrivateMessages(authorizationToken: String,
-                             completionHandler: @escaping (APIPrivateMessagesResponse?) -> Void)
+                             completionHandler: @escaping ([Message]?) -> Void)
     func markMessageWithIdentifierAsRead(_ identifier: String, authorizationToken: String)
 
 }

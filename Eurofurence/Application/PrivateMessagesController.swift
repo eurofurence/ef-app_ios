@@ -20,9 +20,9 @@ class PrivateMessagesController {
 
     func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {
         if let token = userAuthenticationToken {
-            privateMessagesAPI.loadPrivateMessages(authorizationToken: token) { (response) in
-                if let response = response {
-                    let messages = response.messages.map(self.makeMessage).sorted(by: { (first, second) -> Bool in
+            privateMessagesAPI.loadPrivateMessages(authorizationToken: token) { (messages) in
+                if let messages = messages {
+                    let messages = messages.sorted(by: { (first, second) -> Bool in
                         return first.receivedDateTime.compare(second.receivedDateTime) == .orderedDescending
                     })
 
@@ -44,15 +44,6 @@ class PrivateMessagesController {
 
     private func userLoggedIn(_ event: DomainEvent.LoggedIn) {
         userAuthenticationToken = event.authenticationToken
-    }
-
-    private func makeMessage(from apiMessage: APIPrivateMessage) -> Message {
-        return Message(identifier: apiMessage.id,
-                       authorName: apiMessage.authorName,
-                       receivedDateTime: apiMessage.receivedDateTime,
-                       subject: apiMessage.subject,
-                       contents: apiMessage.message,
-                       isRead: apiMessage.readDateTime != nil)
     }
 
 }

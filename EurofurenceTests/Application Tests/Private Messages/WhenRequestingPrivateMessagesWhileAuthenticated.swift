@@ -65,66 +65,45 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
     
     func testReceievingAPIResponseWithSuccessShouldPropogateAuthorNameForMessage() {
         let authorName = "Some guy"
-        let message = StubAPIPrivateMessage(authorName: authorName)
-        let response = StubAPIPrivateMessagesResponse(messages: [message])
-        context.privateMessagesAPI.simulateSuccessfulResponse(response: response)
+        let message = AppDataBuilder.makeMessage(authorName: authorName)
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
         
         XCTAssertEqual(authorName, capturingMessagesObserver.capturedMessages?.first?.authorName)
     }
     
     func testReceievingAPIResponseWithSuccessShouldPropogatereceivedDateTimeForMessage() {
         let receivedDateTime = Date.distantPast
-        let message = StubAPIPrivateMessage(receivedDateTime: receivedDateTime)
-        let response = StubAPIPrivateMessagesResponse(messages: [message])
-        context.privateMessagesAPI.simulateSuccessfulResponse(response: response)
+        let message = AppDataBuilder.makeMessage(receivedDateTime: receivedDateTime)
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
         
         XCTAssertEqual(receivedDateTime, capturingMessagesObserver.capturedMessages?.first?.receivedDateTime)
     }
     
     func testReceievingAPIResponseWithSuccessShouldPropogateContentsForMessage() {
         let contents = "Blah blah important stuff blah blah"
-        let message = StubAPIPrivateMessage(message: contents)
-        let response = StubAPIPrivateMessagesResponse(messages: [message])
-        context.privateMessagesAPI.simulateSuccessfulResponse(response: response)
+        let message = AppDataBuilder.makeMessage(contents: contents)
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
         
         XCTAssertEqual(contents, capturingMessagesObserver.capturedMessages?.first?.contents)
     }
     
     func testReceievingAPIResponseWithSuccessShouldPropogateSubjectForMessage() {
         let subject = "You won something!!"
-        let message = StubAPIPrivateMessage(subject: subject)
-        let response = StubAPIPrivateMessagesResponse(messages: [message])
-        context.privateMessagesAPI.simulateSuccessfulResponse(response: response)
+        let message = AppDataBuilder.makeMessage(subject: subject)
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: [message])
         
         XCTAssertEqual(subject, capturingMessagesObserver.capturedMessages?.first?.subject)
     }
     
-    func testReceivingMessageWithoutReadTimeShouldIndicateItIsNotRead() {
-        let message = StubAPIPrivateMessage(readDateTime: nil)
-        let response = StubAPIPrivateMessagesResponse(messages: [message])
-        context.privateMessagesAPI.simulateSuccessfulResponse(response: response)
-        
-        XCTAssertEqual(false, capturingMessagesObserver.capturedMessages?.first?.isRead)
-    }
-    
-    func testReceivingMessageWithReadTimeShouldIndicateItIsRead() {
-        let message = StubAPIPrivateMessage(readDateTime: .distantPast)
-        let response = StubAPIPrivateMessagesResponse(messages: [message])
-        context.privateMessagesAPI.simulateSuccessfulResponse(response: response)
-        
-        XCTAssertEqual(true, capturingMessagesObserver.capturedMessages?.first?.isRead)
-    }
-    
     func testMessagesShouldBeSortedWithLatestMessagesFirst() {
-        let makeRandomMessage: () -> StubAPIPrivateMessage = {
+        let makeRandomMessage: () -> Message = {
             let randomDate = Date(timeIntervalSinceNow: TimeInterval(arc4random_uniform(3600)))
-            return StubAPIPrivateMessage(receivedDateTime: randomDate)
+            return AppDataBuilder.makeMessage(receivedDateTime: randomDate)
         }
         
         let messages = (0...5).map({ (_) in makeRandomMessage() })
         let expectedDateOrdering = Array(messages.map({ $0.receivedDateTime }).sorted().reversed())
-        let response = StubAPIPrivateMessagesResponse(messages: messages)
-        context.privateMessagesAPI.simulateSuccessfulResponse(response: response)
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: messages)
         let actualDateOrdering = capturingMessagesObserver.capturedMessages?.map({ $0.receivedDateTime }) ?? []
         
         XCTAssertEqual(expectedDateOrdering, actualDateOrdering)

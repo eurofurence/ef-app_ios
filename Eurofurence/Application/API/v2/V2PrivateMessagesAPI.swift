@@ -22,12 +22,12 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
     // MARK: PrivateMessagesAPI
 
     func loadPrivateMessages(authorizationToken: String,
-                             completionHandler: @escaping (APIPrivateMessagesResponse?) -> Void) {
+                             completionHandler: @escaping ([Message]?) -> Void) {
         var request = JSONRequest(url: "https://app.eurofurence.org/api/v2/Communication/PrivateMessages", body: Data())
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
         jsonSession.get(request) { data, _ in
             if let data = data, let messages = try? V2PrivateMessagesAPI.responseDecoder.decode([Response.Message].self, from: data) {
-                completionHandler(Response(messages: messages))
+                completionHandler(messages.map({ $0.makeMessage() }))
             } else {
                 completionHandler(nil)
             }
@@ -85,6 +85,15 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
                 case createdDateTime = "CreatedDateTimeUtc"
                 case receivedDateTime = "ReceivedDateTimeUtc"
                 case readDateTime = "ReadDateTimeUtc"
+            }
+
+            func makeMessage() -> Eurofurence.Message {
+                return Eurofurence.Message(identifier: id,
+                                           authorName: authorName,
+                                           receivedDateTime: receivedDateTime,
+                                           subject: subject,
+                                           contents: message,
+                                           isRead: readDateTime != nil)
             }
 
         }
