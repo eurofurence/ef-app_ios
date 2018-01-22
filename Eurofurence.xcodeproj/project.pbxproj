@@ -286,7 +286,12 @@
 		CA81D4901FE9A91000A52A2F /* WhenTheTutorialAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D48F1FE9A91000A52A2F /* WhenTheTutorialAppears.swift */; };
 		CA81D4921FE9AC9200A52A2F /* PhoneTabModuleFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D4911FE9AC9200A52A2F /* PhoneTabModuleFactoryTests.swift */; };
 		CA81D4941FEA92EA00A52A2F /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D4931FEA92EA00A52A2F /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift */; };
+		CA8D97CD201610EC0074838F /* DomainEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97CC201610EC0074838F /* DomainEvent.swift */; };
 		CA8D97CF201611430074838F /* EventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97CE201611430074838F /* EventBus.swift */; };
+		CA8D97D12016126E0074838F /* LoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97D02016126E0074838F /* LoggedIn.swift */; };
+		CA8D97D3201612A70074838F /* RemoteNotificationRegistrationSucceeded.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97D2201612A70074838F /* RemoteNotificationRegistrationSucceeded.swift */; };
+		CA8D97D5201613010074838F /* RemoteNotificationRegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97D4201613010074838F /* RemoteNotificationRegistrationController.swift */; };
+		CA8D97D7201616DF0074838F /* BlockEventConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97D6201616DF0074838F /* BlockEventConsumer.swift */; };
 		CA8E17ED1F817A70003C348C /* PreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17EC1F817A70003C348C /* PreloadService.swift */; };
 		CA8E17EF1F817A8C003C348C /* CapturingPreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17EE1F817A8C003C348C /* CapturingPreloadService.swift */; };
 		CA8E17F11F817AA2003C348C /* CapturingPreloadModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */; };
@@ -740,7 +745,12 @@
 		CA81D48F1FE9A91000A52A2F /* WhenTheTutorialAppears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTheTutorialAppears.swift; sourceTree = "<group>"; };
 		CA81D4911FE9AC9200A52A2F /* PhoneTabModuleFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneTabModuleFactoryTests.swift; sourceTree = "<group>"; };
 		CA81D4931FEA92EA00A52A2F /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRequestingPrivateMessagesWhileNotAuthenticated.swift; sourceTree = "<group>"; };
+		CA8D97CC201610EC0074838F /* DomainEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainEvent.swift; sourceTree = "<group>"; };
 		CA8D97CE201611430074838F /* EventBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBus.swift; sourceTree = "<group>"; };
+		CA8D97D02016126E0074838F /* LoggedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedIn.swift; sourceTree = "<group>"; };
+		CA8D97D2201612A70074838F /* RemoteNotificationRegistrationSucceeded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationRegistrationSucceeded.swift; sourceTree = "<group>"; };
+		CA8D97D4201613010074838F /* RemoteNotificationRegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationRegistrationController.swift; sourceTree = "<group>"; };
+		CA8D97D6201616DF0074838F /* BlockEventConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockEventConsumer.swift; sourceTree = "<group>"; };
 		CA8E17EC1F817A70003C348C /* PreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadService.swift; sourceTree = "<group>"; };
 		CA8E17EE1F817A8C003C348C /* CapturingPreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPreloadService.swift; sourceTree = "<group>"; };
 		CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPreloadModuleDelegate.swift; sourceTree = "<group>"; };
@@ -1278,6 +1288,7 @@
 				CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */,
 				CA804DCF1F20CE5F00E07A4A /* API */,
 				78D7EEC21F196BC3005372A9 /* Build Config */,
+				CA8D97C9201610C80074838F /* Domain Events */,
 				CAD780411F1D4C98002A8333 /* Login */,
 				CA18B3451F49AF4500038E52 /* Model */,
 				78D7EEB91F196B40005372A9 /* Notifications */,
@@ -1289,8 +1300,9 @@
 		78D7EEB91F196B40005372A9 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
-				781A94311F1A1981002DE70F /* Firebase */,
+				CA8D97D4201613010074838F /* RemoteNotificationRegistrationController.swift */,
 				781A943B1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift */,
+				781A94311F1A1981002DE70F /* Firebase */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -1710,6 +1722,7 @@
 		CA49E93B201547ED00EB571C /* Event Bus */ = {
 			isa = PBXGroup;
 			children = (
+				CA8D97D6201616DF0074838F /* BlockEventConsumer.swift */,
 				CA8D97CE201611430074838F /* EventBus.swift */,
 				CA49E9422015480A00EB571C /* EventBusRegistration.swift */,
 				CA49E9432015480A00EB571C /* EventCache.swift */,
@@ -1835,6 +1848,16 @@
 				78D7EEB41F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift */,
 			);
 			path = "Notification Registration";
+			sourceTree = "<group>";
+		};
+		CA8D97C9201610C80074838F /* Domain Events */ = {
+			isa = PBXGroup;
+			children = (
+				CA8D97CC201610EC0074838F /* DomainEvent.swift */,
+				CA8D97D02016126E0074838F /* LoggedIn.swift */,
+				CA8D97D2201612A70074838F /* RemoteNotificationRegistrationSucceeded.swift */,
+			);
+			path = "Domain Events";
 			sourceTree = "<group>";
 		};
 		CA8E17EB1F817A5F003C348C /* Preload */ = {
@@ -2671,6 +2694,7 @@
 				9A7FFD571EFC5B46007ABA36 /* CalendarAccess.swift in Sources */,
 				CAEAEBE71FDC94F800C0EE7C /* AuthenticationService.swift in Sources */,
 				CAF7055A1F82C51900A9FEA2 /* LegacyPreloadService.swift in Sources */,
+				CA8D97D7201616DF0074838F /* BlockEventConsumer.swift in Sources */,
 				781A94331F1A1994002DE70F /* FCMDeviceRegistration.swift in Sources */,
 				9A861EAF1F2554F900B75A8C /* TutorialPresenter.swift in Sources */,
 				6EF96CCC1F0EDB0500EE6134 /* CalendarEvent.swift in Sources */,
@@ -2691,6 +2715,7 @@
 				9A80EF551F291A5500FD0D37 /* UserDetailsNewsPreferences.swift in Sources */,
 				9A0F87E71F1BADD200FF294B /* KeyedLocalNotificationStore.swift in Sources */,
 				9ACF99961EC858B2006FC958 /* EventConferenceTrack.swift in Sources */,
+				CA8D97D5201613010074838F /* RemoteNotificationRegistrationController.swift in Sources */,
 				9ACF99911EC858B2006FC958 /* Image.swift in Sources */,
 				9A861EB01F2554F900B75A8C /* TutorialPresentationContext.swift in Sources */,
 				CAD780431F1D4CA3002A8333 /* Credential.swift in Sources */,
@@ -2754,6 +2779,7 @@
 				9A0525471ECB091900578798 /* MockApiConnection.swift in Sources */,
 				CAB3A72F1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift in Sources */,
 				9A34B9871ED08C7E004A249E /* JsonDataStore.swift in Sources */,
+				CA8D97CD201610EC0074838F /* DomainEvent.swift in Sources */,
 				CAEAEC081FE06F3C00C0EE7C /* MessageDetailViewControllerV2.swift in Sources */,
 				9A0525411ECA2AF500578798 /* Sync.swift in Sources */,
 				9A34B9811ED06956004A249E /* ViewModelResolver.swift in Sources */,
@@ -2780,6 +2806,7 @@
 				CAF3C74C1F9F619C0008F027 /* PhoneNewsModuleFactory.swift in Sources */,
 				78455B451F11778D005BE2D7 /* TutorialRouter.swift in Sources */,
 				9ACF99901EC858B2006FC958 /* KnowledgeEntry.swift in Sources */,
+				CA8D97D12016126E0074838F /* LoggedIn.swift in Sources */,
 				CAD7804C1F1D5212002A8333 /* Clock.swift in Sources */,
 				9AF0B4FE1F08459D000AAA0A /* TimeIntervalRow.swift in Sources */,
 				9A861EB11F2554F900B75A8C /* TutorialModule.swift in Sources */,
@@ -2913,6 +2940,7 @@
 				CA30EAC21F266D9B0053DBF6 /* APIPrivateMessagesResponse.swift in Sources */,
 				6EF96CCA1F0EDAF800EE6134 /* CalendarPermissionsProviding.swift in Sources */,
 				9A7FFD551EFC5A9E007ABA36 /* MapViewController.swift in Sources */,
+				CA8D97D3201612A70074838F /* RemoteNotificationRegistrationSucceeded.swift in Sources */,
 				CAF9A9531F55F3B300628833 /* EurofurencePrivateMessagesService.swift in Sources */,
 				D6F3D339BFBA2C299453B6BA /* SettingsTableViewController.swift in Sources */,
 				D6F3D40D3515E7ABE9565906 /* AboutViewController.swift in Sources */,

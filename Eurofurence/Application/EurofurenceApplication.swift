@@ -58,13 +58,14 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
     private var authenticationCoordinator: UserAuthenticationCoordinator
-    private var registeredDeviceToken: Data?
 
+    private let eventBus = EventBus()
     private let userPreferences: UserPreferences
     private let dataStore: EurofurenceDataStore
     private let privateMessagesAPI: PrivateMessagesAPI
     private let pushPermissionsRequester: PushPermissionsRequester
     private let pushPermissionsStateProviding: PushPermissionsStateProviding
+    private let remoteNotificationRegistrationController: RemoteNotificationRegistrationController
 
     init(userPreferences: UserPreferences,
          dataStore: EurofurenceDataStore,
@@ -86,7 +87,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             pushPermissionsRequester.requestPushPermissions()
         }
 
-        authenticationCoordinator = UserAuthenticationCoordinator(clock: clock,
+        remoteNotificationRegistrationController = RemoteNotificationRegistrationController(eventBus: eventBus,
+                                                                                            remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration)
+        authenticationCoordinator = UserAuthenticationCoordinator(eventBus: eventBus,
+                                                                  clock: clock,
                                                                   credentialStore: credentialStore,
                                                                   remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
                                                                   loginAPI: loginAPI)
@@ -122,10 +126,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func storeRemoteNotificationsToken(_ deviceToken: Data) {
-        registeredDeviceToken = deviceToken
+        eventBus.post(event: DomainEvent.RemoteNotificationRegistrationSucceeded(deviceToken: deviceToken))
         authenticationCoordinator.registeredDeviceToken = deviceToken
-        remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken,
-                                                                                    userAuthenticationToken: authenticationCoordinator.userAuthenticationToken) { _ in }
     }
 
     private(set) var localPrivateMessages: [Message] = []

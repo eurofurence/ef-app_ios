@@ -10,6 +10,7 @@ import Foundation
 
 class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDelegate {
 
+    private let eventBus: EventBus
     var userAuthenticationToken: String?
     var registeredDeviceToken: Data?
     private var loginAPI: LoginAPI
@@ -22,10 +23,12 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
         return userAuthenticationToken != nil
     }
 
-    init(clock: Clock,
+    init(eventBus: EventBus,
+         clock: Clock,
          credentialStore: CredentialStore,
          remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
          loginAPI: LoginAPI) {
+        self.eventBus = eventBus
         self.loginAPI = loginAPI
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
         credentialPersister = CredentialPersister(clock: clock, credentialStore: credentialStore)
@@ -65,11 +68,7 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
         credentialPersister.persist(credential)
         loginCompletionHandler?(.success(user))
         userAuthenticationToken = credential.authenticationToken
-
-        if let registeredDeviceToken = registeredDeviceToken {
-            remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(registeredDeviceToken,
-                                                                                        userAuthenticationToken: userAuthenticationToken) { _ in }
-        }
+        eventBus.post(event: DomainEvent.LoggedIn(user: user, authenticationToken: credential.authenticationToken))
     }
 
     func loginTaskDidFail(_ task: LoginTask) {
@@ -80,7 +79,9 @@ class UserAuthenticationCoordinator: LoginTaskDelegate, CredentialPersisterDeleg
 
     func credentialPersister(_ credentialPersister: CredentialPersister, didRetrieve credential: Credential) {
         userAuthenticationToken = credential.authenticationToken
-        loggedInUser = User(registrationNumber: credential.registrationNumber, username: credential.username)
+        let user = User(registrationNumber: credential.registrationNumber, username: credential.username)
+        loggedInUser = user
+        eventBus.post(event: DomainEvent.LoggedIn(user: user, authenticationToken: credential.authenticationToken))
     }
 
 }

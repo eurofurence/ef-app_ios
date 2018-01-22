@@ -12,38 +12,36 @@ import Foundation
 /// information throughout your application, mediating the transmission from
 /// broadcaster to receiver.
 public class EventBus {
-    
+
     /// Specifies the manner in which an `EventBus` should re-deliver previously
     /// posted events when new `EventConsumer`s subscribe to the bus.
     public enum DeliveryMode {
-        
+
         /// Past events should not be re-delivered to new consumers.
         case simple
-        
+
         /// The most recent copy of the event should be delivered to the
         /// consumer.
         case replayLast
-        
+
     }
-    
+
     // MARK: Properties
-    
+
     private var storage = [EventBusRegistration]()
     private let cache = EventCache()
-    
+
     /// Specifies the `DeliveryMode` of events for new subscribers. The default
     /// behaviour is to not re-deliver events.
     public var redeliveryMode: DeliveryMode = .simple
-    
-    
+
     // MARK: Initialization
-    
+
     /// Initializes a new `EventBus` instance.
     public init() { }
-    
-    
+
     // MARK: Public
-    
+
     /**
      Appends an `EventConsumer` to this `EventBus`, allowing for propagation of 
      future events towards the consumer.
@@ -58,15 +56,15 @@ public class EventBus {
     */
     public func subscribe<Consumer: EventConsumer>(consumer: Consumer) {
         storage.append(EventConsumerRegistration(consumer: consumer))
-        
+
         guard case .replayLast = redeliveryMode,
               let event = cache.cachedEvent(ofType: Consumer.Event.self) else {
                 return
         }
-        
+
         consumer.consume(event: event)
     }
-    
+
     /**
      Removes an `EventConsumer` from this `EventBus`, preventing any future
      events reaching the consumer until it is re-subscribed.
@@ -78,10 +76,10 @@ public class EventBus {
         guard let index = storage.index(where: { $0.represents(consumer: consumer) }) else {
             return
         }
-        
+
         storage.remove(at: index)
     }
-    
+
     /**
      Posts an event through this `EventBus`, notifying any relevant
      `EventConsumer`s.
@@ -101,11 +99,11 @@ public class EventBus {
             if let copyable = event as? NSCopying {
                 dispatchable = copyable.copy(with: nil)
             }
-            
+
             registration.handle(event: dispatchable)
         }
-        
+
         cache.append(event: event)
     }
-    
+
 }
