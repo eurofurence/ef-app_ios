@@ -12,12 +12,17 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
 
     // MARK: Properties
 
-    var jsonSession: JSONSession
-    private static var responseDecoder: JSONDecoder = {
-        let decoder = JSONDecoder()
+    private var jsonSession: JSONSession
+    private var decoder: JSONDecoder
+
+    // MARK: Initialization
+
+    init(jsonSession: JSONSession) {
+        self.jsonSession = jsonSession
+
+        decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(Iso8601DateFormatter.instance)
-        return decoder
-    }()
+    }
 
     // MARK: PrivateMessagesAPI
 
@@ -25,20 +30,24 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
                              completionHandler: @escaping ([Message]?) -> Void) {
         var request = JSONRequest(url: "https://app.eurofurence.org/api/v2/Communication/PrivateMessages", body: Data())
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
-        jsonSession.get(request) { data, _ in
-            if let data = data, let messages = try? V2PrivateMessagesAPI.responseDecoder.decode([JSONMessage].self, from: data) {
-                completionHandler(messages.map({ $0.makeAppDomainMessage() }))
-            } else {
-                completionHandler(nil)
+        jsonSession.get(request) { (data, _) in
+            var messages: [Message]?
+            defer { completionHandler(messages) }
+
+            guard let data = data else { return }
+
+            if let jsonMessages = try? self.decoder.decode([JSONMessage].self, from: data) {
+                messages = jsonMessages.map({ $0.makeAppDomainMessage() })
             }
         }
     }
 
     func markMessageWithIdentifierAsRead(_ identifier: String, authorizationToken: String) {
-        var request = JSONRequest(url: "https://app.eurofurence.org/api/v2/Communication/PrivateMessages/\(identifier)/Read",
-                              body: Data())
+        let url = "https://app.eurofurence.org/api/v2/Communication/PrivateMessages/\(identifier)/Read"
+        var request = JSONRequest(url: url, body: Data())
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
-        jsonSession.post(request, completionHandler: { _ in })
+
+        jsonSession.post(request, completionHandler: { (_) in })
     }
 
     // MARK: Private
