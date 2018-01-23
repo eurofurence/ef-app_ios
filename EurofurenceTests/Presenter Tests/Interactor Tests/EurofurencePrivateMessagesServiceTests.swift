@@ -17,8 +17,10 @@ class CapturingPrivateMessageUnreadCountObserver: PrivateMessagesServiceObserver
     }
     
     private(set) var loadedMessages: [Message] = []
+    private(set) var serviceDidLoadEmptyMessagesArray = false
     func privateMessagesServiceDidFinishRefreshingMessages(_ messages: [Message]) {
         loadedMessages = messages
+        serviceDidLoadEmptyMessagesArray = messages.isEmpty
     }
     
     private(set) var toldLoadFailed = false
@@ -92,11 +94,23 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
         XCTAssertEqual(messages, observer.loadedMessages)
     }
     
-    func testLocalMessagesProvideMessagesFromApplication() {
+    func testLoadingMessagesEmitsAppLocalMessagesWhileLoading() {
+        let observer = CapturingPrivateMessageUnreadCountObserver()
+        service.add(observer)
         let messages = [AppDataBuilder.makeMessage()]
         app.localPrivateMessages = messages
+        service.refreshMessages()
         
-        XCTAssertEqual(messages, service.localMessages)
+        XCTAssertEqual(messages, observer.loadedMessages)
+    }
+    
+    func testLoadingMessagesWhenAppDoesNotHaveLocalMessagesDoesNotEmitEmptyMessagesArrayWhileLoading() {
+        let observer = CapturingPrivateMessageUnreadCountObserver()
+        service.add(observer)
+        app.localPrivateMessages = []
+        service.refreshMessages()
+        
+        XCTAssertFalse(observer.serviceDidLoadEmptyMessagesArray)
     }
     
     func testAddingUnreadPrivateMessageCountObserverTellsItTheNumberOfCurrentlyUnreadMessages() {

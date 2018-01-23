@@ -20,6 +20,7 @@ class WhenViewingMessageWhileLoggedInWithLocalMessage: XCTestCase {
         localMessage = AppDataBuilder.makeMessage()
         context = MessagesPresenterTestContext.makeTestCaseForUserWithMessages([localMessage])
         context.scene.delegate?.messagesSceneWillAppear()
+        context.privateMessagesService.succeedLastRefresh(messages: [localMessage])
     }
     
     func testTheMessagesListAppears() {

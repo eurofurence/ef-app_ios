@@ -8,8 +8,6 @@
 
 protocol PrivateMessagesService {
 
-    var localMessages: [Message] { get }
-
     func add(_ observer: PrivateMessagesServiceObserver)
     func refreshMessages()
 

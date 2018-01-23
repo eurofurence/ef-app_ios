@@ -17,16 +17,16 @@ class EurofurencePrivateMessagesService: PrivateMessagesService {
         self.app = app
     }
 
-    var localMessages: [Message] {
-        return app.localPrivateMessages
-    }
-
     func add(_ observer: PrivateMessagesServiceObserver) {
         observers.append(observer)
         provideUnreadMessageCount(to: observer)
     }
 
     func refreshMessages() {
+        if !app.localPrivateMessages.isEmpty {
+            observers.forEach({ $0.privateMessagesServiceDidFinishRefreshingMessages(app.localPrivateMessages) })
+        }
+
         app.fetchPrivateMessages { (result) in
             switch result {
             case .success(let messages):
