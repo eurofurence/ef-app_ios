@@ -9,5 +9,6 @@
 protocol KnowledgeListScene {
 
     func setDelegate(_ delegate: KnowledgeListSceneDelegate)
+    func showLoadingIndicator()
 
 }

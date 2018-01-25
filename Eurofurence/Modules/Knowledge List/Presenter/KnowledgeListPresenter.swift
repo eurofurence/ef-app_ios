@@ -8,10 +8,12 @@
 
 struct KnowledgeListPresenter: KnowledgeListSceneDelegate {
 
+    var scene: KnowledgeListScene
     var knowledgeListInteractor: KnowledgeInteractor
 
     func knowledgeListSceneWillAppear() {
         knowledgeListInteractor.prepareViewModel()
+        scene.showLoadingIndicator()
     }
 
 }

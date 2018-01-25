@@ -18,4 +18,11 @@ class WhenKnowledgeListSceneWillAppear: XCTestCase {
         XCTAssertTrue(context.knowledgeInteractor.toldToPrepareViewModel)
     }
     
+    func testTheSceneIsToldToShowTheLoadingIndicator() {
+        let context = KnowledgeListPresenterTestBuilder().build()
+        context.scene.delegate?.knowledgeListSceneWillAppear()
+        
+        XCTAssertTrue(context.scene.didShowLoadingIndicator)
+    }
+    
 }

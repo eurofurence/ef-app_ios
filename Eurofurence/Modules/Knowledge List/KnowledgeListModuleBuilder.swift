@@ -21,6 +21,9 @@ class KnowledgeListModuleBuilder {
         struct DummyKnowledgeListSceneFactory: KnowledgeListSceneFactory {
             func makeKnowledgeListScene() -> KnowledgeListScene {
                 struct DummyKnowledgeListScene: KnowledgeListScene {
+                    func showLoadingIndicator() {
+                    }
+
                     func setDelegate(_ delegate: KnowledgeListSceneDelegate) {
                     }
                 }

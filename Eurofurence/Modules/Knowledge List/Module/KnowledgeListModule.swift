@@ -15,7 +15,8 @@ struct KnowledgeListModule: KnowledgeListModuleProviding {
 
     func makeKnowledgeListModule() -> UIViewController {
         let scene = knowledgeSceneFactory.makeKnowledgeListScene()
-        let presenter = KnowledgeListPresenter(knowledgeListInteractor: knowledgeListInteractor)
+        let presenter = KnowledgeListPresenter(scene: scene,
+                                               knowledgeListInteractor: knowledgeListInteractor)
         scene.setDelegate(presenter)
 
         return UIViewController()

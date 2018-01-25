@@ -15,4 +15,9 @@ class CapturingKnowledgeListScene: KnowledgeListScene {
         self.delegate = delegate
     }
     
+    private(set) var didShowLoadingIndicator = false
+    func showLoadingIndicator() {
+        didShowLoadingIndicator = true
+    }
+    
 }

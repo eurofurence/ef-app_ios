@@ -15,4 +15,9 @@ class WhenBuildingKnowledgePresenter: XCTestCase {
         XCTAssertFalse(context.knowledgeInteractor.toldToPrepareViewModel)
     }
     
+    func testItShouldNotTellTheSceneToShowTheLoadingIndicator() {
+        let context = KnowledgeListPresenterTestBuilder().build()
+        XCTAssertFalse(context.scene.didShowLoadingIndicator)
+    }
+    
 }
