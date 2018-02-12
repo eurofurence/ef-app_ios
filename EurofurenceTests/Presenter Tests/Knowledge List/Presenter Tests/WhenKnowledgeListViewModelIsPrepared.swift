@@ -11,29 +11,28 @@ import XCTest
 
 class WhenKnowledgeListViewModelIsPrepared: XCTestCase {
     
-    func testTheSceneIsToldToHideTheLoadingIndicator() {
-        let context = KnowledgeListPresenterTestBuilder().build()
-        context.scene.delegate?.knowledgeListSceneDidLoad()
-        context.simulateLoadingViewModel()
+    var context: KnowledgeListPresenterTestBuilder.Context!
+    var viewModel: StubKnowledgeBaseViewModel!
+    
+    override func setUp() {
+        super.setUp()
         
+        context = KnowledgeListPresenterTestBuilder().build()
+        context.scene.delegate?.knowledgeListSceneDidLoad()
+        viewModel = StubKnowledgeBaseViewModel.withRandomData()
+        context.simulateLoadingViewModel(viewModel)
+    }
+    
+    func testTheSceneIsToldToHideTheLoadingIndicator() {
         XCTAssertTrue(context.scene.didHideLoadingIndicator)
     }
     
     func testTheSceneIsToldToDisplayKnowledgeGroups() {
-        let context = KnowledgeListPresenterTestBuilder().build()
-        context.scene.delegate?.knowledgeListSceneDidLoad()
-        let viewModel = StubKnowledgeBaseViewModel.withRandomData()
-        context.simulateLoadingViewModel(viewModel)
         let expected = viewModel.groups.map({ $0.entries.count })
-        
         XCTAssertEqual(expected, context.scene.capturedEntriesPerGroup)
     }
     
     func testBindingKnowledgeGroupHeadingSetsTitleOntoScene() {
-        let context = KnowledgeListPresenterTestBuilder().build()
-        context.scene.delegate?.knowledgeListSceneDidLoad()
-        let viewModel = StubKnowledgeBaseViewModel.withRandomData()
-        context.simulateLoadingViewModel(viewModel)
         let randomGroup = viewModel.randomKnowledgeGroup
         let expected = randomGroup.knowledgeGroup.title
         let scene = CapturingKnowledgeGroupHeaderScene()

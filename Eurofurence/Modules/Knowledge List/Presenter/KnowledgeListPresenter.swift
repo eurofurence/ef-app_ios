@@ -12,14 +12,17 @@ struct KnowledgeListPresenter: KnowledgeListSceneDelegate {
     var knowledgeListInteractor: KnowledgeInteractor
 
     func knowledgeListSceneDidLoad() {
-        knowledgeListInteractor.prepareViewModel { (viewModel) in
-            self.scene.hideLoadingIndicator()
-
-            let entriesPerGroup = viewModel.knowledgeGroups.map({ $0.knowledgeEntries.count })
-            self.scene.prepareToDisplayKnowledgeGroups(entriesPerGroup: entriesPerGroup, binder: ListBinder(viewModel: viewModel))
-        }
-
+        knowledgeListInteractor.prepareViewModel(completionHandler: viewModelPrepared)
         scene.showLoadingIndicator()
+    }
+
+    private func viewModelPrepared(_ viewModel: KnowledgeBaseViewModel) {
+        scene.hideLoadingIndicator()
+
+        let knowledgeGroups = viewModel.knowledgeGroups
+        let entriesPerGroup = knowledgeGroups.map({ $0.knowledgeEntries.count })
+        let binder = ListBinder(viewModel: viewModel)
+        scene.prepareToDisplayKnowledgeGroups(entriesPerGroup: entriesPerGroup, binder: binder)
     }
 
     private struct ListBinder: KnowledgeListBinder {
