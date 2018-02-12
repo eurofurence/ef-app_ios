@@ -203,6 +203,8 @@
 		9AF159ED1EF5BE7F00DB287D /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF159EC1EF5BE7F00DB287D /* EventCell.swift */; };
 		A034379A14212C5E996E6321 /* Pods_Eurofurence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */; };
 		CA0F761D2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F761C2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift */; };
+		CA0F761F203229CF009DA079 /* KnowledgeBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F761E203229CF009DA079 /* KnowledgeBaseViewModel.swift */; };
+		CA0F7621203229E4009DA079 /* StubKnowledgeBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F7620203229E4009DA079 /* StubKnowledgeBaseViewModel.swift */; };
 		CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */; };
 		CA1ECB3F1FE333090076083A /* WhenInitialMessageLoadFails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */; };
 		CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */; };
@@ -673,6 +675,8 @@
 		A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eurofurence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4939A463603D9F022E19825 /* Pods-EurofurenceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CA0F761C2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeListViewModelIsPrepared.swift; sourceTree = "<group>"; };
+		CA0F761E203229CF009DA079 /* KnowledgeBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeBaseViewModel.swift; sourceTree = "<group>"; };
+		CA0F7620203229E4009DA079 /* StubKnowledgeBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeBaseViewModel.swift; sourceTree = "<group>"; };
 		CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessagesLoadCompletesWithNoMessages.swift; sourceTree = "<group>"; };
 		CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessageLoadFails.swift; sourceTree = "<group>"; };
 		CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewingMessageWhileLoggedInWithLocalMessage.swift; sourceTree = "<group>"; };
@@ -1821,6 +1825,7 @@
 				CA73AEDE201A0833004E77BF /* CapturingKnowledgeInteractor.swift */,
 				CA73AEDC201A0823004E77BF /* CapturingKnowledgeListScene.swift */,
 				CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */,
+				CA0F7620203229E4009DA079 /* StubKnowledgeBaseViewModel.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -1867,6 +1872,7 @@
 			isa = PBXGroup;
 			children = (
 				CA73AEED201A08A6004E77BF /* KnowledgeInteractor.swift */,
+				CA0F761E203229CF009DA079 /* KnowledgeBaseViewModel.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -3084,6 +3090,7 @@
 				CA30EAAE1F2148780053DBF6 /* User.swift in Sources */,
 				CA8E7EF61FB08E2500F0BF10 /* PhoneWindowWireframe.swift in Sources */,
 				9A861ED51F25564900B75A8C /* StoryboardTutorialRouter.swift in Sources */,
+				CA0F761F203229CF009DA079 /* KnowledgeBaseViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3192,6 +3199,7 @@
 				CA2D080C1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift in Sources */,
 				7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */,
 				78FE77D71F1B9FA500E9A0BE /* URLSessionBasedJSONSessionTests.swift in Sources */,
+				CA0F7621203229E4009DA079 /* StubKnowledgeBaseViewModel.swift in Sources */,
 				7820A6ED1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift in Sources */,
 				CAF9A93F1F50491200628833 /* EurofurenceAuthServiceTests.swift in Sources */,
 				CA73AEDD201A0823004E77BF /* CapturingKnowledgeListScene.swift in Sources */,

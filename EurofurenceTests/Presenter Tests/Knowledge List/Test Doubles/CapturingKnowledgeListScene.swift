@@ -25,4 +25,9 @@ class CapturingKnowledgeListScene: KnowledgeListScene {
         didHideLoadingIndicator = true
     }
     
+    private(set) var capturedEntriesPerGroup: [Int] = []
+    func prepareToDisplayKnowledgeGroups(entriesPerGroup: [Int]) {
+        capturedEntriesPerGroup = entriesPerGroup
+    }
+    
 }

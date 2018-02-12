@@ -12,8 +12,11 @@ struct KnowledgeListPresenter: KnowledgeListSceneDelegate {
     var knowledgeListInteractor: KnowledgeInteractor
 
     func knowledgeListSceneDidLoad() {
-        knowledgeListInteractor.prepareViewModel {
+        knowledgeListInteractor.prepareViewModel { (viewModel) in
             self.scene.hideLoadingIndicator()
+
+            let entriesPerGroup = viewModel.knowledgeGroups.map({ $0.knowledgeEntries.count })
+            self.scene.prepareToDisplayKnowledgeGroups(entriesPerGroup: entriesPerGroup)
         }
 
         scene.showLoadingIndicator()
