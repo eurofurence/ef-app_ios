@@ -8,6 +8,6 @@
 
 protocol KnowledgeListSceneDelegate {
 
-    func knowledgeListSceneWillAppear()
+    func knowledgeListSceneDidLoad()
 
 }

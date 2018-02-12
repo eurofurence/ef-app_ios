@@ -13,7 +13,7 @@ class WhenKnowledgeListViewModelIsPrepared: XCTestCase {
     
     func testTheSceneIsToldToHideTheLoadingIndicator() {
         let context = KnowledgeListPresenterTestBuilder().build()
-        context.scene.delegate?.knowledgeListSceneWillAppear()
+        context.scene.delegate?.knowledgeListSceneDidLoad()
         context.simulateLoadingViewModel()
         
         XCTAssertTrue(context.scene.didHideLoadingIndicator)

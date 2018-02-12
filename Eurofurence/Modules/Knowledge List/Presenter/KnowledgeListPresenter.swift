@@ -11,7 +11,7 @@ struct KnowledgeListPresenter: KnowledgeListSceneDelegate {
     var scene: KnowledgeListScene
     var knowledgeListInteractor: KnowledgeInteractor
 
-    func knowledgeListSceneWillAppear() {
+    func knowledgeListSceneDidLoad() {
         knowledgeListInteractor.prepareViewModel {
             self.scene.hideLoadingIndicator()
         }

@@ -9,18 +9,18 @@
 @testable import Eurofurence
 import XCTest
 
-class WhenKnowledgeListSceneWillAppear: XCTestCase {
+class WhenKnowledgeListSceneDidLoad: XCTestCase {
     
     func testWhenTheViewWillAppearTheInteractorIsToldToPrepareKnowledgeListViewModel() {
         let context = KnowledgeListPresenterTestBuilder().build()
-        context.scene.delegate?.knowledgeListSceneWillAppear()
+        context.scene.delegate?.knowledgeListSceneDidLoad()
         
         XCTAssertTrue(context.knowledgeInteractor.toldToPrepareViewModel)
     }
     
     func testTheSceneIsToldToShowTheLoadingIndicator() {
         let context = KnowledgeListPresenterTestBuilder().build()
-        context.scene.delegate?.knowledgeListSceneWillAppear()
+        context.scene.delegate?.knowledgeListSceneDidLoad()
         
         XCTAssertTrue(context.scene.didShowLoadingIndicator)
     }
