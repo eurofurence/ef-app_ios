@@ -15,6 +15,7 @@ protocol KnowledgeBaseViewModel {
 protocol KnowledgeGroupViewModel {
 
     var title: String { get }
+    var groupDescription: String { get }
     var knowledgeEntries: [KnowledgeEntryViewModel] { get }
 
 }

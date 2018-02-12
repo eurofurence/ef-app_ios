@@ -15,4 +15,9 @@ class CapturingKnowledgeGroupHeaderScene: KnowledgeGroupHeaderScene {
         capturedTitle = title
     }
     
+    private(set) var capturedGroupDescription: String?
+    func setKnowledgeGroupDescription(_ groupDescription: String) {
+        capturedGroupDescription = groupDescription
+    }
+    
 }

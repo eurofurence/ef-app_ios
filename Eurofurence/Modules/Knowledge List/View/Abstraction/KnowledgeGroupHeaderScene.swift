@@ -9,5 +9,6 @@
 protocol KnowledgeGroupHeaderScene {
 
     func setKnowledgeGroupTitle(_ title: String)
+    func setKnowledgeGroupDescription(_ groupDescription: String)
 
 }

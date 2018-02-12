@@ -32,6 +32,7 @@ struct KnowledgeListPresenter: KnowledgeListSceneDelegate {
         func bind(_ header: KnowledgeGroupHeaderScene, toGroupAt index: Int) {
             let group = viewModel.knowledgeGroups[index]
             header.setKnowledgeGroupTitle(group.title)
+            header.setKnowledgeGroupDescription(group.groupDescription)
         }
 
         func bind(_ entryScene: KnowledgeGroupEntryScene, toEntryInGroup groupIndex: Int, at entryIndex: Int) {
