@@ -208,6 +208,8 @@
 		CA0F762320322DEF009DA079 /* KnowledgeListBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F762220322DEF009DA079 /* KnowledgeListBinder.swift */; };
 		CA0F762520322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F762420322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift */; };
 		CA0F762720322E36009DA079 /* KnowledgeGroupHeaderScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F762620322E36009DA079 /* KnowledgeGroupHeaderScene.swift */; };
+		CA0F7629203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F7628203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift */; };
+		CA0F762B203230F2009DA079 /* KnowledgeGroupEntryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F762A203230F2009DA079 /* KnowledgeGroupEntryScene.swift */; };
 		CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */; };
 		CA1ECB3F1FE333090076083A /* WhenInitialMessageLoadFails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */; };
 		CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */; };
@@ -683,6 +685,8 @@
 		CA0F762220322DEF009DA079 /* KnowledgeListBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListBinder.swift; sourceTree = "<group>"; };
 		CA0F762420322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeGroupHeaderScene.swift; sourceTree = "<group>"; };
 		CA0F762620322E36009DA079 /* KnowledgeGroupHeaderScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupHeaderScene.swift; sourceTree = "<group>"; };
+		CA0F7628203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeGroupEntryScene.swift; sourceTree = "<group>"; };
+		CA0F762A203230F2009DA079 /* KnowledgeGroupEntryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupEntryScene.swift; sourceTree = "<group>"; };
 		CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessagesLoadCompletesWithNoMessages.swift; sourceTree = "<group>"; };
 		CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessageLoadFails.swift; sourceTree = "<group>"; };
 		CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewingMessageWhileLoggedInWithLocalMessage.swift; sourceTree = "<group>"; };
@@ -1833,6 +1837,7 @@
 				CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */,
 				CA0F7620203229E4009DA079 /* StubKnowledgeBaseViewModel.swift */,
 				CA0F762420322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift */,
+				CA0F7628203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -1873,6 +1878,7 @@
 				CA73AEE6201A0883004E77BF /* KnowledgeListScene.swift */,
 				CA73AEE8201A088C004E77BF /* KnowledgeListSceneDelegate.swift */,
 				CA73AEEA201A0896004E77BF /* KnowledgeListSceneFactory.swift */,
+				CA0F762A203230F2009DA079 /* KnowledgeGroupEntryScene.swift */,
 			);
 			path = Abstraction;
 			sourceTree = "<group>";
@@ -2905,6 +2911,7 @@
 				9A9487FD1F1D5D9300119DC8 /* EventNotificationPreferences.swift in Sources */,
 				9A80EF611F2922EE00FD0D37 /* EventTableViewController.swift in Sources */,
 				9A80EF4A1F289D0500FD0D37 /* NotificationSyncDataStoreRefreshDelegate.swift in Sources */,
+				CA0F762B203230F2009DA079 /* KnowledgeGroupEntryScene.swift in Sources */,
 				78567B411F10212100EBA31D /* ProgressViewRefreshDelegate.swift in Sources */,
 				9A861EA81F2554BE00B75A8C /* RequestPushPermissionsTutorialPagePresenter.swift in Sources */,
 				9A0525471ECB091900578798 /* MockApiConnection.swift in Sources */,
@@ -3109,6 +3116,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA0F7629203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift in Sources */,
 				CA2D08021FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleDataStore.swift in Sources */,
 				CA30EAA61F2129C60053DBF6 /* CapturingLoginAPI.swift in Sources */,
 				78D7EEBF1F196B77005372A9 /* StubBuildConfigurationProviding.swift in Sources */,

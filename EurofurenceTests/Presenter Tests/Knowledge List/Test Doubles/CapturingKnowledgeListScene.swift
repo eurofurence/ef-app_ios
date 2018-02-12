@@ -40,4 +40,8 @@ extension CapturingKnowledgeListScene {
         binder?.bind(headerScene, toGroupAt: index)
     }
     
+    func bind(_ headerScene: KnowledgeGroupEntryScene, toEntryInGroup groupIndex: Int, at entryIndex: Int) {
+        binder?.bind(headerScene, toEntryInGroup: groupIndex, at: entryIndex)
+    }
+    
 }

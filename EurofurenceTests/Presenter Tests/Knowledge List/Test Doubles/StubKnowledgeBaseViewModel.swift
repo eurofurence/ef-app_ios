@@ -44,6 +44,11 @@ struct StubKnowledgeGroupViewModel: KnowledgeGroupViewModel {
                                            title: "\(arc4random())")
     }
     
+    var randomEntry: (index: Int, knowledgeEntry: StubKnowledgeEntryViewModel) {
+        let randomEntryIndex = Int(arc4random_uniform(UInt32(knowledgeEntries.count)))
+        return (index: randomEntryIndex, knowledgeEntry: entries[randomEntryIndex])
+    }
+    
     var entries = [StubKnowledgeEntryViewModel]()
     var knowledgeEntries: [KnowledgeEntryViewModel] { return entries }
     
@@ -54,7 +59,9 @@ struct StubKnowledgeGroupViewModel: KnowledgeGroupViewModel {
 struct StubKnowledgeEntryViewModel: KnowledgeEntryViewModel {
     
     static func withRandomData() -> StubKnowledgeEntryViewModel {
-        return StubKnowledgeEntryViewModel()
+        return StubKnowledgeEntryViewModel(title: "\(arc4random())")
     }
+    
+    var title: String
     
 }

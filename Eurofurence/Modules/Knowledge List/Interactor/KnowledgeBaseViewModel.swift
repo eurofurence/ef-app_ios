@@ -21,4 +21,6 @@ protocol KnowledgeGroupViewModel {
 
 protocol KnowledgeEntryViewModel {
 
+    var title: String { get }
+
 }
