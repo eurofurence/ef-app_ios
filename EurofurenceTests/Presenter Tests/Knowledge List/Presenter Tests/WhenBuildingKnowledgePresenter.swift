@@ -20,4 +20,9 @@ class WhenBuildingKnowledgePresenter: XCTestCase {
         XCTAssertFalse(context.scene.didShowLoadingIndicator)
     }
     
+    func testTheLoadingIndicatorShouldNotBeHidden() {
+        let context = KnowledgeListPresenterTestBuilder().build()
+        XCTAssertFalse(context.scene.didHideLoadingIndicator)
+    }
+    
 }

@@ -24,3 +24,11 @@ class KnowledgeListPresenterTestBuilder {
     }
     
 }
+
+extension KnowledgeListPresenterTestBuilder.Context {
+    
+    func simulateLoadingViewModel() {
+        knowledgeInteractor.simulateViewModelPrepared()
+    }
+    
+}

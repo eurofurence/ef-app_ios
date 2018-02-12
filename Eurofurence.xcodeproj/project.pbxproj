@@ -202,6 +202,7 @@
 		9AF0B4FE1F08459D000AAA0A /* TimeIntervalRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF0B4FD1F08459D000AAA0A /* TimeIntervalRow.swift */; };
 		9AF159ED1EF5BE7F00DB287D /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF159EC1EF5BE7F00DB287D /* EventCell.swift */; };
 		A034379A14212C5E996E6321 /* Pods_Eurofurence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */; };
+		CA0F761D2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F761C2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift */; };
 		CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */; };
 		CA1ECB3F1FE333090076083A /* WhenInitialMessageLoadFails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */; };
 		CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */; };
@@ -671,6 +672,7 @@
 		A5BC6AE61AB3CCDF97473815 /* Pods-EurofurenceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.release.xcconfig"; sourceTree = "<group>"; };
 		A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eurofurence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4939A463603D9F022E19825 /* Pods-EurofurenceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CA0F761C2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeListViewModelIsPrepared.swift; sourceTree = "<group>"; };
 		CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessagesLoadCompletesWithNoMessages.swift; sourceTree = "<group>"; };
 		CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessageLoadFails.swift; sourceTree = "<group>"; };
 		CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewingMessageWhileLoggedInWithLocalMessage.swift; sourceTree = "<group>"; };
@@ -1883,6 +1885,7 @@
 			children = (
 				CA73AEF7201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift */,
 				CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneWillAppear.swift */,
+				CA0F761C2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -3160,6 +3163,7 @@
 				CAF9A9581F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift in Sources */,
 				CA2D07F91FE9021A00BFD785 /* WhenResolvingDataStoreState.swift in Sources */,
 				CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */,
+				CA0F761D2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift in Sources */,
 				CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */,
 				781A94481F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift in Sources */,
 				7820A6FD1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift in Sources */,

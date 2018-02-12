@@ -20,4 +20,9 @@ class CapturingKnowledgeListScene: KnowledgeListScene {
         didShowLoadingIndicator = true
     }
     
+    private(set) var didHideLoadingIndicator = false
+    func hideLoadingIndicator() {
+        didHideLoadingIndicator = true
+    }
+    
 }

@@ -13,7 +13,7 @@ class KnowledgeListModuleBuilder {
 
     init() {
         struct DummyKnowledgeInteractor: KnowledgeInteractor {
-            func prepareViewModel() {
+            func prepareViewModel(completionHandler: @escaping () -> Void) {
 
             }
         }
@@ -22,6 +22,9 @@ class KnowledgeListModuleBuilder {
             func makeKnowledgeListScene() -> KnowledgeListScene {
                 struct DummyKnowledgeListScene: KnowledgeListScene {
                     func showLoadingIndicator() {
+                    }
+
+                    func hideLoadingIndicator() {
                     }
 
                     func setDelegate(_ delegate: KnowledgeListSceneDelegate) {

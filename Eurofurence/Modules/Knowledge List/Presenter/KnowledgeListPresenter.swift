@@ -12,7 +12,10 @@ struct KnowledgeListPresenter: KnowledgeListSceneDelegate {
     var knowledgeListInteractor: KnowledgeInteractor
 
     func knowledgeListSceneWillAppear() {
-        knowledgeListInteractor.prepareViewModel()
+        knowledgeListInteractor.prepareViewModel {
+            self.scene.hideLoadingIndicator()
+        }
+
         scene.showLoadingIndicator()
     }
 
