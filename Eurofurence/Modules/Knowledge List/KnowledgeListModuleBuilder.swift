@@ -30,7 +30,7 @@ class KnowledgeListModuleBuilder {
                     func setDelegate(_ delegate: KnowledgeListSceneDelegate) {
                     }
 
-                    func prepareToDisplayKnowledgeGroups(entriesPerGroup: [Int]) {
+                    func prepareToDisplayKnowledgeGroups(entriesPerGroup: [Int], binder: KnowledgeListBinder) {
 
                     }
                 }

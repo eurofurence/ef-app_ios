@@ -16,10 +16,21 @@ struct KnowledgeListPresenter: KnowledgeListSceneDelegate {
             self.scene.hideLoadingIndicator()
 
             let entriesPerGroup = viewModel.knowledgeGroups.map({ $0.knowledgeEntries.count })
-            self.scene.prepareToDisplayKnowledgeGroups(entriesPerGroup: entriesPerGroup)
+            self.scene.prepareToDisplayKnowledgeGroups(entriesPerGroup: entriesPerGroup, binder: ListBinder(viewModel: viewModel))
         }
 
         scene.showLoadingIndicator()
+    }
+
+    private struct ListBinder: KnowledgeListBinder {
+
+        var viewModel: KnowledgeBaseViewModel
+
+        func bind(_ header: KnowledgeGroupHeaderScene, toGroupAt index: Int) {
+            let group = viewModel.knowledgeGroups[index]
+            header.setKnowledgeGroupTitle(group.title)
+        }
+
     }
 
 }

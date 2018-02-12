@@ -11,6 +11,6 @@ protocol KnowledgeListScene {
     func setDelegate(_ delegate: KnowledgeListSceneDelegate)
     func showLoadingIndicator()
     func hideLoadingIndicator()
-    func prepareToDisplayKnowledgeGroups(entriesPerGroup: [Int])
+    func prepareToDisplayKnowledgeGroups(entriesPerGroup: [Int], binder: KnowledgeListBinder)
 
 }

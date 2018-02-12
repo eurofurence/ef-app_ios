@@ -21,6 +21,11 @@ struct StubKnowledgeBaseViewModel: KnowledgeBaseViewModel {
         return StubKnowledgeBaseViewModel(groups: groups)
     }
     
+    var randomKnowledgeGroup: (index: Int, knowledgeGroup: StubKnowledgeGroupViewModel) {
+        let randomGroupIndex = Int(arc4random_uniform(UInt32(knowledgeGroups.count)))
+        return (index: randomGroupIndex, knowledgeGroup: groups[randomGroupIndex])
+    }
+    
     var groups = [StubKnowledgeGroupViewModel]()
     var knowledgeGroups: [KnowledgeGroupViewModel] { return groups }
     
@@ -35,11 +40,14 @@ struct StubKnowledgeGroupViewModel: KnowledgeGroupViewModel {
             entries.append(.withRandomData())
         }
         
-        return StubKnowledgeGroupViewModel(entries: entries)
+        return StubKnowledgeGroupViewModel(entries: entries,
+                                           title: "\(arc4random())")
     }
     
     var entries = [StubKnowledgeEntryViewModel]()
     var knowledgeEntries: [KnowledgeEntryViewModel] { return entries }
+    
+    var title: String
     
 }
 

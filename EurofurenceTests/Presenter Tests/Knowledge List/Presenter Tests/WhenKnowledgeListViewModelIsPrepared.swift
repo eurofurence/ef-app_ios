@@ -29,4 +29,17 @@ class WhenKnowledgeListViewModelIsPrepared: XCTestCase {
         XCTAssertEqual(expected, context.scene.capturedEntriesPerGroup)
     }
     
+    func testBindingKnowledgeGroupHeadingSetsTitleOntoScene() {
+        let context = KnowledgeListPresenterTestBuilder().build()
+        context.scene.delegate?.knowledgeListSceneDidLoad()
+        let viewModel = StubKnowledgeBaseViewModel.withRandomData()
+        context.simulateLoadingViewModel(viewModel)
+        let randomGroup = viewModel.randomKnowledgeGroup
+        let expected = randomGroup.knowledgeGroup.title
+        let scene = CapturingKnowledgeGroupHeaderScene()
+        context.scene.bind(scene, toGroupAt: randomGroup.index)
+        
+        XCTAssertEqual(expected, scene.capturedTitle)
+    }
+    
 }

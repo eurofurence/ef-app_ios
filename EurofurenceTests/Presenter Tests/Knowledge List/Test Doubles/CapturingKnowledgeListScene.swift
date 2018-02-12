@@ -26,8 +26,18 @@ class CapturingKnowledgeListScene: KnowledgeListScene {
     }
     
     private(set) var capturedEntriesPerGroup: [Int] = []
-    func prepareToDisplayKnowledgeGroups(entriesPerGroup: [Int]) {
+    fileprivate var binder: KnowledgeListBinder?
+    func prepareToDisplayKnowledgeGroups(entriesPerGroup: [Int], binder: KnowledgeListBinder) {
         capturedEntriesPerGroup = entriesPerGroup
+        self.binder = binder
+    }
+    
+}
+
+extension CapturingKnowledgeListScene {
+    
+    func bind(_ headerScene: KnowledgeGroupHeaderScene, toGroupAt index: Int) {
+        binder?.bind(headerScene, toGroupAt: index)
     }
     
 }
