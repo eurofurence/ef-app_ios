@@ -6,9 +6,12 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import UIKit.UIImage
+
 protocol KnowledgeGroupHeaderScene {
 
     func setKnowledgeGroupTitle(_ title: String)
+    func setKnowledgeGroupIcon(_ icon: UIImage)
     func setKnowledgeGroupDescription(_ groupDescription: String)
 
 }

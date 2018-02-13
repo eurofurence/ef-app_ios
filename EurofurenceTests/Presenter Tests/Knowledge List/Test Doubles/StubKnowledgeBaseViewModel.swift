@@ -8,6 +8,7 @@
 
 import Darwin
 @testable import Eurofurence
+import UIKit.UIImage
 
 struct StubKnowledgeBaseViewModel: KnowledgeBaseViewModel {
     
@@ -42,6 +43,7 @@ struct StubKnowledgeGroupViewModel: KnowledgeGroupViewModel {
         
         return StubKnowledgeGroupViewModel(entries: entries,
                                            title: "\(arc4random())",
+                                           icon: UIImage(),
                                            groupDescription: "\(arc4random())")
     }
     
@@ -54,6 +56,7 @@ struct StubKnowledgeGroupViewModel: KnowledgeGroupViewModel {
     var knowledgeEntries: [KnowledgeEntryViewModel] { return entries }
     
     var title: String
+    var icon: UIImage
     var groupDescription: String
     
 }

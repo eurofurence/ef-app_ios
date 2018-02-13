@@ -41,6 +41,15 @@ class WhenKnowledgeListViewModelIsPrepared: XCTestCase {
         XCTAssertEqual(expected, scene.capturedTitle)
     }
     
+    func testBindingKnowledgeGroupHeadingSetsIconOntoScene() {
+        let randomGroup = viewModel.randomKnowledgeGroup
+        let expected = randomGroup.knowledgeGroup.icon
+        let scene = CapturingKnowledgeGroupHeaderScene()
+        context.scene.bind(scene, toGroupAt: randomGroup.index)
+        
+        XCTAssertEqual(expected, scene.capturedIcon)
+    }
+    
     func testBindingKnowledgeGroupHeadingSetsDescriptionOntoScene() {
         let randomGroup = viewModel.randomKnowledgeGroup
         let expected = randomGroup.knowledgeGroup.groupDescription

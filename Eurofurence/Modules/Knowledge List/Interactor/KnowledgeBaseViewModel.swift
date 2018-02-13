@@ -6,6 +6,8 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import UIKit.UIImage
+
 protocol KnowledgeBaseViewModel {
 
     var knowledgeGroups: [KnowledgeGroupViewModel] { get }
@@ -15,6 +17,7 @@ protocol KnowledgeBaseViewModel {
 protocol KnowledgeGroupViewModel {
 
     var title: String { get }
+    var icon: UIImage { get }
     var groupDescription: String { get }
     var knowledgeEntries: [KnowledgeEntryViewModel] { get }
 

@@ -7,12 +7,18 @@
 //
 
 @testable import Eurofurence
+import UIKit.UIImage
 
 class CapturingKnowledgeGroupHeaderScene: KnowledgeGroupHeaderScene {
     
     private(set) var capturedTitle: String?
     func setKnowledgeGroupTitle(_ title: String) {
         capturedTitle = title
+    }
+    
+    private(set) var capturedIcon: UIImage?
+    func setKnowledgeGroupIcon(_ icon: UIImage) {
+        capturedIcon = icon
     }
     
     private(set) var capturedGroupDescription: String?
