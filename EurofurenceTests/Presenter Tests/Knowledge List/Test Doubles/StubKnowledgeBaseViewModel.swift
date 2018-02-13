@@ -58,7 +58,11 @@ struct StubKnowledgeGroupViewModel: KnowledgeGroupViewModel {
     
 }
 
-struct StubKnowledgeEntryViewModel: KnowledgeEntryViewModel {
+struct StubKnowledgeEntryViewModel: KnowledgeEntryViewModel, Equatable {
+    
+    static func ==(lhs: StubKnowledgeEntryViewModel, rhs: StubKnowledgeEntryViewModel) -> Bool {
+        return lhs.title == rhs.title
+    }
     
     static func withRandomData() -> StubKnowledgeEntryViewModel {
         return StubKnowledgeEntryViewModel(title: "\(arc4random())")

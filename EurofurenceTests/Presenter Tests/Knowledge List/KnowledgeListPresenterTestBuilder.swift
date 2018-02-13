@@ -13,14 +13,22 @@ class KnowledgeListPresenterTestBuilder {
     struct Context {
         var knowledgeInteractor: CapturingKnowledgeInteractor
         var scene: CapturingKnowledgeListScene
+        var delegate: CapturingKnowledgeListModuleDelegate
     }
     
     func build() -> Context {
         let knowledgeInteractor = CapturingKnowledgeInteractor()
         let sceneFactory = StubKnowledgeListSceneFactory()
-        _ = KnowledgeListModuleBuilder().with(knowledgeInteractor).with(sceneFactory).build().makeKnowledgeListModule()
+        let delegate = CapturingKnowledgeListModuleDelegate()
+        _ = KnowledgeListModuleBuilder()
+            .with(knowledgeInteractor)
+            .with(sceneFactory)
+            .build()
+            .makeKnowledgeListModule(delegate)
         
-        return Context(knowledgeInteractor: knowledgeInteractor, scene: sceneFactory.scene)
+        return Context(knowledgeInteractor: knowledgeInteractor,
+                       scene: sceneFactory.scene,
+                       delegate: delegate)
     }
     
 }

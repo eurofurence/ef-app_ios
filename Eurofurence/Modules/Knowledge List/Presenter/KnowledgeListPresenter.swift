@@ -6,17 +6,36 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-struct KnowledgeListPresenter: KnowledgeListSceneDelegate {
+class KnowledgeListPresenter: KnowledgeListSceneDelegate {
 
-    var scene: KnowledgeListScene
-    var knowledgeListInteractor: KnowledgeInteractor
+    private let scene: KnowledgeListScene
+    private let knowledgeListInteractor: KnowledgeInteractor
+    private let delegate: KnowledgeListModuleDelegate
+    private var viewModel: KnowledgeBaseViewModel?
+
+    init(scene: KnowledgeListScene,
+         knowledgeListInteractor: KnowledgeInteractor,
+         delegate: KnowledgeListModuleDelegate) {
+        self.scene = scene
+        self.knowledgeListInteractor = knowledgeListInteractor
+        self.delegate = delegate
+    }
 
     func knowledgeListSceneDidLoad() {
         knowledgeListInteractor.prepareViewModel(completionHandler: viewModelPrepared)
         scene.showLoadingIndicator()
     }
 
+    func knowledgeListSceneDidSelectKnowledgeEntry(inGroup groupIndex: Int, at entryIndex: Int) {
+        guard let viewModel = viewModel else { return }
+        let group = viewModel.knowledgeGroups[groupIndex]
+        let entry = group.knowledgeEntries[entryIndex]
+
+        delegate.knowledgeListModuleDidSelectKnowledgeEntry(entry)
+    }
+
     private func viewModelPrepared(_ viewModel: KnowledgeBaseViewModel) {
+        self.viewModel = viewModel
         scene.hideLoadingIndicator()
 
         let knowledgeGroups = viewModel.knowledgeGroups

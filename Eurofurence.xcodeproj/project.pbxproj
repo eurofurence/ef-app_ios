@@ -210,6 +210,8 @@
 		CA0F762720322E36009DA079 /* KnowledgeGroupHeaderScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F762620322E36009DA079 /* KnowledgeGroupHeaderScene.swift */; };
 		CA0F7629203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F7628203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift */; };
 		CA0F762B203230F2009DA079 /* KnowledgeGroupEntryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F762A203230F2009DA079 /* KnowledgeGroupEntryScene.swift */; };
+		CA0F762D2033118D009DA079 /* KnowledgeListModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F762C2033118D009DA079 /* KnowledgeListModuleDelegate.swift */; };
+		CA0F762F2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F762E2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift */; };
 		CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */; };
 		CA1ECB3F1FE333090076083A /* WhenInitialMessageLoadFails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */; };
 		CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */; };
@@ -687,6 +689,8 @@
 		CA0F762620322E36009DA079 /* KnowledgeGroupHeaderScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupHeaderScene.swift; sourceTree = "<group>"; };
 		CA0F7628203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeGroupEntryScene.swift; sourceTree = "<group>"; };
 		CA0F762A203230F2009DA079 /* KnowledgeGroupEntryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupEntryScene.swift; sourceTree = "<group>"; };
+		CA0F762C2033118D009DA079 /* KnowledgeListModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListModuleDelegate.swift; sourceTree = "<group>"; };
+		CA0F762E2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeListModuleDelegate.swift; sourceTree = "<group>"; };
 		CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessagesLoadCompletesWithNoMessages.swift; sourceTree = "<group>"; };
 		CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessageLoadFails.swift; sourceTree = "<group>"; };
 		CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewingMessageWhileLoggedInWithLocalMessage.swift; sourceTree = "<group>"; };
@@ -1838,6 +1842,7 @@
 				CA0F7620203229E4009DA079 /* StubKnowledgeBaseViewModel.swift */,
 				CA0F762420322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift */,
 				CA0F7628203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift */,
+				CA0F762E2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -1897,6 +1902,7 @@
 			children = (
 				CA73AEF2201A08C4004E77BF /* KnowledgeListModule.swift */,
 				CA73AEF0201A08BA004E77BF /* KnowledgeListModuleProviding.swift */,
+				CA0F762C2033118D009DA079 /* KnowledgeListModuleDelegate.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -2842,6 +2848,7 @@
 				9A861ED81F25564900B75A8C /* StoryboardNotificationRouter.swift in Sources */,
 				9A9488011F21382E00119DC8 /* EventsEntity.swift in Sources */,
 				9ACF99761EBE3B4C006FC958 /* SharedFunctions.swift in Sources */,
+				CA0F762D2033118D009DA079 /* KnowledgeListModuleDelegate.swift in Sources */,
 				CAF3C7441F9F5C550008F027 /* NewsModuleProviding.swift in Sources */,
 				9A34B97A1ECF87B2004A249E /* ContextManager.swift in Sources */,
 				9AB64BC91EFE6592004E8D91 /* EventsViewModel.swift in Sources */,
@@ -3141,6 +3148,7 @@
 				CAD7805D1F1E8EB0002A8333 /* KeychainCredentialStoreTests.swift in Sources */,
 				CA2D08101FE9511300BFD785 /* WhenThePushNotificationPermissionsPageAppearsWithUnreachableNetwork.swift in Sources */,
 				CABA43951FCE0A49009CB5B0 /* CapturingLoginScene.swift in Sources */,
+				CA0F762F2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift in Sources */,
 				CAF9A9471F50B95F00628833 /* WhenRequestingCurrentUser.swift in Sources */,
 				78455B521F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift in Sources */,
 				CAD234421F5F2FA8004BB959 /* AppDataBuilder.swift in Sources */,
