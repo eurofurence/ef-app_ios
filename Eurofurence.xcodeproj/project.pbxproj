@@ -212,6 +212,9 @@
 		CA0F762B203230F2009DA079 /* KnowledgeGroupEntryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F762A203230F2009DA079 /* KnowledgeGroupEntryScene.swift */; };
 		CA0F762D2033118D009DA079 /* KnowledgeListModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F762C2033118D009DA079 /* KnowledgeListModuleDelegate.swift */; };
 		CA0F762F2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F762E2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift */; };
+		CA0F7632203314FE009DA079 /* KnowledgeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F7631203314FE009DA079 /* KnowledgeListViewController.swift */; };
+		CA0F763420331506009DA079 /* KnowledgeList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0F763320331506009DA079 /* KnowledgeList.storyboard */; };
+		CA0F763620331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F763520331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift */; };
 		CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */; };
 		CA1ECB3F1FE333090076083A /* WhenInitialMessageLoadFails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */; };
 		CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */; };
@@ -225,6 +228,8 @@
 		CA1FE99E1FA0B41E009C7DF3 /* NavigationControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE99D1FA0B41E009C7DF3 /* NavigationControllerFactory.swift */; };
 		CA2547C11FEB1B2A0023F2CB /* WhenRefreshingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2547C01FEB1B2A0023F2CB /* WhenRefreshingMessages.swift */; };
 		CA281B641F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */; };
+		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
+		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
 		CA2B4FA61F1EA1B300F007E1 /* ApplicationTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */; };
 		CA2B4FA81F1EA72A00F007E1 /* LoginArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */; };
@@ -691,6 +696,9 @@
 		CA0F762A203230F2009DA079 /* KnowledgeGroupEntryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupEntryScene.swift; sourceTree = "<group>"; };
 		CA0F762C2033118D009DA079 /* KnowledgeListModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListModuleDelegate.swift; sourceTree = "<group>"; };
 		CA0F762E2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeListModuleDelegate.swift; sourceTree = "<group>"; };
+		CA0F7631203314FE009DA079 /* KnowledgeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListViewController.swift; sourceTree = "<group>"; };
+		CA0F763320331506009DA079 /* KnowledgeList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KnowledgeList.storyboard; sourceTree = "<group>"; };
+		CA0F763520331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListSectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessagesLoadCompletesWithNoMessages.swift; sourceTree = "<group>"; };
 		CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessageLoadFails.swift; sourceTree = "<group>"; };
 		CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewingMessageWhileLoggedInWithLocalMessage.swift; sourceTree = "<group>"; };
@@ -704,6 +712,8 @@
 		CA1FE99D1FA0B41E009C7DF3 /* NavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NavigationControllerFactory.swift; path = ../Director/NavigationControllerFactory.swift; sourceTree = "<group>"; };
 		CA2547C01FEB1B2A0023F2CB /* WhenRefreshingMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRefreshingMessages.swift; sourceTree = "<group>"; };
 		CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationCoordinator.swift; sourceTree = "<group>"; };
+		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
+		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
 		CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationTestBuilder.swift; sourceTree = "<group>"; };
 		CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginArguments.swift; sourceTree = "<group>"; };
@@ -1678,6 +1688,18 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		CA0F7630203314E5009DA079 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				CA0F763320331506009DA079 /* KnowledgeList.storyboard */,
+				CA0F763520331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift */,
+				CA0F7631203314FE009DA079 /* KnowledgeListViewController.swift */,
+				CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */,
+				CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
 		CA18B3451F49AF4500038E52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1871,6 +1893,7 @@
 			isa = PBXGroup;
 			children = (
 				CA73AEE5201A0879004E77BF /* Abstraction */,
+				CA0F7630203314E5009DA079 /* UIKit */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2618,6 +2641,7 @@
 				78455B561F117B24005BE2D7 /* Tutorial.storyboard in Resources */,
 				78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */,
 				CA6A9FF91FD5E79F0092C6DB /* Login.storyboard in Resources */,
+				CA0F763420331506009DA079 /* KnowledgeList.storyboard in Resources */,
 				CAA39E0920051C6C00F2F3D3 /* Localizable.strings in Resources */,
 				9ACF99421EBE172D006FC958 /* LaunchScreen.storyboard in Resources */,
 				78C86D701F12AA6C003A20E6 /* Hieroglify.ttf in Resources */,
@@ -2848,6 +2872,7 @@
 				9A861ED81F25564900B75A8C /* StoryboardNotificationRouter.swift in Sources */,
 				9A9488011F21382E00119DC8 /* EventsEntity.swift in Sources */,
 				9ACF99761EBE3B4C006FC958 /* SharedFunctions.swift in Sources */,
+				CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */,
 				CA0F762D2033118D009DA079 /* KnowledgeListModuleDelegate.swift in Sources */,
 				CAF3C7441F9F5C550008F027 /* NewsModuleProviding.swift in Sources */,
 				9A34B97A1ECF87B2004A249E /* ContextManager.swift in Sources */,
@@ -2944,6 +2969,7 @@
 				6EF96CD91F0EDCB300EE6134 /* EventKitCalendarPermissionsProviding.swift in Sources */,
 				9A861ED41F25564900B75A8C /* WindowAlertRouter.swift in Sources */,
 				CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */,
+				CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */,
 				CA6AA0041FD6C7B50092C6DB /* DirectorBuilder.swift in Sources */,
 				9A8ECA291F2BF2CA00351A83 /* UserDefaultsRemoteNotificationSoundProvider.swift in Sources */,
 				9A861EC01F25551400B75A8C /* NetworkReachability.swift in Sources */,
@@ -2967,6 +2993,7 @@
 				CA2D07FD1FE904CD00BFD785 /* UserPreferences.swift in Sources */,
 				CA6AA0061FD6C96B0092C6DB /* RootModuleBuilder.swift in Sources */,
 				CAD7804E1F1D5227002A8333 /* SystemClock.swift in Sources */,
+				CA0F763620331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift in Sources */,
 				6EF96CD11F0EDB4C00EE6134 /* CalendarService.swift in Sources */,
 				CA6AA00A1FD731930092C6DB /* PreloadViewController.swift in Sources */,
 				CA8E7EFA1FB0926E00F0BF10 /* PhoneTutorialSceneFactory.swift in Sources */,
@@ -3028,6 +3055,7 @@
 				CABA43A11FD57A78009CB5B0 /* PreloadModuleBuilder.swift in Sources */,
 				9ACB006F1F16C945001CE9D2 /* EventFavorite.swift in Sources */,
 				D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */,
+				CA0F7632203314FE009DA079 /* KnowledgeListViewController.swift in Sources */,
 				CAE27B4E1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift in Sources */,
 				D6F3DB838A1BDAFC6DAC2F61 /* CountryAlpha3Converter.swift in Sources */,
 				CABA43831FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift in Sources */,

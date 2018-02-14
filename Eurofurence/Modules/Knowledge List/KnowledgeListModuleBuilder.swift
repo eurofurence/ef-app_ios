@@ -18,29 +18,8 @@ class KnowledgeListModuleBuilder {
             }
         }
 
-        struct DummyKnowledgeListSceneFactory: KnowledgeListSceneFactory {
-            func makeKnowledgeListScene() -> KnowledgeListScene {
-                struct DummyKnowledgeListScene: KnowledgeListScene {
-                    func showLoadingIndicator() {
-                    }
-
-                    func hideLoadingIndicator() {
-                    }
-
-                    func setDelegate(_ delegate: KnowledgeListSceneDelegate) {
-                    }
-
-                    func prepareToDisplayKnowledgeGroups(entriesPerGroup: [Int], binder: KnowledgeListBinder) {
-
-                    }
-                }
-
-                return DummyKnowledgeListScene()
-            }
-        }
-
         knowledgeListInteractor = DummyKnowledgeInteractor()
-        knowledgeSceneFactory = DummyKnowledgeListSceneFactory()
+        knowledgeSceneFactory = StoryboardKnowledgeListSceneFactory()
     }
 
     @discardableResult
