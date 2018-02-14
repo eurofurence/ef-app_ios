@@ -25,4 +25,9 @@ class WhenBuildingKnowledgePresenter: XCTestCase {
         XCTAssertFalse(context.scene.didHideLoadingIndicator)
     }
     
+    func testTheSceneFromTheFactoryIsReturnedFromTheModule() {
+        let context = KnowledgeListPresenterTestBuilder().build()
+        XCTAssertTrue(context.scene === context.producedViewController)
+    }
+    
 }

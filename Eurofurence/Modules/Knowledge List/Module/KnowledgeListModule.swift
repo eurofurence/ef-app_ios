@@ -20,7 +20,7 @@ struct KnowledgeListModule: KnowledgeListModuleProviding {
                                                delegate: delegate)
         scene.setDelegate(presenter)
 
-        return UIViewController()
+        return scene
     }
 
 }

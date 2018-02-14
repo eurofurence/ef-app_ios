@@ -7,11 +7,12 @@
 //
 
 @testable import Eurofurence
+import UIKit.UIViewController
 
 struct StubKnowledgeListSceneFactory: KnowledgeListSceneFactory {
     
     let scene = CapturingKnowledgeListScene()
-    func makeKnowledgeListScene() -> KnowledgeListScene {
+    func makeKnowledgeListScene() -> UIViewController & KnowledgeListScene {
         return scene
     }
     

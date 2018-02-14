@@ -7,8 +7,9 @@
 //
 
 @testable import Eurofurence
+import UIKit.UIViewController
 
-class CapturingKnowledgeListScene: KnowledgeListScene {
+class CapturingKnowledgeListScene: UIViewController, KnowledgeListScene {
     
     private(set) var delegate: KnowledgeListSceneDelegate?
     func setDelegate(_ delegate: KnowledgeListSceneDelegate) {

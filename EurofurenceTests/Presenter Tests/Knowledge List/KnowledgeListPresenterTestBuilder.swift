@@ -7,6 +7,7 @@
 //
 
 @testable import Eurofurence
+import UIKit.UIViewController
 
 class KnowledgeListPresenterTestBuilder {
     
@@ -14,13 +15,14 @@ class KnowledgeListPresenterTestBuilder {
         var knowledgeInteractor: CapturingKnowledgeInteractor
         var scene: CapturingKnowledgeListScene
         var delegate: CapturingKnowledgeListModuleDelegate
+        var producedViewController: UIViewController
     }
     
     func build() -> Context {
         let knowledgeInteractor = CapturingKnowledgeInteractor()
         let sceneFactory = StubKnowledgeListSceneFactory()
         let delegate = CapturingKnowledgeListModuleDelegate()
-        _ = KnowledgeListModuleBuilder()
+        let producedViewController = KnowledgeListModuleBuilder()
             .with(knowledgeInteractor)
             .with(sceneFactory)
             .build()
@@ -28,7 +30,8 @@ class KnowledgeListPresenterTestBuilder {
         
         return Context(knowledgeInteractor: knowledgeInteractor,
                        scene: sceneFactory.scene,
-                       delegate: delegate)
+                       delegate: delegate,
+                       producedViewController: producedViewController)
     }
     
 }

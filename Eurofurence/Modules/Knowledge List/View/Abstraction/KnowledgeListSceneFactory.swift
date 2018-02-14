@@ -6,8 +6,10 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import UIKit.UIViewController
+
 protocol KnowledgeListSceneFactory {
 
-    func makeKnowledgeListScene() -> KnowledgeListScene
+    func makeKnowledgeListScene() -> UIViewController & KnowledgeListScene
 
 }
