@@ -150,6 +150,15 @@ class StubMessageDetailModuleProviding: MessageDetailModuleProviding {
     
 }
 
+class StubKnowledgeListModuleProviding: KnowledgeListModuleProviding {
+    
+    let stubInterface = UIViewController()
+    func makeKnowledgeListModule(_ delegate: KnowledgeListModuleDelegate) -> UIViewController {
+        return stubInterface
+    }
+    
+}
+
 class ApplicationDirectorTests: XCTestCase {
     
     var director: ApplicationDirector!
@@ -162,6 +171,7 @@ class ApplicationDirectorTests: XCTestCase {
     var loginModuleFactory: StubLoginModuleFactory!
     var windowWireframe: CapturingWindowWireframe!
     var messageDetailModuleFactory: StubMessageDetailModuleProviding!
+    var knowledgeListModuleProviding: StubKnowledgeListModuleProviding!
     
     private func navigateToTabController() {
         rootModuleFactory.delegate?.rootModuleDidDetermineStoreShouldRefresh()
@@ -184,6 +194,7 @@ class ApplicationDirectorTests: XCTestCase {
         messagesModuleFactory = StubMessagesModuleFactory()
         loginModuleFactory = StubLoginModuleFactory()
         messageDetailModuleFactory = StubMessageDetailModuleProviding()
+        knowledgeListModuleProviding = StubKnowledgeListModuleProviding()
         
         let builder = DirectorBuilder()
         builder.withAnimations(false)
@@ -197,6 +208,7 @@ class ApplicationDirectorTests: XCTestCase {
         builder.with(messagesModuleFactory)
         builder.with(loginModuleFactory)
         builder.with(messageDetailModuleFactory)
+        builder.with(knowledgeListModuleProviding)
         
         director = builder.build()
     }
@@ -253,7 +265,7 @@ class ApplicationDirectorTests: XCTestCase {
     
     func testWhenShowingTheTheTabModuleItIsInitialisedWithControllersForTabModulesNestedInNavigationControllers() {
         navigateToTabController()
-        let expected: [UIViewController] = [newsModuleFactory.stubInterface]
+        let expected: [UIViewController] = [newsModuleFactory.stubInterface, knowledgeListModuleProviding.stubInterface]
         let actual = tabModuleFactory.capturedTabModules.flatMap({ $0 as? UINavigationController }).flatMap({ $0.topViewController })
         
         XCTAssertEqual(expected, actual)

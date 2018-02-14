@@ -13,7 +13,8 @@ class ApplicationDirector: RootModuleDelegate,
                            PreloadModuleDelegate,
                            NewsModuleDelegate,
                            MessagesModuleDelegate,
-                           LoginModuleDelegate {
+                           LoginModuleDelegate,
+                           KnowledgeListModuleDelegate {
 
     private class DissolveTransitionAnimationProviding: NSObject, UINavigationControllerDelegate {
 
@@ -34,6 +35,7 @@ class ApplicationDirector: RootModuleDelegate,
     private let newsNavigationController: UINavigationController
     private let loginModuleProviding: LoginModuleProviding
     private let messageDetailModuleProviding: MessageDetailModuleProviding
+    private let knowledgeListModuleProviding: KnowledgeListModuleProviding
 
     private let rootNavigationController: UINavigationController
     private let rootNavigationControllerDelegate = DissolveTransitionAnimationProviding()
@@ -51,7 +53,8 @@ class ApplicationDirector: RootModuleDelegate,
          newsModuleProviding: NewsModuleProviding,
          messagesModuleProviding: MessagesModuleProviding,
          loginModuleProviding: LoginModuleProviding,
-         messageDetailModuleProviding: MessageDetailModuleProviding) {
+         messageDetailModuleProviding: MessageDetailModuleProviding,
+         knowledgeListModuleProviding: KnowledgeListModuleProviding) {
         self.animate = animate
         self.windowWireframe = windowWireframe
         self.rootModuleProviding = rootModuleProviding
@@ -62,6 +65,7 @@ class ApplicationDirector: RootModuleDelegate,
         self.messagesModuleProviding = messagesModuleProviding
         self.loginModuleProviding = loginModuleProviding
         self.messageDetailModuleProviding = messageDetailModuleProviding
+        self.knowledgeListModuleProviding = knowledgeListModuleProviding
 
         rootNavigationController = navigationControllerFactory.makeNavigationController()
         rootNavigationController.delegate = rootNavigationControllerDelegate
@@ -103,8 +107,11 @@ class ApplicationDirector: RootModuleDelegate,
         let newsController = newsModuleProviding.makeNewsModule(self)
         self.newsController = newsController
 
+        let knowledgeListController = knowledgeListModuleProviding.makeKnowledgeListModule(self)
+        let knowledgeListNavigationController = UINavigationController(rootViewController: knowledgeListController)
+
         newsNavigationController.setViewControllers([newsController], animated: animate)
-        let tabModule = tabModuleProviding.makeTabModule([newsNavigationController])
+        let tabModule = tabModuleProviding.makeTabModule([newsNavigationController, knowledgeListNavigationController])
         tabController = tabModule
 
         rootNavigationController.setViewControllers([tabModule], animated: animate)
@@ -154,6 +161,12 @@ class ApplicationDirector: RootModuleDelegate,
     func loginModuleDidLoginSuccessfully() {
         messagesModuleResolutionHandler?(true)
         tabController?.dismiss(animated: animate)
+    }
+
+    // MARK: KnowledgeListModuleDelegate
+
+    func knowledgeListModuleDidSelectKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryViewModel) {
+
     }
 
     // MARK: Private
