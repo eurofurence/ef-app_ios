@@ -81,7 +81,7 @@ class MessagesViewControllerTests: XCTestCase {
     
     func testBindingMessagesShouldUpdateNumberOfRowsInTableView() {
         let binder = StubMessageItemBinder()
-        let messageCount = Random.makeRandomNumber(upperLimit: 10)
+        let messageCount = Int.random(upperLimit: 10)
         viewController.bindMessages(count: messageCount, with: binder)
         
         XCTAssertEqual(messageCount, viewController.tableView.numberOfRows(inSection: 0))

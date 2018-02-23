@@ -175,10 +175,10 @@ class PreloadPresenterTests: XCTestCase {
     func testWhenThePreloadServiceProgressesTheSceneIsToldToUpdateWithTheCurrentAndTotalUnitCount() {
         let context = PreloadPresenterTestContext().build()
         context.preloadSceneFactory.splashScene.notifySceneWillAppear()
-        let current = Random.makeRandomNumber(upperLimit: 100)
-        let total = Random.makeRandomNumber(upperLimit: 100 - current) + current
+        let current = UInt32.random(upperLimit: 100)
+        let total = UInt32.random(upperLimit: 100 - current) + current
         let expected = Float(current) / Float(total)
-        context.preloadingService.notifyProgressMade(current: current, total: total)
+        context.preloadingService.notifyProgressMade(current: Int(current), total: Int(total))
         
         XCTAssertEqual(expected, context.preloadSceneFactory.splashScene.capturedProgress)
     }

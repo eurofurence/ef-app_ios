@@ -26,7 +26,7 @@ struct AppDataBuilder {
     }
     
     static func makeRandomNumberOfMessages() -> [Message] {
-        return (0...Random.makeRandomNumber(upperLimit: 10)).map { (number) in
+        return (0...Int.random(upperLimit: 10)).map { (number) in
             return makeMessage(identifier: String(describing: number),
                                authorName: "Author \(number)",
                                receivedDateTime: Date(),
