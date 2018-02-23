@@ -1,5 +1,5 @@
 //
-//  KnowledgeBaseViewModel.swift
+//  KnowledgeListViewModel.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 12/02/2018.
@@ -8,7 +8,7 @@
 
 import UIKit.UIImage
 
-protocol KnowledgeBaseViewModel {
+protocol KnowledgeListViewModel {
 
     var knowledgeGroups: [KnowledgeGroupViewModel] { get }
 

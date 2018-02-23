@@ -11,8 +11,8 @@
 class CapturingKnowledgeInteractor: KnowledgeInteractor {
     
     private(set) var toldToPrepareViewModel = false
-    fileprivate var completionHandler: ((KnowledgeBaseViewModel) -> Void)?
-    func prepareViewModel(completionHandler: @escaping (KnowledgeBaseViewModel) -> Void) {
+    fileprivate var completionHandler: ((KnowledgeListViewModel) -> Void)?
+    func prepareViewModel(completionHandler: @escaping (KnowledgeListViewModel) -> Void) {
         toldToPrepareViewModel = true
         self.completionHandler = completionHandler
     }
@@ -21,7 +21,7 @@ class CapturingKnowledgeInteractor: KnowledgeInteractor {
 
 extension CapturingKnowledgeInteractor {
     
-    func simulateViewModelPrepared(_ viewModel: KnowledgeBaseViewModel) {
+    func simulateViewModelPrepared(_ viewModel: KnowledgeListViewModel) {
         completionHandler?(viewModel)
     }
     

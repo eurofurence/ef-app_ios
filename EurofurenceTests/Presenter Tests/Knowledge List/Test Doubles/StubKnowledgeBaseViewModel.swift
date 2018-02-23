@@ -1,5 +1,5 @@
 //
-//  StubKnowledgeBaseViewModel.swift
+//  StubKnowledgeListViewModel.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 12/02/2018.
@@ -10,16 +10,16 @@ import Darwin
 @testable import Eurofurence
 import UIKit.UIImage
 
-struct StubKnowledgeBaseViewModel: KnowledgeBaseViewModel {
+struct StubKnowledgeListViewModel: KnowledgeListViewModel {
     
-    static func withRandomData() -> StubKnowledgeBaseViewModel {
+    static func withRandomData() -> StubKnowledgeListViewModel {
         var groups = [StubKnowledgeGroupViewModel]()
         let groupCount = Int(arc4random_uniform(10)) + 1
         for _ in 0..<groupCount {
             groups.append(.withRandomData())
         }
         
-        return StubKnowledgeBaseViewModel(groups: groups)
+        return StubKnowledgeListViewModel(groups: groups)
     }
     
     var randomKnowledgeGroup: (index: Int, knowledgeGroup: StubKnowledgeGroupViewModel) {

@@ -12,14 +12,14 @@ import XCTest
 class WhenKnowledgeListViewModelIsPrepared: XCTestCase {
     
     var context: KnowledgeListPresenterTestBuilder.Context!
-    var viewModel: StubKnowledgeBaseViewModel!
+    var viewModel: StubKnowledgeListViewModel!
     
     override func setUp() {
         super.setUp()
         
         context = KnowledgeListPresenterTestBuilder().build()
         context.scene.delegate?.knowledgeListSceneDidLoad()
-        viewModel = StubKnowledgeBaseViewModel.withRandomData()
+        viewModel = StubKnowledgeListViewModel.withRandomData()
         context.simulateLoadingViewModel(viewModel)
     }
     

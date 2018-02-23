@@ -8,6 +8,6 @@
 
 protocol KnowledgeInteractor {
 
-    func prepareViewModel(completionHandler: @escaping (KnowledgeBaseViewModel) -> Void)
+    func prepareViewModel(completionHandler: @escaping (KnowledgeListViewModel) -> Void)
 
 }

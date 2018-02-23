@@ -11,7 +11,7 @@ class KnowledgeListPresenter: KnowledgeListSceneDelegate {
     private let scene: KnowledgeListScene
     private let knowledgeListInteractor: KnowledgeInteractor
     private let delegate: KnowledgeListModuleDelegate
-    private var viewModel: KnowledgeBaseViewModel?
+    private var viewModel: KnowledgeListViewModel?
 
     init(scene: KnowledgeListScene,
          knowledgeListInteractor: KnowledgeInteractor,
@@ -34,7 +34,7 @@ class KnowledgeListPresenter: KnowledgeListSceneDelegate {
         delegate.knowledgeListModuleDidSelectKnowledgeEntry(entry)
     }
 
-    private func viewModelPrepared(_ viewModel: KnowledgeBaseViewModel) {
+    private func viewModelPrepared(_ viewModel: KnowledgeListViewModel) {
         self.viewModel = viewModel
         scene.hideLoadingIndicator()
 
@@ -46,7 +46,7 @@ class KnowledgeListPresenter: KnowledgeListSceneDelegate {
 
     private struct ListBinder: KnowledgeListBinder {
 
-        var viewModel: KnowledgeBaseViewModel
+        var viewModel: KnowledgeListViewModel
 
         func bind(_ header: KnowledgeGroupHeaderScene, toGroupAt index: Int) {
             let group = viewModel.knowledgeGroups[index]
