@@ -1,5 +1,5 @@
 //
-//  StubKnowledgeListViewModel.swift
+//  KnowledgeListViewModel+RandomValueProviding.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 12/02/2018.
@@ -10,7 +10,7 @@ import Darwin
 @testable import Eurofurence
 import UIKit.UIImage
 
-extension KnowledgeListViewModel {
+extension KnowledgeListViewModel: RandomValueProviding {
     
     static var random: KnowledgeListViewModel {
         var groups = [KnowledgeGroupViewModel]()
@@ -29,7 +29,7 @@ extension KnowledgeListViewModel {
     
 }
 
-extension KnowledgeGroupViewModel {
+extension KnowledgeGroupViewModel: RandomValueProviding {
     
     static var random: KnowledgeGroupViewModel {
         var entries = [KnowledgeEntryViewModel]()
@@ -51,7 +51,7 @@ extension KnowledgeGroupViewModel {
     
 }
 
-extension KnowledgeEntryViewModel {
+extension KnowledgeEntryViewModel: RandomValueProviding {
     
     static var random: KnowledgeEntryViewModel {
         return KnowledgeEntryViewModel(title: .random)

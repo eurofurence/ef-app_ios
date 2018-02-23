@@ -204,7 +204,7 @@
 		A034379A14212C5E996E6321 /* Pods_Eurofurence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */; };
 		CA0F761D2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F761C2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift */; };
 		CA0F761F203229CF009DA079 /* KnowledgeBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F761E203229CF009DA079 /* KnowledgeBaseViewModel.swift */; };
-		CA0F7621203229E4009DA079 /* StubKnowledgeBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F7620203229E4009DA079 /* StubKnowledgeBaseViewModel.swift */; };
+		CA0F7621203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F7620203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift */; };
 		CA0F762320322DEF009DA079 /* KnowledgeListBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F762220322DEF009DA079 /* KnowledgeListBinder.swift */; };
 		CA0F762520322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F762420322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift */; };
 		CA0F762720322E36009DA079 /* KnowledgeGroupHeaderScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F762620322E36009DA079 /* KnowledgeGroupHeaderScene.swift */; };
@@ -692,7 +692,7 @@
 		B4939A463603D9F022E19825 /* Pods-EurofurenceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CA0F761C2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeListViewModelIsPrepared.swift; sourceTree = "<group>"; };
 		CA0F761E203229CF009DA079 /* KnowledgeBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeBaseViewModel.swift; sourceTree = "<group>"; };
-		CA0F7620203229E4009DA079 /* StubKnowledgeBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeBaseViewModel.swift; sourceTree = "<group>"; };
+		CA0F7620203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KnowledgeListViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA0F762220322DEF009DA079 /* KnowledgeListBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListBinder.swift; sourceTree = "<group>"; };
 		CA0F762420322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeGroupHeaderScene.swift; sourceTree = "<group>"; };
 		CA0F762620322E36009DA079 /* KnowledgeGroupHeaderScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupHeaderScene.swift; sourceTree = "<group>"; };
@@ -1856,6 +1856,7 @@
 		CA71A346204031E800C847C3 /* Randomness */ = {
 			isa = PBXGroup;
 			children = (
+				CA0F7620203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift */,
 				CA71A34F2040371D00C847C3 /* FloatingPoint+RandomValueProviding.swift */,
 				CA71A34B204032FC00C847C3 /* Integer+RandomValueProviding.swift */,
 				CA71A34D2040349300C847C3 /* RandomRangedValueProviding.swift */,
@@ -1881,7 +1882,6 @@
 				CA73AEDE201A0833004E77BF /* CapturingKnowledgeInteractor.swift */,
 				CA73AEDC201A0823004E77BF /* CapturingKnowledgeListScene.swift */,
 				CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */,
-				CA0F7620203229E4009DA079 /* StubKnowledgeBaseViewModel.swift */,
 				CA0F762420322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift */,
 				CA0F7628203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift */,
 				CA0F762E2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift */,
@@ -3278,7 +3278,7 @@
 				CA2D080C1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift in Sources */,
 				7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */,
 				78FE77D71F1B9FA500E9A0BE /* URLSessionBasedJSONSessionTests.swift in Sources */,
-				CA0F7621203229E4009DA079 /* StubKnowledgeBaseViewModel.swift in Sources */,
+				CA0F7621203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift in Sources */,
 				7820A6ED1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift in Sources */,
 				CAF9A93F1F50491200628833 /* EurofurenceAuthServiceTests.swift in Sources */,
 				CA73AEDD201A0823004E77BF /* CapturingKnowledgeListScene.swift in Sources */,
