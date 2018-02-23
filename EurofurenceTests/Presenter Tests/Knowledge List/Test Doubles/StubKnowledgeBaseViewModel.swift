@@ -38,9 +38,9 @@ extension KnowledgeGroupViewModel {
             entries.append(.random)
         }
         
-        return KnowledgeGroupViewModel(title: "\(arc4random())",
+        return KnowledgeGroupViewModel(title: .random,
                                        icon: UIImage(),
-                                       groupDescription: "\(arc4random())",
+                                       groupDescription: .random,
                                        knowledgeEntries: entries)
     }
     
@@ -54,7 +54,7 @@ extension KnowledgeGroupViewModel {
 extension KnowledgeEntryViewModel {
     
     static var random: KnowledgeEntryViewModel {
-        return KnowledgeEntryViewModel(title: "\(arc4random())")
+        return KnowledgeEntryViewModel(title: .random)
     }
     
 }
