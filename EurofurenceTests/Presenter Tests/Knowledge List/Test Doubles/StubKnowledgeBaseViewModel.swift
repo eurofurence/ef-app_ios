@@ -12,11 +12,11 @@ import UIKit.UIImage
 
 extension KnowledgeListViewModel {
     
-    static func withRandomData() -> KnowledgeListViewModel {
+    static var random: KnowledgeListViewModel {
         var groups = [KnowledgeGroupViewModel]()
         let groupCount = Int(arc4random_uniform(10)) + 1
         for _ in 0..<groupCount {
-            groups.append(.withRandomData())
+            groups.append(.random)
         }
         
         return KnowledgeListViewModel(knowledgeGroups: groups)
@@ -31,11 +31,11 @@ extension KnowledgeListViewModel {
 
 extension KnowledgeGroupViewModel {
     
-    static func withRandomData() -> KnowledgeGroupViewModel {
+    static var random: KnowledgeGroupViewModel {
         var entries = [KnowledgeEntryViewModel]()
         let entryCount = Int(arc4random_uniform(10)) + 1
         for _ in 0..<entryCount {
-            entries.append(.withRandomData())
+            entries.append(.random)
         }
         
         return KnowledgeGroupViewModel(title: "\(arc4random())",
@@ -53,7 +53,7 @@ extension KnowledgeGroupViewModel {
 
 extension KnowledgeEntryViewModel {
     
-    static func withRandomData() -> KnowledgeEntryViewModel {
+    static var random: KnowledgeEntryViewModel {
         return KnowledgeEntryViewModel(title: "\(arc4random())")
     }
     

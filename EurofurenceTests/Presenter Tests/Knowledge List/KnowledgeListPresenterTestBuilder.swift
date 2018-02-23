@@ -38,7 +38,7 @@ class KnowledgeListPresenterTestBuilder {
 
 extension KnowledgeListPresenterTestBuilder.Context {
     
-    func simulateLoadingViewModel(_ viewModel: KnowledgeListViewModel = .withRandomData()) {
+    func simulateLoadingViewModel(_ viewModel: KnowledgeListViewModel = .random) {
         knowledgeInteractor.simulateViewModelPrepared(viewModel)
     }
     

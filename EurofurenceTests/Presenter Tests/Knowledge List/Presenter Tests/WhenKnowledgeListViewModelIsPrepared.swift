@@ -19,7 +19,7 @@ class WhenKnowledgeListViewModelIsPrepared: XCTestCase {
         
         context = KnowledgeListPresenterTestBuilder().build()
         context.scene.delegate?.knowledgeListSceneDidLoad()
-        viewModel = KnowledgeListViewModel.withRandomData()
+        viewModel = .random
         context.simulateLoadingViewModel(viewModel)
     }
     
