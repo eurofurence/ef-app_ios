@@ -73,7 +73,7 @@ class MessagesViewControllerTests: XCTestCase {
     }
     
     func testSelectingItemAtTableViewIndexPathTellsTheDelegateAboutIt() {
-        let randomIndexPath = IndexPath(row: Random.makeRandomNumber(), section: 0)
+        let randomIndexPath = IndexPath(row: .random, section: 0)
         viewController.tableView.delegate?.tableView?(viewController.tableView, didSelectRowAt: randomIndexPath)
         
         XCTAssertEqual(randomIndexPath, delegate.capturedSelectedMessageIndexPath)

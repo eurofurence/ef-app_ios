@@ -290,6 +290,7 @@
 		CA6AA0201FD89B2D0092C6DB /* NewsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA01F1FD89B2D0092C6DB /* NewsPresenterTests.swift */; };
 		CA71A348204031F700C847C3 /* RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A347204031F700C847C3 /* RandomValueProviding.swift */; };
 		CA71A34A2040320A00C847C3 /* String+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */; };
+		CA71A34C204032FC00C847C3 /* Int+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A34B204032FC00C847C3 /* Int+RandomValueProviding.swift */; };
 		CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */; };
 		CA73AED8201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED7201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift */; };
 		CA73AEDB201A080F004E77BF /* StubKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */; };
@@ -776,6 +777,7 @@
 		CA6AA01F1FD89B2D0092C6DB /* NewsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresenterTests.swift; sourceTree = "<group>"; };
 		CA71A347204031F700C847C3 /* RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomValueProviding.swift; sourceTree = "<group>"; };
 		CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA71A34B204032FC00C847C3 /* Int+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeListSceneDidLoad.swift; sourceTree = "<group>"; };
 		CA73AED7201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
@@ -1852,6 +1854,7 @@
 		CA71A346204031E800C847C3 /* Randomness */ = {
 			isa = PBXGroup;
 			children = (
+				CA71A34B204032FC00C847C3 /* Int+RandomValueProviding.swift */,
 				CA71A347204031F700C847C3 /* RandomValueProviding.swift */,
 				CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */,
 			);
@@ -3245,6 +3248,7 @@
 				781A94481F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift in Sources */,
 				CA71A348204031F700C847C3 /* RandomValueProviding.swift in Sources */,
 				7820A6FD1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift in Sources */,
+				CA71A34C204032FC00C847C3 /* Int+RandomValueProviding.swift in Sources */,
 				7820A7051F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift in Sources */,
 				CA8E7EF41FB08D3B00F0BF10 /* PhoneWindowWireframeTests.swift in Sources */,
 				CAF9A9511F558E7800628833 /* RandomGenerator.swift in Sources */,

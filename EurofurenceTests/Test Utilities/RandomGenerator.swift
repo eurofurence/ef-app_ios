@@ -10,10 +10,6 @@ import Darwin
 
 struct Random {
     
-    static func makeRandomNumber() -> Int {
-        return Int(arc4random())
-    }
-    
     static func makeRandomNumber(upperLimit: Int) -> Int {
         return Int(arc4random_uniform(UInt32(upperLimit)))
     }

@@ -115,7 +115,7 @@ class NewsPresenterTestsForLoggedInUser: XCTestCase {
     func testWhenPrivateMessagesReloadsTheUnreadCountDescriptionIsSetOntoTheScene() {
         let privateMessagesService = CapturingPrivateMessagesService()
         let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: privateMessagesService)
-        let messageCount = Int(arc4random())
+        let messageCount = Int.random
         privateMessagesService.notifyUnreadCountDidChange(to: messageCount)
         
         XCTAssertEqual(context.newsScene.capturedWelcomeDescription, .welcomeDescription(messageCount: messageCount))

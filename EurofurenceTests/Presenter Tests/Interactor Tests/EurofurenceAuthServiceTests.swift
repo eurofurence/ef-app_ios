@@ -81,7 +81,7 @@ class EurofurenceAuthServiceTests: XCTestCase {
     // MARK: Login
     
     func testAttemptingLoginAdaptsArguments() {
-        let registrationNumber = Int(arc4random())
+        let registrationNumber = Int.random
         let username = "User \(registrationNumber)"
         let password = "Password \(registrationNumber)"
         let input = LoginServiceRequest(registrationNumber: registrationNumber,
@@ -123,7 +123,7 @@ class EurofurenceAuthServiceTests: XCTestCase {
                                         username: "",
                                         password: "")
         service.perform(input) { (_) in }
-        let user = User(registrationNumber: Int(arc4random()), username: "")
+        let user = User(registrationNumber: .random, username: "")
         app.capturedLoginHandler?(.success(user))
         
         XCTAssertEqual(observer.capturedLoggedInUser, user)
