@@ -10,67 +10,51 @@ import Darwin
 @testable import Eurofurence
 import UIKit.UIImage
 
-struct StubKnowledgeListViewModel: KnowledgeListViewModel {
+extension KnowledgeListViewModel {
     
-    static func withRandomData() -> StubKnowledgeListViewModel {
-        var groups = [StubKnowledgeGroupViewModel]()
+    static func withRandomData() -> KnowledgeListViewModel {
+        var groups = [KnowledgeGroupViewModel]()
         let groupCount = Int(arc4random_uniform(10)) + 1
         for _ in 0..<groupCount {
             groups.append(.withRandomData())
         }
         
-        return StubKnowledgeListViewModel(groups: groups)
+        return KnowledgeListViewModel(knowledgeGroups: groups)
     }
     
-    var randomKnowledgeGroup: (index: Int, knowledgeGroup: StubKnowledgeGroupViewModel) {
+    var randomKnowledgeGroup: (index: Int, knowledgeGroup: KnowledgeGroupViewModel) {
         let randomGroupIndex = Int(arc4random_uniform(UInt32(knowledgeGroups.count)))
-        return (index: randomGroupIndex, knowledgeGroup: groups[randomGroupIndex])
+        return (index: randomGroupIndex, knowledgeGroup: knowledgeGroups[randomGroupIndex])
     }
-    
-    var groups = [StubKnowledgeGroupViewModel]()
-    var knowledgeGroups: [KnowledgeGroupViewModel] { return groups }
     
 }
 
-struct StubKnowledgeGroupViewModel: KnowledgeGroupViewModel {
+extension KnowledgeGroupViewModel {
     
-    static func withRandomData() -> StubKnowledgeGroupViewModel {
-        var entries = [StubKnowledgeEntryViewModel]()
+    static func withRandomData() -> KnowledgeGroupViewModel {
+        var entries = [KnowledgeEntryViewModel]()
         let entryCount = Int(arc4random_uniform(10)) + 1
         for _ in 0..<entryCount {
             entries.append(.withRandomData())
         }
         
-        return StubKnowledgeGroupViewModel(entries: entries,
-                                           title: "\(arc4random())",
-                                           icon: UIImage(),
-                                           groupDescription: "\(arc4random())")
+        return KnowledgeGroupViewModel(title: "\(arc4random())",
+                                       icon: UIImage(),
+                                       groupDescription: "\(arc4random())",
+                                       knowledgeEntries: entries)
     }
     
-    var randomEntry: (index: Int, knowledgeEntry: StubKnowledgeEntryViewModel) {
+    var randomEntry: (index: Int, knowledgeEntry: KnowledgeEntryViewModel) {
         let randomEntryIndex = Int(arc4random_uniform(UInt32(knowledgeEntries.count)))
-        return (index: randomEntryIndex, knowledgeEntry: entries[randomEntryIndex])
+        return (index: randomEntryIndex, knowledgeEntry: knowledgeEntries[randomEntryIndex])
     }
-    
-    var entries = [StubKnowledgeEntryViewModel]()
-    var knowledgeEntries: [KnowledgeEntryViewModel] { return entries }
-    
-    var title: String
-    var icon: UIImage
-    var groupDescription: String
     
 }
 
-struct StubKnowledgeEntryViewModel: KnowledgeEntryViewModel, Equatable {
+extension KnowledgeEntryViewModel {
     
-    static func ==(lhs: StubKnowledgeEntryViewModel, rhs: StubKnowledgeEntryViewModel) -> Bool {
-        return lhs.title == rhs.title
+    static func withRandomData() -> KnowledgeEntryViewModel {
+        return KnowledgeEntryViewModel(title: "\(arc4random())")
     }
-    
-    static func withRandomData() -> StubKnowledgeEntryViewModel {
-        return StubKnowledgeEntryViewModel(title: "\(arc4random())")
-    }
-    
-    var title: String
     
 }

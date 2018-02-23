@@ -12,14 +12,14 @@ import XCTest
 class WhenKnowledgeListViewModelIsPrepared: XCTestCase {
     
     var context: KnowledgeListPresenterTestBuilder.Context!
-    var viewModel: StubKnowledgeListViewModel!
+    var viewModel: KnowledgeListViewModel!
     
     override func setUp() {
         super.setUp()
         
         context = KnowledgeListPresenterTestBuilder().build()
         context.scene.delegate?.knowledgeListSceneDidLoad()
-        viewModel = StubKnowledgeListViewModel.withRandomData()
+        viewModel = KnowledgeListViewModel.withRandomData()
         context.simulateLoadingViewModel(viewModel)
     }
     
@@ -28,7 +28,7 @@ class WhenKnowledgeListViewModelIsPrepared: XCTestCase {
     }
     
     func testTheSceneIsToldToDisplayKnowledgeGroups() {
-        let expected = viewModel.groups.map({ $0.entries.count })
+        let expected = viewModel.knowledgeGroups.map({ $0.knowledgeEntries.count })
         XCTAssertEqual(expected, context.scene.capturedEntriesPerGroup)
     }
     
@@ -75,7 +75,7 @@ class WhenKnowledgeListViewModelIsPrepared: XCTestCase {
         let expected = randomEntry.knowledgeEntry
         context.scene.simulateSelectingKnowledgeEntry(inGroup: randomGroup.index, at: randomEntry.index)
         
-        XCTAssertEqual(expected, context.delegate.capturedKnowledgeEntryToPresent as? StubKnowledgeEntryViewModel)
+        XCTAssertEqual(expected, context.delegate.capturedKnowledgeEntryToPresent)
     }
     
 }
