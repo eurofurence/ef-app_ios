@@ -97,7 +97,7 @@ class WhenRequestingPrivateMessagesWhileAuthenticated: XCTestCase {
     
     func testMessagesShouldBeSortedWithLatestMessagesFirst() {
         let makeRandomMessage: () -> Message = {
-            let randomDate = Date(timeIntervalSinceNow: TimeInterval(arc4random_uniform(3600)))
+            let randomDate = Date(timeIntervalSinceNow: .random(upperLimit: 3600))
             return AppDataBuilder.makeMessage(receivedDateTime: randomDate)
         }
         

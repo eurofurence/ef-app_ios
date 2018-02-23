@@ -47,7 +47,7 @@ class PreloadViewControllerTests: XCTestCase {
     }
     
     func testTellingTheSceneToShowProgressSetsTheProgressOnTheProgressBar() {
-        let progress = Float(arc4random_uniform(100) / 100)
+        let progress = Float.random(upperLimit: 100) / 100
         preloadViewController.showProgress(progress)
         
         XCTAssertEqual(progress, preloadViewController.progressBar.progress)

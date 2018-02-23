@@ -1,5 +1,5 @@
 //
-//  Int+RandomValueProviding.swift
+//  Integer+RandomValueProviding.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 23/02/2018.
