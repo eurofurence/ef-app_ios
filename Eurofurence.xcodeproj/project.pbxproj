@@ -1858,15 +1858,31 @@
 		CA71A346204031E800C847C3 /* Randomness */ = {
 			isa = PBXGroup;
 			children = (
+				CA71A34D2040349300C847C3 /* RandomRangedValueProviding.swift */,
+				CA71A347204031F700C847C3 /* RandomValueProviding.swift */,
+				CA71A3532041B6DA00C847C3 /* Foundation */,
+				CA71A3542041B6E400C847C3 /* View Models */,
+			);
+			path = Randomness;
+			sourceTree = "<group>";
+		};
+		CA71A3532041B6DA00C847C3 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
 				CA71A3512041B59600C847C3 /* Array+RandomConvenience.swift */,
 				CA71A34F2040371D00C847C3 /* FloatingPoint+RandomValueProviding.swift */,
 				CA71A34B204032FC00C847C3 /* Integer+RandomValueProviding.swift */,
-				CA0F7620203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift */,
-				CA71A34D2040349300C847C3 /* RandomRangedValueProviding.swift */,
-				CA71A347204031F700C847C3 /* RandomValueProviding.swift */,
 				CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */,
 			);
-			path = Randomness;
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		CA71A3542041B6E400C847C3 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				CA0F7620203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 		CA73AED2201A03F1004E77BF /* Knowledge List */ = {
