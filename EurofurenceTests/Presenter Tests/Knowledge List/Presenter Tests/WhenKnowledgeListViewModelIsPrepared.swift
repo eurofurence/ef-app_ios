@@ -33,8 +33,8 @@ class WhenKnowledgeListViewModelIsPrepared: XCTestCase {
     }
     
     func testBindingKnowledgeGroupHeadingSetsTitleOntoScene() {
-        let randomGroup = viewModel.randomKnowledgeGroup
-        let expected = randomGroup.knowledgeGroup.title
+        let randomGroup = viewModel.knowledgeGroups.randomElement()
+        let expected = randomGroup.element.title
         let scene = CapturingKnowledgeGroupHeaderScene()
         context.scene.bind(scene, toGroupAt: randomGroup.index)
         
@@ -42,8 +42,8 @@ class WhenKnowledgeListViewModelIsPrepared: XCTestCase {
     }
     
     func testBindingKnowledgeGroupHeadingSetsIconOntoScene() {
-        let randomGroup = viewModel.randomKnowledgeGroup
-        let expected = randomGroup.knowledgeGroup.icon
+        let randomGroup = viewModel.knowledgeGroups.randomElement()
+        let expected = randomGroup.element.icon
         let scene = CapturingKnowledgeGroupHeaderScene()
         context.scene.bind(scene, toGroupAt: randomGroup.index)
         
@@ -51,8 +51,8 @@ class WhenKnowledgeListViewModelIsPrepared: XCTestCase {
     }
     
     func testBindingKnowledgeGroupHeadingSetsDescriptionOntoScene() {
-        let randomGroup = viewModel.randomKnowledgeGroup
-        let expected = randomGroup.knowledgeGroup.groupDescription
+        let randomGroup = viewModel.knowledgeGroups.randomElement()
+        let expected = randomGroup.element.groupDescription
         let scene = CapturingKnowledgeGroupHeaderScene()
         context.scene.bind(scene, toGroupAt: randomGroup.index)
         
@@ -60,9 +60,9 @@ class WhenKnowledgeListViewModelIsPrepared: XCTestCase {
     }
     
     func testBindingKnowledgeGroupEntrySetsTitleOntoScene() {
-        let randomGroup = viewModel.randomKnowledgeGroup
-        let randomEntry = randomGroup.knowledgeGroup.randomEntry
-        let expected = randomEntry.knowledgeEntry.title
+        let randomGroup = viewModel.knowledgeGroups.randomElement()
+        let randomEntry = randomGroup.element.knowledgeEntries.randomElement()
+        let expected = randomEntry.element.title
         let scene = CapturingKnowledgeGroupEntryScene()
         context.scene.bind(scene, toEntryInGroup: randomGroup.index, at: randomEntry.index)
         
@@ -70,9 +70,9 @@ class WhenKnowledgeListViewModelIsPrepared: XCTestCase {
     }
     
     func testSelectingKnowledgeEntryTellsDelegateToPresentSelectedViewModel() {
-        let randomGroup = viewModel.randomKnowledgeGroup
-        let randomEntry = randomGroup.knowledgeGroup.randomEntry
-        let expected = randomEntry.knowledgeEntry
+        let randomGroup = viewModel.knowledgeGroups.randomElement()
+        let randomEntry = randomGroup.element.knowledgeEntries.randomElement()
+        let expected = randomEntry.element
         context.scene.simulateSelectingKnowledgeEntry(inGroup: randomGroup.index, at: randomEntry.index)
         
         XCTAssertEqual(expected, context.delegate.capturedKnowledgeEntryToPresent)
