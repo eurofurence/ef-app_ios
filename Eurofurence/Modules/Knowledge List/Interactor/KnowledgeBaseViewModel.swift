@@ -8,18 +8,29 @@
 
 import UIKit.UIImage
 
-struct KnowledgeListViewModel {
+struct KnowledgeListViewModel: Equatable {
 
     var knowledgeGroups: [KnowledgeGroupViewModel]
 
+    static func ==(lhs: KnowledgeListViewModel, rhs: KnowledgeListViewModel) -> Bool {
+        return lhs.knowledgeGroups == rhs.knowledgeGroups
+    }
+
 }
 
-struct KnowledgeGroupViewModel {
+struct KnowledgeGroupViewModel: Equatable {
 
     var title: String
     var icon: UIImage
     var groupDescription: String
     var knowledgeEntries: [KnowledgeEntryViewModel]
+
+    static func ==(lhs: KnowledgeGroupViewModel, rhs: KnowledgeGroupViewModel) -> Bool {
+        return lhs.title == rhs.title &&
+//               lhs.icon == rhs.icon &&
+               lhs.groupDescription == rhs.groupDescription &&
+               lhs.knowledgeEntries == rhs.knowledgeEntries
+    }
 
 }
 
