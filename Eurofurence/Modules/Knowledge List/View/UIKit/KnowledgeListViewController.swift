@@ -70,14 +70,14 @@ class KnowledgeListViewController: UIViewController, KnowledgeListScene {
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "KnowledgeListEntryTableViewCell", for: indexPath) as! KnowledgeListEntryTableViewCell
+            let cell = tableView.dequeue(KnowledgeListEntryTableViewCell.self, for: indexPath)
             binder?.bind(cell, toEntryInGroup: indexPath.section, at: indexPath.row)
 
             return cell
         }
 
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            let header = tableView.dequeueReusableCell(withIdentifier: "KnowledgeListSectionHeaderTableViewCell") as! KnowledgeListSectionHeaderTableViewCell
+            let header = tableView.dequeue(KnowledgeListSectionHeaderTableViewCell.self)
             binder?.bind(header, toGroupAt: section)
 
             return header
