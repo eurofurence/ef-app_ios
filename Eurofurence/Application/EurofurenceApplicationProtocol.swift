@@ -14,7 +14,7 @@ enum EurofurenceDataStoreState {
     case available
 }
 
-protocol EurofurenceApplicationProtocol {
+protocol EurofurenceApplicationProtocol: KnowledgeService {
 
     var localPrivateMessages: [Message] { get }
 

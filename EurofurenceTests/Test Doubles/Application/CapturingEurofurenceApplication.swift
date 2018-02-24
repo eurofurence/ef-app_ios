@@ -49,6 +49,10 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
+    func fetchKnowledgeGroups(completionHandler: @escaping ([KnowledgeGroup2]) -> Void) {
+        
+    }
+    
 }
 
 // MARK: - Test Helpers

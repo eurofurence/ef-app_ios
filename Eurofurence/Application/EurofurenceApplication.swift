@@ -112,4 +112,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         authenticationCoordinator.retrieveCurrentUser(completionHandler: completionHandler)
     }
 
+    func fetchKnowledgeGroups(completionHandler: @escaping ([KnowledgeGroup2]) -> Void) {
+        completionHandler([])
+    }
+
 }
