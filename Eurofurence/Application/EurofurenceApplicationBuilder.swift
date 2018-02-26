@@ -17,6 +17,7 @@ class EurofurenceApplicationBuilder {
     private var credentialStore: CredentialStore
     private var loginAPI: LoginAPI
     private var privateMessagesAPI: PrivateMessagesAPI
+    private var syncAPI: SyncAPI
 
     init() {
         struct DummyUserPreferences: UserPreferences {
@@ -26,6 +27,12 @@ class EurofurenceApplicationBuilder {
         struct DummyEurofurenceDataStore: EurofurenceDataStore {
             func resolveContentsState(completionHandler: @escaping (EurofurenceDataStoreContentsState) -> Void) {
                 completionHandler(.present)
+            }
+        }
+
+        struct DummySyncAPI: SyncAPI {
+            func fetchLatestData(completionHandler: @escaping (APISyncResponse?) -> Void) {
+
             }
         }
 
@@ -46,6 +53,7 @@ class EurofurenceApplicationBuilder {
         credentialStore = KeychainCredentialStore()
         loginAPI = V2LoginAPI(jsonSession: jsonSession)
         privateMessagesAPI = V2PrivateMessagesAPI(jsonSession: jsonSession)
+        syncAPI = DummySyncAPI()
     }
 
     @discardableResult
@@ -111,7 +119,8 @@ class EurofurenceApplicationBuilder {
                                       clock: clock,
                                       credentialStore: credentialStore,
                                       loginAPI: loginAPI,
-                                      privateMessagesAPI: privateMessagesAPI)
+                                      privateMessagesAPI: privateMessagesAPI,
+                                      syncAPI: syncAPI)
     }
 
 }

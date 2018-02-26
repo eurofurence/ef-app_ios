@@ -53,6 +53,10 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
+    func refreshLocalStore() {
+        
+    }
+    
 }
 
 // MARK: - Test Helpers

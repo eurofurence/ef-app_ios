@@ -18,6 +18,7 @@ class ApplicationTestBuilder {
         var capturingCredentialStore: CapturingCredentialStore
         var loginAPI: CapturingLoginAPI
         var privateMessagesAPI: CapturingPrivateMessagesAPI
+        var syncAPI: CapturingSyncAPI
         
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
@@ -47,6 +48,7 @@ class ApplicationTestBuilder {
     private var pushPermissionsStateProviding: PushPermissionsStateProviding = CapturingPushPermissionsStateProviding()
     private var dataStore: EurofurenceDataStore = CapturingEurofurenceDataStore()
     private var userPreferences: UserPreferences = StubUserPreferences()
+    private let syncAPI = CapturingSyncAPI()
     
     func with(_ currentDate: Date) -> ApplicationTestBuilder {
         stubClock = StubClock(currentDate: currentDate)
@@ -98,12 +100,14 @@ class ApplicationTestBuilder {
                                          clock: stubClock,
                                          credentialStore: capturingCredentialStore,
                                          loginAPI: loginAPI,
-                                         privateMessagesAPI: privateMessagesAPI)
+                                         privateMessagesAPI: privateMessagesAPI,
+                                         syncAPI: syncAPI)
         return Context(application: app,
                        capturingTokenRegistration: capturingTokenRegistration,
                        capturingCredentialStore: capturingCredentialStore,
                        loginAPI: loginAPI,
-                       privateMessagesAPI: privateMessagesAPI)
+                       privateMessagesAPI: privateMessagesAPI,
+                       syncAPI: syncAPI)
     }
     
 }

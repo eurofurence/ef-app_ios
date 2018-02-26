@@ -6,8 +6,12 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-struct KnowledgeEntry2 {
+struct KnowledgeEntry2: Equatable {
 
     var title: String
+
+    static func ==(lhs: KnowledgeEntry2, rhs: KnowledgeEntry2) -> Bool {
+        return lhs.title == rhs.title
+    }
 
 }

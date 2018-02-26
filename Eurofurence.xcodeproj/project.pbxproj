@@ -373,6 +373,9 @@
 		CABF03C52041C31A0028BD62 /* DefaultKnowledgeListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03C42041C31A0028BD62 /* DefaultKnowledgeListInteractor.swift */; };
 		CABF03C72041C3270028BD62 /* StubKnowledgeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03C62041C3270028BD62 /* StubKnowledgeService.swift */; };
 		CABF03CA20421B490028BD62 /* WhenFetchingKnowledgeGroupsWithoutLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03C920421B490028BD62 /* WhenFetchingKnowledgeGroupsWithoutLoadingAnything.swift */; };
+		CABF03CC204220460028BD62 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03CB204220460028BD62 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift */; };
+		CABF03CE20422B240028BD62 /* CapturingSyncAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03CD20422B240028BD62 /* CapturingSyncAPI.swift */; };
+		CABF03D020422B7A0028BD62 /* SyncAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03CF20422B7A0028BD62 /* SyncAPI.swift */; };
 		CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12A1F5040E100195513 /* NewsScene.swift */; };
 		CAC1E12F1F50411900195513 /* StubAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12E1F50411900195513 /* StubAuthenticationService.swift */; };
 		CAC1E1311F50413500195513 /* CapturingNewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1301F50413500195513 /* CapturingNewsScene.swift */; };
@@ -425,6 +428,10 @@
 		CAF3C7501F9FC74C0008F027 /* NewsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74F1F9FC74C0008F027 /* NewsSceneFactory.swift */; };
 		CAF3F63B2016797400374B4C /* PrivateMessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3F63A2016797400374B4C /* PrivateMessagesController.swift */; };
 		CAF3F63D20167B3100374B4C /* EurofurenceApplicationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3F63C20167B3100374B4C /* EurofurenceApplicationBuilder.swift */; };
+		CAF5979620449A0400089BE8 /* APISyncResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979520449A0400089BE8 /* APISyncResponse.swift */; };
+		CAF5979820449A1100089BE8 /* APIKnowledgeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979720449A1100089BE8 /* APIKnowledgeGroup.swift */; };
+		CAF5979A20449A1D00089BE8 /* APIKnowledgeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979920449A1D00089BE8 /* APIKnowledgeEntry.swift */; };
+		CAF5979D20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979C20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift */; };
 		CAF7055A1F82C51900A9FEA2 /* LegacyPreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */; };
 		CAF705611F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */; };
 		CAF705641F82D0DF00A9FEA2 /* RootModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */; };
@@ -874,6 +881,9 @@
 		CABF03C42041C31A0028BD62 /* DefaultKnowledgeListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeListInteractor.swift; sourceTree = "<group>"; };
 		CABF03C62041C3270028BD62 /* StubKnowledgeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeService.swift; sourceTree = "<group>"; };
 		CABF03C920421B490028BD62 /* WhenFetchingKnowledgeGroupsWithoutLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingKnowledgeGroupsWithoutLoadingAnything.swift; sourceTree = "<group>"; };
+		CABF03CB204220460028BD62 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift; sourceTree = "<group>"; };
+		CABF03CD20422B240028BD62 /* CapturingSyncAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingSyncAPI.swift; sourceTree = "<group>"; };
+		CABF03CF20422B7A0028BD62 /* SyncAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncAPI.swift; sourceTree = "<group>"; };
 		CAC1B3842014E93C00ED8B06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CAC1E12A1F5040E100195513 /* NewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsScene.swift; sourceTree = "<group>"; };
 		CAC1E12E1F50411900195513 /* StubAuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubAuthenticationService.swift; sourceTree = "<group>"; };
@@ -927,6 +937,10 @@
 		CAF3C74F1F9FC74C0008F027 /* NewsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSceneFactory.swift; sourceTree = "<group>"; };
 		CAF3F63A2016797400374B4C /* PrivateMessagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateMessagesController.swift; sourceTree = "<group>"; };
 		CAF3F63C20167B3100374B4C /* EurofurenceApplicationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceApplicationBuilder.swift; sourceTree = "<group>"; };
+		CAF5979520449A0400089BE8 /* APISyncResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISyncResponse.swift; sourceTree = "<group>"; };
+		CAF5979720449A1100089BE8 /* APIKnowledgeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKnowledgeGroup.swift; sourceTree = "<group>"; };
+		CAF5979920449A1D00089BE8 /* APIKnowledgeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKnowledgeEntry.swift; sourceTree = "<group>"; };
+		CAF5979C20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APISyncResponse+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyPreloadService.swift; sourceTree = "<group>"; };
 		CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDirectorTests.swift; sourceTree = "<group>"; };
 		CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleProviding.swift; sourceTree = "<group>"; };
@@ -1751,6 +1765,7 @@
 				CA30EAA21F2129700053DBF6 /* LoginAPI.swift */,
 				CA30EAA01F2127350053DBF6 /* LoginResponse.swift */,
 				CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */,
+				CABF03CF20422B7A0028BD62 /* SyncAPI.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1797,6 +1812,7 @@
 			children = (
 				CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */,
 				CA30EABB1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift */,
+				CABF03CD20422B240028BD62 /* CapturingSyncAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -2011,6 +2027,7 @@
 		CA804DCF1F20CE5F00E07A4A /* API */ = {
 			isa = PBXGroup;
 			children = (
+				CAF59794204499FB00089BE8 /* Model */,
 				CA18B3471F49FE9800038E52 /* Protocols */,
 				CA804DD01F20CE6600E07A4A /* v2 */,
 			);
@@ -2251,8 +2268,9 @@
 		CABF03BF2041C2E10028BD62 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CABF03C02041C2EC0028BD62 /* KnowledgeGroup2.swift */,
+				CAF5979C20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift */,
 				CABF03C22041C2FD0028BD62 /* KnowledgeEntry2.swift */,
+				CABF03C02041C2EC0028BD62 /* KnowledgeGroup2.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2261,6 +2279,7 @@
 			isa = PBXGroup;
 			children = (
 				CABF03C920421B490028BD62 /* WhenFetchingKnowledgeGroupsWithoutLoadingAnything.swift */,
+				CABF03CB204220460028BD62 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift */,
 			);
 			path = Knowledge;
 			sourceTree = "<group>";
@@ -2425,6 +2444,16 @@
 				CA2D07FA1FE902ED00BFD785 /* EurofurenceDataStore.swift */,
 			);
 			path = "Data Store";
+			sourceTree = "<group>";
+		};
+		CAF59794204499FB00089BE8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CAF5979920449A1D00089BE8 /* APIKnowledgeEntry.swift */,
+				CAF5979720449A1100089BE8 /* APIKnowledgeGroup.swift */,
+				CAF5979520449A0400089BE8 /* APISyncResponse.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CAF7055F1F82CBC800A9FEA2 /* Director */ = {
@@ -3066,6 +3095,7 @@
 				CAF9A9431F50B87600628833 /* EurofurenceApplicationProtocol.swift in Sources */,
 				6EF96CDD1F0F544B00EE6134 /* EventKitCalendarEvent.swift in Sources */,
 				CA8D97CF201611430074838F /* EventBus.swift in Sources */,
+				CAF5979A20449A1D00089BE8 /* APIKnowledgeEntry.swift in Sources */,
 				781A943E1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift in Sources */,
 				CA1ECB4D1FE7F2A10076083A /* NewsPresenter.swift in Sources */,
 				6EF96CD91F0EDCB300EE6134 /* EventKitCalendarPermissionsProviding.swift in Sources */,
@@ -3076,6 +3106,7 @@
 				9A8ECA291F2BF2CA00351A83 /* UserDefaultsRemoteNotificationSoundProvider.swift in Sources */,
 				9A861EC01F25551400B75A8C /* NetworkReachability.swift in Sources */,
 				9ACF99951EC858B2006FC958 /* EventConferenceRoom.swift in Sources */,
+				CABF03D020422B7A0028BD62 /* SyncAPI.swift in Sources */,
 				CAF3C74C1F9F619C0008F027 /* PhoneNewsModuleFactory.swift in Sources */,
 				78455B451F11778D005BE2D7 /* TutorialRouter.swift in Sources */,
 				9ACF99901EC858B2006FC958 /* KnowledgeEntry.swift in Sources */,
@@ -3089,11 +3120,13 @@
 				CAD780501F1E2D13002A8333 /* CredentialStore.swift in Sources */,
 				9ACF998F1EC858B2006FC958 /* Announcement.swift in Sources */,
 				7820A6F21F1696F1004C0FB5 /* PushPermissionsRequesting.swift in Sources */,
+				CAF5979620449A0400089BE8 /* APISyncResponse.swift in Sources */,
 				CABA43A31FD57C65009CB5B0 /* TutorialModuleBuilder.swift in Sources */,
 				CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */,
 				78C86D7D1F12B8FD003A20E6 /* EgyptianQuoteGenerator.swift in Sources */,
 				CA2D07FD1FE904CD00BFD785 /* UserPreferences.swift in Sources */,
 				CA6AA0061FD6C96B0092C6DB /* RootModuleBuilder.swift in Sources */,
+				CAF5979820449A1100089BE8 /* APIKnowledgeGroup.swift in Sources */,
 				CAD7804E1F1D5227002A8333 /* SystemClock.swift in Sources */,
 				CA0F763620331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift in Sources */,
 				6EF96CD11F0EDB4C00EE6134 /* CalendarService.swift in Sources */,
@@ -3260,6 +3293,7 @@
 				CA0F7629203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift in Sources */,
 				CA2D08021FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleDataStore.swift in Sources */,
 				CA30EAA61F2129C60053DBF6 /* CapturingLoginAPI.swift in Sources */,
+				CAF5979D20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift in Sources */,
 				78D7EEBF1F196B77005372A9 /* StubBuildConfigurationProviding.swift in Sources */,
 				CA81D4921FE9AC9200A52A2F /* PhoneTabModuleFactoryTests.swift in Sources */,
 				78FE77D31F1A2EB000E9A0BE /* CapturingJSONSession.swift in Sources */,
@@ -3374,6 +3408,7 @@
 				7820A6ED1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift in Sources */,
 				CAF9A93F1F50491200628833 /* EurofurenceAuthServiceTests.swift in Sources */,
 				CA73AEDD201A0823004E77BF /* CapturingKnowledgeListScene.swift in Sources */,
+				CABF03CC204220460028BD62 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift in Sources */,
 				CA2547C11FEB1B2A0023F2CB /* WhenRefreshingMessages.swift in Sources */,
 				CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */,
 				CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */,
@@ -3393,6 +3428,7 @@
 				CA2D08141FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift in Sources */,
 				7820A6E11F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift in Sources */,
 				781A94461F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift in Sources */,
+				CABF03CE20422B240028BD62 /* CapturingSyncAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

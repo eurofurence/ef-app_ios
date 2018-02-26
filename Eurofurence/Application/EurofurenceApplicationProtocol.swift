@@ -16,6 +16,8 @@ enum EurofurenceDataStoreState {
 
 protocol EurofurenceApplicationProtocol: KnowledgeService {
 
+    func refreshLocalStore()
+
     var localPrivateMessages: [Message] { get }
 
     func storeRemoteNotificationsToken(_ deviceToken: Data)

@@ -36,6 +36,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private let remoteNotificationRegistrationController: RemoteNotificationRegistrationController
     private let authenticationCoordinator: UserAuthenticationCoordinator
     private let privateMessagesController: PrivateMessagesController
+    private let syncAPI: SyncAPI
+    private var syncResponse: APISyncResponse?
 
     init(userPreferences: UserPreferences,
          dataStore: EurofurenceDataStore,
@@ -45,11 +47,13 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
          clock: Clock,
          credentialStore: CredentialStore,
          loginAPI: LoginAPI,
-         privateMessagesAPI: PrivateMessagesAPI) {
+         privateMessagesAPI: PrivateMessagesAPI,
+         syncAPI: SyncAPI) {
         self.userPreferences = userPreferences
         self.dataStore = dataStore
         self.pushPermissionsRequester = pushPermissionsRequester
         self.pushPermissionsStateProviding = pushPermissionsStateProviding
+        self.syncAPI = syncAPI
 
         if pushPermissionsStateProviding.requestedPushNotificationAuthorization {
             pushPermissionsRequester.requestPushPermissions()
@@ -113,7 +117,24 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func fetchKnowledgeGroups(completionHandler: @escaping ([KnowledgeGroup2]) -> Void) {
-        completionHandler([])
+        var groups = [KnowledgeGroup2]()
+        if let syncResponse = syncResponse {
+            groups = syncResponse.knowledgeGroups.map({ (group) -> KnowledgeGroup2 in
+                let entriesForGroup = syncResponse.knowledgeEntries.filter({ $0.groupIdentifier == group.identifier }).map({ (entry) -> KnowledgeEntry2 in
+                    return KnowledgeEntry2(title: entry.title)
+                })
+
+                return KnowledgeGroup2(title: group.groupName, groupDescription: group.groupDescription, entries: entriesForGroup)
+            })
+        }
+
+        completionHandler(groups)
+    }
+
+    func refreshLocalStore() {
+        syncAPI.fetchLatestData { (response) in
+            self.syncResponse = response
+        }
     }
 
 }
