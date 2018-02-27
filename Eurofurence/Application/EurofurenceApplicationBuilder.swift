@@ -25,6 +25,10 @@ class EurofurenceApplicationBuilder {
         }
 
         struct DummyEurofurenceDataStore: EurofurenceDataStore {
+            func beginTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
+
+            }
+
             func resolveContentsState(completionHandler: @escaping (EurofurenceDataStoreContentsState) -> Void) {
                 completionHandler(.present)
             }

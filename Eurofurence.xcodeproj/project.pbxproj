@@ -433,6 +433,7 @@
 		CAF5979A20449A1D00089BE8 /* APIKnowledgeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979920449A1D00089BE8 /* APIKnowledgeEntry.swift */; };
 		CAF5979D20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979C20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift */; };
 		CAF5979F2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979E2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift */; };
+		CAF597A220458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF597A120458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift */; };
 		CAF7055A1F82C51900A9FEA2 /* LegacyPreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */; };
 		CAF705611F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */; };
 		CAF705641F82D0DF00A9FEA2 /* RootModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */; };
@@ -943,6 +944,7 @@
 		CAF5979920449A1D00089BE8 /* APIKnowledgeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKnowledgeEntry.swift; sourceTree = "<group>"; };
 		CAF5979C20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APISyncResponse+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAF5979E2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift; sourceTree = "<group>"; };
+		CAF597A120458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSyncThatSucceeds.swift; sourceTree = "<group>"; };
 		CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyPreloadService.swift; sourceTree = "<group>"; };
 		CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDirectorTests.swift; sourceTree = "<group>"; };
 		CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleProviding.swift; sourceTree = "<group>"; };
@@ -1371,6 +1373,7 @@
 				CA81D4971FEA952D00A52A2F /* Notification Registration */,
 				781A94431F1A1DC6002DE70F /* Notifications */,
 				CA81D4961FEA951D00A52A2F /* Private Messages */,
+				CAF597A020458D0100089BE8 /* Sync */,
 			);
 			path = "Application Tests";
 			sourceTree = "<group>";
@@ -2459,6 +2462,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		CAF597A020458D0100089BE8 /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				CAF597A120458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift */,
+			);
+			path = Sync;
+			sourceTree = "<group>";
+		};
 		CAF7055F1F82CBC800A9FEA2 /* Director */ = {
 			isa = PBXGroup;
 			children = (
@@ -3352,6 +3363,7 @@
 				CA60B3581F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift in Sources */,
 				CAD234401F5D726C004BB959 /* WhenViewingMessagesWhileLoggedIn.swift in Sources */,
 				CA2B4FA61F1EA1B300F007E1 /* ApplicationTestBuilder.swift in Sources */,
+				CAF597A220458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift in Sources */,
 				CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */,
 				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,
 				CAC1E1311F50413500195513 /* CapturingNewsScene.swift in Sources */,

@@ -138,8 +138,24 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func refreshLocalStore() {
-        syncAPI.fetchLatestData { (response) in
-            self.syncResponse = response
+        syncAPI.fetchLatestData(completionHandler: refreshFinished)
+    }
+
+    private func refreshFinished(_ response: APISyncResponse?) {
+        syncResponse = response
+
+        if let syncResponse = syncResponse {
+            let groups = syncResponse.knowledgeGroups.map({ (group) -> KnowledgeGroup2 in
+                let entriesForGroup = syncResponse.knowledgeEntries.filter({ $0.groupIdentifier == group.identifier }).map({ (entry) -> KnowledgeEntry2 in
+                    return KnowledgeEntry2(title: entry.title)
+                })
+
+                return KnowledgeGroup2(title: group.groupName, groupDescription: group.groupDescription, entries: entriesForGroup)
+            })
+
+            dataStore.beginTransaction({ (transaction) in
+                transaction.saveKnowledgeGroups(groups)
+            })
         }
     }
 

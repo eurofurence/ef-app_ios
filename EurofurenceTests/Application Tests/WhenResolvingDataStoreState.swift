@@ -21,6 +21,32 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
         completionHandler(stubbedKnowledgeGroups)
     }
     
+    private(set) var capturedKnowledgeGroupsToSave: [KnowledgeGroup2]?
+    private(set) var transaction: CapturingEurofurenceDataStoreTransaction?
+    func beginTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
+        let transaction = CapturingEurofurenceDataStoreTransaction()
+        block(transaction)
+        self.transaction = transaction
+    }
+    
+}
+
+extension CapturingEurofurenceDataStore {
+    
+    func didSave(_ knowledgeGroups: [KnowledgeGroup2]) -> Bool {
+        guard let transaction = transaction else { return false }
+        return knowledgeGroups == transaction.persistedKnowledgeGroups
+    }
+    
+}
+
+class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction {
+    
+    private(set) var persistedKnowledgeGroups: [KnowledgeGroup2] = []
+    func saveKnowledgeGroups(_ knowledgeGroups: [KnowledgeGroup2]) {
+        self.persistedKnowledgeGroups = knowledgeGroups
+    }
+    
 }
 
 class StubUserPreferences: UserPreferences {
