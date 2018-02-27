@@ -19,6 +19,7 @@ class ApplicationTestBuilder {
         var loginAPI: CapturingLoginAPI
         var privateMessagesAPI: CapturingPrivateMessagesAPI
         var syncAPI: CapturingSyncAPI
+        var dataStore: CapturingEurofurenceDataStore
         
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
@@ -46,7 +47,7 @@ class ApplicationTestBuilder {
     private let privateMessagesAPI = CapturingPrivateMessagesAPI()
     private var pushPermissionsRequester: PushPermissionsRequester = CapturingPushPermissionsRequester()
     private var pushPermissionsStateProviding: PushPermissionsStateProviding = CapturingPushPermissionsStateProviding()
-    private var dataStore: EurofurenceDataStore = CapturingEurofurenceDataStore()
+    private var dataStore = CapturingEurofurenceDataStore()
     private var userPreferences: UserPreferences = StubUserPreferences()
     private let syncAPI = CapturingSyncAPI()
     
@@ -71,7 +72,7 @@ class ApplicationTestBuilder {
     }
     
     @discardableResult
-    func with(_ dataStore: EurofurenceDataStore) -> ApplicationTestBuilder {
+    func with(_ dataStore: CapturingEurofurenceDataStore) -> ApplicationTestBuilder {
         self.dataStore = dataStore
         return self
     }
@@ -107,7 +108,8 @@ class ApplicationTestBuilder {
                        capturingCredentialStore: capturingCredentialStore,
                        loginAPI: loginAPI,
                        privateMessagesAPI: privateMessagesAPI,
-                       syncAPI: syncAPI)
+                       syncAPI: syncAPI,
+                       dataStore: dataStore)
     }
     
 }

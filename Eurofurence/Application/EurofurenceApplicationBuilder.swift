@@ -28,6 +28,9 @@ class EurofurenceApplicationBuilder {
             func resolveContentsState(completionHandler: @escaping (EurofurenceDataStoreContentsState) -> Void) {
                 completionHandler(.present)
             }
+            func fetchKnowledgeGroups(completionHandler: ([KnowledgeGroup2]?) -> Void) {
+
+            }
         }
 
         struct DummySyncAPI: SyncAPI {

@@ -16,6 +16,11 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
         capturedResolveContentsStateHandler = completionHandler
     }
     
+    var stubbedKnowledgeGroups: [KnowledgeGroup2]?
+    func fetchKnowledgeGroups(completionHandler: ([KnowledgeGroup2]?) -> Void) {
+        completionHandler(stubbedKnowledgeGroups)
+    }
+    
 }
 
 class StubUserPreferences: UserPreferences {

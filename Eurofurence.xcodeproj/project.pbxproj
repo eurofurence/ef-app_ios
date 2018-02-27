@@ -432,6 +432,7 @@
 		CAF5979820449A1100089BE8 /* APIKnowledgeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979720449A1100089BE8 /* APIKnowledgeGroup.swift */; };
 		CAF5979A20449A1D00089BE8 /* APIKnowledgeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979920449A1D00089BE8 /* APIKnowledgeEntry.swift */; };
 		CAF5979D20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979C20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift */; };
+		CAF5979F2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979E2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift */; };
 		CAF7055A1F82C51900A9FEA2 /* LegacyPreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */; };
 		CAF705611F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */; };
 		CAF705641F82D0DF00A9FEA2 /* RootModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */; };
@@ -941,6 +942,7 @@
 		CAF5979720449A1100089BE8 /* APIKnowledgeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKnowledgeGroup.swift; sourceTree = "<group>"; };
 		CAF5979920449A1D00089BE8 /* APIKnowledgeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKnowledgeEntry.swift; sourceTree = "<group>"; };
 		CAF5979C20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APISyncResponse+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CAF5979E2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift; sourceTree = "<group>"; };
 		CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyPreloadService.swift; sourceTree = "<group>"; };
 		CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDirectorTests.swift; sourceTree = "<group>"; };
 		CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleProviding.swift; sourceTree = "<group>"; };
@@ -2280,6 +2282,7 @@
 			children = (
 				CABF03C920421B490028BD62 /* WhenFetchingKnowledgeGroupsWithoutLoadingAnything.swift */,
 				CABF03CB204220460028BD62 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift */,
+				CAF5979E2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift */,
 			);
 			path = Knowledge;
 			sourceTree = "<group>";
@@ -3410,6 +3413,7 @@
 				CA73AEDD201A0823004E77BF /* CapturingKnowledgeListScene.swift in Sources */,
 				CABF03CC204220460028BD62 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift in Sources */,
 				CA2547C11FEB1B2A0023F2CB /* WhenRefreshingMessages.swift in Sources */,
+				CAF5979F2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift in Sources */,
 				CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */,
 				CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */,
 				CA73AEDF201A0833004E77BF /* CapturingKnowledgeInteractor.swift in Sources */,

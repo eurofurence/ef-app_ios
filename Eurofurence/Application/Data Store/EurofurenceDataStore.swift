@@ -9,6 +9,7 @@
 protocol EurofurenceDataStore {
 
     func resolveContentsState(completionHandler: @escaping (EurofurenceDataStoreContentsState) -> Void)
+    func fetchKnowledgeGroups(completionHandler: ([KnowledgeGroup2]?) -> Void)
 
 }
 

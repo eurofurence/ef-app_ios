@@ -117,18 +117,24 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func fetchKnowledgeGroups(completionHandler: @escaping ([KnowledgeGroup2]) -> Void) {
-        var groups = [KnowledgeGroup2]()
-        if let syncResponse = syncResponse {
-            groups = syncResponse.knowledgeGroups.map({ (group) -> KnowledgeGroup2 in
-                let entriesForGroup = syncResponse.knowledgeEntries.filter({ $0.groupIdentifier == group.identifier }).map({ (entry) -> KnowledgeEntry2 in
-                    return KnowledgeEntry2(title: entry.title)
-                })
+        dataStore.fetchKnowledgeGroups { (persistedGroups) in
+            if let persistedGroups = persistedGroups {
+                completionHandler(persistedGroups)
+            } else {
+                var groups = [KnowledgeGroup2]()
+                if let syncResponse = syncResponse {
+                    groups = syncResponse.knowledgeGroups.map({ (group) -> KnowledgeGroup2 in
+                        let entriesForGroup = syncResponse.knowledgeEntries.filter({ $0.groupIdentifier == group.identifier }).map({ (entry) -> KnowledgeEntry2 in
+                            return KnowledgeEntry2(title: entry.title)
+                        })
 
-                return KnowledgeGroup2(title: group.groupName, groupDescription: group.groupDescription, entries: entriesForGroup)
-            })
+                        return KnowledgeGroup2(title: group.groupName, groupDescription: group.groupDescription, entries: entriesForGroup)
+                    })
+                }
+
+                completionHandler(groups)
+            }
         }
-
-        completionHandler(groups)
     }
 
     func refreshLocalStore() {
