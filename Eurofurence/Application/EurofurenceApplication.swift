@@ -121,17 +121,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             if let persistedGroups = persistedGroups {
                 completionHandler(persistedGroups)
             } else {
-                var groups = [KnowledgeGroup2]()
-                if let syncResponse = syncResponse {
-                    groups = syncResponse.knowledgeGroups.map({ (group) -> KnowledgeGroup2 in
-                        let entriesForGroup = syncResponse.knowledgeEntries.filter({ $0.groupIdentifier == group.identifier }).map({ (entry) -> KnowledgeEntry2 in
-                            return KnowledgeEntry2(title: entry.title)
-                        })
-
-                        return KnowledgeGroup2(title: group.groupName, groupDescription: group.groupDescription, entries: entriesForGroup)
-                    })
-                }
-
+                let groups = self.makeKnowledgeGroupsFromSyncResponse()
                 completionHandler(groups)
             }
         }
@@ -144,18 +134,24 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private func refreshFinished(_ response: APISyncResponse?) {
         syncResponse = response
 
+        let groups = makeKnowledgeGroupsFromSyncResponse()
+
+        dataStore.beginTransaction({ (transaction) in
+            transaction.saveKnowledgeGroups(groups)
+        })
+    }
+
+    private func makeKnowledgeGroupsFromSyncResponse() -> [KnowledgeGroup2] {
         if let syncResponse = syncResponse {
-            let groups = syncResponse.knowledgeGroups.map({ (group) -> KnowledgeGroup2 in
+            return syncResponse.knowledgeGroups.map({ (group) -> KnowledgeGroup2 in
                 let entriesForGroup = syncResponse.knowledgeEntries.filter({ $0.groupIdentifier == group.identifier }).map({ (entry) -> KnowledgeEntry2 in
                     return KnowledgeEntry2(title: entry.title)
                 })
 
                 return KnowledgeGroup2(title: group.groupName, groupDescription: group.groupDescription, entries: entriesForGroup)
             })
-
-            dataStore.beginTransaction({ (transaction) in
-                transaction.saveKnowledgeGroups(groups)
-            })
+        } else {
+            return []
         }
     }
 
