@@ -434,6 +434,8 @@
 		CAF5979D20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979C20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift */; };
 		CAF5979F2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979E2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift */; };
 		CAF597A220458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF597A120458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift */; };
+		CAF597A42045EF5A00089BE8 /* V2SyncAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF597A32045EF5A00089BE8 /* V2SyncAPITests.swift */; };
+		CAF597A62045F1C000089BE8 /* V2SyncAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF597A52045F1C000089BE8 /* V2SyncAPI.swift */; };
 		CAF7055A1F82C51900A9FEA2 /* LegacyPreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */; };
 		CAF705611F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */; };
 		CAF705641F82D0DF00A9FEA2 /* RootModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */; };
@@ -945,6 +947,8 @@
 		CAF5979C20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APISyncResponse+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAF5979E2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift; sourceTree = "<group>"; };
 		CAF597A120458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSyncThatSucceeds.swift; sourceTree = "<group>"; };
+		CAF597A32045EF5A00089BE8 /* V2SyncAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2SyncAPITests.swift; sourceTree = "<group>"; };
+		CAF597A52045F1C000089BE8 /* V2SyncAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2SyncAPI.swift; sourceTree = "<group>"; };
 		CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyPreloadService.swift; sourceTree = "<group>"; };
 		CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDirectorTests.swift; sourceTree = "<group>"; };
 		CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleProviding.swift; sourceTree = "<group>"; };
@@ -2044,6 +2048,7 @@
 			children = (
 				CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */,
 				CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */,
+				CAF597A52045F1C000089BE8 /* V2SyncAPI.swift */,
 			);
 			path = v2;
 			sourceTree = "<group>";
@@ -2061,6 +2066,7 @@
 			children = (
 				CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */,
 				CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */,
+				CAF597A32045EF5A00089BE8 /* V2SyncAPITests.swift */,
 			);
 			path = v2;
 			sourceTree = "<group>";
@@ -3222,6 +3228,7 @@
 				9A80EF641F29230300FD0D37 /* UserDetailsEventTablePreferences.swift in Sources */,
 				CAB3A72D1F753308005DF77B /* PushPermissionsRequester.swift in Sources */,
 				CA30EABE1F2660D80053DBF6 /* PrivateMessagesAPI.swift in Sources */,
+				CAF597A62045F1C000089BE8 /* V2SyncAPI.swift in Sources */,
 				9A861EA91F2554BE00B75A8C /* InitiateDownloadTutorialPagePresenter.swift in Sources */,
 				CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */,
 				781A94301F1A1972002DE70F /* FirebaseAdapter.swift in Sources */,
@@ -3441,6 +3448,7 @@
 				78455B4B1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift in Sources */,
 				CA81D4941FEA92EA00A52A2F /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift in Sources */,
 				CA30EACA1F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift in Sources */,
+				CAF597A42045EF5A00089BE8 /* V2SyncAPITests.swift in Sources */,
 				CA2D08141FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift in Sources */,
 				7820A6E11F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift in Sources */,
 				781A94461F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift in Sources */,
