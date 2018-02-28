@@ -13,9 +13,9 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
     
     func testTheKnowledgeGroupsArePersistedIntoTheStore() {
         let context = ApplicationTestBuilder().build()
-        let syncResponse = APISyncResponse.random
-        let expected = syncResponse.knowledgeGroups.map { (group) -> KnowledgeGroup2 in
-            let entries = syncResponse.knowledgeEntries.filter({ $0.groupIdentifier == group.identifier }).map { (entry) in
+        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let expected = syncResponse.knowledgeGroups.changed.map { (group) -> KnowledgeGroup2 in
+            let entries = syncResponse.knowledgeEntries.changed.filter({ $0.groupIdentifier == group.identifier }).map { (entry) in
                 return KnowledgeEntry2(title: entry.title)
             }
             

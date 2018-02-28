@@ -8,12 +8,12 @@
 
 @testable import Eurofurence
 
-extension APISyncResponse: RandomValueProviding {
+extension APISyncResponse {
     
-    static var random: APISyncResponse {
-        let knowledgeGroups: [APIKnowledgeGroup] = .random
+    static var randomWithoutDeletions: APISyncResponse {
+        let knowledgeGroups = APISyncDelta<APIKnowledgeGroup>(changed: .random)
         var knowledgeEntries = [APIKnowledgeEntry]()
-        for group in knowledgeGroups {
+        for group in knowledgeGroups.changed {
             let upperLimit = Int.random(upperLimit: 10) + 1
             let range = 0..<upperLimit
             let entries = range.map({ (_) -> APIKnowledgeEntry in
@@ -25,7 +25,7 @@ extension APISyncResponse: RandomValueProviding {
             knowledgeEntries.append(contentsOf: entries)
         }
         
-        return APISyncResponse(knowledgeGroups: knowledgeGroups, knowledgeEntries: knowledgeEntries)
+        return APISyncResponse(knowledgeGroups: knowledgeGroups, knowledgeEntries: APISyncDelta(changed: knowledgeEntries))
     }
     
 }
