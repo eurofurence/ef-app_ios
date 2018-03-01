@@ -436,6 +436,7 @@
 		CAF597A220458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF597A120458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift */; };
 		CAF597A42045EF5A00089BE8 /* V2SyncAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF597A32045EF5A00089BE8 /* V2SyncAPITests.swift */; };
 		CAF597A62045F1C000089BE8 /* V2SyncAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF597A52045F1C000089BE8 /* V2SyncAPI.swift */; };
+		CAF597A820482EC000089BE8 /* V2SyncAPIResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = CAF597A720482EC000089BE8 /* V2SyncAPIResponse.json */; };
 		CAF7055A1F82C51900A9FEA2 /* LegacyPreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */; };
 		CAF705611F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */; };
 		CAF705641F82D0DF00A9FEA2 /* RootModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */; };
@@ -949,6 +950,7 @@
 		CAF597A120458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSyncThatSucceeds.swift; sourceTree = "<group>"; };
 		CAF597A32045EF5A00089BE8 /* V2SyncAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2SyncAPITests.swift; sourceTree = "<group>"; };
 		CAF597A52045F1C000089BE8 /* V2SyncAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2SyncAPI.swift; sourceTree = "<group>"; };
+		CAF597A720482EC000089BE8 /* V2SyncAPIResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = V2SyncAPIResponse.json; sourceTree = "<group>"; };
 		CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyPreloadService.swift; sourceTree = "<group>"; };
 		CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDirectorTests.swift; sourceTree = "<group>"; };
 		CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleProviding.swift; sourceTree = "<group>"; };
@@ -2067,6 +2069,7 @@
 				CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */,
 				CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */,
 				CAF597A32045EF5A00089BE8 /* V2SyncAPITests.swift */,
+				CAF597A720482EC000089BE8 /* V2SyncAPIResponse.json */,
 			);
 			path = v2;
 			sourceTree = "<group>";
@@ -2809,6 +2812,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAF597A820482EC000089BE8 /* V2SyncAPIResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
