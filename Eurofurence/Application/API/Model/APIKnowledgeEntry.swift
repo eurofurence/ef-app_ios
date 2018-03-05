@@ -8,9 +8,13 @@
 
 import Foundation
 
-struct APIKnowledgeEntry {
+struct APIKnowledgeEntry: Equatable {
 
     var groupIdentifier: String
     var title: String
+
+    static func ==(lhs: APIKnowledgeEntry, rhs: APIKnowledgeEntry) -> Bool {
+        return lhs.groupIdentifier == rhs.groupIdentifier && lhs.title == rhs.title
+    }
 
 }
