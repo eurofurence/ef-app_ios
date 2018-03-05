@@ -17,16 +17,11 @@ struct V2SyncAPI: SyncAPI {
         let url = "https://app.eurofurence.org/api/v2/Sync"
         let request = JSONRequest(url: url, body: Data())
         jsonSession.get(request) { (data, _) in
-            guard let data = data else {
-                completionHandler(nil)
-                return
-            }
+            var response: APISyncResponse?
+            defer { completionHandler(response) }
 
-            do {
-                let response = try self.decoder.decode(JSONSyncResponse.self, from: data)
-                completionHandler(response.asAPIResponse())
-            } catch {
-                completionHandler(nil)
+            if let data = data {
+                response = (try? self.decoder.decode(JSONSyncResponse.self, from: data))?.asAPIResponse()
             }
         }
     }
