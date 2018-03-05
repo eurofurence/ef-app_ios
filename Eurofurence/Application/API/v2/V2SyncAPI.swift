@@ -11,13 +11,68 @@ import Foundation
 struct V2SyncAPI: SyncAPI {
 
     var jsonSession: JSONSession
+    private let decoder = JSONDecoder()
 
     func fetchLatestData(completionHandler: @escaping (APISyncResponse?) -> Void) {
         let url = "https://app.eurofurence.org/api/v2/Sync"
         let request = JSONRequest(url: url, body: Data())
-        jsonSession.get(request) { (_, _) in
+        jsonSession.get(request) { (data, _) in
+            guard let data = data else { return }
 
+            do {
+                let response = try self.decoder.decode(JSONSyncResponse.self, from: data)
+                completionHandler(response.asAPIResponse())
+            } catch {
+                print(error)
+            }
         }
     }
 
+}
+
+private struct JSONSyncResponse: Decodable {
+
+    func asAPIResponse() -> APISyncResponse {
+        return APISyncResponse(knowledgeGroups: KnowledgeGroups.asDelta(),
+                               knowledgeEntries: KnowledgeEntries.asDelta())
+    }
+
+    struct Leaf<T>: Decodable where T: Decodable & ModelRepresenting {
+        var ChangedEntities: [T]
+        var DeletedEntities: [T]
+
+        func asDelta() -> APISyncDelta<T.ModelType> {
+            return APISyncDelta(changed: ChangedEntities.map({ $0.asModel() }),
+                                deleted: DeletedEntities.map({ $0.asModel() }))
+        }
+    }
+
+    struct JSONKnowledgeGroup: Decodable, ModelRepresenting {
+        var Id: String
+        var Name: String
+        var Description: String
+
+        func asModel() -> APIKnowledgeGroup {
+            return APIKnowledgeGroup(identifier: Id, groupName: Name, groupDescription: Description)
+        }
+    }
+
+    struct JSONKnowledgeEntry: Decodable, ModelRepresenting {
+        var KnowledgeGroupId: String
+        var Title: String
+
+        func asModel() -> APIKnowledgeEntry {
+            return APIKnowledgeEntry(groupIdentifier: KnowledgeGroupId, title: Title)
+        }
+    }
+
+    var KnowledgeGroups: Leaf<JSONKnowledgeGroup>
+    var KnowledgeEntries: Leaf<JSONKnowledgeEntry>
+
+}
+
+private protocol ModelRepresenting {
+    associatedtype ModelType: Equatable
+
+    func asModel() -> ModelType
 }
