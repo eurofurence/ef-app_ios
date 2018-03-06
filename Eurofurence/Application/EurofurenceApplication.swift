@@ -119,7 +119,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     func fetchKnowledgeGroups(completionHandler: @escaping ([KnowledgeGroup2]) -> Void) {
         dataStore.fetchKnowledgeGroups { (persistedGroups) in
             if let persistedGroups = persistedGroups {
-                completionHandler(persistedGroups)
+                completionHandler(persistedGroups.sorted())
             } else {
                 let groups = self.makeKnowledgeGroupsFromSyncResponse()
                 completionHandler(groups)

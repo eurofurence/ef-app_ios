@@ -11,11 +11,12 @@ import XCTest
 
 class WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups: XCTestCase {
     
-    func testTheGroupsFromTheStoreAreAdapted() {
+    func testTheGroupsFromTheStoreAreAdaptedInOrder() {
         let context = ApplicationTestBuilder().build()
-        let expected: [KnowledgeGroup2] = .random
+        let persistedGroups: [KnowledgeGroup2] = .random
+        let expected = persistedGroups.sorted()
         var actual: [KnowledgeGroup2] = []
-        context.dataStore.stubbedKnowledgeGroups = expected
+        context.dataStore.stubbedKnowledgeGroups = persistedGroups
         context.application.fetchKnowledgeGroups { actual = $0 }
         
         XCTAssertEqual(expected, actual)
