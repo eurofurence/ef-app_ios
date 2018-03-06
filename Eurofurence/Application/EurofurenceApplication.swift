@@ -128,6 +128,12 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
+        enum SyncError: Error {
+            case failedToLoadResponse
+        }
+
+        completionHandler(SyncError.failedToLoadResponse)
+
         syncAPI.fetchLatestData(completionHandler: refreshFinished)
         return Progress()
     }

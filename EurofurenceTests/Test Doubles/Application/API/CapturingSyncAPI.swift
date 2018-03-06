@@ -22,5 +22,8 @@ extension CapturingSyncAPI {
     func simulateSuccessfulSync(_ response: APISyncResponse) {
         completionHandler?(response)
     }
+    func simulateUnsuccessfulSync() {
+        completionHandler?(nil)
+    }
     
 }
