@@ -24,7 +24,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
                                    entries: entries)
         }
         
-        context.application.refreshLocalStore()
+        context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(syncResponse)
         
         XCTAssertTrue(context.dataStore.didSave(expected))

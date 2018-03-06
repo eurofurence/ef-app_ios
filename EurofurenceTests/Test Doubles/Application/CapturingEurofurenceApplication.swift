@@ -54,8 +54,10 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
     }
     
     private(set) var wasToldToRefreshLocalStore = false
-    func refreshLocalStore() {
+    fileprivate var refreshCompletionHandler: ((Error?) -> Void)?
+    func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) {
         wasToldToRefreshLocalStore = true
+        refreshCompletionHandler = completionHandler
     }
     
 }
@@ -70,6 +72,11 @@ extension CapturingEurofurenceApplication {
     
     func resolvePrivateMessagesFetch(_ result: PrivateMessageResult) {
         privateMessageFetchCompletionHandler?(result)
+    }
+    
+    func failLastRefresh() {
+        struct SomeError: Error {}
+        refreshCompletionHandler?(SomeError())
     }
     
 }

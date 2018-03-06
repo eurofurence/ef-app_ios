@@ -24,7 +24,7 @@ class WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh: XCTestCase {
                                    entries: entries)
         }
         
-        context.application.refreshLocalStore()
+        context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(syncResponse)
         let expectedKnowledgeGroupsExpectation = expectation(description: "Expected knowledge groups to be extracted from sync response")
         context.application.fetchKnowledgeGroups { (groups) in

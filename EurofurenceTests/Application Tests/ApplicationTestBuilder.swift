@@ -38,6 +38,12 @@ class ApplicationTestBuilder {
             application.login(arguments, completionHandler: completionHandler)
         }
         
+        func refreshLocalStore(completionHandler: ((Error?) -> Void)? = nil) {
+            application.refreshLocalStore { (error) in
+                completionHandler?(error)
+            }
+        }
+        
     }
     
     private let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()

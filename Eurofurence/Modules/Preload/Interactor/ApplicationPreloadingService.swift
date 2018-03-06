@@ -11,7 +11,8 @@ struct ApplicationPreloadingService: PreloadService {
     var app: EurofurenceApplicationProtocol
 
     func beginPreloading(delegate: PreloadServiceDelegate) {
-        app.refreshLocalStore()
+        app.refreshLocalStore { (_) in }
+        delegate.preloadServiceDidFail()
     }
 
 }

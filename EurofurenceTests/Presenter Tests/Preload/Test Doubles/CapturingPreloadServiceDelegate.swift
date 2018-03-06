@@ -10,8 +10,9 @@
 
 class CapturingPreloadServiceDelegate: PreloadServiceDelegate {
     
+    private(set) var wasToldPreloadServiceDidFail = false
     func preloadServiceDidFail() {
-        
+        wasToldPreloadServiceDidFail = true
     }
     
     func preloadServiceDidFinish() {
