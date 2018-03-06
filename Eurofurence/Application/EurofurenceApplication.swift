@@ -153,13 +153,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     private func makeKnowledgeGroupsFromSyncResponse() -> [KnowledgeGroup2] {
         if let syncResponse = syncResponse {
-            return syncResponse.knowledgeGroups.changed.map({ (group) -> KnowledgeGroup2 in
-                let entriesForGroup = syncResponse.knowledgeEntries.changed.filter({ $0.groupIdentifier == group.identifier }).map({ (entry) -> KnowledgeEntry2 in
-                    return KnowledgeEntry2(title: entry.title)
-                })
-
-                return KnowledgeGroup2(title: group.groupName, groupDescription: group.groupDescription, entries: entriesForGroup)
-            })
+            return KnowledgeGroup2.fromServerModels(groups: syncResponse.knowledgeGroups.changed, entries: syncResponse.knowledgeEntries.changed)
         } else {
             return []
         }
