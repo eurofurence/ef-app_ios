@@ -39,7 +39,7 @@ class ApplicationTestBuilder {
         }
         
         func refreshLocalStore(completionHandler: ((Error?) -> Void)? = nil) {
-            application.refreshLocalStore { (error) in
+            _ = application.refreshLocalStore { (error) in
                 completionHandler?(error)
             }
         }
