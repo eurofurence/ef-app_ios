@@ -11,10 +11,21 @@ import XCTest
 
 class WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh: XCTestCase {
     
-    func testEntriesAreConsolidatedByGroupIdentifier() {
+    func testEntriesAreConsolidatedByGroupIdentifierInGroupOrder() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
-        let expected = KnowledgeGroup2.fromServerModels(groups: syncResponse.knowledgeGroups.changed, entries: syncResponse.knowledgeEntries.changed)
+        var expected = syncResponse.knowledgeGroups.changed.map { (group) -> KnowledgeGroup2 in
+            let entries = syncResponse.knowledgeEntries.changed.filter({ $0.groupIdentifier == group.identifier }).map { (entry) in
+                return KnowledgeEntry2(title: entry.title)
+            }
+            
+            return KnowledgeGroup2(title: group.groupName,
+                                   groupDescription: group.groupDescription,
+                                   order: group.order,
+                                   entries: entries)
+        }
+        
+        expected.sort(by: { $0.0.order < $0.1.order })
         
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(syncResponse)

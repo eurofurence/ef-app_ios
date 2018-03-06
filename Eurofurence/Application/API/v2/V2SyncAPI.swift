@@ -47,11 +47,12 @@ private struct JSONSyncResponse: Decodable {
 
     struct JSONKnowledgeGroup: Decodable, ModelRepresenting {
         var Id: String
+        var Order: Int
         var Name: String
         var Description: String
 
         func asModel() -> APIKnowledgeGroup {
-            return APIKnowledgeGroup(identifier: Id, groupName: Name, groupDescription: Description)
+            return APIKnowledgeGroup(identifier: Id, order: Order, groupName: Name, groupDescription: Description)
         }
     }
 
