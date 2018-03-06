@@ -15,8 +15,9 @@ class CapturingPreloadServiceDelegate: PreloadServiceDelegate {
         wasToldPreloadServiceDidFail = true
     }
     
+    private(set) var wasToldPreloadServiceDidFinish = false
     func preloadServiceDidFinish() {
-        
+        wasToldPreloadServiceDidFinish = true
     }
     
     func preloadServiceDidProgress(currentUnitCount: Int, totalUnitCount: Int) {

@@ -12,7 +12,9 @@ struct ApplicationPreloadingService: PreloadService {
 
     func beginPreloading(delegate: PreloadServiceDelegate) {
         app.refreshLocalStore { (error) in
-            if error != nil {
+            if error == nil {
+                delegate.preloadServiceDidFinish()
+            } else {
                 delegate.preloadServiceDidFail()
             }
         }
