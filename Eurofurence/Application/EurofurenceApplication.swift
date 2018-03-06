@@ -136,7 +136,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             if response == nil {
                 completionHandler(SyncError.failedToLoadResponse)
             } else {
-                completionHandler(nil)
                 self.syncResponse = response
 
                 let groups = self.makeKnowledgeGroupsFromSyncResponse()
@@ -144,6 +143,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                 self.dataStore.beginTransaction({ (transaction) in
                     transaction.saveKnowledgeGroups(groups)
                 })
+
+                completionHandler(nil)
             }
         }
 

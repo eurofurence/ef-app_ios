@@ -319,6 +319,7 @@
 		CA8276B3204EC013006A7419 /* ApplicationPreloadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B2204EC013006A7419 /* ApplicationPreloadingService.swift */; };
 		CA8276B6204EC026006A7419 /* CapturingPreloadServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B5204EC026006A7419 /* CapturingPreloadServiceDelegate.swift */; };
 		CA8276B8204F19CA006A7419 /* WhenPerformingSyncThatFails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B7204F19CA006A7419 /* WhenPerformingSyncThatFails.swift */; };
+		CA8276BA204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B9204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift */; };
 		CA8D97CD201610EC0074838F /* DomainEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97CC201610EC0074838F /* DomainEvent.swift */; };
 		CA8D97CF201611430074838F /* EventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97CE201611430074838F /* EventBus.swift */; };
 		CA8D97D12016126E0074838F /* LoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97D02016126E0074838F /* LoggedIn.swift */; };
@@ -834,6 +835,7 @@
 		CA8276B2204EC013006A7419 /* ApplicationPreloadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPreloadingService.swift; sourceTree = "<group>"; };
 		CA8276B5204EC026006A7419 /* CapturingPreloadServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPreloadServiceDelegate.swift; sourceTree = "<group>"; };
 		CA8276B7204F19CA006A7419 /* WhenPerformingSyncThatFails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSyncThatFails.swift; sourceTree = "<group>"; };
+		CA8276B9204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSavingSuccessfulSyncResponse.swift; sourceTree = "<group>"; };
 		CA8D97CC201610EC0074838F /* DomainEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainEvent.swift; sourceTree = "<group>"; };
 		CA8D97CE201611430074838F /* EventBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBus.swift; sourceTree = "<group>"; };
 		CA8D97D02016126E0074838F /* LoggedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedIn.swift; sourceTree = "<group>"; };
@@ -2503,6 +2505,7 @@
 			children = (
 				CAF597A120458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift */,
 				CA8276B7204F19CA006A7419 /* WhenPerformingSyncThatFails.swift */,
+				CA8276B9204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift */,
 			);
 			path = Sync;
 			sourceTree = "<group>";
@@ -3427,6 +3430,7 @@
 				7820A6FF1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift in Sources */,
 				CA73AEDB201A080F004E77BF /* StubKnowledgeListSceneFactory.swift in Sources */,
 				CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */,
+				CA8276BA204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift in Sources */,
 				CAF9A9581F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift in Sources */,
 				CA2D07F91FE9021A00BFD785 /* WhenResolvingDataStoreState.swift in Sources */,
 				CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */,

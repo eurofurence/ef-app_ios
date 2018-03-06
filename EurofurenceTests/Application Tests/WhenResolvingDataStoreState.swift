@@ -23,10 +23,12 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
     
     private(set) var capturedKnowledgeGroupsToSave: [KnowledgeGroup2]?
     private(set) var transaction: CapturingEurofurenceDataStoreTransaction?
+    var transactionInvokedBlock: (() -> Void)?
     func beginTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
         let transaction = CapturingEurofurenceDataStoreTransaction()
         block(transaction)
         self.transaction = transaction
+        transactionInvokedBlock?()
     }
     
 }
