@@ -37,12 +37,6 @@ class EurofurenceApplicationBuilder {
             }
         }
 
-        struct DummySyncAPI: SyncAPI {
-            func fetchLatestData(completionHandler: @escaping (APISyncResponse?) -> Void) {
-
-            }
-        }
-
         userPreferences = DummyUserPreferences()
         dataStore = DummyEurofurenceDataStore()
 
@@ -60,7 +54,7 @@ class EurofurenceApplicationBuilder {
         credentialStore = KeychainCredentialStore()
         loginAPI = V2LoginAPI(jsonSession: jsonSession)
         privateMessagesAPI = V2PrivateMessagesAPI(jsonSession: jsonSession)
-        syncAPI = DummySyncAPI()
+        syncAPI = V2SyncAPI(jsonSession: jsonSession)
     }
 
     @discardableResult

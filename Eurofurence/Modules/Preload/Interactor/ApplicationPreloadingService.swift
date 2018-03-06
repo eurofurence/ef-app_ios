@@ -11,6 +11,10 @@ class ApplicationPreloadingService: PreloadService {
     private let app: EurofurenceApplicationProtocol
     private var observations = [Any]()
 
+    convenience init() {
+        self.init(app: EurofurenceApplication.shared)
+    }
+
     init(app: EurofurenceApplicationProtocol) {
         self.app = app
     }
