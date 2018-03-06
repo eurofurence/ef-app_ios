@@ -53,8 +53,9 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
+    private(set) var wasToldToRefreshLocalStore = false
     func refreshLocalStore() {
-        
+        wasToldToRefreshLocalStore = true
     }
     
 }
