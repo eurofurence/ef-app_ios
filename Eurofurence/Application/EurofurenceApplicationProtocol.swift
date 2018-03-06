@@ -16,7 +16,7 @@ enum EurofurenceDataStoreState {
 
 protocol EurofurenceApplicationProtocol: KnowledgeService {
 
-    func refreshLocalStore(completionHandler: @escaping (Error?) -> Void)
+    func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress
 
     var localPrivateMessages: [Message] { get }
 

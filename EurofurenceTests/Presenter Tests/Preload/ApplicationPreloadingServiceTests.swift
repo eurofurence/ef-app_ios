@@ -63,4 +63,14 @@ class ApplicationPreloadingServiceTests: XCTestCase {
         XCTAssertFalse(delegate.wasToldPreloadServiceDidFinish)
     }
     
+    func testProgressUpdatesFromTheRefreshAreEmittedToTheDelegate() {
+        beginPreload()
+        let currentUnitCount = Int.random
+        let totalUnitCount = currentUnitCount + 1
+        app.updateProgressForCurrentRefresh(currentUnitCount: currentUnitCount, totalUnitCount: totalUnitCount)
+        
+        XCTAssertEqual(currentUnitCount, delegate.capturedProgressCurrentUnitCount)
+        XCTAssertEqual(totalUnitCount, delegate.capturedProgressTotalUnitCount)
+    }
+    
 }

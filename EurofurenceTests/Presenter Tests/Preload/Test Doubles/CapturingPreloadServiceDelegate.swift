@@ -20,8 +20,11 @@ class CapturingPreloadServiceDelegate: PreloadServiceDelegate {
         wasToldPreloadServiceDidFinish = true
     }
     
+    private(set) var capturedProgressCurrentUnitCount: Int?
+    private(set) var capturedProgressTotalUnitCount: Int?
     func preloadServiceDidProgress(currentUnitCount: Int, totalUnitCount: Int) {
-        
+        capturedProgressCurrentUnitCount = currentUnitCount
+        capturedProgressTotalUnitCount = totalUnitCount
     }
     
 }

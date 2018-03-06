@@ -55,9 +55,13 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
     
     private(set) var wasToldToRefreshLocalStore = false
     fileprivate var refreshCompletionHandler: ((Error?) -> Void)?
-    func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) {
+    fileprivate var refreshProgress: Progress?
+    func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
         wasToldToRefreshLocalStore = true
         refreshCompletionHandler = completionHandler
+        refreshProgress = Progress()
+        
+        return refreshProgress!
     }
     
 }
@@ -81,6 +85,11 @@ extension CapturingEurofurenceApplication {
     
     func succeedLastRefresh() {
         refreshCompletionHandler?(nil)
+    }
+    
+    func updateProgressForCurrentRefresh(currentUnitCount: Int, totalUnitCount: Int) {
+        refreshProgress?.totalUnitCount = Int64(totalUnitCount)
+        refreshProgress?.completedUnitCount = Int64(currentUnitCount)
     }
     
 }

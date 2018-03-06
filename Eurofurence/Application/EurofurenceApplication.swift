@@ -127,8 +127,9 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         }
     }
 
-    func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) {
+    func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
         syncAPI.fetchLatestData(completionHandler: refreshFinished)
+        return Progress()
     }
 
     private func refreshFinished(_ response: APISyncResponse?) {
