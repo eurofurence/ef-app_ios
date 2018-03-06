@@ -30,4 +30,13 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         XCTAssertTrue(context.dataStore.didSave(expected))
     }
     
+    func testTheCompletionHandlerIsInvokedWithoutAnError() {
+        let context = ApplicationTestBuilder().build()
+        var invokedWithNilError = false
+        context.refreshLocalStore { invokedWithNilError = $0 == nil }
+        context.syncAPI.simulateSuccessfulSync(.randomWithoutDeletions)
+        
+        XCTAssertTrue(invokedWithNilError)
+    }
+    
 }

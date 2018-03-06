@@ -132,20 +132,22 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             case failedToLoadResponse
         }
 
-        completionHandler(SyncError.failedToLoadResponse)
+        syncAPI.fetchLatestData { (response) in
+            if response == nil {
+                completionHandler(SyncError.failedToLoadResponse)
+            } else {
+                completionHandler(nil)
+                self.syncResponse = response
 
-        syncAPI.fetchLatestData(completionHandler: refreshFinished)
+                let groups = self.makeKnowledgeGroupsFromSyncResponse()
+
+                self.dataStore.beginTransaction({ (transaction) in
+                    transaction.saveKnowledgeGroups(groups)
+                })
+            }
+        }
+
         return Progress()
-    }
-
-    private func refreshFinished(_ response: APISyncResponse?) {
-        syncResponse = response
-
-        let groups = makeKnowledgeGroupsFromSyncResponse()
-
-        dataStore.beginTransaction({ (transaction) in
-            transaction.saveKnowledgeGroups(groups)
-        })
     }
 
     private func makeKnowledgeGroupsFromSyncResponse() -> [KnowledgeGroup2] {
