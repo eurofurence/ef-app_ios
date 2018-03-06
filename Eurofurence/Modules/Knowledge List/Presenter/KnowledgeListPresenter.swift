@@ -22,8 +22,8 @@ class KnowledgeListPresenter: KnowledgeListSceneDelegate {
     }
 
     func knowledgeListSceneDidLoad() {
-        knowledgeListInteractor.prepareViewModel(completionHandler: viewModelPrepared)
         scene.showLoadingIndicator()
+        knowledgeListInteractor.prepareViewModel(completionHandler: viewModelPrepared)
     }
 
     func knowledgeListSceneDidSelectKnowledgeEntry(inGroup groupIndex: Int, at entryIndex: Int) {

@@ -10,11 +10,13 @@
 
 class CapturingKnowledgeInteractor: KnowledgeInteractor {
     
+    var prepareViewModelInvokedHandler: (() -> Void)?
     private(set) var toldToPrepareViewModel = false
     fileprivate var completionHandler: ((KnowledgeListViewModel) -> Void)?
     func prepareViewModel(completionHandler: @escaping (KnowledgeListViewModel) -> Void) {
         toldToPrepareViewModel = true
         self.completionHandler = completionHandler
+        prepareViewModelInvokedHandler?()
     }
     
 }
