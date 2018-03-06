@@ -12,13 +12,7 @@ class KnowledgeListModuleBuilder {
     private var knowledgeSceneFactory: KnowledgeListSceneFactory
 
     init() {
-        struct DummyKnowledgeInteractor: KnowledgeInteractor {
-            func prepareViewModel(completionHandler: @escaping (KnowledgeListViewModel) -> Void) {
-
-            }
-        }
-
-        knowledgeListInteractor = DummyKnowledgeInteractor()
+        knowledgeListInteractor = DefaultKnowledgeListInteractor(service: EurofurenceApplication.shared)
         knowledgeSceneFactory = StoryboardKnowledgeListSceneFactory()
     }
 

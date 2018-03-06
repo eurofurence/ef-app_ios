@@ -33,7 +33,7 @@ class EurofurenceApplicationBuilder {
                 completionHandler(.present)
             }
             func fetchKnowledgeGroups(completionHandler: ([KnowledgeGroup2]?) -> Void) {
-
+                completionHandler(nil)
             }
         }
 
