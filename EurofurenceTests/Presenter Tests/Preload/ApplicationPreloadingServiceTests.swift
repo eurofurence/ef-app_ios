@@ -11,31 +11,45 @@ import XCTest
 
 class ApplicationPreloadingServiceTests: XCTestCase {
     
-    func testPreloadingTellsAppToRefreshLocalStore() {
-        let app = CapturingEurofurenceApplication()
-        let service = ApplicationPreloadingService(app: app)
-        let delegate = CapturingPreloadServiceDelegate()
-        service.beginPreloading(delegate: delegate)
+    var app: CapturingEurofurenceApplication!
+    var service: ApplicationPreloadingService!
+    var delegate: CapturingPreloadServiceDelegate!
+    
+    override func setUp() {
+        super.setUp()
         
+        app = CapturingEurofurenceApplication()
+        service = ApplicationPreloadingService(app: app)
+        delegate = CapturingPreloadServiceDelegate()
+    }
+    
+    private func beginPreload() {
+        service.beginPreloading(delegate: delegate)
+    }
+    
+    private func simulateRefreshFailure() {
+        app.failLastRefresh()
+    }
+    
+    private func simulateRefreshSuccess() {
+        app.succeedLastRefresh()
+    }
+    
+    func testPreloadingTellsAppToRefreshLocalStore() {
+        beginPreload()
         XCTAssertTrue(app.wasToldToRefreshLocalStore)
     }
     
     func testFailedRefreshesTellDelegatePreloadServiceFailed() {
-        let app = CapturingEurofurenceApplication()
-        let service = ApplicationPreloadingService(app: app)
-        let delegate = CapturingPreloadServiceDelegate()
-        service.beginPreloading(delegate: delegate)
-        app.failLastRefresh()
+        beginPreload()
+        simulateRefreshFailure()
         
         XCTAssertTrue(delegate.wasToldPreloadServiceDidFail)
     }
     
     func testSuccessfulRefreshesDoNotTellDelegatePreloadServiceSucceeded() {
-        let app = CapturingEurofurenceApplication()
-        let service = ApplicationPreloadingService(app: app)
-        let delegate = CapturingPreloadServiceDelegate()
-        service.beginPreloading(delegate: delegate)
-        app.succeedLastRefresh()
+        beginPreload()
+        simulateRefreshSuccess()
         
         XCTAssertFalse(delegate.wasToldPreloadServiceDidFail)
     }
