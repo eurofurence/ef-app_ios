@@ -79,4 +79,8 @@ extension CapturingEurofurenceApplication {
         refreshCompletionHandler?(SomeError())
     }
     
+    func succeedLastRefresh() {
+        refreshCompletionHandler?(nil)
+    }
+    
 }

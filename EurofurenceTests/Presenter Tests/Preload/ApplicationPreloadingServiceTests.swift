@@ -30,4 +30,14 @@ class ApplicationPreloadingServiceTests: XCTestCase {
         XCTAssertTrue(delegate.wasToldPreloadServiceDidFail)
     }
     
+    func testSuccessfulRefreshesDoNotTellDelegatePreloadServiceSucceeded() {
+        let app = CapturingEurofurenceApplication()
+        let service = ApplicationPreloadingService(app: app)
+        let delegate = CapturingPreloadServiceDelegate()
+        service.beginPreloading(delegate: delegate)
+        app.succeedLastRefresh()
+        
+        XCTAssertFalse(delegate.wasToldPreloadServiceDidFail)
+    }
+    
 }
