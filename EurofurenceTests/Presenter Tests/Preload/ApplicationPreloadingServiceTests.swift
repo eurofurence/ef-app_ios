@@ -35,11 +35,6 @@ class ApplicationPreloadingServiceTests: XCTestCase {
         app.succeedLastRefresh()
     }
     
-    func testPreloadingTellsAppToRefreshLocalStore() {
-        beginPreload()
-        XCTAssertTrue(app.wasToldToRefreshLocalStore)
-    }
-    
     func testFailedRefreshTellDelegatePreloadServiceFailed() {
         beginPreload()
         simulateRefreshFailure()
