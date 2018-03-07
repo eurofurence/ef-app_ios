@@ -12,7 +12,7 @@ import Foundation
 extension KnowledgeEntry2: RandomValueProviding {
     
     static var random: KnowledgeEntry2 {
-        return KnowledgeEntry2(title: .random)
+        return KnowledgeEntry2(title: .random, order: .random)
     }
     
 }

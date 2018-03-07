@@ -77,9 +77,11 @@ class V2SyncAPITests: XCTestCase {
                                                                                           groupName: "Security",
                                                                                           groupDescription: "Rules & Policies")])
         let knowledgeEntries = APISyncDelta<APIKnowledgeEntry>(changed: [APIKnowledgeEntry(groupIdentifier: "72cdaaba-e980-fa1a-ce94-7a1cc19d0f79",
-                                                                                           title: "Parkhaus Neukölln Arcaden")],
+                                                                                           title: "Parkhaus Neukölln Arcaden",
+                                                                                           order: 0)],
                                                                deleted: [APIKnowledgeEntry(groupIdentifier: "66e14f56-743c-1ece-a50c-b691143a3f93",
-                                                                                           title: "Clockwork Creature Studio")])
+                                                                                           title: "Clockwork Creature Studio",
+                                                                                           order: 1)])
         
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries)
