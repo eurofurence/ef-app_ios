@@ -83,6 +83,10 @@ class KnowledgeListViewController: UIViewController, KnowledgeListScene {
             return header
         }
 
+        func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+            return 1
+        }
+
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             onDidSelectRowAtIndexPath?(indexPath)
         }
