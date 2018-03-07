@@ -19,6 +19,8 @@ class KnowledgeListPresenter: KnowledgeListSceneDelegate {
         self.scene = scene
         self.knowledgeListInteractor = knowledgeListInteractor
         self.delegate = delegate
+
+        scene.setKnowledgeListTitle(.conventionInformation)
     }
 
     func knowledgeListSceneDidLoad() {

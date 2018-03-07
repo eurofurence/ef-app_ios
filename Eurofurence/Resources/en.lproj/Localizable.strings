@@ -38,4 +38,6 @@
 "loginError" = "Login Error";
 "loginErrorDetail" = "Please verify your login details and make sure you are connected to the internet";
 
-"messages" = "Messages";
+"Messages" = "Messages";
+
+"ConventionInformation" = "Convention Information";

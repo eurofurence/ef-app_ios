@@ -16,6 +16,11 @@ class CapturingKnowledgeListScene: UIViewController, KnowledgeListScene {
         self.delegate = delegate
     }
     
+    private(set) var capturedTitle: String?
+    func setKnowledgeListTitle(_ title: String) {
+        capturedTitle = title
+    }
+    
     private(set) var didShowLoadingIndicator = false
     func showLoadingIndicator() {
         didShowLoadingIndicator = true

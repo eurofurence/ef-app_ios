@@ -22,6 +22,10 @@ class KnowledgeListViewController: UIViewController, KnowledgeListScene {
         self.delegate = delegate
     }
 
+    func setKnowledgeListTitle(_ title: String) {
+        super.title = title
+    }
+
     func showLoadingIndicator() {
         activityIndicator.startAnimating()
     }

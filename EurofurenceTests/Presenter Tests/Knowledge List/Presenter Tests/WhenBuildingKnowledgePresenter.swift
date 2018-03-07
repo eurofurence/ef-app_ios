@@ -30,4 +30,9 @@ class WhenBuildingKnowledgePresenter: XCTestCase {
         XCTAssertTrue(context.scene === context.producedViewController)
     }
     
+    func testTheSceneIsToldToShowTheConventionInformationTitle() {
+        let context = KnowledgeListPresenterTestBuilder().build()
+        XCTAssertEqual(.conventionInformation, context.scene.capturedTitle)
+    }
+    
 }
