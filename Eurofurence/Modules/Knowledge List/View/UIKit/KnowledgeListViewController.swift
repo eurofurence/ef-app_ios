@@ -42,6 +42,10 @@ class KnowledgeListViewController: UIViewController, KnowledgeListScene {
         tableView.reloadData()
     }
 
+    func deselectKnowledgeEntry(at indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
     // MARK: Overrides
 
     override func viewDidLoad() {

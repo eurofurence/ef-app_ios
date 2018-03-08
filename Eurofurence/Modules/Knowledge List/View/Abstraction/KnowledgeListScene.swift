@@ -6,6 +6,8 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import Foundation.NSIndexPath
+
 protocol KnowledgeListScene {
 
     func setDelegate(_ delegate: KnowledgeListSceneDelegate)
@@ -13,5 +15,6 @@ protocol KnowledgeListScene {
     func showLoadingIndicator()
     func hideLoadingIndicator()
     func prepareToDisplayKnowledgeGroups(entriesPerGroup: [Int], binder: KnowledgeListBinder)
+    func deselectKnowledgeEntry(at indexPath: IndexPath)
 
 }

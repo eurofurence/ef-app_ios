@@ -6,6 +6,8 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import Foundation.NSIndexPath
+
 class KnowledgeListPresenter: KnowledgeListSceneDelegate {
 
     private let scene: KnowledgeListScene
@@ -29,6 +31,8 @@ class KnowledgeListPresenter: KnowledgeListSceneDelegate {
     }
 
     func knowledgeListSceneDidSelectKnowledgeEntry(inGroup groupIndex: Int, at entryIndex: Int) {
+        scene.deselectKnowledgeEntry(at: IndexPath(item: entryIndex, section: groupIndex))
+
         guard let viewModel = viewModel else { return }
         let group = viewModel.knowledgeGroups[groupIndex]
         let entry = group.knowledgeEntries[entryIndex]
