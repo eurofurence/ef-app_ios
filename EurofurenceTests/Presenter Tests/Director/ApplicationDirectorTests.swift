@@ -153,7 +153,18 @@ class StubMessageDetailModuleProviding: MessageDetailModuleProviding {
 class StubKnowledgeListModuleProviding: KnowledgeListModuleProviding {
     
     let stubInterface = UIViewController()
+    private(set) var delegate: KnowledgeListModuleDelegate?
     func makeKnowledgeListModule(_ delegate: KnowledgeListModuleDelegate) -> UIViewController {
+        self.delegate = delegate
+        return stubInterface
+    }
+    
+}
+
+class StubKnowledgeDetailModuleProviding: KnowledgeDetailModuleProviding {
+    
+    let stubInterface = UIViewController()
+    func makeKnowledgeListModule() -> UIViewController {
         return stubInterface
     }
     
@@ -172,6 +183,7 @@ class ApplicationDirectorTests: XCTestCase {
     var windowWireframe: CapturingWindowWireframe!
     var messageDetailModuleFactory: StubMessageDetailModuleProviding!
     var knowledgeListModuleProviding: StubKnowledgeListModuleProviding!
+    var knowledgeDetailModuleProviding: StubKnowledgeDetailModuleProviding!
     
     private func navigateToTabController() {
         rootModuleFactory.delegate?.rootModuleDidDetermineStoreShouldRefresh()
@@ -195,6 +207,7 @@ class ApplicationDirectorTests: XCTestCase {
         loginModuleFactory = StubLoginModuleFactory()
         messageDetailModuleFactory = StubMessageDetailModuleProviding()
         knowledgeListModuleProviding = StubKnowledgeListModuleProviding()
+        knowledgeDetailModuleProviding = StubKnowledgeDetailModuleProviding()
         
         let builder = DirectorBuilder()
         builder.withAnimations(false)
@@ -209,6 +222,7 @@ class ApplicationDirectorTests: XCTestCase {
         builder.with(loginModuleFactory)
         builder.with(messageDetailModuleFactory)
         builder.with(knowledgeListModuleProviding)
+        builder.with(knowledgeDetailModuleProviding)
         
         director = builder.build()
     }
@@ -393,6 +407,15 @@ class ApplicationDirectorTests: XCTestCase {
         let navigationController = messagesModuleFactory.stubInterface.navigationController
         
         XCTAssertEqual(messageDetailModuleFactory.stubInterface, navigationController?.topViewController)
+    }
+    
+    func testWhenSelectingKnowledgeEntryTheKnowledgeEntryModuleIsPresented() {
+        navigateToTabController()
+        let knowledgeNavigationController = tabModuleFactory.navigationController(for: knowledgeListModuleProviding.stubInterface)
+        let viewModel = KnowledgeEntryViewModel.random
+        knowledgeListModuleProviding.delegate?.knowledgeListModuleDidSelectKnowledgeEntry(viewModel)
+        
+        XCTAssertEqual(knowledgeDetailModuleProviding.stubInterface, knowledgeNavigationController?.topViewController)
     }
     
 }

@@ -32,16 +32,18 @@ class ApplicationDirector: RootModuleDelegate,
     private let tabModuleProviding: TabModuleProviding
     private let newsModuleProviding: NewsModuleProviding
     private let messagesModuleProviding: MessagesModuleProviding
-    private let newsNavigationController: UINavigationController
     private let loginModuleProviding: LoginModuleProviding
     private let messageDetailModuleProviding: MessageDetailModuleProviding
     private let knowledgeListModuleProviding: KnowledgeListModuleProviding
+    private let knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding
 
     private let rootNavigationController: UINavigationController
     private let rootNavigationControllerDelegate = DissolveTransitionAnimationProviding()
 
     private var tabController: UIViewController?
     private var newsController: UIViewController?
+    private let newsNavigationController: UINavigationController
+    private let knowledgeNavigationController: UINavigationController
 
     init(animate: Bool,
          windowWireframe: WindowWireframe,
@@ -54,7 +56,8 @@ class ApplicationDirector: RootModuleDelegate,
          messagesModuleProviding: MessagesModuleProviding,
          loginModuleProviding: LoginModuleProviding,
          messageDetailModuleProviding: MessageDetailModuleProviding,
-         knowledgeListModuleProviding: KnowledgeListModuleProviding) {
+         knowledgeListModuleProviding: KnowledgeListModuleProviding,
+         knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding) {
         self.animate = animate
         self.windowWireframe = windowWireframe
         self.rootModuleProviding = rootModuleProviding
@@ -66,6 +69,7 @@ class ApplicationDirector: RootModuleDelegate,
         self.loginModuleProviding = loginModuleProviding
         self.messageDetailModuleProviding = messageDetailModuleProviding
         self.knowledgeListModuleProviding = knowledgeListModuleProviding
+        self.knowledgeDetailModuleProviding = knowledgeDetailModuleProviding
 
         rootNavigationController = navigationControllerFactory.makeNavigationController()
         rootNavigationController.delegate = rootNavigationControllerDelegate
@@ -73,6 +77,7 @@ class ApplicationDirector: RootModuleDelegate,
         windowWireframe.setRoot(rootNavigationController)
 
         newsNavigationController = navigationControllerFactory.makeNavigationController()
+        knowledgeNavigationController = navigationControllerFactory.makeNavigationController()
 
         rootModuleProviding.makeRootModule(self)
     }
@@ -108,10 +113,10 @@ class ApplicationDirector: RootModuleDelegate,
         self.newsController = newsController
 
         let knowledgeListController = knowledgeListModuleProviding.makeKnowledgeListModule(self)
-        let knowledgeListNavigationController = UINavigationController(rootViewController: knowledgeListController)
+        knowledgeNavigationController.setViewControllers([knowledgeListController], animated: animate)
 
         newsNavigationController.setViewControllers([newsController], animated: animate)
-        let tabModule = tabModuleProviding.makeTabModule([newsNavigationController, knowledgeListNavigationController])
+        let tabModule = tabModuleProviding.makeTabModule([newsNavigationController, knowledgeNavigationController])
         tabController = tabModule
 
         rootNavigationController.setViewControllers([tabModule], animated: animate)
@@ -166,7 +171,8 @@ class ApplicationDirector: RootModuleDelegate,
     // MARK: KnowledgeListModuleDelegate
 
     func knowledgeListModuleDidSelectKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryViewModel) {
-
+        let knowledgeDetailModule = knowledgeDetailModuleProviding.makeKnowledgeListModule()
+        knowledgeNavigationController.pushViewController(knowledgeDetailModule, animated: animate)
     }
 
     // MARK: Private

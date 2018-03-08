@@ -20,6 +20,7 @@ class DirectorBuilder {
     private var loginModuleProviding: LoginModuleProviding
     private var messageDetailModuleProviding: MessageDetailModuleProviding
     private var knowledgeListModuleProviding: KnowledgeListModuleProviding
+    private var knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding
 
     init() {
         animate = true
@@ -35,6 +36,7 @@ class DirectorBuilder {
         loginModuleProviding = LoginModuleBuilder().build()
         messageDetailModuleProviding = MessageDetailModuleBuilder().build()
         knowledgeListModuleProviding = KnowledgeListModuleBuilder().build()
+        knowledgeDetailModuleProviding = KnowledgeDetailModuleBuilder().build()
     }
 
     @discardableResult
@@ -109,6 +111,12 @@ class DirectorBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding) -> DirectorBuilder {
+        self.knowledgeDetailModuleProviding = knowledgeDetailModuleProviding
+        return self
+    }
+
     func build() -> ApplicationDirector {
         return ApplicationDirector(animate: animate,
                                    windowWireframe: windowWireframe,
@@ -121,7 +129,8 @@ class DirectorBuilder {
                                    messagesModuleProviding: messagesModuleProviding,
                                    loginModuleProviding: loginModuleProviding,
                                    messageDetailModuleProviding: messageDetailModuleProviding,
-                                   knowledgeListModuleProviding: knowledgeListModuleProviding)
+                                   knowledgeListModuleProviding: knowledgeListModuleProviding,
+                                   knowledgeDetailModuleProviding: knowledgeDetailModuleProviding)
     }
 
 }
