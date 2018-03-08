@@ -291,6 +291,11 @@
 		CA6EC4712051656C00402894 /* KnowledgeDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4702051656C00402894 /* KnowledgeDetailModuleProviding.swift */; };
 		CA6EC4732051662B00402894 /* KnowledgeDetailModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4722051662B00402894 /* KnowledgeDetailModule.swift */; };
 		CA6EC4752051664D00402894 /* KnowledgeDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4742051664D00402894 /* KnowledgeDetailModuleBuilder.swift */; };
+		CA6EC4792051CAFA00402894 /* WhenBuildingKnowledgeDetailModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4782051CAFA00402894 /* WhenBuildingKnowledgeDetailModule.swift */; };
+		CA6EC47D2051CBB800402894 /* KnowledgeDetailSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC47C2051CBB800402894 /* KnowledgeDetailSceneFactory.swift */; };
+		CA6EC47F2051CBC800402894 /* KnowledgeDetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC47E2051CBC800402894 /* KnowledgeDetailScene.swift */; };
+		CA6EC4822051CBE600402894 /* CapturingKnowledgeDetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4812051CBE600402894 /* CapturingKnowledgeDetailScene.swift */; };
+		CA6EC4842051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4832051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift */; };
 		CA71A348204031F700C847C3 /* RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A347204031F700C847C3 /* RandomValueProviding.swift */; };
 		CA71A34A2040320A00C847C3 /* String+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */; };
 		CA71A34C204032FC00C847C3 /* Integer+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A34B204032FC00C847C3 /* Integer+RandomValueProviding.swift */; };
@@ -811,6 +816,11 @@
 		CA6EC4702051656C00402894 /* KnowledgeDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModuleProviding.swift; sourceTree = "<group>"; };
 		CA6EC4722051662B00402894 /* KnowledgeDetailModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModule.swift; sourceTree = "<group>"; };
 		CA6EC4742051664D00402894 /* KnowledgeDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModuleBuilder.swift; sourceTree = "<group>"; };
+		CA6EC4782051CAFA00402894 /* WhenBuildingKnowledgeDetailModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingKnowledgeDetailModule.swift; sourceTree = "<group>"; };
+		CA6EC47C2051CBB800402894 /* KnowledgeDetailSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailSceneFactory.swift; sourceTree = "<group>"; };
+		CA6EC47E2051CBC800402894 /* KnowledgeDetailScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailScene.swift; sourceTree = "<group>"; };
+		CA6EC4812051CBE600402894 /* CapturingKnowledgeDetailScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeDetailScene.swift; sourceTree = "<group>"; };
+		CA6EC4832051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeDetailSceneFactory.swift; sourceTree = "<group>"; };
 		CA71A347204031F700C847C3 /* RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomValueProviding.swift; sourceTree = "<group>"; };
 		CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA71A34B204032FC00C847C3 /* Integer+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Integer+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -1139,8 +1149,8 @@
 		6EF96CE01F12688700EE6134 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				CA6EC46E2051655600402894 /* Knowledge Detail */,
 				6EF96CE81F126B0400EE6134 /* Bootstrap */,
+				CA6EC46E2051655600402894 /* Knowledge Detail */,
 				CA73AEE0201A084C004E77BF /* Knowledge List */,
 				CABA43841FBC6FD3009CB5B0 /* Login */,
 				CAEAEBF21FDEB53800C0EE7C /* Message Detail */,
@@ -1332,6 +1342,7 @@
 				78C86D6A1F123FC4003A20E6 /* Builders */,
 				CAF7055F1F82CBC800A9FEA2 /* Director */,
 				CAF9A93D1F5048FB00628833 /* Interactor Tests */,
+				CA6EC4762051CADF00402894 /* Knowledge Detail */,
 				CA73AED2201A03F1004E77BF /* Knowledge List */,
 				CABA43871FBCD930009CB5B0 /* Login */,
 				CAEAEBF81FE0035800C0EE7C /* Message Detail */,
@@ -1932,6 +1943,7 @@
 		CA6EC46E2051655600402894 /* Knowledge Detail */ = {
 			isa = PBXGroup;
 			children = (
+				CA6EC47A2051CBAD00402894 /* View */,
 				CA6EC46F2051656500402894 /* Module */,
 				CA6EC4742051664D00402894 /* KnowledgeDetailModuleBuilder.swift */,
 			);
@@ -1945,6 +1957,49 @@
 				CA6EC4722051662B00402894 /* KnowledgeDetailModule.swift */,
 			);
 			path = Module;
+			sourceTree = "<group>";
+		};
+		CA6EC4762051CADF00402894 /* Knowledge Detail */ = {
+			isa = PBXGroup;
+			children = (
+				CA6EC4802051CBDF00402894 /* Test Doubles */,
+				CA6EC4772051CAEB00402894 /* Presenter Tests */,
+			);
+			path = "Knowledge Detail";
+			sourceTree = "<group>";
+		};
+		CA6EC4772051CAEB00402894 /* Presenter Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CA6EC4782051CAFA00402894 /* WhenBuildingKnowledgeDetailModule.swift */,
+			);
+			path = "Presenter Tests";
+			sourceTree = "<group>";
+		};
+		CA6EC47A2051CBAD00402894 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CA6EC47B2051CBB100402894 /* Abstraction */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CA6EC47B2051CBB100402894 /* Abstraction */ = {
+			isa = PBXGroup;
+			children = (
+				CA6EC47E2051CBC800402894 /* KnowledgeDetailScene.swift */,
+				CA6EC47C2051CBB800402894 /* KnowledgeDetailSceneFactory.swift */,
+			);
+			path = Abstraction;
+			sourceTree = "<group>";
+		};
+		CA6EC4802051CBDF00402894 /* Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				CA6EC4812051CBE600402894 /* CapturingKnowledgeDetailScene.swift */,
+				CA6EC4832051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift */,
+			);
+			path = "Test Doubles";
 			sourceTree = "<group>";
 		};
 		CA71A346204031E800C847C3 /* Randomness */ = {
@@ -3150,6 +3205,7 @@
 				CA73AEF1201A08BA004E77BF /* KnowledgeListModuleProviding.swift in Sources */,
 				CA30EAB01F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift in Sources */,
 				9A861EAB1F2554D700B75A8C /* BootstrappingModule.swift in Sources */,
+				CA6EC47F2051CBC800402894 /* KnowledgeDetailScene.swift in Sources */,
 				CA73AEE9201A088C004E77BF /* KnowledgeListSceneDelegate.swift in Sources */,
 				9A7FDA141F3445890050C325 /* CopyableLabel.swift in Sources */,
 				CAE27B4C1F855E0E005FDE39 /* TabModuleProviding.swift in Sources */,
@@ -3275,6 +3331,7 @@
 				CA30EAA31F2129700053DBF6 /* LoginAPI.swift in Sources */,
 				9A80EF4C1F28BD0300FD0D37 /* PostDataStoreRoutingDelegate.swift in Sources */,
 				9AB64BCB1F018135004E8D91 /* KnowledgeGroupCell.swift in Sources */,
+				CA6EC47D2051CBB800402894 /* KnowledgeDetailSceneFactory.swift in Sources */,
 				CABA43A11FD57A78009CB5B0 /* PreloadModuleBuilder.swift in Sources */,
 				9ACB006F1F16C945001CE9D2 /* EventFavorite.swift in Sources */,
 				D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */,
@@ -3427,6 +3484,7 @@
 				CAF705611F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift in Sources */,
 				CAD780521F1E2D2E002A8333 /* CapturingCredentialStore.swift in Sources */,
 				CA804DDA1F20D2F500E07A4A /* V2LoginAPITests.swift in Sources */,
+				CA6EC4842051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift in Sources */,
 				CA2D08061FE94BF000BFD785 /* RootModuleTestBuilder.swift in Sources */,
 				CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */,
 				CA321F4E1F7BC7FD0050E489 /* PhonePreloadSceneFactoryTests.swift in Sources */,
@@ -3441,6 +3499,7 @@
 				CAF597A220458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift in Sources */,
 				CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */,
 				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,
+				CA6EC4792051CAFA00402894 /* WhenBuildingKnowledgeDetailModule.swift in Sources */,
 				CAC1E1311F50413500195513 /* CapturingNewsScene.swift in Sources */,
 				CA2D080E1FE9504600BFD785 /* WhenThePushNotificationPermissionsPageAppears.swift in Sources */,
 				7820A6E51F140056004C0FB5 /* CapturingAlertRouter.swift in Sources */,
@@ -3497,6 +3556,7 @@
 				CAF9A94C1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift in Sources */,
 				CA2D080C1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift in Sources */,
 				7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */,
+				CA6EC4822051CBE600402894 /* CapturingKnowledgeDetailScene.swift in Sources */,
 				78FE77D71F1B9FA500E9A0BE /* URLSessionBasedJSONSessionTests.swift in Sources */,
 				CA0F7621203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift in Sources */,
 				7820A6ED1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift in Sources */,

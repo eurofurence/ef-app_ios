@@ -10,8 +10,10 @@ import UIKit.UIViewController
 
 struct KnowledgeDetailModule: KnowledgeDetailModuleProviding {
 
+    var knowledgeDetailSceneFactory: KnowledgeDetailSceneFactory
+
     func makeKnowledgeListModule() -> UIViewController {
-        return UIViewController()
+        return knowledgeDetailSceneFactory.makeKnowledgeDetailScene()
     }
 
 }
