@@ -296,6 +296,9 @@
 		CA6EC47F2051CBC800402894 /* KnowledgeDetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC47E2051CBC800402894 /* KnowledgeDetailScene.swift */; };
 		CA6EC4822051CBE600402894 /* CapturingKnowledgeDetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4812051CBE600402894 /* CapturingKnowledgeDetailScene.swift */; };
 		CA6EC4842051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4832051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift */; };
+		CA6EC4872051CD8F00402894 /* KnowledgeDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6EC4862051CD8F00402894 /* KnowledgeDetail.storyboard */; };
+		CA6EC4892051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4882051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift */; };
+		CA6EC48B2051CDC800402894 /* KnowledgeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC48A2051CDC800402894 /* KnowledgeDetailViewController.swift */; };
 		CA71A348204031F700C847C3 /* RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A347204031F700C847C3 /* RandomValueProviding.swift */; };
 		CA71A34A2040320A00C847C3 /* String+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */; };
 		CA71A34C204032FC00C847C3 /* Integer+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A34B204032FC00C847C3 /* Integer+RandomValueProviding.swift */; };
@@ -821,6 +824,9 @@
 		CA6EC47E2051CBC800402894 /* KnowledgeDetailScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailScene.swift; sourceTree = "<group>"; };
 		CA6EC4812051CBE600402894 /* CapturingKnowledgeDetailScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeDetailScene.swift; sourceTree = "<group>"; };
 		CA6EC4832051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeDetailSceneFactory.swift; sourceTree = "<group>"; };
+		CA6EC4862051CD8F00402894 /* KnowledgeDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KnowledgeDetail.storyboard; sourceTree = "<group>"; };
+		CA6EC4882051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeDetailSceneFactory.swift; sourceTree = "<group>"; };
+		CA6EC48A2051CDC800402894 /* KnowledgeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailViewController.swift; sourceTree = "<group>"; };
 		CA71A347204031F700C847C3 /* RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomValueProviding.swift; sourceTree = "<group>"; };
 		CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA71A34B204032FC00C847C3 /* Integer+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Integer+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -1943,9 +1949,9 @@
 		CA6EC46E2051655600402894 /* Knowledge Detail */ = {
 			isa = PBXGroup;
 			children = (
-				CA6EC47A2051CBAD00402894 /* View */,
-				CA6EC46F2051656500402894 /* Module */,
 				CA6EC4742051664D00402894 /* KnowledgeDetailModuleBuilder.swift */,
+				CA6EC46F2051656500402894 /* Module */,
+				CA6EC47A2051CBAD00402894 /* View */,
 			);
 			path = "Knowledge Detail";
 			sourceTree = "<group>";
@@ -1980,6 +1986,7 @@
 			isa = PBXGroup;
 			children = (
 				CA6EC47B2051CBB100402894 /* Abstraction */,
+				CA6EC4852051CD7C00402894 /* UIKit */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2000,6 +2007,16 @@
 				CA6EC4832051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift */,
 			);
 			path = "Test Doubles";
+			sourceTree = "<group>";
+		};
+		CA6EC4852051CD7C00402894 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				CA6EC4862051CD8F00402894 /* KnowledgeDetail.storyboard */,
+				CA6EC48A2051CDC800402894 /* KnowledgeDetailViewController.swift */,
+				CA6EC4882051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		CA71A346204031E800C847C3 /* Randomness */ = {
@@ -2913,6 +2930,7 @@
 				9ACF99421EBE172D006FC958 /* LaunchScreen.storyboard in Resources */,
 				78C86D701F12AA6C003A20E6 /* Hieroglify.ttf in Resources */,
 				9A0F87DC1F19311900FF294B /* EventCell.xib in Resources */,
+				CA6EC4872051CD8F00402894 /* KnowledgeDetail.storyboard in Resources */,
 				9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */,
 				CAEAEC061FE06F2800C0EE7C /* MessageDetail.storyboard in Resources */,
 				9ACF999D1ECA25E1006FC958 /* Sync.mock.json in Resources */,
@@ -3360,6 +3378,7 @@
 				D6F3DDCB5EF23B138BD25865 /* EventHeaderCellTableViewCell.swift in Sources */,
 				CAEAEC0A1FE06FA500C0EE7C /* PhoneMessageDetailSceneFactory.swift in Sources */,
 				CAEAEC0E1FE07AD700C0EE7C /* MessageBubbleBackgroundView.swift in Sources */,
+				CA6EC48B2051CDC800402894 /* KnowledgeDetailViewController.swift in Sources */,
 				9A2A94891F12D152004D66FB /* LastSyncDateProviding.swift in Sources */,
 				9A861EC91F25555000B75A8C /* UserDefaultsWitnessedTutorialPushPermissionsRequest.swift in Sources */,
 				7820A7031F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift in Sources */,
@@ -3423,6 +3442,7 @@
 				78F5559B1F10D65900BDA7D4 /* SplashViewController.swift in Sources */,
 				D6F3DCE06EF6B706F0A3EF09 /* TimeService.swift in Sources */,
 				CABA439F1FD578E1009CB5B0 /* NewsModuleBuilder.swift in Sources */,
+				CA6EC4892051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift in Sources */,
 				CA73AEF3201A08C4004E77BF /* KnowledgeListModule.swift in Sources */,
 				CA30EAAE1F2148780053DBF6 /* User.swift in Sources */,
 				CA8E7EF61FB08E2500F0BF10 /* PhoneWindowWireframe.swift in Sources */,

@@ -7,24 +7,13 @@
 //
 
 import Foundation
-import UIKit.UIViewController
 
 class KnowledgeDetailModuleBuilder {
 
     private var knowledgeDetailSceneFactory: KnowledgeDetailSceneFactory
 
     init() {
-        struct DummyKnowledgeDetailSceneFactory: KnowledgeDetailSceneFactory {
-            func makeKnowledgeDetailScene() -> UIViewController & KnowledgeDetailScene {
-                class DummyKnowledgeDetailScene: UIViewController, KnowledgeDetailScene {
-
-                }
-
-                return DummyKnowledgeDetailScene()
-            }
-        }
-
-        knowledgeDetailSceneFactory = DummyKnowledgeDetailSceneFactory()
+        knowledgeDetailSceneFactory = StoryboardKnowledgeDetailSceneFactory()
     }
 
     @discardableResult
