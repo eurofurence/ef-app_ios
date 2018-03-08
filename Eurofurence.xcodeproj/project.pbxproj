@@ -1967,12 +1967,12 @@
 		CA73AED9201A0806004E77BF /* Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
+				CA0F7628203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift */,
+				CA0F762420322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift */,
 				CA73AEDE201A0833004E77BF /* CapturingKnowledgeInteractor.swift */,
+				CA0F762E2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift */,
 				CA73AEDC201A0823004E77BF /* CapturingKnowledgeListScene.swift */,
 				CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */,
-				CA0F762420322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift */,
-				CA0F7628203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift */,
-				CA0F762E2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift */,
 				CABF03C62041C3270028BD62 /* StubKnowledgeService.swift */,
 			);
 			path = "Test Doubles";

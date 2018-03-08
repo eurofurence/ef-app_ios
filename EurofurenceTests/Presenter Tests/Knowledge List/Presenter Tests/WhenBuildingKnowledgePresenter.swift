@@ -10,28 +10,30 @@ import XCTest
 
 class WhenBuildingKnowledgePresenter: XCTestCase {
     
+    var context: KnowledgeListPresenterTestBuilder.Context!
+    
+    override func setUp() {
+        super.setUp()
+        context = KnowledgeListPresenterTestBuilder().build()
+    }
+    
     func testItShouldNotTellInteractorToPrepareViewModel() {
-        let context = KnowledgeListPresenterTestBuilder().build()
         XCTAssertFalse(context.knowledgeInteractor.toldToPrepareViewModel)
     }
     
     func testItShouldNotTellTheSceneToShowTheLoadingIndicator() {
-        let context = KnowledgeListPresenterTestBuilder().build()
         XCTAssertFalse(context.scene.didShowLoadingIndicator)
     }
     
     func testTheLoadingIndicatorShouldNotBeHidden() {
-        let context = KnowledgeListPresenterTestBuilder().build()
         XCTAssertFalse(context.scene.didHideLoadingIndicator)
     }
     
     func testTheSceneFromTheFactoryIsReturnedFromTheModule() {
-        let context = KnowledgeListPresenterTestBuilder().build()
         XCTAssertTrue(context.scene === context.producedViewController)
     }
     
     func testTheSceneIsToldToShowTheConventionInformationTitle() {
-        let context = KnowledgeListPresenterTestBuilder().build()
         XCTAssertEqual(.conventionInformation, context.scene.capturedTitle)
     }
     

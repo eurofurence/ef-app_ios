@@ -11,17 +11,20 @@ import XCTest
 
 class WhenKnowledgeListSceneDidLoad: XCTestCase {
     
-    func testWhenTheViewWillAppearTheInteractorIsToldToPrepareKnowledgeListViewModel() {
-        let context = KnowledgeListPresenterTestBuilder().build()
-        context.scene.delegate?.knowledgeListSceneDidLoad()
+    var context: KnowledgeListPresenterTestBuilder.Context!
+    
+    override func setUp() {
+        super.setUp()
         
+        context = KnowledgeListPresenterTestBuilder().build()
+        context.scene.delegate?.knowledgeListSceneDidLoad()
+    }
+    
+    func testWhenTheViewWillAppearTheInteractorIsToldToPrepareKnowledgeListViewModel() {
         XCTAssertTrue(context.knowledgeInteractor.toldToPrepareViewModel)
     }
     
     func testTheSceneIsToldToShowTheLoadingIndicator() {
-        let context = KnowledgeListPresenterTestBuilder().build()
-        context.scene.delegate?.knowledgeListSceneDidLoad()
-        
         XCTAssertTrue(context.scene.didShowLoadingIndicator)
     }
     
