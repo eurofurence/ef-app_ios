@@ -8,4 +8,6 @@
 
 protocol KnowledgeDetailScene {
 
+    func setKnowledgeDetailTitle(_ title: String)
+
 }

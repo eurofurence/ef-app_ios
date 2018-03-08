@@ -11,4 +11,9 @@ import UIKit.UIViewController
 
 class CapturingKnowledgeDetailScene: UIViewController, KnowledgeDetailScene {
     
+    private(set) var capturedTitle: String?
+    func setKnowledgeDetailTitle(_ title: String) {
+        capturedTitle = title
+    }
+    
 }

@@ -15,9 +15,19 @@ class WhenBuildingKnowledgeDetailModule: XCTestCase {
         let knowledgeDetailSceneFactory = StubKnowledgeDetailSceneFactory()
         let knowledgeDetailScene = knowledgeDetailSceneFactory.interface
         let context = KnowledgeDetailModuleBuilder().with(knowledgeDetailSceneFactory).build()
-        let module = context.makeKnowledgeListModule()
+        let module = context.makeKnowledgeListModule(.random)
         
         XCTAssertEqual(knowledgeDetailScene, module)
+    }
+    
+    func testTheKnowledgeEntryTitleIsSetAsTheSceneTitle() {
+        let knowledgeEntryViewModel = KnowledgeEntryViewModel.random
+        let knowledgeDetailSceneFactory = StubKnowledgeDetailSceneFactory()
+        let knowledgeDetailScene = knowledgeDetailSceneFactory.interface
+        let context = KnowledgeDetailModuleBuilder().with(knowledgeDetailSceneFactory).build()
+        _ = context.makeKnowledgeListModule(knowledgeEntryViewModel)
+        
+        XCTAssertEqual(knowledgeDetailScene.capturedTitle, knowledgeEntryViewModel.title)
     }
     
 }

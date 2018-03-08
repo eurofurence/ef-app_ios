@@ -10,6 +10,6 @@ import UIKit.UIViewController
 
 protocol KnowledgeDetailModuleProviding {
 
-    func makeKnowledgeListModule() -> UIViewController
+    func makeKnowledgeListModule(_ knowledgeEntryViewModel: KnowledgeEntryViewModel) -> UIViewController
 
 }

@@ -10,4 +10,8 @@ import UIKit
 
 class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
 
+    func setKnowledgeDetailTitle(_ title: String) {
+        super.title = title
+    }
+
 }

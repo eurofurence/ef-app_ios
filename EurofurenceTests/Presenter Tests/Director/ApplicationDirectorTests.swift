@@ -164,7 +164,7 @@ class StubKnowledgeListModuleProviding: KnowledgeListModuleProviding {
 class StubKnowledgeDetailModuleProviding: KnowledgeDetailModuleProviding {
     
     let stubInterface = UIViewController()
-    func makeKnowledgeListModule() -> UIViewController {
+    func makeKnowledgeListModule(_ knowledgeEntryViewModel: KnowledgeEntryViewModel) -> UIViewController {
         return stubInterface
     }
     

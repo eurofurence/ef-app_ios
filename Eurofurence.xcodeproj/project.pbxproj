@@ -299,6 +299,7 @@
 		CA6EC4872051CD8F00402894 /* KnowledgeDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6EC4862051CD8F00402894 /* KnowledgeDetail.storyboard */; };
 		CA6EC4892051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4882051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift */; };
 		CA6EC48B2051CDC800402894 /* KnowledgeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC48A2051CDC800402894 /* KnowledgeDetailViewController.swift */; };
+		CA6EC48E2051D97600402894 /* KnowledgeDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC48D2051D97600402894 /* KnowledgeDetailPresenter.swift */; };
 		CA71A348204031F700C847C3 /* RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A347204031F700C847C3 /* RandomValueProviding.swift */; };
 		CA71A34A2040320A00C847C3 /* String+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */; };
 		CA71A34C204032FC00C847C3 /* Integer+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A34B204032FC00C847C3 /* Integer+RandomValueProviding.swift */; };
@@ -827,6 +828,7 @@
 		CA6EC4862051CD8F00402894 /* KnowledgeDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KnowledgeDetail.storyboard; sourceTree = "<group>"; };
 		CA6EC4882051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeDetailSceneFactory.swift; sourceTree = "<group>"; };
 		CA6EC48A2051CDC800402894 /* KnowledgeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailViewController.swift; sourceTree = "<group>"; };
+		CA6EC48D2051D97600402894 /* KnowledgeDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailPresenter.swift; sourceTree = "<group>"; };
 		CA71A347204031F700C847C3 /* RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomValueProviding.swift; sourceTree = "<group>"; };
 		CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA71A34B204032FC00C847C3 /* Integer+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Integer+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -1951,6 +1953,7 @@
 			children = (
 				CA6EC4742051664D00402894 /* KnowledgeDetailModuleBuilder.swift */,
 				CA6EC46F2051656500402894 /* Module */,
+				CA6EC48C2051D96200402894 /* Presenter */,
 				CA6EC47A2051CBAD00402894 /* View */,
 			);
 			path = "Knowledge Detail";
@@ -2017,6 +2020,14 @@
 				CA6EC4882051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		CA6EC48C2051D96200402894 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CA6EC48D2051D97600402894 /* KnowledgeDetailPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		CA71A346204031E800C847C3 /* Randomness */ = {
@@ -3325,6 +3336,7 @@
 				9A861ED61F25564900B75A8C /* StoryboardSplashScreenRouter.swift in Sources */,
 				CA6EC4712051656C00402894 /* KnowledgeDetailModuleProviding.swift in Sources */,
 				9A80EF591F291E2B00FD0D37 /* NewsTableViewController.swift in Sources */,
+				CA6EC48E2051D97600402894 /* KnowledgeDetailPresenter.swift in Sources */,
 				CA9845C21F28B16800E8821D /* MessageDetailViewController.swift in Sources */,
 				CA1FE9971F9FCCA4009C7DF3 /* MessagesModuleProviding.swift in Sources */,
 				9A8ECA271F2BF27700351A83 /* RemoteNotificationSoundProviding.swift in Sources */,

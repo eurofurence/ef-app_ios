@@ -171,7 +171,8 @@ class ApplicationDirector: RootModuleDelegate,
     // MARK: KnowledgeListModuleDelegate
 
     func knowledgeListModuleDidSelectKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryViewModel) {
-        let knowledgeDetailModule = knowledgeDetailModuleProviding.makeKnowledgeListModule()
+        let viewModel = KnowledgeEntryViewModel(title: "")
+        let knowledgeDetailModule = knowledgeDetailModuleProviding.makeKnowledgeListModule(viewModel)
         knowledgeNavigationController.pushViewController(knowledgeDetailModule, animated: animate)
     }
 
