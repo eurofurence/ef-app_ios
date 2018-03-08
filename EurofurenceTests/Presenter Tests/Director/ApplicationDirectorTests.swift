@@ -164,7 +164,9 @@ class StubKnowledgeListModuleProviding: KnowledgeListModuleProviding {
 class StubKnowledgeDetailModuleProviding: KnowledgeDetailModuleProviding {
     
     let stubInterface = UIViewController()
+    private(set) var capturedViewModel: KnowledgeEntryViewModel?
     func makeKnowledgeListModule(_ knowledgeEntryViewModel: KnowledgeEntryViewModel) -> UIViewController {
+        capturedViewModel = knowledgeEntryViewModel
         return stubInterface
     }
     
@@ -416,6 +418,7 @@ class ApplicationDirectorTests: XCTestCase {
         knowledgeListModuleProviding.delegate?.knowledgeListModuleDidSelectKnowledgeEntry(viewModel)
         
         XCTAssertEqual(knowledgeDetailModuleProviding.stubInterface, knowledgeNavigationController?.topViewController)
+        XCTAssertEqual(viewModel, knowledgeDetailModuleProviding.capturedViewModel)
     }
     
 }
