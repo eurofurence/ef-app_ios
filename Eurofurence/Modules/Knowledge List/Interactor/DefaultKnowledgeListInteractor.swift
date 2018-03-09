@@ -20,7 +20,11 @@ struct DefaultKnowledgeListInteractor: KnowledgeInteractor {
     }
 
     func fetchEntry(inGroup group: Int, index: Int, completionHandler: @escaping (KnowledgeEntry2) -> Void) {
-
+        service.fetchKnowledgeGroups { (groups) in
+            let group = groups[group]
+            let entry = group.entries[index]
+            completionHandler(entry)
+        }
     }
 
     private func knowledgeGroupViewModel(for group: KnowledgeGroup2) -> KnowledgeListGroupViewModel {
