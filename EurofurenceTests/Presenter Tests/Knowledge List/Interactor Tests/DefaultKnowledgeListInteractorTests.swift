@@ -11,16 +11,16 @@ import XCTest
 
 class DefaultKnowledgeListInteractorTests: XCTestCase {
     
-    private func expectedViewModelForGroup(_ group: KnowledgeGroup2) -> KnowledgeGroupViewModel {
+    private func expectedViewModelForGroup(_ group: KnowledgeGroup2) -> KnowledgeListGroupViewModel {
         let entriesViewModels = group.entries.map(expectedViewModelForEntry)
-        return KnowledgeGroupViewModel(title: group.title,
+        return KnowledgeListGroupViewModel(title: group.title,
                                        icon: UIImage(),
                                        groupDescription: group.groupDescription,
                                        knowledgeEntries: entriesViewModels)
     }
     
-    private func expectedViewModelForEntry(_ entry: KnowledgeEntry2) -> KnowledgeEntryViewModel {
-        return KnowledgeEntryViewModel(title: entry.title)
+    private func expectedViewModelForEntry(_ entry: KnowledgeEntry2) -> KnowledgeListEntryViewModel {
+        return KnowledgeListEntryViewModel(title: entry.title)
     }
     
     func testKnowledgeGroupsFromServiceAreTurnedIntoExpectedViewModels() {

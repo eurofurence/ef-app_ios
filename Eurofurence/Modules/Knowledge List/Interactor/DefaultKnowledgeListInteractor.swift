@@ -19,15 +19,15 @@ struct DefaultKnowledgeListInteractor: KnowledgeInteractor {
         }
     }
 
-    private func knowledgeGroupViewModel(for group: KnowledgeGroup2) -> KnowledgeGroupViewModel {
-        return KnowledgeGroupViewModel(title: group.title,
+    private func knowledgeGroupViewModel(for group: KnowledgeGroup2) -> KnowledgeListGroupViewModel {
+        return KnowledgeListGroupViewModel(title: group.title,
                                        icon: UIImage(),
                                        groupDescription: group.groupDescription,
                                        knowledgeEntries: group.entries.map(knowledgeEntryViewModel))
     }
 
-    private func knowledgeEntryViewModel(for entry: KnowledgeEntry2) -> KnowledgeEntryViewModel {
-        return KnowledgeEntryViewModel(title: entry.title)
+    private func knowledgeEntryViewModel(for entry: KnowledgeEntry2) -> KnowledgeListEntryViewModel {
+        return KnowledgeListEntryViewModel(title: entry.title)
     }
 
 }

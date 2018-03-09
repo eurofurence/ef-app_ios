@@ -10,8 +10,8 @@
 
 class CapturingKnowledgeListModuleDelegate: KnowledgeListModuleDelegate {
     
-    private(set) var capturedKnowledgeEntryToPresent: KnowledgeEntryViewModel?
-    func knowledgeListModuleDidSelectKnowledgeEntry(_ knowledgeEntry: KnowledgeEntryViewModel) {
+    private(set) var capturedKnowledgeEntryToPresent: KnowledgeListEntryViewModel?
+    func knowledgeListModuleDidSelectKnowledgeEntry(_ knowledgeEntry: KnowledgeListEntryViewModel) {
         capturedKnowledgeEntryToPresent = knowledgeEntry
     }
     

@@ -18,10 +18,10 @@ extension KnowledgeListViewModel: RandomValueProviding {
     
 }
 
-extension KnowledgeGroupViewModel: RandomValueProviding {
+extension KnowledgeListGroupViewModel: RandomValueProviding {
     
-    static var random: KnowledgeGroupViewModel {
-        return KnowledgeGroupViewModel(title: .random,
+    static var random: KnowledgeListGroupViewModel {
+        return KnowledgeListGroupViewModel(title: .random,
                                        icon: UIImage(),
                                        groupDescription: .random,
                                        knowledgeEntries: .random)
@@ -29,10 +29,10 @@ extension KnowledgeGroupViewModel: RandomValueProviding {
     
 }
 
-extension KnowledgeEntryViewModel: RandomValueProviding {
+extension KnowledgeListEntryViewModel: RandomValueProviding {
     
-    static var random: KnowledgeEntryViewModel {
-        return KnowledgeEntryViewModel(title: .random)
+    static var random: KnowledgeListEntryViewModel {
+        return KnowledgeListEntryViewModel(title: .random)
     }
     
 }

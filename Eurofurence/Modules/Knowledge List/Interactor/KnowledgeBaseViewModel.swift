@@ -10,7 +10,7 @@ import UIKit.UIImage
 
 struct KnowledgeListViewModel: Equatable {
 
-    var knowledgeGroups: [KnowledgeGroupViewModel]
+    var knowledgeGroups: [KnowledgeListGroupViewModel]
 
     static func ==(lhs: KnowledgeListViewModel, rhs: KnowledgeListViewModel) -> Bool {
         return lhs.knowledgeGroups == rhs.knowledgeGroups
@@ -18,14 +18,14 @@ struct KnowledgeListViewModel: Equatable {
 
 }
 
-struct KnowledgeGroupViewModel: Equatable {
+struct KnowledgeListGroupViewModel: Equatable {
 
     var title: String
     var icon: UIImage
     var groupDescription: String
-    var knowledgeEntries: [KnowledgeEntryViewModel]
+    var knowledgeEntries: [KnowledgeListEntryViewModel]
 
-    static func ==(lhs: KnowledgeGroupViewModel, rhs: KnowledgeGroupViewModel) -> Bool {
+    static func ==(lhs: KnowledgeListGroupViewModel, rhs: KnowledgeListGroupViewModel) -> Bool {
         return lhs.title == rhs.title &&
 //               lhs.icon == rhs.icon &&
                lhs.groupDescription == rhs.groupDescription &&
@@ -34,11 +34,11 @@ struct KnowledgeGroupViewModel: Equatable {
 
 }
 
-struct KnowledgeEntryViewModel: Equatable {
+struct KnowledgeListEntryViewModel: Equatable {
 
     var title: String
 
-    static func ==(lhs: KnowledgeEntryViewModel, rhs: KnowledgeEntryViewModel) -> Bool {
+    static func ==(lhs: KnowledgeListEntryViewModel, rhs: KnowledgeListEntryViewModel) -> Bool {
         return lhs.title == rhs.title
     }
 

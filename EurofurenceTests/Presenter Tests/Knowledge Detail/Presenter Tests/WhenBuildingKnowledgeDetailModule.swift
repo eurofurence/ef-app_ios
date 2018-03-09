@@ -21,7 +21,7 @@ class WhenBuildingKnowledgeDetailModule: XCTestCase {
     }
     
     func testTheKnowledgeEntryTitleIsSetAsTheSceneTitle() {
-        let knowledgeEntryViewModel = KnowledgeEntryViewModel.random
+        let knowledgeEntryViewModel = KnowledgeListEntryViewModel.random
         let knowledgeDetailSceneFactory = StubKnowledgeDetailSceneFactory()
         let knowledgeDetailScene = knowledgeDetailSceneFactory.interface
         let context = KnowledgeDetailModuleBuilder().with(knowledgeDetailSceneFactory).build()

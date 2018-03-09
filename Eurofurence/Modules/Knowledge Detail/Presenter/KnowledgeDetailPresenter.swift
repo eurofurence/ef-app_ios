@@ -8,7 +8,7 @@
 
 struct KnowledgeDetailPresenter {
 
-    init(knowledgeDetailScene: KnowledgeDetailScene, viewModel: KnowledgeEntryViewModel) {
+    init(knowledgeDetailScene: KnowledgeDetailScene, viewModel: KnowledgeListEntryViewModel) {
         knowledgeDetailScene.setKnowledgeDetailTitle(viewModel.title)
     }
 
