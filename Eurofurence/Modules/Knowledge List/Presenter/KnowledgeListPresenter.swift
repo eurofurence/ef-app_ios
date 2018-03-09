@@ -33,8 +33,9 @@ class KnowledgeListPresenter: KnowledgeListSceneDelegate {
     func knowledgeListSceneDidSelectKnowledgeEntry(inGroup groupIndex: Int, at entryIndex: Int) {
         scene.deselectKnowledgeEntry(at: IndexPath(item: entryIndex, section: groupIndex))
 
-        let entry = knowledgeListInteractor.entry(inGroup: groupIndex, index: entryIndex)
-        delegate.knowledgeListModuleDidSelectKnowledgeEntry(entry)
+        knowledgeListInteractor.fetchEntry(inGroup: groupIndex, index: entryIndex) { (entry) in
+            self.delegate.knowledgeListModuleDidSelectKnowledgeEntry(entry)
+        }
     }
 
     private func viewModelPrepared(_ viewModel: KnowledgeListViewModel) {

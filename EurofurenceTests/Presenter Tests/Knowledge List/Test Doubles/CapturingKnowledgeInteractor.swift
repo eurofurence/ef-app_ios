@@ -21,8 +21,8 @@ class CapturingKnowledgeInteractor: KnowledgeInteractor {
     }
     
     var entriesByGroupAndEntry = [IndexPath : KnowledgeEntry2]()
-    func entry(inGroup group: Int, index: Int) -> KnowledgeEntry2 {
-        return entriesByGroupAndEntry[IndexPath(item: index, section: group)] ?? .random
+    func fetchEntry(inGroup group: Int, index: Int, completionHandler: @escaping (KnowledgeEntry2) -> Void) {
+        completionHandler(entriesByGroupAndEntry[IndexPath(item: index, section: group)] ?? .random)
     }
     
 }

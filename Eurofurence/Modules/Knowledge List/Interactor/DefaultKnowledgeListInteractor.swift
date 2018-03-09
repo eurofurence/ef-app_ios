@@ -19,8 +19,8 @@ struct DefaultKnowledgeListInteractor: KnowledgeInteractor {
         }
     }
 
-    func entry(inGroup group: Int, index: Int) -> KnowledgeEntry2 {
-        return KnowledgeEntry2(title: "", order: 0)
+    func fetchEntry(inGroup group: Int, index: Int, completionHandler: @escaping (KnowledgeEntry2) -> Void) {
+
     }
 
     private func knowledgeGroupViewModel(for group: KnowledgeGroup2) -> KnowledgeListGroupViewModel {
