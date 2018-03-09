@@ -69,10 +69,11 @@ class WhenKnowledgeListViewModelIsPrepared: XCTestCase {
         XCTAssertEqual(expected, scene.capturedTitle)
     }
     
-    func testSelectingKnowledgeEntryTellsDelegateToPresentSelectedViewModel() {
+    func testSelectingKnowledgeEntryTellsDelegateToPresentSelectedEntry() {
         let randomGroup = viewModel.knowledgeGroups.randomElement()
         let randomEntry = randomGroup.element.knowledgeEntries.randomElement()
-        let expected = randomEntry.element
+        let expected = KnowledgeEntry2.random
+        context.knowledgeInteractor.entriesByGroupAndEntry[IndexPath(item: randomEntry.index, section: randomGroup.index)] = expected
         context.scene.simulateSelectingKnowledgeEntry(inGroup: randomGroup.index, at: randomEntry.index)
         
         XCTAssertEqual(expected, context.delegate.capturedKnowledgeEntryToPresent)

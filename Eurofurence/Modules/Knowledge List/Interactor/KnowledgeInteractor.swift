@@ -9,5 +9,6 @@
 protocol KnowledgeInteractor {
 
     func prepareViewModel(completionHandler: @escaping (KnowledgeListViewModel) -> Void)
+    func entry(inGroup group: Int, index: Int) -> KnowledgeEntry2
 
 }

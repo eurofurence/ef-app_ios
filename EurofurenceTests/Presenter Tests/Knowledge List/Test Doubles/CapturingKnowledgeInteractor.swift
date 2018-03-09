@@ -7,6 +7,7 @@
 //
 
 @testable import Eurofurence
+import Foundation.NSIndexPath
 
 class CapturingKnowledgeInteractor: KnowledgeInteractor {
     
@@ -17,6 +18,11 @@ class CapturingKnowledgeInteractor: KnowledgeInteractor {
         toldToPrepareViewModel = true
         self.completionHandler = completionHandler
         prepareViewModelInvokedHandler?()
+    }
+    
+    var entriesByGroupAndEntry = [IndexPath : KnowledgeEntry2]()
+    func entry(inGroup group: Int, index: Int) -> KnowledgeEntry2 {
+        return entriesByGroupAndEntry[IndexPath(item: index, section: group)] ?? .random
     }
     
 }

@@ -19,6 +19,10 @@ struct DefaultKnowledgeListInteractor: KnowledgeInteractor {
         }
     }
 
+    func entry(inGroup group: Int, index: Int) -> KnowledgeEntry2 {
+        return KnowledgeEntry2(title: "", order: 0)
+    }
+
     private func knowledgeGroupViewModel(for group: KnowledgeGroup2) -> KnowledgeListGroupViewModel {
         return KnowledgeListGroupViewModel(title: group.title,
                                        icon: UIImage(),

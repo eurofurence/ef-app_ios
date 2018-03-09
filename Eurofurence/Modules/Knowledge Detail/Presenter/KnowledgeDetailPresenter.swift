@@ -8,8 +8,8 @@
 
 struct KnowledgeDetailPresenter {
 
-    init(knowledgeDetailScene: KnowledgeDetailScene, viewModel: KnowledgeListEntryViewModel) {
-        knowledgeDetailScene.setKnowledgeDetailTitle(viewModel.title)
+    init(knowledgeDetailScene: KnowledgeDetailScene, knowledgeEntry: KnowledgeEntry2) {
+        knowledgeDetailScene.setKnowledgeDetailTitle(knowledgeEntry.title)
     }
 
 }
