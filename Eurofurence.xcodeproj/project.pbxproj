@@ -216,6 +216,9 @@
 		CA0F763420331506009DA079 /* KnowledgeList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0F763320331506009DA079 /* KnowledgeList.storyboard */; };
 		CA0F763620331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F763520331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift */; };
 		CA17FE712056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */; };
+		CA17FE732056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */; };
+		CA17FE752056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */; };
+		CA17FE782056B1B4005A4C05 /* KnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE772056B1B4005A4C05 /* KnowledgeDetailSceneInteractor.swift */; };
 		CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */; };
 		CA1ECB3F1FE333090076083A /* WhenInitialMessageLoadFails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */; };
 		CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */; };
@@ -746,6 +749,9 @@
 		CA0F763320331506009DA079 /* KnowledgeList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KnowledgeList.storyboard; sourceTree = "<group>"; };
 		CA0F763520331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListSectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailPresenterTestBuilder.swift; sourceTree = "<group>"; };
+		CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeDetailSceneLoads.swift; sourceTree = "<group>"; };
+		CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
+		CA17FE772056B1B4005A4C05 /* KnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
 		CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessagesLoadCompletesWithNoMessages.swift; sourceTree = "<group>"; };
 		CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessageLoadFails.swift; sourceTree = "<group>"; };
 		CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewingMessageWhileLoggedInWithLocalMessage.swift; sourceTree = "<group>"; };
@@ -1798,6 +1804,14 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
+		CA17FE762056B1AB005A4C05 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CA17FE772056B1B4005A4C05 /* KnowledgeDetailSceneInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
 		CA18B3451F49AF4500038E52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1954,6 +1968,7 @@
 			isa = PBXGroup;
 			children = (
 				CA6EC4742051664D00402894 /* KnowledgeDetailModuleBuilder.swift */,
+				CA17FE762056B1AB005A4C05 /* Interactor */,
 				CA6EC46F2051656500402894 /* Module */,
 				CA6EC48C2051D96200402894 /* Presenter */,
 				CA6EC47A2051CBAD00402894 /* View */,
@@ -1984,6 +1999,7 @@
 			isa = PBXGroup;
 			children = (
 				CA6EC4782051CAFA00402894 /* WhenBuildingKnowledgeDetailModule.swift */,
+				CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -2011,6 +2027,7 @@
 			children = (
 				CA6EC4812051CBE600402894 /* CapturingKnowledgeDetailScene.swift */,
 				CA6EC4832051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift */,
+				CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -3350,6 +3367,7 @@
 				CABA438F1FBCDBEE009CB5B0 /* LoginSceneFactory.swift in Sources */,
 				CA8E7F0A1FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift in Sources */,
 				CA49E94D20154AF900EB571C /* EventConsumer.swift in Sources */,
+				CA17FE782056B1B4005A4C05 /* KnowledgeDetailSceneInteractor.swift in Sources */,
 				9AB64BCD1F018365004E8D91 /* KnowledgeEntryCell.swift in Sources */,
 				CA6EC4732051662B00402894 /* KnowledgeDetailModule.swift in Sources */,
 				CABF03BD2041C2B70028BD62 /* KnowledgeService.swift in Sources */,
@@ -3594,6 +3612,7 @@
 				7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */,
 				CA6EC4822051CBE600402894 /* CapturingKnowledgeDetailScene.swift in Sources */,
 				78FE77D71F1B9FA500E9A0BE /* URLSessionBasedJSONSessionTests.swift in Sources */,
+				CA17FE732056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift in Sources */,
 				CA0F7621203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift in Sources */,
 				7820A6ED1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift in Sources */,
 				CAF9A93F1F50491200628833 /* EurofurenceAuthServiceTests.swift in Sources */,
@@ -3609,6 +3628,7 @@
 				CA81D4901FE9A91000A52A2F /* WhenTheTutorialAppears.swift in Sources */,
 				CABA43891FBCD94E009CB5B0 /* LoginPresenterTests.swift in Sources */,
 				CA2D08121FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift in Sources */,
+				CA17FE752056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift in Sources */,
 				CA6AA01A1FD885030092C6DB /* NewsViewControllerTests.swift in Sources */,
 				781A943A1F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift in Sources */,
 				CA0F762520322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift in Sources */,

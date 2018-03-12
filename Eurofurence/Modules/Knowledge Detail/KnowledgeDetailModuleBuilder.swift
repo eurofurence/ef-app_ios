@@ -11,9 +11,17 @@ import Foundation
 class KnowledgeDetailModuleBuilder {
 
     private var knowledgeDetailSceneFactory: KnowledgeDetailSceneFactory
+    private var knowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor
 
     init() {
+        struct DummyKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
+            func makeContents(for entry: KnowledgeEntry2) -> NSAttributedString {
+                return NSAttributedString()
+            }
+        }
+
         knowledgeDetailSceneFactory = StoryboardKnowledgeDetailSceneFactory()
+        knowledgeDetailSceneInteractor = DummyKnowledgeDetailSceneInteractor()
     }
 
     @discardableResult
@@ -22,8 +30,15 @@ class KnowledgeDetailModuleBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ knowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor) -> KnowledgeDetailModuleBuilder {
+        self.knowledgeDetailSceneInteractor = knowledgeDetailSceneInteractor
+        return self
+    }
+
     func build() -> KnowledgeDetailModuleProviding {
-        return KnowledgeDetailModule(knowledgeDetailSceneFactory: knowledgeDetailSceneFactory)
+        return KnowledgeDetailModule(knowledgeDetailSceneFactory: knowledgeDetailSceneFactory,
+                                     knowledgeDetailSceneInteractor: knowledgeDetailSceneInteractor)
     }
 
 }

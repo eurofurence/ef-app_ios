@@ -10,8 +10,18 @@ import UIKit
 
 class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
 
+    // MARK: KnowledgeDetailScene
+
+    func setKnowledgeDetailSceneDelegate(_ delegate: KnowledgeDetailSceneDelegate) {
+
+    }
+
     func setKnowledgeDetailTitle(_ title: String) {
         super.title = title
+    }
+
+    func setAttributedKnowledgeEntryContents(_ contents: NSAttributedString) {
+
     }
 
 }

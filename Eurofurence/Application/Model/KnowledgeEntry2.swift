@@ -6,10 +6,14 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-struct KnowledgeEntry2: Comparable, Equatable {
+struct KnowledgeEntry2: Comparable, Equatable, Hashable {
 
     var title: String
     var order: Int
+
+    var hashValue: Int {
+        return title.hashValue ^ order.hashValue
+    }
 
     static func ==(lhs: KnowledgeEntry2, rhs: KnowledgeEntry2) -> Bool {
         return lhs.title == rhs.title && lhs.order == rhs.order

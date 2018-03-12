@@ -6,10 +6,26 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-struct KnowledgeDetailPresenter {
+struct KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
 
-    init(knowledgeDetailScene: KnowledgeDetailScene, knowledgeEntry: KnowledgeEntry2) {
+    private let knowledgeDetailScene: KnowledgeDetailScene
+    private let knowledgeEntry: KnowledgeEntry2
+    private let knowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor
+
+    init(knowledgeDetailScene: KnowledgeDetailScene,
+         knowledgeEntry: KnowledgeEntry2,
+         knowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor) {
+        self.knowledgeDetailScene = knowledgeDetailScene
+        self.knowledgeEntry = knowledgeEntry
+        self.knowledgeDetailSceneInteractor = knowledgeDetailSceneInteractor
+
+        knowledgeDetailScene.setKnowledgeDetailSceneDelegate(self)
         knowledgeDetailScene.setKnowledgeDetailTitle(knowledgeEntry.title)
+    }
+
+    func knowledgeDetailSceneDidLoad() {
+        let contents = knowledgeDetailSceneInteractor.makeContents(for: knowledgeEntry)
+        knowledgeDetailScene.setAttributedKnowledgeEntryContents(contents)
     }
 
 }

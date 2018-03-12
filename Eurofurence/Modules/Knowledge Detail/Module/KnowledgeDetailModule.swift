@@ -11,11 +11,13 @@ import UIKit.UIViewController
 struct KnowledgeDetailModule: KnowledgeDetailModuleProviding {
 
     var knowledgeDetailSceneFactory: KnowledgeDetailSceneFactory
+    var knowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor
 
     func makeKnowledgeListModule(_ knowledgeEntry: KnowledgeEntry2) -> UIViewController {
         let scene = knowledgeDetailSceneFactory.makeKnowledgeDetailScene()
         _ = KnowledgeDetailPresenter(knowledgeDetailScene: scene,
-                                     knowledgeEntry: knowledgeEntry)
+                                     knowledgeEntry: knowledgeEntry,
+                                     knowledgeDetailSceneInteractor: knowledgeDetailSceneInteractor)
 
         return scene
     }
