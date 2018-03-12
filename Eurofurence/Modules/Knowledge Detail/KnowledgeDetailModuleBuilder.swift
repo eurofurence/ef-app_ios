@@ -14,14 +14,8 @@ class KnowledgeDetailModuleBuilder {
     private var knowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor
 
     init() {
-        struct DummyKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
-            func makeContents(for entry: KnowledgeEntry2) -> NSAttributedString {
-                return NSAttributedString()
-            }
-        }
-
         knowledgeDetailSceneFactory = StoryboardKnowledgeDetailSceneFactory()
-        knowledgeDetailSceneInteractor = DummyKnowledgeDetailSceneInteractor()
+        knowledgeDetailSceneInteractor = WikiTextKnowledgeSceneInteractorAdapter()
     }
 
     @discardableResult
