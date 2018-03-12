@@ -9,7 +9,11 @@
 import UIKit
 
 class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
-
+    
+    // MARK: IBOutlets
+    
+    @IBOutlet weak var knowledgeEntryContentsTextView: UITextView!
+    
     // MARK: KnowledgeDetailScene
 
     func setKnowledgeDetailSceneDelegate(_ delegate: KnowledgeDetailSceneDelegate) {
@@ -21,7 +25,7 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
     }
 
     func setAttributedKnowledgeEntryContents(_ contents: NSAttributedString) {
-
+        knowledgeEntryContentsTextView.attributedText = contents
     }
 
 }
