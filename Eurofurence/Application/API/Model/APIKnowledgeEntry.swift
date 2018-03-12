@@ -13,11 +13,13 @@ struct APIKnowledgeEntry: Equatable {
     var groupIdentifier: String
     var title: String
     var order: Int
+    var text: String
 
     static func ==(lhs: APIKnowledgeEntry, rhs: APIKnowledgeEntry) -> Bool {
         return lhs.groupIdentifier == rhs.groupIdentifier &&
                lhs.title == rhs.title &&
-               lhs.order == rhs.order
+               lhs.order == rhs.order &&
+               lhs.text == rhs.text
     }
 
 }

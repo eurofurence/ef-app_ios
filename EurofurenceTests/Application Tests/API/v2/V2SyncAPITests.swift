@@ -78,10 +78,12 @@ class V2SyncAPITests: XCTestCase {
                                                                                           groupDescription: "Rules & Policies")])
         let knowledgeEntries = APISyncDelta<APIKnowledgeEntry>(changed: [APIKnowledgeEntry(groupIdentifier: "72cdaaba-e980-fa1a-ce94-7a1cc19d0f79",
                                                                                            title: "Parkhaus Neukölln Arcaden",
-                                                                                           order: 0)],
+                                                                                           order: 0,
+                                                                                           text: "The Parkhaus Neukölln Arcaden is about 2.5 km away from the hotel which means an average walking time of 30 minutes. Compared to the hotel parking this is rather cheap.")],
                                                                deleted: [APIKnowledgeEntry(groupIdentifier: "66e14f56-743c-1ece-a50c-b691143a3f93",
                                                                                            title: "Clockwork Creature Studio",
-                                                                                           order: 1)])
+                                                                                           order: 1,
+                                                                                           text: "Clockwork Creature Studio was founded in 2005 by Qarrezel and is a wellknown artistic costume and design studio based in Towson, Maryland, USA. Two years later the studio changed its focus and became an active small creature costuming business.")])
         
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries)

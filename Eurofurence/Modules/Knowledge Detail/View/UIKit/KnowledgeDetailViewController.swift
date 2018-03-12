@@ -9,11 +9,11 @@
 import UIKit
 
 class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
-    
+
     // MARK: IBOutlets
-    
+
     @IBOutlet weak var knowledgeEntryContentsTextView: UITextView!
-    
+
     // MARK: KnowledgeDetailScene
 
     func setKnowledgeDetailSceneDelegate(_ delegate: KnowledgeDetailSceneDelegate) {
