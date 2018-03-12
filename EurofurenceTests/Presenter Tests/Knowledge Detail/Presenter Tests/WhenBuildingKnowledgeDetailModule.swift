@@ -12,22 +12,13 @@ import XCTest
 class WhenBuildingKnowledgeDetailModule: XCTestCase {
     
     func testTheSceneFromTheFactoryIsReturned() {
-        let knowledgeDetailSceneFactory = StubKnowledgeDetailSceneFactory()
-        let knowledgeDetailScene = knowledgeDetailSceneFactory.interface
-        let context = KnowledgeDetailModuleBuilder().with(knowledgeDetailSceneFactory).build()
-        let module = context.makeKnowledgeListModule(.random)
-        
-        XCTAssertEqual(knowledgeDetailScene, module)
+        let context = KnowledgeDetailPresenterTestBuilder().build()
+        XCTAssertEqual(context.knowledgeDetailScene, context.module)
     }
     
     func testTheKnowledgeEntryTitleIsSetAsTheSceneTitle() {
-        let knowledgeEntry = KnowledgeEntry2.random
-        let knowledgeDetailSceneFactory = StubKnowledgeDetailSceneFactory()
-        let knowledgeDetailScene = knowledgeDetailSceneFactory.interface
-        let context = KnowledgeDetailModuleBuilder().with(knowledgeDetailSceneFactory).build()
-        _ = context.makeKnowledgeListModule(knowledgeEntry)
-        
-        XCTAssertEqual(knowledgeDetailScene.capturedTitle, knowledgeEntry.title)
+        let context = KnowledgeDetailPresenterTestBuilder().build()
+        XCTAssertEqual(context.knowledgeDetailScene.capturedTitle, context.knowledgeEntry.title)
     }
     
 }
