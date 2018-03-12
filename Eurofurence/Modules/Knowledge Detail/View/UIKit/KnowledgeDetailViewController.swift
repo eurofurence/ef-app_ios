@@ -14,10 +14,18 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
 
     @IBOutlet weak var knowledgeEntryContentsTextView: UITextView!
 
+    // MARK: Overrides
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        delegate?.knowledgeDetailSceneDidLoad()
+    }
+
     // MARK: KnowledgeDetailScene
 
+    private var delegate: KnowledgeDetailSceneDelegate?
     func setKnowledgeDetailSceneDelegate(_ delegate: KnowledgeDetailSceneDelegate) {
-
+        self.delegate = delegate
     }
 
     func setKnowledgeDetailTitle(_ title: String) {
