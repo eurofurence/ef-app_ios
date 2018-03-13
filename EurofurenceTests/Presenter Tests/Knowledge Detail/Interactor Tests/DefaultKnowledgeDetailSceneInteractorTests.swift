@@ -11,15 +11,31 @@ import XCTest
 
 class DefaultKnowledgeDetailSceneInteractorTests: XCTestCase {
     
+    var renderer: StubWikiRenderer!
+    var interactor: DefaultKnowledgeDetailSceneInteractor!
+    
+    override func setUp() {
+        super.setUp()
+        
+        renderer = StubWikiRenderer()
+        interactor = DefaultKnowledgeDetailSceneInteractor(renderer: renderer)
+    }
+    
     func testProducingViewModelConvertsKnowledgeEntryContentsViaWikiRenderer() {
         let expected = NSAttributedString.random
         let entry = KnowledgeEntry2.random
-        let renderer = StubWikiRenderer()
         renderer.stub(entry, with: expected)
-        let interactor = DefaultKnowledgeDetailSceneInteractor(renderer: renderer)
         let viewModel = interactor.makeViewModel(for: entry)
         
         XCTAssertEqual(expected, viewModel.contents)
+    }
+    
+    func testProducingViewModelConvertsLinksIntoViewModels() {
+        let entry = KnowledgeEntry2.random
+        let viewModel = interactor.makeViewModel(for: entry)
+        let expected = entry.links.map { (link) in return LinkViewModel(name: link.name) }
+        
+        XCTAssertEqual(expected, viewModel.links)
     }
     
 }

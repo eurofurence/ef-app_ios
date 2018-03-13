@@ -33,7 +33,10 @@ extension KnowledgeGroup2 {
     static func fromServerModels(groups: [APIKnowledgeGroup], entries: [APIKnowledgeEntry]) -> [KnowledgeGroup2] {
         return groups.map({ (group) -> KnowledgeGroup2 in
             let entries = entries.filter({ $0.groupIdentifier == group.identifier }).map({ (entry) in
-                return KnowledgeEntry2(title: entry.title, order: entry.order, contents: entry.text)
+                return KnowledgeEntry2(title: entry.title,
+                                       order: entry.order,
+                                       contents: entry.text,
+                                       links: [])
             }).sorted()
 
             return KnowledgeGroup2(title: group.groupName,

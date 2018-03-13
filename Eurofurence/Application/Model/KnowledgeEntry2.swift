@@ -11,6 +11,7 @@ struct KnowledgeEntry2: Comparable, Equatable, Hashable {
     var title: String
     var order: Int
     var contents: String
+    var links: [Link]
 
     var hashValue: Int {
         return title.hashValue ^ order.hashValue ^ contents.hashValue

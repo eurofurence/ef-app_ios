@@ -14,7 +14,13 @@ struct DefaultKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
 
     func makeViewModel(for entry: KnowledgeEntry2) -> KnowledgeEntryDetailViewModel {
         let renderedContents = renderer.renderContents(from: entry.contents)
-        return KnowledgeEntryDetailViewModel(contents: renderedContents, links: [])
+        let linkViewModels = entry.links.map(makeLinkViewModel)
+
+        return KnowledgeEntryDetailViewModel(contents: renderedContents, links: linkViewModels)
+    }
+
+    private func makeLinkViewModel(from link: Link) -> LinkViewModel {
+        return LinkViewModel(name: link.name)
     }
 
 }
