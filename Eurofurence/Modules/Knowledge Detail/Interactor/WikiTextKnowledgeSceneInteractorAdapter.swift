@@ -10,8 +10,9 @@ import Foundation
 
 struct WikiTextKnowledgeSceneInteractorAdapter: KnowledgeDetailSceneInteractor {
 
-    func makeContents(for entry: KnowledgeEntry2) -> NSAttributedString {
-        return WikiText.transform(entry.contents)
+    func makeViewModel(for entry: KnowledgeEntry2) -> KnowledgeEntryDetailViewModel {
+        let attributedContents = WikiText.transform(entry.contents)
+        return KnowledgeEntryDetailViewModel(contents: attributedContents)
     }
 
 }

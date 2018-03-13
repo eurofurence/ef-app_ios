@@ -24,7 +24,7 @@ struct KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
     }
 
     func knowledgeDetailSceneDidLoad() {
-        let contents = knowledgeDetailSceneInteractor.makeContents(for: knowledgeEntry)
+        let contents = knowledgeDetailSceneInteractor.makeViewModel(for: knowledgeEntry).contents
         knowledgeDetailScene.setAttributedKnowledgeEntryContents(contents)
     }
 

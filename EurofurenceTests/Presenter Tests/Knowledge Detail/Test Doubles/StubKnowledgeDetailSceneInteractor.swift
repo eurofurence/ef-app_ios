@@ -9,19 +9,27 @@
 @testable import Eurofurence
 import Foundation
 
-class StubKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
+extension KnowledgeEntryDetailViewModel: RandomValueProviding {
     
-    fileprivate var contentsByEntry = [KnowledgeEntry2 : NSAttributedString]()
-    func makeContents(for entry: KnowledgeEntry2) -> NSAttributedString {
-        return contentsByEntry[entry] ?? NSAttributedString()
+    static var random: KnowledgeEntryDetailViewModel {
+        return KnowledgeEntryDetailViewModel(contents: .random)
     }
     
 }
 
-extension StubKnowledgeDetailSceneInteractor {
+extension NSAttributedString {
     
-    func stub(_ contents: NSAttributedString, for entry: KnowledgeEntry2) {
-        contentsByEntry[entry] = contents
+    static var random: NSAttributedString {
+        return NSAttributedString(string: .random)
+    }
+    
+}
+
+class StubKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
+    
+    let viewModel = KnowledgeEntryDetailViewModel.random
+    func makeViewModel(for entry: KnowledgeEntry2) -> KnowledgeEntryDetailViewModel {
+        return viewModel
     }
     
 }

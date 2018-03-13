@@ -10,6 +10,6 @@ import Foundation
 
 protocol KnowledgeDetailSceneInteractor {
 
-    func makeContents(for entry: KnowledgeEntry2) -> NSAttributedString
+    func makeViewModel(for entry: KnowledgeEntry2) -> KnowledgeEntryDetailViewModel
 
 }
