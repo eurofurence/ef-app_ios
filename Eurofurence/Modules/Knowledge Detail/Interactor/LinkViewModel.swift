@@ -1,5 +1,5 @@
 //
-//  KnowledgeEntryDetailViewModel.swift
+//  LinkViewModel.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 13/03/2018.
@@ -8,9 +8,8 @@
 
 import Foundation
 
-struct KnowledgeEntryDetailViewModel {
+struct LinkViewModel {
 
-    var contents: NSAttributedString
-    var links: [LinkViewModel]
+    var name: String
 
 }

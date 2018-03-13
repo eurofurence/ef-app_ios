@@ -12,7 +12,7 @@ struct WikiTextKnowledgeSceneInteractorAdapter: KnowledgeDetailSceneInteractor {
 
     func makeViewModel(for entry: KnowledgeEntry2) -> KnowledgeEntryDetailViewModel {
         let attributedContents = WikiText.transform(entry.contents)
-        return KnowledgeEntryDetailViewModel(contents: attributedContents)
+        return KnowledgeEntryDetailViewModel(contents: attributedContents, links: [])
     }
 
 }

@@ -26,6 +26,13 @@ class CapturingKnowledgeDetailScene: UIViewController, KnowledgeDetailScene {
         capturedKnowledgeAttributedText = contents
     }
     
+    private(set) var linksToPresent: Int?
+    private(set) var linksBinder: LinksBinder?
+    func presentLinks(count: Int, using binder: LinksBinder) {
+        linksToPresent = count
+        linksBinder = binder
+    }
+    
 }
 
 extension CapturingKnowledgeDetailScene {

@@ -15,6 +15,10 @@ extension Array where Element: RandomValueProviding {
         return (0..<upperLimit).map { (_) in Element.random }
     }
     
+}
+
+extension Array {
+    
     func randomElement() -> (index: Int, element: Element) {
         let randomIndex = Int.random(upperLimit: UInt32(count))
         return (index: randomIndex, element: self[randomIndex])

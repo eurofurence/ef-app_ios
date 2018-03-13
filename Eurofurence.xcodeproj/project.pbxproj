@@ -221,6 +221,10 @@
 		CA17FE782056B1B4005A4C05 /* KnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE772056B1B4005A4C05 /* KnowledgeDetailSceneInteractor.swift */; };
 		CA17FE7B20572687005A4C05 /* WikiTextKnowledgeSceneInteractorAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE7920572681005A4C05 /* WikiTextKnowledgeSceneInteractorAdapter.swift */; };
 		CA17FE7D2057FCCB005A4C05 /* KnowledgeEntryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE7C2057FCCB005A4C05 /* KnowledgeEntryDetailViewModel.swift */; };
+		CA17FE7F2058006F005A4C05 /* CapturingLinkScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE7E2058006F005A4C05 /* CapturingLinkScene.swift */; };
+		CA17FE8120580082005A4C05 /* LinkScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8020580082005A4C05 /* LinkScene.swift */; };
+		CA17FE83205800A7005A4C05 /* LinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE82205800A7005A4C05 /* LinkViewModel.swift */; };
+		CA17FE8520580144005A4C05 /* LinksBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8420580144005A4C05 /* LinksBinder.swift */; };
 		CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */; };
 		CA1ECB3F1FE333090076083A /* WhenInitialMessageLoadFails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */; };
 		CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */; };
@@ -756,6 +760,10 @@
 		CA17FE772056B1B4005A4C05 /* KnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
 		CA17FE7920572681005A4C05 /* WikiTextKnowledgeSceneInteractorAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiTextKnowledgeSceneInteractorAdapter.swift; sourceTree = "<group>"; };
 		CA17FE7C2057FCCB005A4C05 /* KnowledgeEntryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryDetailViewModel.swift; sourceTree = "<group>"; };
+		CA17FE7E2058006F005A4C05 /* CapturingLinkScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingLinkScene.swift; sourceTree = "<group>"; };
+		CA17FE8020580082005A4C05 /* LinkScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkScene.swift; sourceTree = "<group>"; };
+		CA17FE82205800A7005A4C05 /* LinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkViewModel.swift; sourceTree = "<group>"; };
+		CA17FE8420580144005A4C05 /* LinksBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksBinder.swift; sourceTree = "<group>"; };
 		CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessagesLoadCompletesWithNoMessages.swift; sourceTree = "<group>"; };
 		CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessageLoadFails.swift; sourceTree = "<group>"; };
 		CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewingMessageWhileLoggedInWithLocalMessage.swift; sourceTree = "<group>"; };
@@ -1814,6 +1822,7 @@
 				CA17FE772056B1B4005A4C05 /* KnowledgeDetailSceneInteractor.swift */,
 				CA17FE7920572681005A4C05 /* WikiTextKnowledgeSceneInteractorAdapter.swift */,
 				CA17FE7C2057FCCB005A4C05 /* KnowledgeEntryDetailViewModel.swift */,
+				CA17FE82205800A7005A4C05 /* LinkViewModel.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -2024,6 +2033,8 @@
 			children = (
 				CA6EC47E2051CBC800402894 /* KnowledgeDetailScene.swift */,
 				CA6EC47C2051CBB800402894 /* KnowledgeDetailSceneFactory.swift */,
+				CA17FE8020580082005A4C05 /* LinkScene.swift */,
+				CA17FE8420580144005A4C05 /* LinksBinder.swift */,
 			);
 			path = Abstraction;
 			sourceTree = "<group>";
@@ -2034,6 +2045,7 @@
 				CA6EC4812051CBE600402894 /* CapturingKnowledgeDetailScene.swift */,
 				CA6EC4832051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift */,
 				CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */,
+				CA17FE7E2058006F005A4C05 /* CapturingLinkScene.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -3293,6 +3305,7 @@
 				CAF5979A20449A1D00089BE8 /* APIKnowledgeEntry.swift in Sources */,
 				781A943E1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift in Sources */,
 				CA1ECB4D1FE7F2A10076083A /* NewsPresenter.swift in Sources */,
+				CA17FE83205800A7005A4C05 /* LinkViewModel.swift in Sources */,
 				6EF96CD91F0EDCB300EE6134 /* EventKitCalendarPermissionsProviding.swift in Sources */,
 				9A861ED41F25564900B75A8C /* WindowAlertRouter.swift in Sources */,
 				CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */,
@@ -3320,6 +3333,7 @@
 				CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */,
 				78C86D7D1F12B8FD003A20E6 /* EgyptianQuoteGenerator.swift in Sources */,
 				CA2D07FD1FE904CD00BFD785 /* UserPreferences.swift in Sources */,
+				CA17FE8120580082005A4C05 /* LinkScene.swift in Sources */,
 				CA6AA0061FD6C96B0092C6DB /* RootModuleBuilder.swift in Sources */,
 				CAF5979820449A1100089BE8 /* APIKnowledgeGroup.swift in Sources */,
 				CAD7804E1F1D5227002A8333 /* SystemClock.swift in Sources */,
@@ -3427,6 +3441,7 @@
 				CA8E7EF81FB08ED700F0BF10 /* PhoneRootModuleFactory.swift in Sources */,
 				CA17FE7D2057FCCB005A4C05 /* KnowledgeEntryDetailViewModel.swift in Sources */,
 				9A80EF661F29233F00FD0D37 /* EventTablePreferences.swift in Sources */,
+				CA17FE8520580144005A4C05 /* LinksBinder.swift in Sources */,
 				CAEAEBEB1FDC984D00C0EE7C /* AuthenticationStateObserver.swift in Sources */,
 				D6F3D13A59E359E69EA66D7E /* MenuTableViewCell.swift in Sources */,
 				CABF03BB2041C2B00028BD62 /* KnowledgeGroup2.swift in Sources */,
@@ -3648,6 +3663,7 @@
 				CA2D08141FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift in Sources */,
 				7820A6E11F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift in Sources */,
 				781A94461F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift in Sources */,
+				CA17FE7F2058006F005A4C05 /* CapturingLinkScene.swift in Sources */,
 				CABF03CE20422B240028BD62 /* CapturingSyncAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -36,4 +36,8 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
         knowledgeEntryContentsTextView.attributedText = contents
     }
 
+    func presentLinks(count: Int, using binder: LinksBinder) {
+
+    }
+
 }

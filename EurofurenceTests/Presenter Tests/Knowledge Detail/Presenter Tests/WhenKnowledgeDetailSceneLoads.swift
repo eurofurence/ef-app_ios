@@ -18,4 +18,15 @@ class WhenKnowledgeDetailSceneLoads: XCTestCase {
         XCTAssertEqual(context.interactor.viewModel.contents, context.knowledgeDetailScene.capturedKnowledgeAttributedText)
     }
     
+    func testLinksFromTheKnowledgeEntryAreBoundOntoScene() {
+        let context = KnowledgeDetailPresenterTestBuilder().build()
+        context.knowledgeDetailScene.simulateSceneDidLoad()
+        let randomLink = context.interactor.viewModel.links.randomElement()
+        let linkScene = CapturingLinkScene()
+        context.knowledgeDetailScene.linksBinder?.bind(linkScene, at: randomLink.index)
+        
+        XCTAssertEqual(context.interactor.viewModel.links.count, context.knowledgeDetailScene.linksToPresent)
+        XCTAssertEqual(randomLink.element.name, linkScene.capturedLinkName)
+    }
+    
 }

@@ -12,7 +12,15 @@ import Foundation
 extension KnowledgeEntryDetailViewModel: RandomValueProviding {
     
     static var random: KnowledgeEntryDetailViewModel {
-        return KnowledgeEntryDetailViewModel(contents: .random)
+        return KnowledgeEntryDetailViewModel(contents: .random, links: .random)
+    }
+    
+}
+
+extension LinkViewModel: RandomValueProviding {
+    
+    static var random: LinkViewModel {
+        return LinkViewModel(name: .random)
     }
     
 }

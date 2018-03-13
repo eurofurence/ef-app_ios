@@ -13,6 +13,7 @@ protocol KnowledgeDetailScene {
     func setKnowledgeDetailSceneDelegate(_ delegate: KnowledgeDetailSceneDelegate)
     func setKnowledgeDetailTitle(_ title: String)
     func setAttributedKnowledgeEntryContents(_ contents: NSAttributedString)
+    func presentLinks(count: Int, using binder: LinksBinder)
 
 }
 
