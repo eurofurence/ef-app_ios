@@ -15,7 +15,7 @@ class KnowledgeDetailModuleBuilder {
 
     init() {
         knowledgeDetailSceneFactory = StoryboardKnowledgeDetailSceneFactory()
-        knowledgeDetailSceneInteractor = WikiTextKnowledgeSceneInteractorAdapter()
+        knowledgeDetailSceneInteractor = DefaultKnowledgeDetailSceneInteractor()
     }
 
     @discardableResult
