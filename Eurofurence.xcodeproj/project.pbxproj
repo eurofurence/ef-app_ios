@@ -228,6 +228,10 @@
 		CA17FE8720580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8620580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift */; };
 		CA17FE8920585D63005A4C05 /* KnowledgeDetailLinksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8820585D62005A4C05 /* KnowledgeDetailLinksTableViewCell.swift */; };
 		CA17FE8B20585D9C005A4C05 /* LinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8A20585D9C005A4C05 /* LinkTableViewCell.swift */; };
+		CA17FE8E205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8D205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift */; };
+		CA17FE9020586A15005A4C05 /* StubWikiRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8F20586A15005A4C05 /* StubWikiRenderer.swift */; };
+		CA17FE9220586A30005A4C05 /* WikiRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE9120586A30005A4C05 /* WikiRenderer.swift */; };
+		CA17FE9420586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE9320586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift */; };
 		CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */; };
 		CA1ECB3F1FE333090076083A /* WhenInitialMessageLoadFails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */; };
 		CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */; };
@@ -770,6 +774,10 @@
 		CA17FE8620580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailContentsTableViewCell.swift; sourceTree = "<group>"; };
 		CA17FE8820585D62005A4C05 /* KnowledgeDetailLinksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailLinksTableViewCell.swift; sourceTree = "<group>"; };
 		CA17FE8A20585D9C005A4C05 /* LinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkTableViewCell.swift; sourceTree = "<group>"; };
+		CA17FE8D205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeDetailSceneInteractorTests.swift; sourceTree = "<group>"; };
+		CA17FE8F20586A15005A4C05 /* StubWikiRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubWikiRenderer.swift; sourceTree = "<group>"; };
+		CA17FE9120586A30005A4C05 /* WikiRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiRenderer.swift; sourceTree = "<group>"; };
+		CA17FE9320586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
 		CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessagesLoadCompletesWithNoMessages.swift; sourceTree = "<group>"; };
 		CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessageLoadFails.swift; sourceTree = "<group>"; };
 		CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewingMessageWhileLoggedInWithLocalMessage.swift; sourceTree = "<group>"; };
@@ -1829,8 +1837,18 @@
 				CA17FE7920572681005A4C05 /* WikiTextKnowledgeSceneInteractorAdapter.swift */,
 				CA17FE7C2057FCCB005A4C05 /* KnowledgeEntryDetailViewModel.swift */,
 				CA17FE82205800A7005A4C05 /* LinkViewModel.swift */,
+				CA17FE9120586A30005A4C05 /* WikiRenderer.swift */,
+				CA17FE9320586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CA17FE8C205867C8005A4C05 /* Interactor Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CA17FE8D205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift */,
+			);
+			path = "Interactor Tests";
 			sourceTree = "<group>";
 		};
 		CA18B3451F49AF4500038E52 /* Model */ = {
@@ -2010,6 +2028,7 @@
 			isa = PBXGroup;
 			children = (
 				CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */,
+				CA17FE8C205867C8005A4C05 /* Interactor Tests */,
 				CA6EC4772051CAEB00402894 /* Presenter Tests */,
 				CA6EC4802051CBDF00402894 /* Test Doubles */,
 			);
@@ -2052,6 +2071,7 @@
 				CA6EC4832051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift */,
 				CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */,
 				CA17FE7E2058006F005A4C05 /* CapturingLinkScene.swift */,
+				CA17FE8F20586A15005A4C05 /* StubWikiRenderer.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -3275,6 +3295,7 @@
 				CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */,
 				CABF03BA2041C2B00028BD62 /* KnowledgeEntry2.swift in Sources */,
 				9A8477981ED99EDE00F0DF3F /* NavigationResolver.swift in Sources */,
+				CA17FE9420586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift in Sources */,
 				9ACF99921EC858B2006FC958 /* EventConferenceDay.swift in Sources */,
 				9ACF998D1EC858B2006FC958 /* KnowledgeGroup.swift in Sources */,
 				78C86D561F12334D003A20E6 /* Routers.swift in Sources */,
@@ -3311,6 +3332,7 @@
 				9A861EB71F25550700B75A8C /* SplashScene.swift in Sources */,
 				CAF9A9431F50B87600628833 /* EurofurenceApplicationProtocol.swift in Sources */,
 				6EF96CDD1F0F544B00EE6134 /* EventKitCalendarEvent.swift in Sources */,
+				CA17FE9220586A30005A4C05 /* WikiRenderer.swift in Sources */,
 				CA8D97CF201611430074838F /* EventBus.swift in Sources */,
 				CAF5979A20449A1D00089BE8 /* APIKnowledgeEntry.swift in Sources */,
 				781A943E1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift in Sources */,
@@ -3566,6 +3588,7 @@
 				78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */,
 				CABF03C32041C2FD0028BD62 /* KnowledgeEntry2.swift in Sources */,
 				CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */,
+				CA17FE8E205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift in Sources */,
 				CABA43931FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift in Sources */,
 				78C86D6C1F123FD8003A20E6 /* PresentationTestBuilder.swift in Sources */,
 				CA30EABC1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift in Sources */,
@@ -3592,6 +3615,7 @@
 				CAC1E1311F50413500195513 /* CapturingNewsScene.swift in Sources */,
 				CA2D080E1FE9504600BFD785 /* WhenThePushNotificationPermissionsPageAppears.swift in Sources */,
 				7820A6E51F140056004C0FB5 /* CapturingAlertRouter.swift in Sources */,
+				CA17FE9020586A15005A4C05 /* StubWikiRenderer.swift in Sources */,
 				CA8276B0204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift in Sources */,
 				781A94381F1A19BD002DE70F /* CapturingFirebaseAdapter.swift in Sources */,
 				CABF03C72041C3270028BD62 /* StubKnowledgeService.swift in Sources */,
