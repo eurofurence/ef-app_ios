@@ -41,7 +41,15 @@ extension APIKnowledgeGroup: RandomValueProviding {
 extension APIKnowledgeEntry: RandomValueProviding {
     
     static var random: APIKnowledgeEntry {
-        return APIKnowledgeEntry(groupIdentifier: .random, title: .random, order: .random, text: .random)
+        return APIKnowledgeEntry(groupIdentifier: .random, title: .random, order: .random, text: .random, links: .random)
+    }
+    
+}
+
+extension APILink: RandomValueProviding {
+    
+    static var random: APILink {
+        return APILink(name: .random)
     }
     
 }

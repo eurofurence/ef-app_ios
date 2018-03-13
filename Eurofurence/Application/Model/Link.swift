@@ -6,8 +6,16 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-struct Link {
+struct Link: Comparable, Equatable {
 
     var name: String
+
+    static func <(lhs: Link, rhs: Link) -> Bool {
+        return lhs.name < rhs.name
+    }
+
+    static func ==(lhs: Link, rhs: Link) -> Bool {
+        return lhs.name == rhs.name
+    }
 
 }

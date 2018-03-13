@@ -61,10 +61,19 @@ private struct JSONSyncResponse: Decodable {
         var Title: String
         var Order: Int
         var Text: String
+        var Links: [JSONLink]
 
         func asModel() -> APIKnowledgeEntry {
-            return APIKnowledgeEntry(groupIdentifier: KnowledgeGroupId, title: Title, order: Order, text: Text)
+            return APIKnowledgeEntry(groupIdentifier: KnowledgeGroupId,
+                                     title: Title,
+                                     order: Order,
+                                     text: Text,
+                                     links: Links.map({ return APILink(name: $0.Name) }))
         }
+    }
+
+    struct JSONLink: Decodable {
+        var Name: String
     }
 
     var KnowledgeGroups: Leaf<JSONKnowledgeGroup>

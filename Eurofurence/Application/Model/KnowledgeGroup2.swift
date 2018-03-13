@@ -36,7 +36,7 @@ extension KnowledgeGroup2 {
                 return KnowledgeEntry2(title: entry.title,
                                        order: entry.order,
                                        contents: entry.text,
-                                       links: [])
+                                       links: entry.links.map({ return Link(name: $0.name) }).sorted())
             }).sorted()
 
             return KnowledgeGroup2(title: group.groupName,
