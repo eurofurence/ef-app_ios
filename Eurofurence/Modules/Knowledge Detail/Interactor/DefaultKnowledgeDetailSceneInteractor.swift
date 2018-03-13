@@ -10,7 +10,7 @@ import Foundation
 
 struct DefaultKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
 
-    var renderer: WikiRenderer
+    var renderer: WikiRenderer = ConcreteWikiRenderer()
 
     func makeViewModel(for entry: KnowledgeEntry2) -> KnowledgeEntryDetailViewModel {
         let renderedContents = renderer.renderContents(from: entry.contents)
