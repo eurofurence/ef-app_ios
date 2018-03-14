@@ -23,9 +23,8 @@ class WhenUserSelectsKnowledgeLink: XCTestCase {
     func testTheDelegateIsToldToOpenTheChosenLink() {
         let context = KnowledgeDetailPresenterTestBuilder().build()
         context.knowledgeDetailScene.simulateSceneDidLoad()
-        let expected = Link.random
-        let randomLink = context.interactor.viewModel.links.randomElement()
-        context.interactor.stub(expected, at: randomLink.index)
+        let randomLink = context.knowledgeEntry.links.randomElement()
+        let expected = randomLink.element
         context.knowledgeDetailScene.simulateSelectingLink(at: randomLink.index)
         
         XCTAssertEqual(expected, context.delegate.capturedLinkToOpen)
