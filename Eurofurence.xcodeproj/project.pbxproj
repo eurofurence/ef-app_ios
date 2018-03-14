@@ -428,6 +428,7 @@
 		CAD3BDB12058719300C91E6E /* Link+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */; };
 		CAD3BDB3205874AF00C91E6E /* APILink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB2205874AF00C91E6E /* APILink.swift */; };
 		CAD3BDB520587DD800C91E6E /* WhenShowingKnowledgeEntryWithoutLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB420587DD800C91E6E /* WhenShowingKnowledgeEntryWithoutLinks.swift */; };
+		CAD3BDB72059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB62059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift */; };
 		CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780361F1D415A002A8333 /* MessagesViewController.swift */; };
 		CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780381F1D41C4002A8333 /* LoginViewController.swift */; };
 		CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */; };
@@ -981,6 +982,7 @@
 		CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Link+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAD3BDB2205874AF00C91E6E /* APILink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILink.swift; sourceTree = "<group>"; };
 		CAD3BDB420587DD800C91E6E /* WhenShowingKnowledgeEntryWithoutLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenShowingKnowledgeEntryWithoutLinks.swift; sourceTree = "<group>"; };
+		CAD3BDB62059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUserSelectsKnowledgeLink.swift; sourceTree = "<group>"; };
 		CAD780361F1D415A002A8333 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CAD780381F1D41C4002A8333 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoginStateChanges.swift; sourceTree = "<group>"; };
@@ -2050,6 +2052,7 @@
 				CA6EC4782051CAFA00402894 /* WhenBuildingKnowledgeDetailModule.swift */,
 				CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */,
 				CAD3BDB420587DD800C91E6E /* WhenShowingKnowledgeEntryWithoutLinks.swift */,
+				CAD3BDB62059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -3639,6 +3642,7 @@
 				CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */,
 				CA71A34E2040349300C847C3 /* RandomRangedValueProviding.swift in Sources */,
 				CAF3C74E1F9FC72C0008F027 /* StubNewsSceneFactory.swift in Sources */,
+				CAD3BDB72059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift in Sources */,
 				CA2B4FAA1F1F7F1200F007E1 /* CapturingLoginObserver.swift in Sources */,
 				CA73AEF8201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift in Sources */,
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,

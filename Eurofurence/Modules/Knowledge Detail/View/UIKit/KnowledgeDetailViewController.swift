@@ -45,6 +45,10 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
         tableViewDataSource.add(linksItem)
     }
 
+    func deselectLink(at index: Int) {
+
+    }
+
     // MARK: Private
 
     private struct ContentsItem: TableViewDataItem {

@@ -35,6 +35,10 @@ struct KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
         }
     }
 
+    func knowledgeDetailSceneDidSelectLink(at index: Int) {
+        knowledgeDetailScene.deselectLink(at: index)
+    }
+
     private struct ViewModelLinksBinder: LinksBinder {
 
         var viewModels: [LinkViewModel]
