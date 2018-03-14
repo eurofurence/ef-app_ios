@@ -8,13 +8,16 @@
 
 struct KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
 
+    private let delegate: KnowledgeDetailModuleDelegate
     private let knowledgeDetailScene: KnowledgeDetailScene
     private let knowledgeEntry: KnowledgeEntry2
     private let knowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor
 
-    init(knowledgeDetailScene: KnowledgeDetailScene,
+    init(delegate: KnowledgeDetailModuleDelegate,
+         knowledgeDetailScene: KnowledgeDetailScene,
          knowledgeEntry: KnowledgeEntry2,
          knowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor) {
+        self.delegate = delegate
         self.knowledgeDetailScene = knowledgeDetailScene
         self.knowledgeEntry = knowledgeEntry
         self.knowledgeDetailSceneInteractor = knowledgeDetailSceneInteractor
@@ -37,6 +40,9 @@ struct KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
 
     func knowledgeDetailSceneDidSelectLink(at index: Int) {
         knowledgeDetailScene.deselectLink(at: index)
+
+        let link = knowledgeDetailSceneInteractor.link(at: index)
+        delegate.knowledgeDetailModuleDidSelectLink(link)
     }
 
     private struct ViewModelLinksBinder: LinksBinder {

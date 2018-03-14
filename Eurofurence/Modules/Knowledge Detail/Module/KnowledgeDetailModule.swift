@@ -13,9 +13,10 @@ struct KnowledgeDetailModule: KnowledgeDetailModuleProviding {
     var knowledgeDetailSceneFactory: KnowledgeDetailSceneFactory
     var knowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor
 
-    func makeKnowledgeListModule(_ knowledgeEntry: KnowledgeEntry2) -> UIViewController {
+    func makeKnowledgeListModule(_ knowledgeEntry: KnowledgeEntry2, delegate: KnowledgeDetailModuleDelegate) -> UIViewController {
         let scene = knowledgeDetailSceneFactory.makeKnowledgeDetailScene()
-        _ = KnowledgeDetailPresenter(knowledgeDetailScene: scene,
+        _ = KnowledgeDetailPresenter(delegate: delegate,
+                                     knowledgeDetailScene: scene,
                                      knowledgeEntry: knowledgeEntry,
                                      knowledgeDetailSceneInteractor: knowledgeDetailSceneInteractor)
 

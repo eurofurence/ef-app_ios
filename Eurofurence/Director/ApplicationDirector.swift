@@ -14,7 +14,8 @@ class ApplicationDirector: RootModuleDelegate,
                            NewsModuleDelegate,
                            MessagesModuleDelegate,
                            LoginModuleDelegate,
-                           KnowledgeListModuleDelegate {
+                           KnowledgeListModuleDelegate,
+                           KnowledgeDetailModuleDelegate {
 
     private class DissolveTransitionAnimationProviding: NSObject, UINavigationControllerDelegate {
 
@@ -171,8 +172,14 @@ class ApplicationDirector: RootModuleDelegate,
     // MARK: KnowledgeListModuleDelegate
 
     func knowledgeListModuleDidSelectKnowledgeEntry(_ knowledgeEntry: KnowledgeEntry2) {
-        let knowledgeDetailModule = knowledgeDetailModuleProviding.makeKnowledgeListModule(knowledgeEntry)
+        let knowledgeDetailModule = knowledgeDetailModuleProviding.makeKnowledgeListModule(knowledgeEntry, delegate: self)
         knowledgeNavigationController.pushViewController(knowledgeDetailModule, animated: animate)
+    }
+
+    // MARK: KnowledgeDetailModuleDelegate
+
+    func knowledgeDetailModuleDidSelectLink(_ link: Link) {
+
     }
 
     // MARK: Private

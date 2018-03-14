@@ -20,4 +20,15 @@ class WhenUserSelectsKnowledgeLink: XCTestCase {
         XCTAssertEqual(randomLink.index, context.knowledgeDetailScene.deselectedLinkIndex)
     }
     
+    func testTheDelegateIsToldToOpenTheChosenLink() {
+        let context = KnowledgeDetailPresenterTestBuilder().build()
+        context.knowledgeDetailScene.simulateSceneDidLoad()
+        let expected = Link.random
+        let randomLink = context.interactor.viewModel.links.randomElement()
+        context.interactor.stub(expected, at: randomLink.index)
+        context.knowledgeDetailScene.simulateSelectingLink(at: randomLink.index)
+        
+        XCTAssertEqual(expected, context.delegate.capturedLinkToOpen)
+    }
+    
 }

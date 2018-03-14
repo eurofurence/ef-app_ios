@@ -429,6 +429,8 @@
 		CAD3BDB3205874AF00C91E6E /* APILink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB2205874AF00C91E6E /* APILink.swift */; };
 		CAD3BDB520587DD800C91E6E /* WhenShowingKnowledgeEntryWithoutLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB420587DD800C91E6E /* WhenShowingKnowledgeEntryWithoutLinks.swift */; };
 		CAD3BDB72059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB62059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift */; };
+		CAD3BDB92059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB82059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift */; };
+		CAD3BDBB205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDBA205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift */; };
 		CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780361F1D415A002A8333 /* MessagesViewController.swift */; };
 		CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780381F1D41C4002A8333 /* LoginViewController.swift */; };
 		CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */; };
@@ -983,6 +985,8 @@
 		CAD3BDB2205874AF00C91E6E /* APILink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILink.swift; sourceTree = "<group>"; };
 		CAD3BDB420587DD800C91E6E /* WhenShowingKnowledgeEntryWithoutLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenShowingKnowledgeEntryWithoutLinks.swift; sourceTree = "<group>"; };
 		CAD3BDB62059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUserSelectsKnowledgeLink.swift; sourceTree = "<group>"; };
+		CAD3BDB82059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModuleDelegate.swift; sourceTree = "<group>"; };
+		CAD3BDBA205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeDetailModuleDelegate.swift; sourceTree = "<group>"; };
 		CAD780361F1D415A002A8333 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CAD780381F1D41C4002A8333 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoginStateChanges.swift; sourceTree = "<group>"; };
@@ -2031,6 +2035,7 @@
 			children = (
 				CA6EC4702051656C00402894 /* KnowledgeDetailModuleProviding.swift */,
 				CA6EC4722051662B00402894 /* KnowledgeDetailModule.swift */,
+				CAD3BDB82059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -2085,6 +2090,7 @@
 				CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */,
 				CA17FE7E2058006F005A4C05 /* CapturingLinkScene.swift */,
 				CA17FE8F20586A15005A4C05 /* StubWikiRenderer.swift */,
+				CAD3BDBA205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -3426,6 +3432,7 @@
 				781A943C1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift in Sources */,
 				9A861ED61F25564900B75A8C /* StoryboardSplashScreenRouter.swift in Sources */,
 				CA6EC4712051656C00402894 /* KnowledgeDetailModuleProviding.swift in Sources */,
+				CAD3BDB92059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift in Sources */,
 				9A80EF591F291E2B00FD0D37 /* NewsTableViewController.swift in Sources */,
 				CA6EC48E2051D97600402894 /* KnowledgeDetailPresenter.swift in Sources */,
 				CA9845C21F28B16800E8821D /* MessageDetailViewController.swift in Sources */,
@@ -3666,6 +3673,7 @@
 				7820A6DF1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift in Sources */,
 				CA30EAB61F26128A0053DBF6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift in Sources */,
 				CA8E17EF1F817A8C003C348C /* CapturingPreloadService.swift in Sources */,
+				CAD3BDBB205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift in Sources */,
 				CA8276B6204EC026006A7419 /* CapturingPreloadServiceDelegate.swift in Sources */,
 				6EEC6DA11F1BF79F00205F2D /* FirebaseTopicTests.swift in Sources */,
 				7820A6F61F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift in Sources */,

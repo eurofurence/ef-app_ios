@@ -47,4 +47,17 @@ class StubKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
         return viewModel
     }
     
+    fileprivate var stubbedLinks = [Int : Link]()
+    func link(at index: Int) -> Link {
+        return stubbedLinks[index] ?? .random
+    }
+    
+}
+
+extension StubKnowledgeDetailSceneInteractor {
+    
+    func stub(_ link: Link, at index: Int) {
+        stubbedLinks[index] = link
+    }
+    
 }

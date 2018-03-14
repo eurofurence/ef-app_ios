@@ -16,6 +16,7 @@ class KnowledgeDetailPresenterTestBuilder {
         var knowledgeDetailScene: CapturingKnowledgeDetailScene
         var interactor: StubKnowledgeDetailSceneInteractor
         var module: UIViewController
+        var delegate: CapturingKnowledgeDetailModuleDelegate
     }
     
     private var interactor = StubKnowledgeDetailSceneInteractor()
@@ -30,16 +31,18 @@ class KnowledgeDetailPresenterTestBuilder {
         let knowledgeEntry = KnowledgeEntry2.random
         let knowledgeDetailSceneFactory = StubKnowledgeDetailSceneFactory()
         let knowledgeDetailScene = knowledgeDetailSceneFactory.interface
+        let delegate = CapturingKnowledgeDetailModuleDelegate()
         let moduleBuilder = KnowledgeDetailModuleBuilder()
             .with(knowledgeDetailSceneFactory)
             .with(interactor)
             .build()
-        let module = moduleBuilder.makeKnowledgeListModule(knowledgeEntry)
+        let module = moduleBuilder.makeKnowledgeListModule(knowledgeEntry, delegate: delegate)
         
         return Context(knowledgeEntry: knowledgeEntry,
                        knowledgeDetailScene: knowledgeDetailScene,
                        interactor: interactor,
-                       module: module)
+                       module: module,
+                       delegate: delegate)
     }
     
 }

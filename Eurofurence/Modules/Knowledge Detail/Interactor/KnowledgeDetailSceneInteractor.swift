@@ -11,5 +11,6 @@ import Foundation
 protocol KnowledgeDetailSceneInteractor {
 
     func makeViewModel(for entry: KnowledgeEntry2) -> KnowledgeEntryDetailViewModel
+    func link(at index: Int) -> Link
 
 }
