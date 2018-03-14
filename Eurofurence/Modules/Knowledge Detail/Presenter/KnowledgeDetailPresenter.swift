@@ -28,8 +28,11 @@ struct KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
         knowledgeDetailScene.setAttributedKnowledgeEntryContents(viewModel.contents)
 
         let links = viewModel.links
-        let binder = ViewModelLinksBinder(viewModels: links)
-        knowledgeDetailScene.presentLinks(count: links.count, using: binder)
+
+        if links.isEmpty == false {
+            let binder = ViewModelLinksBinder(viewModels: links)
+            knowledgeDetailScene.presentLinks(count: links.count, using: binder)
+        }
     }
 
     private struct ViewModelLinksBinder: LinksBinder {

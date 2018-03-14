@@ -18,11 +18,18 @@ class KnowledgeDetailPresenterTestBuilder {
         var module: UIViewController
     }
     
+    private var interactor = StubKnowledgeDetailSceneInteractor()
+    
+    @discardableResult
+    func with(_ interactor: StubKnowledgeDetailSceneInteractor) -> KnowledgeDetailPresenterTestBuilder {
+        self.interactor = interactor
+        return self
+    }
+    
     func build() -> Context {
         let knowledgeEntry = KnowledgeEntry2.random
         let knowledgeDetailSceneFactory = StubKnowledgeDetailSceneFactory()
         let knowledgeDetailScene = knowledgeDetailSceneFactory.interface
-        let interactor = StubKnowledgeDetailSceneInteractor()
         let moduleBuilder = KnowledgeDetailModuleBuilder()
             .with(knowledgeDetailSceneFactory)
             .with(interactor)

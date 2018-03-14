@@ -15,6 +15,13 @@ extension KnowledgeEntryDetailViewModel: RandomValueProviding {
         return KnowledgeEntryDetailViewModel(contents: .random, links: .random)
     }
     
+    static var randomWithoutLinks: KnowledgeEntryDetailViewModel {
+        var viewModel = random
+        viewModel.links = []
+        
+        return viewModel
+    }
+    
 }
 
 extension LinkViewModel: RandomValueProviding {
@@ -35,7 +42,7 @@ extension NSAttributedString {
 
 class StubKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
     
-    let viewModel = KnowledgeEntryDetailViewModel.random
+    var viewModel = KnowledgeEntryDetailViewModel.random
     func makeViewModel(for entry: KnowledgeEntry2) -> KnowledgeEntryDetailViewModel {
         return viewModel
     }
