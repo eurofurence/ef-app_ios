@@ -41,12 +41,12 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
     }
 
     func presentLinks(count: Int, using binder: LinksBinder) {
-        let linksItem = LinksItem(count: count, binder: binder)
+        let linksItem = LinksItem(count: count, binder: binder, delegate: delegate)
         tableViewDataSource.add(linksItem)
     }
 
     func deselectLink(at index: Int) {
-
+        tableView.visibleCells.flatMap({ $0 as? KnowledgeDetailLinksTableViewCell }).first?.deselectLink(at: index)
     }
 
     // MARK: Private
@@ -68,10 +68,11 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
 
         var count: Int
         var binder: LinksBinder
+        var delegate: KnowledgeDetailSceneDelegate?
 
         func makeCell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeue(KnowledgeDetailLinksTableViewCell.self)
-            cell.showLinks(count: count, binder: binder)
+            cell.showLinks(count: count, binder: binder, delegate: delegate)
 
             return cell
         }

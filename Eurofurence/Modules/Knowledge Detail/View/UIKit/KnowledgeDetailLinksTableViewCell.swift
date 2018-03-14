@@ -8,22 +8,37 @@
 
 import UIKit
 
-class KnowledgeDetailLinksTableViewCell: UITableViewCell {
+class KnowledgeDetailLinksTableViewCell: UITableViewCell, UITableViewDelegate {
 
-    // MARK: IBOutlets
+    // MARK: Properties
 
     @IBOutlet weak var tableView: UITableView!
+    var delegate: KnowledgeDetailSceneDelegate?
 
     // MARK: Functions
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
         tableView.dataSource = tableViewDataSource
+        tableView.delegate = self
     }
 
-    func showLinks(count: Int, binder: LinksBinder) {
+    func showLinks(count: Int, binder: LinksBinder, delegate: KnowledgeDetailSceneDelegate?) {
+        self.delegate = delegate
         tableViewDataSource.showLinks(count: count, binder: binder)
         tableView.reloadData()
+    }
+
+    func deselectLink(at index: Int) {
+        let indexPath = IndexPath(item: index, section: 0)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    // MARK: UITableViewDelegate
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.knowledgeDetailSceneDidSelectLink(at: indexPath.item)
     }
 
     // MARK: Private
