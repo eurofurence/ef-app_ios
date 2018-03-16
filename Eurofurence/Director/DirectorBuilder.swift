@@ -6,9 +6,13 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
+import UIKit.UIViewController
+
 class DirectorBuilder {
 
     private var animate: Bool
+    private var linkRouter: LinkRouter
+    private var webModuleProviding: WebMobuleProviding
     private var windowWireframe: WindowWireframe
     private var navigationControllerFactory: NavigationControllerFactory
     private var rootModuleProviding: RootModuleProviding
@@ -37,6 +41,27 @@ class DirectorBuilder {
         messageDetailModuleProviding = MessageDetailModuleBuilder().build()
         knowledgeListModuleProviding = KnowledgeListModuleBuilder().build()
         knowledgeDetailModuleProviding = KnowledgeDetailModuleBuilder().build()
+
+        struct DummyLinkRouter: LinkRouter {
+            func resolveAction(for link: Link) -> LinkRouterAction? {
+                return nil
+            }
+        }
+
+        struct DummyWebMobuleProviding: WebMobuleProviding {
+            func makeWebModule(for url: URL) -> UIViewController {
+                return UIViewController()
+            }
+        }
+
+        linkRouter = DummyLinkRouter()
+        webModuleProviding = DummyWebMobuleProviding()
+    }
+
+    @discardableResult
+    func with(_ linkRouter: LinkRouter) -> DirectorBuilder {
+        self.linkRouter = linkRouter
+        return self
     }
 
     @discardableResult
@@ -117,8 +142,16 @@ class DirectorBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ webModuleProviding: WebMobuleProviding) -> DirectorBuilder {
+        self.webModuleProviding = webModuleProviding
+        return self
+    }
+
     func build() -> ApplicationDirector {
         return ApplicationDirector(animate: animate,
+                                   linkRouter: linkRouter,
+                                   webModuleProviding: webModuleProviding,
                                    windowWireframe: windowWireframe,
                                    navigationControllerFactory: navigationControllerFactory,
                                    rootModuleProviding: rootModuleProviding,

@@ -431,6 +431,9 @@
 		CAD3BDB72059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB62059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift */; };
 		CAD3BDB92059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB82059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift */; };
 		CAD3BDBB205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDBA205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift */; };
+		CAD3BDBD205AA61B00C91E6E /* URL+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDBC205AA61B00C91E6E /* URL+RandomValueProviding.swift */; };
+		CAD3BDBF205AA69600C91E6E /* LinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDBE205AA69600C91E6E /* LinkRouter.swift */; };
+		CAD3BDC2205AA7BE00C91E6E /* WebMobuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC1205AA7BE00C91E6E /* WebMobuleProviding.swift */; };
 		CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780361F1D415A002A8333 /* MessagesViewController.swift */; };
 		CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780381F1D41C4002A8333 /* LoginViewController.swift */; };
 		CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */; };
@@ -987,6 +990,9 @@
 		CAD3BDB62059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUserSelectsKnowledgeLink.swift; sourceTree = "<group>"; };
 		CAD3BDB82059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModuleDelegate.swift; sourceTree = "<group>"; };
 		CAD3BDBA205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeDetailModuleDelegate.swift; sourceTree = "<group>"; };
+		CAD3BDBC205AA61B00C91E6E /* URL+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CAD3BDBE205AA69600C91E6E /* LinkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkRouter.swift; sourceTree = "<group>"; };
+		CAD3BDC1205AA7BE00C91E6E /* WebMobuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebMobuleProviding.swift; sourceTree = "<group>"; };
 		CAD780361F1D415A002A8333 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CAD780381F1D41C4002A8333 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoginStateChanges.swift; sourceTree = "<group>"; };
@@ -1205,6 +1211,7 @@
 		6EF96CE01F12688700EE6134 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CAD3BDC0205AA7B800C91E6E /* Web */,
 				6EF96CE81F126B0400EE6134 /* Bootstrap */,
 				CA6EC46E2051655600402894 /* Knowledge Detail */,
 				CA73AEE0201A084C004E77BF /* Knowledge List */,
@@ -1898,6 +1905,7 @@
 				CA8E7EFD1FB093D800F0BF10 /* PhoneNavigationControllerFactory.swift */,
 				CA8E7EF51FB08E2500F0BF10 /* PhoneWindowWireframe.swift */,
 				CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */,
+				CAD3BDBE205AA69600C91E6E /* LinkRouter.swift */,
 			);
 			path = Director;
 			sourceTree = "<group>";
@@ -2135,6 +2143,7 @@
 				CA71A34F2040371D00C847C3 /* FloatingPoint+RandomValueProviding.swift */,
 				CA71A34B204032FC00C847C3 /* Integer+RandomValueProviding.swift */,
 				CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */,
+				CAD3BDBC205AA61B00C91E6E /* URL+RandomValueProviding.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -2559,6 +2568,14 @@
 				CA6A9FEF1FD5DE0E0092C6DB /* View */,
 			);
 			path = Messages;
+			sourceTree = "<group>";
+		};
+		CAD3BDC0205AA7B800C91E6E /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				CAD3BDC1205AA7BE00C91E6E /* WebMobuleProviding.swift */,
+			);
+			path = Web;
 			sourceTree = "<group>";
 		};
 		CAD780441F1D4DF7002A8333 /* Login */ = {
@@ -3322,6 +3339,7 @@
 				78C86D561F12334D003A20E6 /* Routers.swift in Sources */,
 				CA6AA0141FD74F910092C6DB /* ViewControllerDissolveTransitioning.swift in Sources */,
 				CA73AEF1201A08BA004E77BF /* KnowledgeListModuleProviding.swift in Sources */,
+				CAD3BDBF205AA69600C91E6E /* LinkRouter.swift in Sources */,
 				CA30EAB01F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift in Sources */,
 				9A861EAB1F2554D700B75A8C /* BootstrappingModule.swift in Sources */,
 				CA6EC47F2051CBC800402894 /* KnowledgeDetailScene.swift in Sources */,
@@ -3502,6 +3520,7 @@
 				CA17FE8520580144005A4C05 /* LinksBinder.swift in Sources */,
 				CAEAEBEB1FDC984D00C0EE7C /* AuthenticationStateObserver.swift in Sources */,
 				D6F3D13A59E359E69EA66D7E /* MenuTableViewCell.swift in Sources */,
+				CAD3BDC2205AA7BE00C91E6E /* WebMobuleProviding.swift in Sources */,
 				CABF03BB2041C2B00028BD62 /* KnowledgeGroup2.swift in Sources */,
 				9A9487FF1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift in Sources */,
 				7820A6E71F1400A8004C0FB5 /* AlertRouter.swift in Sources */,
@@ -3600,6 +3619,7 @@
 				CA2D08101FE9511300BFD785 /* WhenThePushNotificationPermissionsPageAppearsWithUnreachableNetwork.swift in Sources */,
 				CABA43951FCE0A49009CB5B0 /* CapturingLoginScene.swift in Sources */,
 				CA0F762F2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift in Sources */,
+				CAD3BDBD205AA61B00C91E6E /* URL+RandomValueProviding.swift in Sources */,
 				CAF9A9471F50B95F00628833 /* WhenRequestingCurrentUser.swift in Sources */,
 				78455B521F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift in Sources */,
 				CAD234421F5F2FA8004BB959 /* AppDataBuilder.swift in Sources */,

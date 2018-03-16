@@ -165,9 +165,32 @@ class StubKnowledgeDetailModuleProviding: KnowledgeDetailModuleProviding {
     
     let stubInterface = UIViewController()
     private(set) var capturedModel: KnowledgeEntry2?
+    private(set) var delegate: KnowledgeDetailModuleDelegate?
     func makeKnowledgeListModule(_ knowledgeEntry: KnowledgeEntry2, delegate: KnowledgeDetailModuleDelegate) -> UIViewController {
         capturedModel = knowledgeEntry
+        self.delegate = delegate
         return stubInterface
+    }
+    
+}
+
+class StubLinkRouter: LinkRouter {
+    
+    var stubbedLinkActions = [Link : LinkRouterAction]()
+    func resolveAction(for link: Link) -> LinkRouterAction? {
+        return stubbedLinkActions[link]
+    }
+    
+}
+
+class StubWebMobuleProviding: WebMobuleProviding {
+    
+    var producedWebModules = [URL : UIViewController]()
+    func makeWebModule(for url: URL) -> UIViewController {
+        let module = UIViewController()
+        producedWebModules[url] = module
+        
+        return module
     }
     
 }
@@ -186,6 +209,8 @@ class ApplicationDirectorTests: XCTestCase {
     var messageDetailModuleFactory: StubMessageDetailModuleProviding!
     var knowledgeListModuleProviding: StubKnowledgeListModuleProviding!
     var knowledgeDetailModuleProviding: StubKnowledgeDetailModuleProviding!
+    var linkRouter: StubLinkRouter!
+    var webModuleProviding: StubWebMobuleProviding!
     
     private func navigateToTabController() {
         rootModuleFactory.delegate?.rootModuleDidDetermineStoreShouldRefresh()
@@ -210,6 +235,8 @@ class ApplicationDirectorTests: XCTestCase {
         messageDetailModuleFactory = StubMessageDetailModuleProviding()
         knowledgeListModuleProviding = StubKnowledgeListModuleProviding()
         knowledgeDetailModuleProviding = StubKnowledgeDetailModuleProviding()
+        linkRouter = StubLinkRouter()
+        webModuleProviding = StubWebMobuleProviding()
         
         let builder = DirectorBuilder()
         builder.withAnimations(false)
@@ -225,6 +252,8 @@ class ApplicationDirectorTests: XCTestCase {
         builder.with(messageDetailModuleFactory)
         builder.with(knowledgeListModuleProviding)
         builder.with(knowledgeDetailModuleProviding)
+        builder.with(linkRouter)
+        builder.with(webModuleProviding)
         
         director = builder.build()
     }
@@ -419,6 +448,20 @@ class ApplicationDirectorTests: XCTestCase {
         
         XCTAssertEqual(knowledgeDetailModuleProviding.stubInterface, knowledgeNavigationController?.topViewController)
         XCTAssertEqual(entry, knowledgeDetailModuleProviding.capturedModel)
+    }
+    
+    func testWhenKnowledgeEntrySelectsWebLinkTheWebModuleIsPresentedOntoTheTabInterface() {
+        navigateToTabController()
+        let entry = KnowledgeEntry2.random
+        knowledgeListModuleProviding.delegate?.knowledgeListModuleDidSelectKnowledgeEntry(entry)
+        let link = entry.links.randomElement().element
+        let url = URL.random
+        linkRouter.stubbedLinkActions[link] = .web(url)
+        knowledgeDetailModuleProviding.delegate?.knowledgeDetailModuleDidSelectLink(link)
+        let webModuleForURL = webModuleProviding.producedWebModules[url]
+        
+        XCTAssertNotNil(webModuleForURL)
+        XCTAssertEqual(webModuleForURL, tabModuleFactory.stubInterface.capturedPresentedViewController)
     }
     
 }
