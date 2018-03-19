@@ -26,7 +26,7 @@ class ApplicationDirector: RootModuleDelegate,
     }
 
     private let animate: Bool
-    private let linkRouter: LinkRouter
+    private let linkLookupService: LinkLookupService
     private let webModuleProviding: WebMobuleProviding
     private let windowWireframe: WindowWireframe
     private let rootModuleProviding: RootModuleProviding
@@ -49,7 +49,7 @@ class ApplicationDirector: RootModuleDelegate,
     private let knowledgeNavigationController: UINavigationController
 
     init(animate: Bool,
-         linkRouter: LinkRouter,
+         linkLookupService: LinkLookupService,
          webModuleProviding: WebMobuleProviding,
          windowWireframe: WindowWireframe,
          navigationControllerFactory: NavigationControllerFactory,
@@ -64,7 +64,7 @@ class ApplicationDirector: RootModuleDelegate,
          knowledgeListModuleProviding: KnowledgeListModuleProviding,
          knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding) {
         self.animate = animate
-        self.linkRouter = linkRouter
+        self.linkLookupService = linkLookupService
         self.webModuleProviding = webModuleProviding
         self.windowWireframe = windowWireframe
         self.rootModuleProviding = rootModuleProviding
@@ -185,7 +185,7 @@ class ApplicationDirector: RootModuleDelegate,
     // MARK: KnowledgeDetailModuleDelegate
 
     func knowledgeDetailModuleDidSelectLink(_ link: Link) {
-        if let action = linkRouter.resolveAction(for: link), case .web(let url) = action {
+        if let action = linkLookupService.resolveAction(for: link), case .web(let url) = action {
             let webModule = webModuleProviding.makeWebModule(for: url)
             tabController?.present(webModule, animated: animate)
         }

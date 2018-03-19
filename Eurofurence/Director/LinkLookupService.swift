@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol LinkRouter {
+protocol LinkLookupService {
 
     func resolveAction(for link: Link) -> LinkRouterAction?
 

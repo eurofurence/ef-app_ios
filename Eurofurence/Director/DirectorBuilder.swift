@@ -11,7 +11,7 @@ import UIKit.UIViewController
 class DirectorBuilder {
 
     private var animate: Bool
-    private var linkRouter: LinkRouter
+    private var linkLookupService: LinkLookupService
     private var webModuleProviding: WebMobuleProviding
     private var windowWireframe: WindowWireframe
     private var navigationControllerFactory: NavigationControllerFactory
@@ -42,7 +42,7 @@ class DirectorBuilder {
         knowledgeListModuleProviding = KnowledgeListModuleBuilder().build()
         knowledgeDetailModuleProviding = KnowledgeDetailModuleBuilder().build()
 
-        struct DummyLinkRouter: LinkRouter {
+        struct DummyLinkLookupService: LinkLookupService {
             func resolveAction(for link: Link) -> LinkRouterAction? {
                 return nil
             }
@@ -54,13 +54,13 @@ class DirectorBuilder {
             }
         }
 
-        linkRouter = DummyLinkRouter()
+        linkLookupService = DummyLinkLookupService()
         webModuleProviding = DummyWebMobuleProviding()
     }
 
     @discardableResult
-    func with(_ linkRouter: LinkRouter) -> DirectorBuilder {
-        self.linkRouter = linkRouter
+    func with(_ linkLookupService: LinkLookupService) -> DirectorBuilder {
+        self.linkLookupService = linkLookupService
         return self
     }
 
@@ -150,7 +150,7 @@ class DirectorBuilder {
 
     func build() -> ApplicationDirector {
         return ApplicationDirector(animate: animate,
-                                   linkRouter: linkRouter,
+                                   linkLookupService: linkLookupService,
                                    webModuleProviding: webModuleProviding,
                                    windowWireframe: windowWireframe,
                                    navigationControllerFactory: navigationControllerFactory,

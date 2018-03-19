@@ -432,7 +432,7 @@
 		CAD3BDB92059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB82059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift */; };
 		CAD3BDBB205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDBA205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift */; };
 		CAD3BDBD205AA61B00C91E6E /* URL+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDBC205AA61B00C91E6E /* URL+RandomValueProviding.swift */; };
-		CAD3BDBF205AA69600C91E6E /* LinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDBE205AA69600C91E6E /* LinkRouter.swift */; };
+		CAD3BDBF205AA69600C91E6E /* LinkLookupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDBE205AA69600C91E6E /* LinkLookupService.swift */; };
 		CAD3BDC2205AA7BE00C91E6E /* WebMobuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC1205AA7BE00C91E6E /* WebMobuleProviding.swift */; };
 		CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780361F1D415A002A8333 /* MessagesViewController.swift */; };
 		CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780381F1D41C4002A8333 /* LoginViewController.swift */; };
@@ -991,7 +991,7 @@
 		CAD3BDB82059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModuleDelegate.swift; sourceTree = "<group>"; };
 		CAD3BDBA205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeDetailModuleDelegate.swift; sourceTree = "<group>"; };
 		CAD3BDBC205AA61B00C91E6E /* URL+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+RandomValueProviding.swift"; sourceTree = "<group>"; };
-		CAD3BDBE205AA69600C91E6E /* LinkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkRouter.swift; sourceTree = "<group>"; };
+		CAD3BDBE205AA69600C91E6E /* LinkLookupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkLookupService.swift; sourceTree = "<group>"; };
 		CAD3BDC1205AA7BE00C91E6E /* WebMobuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebMobuleProviding.swift; sourceTree = "<group>"; };
 		CAD780361F1D415A002A8333 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CAD780381F1D41C4002A8333 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -1905,7 +1905,7 @@
 				CA8E7EFD1FB093D800F0BF10 /* PhoneNavigationControllerFactory.swift */,
 				CA8E7EF51FB08E2500F0BF10 /* PhoneWindowWireframe.swift */,
 				CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */,
-				CAD3BDBE205AA69600C91E6E /* LinkRouter.swift */,
+				CAD3BDBE205AA69600C91E6E /* LinkLookupService.swift */,
 			);
 			path = Director;
 			sourceTree = "<group>";
@@ -3339,7 +3339,7 @@
 				78C86D561F12334D003A20E6 /* Routers.swift in Sources */,
 				CA6AA0141FD74F910092C6DB /* ViewControllerDissolveTransitioning.swift in Sources */,
 				CA73AEF1201A08BA004E77BF /* KnowledgeListModuleProviding.swift in Sources */,
-				CAD3BDBF205AA69600C91E6E /* LinkRouter.swift in Sources */,
+				CAD3BDBF205AA69600C91E6E /* LinkLookupService.swift in Sources */,
 				CA30EAB01F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift in Sources */,
 				9A861EAB1F2554D700B75A8C /* BootstrappingModule.swift in Sources */,
 				CA6EC47F2051CBC800402894 /* KnowledgeDetailScene.swift in Sources */,
