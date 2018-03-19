@@ -185,7 +185,7 @@ class ApplicationDirector: RootModuleDelegate,
     // MARK: KnowledgeDetailModuleDelegate
 
     func knowledgeDetailModuleDidSelectLink(_ link: Link) {
-        if let action = linkLookupService.resolveAction(for: link), case .web(let url) = action {
+        if let action = linkLookupService.lookupContent(for: link), case .web(let url) = action {
             let webModule = webModuleProviding.makeWebModule(for: url)
             tabController?.present(webModule, animated: animate)
         }

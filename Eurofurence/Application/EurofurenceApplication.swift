@@ -151,7 +151,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         return Progress()
     }
 
-    func resolveAction(for link: Link) -> LinkRouterAction? {
+    func lookupContent(for link: Link) -> LinkContentLookupResult? {
         guard let urlString = link.contents as? String, let url = URL(string: urlString) else { return nil }
         return .web(url)
     }

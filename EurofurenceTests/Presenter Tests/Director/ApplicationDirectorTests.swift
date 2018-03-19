@@ -176,8 +176,8 @@ class StubKnowledgeDetailModuleProviding: KnowledgeDetailModuleProviding {
 
 class StubLinkRouter: LinkLookupService {
     
-    var stubbedLinkActions = [Link : LinkRouterAction]()
-    func resolveAction(for link: Link) -> LinkRouterAction? {
+    var stubbedLinkActions = [Link : LinkContentLookupResult]()
+    func lookupContent(for link: Link) -> LinkContentLookupResult? {
         return stubbedLinkActions[link]
     }
     

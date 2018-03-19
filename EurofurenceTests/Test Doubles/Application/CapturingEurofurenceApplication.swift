@@ -53,7 +53,7 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
-    func resolveAction(for link: Link) -> LinkRouterAction? {
+    func lookupContent(for link: Link) -> LinkContentLookupResult? {
         return nil
     }
     
