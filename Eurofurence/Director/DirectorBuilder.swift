@@ -42,13 +42,7 @@ class DirectorBuilder {
         knowledgeListModuleProviding = KnowledgeListModuleBuilder().build()
         knowledgeDetailModuleProviding = KnowledgeDetailModuleBuilder().build()
 
-        struct DummyLinkLookupService: LinkLookupService {
-            func lookupContent(for link: Link) -> LinkContentLookupResult? {
-                return nil
-            }
-        }
-
-        linkLookupService = DummyLinkLookupService()
+        linkLookupService = EurofurenceApplication.shared
         webModuleProviding = SafariWebModuleProviding()
     }
 
