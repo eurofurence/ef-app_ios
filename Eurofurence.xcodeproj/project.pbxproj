@@ -434,6 +434,7 @@
 		CAD3BDBD205AA61B00C91E6E /* URL+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDBC205AA61B00C91E6E /* URL+RandomValueProviding.swift */; };
 		CAD3BDBF205AA69600C91E6E /* LinkLookupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDBE205AA69600C91E6E /* LinkLookupService.swift */; };
 		CAD3BDC2205AA7BE00C91E6E /* WebMobuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC1205AA7BE00C91E6E /* WebMobuleProviding.swift */; };
+		CAD3BDC5205FE42A00C91E6E /* WhenLookingUpWebLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC4205FE42A00C91E6E /* WhenLookingUpWebLinks.swift */; };
 		CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780361F1D415A002A8333 /* MessagesViewController.swift */; };
 		CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780381F1D41C4002A8333 /* LoginViewController.swift */; };
 		CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */; };
@@ -993,6 +994,7 @@
 		CAD3BDBC205AA61B00C91E6E /* URL+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAD3BDBE205AA69600C91E6E /* LinkLookupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkLookupService.swift; sourceTree = "<group>"; };
 		CAD3BDC1205AA7BE00C91E6E /* WebMobuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebMobuleProviding.swift; sourceTree = "<group>"; };
+		CAD3BDC4205FE42A00C91E6E /* WhenLookingUpWebLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLookingUpWebLinks.swift; sourceTree = "<group>"; };
 		CAD780361F1D415A002A8333 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CAD780381F1D41C4002A8333 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoginStateChanges.swift; sourceTree = "<group>"; };
@@ -1469,6 +1471,7 @@
 				CA804DD71F20D2E000E07A4A /* API */,
 				CA81D4951FEA950600A52A2F /* Authentication */,
 				CABF03C820421B2A0028BD62 /* Knowledge */,
+				CAD3BDC3205FE3EA00C91E6E /* Links */,
 				CA81D4971FEA952D00A52A2F /* Notification Registration */,
 				781A94431F1A1DC6002DE70F /* Notifications */,
 				CA81D4961FEA951D00A52A2F /* Private Messages */,
@@ -2578,6 +2581,14 @@
 			path = Web;
 			sourceTree = "<group>";
 		};
+		CAD3BDC3205FE3EA00C91E6E /* Links */ = {
+			isa = PBXGroup;
+			children = (
+				CAD3BDC4205FE42A00C91E6E /* WhenLookingUpWebLinks.swift */,
+			);
+			path = Links;
+			sourceTree = "<group>";
+		};
 		CAD780441F1D4DF7002A8333 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -3677,6 +3688,7 @@
 				CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */,
 				7820A6FF1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift in Sources */,
 				CA73AEDB201A080F004E77BF /* StubKnowledgeListSceneFactory.swift in Sources */,
+				CAD3BDC5205FE42A00C91E6E /* WhenLookingUpWebLinks.swift in Sources */,
 				CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */,
 				CA8276BA204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift in Sources */,
 				CAF9A9581F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift in Sources */,

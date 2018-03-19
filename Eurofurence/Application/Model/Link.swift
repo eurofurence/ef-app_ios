@@ -8,7 +8,13 @@
 
 struct Link: Comparable, Hashable, Equatable {
 
+    enum Kind {
+        case webExternal
+    }
+
     var name: String
+    var type: Kind
+    var contents: Any
 
     var hashValue: Int {
         return name.hashValue

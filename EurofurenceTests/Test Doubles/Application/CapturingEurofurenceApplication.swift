@@ -53,6 +53,10 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
+    func resolveAction(for link: Link) -> LinkRouterAction? {
+        return nil
+    }
+    
     private(set) var wasToldToRefreshLocalStore = false
     fileprivate var refreshCompletionHandler: ((Error?) -> Void)?
     fileprivate var refreshProgress: Progress?

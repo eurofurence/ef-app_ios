@@ -14,6 +14,14 @@ protocol LinkLookupService {
 
 }
 
-enum LinkRouterAction {
+enum LinkRouterAction: Equatable {
+
     case web(URL)
+
+    static func ==(lhs: LinkRouterAction, rhs: LinkRouterAction) -> Bool {
+        switch (lhs, rhs) {
+        case (.web(let l), .web(let r)):
+            return l == r
+        }
+    }
 }

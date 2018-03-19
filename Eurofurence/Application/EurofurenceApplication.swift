@@ -151,6 +151,11 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         return Progress()
     }
 
+    func resolveAction(for link: Link) -> LinkRouterAction? {
+        guard let urlString = link.contents as? String, let url = URL(string: urlString) else { return nil }
+        return .web(url)
+    }
+
     private func makeKnowledgeGroupsFromSyncResponse() -> [KnowledgeGroup2] {
         if let syncResponse = syncResponse {
             return KnowledgeGroup2.fromServerModels(groups: syncResponse.knowledgeGroups.changed, entries: syncResponse.knowledgeEntries.changed)

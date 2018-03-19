@@ -12,7 +12,7 @@ import Foundation
 extension Link: RandomValueProviding {
     
     static var random: Link {
-        return Link(name: .random)
+        return Link(name: .random, type: .webExternal, contents: Int.random)
     }
     
 }
