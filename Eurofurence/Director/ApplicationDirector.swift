@@ -27,7 +27,7 @@ class ApplicationDirector: RootModuleDelegate,
 
     private let animate: Bool
     private let linkLookupService: LinkLookupService
-    private let webModuleProviding: WebMobuleProviding
+    private let webModuleProviding: WebModuleProviding
     private let windowWireframe: WindowWireframe
     private let rootModuleProviding: RootModuleProviding
     private let tutorialModuleProviding: TutorialModuleProviding
@@ -50,7 +50,7 @@ class ApplicationDirector: RootModuleDelegate,
 
     init(animate: Bool,
          linkLookupService: LinkLookupService,
-         webModuleProviding: WebMobuleProviding,
+         webModuleProviding: WebModuleProviding,
          windowWireframe: WindowWireframe,
          navigationControllerFactory: NavigationControllerFactory,
          rootModuleProviding: RootModuleProviding,

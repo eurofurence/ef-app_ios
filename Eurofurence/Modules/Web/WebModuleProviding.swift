@@ -1,5 +1,5 @@
 //
-//  WebMobuleProviding.swift
+//  WebModuleProviding.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 15/03/2018.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit.UIViewController
 
-protocol WebMobuleProviding {
+protocol WebModuleProviding {
 
     func makeWebModule(for url: URL) -> UIViewController
 

@@ -183,7 +183,7 @@ class StubLinkRouter: LinkLookupService {
     
 }
 
-class StubWebMobuleProviding: WebMobuleProviding {
+class StubWebMobuleProviding: WebModuleProviding {
     
     var producedWebModules = [URL : UIViewController]()
     func makeWebModule(for url: URL) -> UIViewController {

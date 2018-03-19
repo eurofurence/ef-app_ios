@@ -8,7 +8,7 @@
 
 import SafariServices
 
-struct SafariWebModuleProviding: WebMobuleProviding {
+struct SafariWebModuleProviding: WebModuleProviding {
 
     func makeWebModule(for url: URL) -> UIViewController {
         return SFSafariViewController(url: url)

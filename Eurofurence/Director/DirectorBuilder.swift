@@ -12,7 +12,7 @@ class DirectorBuilder {
 
     private var animate: Bool
     private var linkLookupService: LinkLookupService
-    private var webModuleProviding: WebMobuleProviding
+    private var webModuleProviding: WebModuleProviding
     private var windowWireframe: WindowWireframe
     private var navigationControllerFactory: NavigationControllerFactory
     private var rootModuleProviding: RootModuleProviding
@@ -137,7 +137,7 @@ class DirectorBuilder {
     }
 
     @discardableResult
-    func with(_ webModuleProviding: WebMobuleProviding) -> DirectorBuilder {
+    func with(_ webModuleProviding: WebModuleProviding) -> DirectorBuilder {
         self.webModuleProviding = webModuleProviding
         return self
     }
