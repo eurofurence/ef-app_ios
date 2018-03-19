@@ -48,14 +48,8 @@ class DirectorBuilder {
             }
         }
 
-        struct DummyWebMobuleProviding: WebMobuleProviding {
-            func makeWebModule(for url: URL) -> UIViewController {
-                return UIViewController()
-            }
-        }
-
         linkLookupService = DummyLinkLookupService()
-        webModuleProviding = DummyWebMobuleProviding()
+        webModuleProviding = SafariWebModuleProviding()
     }
 
     @discardableResult

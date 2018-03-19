@@ -435,6 +435,7 @@
 		CAD3BDBF205AA69600C91E6E /* LinkLookupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDBE205AA69600C91E6E /* LinkLookupService.swift */; };
 		CAD3BDC2205AA7BE00C91E6E /* WebMobuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC1205AA7BE00C91E6E /* WebMobuleProviding.swift */; };
 		CAD3BDC5205FE42A00C91E6E /* WhenLookingUpWebLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC4205FE42A00C91E6E /* WhenLookingUpWebLinks.swift */; };
+		CAD3BDC7205FE88900C91E6E /* SafariWebModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC6205FE88900C91E6E /* SafariWebModuleProviding.swift */; };
 		CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780361F1D415A002A8333 /* MessagesViewController.swift */; };
 		CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780381F1D41C4002A8333 /* LoginViewController.swift */; };
 		CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */; };
@@ -995,6 +996,7 @@
 		CAD3BDBE205AA69600C91E6E /* LinkLookupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkLookupService.swift; sourceTree = "<group>"; };
 		CAD3BDC1205AA7BE00C91E6E /* WebMobuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebMobuleProviding.swift; sourceTree = "<group>"; };
 		CAD3BDC4205FE42A00C91E6E /* WhenLookingUpWebLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLookingUpWebLinks.swift; sourceTree = "<group>"; };
+		CAD3BDC6205FE88900C91E6E /* SafariWebModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebModuleProviding.swift; sourceTree = "<group>"; };
 		CAD780361F1D415A002A8333 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CAD780381F1D41C4002A8333 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoginStateChanges.swift; sourceTree = "<group>"; };
@@ -2577,6 +2579,7 @@
 			isa = PBXGroup;
 			children = (
 				CAD3BDC1205AA7BE00C91E6E /* WebMobuleProviding.swift */,
+				CAD3BDC6205FE88900C91E6E /* SafariWebModuleProviding.swift */,
 			);
 			path = Web;
 			sourceTree = "<group>";
@@ -3319,6 +3322,7 @@
 				9ACF99681EBE3479006FC958 /* EntityBase.swift in Sources */,
 				CA17FE8B20585D9C005A4C05 /* LinkTableViewCell.swift in Sources */,
 				9A80EF5D1F29204900FD0D37 /* CurrentEventsFilterFavoritesProviding.swift in Sources */,
+				CAD3BDC7205FE88900C91E6E /* SafariWebModuleProviding.swift in Sources */,
 				78567B3D1F100BAF00EBA31D /* DataStoreRefreshController.swift in Sources */,
 				78D7EEBD1F196B62005372A9 /* EurofurenceApplication.swift in Sources */,
 				CA321F531F7BC88D0050E489 /* PhonePreloadSceneFactory.swift in Sources */,
