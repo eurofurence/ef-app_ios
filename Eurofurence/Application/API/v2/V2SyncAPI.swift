@@ -68,12 +68,30 @@ private struct JSONSyncResponse: Decodable {
                                      title: Title,
                                      order: Order,
                                      text: Text,
-                                     links: Links.map({ return APILink(name: $0.Name) }))
+                                     links: Links.map({ $0.asModel() }))
         }
     }
 
-    struct JSONLink: Decodable {
+    struct JSONLink: Decodable, ModelRepresenting {
+
+        enum JSONFragmentType: String, Decodable, ModelRepresenting {
+            case WebExternal
+
+            func asModel() -> APILink.FragmentType {
+                switch self {
+                case JSONLink.JSONFragmentType.WebExternal:
+                    return APILink.FragmentType.WebExternal
+                }
+            }
+        }
+
         var Name: String
+        var FragmentType: JSONFragmentType
+        var Target: String
+
+        func asModel() -> APILink {
+            return APILink(name: Name, fragmentType: FragmentType.asModel(), target: Target)
+        }
     }
 
     var KnowledgeGroups: Leaf<JSONKnowledgeGroup>

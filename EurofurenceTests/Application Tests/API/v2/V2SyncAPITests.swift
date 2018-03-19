@@ -80,7 +80,7 @@ class V2SyncAPITests: XCTestCase {
                                                                                            title: "Parkhaus Neukölln Arcaden",
                                                                                            order: 0,
                                                                                            text: "The Parkhaus Neukölln Arcaden is about 2.5 km away from the hotel which means an average walking time of 30 minutes. Compared to the hotel parking this is rather cheap.",
-                                                                                           links: [APILink(name: "Info Site (German)")])],
+                                                                                           links: [APILink(name: "Info Site (German)", fragmentType: .WebExternal, target: "https://www.mein-contipark.de/parkplatz-finden/parken-in-berlin/parkhaus-neukoelln-arcaden-berlin--ci3cp11881")])],
                                                                deleted: [APIKnowledgeEntry(groupIdentifier: "66e14f56-743c-1ece-a50c-b691143a3f93",
                                                                                            title: "Clockwork Creature Studio",
                                                                                            order: 1,

@@ -25,7 +25,7 @@ struct Link: Comparable, Hashable, Equatable {
     }
 
     static func ==(lhs: Link, rhs: Link) -> Bool {
-        return lhs.name == rhs.name
+        return lhs.name == rhs.name && lhs.type == rhs.type // && lhs.contents == rhs.contents
     }
 
 }

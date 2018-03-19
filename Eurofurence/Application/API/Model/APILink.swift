@@ -10,10 +10,16 @@ import Foundation
 
 struct APILink: Equatable {
 
+    enum FragmentType {
+        case WebExternal
+    }
+
     var name: String
+    var fragmentType: FragmentType
+    var target: String
 
     static func ==(lhs: APILink, rhs: APILink) -> Bool {
-        return lhs.name == rhs.name
+        return lhs.name == rhs.name && lhs.fragmentType == rhs.fragmentType && lhs.target == rhs.target
     }
 
 }

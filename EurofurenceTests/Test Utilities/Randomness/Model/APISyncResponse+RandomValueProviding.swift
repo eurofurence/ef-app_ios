@@ -49,7 +49,15 @@ extension APIKnowledgeEntry: RandomValueProviding {
 extension APILink: RandomValueProviding {
     
     static var random: APILink {
-        return APILink(name: .random)
+        return APILink(name: .random, fragmentType: .random, target: .random)
+    }
+    
+}
+
+extension APILink.FragmentType: RandomValueProviding {
+    
+    static var random: APILink.FragmentType {
+        return .WebExternal
     }
     
 }
