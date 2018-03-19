@@ -14,7 +14,7 @@ class WhenUserSelectsKnowledgeLink: XCTestCase {
     func testTheSceneIsToldToDeselectTheLink() {
         let context = KnowledgeDetailPresenterTestBuilder().build()
         context.knowledgeDetailScene.simulateSceneDidLoad()
-        let randomLink = context.interactor.viewModel.links.randomElement()
+        let randomLink = context.knowledgeEntry.links.randomElement()
         context.knowledgeDetailScene.simulateSelectingLink(at: randomLink.index)
         
         XCTAssertEqual(randomLink.index, context.knowledgeDetailScene.deselectedLinkIndex)
