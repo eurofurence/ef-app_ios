@@ -436,6 +436,8 @@
 		CAD3BDC2205AA7BE00C91E6E /* WebModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC1205AA7BE00C91E6E /* WebModuleProviding.swift */; };
 		CAD3BDC5205FE42A00C91E6E /* WhenLookingUpWebLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC4205FE42A00C91E6E /* WhenLookingUpWebLinks.swift */; };
 		CAD3BDC7205FE88900C91E6E /* SafariWebModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC6205FE88900C91E6E /* SafariWebModuleProviding.swift */; };
+		CAD3BDC92061382000C91E6E /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC82061382000C91E6E /* URLOpener.swift */; };
+		CAD3BDCB2061394700C91E6E /* AppURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */; };
 		CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780361F1D415A002A8333 /* MessagesViewController.swift */; };
 		CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780381F1D41C4002A8333 /* LoginViewController.swift */; };
 		CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */; };
@@ -997,6 +999,8 @@
 		CAD3BDC1205AA7BE00C91E6E /* WebModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebModuleProviding.swift; sourceTree = "<group>"; };
 		CAD3BDC4205FE42A00C91E6E /* WhenLookingUpWebLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLookingUpWebLinks.swift; sourceTree = "<group>"; };
 		CAD3BDC6205FE88900C91E6E /* SafariWebModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebModuleProviding.swift; sourceTree = "<group>"; };
+		CAD3BDC82061382000C91E6E /* URLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
+		CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppURLOpener.swift; sourceTree = "<group>"; };
 		CAD780361F1D415A002A8333 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CAD780381F1D41C4002A8333 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoginStateChanges.swift; sourceTree = "<group>"; };
@@ -1911,6 +1915,8 @@
 				CA8E7EF51FB08E2500F0BF10 /* PhoneWindowWireframe.swift */,
 				CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */,
 				CAD3BDBE205AA69600C91E6E /* LinkLookupService.swift */,
+				CAD3BDC82061382000C91E6E /* URLOpener.swift */,
+				CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */,
 			);
 			path = Director;
 			sourceTree = "<group>";
@@ -3348,6 +3354,7 @@
 				CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */,
 				CABF03BA2041C2B00028BD62 /* KnowledgeEntry2.swift in Sources */,
 				9A8477981ED99EDE00F0DF3F /* NavigationResolver.swift in Sources */,
+				CAD3BDCB2061394700C91E6E /* AppURLOpener.swift in Sources */,
 				CA17FE9420586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift in Sources */,
 				9ACF99921EC858B2006FC958 /* EventConferenceDay.swift in Sources */,
 				9ACF998D1EC858B2006FC958 /* KnowledgeGroup.swift in Sources */,
@@ -3582,6 +3589,7 @@
 				78567B471F10D1C400EBA31D /* DataStoreLoadController.swift in Sources */,
 				9A861EA21F2554AB00B75A8C /* ShowInitiateDownloadTutorialPage.swift in Sources */,
 				CA30EAD01F27D8620053DBF6 /* MessageTableViewCell.swift in Sources */,
+				CAD3BDC92061382000C91E6E /* URLOpener.swift in Sources */,
 				D6F3D0434C71907BD410190E /* ImageServiceProtocol.swift in Sources */,
 				9A7FDA121F33B7630050C325 /* UserDefaultsTabBarOrderProvider.swift in Sources */,
 				CAE27B501F857A99005FDE39 /* PhonePreloadModuleFactory.swift in Sources */,

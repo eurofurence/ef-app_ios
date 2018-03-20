@@ -27,6 +27,7 @@ class ApplicationDirector: RootModuleDelegate,
 
     private let animate: Bool
     private let linkLookupService: LinkLookupService
+    private let urlOpener: URLOpener
     private let webModuleProviding: WebModuleProviding
     private let windowWireframe: WindowWireframe
     private let rootModuleProviding: RootModuleProviding
@@ -50,6 +51,7 @@ class ApplicationDirector: RootModuleDelegate,
 
     init(animate: Bool,
          linkLookupService: LinkLookupService,
+         urlOpener: URLOpener,
          webModuleProviding: WebModuleProviding,
          windowWireframe: WindowWireframe,
          navigationControllerFactory: NavigationControllerFactory,
@@ -65,6 +67,7 @@ class ApplicationDirector: RootModuleDelegate,
          knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding) {
         self.animate = animate
         self.linkLookupService = linkLookupService
+        self.urlOpener = urlOpener
         self.webModuleProviding = webModuleProviding
         self.windowWireframe = windowWireframe
         self.rootModuleProviding = rootModuleProviding
@@ -185,9 +188,15 @@ class ApplicationDirector: RootModuleDelegate,
     // MARK: KnowledgeDetailModuleDelegate
 
     func knowledgeDetailModuleDidSelectLink(_ link: Link) {
-        if let action = linkLookupService.lookupContent(for: link), case .web(let url) = action {
+        guard let action = linkLookupService.lookupContent(for: link) else { return }
+
+        switch action {
+        case .web(let url):
             let webModule = webModuleProviding.makeWebModule(for: url)
             tabController?.present(webModule, animated: animate)
+
+        case .externalURL(let url):
+            urlOpener.open(url)
         }
     }
 

@@ -195,6 +195,15 @@ class StubWebMobuleProviding: WebModuleProviding {
     
 }
 
+class CapturingURLOpener: URLOpener {
+    
+    private(set) var capturedURLToOpen: URL?
+    func open(_ url: URL) {
+        capturedURLToOpen = url
+    }
+    
+}
+
 class ApplicationDirectorTests: XCTestCase {
     
     var director: ApplicationDirector!
@@ -211,6 +220,7 @@ class ApplicationDirectorTests: XCTestCase {
     var knowledgeDetailModuleProviding: StubKnowledgeDetailModuleProviding!
     var linkRouter: StubLinkRouter!
     var webModuleProviding: StubWebMobuleProviding!
+    var urlOpener: CapturingURLOpener!
     
     private func navigateToTabController() {
         rootModuleFactory.delegate?.rootModuleDidDetermineStoreShouldRefresh()
@@ -237,6 +247,7 @@ class ApplicationDirectorTests: XCTestCase {
         knowledgeDetailModuleProviding = StubKnowledgeDetailModuleProviding()
         linkRouter = StubLinkRouter()
         webModuleProviding = StubWebMobuleProviding()
+        urlOpener = CapturingURLOpener()
         
         let builder = DirectorBuilder()
         builder.withAnimations(false)
@@ -254,6 +265,7 @@ class ApplicationDirectorTests: XCTestCase {
         builder.with(knowledgeDetailModuleProviding)
         builder.with(linkRouter)
         builder.with(webModuleProviding)
+        builder.with(urlOpener)
         
         director = builder.build()
     }
@@ -462,6 +474,18 @@ class ApplicationDirectorTests: XCTestCase {
         
         XCTAssertNotNil(webModuleForURL)
         XCTAssertEqual(webModuleForURL, tabModuleFactory.stubInterface.capturedPresentedViewController)
+    }
+    
+    func testWhenKnowledgeEntrySelectsExternalAppLinkTheURLLauncherIsToldToHandleTheURL() {
+        navigateToTabController()
+        let entry = KnowledgeEntry2.random
+        knowledgeListModuleProviding.delegate?.knowledgeListModuleDidSelectKnowledgeEntry(entry)
+        let link = entry.links.randomElement().element
+        let url = URL.random
+        linkRouter.stubbedLinkActions[link] = .externalURL(url)
+        knowledgeDetailModuleProviding.delegate?.knowledgeDetailModuleDidSelectLink(link)
+        
+        XCTAssertEqual(url, urlOpener.capturedURLToOpen)
     }
     
 }

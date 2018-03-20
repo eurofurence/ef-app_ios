@@ -25,6 +25,7 @@ class DirectorBuilder {
     private var messageDetailModuleProviding: MessageDetailModuleProviding
     private var knowledgeListModuleProviding: KnowledgeListModuleProviding
     private var knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding
+    private var urlOpener: URLOpener
 
     init() {
         animate = true
@@ -44,6 +45,7 @@ class DirectorBuilder {
 
         linkLookupService = EurofurenceApplication.shared
         webModuleProviding = SafariWebModuleProviding()
+        urlOpener = AppURLOpener()
     }
 
     @discardableResult
@@ -136,9 +138,16 @@ class DirectorBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ urlOpener: URLOpener) -> DirectorBuilder {
+        self.urlOpener = urlOpener
+        return self
+    }
+
     func build() -> ApplicationDirector {
         return ApplicationDirector(animate: animate,
                                    linkLookupService: linkLookupService,
+                                   urlOpener: urlOpener,
                                    webModuleProviding: webModuleProviding,
                                    windowWireframe: windowWireframe,
                                    navigationControllerFactory: navigationControllerFactory,
