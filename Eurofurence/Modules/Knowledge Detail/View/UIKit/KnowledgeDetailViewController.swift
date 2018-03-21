@@ -13,14 +13,15 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
     // MARK: IBOutlets
 
     @IBOutlet weak var tableView: UITableView!
-    private lazy var tableViewDataSource = DataSource(tableView: self.tableView)
+    private lazy var tableController = TableController(tableView: self.tableView)
 
     // MARK: Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.dataSource = tableViewDataSource
+        tableView.dataSource = tableController
+        tableView.delegate = tableController
         delegate?.knowledgeDetailSceneDidLoad()
     }
 
@@ -37,16 +38,16 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
 
     func setAttributedKnowledgeEntryContents(_ contents: NSAttributedString) {
         let contentsItem = ContentsItem(contents: contents)
-        tableViewDataSource.add(contentsItem)
+        tableController.add(contentsItem)
     }
 
     func presentLinks(count: Int, using binder: LinksBinder) {
-        let linksItem = LinksItem(count: count, binder: binder, delegate: delegate)
-        tableViewDataSource.add(linksItem)
+        let linkItems = (0..<count).map({ LinkItem(binder: binder, index: $0, delegate: delegate) })
+        linkItems.forEach(tableController.add)
     }
 
     func deselectLink(at index: Int) {
-        tableView.visibleCells.flatMap({ $0 as? KnowledgeDetailLinksTableViewCell }).first?.deselectLink(at: index)
+
     }
 
     // MARK: Private
@@ -58,31 +59,37 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
         func makeCell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeue(KnowledgeDetailContentsTableViewCell.self)
             cell.textView.attributedText = contents
-
             return cell
+        }
+
+        func selected() {
+
         }
 
     }
 
-    private struct LinksItem: TableViewDataItem {
+    private struct LinkItem: TableViewDataItem {
 
-        var count: Int
         var binder: LinksBinder
+        var index: Int
         var delegate: KnowledgeDetailSceneDelegate?
 
         func makeCell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeue(KnowledgeDetailLinksTableViewCell.self)
-            cell.showLinks(count: count, binder: binder, delegate: delegate)
-
+            let cell = tableView.dequeue(LinkTableViewCell.self)
+            binder.bind(cell, at: index)
             return cell
+        }
+
+        func selected() {
+            delegate?.knowledgeDetailSceneDidSelectLink(at: index)
         }
 
     }
 
-    private class DataSource: NSObject, UITableViewDataSource {
+    private class TableController: NSObject, UITableViewDataSource, UITableViewDelegate {
 
         private let tableView: UITableView
-        private var items = [TableViewDataItem]()
+        private(set) var items = [TableViewDataItem]()
 
         init(tableView: UITableView) {
             self.tableView = tableView
@@ -93,16 +100,17 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
             tableView.reloadData()
         }
 
-        func numberOfSections(in tableView: UITableView) -> Int {
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return items.count
         }
 
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 1
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            return items[indexPath.row].makeCell(for: tableView, at: indexPath)
         }
 
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            return items[indexPath.section].makeCell(for: tableView, at: indexPath)
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            tableView.deselectRow(at: indexPath, animated: true)
+            items[indexPath.row].selected()
         }
 
     }
@@ -112,5 +120,6 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
 private protocol TableViewDataItem {
 
     func makeCell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell
+    func selected()
 
 }

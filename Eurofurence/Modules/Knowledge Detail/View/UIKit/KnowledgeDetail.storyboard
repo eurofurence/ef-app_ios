@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="uiV-y7-f6E" userLabel="Remove Undesired Seperators">
-                                    <rect key="frame" x="0.0" y="211" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="116" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
@@ -55,58 +55,28 @@
                                             <outlet property="textView" destination="r9a-Rj-ojT" id="QGI-QU-yE1"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="KnowledgeDetailLinksTableViewCell" rowHeight="139" id="mhU-mX-IRS" customClass="KnowledgeDetailLinksTableViewCell" customModule="Eurofurence" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="139"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LinkTableViewCell" id="0Ed-jY-bnV" customClass="LinkTableViewCell" customModule="Eurofurence" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mhU-mX-IRS" id="1Z3-Te-C1Q">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="138.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Ed-jY-bnV" id="G8F-VH-xdh">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CmF-RU-r3V">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="138.5"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <view key="tableFooterView" contentMode="scaleToFill" id="l1C-Tg-RBl" userLabel="Remove Undesired Seperators">
-                                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </view>
-                                                    <prototypes>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LinkTableViewCell" id="IAz-IZ-LqZ" customClass="LinkTableViewCell" customModule="Eurofurence" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IAz-IZ-LqZ" id="eEx-52-OOs">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
-                                                                <subviews>
-                                                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="coW-ST-1LT">
-                                                                        <rect key="frame" x="15" y="11" width="345" height="22"/>
-                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                                        <state key="normal" title="Button"/>
-                                                                    </button>
-                                                                </subviews>
-                                                                <constraints>
-                                                                    <constraint firstItem="coW-ST-1LT" firstAttribute="top" secondItem="eEx-52-OOs" secondAttribute="topMargin" id="2Rv-KI-udf"/>
-                                                                    <constraint firstAttribute="bottomMargin" secondItem="coW-ST-1LT" secondAttribute="bottom" id="WAl-wj-EF3"/>
-                                                                    <constraint firstItem="coW-ST-1LT" firstAttribute="leading" secondItem="eEx-52-OOs" secondAttribute="leadingMargin" id="h4v-Hc-XDe"/>
-                                                                    <constraint firstAttribute="trailingMargin" secondItem="coW-ST-1LT" secondAttribute="trailing" id="spo-fG-fh7"/>
-                                                                </constraints>
-                                                            </tableViewCellContentView>
-                                                            <connections>
-                                                                <outlet property="linkButton" destination="coW-ST-1LT" id="kxR-ot-oms"/>
-                                                            </connections>
-                                                        </tableViewCell>
-                                                    </prototypes>
-                                                </tableView>
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="CrS-Sv-B6l">
+                                                    <rect key="frame" x="15" y="11" width="345" height="22"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="CmF-RU-r3V" firstAttribute="top" secondItem="1Z3-Te-C1Q" secondAttribute="top" id="CWS-Wd-DZR"/>
-                                                <constraint firstAttribute="trailing" secondItem="CmF-RU-r3V" secondAttribute="trailing" id="Uly-ru-uZq"/>
-                                                <constraint firstAttribute="bottom" secondItem="CmF-RU-r3V" secondAttribute="bottom" id="qvI-Ev-nU7"/>
-                                                <constraint firstItem="CmF-RU-r3V" firstAttribute="leading" secondItem="1Z3-Te-C1Q" secondAttribute="leading" id="vU3-hY-35e"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="CrS-Sv-B6l" secondAttribute="bottom" id="EDi-8w-VmS"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="CrS-Sv-B6l" secondAttribute="trailing" id="Rhi-vD-T72"/>
+                                                <constraint firstItem="CrS-Sv-B6l" firstAttribute="top" secondItem="G8F-VH-xdh" secondAttribute="topMargin" id="S8s-0C-vwR"/>
+                                                <constraint firstItem="CrS-Sv-B6l" firstAttribute="leading" secondItem="G8F-VH-xdh" secondAttribute="leadingMargin" id="n5V-6r-Ycx"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="tableView" destination="CmF-RU-r3V" id="FQQ-3o-H6H"/>
+                                            <outlet property="linkButton" destination="CrS-Sv-B6l" id="dhE-WL-es4"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

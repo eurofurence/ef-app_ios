@@ -225,7 +225,6 @@
 		CA17FE83205800A7005A4C05 /* LinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE82205800A7005A4C05 /* LinkViewModel.swift */; };
 		CA17FE8520580144005A4C05 /* LinksBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8420580144005A4C05 /* LinksBinder.swift */; };
 		CA17FE8720580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8620580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift */; };
-		CA17FE8920585D63005A4C05 /* KnowledgeDetailLinksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8820585D62005A4C05 /* KnowledgeDetailLinksTableViewCell.swift */; };
 		CA17FE8B20585D9C005A4C05 /* LinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8A20585D9C005A4C05 /* LinkTableViewCell.swift */; };
 		CA17FE8E205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8D205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift */; };
 		CA17FE9020586A15005A4C05 /* StubWikiRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8F20586A15005A4C05 /* StubWikiRenderer.swift */; };
@@ -786,7 +785,6 @@
 		CA17FE82205800A7005A4C05 /* LinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkViewModel.swift; sourceTree = "<group>"; };
 		CA17FE8420580144005A4C05 /* LinksBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksBinder.swift; sourceTree = "<group>"; };
 		CA17FE8620580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailContentsTableViewCell.swift; sourceTree = "<group>"; };
-		CA17FE8820585D62005A4C05 /* KnowledgeDetailLinksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailLinksTableViewCell.swift; sourceTree = "<group>"; };
 		CA17FE8A20585D9C005A4C05 /* LinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkTableViewCell.swift; sourceTree = "<group>"; };
 		CA17FE8D205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeDetailSceneInteractorTests.swift; sourceTree = "<group>"; };
 		CA17FE8F20586A15005A4C05 /* StubWikiRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubWikiRenderer.swift; sourceTree = "<group>"; };
@@ -2123,7 +2121,6 @@
 				CA6EC48A2051CDC800402894 /* KnowledgeDetailViewController.swift */,
 				CA6EC4882051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift */,
 				CA17FE8620580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift */,
-				CA17FE8820585D62005A4C05 /* KnowledgeDetailLinksTableViewCell.swift */,
 				CA17FE8A20585D9C005A4C05 /* LinkTableViewCell.swift */,
 			);
 			path = UIKit;
@@ -3506,7 +3503,6 @@
 				CA6EC47D2051CBB800402894 /* KnowledgeDetailSceneFactory.swift in Sources */,
 				CABA43A11FD57A78009CB5B0 /* PreloadModuleBuilder.swift in Sources */,
 				9ACB006F1F16C945001CE9D2 /* EventFavorite.swift in Sources */,
-				CA17FE8920585D63005A4C05 /* KnowledgeDetailLinksTableViewCell.swift in Sources */,
 				D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */,
 				CA0F7632203314FE009DA079 /* KnowledgeListViewController.swift in Sources */,
 				CAE27B4E1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift in Sources */,
