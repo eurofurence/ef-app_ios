@@ -7,11 +7,15 @@
 //
 
 import Foundation
+import UIKit
 
 struct ConcreteWikiRenderer: WikiRenderer {
 
     func renderContents(from wikiText: String) -> NSAttributedString {
-        return WikiText.transform(wikiText)
+        let text = NSMutableAttributedString(attributedString: WikiText.transform(wikiText))
+        text.removeAttribute(NSForegroundColorAttributeName, range: NSMakeRange(0, text.length))
+
+        return text
     }
 
 }
