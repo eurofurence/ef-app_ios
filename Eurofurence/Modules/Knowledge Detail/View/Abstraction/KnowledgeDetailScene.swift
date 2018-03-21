@@ -14,7 +14,6 @@ protocol KnowledgeDetailScene {
     func setKnowledgeDetailTitle(_ title: String)
     func setAttributedKnowledgeEntryContents(_ contents: NSAttributedString)
     func presentLinks(count: Int, using binder: LinksBinder)
-    func deselectLink(at index: Int)
 
 }
 

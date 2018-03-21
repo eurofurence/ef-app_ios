@@ -33,11 +33,6 @@ class CapturingKnowledgeDetailScene: UIViewController, KnowledgeDetailScene {
         linksBinder = binder
     }
     
-    private(set) var deselectedLinkIndex: Int?
-    func deselectLink(at index: Int) {
-        deselectedLinkIndex = index
-    }
-    
 }
 
 extension CapturingKnowledgeDetailScene {

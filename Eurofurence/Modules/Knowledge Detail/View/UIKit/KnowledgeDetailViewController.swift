@@ -46,10 +46,6 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
         linkItems.forEach(tableController.add)
     }
 
-    func deselectLink(at index: Int) {
-
-    }
-
     // MARK: Private
 
     private struct ContentsItem: TableViewDataItem {

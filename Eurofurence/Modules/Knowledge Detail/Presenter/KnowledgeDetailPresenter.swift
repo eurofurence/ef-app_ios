@@ -39,8 +39,6 @@ struct KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
     }
 
     func knowledgeDetailSceneDidSelectLink(at index: Int) {
-        knowledgeDetailScene.deselectLink(at: index)
-
         let link = knowledgeEntry.links[index]
         delegate.knowledgeDetailModuleDidSelectLink(link)
     }
