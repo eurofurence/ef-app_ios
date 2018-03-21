@@ -16,7 +16,7 @@ class LinkTableViewCell: UITableViewCell, LinkScene {
 
     // MARK: LinkScene
 
-    func setLinkSame(_ linkName: String) {
+    func setLinkName(_ linkName: String) {
         linkButton.setTitle(linkName, for: .normal)
     }
 

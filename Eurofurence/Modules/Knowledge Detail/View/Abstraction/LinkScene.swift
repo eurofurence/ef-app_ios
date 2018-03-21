@@ -8,6 +8,6 @@
 
 protocol LinkScene {
 
-    func setLinkSame(_ linkName: String)
+    func setLinkName(_ linkName: String)
 
 }

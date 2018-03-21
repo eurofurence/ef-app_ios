@@ -11,7 +11,7 @@
 class CapturingLinkScene: LinkScene {
     
     private(set) var capturedLinkName: String?
-    func setLinkSame(_ linkName: String) {
+    func setLinkName(_ linkName: String) {
         capturedLinkName = linkName
     }
     

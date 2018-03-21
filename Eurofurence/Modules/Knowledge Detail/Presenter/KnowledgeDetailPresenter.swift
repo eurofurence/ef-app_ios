@@ -51,7 +51,7 @@ struct KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
 
         func bind(_ scene: LinkScene, at index: Int) {
             let viewModel = viewModels[index]
-            scene.setLinkSame(viewModel.name)
+            scene.setLinkName(viewModel.name)
         }
 
     }
