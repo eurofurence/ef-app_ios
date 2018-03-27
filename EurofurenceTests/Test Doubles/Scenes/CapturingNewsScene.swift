@@ -13,6 +13,11 @@ class CapturingNewsScene: UIViewController, NewsScene {
     
     var delegate: NewsSceneDelegate?
     
+    private(set) var capturedTitle: String?
+    func showNewsTitle(_ title: String) {
+        capturedTitle = title
+    }
+    
     private(set) var wasToldToShowMessagesNavigationAction = false
     func showMessagesNavigationAction() {
         wasToldToShowMessagesNavigationAction = true

@@ -20,6 +20,8 @@ protocol NewsScene: class {
 
     var delegate: NewsSceneDelegate? { get set }
 
+    func showNewsTitle(_ title: String)
+
     func showMessagesNavigationAction()
     func hideMessagesNavigationAction()
 

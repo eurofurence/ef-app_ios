@@ -54,6 +54,10 @@ class NewsViewController: UIViewController, NewsScene {
 
     var delegate: NewsSceneDelegate?
 
+    func showNewsTitle(_ title: String) {
+        super.title = title
+    }
+
     func showMessagesNavigationAction() {
         messagesNavigationAction.isHidden = false
     }

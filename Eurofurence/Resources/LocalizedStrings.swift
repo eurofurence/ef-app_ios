@@ -58,6 +58,8 @@ public extension String {
     public static let preloadFailureMessage = NSLocalizedString("preloadFailureMessage",
                                                                 comment: "Description for the alert when the download fails")
 
+    public static let news = NSLocalizedString("News", comment: "The title shown for the News view")
+
     public static let anonymousUserLoginPrompt = NSLocalizedString("anonymousUserLoginPrompt",
                                                                    comment: "Tells user to login for additional features")
 

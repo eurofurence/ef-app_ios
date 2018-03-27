@@ -53,6 +53,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
 
         newsScene.delegate = self
         authenticationService.add(observer: self)
+        newsScene.showNewsTitle(.news)
     }
 
     // MARK: AuthStateObserver

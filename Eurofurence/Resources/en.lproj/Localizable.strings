@@ -23,6 +23,8 @@
 "cellularDownloadAlertMessage" = "Proceeding with the initial download will consume several megabytes of data.";
 "cellularDownloadAlertContinueOverCellularTitle" = "Continue Over Cellular";
 
+"News" = "News";
+
 "anonymousUserLoginPrompt" = "You are currently not logged in";
 "anonymousUserLoginDescription" = "Tap here to login using your registration details and receive personalized messages from Eurofurence!";
 

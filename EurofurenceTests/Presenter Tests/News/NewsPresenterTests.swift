@@ -41,4 +41,19 @@ class NewsPresenterTests: XCTestCase {
         XCTAssertEqual(1, authenticationService.authStateDeterminedCount)
     }
     
+    func testTheSceneIsToldToShowTheNewsTitle() {
+        let sceneFactory = StubNewsSceneFactory()
+        let authenticationService = CapturingAuthenticationService()
+        let delegate = CapturingNewsModuleDelegate()
+        _ = NewsModuleBuilder()
+            .with(sceneFactory)
+            .with(authenticationService)
+            .with(CapturingPrivateMessagesService())
+            .build()
+            .makeNewsModule(delegate)
+        let expected: String = .news
+        
+        XCTAssertEqual(expected, sceneFactory.stubbedScene.capturedTitle)
+    }
+    
 }

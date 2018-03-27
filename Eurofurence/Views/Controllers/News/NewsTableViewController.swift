@@ -441,6 +441,10 @@ class NewsTableViewController: UITableViewController,
 
     var delegate: NewsSceneDelegate?
 
+    func showNewsTitle(_ title: String) {
+
+    }
+
     func showMessagesNavigationAction() {
         showWelcomeUserBanner = true
         reloadUserMessagesBanner()
