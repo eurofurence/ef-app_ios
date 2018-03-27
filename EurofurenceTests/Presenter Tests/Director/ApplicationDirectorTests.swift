@@ -231,6 +231,14 @@ class ApplicationDirectorTests: XCTestCase {
         return windowWireframe.capturedRootInterface as! UINavigationController
     }
     
+    private func makeExpectedTabViewControllerRoots() -> [UIViewController] {
+        return [newsModuleFactory.stubInterface, knowledgeListModuleProviding.stubInterface]
+    }
+    
+    private func rootNavigationTabControllers() -> [UINavigationController] {
+        return tabModuleFactory.capturedTabModules.flatMap({ $0 as? UINavigationController })
+    }
+    
     override func setUp() {
         super.setUp()
         
@@ -322,8 +330,16 @@ class ApplicationDirectorTests: XCTestCase {
     
     func testWhenShowingTheTheTabModuleItIsInitialisedWithControllersForTabModulesNestedInNavigationControllers() {
         navigateToTabController()
-        let expected: [UIViewController] = [newsModuleFactory.stubInterface, knowledgeListModuleProviding.stubInterface]
-        let actual = tabModuleFactory.capturedTabModules.flatMap({ $0 as? UINavigationController }).flatMap({ $0.topViewController })
+        let expected: [UIViewController] = makeExpectedTabViewControllerRoots()
+        let actual = rootNavigationTabControllers().flatMap({ $0.topViewController })
+        
+        XCTAssertEqual(expected, actual)
+    }
+    
+    func testWhenShowingTheTabModuleTheRootNavigationControllersUseTheTabItemsFromTheirRoots() {
+        navigateToTabController()
+        let expected: [UITabBarItem] = makeExpectedTabViewControllerRoots().map({ $0.tabBarItem })
+        let actual: [UITabBarItem] = rootNavigationTabControllers().flatMap({ $0.tabBarItem })
         
         XCTAssertEqual(expected, actual)
     }

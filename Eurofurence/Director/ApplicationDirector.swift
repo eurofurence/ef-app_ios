@@ -124,8 +124,11 @@ class ApplicationDirector: RootModuleDelegate,
 
         let knowledgeListController = knowledgeListModuleProviding.makeKnowledgeListModule(self)
         knowledgeNavigationController.setViewControllers([knowledgeListController], animated: animate)
+        knowledgeNavigationController.tabBarItem = knowledgeListController.tabBarItem
 
         newsNavigationController.setViewControllers([newsController], animated: animate)
+        newsNavigationController.tabBarItem = newsController.tabBarItem
+
         let tabModule = tabModuleProviding.makeTabModule([newsNavigationController, knowledgeNavigationController])
         tabController = tabModule
 
