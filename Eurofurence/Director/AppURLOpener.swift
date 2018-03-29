@@ -12,7 +12,7 @@ import UIKit.UIApplication
 struct AppURLOpener: URLOpener {
 
     func open(_ url: URL) {
-        UIApplication.shared.openURL(url)
+        UIApplication.shared.open(url)
     }
 
 }
