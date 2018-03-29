@@ -1001,6 +1001,7 @@
 		CAD3BDC82061382000C91E6E /* URLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
 		CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppURLOpener.swift; sourceTree = "<group>"; };
 		CAD3BDCC20613A2800C91E6E /* WhenLookingUpMailToLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLookingUpMailToLinks.swift; sourceTree = "<group>"; };
+		CAD3BDCF206CDDA500C91E6E /* App Re-Architecture.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "App Re-Architecture.md"; sourceTree = "<group>"; };
 		CAD780361F1D415A002A8333 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CAD780381F1D41C4002A8333 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoginStateChanges.swift; sourceTree = "<group>"; };
@@ -1668,6 +1669,7 @@
 				9ACF99771EBE4B98006FC958 /* DataStore */,
 				9A34B97B1ED066B7004A249E /* DependencyResolution */,
 				CA1FE99C1FA0B3F2009C7DF3 /* Director */,
+				CAD3BDCE206CDD6600C91E6E /* Documentation */,
 				CA49E93B201547ED00EB571C /* Event Bus */,
 				CABF03B22041BC770028BD62 /* Extensions */,
 				D6F3D4066A20EACF140E773F /* Helpers */,
@@ -2596,6 +2598,14 @@
 				CAD3BDCC20613A2800C91E6E /* WhenLookingUpMailToLinks.swift */,
 			);
 			path = Links;
+			sourceTree = "<group>";
+		};
+		CAD3BDCE206CDD6600C91E6E /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				CAD3BDCF206CDDA500C91E6E /* App Re-Architecture.md */,
+			);
+			path = Documentation;
 			sourceTree = "<group>";
 		};
 		CAD780441F1D4DF7002A8333 /* Login */ = {
