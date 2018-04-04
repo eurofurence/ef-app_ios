@@ -24,11 +24,12 @@ Updates to the model are propogated using ReactiveSwift - a third party framewor
 
 The primary flaw in our current design is that a nontrivial amount of business logic resides in the presentation tier. Our `UIViewController`s know too much about our model, and have absorbed far too many responsibilities. This leaves us in the position where changes to the app are unsafe, and more time consuming then first assumed, as each `UIViewController` handles more behaviour than expected. For example:
 
-- Changing the flow or structure of the app requires tearing down and rebuilding of segues; a symptom of this is exhibited via the presenting `UIViewController` being aware of the specific `UIViewController` class being presented in order to configure it for presentation
+- Changing the flow or structure of the app requires tearing down and rebuilding of segues
+- Presenting `UIViewController`s are aware of the specific `UIViewController` class being presented in order to configure it for presentation, binding the flow together
 - Amendments to behaviour of a particular scene are likely to have side-effects, as there is often complex decision making in preparing views for presentation. Instead of our presentation tier being told what to show, it instead has to infer what to display from the model
 - As a consequence of the above, the view tier is intimate with how the data is structured. We cannot freely play with the structure of our model without needing to perform some shotgun surgery amongst the view model and presentation types
 
-In addition to the above, the app has become completley dependant on a framework outside of our control (ReactiveSwift). We've previously ran into behavioural issues during integration into the app, however post-release it was made clear our ability to move forward with Swift and iOS versions may also be limited by the framework. We remain at the whim of ReactiveSwift to keep up to date with Xcode and Seift migrations in order to move forward ourselves. Further to this, in the event of a drastic API change on their part a significant amount of the app will need updating to accomodate the changes.
+In addition to the above, the app has become completley dependant on a framework outside of our control (ReactiveSwift). We've previously ran into behavioural issues during integration into the app, however post-release it was made clear our ability to move forward with Swift and iOS versions may also be limited by the framework. We remain at the whim of ReactiveSwift to keep up to date with Xcode and Swift migrations in order to move forward ourselves. Further to this, in the event of a drastic API change on their part a significant amount of the app will need updating to accomodate the changes.
 
 ## Proposal
 
@@ -56,4 +57,41 @@ As Swift and the Xcode toolset continue to rapidly change, we should aim to be a
 
 ## Proposed Design
 
-TBD
+(Note to reader: this section also discusses the design in-flight. Amendments to this are more than welcome as potential improvements are spotted.)
+
+The proposed design is composed of several pieces:
+
+- A `Director` that decides how the flow of the application should behave in response to user actions
+- An app `Core` that manages the acquisition, processing and storage of con data in addition to system behaviour. This has the potential to be OS-agnostic.
+- A set of `Module`s that represent scenarios within the app, providing views into the `Core`
+
+### Director
+
+The `Director` follows its metaphor, in that it is aware of all the scenes to be shown and how they should look. However it does not particularly _care_ how these scenes work, only that:
+
+- They can be presented using standard OS patterns, e.g. `UIViewController` presentation
+- They make require data (inputs) in order to function, and that they may produce events (outputs) that trigger other scenes to be displayed
+- They are presentation-agnostic, such that the director can freely rearrange the scenes
+
+This allows parts of the app to be developed in silos, while the `Director` manages the binding of them all together. It allows for the rearrangement of app components, such as moving to other navigation paradaigms, while not requiring the scenes themselves to change.
+
+### Module
+
+A `Module` represents a component of the app that provides a function, for example the list of events would be an 'Events List' module. Modules are produced from a factory, which outputs a `UIViewController`. How the module is composed is an implementation detail, however for the purposes of testability the existing modules are composed of the following:
+
+- The `presentation tier` (a `UIViewController` with a `UIView`, configured using a `.storyboard` or `.xib`) that purely focuses on the rendering of data, and interpretation of user actions into domain events (e.g. `userDidTapLoginButton`)
+- A `presenter` that listens for events from the presentation tier, and performs actions on domain objects
+- An `interactor` that represents a domain object, that processes model objects acquired from the `Core` into `view model`s for presentation
+- A `builder` that can compose the module using real dependencies, allowing the tests to be constructed at the widest level for the module while the director can build the real system trivially
+
+When creating a new module, following test-first development against the `presenter` allows for tests that describe user actions against the domain. These are not only easy to write, but also produce the appropriate ports on the `presentation tier` and `interactor` that become trivial to write tests for and implement without producing unneeded work. This is formally known as presenter-first TDD (https://atomicobject.com/uploads/archive/files/PF_March2005.pdf).
+
+### Core
+
+The `Core` sits at the center of everything, remaining presentation and preferably operating system agnostic. It has no dependencies on system or third party frameworks, instead declaring ports against technology boundaries (e.g. network). This provides several benefits, including:
+
+- All knowledge of how the model is acquired and persisted, along with the associated business rules for processing and adaption, live in one place
+- With no platform or technology dependencies, the core can trivially run on any supported platform (e.g. macOS) or be easily ported for other apps
+- The induced seperation between presentation and business logic allows the two to develop in parallel with significantly reduced risk
+
+Features of the core are deduced from use-cases that become apparent while following presenter-first TDD. It is important to note however that these features on the core must remain presentation agnostic; the requirement for data should feed into the API for the core, how it is presented should not go anywhere near it.
