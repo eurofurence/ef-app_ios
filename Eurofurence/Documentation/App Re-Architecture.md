@@ -1,6 +1,6 @@
 #  Re-Architecture Aims + Design
 
-This document pertains to the reasoning behind the change in architecture for the Eurofurence app. An overview of the current design of the app (at time of writing) along with the issues we have found is laid out, followed by the proposed design and motiviation.
+This document pertains to the reasoning behind the change in architecture for the Eurofurence app. An overview of the current design of the app (at time of writing) along with the issues we have found is laid out, followed by the proposed design and motivation.
 
 This document remains a work in progress.
 
@@ -14,22 +14,21 @@ The Eurofurence app is composed of several discrete sections, each containing th
 
 Each section is backed by its own `UIViewController` subclass, with its view outlet configured in `Main.storyboard`. Segues bind the flow of the application, such as nesting sections inside a `UITabBarController` and pushing additional `UIViewController`s based on user actions (e.g. tapping events). Each `UIViewController` subclass knows how to obtain its data via a dependency container, in addition to having access to app services such as image loading. These are then utilised to perform appropriate operations on its views, configuring the scene for presentation, and so on. This follows the Model-View-Controller (MVC) pattern, such that:
 
-- Updates to the model are propogated to the view controller; the view controller performs operations on or using the model
+- Updates to the model are propagated to the view controller; the view controller performs operations on or using the model
 - Events from the view are handled by the view controller; the view controller configures the view for presentation
-- The view types are not aware of the model and vice-versa
 
-Updates to the model are propogated using ReactiveSwift - a third party framework that exposes hooks into listening to changes on well-defined types. This additional glue is configured in the `viewDidLoad` implementations of most `UIViewController` subclasses, however this varies based on the content being shown.
+Updates to the model are propagated using ReactiveSwift - a third party framework that exposes hooks into listening to changes on well-defined types. This additional glue is configured in the `viewDidLoad` implementations of most `UIViewController` subclasses, however this varies based on the content being shown.
 
 ### Flaws
 
-The primary flaw in our current design is that a nontrivial amount of business logic resides in the presentation tier. Our `UIViewController`s know too much about our model, and have absorbed far too many responsibilities. This leaves us in the position where changes to the app are unsafe, and more time consuming then first assumed, as each `UIViewController` handles more behaviour than expected. For example:
+The primary flaw in the current design is that a nontrivial amount of business logic resides in the presentation tier. The `UIViewController`s know too much about the model, and have absorbed far too many responsibilities. This leaves the system in the position where changes to the app are unsafe, and more time consuming then first assumed, as each `UIViewController` handles more behaviour than expected. For example:
 
 - Changing the flow or structure of the app requires tearing down and rebuilding of segues
 - Presenting `UIViewController`s are aware of the specific `UIViewController` class being presented in order to configure it for presentation, binding the flow together
-- Amendments to behaviour of a particular scene are likely to have side-effects, as there is often complex decision making in preparing views for presentation. Instead of our presentation tier being told what to show, it instead has to infer what to display from the model
-- As a consequence of the above, the view tier is intimate with how the data is structured. We cannot freely play with the structure of our model without needing to perform some shotgun surgery amongst the view model and presentation types
+- Amendments to behaviour of a particular scene are likely to have side-effects, as there is often complex decision making in preparing views for presentation. Instead of the presentation tier being told what to show, it instead has to infer what to display from the model
+- As a consequence of the above, the view tier is intimate with how the data is structured. We cannot freely play with the structure of the model without needing to perform some shotgun surgery amongst the view model and presentation types
 
-In addition to the above, the app has become completley dependant on a framework outside of our control (ReactiveSwift). We've previously ran into behavioural issues during integration into the app, however post-release it was made clear our ability to move forward with Swift and iOS versions may also be limited by the framework. We remain at the whim of ReactiveSwift to keep up to date with Xcode and Swift migrations in order to move forward ourselves. Further to this, in the event of a drastic API change on their part a significant amount of the app will need updating to accomodate the changes.
+In addition to the above, the app has become completely dependant on a framework outside of our control (ReactiveSwift). We've previously ran into behavioural issues during integration into the app, however post-release it was made clear our ability to move forward with Swift and iOS versions may also be limited by the framework. We remain at the whim of ReactiveSwift to keep up to date with Xcode and Swift migrations in order to move forward ourselves. Further to this, in the event of a drastic API change on their part a significant amount of the app will need updating to accommodate the changes.
 
 ## Proposal
 
@@ -45,11 +44,11 @@ In order to support current roadmaps, this change is to be performed concurrentl
 
 To support a comprehensive test suite, tests should be at the forefront of our development lifecycle. New behaviour in the system must be documented with a failing (red) test, before any changes to production code are made. Following this principle allows us to freely restructure the internals of the app as patterns emerge while catching potential regressions ahead of a commit. This practice is known as TDD, of which there are plentiful resources online.
 
-In addition to the above, a high quality test suit gives us additional safety in our release process. At present, we are at the behest of manually testing the app with attendee support in order to figure out if a build is up to par. This process is slow, prone to error and likely does not exhaust all the app behaviour. With enough coverage, we will be able to deduce whether a release of the app can be made within a few seconds with a higher deg.
+In addition to the above, a high quality test suit gives us additional safety in the release process. At present, we are at the behest of manually testing the app with attendee support in order to figure out if a build is up to par. This process is slow, prone to error and likely does not exhaust all the app behaviour. With enough coverage, we will be able to deduce whether a release of the app can be made within a few seconds with a higher deg.
 
 ### Domain Modelling
 
-With our business logic residing in our presentation tier, rules of our domain are unclear - how our model is processed, and what we get out of it, are muddled together. Seperating our domain such that the acquisition and storage of our data is isolated from processing for our presentation tier allow for minimal risk when making changes to either side. This also allows for rapid and radical changes to the presentation tier in isolation from rest of the system, opening up the potential for more reuse between conventions should we open up the core behaviour of the app.
+With the business logic residing in the presentation tier, rules of the domain are unclear - how the model is processed and presented are muddled together. Separating the domain such that the acquisition and storage of data is isolated from processing for the presentation tier allow for minimal risk when making changes to either side. This also allows for rapid and radical changes to the presentation tier in isolation from rest of the system, opening up the potential for more reuse between conventions should we open up the core behaviour of the app.
 
 ### Isolating Ourselves from Dependencies
 
@@ -73,7 +72,7 @@ The `Director` follows its metaphor, in that it is aware of all the scenes to be
 - They make require data (inputs) in order to function, and that they may produce events (outputs) that trigger other scenes to be displayed
 - They are presentation-agnostic, such that the director can freely rearrange the scenes
 
-This allows parts of the app to be developed in silos, while the `Director` manages the binding of them all together. It allows for the rearrangement of app components, such as moving to other navigation paradaigms, while not requiring the scenes themselves to change.
+This allows parts of the app to be developed in silos, while the `Director` manages the binding of them all together. It allows for the rearrangement of app components, such as moving to other navigation paradigms, while not requiring the scenes themselves to change.
 
 ### Module
 
@@ -81,17 +80,18 @@ A `Module` represents a component of the app that provides a function, for examp
 
 - The `presentation tier` (a `UIViewController` with a `UIView`, configured using a `.storyboard` or `.xib`) that purely focuses on the rendering of data, and interpretation of user actions into domain events (e.g. `userDidTapLoginButton`)
 - A `presenter` that listens for events from the presentation tier, and performs actions on domain objects
-- An `interactor` that represents a domain object, that processes model objects acquired from the `Core` into `view model`s for presentation
+- An `interactor` that represents a use case of the domain, that processes model objects acquired from the `Core` into `view model`s for presentation
 - A `builder` that can compose the module using real dependencies, allowing the tests to be constructed at the widest level for the module while the director can build the real system trivially
 
 When creating a new module, following test-first development against the `presenter` allows for tests that describe user actions against the domain. These are not only easy to write, but also produce the appropriate ports on the `presentation tier` and `interactor` that become trivial to write tests for and implement without producing unneeded work. This is formally known as presenter-first TDD (https://atomicobject.com/uploads/archive/files/PF_March2005.pdf).
 
 ### Core
 
-The `Core` sits at the center of everything, remaining presentation and preferably operating system agnostic. It has no dependencies on system or third party frameworks, instead declaring ports against technology boundaries (e.g. network). This provides several benefits, including:
+The `Core` sits at the centre of everything, independent from presentation concerns and preferably operating system agnostic. It has no dependencies on system or third party frameworks, instead declaring ports against technology boundaries (e.g. network). This provides several benefits, including:
 
 - All knowledge of how the model is acquired and persisted, along with the associated business rules for processing and adaption, live in one place
 - With no platform or technology dependencies, the core can trivially run on any supported platform (e.g. macOS) or be easily ported for other apps
-- The induced seperation between presentation and business logic allows the two to develop in parallel with significantly reduced risk
+- The induced separation between presentation and business logic allows the two to develop in parallel with significantly reduced risk
 
 Features of the core are deduced from use-cases that become apparent while following presenter-first TDD. It is important to note however that these features on the core must remain presentation agnostic; the requirement for data should feed into the API for the core, how it is presented should not go anywhere near it.
+
