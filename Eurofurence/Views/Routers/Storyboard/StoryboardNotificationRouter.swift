@@ -37,12 +37,12 @@ struct StoryboardNotificationRouter: NotificationRouter {
 		showNotificationTarget(for: userInfo, doWaitForDataStore: doWaitForDataStore)
 	}
 
-	func showRemoteNotification(for userInfo: [AnyHashable : Any]) {
+	func showRemoteNotification(for userInfo: [AnyHashable: Any]) {
 		guard let contentTypeString = userInfo[NotificationUserInfoKey.ContentType.rawValue] as? String,
 			let contentType = NotificationContentType(rawValue: contentTypeString) else { return }
 
-		let aps = userInfo["aps"] as? [AnyHashable : Any]
-		let alert = aps?["alert"] as? [AnyHashable : Any]
+		let aps = userInfo["aps"] as? [AnyHashable: Any]
+		let alert = aps?["alert"] as? [AnyHashable: Any]
 		let title = alert?["title"] as? String ?? aps?["alert"] as? String
 		let body = alert?["body"] as? String
 		switch contentType {
@@ -61,11 +61,11 @@ struct StoryboardNotificationRouter: NotificationRouter {
 		}
 	}
 
-	func showRemoteNotificationTarget(for userInfo: [AnyHashable : Any], doWaitForDataStore: Bool = false) {
+	func showRemoteNotificationTarget(for userInfo: [AnyHashable: Any], doWaitForDataStore: Bool = false) {
 		showNotificationTarget(for: userInfo, doWaitForDataStore: doWaitForDataStore)
 	}
 
-	private func showNotificationTarget(for userInfo: [AnyHashable : Any], doWaitForDataStore: Bool = false) {
+	private func showNotificationTarget(for userInfo: [AnyHashable: Any], doWaitForDataStore: Bool = false) {
 		guard let contentTypeString = userInfo[NotificationUserInfoKey.ContentType.rawValue] as? String,
 				let contentType = NotificationContentType(rawValue: contentTypeString) else {
 			return
@@ -77,7 +77,7 @@ struct StoryboardNotificationRouter: NotificationRouter {
 		switch contentType {
 		case .Announcement:
 			if let announcementId = userInfo[NotificationUserInfoKey.AnnouncementId.rawValue] as? String {
-				var payload: [String : Any]?
+				var payload: [String: Any]?
 				if let announcement = dataContext.Announcements.value.first(where: { $0.Id == announcementId }) {
 					payload = ["announcement": announcement]
 				} else {
@@ -89,7 +89,7 @@ struct StoryboardNotificationRouter: NotificationRouter {
 			}
 		case .EventFavorite:
 			if let eventId = userInfo[NotificationUserInfoKey.EventId.rawValue] as? String {
-				var payload: [String : Any]?
+				var payload: [String: Any]?
 				if let event = dataContext.Events.value.first(where: { $0.Id == eventId }) {
 					payload = ["event": event]
 				} else {

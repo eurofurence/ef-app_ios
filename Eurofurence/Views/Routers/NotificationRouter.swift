@@ -12,8 +12,8 @@ protocol NotificationRouter {
 	func showLocalNotificationTarget(for notification: UILocalNotification, doWaitForDataStore: Bool)
 	func showLocalNotification(for notification: UILocalNotification)
 
-	func showRemoteNotificationTarget(for userInfo: [AnyHashable : Any], doWaitForDataStore: Bool)
-	func showRemoteNotification(for userInfo: [AnyHashable : Any])
+	func showRemoteNotificationTarget(for userInfo: [AnyHashable: Any], doWaitForDataStore: Bool)
+	func showRemoteNotification(for userInfo: [AnyHashable: Any])
 }
 
 enum NotificationUserInfoKey: String {

@@ -56,7 +56,7 @@ extension NSMutableAttributedString {
 	///   - regex: regular expression to be matched against the string
 	///   - attributes: attributes to be applied to matches
 	///   - captureGroup: capture group containing the replacement
-	func apply(regex: NSRegularExpression, attributes: [String:Any], captureGroup: Int = 0) {
+	func apply(regex: NSRegularExpression, attributes: [String: Any], captureGroup: Int = 0) {
 		var rangeOffset: Int = 0
 		regex.matches(in: mutableString as String, options: [], range: NSRange(location: 0, length: mutableString.length)).forEach({ (result) in
 

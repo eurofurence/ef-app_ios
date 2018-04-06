@@ -11,9 +11,9 @@ import UIKit
 class RoutingAppChooser {
     static let sharedInstance = RoutingAppChooser()
 
-    private let customAllowedSet =  CharacterSet(charactersIn:"=\"#%/<>?@\\^`{|}").inverted
-    private var routingApps: [String:String] = [:]
-    private var currentURLs: [String:URL] = [:]
+    private let customAllowedSet =  CharacterSet(charactersIn: "=\"#%/<>?@\\^`{|}").inverted
+    private var routingApps: [String: String] = [:]
+    private var currentURLs: [String: URL] = [:]
     var selectionAlert: UIAlertController!
 
     private init() {

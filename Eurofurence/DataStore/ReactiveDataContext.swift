@@ -173,7 +173,7 @@ class ReactiveDataContext: DataContextProtocol {
 			resultsProducer.flatten(.merge).start({ event in
 				switch event {
 				case let .value(value):
-					print("Loaded \(String(describing:value.entityType)) from store")
+					print("Loaded \(String(describing: value.entityType)) from store")
 					switch value.entityType {
 					case is Announcement.Type:
 						self.Announcements.swap(value.entityData as! [Announcement])

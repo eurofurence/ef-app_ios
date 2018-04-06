@@ -26,7 +26,7 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
         progressView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(progressView)
 
-        let views = ["Progress": progressView, "TabBar": tabBar] as [String : UIView]
+        let views = ["Progress": progressView, "TabBar": tabBar] as [String: UIView]
         let visualFormats = ["H:|[Progress]|", "V:[Progress][TabBar]"]
         let constraints = visualFormats.map({ NSLayoutConstraint.constraints(withVisualFormat: $0,
                                                                              options: [.alignAllCenterX],
@@ -54,7 +54,7 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
 		guard let viewControllers = viewControllers,
 			tabBarOrder.count == viewControllers.count else { return }
 
-		var viewControllersByIdentifier: [String : UIViewController] = [:]
+		var viewControllersByIdentifier: [String: UIViewController] = [:]
 		for viewController in viewControllers {
 			if let vcIdentifier = viewController.restorationIdentifier,
 					tabBarOrder.contains(vcIdentifier) {

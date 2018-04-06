@@ -14,7 +14,7 @@ class NotificationSoundPlayer {
 
 	private let baseDirectory = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)[0]
 	private var soundsLibraryDirectory: URL
-	private var soundIds: [String : SystemSoundID] = [:]
+	private var soundIds: [String: SystemSoundID] = [:]
 
 	init() {
 		soundsLibraryDirectory = baseDirectory.appendingPathComponent(

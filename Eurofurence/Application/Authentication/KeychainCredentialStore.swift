@@ -44,14 +44,14 @@ struct KeychainCredentialStore: CredentialStore {
 
 fileprivate extension Credential {
 
-    var keychainData: [String : Any] {
+    var keychainData: [String: Any] {
         return ["username": username,
                 "registrationNumber": registrationNumber,
                 "authenticationToken": authenticationToken,
                 "tokenExpiryDate": tokenExpiryDate]
     }
 
-    init?(keychainData: [String : Any]) {
+    init?(keychainData: [String: Any]) {
         guard let username = keychainData["username"] as? String,
               let registrationNumber = keychainData["registrationNumber"] as? Int,
               let authenticationToken = keychainData["authenticationToken"] as? String,

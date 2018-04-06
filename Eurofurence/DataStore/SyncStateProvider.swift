@@ -14,7 +14,7 @@ class SyncStateProvider: LastSyncDateProviding, DataModelVersionProviding {
 		}
 	}
 
-	var dataModelVersions: [String:Int] {
+	var dataModelVersions: [String: Int] {
 		get {
 			return dataContext.SyncState.value.DataModelVersions
 		}

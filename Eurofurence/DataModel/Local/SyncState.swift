@@ -11,7 +11,7 @@ import EVReflection
 class SyncState: EntityBase {
 	override class var DataModelVersion: Int { return 1 + super.DataModelVersion }
 
-	var DataModelVersions: [String:Int] = [:]
+	var DataModelVersions: [String: Int] = [:]
 	var LastSyncDate: Date?
 
 	required init() {

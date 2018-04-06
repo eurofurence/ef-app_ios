@@ -50,7 +50,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 		                             for: .touchUpInside)
 
         NotificationCenter.default.addObserver(self, selector: #selector(MapViewController.notificationRefresh(_:)),
-                                               name:NSNotification.Name(rawValue: "reloadData"), object: nil)
+                                               name: NSNotification.Name(rawValue: "reloadData"), object: nil)
         mapSwitchControl.removeSegment(at: 0, animated: false)
 
 		disposables += viewModel.BrowsableMaps.signal.observeResult({[weak self] _ in
@@ -267,7 +267,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 		let maps = viewModel.BrowsableMaps.value
 		mapEntry = nil
         if segmentedControl.selectedSegmentIndex == segmentedControl.numberOfSegments - 1 {
-            present(RoutingAppChooser.sharedInstance.getAlertForAddress("Estrel Hotel Berlin", house: "225", street: "Sonnenallee", zip: "12057", city: "Berlin", country: "Germany", lat: 52.473336, lon: 13.458729), animated: true, completion:nil)
+            present(RoutingAppChooser.sharedInstance.getAlertForAddress("Estrel Hotel Berlin", house: "225", street: "Sonnenallee", zip: "12057", city: "Berlin", country: "Germany", lat: 52.473336, lon: 13.458729), animated: true, completion: nil)
 			if let map = map, let currentMapIndex = maps.index(of: map) {
 				segmentedControl.selectedSegmentIndex = currentMapIndex
 			} else if maps.count > 0 {

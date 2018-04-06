@@ -73,7 +73,7 @@ extension URL {
 	}
 }
 
-extension EditOperation : Equatable {}
+extension EditOperation: Equatable {}
 
 /// Makes Changeset's EditOperation equatable
 public func ==(lhs: EditOperation, rhs: EditOperation) -> Bool {

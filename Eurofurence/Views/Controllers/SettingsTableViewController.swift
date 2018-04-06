@@ -268,7 +268,7 @@ class SettingsTableViewController: FormViewController {
     }
 
     private func makeDebuggingSettingsSection() {
-		form +++ Section(header:"Debugging", footer: "These settings are intended for debugging purposes only and may cause instability or unexpected behaviour if changed!") {
+		form +++ Section(header: "Debugging", footer: "These settings are intended for debugging purposes only and may cause instability or unexpected behaviour if changed!") {
 			$0.hidden = Condition.function(["ShowDebugSettings"], { form in
 				return !(((form.rowBy(tag: "ShowDebugSettings") as? SwitchRow)?.value ?? false) ||
 					UserSettings.DebugSettingsEnabled.currentValueOrDefault() as Bool)

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DataModelVersionProviding {
-	var dataModelVersions: [String:Int] {get}
+	var dataModelVersions: [String: Int] {get}
 
 	func getDataModelVersion(for entityName: String) -> Int?
 	func setDataModelVersion(for entityName: String, version: Int) -> Bool

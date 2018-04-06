@@ -36,7 +36,7 @@ class TimeService: NSObject {
 		})
 	}
 
-	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
 		if let change = change, let firstChange = change.first, let newOffset = firstChange.value as? TimeInterval, keyPath == UserSettings.DebugTimeOffset.rawValue {
 			offset.swap(newOffset)
 		}

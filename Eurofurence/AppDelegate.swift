@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// App was launched from local or remote notification
 		if let notification = launchOptions?[.localNotification] as? UILocalNotification {
 			notificationRouter.showLocalNotificationTarget(for: notification, doWaitForDataStore: true)
-		} else if let userInfo = launchOptions?[.remoteNotification] as? [AnyHashable : Any] {
+		} else if let userInfo = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
 			notificationRouter.showRemoteNotificationTarget(for: userInfo, doWaitForDataStore: true)
 		}
 
@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 	}
 
-	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 		if let contentTypeString = userInfo[NotificationUserInfoKey.ContentType.rawValue] as? String,
 			let contentType = NotificationContentType(rawValue: contentTypeString) {
 

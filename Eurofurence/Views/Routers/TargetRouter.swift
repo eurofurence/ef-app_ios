@@ -15,11 +15,11 @@ protocol TargetRouter {
 struct RoutingTarget {
 	var viewControllerIdentifier: String
 	var navigationControllerIdentifier: String
-	var payload: [String : Any]?
+	var payload: [String: Any]?
 
 	init(target viewControllerIdentifier: String,
 	                 on navigationControllerIdentifier: String,
-	                 payload: [String : Any]? = nil) {
+	                 payload: [String: Any]? = nil) {
 		self.viewControllerIdentifier = viewControllerIdentifier
 		self.navigationControllerIdentifier = navigationControllerIdentifier
 		self.payload = payload

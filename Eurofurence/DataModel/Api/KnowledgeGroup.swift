@@ -30,7 +30,7 @@ class KnowledgeGroup: EntityBase {
 				guard let value = $0 as? String, let character = Character.init(unicodeScalarString: value) else { return }
 				self.FontAwesomeIconCharacterUnicodeAddress = String.init(character) },
 			 encodeConverter: {
-				return String(format:"%X", self.FontAwesomeIconCharacterUnicodeAddress.unicodeScalars.first?.value ?? 0)
+				return String(format: "%X", self.FontAwesomeIconCharacterUnicodeAddress.unicodeScalars.first?.value ?? 0)
 			})
 		]
 	}

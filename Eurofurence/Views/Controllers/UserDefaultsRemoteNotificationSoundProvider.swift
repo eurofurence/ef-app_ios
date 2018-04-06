@@ -31,7 +31,7 @@ struct UserDefaultsRemoteNotificationSoundProvider: RemoteNotificationSoundProvi
 		do {
 			try NotificationSoundPlayer.shared.copyToSoundsLibrary(soundName, targetName: targetName)
 		} catch let error {
-			print("Failed to copy requested sound \(String(describing:soundName)) to Library/Sounds: \(String(describing: error))")
+			print("Failed to copy requested sound \(String(describing: soundName)) to Library/Sounds: \(String(describing: error))")
 		}
 	}
 }

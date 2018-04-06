@@ -11,7 +11,7 @@ import Foundation
 Provides a static mapping between country names and their alpha3 code.
 */
 class CountryAlpha3Converter {
-    static let countryToAlpha3: [String:String] = [
+    static let countryToAlpha3: [String: String] = [
         "Aruba": "ABW",
         "Afghanistan": "AFG",
         "Angola": "AGO",

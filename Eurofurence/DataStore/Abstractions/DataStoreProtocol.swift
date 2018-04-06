@@ -74,7 +74,7 @@ enum DataStoreError: CustomNSError {
 		}
 	}
 
-	var errorUserInfo: [String : AnyObject] {
+	var errorUserInfo: [String: AnyObject] {
 		switch self {
 		case .FailedCreate(let url, let description):
 			return ["message": "File or directory at \(url) could not be created" as NSString,

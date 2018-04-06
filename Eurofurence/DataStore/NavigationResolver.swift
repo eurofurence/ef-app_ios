@@ -94,7 +94,7 @@ class NavigationResolver: NavigationResolverProtocol {
 		})
 
 		print("\(#function): Resolving Maps")
-		var mapEntries: [String:MapEntry] = [:]
+		var mapEntries: [String: MapEntry] = [:]
 		dataContext.Maps.modify({ value in
 			for e in value {
 				e.Image = dataContext.Images.value.first(where: { $0.Id == e.ImageId })

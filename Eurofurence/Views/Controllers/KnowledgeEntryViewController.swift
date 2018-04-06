@@ -21,7 +21,7 @@ class KnowledgeEntryViewController: UIViewController {
 	var disposables = CompositeDisposable()
 
 	// TODO: This is somewhat nasty and might require refactoring at some point
-    var buttonLinks: [UIButton:LinkFragment] = [:]
+    var buttonLinks: [UIButton: LinkFragment] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
