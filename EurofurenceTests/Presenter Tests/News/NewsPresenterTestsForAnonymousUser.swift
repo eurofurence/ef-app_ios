@@ -12,7 +12,7 @@ import XCTest
 class NewsPresenterTestsForAnonymousUser: XCTestCase {
     
     func testTheSceneIsReturnedFromTheModuleFactory() {
-        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
+        let context = NewsPresenterTestBuilder().build()
         XCTAssertEqual(context.newsScene, context.sceneFactory.stubbedScene)
     }
     
