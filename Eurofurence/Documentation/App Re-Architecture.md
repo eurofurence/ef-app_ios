@@ -95,3 +95,37 @@ The `Core` sits at the centre of everything, independent from presentation conce
 
 Features of the core are deduced from use-cases that become apparent while following presenter-first TDD. It is important to note however that these features on the core must remain presentation agnostic; the requirement for data should feed into the API for the core, how it is presented should not go anywhere near it.
 
+## Delivery
+
+Some headway has already began on performing the above re-architechture, in order to come closer towards an ideal pattern. This includes:
+
+- Porting some simple screens across to follow the `Module` pattern described above, specifically:
+    - The 'Root' module on app launch
+    - Tutorial
+    - Preload
+    - News (very basic version)
+    - Login
+    - Messages List
+    - Message Detail
+    - Knowledge List
+    - Knowledge Detail
+    - Web Pages
+- The initial addition of the `Director`, that controls the presentation of the above `Module`s
+- The inclusion of the app `Core` to support the above modules
+
+This means that, at time of writing, the following screens are *not* ported across to modules:
+
+- News Detail
+- Events List
+- Event Detail
+- Dealers List
+- Dealer Detail
+- Maps
+- Collect'em All*
+- Settings
+- About
+
+*The Collection'em All in the current live version was backed by a web view, so there are likely multiple sub-modules to be spawned when porting this one across to a native implementation
+
+Delivery of additional modules will also require changes to be made to the `Core` as new features are identified.
+
