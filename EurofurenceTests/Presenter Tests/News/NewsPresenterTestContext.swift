@@ -35,7 +35,7 @@ class NewsPresenterTestBuilder {
     }
     
     @discardableResult
-    func with(_ user: User) -> NewsPresenterTestBuilder {
+    func withUser(_ user: User = .random) -> NewsPresenterTestBuilder {
         authService = StubAuthenticationService(authState: .loggedIn(user))
         return self
     }

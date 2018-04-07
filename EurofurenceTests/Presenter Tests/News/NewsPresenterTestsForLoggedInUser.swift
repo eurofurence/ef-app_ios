@@ -47,7 +47,9 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
 class NewsPresenterTestsForLoggedInUser: XCTestCase {
     
     func testTheSceneIsToldToShowTheMessagesNavigationAction() {
-        let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser()
+        let context = NewsPresenterTestBuilder().withUser().build()
+        context.simulateNewsSceneWillAppear()
+        
         XCTAssertTrue(context.newsScene.wasToldToShowMessagesNavigationAction)
     }
     
