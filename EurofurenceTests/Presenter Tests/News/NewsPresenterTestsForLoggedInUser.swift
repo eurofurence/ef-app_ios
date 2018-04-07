@@ -54,87 +54,84 @@ class NewsPresenterTestsForLoggedInUser: XCTestCase {
     }
     
     func testTheSceneIsNotToldToShowTheLoginNavigationAction() {
-        let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser()
+        let context = NewsPresenterTestBuilder().withUser().build()
         XCTAssertFalse(context.newsScene.wasToldToShowLoginNavigationAction)
     }
     
     func testTheSceneIsToldToHideTheLoginNavigationAction() {
-        let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser()
+        let context = NewsPresenterTestBuilder().withUser().build()
+        context.simulateNewsSceneWillAppear()
+        
         XCTAssertTrue(context.newsScene.wasToldToHideLoginNavigationAction)
     }
     
     func testTheSceneIsNotToldToHideTheMessagesNavigationAction() {
-        let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser()
+        let context = NewsPresenterTestBuilder().withUser().build()
         XCTAssertFalse(context.newsScene.wasToldToHideMessagesNavigationAction)
     }
     
     func testTheWelcomePromptShouldBeSourcedUsingTheUser() {
-        let user = User(registrationNumber: 42, username: "User")
-        let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser(user)
+        let user = User.random
+        let context = NewsPresenterTestBuilder().withUser(user).build()
+        context.simulateNewsSceneWillAppear()
         
         XCTAssertEqual(context.newsScene.capturedWelcomePrompt, .welcomePrompt(for: user))
     }
     
     func testTheWelcomeDescriptionShouldbeSourcedUsingTheUnreadMessageCount() {
-        let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser()
+        let context = NewsPresenterTestBuilder().withUser().build()
+        context.simulateNewsSceneWillAppear()
         
         XCTAssertEqual("", context.newsScene.capturedWelcomeDescription)
     }
     
     func testWhenAuthServiceIndicatesUserLoggedOutTheSceneIsToldToShowTheLoginNavigationAction() {
-        let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser()
+        let context = NewsPresenterTestBuilder().withUser().build()
         context.authService.notifyObserversUserDidLogout()
         
         XCTAssertTrue(context.newsScene.wasToldToShowLoginNavigationAction)
     }
     
     func testWhenAuthServiceIndicatesUserLoggedOutTheSceneIsToldToHideTheMessagesNavigationAction() {
-        let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser()
+        let context = NewsPresenterTestBuilder().withUser().build()
         context.authService.notifyObserversUserDidLogout()
         
         XCTAssertTrue(context.newsScene.wasToldToHideMessagesNavigationAction)
     }
     
     func testWhenAuthServiceIndicatesUserLoggedOutTheNewsSceneIsToldToShowWelcomePrompt() {
-        let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser()
+        let context = NewsPresenterTestBuilder().withUser().build()
         context.authService.notifyObserversUserDidLogout()
         
         XCTAssertEqual(context.newsScene.capturedLoginPrompt, .anonymousUserLoginPrompt)
     }
     
     func testWhenTheShowMessagesActionIsTappedTheShowMessagesCommandIsRan() {
-        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
+        let context = NewsPresenterTestBuilder().withUser().build()
         context.newsScene.tapShowMessagesAction()
         
         XCTAssertTrue(context.delegate.showPrivateMessagesRequested)
     }
     
     func testTheShowMessagesCommandIsNotRanUntilTheShowMessagesActionIsTapped() {
-        let context = NewsPresenterTestContext.makeTestCaseForAnonymousUser()
+        let context = NewsPresenterTestBuilder().withUser().build()
         XCTAssertFalse(context.delegate.showPrivateMessagesRequested)
     }
     
     func testWhenPrivateMessagesReloadsTheUnreadCountDescriptionIsSetOntoTheScene() {
-        let privateMessagesService = CapturingPrivateMessagesService()
-        let context = NewsPresenterTestContext.makeTestCaseForAuthenticatedUser(privateMessagesService: privateMessagesService)
+        let context = NewsPresenterTestBuilder().withUser().build()
+        context.simulateNewsSceneWillAppear()
         let messageCount = Int.random
-        privateMessagesService.notifyUnreadCountDidChange(to: messageCount)
+        context.privateMessagesService.notifyUnreadCountDidChange(to: messageCount)
         
         XCTAssertEqual(context.newsScene.capturedWelcomeDescription, .welcomeDescription(messageCount: messageCount))
     }
     
     func testUpdatingUnreadCountBeforeSceneAppearsDoesNotUpdateLabel() {
-        let privateMessagesService = CapturingPrivateMessagesService()
-        let sceneFactory = StubNewsSceneFactory()
-        _ = NewsModuleBuilder()
-            .with(sceneFactory)
-            .with(StubAuthenticationService(authState: .loggedIn(User(registrationNumber: 0, username: ""))))
-            .with(privateMessagesService)
-            .build()
-            .makeNewsModule(CapturingNewsModuleDelegate())
-        privateMessagesService.notifyUnreadCountDidChange(to: 0)
+        let context = NewsPresenterTestBuilder().withUser().build()
+        context.privateMessagesService.notifyUnreadCountDidChange(to: 0)
         
-        XCTAssertNil(sceneFactory.stubbedScene.capturedWelcomeDescription)
+        XCTAssertNil(context.newsScene.capturedWelcomeDescription)
     }
     
 }
