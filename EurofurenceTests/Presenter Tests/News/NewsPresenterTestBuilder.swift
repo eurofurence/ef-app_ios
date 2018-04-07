@@ -1,5 +1,5 @@
 //
-//  NewsPresenterTestContext.swift
+//  NewsPresenterTestBuilder.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 25/08/2017.
