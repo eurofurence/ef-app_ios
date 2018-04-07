@@ -64,6 +64,14 @@ class NewsPresenterTestBuilder {
     
 }
 
+extension NewsPresenterTestBuilder.Context {
+    
+    func simulateNewsSceneWillAppear() {
+        newsScene.delegate?.newsSceneWillAppear()
+    }
+    
+}
+
 struct NewsPresenterTestContext {
     
     let authService: StubAuthenticationService
