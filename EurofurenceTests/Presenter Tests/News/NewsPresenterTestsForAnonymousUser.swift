@@ -11,16 +11,11 @@ import XCTest
 
 class NewsPresenterTestsForAnonymousUser: XCTestCase {
     
+    // MARK: When Building
+    
     func testTheSceneIsReturnedFromTheModuleFactory() {
         let context = NewsPresenterTestBuilder().build()
         XCTAssertEqual(context.newsScene, context.sceneFactory.stubbedScene)
-    }
-    
-    func testTheSceneIsToldToShowTheLoginNavigationAction() {
-        let context = NewsPresenterTestBuilder().build()
-        context.simulateNewsSceneWillAppear()
-        
-        XCTAssertTrue(context.newsScene.wasToldToShowLoginNavigationAction)
     }
     
     func testTheSceneIsNotToldToShowTheMessagesNavigationAction() {
@@ -31,6 +26,25 @@ class NewsPresenterTestsForAnonymousUser: XCTestCase {
     func testTheSceneIsNotToldToHideTheLoginNavigationAction() {
         let context = NewsPresenterTestBuilder().build()
         XCTAssertFalse(context.newsScene.wasToldToHideLoginNavigationAction)
+    }
+    
+    func testTheNewsSceneIsNotToldToPresentWelcomeDesciption() {
+        let context = NewsPresenterTestBuilder().build()
+        XCTAssertNil(context.newsScene.capturedWelcomeDescription)
+    }
+    
+    func testThePerformLoginCommandIsNotRanUntilTheLoginActionIsTapped() {
+        let context = NewsPresenterTestBuilder().build()
+        XCTAssertFalse(context.delegate.loginRequested)
+    }
+    
+    // MARK: When Scene Will Appear
+    
+    func testTheSceneIsToldToShowTheLoginNavigationAction() {
+        let context = NewsPresenterTestBuilder().build()
+        context.simulateNewsSceneWillAppear()
+        
+        XCTAssertTrue(context.newsScene.wasToldToShowLoginNavigationAction)
     }
     
     func testTheSceneIsToldToHideTheMessagesNavigationAction() {
@@ -54,10 +68,7 @@ class NewsPresenterTestsForAnonymousUser: XCTestCase {
         XCTAssertEqual(context.newsScene.capturedLoginDescription, .anonymousUserLoginDescription)
     }
     
-    func testTheNewsSceneIsNotToldToPresentWelcomeDesciption() {
-        let context = NewsPresenterTestBuilder().build()
-        XCTAssertNil(context.newsScene.capturedWelcomeDescription)
-    }
+    // MARK: When Logging In
     
     func testWhenAuthServiceIndicatesUserLoggedInTheSceneShouldShowTheMessagesNavigationAction() {
         let context = NewsPresenterTestBuilder().build()
@@ -81,16 +92,13 @@ class NewsPresenterTestsForAnonymousUser: XCTestCase {
         XCTAssertEqual(context.newsScene.capturedWelcomePrompt, .welcomePrompt(for: user))
     }
     
+    // MARK: When Tapping Login Action
+    
     func testWhenTheLoginActionIsTappedThePerformLoginCommandIsRan() {
         let context = NewsPresenterTestBuilder().build()
         context.newsScene.tapLoginAction()
         
         XCTAssertTrue(context.delegate.loginRequested)
-    }
-    
-    func testThePerformLoginCommandIsNotRanUntilTheLoginActionIsTapped() {
-        let context = NewsPresenterTestBuilder().build()
-        XCTAssertFalse(context.delegate.loginRequested)
     }
     
 }
