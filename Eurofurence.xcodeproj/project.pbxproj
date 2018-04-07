@@ -287,6 +287,7 @@
 		CA5BF9D51F7AF9160045DBC0 /* PreloadPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */; };
 		CA60B3581F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60B3571F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift */; };
 		CA60BFE32078E42800697566 /* User+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */; };
+		CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -848,6 +849,7 @@
 		CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadPresenterTests.swift; sourceTree = "<group>"; };
 		CA60B3571F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPresenterTestsForAnonymousUser.swift; sourceTree = "<group>"; };
 		CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesService.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -1997,6 +1999,14 @@
 			path = Preload;
 			sourceTree = "<group>";
 		};
+		CA60BFE42078E5F000697566 /* Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */,
+			);
+			path = "Test Doubles";
+			sourceTree = "<group>";
+		};
 		CA6A9FEF1FD5DE0E0092C6DB /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2554,10 +2564,11 @@
 			isa = PBXGroup;
 			children = (
 				CAC1E1381F50431000195513 /* NewsPresenterTestContext.swift */,
+				CA6AA01F1FD89B2D0092C6DB /* NewsPresenterTests.swift */,
 				CA60B3571F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift */,
 				CAC1E1361F50423200195513 /* NewsPresenterTestsForLoggedInUser.swift */,
 				CA6AA0191FD885030092C6DB /* NewsViewControllerTests.swift */,
-				CA6AA01F1FD89B2D0092C6DB /* NewsPresenterTests.swift */,
+				CA60BFE42078E5F000697566 /* Test Doubles */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -3690,6 +3701,7 @@
 				CAF597A220458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift in Sources */,
 				CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */,
 				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,
+				CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */,
 				CA6EC4792051CAFA00402894 /* WhenBuildingKnowledgeDetailModule.swift in Sources */,
 				CAC1E1311F50413500195513 /* CapturingNewsScene.swift in Sources */,
 				CA2D080E1FE9504600BFD785 /* WhenThePushNotificationPermissionsPageAppears.swift in Sources */,
