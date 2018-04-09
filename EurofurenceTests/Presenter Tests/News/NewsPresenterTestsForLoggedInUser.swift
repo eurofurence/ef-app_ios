@@ -30,11 +30,6 @@ class NewsPresenterTestsForLoggedInUser: XCTestCase {
         XCTAssertTrue(context.newsScene.wasToldToHideLoginNavigationAction)
     }
     
-    func testTheSceneIsNotToldToHideTheMessagesNavigationAction() {
-        let context = NewsPresenterTestBuilder().withUser().build()
-        XCTAssertFalse(context.newsScene.wasToldToHideMessagesNavigationAction)
-    }
-    
     func testTheWelcomePromptShouldBeSourcedUsingTheUser() {
         let user = User.random
         let context = NewsPresenterTestBuilder().withUser(user).build()
@@ -76,11 +71,6 @@ class NewsPresenterTestsForLoggedInUser: XCTestCase {
         context.newsScene.tapShowMessagesAction()
         
         XCTAssertTrue(context.delegate.showPrivateMessagesRequested)
-    }
-    
-    func testTheShowMessagesCommandIsNotRanUntilTheShowMessagesActionIsTapped() {
-        let context = NewsPresenterTestBuilder().withUser().build()
-        XCTAssertFalse(context.delegate.showPrivateMessagesRequested)
     }
     
     func testWhenPrivateMessagesReloadsTheUnreadCountDescriptionIsSetOntoTheScene() {

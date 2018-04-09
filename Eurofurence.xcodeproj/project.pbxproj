@@ -288,6 +288,8 @@
 		CA60B3581F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60B3571F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift */; };
 		CA60BFE32078E42800697566 /* User+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */; };
 		CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */; };
+		CA60BFE8207B88ED00697566 /* WhenBuildingNewsPresenterForUnauthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenterForUnauthenticatedUser.swift */; };
+		CA60BFEC207B893E00697566 /* WhenBuildingNewsPresenterForAuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFEB207B893E00697566 /* WhenBuildingNewsPresenterForAuthenticatedUser.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -850,6 +852,8 @@
 		CA60B3571F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPresenterTestsForAnonymousUser.swift; sourceTree = "<group>"; };
 		CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesService.swift; sourceTree = "<group>"; };
+		CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenterForUnauthenticatedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingNewsPresenterForUnauthenticatedUser.swift; sourceTree = "<group>"; };
+		CA60BFEB207B893E00697566 /* WhenBuildingNewsPresenterForAuthenticatedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingNewsPresenterForAuthenticatedUser.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -2007,6 +2011,22 @@
 			path = "Test Doubles";
 			sourceTree = "<group>";
 		};
+		CA60BFE9207B88F100697566 /* Unauthenticated */ = {
+			isa = PBXGroup;
+			children = (
+				CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenterForUnauthenticatedUser.swift */,
+			);
+			path = Unauthenticated;
+			sourceTree = "<group>";
+		};
+		CA60BFEA207B893100697566 /* Authenticated */ = {
+			isa = PBXGroup;
+			children = (
+				CA60BFEB207B893E00697566 /* WhenBuildingNewsPresenterForAuthenticatedUser.swift */,
+			);
+			path = Authenticated;
+			sourceTree = "<group>";
+		};
 		CA6A9FEF1FD5DE0E0092C6DB /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2563,12 +2583,14 @@
 		CAC1E1241F50405900195513 /* News */ = {
 			isa = PBXGroup;
 			children = (
+				CA60BFEA207B893100697566 /* Authenticated */,
 				CAC1E1381F50431000195513 /* NewsPresenterTestBuilder.swift */,
 				CA6AA01F1FD89B2D0092C6DB /* NewsPresenterTests.swift */,
 				CA60B3571F4E2086005437BE /* NewsPresenterTestsForAnonymousUser.swift */,
 				CAC1E1361F50423200195513 /* NewsPresenterTestsForLoggedInUser.swift */,
 				CA6AA0191FD885030092C6DB /* NewsViewControllerTests.swift */,
 				CA60BFE42078E5F000697566 /* Test Doubles */,
+				CA60BFE9207B88F100697566 /* Unauthenticated */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -3713,12 +3735,14 @@
 				CA30EABA1F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift in Sources */,
 				CA6AA0101FD73CFE0092C6DB /* PreloadViewControllerTests.swift in Sources */,
 				78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */,
+				CA60BFE8207B88ED00697566 /* WhenBuildingNewsPresenterForUnauthenticatedUser.swift in Sources */,
 				CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */,
 				CA71A34E2040349300C847C3 /* RandomRangedValueProviding.swift in Sources */,
 				CAF3C74E1F9FC72C0008F027 /* StubNewsSceneFactory.swift in Sources */,
 				CAD3BDB72059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift in Sources */,
 				CA2B4FAA1F1F7F1200F007E1 /* CapturingLoginObserver.swift in Sources */,
 				CA73AEF8201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift in Sources */,
+				CA60BFEC207B893E00697566 /* WhenBuildingNewsPresenterForAuthenticatedUser.swift in Sources */,
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
 				CABF03C12041C2EC0028BD62 /* KnowledgeGroup2.swift in Sources */,
 				CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */,
