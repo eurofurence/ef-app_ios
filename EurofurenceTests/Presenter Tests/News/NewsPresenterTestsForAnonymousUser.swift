@@ -11,36 +11,6 @@ import XCTest
 
 class NewsPresenterTestsForAnonymousUser: XCTestCase {
     
-    // MARK: When Scene Will Appear
-    
-    func testTheSceneIsToldToShowTheLoginNavigationAction() {
-        let context = NewsPresenterTestBuilder().build()
-        context.simulateNewsSceneWillAppear()
-        
-        XCTAssertTrue(context.newsScene.wasToldToShowLoginNavigationAction)
-    }
-    
-    func testTheSceneIsToldToHideTheMessagesNavigationAction() {
-        let context = NewsPresenterTestBuilder().build()
-        context.simulateNewsSceneWillAppear()
-        
-        XCTAssertTrue(context.newsScene.wasToldToHideMessagesNavigationAction)
-    }
-    
-    func testTheNewsSceneIsToldToShowWelcomePrompt() {
-        let context = NewsPresenterTestBuilder().build()
-        context.simulateNewsSceneWillAppear()
-        
-        XCTAssertEqual(context.newsScene.capturedLoginPrompt, .anonymousUserLoginPrompt)
-    }
-    
-    func testTheNewsSceneIsToldToShowWelcomeDescription() {
-        let context = NewsPresenterTestBuilder().build()
-        context.simulateNewsSceneWillAppear()
-        
-        XCTAssertEqual(context.newsScene.capturedLoginDescription, .anonymousUserLoginDescription)
-    }
-    
     // MARK: When Logging In
     
     func testWhenAuthServiceIndicatesUserLoggedInTheSceneShouldShowTheMessagesNavigationAction() {

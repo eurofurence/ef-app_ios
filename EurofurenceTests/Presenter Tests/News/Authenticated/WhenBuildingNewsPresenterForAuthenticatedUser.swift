@@ -22,6 +22,10 @@ class WhenBuildingNewsPresenterForAuthenticatedUser: XCTestCase {
         XCTAssertFalse(context.newsScene.wasToldToHideMessagesNavigationAction)
     }
     
+    func testTheSceneIsNotToldToShowTheLoginNavigationAction() {
+        XCTAssertFalse(context.newsScene.wasToldToShowLoginNavigationAction)
+    }
+    
     func testTheShowMessagesCommandIsNotRan() {
         XCTAssertFalse(context.delegate.showPrivateMessagesRequested)
     }

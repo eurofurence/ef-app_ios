@@ -11,40 +11,6 @@ import XCTest
 
 class NewsPresenterTestsForLoggedInUser: XCTestCase {
     
-    func testTheSceneIsToldToShowTheMessagesNavigationAction() {
-        let context = NewsPresenterTestBuilder().withUser().build()
-        context.simulateNewsSceneWillAppear()
-        
-        XCTAssertTrue(context.newsScene.wasToldToShowMessagesNavigationAction)
-    }
-    
-    func testTheSceneIsNotToldToShowTheLoginNavigationAction() {
-        let context = NewsPresenterTestBuilder().withUser().build()
-        XCTAssertFalse(context.newsScene.wasToldToShowLoginNavigationAction)
-    }
-    
-    func testTheSceneIsToldToHideTheLoginNavigationAction() {
-        let context = NewsPresenterTestBuilder().withUser().build()
-        context.simulateNewsSceneWillAppear()
-        
-        XCTAssertTrue(context.newsScene.wasToldToHideLoginNavigationAction)
-    }
-    
-    func testTheWelcomePromptShouldBeSourcedUsingTheUser() {
-        let user = User.random
-        let context = NewsPresenterTestBuilder().withUser(user).build()
-        context.simulateNewsSceneWillAppear()
-        
-        XCTAssertEqual(context.newsScene.capturedWelcomePrompt, .welcomePrompt(for: user))
-    }
-    
-    func testTheWelcomeDescriptionShouldbeSourcedUsingTheUnreadMessageCount() {
-        let context = NewsPresenterTestBuilder().withUser().build()
-        context.simulateNewsSceneWillAppear()
-        
-        XCTAssertEqual("", context.newsScene.capturedWelcomeDescription)
-    }
-    
     func testWhenAuthServiceIndicatesUserLoggedOutTheSceneIsToldToShowTheLoginNavigationAction() {
         let context = NewsPresenterTestBuilder().withUser().build()
         context.authService.notifyObserversUserDidLogout()
