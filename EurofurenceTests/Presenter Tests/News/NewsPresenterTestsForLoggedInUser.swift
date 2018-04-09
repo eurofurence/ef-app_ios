@@ -11,27 +11,6 @@ import XCTest
 
 class NewsPresenterTestsForLoggedInUser: XCTestCase {
     
-    func testWhenAuthServiceIndicatesUserLoggedOutTheSceneIsToldToShowTheLoginNavigationAction() {
-        let context = NewsPresenterTestBuilder().withUser().build()
-        context.authService.notifyObserversUserDidLogout()
-        
-        XCTAssertTrue(context.newsScene.wasToldToShowLoginNavigationAction)
-    }
-    
-    func testWhenAuthServiceIndicatesUserLoggedOutTheSceneIsToldToHideTheMessagesNavigationAction() {
-        let context = NewsPresenterTestBuilder().withUser().build()
-        context.authService.notifyObserversUserDidLogout()
-        
-        XCTAssertTrue(context.newsScene.wasToldToHideMessagesNavigationAction)
-    }
-    
-    func testWhenAuthServiceIndicatesUserLoggedOutTheNewsSceneIsToldToShowWelcomePrompt() {
-        let context = NewsPresenterTestBuilder().withUser().build()
-        context.authService.notifyObserversUserDidLogout()
-        
-        XCTAssertEqual(context.newsScene.capturedLoginPrompt, .anonymousUserLoginPrompt)
-    }
-    
     func testWhenTheShowMessagesActionIsTappedTheShowMessagesCommandIsRan() {
         let context = NewsPresenterTestBuilder().withUser().build()
         context.newsScene.tapShowMessagesAction()
