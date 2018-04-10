@@ -12,7 +12,7 @@ import XCTest
 class LoginPresenterTests: XCTestCase {
     
     var loginSceneFactory: StubLoginSceneFactory!
-    var authenticationService: CapturingAuthenticationService!
+    var authenticationService: FakeAuthenticationService!
     var scene: UIViewController!
     var delegate: CapturingLoginModuleDelegate!
     var alertRouter: CapturingAlertRouter!
@@ -21,7 +21,7 @@ class LoginPresenterTests: XCTestCase {
         super.setUp()
         
         loginSceneFactory = StubLoginSceneFactory()
-        authenticationService = CapturingAuthenticationService(authState: .loggedOut)
+        authenticationService = FakeAuthenticationService(authState: .loggedOut)
         alertRouter = CapturingAlertRouter()
         alertRouter.automaticallyPresentAlerts = true
         delegate = CapturingLoginModuleDelegate()

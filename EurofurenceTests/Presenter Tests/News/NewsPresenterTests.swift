@@ -13,7 +13,7 @@ class NewsPresenterTests: XCTestCase {
     
     func testTheAuthServiceIsNotDeterminedWhenSceneWillReappearAgain() {
         let sceneFactory = StubNewsSceneFactory()
-        let authenticationService = CapturingAuthenticationService(authState: .loggedOut)
+        let authenticationService = FakeAuthenticationService(authState: .loggedOut)
         let delegate = CapturingNewsModuleDelegate()
         _ = NewsModuleBuilder()
             .with(sceneFactory)
@@ -29,7 +29,7 @@ class NewsPresenterTests: XCTestCase {
     
     func testTheSceneIsToldToShowTheNewsTitle() {
         let sceneFactory = StubNewsSceneFactory()
-        let authenticationService = CapturingAuthenticationService(authState: .loggedOut)
+        let authenticationService = FakeAuthenticationService(authState: .loggedOut)
         let delegate = CapturingNewsModuleDelegate()
         _ = NewsModuleBuilder()
             .with(sceneFactory)

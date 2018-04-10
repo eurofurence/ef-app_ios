@@ -68,7 +68,7 @@ struct MessagesPresenterTestContext {
         self.privateMessagesService = privateMessagesService
         _ = MessagesModuleBuilder()
             .with(sceneFactory)
-            .with(CapturingAuthenticationService(authState: authState))
+            .with(FakeAuthenticationService(authState: authState))
             .with(privateMessagesService)
             .with(dateFormatter)
             .build()

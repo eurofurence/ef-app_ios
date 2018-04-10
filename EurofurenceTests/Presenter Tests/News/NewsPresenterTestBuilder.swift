@@ -14,7 +14,7 @@ class NewsPresenterTestBuilder {
     struct Context {
         
         var module: UIViewController
-        var authService: CapturingAuthenticationService
+        var authService: FakeAuthenticationService
         var privateMessagesService: CapturingPrivateMessagesService
         var sceneFactory: StubNewsSceneFactory
         var newsScene: CapturingNewsScene
@@ -22,13 +22,13 @@ class NewsPresenterTestBuilder {
         
     }
     
-    private var authService: CapturingAuthenticationService
+    private var authService: FakeAuthenticationService
     private var privateMessagesService: CapturingPrivateMessagesService
     private var sceneFactory: StubNewsSceneFactory
     private var delegate: CapturingNewsModuleDelegate
     
     init() {
-        authService = CapturingAuthenticationService(authState: .loggedOut)
+        authService = FakeAuthenticationService(authState: .loggedOut)
         privateMessagesService = CapturingPrivateMessagesService()
         sceneFactory = StubNewsSceneFactory()
         delegate = CapturingNewsModuleDelegate()
@@ -36,7 +36,7 @@ class NewsPresenterTestBuilder {
     
     @discardableResult
     func withUser(_ user: User = .random) -> NewsPresenterTestBuilder {
-        authService = CapturingAuthenticationService(authState: .loggedIn(user))
+        authService = FakeAuthenticationService(authState: .loggedIn(user))
         return self
     }
     

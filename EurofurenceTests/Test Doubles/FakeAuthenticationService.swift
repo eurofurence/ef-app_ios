@@ -1,5 +1,5 @@
 //
-//  CapturingAuthenticationService.swift
+//  FakeAuthenticationService.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 09/12/2017.
@@ -8,7 +8,7 @@
 
 @testable import Eurofurence
 
-class CapturingAuthenticationService: AuthenticationService {
+class FakeAuthenticationService: AuthenticationService {
     
     private let authState: AuthState
     
@@ -36,7 +36,7 @@ class CapturingAuthenticationService: AuthenticationService {
     
 }
 
-extension CapturingAuthenticationService {
+extension FakeAuthenticationService {
     
     func fulfillRequest() {
         capturedCompletionHandler?(.success)
