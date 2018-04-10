@@ -8,18 +8,28 @@
 
 @testable import Eurofurence
 
-class CapturingAuthenticationService: StubAuthenticationService {
+class CapturingAuthenticationService: AuthenticationService {
+    
+    private let authState: AuthState
+    
+    init(authState: AuthState) {
+        self.authState = authState
+    }
+    
+    fileprivate var observers = [AuthenticationStateObserver]()
+    func add(observer: AuthenticationStateObserver) {
+        observers.append(observer)
+    }
     
     private(set) var authStateDeterminedCount = 0
-    override func determineAuthState(completionHandler: @escaping (AuthState) -> Void) {
-        super.determineAuthState(completionHandler: completionHandler)
+    func determineAuthState(completionHandler: @escaping (AuthState) -> Void) {
+        completionHandler(authState)
         authStateDeterminedCount += 1
     }
     
     private(set) var capturedRequest: LoginServiceRequest?
     fileprivate var capturedCompletionHandler: ((LoginServiceResult) -> Void)?
-    override  func perform(_ request: LoginServiceRequest, completionHandler: @escaping (LoginServiceResult) -> Void) {
-        super.perform(request, completionHandler: completionHandler)
+    func perform(_ request: LoginServiceRequest, completionHandler: @escaping (LoginServiceResult) -> Void) {
         capturedRequest = request
         capturedCompletionHandler = completionHandler
     }
@@ -34,6 +44,14 @@ extension CapturingAuthenticationService {
     
     func failRequest() {
         capturedCompletionHandler?(.failure)
+    }
+    
+    func notifyObserversUserDidLogin(_ user: User = User(registrationNumber: 42, username: "")) {
+        observers.forEach { $0.userDidLogin(user) }
+    }
+    
+    func notifyObserversUserDidLogout() {
+        observers.forEach { $0.userDidLogout() }
     }
     
 }
