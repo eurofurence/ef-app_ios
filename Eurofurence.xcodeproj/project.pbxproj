@@ -298,6 +298,7 @@
 		CA60BFFA207B8CD200697566 /* WhenAuthenticatedUserReceievesMessageBeforeNewsSceneAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFF9207B8CD200697566 /* WhenAuthenticatedUserReceievesMessageBeforeNewsSceneAppears.swift */; };
 		CA60BFFC207B8D2000697566 /* WhenUnauthenticatedUserTapsLoginButton_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFB207B8D2000697566 /* WhenUnauthenticatedUserTapsLoginButton_NewsPresenterShould.swift */; };
 		CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */; };
+		CA60C000207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFF207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -314,7 +315,6 @@
 		CA6AA01A1FD885030092C6DB /* NewsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0191FD885030092C6DB /* NewsViewControllerTests.swift */; };
 		CA6AA01C1FD88D930092C6DB /* UIStoryboard+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA01B1FD88D930092C6DB /* UIStoryboard+Convenience.swift */; };
 		CA6AA01E1FD88F6B0092C6DB /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6AA01D1FD88F6B0092C6DB /* Messages.storyboard */; };
-		CA6AA0201FD89B2D0092C6DB /* NewsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA01F1FD89B2D0092C6DB /* NewsPresenterTests.swift */; };
 		CA6EC4712051656C00402894 /* KnowledgeDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4702051656C00402894 /* KnowledgeDetailModuleProviding.swift */; };
 		CA6EC4732051662B00402894 /* KnowledgeDetailModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4722051662B00402894 /* KnowledgeDetailModule.swift */; };
 		CA6EC4752051664D00402894 /* KnowledgeDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4742051664D00402894 /* KnowledgeDetailModuleBuilder.swift */; };
@@ -867,6 +867,7 @@
 		CA60BFF9207B8CD200697566 /* WhenAuthenticatedUserReceievesMessageBeforeNewsSceneAppears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAuthenticatedUserReceievesMessageBeforeNewsSceneAppears.swift; sourceTree = "<group>"; };
 		CA60BFFB207B8D2000697566 /* WhenUnauthenticatedUserTapsLoginButton_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUnauthenticatedUserTapsLoginButton_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeAuthenticationService.swift; sourceTree = "<group>"; };
+		CA60BFFF207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsSceneWillReappear_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -883,7 +884,6 @@
 		CA6AA0191FD885030092C6DB /* NewsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6AA01B1FD88D930092C6DB /* UIStoryboard+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Convenience.swift"; sourceTree = "<group>"; };
 		CA6AA01D1FD88F6B0092C6DB /* Messages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
-		CA6AA01F1FD89B2D0092C6DB /* NewsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresenterTests.swift; sourceTree = "<group>"; };
 		CA6EC4702051656C00402894 /* KnowledgeDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModuleProviding.swift; sourceTree = "<group>"; };
 		CA6EC4722051662B00402894 /* KnowledgeDetailModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModule.swift; sourceTree = "<group>"; };
 		CA6EC4742051664D00402894 /* KnowledgeDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModuleBuilder.swift; sourceTree = "<group>"; };
@@ -2600,10 +2600,10 @@
 		CAC1E1241F50405900195513 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				CA60BFEA207B893100697566 /* Authenticated */,
 				CAC1E1381F50431000195513 /* NewsPresenterTestBuilder.swift */,
-				CA6AA01F1FD89B2D0092C6DB /* NewsPresenterTests.swift */,
 				CA6AA0191FD885030092C6DB /* NewsViewControllerTests.swift */,
+				CA60BFFF207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift */,
+				CA60BFEA207B893100697566 /* Authenticated */,
 				CA60BFE42078E5F000697566 /* Test Doubles */,
 				CA60BFE9207B88F100697566 /* Unauthenticated */,
 			);
@@ -3687,7 +3687,6 @@
 				CA71A34A2040320A00C847C3 /* String+RandomValueProviding.swift in Sources */,
 				CAEAEBFA1FE0037700C0EE7C /* MessageDetailPresenterTests.swift in Sources */,
 				CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */,
-				CA6AA0201FD89B2D0092C6DB /* NewsPresenterTests.swift in Sources */,
 				CA71A3502040371D00C847C3 /* FloatingPoint+RandomValueProviding.swift in Sources */,
 				781A94421F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */,
 				CAB3A72A1F7532A2005DF77B /* CapturingPushPermissionsRequester.swift in Sources */,
@@ -3791,6 +3790,7 @@
 				CA60BFF0207B8A0B00697566 /* WhenNewsSceneWillAppearForAuthenticatedUser.swift in Sources */,
 				6EEC6DA11F1BF79F00205F2D /* FirebaseTopicTests.swift in Sources */,
 				7820A6F61F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift in Sources */,
+				CA60C000207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift in Sources */,
 				CABF03CA20421B490028BD62 /* WhenFetchingKnowledgeGroupsWithoutLoadingAnything.swift in Sources */,
 				CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */,
 				6EF96CCF1F0EDB2000EE6134 /* CalendarTestDoubles.swift in Sources */,
