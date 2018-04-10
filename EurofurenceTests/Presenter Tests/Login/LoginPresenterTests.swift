@@ -21,7 +21,7 @@ class LoginPresenterTests: XCTestCase {
         super.setUp()
         
         loginSceneFactory = StubLoginSceneFactory()
-        authenticationService = CapturingAuthenticationService()
+        authenticationService = CapturingAuthenticationService(authState: .loggedOut)
         alertRouter = CapturingAlertRouter()
         alertRouter.automaticallyPresentAlerts = true
         delegate = CapturingLoginModuleDelegate()

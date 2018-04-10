@@ -8,20 +8,18 @@
 
 @testable import Eurofurence
 
-class CapturingAuthenticationService: AuthenticationService {
-    
-    func add(observer: AuthenticationStateObserver) {
-        
-    }
+class CapturingAuthenticationService: StubAuthenticationService {
     
     private(set) var authStateDeterminedCount = 0
-    func determineAuthState(completionHandler: @escaping (AuthState) -> Void) {
+    override func determineAuthState(completionHandler: @escaping (AuthState) -> Void) {
+        super.determineAuthState(completionHandler: completionHandler)
         authStateDeterminedCount += 1
     }
     
     private(set) var capturedRequest: LoginServiceRequest?
     fileprivate var capturedCompletionHandler: ((LoginServiceResult) -> Void)?
-    func perform(_ request: LoginServiceRequest, completionHandler: @escaping (LoginServiceResult) -> Void) {
+    override  func perform(_ request: LoginServiceRequest, completionHandler: @escaping (LoginServiceResult) -> Void) {
+        super.perform(request, completionHandler: completionHandler)
         capturedRequest = request
         capturedCompletionHandler = completionHandler
     }

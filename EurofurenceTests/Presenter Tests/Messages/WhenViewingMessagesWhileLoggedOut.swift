@@ -29,7 +29,7 @@ class WhenViewingMessagesWhileLoggedOut: XCTestCase {
     }
     
     func testTheAuthServiceDoesNotDetermineAuthStateUntilTheSceneWillAppear() {
-        let authenticationService = CapturingAuthenticationService()
+        let authenticationService = CapturingAuthenticationService(authState: .loggedOut)
         _ = MessagesModuleBuilder()
             .with(StubMessagesSceneFactory())
             .with(authenticationService)
