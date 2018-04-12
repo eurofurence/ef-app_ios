@@ -90,7 +90,7 @@ class NewsViewController: UIViewController, NewsScene {
         loginPromptDescriptionLabel.text = description
     }
 
-    func bind(numberOfItemsPerComponent: [Int]) {
+    func bind(numberOfItemsPerComponent: [Int], using binder: NewsComponentsBinder) {
 
     }
 

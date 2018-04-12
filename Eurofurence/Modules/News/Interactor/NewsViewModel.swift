@@ -10,6 +10,7 @@ struct NewsViewModel {
 
     struct Component {
 
+        var title: String
         var numberOfItems: Int
 
     }

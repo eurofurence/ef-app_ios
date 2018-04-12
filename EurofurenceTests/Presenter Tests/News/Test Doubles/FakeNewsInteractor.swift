@@ -11,8 +11,10 @@ import Foundation
 
 class FakeNewsInteractor: NewsInteractor {
     
-    var lastCreatedViewModel: NewsViewModel?
+    var lastCreatedViewModel: NewsViewModel = .random
+    private(set) var didPrepareViewModel = false
     func prepareViewModel(_ completionHandler: @escaping (NewsViewModel) -> Void) {
+        didPrepareViewModel = true
         let viewModel = NewsViewModel.random
         lastCreatedViewModel = viewModel
         completionHandler(viewModel)

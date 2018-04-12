@@ -34,6 +34,6 @@ protocol NewsScene: class {
     func showLoginPrompt(_ prompt: String)
     func showLoginDescription(_ description: String)
 
-    func bind(numberOfItemsPerComponent: [Int])
+    func bind(numberOfItemsPerComponent: [Int], using binder: NewsComponentsBinder)
 
 }

@@ -19,7 +19,7 @@ extension NewsViewModel: RandomValueProviding {
 extension NewsViewModel.Component: RandomValueProviding {
     
     static var random: NewsViewModel.Component {
-        return NewsViewModel.Component(numberOfItems: .random)
+        return NewsViewModel.Component(title: .random, numberOfItems: .random)
     }
     
 }
