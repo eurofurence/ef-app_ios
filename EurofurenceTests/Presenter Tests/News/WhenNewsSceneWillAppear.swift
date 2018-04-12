@@ -11,9 +11,16 @@ import XCTest
 
 class WhenNewsSceneWillAppear: XCTestCase {
     
-    func testTheNewsSceneIsToldToBindExpectedNumberOfComponentsFromViewModel() {
-        let context = NewsPresenterTestBuilder().build()
+    var context: NewsPresenterTestBuilder.Context!
+    
+    override func setUp() {
+        super.setUp()
+        
+        context = NewsPresenterTestBuilder().build()
         context.simulateNewsSceneWillAppear()
+    }
+    
+    func testTheNewsSceneIsToldToBindExpectedNumberOfComponentsFromViewModel() {
         let viewModel = context.newsInteractor.lastCreatedViewModel
         
         XCTAssertNotNil(viewModel)
@@ -21,8 +28,6 @@ class WhenNewsSceneWillAppear: XCTestCase {
     }
     
     func testTheNewsSceneIsToldToBindExpectedSubcomponentItemCountsFromViewModel() {
-        let context = NewsPresenterTestBuilder().build()
-        context.simulateNewsSceneWillAppear()
         let viewModel = context.newsInteractor.lastCreatedViewModel
         let expected = viewModel?.components.map({ $0.numberOfItems }) ?? []
         
