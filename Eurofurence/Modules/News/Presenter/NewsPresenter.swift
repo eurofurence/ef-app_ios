@@ -35,6 +35,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
     private let authenticationService: AuthenticationService
     private let delegate: NewsModuleDelegate
     private let newsScene: NewsScene
+    private let newsInteractor: NewsInteractor
     private let privateMessagesService: PrivateMessagesService
     private let determineAuthStateOnce: DetermineAuthStateOnce
 
@@ -47,6 +48,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
          privateMessagesService: PrivateMessagesService) {
         self.delegate = delegate
         self.newsScene = newsScene
+        self.newsInteractor = newsInteractor
         self.authenticationService = authenticationService
         self.privateMessagesService = privateMessagesService
 
@@ -55,10 +57,6 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
         newsScene.delegate = self
         authenticationService.add(observer: self)
         newsScene.showNewsTitle(.news)
-
-        newsInteractor.prepareViewModel { (viewModel) in
-            newsScene.bind(numberOfComponents: viewModel.components.count)
-        }
     }
 
     // MARK: AuthStateObserver
@@ -96,6 +94,8 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
     func newsSceneWillAppear() {
         determineAuthStateOnce.run(authStateResolved)
         privateMessagesService.add(self)
+
+        newsInteractor.prepareViewModel(interactorDidPrepareViewModel)
     }
 
     func newsSceneDidTapLoginAction(_ scene: NewsScene) {
@@ -107,6 +107,10 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
     }
 
     // MARK: Private
+
+    private func interactorDidPrepareViewModel(_ viewModel: NewsViewModel) {
+        newsScene.bind(numberOfComponents: viewModel.components.count)
+    }
 
     private func authStateResolved(_ state: AuthState) {
         switch state {
