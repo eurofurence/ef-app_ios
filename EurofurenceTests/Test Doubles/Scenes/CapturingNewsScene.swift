@@ -60,8 +60,8 @@ class CapturingNewsScene: UIViewController, NewsScene {
     
     private(set) var capturedComponentsToBind: Int?
     private(set) var capturedNumberOfItemsPerComponentToBind: [Int] = []
-    func bind(numberOfComponents: Int, numberOfItemsPerComponent: [Int]) {
-        capturedComponentsToBind = numberOfComponents
+    func bind(numberOfItemsPerComponent: [Int]) {
+        capturedComponentsToBind = numberOfItemsPerComponent.count
         capturedNumberOfItemsPerComponentToBind = numberOfItemsPerComponent
     }
     
