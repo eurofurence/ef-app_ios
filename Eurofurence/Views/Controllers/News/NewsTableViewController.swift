@@ -142,9 +142,16 @@ class NewsTableViewController: UITableViewController,
             }
         }
 
+        struct DummyNewsInteractor: NewsInteractor {
+            func prepareViewModel(_ completionHandler: @escaping (NewsViewModel) -> Void) {
+
+            }
+        }
+
         let app = EurofurenceApplication.shared
         presenter = NewsPresenter(delegate: DummyNewsModuleDelegate(),
                                   newsScene: self,
+                                  newsInteractor: DummyNewsInteractor(),
                                   authenticationService: ApplicationAuthenticationService(app: app),
                                   privateMessagesService: EurofurencePrivateMessagesService(app: app))
     }
@@ -483,6 +490,10 @@ class NewsTableViewController: UITableViewController,
     func showLoginDescription(_ description: String) {
         loginDescription = description
         reloadUserMessagesBanner()
+    }
+
+    func bind(numberOfComponents: Int) {
+
     }
 
     // MARK: Private

@@ -299,6 +299,7 @@
 		CA60BFFC207B8D2000697566 /* WhenUnauthenticatedUserTapsLoginButton_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFB207B8D2000697566 /* WhenUnauthenticatedUserTapsLoginButton_NewsPresenterShould.swift */; };
 		CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */; };
 		CA60C000207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFF207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift */; };
+		CA60C002207F7D2100697566 /* WhenNewsSceneWillAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60C001207F7D2100697566 /* WhenNewsSceneWillAppear.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -360,6 +361,10 @@
 		CA8276B8204F19CA006A7419 /* WhenPerformingSyncThatFails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B7204F19CA006A7419 /* WhenPerformingSyncThatFails.swift */; };
 		CA8276BA204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B9204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift */; };
 		CA8276BC204F25DF006A7419 /* InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276BB204F25DF006A7419 /* InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould.swift */; };
+		CA89CBA6207F7F5400570D54 /* FakeNewsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBA5207F7F5400570D54 /* FakeNewsInteractor.swift */; };
+		CA89CBA9207F7F9A00570D54 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBA8207F7F9A00570D54 /* NewsViewModel.swift */; };
+		CA89CBAB207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBAA207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift */; };
+		CA89CBAD207F802400570D54 /* NewsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBAC207F802400570D54 /* NewsInteractor.swift */; };
 		CA8D97CD201610EC0074838F /* DomainEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97CC201610EC0074838F /* DomainEvent.swift */; };
 		CA8D97CF201611430074838F /* EventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97CE201611430074838F /* EventBus.swift */; };
 		CA8D97D12016126E0074838F /* LoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97D02016126E0074838F /* LoggedIn.swift */; };
@@ -868,6 +873,7 @@
 		CA60BFFB207B8D2000697566 /* WhenUnauthenticatedUserTapsLoginButton_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUnauthenticatedUserTapsLoginButton_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeAuthenticationService.swift; sourceTree = "<group>"; };
 		CA60BFFF207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsSceneWillReappear_NewsPresenterShould.swift; sourceTree = "<group>"; };
+		CA60C001207F7D2100697566 /* WhenNewsSceneWillAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsSceneWillAppear.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -929,6 +935,10 @@
 		CA8276B7204F19CA006A7419 /* WhenPerformingSyncThatFails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSyncThatFails.swift; sourceTree = "<group>"; };
 		CA8276B9204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSavingSuccessfulSyncResponse.swift; sourceTree = "<group>"; };
 		CA8276BB204F25DF006A7419 /* InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould.swift; sourceTree = "<group>"; };
+		CA89CBA5207F7F5400570D54 /* FakeNewsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNewsInteractor.swift; sourceTree = "<group>"; };
+		CA89CBA8207F7F9A00570D54 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
+		CA89CBAA207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA89CBAC207F802400570D54 /* NewsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsInteractor.swift; sourceTree = "<group>"; };
 		CA8D97CC201610EC0074838F /* DomainEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainEvent.swift; sourceTree = "<group>"; };
 		CA8D97CE201611430074838F /* EventBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBus.swift; sourceTree = "<group>"; };
 		CA8D97D02016126E0074838F /* LoggedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedIn.swift; sourceTree = "<group>"; };
@@ -2016,6 +2026,7 @@
 			isa = PBXGroup;
 			children = (
 				CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */,
+				CA89CBA5207F7F5400570D54 /* FakeNewsInteractor.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -2213,6 +2224,7 @@
 			isa = PBXGroup;
 			children = (
 				CA0F7620203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift */,
+				CA89CBAA207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -2397,6 +2409,15 @@
 				CA8276B5204EC026006A7419 /* CapturingPreloadServiceDelegate.swift */,
 			);
 			path = "Test Doubles";
+			sourceTree = "<group>";
+		};
+		CA89CBA7207F7F8F00570D54 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CA89CBA8207F7F9A00570D54 /* NewsViewModel.swift */,
+				CA89CBAC207F802400570D54 /* NewsInteractor.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		CA8D97C9201610C80074838F /* Domain Events */ = {
@@ -2602,6 +2623,7 @@
 			children = (
 				CAC1E1381F50431000195513 /* NewsPresenterTestBuilder.swift */,
 				CA6AA0191FD885030092C6DB /* NewsViewControllerTests.swift */,
+				CA60C001207F7D2100697566 /* WhenNewsSceneWillAppear.swift */,
 				CA60BFFF207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift */,
 				CA60BFEA207B893100697566 /* Authenticated */,
 				CA60BFE42078E5F000697566 /* Test Doubles */,
@@ -2614,6 +2636,7 @@
 			isa = PBXGroup;
 			children = (
 				CABA439E1FD578E1009CB5B0 /* NewsModuleBuilder.swift */,
+				CA89CBA7207F7F8F00570D54 /* Interactor */,
 				CABA43A91FD5DB78009CB5B0 /* Module */,
 				CABA43A71FD5DB4E009CB5B0 /* Presenter */,
 				CABA43A81FD5DB55009CB5B0 /* View */,
@@ -3447,6 +3470,7 @@
 				9A0525411ECA2AF500578798 /* Sync.swift in Sources */,
 				9A34B9811ED06956004A249E /* ViewModelResolver.swift in Sources */,
 				CAEAEBEF1FDC989300C0EE7C /* LoginServiceRequest.swift in Sources */,
+				CA89CBA9207F7F9A00570D54 /* NewsViewModel.swift in Sources */,
 				9A861EB61F25550700B75A8C /* TutorialPageScene.swift in Sources */,
 				9A2A948D1F12D64B004D66FB /* DataModelVersionProviding.swift in Sources */,
 				CA1ECB491FE6E8100076083A /* MessageComponentBinder.swift in Sources */,
@@ -3584,6 +3608,7 @@
 				CAF597A62045F1C000089BE8 /* V2SyncAPI.swift in Sources */,
 				9A861EA91F2554BE00B75A8C /* InitiateDownloadTutorialPagePresenter.swift in Sources */,
 				CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */,
+				CA89CBAD207F802400570D54 /* NewsInteractor.swift in Sources */,
 				781A94301F1A1972002DE70F /* FirebaseAdapter.swift in Sources */,
 				78FE77CC1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift in Sources */,
 				D6F3D620BA994A6570325C66 /* DealersTableViewCell.swift in Sources */,
@@ -3724,6 +3749,7 @@
 				CA30EABC1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift in Sources */,
 				CAF9A94E1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift in Sources */,
 				CAF705611F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift in Sources */,
+				CA89CBAB207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift in Sources */,
 				CAD780521F1E2D2E002A8333 /* CapturingCredentialStore.swift in Sources */,
 				CA804DDA1F20D2F500E07A4A /* V2LoginAPITests.swift in Sources */,
 				CA6EC4842051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift in Sources */,
@@ -3811,8 +3837,10 @@
 				CA17FE732056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift in Sources */,
 				CA0F7621203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift in Sources */,
 				7820A6ED1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift in Sources */,
+				CA89CBA6207F7F5400570D54 /* FakeNewsInteractor.swift in Sources */,
 				CAF9A93F1F50491200628833 /* EurofurenceAuthServiceTests.swift in Sources */,
 				CA73AEDD201A0823004E77BF /* CapturingKnowledgeListScene.swift in Sources */,
+				CA60C002207F7D2100697566 /* WhenNewsSceneWillAppear.swift in Sources */,
 				CABF03CC204220460028BD62 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift in Sources */,
 				CA2547C11FEB1B2A0023F2CB /* WhenRefreshingMessages.swift in Sources */,
 				CAD3BDCD20613A2800C91E6E /* WhenLookingUpMailToLinks.swift in Sources */,

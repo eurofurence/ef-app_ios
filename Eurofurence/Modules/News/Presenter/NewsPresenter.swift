@@ -42,6 +42,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
 
     init(delegate: NewsModuleDelegate,
          newsScene: NewsScene,
+         newsInteractor: NewsInteractor,
          authenticationService: AuthenticationService,
          privateMessagesService: PrivateMessagesService) {
         self.delegate = delegate
@@ -54,6 +55,10 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
         newsScene.delegate = self
         authenticationService.add(observer: self)
         newsScene.showNewsTitle(.news)
+
+        newsInteractor.prepareViewModel { (viewModel) in
+            newsScene.bind(numberOfComponents: viewModel.components.count)
+        }
     }
 
     // MARK: AuthStateObserver

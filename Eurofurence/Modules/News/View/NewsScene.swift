@@ -34,4 +34,6 @@ protocol NewsScene: class {
     func showLoginPrompt(_ prompt: String)
     func showLoginDescription(_ description: String)
 
+    func bind(numberOfComponents: Int)
+
 }

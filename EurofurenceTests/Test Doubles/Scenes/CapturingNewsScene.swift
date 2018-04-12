@@ -58,6 +58,11 @@ class CapturingNewsScene: UIViewController, NewsScene {
         capturedLoginDescription = description
     }
     
+    private(set) var capturedComponentsToBind: Int?
+    func bind(numberOfComponents: Int) {
+        capturedComponentsToBind = numberOfComponents
+    }
+    
 }
 
 // MARK: Test Helpers

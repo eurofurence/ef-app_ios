@@ -379,7 +379,6 @@ class ApplicationDirectorTests: XCTestCase {
     
     func testWhenTheMessagesModuleRequestsResolutionForUserTheLoginModuleIsPresentedOnTopOfTheTabController() {
         navigateToTabController()
-        _ = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
         newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
         messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: { _ in })
         let navController = tabModuleFactory.stubInterface.capturedPresentedViewController as? UINavigationController
@@ -389,7 +388,6 @@ class ApplicationDirectorTests: XCTestCase {
     
     func testWhenTheMessagesModuleRequestsResolutionForUserTheLoginModuleIsPresentedUsingTheFormSheetModalPresentationStyle() {
         navigateToTabController()
-        _ = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
         newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
         messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: { _ in })
         
@@ -398,7 +396,6 @@ class ApplicationDirectorTests: XCTestCase {
     
     func testWhenShowingLoginForMessagesControllerWhenModuleCancelsLoginTheMessagesModuleIsToldResolutionFailed() {
         navigateToTabController()
-        _ = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
         newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
         var userResolved = true
         messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: { userResolved = $0 })
@@ -409,7 +406,6 @@ class ApplicationDirectorTests: XCTestCase {
     
     func testWhenShowingLoginForMessagesControllerTheMessagesModuleIsNotToldResolutionFailedBeforeLoginIsCancelled() {
         navigateToTabController()
-        _ = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
         newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
         var userResolved = true
         messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: { userResolved = $0 })
@@ -419,7 +415,6 @@ class ApplicationDirectorTests: XCTestCase {
     
     func testWhenShowingLoginForMessagesControllerWhenModuleLogsInTheMessagesModuleIsToldResolutionSucceeded() {
         navigateToTabController()
-        _ = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
         newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
         var userResolved = false
         messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: { userResolved = $0 })
@@ -430,7 +425,6 @@ class ApplicationDirectorTests: XCTestCase {
     
     func testWhenShowingLoginForMessagesControllerTheMessagesModuleIsNotToldResolutionSucceededBeforeUserLogsIn() {
         navigateToTabController()
-        _ = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
         newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
         var userResolved = false
         messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: { userResolved = $0 })
@@ -440,7 +434,6 @@ class ApplicationDirectorTests: XCTestCase {
     
     func testWhenShowingLoginForMessagesControllerWhenLoginSucceedsItIsDismissed() {
         navigateToTabController()
-        _ = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
         newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
         messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser { (_) in }
         loginModuleFactory.delegate?.loginModuleDidLoginSuccessfully()
@@ -450,7 +443,6 @@ class ApplicationDirectorTests: XCTestCase {
     
     func testWhenMessagesModuleRequestsPresentationForMessageTheMessageDetailModuleIsBuiltUsingChosenMessage() {
         navigateToTabController()
-        _ = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
         newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
         let message = AppDataBuilder.makeMessage()
         messagesModuleFactory.delegate?.messagesModuleDidRequestPresentation(for: message)
@@ -460,7 +452,6 @@ class ApplicationDirectorTests: XCTestCase {
     
     func testWhenMessagesModuleRequestsPresentationForMessageTheMessageDetailModuleInterfaceIsPushedOntoMessagesNavigationController() {
         navigateToTabController()
-        _ = tabModuleFactory.navigationController(for: newsModuleFactory.stubInterface)
         newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
         messagesModuleFactory.delegate?.messagesModuleDidRequestPresentation(for: AppDataBuilder.makeMessage())
         let navigationController = messagesModuleFactory.stubInterface.navigationController
