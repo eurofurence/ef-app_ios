@@ -492,7 +492,7 @@ class NewsTableViewController: UITableViewController,
         reloadUserMessagesBanner()
     }
 
-    func bind(numberOfComponents: Int) {
+    func bind(numberOfComponents: Int, numberOfItemsPerComponent: [Int]) {
 
     }
 

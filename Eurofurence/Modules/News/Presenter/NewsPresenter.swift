@@ -109,7 +109,8 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
     // MARK: Private
 
     private func interactorDidPrepareViewModel(_ viewModel: NewsViewModel) {
-        newsScene.bind(numberOfComponents: viewModel.components.count)
+        let itemsPerComponent = viewModel.components.map({ $0.numberOfItems })
+        newsScene.bind(numberOfComponents: viewModel.components.count, numberOfItemsPerComponent: itemsPerComponent)
     }
 
     private func authStateResolved(_ state: AuthState) {

@@ -10,6 +10,8 @@ struct NewsViewModel {
 
     struct Component {
 
+        var numberOfItems: Int
+
     }
 
     var components: [Component]

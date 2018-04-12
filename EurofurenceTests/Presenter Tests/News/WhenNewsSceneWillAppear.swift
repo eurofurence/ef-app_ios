@@ -20,4 +20,13 @@ class WhenNewsSceneWillAppear: XCTestCase {
         XCTAssertEqual(viewModel?.components.count, context.newsScene.capturedComponentsToBind)
     }
     
+    func testTheNewsSceneIsToldToBindExpectedSubcomponentItemCountsFromViewModel() {
+        let context = NewsPresenterTestBuilder().build()
+        context.simulateNewsSceneWillAppear()
+        let viewModel = context.newsInteractor.lastCreatedViewModel
+        let expected = viewModel?.components.map({ $0.numberOfItems }) ?? []
+        
+        XCTAssertEqual(expected, context.newsScene.capturedNumberOfItemsPerComponentToBind)
+    }
+    
 }
