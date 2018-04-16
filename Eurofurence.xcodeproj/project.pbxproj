@@ -370,7 +370,7 @@
 		CA89CBB42080031000570D54 /* CapturingNewsComponentHeaderScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBB32080031000570D54 /* CapturingNewsComponentHeaderScene.swift */; };
 		CA89CBB62080032000570D54 /* NewsComponentHeaderScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBB52080032000570D54 /* NewsComponentHeaderScene.swift */; };
 		CA89CBBA2084CA8A00570D54 /* StubNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBB92084CA8A00570D54 /* StubNewsViewModel.swift */; };
-		CA89CBBC2084CB4200570D54 /* WhenBindingAnnouncement_NewsViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBBB2084CB4200570D54 /* WhenBindingAnnouncement_NewsViewModelShould.swift */; };
+		CA89CBBC2084CB4200570D54 /* WhenBindingAnnouncement_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBBB2084CB4200570D54 /* WhenBindingAnnouncement_NewsPresenterShould.swift */; };
 		CA89CBBE208531FB00570D54 /* AnnouncementComponentViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBBD208531FB00570D54 /* AnnouncementComponentViewModel+RandomValueProviding.swift */; };
 		CA89CBC02085383100570D54 /* StubNewsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBBF2085383100570D54 /* StubNewsInteractor.swift */; };
 		CA89CBC22085385900570D54 /* AnnouncementsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBC12085385900570D54 /* AnnouncementsViewModel.swift */; };
@@ -953,7 +953,7 @@
 		CA89CBB32080031000570D54 /* CapturingNewsComponentHeaderScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNewsComponentHeaderScene.swift; sourceTree = "<group>"; };
 		CA89CBB52080032000570D54 /* NewsComponentHeaderScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentHeaderScene.swift; sourceTree = "<group>"; };
 		CA89CBB92084CA8A00570D54 /* StubNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNewsViewModel.swift; sourceTree = "<group>"; };
-		CA89CBBB2084CB4200570D54 /* WhenBindingAnnouncement_NewsViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingAnnouncement_NewsViewModelShould.swift; sourceTree = "<group>"; };
+		CA89CBBB2084CB4200570D54 /* WhenBindingAnnouncement_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingAnnouncement_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA89CBBD208531FB00570D54 /* AnnouncementComponentViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnnouncementComponentViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA89CBBF2085383100570D54 /* StubNewsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNewsInteractor.swift; sourceTree = "<group>"; };
 		CA89CBC12085385900570D54 /* AnnouncementsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsViewModel.swift; sourceTree = "<group>"; };
@@ -2656,7 +2656,7 @@
 			children = (
 				CAC1E1381F50431000195513 /* NewsPresenterTestBuilder.swift */,
 				CA6AA0191FD885030092C6DB /* NewsViewControllerTests.swift */,
-				CA89CBBB2084CB4200570D54 /* WhenBindingAnnouncement_NewsViewModelShould.swift */,
+				CA89CBBB2084CB4200570D54 /* WhenBindingAnnouncement_NewsPresenterShould.swift */,
 				CA89CBAE207F823A00570D54 /* WhenBuildingNewsModule.swift */,
 				CA60C001207F7D2100697566 /* WhenNewsSceneWillAppear.swift */,
 				CA60BFFF207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift */,
@@ -3902,7 +3902,7 @@
 				781A943A1F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift in Sources */,
 				CA0F762520322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift in Sources */,
 				CAEAEC0C1FE0702500C0EE7C /* MessageDetailViewControllerTests.swift in Sources */,
-				CA89CBBC2084CB4200570D54 /* WhenBindingAnnouncement_NewsViewModelShould.swift in Sources */,
+				CA89CBBC2084CB4200570D54 /* WhenBindingAnnouncement_NewsPresenterShould.swift in Sources */,
 				CAD3BDB520587DD800C91E6E /* WhenShowingKnowledgeEntryWithoutLinks.swift in Sources */,
 				78455B4B1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift in Sources */,
 				CA81D4941FEA92EA00A52A2F /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  WhenBindingAnnouncement_NewsViewModelShould.swift
+//  WhenBindingAnnouncement_NewsPresenterShould.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 16/04/2018.
@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import XCTest
 
-class WhenBindingAnnouncement_NewsViewModelShould: XCTestCase {
+class WhenBindingAnnouncement_NewsPresenterShould: XCTestCase {
     
     var viewModel: AnnouncementsViewModel!
     var announcementViewModel: AnnouncementComponentViewModel!
