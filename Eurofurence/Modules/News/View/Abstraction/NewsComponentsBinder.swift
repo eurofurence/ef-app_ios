@@ -11,7 +11,7 @@ import Foundation.NSIndexPath
 protocol NewsComponentsBinder {
 
     func bindTitleForSection(at index: Int, scene: NewsComponentHeaderScene)
-    func bindComponent(at indexPath: IndexPath, using componentFactory: NewsComponentFactory)
+    func bindComponent(at indexPath: IndexPath, using componentFactory: NewsComponentFactory) -> Any
 
 }
 

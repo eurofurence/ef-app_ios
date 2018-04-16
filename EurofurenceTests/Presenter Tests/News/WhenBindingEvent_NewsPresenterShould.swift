@@ -45,6 +45,7 @@ class WhenBindingEvent_NewsPresenterShould: XCTestCase {
     var indexPath: IndexPath!
     var newsInteractor: StubNewsInteractor!
     var context: NewsPresenterTestBuilder.Context!
+    var boundComponent: Any?
     
     override func setUp() {
         super.setUp()
@@ -58,7 +59,11 @@ class WhenBindingEvent_NewsPresenterShould: XCTestCase {
         newsInteractor = StubNewsInteractor(viewModel: viewModel)
         context = NewsPresenterTestBuilder().with(newsInteractor).build()
         context.simulateNewsSceneWillAppear()
-        context.sceneFactory.stubbedScene.bindComponent(at: indexPath)
+        boundComponent = context.sceneFactory.stubbedScene.bindComponent(at: indexPath)
+    }
+    
+    func testReturnTheEventComponentWhenBinding() {
+        XCTAssertTrue(context.newsScene.stubbedEventComponent === (boundComponent as? CapturingNewsEventComponent))
     }
     
     func testBindTheStartTimeFromTheEventOntoTheEventScene() {

@@ -127,8 +127,8 @@ extension CapturingNewsScene {
         delegate?.newsSceneDidTapShowMessagesAction(self)
     }
     
-    func bindComponent(at indexPath: IndexPath) {
-        capturedBinder?.bindComponent(at: indexPath, using: componentFactory)
+    func bindComponent(at indexPath: IndexPath) -> Any? {
+        return capturedBinder?.bindComponent(at: indexPath, using: componentFactory)
     }
     
 }

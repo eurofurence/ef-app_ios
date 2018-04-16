@@ -38,26 +38,37 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
             scene.setComponentTitle(viewModel.titleForComponent(at: index))
         }
 
-        func bindComponent(at indexPath: IndexPath, using componentFactory: NewsComponentFactory) {
+        func bindComponent(at indexPath: IndexPath, using componentFactory: NewsComponentFactory) -> Any {
             let visitor = Visitor(componentFactory: componentFactory)
             viewModel.describeComponent(at: indexPath, to: visitor)
+
+            return visitor.boundComponent
         }
 
     }
 
-    private struct Visitor: NewsViewModelVisitor {
+    private class Visitor: NewsViewModelVisitor {
 
-        var componentFactory: NewsComponentFactory
+        private let componentFactory: NewsComponentFactory
+        private(set) var boundComponent: Any = 0
+
+        init(componentFactory: NewsComponentFactory) {
+            self.componentFactory = componentFactory
+        }
 
         func visit(_ announcement: AnnouncementComponentViewModel) {
             let component = componentFactory.makeAnnouncementComponent()
             component.setAnnouncementTitle(announcement.title)
             component.setAnnouncementDetail(announcement.detail)
+
+            boundComponent = component
         }
 
         func visit(_ event: EventComponentViewModel) {
             let component = componentFactory.makeEventComponent()
             component.setEventStartTime(event.startTime)
+
+            boundComponent = component
         }
 
     }
