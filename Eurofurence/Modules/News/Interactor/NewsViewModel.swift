@@ -21,6 +21,7 @@ protocol NewsViewModel {
 protocol NewsViewModelVisitor {
 
     func visit(_ announcement: AnnouncementComponentViewModel)
+    func visit(_ event: EventComponentViewModel)
 
 }
 
@@ -28,5 +29,11 @@ struct AnnouncementComponentViewModel {
 
     var title: String
     var detail: String
+
+}
+
+struct EventComponentViewModel {
+
+    var startTime: String
 
 }

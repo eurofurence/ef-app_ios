@@ -77,6 +77,11 @@ class StubNewsComponentFactory: NewsComponentFactory {
         return stubbedAnnouncementComponent
     }
     
+    let stubbedEventComponent = CapturingNewsEventComponent()
+    func makeEventComponent() -> NewsEventComponent {
+        return stubbedEventComponent
+    }
+    
 }
 
 class CapturingNewsAnnouncementComponent: NewsAnnouncementComponent {
@@ -93,12 +98,25 @@ class CapturingNewsAnnouncementComponent: NewsAnnouncementComponent {
     
 }
 
+class CapturingNewsEventComponent: NewsEventComponent {
+    
+    private(set) var capturedStartTime: String?
+    func setEventStartTime(_ startTime: String) {
+        capturedStartTime = startTime
+    }
+    
+}
+
 // MARK: Test Helpers
 
 extension CapturingNewsScene {
     
     var stubbedAnnouncementComponent: CapturingNewsAnnouncementComponent {
         return componentFactory.stubbedAnnouncementComponent
+    }
+    
+    var stubbedEventComponent: CapturingNewsEventComponent {
+        return componentFactory.stubbedEventComponent
     }
     
     func tapLoginAction() {

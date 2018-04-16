@@ -55,6 +55,11 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
             component.setAnnouncementDetail(announcement.detail)
         }
 
+        func visit(_ event: EventComponentViewModel) {
+            let component = componentFactory.makeEventComponent()
+            component.setEventStartTime(event.startTime)
+        }
+
     }
 
     // MARK: Properties

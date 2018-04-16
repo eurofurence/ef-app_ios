@@ -18,6 +18,7 @@ protocol NewsComponentsBinder {
 protocol NewsComponentFactory {
 
     func makeAnnouncementComponent() -> NewsAnnouncementComponent
+    func makeEventComponent() -> NewsEventComponent
 
 }
 
@@ -25,5 +26,11 @@ protocol NewsAnnouncementComponent {
 
     func setAnnouncementTitle(_ title: String)
     func setAnnouncementDetail(_ detail: String)
+
+}
+
+protocol NewsEventComponent {
+
+    func setEventStartTime(_ startTime: String)
 
 }
