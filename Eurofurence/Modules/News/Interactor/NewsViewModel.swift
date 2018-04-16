@@ -6,11 +6,26 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import Foundation.NSIndexPath
+
 protocol NewsViewModel {
 
     var numberOfComponents: Int { get }
 
     func numberOfItemsInComponent(at index: Int) -> Int
     func titleForComponent(at index: Int) -> String
+    func describeComponent(at indexPath: IndexPath, to visitor: NewsViewModelVisitor)
+
+}
+
+protocol NewsViewModelVisitor {
+
+    func visit(_ announcement: AnnouncementComponentViewModel)
+
+}
+
+struct AnnouncementComponentViewModel {
+
+    var title: String
 
 }

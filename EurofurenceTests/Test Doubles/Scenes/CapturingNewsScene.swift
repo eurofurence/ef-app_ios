@@ -61,6 +61,7 @@ class CapturingNewsScene: UIViewController, NewsScene {
     private(set) var capturedComponentsToBind: Int?
     private(set) var capturedNumberOfItemsPerComponentToBind: [Int] = []
     private(set) var capturedBinder: NewsComponentsBinder?
+    let componentFactory = StubNewsComponentFactory()
     func bind(numberOfItemsPerComponent: [Int], using binder: NewsComponentsBinder) {
         capturedComponentsToBind = numberOfItemsPerComponent.count
         capturedNumberOfItemsPerComponentToBind = numberOfItemsPerComponent
@@ -69,9 +70,31 @@ class CapturingNewsScene: UIViewController, NewsScene {
     
 }
 
+class StubNewsComponentFactory: NewsComponentFactory {
+    
+    let stubbedAnnouncementComponent = CapturingNewsAnnouncementComponent()
+    func makeAnnouncementComponent() -> NewsAnnouncementComponent {
+        return stubbedAnnouncementComponent
+    }
+    
+}
+
+class CapturingNewsAnnouncementComponent: NewsAnnouncementComponent {
+    
+    private(set) var capturedTitle: String?
+    func setAnnouncementTitle(_ title: String) {
+        capturedTitle = title
+    }
+    
+}
+
 // MARK: Test Helpers
 
 extension CapturingNewsScene {
+    
+    var stubbedAnnouncementComponent: CapturingNewsAnnouncementComponent {
+        return componentFactory.stubbedAnnouncementComponent
+    }
     
     func tapLoginAction() {
         delegate?.newsSceneDidTapLoginAction(self)
@@ -79,6 +102,10 @@ extension CapturingNewsScene {
     
     func tapShowMessagesAction() {
         delegate?.newsSceneDidTapShowMessagesAction(self)
+    }
+    
+    func bindComponent(at indexPath: IndexPath) {
+        capturedBinder?.bindComponent(at: indexPath, using: componentFactory)
     }
     
 }

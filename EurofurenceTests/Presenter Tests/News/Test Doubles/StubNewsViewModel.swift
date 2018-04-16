@@ -7,6 +7,7 @@
 //
 
 @testable import Eurofurence
+import Foundation.NSIndexPath
 
 struct StubNewsViewModel: NewsViewModel {
     
@@ -29,6 +30,10 @@ struct StubNewsViewModel: NewsViewModel {
     
     func titleForComponent(at index: Int) -> String {
         return components[index].title
+    }
+    
+    func describeComponent(at indexPath: IndexPath, to visitor: NewsViewModelVisitor) {
+        
     }
     
 }
