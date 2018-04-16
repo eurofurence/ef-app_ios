@@ -35,8 +35,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
         var viewModel: NewsViewModel
 
         func bindTitleForSection(at index: Int, scene: NewsComponentHeaderScene) {
-            let component = viewModel.components[index]
-            scene.setComponentTitle(component.title)
+            scene.setComponentTitle(viewModel.titleForComponent(at: index))
         }
 
     }
@@ -120,7 +119,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
     // MARK: Private
 
     private func interactorDidPrepareViewModel(_ viewModel: NewsViewModel) {
-        let itemsPerComponent = viewModel.components.map({ $0.numberOfItems })
+        let itemsPerComponent = (0..<viewModel.numberOfComponents).map(viewModel.numberOfItemsInComponent)
         let binder = Binder(viewModel: viewModel)
         newsScene.bind(numberOfItemsPerComponent: itemsPerComponent, using: binder)
     }

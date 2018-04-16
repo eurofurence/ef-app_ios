@@ -17,4 +17,16 @@ struct NewsViewModel {
 
     var components: [Component]
 
+    var numberOfComponents: Int {
+        return components.count
+    }
+
+    func numberOfItemsInComponent(at index: Int) -> Int {
+        return components[index].numberOfItems
+    }
+
+    func titleForComponent(at index: Int) -> String {
+        return components[index].title
+    }
+
 }
