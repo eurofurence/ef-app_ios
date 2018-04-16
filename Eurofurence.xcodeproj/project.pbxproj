@@ -371,7 +371,7 @@
 		CA89CBB62080032000570D54 /* NewsComponentHeaderScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBB52080032000570D54 /* NewsComponentHeaderScene.swift */; };
 		CA89CBBA2084CA8A00570D54 /* StubNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBB92084CA8A00570D54 /* StubNewsViewModel.swift */; };
 		CA89CBBC2084CB4200570D54 /* WhenBindingAnnouncement_NewsViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBBB2084CB4200570D54 /* WhenBindingAnnouncement_NewsViewModelShould.swift */; };
-		CA89CBBE208531FB00570D54 /* AnnouncementComponentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBBD208531FB00570D54 /* AnnouncementComponentViewModel.swift */; };
+		CA89CBBE208531FB00570D54 /* AnnouncementComponentViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBBD208531FB00570D54 /* AnnouncementComponentViewModel+RandomValueProviding.swift */; };
 		CA89CBC02085383100570D54 /* StubNewsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBBF2085383100570D54 /* StubNewsInteractor.swift */; };
 		CA89CBC22085385900570D54 /* AnnouncementsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBC12085385900570D54 /* AnnouncementsViewModel.swift */; };
 		CA8D97CD201610EC0074838F /* DomainEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97CC201610EC0074838F /* DomainEvent.swift */; };
@@ -954,7 +954,7 @@
 		CA89CBB52080032000570D54 /* NewsComponentHeaderScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentHeaderScene.swift; sourceTree = "<group>"; };
 		CA89CBB92084CA8A00570D54 /* StubNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNewsViewModel.swift; sourceTree = "<group>"; };
 		CA89CBBB2084CB4200570D54 /* WhenBindingAnnouncement_NewsViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingAnnouncement_NewsViewModelShould.swift; sourceTree = "<group>"; };
-		CA89CBBD208531FB00570D54 /* AnnouncementComponentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementComponentViewModel.swift; sourceTree = "<group>"; };
+		CA89CBBD208531FB00570D54 /* AnnouncementComponentViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnnouncementComponentViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA89CBBF2085383100570D54 /* StubNewsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNewsInteractor.swift; sourceTree = "<group>"; };
 		CA89CBC12085385900570D54 /* AnnouncementsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsViewModel.swift; sourceTree = "<group>"; };
 		CA8D97CC201610EC0074838F /* DomainEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainEvent.swift; sourceTree = "<group>"; };
@@ -2247,7 +2247,7 @@
 			children = (
 				CA0F7620203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift */,
 				CA89CBAA207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift */,
-				CA89CBBD208531FB00570D54 /* AnnouncementComponentViewModel.swift */,
+				CA89CBBD208531FB00570D54 /* AnnouncementComponentViewModel+RandomValueProviding.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -3872,7 +3872,7 @@
 				CAF9A94C1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift in Sources */,
 				CA2D080C1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift in Sources */,
 				7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */,
-				CA89CBBE208531FB00570D54 /* AnnouncementComponentViewModel.swift in Sources */,
+				CA89CBBE208531FB00570D54 /* AnnouncementComponentViewModel+RandomValueProviding.swift in Sources */,
 				CA6EC4822051CBE600402894 /* CapturingKnowledgeDetailScene.swift in Sources */,
 				78FE77D71F1B9FA500E9A0BE /* URLSessionBasedJSONSessionTests.swift in Sources */,
 				CA17FE732056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift in Sources */,

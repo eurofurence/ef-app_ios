@@ -86,6 +86,11 @@ class CapturingNewsAnnouncementComponent: NewsAnnouncementComponent {
         capturedTitle = title
     }
     
+    private(set) var capturedDetail: String?
+    func setAnnouncementDetail(_ detail: String) {
+        capturedDetail = detail
+    }
+    
 }
 
 // MARK: Test Helpers

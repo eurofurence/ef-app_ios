@@ -27,5 +27,6 @@ protocol NewsViewModelVisitor {
 struct AnnouncementComponentViewModel {
 
     var title: String
+    var detail: String
 
 }

@@ -52,6 +52,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
         func visit(_ announcement: AnnouncementComponentViewModel) {
             let component = componentFactory.makeAnnouncementComponent()
             component.setAnnouncementTitle(announcement.title)
+            component.setAnnouncementDetail(announcement.detail)
         }
 
     }
