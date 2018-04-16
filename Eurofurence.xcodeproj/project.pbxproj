@@ -369,6 +369,7 @@
 		CA89CBB22080030300570D54 /* NewsComponentsBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBB12080030300570D54 /* NewsComponentsBinder.swift */; };
 		CA89CBB42080031000570D54 /* CapturingNewsComponentHeaderScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBB32080031000570D54 /* CapturingNewsComponentHeaderScene.swift */; };
 		CA89CBB62080032000570D54 /* NewsComponentHeaderScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBB52080032000570D54 /* NewsComponentHeaderScene.swift */; };
+		CA89CBBA2084CA8A00570D54 /* StubNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA89CBB92084CA8A00570D54 /* StubNewsViewModel.swift */; };
 		CA8D97CD201610EC0074838F /* DomainEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97CC201610EC0074838F /* DomainEvent.swift */; };
 		CA8D97CF201611430074838F /* EventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97CE201611430074838F /* EventBus.swift */; };
 		CA8D97D12016126E0074838F /* LoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97D02016126E0074838F /* LoggedIn.swift */; };
@@ -947,6 +948,7 @@
 		CA89CBB12080030300570D54 /* NewsComponentsBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentsBinder.swift; sourceTree = "<group>"; };
 		CA89CBB32080031000570D54 /* CapturingNewsComponentHeaderScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNewsComponentHeaderScene.swift; sourceTree = "<group>"; };
 		CA89CBB52080032000570D54 /* NewsComponentHeaderScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsComponentHeaderScene.swift; sourceTree = "<group>"; };
+		CA89CBB92084CA8A00570D54 /* StubNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNewsViewModel.swift; sourceTree = "<group>"; };
 		CA8D97CC201610EC0074838F /* DomainEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainEvent.swift; sourceTree = "<group>"; };
 		CA8D97CE201611430074838F /* EventBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBus.swift; sourceTree = "<group>"; };
 		CA8D97D02016126E0074838F /* LoggedIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedIn.swift; sourceTree = "<group>"; };
@@ -2036,6 +2038,7 @@
 				CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */,
 				CA89CBA5207F7F5400570D54 /* FakeNewsInteractor.swift */,
 				CA89CBB32080031000570D54 /* CapturingNewsComponentHeaderScene.swift */,
+				CA89CBB92084CA8A00570D54 /* StubNewsViewModel.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -3773,6 +3776,7 @@
 				CAF705611F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift in Sources */,
 				CA89CBAB207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift in Sources */,
 				CAD780521F1E2D2E002A8333 /* CapturingCredentialStore.swift in Sources */,
+				CA89CBBA2084CA8A00570D54 /* StubNewsViewModel.swift in Sources */,
 				CA804DDA1F20D2F500E07A4A /* V2LoginAPITests.swift in Sources */,
 				CA6EC4842051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift in Sources */,
 				CA2D08061FE94BF000BFD785 /* RootModuleTestBuilder.swift in Sources */,

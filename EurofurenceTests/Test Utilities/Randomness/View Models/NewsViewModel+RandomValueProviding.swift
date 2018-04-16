@@ -8,18 +8,18 @@
 
 @testable import Eurofurence
 
-extension NewsViewModel: RandomValueProviding {
+extension StubNewsViewModel: RandomValueProviding {
     
-    static var random: NewsViewModel {
-        return NewsViewModel(components: .random)
+    static var random: StubNewsViewModel {
+        return StubNewsViewModel(components: .random)
     }
     
 }
 
-extension NewsViewModel.Component: RandomValueProviding {
+extension StubNewsViewModel.Component: RandomValueProviding {
     
-    static var random: NewsViewModel.Component {
-        return NewsViewModel.Component(title: .random, numberOfItems: .random)
+    static var random: StubNewsViewModel.Component {
+        return StubNewsViewModel.Component(title: .random, numberOfItems: .random)
     }
     
 }
