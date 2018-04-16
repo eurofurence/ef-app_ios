@@ -12,8 +12,10 @@ import XCTest
 class WhenBuildingNewsModule: XCTestCase {
     
     func testTheInteractorDoesNotPrepareViewModel() {
-        let context = NewsPresenterTestBuilder().build()
-        XCTAssertFalse(context.newsInteractor.didPrepareViewModel)
+        let newsInteractor = FakeNewsInteractor()
+        _ = NewsPresenterTestBuilder().with(newsInteractor).build()
+        
+        XCTAssertFalse(newsInteractor.didPrepareViewModel)
     }
     
 }

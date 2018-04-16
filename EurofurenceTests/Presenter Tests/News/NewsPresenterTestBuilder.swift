@@ -19,7 +19,7 @@ class NewsPresenterTestBuilder {
         var sceneFactory: StubNewsSceneFactory
         var newsScene: CapturingNewsScene
         var delegate: CapturingNewsModuleDelegate
-        var newsInteractor: FakeNewsInteractor
+        var newsInteractor: NewsInteractor
         
     }
     
@@ -27,12 +27,14 @@ class NewsPresenterTestBuilder {
     private var privateMessagesService: CapturingPrivateMessagesService
     private var sceneFactory: StubNewsSceneFactory
     private var delegate: CapturingNewsModuleDelegate
+    private var newsInteractor: NewsInteractor
     
     init() {
         authService = FakeAuthenticationService(authState: .loggedOut)
         privateMessagesService = CapturingPrivateMessagesService()
         sceneFactory = StubNewsSceneFactory()
         delegate = CapturingNewsModuleDelegate()
+        newsInteractor = FakeNewsInteractor()
     }
     
     @discardableResult
@@ -47,8 +49,13 @@ class NewsPresenterTestBuilder {
         return self
     }
     
+    @discardableResult
+    func with(_ newsInteractor: NewsInteractor) -> NewsPresenterTestBuilder {
+        self.newsInteractor = newsInteractor
+        return self
+    }
+    
     func build() -> Context {
-        let newsInteractor = FakeNewsInteractor()
         let module = NewsModuleBuilder()
             .with(authService)
             .with(sceneFactory)
