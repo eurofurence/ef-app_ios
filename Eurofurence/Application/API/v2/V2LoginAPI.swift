@@ -58,26 +58,17 @@ struct V2LoginAPI: LoginAPI {
     }
 
     private struct JSONResponse: Decodable {
-
-        var uid: String
-        var username: String
-        var token: String
-        var tokenValidUntil: Date
-
-        private enum CodingKeys: String, CodingKey {
-            case uid = "Uid"
-            case username = "Username"
-            case token = "Token"
-            case tokenValidUntil = "TokenValidUntil"
-        }
+        var Uid: String
+        var Username: String
+        var Token: String
+        var TokenValidUntil: Date
 
         func makeDomainLoginResponse() -> LoginResponse {
-            return LoginResponse(userIdentifier: uid,
-                                 username: username,
-                                 token: token,
-                                 tokenValidUntil: tokenValidUntil)
+            return LoginResponse(userIdentifier: Uid,
+                                 username: Username,
+                                 token: Token,
+                                 tokenValidUntil: TokenValidUntil)
         }
-
     }
 
 }
