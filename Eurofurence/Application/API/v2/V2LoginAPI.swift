@@ -35,7 +35,7 @@ struct V2LoginAPI: LoginAPI {
         let jsonData = try! encoder.encode(Request(from: request))
         let jsonRequest = JSONRequest(url: url, body: jsonData)
         jsonSession.post(jsonRequest) { (data, _) in
-            if let data = data, let response = try? self.decoder.decode(JSONResponse.self, from: data) {
+            if let data = data, let response = try? self.decoder.decode(Response.self, from: data) {
                 completionHandler(response.makeDomainLoginResponse())
             } else {
                 completionHandler(nil)
@@ -57,7 +57,7 @@ struct V2LoginAPI: LoginAPI {
         }
     }
 
-    private struct JSONResponse: Decodable {
+    private struct Response: Decodable {
         var Uid: String
         var Username: String
         var Token: String
