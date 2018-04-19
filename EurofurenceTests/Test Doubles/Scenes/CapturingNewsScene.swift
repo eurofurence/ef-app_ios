@@ -72,13 +72,17 @@ class CapturingNewsScene: UIViewController, NewsScene {
 
 class StubNewsComponentFactory: NewsComponentFactory {
     
+    typealias Component = AnyObject
+    
     let stubbedAnnouncementComponent = CapturingNewsAnnouncementComponent()
-    func makeAnnouncementComponent() -> NewsAnnouncementComponent {
+    func makeAnnouncementComponent(configuringUsing block: (NewsAnnouncementComponent) -> Void) -> StubNewsComponentFactory.Component {
+        block(stubbedAnnouncementComponent)
         return stubbedAnnouncementComponent
     }
     
     let stubbedEventComponent = CapturingNewsEventComponent()
-    func makeEventComponent() -> NewsEventComponent {
+    func makeEventComponent(configuringUsing block: (NewsEventComponent) -> Void) -> AnyObject {
+        block(stubbedEventComponent)
         return stubbedEventComponent
     }
     

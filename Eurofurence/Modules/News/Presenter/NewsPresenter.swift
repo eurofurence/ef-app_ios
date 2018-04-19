@@ -38,7 +38,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
             scene.setComponentTitle(viewModel.titleForComponent(at: index))
         }
 
-        func bindComponent(at indexPath: IndexPath, using componentFactory: NewsComponentFactory) -> Any {
+        func bindComponent<T>(at indexPath: IndexPath, using componentFactory: T) -> T.Component where T: NewsComponentFactory {
             let visitor = Visitor(componentFactory: componentFactory)
             viewModel.describeComponent(at: indexPath, to: visitor)
 
@@ -47,28 +47,26 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
 
     }
 
-    private class Visitor: NewsViewModelVisitor {
+    private class Visitor<T>: NewsViewModelVisitor where T: NewsComponentFactory {
 
-        private let componentFactory: NewsComponentFactory
-        private(set) var boundComponent: Any = 0
+        private let componentFactory: T
+        private(set) var boundComponent: T.Component!
 
-        init(componentFactory: NewsComponentFactory) {
+        init(componentFactory: T) {
             self.componentFactory = componentFactory
         }
 
         func visit(_ announcement: AnnouncementComponentViewModel) {
-            let component = componentFactory.makeAnnouncementComponent()
-            component.setAnnouncementTitle(announcement.title)
-            component.setAnnouncementDetail(announcement.detail)
-
-            boundComponent = component
+            boundComponent = componentFactory.makeAnnouncementComponent() { (component) in
+                component.setAnnouncementTitle(announcement.title)
+                component.setAnnouncementDetail(announcement.detail)
+            }
         }
 
         func visit(_ event: EventComponentViewModel) {
-            let component = componentFactory.makeEventComponent()
-            component.setEventStartTime(event.startTime)
-
-            boundComponent = component
+            boundComponent = componentFactory.makeEventComponent() { (component) in
+                component.setEventStartTime(event.startTime)
+            }
         }
 
     }
