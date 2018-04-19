@@ -66,6 +66,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
         func visit(_ event: EventComponentViewModel) {
             boundComponent = componentFactory.makeEventComponent() { (component) in
                 component.setEventStartTime(event.startTime)
+                component.setEventEndTime(event.endTime)
             }
         }
 

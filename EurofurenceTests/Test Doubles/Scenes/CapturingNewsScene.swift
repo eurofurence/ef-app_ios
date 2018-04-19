@@ -109,6 +109,11 @@ class CapturingNewsEventComponent: NewsEventComponent {
         capturedStartTime = startTime
     }
     
+    private(set) var capturedEndTime: String?
+    func setEventEndTime(_ endTime: String) {
+        capturedEndTime = endTime
+    }
+    
 }
 
 // MARK: Test Helpers

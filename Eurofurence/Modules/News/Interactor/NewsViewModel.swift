@@ -35,5 +35,6 @@ struct AnnouncementComponentViewModel {
 struct EventComponentViewModel {
 
     var startTime: String
+    var endTime: String
 
 }

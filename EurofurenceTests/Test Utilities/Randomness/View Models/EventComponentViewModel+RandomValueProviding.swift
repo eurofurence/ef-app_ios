@@ -11,7 +11,7 @@
 extension EventComponentViewModel: RandomValueProviding {
     
     static var random: EventComponentViewModel {
-        return EventComponentViewModel(startTime: .random)
+        return EventComponentViewModel(startTime: .random, endTime: .random)
     }
     
 }
