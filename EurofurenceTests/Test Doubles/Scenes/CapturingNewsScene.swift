@@ -119,6 +119,11 @@ class CapturingNewsEventComponent: NewsEventComponent {
         capturedEventName = eventName
     }
     
+    private(set) var capturedLocation: String?
+    func setLocation(_ location: String) {
+        capturedLocation = location
+    }
+    
 }
 
 // MARK: Test Helpers

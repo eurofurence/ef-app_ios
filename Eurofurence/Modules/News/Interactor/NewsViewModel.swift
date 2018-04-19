@@ -37,5 +37,6 @@ struct EventComponentViewModel {
     var startTime: String
     var endTime: String
     var eventName: String
+    var location: String
 
 }
