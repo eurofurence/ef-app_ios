@@ -124,6 +124,11 @@ class CapturingNewsEventComponent: NewsEventComponent {
         capturedLocation = location
     }
     
+    private(set) var capturedIcon: UIImage?
+    func setIcon(_ icon: UIImage?) {
+        capturedIcon = icon
+    }
+    
 }
 
 // MARK: Test Helpers

@@ -7,6 +7,7 @@
 //
 
 import Foundation.NSIndexPath
+import UIKit.UIImage
 
 protocol NewsViewModel {
 
@@ -38,5 +39,6 @@ struct EventComponentViewModel {
     var endTime: String
     var eventName: String
     var location: String
+    var icon: UIImage?
 
 }

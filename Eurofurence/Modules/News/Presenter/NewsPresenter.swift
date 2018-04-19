@@ -69,6 +69,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
                 component.setEventEndTime(event.endTime)
                 component.setEventName(event.eventName)
                 component.setLocation(event.location)
+                component.setIcon(event.icon)
             }
         }
 

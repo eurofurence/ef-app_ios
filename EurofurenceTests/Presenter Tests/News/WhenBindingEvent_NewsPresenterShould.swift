@@ -82,4 +82,8 @@ class WhenBindingEvent_NewsPresenterShould: XCTestCase {
         XCTAssertEqual(eventViewModel.location, context.newsScene.stubbedEventComponent.capturedLocation)
     }
     
+    func testBindTheEventIconFromTheEventOntoTheEventScene() {
+        XCTAssertEqual(eventViewModel.icon, context.newsScene.stubbedEventComponent.capturedIcon)
+    }
+    
 }
