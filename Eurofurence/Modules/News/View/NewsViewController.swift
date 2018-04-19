@@ -8,7 +8,7 @@
 
 import UIKit.UIViewController
 
-class NewsViewController: UIViewController, NewsScene {
+class NewsViewController: UIViewController, NewsScene, NewsComponentFactory {
 
     // MARK: IBOutlets
 
@@ -33,6 +33,10 @@ class NewsViewController: UIViewController, NewsScene {
     @IBAction func messagesNavigationActionTapped(_ sender: Any) {
         delegate?.newsSceneDidTapShowMessagesAction(self)
     }
+
+    // MARK: Properties
+
+    private var tableViewDataSource: UITableViewDataSource?
 
     // MARK: Overrides
 
@@ -91,6 +95,51 @@ class NewsViewController: UIViewController, NewsScene {
     }
 
     func bind(numberOfItemsPerComponent: [Int], using binder: NewsComponentsBinder) {
+        tableViewDataSource = DataSource(numberOfItemsPerComponent: numberOfItemsPerComponent, binder: binder, componentFactory: self)
+        tableView.dataSource = tableViewDataSource
+    }
+
+    // MARK: NewsComponentFactory
+
+    typealias Component = UITableViewCell
+
+    func makeAnnouncementComponent(configuringUsing block: (NewsAnnouncementComponent) -> Void) -> UITableViewCell {
+        let cell = tableView.dequeue(NewsAnnouncementTableViewCell.self)
+        block(cell)
+        return cell
+    }
+
+    func makeEventComponent(configuringUsing block: (NewsEventComponent) -> Void) -> UITableViewCell {
+        let cell = tableView.dequeue(NewsEventTableViewCell.self)
+        block(cell)
+        return cell
+    }
+
+    // MARK: Nested Types
+
+    private class DataSource<T>: NSObject, UITableViewDataSource where T: NewsComponentFactory, T.Component == UITableViewCell {
+
+        private let numberOfItemsPerComponent: [Int]
+        private let binder: NewsComponentsBinder
+        private let componentFactory: T
+
+        init(numberOfItemsPerComponent: [Int], binder: NewsComponentsBinder, componentFactory: T) {
+            self.numberOfItemsPerComponent = numberOfItemsPerComponent
+            self.binder = binder
+            self.componentFactory = componentFactory
+        }
+
+        func numberOfSections(in tableView: UITableView) -> Int {
+            return numberOfItemsPerComponent.count
+        }
+
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return numberOfItemsPerComponent[section]
+        }
+
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            return binder.bindComponent(at: indexPath, using: componentFactory)
+        }
 
     }
 

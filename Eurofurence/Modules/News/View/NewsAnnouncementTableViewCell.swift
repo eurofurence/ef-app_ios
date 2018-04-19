@@ -8,11 +8,21 @@
 
 import UIKit
 
-class NewsAnnouncementTableViewCell: UITableViewCell {
+class NewsAnnouncementTableViewCell: UITableViewCell, NewsAnnouncementComponent {
 
     // MARK: IBOutlets
 
     @IBOutlet weak var announcementTitleLabel: UILabel!
     @IBOutlet weak var announcementDescriptionLabel: UILabel!
+
+    // MARK: NewsAnnouncementComponent
+
+    func setAnnouncementTitle(_ title: String) {
+        announcementTitleLabel.text = title
+    }
+
+    func setAnnouncementDetail(_ detail: String) {
+        announcementDescriptionLabel.text = detail
+    }
 
 }
