@@ -35,5 +35,6 @@ protocol NewsEventComponent {
 
     func setEventStartTime(_ startTime: String)
     func setEventEndTime(_ endTime: String)
+    func setEventName(_ eventName: String)
 
 }

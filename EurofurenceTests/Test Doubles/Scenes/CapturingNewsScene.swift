@@ -114,6 +114,11 @@ class CapturingNewsEventComponent: NewsEventComponent {
         capturedEndTime = endTime
     }
     
+    private(set) var capturedEventName: String?
+    func setEventName(_ eventName: String) {
+        capturedEventName = eventName
+    }
+    
 }
 
 // MARK: Test Helpers

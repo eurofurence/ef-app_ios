@@ -74,4 +74,8 @@ class WhenBindingEvent_NewsPresenterShould: XCTestCase {
         XCTAssertEqual(eventViewModel.endTime, context.newsScene.stubbedEventComponent.capturedEndTime)
     }
     
+    func testBindTheEventNameFromTheEventOntoTheEventScene() {
+        XCTAssertEqual(eventViewModel.eventName, context.newsScene.stubbedEventComponent.capturedEventName)
+    }
+    
 }
