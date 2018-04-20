@@ -26,19 +26,44 @@ protocol NewsViewModelVisitor {
 
 }
 
-struct AnnouncementComponentViewModel {
+struct AnnouncementComponentViewModel: Hashable {
 
     var title: String
     var detail: String
 
+    var hashValue: Int {
+        return title.hashValue ^ detail.hashValue
+    }
+
+    static func ==(lhs: AnnouncementComponentViewModel, rhs: AnnouncementComponentViewModel) -> Bool {
+        return lhs.title == rhs.title && lhs.detail == rhs.detail
+    }
+
 }
 
-struct EventComponentViewModel {
+struct EventComponentViewModel: Hashable {
 
     var startTime: String
     var endTime: String
     var eventName: String
     var location: String
     var icon: UIImage?
+
+    var hashValue: Int {
+        var iconHash = Int(arc4random())
+        if let icon = icon {
+            iconHash = icon.hashValue
+        }
+
+        return startTime.hashValue ^ endTime.hashValue ^ eventName.hashValue ^ location.hashValue ^ iconHash
+    }
+
+    static func ==(lhs: EventComponentViewModel, rhs: EventComponentViewModel) -> Bool {
+        return lhs.startTime == rhs.startTime &&
+               lhs.endTime == rhs.endTime &&
+               lhs.eventName == rhs.eventName &&
+               lhs.location == rhs.location &&
+               lhs.icon == rhs.icon
+    }
 
 }
