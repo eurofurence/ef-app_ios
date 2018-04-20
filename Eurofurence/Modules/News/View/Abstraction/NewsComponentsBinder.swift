@@ -31,7 +31,9 @@ protocol UserWidgetComponent {
     func setPrompt(_ prompt: String)
     func setDetailedPrompt(_ detailedPrompt: String)
     func showHighlightedUserPrompt()
+    func hideHighlightedUserPrompt()
     func showStandardUserPrompt()
+    func hideStandardUserPrompt()
 
 }
 

@@ -154,9 +154,19 @@ class CapturingUserWidgetComponent: UserWidgetComponent {
         didShowHighlightedPrompt = true
     }
     
+    private(set) var didHideHighlightedPrompt = false
+    func hideHighlightedUserPrompt() {
+        didHideHighlightedPrompt = true
+    }
+    
     private(set) var didShowStandardPrompt = false
     func showStandardUserPrompt() {
         didShowStandardPrompt = true
+    }
+    
+    private(set) var didHideStandardPrompt = false
+    func hideStandardUserPrompt() {
+        didHideStandardPrompt = true
     }
     
 }

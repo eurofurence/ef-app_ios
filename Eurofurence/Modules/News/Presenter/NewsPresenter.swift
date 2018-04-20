@@ -67,8 +67,10 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
 
                 if userWidget.hasUnreadMessages {
                     component.showHighlightedUserPrompt()
+                    component.hideStandardUserPrompt()
                 } else {
                     component.showStandardUserPrompt()
+                    component.hideHighlightedUserPrompt()
                 }
             }
         }
