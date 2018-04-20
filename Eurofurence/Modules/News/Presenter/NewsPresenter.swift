@@ -64,6 +64,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
             boundComponent = componentFactory.makeUserWidgetComponent() { (component) in
                 component.setPrompt(userWidget.prompt)
                 component.setDetailedPrompt(userWidget.detailedPrompt)
+                component.showHighlightedUserPrompt()
             }
         }
 

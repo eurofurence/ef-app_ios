@@ -11,7 +11,11 @@ import XCTest
 
 class StubbedUserViewModel: NewsViewModel {
     
-    let userWidgetViewModel = UserWidgetComponentViewModel.random
+    let userWidgetViewModel: UserWidgetComponentViewModel
+    
+    init(viewModel: UserWidgetComponentViewModel = .random) {
+        self.userWidgetViewModel = viewModel
+    }
     
     var numberOfComponents: Int {
         return 1

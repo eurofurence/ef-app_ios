@@ -149,6 +149,11 @@ class CapturingUserWidgetComponent: UserWidgetComponent {
         capturedDetailedPrompt = detailedPrompt
     }
     
+    private(set) var didShowHighlightedPrompt = false
+    func showHighlightedUserPrompt() {
+        didShowHighlightedPrompt = true
+    }
+    
 }
 
 // MARK: Test Helpers

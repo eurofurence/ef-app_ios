@@ -73,13 +73,14 @@ struct UserWidgetComponentViewModel: Hashable {
 
     var prompt: String
     var detailedPrompt: String
+    var hasUnreadMessages: Bool
 
     var hashValue: Int {
-        return prompt.hashValue ^ detailedPrompt.hashValue
+        return prompt.hashValue ^ detailedPrompt.hashValue ^ hasUnreadMessages.hashValue
     }
 
     static func ==(lhs: UserWidgetComponentViewModel, rhs: UserWidgetComponentViewModel) -> Bool {
-        return lhs.prompt == rhs.prompt && lhs.detailedPrompt == rhs.detailedPrompt
+        return lhs.prompt == rhs.prompt && lhs.detailedPrompt == rhs.detailedPrompt && lhs.hasUnreadMessages == rhs.hasUnreadMessages
     }
 
 }

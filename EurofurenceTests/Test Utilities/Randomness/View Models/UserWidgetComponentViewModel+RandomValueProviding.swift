@@ -11,7 +11,7 @@
 extension UserWidgetComponentViewModel: RandomValueProviding {
     
     static var random: UserWidgetComponentViewModel {
-        return UserWidgetComponentViewModel(prompt: .random, detailedPrompt: .random)
+        return UserWidgetComponentViewModel(prompt: .random, detailedPrompt: .random, hasUnreadMessages: .random)
     }
     
 }
