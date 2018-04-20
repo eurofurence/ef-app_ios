@@ -20,8 +20,16 @@ protocol NewsComponentFactory {
 
     associatedtype Component
 
+    func makeUserWidgetComponent(configuringUsing block: (UserWidgetComponent) -> Void) -> Component
     func makeAnnouncementComponent(configuringUsing block: (NewsAnnouncementComponent) -> Void) -> Component
     func makeEventComponent(configuringUsing block: (NewsEventComponent) -> Void) -> Component
+
+}
+
+protocol UserWidgetComponent {
+
+    func setPrompt(_ prompt: String)
+    func setDetailedPrompt(_ detailedPrompt: String)
 
 }
 

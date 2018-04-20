@@ -466,6 +466,8 @@
 		CAD3BDC92061382000C91E6E /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC82061382000C91E6E /* URLOpener.swift */; };
 		CAD3BDCB2061394700C91E6E /* AppURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */; };
 		CAD3BDCD20613A2800C91E6E /* WhenLookingUpMailToLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDCC20613A2800C91E6E /* WhenLookingUpMailToLinks.swift */; };
+		CAD68828208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD68827208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift */; };
+		CAD6882A208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD68829208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift */; };
 		CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780361F1D415A002A8333 /* MessagesViewController.swift */; };
 		CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780381F1D41C4002A8333 /* LoginViewController.swift */; };
 		CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */; };
@@ -1057,6 +1059,8 @@
 		CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppURLOpener.swift; sourceTree = "<group>"; };
 		CAD3BDCC20613A2800C91E6E /* WhenLookingUpMailToLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLookingUpMailToLinks.swift; sourceTree = "<group>"; };
 		CAD3BDCF206CDDA500C91E6E /* App Re-Architecture.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "App Re-Architecture.md"; sourceTree = "<group>"; };
+		CAD68827208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingUser_NewsPresenterShould.swift; sourceTree = "<group>"; };
+		CAD68829208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserWidgetComponentViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAD780361F1D415A002A8333 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		CAD780381F1D41C4002A8333 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoginStateChanges.swift; sourceTree = "<group>"; };
@@ -2257,6 +2261,7 @@
 				CA89CBAA207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift */,
 				CA89CBBD208531FB00570D54 /* AnnouncementComponentViewModel+RandomValueProviding.swift */,
 				CA9AC16C2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift */,
+				CAD68829208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -2728,6 +2733,7 @@
 				CA6AA0191FD885030092C6DB /* NewsViewControllerTests.swift */,
 				CA89CBBB2084CB4200570D54 /* WhenBindingAnnouncement_NewsPresenterShould.swift */,
 				CA9AC16A208546530039C0C2 /* WhenBindingEvent_NewsPresenterShould.swift */,
+				CAD68827208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift */,
 				CA89CBAE207F823A00570D54 /* WhenBuildingNewsModule.swift */,
 				CA60C001207F7D2100697566 /* WhenNewsSceneWillAppear.swift */,
 				CA60BFFF207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift */,
@@ -3792,6 +3798,7 @@
 				CA60BFFA207B8CD200697566 /* WhenAuthenticatedUserReceievesMessageBeforeNewsSceneAppears.swift in Sources */,
 				CAD3BDBD205AA61B00C91E6E /* URL+RandomValueProviding.swift in Sources */,
 				CAF9A9471F50B95F00628833 /* WhenRequestingCurrentUser.swift in Sources */,
+				CAD6882A208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift in Sources */,
 				78455B521F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift in Sources */,
 				CAD234421F5F2FA8004BB959 /* AppDataBuilder.swift in Sources */,
 				CA5BF9D51F7AF9160045DBC0 /* PreloadPresenterTests.swift in Sources */,
@@ -3888,6 +3895,7 @@
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
 				78D7EEB51F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift in Sources */,
 				CA73AED8201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift in Sources */,
+				CAD68828208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift in Sources */,
 				CA2D08001FE94AF900BFD785 /* WhenTheAppLaunchesWithAbsentDataStore.swift in Sources */,
 				CA8276BC204F25DF006A7419 /* InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould.swift in Sources */,
 				CAC1E1391F50431000195513 /* NewsPresenterTestBuilder.swift in Sources */,

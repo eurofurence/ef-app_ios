@@ -21,6 +21,7 @@ protocol NewsViewModel {
 
 protocol NewsViewModelVisitor {
 
+    func visit(_ userWidget: UserWidgetComponentViewModel)
     func visit(_ announcement: AnnouncementComponentViewModel)
     func visit(_ event: EventComponentViewModel)
 
@@ -64,6 +65,21 @@ struct EventComponentViewModel: Hashable {
                lhs.eventName == rhs.eventName &&
                lhs.location == rhs.location &&
                lhs.icon == rhs.icon
+    }
+
+}
+
+struct UserWidgetComponentViewModel: Hashable {
+
+    var prompt: String
+    var detailedPrompt: String
+
+    var hashValue: Int {
+        return prompt.hashValue ^ detailedPrompt.hashValue
+    }
+
+    static func ==(lhs: UserWidgetComponentViewModel, rhs: UserWidgetComponentViewModel) -> Bool {
+        return lhs.prompt == rhs.prompt && lhs.detailedPrompt == rhs.detailedPrompt
     }
 
 }

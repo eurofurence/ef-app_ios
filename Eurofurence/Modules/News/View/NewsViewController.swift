@@ -103,6 +103,10 @@ class NewsViewController: UIViewController, NewsScene, NewsComponentFactory {
 
     typealias Component = UITableViewCell
 
+    func makeUserWidgetComponent(configuringUsing block: (UserWidgetComponent) -> Void) -> Component {
+        fatalError("Not yet implemented")
+    }
+
     func makeAnnouncementComponent(configuringUsing block: (NewsAnnouncementComponent) -> Void) -> UITableViewCell {
         let cell = tableView.dequeue(NewsAnnouncementTableViewCell.self)
         block(cell)

@@ -42,7 +42,11 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
             let visitor = Visitor(componentFactory: componentFactory)
             viewModel.describeComponent(at: indexPath, to: visitor)
 
-            return visitor.boundComponent
+            guard let component = visitor.boundComponent else {
+                fatalError("Did not bind component at index path: \(indexPath)")
+            }
+
+            return component
         }
 
     }
@@ -54,6 +58,13 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
 
         init(componentFactory: T) {
             self.componentFactory = componentFactory
+        }
+
+        func visit(_ userWidget: UserWidgetComponentViewModel) {
+            boundComponent = componentFactory.makeUserWidgetComponent() { (component) in
+                component.setPrompt(userWidget.prompt)
+                component.setDetailedPrompt(userWidget.detailedPrompt)
+            }
         }
 
         func visit(_ announcement: AnnouncementComponentViewModel) {

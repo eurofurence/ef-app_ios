@@ -86,6 +86,12 @@ class StubNewsComponentFactory: NewsComponentFactory {
         return stubbedEventComponent
     }
     
+    let stubbedUserWidgetComponent = CapturingUserWidgetComponent()
+    func makeUserWidgetComponent(configuringUsing block: (UserWidgetComponent) -> Void) -> AnyObject {
+        block(stubbedUserWidgetComponent)
+        return stubbedUserWidgetComponent
+    }
+    
 }
 
 class CapturingNewsAnnouncementComponent: NewsAnnouncementComponent {
@@ -131,6 +137,20 @@ class CapturingNewsEventComponent: NewsEventComponent {
     
 }
 
+class CapturingUserWidgetComponent: UserWidgetComponent {
+    
+    private(set) var capturedPrompt: String?
+    func setPrompt(_ prompt: String) {
+        capturedPrompt = prompt
+    }
+    
+    private(set) var capturedDetailedPrompt: String?
+    func setDetailedPrompt(_ detailedPrompt: String) {
+        capturedDetailedPrompt = detailedPrompt
+    }
+    
+}
+
 // MARK: Test Helpers
 
 extension CapturingNewsScene {
@@ -141,6 +161,10 @@ extension CapturingNewsScene {
     
     var stubbedEventComponent: CapturingNewsEventComponent {
         return componentFactory.stubbedEventComponent
+    }
+    
+    var stubbedUserWidgetComponent: CapturingUserWidgetComponent {
+        return componentFactory.stubbedUserWidgetComponent
     }
     
     func tapLoginAction() {
