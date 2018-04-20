@@ -302,6 +302,7 @@
 		CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */; };
 		CA60C000207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFF207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift */; };
 		CA60C002207F7D2100697566 /* WhenNewsSceneWillAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60C001207F7D2100697566 /* WhenNewsSceneWillAppear.swift */; };
+		CA63753D208A6E4900536BE2 /* DefaultNewsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753C208A6E4900536BE2 /* DefaultNewsInteractorTests.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -894,6 +895,7 @@
 		CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeAuthenticationService.swift; sourceTree = "<group>"; };
 		CA60BFFF207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsSceneWillReappear_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA60C001207F7D2100697566 /* WhenNewsSceneWillAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsSceneWillAppear.swift; sourceTree = "<group>"; };
+		CA63753C208A6E4900536BE2 /* DefaultNewsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNewsInteractorTests.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -2095,6 +2097,14 @@
 			path = Authenticated;
 			sourceTree = "<group>";
 		};
+		CA63753B208A6E0900536BE2 /* Interactor Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CA63753C208A6E4900536BE2 /* DefaultNewsInteractorTests.swift */,
+			);
+			path = "Interactor Tests";
+			sourceTree = "<group>";
+		};
 		CA6A9FEF1FD5DE0E0092C6DB /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2677,6 +2687,7 @@
 		CAC1E1241F50405900195513 /* News */ = {
 			isa = PBXGroup;
 			children = (
+				CA63753B208A6E0900536BE2 /* Interactor Tests */,
 				CAD68823208A04B300B31F5F /* Presenter Tests */,
 				CA60BFE42078E5F000697566 /* Test Doubles */,
 			);
@@ -3908,6 +3919,7 @@
 				CAD68828208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift in Sources */,
 				CA2D08001FE94AF900BFD785 /* WhenTheAppLaunchesWithAbsentDataStore.swift in Sources */,
 				CA8276BC204F25DF006A7419 /* InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould.swift in Sources */,
+				CA63753D208A6E4900536BE2 /* DefaultNewsInteractorTests.swift in Sources */,
 				CAC1E1391F50431000195513 /* NewsPresenterTestBuilder.swift in Sources */,
 				78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */,
 				CAD6882C208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift in Sources */,
