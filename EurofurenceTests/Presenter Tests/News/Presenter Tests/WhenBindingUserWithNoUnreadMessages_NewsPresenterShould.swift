@@ -36,4 +36,8 @@ class WhenBindingUserWithNoUnreadMessages_NewsPresenterShould: XCTestCase {
         XCTAssertFalse(context.newsScene.stubbedUserWidgetComponent.didShowHighlightedPrompt)
     }
     
+    func testShowTheDefaultUserPrompt() {
+        XCTAssertTrue(context.newsScene.stubbedUserWidgetComponent.didShowStandardPrompt)
+    }
+    
 }
