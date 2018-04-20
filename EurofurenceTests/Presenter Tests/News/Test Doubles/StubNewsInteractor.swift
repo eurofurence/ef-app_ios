@@ -12,7 +12,7 @@ struct StubNewsInteractor: NewsInteractor {
     
     var viewModel: NewsViewModel
     
-    func prepareViewModel(_ delegate: NewsInteractorDelegate) {
+    func subscribeViewModelUpdates(_ delegate: NewsInteractorDelegate) {
         delegate.viewModelDidUpdate(viewModel)
     }
     

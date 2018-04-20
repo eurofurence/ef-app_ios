@@ -15,7 +15,7 @@ class NewsModuleBuilder {
 
     init() {
         struct DummyNewsInteractor: NewsInteractor {
-            func prepareViewModel(_ delegate: NewsInteractorDelegate) {
+            func subscribeViewModelUpdates(_ delegate: NewsInteractorDelegate) {
 
             }
         }

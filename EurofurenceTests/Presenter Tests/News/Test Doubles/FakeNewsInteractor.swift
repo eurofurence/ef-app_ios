@@ -13,7 +13,7 @@ class FakeNewsInteractor: NewsInteractor {
     
     var lastCreatedViewModel: StubNewsViewModel = .random
     private(set) var didPrepareViewModel = false
-    func prepareViewModel(_ delegate: NewsInteractorDelegate) {
+    func subscribeViewModelUpdates(_ delegate: NewsInteractorDelegate) {
         didPrepareViewModel = true
         let viewModel = StubNewsViewModel.random
         lastCreatedViewModel = viewModel

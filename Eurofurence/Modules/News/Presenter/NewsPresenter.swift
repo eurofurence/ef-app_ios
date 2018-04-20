@@ -159,7 +159,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
         determineAuthStateOnce.run(authStateResolved)
         privateMessagesService.add(self)
 
-        newsInteractor.prepareViewModel(self)
+        newsInteractor.subscribeViewModelUpdates(self)
     }
 
     func newsSceneDidTapLoginAction(_ scene: NewsScene) {
