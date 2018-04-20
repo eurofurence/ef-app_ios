@@ -2665,16 +2665,8 @@
 		CAC1E1241F50405900195513 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				CAC1E1381F50431000195513 /* NewsPresenterTestBuilder.swift */,
-				CA6AA0191FD885030092C6DB /* NewsViewControllerTests.swift */,
-				CA89CBBB2084CB4200570D54 /* WhenBindingAnnouncement_NewsPresenterShould.swift */,
-				CA9AC16A208546530039C0C2 /* WhenBindingEvent_NewsPresenterShould.swift */,
-				CA89CBAE207F823A00570D54 /* WhenBuildingNewsModule.swift */,
-				CA60C001207F7D2100697566 /* WhenNewsSceneWillAppear.swift */,
-				CA60BFFF207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift */,
-				CA60BFEA207B893100697566 /* Authenticated */,
+				CAD68823208A04B300B31F5F /* Presenter Tests */,
 				CA60BFE42078E5F000697566 /* Test Doubles */,
-				CA60BFE9207B88F100697566 /* Unauthenticated */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -2727,6 +2719,22 @@
 				CAD3BDCF206CDDA500C91E6E /* App Re-Architecture.md */,
 			);
 			path = Documentation;
+			sourceTree = "<group>";
+		};
+		CAD68823208A04B300B31F5F /* Presenter Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CAC1E1381F50431000195513 /* NewsPresenterTestBuilder.swift */,
+				CA6AA0191FD885030092C6DB /* NewsViewControllerTests.swift */,
+				CA89CBBB2084CB4200570D54 /* WhenBindingAnnouncement_NewsPresenterShould.swift */,
+				CA9AC16A208546530039C0C2 /* WhenBindingEvent_NewsPresenterShould.swift */,
+				CA89CBAE207F823A00570D54 /* WhenBuildingNewsModule.swift */,
+				CA60C001207F7D2100697566 /* WhenNewsSceneWillAppear.swift */,
+				CA60BFFF207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift */,
+				CA60BFEA207B893100697566 /* Authenticated */,
+				CA60BFE9207B88F100697566 /* Unauthenticated */,
+			);
+			path = "Presenter Tests";
 			sourceTree = "<group>";
 		};
 		CAD780441F1D4DF7002A8333 /* Login */ = {
