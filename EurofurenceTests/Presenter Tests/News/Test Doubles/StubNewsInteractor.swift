@@ -12,8 +12,8 @@ struct StubNewsInteractor: NewsInteractor {
     
     var viewModel: NewsViewModel
     
-    func prepareViewModel(_ completionHandler: @escaping (NewsViewModel) -> Void) {
-        completionHandler(viewModel)
+    func prepareViewModel(_ delegate: NewsInteractorDelegate) {
+        delegate.viewModelDidUpdate(viewModel)
     }
     
 }

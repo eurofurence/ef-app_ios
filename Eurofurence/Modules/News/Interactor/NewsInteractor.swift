@@ -8,6 +8,12 @@
 
 protocol NewsInteractor {
 
-    func prepareViewModel(_ completionHandler: @escaping (NewsViewModel) -> Void)
+    func prepareViewModel(_ delegate: NewsInteractorDelegate)
+
+}
+
+protocol NewsInteractorDelegate {
+
+    func viewModelDidUpdate(_ viewModel: NewsViewModel)
 
 }

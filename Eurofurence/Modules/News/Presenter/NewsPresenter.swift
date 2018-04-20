@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserver, NewsSceneDelegate {
+struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserver, NewsSceneDelegate, NewsInteractorDelegate {
 
     // MARK: Nested Types
 
@@ -159,7 +159,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
         determineAuthStateOnce.run(authStateResolved)
         privateMessagesService.add(self)
 
-        newsInteractor.prepareViewModel(interactorDidPrepareViewModel)
+        newsInteractor.prepareViewModel(self)
     }
 
     func newsSceneDidTapLoginAction(_ scene: NewsScene) {
@@ -170,13 +170,15 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
         delegate.newsModuleDidRequestShowingPrivateMessages()
     }
 
-    // MARK: Private
+    // MARK: NewsInteractorDelegate
 
-    private func interactorDidPrepareViewModel(_ viewModel: NewsViewModel) {
+    func viewModelDidUpdate(_ viewModel: NewsViewModel) {
         let itemsPerComponent = (0..<viewModel.numberOfComponents).map(viewModel.numberOfItemsInComponent)
         let binder = Binder(viewModel: viewModel)
         newsScene.bind(numberOfItemsPerComponent: itemsPerComponent, using: binder)
     }
+
+    // MARK: Private
 
     private func authStateResolved(_ state: AuthState) {
         switch state {

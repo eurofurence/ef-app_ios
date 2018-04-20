@@ -15,7 +15,7 @@ class NewsModuleBuilder {
 
     init() {
         struct DummyNewsInteractor: NewsInteractor {
-            func prepareViewModel(_ completionHandler: @escaping (NewsViewModel) -> Void) {
+            func prepareViewModel(_ delegate: NewsInteractorDelegate) {
 
             }
         }
