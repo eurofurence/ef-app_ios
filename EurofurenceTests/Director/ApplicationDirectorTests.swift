@@ -27,31 +27,6 @@ class ApplicationDirectorTests: XCTestCase {
         XCTAssertEqual(context.messages.stubInterface, newsNavigationController?.pushedViewControllers.last)
     }
     
-    func testWhenTheNewsModuleRequestsShowingPrivateMessagesTheMessagesControllerIsPushedOntoItsNavigationController() {
-        context.navigateToTabController()
-        let newsNavigationController = context.navigationController(for: context.newsModule.stubInterface)
-        context.newsModule.simulatePrivateMessagesDisplayRequested()
-        
-        XCTAssertEqual(context.messages.stubInterface, newsNavigationController?.pushedViewControllers.last)
-    }
-    
-    func testWhenTheMessagesModuleRequestsDismissalItIsDismissedFromTheTabController() {
-        context.navigateToTabController()
-        context.newsModule.simulatePrivateMessagesDisplayRequested()
-        context.messages.simulateDismissalRequested()
-        
-        XCTAssertTrue(context.tabModule.stubInterface.didDismissViewController)
-    }
-    
-    func testWhenTheMessagesModuleRequestsDismissalTheNewsNavigationControllersPopsToTheNewsModule() {
-        context.navigateToTabController()
-        let newsNavigationController = context.navigationController(for: context.newsModule.stubInterface)
-        context.newsModule.simulatePrivateMessagesDisplayRequested()
-        context.messages.simulateDismissalRequested()
-        
-        XCTAssertEqual(context.newsModule.stubInterface, newsNavigationController?.viewControllerPoppedTo)
-    }
-    
     func testWhenTheMessagesModuleRequestsResolutionForUserTheLoginModuleIsPresentedOnTopOfTheTabController() {
         context.navigateToTabController()
         context.newsModule.simulatePrivateMessagesDisplayRequested()

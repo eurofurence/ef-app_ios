@@ -328,6 +328,7 @@
 		CA63756C208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63756B208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift */; };
 		CA63756E208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63756D208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift */; };
 		CA637570208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63756F208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift */; };
+		CA637572208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637571208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -946,6 +947,7 @@
 		CA63756B208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreloadFails_DirectorShould.swift; sourceTree = "<group>"; };
 		CA63756D208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreloadCompletes_DirectorShould.swift; sourceTree = "<group>"; };
 		CA63756F208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenShowingTabModule_DirectorShould.swift; sourceTree = "<group>"; };
+		CA637571208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenShowingMessages_DirectorShould.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -2997,6 +2999,7 @@
 				CA63756B208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift */,
 				CA63756D208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift */,
 				CA63756F208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift */,
+				CA637571208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift */,
 				CA63753E208CBAFF00536BE2 /* Test Doubles */,
 			);
 			path = Director;
@@ -3942,6 +3945,7 @@
 				CA637548208CBB5D00536BE2 /* StubPreloadModuleFactory.swift in Sources */,
 				CAF597A220458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift in Sources */,
 				CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */,
+				CA637572208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift in Sources */,
 				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,
 				CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */,
 				CA6EC4792051CAFA00402894 /* WhenBuildingKnowledgeDetailModule.swift in Sources */,

@@ -23,3 +23,11 @@ class CapturingNavigationController: UINavigationController {
     }
     
 }
+
+extension CapturingNavigationController {
+    
+    func contains(_ viewController: UIViewController) -> Bool {
+        return viewControllers.contains(viewController)
+    }
+    
+}
