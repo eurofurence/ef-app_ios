@@ -19,22 +19,6 @@ class ApplicationDirectorTests: XCTestCase {
         context = ApplicationDirectorTestBuilder().build()
     }
     
-    func testWhenShowingTheTheTabModuleItIsInitialisedWithControllersForTabModulesNestedInNavigationControllers() {
-        context.navigateToTabController()
-        let expected: [UIViewController] = context.makeExpectedTabViewControllerRoots()
-        let actual = context.rootNavigationTabControllers().flatMap({ $0.topViewController })
-        
-        XCTAssertEqual(expected, actual)
-    }
-    
-    func testWhenShowingTheTabModuleTheRootNavigationControllersUseTheTabItemsFromTheirRoots() {
-        context.navigateToTabController()
-        let expected: [UITabBarItem] = context.makeExpectedTabViewControllerRoots().map({ $0.tabBarItem })
-        let actual: [UITabBarItem] = context.rootNavigationTabControllers().flatMap({ $0.tabBarItem })
-        
-        XCTAssertEqual(expected, actual)
-    }
-    
     func testWhenTheNewsModuleRequestsLoginTheMessagesControllerIsPushedOntoItsNavigationController() {
         context.navigateToTabController()
         let newsNavigationController = context.navigationController(for: context.newsModule.stubInterface)

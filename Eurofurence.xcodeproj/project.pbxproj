@@ -327,6 +327,7 @@
 		CA63756A208CCB5800536BE2 /* WhenStoreShouldBeRefreshed_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637569208CCB5800536BE2 /* WhenStoreShouldBeRefreshed_DirectorShould.swift */; };
 		CA63756C208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63756B208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift */; };
 		CA63756E208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63756D208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift */; };
+		CA637570208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63756F208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -944,6 +945,7 @@
 		CA637569208CCB5800536BE2 /* WhenStoreShouldBeRefreshed_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenStoreShouldBeRefreshed_DirectorShould.swift; sourceTree = "<group>"; };
 		CA63756B208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreloadFails_DirectorShould.swift; sourceTree = "<group>"; };
 		CA63756D208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreloadCompletes_DirectorShould.swift; sourceTree = "<group>"; };
+		CA63756F208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenShowingTabModule_DirectorShould.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -2994,6 +2996,7 @@
 				CA637569208CCB5800536BE2 /* WhenStoreShouldBeRefreshed_DirectorShould.swift */,
 				CA63756B208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift */,
 				CA63756D208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift */,
+				CA63756F208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift */,
 				CA63753E208CBAFF00536BE2 /* Test Doubles */,
 			);
 			path = Director;
@@ -4049,6 +4052,7 @@
 				CA73AEDF201A0833004E77BF /* CapturingKnowledgeInteractor.swift in Sources */,
 				CA637562208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift in Sources */,
 				CAF9A9451F50B89000628833 /* CapturingEurofurenceApplication.swift in Sources */,
+				CA637570208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift in Sources */,
 				78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */,
 				CAD3BDB12058719300C91E6E /* Link+RandomValueProviding.swift in Sources */,
 				CA637542208CBB2400536BE2 /* StubNavigationControllerFactory.swift in Sources */,

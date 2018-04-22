@@ -107,20 +107,12 @@ class ApplicationDirectorTestBuilder {
 extension ApplicationDirectorTestBuilder.Context {
     
     func navigateToTabController() {
-        rootModule.delegate?.rootModuleDidDetermineStoreShouldRefresh()
+        rootModule.simulateStoreShouldBeRefreshed()
         preloadModule.simulatePreloadFinished()
     }
     
     var rootNavigationController: UINavigationController {
         return windowWireframe.capturedRootInterface as! UINavigationController
-    }
-    
-    func makeExpectedTabViewControllerRoots() -> [UIViewController] {
-        return [newsModule.stubInterface, knowledgeListModule.stubInterface]
-    }
-    
-    func rootNavigationTabControllers() -> [UINavigationController] {
-        return tabModule.capturedTabModules.flatMap({ $0 as? UINavigationController })
     }
     
     func navigationController(for viewController: UIViewController) -> CapturingNavigationController? {
