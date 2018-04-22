@@ -27,7 +27,7 @@ class WhenShowingTabModule_DirectorShould: XCTestCase {
         return context.tabModule.capturedTabModules.flatMap({ $0 as? UINavigationController })
     }
     
-    func testWhenShowingTheTheTabModuleItIsInitialisedWithControllersForTabModulesNestedInNavigationControllers() {
+    func testShowTheModulesInDefaultOrder() {
         context.navigateToTabController()
         let expected = makeExpectedTabViewControllerRoots()
         let actual = rootNavigationTabControllers().flatMap({ $0.topViewController })
@@ -35,7 +35,7 @@ class WhenShowingTabModule_DirectorShould: XCTestCase {
         XCTAssertEqual(expected, actual)
     }
     
-    func testWhenShowingTheTabModuleTheRootNavigationControllersUseTheTabItemsFromTheirRoots() {
+    func testUseTheTabBarItemsFromEachModule() {
         context.navigateToTabController()
         let expected: [UITabBarItem] = makeExpectedTabViewControllerRoots().map({ $0.tabBarItem })
         let actual: [UITabBarItem] = rootNavigationTabControllers().flatMap({ $0.tabBarItem })
