@@ -15,24 +15,24 @@ class ApplicationDirectorTests: XCTestCase {
         
         struct Context {
             var director: ApplicationDirector
-            var rootModuleFactory: StubRootModuleFactory
-            var tutorialModuleFactory: StubTutorialModuleFactory
-            var preloadModuleFactory: StubPreloadModuleFactory
-            var tabModuleFactory: StubTabModuleFactory
-            var newsModuleFactory: StubNewsModuleFactory
-            var messagesModuleFactory: StubMessagesModuleFactory
-            var loginModuleFactory: StubLoginModuleFactory
+            var rootModule: StubRootModuleFactory
+            var tutorialModule: StubTutorialModuleFactory
+            var preloadModule: StubPreloadModuleFactory
+            var tabModule: StubTabModuleFactory
+            var newsModule: StubNewsModuleFactory
+            var messages: StubMessagesModuleFactory
+            var loginModule: StubLoginModuleFactory
             var windowWireframe: CapturingWindowWireframe
-            var messageDetailModuleFactory: StubMessageDetailModuleProviding
-            var knowledgeListModuleProviding: StubKnowledgeListModuleProviding
-            var knowledgeDetailModuleProviding: StubKnowledgeDetailModuleProviding
+            var messageDetailModule: StubMessageDetailModuleProviding
+            var knowledgeListModule: StubKnowledgeListModuleProviding
+            var knowledgeDetailModule: StubKnowledgeDetailModuleProviding
             var linkRouter: StubLinkRouter
             var webModuleProviding: StubWebMobuleProviding
             var urlOpener: CapturingURLOpener
             
             func navigateToTabController() {
-                rootModuleFactory.delegate?.rootModuleDidDetermineStoreShouldRefresh()
-                preloadModuleFactory.simulatePreloadFinished()
+                rootModule.delegate?.rootModuleDidDetermineStoreShouldRefresh()
+                preloadModule.simulatePreloadFinished()
             }
             
             var rootNavigationController: UINavigationController {
@@ -40,43 +40,47 @@ class ApplicationDirectorTests: XCTestCase {
             }
             
             func makeExpectedTabViewControllerRoots() -> [UIViewController] {
-                return [newsModuleFactory.stubInterface, knowledgeListModuleProviding.stubInterface]
+                return [newsModule.stubInterface, knowledgeListModule.stubInterface]
             }
             
             func rootNavigationTabControllers() -> [UINavigationController] {
-                return tabModuleFactory.capturedTabModules.flatMap({ $0 as? UINavigationController })
+                return tabModule.capturedTabModules.flatMap({ $0 as? UINavigationController })
+            }
+            
+            func navigationController(for viewController: UIViewController) -> CapturingNavigationController? {
+                return tabModule.navigationController(for: viewController)
             }
             
         }
         
         private let director: ApplicationDirector
-        private let rootModuleFactory: StubRootModuleFactory
-        private let tutorialModuleFactory: StubTutorialModuleFactory
-        private let preloadModuleFactory: StubPreloadModuleFactory
-        private let tabModuleFactory: StubTabModuleFactory
-        private let newsModuleFactory: StubNewsModuleFactory
-        private let messagesModuleFactory: StubMessagesModuleFactory
-        private let loginModuleFactory: StubLoginModuleFactory
+        private let rootModule: StubRootModuleFactory
+        private let tutorialModule: StubTutorialModuleFactory
+        private let preloadModule: StubPreloadModuleFactory
+        private let tabModule: StubTabModuleFactory
+        private let newsModule: StubNewsModuleFactory
+        private let messagesModule: StubMessagesModuleFactory
+        private let loginModule: StubLoginModuleFactory
         private let windowWireframe: CapturingWindowWireframe
-        private let messageDetailModuleFactory: StubMessageDetailModuleProviding
-        private let knowledgeListModuleProviding: StubKnowledgeListModuleProviding
-        private let knowledgeDetailModuleProviding: StubKnowledgeDetailModuleProviding
+        private let messageDetailModule: StubMessageDetailModuleProviding
+        private let knowledgeListModule: StubKnowledgeListModuleProviding
+        private let knowledgeDetailModule: StubKnowledgeDetailModuleProviding
         private let linkRouter: StubLinkRouter
         private let webModuleProviding: StubWebMobuleProviding
         private let urlOpener: CapturingURLOpener
         
         init() {
-            rootModuleFactory = StubRootModuleFactory()
-            tutorialModuleFactory = StubTutorialModuleFactory()
-            preloadModuleFactory = StubPreloadModuleFactory()
+            rootModule = StubRootModuleFactory()
+            tutorialModule = StubTutorialModuleFactory()
+            preloadModule = StubPreloadModuleFactory()
             windowWireframe = CapturingWindowWireframe()
-            tabModuleFactory = StubTabModuleFactory()
-            newsModuleFactory = StubNewsModuleFactory()
-            messagesModuleFactory = StubMessagesModuleFactory()
-            loginModuleFactory = StubLoginModuleFactory()
-            messageDetailModuleFactory = StubMessageDetailModuleProviding()
-            knowledgeListModuleProviding = StubKnowledgeListModuleProviding()
-            knowledgeDetailModuleProviding = StubKnowledgeDetailModuleProviding()
+            tabModule = StubTabModuleFactory()
+            newsModule = StubNewsModuleFactory()
+            messagesModule = StubMessagesModuleFactory()
+            loginModule = StubLoginModuleFactory()
+            messageDetailModule = StubMessageDetailModuleProviding()
+            knowledgeListModule = StubKnowledgeListModuleProviding()
+            knowledgeDetailModule = StubKnowledgeDetailModuleProviding()
             linkRouter = StubLinkRouter()
             webModuleProviding = StubWebMobuleProviding()
             urlOpener = CapturingURLOpener()
@@ -85,16 +89,16 @@ class ApplicationDirectorTests: XCTestCase {
             builder.withAnimations(false)
             builder.with(windowWireframe)
             builder.with(StubNavigationControllerFactory())
-            builder.with(rootModuleFactory)
-            builder.with(tutorialModuleFactory)
-            builder.with(preloadModuleFactory)
-            builder.with(tabModuleFactory)
-            builder.with(newsModuleFactory)
-            builder.with(messagesModuleFactory)
-            builder.with(loginModuleFactory)
-            builder.with(messageDetailModuleFactory)
-            builder.with(knowledgeListModuleProviding)
-            builder.with(knowledgeDetailModuleProviding)
+            builder.with(rootModule)
+            builder.with(tutorialModule)
+            builder.with(preloadModule)
+            builder.with(tabModule)
+            builder.with(newsModule)
+            builder.with(messagesModule)
+            builder.with(loginModule)
+            builder.with(messageDetailModule)
+            builder.with(knowledgeListModule)
+            builder.with(knowledgeDetailModule)
             builder.with(linkRouter)
             builder.with(webModuleProviding)
             builder.with(urlOpener)
@@ -104,17 +108,17 @@ class ApplicationDirectorTests: XCTestCase {
         
         func build() -> Context {
             return Context(director: director,
-                           rootModuleFactory: rootModuleFactory,
-                           tutorialModuleFactory: tutorialModuleFactory,
-                           preloadModuleFactory: preloadModuleFactory,
-                           tabModuleFactory: tabModuleFactory,
-                           newsModuleFactory: newsModuleFactory,
-                           messagesModuleFactory: messagesModuleFactory,
-                           loginModuleFactory: loginModuleFactory,
+                           rootModule: rootModule,
+                           tutorialModule: tutorialModule,
+                           preloadModule: preloadModule,
+                           tabModule: tabModule,
+                           newsModule: newsModule,
+                           messages: messagesModule,
+                           loginModule: loginModule,
                            windowWireframe: windowWireframe,
-                           messageDetailModuleFactory: messageDetailModuleFactory,
-                           knowledgeListModuleProviding: knowledgeListModuleProviding,
-                           knowledgeDetailModuleProviding: knowledgeDetailModuleProviding,
+                           messageDetailModule: messageDetailModule,
+                           knowledgeListModule: knowledgeListModule,
+                           knowledgeDetailModule: knowledgeDetailModule,
                            linkRouter: linkRouter,
                            webModuleProviding: webModuleProviding,
                            urlOpener: urlOpener)
@@ -139,43 +143,43 @@ class ApplicationDirectorTests: XCTestCase {
     }
     
     func testWhenRootModuleIndicatesUserNeedsToWitnessTutorialTheTutorialModuleIsSetOntoRootNavigationController() {
-        context.rootModuleFactory.simulateTutorialShouldBePresented()
-        XCTAssertEqual([context.tutorialModuleFactory.stubInterface], context.rootNavigationController.viewControllers)
+        context.rootModule.simulateTutorialShouldBePresented()
+        XCTAssertEqual([context.tutorialModule.stubInterface], context.rootNavigationController.viewControllers)
     }
     
     func testWhenRootModuleIndicatesStoreShouldPreloadThePreloadModuleIsSetAsRoot() {
-        context.rootModuleFactory.simulateStoreShouldBeRefreshed()
-        XCTAssertEqual([context.preloadModuleFactory.stubInterface], context.rootNavigationController.viewControllers)
+        context.rootModule.simulateStoreShouldBeRefreshed()
+        XCTAssertEqual([context.preloadModule.stubInterface], context.rootNavigationController.viewControllers)
     }
     
     func testWhenTheTutorialFinishesThePreloadModuleIsSetAsRoot() {
-        context.rootModuleFactory.simulateTutorialShouldBePresented()
-        context.tutorialModuleFactory.simulateTutorialFinished()
+        context.rootModule.simulateTutorialShouldBePresented()
+        context.tutorialModule.simulateTutorialFinished()
         
-        XCTAssertEqual([context.preloadModuleFactory.stubInterface], context.rootNavigationController.viewControllers)
+        XCTAssertEqual([context.preloadModule.stubInterface], context.rootNavigationController.viewControllers)
     }
     
     func testWhenPreloadingFailsAfterFinishingTutorialTheTutorialIsRedisplayed() {
-        context.rootModuleFactory.simulateTutorialShouldBePresented()
-        context.tutorialModuleFactory.simulateTutorialFinished()
-        context.preloadModuleFactory.simulatePreloadCancelled()
+        context.rootModule.simulateTutorialShouldBePresented()
+        context.tutorialModule.simulateTutorialFinished()
+        context.preloadModule.simulatePreloadCancelled()
         
-        XCTAssertEqual([context.tutorialModuleFactory.stubInterface], context.rootNavigationController.viewControllers)
+        XCTAssertEqual([context.tutorialModule.stubInterface], context.rootNavigationController.viewControllers)
     }
     
     func testWhenPreloadingSucceedsAfterFinishingTutorialTheTabWireframeIsSetAsTheRoot() {
-        context.rootModuleFactory.simulateTutorialShouldBePresented()
-        context.tutorialModuleFactory.simulateTutorialFinished()
-        context.preloadModuleFactory.simulatePreloadFinished()
+        context.rootModule.simulateTutorialShouldBePresented()
+        context.tutorialModule.simulateTutorialFinished()
+        context.preloadModule.simulatePreloadFinished()
         
-        XCTAssertEqual([context.tabModuleFactory.stubInterface], context.rootNavigationController.viewControllers)
+        XCTAssertEqual([context.tabModule.stubInterface], context.rootNavigationController.viewControllers)
     }
     
     func testWhenPresentingTabControllerTheDissolveTransitionIsUsed() {
-        context.rootModuleFactory.simulateTutorialShouldBePresented()
-        context.tutorialModuleFactory.simulateTutorialFinished()
-        context.preloadModuleFactory.simulatePreloadFinished()
-        let transition = context.rootNavigationController.delegate?.navigationController?(context.rootNavigationController, animationControllerFor: .push, from: context.preloadModuleFactory.stubInterface, to: context.tabModuleFactory.stubInterface)
+        context.rootModule.simulateTutorialShouldBePresented()
+        context.tutorialModule.simulateTutorialFinished()
+        context.preloadModule.simulatePreloadFinished()
+        let transition = context.rootNavigationController.delegate?.navigationController?(context.rootNavigationController, animationControllerFor: .push, from: context.preloadModule.stubInterface, to: context.tabModule.stubInterface)
 
         XCTAssertTrue(transition is ViewControllerDissolveTransitioning)
     }
@@ -198,151 +202,151 @@ class ApplicationDirectorTests: XCTestCase {
     
     func testWhenTheNewsModuleRequestsLoginTheMessagesControllerIsPushedOntoItsNavigationController() {
         context.navigateToTabController()
-        let newsNavigationController = context.tabModuleFactory.navigationController(for: context.newsModuleFactory.stubInterface)
-        context.newsModuleFactory.simulateLoginRequested()
+        let newsNavigationController = context.navigationController(for: context.newsModule.stubInterface)
+        context.newsModule.simulateLoginRequested()
         
-        XCTAssertEqual(context.messagesModuleFactory.stubInterface, newsNavigationController?.pushedViewControllers.last)
+        XCTAssertEqual(context.messages.stubInterface, newsNavigationController?.pushedViewControllers.last)
     }
     
     func testWhenTheNewsModuleRequestsShowingPrivateMessagesTheMessagesControllerIsPushedOntoItsNavigationController() {
         context.navigateToTabController()
-        let newsNavigationController = context.tabModuleFactory.navigationController(for: context.newsModuleFactory.stubInterface)
-        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
+        let newsNavigationController = context.navigationController(for: context.newsModule.stubInterface)
+        context.newsModule.simulatePrivateMessagesDisplayRequested()
         
-        XCTAssertEqual(context.messagesModuleFactory.stubInterface, newsNavigationController?.pushedViewControllers.last)
+        XCTAssertEqual(context.messages.stubInterface, newsNavigationController?.pushedViewControllers.last)
     }
     
     func testWhenTheMessagesModuleRequestsDismissalItIsDismissedFromTheTabController() {
         context.navigateToTabController()
-        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
-        context.messagesModuleFactory.simulateDismissalRequested()
+        context.newsModule.simulatePrivateMessagesDisplayRequested()
+        context.messages.simulateDismissalRequested()
         
-        XCTAssertTrue(context.tabModuleFactory.stubInterface.didDismissViewController)
+        XCTAssertTrue(context.tabModule.stubInterface.didDismissViewController)
     }
     
     func testWhenTheMessagesModuleRequestsDismissalTheNewsNavigationControllersPopsToTheNewsModule() {
         context.navigateToTabController()
-        let newsNavigationController = context.tabModuleFactory.navigationController(for: context.newsModuleFactory.stubInterface)
-        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
-        context.messagesModuleFactory.simulateDismissalRequested()
+        let newsNavigationController = context.navigationController(for: context.newsModule.stubInterface)
+        context.newsModule.simulatePrivateMessagesDisplayRequested()
+        context.messages.simulateDismissalRequested()
         
-        XCTAssertEqual(context.newsModuleFactory.stubInterface, newsNavigationController?.viewControllerPoppedTo)
+        XCTAssertEqual(context.newsModule.stubInterface, newsNavigationController?.viewControllerPoppedTo)
     }
     
     func testWhenTheMessagesModuleRequestsResolutionForUserTheLoginModuleIsPresentedOnTopOfTheTabController() {
         context.navigateToTabController()
-        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
-        context.messagesModuleFactory.simulateResolutionForUser( { _ in })
-        let navController = context.tabModuleFactory.stubInterface.capturedPresentedViewController as? UINavigationController
+        context.newsModule.simulatePrivateMessagesDisplayRequested()
+        context.messages.simulateResolutionForUser( { _ in })
+        let navController = context.tabModule.stubInterface.capturedPresentedViewController as? UINavigationController
         
-        XCTAssertEqual(navController?.topViewController, context.loginModuleFactory.stubInterface)
+        XCTAssertEqual(navController?.topViewController, context.loginModule.stubInterface)
     }
     
     func testWhenTheMessagesModuleRequestsResolutionForUserTheLoginModuleIsPresentedUsingTheFormSheetModalPresentationStyle() {
         context.navigateToTabController()
-        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
-        context.messagesModuleFactory.simulateResolutionForUser({ _ in })
+        context.newsModule.simulatePrivateMessagesDisplayRequested()
+        context.messages.simulateResolutionForUser({ _ in })
         
-        XCTAssertEqual(context.loginModuleFactory.stubInterface.modalPresentationStyle, .formSheet)
+        XCTAssertEqual(context.loginModule.stubInterface.modalPresentationStyle, .formSheet)
     }
     
     func testWhenShowingLoginForMessagesControllerWhenModuleCancelsLoginTheMessagesModuleIsToldResolutionFailed() {
         context.navigateToTabController()
-        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
+        context.newsModule.simulatePrivateMessagesDisplayRequested()
         var userResolved = true
-        context.messagesModuleFactory.simulateResolutionForUser({ userResolved = $0 })
-        context.loginModuleFactory.simulateLoginCancelled()
+        context.messages.simulateResolutionForUser({ userResolved = $0 })
+        context.loginModule.simulateLoginCancelled()
         
         XCTAssertFalse(userResolved)
     }
     
     func testWhenShowingLoginForMessagesControllerTheMessagesModuleIsNotToldResolutionFailedBeforeLoginIsCancelled() {
         context.navigateToTabController()
-        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
+        context.newsModule.simulatePrivateMessagesDisplayRequested()
         var userResolved = true
-        context.messagesModuleFactory.simulateResolutionForUser({ userResolved = $0 })
+        context.messages.simulateResolutionForUser({ userResolved = $0 })
         
         XCTAssertTrue(userResolved)
     }
     
     func testWhenShowingLoginForMessagesControllerWhenModuleLogsInTheMessagesModuleIsToldResolutionSucceeded() {
         context.navigateToTabController()
-        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
+        context.newsModule.simulatePrivateMessagesDisplayRequested()
         var userResolved = false
-        context.messagesModuleFactory.simulateResolutionForUser({ userResolved = $0 })
-        context.loginModuleFactory.simulateLoginSucceeded()
+        context.messages.simulateResolutionForUser({ userResolved = $0 })
+        context.loginModule.simulateLoginSucceeded()
         
         XCTAssertTrue(userResolved)
     }
     
     func testWhenShowingLoginForMessagesControllerTheMessagesModuleIsNotToldResolutionSucceededBeforeUserLogsIn() {
         context.navigateToTabController()
-        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
+        context.newsModule.simulatePrivateMessagesDisplayRequested()
         var userResolved = false
-        context.messagesModuleFactory.simulateResolutionForUser({ userResolved = $0 })
+        context.messages.simulateResolutionForUser({ userResolved = $0 })
         
         XCTAssertFalse(userResolved)
     }
     
     func testWhenShowingLoginForMessagesControllerWhenLoginSucceedsItIsDismissed() {
         context.navigateToTabController()
-        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
-        context.messagesModuleFactory.simulateResolutionForUser { (_) in }
-        context.loginModuleFactory.simulateLoginSucceeded()
+        context.newsModule.simulatePrivateMessagesDisplayRequested()
+        context.messages.simulateResolutionForUser { (_) in }
+        context.loginModule.simulateLoginSucceeded()
         
-        XCTAssertTrue(context.tabModuleFactory.stubInterface.didDismissViewController)
+        XCTAssertTrue(context.tabModule.stubInterface.didDismissViewController)
     }
     
     func testWhenMessagesModuleRequestsPresentationForMessageTheMessageDetailModuleIsBuiltUsingChosenMessage() {
         context.navigateToTabController()
-        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
+        context.newsModule.simulatePrivateMessagesDisplayRequested()
         let message = AppDataBuilder.makeMessage()
-        context.messagesModuleFactory.simulateMessagePresentationRequested(message)
+        context.messages.simulateMessagePresentationRequested(message)
         
-        XCTAssertEqual(message, context.messageDetailModuleFactory.capturedMessage)
+        XCTAssertEqual(message, context.messageDetailModule.capturedMessage)
     }
     
     func testWhenMessagesModuleRequestsPresentationForMessageTheMessageDetailModuleInterfaceIsPushedOntoMessagesNavigationController() {
         context.navigateToTabController()
-        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
-        context.messagesModuleFactory.simulateMessagePresentationRequested(AppDataBuilder.makeMessage())
-        let navigationController = context.messagesModuleFactory.stubInterface.navigationController
+        context.newsModule.simulatePrivateMessagesDisplayRequested()
+        context.messages.simulateMessagePresentationRequested(AppDataBuilder.makeMessage())
+        let navigationController = context.messages.stubInterface.navigationController
         
-        XCTAssertEqual(context.messageDetailModuleFactory.stubInterface, navigationController?.topViewController)
+        XCTAssertEqual(context.messageDetailModule.stubInterface, navigationController?.topViewController)
     }
     
     func testWhenSelectingKnowledgeEntryTheKnowledgeEntryModuleIsPresented() {
         context.navigateToTabController()
-        let knowledgeNavigationController = context.tabModuleFactory.navigationController(for: context.knowledgeListModuleProviding.stubInterface)
+        let knowledgeNavigationController = context.navigationController(for: context.knowledgeListModule.stubInterface)
         let entry = KnowledgeEntry2.random
-        context.knowledgeListModuleProviding.simulateKnowledgeEntrySelected(entry)
+        context.knowledgeListModule.simulateKnowledgeEntrySelected(entry)
         
-        XCTAssertEqual(context.knowledgeDetailModuleProviding.stubInterface, knowledgeNavigationController?.topViewController)
-        XCTAssertEqual(entry, context.knowledgeDetailModuleProviding.capturedModel)
+        XCTAssertEqual(context.knowledgeDetailModule.stubInterface, knowledgeNavigationController?.topViewController)
+        XCTAssertEqual(entry, context.knowledgeDetailModule.capturedModel)
     }
     
     func testWhenKnowledgeEntrySelectsWebLinkTheWebModuleIsPresentedOntoTheTabInterface() {
         context.navigateToTabController()
         let entry = KnowledgeEntry2.random
-        context.knowledgeListModuleProviding.simulateKnowledgeEntrySelected(entry)
+        context.knowledgeListModule.simulateKnowledgeEntrySelected(entry)
         let link = entry.links.randomElement().element
         let url = URL.random
         context.linkRouter.stubbedLinkActions[link] = .web(url)
-        context.knowledgeDetailModuleProviding.simulateLinkSelected(link)
+        context.knowledgeDetailModule.simulateLinkSelected(link)
         let webModuleForURL = context.webModuleProviding.producedWebModules[url]
         
         XCTAssertNotNil(webModuleForURL)
-        XCTAssertEqual(webModuleForURL, context.tabModuleFactory.stubInterface.capturedPresentedViewController)
+        XCTAssertEqual(webModuleForURL, context.tabModule.stubInterface.capturedPresentedViewController)
     }
     
     func testWhenKnowledgeEntrySelectsExternalAppLinkTheURLLauncherIsToldToHandleTheURL() {
         context.navigateToTabController()
         let entry = KnowledgeEntry2.random
-        context.knowledgeListModuleProviding.simulateKnowledgeEntrySelected(entry)
+        context.knowledgeListModule.simulateKnowledgeEntrySelected(entry)
         let link = entry.links.randomElement().element
         let url = URL.random
         context.linkRouter.stubbedLinkActions[link] = .externalURL(url)
-        context.knowledgeDetailModuleProviding.simulateLinkSelected(link)
+        context.knowledgeDetailModule.simulateLinkSelected(link)
         
         XCTAssertEqual(url, context.urlOpener.capturedURLToOpen)
     }
