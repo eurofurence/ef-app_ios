@@ -329,6 +329,12 @@
 		CA63756E208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63756D208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift */; };
 		CA637570208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63756F208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift */; };
 		CA637572208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637571208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift */; };
+		CA637574208CD7F900536BE2 /* WhenNewsModuleRequestsLogin_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637573208CD7F900536BE2 /* WhenNewsModuleRequestsLogin_DirectorShould.swift */; };
+		CA637576208CD96A00536BE2 /* WhenMessagesModuleRequestsUserResolution_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637575208CD96A00536BE2 /* WhenMessagesModuleRequestsUserResolution_DirectorShould.swift */; };
+		CA637578208CDB4700536BE2 /* WhenUserSelectsMessage_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637577208CDB4700536BE2 /* WhenUserSelectsMessage_DirectorShould.swift */; };
+		CA63757A208CDB7B00536BE2 /* Message+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637579208CDB7B00536BE2 /* Message+RandomValueProviding.swift */; };
+		CA63757C208CDBAA00536BE2 /* Date+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63757B208CDBAA00536BE2 /* Date+RandomValueProviding.swift */; };
+		CA63757E208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63757D208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -948,6 +954,12 @@
 		CA63756D208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreloadCompletes_DirectorShould.swift; sourceTree = "<group>"; };
 		CA63756F208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenShowingTabModule_DirectorShould.swift; sourceTree = "<group>"; };
 		CA637571208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenShowingMessages_DirectorShould.swift; sourceTree = "<group>"; };
+		CA637573208CD7F900536BE2 /* WhenNewsModuleRequestsLogin_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsModuleRequestsLogin_DirectorShould.swift; sourceTree = "<group>"; };
+		CA637575208CD96A00536BE2 /* WhenMessagesModuleRequestsUserResolution_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenMessagesModuleRequestsUserResolution_DirectorShould.swift; sourceTree = "<group>"; };
+		CA637577208CDB4700536BE2 /* WhenUserSelectsMessage_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUserSelectsMessage_DirectorShould.swift; sourceTree = "<group>"; };
+		CA637579208CDB7B00536BE2 /* Message+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA63757B208CDBAA00536BE2 /* Date+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA63757D208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUserSelectsKnowledgeEntry_DirectorShould.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -2339,6 +2351,7 @@
 			children = (
 				CA71A3512041B59600C847C3 /* Array+RandomConvenience.swift */,
 				CAD6882D208A13D400B31F5F /* Bool+RandomValueProviding.swift */,
+				CA63757B208CDBAA00536BE2 /* Date+RandomValueProviding.swift */,
 				CA71A34F2040371D00C847C3 /* FloatingPoint+RandomValueProviding.swift */,
 				CA71A34B204032FC00C847C3 /* Integer+RandomValueProviding.swift */,
 				CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */,
@@ -2745,6 +2758,7 @@
 				CABF03C22041C2FD0028BD62 /* KnowledgeEntry2.swift */,
 				CABF03C02041C2EC0028BD62 /* KnowledgeGroup2.swift */,
 				CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */,
+				CA637579208CDB7B00536BE2 /* Message+RandomValueProviding.swift */,
 				CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */,
 			);
 			path = Model;
@@ -3000,6 +3014,10 @@
 				CA63756D208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift */,
 				CA63756F208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift */,
 				CA637571208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift */,
+				CA637573208CD7F900536BE2 /* WhenNewsModuleRequestsLogin_DirectorShould.swift */,
+				CA637575208CD96A00536BE2 /* WhenMessagesModuleRequestsUserResolution_DirectorShould.swift */,
+				CA637577208CDB4700536BE2 /* WhenUserSelectsMessage_DirectorShould.swift */,
+				CA63757D208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift */,
 				CA63753E208CBAFF00536BE2 /* Test Doubles */,
 			);
 			path = Director;
@@ -3903,6 +3921,7 @@
 				CA63754C208CBB7800536BE2 /* StubMessagesModuleFactory.swift in Sources */,
 				CA0F762F2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift in Sources */,
 				CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */,
+				CA63757C208CDBAA00536BE2 /* Date+RandomValueProviding.swift in Sources */,
 				CA60BFFA207B8CD200697566 /* WhenAuthenticatedUserReceievesMessageBeforeNewsSceneAppears.swift in Sources */,
 				CAD3BDBD205AA61B00C91E6E /* URL+RandomValueProviding.swift in Sources */,
 				CAF9A9471F50B95F00628833 /* WhenRequestingCurrentUser.swift in Sources */,
@@ -3917,7 +3936,9 @@
 				7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */,
 				CA637560208CBC5F00536BE2 /* CapturingURLOpener.swift in Sources */,
 				78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */,
+				CA637574208CD7F900536BE2 /* WhenNewsModuleRequestsLogin_DirectorShould.swift in Sources */,
 				CABF03C32041C2FD0028BD62 /* KnowledgeEntry2.swift in Sources */,
+				CA63757E208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift in Sources */,
 				CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */,
 				CA17FE8E205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift in Sources */,
 				CABA43931FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift in Sources */,
@@ -3987,6 +4008,7 @@
 				CA60BFEE207B89B400697566 /* WhenNewsSceneWillAppearForUnauthenticatedUser.swift in Sources */,
 				CA63756E208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift in Sources */,
 				CA2D07F91FE9021A00BFD785 /* WhenResolvingDataStoreState.swift in Sources */,
+				CA637576208CD96A00536BE2 /* WhenMessagesModuleRequestsUserResolution_DirectorShould.swift in Sources */,
 				CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */,
 				CA0F761D2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift in Sources */,
 				CA637558208CBC1D00536BE2 /* StubKnowledgeListModuleProviding.swift in Sources */,
@@ -4074,6 +4096,8 @@
 				78455B4B1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift in Sources */,
 				CA81D4941FEA92EA00A52A2F /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift in Sources */,
 				CA60BFE32078E42800697566 /* User+RandomValueProviding.swift in Sources */,
+				CA63757A208CDB7B00536BE2 /* Message+RandomValueProviding.swift in Sources */,
+				CA637578208CDB4700536BE2 /* WhenUserSelectsMessage_DirectorShould.swift in Sources */,
 				CA30EACA1F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift in Sources */,
 				CAF597A42045EF5A00089BE8 /* V2SyncAPITests.swift in Sources */,
 				CA89CBAF207F823A00570D54 /* WhenBuildingNewsModule.swift in Sources */,
