@@ -321,6 +321,12 @@
 		CA63755E208CBC4E00536BE2 /* StubWebMobuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755D208CBC4E00536BE2 /* StubWebMobuleProviding.swift */; };
 		CA637560208CBC5F00536BE2 /* CapturingURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */; };
 		CA637562208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637561208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift */; };
+		CA637564208CC8F800536BE2 /* WhenBuilt_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637563208CC8F800536BE2 /* WhenBuilt_DirectorShould.swift */; };
+		CA637566208CC94E00536BE2 /* WhenShowingTutorial_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637565208CC94E00536BE2 /* WhenShowingTutorial_DirectorShould.swift */; };
+		CA637568208CC9C700536BE2 /* WhenTutorialFinished_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637567208CC9C700536BE2 /* WhenTutorialFinished_DirectorShould.swift */; };
+		CA63756A208CCB5800536BE2 /* WhenStoreShouldBeRefreshed_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637569208CCB5800536BE2 /* WhenStoreShouldBeRefreshed_DirectorShould.swift */; };
+		CA63756C208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63756B208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift */; };
+		CA63756E208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63756D208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -932,6 +938,12 @@
 		CA63755D208CBC4E00536BE2 /* StubWebMobuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubWebMobuleProviding.swift; sourceTree = "<group>"; };
 		CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingURLOpener.swift; sourceTree = "<group>"; };
 		CA637561208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDirectorTestBuilder.swift; sourceTree = "<group>"; };
+		CA637563208CC8F800536BE2 /* WhenBuilt_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuilt_DirectorShould.swift; sourceTree = "<group>"; };
+		CA637565208CC94E00536BE2 /* WhenShowingTutorial_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenShowingTutorial_DirectorShould.swift; sourceTree = "<group>"; };
+		CA637567208CC9C700536BE2 /* WhenTutorialFinished_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTutorialFinished_DirectorShould.swift; sourceTree = "<group>"; };
+		CA637569208CCB5800536BE2 /* WhenStoreShouldBeRefreshed_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenStoreShouldBeRefreshed_DirectorShould.swift; sourceTree = "<group>"; };
+		CA63756B208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreloadFails_DirectorShould.swift; sourceTree = "<group>"; };
+		CA63756D208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreloadCompletes_DirectorShould.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -2974,9 +2986,15 @@
 		CAF7055F1F82CBC800A9FEA2 /* Director */ = {
 			isa = PBXGroup;
 			children = (
-				CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */,
-				CA63753E208CBAFF00536BE2 /* Test Doubles */,
 				CA637561208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift */,
+				CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */,
+				CA637563208CC8F800536BE2 /* WhenBuilt_DirectorShould.swift */,
+				CA637565208CC94E00536BE2 /* WhenShowingTutorial_DirectorShould.swift */,
+				CA637567208CC9C700536BE2 /* WhenTutorialFinished_DirectorShould.swift */,
+				CA637569208CCB5800536BE2 /* WhenStoreShouldBeRefreshed_DirectorShould.swift */,
+				CA63756B208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift */,
+				CA63756D208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift */,
+				CA63753E208CBAFF00536BE2 /* Test Doubles */,
 			);
 			path = Director;
 			sourceTree = "<group>";
@@ -3912,6 +3930,8 @@
 				78C86D791F12ADF8003A20E6 /* CapturingSplashScene.swift in Sources */,
 				78C86D4C1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift in Sources */,
 				6EEC6DA31F1BFC5000205F2D /* StubAppVersionProviding.swift in Sources */,
+				CA63756A208CCB5800536BE2 /* WhenStoreShouldBeRefreshed_DirectorShould.swift in Sources */,
+				CA637564208CC8F800536BE2 /* WhenBuilt_DirectorShould.swift in Sources */,
 				78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */,
 				CA1ECB3F1FE333090076083A /* WhenInitialMessageLoadFails.swift in Sources */,
 				CAD234401F5D726C004BB959 /* WhenViewingMessagesWhileLoggedIn.swift in Sources */,
@@ -3952,11 +3972,13 @@
 				CA89CBC22085385900570D54 /* AnnouncementsViewModel.swift in Sources */,
 				CA637554208CBBC000536BE2 /* CapturingWindowWireframe.swift in Sources */,
 				CAD3BDC5205FE42A00C91E6E /* WhenLookingUpWebLinks.swift in Sources */,
+				CA63756C208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift in Sources */,
 				CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */,
 				CA60BFF4207B8B7700697566 /* WhenUnauthenticatedUserLogsIn_NewsPresenterShould.swift in Sources */,
 				CA8276BA204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift in Sources */,
 				CAF9A9581F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift in Sources */,
 				CA60BFEE207B89B400697566 /* WhenNewsSceneWillAppearForUnauthenticatedUser.swift in Sources */,
+				CA63756E208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift in Sources */,
 				CA2D07F91FE9021A00BFD785 /* WhenResolvingDataStoreState.swift in Sources */,
 				CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */,
 				CA0F761D2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift in Sources */,
@@ -4040,12 +4062,14 @@
 				CAEAEC0C1FE0702500C0EE7C /* MessageDetailViewControllerTests.swift in Sources */,
 				CA89CBBC2084CB4200570D54 /* WhenBindingAnnouncement_NewsPresenterShould.swift in Sources */,
 				CAD3BDB520587DD800C91E6E /* WhenShowingKnowledgeEntryWithoutLinks.swift in Sources */,
+				CA637568208CC9C700536BE2 /* WhenTutorialFinished_DirectorShould.swift in Sources */,
 				78455B4B1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift in Sources */,
 				CA81D4941FEA92EA00A52A2F /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift in Sources */,
 				CA60BFE32078E42800697566 /* User+RandomValueProviding.swift in Sources */,
 				CA30EACA1F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift in Sources */,
 				CAF597A42045EF5A00089BE8 /* V2SyncAPITests.swift in Sources */,
 				CA89CBAF207F823A00570D54 /* WhenBuildingNewsModule.swift in Sources */,
+				CA637566208CC94E00536BE2 /* WhenShowingTutorial_DirectorShould.swift in Sources */,
 				CA2D08141FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift in Sources */,
 				7820A6E11F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift in Sources */,
 				781A94461F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift in Sources */,

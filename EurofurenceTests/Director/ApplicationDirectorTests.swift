@@ -19,56 +19,6 @@ class ApplicationDirectorTests: XCTestCase {
         context = ApplicationDirectorTestBuilder().build()
     }
     
-    func testNavigationControllerSetAsRootOnWindow() {
-        XCTAssertTrue(context.windowWireframe.capturedRootInterface is UINavigationController)
-    }
-    
-    func testTheRootNavigationControllerDoesNotShowNavigationBar() {
-        XCTAssertTrue(context.rootNavigationController.isNavigationBarHidden)
-    }
-    
-    func testWhenRootModuleIndicatesUserNeedsToWitnessTutorialTheTutorialModuleIsSetOntoRootNavigationController() {
-        context.rootModule.simulateTutorialShouldBePresented()
-        XCTAssertEqual([context.tutorialModule.stubInterface], context.rootNavigationController.viewControllers)
-    }
-    
-    func testWhenRootModuleIndicatesStoreShouldPreloadThePreloadModuleIsSetAsRoot() {
-        context.rootModule.simulateStoreShouldBeRefreshed()
-        XCTAssertEqual([context.preloadModule.stubInterface], context.rootNavigationController.viewControllers)
-    }
-    
-    func testWhenTheTutorialFinishesThePreloadModuleIsSetAsRoot() {
-        context.rootModule.simulateTutorialShouldBePresented()
-        context.tutorialModule.simulateTutorialFinished()
-        
-        XCTAssertEqual([context.preloadModule.stubInterface], context.rootNavigationController.viewControllers)
-    }
-    
-    func testWhenPreloadingFailsAfterFinishingTutorialTheTutorialIsRedisplayed() {
-        context.rootModule.simulateTutorialShouldBePresented()
-        context.tutorialModule.simulateTutorialFinished()
-        context.preloadModule.simulatePreloadCancelled()
-        
-        XCTAssertEqual([context.tutorialModule.stubInterface], context.rootNavigationController.viewControllers)
-    }
-    
-    func testWhenPreloadingSucceedsAfterFinishingTutorialTheTabWireframeIsSetAsTheRoot() {
-        context.rootModule.simulateTutorialShouldBePresented()
-        context.tutorialModule.simulateTutorialFinished()
-        context.preloadModule.simulatePreloadFinished()
-        
-        XCTAssertEqual([context.tabModule.stubInterface], context.rootNavigationController.viewControllers)
-    }
-    
-    func testWhenPresentingTabControllerTheDissolveTransitionIsUsed() {
-        context.rootModule.simulateTutorialShouldBePresented()
-        context.tutorialModule.simulateTutorialFinished()
-        context.preloadModule.simulatePreloadFinished()
-        let transition = context.rootNavigationController.delegate?.navigationController?(context.rootNavigationController, animationControllerFor: .push, from: context.preloadModule.stubInterface, to: context.tabModule.stubInterface)
-
-        XCTAssertTrue(transition is ViewControllerDissolveTransitioning)
-    }
-    
     func testWhenShowingTheTheTabModuleItIsInitialisedWithControllersForTabModulesNestedInNavigationControllers() {
         context.navigateToTabController()
         let expected: [UIViewController] = context.makeExpectedTabViewControllerRoots()
