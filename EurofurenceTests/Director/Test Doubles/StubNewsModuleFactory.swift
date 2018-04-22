@@ -19,3 +19,15 @@ class StubNewsModuleFactory: NewsModuleProviding {
     }
     
 }
+
+extension StubNewsModuleFactory {
+    
+    func simulateLoginRequested() {
+        delegate?.newsModuleDidRequestLogin()
+    }
+    
+    func simulatePrivateMessagesDisplayRequested() {
+        delegate?.newsModuleDidRequestShowingPrivateMessages()
+    }
+    
+}

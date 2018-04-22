@@ -19,3 +19,15 @@ class StubLoginModuleFactory: LoginModuleProviding {
     }
     
 }
+
+extension StubLoginModuleFactory {
+    
+    func simulateLoginCancelled() {
+        delegate?.loginModuleDidCancelLogin()
+    }
+    
+    func simulateLoginSucceeded() {
+        delegate?.loginModuleDidLoginSuccessfully()
+    }
+    
+}

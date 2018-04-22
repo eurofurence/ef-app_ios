@@ -32,7 +32,7 @@ class ApplicationDirectorTests: XCTestCase {
             
             func navigateToTabController() {
                 rootModuleFactory.delegate?.rootModuleDidDetermineStoreShouldRefresh()
-                preloadModuleFactory.delegate?.preloadModuleDidFinishPreloading()
+                preloadModuleFactory.simulatePreloadFinished()
             }
             
             var rootNavigationController: UINavigationController {
@@ -139,42 +139,42 @@ class ApplicationDirectorTests: XCTestCase {
     }
     
     func testWhenRootModuleIndicatesUserNeedsToWitnessTutorialTheTutorialModuleIsSetOntoRootNavigationController() {
-        context.rootModuleFactory.delegate?.rootModuleDidDetermineTutorialShouldBePresented()
+        context.rootModuleFactory.simulateTutorialShouldBePresented()
         XCTAssertEqual([context.tutorialModuleFactory.stubInterface], context.rootNavigationController.viewControllers)
     }
     
     func testWhenRootModuleIndicatesStoreShouldPreloadThePreloadModuleIsSetAsRoot() {
-        context.rootModuleFactory.delegate?.rootModuleDidDetermineStoreShouldRefresh()
+        context.rootModuleFactory.simulateStoreShouldBeRefreshed()
         XCTAssertEqual([context.preloadModuleFactory.stubInterface], context.rootNavigationController.viewControllers)
     }
     
     func testWhenTheTutorialFinishesThePreloadModuleIsSetAsRoot() {
-        context.rootModuleFactory.delegate?.rootModuleDidDetermineTutorialShouldBePresented()
-        context.tutorialModuleFactory.delegate?.tutorialModuleDidFinishPresentingTutorial()
+        context.rootModuleFactory.simulateTutorialShouldBePresented()
+        context.tutorialModuleFactory.simulateTutorialFinished()
         
         XCTAssertEqual([context.preloadModuleFactory.stubInterface], context.rootNavigationController.viewControllers)
     }
     
     func testWhenPreloadingFailsAfterFinishingTutorialTheTutorialIsRedisplayed() {
-        context.rootModuleFactory.delegate?.rootModuleDidDetermineTutorialShouldBePresented()
-        context.tutorialModuleFactory.delegate?.tutorialModuleDidFinishPresentingTutorial()
-        context.preloadModuleFactory.delegate?.preloadModuleDidCancelPreloading()
+        context.rootModuleFactory.simulateTutorialShouldBePresented()
+        context.tutorialModuleFactory.simulateTutorialFinished()
+        context.preloadModuleFactory.simulatePreloadCancelled()
         
         XCTAssertEqual([context.tutorialModuleFactory.stubInterface], context.rootNavigationController.viewControllers)
     }
     
     func testWhenPreloadingSucceedsAfterFinishingTutorialTheTabWireframeIsSetAsTheRoot() {
-        context.rootModuleFactory.delegate?.rootModuleDidDetermineTutorialShouldBePresented()
-        context.tutorialModuleFactory.delegate?.tutorialModuleDidFinishPresentingTutorial()
-        context.preloadModuleFactory.delegate?.preloadModuleDidFinishPreloading()
+        context.rootModuleFactory.simulateTutorialShouldBePresented()
+        context.tutorialModuleFactory.simulateTutorialFinished()
+        context.preloadModuleFactory.simulatePreloadFinished()
         
         XCTAssertEqual([context.tabModuleFactory.stubInterface], context.rootNavigationController.viewControllers)
     }
     
     func testWhenPresentingTabControllerTheDissolveTransitionIsUsed() {
-        context.rootModuleFactory.delegate?.rootModuleDidDetermineTutorialShouldBePresented()
-        context.tutorialModuleFactory.delegate?.tutorialModuleDidFinishPresentingTutorial()
-        context.preloadModuleFactory.delegate?.preloadModuleDidFinishPreloading()
+        context.rootModuleFactory.simulateTutorialShouldBePresented()
+        context.tutorialModuleFactory.simulateTutorialFinished()
+        context.preloadModuleFactory.simulatePreloadFinished()
         let transition = context.rootNavigationController.delegate?.navigationController?(context.rootNavigationController, animationControllerFor: .push, from: context.preloadModuleFactory.stubInterface, to: context.tabModuleFactory.stubInterface)
 
         XCTAssertTrue(transition is ViewControllerDissolveTransitioning)
@@ -199,7 +199,7 @@ class ApplicationDirectorTests: XCTestCase {
     func testWhenTheNewsModuleRequestsLoginTheMessagesControllerIsPushedOntoItsNavigationController() {
         context.navigateToTabController()
         let newsNavigationController = context.tabModuleFactory.navigationController(for: context.newsModuleFactory.stubInterface)
-        context.newsModuleFactory.delegate?.newsModuleDidRequestLogin()
+        context.newsModuleFactory.simulateLoginRequested()
         
         XCTAssertEqual(context.messagesModuleFactory.stubInterface, newsNavigationController?.pushedViewControllers.last)
     }
@@ -207,15 +207,15 @@ class ApplicationDirectorTests: XCTestCase {
     func testWhenTheNewsModuleRequestsShowingPrivateMessagesTheMessagesControllerIsPushedOntoItsNavigationController() {
         context.navigateToTabController()
         let newsNavigationController = context.tabModuleFactory.navigationController(for: context.newsModuleFactory.stubInterface)
-        context.newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
+        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
         
         XCTAssertEqual(context.messagesModuleFactory.stubInterface, newsNavigationController?.pushedViewControllers.last)
     }
     
     func testWhenTheMessagesModuleRequestsDismissalItIsDismissedFromTheTabController() {
         context.navigateToTabController()
-        context.newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
-        context.messagesModuleFactory.delegate?.messagesModuleDidRequestDismissal()
+        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
+        context.messagesModuleFactory.simulateDismissalRequested()
         
         XCTAssertTrue(context.tabModuleFactory.stubInterface.didDismissViewController)
     }
@@ -223,16 +223,16 @@ class ApplicationDirectorTests: XCTestCase {
     func testWhenTheMessagesModuleRequestsDismissalTheNewsNavigationControllersPopsToTheNewsModule() {
         context.navigateToTabController()
         let newsNavigationController = context.tabModuleFactory.navigationController(for: context.newsModuleFactory.stubInterface)
-        context.newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
-        context.messagesModuleFactory.delegate?.messagesModuleDidRequestDismissal()
+        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
+        context.messagesModuleFactory.simulateDismissalRequested()
         
         XCTAssertEqual(context.newsModuleFactory.stubInterface, newsNavigationController?.viewControllerPoppedTo)
     }
     
     func testWhenTheMessagesModuleRequestsResolutionForUserTheLoginModuleIsPresentedOnTopOfTheTabController() {
         context.navigateToTabController()
-        context.newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
-        context.messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: { _ in })
+        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
+        context.messagesModuleFactory.simulateResolutionForUser( { _ in })
         let navController = context.tabModuleFactory.stubInterface.capturedPresentedViewController as? UINavigationController
         
         XCTAssertEqual(navController?.topViewController, context.loginModuleFactory.stubInterface)
@@ -240,72 +240,72 @@ class ApplicationDirectorTests: XCTestCase {
     
     func testWhenTheMessagesModuleRequestsResolutionForUserTheLoginModuleIsPresentedUsingTheFormSheetModalPresentationStyle() {
         context.navigateToTabController()
-        context.newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
-        context.messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: { _ in })
+        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
+        context.messagesModuleFactory.simulateResolutionForUser({ _ in })
         
         XCTAssertEqual(context.loginModuleFactory.stubInterface.modalPresentationStyle, .formSheet)
     }
     
     func testWhenShowingLoginForMessagesControllerWhenModuleCancelsLoginTheMessagesModuleIsToldResolutionFailed() {
         context.navigateToTabController()
-        context.newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
+        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
         var userResolved = true
-        context.messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: { userResolved = $0 })
-        context.loginModuleFactory.delegate?.loginModuleDidCancelLogin()
+        context.messagesModuleFactory.simulateResolutionForUser({ userResolved = $0 })
+        context.loginModuleFactory.simulateLoginCancelled()
         
         XCTAssertFalse(userResolved)
     }
     
     func testWhenShowingLoginForMessagesControllerTheMessagesModuleIsNotToldResolutionFailedBeforeLoginIsCancelled() {
         context.navigateToTabController()
-        context.newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
+        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
         var userResolved = true
-        context.messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: { userResolved = $0 })
+        context.messagesModuleFactory.simulateResolutionForUser({ userResolved = $0 })
         
         XCTAssertTrue(userResolved)
     }
     
     func testWhenShowingLoginForMessagesControllerWhenModuleLogsInTheMessagesModuleIsToldResolutionSucceeded() {
         context.navigateToTabController()
-        context.newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
+        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
         var userResolved = false
-        context.messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: { userResolved = $0 })
-        context.loginModuleFactory.delegate?.loginModuleDidLoginSuccessfully()
+        context.messagesModuleFactory.simulateResolutionForUser({ userResolved = $0 })
+        context.loginModuleFactory.simulateLoginSucceeded()
         
         XCTAssertTrue(userResolved)
     }
     
     func testWhenShowingLoginForMessagesControllerTheMessagesModuleIsNotToldResolutionSucceededBeforeUserLogsIn() {
         context.navigateToTabController()
-        context.newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
+        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
         var userResolved = false
-        context.messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: { userResolved = $0 })
+        context.messagesModuleFactory.simulateResolutionForUser({ userResolved = $0 })
         
         XCTAssertFalse(userResolved)
     }
     
     func testWhenShowingLoginForMessagesControllerWhenLoginSucceedsItIsDismissed() {
         context.navigateToTabController()
-        context.newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
-        context.messagesModuleFactory.delegate?.messagesModuleDidRequestResolutionForUser { (_) in }
-        context.loginModuleFactory.delegate?.loginModuleDidLoginSuccessfully()
+        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
+        context.messagesModuleFactory.simulateResolutionForUser { (_) in }
+        context.loginModuleFactory.simulateLoginSucceeded()
         
         XCTAssertTrue(context.tabModuleFactory.stubInterface.didDismissViewController)
     }
     
     func testWhenMessagesModuleRequestsPresentationForMessageTheMessageDetailModuleIsBuiltUsingChosenMessage() {
         context.navigateToTabController()
-        context.newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
+        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
         let message = AppDataBuilder.makeMessage()
-        context.messagesModuleFactory.delegate?.messagesModuleDidRequestPresentation(for: message)
+        context.messagesModuleFactory.simulateMessagePresentationRequested(message)
         
         XCTAssertEqual(message, context.messageDetailModuleFactory.capturedMessage)
     }
     
     func testWhenMessagesModuleRequestsPresentationForMessageTheMessageDetailModuleInterfaceIsPushedOntoMessagesNavigationController() {
         context.navigateToTabController()
-        context.newsModuleFactory.delegate?.newsModuleDidRequestShowingPrivateMessages()
-        context.messagesModuleFactory.delegate?.messagesModuleDidRequestPresentation(for: AppDataBuilder.makeMessage())
+        context.newsModuleFactory.simulatePrivateMessagesDisplayRequested()
+        context.messagesModuleFactory.simulateMessagePresentationRequested(AppDataBuilder.makeMessage())
         let navigationController = context.messagesModuleFactory.stubInterface.navigationController
         
         XCTAssertEqual(context.messageDetailModuleFactory.stubInterface, navigationController?.topViewController)
@@ -315,7 +315,7 @@ class ApplicationDirectorTests: XCTestCase {
         context.navigateToTabController()
         let knowledgeNavigationController = context.tabModuleFactory.navigationController(for: context.knowledgeListModuleProviding.stubInterface)
         let entry = KnowledgeEntry2.random
-        context.knowledgeListModuleProviding.delegate?.knowledgeListModuleDidSelectKnowledgeEntry(entry)
+        context.knowledgeListModuleProviding.simulateKnowledgeEntrySelected(entry)
         
         XCTAssertEqual(context.knowledgeDetailModuleProviding.stubInterface, knowledgeNavigationController?.topViewController)
         XCTAssertEqual(entry, context.knowledgeDetailModuleProviding.capturedModel)
@@ -324,11 +324,11 @@ class ApplicationDirectorTests: XCTestCase {
     func testWhenKnowledgeEntrySelectsWebLinkTheWebModuleIsPresentedOntoTheTabInterface() {
         context.navigateToTabController()
         let entry = KnowledgeEntry2.random
-        context.knowledgeListModuleProviding.delegate?.knowledgeListModuleDidSelectKnowledgeEntry(entry)
+        context.knowledgeListModuleProviding.simulateKnowledgeEntrySelected(entry)
         let link = entry.links.randomElement().element
         let url = URL.random
         context.linkRouter.stubbedLinkActions[link] = .web(url)
-        context.knowledgeDetailModuleProviding.delegate?.knowledgeDetailModuleDidSelectLink(link)
+        context.knowledgeDetailModuleProviding.simulateLinkSelected(link)
         let webModuleForURL = context.webModuleProviding.producedWebModules[url]
         
         XCTAssertNotNil(webModuleForURL)
@@ -338,11 +338,11 @@ class ApplicationDirectorTests: XCTestCase {
     func testWhenKnowledgeEntrySelectsExternalAppLinkTheURLLauncherIsToldToHandleTheURL() {
         context.navigateToTabController()
         let entry = KnowledgeEntry2.random
-        context.knowledgeListModuleProviding.delegate?.knowledgeListModuleDidSelectKnowledgeEntry(entry)
+        context.knowledgeListModuleProviding.simulateKnowledgeEntrySelected(entry)
         let link = entry.links.randomElement().element
         let url = URL.random
         context.linkRouter.stubbedLinkActions[link] = .externalURL(url)
-        context.knowledgeDetailModuleProviding.delegate?.knowledgeDetailModuleDidSelectLink(link)
+        context.knowledgeDetailModuleProviding.simulateLinkSelected(link)
         
         XCTAssertEqual(url, context.urlOpener.capturedURLToOpen)
     }

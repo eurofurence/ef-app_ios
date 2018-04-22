@@ -16,3 +16,15 @@ class StubRootModuleFactory: RootModuleProviding {
     }
     
 }
+
+extension StubRootModuleFactory {
+    
+    func simulateTutorialShouldBePresented() {
+        delegate?.rootModuleDidDetermineTutorialShouldBePresented()
+    }
+    
+    func simulateStoreShouldBeRefreshed() {
+        delegate?.rootModuleDidDetermineStoreShouldRefresh()
+    }
+    
+}

@@ -19,3 +19,11 @@ class StubKnowledgeListModuleProviding: KnowledgeListModuleProviding {
     }
     
 }
+
+extension StubKnowledgeListModuleProviding {
+    
+    func simulateKnowledgeEntrySelected(_ entry: KnowledgeEntry2) {
+        delegate?.knowledgeListModuleDidSelectKnowledgeEntry(entry)
+    }
+    
+}

@@ -21,3 +21,11 @@ class StubKnowledgeDetailModuleProviding: KnowledgeDetailModuleProviding {
     }
     
 }
+
+extension StubKnowledgeDetailModuleProviding {
+    
+    func simulateLinkSelected(_ link: Link) {
+        delegate?.knowledgeDetailModuleDidSelectLink(link)
+    }
+    
+}

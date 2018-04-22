@@ -19,3 +19,19 @@ class StubMessagesModuleFactory: MessagesModuleProviding {
     }
     
 }
+
+extension StubMessagesModuleFactory {
+    
+    func simulateResolutionForUser(_ handler: @escaping (Bool) -> Void) {
+        delegate?.messagesModuleDidRequestResolutionForUser(completionHandler: handler)
+    }
+    
+    func simulateMessagePresentationRequested(_ message: Message) {
+        delegate?.messagesModuleDidRequestPresentation(for: message)
+    }
+    
+    func simulateDismissalRequested() {
+        delegate?.messagesModuleDidRequestDismissal()
+    }
+    
+}

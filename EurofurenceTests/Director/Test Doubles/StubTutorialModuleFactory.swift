@@ -19,3 +19,11 @@ class StubTutorialModuleFactory: TutorialModuleProviding {
     }
     
 }
+
+extension StubTutorialModuleFactory {
+    
+    func simulateTutorialFinished() {
+        delegate?.tutorialModuleDidFinishPresentingTutorial()
+    }
+    
+}

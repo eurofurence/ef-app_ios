@@ -19,3 +19,15 @@ class StubPreloadModuleFactory: PreloadModuleProviding {
     }
     
 }
+
+extension StubPreloadModuleFactory {
+    
+    func simulatePreloadFinished() {
+        delegate?.preloadModuleDidFinishPreloading()
+    }
+    
+    func simulatePreloadCancelled() {
+        delegate?.preloadModuleDidCancelPreloading()
+    }
+    
+}
