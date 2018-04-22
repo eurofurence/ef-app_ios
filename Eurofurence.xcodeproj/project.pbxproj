@@ -320,6 +320,7 @@
 		CA63755C208CBC3C00536BE2 /* StubLinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755B208CBC3C00536BE2 /* StubLinkRouter.swift */; };
 		CA63755E208CBC4E00536BE2 /* StubWebMobuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755D208CBC4E00536BE2 /* StubWebMobuleProviding.swift */; };
 		CA637560208CBC5F00536BE2 /* CapturingURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */; };
+		CA637562208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637561208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -930,6 +931,7 @@
 		CA63755B208CBC3C00536BE2 /* StubLinkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubLinkRouter.swift; sourceTree = "<group>"; };
 		CA63755D208CBC4E00536BE2 /* StubWebMobuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubWebMobuleProviding.swift; sourceTree = "<group>"; };
 		CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingURLOpener.swift; sourceTree = "<group>"; };
+		CA637561208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDirectorTestBuilder.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -2974,6 +2976,7 @@
 			children = (
 				CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */,
 				CA63753E208CBAFF00536BE2 /* Test Doubles */,
+				CA637561208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift */,
 			);
 			path = Director;
 			sourceTree = "<group>";
@@ -4022,6 +4025,7 @@
 				CA60BFF2207B8B1700697566 /* WhenAuthenticatedUserLogsOut_NewsPresenterShould.swift in Sources */,
 				CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */,
 				CA73AEDF201A0833004E77BF /* CapturingKnowledgeInteractor.swift in Sources */,
+				CA637562208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift in Sources */,
 				CAF9A9451F50B89000628833 /* CapturingEurofurenceApplication.swift in Sources */,
 				78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */,
 				CAD3BDB12058719300C91E6E /* Link+RandomValueProviding.swift in Sources */,
