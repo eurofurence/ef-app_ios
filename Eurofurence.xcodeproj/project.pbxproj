@@ -303,6 +303,23 @@
 		CA60C000207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFF207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift */; };
 		CA60C002207F7D2100697566 /* WhenNewsSceneWillAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60C001207F7D2100697566 /* WhenNewsSceneWillAppear.swift */; };
 		CA63753D208A6E4900536BE2 /* DefaultNewsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753C208A6E4900536BE2 /* DefaultNewsInteractorTests.swift */; };
+		CA637540208CBB0E00536BE2 /* CapturingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */; };
+		CA637542208CBB2400536BE2 /* StubNavigationControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637541208CBB2400536BE2 /* StubNavigationControllerFactory.swift */; };
+		CA637544208CBB3A00536BE2 /* StubRootModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637543208CBB3A00536BE2 /* StubRootModuleFactory.swift */; };
+		CA637546208CBB4E00536BE2 /* StubTutorialModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637545208CBB4E00536BE2 /* StubTutorialModuleFactory.swift */; };
+		CA637548208CBB5D00536BE2 /* StubPreloadModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637547208CBB5D00536BE2 /* StubPreloadModuleFactory.swift */; };
+		CA63754A208CBB6C00536BE2 /* StubNewsModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637549208CBB6C00536BE2 /* StubNewsModuleFactory.swift */; };
+		CA63754C208CBB7800536BE2 /* StubMessagesModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63754B208CBB7800536BE2 /* StubMessagesModuleFactory.swift */; };
+		CA63754E208CBB8600536BE2 /* FakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63754D208CBB8600536BE2 /* FakeViewController.swift */; };
+		CA637550208CBBA000536BE2 /* StubTabModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63754F208CBBA000536BE2 /* StubTabModuleFactory.swift */; };
+		CA637552208CBBAE00536BE2 /* StubLoginModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637551208CBBAE00536BE2 /* StubLoginModuleFactory.swift */; };
+		CA637554208CBBC000536BE2 /* CapturingWindowWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637553208CBBBF00536BE2 /* CapturingWindowWireframe.swift */; };
+		CA637556208CBBCE00536BE2 /* StubMessageDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637555208CBBCE00536BE2 /* StubMessageDetailModuleProviding.swift */; };
+		CA637558208CBC1D00536BE2 /* StubKnowledgeListModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637557208CBC1D00536BE2 /* StubKnowledgeListModuleProviding.swift */; };
+		CA63755A208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637559208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift */; };
+		CA63755C208CBC3C00536BE2 /* StubLinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755B208CBC3C00536BE2 /* StubLinkRouter.swift */; };
+		CA63755E208CBC4E00536BE2 /* StubWebMobuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755D208CBC4E00536BE2 /* StubWebMobuleProviding.swift */; };
+		CA637560208CBC5F00536BE2 /* CapturingURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -896,6 +913,23 @@
 		CA60BFFF207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsSceneWillReappear_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA60C001207F7D2100697566 /* WhenNewsSceneWillAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsSceneWillAppear.swift; sourceTree = "<group>"; };
 		CA63753C208A6E4900536BE2 /* DefaultNewsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNewsInteractorTests.swift; sourceTree = "<group>"; };
+		CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNavigationController.swift; sourceTree = "<group>"; };
+		CA637541208CBB2400536BE2 /* StubNavigationControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNavigationControllerFactory.swift; sourceTree = "<group>"; };
+		CA637543208CBB3A00536BE2 /* StubRootModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubRootModuleFactory.swift; sourceTree = "<group>"; };
+		CA637545208CBB4E00536BE2 /* StubTutorialModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubTutorialModuleFactory.swift; sourceTree = "<group>"; };
+		CA637547208CBB5D00536BE2 /* StubPreloadModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubPreloadModuleFactory.swift; sourceTree = "<group>"; };
+		CA637549208CBB6C00536BE2 /* StubNewsModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubNewsModuleFactory.swift; sourceTree = "<group>"; };
+		CA63754B208CBB7800536BE2 /* StubMessagesModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubMessagesModuleFactory.swift; sourceTree = "<group>"; };
+		CA63754D208CBB8600536BE2 /* FakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeViewController.swift; sourceTree = "<group>"; };
+		CA63754F208CBBA000536BE2 /* StubTabModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubTabModuleFactory.swift; sourceTree = "<group>"; };
+		CA637551208CBBAE00536BE2 /* StubLoginModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubLoginModuleFactory.swift; sourceTree = "<group>"; };
+		CA637553208CBBBF00536BE2 /* CapturingWindowWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingWindowWireframe.swift; sourceTree = "<group>"; };
+		CA637555208CBBCE00536BE2 /* StubMessageDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubMessageDetailModuleProviding.swift; sourceTree = "<group>"; };
+		CA637557208CBC1D00536BE2 /* StubKnowledgeListModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeListModuleProviding.swift; sourceTree = "<group>"; };
+		CA637559208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeDetailModuleProviding.swift; sourceTree = "<group>"; };
+		CA63755B208CBC3C00536BE2 /* StubLinkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubLinkRouter.swift; sourceTree = "<group>"; };
+		CA63755D208CBC4E00536BE2 /* StubWebMobuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubWebMobuleProviding.swift; sourceTree = "<group>"; };
+		CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingURLOpener.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -2105,6 +2139,30 @@
 			path = "Interactor Tests";
 			sourceTree = "<group>";
 		};
+		CA63753E208CBAFF00536BE2 /* Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */,
+				CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */,
+				CA637553208CBBBF00536BE2 /* CapturingWindowWireframe.swift */,
+				CA63754D208CBB8600536BE2 /* FakeViewController.swift */,
+				CA637559208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift */,
+				CA637557208CBC1D00536BE2 /* StubKnowledgeListModuleProviding.swift */,
+				CA63755B208CBC3C00536BE2 /* StubLinkRouter.swift */,
+				CA637551208CBBAE00536BE2 /* StubLoginModuleFactory.swift */,
+				CA637555208CBBCE00536BE2 /* StubMessageDetailModuleProviding.swift */,
+				CA63754B208CBB7800536BE2 /* StubMessagesModuleFactory.swift */,
+				CA637541208CBB2400536BE2 /* StubNavigationControllerFactory.swift */,
+				CA637549208CBB6C00536BE2 /* StubNewsModuleFactory.swift */,
+				CA637547208CBB5D00536BE2 /* StubPreloadModuleFactory.swift */,
+				CA637543208CBB3A00536BE2 /* StubRootModuleFactory.swift */,
+				CA63754F208CBBA000536BE2 /* StubTabModuleFactory.swift */,
+				CA637545208CBB4E00536BE2 /* StubTutorialModuleFactory.swift */,
+				CA63755D208CBC4E00536BE2 /* StubWebMobuleProviding.swift */,
+			);
+			path = "Test Doubles";
+			sourceTree = "<group>";
+		};
 		CA6A9FEF1FD5DE0E0092C6DB /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2915,6 +2973,7 @@
 			isa = PBXGroup;
 			children = (
 				CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */,
+				CA63753E208CBAFF00536BE2 /* Test Doubles */,
 			);
 			path = Director;
 			sourceTree = "<group>";
@@ -3812,7 +3871,9 @@
 				CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */,
 				CAD7805D1F1E8EB0002A8333 /* KeychainCredentialStoreTests.swift in Sources */,
 				CA2D08101FE9511300BFD785 /* WhenThePushNotificationPermissionsPageAppearsWithUnreachableNetwork.swift in Sources */,
+				CA637544208CBB3A00536BE2 /* StubRootModuleFactory.swift in Sources */,
 				CABA43951FCE0A49009CB5B0 /* CapturingLoginScene.swift in Sources */,
+				CA63754C208CBB7800536BE2 /* StubMessagesModuleFactory.swift in Sources */,
 				CA0F762F2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift in Sources */,
 				CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */,
 				CA60BFFA207B8CD200697566 /* WhenAuthenticatedUserReceievesMessageBeforeNewsSceneAppears.swift in Sources */,
@@ -3827,6 +3888,7 @@
 				CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */,
 				CABF03B72041C2150028BD62 /* DefaultKnowledgeListInteractorTests.swift in Sources */,
 				7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */,
+				CA637560208CBC5F00536BE2 /* CapturingURLOpener.swift in Sources */,
 				78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */,
 				CABF03C32041C2FD0028BD62 /* KnowledgeEntry2.swift in Sources */,
 				CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */,
@@ -3851,6 +3913,7 @@
 				CA1ECB3F1FE333090076083A /* WhenInitialMessageLoadFails.swift in Sources */,
 				CAD234401F5D726C004BB959 /* WhenViewingMessagesWhileLoggedIn.swift in Sources */,
 				CA2B4FA61F1EA1B300F007E1 /* ApplicationTestBuilder.swift in Sources */,
+				CA637548208CBB5D00536BE2 /* StubPreloadModuleFactory.swift in Sources */,
 				CAF597A220458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift in Sources */,
 				CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */,
 				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,
@@ -3862,6 +3925,7 @@
 				CA17FE9020586A15005A4C05 /* StubWikiRenderer.swift in Sources */,
 				CA8276B0204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift in Sources */,
 				781A94381F1A19BD002DE70F /* CapturingFirebaseAdapter.swift in Sources */,
+				CA637550208CBBA000536BE2 /* StubTabModuleFactory.swift in Sources */,
 				CABF03C72041C3270028BD62 /* StubKnowledgeService.swift in Sources */,
 				CA30EABA1F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift in Sources */,
 				CA6AA0101FD73CFE0092C6DB /* PreloadViewControllerTests.swift in Sources */,
@@ -3876,12 +3940,14 @@
 				CA73AEF8201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift in Sources */,
 				CA60BFF8207B8C7000697566 /* WhenNewsSceneIsVisibleAndAuthenticatedUserReceievesMessage.swift in Sources */,
 				CA60BFEC207B893E00697566 /* WhenBuildingNewsPresenterForAuthenticatedUser.swift in Sources */,
+				CA637546208CBB4E00536BE2 /* StubTutorialModuleFactory.swift in Sources */,
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
 				CABF03C12041C2EC0028BD62 /* KnowledgeGroup2.swift in Sources */,
 				CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */,
 				7820A6FF1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift in Sources */,
 				CA73AEDB201A080F004E77BF /* StubKnowledgeListSceneFactory.swift in Sources */,
 				CA89CBC22085385900570D54 /* AnnouncementsViewModel.swift in Sources */,
+				CA637554208CBBC000536BE2 /* CapturingWindowWireframe.swift in Sources */,
 				CAD3BDC5205FE42A00C91E6E /* WhenLookingUpWebLinks.swift in Sources */,
 				CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */,
 				CA60BFF4207B8B7700697566 /* WhenUnauthenticatedUserLogsIn_NewsPresenterShould.swift in Sources */,
@@ -3891,12 +3957,14 @@
 				CA2D07F91FE9021A00BFD785 /* WhenResolvingDataStoreState.swift in Sources */,
 				CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */,
 				CA0F761D2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift in Sources */,
+				CA637558208CBC1D00536BE2 /* StubKnowledgeListModuleProviding.swift in Sources */,
 				CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */,
 				781A94481F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift in Sources */,
 				CA71A348204031F700C847C3 /* RandomValueProviding.swift in Sources */,
 				7820A6FD1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift in Sources */,
 				CA71A34C204032FC00C847C3 /* Integer+RandomValueProviding.swift in Sources */,
 				7820A7051F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift in Sources */,
+				CA63755E208CBC4E00536BE2 /* StubWebMobuleProviding.swift in Sources */,
 				CA8E7EF41FB08D3B00F0BF10 /* PhoneWindowWireframeTests.swift in Sources */,
 				7820A6DF1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift in Sources */,
 				CA30EAB61F26128A0053DBF6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift in Sources */,
@@ -3914,31 +3982,38 @@
 				CAD780491F1D51EB002A8333 /* StubClock.swift in Sources */,
 				CA1ECB451FE3A2880076083A /* WhenInitialMessageLoadCompletesWithMessages.swift in Sources */,
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
+				CA63755A208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift in Sources */,
 				78D7EEB51F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift in Sources */,
 				CA73AED8201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift in Sources */,
 				CAD68828208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift in Sources */,
+				CA63754A208CBB6C00536BE2 /* StubNewsModuleFactory.swift in Sources */,
 				CA2D08001FE94AF900BFD785 /* WhenTheAppLaunchesWithAbsentDataStore.swift in Sources */,
 				CA8276BC204F25DF006A7419 /* InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould.swift in Sources */,
 				CA63753D208A6E4900536BE2 /* DefaultNewsInteractorTests.swift in Sources */,
 				CAC1E1391F50431000195513 /* NewsPresenterTestBuilder.swift in Sources */,
 				78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */,
 				CAD6882C208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift in Sources */,
+				CA637552208CBBAE00536BE2 /* StubLoginModuleFactory.swift in Sources */,
 				CAF9A94C1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift in Sources */,
 				CA2D080C1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift in Sources */,
 				CAD68830208A144800B31F5F /* WhenBindingUserWithNoUnreadMessages_NewsPresenterShould.swift in Sources */,
 				7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */,
 				CA89CBBE208531FB00570D54 /* AnnouncementComponentViewModel+RandomValueProviding.swift in Sources */,
 				CA6EC4822051CBE600402894 /* CapturingKnowledgeDetailScene.swift in Sources */,
+				CA63754E208CBB8600536BE2 /* FakeViewController.swift in Sources */,
 				78FE77D71F1B9FA500E9A0BE /* URLSessionBasedJSONSessionTests.swift in Sources */,
 				CA17FE732056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift in Sources */,
 				CA0F7621203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift in Sources */,
 				7820A6ED1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift in Sources */,
 				CA89CBA6207F7F5400570D54 /* FakeNewsInteractor.swift in Sources */,
 				CAF9A93F1F50491200628833 /* EurofurenceAuthServiceTests.swift in Sources */,
+				CA637556208CBBCE00536BE2 /* StubMessageDetailModuleProviding.swift in Sources */,
 				CA73AEDD201A0823004E77BF /* CapturingKnowledgeListScene.swift in Sources */,
 				CA60C002207F7D2100697566 /* WhenNewsSceneWillAppear.swift in Sources */,
+				CA63755C208CBC3C00536BE2 /* StubLinkRouter.swift in Sources */,
 				CABF03CC204220460028BD62 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift in Sources */,
 				CA2547C11FEB1B2A0023F2CB /* WhenRefreshingMessages.swift in Sources */,
+				CA637540208CBB0E00536BE2 /* CapturingNavigationController.swift in Sources */,
 				CA89CBB42080031000570D54 /* CapturingNewsComponentHeaderScene.swift in Sources */,
 				CA9AC16B208546530039C0C2 /* WhenBindingEvent_NewsPresenterShould.swift in Sources */,
 				CAD3BDCD20613A2800C91E6E /* WhenLookingUpMailToLinks.swift in Sources */,
@@ -3950,6 +4025,7 @@
 				CAF9A9451F50B89000628833 /* CapturingEurofurenceApplication.swift in Sources */,
 				78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */,
 				CAD3BDB12058719300C91E6E /* Link+RandomValueProviding.swift in Sources */,
+				CA637542208CBB2400536BE2 /* StubNavigationControllerFactory.swift in Sources */,
 				CA81D4901FE9A91000A52A2F /* WhenTheTutorialAppears.swift in Sources */,
 				CABA43891FBCD94E009CB5B0 /* LoginPresenterTests.swift in Sources */,
 				CA2D08121FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift in Sources */,
