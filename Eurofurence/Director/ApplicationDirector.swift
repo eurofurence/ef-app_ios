@@ -35,6 +35,7 @@ class ApplicationDirector: RootModuleDelegate,
     private let preloadModuleProviding: PreloadModuleProviding
     private let tabModuleProviding: TabModuleProviding
     private let newsModuleProviding: NewsModuleProviding
+    private let eventsModuleProviding: EventsModuleProviding
     private let messagesModuleProviding: MessagesModuleProviding
     private let loginModuleProviding: LoginModuleProviding
     private let messageDetailModuleProviding: MessageDetailModuleProviding
@@ -60,6 +61,7 @@ class ApplicationDirector: RootModuleDelegate,
          preloadModuleProviding: PreloadModuleProviding,
          tabModuleProviding: TabModuleProviding,
          newsModuleProviding: NewsModuleProviding,
+         eventsModuleProviding: EventsModuleProviding,
          messagesModuleProviding: MessagesModuleProviding,
          loginModuleProviding: LoginModuleProviding,
          messageDetailModuleProviding: MessageDetailModuleProviding,
@@ -75,6 +77,7 @@ class ApplicationDirector: RootModuleDelegate,
         self.preloadModuleProviding = preloadModuleProviding
         self.tabModuleProviding = tabModuleProviding
         self.newsModuleProviding = newsModuleProviding
+        self.eventsModuleProviding = eventsModuleProviding
         self.messagesModuleProviding = messagesModuleProviding
         self.loginModuleProviding = loginModuleProviding
         self.messageDetailModuleProviding = messageDetailModuleProviding
@@ -129,7 +132,13 @@ class ApplicationDirector: RootModuleDelegate,
         newsNavigationController.setViewControllers([newsController], animated: animate)
         newsNavigationController.tabBarItem = newsController.tabBarItem
 
-        let tabModule = tabModuleProviding.makeTabModule([newsNavigationController, knowledgeNavigationController])
+        let eventsViewController = eventsModuleProviding.makeEventsModule()
+        let eventsNavigationController = UINavigationController(rootViewController: eventsViewController)
+        eventsNavigationController.tabBarItem = eventsViewController.tabBarItem
+
+        let tabModule = tabModuleProviding.makeTabModule([newsNavigationController,
+                                                          eventsNavigationController,
+                                                          knowledgeNavigationController])
         tabController = tabModule
 
         rootNavigationController.setViewControllers([tabModule], animated: animate)

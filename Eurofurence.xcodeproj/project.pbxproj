@@ -335,6 +335,10 @@
 		CA63757A208CDB7B00536BE2 /* Message+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637579208CDB7B00536BE2 /* Message+RandomValueProviding.swift */; };
 		CA63757C208CDBAA00536BE2 /* Date+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63757B208CDBAA00536BE2 /* Date+RandomValueProviding.swift */; };
 		CA63757E208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63757D208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift */; };
+		CA637582208CDE2000536BE2 /* EventsModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637581208CDE2000536BE2 /* EventsModuleProviding.swift */; };
+		CA637584208CDE3F00536BE2 /* EventsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637583208CDE3F00536BE2 /* EventsModuleBuilder.swift */; };
+		CA637586208CDE5D00536BE2 /* EventsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637585208CDE5D00536BE2 /* EventsModule.swift */; };
+		CA637588208CDE9000536BE2 /* StubEventsModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637587208CDE9000536BE2 /* StubEventsModuleProviding.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -960,6 +964,10 @@
 		CA637579208CDB7B00536BE2 /* Message+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA63757B208CDBAA00536BE2 /* Date+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA63757D208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUserSelectsKnowledgeEntry_DirectorShould.swift; sourceTree = "<group>"; };
+		CA637581208CDE2000536BE2 /* EventsModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModuleProviding.swift; sourceTree = "<group>"; };
+		CA637583208CDE3F00536BE2 /* EventsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModuleBuilder.swift; sourceTree = "<group>"; };
+		CA637585208CDE5D00536BE2 /* EventsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModule.swift; sourceTree = "<group>"; };
+		CA637587208CDE9000536BE2 /* StubEventsModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubEventsModuleProviding.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -1357,6 +1365,7 @@
 				CAEAEBF21FDEB53800C0EE7C /* Message Detail */,
 				CAD234381F5D71D9004BB959 /* Messages */,
 				CAC1E1251F50409800195513 /* News */,
+				CA63757F208CDE1000536BE2 /* Events */,
 				CA321F4F1F7BC8490050E489 /* Preload */,
 				CAF705621F82D0D400A9FEA2 /* Root */,
 				CAE27B4A1F855E05005FDE39 /* Tab */,
@@ -2176,6 +2185,7 @@
 				CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */,
 				CA637553208CBBBF00536BE2 /* CapturingWindowWireframe.swift */,
 				CA63754D208CBB8600536BE2 /* FakeViewController.swift */,
+				CA637587208CDE9000536BE2 /* StubEventsModuleProviding.swift */,
 				CA637559208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift */,
 				CA637557208CBC1D00536BE2 /* StubKnowledgeListModuleProviding.swift */,
 				CA63755B208CBC3C00536BE2 /* StubLinkRouter.swift */,
@@ -2191,6 +2201,24 @@
 				CA63755D208CBC4E00536BE2 /* StubWebMobuleProviding.swift */,
 			);
 			path = "Test Doubles";
+			sourceTree = "<group>";
+		};
+		CA63757F208CDE1000536BE2 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				CA637580208CDE1A00536BE2 /* Module */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		CA637580208CDE1A00536BE2 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				CA637581208CDE2000536BE2 /* EventsModuleProviding.swift */,
+				CA637583208CDE3F00536BE2 /* EventsModuleBuilder.swift */,
+				CA637585208CDE5D00536BE2 /* EventsModule.swift */,
+			);
+			path = Module;
 			sourceTree = "<group>";
 		};
 		CA6A9FEF1FD5DE0E0092C6DB /* View */ = {
@@ -3578,6 +3606,7 @@
 				9ACF99911EC858B2006FC958 /* Image.swift in Sources */,
 				9A861EB01F2554F900B75A8C /* TutorialPresentationContext.swift in Sources */,
 				CAD780431F1D4CA3002A8333 /* Credential.swift in Sources */,
+				CA637582208CDE2000536BE2 /* EventsModuleProviding.swift in Sources */,
 				9ACF99931EC858B2006FC958 /* Dealer.swift in Sources */,
 				CAEAEC011FE0054500C0EE7C /* MessageDetailModuleFactory.swift in Sources */,
 				CA9845DE1F2B01BA00E8821D /* UnreadMessageIndicator.swift in Sources */,
@@ -3856,6 +3885,7 @@
 				D6F3D204D352FE26C3F90906 /* KnowledgeTableViewController.swift in Sources */,
 				CA2D07FB1FE902ED00BFD785 /* EurofurenceDataStore.swift in Sources */,
 				CABA438D1FBCDBDF009CB5B0 /* LoginPresenter.swift in Sources */,
+				CA637586208CDE5D00536BE2 /* EventsModule.swift in Sources */,
 				CA9845DA1F29199E00E8821D /* ScreenshotAssistant.swift in Sources */,
 				7820A6F81F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift in Sources */,
 				CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */,
@@ -3877,6 +3907,7 @@
 				CA30EAAE1F2148780053DBF6 /* User.swift in Sources */,
 				CA8E7EF61FB08E2500F0BF10 /* PhoneWindowWireframe.swift in Sources */,
 				9A861ED51F25564900B75A8C /* StoryboardTutorialRouter.swift in Sources */,
+				CA637584208CDE3F00536BE2 /* EventsModuleBuilder.swift in Sources */,
 				CA0F761F203229CF009DA079 /* KnowledgeBaseViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3942,6 +3973,7 @@
 				CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */,
 				CA17FE8E205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift in Sources */,
 				CABA43931FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift in Sources */,
+				CA637588208CDE9000536BE2 /* StubEventsModuleProviding.swift in Sources */,
 				78C86D6C1F123FD8003A20E6 /* PresentationTestBuilder.swift in Sources */,
 				CA30EABC1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift in Sources */,
 				CAF9A94E1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift in Sources */,

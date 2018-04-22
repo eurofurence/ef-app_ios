@@ -20,7 +20,9 @@ class WhenShowingTabModule_DirectorShould: XCTestCase {
     }
     
     private func makeExpectedTabViewControllerRoots() -> [UIViewController] {
-        return [context.newsModule.stubInterface, context.knowledgeListModule.stubInterface]
+        return [context.newsModule.stubInterface,
+                context.eventsModule.stubInterface,
+                context.knowledgeListModule.stubInterface]
     }
     
     private func rootNavigationTabControllers() -> [UINavigationController] {
