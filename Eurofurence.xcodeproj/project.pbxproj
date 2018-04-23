@@ -348,6 +348,9 @@
 		CA63759C208DFDF900536BE2 /* Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA63759B208DFDF900536BE2 /* Events.storyboard */; };
 		CA63759E208DFE0500536BE2 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63759D208DFE0500536BE2 /* EventsViewController.swift */; };
 		CA6375A0208DFE2E00536BE2 /* StoryboardEventsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63759F208DFE2E00536BE2 /* StoryboardEventsSceneFactory.swift */; };
+		CA6375A2208E005E00536BE2 /* StubDealersModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6375A1208E005E00536BE2 /* StubDealersModuleFactory.swift */; };
+		CA6375A6208E009D00536BE2 /* DealersModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6375A5208E009D00536BE2 /* DealersModuleProviding.swift */; };
+		CA6375A8208E011C00536BE2 /* DealersModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6375A7208E011C00536BE2 /* DealersModuleBuilder.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -986,6 +989,9 @@
 		CA63759B208DFDF900536BE2 /* Events.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Events.storyboard; sourceTree = "<group>"; };
 		CA63759D208DFE0500536BE2 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		CA63759F208DFE2E00536BE2 /* StoryboardEventsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardEventsSceneFactory.swift; sourceTree = "<group>"; };
+		CA6375A1208E005E00536BE2 /* StubDealersModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDealersModuleFactory.swift; sourceTree = "<group>"; };
+		CA6375A5208E009D00536BE2 /* DealersModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersModuleProviding.swift; sourceTree = "<group>"; };
+		CA6375A7208E011C00536BE2 /* DealersModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersModuleBuilder.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -1375,6 +1381,7 @@
 		6EF96CE01F12688700EE6134 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CA6375A3208E008A00536BE2 /* Dealers */,
 				CAD3BDC0205AA7B800C91E6E /* Web */,
 				6EF96CE81F126B0400EE6134 /* Bootstrap */,
 				CA6EC46E2051655600402894 /* Knowledge Detail */,
@@ -2204,6 +2211,7 @@
 				CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */,
 				CA637553208CBBBF00536BE2 /* CapturingWindowWireframe.swift */,
 				CA63754D208CBB8600536BE2 /* FakeViewController.swift */,
+				CA6375A1208E005E00536BE2 /* StubDealersModuleFactory.swift */,
 				CA637587208CDE9000536BE2 /* StubEventsModuleProviding.swift */,
 				CA637559208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift */,
 				CA637557208CBC1D00536BE2 /* StubKnowledgeListModuleProviding.swift */,
@@ -2294,6 +2302,23 @@
 				CA63759F208DFE2E00536BE2 /* StoryboardEventsSceneFactory.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		CA6375A3208E008A00536BE2 /* Dealers */ = {
+			isa = PBXGroup;
+			children = (
+				CA6375A4208E008F00536BE2 /* Module */,
+			);
+			path = Dealers;
+			sourceTree = "<group>";
+		};
+		CA6375A4208E008F00536BE2 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				CA6375A5208E009D00536BE2 /* DealersModuleProviding.swift */,
+				CA6375A7208E011C00536BE2 /* DealersModuleBuilder.swift */,
+			);
+			path = Module;
 			sourceTree = "<group>";
 		};
 		CA6A9FEF1FD5DE0E0092C6DB /* View */ = {
@@ -3849,6 +3874,7 @@
 				CA8E17ED1F817A70003C348C /* PreloadService.swift in Sources */,
 				D6F3DD6B0659E1A44E01075B /* CurrentEventsViewModel.swift in Sources */,
 				781A943C1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift in Sources */,
+				CA6375A6208E009D00536BE2 /* DealersModuleProviding.swift in Sources */,
 				9A861ED61F25564900B75A8C /* StoryboardSplashScreenRouter.swift in Sources */,
 				CA6EC4712051656C00402894 /* KnowledgeDetailModuleProviding.swift in Sources */,
 				CAD3BDB92059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift in Sources */,
@@ -3965,6 +3991,7 @@
 				D6F3D204D352FE26C3F90906 /* KnowledgeTableViewController.swift in Sources */,
 				CA2D07FB1FE902ED00BFD785 /* EurofurenceDataStore.swift in Sources */,
 				CABA438D1FBCDBDF009CB5B0 /* LoginPresenter.swift in Sources */,
+				CA6375A8208E011C00536BE2 /* DealersModuleBuilder.swift in Sources */,
 				CA637586208CDE5D00536BE2 /* EventsModule.swift in Sources */,
 				CA9845DA1F29199E00E8821D /* ScreenshotAssistant.swift in Sources */,
 				7820A6F81F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift in Sources */,
@@ -4189,6 +4216,7 @@
 				CAF5979F2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift in Sources */,
 				CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */,
 				CA60BFF2207B8B1700697566 /* WhenAuthenticatedUserLogsOut_NewsPresenterShould.swift in Sources */,
+				CA6375A2208E005E00536BE2 /* StubDealersModuleFactory.swift in Sources */,
 				CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */,
 				CA73AEDF201A0833004E77BF /* CapturingKnowledgeInteractor.swift in Sources */,
 				CA637562208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift in Sources */,

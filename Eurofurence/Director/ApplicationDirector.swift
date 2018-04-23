@@ -36,6 +36,7 @@ class ApplicationDirector: RootModuleDelegate,
     private let tabModuleProviding: TabModuleProviding
     private let newsModuleProviding: NewsModuleProviding
     private let eventsModuleProviding: EventsModuleProviding
+    private let dealersModuleProviding: DealersModuleProviding
     private let messagesModuleProviding: MessagesModuleProviding
     private let loginModuleProviding: LoginModuleProviding
     private let messageDetailModuleProviding: MessageDetailModuleProviding
@@ -62,6 +63,7 @@ class ApplicationDirector: RootModuleDelegate,
          tabModuleProviding: TabModuleProviding,
          newsModuleProviding: NewsModuleProviding,
          eventsModuleProviding: EventsModuleProviding,
+         dealersModuleProviding: DealersModuleProviding,
          messagesModuleProviding: MessagesModuleProviding,
          loginModuleProviding: LoginModuleProviding,
          messageDetailModuleProviding: MessageDetailModuleProviding,
@@ -78,6 +80,7 @@ class ApplicationDirector: RootModuleDelegate,
         self.tabModuleProviding = tabModuleProviding
         self.newsModuleProviding = newsModuleProviding
         self.eventsModuleProviding = eventsModuleProviding
+        self.dealersModuleProviding = dealersModuleProviding
         self.messagesModuleProviding = messagesModuleProviding
         self.loginModuleProviding = loginModuleProviding
         self.messageDetailModuleProviding = messageDetailModuleProviding
@@ -136,8 +139,13 @@ class ApplicationDirector: RootModuleDelegate,
         let eventsNavigationController = UINavigationController(rootViewController: eventsViewController)
         eventsNavigationController.tabBarItem = eventsViewController.tabBarItem
 
+        let dealersViewController = dealersModuleProviding.makeDealersModule()
+        let dealersNavigationController = UINavigationController(rootViewController: dealersViewController)
+        dealersNavigationController.tabBarItem = dealersViewController.tabBarItem
+
         let tabModule = tabModuleProviding.makeTabModule([newsNavigationController,
                                                           eventsNavigationController,
+                                                          dealersNavigationController,
                                                           knowledgeNavigationController])
         tabController = tabModule
 

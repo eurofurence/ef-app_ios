@@ -20,6 +20,7 @@ class ApplicationDirectorTestBuilder {
         var tabModule: StubTabModuleFactory
         var newsModule: StubNewsModuleFactory
         var eventsModule: StubEventsModuleFactory
+        var dealersModule: StubDealersModuleFactory
         var messages: StubMessagesModuleFactory
         var loginModule: StubLoginModuleFactory
         var windowWireframe: CapturingWindowWireframe
@@ -39,6 +40,7 @@ class ApplicationDirectorTestBuilder {
     private let tabModule: StubTabModuleFactory
     private let newsModule: StubNewsModuleFactory
     private let eventsModule: StubEventsModuleFactory
+    private let dealersModule: StubDealersModuleFactory
     private let messagesModule: StubMessagesModuleFactory
     private let loginModule: StubLoginModuleFactory
     private let windowWireframe: CapturingWindowWireframe
@@ -57,6 +59,7 @@ class ApplicationDirectorTestBuilder {
         tabModule = StubTabModuleFactory()
         newsModule = StubNewsModuleFactory()
         eventsModule = StubEventsModuleFactory()
+        dealersModule = StubDealersModuleFactory()
         messagesModule = StubMessagesModuleFactory()
         loginModule = StubLoginModuleFactory()
         messageDetailModule = StubMessageDetailModuleProviding()
@@ -76,6 +79,7 @@ class ApplicationDirectorTestBuilder {
         builder.with(tabModule)
         builder.with(newsModule)
         builder.with(eventsModule)
+        builder.with(dealersModule)
         builder.with(messagesModule)
         builder.with(loginModule)
         builder.with(messageDetailModule)
@@ -96,6 +100,7 @@ class ApplicationDirectorTestBuilder {
                        tabModule: tabModule,
                        newsModule: newsModule,
                        eventsModule: eventsModule,
+                       dealersModule: dealersModule,
                        messages: messagesModule,
                        loginModule: loginModule,
                        windowWireframe: windowWireframe,

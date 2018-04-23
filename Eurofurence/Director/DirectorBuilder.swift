@@ -21,6 +21,7 @@ class DirectorBuilder {
     private var tabModuleProviding: TabModuleProviding
     private var newsModuleProviding: NewsModuleProviding
     private var eventsModuleProviding: EventsModuleProviding
+    private var dealersModuleProviding: DealersModuleProviding
     private var messagesModuleProviding: MessagesModuleProviding
     private var loginModuleProviding: LoginModuleProviding
     private var messageDetailModuleProviding: MessageDetailModuleProviding
@@ -39,6 +40,7 @@ class DirectorBuilder {
         preloadModuleProviding = PreloadModuleBuilder().build()
         newsModuleProviding = NewsModuleBuilder().build()
         eventsModuleProviding = EventsModuleBuilder().build()
+        dealersModuleProviding = DealersModuleBuilder().build()
         messagesModuleProviding = MessagesModuleBuilder().build()
         loginModuleProviding = LoginModuleBuilder().build()
         messageDetailModuleProviding = MessageDetailModuleBuilder().build()
@@ -111,6 +113,12 @@ class DirectorBuilder {
     }
 
     @discardableResult
+    func with(_ dealersModuleProviding: DealersModuleProviding) -> DirectorBuilder {
+        self.dealersModuleProviding = dealersModuleProviding
+        return self
+    }
+
+    @discardableResult
     func with(_ messagesModuleProviding: MessagesModuleProviding) -> DirectorBuilder {
         self.messagesModuleProviding = messagesModuleProviding
         return self
@@ -165,6 +173,7 @@ class DirectorBuilder {
                                    tabModuleProviding: tabModuleProviding,
                                    newsModuleProviding: newsModuleProviding,
                                    eventsModuleProviding: eventsModuleProviding,
+                                   dealersModuleProviding: dealersModuleProviding,
                                    messagesModuleProviding: messagesModuleProviding,
                                    loginModuleProviding: loginModuleProviding,
                                    messageDetailModuleProviding: messageDetailModuleProviding,
