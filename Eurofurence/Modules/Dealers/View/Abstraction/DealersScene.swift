@@ -8,4 +8,6 @@
 
 protocol DealersScene {
 
+    func setDealersTitle(_ title: String)
+
 }

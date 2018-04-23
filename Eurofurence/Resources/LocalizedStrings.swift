@@ -93,6 +93,9 @@ public extension String {
     public static let events = NSLocalizedString("Events",
                                                  comment: "Title for the view that shows all the events during the convention")
 
+    public static let dealers = NSLocalizedString("Dealers",
+                                                  comment: "Title for the view that shows the dealers listed in the dealers den during the convention")
+
     public static let conventionInformation = NSLocalizedString("ConventionInformation",
                                                                 comment: "Title for the view showing all the categorised convention information")
 

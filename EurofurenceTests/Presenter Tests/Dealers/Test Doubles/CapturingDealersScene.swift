@@ -11,4 +11,9 @@ import UIKit.UIViewController
 
 class CapturingDealersScene: UIViewController, DealersScene {
     
+    private(set) var capturedTitle: String?
+    func setDealersTitle(_ title: String) {
+        capturedTitle = title
+    }
+    
 }

@@ -10,4 +10,10 @@ import UIKit
 
 class DealersViewController: UIViewController, DealersScene {
 
+    // MARK: DealersScene
+
+    func setDealersTitle(_ title: String) {
+        super.title = title
+    }
+
 }

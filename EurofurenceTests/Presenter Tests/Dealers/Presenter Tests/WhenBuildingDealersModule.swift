@@ -16,4 +16,9 @@ class WhenBuildingDealersModule: XCTestCase {
         XCTAssertTrue(context.scene === context.producedViewController)
     }
     
+    func testTheSceneIsToldToShowTheDealersTitle() {
+        let context = DealersPresenterTestBuilder().build()
+        XCTAssertEqual(.dealers, context.scene.capturedTitle)
+    }
+    
 }

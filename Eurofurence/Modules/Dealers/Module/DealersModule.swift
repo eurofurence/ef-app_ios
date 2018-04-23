@@ -13,7 +13,10 @@ struct DealersModule: DealersModuleProviding {
     var dealersSceneFactory: DealersSceneFactory
 
     func makeDealersModule() -> UIViewController {
-        return dealersSceneFactory.makeDealersScene()
+        let scene = dealersSceneFactory.makeDealersScene()
+        scene.setDealersTitle(.dealers)
+
+        return scene
     }
 
 }
