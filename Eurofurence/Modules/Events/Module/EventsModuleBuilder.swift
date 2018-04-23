@@ -7,11 +7,34 @@
 //
 
 import Foundation
+import UIKit.UIViewController
 
 class EventsModuleBuilder {
 
+    private var eventsSceneFactory: EventsSceneFactory
+
+    init() {
+        struct DummyEventsSceneFactory: EventsSceneFactory {
+            func makeEventsScene() -> UIViewController & EventsScene {
+                class DummyEventsScene: UIViewController, EventsScene {
+
+                }
+
+                return DummyEventsScene()
+            }
+        }
+
+        eventsSceneFactory = DummyEventsSceneFactory()
+    }
+
+    @discardableResult
+    func with(_ eventsSceneFactory: EventsSceneFactory) -> EventsModuleBuilder {
+        self.eventsSceneFactory = eventsSceneFactory
+        return self
+    }
+
     func build() -> EventsModuleProviding {
-        return EventsModule()
+        return EventsModule(eventsSceneFactory: eventsSceneFactory)
     }
 
 }
