@@ -16,4 +16,9 @@ class WhenBuildingEventsModule: XCTestCase {
         XCTAssertTrue(context.scene === context.producedViewController)
     }
     
+    func testTheSceneIsToldToShowTheEventsTitle() {
+        let context = EventsPresenterTestBuilder().build()
+        XCTAssertEqual(.events, context.scene.capturedTitle)
+    }
+    
 }

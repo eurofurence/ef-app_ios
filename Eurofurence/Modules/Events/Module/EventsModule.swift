@@ -13,7 +13,10 @@ struct EventsModule: EventsModuleProviding {
     var eventsSceneFactory: EventsSceneFactory
 
     func makeEventsModule() -> UIViewController {
-        return eventsSceneFactory.makeEventsScene()
+        let scene = eventsSceneFactory.makeEventsScene()
+        scene.setEventsTitle(.events)
+
+        return scene
     }
 
 }

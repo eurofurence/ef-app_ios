@@ -10,4 +10,10 @@ import UIKit
 
 class EventsViewController: UIViewController, EventsScene {
 
+    // MARK: EventsScene
+
+    func setEventsTitle(_ title: String) {
+        super.title = title
+    }
+
 }

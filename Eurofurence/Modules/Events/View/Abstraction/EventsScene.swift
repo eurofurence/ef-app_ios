@@ -8,4 +8,6 @@
 
 protocol EventsScene {
 
+    func setEventsTitle(_ title: String)
+
 }

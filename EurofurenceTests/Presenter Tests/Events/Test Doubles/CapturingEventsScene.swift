@@ -11,4 +11,9 @@ import UIKit.UIViewController
 
 class CapturingEventsScene: UIViewController, EventsScene {
     
+    private(set) var capturedTitle: String?
+    func setEventsTitle(_ title: String) {
+        capturedTitle = title
+    }
+    
 }
