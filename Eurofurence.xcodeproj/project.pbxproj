@@ -345,6 +345,9 @@
 		CA637595208DFD3700536BE2 /* CapturingEventsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637594208DFD3700536BE2 /* CapturingEventsScene.swift */; };
 		CA637597208DFD4B00536BE2 /* StubEventsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637596208DFD4B00536BE2 /* StubEventsSceneFactory.swift */; };
 		CA637599208DFD5F00536BE2 /* EventsPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637598208DFD5F00536BE2 /* EventsPresenterTestBuilder.swift */; };
+		CA63759C208DFDF900536BE2 /* Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA63759B208DFDF900536BE2 /* Events.storyboard */; };
+		CA63759E208DFE0500536BE2 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63759D208DFE0500536BE2 /* EventsViewController.swift */; };
+		CA6375A0208DFE2E00536BE2 /* StoryboardEventsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63759F208DFE2E00536BE2 /* StoryboardEventsSceneFactory.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -980,6 +983,9 @@
 		CA637594208DFD3700536BE2 /* CapturingEventsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventsScene.swift; sourceTree = "<group>"; };
 		CA637596208DFD4B00536BE2 /* StubEventsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubEventsSceneFactory.swift; sourceTree = "<group>"; };
 		CA637598208DFD5F00536BE2 /* EventsPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsPresenterTestBuilder.swift; sourceTree = "<group>"; };
+		CA63759B208DFDF900536BE2 /* Events.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Events.storyboard; sourceTree = "<group>"; };
+		CA63759D208DFE0500536BE2 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		CA63759F208DFE2E00536BE2 /* StoryboardEventsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardEventsSceneFactory.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -2257,6 +2263,7 @@
 			isa = PBXGroup;
 			children = (
 				CA63758E208CE4DB00536BE2 /* Abstraction */,
+				CA63759A208DFDE500536BE2 /* UIKit */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2277,6 +2284,16 @@
 				CA637596208DFD4B00536BE2 /* StubEventsSceneFactory.swift */,
 			);
 			path = "Test Doubles";
+			sourceTree = "<group>";
+		};
+		CA63759A208DFDE500536BE2 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				CA63759B208DFDF900536BE2 /* Events.storyboard */,
+				CA63759D208DFE0500536BE2 /* EventsViewController.swift */,
+				CA63759F208DFE2E00536BE2 /* StoryboardEventsSceneFactory.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		CA6A9FEF1FD5DE0E0092C6DB /* View */ = {
@@ -3410,6 +3427,7 @@
 				9A8ECA201F2BB46000351A83 /* j2_generic.caf in Resources */,
 				9A8ECA2D1F2D0A2000351A83 /* none.caf in Resources */,
 				9A8ECA211F2BB46000351A83 /* j2_themed.caf in Resources */,
+				CA63759C208DFDF900536BE2 /* Events.storyboard in Resources */,
 				CA6AA0081FD731640092C6DB /* Preload.storyboard in Resources */,
 				9AB64BCF1F0272A5004E8D91 /* fontawesome-webfont.ttf in Resources */,
 				CA6AA0181FD8834D0092C6DB /* News.storyboard in Resources */,
@@ -3658,6 +3676,7 @@
 				9AB64BC91EFE6592004E8D91 /* EventsViewModel.swift in Sources */,
 				CA1FE9991FA0B3AE009C7DF3 /* ApplicationDirector.swift in Sources */,
 				9A80EF551F291A5500FD0D37 /* UserDetailsNewsPreferences.swift in Sources */,
+				CA6375A0208DFE2E00536BE2 /* StoryboardEventsSceneFactory.swift in Sources */,
 				9A0F87E71F1BADD200FF294B /* KeyedLocalNotificationStore.swift in Sources */,
 				9ACF99961EC858B2006FC958 /* EventConferenceTrack.swift in Sources */,
 				CA8D97D5201613010074838F /* RemoteNotificationRegistrationController.swift in Sources */,
@@ -3743,6 +3762,7 @@
 				CAD3BDB3205874AF00C91E6E /* APILink.swift in Sources */,
 				9A0525411ECA2AF500578798 /* Sync.swift in Sources */,
 				9A34B9811ED06956004A249E /* ViewModelResolver.swift in Sources */,
+				CA63759E208DFE0500536BE2 /* EventsViewController.swift in Sources */,
 				CAEAEBEF1FDC989300C0EE7C /* LoginServiceRequest.swift in Sources */,
 				CA89CBA9207F7F9A00570D54 /* NewsViewModel.swift in Sources */,
 				9A861EB61F25550700B75A8C /* TutorialPageScene.swift in Sources */,

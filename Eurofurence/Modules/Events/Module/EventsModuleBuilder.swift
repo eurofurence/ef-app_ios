@@ -14,17 +14,7 @@ class EventsModuleBuilder {
     private var eventsSceneFactory: EventsSceneFactory
 
     init() {
-        struct DummyEventsSceneFactory: EventsSceneFactory {
-            func makeEventsScene() -> UIViewController & EventsScene {
-                class DummyEventsScene: UIViewController, EventsScene {
-
-                }
-
-                return DummyEventsScene()
-            }
-        }
-
-        eventsSceneFactory = DummyEventsSceneFactory()
+        eventsSceneFactory = StoryboardEventsSceneFactory()
     }
 
     @discardableResult
