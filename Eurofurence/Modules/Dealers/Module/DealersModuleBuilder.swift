@@ -10,14 +10,30 @@ import UIKit.UIViewController
 
 class DealersModuleBuilder {
 
-    struct DummyModule: DealersModuleProviding {
-        func makeDealersModule() -> UIViewController {
-            return UIViewController()
+    private var dealersSceneFactory: DealersSceneFactory
+
+    init() {
+        struct DummyDealersSceneFactory: DealersSceneFactory {
+            func makeDealersScene() -> UIViewController & DealersScene {
+                class DummyDealersScene: UIViewController, DealersScene {
+
+                }
+
+                return DummyDealersScene()
+            }
         }
+
+        dealersSceneFactory = DummyDealersSceneFactory()
+    }
+
+    @discardableResult
+    func with(_ dealersSceneFactory: DealersSceneFactory) -> DealersModuleBuilder {
+        self.dealersSceneFactory = dealersSceneFactory
+        return self
     }
 
     func build() -> DealersModuleProviding {
-        return DummyModule()
+        return DealersModule(dealersSceneFactory: dealersSceneFactory)
     }
 
 }
