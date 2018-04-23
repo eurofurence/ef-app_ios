@@ -13,17 +13,7 @@ class DealersModuleBuilder {
     private var dealersSceneFactory: DealersSceneFactory
 
     init() {
-        struct DummyDealersSceneFactory: DealersSceneFactory {
-            func makeDealersScene() -> UIViewController & DealersScene {
-                class DummyDealersScene: UIViewController, DealersScene {
-
-                }
-
-                return DummyDealersScene()
-            }
-        }
-
-        dealersSceneFactory = DummyDealersSceneFactory()
+        dealersSceneFactory = StoryboardDealersSceneFactory()
     }
 
     @discardableResult

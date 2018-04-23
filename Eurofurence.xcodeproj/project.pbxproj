@@ -204,6 +204,9 @@
 		A034379A14212C5E996E6321 /* Pods_Eurofurence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */; };
 		CA057A5B2088BDBB00504FA4 /* NewsAnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */; };
 		CA057A5D2088BDC900504FA4 /* NewsEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5C2088BDC900504FA4 /* NewsEventTableViewCell.swift */; };
+		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
+		CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5206208E700E005259FE /* DealersViewController.swift */; };
+		CA0E5209208E7020005259FE /* Dealers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0E5208208E7020005259FE /* Dealers.storyboard */; };
 		CA0F761D2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F761C2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift */; };
 		CA0F761F203229CF009DA079 /* KnowledgeBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F761E203229CF009DA079 /* KnowledgeBaseViewModel.swift */; };
 		CA0F7621203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F7620203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift */; };
@@ -852,6 +855,9 @@
 		B4939A463603D9F022E19825 /* Pods-EurofurenceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsAnnouncementTableViewCell.swift; sourceTree = "<group>"; };
 		CA057A5C2088BDC900504FA4 /* NewsEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsEventTableViewCell.swift; sourceTree = "<group>"; };
+		CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardDealersSceneFactory.swift; sourceTree = "<group>"; };
+		CA0E5206208E700E005259FE /* DealersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersViewController.swift; sourceTree = "<group>"; };
+		CA0E5208208E7020005259FE /* Dealers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dealers.storyboard; sourceTree = "<group>"; };
 		CA0F761C2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeListViewModelIsPrepared.swift; sourceTree = "<group>"; };
 		CA0F761E203229CF009DA079 /* KnowledgeBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeBaseViewModel.swift; sourceTree = "<group>"; };
 		CA0F7620203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KnowledgeListViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -2029,6 +2035,16 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		CA0E5203208E6FCA005259FE /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				CA0E5208208E7020005259FE /* Dealers.storyboard */,
+				CA0E5206208E700E005259FE /* DealersViewController.swift */,
+				CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
 		CA0F7630203314E5009DA079 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -2360,6 +2376,7 @@
 			isa = PBXGroup;
 			children = (
 				CA6375AE208E02C500536BE2 /* Abstraction */,
+				CA0E5203208E6FCA005259FE /* UIKit */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3516,6 +3533,7 @@
 				CA63759C208DFDF900536BE2 /* Events.storyboard in Resources */,
 				CA6AA0081FD731640092C6DB /* Preload.storyboard in Resources */,
 				9AB64BCF1F0272A5004E8D91 /* fontawesome-webfont.ttf in Resources */,
+				CA0E5209208E7020005259FE /* Dealers.storyboard in Resources */,
 				CA6AA0181FD8834D0092C6DB /* News.storyboard in Resources */,
 				78455B561F117B24005BE2D7 /* Tutorial.storyboard in Resources */,
 				78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */,
@@ -3809,6 +3827,7 @@
 				CA6AA0161FD883390092C6DB /* NewsViewController.swift in Sources */,
 				9A0525431ECA2C5A00578798 /* SyncEntityDelta.swift in Sources */,
 				CAF3C7501F9FC74C0008F027 /* NewsSceneFactory.swift in Sources */,
+				CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */,
 				CA637592208CE4F700536BE2 /* EventsScene.swift in Sources */,
 				CA30EAA11F2127350053DBF6 /* LoginResponse.swift in Sources */,
 				CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */,
@@ -3992,6 +4011,7 @@
 				9A861EA91F2554BE00B75A8C /* InitiateDownloadTutorialPagePresenter.swift in Sources */,
 				CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */,
 				CA89CBAD207F802400570D54 /* NewsInteractor.swift in Sources */,
+				CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */,
 				781A94301F1A1972002DE70F /* FirebaseAdapter.swift in Sources */,
 				78FE77CC1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift in Sources */,
 				D6F3D620BA994A6570325C66 /* DealersTableViewCell.swift in Sources */,
