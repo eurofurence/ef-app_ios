@@ -8,6 +8,7 @@
 
 @testable import Eurofurence
 import Foundation.NSIndexPath
+import XCTest
 
 class CapturingNewsInteractorDelegate: NewsInteractorDelegate {
     
@@ -20,7 +21,13 @@ class CapturingNewsInteractorDelegate: NewsInteractorDelegate {
 
 extension CapturingNewsInteractorDelegate {
     
-    func didWitnessViewModelWithComponents(_ components: [AnyHashable]) -> Bool {
+    struct Expectation {
+        
+        var components: [AnyHashable]
+        
+    }
+    
+    func verify(_ expectation: Expectation, file: StaticString = #file, line: UInt = #line) {
         class Visitor: NewsViewModelVisitor {
             var components = [AnyHashable]()
             
@@ -50,7 +57,20 @@ extension CapturingNewsInteractorDelegate {
             indexPaths.forEach({ viewModel.describeComponent(at: $0, to: visitor) })
         }
         
-        return visitor.components == components
+        guard expectation.components == visitor.components else {
+            XCTFail("Expected \(expectation.components.count) components, but got \(visitor.components.count)",
+                    file: file,
+                    line: line)
+            return
+        }
+        
+        for (idx, expected) in expectation.components.enumerated() {
+            let actual = visitor.components[idx]
+            if expected != actual {
+                XCTFail("Components at index \(idx) not equal: Expected \(expected), but got \(actual)")
+                return
+            }
+        }
     }
     
 }

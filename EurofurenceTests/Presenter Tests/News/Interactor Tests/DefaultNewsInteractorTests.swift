@@ -33,8 +33,8 @@ class DefaultNewsInteractorTests: XCTestCase {
                                                                  hasUnreadMessages: false)
         let expectedAnnouncementViewModels = announcements.map(makeExpectedAnnouncementViewModel).map(AnyHashable.init)
         let expected = [AnyHashable(expectedUserViewModel)] + expectedAnnouncementViewModels
-        
-        XCTAssertTrue(delegate.didWitnessViewModelWithComponents(expected))
+        let expectation = CapturingNewsInteractorDelegate.Expectation(components: expected)
+        delegate.verify(expectation)
     }
     
     private func makeExpectedAnnouncementViewModel(from announcement: Announcement2) -> AnnouncementComponentViewModel {
