@@ -14,7 +14,7 @@ protocol NewsViewModel {
     var numberOfComponents: Int { get }
 
     func numberOfItemsInComponent(at index: Int) -> Int
-    func titleForComponent(at index: Int) -> String
+    func titleForComponent(at index: Int) -> String?
     func describeComponent(at indexPath: IndexPath, to visitor: NewsViewModelVisitor)
 
 }

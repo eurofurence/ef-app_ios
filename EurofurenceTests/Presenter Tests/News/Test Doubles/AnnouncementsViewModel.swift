@@ -27,7 +27,7 @@ struct AnnouncementsViewModel: NewsViewModel {
         return announcements[index].count
     }
     
-    func titleForComponent(at index: Int) -> String {
+    func titleForComponent(at index: Int) -> String? {
         return "Announcements"
     }
     

@@ -75,7 +75,7 @@ class DefaultNewsInteractor: NewsInteractor {
             return components[index].childCount
         }
 
-        func titleForComponent(at index: Int) -> String {
+        func titleForComponent(at index: Int) -> String? {
             return ""
         }
 

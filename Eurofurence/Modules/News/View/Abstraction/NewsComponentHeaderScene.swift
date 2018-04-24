@@ -8,6 +8,6 @@
 
 protocol NewsComponentHeaderScene {
 
-    func setComponentTitle(_ title: String)
+    func setComponentTitle(_ title: String?)
 
 }
