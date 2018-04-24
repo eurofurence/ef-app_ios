@@ -20,7 +20,7 @@ class NewsModuleBuilder {
             }
         }
 
-        newsSceneFactory = PhoneNewsSceneFactory()
+        newsSceneFactory = StoryboardNewsSceneFactory()
         authenticationService = ApplicationAuthenticationService.shared
         privateMessagesService = EurofurencePrivateMessagesService.shared
         newsInteractor = DummyNewsInteractor()

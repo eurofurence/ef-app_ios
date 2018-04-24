@@ -1,5 +1,5 @@
 //
-//  PhoneNewsSceneFactory.swift
+//  StoryboardNewsSceneFactory.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 06/11/2017.
@@ -8,7 +8,7 @@
 
 import UIKit.UIStoryboard
 
-struct PhoneNewsSceneFactory: NewsSceneFactory {
+struct StoryboardNewsSceneFactory: NewsSceneFactory {
 
     private let storyboard = UIStoryboard(name: "News", bundle: .main)
 

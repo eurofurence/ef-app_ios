@@ -36,7 +36,7 @@ class NewsViewControllerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        viewController = PhoneNewsSceneFactory().makeNewsScene() as! NewsViewController
+        viewController = StoryboardNewsSceneFactory().makeNewsScene() as! NewsViewController
         delegate = CapturingNewsSceneDelegate()
         viewController.delegate = delegate
         viewController.loadViewIfNeeded()
