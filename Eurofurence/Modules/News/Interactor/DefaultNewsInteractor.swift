@@ -10,9 +10,11 @@ import Foundation
 
 class DefaultNewsInteractor: NewsInteractor {
 
+    private let announcementsService: AnnouncementsService
     private let authenticationService: AuthenticationService
 
-    init(authenticationService: AuthenticationService) {
+    init(announcementsService: AnnouncementsService, authenticationService: AuthenticationService) {
+        self.announcementsService = announcementsService
         self.authenticationService = authenticationService
     }
 
@@ -20,12 +22,41 @@ class DefaultNewsInteractor: NewsInteractor {
         let userWidget = UserWidgetComponentViewModel(prompt: .anonymousUserLoginPrompt,
                                                       detailedPrompt: .anonymousUserLoginDescription,
                                                       hasUnreadMessages: false)
-        let viewModel = ViewModel(components: [.userWidget(userWidget)])
-        delegate.viewModelDidUpdate(viewModel)
+
+        announcementsService.fetchAnnouncements { (announcements) in
+            let announcementViewModels = announcements.map({ (announcement) -> AnnouncementComponentViewModel in
+                return AnnouncementComponentViewModel(title: announcement.title, detail: announcement.content)
+            })
+
+            let viewModel = ViewModel(components: [.userWidget(userWidget), .announcements(announcementViewModels)])
+            delegate.viewModelDidUpdate(viewModel)
+        }
     }
 
     private enum Component {
         case userWidget(UserWidgetComponentViewModel)
+        case announcements([AnnouncementComponentViewModel])
+
+        var childCount: Int {
+            switch self {
+            case .userWidget(_):
+                return 1
+
+            case .announcements(let announcements):
+                return announcements.count
+            }
+        }
+
+        func announceContent(at index: Int, to visitor: NewsViewModelVisitor) {
+            switch self {
+            case .userWidget(let widget):
+                visitor.visit(widget)
+
+            case .announcements(let announcements):
+                let announcement = announcements[index]
+                visitor.visit(announcement)
+            }
+        }
     }
 
     private struct ViewModel: NewsViewModel {
@@ -36,10 +67,12 @@ class DefaultNewsInteractor: NewsInteractor {
             self.components = components
         }
 
-        var numberOfComponents: Int = 1
+        var numberOfComponents: Int {
+            return components.count
+        }
 
         func numberOfItemsInComponent(at index: Int) -> Int {
-            return 1
+            return components[index].childCount
         }
 
         func titleForComponent(at index: Int) -> String {
@@ -47,9 +80,8 @@ class DefaultNewsInteractor: NewsInteractor {
         }
 
         func describeComponent(at indexPath: IndexPath, to visitor: NewsViewModelVisitor) {
-            if let component = components.first, case .userWidget(let vm) = component {
-                visitor.visit(vm)
-            }
+            let component = components[indexPath.section]
+            component.announceContent(at: indexPath.item, to: visitor)
         }
 
     }

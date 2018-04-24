@@ -209,6 +209,9 @@
 		CA0E5209208E7020005259FE /* Dealers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0E5208208E7020005259FE /* Dealers.storyboard */; };
 		CA0E520B208E7579005259FE /* CapturingNewsInteractorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E520A208E7579005259FE /* CapturingNewsInteractorDelegate.swift */; };
 		CA0E520D208E759F005259FE /* DefaultNewsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E520C208E759F005259FE /* DefaultNewsInteractor.swift */; };
+		CA0E520F208F4BDF005259FE /* Announcement2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E520E208F4BDF005259FE /* Announcement2.swift */; };
+		CA0E5211208F4BF3005259FE /* Announcement2+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5210208F4BF3005259FE /* Announcement2+RandomValueProviding.swift */; };
+		CA0E5213208F4CD7005259FE /* AnnouncementsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5212208F4CD7005259FE /* AnnouncementsService.swift */; };
 		CA0F761D2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F761C2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift */; };
 		CA0F761F203229CF009DA079 /* KnowledgeBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F761E203229CF009DA079 /* KnowledgeBaseViewModel.swift */; };
 		CA0F7621203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F7620203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift */; };
@@ -862,6 +865,9 @@
 		CA0E5208208E7020005259FE /* Dealers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dealers.storyboard; sourceTree = "<group>"; };
 		CA0E520A208E7579005259FE /* CapturingNewsInteractorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNewsInteractorDelegate.swift; sourceTree = "<group>"; };
 		CA0E520C208E759F005259FE /* DefaultNewsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNewsInteractor.swift; sourceTree = "<group>"; };
+		CA0E520E208F4BDF005259FE /* Announcement2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcement2.swift; sourceTree = "<group>"; };
+		CA0E5210208F4BF3005259FE /* Announcement2+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Announcement2+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA0E5212208F4CD7005259FE /* AnnouncementsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsService.swift; sourceTree = "<group>"; };
 		CA0F761C2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeListViewModelIsPrepared.swift; sourceTree = "<group>"; };
 		CA0F761E203229CF009DA079 /* KnowledgeBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeBaseViewModel.swift; sourceTree = "<group>"; };
 		CA0F7620203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KnowledgeListViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -1678,6 +1684,7 @@
 		78D7EEB61F196B1F005372A9 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				CA0E5212208F4CD7005259FE /* AnnouncementsService.swift */,
 				78D7EEBC1F196B62005372A9 /* EurofurenceApplication.swift */,
 				CAF3F63C20167B3100374B4C /* EurofurenceApplicationBuilder.swift */,
 				CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */,
@@ -2085,12 +2092,13 @@
 		CA18B3451F49AF4500038E52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CA0E520E208F4BDF005259FE /* Announcement2.swift */,
 				CAD780421F1D4CA3002A8333 /* Credential.swift */,
 				CABF03B82041C2B00028BD62 /* KnowledgeEntry2.swift */,
 				CABF03B92041C2B00028BD62 /* KnowledgeGroup2.swift */,
+				CAD3BDAE205870B500C91E6E /* Link.swift */,
 				CA30EAC31F2672BF0053DBF6 /* Message.swift */,
 				CA30EAAD1F2148780053DBF6 /* User.swift */,
-				CAD3BDAE205870B500C91E6E /* Link.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2972,6 +2980,7 @@
 				CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */,
 				CA637579208CDB7B00536BE2 /* Message+RandomValueProviding.swift */,
 				CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */,
+				CA0E5210208F4BF3005259FE /* Announcement2+RandomValueProviding.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3967,6 +3976,7 @@
 				CA6EC4712051656C00402894 /* KnowledgeDetailModuleProviding.swift in Sources */,
 				CAD3BDB92059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift in Sources */,
 				9A80EF591F291E2B00FD0D37 /* NewsTableViewController.swift in Sources */,
+				CA0E520F208F4BDF005259FE /* Announcement2.swift in Sources */,
 				CA6EC48E2051D97600402894 /* KnowledgeDetailPresenter.swift in Sources */,
 				CA9845C21F28B16800E8821D /* MessageDetailViewController.swift in Sources */,
 				CA1FE9971F9FCCA4009C7DF3 /* MessagesModuleProviding.swift in Sources */,
@@ -4051,6 +4061,7 @@
 				9A861ED91F25564900B75A8C /* RootViewControllerAnimator.swift in Sources */,
 				CA057A5B2088BDBB00504FA4 /* NewsAnnouncementTableViewCell.swift in Sources */,
 				D6F3D62A784F07D9C7A84DC8 /* KnowledgeEntryViewController.swift in Sources */,
+				CA0E5213208F4CD7005259FE /* AnnouncementsService.swift in Sources */,
 				CA1FE99B1FA0B3EB009C7DF3 /* WindowWireframe.swift in Sources */,
 				CAEAEBED1FDC985C00C0EE7C /* AuthState.swift in Sources */,
 				CA2B4FA81F1EA72A00F007E1 /* LoginArguments.swift in Sources */,
@@ -4337,6 +4348,7 @@
 				CA60BFE32078E42800697566 /* User+RandomValueProviding.swift in Sources */,
 				CA63757A208CDB7B00536BE2 /* Message+RandomValueProviding.swift in Sources */,
 				CA637578208CDB4700536BE2 /* WhenUserSelectsMessage_DirectorShould.swift in Sources */,
+				CA0E5211208F4BF3005259FE /* Announcement2+RandomValueProviding.swift in Sources */,
 				CA30EACA1F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift in Sources */,
 				CAF597A42045EF5A00089BE8 /* V2SyncAPITests.swift in Sources */,
 				CA89CBAF207F823A00570D54 /* WhenBuildingNewsModule.swift in Sources */,
