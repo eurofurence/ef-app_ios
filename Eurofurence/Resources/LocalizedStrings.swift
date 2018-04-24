@@ -59,6 +59,8 @@ public extension String {
                                                                 comment: "Description for the alert when the download fails")
 
     public static let news = NSLocalizedString("News", comment: "The title shown for the News view")
+    public static let announcements = NSLocalizedString("Announcements",
+                                                        comment: "Heading for the announcements shown to the user in the News tab")
 
     public static let anonymousUserLoginPrompt = NSLocalizedString("anonymousUserLoginPrompt",
                                                                    comment: "Tells user to login for additional features")

@@ -47,6 +47,16 @@ class DefaultNewsInteractor: NewsInteractor {
             }
         }
 
+        var title: String? {
+            switch self {
+            case .userWidget(_):
+                return nil
+
+            case .announcements(_):
+                return .announcements
+            }
+        }
+
         func announceContent(at index: Int, to visitor: NewsViewModelVisitor) {
             switch self {
             case .userWidget(let widget):
@@ -76,7 +86,7 @@ class DefaultNewsInteractor: NewsInteractor {
         }
 
         func titleForComponent(at index: Int) -> String? {
-            return ""
+            return components[index].title
         }
 
         func describeComponent(at indexPath: IndexPath, to visitor: NewsViewModelVisitor) {

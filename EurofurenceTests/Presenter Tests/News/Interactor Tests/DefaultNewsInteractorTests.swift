@@ -9,16 +9,6 @@
 @testable import Eurofurence
 import XCTest
 
-struct StubAnnouncementsService: AnnouncementsService {
-    
-    var announcements: [Announcement2]
-    
-    func fetchAnnouncements(completionHandler: @escaping ([Announcement2]) -> Void) {
-        completionHandler(announcements)
-    }
-    
-}
-
 class DefaultNewsInteractorTests: XCTestCase {
     
     func testNotBeingLoggedInEmitsViewModelWithLoginPromptUserWidgetViewModel() {
@@ -33,7 +23,8 @@ class DefaultNewsInteractorTests: XCTestCase {
                                                                  hasUnreadMessages: false)
         let expectedAnnouncementViewModels = announcements.map(makeExpectedAnnouncementViewModel).map(AnyHashable.init)
         let expected = [AnyHashable(expectedUserViewModel)] + expectedAnnouncementViewModels
-        let expectation = VerifyingNewsInteractorDelegate.Expectation(components: expected)
+        let expectation = VerifyingNewsInteractorDelegate.Expectation(components: expected, titles: [nil, String.announcements])
+        
         delegate.verify(expectation)
     }
     

@@ -24,6 +24,7 @@
 "cellularDownloadAlertContinueOverCellularTitle" = "Continue Over Cellular";
 
 "News" = "News";
+"Announcements" = "Announcements";
 
 "anonymousUserLoginPrompt" = "You are currently not logged in";
 "anonymousUserLoginDescription" = "Tap here to login using your registration details and receive personalized messages from Eurofurence!";

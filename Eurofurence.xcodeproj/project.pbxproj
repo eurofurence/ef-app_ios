@@ -212,6 +212,7 @@
 		CA0E5211208F4BF3005259FE /* Announcement2+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5210208F4BF3005259FE /* Announcement2+RandomValueProviding.swift */; };
 		CA0E5213208F4CD7005259FE /* AnnouncementsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5212208F4CD7005259FE /* AnnouncementsService.swift */; };
 		CA0E5215208F52EE005259FE /* VerifyingNewsInteractorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5214208F52ED005259FE /* VerifyingNewsInteractorDelegate.swift */; };
+		CA0E5217208FBEA9005259FE /* StubAnnouncementsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5216208FBEA9005259FE /* StubAnnouncementsService.swift */; };
 		CA0F761D2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F761C2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift */; };
 		CA0F761F203229CF009DA079 /* KnowledgeBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F761E203229CF009DA079 /* KnowledgeBaseViewModel.swift */; };
 		CA0F7621203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F7620203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift */; };
@@ -868,6 +869,7 @@
 		CA0E5210208F4BF3005259FE /* Announcement2+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Announcement2+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA0E5212208F4CD7005259FE /* AnnouncementsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsService.swift; sourceTree = "<group>"; };
 		CA0E5214208F52ED005259FE /* VerifyingNewsInteractorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyingNewsInteractorDelegate.swift; sourceTree = "<group>"; };
+		CA0E5216208FBEA9005259FE /* StubAnnouncementsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAnnouncementsService.swift; sourceTree = "<group>"; };
 		CA0F761C2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeListViewModelIsPrepared.swift; sourceTree = "<group>"; };
 		CA0F761E203229CF009DA079 /* KnowledgeBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeBaseViewModel.swift; sourceTree = "<group>"; };
 		CA0F7620203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KnowledgeListViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -2212,6 +2214,7 @@
 				CA89CBBF2085383100570D54 /* StubNewsInteractor.swift */,
 				CA89CBB92084CA8A00570D54 /* StubNewsViewModel.swift */,
 				CA0E5214208F52ED005259FE /* VerifyingNewsInteractorDelegate.swift */,
+				CA0E5216208FBEA9005259FE /* StubAnnouncementsService.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -4235,6 +4238,7 @@
 				CA73AEF8201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift in Sources */,
 				CA60BFF8207B8C7000697566 /* WhenNewsSceneIsVisibleAndAuthenticatedUserReceievesMessage.swift in Sources */,
 				CA60BFEC207B893E00697566 /* WhenBuildingNewsPresenterForAuthenticatedUser.swift in Sources */,
+				CA0E5217208FBEA9005259FE /* StubAnnouncementsService.swift in Sources */,
 				CA637546208CBB4E00536BE2 /* StubTutorialModuleFactory.swift in Sources */,
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
 				CABF03C12041C2EC0028BD62 /* KnowledgeGroup2.swift in Sources */,
