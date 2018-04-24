@@ -216,6 +216,7 @@
 		CA0E5219208FC062005259FE /* WhenBindingConventionCountdown_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5218208FC062005259FE /* WhenBindingConventionCountdown_NewsPresenterShould.swift */; };
 		CA0E521B208FC107005259FE /* ConventionCountdownComponentViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E521A208FC107005259FE /* ConventionCountdownComponentViewModel+RandomValueProviding.swift */; };
 		CA0E521E208FC796005259FE /* NewsConventionCountdownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E521D208FC796005259FE /* NewsConventionCountdownTableViewCell.swift */; };
+		CA0E5220208FC994005259FE /* NewsUserWidgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E521F208FC994005259FE /* NewsUserWidgetTableViewCell.swift */; };
 		CA0F761D2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F761C2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift */; };
 		CA0F761F203229CF009DA079 /* KnowledgeBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F761E203229CF009DA079 /* KnowledgeBaseViewModel.swift */; };
 		CA0F7621203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F7620203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift */; };
@@ -876,6 +877,7 @@
 		CA0E5218208FC062005259FE /* WhenBindingConventionCountdown_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingConventionCountdown_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA0E521A208FC107005259FE /* ConventionCountdownComponentViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConventionCountdownComponentViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA0E521D208FC796005259FE /* NewsConventionCountdownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsConventionCountdownTableViewCell.swift; sourceTree = "<group>"; };
+		CA0E521F208FC994005259FE /* NewsUserWidgetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsUserWidgetTableViewCell.swift; sourceTree = "<group>"; };
 		CA0F761C2031C215009DA079 /* WhenKnowledgeListViewModelIsPrepared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeListViewModelIsPrepared.swift; sourceTree = "<group>"; };
 		CA0F761E203229CF009DA079 /* KnowledgeBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeBaseViewModel.swift; sourceTree = "<group>"; };
 		CA0F7620203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KnowledgeListViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -2073,6 +2075,7 @@
 				CA057A5C2088BDC900504FA4 /* NewsEventTableViewCell.swift */,
 				CAC1E12A1F5040E100195513 /* NewsScene.swift */,
 				CAF3C74F1F9FC74C0008F027 /* NewsSceneFactory.swift */,
+				CA0E521F208FC994005259FE /* NewsUserWidgetTableViewCell.swift */,
 				CA6AA0151FD883390092C6DB /* NewsViewController.swift */,
 				CA8E7EFB1FB0932700F0BF10 /* StoryboardNewsSceneFactory.swift */,
 			);
@@ -3821,6 +3824,7 @@
 				CA8D97D5201613010074838F /* RemoteNotificationRegistrationController.swift in Sources */,
 				9ACF99911EC858B2006FC958 /* Image.swift in Sources */,
 				9A861EB01F2554F900B75A8C /* TutorialPresentationContext.swift in Sources */,
+				CA0E5220208FC994005259FE /* NewsUserWidgetTableViewCell.swift in Sources */,
 				CAD780431F1D4CA3002A8333 /* Credential.swift in Sources */,
 				CA637582208CDE2000536BE2 /* EventsModuleProviding.swift in Sources */,
 				9ACF99931EC858B2006FC958 /* Dealer.swift in Sources */,
