@@ -25,7 +25,7 @@ class DefaultNewsInteractorTests: XCTestCase {
         let loggedOutAuthService = FakeAuthenticationService(authState: .loggedOut)
         let announcements = [Announcement2].random
         let announcementsService = StubAnnouncementsService(announcements: announcements)
-        let delegate = CapturingNewsInteractorDelegate()
+        let delegate = VerifyingNewsInteractorDelegate()
         let interactor = DefaultNewsInteractor(announcementsService: announcementsService, authenticationService: loggedOutAuthService)
         interactor.subscribeViewModelUpdates(delegate)
         let expectedUserViewModel = UserWidgetComponentViewModel(prompt: .anonymousUserLoginPrompt,
@@ -33,7 +33,7 @@ class DefaultNewsInteractorTests: XCTestCase {
                                                                  hasUnreadMessages: false)
         let expectedAnnouncementViewModels = announcements.map(makeExpectedAnnouncementViewModel).map(AnyHashable.init)
         let expected = [AnyHashable(expectedUserViewModel)] + expectedAnnouncementViewModels
-        let expectation = CapturingNewsInteractorDelegate.Expectation(components: expected)
+        let expectation = VerifyingNewsInteractorDelegate.Expectation(components: expected)
         delegate.verify(expectation)
     }
     

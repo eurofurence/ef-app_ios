@@ -1,5 +1,5 @@
 //
-//  CapturingNewsInteractorDelegate.swift
+//  VerifyingNewsInteractorDelegate.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 23/04/2018.
@@ -10,7 +10,7 @@
 import Foundation.NSIndexPath
 import XCTest
 
-class CapturingNewsInteractorDelegate: NewsInteractorDelegate {
+class VerifyingNewsInteractorDelegate: NewsInteractorDelegate {
     
     fileprivate var viewModel: NewsViewModel?
     func viewModelDidUpdate(_ viewModel: NewsViewModel) {
@@ -19,7 +19,7 @@ class CapturingNewsInteractorDelegate: NewsInteractorDelegate {
     
 }
 
-extension CapturingNewsInteractorDelegate {
+extension VerifyingNewsInteractorDelegate {
     
     struct Expectation {
         
