@@ -104,7 +104,9 @@ class NewsViewController: UIViewController, NewsScene, NewsComponentFactory {
     typealias Component = UITableViewCell
 
     func makeConventionCountdownComponent(configuringUsing block: (ConventionCountdownComponent) -> Void) -> UITableViewCell {
-        fatalError("Not yet implemented")
+        let cell = tableView.dequeue(NewsConventionCountdownTableViewCell.self)
+        block(cell)
+        return cell
     }
 
     func makeUserWidgetComponent(configuringUsing block: (UserWidgetComponent) -> Void) -> Component {
