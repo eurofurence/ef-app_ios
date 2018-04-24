@@ -1,5 +1,5 @@
 //
-//  DefaultNewsInteractorTests.swift
+//  WhenLoggedOutBeforeConvention_NewsInteractorShould.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 20/04/2018.
@@ -9,9 +9,9 @@
 @testable import Eurofurence
 import XCTest
 
-class DefaultNewsInteractorTests: XCTestCase {
+class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
     
-    func testNotBeingLoggedInEmitsViewModelWithLoginPromptUserWidgetViewModel() {
+    func testProduceViewModelWithLoginPrompt_CountdownUntilConvention_AndAnnouncements() {
         let loggedOutAuthService = FakeAuthenticationService(authState: .loggedOut)
         let announcements = [Announcement2].random
         let announcementsService = StubAnnouncementsService(announcements: announcements)
