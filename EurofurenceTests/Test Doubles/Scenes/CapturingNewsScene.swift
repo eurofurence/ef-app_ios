@@ -218,4 +218,8 @@ extension CapturingNewsScene {
         return capturedBinder?.bindComponent(at: indexPath, using: componentFactory)
     }
     
+    func simulateSelectingComponent(at indexPath: IndexPath) {
+        delegate?.newsSceneDidSelectComponent(at: indexPath)
+    }
+    
 }

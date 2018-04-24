@@ -16,6 +16,10 @@ class CapturingNewsSceneDelegate: NewsSceneDelegate {
         toldNewsSceneWillAppear = true
     }
     
+    func newsSceneDidSelectComponent(at indexPath: IndexPath) {
+        
+    }
+    
     private(set) var loginActionTapped = false
     func newsSceneDidTapLoginAction(_ scene: NewsScene) {
         loginActionTapped = true

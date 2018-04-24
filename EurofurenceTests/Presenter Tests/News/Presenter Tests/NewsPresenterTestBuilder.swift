@@ -86,5 +86,9 @@ extension NewsPresenterTestBuilder.Context {
         return newsScene.bindComponent(at: indexPath)
     }
     
+    func selectComponent(at indexPath: IndexPath) {
+        newsScene.simulateSelectingComponent(at: indexPath)
+    }
+    
 }
 

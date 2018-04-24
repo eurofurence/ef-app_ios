@@ -168,6 +168,10 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
         newsInteractor.subscribeViewModelUpdates(self)
     }
 
+    func newsSceneDidSelectComponent(at indexPath: IndexPath) {
+        delegate.newsModuleDidRequestShowingPrivateMessages()
+    }
+
     func newsSceneDidTapLoginAction(_ scene: NewsScene) {
         delegate.newsModuleDidRequestLogin()
     }

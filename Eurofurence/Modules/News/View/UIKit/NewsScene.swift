@@ -11,6 +11,8 @@ import Foundation
 protocol NewsSceneDelegate {
 
     func newsSceneWillAppear()
+    func newsSceneDidSelectComponent(at indexPath: IndexPath)
+
     func newsSceneDidTapLoginAction(_ scene: NewsScene)
     func newsSceneDidTapShowMessagesAction(_ scene: NewsScene)
 
