@@ -59,7 +59,7 @@ class WhenBindingEvent_NewsPresenterShould: XCTestCase {
         newsInteractor = StubNewsInteractor(viewModel: viewModel)
         context = NewsPresenterTestBuilder().with(newsInteractor).build()
         context.simulateNewsSceneWillAppear()
-        boundComponent = context.sceneFactory.stubbedScene.bindComponent(at: indexPath)
+        boundComponent = context.bindSceneComponent(at: indexPath)
     }
     
     func testReturnTheEventComponentWhenBinding() {

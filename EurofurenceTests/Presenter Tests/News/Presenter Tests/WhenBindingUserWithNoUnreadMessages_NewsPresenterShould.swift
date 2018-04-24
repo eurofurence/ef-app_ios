@@ -16,7 +16,6 @@ class WhenBindingUserWithNoUnreadMessages_NewsPresenterShould: XCTestCase {
     var indexPath: IndexPath!
     var newsInteractor: StubNewsInteractor!
     var context: NewsPresenterTestBuilder.Context!
-    var boundComponent: Any?
     
     override func setUp() {
         super.setUp()
@@ -29,7 +28,7 @@ class WhenBindingUserWithNoUnreadMessages_NewsPresenterShould: XCTestCase {
         newsInteractor = StubNewsInteractor(viewModel: viewModel)
         context = NewsPresenterTestBuilder().with(newsInteractor).build()
         context.simulateNewsSceneWillAppear()
-        boundComponent = context.sceneFactory.stubbedScene.bindComponent(at: indexPath)
+        context.bindSceneComponent(at: indexPath)
     }
     
     func testNotShowTheHighlightedUserPrompt() {

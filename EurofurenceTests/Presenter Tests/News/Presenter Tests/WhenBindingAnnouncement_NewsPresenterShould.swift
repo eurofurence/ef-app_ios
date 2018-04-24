@@ -29,7 +29,7 @@ class WhenBindingAnnouncement_NewsPresenterShould: XCTestCase {
         newsInteractor = StubNewsInteractor(viewModel: viewModel)
         context = NewsPresenterTestBuilder().with(newsInteractor).build()
         context.simulateNewsSceneWillAppear()
-        context.sceneFactory.stubbedScene.bindComponent(at: indexPath)
+        context.bindSceneComponent(at: indexPath)
     }
     
     func testSetTheAnnouncementNameOntoTheAnnouncementScene() {

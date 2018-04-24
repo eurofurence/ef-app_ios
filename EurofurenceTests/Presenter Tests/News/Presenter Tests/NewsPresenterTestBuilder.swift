@@ -81,5 +81,10 @@ extension NewsPresenterTestBuilder.Context {
         newsScene.delegate?.newsSceneWillAppear()
     }
     
+    @discardableResult
+    func bindSceneComponent(at indexPath: IndexPath) -> Any? {
+        return newsScene.bindComponent(at: indexPath)
+    }
+    
 }
 
