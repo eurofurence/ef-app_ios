@@ -74,6 +74,12 @@ class StubNewsComponentFactory: NewsComponentFactory {
     
     typealias Component = AnyObject
     
+    let stubbedCountdownComponent = CapturingConventionCountdownComponent()
+    func makeConventionCountdownComponent(configuringUsing block: (ConventionCountdownComponent) -> Void) -> StubNewsComponentFactory.Component {
+        block(stubbedCountdownComponent)
+        return stubbedCountdownComponent
+    }
+    
     let stubbedAnnouncementComponent = CapturingNewsAnnouncementComponent()
     func makeAnnouncementComponent(configuringUsing block: (NewsAnnouncementComponent) -> Void) -> StubNewsComponentFactory.Component {
         block(stubbedAnnouncementComponent)
@@ -90,6 +96,15 @@ class StubNewsComponentFactory: NewsComponentFactory {
     func makeUserWidgetComponent(configuringUsing block: (UserWidgetComponent) -> Void) -> AnyObject {
         block(stubbedUserWidgetComponent)
         return stubbedUserWidgetComponent
+    }
+    
+}
+
+class CapturingConventionCountdownComponent: ConventionCountdownComponent {
+    
+    private(set) var capturedTimeUntilConvention: String?
+    func setTimeUntilConvention(_ timeUntilConvention: String) {
+        capturedTimeUntilConvention = timeUntilConvention
     }
     
 }
@@ -174,6 +189,10 @@ class CapturingUserWidgetComponent: UserWidgetComponent {
 // MARK: Test Helpers
 
 extension CapturingNewsScene {
+    
+    var stubbedCountdownComponent: CapturingConventionCountdownComponent {
+        return componentFactory.stubbedCountdownComponent
+    }
     
     var stubbedAnnouncementComponent: CapturingNewsAnnouncementComponent {
         return componentFactory.stubbedAnnouncementComponent

@@ -22,8 +22,23 @@ protocol NewsViewModel {
 protocol NewsViewModelVisitor {
 
     func visit(_ userWidget: UserWidgetComponentViewModel)
+    func visit(_ countdown: ConventionCountdownComponentViewModel)
     func visit(_ announcement: AnnouncementComponentViewModel)
     func visit(_ event: EventComponentViewModel)
+
+}
+
+struct ConventionCountdownComponentViewModel: Hashable {
+
+    var timeUntilConvention: String
+
+    var hashValue: Int {
+        return timeUntilConvention.hashValue
+    }
+
+    static func ==(lhs: ConventionCountdownComponentViewModel, rhs: ConventionCountdownComponentViewModel) -> Bool {
+        return lhs.timeUntilConvention == rhs.timeUntilConvention
+    }
 
 }
 

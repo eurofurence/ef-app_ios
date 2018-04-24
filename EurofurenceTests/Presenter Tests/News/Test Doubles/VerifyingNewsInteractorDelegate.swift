@@ -77,6 +77,10 @@ extension VerifyingNewsInteractorDelegate {
             func visit(_ event: EventComponentViewModel) {
                 components.append(AnyHashable(event))
             }
+            
+            func visit(_ countdown: ConventionCountdownComponentViewModel) {
+                components.append(AnyHashable(countdown))
+            }
         }
         
         let visitor = Visitor()

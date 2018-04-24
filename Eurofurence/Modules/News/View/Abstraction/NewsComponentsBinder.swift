@@ -20,9 +20,16 @@ protocol NewsComponentFactory {
 
     associatedtype Component
 
+    func makeConventionCountdownComponent(configuringUsing block: (ConventionCountdownComponent) -> Void) -> Component
     func makeUserWidgetComponent(configuringUsing block: (UserWidgetComponent) -> Void) -> Component
     func makeAnnouncementComponent(configuringUsing block: (NewsAnnouncementComponent) -> Void) -> Component
     func makeEventComponent(configuringUsing block: (NewsEventComponent) -> Void) -> Component
+
+}
+
+protocol ConventionCountdownComponent {
+
+    func setTimeUntilConvention(_ timeUntilConvention: String)
 
 }
 

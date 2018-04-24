@@ -60,6 +60,12 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
             self.componentFactory = componentFactory
         }
 
+        func visit(_ countdown: ConventionCountdownComponentViewModel) {
+            boundComponent = componentFactory.makeConventionCountdownComponent() { (component) in
+                component.setTimeUntilConvention(countdown.timeUntilConvention)
+            }
+        }
+
         func visit(_ userWidget: UserWidgetComponentViewModel) {
             boundComponent = componentFactory.makeUserWidgetComponent() { (component) in
                 component.setPrompt(userWidget.prompt)
