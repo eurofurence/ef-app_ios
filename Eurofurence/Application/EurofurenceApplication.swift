@@ -161,6 +161,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         return .web(url)
     }
 
+    func fetchAnnouncements(completionHandler: @escaping ([Announcement2]) -> Void) {
+        completionHandler([])
+    }
+
     private func makeKnowledgeGroupsFromSyncResponse() -> [KnowledgeGroup2] {
         if let syncResponse = syncResponse {
             return KnowledgeGroup2.fromServerModels(groups: syncResponse.knowledgeGroups.changed, entries: syncResponse.knowledgeEntries.changed)

@@ -53,6 +53,10 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
+    func fetchAnnouncements(completionHandler: @escaping ([Announcement2]) -> Void) {
+        
+    }
+    
     func lookupContent(for link: Link) -> LinkContentLookupResult? {
         return nil
     }
