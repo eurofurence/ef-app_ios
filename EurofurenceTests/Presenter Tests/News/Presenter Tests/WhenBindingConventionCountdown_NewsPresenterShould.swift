@@ -29,6 +29,10 @@ struct CountdownViewModel: NewsViewModel {
         visitor.visit(countdownViewModel)
     }
     
+    func fetchModelValue(at indexPath: IndexPath, completionHandler: @escaping (NewsModuleModel) -> Void) {
+        
+    }
+    
 }
 
 class WhenBindingConventionCountdown_NewsPresenterShould: XCTestCase {

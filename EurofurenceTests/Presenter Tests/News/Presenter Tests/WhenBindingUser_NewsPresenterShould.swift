@@ -33,6 +33,9 @@ class StubbedUserViewModel: NewsViewModel {
         visitor.visit(userWidgetViewModel)
     }
     
+    func fetchModelValue(at indexPath: IndexPath, completionHandler: @escaping (NewsModuleModel) -> Void) {
+        
+    }
     
 }
 

@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import Foundation.NSIndexPath
 
-struct AnnouncementsViewModel: NewsViewModel {
+class AnnouncementsViewModel: NewsViewModel {
     
     var announcements: [[AnnouncementComponentViewModel]]
     
@@ -34,6 +34,17 @@ struct AnnouncementsViewModel: NewsViewModel {
     func describeComponent(at indexPath: IndexPath, to visitor: NewsViewModelVisitor) {
         let announcement = announcements[indexPath.section][indexPath.row]
         visitor.visit(announcement)
+    }
+    
+    private var models = [IndexPath : NewsModuleModel]()
+    func fetchModelValue(at indexPath: IndexPath, completionHandler: @escaping (NewsModuleModel) -> Void) {
+        if let model = models[indexPath] {
+            completionHandler(model)
+        }
+    }
+    
+    func stub(_ model: NewsModuleModel, at indexPath: IndexPath) {
+        models[indexPath] = model
     }
     
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserver, NewsSceneDelegate, NewsInteractorDelegate {
+class NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserver, NewsSceneDelegate, NewsInteractorDelegate {
 
     // MARK: Nested Types
 
@@ -108,6 +108,7 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
     private let newsInteractor: NewsInteractor
     private let privateMessagesService: PrivateMessagesService
     private let determineAuthStateOnce: DetermineAuthStateOnce
+    private var viewModel: NewsViewModel?
 
     // MARK: Initialization
 
@@ -170,6 +171,13 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
 
     func newsSceneDidSelectComponent(at indexPath: IndexPath) {
         delegate.newsModuleDidRequestShowingPrivateMessages()
+
+        viewModel?.fetchModelValue(at: indexPath) { (model) in
+            switch model {
+            case .announcement(let announcement):
+                self.delegate.newsModuleDidSelectAnnouncement(announcement)
+            }
+        }
     }
 
     func newsSceneDidTapLoginAction(_ scene: NewsScene) {
@@ -183,6 +191,8 @@ struct NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserve
     // MARK: NewsInteractorDelegate
 
     func viewModelDidUpdate(_ viewModel: NewsViewModel) {
+        self.viewModel = viewModel
+
         let itemsPerComponent = (0..<viewModel.numberOfComponents).map(viewModel.numberOfItemsInComponent)
         let binder = Binder(viewModel: viewModel)
         newsScene.bind(numberOfItemsPerComponent: itemsPerComponent, using: binder)

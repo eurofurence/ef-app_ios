@@ -36,4 +36,8 @@ struct StubNewsViewModel: NewsViewModel {
         
     }
     
+    func fetchModelValue(at indexPath: IndexPath, completionHandler: @escaping (NewsModuleModel) -> Void) {
+        
+    }
+    
 }

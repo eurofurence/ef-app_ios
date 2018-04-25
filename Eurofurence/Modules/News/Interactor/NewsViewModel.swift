@@ -16,7 +16,12 @@ protocol NewsViewModel {
     func numberOfItemsInComponent(at index: Int) -> Int
     func titleForComponent(at index: Int) -> String?
     func describeComponent(at indexPath: IndexPath, to visitor: NewsViewModelVisitor)
+    func fetchModelValue(at indexPath: IndexPath, completionHandler: @escaping (NewsModuleModel) -> Void)
 
+}
+
+enum NewsModuleModel {
+    case announcement(Announcement2)
 }
 
 protocol NewsViewModelVisitor {

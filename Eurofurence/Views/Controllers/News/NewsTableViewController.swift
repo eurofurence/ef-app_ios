@@ -140,6 +140,10 @@ class NewsTableViewController: UITableViewController,
             func newsModuleDidRequestShowingPrivateMessages() {
 
             }
+
+            func newsModuleDidSelectAnnouncement(_ announcement: Announcement2) {
+
+            }
         }
 
         struct DummyNewsInteractor: NewsInteractor {

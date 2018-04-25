@@ -162,6 +162,10 @@ class ApplicationDirector: RootModuleDelegate,
         newsNavigationController.pushViewController(messagesModuleProviding.makeMessagesModule(self), animated: animate)
     }
 
+    func newsModuleDidSelectAnnouncement(_ announcement: Announcement2) {
+
+    }
+
     // MARK: MessagesModuleDelegate
 
     private var messagesModuleResolutionHandler: ((Bool) -> Void)?

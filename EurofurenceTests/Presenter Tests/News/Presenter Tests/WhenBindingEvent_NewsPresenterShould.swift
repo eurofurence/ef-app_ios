@@ -36,6 +36,10 @@ class EventsViewModel: NewsViewModel {
         visitor.visit(event)
     }
     
+    func fetchModelValue(at indexPath: IndexPath, completionHandler: @escaping (NewsModuleModel) -> Void) {
+        
+    }
+    
 }
 
 class WhenBindingEvent_NewsPresenterShould: XCTestCase {
