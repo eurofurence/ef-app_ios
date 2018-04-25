@@ -8,7 +8,7 @@
 
 import UIKit.UIViewController
 
-class NewsViewController: UIViewController, NewsScene, NewsComponentFactory {
+class NewsViewController: UIViewController, UITableViewDelegate, NewsScene, NewsComponentFactory {
 
     // MARK: IBOutlets
 
@@ -43,6 +43,7 @@ class NewsViewController: UIViewController, NewsScene, NewsComponentFactory {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.delegate = self
         tableView.tableHeaderView = bannerContainer
         loginNavigationAction.isHidden = true
         messagesNavigationAction.isHidden = true
@@ -97,6 +98,12 @@ class NewsViewController: UIViewController, NewsScene, NewsComponentFactory {
     func bind(numberOfItemsPerComponent: [Int], using binder: NewsComponentsBinder) {
         tableViewDataSource = DataSource(numberOfItemsPerComponent: numberOfItemsPerComponent, binder: binder, componentFactory: self)
         tableView.dataSource = tableViewDataSource
+    }
+
+    // MARK: UITableViewDelegate
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.newsSceneDidSelectComponent(at: indexPath)
     }
 
     // MARK: NewsComponentFactory
