@@ -162,7 +162,15 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func fetchAnnouncements(completionHandler: @escaping ([Announcement2]) -> Void) {
-        completionHandler([])
+        if let syncResponse = syncResponse {
+            let announcements: [Announcement2] = syncResponse.announcements.changed.map({ (announcement) -> Announcement2 in
+                return Announcement2(title: announcement.title, content: announcement.content)
+            })
+
+            completionHandler(announcements)
+        } else {
+            completionHandler([])
+        }
     }
 
     private func makeKnowledgeGroupsFromSyncResponse() -> [KnowledgeGroup2] {

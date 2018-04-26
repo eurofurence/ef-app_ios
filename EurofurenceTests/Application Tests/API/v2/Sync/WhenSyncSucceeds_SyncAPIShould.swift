@@ -57,7 +57,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                                            links: [])])
         
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
-                               knowledgeEntries: knowledgeEntries)
+                               knowledgeEntries: knowledgeEntries,
+                               announcements: APISyncDelta())
     }
     
 }

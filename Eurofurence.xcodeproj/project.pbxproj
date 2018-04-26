@@ -373,6 +373,8 @@
 		CA6375BB208E03D100536BE2 /* StubDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6375BA208E03D100536BE2 /* StubDealersSceneFactory.swift */; };
 		CA65A21C2091121D0078A4A7 /* WhenFetchingAnnouncementsWithoutLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A21B2091121D0078A4A7 /* WhenFetchingAnnouncementsWithoutLoadingAnything.swift */; };
 		CA65A21F2091F1EC0078A4A7 /* WhenSyncSucceeds_SyncAPIShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A21E2091F1EC0078A4A7 /* WhenSyncSucceeds_SyncAPIShould.swift */; };
+		CA65A2212091F5320078A4A7 /* WhenFetchingAnnouncementsAfterSuccessfulRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A2202091F5320078A4A7 /* WhenFetchingAnnouncementsAfterSuccessfulRefresh.swift */; };
+		CA65A2232091F6020078A4A7 /* APIAnnouncement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A2222091F6020078A4A7 /* APIAnnouncement.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -1036,6 +1038,8 @@
 		CA6375BA208E03D100536BE2 /* StubDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDealersSceneFactory.swift; sourceTree = "<group>"; };
 		CA65A21B2091121D0078A4A7 /* WhenFetchingAnnouncementsWithoutLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingAnnouncementsWithoutLoadingAnything.swift; sourceTree = "<group>"; };
 		CA65A21E2091F1EC0078A4A7 /* WhenSyncSucceeds_SyncAPIShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncSucceeds_SyncAPIShould.swift; sourceTree = "<group>"; };
+		CA65A2202091F5320078A4A7 /* WhenFetchingAnnouncementsAfterSuccessfulRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingAnnouncementsAfterSuccessfulRefresh.swift; sourceTree = "<group>"; };
+		CA65A2222091F6020078A4A7 /* APIAnnouncement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAnnouncement.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -2448,6 +2452,7 @@
 			isa = PBXGroup;
 			children = (
 				CA65A21B2091121D0078A4A7 /* WhenFetchingAnnouncementsWithoutLoadingAnything.swift */,
+				CA65A2202091F5320078A4A7 /* WhenFetchingAnnouncementsAfterSuccessfulRefresh.swift */,
 			);
 			path = Announcements;
 			sourceTree = "<group>";
@@ -3249,9 +3254,10 @@
 		CAF59794204499FB00089BE8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CA65A2222091F6020078A4A7 /* APIAnnouncement.swift */,
 				CAF5979920449A1D00089BE8 /* APIKnowledgeEntry.swift */,
-				CAD3BDB2205874AF00C91E6E /* APILink.swift */,
 				CAF5979720449A1100089BE8 /* APIKnowledgeGroup.swift */,
+				CAD3BDB2205874AF00C91E6E /* APILink.swift */,
 				CAF5979520449A0400089BE8 /* APISyncResponse.swift */,
 			);
 			path = Model;
@@ -3995,6 +4001,7 @@
 				CA30EACC1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift in Sources */,
 				9A7FDA101F33B7020050C325 /* TabBarOrderProviding.swift in Sources */,
 				9ACF99981EC858B2006FC958 /* MapEntry.swift in Sources */,
+				CA65A2232091F6020078A4A7 /* APIAnnouncement.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
 				CAD780391F1D41C4002A8333 /* LoginViewController.swift in Sources */,
 				D6F3D6ADD1B889C901EE841A /* DataStoreResult.swift in Sources */,
@@ -4373,6 +4380,7 @@
 				CAF5979F2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift in Sources */,
 				CA65A21F2091F1EC0078A4A7 /* WhenSyncSucceeds_SyncAPIShould.swift in Sources */,
 				CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */,
+				CA65A2212091F5320078A4A7 /* WhenFetchingAnnouncementsAfterSuccessfulRefresh.swift in Sources */,
 				CA60BFF2207B8B1700697566 /* WhenAuthenticatedUserLogsOut_NewsPresenterShould.swift in Sources */,
 				CA6375A2208E005E00536BE2 /* StubDealersModuleFactory.swift in Sources */,
 				CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */,

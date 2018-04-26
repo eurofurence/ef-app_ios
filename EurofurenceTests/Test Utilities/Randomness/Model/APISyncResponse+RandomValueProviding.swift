@@ -25,7 +25,9 @@ extension APISyncResponse {
             knowledgeEntries.append(contentsOf: entries)
         }
         
-        return APISyncResponse(knowledgeGroups: knowledgeGroups, knowledgeEntries: APISyncDelta(changed: knowledgeEntries))
+        return APISyncResponse(knowledgeGroups: knowledgeGroups,
+                               knowledgeEntries: APISyncDelta(changed: knowledgeEntries),
+                               announcements: APISyncDelta(changed: .random))
     }
     
 }
@@ -58,6 +60,14 @@ extension APILink.FragmentType: RandomValueProviding {
     
     static var random: APILink.FragmentType {
         return .WebExternal
+    }
+    
+}
+
+extension APIAnnouncement: RandomValueProviding {
+    
+    static var random: APIAnnouncement {
+        return APIAnnouncement(title: .random, content: .random)
     }
     
 }
