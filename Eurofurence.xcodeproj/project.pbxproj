@@ -2450,6 +2450,15 @@
 			path = Announcements;
 			sourceTree = "<group>";
 		};
+		CA65A21D2091F16C0078A4A7 /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				CAF597A720482EC000089BE8 /* V2SyncAPIResponse.json */,
+				CAF597A32045EF5A00089BE8 /* V2SyncAPITests.swift */,
+			);
+			path = Sync;
+			sourceTree = "<group>";
+		};
 		CA6A9FEF1FD5DE0E0092C6DB /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2761,8 +2770,7 @@
 			children = (
 				CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */,
 				CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */,
-				CAF597A32045EF5A00089BE8 /* V2SyncAPITests.swift */,
-				CAF597A720482EC000089BE8 /* V2SyncAPIResponse.json */,
+				CA65A21D2091F16C0078A4A7 /* Sync */,
 			);
 			path = v2;
 			sourceTree = "<group>";
