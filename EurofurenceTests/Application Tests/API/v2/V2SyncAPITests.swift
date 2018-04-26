@@ -20,17 +20,30 @@ class V2SyncAPITests: XCTestCase {
         XCTAssertEqual(url, jsonSession.getRequestURL)
     }
     
-    func testSuccessfulResponseProducesExpectedResult() {
+    func testSuccessfulResponseProducesExpectedKnowledgeEntries() {
         let jsonSession = CapturingJSONSession()
         let syncApi = V2SyncAPI(jsonSession: jsonSession)
         let responseDataURL = Bundle(for: V2SyncAPITests.self).url(forResource: "V2SyncAPIResponse", withExtension: "json")!
         let responseData = try! Data(contentsOf: responseDataURL)
-        let expected = makeExpectedSyncResponseFromTestFile()
+        let expected = makeExpectedSyncResponseFromTestFile().knowledgeEntries
         var actual: APISyncResponse?
         syncApi.fetchLatestData { actual = $0 }
         jsonSession.invokeLastGETCompletionHandler(responseData: responseData)
         
-        XCTAssertEqual(expected, actual)
+        XCTAssertEqual(expected, actual?.knowledgeEntries)
+    }
+    
+    func testSuccessfulResponseProducesExpectedKnowledgeGroups() {
+        let jsonSession = CapturingJSONSession()
+        let syncApi = V2SyncAPI(jsonSession: jsonSession)
+        let responseDataURL = Bundle(for: V2SyncAPITests.self).url(forResource: "V2SyncAPIResponse", withExtension: "json")!
+        let responseData = try! Data(contentsOf: responseDataURL)
+        let expected = makeExpectedSyncResponseFromTestFile().knowledgeGroups
+        var actual: APISyncResponse?
+        syncApi.fetchLatestData { actual = $0 }
+        jsonSession.invokeLastGETCompletionHandler(responseData: responseData)
+        
+        XCTAssertEqual(expected, actual?.knowledgeGroups)
     }
     
     func testInvalidResponseEmitsNilResult() {
