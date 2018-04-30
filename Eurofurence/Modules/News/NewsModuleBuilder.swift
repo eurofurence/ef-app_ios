@@ -14,16 +14,10 @@ class NewsModuleBuilder {
     private var newsInteractor: NewsInteractor
 
     init() {
-        struct DummyAnnouncementsService: AnnouncementsService {
-            func fetchAnnouncements(completionHandler: @escaping ([Announcement2]) -> Void) {
-                completionHandler([])
-            }
-        }
-
         newsSceneFactory = StoryboardNewsSceneFactory()
         authenticationService = ApplicationAuthenticationService.shared
         privateMessagesService = EurofurencePrivateMessagesService.shared
-        newsInteractor = DefaultNewsInteractor(announcementsService: DummyAnnouncementsService(),
+        newsInteractor = DefaultNewsInteractor(announcementsService: EurofurenceApplication.shared,
                                                authenticationService: ApplicationAuthenticationService.shared)
     }
 
