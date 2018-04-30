@@ -14,7 +14,7 @@ struct V2SyncAPI: SyncAPI {
     private let decoder = JSONDecoder()
 
     func fetchLatestData(completionHandler: @escaping (APISyncResponse?) -> Void) {
-        let url = "https://app.eurofurence.org:40000/api/v2/Sync"
+        let url = "https://app.eurofurence.org/api/v2/Sync"
         let request = JSONRequest(url: url, body: Data())
         jsonSession.get(request) { (data, _) in
             var response: APISyncResponse?
