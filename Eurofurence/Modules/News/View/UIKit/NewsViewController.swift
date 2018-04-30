@@ -8,7 +8,7 @@
 
 import UIKit.UIViewController
 
-class NewsViewController: UIViewController, UITableViewDelegate, NewsScene, NewsComponentFactory {
+class NewsViewController: UIViewController, NewsScene {
 
     // MARK: IBOutlets
 
@@ -36,14 +36,14 @@ class NewsViewController: UIViewController, UITableViewDelegate, NewsScene, News
 
     // MARK: Properties
 
-    private var tableViewDataSource: UITableViewDataSource?
+    private var tableController: TableController?
 
     // MARK: Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.delegate = self
+        tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
         tableView.tableHeaderView = bannerContainer
         loginNavigationAction.isHidden = true
         messagesNavigationAction.isHidden = true
@@ -96,57 +96,70 @@ class NewsViewController: UIViewController, UITableViewDelegate, NewsScene, News
     }
 
     func bind(numberOfItemsPerComponent: [Int], using binder: NewsComponentsBinder) {
-        tableViewDataSource = DataSource(numberOfItemsPerComponent: numberOfItemsPerComponent, binder: binder, componentFactory: self)
-        tableView.dataSource = tableViewDataSource
+        tableController = TableController(tableView: tableView, numberOfItemsPerComponent: numberOfItemsPerComponent, binder: binder)
+        tableController?.onDidSelectRowAtIndexPath = tableViewDidSelectRow
+        tableView.dataSource = tableController
+        tableView.delegate = tableController
     }
 
-    // MARK: UITableViewDelegate
+    // MARK: Private
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableViewDidSelectRow(at indexPath: IndexPath) {
         delegate?.newsSceneDidSelectComponent(at: indexPath)
-    }
-
-    // MARK: NewsComponentFactory
-
-    typealias Component = UITableViewCell
-
-    func makeConventionCountdownComponent(configuringUsing block: (ConventionCountdownComponent) -> Void) -> UITableViewCell {
-        let cell = tableView.dequeue(NewsConventionCountdownTableViewCell.self)
-        block(cell)
-        return cell
-    }
-
-    func makeUserWidgetComponent(configuringUsing block: (UserWidgetComponent) -> Void) -> Component {
-        let cell = tableView.dequeue(NewsUserWidgetTableViewCell.self)
-        block(cell)
-        return cell
-    }
-
-    func makeAnnouncementComponent(configuringUsing block: (NewsAnnouncementComponent) -> Void) -> UITableViewCell {
-        let cell = tableView.dequeue(NewsAnnouncementTableViewCell.self)
-        block(cell)
-        return cell
-    }
-
-    func makeEventComponent(configuringUsing block: (NewsEventComponent) -> Void) -> UITableViewCell {
-        let cell = tableView.dequeue(NewsEventTableViewCell.self)
-        block(cell)
-        return cell
     }
 
     // MARK: Nested Types
 
-    private class DataSource<T>: NSObject, UITableViewDataSource where T: NewsComponentFactory, T.Component == UITableViewCell {
+    private class Header: UITableViewHeaderFooterView, NewsComponentHeaderScene {
 
+        static let identifier = "Header"
+
+        func setComponentTitle(_ title: String?) {
+            textLabel?.text = title
+        }
+
+    }
+
+    private class TableController: NSObject, NewsComponentFactory, UITableViewDataSource, UITableViewDelegate {
+
+        private let tableView: UITableView
         private let numberOfItemsPerComponent: [Int]
         private let binder: NewsComponentsBinder
-        private let componentFactory: T
+        var onDidSelectRowAtIndexPath: ((IndexPath) -> Void)?
 
-        init(numberOfItemsPerComponent: [Int], binder: NewsComponentsBinder, componentFactory: T) {
+        init(tableView: UITableView, numberOfItemsPerComponent: [Int], binder: NewsComponentsBinder) {
+            self.tableView = tableView
             self.numberOfItemsPerComponent = numberOfItemsPerComponent
             self.binder = binder
-            self.componentFactory = componentFactory
         }
+
+        // MARK: NewsComponentFactory
+
+        typealias Component = UITableViewCell
+
+        func makeConventionCountdownComponent(configuringUsing block: (ConventionCountdownComponent) -> Void) -> UITableViewCell {
+            return manufacture(NewsConventionCountdownTableViewCell.self, configuration: block)
+        }
+
+        func makeUserWidgetComponent(configuringUsing block: (UserWidgetComponent) -> Void) -> Component {
+            return manufacture(NewsUserWidgetTableViewCell.self, configuration: block)
+        }
+
+        func makeAnnouncementComponent(configuringUsing block: (NewsAnnouncementComponent) -> Void) -> UITableViewCell {
+            return manufacture(NewsAnnouncementTableViewCell.self, configuration: block)
+        }
+
+        func makeEventComponent(configuringUsing block: (NewsEventComponent) -> Void) -> UITableViewCell {
+            return manufacture(NewsEventTableViewCell.self, configuration: block)
+        }
+
+        private func manufacture<T>(_ cellType: T.Type, configuration: (T) -> Void) -> T where T: UITableViewCell {
+            let cell = tableView.dequeue(cellType)
+            configuration(cell)
+            return cell
+        }
+
+        // MARK: UITableViewDataSource
 
         func numberOfSections(in tableView: UITableView) -> Int {
             return numberOfItemsPerComponent.count
@@ -157,7 +170,21 @@ class NewsViewController: UIViewController, UITableViewDelegate, NewsScene, News
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            return binder.bindComponent(at: indexPath, using: componentFactory)
+            return binder.bindComponent(at: indexPath, using: self)
+        }
+
+        // MARK: UITableViewDelegate
+
+        func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.identifier) as! Header
+            binder.bindTitleForSection(at: section, scene: header)
+            return header
+        }
+
+        // MARK: Functions
+
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            onDidSelectRowAtIndexPath?(indexPath)
         }
 
     }
