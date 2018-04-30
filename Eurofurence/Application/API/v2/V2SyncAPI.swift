@@ -33,7 +33,7 @@ private struct JSONSyncResponse: Decodable {
     func asAPIResponse() -> APISyncResponse {
         return APISyncResponse(knowledgeGroups: KnowledgeGroups.asDelta(),
                                knowledgeEntries: KnowledgeEntries.asDelta(),
-                               announcements: APISyncDelta())
+                               announcements: Announcements.asDelta())
     }
 
     struct Leaf<T>: Decodable where T: Decodable & ModelRepresenting {
@@ -95,8 +95,20 @@ private struct JSONSyncResponse: Decodable {
         }
     }
 
+    struct JSONAnnouncement: Decodable, ModelRepresenting {
+
+        var Title: String
+        var Content: String
+
+        func asModel() -> APIAnnouncement {
+            return APIAnnouncement(title: Title, content: Content)
+        }
+
+    }
+
     var KnowledgeGroups: Leaf<JSONKnowledgeGroup>
     var KnowledgeEntries: Leaf<JSONKnowledgeEntry>
+    var Announcements: Leaf<JSONAnnouncement>
 
 }
 

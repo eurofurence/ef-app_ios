@@ -36,6 +36,14 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
         XCTAssertEqual(expected, response?.knowledgeGroups)
     }
     
+    func testProduceExpectedAnnouncements() {
+        let expected = APISyncDelta<APIAnnouncement>(changed: [APIAnnouncement(title: "Test-Announcement-Title",
+                                                                               content: "This is Content.\n\n**with markdown**")],
+                                                     deleted: [APIAnnouncement(title: "Test-Announcement 2",
+                                                                               content: "This is Content.\n\n**with markdown**")])
+        XCTAssertEqual(expected, response?.announcements)
+    }
+    
     private func makeExpectedSyncResponseFromTestFile() -> APISyncResponse {
         let knowledgeGroups = APISyncDelta<APIKnowledgeGroup>(changed: [APIKnowledgeGroup(identifier: "ec031cbf-d8d0-825d-4c36-b782ed8d19d8",
                                                                                           order: 0,
