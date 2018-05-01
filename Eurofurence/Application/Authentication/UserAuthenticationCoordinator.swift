@@ -31,7 +31,7 @@ class UserAuthenticationCoordinator {
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
 
         loadPersistedCredential()
-        eventBus.subscribe(consumer: BlockEventConsumer(block: remoteNotificationTokenDidChange))
+        eventBus.subscribe(remoteNotificationTokenDidChange)
     }
 
     func login(_ args: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {

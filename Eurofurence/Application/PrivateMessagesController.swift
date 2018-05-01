@@ -15,7 +15,7 @@ class PrivateMessagesController {
 
     init(eventBus: EventBus, privateMessagesAPI: PrivateMessagesAPI) {
         self.privateMessagesAPI = privateMessagesAPI
-        eventBus.subscribe(consumer: BlockEventConsumer(block: userLoggedIn))
+        eventBus.subscribe(userLoggedIn)
     }
 
     func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {
