@@ -133,23 +133,17 @@ class NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserver
     // MARK: AuthStateObserver
 
     func userDidLogin(_ user: User) {
-        newsScene.showMessagesNavigationAction()
-        newsScene.hideLoginNavigationAction()
-        newsScene.showWelcomePrompt(.welcomePrompt(for: user))
-        newsScene.showWelcomeDescription("")
+
     }
 
     func userDidLogout() {
-        newsScene.showLoginNavigationAction()
-        newsScene.hideMessagesNavigationAction()
-        newsScene.showLoginPrompt(.anonymousUserLoginPrompt)
-        newsScene.showLoginDescription(.anonymousUserLoginDescription)
+
     }
 
     // MARK: PrivateMessageUnreadCountObserver
 
     func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int) {
-        newsScene.showWelcomeDescription(.welcomeDescription(messageCount: unreadCount))
+
     }
 
     func privateMessagesServiceDidFinishRefreshingMessages(_ messages: [Message]) {

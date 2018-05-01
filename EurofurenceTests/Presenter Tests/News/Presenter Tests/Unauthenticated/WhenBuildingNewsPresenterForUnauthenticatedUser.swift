@@ -22,18 +22,6 @@ class WhenBuildingNewsPresenterForUnauthenticatedUser: XCTestCase {
         XCTAssertEqual(context.newsScene, context.sceneFactory.stubbedScene)
     }
     
-    func testTheSceneIsNotToldToShowTheMessagesNavigationAction() {
-        XCTAssertFalse(context.newsScene.wasToldToShowMessagesNavigationAction)
-    }
-    
-    func testTheSceneIsNotToldToHideTheLoginNavigationAction() {
-        XCTAssertFalse(context.newsScene.wasToldToHideLoginNavigationAction)
-    }
-    
-    func testTheNewsSceneIsNotToldToPresentWelcomeDesciption() {
-        XCTAssertNil(context.newsScene.capturedWelcomeDescription)
-    }
-    
     func testThePerformLoginCommandIsNotRan() {
         XCTAssertFalse(context.delegate.loginRequested)
     }

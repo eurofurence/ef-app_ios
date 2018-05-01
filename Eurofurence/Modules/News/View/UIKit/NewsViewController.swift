@@ -14,26 +14,6 @@ class NewsViewController: UIViewController, NewsScene {
 
     @IBOutlet weak var tableView: UITableView!
 
-    @IBOutlet weak var bannerContainer: UIStackView!
-    @IBOutlet weak var loginNavigationAction: UIView!
-    @IBOutlet weak var loginNavigationTrigger: UIButton!
-    @IBOutlet weak var messagesNavigationAction: UIView!
-    @IBOutlet weak var messagesNavigationTrigger: UIButton!
-    @IBOutlet weak var welcomePromptLabel: UILabel!
-    @IBOutlet weak var welcomeDescriptionLabel: UILabel!
-    @IBOutlet weak var loginPromptLabel: UILabel!
-    @IBOutlet weak var loginPromptDescriptionLabel: UILabel!
-
-    // MARK: IBActions
-
-    @IBAction func loginNavigationActionTapped(_ sender: Any) {
-        delegate?.newsSceneDidTapLoginAction(self)
-    }
-
-    @IBAction func messagesNavigationActionTapped(_ sender: Any) {
-        delegate?.newsSceneDidTapShowMessagesAction(self)
-    }
-
     // MARK: Properties
 
     private var tableController: TableController?
@@ -42,11 +22,7 @@ class NewsViewController: UIViewController, NewsScene {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
-        tableView.tableHeaderView = bannerContainer
-        loginNavigationAction.isHidden = true
-        messagesNavigationAction.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -61,38 +37,6 @@ class NewsViewController: UIViewController, NewsScene {
 
     func showNewsTitle(_ title: String) {
         super.title = title
-    }
-
-    func showMessagesNavigationAction() {
-        messagesNavigationAction.isHidden = false
-    }
-
-    func hideMessagesNavigationAction() {
-        messagesNavigationAction.isHidden = true
-    }
-
-    func showLoginNavigationAction() {
-        loginNavigationAction.isHidden = false
-    }
-
-    func hideLoginNavigationAction() {
-        loginNavigationAction.isHidden = true
-    }
-
-    func showWelcomePrompt(_ prompt: String) {
-        welcomePromptLabel.text = prompt
-    }
-
-    func showWelcomeDescription(_ description: String) {
-        welcomeDescriptionLabel.text = description
-    }
-
-    func showLoginPrompt(_ prompt: String) {
-        loginPromptLabel.text = prompt
-    }
-
-    func showLoginDescription(_ description: String) {
-        loginPromptDescriptionLabel.text = description
     }
 
     func bind(numberOfItemsPerComponent: [Int], using binder: NewsComponentsBinder) {

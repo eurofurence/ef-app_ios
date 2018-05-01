@@ -304,13 +304,7 @@
 		CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */; };
 		CA60BFE8207B88ED00697566 /* WhenBuildingNewsPresenterForUnauthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenterForUnauthenticatedUser.swift */; };
 		CA60BFEC207B893E00697566 /* WhenBuildingNewsPresenterForAuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFEB207B893E00697566 /* WhenBuildingNewsPresenterForAuthenticatedUser.swift */; };
-		CA60BFEE207B89B400697566 /* WhenNewsSceneWillAppearForUnauthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFED207B89B400697566 /* WhenNewsSceneWillAppearForUnauthenticatedUser.swift */; };
-		CA60BFF0207B8A0B00697566 /* WhenNewsSceneWillAppearForAuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFEF207B8A0B00697566 /* WhenNewsSceneWillAppearForAuthenticatedUser.swift */; };
-		CA60BFF2207B8B1700697566 /* WhenAuthenticatedUserLogsOut_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFF1207B8B1700697566 /* WhenAuthenticatedUserLogsOut_NewsPresenterShould.swift */; };
-		CA60BFF4207B8B7700697566 /* WhenUnauthenticatedUserLogsIn_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFF3207B8B7700697566 /* WhenUnauthenticatedUserLogsIn_NewsPresenterShould.swift */; };
 		CA60BFF6207B8C3600697566 /* WhenAuthenticatedUserInstigatesShowMessagesAction_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFF5207B8C3600697566 /* WhenAuthenticatedUserInstigatesShowMessagesAction_NewsPresenterShould.swift */; };
-		CA60BFF8207B8C7000697566 /* WhenNewsSceneIsVisibleAndAuthenticatedUserReceievesMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFF7207B8C7000697566 /* WhenNewsSceneIsVisibleAndAuthenticatedUserReceievesMessage.swift */; };
-		CA60BFFA207B8CD200697566 /* WhenAuthenticatedUserReceievesMessageBeforeNewsSceneAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFF9207B8CD200697566 /* WhenAuthenticatedUserReceievesMessageBeforeNewsSceneAppears.swift */; };
 		CA60BFFC207B8D2000697566 /* WhenUnauthenticatedUserTapsLoginButton_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFB207B8D2000697566 /* WhenUnauthenticatedUserTapsLoginButton_NewsPresenterShould.swift */; };
 		CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */; };
 		CA60C000207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFF207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift */; };
@@ -388,7 +382,6 @@
 		CA6AA0141FD74F910092C6DB /* ViewControllerDissolveTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0131FD74F910092C6DB /* ViewControllerDissolveTransitioning.swift */; };
 		CA6AA0161FD883390092C6DB /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0151FD883390092C6DB /* NewsViewController.swift */; };
 		CA6AA0181FD8834D0092C6DB /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6AA0171FD8834D0092C6DB /* News.storyboard */; };
-		CA6AA01A1FD885030092C6DB /* NewsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA0191FD885030092C6DB /* NewsViewControllerTests.swift */; };
 		CA6AA01C1FD88D930092C6DB /* UIStoryboard+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AA01B1FD88D930092C6DB /* UIStoryboard+Convenience.swift */; };
 		CA6AA01E1FD88F6B0092C6DB /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6AA01D1FD88F6B0092C6DB /* Messages.storyboard */; };
 		CA6EC4712051656C00402894 /* KnowledgeDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4702051656C00402894 /* KnowledgeDetailModuleProviding.swift */; };
@@ -969,13 +962,7 @@
 		CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesService.swift; sourceTree = "<group>"; };
 		CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenterForUnauthenticatedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingNewsPresenterForUnauthenticatedUser.swift; sourceTree = "<group>"; };
 		CA60BFEB207B893E00697566 /* WhenBuildingNewsPresenterForAuthenticatedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingNewsPresenterForAuthenticatedUser.swift; sourceTree = "<group>"; };
-		CA60BFED207B89B400697566 /* WhenNewsSceneWillAppearForUnauthenticatedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsSceneWillAppearForUnauthenticatedUser.swift; sourceTree = "<group>"; };
-		CA60BFEF207B8A0B00697566 /* WhenNewsSceneWillAppearForAuthenticatedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsSceneWillAppearForAuthenticatedUser.swift; sourceTree = "<group>"; };
-		CA60BFF1207B8B1700697566 /* WhenAuthenticatedUserLogsOut_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAuthenticatedUserLogsOut_NewsPresenterShould.swift; sourceTree = "<group>"; };
-		CA60BFF3207B8B7700697566 /* WhenUnauthenticatedUserLogsIn_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUnauthenticatedUserLogsIn_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA60BFF5207B8C3600697566 /* WhenAuthenticatedUserInstigatesShowMessagesAction_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAuthenticatedUserInstigatesShowMessagesAction_NewsPresenterShould.swift; sourceTree = "<group>"; };
-		CA60BFF7207B8C7000697566 /* WhenNewsSceneIsVisibleAndAuthenticatedUserReceievesMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsSceneIsVisibleAndAuthenticatedUserReceievesMessage.swift; sourceTree = "<group>"; };
-		CA60BFF9207B8CD200697566 /* WhenAuthenticatedUserReceievesMessageBeforeNewsSceneAppears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAuthenticatedUserReceievesMessageBeforeNewsSceneAppears.swift; sourceTree = "<group>"; };
 		CA60BFFB207B8D2000697566 /* WhenUnauthenticatedUserTapsLoginButton_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUnauthenticatedUserTapsLoginButton_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeAuthenticationService.swift; sourceTree = "<group>"; };
 		CA60BFFF207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsSceneWillReappear_NewsPresenterShould.swift; sourceTree = "<group>"; };
@@ -1053,7 +1040,6 @@
 		CA6AA0131FD74F910092C6DB /* ViewControllerDissolveTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDissolveTransitioning.swift; sourceTree = "<group>"; };
 		CA6AA0151FD883390092C6DB /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		CA6AA0171FD8834D0092C6DB /* News.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
-		CA6AA0191FD885030092C6DB /* NewsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6AA01B1FD88D930092C6DB /* UIStoryboard+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Convenience.swift"; sourceTree = "<group>"; };
 		CA6AA01D1FD88F6B0092C6DB /* Messages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
 		CA6EC4702051656C00402894 /* KnowledgeDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailModuleProviding.swift; sourceTree = "<group>"; };
@@ -2256,8 +2242,6 @@
 			isa = PBXGroup;
 			children = (
 				CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenterForUnauthenticatedUser.swift */,
-				CA60BFED207B89B400697566 /* WhenNewsSceneWillAppearForUnauthenticatedUser.swift */,
-				CA60BFF3207B8B7700697566 /* WhenUnauthenticatedUserLogsIn_NewsPresenterShould.swift */,
 				CA60BFFB207B8D2000697566 /* WhenUnauthenticatedUserTapsLoginButton_NewsPresenterShould.swift */,
 			);
 			path = Unauthenticated;
@@ -2267,11 +2251,7 @@
 			isa = PBXGroup;
 			children = (
 				CA60BFF5207B8C3600697566 /* WhenAuthenticatedUserInstigatesShowMessagesAction_NewsPresenterShould.swift */,
-				CA60BFF1207B8B1700697566 /* WhenAuthenticatedUserLogsOut_NewsPresenterShould.swift */,
-				CA60BFF9207B8CD200697566 /* WhenAuthenticatedUserReceievesMessageBeforeNewsSceneAppears.swift */,
 				CA60BFEB207B893E00697566 /* WhenBuildingNewsPresenterForAuthenticatedUser.swift */,
-				CA60BFF7207B8C7000697566 /* WhenNewsSceneIsVisibleAndAuthenticatedUserReceievesMessage.swift */,
-				CA60BFEF207B8A0B00697566 /* WhenNewsSceneWillAppearForAuthenticatedUser.swift */,
 			);
 			path = Authenticated;
 			sourceTree = "<group>";
@@ -3108,7 +3088,6 @@
 			isa = PBXGroup;
 			children = (
 				CAC1E1381F50431000195513 /* NewsPresenterTestBuilder.swift */,
-				CA6AA0191FD885030092C6DB /* NewsViewControllerTests.swift */,
 				CA0E5218208FC062005259FE /* WhenBindingConventionCountdown_NewsPresenterShould.swift */,
 				CA89CBBB2084CB4200570D54 /* WhenBindingAnnouncement_NewsPresenterShould.swift */,
 				CA9AC16A208546530039C0C2 /* WhenBindingEvent_NewsPresenterShould.swift */,
@@ -4219,7 +4198,6 @@
 				CA0F762F2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift in Sources */,
 				CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */,
 				CA63757C208CDBAA00536BE2 /* Date+RandomValueProviding.swift in Sources */,
-				CA60BFFA207B8CD200697566 /* WhenAuthenticatedUserReceievesMessageBeforeNewsSceneAppears.swift in Sources */,
 				CAD3BDBD205AA61B00C91E6E /* URL+RandomValueProviding.swift in Sources */,
 				CA65A21C2091121D0078A4A7 /* WhenFetchingAnnouncementsWithoutLoadingAnything.swift in Sources */,
 				CAF9A9471F50B95F00628833 /* WhenRequestingCurrentUser.swift in Sources */,
@@ -4289,7 +4267,6 @@
 				CAD3BDB72059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift in Sources */,
 				CA2B4FAA1F1F7F1200F007E1 /* CapturingLoginObserver.swift in Sources */,
 				CA73AEF8201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift in Sources */,
-				CA60BFF8207B8C7000697566 /* WhenNewsSceneIsVisibleAndAuthenticatedUserReceievesMessage.swift in Sources */,
 				CA60BFEC207B893E00697566 /* WhenBuildingNewsPresenterForAuthenticatedUser.swift in Sources */,
 				CA0E5217208FBEA9005259FE /* StubAnnouncementsService.swift in Sources */,
 				CA637546208CBB4E00536BE2 /* StubTutorialModuleFactory.swift in Sources */,
@@ -4303,10 +4280,8 @@
 				CAD3BDC5205FE42A00C91E6E /* WhenLookingUpWebLinks.swift in Sources */,
 				CA63756C208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift in Sources */,
 				CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */,
-				CA60BFF4207B8B7700697566 /* WhenUnauthenticatedUserLogsIn_NewsPresenterShould.swift in Sources */,
 				CA8276BA204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift in Sources */,
 				CAF9A9581F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift in Sources */,
-				CA60BFEE207B89B400697566 /* WhenNewsSceneWillAppearForUnauthenticatedUser.swift in Sources */,
 				CA63756E208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift in Sources */,
 				CA2D07F91FE9021A00BFD785 /* WhenResolvingDataStoreState.swift in Sources */,
 				CA637576208CD96A00536BE2 /* WhenMessagesModuleRequestsUserResolution_DirectorShould.swift in Sources */,
@@ -4326,7 +4301,6 @@
 				CA8E17EF1F817A8C003C348C /* CapturingPreloadService.swift in Sources */,
 				CAD3BDBB205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift in Sources */,
 				CA8276B6204EC026006A7419 /* CapturingPreloadServiceDelegate.swift in Sources */,
-				CA60BFF0207B8A0B00697566 /* WhenNewsSceneWillAppearForAuthenticatedUser.swift in Sources */,
 				6EEC6DA11F1BF79F00205F2D /* FirebaseTopicTests.swift in Sources */,
 				CA637597208DFD4B00536BE2 /* StubEventsSceneFactory.swift in Sources */,
 				7820A6F61F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift in Sources */,
@@ -4381,7 +4355,6 @@
 				CA65A21F2091F1EC0078A4A7 /* WhenSyncSucceeds_SyncAPIShould.swift in Sources */,
 				CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */,
 				CA65A2212091F5320078A4A7 /* WhenFetchingAnnouncementsAfterSuccessfulRefresh.swift in Sources */,
-				CA60BFF2207B8B1700697566 /* WhenAuthenticatedUserLogsOut_NewsPresenterShould.swift in Sources */,
 				CA6375A2208E005E00536BE2 /* StubDealersModuleFactory.swift in Sources */,
 				CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */,
 				CA73AEDF201A0833004E77BF /* CapturingKnowledgeInteractor.swift in Sources */,
@@ -4395,7 +4368,6 @@
 				CABA43891FBCD94E009CB5B0 /* LoginPresenterTests.swift in Sources */,
 				CA2D08121FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift in Sources */,
 				CA17FE752056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift in Sources */,
-				CA6AA01A1FD885030092C6DB /* NewsViewControllerTests.swift in Sources */,
 				781A943A1F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift in Sources */,
 				CA0F762520322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift in Sources */,
 				CAEAEC0C1FE0702500C0EE7C /* MessageDetailViewControllerTests.swift in Sources */,
