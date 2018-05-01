@@ -141,7 +141,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                 let groups = self.makeKnowledgeGroupsFromSyncResponse()
                 let announcements = self.makeAnnouncementsFromSyncResponse()
 
-                self.dataStore.beginTransaction({ (transaction) in
+                self.dataStore.performTransaction({ (transaction) in
                     transaction.saveKnowledgeGroups(groups)
                     transaction.saveAnnouncements(announcements)
                 })

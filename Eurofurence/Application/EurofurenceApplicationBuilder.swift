@@ -25,7 +25,7 @@ class EurofurenceApplicationBuilder {
         }
 
         struct DummyEurofurenceDataStore: EurofurenceDataStore {
-            func beginTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
+            func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
 
             }
 
