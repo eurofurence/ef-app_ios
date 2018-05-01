@@ -55,8 +55,8 @@ class NewsPresenterTestBuilder {
 
 extension NewsPresenterTestBuilder.Context {
     
-    func simulateNewsSceneWillAppear() {
-        newsScene.delegate?.newsSceneWillAppear()
+    func simulateNewsSceneDidLoad() {
+        newsScene.delegate?.newsSceneDidLoad()
     }
     
     @discardableResult

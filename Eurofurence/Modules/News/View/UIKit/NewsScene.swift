@@ -10,7 +10,7 @@ import Foundation
 
 protocol NewsSceneDelegate {
 
-    func newsSceneWillAppear()
+    func newsSceneDidLoad()
     func newsSceneDidSelectComponent(at indexPath: IndexPath)
 
 }

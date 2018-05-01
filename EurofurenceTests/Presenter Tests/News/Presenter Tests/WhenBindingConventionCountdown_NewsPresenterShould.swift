@@ -42,7 +42,7 @@ class WhenBindingConventionCountdown_NewsPresenterShould: XCTestCase {
         let viewModel = CountdownViewModel(countdownViewModel: countdownComponentViewModel)
         let newsInteractor = StubNewsInteractor(viewModel: viewModel)
         let context = NewsPresenterTestBuilder().with(newsInteractor).build()
-        context.simulateNewsSceneWillAppear()
+        context.simulateNewsSceneDidLoad()
         context.bindSceneComponent(at: IndexPath(item: 0, section: 0))
         
         XCTAssertEqual(countdownComponentViewModel.timeUntilConvention,

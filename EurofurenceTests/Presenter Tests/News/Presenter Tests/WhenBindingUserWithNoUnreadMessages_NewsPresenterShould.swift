@@ -27,7 +27,7 @@ class WhenBindingUserWithNoUnreadMessages_NewsPresenterShould: XCTestCase {
         
         newsInteractor = StubNewsInteractor(viewModel: viewModel)
         context = NewsPresenterTestBuilder().with(newsInteractor).build()
-        context.simulateNewsSceneWillAppear()
+        context.simulateNewsSceneDidLoad()
         context.bindSceneComponent(at: indexPath)
     }
     

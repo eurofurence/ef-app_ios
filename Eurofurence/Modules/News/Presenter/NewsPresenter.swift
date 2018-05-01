@@ -104,7 +104,7 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
 
     // MARK: NewsSceneDelegate
 
-    func newsSceneWillAppear() {
+    func newsSceneDidLoad() {
         newsInteractor.subscribeViewModelUpdates(self)
     }
 

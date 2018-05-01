@@ -1,5 +1,5 @@
 //
-//  WhenNewsSceneWillAppear.swift
+//  WhenNewsSceneDidLoad.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 12/04/2018.
@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import XCTest
 
-class WhenNewsSceneWillAppear: XCTestCase {
+class WhenNewsSceneDidLoad: XCTestCase {
     
     var context: NewsPresenterTestBuilder.Context!
     var newsInteractor: FakeNewsInteractor!
@@ -19,7 +19,7 @@ class WhenNewsSceneWillAppear: XCTestCase {
         
         newsInteractor = FakeNewsInteractor()
         context = NewsPresenterTestBuilder().with(newsInteractor).build()
-        context.simulateNewsSceneWillAppear()
+        context.simulateNewsSceneDidLoad()
     }
     
     func testTheNewsSceneIsToldToBindExpectedNumberOfComponentsFromViewModel() {

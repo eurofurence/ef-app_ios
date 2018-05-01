@@ -22,13 +22,9 @@ class NewsViewController: UIViewController, NewsScene {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        delegate?.newsSceneWillAppear()
+        delegate?.newsSceneDidLoad()
     }
 
     // MARK: NewsScene

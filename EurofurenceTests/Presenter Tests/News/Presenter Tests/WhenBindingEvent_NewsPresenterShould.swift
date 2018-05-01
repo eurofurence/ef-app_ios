@@ -62,7 +62,7 @@ class WhenBindingEvent_NewsPresenterShould: XCTestCase {
         
         newsInteractor = StubNewsInteractor(viewModel: viewModel)
         context = NewsPresenterTestBuilder().with(newsInteractor).build()
-        context.simulateNewsSceneWillAppear()
+        context.simulateNewsSceneDidLoad()
         boundComponent = context.bindSceneComponent(at: indexPath)
     }
     
