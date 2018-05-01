@@ -11,7 +11,14 @@ import Foundation
 struct V2SyncAPI: SyncAPI {
 
     var jsonSession: JSONSession
-    private let decoder = JSONDecoder()
+    private let decoder: JSONDecoder
+
+    init(jsonSession: JSONSession) {
+        self.jsonSession = jsonSession
+
+        decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(Iso8601DateFormatter())
+    }
 
     func fetchLatestData(completionHandler: @escaping (APISyncResponse?) -> Void) {
         let url = "https://app.eurofurence.org/api/v2/Sync"
@@ -99,9 +106,12 @@ private struct JSONSyncResponse: Decodable {
 
         var Title: String
         var Content: String
+        var LastChangeDateTimeUtc: Date
 
         func asModel() -> APIAnnouncement {
-            return APIAnnouncement(title: Title, content: Content, lastChangedDateTime: Date(timeIntervalSince1970: 0))
+            return APIAnnouncement(title: Title,
+                                   content: Content,
+                                   lastChangedDateTime: LastChangeDateTimeUtc)
         }
 
     }
