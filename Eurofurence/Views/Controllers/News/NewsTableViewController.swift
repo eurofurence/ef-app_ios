@@ -152,12 +152,9 @@ class NewsTableViewController: UITableViewController,
             }
         }
 
-        let app = EurofurenceApplication.shared
         presenter = NewsPresenter(delegate: DummyNewsModuleDelegate(),
                                   newsScene: self,
-                                  newsInteractor: DummyNewsInteractor(),
-                                  authenticationService: ApplicationAuthenticationService(app: app),
-                                  privateMessagesService: EurofurencePrivateMessagesService(app: app))
+                                  newsInteractor: DummyNewsInteractor())
     }
 
 	@IBAction func favoritesOnlyFilterChanged(_ sender: UISegmentedControl) {
@@ -317,11 +314,6 @@ class NewsTableViewController: UITableViewController,
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.section != 0 else {
-            if showLoginBanner {
-                delegate?.newsSceneDidTapLoginAction(self)
-            } else {
-                delegate?.newsSceneDidTapShowMessagesAction(self)
-            }
             return
         }
 

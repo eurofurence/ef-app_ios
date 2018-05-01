@@ -9,30 +9,15 @@
 class NewsModuleBuilder {
 
     private var newsSceneFactory: NewsSceneFactory
-    private var authenticationService: AuthenticationService
-    private var privateMessagesService: PrivateMessagesService
     private var newsInteractor: NewsInteractor
 
     init() {
         newsSceneFactory = StoryboardNewsSceneFactory()
-        authenticationService = ApplicationAuthenticationService.shared
-        privateMessagesService = EurofurencePrivateMessagesService.shared
-        newsInteractor = DefaultNewsInteractor(announcementsService: EurofurenceApplication.shared,
-                                               authenticationService: ApplicationAuthenticationService.shared)
+        newsInteractor = DefaultNewsInteractor()
     }
 
     func with(_ newsSceneFactory: NewsSceneFactory) -> NewsModuleBuilder {
         self.newsSceneFactory = newsSceneFactory
-        return self
-    }
-
-    func with(_ authenticationService: AuthenticationService) -> NewsModuleBuilder {
-        self.authenticationService = authenticationService
-        return self
-    }
-
-    func with(_ privateMessagesService: PrivateMessagesService) -> NewsModuleBuilder {
-        self.privateMessagesService = privateMessagesService
         return self
     }
 
@@ -42,10 +27,7 @@ class NewsModuleBuilder {
     }
 
     func build() -> NewsModuleProviding {
-        return PhoneNewsModuleFactory(newsSceneFactory: newsSceneFactory,
-                                      newsInteractor: newsInteractor,
-                                      authenticationService: authenticationService,
-                                      privateMessagesService: privateMessagesService)
+        return PhoneNewsModuleFactory(newsSceneFactory: newsSceneFactory, newsInteractor: newsInteractor)
     }
 
 }

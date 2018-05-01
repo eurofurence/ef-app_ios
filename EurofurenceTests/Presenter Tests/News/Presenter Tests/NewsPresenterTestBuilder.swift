@@ -14,8 +14,6 @@ class NewsPresenterTestBuilder {
     struct Context {
         
         var module: UIViewController
-        var authService: FakeAuthenticationService
-        var privateMessagesService: CapturingPrivateMessagesService
         var sceneFactory: StubNewsSceneFactory
         var newsScene: CapturingNewsScene
         var delegate: CapturingNewsModuleDelegate
@@ -23,30 +21,14 @@ class NewsPresenterTestBuilder {
         
     }
     
-    private var authService: FakeAuthenticationService
-    private var privateMessagesService: CapturingPrivateMessagesService
     private var sceneFactory: StubNewsSceneFactory
     private var delegate: CapturingNewsModuleDelegate
     private var newsInteractor: NewsInteractor
     
     init() {
-        authService = FakeAuthenticationService(authState: .loggedOut)
-        privateMessagesService = CapturingPrivateMessagesService()
         sceneFactory = StubNewsSceneFactory()
         delegate = CapturingNewsModuleDelegate()
         newsInteractor = FakeNewsInteractor()
-    }
-    
-    @discardableResult
-    func withUser(_ user: User = .random) -> NewsPresenterTestBuilder {
-        authService = FakeAuthenticationService(authState: .loggedIn(user))
-        return self
-    }
-    
-    @discardableResult
-    func with(_ privateMessagesService: CapturingPrivateMessagesService) -> NewsPresenterTestBuilder {
-        self.privateMessagesService = privateMessagesService
-        return self
     }
     
     @discardableResult
@@ -57,16 +39,12 @@ class NewsPresenterTestBuilder {
     
     func build() -> Context {
         let module = NewsModuleBuilder()
-            .with(authService)
             .with(sceneFactory)
-            .with(privateMessagesService)
             .with(newsInteractor)
             .build()
             .makeNewsModule(delegate)
         
         return Context(module: module,
-                       authService: authService,
-                       privateMessagesService: privateMessagesService,
                        sceneFactory: sceneFactory,
                        newsScene: sceneFactory.stubbedScene,
                        delegate: delegate,

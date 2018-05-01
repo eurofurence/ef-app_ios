@@ -13,6 +13,11 @@ class DefaultNewsInteractor: NewsInteractor {
     private let announcementsService: AnnouncementsService
     private let authenticationService: AuthenticationService
 
+    convenience init() {
+        self.init(announcementsService: EurofurenceApplication.shared,
+                  authenticationService: ApplicationAuthenticationService.shared)
+    }
+
     init(announcementsService: AnnouncementsService, authenticationService: AuthenticationService) {
         self.announcementsService = announcementsService
         self.authenticationService = authenticationService

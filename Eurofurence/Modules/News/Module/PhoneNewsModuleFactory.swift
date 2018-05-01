@@ -12,16 +12,12 @@ struct PhoneNewsModuleFactory: NewsModuleProviding {
 
     var newsSceneFactory: NewsSceneFactory
     var newsInteractor: NewsInteractor
-    var authenticationService: AuthenticationService
-    var privateMessagesService: PrivateMessagesService
 
     func makeNewsModule(_ delegate: NewsModuleDelegate) -> UIViewController {
         let scene = newsSceneFactory.makeNewsScene()
         _ = NewsPresenter(delegate: delegate,
                           newsScene: scene,
-                          newsInteractor: newsInteractor,
-                          authenticationService: authenticationService,
-                          privateMessagesService: privateMessagesService)
+                          newsInteractor: newsInteractor)
 
         return scene
     }

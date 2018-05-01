@@ -303,11 +303,7 @@
 		CA60BFE32078E42800697566 /* User+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */; };
 		CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */; };
 		CA60BFE8207B88ED00697566 /* WhenBuildingNewsPresenterForUnauthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenterForUnauthenticatedUser.swift */; };
-		CA60BFEC207B893E00697566 /* WhenBuildingNewsPresenterForAuthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFEB207B893E00697566 /* WhenBuildingNewsPresenterForAuthenticatedUser.swift */; };
-		CA60BFF6207B8C3600697566 /* WhenAuthenticatedUserInstigatesShowMessagesAction_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFF5207B8C3600697566 /* WhenAuthenticatedUserInstigatesShowMessagesAction_NewsPresenterShould.swift */; };
-		CA60BFFC207B8D2000697566 /* WhenUnauthenticatedUserTapsLoginButton_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFB207B8D2000697566 /* WhenUnauthenticatedUserTapsLoginButton_NewsPresenterShould.swift */; };
 		CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */; };
-		CA60C000207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFF207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift */; };
 		CA60C002207F7D2100697566 /* WhenNewsSceneWillAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60C001207F7D2100697566 /* WhenNewsSceneWillAppear.swift */; };
 		CA63753D208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */; };
 		CA637540208CBB0E00536BE2 /* CapturingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */; };
@@ -961,11 +957,7 @@
 		CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesService.swift; sourceTree = "<group>"; };
 		CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenterForUnauthenticatedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingNewsPresenterForUnauthenticatedUser.swift; sourceTree = "<group>"; };
-		CA60BFEB207B893E00697566 /* WhenBuildingNewsPresenterForAuthenticatedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingNewsPresenterForAuthenticatedUser.swift; sourceTree = "<group>"; };
-		CA60BFF5207B8C3600697566 /* WhenAuthenticatedUserInstigatesShowMessagesAction_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAuthenticatedUserInstigatesShowMessagesAction_NewsPresenterShould.swift; sourceTree = "<group>"; };
-		CA60BFFB207B8D2000697566 /* WhenUnauthenticatedUserTapsLoginButton_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUnauthenticatedUserTapsLoginButton_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeAuthenticationService.swift; sourceTree = "<group>"; };
-		CA60BFFF207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsSceneWillReappear_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA60C001207F7D2100697566 /* WhenNewsSceneWillAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsSceneWillAppear.swift; sourceTree = "<group>"; };
 		CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutBeforeConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNavigationController.swift; sourceTree = "<group>"; };
@@ -2242,18 +2234,8 @@
 			isa = PBXGroup;
 			children = (
 				CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenterForUnauthenticatedUser.swift */,
-				CA60BFFB207B8D2000697566 /* WhenUnauthenticatedUserTapsLoginButton_NewsPresenterShould.swift */,
 			);
 			path = Unauthenticated;
-			sourceTree = "<group>";
-		};
-		CA60BFEA207B893100697566 /* Authenticated */ = {
-			isa = PBXGroup;
-			children = (
-				CA60BFF5207B8C3600697566 /* WhenAuthenticatedUserInstigatesShowMessagesAction_NewsPresenterShould.swift */,
-				CA60BFEB207B893E00697566 /* WhenBuildingNewsPresenterForAuthenticatedUser.swift */,
-			);
-			path = Authenticated;
 			sourceTree = "<group>";
 		};
 		CA63753B208A6E0900536BE2 /* Interactor Tests */ = {
@@ -3096,8 +3078,6 @@
 				CAD6882B208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift */,
 				CA89CBAE207F823A00570D54 /* WhenBuildingNewsModule.swift */,
 				CA60C001207F7D2100697566 /* WhenNewsSceneWillAppear.swift */,
-				CA60BFFF207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift */,
-				CA60BFEA207B893100697566 /* Authenticated */,
 				CA60BFE9207B88F100697566 /* Unauthenticated */,
 			);
 			path = "Presenter Tests";
@@ -4166,7 +4146,6 @@
 				CA17FE712056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift in Sources */,
 				CA81D4921FE9AC9200A52A2F /* PhoneTabModuleFactoryTests.swift in Sources */,
 				78FE77D31F1A2EB000E9A0BE /* CapturingJSONSession.swift in Sources */,
-				CA60BFFC207B8D2000697566 /* WhenUnauthenticatedUserTapsLoginButton_NewsPresenterShould.swift in Sources */,
 				CA9AC16D2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift in Sources */,
 				78C86D541F1228B0003A20E6 /* TutorialViewControllerTests.swift in Sources */,
 				78455B3A1F116A7E005BE2D7 /* WhenTheAppLaunches.swift in Sources */,
@@ -4179,7 +4158,6 @@
 				CA71A3502040371D00C847C3 /* FloatingPoint+RandomValueProviding.swift in Sources */,
 				781A94421F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */,
 				CAB3A72A1F7532A2005DF77B /* CapturingPushPermissionsRequester.swift in Sources */,
-				CA60BFF6207B8C3600697566 /* WhenAuthenticatedUserInstigatesShowMessagesAction_NewsPresenterShould.swift in Sources */,
 				78455B491F1177AD005BE2D7 /* CapturingTutorialRouter.swift in Sources */,
 				78C86D721F12AACA003A20E6 /* WhenTheSplashScreenAppears.swift in Sources */,
 				CABA43971FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift in Sources */,
@@ -4267,7 +4245,6 @@
 				CAD3BDB72059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift in Sources */,
 				CA2B4FAA1F1F7F1200F007E1 /* CapturingLoginObserver.swift in Sources */,
 				CA73AEF8201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift in Sources */,
-				CA60BFEC207B893E00697566 /* WhenBuildingNewsPresenterForAuthenticatedUser.swift in Sources */,
 				CA0E5217208FBEA9005259FE /* StubAnnouncementsService.swift in Sources */,
 				CA637546208CBB4E00536BE2 /* StubTutorialModuleFactory.swift in Sources */,
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
@@ -4304,7 +4281,6 @@
 				6EEC6DA11F1BF79F00205F2D /* FirebaseTopicTests.swift in Sources */,
 				CA637597208DFD4B00536BE2 /* StubEventsSceneFactory.swift in Sources */,
 				7820A6F61F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift in Sources */,
-				CA60C000207CDD8600697566 /* WhenNewsSceneWillReappear_NewsPresenterShould.swift in Sources */,
 				CA89CBC02085383100570D54 /* StubNewsInteractor.swift in Sources */,
 				CA6375AC208E021A00536BE2 /* WhenBuildingDealersModule.swift in Sources */,
 				CABF03CA20421B490028BD62 /* WhenFetchingKnowledgeGroupsWithoutLoadingAnything.swift in Sources */,

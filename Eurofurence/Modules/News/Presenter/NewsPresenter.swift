@@ -8,27 +8,9 @@
 
 import Foundation
 
-class NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserver, NewsSceneDelegate, NewsInteractorDelegate {
+class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
 
     // MARK: Nested Types
-
-    private class DetermineAuthStateOnce {
-
-        private var ran = false
-        private let authenticationService: AuthenticationService
-
-        init(authenticationService: AuthenticationService) {
-            self.authenticationService = authenticationService
-        }
-
-        func run(_ handler: @escaping (AuthState) -> Void) {
-            guard !ran else { return }
-
-            ran = true
-            authenticationService.determineAuthState(completionHandler: handler)
-        }
-
-    }
 
     private struct Binder: NewsComponentsBinder {
 
@@ -102,64 +84,27 @@ class NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserver
 
     // MARK: Properties
 
-    private let authenticationService: AuthenticationService
     private let delegate: NewsModuleDelegate
     private let newsScene: NewsScene
     private let newsInteractor: NewsInteractor
-    private let privateMessagesService: PrivateMessagesService
-    private let determineAuthStateOnce: DetermineAuthStateOnce
     private var viewModel: NewsViewModel?
 
     // MARK: Initialization
 
     init(delegate: NewsModuleDelegate,
          newsScene: NewsScene,
-         newsInteractor: NewsInteractor,
-         authenticationService: AuthenticationService,
-         privateMessagesService: PrivateMessagesService) {
+         newsInteractor: NewsInteractor) {
         self.delegate = delegate
         self.newsScene = newsScene
         self.newsInteractor = newsInteractor
-        self.authenticationService = authenticationService
-        self.privateMessagesService = privateMessagesService
-
-        determineAuthStateOnce = DetermineAuthStateOnce(authenticationService: authenticationService)
 
         newsScene.delegate = self
-        authenticationService.add(observer: self)
         newsScene.showNewsTitle(.news)
-    }
-
-    // MARK: AuthStateObserver
-
-    func userDidLogin(_ user: User) {
-
-    }
-
-    func userDidLogout() {
-
-    }
-
-    // MARK: PrivateMessageUnreadCountObserver
-
-    func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int) {
-
-    }
-
-    func privateMessagesServiceDidFinishRefreshingMessages(_ messages: [Message]) {
-
-    }
-
-    func privateMessagesServiceDidFailToLoadMessages() {
-
     }
 
     // MARK: NewsSceneDelegate
 
     func newsSceneWillAppear() {
-        determineAuthStateOnce.run(authStateResolved)
-        privateMessagesService.add(self)
-
         newsInteractor.subscribeViewModelUpdates(self)
     }
 
@@ -174,14 +119,6 @@ class NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserver
         }
     }
 
-    func newsSceneDidTapLoginAction(_ scene: NewsScene) {
-        delegate.newsModuleDidRequestLogin()
-    }
-
-    func newsSceneDidTapShowMessagesAction(_ scene: NewsScene) {
-        delegate.newsModuleDidRequestShowingPrivateMessages()
-    }
-
     // MARK: NewsInteractorDelegate
 
     func viewModelDidUpdate(_ viewModel: NewsViewModel) {
@@ -190,18 +127,6 @@ class NewsPresenter: AuthenticationStateObserver, PrivateMessagesServiceObserver
         let itemsPerComponent = (0..<viewModel.numberOfComponents).map(viewModel.numberOfItemsInComponent)
         let binder = Binder(viewModel: viewModel)
         newsScene.bind(numberOfItemsPerComponent: itemsPerComponent, using: binder)
-    }
-
-    // MARK: Private
-
-    private func authStateResolved(_ state: AuthState) {
-        switch state {
-        case .loggedIn(let user):
-            userDidLogin(user)
-
-        case .loggedOut:
-            userDidLogout()
-        }
     }
 
 }
