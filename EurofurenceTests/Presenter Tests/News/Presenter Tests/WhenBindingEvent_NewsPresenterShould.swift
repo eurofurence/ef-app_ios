@@ -27,7 +27,7 @@ class EventsViewModel: NewsViewModel {
         return events[index].count
     }
     
-    func titleForComponent(at index: Int) -> String? {
+    func titleForComponent(at index: Int) -> String {
         return "Events"
     }
     

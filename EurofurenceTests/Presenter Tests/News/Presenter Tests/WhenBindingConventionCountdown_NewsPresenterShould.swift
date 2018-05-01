@@ -21,7 +21,7 @@ struct CountdownViewModel: NewsViewModel {
         return 1
     }
     
-    func titleForComponent(at index: Int) -> String? {
+    func titleForComponent(at index: Int) -> String {
         return "Countdown"
     }
     

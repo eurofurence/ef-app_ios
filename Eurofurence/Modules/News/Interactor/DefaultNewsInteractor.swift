@@ -47,7 +47,7 @@ class DefaultNewsInteractor: NewsInteractor {
             }
         }
 
-        var title: String? {
+        var title: String {
             switch self {
             case .userWidget(_):
                 return .yourEurofurence
@@ -85,7 +85,7 @@ class DefaultNewsInteractor: NewsInteractor {
             return components[index].childCount
         }
 
-        func titleForComponent(at index: Int) -> String? {
+        func titleForComponent(at index: Int) -> String {
             return components[index].title
         }
 

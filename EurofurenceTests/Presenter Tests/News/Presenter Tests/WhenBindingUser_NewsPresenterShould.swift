@@ -25,8 +25,8 @@ class StubbedUserViewModel: NewsViewModel {
         return 1
     }
     
-    func titleForComponent(at index: Int) -> String? {
-        return nil
+    func titleForComponent(at index: Int) -> String {
+        return "User Widget"
     }
     
     func describeComponent(at indexPath: IndexPath, to visitor: NewsViewModelVisitor) {

@@ -13,7 +13,7 @@ struct StubNewsViewModel: NewsViewModel {
     
     struct Component {
         
-        var title: String?
+        var title: String
         var numberOfItems: Int
         
     }
@@ -28,7 +28,7 @@ struct StubNewsViewModel: NewsViewModel {
         return components[index].numberOfItems
     }
     
-    func titleForComponent(at index: Int) -> String? {
+    func titleForComponent(at index: Int) -> String {
         return components[index].title
     }
     
