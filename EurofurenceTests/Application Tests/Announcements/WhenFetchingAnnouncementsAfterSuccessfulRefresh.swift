@@ -14,9 +14,7 @@ class WhenFetchingAnnouncementsAfterSuccessfulRefresh: XCTestCase {
     func testTheAnnouncementsFromTheRefreshResponseAreAdapted() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
-        let expected = syncResponse.announcements.changed.map { (announcement) -> Announcement2 in
-            return Announcement2(title: announcement.title, content: announcement.content)
-        }
+        let expected = Announcement2.fromServerModels(syncResponse.announcements.changed)
         
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(syncResponse)

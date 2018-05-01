@@ -16,3 +16,16 @@ struct Announcement2: Equatable {
     }
 
 }
+
+extension Announcement2 {
+
+    static func fromServerModels(_ models: [APIAnnouncement]) -> [Announcement2] {
+        return models.map(Announcement2.init)
+    }
+
+    init(serverModel: APIAnnouncement) {
+        title = serverModel.title
+        content = serverModel.content
+    }
+
+}
