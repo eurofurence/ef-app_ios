@@ -302,7 +302,7 @@
 		CA5BF9D51F7AF9160045DBC0 /* PreloadPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */; };
 		CA60BFE32078E42800697566 /* User+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */; };
 		CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */; };
-		CA60BFE8207B88ED00697566 /* WhenBuildingNewsPresenterForUnauthenticatedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenterForUnauthenticatedUser.swift */; };
+		CA60BFE8207B88ED00697566 /* WhenBuildingNewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenter.swift */; };
 		CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */; };
 		CA60C002207F7D2100697566 /* WhenNewsSceneDidLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60C001207F7D2100697566 /* WhenNewsSceneDidLoad.swift */; };
 		CA63753D208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */; };
@@ -332,7 +332,6 @@
 		CA63756E208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63756D208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift */; };
 		CA637570208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63756F208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift */; };
 		CA637572208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637571208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift */; };
-		CA637574208CD7F900536BE2 /* WhenNewsModuleRequestsLogin_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637573208CD7F900536BE2 /* WhenNewsModuleRequestsLogin_DirectorShould.swift */; };
 		CA637576208CD96A00536BE2 /* WhenMessagesModuleRequestsUserResolution_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637575208CD96A00536BE2 /* WhenMessagesModuleRequestsUserResolution_DirectorShould.swift */; };
 		CA637578208CDB4700536BE2 /* WhenUserSelectsMessage_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637577208CDB4700536BE2 /* WhenUserSelectsMessage_DirectorShould.swift */; };
 		CA63757A208CDB7B00536BE2 /* Message+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637579208CDB7B00536BE2 /* Message+RandomValueProviding.swift */; };
@@ -956,7 +955,7 @@
 		CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadPresenterTests.swift; sourceTree = "<group>"; };
 		CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesService.swift; sourceTree = "<group>"; };
-		CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenterForUnauthenticatedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingNewsPresenterForUnauthenticatedUser.swift; sourceTree = "<group>"; };
+		CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingNewsPresenter.swift; sourceTree = "<group>"; };
 		CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeAuthenticationService.swift; sourceTree = "<group>"; };
 		CA60C001207F7D2100697566 /* WhenNewsSceneDidLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsSceneDidLoad.swift; sourceTree = "<group>"; };
 		CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutBeforeConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
@@ -986,7 +985,6 @@
 		CA63756D208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreloadCompletes_DirectorShould.swift; sourceTree = "<group>"; };
 		CA63756F208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenShowingTabModule_DirectorShould.swift; sourceTree = "<group>"; };
 		CA637571208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenShowingMessages_DirectorShould.swift; sourceTree = "<group>"; };
-		CA637573208CD7F900536BE2 /* WhenNewsModuleRequestsLogin_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsModuleRequestsLogin_DirectorShould.swift; sourceTree = "<group>"; };
 		CA637575208CD96A00536BE2 /* WhenMessagesModuleRequestsUserResolution_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenMessagesModuleRequestsUserResolution_DirectorShould.swift; sourceTree = "<group>"; };
 		CA637577208CDB4700536BE2 /* WhenUserSelectsMessage_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUserSelectsMessage_DirectorShould.swift; sourceTree = "<group>"; };
 		CA637579208CDB7B00536BE2 /* Message+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -2233,7 +2231,6 @@
 		CA60BFE9207B88F100697566 /* Unauthenticated */ = {
 			isa = PBXGroup;
 			children = (
-				CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenterForUnauthenticatedUser.swift */,
 			);
 			path = Unauthenticated;
 			sourceTree = "<group>";
@@ -3077,6 +3074,7 @@
 				CAD6882F208A144800B31F5F /* WhenBindingUserWithNoUnreadMessages_NewsPresenterShould.swift */,
 				CAD6882B208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift */,
 				CA89CBAE207F823A00570D54 /* WhenBuildingNewsModule.swift */,
+				CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenter.swift */,
 				CA60C001207F7D2100697566 /* WhenNewsSceneDidLoad.swift */,
 				CA60BFE9207B88F100697566 /* Unauthenticated */,
 			);
@@ -3245,7 +3243,6 @@
 				CA63756D208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift */,
 				CA63756F208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift */,
 				CA637571208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift */,
-				CA637573208CD7F900536BE2 /* WhenNewsModuleRequestsLogin_DirectorShould.swift */,
 				CA637575208CD96A00536BE2 /* WhenMessagesModuleRequestsUserResolution_DirectorShould.swift */,
 				CA637577208CDB4700536BE2 /* WhenUserSelectsMessage_DirectorShould.swift */,
 				CA63757D208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift */,
@@ -4190,7 +4187,6 @@
 				7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */,
 				CA637560208CBC5F00536BE2 /* CapturingURLOpener.swift in Sources */,
 				78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */,
-				CA637574208CD7F900536BE2 /* WhenNewsModuleRequestsLogin_DirectorShould.swift in Sources */,
 				CABF03C32041C2FD0028BD62 /* KnowledgeEntry2.swift in Sources */,
 				CA0E521B208FC107005259FE /* ConventionCountdownComponentViewModel+RandomValueProviding.swift in Sources */,
 				CA63757E208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift in Sources */,
@@ -4237,7 +4233,7 @@
 				CA30EABA1F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift in Sources */,
 				CA6AA0101FD73CFE0092C6DB /* PreloadViewControllerTests.swift in Sources */,
 				78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */,
-				CA60BFE8207B88ED00697566 /* WhenBuildingNewsPresenterForUnauthenticatedUser.swift in Sources */,
+				CA60BFE8207B88ED00697566 /* WhenBuildingNewsPresenter.swift in Sources */,
 				CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */,
 				CA71A34E2040349300C847C3 /* RandomRangedValueProviding.swift in Sources */,
 				CAF3C74E1F9FC72C0008F027 /* StubNewsSceneFactory.swift in Sources */,

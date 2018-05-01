@@ -22,10 +22,6 @@ class WhenBuildingNewsPresenterForUnauthenticatedUser: XCTestCase {
         XCTAssertEqual(context.newsScene, context.sceneFactory.stubbedScene)
     }
     
-    func testThePerformLoginCommandIsNotRan() {
-        XCTAssertFalse(context.delegate.loginRequested)
-    }
-    
     func testTheSceneIsToldToShowTheNewsTitle() {
         XCTAssertEqual(.news, context.newsScene.capturedTitle)
     }

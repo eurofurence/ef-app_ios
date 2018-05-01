@@ -16,7 +16,6 @@ protocol NewsModuleProviding {
 
 protocol NewsModuleDelegate {
 
-    func newsModuleDidRequestLogin()
     func newsModuleDidRequestShowingPrivateMessages()
     func newsModuleDidSelectAnnouncement(_ announcement: Announcement2)
 

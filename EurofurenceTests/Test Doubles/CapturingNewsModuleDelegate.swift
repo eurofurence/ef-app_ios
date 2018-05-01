@@ -11,11 +11,6 @@ import Foundation
 
 class CapturingNewsModuleDelegate: NewsModuleDelegate {
     
-    private(set) var loginRequested = false
-    func newsModuleDidRequestLogin() {
-        loginRequested = true
-    }
-    
     private(set) var showPrivateMessagesRequested = false
     func newsModuleDidRequestShowingPrivateMessages() {
         showPrivateMessagesRequested = true

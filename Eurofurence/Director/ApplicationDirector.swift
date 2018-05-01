@@ -154,10 +154,6 @@ class ApplicationDirector: RootModuleDelegate,
 
     // MARK: NewsModuleDelegate
 
-    func newsModuleDidRequestLogin() {
-        newsNavigationController.pushViewController(messagesModuleProviding.makeMessagesModule(self), animated: animate)
-    }
-
     func newsModuleDidRequestShowingPrivateMessages() {
         newsNavigationController.pushViewController(messagesModuleProviding.makeMessagesModule(self), animated: animate)
     }
