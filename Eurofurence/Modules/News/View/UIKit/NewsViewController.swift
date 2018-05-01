@@ -125,6 +125,7 @@ class NewsViewController: UIViewController, NewsScene {
 
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             onDidSelectRowAtIndexPath?(indexPath)
+            tableView.deselectRow(at: indexPath, animated: true)
         }
 
     }
