@@ -50,7 +50,7 @@ class DefaultNewsInteractor: NewsInteractor {
         var title: String? {
             switch self {
             case .userWidget(_):
-                return nil
+                return .yourEurofurence
 
             case .announcements(_):
                 return .announcements
