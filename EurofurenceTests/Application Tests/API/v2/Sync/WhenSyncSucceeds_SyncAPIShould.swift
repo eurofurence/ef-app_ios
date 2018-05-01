@@ -38,9 +38,11 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
     
     func testProduceExpectedAnnouncements() {
         let expected = APISyncDelta<APIAnnouncement>(changed: [APIAnnouncement(title: "Test-Announcement-Title",
-                                                                               content: "This is Content.\n\n**with markdown**")],
+                                                                               content: "This is Content.\n\n**with markdown**",
+                                                                               lastChangedDateTime: Date(timeIntervalSince1970: 0))],
                                                      deleted: [APIAnnouncement(title: "Test-Announcement 2",
-                                                                               content: "This is Content.\n\n**with markdown**")])
+                                                                               content: "This is Content.\n\n**with markdown**",
+                                                                               lastChangedDateTime: Date(timeIntervalSince1970: 0))])
         XCTAssertEqual(expected, response?.announcements)
     }
     

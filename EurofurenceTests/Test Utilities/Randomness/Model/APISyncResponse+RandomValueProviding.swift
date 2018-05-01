@@ -67,7 +67,7 @@ extension APILink.FragmentType: RandomValueProviding {
 extension APIAnnouncement: RandomValueProviding {
     
     static var random: APIAnnouncement {
-        return APIAnnouncement(title: .random, content: .random)
+        return APIAnnouncement(title: .random, content: .random, lastChangedDateTime: .random)
     }
     
 }

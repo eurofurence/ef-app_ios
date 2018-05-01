@@ -101,7 +101,7 @@ private struct JSONSyncResponse: Decodable {
         var Content: String
 
         func asModel() -> APIAnnouncement {
-            return APIAnnouncement(title: Title, content: Content)
+            return APIAnnouncement(title: Title, content: Content, lastChangedDateTime: Date(timeIntervalSince1970: 0))
         }
 
     }
