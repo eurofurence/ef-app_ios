@@ -139,9 +139,11 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                 self.syncResponse = response
 
                 let groups = self.makeKnowledgeGroupsFromSyncResponse()
+                let announcements = self.makeAnnouncementsFromSyncResponse()
 
                 self.dataStore.beginTransaction({ (transaction) in
                     transaction.saveKnowledgeGroups(groups)
+                    transaction.saveAnnouncements(announcements)
                 })
 
                 completionHandler(nil)
@@ -162,15 +164,18 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func fetchAnnouncements(completionHandler: @escaping ([Announcement2]) -> Void) {
+        completionHandler(makeAnnouncementsFromSyncResponse())
+    }
+
+    private func makeAnnouncementsFromSyncResponse() -> [Announcement2] {
         if let syncResponse = syncResponse {
             let sortedAnnouncements = syncResponse.announcements.changed.sorted(by: { (first, second) -> Bool in
                 return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedAscending
             })
 
-            let announcements = Announcement2.fromServerModels(sortedAnnouncements)
-            completionHandler(announcements)
+            return Announcement2.fromServerModels(sortedAnnouncements)
         } else {
-            completionHandler([])
+            return []
         }
     }
 

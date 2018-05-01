@@ -36,8 +36,27 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
 extension CapturingEurofurenceDataStore {
     
     func didSave(_ knowledgeGroups: [KnowledgeGroup2]) -> Bool {
-        guard let transaction = transaction else { return false }
-        return knowledgeGroups == transaction.persistedKnowledgeGroups
+        guard let persistedKnowledgeGroups = transaction?.persistedKnowledgeGroups else { return false }
+        return persistedKnowledgeGroups.contains(elementsFrom: knowledgeGroups)
+    }
+    
+    func didSave(_ announcements: [Announcement2]) -> Bool {
+        guard let persistedAnnouncements = transaction?.persistedAnnouncements else { return false }
+        return persistedAnnouncements.contains(elementsFrom: announcements)
+    }
+    
+}
+
+extension Array where Element: Equatable {
+    
+    func contains(elementsFrom other: Array<Element>) -> Bool {
+        for item in other {
+            if contains(item) == false {
+                return false
+            }
+        }
+        
+        return true
     }
     
 }
@@ -47,6 +66,11 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
     private(set) var persistedKnowledgeGroups: [KnowledgeGroup2] = []
     func saveKnowledgeGroups(_ knowledgeGroups: [KnowledgeGroup2]) {
         self.persistedKnowledgeGroups = knowledgeGroups
+    }
+    
+    private(set) var persistedAnnouncements: [Announcement2] = []
+    func saveAnnouncements(_ announcements: [Announcement2]) {
+        persistedAnnouncements = announcements
     }
     
 }
