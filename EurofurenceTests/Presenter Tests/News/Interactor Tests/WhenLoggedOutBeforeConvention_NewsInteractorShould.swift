@@ -23,7 +23,7 @@ class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
                                                                  hasUnreadMessages: false)
         let expectedAnnouncementViewModels = announcements.map(makeExpectedAnnouncementViewModel).map(AnyHashable.init)
         let expected = [AnyHashable(expectedUserViewModel)] + expectedAnnouncementViewModels
-        let expectation = VerifyingNewsInteractorDelegate.Expectation(components: expected, titles: [String.yourEurofurence, String.announcements])
+        let expectation = VerifyingNewsInteractorDelegate.Expectation(components: expected, titles: [.yourEurofurence, .announcements])
         
         delegate.verify(expectation)
     }

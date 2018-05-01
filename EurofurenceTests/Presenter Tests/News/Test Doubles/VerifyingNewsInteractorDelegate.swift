@@ -24,7 +24,7 @@ extension VerifyingNewsInteractorDelegate {
     struct Expectation {
         
         var components: [AnyHashable]
-        var titles: [String?]
+        var titles: [String]
         
         fileprivate func verify(components: [AnyHashable], titles: [String?], file: StaticString, line: UInt) {
             guard self.components.count == components.count else {
