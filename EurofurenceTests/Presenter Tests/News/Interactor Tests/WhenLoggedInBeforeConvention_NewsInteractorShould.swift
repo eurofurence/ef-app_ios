@@ -16,21 +16,17 @@ class WhenLoggedInBeforeConvention_NewsInteractorShould: XCTestCase {
         let loggedInAuthService = FakeAuthenticationService(authState: .loggedIn(user))
         let announcements = [Announcement2].random
         let announcementsService = StubAnnouncementsService(announcements: announcements)
+        let context = DefaultNewsInteractorTestBuilder().with(loggedInAuthService).with(announcementsService).build()
         let delegate = VerifyingNewsInteractorDelegate()
-        let interactor = DefaultNewsInteractor(announcementsService: announcementsService, authenticationService: loggedInAuthService)
-        interactor.subscribeViewModelUpdates(delegate)
+        context.interactor.subscribeViewModelUpdates(delegate)
         let expectedUserViewModel = UserWidgetComponentViewModel(prompt: String.welcomePrompt(for: user),
                                                                  detailedPrompt: String.welcomeDescription(messageCount: 0),
                                                                  hasUnreadMessages: false)
-        let expectedAnnouncementViewModels = announcements.map(makeExpectedAnnouncementViewModel).map(AnyHashable.init)
+        let expectedAnnouncementViewModels = context.makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements()
         let expected = [AnyHashable(expectedUserViewModel)] + expectedAnnouncementViewModels
         let expectation = VerifyingNewsInteractorDelegate.Expectation(components: expected, titles: [.yourEurofurence, .announcements])
         
         delegate.verify(expectation)
-    }
-    
-    private func makeExpectedAnnouncementViewModel(from announcement: Announcement2) -> AnnouncementComponentViewModel {
-        return AnnouncementComponentViewModel(title: announcement.title, detail: announcement.content)
     }
     
 }
