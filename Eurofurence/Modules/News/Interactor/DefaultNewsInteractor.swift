@@ -33,21 +33,21 @@ class DefaultNewsInteractor: NewsInteractor {
                 return AnnouncementComponentViewModel(title: announcement.title, detail: announcement.content)
             })
 
-            let viewModel = ViewModel(components: [.userWidget(userWidget), .announcements(announcementViewModels)])
+            let viewModel = ViewModel(components: [.userWidget(userWidget), .announcements(announcementViewModels, announcements)])
             delegate.viewModelDidUpdate(viewModel)
         }
     }
 
     private enum Component {
         case userWidget(UserWidgetComponentViewModel)
-        case announcements([AnnouncementComponentViewModel])
+        case announcements([AnnouncementComponentViewModel], [Announcement2])
 
         var childCount: Int {
             switch self {
             case .userWidget(_):
                 return 1
 
-            case .announcements(let announcements):
+            case .announcements(let announcements, _):
                 return announcements.count
             }
         }
@@ -57,7 +57,7 @@ class DefaultNewsInteractor: NewsInteractor {
             case .userWidget(_):
                 return .yourEurofurence
 
-            case .announcements(_):
+            case .announcements(_, _):
                 return .announcements
             }
         }
@@ -67,9 +67,20 @@ class DefaultNewsInteractor: NewsInteractor {
             case .userWidget(let widget):
                 visitor.visit(widget)
 
-            case .announcements(let announcements):
+            case .announcements(let announcements, _):
                 let announcement = announcements[index]
                 visitor.visit(announcement)
+            }
+        }
+
+        func announceValue(at index: Int, to completionHandler: @escaping (NewsViewModelValue) -> Void) {
+            switch self {
+            case .userWidget(_):
+                completionHandler(.messages)
+
+            case .announcements(_, let announcements):
+                let announcement = announcements[index]
+                completionHandler(.announcement(announcement))
             }
         }
     }
@@ -100,7 +111,7 @@ class DefaultNewsInteractor: NewsInteractor {
         }
 
         func fetchModelValue(at indexPath: IndexPath, completionHandler: @escaping (NewsViewModelValue) -> Void) {
-            completionHandler(.messages)
+            components[indexPath.section].announceValue(at: indexPath.item, to: completionHandler)
         }
 
     }
