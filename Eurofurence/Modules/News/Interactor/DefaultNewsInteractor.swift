@@ -36,7 +36,7 @@ class DefaultNewsInteractor: NewsInteractor {
     func subscribeViewModelUpdates(_ delegate: NewsInteractorDelegate) {
         let userWidget = UserWidgetComponentViewModel(prompt: .anonymousUserLoginPrompt,
                                                       detailedPrompt: .anonymousUserLoginDescription,
-                                                      hasUnreadMessages: false)
+                                                      hasUnreadMessages: true)
 
         announcementsService.fetchAnnouncements { (announcements) in
             let userWidget = UserComponent(viewModel: userWidget)
