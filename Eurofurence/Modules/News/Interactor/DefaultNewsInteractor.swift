@@ -8,6 +8,16 @@
 
 import Foundation
 
+private protocol NewsViewModelComponent {
+
+    var childCount: Int { get }
+    var title: String { get }
+
+    func announceContent(at index: Int, to visitor: NewsViewModelVisitor)
+    func announceValue(at index: Int, to completionHandler: @escaping (NewsViewModelValue) -> Void)
+
+}
+
 class DefaultNewsInteractor: NewsInteractor {
 
     private let announcementsService: AnnouncementsService
@@ -29,67 +39,66 @@ class DefaultNewsInteractor: NewsInteractor {
                                                       hasUnreadMessages: false)
 
         announcementsService.fetchAnnouncements { (announcements) in
-            let announcementViewModels = announcements.map({ (announcement) -> AnnouncementComponentViewModel in
-                return AnnouncementComponentViewModel(title: announcement.title, detail: announcement.content)
-            })
-
-            let viewModel = ViewModel(components: [.userWidget(userWidget), .announcements(announcementViewModels, announcements)])
+            let userWidget = UserComponent(viewModel: userWidget)
+            let announcementsComponents = AnnouncementsComponent(announcements: announcements)
+            let viewModel = ViewModel(components: [userWidget, announcementsComponents])
             delegate.viewModelDidUpdate(viewModel)
         }
     }
 
-    private enum Component {
-        case userWidget(UserWidgetComponentViewModel)
-        case announcements([AnnouncementComponentViewModel], [Announcement2])
+    private class UserComponent: NewsViewModelComponent {
 
-        var childCount: Int {
-            switch self {
-            case .userWidget(_):
-                return 1
+        private let viewModel: UserWidgetComponentViewModel
 
-            case .announcements(let announcements, _):
-                return announcements.count
-            }
+        init(viewModel: UserWidgetComponentViewModel) {
+            self.viewModel = viewModel
         }
 
-        var title: String {
-            switch self {
-            case .userWidget(_):
-                return .yourEurofurence
-
-            case .announcements(_, _):
-                return .announcements
-            }
-        }
+        var childCount: Int { return 1 }
+        var title: String { return .yourEurofurence }
 
         func announceContent(at index: Int, to visitor: NewsViewModelVisitor) {
-            switch self {
-            case .userWidget(let widget):
-                visitor.visit(widget)
-
-            case .announcements(let announcements, _):
-                let announcement = announcements[index]
-                visitor.visit(announcement)
-            }
+            visitor.visit(viewModel)
         }
 
         func announceValue(at index: Int, to completionHandler: @escaping (NewsViewModelValue) -> Void) {
-            switch self {
-            case .userWidget(_):
-                completionHandler(.messages)
-
-            case .announcements(_, let announcements):
-                let announcement = announcements[index]
-                completionHandler(.announcement(announcement))
-            }
+            completionHandler(.messages)
         }
+
+    }
+
+    private class AnnouncementsComponent: NewsViewModelComponent {
+
+        private let announcements: [Announcement2]
+        private let viewModels: [AnnouncementComponentViewModel]
+
+        init(announcements: [Announcement2]) {
+            self.announcements = announcements
+            viewModels = announcements.map({ (announcement) -> AnnouncementComponentViewModel in
+                return AnnouncementComponentViewModel(title: announcement.title, detail: announcement.content)
+            })
+        }
+
+        var childCount: Int { return viewModels.count }
+        var title: String { return .announcements }
+
+        func announceContent(at index: Int, to visitor: NewsViewModelVisitor) {
+            let viewModel = viewModels[index]
+            visitor.visit(viewModel)
+        }
+
+        func announceValue(at index: Int, to completionHandler: @escaping (NewsViewModelValue) -> Void) {
+            let announcement = announcements[index]
+            completionHandler(.announcement(announcement))
+        }
+
     }
 
     private struct ViewModel: NewsViewModel {
 
-        private let components: [Component]
+        private let components: [NewsViewModelComponent]
 
-        init(components: [Component]) {
+        init(components: [NewsViewModelComponent]) {
             self.components = components
         }
 
