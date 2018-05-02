@@ -34,7 +34,7 @@ class StubbedUserViewModel: NewsViewModel {
     }
     
     func fetchModelValue(at indexPath: IndexPath, completionHandler: @escaping (NewsModuleModel) -> Void) {
-        
+        completionHandler(.messages)
     }
     
 }
@@ -68,7 +68,7 @@ class WhenBindingUser_NewsPresenterShould: XCTestCase {
         XCTAssertEqual(userWidgetViewModel.detailedPrompt, context.newsScene.stubbedUserWidgetComponent.capturedDetailedPrompt)
     }
     
-    func testTellTheModuleDelegateToShowPrivateMessagesWhenSceneSelectsComponent() {
+    func testTellTheModuleDelegateToShowPrivateMessagesWhenSceneSelectsMessagesComponent() {
         context.selectComponent(at: indexPath)
         XCTAssertTrue(context.delegate.showPrivateMessagesRequested)
     }

@@ -48,4 +48,12 @@ class WhenBindingAnnouncement_NewsPresenterShould: XCTestCase {
         XCTAssertEqual(announcement, context.delegate.capturedAnnouncement)
     }
     
+    func testNotTellTheDelegateToShowPrivateMessagesWhenSelectingAnnouncement() {
+        let announcement = Announcement2.random
+        viewModel.stub(.announcement(announcement), at: indexPath)
+        context.selectComponent(at: indexPath)
+        
+        XCTAssertFalse(context.delegate.showPrivateMessagesRequested)
+    }
+    
 }

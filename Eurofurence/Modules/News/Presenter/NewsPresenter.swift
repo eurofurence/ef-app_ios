@@ -109,12 +109,13 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
     }
 
     func newsSceneDidSelectComponent(at indexPath: IndexPath) {
-        delegate.newsModuleDidRequestShowingPrivateMessages()
-
         viewModel?.fetchModelValue(at: indexPath) { (model) in
             switch model {
             case .announcement(let announcement):
                 self.delegate.newsModuleDidSelectAnnouncement(announcement)
+
+            case .messages:
+                self.delegate.newsModuleDidRequestShowingPrivateMessages()
             }
         }
     }

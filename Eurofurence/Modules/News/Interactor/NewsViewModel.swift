@@ -21,6 +21,7 @@ protocol NewsViewModel {
 }
 
 enum NewsModuleModel {
+    case messages
     case announcement(Announcement2)
 }
 
