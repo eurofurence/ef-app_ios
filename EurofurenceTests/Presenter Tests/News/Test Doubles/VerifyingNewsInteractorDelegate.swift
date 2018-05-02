@@ -62,41 +62,65 @@ extension VerifyingNewsInteractorDelegate {
         
     }
     
-    func verify(_ expectation: Expectation, file: StaticString = #file, line: UInt = #line) {
-        class Visitor: NewsViewModelVisitor {
-            var components = [AnyHashable]()
-            
-            func visit(_ userWidget: UserWidgetComponentViewModel) {
-                components.append(AnyHashable(userWidget))
-            }
-            
-            func visit(_ announcement: AnnouncementComponentViewModel) {
-                components.append(AnyHashable(announcement))
-            }
-            
-            func visit(_ event: EventComponentViewModel) {
-                components.append(AnyHashable(event))
-            }
-            
-            func visit(_ countdown: ConventionCountdownComponentViewModel) {
-                components.append(AnyHashable(countdown))
-            }
+    private class Visitor: NewsViewModelVisitor {
+        let visitedViewModel: NewsViewModel
+        var components = [AnyHashable]()
+        var moduleModels = [IndexPath : NewsModuleModel]()
+        
+        init(visitedViewModel: NewsViewModel) {
+            self.visitedViewModel = visitedViewModel
         }
         
-        let visitor = Visitor()
-        var titles: [String?] = []
-        if let viewModel = viewModel {
-            traverse(through: viewModel, using: visitor)
-            titles = (0..<viewModel.numberOfComponents).map(viewModel.titleForComponent)
-            
-            expectation.verify(components: visitor.components, titles: titles, file: file, line: line)
+        func visit(_ userWidget: UserWidgetComponentViewModel) {
+            components.append(AnyHashable(userWidget))
         }
-        else {
-            XCTFail("Did not witness a view model", file: file, line: line)
+        
+        func visit(_ announcement: AnnouncementComponentViewModel) {
+            components.append(AnyHashable(announcement))
+        }
+        
+        func visit(_ event: EventComponentViewModel) {
+            components.append(AnyHashable(event))
+        }
+        
+        func visit(_ countdown: ConventionCountdownComponentViewModel) {
+            components.append(AnyHashable(countdown))
         }
     }
     
-    private func traverse(through viewModel: NewsViewModel, using visitor: NewsViewModelVisitor) {
+    private func traverseViewModel(file: StaticString = #file, line: UInt = #line) -> Visitor? {
+        if let viewModel = viewModel {
+            let visitor = Visitor(visitedViewModel: viewModel)
+            traverse(through: viewModel, using: visitor)
+            return visitor
+        }
+        else {
+            XCTFail("Did not witness a view model", file: file, line: line)
+            return nil
+        }
+    }
+    
+    func verify(_ expectation: Expectation, file: StaticString = #file, line: UInt = #line) {
+        if let visitor = traverseViewModel() {
+            let viewModel = visitor.visitedViewModel
+            let titles = (0..<viewModel.numberOfComponents).map(viewModel.titleForComponent)
+            
+            expectation.verify(components: visitor.components, titles: titles, file: file, line: line)
+        }
+    }
+    
+    func verifyModel(at indexPath: IndexPath, is expected: NewsModuleModel, file: StaticString = #file, line: UInt = #line) {
+        if let visitor = traverseViewModel() {
+            guard let actual = visitor.moduleModels[indexPath] else {
+                XCTFail("Did not resolve a module model at index path \(indexPath)", file: file, line: line)
+                return
+            }
+            
+            XCTAssertEqual(expected, actual, file: file, line: line)
+        }
+    }
+    
+    private func traverse(through viewModel: NewsViewModel, using visitor: Visitor) {
         var indexPaths = [IndexPath]()
         let numberOfComponents = viewModel.numberOfComponents
         
@@ -108,6 +132,11 @@ extension VerifyingNewsInteractorDelegate {
         }
         
         indexPaths.forEach({ viewModel.describeComponent(at: $0, to: visitor) })
+        indexPaths.forEach({ (indexPath) in
+            viewModel.fetchModelValue(at: indexPath, completionHandler: { (model) in
+                visitor.moduleModels[indexPath] = model
+            })
+        })
     }
     
 }

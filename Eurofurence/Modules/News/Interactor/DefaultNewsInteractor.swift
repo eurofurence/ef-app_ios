@@ -100,7 +100,7 @@ class DefaultNewsInteractor: NewsInteractor {
         }
 
         func fetchModelValue(at indexPath: IndexPath, completionHandler: @escaping (NewsModuleModel) -> Void) {
-
+            completionHandler(.messages)
         }
 
     }

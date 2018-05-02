@@ -11,7 +11,7 @@ import XCTest
 
 class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
     
-    func testProduceViewModelWithLoginPrompt_CountdownUntilConvention_AndAnnouncements() {
+    func testProduceViewModelWithLoginPrompt_AndAnnouncements() {
         let loggedOutAuthService = FakeAuthenticationService(authState: .loggedOut)
         let announcements = [Announcement2].random
         let announcementsService = StubAnnouncementsService(announcements: announcements)
@@ -26,6 +26,17 @@ class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
         let expectation = VerifyingNewsInteractorDelegate.Expectation(components: expected, titles: [.yourEurofurence, .announcements])
         
         delegate.verify(expectation)
+    }
+    
+    func testFetchMessagesModuleValueWhenAskingForModelInFirstSection() {
+        let loggedOutAuthService = FakeAuthenticationService(authState: .loggedOut)
+        let announcements = [Announcement2].random
+        let announcementsService = StubAnnouncementsService(announcements: announcements)
+        let delegate = VerifyingNewsInteractorDelegate()
+        let interactor = DefaultNewsInteractor(announcementsService: announcementsService, authenticationService: loggedOutAuthService)
+        interactor.subscribeViewModelUpdates(delegate)
+        
+        delegate.verifyModel(at: IndexPath(item: 0, section: 0), is: .messages)
     }
     
     private func makeExpectedAnnouncementViewModel(from announcement: Announcement2) -> AnnouncementComponentViewModel {

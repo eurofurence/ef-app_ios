@@ -20,9 +20,22 @@ protocol NewsViewModel {
 
 }
 
-enum NewsModuleModel {
+enum NewsModuleModel: Equatable {
     case messages
     case announcement(Announcement2)
+
+    static func ==(lhs: NewsModuleModel, rhs: NewsModuleModel) -> Bool {
+        switch (lhs, rhs) {
+        case (.messages, .messages):
+            return true
+
+        case (.announcement(let l), .announcement(let r)):
+            return l == r
+
+        default:
+            return false
+        }
+    }
 }
 
 protocol NewsViewModelVisitor {
