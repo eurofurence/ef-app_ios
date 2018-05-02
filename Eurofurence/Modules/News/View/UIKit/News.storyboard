@@ -14,6 +14,11 @@
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="fontawesome-webfont.ttf">
+            <string>FontAwesome</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Item-->
         <scene sceneID="xpP-nk-HBr">
@@ -32,27 +37,38 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1VH-jK-SNl" userLabel="Icon Container">
-                                            <rect key="frame" x="19.999999999999996" y="19.999999999999996" width="35.666666666666657" height="35.666666666666657"/>
+                                            <rect key="frame" x="19.999999999999996" y="17" width="35.666666666666657" height="42"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tY1-X0-5Ee">
-                                                    <rect key="frame" x="0.0" y="0.0" width="35.666666666666664" height="35.666666666666664"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="67K-9U-tXm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="35.666666666666664" height="35.666666666666664"/>
-                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQy-1E-giz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="35.666666666666664" height="42"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <bool key="isElement" value="NO"/>
+                                                    </accessibility>
+                                                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="42"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0c-gM-cr8">
+                                                    <rect key="frame" x="0.0" y="0.0" width="35.666666666666664" height="42"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <bool key="isElement" value="NO"/>
+                                                    </accessibility>
+                                                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="42"/>
+                                                    <color key="textColor" red="0.14117647059999999" green="0.3411764706" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="tY1-X0-5Ee" secondAttribute="trailing" id="2jz-hl-ZMs"/>
-                                                <constraint firstItem="67K-9U-tXm" firstAttribute="top" secondItem="1VH-jK-SNl" secondAttribute="top" id="59V-n4-nWt"/>
-                                                <constraint firstItem="tY1-X0-5Ee" firstAttribute="top" secondItem="1VH-jK-SNl" secondAttribute="top" id="5LA-mz-Nil"/>
-                                                <constraint firstItem="67K-9U-tXm" firstAttribute="leading" secondItem="1VH-jK-SNl" secondAttribute="leading" id="IuQ-qs-GT9"/>
-                                                <constraint firstAttribute="trailing" secondItem="67K-9U-tXm" secondAttribute="trailing" id="JB9-vL-tts"/>
-                                                <constraint firstAttribute="bottom" secondItem="67K-9U-tXm" secondAttribute="bottom" id="WxL-Ky-PXN"/>
-                                                <constraint firstAttribute="width" secondItem="1VH-jK-SNl" secondAttribute="height" multiplier="1:1" id="gSx-os-ftr"/>
-                                                <constraint firstAttribute="bottom" secondItem="tY1-X0-5Ee" secondAttribute="bottom" id="kx1-DJ-sJP"/>
-                                                <constraint firstItem="tY1-X0-5Ee" firstAttribute="leading" secondItem="1VH-jK-SNl" secondAttribute="leading" id="oiZ-WF-Dub"/>
+                                                <constraint firstItem="X0c-gM-cr8" firstAttribute="top" secondItem="1VH-jK-SNl" secondAttribute="top" id="51O-nS-MSf"/>
+                                                <constraint firstItem="GQy-1E-giz" firstAttribute="top" secondItem="1VH-jK-SNl" secondAttribute="top" id="K1i-GI-DiL"/>
+                                                <constraint firstAttribute="bottom" secondItem="X0c-gM-cr8" secondAttribute="bottom" id="lf3-Jd-jhA"/>
+                                                <constraint firstAttribute="trailing" secondItem="X0c-gM-cr8" secondAttribute="trailing" id="m6j-X7-Dyj"/>
+                                                <constraint firstAttribute="bottom" secondItem="GQy-1E-giz" secondAttribute="bottom" id="mVz-Bd-KTv"/>
+                                                <constraint firstAttribute="trailing" secondItem="GQy-1E-giz" secondAttribute="trailing" id="rpU-ZO-4NT"/>
+                                                <constraint firstItem="GQy-1E-giz" firstAttribute="leading" secondItem="1VH-jK-SNl" secondAttribute="leading" id="sih-ez-Asg"/>
                                                 <constraint firstAttribute="width" constant="35.670000000000002" id="tgZ-2B-opY"/>
+                                                <constraint firstItem="X0c-gM-cr8" firstAttribute="leading" secondItem="1VH-jK-SNl" secondAttribute="leading" id="z3M-D0-Igc"/>
                                             </constraints>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="FyR-oR-IXq">
@@ -84,9 +100,9 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="detailedPromptLabel" destination="ZjT-sA-Hl5" id="Z1w-Ew-Ns0"/>
-                                    <outlet property="highlightedUserPromptImageView" destination="67K-9U-tXm" id="kVx-B1-0ZQ"/>
+                                    <outlet property="highlightedUserPromptView" destination="X0c-gM-cr8" id="41M-g2-hfQ"/>
                                     <outlet property="promptLabel" destination="MVK-jU-5AX" id="vzU-VW-Md3"/>
-                                    <outlet property="standardUserPromptImageView" destination="tY1-X0-5Ee" id="XLG-OC-ZSs"/>
+                                    <outlet property="standardUserPromptView" destination="GQy-1E-giz" id="MuA-Si-p4o"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsAnnouncementTableViewCell" rowHeight="76" id="UE0-SO-Nue" customClass="NewsAnnouncementTableViewCell" customModule="Eurofurence" customModuleProvider="target">
