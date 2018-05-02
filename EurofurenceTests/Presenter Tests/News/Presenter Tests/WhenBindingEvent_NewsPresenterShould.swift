@@ -36,7 +36,7 @@ class EventsViewModel: NewsViewModel {
         visitor.visit(event)
     }
     
-    func fetchModelValue(at indexPath: IndexPath, completionHandler: @escaping (NewsModuleModel) -> Void) {
+    func fetchModelValue(at indexPath: IndexPath, completionHandler: @escaping (NewsViewModelValue) -> Void) {
         
     }
     

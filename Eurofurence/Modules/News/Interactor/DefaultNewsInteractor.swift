@@ -99,7 +99,7 @@ class DefaultNewsInteractor: NewsInteractor {
             component.announceContent(at: indexPath.item, to: visitor)
         }
 
-        func fetchModelValue(at indexPath: IndexPath, completionHandler: @escaping (NewsModuleModel) -> Void) {
+        func fetchModelValue(at indexPath: IndexPath, completionHandler: @escaping (NewsViewModelValue) -> Void) {
             completionHandler(.messages)
         }
 

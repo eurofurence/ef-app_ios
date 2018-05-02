@@ -36,14 +36,14 @@ class AnnouncementsViewModel: NewsViewModel {
         visitor.visit(announcement)
     }
     
-    private var models = [IndexPath : NewsModuleModel]()
-    func fetchModelValue(at indexPath: IndexPath, completionHandler: @escaping (NewsModuleModel) -> Void) {
+    private var models = [IndexPath : NewsViewModelValue]()
+    func fetchModelValue(at indexPath: IndexPath, completionHandler: @escaping (NewsViewModelValue) -> Void) {
         if let model = models[indexPath] {
             completionHandler(model)
         }
     }
     
-    func stub(_ model: NewsModuleModel, at indexPath: IndexPath) {
+    func stub(_ model: NewsViewModelValue, at indexPath: IndexPath) {
         models[indexPath] = model
     }
     

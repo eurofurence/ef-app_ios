@@ -65,7 +65,7 @@ extension VerifyingNewsInteractorDelegate {
     private class Visitor: NewsViewModelVisitor {
         let visitedViewModel: NewsViewModel
         var components = [AnyHashable]()
-        var moduleModels = [IndexPath : NewsModuleModel]()
+        var moduleModels = [IndexPath : NewsViewModelValue]()
         
         init(visitedViewModel: NewsViewModel) {
             self.visitedViewModel = visitedViewModel
@@ -109,7 +109,7 @@ extension VerifyingNewsInteractorDelegate {
         }
     }
     
-    func verifyModel(at indexPath: IndexPath, is expected: NewsModuleModel, file: StaticString = #file, line: UInt = #line) {
+    func verifyModel(at indexPath: IndexPath, is expected: NewsViewModelValue, file: StaticString = #file, line: UInt = #line) {
         if let visitor = traverseViewModel() {
             guard let actual = visitor.moduleModels[indexPath] else {
                 XCTFail("Did not resolve a module model at index path \(indexPath)", file: file, line: line)

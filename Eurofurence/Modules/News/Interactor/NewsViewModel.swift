@@ -16,15 +16,15 @@ protocol NewsViewModel {
     func numberOfItemsInComponent(at index: Int) -> Int
     func titleForComponent(at index: Int) -> String
     func describeComponent(at indexPath: IndexPath, to visitor: NewsViewModelVisitor)
-    func fetchModelValue(at indexPath: IndexPath, completionHandler: @escaping (NewsModuleModel) -> Void)
+    func fetchModelValue(at indexPath: IndexPath, completionHandler: @escaping (NewsViewModelValue) -> Void)
 
 }
 
-enum NewsModuleModel: Equatable {
+enum NewsViewModelValue: Equatable {
     case messages
     case announcement(Announcement2)
 
-    static func ==(lhs: NewsModuleModel, rhs: NewsModuleModel) -> Bool {
+    static func ==(lhs: NewsViewModelValue, rhs: NewsViewModelValue) -> Bool {
         switch (lhs, rhs) {
         case (.messages, .messages):
             return true
