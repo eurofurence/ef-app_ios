@@ -10,6 +10,11 @@ import UIKit
 
 class NewsUserWidgetTableViewCell: UITableViewCell, UserWidgetComponent {
 
+    // MARK: Properties
+
+    private let standardUserPromptColor = UIColor(white: 0.5, alpha: 1.0)
+    private let highlightedUserPromptColor = UIColor(red: 36.0, green: 87.0, blue: 83.0, alpha: 1.0)
+
     // MARK: IBOutlets
 
     @IBOutlet weak var standardUserPromptImageView: UIImageView!
@@ -29,6 +34,7 @@ class NewsUserWidgetTableViewCell: UITableViewCell, UserWidgetComponent {
 
     func showHighlightedUserPrompt() {
         highlightedUserPromptImageView.isHidden = false
+        detailedPromptLabel.textColor = highlightedUserPromptColor
     }
 
     func hideHighlightedUserPrompt() {
@@ -37,6 +43,7 @@ class NewsUserWidgetTableViewCell: UITableViewCell, UserWidgetComponent {
 
     func showStandardUserPrompt() {
         standardUserPromptImageView.isHidden = false
+        detailedPromptLabel.textColor = standardUserPromptColor
     }
 
     func hideStandardUserPrompt() {
