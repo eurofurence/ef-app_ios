@@ -11,17 +11,27 @@ import XCTest
 
 class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
     
-    func testProduceViewModelWithLoginPrompt_AndAnnouncements() {
-        let loggedOutAuthService = FakeAuthenticationService(authState: .loggedOut)
+    var context: DefaultNewsInteractorTestBuilder.Context!
+    var delegate: VerifyingNewsInteractorDelegate!
+    
+    override func setUp() {
+        super.setUp()
+        
         let announcements = [Announcement2].random
         let announcementsService = StubAnnouncementsService(announcements: announcements)
-        let delegate = VerifyingNewsInteractorDelegate()
-        let interactor = DefaultNewsInteractor(announcementsService: announcementsService, authenticationService: loggedOutAuthService)
-        interactor.subscribeViewModelUpdates(delegate)
+        context = DefaultNewsInteractorTestBuilder()
+            .with(announcementsService)
+            .with(FakeAuthenticationService(authState: .loggedOut))
+            .build()
+        delegate = VerifyingNewsInteractorDelegate()
+        context.interactor.subscribeViewModelUpdates(delegate)
+    }
+    
+    func testProduceViewModelWithLoginPrompt_AndAnnouncements() {
         let expectedUserViewModel = UserWidgetComponentViewModel(prompt: .anonymousUserLoginPrompt,
                                                                  detailedPrompt: .anonymousUserLoginDescription,
                                                                  hasUnreadMessages: false)
-        let expectedAnnouncementViewModels = announcements.map(makeExpectedAnnouncementViewModel).map(AnyHashable.init)
+        let expectedAnnouncementViewModels = context.makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements()
         let expected = [AnyHashable(expectedUserViewModel)] + expectedAnnouncementViewModels
         let expectation = VerifyingNewsInteractorDelegate.Expectation(components: expected, titles: [.yourEurofurence, .announcements])
         
@@ -29,31 +39,14 @@ class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
     }
     
     func testFetchMessagesModuleValueWhenAskingForModelInFirstSection() {
-        let loggedOutAuthService = FakeAuthenticationService(authState: .loggedOut)
-        let announcements = [Announcement2].random
-        let announcementsService = StubAnnouncementsService(announcements: announcements)
-        let delegate = VerifyingNewsInteractorDelegate()
-        let interactor = DefaultNewsInteractor(announcementsService: announcementsService, authenticationService: loggedOutAuthService)
-        interactor.subscribeViewModelUpdates(delegate)
-        
         delegate.verifyModel(at: IndexPath(item: 0, section: 0), is: .messages)
     }
     
     func testFetchAnnouncementModuleValueWhenAskingForModelInSecondSection() {
-        let loggedOutAuthService = FakeAuthenticationService(authState: .loggedOut)
-        let announcements = [Announcement2].random
-        let announcementsService = StubAnnouncementsService(announcements: announcements)
-        let delegate = VerifyingNewsInteractorDelegate()
-        let interactor = DefaultNewsInteractor(announcementsService: announcementsService, authenticationService: loggedOutAuthService)
-        interactor.subscribeViewModelUpdates(delegate)
-        let randomAnnouncement = announcements.randomElement()
+        let randomAnnouncement = context.announcements.randomElement()
         let announcementIndexPath = IndexPath(item: randomAnnouncement.index, section: 1)
         
         delegate.verifyModel(at: announcementIndexPath, is: .announcement(randomAnnouncement.element))
-    }
-    
-    private func makeExpectedAnnouncementViewModel(from announcement: Announcement2) -> AnnouncementComponentViewModel {
-        return AnnouncementComponentViewModel(title: announcement.title, detail: announcement.content)
     }
     
 }

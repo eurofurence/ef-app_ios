@@ -367,6 +367,7 @@
 		CA65A87520990C9500B72533 /* EventBus+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A87420990C9500B72533 /* EventBus+Convenience.swift */; };
 		CA65A877209A523400B72533 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A876209A523400B72533 /* UIColor+Extensions.swift */; };
 		CA65A879209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A878209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift */; };
+		CA65A87B209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A87A209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -1023,6 +1024,7 @@
 		CA65A87420990C9500B72533 /* EventBus+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventBus+Convenience.swift"; sourceTree = "<group>"; };
 		CA65A876209A523400B72533 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		CA65A878209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedInBeforeConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
+		CA65A87A209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNewsInteractorTestBuilder.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -2247,6 +2249,7 @@
 			children = (
 				CA65A878209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift */,
 				CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */,
+				CA65A87A209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift */,
 			);
 			path = "Interactor Tests";
 			sourceTree = "<group>";
@@ -4255,6 +4258,7 @@
 				CA0E5217208FBEA9005259FE /* StubAnnouncementsService.swift in Sources */,
 				CA637546208CBB4E00536BE2 /* StubTutorialModuleFactory.swift in Sources */,
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
+				CA65A87B209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift in Sources */,
 				CABF03C12041C2EC0028BD62 /* KnowledgeGroup2.swift in Sources */,
 				CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */,
 				7820A6FF1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift in Sources */,
