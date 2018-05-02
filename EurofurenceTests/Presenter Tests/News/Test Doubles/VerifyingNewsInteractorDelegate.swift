@@ -37,7 +37,7 @@ extension VerifyingNewsInteractorDelegate {
             for (idx, expected) in self.components.enumerated() {
                 let actual = components[idx]
                 if expected != actual {
-                    XCTFail("Components at index \(idx) not equal: Expected \(expected), but got \(actual)")
+                    XCTFail("Components at index \(idx) not equal: Expected \(expected), but got \(actual)", file: file, line: line)
                     return
                 }
             }

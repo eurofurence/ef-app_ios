@@ -34,15 +34,32 @@ class DefaultNewsInteractor: NewsInteractor {
     }
 
     func subscribeViewModelUpdates(_ delegate: NewsInteractorDelegate) {
-        let userWidget = UserWidgetComponentViewModel(prompt: .anonymousUserLoginPrompt,
-                                                      detailedPrompt: .anonymousUserLoginDescription,
-                                                      hasUnreadMessages: false)
+        makeUserWidgetViewModel { (userWidget) in
+            self.announcementsService.fetchAnnouncements { (announcements) in
+                let userWidget = UserComponent(viewModel: userWidget)
+                let announcementsComponents = AnnouncementsComponent(announcements: announcements)
+                let viewModel = ViewModel(components: [userWidget, announcementsComponents])
+                delegate.viewModelDidUpdate(viewModel)
+            }
+        }
+    }
 
-        announcementsService.fetchAnnouncements { (announcements) in
-            let userWidget = UserComponent(viewModel: userWidget)
-            let announcementsComponents = AnnouncementsComponent(announcements: announcements)
-            let viewModel = ViewModel(components: [userWidget, announcementsComponents])
-            delegate.viewModelDidUpdate(viewModel)
+    private func makeUserWidgetViewModel(_ completionHandler: @escaping (UserWidgetComponentViewModel) -> Void) {
+        authenticationService.determineAuthState { (state) in
+            let userWidget: UserWidgetComponentViewModel
+            switch state {
+            case .loggedIn(let user):
+                userWidget = UserWidgetComponentViewModel(prompt: .welcomePrompt(for: user),
+                                                          detailedPrompt: .welcomeDescription(messageCount: 0),
+                                                          hasUnreadMessages: false)
+
+            case .loggedOut:
+                userWidget = UserWidgetComponentViewModel(prompt: .anonymousUserLoginPrompt,
+                                                          detailedPrompt: .anonymousUserLoginDescription,
+                                                          hasUnreadMessages: false)
+            }
+
+            completionHandler(userWidget)
         }
     }
 
