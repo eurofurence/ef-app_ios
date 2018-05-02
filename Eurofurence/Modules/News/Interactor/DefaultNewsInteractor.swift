@@ -46,7 +46,7 @@ class DefaultNewsInteractor: NewsInteractor {
         }
     }
 
-    private class UserComponent: NewsViewModelComponent {
+    private struct UserComponent: NewsViewModelComponent {
 
         private let viewModel: UserWidgetComponentViewModel
 
@@ -67,7 +67,7 @@ class DefaultNewsInteractor: NewsInteractor {
 
     }
 
-    private class AnnouncementsComponent: NewsViewModelComponent {
+    private struct AnnouncementsComponent: NewsViewModelComponent {
 
         private let announcements: [Announcement2]
         private let viewModels: [AnnouncementComponentViewModel]
