@@ -37,7 +37,9 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
         observers.forEach { $0.privateMessagesServiceDidFinishRefreshingMessages(messages) }
     }
     
+    private(set) var unreadCount: Int = 0
     func notifyUnreadCountDidChange(to count: Int) {
+        unreadCount = count
         observers.forEach { $0.privateMessagesServiceDidUpdateUnreadMessageCount(to: count) }
     }
     

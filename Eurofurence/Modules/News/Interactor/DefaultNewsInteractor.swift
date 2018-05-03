@@ -18,26 +18,31 @@ private protocol NewsViewModelComponent {
 
 }
 
-class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver {
+class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, PrivateMessagesServiceObserver {
 
     // MARK: Properties
 
     private let announcementsService: AnnouncementsService
     private let authenticationService: AuthenticationService
     private var delegate: NewsInteractorDelegate?
+    private var unreadMessagesCount = 0
 
     // MARK: Initialization
 
     convenience init() {
         self.init(announcementsService: EurofurenceApplication.shared,
-                  authenticationService: ApplicationAuthenticationService.shared)
+                  authenticationService: ApplicationAuthenticationService.shared,
+                  privateMessagesService: EurofurencePrivateMessagesService.shared)
     }
 
-    init(announcementsService: AnnouncementsService, authenticationService: AuthenticationService) {
+    init(announcementsService: AnnouncementsService,
+         authenticationService: AuthenticationService,
+         privateMessagesService: PrivateMessagesService) {
         self.announcementsService = announcementsService
         self.authenticationService = authenticationService
 
         authenticationService.add(observer: self)
+        privateMessagesService.add(self)
     }
 
     // MARK: NewsInteractor
@@ -55,6 +60,21 @@ class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver {
 
     func userDidLogout() {
         regenerateViewModel()
+    }
+
+    // MARK: PrivateMessagesServiceObserver
+
+    func privateMessagesServiceDidUpdateUnreadMessageCount(to unreadCount: Int) {
+        unreadMessagesCount = unreadCount
+        regenerateViewModel()
+    }
+
+    func privateMessagesServiceDidFinishRefreshingMessages(_ messages: [Message]) {
+
+    }
+
+    func privateMessagesServiceDidFailToLoadMessages() {
+
     }
 
     // MARK: Private
@@ -76,7 +96,7 @@ class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver {
             switch state {
             case .loggedIn(let user):
                 userWidget = UserWidgetComponentViewModel(prompt: .welcomePrompt(for: user),
-                                                          detailedPrompt: .welcomeDescription(messageCount: 0),
+                                                          detailedPrompt: .welcomeDescription(messageCount: self.unreadMessagesCount),
                                                           hasUnreadMessages: false)
 
             case .loggedOut:

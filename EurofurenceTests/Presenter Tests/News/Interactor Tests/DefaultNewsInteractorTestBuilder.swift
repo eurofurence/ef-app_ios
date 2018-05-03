@@ -17,14 +17,17 @@ class DefaultNewsInteractorTestBuilder {
         var delegate: CapturingNewsInteractorDelegate
         var authenticationService: FakeAuthenticationService
         var announcementsService: StubAnnouncementsService
+        var privateMessagesService: CapturingPrivateMessagesService
     }
     
     private var announcementsService: StubAnnouncementsService
     private var authenticationService: FakeAuthenticationService
+    private var privateMessagesService: CapturingPrivateMessagesService
     
     init() {
         announcementsService = StubAnnouncementsService(announcements: [])
         authenticationService = FakeAuthenticationService(authState: .loggedOut)
+        privateMessagesService = CapturingPrivateMessagesService()
     }
     
     @discardableResult
@@ -39,15 +42,23 @@ class DefaultNewsInteractorTestBuilder {
         return self
     }
     
+    @discardableResult
+    func with(_ privateMessagesService: CapturingPrivateMessagesService) -> DefaultNewsInteractorTestBuilder {
+        self.privateMessagesService = privateMessagesService
+        return self
+    }
+    
     func build() -> Context {
         let interactor = DefaultNewsInteractor(announcementsService: announcementsService,
-                                               authenticationService: authenticationService)
+                                               authenticationService: authenticationService,
+                                               privateMessagesService: privateMessagesService)
         let delegate = CapturingNewsInteractorDelegate()
         
         return Context(interactor: interactor,
                        delegate: delegate,
                        authenticationService: authenticationService,
-                       announcementsService: announcementsService)
+                       announcementsService: announcementsService,
+                       privateMessagesService: privateMessagesService)
     }
     
 }
@@ -64,7 +75,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
         switch authenticationService.authState {
         case .loggedIn(let user):
             return UserWidgetComponentViewModel(prompt: String.welcomePrompt(for: user),
-                                                detailedPrompt: String.welcomeDescription(messageCount: 0),
+                                                detailedPrompt: String.welcomeDescription(messageCount: privateMessagesService.unreadCount),
                                                 hasUnreadMessages: false) // TODO: Take unread messages into account
             
         case .loggedOut:
