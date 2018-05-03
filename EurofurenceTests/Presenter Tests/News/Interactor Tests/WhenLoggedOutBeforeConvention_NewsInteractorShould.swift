@@ -12,7 +12,6 @@ import XCTest
 class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
     
     var context: DefaultNewsInteractorTestBuilder.Context!
-    var delegate: VerifyingNewsInteractorDelegate!
     
     override func setUp() {
         super.setUp()
@@ -23,8 +22,7 @@ class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
             .with(announcementsService)
             .with(FakeAuthenticationService(authState: .loggedOut))
             .build()
-        delegate = VerifyingNewsInteractorDelegate()
-        context.interactor.subscribeViewModelUpdates(delegate)
+        context.subscribeViewModelUpdates()
     }
     
     func testProduceViewModelWithLoginPrompt_AndAnnouncements() {
@@ -33,18 +31,18 @@ class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
         let expected = [expectedUserViewModel] + expectedAnnouncementViewModels
         let expectation = VerifyingNewsInteractorDelegate.Expectation(components: expected, titles: [.yourEurofurence, .announcements])
         
-        delegate.verify(expectation)
+        context.verify(expectation)
     }
     
     func testFetchMessagesModuleValueWhenAskingForModelInFirstSection() {
-        delegate.verifyModel(at: IndexPath(item: 0, section: 0), is: .messages)
+        context.verifyModel(at: IndexPath(item: 0, section: 0), is: .messages)
     }
     
     func testFetchAnnouncementModuleValueWhenAskingForModelInSecondSection() {
         let randomAnnouncement = context.announcements.randomElement()
         let announcementIndexPath = IndexPath(item: randomAnnouncement.index, section: 1)
         
-        delegate.verifyModel(at: announcementIndexPath, is: .announcement(randomAnnouncement.element))
+        context.verifyModel(at: announcementIndexPath, is: .announcement(randomAnnouncement.element))
     }
     
 }

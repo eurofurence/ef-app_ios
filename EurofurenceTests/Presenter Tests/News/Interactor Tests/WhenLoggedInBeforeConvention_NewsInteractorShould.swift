@@ -17,14 +17,13 @@ class WhenLoggedInBeforeConvention_NewsInteractorShould: XCTestCase {
         let announcements = [Announcement2].random
         let announcementsService = StubAnnouncementsService(announcements: announcements)
         let context = DefaultNewsInteractorTestBuilder().with(loggedInAuthService).with(announcementsService).build()
-        let delegate = VerifyingNewsInteractorDelegate()
-        context.interactor.subscribeViewModelUpdates(delegate)
+        context.subscribeViewModelUpdates()
         let expectedUserViewModel = context.makeExpectedUserWidget()
         let expectedAnnouncementViewModels = context.makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements()
         let expected = [expectedUserViewModel] + expectedAnnouncementViewModels
         let expectation = VerifyingNewsInteractorDelegate.Expectation(components: expected, titles: [.yourEurofurence, .announcements])
         
-        delegate.verify(expectation)
+        context.verify(expectation)
     }
     
 }

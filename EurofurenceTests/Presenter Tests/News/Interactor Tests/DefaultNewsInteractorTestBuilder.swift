@@ -13,6 +13,7 @@ class DefaultNewsInteractorTestBuilder {
     
     struct Context {
         var interactor: DefaultNewsInteractor
+        var delegate: VerifyingNewsInteractorDelegate
         var authenticationService: FakeAuthenticationService
         var announcementsService: StubAnnouncementsService
     }
@@ -40,12 +41,17 @@ class DefaultNewsInteractorTestBuilder {
     func build() -> Context {
         let interactor = DefaultNewsInteractor(announcementsService: announcementsService,
                                                authenticationService: authenticationService)
+        let delegate = VerifyingNewsInteractorDelegate()
+        
         return Context(interactor: interactor,
+                       delegate: delegate,
                        authenticationService: authenticationService,
                        announcementsService: announcementsService)
     }
     
 }
+
+// MARK: Convenience Functions
 
 extension DefaultNewsInteractorTestBuilder.Context {
     
@@ -73,6 +79,24 @@ extension DefaultNewsInteractorTestBuilder.Context {
     
     func makeExpectedAnnouncementViewModel(from announcement: Announcement2) -> AnnouncementComponentViewModel {
         return AnnouncementComponentViewModel(title: announcement.title, detail: announcement.content)
+    }
+    
+}
+
+// MARK: Assertion Assistance
+
+extension DefaultNewsInteractorTestBuilder.Context {
+    
+    func subscribeViewModelUpdates() {
+        interactor.subscribeViewModelUpdates(delegate)
+    }
+    
+    func verify(_ expectation: VerifyingNewsInteractorDelegate.Expectation, file: StaticString = #file, line: UInt = #line) {
+        delegate.verify(expectation, file: file, line: line)
+    }
+    
+    func verifyModel(at indexPath: IndexPath, is expected: NewsViewModelValue, file: StaticString = #file, line: UInt = #line) {
+        delegate.verifyModel(at: indexPath, is: expected, file: file, line: line)
     }
     
 }
