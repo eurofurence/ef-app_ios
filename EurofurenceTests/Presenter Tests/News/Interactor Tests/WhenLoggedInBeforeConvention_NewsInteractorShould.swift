@@ -19,11 +19,9 @@ class WhenLoggedInBeforeConvention_NewsInteractorShould: XCTestCase {
         let context = DefaultNewsInteractorTestBuilder().with(loggedInAuthService).with(announcementsService).build()
         let delegate = VerifyingNewsInteractorDelegate()
         context.interactor.subscribeViewModelUpdates(delegate)
-        let expectedUserViewModel = UserWidgetComponentViewModel(prompt: String.welcomePrompt(for: user),
-                                                                 detailedPrompt: String.welcomeDescription(messageCount: 0),
-                                                                 hasUnreadMessages: false)
+        let expectedUserViewModel = context.makeExpectedUserWidget()
         let expectedAnnouncementViewModels = context.makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements()
-        let expected = [AnyHashable(expectedUserViewModel)] + expectedAnnouncementViewModels
+        let expected = [expectedUserViewModel] + expectedAnnouncementViewModels
         let expectation = VerifyingNewsInteractorDelegate.Expectation(components: expected, titles: [.yourEurofurence, .announcements])
         
         delegate.verify(expectation)

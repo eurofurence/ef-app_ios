@@ -53,6 +53,20 @@ extension DefaultNewsInteractorTestBuilder.Context {
         return announcementsService.announcements
     }
     
+    func makeExpectedUserWidget() -> AnyHashable {
+        switch authenticationService.authState {
+        case .loggedIn(let user):
+            return UserWidgetComponentViewModel(prompt: String.welcomePrompt(for: user),
+                                                detailedPrompt: String.welcomeDescription(messageCount: 0),
+                                                hasUnreadMessages: false) // TODO: Take unread messages into account
+            
+        case .loggedOut:
+            return UserWidgetComponentViewModel(prompt: .anonymousUserLoginPrompt,
+                                                detailedPrompt: .anonymousUserLoginDescription,
+                                                hasUnreadMessages: false)
+        }
+    }
+    
     func makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements() -> [AnyHashable] {
         return announcements.map(makeExpectedAnnouncementViewModel).map(AnyHashable.init)
     }

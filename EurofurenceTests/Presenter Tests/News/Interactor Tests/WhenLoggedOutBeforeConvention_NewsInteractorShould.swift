@@ -28,11 +28,9 @@ class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
     }
     
     func testProduceViewModelWithLoginPrompt_AndAnnouncements() {
-        let expectedUserViewModel = UserWidgetComponentViewModel(prompt: .anonymousUserLoginPrompt,
-                                                                 detailedPrompt: .anonymousUserLoginDescription,
-                                                                 hasUnreadMessages: false)
+        let expectedUserViewModel = context.makeExpectedUserWidget()
         let expectedAnnouncementViewModels = context.makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements()
-        let expected = [AnyHashable(expectedUserViewModel)] + expectedAnnouncementViewModels
+        let expected = [expectedUserViewModel] + expectedAnnouncementViewModels
         let expectation = VerifyingNewsInteractorDelegate.Expectation(components: expected, titles: [.yourEurofurence, .announcements])
         
         delegate.verify(expectation)

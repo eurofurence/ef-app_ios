@@ -10,7 +10,7 @@
 
 class FakeAuthenticationService: AuthenticationService {
     
-    private let authState: AuthState
+    let authState: AuthState
     
     init(authState: AuthState) {
         self.authState = authState
