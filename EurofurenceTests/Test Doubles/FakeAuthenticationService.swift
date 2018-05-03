@@ -12,6 +12,14 @@ class FakeAuthenticationService: AuthenticationService {
     
     let authState: AuthState
     
+    class func loggedInService(_ user: User = .random) -> FakeAuthenticationService {
+        return FakeAuthenticationService(authState: .loggedIn(user))
+    }
+    
+    class func loggedOutService() -> FakeAuthenticationService {
+        return FakeAuthenticationService(authState: .loggedOut)
+    }
+    
     init(authState: AuthState) {
         self.authState = authState
     }

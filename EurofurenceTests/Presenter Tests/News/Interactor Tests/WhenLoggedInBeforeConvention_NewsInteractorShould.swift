@@ -12,15 +12,12 @@ import XCTest
 class WhenLoggedInBeforeConvention_NewsInteractorShould: XCTestCase {
     
     func testProduceViewModelWithMessagesPrompt_AndAnnouncements() {
-        let user = User.random
-        let loggedInAuthService = FakeAuthenticationService(authState: .loggedIn(user))
-        let announcements = [Announcement2].random
-        let announcementsService = StubAnnouncementsService(announcements: announcements)
-        let context = DefaultNewsInteractorTestBuilder().with(loggedInAuthService).with(announcementsService).build()
+        let context = DefaultNewsInteractorTestBuilder()
+            .with(FakeAuthenticationService.loggedInService())
+            .with(StubAnnouncementsService(announcements: .random))
+            .build()
         context.subscribeViewModelUpdates()
-        let expectedUserViewModel = context.makeExpectedUserWidget()
-        let expectedAnnouncementViewModels = context.makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements()
-        let expected = [expectedUserViewModel] + expectedAnnouncementViewModels
+        let expected = [context.makeExpectedUserWidget()] + context.makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements()
         let expectation = DefaultNewsInteractorTestBuilder.Expectation(components: expected, titles: [.yourEurofurence, .announcements])
         
         context.verify(expectation)

@@ -16,19 +16,15 @@ class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let announcements = [Announcement2].random
-        let announcementsService = StubAnnouncementsService(announcements: announcements)
         context = DefaultNewsInteractorTestBuilder()
-            .with(announcementsService)
-            .with(FakeAuthenticationService(authState: .loggedOut))
+            .with(StubAnnouncementsService(announcements: .random))
+            .with(FakeAuthenticationService.loggedOutService())
             .build()
         context.subscribeViewModelUpdates()
     }
     
     func testProduceViewModelWithLoginPrompt_AndAnnouncements() {
-        let expectedUserViewModel = context.makeExpectedUserWidget()
-        let expectedAnnouncementViewModels = context.makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements()
-        let expected = [expectedUserViewModel] + expectedAnnouncementViewModels
+        let expected = [context.makeExpectedUserWidget()] + context.makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements()
         let expectation = DefaultNewsInteractorTestBuilder.Expectation(components: expected, titles: [.yourEurofurence, .announcements])
         
         context.verify(expectation)
