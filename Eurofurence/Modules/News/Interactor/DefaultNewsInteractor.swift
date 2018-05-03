@@ -54,7 +54,7 @@ class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver {
     }
 
     func userDidLogout() {
-
+        regenerateViewModel()
     }
 
     // MARK: Private
