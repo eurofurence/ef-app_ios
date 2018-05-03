@@ -14,7 +14,7 @@ class DefaultNewsInteractorTestBuilder {
     
     struct Context {
         var interactor: DefaultNewsInteractor
-        var delegate: VerifyingNewsInteractorDelegate
+        var delegate: CapturingNewsInteractorDelegate
         var authenticationService: FakeAuthenticationService
         var announcementsService: StubAnnouncementsService
     }
@@ -42,7 +42,7 @@ class DefaultNewsInteractorTestBuilder {
     func build() -> Context {
         let interactor = DefaultNewsInteractor(announcementsService: announcementsService,
                                                authenticationService: authenticationService)
-        let delegate = VerifyingNewsInteractorDelegate()
+        let delegate = CapturingNewsInteractorDelegate()
         
         return Context(interactor: interactor,
                        delegate: delegate,

@@ -211,7 +211,7 @@
 		CA0E520F208F4BDF005259FE /* Announcement2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E520E208F4BDF005259FE /* Announcement2.swift */; };
 		CA0E5211208F4BF3005259FE /* Announcement2+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5210208F4BF3005259FE /* Announcement2+RandomValueProviding.swift */; };
 		CA0E5213208F4CD7005259FE /* AnnouncementsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5212208F4CD7005259FE /* AnnouncementsService.swift */; };
-		CA0E5215208F52EE005259FE /* VerifyingNewsInteractorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5214208F52ED005259FE /* VerifyingNewsInteractorDelegate.swift */; };
+		CA0E5215208F52EE005259FE /* CapturingNewsInteractorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5214208F52ED005259FE /* CapturingNewsInteractorDelegate.swift */; };
 		CA0E5217208FBEA9005259FE /* StubAnnouncementsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5216208FBEA9005259FE /* StubAnnouncementsService.swift */; };
 		CA0E5219208FC062005259FE /* WhenBindingConventionCountdown_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5218208FC062005259FE /* WhenBindingConventionCountdown_NewsPresenterShould.swift */; };
 		CA0E521B208FC107005259FE /* ConventionCountdownComponentViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E521A208FC107005259FE /* ConventionCountdownComponentViewModel+RandomValueProviding.swift */; };
@@ -868,7 +868,7 @@
 		CA0E520E208F4BDF005259FE /* Announcement2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcement2.swift; sourceTree = "<group>"; };
 		CA0E5210208F4BF3005259FE /* Announcement2+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Announcement2+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA0E5212208F4CD7005259FE /* AnnouncementsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsService.swift; sourceTree = "<group>"; };
-		CA0E5214208F52ED005259FE /* VerifyingNewsInteractorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyingNewsInteractorDelegate.swift; sourceTree = "<group>"; };
+		CA0E5214208F52ED005259FE /* CapturingNewsInteractorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingNewsInteractorDelegate.swift; sourceTree = "<group>"; };
 		CA0E5216208FBEA9005259FE /* StubAnnouncementsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAnnouncementsService.swift; sourceTree = "<group>"; };
 		CA0E5218208FC062005259FE /* WhenBindingConventionCountdown_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingConventionCountdown_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA0E521A208FC107005259FE /* ConventionCountdownComponentViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConventionCountdownComponentViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -2227,12 +2227,12 @@
 			children = (
 				CA89CBC12085385900570D54 /* AnnouncementsViewModel.swift */,
 				CA89CBB32080031000570D54 /* CapturingNewsComponentHeaderScene.swift */,
+				CA0E5214208F52ED005259FE /* CapturingNewsInteractorDelegate.swift */,
 				CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */,
 				CA89CBA5207F7F5400570D54 /* FakeNewsInteractor.swift */,
+				CA0E5216208FBEA9005259FE /* StubAnnouncementsService.swift */,
 				CA89CBBF2085383100570D54 /* StubNewsInteractor.swift */,
 				CA89CBB92084CA8A00570D54 /* StubNewsViewModel.swift */,
-				CA0E5214208F52ED005259FE /* VerifyingNewsInteractorDelegate.swift */,
-				CA0E5216208FBEA9005259FE /* StubAnnouncementsService.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -4377,7 +4377,7 @@
 				781A94461F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift in Sources */,
 				CA17FE7F2058006F005A4C05 /* CapturingLinkScene.swift in Sources */,
 				CABF03CE20422B240028BD62 /* CapturingSyncAPI.swift in Sources */,
-				CA0E5215208F52EE005259FE /* VerifyingNewsInteractorDelegate.swift in Sources */,
+				CA0E5215208F52EE005259FE /* CapturingNewsInteractorDelegate.swift in Sources */,
 				CA637599208DFD5F00536BE2 /* EventsPresenterTestBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
