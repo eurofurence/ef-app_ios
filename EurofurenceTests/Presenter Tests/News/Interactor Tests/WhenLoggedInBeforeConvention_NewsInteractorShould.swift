@@ -21,7 +21,7 @@ class WhenLoggedInBeforeConvention_NewsInteractorShould: XCTestCase {
         let expectedUserViewModel = context.makeExpectedUserWidget()
         let expectedAnnouncementViewModels = context.makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements()
         let expected = [expectedUserViewModel] + expectedAnnouncementViewModels
-        let expectation = VerifyingNewsInteractorDelegate.Expectation(components: expected, titles: [.yourEurofurence, .announcements])
+        let expectation = DefaultNewsInteractorTestBuilder.Expectation(components: expected, titles: [.yourEurofurence, .announcements])
         
         context.verify(expectation)
     }
