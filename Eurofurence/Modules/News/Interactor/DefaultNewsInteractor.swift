@@ -18,10 +18,15 @@ private protocol NewsViewModelComponent {
 
 }
 
-class DefaultNewsInteractor: NewsInteractor {
+class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver {
+
+    // MARK: Properties
 
     private let announcementsService: AnnouncementsService
     private let authenticationService: AuthenticationService
+    private var delegate: NewsInteractorDelegate?
+
+    // MARK: Initialization
 
     convenience init() {
         self.init(announcementsService: EurofurenceApplication.shared,
@@ -31,15 +36,36 @@ class DefaultNewsInteractor: NewsInteractor {
     init(announcementsService: AnnouncementsService, authenticationService: AuthenticationService) {
         self.announcementsService = announcementsService
         self.authenticationService = authenticationService
+
+        authenticationService.add(observer: self)
     }
 
+    // MARK: NewsInteractor
+
     func subscribeViewModelUpdates(_ delegate: NewsInteractorDelegate) {
+        self.delegate = delegate
+        regenerateViewModel()
+    }
+
+    // MARK: AuthenticationStateObserver
+
+    func userDidLogin(_ user: User) {
+        regenerateViewModel()
+    }
+
+    func userDidLogout() {
+
+    }
+
+    // MARK: Private
+
+    private func regenerateViewModel() {
         makeUserWidgetViewModel { (userWidget) in
             self.announcementsService.fetchAnnouncements { (announcements) in
                 let userWidget = UserComponent(viewModel: userWidget)
                 let announcementsComponents = AnnouncementsComponent(announcements: announcements)
                 let viewModel = ViewModel(components: [userWidget, announcementsComponents])
-                delegate.viewModelDidUpdate(viewModel)
+                self.delegate?.viewModelDidUpdate(viewModel)
             }
         }
     }

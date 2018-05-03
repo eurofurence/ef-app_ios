@@ -10,7 +10,7 @@
 
 class FakeAuthenticationService: AuthenticationService {
     
-    let authState: AuthState
+    fileprivate(set) var authState: AuthState
     
     class func loggedInService(_ user: User = .random) -> FakeAuthenticationService {
         return FakeAuthenticationService(authState: .loggedIn(user))
@@ -55,10 +55,12 @@ extension FakeAuthenticationService {
     }
     
     func notifyObserversUserDidLogin(_ user: User = User(registrationNumber: 42, username: "")) {
+        authState = .loggedIn(user)
         observers.forEach { $0.userDidLogin(user) }
     }
     
     func notifyObserversUserDidLogout() {
+        authState = .loggedOut
         observers.forEach { $0.userDidLogout() }
     }
     

@@ -368,6 +368,7 @@
 		CA65A877209A523400B72533 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A876209A523400B72533 /* UIColor+Extensions.swift */; };
 		CA65A879209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A878209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift */; };
 		CA65A87B209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A87A209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift */; };
+		CA65A87D209B2F6A00B72533 /* WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A87C209B2F6A00B72533 /* WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -1025,6 +1026,7 @@
 		CA65A876209A523400B72533 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		CA65A878209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedInBeforeConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA65A87A209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNewsInteractorTestBuilder.swift; sourceTree = "<group>"; };
+		CA65A87C209B2F6A00B72533 /* WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -2247,9 +2249,10 @@
 		CA63753B208A6E0900536BE2 /* Interactor Tests */ = {
 			isa = PBXGroup;
 			children = (
+				CA65A87A209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift */,
 				CA65A878209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift */,
 				CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */,
-				CA65A87A209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift */,
+				CA65A87C209B2F6A00B72533 /* WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould.swift */,
 			);
 			path = "Interactor Tests";
 			sourceTree = "<group>";
@@ -4150,6 +4153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA0F7629203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift in Sources */,
+				CA65A87D209B2F6A00B72533 /* WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould.swift in Sources */,
 				CA2D08021FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleDataStore.swift in Sources */,
 				CA30EAA61F2129C60053DBF6 /* CapturingLoginAPI.swift in Sources */,
 				CAF5979D20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift in Sources */,
