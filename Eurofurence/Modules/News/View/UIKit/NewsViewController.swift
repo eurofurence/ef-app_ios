@@ -40,6 +40,7 @@ class NewsViewController: UIViewController, NewsScene {
         tableController?.onDidSelectRowAtIndexPath = tableViewDidSelectRow
         tableView.dataSource = tableController
         tableView.delegate = tableController
+        tableView.reloadData()
     }
 
     // MARK: Private
