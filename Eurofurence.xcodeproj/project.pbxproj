@@ -411,6 +411,7 @@
 		CA728439209CEE97007D912A /* StubDaysUntilConventionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728438209CEE97007D912A /* StubDaysUntilConventionService.swift */; };
 		CA72843B209CEF47007D912A /* DaysUntilConventionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72843A209CEF47007D912A /* DaysUntilConventionService.swift */; };
 		CA72843D209CF07A007D912A /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CA72843C209CF07A007D912A /* Localizable.stringsdict */; };
+		CA72843F209CF8D2007D912A /* WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72843E209CF8D2007D912A /* WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsInteractorShould.swift */; };
 		CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */; };
 		CA73AED8201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED7201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift */; };
 		CA73AEDB201A080F004E77BF /* StubKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */; };
@@ -1079,6 +1080,7 @@
 		CA728438209CEE97007D912A /* StubDaysUntilConventionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDaysUntilConventionService.swift; sourceTree = "<group>"; };
 		CA72843A209CEF47007D912A /* DaysUntilConventionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysUntilConventionService.swift; sourceTree = "<group>"; };
 		CA72843C209CF07A007D912A /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
+		CA72843E209CF8D2007D912A /* WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeListSceneDidLoad.swift; sourceTree = "<group>"; };
 		CA73AED7201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
@@ -2283,6 +2285,7 @@
 				CA65A880209B7E1000B72533 /* WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift */,
 				CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */,
 				CA65A87C209B2F6A00B72533 /* WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould.swift */,
+				CA72843E209CF8D2007D912A /* WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsInteractorShould.swift */,
 			);
 			path = "Interactor Tests";
 			sourceTree = "<group>";
@@ -4273,6 +4276,7 @@
 				CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */,
 				7820A6FF1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift in Sources */,
 				CA73AEDB201A080F004E77BF /* StubKnowledgeListSceneFactory.swift in Sources */,
+				CA72843F209CF8D2007D912A /* WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsInteractorShould.swift in Sources */,
 				CA89CBC22085385900570D54 /* AnnouncementsViewModel.swift in Sources */,
 				CA637554208CBBC000536BE2 /* CapturingWindowWireframe.swift in Sources */,
 				CAD3BDC5205FE42A00C91E6E /* WhenLookingUpWebLinks.swift in Sources */,

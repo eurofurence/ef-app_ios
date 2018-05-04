@@ -51,6 +51,12 @@ class DefaultNewsInteractorTestBuilder {
         return self
     }
     
+    @discardableResult
+    func with(_ daysUntilConventionService: StubDaysUntilConventionService) -> DefaultNewsInteractorTestBuilder {
+        self.daysUntilConventionService = daysUntilConventionService
+        return self
+    }
+    
     func build() -> Context {
         let interactor = DefaultNewsInteractor(announcementsService: announcementsService,
                                                authenticationService: authenticationService,

@@ -91,6 +91,7 @@ class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, Privat
 
     func daysUntilConventionDidChange(to daysRemaining: Int) {
         daysUntilConvention = daysRemaining
+        regenerateViewModel()
     }
 
     // MARK: Private

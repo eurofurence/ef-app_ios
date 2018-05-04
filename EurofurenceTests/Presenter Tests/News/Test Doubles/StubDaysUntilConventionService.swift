@@ -10,9 +10,21 @@
 
 class StubDaysUntilConventionService: DaysUntilConventionService {
     
-    let stubbedDays: Int = .random
+    fileprivate var observers = [DaysUntilConventionServiceObserver]()
+    
+    fileprivate(set) var stubbedDays: Int = .random
     func observeDaysUntilConvention(using observer: DaysUntilConventionServiceObserver) {
         observer.daysUntilConventionDidChange(to: stubbedDays)
+        observers.append(observer)
+    }
+    
+}
+
+extension StubDaysUntilConventionService {
+    
+    func changeDaysUntilConvention(to days: Int) {
+        stubbedDays = days
+        observers.forEach({ $0.daysUntilConventionDidChange(to: days) })
     }
     
 }
