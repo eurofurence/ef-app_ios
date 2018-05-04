@@ -4,6 +4,8 @@ inhibit_all_warnings!
 use_frameworks!
 
 target 'Eurofurence' do
+    plugin 'cocoapods-acknowledgements', :settings_bundle => true
+    
 	pod 'Alamofire', '~> 4.5'
 	pod 'AlamofireImage', '~> 3.0'
 	pod 'Changeset'
