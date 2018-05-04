@@ -11,8 +11,8 @@ import UIKit.UIViewController
 
 class StubAnnouncementDetailSceneFactory: AnnouncementDetailSceneFactory {
     
-    let stubbedScene = UIViewController()
-    func makeAnnouncementDetailScene() -> UIViewController {
+    let stubbedScene = CapturingAnnouncementDetailScene()
+    func makeAnnouncementDetailScene() -> UIViewController & AnnouncementDetailScene {
         return stubbedScene
     }
     

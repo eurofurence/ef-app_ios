@@ -14,6 +14,7 @@ class AnnouncementDetailPresenterTestBuilder {
     struct Context {
         var announcementDetailScene: UIViewController
         var sceneFactory: StubAnnouncementDetailSceneFactory
+        var scene: CapturingAnnouncementDetailScene
     }
     
     func build() -> Context {
@@ -21,7 +22,8 @@ class AnnouncementDetailPresenterTestBuilder {
         let module = AnnouncementDetailModuleBuilder().with(sceneFactory).build().makeAnnouncementDetailModule(for: Announcement2.random)
         
         return Context(announcementDetailScene: module,
-                       sceneFactory: sceneFactory)
+                       sceneFactory: sceneFactory,
+                       scene: sceneFactory.stubbedScene)
     }
     
 }

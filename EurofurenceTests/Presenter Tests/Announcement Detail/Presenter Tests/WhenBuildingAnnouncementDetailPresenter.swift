@@ -16,4 +16,9 @@ class WhenBuildingAnnouncementDetailPresenter: XCTestCase {
         XCTAssertEqual(context.announcementDetailScene, context.sceneFactory.stubbedScene)
     }
     
+    func testTheSceneIsToldToShowTheAnnouncementTitle() {
+        let context = AnnouncementDetailPresenterTestBuilder().build()
+        XCTAssertEqual(.announcement, context.scene.capturedTitle)
+    }
+    
 }

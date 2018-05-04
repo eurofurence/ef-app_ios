@@ -8,6 +8,12 @@
 
 import UIKit
 
-class AnnouncementDetailViewController: UIViewController {
+class AnnouncementDetailViewController: UIViewController, AnnouncementDetailScene {
+
+    // MARK: AnnouncementDetailScene
+
+    func setAnnouncementTitle(_ title: String) {
+        super.title = title
+    }
 
 }

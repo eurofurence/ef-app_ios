@@ -424,6 +424,8 @@
 		CA72845D209D0627007D912A /* StoryboardAnnouncementDetailSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72845C209D0627007D912A /* StoryboardAnnouncementDetailSceneFactory.swift */; };
 		CA72845F209D0631007D912A /* AnnouncementDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA72845E209D0631007D912A /* AnnouncementDetail.storyboard */; };
 		CA728461209D0642007D912A /* AnnouncementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728460209D0642007D912A /* AnnouncementDetailViewController.swift */; };
+		CA728463209D0F7B007D912A /* CapturingAnnouncementDetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728462209D0F7B007D912A /* CapturingAnnouncementDetailScene.swift */; };
+		CA728465209D0FAF007D912A /* AnnouncementDetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728464209D0FAF007D912A /* AnnouncementDetailScene.swift */; };
 		CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */; };
 		CA73AED8201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED7201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift */; };
 		CA73AEDB201A080F004E77BF /* StubKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */; };
@@ -1105,6 +1107,8 @@
 		CA72845C209D0627007D912A /* StoryboardAnnouncementDetailSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardAnnouncementDetailSceneFactory.swift; sourceTree = "<group>"; };
 		CA72845E209D0631007D912A /* AnnouncementDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnnouncementDetail.storyboard; sourceTree = "<group>"; };
 		CA728460209D0642007D912A /* AnnouncementDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailViewController.swift; sourceTree = "<group>"; };
+		CA728462209D0F7B007D912A /* CapturingAnnouncementDetailScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAnnouncementDetailScene.swift; sourceTree = "<group>"; };
+		CA728464209D0FAF007D912A /* AnnouncementDetailScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailScene.swift; sourceTree = "<group>"; };
 		CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeListSceneDidLoad.swift; sourceTree = "<group>"; };
 		CA73AED7201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
@@ -2729,6 +2733,7 @@
 		CA728453209D0570007D912A /* Abstraction */ = {
 			isa = PBXGroup;
 			children = (
+				CA728464209D0FAF007D912A /* AnnouncementDetailScene.swift */,
 				CA728454209D0576007D912A /* AnnouncementDetailSceneFactory.swift */,
 			);
 			path = Abstraction;
@@ -2737,6 +2742,7 @@
 		CA728456209D0585007D912A /* Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
+				CA728462209D0F7B007D912A /* CapturingAnnouncementDetailScene.swift */,
 				CA728457209D058A007D912A /* StubAnnouncementDetailSceneFactory.swift */,
 			);
 			path = "Test Doubles";
@@ -3953,6 +3959,7 @@
 				9ACF998E1EC858B2006FC958 /* Event.swift in Sources */,
 				9ACF99681EBE3479006FC958 /* EntityBase.swift in Sources */,
 				CA17FE8B20585D9C005A4C05 /* LinkTableViewCell.swift in Sources */,
+				CA728465209D0FAF007D912A /* AnnouncementDetailScene.swift in Sources */,
 				9A80EF5D1F29204900FD0D37 /* CurrentEventsFilterFavoritesProviding.swift in Sources */,
 				CAD3BDC7205FE88900C91E6E /* SafariWebModuleProviding.swift in Sources */,
 				78567B3D1F100BAF00EBA31D /* DataStoreRefreshController.swift in Sources */,
@@ -4468,6 +4475,7 @@
 				CAF5979F2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift in Sources */,
 				CA65A21F2091F1EC0078A4A7 /* WhenSyncSucceeds_SyncAPIShould.swift in Sources */,
 				CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */,
+				CA728463209D0F7B007D912A /* CapturingAnnouncementDetailScene.swift in Sources */,
 				CA65A2212091F5320078A4A7 /* WhenFetchingAnnouncementsAfterSuccessfulRefresh.swift in Sources */,
 				CA6375A2208E005E00536BE2 /* StubDealersModuleFactory.swift in Sources */,
 				CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */,
