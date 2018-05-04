@@ -428,7 +428,7 @@
 		CA728465209D0FAF007D912A /* AnnouncementDetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728464209D0FAF007D912A /* AnnouncementDetailScene.swift */; };
 		CA728467209D1197007D912A /* WhenAnnouncementDetailSceneDidLoad_AnnouncementDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728466209D1197007D912A /* WhenAnnouncementDetailSceneDidLoad_AnnouncementDetailPresenterShould.swift */; };
 		CA72846A209D1442007D912A /* AnnouncementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728469209D1442007D912A /* AnnouncementViewModel.swift */; };
-		CA72846C209D1457007D912A /* AnnouncementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72846B209D1457007D912A /* AnnouncementViewModel.swift */; };
+		CA72846C209D1457007D912A /* AnnouncementViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72846B209D1457007D912A /* AnnouncementViewModel+RandomValueProviding.swift */; };
 		CA72846E209D14A3007D912A /* AnnouncementDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72846D209D14A3007D912A /* AnnouncementDetailInteractor.swift */; };
 		CA728471209D15C2007D912A /* AnnouncementDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728470209D15C2007D912A /* AnnouncementDetailPresenter.swift */; };
 		CA728473209D163E007D912A /* StubAnnouncementDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728472209D163E007D912A /* StubAnnouncementDetailInteractor.swift */; };
@@ -1117,7 +1117,7 @@
 		CA728464209D0FAF007D912A /* AnnouncementDetailScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailScene.swift; sourceTree = "<group>"; };
 		CA728466209D1197007D912A /* WhenAnnouncementDetailSceneDidLoad_AnnouncementDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAnnouncementDetailSceneDidLoad_AnnouncementDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA728469209D1442007D912A /* AnnouncementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementViewModel.swift; sourceTree = "<group>"; };
-		CA72846B209D1457007D912A /* AnnouncementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementViewModel.swift; sourceTree = "<group>"; };
+		CA72846B209D1457007D912A /* AnnouncementViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnnouncementViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA72846D209D14A3007D912A /* AnnouncementDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailInteractor.swift; sourceTree = "<group>"; };
 		CA728470209D15C2007D912A /* AnnouncementDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailPresenter.swift; sourceTree = "<group>"; };
 		CA728472209D163E007D912A /* StubAnnouncementDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAnnouncementDetailInteractor.swift; sourceTree = "<group>"; };
@@ -2692,7 +2692,7 @@
 				CA9AC16C2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift */,
 				CAD68829208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift */,
 				CA0E521A208FC107005259FE /* ConventionCountdownComponentViewModel+RandomValueProviding.swift */,
-				CA72846B209D1457007D912A /* AnnouncementViewModel.swift */,
+				CA72846B209D1457007D912A /* AnnouncementViewModel+RandomValueProviding.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -4485,7 +4485,7 @@
 				CAF9A94C1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift in Sources */,
 				CA2D080C1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift in Sources */,
 				CA728441209D001B007D912A /* WhenNewsModuleSelectsAnnouncement_DirectorShould.swift in Sources */,
-				CA72846C209D1457007D912A /* AnnouncementViewModel.swift in Sources */,
+				CA72846C209D1457007D912A /* AnnouncementViewModel+RandomValueProviding.swift in Sources */,
 				CAD68830208A144800B31F5F /* WhenBindingUserWithNoUnreadMessages_NewsPresenterShould.swift in Sources */,
 				7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */,
 				CA89CBBE208531FB00570D54 /* AnnouncementComponentViewModel+RandomValueProviding.swift in Sources */,

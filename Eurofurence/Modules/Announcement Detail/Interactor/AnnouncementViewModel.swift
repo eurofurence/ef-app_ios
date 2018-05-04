@@ -6,8 +6,11 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import Foundation.NSAttributedString
+
 struct AnnouncementViewModel {
 
     var heading: String
+    var contents: NSAttributedString
 
 }

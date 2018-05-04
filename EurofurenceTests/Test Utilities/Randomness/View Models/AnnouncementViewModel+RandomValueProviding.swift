@@ -1,5 +1,5 @@
 //
-//  AnnouncementViewModel.swift
+//  AnnouncementViewModel+RandomValueProviding.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 04/05/2018.
@@ -11,7 +11,7 @@
 extension AnnouncementViewModel: RandomValueProviding {
     
     static var random: AnnouncementViewModel {
-        return AnnouncementViewModel(heading: .random)
+        return AnnouncementViewModel(heading: .random, contents: .random)
     }
     
 }

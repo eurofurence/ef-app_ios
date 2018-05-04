@@ -24,4 +24,8 @@ class AnnouncementDetailViewController: UIViewController, AnnouncementDetailScen
 
     }
 
+    func setAnnouncementContents(_ contents: NSAttributedString) {
+
+    }
+
 }

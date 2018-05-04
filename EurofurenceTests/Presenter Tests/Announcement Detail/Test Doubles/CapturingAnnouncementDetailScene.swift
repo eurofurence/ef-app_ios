@@ -26,4 +26,9 @@ class CapturingAnnouncementDetailScene: UIViewController, AnnouncementDetailScen
         capturedAnnouncementHeading = heading
     }
     
+    private(set) var capturedAnnouncementContents: NSAttributedString?
+    func setAnnouncementContents(_ contents: NSAttributedString) {
+        capturedAnnouncementContents = contents
+    }
+    
 }

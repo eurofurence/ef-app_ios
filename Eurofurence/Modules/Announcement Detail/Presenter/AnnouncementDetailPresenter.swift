@@ -12,6 +12,7 @@ struct AnnouncementDetailPresenter {
         scene.setAnnouncementTitle(.announcement)
         interactor.makeViewModel { (viewModel) in
             scene.setAnnouncementHeading(viewModel.heading)
+            scene.setAnnouncementContents(viewModel.contents)
         }
     }
 
