@@ -8,12 +8,25 @@
 
 import UIKit
 
-class AnnouncementDetailViewController: UIViewController, AnnouncementDetailScene {
+class AnnouncementDetailViewController: UITableViewController, AnnouncementDetailScene {
+
+    // MARK: IBOutlets
+
+    @IBOutlet weak var announcementHeadingLabel: UILabel!
+    @IBOutlet weak var announcementContentsTextView: UITextView!
+
+    // MARK: Overrides
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        delegate?.announcementDetailSceneDidLoad()
+    }
 
     // MARK: AnnouncementDetailScene
 
+    private var delegate: AnnouncementDetailSceneDelegate?
     func setDelegate(_ delegate: AnnouncementDetailSceneDelegate) {
-
+        self.delegate = delegate
     }
 
     func setAnnouncementTitle(_ title: String) {
@@ -21,11 +34,11 @@ class AnnouncementDetailViewController: UIViewController, AnnouncementDetailScen
     }
 
     func setAnnouncementHeading(_ heading: String) {
-
+        announcementHeadingLabel.text = heading
     }
 
     func setAnnouncementContents(_ contents: NSAttributedString) {
-
+        announcementContentsTextView.attributedText = contents
     }
 
 }
