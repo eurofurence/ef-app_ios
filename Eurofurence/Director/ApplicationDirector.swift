@@ -42,6 +42,7 @@ class ApplicationDirector: RootModuleDelegate,
     private let messageDetailModuleProviding: MessageDetailModuleProviding
     private let knowledgeListModuleProviding: KnowledgeListModuleProviding
     private let knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding
+    private let announcementDetailModuleProviding: AnnouncementDetailModuleProviding
 
     private let rootNavigationController: UINavigationController
     private let rootNavigationControllerDelegate = DissolveTransitionAnimationProviding()
@@ -68,7 +69,8 @@ class ApplicationDirector: RootModuleDelegate,
          loginModuleProviding: LoginModuleProviding,
          messageDetailModuleProviding: MessageDetailModuleProviding,
          knowledgeListModuleProviding: KnowledgeListModuleProviding,
-         knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding) {
+         knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding,
+         announcementDetailModuleProviding: AnnouncementDetailModuleProviding) {
         self.animate = animate
         self.linkLookupService = linkLookupService
         self.urlOpener = urlOpener
@@ -86,6 +88,7 @@ class ApplicationDirector: RootModuleDelegate,
         self.messageDetailModuleProviding = messageDetailModuleProviding
         self.knowledgeListModuleProviding = knowledgeListModuleProviding
         self.knowledgeDetailModuleProviding = knowledgeDetailModuleProviding
+        self.announcementDetailModuleProviding = announcementDetailModuleProviding
 
         rootNavigationController = navigationControllerFactory.makeNavigationController()
         rootNavigationController.delegate = rootNavigationControllerDelegate
@@ -159,7 +162,8 @@ class ApplicationDirector: RootModuleDelegate,
     }
 
     func newsModuleDidSelectAnnouncement(_ announcement: Announcement2) {
-
+        let module = announcementDetailModuleProviding.makeAnnouncementDetailModule(for: announcement)
+        newsNavigationController.pushViewController(module, animated: animate)
     }
 
     // MARK: MessagesModuleDelegate

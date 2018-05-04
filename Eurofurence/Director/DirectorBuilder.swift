@@ -27,6 +27,7 @@ class DirectorBuilder {
     private var messageDetailModuleProviding: MessageDetailModuleProviding
     private var knowledgeListModuleProviding: KnowledgeListModuleProviding
     private var knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding
+    private var announcementDetailModuleProviding: AnnouncementDetailModuleProviding
     private var urlOpener: URLOpener
 
     init() {
@@ -50,6 +51,14 @@ class DirectorBuilder {
         linkLookupService = EurofurenceApplication.shared
         webModuleProviding = SafariWebModuleProviding()
         urlOpener = AppURLOpener()
+
+        class DummyAnnouncementDetailModuleProviding: AnnouncementDetailModuleProviding {
+            func makeAnnouncementDetailModule(for announcement: Announcement2) -> UIViewController {
+                return UIViewController()
+            }
+        }
+
+        announcementDetailModuleProviding = DummyAnnouncementDetailModuleProviding()
     }
 
     @discardableResult
@@ -149,6 +158,12 @@ class DirectorBuilder {
     }
 
     @discardableResult
+    func with(_ announcementDetailModuleProviding: AnnouncementDetailModuleProviding) -> DirectorBuilder {
+        self.announcementDetailModuleProviding = announcementDetailModuleProviding
+        return self
+    }
+
+    @discardableResult
     func with(_ webModuleProviding: WebModuleProviding) -> DirectorBuilder {
         self.webModuleProviding = webModuleProviding
         return self
@@ -178,7 +193,8 @@ class DirectorBuilder {
                                    loginModuleProviding: loginModuleProviding,
                                    messageDetailModuleProviding: messageDetailModuleProviding,
                                    knowledgeListModuleProviding: knowledgeListModuleProviding,
-                                   knowledgeDetailModuleProviding: knowledgeDetailModuleProviding)
+                                   knowledgeDetailModuleProviding: knowledgeDetailModuleProviding,
+                                   announcementDetailModuleProviding: announcementDetailModuleProviding)
     }
 
 }

@@ -26,4 +26,8 @@ extension StubNewsModuleFactory {
         delegate?.newsModuleDidRequestShowingPrivateMessages()
     }
     
+    func simulateDidSelectAnnouncement(_ announcement: Announcement2) {
+        delegate?.newsModuleDidSelectAnnouncement(announcement)
+    }
+    
 }

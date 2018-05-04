@@ -27,6 +27,7 @@ class ApplicationDirectorTestBuilder {
         var messageDetailModule: StubMessageDetailModuleProviding
         var knowledgeListModule: StubKnowledgeListModuleProviding
         var knowledgeDetailModule: StubKnowledgeDetailModuleProviding
+        var announcementDetailModule: StubAnnouncementDetailModuleFactory
         var linkRouter: StubLinkRouter
         var webModuleProviding: StubWebMobuleProviding
         var urlOpener: CapturingURLOpener
@@ -47,6 +48,7 @@ class ApplicationDirectorTestBuilder {
     private let messageDetailModule: StubMessageDetailModuleProviding
     private let knowledgeListModule: StubKnowledgeListModuleProviding
     private let knowledgeDetailModule: StubKnowledgeDetailModuleProviding
+    private let announcementDetailModule: StubAnnouncementDetailModuleFactory
     private let linkRouter: StubLinkRouter
     private let webModuleProviding: StubWebMobuleProviding
     private let urlOpener: CapturingURLOpener
@@ -65,6 +67,7 @@ class ApplicationDirectorTestBuilder {
         messageDetailModule = StubMessageDetailModuleProviding()
         knowledgeListModule = StubKnowledgeListModuleProviding()
         knowledgeDetailModule = StubKnowledgeDetailModuleProviding()
+        announcementDetailModule = StubAnnouncementDetailModuleFactory()
         linkRouter = StubLinkRouter()
         webModuleProviding = StubWebMobuleProviding()
         urlOpener = CapturingURLOpener()
@@ -85,6 +88,7 @@ class ApplicationDirectorTestBuilder {
         builder.with(messageDetailModule)
         builder.with(knowledgeListModule)
         builder.with(knowledgeDetailModule)
+        builder.with(announcementDetailModule)
         builder.with(linkRouter)
         builder.with(webModuleProviding)
         builder.with(urlOpener)
@@ -107,6 +111,7 @@ class ApplicationDirectorTestBuilder {
                        messageDetailModule: messageDetailModule,
                        knowledgeListModule: knowledgeListModule,
                        knowledgeDetailModule: knowledgeDetailModule,
+                       announcementDetailModule: announcementDetailModule,
                        linkRouter: linkRouter,
                        webModuleProviding: webModuleProviding,
                        urlOpener: urlOpener)
