@@ -26,6 +26,7 @@
 "News" = "News";
 "YourEurofurence" = "Your Eurofurence";
 "Announcements" = "Announcements";
+"DaysUntilConventionHeader" = "Days Until Eurofurence";
 
 "anonymousUserLoginPrompt" = "You are currently not logged in";
 "anonymousUserLoginDescription" = "Tap here to login using your registration details and receive personalized messages from Eurofurence!";

@@ -18,7 +18,7 @@ private protocol NewsViewModelComponent {
 
 }
 
-class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, PrivateMessagesServiceObserver {
+class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, PrivateMessagesServiceObserver, DaysUntilConventionServiceObserver {
 
     // MARK: Properties
 
@@ -26,23 +26,33 @@ class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, Privat
     private let authenticationService: AuthenticationService
     private var delegate: NewsInteractorDelegate?
     private var unreadMessagesCount = 0
+    private var daysUntilConvention = 0
 
     // MARK: Initialization
 
     convenience init() {
+        struct DummyDaysUntilConventionService: DaysUntilConventionService {
+            func observeDaysUntilConvention(using observer: DaysUntilConventionServiceObserver) {
+                observer.daysUntilConventionDidChange(to: 42)
+            }
+        }
+
         self.init(announcementsService: EurofurenceApplication.shared,
                   authenticationService: ApplicationAuthenticationService.shared,
-                  privateMessagesService: EurofurencePrivateMessagesService.shared)
+                  privateMessagesService: EurofurencePrivateMessagesService.shared,
+                  daysUntilConventionService: DummyDaysUntilConventionService())
     }
 
     init(announcementsService: AnnouncementsService,
          authenticationService: AuthenticationService,
-         privateMessagesService: PrivateMessagesService) {
+         privateMessagesService: PrivateMessagesService,
+         daysUntilConventionService: DaysUntilConventionService) {
         self.announcementsService = announcementsService
         self.authenticationService = authenticationService
 
         authenticationService.add(observer: self)
         privateMessagesService.add(self)
+        daysUntilConventionService.observeDaysUntilConvention(using: self)
     }
 
     // MARK: NewsInteractor
@@ -77,14 +87,21 @@ class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, Privat
 
     }
 
+    // MARK: DaysUntilConventionServiceObserver
+
+    func daysUntilConventionDidChange(to daysRemaining: Int) {
+        daysUntilConvention = daysRemaining
+    }
+
     // MARK: Private
 
     private func regenerateViewModel() {
         makeUserWidgetViewModel { (userWidget) in
             self.announcementsService.fetchAnnouncements { (announcements) in
                 let userWidget = UserComponent(viewModel: userWidget)
+                let daysUntilConventionWidget = CountdownComponent(daysUntilConvention: self.daysUntilConvention)
                 let announcementsComponents = AnnouncementsComponent(announcements: announcements)
-                let viewModel = ViewModel(components: [userWidget, announcementsComponents])
+                let viewModel = ViewModel(components: [userWidget, daysUntilConventionWidget, announcementsComponents])
                 self.delegate?.viewModelDidUpdate(viewModel)
             }
         }
@@ -126,6 +143,33 @@ class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, Privat
 
         func announceValue(at index: Int, to completionHandler: @escaping (NewsViewModelValue) -> Void) {
             completionHandler(.messages)
+        }
+
+    }
+
+    private struct CountdownComponent: NewsViewModelComponent {
+
+        private let viewModel: ConventionCountdownComponentViewModel
+
+        init(daysUntilConvention: Int) {
+            let message = String.daysUntilConventionMessage(days: daysUntilConvention)
+            viewModel = ConventionCountdownComponentViewModel(timeUntilConvention: message)
+        }
+
+        var childCount: Int {
+            return 1
+        }
+
+        var title: String {
+            return .daysUntilConvention
+        }
+
+        func announceContent(at index: Int, to visitor: NewsViewModelVisitor) {
+            visitor.visit(viewModel)
+        }
+
+        func announceValue(at index: Int, to completionHandler: @escaping (NewsViewModelValue) -> Void) {
+
         }
 
     }

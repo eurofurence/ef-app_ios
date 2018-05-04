@@ -63,6 +63,10 @@ public extension String {
                                                           comment: "Heading for the messages widget in the News tab")
     public static let announcements = NSLocalizedString("Announcements",
                                                         comment: "Heading for the announcements shown to the user in the News tab")
+    public static let daysUntilConvention = NSLocalizedString("DaysUntilConventionHeader",
+                                                              comment: "Header shown above the widget describing how many days are left until the convention")
+    public static let daysRemainingFormat = NSLocalizedString("DaysUntilConvention",
+                                                              comment: "Format strings substituted with the remaining number of days until the convention")
 
     public static let anonymousUserLoginPrompt = NSLocalizedString("anonymousUserLoginPrompt",
                                                                    comment: "Tells user to login for additional features")
@@ -116,6 +120,10 @@ public extension String {
     internal static func welcomeDescription(messageCount: Int) -> String {
         return localizedStringWithFormat(authentiatedUserLoginDescriptionFormat,
                                          Formatters.numbers.string(from: NSNumber(value: messageCount))!)
+    }
+
+    static func daysUntilConventionMessage(days: Int) -> String {
+        return localizedStringWithFormat(daysRemainingFormat, days)
     }
 
 }

@@ -18,16 +18,19 @@ class DefaultNewsInteractorTestBuilder {
         var authenticationService: FakeAuthenticationService
         var announcementsService: StubAnnouncementsService
         var privateMessagesService: CapturingPrivateMessagesService
+        var daysUntilConventionService: StubDaysUntilConventionService
     }
     
     private var announcementsService: StubAnnouncementsService
     private var authenticationService: FakeAuthenticationService
     private var privateMessagesService: CapturingPrivateMessagesService
+    private var daysUntilConventionService: StubDaysUntilConventionService
     
     init() {
         announcementsService = StubAnnouncementsService(announcements: [])
         authenticationService = FakeAuthenticationService(authState: .loggedOut)
         privateMessagesService = CapturingPrivateMessagesService()
+        daysUntilConventionService = StubDaysUntilConventionService()
     }
     
     @discardableResult
@@ -51,14 +54,16 @@ class DefaultNewsInteractorTestBuilder {
     func build() -> Context {
         let interactor = DefaultNewsInteractor(announcementsService: announcementsService,
                                                authenticationService: authenticationService,
-                                               privateMessagesService: privateMessagesService)
+                                               privateMessagesService: privateMessagesService,
+                                               daysUntilConventionService: daysUntilConventionService)
         let delegate = CapturingNewsInteractorDelegate()
         
         return Context(interactor: interactor,
                        delegate: delegate,
                        authenticationService: authenticationService,
                        announcementsService: announcementsService,
-                       privateMessagesService: privateMessagesService)
+                       privateMessagesService: privateMessagesService,
+                       daysUntilConventionService: daysUntilConventionService)
     }
     
 }
@@ -83,6 +88,10 @@ extension DefaultNewsInteractorTestBuilder.Context {
                                                 detailedPrompt: .anonymousUserLoginDescription,
                                                 hasUnreadMessages: false)
         }
+    }
+    
+    func makeDaysUntilConventionWidget() -> AnyHashable {
+        return ConventionCountdownComponentViewModel(timeUntilConvention: String.daysUntilConventionMessage(days: daysUntilConventionService.stubbedDays))
     }
     
     func makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements() -> [AnyHashable] {

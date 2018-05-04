@@ -11,14 +11,14 @@ import XCTest
 
 class WhenLoggedInBeforeConvention_NewsInteractorShould: XCTestCase {
     
-    func testProduceViewModelWithMessagesPrompt_AndAnnouncements() {
+    func testProduceViewModelWithMessagesPrompt_DaysUntilConvention_AndAnnouncements() {
         let context = DefaultNewsInteractorTestBuilder()
             .with(FakeAuthenticationService.loggedInService())
             .with(StubAnnouncementsService(announcements: .random))
             .build()
         context.subscribeViewModelUpdates()
-        let expected = [context.makeExpectedUserWidget()] + context.makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements()
-        let expectation = DefaultNewsInteractorTestBuilder.Expectation(components: expected, titles: [.yourEurofurence, .announcements])
+        let expected = [context.makeExpectedUserWidget(), context.makeDaysUntilConventionWidget()] + context.makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements()
+        let expectation = DefaultNewsInteractorTestBuilder.Expectation(components: expected, titles: [.yourEurofurence, .daysUntilConvention, .announcements])
         
         context.verify(expectation)
     }

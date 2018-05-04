@@ -408,6 +408,9 @@
 		CA71A3502040371D00C847C3 /* FloatingPoint+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A34F2040371D00C847C3 /* FloatingPoint+RandomValueProviding.swift */; };
 		CA71A3522041B59600C847C3 /* Array+RandomConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A3512041B59600C847C3 /* Array+RandomConvenience.swift */; };
 		CA728437209C7DE1007D912A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA728436209C7DE1007D912A /* Settings.bundle */; };
+		CA728439209CEE97007D912A /* StubDaysUntilConventionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728438209CEE97007D912A /* StubDaysUntilConventionService.swift */; };
+		CA72843B209CEF47007D912A /* DaysUntilConventionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72843A209CEF47007D912A /* DaysUntilConventionService.swift */; };
+		CA72843D209CF07A007D912A /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CA72843C209CF07A007D912A /* Localizable.stringsdict */; };
 		CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */; };
 		CA73AED8201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED7201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift */; };
 		CA73AEDB201A080F004E77BF /* StubKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */; };
@@ -1073,6 +1076,9 @@
 		CA71A34F2040371D00C847C3 /* FloatingPoint+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA71A3512041B59600C847C3 /* Array+RandomConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+RandomConvenience.swift"; sourceTree = "<group>"; };
 		CA728436209C7DE1007D912A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		CA728438209CEE97007D912A /* StubDaysUntilConventionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDaysUntilConventionService.swift; sourceTree = "<group>"; };
+		CA72843A209CEF47007D912A /* DaysUntilConventionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysUntilConventionService.swift; sourceTree = "<group>"; };
+		CA72843C209CF07A007D912A /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
 		CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeListSceneDidLoad.swift; sourceTree = "<group>"; };
 		CA73AED7201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
@@ -1722,6 +1728,7 @@
 				CA18B3451F49AF4500038E52 /* Model */,
 				78D7EEB91F196B40005372A9 /* Notifications */,
 				CAB3A72B1F7532DF005DF77B /* System Services */,
+				CA72843A209CEF47007D912A /* DaysUntilConventionService.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -2034,17 +2041,18 @@
 		9ACF999B1ECA259C006FC958 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9A8ECA2C1F2D0A2000351A83 /* none.caf */,
 				9A8ECA1A1F2BB44100351A83 /* j1_generic.caf */,
 				9A8ECA1B1F2BB44100351A83 /* j1_themed.caf */,
 				9A8ECA1C1F2BB44100351A83 /* j2_generic.caf */,
 				9A8ECA1D1F2BB44100351A83 /* j2_themed.caf */,
+				9A8ECA2C1F2D0A2000351A83 /* none.caf */,
 				7820A6F91F16B8A0004C0FB5 /* Eurofurence.entitlements */,
+				9ACF999C1ECA25E1006FC958 /* Sync.mock.json */,
+				CA72843C209CF07A007D912A /* Localizable.stringsdict */,
+				CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */,
 				9AB64BCE1F02665D004E8D91 /* fontawesome-webfont.ttf */,
 				78C86D6F1F12AA68003A20E6 /* Hieroglify.ttf */,
-				9ACF999C1ECA25E1006FC958 /* Sync.mock.json */,
 				CAA39E0B20051C6C00F2F3D3 /* Localizable.strings */,
-				CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -2252,6 +2260,7 @@
 				CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */,
 				CA89CBA5207F7F5400570D54 /* FakeNewsInteractor.swift */,
 				CA0E5216208FBEA9005259FE /* StubAnnouncementsService.swift */,
+				CA728438209CEE97007D912A /* StubDaysUntilConventionService.swift */,
 				CA89CBBF2085383100570D54 /* StubNewsInteractor.swift */,
 				CA89CBB92084CA8A00570D54 /* StubNewsViewModel.swift */,
 			);
@@ -3601,6 +3610,7 @@
 				9A0F87DC1F19311900FF294B /* EventCell.xib in Resources */,
 				CA6EC4872051CD8F00402894 /* KnowledgeDetail.storyboard in Resources */,
 				9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */,
+				CA72843D209CF07A007D912A /* Localizable.stringsdict in Resources */,
 				CAEAEC061FE06F2800C0EE7C /* MessageDetail.storyboard in Resources */,
 				9ACF999D1ECA25E1006FC958 /* Sync.mock.json in Resources */,
 				CA6AA01E1FD88F6B0092C6DB /* Messages.storyboard in Resources */,
@@ -3924,6 +3934,7 @@
 				9A861ED41F25564900B75A8C /* WindowAlertRouter.swift in Sources */,
 				CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */,
 				CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */,
+				CA72843B209CEF47007D912A /* DaysUntilConventionService.swift in Sources */,
 				CA6AA0041FD6C7B50092C6DB /* DirectorBuilder.swift in Sources */,
 				9A8ECA291F2BF2CA00351A83 /* UserDefaultsRemoteNotificationSoundProvider.swift in Sources */,
 				9A861EC01F25551400B75A8C /* NetworkReachability.swift in Sources */,
@@ -4222,6 +4233,7 @@
 				78C86D4C1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift in Sources */,
 				6EEC6DA31F1BFC5000205F2D /* StubAppVersionProviding.swift in Sources */,
 				CA63756A208CCB5800536BE2 /* WhenStoreShouldBeRefreshed_DirectorShould.swift in Sources */,
+				CA728439209CEE97007D912A /* StubDaysUntilConventionService.swift in Sources */,
 				CA637564208CC8F800536BE2 /* WhenBuilt_DirectorShould.swift in Sources */,
 				78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */,
 				CA1ECB3F1FE333090076083A /* WhenInitialMessageLoadFails.swift in Sources */,

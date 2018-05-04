@@ -11,7 +11,7 @@ import XCTest
 
 class WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould: XCTestCase {
     
-    func testProduceViewModelWithMessagesPrompt_AndAnnouncements() {
+    func testProduceViewModelWithMessagesPrompt_DaysUntilConvention_AndAnnouncements() {
         let privateMessagesService = CapturingPrivateMessagesService()
         let context = DefaultNewsInteractorTestBuilder()
             .with(FakeAuthenticationService.loggedInService())
@@ -21,8 +21,8 @@ class WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorS
         context.subscribeViewModelUpdates()
         let unreadCount = Int.random
         privateMessagesService.notifyUnreadCountDidChange(to: unreadCount)
-        let expected = [context.makeExpectedUserWidget()] + context.makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements()
-        let expectation = DefaultNewsInteractorTestBuilder.Expectation(components: expected, titles: [.yourEurofurence, .announcements])
+        let expected = [context.makeExpectedUserWidget(), context.makeDaysUntilConventionWidget()] + context.makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements()
+        let expectation = DefaultNewsInteractorTestBuilder.Expectation(components: expected, titles: [.yourEurofurence, .daysUntilConvention, .announcements])
         
         context.verify(expectation)
     }

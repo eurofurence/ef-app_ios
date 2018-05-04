@@ -23,9 +23,9 @@ class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
         context.subscribeViewModelUpdates()
     }
     
-    func testProduceViewModelWithLoginPrompt_AndAnnouncements() {
-        let expected = [context.makeExpectedUserWidget()] + context.makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements()
-        let expectation = DefaultNewsInteractorTestBuilder.Expectation(components: expected, titles: [.yourEurofurence, .announcements])
+    func testProduceViewModelWithLoginPrompt_DaysUntilConvention_AndAnnouncements() {
+        let expected = [context.makeExpectedUserWidget(), context.makeDaysUntilConventionWidget()] + context.makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements()
+        let expectation = DefaultNewsInteractorTestBuilder.Expectation(components: expected, titles: [.yourEurofurence, .daysUntilConvention, .announcements])
         
         context.verify(expectation)
     }
@@ -36,7 +36,7 @@ class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
     
     func testFetchAnnouncementModuleValueWhenAskingForModelInSecondSection() {
         let randomAnnouncement = context.announcements.randomElement()
-        let announcementIndexPath = IndexPath(item: randomAnnouncement.index, section: 1)
+        let announcementIndexPath = IndexPath(item: randomAnnouncement.index, section: 2)
         
         context.verifyModel(at: announcementIndexPath, is: .announcement(randomAnnouncement.element))
     }

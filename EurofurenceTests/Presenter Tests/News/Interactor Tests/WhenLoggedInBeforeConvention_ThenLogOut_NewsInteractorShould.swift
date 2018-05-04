@@ -19,8 +19,8 @@ class WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould: XCTestCase {
             .build()
         context.subscribeViewModelUpdates()
         authenticationService.notifyObserversUserDidLogout()
-        let expected = [context.makeExpectedUserWidget()] + context.makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements()
-        let expectation = DefaultNewsInteractorTestBuilder.Expectation(components: expected, titles: [.yourEurofurence, .announcements])
+        let expected = [context.makeExpectedUserWidget(), context.makeDaysUntilConventionWidget()] + context.makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements()
+        let expectation = DefaultNewsInteractorTestBuilder.Expectation(components: expected, titles: [.yourEurofurence, .daysUntilConvention, .announcements])
         
         context.verify(expectation)
     }
