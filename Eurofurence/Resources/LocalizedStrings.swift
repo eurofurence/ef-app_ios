@@ -118,8 +118,7 @@ public extension String {
     }
 
     internal static func welcomeDescription(messageCount: Int) -> String {
-        return localizedStringWithFormat(authentiatedUserLoginDescriptionFormat,
-                                         Formatters.numbers.string(from: NSNumber(value: messageCount))!)
+        return localizedStringWithFormat(authentiatedUserLoginDescriptionFormat, messageCount)
     }
 
     static func daysUntilConventionMessage(days: Int) -> String {

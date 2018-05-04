@@ -32,7 +32,6 @@
 "anonymousUserLoginDescription" = "Tap here to login using your registration details and receive personalized messages from Eurofurence!";
 
 "authenticatedUserLoginPromptFormat" = "Welcome, %@ (%@)";
-"authentiatedUserLoginDescriptionFormat" = "You have (%@) unread messages";
 
 "downloadError" = "Download Error";
 "preloadFailureMessage" = "Failed to download data from server. Please try again.";

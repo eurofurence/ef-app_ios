@@ -2,6 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>authentiatedUserLoginDescriptionFormat</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@value@</string>
+		<key>value</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>li</string>
+			<key>one</key>
+			<string>You have %li unread message</string>
+			<key>other</key>
+			<string>You have %li unread messages</string>
+		</dict>
+	</dict>
 	<key>DaysUntilConvention</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
