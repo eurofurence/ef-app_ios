@@ -6,14 +6,26 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-struct AnnouncementDetailPresenter {
+struct AnnouncementDetailPresenter: AnnouncementDetailSceneDelegate {
+
+    private let scene: AnnouncementDetailScene
+    private let interactor: AnnouncementDetailInteractor
 
     init(scene: AnnouncementDetailScene, interactor: AnnouncementDetailInteractor) {
+        self.scene = scene
+        self.interactor = interactor
+
+        scene.setDelegate(self)
         scene.setAnnouncementTitle(.announcement)
-        interactor.makeViewModel { (viewModel) in
-            scene.setAnnouncementHeading(viewModel.heading)
-            scene.setAnnouncementContents(viewModel.contents)
-        }
+    }
+
+    func announcementDetailSceneDidLoad() {
+        interactor.makeViewModel(completionHandler: announcementViewModelPrepared)
+    }
+
+    private func announcementViewModelPrepared(_ viewModel: AnnouncementViewModel) {
+        scene.setAnnouncementContents(viewModel.contents)
+        scene.setAnnouncementHeading(viewModel.heading)
     }
 
 }

@@ -11,14 +11,27 @@ import XCTest
 
 class WhenBuildingAnnouncementDetailPresenter: XCTestCase {
     
+    var context: AnnouncementDetailPresenterTestBuilder.Context!
+    
+    override func setUp() {
+        super.setUp()
+        context = AnnouncementDetailPresenterTestBuilder().build()
+    }
+    
     func testTheSceneIsReturnedFromTheModuleFactory() {
-        let context = AnnouncementDetailPresenterTestBuilder().build()
         XCTAssertEqual(context.announcementDetailScene, context.sceneFactory.stubbedScene)
     }
     
     func testTheSceneIsToldToShowTheAnnouncementTitle() {
-        let context = AnnouncementDetailPresenterTestBuilder().build()
         XCTAssertEqual(.announcement, context.scene.capturedTitle)
+    }
+    
+    func testTheSceneIsNotToldToShowAnnouncementHeading() {
+        XCTAssertNil(context.scene.capturedAnnouncementHeading)
+    }
+    
+    func testTheSceneIsNotToldToShowAnnouncementContents() {
+        XCTAssertNil(context.scene.capturedAnnouncementContents)
     }
     
 }
