@@ -9,15 +9,6 @@
 @testable import Eurofurence
 import UIKit.UIViewController
 
-struct StubAnnouncementDetailInteractor: AnnouncementDetailInteractor {
-    
-    var viewModel: AnnouncementViewModel = .random
-    func makeViewModel(completionHandler: @escaping (AnnouncementViewModel) -> Void) {
-        completionHandler(viewModel)
-    }
-    
-}
-
 class AnnouncementDetailPresenterTestBuilder {
     
     struct Context {
