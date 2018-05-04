@@ -15,6 +15,7 @@ struct AnnouncementDetailModule: AnnouncementDetailModuleProviding {
     func makeAnnouncementDetailModule(for announcement: Announcement2) -> UIViewController {
         let scene = sceneFactory.makeAnnouncementDetailScene()
         scene.setAnnouncementTitle(.announcement)
+        scene.setAnnouncementHeading(announcement.title)
 
         return scene
     }

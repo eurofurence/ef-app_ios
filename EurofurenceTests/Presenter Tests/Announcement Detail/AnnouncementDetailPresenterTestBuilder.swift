@@ -15,15 +15,26 @@ class AnnouncementDetailPresenterTestBuilder {
         var announcementDetailScene: UIViewController
         var sceneFactory: StubAnnouncementDetailSceneFactory
         var scene: CapturingAnnouncementDetailScene
+        var announcement: Announcement2
     }
     
     func build() -> Context {
         let sceneFactory = StubAnnouncementDetailSceneFactory()
-        let module = AnnouncementDetailModuleBuilder().with(sceneFactory).build().makeAnnouncementDetailModule(for: Announcement2.random)
+        let announcement = Announcement2.random
+        let module = AnnouncementDetailModuleBuilder().with(sceneFactory).build().makeAnnouncementDetailModule(for: announcement)
         
         return Context(announcementDetailScene: module,
                        sceneFactory: sceneFactory,
-                       scene: sceneFactory.stubbedScene)
+                       scene: sceneFactory.stubbedScene,
+                       announcement: announcement)
+    }
+    
+}
+
+extension AnnouncementDetailPresenterTestBuilder.Context {
+    
+    func simulateAnnouncementDetailSceneDidLoad() {
+        scene.delegate?.announcementDetailSceneDidLoad()
     }
     
 }

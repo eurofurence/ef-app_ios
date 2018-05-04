@@ -12,8 +12,16 @@ class AnnouncementDetailViewController: UIViewController, AnnouncementDetailScen
 
     // MARK: AnnouncementDetailScene
 
+    func setDelegate(_ delegate: AnnouncementDetailSceneDelegate) {
+
+    }
+
     func setAnnouncementTitle(_ title: String) {
         super.title = title
+    }
+
+    func setAnnouncementHeading(_ heading: String) {
+
     }
 
 }

@@ -8,6 +8,14 @@
 
 protocol AnnouncementDetailScene {
 
+    func setDelegate(_ delegate: AnnouncementDetailSceneDelegate)
     func setAnnouncementTitle(_ title: String)
+    func setAnnouncementHeading(_ heading: String)
+
+}
+
+protocol AnnouncementDetailSceneDelegate {
+
+    func announcementDetailSceneDidLoad()
 
 }
