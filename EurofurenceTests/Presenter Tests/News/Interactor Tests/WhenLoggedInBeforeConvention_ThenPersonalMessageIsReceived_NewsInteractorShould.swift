@@ -21,8 +21,8 @@ class WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorS
         context.subscribeViewModelUpdates()
         let unreadCount = Int.random
         privateMessagesService.notifyUnreadCountDidChange(to: unreadCount)
-        let expected = [context.makeExpectedUserWidget(), context.makeDaysUntilConventionWidget()] + context.makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements()
-        let expectation = DefaultNewsInteractorTestBuilder.Expectation(components: expected, titles: [.yourEurofurence, .daysUntilConvention, .announcements])
+        let expected = context.makeExpectedComponentsForBeforeConvention()
+        let expectation = DefaultNewsInteractorTestBuilder.Expectation(components: expected.components, titles: expected.titles)
         
         context.verify(expectation)
     }

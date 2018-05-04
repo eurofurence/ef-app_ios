@@ -76,7 +76,13 @@ extension DefaultNewsInteractorTestBuilder.Context {
         return announcementsService.announcements
     }
     
-    func makeExpectedUserWidget() -> AnyHashable {
+    func makeExpectedComponentsForBeforeConvention() -> (titles: [String], components: [AnyHashable]) {
+        let expected = [makeExpectedUserWidget(), makeDaysUntilConventionWidget()] + makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements()
+        return (titles: [.yourEurofurence, .daysUntilConvention, .announcements],
+                components: expected)
+    }
+    
+    private func makeExpectedUserWidget() -> AnyHashable {
         switch authenticationService.authState {
         case .loggedIn(let user):
             return UserWidgetComponentViewModel(prompt: String.welcomePrompt(for: user),
@@ -90,15 +96,15 @@ extension DefaultNewsInteractorTestBuilder.Context {
         }
     }
     
-    func makeDaysUntilConventionWidget() -> AnyHashable {
+    private func makeDaysUntilConventionWidget() -> AnyHashable {
         return ConventionCountdownComponentViewModel(timeUntilConvention: String.daysUntilConventionMessage(days: daysUntilConventionService.stubbedDays))
     }
     
-    func makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements() -> [AnyHashable] {
+    private func makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements() -> [AnyHashable] {
         return announcements.map(makeExpectedAnnouncementViewModel).map(AnyHashable.init)
     }
     
-    func makeExpectedAnnouncementViewModel(from announcement: Announcement2) -> AnnouncementComponentViewModel {
+    private func makeExpectedAnnouncementViewModel(from announcement: Announcement2) -> AnnouncementComponentViewModel {
         return AnnouncementComponentViewModel(title: announcement.title, detail: announcement.content)
     }
     
