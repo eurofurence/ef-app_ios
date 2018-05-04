@@ -427,6 +427,10 @@
 		CA728463209D0F7B007D912A /* CapturingAnnouncementDetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728462209D0F7B007D912A /* CapturingAnnouncementDetailScene.swift */; };
 		CA728465209D0FAF007D912A /* AnnouncementDetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728464209D0FAF007D912A /* AnnouncementDetailScene.swift */; };
 		CA728467209D1197007D912A /* WhenAnnouncementDetailSceneDidLoad_AnnouncementDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728466209D1197007D912A /* WhenAnnouncementDetailSceneDidLoad_AnnouncementDetailPresenterShould.swift */; };
+		CA72846A209D1442007D912A /* AnnouncementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728469209D1442007D912A /* AnnouncementViewModel.swift */; };
+		CA72846C209D1457007D912A /* AnnouncementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72846B209D1457007D912A /* AnnouncementViewModel.swift */; };
+		CA72846E209D14A3007D912A /* AnnouncementDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72846D209D14A3007D912A /* AnnouncementDetailInteractor.swift */; };
+		CA728471209D15C2007D912A /* AnnouncementDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728470209D15C2007D912A /* AnnouncementDetailPresenter.swift */; };
 		CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */; };
 		CA73AED8201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED7201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift */; };
 		CA73AEDB201A080F004E77BF /* StubKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */; };
@@ -1111,6 +1115,10 @@
 		CA728462209D0F7B007D912A /* CapturingAnnouncementDetailScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAnnouncementDetailScene.swift; sourceTree = "<group>"; };
 		CA728464209D0FAF007D912A /* AnnouncementDetailScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailScene.swift; sourceTree = "<group>"; };
 		CA728466209D1197007D912A /* WhenAnnouncementDetailSceneDidLoad_AnnouncementDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAnnouncementDetailSceneDidLoad_AnnouncementDetailPresenterShould.swift; sourceTree = "<group>"; };
+		CA728469209D1442007D912A /* AnnouncementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementViewModel.swift; sourceTree = "<group>"; };
+		CA72846B209D1457007D912A /* AnnouncementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementViewModel.swift; sourceTree = "<group>"; };
+		CA72846D209D14A3007D912A /* AnnouncementDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailInteractor.swift; sourceTree = "<group>"; };
+		CA728470209D15C2007D912A /* AnnouncementDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailPresenter.swift; sourceTree = "<group>"; };
 		CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeListSceneDidLoad.swift; sourceTree = "<group>"; };
 		CA73AED7201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
@@ -2682,6 +2690,7 @@
 				CA9AC16C2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift */,
 				CAD68829208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift */,
 				CA0E521A208FC107005259FE /* ConventionCountdownComponentViewModel+RandomValueProviding.swift */,
+				CA72846B209D1457007D912A /* AnnouncementViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -2690,7 +2699,9 @@
 			isa = PBXGroup;
 			children = (
 				CA72844E209D04D3007D912A /* AnnouncementDetailModuleBuilder.swift */,
+				CA728468209D1436007D912A /* Interactor */,
 				CA728447209D0127007D912A /* Module */,
+				CA72846F209D15B8007D912A /* Presenter */,
 				CA728452209D0569007D912A /* View */,
 			);
 			path = "Announcement Detail";
@@ -2759,6 +2770,23 @@
 				CA72845C209D0627007D912A /* StoryboardAnnouncementDetailSceneFactory.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		CA728468209D1436007D912A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CA72846D209D14A3007D912A /* AnnouncementDetailInteractor.swift */,
+				CA728469209D1442007D912A /* AnnouncementViewModel.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CA72846F209D15B8007D912A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CA728470209D15C2007D912A /* AnnouncementDetailPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		CA73AED2201A03F1004E77BF /* Knowledge List */ = {
@@ -3910,6 +3938,7 @@
 			files = (
 				9A7FFD571EFC5B46007ABA36 /* CalendarAccess.swift in Sources */,
 				CAEAEBE71FDC94F800C0EE7C /* AuthenticationService.swift in Sources */,
+				CA728471209D15C2007D912A /* AnnouncementDetailPresenter.swift in Sources */,
 				CAF7055A1F82C51900A9FEA2 /* LegacyPreloadService.swift in Sources */,
 				CA6EC4752051664D00402894 /* KnowledgeDetailModuleBuilder.swift in Sources */,
 				CA8D97D7201616DF0074838F /* BlockEventConsumer.swift in Sources */,
@@ -4014,6 +4043,7 @@
 				CA72845D209D0627007D912A /* StoryboardAnnouncementDetailSceneFactory.swift in Sources */,
 				9A80EF611F2922EE00FD0D37 /* EventTableViewController.swift in Sources */,
 				9A80EF4A1F289D0500FD0D37 /* NotificationSyncDataStoreRefreshDelegate.swift in Sources */,
+				CA72846E209D14A3007D912A /* AnnouncementDetailInteractor.swift in Sources */,
 				CA0F762B203230F2009DA079 /* KnowledgeGroupEntryScene.swift in Sources */,
 				78567B411F10212100EBA31D /* ProgressViewRefreshDelegate.swift in Sources */,
 				9A861EA81F2554BE00B75A8C /* RequestPushPermissionsTutorialPagePresenter.swift in Sources */,
@@ -4163,6 +4193,7 @@
 				CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */,
 				CAA39E0820051B5C00F2F3D3 /* LocalizedStrings.swift in Sources */,
 				D6F3DEDDAFE507E873CB3806 /* WikiText.swift in Sources */,
+				CA72846A209D1442007D912A /* AnnouncementViewModel.swift in Sources */,
 				CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */,
 				9A80EF4E1F28C78900FD0D37 /* TargetRouter.swift in Sources */,
 				D6F3D523BDCDDA3A2A163E55 /* TimeLabelCell.swift in Sources */,
@@ -4451,6 +4482,7 @@
 				CAF9A94C1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift in Sources */,
 				CA2D080C1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift in Sources */,
 				CA728441209D001B007D912A /* WhenNewsModuleSelectsAnnouncement_DirectorShould.swift in Sources */,
+				CA72846C209D1457007D912A /* AnnouncementViewModel.swift in Sources */,
 				CAD68830208A144800B31F5F /* WhenBindingUserWithNoUnreadMessages_NewsPresenterShould.swift in Sources */,
 				7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */,
 				CA89CBBE208531FB00570D54 /* AnnouncementComponentViewModel+RandomValueProviding.swift in Sources */,

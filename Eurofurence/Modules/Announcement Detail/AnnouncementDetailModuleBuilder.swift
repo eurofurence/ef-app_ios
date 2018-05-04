@@ -9,9 +9,17 @@
 class AnnouncementDetailModuleBuilder {
 
     private var sceneFactory: AnnouncementDetailSceneFactory
+    private var announcementDetailInteractor: AnnouncementDetailInteractor
 
     init() {
+        struct DummyAnnouncementDetailInteractor: AnnouncementDetailInteractor {
+            func makeViewModel(completionHandler: @escaping (AnnouncementViewModel) -> Void) {
+
+            }
+        }
+
         sceneFactory = StoryboardAnnouncementDetailSceneFactory()
+        announcementDetailInteractor = DummyAnnouncementDetailInteractor()
     }
 
     @discardableResult
@@ -20,8 +28,15 @@ class AnnouncementDetailModuleBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ announcementDetailInteractor: AnnouncementDetailInteractor) -> AnnouncementDetailModuleBuilder {
+        self.announcementDetailInteractor = announcementDetailInteractor
+        return self
+    }
+
     func build() -> AnnouncementDetailModuleProviding {
-        return AnnouncementDetailModule(sceneFactory: sceneFactory)
+        return AnnouncementDetailModule(sceneFactory: sceneFactory,
+                                        announcementDetailInteractor: announcementDetailInteractor)
     }
 
 }

@@ -11,11 +11,11 @@ import XCTest
 
 class WhenAnnouncementDetailSceneDidLoad_AnnouncementDetailPresenterShould: XCTestCase {
     
-    func testApplyTheTitleOfTheAnnouncementOntoTheScene() {
+    func testApplyTheTitleOfTheAnnouncementFromTheViewModelOntoTheScene() {
         let context = AnnouncementDetailPresenterTestBuilder().build()
         context.simulateAnnouncementDetailSceneDidLoad()
         
-        XCTAssertEqual(context.announcement.title, context.scene.capturedAnnouncementHeading)
+        XCTAssertEqual(context.announcementViewModel.heading, context.scene.capturedAnnouncementHeading)
     }
     
 }

@@ -9,24 +9,37 @@
 @testable import Eurofurence
 import UIKit.UIViewController
 
+struct StubAnnouncementDetailInteractor: AnnouncementDetailInteractor {
+    
+    var viewModel: AnnouncementViewModel = .random
+    func makeViewModel(completionHandler: @escaping (AnnouncementViewModel) -> Void) {
+        completionHandler(viewModel)
+    }
+    
+}
+
 class AnnouncementDetailPresenterTestBuilder {
     
     struct Context {
         var announcementDetailScene: UIViewController
         var sceneFactory: StubAnnouncementDetailSceneFactory
         var scene: CapturingAnnouncementDetailScene
-        var announcement: Announcement2
+        var announcementViewModel: AnnouncementViewModel
     }
     
     func build() -> Context {
         let sceneFactory = StubAnnouncementDetailSceneFactory()
-        let announcement = Announcement2.random
-        let module = AnnouncementDetailModuleBuilder().with(sceneFactory).build().makeAnnouncementDetailModule(for: announcement)
+        let announcementDetailInteractor = StubAnnouncementDetailInteractor()
+        let module = AnnouncementDetailModuleBuilder()
+            .with(sceneFactory)
+            .with(announcementDetailInteractor)
+            .build()
+            .makeAnnouncementDetailModule(for: .random)
         
         return Context(announcementDetailScene: module,
                        sceneFactory: sceneFactory,
                        scene: sceneFactory.stubbedScene,
-                       announcement: announcement)
+                       announcementViewModel: announcementDetailInteractor.viewModel)
     }
     
 }
