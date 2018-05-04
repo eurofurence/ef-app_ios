@@ -47,18 +47,11 @@ class DirectorBuilder {
         messageDetailModuleProviding = MessageDetailModuleBuilder().build()
         knowledgeListModuleProviding = KnowledgeListModuleBuilder().build()
         knowledgeDetailModuleProviding = KnowledgeDetailModuleBuilder().build()
+        announcementDetailModuleProviding = AnnouncementDetailModuleBuilder().build()
 
         linkLookupService = EurofurenceApplication.shared
         webModuleProviding = SafariWebModuleProviding()
         urlOpener = AppURLOpener()
-
-        class DummyAnnouncementDetailModuleProviding: AnnouncementDetailModuleProviding {
-            func makeAnnouncementDetailModule(for announcement: Announcement2) -> UIViewController {
-                return UIViewController()
-            }
-        }
-
-        announcementDetailModuleProviding = DummyAnnouncementDetailModuleProviding()
     }
 
     @discardableResult

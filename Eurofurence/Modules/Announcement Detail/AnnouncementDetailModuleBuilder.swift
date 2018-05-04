@@ -6,20 +6,12 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-import UIKit.UIViewController
-
 class AnnouncementDetailModuleBuilder {
 
     private var sceneFactory: AnnouncementDetailSceneFactory
 
     init() {
-        struct DummyAnnouncementDetailSceneFactory: AnnouncementDetailSceneFactory {
-            func makeAnnouncementDetailScene() -> UIViewController {
-                return UIViewController()
-            }
-        }
-
-        sceneFactory = DummyAnnouncementDetailSceneFactory()
+        sceneFactory = StoryboardAnnouncementDetailSceneFactory()
     }
 
     @discardableResult
