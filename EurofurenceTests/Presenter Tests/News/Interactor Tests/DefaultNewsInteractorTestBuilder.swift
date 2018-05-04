@@ -169,6 +169,17 @@ extension DefaultNewsInteractorTestBuilder.Context {
         verify(expectation, file: file, line: line)
     }
     
+    func verifyModel(at indexPath: IndexPath, is expected: NewsViewModelValue, file: StaticString = #file, line: UInt = #line) {
+        if let visitor = traverseViewModel() {
+            guard let actual = visitor.moduleModels[indexPath] else {
+                XCTFail("Did not resolve a module model at index path \(indexPath)", file: file, line: line)
+                return
+            }
+            
+            XCTAssertEqual(expected, actual, file: file, line: line)
+        }
+    }
+    
     private class Visitor: NewsViewModelVisitor {
         let visitedViewModel: NewsViewModel
         var components = [AnyHashable]()
@@ -195,23 +206,12 @@ extension DefaultNewsInteractorTestBuilder.Context {
         }
     }
     
-    func verify(_ expectation: DefaultNewsInteractorTestBuilder.Expectation, file: StaticString = #file, line: UInt = #line) {
+    private func verify(_ expectation: DefaultNewsInteractorTestBuilder.Expectation, file: StaticString = #file, line: UInt = #line) {
         if let visitor = traverseViewModel() {
             let viewModel = visitor.visitedViewModel
             let titles = (0..<viewModel.numberOfComponents).map(viewModel.titleForComponent)
             
             expectation.verify(components: visitor.components, titles: titles, file: file, line: line)
-        }
-    }
-    
-    func verifyModel(at indexPath: IndexPath, is expected: NewsViewModelValue, file: StaticString = #file, line: UInt = #line) {
-        if let visitor = traverseViewModel() {
-            guard let actual = visitor.moduleModels[indexPath] else {
-                XCTFail("Did not resolve a module model at index path \(indexPath)", file: file, line: line)
-                return
-            }
-            
-            XCTAssertEqual(expected, actual, file: file, line: line)
         }
     }
     
