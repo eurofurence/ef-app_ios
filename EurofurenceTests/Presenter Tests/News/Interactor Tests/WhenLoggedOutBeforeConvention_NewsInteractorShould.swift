@@ -24,10 +24,7 @@ class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
     }
     
     func testProduceViewModelWithLoginPrompt_DaysUntilConvention_AndAnnouncements() {
-        let expected = context.makeExpectedComponentsForBeforeConvention()
-        let expectation = DefaultNewsInteractorTestBuilder.Expectation(components: expected.components, titles: expected.titles)
-        
-        context.verify(expectation)
+        context.verifyViewModelForBeforeConvention()
     }
     
     func testFetchMessagesModuleValueWhenAskingForModelInFirstSection() {

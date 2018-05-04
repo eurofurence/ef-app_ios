@@ -20,10 +20,8 @@ class WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould: XCTestCase {
         context.subscribeViewModelUpdates()
         let user = User.random
         authenticationService.notifyObserversUserDidLogin(user)
-        let expected = context.makeExpectedComponentsForBeforeConvention()
-        let expectation = DefaultNewsInteractorTestBuilder.Expectation(components: expected.components, titles: expected.titles)
         
-        context.verify(expectation)
+        context.verifyViewModelForBeforeConvention()
     }
     
 }

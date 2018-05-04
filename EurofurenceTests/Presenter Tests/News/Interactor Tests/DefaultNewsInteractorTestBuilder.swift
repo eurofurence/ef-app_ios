@@ -163,6 +163,12 @@ extension DefaultNewsInteractorTestBuilder.Context {
         interactor.subscribeViewModelUpdates(delegate)
     }
     
+    func verifyViewModelForBeforeConvention(_ file: StaticString = #file, line: UInt = #line) {
+        let expected = makeExpectedComponentsForBeforeConvention()
+        let expectation = DefaultNewsInteractorTestBuilder.Expectation(components: expected.components, titles: expected.titles)
+        verify(expectation, file: file, line: line)
+    }
+    
     private class Visitor: NewsViewModelVisitor {
         let visitedViewModel: NewsViewModel
         var components = [AnyHashable]()

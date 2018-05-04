@@ -17,10 +17,8 @@ class WhenLoggedInBeforeConvention_NewsInteractorShould: XCTestCase {
             .with(StubAnnouncementsService(announcements: .random))
             .build()
         context.subscribeViewModelUpdates()
-        let expected = context.makeExpectedComponentsForBeforeConvention()
-        let expectation = DefaultNewsInteractorTestBuilder.Expectation(components: expected.components, titles: expected.titles)
         
-        context.verify(expectation)
+        context.verifyViewModelForBeforeConvention()
     }
     
 }
