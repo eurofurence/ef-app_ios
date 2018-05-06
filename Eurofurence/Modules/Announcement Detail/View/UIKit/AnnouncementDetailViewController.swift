@@ -19,6 +19,8 @@ class AnnouncementDetailViewController: UITableViewController, AnnouncementDetai
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        announcementContentsTextView.textContainer.lineFragmentPadding = 0
         delegate?.announcementDetailSceneDidLoad()
     }
 
