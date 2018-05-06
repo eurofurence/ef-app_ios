@@ -9,17 +9,23 @@
 class AnnouncementDetailModuleBuilder {
 
     private var sceneFactory: AnnouncementDetailSceneFactory
-    private var announcementDetailInteractor: AnnouncementDetailInteractor
+    private var announcementDetailInteractorFactory: AnnouncementDetailInteractorFactory
 
     init() {
-        struct DummyAnnouncementDetailInteractor: AnnouncementDetailInteractor {
-            func makeViewModel(completionHandler: @escaping (AnnouncementViewModel) -> Void) {
+        struct DummyAnnouncementDetailInteractorFactory: AnnouncementDetailInteractorFactory {
+            func makeAnnouncementDetailInteractor(for announcement: Announcement2) -> AnnouncementDetailInteractor {
+                struct DummyAnnouncementDetailInteractor: AnnouncementDetailInteractor {
+                    func makeViewModel(completionHandler: @escaping (AnnouncementViewModel) -> Void) {
 
+                    }
+                }
+
+                return DummyAnnouncementDetailInteractor()
             }
         }
 
         sceneFactory = StoryboardAnnouncementDetailSceneFactory()
-        announcementDetailInteractor = DummyAnnouncementDetailInteractor()
+        announcementDetailInteractorFactory = DummyAnnouncementDetailInteractorFactory()
     }
 
     @discardableResult
@@ -29,14 +35,14 @@ class AnnouncementDetailModuleBuilder {
     }
 
     @discardableResult
-    func with(_ announcementDetailInteractor: AnnouncementDetailInteractor) -> AnnouncementDetailModuleBuilder {
-        self.announcementDetailInteractor = announcementDetailInteractor
+    func with(_ announcementDetailInteractorFactory: AnnouncementDetailInteractorFactory) -> AnnouncementDetailModuleBuilder {
+        self.announcementDetailInteractorFactory = announcementDetailInteractorFactory
         return self
     }
 
     func build() -> AnnouncementDetailModuleProviding {
         return AnnouncementDetailModule(sceneFactory: sceneFactory,
-                                        announcementDetailInteractor: announcementDetailInteractor)
+                                        announcementDetailInteractorFactory: announcementDetailInteractorFactory)
     }
 
 }

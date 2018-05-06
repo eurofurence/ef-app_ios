@@ -432,6 +432,8 @@
 		CA72846E209D14A3007D912A /* AnnouncementDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72846D209D14A3007D912A /* AnnouncementDetailInteractor.swift */; };
 		CA728471209D15C2007D912A /* AnnouncementDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728470209D15C2007D912A /* AnnouncementDetailPresenter.swift */; };
 		CA728473209D163E007D912A /* StubAnnouncementDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728472209D163E007D912A /* StubAnnouncementDetailInteractor.swift */; };
+		CA728480209F8764007D912A /* AnnouncementDetailInteractorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72847F209F8764007D912A /* AnnouncementDetailInteractorFactory.swift */; };
+		CA728482209F8885007D912A /* StubAnnouncementDetailInteractorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728481209F8885007D912A /* StubAnnouncementDetailInteractorFactory.swift */; };
 		CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */; };
 		CA73AED8201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED7201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift */; };
 		CA73AEDB201A080F004E77BF /* StubKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */; };
@@ -1121,6 +1123,8 @@
 		CA72846D209D14A3007D912A /* AnnouncementDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailInteractor.swift; sourceTree = "<group>"; };
 		CA728470209D15C2007D912A /* AnnouncementDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailPresenter.swift; sourceTree = "<group>"; };
 		CA728472209D163E007D912A /* StubAnnouncementDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAnnouncementDetailInteractor.swift; sourceTree = "<group>"; };
+		CA72847F209F8764007D912A /* AnnouncementDetailInteractorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailInteractorFactory.swift; sourceTree = "<group>"; };
+		CA728481209F8885007D912A /* StubAnnouncementDetailInteractorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAnnouncementDetailInteractorFactory.swift; sourceTree = "<group>"; };
 		CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeListSceneDidLoad.swift; sourceTree = "<group>"; };
 		CA73AED7201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
@@ -2761,6 +2765,7 @@
 				CA728462209D0F7B007D912A /* CapturingAnnouncementDetailScene.swift */,
 				CA728457209D058A007D912A /* StubAnnouncementDetailSceneFactory.swift */,
 				CA728472209D163E007D912A /* StubAnnouncementDetailInteractor.swift */,
+				CA728481209F8885007D912A /* StubAnnouncementDetailInteractorFactory.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -2779,6 +2784,7 @@
 			isa = PBXGroup;
 			children = (
 				CA72846D209D14A3007D912A /* AnnouncementDetailInteractor.swift */,
+				CA72847F209F8764007D912A /* AnnouncementDetailInteractorFactory.swift */,
 				CA728469209D1442007D912A /* AnnouncementViewModel.swift */,
 			);
 			path = Interactor;
@@ -3952,6 +3958,7 @@
 				CA6AA01C1FD88D930092C6DB /* UIStoryboard+Convenience.swift in Sources */,
 				CA8E7EFE1FB093D800F0BF10 /* PhoneNavigationControllerFactory.swift in Sources */,
 				CA89CBB22080030300570D54 /* NewsComponentsBinder.swift in Sources */,
+				CA728480209F8764007D912A /* AnnouncementDetailInteractorFactory.swift in Sources */,
 				CA1ECB471FE6E7DA0076083A /* MessageComponent.swift in Sources */,
 				9A861ECC1F25555000B75A8C /* TutorialViewController.swift in Sources */,
 				9A80EF5B1F29203C00FD0D37 /* AnnouncementsShowAllProviding.swift in Sources */,
@@ -4542,6 +4549,7 @@
 				CA81D4941FEA92EA00A52A2F /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift in Sources */,
 				CA60BFE32078E42800697566 /* User+RandomValueProviding.swift in Sources */,
 				CA63757A208CDB7B00536BE2 /* Message+RandomValueProviding.swift in Sources */,
+				CA728482209F8885007D912A /* StubAnnouncementDetailInteractorFactory.swift in Sources */,
 				CA637578208CDB4700536BE2 /* WhenUserSelectsMessage_DirectorShould.swift in Sources */,
 				CA0E5211208F4BF3005259FE /* Announcement2+RandomValueProviding.swift in Sources */,
 				CA30EACA1F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift in Sources */,

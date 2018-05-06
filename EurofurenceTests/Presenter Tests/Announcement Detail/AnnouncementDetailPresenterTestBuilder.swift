@@ -23,7 +23,7 @@ class AnnouncementDetailPresenterTestBuilder {
         let announcementDetailInteractor = StubAnnouncementDetailInteractor()
         let module = AnnouncementDetailModuleBuilder()
             .with(sceneFactory)
-            .with(announcementDetailInteractor)
+            .with(StubAnnouncementDetailInteractorFactory(interactor: announcementDetailInteractor))
             .build()
             .makeAnnouncementDetailModule(for: .random)
         

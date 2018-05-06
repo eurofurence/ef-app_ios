@@ -11,11 +11,12 @@ import UIKit.UIViewController
 struct AnnouncementDetailModule: AnnouncementDetailModuleProviding {
 
     var sceneFactory: AnnouncementDetailSceneFactory
-    var announcementDetailInteractor: AnnouncementDetailInteractor
+    var announcementDetailInteractorFactory: AnnouncementDetailInteractorFactory
 
     func makeAnnouncementDetailModule(for announcement: Announcement2) -> UIViewController {
         let scene = sceneFactory.makeAnnouncementDetailScene()
-        _ = AnnouncementDetailPresenter(scene: scene, interactor: announcementDetailInteractor)
+        let interactor = announcementDetailInteractorFactory.makeAnnouncementDetailInteractor(for: Announcement2(title: "", content: ""))
+        _ = AnnouncementDetailPresenter(scene: scene, interactor: interactor)
 
         return scene
     }
