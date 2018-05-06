@@ -29,6 +29,11 @@ class CapturingPrivateMessagesService: PrivateMessagesService {
         observers.append(observer)
     }
     
+    private(set) var messageMarkedAsRead: Message?
+    func markMessageAsRead(_ message: Message) {
+        messageMarkedAsRead = message
+    }
+    
     func failLastRefresh() {
         observers.forEach { $0.privateMessagesServiceDidFailToLoadMessages() }
     }

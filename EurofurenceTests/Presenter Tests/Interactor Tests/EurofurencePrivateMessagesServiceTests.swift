@@ -135,4 +135,11 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
         XCTAssertEqual(expected, observer.capturedUnreadMessagesCount)
     }
     
+    func testPropogateMarkingMessageAsReadOntoCore() {
+        let message = Message.random
+        service.markMessageAsRead(message)
+        
+        XCTAssertEqual(message, app.messageMarkedAsRead)
+    }
+    
 }

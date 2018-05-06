@@ -41,8 +41,9 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
+    private(set) var messageMarkedAsRead: Message?
     func markMessageAsRead(_ message: Message) {
-        
+        messageMarkedAsRead = message
     }
     
     func logout(completionHandler: @escaping (LogoutResult) -> Void) {

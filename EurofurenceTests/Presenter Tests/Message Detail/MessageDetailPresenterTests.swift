@@ -56,14 +56,17 @@ class MessageDetailPresenterTests: XCTestCase {
     var messageDetailSceneFactory: StubMessageDetailSceneFactory!
     var message: Message!
     var viewController: UIViewController!
+    var messagesService: CapturingPrivateMessagesService!
     
     override func setUp() {
         super.setUp()
         
         message = AppDataBuilder.makeMessage(authorName: "Author", subject: "Subject", contents: "Contents")
         messageDetailSceneFactory = StubMessageDetailSceneFactory()
+        messagesService = CapturingPrivateMessagesService()
         viewController = MessageDetailModuleBuilder()
             .with(messageDetailSceneFactory)
+            .with(messagesService)
             .build()
             .makeMessageDetailModule(message: message)
     }
@@ -108,6 +111,10 @@ class MessageDetailPresenterTests: XCTestCase {
         messageDetailSceneFactory.scene.capturedMessageBinder?.bind(component)
         
         XCTAssertEqual(message.contents, component.capturedMessageContents)
+    }
+    
+    func testTellTheMessagesServiceToMarkTheMessageAsRead() {
+        XCTAssertEqual(message, messagesService.messageMarkedAsRead)
     }
     
 }

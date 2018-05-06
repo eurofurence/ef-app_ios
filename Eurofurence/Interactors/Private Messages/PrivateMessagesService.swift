@@ -10,6 +10,7 @@ protocol PrivateMessagesService {
 
     func add(_ observer: PrivateMessagesServiceObserver)
     func refreshMessages()
+    func markMessageAsRead(_ message: Message)
 
 }
 

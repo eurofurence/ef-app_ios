@@ -11,9 +11,11 @@ import UIKit.UIViewController
 class MessageDetailModuleBuilder {
 
     private var messageDetailSceneFactory: MessageDetailSceneFactory
+    private var privateMessagesService: PrivateMessagesService
 
     init() {
         messageDetailSceneFactory = PhoneMessageDetailSceneFactory()
+        privateMessagesService = EurofurencePrivateMessagesService.shared
     }
 
     func with(_ messageDetailSceneFactory: MessageDetailSceneFactory) -> MessageDetailModuleBuilder {
@@ -21,8 +23,15 @@ class MessageDetailModuleBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ privateMessagesService: PrivateMessagesService) -> MessageDetailModuleBuilder {
+        self.privateMessagesService = privateMessagesService
+        return self
+    }
+
     func build() -> MessageDetailModuleProviding {
-        return MessageDetailModuleFactory(messageDetailSceneFactory: messageDetailSceneFactory)
+        return MessageDetailModuleFactory(messageDetailSceneFactory: messageDetailSceneFactory,
+                                          privateMessagesService: privateMessagesService)
     }
 
 }

@@ -39,6 +39,10 @@ class EurofurencePrivateMessagesService: PrivateMessagesService {
         }
     }
 
+    func markMessageAsRead(_ message: Message) {
+        app.markMessageAsRead(message)
+    }
+
     private func isUnread(_ message: Message) -> Bool {
         return !message.isRead
     }
