@@ -22,7 +22,7 @@ class CapturingJSONSession: JSONSession {
 
     private(set) var postedURL: String?
     private(set) var capturedAdditionalPOSTHeaders: [String : String]?
-    private var POSTData: Data?
+    private(set) var POSTData: Data?
     private var POSTCompletionHandler: ((Data?, Error?) -> Void)?
     func post(_ request: JSONRequest, completionHandler: @escaping (Data?, Error?) -> Void) {
         postedURL = request.url

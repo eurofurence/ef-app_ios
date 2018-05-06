@@ -185,4 +185,12 @@ class V2PrivateMessagesAPITests: XCTestCase {
         XCTAssertEqual("Bearer \(token)", JSONSession.capturedAdditionalPOSTHeaders?["Authorization"])
     }
     
+    // See issue #145
+    func testMarkingAPIMessageAsReadSubmitsTrueWithinPOSTBodyToSupportSwaggerWorkaround() {
+        let expected = "true".data(using: .utf8)!
+        api.markMessageWithIdentifierAsRead("", authorizationToken: .random)
+        
+        XCTAssertEqual(expected, JSONSession.POSTData)
+    }
+    
 }

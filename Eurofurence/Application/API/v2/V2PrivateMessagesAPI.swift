@@ -44,7 +44,8 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
 
     func markMessageWithIdentifierAsRead(_ identifier: String, authorizationToken: String) {
         let url = "https://app.eurofurence.org/api/v2/Communication/PrivateMessages/\(identifier)/Read"
-        var request = JSONRequest(url: url, body: Data())
+        let messageContentsToSupportSwagger = "true".data(using: .utf8)!
+        var request = JSONRequest(url: url, body: messageContentsToSupportSwagger)
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
 
         jsonSession.post(request, completionHandler: { (_) in })
