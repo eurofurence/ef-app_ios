@@ -2338,12 +2338,7 @@
 			isa = PBXGroup;
 			children = (
 				CA65A87A209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift */,
-				CA65A878209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift */,
-				CA65A87E209B7CA200B72533 /* WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould.swift */,
-				CA65A880209B7E1000B72533 /* WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift */,
-				CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */,
-				CA65A87C209B2F6A00B72533 /* WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould.swift */,
-				CA72843E209CF8D2007D912A /* WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsInteractorShould.swift */,
+				CA728493209F9A54007D912A /* Before Convention */,
 			);
 			path = "Interactor Tests";
 			sourceTree = "<group>";
@@ -2830,6 +2825,19 @@
 				CA72848D209F93A4007D912A /* MarkdownRenderer.swift */,
 			);
 			path = Default;
+			sourceTree = "<group>";
+		};
+		CA728493209F9A54007D912A /* Before Convention */ = {
+			isa = PBXGroup;
+			children = (
+				CA65A878209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift */,
+				CA65A87E209B7CA200B72533 /* WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould.swift */,
+				CA65A880209B7E1000B72533 /* WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift */,
+				CA63753C208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift */,
+				CA65A87C209B2F6A00B72533 /* WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould.swift */,
+				CA72843E209CF8D2007D912A /* WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsInteractorShould.swift */,
+			);
+			path = "Before Convention";
 			sourceTree = "<group>";
 		};
 		CA73AED2201A03F1004E77BF /* Knowledge List */ = {
