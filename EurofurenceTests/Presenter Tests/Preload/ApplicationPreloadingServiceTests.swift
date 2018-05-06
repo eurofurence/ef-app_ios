@@ -12,19 +12,19 @@ import XCTest
 class ApplicationPreloadingServiceTests: XCTestCase {
     
     var app: CapturingEurofurenceApplication!
-    var service: ApplicationPreloadingService!
+    var interactor: ApplicationPreloadingService!
     var delegate: CapturingPreloadServiceDelegate!
     
     override func setUp() {
         super.setUp()
         
         app = CapturingEurofurenceApplication()
-        service = ApplicationPreloadingService(app: app)
+        interactor = ApplicationPreloadingService(app: app)
         delegate = CapturingPreloadServiceDelegate()
     }
     
     private func beginPreload() {
-        service.beginPreloading(delegate: delegate)
+        interactor.beginPreloading(delegate: delegate)
     }
     
     private func simulateRefreshFailure() {
@@ -39,28 +39,28 @@ class ApplicationPreloadingServiceTests: XCTestCase {
         beginPreload()
         simulateRefreshFailure()
         
-        XCTAssertTrue(delegate.wasToldPreloadServiceDidFail)
+        XCTAssertTrue(delegate.wasToldpreloadInteractorDidFailToPreload)
     }
     
     func testSuccessfulRefreshesDoNotTellDelegatePreloadServiceSucceeded() {
         beginPreload()
         simulateRefreshSuccess()
         
-        XCTAssertFalse(delegate.wasToldPreloadServiceDidFail)
+        XCTAssertFalse(delegate.wasToldpreloadInteractorDidFailToPreload)
     }
     
     func testSuccessfulRefreshTellsDelegatePreloadServiceSucceeded() {
         beginPreload()
         simulateRefreshSuccess()
         
-        XCTAssertTrue(delegate.wasToldPreloadServiceDidFinish)
+        XCTAssertTrue(delegate.wasToldpreloadInteractorDidFinishPreloading)
     }
     
     func testFailedRefreshDoesNotTellDelegatePreloadServiceSucceeded() {
         beginPreload()
         simulateRefreshFailure()
         
-        XCTAssertFalse(delegate.wasToldPreloadServiceDidFinish)
+        XCTAssertFalse(delegate.wasToldpreloadInteractorDidFinishPreloading)
     }
     
     func testProgressUpdatesFromTheRefreshAreEmittedToTheDelegate() {

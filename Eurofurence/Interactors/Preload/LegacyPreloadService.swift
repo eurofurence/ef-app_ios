@@ -8,20 +8,20 @@
 
 import Foundation
 
-class LegacyPreloadService: PreloadService,
+class LegacyPreloadService: PreloadInteractor,
                             DataStoreLoadDelegate,
                             DataStoreRefreshDelegate {
 
     private lazy var loadController = DataStoreLoadController.shared
     private lazy var refreshController = DataStoreRefreshController.shared
-    private var delegates = [PreloadServiceDelegate]()
+    private var delegates = [PreloadInteractorDelegate]()
 
     init() {
         loadController.add(self, doPrepend: true)
         refreshController.add(self, doPrepend: true)
     }
 
-    func beginPreloading(delegate: PreloadServiceDelegate) {
+    func beginPreloading(delegate: PreloadInteractorDelegate) {
         delegates.append(delegate)
         loadController.loadFromStore()
     }
@@ -47,7 +47,7 @@ class LegacyPreloadService: PreloadService,
     }
 
     func dataStoreRefreshDidFailWithError(_ error: Error) {
-        delegates.forEach({ $0.preloadServiceDidFail() })
+        delegates.forEach({ $0.preloadInteractorDidFailToPreload() })
     }
 
     func dataStoreRefreshDidProduceProgress(_ progress: Progress) {
@@ -55,11 +55,11 @@ class LegacyPreloadService: PreloadService,
     }
 
     private func notifyDelegatesOfProgress(_ progress: Progress) {
-        delegates.forEach({ $0.preloadServiceDidProgress(currentUnitCount: Int(progress.completedUnitCount), totalUnitCount: Int(progress.totalUnitCount)) })
+        delegates.forEach({ $0.preloadInteractorDidProgress(currentUnitCount: Int(progress.completedUnitCount), totalUnitCount: Int(progress.totalUnitCount)) })
     }
 
     private func notifyFinishedAndClearDelegates() {
-        delegates.forEach({ $0.preloadServiceDidFinish() })
+        delegates.forEach({ $0.preloadInteractorDidFinishPreloading() })
         delegates.removeAll()
     }
 

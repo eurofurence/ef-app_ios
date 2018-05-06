@@ -11,7 +11,7 @@ import UIKit
 struct PhonePreloadModuleFactory: PreloadModuleProviding {
 
     var preloadSceneFactory: PreloadSceneFactory
-    var preloadService: PreloadService
+    var preloadService: PreloadInteractor
     var alertRouter: AlertRouter
     var quoteGenerator: QuoteGenerator
 

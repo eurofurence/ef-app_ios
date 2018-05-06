@@ -8,21 +8,21 @@
 
 @testable import Eurofurence
 
-class CapturingPreloadServiceDelegate: PreloadServiceDelegate {
+class CapturingPreloadServiceDelegate: PreloadInteractorDelegate {
     
-    private(set) var wasToldPreloadServiceDidFail = false
-    func preloadServiceDidFail() {
-        wasToldPreloadServiceDidFail = true
+    private(set) var wasToldpreloadInteractorDidFailToPreload = false
+    func preloadInteractorDidFailToPreload() {
+        wasToldpreloadInteractorDidFailToPreload = true
     }
     
-    private(set) var wasToldPreloadServiceDidFinish = false
-    func preloadServiceDidFinish() {
-        wasToldPreloadServiceDidFinish = true
+    private(set) var wasToldpreloadInteractorDidFinishPreloading = false
+    func preloadInteractorDidFinishPreloading() {
+        wasToldpreloadInteractorDidFinishPreloading = true
     }
     
     private(set) var capturedProgressCurrentUnitCount: Int?
     private(set) var capturedProgressTotalUnitCount: Int?
-    func preloadServiceDidProgress(currentUnitCount: Int, totalUnitCount: Int) {
+    func preloadInteractorDidProgress(currentUnitCount: Int, totalUnitCount: Int) {
         capturedProgressCurrentUnitCount = currentUnitCount
         capturedProgressTotalUnitCount = totalUnitCount
     }

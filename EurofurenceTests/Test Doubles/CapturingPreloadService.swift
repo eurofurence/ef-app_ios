@@ -8,27 +8,27 @@
 
 @testable import Eurofurence
 
-class CapturingPreloadService: PreloadService {
+class CapturingPreloadService: PreloadInteractor {
     
     private(set) var didBeginPreloading = false
     private(set) var beginPreloadInvocationCount = 0
-    private var delegate: PreloadServiceDelegate?
-    func beginPreloading(delegate: PreloadServiceDelegate) {
+    private var delegate: PreloadInteractorDelegate?
+    func beginPreloading(delegate: PreloadInteractorDelegate) {
         self.delegate = delegate
         didBeginPreloading = true
         beginPreloadInvocationCount += 1
     }
     
     func notifyFailedToPreload() {
-        delegate?.preloadServiceDidFail()
+        delegate?.preloadInteractorDidFailToPreload()
     }
     
     func notifySucceededPreload() {
-        delegate?.preloadServiceDidFinish()
+        delegate?.preloadInteractorDidFinishPreloading()
     }
     
     func notifyProgressMade(current: Int, total: Int) {
-        delegate?.preloadServiceDidProgress(currentUnitCount: current, totalUnitCount: total)
+        delegate?.preloadInteractorDidProgress(currentUnitCount: current, totalUnitCount: total)
     }
     
 }

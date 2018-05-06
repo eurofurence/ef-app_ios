@@ -18,12 +18,12 @@ struct PreloadModule {
     private let delegate: PreloadModuleDelegate
     private let preloadSceneFactory: PreloadSceneFactory
     private let quoteGenerator: QuoteGenerator
-    private let preloadService: PreloadService
+    private let preloadService: PreloadInteractor
     private let alertRouter: AlertRouter
 
     init(delegate: PreloadModuleDelegate,
          preloadSceneFactory: PreloadSceneFactory,
-         preloadService: PreloadService,
+         preloadService: PreloadInteractor,
          alertRouter: AlertRouter,
          quoteGenerator: QuoteGenerator) {
         self.delegate = delegate

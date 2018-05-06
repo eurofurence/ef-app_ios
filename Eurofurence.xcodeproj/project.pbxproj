@@ -486,7 +486,7 @@
 		CA8D97D3201612A70074838F /* RemoteNotificationRegistrationSucceeded.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97D2201612A70074838F /* RemoteNotificationRegistrationSucceeded.swift */; };
 		CA8D97D5201613010074838F /* RemoteNotificationRegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97D4201613010074838F /* RemoteNotificationRegistrationController.swift */; };
 		CA8D97D7201616DF0074838F /* BlockEventConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D97D6201616DF0074838F /* BlockEventConsumer.swift */; };
-		CA8E17ED1F817A70003C348C /* PreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17EC1F817A70003C348C /* PreloadService.swift */; };
+		CA8E17ED1F817A70003C348C /* PreloadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17EC1F817A70003C348C /* PreloadInteractor.swift */; };
 		CA8E17EF1F817A8C003C348C /* CapturingPreloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17EE1F817A8C003C348C /* CapturingPreloadService.swift */; };
 		CA8E17F11F817AA2003C348C /* CapturingPreloadModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */; };
 		CA8E17F31F817AD0003C348C /* PreloadModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8E17F21F817AD0003C348C /* PreloadModule.swift */; };
@@ -1183,7 +1183,7 @@
 		CA8D97D2201612A70074838F /* RemoteNotificationRegistrationSucceeded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationRegistrationSucceeded.swift; sourceTree = "<group>"; };
 		CA8D97D4201613010074838F /* RemoteNotificationRegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationRegistrationController.swift; sourceTree = "<group>"; };
 		CA8D97D6201616DF0074838F /* BlockEventConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockEventConsumer.swift; sourceTree = "<group>"; };
-		CA8E17EC1F817A70003C348C /* PreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadService.swift; sourceTree = "<group>"; };
+		CA8E17EC1F817A70003C348C /* PreloadInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadInteractor.swift; sourceTree = "<group>"; };
 		CA8E17EE1F817A8C003C348C /* CapturingPreloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPreloadService.swift; sourceTree = "<group>"; };
 		CA8E17F01F817AA2003C348C /* CapturingPreloadModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPreloadModuleDelegate.swift; sourceTree = "<group>"; };
 		CA8E17F21F817AD0003C348C /* PreloadModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadModule.swift; sourceTree = "<group>"; };
@@ -3009,6 +3009,7 @@
 			isa = PBXGroup;
 			children = (
 				CA8276B2204EC013006A7419 /* ApplicationPreloadingService.swift */,
+				CA8E17EC1F817A70003C348C /* PreloadInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -3053,7 +3054,6 @@
 		CA8E17EB1F817A5F003C348C /* Preload */ = {
 			isa = PBXGroup;
 			children = (
-				CA8E17EC1F817A70003C348C /* PreloadService.swift */,
 				CAF705591F82C51900A9FEA2 /* LegacyPreloadService.swift */,
 			);
 			path = Preload;
@@ -4196,7 +4196,7 @@
 				9A861EBD1F25551400B75A8C /* PresentationTier.swift in Sources */,
 				7820A6EF1F14F15D004C0FB5 /* Quote.swift in Sources */,
 				CABA43AC1FD5DC68009CB5B0 /* LoginScene.swift in Sources */,
-				CA8E17ED1F817A70003C348C /* PreloadService.swift in Sources */,
+				CA8E17ED1F817A70003C348C /* PreloadInteractor.swift in Sources */,
 				D6F3DD6B0659E1A44E01075B /* CurrentEventsViewModel.swift in Sources */,
 				CA0E521E208FC796005259FE /* NewsConventionCountdownTableViewCell.swift in Sources */,
 				781A943C1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift in Sources */,

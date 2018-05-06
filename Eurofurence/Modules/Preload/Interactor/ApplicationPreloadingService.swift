@@ -6,7 +6,7 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-class ApplicationPreloadingService: PreloadService {
+class ApplicationPreloadingService: PreloadInteractor {
 
     private let app: EurofurenceApplicationProtocol
     private var observations = [Any]()
@@ -19,19 +19,19 @@ class ApplicationPreloadingService: PreloadService {
         self.app = app
     }
 
-    func beginPreloading(delegate: PreloadServiceDelegate) {
+    func beginPreloading(delegate: PreloadInteractorDelegate) {
         let progress = app.refreshLocalStore { (error) in
             if error == nil {
-                delegate.preloadServiceDidFinish()
+                delegate.preloadInteractorDidFinishPreloading()
             } else {
-                delegate.preloadServiceDidFail()
+                delegate.preloadInteractorDidFailToPreload()
             }
         }
 
         var totalUnitCount = 0
         var completedUnitCount = 0
 
-        let updateProgress = { delegate.preloadServiceDidProgress(currentUnitCount: completedUnitCount, totalUnitCount: totalUnitCount) }
+        let updateProgress = { delegate.preloadInteractorDidProgress(currentUnitCount: completedUnitCount, totalUnitCount: totalUnitCount) }
 
         observations.append(progress.observe(\.totalUnitCount, options: [.new]) { (_, change) in
             if let value = change.newValue {

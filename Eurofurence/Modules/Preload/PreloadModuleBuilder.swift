@@ -11,7 +11,7 @@ import UIKit.UIApplication
 class PreloadModuleBuilder {
 
     private var preloadSceneFactory: PreloadSceneFactory
-    private var preloadService: PreloadService
+    private var preloadService: PreloadInteractor
     private var alertRouter: AlertRouter
     private var quoteGenerator: QuoteGenerator
 
@@ -27,7 +27,7 @@ class PreloadModuleBuilder {
         return self
     }
 
-    func with(_ preloadService: PreloadService) -> PreloadModuleBuilder {
+    func with(_ preloadService: PreloadInteractor) -> PreloadModuleBuilder {
         self.preloadService = preloadService
         return self
     }

@@ -6,17 +6,17 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-struct PreloadPresenter: SplashSceneDelegate, PreloadServiceDelegate {
+struct PreloadPresenter: SplashSceneDelegate, PreloadInteractorDelegate {
 
     private let delegate: PreloadModuleDelegate
     private let preloadScene: SplashScene
-    private let preloadService: PreloadService
+    private let preloadService: PreloadInteractor
     private let alertRouter: AlertRouter
     private let quote: Quote
 
     init(delegate: PreloadModuleDelegate,
          preloadScene: SplashScene,
-         preloadService: PreloadService,
+         preloadService: PreloadInteractor,
          alertRouter: AlertRouter,
          quote: Quote) {
         self.delegate = delegate
@@ -34,7 +34,7 @@ struct PreloadPresenter: SplashSceneDelegate, PreloadServiceDelegate {
         beginPreloading()
     }
 
-    func preloadServiceDidFail() {
+    func preloadInteractorDidFailToPreload() {
         let tryAgainAction = AlertAction(title: .tryAgain, action: beginPreloading)
         let cancelAction = AlertAction(title: .cancel, action: notifyDelegatePreloadingCancelled)
         let alert = Alert(title: .downloadError,
@@ -43,11 +43,11 @@ struct PreloadPresenter: SplashSceneDelegate, PreloadServiceDelegate {
         alertRouter.show(alert)
     }
 
-    func preloadServiceDidFinish() {
+    func preloadInteractorDidFinishPreloading() {
         delegate.preloadModuleDidFinishPreloading()
     }
 
-    func preloadServiceDidProgress(currentUnitCount: Int, totalUnitCount: Int) {
+    func preloadInteractorDidProgress(currentUnitCount: Int, totalUnitCount: Int) {
         let fractionalProgress = Float(currentUnitCount) / Float(totalUnitCount)
         preloadScene.showProgress(fractionalProgress)
     }
