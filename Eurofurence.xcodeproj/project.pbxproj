@@ -434,6 +434,9 @@
 		CA728473209D163E007D912A /* StubAnnouncementDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728472209D163E007D912A /* StubAnnouncementDetailInteractor.swift */; };
 		CA728480209F8764007D912A /* AnnouncementDetailInteractorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72847F209F8764007D912A /* AnnouncementDetailInteractorFactory.swift */; };
 		CA728482209F8885007D912A /* StubAnnouncementDetailInteractorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728481209F8885007D912A /* StubAnnouncementDetailInteractorFactory.swift */; };
+		CA728485209F88E0007D912A /* DefaultAnnouncementDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728484209F88E0007D912A /* DefaultAnnouncementDetailInteractorShould.swift */; };
+		CA72848A209F927B007D912A /* DefaultAnnouncementDetailInteractorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728489209F927B007D912A /* DefaultAnnouncementDetailInteractorFactory.swift */; };
+		CA72848C209F9288007D912A /* DefaultAnnouncementDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72848B209F9288007D912A /* DefaultAnnouncementDetailInteractor.swift */; };
 		CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */; };
 		CA73AED8201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED7201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift */; };
 		CA73AEDB201A080F004E77BF /* StubKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */; };
@@ -1125,6 +1128,9 @@
 		CA728472209D163E007D912A /* StubAnnouncementDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAnnouncementDetailInteractor.swift; sourceTree = "<group>"; };
 		CA72847F209F8764007D912A /* AnnouncementDetailInteractorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailInteractorFactory.swift; sourceTree = "<group>"; };
 		CA728481209F8885007D912A /* StubAnnouncementDetailInteractorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAnnouncementDetailInteractorFactory.swift; sourceTree = "<group>"; };
+		CA728484209F88E0007D912A /* DefaultAnnouncementDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAnnouncementDetailInteractorShould.swift; sourceTree = "<group>"; };
+		CA728489209F927B007D912A /* DefaultAnnouncementDetailInteractorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAnnouncementDetailInteractorFactory.swift; sourceTree = "<group>"; };
+		CA72848B209F9288007D912A /* DefaultAnnouncementDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAnnouncementDetailInteractor.swift; sourceTree = "<group>"; };
 		CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeListSceneDidLoad.swift; sourceTree = "<group>"; };
 		CA73AED7201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
@@ -2726,6 +2732,7 @@
 			isa = PBXGroup;
 			children = (
 				CA728459209D059A007D912A /* AnnouncementDetailPresenterTestBuilder.swift */,
+				CA728483209F88C0007D912A /* Interactor Tests */,
 				CA72844B209D0341007D912A /* Presenter Tests */,
 				CA728456209D0585007D912A /* Test Doubles */,
 			);
@@ -2783,6 +2790,7 @@
 		CA728468209D1436007D912A /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				CA728488209F9275007D912A /* Default */,
 				CA72846D209D14A3007D912A /* AnnouncementDetailInteractor.swift */,
 				CA72847F209F8764007D912A /* AnnouncementDetailInteractorFactory.swift */,
 				CA728469209D1442007D912A /* AnnouncementViewModel.swift */,
@@ -2796,6 +2804,23 @@
 				CA728470209D15C2007D912A /* AnnouncementDetailPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CA728483209F88C0007D912A /* Interactor Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CA728484209F88E0007D912A /* DefaultAnnouncementDetailInteractorShould.swift */,
+			);
+			path = "Interactor Tests";
+			sourceTree = "<group>";
+		};
+		CA728488209F9275007D912A /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				CA728489209F927B007D912A /* DefaultAnnouncementDetailInteractorFactory.swift */,
+				CA72848B209F9288007D912A /* DefaultAnnouncementDetailInteractor.swift */,
+			);
+			path = Default;
 			sourceTree = "<group>";
 		};
 		CA73AED2201A03F1004E77BF /* Knowledge List */ = {
@@ -4187,6 +4212,7 @@
 				CA73AEEE201A08A6004E77BF /* KnowledgeInteractor.swift in Sources */,
 				CA728461209D0642007D912A /* AnnouncementDetailViewController.swift in Sources */,
 				781A94401F1A1A72002DE70F /* FirebaseMessagingAdapter.swift in Sources */,
+				CA72848C209F9288007D912A /* DefaultAnnouncementDetailInteractor.swift in Sources */,
 				9A861EC11F25551400B75A8C /* ApplicationContext.swift in Sources */,
 				CAEAEBFD1FE0043B00C0EE7C /* MessageDetailSceneFactory.swift in Sources */,
 				CA30EAA31F2129700053DBF6 /* LoginAPI.swift in Sources */,
@@ -4307,6 +4333,7 @@
 				CA6EC4892051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift in Sources */,
 				CA73AEF3201A08C4004E77BF /* KnowledgeListModule.swift in Sources */,
 				CA30EAAE1F2148780053DBF6 /* User.swift in Sources */,
+				CA72848A209F927B007D912A /* DefaultAnnouncementDetailInteractorFactory.swift in Sources */,
 				CA8E7EF61FB08E2500F0BF10 /* PhoneWindowWireframe.swift in Sources */,
 				9A861ED51F25564900B75A8C /* StoryboardTutorialRouter.swift in Sources */,
 				CA637584208CDE3F00536BE2 /* EventsModuleBuilder.swift in Sources */,
@@ -4335,6 +4362,7 @@
 				CA8E17F11F817AA2003C348C /* CapturingPreloadModuleDelegate.swift in Sources */,
 				CA71A34A2040320A00C847C3 /* String+RandomValueProviding.swift in Sources */,
 				CAEAEBFA1FE0037700C0EE7C /* MessageDetailPresenterTests.swift in Sources */,
+				CA728485209F88E0007D912A /* DefaultAnnouncementDetailInteractorShould.swift in Sources */,
 				CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */,
 				CA71A3502040371D00C847C3 /* FloatingPoint+RandomValueProviding.swift in Sources */,
 				781A94421F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */,
