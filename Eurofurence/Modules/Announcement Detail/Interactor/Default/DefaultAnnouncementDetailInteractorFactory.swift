@@ -8,8 +8,18 @@
 
 struct DefaultAnnouncementDetailInteractorFactory: AnnouncementDetailInteractorFactory {
 
+    private let markdownRenderer: MarkdownRenderer
+
+    init() {
+        self.init(markdownRenderer: DefaultMarkdownRenderer())
+    }
+
+    init(markdownRenderer: MarkdownRenderer) {
+        self.markdownRenderer = markdownRenderer
+    }
+
     func makeAnnouncementDetailInteractor(for announcement: Announcement2) -> AnnouncementDetailInteractor {
-        return DefaultAnnouncementDetailInteractor(announcement: announcement)
+        return DefaultAnnouncementDetailInteractor(announcement: announcement, markdownRenderer: markdownRenderer)
     }
 
 }

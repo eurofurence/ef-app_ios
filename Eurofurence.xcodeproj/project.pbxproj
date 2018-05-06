@@ -437,6 +437,9 @@
 		CA728485209F88E0007D912A /* DefaultAnnouncementDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728484209F88E0007D912A /* DefaultAnnouncementDetailInteractorShould.swift */; };
 		CA72848A209F927B007D912A /* DefaultAnnouncementDetailInteractorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728489209F927B007D912A /* DefaultAnnouncementDetailInteractorFactory.swift */; };
 		CA72848C209F9288007D912A /* DefaultAnnouncementDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72848B209F9288007D912A /* DefaultAnnouncementDetailInteractor.swift */; };
+		CA72848E209F93A4007D912A /* MarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72848D209F93A4007D912A /* MarkdownRenderer.swift */; };
+		CA728490209F9482007D912A /* DefaultMarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA72848F209F9482007D912A /* DefaultMarkdownRenderer.swift */; };
+		CA728492209F9540007D912A /* StubMarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728491209F9540007D912A /* StubMarkdownRenderer.swift */; };
 		CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */; };
 		CA73AED8201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED7201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift */; };
 		CA73AEDB201A080F004E77BF /* StubKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */; };
@@ -1131,6 +1134,9 @@
 		CA728484209F88E0007D912A /* DefaultAnnouncementDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAnnouncementDetailInteractorShould.swift; sourceTree = "<group>"; };
 		CA728489209F927B007D912A /* DefaultAnnouncementDetailInteractorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAnnouncementDetailInteractorFactory.swift; sourceTree = "<group>"; };
 		CA72848B209F9288007D912A /* DefaultAnnouncementDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAnnouncementDetailInteractor.swift; sourceTree = "<group>"; };
+		CA72848D209F93A4007D912A /* MarkdownRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownRenderer.swift; sourceTree = "<group>"; };
+		CA72848F209F9482007D912A /* DefaultMarkdownRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMarkdownRenderer.swift; sourceTree = "<group>"; };
+		CA728491209F9540007D912A /* StubMarkdownRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubMarkdownRenderer.swift; sourceTree = "<group>"; };
 		CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeListSceneDidLoad.swift; sourceTree = "<group>"; };
 		CA73AED7201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
@@ -2773,6 +2779,7 @@
 				CA728457209D058A007D912A /* StubAnnouncementDetailSceneFactory.swift */,
 				CA728472209D163E007D912A /* StubAnnouncementDetailInteractor.swift */,
 				CA728481209F8885007D912A /* StubAnnouncementDetailInteractorFactory.swift */,
+				CA728491209F9540007D912A /* StubMarkdownRenderer.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -2817,8 +2824,10 @@
 		CA728488209F9275007D912A /* Default */ = {
 			isa = PBXGroup;
 			children = (
-				CA728489209F927B007D912A /* DefaultAnnouncementDetailInteractorFactory.swift */,
 				CA72848B209F9288007D912A /* DefaultAnnouncementDetailInteractor.swift */,
+				CA728489209F927B007D912A /* DefaultAnnouncementDetailInteractorFactory.swift */,
+				CA72848F209F9482007D912A /* DefaultMarkdownRenderer.swift */,
+				CA72848D209F93A4007D912A /* MarkdownRenderer.swift */,
 			);
 			path = Default;
 			sourceTree = "<group>";
@@ -4223,6 +4232,7 @@
 				9ACB006F1F16C945001CE9D2 /* EventFavorite.swift in Sources */,
 				D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */,
 				CA0F7632203314FE009DA079 /* KnowledgeListViewController.swift in Sources */,
+				CA728490209F9482007D912A /* DefaultMarkdownRenderer.swift in Sources */,
 				CAE27B4E1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift in Sources */,
 				D6F3DB838A1BDAFC6DAC2F61 /* CountryAlpha3Converter.swift in Sources */,
 				CABA43831FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift in Sources */,
@@ -4275,6 +4285,7 @@
 				9A861ECD1F25555000B75A8C /* TutorialPageViewController.swift in Sources */,
 				CABA43861FBC6FE1009CB5B0 /* LoginModuleProviding.swift in Sources */,
 				D6F3D275FF81A313B9213277 /* AnnouncementCell.swift in Sources */,
+				CA72848E209F93A4007D912A /* MarkdownRenderer.swift in Sources */,
 				9A861ED91F25564900B75A8C /* RootViewControllerAnimator.swift in Sources */,
 				CA057A5B2088BDBB00504FA4 /* NewsAnnouncementTableViewCell.swift in Sources */,
 				D6F3D62A784F07D9C7A84DC8 /* KnowledgeEntryViewController.swift in Sources */,
@@ -4367,6 +4378,7 @@
 				CA71A3502040371D00C847C3 /* FloatingPoint+RandomValueProviding.swift in Sources */,
 				781A94421F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */,
 				CAB3A72A1F7532A2005DF77B /* CapturingPushPermissionsRequester.swift in Sources */,
+				CA728492209F9540007D912A /* StubMarkdownRenderer.swift in Sources */,
 				78455B491F1177AD005BE2D7 /* CapturingTutorialRouter.swift in Sources */,
 				78C86D721F12AACA003A20E6 /* WhenTheSplashScreenAppears.swift in Sources */,
 				CABA43971FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift in Sources */,

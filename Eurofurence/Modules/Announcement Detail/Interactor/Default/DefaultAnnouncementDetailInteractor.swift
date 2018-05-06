@@ -11,9 +11,11 @@ import Foundation.NSAttributedString
 struct DefaultAnnouncementDetailInteractor: AnnouncementDetailInteractor {
 
     var announcement: Announcement2
+    var markdownRenderer: MarkdownRenderer
 
     func makeViewModel(completionHandler: @escaping (AnnouncementViewModel) -> Void) {
-        let viewModel = AnnouncementViewModel(heading: announcement.title, contents: NSAttributedString())
+        let contents = markdownRenderer.render(announcement.content)
+        let viewModel = AnnouncementViewModel(heading: announcement.title, contents: contents)
         completionHandler(viewModel)
     }
 
