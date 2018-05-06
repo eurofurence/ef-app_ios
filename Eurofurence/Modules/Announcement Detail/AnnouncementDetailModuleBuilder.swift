@@ -12,20 +12,8 @@ class AnnouncementDetailModuleBuilder {
     private var announcementDetailInteractorFactory: AnnouncementDetailInteractorFactory
 
     init() {
-        struct DummyAnnouncementDetailInteractorFactory: AnnouncementDetailInteractorFactory {
-            func makeAnnouncementDetailInteractor(for announcement: Announcement2) -> AnnouncementDetailInteractor {
-                struct DummyAnnouncementDetailInteractor: AnnouncementDetailInteractor {
-                    func makeViewModel(completionHandler: @escaping (AnnouncementViewModel) -> Void) {
-
-                    }
-                }
-
-                return DummyAnnouncementDetailInteractor()
-            }
-        }
-
         sceneFactory = StoryboardAnnouncementDetailSceneFactory()
-        announcementDetailInteractorFactory = DummyAnnouncementDetailInteractorFactory()
+        announcementDetailInteractorFactory = DefaultAnnouncementDetailInteractorFactory()
     }
 
     @discardableResult

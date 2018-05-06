@@ -15,7 +15,7 @@ struct AnnouncementDetailModule: AnnouncementDetailModuleProviding {
 
     func makeAnnouncementDetailModule(for announcement: Announcement2) -> UIViewController {
         let scene = sceneFactory.makeAnnouncementDetailScene()
-        let interactor = announcementDetailInteractorFactory.makeAnnouncementDetailInteractor(for: Announcement2(title: "", content: ""))
+        let interactor = announcementDetailInteractorFactory.makeAnnouncementDetailInteractor(for: announcement)
         _ = AnnouncementDetailPresenter(scene: scene, interactor: interactor)
 
         return scene

@@ -10,10 +10,16 @@
 
 struct StubAnnouncementDetailInteractorFactory: AnnouncementDetailInteractorFactory {
     
-    var interactor: StubAnnouncementDetailInteractor
+    private let interactor: AnnouncementDetailInteractor
+    private let announcement: Announcement2
+    
+    init(interactor: AnnouncementDetailInteractor, for announcement: Announcement2) {
+        self.interactor = interactor
+        self.announcement = announcement
+    }
     
     func makeAnnouncementDetailInteractor(for announcement: Announcement2) -> AnnouncementDetailInteractor {
-        return interactor
+        return self.announcement == announcement ? interactor : StubAnnouncementDetailInteractor()
     }
     
 }
