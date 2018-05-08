@@ -115,7 +115,7 @@ class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, Privat
             case .loggedIn(let user):
                 userWidget = UserWidgetComponentViewModel(prompt: .welcomePrompt(for: user),
                                                           detailedPrompt: .welcomeDescription(messageCount: self.unreadMessagesCount),
-                                                          hasUnreadMessages: false)
+                                                          hasUnreadMessages: self.unreadMessagesCount > 0)
 
             case .loggedOut:
                 userWidget = UserWidgetComponentViewModel(prompt: .anonymousUserLoginPrompt,

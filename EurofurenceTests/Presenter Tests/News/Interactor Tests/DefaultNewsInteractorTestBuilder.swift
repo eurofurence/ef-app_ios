@@ -88,17 +88,21 @@ extension DefaultNewsInteractorTestBuilder.Context {
                 components: expected)
     }
     
+    private var shouldSimulateUserHasUnreadMessages: Bool {
+        return privateMessagesService.unreadCount > 0
+    }
+    
     private func makeExpectedUserWidget() -> AnyHashable {
         switch authenticationService.authState {
         case .loggedIn(let user):
             return UserWidgetComponentViewModel(prompt: String.welcomePrompt(for: user),
                                                 detailedPrompt: String.welcomeDescription(messageCount: privateMessagesService.unreadCount),
-                                                hasUnreadMessages: false) // TODO: Take unread messages into account
+                                                hasUnreadMessages: shouldSimulateUserHasUnreadMessages)
             
         case .loggedOut:
             return UserWidgetComponentViewModel(prompt: .anonymousUserLoginPrompt,
                                                 detailedPrompt: .anonymousUserLoginDescription,
-                                                hasUnreadMessages: false)
+                                                hasUnreadMessages: shouldSimulateUserHasUnreadMessages)
         }
     }
     
