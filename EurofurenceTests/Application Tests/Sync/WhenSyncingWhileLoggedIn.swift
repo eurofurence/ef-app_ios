@@ -11,7 +11,7 @@ import XCTest
 
 class WhenSyncingWhileLoggedIn: XCTestCase {
     
-    func testSuccessfullyReloadingPrivateMessagesShouldNotifyObservers() {
+    func testObserversArePassedLoadedMessages() {
         let expected = [Message].random.sorted()
         let context = ApplicationTestBuilder().build()
         context.loginSuccessfully()
@@ -20,6 +20,19 @@ class WhenSyncingWhileLoggedIn: XCTestCase {
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(.randomWithoutDeletions)
         context.privateMessagesAPI.simulateSuccessfulResponse(response: expected)
+        
+        XCTAssertEqual(expected, observer.observedMessages)
+    }
+    
+    func testAddingAnotherObserverIsPassedLoadedMessages() {
+        let expected = [Message].random.sorted()
+        let context = ApplicationTestBuilder().build()
+        context.loginSuccessfully()
+        context.refreshLocalStore()
+        context.syncAPI.simulateSuccessfulSync(.randomWithoutDeletions)
+        context.privateMessagesAPI.simulateSuccessfulResponse(response: expected)
+        let observer = CapturingPrivateMessagesObserver()
+        context.application.add(observer)
         
         XCTAssertEqual(expected, observer.observedMessages)
     }
