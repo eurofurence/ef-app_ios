@@ -22,10 +22,7 @@ class PrivateMessagesController {
         if let token = userAuthenticationToken {
             privateMessagesAPI.loadPrivateMessages(authorizationToken: token) { (messages) in
                 if let messages = messages {
-                    let messages = messages.sorted(by: { (first, second) -> Bool in
-                        return first.receivedDateTime.compare(second.receivedDateTime) == .orderedDescending
-                    })
-
+                    let messages = messages.sorted()
                     self.localPrivateMessages = messages
                     completionHandler(.success(messages))
                 } else {

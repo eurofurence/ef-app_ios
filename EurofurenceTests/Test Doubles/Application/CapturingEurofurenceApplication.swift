@@ -41,6 +41,10 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
+    func add(_ observer: PrivateMessagesObserver) {
+        
+    }
+    
     private(set) var messageMarkedAsRead: Message?
     func markMessageAsRead(_ message: Message) {
         messageMarkedAsRead = message

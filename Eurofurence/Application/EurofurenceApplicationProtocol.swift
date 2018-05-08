@@ -24,6 +24,7 @@ protocol EurofurenceApplicationProtocol: AnnouncementsService, KnowledgeService,
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void)
     func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void)
 
+    func add(_ observer: PrivateMessagesObserver)
     func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void)
     func markMessageAsRead(_ message: Message)
 

@@ -104,6 +104,11 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     var localPrivateMessages: [Message] { return privateMessagesController.localPrivateMessages }
 
+    private var privateMessageObservers = [PrivateMessagesObserver]()
+    func add(_ observer: PrivateMessagesObserver) {
+        privateMessageObservers.append(observer)
+    }
+
     func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {
         privateMessagesController.fetchPrivateMessages(completionHandler: completionHandler)
     }
@@ -147,6 +152,12 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                 })
 
                 completionHandler(nil)
+            }
+        }
+
+        privateMessagesController.fetchPrivateMessages { (result) in
+            if case .success(let messages) = result {
+                self.privateMessageObservers.forEach({ $0.eurofurenceApplicationDidLoad(messages: messages) })
             }
         }
 

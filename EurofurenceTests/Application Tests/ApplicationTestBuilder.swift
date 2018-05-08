@@ -38,6 +38,11 @@ class ApplicationTestBuilder {
             application.login(arguments, completionHandler: completionHandler)
         }
         
+        func loginSuccessfully() {
+            login()
+            loginAPI.simulateResponse(LoginResponse(userIdentifier: .random, username: .random, token: .random, tokenValidUntil: Date(timeIntervalSinceNow: 1)))
+        }
+        
         func refreshLocalStore(completionHandler: ((Error?) -> Void)? = nil) {
             _ = application.refreshLocalStore { (error) in
                 completionHandler?(error)

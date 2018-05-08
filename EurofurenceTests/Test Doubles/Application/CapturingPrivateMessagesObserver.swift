@@ -9,7 +9,16 @@
 @testable import Eurofurence
 import Foundation
 
-class CapturingPrivateMessagesObserver {
+class CapturingPrivateMessagesObserver: PrivateMessagesObserver {
+    
+    // MARK: New
+    
+    private(set) var observedMessages: [Message] = []
+    func eurofurenceApplicationDidLoad(messages: [Message]) {
+        observedMessages = messages
+    }
+    
+    // MARK: Old
     
     private(set) var wasToldSuccessfullyLoadedPrivateMessages = false
     private(set) var capturedMessages: [Message]?
