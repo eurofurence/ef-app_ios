@@ -150,11 +150,9 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                     transaction.saveAnnouncements(announcements)
                 })
 
-                completionHandler(nil)
+                self.privateMessagesController.fetchPrivateMessages { (_) in completionHandler(nil) }
             }
         }
-
-        privateMessagesController.fetchPrivateMessages(completionHandler: { (_) in })
 
         return Progress()
     }

@@ -37,4 +37,16 @@ class WhenSyncingWhileLoggedIn: XCTestCase {
         XCTAssertEqual(expected, observer.observedMessages)
     }
     
+    func testTheSyncDoesNotFinishUntilMessagesHaveLoaded() {
+        let context = ApplicationTestBuilder().build()
+        context.loginSuccessfully()
+        let observer = CapturingPrivateMessagesObserver()
+        context.application.add(observer)
+        var didFinishBeforeMessagesLoaded = false
+        context.refreshLocalStore() { _ in didFinishBeforeMessagesLoaded = true }
+        context.syncAPI.simulateSuccessfulSync(.randomWithoutDeletions)
+        
+        XCTAssertFalse(didFinishBeforeMessagesLoaded)
+    }
+    
 }
