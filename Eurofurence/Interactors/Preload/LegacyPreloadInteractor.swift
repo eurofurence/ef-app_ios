@@ -1,5 +1,5 @@
 //
-//  LegacyPreloadService.swift
+//  LegacyPreloadInteractor.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 02/10/2017.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-class LegacyPreloadService: PreloadInteractor,
-                            DataStoreLoadDelegate,
-                            DataStoreRefreshDelegate {
+class LegacyPreloadInteractor: PreloadInteractor,
+                               DataStoreLoadDelegate,
+                               DataStoreRefreshDelegate {
 
     private lazy var loadController = DataStoreLoadController.shared
     private lazy var refreshController = DataStoreRefreshController.shared

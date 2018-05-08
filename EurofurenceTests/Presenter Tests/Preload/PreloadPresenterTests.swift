@@ -16,7 +16,7 @@ class PreloadPresenterTests: XCTestCase {
         var preloadViewController: UIViewController?
         let preloadSceneFactory = StubPreloadSceneFactory()
         let capturingQuoteGenerator = CapturingQuoteGenerator()
-        let preloadingService = CapturingPreloadService()
+        let preloadingService = CapturingPreloadInteractor()
         let alertRouter = CapturingAlertRouter()
         let delegate = CapturingPreloadModuleDelegate()
         

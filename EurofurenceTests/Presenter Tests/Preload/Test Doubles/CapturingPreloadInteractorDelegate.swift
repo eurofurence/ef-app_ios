@@ -1,5 +1,5 @@
 //
-//  CapturingPreloadServiceDelegate.swift
+//  CapturingPreloadInteractorDelegate.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 06/03/2018.
@@ -8,7 +8,7 @@
 
 @testable import Eurofurence
 
-class CapturingPreloadServiceDelegate: PreloadInteractorDelegate {
+class CapturingPreloadInteractorDelegate: PreloadInteractorDelegate {
     
     private(set) var wasToldpreloadInteractorDidFailToPreload = false
     func preloadInteractorDidFailToPreload() {

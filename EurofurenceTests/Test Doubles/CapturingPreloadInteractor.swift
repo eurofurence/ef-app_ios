@@ -1,5 +1,5 @@
 //
-//  CapturingPreloadService.swift
+//  CapturingPreloadInteractor.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 01/10/2017.
@@ -8,7 +8,7 @@
 
 @testable import Eurofurence
 
-class CapturingPreloadService: PreloadInteractor {
+class CapturingPreloadInteractor: PreloadInteractor {
     
     private(set) var didBeginPreloading = false
     private(set) var beginPreloadInvocationCount = 0

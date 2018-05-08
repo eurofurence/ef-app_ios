@@ -1,12 +1,12 @@
 //
-//  ApplicationPreloadingService.swift
+//  ApplicationPreloadInteractor.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 06/03/2018.
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-class ApplicationPreloadingService: PreloadInteractor {
+class ApplicationPreloadInteractor: PreloadInteractor {
 
     private let app: EurofurenceApplicationProtocol
     private var observations = [Any]()

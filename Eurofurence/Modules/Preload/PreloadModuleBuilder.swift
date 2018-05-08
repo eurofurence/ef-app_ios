@@ -17,7 +17,7 @@ class PreloadModuleBuilder {
 
     init() {
         preloadSceneFactory = PhonePreloadSceneFactory()
-        preloadService = ApplicationPreloadingService()
+        preloadService = ApplicationPreloadInteractor()
         alertRouter = WindowAlertRouter.shared
         quoteGenerator = EgyptianQuoteGenerator()
     }

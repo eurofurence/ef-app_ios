@@ -12,15 +12,15 @@ import XCTest
 class ApplicationPreloadingServiceTests: XCTestCase {
     
     var app: CapturingEurofurenceApplication!
-    var interactor: ApplicationPreloadingService!
-    var delegate: CapturingPreloadServiceDelegate!
+    var interactor: ApplicationPreloadInteractor!
+    var delegate: CapturingPreloadInteractorDelegate!
     
     override func setUp() {
         super.setUp()
         
         app = CapturingEurofurenceApplication()
-        interactor = ApplicationPreloadingService(app: app)
-        delegate = CapturingPreloadServiceDelegate()
+        interactor = ApplicationPreloadInteractor(app: app)
+        delegate = CapturingPreloadInteractorDelegate()
     }
     
     private func beginPreload() {
