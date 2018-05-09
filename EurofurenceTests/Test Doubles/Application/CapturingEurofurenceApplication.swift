@@ -41,8 +41,9 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
+    fileprivate var privateMessageObservers = [PrivateMessagesObserver]()
     func add(_ observer: PrivateMessagesObserver) {
-        
+        privateMessageObservers.append(observer)
     }
     
     private(set) var messageMarkedAsRead: Message?
@@ -103,6 +104,10 @@ extension CapturingEurofurenceApplication {
     func updateProgressForCurrentRefresh(currentUnitCount: Int, totalUnitCount: Int) {
         refreshProgress?.totalUnitCount = Int64(totalUnitCount)
         refreshProgress?.completedUnitCount = Int64(currentUnitCount)
+    }
+    
+    func simulateMessagesLoaded(_ messages: [Message]) {
+        privateMessageObservers.forEach({ $0.eurofurenceApplicationDidLoad(messages: messages) })
     }
     
 }

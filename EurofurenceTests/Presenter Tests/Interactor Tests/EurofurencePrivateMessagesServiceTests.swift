@@ -115,9 +115,9 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
     
     func testAddingUnreadPrivateMessageCountObserverTellsItTheNumberOfCurrentlyUnreadMessages() {
         let observer = CapturingPrivateMessageUnreadCountObserver()
-        let messages = repeatElement(AppDataBuilder.makeMessage(read: false), count: .random(upperLimit: 10))
-        let expected = messages.count
-        app.localPrivateMessages = Array(messages)
+        let messages = [Message].random
+        let expected = messages.filter({ !$0.isRead }).count
+        app.simulateMessagesLoaded(messages)
         service.add(observer)
         
         XCTAssertEqual(expected, observer.capturedUnreadMessagesCount)
@@ -140,6 +140,16 @@ class EurofurencePrivateMessagesServiceTests: XCTestCase {
         service.markMessageAsRead(message)
         
         XCTAssertEqual(message, app.messageMarkedAsRead)
+    }
+    
+    func testUpdateUnreadCountWhenToldMessagesChanges() {
+        let observer = CapturingPrivateMessageUnreadCountObserver()
+        service.add(observer)
+        let messages = [Message].random
+        let expected = messages.filter({ !$0.isRead }).count
+        app.simulateMessagesLoaded(messages)
+        
+        XCTAssertEqual(expected, observer.capturedUnreadMessagesCount)
     }
     
 }
