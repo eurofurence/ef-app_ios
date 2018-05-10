@@ -33,10 +33,13 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private let dataStore: EurofurenceDataStore
     private let pushPermissionsRequester: PushPermissionsRequester
     private let pushPermissionsStateProviding: PushPermissionsStateProviding
+    private let clock: Clock
     private let remoteNotificationRegistrationController: RemoteNotificationRegistrationController
     private let authenticationCoordinator: UserAuthenticationCoordinator
     private let privateMessagesController: PrivateMessagesController
     private let syncAPI: SyncAPI
+    private let dateDistanceCalculator: DateDistanceCalculator
+    private let conventionStartDateRepository: ConventionStartDateRepository
     private var syncResponse: APISyncResponse?
 
     init(userPreferences: UserPreferences,
@@ -48,12 +51,17 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
          credentialStore: CredentialStore,
          loginAPI: LoginAPI,
          privateMessagesAPI: PrivateMessagesAPI,
-         syncAPI: SyncAPI) {
+         syncAPI: SyncAPI,
+         dateDistanceCalculator: DateDistanceCalculator,
+         conventionStartDateRepository: ConventionStartDateRepository) {
         self.userPreferences = userPreferences
         self.dataStore = dataStore
         self.pushPermissionsRequester = pushPermissionsRequester
         self.pushPermissionsStateProviding = pushPermissionsStateProviding
+        self.clock = clock
         self.syncAPI = syncAPI
+        self.dateDistanceCalculator = dateDistanceCalculator
+        self.conventionStartDateRepository = conventionStartDateRepository
 
         if pushPermissionsStateProviding.requestedPushNotificationAuthorization {
             pushPermissionsRequester.requestPushPermissions()
@@ -169,6 +177,13 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     func fetchAnnouncements(completionHandler: @escaping ([Announcement2]) -> Void) {
         completionHandler(makeAnnouncementsFromSyncResponse())
+    }
+
+    func observeDaysUntilConvention(using observer: DaysUntilConventionServiceObserver) {
+        let now = clock.currentDate
+        let conventionStartTime = conventionStartDateRepository.conventionStartDate
+        let distance = dateDistanceCalculator.calculateDays(between: now, and: conventionStartTime)
+        observer.daysUntilConventionDidChange(to: distance)
     }
 
     private func makeAnnouncementsFromSyncResponse() -> [Announcement2] {

@@ -20,6 +20,8 @@ class ApplicationTestBuilder {
         var privateMessagesAPI: CapturingPrivateMessagesAPI
         var syncAPI: CapturingSyncAPI
         var dataStore: CapturingEurofurenceDataStore
+        var dateDistanceCalculator: StubDateDistanceCalculator
+        var conventionStartDateRepository: StubConventionStartDateRepository
         
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
@@ -104,6 +106,8 @@ class ApplicationTestBuilder {
     
     @discardableResult
     func build() -> Context {
+        let dateDistanceCalculator = StubDateDistanceCalculator()
+        let conventionStartDateRepository = StubConventionStartDateRepository()
         let app = EurofurenceApplication(userPreferences: userPreferences,
                                          dataStore: dataStore,
                                          remoteNotificationsTokenRegistration: capturingTokenRegistration,
@@ -113,14 +117,18 @@ class ApplicationTestBuilder {
                                          credentialStore: capturingCredentialStore,
                                          loginAPI: loginAPI,
                                          privateMessagesAPI: privateMessagesAPI,
-                                         syncAPI: syncAPI)
+                                         syncAPI: syncAPI,
+                                         dateDistanceCalculator: dateDistanceCalculator,
+                                         conventionStartDateRepository: conventionStartDateRepository)
         return Context(application: app,
                        capturingTokenRegistration: capturingTokenRegistration,
                        capturingCredentialStore: capturingCredentialStore,
                        loginAPI: loginAPI,
                        privateMessagesAPI: privateMessagesAPI,
                        syncAPI: syncAPI,
-                       dataStore: dataStore)
+                       dataStore: dataStore,
+                       dateDistanceCalculator: dateDistanceCalculator,
+                       conventionStartDateRepository: conventionStartDateRepository)
     }
     
 }

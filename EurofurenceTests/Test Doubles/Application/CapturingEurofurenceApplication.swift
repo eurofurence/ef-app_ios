@@ -78,6 +78,10 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         return refreshProgress!
     }
     
+    func observeDaysUntilConvention(using observer: DaysUntilConventionServiceObserver) {
+        
+    }
+    
 }
 
 // MARK: - Test Helpers

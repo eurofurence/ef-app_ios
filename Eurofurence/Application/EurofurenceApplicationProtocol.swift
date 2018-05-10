@@ -14,7 +14,7 @@ enum EurofurenceDataStoreState {
     case available
 }
 
-protocol EurofurenceApplicationProtocol: AnnouncementsService, KnowledgeService, LinkLookupService {
+protocol EurofurenceApplicationProtocol: AnnouncementsService, KnowledgeService, LinkLookupService, DaysUntilConventionService {
 
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress
 

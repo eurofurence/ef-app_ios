@@ -6,6 +6,8 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import Foundation
+
 class EurofurenceApplicationBuilder {
 
     private var userPreferences: UserPreferences
@@ -18,6 +20,8 @@ class EurofurenceApplicationBuilder {
     private var loginAPI: LoginAPI
     private var privateMessagesAPI: PrivateMessagesAPI
     private var syncAPI: SyncAPI
+    private var dateDistanceCalculator: DateDistanceCalculator
+    private var conventionStartDateRepository: ConventionStartDateRepository
 
     init() {
         struct DummyUserPreferences: UserPreferences {
@@ -35,6 +39,16 @@ class EurofurenceApplicationBuilder {
             func fetchKnowledgeGroups(completionHandler: ([KnowledgeGroup2]?) -> Void) {
                 completionHandler(nil)
             }
+        }
+
+        struct DummyDateDistanceCalculator: DateDistanceCalculator {
+            func calculateDays(between first: Date, and second: Date) -> Int {
+                return 0
+            }
+        }
+
+        struct DummyConventionStartDateRepository: ConventionStartDateRepository {
+            var conventionStartDate: Date = Date()
         }
 
         userPreferences = DummyUserPreferences()
@@ -55,6 +69,8 @@ class EurofurenceApplicationBuilder {
         loginAPI = V2LoginAPI(jsonSession: jsonSession)
         privateMessagesAPI = V2PrivateMessagesAPI(jsonSession: jsonSession)
         syncAPI = V2SyncAPI(jsonSession: jsonSession)
+        dateDistanceCalculator = DummyDateDistanceCalculator()
+        conventionStartDateRepository = DummyConventionStartDateRepository()
     }
 
     @discardableResult
@@ -121,7 +137,9 @@ class EurofurenceApplicationBuilder {
                                       credentialStore: credentialStore,
                                       loginAPI: loginAPI,
                                       privateMessagesAPI: privateMessagesAPI,
-                                      syncAPI: syncAPI)
+                                      syncAPI: syncAPI,
+                                      dateDistanceCalculator: dateDistanceCalculator,
+                                      conventionStartDateRepository: conventionStartDateRepository)
     }
 
 }

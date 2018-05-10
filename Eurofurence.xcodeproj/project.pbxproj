@@ -233,6 +233,12 @@
 		CA0F7632203314FE009DA079 /* KnowledgeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F7631203314FE009DA079 /* KnowledgeListViewController.swift */; };
 		CA0F763420331506009DA079 /* KnowledgeList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0F763320331506009DA079 /* KnowledgeList.storyboard */; };
 		CA0F763620331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F763520331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift */; };
+		CA162E6E20A468E7004AFED6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E6D20A468E7004AFED6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift */; };
+		CA162E7020A4B691004AFED6 /* DateDistanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */; };
+		CA162E7320A4B6A5004AFED6 /* ConventionStartDateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7220A4B6A5004AFED6 /* ConventionStartDateRepository.swift */; };
+		CA162E7620A4B6CE004AFED6 /* StubDateDistanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7520A4B6CE004AFED6 /* StubDateDistanceCalculator.swift */; };
+		CA162E7820A4B6E0004AFED6 /* StubConventionStartDateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7720A4B6E0004AFED6 /* StubConventionStartDateRepository.swift */; };
+		CA162E7A20A4B6F5004AFED6 /* CapturingDaysUntilConventionServiceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7920A4B6F5004AFED6 /* CapturingDaysUntilConventionServiceObserver.swift */; };
 		CA17FE712056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */; };
 		CA17FE732056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */; };
 		CA17FE752056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */; };
@@ -932,6 +938,12 @@
 		CA0F7631203314FE009DA079 /* KnowledgeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListViewController.swift; sourceTree = "<group>"; };
 		CA0F763320331506009DA079 /* KnowledgeList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KnowledgeList.storyboard; sourceTree = "<group>"; };
 		CA0F763520331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListSectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		CA162E6D20A468E7004AFED6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift; sourceTree = "<group>"; };
+		CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDistanceCalculator.swift; sourceTree = "<group>"; };
+		CA162E7220A4B6A5004AFED6 /* ConventionStartDateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConventionStartDateRepository.swift; sourceTree = "<group>"; };
+		CA162E7520A4B6CE004AFED6 /* StubDateDistanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDateDistanceCalculator.swift; sourceTree = "<group>"; };
+		CA162E7720A4B6E0004AFED6 /* StubConventionStartDateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubConventionStartDateRepository.swift; sourceTree = "<group>"; };
+		CA162E7920A4B6F5004AFED6 /* CapturingDaysUntilConventionServiceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDaysUntilConventionServiceObserver.swift; sourceTree = "<group>"; };
 		CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeDetailSceneLoads.swift; sourceTree = "<group>"; };
 		CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
@@ -1764,12 +1776,14 @@
 				CA65A21A2091120C0078A4A7 /* Announcements */,
 				CA804DD71F20D2E000E07A4A /* API */,
 				CA81D4951FEA950600A52A2F /* Authentication */,
+				CA162E6C20A468C4004AFED6 /* Countdown */,
 				CABF03C820421B2A0028BD62 /* Knowledge */,
 				CAD3BDC3205FE3EA00C91E6E /* Links */,
 				CA81D4971FEA952D00A52A2F /* Notification Registration */,
 				781A94431F1A1DC6002DE70F /* Notifications */,
 				CA81D4961FEA951D00A52A2F /* Private Messages */,
 				CAF597A020458D0100089BE8 /* Sync */,
+				CA162E7420A4B6C2004AFED6 /* Test Doubles */,
 			);
 			path = "Application Tests";
 			sourceTree = "<group>";
@@ -1788,6 +1802,7 @@
 				CA804DCF1F20CE5F00E07A4A /* API */,
 				CAF3F63E20167E7000374B4C /* Authentication */,
 				78D7EEC21F196BC3005372A9 /* Build Config */,
+				CA162E7120A4B69A004AFED6 /* Countdown */,
 				CAF3F63F20167EF700374B4C /* Data Store */,
 				CA8D97C9201610C80074838F /* Domain Events */,
 				CA18B3451F49AF4500038E52 /* Model */,
@@ -2179,6 +2194,32 @@
 				CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		CA162E6C20A468C4004AFED6 /* Countdown */ = {
+			isa = PBXGroup;
+			children = (
+				CA162E6D20A468E7004AFED6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift */,
+			);
+			path = Countdown;
+			sourceTree = "<group>";
+		};
+		CA162E7120A4B69A004AFED6 /* Countdown */ = {
+			isa = PBXGroup;
+			children = (
+				CA162E7220A4B6A5004AFED6 /* ConventionStartDateRepository.swift */,
+			);
+			path = Countdown;
+			sourceTree = "<group>";
+		};
+		CA162E7420A4B6C2004AFED6 /* Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				CA162E7520A4B6CE004AFED6 /* StubDateDistanceCalculator.swift */,
+				CA162E7720A4B6E0004AFED6 /* StubConventionStartDateRepository.swift */,
+				CA162E7920A4B6F5004AFED6 /* CapturingDaysUntilConventionServiceObserver.swift */,
+			);
+			path = "Test Doubles";
 			sourceTree = "<group>";
 		};
 		CA17FE762056B1AB005A4C05 /* Interactor */ = {
@@ -3102,6 +3143,7 @@
 			children = (
 				CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */,
 				CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */,
+				CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */,
 			);
 			path = "System Services";
 			sourceTree = "<group>";
@@ -4039,6 +4081,7 @@
 				CAD780431F1D4CA3002A8333 /* Credential.swift in Sources */,
 				CA637582208CDE2000536BE2 /* EventsModuleProviding.swift in Sources */,
 				9ACF99931EC858B2006FC958 /* Dealer.swift in Sources */,
+				CA162E7020A4B691004AFED6 /* DateDistanceCalculator.swift in Sources */,
 				CAEAEC011FE0054500C0EE7C /* MessageDetailModuleFactory.swift in Sources */,
 				CA9845DE1F2B01BA00E8821D /* UnreadMessageIndicator.swift in Sources */,
 				9A05254B1ECB097500578798 /* ApiConnectionProtocol.swift in Sources */,
@@ -4114,6 +4157,7 @@
 				78567B411F10212100EBA31D /* ProgressViewRefreshDelegate.swift in Sources */,
 				9A861EA81F2554BE00B75A8C /* RequestPushPermissionsTutorialPagePresenter.swift in Sources */,
 				9A0525471ECB091900578798 /* MockApiConnection.swift in Sources */,
+				CA162E7320A4B6A5004AFED6 /* ConventionStartDateRepository.swift in Sources */,
 				CAB3A72F1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift in Sources */,
 				CA73AEE7201A0883004E77BF /* KnowledgeListScene.swift in Sources */,
 				9A34B9871ED08C7E004A249E /* JsonDataStore.swift in Sources */,
@@ -4381,6 +4425,7 @@
 			files = (
 				CA0F7629203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift in Sources */,
 				CA65A87D209B2F6A00B72533 /* WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould.swift in Sources */,
+				CA162E7820A4B6E0004AFED6 /* StubConventionStartDateRepository.swift in Sources */,
 				CA2D08021FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleDataStore.swift in Sources */,
 				CA30EAA61F2129C60053DBF6 /* CapturingLoginAPI.swift in Sources */,
 				CAF5979D20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift in Sources */,
@@ -4489,6 +4534,7 @@
 				CAD3BDB72059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift in Sources */,
 				CA2B4FAA1F1F7F1200F007E1 /* CapturingLoginObserver.swift in Sources */,
 				CA73AEF8201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift in Sources */,
+				CA162E7620A4B6CE004AFED6 /* StubDateDistanceCalculator.swift in Sources */,
 				CA0E5217208FBEA9005259FE /* StubAnnouncementsService.swift in Sources */,
 				CA637546208CBB4E00536BE2 /* StubTutorialModuleFactory.swift in Sources */,
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
@@ -4543,6 +4589,7 @@
 				78D7EEB51F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift in Sources */,
 				CA73AED8201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift in Sources */,
 				CAD68828208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift in Sources */,
+				CA162E7A20A4B6F5004AFED6 /* CapturingDaysUntilConventionServiceObserver.swift in Sources */,
 				CA63754A208CBB6C00536BE2 /* StubNewsModuleFactory.swift in Sources */,
 				CA2D08001FE94AF900BFD785 /* WhenTheAppLaunchesWithAbsentDataStore.swift in Sources */,
 				CA8276BC204F25DF006A7419 /* InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould.swift in Sources */,
@@ -4585,6 +4632,7 @@
 				CAF5979F2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift in Sources */,
 				CA65A21F2091F1EC0078A4A7 /* WhenSyncSucceeds_SyncAPIShould.swift in Sources */,
 				CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */,
+				CA162E6E20A468E7004AFED6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift in Sources */,
 				CA728463209D0F7B007D912A /* CapturingAnnouncementDetailScene.swift in Sources */,
 				CA65A2212091F5320078A4A7 /* WhenFetchingAnnouncementsAfterSuccessfulRefresh.swift in Sources */,
 				CA6375A2208E005E00536BE2 /* StubDealersModuleFactory.swift in Sources */,
