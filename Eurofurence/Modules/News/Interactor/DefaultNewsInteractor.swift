@@ -31,16 +31,10 @@ class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, Privat
     // MARK: Initialization
 
     convenience init() {
-        struct DummyDaysUntilConventionService: DaysUntilConventionService {
-            func observeDaysUntilConvention(using observer: DaysUntilConventionServiceObserver) {
-                observer.daysUntilConventionDidChange(to: 42)
-            }
-        }
-
         self.init(announcementsService: EurofurenceApplication.shared,
                   authenticationService: ApplicationAuthenticationService.shared,
                   privateMessagesService: EurofurencePrivateMessagesService.shared,
-                  daysUntilConventionService: DummyDaysUntilConventionService())
+                  daysUntilConventionService: EurofurenceApplication.shared)
     }
 
     init(announcementsService: AnnouncementsService,
