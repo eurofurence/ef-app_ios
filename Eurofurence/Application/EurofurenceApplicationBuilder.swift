@@ -41,10 +41,6 @@ class EurofurenceApplicationBuilder {
             }
         }
 
-        struct DummyConventionStartDateRepository: ConventionStartDateRepository {
-            var conventionStartDate: Date = Date()
-        }
-
         userPreferences = DummyUserPreferences()
         dataStore = DummyEurofurenceDataStore()
 
@@ -64,7 +60,7 @@ class EurofurenceApplicationBuilder {
         privateMessagesAPI = V2PrivateMessagesAPI(jsonSession: jsonSession)
         syncAPI = V2SyncAPI(jsonSession: jsonSession)
         dateDistanceCalculator = FoundationDateDistanceCalculator()
-        conventionStartDateRepository = DummyConventionStartDateRepository()
+        conventionStartDateRepository = EF24StartDateRepository()
     }
 
     @discardableResult
