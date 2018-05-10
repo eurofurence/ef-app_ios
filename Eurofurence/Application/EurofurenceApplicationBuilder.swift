@@ -41,12 +41,6 @@ class EurofurenceApplicationBuilder {
             }
         }
 
-        struct DummyDateDistanceCalculator: DateDistanceCalculator {
-            func calculateDays(between first: Date, and second: Date) -> Int {
-                return 0
-            }
-        }
-
         struct DummyConventionStartDateRepository: ConventionStartDateRepository {
             var conventionStartDate: Date = Date()
         }
@@ -69,7 +63,7 @@ class EurofurenceApplicationBuilder {
         loginAPI = V2LoginAPI(jsonSession: jsonSession)
         privateMessagesAPI = V2PrivateMessagesAPI(jsonSession: jsonSession)
         syncAPI = V2SyncAPI(jsonSession: jsonSession)
-        dateDistanceCalculator = DummyDateDistanceCalculator()
+        dateDistanceCalculator = FoundationDateDistanceCalculator()
         conventionStartDateRepository = DummyConventionStartDateRepository()
     }
 

@@ -239,6 +239,7 @@
 		CA162E7620A4B6CE004AFED6 /* StubDateDistanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7520A4B6CE004AFED6 /* StubDateDistanceCalculator.swift */; };
 		CA162E7820A4B6E0004AFED6 /* StubConventionStartDateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7720A4B6E0004AFED6 /* StubConventionStartDateRepository.swift */; };
 		CA162E7A20A4B6F5004AFED6 /* CapturingDaysUntilConventionServiceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7920A4B6F5004AFED6 /* CapturingDaysUntilConventionServiceObserver.swift */; };
+		CA162E7C20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7B20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift */; };
 		CA17FE712056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */; };
 		CA17FE732056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */; };
 		CA17FE752056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */; };
@@ -944,6 +945,7 @@
 		CA162E7520A4B6CE004AFED6 /* StubDateDistanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDateDistanceCalculator.swift; sourceTree = "<group>"; };
 		CA162E7720A4B6E0004AFED6 /* StubConventionStartDateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubConventionStartDateRepository.swift; sourceTree = "<group>"; };
 		CA162E7920A4B6F5004AFED6 /* CapturingDaysUntilConventionServiceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDaysUntilConventionServiceObserver.swift; sourceTree = "<group>"; };
+		CA162E7B20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationDateDistanceCalculator.swift; sourceTree = "<group>"; };
 		CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeDetailSceneLoads.swift; sourceTree = "<group>"; };
 		CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
@@ -3144,6 +3146,7 @@
 				CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */,
 				CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */,
 				CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */,
+				CA162E7B20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift */,
 			);
 			path = "System Services";
 			sourceTree = "<group>";
@@ -4404,6 +4407,7 @@
 				9A7FDA121F33B7630050C325 /* UserDefaultsTabBarOrderProvider.swift in Sources */,
 				CAE27B501F857A99005FDE39 /* PhonePreloadModuleFactory.swift in Sources */,
 				D6F3D749FF814981E076850E /* ImageService.swift in Sources */,
+				CA162E7C20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift in Sources */,
 				CA6AA0011FD6C5FD0092C6DB /* LoginModuleBuilder.swift in Sources */,
 				78F5559B1F10D65900BDA7D4 /* SplashViewController.swift in Sources */,
 				D6F3DCE06EF6B706F0A3EF09 /* TimeService.swift in Sources */,
