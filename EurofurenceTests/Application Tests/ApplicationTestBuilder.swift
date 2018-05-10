@@ -12,7 +12,7 @@ import Foundation
 class ApplicationTestBuilder {
     
     struct Context {
-        var application: EurofurenceApplication
+        var application: EurofurenceApplicationProtocol
         
         var capturingTokenRegistration: CapturingRemoteNotificationsTokenRegistration
         var capturingCredentialStore: CapturingCredentialStore
@@ -108,18 +108,20 @@ class ApplicationTestBuilder {
     func build() -> Context {
         let dateDistanceCalculator = StubDateDistanceCalculator()
         let conventionStartDateRepository = StubConventionStartDateRepository()
-        let app = EurofurenceApplication(userPreferences: userPreferences,
-                                         dataStore: dataStore,
-                                         remoteNotificationsTokenRegistration: capturingTokenRegistration,
-                                         pushPermissionsRequester: pushPermissionsRequester,
-                                         pushPermissionsStateProviding: pushPermissionsStateProviding,
-                                         clock: stubClock,
-                                         credentialStore: capturingCredentialStore,
-                                         loginAPI: loginAPI,
-                                         privateMessagesAPI: privateMessagesAPI,
-                                         syncAPI: syncAPI,
-                                         dateDistanceCalculator: dateDistanceCalculator,
-                                         conventionStartDateRepository: conventionStartDateRepository)
+        let app = EurofurenceApplicationBuilder()
+            .with(stubClock).with(capturingCredentialStore)
+            .with(dataStore)
+            .with(loginAPI)
+            .with(privateMessagesAPI)
+            .with(pushPermissionsRequester)
+            .with(pushPermissionsStateProviding)
+            .with(capturingTokenRegistration)
+            .with(userPreferences)
+            .with(syncAPI)
+            .with(dateDistanceCalculator)
+            .with(conventionStartDateRepository)
+            .build()
+        
         return Context(application: app,
                        capturingTokenRegistration: capturingTokenRegistration,
                        capturingCredentialStore: capturingCredentialStore,

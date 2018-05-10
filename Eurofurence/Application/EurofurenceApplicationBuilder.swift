@@ -117,6 +117,24 @@ class EurofurenceApplicationBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ syncAPI: SyncAPI) -> EurofurenceApplicationBuilder {
+        self.syncAPI = syncAPI
+        return self
+    }
+
+    @discardableResult
+    func with(_ dateDistanceCalculator: DateDistanceCalculator) -> EurofurenceApplicationBuilder {
+        self.dateDistanceCalculator = dateDistanceCalculator
+        return self
+    }
+
+    @discardableResult
+    func with(_ conventionStartDateRepository: ConventionStartDateRepository) -> EurofurenceApplicationBuilder {
+        self.conventionStartDateRepository = conventionStartDateRepository
+        return self
+    }
+
     func build() -> EurofurenceApplicationProtocol {
         return EurofurenceApplication(userPreferences: userPreferences,
                                       dataStore: dataStore,

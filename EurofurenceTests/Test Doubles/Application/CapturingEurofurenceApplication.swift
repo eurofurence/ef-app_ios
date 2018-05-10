@@ -82,6 +82,10 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
+    func requestPermissionsForPushNotifications() {
+        
+    }
+    
 }
 
 // MARK: - Test Helpers
