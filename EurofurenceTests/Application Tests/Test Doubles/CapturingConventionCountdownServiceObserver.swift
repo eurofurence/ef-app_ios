@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import Foundation
 
-class CapturingDaysUntilConventionServiceObserver: ConventionCountdownServiceObserver {
+class CapturingConventionCountdownServiceObserver: ConventionCountdownServiceObserver {
     
     private(set) var capturedDaysRemaining: Int?
     func conventionCountdownStateDidChange(to daysRemaining: Int) {

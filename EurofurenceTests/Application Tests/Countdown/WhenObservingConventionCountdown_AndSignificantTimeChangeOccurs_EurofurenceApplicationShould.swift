@@ -12,7 +12,7 @@ import XCTest
 class WhenObservingConventionCountdown_AndSignificantTimeChangeOccurs_EurofurenceApplicationShould: XCTestCase {
     
     func testUpdateTheObserversWithTheNewCountdownInterval() {
-        let observer = CapturingDaysUntilConventionServiceObserver()
+        let observer = CapturingConventionCountdownServiceObserver()
         let clockTime = Date.random
         let context = ApplicationTestBuilder().with(clockTime).build()
         var expected: Int = .random

@@ -12,7 +12,7 @@ import XCTest
 class WhenObservingCountdownUntilConvention_EurofurenceApplicationShould: XCTestCase {
     
     func testReturnTheNumberOfDaysBetweenTheClockTimeAndTheConventionStartTime() {
-        let observer = CapturingDaysUntilConventionServiceObserver()
+        let observer = CapturingConventionCountdownServiceObserver()
         let clockTime = Date.random
         let context = ApplicationTestBuilder().with(clockTime).build()
         let expected = Int.random
