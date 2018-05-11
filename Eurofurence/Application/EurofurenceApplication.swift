@@ -24,7 +24,7 @@ enum PrivateMessageResult {
     case userNotAuthenticated
 }
 
-class EurofurenceApplication: EurofurenceApplicationProtocol {
+class EurofurenceApplication: EurofurenceApplicationProtocol, SignificantTimeChangeEventObserver {
 
     static var shared: EurofurenceApplicationProtocol = EurofurenceApplicationBuilder().build()
 
@@ -53,7 +53,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
          privateMessagesAPI: PrivateMessagesAPI,
          syncAPI: SyncAPI,
          dateDistanceCalculator: DateDistanceCalculator,
-         conventionStartDateRepository: ConventionStartDateRepository) {
+         conventionStartDateRepository: ConventionStartDateRepository,
+         significantTimeChangeEventSource: SignificantTimeChangeEventSource) {
         self.userPreferences = userPreferences
         self.dataStore = dataStore
         self.pushPermissionsRequester = pushPermissionsRequester
@@ -75,6 +76,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                                                                   credentialStore: credentialStore,
                                                                   remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
                                                                   loginAPI: loginAPI)
+
+        significantTimeChangeEventSource.add(self)
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
@@ -179,11 +182,20 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         completionHandler(makeAnnouncementsFromSyncResponse())
     }
 
+    private var daysUntilConventionObservers = [DaysUntilConventionServiceObserver]()
     func observeDaysUntilConvention(using observer: DaysUntilConventionServiceObserver) {
+        daysUntilConventionObservers.append(observer)
         let now = clock.currentDate
         let conventionStartTime = conventionStartDateRepository.conventionStartDate
         let distance = dateDistanceCalculator.calculateDays(between: now, and: conventionStartTime)
         observer.daysUntilConventionDidChange(to: distance)
+    }
+
+    func significantTimeChangeDidOccur() {
+        let now = clock.currentDate
+        let conventionStartTime = conventionStartDateRepository.conventionStartDate
+        let distance = dateDistanceCalculator.calculateDays(between: now, and: conventionStartTime)
+        daysUntilConventionObservers.forEach({ $0.daysUntilConventionDidChange(to: distance) })
     }
 
     private func makeAnnouncementsFromSyncResponse() -> [Announcement2] {

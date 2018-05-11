@@ -12,23 +12,26 @@ import Foundation
 class StubDateDistanceCalculator: DateDistanceCalculator {
     
     func calculateDays(between first: Date, and second: Date) -> Int {
-        if let value = stubbedValues.first(where: { $0.first == first && $0.second == second }) {
-            return value.days
-        }
-        else {
-            return .random
-        }
+        let input = Input(first: first, second: second)
+        return stubbedValues[input] ?? .random
     }
     
-    private struct StubbedValue {
+    private struct Input: Hashable {
         var first: Date
         var second: Date
-        var days: Int
+        
+        var hashValue: Int {
+            return first.hashValue ^ second.hashValue
+        }
+        
+        static func ==(lhs: StubDateDistanceCalculator.Input, rhs: StubDateDistanceCalculator.Input) -> Bool {
+            return lhs.hashValue == rhs.hashValue
+        }
     }
     
-    private var stubbedValues = [StubbedValue]()
+    private var stubbedValues = [Input : Int]()
     func stubDistance(between first: Date, and second: Date, with days: Int) {
-        stubbedValues.append(StubbedValue(first: first, second: second, days: days))
+        stubbedValues[Input(first: first, second: second)] = days
     }
     
 }

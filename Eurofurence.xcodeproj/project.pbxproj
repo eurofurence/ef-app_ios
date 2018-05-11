@@ -241,6 +241,9 @@
 		CA162E7A20A4B6F5004AFED6 /* CapturingDaysUntilConventionServiceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7920A4B6F5004AFED6 /* CapturingDaysUntilConventionServiceObserver.swift */; };
 		CA162E7C20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7B20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift */; };
 		CA162E7E20A4B9CD004AFED6 /* EF24StartDateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7D20A4B9CD004AFED6 /* EF24StartDateRepository.swift */; };
+		CA162E8020A5B738004AFED6 /* WhenObservingConventionCountdown_AndSignificantTimeChangeOccurs_EurofurenceApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7F20A5B738004AFED6 /* WhenObservingConventionCountdown_AndSignificantTimeChangeOccurs_EurofurenceApplicationShould.swift */; };
+		CA162E8220A5B7BC004AFED6 /* SignificantTimeChangeEventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8120A5B7BC004AFED6 /* SignificantTimeChangeEventSource.swift */; };
+		CA162E8420A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8320A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift */; };
 		CA17FE712056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */; };
 		CA17FE732056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */; };
 		CA17FE752056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */; };
@@ -948,6 +951,9 @@
 		CA162E7920A4B6F5004AFED6 /* CapturingDaysUntilConventionServiceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDaysUntilConventionServiceObserver.swift; sourceTree = "<group>"; };
 		CA162E7B20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationDateDistanceCalculator.swift; sourceTree = "<group>"; };
 		CA162E7D20A4B9CD004AFED6 /* EF24StartDateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EF24StartDateRepository.swift; sourceTree = "<group>"; };
+		CA162E7F20A5B738004AFED6 /* WhenObservingConventionCountdown_AndSignificantTimeChangeOccurs_EurofurenceApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingConventionCountdown_AndSignificantTimeChangeOccurs_EurofurenceApplicationShould.swift; sourceTree = "<group>"; };
+		CA162E8120A5B7BC004AFED6 /* SignificantTimeChangeEventSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignificantTimeChangeEventSource.swift; sourceTree = "<group>"; };
+		CA162E8320A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSignificantTimeChangeEventSource.swift; sourceTree = "<group>"; };
 		CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeDetailSceneLoads.swift; sourceTree = "<group>"; };
 		CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
@@ -2204,6 +2210,7 @@
 			isa = PBXGroup;
 			children = (
 				CA162E6D20A468E7004AFED6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift */,
+				CA162E7F20A5B738004AFED6 /* WhenObservingConventionCountdown_AndSignificantTimeChangeOccurs_EurofurenceApplicationShould.swift */,
 			);
 			path = Countdown;
 			sourceTree = "<group>";
@@ -2223,6 +2230,7 @@
 				CA162E7520A4B6CE004AFED6 /* StubDateDistanceCalculator.swift */,
 				CA162E7720A4B6E0004AFED6 /* StubConventionStartDateRepository.swift */,
 				CA162E7920A4B6F5004AFED6 /* CapturingDaysUntilConventionServiceObserver.swift */,
+				CA162E8320A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -3146,10 +3154,11 @@
 		CAB3A72B1F7532DF005DF77B /* System Services */ = {
 			isa = PBXGroup;
 			children = (
-				CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */,
 				CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */,
 				CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */,
 				CA162E7B20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift */,
+				CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */,
+				CA162E8120A5B7BC004AFED6 /* SignificantTimeChangeEventSource.swift */,
 			);
 			path = "System Services";
 			sourceTree = "<group>";
@@ -4385,6 +4394,7 @@
 				CA49E9462015480A00EB571C /* EventHandlerRegistration.swift in Sources */,
 				CA89CBB62080032000570D54 /* NewsComponentHeaderScene.swift in Sources */,
 				6EF96CCA1F0EDAF800EE6134 /* CalendarPermissionsProviding.swift in Sources */,
+				CA162E8220A5B7BC004AFED6 /* SignificantTimeChangeEventSource.swift in Sources */,
 				CA6375B4208E039100536BE2 /* DealersModule.swift in Sources */,
 				9A7FFD551EFC5A9E007ABA36 /* MapViewController.swift in Sources */,
 				CAF3F63D20167B3100374B4C /* EurofurenceApplicationBuilder.swift in Sources */,
@@ -4442,6 +4452,7 @@
 				CA81D4921FE9AC9200A52A2F /* PhoneTabModuleFactoryTests.swift in Sources */,
 				78FE77D31F1A2EB000E9A0BE /* CapturingJSONSession.swift in Sources */,
 				CA9AC16D2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift in Sources */,
+				CA162E8020A5B738004AFED6 /* WhenObservingConventionCountdown_AndSignificantTimeChangeOccurs_EurofurenceApplicationShould.swift in Sources */,
 				78C86D541F1228B0003A20E6 /* TutorialViewControllerTests.swift in Sources */,
 				78455B3A1F116A7E005BE2D7 /* WhenTheAppLaunches.swift in Sources */,
 				CA6375BB208E03D100536BE2 /* StubDealersSceneFactory.swift in Sources */,
@@ -4647,6 +4658,7 @@
 				CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */,
 				CA73AEDF201A0833004E77BF /* CapturingKnowledgeInteractor.swift in Sources */,
 				CA637562208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift in Sources */,
+				CA162E8420A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift in Sources */,
 				CAF9A9451F50B89000628833 /* CapturingEurofurenceApplication.swift in Sources */,
 				CA637570208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift in Sources */,
 				78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */,

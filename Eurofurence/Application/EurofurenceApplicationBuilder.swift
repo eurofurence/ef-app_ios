@@ -22,6 +22,7 @@ class EurofurenceApplicationBuilder {
     private var syncAPI: SyncAPI
     private var dateDistanceCalculator: DateDistanceCalculator
     private var conventionStartDateRepository: ConventionStartDateRepository
+    private var significantTimeChangeEventSource: SignificantTimeChangeEventSource
 
     init() {
         struct DummyUserPreferences: UserPreferences {
@@ -38,6 +39,12 @@ class EurofurenceApplicationBuilder {
             }
             func fetchKnowledgeGroups(completionHandler: ([KnowledgeGroup2]?) -> Void) {
                 completionHandler(nil)
+            }
+        }
+
+        struct DummySignificantTimeChangeEventSource: SignificantTimeChangeEventSource {
+            func add(_ observer: SignificantTimeChangeEventObserver) {
+
             }
         }
 
@@ -61,6 +68,7 @@ class EurofurenceApplicationBuilder {
         syncAPI = V2SyncAPI(jsonSession: jsonSession)
         dateDistanceCalculator = FoundationDateDistanceCalculator()
         conventionStartDateRepository = EF24StartDateRepository()
+        significantTimeChangeEventSource = DummySignificantTimeChangeEventSource()
     }
 
     @discardableResult
@@ -135,6 +143,12 @@ class EurofurenceApplicationBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ significantTimeChangeEventSource: SignificantTimeChangeEventSource) -> EurofurenceApplicationBuilder {
+        self.significantTimeChangeEventSource = significantTimeChangeEventSource
+        return self
+    }
+
     func build() -> EurofurenceApplicationProtocol {
         return EurofurenceApplication(userPreferences: userPreferences,
                                       dataStore: dataStore,
@@ -147,7 +161,8 @@ class EurofurenceApplicationBuilder {
                                       privateMessagesAPI: privateMessagesAPI,
                                       syncAPI: syncAPI,
                                       dateDistanceCalculator: dateDistanceCalculator,
-                                      conventionStartDateRepository: conventionStartDateRepository)
+                                      conventionStartDateRepository: conventionStartDateRepository,
+                                      significantTimeChangeEventSource: significantTimeChangeEventSource)
     }
 
 }

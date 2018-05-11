@@ -22,6 +22,7 @@ class ApplicationTestBuilder {
         var dataStore: CapturingEurofurenceDataStore
         var dateDistanceCalculator: StubDateDistanceCalculator
         var conventionStartDateRepository: StubConventionStartDateRepository
+        var significantTimeChangeEventSource: FakeSignificantTimeChangeEventSource
         
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
@@ -108,6 +109,7 @@ class ApplicationTestBuilder {
     func build() -> Context {
         let dateDistanceCalculator = StubDateDistanceCalculator()
         let conventionStartDateRepository = StubConventionStartDateRepository()
+        let significantTimeChangeEventSource = FakeSignificantTimeChangeEventSource()
         let app = EurofurenceApplicationBuilder()
             .with(stubClock).with(capturingCredentialStore)
             .with(dataStore)
@@ -120,6 +122,7 @@ class ApplicationTestBuilder {
             .with(syncAPI)
             .with(dateDistanceCalculator)
             .with(conventionStartDateRepository)
+            .with(significantTimeChangeEventSource)
             .build()
         
         return Context(application: app,
@@ -130,7 +133,8 @@ class ApplicationTestBuilder {
                        syncAPI: syncAPI,
                        dataStore: dataStore,
                        dateDistanceCalculator: dateDistanceCalculator,
-                       conventionStartDateRepository: conventionStartDateRepository)
+                       conventionStartDateRepository: conventionStartDateRepository,
+                       significantTimeChangeEventSource: significantTimeChangeEventSource)
     }
     
 }
