@@ -319,7 +319,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
             }
         })
         
-        waitForExpectations(timeout: 0.1)
+        waitForExpectations(timeout: 0.5)
     }
     
     func testNetworkErrorOccursShouldPropagateErrorToCompletionHandler() {
