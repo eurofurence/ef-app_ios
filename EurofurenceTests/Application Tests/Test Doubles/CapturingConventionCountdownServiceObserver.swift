@@ -16,6 +16,9 @@ class CapturingConventionCountdownServiceObserver: ConventionCountdownServiceObs
         switch state {
         case .countingDown(let daysRemaining):
             capturedDaysRemaining = daysRemaining
+            
+        case .countdownElapsed:
+            break
         }
     }
     

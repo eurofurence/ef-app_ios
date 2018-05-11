@@ -67,6 +67,10 @@ public extension String {
                                                               comment: "Header shown above the widget describing how many days are left until the convention")
     public static let daysRemainingFormat = NSLocalizedString("DaysUntilConvention",
                                                               comment: "Format strings substituted with the remaining number of days until the convention")
+    public static let upcomingEvents = NSLocalizedString("UpcomingEvents",
+                                                         comment: "Header shown above section in the News view for events that start soon")
+    public static let runningEvents = NSLocalizedString("RunningEvents",
+                                                        comment: "Header shown above section in the News view for events that are currently running")
 
     public static let anonymousUserLoginPrompt = NSLocalizedString("anonymousUserLoginPrompt",
                                                                    comment: "Tells user to login for additional features")

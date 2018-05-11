@@ -11,10 +11,14 @@
 class StubConventionCountdownService: ConventionCountdownService {
     
     fileprivate var observers = [ConventionCountdownServiceObserver]()
+    fileprivate(set) var countdownState: ConventionCountdownState
     
-    fileprivate(set) var stubbedDays: Int = .random
+    init(countdownState: ConventionCountdownState = .countingDown(daysUntilConvention: .random)) {
+        self.countdownState = countdownState
+    }
+    
     func add(_ observer: ConventionCountdownServiceObserver) {
-        observer.conventionCountdownStateDidChange(to: .countingDown(daysUntilConvention: stubbedDays))
+        observer.conventionCountdownStateDidChange(to: countdownState)
         observers.append(observer)
     }
     
@@ -23,8 +27,8 @@ class StubConventionCountdownService: ConventionCountdownService {
 extension StubConventionCountdownService {
     
     func changeDaysUntilConvention(to days: Int) {
-        stubbedDays = days
-        observers.forEach({ $0.conventionCountdownStateDidChange(to: .countingDown(daysUntilConvention: days)) })
+        countdownState = .countingDown(daysUntilConvention: days)
+        observers.forEach({ $0.conventionCountdownStateDidChange(to: countdownState) })
     }
     
 }

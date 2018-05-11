@@ -14,6 +14,7 @@ protocol ConventionCountdownService {
 
 enum ConventionCountdownState {
     case countingDown(daysUntilConvention: Int)
+    case countdownElapsed
 }
 
 protocol ConventionCountdownServiceObserver {

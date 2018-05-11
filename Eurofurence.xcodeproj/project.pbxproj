@@ -246,6 +246,7 @@
 		CA162E8420A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8320A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift */; };
 		CA162E8620A5BB85004AFED6 /* ConventionCountdownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8520A5BB85004AFED6 /* ConventionCountdownController.swift */; };
 		CA162E8820A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8720A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift */; };
+		CA162E8B20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8A20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift */; };
 		CA17FE712056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */; };
 		CA17FE732056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */; };
 		CA17FE752056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */; };
@@ -958,6 +959,7 @@
 		CA162E8320A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSignificantTimeChangeEventSource.swift; sourceTree = "<group>"; };
 		CA162E8520A5BB85004AFED6 /* ConventionCountdownController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConventionCountdownController.swift; sourceTree = "<group>"; };
 		CA162E8720A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSignificantTimeChangeEventSource.swift; sourceTree = "<group>"; };
+		CA162E8A20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutDuringConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeDetailSceneLoads.swift; sourceTree = "<group>"; };
 		CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
@@ -2240,6 +2242,14 @@
 			path = "Test Doubles";
 			sourceTree = "<group>";
 		};
+		CA162E8920A64339004AFED6 /* During Convention */ = {
+			isa = PBXGroup;
+			children = (
+				CA162E8A20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift */,
+			);
+			path = "During Convention";
+			sourceTree = "<group>";
+		};
 		CA17FE762056B1AB005A4C05 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
@@ -2403,6 +2413,7 @@
 			children = (
 				CA65A87A209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift */,
 				CA728493209F9A54007D912A /* Before Convention */,
+				CA162E8920A64339004AFED6 /* During Convention */,
 			);
 			path = "Interactor Tests";
 			sourceTree = "<group>";
@@ -4621,6 +4632,7 @@
 				CA2D08001FE94AF900BFD785 /* WhenTheAppLaunchesWithAbsentDataStore.swift in Sources */,
 				CA8276BC204F25DF006A7419 /* InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould.swift in Sources */,
 				CA63753D208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift in Sources */,
+				CA162E8B20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift in Sources */,
 				CAC1E1391F50431000195513 /* NewsPresenterTestBuilder.swift in Sources */,
 				CA6375B9208E03C000536BE2 /* CapturingDealersScene.swift in Sources */,
 				78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */,

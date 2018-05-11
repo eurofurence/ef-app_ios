@@ -26,7 +26,7 @@ class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, Privat
     private let authenticationService: AuthenticationService
     private var delegate: NewsInteractorDelegate?
     private var unreadMessagesCount = 0
-    private var daysUntilConvention = 0
+    private var daysUntilConvention: Int?
 
     // MARK: Initialization
 
@@ -87,8 +87,12 @@ class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, Privat
         switch state {
         case .countingDown(let daysRemaining):
             daysUntilConvention = daysRemaining
-            regenerateViewModel()
+
+        case .countdownElapsed:
+            daysUntilConvention = nil
         }
+
+        regenerateViewModel()
     }
 
     // MARK: Private
@@ -96,10 +100,21 @@ class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, Privat
     private func regenerateViewModel() {
         makeUserWidgetViewModel { (userWidget) in
             self.announcementsService.fetchAnnouncements { (announcements) in
-                let userWidget = UserComponent(viewModel: userWidget)
-                let daysUntilConventionWidget = CountdownComponent(daysUntilConvention: self.daysUntilConvention)
-                let announcementsComponents = AnnouncementsComponent(announcements: announcements)
-                let viewModel = ViewModel(components: [userWidget, daysUntilConventionWidget, announcementsComponents])
+                var components = [NewsViewModelComponent]()
+                components.append(UserComponent(viewModel: userWidget))
+
+                if let daysUntilConvention = self.daysUntilConvention {
+                    components.append(CountdownComponent(daysUntilConvention: daysUntilConvention))
+                }
+
+                components.append(AnnouncementsComponent(announcements: announcements))
+
+                if self.daysUntilConvention == nil {
+                    components.append(EventsComponent(title: .upcomingEvents))
+                    components.append(EventsComponent(title: .runningEvents))
+                }
+
+                let viewModel = ViewModel(components: components)
                 self.delegate?.viewModelDidUpdate(viewModel)
             }
         }
@@ -195,6 +210,24 @@ class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, Privat
         func announceValue(at index: Int, to completionHandler: @escaping (NewsViewModelValue) -> Void) {
             let announcement = announcements[index]
             completionHandler(.announcement(announcement))
+        }
+
+    }
+
+    private struct EventsComponent: NewsViewModelComponent {
+
+        var title: String
+
+        var childCount: Int {
+            return 0
+        }
+
+        func announceContent(at index: Int, to visitor: NewsViewModelVisitor) {
+
+        }
+
+        func announceValue(at index: Int, to completionHandler: @escaping (NewsViewModelValue) -> Void) {
+
         }
 
     }

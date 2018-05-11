@@ -88,6 +88,12 @@ extension DefaultNewsInteractorTestBuilder.Context {
                 components: expected)
     }
     
+    func makeExpectedComponentsForDuringConvention() -> (titles: [String], components: [AnyHashable]) {
+        let expected = [makeExpectedUserWidget()] + makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements() + makeExpectedEventsViewModelsForRunningEvents() + makeExpectedEventsViewModelsForUpcomingEvents()
+        return (titles: [.yourEurofurence, .announcements, .upcomingEvents, .runningEvents],
+                components: expected)
+    }
+    
     private var shouldSimulateUserHasUnreadMessages: Bool {
         return privateMessagesService.unreadCount > 0
     }
@@ -107,7 +113,12 @@ extension DefaultNewsInteractorTestBuilder.Context {
     }
     
     private func makeDaysUntilConventionWidget() -> AnyHashable {
-        return ConventionCountdownComponentViewModel(timeUntilConvention: String.daysUntilConventionMessage(days: daysUntilConventionService.stubbedDays))
+        if case .countingDown(let days) = daysUntilConventionService.countdownState {
+            return ConventionCountdownComponentViewModel(timeUntilConvention: String.daysUntilConventionMessage(days: days))
+        }
+        else {
+            return "Countdown widget not expected when we're not counting down to convention"
+        }
     }
     
     private func makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements() -> [AnyHashable] {
@@ -116,6 +127,14 @@ extension DefaultNewsInteractorTestBuilder.Context {
     
     private func makeExpectedAnnouncementViewModel(from announcement: Announcement2) -> AnnouncementComponentViewModel {
         return AnnouncementComponentViewModel(title: announcement.title, detail: announcement.content)
+    }
+    
+    private func makeExpectedEventsViewModelsForRunningEvents() -> [AnyHashable] {
+        return []
+    }
+    
+    private func makeExpectedEventsViewModelsForUpcomingEvents() -> [AnyHashable] {
+        return []
     }
     
 }
@@ -175,6 +194,12 @@ extension DefaultNewsInteractorTestBuilder.Context {
     
     func verifyViewModelForBeforeConvention(_ file: StaticString = #file, line: UInt = #line) {
         let expected = makeExpectedComponentsForBeforeConvention()
+        let expectation = DefaultNewsInteractorTestBuilder.Expectation(components: expected.components, titles: expected.titles)
+        verify(expectation, file: file, line: line)
+    }
+    
+    func verifyViewModelForDuringConvention(_ file: StaticString = #file, line: UInt = #line) {
+        let expected = makeExpectedComponentsForDuringConvention()
         let expectation = DefaultNewsInteractorTestBuilder.Expectation(components: expected.components, titles: expected.titles)
         verify(expectation, file: file, line: line)
     }

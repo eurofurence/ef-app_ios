@@ -27,6 +27,8 @@
 "YourEurofurence" = "Your Eurofurence";
 "Announcements" = "Announcements";
 "DaysUntilConventionHeader" = "Days Until Eurofurence";
+"UpcomingEvents" = "Upcoming Events";
+"RunningEvents" = "Running Events";
 
 "anonymousUserLoginPrompt" = "You are currently not logged in";
 "anonymousUserLoginDescription" = "Tap here to login using your registration details and receive personalized messages from Eurofurence!";
