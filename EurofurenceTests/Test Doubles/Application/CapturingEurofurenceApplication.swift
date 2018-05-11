@@ -78,7 +78,7 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         return refreshProgress!
     }
     
-    func observeDaysUntilConvention(using observer: DaysUntilConventionServiceObserver) {
+    func add(_ observer: ConventionCountdownServiceObserver) {
         
     }
     

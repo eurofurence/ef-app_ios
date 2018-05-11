@@ -17,7 +17,7 @@ class WhenObservingCountdownUntilConvention_EurofurenceApplicationShould: XCTest
         let context = ApplicationTestBuilder().with(clockTime).build()
         let expected = Int.random
         context.dateDistanceCalculator.stubDistance(between: clockTime, and: context.conventionStartDateRepository.conventionStartDate, with: expected)
-        context.application.observeDaysUntilConvention(using: observer)
+        context.application.add(observer)
         
         XCTAssertEqual(expected, observer.capturedDaysRemaining)
     }

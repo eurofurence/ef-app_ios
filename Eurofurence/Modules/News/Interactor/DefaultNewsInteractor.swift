@@ -18,7 +18,7 @@ private protocol NewsViewModelComponent {
 
 }
 
-class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, PrivateMessagesServiceObserver, DaysUntilConventionServiceObserver {
+class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, PrivateMessagesServiceObserver, ConventionCountdownServiceObserver {
 
     // MARK: Properties
 
@@ -40,13 +40,13 @@ class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, Privat
     init(announcementsService: AnnouncementsService,
          authenticationService: AuthenticationService,
          privateMessagesService: PrivateMessagesService,
-         daysUntilConventionService: DaysUntilConventionService) {
+         daysUntilConventionService: ConventionCountdownService) {
         self.announcementsService = announcementsService
         self.authenticationService = authenticationService
 
         authenticationService.add(observer: self)
         privateMessagesService.add(self)
-        daysUntilConventionService.observeDaysUntilConvention(using: self)
+        daysUntilConventionService.add(self)
     }
 
     // MARK: NewsInteractor
@@ -83,7 +83,7 @@ class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, Privat
 
     // MARK: DaysUntilConventionServiceObserver
 
-    func daysUntilConventionDidChange(to daysRemaining: Int) {
+    func conventionCountdownStateDidChange(to daysRemaining: Int) {
         daysUntilConvention = daysRemaining
         regenerateViewModel()
     }

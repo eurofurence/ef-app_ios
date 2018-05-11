@@ -13,7 +13,7 @@ class ConventionCountdownController: SignificantTimeChangeEventObserver {
     private let conventionStartDateRepository: ConventionStartDateRepository
     private let dateDistanceCalculator: DateDistanceCalculator
     private let clock: Clock
-    private var daysUntilConventionObservers = [DaysUntilConventionServiceObserver]()
+    private var daysUntilConventionObservers = [ConventionCountdownServiceObserver]()
 
     init(significantTimeChangeEventSource: SignificantTimeChangeEventSource,
          conventionStartDateRepository: ConventionStartDateRepository,
@@ -26,16 +26,16 @@ class ConventionCountdownController: SignificantTimeChangeEventObserver {
         significantTimeChangeEventSource.add(self)
     }
 
-    func observeDaysUntilConvention(using observer: DaysUntilConventionServiceObserver) {
+    func observeDaysUntilConvention(using observer: ConventionCountdownServiceObserver) {
         daysUntilConventionObservers.append(observer)
 
         let daysUntilConvention = calculateDaysUntilConvention()
-        observer.daysUntilConventionDidChange(to: daysUntilConvention)
+        observer.conventionCountdownStateDidChange(to: daysUntilConvention)
     }
 
     func significantTimeChangeDidOccur() {
         let daysUntilConvention = calculateDaysUntilConvention()
-        daysUntilConventionObservers.forEach({ $0.daysUntilConventionDidChange(to: daysUntilConvention) })
+        daysUntilConventionObservers.forEach({ $0.conventionCountdownStateDidChange(to: daysUntilConvention) })
     }
 
     private func calculateDaysUntilConvention() -> Int {

@@ -12,7 +12,7 @@ import XCTest
 class WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsInteractorShould: XCTestCase {
     
     func testUpdateTheCountdownWidget() {
-        let countdownService = StubDaysUntilConventionService()
+        let countdownService = StubConventionCountdownService()
         let context = DefaultNewsInteractorTestBuilder()
             .with(FakeAuthenticationService.loggedInService())
             .with(countdownService)

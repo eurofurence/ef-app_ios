@@ -182,7 +182,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         completionHandler(makeAnnouncementsFromSyncResponse())
     }
 
-    func observeDaysUntilConvention(using observer: DaysUntilConventionServiceObserver) {
+    func add(_ observer: ConventionCountdownServiceObserver) {
         conventionCountdownController.observeDaysUntilConvention(using: observer)
     }
 
