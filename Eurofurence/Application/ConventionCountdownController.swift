@@ -28,17 +28,20 @@ class ConventionCountdownController: SignificantTimeChangeEventObserver {
 
     func observeDaysUntilConvention(using observer: DaysUntilConventionServiceObserver) {
         daysUntilConventionObservers.append(observer)
-        let now = clock.currentDate
-        let conventionStartTime = conventionStartDateRepository.conventionStartDate
-        let distance = dateDistanceCalculator.calculateDays(between: now, and: conventionStartTime)
-        observer.daysUntilConventionDidChange(to: distance)
+
+        let daysUntilConvention = calculateDaysUntilConvention()
+        observer.daysUntilConventionDidChange(to: daysUntilConvention)
     }
 
     func significantTimeChangeDidOccur() {
+        let daysUntilConvention = calculateDaysUntilConvention()
+        daysUntilConventionObservers.forEach({ $0.daysUntilConventionDidChange(to: daysUntilConvention) })
+    }
+
+    private func calculateDaysUntilConvention() -> Int {
         let now = clock.currentDate
         let conventionStartTime = conventionStartDateRepository.conventionStartDate
-        let distance = dateDistanceCalculator.calculateDays(between: now, and: conventionStartTime)
-        daysUntilConventionObservers.forEach({ $0.daysUntilConventionDidChange(to: distance) })
+        return dateDistanceCalculator.calculateDays(between: now, and: conventionStartTime)
     }
 
 }
