@@ -245,6 +245,7 @@
 		CA162E8220A5B7BC004AFED6 /* SignificantTimeChangeEventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8120A5B7BC004AFED6 /* SignificantTimeChangeEventSource.swift */; };
 		CA162E8420A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8320A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift */; };
 		CA162E8620A5BB85004AFED6 /* ConventionCountdownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8520A5BB85004AFED6 /* ConventionCountdownController.swift */; };
+		CA162E8820A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8720A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift */; };
 		CA17FE712056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */; };
 		CA17FE732056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */; };
 		CA17FE752056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */; };
@@ -956,6 +957,7 @@
 		CA162E8120A5B7BC004AFED6 /* SignificantTimeChangeEventSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignificantTimeChangeEventSource.swift; sourceTree = "<group>"; };
 		CA162E8320A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSignificantTimeChangeEventSource.swift; sourceTree = "<group>"; };
 		CA162E8520A5BB85004AFED6 /* ConventionCountdownController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConventionCountdownController.swift; sourceTree = "<group>"; };
+		CA162E8720A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSignificantTimeChangeEventSource.swift; sourceTree = "<group>"; };
 		CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeDetailSceneLoads.swift; sourceTree = "<group>"; };
 		CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
@@ -3162,6 +3164,7 @@
 				CA162E7B20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift */,
 				CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */,
 				CA162E8120A5B7BC004AFED6 /* SignificantTimeChangeEventSource.swift */,
+				CA162E8720A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift */,
 			);
 			path = "System Services";
 			sourceTree = "<group>";
@@ -4134,6 +4137,7 @@
 				CA6375B2208E02E300536BE2 /* DealersScene.swift in Sources */,
 				CA30EAC41F2672BF0053DBF6 /* Message.swift in Sources */,
 				CA1FE99E1FA0B41E009C7DF3 /* NavigationControllerFactory.swift in Sources */,
+				CA162E8820A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift in Sources */,
 				9A34B9781ECF6E3B004A249E /* Iso8601DateFormatter.swift in Sources */,
 				9A861EBF1F25551400B75A8C /* PresentationAssets.swift in Sources */,
 				CAF7056A1F82D15D00A9FEA2 /* PreloadModuleProviding.swift in Sources */,

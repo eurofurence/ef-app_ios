@@ -42,12 +42,6 @@ class EurofurenceApplicationBuilder {
             }
         }
 
-        struct DummySignificantTimeChangeEventSource: SignificantTimeChangeEventSource {
-            func add(_ observer: SignificantTimeChangeEventObserver) {
-
-            }
-        }
-
         userPreferences = DummyUserPreferences()
         dataStore = DummyEurofurenceDataStore()
 
@@ -68,7 +62,7 @@ class EurofurenceApplicationBuilder {
         syncAPI = V2SyncAPI(jsonSession: jsonSession)
         dateDistanceCalculator = FoundationDateDistanceCalculator()
         conventionStartDateRepository = EF24StartDateRepository()
-        significantTimeChangeEventSource = DummySignificantTimeChangeEventSource()
+        significantTimeChangeEventSource = ApplicationSignificantTimeChangeEventSource.shared
     }
 
     @discardableResult
