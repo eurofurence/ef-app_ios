@@ -30,12 +30,12 @@ class ConventionCountdownController: SignificantTimeChangeEventObserver {
         daysUntilConventionObservers.append(observer)
 
         let daysUntilConvention = calculateDaysUntilConvention()
-        observer.conventionCountdownStateDidChange(to: daysUntilConvention)
+        observer.conventionCountdownStateDidChange(to: .countingDown(daysUntilConvention: daysUntilConvention))
     }
 
     func significantTimeChangeDidOccur() {
         let daysUntilConvention = calculateDaysUntilConvention()
-        daysUntilConventionObservers.forEach({ $0.conventionCountdownStateDidChange(to: daysUntilConvention) })
+        daysUntilConventionObservers.forEach({ $0.conventionCountdownStateDidChange(to: .countingDown(daysUntilConvention: daysUntilConvention)) })
     }
 
     private func calculateDaysUntilConvention() -> Int {

@@ -83,9 +83,12 @@ class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, Privat
 
     // MARK: DaysUntilConventionServiceObserver
 
-    func conventionCountdownStateDidChange(to daysRemaining: Int) {
-        daysUntilConvention = daysRemaining
-        regenerateViewModel()
+    func conventionCountdownStateDidChange(to state: ConventionCountdownState) {
+        switch state {
+        case .countingDown(let daysRemaining):
+            daysUntilConvention = daysRemaining
+            regenerateViewModel()
+        }
     }
 
     // MARK: Private

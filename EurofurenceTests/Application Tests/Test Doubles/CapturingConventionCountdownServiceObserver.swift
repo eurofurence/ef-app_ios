@@ -12,8 +12,11 @@ import Foundation
 class CapturingConventionCountdownServiceObserver: ConventionCountdownServiceObserver {
     
     private(set) var capturedDaysRemaining: Int?
-    func conventionCountdownStateDidChange(to daysRemaining: Int) {
-        capturedDaysRemaining = daysRemaining
+    func conventionCountdownStateDidChange(to state: ConventionCountdownState) {
+        switch state {
+        case .countingDown(let daysRemaining):
+            capturedDaysRemaining = daysRemaining
+        }
     }
     
 }

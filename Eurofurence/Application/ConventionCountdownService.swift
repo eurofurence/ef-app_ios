@@ -12,8 +12,12 @@ protocol ConventionCountdownService {
 
 }
 
+enum ConventionCountdownState {
+    case countingDown(daysUntilConvention: Int)
+}
+
 protocol ConventionCountdownServiceObserver {
 
-    func conventionCountdownStateDidChange(to daysRemaining: Int)
+    func conventionCountdownStateDidChange(to state: ConventionCountdownState)
 
 }
