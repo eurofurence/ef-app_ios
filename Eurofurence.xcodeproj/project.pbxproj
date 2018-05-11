@@ -247,6 +247,7 @@
 		CA162E8620A5BB85004AFED6 /* ConventionCountdownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8520A5BB85004AFED6 /* ConventionCountdownController.swift */; };
 		CA162E8820A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8720A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift */; };
 		CA162E8B20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8A20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift */; };
+		CA162E8D20A64C8C004AFED6 /* WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8C20A64C8C004AFED6 /* WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift */; };
 		CA17FE712056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */; };
 		CA17FE732056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */; };
 		CA17FE752056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */; };
@@ -960,6 +961,7 @@
 		CA162E8520A5BB85004AFED6 /* ConventionCountdownController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConventionCountdownController.swift; sourceTree = "<group>"; };
 		CA162E8720A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSignificantTimeChangeEventSource.swift; sourceTree = "<group>"; };
 		CA162E8A20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutDuringConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
+		CA162E8C20A64C8C004AFED6 /* WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift; sourceTree = "<group>"; };
 		CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeDetailSceneLoads.swift; sourceTree = "<group>"; };
 		CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
@@ -2218,6 +2220,7 @@
 			children = (
 				CA162E6D20A468E7004AFED6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift */,
 				CA162E7F20A5B738004AFED6 /* WhenObservingConventionCountdown_AndSignificantTimeChangeOccurs_EurofurenceApplicationShould.swift */,
+				CA162E8C20A64C8C004AFED6 /* WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift */,
 			);
 			path = Countdown;
 			sourceTree = "<group>";
@@ -4511,6 +4514,7 @@
 				CAD234421F5F2FA8004BB959 /* AppDataBuilder.swift in Sources */,
 				CA5BF9D51F7AF9160045DBC0 /* PreloadPresenterTests.swift in Sources */,
 				7820A7011F16C0F0004C0FB5 /* CapturingPushPermissionsStateProviding.swift in Sources */,
+				CA162E8D20A64C8C004AFED6 /* WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift in Sources */,
 				CA71A3522041B59600C847C3 /* Array+RandomConvenience.swift in Sources */,
 				CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */,
 				CABF03B72041C2150028BD62 /* DefaultKnowledgeListInteractorTests.swift in Sources */,

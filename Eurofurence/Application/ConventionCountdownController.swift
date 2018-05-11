@@ -29,13 +29,22 @@ class ConventionCountdownController: SignificantTimeChangeEventObserver {
     func observeDaysUntilConvention(using observer: ConventionCountdownServiceObserver) {
         daysUntilConventionObservers.append(observer)
 
-        let daysUntilConvention = calculateDaysUntilConvention()
-        observer.conventionCountdownStateDidChange(to: .countingDown(daysUntilConvention: daysUntilConvention))
+        let state = resolveCountdownState()
+        observer.conventionCountdownStateDidChange(to: state)
     }
 
     func significantTimeChangeDidOccur() {
-        let daysUntilConvention = calculateDaysUntilConvention()
-        daysUntilConventionObservers.forEach({ $0.conventionCountdownStateDidChange(to: .countingDown(daysUntilConvention: daysUntilConvention)) })
+        let state = resolveCountdownState()
+        daysUntilConventionObservers.forEach({ $0.conventionCountdownStateDidChange(to: state) })
+    }
+
+    private func resolveCountdownState() -> ConventionCountdownState {
+        let daysRemaining = calculateDaysUntilConvention()
+        if daysRemaining > 0 {
+            return .countingDown(daysUntilConvention: daysRemaining)
+        } else {
+            return .countdownElapsed
+        }
     }
 
     private func calculateDaysUntilConvention() -> Int {
