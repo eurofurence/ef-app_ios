@@ -24,7 +24,7 @@ enum PrivateMessageResult {
     case userNotAuthenticated
 }
 
-class EurofurenceApplication: EurofurenceApplicationProtocol, SignificantTimeChangeEventObserver {
+class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     static var shared: EurofurenceApplicationProtocol = EurofurenceApplicationBuilder().build()
 
@@ -38,8 +38,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol, SignificantTimeCha
     private let authenticationCoordinator: UserAuthenticationCoordinator
     private let privateMessagesController: PrivateMessagesController
     private let syncAPI: SyncAPI
-    private let dateDistanceCalculator: DateDistanceCalculator
-    private let conventionStartDateRepository: ConventionStartDateRepository
+    private let conventionCountdownController: ConventionCountdownController
     private var syncResponse: APISyncResponse?
 
     init(userPreferences: UserPreferences,
@@ -61,8 +60,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol, SignificantTimeCha
         self.pushPermissionsStateProviding = pushPermissionsStateProviding
         self.clock = clock
         self.syncAPI = syncAPI
-        self.dateDistanceCalculator = dateDistanceCalculator
-        self.conventionStartDateRepository = conventionStartDateRepository
 
         if pushPermissionsStateProviding.requestedPushNotificationAuthorization {
             pushPermissionsRequester.requestPushPermissions()
@@ -77,7 +74,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol, SignificantTimeCha
                                                                   remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
                                                                   loginAPI: loginAPI)
 
-        significantTimeChangeEventSource.add(self)
+        conventionCountdownController = ConventionCountdownController(significantTimeChangeEventSource: significantTimeChangeEventSource,
+                                                                      conventionStartDateRepository: conventionStartDateRepository,
+                                                                      dateDistanceCalculator: dateDistanceCalculator,
+                                                                      clock: clock)
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
@@ -182,20 +182,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol, SignificantTimeCha
         completionHandler(makeAnnouncementsFromSyncResponse())
     }
 
-    private var daysUntilConventionObservers = [DaysUntilConventionServiceObserver]()
     func observeDaysUntilConvention(using observer: DaysUntilConventionServiceObserver) {
-        daysUntilConventionObservers.append(observer)
-        let now = clock.currentDate
-        let conventionStartTime = conventionStartDateRepository.conventionStartDate
-        let distance = dateDistanceCalculator.calculateDays(between: now, and: conventionStartTime)
-        observer.daysUntilConventionDidChange(to: distance)
-    }
-
-    func significantTimeChangeDidOccur() {
-        let now = clock.currentDate
-        let conventionStartTime = conventionStartDateRepository.conventionStartDate
-        let distance = dateDistanceCalculator.calculateDays(between: now, and: conventionStartTime)
-        daysUntilConventionObservers.forEach({ $0.daysUntilConventionDidChange(to: distance) })
+        conventionCountdownController.observeDaysUntilConvention(using: observer)
     }
 
     private func makeAnnouncementsFromSyncResponse() -> [Announcement2] {
