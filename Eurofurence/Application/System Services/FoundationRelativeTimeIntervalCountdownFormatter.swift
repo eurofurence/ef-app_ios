@@ -1,5 +1,5 @@
 //
-//  FoundationRelativeTimeFormatter.swift
+//  FoundationRelativeTimeIntervalCountdownFormatter.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 13/05/2018.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct FoundationRelativeTimeFormatter: RelativeTimeFormatter {
+struct FoundationRelativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCountdownFormatter {
 
-    static let shared = FoundationRelativeTimeFormatter()
+    static let shared = FoundationRelativeTimeIntervalCountdownFormatter()
     private var formatter: DateComponentsFormatter
 
     private init() {

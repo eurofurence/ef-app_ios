@@ -28,7 +28,7 @@ class DefaultNewsInteractor: NewsInteractor,
 
     private let announcementsService: AnnouncementsService
     private let authenticationService: AuthenticationService
-    private let relativeTimeFormatter: RelativeTimeFormatter
+    private let relativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCountdownFormatter
     private var delegate: NewsInteractorDelegate?
     private var unreadMessagesCount = 0
     private var daysUntilConvention: Int?
@@ -39,7 +39,7 @@ class DefaultNewsInteractor: NewsInteractor,
     convenience init() {
         struct DummyEventsService: EventsService {
             func add(_ observer: EventsServiceObserver) {
-                
+
             }
         }
 
@@ -48,7 +48,7 @@ class DefaultNewsInteractor: NewsInteractor,
                   privateMessagesService: EurofurencePrivateMessagesService.shared,
                   daysUntilConventionService: EurofurenceApplication.shared,
                   eventsService: DummyEventsService(),
-                  relativeTimeFormatter: FoundationRelativeTimeFormatter.shared)
+                  relativeTimeIntervalCountdownFormatter: FoundationRelativeTimeIntervalCountdownFormatter.shared)
     }
 
     init(announcementsService: AnnouncementsService,
@@ -56,10 +56,10 @@ class DefaultNewsInteractor: NewsInteractor,
          privateMessagesService: PrivateMessagesService,
          daysUntilConventionService: ConventionCountdownService,
          eventsService: EventsService,
-         relativeTimeFormatter: RelativeTimeFormatter) {
+         relativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCountdownFormatter) {
         self.announcementsService = announcementsService
         self.authenticationService = authenticationService
-        self.relativeTimeFormatter = relativeTimeFormatter
+        self.relativeTimeIntervalCountdownFormatter = relativeTimeIntervalCountdownFormatter
 
         authenticationService.add(observer: self)
         privateMessagesService.add(self)
@@ -135,8 +135,8 @@ class DefaultNewsInteractor: NewsInteractor,
                 components.append(AnnouncementsComponent(announcements: announcements))
 
                 if self.daysUntilConvention == nil {
-                    components.append(EventsComponent(title: .upcomingEvents, events: [], relativeTimeFormatter: self.relativeTimeFormatter))
-                    components.append(EventsComponent(title: .runningEvents, events: self.runningEvents, relativeTimeFormatter: self.relativeTimeFormatter))
+                    components.append(EventsComponent(title: .upcomingEvents, events: [], relativeTimeFormatter: self.relativeTimeIntervalCountdownFormatter))
+                    components.append(EventsComponent(title: .runningEvents, events: self.runningEvents, relativeTimeFormatter: self.relativeTimeIntervalCountdownFormatter))
                 }
 
                 let viewModel = ViewModel(components: components)
@@ -243,7 +243,7 @@ class DefaultNewsInteractor: NewsInteractor,
 
         private let viewModels: [EventComponentViewModel]
 
-        init(title: String, events: [Event2], relativeTimeFormatter: RelativeTimeFormatter) {
+        init(title: String, events: [Event2], relativeTimeFormatter: RelativeTimeIntervalCountdownFormatter) {
             self.title = title
 
             viewModels = events.map { (event) -> EventComponentViewModel in

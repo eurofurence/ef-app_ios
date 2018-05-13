@@ -1,5 +1,5 @@
 //
-//  RelativeTimeFormatter.swift
+//  RelativeTimeIntervalCountdownFormatter.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 13/05/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RelativeTimeFormatter {
+protocol RelativeTimeIntervalCountdownFormatter {
 
     func relativeString(from timeInterval: TimeInterval) -> String
 

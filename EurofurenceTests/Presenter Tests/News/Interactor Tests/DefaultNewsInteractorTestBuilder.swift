@@ -20,7 +20,7 @@ class StubEventsService: EventsService {
     
 }
 
-class FakeRelativeTimeFormatter: RelativeTimeFormatter {
+class FakeRelativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCountdownFormatter {
     
     private var strings = [TimeInterval : String]()
     
@@ -43,7 +43,7 @@ class DefaultNewsInteractorTestBuilder {
     struct Context {
         var interactor: DefaultNewsInteractor
         var delegate: CapturingNewsInteractorDelegate
-        var relativeTimeFormatter: FakeRelativeTimeFormatter
+        var relativeTimeFormatter: FakeRelativeTimeIntervalCountdownFormatter
         var authenticationService: FakeAuthenticationService
         var announcementsService: StubAnnouncementsService
         var privateMessagesService: CapturingPrivateMessagesService
@@ -96,13 +96,13 @@ class DefaultNewsInteractorTestBuilder {
     }
     
     func build() -> Context {
-        let relativeTimeFormatter = FakeRelativeTimeFormatter()
+        let relativeTimeFormatter = FakeRelativeTimeIntervalCountdownFormatter()
         let interactor = DefaultNewsInteractor(announcementsService: announcementsService,
                                                authenticationService: authenticationService,
                                                privateMessagesService: privateMessagesService,
                                                daysUntilConventionService: daysUntilConventionService,
                                                eventsService: eventsService,
-                                               relativeTimeFormatter: relativeTimeFormatter)
+                                               relativeTimeIntervalCountdownFormatter: relativeTimeFormatter)
         let delegate = CapturingNewsInteractorDelegate()
         
         return Context(interactor: interactor,
