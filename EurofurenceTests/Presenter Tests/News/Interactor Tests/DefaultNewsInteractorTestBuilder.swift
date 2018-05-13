@@ -22,15 +22,15 @@ class StubEventsService: EventsService {
 
 class FakeRelativeTimeFormatter: RelativeTimeFormatter {
     
-    private var strings = [Date : String]()
+    private var strings = [TimeInterval : String]()
     
-    func relativeString(from date: Date) -> String {
+    func relativeString(from timeInterval: TimeInterval) -> String {
         var output = String.random
-        if let previous = strings[date] {
+        if let previous = strings[timeInterval] {
             output = previous
         }
         else {
-            strings[date] = output
+            strings[timeInterval] = output
         }
         
         return output
@@ -185,7 +185,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
     }
     
     private func makeExpectedEventViewModel(from event: Event2) -> AnyHashable {
-        return EventComponentViewModel(startTime: relativeTimeFormatter.relativeString(from: event.startDate),
+        return EventComponentViewModel(startTime: relativeTimeFormatter.relativeString(from: event.secondsUntilEventBegins),
                                        endTime: "",
                                        eventName: event.title,
                                        location: event.room.name,

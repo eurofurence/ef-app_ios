@@ -44,7 +44,7 @@ class DefaultNewsInteractor: NewsInteractor,
         }
 
         struct DummyRelativeTimeFormatter: RelativeTimeFormatter {
-            func relativeString(from date: Date) -> String {
+            func relativeString(from timeInterval: TimeInterval) -> String {
                 return ""
             }
         }
@@ -253,7 +253,7 @@ class DefaultNewsInteractor: NewsInteractor,
             self.title = title
 
             viewModels = events.map { (event) -> EventComponentViewModel in
-                return EventComponentViewModel(startTime: relativeTimeFormatter.relativeString(from: event.startDate),
+                return EventComponentViewModel(startTime: relativeTimeFormatter.relativeString(from: event.secondsUntilEventBegins),
                                                endTime: "",
                                                eventName: event.title,
                                                location: event.room.name,

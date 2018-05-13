@@ -10,6 +10,6 @@ import Foundation
 
 protocol RelativeTimeFormatter {
 
-    func relativeString(from date: Date) -> String
+    func relativeString(from timeInterval: TimeInterval) -> String
 
 }

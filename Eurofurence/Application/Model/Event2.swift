@@ -13,5 +13,6 @@ struct Event2 {
     var title: String
     var room: Room
     var startDate: Date
+    var secondsUntilEventBegins: TimeInterval
 
 }
