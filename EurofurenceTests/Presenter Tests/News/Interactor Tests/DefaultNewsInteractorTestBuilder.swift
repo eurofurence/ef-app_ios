@@ -166,7 +166,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
         return EventComponentViewModel(startTime: "",
                                        endTime: "",
                                        eventName: event.title,
-                                       location: "",
+                                       location: event.room.name,
                                        icon: nil)
     }
     

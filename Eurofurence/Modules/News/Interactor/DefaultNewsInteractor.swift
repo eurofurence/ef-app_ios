@@ -246,7 +246,11 @@ class DefaultNewsInteractor: NewsInteractor,
 
         func announceContent(at index: Int, to visitor: NewsViewModelVisitor) {
             let event = events[index]
-            let viewModel = EventComponentViewModel(startTime: "", endTime: "", eventName: event.title, location: "", icon: nil)
+            let viewModel = EventComponentViewModel(startTime: "",
+                                                    endTime: "",
+                                                    eventName: event.title,
+                                                    location: event.room.name,
+                                                    icon: nil)
             visitor.visit(viewModel)
         }
 

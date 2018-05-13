@@ -11,5 +11,6 @@ import Foundation
 struct Event2 {
 
     var title: String
+    var room: Room
 
 }
