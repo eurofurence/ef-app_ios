@@ -10,34 +10,6 @@
 import Foundation
 import XCTest
 
-class StubEventsService: EventsService {
-    
-    var runningEvents: [Event2] = []
-    
-    func add(_ observer: EventsServiceObserver) {
-        observer.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents)
-    }
-    
-}
-
-class FakeRelativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCountdownFormatter {
-    
-    private var strings = [TimeInterval : String]()
-    
-    func relativeString(from timeInterval: TimeInterval) -> String {
-        var output = String.random
-        if let previous = strings[timeInterval] {
-            output = previous
-        }
-        else {
-            strings[timeInterval] = output
-        }
-        
-        return output
-    }
-    
-}
-
 class DefaultNewsInteractorTestBuilder {
     
     struct Context {

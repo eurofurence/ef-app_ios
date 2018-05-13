@@ -255,6 +255,8 @@
 		CA162E9820A8886C004AFED6 /* Room+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9720A8886C004AFED6 /* Room+RandomValueProviding.swift */; };
 		CA162E9A20A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9920A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift */; };
 		CA162E9E20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9D20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift */; };
+		CA162EA020A8D499004AFED6 /* FakeRelativeTimeIntervalCountdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9F20A8D499004AFED6 /* FakeRelativeTimeIntervalCountdownFormatter.swift */; };
+		CA162EA220A8D4A9004AFED6 /* StubEventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EA120A8D4A9004AFED6 /* StubEventsService.swift */; };
 		CA17FE712056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */; };
 		CA17FE732056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */; };
 		CA17FE752056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */; };
@@ -976,6 +978,8 @@
 		CA162E9720A8886C004AFED6 /* Room+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Room+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA162E9920A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeTimeIntervalCountdownFormatter.swift; sourceTree = "<group>"; };
 		CA162E9D20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationRelativeTimeIntervalCountdownFormatter.swift; sourceTree = "<group>"; };
+		CA162E9F20A8D499004AFED6 /* FakeRelativeTimeIntervalCountdownFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRelativeTimeIntervalCountdownFormatter.swift; sourceTree = "<group>"; };
+		CA162EA120A8D4A9004AFED6 /* StubEventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubEventsService.swift; sourceTree = "<group>"; };
 		CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeDetailSceneLoads.swift; sourceTree = "<group>"; };
 		CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
@@ -2425,6 +2429,8 @@
 				CA728438209CEE97007D912A /* StubConventionCountdownService.swift */,
 				CA89CBBF2085383100570D54 /* StubNewsInteractor.swift */,
 				CA89CBB92084CA8A00570D54 /* StubNewsViewModel.swift */,
+				CA162E9F20A8D499004AFED6 /* FakeRelativeTimeIntervalCountdownFormatter.swift */,
+				CA162EA120A8D4A9004AFED6 /* StubEventsService.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -4665,6 +4671,7 @@
 				78D7EEB51F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift in Sources */,
 				CA73AED8201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift in Sources */,
 				CAD68828208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift in Sources */,
+				CA162EA020A8D499004AFED6 /* FakeRelativeTimeIntervalCountdownFormatter.swift in Sources */,
 				CA162E7A20A4B6F5004AFED6 /* CapturingConventionCountdownServiceObserver.swift in Sources */,
 				CA63754A208CBB6C00536BE2 /* StubNewsModuleFactory.swift in Sources */,
 				CA2D08001FE94AF900BFD785 /* WhenTheAppLaunchesWithAbsentDataStore.swift in Sources */,
@@ -4698,6 +4705,7 @@
 				CA73AEDD201A0823004E77BF /* CapturingKnowledgeListScene.swift in Sources */,
 				CA60C002207F7D2100697566 /* WhenNewsSceneDidLoad.swift in Sources */,
 				CA63758C208CE06100536BE2 /* WhenBuildingEventsModule.swift in Sources */,
+				CA162EA220A8D4A9004AFED6 /* StubEventsService.swift in Sources */,
 				CA63755C208CBC3C00536BE2 /* StubLinkRouter.swift in Sources */,
 				CABF03CC204220460028BD62 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift in Sources */,
 				CA2547C11FEB1B2A0023F2CB /* WhenRefreshingMessages.swift in Sources */,
