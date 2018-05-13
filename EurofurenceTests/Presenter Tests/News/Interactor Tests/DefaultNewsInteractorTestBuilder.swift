@@ -93,6 +93,200 @@ class DefaultNewsInteractorTestBuilder {
 
 extension DefaultNewsInteractorTestBuilder.Context {
     
+    func makeAssertion() -> AssertionBuilder {
+        return AssertionBuilder(context: self)
+    }
+    
+    fileprivate struct Assertion {
+        
+        var file: StaticString
+        var line: UInt
+        var components: [AssertionBuilder.Component]
+        var viewModel: NewsViewModel?
+        
+        private class Visitor: NewsViewModelVisitor {
+            var components = [AnyHashable]()
+            
+            func visit(_ userWidget: UserWidgetComponentViewModel) {
+                components.append(AnyHashable(userWidget))
+            }
+            
+            func visit(_ announcement: AnnouncementComponentViewModel) {
+                components.append(AnyHashable(announcement))
+            }
+            
+            func visit(_ event: EventComponentViewModel) {
+                components.append(AnyHashable(event))
+            }
+            
+            func visit(_ countdown: ConventionCountdownComponentViewModel) {
+                components.append(AnyHashable(countdown))
+            }
+        }
+        
+        func verify() {
+            guard let viewModel = viewModel else {
+                XCTFail("Delegate did not witness a view model",
+                        file: file,
+                        line: line)
+                return
+            }
+            
+            let actual = traverse(through: viewModel)
+            
+            guard actual.count == components.count else {
+                XCTFail("Expected \(actual.count) components; got \(components.count)",
+                    file: file,
+                    line: line)
+                return
+            }
+            
+            for (idx, component) in components.enumerated() {
+                let actualComponent = actual[idx]
+                verify(expected: component, actual: actualComponent, index: idx)
+            }
+        }
+        
+        private func traverse(through viewModel: NewsViewModel) -> [AssertionBuilder.Component] {
+            var actual = [AssertionBuilder.Component]()
+            for sectionIndex in (0..<viewModel.numberOfComponents) {
+                let visitor = Visitor()
+                var component = AssertionBuilder.Component(title: viewModel.titleForComponent(at: sectionIndex), components: [])
+                for itemIndex in (0..<viewModel.numberOfItemsInComponent(at: sectionIndex)) {
+                    let indexPath = IndexPath(item: itemIndex, section: sectionIndex)
+                    viewModel.describeComponent(at: indexPath, to: visitor)
+                }
+                
+                component.components = visitor.components
+                actual.append(component)
+            }
+            
+            return actual
+        }
+        
+        private func verify(expected: AssertionBuilder.Component, actual: AssertionBuilder.Component, index: Int) {
+            guard expected.title == actual.title else {
+                XCTFail("Component at index \(index) should have had title \"\(expected.title)\", but got \"\(actual.title)\"",
+                    file: file,
+                    line: line)
+                return
+            }
+            
+            guard expected.components.count == actual.components.count else {
+                XCTFail("Expected component at index \(index) to have \(expected.components.count) components, but got \(actual.components.count)",
+                    file: file,
+                    line: line)
+                return
+            }
+            
+            for (idx, expectedComponent) in expected.components.enumerated() {
+                let actualComponent = actual.components[idx]
+                guard expectedComponent == actualComponent else {
+                    XCTFail("Components at \(index)-\(idx) not equal: expected \(expectedComponent); got \(actualComponent)",
+                        file: file,
+                        line: line)
+                    return
+                }
+            }
+        }
+        
+    }
+
+    class AssertionBuilder {
+        
+        fileprivate struct Component {
+            var title: String
+            var components: [AnyHashable]
+        }
+        
+        private let context: DefaultNewsInteractorTestBuilder.Context
+        private var components = [Component]()
+        
+        fileprivate init(context: DefaultNewsInteractorTestBuilder.Context) {
+            self.context = context
+        }
+        
+        func verify(file: StaticString = #file, line: UInt = #line) {
+            Assertion(file: file, line: line, components: components, viewModel: context.delegate.viewModel).verify()
+        }
+        
+        private var shouldSimulateUserHasUnreadMessages: Bool {
+            return context.privateMessagesService.unreadCount > 0
+        }
+        
+        func appendYourEurofurence() -> AssertionBuilder {
+            var component: AnyHashable
+            switch context.authenticationService.authState {
+            case .loggedIn(let user):
+                component = UserWidgetComponentViewModel(prompt: String.welcomePrompt(for: user),
+                                                         detailedPrompt: String.welcomeDescription(messageCount: context.privateMessagesService.unreadCount),
+                                                         hasUnreadMessages: shouldSimulateUserHasUnreadMessages)
+                
+            case .loggedOut:
+                component = UserWidgetComponentViewModel(prompt: .anonymousUserLoginPrompt,
+                                                         detailedPrompt: .anonymousUserLoginDescription,
+                                                         hasUnreadMessages: shouldSimulateUserHasUnreadMessages)
+            }
+            
+            components.append(Component(title: .yourEurofurence, components: [component]))
+            
+            return self
+        }
+        
+        func appendAnnouncements() -> AssertionBuilder {
+            let announcementsComponents = context.announcements.map(makeExpectedAnnouncementViewModel)
+            components.append(Component(title: .announcements, components: announcementsComponents))
+            
+            return self
+        }
+        
+        func appendConventionCountdown() -> AssertionBuilder {
+            let daysUntilConvention = resolveStubbedDaysUntilConvention()
+            let component = ConventionCountdownComponentViewModel(timeUntilConvention: .daysUntilConventionMessage(days: daysUntilConvention))
+            components.append(Component(title: .daysUntilConvention, components: [component]))
+            
+            return self
+        }
+        
+        func appendRunningEvents() -> AssertionBuilder {
+            let eventsComponents = context.eventsService.runningEvents.map(makeExpectedEventViewModel)
+            components.append(Component(title: .runningEvents, components: eventsComponents))
+            
+            return self
+        }
+        
+        func appendUpcomingEvents() -> AssertionBuilder {
+            components.append(Component(title: .upcomingEvents, components: []))
+            return self
+        }
+        
+        private func makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements() -> [AnyHashable] {
+            return context.announcements.map(makeExpectedAnnouncementViewModel)
+        }
+        
+        private func makeExpectedAnnouncementViewModel(from announcement: Announcement2) -> AnyHashable {
+            return AnnouncementComponentViewModel(title: announcement.title, detail: announcement.content)
+        }
+        
+        private func resolveStubbedDaysUntilConvention() -> Int {
+            guard case .countingDown(let days) = context.daysUntilConventionService.countdownState else { return -1 }
+            return days
+        }
+        
+        private func makeExpectedEventViewModel(from event: Event2) -> AnyHashable {
+            return EventComponentViewModel(startTime: context.relativeTimeFormatter.relativeString(from: event.secondsUntilEventBegins),
+                                           endTime: "",
+                                           eventName: event.title,
+                                           location: event.room.name,
+                                           icon: nil)
+        }
+        
+    }
+
+}
+
+extension DefaultNewsInteractorTestBuilder.Context {
+    
     var announcements: [Announcement2] {
         return announcementsService.announcements
     }
@@ -220,9 +414,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
     }
     
     func verifyViewModelForBeforeConvention(_ file: StaticString = #file, line: UInt = #line) {
-        let expected = makeExpectedComponentsForBeforeConvention()
-        let expectation = DefaultNewsInteractorTestBuilder.Expectation(components: expected.components, titles: expected.titles)
-        verify(expectation, file: file, line: line)
+        makeAssertion().appendYourEurofurence().appendConventionCountdown().appendAnnouncements().verify(file: file, line: line)
     }
     
     func verifyViewModelForDuringConvention(_ file: StaticString = #file, line: UInt = #line) {
