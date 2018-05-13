@@ -18,7 +18,11 @@ private protocol NewsViewModelComponent {
 
 }
 
-class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, PrivateMessagesServiceObserver, ConventionCountdownServiceObserver {
+class DefaultNewsInteractor: NewsInteractor,
+                             AuthenticationStateObserver,
+                             PrivateMessagesServiceObserver,
+                             ConventionCountdownServiceObserver,
+                             EventsServiceObserver {
 
     // MARK: Properties
 
@@ -27,26 +31,36 @@ class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, Privat
     private var delegate: NewsInteractorDelegate?
     private var unreadMessagesCount = 0
     private var daysUntilConvention: Int?
+    private var runningEvents = [Event2]()
 
     // MARK: Initialization
 
     convenience init() {
+        struct DummyEventsService: EventsService {
+            func add(_ observer: EventsServiceObserver) {
+
+            }
+        }
+
         self.init(announcementsService: EurofurenceApplication.shared,
                   authenticationService: ApplicationAuthenticationService.shared,
                   privateMessagesService: EurofurencePrivateMessagesService.shared,
-                  daysUntilConventionService: EurofurenceApplication.shared)
+                  daysUntilConventionService: EurofurenceApplication.shared,
+                  eventsService: DummyEventsService())
     }
 
     init(announcementsService: AnnouncementsService,
          authenticationService: AuthenticationService,
          privateMessagesService: PrivateMessagesService,
-         daysUntilConventionService: ConventionCountdownService) {
+         daysUntilConventionService: ConventionCountdownService,
+         eventsService: EventsService) {
         self.announcementsService = announcementsService
         self.authenticationService = authenticationService
 
         authenticationService.add(observer: self)
         privateMessagesService.add(self)
         daysUntilConventionService.add(self)
+        eventsService.add(self)
     }
 
     // MARK: NewsInteractor
@@ -95,6 +109,13 @@ class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, Privat
         regenerateViewModel()
     }
 
+    // MARK: EventsServiceObserver
+
+    func eurofurenceApplicationDidUpdateRunningEvents(to events: [Event2]) {
+        runningEvents = events
+        regenerateViewModel()
+    }
+
     // MARK: Private
 
     private func regenerateViewModel() {
@@ -110,8 +131,8 @@ class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, Privat
                 components.append(AnnouncementsComponent(announcements: announcements))
 
                 if self.daysUntilConvention == nil {
-                    components.append(EventsComponent(title: .upcomingEvents))
-                    components.append(EventsComponent(title: .runningEvents))
+                    components.append(EventsComponent(title: .upcomingEvents, events: []))
+                    components.append(EventsComponent(title: .runningEvents, events: self.runningEvents))
                 }
 
                 let viewModel = ViewModel(components: components)
@@ -217,13 +238,16 @@ class DefaultNewsInteractor: NewsInteractor, AuthenticationStateObserver, Privat
     private struct EventsComponent: NewsViewModelComponent {
 
         var title: String
+        var events: [Event2]
 
         var childCount: Int {
-            return 0
+            return events.count
         }
 
         func announceContent(at index: Int, to visitor: NewsViewModelVisitor) {
-
+            let event = events[index]
+            let viewModel = EventComponentViewModel(startTime: "", endTime: "", eventName: event.title, location: "", icon: nil)
+            visitor.visit(viewModel)
         }
 
         func announceValue(at index: Int, to completionHandler: @escaping (NewsViewModelValue) -> Void) {

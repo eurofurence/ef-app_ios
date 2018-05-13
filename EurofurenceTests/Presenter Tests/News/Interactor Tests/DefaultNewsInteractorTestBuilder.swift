@@ -10,6 +10,16 @@
 import Foundation
 import XCTest
 
+class StubEventsService: EventsService {
+    
+    var runningEvents: [Event2] = []
+    
+    func add(_ observer: EventsServiceObserver) {
+        observer.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents)
+    }
+    
+}
+
 class DefaultNewsInteractorTestBuilder {
     
     struct Context {
@@ -19,18 +29,21 @@ class DefaultNewsInteractorTestBuilder {
         var announcementsService: StubAnnouncementsService
         var privateMessagesService: CapturingPrivateMessagesService
         var daysUntilConventionService: StubConventionCountdownService
+        var eventsService: StubEventsService
     }
     
     private var announcementsService: StubAnnouncementsService
     private var authenticationService: FakeAuthenticationService
     private var privateMessagesService: CapturingPrivateMessagesService
     private var daysUntilConventionService: StubConventionCountdownService
+    private var eventsService: StubEventsService
     
     init() {
         announcementsService = StubAnnouncementsService(announcements: [])
         authenticationService = FakeAuthenticationService(authState: .loggedOut)
         privateMessagesService = CapturingPrivateMessagesService()
         daysUntilConventionService = StubConventionCountdownService()
+        eventsService = StubEventsService()
     }
     
     @discardableResult
@@ -57,11 +70,18 @@ class DefaultNewsInteractorTestBuilder {
         return self
     }
     
+    @discardableResult
+    func with(_ eventsService: StubEventsService) -> DefaultNewsInteractorTestBuilder {
+        self.eventsService = eventsService
+        return self
+    }
+    
     func build() -> Context {
         let interactor = DefaultNewsInteractor(announcementsService: announcementsService,
                                                authenticationService: authenticationService,
                                                privateMessagesService: privateMessagesService,
-                                               daysUntilConventionService: daysUntilConventionService)
+                                               daysUntilConventionService: daysUntilConventionService,
+                                               eventsService: eventsService)
         let delegate = CapturingNewsInteractorDelegate()
         
         return Context(interactor: interactor,
@@ -69,7 +89,8 @@ class DefaultNewsInteractorTestBuilder {
                        authenticationService: authenticationService,
                        announcementsService: announcementsService,
                        privateMessagesService: privateMessagesService,
-                       daysUntilConventionService: daysUntilConventionService)
+                       daysUntilConventionService: daysUntilConventionService,
+                       eventsService: eventsService)
     }
     
 }
@@ -80,6 +101,10 @@ extension DefaultNewsInteractorTestBuilder.Context {
     
     var announcements: [Announcement2] {
         return announcementsService.announcements
+    }
+    
+    var runningEvents: [Event2] {
+        return eventsService.runningEvents
     }
     
     func makeExpectedComponentsForBeforeConvention() -> (titles: [String], components: [AnyHashable]) {
@@ -130,11 +155,19 @@ extension DefaultNewsInteractorTestBuilder.Context {
     }
     
     private func makeExpectedEventsViewModelsForRunningEvents() -> [AnyHashable] {
-        return []
+        return runningEvents.map(makeExpectedEventViewModel)
     }
     
     private func makeExpectedEventsViewModelsForUpcomingEvents() -> [AnyHashable] {
         return []
+    }
+    
+    private func makeExpectedEventViewModel(from event: Event2) -> AnyHashable {
+        return EventComponentViewModel(startTime: "",
+                                       endTime: "",
+                                       eventName: event.title,
+                                       location: "",
+                                       icon: nil)
     }
     
 }
