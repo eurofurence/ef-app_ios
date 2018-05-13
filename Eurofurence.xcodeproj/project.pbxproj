@@ -254,6 +254,7 @@
 		CA162E9620A88854004AFED6 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9520A88854004AFED6 /* Room.swift */; };
 		CA162E9820A8886C004AFED6 /* Room+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9720A8886C004AFED6 /* Room+RandomValueProviding.swift */; };
 		CA162E9A20A88A71004AFED6 /* RelativeTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9920A88A71004AFED6 /* RelativeTimeFormatter.swift */; };
+		CA162E9E20A8D158004AFED6 /* FoundationRelativeTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9D20A8D158004AFED6 /* FoundationRelativeTimeFormatter.swift */; };
 		CA17FE712056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */; };
 		CA17FE732056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */; };
 		CA17FE752056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */; };
@@ -974,6 +975,7 @@
 		CA162E9520A88854004AFED6 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		CA162E9720A8886C004AFED6 /* Room+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Room+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA162E9920A88A71004AFED6 /* RelativeTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeTimeFormatter.swift; sourceTree = "<group>"; };
+		CA162E9D20A8D158004AFED6 /* FoundationRelativeTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationRelativeTimeFormatter.swift; sourceTree = "<group>"; };
 		CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeDetailSceneLoads.swift; sourceTree = "<group>"; };
 		CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
@@ -3203,6 +3205,7 @@
 				CA162E8120A5B7BC004AFED6 /* SignificantTimeChangeEventSource.swift */,
 				CA162E8720A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift */,
 				CA162E9920A88A71004AFED6 /* RelativeTimeFormatter.swift */,
+				CA162E9D20A8D158004AFED6 /* FoundationRelativeTimeFormatter.swift */,
 			);
 			path = "System Services";
 			sourceTree = "<group>";
@@ -4228,6 +4231,7 @@
 				9A34B9871ED08C7E004A249E /* JsonDataStore.swift in Sources */,
 				CA8D97CD201610EC0074838F /* DomainEvent.swift in Sources */,
 				CAEAEC081FE06F3C00C0EE7C /* MessageDetailViewControllerV2.swift in Sources */,
+				CA162E9E20A8D158004AFED6 /* FoundationRelativeTimeFormatter.swift in Sources */,
 				CAD3BDB3205874AF00C91E6E /* APILink.swift in Sources */,
 				9A0525411ECA2AF500578798 /* Sync.swift in Sources */,
 				9A34B9811ED06956004A249E /* ViewModelResolver.swift in Sources */,
