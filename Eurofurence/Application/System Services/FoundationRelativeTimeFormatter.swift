@@ -9,17 +9,17 @@
 import Foundation
 
 struct FoundationRelativeTimeFormatter: RelativeTimeFormatter {
-    
+
     static let shared = FoundationRelativeTimeFormatter()
     private var formatter: DateComponentsFormatter
-    
+
     private init() {
         formatter = DateComponentsFormatter()
         formatter.unitsStyle = .abbreviated
     }
-    
+
     func relativeString(from timeInterval: TimeInterval) -> String {
         return formatter.string(from: timeInterval)!
     }
-    
+
 }

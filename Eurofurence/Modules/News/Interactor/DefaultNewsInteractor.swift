@@ -39,13 +39,7 @@ class DefaultNewsInteractor: NewsInteractor,
     convenience init() {
         struct DummyEventsService: EventsService {
             func add(_ observer: EventsServiceObserver) {
-
-            }
-        }
-
-        struct DummyRelativeTimeFormatter: RelativeTimeFormatter {
-            func relativeString(from timeInterval: TimeInterval) -> String {
-                return ""
+                
             }
         }
 
@@ -54,7 +48,7 @@ class DefaultNewsInteractor: NewsInteractor,
                   privateMessagesService: EurofurencePrivateMessagesService.shared,
                   daysUntilConventionService: EurofurenceApplication.shared,
                   eventsService: DummyEventsService(),
-                  relativeTimeFormatter: DummyRelativeTimeFormatter())
+                  relativeTimeFormatter: FoundationRelativeTimeFormatter.shared)
     }
 
     init(announcementsService: AnnouncementsService,
