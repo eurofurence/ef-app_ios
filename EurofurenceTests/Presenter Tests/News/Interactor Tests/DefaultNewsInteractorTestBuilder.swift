@@ -20,11 +20,30 @@ class StubEventsService: EventsService {
     
 }
 
+class FakeRelativeTimeFormatter: RelativeTimeFormatter {
+    
+    private var strings = [Date : String]()
+    
+    func relativeString(from date: Date) -> String {
+        var output = String.random
+        if let previous = strings[date] {
+            output = previous
+        }
+        else {
+            strings[date] = output
+        }
+        
+        return output
+    }
+    
+}
+
 class DefaultNewsInteractorTestBuilder {
     
     struct Context {
         var interactor: DefaultNewsInteractor
         var delegate: CapturingNewsInteractorDelegate
+        var relativeTimeFormatter: FakeRelativeTimeFormatter
         var authenticationService: FakeAuthenticationService
         var announcementsService: StubAnnouncementsService
         var privateMessagesService: CapturingPrivateMessagesService
@@ -77,15 +96,18 @@ class DefaultNewsInteractorTestBuilder {
     }
     
     func build() -> Context {
+        let relativeTimeFormatter = FakeRelativeTimeFormatter()
         let interactor = DefaultNewsInteractor(announcementsService: announcementsService,
                                                authenticationService: authenticationService,
                                                privateMessagesService: privateMessagesService,
                                                daysUntilConventionService: daysUntilConventionService,
-                                               eventsService: eventsService)
+                                               eventsService: eventsService,
+                                               relativeTimeFormatter: relativeTimeFormatter)
         let delegate = CapturingNewsInteractorDelegate()
         
         return Context(interactor: interactor,
                        delegate: delegate,
+                       relativeTimeFormatter: relativeTimeFormatter,
                        authenticationService: authenticationService,
                        announcementsService: announcementsService,
                        privateMessagesService: privateMessagesService,
@@ -163,7 +185,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
     }
     
     private func makeExpectedEventViewModel(from event: Event2) -> AnyHashable {
-        return EventComponentViewModel(startTime: "",
+        return EventComponentViewModel(startTime: relativeTimeFormatter.relativeString(from: event.startDate),
                                        endTime: "",
                                        eventName: event.title,
                                        location: event.room.name,

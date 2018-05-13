@@ -28,6 +28,7 @@ class DefaultNewsInteractor: NewsInteractor,
 
     private let announcementsService: AnnouncementsService
     private let authenticationService: AuthenticationService
+    private let relativeTimeFormatter: RelativeTimeFormatter
     private var delegate: NewsInteractorDelegate?
     private var unreadMessagesCount = 0
     private var daysUntilConvention: Int?
@@ -42,20 +43,29 @@ class DefaultNewsInteractor: NewsInteractor,
             }
         }
 
+        struct DummyRelativeTimeFormatter: RelativeTimeFormatter {
+            func relativeString(from date: Date) -> String {
+                return ""
+            }
+        }
+
         self.init(announcementsService: EurofurenceApplication.shared,
                   authenticationService: ApplicationAuthenticationService.shared,
                   privateMessagesService: EurofurencePrivateMessagesService.shared,
                   daysUntilConventionService: EurofurenceApplication.shared,
-                  eventsService: DummyEventsService())
+                  eventsService: DummyEventsService(),
+                  relativeTimeFormatter: DummyRelativeTimeFormatter())
     }
 
     init(announcementsService: AnnouncementsService,
          authenticationService: AuthenticationService,
          privateMessagesService: PrivateMessagesService,
          daysUntilConventionService: ConventionCountdownService,
-         eventsService: EventsService) {
+         eventsService: EventsService,
+         relativeTimeFormatter: RelativeTimeFormatter) {
         self.announcementsService = announcementsService
         self.authenticationService = authenticationService
+        self.relativeTimeFormatter = relativeTimeFormatter
 
         authenticationService.add(observer: self)
         privateMessagesService.add(self)
@@ -131,8 +141,8 @@ class DefaultNewsInteractor: NewsInteractor,
                 components.append(AnnouncementsComponent(announcements: announcements))
 
                 if self.daysUntilConvention == nil {
-                    components.append(EventsComponent(title: .upcomingEvents, events: []))
-                    components.append(EventsComponent(title: .runningEvents, events: self.runningEvents))
+                    components.append(EventsComponent(title: .upcomingEvents, events: [], relativeTimeFormatter: self.relativeTimeFormatter))
+                    components.append(EventsComponent(title: .runningEvents, events: self.runningEvents, relativeTimeFormatter: self.relativeTimeFormatter))
                 }
 
                 let viewModel = ViewModel(components: components)
@@ -237,20 +247,28 @@ class DefaultNewsInteractor: NewsInteractor,
 
     private struct EventsComponent: NewsViewModelComponent {
 
+        private let viewModels: [EventComponentViewModel]
+
+        init(title: String, events: [Event2], relativeTimeFormatter: RelativeTimeFormatter) {
+            self.title = title
+
+            viewModels = events.map { (event) -> EventComponentViewModel in
+                return EventComponentViewModel(startTime: relativeTimeFormatter.relativeString(from: event.startDate),
+                                               endTime: "",
+                                               eventName: event.title,
+                                               location: event.room.name,
+                                               icon: nil)
+            }
+        }
+
         var title: String
-        var events: [Event2]
 
         var childCount: Int {
-            return events.count
+            return viewModels.count
         }
 
         func announceContent(at index: Int, to visitor: NewsViewModelVisitor) {
-            let event = events[index]
-            let viewModel = EventComponentViewModel(startTime: "",
-                                                    endTime: "",
-                                                    eventName: event.title,
-                                                    location: event.room.name,
-                                                    icon: nil)
+            let viewModel = viewModels[index]
             visitor.visit(viewModel)
         }
 
