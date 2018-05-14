@@ -176,4 +176,15 @@ class WhenLoggingIn: XCTestCase {
         XCTAssertEqual(user, observer.capturedLoggedInUser)
     }
     
+    func testAddingObserverAfterSuccessfullyLoggingInTellsItAboutTheLoggedInUser() {
+        let context = ApplicationTestBuilder().build()
+        let user = User(registrationNumber: .random, username: .random)
+        context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
+        context.loginAPI.simulateResponse(makeLoginResponse())
+        let observer = CapturingAuthenticationStateObserver()
+        context.application.add(observer)
+        
+        XCTAssertEqual(user, observer.capturedLoggedInUser)
+    }
+    
 }

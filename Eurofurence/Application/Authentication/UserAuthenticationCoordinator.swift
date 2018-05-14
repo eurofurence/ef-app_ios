@@ -71,6 +71,10 @@ class UserAuthenticationCoordinator {
 
     func add(_ observer: AuthenticationStateObserver) {
         observers.append(observer)
+
+        if let user = loggedInUser {
+            observer.userDidLogin(user)
+        }
     }
 
     // MARK: Private
