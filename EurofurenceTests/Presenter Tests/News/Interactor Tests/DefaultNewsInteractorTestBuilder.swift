@@ -297,53 +297,6 @@ fileprivate extension DefaultNewsInteractorTestBuilder.Context {
     
 }
 
-// MARK: Assertion Assistance
-
-extension DefaultNewsInteractorTestBuilder {
-    
-    struct Expectation {
-        
-        var components: [AnyHashable]
-        var titles: [String]
-        
-        fileprivate func verify(components: [AnyHashable], titles: [String?], file: StaticString, line: UInt) {
-            guard self.components.count == components.count else {
-                XCTFail("Expected \(self.components.count) components, but got \(components.count)",
-                    file: file,
-                    line: line)
-                return
-            }
-            
-            for (idx, expected) in self.components.enumerated() {
-                let actual = components[idx]
-                if expected != actual {
-                    XCTFail("Components at index \(idx) not equal: Expected \(expected), but got \(actual)", file: file, line: line)
-                    return
-                }
-            }
-            
-            guard self.titles.count == titles.count else {
-                XCTFail("Expected \(self.titles.count) titles, but got \(titles.count)",
-                    file: file,
-                    line: line)
-                return
-            }
-            
-            for (idx, expected) in self.titles.enumerated() {
-                let actual = titles[idx]
-                if expected != actual {
-                    XCTFail("Titles at index \(idx) not equal: Expected \(String(describing: expected)), but got \(String(describing: actual))",
-                        file: file,
-                        line: line)
-                    return
-                }
-            }
-        }
-        
-    }
-    
-}
-
 extension DefaultNewsInteractorTestBuilder.Context {
     
     func subscribeViewModelUpdates() {
@@ -392,15 +345,6 @@ extension DefaultNewsInteractorTestBuilder.Context {
         
         func visit(_ countdown: ConventionCountdownComponentViewModel) {
             components.append(AnyHashable(countdown))
-        }
-    }
-    
-    private func verify(_ expectation: DefaultNewsInteractorTestBuilder.Expectation, file: StaticString = #file, line: UInt = #line) {
-        if let visitor = traverseViewModel() {
-            let viewModel = visitor.visitedViewModel
-            let titles = (0..<viewModel.numberOfComponents).map(viewModel.titleForComponent)
-            
-            expectation.verify(components: visitor.components, titles: titles, file: file, line: line)
         }
     }
     
