@@ -35,13 +35,12 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
         scene.delegate = self
         scene.setMessagesTitle(.messages)
         privateMessagesService.add(self)
-        authenticationService.add(observer: self)
     }
 
     // MARK: MessagesSceneDelegate
 
     func messagesSceneWillAppear() {
-        
+        authenticationService.add(observer: self)
     }
 
     func messagesSceneDidSelectMessage(at indexPath: IndexPath) {
