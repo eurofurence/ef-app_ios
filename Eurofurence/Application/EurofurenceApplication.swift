@@ -186,6 +186,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         conventionCountdownController.observeDaysUntilConvention(using: observer)
     }
 
+    func add(_ observer: AuthenticationStateObserver) {
+        authenticationCoordinator.add(observer)
+    }
+
     private func makeAnnouncementsFromSyncResponse() -> [Announcement2] {
         if let syncResponse = syncResponse {
             let sortedAnnouncements = syncResponse.announcements.changed.sorted(by: { (first, second) -> Bool in

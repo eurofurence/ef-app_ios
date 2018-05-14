@@ -86,6 +86,10 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
+    func add(_ observer: AuthenticationStateObserver) {
+        
+    }
+    
 }
 
 // MARK: - Test Helpers

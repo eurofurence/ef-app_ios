@@ -18,6 +18,7 @@ class UserAuthenticationCoordinator {
     private var userAuthenticationToken: String?
     private var registeredDeviceToken: Data?
     private var loggedInUser: User?
+    private var observers = [AuthenticationStateObserver]()
 
     init(eventBus: EventBus,
          clock: Clock,
@@ -68,6 +69,10 @@ class UserAuthenticationCoordinator {
         completionHandler(loggedInUser)
     }
 
+    func add(_ observer: AuthenticationStateObserver) {
+        observers.append(observer)
+    }
+
     // MARK: Private
 
     private func loadPersistedCredential() {
@@ -97,6 +102,7 @@ class UserAuthenticationCoordinator {
         let user = User(registrationNumber: credential.registrationNumber, username: credential.username)
         loggedInUser = user
         eventBus.post(DomainEvent.LoggedIn(user: user, authenticationToken: credential.authenticationToken))
+        observers.forEach({ $0.userDidLogin(user) })
     }
 
 }
