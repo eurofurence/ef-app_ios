@@ -85,9 +85,9 @@ class EurofurenceAuthServiceTests: XCTestCase {
         let registrationNumber = Int.random
         let username = "User \(registrationNumber)"
         let password = "Password \(registrationNumber)"
-        let input = LoginServiceRequest(registrationNumber: registrationNumber,
-                                        username: username,
-                                        password: password)
+        let input = LoginArguments(registrationNumber: registrationNumber,
+                                   username: username,
+                                   password: password)
         let expected = LoginArguments(registrationNumber: registrationNumber,
                                       username: username,
                                       password: password)
@@ -97,9 +97,9 @@ class EurofurenceAuthServiceTests: XCTestCase {
     }
     
     func testSuccessfulLoginsNotifyHandler() {
-        let input = LoginServiceRequest(registrationNumber: 0,
-                                        username: "",
-                                        password: "")
+        let input = LoginArguments(registrationNumber: 0,
+                                   username: "",
+                                   password: "")
         var didLogin = false
         service.perform(input, completionHandler: { didLogin = $0 == .success })
         let user = User(registrationNumber: 0, username: "")
@@ -109,9 +109,9 @@ class EurofurenceAuthServiceTests: XCTestCase {
     }
     
     func testFailedLoginsNotifyHandler() {
-        let input = LoginServiceRequest(registrationNumber: 0,
-                                        username: "",
-                                        password: "")
+        let input = LoginArguments(registrationNumber: 0,
+                                   username: "",
+                                   password: "")
         var didFailToLogin = false
         service.perform(input, completionHandler: { didFailToLogin = $0 == .failure })
         app.capturedLoginHandler?(.failure)
@@ -120,9 +120,9 @@ class EurofurenceAuthServiceTests: XCTestCase {
     }
     
     func testObserversAreToldLoginSucceeded() {
-        let input = LoginServiceRequest(registrationNumber: 0,
-                                        username: "",
-                                        password: "")
+        let input = LoginArguments(registrationNumber: 0,
+                                   username: "",
+                                   password: "")
         service.perform(input) { (_) in }
         let user = User(registrationNumber: .random, username: "")
         app.capturedLoginHandler?(.success(user))

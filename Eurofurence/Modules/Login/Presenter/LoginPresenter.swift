@@ -45,10 +45,10 @@ class LoginPresenter: LoginSceneDelegate {
         }
 
         @discardableResult
-        func makeLoginRequest() throws -> LoginServiceRequest {
-            return LoginServiceRequest(registrationNumber: try retrieveRegistrationNumber(),
-                                       username: try retrieveUsername(),
-                                       password: try retrievePassword())
+        func makeLoginRequest() throws -> LoginArguments {
+            return LoginArguments(registrationNumber: try retrieveRegistrationNumber(),
+                                  username: try retrieveUsername(),
+                                  password: try retrievePassword())
         }
 
         private struct ValidationError: Swift.Error {}

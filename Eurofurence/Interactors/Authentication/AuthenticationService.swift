@@ -10,6 +10,6 @@ protocol AuthenticationService {
 
     func add(observer: AuthenticationStateObserver)
     func determineAuthState(completionHandler: @escaping (AuthState) -> Void)
-    func perform(_ request: LoginServiceRequest, completionHandler: @escaping (LoginServiceResult) -> Void)
+    func perform(_ request: LoginArguments, completionHandler: @escaping (LoginServiceResult) -> Void)
 
 }

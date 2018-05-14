@@ -200,7 +200,7 @@ class LoginPresenterTests: XCTestCase {
         updatePassword(password)
         loginSceneFactory.stubScene.tapLoginButton()
         completeAlertPresentation()
-        let expected = LoginServiceRequest(registrationNumber: regNo, username: username, password: password)
+        let expected = LoginArguments(registrationNumber: regNo, username: username, password: password)
         
         XCTAssertEqual(expected, authenticationService.capturedRequest)
     }

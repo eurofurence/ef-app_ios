@@ -43,9 +43,9 @@ class FakeAuthenticationService: AuthenticationService {
         authStateDeterminedCount += 1
     }
     
-    private(set) var capturedRequest: LoginServiceRequest?
+    private(set) var capturedRequest: LoginArguments?
     fileprivate var capturedCompletionHandler: ((LoginServiceResult) -> Void)?
-    func perform(_ request: LoginServiceRequest, completionHandler: @escaping (LoginServiceResult) -> Void) {
+    func perform(_ request: LoginArguments, completionHandler: @escaping (LoginServiceResult) -> Void) {
         capturedRequest = request
         capturedCompletionHandler = completionHandler
     }

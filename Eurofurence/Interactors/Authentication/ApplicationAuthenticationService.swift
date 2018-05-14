@@ -31,11 +31,8 @@ class ApplicationAuthenticationService: AuthenticationService {
         }
     }
 
-    func perform(_ request: LoginServiceRequest, completionHandler: @escaping (LoginServiceResult) -> Void) {
-        let arguments = LoginArguments(registrationNumber: request.registrationNumber,
-                                       username: request.username,
-                                       password: request.password)
-        app.login(arguments) { (result) in
+    func perform(_ request: LoginArguments, completionHandler: @escaping (LoginServiceResult) -> Void) {
+        app.login(request) { (result) in
             switch result {
             case .success(let user):
                 completionHandler(.success)
