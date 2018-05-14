@@ -141,7 +141,9 @@ class DefaultNewsInteractor: NewsInteractor,
                 components.append(AnnouncementsComponent(announcements: announcements))
 
                 if self.daysUntilConvention == nil {
-                    components.append(EventsComponent(title: .upcomingEvents, events: self.upcomingEvents, relativeTimeFormatter: self.relativeTimeIntervalCountdownFormatter))
+                    if !self.upcomingEvents.isEmpty {
+                        components.append(EventsComponent(title: .upcomingEvents, events: self.upcomingEvents, relativeTimeFormatter: self.relativeTimeIntervalCountdownFormatter))
+                    }
 
                     if !self.runningEvents.isEmpty {
                         components.append(EventsComponent(title: .runningEvents, events: self.runningEvents, relativeTimeFormatter: self.relativeTimeIntervalCountdownFormatter))
