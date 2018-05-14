@@ -1,5 +1,5 @@
 //
-//  WhenFetchingAnnouncementsWithoutLoadingAnything.swift
+//  WhenAddingAnnouncementsObserverBeforeLoadingAnything.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 25/04/2018.
@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import XCTest
 
-class WhenFetchingAnnouncementsWithoutLoadingAnything: XCTestCase {
+class WhenAddingAnnouncementsObserverBeforeLoadingAnything: XCTestCase {
     
     func testEmptyAnnouncementsAreReturned() {
         let context = ApplicationTestBuilder().build()

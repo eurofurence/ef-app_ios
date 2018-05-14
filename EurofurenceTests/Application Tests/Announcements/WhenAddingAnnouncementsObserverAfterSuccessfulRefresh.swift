@@ -1,5 +1,5 @@
 //
-//  WhenFetchingAnnouncementsAfterSuccessfulRefresh.swift
+//  WhenAddingAnnouncementsObserverAfterSuccessfulRefresh.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 26/04/2018.
@@ -9,18 +9,7 @@
 @testable import Eurofurence
 import XCTest
 
-class CapturingAnnouncementsServiceObserver: AnnouncementsServiceObserver {
-    
-    private(set) var unreadAnnouncements: [Announcement2] = []
-    private(set) var didReceieveEmptyUnreadAnnouncements = false
-    func eurofurenceApplicationDidChangeUnreadAnnouncements(to announcements: [Announcement2]) {
-        unreadAnnouncements = announcements
-        didReceieveEmptyUnreadAnnouncements = didReceieveEmptyUnreadAnnouncements || announcements.isEmpty
-    }
-    
-}
-
-class WhenFetchingAnnouncementsAfterSuccessfulRefresh: XCTestCase {
+class WhenAddingAnnouncementsObserverAfterSuccessfulRefresh: XCTestCase {
     
     func testTheAnnouncementsFromTheRefreshResponseAreAdaptedInLastChangedTimeOrder() {
         let context = ApplicationTestBuilder().build()
