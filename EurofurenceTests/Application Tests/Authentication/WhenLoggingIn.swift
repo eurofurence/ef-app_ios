@@ -204,6 +204,7 @@ class WhenLoggingIn: XCTestCase {
         let context = ApplicationTestBuilder().build()
         let observer = CapturingAuthenticationStateObserver()
         context.application.add(observer)
+        observer.loggedOut = false
         let user = User(registrationNumber: .random, username: .random)
         context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
         context.loginAPI.simulateResponse(makeLoginResponse())
@@ -216,6 +217,7 @@ class WhenLoggingIn: XCTestCase {
         let context = ApplicationTestBuilder().build()
         let observer = CapturingAuthenticationStateObserver()
         context.application.add(observer)
+        observer.loggedOut = false
         let user = User(registrationNumber: .random, username: .random)
         context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
         context.loginAPI.simulateResponse(makeLoginResponse())
@@ -223,6 +225,14 @@ class WhenLoggingIn: XCTestCase {
         context.capturingTokenRegistration.failLastRequest()
         
         XCTAssertFalse(observer.loggedOut)
+    }
+    
+    func testAddingObserverWhenNotLoggedInTellsObserverUserLoggedOut() {
+        let context = ApplicationTestBuilder().build()
+        let observer = CapturingAuthenticationStateObserver()
+        context.application.add(observer)
+        
+        XCTAssertTrue(observer.loggedOut)
     }
     
 }

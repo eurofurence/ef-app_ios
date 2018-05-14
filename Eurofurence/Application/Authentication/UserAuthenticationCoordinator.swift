@@ -75,6 +75,8 @@ class UserAuthenticationCoordinator {
 
         if let user = loggedInUser {
             observer.userDidLogin(user)
+        } else {
+            observer.userDidLogout()
         }
     }
 
