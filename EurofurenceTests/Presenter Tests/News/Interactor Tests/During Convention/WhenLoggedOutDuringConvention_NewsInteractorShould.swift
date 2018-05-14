@@ -23,7 +23,12 @@ class WhenLoggedOutDuringConvention_NewsInteractorShould: XCTestCase {
             .build()
         context.subscribeViewModelUpdates()
         
-        context.verifyViewModelForDuringConvention()
+        context.makeAssertion()
+            .appendYourEurofurence()
+            .appendAnnouncements()
+            .appendUpcomingEvents()
+            .appendRunningEvents()
+            .verify()
     }
     
 }

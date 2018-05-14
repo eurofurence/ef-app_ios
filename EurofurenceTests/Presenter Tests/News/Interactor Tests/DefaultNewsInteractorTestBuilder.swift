@@ -303,14 +303,6 @@ extension DefaultNewsInteractorTestBuilder.Context {
         interactor.subscribeViewModelUpdates(delegate)
     }
     
-    func verifyViewModelForBeforeConvention(_ file: StaticString = #file, line: UInt = #line) {
-        makeAssertion().appendYourEurofurence().appendConventionCountdown().appendAnnouncements().verify(file: file, line: line)
-    }
-    
-    func verifyViewModelForDuringConvention(_ file: StaticString = #file, line: UInt = #line) {
-        makeAssertion().appendYourEurofurence().appendAnnouncements().appendUpcomingEvents().appendRunningEvents().verify(file: file, line: line)
-    }
-    
     func verifyModel(at indexPath: IndexPath, is expected: NewsViewModelValue, file: StaticString = #file, line: UInt = #line) {
         if let visitor = traverseViewModel() {
             guard let actual = visitor.moduleModels[indexPath] else {
