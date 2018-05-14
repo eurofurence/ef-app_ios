@@ -60,6 +60,7 @@ class UserAuthenticationCoordinator {
                 self.credentialStore.deletePersistedToken()
                 self.loggedInUser = nil
                 self.userAuthenticationToken = nil
+                self.observers.forEach({ $0.userDidLogout() })
                 completionHandler(.success)
             }
         }

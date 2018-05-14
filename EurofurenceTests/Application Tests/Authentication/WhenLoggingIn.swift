@@ -187,4 +187,42 @@ class WhenLoggingIn: XCTestCase {
         XCTAssertEqual(user, observer.capturedLoggedInUser)
     }
     
+    func testLoggingOutTellsObserversTheUserHasLoggedOut() {
+        let context = ApplicationTestBuilder().build()
+        let observer = CapturingAuthenticationStateObserver()
+        context.application.add(observer)
+        let user = User(registrationNumber: .random, username: .random)
+        context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
+        context.loginAPI.simulateResponse(makeLoginResponse())
+        context.application.logout(completionHandler: { (_) in })
+        context.capturingTokenRegistration.succeedLastRequest()
+        
+        XCTAssertTrue(observer.loggedOut)
+    }
+    
+    func testObserverNotToldUserLoggedOutUntilLogoutSucceeds() {
+        let context = ApplicationTestBuilder().build()
+        let observer = CapturingAuthenticationStateObserver()
+        context.application.add(observer)
+        let user = User(registrationNumber: .random, username: .random)
+        context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
+        context.loginAPI.simulateResponse(makeLoginResponse())
+        context.application.logout(completionHandler: { (_) in })
+        
+        XCTAssertFalse(observer.loggedOut)
+    }
+    
+    func testObserverNotToldUserLoggedOutWhenLogoutFails() {
+        let context = ApplicationTestBuilder().build()
+        let observer = CapturingAuthenticationStateObserver()
+        context.application.add(observer)
+        let user = User(registrationNumber: .random, username: .random)
+        context.login(registrationNumber: user.registrationNumber, username: user.username, completionHandler: { (_) in })
+        context.loginAPI.simulateResponse(makeLoginResponse())
+        context.application.logout(completionHandler: { (_) in })
+        context.capturingTokenRegistration.failLastRequest()
+        
+        XCTAssertFalse(observer.loggedOut)
+    }
+    
 }
