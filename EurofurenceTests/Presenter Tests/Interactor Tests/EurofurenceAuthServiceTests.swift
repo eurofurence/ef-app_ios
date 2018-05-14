@@ -9,15 +9,6 @@
 @testable import Eurofurence
 import XCTest
 
-class CapturingAuthStateHandler {
-    
-    private(set) var capturedState: AuthState?
-    func handle(_ state: AuthState) {
-        capturedState = state
-    }
-    
-}
-
 class EurofurenceAuthServiceTests: XCTestCase {
     
     var app: CapturingEurofurenceApplication!
@@ -31,38 +22,6 @@ class EurofurenceAuthServiceTests: XCTestCase {
         service = ApplicationAuthenticationService(app: app)
         observer = CapturingAuthenticationStateObserver()
         service.add(observer: observer)
-    }
-    
-    // MARK: Auth State
-    
-    func testDeterminingAuthStateRequestsUserFromApplication() {
-        service.determineAuthState { _ in }
-        XCTAssertTrue(app.wasRequestedForCurrentUser)
-    }
-    
-    func testWhenNilUserReturnedTheAuthStateIsResolvedAsLoggedOut() {
-        let handler = CapturingAuthStateHandler()
-        service.determineAuthState(completionHandler: handler.handle)
-        app.resolveUserRetrievalWithUser(nil)
-        
-        XCTAssertEqual(.loggedOut, handler.capturedState)
-    }
-    
-    func testWhenNonNilUserReturnedTheAuthStateIsNotResolvedAsLoggedOut() {
-        let handler = CapturingAuthStateHandler()
-        service.determineAuthState(completionHandler: handler.handle)
-        app.resolveUserRetrievalWithUser(User(registrationNumber: 42, username: ""))
-        
-        XCTAssertNotEqual(.loggedOut, handler.capturedState)
-    }
-    
-    func testWhenNonNilUserReturnedTheAuthStateIsResolvedAsLoggedIn() {
-        let handler = CapturingAuthStateHandler()
-        service.determineAuthState(completionHandler: handler.handle)
-        let user = User(registrationNumber: 42, username: "")
-        app.resolveUserRetrievalWithUser(user)
-        
-        XCTAssertEqual(.loggedIn(user), handler.capturedState)
     }
     
     // MARK: Login

@@ -21,16 +21,6 @@ class ApplicationAuthenticationService: AuthenticationService {
         observers.append(observer)
     }
 
-    func determineAuthState(completionHandler: @escaping (AuthState) -> Void) {
-        app.retrieveCurrentUser { user in
-            if let user = user {
-                completionHandler(.loggedIn(user))
-            } else {
-                completionHandler(.loggedOut)
-            }
-        }
-    }
-
     func perform(_ request: LoginArguments, completionHandler: @escaping (LoginServiceResult) -> Void) {
         app.login(request) { (result) in
             switch result {

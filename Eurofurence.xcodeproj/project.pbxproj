@@ -621,7 +621,6 @@
 		CAE27B501F857A99005FDE39 /* PhonePreloadModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4F1F857A99005FDE39 /* PhonePreloadModuleFactory.swift */; };
 		CAEAEBE71FDC94F800C0EE7C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */; };
 		CAEAEBEB1FDC984D00C0EE7C /* AuthenticationStateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBEA1FDC984D00C0EE7C /* AuthenticationStateObserver.swift */; };
-		CAEAEBED1FDC985C00C0EE7C /* AuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBEC1FDC985C00C0EE7C /* AuthState.swift */; };
 		CAEAEBEF1FDC989300C0EE7C /* LoginServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBEE1FDC989300C0EE7C /* LoginServiceRequest.swift */; };
 		CAEAEBF11FDC9D1600C0EE7C /* ApplicationAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF01FDC9D1600C0EE7C /* ApplicationAuthenticationService.swift */; };
 		CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */; };
@@ -1352,7 +1351,6 @@
 		CAE27B4F1F857A99005FDE39 /* PhonePreloadModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePreloadModuleFactory.swift; sourceTree = "<group>"; };
 		CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		CAEAEBEA1FDC984D00C0EE7C /* AuthenticationStateObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationStateObserver.swift; sourceTree = "<group>"; };
-		CAEAEBEC1FDC985C00C0EE7C /* AuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthState.swift; sourceTree = "<group>"; };
 		CAEAEBEE1FDC989300C0EE7C /* LoginServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceRequest.swift; sourceTree = "<group>"; };
 		CAEAEBF01FDC9D1600C0EE7C /* ApplicationAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationAuthenticationService.swift; sourceTree = "<group>"; };
 		CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailModuleProviding.swift; sourceTree = "<group>"; };
@@ -3500,7 +3498,6 @@
 				CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */,
 				CAEAEBF01FDC9D1600C0EE7C /* ApplicationAuthenticationService.swift */,
 				CAEAEBEA1FDC984D00C0EE7C /* AuthenticationStateObserver.swift */,
-				CAEAEBEC1FDC985C00C0EE7C /* AuthState.swift */,
 				CAEAEBEE1FDC989300C0EE7C /* LoginServiceRequest.swift */,
 			);
 			path = Authentication;
@@ -4448,7 +4445,6 @@
 				D6F3D62A784F07D9C7A84DC8 /* KnowledgeEntryViewController.swift in Sources */,
 				CA0E5213208F4CD7005259FE /* AnnouncementsService.swift in Sources */,
 				CA1FE99B1FA0B3EB009C7DF3 /* WindowWireframe.swift in Sources */,
-				CAEAEBED1FDC985C00C0EE7C /* AuthState.swift in Sources */,
 				CA2B4FA81F1EA72A00F007E1 /* LoginArguments.swift in Sources */,
 				78F555991F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift in Sources */,
 				9A8ECA251F2BE1E300351A83 /* NotificationSoundPlayer.swift in Sources */,

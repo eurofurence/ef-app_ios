@@ -10,6 +10,11 @@
 
 class FakeAuthenticationService: AuthenticationService {
     
+    enum AuthState {
+        case loggedIn(User)
+        case loggedOut
+    }
+    
     fileprivate(set) var authState: AuthState
     
     class func loggedInService(_ user: User = .random) -> FakeAuthenticationService {

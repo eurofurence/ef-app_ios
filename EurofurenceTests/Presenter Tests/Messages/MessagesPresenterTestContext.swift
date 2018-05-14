@@ -64,7 +64,7 @@ struct MessagesPresenterTestContext {
         return makeTestCaseForAuthenticatedUser(privateMessagesService: service)
     }
     
-    private init(authState: AuthState,
+    private init(authState: FakeAuthenticationService.AuthState,
                  privateMessagesService: CapturingPrivateMessagesService = CapturingPrivateMessagesService()) {
         self.privateMessagesService = privateMessagesService
         authenticationService = FakeAuthenticationService(authState: authState)
