@@ -8,11 +8,6 @@
 
 import Foundation
 
-enum LoginResult {
-    case success(User)
-    case failure
-}
-
 enum LogoutResult {
     case success
     case failure

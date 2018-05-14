@@ -12,3 +12,15 @@ protocol AuthenticationService {
     func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void)
 
 }
+
+enum LoginResult {
+    case success(User)
+    case failure
+}
+
+protocol AuthenticationStateObserver {
+
+    func userDidLogin(_ user: User)
+    func userDidLogout()
+
+}
