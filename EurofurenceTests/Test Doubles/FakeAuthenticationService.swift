@@ -27,6 +27,14 @@ class FakeAuthenticationService: AuthenticationService {
     fileprivate var observers = [AuthenticationStateObserver]()
     func add(observer: AuthenticationStateObserver) {
         observers.append(observer)
+        
+        switch authState {
+        case .loggedIn(let user):
+            observer.userDidLogin(user)
+            
+        case .loggedOut:
+            observer.userDidLogout()
+        }
     }
     
     private(set) var authStateDeterminedCount = 0

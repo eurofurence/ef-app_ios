@@ -34,6 +34,7 @@ class DefaultNewsInteractor: NewsInteractor,
     private var daysUntilConvention: Int?
     private var runningEvents = [Event2]()
     private var upcomingEvents = [Event2]()
+    private var currentUser: User?
 
     // MARK: Initialization
 
@@ -78,10 +79,12 @@ class DefaultNewsInteractor: NewsInteractor,
     // MARK: AuthenticationStateObserver
 
     func userDidLogin(_ user: User) {
+        currentUser = user
         regenerateViewModel()
     }
 
     func userDidLogout() {
+        currentUser = nil
         regenerateViewModel()
     }
 
@@ -129,10 +132,11 @@ class DefaultNewsInteractor: NewsInteractor,
     // MARK: Private
 
     private func regenerateViewModel() {
-        makeUserWidgetViewModel { (userWidget) in
+//        makeUserWidgetViewModel { (userWidgetViewModel) in
+        let userWidgetViewModel = makeUserWidgetViewModel()
             self.announcementsService.fetchAnnouncements { (announcements) in
                 var components = [NewsViewModelComponent]()
-                components.append(UserComponent(viewModel: userWidget))
+                components.append(UserComponent(viewModel: userWidgetViewModel))
 
                 if let daysUntilConvention = self.daysUntilConvention {
                     components.append(CountdownComponent(daysUntilConvention: daysUntilConvention))
@@ -153,25 +157,18 @@ class DefaultNewsInteractor: NewsInteractor,
                 let viewModel = ViewModel(components: components)
                 self.delegate?.viewModelDidUpdate(viewModel)
             }
-        }
+//        }
     }
 
-    private func makeUserWidgetViewModel(_ completionHandler: @escaping (UserWidgetComponentViewModel) -> Void) {
-        authenticationService.determineAuthState { (state) in
-            let userWidget: UserWidgetComponentViewModel
-            switch state {
-            case .loggedIn(let user):
-                userWidget = UserWidgetComponentViewModel(prompt: .welcomePrompt(for: user),
-                                                          detailedPrompt: .welcomeDescription(messageCount: self.unreadMessagesCount),
-                                                          hasUnreadMessages: self.unreadMessagesCount > 0)
-
-            case .loggedOut:
-                userWidget = UserWidgetComponentViewModel(prompt: .anonymousUserLoginPrompt,
-                                                          detailedPrompt: .anonymousUserLoginDescription,
-                                                          hasUnreadMessages: false)
-            }
-
-            completionHandler(userWidget)
+    private func makeUserWidgetViewModel() -> UserWidgetComponentViewModel {
+        if let user = currentUser {
+            return UserWidgetComponentViewModel(prompt: .welcomePrompt(for: user),
+                                                detailedPrompt: .welcomeDescription(messageCount: unreadMessagesCount),
+                                                hasUnreadMessages: unreadMessagesCount > 0)
+        } else {
+            return UserWidgetComponentViewModel(prompt: .anonymousUserLoginPrompt,
+                                                detailedPrompt: .anonymousUserLoginDescription,
+                                                hasUnreadMessages: false)
         }
     }
 
