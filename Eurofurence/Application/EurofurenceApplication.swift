@@ -156,6 +156,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                     transaction.saveAnnouncements(announcements)
                 })
 
+                self.announcementsObservers.forEach({ $0.eurofurenceApplicationDidChangeUnreadAnnouncements(to: self.makeAnnouncementsFromSyncResponse()) })
+
                 self.privateMessagesController.fetchPrivateMessages { (_) in completionHandler(nil) }
             }
         }

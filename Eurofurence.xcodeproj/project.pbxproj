@@ -262,6 +262,7 @@
 		CA162EA820AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EA720AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift */; };
 		CA162EAA20AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EA920AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift */; };
 		CA162EAC20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EAB20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift */; };
+		CA162EAE20AA29DC004AFED6 /* WhenAddingAnnouncementsObserverThenRefreshSucceeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EAD20AA29DC004AFED6 /* WhenAddingAnnouncementsObserverThenRefreshSucceeds.swift */; };
 		CA17FE712056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */; };
 		CA17FE732056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */; };
 		CA17FE752056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */; };
@@ -985,6 +986,7 @@
 		CA162EA720AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAuthenticationStateObserver.swift; sourceTree = "<group>"; };
 		CA162EA920AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift; sourceTree = "<group>"; };
 		CA162EAB20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAnnouncementsServiceObserver.swift; sourceTree = "<group>"; };
+		CA162EAD20AA29DC004AFED6 /* WhenAddingAnnouncementsObserverThenRefreshSucceeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAddingAnnouncementsObserverThenRefreshSucceeds.swift; sourceTree = "<group>"; };
 		CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeDetailSceneLoads.swift; sourceTree = "<group>"; };
 		CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
@@ -2626,6 +2628,7 @@
 			children = (
 				CA65A2202091F5320078A4A7 /* WhenAddingAnnouncementsObserverAfterSuccessfulRefresh.swift */,
 				CA65A21B2091121D0078A4A7 /* WhenAddingAnnouncementsObserverBeforeLoadingAnything.swift */,
+				CA162EAD20AA29DC004AFED6 /* WhenAddingAnnouncementsObserverThenRefreshSucceeds.swift */,
 			);
 			path = Announcements;
 			sourceTree = "<group>";
@@ -4587,6 +4590,7 @@
 				CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */,
 				CA6EC4792051CAFA00402894 /* WhenBuildingKnowledgeDetailModule.swift in Sources */,
 				CAC1E1311F50413500195513 /* CapturingNewsScene.swift in Sources */,
+				CA162EAE20AA29DC004AFED6 /* WhenAddingAnnouncementsObserverThenRefreshSucceeds.swift in Sources */,
 				CA2D080E1FE9504600BFD785 /* WhenThePushNotificationPermissionsPageAppears.swift in Sources */,
 				7820A6E51F140056004C0FB5 /* CapturingAlertRouter.swift in Sources */,
 				CA17FE9020586A15005A4C05 /* StubWikiRenderer.swift in Sources */,
