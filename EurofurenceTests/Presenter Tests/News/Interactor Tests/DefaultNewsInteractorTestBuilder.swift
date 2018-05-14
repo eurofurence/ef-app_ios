@@ -93,6 +93,10 @@ class DefaultNewsInteractorTestBuilder {
 
 extension DefaultNewsInteractorTestBuilder.Context {
     
+    func subscribeViewModelUpdates() {
+        interactor.subscribeViewModelUpdates(delegate)
+    }
+    
     var announcements: [Announcement2] {
         return announcementsService.announcements
     }
@@ -195,6 +199,23 @@ extension DefaultNewsInteractorTestBuilder.Context {
         }
         
     }
+    
+    struct ModelAssertionBuilder {
+        
+        var context: DefaultNewsInteractorTestBuilder.Context
+        
+        func at(indexPath: IndexPath, is expected: NewsViewModelValue, file: StaticString = #file, line: UInt = #line) {
+            guard let viewModel = context.delegate.viewModel else {
+                XCTFail("Did not witness a view model", file: file, line: line)
+                return
+            }
+            
+            viewModel.fetchModelValue(at: indexPath) { (value) in
+                XCTAssertEqual(expected, value, file: file, line: line)
+            }
+        }
+        
+    }
 
     class AssertionBuilder {
         
@@ -206,6 +227,10 @@ extension DefaultNewsInteractorTestBuilder.Context {
         
         func thatViewModel() -> ViewModelAssertionBuilder {
             return ViewModelAssertionBuilder(context: context)
+        }
+        
+        func thatModel() -> ModelAssertionBuilder {
+            return ModelAssertionBuilder(context: context)
         }
         
     }
@@ -307,82 +332,6 @@ fileprivate extension DefaultNewsInteractorTestBuilder.Context {
             }
         }
         
-    }
-    
-}
-
-extension DefaultNewsInteractorTestBuilder.Context {
-    
-    func subscribeViewModelUpdates() {
-        interactor.subscribeViewModelUpdates(delegate)
-    }
-    
-    func verifyModel(at indexPath: IndexPath, is expected: NewsViewModelValue, file: StaticString = #file, line: UInt = #line) {
-        if let visitor = traverseViewModel() {
-            guard let actual = visitor.moduleModels[indexPath] else {
-                XCTFail("Did not resolve a module model at index path \(indexPath)", file: file, line: line)
-                return
-            }
-            
-            XCTAssertEqual(expected, actual, file: file, line: line)
-        }
-    }
-    
-    private class Visitor: NewsViewModelVisitor {
-        let visitedViewModel: NewsViewModel
-        var components = [AnyHashable]()
-        var moduleModels = [IndexPath : NewsViewModelValue]()
-        
-        init(visitedViewModel: NewsViewModel) {
-            self.visitedViewModel = visitedViewModel
-        }
-        
-        func visit(_ userWidget: UserWidgetComponentViewModel) {
-            components.append(AnyHashable(userWidget))
-        }
-        
-        func visit(_ announcement: AnnouncementComponentViewModel) {
-            components.append(AnyHashable(announcement))
-        }
-        
-        func visit(_ event: EventComponentViewModel) {
-            components.append(AnyHashable(event))
-        }
-        
-        func visit(_ countdown: ConventionCountdownComponentViewModel) {
-            components.append(AnyHashable(countdown))
-        }
-    }
-    
-    private func traverseViewModel(file: StaticString = #file, line: UInt = #line) -> Visitor? {
-        if let viewModel = delegate.viewModel {
-            let visitor = Visitor(visitedViewModel: viewModel)
-            traverse(through: viewModel, using: visitor)
-            return visitor
-        }
-        else {
-            XCTFail("Did not witness a view model", file: file, line: line)
-            return nil
-        }
-    }
-    
-    private func traverse(through viewModel: NewsViewModel, using visitor: Visitor) {
-        var indexPaths = [IndexPath]()
-        let numberOfComponents = viewModel.numberOfComponents
-        
-        for section in (0..<numberOfComponents) {
-            for index in (0..<viewModel.numberOfItemsInComponent(at: section)) {
-                let indexPath = IndexPath(row: index, section: section)
-                indexPaths.append(indexPath)
-            }
-        }
-        
-        indexPaths.forEach({ viewModel.describeComponent(at: $0, to: visitor) })
-        indexPaths.forEach({ (indexPath) in
-            viewModel.fetchModelValue(at: indexPath, completionHandler: { (model) in
-                visitor.moduleModels[indexPath] = model
-            })
-        })
     }
     
 }

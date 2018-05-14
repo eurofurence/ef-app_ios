@@ -33,14 +33,14 @@ class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
     }
     
     func testFetchMessagesModuleValueWhenAskingForModelInFirstSection() {
-        context.verifyModel(at: IndexPath(item: 0, section: 0), is: .messages)
+        context.assert().thatModel().at(indexPath: IndexPath(item: 0, section: 0), is: .messages)
     }
     
     func testFetchAnnouncementModuleValueWhenAskingForModelInSecondSection() {
         let randomAnnouncement = context.announcements.randomElement()
         let announcementIndexPath = IndexPath(item: randomAnnouncement.index, section: 2)
         
-        context.verifyModel(at: announcementIndexPath, is: .announcement(randomAnnouncement.element))
+        context.assert().thatModel().at(indexPath: announcementIndexPath, is: .announcement(randomAnnouncement.element))
     }
     
 }
