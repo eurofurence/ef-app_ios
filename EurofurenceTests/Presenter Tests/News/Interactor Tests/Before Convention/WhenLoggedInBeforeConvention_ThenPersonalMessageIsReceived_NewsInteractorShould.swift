@@ -23,6 +23,7 @@ class WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorS
         privateMessagesService.notifyUnreadCountDidChange(to: unreadCount)
         
         context.makeAssertion()
+            .thatViewModel()
             .appendYourEurofurence()
             .appendConventionCountdown()
             .appendAnnouncements()

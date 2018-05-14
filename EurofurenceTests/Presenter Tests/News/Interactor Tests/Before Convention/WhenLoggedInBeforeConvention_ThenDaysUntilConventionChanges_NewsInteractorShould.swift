@@ -22,6 +22,7 @@ class WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsInteractor
         countdownService.changeDaysUntilConvention(to: daysUntilConvention)
         
         context.makeAssertion()
+            .thatViewModel()
             .appendYourEurofurence()
             .appendConventionCountdown()
             .appendAnnouncements()

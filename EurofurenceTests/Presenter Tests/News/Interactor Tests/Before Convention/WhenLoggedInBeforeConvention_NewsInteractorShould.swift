@@ -19,6 +19,7 @@ class WhenLoggedInBeforeConvention_NewsInteractorShould: XCTestCase {
         context.subscribeViewModelUpdates()
         
         context.makeAssertion()
+            .thatViewModel()
             .appendYourEurofurence()
             .appendConventionCountdown()
             .appendAnnouncements()

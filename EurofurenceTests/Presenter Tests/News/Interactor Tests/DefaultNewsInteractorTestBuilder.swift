@@ -104,16 +104,16 @@ extension DefaultNewsInteractorTestBuilder.Context {
     func makeAssertion() -> AssertionBuilder {
         return AssertionBuilder(context: self)
     }
-
-    class AssertionBuilder {
+    
+    class ViewModelAssertionBuilder {
         
         fileprivate struct Component {
             var title: String
             var components: [AnyHashable]
         }
         
-        private let context: DefaultNewsInteractorTestBuilder.Context
         private var components = [Component]()
+        private let context: DefaultNewsInteractorTestBuilder.Context
         
         fileprivate init(context: DefaultNewsInteractorTestBuilder.Context) {
             self.context = context
@@ -127,7 +127,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
             return context.privateMessagesService.unreadCount > 0
         }
         
-        func appendYourEurofurence() -> AssertionBuilder {
+        func appendYourEurofurence() -> ViewModelAssertionBuilder {
             var component: AnyHashable
             switch context.authenticationService.authState {
             case .loggedIn(let user):
@@ -146,14 +146,14 @@ extension DefaultNewsInteractorTestBuilder.Context {
             return self
         }
         
-        func appendAnnouncements() -> AssertionBuilder {
+        func appendAnnouncements() -> ViewModelAssertionBuilder {
             let announcementsComponents = context.announcements.map(makeExpectedAnnouncementViewModel)
             components.append(Component(title: .announcements, components: announcementsComponents))
             
             return self
         }
         
-        func appendConventionCountdown() -> AssertionBuilder {
+        func appendConventionCountdown() -> ViewModelAssertionBuilder {
             let daysUntilConvention = resolveStubbedDaysUntilConvention()
             let component = ConventionCountdownComponentViewModel(timeUntilConvention: .daysUntilConventionMessage(days: daysUntilConvention))
             components.append(Component(title: .daysUntilConvention, components: [component]))
@@ -161,14 +161,14 @@ extension DefaultNewsInteractorTestBuilder.Context {
             return self
         }
         
-        func appendRunningEvents() -> AssertionBuilder {
+        func appendRunningEvents() -> ViewModelAssertionBuilder {
             let eventsComponents = context.eventsService.runningEvents.map(makeExpectedEventViewModel)
             components.append(Component(title: .runningEvents, components: eventsComponents))
             
             return self
         }
         
-        func appendUpcomingEvents() -> AssertionBuilder {
+        func appendUpcomingEvents() -> ViewModelAssertionBuilder {
             components.append(Component(title: .upcomingEvents, components: []))
             return self
         }
@@ -196,6 +196,20 @@ extension DefaultNewsInteractorTestBuilder.Context {
         
     }
 
+    class AssertionBuilder {
+        
+        private let context: DefaultNewsInteractorTestBuilder.Context
+        
+        fileprivate init(context: DefaultNewsInteractorTestBuilder.Context) {
+            self.context = context
+        }
+        
+        func thatViewModel() -> ViewModelAssertionBuilder {
+            return ViewModelAssertionBuilder(context: context)
+        }
+        
+    }
+
 }
 
 fileprivate extension DefaultNewsInteractorTestBuilder.Context {
@@ -204,7 +218,7 @@ fileprivate extension DefaultNewsInteractorTestBuilder.Context {
         
         var file: StaticString
         var line: UInt
-        var components: [AssertionBuilder.Component]
+        var components: [ViewModelAssertionBuilder.Component]
         var viewModel: NewsViewModel?
         
         private class Visitor: NewsViewModelVisitor {
@@ -250,11 +264,11 @@ fileprivate extension DefaultNewsInteractorTestBuilder.Context {
             }
         }
         
-        private func traverse(through viewModel: NewsViewModel) -> [AssertionBuilder.Component] {
-            var actual = [AssertionBuilder.Component]()
+        private func traverse(through viewModel: NewsViewModel) -> [ViewModelAssertionBuilder.Component] {
+            var actual = [ViewModelAssertionBuilder.Component]()
             for sectionIndex in (0..<viewModel.numberOfComponents) {
                 let visitor = Visitor()
-                var component = AssertionBuilder.Component(title: viewModel.titleForComponent(at: sectionIndex), components: [])
+                var component = ViewModelAssertionBuilder.Component(title: viewModel.titleForComponent(at: sectionIndex), components: [])
                 for itemIndex in (0..<viewModel.numberOfItemsInComponent(at: sectionIndex)) {
                     let indexPath = IndexPath(item: itemIndex, section: sectionIndex)
                     viewModel.describeComponent(at: indexPath, to: visitor)
@@ -267,7 +281,7 @@ fileprivate extension DefaultNewsInteractorTestBuilder.Context {
             return actual
         }
         
-        private func verify(expected: AssertionBuilder.Component, actual: AssertionBuilder.Component, index: Int) {
+        private func verify(expected: ViewModelAssertionBuilder.Component, actual: ViewModelAssertionBuilder.Component, index: Int) {
             guard expected.title == actual.title else {
                 XCTFail("Component at index \(index) should have had title \"\(expected.title)\", but got \"\(actual.title)\"",
                     file: file,
