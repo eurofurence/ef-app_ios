@@ -27,8 +27,6 @@ class DefaultNewsInteractor: NewsInteractor,
 
     // MARK: Properties
 
-    private let announcementsService: AnnouncementsService
-    private let authenticationService: AuthenticationService
     private let relativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCountdownFormatter
     private var delegate: NewsInteractorDelegate?
     private var unreadMessagesCount = 0
@@ -61,8 +59,6 @@ class DefaultNewsInteractor: NewsInteractor,
          daysUntilConventionService: ConventionCountdownService,
          eventsService: EventsService,
          relativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCountdownFormatter) {
-        self.announcementsService = announcementsService
-        self.authenticationService = authenticationService
         self.relativeTimeIntervalCountdownFormatter = relativeTimeIntervalCountdownFormatter
 
         announcementsService.add(self)
