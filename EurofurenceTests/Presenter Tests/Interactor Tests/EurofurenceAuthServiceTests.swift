@@ -18,20 +18,6 @@ class CapturingAuthStateHandler {
     
 }
 
-class CapturingAuthenticationStateObserver: AuthenticationStateObserver {
-    
-    private(set) var capturedLoggedInUser: User?
-    func userDidLogin(_ user: User) {
-        capturedLoggedInUser = user
-    }
-    
-    private(set) var loggedOut = false
-    func userDidLogout() {
-        loggedOut = true
-    }
-    
-}
-
 class EurofurenceAuthServiceTests: XCTestCase {
     
     var app: CapturingEurofurenceApplication!
