@@ -40,7 +40,7 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
     // MARK: MessagesSceneDelegate
 
     func messagesSceneWillAppear() {
-        authenticationService.add(observer: self)
+        authenticationService.add(self)
     }
 
     func messagesSceneDidSelectMessage(at indexPath: IndexPath) {

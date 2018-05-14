@@ -30,7 +30,7 @@ class FakeAuthenticationService: AuthenticationService {
     }
     
     fileprivate var observers = [AuthenticationStateObserver]()
-    func add(observer: AuthenticationStateObserver) {
+    func add(_ observer: AuthenticationStateObserver) {
         observers.append(observer)
         
         switch authState {
@@ -49,9 +49,9 @@ class FakeAuthenticationService: AuthenticationService {
     }
     
     private(set) var capturedRequest: LoginArguments?
-    fileprivate var capturedCompletionHandler: ((LoginServiceResult) -> Void)?
-    func perform(_ request: LoginArguments, completionHandler: @escaping (LoginServiceResult) -> Void) {
-        capturedRequest = request
+    fileprivate var capturedCompletionHandler: ((LoginResult) -> Void)?
+    func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {
+        capturedRequest = arguments
         capturedCompletionHandler = completionHandler
     }
     
@@ -60,7 +60,7 @@ class FakeAuthenticationService: AuthenticationService {
 extension FakeAuthenticationService {
     
     func fulfillRequest() {
-        capturedCompletionHandler?(.success)
+        capturedCompletionHandler?(.success(.random))
     }
     
     func failRequest() {

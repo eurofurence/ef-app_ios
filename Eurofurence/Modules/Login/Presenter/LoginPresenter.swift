@@ -112,10 +112,10 @@ class LoginPresenter: LoginSceneDelegate {
 
         var alert = Alert(title: .loggingIn, message: .loggingInDetail)
         alert.onCompletedPresentation = { (dismissable) in
-            self.authenticationService.perform(request) { (result) in
+            self.authenticationService.login(request, completionHandler: { (result) in
                 dismissable.dismiss {
                     switch result {
-                    case .success:
+                    case .success(_):
                         self.delegate.loginModuleDidLoginSuccessfully()
 
                     case .failure:
@@ -126,7 +126,7 @@ class LoginPresenter: LoginSceneDelegate {
                         self.alertRouter.show(loginErrorAlert)
                     }
                 }
-            }
+            })
         }
 
         alertRouter.show(alert)

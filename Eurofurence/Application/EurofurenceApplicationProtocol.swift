@@ -15,11 +15,10 @@ enum EurofurenceDataStoreState {
 }
 
 protocol EurofurenceApplicationProtocol: AnnouncementsService,
+                                         AuthenticationService,
                                          KnowledgeService,
                                          LinkLookupService,
                                          ConventionCountdownService {
-
-    func add(_ observer: AuthenticationStateObserver)
 
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress
 

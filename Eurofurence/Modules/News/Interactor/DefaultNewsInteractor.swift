@@ -46,7 +46,7 @@ class DefaultNewsInteractor: NewsInteractor,
         }
 
         self.init(announcementsService: EurofurenceApplication.shared,
-                  authenticationService: ApplicationAuthenticationService.shared,
+                  authenticationService: EurofurenceApplication.shared,
                   privateMessagesService: EurofurencePrivateMessagesService.shared,
                   daysUntilConventionService: EurofurenceApplication.shared,
                   eventsService: DummyEventsService(),
@@ -63,7 +63,7 @@ class DefaultNewsInteractor: NewsInteractor,
         self.authenticationService = authenticationService
         self.relativeTimeIntervalCountdownFormatter = relativeTimeIntervalCountdownFormatter
 
-        authenticationService.add(observer: self)
+        authenticationService.add(self)
         privateMessagesService.add(self)
         daysUntilConventionService.add(self)
         eventsService.add(self)

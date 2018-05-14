@@ -622,7 +622,6 @@
 		CAEAEBE71FDC94F800C0EE7C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */; };
 		CAEAEBEB1FDC984D00C0EE7C /* AuthenticationStateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBEA1FDC984D00C0EE7C /* AuthenticationStateObserver.swift */; };
 		CAEAEBEF1FDC989300C0EE7C /* LoginServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBEE1FDC989300C0EE7C /* LoginServiceRequest.swift */; };
-		CAEAEBF11FDC9D1600C0EE7C /* ApplicationAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF01FDC9D1600C0EE7C /* ApplicationAuthenticationService.swift */; };
 		CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */; };
 		CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */; };
 		CAEAEBFA1FE0037700C0EE7C /* MessageDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF91FE0037700C0EE7C /* MessageDetailPresenterTests.swift */; };
@@ -656,7 +655,6 @@
 		CAF705641F82D0DF00A9FEA2 /* RootModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */; };
 		CAF705681F82D13F00A9FEA2 /* TutorialModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705671F82D13F00A9FEA2 /* TutorialModuleProviding.swift */; };
 		CAF7056A1F82D15D00A9FEA2 /* PreloadModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF705691F82D15D00A9FEA2 /* PreloadModuleProviding.swift */; };
-		CAF9A93F1F50491200628833 /* EurofurenceAuthServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A93E1F50491200628833 /* EurofurenceAuthServiceTests.swift */; };
 		CAF9A9431F50B87600628833 /* EurofurenceApplicationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */; };
 		CAF9A9451F50B89000628833 /* CapturingEurofurenceApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */; };
 		CAF9A9471F50B95F00628833 /* WhenRequestingCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */; };
@@ -1352,7 +1350,6 @@
 		CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		CAEAEBEA1FDC984D00C0EE7C /* AuthenticationStateObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationStateObserver.swift; sourceTree = "<group>"; };
 		CAEAEBEE1FDC989300C0EE7C /* LoginServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceRequest.swift; sourceTree = "<group>"; };
-		CAEAEBF01FDC9D1600C0EE7C /* ApplicationAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationAuthenticationService.swift; sourceTree = "<group>"; };
 		CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailModuleProviding.swift; sourceTree = "<group>"; };
 		CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailModuleBuilder.swift; sourceTree = "<group>"; };
 		CAEAEBF91FE0037700C0EE7C /* MessageDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailPresenterTests.swift; sourceTree = "<group>"; };
@@ -1386,7 +1383,6 @@
 		CAF705631F82D0DF00A9FEA2 /* RootModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleProviding.swift; sourceTree = "<group>"; };
 		CAF705671F82D13F00A9FEA2 /* TutorialModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModuleProviding.swift; sourceTree = "<group>"; };
 		CAF705691F82D15D00A9FEA2 /* PreloadModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadModuleProviding.swift; sourceTree = "<group>"; };
-		CAF9A93E1F50491200628833 /* EurofurenceAuthServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurofurenceAuthServiceTests.swift; sourceTree = "<group>"; };
 		CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurofurenceApplicationProtocol.swift; sourceTree = "<group>"; };
 		CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingEurofurenceApplication.swift; sourceTree = "<group>"; };
 		CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenRequestingCurrentUser.swift; sourceTree = "<group>"; };
@@ -3496,7 +3492,6 @@
 			isa = PBXGroup;
 			children = (
 				CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */,
-				CAEAEBF01FDC9D1600C0EE7C /* ApplicationAuthenticationService.swift */,
 				CAEAEBEA1FDC984D00C0EE7C /* AuthenticationStateObserver.swift */,
 				CAEAEBEE1FDC989300C0EE7C /* LoginServiceRequest.swift */,
 			);
@@ -3644,7 +3639,6 @@
 		CAF9A93D1F5048FB00628833 /* Interactor Tests */ = {
 			isa = PBXGroup;
 			children = (
-				CAF9A93E1F50491200628833 /* EurofurenceAuthServiceTests.swift */,
 				CAF9A94B1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift */,
 			);
 			path = "Interactor Tests";
@@ -4396,7 +4390,6 @@
 				CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */,
 				9A80EF4E1F28C78900FD0D37 /* TargetRouter.swift in Sources */,
 				D6F3D523BDCDDA3A2A163E55 /* TimeLabelCell.swift in Sources */,
-				CAEAEBF11FDC9D1600C0EE7C /* ApplicationAuthenticationService.swift in Sources */,
 				78567B451F103C3800EBA31D /* RefreshControlDataStoreDelegate.swift in Sources */,
 				9A861E9D1F2547E200B75A8C /* NotificationRouter.swift in Sources */,
 				9A80EF641F29230300FD0D37 /* UserDetailsEventTablePreferences.swift in Sources */,
@@ -4712,7 +4705,6 @@
 				7820A6ED1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift in Sources */,
 				CA728467209D1197007D912A /* WhenAnnouncementDetailSceneDidLoad_AnnouncementDetailPresenterShould.swift in Sources */,
 				CA89CBA6207F7F5400570D54 /* FakeNewsInteractor.swift in Sources */,
-				CAF9A93F1F50491200628833 /* EurofurenceAuthServiceTests.swift in Sources */,
 				CA637556208CBBCE00536BE2 /* StubMessageDetailModuleProviding.swift in Sources */,
 				CA73AEDD201A0823004E77BF /* CapturingKnowledgeListScene.swift in Sources */,
 				CA60C002207F7D2100697566 /* WhenNewsSceneDidLoad.swift in Sources */,
