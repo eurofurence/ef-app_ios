@@ -14,11 +14,7 @@ class WhenAddingAnnouncementsObserverThenRefreshSucceeds: XCTestCase {
     func testTheObserverIsProvidedWithTheAnnouncements() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
-        let expectedOrder = syncResponse.announcements.changed.sorted { (first, second) -> Bool in
-            return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedAscending
-        }
-        
-        let expected = Announcement2.fromServerModels(expectedOrder)
+        let expected = context.expectedAnnouncements(from: syncResponse)
         
         let observer = CapturingAnnouncementsServiceObserver()
         context.application.add(observer)

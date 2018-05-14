@@ -28,7 +28,6 @@ class ApplicationTestBuilder {
             return capturingCredentialStore.persistedCredential?.authenticationToken
         }
         
-        
         func registerForRemoteNotifications(_ deviceToken: Data = Data()) {
             application.storeRemoteNotificationsToken(deviceToken)
         }
@@ -50,6 +49,12 @@ class ApplicationTestBuilder {
             _ = application.refreshLocalStore { (error) in
                 completionHandler?(error)
             }
+        }
+        
+        func expectedAnnouncements(from syncResponse: APISyncResponse) -> [Announcement2] {
+            return Announcement2.fromServerModels(syncResponse.announcements.changed.sorted { (first, second) -> Bool in
+                return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedAscending
+            })
         }
         
     }
