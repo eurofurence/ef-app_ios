@@ -189,6 +189,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         authenticationCoordinator.add(observer)
     }
 
+    func add(_ observer: EventsServiceObserver) {
+        observer.eurofurenceApplicationDidUpdateRunningEvents(to: [])
+    }
+
     private func makeAnnouncementsFromSyncResponse() -> [Announcement2] {
         if let syncResponse = syncResponse {
             let sortedAnnouncements = syncResponse.announcements.changed.sorted(by: { (first, second) -> Bool in

@@ -16,6 +16,7 @@ enum EurofurenceDataStoreState {
 
 protocol EurofurenceApplicationProtocol: AnnouncementsService,
                                          AuthenticationService,
+                                         EventsService,
                                          KnowledgeService,
                                          LinkLookupService,
                                          ConventionCountdownService {

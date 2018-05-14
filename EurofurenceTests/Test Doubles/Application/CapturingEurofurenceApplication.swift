@@ -94,6 +94,10 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
+    func add(_ observer: EventsServiceObserver) {
+        
+    }
+    
 }
 
 // MARK: - Test Helpers

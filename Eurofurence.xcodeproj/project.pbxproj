@@ -263,6 +263,8 @@
 		CA162EAA20AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EA920AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift */; };
 		CA162EAC20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EAB20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift */; };
 		CA162EAE20AA29DC004AFED6 /* WhenAddingAnnouncementsObserverThenRefreshSucceeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EAD20AA29DC004AFED6 /* WhenAddingAnnouncementsObserverThenRefreshSucceeds.swift */; };
+		CA162EB220AA2DE0004AFED6 /* WhenObservingRunningEventsBeforeLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EB120AA2DE0004AFED6 /* WhenObservingRunningEventsBeforeLoadingAnything.swift */; };
+		CA162EB420AA2E12004AFED6 /* CapturingEventsServiceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EB320AA2E12004AFED6 /* CapturingEventsServiceObserver.swift */; };
 		CA17FE712056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */; };
 		CA17FE732056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */; };
 		CA17FE752056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */; };
@@ -987,6 +989,8 @@
 		CA162EA920AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift; sourceTree = "<group>"; };
 		CA162EAB20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAnnouncementsServiceObserver.swift; sourceTree = "<group>"; };
 		CA162EAD20AA29DC004AFED6 /* WhenAddingAnnouncementsObserverThenRefreshSucceeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAddingAnnouncementsObserverThenRefreshSucceeds.swift; sourceTree = "<group>"; };
+		CA162EB120AA2DE0004AFED6 /* WhenObservingRunningEventsBeforeLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingRunningEventsBeforeLoadingAnything.swift; sourceTree = "<group>"; };
+		CA162EB320AA2E12004AFED6 /* CapturingEventsServiceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventsServiceObserver.swift; sourceTree = "<group>"; };
 		CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeDetailSceneLoads.swift; sourceTree = "<group>"; };
 		CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
@@ -1815,6 +1819,7 @@
 				CA804DD71F20D2E000E07A4A /* API */,
 				CA81D4951FEA950600A52A2F /* Authentication */,
 				CA162E6C20A468C4004AFED6 /* Countdown */,
+				CA162EAF20AA2DC0004AFED6 /* Events */,
 				CABF03C820421B2A0028BD62 /* Knowledge */,
 				CAD3BDC3205FE3EA00C91E6E /* Links */,
 				CA81D4971FEA952D00A52A2F /* Notification Registration */,
@@ -2264,6 +2269,7 @@
 				CA162E8320A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift */,
 				CA162EA720AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift */,
 				CA162EAB20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift */,
+				CA162EB320AA2E12004AFED6 /* CapturingEventsServiceObserver.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -2284,6 +2290,22 @@
 				CA162E8F20A652AA004AFED6 /* EventsService.swift */,
 			);
 			path = Events;
+			sourceTree = "<group>";
+		};
+		CA162EAF20AA2DC0004AFED6 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				CA162EB020AA2DC9004AFED6 /* Running */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		CA162EB020AA2DC9004AFED6 /* Running */ = {
+			isa = PBXGroup;
+			children = (
+				CA162EB120AA2DE0004AFED6 /* WhenObservingRunningEventsBeforeLoadingAnything.swift */,
+			);
+			path = Running;
 			sourceTree = "<group>";
 		};
 		CA17FE762056B1AB005A4C05 /* Interactor */ = {
@@ -4624,6 +4646,7 @@
 				CA637554208CBBC000536BE2 /* CapturingWindowWireframe.swift in Sources */,
 				CAD3BDC5205FE42A00C91E6E /* WhenLookingUpWebLinks.swift in Sources */,
 				CA63756C208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift in Sources */,
+				CA162EB220AA2DE0004AFED6 /* WhenObservingRunningEventsBeforeLoadingAnything.swift in Sources */,
 				CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */,
 				CA8276BA204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift in Sources */,
 				CAF9A9581F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift in Sources */,
@@ -4671,6 +4694,7 @@
 				CA2D08001FE94AF900BFD785 /* WhenTheAppLaunchesWithAbsentDataStore.swift in Sources */,
 				CA8276BC204F25DF006A7419 /* InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould.swift in Sources */,
 				CA63753D208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift in Sources */,
+				CA162EB420AA2E12004AFED6 /* CapturingEventsServiceObserver.swift in Sources */,
 				CA162E8B20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift in Sources */,
 				CAC1E1391F50431000195513 /* NewsPresenterTestBuilder.swift in Sources */,
 				CA6375B9208E03C000536BE2 /* CapturingDealersScene.swift in Sources */,
