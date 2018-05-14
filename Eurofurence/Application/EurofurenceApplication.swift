@@ -173,8 +173,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         return .web(url)
     }
 
-    func fetchAnnouncements(completionHandler: @escaping ([Announcement2]) -> Void) {
-        completionHandler(makeAnnouncementsFromSyncResponse())
+    private var announcementsObservers = [AnnouncementsServiceObserver]()
+    func add(_ observer: AnnouncementsServiceObserver) {
+        observer.eurofurenceApplicationDidChangeUnreadAnnouncements(to: makeAnnouncementsFromSyncResponse())
+        announcementsObservers.append(observer)
     }
 
     func add(_ observer: ConventionCountdownServiceObserver) {

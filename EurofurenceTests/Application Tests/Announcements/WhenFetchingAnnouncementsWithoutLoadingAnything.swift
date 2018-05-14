@@ -13,14 +13,10 @@ class WhenFetchingAnnouncementsWithoutLoadingAnything: XCTestCase {
     
     func testEmptyAnnouncementsAreReturned() {
         let context = ApplicationTestBuilder().build()
-        let emptyAnnouncementsExpectation = expectation(description: "Should have given an empty announcements array")
-        context.application.fetchAnnouncements { (announcements) in
-            if announcements.isEmpty {
-                emptyAnnouncementsExpectation.fulfill()
-            }
-        }
+        let observer = CapturingAnnouncementsServiceObserver()
+        context.application.add(observer)
         
-        waitForExpectations(timeout: 0.1)
+        XCTAssertTrue(observer.didReceieveEmptyUnreadAnnouncements)
     }
     
 }

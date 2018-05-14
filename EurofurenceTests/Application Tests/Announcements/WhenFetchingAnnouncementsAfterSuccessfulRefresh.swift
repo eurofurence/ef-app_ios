@@ -9,6 +9,17 @@
 @testable import Eurofurence
 import XCTest
 
+class CapturingAnnouncementsServiceObserver: AnnouncementsServiceObserver {
+    
+    private(set) var unreadAnnouncements: [Announcement2] = []
+    private(set) var didReceieveEmptyUnreadAnnouncements = false
+    func eurofurenceApplicationDidChangeUnreadAnnouncements(to announcements: [Announcement2]) {
+        unreadAnnouncements = announcements
+        didReceieveEmptyUnreadAnnouncements = didReceieveEmptyUnreadAnnouncements || announcements.isEmpty
+    }
+    
+}
+
 class WhenFetchingAnnouncementsAfterSuccessfulRefresh: XCTestCase {
     
     func testTheAnnouncementsFromTheRefreshResponseAreAdaptedInLastChangedTimeOrder() {
@@ -22,14 +33,10 @@ class WhenFetchingAnnouncementsAfterSuccessfulRefresh: XCTestCase {
         
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(syncResponse)
-        let expectedKnowledgeGroupsExpectation = expectation(description: "Expected announcements to be extracted from sync response")
-        context.application.fetchAnnouncements { (announcements) in
-            if expected == announcements {
-                expectedKnowledgeGroupsExpectation.fulfill()
-            }
-        }
+        let observer = CapturingAnnouncementsServiceObserver()
+        context.application.add(observer)
         
-        waitForExpectations(timeout: 0.1)
+        XCTAssertEqual(expected, observer.unreadAnnouncements)
     }
     
 }

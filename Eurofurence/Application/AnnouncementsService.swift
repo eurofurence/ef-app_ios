@@ -8,6 +8,12 @@
 
 protocol AnnouncementsService {
 
-    func fetchAnnouncements(completionHandler: @escaping ([Announcement2]) -> Void)
+    func add(_ observer: AnnouncementsServiceObserver)
+
+}
+
+protocol AnnouncementsServiceObserver {
+
+    func eurofurenceApplicationDidChangeUnreadAnnouncements(to announcements: [Announcement2])
 
 }

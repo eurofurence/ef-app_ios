@@ -59,6 +59,10 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
+    func add(_ observer: AnnouncementsServiceObserver) {
+        
+    }
+    
     func fetchAnnouncements(completionHandler: @escaping ([Announcement2]) -> Void) {
         
     }

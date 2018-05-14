@@ -19,6 +19,7 @@ private protocol NewsViewModelComponent {
 }
 
 class DefaultNewsInteractor: NewsInteractor,
+                             AnnouncementsServiceObserver,
                              AuthenticationStateObserver,
                              PrivateMessagesServiceObserver,
                              ConventionCountdownServiceObserver,
@@ -34,6 +35,7 @@ class DefaultNewsInteractor: NewsInteractor,
     private var daysUntilConvention: Int?
     private var runningEvents = [Event2]()
     private var upcomingEvents = [Event2]()
+    private var announcements = [Announcement2]()
     private var currentUser: User?
 
     // MARK: Initialization
@@ -63,6 +65,7 @@ class DefaultNewsInteractor: NewsInteractor,
         self.authenticationService = authenticationService
         self.relativeTimeIntervalCountdownFormatter = relativeTimeIntervalCountdownFormatter
 
+        announcementsService.add(self)
         authenticationService.add(self)
         privateMessagesService.add(self)
         daysUntilConventionService.add(self)
@@ -73,6 +76,13 @@ class DefaultNewsInteractor: NewsInteractor,
 
     func subscribeViewModelUpdates(_ delegate: NewsInteractorDelegate) {
         self.delegate = delegate
+        regenerateViewModel()
+    }
+
+    // MARK: AnnouncementsServiceObserver
+
+    func eurofurenceApplicationDidChangeUnreadAnnouncements(to announcements: [Announcement2]) {
+        self.announcements = announcements
         regenerateViewModel()
     }
 
@@ -133,29 +143,27 @@ class DefaultNewsInteractor: NewsInteractor,
 
     private func regenerateViewModel() {
         let userWidgetViewModel = makeUserWidgetViewModel()
-        announcementsService.fetchAnnouncements { (announcements) in
-            var components = [NewsViewModelComponent]()
-            components.append(UserComponent(viewModel: userWidgetViewModel))
+        var components = [NewsViewModelComponent]()
+        components.append(UserComponent(viewModel: userWidgetViewModel))
 
-            if let daysUntilConvention = self.daysUntilConvention {
-                components.append(CountdownComponent(daysUntilConvention: daysUntilConvention))
-            }
-
-            components.append(AnnouncementsComponent(announcements: announcements))
-
-            if self.daysUntilConvention == nil {
-                if !self.upcomingEvents.isEmpty {
-                    components.append(EventsComponent(title: .upcomingEvents, events: self.upcomingEvents, relativeTimeFormatter: self.relativeTimeIntervalCountdownFormatter))
-                }
-
-                if !self.runningEvents.isEmpty {
-                    components.append(EventsComponent(title: .runningEvents, events: self.runningEvents, relativeTimeFormatter: self.relativeTimeIntervalCountdownFormatter))
-                }
-            }
-
-            let viewModel = ViewModel(components: components)
-            self.delegate?.viewModelDidUpdate(viewModel)
+        if let daysUntilConvention = daysUntilConvention {
+            components.append(CountdownComponent(daysUntilConvention: daysUntilConvention))
         }
+
+        components.append(AnnouncementsComponent(announcements: announcements))
+
+        if daysUntilConvention == nil {
+            if !upcomingEvents.isEmpty {
+                components.append(EventsComponent(title: .upcomingEvents, events: upcomingEvents, relativeTimeFormatter: relativeTimeIntervalCountdownFormatter))
+            }
+
+            if !runningEvents.isEmpty {
+                components.append(EventsComponent(title: .runningEvents, events: runningEvents, relativeTimeFormatter: relativeTimeIntervalCountdownFormatter))
+            }
+        }
+
+        let viewModel = ViewModel(components: components)
+        delegate?.viewModelDidUpdate(viewModel)
     }
 
     private func makeUserWidgetViewModel() -> UserWidgetComponentViewModel {

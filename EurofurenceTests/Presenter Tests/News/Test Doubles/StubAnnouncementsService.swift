@@ -12,8 +12,8 @@ struct StubAnnouncementsService: AnnouncementsService {
     
     var announcements: [Announcement2]
     
-    func fetchAnnouncements(completionHandler: @escaping ([Announcement2]) -> Void) {
-        completionHandler(announcements)
+    func add(_ observer: AnnouncementsServiceObserver) {
+        observer.eurofurenceApplicationDidChangeUnreadAnnouncements(to: announcements)
     }
     
 }
