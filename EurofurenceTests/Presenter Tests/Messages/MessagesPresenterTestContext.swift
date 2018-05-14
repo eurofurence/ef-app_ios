@@ -43,6 +43,7 @@ struct MessagesPresenterTestContext {
     let delegate = CapturingMessagesModuleDelegate()
     var privateMessagesService = CapturingPrivateMessagesService()
     let dateFormatter = CapturingDateFormatter()
+    let authenticationService: FakeAuthenticationService
     
     var scene: CapturingMessagesScene {
         return sceneFactory.scene
@@ -66,9 +67,10 @@ struct MessagesPresenterTestContext {
     private init(authState: AuthState,
                  privateMessagesService: CapturingPrivateMessagesService = CapturingPrivateMessagesService()) {
         self.privateMessagesService = privateMessagesService
+        authenticationService = FakeAuthenticationService(authState: authState)
         _ = MessagesModuleBuilder()
             .with(sceneFactory)
-            .with(FakeAuthenticationService(authState: authState))
+            .with(authenticationService)
             .with(privateMessagesService)
             .with(dateFormatter)
             .build()

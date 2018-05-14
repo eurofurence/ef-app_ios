@@ -8,7 +8,7 @@
 
 import Foundation.NSIndexPath
 
-class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesServiceObserver {
+class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, PrivateMessagesServiceObserver {
 
     // MARK: Properties
 
@@ -35,12 +35,13 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesServiceObserver {
         scene.delegate = self
         scene.setMessagesTitle(.messages)
         privateMessagesService.add(self)
+        authenticationService.add(observer: self)
     }
 
     // MARK: MessagesSceneDelegate
 
     func messagesSceneWillAppear() {
-        authenticationService.determineAuthState(completionHandler: authStateResolved)
+        
     }
 
     func messagesSceneDidSelectMessage(at indexPath: IndexPath) {
@@ -50,6 +51,16 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesServiceObserver {
 
     func messagesSceneDidPerformRefreshAction() {
         reloadPrivateMessages()
+    }
+
+    // MARK: AuthenticationStateObserver
+
+    func userDidLogin(_ user: User) {
+        reloadPrivateMessages()
+    }
+
+    func userDidLogout() {
+        delegate.messagesModuleDidRequestResolutionForUser(completionHandler: userResolved)
     }
 
     // MARK: PrivateMessagesServiceObserver
@@ -68,16 +79,6 @@ class MessagesPresenter: MessagesSceneDelegate, PrivateMessagesServiceObserver {
     }
 
     // MARK: Private
-
-    private func authStateResolved(_ state: AuthState) {
-        switch state {
-        case .loggedIn(_):
-            reloadPrivateMessages()
-
-        case .loggedOut:
-            delegate.messagesModuleDidRequestResolutionForUser(completionHandler: userResolved)
-        }
-    }
 
     private func userResolved(_ resolved: Bool) {
         if resolved {
