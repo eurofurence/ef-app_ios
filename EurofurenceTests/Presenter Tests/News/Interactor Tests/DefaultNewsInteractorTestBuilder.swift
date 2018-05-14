@@ -101,7 +101,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
         return eventsService.runningEvents
     }
     
-    func makeAssertion() -> AssertionBuilder {
+    func assert() -> AssertionBuilder {
         return AssertionBuilder(context: self)
     }
     
@@ -127,7 +127,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
             return context.privateMessagesService.unreadCount > 0
         }
         
-        func appendYourEurofurence() -> ViewModelAssertionBuilder {
+        func hasYourEurofurence() -> ViewModelAssertionBuilder {
             var component: AnyHashable
             switch context.authenticationService.authState {
             case .loggedIn(let user):
@@ -146,14 +146,14 @@ extension DefaultNewsInteractorTestBuilder.Context {
             return self
         }
         
-        func appendAnnouncements() -> ViewModelAssertionBuilder {
+        func hasAnnouncements() -> ViewModelAssertionBuilder {
             let announcementsComponents = context.announcements.map(makeExpectedAnnouncementViewModel)
             components.append(Component(title: .announcements, components: announcementsComponents))
             
             return self
         }
         
-        func appendConventionCountdown() -> ViewModelAssertionBuilder {
+        func hasConventionCountdown() -> ViewModelAssertionBuilder {
             let daysUntilConvention = resolveStubbedDaysUntilConvention()
             let component = ConventionCountdownComponentViewModel(timeUntilConvention: .daysUntilConventionMessage(days: daysUntilConvention))
             components.append(Component(title: .daysUntilConvention, components: [component]))
@@ -161,14 +161,14 @@ extension DefaultNewsInteractorTestBuilder.Context {
             return self
         }
         
-        func appendRunningEvents() -> ViewModelAssertionBuilder {
+        func hasRunningEvents() -> ViewModelAssertionBuilder {
             let eventsComponents = context.eventsService.runningEvents.map(makeExpectedEventViewModel)
             components.append(Component(title: .runningEvents, components: eventsComponents))
             
             return self
         }
         
-        func appendUpcomingEvents() -> ViewModelAssertionBuilder {
+        func hasUpcomingEvents() -> ViewModelAssertionBuilder {
             components.append(Component(title: .upcomingEvents, components: []))
             return self
         }

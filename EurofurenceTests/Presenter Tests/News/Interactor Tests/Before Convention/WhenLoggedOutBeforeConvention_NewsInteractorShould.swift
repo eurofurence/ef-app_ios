@@ -24,11 +24,11 @@ class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
     }
     
     func testProduceViewModelWithLoginPrompt_DaysUntilConvention_AndAnnouncements() {
-        context.makeAssertion()
+        context.assert()
             .thatViewModel()
-            .appendYourEurofurence()
-            .appendConventionCountdown()
-            .appendAnnouncements()
+            .hasYourEurofurence()
+            .hasConventionCountdown()
+            .hasAnnouncements()
             .verify()
     }
     

@@ -21,11 +21,11 @@ class WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsInteractor
         let daysUntilConvention = Int.random
         countdownService.changeDaysUntilConvention(to: daysUntilConvention)
         
-        context.makeAssertion()
+        context.assert()
             .thatViewModel()
-            .appendYourEurofurence()
-            .appendConventionCountdown()
-            .appendAnnouncements()
+            .hasYourEurofurence()
+            .hasConventionCountdown()
+            .hasAnnouncements()
             .verify()
     }
     

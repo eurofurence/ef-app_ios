@@ -21,11 +21,11 @@ class WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould: XCTestCase {
         let user = User.random
         authenticationService.notifyObserversUserDidLogin(user)
         
-        context.makeAssertion()
+        context.assert()
             .thatViewModel()
-            .appendYourEurofurence()
-            .appendConventionCountdown()
-            .appendAnnouncements()
+            .hasYourEurofurence()
+            .hasConventionCountdown()
+            .hasAnnouncements()
             .verify()
     }
     

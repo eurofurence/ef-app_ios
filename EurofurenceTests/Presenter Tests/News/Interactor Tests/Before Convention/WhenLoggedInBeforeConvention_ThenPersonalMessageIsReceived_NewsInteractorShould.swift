@@ -22,11 +22,11 @@ class WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorS
         let unreadCount = Int.random
         privateMessagesService.notifyUnreadCountDidChange(to: unreadCount)
         
-        context.makeAssertion()
+        context.assert()
             .thatViewModel()
-            .appendYourEurofurence()
-            .appendConventionCountdown()
-            .appendAnnouncements()
+            .hasYourEurofurence()
+            .hasConventionCountdown()
+            .hasAnnouncements()
             .verify()
     }
     

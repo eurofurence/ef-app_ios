@@ -20,11 +20,11 @@ class WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould: XCTestCase {
         context.subscribeViewModelUpdates()
         authenticationService.notifyObserversUserDidLogout()
         
-        context.makeAssertion()
+        context.assert()
             .thatViewModel()
-            .appendYourEurofurence()
-            .appendConventionCountdown()
-            .appendAnnouncements()
+            .hasYourEurofurence()
+            .hasConventionCountdown()
+            .hasAnnouncements()
             .verify()
     }
     
