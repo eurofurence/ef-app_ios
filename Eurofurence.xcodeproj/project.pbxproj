@@ -261,6 +261,7 @@
 		CA162EA620A9B18E004AFED6 /* WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EA520A9B18E004AFED6 /* WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift */; };
 		CA162EA820AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EA720AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift */; };
 		CA162EAA20AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EA920AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift */; };
+		CA162EAC20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EAB20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift */; };
 		CA17FE712056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */; };
 		CA17FE732056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */; };
 		CA17FE752056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */; };
@@ -983,6 +984,7 @@
 		CA162EA520A9B18E004AFED6 /* WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA162EA720AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAuthenticationStateObserver.swift; sourceTree = "<group>"; };
 		CA162EA920AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift; sourceTree = "<group>"; };
+		CA162EAB20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAnnouncementsServiceObserver.swift; sourceTree = "<group>"; };
 		CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeDetailSceneLoads.swift; sourceTree = "<group>"; };
 		CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
@@ -2259,6 +2261,7 @@
 				CA162E7920A4B6F5004AFED6 /* CapturingConventionCountdownServiceObserver.swift */,
 				CA162E8320A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift */,
 				CA162EA720AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift */,
+				CA162EAB20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -4562,6 +4565,7 @@
 				CA89CBBA2084CA8A00570D54 /* StubNewsViewModel.swift in Sources */,
 				CA804DDA1F20D2F500E07A4A /* V2LoginAPITests.swift in Sources */,
 				CA6EC4842051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift in Sources */,
+				CA162EAC20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift in Sources */,
 				CA2D08061FE94BF000BFD785 /* RootModuleTestBuilder.swift in Sources */,
 				CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */,
 				CA321F4E1F7BC7FD0050E489 /* PhonePreloadSceneFactoryTests.swift in Sources */,
