@@ -12,9 +12,11 @@ import Foundation
 class StubEventsService: EventsService {
     
     var runningEvents: [Event2] = []
+    var upcomingEvents: [Event2] = []
     
     func add(_ observer: EventsServiceObserver) {
         observer.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents)
+        observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: upcomingEvents)
     }
     
 }

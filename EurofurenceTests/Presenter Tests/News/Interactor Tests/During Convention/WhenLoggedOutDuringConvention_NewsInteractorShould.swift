@@ -14,7 +14,9 @@ class WhenLoggedOutDuringConvention_NewsInteractorShould: XCTestCase {
     func testProduceViewModelWithMessagesPrompt_Announcements_RunningEvents_AndUpcomingEvents() {
         let eventsService = StubEventsService()
         let runningEvents = [Event2].random
+        let upcomingEvents = [Event2].random
         eventsService.runningEvents = runningEvents
+        eventsService.upcomingEvents = upcomingEvents
         let context = DefaultNewsInteractorTestBuilder()
             .with(FakeAuthenticationService.loggedOutService())
             .with(StubAnnouncementsService(announcements: .random))

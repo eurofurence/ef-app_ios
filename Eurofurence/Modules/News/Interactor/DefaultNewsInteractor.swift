@@ -33,6 +33,7 @@ class DefaultNewsInteractor: NewsInteractor,
     private var unreadMessagesCount = 0
     private var daysUntilConvention: Int?
     private var runningEvents = [Event2]()
+    private var upcomingEvents = [Event2]()
 
     // MARK: Initialization
 
@@ -120,6 +121,11 @@ class DefaultNewsInteractor: NewsInteractor,
         regenerateViewModel()
     }
 
+    func eurofurenceApplicationDidUpdateUpcomingEvents(to events: [Event2]) {
+        upcomingEvents = events
+        regenerateViewModel()
+    }
+
     // MARK: Private
 
     private func regenerateViewModel() {
@@ -135,7 +141,7 @@ class DefaultNewsInteractor: NewsInteractor,
                 components.append(AnnouncementsComponent(announcements: announcements))
 
                 if self.daysUntilConvention == nil {
-                    components.append(EventsComponent(title: .upcomingEvents, events: [], relativeTimeFormatter: self.relativeTimeIntervalCountdownFormatter))
+                    components.append(EventsComponent(title: .upcomingEvents, events: self.upcomingEvents, relativeTimeFormatter: self.relativeTimeIntervalCountdownFormatter))
                     components.append(EventsComponent(title: .runningEvents, events: self.runningEvents, relativeTimeFormatter: self.relativeTimeIntervalCountdownFormatter))
                 }
 

@@ -173,7 +173,9 @@ extension DefaultNewsInteractorTestBuilder.Context {
         }
         
         func hasUpcomingEvents() -> ViewModelAssertionBuilder {
-            components.append(Component(title: .upcomingEvents, components: []))
+            let eventsComponents = context.eventsService.upcomingEvents.map(makeExpectedEventViewModel)
+            components.append(Component(title: .upcomingEvents, components: eventsComponents))
+            
             return self
         }
         

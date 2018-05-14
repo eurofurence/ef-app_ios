@@ -17,5 +17,6 @@ protocol EventsService {
 protocol EventsServiceObserver {
 
     func eurofurenceApplicationDidUpdateRunningEvents(to events: [Event2])
+    func eurofurenceApplicationDidUpdateUpcomingEvents(to events: [Event2])
 
 }
