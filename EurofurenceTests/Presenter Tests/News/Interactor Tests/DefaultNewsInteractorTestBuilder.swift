@@ -279,7 +279,7 @@ fileprivate extension DefaultNewsInteractorTestBuilder.Context {
             let actual = traverse(through: viewModel)
             
             guard actual.count == components.count else {
-                XCTFail("Expected \(actual.count) components; got \(components.count)",
+                XCTFail("Expected \(components.count) components; got \(actual.count)",
                     file: file,
                     line: line)
                 return
