@@ -192,7 +192,11 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func add(_ observer: EventsServiceObserver) {
-        observer.eurofurenceApplicationDidUpdateRunningEvents(to: events)
+        let runningEvents = events.filter { (event) -> Bool in
+            return event.startDate.timeIntervalSince(clock.currentDate) >= 0
+        }
+
+        observer.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents)
     }
 
     private func makeAnnouncementsFromSyncResponse() -> [Announcement2] {
