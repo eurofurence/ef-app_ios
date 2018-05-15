@@ -29,11 +29,15 @@ struct APISyncResponse: Equatable {
     var knowledgeGroups: APISyncDelta<APIKnowledgeGroup>
     var knowledgeEntries: APISyncDelta<APIKnowledgeEntry>
     var announcements: APISyncDelta<APIAnnouncement>
+    var events: APISyncDelta<APIEvent>
+    var rooms: APISyncDelta<APIRoom>
 
     static func ==(lhs: APISyncResponse, rhs: APISyncResponse) -> Bool {
         return lhs.knowledgeGroups == rhs.knowledgeGroups &&
                lhs.knowledgeEntries == rhs.knowledgeEntries &&
-               lhs.announcements == rhs.announcements
+               lhs.announcements == rhs.announcements &&
+               lhs.events == rhs.events &&
+               lhs.rooms == rhs.rooms
     }
 
 }

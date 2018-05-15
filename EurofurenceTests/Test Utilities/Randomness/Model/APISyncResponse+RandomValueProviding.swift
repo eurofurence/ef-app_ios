@@ -25,9 +25,19 @@ extension APISyncResponse {
             knowledgeEntries.append(contentsOf: entries)
         }
         
+        let rooms = [APIRoom].random
+        let events = (0...Int.random(upperLimit: 10) + 5).map { (_) in
+            return APIEvent(roomIdentifier: rooms.randomElement().element.roomIdentifier,
+                            startDateTime: .random,
+                            endDateTime: .random,
+                            title: .random)
+        }
+        
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: APISyncDelta(changed: knowledgeEntries),
-                               announcements: APISyncDelta(changed: .random))
+                               announcements: APISyncDelta(changed: .random),
+                               events: APISyncDelta(changed: events),
+                               rooms: APISyncDelta(changed: rooms))
     }
     
 }
@@ -68,6 +78,14 @@ extension APIAnnouncement: RandomValueProviding {
     
     static var random: APIAnnouncement {
         return APIAnnouncement(title: .random, content: .random, lastChangedDateTime: .random)
+    }
+    
+}
+
+extension APIRoom: RandomValueProviding {
+    
+    static var random: APIRoom {
+        return APIRoom(roomIdentifier: .random, name: .random)
     }
     
 }

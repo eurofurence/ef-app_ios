@@ -8,7 +8,14 @@
 
 import Foundation
 
-struct Event2 {
+struct Event2: Equatable {
+
+    static func ==(lhs: Event2, rhs: Event2) -> Bool {
+        return lhs.title == rhs.title &&
+               lhs.room == rhs.room &&
+               lhs.startDate == rhs.startDate &&
+               lhs.secondsUntilEventBegins == rhs.secondsUntilEventBegins
+    }
 
     var title: String
     var room: Room

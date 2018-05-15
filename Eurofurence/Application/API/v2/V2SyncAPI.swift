@@ -40,7 +40,9 @@ private struct JSONSyncResponse: Decodable {
     func asAPIResponse() -> APISyncResponse {
         return APISyncResponse(knowledgeGroups: KnowledgeGroups.asDelta(),
                                knowledgeEntries: KnowledgeEntries.asDelta(),
-                               announcements: Announcements.asDelta())
+                               announcements: Announcements.asDelta(),
+                               events: APISyncDelta(),
+                               rooms: APISyncDelta())
     }
 
     struct Leaf<T>: Decodable where T: Decodable & ModelRepresenting {

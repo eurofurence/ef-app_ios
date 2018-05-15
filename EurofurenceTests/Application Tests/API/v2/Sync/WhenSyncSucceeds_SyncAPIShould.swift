@@ -71,7 +71,9 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
         
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,
-                               announcements: APISyncDelta())
+                               announcements: APISyncDelta(),
+                               events: APISyncDelta(),
+                               rooms: APISyncDelta())
     }
     
 }

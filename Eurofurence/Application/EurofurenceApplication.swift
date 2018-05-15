@@ -35,6 +35,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private let syncAPI: SyncAPI
     private let conventionCountdownController: ConventionCountdownController
     private var syncResponse: APISyncResponse?
+    private var events = [Event2]()
 
     init(userPreferences: UserPreferences,
          dataStore: EurofurenceDataStore,
@@ -143,9 +144,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         }
 
         syncAPI.fetchLatestData { (response) in
-            if response == nil {
-                completionHandler(SyncError.failedToLoadResponse)
-            } else {
+            if let response = response {
                 self.syncResponse = response
 
                 let groups = self.makeKnowledgeGroupsFromSyncResponse()
@@ -157,8 +156,11 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                 })
 
                 self.announcementsObservers.forEach({ $0.eurofurenceApplicationDidChangeUnreadAnnouncements(to: self.makeAnnouncementsFromSyncResponse()) })
+                self.updateEvents(from: response)
 
                 self.privateMessagesController.fetchPrivateMessages { (_) in completionHandler(nil) }
+            } else {
+                completionHandler(SyncError.failedToLoadResponse)
             }
         }
 
@@ -190,7 +192,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func add(_ observer: EventsServiceObserver) {
-        observer.eurofurenceApplicationDidUpdateRunningEvents(to: [])
+        observer.eurofurenceApplicationDidUpdateRunningEvents(to: events)
     }
 
     private func makeAnnouncementsFromSyncResponse() -> [Announcement2] {
@@ -211,6 +213,17 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         } else {
             return []
         }
+    }
+
+    private func updateEvents(from response: APISyncResponse) {
+        events = response.events.changed.flatMap({ (event) -> Event2? in
+            guard let room = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier }) else { return nil }
+
+            return Event2(title: event.title,
+                          room: Room(name: room.name),
+                          startDate: event.startDateTime,
+                          secondsUntilEventBegins: 0)
+        })
     }
 
 }
