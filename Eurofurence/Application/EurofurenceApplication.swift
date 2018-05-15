@@ -35,6 +35,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private let syncAPI: SyncAPI
     private let conventionCountdownController: ConventionCountdownController
     private var syncResponse: APISyncResponse?
+    private var knowledgeGroups = [KnowledgeGroup2]()
+    private var announcements = [Announcement2]()
     private var events = [Event2]()
 
     init(userPreferences: UserPreferences,
@@ -132,8 +134,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             if let persistedGroups = persistedGroups {
                 completionHandler(persistedGroups.sorted())
             } else {
-                let groups = self.makeKnowledgeGroupsFromSyncResponse()
-                completionHandler(groups)
+                completionHandler(self.knowledgeGroups)
             }
         }
     }
@@ -147,16 +148,16 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             if let response = response {
                 self.syncResponse = response
 
-                let groups = self.makeKnowledgeGroupsFromSyncResponse()
-                let announcements = self.makeAnnouncementsFromSyncResponse()
+                self.updateEvents(from: response)
+                self.updateKnowledgeGroups(from: response)
+                self.updateAnnouncements(from: response)
 
                 self.dataStore.performTransaction({ (transaction) in
-                    transaction.saveKnowledgeGroups(groups)
-                    transaction.saveAnnouncements(announcements)
+                    transaction.saveKnowledgeGroups(self.knowledgeGroups)
+                    transaction.saveAnnouncements(self.announcements)
                 })
 
-                self.announcementsObservers.forEach({ $0.eurofurenceApplicationDidChangeUnreadAnnouncements(to: self.makeAnnouncementsFromSyncResponse()) })
-                self.updateEvents(from: response)
+                self.announcementsObservers.forEach({ $0.eurofurenceApplicationDidChangeUnreadAnnouncements(to: self.announcements) })
 
                 self.privateMessagesController.fetchPrivateMessages { (_) in completionHandler(nil) }
             } else {
@@ -179,7 +180,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     private var announcementsObservers = [AnnouncementsServiceObserver]()
     func add(_ observer: AnnouncementsServiceObserver) {
-        observer.eurofurenceApplicationDidChangeUnreadAnnouncements(to: makeAnnouncementsFromSyncResponse())
+        observer.eurofurenceApplicationDidChangeUnreadAnnouncements(to: announcements)
         announcementsObservers.append(observer)
     }
 
@@ -199,24 +200,17 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         observer.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents)
     }
 
-    private func makeAnnouncementsFromSyncResponse() -> [Announcement2] {
-        if let syncResponse = syncResponse {
-            let sortedAnnouncements = syncResponse.announcements.changed.sorted(by: { (first, second) -> Bool in
-                return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedAscending
-            })
+    private func updateAnnouncements(from response: APISyncResponse) {
+        let sortedAnnouncements = response.announcements.changed.sorted(by: { (first, second) -> Bool in
+            return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedAscending
+        })
 
-            return Announcement2.fromServerModels(sortedAnnouncements)
-        } else {
-            return []
-        }
+        announcements = Announcement2.fromServerModels(sortedAnnouncements)
     }
 
-    private func makeKnowledgeGroupsFromSyncResponse() -> [KnowledgeGroup2] {
-        if let syncResponse = syncResponse {
-            return KnowledgeGroup2.fromServerModels(groups: syncResponse.knowledgeGroups.changed, entries: syncResponse.knowledgeEntries.changed)
-        } else {
-            return []
-        }
+    private func updateKnowledgeGroups(from response: APISyncResponse) {
+        knowledgeGroups = KnowledgeGroup2.fromServerModels(groups: response.knowledgeGroups.changed,
+                                                           entries: response.knowledgeEntries.changed)
     }
 
     private func updateEvents(from response: APISyncResponse) {
