@@ -219,8 +219,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
             return Event2(title: event.title,
                           room: Room(name: room.name),
-                          startDate: event.startDateTime,
-                          secondsUntilEventBegins: 0)
+                          startDate: event.startDateTime)
         })
     }
 

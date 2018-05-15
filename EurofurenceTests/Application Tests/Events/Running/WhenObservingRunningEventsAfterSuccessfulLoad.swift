@@ -53,8 +53,7 @@ class WhenObservingRunningEventsAfterSuccessfulLoad: XCTestCase {
         let expectedRoom = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier })!
         return Event2(title: event.title,
                       room: Room(name: expectedRoom.name),
-                      startDate: event.startDateTime,
-                      secondsUntilEventBegins: 0)
+                      startDate: event.startDateTime)
     }
     
 }

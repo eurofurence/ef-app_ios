@@ -21,6 +21,8 @@ class DefaultNewsInteractorTestBuilder {
         var privateMessagesService: CapturingPrivateMessagesService
         var daysUntilConventionService: StubConventionCountdownService
         var eventsService: StubEventsService
+        var dateDistanceCalculator: StubDateDistanceCalculator
+        var clock: StubClock
     }
     
     private var announcementsService: StubAnnouncementsService
@@ -68,13 +70,17 @@ class DefaultNewsInteractorTestBuilder {
     }
     
     func build() -> Context {
+        let dateDistanceCalculator = StubDateDistanceCalculator()
+        let clock = StubClock()
         let relativeTimeFormatter = FakeRelativeTimeIntervalCountdownFormatter()
         let interactor = DefaultNewsInteractor(announcementsService: announcementsService,
                                                authenticationService: authenticationService,
                                                privateMessagesService: privateMessagesService,
                                                daysUntilConventionService: daysUntilConventionService,
                                                eventsService: eventsService,
-                                               relativeTimeIntervalCountdownFormatter: relativeTimeFormatter)
+                                               relativeTimeIntervalCountdownFormatter: relativeTimeFormatter,
+                                               dateDistanceCalculator: dateDistanceCalculator,
+                                               clock: clock)
         let delegate = CapturingNewsInteractorDelegate()
         
         return Context(interactor: interactor,
@@ -84,7 +90,9 @@ class DefaultNewsInteractorTestBuilder {
                        announcementsService: announcementsService,
                        privateMessagesService: privateMessagesService,
                        daysUntilConventionService: daysUntilConventionService,
-                       eventsService: eventsService)
+                       eventsService: eventsService,
+                       dateDistanceCalculator: dateDistanceCalculator,
+                       clock: clock)
     }
     
 }
@@ -193,7 +201,8 @@ extension DefaultNewsInteractorTestBuilder.Context {
         }
         
         private func makeExpectedEventViewModel(from event: Event2) -> AnyHashable {
-            return EventComponentViewModel(startTime: context.relativeTimeFormatter.relativeString(from: event.secondsUntilEventBegins),
+            let timeDifference = context.clock.currentDate.timeIntervalSince1970 - event.startDate.timeIntervalSince1970
+            return EventComponentViewModel(startTime: context.relativeTimeFormatter.relativeString(from: timeDifference),
                                            endTime: "",
                                            eventName: event.title,
                                            location: event.room.name,

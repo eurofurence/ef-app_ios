@@ -35,6 +35,8 @@ class DefaultNewsInteractor: NewsInteractor,
     private var upcomingEvents = [Event2]()
     private var announcements = [Announcement2]()
     private var currentUser: User?
+    private let dateDistanceCalculator: DateDistanceCalculator
+    private let clock: Clock
 
     // MARK: Initialization
 
@@ -50,7 +52,9 @@ class DefaultNewsInteractor: NewsInteractor,
                   privateMessagesService: EurofurencePrivateMessagesService.shared,
                   daysUntilConventionService: EurofurenceApplication.shared,
                   eventsService: DummyEventsService(),
-                  relativeTimeIntervalCountdownFormatter: FoundationRelativeTimeIntervalCountdownFormatter.shared)
+                  relativeTimeIntervalCountdownFormatter: FoundationRelativeTimeIntervalCountdownFormatter.shared,
+                  dateDistanceCalculator: FoundationDateDistanceCalculator(),
+                  clock: SystemClock())
     }
 
     init(announcementsService: AnnouncementsService,
@@ -58,8 +62,12 @@ class DefaultNewsInteractor: NewsInteractor,
          privateMessagesService: PrivateMessagesService,
          daysUntilConventionService: ConventionCountdownService,
          eventsService: EventsService,
-         relativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCountdownFormatter) {
+         relativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCountdownFormatter,
+         dateDistanceCalculator: DateDistanceCalculator,
+         clock: Clock) {
         self.relativeTimeIntervalCountdownFormatter = relativeTimeIntervalCountdownFormatter
+        self.dateDistanceCalculator = dateDistanceCalculator
+        self.clock = clock
 
         announcementsService.add(self)
         authenticationService.add(self)
@@ -150,11 +158,19 @@ class DefaultNewsInteractor: NewsInteractor,
 
         if daysUntilConvention == nil {
             if !upcomingEvents.isEmpty {
-                components.append(EventsComponent(title: .upcomingEvents, events: upcomingEvents, relativeTimeFormatter: relativeTimeIntervalCountdownFormatter))
+                components.append(EventsComponent(title: .upcomingEvents,
+                                                  events: upcomingEvents,
+                                                  relativeTimeFormatter: relativeTimeIntervalCountdownFormatter,
+                                                  dateDistanceCalculator: dateDistanceCalculator,
+                                                  clock: clock))
             }
 
             if !runningEvents.isEmpty {
-                components.append(EventsComponent(title: .runningEvents, events: runningEvents, relativeTimeFormatter: relativeTimeIntervalCountdownFormatter))
+                components.append(EventsComponent(title: .runningEvents,
+                                                  events: runningEvents,
+                                                  relativeTimeFormatter: relativeTimeIntervalCountdownFormatter,
+                                                  dateDistanceCalculator: dateDistanceCalculator,
+                                                  clock: clock))
             }
         }
 
@@ -253,11 +269,17 @@ class DefaultNewsInteractor: NewsInteractor,
 
         private let viewModels: [EventComponentViewModel]
 
-        init(title: String, events: [Event2], relativeTimeFormatter: RelativeTimeIntervalCountdownFormatter) {
+        init(title: String,
+             events: [Event2],
+             relativeTimeFormatter: RelativeTimeIntervalCountdownFormatter,
+             dateDistanceCalculator: DateDistanceCalculator,
+             clock: Clock) {
             self.title = title
 
             viewModels = events.map { (event) -> EventComponentViewModel in
-                return EventComponentViewModel(startTime: relativeTimeFormatter.relativeString(from: event.secondsUntilEventBegins),
+                let now = clock.currentDate
+                let difference = now.timeIntervalSince1970 - event.startDate.timeIntervalSince1970
+                return EventComponentViewModel(startTime: relativeTimeFormatter.relativeString(from: difference),
                                                endTime: "",
                                                eventName: event.title,
                                                location: event.room.name,

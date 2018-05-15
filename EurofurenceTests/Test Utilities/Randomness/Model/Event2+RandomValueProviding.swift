@@ -12,7 +12,7 @@ import Foundation
 extension Event2: RandomValueProviding {
     
     static var random: Event2 {
-        return Event2(title: .random, room: .random, startDate: .random, secondsUntilEventBegins: .random)
+        return Event2(title: .random, room: .random, startDate: .random)
     }
     
 }
