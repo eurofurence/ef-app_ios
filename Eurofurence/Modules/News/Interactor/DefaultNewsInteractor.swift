@@ -42,19 +42,13 @@ class DefaultNewsInteractor: NewsInteractor,
     // MARK: Initialization
 
     convenience init() {
-        struct DummyHoursDateFormatter: HoursDateFormatter {
-            func hoursString(from date: Date) -> String {
-                return "End"
-            }
-        }
-
         self.init(announcementsService: EurofurenceApplication.shared,
                   authenticationService: EurofurenceApplication.shared,
                   privateMessagesService: EurofurencePrivateMessagesService.shared,
                   daysUntilConventionService: EurofurenceApplication.shared,
                   eventsService: EurofurenceApplication.shared,
                   relativeTimeIntervalCountdownFormatter: FoundationRelativeTimeIntervalCountdownFormatter.shared,
-                  hoursDateFormatter: DummyHoursDateFormatter(),
+                  hoursDateFormatter: FoundationHoursDateFormatter.shared,
                   dateDistanceCalculator: FoundationDateDistanceCalculator(),
                   clock: SystemClock())
     }
