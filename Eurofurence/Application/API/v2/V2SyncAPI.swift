@@ -41,7 +41,7 @@ private struct JSONSyncResponse: Decodable {
         return APISyncResponse(knowledgeGroups: KnowledgeGroups.asDelta(),
                                knowledgeEntries: KnowledgeEntries.asDelta(),
                                announcements: Announcements.asDelta(),
-                               events: APISyncDelta(),
+                               events: Events.asDelta(),
                                rooms: EventConferenceRooms.asDelta())
     }
 
@@ -129,10 +129,27 @@ private struct JSONSyncResponse: Decodable {
 
     }
 
+    struct JSONEvent: Decodable, ModelRepresenting {
+
+        var ConferenceRoomId: String
+        var StartDateTimeUtc: Date
+        var EndDateTimeUtc: Date
+        var Title: String
+
+        func asModel() -> APIEvent {
+            return APIEvent(roomIdentifier: ConferenceRoomId,
+                            startDateTime: StartDateTimeUtc,
+                            endDateTime: EndDateTimeUtc,
+                            title: Title)
+        }
+
+    }
+
     var KnowledgeGroups: Leaf<JSONKnowledgeGroup>
     var KnowledgeEntries: Leaf<JSONKnowledgeEntry>
     var Announcements: Leaf<JSONAnnouncement>
     var EventConferenceRooms: Leaf<JSONRoom>
+    var Events: Leaf<JSONEvent>
 
 }
 

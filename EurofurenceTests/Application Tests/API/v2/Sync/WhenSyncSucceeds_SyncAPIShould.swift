@@ -54,6 +54,11 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
         XCTAssertEqual(expected, response?.rooms)
     }
     
+    func testProduceExpectedEvents() {
+        let expected = makeExpectedSyncResponseFromTestFile().events
+        XCTAssertEqual(expected, response?.events)
+    }
+    
     private func makeExpectedSyncResponseFromTestFile() -> APISyncResponse {
         let knowledgeGroups = APISyncDelta<APIKnowledgeGroup>(changed: [APIKnowledgeGroup(identifier: "ec031cbf-d8d0-825d-4c36-b782ed8d19d8",
                                                                                           order: 0,
@@ -79,10 +84,52 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                           deleted: [APIRoom(roomIdentifier: "87148f04-4c4b-433d-9469-c8a970952443",
                                                             name: "Artist Lounge — ECC Foyer 4")])
         
+        let changedEventStartDate = DateComponents(calendar: .current,
+                                                   timeZone: TimeZone(secondsFromGMT: 0),
+                                                   year: 2017,
+                                                   month: 8,
+                                                   day: 15,
+                                                   hour: 12,
+                                                   minute: 0,
+                                                   second: 0)
+        let changedEventEndDate = DateComponents(calendar: .current,
+                                                 timeZone: TimeZone(secondsFromGMT: 0),
+                                                 year: 2017,
+                                                 month: 8,
+                                                 day: 16,
+                                                 hour: 0,
+                                                 minute: 0,
+                                                 second: 0)
+        let deletedEventStartDate = DateComponents(calendar: .current,
+                                                   timeZone: TimeZone(secondsFromGMT: 0),
+                                                   year: 2017,
+                                                   month: 8,
+                                                   day: 15,
+                                                   hour: 16,
+                                                   minute: 0,
+                                                   second: 0)
+        let deletedEventEndDate = DateComponents(calendar: .current,
+                                                 timeZone: TimeZone(secondsFromGMT: 0),
+                                                 year: 2017,
+                                                 month: 8,
+                                                 day: 16,
+                                                 hour: 0,
+                                                 minute: 0,
+                                                 second: 0)
+        
+        let events = APISyncDelta<APIEvent>(changed: [APIEvent(roomIdentifier: "87148f04-4c4b-433d-9469-c8a970952443",
+                                                               startDateTime: changedEventStartDate.date!,
+                                                               endDateTime: changedEventEndDate.date!,
+                                                               title: "Artists' Lounge")],
+                                            deleted: [APIEvent(roomIdentifier: "c72e2290-49fd-496a-9efc-2f68a5f0f0f8",
+                                                               startDateTime: deletedEventStartDate.date!,
+                                                               endDateTime: deletedEventEndDate.date!,
+                                                               title: "Fursuit Lounge")])
+        
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,
                                announcements: APISyncDelta(),
-                               events: APISyncDelta(),
+                               events: events,
                                rooms: rooms)
     }
     
