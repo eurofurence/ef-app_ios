@@ -153,17 +153,19 @@ class DefaultNewsInteractor: NewsInteractor,
         if !upcomingEvents.isEmpty {
             components.append(EventsComponent(title: .upcomingEvents,
                                               events: upcomingEvents,
-                                              relativeTimeFormatter: relativeTimeIntervalCountdownFormatter,
-                                              dateDistanceCalculator: dateDistanceCalculator,
-                                              clock: clock))
+                                              startTimeFormatter: { (event) -> String in
+                                                let now = clock.currentDate
+                                                let difference = event.startDate.timeIntervalSince1970 - now.timeIntervalSince1970
+                                                return self.relativeTimeIntervalCountdownFormatter.relativeString(from: difference)
+            }))
         }
 
         if !runningEvents.isEmpty {
             components.append(EventsComponent(title: .runningEvents,
                                               events: runningEvents,
-                                              relativeTimeFormatter: relativeTimeIntervalCountdownFormatter,
-                                              dateDistanceCalculator: dateDistanceCalculator,
-                                              clock: clock))
+                                              startTimeFormatter: { (event) -> String in
+                                                return .now
+            }))
         }
 
         let viewModel = ViewModel(components: components)
@@ -263,15 +265,11 @@ class DefaultNewsInteractor: NewsInteractor,
 
         init(title: String,
              events: [Event2],
-             relativeTimeFormatter: RelativeTimeIntervalCountdownFormatter,
-             dateDistanceCalculator: DateDistanceCalculator,
-             clock: Clock) {
+             startTimeFormatter: (Event2) -> String) {
             self.title = title
 
             viewModels = events.map { (event) -> EventComponentViewModel in
-                let now = clock.currentDate
-                let difference = event.startDate.timeIntervalSince1970 - now.timeIntervalSince1970
-                return EventComponentViewModel(startTime: relativeTimeFormatter.relativeString(from: difference),
+                return EventComponentViewModel(startTime: startTimeFormatter(event),
                                                endTime: "",
                                                eventName: event.title,
                                                location: event.room.name,

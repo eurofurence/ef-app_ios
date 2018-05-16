@@ -174,14 +174,14 @@ extension DefaultNewsInteractorTestBuilder.Context {
         }
         
         func hasRunningEvents() -> ViewModelAssertionBuilder {
-            let eventsComponents = context.eventsService.runningEvents.map(makeExpectedEventViewModel)
+            let eventsComponents = context.eventsService.runningEvents.map(makeExpectedEventViewModelForRunningEvent)
             components.append(Component(title: .runningEvents, components: eventsComponents))
             
             return self
         }
         
         func hasUpcomingEvents() -> ViewModelAssertionBuilder {
-            let eventsComponents = context.eventsService.upcomingEvents.map(makeExpectedEventViewModel)
+            let eventsComponents = context.eventsService.upcomingEvents.map(makeExpectedEventViewModelForUpcomingEvent)
             components.append(Component(title: .upcomingEvents, components: eventsComponents))
             
             return self
@@ -200,7 +200,15 @@ extension DefaultNewsInteractorTestBuilder.Context {
             return days
         }
         
-        private func makeExpectedEventViewModel(from event: Event2) -> AnyHashable {
+        private func makeExpectedEventViewModelForRunningEvent(from event: Event2) -> AnyHashable {
+            return EventComponentViewModel(startTime: .now,
+                                           endTime: "",
+                                           eventName: event.title,
+                                           location: event.room.name,
+                                           icon: nil)
+        }
+        
+        private func makeExpectedEventViewModelForUpcomingEvent(from event: Event2) -> AnyHashable {
             let timeDifference = event.startDate.timeIntervalSince1970 - context.clock.currentDate.timeIntervalSince1970
             return EventComponentViewModel(startTime: context.relativeTimeFormatter.relativeString(from: timeDifference),
                                            endTime: "",

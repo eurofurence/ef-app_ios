@@ -71,6 +71,8 @@ public extension String {
                                                          comment: "Header shown above section in the News view for events that start soon")
     public static let runningEvents = NSLocalizedString("RunningEvents",
                                                         comment: "Header shown above section in the News view for events that are currently running")
+    public static let now = NSLocalizedString("Now",
+                                              comment: "Shown in place of the event start time when the event is running now")
 
     public static let anonymousUserLoginPrompt = NSLocalizedString("anonymousUserLoginPrompt",
                                                                    comment: "Tells user to login for additional features")
