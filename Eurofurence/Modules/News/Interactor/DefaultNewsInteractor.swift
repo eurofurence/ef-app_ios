@@ -270,7 +270,7 @@ class DefaultNewsInteractor: NewsInteractor,
 
             viewModels = events.map { (event) -> EventComponentViewModel in
                 let now = clock.currentDate
-                let difference = now.timeIntervalSince1970 - event.startDate.timeIntervalSince1970
+                let difference = event.startDate.timeIntervalSince1970 - now.timeIntervalSince1970
                 return EventComponentViewModel(startTime: relativeTimeFormatter.relativeString(from: difference),
                                                endTime: "",
                                                eventName: event.title,

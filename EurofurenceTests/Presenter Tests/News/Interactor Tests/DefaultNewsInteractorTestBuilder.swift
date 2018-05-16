@@ -201,7 +201,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
         }
         
         private func makeExpectedEventViewModel(from event: Event2) -> AnyHashable {
-            let timeDifference = context.clock.currentDate.timeIntervalSince1970 - event.startDate.timeIntervalSince1970
+            let timeDifference = event.startDate.timeIntervalSince1970 - context.clock.currentDate.timeIntervalSince1970
             return EventComponentViewModel(startTime: context.relativeTimeFormatter.relativeString(from: timeDifference),
                                            endTime: "",
                                            eventName: event.title,
