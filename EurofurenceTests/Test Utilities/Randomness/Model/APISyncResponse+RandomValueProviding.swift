@@ -7,6 +7,7 @@
 //
 
 @testable import Eurofurence
+import Foundation
 
 extension APISyncResponse {
     
@@ -26,10 +27,11 @@ extension APISyncResponse {
         }
         
         let rooms = [APIRoom].random
-        let events = (0...Int.random(upperLimit: 10) + 5).map { (_) in
+        let events = (0...Int.random(upperLimit: 10) + 5).map { (_) -> APIEvent in
+            let eventStartTime: Date = .random
             return APIEvent(roomIdentifier: rooms.randomElement().element.roomIdentifier,
-                            startDateTime: .random,
-                            endDateTime: .random,
+                            startDateTime: eventStartTime,
+                            endDateTime: eventStartTime.addingTimeInterval(.random),
                             title: .random)
         }
         

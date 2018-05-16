@@ -22,9 +22,15 @@ class WhenObservingRunningEventsAfterSuccessfulLoad: XCTestCase {
         let observer = CapturingEventsServiceObserver()
         context.application.add(observer)
         
-        let expected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
+        let expectedEvents = syncResponse.events.changed.filter { (event) -> Bool in
+            return simulatedTime >= event.startDateTime && simulatedTime < event.endDateTime
+        }
         
-        XCTAssertTrue(observer.runningEvents.contains(expected))
+        let expected = expectedEvents.map { (event) -> Event2 in
+            return context.makeExpectedEvent(from: event, response: syncResponse)
+        }
+        
+        XCTAssertTrue(expected.contains(elementsFrom: observer.runningEvents))
     }
     
     func testEventsThatHaveNotStartedAreNotProvidedToTheObserver() {

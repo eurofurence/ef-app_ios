@@ -61,7 +61,8 @@ class ApplicationTestBuilder {
             let expectedRoom = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier })!
             return Event2(title: event.title,
                           room: Room(name: expectedRoom.name),
-                          startDate: event.startDateTime)
+                          startDate: event.startDateTime,
+                          endDate: event.endDateTime)
         }
         
     }

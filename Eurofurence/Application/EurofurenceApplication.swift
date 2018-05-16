@@ -202,8 +202,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     private func makeRunningEvents() -> [Event2] {
+        let now = clock.currentDate
         return events.filter { (event) -> Bool in
-            return event.startDate.timeIntervalSince(clock.currentDate) >= 0
+            let range = DateInterval(start: event.startDate, end: event.endDate)
+            return range.contains(now)
         }
     }
 
@@ -226,7 +228,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
             return Event2(title: event.title,
                           room: Room(name: room.name),
-                          startDate: event.startDateTime)
+                          startDate: event.startDateTime,
+                          endDate: event.endDateTime)
         })
     }
 

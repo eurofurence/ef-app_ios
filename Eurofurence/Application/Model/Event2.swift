@@ -13,11 +13,13 @@ struct Event2: Equatable {
     static func ==(lhs: Event2, rhs: Event2) -> Bool {
         return lhs.title == rhs.title &&
                lhs.room == rhs.room &&
-               lhs.startDate == rhs.startDate
+               lhs.startDate == rhs.startDate &&
+               lhs.endDate == rhs.endDate
     }
 
     var title: String
     var room: Room
     var startDate: Date
+    var endDate: Date
 
 }
