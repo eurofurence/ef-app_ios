@@ -38,20 +38,20 @@ struct V2SyncAPI: SyncAPI {
 private struct JSONSyncResponse: Decodable {
 
     func asAPIResponse() -> APISyncResponse {
-        return APISyncResponse(knowledgeGroups: KnowledgeGroups.asDelta(),
-                               knowledgeEntries: KnowledgeEntries.asDelta(),
-                               announcements: Announcements.asDelta(),
-                               events: Events.asDelta(),
-                               rooms: EventConferenceRooms.asDelta())
+        return APISyncResponse(knowledgeGroups: KnowledgeGroups.delta,
+                               knowledgeEntries: KnowledgeEntries.delta,
+                               announcements: Announcements.delta,
+                               events: Events.delta,
+                               rooms: EventConferenceRooms.delta)
     }
 
     struct Leaf<T>: Decodable where T: Decodable & ModelRepresenting {
         var ChangedEntities: [T]
         var DeletedEntities: [T]
 
-        func asDelta() -> APISyncDelta<T.ModelType> {
-            return APISyncDelta(changed: ChangedEntities.map({ $0.asModel() }),
-                                deleted: DeletedEntities.map({ $0.asModel() }))
+        var delta: APISyncDelta<T.ModelType> {
+            return APISyncDelta(changed: ChangedEntities.map({ $0.modelValue }),
+                                deleted: DeletedEntities.map({ $0.modelValue }))
         }
     }
 
@@ -61,7 +61,7 @@ private struct JSONSyncResponse: Decodable {
         var Name: String
         var Description: String
 
-        func asModel() -> APIKnowledgeGroup {
+        var modelValue: APIKnowledgeGroup {
             return APIKnowledgeGroup(identifier: Id, order: Order, groupName: Name, groupDescription: Description)
         }
     }
@@ -73,12 +73,12 @@ private struct JSONSyncResponse: Decodable {
         var Text: String
         var Links: [JSONLink]
 
-        func asModel() -> APIKnowledgeEntry {
+        var modelValue: APIKnowledgeEntry {
             return APIKnowledgeEntry(groupIdentifier: KnowledgeGroupId,
                                      title: Title,
                                      order: Order,
                                      text: Text,
-                                     links: Links.map({ $0.asModel() }))
+                                     links: Links.map({ $0.modelValue }))
         }
     }
 
@@ -87,7 +87,7 @@ private struct JSONSyncResponse: Decodable {
         enum JSONFragmentType: String, Decodable, ModelRepresenting {
             case WebExternal
 
-            func asModel() -> APILink.FragmentType {
+            var modelValue: APILink.FragmentType {
                 switch self {
                 case JSONLink.JSONFragmentType.WebExternal:
                     return APILink.FragmentType.WebExternal
@@ -99,8 +99,8 @@ private struct JSONSyncResponse: Decodable {
         var FragmentType: JSONFragmentType
         var Target: String
 
-        func asModel() -> APILink {
-            return APILink(name: Name, fragmentType: FragmentType.asModel(), target: Target)
+        var modelValue: APILink {
+            return APILink(name: Name, fragmentType: FragmentType.modelValue, target: Target)
         }
     }
 
@@ -110,7 +110,7 @@ private struct JSONSyncResponse: Decodable {
         var Content: String
         var LastChangeDateTimeUtc: Date
 
-        func asModel() -> APIAnnouncement {
+        var modelValue: APIAnnouncement {
             return APIAnnouncement(title: Title,
                                    content: Content,
                                    lastChangedDateTime: LastChangeDateTimeUtc)
@@ -123,7 +123,7 @@ private struct JSONSyncResponse: Decodable {
         var Id: String
         var Name: String
 
-        func asModel() -> APIRoom {
+        var modelValue: APIRoom {
             return APIRoom(roomIdentifier: Id, name: Name)
         }
 
@@ -136,7 +136,7 @@ private struct JSONSyncResponse: Decodable {
         var EndDateTimeUtc: Date
         var Title: String
 
-        func asModel() -> APIEvent {
+        var modelValue: APIEvent {
             return APIEvent(roomIdentifier: ConferenceRoomId,
                             startDateTime: StartDateTimeUtc,
                             endDateTime: EndDateTimeUtc,
@@ -156,5 +156,5 @@ private struct JSONSyncResponse: Decodable {
 private protocol ModelRepresenting {
     associatedtype ModelType: Equatable
 
-    func asModel() -> ModelType
+    var modelValue: ModelType { get }
 }
