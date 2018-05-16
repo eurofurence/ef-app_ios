@@ -150,22 +150,20 @@ class DefaultNewsInteractor: NewsInteractor,
 
         components.append(AnnouncementsComponent(announcements: announcements))
 
-        if daysUntilConvention == nil {
-            if !upcomingEvents.isEmpty {
-                components.append(EventsComponent(title: .upcomingEvents,
-                                                  events: upcomingEvents,
-                                                  relativeTimeFormatter: relativeTimeIntervalCountdownFormatter,
-                                                  dateDistanceCalculator: dateDistanceCalculator,
-                                                  clock: clock))
-            }
+        if !upcomingEvents.isEmpty {
+            components.append(EventsComponent(title: .upcomingEvents,
+                                              events: upcomingEvents,
+                                              relativeTimeFormatter: relativeTimeIntervalCountdownFormatter,
+                                              dateDistanceCalculator: dateDistanceCalculator,
+                                              clock: clock))
+        }
 
-            if !runningEvents.isEmpty {
-                components.append(EventsComponent(title: .runningEvents,
-                                                  events: runningEvents,
-                                                  relativeTimeFormatter: relativeTimeIntervalCountdownFormatter,
-                                                  dateDistanceCalculator: dateDistanceCalculator,
-                                                  clock: clock))
-            }
+        if !runningEvents.isEmpty {
+            components.append(EventsComponent(title: .runningEvents,
+                                              events: runningEvents,
+                                              relativeTimeFormatter: relativeTimeIntervalCountdownFormatter,
+                                              dateDistanceCalculator: dateDistanceCalculator,
+                                              clock: clock))
         }
 
         let viewModel = ViewModel(components: components)
