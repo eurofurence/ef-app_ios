@@ -199,6 +199,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     func add(_ observer: EventsServiceObserver) {
         eventsObservers.append(observer)
         observer.eurofurenceApplicationDidUpdateRunningEvents(to: makeRunningEvents())
+        observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: [])
     }
 
     private func makeRunningEvents() -> [Event2] {

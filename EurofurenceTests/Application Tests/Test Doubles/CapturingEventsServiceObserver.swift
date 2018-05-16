@@ -18,8 +18,9 @@ class CapturingEventsServiceObserver: EventsServiceObserver {
         runningEvents = events
     }
     
+    private(set) var wasProvidedWithEmptyUpcomingEvents = false
     func eurofurenceApplicationDidUpdateUpcomingEvents(to events: [Event2]) {
-        
+        wasProvidedWithEmptyUpcomingEvents = wasProvidedWithEmptyUpcomingEvents || events.isEmpty
     }
     
 }
