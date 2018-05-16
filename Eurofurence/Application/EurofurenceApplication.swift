@@ -159,6 +159,9 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
                 self.announcementsObservers.forEach({ $0.eurofurenceApplicationDidChangeUnreadAnnouncements(to: self.announcements) })
 
+                let runningEvents = self.makeRunningEvents()
+                self.eventsObservers.forEach({ $0.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents) })
+
                 self.privateMessagesController.fetchPrivateMessages { (_) in completionHandler(nil) }
             } else {
                 completionHandler(SyncError.failedToLoadResponse)
@@ -192,12 +195,16 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         authenticationCoordinator.add(observer)
     }
 
+    private var eventsObservers = [EventsServiceObserver]()
     func add(_ observer: EventsServiceObserver) {
-        let runningEvents = events.filter { (event) -> Bool in
+        eventsObservers.append(observer)
+        observer.eurofurenceApplicationDidUpdateRunningEvents(to: makeRunningEvents())
+    }
+
+    private func makeRunningEvents() -> [Event2] {
+        return events.filter { (event) -> Bool in
             return event.startDate.timeIntervalSince(clock.currentDate) >= 0
         }
-
-        observer.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents)
     }
 
     private func updateAnnouncements(from response: APISyncResponse) {

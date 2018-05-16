@@ -268,6 +268,7 @@
 		CA162EB620AA2F34004AFED6 /* WhenObservingRunningEventsAfterSuccessfulLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EB520AA2F34004AFED6 /* WhenObservingRunningEventsAfterSuccessfulLoad.swift */; };
 		CA162EB820AA2FB9004AFED6 /* APIEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EB720AA2FB9004AFED6 /* APIEvent.swift */; };
 		CA162EE020AAF7C3004AFED6 /* APIRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EDF20AAF7C3004AFED6 /* APIRoom.swift */; };
+		CA162EE220AC55EB004AFED6 /* WhenObservingRunningEvents_ThenLoadSucceeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EE120AC55EB004AFED6 /* WhenObservingRunningEvents_ThenLoadSucceeds.swift */; };
 		CA17FE712056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */; };
 		CA17FE732056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */; };
 		CA17FE752056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */; };
@@ -997,6 +998,7 @@
 		CA162EB520AA2F34004AFED6 /* WhenObservingRunningEventsAfterSuccessfulLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingRunningEventsAfterSuccessfulLoad.swift; sourceTree = "<group>"; };
 		CA162EB720AA2FB9004AFED6 /* APIEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEvent.swift; sourceTree = "<group>"; };
 		CA162EDF20AAF7C3004AFED6 /* APIRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRoom.swift; sourceTree = "<group>"; };
+		CA162EE120AC55EB004AFED6 /* WhenObservingRunningEvents_ThenLoadSucceeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingRunningEvents_ThenLoadSucceeds.swift; sourceTree = "<group>"; };
 		CA17FE702056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA17FE722056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeDetailSceneLoads.swift; sourceTree = "<group>"; };
 		CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
@@ -2309,8 +2311,9 @@
 		CA162EB020AA2DC9004AFED6 /* Running */ = {
 			isa = PBXGroup;
 			children = (
-				CA162EB120AA2DE0004AFED6 /* WhenObservingRunningEventsBeforeLoadingAnything.swift */,
+				CA162EE120AC55EB004AFED6 /* WhenObservingRunningEvents_ThenLoadSucceeds.swift */,
 				CA162EB520AA2F34004AFED6 /* WhenObservingRunningEventsAfterSuccessfulLoad.swift */,
+				CA162EB120AA2DE0004AFED6 /* WhenObservingRunningEventsBeforeLoadingAnything.swift */,
 			);
 			path = Running;
 			sourceTree = "<group>";
@@ -4692,6 +4695,7 @@
 				CA728458209D058A007D912A /* StubAnnouncementDetailSceneFactory.swift in Sources */,
 				CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */,
 				6EF96CCF1F0EDB2000EE6134 /* CalendarTestDoubles.swift in Sources */,
+				CA162EE220AC55EB004AFED6 /* WhenObservingRunningEvents_ThenLoadSucceeds.swift in Sources */,
 				CAD780491F1D51EB002A8333 /* StubClock.swift in Sources */,
 				CA1ECB451FE3A2880076083A /* WhenInitialMessageLoadCompletesWithMessages.swift in Sources */,
 				CA72844D209D0358007D912A /* WhenBuildingAnnouncementDetailPresenter.swift in Sources */,
