@@ -10,12 +10,31 @@
 import Foundation
 import XCTest
 
+class FakeHoursDateFormatter: HoursDateFormatter {
+    
+    private var strings = [Date : String]()
+    
+    func hoursString(from date: Date) -> String {
+        var output = String.random
+        if let previous = strings[date] {
+            output = previous
+        }
+        else {
+            strings[date] = output
+        }
+        
+        return output
+    }
+    
+}
+
 class DefaultNewsInteractorTestBuilder {
     
     struct Context {
         var interactor: DefaultNewsInteractor
         var delegate: CapturingNewsInteractorDelegate
         var relativeTimeFormatter: FakeRelativeTimeIntervalCountdownFormatter
+        var hoursDateFormatter: FakeHoursDateFormatter
         var authenticationService: FakeAuthenticationService
         var announcementsService: StubAnnouncementsService
         var privateMessagesService: CapturingPrivateMessagesService
@@ -73,12 +92,14 @@ class DefaultNewsInteractorTestBuilder {
         let dateDistanceCalculator = StubDateDistanceCalculator()
         let clock = StubClock()
         let relativeTimeFormatter = FakeRelativeTimeIntervalCountdownFormatter()
+        let hoursDateFormatter = FakeHoursDateFormatter()
         let interactor = DefaultNewsInteractor(announcementsService: announcementsService,
                                                authenticationService: authenticationService,
                                                privateMessagesService: privateMessagesService,
                                                daysUntilConventionService: daysUntilConventionService,
                                                eventsService: eventsService,
                                                relativeTimeIntervalCountdownFormatter: relativeTimeFormatter,
+                                               hoursDateFormatter: hoursDateFormatter,
                                                dateDistanceCalculator: dateDistanceCalculator,
                                                clock: clock)
         let delegate = CapturingNewsInteractorDelegate()
@@ -86,6 +107,7 @@ class DefaultNewsInteractorTestBuilder {
         return Context(interactor: interactor,
                        delegate: delegate,
                        relativeTimeFormatter: relativeTimeFormatter,
+                       hoursDateFormatter: hoursDateFormatter,
                        authenticationService: authenticationService,
                        announcementsService: announcementsService,
                        privateMessagesService: privateMessagesService,
@@ -202,7 +224,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
         
         private func makeExpectedEventViewModelForRunningEvent(from event: Event2) -> AnyHashable {
             return EventComponentViewModel(startTime: .now,
-                                           endTime: "",
+                                           endTime: context.hoursDateFormatter.hoursString(from: event.endDate),
                                            eventName: event.title,
                                            location: event.room.name,
                                            icon: nil)
@@ -211,7 +233,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
         private func makeExpectedEventViewModelForUpcomingEvent(from event: Event2) -> AnyHashable {
             let timeDifference = event.startDate.timeIntervalSince1970 - context.clock.currentDate.timeIntervalSince1970
             return EventComponentViewModel(startTime: context.relativeTimeFormatter.relativeString(from: timeDifference),
-                                           endTime: "",
+                                           endTime: context.hoursDateFormatter.hoursString(from: event.endDate),
                                            eventName: event.title,
                                            location: event.room.name,
                                            icon: nil)

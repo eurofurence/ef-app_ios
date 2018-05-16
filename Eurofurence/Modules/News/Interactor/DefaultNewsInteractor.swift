@@ -28,6 +28,7 @@ class DefaultNewsInteractor: NewsInteractor,
     // MARK: Properties
 
     private let relativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCountdownFormatter
+    private let hoursDateFormatter: HoursDateFormatter
     private var delegate: NewsInteractorDelegate?
     private var unreadMessagesCount = 0
     private var daysUntilConvention: Int?
@@ -41,12 +42,19 @@ class DefaultNewsInteractor: NewsInteractor,
     // MARK: Initialization
 
     convenience init() {
+        struct DummyHoursDateFormatter: HoursDateFormatter {
+            func hoursString(from date: Date) -> String {
+                return "End"
+            }
+        }
+
         self.init(announcementsService: EurofurenceApplication.shared,
                   authenticationService: EurofurenceApplication.shared,
                   privateMessagesService: EurofurencePrivateMessagesService.shared,
                   daysUntilConventionService: EurofurenceApplication.shared,
                   eventsService: EurofurenceApplication.shared,
                   relativeTimeIntervalCountdownFormatter: FoundationRelativeTimeIntervalCountdownFormatter.shared,
+                  hoursDateFormatter: DummyHoursDateFormatter(),
                   dateDistanceCalculator: FoundationDateDistanceCalculator(),
                   clock: SystemClock())
     }
@@ -57,9 +65,11 @@ class DefaultNewsInteractor: NewsInteractor,
          daysUntilConventionService: ConventionCountdownService,
          eventsService: EventsService,
          relativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCountdownFormatter,
+         hoursDateFormatter: HoursDateFormatter,
          dateDistanceCalculator: DateDistanceCalculator,
          clock: Clock) {
         self.relativeTimeIntervalCountdownFormatter = relativeTimeIntervalCountdownFormatter
+        self.hoursDateFormatter = hoursDateFormatter
         self.dateDistanceCalculator = dateDistanceCalculator
         self.clock = clock
 
@@ -157,7 +167,7 @@ class DefaultNewsInteractor: NewsInteractor,
                                                 let now = clock.currentDate
                                                 let difference = event.startDate.timeIntervalSince1970 - now.timeIntervalSince1970
                                                 return self.relativeTimeIntervalCountdownFormatter.relativeString(from: difference)
-            }))
+            }, hoursDateFormatter: hoursDateFormatter))
         }
 
         if !runningEvents.isEmpty {
@@ -165,7 +175,7 @@ class DefaultNewsInteractor: NewsInteractor,
                                               events: runningEvents,
                                               startTimeFormatter: { (event) -> String in
                                                 return .now
-            }))
+            }, hoursDateFormatter: hoursDateFormatter))
         }
 
         let viewModel = ViewModel(components: components)
@@ -265,12 +275,13 @@ class DefaultNewsInteractor: NewsInteractor,
 
         init(title: String,
              events: [Event2],
-             startTimeFormatter: (Event2) -> String) {
+             startTimeFormatter: (Event2) -> String,
+             hoursDateFormatter: HoursDateFormatter) {
             self.title = title
 
             viewModels = events.map { (event) -> EventComponentViewModel in
                 return EventComponentViewModel(startTime: startTimeFormatter(event),
-                                               endTime: "",
+                                               endTime: hoursDateFormatter.hoursString(from: event.endDate),
                                                eventName: event.title,
                                                location: event.room.name,
                                                icon: nil)
