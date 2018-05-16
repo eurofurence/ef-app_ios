@@ -160,9 +160,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                 self.announcementsObservers.forEach({ $0.eurofurenceApplicationDidChangeUnreadAnnouncements(to: self.announcements) })
 
                 let runningEvents = self.makeRunningEvents()
+                let upcomingEvents = self.makeUpcomingEvents()
                 self.eventsObservers.forEach({ (observer) in
                     observer.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents)
-                    observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: self.events)
+                    observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: upcomingEvents)
                 })
 
                 self.privateMessagesController.fetchPrivateMessages { (_) in completionHandler(nil) }
@@ -210,6 +211,13 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         return events.filter { (event) -> Bool in
             let range = DateInterval(start: event.startDate, end: event.endDate)
             return range.contains(now)
+        }
+    }
+
+    private func makeUpcomingEvents() -> [Event2] {
+        let now = clock.currentDate
+        return events.filter { (event) -> Bool in
+            return event.startDate > now
         }
     }
 

@@ -25,4 +25,25 @@ class WhenObservingUpcomingEvents_ThenLoadSucceeds: XCTestCase {
         XCTAssertTrue(observer.upcomingEvents.contains(expected))
     }
     
+    func testTheObserverIsNotProvidedWithEventsThatHaveBegan() {
+        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let randomEvent = syncResponse.events.changed.randomElement().element
+        let simulatedTime = randomEvent.startDateTime.addingTimeInterval(-1)
+        let context = ApplicationTestBuilder().with(simulatedTime).build()
+        let observer = CapturingEventsServiceObserver()
+        context.application.add(observer)
+        context.refreshLocalStore()
+        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        
+        let expectedEvents = syncResponse.events.changed.filter { (event) -> Bool in
+            return event.startDateTime > simulatedTime
+        }
+        
+        let expected = expectedEvents.map { (event) -> Event2 in
+            return context.makeExpectedEvent(from: event, response: syncResponse)
+        }
+        
+        XCTAssertEqual(expected, observer.upcomingEvents)
+    }
+    
 }
