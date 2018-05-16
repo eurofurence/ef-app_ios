@@ -1823,69 +1823,12 @@
                             "LastChangeDateTimeUtc": "2018-01-12T08:56:45.877Z",
                             "Id": "dfa62eae-f881-4aab-a592-acf8fab14ae9",
                             "Name": "Art Show — Convention Hall Section D"
-                            },
-                            {
+                            }],
+        "DeletedEntities": [{
                             "LastChangeDateTimeUtc": "2018-01-12T08:56:45.883Z",
                             "Id": "87148f04-4c4b-433d-9469-c8a970952443",
                             "Name": "Artist Lounge — ECC Foyer 4"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.884Z",
-                            "Id": "bc90821f-5003-4467-9fc6-1241e9e475fb",
-                            "Name": "Club Stage — ECC Room 1"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.885Z",
-                            "Id": "508c068f-db6e-43a8-876d-6f2a16efe620",
-                            "Name": "Dealers' Den — Convention Center Foyer 3"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.886Z",
-                            "Id": "d81bf788-f8f6-4455-9373-57182e8e38ad",
-                            "Name": "ECC Room 3"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.888Z",
-                            "Id": "29bb02d4-8581-4f51-bbd0-f7d3828c8d1b",
-                            "Name": "ECC Room 4"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.889Z",
-                            "Id": "237eba33-e2c2-48b0-a2e4-c02ee48b9a4d",
-                            "Name": "ECC Room 5"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.890Z",
-                            "Id": "c72e2290-49fd-496a-9efc-2f68a5f0f0f8",
-                            "Name": "Fursuit Lounge — Convention Hall Section C"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.891Z",
-                            "Id": "bde43580-7109-4f31-b4bb-70c6eaad72f3",
-                            "Name": "Fursuit Photoshoot / Gameshow Registration — Hall Europa"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.892Z",
-                            "Id": "7aafa175-7f82-4809-a7f4-46f93a3031ba",
-                            "Name": "Main Stage — Convention Hall Section A"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.893Z",
-                            "Id": "a1f1b819-cf55-438c-a790-e92879f5b921",
-                            "Name": "Outdoor"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.895Z",
-                            "Id": "ed1227cf-56e9-4203-969f-b5686e4d32ed",
-                            "Name": "Photoshooting — Convention Hall Section D"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.896Z",
-                            "Id": "54973a03-95fd-4c79-8b5d-b6cdb6dfc110",
-                            "Name": "Rotunda"
-                            }
-                            ],
-        "DeletedEntities": []
+                            }]
     },
     "EventConferenceTracks": {
         "StorageLastChangeDateTimeUtc": "2018-01-12T08:56:45.867Z",

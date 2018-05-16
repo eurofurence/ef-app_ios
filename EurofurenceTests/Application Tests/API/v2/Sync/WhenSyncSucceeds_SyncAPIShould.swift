@@ -49,6 +49,11 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
         XCTAssertEqual(expected, response?.announcements)
     }
     
+    func testProduceExpectedRooms() {
+        let expected = makeExpectedSyncResponseFromTestFile().rooms
+        XCTAssertEqual(expected, response?.rooms)
+    }
+    
     private func makeExpectedSyncResponseFromTestFile() -> APISyncResponse {
         let knowledgeGroups = APISyncDelta<APIKnowledgeGroup>(changed: [APIKnowledgeGroup(identifier: "ec031cbf-d8d0-825d-4c36-b782ed8d19d8",
                                                                                           order: 0,
@@ -69,11 +74,16 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                                            text: "Clockwork Creature Studio was founded in 2005 by Qarrezel and is a wellknown artistic costume and design studio based in Towson, Maryland, USA. Two years later the studio changed its focus and became an active small creature costuming business.",
                                                                                            links: [])])
         
+        let rooms = APISyncDelta<APIRoom>(changed: [APIRoom(roomIdentifier: "dfa62eae-f881-4aab-a592-acf8fab14ae9",
+                                                            name: "Art Show — Convention Hall Section D")],
+                                          deleted: [APIRoom(roomIdentifier: "87148f04-4c4b-433d-9469-c8a970952443",
+                                                            name: "Artist Lounge — ECC Foyer 4")])
+        
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,
                                announcements: APISyncDelta(),
                                events: APISyncDelta(),
-                               rooms: APISyncDelta())
+                               rooms: rooms)
     }
     
 }
