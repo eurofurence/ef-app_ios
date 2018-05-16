@@ -160,7 +160,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                 self.announcementsObservers.forEach({ $0.eurofurenceApplicationDidChangeUnreadAnnouncements(to: self.announcements) })
 
                 let runningEvents = self.makeRunningEvents()
-                self.eventsObservers.forEach({ $0.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents) })
+                self.eventsObservers.forEach({ (observer) in
+                    observer.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents)
+                    observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: self.events)
+                })
 
                 self.privateMessagesController.fetchPrivateMessages { (_) in completionHandler(nil) }
             } else {
