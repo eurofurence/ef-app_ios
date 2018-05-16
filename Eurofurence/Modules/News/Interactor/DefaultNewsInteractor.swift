@@ -41,17 +41,11 @@ class DefaultNewsInteractor: NewsInteractor,
     // MARK: Initialization
 
     convenience init() {
-        struct DummyEventsService: EventsService {
-            func add(_ observer: EventsServiceObserver) {
-
-            }
-        }
-
         self.init(announcementsService: EurofurenceApplication.shared,
                   authenticationService: EurofurenceApplication.shared,
                   privateMessagesService: EurofurencePrivateMessagesService.shared,
                   daysUntilConventionService: EurofurenceApplication.shared,
-                  eventsService: DummyEventsService(),
+                  eventsService: EurofurenceApplication.shared,
                   relativeTimeIntervalCountdownFormatter: FoundationRelativeTimeIntervalCountdownFormatter.shared,
                   dateDistanceCalculator: FoundationDateDistanceCalculator(),
                   clock: SystemClock())
