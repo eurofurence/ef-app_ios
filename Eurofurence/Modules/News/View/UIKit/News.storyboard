@@ -158,16 +158,16 @@
                                             <rect key="frame" x="20" y="19.999999999999996" width="301" height="35.666666666666657"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67U-IV-K66">
-                                                    <rect key="frame" x="0.0" y="0.0" width="66" height="35.666666666666664"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="35.666666666666664"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="i79-ZE-sao">
-                                                            <rect key="frame" x="0.0" y="0.0" width="46" height="19.333333333333332"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="19.333333333333332"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8zS-KO-Jgs">
-                                                            <rect key="frame" x="12" y="19.333333333333336" width="46" height="14.333333333333336"/>
+                                                            <rect key="frame" x="15.666666666666661" y="20" width="36.333333333333343" height="14.333333333333336"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                             <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -175,17 +175,17 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="i79-ZE-sao" secondAttribute="trailing" constant="20" symbolic="YES" id="2jl-wg-fe9"/>
+                                                        <constraint firstAttribute="trailing" secondItem="i79-ZE-sao" secondAttribute="trailing" id="2jl-wg-fe9"/>
                                                         <constraint firstItem="i79-ZE-sao" firstAttribute="top" secondItem="67U-IV-K66" secondAttribute="top" id="8io-dB-eaZ"/>
                                                         <constraint firstItem="8zS-KO-Jgs" firstAttribute="leading" secondItem="i79-ZE-sao" secondAttribute="centerX" multiplier="0.5" id="D7s-rP-A5t"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="8zS-KO-Jgs" secondAttribute="trailing" id="PYi-zf-hVm"/>
                                                         <constraint firstItem="8zS-KO-Jgs" firstAttribute="firstBaseline" secondItem="i79-ZE-sao" secondAttribute="baseline" constant="16" symbolType="layoutAnchor" id="UXS-lU-z13"/>
                                                         <constraint firstItem="i79-ZE-sao" firstAttribute="leading" secondItem="67U-IV-K66" secondAttribute="leading" id="fHx-S1-fIa"/>
-                                                        <constraint firstAttribute="width" constant="66" id="ksy-Rf-lfs"/>
+                                                        <constraint firstAttribute="width" constant="60" id="ksy-Rf-lfs"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMf-Lx-CPL">
-                                                    <rect key="frame" x="74" y="0.0" width="227" height="35.666666666666664"/>
+                                                    <rect key="frame" x="68" y="0.0" width="233" height="35.666666666666664"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hkx-y4-hge">
                                                             <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -195,16 +195,16 @@
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="On0-gP-BLL">
-                                                            <rect key="frame" x="24" y="0.0" width="203" height="35.666666666666664"/>
+                                                            <rect key="frame" x="24" y="0.0" width="209" height="35.666666666666664"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akP-S6-pFg">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="203" height="19.333333333333332"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="209" height="19.333333333333332"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGf-vQ-eDf">
-                                                                    <rect key="frame" x="0.0" y="19.333333333333336" width="203" height="16.333333333333336"/>
+                                                                    <rect key="frame" x="0.0" y="19.333333333333336" width="209" height="16.333333333333336"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                     <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
