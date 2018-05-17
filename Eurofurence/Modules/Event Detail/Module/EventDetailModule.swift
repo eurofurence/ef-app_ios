@@ -11,8 +11,10 @@ import UIKit.UIViewController
 
 struct EventDetailModule: EventDetailModuleProviding {
 
+    var sceneFactory: EventDetailSceneFactory
+
     func makeEventDetailModule(for event: Event2) -> UIViewController {
-        return UIViewController()
+        return sceneFactory.makeEventDetailScene()
     }
 
 }
