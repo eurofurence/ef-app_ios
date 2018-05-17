@@ -28,6 +28,7 @@ class DirectorBuilder {
     private var knowledgeListModuleProviding: KnowledgeListModuleProviding
     private var knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding
     private var announcementDetailModuleProviding: AnnouncementDetailModuleProviding
+    private var eventDetailModuleProviding: EventDetailModuleProviding
     private var urlOpener: URLOpener
 
     init() {
@@ -48,6 +49,7 @@ class DirectorBuilder {
         knowledgeListModuleProviding = KnowledgeListModuleBuilder().build()
         knowledgeDetailModuleProviding = KnowledgeDetailModuleBuilder().build()
         announcementDetailModuleProviding = AnnouncementDetailModuleBuilder().build()
+        eventDetailModuleProviding = EventDetailModuleBuilder().build()
 
         linkLookupService = EurofurenceApplication.shared
         webModuleProviding = SafariWebModuleProviding()
@@ -168,6 +170,12 @@ class DirectorBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ eventDetailModuleProviding: EventDetailModuleProviding) -> DirectorBuilder {
+        self.eventDetailModuleProviding = eventDetailModuleProviding
+        return self
+    }
+
     func build() -> ApplicationDirector {
         return ApplicationDirector(animate: animate,
                                    linkLookupService: linkLookupService,
@@ -187,7 +195,8 @@ class DirectorBuilder {
                                    messageDetailModuleProviding: messageDetailModuleProviding,
                                    knowledgeListModuleProviding: knowledgeListModuleProviding,
                                    knowledgeDetailModuleProviding: knowledgeDetailModuleProviding,
-                                   announcementDetailModuleProviding: announcementDetailModuleProviding)
+                                   announcementDetailModuleProviding: announcementDetailModuleProviding,
+                                   eventDetailModuleProviding: eventDetailModuleProviding)
     }
 
 }

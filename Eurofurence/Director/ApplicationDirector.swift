@@ -43,6 +43,7 @@ class ApplicationDirector: RootModuleDelegate,
     private let knowledgeListModuleProviding: KnowledgeListModuleProviding
     private let knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding
     private let announcementDetailModuleProviding: AnnouncementDetailModuleProviding
+    private let eventDetailModuleProviding: EventDetailModuleProviding
 
     private let rootNavigationController: UINavigationController
     private let rootNavigationControllerDelegate = DissolveTransitionAnimationProviding()
@@ -70,7 +71,8 @@ class ApplicationDirector: RootModuleDelegate,
          messageDetailModuleProviding: MessageDetailModuleProviding,
          knowledgeListModuleProviding: KnowledgeListModuleProviding,
          knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding,
-         announcementDetailModuleProviding: AnnouncementDetailModuleProviding) {
+         announcementDetailModuleProviding: AnnouncementDetailModuleProviding,
+         eventDetailModuleProviding: EventDetailModuleProviding) {
         self.animate = animate
         self.linkLookupService = linkLookupService
         self.urlOpener = urlOpener
@@ -89,6 +91,7 @@ class ApplicationDirector: RootModuleDelegate,
         self.knowledgeListModuleProviding = knowledgeListModuleProviding
         self.knowledgeDetailModuleProviding = knowledgeDetailModuleProviding
         self.announcementDetailModuleProviding = announcementDetailModuleProviding
+        self.eventDetailModuleProviding = eventDetailModuleProviding
 
         rootNavigationController = navigationControllerFactory.makeNavigationController()
         rootNavigationController.delegate = rootNavigationControllerDelegate
@@ -167,7 +170,8 @@ class ApplicationDirector: RootModuleDelegate,
     }
 
     func newsModuleDidSelectEvent(_ event: Event2) {
-
+        let module = eventDetailModuleProviding.makeEventDetailModule(for: event)
+        newsNavigationController.pushViewController(module, animated: animate)
     }
 
     // MARK: MessagesModuleDelegate
