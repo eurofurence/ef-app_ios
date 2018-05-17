@@ -38,6 +38,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private var knowledgeGroups = [KnowledgeGroup2]()
     private var announcements = [Announcement2]()
     private var events = [Event2]()
+    private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
 
     init(userPreferences: UserPreferences,
          dataStore: EurofurenceDataStore,
@@ -51,13 +52,15 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
          syncAPI: SyncAPI,
          dateDistanceCalculator: DateDistanceCalculator,
          conventionStartDateRepository: ConventionStartDateRepository,
-         significantTimeChangeEventSource: SignificantTimeChangeEventSource) {
+         significantTimeChangeEventSource: SignificantTimeChangeEventSource,
+         timeIntervalForUpcomingEventsSinceNow: TimeInterval) {
         self.userPreferences = userPreferences
         self.dataStore = dataStore
         self.pushPermissionsRequester = pushPermissionsRequester
         self.pushPermissionsStateProviding = pushPermissionsStateProviding
         self.clock = clock
         self.syncAPI = syncAPI
+        self.timeIntervalForUpcomingEventsSinceNow = timeIntervalForUpcomingEventsSinceNow
 
         if pushPermissionsStateProviding.requestedPushNotificationAuthorization {
             pushPermissionsRequester.requestPushPermissions()
@@ -217,7 +220,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private func makeUpcomingEvents() -> [Event2] {
         let now = clock.currentDate
         return events.filter { (event) -> Bool in
-            return event.startDate > now
+            let range = DateInterval(start: now, end: now.addingTimeInterval(timeIntervalForUpcomingEventsSinceNow))
+            return range.contains(event.startDate)
         }
     }
 

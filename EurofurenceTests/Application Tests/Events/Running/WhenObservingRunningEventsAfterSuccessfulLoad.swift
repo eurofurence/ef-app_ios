@@ -45,7 +45,7 @@ class WhenObservingRunningEventsAfterSuccessfulLoad: XCTestCase {
         context.application.add(observer)
         
         let unexpectedEvents = syncResponse.events.changed.filter { (event) -> Bool in
-            return event.startDateTime < simulatedTime
+            return event.startDateTime <= simulatedTime
         }
         
         let unexpected = unexpectedEvents.map { (event) -> Event2 in

@@ -23,6 +23,7 @@ class EurofurenceApplicationBuilder {
     private var dateDistanceCalculator: DateDistanceCalculator
     private var conventionStartDateRepository: ConventionStartDateRepository
     private var significantTimeChangeEventSource: SignificantTimeChangeEventSource
+    private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
 
     init() {
         struct DummyUserPreferences: UserPreferences {
@@ -63,6 +64,7 @@ class EurofurenceApplicationBuilder {
         dateDistanceCalculator = FoundationDateDistanceCalculator()
         conventionStartDateRepository = EF24StartDateRepository()
         significantTimeChangeEventSource = ApplicationSignificantTimeChangeEventSource.shared
+        timeIntervalForUpcomingEventsSinceNow = 3600
     }
 
     @discardableResult
@@ -143,6 +145,12 @@ class EurofurenceApplicationBuilder {
         return self
     }
 
+    @discardableResult
+    func with(timeIntervalForUpcomingEventsSinceNow: TimeInterval) -> EurofurenceApplicationBuilder {
+        self.timeIntervalForUpcomingEventsSinceNow = timeIntervalForUpcomingEventsSinceNow
+        return self
+    }
+
     func build() -> EurofurenceApplicationProtocol {
         return EurofurenceApplication(userPreferences: userPreferences,
                                       dataStore: dataStore,
@@ -156,7 +164,8 @@ class EurofurenceApplicationBuilder {
                                       syncAPI: syncAPI,
                                       dateDistanceCalculator: dateDistanceCalculator,
                                       conventionStartDateRepository: conventionStartDateRepository,
-                                      significantTimeChangeEventSource: significantTimeChangeEventSource)
+                                      significantTimeChangeEventSource: significantTimeChangeEventSource,
+                                      timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow)
     }
 
 }

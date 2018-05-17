@@ -46,4 +46,20 @@ class WhenObservingUpcomingEvents_ThenLoadSucceeds: XCTestCase {
         XCTAssertEqual(expected, observer.upcomingEvents)
     }
     
+    func testTheObserverIsNotProvidedWithEventsTooFarIntoTheFuture() {
+        let timeIntervalForUpcomingEventsSinceNow: TimeInterval = .random
+        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let randomEvent = syncResponse.events.changed.randomElement().element
+        let simulatedTime = randomEvent.startDateTime.addingTimeInterval(-timeIntervalForUpcomingEventsSinceNow - 1)
+        let context = ApplicationTestBuilder().with(simulatedTime).with(timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow).build()
+        let observer = CapturingEventsServiceObserver()
+        context.application.add(observer)
+        context.refreshLocalStore()
+        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        
+        let unexpected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
+        
+        XCTAssertFalse(observer.upcomingEvents.contains(unexpected))
+    }
+    
 }

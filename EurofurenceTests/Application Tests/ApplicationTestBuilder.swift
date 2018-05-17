@@ -77,6 +77,7 @@ class ApplicationTestBuilder {
     private var dataStore = CapturingEurofurenceDataStore()
     private var userPreferences: UserPreferences = StubUserPreferences()
     private let syncAPI = CapturingSyncAPI()
+    private var timeIntervalForUpcomingEventsSinceNow: TimeInterval = .greatestFiniteMagnitude
     
     func with(_ currentDate: Date) -> ApplicationTestBuilder {
         stubClock = StubClock(currentDate: currentDate)
@@ -110,6 +111,12 @@ class ApplicationTestBuilder {
         return self
     }
     
+    @discardableResult
+    func with(timeIntervalForUpcomingEventsSinceNow: TimeInterval) -> ApplicationTestBuilder {
+        self.timeIntervalForUpcomingEventsSinceNow = timeIntervalForUpcomingEventsSinceNow
+        return self
+    }
+    
     func loggedInWithValidCredential() -> ApplicationTestBuilder {
         let credential = Credential(username: "User",
                                     registrationNumber: 42,
@@ -124,7 +131,8 @@ class ApplicationTestBuilder {
         let conventionStartDateRepository = StubConventionStartDateRepository()
         let significantTimeChangeEventSource = FakeSignificantTimeChangeEventSource()
         let app = EurofurenceApplicationBuilder()
-            .with(stubClock).with(capturingCredentialStore)
+            .with(stubClock)
+            .with(capturingCredentialStore)
             .with(dataStore)
             .with(loginAPI)
             .with(privateMessagesAPI)
@@ -136,6 +144,7 @@ class ApplicationTestBuilder {
             .with(dateDistanceCalculator)
             .with(conventionStartDateRepository)
             .with(significantTimeChangeEventSource)
+            .with(timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow)
             .build()
         
         return Context(application: app,
