@@ -14,17 +14,7 @@ class EventDetailModuleBuilder {
     private var sceneFactory: EventDetailSceneFactory
 
     init() {
-        struct DummyEventDetailSceneFactory: EventDetailSceneFactory {
-            func makeEventDetailScene() -> UIViewController & EventDetailScene {
-                class DummyEventDetailScene: UIViewController, EventDetailScene {
-
-                }
-
-                return DummyEventDetailScene()
-            }
-        }
-
-        sceneFactory = DummyEventDetailSceneFactory()
+        sceneFactory = StoryboardEventDetailSceneFactory()
     }
 
     @discardableResult
