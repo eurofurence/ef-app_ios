@@ -219,8 +219,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     private func makeUpcomingEvents() -> [Event2] {
         let now = clock.currentDate
+        let range = DateInterval(start: now, end: now.addingTimeInterval(timeIntervalForUpcomingEventsSinceNow))
         return events.filter { (event) -> Bool in
-            let range = DateInterval(start: now, end: now.addingTimeInterval(timeIntervalForUpcomingEventsSinceNow))
             return range.contains(event.startDate)
         }
     }
