@@ -23,6 +23,7 @@ protocol NewsViewModel {
 enum NewsViewModelValue: Equatable {
     case messages
     case announcement(Announcement2)
+    case event(Event2)
 
     static func ==(lhs: NewsViewModelValue, rhs: NewsViewModelValue) -> Bool {
         switch (lhs, rhs) {
@@ -30,6 +31,9 @@ enum NewsViewModelValue: Equatable {
             return true
 
         case (.announcement(let l), .announcement(let r)):
+            return l == r
+
+        case (.event(let l), .event(let r)):
             return l == r
 
         default:

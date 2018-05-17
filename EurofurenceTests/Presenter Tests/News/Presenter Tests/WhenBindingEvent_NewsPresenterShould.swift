@@ -36,8 +36,15 @@ class EventsViewModel: NewsViewModel {
         visitor.visit(event)
     }
     
+    private var models = [IndexPath : NewsViewModelValue]()
     func fetchModelValue(at indexPath: IndexPath, completionHandler: @escaping (NewsViewModelValue) -> Void) {
-        
+        if let model = models[indexPath] {
+            completionHandler(model)
+        }
+    }
+    
+    func stub(_ model: NewsViewModelValue, at indexPath: IndexPath) {
+        models[indexPath] = model
     }
     
 }
@@ -88,6 +95,14 @@ class WhenBindingEvent_NewsPresenterShould: XCTestCase {
     
     func testBindTheEventIconFromTheEventOntoTheEventScene() {
         XCTAssertEqual(eventViewModel.icon, context.newsScene.stubbedEventComponent.capturedIcon)
+    }
+    
+    func testTellTheDelegateEventSelectedWhenSceneSelectsComponentAtIndexPath() {
+        let event = Event2.random
+        viewModel.stub(.event(event), at: indexPath)
+        context.selectComponent(at: indexPath)
+        
+        XCTAssertEqual(event, context.delegate.capturedEvent)
     }
     
 }

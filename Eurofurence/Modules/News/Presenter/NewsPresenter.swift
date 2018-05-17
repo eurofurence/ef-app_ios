@@ -116,6 +116,9 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
 
             case .messages:
                 self.delegate.newsModuleDidRequestShowingPrivateMessages()
+
+            case .event(let event):
+                self.delegate.newsModuleDidSelectEvent(event)
             }
         }
     }

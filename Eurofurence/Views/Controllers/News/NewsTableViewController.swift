@@ -144,6 +144,10 @@ class NewsTableViewController: UITableViewController,
             func newsModuleDidSelectAnnouncement(_ announcement: Announcement2) {
 
             }
+
+            func newsModuleDidSelectEvent(_ event: Event2) {
+
+            }
         }
 
         struct DummyNewsInteractor: NewsInteractor {

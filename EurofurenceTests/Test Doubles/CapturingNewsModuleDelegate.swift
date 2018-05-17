@@ -21,4 +21,9 @@ class CapturingNewsModuleDelegate: NewsModuleDelegate {
         capturedAnnouncement = announcement
     }
     
+    private(set) var capturedEvent: Event2?
+    func newsModuleDidSelectEvent(_ event: Event2) {
+        capturedEvent = event
+    }
+    
 }
