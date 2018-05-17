@@ -36,7 +36,7 @@ class WhenObservingRunningEventsAfterSuccessfulLoad: XCTestCase {
     func testEventsThatHaveNotStartedAreNotProvidedToTheObserver() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement().element
-        let simulatedTime = randomEvent.startDateTime
+        let simulatedTime = randomEvent.startDateTime.addingTimeInterval(-1)
         let context = ApplicationTestBuilder().with(simulatedTime).build()
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(syncResponse)
@@ -44,15 +44,10 @@ class WhenObservingRunningEventsAfterSuccessfulLoad: XCTestCase {
         let observer = CapturingEventsServiceObserver()
         context.application.add(observer)
         
-        let unexpectedEvents = syncResponse.events.changed.filter { (event) -> Bool in
-            return event.startDateTime <= simulatedTime
-        }
+        let unexpected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
         
-        let unexpected = unexpectedEvents.map { (event) -> Event2 in
-            return context.makeExpectedEvent(from: event, response: syncResponse)
-        }
-        
-        XCTAssertFalse(observer.runningEvents.contains(elementsFrom: unexpected))
+        XCTAssertFalse(observer.runningEvents.contains(unexpected),
+                       "Simulated Time: \(simulatedTime)\nDid Not Expect: \(unexpected)")
     }
     
 }
