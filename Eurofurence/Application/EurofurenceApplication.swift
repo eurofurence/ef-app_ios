@@ -221,7 +221,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         let now = clock.currentDate
         let range = DateInterval(start: now, end: now.addingTimeInterval(timeIntervalForUpcomingEventsSinceNow))
         return events.filter { (event) -> Bool in
-            return range.contains(event.startDate)
+            return event.startDate > now && range.contains(event.startDate)
         }
     }
 
