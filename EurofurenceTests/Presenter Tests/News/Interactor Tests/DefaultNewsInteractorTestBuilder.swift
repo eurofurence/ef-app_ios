@@ -251,9 +251,15 @@ extension DefaultNewsInteractorTestBuilder.Context {
                 return
             }
             
-            viewModel.fetchModelValue(at: indexPath) { (value) in
-                XCTAssertEqual(expected, value, file: file, line: line)
+            var fetchedValue: NewsViewModelValue?
+            viewModel.fetchModelValue(at: indexPath) { fetchedValue = $0 }
+            
+            guard let actual = fetchedValue else {
+                XCTFail("Failed to fetch a model at index path \(indexPath)", file: file, line: line)
+                return
             }
+            
+            XCTAssertEqual(expected, actual, file: file, line: line)
         }
         
     }

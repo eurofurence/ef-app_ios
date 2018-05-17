@@ -265,6 +265,7 @@ class DefaultNewsInteractor: NewsInteractor,
 
     private struct EventsComponent: NewsViewModelComponent {
 
+        private let events: [Event2]
         private let viewModels: [EventComponentViewModel]
 
         init(title: String,
@@ -272,6 +273,7 @@ class DefaultNewsInteractor: NewsInteractor,
              startTimeFormatter: (Event2) -> String,
              hoursDateFormatter: HoursDateFormatter) {
             self.title = title
+            self.events = events
 
             viewModels = events.map { (event) -> EventComponentViewModel in
                 return EventComponentViewModel(startTime: startTimeFormatter(event),
@@ -294,7 +296,8 @@ class DefaultNewsInteractor: NewsInteractor,
         }
 
         func announceValue(at index: Int, to completionHandler: @escaping (NewsViewModelValue) -> Void) {
-
+            let event = events[index]
+            completionHandler(.event(event))
         }
 
     }

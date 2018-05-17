@@ -34,4 +34,21 @@ class WhenLoggedOutDuringConvention_NewsInteractorShould: XCTestCase {
             .verify()
     }
     
+    func testFetchTheUpcomingEventAtTheSpecifiedIndexPath() {
+        let eventsService = StubEventsService()
+        let upcomingEvents = [Event2].random
+        eventsService.upcomingEvents = upcomingEvents
+        let context = DefaultNewsInteractorTestBuilder()
+            .with(FakeAuthenticationService.loggedOutService())
+            .with(StubAnnouncementsService(announcements: .random))
+            .with(StubConventionCountdownService(countdownState: .countdownElapsed))
+            .with(eventsService)
+            .build()
+        context.subscribeViewModelUpdates()
+        
+        let randomEvent = upcomingEvents.randomElement()
+        let indexPath = IndexPath(item: randomEvent.index, section: 2)
+        context.assert().thatModel().at(indexPath: indexPath, is: .event(randomEvent.element))
+    }
+    
 }
