@@ -10,6 +10,18 @@ import Foundation
 
 struct EventDetailPresenter: EventDetailSceneDelegate {
 
+    private struct Binder: EventDetailBinder {
+
+        var viewModel: EventDetailViewModel
+
+        func bindComponent(at indexPath: IndexPath, using componentFactory: EventDetailComponentFactory) {
+            componentFactory.makeEventSummaryComponent { (component) in
+                component.setEventTitle(viewModel.title)
+            }
+        }
+
+    }
+
     private let scene: EventDetailScene
     private let interactor: EventDetailInteractor
     private let event: Event2
@@ -27,7 +39,7 @@ struct EventDetailPresenter: EventDetailSceneDelegate {
     }
 
     private func eventDetailViewModelReady(_ viewModel: EventDetailViewModel) {
-        scene.setEventTitle(viewModel.title)
+        scene.bind(using: Binder(viewModel: viewModel))
     }
 
 }

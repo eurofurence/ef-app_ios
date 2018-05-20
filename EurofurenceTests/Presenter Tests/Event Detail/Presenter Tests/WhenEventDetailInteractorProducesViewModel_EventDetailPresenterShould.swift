@@ -17,8 +17,9 @@ class WhenEventDetailInteractorProducesViewModel_EventDetailPresenterShould: XCT
         let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
         let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
         context.simulateSceneDidLoad()
+        context.scene.bindComponent(at: IndexPath(item: 0, section: 0))
         
-        XCTAssertEqual(viewModel.title, context.scene.capturedTitle)
+        XCTAssertEqual(viewModel.title, context.scene.stubbedEventSummaryComponent.capturedTitle)
     }
     
 }

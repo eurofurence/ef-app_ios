@@ -612,6 +612,9 @@
 		CACF1E7620B1D0FC00D904B5 /* StubEventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E7520B1D0FC00D904B5 /* StubEventDetailViewModel.swift */; };
 		CACF1E7820B1D10E00D904B5 /* DummyEventDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E7720B1D10E00D904B5 /* DummyEventDetailInteractor.swift */; };
 		CACF1E7A20B1D12E00D904B5 /* BeforeEventDetailSceneLoads_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E7920B1D12E00D904B5 /* BeforeEventDetailSceneLoads_EventDetailPresenterShould.swift */; };
+		CACF1E7C20B212A800D904B5 /* EventDetailBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E7B20B212A800D904B5 /* EventDetailBinder.swift */; };
+		CACF1E7E20B212B400D904B5 /* EventDetailComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E7D20B212B400D904B5 /* EventDetailComponentFactory.swift */; };
+		CACF1E8020B212BE00D904B5 /* EventSummaryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E7F20B212BE00D904B5 /* EventSummaryComponent.swift */; };
 		CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */; };
 		CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */; };
 		CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343B1F5D7203004BB959 /* MessagesScene.swift */; };
@@ -1371,6 +1374,9 @@
 		CACF1E7520B1D0FC00D904B5 /* StubEventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubEventDetailViewModel.swift; sourceTree = "<group>"; };
 		CACF1E7720B1D10E00D904B5 /* DummyEventDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyEventDetailInteractor.swift; sourceTree = "<group>"; };
 		CACF1E7920B1D12E00D904B5 /* BeforeEventDetailSceneLoads_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeEventDetailSceneLoads_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
+		CACF1E7B20B212A800D904B5 /* EventDetailBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailBinder.swift; sourceTree = "<group>"; };
+		CACF1E7D20B212B400D904B5 /* EventDetailComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailComponentFactory.swift; sourceTree = "<group>"; };
+		CACF1E7F20B212BE00D904B5 /* EventSummaryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSummaryComponent.swift; sourceTree = "<group>"; };
 		CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenterTestContext.swift; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMessagesScene.swift; sourceTree = "<group>"; };
 		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
@@ -3546,6 +3552,9 @@
 			children = (
 				CACF1E5720AE2DED00D904B5 /* EventDetailSceneFactory.swift */,
 				CACF1E5920AE2DFB00D904B5 /* EventDetailScene.swift */,
+				CACF1E7B20B212A800D904B5 /* EventDetailBinder.swift */,
+				CACF1E7D20B212B400D904B5 /* EventDetailComponentFactory.swift */,
+				CACF1E7F20B212BE00D904B5 /* EventSummaryComponent.swift */,
 			);
 			path = Abstraction;
 			sourceTree = "<group>";
@@ -4352,6 +4361,7 @@
 				CACF1E5A20AE2DFB00D904B5 /* EventDetailScene.swift in Sources */,
 				9ACF99931EC858B2006FC958 /* Dealer.swift in Sources */,
 				CA162E7020A4B691004AFED6 /* DateDistanceCalculator.swift in Sources */,
+				CACF1E7C20B212A800D904B5 /* EventDetailBinder.swift in Sources */,
 				CAEAEC011FE0054500C0EE7C /* MessageDetailModuleFactory.swift in Sources */,
 				CA9845DE1F2B01BA00E8821D /* UnreadMessageIndicator.swift in Sources */,
 				9A05254B1ECB097500578798 /* ApiConnectionProtocol.swift in Sources */,
@@ -4577,6 +4587,7 @@
 				CA6EC47D2051CBB800402894 /* KnowledgeDetailSceneFactory.swift in Sources */,
 				CABA43A11FD57A78009CB5B0 /* PreloadModuleBuilder.swift in Sources */,
 				9ACB006F1F16C945001CE9D2 /* EventFavorite.swift in Sources */,
+				CACF1E8020B212BE00D904B5 /* EventSummaryComponent.swift in Sources */,
 				D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */,
 				CA0F7632203314FE009DA079 /* KnowledgeListViewController.swift in Sources */,
 				CA728490209F9482007D912A /* DefaultMarkdownRenderer.swift in Sources */,
@@ -4670,6 +4681,7 @@
 				D6F3D339BFBA2C299453B6BA /* SettingsTableViewController.swift in Sources */,
 				D6F3D40D3515E7ABE9565906 /* AboutViewController.swift in Sources */,
 				D6F3DEED2F3250C61DB692D9 /* DealerViewController.swift in Sources */,
+				CACF1E7E20B212B400D904B5 /* EventDetailComponentFactory.swift in Sources */,
 				CA728455209D0576007D912A /* AnnouncementDetailSceneFactory.swift in Sources */,
 				D6F3D204D352FE26C3F90906 /* KnowledgeTableViewController.swift in Sources */,
 				CA2D07FB1FE902ED00BFD785 /* EurofurenceDataStore.swift in Sources */,

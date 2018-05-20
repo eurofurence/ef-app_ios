@@ -10,12 +10,7 @@
 import Foundation
 import UIKit.UIViewController
 
-class CapturingEventDetailScene: UIViewController, EventDetailScene {
-    
-    fileprivate var delegate: EventDetailSceneDelegate?
-    func setDelegate(_ delegate: EventDetailSceneDelegate) {
-        self.delegate = delegate
-    }
+class CapturingEventSummaryComponent: EventSummaryComponent {
     
     private(set) var capturedTitle: String?
     func setEventTitle(_ title: String) {
@@ -24,10 +19,42 @@ class CapturingEventDetailScene: UIViewController, EventDetailScene {
     
 }
 
+class StubEventDetailComponentFactory: EventDetailComponentFactory {
+    
+    let stubbedEventSummaryComponent = CapturingEventSummaryComponent()
+    func makeEventSummaryComponent(configuringUsing block: (EventSummaryComponent) -> Void) {
+        block(stubbedEventSummaryComponent)
+    }
+    
+}
+
+class CapturingEventDetailScene: UIViewController, EventDetailScene {
+    
+    fileprivate var delegate: EventDetailSceneDelegate?
+    func setDelegate(_ delegate: EventDetailSceneDelegate) {
+        self.delegate = delegate
+    }
+    
+    fileprivate let componentFactory = StubEventDetailComponentFactory()
+    fileprivate var binder: EventDetailBinder?
+    func bind(using binder: EventDetailBinder) {
+        self.binder = binder
+    }
+    
+}
+
 extension CapturingEventDetailScene {
+    
+    var stubbedEventSummaryComponent: CapturingEventSummaryComponent {
+        return componentFactory.stubbedEventSummaryComponent
+    }
     
     func simulateSceneDidLoad() {
         delegate?.eventDetailSceneDidLoad()
+    }
+    
+    func bindComponent(at indexPath: IndexPath) {
+        binder?.bindComponent(at: indexPath, using: componentFactory)
     }
     
 }

@@ -17,7 +17,7 @@ class BeforeEventDetailSceneLoads_EventDetailPresenterShould: XCTestCase {
         let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
         let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
         
-        XCTAssertNil(context.scene.capturedTitle)
+        XCTAssertNil(context.scene.stubbedEventSummaryComponent.capturedTitle)
     }
     
 }

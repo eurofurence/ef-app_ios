@@ -24,7 +24,7 @@ class EventDetailViewController: UIViewController, EventDetailScene {
         self.delegate = delegate
     }
 
-    func setEventTitle(_ title: String) {
+    func bind(using binder: EventDetailBinder) {
 
     }
 
