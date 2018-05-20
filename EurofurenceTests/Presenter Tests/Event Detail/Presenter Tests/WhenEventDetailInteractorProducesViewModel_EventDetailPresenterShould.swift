@@ -33,4 +33,15 @@ class WhenEventDetailInteractorProducesViewModel_EventDetailPresenterShould: XCT
         XCTAssertEqual(viewModel.eventStartTime, context.scene.stubbedEventSummaryComponent.capturedEventStartTime)
     }
     
+    func testApplyTheEventLocationOntoTheScene() {
+        let event = Event2.random
+        let viewModel = StubEventDetailViewModel()
+        let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
+        let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
+        context.simulateSceneDidLoad()
+        context.scene.bindComponent(at: IndexPath(item: 0, section: 0))
+        
+        XCTAssertEqual(viewModel.location, context.scene.stubbedEventSummaryComponent.capturedEventLocation)
+    }
+    
 }

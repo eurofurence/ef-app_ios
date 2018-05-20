@@ -22,6 +22,11 @@ class CapturingEventSummaryComponent: EventSummaryComponent {
         capturedEventStartTime = startTime
     }
     
+    private(set) var capturedEventLocation: String?
+    func setEventLocation(_ location: String) {
+        capturedEventLocation = location
+    }
+    
 }
 
 class StubEventDetailComponentFactory: EventDetailComponentFactory {

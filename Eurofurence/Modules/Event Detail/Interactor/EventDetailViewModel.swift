@@ -12,5 +12,6 @@ protocol EventDetailViewModel {
 
     var title: String { get }
     var eventStartTime: String { get }
+    var location: String { get }
 
 }

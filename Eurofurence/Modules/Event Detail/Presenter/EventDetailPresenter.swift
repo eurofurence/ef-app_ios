@@ -18,6 +18,7 @@ struct EventDetailPresenter: EventDetailSceneDelegate {
             componentFactory.makeEventSummaryComponent { (component) in
                 component.setEventTitle(viewModel.title)
                 component.setEventStartTime(viewModel.eventStartTime)
+                component.setEventLocation(viewModel.location)
             }
         }
 

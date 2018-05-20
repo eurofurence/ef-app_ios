@@ -12,5 +12,6 @@ protocol EventSummaryComponent {
 
     func setEventTitle(_ title: String)
     func setEventStartTime(_ startTime: String)
+    func setEventLocation(_ location: String)
 
 }
