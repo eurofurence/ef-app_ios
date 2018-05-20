@@ -20,6 +20,7 @@ struct EventDetailPresenter: EventDetailSceneDelegate {
                 component.setEventStartTime(viewModel.eventStartTime)
                 component.setEventLocation(viewModel.location)
                 component.setTrackName(viewModel.trackName)
+                component.setEventHosts(viewModel.eventHosts)
             }
         }
 

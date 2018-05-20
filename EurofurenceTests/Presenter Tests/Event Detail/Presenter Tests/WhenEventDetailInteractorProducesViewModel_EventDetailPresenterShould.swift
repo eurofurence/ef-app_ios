@@ -41,4 +41,8 @@ class WhenEventDetailInteractorProducesViewModel_EventDetailPresenterShould: XCT
         XCTAssertEqual(viewModel.trackName, context.scene.stubbedEventSummaryComponent.capturedTrackName)
     }
     
+    func testApplyTheEventHostsOntoTheScene() {
+        XCTAssertEqual(viewModel.eventHosts, context.scene.stubbedEventSummaryComponent.capturedEventHosts)
+    }
+    
 }
