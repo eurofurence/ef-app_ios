@@ -28,14 +28,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="bWY-v5-DtH">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="News Banner" translatesAutoresizingMaskIntoConstraints="NO" id="Y24-HB-RGm">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="Y24-HB-RGm" firstAttribute="leading" secondItem="bWY-v5-DtH" secondAttribute="leading" id="Ph4-WC-eIO"/>
+                                <constraint firstItem="Y24-HB-RGm" firstAttribute="top" secondItem="bWY-v5-DtH" secondAttribute="top" id="Uds-IC-y94"/>
+                                <constraint firstAttribute="trailing" secondItem="Y24-HB-RGm" secondAttribute="trailing" id="Yd0-rT-3xi"/>
+                                <constraint firstAttribute="bottom" secondItem="Y24-HB-RGm" secondAttribute="bottom" id="zKB-3T-3HV"/>
+                            </constraints>
+                        </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="ttW-jI-1Km">
-                            <rect key="frame" x="0.0" y="317" width="375" height="1"/>
+                            <rect key="frame" x="0.0" y="492" width="375" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsUserWidgetTableViewCell" rowHeight="76" id="IJa-9m-PM5" customClass="NewsUserWidgetTableViewCell" customModule="Eurofurence" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="76"/>
+                                <rect key="frame" x="0.0" y="203" width="375" height="76"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IJa-9m-PM5" id="dfQ-kW-DEQ">
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="75.666666666666671"/>
@@ -111,7 +127,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsAnnouncementTableViewCell" rowHeight="76" id="UE0-SO-Nue" customClass="NewsAnnouncementTableViewCell" customModule="Eurofurence" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="104" width="375" height="76"/>
+                                <rect key="frame" x="0.0" y="279" width="375" height="76"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UE0-SO-Nue" id="xK7-wP-jVr">
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="75.666666666666671"/>
@@ -148,7 +164,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsEventTableViewCell" rowHeight="76" id="eEe-LD-Qsm" customClass="NewsEventTableViewCell" customModule="Eurofurence" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="180" width="375" height="76"/>
+                                <rect key="frame" x="0.0" y="355" width="375" height="76"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eEe-LD-Qsm" id="Yx7-qL-9gS">
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="75.666666666666671"/>
@@ -197,14 +213,14 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="On0-gP-BLL">
                                                             <rect key="frame" x="24" y="0.0" width="209" height="35.666666666666664"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akP-S6-pFg">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="209" height="19.333333333333332"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akP-S6-pFg">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="209" height="21.333333333333332"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGf-vQ-eDf">
-                                                                    <rect key="frame" x="0.0" y="19.333333333333336" width="209" height="16.333333333333336"/>
+                                                                    <rect key="frame" x="0.0" y="21.333333333333336" width="209" height="14.333333333333336"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                                     <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -241,14 +257,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsConventionCountdownTableViewCell" rowHeight="61" id="S1e-m1-dfl" customClass="NewsConventionCountdownTableViewCell" customModule="Eurofurence" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="256" width="375" height="61"/>
+                                <rect key="frame" x="0.0" y="431" width="375" height="61"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S1e-m1-dfl" id="wrS-yz-oGz">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BR6-wC-Oa1">
-                                            <rect key="frame" x="20" y="21" width="335" height="19.333333333333329"/>
+                                            <rect key="frame" x="20" y="21" width="335" height="19.666666666666671"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -275,10 +291,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y28-We-3bk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-274.39999999999998" y="153.69458128078819"/>
+            <point key="canvasLocation" x="-275" y="153.515625"/>
         </scene>
     </scenes>
     <resources>
         <image name="News" width="16" height="16"/>
+        <image name="News Banner" width="500" height="166"/>
     </resources>
 </document>
