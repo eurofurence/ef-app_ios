@@ -27,6 +27,11 @@ class CapturingEventSummaryComponent: EventSummaryComponent {
         capturedEventLocation = location
     }
     
+    private(set) var capturedTrackName: String?
+    func setTrackName(_ trackName: String) {
+        capturedTrackName = trackName
+    }
+    
 }
 
 class StubEventDetailComponentFactory: EventDetailComponentFactory {
