@@ -12,4 +12,22 @@ import UIKit.UIViewController
 
 class CapturingEventDetailScene: UIViewController, EventDetailScene {
     
+    fileprivate var delegate: EventDetailSceneDelegate?
+    func setDelegate(_ delegate: EventDetailSceneDelegate) {
+        self.delegate = delegate
+    }
+    
+    private(set) var capturedTitle: String?
+    func setEventTitle(_ title: String) {
+        capturedTitle = title
+    }
+    
+}
+
+extension CapturingEventDetailScene {
+    
+    func simulateSceneDidLoad() {
+        delegate?.eventDetailSceneDidLoad()
+    }
+    
 }

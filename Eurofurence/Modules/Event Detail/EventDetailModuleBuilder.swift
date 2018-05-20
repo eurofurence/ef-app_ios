@@ -12,9 +12,17 @@ import UIKit.UIViewController
 class EventDetailModuleBuilder {
 
     private var sceneFactory: EventDetailSceneFactory
+    private var interactor: EventDetailInteractor
 
     init() {
+        struct DummyEventDetailInteractor: EventDetailInteractor {
+            func makeViewModel(for event: Event2, completionHandler: @escaping (EventDetailViewModel) -> Void) {
+
+            }
+        }
+
         sceneFactory = StoryboardEventDetailSceneFactory()
+        interactor = DummyEventDetailInteractor()
     }
 
     @discardableResult
@@ -23,8 +31,14 @@ class EventDetailModuleBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ interactor: EventDetailInteractor) -> EventDetailModuleBuilder {
+        self.interactor = interactor
+        return self
+    }
+
     func build() -> EventDetailModuleProviding {
-        return EventDetailModule(sceneFactory: sceneFactory)
+        return EventDetailModule(sceneFactory: sceneFactory, interactor: interactor)
     }
 
 }

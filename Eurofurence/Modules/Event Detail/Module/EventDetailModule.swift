@@ -12,9 +12,13 @@ import UIKit.UIViewController
 struct EventDetailModule: EventDetailModuleProviding {
 
     var sceneFactory: EventDetailSceneFactory
+    var interactor: EventDetailInteractor
 
     func makeEventDetailModule(for event: Event2) -> UIViewController {
-        return sceneFactory.makeEventDetailScene()
+        let scene = sceneFactory.makeEventDetailScene()
+        _ = EventDetailPresenter(scene: scene, interactor: interactor, event: event)
+
+        return scene
     }
 
 }

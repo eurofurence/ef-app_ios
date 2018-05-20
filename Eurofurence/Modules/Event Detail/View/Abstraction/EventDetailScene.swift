@@ -8,4 +8,13 @@
 
 protocol EventDetailScene {
 
+    func setDelegate(_ delegate: EventDetailSceneDelegate)
+    func setEventTitle(_ title: String)
+
+}
+
+protocol EventDetailSceneDelegate {
+
+    func eventDetailSceneDidLoad()
+
 }

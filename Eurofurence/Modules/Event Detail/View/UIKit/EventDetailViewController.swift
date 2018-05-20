@@ -10,4 +10,22 @@ import UIKit
 
 class EventDetailViewController: UIViewController, EventDetailScene {
 
+    // MARK: Overrides
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        delegate?.eventDetailSceneDidLoad()
+    }
+
+    // MARK: EventDetailScene
+
+    private var delegate: EventDetailSceneDelegate?
+    func setDelegate(_ delegate: EventDetailSceneDelegate) {
+        self.delegate = delegate
+    }
+
+    func setEventTitle(_ title: String) {
+
+    }
+
 }

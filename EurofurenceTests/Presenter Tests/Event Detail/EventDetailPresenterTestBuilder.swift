@@ -17,14 +17,35 @@ class EventDetailPresenterTestBuilder {
         var scene: CapturingEventDetailScene
     }
     
-    func build() -> Context {
+    private var interactor: EventDetailInteractor
+    
+    init() {
+        interactor = DummyEventDetailInteractor()
+    }
+    
+    @discardableResult
+    func with(_ interactor: EventDetailInteractor) -> EventDetailPresenterTestBuilder {
+        self.interactor = interactor
+        return self
+    }
+    
+    func build(for event: Event2 = .random) -> Context {
         let sceneFactory = StubEventDetailSceneFactory()
         let module = EventDetailModuleBuilder()
             .with(sceneFactory)
+            .with(interactor)
             .build()
-            .makeEventDetailModule(for: .random)
+            .makeEventDetailModule(for: event)
         
         return Context(producedViewController: module, scene: sceneFactory.interface)
+    }
+    
+}
+
+extension EventDetailPresenterTestBuilder.Context {
+    
+    func simulateSceneDidLoad() {
+        scene.simulateSceneDidLoad()
     }
     
 }
