@@ -12,5 +12,6 @@ import Foundation
 struct StubEventDetailViewModel: EventDetailViewModel {
     
     var title: String = .random
+    var eventStartTime: String = .random
     
 }

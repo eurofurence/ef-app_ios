@@ -11,5 +11,6 @@ import Foundation
 protocol EventSummaryComponent {
 
     func setEventTitle(_ title: String)
+    func setEventStartTime(_ startTime: String)
 
 }

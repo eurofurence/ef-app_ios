@@ -11,5 +11,6 @@ import Foundation
 protocol EventDetailViewModel {
 
     var title: String { get }
+    var eventStartTime: String { get }
 
 }
