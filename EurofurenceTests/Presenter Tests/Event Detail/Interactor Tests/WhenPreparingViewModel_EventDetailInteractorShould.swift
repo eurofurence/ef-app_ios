@@ -11,23 +11,26 @@ import XCTest
 
 class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {
     
-    func testAdaptEventTitleIntoViewModel() {
-        let event = Event2.random
-        let interactor = DefaultEventDetailInteractor(dateRangeFormatter: FakeDateRangeFormatter())
-        var viewModel: EventDetailViewModel?
-        interactor.makeViewModel(for: event) { viewModel = $0 }
+    var event: Event2!
+    var dateRangeFormatter: FakeDateRangeFormatter!
+    var interactor: DefaultEventDetailInteractor!
+    var viewModel: EventDetailViewModel?
+    
+    override func setUp() {
+        super.setUp()
         
+        dateRangeFormatter = FakeDateRangeFormatter()
+        event = .random
+        interactor = DefaultEventDetailInteractor(dateRangeFormatter: dateRangeFormatter)
+        interactor.makeViewModel(for: event) { self.viewModel = $0 }
+    }
+    
+    func testAdaptEventTitleIntoViewModel() {
         XCTAssertEqual(event.title, viewModel?.title)
     }
     
     func testFormatStartAndEndTimesIntoViewModel() {
-        let dateRangeFormatter = FakeDateRangeFormatter()
-        let event = Event2.random
-        let interactor = DefaultEventDetailInteractor(dateRangeFormatter: dateRangeFormatter)
-        var viewModel: EventDetailViewModel?
-        interactor.makeViewModel(for: event) { viewModel = $0 }
         let expected = dateRangeFormatter.string(from: event.startDate, to: event.endDate)
-        
         XCTAssertEqual(expected, viewModel?.eventStartEndTime)
     }
     
