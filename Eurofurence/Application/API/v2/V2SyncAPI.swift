@@ -133,6 +133,7 @@ private struct JSONSyncResponse: Decodable {
     struct JSONEvent: Decodable, ModelRepresenting {
 
         var ConferenceRoomId: String
+        var ConferenceTrackId: String
         var StartDateTimeUtc: Date
         var EndDateTimeUtc: Date
         var Title: String
@@ -140,7 +141,7 @@ private struct JSONSyncResponse: Decodable {
 
         var modelValue: APIEvent {
             return APIEvent(roomIdentifier: ConferenceRoomId,
-                            trackIdentifier: "",
+                            trackIdentifier: ConferenceTrackId,
                             startDateTime: StartDateTimeUtc,
                             endDateTime: EndDateTimeUtc,
                             title: Title,
