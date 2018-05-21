@@ -31,7 +31,7 @@ class WhenEventDetailInteractorProducesViewModel_EventDetailPresenterShould: XCT
     }
     
     func testApplyTheEventStartTimeOntoTheScene() {
-        XCTAssertEqual(viewModel.eventStartTime, context.scene.stubbedEventSummaryComponent.capturedEventStartTime)
+        XCTAssertEqual(viewModel.eventStartEndTime, context.scene.stubbedEventSummaryComponent.capturedEventStartTime)
     }
     
     func testApplyTheEventLocationOntoTheScene() {

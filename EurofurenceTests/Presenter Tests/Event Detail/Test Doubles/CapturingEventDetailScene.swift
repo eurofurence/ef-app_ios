@@ -18,7 +18,7 @@ class CapturingEventSummaryComponent: EventSummaryComponent {
     }
     
     private(set) var capturedEventStartTime: String?
-    func setEventStartTime(_ startTime: String) {
+    func setEventStartEndTime(_ startTime: String) {
         capturedEventStartTime = startTime
     }
     

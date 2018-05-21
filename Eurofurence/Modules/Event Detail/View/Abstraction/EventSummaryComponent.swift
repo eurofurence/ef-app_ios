@@ -11,7 +11,7 @@ import Foundation
 protocol EventSummaryComponent {
 
     func setEventTitle(_ title: String)
-    func setEventStartTime(_ startTime: String)
+    func setEventStartEndTime(_ startEndTime: String)
     func setEventLocation(_ location: String)
     func setTrackName(_ trackName: String)
     func setEventHosts(_ eventHosts: String)

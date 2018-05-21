@@ -11,7 +11,7 @@ import Foundation
 protocol EventDetailViewModel {
 
     var title: String { get }
-    var eventStartTime: String { get }
+    var eventStartEndTime: String { get }
     var location: String { get }
     var trackName: String { get }
     var eventHosts: String { get }
