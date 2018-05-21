@@ -111,67 +111,15 @@
         "StorageDeltaStartChangeDateTimeUtc": "2018-01-12T07:32:35.107Z",
         "RemoveAllBeforeInsert": true,
         "ChangedEntities": [{
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.653Z",
-                            "Id": "0f93a07c-7e87-4bdd-8ed8-26a6902f8a6f",
-                            "Name": "Art Show"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.855Z",
-                            "Id": "110af6d6-45cd-40c8-8261-d6980c6f9bd8",
-                            "Name": "Charity"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.856Z",
-                            "Id": "ea76c202-5544-4bc7-92b7-1d1221211a55",
-                            "Name": "Creating Art"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.857Z",
-                            "Id": "4233cf02-9e8d-444c-a8c7-d2ecc78722d1",
-                            "Name": "Dealers' Den"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.858Z",
-                            "Id": "a14380b6-b6e1-4b29-8502-e1e1b446c6a2",
-                            "Name": "Fursuit"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.859Z",
-                            "Id": "6619ef18-ffdd-452b-9377-3d489fd13683",
-                            "Name": "Games | Social"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.861Z",
-                            "Id": "4b570406-04aa-4e11-b824-c56e4a716b66",
-                            "Name": "Guest of Honor"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.862Z",
-                            "Id": "572b252a-ff3e-4326-a6f4-c71ae88cef96",
-                            "Name": "Lobby and Outdoor"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.863Z",
-                            "Id": "1e866eaa-89d0-4f32-bbb4-84db99b46793",
-                            "Name": "Misc."
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.864Z",
-                            "Id": "27218ba3-fb08-4429-9711-85595611442f",
-                            "Name": "Performance"
-                            },
-                            {
                             "LastChangeDateTimeUtc": "2018-01-12T08:56:45.865Z",
                             "Id": "f92a4fc0-303f-4c13-9194-44121d80bd20",
                             "Name": "Stage"
-                            },
-                            {
+                            }],
+        "DeletedEntities": [{
                             "LastChangeDateTimeUtc": "2018-01-12T08:56:45.866Z",
                             "Id": "cf410a89-379d-40c7-89ea-d0b6b51ea914",
                             "Name": "Supersponsor Event"
-                            }
-                            ],
-        "DeletedEntities": []
+                            }]
     },
     "KnowledgeGroups": {
         "StorageLastChangeDateTimeUtc": "2018-01-12T08:00:13.169Z",

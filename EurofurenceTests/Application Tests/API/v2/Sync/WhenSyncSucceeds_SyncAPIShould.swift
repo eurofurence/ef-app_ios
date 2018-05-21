@@ -59,6 +59,11 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
         XCTAssertEqual(expected, response?.events)
     }
     
+    func testProduceExpectedTracks() {
+        let expected = makeExpectedSyncResponseFromTestFile().tracks
+        XCTAssertEqual(expected, response?.tracks)
+    }
+    
     private func makeExpectedSyncResponseFromTestFile() -> APISyncResponse {
         let knowledgeGroups = APISyncDelta<APIKnowledgeGroup>(changed: [APIKnowledgeGroup(identifier: "ec031cbf-d8d0-825d-4c36-b782ed8d19d8",
                                                                                           order: 0,
@@ -130,12 +135,17 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                title: "Fursuit Lounge",
                                                                abstract: "Welcome to the Athropomorphic Wellness and First-Aid Center.")])
         
+        let tracks = APISyncDelta<APITrack>(changed: [APITrack(trackIdentifier: "f92a4fc0-303f-4c13-9194-44121d80bd20",
+                                                               name: "Stage")],
+                                            deleted: [APITrack(trackIdentifier: "cf410a89-379d-40c7-89ea-d0b6b51ea914",
+                                                               name: "Supersponsor Event")])
+        
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,
                                announcements: APISyncDelta(),
                                events: events,
                                rooms: rooms,
-                               tracks: APISyncDelta())
+                               tracks: tracks)
     }
     
 }
