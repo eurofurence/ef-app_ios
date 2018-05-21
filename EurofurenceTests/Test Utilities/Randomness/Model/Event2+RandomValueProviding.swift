@@ -13,7 +13,11 @@ extension Event2: RandomValueProviding {
     
     static var random: Event2 {
         let startDate = Date.random
-        return Event2(title: .random, room: .random, startDate: startDate, endDate: startDate.addingTimeInterval(.random))
+        return Event2(title: .random,
+                      abstract: .random,
+                      room: .random,
+                      startDate: startDate,
+                      endDate: startDate.addingTimeInterval(.random))
     }
     
 }

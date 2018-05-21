@@ -38,4 +38,8 @@ class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {
         XCTAssertEqual(event.room.name, viewModel?.location)
     }
     
+    func testAdaptEventAbstractIntoViewModelSubtitle() {
+        XCTAssertEqual(event.abstract, viewModel?.subtitle)
+    }
+    
 }

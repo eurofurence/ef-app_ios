@@ -34,7 +34,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
     func makeViewModel(for event: Event2, completionHandler: @escaping (EventDetailViewModel) -> Void) {
         let startEndTimeString = dateRangeFormatter.string(from: event.startDate, to: event.endDate)
         let viewModel = ViewModel(title: event.title,
-                                  subtitle: "",
+                                  subtitle: event.abstract,
                                   eventStartEndTime: startEndTimeString,
                                   location: event.room.name,
                                   trackName: "",
