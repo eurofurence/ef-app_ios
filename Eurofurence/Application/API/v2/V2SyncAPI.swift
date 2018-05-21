@@ -140,7 +140,8 @@ private struct JSONSyncResponse: Decodable {
             return APIEvent(roomIdentifier: ConferenceRoomId,
                             startDateTime: StartDateTimeUtc,
                             endDateTime: EndDateTimeUtc,
-                            title: Title)
+                            title: Title,
+                            abstract: "")
         }
 
     }

@@ -243,7 +243,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             guard let room = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier }) else { return nil }
 
             return Event2(title: event.title,
-                          abstract: "",
+                          abstract: event.abstract,
                           room: Room(name: room.name),
                           startDate: event.startDateTime,
                           endDate: event.endDateTime)

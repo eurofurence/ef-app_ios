@@ -120,11 +120,13 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
         let events = APISyncDelta<APIEvent>(changed: [APIEvent(roomIdentifier: "87148f04-4c4b-433d-9469-c8a970952443",
                                                                startDateTime: changedEventStartDate.date!,
                                                                endDateTime: changedEventEndDate.date!,
-                                                               title: "Artists' Lounge")],
+                                                               title: "Artists' Lounge",
+                                                               abstract: "")],
                                             deleted: [APIEvent(roomIdentifier: "c72e2290-49fd-496a-9efc-2f68a5f0f0f8",
                                                                startDateTime: deletedEventStartDate.date!,
                                                                endDateTime: deletedEventEndDate.date!,
-                                                               title: "Fursuit Lounge")])
+                                                               title: "Fursuit Lounge",
+                                                               abstract: "")])
         
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,

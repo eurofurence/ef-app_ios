@@ -14,12 +14,14 @@ struct APIEvent: Equatable {
         return lhs.roomIdentifier == rhs.roomIdentifier &&
                lhs.startDateTime == rhs.startDateTime &&
                lhs.endDateTime == rhs.endDateTime &&
-               lhs.title == rhs.title
+               lhs.title == rhs.title &&
+               lhs.abstract == rhs.abstract
     }
 
     var roomIdentifier: String
     var startDateTime: Date
     var endDateTime: Date
     var title: String
+    var abstract: String
 
 }

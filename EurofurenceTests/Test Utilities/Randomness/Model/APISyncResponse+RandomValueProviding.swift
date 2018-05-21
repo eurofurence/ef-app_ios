@@ -32,7 +32,8 @@ extension APISyncResponse {
             return APIEvent(roomIdentifier: rooms.randomElement().element.roomIdentifier,
                             startDateTime: eventStartTime,
                             endDateTime: eventStartTime.addingTimeInterval(.random),
-                            title: .random)
+                            title: .random,
+                            abstract: .random)
         }
         
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
