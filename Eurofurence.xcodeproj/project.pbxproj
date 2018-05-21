@@ -621,6 +621,8 @@
 		CACF1E8A20B351D400D904B5 /* DateRangeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E8920B351D400D904B5 /* DateRangeFormatter.swift */; };
 		CACF1E8C20B351EA00D904B5 /* FakeDateRangeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E8B20B351EA00D904B5 /* FakeDateRangeFormatter.swift */; };
 		CACF1E8E20B352B800D904B5 /* FoundationDateRangeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E8D20B352B800D904B5 /* FoundationDateRangeFormatter.swift */; };
+		CACF1E9020B36B5800D904B5 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E8F20B36B5800D904B5 /* Track.swift */; };
+		CACF1E9220B36BC800D904B5 /* Track+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E9120B36BC800D904B5 /* Track+RandomValueProviding.swift */; };
 		CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */; };
 		CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */; };
 		CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343B1F5D7203004BB959 /* MessagesScene.swift */; };
@@ -1389,6 +1391,8 @@
 		CACF1E8920B351D400D904B5 /* DateRangeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRangeFormatter.swift; sourceTree = "<group>"; };
 		CACF1E8B20B351EA00D904B5 /* FakeDateRangeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDateRangeFormatter.swift; sourceTree = "<group>"; };
 		CACF1E8D20B352B800D904B5 /* FoundationDateRangeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationDateRangeFormatter.swift; sourceTree = "<group>"; };
+		CACF1E8F20B36B5800D904B5 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		CACF1E9120B36BC800D904B5 /* Track+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Track+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenterTestContext.swift; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMessagesScene.swift; sourceTree = "<group>"; };
 		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
@@ -2424,6 +2428,7 @@
 				CA30EAC31F2672BF0053DBF6 /* Message.swift */,
 				CA162E9520A88854004AFED6 /* Room.swift */,
 				CA30EAAD1F2148780053DBF6 /* User.swift */,
+				CACF1E8F20B36B5800D904B5 /* Track.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3473,6 +3478,7 @@
 				CA637579208CDB7B00536BE2 /* Message+RandomValueProviding.swift */,
 				CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */,
 				CA162E9720A8886C004AFED6 /* Room+RandomValueProviding.swift */,
+				CACF1E9120B36BC800D904B5 /* Track+RandomValueProviding.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4671,6 +4677,7 @@
 				CACF1E7220B1CE9A00D904B5 /* EventDetailPresenter.swift in Sources */,
 				CAD3BDC2205AA7BE00C91E6E /* WebModuleProviding.swift in Sources */,
 				CABF03BB2041C2B00028BD62 /* KnowledgeGroup2.swift in Sources */,
+				CACF1E9020B36B5800D904B5 /* Track.swift in Sources */,
 				9A9487FF1F1D5EA700119DC8 /* UserDefaultsEventNotificationPreferences.swift in Sources */,
 				7820A6E71F1400A8004C0FB5 /* AlertRouter.swift in Sources */,
 				CA728451209D0557007D912A /* AnnouncementDetailModule.swift in Sources */,
@@ -4793,6 +4800,7 @@
 				CA9845DC1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift in Sources */,
 				CA8276B8204F19CA006A7419 /* WhenPerformingSyncThatFails.swift in Sources */,
 				CA81D48E1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift in Sources */,
+				CACF1E9220B36BC800D904B5 /* Track+RandomValueProviding.swift in Sources */,
 				CA6375B6208E03A800536BE2 /* DealersPresenterTestBuilder.swift in Sources */,
 				CA637595208DFD3700536BE2 /* CapturingEventsScene.swift in Sources */,
 				6EF96CDB1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift in Sources */,

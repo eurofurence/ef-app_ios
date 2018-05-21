@@ -62,6 +62,7 @@ class ApplicationTestBuilder {
             return Event2(title: event.title,
                           abstract: event.abstract,
                           room: Room(name: expectedRoom.name),
+                          track: Track(name: ""),
                           startDate: event.startDateTime,
                           endDate: event.endDateTime)
         }

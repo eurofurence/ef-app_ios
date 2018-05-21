@@ -245,6 +245,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             return Event2(title: event.title,
                           abstract: event.abstract,
                           room: Room(name: room.name),
+                          track: Track(name: ""),
                           startDate: event.startDateTime,
                           endDate: event.endDateTime)
         })

@@ -42,4 +42,8 @@ class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {
         XCTAssertEqual(event.abstract, viewModel?.subtitle)
     }
     
+    func testAdaptEventTrackIntoViewModel() {
+        XCTAssertEqual(event.track.name, viewModel?.trackName)
+    }
+    
 }
