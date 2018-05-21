@@ -12,6 +12,7 @@ struct APIEvent: Equatable {
 
     static func ==(lhs: APIEvent, rhs: APIEvent) -> Bool {
         return lhs.roomIdentifier == rhs.roomIdentifier &&
+               lhs.trackIdentifier == rhs.trackIdentifier &&
                lhs.startDateTime == rhs.startDateTime &&
                lhs.endDateTime == rhs.endDateTime &&
                lhs.title == rhs.title &&
@@ -19,6 +20,7 @@ struct APIEvent: Equatable {
     }
 
     var roomIdentifier: String
+    var trackIdentifier: String
     var startDateTime: Date
     var endDateTime: Date
     var title: String

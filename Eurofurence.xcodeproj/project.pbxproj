@@ -623,6 +623,7 @@
 		CACF1E8E20B352B800D904B5 /* FoundationDateRangeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E8D20B352B800D904B5 /* FoundationDateRangeFormatter.swift */; };
 		CACF1E9020B36B5800D904B5 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E8F20B36B5800D904B5 /* Track.swift */; };
 		CACF1E9220B36BC800D904B5 /* Track+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E9120B36BC800D904B5 /* Track+RandomValueProviding.swift */; };
+		CACF1E9420B36C5A00D904B5 /* APITrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E9320B36C5A00D904B5 /* APITrack.swift */; };
 		CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */; };
 		CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */; };
 		CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343B1F5D7203004BB959 /* MessagesScene.swift */; };
@@ -1393,6 +1394,7 @@
 		CACF1E8D20B352B800D904B5 /* FoundationDateRangeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationDateRangeFormatter.swift; sourceTree = "<group>"; };
 		CACF1E8F20B36B5800D904B5 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		CACF1E9120B36BC800D904B5 /* Track+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Track+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CACF1E9320B36C5A00D904B5 /* APITrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITrack.swift; sourceTree = "<group>"; };
 		CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenterTestContext.swift; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMessagesScene.swift; sourceTree = "<group>"; };
 		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
@@ -3820,6 +3822,7 @@
 				CAD3BDB2205874AF00C91E6E /* APILink.swift */,
 				CA162EDF20AAF7C3004AFED6 /* APIRoom.swift */,
 				CAF5979520449A0400089BE8 /* APISyncResponse.swift */,
+				CACF1E9320B36C5A00D904B5 /* APITrack.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4488,6 +4491,7 @@
 				CA73AEE7201A0883004E77BF /* KnowledgeListScene.swift in Sources */,
 				9A34B9871ED08C7E004A249E /* JsonDataStore.swift in Sources */,
 				CA8D97CD201610EC0074838F /* DomainEvent.swift in Sources */,
+				CACF1E9420B36C5A00D904B5 /* APITrack.swift in Sources */,
 				CAEAEC081FE06F3C00C0EE7C /* MessageDetailViewControllerV2.swift in Sources */,
 				CA162E9E20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift in Sources */,
 				CAD3BDB3205874AF00C91E6E /* APILink.swift in Sources */,

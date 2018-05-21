@@ -27,9 +27,11 @@ extension APISyncResponse {
         }
         
         let rooms = [APIRoom].random
+        let tracks = [APITrack].random
         let events = (0...Int.random(upperLimit: 10) + 5).map { (_) -> APIEvent in
             let eventStartTime: Date = .random
             return APIEvent(roomIdentifier: rooms.randomElement().element.roomIdentifier,
+                            trackIdentifier: tracks.randomElement().element.trackIdentifier,
                             startDateTime: eventStartTime,
                             endDateTime: eventStartTime.addingTimeInterval(.random),
                             title: .random,
@@ -40,7 +42,8 @@ extension APISyncResponse {
                                knowledgeEntries: APISyncDelta(changed: knowledgeEntries),
                                announcements: APISyncDelta(changed: .random),
                                events: APISyncDelta(changed: events),
-                               rooms: APISyncDelta(changed: rooms))
+                               rooms: APISyncDelta(changed: rooms),
+                               tracks: APISyncDelta(changed: tracks))
     }
     
 }
@@ -89,6 +92,14 @@ extension APIRoom: RandomValueProviding {
     
     static var random: APIRoom {
         return APIRoom(roomIdentifier: .random, name: .random)
+    }
+    
+}
+
+extension APITrack: RandomValueProviding {
+    
+    static var random: APITrack {
+        return APITrack(trackIdentifier: .random, name: .random)
     }
     
 }

@@ -241,11 +241,12 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private func updateEvents(from response: APISyncResponse) {
         events = response.events.changed.flatMap({ (event) -> Event2? in
             guard let room = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier }) else { return nil }
+            guard let track = response.tracks.changed.first(where: { $0.trackIdentifier == event.trackIdentifier }) else { return nil }
 
             return Event2(title: event.title,
                           abstract: event.abstract,
                           room: Room(name: room.name),
-                          track: Track(name: ""),
+                          track: Track(name: track.name),
                           startDate: event.startDateTime,
                           endDate: event.endDateTime)
         })

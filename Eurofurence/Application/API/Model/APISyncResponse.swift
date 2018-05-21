@@ -31,6 +31,7 @@ struct APISyncResponse: Equatable {
     var announcements: APISyncDelta<APIAnnouncement>
     var events: APISyncDelta<APIEvent>
     var rooms: APISyncDelta<APIRoom>
+    var tracks: APISyncDelta<APITrack>
 
     static func ==(lhs: APISyncResponse, rhs: APISyncResponse) -> Bool {
         return lhs.knowledgeGroups == rhs.knowledgeGroups &&

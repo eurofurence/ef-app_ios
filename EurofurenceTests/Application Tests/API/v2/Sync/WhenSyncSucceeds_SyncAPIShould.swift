@@ -118,11 +118,13 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                  second: 0)
         
         let events = APISyncDelta<APIEvent>(changed: [APIEvent(roomIdentifier: "87148f04-4c4b-433d-9469-c8a970952443",
+                                                               trackIdentifier: "",
                                                                startDateTime: changedEventStartDate.date!,
                                                                endDateTime: changedEventEndDate.date!,
                                                                title: "Artists' Lounge",
                                                                abstract: "Do you like spending your evening around other artists, drawing and chatting about techniques, supplies and other themes? Then this social event, taking place every evening, is the right place for you to be creative and get to know eachother!")],
                                             deleted: [APIEvent(roomIdentifier: "c72e2290-49fd-496a-9efc-2f68a5f0f0f8",
+                                                               trackIdentifier: "",
                                                                startDateTime: deletedEventStartDate.date!,
                                                                endDateTime: deletedEventEndDate.date!,
                                                                title: "Fursuit Lounge",
@@ -132,7 +134,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                knowledgeEntries: knowledgeEntries,
                                announcements: APISyncDelta(),
                                events: events,
-                               rooms: rooms)
+                               rooms: rooms,
+                               tracks: APISyncDelta())
     }
     
 }

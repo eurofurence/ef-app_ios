@@ -59,10 +59,12 @@ class ApplicationTestBuilder {
         
         func makeExpectedEvent(from event: APIEvent, response: APISyncResponse) -> Event2 {
             let expectedRoom = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier })!
+            let expectedTrack = response.tracks.changed.first(where: { $0.trackIdentifier == event.trackIdentifier })!
+            
             return Event2(title: event.title,
                           abstract: event.abstract,
                           room: Room(name: expectedRoom.name),
-                          track: Track(name: ""),
+                          track: Track(name: expectedTrack.name),
                           startDate: event.startDateTime,
                           endDate: event.endDateTime)
         }
