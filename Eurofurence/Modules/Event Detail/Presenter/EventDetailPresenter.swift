@@ -17,6 +17,7 @@ struct EventDetailPresenter: EventDetailSceneDelegate {
         func bindComponent<T>(at indexPath: IndexPath, using componentFactory: T) -> T.Component where T: EventDetailComponentFactory {
             return componentFactory.makeEventSummaryComponent { (component) in
                 component.setEventTitle(viewModel.title)
+                component.setEventSubtitle(viewModel.subtitle)
                 component.setEventStartEndTime(viewModel.eventStartEndTime)
                 component.setEventLocation(viewModel.location)
                 component.setTrackName(viewModel.trackName)

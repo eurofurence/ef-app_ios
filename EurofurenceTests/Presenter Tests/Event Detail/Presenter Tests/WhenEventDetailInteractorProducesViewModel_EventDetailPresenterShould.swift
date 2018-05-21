@@ -30,6 +30,10 @@ class WhenEventDetailInteractorProducesViewModel_EventDetailPresenterShould: XCT
         XCTAssertEqual(viewModel.title, context.scene.stubbedEventSummaryComponent.capturedTitle)
     }
     
+    func testApplyTheSubtitleOntoTheScene() {
+        XCTAssertEqual(viewModel.subtitle, context.scene.stubbedEventSummaryComponent.capturedSubtitle)
+    }
+    
     func testApplyTheEventStartTimeOntoTheScene() {
         XCTAssertEqual(viewModel.eventStartEndTime, context.scene.stubbedEventSummaryComponent.capturedEventStartTime)
     }

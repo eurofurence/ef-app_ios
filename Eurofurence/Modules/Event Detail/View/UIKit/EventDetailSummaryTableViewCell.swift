@@ -25,7 +25,10 @@ class EventDetailSummaryTableViewCell: UITableViewCell, EventSummaryComponent {
         eventTitleLabel.text = title
     }
 
-    // TODO: RENAME TO EVENT TIME SOMETHING
+    func setEventSubtitle(_ subtitle: String) {
+        eventSubtitleLabel.text = subtitle
+    }
+
     func setEventStartEndTime(_ startEndTime: String) {
         eventTimesLabel.text = startEndTime
     }

@@ -19,6 +19,7 @@ class EventDetailModuleBuilder {
             func makeViewModel(for event: Event2, completionHandler: @escaping (EventDetailViewModel) -> Void) {
                 struct DummyEventDetailViewModel: EventDetailViewModel {
                     var title: String = "Test Title"
+                    var subtitle: String = "Test Subtitle"
                     var eventStartEndTime: String = "Test Start End Time"
                     var location: String = "Test Location"
                     var trackName: String = "Test Track Name"

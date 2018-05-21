@@ -154,7 +154,7 @@
                                         <connections>
                                             <outlet property="eventHostsLabel" destination="lZV-ZO-S5X" id="RD0-Jg-V18"/>
                                             <outlet property="eventLocationLabel" destination="lRQ-tV-CX2" id="BOj-dI-Qhl"/>
-                                            <outlet property="eventSubtitleLabel" destination="iRf-vW-nPI" id="qKP-TY-5Zd"/>
+                                            <outlet property="eventSubtitleLabel" destination="iRf-vW-nPI" id="Pra-qh-J7q"/>
                                             <outlet property="eventTimesLabel" destination="SIL-tx-Ay7" id="XRU-ex-9Ys"/>
                                             <outlet property="eventTitleLabel" destination="aZ5-Yd-03S" id="Tll-ze-Vzj"/>
                                             <outlet property="eventTrackLabel" destination="MpP-IX-2Ee" id="I6Z-ay-NGv"/>

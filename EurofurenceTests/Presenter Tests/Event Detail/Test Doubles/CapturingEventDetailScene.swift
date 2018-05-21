@@ -17,6 +17,11 @@ class CapturingEventSummaryComponent: EventSummaryComponent {
         capturedTitle = title
     }
     
+    private(set) var capturedSubtitle: String?
+    func setEventSubtitle(_ subtitle: String) {
+        capturedSubtitle = subtitle
+    }
+    
     private(set) var capturedEventStartTime: String?
     func setEventStartEndTime(_ startTime: String) {
         capturedEventStartTime = startTime
