@@ -616,6 +616,8 @@
 		CACF1E7E20B212B400D904B5 /* EventDetailComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E7D20B212B400D904B5 /* EventDetailComponentFactory.swift */; };
 		CACF1E8020B212BE00D904B5 /* EventSummaryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E7F20B212BE00D904B5 /* EventSummaryComponent.swift */; };
 		CACF1E8220B2E6B400D904B5 /* EventDetailSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E8120B2E6B400D904B5 /* EventDetailSummaryTableViewCell.swift */; };
+		CACF1E8520B34E7A00D904B5 /* WhenPreparingViewModel_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E8420B34E7A00D904B5 /* WhenPreparingViewModel_EventDetailInteractorShould.swift */; };
+		CACF1E8820B34F8900D904B5 /* DefaultEventDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E8720B34F8900D904B5 /* DefaultEventDetailInteractor.swift */; };
 		CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */; };
 		CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */; };
 		CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343B1F5D7203004BB959 /* MessagesScene.swift */; };
@@ -1379,6 +1381,8 @@
 		CACF1E7D20B212B400D904B5 /* EventDetailComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailComponentFactory.swift; sourceTree = "<group>"; };
 		CACF1E7F20B212BE00D904B5 /* EventSummaryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSummaryComponent.swift; sourceTree = "<group>"; };
 		CACF1E8120B2E6B400D904B5 /* EventDetailSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailSummaryTableViewCell.swift; sourceTree = "<group>"; };
+		CACF1E8420B34E7A00D904B5 /* WhenPreparingViewModel_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
+		CACF1E8720B34F8900D904B5 /* DefaultEventDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultEventDetailInteractor.swift; sourceTree = "<group>"; };
 		CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenterTestContext.swift; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMessagesScene.swift; sourceTree = "<group>"; };
 		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
@@ -3524,6 +3528,7 @@
 			isa = PBXGroup;
 			children = (
 				CACF1E5C20AE2EE100D904B5 /* EventDetailPresenterTestBuilder.swift */,
+				CACF1E8320B34E5F00D904B5 /* Interactor Tests */,
 				CACF1E5220AE2D1C00D904B5 /* Presenter Tests */,
 				CACF1E5B20AE2ED500D904B5 /* Test Doubles */,
 			);
@@ -3587,6 +3592,7 @@
 		CACF1E6B20B1CDAE00D904B5 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				CACF1E8620B34F8200D904B5 /* Default */,
 				CACF1E6C20B1CDB800D904B5 /* EventDetailInteractor.swift */,
 				CACF1E6E20B1CDC300D904B5 /* EventDetailViewModel.swift */,
 			);
@@ -3599,6 +3605,22 @@
 				CACF1E7120B1CE9A00D904B5 /* EventDetailPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CACF1E8320B34E5F00D904B5 /* Interactor Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CACF1E8420B34E7A00D904B5 /* WhenPreparingViewModel_EventDetailInteractorShould.swift */,
+			);
+			path = "Interactor Tests";
+			sourceTree = "<group>";
+		};
+		CACF1E8620B34F8200D904B5 /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				CACF1E8720B34F8900D904B5 /* DefaultEventDetailInteractor.swift */,
+			);
+			path = Default;
 			sourceTree = "<group>";
 		};
 		CAD234381F5D71D9004BB959 /* Messages */ = {
@@ -4483,6 +4505,7 @@
 				CA72843B209CEF47007D912A /* ConventionCountdownService.swift in Sources */,
 				CA6AA0041FD6C7B50092C6DB /* DirectorBuilder.swift in Sources */,
 				CA162E9620A88854004AFED6 /* Room.swift in Sources */,
+				CACF1E8820B34F8900D904B5 /* DefaultEventDetailInteractor.swift in Sources */,
 				9A8ECA291F2BF2CA00351A83 /* UserDefaultsRemoteNotificationSoundProvider.swift in Sources */,
 				9A861EC01F25551400B75A8C /* NetworkReachability.swift in Sources */,
 				9ACF99951EC858B2006FC958 /* EventConferenceRoom.swift in Sources */,
@@ -4954,6 +4977,7 @@
 				CA0E5219208FC062005259FE /* WhenBindingConventionCountdown_NewsPresenterShould.swift in Sources */,
 				CA637540208CBB0E00536BE2 /* CapturingNavigationController.swift in Sources */,
 				CA89CBB42080031000570D54 /* CapturingNewsComponentHeaderScene.swift in Sources */,
+				CACF1E8520B34E7A00D904B5 /* WhenPreparingViewModel_EventDetailInteractorShould.swift in Sources */,
 				CA9AC16B208546530039C0C2 /* WhenBindingEvent_NewsPresenterShould.swift in Sources */,
 				CAD3BDCD20613A2800C91E6E /* WhenLookingUpMailToLinks.swift in Sources */,
 				CAF5979F2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift in Sources */,
