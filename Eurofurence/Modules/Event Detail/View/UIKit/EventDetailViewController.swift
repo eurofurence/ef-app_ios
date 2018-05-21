@@ -10,6 +10,11 @@ import UIKit
 
 class EventDetailViewController: UIViewController, EventDetailScene {
 
+    // MARK: Properties
+
+    @IBOutlet weak var tableView: UITableView!
+    private var tableController: TableController?
+
     // MARK: Overrides
 
     override func viewDidLoad() {
@@ -25,6 +30,41 @@ class EventDetailViewController: UIViewController, EventDetailScene {
     }
 
     func bind(using binder: EventDetailBinder) {
+        tableController = TableController(tableView: tableView, binder: binder)
+    }
+
+    // MARK: Private
+
+    private class TableController: NSObject, UITableViewDataSource, EventDetailComponentFactory {
+
+        private let tableView: UITableView
+        private let binder: EventDetailBinder
+
+        init(tableView: UITableView, binder: EventDetailBinder) {
+            self.tableView = tableView
+            self.binder = binder
+            super.init()
+
+            tableView.dataSource = self
+        }
+
+        // MARK: EventDetailComponentFactory
+
+        func makeEventSummaryComponent(configuringUsing block: (EventSummaryComponent) -> Void) {
+            let cell = tableView.dequeue(EventDetailSummaryTableViewCell.self)
+            block(cell)
+        }
+
+        // MARK: UITableViewDataSource
+
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return 1
+        }
+
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            binder.bindComponent(at: indexPath, using: self)
+            return UITableViewCell()
+        }
 
     }
 
