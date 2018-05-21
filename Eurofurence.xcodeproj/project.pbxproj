@@ -620,6 +620,7 @@
 		CACF1E8820B34F8900D904B5 /* DefaultEventDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E8720B34F8900D904B5 /* DefaultEventDetailInteractor.swift */; };
 		CACF1E8A20B351D400D904B5 /* DateRangeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E8920B351D400D904B5 /* DateRangeFormatter.swift */; };
 		CACF1E8C20B351EA00D904B5 /* FakeDateRangeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E8B20B351EA00D904B5 /* FakeDateRangeFormatter.swift */; };
+		CACF1E8E20B352B800D904B5 /* FoundationDateRangeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E8D20B352B800D904B5 /* FoundationDateRangeFormatter.swift */; };
 		CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */; };
 		CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */; };
 		CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343B1F5D7203004BB959 /* MessagesScene.swift */; };
@@ -1387,6 +1388,7 @@
 		CACF1E8720B34F8900D904B5 /* DefaultEventDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultEventDetailInteractor.swift; sourceTree = "<group>"; };
 		CACF1E8920B351D400D904B5 /* DateRangeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRangeFormatter.swift; sourceTree = "<group>"; };
 		CACF1E8B20B351EA00D904B5 /* FakeDateRangeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDateRangeFormatter.swift; sourceTree = "<group>"; };
+		CACF1E8D20B352B800D904B5 /* FoundationDateRangeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationDateRangeFormatter.swift; sourceTree = "<group>"; };
 		CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenterTestContext.swift; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMessagesScene.swift; sourceTree = "<group>"; };
 		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
@@ -3625,6 +3627,7 @@
 			children = (
 				CACF1E8720B34F8900D904B5 /* DefaultEventDetailInteractor.swift */,
 				CACF1E8920B351D400D904B5 /* DateRangeFormatter.swift */,
+				CACF1E8D20B352B800D904B5 /* FoundationDateRangeFormatter.swift */,
 			);
 			path = Default;
 			sourceTree = "<group>";
@@ -4620,6 +4623,7 @@
 				9AB64BCB1F018135004E8D91 /* KnowledgeGroupCell.swift in Sources */,
 				CA6EC47D2051CBB800402894 /* KnowledgeDetailSceneFactory.swift in Sources */,
 				CABA43A11FD57A78009CB5B0 /* PreloadModuleBuilder.swift in Sources */,
+				CACF1E8E20B352B800D904B5 /* FoundationDateRangeFormatter.swift in Sources */,
 				9ACB006F1F16C945001CE9D2 /* EventFavorite.swift in Sources */,
 				CACF1E8020B212BE00D904B5 /* EventSummaryComponent.swift in Sources */,
 				D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */,

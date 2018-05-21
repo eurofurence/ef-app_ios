@@ -23,6 +23,10 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
     private let dateRangeFormatter: DateRangeFormatter
 
+    convenience init() {
+        self.init(dateRangeFormatter: FoundationDateRangeFormatter.shared)
+    }
+
     init(dateRangeFormatter: DateRangeFormatter) {
         self.dateRangeFormatter = dateRangeFormatter
     }
