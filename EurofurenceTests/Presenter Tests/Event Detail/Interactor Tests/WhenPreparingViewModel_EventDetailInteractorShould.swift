@@ -34,4 +34,8 @@ class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {
         XCTAssertEqual(expected, viewModel?.eventStartEndTime)
     }
     
+    func testFormatRoomNameIntoViewModelLocation() {
+        XCTAssertEqual(event.room.name, viewModel?.location)
+    }
+    
 }
