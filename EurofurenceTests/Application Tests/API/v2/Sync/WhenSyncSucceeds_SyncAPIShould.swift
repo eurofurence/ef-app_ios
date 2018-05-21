@@ -121,12 +121,12 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                startDateTime: changedEventStartDate.date!,
                                                                endDateTime: changedEventEndDate.date!,
                                                                title: "Artists' Lounge",
-                                                               abstract: "")],
+                                                               abstract: "Do you like spending your evening around other artists, drawing and chatting about techniques, supplies and other themes? Then this social event, taking place every evening, is the right place for you to be creative and get to know eachother!")],
                                             deleted: [APIEvent(roomIdentifier: "c72e2290-49fd-496a-9efc-2f68a5f0f0f8",
                                                                startDateTime: deletedEventStartDate.date!,
                                                                endDateTime: deletedEventEndDate.date!,
                                                                title: "Fursuit Lounge",
-                                                               abstract: "")])
+                                                               abstract: "Welcome to the Athropomorphic Wellness and First-Aid Center.")])
         
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,
