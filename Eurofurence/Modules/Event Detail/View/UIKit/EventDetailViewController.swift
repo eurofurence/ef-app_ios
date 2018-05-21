@@ -50,9 +50,10 @@ class EventDetailViewController: UIViewController, EventDetailScene {
 
         // MARK: EventDetailComponentFactory
 
-        func makeEventSummaryComponent(configuringUsing block: (EventSummaryComponent) -> Void) {
+        func makeEventSummaryComponent(configuringUsing block: (EventSummaryComponent) -> Void) -> UITableViewCell {
             let cell = tableView.dequeue(EventDetailSummaryTableViewCell.self)
             block(cell)
+            return cell
         }
 
         // MARK: UITableViewDataSource
@@ -62,8 +63,7 @@ class EventDetailViewController: UIViewController, EventDetailScene {
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            binder.bindComponent(at: indexPath, using: self)
-            return UITableViewCell()
+            return binder.bindComponent(at: indexPath, using: self)
         }
 
     }

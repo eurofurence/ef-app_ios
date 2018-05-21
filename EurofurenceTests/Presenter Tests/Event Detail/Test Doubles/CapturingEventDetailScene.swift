@@ -42,8 +42,9 @@ class CapturingEventSummaryComponent: EventSummaryComponent {
 class StubEventDetailComponentFactory: EventDetailComponentFactory {
     
     let stubbedEventSummaryComponent = CapturingEventSummaryComponent()
-    func makeEventSummaryComponent(configuringUsing block: (EventSummaryComponent) -> Void) {
+    func makeEventSummaryComponent(configuringUsing block: (EventSummaryComponent) -> Void) -> Any {
         block(stubbedEventSummaryComponent)
+        return stubbedEventSummaryComponent
     }
     
 }
@@ -73,8 +74,8 @@ extension CapturingEventDetailScene {
         delegate?.eventDetailSceneDidLoad()
     }
     
-    func bindComponent(at indexPath: IndexPath) {
-        binder?.bindComponent(at: indexPath, using: componentFactory)
+    func bindComponent(at indexPath: IndexPath) -> Any? {
+        return binder?.bindComponent(at: indexPath, using: componentFactory)
     }
     
 }

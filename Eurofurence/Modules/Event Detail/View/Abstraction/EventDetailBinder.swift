@@ -10,6 +10,6 @@ import Foundation
 
 protocol EventDetailBinder {
 
-    func bindComponent(at indexPath: IndexPath, using componentFactory: EventDetailComponentFactory)
+    func bindComponent<T>(at indexPath: IndexPath, using componentFactory: T) -> T.Component where T: EventDetailComponentFactory
 
 }

@@ -10,6 +10,8 @@ import Foundation
 
 protocol EventDetailComponentFactory {
 
-    func makeEventSummaryComponent(configuringUsing block: (EventSummaryComponent) -> Void)
+    associatedtype Component
+
+    func makeEventSummaryComponent(configuringUsing block: (EventSummaryComponent) -> Void) -> Component
 
 }

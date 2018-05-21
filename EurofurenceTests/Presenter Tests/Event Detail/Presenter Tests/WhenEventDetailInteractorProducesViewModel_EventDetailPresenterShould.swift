@@ -13,6 +13,7 @@ class WhenEventDetailInteractorProducesViewModel_EventDetailPresenterShould: XCT
     
     var context: EventDetailPresenterTestBuilder.Context!
     var viewModel: StubEventDetailViewModel!
+    var boundComponent: Any?
     
     override func setUp() {
         super.setUp()
@@ -22,7 +23,7 @@ class WhenEventDetailInteractorProducesViewModel_EventDetailPresenterShould: XCT
         let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
         context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
         context.simulateSceneDidLoad()
-        context.scene.bindComponent(at: IndexPath(item: 0, section: 0))
+        boundComponent = context.scene.bindComponent(at: IndexPath(item: 0, section: 0))
     }
     
     func testApplyTheTitleOntoTheScene() {
@@ -43,6 +44,10 @@ class WhenEventDetailInteractorProducesViewModel_EventDetailPresenterShould: XCT
     
     func testApplyTheEventHostsOntoTheScene() {
         XCTAssertEqual(viewModel.eventHosts, context.scene.stubbedEventSummaryComponent.capturedEventHosts)
+    }
+    
+    func testReturnTheBoundComponent() {
+        XCTAssertTrue((boundComponent as? CapturingEventSummaryComponent) === context.scene.stubbedEventSummaryComponent)
     }
     
 }
