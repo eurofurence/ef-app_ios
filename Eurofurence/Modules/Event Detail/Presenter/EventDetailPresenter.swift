@@ -15,17 +15,21 @@ struct EventDetailPresenter: EventDetailSceneDelegate {
         var viewModel: EventDetailViewModel
 
         func bindComponent<T>(at indexPath: IndexPath, using componentFactory: T) -> T.Component where T: EventDetailComponentFactory {
-            componentFactory.makeEventDescriptionComponent { (component) in
-                component.setEventDescription(viewModel.eventDescription)
-            }
+            switch indexPath.item {
+            case 0:
+                return componentFactory.makeEventSummaryComponent { (component) in
+                    component.setEventTitle(viewModel.title)
+                    component.setEventSubtitle(viewModel.subtitle)
+                    component.setEventStartEndTime(viewModel.eventStartEndTime)
+                    component.setEventLocation(viewModel.location)
+                    component.setTrackName(viewModel.trackName)
+                    component.setEventHosts(viewModel.eventHosts)
+                }
 
-            return componentFactory.makeEventSummaryComponent { (component) in
-                component.setEventTitle(viewModel.title)
-                component.setEventSubtitle(viewModel.subtitle)
-                component.setEventStartEndTime(viewModel.eventStartEndTime)
-                component.setEventLocation(viewModel.location)
-                component.setTrackName(viewModel.trackName)
-                component.setEventHosts(viewModel.eventHosts)
+            default:
+                return componentFactory.makeEventDescriptionComponent { (component) in
+                    component.setEventDescription(viewModel.eventDescription)
+                }
             }
         }
 

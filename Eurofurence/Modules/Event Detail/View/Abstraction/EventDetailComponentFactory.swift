@@ -13,6 +13,6 @@ protocol EventDetailComponentFactory {
     associatedtype Component
 
     func makeEventSummaryComponent(configuringUsing block: (EventSummaryComponent) -> Void) -> Component
-    func makeEventDescriptionComponent(configuringUsing block: (EventDescriptionComponent) -> Void)
+    func makeEventDescriptionComponent(configuringUsing block: (EventDescriptionComponent) -> Void) -> Component
 
 }

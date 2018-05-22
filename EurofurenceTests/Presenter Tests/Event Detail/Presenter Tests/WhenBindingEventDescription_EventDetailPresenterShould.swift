@@ -22,4 +22,15 @@ class WhenBindingEventDescription_EventDetailPresenterShould: XCTestCase {
         XCTAssertEqual(viewModel.eventDescription, context.scene.stubbedEventDescriptionComponent.capturedEventDescription)
     }
     
+    func testReturnTheDescriptionComponent() {
+        let event = Event2.random
+        let viewModel = StubEventDetailViewModel()
+        let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
+        let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
+        context.simulateSceneDidLoad()
+        let boundComponent = context.scene.bindComponent(at: IndexPath(item: 1, section: 0))
+        
+        XCTAssertTrue((boundComponent as? CapturingEventDescriptionComponent) === context.scene.stubbedEventDescriptionComponent)
+    }
+    
 }

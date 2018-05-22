@@ -62,8 +62,9 @@ class StubEventDetailComponentFactory: EventDetailComponentFactory {
     }
     
     let stubbedEventDescriptionComponent = CapturingEventDescriptionComponent()
-    func makeEventDescriptionComponent(configuringUsing block: (EventDescriptionComponent) -> Void) {
+    func makeEventDescriptionComponent(configuringUsing block: (EventDescriptionComponent) -> Void) -> Any {
         block(stubbedEventDescriptionComponent)
+        return stubbedEventDescriptionComponent
     }
     
 }
