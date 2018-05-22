@@ -138,6 +138,7 @@ private struct JSONSyncResponse: Decodable {
         var EndDateTimeUtc: Date
         var Title: String
         var Abstract: String
+        var PanelHosts: String
 
         var modelValue: APIEvent {
             return APIEvent(roomIdentifier: ConferenceRoomId,
@@ -145,7 +146,8 @@ private struct JSONSyncResponse: Decodable {
                             startDateTime: StartDateTimeUtc,
                             endDateTime: EndDateTimeUtc,
                             title: Title,
-                            abstract: Abstract)
+                            abstract: Abstract,
+                            panelHosts: PanelHosts)
         }
 
     }

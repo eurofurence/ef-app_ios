@@ -127,13 +127,15 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                startDateTime: changedEventStartDate.date!,
                                                                endDateTime: changedEventEndDate.date!,
                                                                title: "Artists' Lounge",
-                                                               abstract: "Do you like spending your evening around other artists, drawing and chatting about techniques, supplies and other themes? Then this social event, taking place every evening, is the right place for you to be creative and get to know eachother!")],
+                                                               abstract: "Do you like spending your evening around other artists, drawing and chatting about techniques, supplies and other themes? Then this social event, taking place every evening, is the right place for you to be creative and get to know eachother!",
+                                                               panelHosts: "Akulatraxas")],
                                             deleted: [APIEvent(roomIdentifier: "c72e2290-49fd-496a-9efc-2f68a5f0f0f8",
                                                                trackIdentifier: "a14380b6-b6e1-4b29-8502-e1e1b446c6a2",
                                                                startDateTime: deletedEventStartDate.date!,
                                                                endDateTime: deletedEventEndDate.date!,
                                                                title: "Fursuit Lounge",
-                                                               abstract: "Welcome to the Athropomorphic Wellness and First-Aid Center.")])
+                                                               abstract: "Welcome to the Athropomorphic Wellness and First-Aid Center.",
+                                                               panelHosts: "Mystifur")])
         
         let tracks = APISyncDelta<APITrack>(changed: [APITrack(trackIdentifier: "f92a4fc0-303f-4c13-9194-44121d80bd20",
                                                                name: "Stage")],

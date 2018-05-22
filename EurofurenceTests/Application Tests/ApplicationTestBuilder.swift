@@ -65,7 +65,7 @@ class ApplicationTestBuilder {
                           abstract: event.abstract,
                           room: Room(name: expectedRoom.name),
                           track: Track(name: expectedTrack.name),
-                          hosts: "",
+                          hosts: event.panelHosts,
                           startDate: event.startDateTime,
                           endDate: event.endDateTime)
         }
