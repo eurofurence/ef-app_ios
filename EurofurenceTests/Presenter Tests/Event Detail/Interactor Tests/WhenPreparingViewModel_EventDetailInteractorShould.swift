@@ -9,6 +9,15 @@
 @testable import Eurofurence
 import XCTest
 
+class CapturingEventDetailViewModelVisitor: EventDetailViewModelVisitor {
+    
+    private(set) var visitedEventSummary: EventSummaryViewModel?
+    func visit(_ summary: EventSummaryViewModel) {
+        visitedEventSummary = summary
+    }
+    
+}
+
 class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {
     
     var event: Event2!
@@ -25,29 +34,18 @@ class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {
         interactor.makeViewModel(for: event) { self.viewModel = $0 }
     }
     
-    func testAdaptEventTitleIntoViewModel() {
-        XCTAssertEqual(event.title, viewModel?.title)
-    }
-    
-    func testFormatStartAndEndTimesIntoViewModel() {
-        let expected = dateRangeFormatter.string(from: event.startDate, to: event.endDate)
-        XCTAssertEqual(expected, viewModel?.eventStartEndTime)
-    }
-    
-    func testFormatRoomNameIntoViewModelLocation() {
-        XCTAssertEqual(event.room.name, viewModel?.location)
-    }
-    
-    func testAdaptEventAbstractIntoViewModelSubtitle() {
-        XCTAssertEqual(event.abstract, viewModel?.subtitle)
-    }
-    
-    func testAdaptEventTrackIntoViewModel() {
-        XCTAssertEqual(event.track.name, viewModel?.trackName)
-    }
-    
-    func testAdaptEventHostsIntoViewModel() {
-        XCTAssertEqual(event.hosts, viewModel?.eventHosts)
+    func testProduceExpectedSummaryViewModelAtIndexZero() {
+        let expected = EventSummaryViewModel(title: event.title,
+                                             subtitle: event.abstract,
+                                             eventStartEndTime: dateRangeFormatter.string(from: event.startDate, to: event.endDate),
+                                             location: event.room.name,
+                                             trackName: event.track.name,
+                                             eventHosts: event.hosts,
+                                             eventDescription: "")
+        let visitor = CapturingEventDetailViewModelVisitor()
+        viewModel?.describe(to: visitor)
+        
+        XCTAssertEqual(expected, visitor.visitedEventSummary)
     }
     
 }

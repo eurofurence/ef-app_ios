@@ -8,17 +8,29 @@
 
 import Foundation
 
+private protocol EventDetailViewModelComponent {
+    func describe(to visitor: EventDetailViewModelVisitor)
+}
+
 class DefaultEventDetailInteractor: EventDetailInteractor {
 
     private struct ViewModel: EventDetailViewModel {
 
-        var title: String
-        var subtitle: String
-        var eventStartEndTime: String
-        var location: String
-        var trackName: String
-        var eventHosts: String
-        var eventDescription: String
+        struct SummaryComponent: EventDetailViewModelComponent {
+
+            var viewModel: EventSummaryViewModel
+
+            func describe(to visitor: EventDetailViewModelVisitor) {
+                visitor.visit(viewModel)
+            }
+
+        }
+
+        var component: EventDetailViewModelComponent
+
+        func describe(to visitor: EventDetailViewModelVisitor) {
+            component.describe(to: visitor)
+        }
 
     }
 
@@ -34,13 +46,14 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
     func makeViewModel(for event: Event2, completionHandler: @escaping (EventDetailViewModel) -> Void) {
         let startEndTimeString = dateRangeFormatter.string(from: event.startDate, to: event.endDate)
-        let viewModel = ViewModel(title: event.title,
-                                  subtitle: event.abstract,
-                                  eventStartEndTime: startEndTimeString,
-                                  location: event.room.name,
-                                  trackName: event.track.name,
-                                  eventHosts: event.hosts,
-                                  eventDescription: "")
+        let summaryViewModel = EventSummaryViewModel(title: event.title,
+                                                     subtitle: event.abstract,
+                                                     eventStartEndTime: startEndTimeString,
+                                                     location: event.room.name,
+                                                     trackName: event.track.name,
+                                                     eventHosts: event.hosts,
+                                                     eventDescription: "")
+        let viewModel = ViewModel(component: ViewModel.SummaryComponent(viewModel: summaryViewModel))
         completionHandler(viewModel)
     }
 

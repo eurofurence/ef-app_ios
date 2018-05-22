@@ -27,30 +27,30 @@ class WhenEventDetailInteractorProducesViewModel_EventDetailPresenterShould: XCT
     }
     
     func testApplyTheTitleOntoTheScene() {
-        XCTAssertEqual(viewModel.title, context.scene.stubbedEventSummaryComponent.capturedTitle)
+        XCTAssertEqual(viewModel.summary.title, context.scene.stubbedEventSummaryComponent.capturedTitle)
     }
     
     func testApplyTheSubtitleOntoTheScene() {
-        XCTAssertEqual(viewModel.subtitle, context.scene.stubbedEventSummaryComponent.capturedSubtitle)
+        XCTAssertEqual(viewModel.summary.subtitle, context.scene.stubbedEventSummaryComponent.capturedSubtitle)
     }
     
     func testApplyTheEventStartTimeOntoTheScene() {
-        XCTAssertEqual(viewModel.eventStartEndTime, context.scene.stubbedEventSummaryComponent.capturedEventStartTime)
+        XCTAssertEqual(viewModel.summary.eventStartEndTime, context.scene.stubbedEventSummaryComponent.capturedEventStartTime)
     }
     
     func testApplyTheEventLocationOntoTheScene() {
-        XCTAssertEqual(viewModel.location, context.scene.stubbedEventSummaryComponent.capturedEventLocation)
+        XCTAssertEqual(viewModel.summary.location, context.scene.stubbedEventSummaryComponent.capturedEventLocation)
     }
     
     func testApplyTheTrackNameOntoTheScene() {
-        XCTAssertEqual(viewModel.trackName, context.scene.stubbedEventSummaryComponent.capturedTrackName)
+        XCTAssertEqual(viewModel.summary.trackName, context.scene.stubbedEventSummaryComponent.capturedTrackName)
     }
     
     func testApplyTheEventHostsOntoTheScene() {
-        XCTAssertEqual(viewModel.eventHosts, context.scene.stubbedEventSummaryComponent.capturedEventHosts)
+        XCTAssertEqual(viewModel.summary.eventHosts, context.scene.stubbedEventSummaryComponent.capturedEventHosts)
     }
     
-    func testReturnTheBoundComponent() {
+    func testReturnTheBoundEventSummaryComponent() {
         XCTAssertTrue((boundComponent as? CapturingEventSummaryComponent) === context.scene.stubbedEventSummaryComponent)
     }
     

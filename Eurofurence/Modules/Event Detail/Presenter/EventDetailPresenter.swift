@@ -10,11 +10,23 @@ import Foundation
 
 struct EventDetailPresenter: EventDetailSceneDelegate {
 
-    private struct Binder: EventDetailBinder {
+    private class Binder: EventDetailBinder, EventDetailViewModelVisitor {
 
-        var viewModel: EventDetailViewModel
+        var summaryComponent: EventSummaryViewModel?
+
+        init(viewModel: EventDetailViewModel) {
+            viewModel.describe(to: self)
+        }
+
+        func visit(_ summary: EventSummaryViewModel) {
+            summaryComponent = summary
+        }
 
         func bindComponent<T>(at indexPath: IndexPath, using componentFactory: T) -> T.Component where T: EventDetailComponentFactory {
+            guard let viewModel = summaryComponent else {
+                fatalError()
+            }
+
             switch indexPath.item {
             case 0:
                 return componentFactory.makeEventSummaryComponent { (component) in

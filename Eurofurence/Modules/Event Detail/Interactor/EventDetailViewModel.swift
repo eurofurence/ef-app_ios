@@ -10,12 +10,34 @@ import Foundation
 
 protocol EventDetailViewModel {
 
-    var title: String { get }
-    var subtitle: String { get }
-    var eventStartEndTime: String { get }
-    var location: String { get }
-    var trackName: String { get }
-    var eventHosts: String { get }
-    var eventDescription: String { get }
+    func describe(to visitor: EventDetailViewModelVisitor)
+
+}
+
+protocol EventDetailViewModelVisitor {
+
+    func visit(_ summary: EventSummaryViewModel)
+
+}
+
+struct EventSummaryViewModel: Equatable {
+
+    static func ==(lhs: EventSummaryViewModel, rhs: EventSummaryViewModel) -> Bool {
+        return lhs.title == rhs.title &&
+               lhs.subtitle == rhs.subtitle &&
+               lhs.eventStartEndTime == rhs.eventStartEndTime &&
+               lhs.location == rhs.location &&
+               lhs.trackName == rhs.trackName &&
+               lhs.eventHosts == rhs.eventHosts &&
+               lhs.eventDescription == rhs.eventDescription
+    }
+
+    var title: String
+    var subtitle: String
+    var eventStartEndTime: String
+    var location: String
+    var trackName: String
+    var eventHosts: String
+    var eventDescription: String
 
 }

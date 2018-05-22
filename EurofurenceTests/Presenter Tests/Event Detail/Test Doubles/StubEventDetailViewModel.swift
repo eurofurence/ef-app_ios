@@ -11,12 +11,10 @@ import Foundation
 
 struct StubEventDetailViewModel: EventDetailViewModel {
     
-    var title: String = .random
-    var subtitle: String = .random
-    var eventStartEndTime: String = .random
-    var location: String = .random
-    var trackName: String = .random
-    var eventHosts: String = .random
-    var eventDescription: String = .random
+    var summary: EventSummaryViewModel = .random
+    
+    func describe(to visitor: EventDetailViewModelVisitor) {
+        visitor.visit(summary)
+    }
     
 }

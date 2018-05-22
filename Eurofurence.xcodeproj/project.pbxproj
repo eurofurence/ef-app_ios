@@ -626,6 +626,7 @@
 		CACF1E9420B36C5A00D904B5 /* APITrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E9320B36C5A00D904B5 /* APITrack.swift */; };
 		CACF1E9A20B437A500D904B5 /* EventDescriptionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E9920B437A500D904B5 /* EventDescriptionComponent.swift */; };
 		CACF1E9E20B4386B00D904B5 /* WhenBindingEventDescription_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E9D20B4386B00D904B5 /* WhenBindingEventDescription_EventDetailPresenterShould.swift */; };
+		CACF1EA020B43D0900D904B5 /* EventSummaryViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E9F20B43D0900D904B5 /* EventSummaryViewModel+RandomValueProviding.swift */; };
 		CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */; };
 		CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */; };
 		CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343B1F5D7203004BB959 /* MessagesScene.swift */; };
@@ -1399,6 +1400,7 @@
 		CACF1E9320B36C5A00D904B5 /* APITrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITrack.swift; sourceTree = "<group>"; };
 		CACF1E9920B437A500D904B5 /* EventDescriptionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDescriptionComponent.swift; sourceTree = "<group>"; };
 		CACF1E9D20B4386B00D904B5 /* WhenBindingEventDescription_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingEventDescription_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
+		CACF1E9F20B43D0900D904B5 /* EventSummaryViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventSummaryViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenterTestContext.swift; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMessagesScene.swift; sourceTree = "<group>"; };
 		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
@@ -2946,6 +2948,7 @@
 				CAD68829208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift */,
 				CA0E521A208FC107005259FE /* ConventionCountdownComponentViewModel+RandomValueProviding.swift */,
 				CA72846B209D1457007D912A /* AnnouncementViewModel+RandomValueProviding.swift */,
+				CACF1E9F20B43D0900D904B5 /* EventSummaryViewModel+RandomValueProviding.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -4888,6 +4891,7 @@
 				781A94381F1A19BD002DE70F /* CapturingFirebaseAdapter.swift in Sources */,
 				CA637550208CBBA000536BE2 /* StubTabModuleFactory.swift in Sources */,
 				CA3990F220ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */,
+				CACF1EA020B43D0900D904B5 /* EventSummaryViewModel+RandomValueProviding.swift in Sources */,
 				CABF03C72041C3270028BD62 /* StubKnowledgeService.swift in Sources */,
 				CA30EABA1F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift in Sources */,
 				CA6AA0101FD73CFE0092C6DB /* PreloadViewControllerTests.swift in Sources */,
