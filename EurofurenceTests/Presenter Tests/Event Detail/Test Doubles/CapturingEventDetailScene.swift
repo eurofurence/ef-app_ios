@@ -44,12 +44,26 @@ class CapturingEventSummaryComponent: EventSummaryComponent {
     
 }
 
+class CapturingEventDescriptionComponent: EventDescriptionComponent {
+    
+    private(set) var capturedEventDescription: String?
+    func setEventDescription(_ eventDescription: String) {
+        capturedEventDescription = eventDescription
+    }
+    
+}
+
 class StubEventDetailComponentFactory: EventDetailComponentFactory {
     
     let stubbedEventSummaryComponent = CapturingEventSummaryComponent()
     func makeEventSummaryComponent(configuringUsing block: (EventSummaryComponent) -> Void) -> Any {
         block(stubbedEventSummaryComponent)
         return stubbedEventSummaryComponent
+    }
+    
+    let stubbedEventDescriptionComponent = CapturingEventDescriptionComponent()
+    func makeEventDescriptionComponent(configuringUsing block: (EventDescriptionComponent) -> Void) {
+        block(stubbedEventDescriptionComponent)
     }
     
 }
@@ -73,6 +87,10 @@ extension CapturingEventDetailScene {
     
     var stubbedEventSummaryComponent: CapturingEventSummaryComponent {
         return componentFactory.stubbedEventSummaryComponent
+    }
+    
+    var stubbedEventDescriptionComponent: CapturingEventDescriptionComponent {
+        return componentFactory.stubbedEventDescriptionComponent
     }
     
     func simulateSceneDidLoad() {

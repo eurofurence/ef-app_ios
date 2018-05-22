@@ -18,6 +18,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
         var location: String
         var trackName: String
         var eventHosts: String
+        var eventDescription: String
 
     }
 
@@ -38,7 +39,8 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
                                   eventStartEndTime: startEndTimeString,
                                   location: event.room.name,
                                   trackName: event.track.name,
-                                  eventHosts: event.hosts)
+                                  eventHosts: event.hosts,
+                                  eventDescription: "")
         completionHandler(viewModel)
     }
 

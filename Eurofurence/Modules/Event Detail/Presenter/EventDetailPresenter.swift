@@ -15,6 +15,10 @@ struct EventDetailPresenter: EventDetailSceneDelegate {
         var viewModel: EventDetailViewModel
 
         func bindComponent<T>(at indexPath: IndexPath, using componentFactory: T) -> T.Component where T: EventDetailComponentFactory {
+            componentFactory.makeEventDescriptionComponent { (component) in
+                component.setEventDescription(viewModel.eventDescription)
+            }
+
             return componentFactory.makeEventSummaryComponent { (component) in
                 component.setEventTitle(viewModel.title)
                 component.setEventSubtitle(viewModel.subtitle)

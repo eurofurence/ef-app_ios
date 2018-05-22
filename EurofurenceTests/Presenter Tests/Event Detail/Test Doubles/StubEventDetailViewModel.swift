@@ -17,5 +17,6 @@ struct StubEventDetailViewModel: EventDetailViewModel {
     var location: String = .random
     var trackName: String = .random
     var eventHosts: String = .random
+    var eventDescription: String = .random
     
 }

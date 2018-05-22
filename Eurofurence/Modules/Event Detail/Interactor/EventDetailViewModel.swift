@@ -16,5 +16,6 @@ protocol EventDetailViewModel {
     var location: String { get }
     var trackName: String { get }
     var eventHosts: String { get }
+    var eventDescription: String { get }
 
 }
