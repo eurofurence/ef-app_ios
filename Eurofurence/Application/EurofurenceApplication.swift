@@ -247,6 +247,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                           abstract: event.abstract,
                           room: Room(name: room.name),
                           track: Track(name: track.name),
+                          hosts: "",
                           startDate: event.startDateTime,
                           endDate: event.endDateTime)
         })

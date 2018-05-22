@@ -38,7 +38,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
                                   eventStartEndTime: startEndTimeString,
                                   location: event.room.name,
                                   trackName: event.track.name,
-                                  eventHosts: "")
+                                  eventHosts: event.hosts)
         completionHandler(viewModel)
     }
 

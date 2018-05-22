@@ -17,6 +17,7 @@ extension Event2: RandomValueProviding {
                       abstract: .random,
                       room: .random,
                       track: .random,
+                      hosts: "",
                       startDate: startDate,
                       endDate: startDate.addingTimeInterval(.random))
     }
