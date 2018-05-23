@@ -77,8 +77,9 @@ class StubEventDetailComponentFactory: EventDetailComponentFactory {
     }
     
     let stubbedEventGraphicComponent = CapturingEventGraphicComponent()
-    func makeEventGraphicComponent(configuringUsing block: (EventGraphicComponent) -> Void) {
+    func makeEventGraphicComponent(configuringUsing block: (EventGraphicComponent) -> Void) -> Any {
         block(stubbedEventGraphicComponent)
+        return stubbedEventGraphicComponent
     }
     
 }

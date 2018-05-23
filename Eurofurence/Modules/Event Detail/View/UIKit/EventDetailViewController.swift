@@ -66,8 +66,8 @@ class EventDetailViewController: UIViewController, EventDetailScene {
             return cell
         }
 
-        func makeEventGraphicComponent(configuringUsing block: (EventGraphicComponent) -> Void) {
-
+        func makeEventGraphicComponent(configuringUsing block: (EventGraphicComponent) -> Void) -> UITableViewCell {
+            return UITableViewCell()
         }
 
         // MARK: UITableViewDataSource
