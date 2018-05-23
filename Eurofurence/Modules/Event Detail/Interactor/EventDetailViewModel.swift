@@ -10,7 +10,7 @@ import Foundation
 
 protocol EventDetailViewModel {
 
-    func describe(to visitor: EventDetailViewModelVisitor)
+    func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor)
 
 }
 

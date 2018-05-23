@@ -13,7 +13,7 @@ struct StubEventDescriptionViewModel: EventDetailViewModel {
     
     var eventDescription: EventDescriptionViewModel = .random
     
-    func describe(to visitor: EventDetailViewModelVisitor) {
+    func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
         visitor.visit(eventDescription)
     }
     

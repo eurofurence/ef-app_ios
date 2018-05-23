@@ -46,7 +46,7 @@ class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {
                                              trackName: event.track.name,
                                              eventHosts: event.hosts)
         let visitor = CapturingEventDetailViewModelVisitor()
-        viewModel?.describe(to: visitor)
+        viewModel?.describe(componentAt: 0, to: visitor)
         
         XCTAssertEqual(expected, visitor.visitedEventSummary)
     }

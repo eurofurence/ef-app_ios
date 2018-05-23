@@ -28,7 +28,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         var component: EventDetailViewModelComponent
 
-        func describe(to visitor: EventDetailViewModelVisitor) {
+        func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
             component.describe(to: visitor)
         }
 
