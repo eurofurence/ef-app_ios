@@ -68,7 +68,8 @@ class ApplicationTestBuilder {
                           hosts: event.panelHosts,
                           startDate: event.startDateTime,
                           endDate: event.endDateTime,
-                          eventDescription: event.eventDescription)
+                          eventDescription: event.eventDescription,
+                          posterGraphicPNGData: nil)
         }
         
     }

@@ -20,7 +20,8 @@ extension Event2: RandomValueProviding {
                       hosts: "",
                       startDate: startDate,
                       endDate: startDate.addingTimeInterval(.random),
-                      eventDescription: .random)
+                      eventDescription: .random,
+                      posterGraphicPNGData: .random)
     }
     
 }

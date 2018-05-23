@@ -22,7 +22,8 @@ class WhenPreparingViewModelForEventWithNoDescription_EventDetailInteractorShoul
             (0..<viewModel.numberOfComponents).forEach({ viewModel.describe(componentAt: $0, to: visitor) })
         }
         
-        XCTAssertEqual([context.makeExpectedEventSummaryViewModel()], visitor.visitedViewModels)
+        let unexpected = context.makeExpectedEventDescriptionViewModel()
+        XCTAssertFalse(visitor.visitedViewModels.contains(unexpected))
     }
     
 }

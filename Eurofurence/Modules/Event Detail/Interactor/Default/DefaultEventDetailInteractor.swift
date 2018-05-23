@@ -26,6 +26,16 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         }
 
+        struct GraphicComponent: EventDetailViewModelComponent {
+
+            var viewModel: EventGraphicViewModel
+
+            func describe(to visitor: EventDetailViewModelVisitor) {
+                visitor.visit(viewModel)
+            }
+
+        }
+
         struct DescriptionComponent: EventDetailViewModelComponent {
 
             var viewModel: EventDescriptionViewModel
@@ -47,6 +57,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
         }
 
         func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
+            guard index < components.count else { return }
             components[index].describe(to: visitor)
         }
 
@@ -73,6 +84,9 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
                                                      trackName: event.track.name,
                                                      eventHosts: event.hosts)
         components.append(ViewModel.SummaryComponent(viewModel: summaryViewModel))
+
+        let graphicViewModel = EventGraphicViewModel(pngGraphicData: event.posterGraphicPNGData!)
+        components.append(ViewModel.GraphicComponent(viewModel: graphicViewModel))
 
         if !event.eventDescription.isEmpty, event.eventDescription != event.abstract {
             let descriptionViewModel = EventDescriptionViewModel(contents: event.eventDescription)
