@@ -67,7 +67,8 @@ class ApplicationTestBuilder {
                           track: Track(name: expectedTrack.name),
                           hosts: event.panelHosts,
                           startDate: event.startDateTime,
-                          endDate: event.endDateTime)
+                          endDate: event.endDateTime,
+                          eventDescription: "")
         }
         
     }

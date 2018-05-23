@@ -17,7 +17,8 @@ struct Event2: Equatable {
                lhs.track == rhs.track &&
                lhs.hosts == rhs.hosts &&
                lhs.startDate == rhs.startDate &&
-               lhs.endDate == rhs.endDate
+               lhs.endDate == rhs.endDate &&
+               lhs.eventDescription == rhs.eventDescription
     }
 
     var title: String
@@ -27,5 +28,6 @@ struct Event2: Equatable {
     var hosts: String
     var startDate: Date
     var endDate: Date
+    var eventDescription: String
 
 }

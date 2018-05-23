@@ -19,7 +19,7 @@ class CapturingEventDetailViewModelVisitor: EventDetailViewModelVisitor {
     }
     
     func visit(_ description: EventDescriptionViewModel) {
-        
+        visitedViewModels.append(description)
     }
     
 }
@@ -49,6 +49,14 @@ class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {
                                              eventHosts: event.hosts)
         let visitor = CapturingEventDetailViewModelVisitor()
         viewModel?.describe(componentAt: 0, to: visitor)
+        
+        XCTAssertEqual([expected], visitor.visitedViewModels)
+    }
+    
+    func testProduceExpectedDescriptionViewModelAtIndexOne() {
+        let expected = EventDescriptionViewModel(contents: event.eventDescription)
+        let visitor = CapturingEventDetailViewModelVisitor()
+        viewModel?.describe(componentAt: 1, to: visitor)
         
         XCTAssertEqual([expected], visitor.visitedViewModels)
     }

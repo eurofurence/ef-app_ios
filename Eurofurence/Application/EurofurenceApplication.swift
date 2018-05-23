@@ -249,7 +249,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                           track: Track(name: track.name),
                           hosts: event.panelHosts,
                           startDate: event.startDateTime,
-                          endDate: event.endDateTime)
+                          endDate: event.endDateTime,
+                          eventDescription: "")
         })
     }
 

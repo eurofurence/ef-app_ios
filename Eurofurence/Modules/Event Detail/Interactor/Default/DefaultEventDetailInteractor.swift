@@ -26,10 +26,20 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         }
 
-        var component: EventDetailViewModelComponent
+        struct DescriptionComponent: EventDetailViewModelComponent {
+
+            var viewModel: EventDescriptionViewModel
+
+            func describe(to visitor: EventDetailViewModelVisitor) {
+                visitor.visit(viewModel)
+            }
+
+        }
+
+        var components: [EventDetailViewModelComponent]
 
         func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
-            component.describe(to: visitor)
+            components[index].describe(to: visitor)
         }
 
     }
@@ -52,7 +62,9 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
                                                      location: event.room.name,
                                                      trackName: event.track.name,
                                                      eventHosts: event.hosts)
-        let viewModel = ViewModel(component: ViewModel.SummaryComponent(viewModel: summaryViewModel))
+        let descriptionViewModel = EventDescriptionViewModel(contents: event.eventDescription)
+        let viewModel = ViewModel(components: [ViewModel.SummaryComponent(viewModel: summaryViewModel),
+                                               ViewModel.DescriptionComponent(viewModel: descriptionViewModel)])
         completionHandler(viewModel)
     }
 
