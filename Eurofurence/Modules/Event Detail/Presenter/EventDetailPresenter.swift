@@ -16,7 +16,7 @@ struct EventDetailPresenter: EventDetailSceneDelegate {
 
         func bindComponent<T>(at indexPath: IndexPath, using componentFactory: T) -> T.Component where T: EventDetailComponentFactory {
             let visitor = ViewModelVisitor(componentFactory: componentFactory)
-            viewModel.describe(componentAt: 0, to: visitor)
+            viewModel.describe(componentAt: indexPath.item, to: visitor)
 
             guard let component = visitor.boundComponent else {
                 fatalError("Did not bind component at index path: \(indexPath)")

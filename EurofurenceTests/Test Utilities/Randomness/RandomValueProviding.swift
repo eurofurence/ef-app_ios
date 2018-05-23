@@ -11,3 +11,11 @@ protocol RandomValueProviding {
     static var random: Self { get }
     
 }
+
+extension RandomValueProviding {
+    
+    func randomized(ifFalse predicate: @autoclosure () -> Bool) -> Self {
+        return predicate() ? self : Self.random
+    }
+    
+}

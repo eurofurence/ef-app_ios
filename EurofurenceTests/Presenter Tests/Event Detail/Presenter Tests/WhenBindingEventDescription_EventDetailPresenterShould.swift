@@ -15,7 +15,7 @@ struct StubEventDescriptionViewModel: EventDetailViewModel {
     var eventDescription: EventDescriptionViewModel = .random
     
     func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
-        visitor.visit(eventDescription)
+        visitor.visit(eventDescription.randomized(ifFalse: index == 1))
     }
     
 }

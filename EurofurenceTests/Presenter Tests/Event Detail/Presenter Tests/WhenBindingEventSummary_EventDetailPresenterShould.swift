@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import XCTest
 
-class WhenEventDetailInteractorProducesViewModel_EventDetailPresenterShould: XCTestCase {
+class WhenBindingEventSummary_EventDetailPresenterShould: XCTestCase {
     
     var context: EventDetailPresenterTestBuilder.Context!
     var viewModel: StubEventSummaryViewModel!
