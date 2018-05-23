@@ -26,41 +26,36 @@ class CapturingEventDetailViewModelVisitor: EventDetailViewModelVisitor {
 
 class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {
     
-    var event: Event2!
-    var dateRangeFormatter: FakeDateRangeFormatter!
-    var interactor: DefaultEventDetailInteractor!
-    var viewModel: EventDetailViewModel?
+    var context: EventDetailInteractorTestBuilder.Context!
     
     override func setUp() {
         super.setUp()
         
-        dateRangeFormatter = FakeDateRangeFormatter()
-        event = .random
-        interactor = DefaultEventDetailInteractor(dateRangeFormatter: dateRangeFormatter)
-        interactor.makeViewModel(for: event) { self.viewModel = $0 }
+        context = EventDetailInteractorTestBuilder().build()
     }
     
     func testProduceViewModelWithExpectedNumberOfComponents() {
-        XCTAssertEqual(2, viewModel?.numberOfComponents)
+        XCTAssertEqual(2, context.viewModel?.numberOfComponents)
     }
     
     func testProduceExpectedSummaryViewModelAtIndexZero() {
+        let event = context.event
         let expected = EventSummaryViewModel(title: event.title,
                                              subtitle: event.abstract,
-                                             eventStartEndTime: dateRangeFormatter.string(from: event.startDate, to: event.endDate),
+                                             eventStartEndTime: context.dateRangeFormatter.string(from: event.startDate, to: event.endDate),
                                              location: event.room.name,
                                              trackName: event.track.name,
                                              eventHosts: event.hosts)
         let visitor = CapturingEventDetailViewModelVisitor()
-        viewModel?.describe(componentAt: 0, to: visitor)
+        context.viewModel?.describe(componentAt: 0, to: visitor)
         
         XCTAssertEqual([expected], visitor.visitedViewModels)
     }
     
     func testProduceExpectedDescriptionViewModelAtIndexOne() {
-        let expected = EventDescriptionViewModel(contents: event.eventDescription)
+        let expected = EventDescriptionViewModel(contents: context.event.eventDescription)
         let visitor = CapturingEventDetailViewModelVisitor()
-        viewModel?.describe(componentAt: 1, to: visitor)
+        context.viewModel?.describe(componentAt: 1, to: visitor)
         
         XCTAssertEqual([expected], visitor.visitedViewModels)
     }
