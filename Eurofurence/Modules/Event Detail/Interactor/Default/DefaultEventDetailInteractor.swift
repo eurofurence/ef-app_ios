@@ -85,8 +85,10 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
                                                      eventHosts: event.hosts)
         components.append(ViewModel.SummaryComponent(viewModel: summaryViewModel))
 
-        let graphicViewModel = EventGraphicViewModel(pngGraphicData: event.posterGraphicPNGData!)
-        components.append(ViewModel.GraphicComponent(viewModel: graphicViewModel))
+        if let posterGraphicData = event.posterGraphicPNGData {
+            let graphicViewModel = EventGraphicViewModel(pngGraphicData: posterGraphicData)
+            components.append(ViewModel.GraphicComponent(viewModel: graphicViewModel))
+        }
 
         if !event.eventDescription.isEmpty, event.eventDescription != event.abstract {
             let descriptionViewModel = EventDescriptionViewModel(contents: event.eventDescription)

@@ -636,6 +636,7 @@
 		CACF1EB220B5FF9900D904B5 /* EventGraphicViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EB120B5FF9900D904B5 /* EventGraphicViewModel+RandomValueProviding.swift */; };
 		CACF1EB420B5FFB600D904B5 /* Data+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EB320B5FFB600D904B5 /* Data+RandomValueProviding.swift */; };
 		CACF1EB620B600F200D904B5 /* EventGraphicComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EB520B600F200D904B5 /* EventGraphicComponent.swift */; };
+		CACF1EBA20B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EB920B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift */; };
 		CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */; };
 		CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */; };
 		CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343B1F5D7203004BB959 /* MessagesScene.swift */; };
@@ -1419,6 +1420,7 @@
 		CACF1EB120B5FF9900D904B5 /* EventGraphicViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventGraphicViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CACF1EB320B5FFB600D904B5 /* Data+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CACF1EB520B600F200D904B5 /* EventGraphicComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGraphicComponent.swift; sourceTree = "<group>"; };
+		CACF1EB920B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
 		CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenterTestContext.swift; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMessagesScene.swift; sourceTree = "<group>"; };
 		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
@@ -3660,8 +3662,9 @@
 			isa = PBXGroup;
 			children = (
 				CACF1E8420B34E7A00D904B5 /* WhenPreparingViewModel_EventDetailInteractorShould.swift */,
-				CACF1EA920B5BFF100D904B5 /* WhenPreparingViewModelForEventWithNoDescription_EventDetailInteractorShould.swift */,
+				CACF1EB920B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift */,
 				CACF1EAB20B5C14F00D904B5 /* WhenPreparingViewModelForEventWithIdenticalAbstractAndDescription_EventDetailInteractorShould.swift */,
+				CACF1EA920B5BFF100D904B5 /* WhenPreparingViewModelForEventWithNoDescription_EventDetailInteractorShould.swift */,
 			);
 			path = "Interactor Tests";
 			sourceTree = "<group>";
@@ -4834,6 +4837,7 @@
 				CACF1EAC20B5C14F00D904B5 /* WhenPreparingViewModelForEventWithIdenticalAbstractAndDescription_EventDetailInteractorShould.swift in Sources */,
 				CA71A34A2040320A00C847C3 /* String+RandomValueProviding.swift in Sources */,
 				CAEAEBFA1FE0037700C0EE7C /* MessageDetailPresenterTests.swift in Sources */,
+				CACF1EBA20B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift in Sources */,
 				CA728485209F88E0007D912A /* DefaultAnnouncementDetailInteractorShould.swift in Sources */,
 				CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */,
 				CA71A3502040371D00C847C3 /* FloatingPoint+RandomValueProviding.swift in Sources */,
