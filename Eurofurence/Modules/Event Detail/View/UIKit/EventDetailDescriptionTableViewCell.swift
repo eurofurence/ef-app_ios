@@ -14,6 +14,13 @@ class EventDetailDescriptionTableViewCell: UITableViewCell, EventDescriptionComp
 
     @IBOutlet weak var eventDescriptionTextView: UITextView!
 
+    // MARK: Overrides
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        eventDescriptionTextView.textContainer.lineFragmentPadding = 0
+    }
+
     // MARK: EventDescriptionComponent
 
     func setEventDescription(_ eventDescription: String) {
