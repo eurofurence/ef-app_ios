@@ -66,6 +66,10 @@ class EventDetailViewController: UIViewController, EventDetailScene {
             return cell
         }
 
+        func makeEventGraphicComponent(configuringUsing block: (EventGraphicComponent) -> Void) {
+
+        }
+
         // MARK: UITableViewDataSource
 
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

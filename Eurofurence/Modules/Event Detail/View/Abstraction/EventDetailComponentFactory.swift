@@ -14,5 +14,6 @@ protocol EventDetailComponentFactory {
 
     func makeEventSummaryComponent(configuringUsing block: (EventSummaryComponent) -> Void) -> Component
     func makeEventDescriptionComponent(configuringUsing block: (EventDescriptionComponent) -> Void) -> Component
+    func makeEventGraphicComponent(configuringUsing block: (EventGraphicComponent) -> Void)
 
 }

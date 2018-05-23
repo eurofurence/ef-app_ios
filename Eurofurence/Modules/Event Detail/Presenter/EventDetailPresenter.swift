@@ -53,6 +53,16 @@ struct EventDetailPresenter: EventDetailSceneDelegate {
             }
         }
 
+        func visit(_ graphic: EventGraphicViewModel) {
+            componentFactory.makeEventGraphicComponent { (component) in
+                component.setPNGGraphicData(graphic.pngGraphicData)
+            }
+
+            boundComponent = componentFactory.makeEventSummaryComponent(configuringUsing: { (_) in
+
+            })
+        }
+
     }
 
     private let scene: EventDetailScene

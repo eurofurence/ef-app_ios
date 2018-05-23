@@ -53,6 +53,15 @@ class CapturingEventDescriptionComponent: EventDescriptionComponent {
     
 }
 
+class CapturingEventGraphicComponent: EventGraphicComponent {
+    
+    private(set) var capturedPNGGraphicData: Data?
+    func setPNGGraphicData(_ pngGraphicData: Data) {
+        capturedPNGGraphicData = pngGraphicData
+    }
+    
+}
+
 class StubEventDetailComponentFactory: EventDetailComponentFactory {
     
     let stubbedEventSummaryComponent = CapturingEventSummaryComponent()
@@ -65,6 +74,11 @@ class StubEventDetailComponentFactory: EventDetailComponentFactory {
     func makeEventDescriptionComponent(configuringUsing block: (EventDescriptionComponent) -> Void) -> Any {
         block(stubbedEventDescriptionComponent)
         return stubbedEventDescriptionComponent
+    }
+    
+    let stubbedEventGraphicComponent = CapturingEventGraphicComponent()
+    func makeEventGraphicComponent(configuringUsing block: (EventGraphicComponent) -> Void) {
+        block(stubbedEventGraphicComponent)
     }
     
 }
@@ -94,6 +108,10 @@ extension CapturingEventDetailScene {
     
     var stubbedEventDescriptionComponent: CapturingEventDescriptionComponent {
         return componentFactory.stubbedEventDescriptionComponent
+    }
+    
+    var stubbedEventGraphicComponent: CapturingEventGraphicComponent {
+        return componentFactory.stubbedEventGraphicComponent
     }
     
     func simulateSceneDidLoad() {

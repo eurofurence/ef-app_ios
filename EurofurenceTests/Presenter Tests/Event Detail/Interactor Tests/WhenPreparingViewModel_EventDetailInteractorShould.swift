@@ -22,6 +22,10 @@ class CapturingEventDetailViewModelVisitor: EventDetailViewModelVisitor {
         visitedViewModels.append(description)
     }
     
+    func visit(_ graphic: EventGraphicViewModel) {
+        visitedViewModels.append(graphic)
+    }
+    
 }
 
 class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {

@@ -19,6 +19,7 @@ protocol EventDetailViewModelVisitor {
 
     func visit(_ summary: EventSummaryViewModel)
     func visit(_ description: EventDescriptionViewModel)
+    func visit(_ graphic: EventGraphicViewModel)
 
 }
 
@@ -62,5 +63,19 @@ struct EventDescriptionViewModel: Equatable, Hashable {
     }
 
     var contents: String
+
+}
+
+struct EventGraphicViewModel: Equatable, Hashable {
+
+    static func ==(lhs: EventGraphicViewModel, rhs: EventGraphicViewModel) -> Bool {
+        return lhs.pngGraphicData == rhs.pngGraphicData
+    }
+
+    var hashValue: Int {
+        return pngGraphicData.hashValue
+    }
+
+    var pngGraphicData: Data
 
 }
