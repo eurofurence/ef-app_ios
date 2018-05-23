@@ -11,9 +11,11 @@ import XCTest
 
 class CapturingEventDetailViewModelVisitor: EventDetailViewModelVisitor {
     
+    private(set) var visitedViewModels = [AnyHashable]()
+    
     private(set) var visitedEventSummary: EventSummaryViewModel?
     func visit(_ summary: EventSummaryViewModel) {
-        visitedEventSummary = summary
+        visitedViewModels.append(summary)
     }
     
     func visit(_ description: EventDescriptionViewModel) {
@@ -48,7 +50,7 @@ class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {
         let visitor = CapturingEventDetailViewModelVisitor()
         viewModel?.describe(componentAt: 0, to: visitor)
         
-        XCTAssertEqual(expected, visitor.visitedEventSummary)
+        XCTAssertEqual([expected], visitor.visitedViewModels)
     }
     
 }

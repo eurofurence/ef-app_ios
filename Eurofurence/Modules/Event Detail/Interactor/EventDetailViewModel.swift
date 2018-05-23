@@ -21,7 +21,7 @@ protocol EventDetailViewModelVisitor {
 
 }
 
-struct EventSummaryViewModel: Equatable {
+struct EventSummaryViewModel: Equatable, Hashable {
 
     static func ==(lhs: EventSummaryViewModel, rhs: EventSummaryViewModel) -> Bool {
         return lhs.title == rhs.title &&
@@ -30,6 +30,15 @@ struct EventSummaryViewModel: Equatable {
                lhs.location == rhs.location &&
                lhs.trackName == rhs.trackName &&
                lhs.eventHosts == rhs.eventHosts
+    }
+
+    var hashValue: Int {
+        return title.hashValue ^
+               subtitle.hashValue ^
+               eventStartEndTime.hashValue ^
+               location.hashValue ^
+               trackName.hashValue ^
+               eventHosts.hashValue
     }
 
     var title: String
@@ -41,10 +50,14 @@ struct EventSummaryViewModel: Equatable {
 
 }
 
-struct EventDescriptionViewModel: Equatable {
+struct EventDescriptionViewModel: Equatable, Hashable {
 
     static func ==(lhs: EventDescriptionViewModel, rhs: EventDescriptionViewModel) -> Bool {
         return lhs.contents == rhs.contents
+    }
+
+    var hashValue: Int {
+        return contents.hashValue
     }
 
     var contents: String
