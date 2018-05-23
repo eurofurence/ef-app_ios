@@ -12,14 +12,14 @@ import XCTest
 class WhenEventDetailInteractorProducesViewModel_EventDetailPresenterShould: XCTestCase {
     
     var context: EventDetailPresenterTestBuilder.Context!
-    var viewModel: StubEventDetailViewModel!
+    var viewModel: StubEventSummaryViewModel!
     var boundComponent: Any?
     
     override func setUp() {
         super.setUp()
         
         let event = Event2.random
-        viewModel = StubEventDetailViewModel()
+        viewModel = StubEventSummaryViewModel()
         let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
         context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
         context.simulateSceneDidLoad()

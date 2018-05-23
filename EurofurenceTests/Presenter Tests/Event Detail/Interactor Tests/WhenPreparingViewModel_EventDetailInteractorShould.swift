@@ -16,6 +16,10 @@ class CapturingEventDetailViewModelVisitor: EventDetailViewModelVisitor {
         visitedEventSummary = summary
     }
     
+    func visit(_ description: EventDescriptionViewModel) {
+        
+    }
+    
 }
 
 class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {

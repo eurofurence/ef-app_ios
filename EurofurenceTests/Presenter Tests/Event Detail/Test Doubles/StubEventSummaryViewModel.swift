@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import Foundation
 
-struct StubEventDetailViewModel: EventDetailViewModel {
+struct StubEventSummaryViewModel: EventDetailViewModel {
     
     var summary: EventSummaryViewModel = .random
     

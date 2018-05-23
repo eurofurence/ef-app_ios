@@ -17,6 +17,7 @@ protocol EventDetailViewModel {
 protocol EventDetailViewModelVisitor {
 
     func visit(_ summary: EventSummaryViewModel)
+    func visit(_ description: EventDescriptionViewModel)
 
 }
 
@@ -39,5 +40,15 @@ struct EventSummaryViewModel: Equatable {
     var trackName: String
     var eventHosts: String
     var eventDescription: String
+
+}
+
+struct EventDescriptionViewModel: Equatable {
+
+    static func ==(lhs: EventDescriptionViewModel, rhs: EventDescriptionViewModel) -> Bool {
+        return lhs.contents == rhs.contents
+    }
+
+    var contents: String
 
 }

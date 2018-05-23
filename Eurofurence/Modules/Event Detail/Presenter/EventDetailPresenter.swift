@@ -10,38 +10,46 @@ import Foundation
 
 struct EventDetailPresenter: EventDetailSceneDelegate {
 
-    private class Binder: EventDetailBinder, EventDetailViewModelVisitor {
+    private struct Binder: EventDetailBinder {
 
-        var summaryComponent: EventSummaryViewModel?
-
-        init(viewModel: EventDetailViewModel) {
-            viewModel.describe(to: self)
-        }
-
-        func visit(_ summary: EventSummaryViewModel) {
-            summaryComponent = summary
-        }
+        var viewModel: EventDetailViewModel
 
         func bindComponent<T>(at indexPath: IndexPath, using componentFactory: T) -> T.Component where T: EventDetailComponentFactory {
-            guard let viewModel = summaryComponent else {
-                fatalError()
+            let visitor = ViewModelVisitor(componentFactory: componentFactory)
+            viewModel.describe(to: visitor)
+
+            guard let component = visitor.boundComponent else {
+                fatalError("Did not bind component at index path: \(indexPath)")
             }
 
-            switch indexPath.item {
-            case 0:
-                return componentFactory.makeEventSummaryComponent { (component) in
-                    component.setEventTitle(viewModel.title)
-                    component.setEventSubtitle(viewModel.subtitle)
-                    component.setEventStartEndTime(viewModel.eventStartEndTime)
-                    component.setEventLocation(viewModel.location)
-                    component.setTrackName(viewModel.trackName)
-                    component.setEventHosts(viewModel.eventHosts)
-                }
+            return component
+        }
 
-            default:
-                return componentFactory.makeEventDescriptionComponent { (component) in
-                    component.setEventDescription(viewModel.eventDescription)
-                }
+    }
+
+    private class ViewModelVisitor<T>: EventDetailViewModelVisitor where T: EventDetailComponentFactory {
+
+        private let componentFactory: T
+        private(set) var boundComponent: T.Component?
+
+        init(componentFactory: T) {
+            self.componentFactory = componentFactory
+        }
+
+        func visit(_ viewModel: EventSummaryViewModel) {
+            boundComponent = componentFactory.makeEventSummaryComponent { (component) in
+                component.setEventTitle(viewModel.title)
+                component.setEventSubtitle(viewModel.subtitle)
+                component.setEventStartEndTime(viewModel.eventStartEndTime)
+                component.setEventLocation(viewModel.location)
+                component.setTrackName(viewModel.trackName)
+                component.setEventHosts(viewModel.eventHosts)
+            }
+        }
+
+        func visit(_ viewModel: EventDescriptionViewModel) {
+            boundComponent = componentFactory.makeEventDescriptionComponent { (component) in
+                component.setEventDescription(viewModel.contents)
             }
         }
 
