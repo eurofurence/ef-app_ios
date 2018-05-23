@@ -29,8 +29,10 @@ class EventDetailViewController: UIViewController, EventDetailScene {
         self.delegate = delegate
     }
 
-    func bind(using binder: EventDetailBinder) {
-        tableController = TableController(tableView: tableView, binder: binder)
+    func bind(numberOfComponents: Int, using binder: EventDetailBinder) {
+        tableController = TableController(tableView: tableView,
+                                          numberOfComponents: numberOfComponents,
+                                          binder: binder)
     }
 
     // MARK: Private
@@ -38,10 +40,12 @@ class EventDetailViewController: UIViewController, EventDetailScene {
     private class TableController: NSObject, UITableViewDataSource, EventDetailComponentFactory {
 
         private let tableView: UITableView
+        private let numberOfComponents: Int
         private let binder: EventDetailBinder
 
-        init(tableView: UITableView, binder: EventDetailBinder) {
+        init(tableView: UITableView, numberOfComponents: Int, binder: EventDetailBinder) {
             self.tableView = tableView
+            self.numberOfComponents = numberOfComponents
             self.binder = binder
             super.init()
 
@@ -65,7 +69,7 @@ class EventDetailViewController: UIViewController, EventDetailScene {
         // MARK: UITableViewDataSource
 
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 1
+            return numberOfComponents
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -72,7 +72,8 @@ struct EventDetailPresenter: EventDetailSceneDelegate {
     }
 
     private func eventDetailViewModelReady(_ viewModel: EventDetailViewModel) {
-        scene.bind(using: Binder(viewModel: viewModel))
+        scene.bind(numberOfComponents: viewModel.numberOfComponents,
+                   using: Binder(viewModel: viewModel))
     }
 
 }

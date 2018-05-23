@@ -26,6 +26,10 @@ class WhenEventDetailInteractorProducesViewModel_EventDetailPresenterShould: XCT
         boundComponent = context.scene.bindComponent(at: IndexPath(item: 0, section: 0))
     }
     
+    func testTellTheSceneToBindTheExpectedNumberOfComponents() {
+        XCTAssertEqual(viewModel.numberOfComponents, context.scene.numberOfBoundsComponents)
+    }
+    
     func testApplyTheTitleOntoTheScene() {
         XCTAssertEqual(viewModel.summary.title, context.scene.stubbedEventSummaryComponent.capturedTitle)
     }

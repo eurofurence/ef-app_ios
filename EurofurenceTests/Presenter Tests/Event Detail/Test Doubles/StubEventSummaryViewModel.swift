@@ -11,6 +11,7 @@ import Foundation
 
 struct StubEventSummaryViewModel: EventDetailViewModel {
     
+    var numberOfComponents: Int = .random
     var summary: EventSummaryViewModel = .random
     
     func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {

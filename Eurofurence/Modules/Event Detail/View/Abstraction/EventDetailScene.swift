@@ -9,7 +9,7 @@
 protocol EventDetailScene {
 
     func setDelegate(_ delegate: EventDetailSceneDelegate)
-    func bind(using binder: EventDetailBinder)
+    func bind(numberOfComponents: Int, using binder: EventDetailBinder)
 
 }
 

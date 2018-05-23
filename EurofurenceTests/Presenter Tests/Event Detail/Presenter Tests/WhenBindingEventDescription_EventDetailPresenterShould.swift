@@ -11,6 +11,7 @@ import XCTest
 
 struct StubEventDescriptionViewModel: EventDetailViewModel {
     
+    var numberOfComponents: Int = .random
     var eventDescription: EventDescriptionViewModel = .random
     
     func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {

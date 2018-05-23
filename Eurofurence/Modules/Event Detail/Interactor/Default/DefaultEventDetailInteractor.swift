@@ -36,7 +36,13 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         }
 
-        var components: [EventDetailViewModelComponent]
+        private let components: [EventDetailViewModelComponent]
+
+        init(components: [EventDetailViewModelComponent]) {
+            self.components = components
+        }
+
+        var numberOfComponents: Int = 0
 
         func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
             components[index].describe(to: visitor)

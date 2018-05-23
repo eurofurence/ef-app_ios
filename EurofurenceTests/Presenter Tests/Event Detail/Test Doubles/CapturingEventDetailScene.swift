@@ -78,7 +78,9 @@ class CapturingEventDetailScene: UIViewController, EventDetailScene {
     
     fileprivate let componentFactory = StubEventDetailComponentFactory()
     fileprivate var binder: EventDetailBinder?
-    func bind(using binder: EventDetailBinder) {
+    private(set) var numberOfBoundsComponents: Int?
+    func bind(numberOfComponents: Int, using binder: EventDetailBinder) {
+        numberOfBoundsComponents = numberOfComponents
         self.binder = binder
     }
     
