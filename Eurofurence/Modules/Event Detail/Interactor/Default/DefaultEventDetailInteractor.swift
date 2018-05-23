@@ -42,7 +42,9 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
             self.components = components
         }
 
-        var numberOfComponents: Int = 2
+        var numberOfComponents: Int {
+            return components.count
+        }
 
         func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
             components[index].describe(to: visitor)
@@ -61,6 +63,8 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
     }
 
     func makeViewModel(for event: Event2, completionHandler: @escaping (EventDetailViewModel) -> Void) {
+        var components = [EventDetailViewModelComponent]()
+
         let startEndTimeString = dateRangeFormatter.string(from: event.startDate, to: event.endDate)
         let summaryViewModel = EventSummaryViewModel(title: event.title,
                                                      subtitle: event.abstract,
@@ -68,9 +72,14 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
                                                      location: event.room.name,
                                                      trackName: event.track.name,
                                                      eventHosts: event.hosts)
-        let descriptionViewModel = EventDescriptionViewModel(contents: event.eventDescription)
-        let viewModel = ViewModel(components: [ViewModel.SummaryComponent(viewModel: summaryViewModel),
-                                               ViewModel.DescriptionComponent(viewModel: descriptionViewModel)])
+        components.append(ViewModel.SummaryComponent(viewModel: summaryViewModel))
+
+        if !event.eventDescription.isEmpty {
+            let descriptionViewModel = EventDescriptionViewModel(contents: event.eventDescription)
+            components.append(ViewModel.DescriptionComponent(viewModel: descriptionViewModel))
+        }
+
+        let viewModel = ViewModel(components: components)
         completionHandler(viewModel)
     }
 
