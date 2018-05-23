@@ -51,8 +51,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
                                                      eventStartEndTime: startEndTimeString,
                                                      location: event.room.name,
                                                      trackName: event.track.name,
-                                                     eventHosts: event.hosts,
-                                                     eventDescription: "")
+                                                     eventHosts: event.hosts)
         let viewModel = ViewModel(component: ViewModel.SummaryComponent(viewModel: summaryViewModel))
         completionHandler(viewModel)
     }

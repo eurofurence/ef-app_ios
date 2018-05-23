@@ -44,8 +44,7 @@ class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {
                                              eventStartEndTime: dateRangeFormatter.string(from: event.startDate, to: event.endDate),
                                              location: event.room.name,
                                              trackName: event.track.name,
-                                             eventHosts: event.hosts,
-                                             eventDescription: "")
+                                             eventHosts: event.hosts)
         let visitor = CapturingEventDetailViewModelVisitor()
         viewModel?.describe(to: visitor)
         

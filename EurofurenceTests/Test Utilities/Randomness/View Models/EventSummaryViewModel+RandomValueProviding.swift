@@ -17,8 +17,7 @@ extension EventSummaryViewModel: RandomValueProviding {
                                      eventStartEndTime: .random,
                                      location: .random,
                                      trackName: .random,
-                                     eventHosts: .random,
-                                     eventDescription: .random)
+                                     eventHosts: .random)
     }
     
 }

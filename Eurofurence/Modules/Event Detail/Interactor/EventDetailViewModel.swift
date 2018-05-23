@@ -29,8 +29,7 @@ struct EventSummaryViewModel: Equatable {
                lhs.eventStartEndTime == rhs.eventStartEndTime &&
                lhs.location == rhs.location &&
                lhs.trackName == rhs.trackName &&
-               lhs.eventHosts == rhs.eventHosts &&
-               lhs.eventDescription == rhs.eventDescription
+               lhs.eventHosts == rhs.eventHosts
     }
 
     var title: String
@@ -39,7 +38,6 @@ struct EventSummaryViewModel: Equatable {
     var location: String
     var trackName: String
     var eventHosts: String
-    var eventDescription: String
 
 }
 
