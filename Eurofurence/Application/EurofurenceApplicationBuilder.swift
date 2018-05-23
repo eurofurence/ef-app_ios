@@ -24,6 +24,7 @@ class EurofurenceApplicationBuilder {
     private var conventionStartDateRepository: ConventionStartDateRepository
     private var significantTimeChangeEventSource: SignificantTimeChangeEventSource
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
+    private var imageAPI: ImageAPI
 
     init() {
         struct DummyUserPreferences: UserPreferences {
@@ -40,6 +41,12 @@ class EurofurenceApplicationBuilder {
             }
             func fetchKnowledgeGroups(completionHandler: ([KnowledgeGroup2]?) -> Void) {
                 completionHandler(nil)
+            }
+        }
+
+        struct DummyImageAPI: ImageAPI {
+            func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void) {
+
             }
         }
 
@@ -61,6 +68,7 @@ class EurofurenceApplicationBuilder {
         loginAPI = V2LoginAPI(jsonSession: jsonSession)
         privateMessagesAPI = V2PrivateMessagesAPI(jsonSession: jsonSession)
         syncAPI = V2SyncAPI(jsonSession: jsonSession)
+        imageAPI = DummyImageAPI()
         dateDistanceCalculator = FoundationDateDistanceCalculator()
         conventionStartDateRepository = EF24StartDateRepository()
         significantTimeChangeEventSource = ApplicationSignificantTimeChangeEventSource.shared
@@ -151,6 +159,12 @@ class EurofurenceApplicationBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ imageAPI: ImageAPI) -> EurofurenceApplicationBuilder {
+        self.imageAPI = imageAPI
+        return self
+    }
+
     func build() -> EurofurenceApplicationProtocol {
         return EurofurenceApplication(userPreferences: userPreferences,
                                       dataStore: dataStore,
@@ -162,6 +176,7 @@ class EurofurenceApplicationBuilder {
                                       loginAPI: loginAPI,
                                       privateMessagesAPI: privateMessagesAPI,
                                       syncAPI: syncAPI,
+                                      imageAPI: imageAPI,
                                       dateDistanceCalculator: dateDistanceCalculator,
                                       conventionStartDateRepository: conventionStartDateRepository,
                                       significantTimeChangeEventSource: significantTimeChangeEventSource,

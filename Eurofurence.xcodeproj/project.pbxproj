@@ -637,6 +637,7 @@
 		CACF1EB420B5FFB600D904B5 /* Data+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EB320B5FFB600D904B5 /* Data+RandomValueProviding.swift */; };
 		CACF1EB620B600F200D904B5 /* EventGraphicComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EB520B600F200D904B5 /* EventGraphicComponent.swift */; };
 		CACF1EBA20B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EB920B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift */; };
+		CACF1EBC20B60A6000D904B5 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EBB20B60A6000D904B5 /* ImageAPI.swift */; };
 		CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */; };
 		CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */; };
 		CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343B1F5D7203004BB959 /* MessagesScene.swift */; };
@@ -1421,6 +1422,7 @@
 		CACF1EB320B5FFB600D904B5 /* Data+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CACF1EB520B600F200D904B5 /* EventGraphicComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGraphicComponent.swift; sourceTree = "<group>"; };
 		CACF1EB920B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
+		CACF1EBB20B60A6000D904B5 /* ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPI.swift; sourceTree = "<group>"; };
 		CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenterTestContext.swift; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMessagesScene.swift; sourceTree = "<group>"; };
 		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
@@ -2468,6 +2470,7 @@
 				CA30EAA01F2127350053DBF6 /* LoginResponse.swift */,
 				CA30EABD1F2660D80053DBF6 /* PrivateMessagesAPI.swift */,
 				CABF03CF20422B7A0028BD62 /* SyncAPI.swift */,
+				CACF1EBB20B60A6000D904B5 /* ImageAPI.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -4768,6 +4771,7 @@
 				9A7FFD551EFC5A9E007ABA36 /* MapViewController.swift in Sources */,
 				CAF3F63D20167B3100374B4C /* EurofurenceApplicationBuilder.swift in Sources */,
 				CA8D97D3201612A70074838F /* RemoteNotificationRegistrationSucceeded.swift in Sources */,
+				CACF1EBC20B60A6000D904B5 /* ImageAPI.swift in Sources */,
 				CAF9A9531F55F3B300628833 /* EurofurencePrivateMessagesService.swift in Sources */,
 				D6F3D339BFBA2C299453B6BA /* SettingsTableViewController.swift in Sources */,
 				D6F3D40D3515E7ABE9565906 /* AboutViewController.swift in Sources */,

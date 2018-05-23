@@ -33,6 +33,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private let authenticationCoordinator: UserAuthenticationCoordinator
     private let privateMessagesController: PrivateMessagesController
     private let syncAPI: SyncAPI
+    private let imageAPI: ImageAPI
     private let conventionCountdownController: ConventionCountdownController
     private var syncResponse: APISyncResponse?
     private var knowledgeGroups = [KnowledgeGroup2]()
@@ -50,6 +51,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
          loginAPI: LoginAPI,
          privateMessagesAPI: PrivateMessagesAPI,
          syncAPI: SyncAPI,
+         imageAPI: ImageAPI,
          dateDistanceCalculator: DateDistanceCalculator,
          conventionStartDateRepository: ConventionStartDateRepository,
          significantTimeChangeEventSource: SignificantTimeChangeEventSource,
@@ -60,6 +62,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         self.pushPermissionsStateProviding = pushPermissionsStateProviding
         self.clock = clock
         self.syncAPI = syncAPI
+        self.imageAPI = imageAPI
         self.timeIntervalForUpcomingEventsSinceNow = timeIntervalForUpcomingEventsSinceNow
 
         if pushPermissionsStateProviding.requestedPushNotificationAuthorization {
@@ -243,6 +246,9 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             guard let room = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier }) else { return nil }
             guard let track = response.tracks.changed.first(where: { $0.trackIdentifier == event.trackIdentifier }) else { return nil }
 
+            var posterImageData: Data?
+            imageAPI.fetchImage(identifier: event.posterImageId) { posterImageData = $0 }
+
             return Event2(title: event.title,
                           abstract: event.abstract,
                           room: Room(name: room.name),
@@ -251,7 +257,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                           startDate: event.startDateTime,
                           endDate: event.endDateTime,
                           eventDescription: event.eventDescription,
-                          posterGraphicPNGData: nil)
+                          posterGraphicPNGData: posterImageData)
         })
     }
 

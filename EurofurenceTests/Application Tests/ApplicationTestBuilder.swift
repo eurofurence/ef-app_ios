@@ -9,6 +9,22 @@
 @testable import Eurofurence
 import Foundation
 
+class FakeImageAPI: ImageAPI {
+    
+    func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void) {
+        completionHandler(identifier.data(using: .utf8)!)
+    }
+    
+}
+
+extension FakeImageAPI {
+    
+    func stubbedImage(for identifier: String) -> Data {
+        return identifier.data(using: .utf8)!
+    }
+    
+}
+
 class ApplicationTestBuilder {
     
     struct Context {
@@ -23,6 +39,7 @@ class ApplicationTestBuilder {
         var dateDistanceCalculator: StubDateDistanceCalculator
         var conventionStartDateRepository: StubConventionStartDateRepository
         var significantTimeChangeEventSource: FakeSignificantTimeChangeEventSource
+        var imageAPI: FakeImageAPI
         
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
@@ -60,6 +77,7 @@ class ApplicationTestBuilder {
         func makeExpectedEvent(from event: APIEvent, response: APISyncResponse) -> Event2 {
             let expectedRoom = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier })!
             let expectedTrack = response.tracks.changed.first(where: { $0.trackIdentifier == event.trackIdentifier })!
+            let expectedPosterGraphic = imageAPI.stubbedImage(for: event.posterImageId)
             
             return Event2(title: event.title,
                           abstract: event.abstract,
@@ -69,7 +87,7 @@ class ApplicationTestBuilder {
                           startDate: event.startDateTime,
                           endDate: event.endDateTime,
                           eventDescription: event.eventDescription,
-                          posterGraphicPNGData: nil)
+                          posterGraphicPNGData: expectedPosterGraphic)
         }
         
     }
@@ -137,6 +155,7 @@ class ApplicationTestBuilder {
         let dateDistanceCalculator = StubDateDistanceCalculator()
         let conventionStartDateRepository = StubConventionStartDateRepository()
         let significantTimeChangeEventSource = FakeSignificantTimeChangeEventSource()
+        let imageAPI = FakeImageAPI()
         let app = EurofurenceApplicationBuilder()
             .with(stubClock)
             .with(capturingCredentialStore)
@@ -152,6 +171,7 @@ class ApplicationTestBuilder {
             .with(conventionStartDateRepository)
             .with(significantTimeChangeEventSource)
             .with(timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow)
+            .with(imageAPI)
             .build()
         
         return Context(application: app,
@@ -163,7 +183,8 @@ class ApplicationTestBuilder {
                        dataStore: dataStore,
                        dateDistanceCalculator: dateDistanceCalculator,
                        conventionStartDateRepository: conventionStartDateRepository,
-                       significantTimeChangeEventSource: significantTimeChangeEventSource)
+                       significantTimeChangeEventSource: significantTimeChangeEventSource,
+                       imageAPI: imageAPI)
     }
     
 }
