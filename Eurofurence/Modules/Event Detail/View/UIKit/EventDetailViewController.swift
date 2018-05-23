@@ -57,7 +57,9 @@ class EventDetailViewController: UIViewController, EventDetailScene {
         }
 
         func makeEventDescriptionComponent(configuringUsing block: (EventDescriptionComponent) -> Void) -> UITableViewCell {
-            return UITableViewCell()
+            let cell = tableView.dequeue(EventDetailDescriptionTableViewCell.self)
+            block(cell)
+            return cell
         }
 
         // MARK: UITableViewDataSource
