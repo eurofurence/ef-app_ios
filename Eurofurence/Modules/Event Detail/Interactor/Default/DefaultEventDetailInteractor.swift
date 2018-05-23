@@ -42,7 +42,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
             self.components = components
         }
 
-        var numberOfComponents: Int = 0
+        var numberOfComponents: Int = 2
 
         func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
             components[index].describe(to: visitor)

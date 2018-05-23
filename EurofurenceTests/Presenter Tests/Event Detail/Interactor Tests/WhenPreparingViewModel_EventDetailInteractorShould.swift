@@ -40,6 +40,10 @@ class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {
         interactor.makeViewModel(for: event) { self.viewModel = $0 }
     }
     
+    func testProduceViewModelWithExpectedNumberOfComponents() {
+        XCTAssertEqual(2, viewModel?.numberOfComponents)
+    }
+    
     func testProduceExpectedSummaryViewModelAtIndexZero() {
         let expected = EventSummaryViewModel(title: event.title,
                                              subtitle: event.abstract,
