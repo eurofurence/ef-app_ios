@@ -68,7 +68,7 @@ class ApplicationTestBuilder {
                           hosts: event.panelHosts,
                           startDate: event.startDateTime,
                           endDate: event.endDateTime,
-                          eventDescription: "")
+                          eventDescription: event.eventDescription)
         }
         
     }

@@ -250,7 +250,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                           hosts: event.panelHosts,
                           startDate: event.startDateTime,
                           endDate: event.endDateTime,
-                          eventDescription: "")
+                          eventDescription: event.eventDescription)
         })
     }
 

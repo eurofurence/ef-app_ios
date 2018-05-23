@@ -36,7 +36,8 @@ extension APISyncResponse {
                             endDateTime: eventStartTime.addingTimeInterval(.random),
                             title: .random,
                             abstract: .random,
-                            panelHosts: .random)
+                            panelHosts: .random,
+                            eventDescription: .random)
         }
         
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
