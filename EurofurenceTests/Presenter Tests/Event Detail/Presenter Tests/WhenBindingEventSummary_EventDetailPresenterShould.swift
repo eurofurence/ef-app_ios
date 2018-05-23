@@ -12,6 +12,8 @@ import XCTest
 class WhenBindingEventSummary_EventDetailPresenterShould: XCTestCase {
     
     var context: EventDetailPresenterTestBuilder.Context!
+    var summary: EventSummaryViewModel!
+    var index: Int!
     var viewModel: StubEventSummaryViewModel!
     var boundComponent: Any?
     
@@ -19,11 +21,13 @@ class WhenBindingEventSummary_EventDetailPresenterShould: XCTestCase {
         super.setUp()
         
         let event = Event2.random
-        viewModel = StubEventSummaryViewModel()
+        summary = .random
+        index = .random
+        viewModel = StubEventSummaryViewModel(summary: summary, at: index)
         let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
         context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
         context.simulateSceneDidLoad()
-        boundComponent = context.scene.bindComponent(at: IndexPath(item: 0, section: 0))
+        boundComponent = context.scene.bindComponent(at: IndexPath(item: index, section: 0))
     }
     
     func testTellTheSceneToBindTheExpectedNumberOfComponents() {
@@ -31,27 +35,27 @@ class WhenBindingEventSummary_EventDetailPresenterShould: XCTestCase {
     }
     
     func testApplyTheTitleOntoTheScene() {
-        XCTAssertEqual(viewModel.summary.title, context.scene.stubbedEventSummaryComponent.capturedTitle)
+        XCTAssertEqual(summary.title, context.scene.stubbedEventSummaryComponent.capturedTitle)
     }
     
     func testApplyTheSubtitleOntoTheScene() {
-        XCTAssertEqual(viewModel.summary.subtitle, context.scene.stubbedEventSummaryComponent.capturedSubtitle)
+        XCTAssertEqual(summary.subtitle, context.scene.stubbedEventSummaryComponent.capturedSubtitle)
     }
     
     func testApplyTheEventStartTimeOntoTheScene() {
-        XCTAssertEqual(viewModel.summary.eventStartEndTime, context.scene.stubbedEventSummaryComponent.capturedEventStartTime)
+        XCTAssertEqual(summary.eventStartEndTime, context.scene.stubbedEventSummaryComponent.capturedEventStartTime)
     }
     
     func testApplyTheEventLocationOntoTheScene() {
-        XCTAssertEqual(viewModel.summary.location, context.scene.stubbedEventSummaryComponent.capturedEventLocation)
+        XCTAssertEqual(summary.location, context.scene.stubbedEventSummaryComponent.capturedEventLocation)
     }
     
     func testApplyTheTrackNameOntoTheScene() {
-        XCTAssertEqual(viewModel.summary.trackName, context.scene.stubbedEventSummaryComponent.capturedTrackName)
+        XCTAssertEqual(summary.trackName, context.scene.stubbedEventSummaryComponent.capturedTrackName)
     }
     
     func testApplyTheEventHostsOntoTheScene() {
-        XCTAssertEqual(viewModel.summary.eventHosts, context.scene.stubbedEventSummaryComponent.capturedEventHosts)
+        XCTAssertEqual(summary.eventHosts, context.scene.stubbedEventSummaryComponent.capturedEventHosts)
     }
     
     func testReturnTheBoundEventSummaryComponent() {

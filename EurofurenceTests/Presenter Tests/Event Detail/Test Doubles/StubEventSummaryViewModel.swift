@@ -11,11 +11,18 @@ import Foundation
 
 struct StubEventSummaryViewModel: EventDetailViewModel {
     
+    let summary: EventSummaryViewModel
+    private let expectedIndex: Int
+    
+    init(summary: EventSummaryViewModel, at index: Int) {
+        self.summary = summary
+        expectedIndex = index
+    }
+    
     var numberOfComponents: Int = .random
-    var summary: EventSummaryViewModel = .random
     
     func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
-        visitor.visit(summary.randomized(ifFalse: index == 0))
+        visitor.visit(summary.randomized(ifFalse: index == expectedIndex))
     }
     
 }

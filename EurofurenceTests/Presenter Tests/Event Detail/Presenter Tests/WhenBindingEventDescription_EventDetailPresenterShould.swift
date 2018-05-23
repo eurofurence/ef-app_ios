@@ -12,35 +12,44 @@ import XCTest
 struct StubEventDescriptionViewModel: EventDetailViewModel {
     
     var numberOfComponents: Int = .random
-    var eventDescription: EventDescriptionViewModel = .random
+    private let eventDescription: EventDescriptionViewModel
+    private let expectedIndex: Int
+    
+    init(eventDescription: EventDescriptionViewModel, at index: Int) {
+        self.eventDescription = eventDescription
+        expectedIndex = index
+    }
     
     func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
-        visitor.visit(eventDescription.randomized(ifFalse: index == 1))
+        visitor.visit(eventDescription.randomized(ifFalse: index == expectedIndex))
     }
     
 }
 
 class WhenBindingEventDescription_EventDetailPresenterShould: XCTestCase {
     
-    func testApplyTheEventDescriptionOntoTheScene() {
-        let event = Event2.random
-        let viewModel = StubEventDescriptionViewModel()
-        let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
-        let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
-        context.simulateSceneDidLoad()
-        _ = context.scene.bindComponent(at: IndexPath(item: 1, section: 0))
+    var context: EventDetailPresenterTestBuilder.Context!
+    var eventDescription: EventDescriptionViewModel!
+    var boundComponent: Any?
+    
+    override func setUp() {
+        super.setUp()
         
-        XCTAssertEqual(viewModel.eventDescription.contents, context.scene.stubbedEventDescriptionComponent.capturedEventDescription)
+        let event = Event2.random
+        eventDescription = .random
+        let index = Int.random
+        let viewModel = StubEventDescriptionViewModel(eventDescription: eventDescription, at: index)
+        let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
+        context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
+        context.simulateSceneDidLoad()
+        boundComponent = context.scene.bindComponent(at: IndexPath(item: index, section: 0))
+    }
+    
+    func testApplyTheEventDescriptionOntoTheScene() {
+        XCTAssertEqual(eventDescription.contents, context.scene.stubbedEventDescriptionComponent.capturedEventDescription)
     }
     
     func testReturnTheDescriptionComponent() {
-        let event = Event2.random
-        let viewModel = StubEventDescriptionViewModel()
-        let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
-        let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
-        context.simulateSceneDidLoad()
-        let boundComponent = context.scene.bindComponent(at: IndexPath(item: 1, section: 0))
-        
         XCTAssertTrue((boundComponent as? CapturingEventDescriptionComponent) === context.scene.stubbedEventDescriptionComponent)
     }
     
