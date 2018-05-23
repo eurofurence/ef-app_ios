@@ -74,7 +74,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
                                                      eventHosts: event.hosts)
         components.append(ViewModel.SummaryComponent(viewModel: summaryViewModel))
 
-        if !event.eventDescription.isEmpty {
+        if !event.eventDescription.isEmpty, event.eventDescription != event.abstract {
             let descriptionViewModel = EventDescriptionViewModel(contents: event.eventDescription)
             components.append(ViewModel.DescriptionComponent(viewModel: descriptionViewModel))
         }
