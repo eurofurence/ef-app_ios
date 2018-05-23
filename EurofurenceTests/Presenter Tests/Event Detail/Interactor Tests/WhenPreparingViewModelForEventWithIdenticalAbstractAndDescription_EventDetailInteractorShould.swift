@@ -16,20 +16,13 @@ class WhenPreparingViewModelForEventWithIdenticalAbstractAndDescription_EventDet
         event.eventDescription = event.abstract
         
         let context = EventDetailInteractorTestBuilder().build(for: event)
-        
-        let expected = EventSummaryViewModel(title: event.title,
-                                             subtitle: event.abstract,
-                                             eventStartEndTime: context.dateRangeFormatter.string(from: event.startDate, to: event.endDate),
-                                             location: event.room.name,
-                                             trackName: event.track.name,
-                                             eventHosts: event.hosts)
         let visitor = CapturingEventDetailViewModelVisitor()
         
         if let viewModel = context.viewModel {
             (0..<viewModel.numberOfComponents).forEach({ viewModel.describe(componentAt: $0, to: visitor) })
         }
         
-        XCTAssertEqual([expected], visitor.visitedViewModels)
+        XCTAssertEqual([context.makeExpectedEventSummaryViewModel()], visitor.visitedViewModels)
     }
     
 }

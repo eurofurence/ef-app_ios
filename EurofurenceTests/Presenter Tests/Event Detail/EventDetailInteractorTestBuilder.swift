@@ -30,3 +30,20 @@ class EventDetailInteractorTestBuilder {
     }
     
 }
+
+extension EventDetailInteractorTestBuilder.Context {
+    
+    func makeExpectedEventSummaryViewModel() -> EventSummaryViewModel {
+        return EventSummaryViewModel(title: event.title,
+                                     subtitle: event.abstract,
+                                     eventStartEndTime: dateRangeFormatter.string(from: event.startDate, to: event.endDate),
+                                     location: event.room.name,
+                                     trackName: event.track.name,
+                                     eventHosts: event.hosts)
+    }
+    
+    func makeExpectedEventDescriptionViewModel() -> EventDescriptionViewModel {
+        return EventDescriptionViewModel(contents: event.eventDescription)
+    }
+    
+}

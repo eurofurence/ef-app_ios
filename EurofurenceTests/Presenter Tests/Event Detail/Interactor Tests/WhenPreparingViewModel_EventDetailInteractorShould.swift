@@ -39,25 +39,17 @@ class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {
     }
     
     func testProduceExpectedSummaryViewModelAtIndexZero() {
-        let event = context.event
-        let expected = EventSummaryViewModel(title: event.title,
-                                             subtitle: event.abstract,
-                                             eventStartEndTime: context.dateRangeFormatter.string(from: event.startDate, to: event.endDate),
-                                             location: event.room.name,
-                                             trackName: event.track.name,
-                                             eventHosts: event.hosts)
         let visitor = CapturingEventDetailViewModelVisitor()
         context.viewModel?.describe(componentAt: 0, to: visitor)
         
-        XCTAssertEqual([expected], visitor.visitedViewModels)
+        XCTAssertEqual([context.makeExpectedEventSummaryViewModel()], visitor.visitedViewModels)
     }
     
     func testProduceExpectedDescriptionViewModelAtIndexOne() {
-        let expected = EventDescriptionViewModel(contents: context.event.eventDescription)
         let visitor = CapturingEventDetailViewModelVisitor()
         context.viewModel?.describe(componentAt: 1, to: visitor)
         
-        XCTAssertEqual([expected], visitor.visitedViewModels)
+        XCTAssertEqual([context.makeExpectedEventDescriptionViewModel()], visitor.visitedViewModels)
     }
     
 }
