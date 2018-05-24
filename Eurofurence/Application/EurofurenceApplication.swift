@@ -85,7 +85,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                                                                       dateDistanceCalculator: dateDistanceCalculator,
                                                                       clock: clock)
 
-        imageCache = ImagesCache(imageRepository: imageRepository)
+        imageCache = ImagesCache(eventBus: eventBus, imageRepository: imageRepository)
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
@@ -168,7 +168,11 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                     self.imageAPI.fetchImage(identifier: posterID, completionHandler: { (posterData) in
                         guard let idx = pendingPosterIDs.index(of: posterID) else { return }
                         pendingPosterIDs.remove(at: idx)
-                        self.imageCache[posterID] = posterData
+
+                        if let data = posterData {
+                            let event = ImageDownloadedEvent(identifier: posterID, pngImageData: data)
+                            self.eventBus.post(event)
+                        }
 
                         var completedUnitCount = progress.completedUnitCount
                         completedUnitCount += 1
@@ -284,7 +288,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                           startDate: event.startDateTime,
                           endDate: event.endDateTime,
                           eventDescription: event.eventDescription,
-                          posterGraphicPNGData: self.imageCache[event.posterImageId])
+                          posterGraphicPNGData: imageCache.cachedImageData(for: event.posterImageId))
         })
     }
 

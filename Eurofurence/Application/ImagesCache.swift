@@ -8,28 +8,35 @@
 
 import Foundation
 
-class ImagesCache {
+class ImagesCache: EventConsumer {
+
+    // MARK: Properties
 
     private let imageRepository: ImageRepository
     private var images = [ImageEntity]()
 
-    init(imageRepository: ImageRepository) {
+    // MARK: Initialization
+
+    init(eventBus: EventBus, imageRepository: ImageRepository) {
         self.imageRepository = imageRepository
+        eventBus.subscribe(consumer: self)
     }
 
-    subscript(identifier: String) -> Data? {
-        get {
-            return images.first(where: { $0.identifier == identifier })?.pngImageData
-        }
-        set {
-            if let data = newValue {
-                images.append(ImageEntity(identifier: identifier, pngImageData: data))
-            }
-        }
+    // MARK: Functions
+
+    func cachedImageData(for identifier: String) -> Data? {
+        return images.first(where: { $0.identifier == identifier })?.pngImageData
     }
 
     func save() {
         images.forEach(imageRepository.save)
+    }
+
+    // MARK: EventConsumer
+
+    func consume(event: ImageDownloadedEvent) {
+        let entity = ImageEntity(identifier: event.identifier, pngImageData: event.pngImageData)
+        images.append(entity)
     }
 
 }
