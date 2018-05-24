@@ -40,6 +40,13 @@ extension SlowFakeImageAPI {
         pendingFetches.removeAll()
     }
     
+    func resolveNextFetch() {
+        guard pendingFetches.count > 0 else { return }
+        
+        let next = pendingFetches.remove(at: 0)
+        next()
+    }
+    
 }
 
 extension FakeImageAPI {

@@ -167,6 +167,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                         pendingPosterIDs.remove(at: idx)
                         self.imageCache[posterID] = posterData
 
+                        var completedUnitCount = progress.completedUnitCount
+                        completedUnitCount += 1
+                        progress.completedUnitCount = completedUnitCount
+
                         if pendingPosterIDs.isEmpty {
                             self.updateEvents(from: response)
                             self.updateKnowledgeGroups(from: response)

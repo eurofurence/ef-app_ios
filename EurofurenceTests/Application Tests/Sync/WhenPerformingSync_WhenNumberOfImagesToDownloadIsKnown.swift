@@ -21,4 +21,16 @@ class WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown: XCTestCase {
         XCTAssertEqual(imageAPI.numberOfPendingFetches, Int(progress.totalUnitCount))
     }
     
+    func testTheCompletedUnitCountIsIncrementedWheneverAnImageIsDownloaded() {
+        let imageAPI = SlowFakeImageAPI()
+        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let context = ApplicationTestBuilder().with(imageAPI).build()
+        let progress = context.refreshLocalStore()
+        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        let randomAmountOfImagesToComplete = Int.random(upperLimit: UInt32(imageAPI.numberOfPendingFetches))
+        (0..<randomAmountOfImagesToComplete).forEach { (_) in imageAPI.resolveNextFetch() }
+        
+        XCTAssertEqual(randomAmountOfImagesToComplete, Int(progress.completedUnitCount))
+    }
+    
 }
