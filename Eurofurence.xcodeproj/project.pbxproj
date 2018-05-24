@@ -641,6 +641,7 @@
 		CACF1EC020B60D2B00D904B5 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EBF20B60D2B00D904B5 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift */; };
 		CACF1EC220B6B92F00D904B5 /* WhenPerformingSync_BeforeImageDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EC120B6B92F00D904B5 /* WhenPerformingSync_BeforeImageDownload.swift */; };
 		CACF1EC420B6B9B500D904B5 /* WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EC320B6B9B500D904B5 /* WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift */; };
+		CACF1EC620B6C31000D904B5 /* ImagesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EC520B6C31000D904B5 /* ImagesCache.swift */; };
 		CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */; };
 		CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */; };
 		CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343B1F5D7203004BB959 /* MessagesScene.swift */; };
@@ -1429,6 +1430,7 @@
 		CACF1EBF20B60D2B00D904B5 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift; sourceTree = "<group>"; };
 		CACF1EC120B6B92F00D904B5 /* WhenPerformingSync_BeforeImageDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSync_BeforeImageDownload.swift; sourceTree = "<group>"; };
 		CACF1EC320B6B9B500D904B5 /* WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift; sourceTree = "<group>"; };
+		CACF1EC520B6C31000D904B5 /* ImagesCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCache.swift; sourceTree = "<group>"; };
 		CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenterTestContext.swift; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMessagesScene.swift; sourceTree = "<group>"; };
 		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
@@ -1960,6 +1962,7 @@
 				78D7EEBC1F196B62005372A9 /* EurofurenceApplication.swift */,
 				CAF3F63C20167B3100374B4C /* EurofurenceApplicationBuilder.swift */,
 				CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */,
+				CACF1EC520B6C31000D904B5 /* ImagesCache.swift */,
 				CABF03BC2041C2B70028BD62 /* KnowledgeService.swift */,
 				CAF3F63A2016797400374B4C /* PrivateMessagesController.swift */,
 				CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */,
@@ -4719,6 +4722,7 @@
 				D6F3DDCB5EF23B138BD25865 /* EventHeaderCellTableViewCell.swift in Sources */,
 				CA637590208CE4E100536BE2 /* EventsSceneFactory.swift in Sources */,
 				CAEAEC0A1FE06FA500C0EE7C /* PhoneMessageDetailSceneFactory.swift in Sources */,
+				CACF1EC620B6C31000D904B5 /* ImagesCache.swift in Sources */,
 				CAEAEC0E1FE07AD700C0EE7C /* MessageBubbleBackgroundView.swift in Sources */,
 				CA6EC48B2051CDC800402894 /* KnowledgeDetailViewController.swift in Sources */,
 				9A2A94891F12D152004D66FB /* LastSyncDateProviding.swift in Sources */,

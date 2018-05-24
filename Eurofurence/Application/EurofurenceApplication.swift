@@ -40,7 +40,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private var announcements = [Announcement2]()
     private var events = [Event2]()
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
-    private var imageCache = [String : Data]()
+    private let imageCache = ImagesCache()
 
     init(userPreferences: UserPreferences,
          dataStore: EurofurenceDataStore,
