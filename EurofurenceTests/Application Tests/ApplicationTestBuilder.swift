@@ -17,6 +17,27 @@ class FakeImageAPI: ImageAPI {
     
 }
 
+class SlowFakeImageAPI: FakeImageAPI {
+    
+    fileprivate var pendingFetches = [() -> Void]()
+    
+    override func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void) {
+        pendingFetches.append {
+            super.fetchImage(identifier: identifier, completionHandler: completionHandler)
+        }
+    }
+    
+}
+
+extension SlowFakeImageAPI {
+    
+    func resolvePendingFetches() {
+        pendingFetches.forEach({ $0() })
+        pendingFetches.removeAll()
+    }
+    
+}
+
 extension FakeImageAPI {
     
     func stubbedImage(for identifier: String) -> Data {
@@ -103,6 +124,7 @@ class ApplicationTestBuilder {
     private var userPreferences: UserPreferences = StubUserPreferences()
     private let syncAPI = CapturingSyncAPI()
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval = .greatestFiniteMagnitude
+    private var imageAPI: FakeImageAPI = FakeImageAPI()
     
     func with(_ currentDate: Date) -> ApplicationTestBuilder {
         stubClock = StubClock(currentDate: currentDate)
@@ -142,6 +164,12 @@ class ApplicationTestBuilder {
         return self
     }
     
+    @discardableResult
+    func with(_ imageAPI: FakeImageAPI) -> ApplicationTestBuilder {
+        self.imageAPI = imageAPI
+        return self
+    }
+    
     func loggedInWithValidCredential() -> ApplicationTestBuilder {
         let credential = Credential(username: "User",
                                     registrationNumber: 42,
@@ -155,7 +183,6 @@ class ApplicationTestBuilder {
         let dateDistanceCalculator = StubDateDistanceCalculator()
         let conventionStartDateRepository = StubConventionStartDateRepository()
         let significantTimeChangeEventSource = FakeSignificantTimeChangeEventSource()
-        let imageAPI = FakeImageAPI()
         let app = EurofurenceApplicationBuilder()
             .with(stubClock)
             .with(capturingCredentialStore)

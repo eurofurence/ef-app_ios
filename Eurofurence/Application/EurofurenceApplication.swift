@@ -40,6 +40,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private var announcements = [Announcement2]()
     private var events = [Event2]()
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
+    private var imageCache = [String : Data]()
 
     init(userPreferences: UserPreferences,
          dataStore: EurofurenceDataStore,
@@ -154,25 +155,37 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             if let response = response {
                 self.syncResponse = response
 
-                self.updateEvents(from: response)
-                self.updateKnowledgeGroups(from: response)
-                self.updateAnnouncements(from: response)
+                let posterImageIDs = response.events.changed.map({ $0.posterImageId })
+                var pendingPosterIDs = posterImageIDs
+                posterImageIDs.forEach({ (posterID) in
+                    self.imageAPI.fetchImage(identifier: posterID, completionHandler: { (posterData) in
+                        guard let idx = pendingPosterIDs.index(of: posterID) else { return }
+                        pendingPosterIDs.remove(at: idx)
+                        self.imageCache[posterID] = posterData
 
-                self.dataStore.performTransaction({ (transaction) in
-                    transaction.saveKnowledgeGroups(self.knowledgeGroups)
-                    transaction.saveAnnouncements(self.announcements)
+                        if pendingPosterIDs.isEmpty {
+                            self.updateEvents(from: response)
+                            self.updateKnowledgeGroups(from: response)
+                            self.updateAnnouncements(from: response)
+
+                            self.dataStore.performTransaction({ (transaction) in
+                                transaction.saveKnowledgeGroups(self.knowledgeGroups)
+                                transaction.saveAnnouncements(self.announcements)
+                            })
+
+                            self.announcementsObservers.forEach({ $0.eurofurenceApplicationDidChangeUnreadAnnouncements(to: self.announcements) })
+
+                            let runningEvents = self.makeRunningEvents()
+                            let upcomingEvents = self.makeUpcomingEvents()
+                            self.eventsObservers.forEach({ (observer) in
+                                observer.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents)
+                                observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: upcomingEvents)
+                            })
+
+                            self.privateMessagesController.fetchPrivateMessages { (_) in completionHandler(nil) }
+                        }
+                    })
                 })
-
-                self.announcementsObservers.forEach({ $0.eurofurenceApplicationDidChangeUnreadAnnouncements(to: self.announcements) })
-
-                let runningEvents = self.makeRunningEvents()
-                let upcomingEvents = self.makeUpcomingEvents()
-                self.eventsObservers.forEach({ (observer) in
-                    observer.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents)
-                    observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: upcomingEvents)
-                })
-
-                self.privateMessagesController.fetchPrivateMessages { (_) in completionHandler(nil) }
             } else {
                 completionHandler(SyncError.failedToLoadResponse)
             }
@@ -246,9 +259,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             guard let room = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier }) else { return nil }
             guard let track = response.tracks.changed.first(where: { $0.trackIdentifier == event.trackIdentifier }) else { return nil }
 
-            var posterImageData: Data?
-            imageAPI.fetchImage(identifier: event.posterImageId) { posterImageData = $0 }
-
             return Event2(title: event.title,
                           abstract: event.abstract,
                           room: Room(name: room.name),
@@ -257,7 +267,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                           startDate: event.startDateTime,
                           endDate: event.endDateTime,
                           eventDescription: event.eventDescription,
-                          posterGraphicPNGData: posterImageData)
+                          posterGraphicPNGData: self.imageCache[event.posterImageId])
         })
     }
 
