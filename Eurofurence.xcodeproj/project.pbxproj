@@ -642,6 +642,8 @@
 		CACF1EC220B6B92F00D904B5 /* WhenPerformingSync_BeforeImageDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EC120B6B92F00D904B5 /* WhenPerformingSync_BeforeImageDownload.swift */; };
 		CACF1EC420B6B9B500D904B5 /* WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EC320B6B9B500D904B5 /* WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift */; };
 		CACF1EC620B6C31000D904B5 /* ImagesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EC520B6C31000D904B5 /* ImagesCache.swift */; };
+		CACF1EC920B6D5AA00D904B5 /* ImageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EC820B6D5AA00D904B5 /* ImageEntity.swift */; };
+		CACF1ECD20B6D65400D904B5 /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1ECC20B6D65400D904B5 /* ImageRepository.swift */; };
 		CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */; };
 		CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */; };
 		CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343B1F5D7203004BB959 /* MessagesScene.swift */; };
@@ -1431,6 +1433,8 @@
 		CACF1EC120B6B92F00D904B5 /* WhenPerformingSync_BeforeImageDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSync_BeforeImageDownload.swift; sourceTree = "<group>"; };
 		CACF1EC320B6B9B500D904B5 /* WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift; sourceTree = "<group>"; };
 		CACF1EC520B6C31000D904B5 /* ImagesCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCache.swift; sourceTree = "<group>"; };
+		CACF1EC820B6D5AA00D904B5 /* ImageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEntity.swift; sourceTree = "<group>"; };
+		CACF1ECC20B6D65400D904B5 /* ImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepository.swift; sourceTree = "<group>"; };
 		CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenterTestContext.swift; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMessagesScene.swift; sourceTree = "<group>"; };
 		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
@@ -1976,6 +1980,7 @@
 				CA18B3451F49AF4500038E52 /* Model */,
 				78D7EEB91F196B40005372A9 /* Notifications */,
 				CA72849920A1C332007D912A /* Observers */,
+				CACF1ECA20B6D64300D904B5 /* Repositories */,
 				CAB3A72B1F7532DF005DF77B /* System Services */,
 			);
 			path = Application;
@@ -2459,6 +2464,7 @@
 		CA18B3451F49AF4500038E52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CACF1EC720B6D5A300D904B5 /* Entities */,
 				CA0E520E208F4BDF005259FE /* Announcement2.swift */,
 				CAD780421F1D4CA3002A8333 /* Credential.swift */,
 				CA162E9120A652B5004AFED6 /* Event2.swift */,
@@ -3692,6 +3698,30 @@
 			path = Default;
 			sourceTree = "<group>";
 		};
+		CACF1EC720B6D5A300D904B5 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				CACF1EC820B6D5AA00D904B5 /* ImageEntity.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		CACF1ECA20B6D64300D904B5 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				CACF1ECB20B6D64E00D904B5 /* Images */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		CACF1ECB20B6D64E00D904B5 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				CACF1ECC20B6D65400D904B5 /* ImageRepository.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		CAD234381F5D71D9004BB959 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
@@ -4745,6 +4775,7 @@
 				CA728451209D0557007D912A /* AnnouncementDetailModule.swift in Sources */,
 				CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */,
 				CA0E520D208E759F005259FE /* DefaultNewsInteractor.swift in Sources */,
+				CACF1ECD20B6D65400D904B5 /* ImageRepository.swift in Sources */,
 				9A861E991F24B0B800B75A8C /* NewsSectionHeader.swift in Sources */,
 				CAF3F63B2016797400374B4C /* PrivateMessagesController.swift in Sources */,
 				9A861ECD1F25555000B75A8C /* TutorialPageViewController.swift in Sources */,
@@ -4787,6 +4818,7 @@
 				CACF1EBC20B60A6000D904B5 /* ImageAPI.swift in Sources */,
 				CAF9A9531F55F3B300628833 /* EurofurencePrivateMessagesService.swift in Sources */,
 				D6F3D339BFBA2C299453B6BA /* SettingsTableViewController.swift in Sources */,
+				CACF1EC920B6D5AA00D904B5 /* ImageEntity.swift in Sources */,
 				D6F3D40D3515E7ABE9565906 /* AboutViewController.swift in Sources */,
 				D6F3DEED2F3250C61DB692D9 /* DealerViewController.swift in Sources */,
 				CACF1E7E20B212B400D904B5 /* EventDetailComponentFactory.swift in Sources */,

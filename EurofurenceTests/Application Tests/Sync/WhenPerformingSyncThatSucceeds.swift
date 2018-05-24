@@ -41,4 +41,21 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         XCTAssertTrue(invokedWithNilError)
     }
     
+    func testTheEventPosterImagesAreSavedIntoTheImageRepository() {
+        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let context = ApplicationTestBuilder().build()
+        context.refreshLocalStore()
+        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        
+        let expected = syncResponse.events.changed.map({
+            $0.posterImageId
+        }).filter({
+            !$0.isEmpty
+        }).map({
+            ImageEntity(identifier: $0, pngImageData: context.imageAPI.stubbedImage(for: $0))
+        })
+        
+        XCTAssertEqual(expected, context.imageRepository.savedImages)
+    }
+    
 }

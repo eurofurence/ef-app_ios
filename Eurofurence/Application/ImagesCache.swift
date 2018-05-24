@@ -10,15 +10,26 @@ import Foundation
 
 class ImagesCache {
 
-    private var cache = [String : Data]()
+    private let imageRepository: ImageRepository
+    private var images = [ImageEntity]()
 
-    public subscript(identifier: String) -> Data? {
+    init(imageRepository: ImageRepository) {
+        self.imageRepository = imageRepository
+    }
+
+    subscript(identifier: String) -> Data? {
         get {
-            return cache[identifier]
+            return images.first(where: { $0.identifier == identifier })?.pngImageData
         }
         set {
-            cache[identifier] = newValue
+            if let data = newValue {
+                images.append(ImageEntity(identifier: identifier, pngImageData: data))
+            }
         }
+    }
+
+    func save() {
+        images.forEach(imageRepository.save)
     }
 
 }

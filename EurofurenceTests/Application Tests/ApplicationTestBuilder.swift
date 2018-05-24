@@ -57,6 +57,15 @@ extension FakeImageAPI {
     
 }
 
+class CapturingImageRepository: ImageRepository {
+    
+    private(set) var savedImages = [ImageEntity]()
+    func save(_ image: ImageEntity) {
+        savedImages.append(image)
+    }
+    
+}
+
 class ApplicationTestBuilder {
     
     struct Context {
@@ -72,6 +81,7 @@ class ApplicationTestBuilder {
         var conventionStartDateRepository: StubConventionStartDateRepository
         var significantTimeChangeEventSource: FakeSignificantTimeChangeEventSource
         var imageAPI: FakeImageAPI
+        var imageRepository: CapturingImageRepository
         
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
@@ -195,6 +205,7 @@ class ApplicationTestBuilder {
         let dateDistanceCalculator = StubDateDistanceCalculator()
         let conventionStartDateRepository = StubConventionStartDateRepository()
         let significantTimeChangeEventSource = FakeSignificantTimeChangeEventSource()
+        let imageRepository = CapturingImageRepository()
         let app = EurofurenceApplicationBuilder()
             .with(stubClock)
             .with(capturingCredentialStore)
@@ -211,6 +222,7 @@ class ApplicationTestBuilder {
             .with(significantTimeChangeEventSource)
             .with(timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow)
             .with(imageAPI)
+            .with(imageRepository)
             .build()
         
         return Context(application: app,
@@ -223,7 +235,8 @@ class ApplicationTestBuilder {
                        dateDistanceCalculator: dateDistanceCalculator,
                        conventionStartDateRepository: conventionStartDateRepository,
                        significantTimeChangeEventSource: significantTimeChangeEventSource,
-                       imageAPI: imageAPI)
+                       imageAPI: imageAPI,
+                       imageRepository: imageRepository)
     }
     
 }

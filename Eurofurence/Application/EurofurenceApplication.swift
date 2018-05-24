@@ -40,7 +40,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private var announcements = [Announcement2]()
     private var events = [Event2]()
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
-    private let imageCache = ImagesCache()
+    private let imageCache: ImagesCache
 
     init(userPreferences: UserPreferences,
          dataStore: EurofurenceDataStore,
@@ -56,7 +56,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
          dateDistanceCalculator: DateDistanceCalculator,
          conventionStartDateRepository: ConventionStartDateRepository,
          significantTimeChangeEventSource: SignificantTimeChangeEventSource,
-         timeIntervalForUpcomingEventsSinceNow: TimeInterval) {
+         timeIntervalForUpcomingEventsSinceNow: TimeInterval,
+         imageRepository: ImageRepository) {
         self.userPreferences = userPreferences
         self.dataStore = dataStore
         self.pushPermissionsRequester = pushPermissionsRequester
@@ -83,6 +84,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                                                                       conventionStartDateRepository: conventionStartDateRepository,
                                                                       dateDistanceCalculator: dateDistanceCalculator,
                                                                       clock: clock)
+
+        imageCache = ImagesCache(imageRepository: imageRepository)
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
@@ -172,6 +175,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                         progress.completedUnitCount = completedUnitCount
 
                         if pendingPosterIDs.isEmpty {
+                            self.imageCache.save()
+
                             self.updateEvents(from: response)
                             self.updateKnowledgeGroups(from: response)
                             self.updateAnnouncements(from: response)
@@ -200,6 +205,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         }
 
         return progress
+    }
+
+    class Schedule {
+
     }
 
     func lookupContent(for link: Link) -> LinkContentLookupResult? {

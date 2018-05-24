@@ -25,6 +25,7 @@ class EurofurenceApplicationBuilder {
     private var significantTimeChangeEventSource: SignificantTimeChangeEventSource
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
     private var imageAPI: ImageAPI
+    private var imageRepository: ImageRepository
 
     init() {
         struct DummyUserPreferences: UserPreferences {
@@ -46,6 +47,12 @@ class EurofurenceApplicationBuilder {
 
         struct DummyImageAPI: ImageAPI {
             func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void) {
+
+            }
+        }
+
+        struct DummyImageRepository: ImageRepository {
+            func save(_ image: ImageEntity) {
 
             }
         }
@@ -73,6 +80,7 @@ class EurofurenceApplicationBuilder {
         conventionStartDateRepository = EF24StartDateRepository()
         significantTimeChangeEventSource = ApplicationSignificantTimeChangeEventSource.shared
         timeIntervalForUpcomingEventsSinceNow = 3600
+        imageRepository = DummyImageRepository()
     }
 
     @discardableResult
@@ -165,6 +173,12 @@ class EurofurenceApplicationBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ imageRepository: ImageRepository) -> EurofurenceApplicationBuilder {
+        self.imageRepository = imageRepository
+        return self
+    }
+
     func build() -> EurofurenceApplicationProtocol {
         return EurofurenceApplication(userPreferences: userPreferences,
                                       dataStore: dataStore,
@@ -180,7 +194,8 @@ class EurofurenceApplicationBuilder {
                                       dateDistanceCalculator: dateDistanceCalculator,
                                       conventionStartDateRepository: conventionStartDateRepository,
                                       significantTimeChangeEventSource: significantTimeChangeEventSource,
-                                      timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow)
+                                      timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow,
+                                      imageRepository: imageRepository)
     }
 
 }
