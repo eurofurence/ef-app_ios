@@ -639,6 +639,8 @@
 		CACF1EBA20B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EB920B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift */; };
 		CACF1EBC20B60A6000D904B5 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EBB20B60A6000D904B5 /* ImageAPI.swift */; };
 		CACF1EC020B60D2B00D904B5 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EBF20B60D2B00D904B5 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift */; };
+		CACF1EC220B6B92F00D904B5 /* WhenPerformingSync_BeforeImageDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EC120B6B92F00D904B5 /* WhenPerformingSync_BeforeImageDownload.swift */; };
+		CACF1EC420B6B9B500D904B5 /* WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EC320B6B9B500D904B5 /* WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift */; };
 		CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */; };
 		CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */; };
 		CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343B1F5D7203004BB959 /* MessagesScene.swift */; };
@@ -1425,6 +1427,8 @@
 		CACF1EB920B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
 		CACF1EBB20B60A6000D904B5 /* ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPI.swift; sourceTree = "<group>"; };
 		CACF1EBF20B60D2B00D904B5 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift; sourceTree = "<group>"; };
+		CACF1EC120B6B92F00D904B5 /* WhenPerformingSync_BeforeImageDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSync_BeforeImageDownload.swift; sourceTree = "<group>"; };
+		CACF1EC320B6B9B500D904B5 /* WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift; sourceTree = "<group>"; };
 		CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenterTestContext.swift; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMessagesScene.swift; sourceTree = "<group>"; };
 		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
@@ -3875,6 +3879,8 @@
 		CAF597A020458D0100089BE8 /* Sync */ = {
 			isa = PBXGroup;
 			children = (
+				CACF1EC120B6B92F00D904B5 /* WhenPerformingSync_BeforeImageDownload.swift */,
+				CACF1EC320B6B9B500D904B5 /* WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift */,
 				CA8276B7204F19CA006A7419 /* WhenPerformingSyncThatFails.swift */,
 				CAF597A120458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift */,
 				CA8276B9204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift */,
@@ -4882,6 +4888,7 @@
 				CACF1E5420AE2D2700D904B5 /* WhenBuildingEventDetailModule.swift in Sources */,
 				7820A7011F16C0F0004C0FB5 /* CapturingPushPermissionsStateProviding.swift in Sources */,
 				CA162E8D20A64C8C004AFED6 /* WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift in Sources */,
+				CACF1EC220B6B92F00D904B5 /* WhenPerformingSync_BeforeImageDownload.swift in Sources */,
 				CA71A3522041B59600C847C3 /* Array+RandomConvenience.swift in Sources */,
 				CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */,
 				CABF03B72041C2150028BD62 /* DefaultKnowledgeListInteractorTests.swift in Sources */,
@@ -5078,6 +5085,7 @@
 				CA637570208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift in Sources */,
 				78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */,
 				CA728473209D163E007D912A /* StubAnnouncementDetailInteractor.swift in Sources */,
+				CACF1EC420B6B9B500D904B5 /* WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift in Sources */,
 				CAD3BDB12058719300C91E6E /* Link+RandomValueProviding.swift in Sources */,
 				CA637542208CBB2400536BE2 /* StubNavigationControllerFactory.swift in Sources */,
 				CA81D4901FE9A91000A52A2F /* WhenTheTutorialAppears.swift in Sources */,

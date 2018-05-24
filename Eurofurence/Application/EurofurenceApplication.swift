@@ -151,11 +151,15 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             case failedToLoadResponse
         }
 
+        let progress = Progress()
+
         syncAPI.fetchLatestData { (response) in
             if let response = response {
                 self.syncResponse = response
 
                 let posterImageIDs = response.events.changed.map({ $0.posterImageId })
+                progress.totalUnitCount = Int64(posterImageIDs.count)
+
                 var pendingPosterIDs = posterImageIDs
                 posterImageIDs.forEach({ (posterID) in
                     self.imageAPI.fetchImage(identifier: posterID, completionHandler: { (posterData) in
@@ -191,7 +195,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             }
         }
 
-        return Progress()
+        return progress
     }
 
     func lookupContent(for link: Link) -> LinkContentLookupResult? {

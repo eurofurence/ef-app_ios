@@ -21,6 +21,10 @@ class SlowFakeImageAPI: FakeImageAPI {
     
     fileprivate var pendingFetches = [() -> Void]()
     
+    var numberOfPendingFetches: Int {
+        return pendingFetches.count
+    }
+    
     override func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void) {
         pendingFetches.append {
             super.fetchImage(identifier: identifier, completionHandler: completionHandler)
@@ -83,8 +87,9 @@ class ApplicationTestBuilder {
             loginAPI.simulateResponse(LoginResponse(userIdentifier: .random, username: .random, token: .random, tokenValidUntil: Date(timeIntervalSinceNow: 1)))
         }
         
-        func refreshLocalStore(completionHandler: ((Error?) -> Void)? = nil) {
-            _ = application.refreshLocalStore { (error) in
+        @discardableResult
+        func refreshLocalStore(completionHandler: ((Error?) -> Void)? = nil) -> Progress {
+            return application.refreshLocalStore { (error) in
                 completionHandler?(error)
             }
         }
