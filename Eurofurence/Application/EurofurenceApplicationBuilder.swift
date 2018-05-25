@@ -47,7 +47,7 @@ class EurofurenceApplicationBuilder {
 
         struct DummyImageAPI: ImageAPI {
             func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void) {
-
+                completionHandler(nil)
             }
         }
 
