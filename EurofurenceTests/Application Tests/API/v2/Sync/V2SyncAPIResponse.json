@@ -23,8 +23,8 @@
                             "EndDateTimeUtc": "2017-08-16T00:00:00.000Z",
                             "PanelHosts": "Akulatraxas",
                             "IsDeviatingFromConBook": false,
-                            "BannerImageId": null,
-                            "PosterImageId": null
+                            "BannerImageId": "bannertest",
+                            "PosterImageId": "postertest"
                             }],
         "DeletedEntities": [{
                             "LastChangeDateTimeUtc": "2018-01-12T08:56:46.128Z",

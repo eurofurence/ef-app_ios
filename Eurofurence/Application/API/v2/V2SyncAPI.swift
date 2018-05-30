@@ -140,6 +140,8 @@ private struct JSONSyncResponse: Decodable {
         var Abstract: String
         var PanelHosts: String
         var Description: String
+        var BannerImageId: String?
+        var PosterImageId: String?
 
         var modelValue: APIEvent {
             return APIEvent(roomIdentifier: ConferenceRoomId,
@@ -150,8 +152,8 @@ private struct JSONSyncResponse: Decodable {
                             abstract: Abstract,
                             panelHosts: PanelHosts,
                             eventDescription: Description,
-                            posterImageId: "",
-                            bannerImageId: "")
+                            posterImageId: (PosterImageId != nil) ? PosterImageId! : "",
+                            bannerImageId: (BannerImageId != nil) ? BannerImageId! : "")
         }
 
     }
