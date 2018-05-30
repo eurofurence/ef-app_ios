@@ -163,56 +163,60 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                 let posterImageIDs = response.events.changed.map({ $0.posterImageId }).filter({ !$0.isEmpty })
                 progress.totalUnitCount = Int64(posterImageIDs.count)
 
-                var pendingPosterIDs = posterImageIDs
-                posterImageIDs.forEach({ (posterID) in
-                    self.imageAPI.fetchImage(identifier: posterID, completionHandler: { (posterData) in
-                        guard let idx = pendingPosterIDs.index(of: posterID) else { return }
-                        pendingPosterIDs.remove(at: idx)
+                let completeSync: () -> Void = {
+                    self.imageCache.save()
 
-                        if let data = posterData {
-                            let event = ImageDownloadedEvent(identifier: posterID, pngImageData: data)
-                            self.eventBus.post(event)
-                        }
+                    self.updateEvents(from: response)
+                    self.updateKnowledgeGroups(from: response)
+                    self.updateAnnouncements(from: response)
 
-                        var completedUnitCount = progress.completedUnitCount
-                        completedUnitCount += 1
-                        progress.completedUnitCount = completedUnitCount
-
-                        if pendingPosterIDs.isEmpty {
-                            self.imageCache.save()
-
-                            self.updateEvents(from: response)
-                            self.updateKnowledgeGroups(from: response)
-                            self.updateAnnouncements(from: response)
-
-                            self.dataStore.performTransaction({ (transaction) in
-                                transaction.saveKnowledgeGroups(self.knowledgeGroups)
-                                transaction.saveAnnouncements(self.announcements)
-                            })
-
-                            self.announcementsObservers.forEach({ $0.eurofurenceApplicationDidChangeUnreadAnnouncements(to: self.announcements) })
-
-                            let runningEvents = self.makeRunningEvents()
-                            let upcomingEvents = self.makeUpcomingEvents()
-                            self.eventsObservers.forEach({ (observer) in
-                                observer.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents)
-                                observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: upcomingEvents)
-                            })
-
-                            self.privateMessagesController.fetchPrivateMessages { (_) in completionHandler(nil) }
-                        }
+                    self.dataStore.performTransaction({ (transaction) in
+                        transaction.saveKnowledgeGroups(self.knowledgeGroups)
+                        transaction.saveAnnouncements(self.announcements)
                     })
-                })
+
+                    self.announcementsObservers.forEach({ $0.eurofurenceApplicationDidChangeUnreadAnnouncements(to: self.announcements) })
+
+                    let runningEvents = self.makeRunningEvents()
+                    let upcomingEvents = self.makeUpcomingEvents()
+                    self.eventsObservers.forEach({ (observer) in
+                        observer.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents)
+                        observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: upcomingEvents)
+                    })
+
+                    self.privateMessagesController.fetchPrivateMessages { (_) in completionHandler(nil) }
+                }
+
+                if posterImageIDs.isEmpty {
+                    completeSync()
+                } else {
+                    var pendingPosterIDs = posterImageIDs
+                    posterImageIDs.forEach({ (posterID) in
+                        self.imageAPI.fetchImage(identifier: posterID, completionHandler: { (posterData) in
+                            guard let idx = pendingPosterIDs.index(of: posterID) else { return }
+                            pendingPosterIDs.remove(at: idx)
+
+                            if let data = posterData {
+                                let event = ImageDownloadedEvent(identifier: posterID, pngImageData: data)
+                                self.eventBus.post(event)
+                            }
+
+                            var completedUnitCount = progress.completedUnitCount
+                            completedUnitCount += 1
+                            progress.completedUnitCount = completedUnitCount
+
+                            if pendingPosterIDs.isEmpty {
+                                completeSync()
+                            }
+                        })
+                    })
+                }
             } else {
                 completionHandler(SyncError.failedToLoadResponse)
             }
         }
 
         return progress
-    }
-
-    class Schedule {
-
     }
 
     func lookupContent(for link: Link) -> LinkContentLookupResult? {

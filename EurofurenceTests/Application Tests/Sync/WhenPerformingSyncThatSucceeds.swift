@@ -61,4 +61,21 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         XCTAssertEqual(expected, context.imageRepository.savedImages)
     }
     
+    func testCompleteTheSyncWhenAllEventsDoNotHaveImages() {
+        var syncResponse = APISyncResponse.randomWithoutDeletions
+        let changed = syncResponse.events.changed
+        for (idx, event) in changed.enumerated() {
+            var copy = event
+            copy.posterImageId = ""
+            syncResponse.events.changed[idx] = copy
+        }
+        
+        let context = ApplicationTestBuilder().build()
+        var didFinish = false
+        context.refreshLocalStore() { (_) in didFinish = true }
+        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        
+        XCTAssertTrue(didFinish)
+    }
+    
 }
