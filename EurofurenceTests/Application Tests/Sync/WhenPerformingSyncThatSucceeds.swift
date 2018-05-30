@@ -58,7 +58,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
             ImageEntity(identifier: $0, pngImageData: context.imageAPI.stubbedImage(for: $0))
         })
         
-        XCTAssertEqual(expected, context.imageRepository.savedImages)
+        XCTAssertTrue(context.imageRepository.didSave(expected))
     }
     
     func testCompleteTheSyncWhenAllEventsDoNotHaveImages() {

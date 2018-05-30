@@ -59,9 +59,17 @@ extension FakeImageAPI {
 
 class CapturingImageRepository: ImageRepository {
     
-    private(set) var savedImages = [ImageEntity]()
+    fileprivate var savedImages = [ImageEntity]()
     func save(_ image: ImageEntity) {
         savedImages.append(image)
+    }
+    
+}
+
+extension CapturingImageRepository {
+    
+    func didSave(_ images: [ImageEntity]) -> Bool {
+        return savedImages.contains(elementsFrom: images)
     }
     
 }
