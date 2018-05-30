@@ -51,8 +51,8 @@ extension SlowFakeImageAPI {
 
 extension FakeImageAPI {
     
-    func stubbedImage(for identifier: String) -> Data {
-        return identifier.data(using: .utf8)!
+    func stubbedImage(for identifier: String?) -> Data? {
+        return identifier?.data(using: .utf8)
     }
     
 }

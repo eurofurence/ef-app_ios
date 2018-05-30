@@ -162,7 +162,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
                 let posterImageIdentifiers = response.events.changed.map({ $0.posterImageId })
                 let bannerImageIdentifiers = response.events.changed.map({ $0.bannerImageId })
-                let imageIdentifiers = (posterImageIdentifiers + bannerImageIdentifiers).filter({ !$0.isEmpty })
+                let imageIdentifiers = (posterImageIdentifiers + bannerImageIdentifiers).flatMap({ $0 })
                 progress.totalUnitCount = Int64(imageIdentifiers.count)
 
                 let completeSync: () -> Void = {
@@ -286,6 +286,11 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             guard let room = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier }) else { return nil }
             guard let track = response.tracks.changed.first(where: { $0.trackIdentifier == event.trackIdentifier }) else { return nil }
 
+            var posterGraphicData: Data?
+            if let posterImageIdentifier = event.posterImageId {
+                posterGraphicData = imageCache.cachedImageData(for: posterImageIdentifier)
+            }
+
             return Event2(title: event.title,
                           abstract: event.abstract,
                           room: Room(name: room.name),
@@ -294,7 +299,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                           startDate: event.startDateTime,
                           endDate: event.endDateTime,
                           eventDescription: event.eventDescription,
-                          posterGraphicPNGData: imageCache.cachedImageData(for: event.posterImageId))
+                          posterGraphicPNGData: posterGraphicData)
         })
     }
 

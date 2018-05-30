@@ -152,8 +152,8 @@ private struct JSONSyncResponse: Decodable {
                             abstract: Abstract,
                             panelHosts: PanelHosts,
                             eventDescription: Description,
-                            posterImageId: (PosterImageId != nil) ? PosterImageId! : "",
-                            bannerImageId: (BannerImageId != nil) ? BannerImageId! : "")
+                            posterImageId: PosterImageId,
+                            bannerImageId: BannerImageId)
         }
 
     }

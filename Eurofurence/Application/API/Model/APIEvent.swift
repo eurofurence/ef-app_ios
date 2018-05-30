@@ -31,7 +31,7 @@ struct APIEvent: Equatable {
     var abstract: String
     var panelHosts: String
     var eventDescription: String
-    var posterImageId: String
-    var bannerImageId: String
+    var posterImageId: String?
+    var bannerImageId: String?
 
 }

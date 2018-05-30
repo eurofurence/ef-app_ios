@@ -140,8 +140,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                abstract: "Welcome to the Athropomorphic Wellness and First-Aid Center.",
                                                                panelHosts: "Mystifur",
                                                                eventDescription: "",
-                                                               posterImageId: "",
-                                                               bannerImageId: "")])
+                                                               posterImageId: nil,
+                                                               bannerImageId: nil)])
         
         let tracks = APISyncDelta<APITrack>(changed: [APITrack(trackIdentifier: "f92a4fc0-303f-4c13-9194-44121d80bd20",
                                                                name: "Stage")],

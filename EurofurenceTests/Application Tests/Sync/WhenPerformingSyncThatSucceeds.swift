@@ -44,7 +44,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
     func testTheEventPosterImagesAreSavedIntoTheImageRepository() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         var randomEvent = syncResponse.events.changed.randomElement()
-        randomEvent.element.posterImageId = ""
+        randomEvent.element.posterImageId = nil
         syncResponse.events.changed[randomEvent.index] = randomEvent.element
         let context = ApplicationTestBuilder().build()
         context.refreshLocalStore()
@@ -52,10 +52,10 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         
         let expected = syncResponse.events.changed.map({
             $0.posterImageId
-        }).filter({
-            !$0.isEmpty
+        }).flatMap({
+            $0
         }).map({
-            ImageEntity(identifier: $0, pngImageData: context.imageAPI.stubbedImage(for: $0))
+            ImageEntity(identifier: $0, pngImageData: context.imageAPI.stubbedImage(for: $0)!)
         })
         
         XCTAssertTrue(context.imageRepository.didSave(expected))
@@ -64,7 +64,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
     func testTheEventBannerImagesAreSavedIntoTheImageRepository() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         var randomEvent = syncResponse.events.changed.randomElement()
-        randomEvent.element.bannerImageId = ""
+        randomEvent.element.bannerImageId = nil
         syncResponse.events.changed[randomEvent.index] = randomEvent.element
         let context = ApplicationTestBuilder().build()
         context.refreshLocalStore()
@@ -72,10 +72,10 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         
         let expected = syncResponse.events.changed.map({
             $0.bannerImageId
-        }).filter({
-            !$0.isEmpty
+        }).flatMap({
+            $0
         }).map({
-            ImageEntity(identifier: $0, pngImageData: context.imageAPI.stubbedImage(for: $0))
+            ImageEntity(identifier: $0, pngImageData: context.imageAPI.stubbedImage(for: $0)!)
         })
         
         XCTAssertTrue(context.imageRepository.didSave(expected))
@@ -86,7 +86,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         let changed = syncResponse.events.changed
         for (idx, event) in changed.enumerated() {
             var copy = event
-            copy.posterImageId = ""
+            copy.posterImageId = nil
             syncResponse.events.changed[idx] = copy
         }
         
