@@ -160,7 +160,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             if let response = response {
                 self.syncResponse = response
 
-                let posterImageIDs = response.events.changed.map({ $0.posterImageId })
+                let posterImageIDs = response.events.changed.map({ $0.posterImageId }).filter({ !$0.isEmpty })
                 progress.totalUnitCount = Int64(posterImageIDs.count)
 
                 var pendingPosterIDs = posterImageIDs

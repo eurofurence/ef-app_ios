@@ -42,7 +42,10 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
     }
     
     func testTheEventPosterImagesAreSavedIntoTheImageRepository() {
-        let syncResponse = APISyncResponse.randomWithoutDeletions
+        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var randomEvent = syncResponse.events.changed.randomElement()
+        randomEvent.element.posterImageId = ""
+        syncResponse.events.changed[randomEvent.index] = randomEvent.element
         let context = ApplicationTestBuilder().build()
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(syncResponse)
