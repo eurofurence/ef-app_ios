@@ -160,8 +160,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             if let response = response {
                 self.syncResponse = response
 
-                let posterImageIDs = response.events.changed.map({ $0.posterImageId }).filter({ !$0.isEmpty })
-                progress.totalUnitCount = Int64(posterImageIDs.count)
+                let posterImageIdentifiers = response.events.changed.map({ $0.posterImageId })
+                let bannerImageIdentifiers = response.events.changed.map({ $0.bannerImageId })
+                let imageIdentifiers = (posterImageIdentifiers + bannerImageIdentifiers).filter({ !$0.isEmpty })
+                progress.totalUnitCount = Int64(imageIdentifiers.count)
 
                 let completeSync: () -> Void = {
                     self.imageCache.save()
@@ -187,14 +189,14 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                     self.privateMessagesController.fetchPrivateMessages { (_) in completionHandler(nil) }
                 }
 
-                if posterImageIDs.isEmpty {
+                if imageIdentifiers.isEmpty {
                     completeSync()
                 } else {
-                    var pendingPosterIDs = posterImageIDs
-                    posterImageIDs.forEach({ (posterID) in
+                    var pendingImageIdentifiers = imageIdentifiers
+                    imageIdentifiers.forEach({ (posterID) in
                         self.imageAPI.fetchImage(identifier: posterID, completionHandler: { (posterData) in
-                            guard let idx = pendingPosterIDs.index(of: posterID) else { return }
-                            pendingPosterIDs.remove(at: idx)
+                            guard let idx = pendingImageIdentifiers.index(of: posterID) else { return }
+                            pendingImageIdentifiers.remove(at: idx)
 
                             if let data = posterData {
                                 let event = ImageDownloadedEvent(identifier: posterID, pngImageData: data)
@@ -205,7 +207,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                             completedUnitCount += 1
                             progress.completedUnitCount = completedUnitCount
 
-                            if pendingPosterIDs.isEmpty {
+                            if pendingImageIdentifiers.isEmpty {
                                 completeSync()
                             }
                         })

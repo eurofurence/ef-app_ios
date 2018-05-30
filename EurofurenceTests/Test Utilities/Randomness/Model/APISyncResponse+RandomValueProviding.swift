@@ -38,7 +38,8 @@ extension APISyncResponse {
                             abstract: .random,
                             panelHosts: .random,
                             eventDescription: .random,
-                            posterImageId: .random)
+                            posterImageId: .random,
+                            bannerImageId: .random)
         }
         
         return APISyncResponse(knowledgeGroups: knowledgeGroups,

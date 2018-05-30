@@ -130,7 +130,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                abstract: "Do you like spending your evening around other artists, drawing and chatting about techniques, supplies and other themes? Then this social event, taking place every evening, is the right place for you to be creative and get to know eachother!",
                                                                panelHosts: "Akulatraxas",
                                                                eventDescription: "NOT FINAL\r\n\r\n\r\nDo you like spending your evening around other artists, drawing and chatting about techniques, supplies and other themes? Then this social event, taking place every evening, is the right place for you to be creative and get to know eachother!\r\n\r\nCome sit with other artists and watch, chat and have a good time together while being productive on your convention commissions. This is the perfect opportunity to use your time effectively, get critique and help on your work and relax from the working day at the Dealers' Den or Artist Alley.\r\n",
-                                                               posterImageId: "")],
+                                                               posterImageId: "",
+                                                               bannerImageId: "")],
                                             deleted: [APIEvent(roomIdentifier: "c72e2290-49fd-496a-9efc-2f68a5f0f0f8",
                                                                trackIdentifier: "a14380b6-b6e1-4b29-8502-e1e1b446c6a2",
                                                                startDateTime: deletedEventStartDate.date!,
@@ -139,7 +140,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                abstract: "Welcome to the Athropomorphic Wellness and First-Aid Center.",
                                                                panelHosts: "Mystifur",
                                                                eventDescription: "",
-                                                               posterImageId: "")])
+                                                               posterImageId: "",
+                                                               bannerImageId: "")])
         
         let tracks = APISyncDelta<APITrack>(changed: [APITrack(trackIdentifier: "f92a4fc0-303f-4c13-9194-44121d80bd20",
                                                                name: "Stage")],

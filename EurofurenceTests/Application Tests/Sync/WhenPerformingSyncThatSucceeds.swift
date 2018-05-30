@@ -61,6 +61,26 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         XCTAssertTrue(context.imageRepository.didSave(expected))
     }
     
+    func testTheEventBannerImagesAreSavedIntoTheImageRepository() {
+        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var randomEvent = syncResponse.events.changed.randomElement()
+        randomEvent.element.bannerImageId = ""
+        syncResponse.events.changed[randomEvent.index] = randomEvent.element
+        let context = ApplicationTestBuilder().build()
+        context.refreshLocalStore()
+        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        
+        let expected = syncResponse.events.changed.map({
+            $0.bannerImageId
+        }).filter({
+            !$0.isEmpty
+        }).map({
+            ImageEntity(identifier: $0, pngImageData: context.imageAPI.stubbedImage(for: $0))
+        })
+        
+        XCTAssertTrue(context.imageRepository.didSave(expected))
+    }
+    
     func testCompleteTheSyncWhenAllEventsDoNotHaveImages() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let changed = syncResponse.events.changed

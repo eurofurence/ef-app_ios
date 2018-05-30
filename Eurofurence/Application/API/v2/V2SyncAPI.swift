@@ -150,7 +150,8 @@ private struct JSONSyncResponse: Decodable {
                             abstract: Abstract,
                             panelHosts: PanelHosts,
                             eventDescription: Description,
-                            posterImageId: "")
+                            posterImageId: "",
+                            bannerImageId: "")
         }
 
     }
