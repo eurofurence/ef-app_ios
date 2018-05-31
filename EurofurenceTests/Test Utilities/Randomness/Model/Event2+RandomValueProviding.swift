@@ -17,11 +17,12 @@ extension Event2: RandomValueProviding {
                       abstract: .random,
                       room: .random,
                       track: .random,
-                      hosts: "",
+                      hosts: .random,
                       startDate: startDate,
                       endDate: startDate.addingTimeInterval(.random),
                       eventDescription: .random,
-                      posterGraphicPNGData: .random)
+                      posterGraphicPNGData: .random,
+                      bannerGraphicPNGData: .random)
     }
     
 }

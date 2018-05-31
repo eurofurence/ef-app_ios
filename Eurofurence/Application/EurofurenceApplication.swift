@@ -299,7 +299,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                           startDate: event.startDateTime,
                           endDate: event.endDateTime,
                           eventDescription: event.eventDescription,
-                          posterGraphicPNGData: posterGraphicData)
+                          posterGraphicPNGData: posterGraphicData,
+                          bannerGraphicPNGData: nil)
         })
     }
 

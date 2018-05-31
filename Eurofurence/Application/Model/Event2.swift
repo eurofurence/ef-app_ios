@@ -19,7 +19,8 @@ struct Event2: Equatable {
                lhs.startDate == rhs.startDate &&
                lhs.endDate == rhs.endDate &&
                lhs.eventDescription == rhs.eventDescription &&
-               lhs.posterGraphicPNGData == rhs.posterGraphicPNGData
+               lhs.posterGraphicPNGData == rhs.posterGraphicPNGData &&
+               lhs.bannerGraphicPNGData == rhs.bannerGraphicPNGData
     }
 
     var title: String
@@ -31,5 +32,6 @@ struct Event2: Equatable {
     var endDate: Date
     var eventDescription: String
     var posterGraphicPNGData: Data?
+    var bannerGraphicPNGData: Data?
 
 }

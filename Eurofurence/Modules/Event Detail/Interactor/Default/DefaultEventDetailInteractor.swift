@@ -85,8 +85,8 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
                                                      eventHosts: event.hosts)
         components.append(ViewModel.SummaryComponent(viewModel: summaryViewModel))
 
-        if let posterGraphicData = event.posterGraphicPNGData {
-            let graphicViewModel = EventGraphicViewModel(pngGraphicData: posterGraphicData)
+        if let graphicData = event.posterGraphicPNGData ?? event.bannerGraphicPNGData {
+            let graphicViewModel = EventGraphicViewModel(pngGraphicData: graphicData)
             components.append(ViewModel.GraphicComponent(viewModel: graphicViewModel))
         }
 
