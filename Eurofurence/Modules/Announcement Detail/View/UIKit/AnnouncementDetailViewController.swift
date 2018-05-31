@@ -24,6 +24,10 @@ class AnnouncementDetailViewController: UITableViewController, AnnouncementDetai
         delegate?.announcementDetailSceneDidLoad()
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+
     // MARK: AnnouncementDetailScene
 
     private var delegate: AnnouncementDetailSceneDelegate?
