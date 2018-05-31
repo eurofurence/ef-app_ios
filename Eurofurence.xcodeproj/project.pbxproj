@@ -657,6 +657,7 @@
 		CAD260A320C03543007E3618 /* CapturingEventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD260A220C03543007E3618 /* CapturingEventDetailViewModel.swift */; };
 		CAD260A520C0357F007E3618 /* WhenViewModelPrepared_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD260A420C0357F007E3618 /* WhenViewModelPrepared_EventDetailPresenterShould.swift */; };
 		CAD260A720C03909007E3618 /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD260A620C03909007E3618 /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift */; };
+		CAD260AB20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD260AA20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift */; };
 		CAD3BDAD20586AF600C91E6E /* ConcreteWikiRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDAC20586AF600C91E6E /* ConcreteWikiRenderer.swift */; };
 		CAD3BDAF205870B500C91E6E /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDAE205870B500C91E6E /* Link.swift */; };
 		CAD3BDB12058719300C91E6E /* Link+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */; };
@@ -1455,6 +1456,7 @@
 		CAD260A220C03543007E3618 /* CapturingEventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventDetailViewModel.swift; sourceTree = "<group>"; };
 		CAD260A420C0357F007E3618 /* WhenViewModelPrepared_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewModelPrepared_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAD260A620C03909007E3618 /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
+		CAD260AA20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAD3BDAC20586AF600C91E6E /* ConcreteWikiRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteWikiRenderer.swift; sourceTree = "<group>"; };
 		CAD3BDAE205870B500C91E6E /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Link+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -3623,8 +3625,9 @@
 				CACF1EA520B5B77700D904B5 /* WhenBindingEventSummary_EventDetailPresenterShould.swift */,
 				CACF1E5320AE2D2700D904B5 /* WhenBuildingEventDetailModule.swift */,
 				CAD260A020C03350007E3618 /* WhenSceneTapsFavouriteEventButton_EventDetailPresenterShould.swift */,
-				CAD260A420C0357F007E3618 /* WhenViewModelPrepared_EventDetailPresenterShould.swift */,
 				CAD260A620C03909007E3618 /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift */,
+				CAD260AA20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift */,
+				CAD260A420C0357F007E3618 /* WhenViewModelPrepared_EventDetailPresenterShould.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -4956,6 +4959,7 @@
 				CA637560208CBC5F00536BE2 /* CapturingURLOpener.swift in Sources */,
 				78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */,
 				CABF03C32041C2FD0028BD62 /* KnowledgeEntry2.swift in Sources */,
+				CAD260AB20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift in Sources */,
 				CA0E521B208FC107005259FE /* ConventionCountdownComponentViewModel+RandomValueProviding.swift in Sources */,
 				CA63757E208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift in Sources */,
 				CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */,

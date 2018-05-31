@@ -104,6 +104,11 @@ class CapturingEventDetailScene: UIViewController, EventDetailScene {
         didShowUnfavouriteEventButton = true
     }
     
+    private(set) var didShowFavouriteEventButton = false
+    func showFavouriteEventButton() {
+        didShowFavouriteEventButton = true
+    }
+    
 }
 
 extension CapturingEventDetailScene {

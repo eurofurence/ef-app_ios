@@ -39,6 +39,10 @@ class EventDetailViewController: UIViewController, EventDetailScene {
 
     }
 
+    func showFavouriteEventButton() {
+
+    }
+
     // MARK: Private
 
     private class TableController: NSObject, UITableViewDataSource, EventDetailComponentFactory {

@@ -20,6 +20,7 @@ protocol EventDetailViewModel {
 protocol EventDetailViewModelDelegate {
 
     func eventFavourited()
+    func eventUnfavourited()
 
 }
 

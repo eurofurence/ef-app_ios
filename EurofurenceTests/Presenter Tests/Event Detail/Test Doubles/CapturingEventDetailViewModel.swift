@@ -34,4 +34,8 @@ extension CapturingEventDetailViewModel {
         delegate?.eventFavourited()
     }
     
+    func simulateUnfavourited() {
+        delegate?.eventUnfavourited()
+    }
+    
 }
