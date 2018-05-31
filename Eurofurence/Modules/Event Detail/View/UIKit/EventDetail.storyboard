@@ -28,13 +28,35 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="bBS-Mm-Km0">
-                                    <rect key="frame" x="0.0" y="461" width="375" height="1"/>
+                                    <rect key="frame" x="0.0" y="545" width="375" height="1"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventDetailBannerTableViewCell" rowHeight="84" id="i0m-Wv-vfH" customClass="EventDetailBannerTableViewCell" customModule="Eurofurence" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="84"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i0m-Wv-vfH" id="gcU-JA-rTp">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SdV-DJ-Zto">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SdV-DJ-Zto" firstAttribute="leading" secondItem="gcU-JA-rTp" secondAttribute="leading" id="34q-Ug-Dbf"/>
+                                                <constraint firstAttribute="trailing" secondItem="SdV-DJ-Zto" secondAttribute="trailing" id="3wI-w1-1T2"/>
+                                                <constraint firstAttribute="bottom" secondItem="SdV-DJ-Zto" secondAttribute="bottom" id="6JZ-Fp-oG9"/>
+                                                <constraint firstItem="SdV-DJ-Zto" firstAttribute="top" secondItem="gcU-JA-rTp" secondAttribute="top" id="UfU-AL-00N"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bannerImageView" destination="SdV-DJ-Zto" id="rfU-mc-T51"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventDetailSummaryTableViewCell" rowHeight="349" id="ou5-xD-72A" customClass="EventDetailSummaryTableViewCell" customModule="Eurofurence" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="349"/>
+                                        <rect key="frame" x="0.0" y="112" width="375" height="349"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ou5-xD-72A" id="gMJ-rc-nEm">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="348.5"/>
@@ -162,7 +184,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventDetailDescriptionTableViewCell" rowHeight="84" id="QyG-r2-Epy" customClass="EventDetailDescriptionTableViewCell" customModule="Eurofurence" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="377" width="375" height="84"/>
+                                        <rect key="frame" x="0.0" y="461" width="375" height="84"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QyG-r2-Epy" id="Vx6-kq-QSx">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>

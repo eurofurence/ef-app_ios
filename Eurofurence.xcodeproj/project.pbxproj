@@ -651,6 +651,7 @@
 		CAD2343E1F5D7211004BB959 /* MessagesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343D1F5D7211004BB959 /* MessagesPresenter.swift */; };
 		CAD234401F5D726C004BB959 /* WhenViewingMessagesWhileLoggedIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343F1F5D726C004BB959 /* WhenViewingMessagesWhileLoggedIn.swift */; };
 		CAD234421F5F2FA8004BB959 /* AppDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234411F5F2FA8004BB959 /* AppDataBuilder.swift */; };
+		CAD2609D20C02BCF007E3618 /* EventDetailBannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2609C20C02BCF007E3618 /* EventDetailBannerTableViewCell.swift */; };
 		CAD3BDAD20586AF600C91E6E /* ConcreteWikiRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDAC20586AF600C91E6E /* ConcreteWikiRenderer.swift */; };
 		CAD3BDAF205870B500C91E6E /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDAE205870B500C91E6E /* Link.swift */; };
 		CAD3BDB12058719300C91E6E /* Link+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */; };
@@ -1443,6 +1444,7 @@
 		CAD2343D1F5D7211004BB959 /* MessagesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenter.swift; sourceTree = "<group>"; };
 		CAD2343F1F5D726C004BB959 /* WhenViewingMessagesWhileLoggedIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenViewingMessagesWhileLoggedIn.swift; sourceTree = "<group>"; };
 		CAD234411F5F2FA8004BB959 /* AppDataBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDataBuilder.swift; sourceTree = "<group>"; };
+		CAD2609C20C02BCF007E3618 /* EventDetailBannerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailBannerTableViewCell.swift; sourceTree = "<group>"; };
 		CAD3BDAC20586AF600C91E6E /* ConcreteWikiRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteWikiRenderer.swift; sourceTree = "<group>"; };
 		CAD3BDAE205870B500C91E6E /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Link+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -3658,6 +3660,7 @@
 				CACF1E8120B2E6B400D904B5 /* EventDetailSummaryTableViewCell.swift */,
 				CACF1E6520AE2F9800D904B5 /* EventDetailViewController.swift */,
 				CACF1E6720AE2FB700D904B5 /* StoryboardEventDetailSceneFactory.swift */,
+				CAD2609C20C02BCF007E3618 /* EventDetailBannerTableViewCell.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -4818,6 +4821,7 @@
 				CA6375B4208E039100536BE2 /* DealersModule.swift in Sources */,
 				9A7FFD551EFC5A9E007ABA36 /* MapViewController.swift in Sources */,
 				CAF3F63D20167B3100374B4C /* EurofurenceApplicationBuilder.swift in Sources */,
+				CAD2609D20C02BCF007E3618 /* EventDetailBannerTableViewCell.swift in Sources */,
 				CA8D97D3201612A70074838F /* RemoteNotificationRegistrationSucceeded.swift in Sources */,
 				CACF1EBC20B60A6000D904B5 /* ImageAPI.swift in Sources */,
 				CAF9A9531F55F3B300628833 /* EurofurencePrivateMessagesService.swift in Sources */,
