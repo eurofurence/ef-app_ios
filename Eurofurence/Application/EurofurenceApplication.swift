@@ -291,6 +291,11 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                 posterGraphicData = imageCache.cachedImageData(for: posterImageIdentifier)
             }
 
+            var bannerGraphicData: Data?
+            if let bannerImageIdentifier = event.bannerImageId {
+                bannerGraphicData = imageCache.cachedImageData(for: bannerImageIdentifier)
+            }
+
             return Event2(title: event.title,
                           abstract: event.abstract,
                           room: Room(name: room.name),
@@ -300,7 +305,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                           endDate: event.endDateTime,
                           eventDescription: event.eventDescription,
                           posterGraphicPNGData: posterGraphicData,
-                          bannerGraphicPNGData: nil)
+                          bannerGraphicPNGData: bannerGraphicData)
         })
     }
 

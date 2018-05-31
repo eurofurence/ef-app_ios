@@ -129,6 +129,7 @@ class ApplicationTestBuilder {
             let expectedRoom = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier })!
             let expectedTrack = response.tracks.changed.first(where: { $0.trackIdentifier == event.trackIdentifier })!
             let expectedPosterGraphic = imageAPI.stubbedImage(for: event.posterImageId)
+            let expectedBannerGraphic = imageAPI.stubbedImage(for: event.bannerImageId)
             
             return Event2(title: event.title,
                           abstract: event.abstract,
@@ -139,7 +140,7 @@ class ApplicationTestBuilder {
                           endDate: event.endDateTime,
                           eventDescription: event.eventDescription,
                           posterGraphicPNGData: expectedPosterGraphic,
-                          bannerGraphicPNGData: nil)
+                          bannerGraphicPNGData: expectedBannerGraphic)
         }
         
     }
