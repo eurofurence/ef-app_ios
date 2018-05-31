@@ -15,6 +15,15 @@ class EventDetailViewController: UIViewController, EventDetailScene {
     @IBOutlet weak var tableView: UITableView!
     private var tableController: TableController?
 
+    private lazy var favouriteEventBarButtonItem = UIBarButtonItem(title: .favourite,
+                                                                   style: .plain,
+                                                                   target: self,
+                                                                   action: #selector(favouriteButtonTapped))
+    private lazy var unfavouriteEventBarButtonItem = UIBarButtonItem(title: .unfavourite,
+                                                                     style: .plain,
+                                                                     target: self,
+                                                                     action: #selector(unfavouriteButtonTapped))
+
     // MARK: Overrides
 
     override func viewDidLoad() {
@@ -36,14 +45,22 @@ class EventDetailViewController: UIViewController, EventDetailScene {
     }
 
     func showUnfavouriteEventButton() {
-
+        navigationItem.setRightBarButton(unfavouriteEventBarButtonItem, animated: true)
     }
 
     func showFavouriteEventButton() {
-
+        navigationItem.setRightBarButton(favouriteEventBarButtonItem, animated: true)
     }
 
     // MARK: Private
+
+    @objc private func favouriteButtonTapped() {
+        delegate?.eventDetailSceneDidTapFavouriteEventButton()
+    }
+
+    @objc private func unfavouriteButtonTapped() {
+
+    }
 
     private class TableController: NSObject, UITableViewDataSource, EventDetailComponentFactory {
 

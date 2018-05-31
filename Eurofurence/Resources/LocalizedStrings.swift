@@ -116,6 +116,12 @@ public extension String {
     public static let announcement = NSLocalizedString("Announcement",
                                                        comment: "Title for the view showing detailed information for an announcement")
 
+    public static let favourite = NSLocalizedString("Favourite",
+                                                    comment: "Title for the button used to add an event to the user's favourites")
+
+    public static let unfavourite = NSLocalizedString("Unfavourite",
+                                                      comment: "Title for the button used to remove an event from the user's favourites")
+
     private struct Formatters {
         static var numbers = NumberFormatter()
     }
