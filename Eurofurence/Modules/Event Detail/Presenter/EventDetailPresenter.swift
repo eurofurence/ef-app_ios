@@ -8,7 +8,7 @@
 
 import Foundation
 
-class EventDetailPresenter: EventDetailSceneDelegate {
+class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelegate {
 
     private struct Binder: EventDetailBinder {
 
@@ -82,8 +82,14 @@ class EventDetailPresenter: EventDetailSceneDelegate {
         viewModel?.favourite()
     }
 
+    func eventFavourited() {
+        scene.showUnfavouriteEventButton()
+    }
+
     private func eventDetailViewModelReady(_ viewModel: EventDetailViewModel) {
         self.viewModel = viewModel
+
+        viewModel.setDelegate(self)
         scene.bind(numberOfComponents: viewModel.numberOfComponents,
                    using: Binder(viewModel: viewModel))
     }

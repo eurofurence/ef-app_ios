@@ -12,6 +12,11 @@ class CapturingEventDetailViewModel: EventDetailViewModel {
     
     var numberOfComponents: Int { return 0}
     
+    fileprivate var delegate: EventDetailViewModelDelegate?
+    func setDelegate(_ delegate: EventDetailViewModelDelegate) {
+        self.delegate = delegate
+    }
+    
     func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
         
     }
@@ -19,6 +24,14 @@ class CapturingEventDetailViewModel: EventDetailViewModel {
     private(set) var wasToldToFavouriteEvent = false
     func favourite() {
         wasToldToFavouriteEvent = true
+    }
+    
+}
+
+extension CapturingEventDetailViewModel {
+    
+    func simulateFavourited() {
+        delegate?.eventFavourited()
     }
     
 }

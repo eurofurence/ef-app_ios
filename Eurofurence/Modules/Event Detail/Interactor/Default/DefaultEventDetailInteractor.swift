@@ -56,6 +56,10 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
             return components.count
         }
 
+        func setDelegate(_ delegate: EventDetailViewModelDelegate) {
+
+        }
+
         func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
             guard index < components.count else { return }
             components[index].describe(to: visitor)

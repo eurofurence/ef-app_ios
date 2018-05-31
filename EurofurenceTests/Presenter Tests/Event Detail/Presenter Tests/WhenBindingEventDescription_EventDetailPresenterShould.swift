@@ -20,6 +20,10 @@ struct StubEventDescriptionViewModel: EventDetailViewModel {
         expectedIndex = index
     }
     
+    func setDelegate(_ delegate: EventDetailViewModelDelegate) {
+        
+    }
+    
     func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
         visitor.visit(eventDescription.randomized(ifFalse: index == expectedIndex))
     }

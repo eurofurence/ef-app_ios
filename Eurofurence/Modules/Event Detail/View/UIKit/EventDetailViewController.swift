@@ -35,6 +35,10 @@ class EventDetailViewController: UIViewController, EventDetailScene {
                                           binder: binder)
     }
 
+    func showUnfavouriteEventButton() {
+
+    }
+
     // MARK: Private
 
     private class TableController: NSObject, UITableViewDataSource, EventDetailComponentFactory {

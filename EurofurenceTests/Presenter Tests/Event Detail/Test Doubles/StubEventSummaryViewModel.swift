@@ -21,6 +21,10 @@ struct StubEventSummaryViewModel: EventDetailViewModel {
     
     var numberOfComponents: Int = .random
     
+    func setDelegate(_ delegate: EventDetailViewModelDelegate) {
+        
+    }
+    
     func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
         visitor.visit(summary.randomized(ifFalse: index == expectedIndex))
     }

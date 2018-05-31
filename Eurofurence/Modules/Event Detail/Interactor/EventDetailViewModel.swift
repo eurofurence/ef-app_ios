@@ -11,8 +11,15 @@ import Foundation
 protocol EventDetailViewModel {
 
     var numberOfComponents: Int { get }
+    func setDelegate(_ delegate: EventDetailViewModelDelegate)
     func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor)
     func favourite()
+
+}
+
+protocol EventDetailViewModelDelegate {
+
+    func eventFavourited()
 
 }
 
