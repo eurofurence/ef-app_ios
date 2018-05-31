@@ -59,7 +59,7 @@ class EventDetailViewController: UIViewController, EventDetailScene {
     }
 
     @objc private func unfavouriteButtonTapped() {
-
+        delegate?.eventDetailSceneDidTapUnfavouriteEventButton()
     }
 
     private class TableController: NSObject, UITableViewDataSource, EventDetailComponentFactory {

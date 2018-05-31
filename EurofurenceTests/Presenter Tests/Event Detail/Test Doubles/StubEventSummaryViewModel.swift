@@ -33,4 +33,8 @@ struct StubEventSummaryViewModel: EventDetailViewModel {
         
     }
     
+    func unfavourite() {
+        
+    }
+    
 }

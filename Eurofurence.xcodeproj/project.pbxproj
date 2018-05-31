@@ -658,6 +658,7 @@
 		CAD260A520C0357F007E3618 /* WhenViewModelPrepared_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD260A420C0357F007E3618 /* WhenViewModelPrepared_EventDetailPresenterShould.swift */; };
 		CAD260A720C03909007E3618 /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD260A620C03909007E3618 /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift */; };
 		CAD260AB20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD260AA20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift */; };
+		CAD260AD20C066B0007E3618 /* WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD260AC20C066B0007E3618 /* WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift */; };
 		CAD3BDAD20586AF600C91E6E /* ConcreteWikiRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDAC20586AF600C91E6E /* ConcreteWikiRenderer.swift */; };
 		CAD3BDAF205870B500C91E6E /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDAE205870B500C91E6E /* Link.swift */; };
 		CAD3BDB12058719300C91E6E /* Link+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */; };
@@ -1457,6 +1458,7 @@
 		CAD260A420C0357F007E3618 /* WhenViewModelPrepared_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewModelPrepared_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAD260A620C03909007E3618 /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAD260AA20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
+		CAD260AC20C066B0007E3618 /* WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAD3BDAC20586AF600C91E6E /* ConcreteWikiRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteWikiRenderer.swift; sourceTree = "<group>"; };
 		CAD3BDAE205870B500C91E6E /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Link+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -3625,6 +3627,7 @@
 				CACF1EA520B5B77700D904B5 /* WhenBindingEventSummary_EventDetailPresenterShould.swift */,
 				CACF1E5320AE2D2700D904B5 /* WhenBuildingEventDetailModule.swift */,
 				CAD260A020C03350007E3618 /* WhenSceneTapsFavouriteEventButton_EventDetailPresenterShould.swift */,
+				CAD260AC20C066B0007E3618 /* WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift */,
 				CAD260A620C03909007E3618 /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift */,
 				CAD260AA20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift */,
 				CAD260A420C0357F007E3618 /* WhenViewModelPrepared_EventDetailPresenterShould.swift */,
@@ -5126,6 +5129,7 @@
 				CA63758C208CE06100536BE2 /* WhenBuildingEventsModule.swift in Sources */,
 				CA162EA220A8D4A9004AFED6 /* StubEventsService.swift in Sources */,
 				CA3990F420ACD73D001E3F1A /* WhenObservingUpcomingEvents_ThenLoadSucceeds.swift in Sources */,
+				CAD260AD20C066B0007E3618 /* WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift in Sources */,
 				CA63755C208CBC3C00536BE2 /* StubLinkRouter.swift in Sources */,
 				CABF03CC204220460028BD62 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift in Sources */,
 				CA2547C11FEB1B2A0023F2CB /* WhenRefreshingMessages.swift in Sources */,

@@ -10,7 +10,7 @@
 
 class CapturingEventDetailViewModel: EventDetailViewModel {
     
-    var numberOfComponents: Int { return 0}
+    var numberOfComponents: Int { return 0 }
     
     fileprivate var delegate: EventDetailViewModelDelegate?
     func setDelegate(_ delegate: EventDetailViewModelDelegate) {
@@ -24,6 +24,11 @@ class CapturingEventDetailViewModel: EventDetailViewModel {
     private(set) var wasToldToFavouriteEvent = false
     func favourite() {
         wasToldToFavouriteEvent = true
+    }
+    
+    private(set) var wasToldToUnfavouriteEvent = false
+    func unfavourite() {
+        wasToldToUnfavouriteEvent = true
     }
     
 }

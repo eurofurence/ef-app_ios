@@ -19,5 +19,6 @@ protocol EventDetailSceneDelegate {
 
     func eventDetailSceneDidLoad()
     func eventDetailSceneDidTapFavouriteEventButton()
+    func eventDetailSceneDidTapUnfavouriteEventButton()
 
 }

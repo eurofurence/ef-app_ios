@@ -31,4 +31,14 @@ class WhenViewModelPrepared_EventDetailPresenterShould: XCTestCase {
         XCTAssertFalse(context.scene.didShowFavouriteEventButton)
     }
     
+    func testNotUnfavouriteTheViewModel() {
+        let event = Event2.random
+        let viewModel = CapturingEventDetailViewModel()
+        let interactor = FakeEventDetailInteractor(viewModel: viewModel, for: event)
+        let context = EventDetailPresenterTestBuilder().with(interactor).build(for: event)
+        context.simulateSceneDidLoad()
+        
+        XCTAssertFalse(viewModel.wasToldToUnfavouriteEvent)
+    }
+    
 }

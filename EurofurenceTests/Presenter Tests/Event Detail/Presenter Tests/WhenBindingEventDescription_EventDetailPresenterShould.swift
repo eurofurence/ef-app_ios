@@ -32,6 +32,10 @@ struct StubEventDescriptionViewModel: EventDetailViewModel {
         
     }
     
+    func unfavourite() {
+        
+    }
+    
 }
 
 class WhenBindingEventDescription_EventDetailPresenterShould: XCTestCase {

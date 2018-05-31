@@ -137,4 +137,8 @@ extension CapturingEventDetailScene {
         delegate?.eventDetailSceneDidTapFavouriteEventButton()
     }
     
+    func simulateUnfavouriteEventButtonTapped() {
+        delegate?.eventDetailSceneDidTapUnfavouriteEventButton()
+    }
+    
 }

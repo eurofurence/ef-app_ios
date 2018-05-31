@@ -14,6 +14,7 @@ protocol EventDetailViewModel {
     func setDelegate(_ delegate: EventDetailViewModelDelegate)
     func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor)
     func favourite()
+    func unfavourite()
 
 }
 

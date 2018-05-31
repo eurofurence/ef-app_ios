@@ -82,6 +82,10 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
         viewModel?.favourite()
     }
 
+    func eventDetailSceneDidTapUnfavouriteEventButton() {
+        viewModel?.unfavourite()
+    }
+
     func eventFavourited() {
         scene.showUnfavouriteEventButton()
     }

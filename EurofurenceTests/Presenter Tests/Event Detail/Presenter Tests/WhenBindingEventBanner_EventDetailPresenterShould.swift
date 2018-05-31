@@ -33,6 +33,10 @@ class StubEventGraphicViewModel: EventDetailViewModel {
         
     }
     
+    func unfavourite() {
+        
+    }
+    
 }
 
 class WhenBindingEventBanner_EventDetailPresenterShould: XCTestCase {

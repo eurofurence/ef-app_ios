@@ -69,6 +69,10 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         }
 
+        func unfavourite() {
+
+        }
+
     }
 
     private let dateRangeFormatter: DateRangeFormatter
