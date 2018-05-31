@@ -42,18 +42,18 @@ class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {
         XCTAssertEqual(3, context.viewModel?.numberOfComponents)
     }
     
-    func testProduceExpectedSummaryViewModelAtIndexZero() {
+    func testProduceExpectedGraphicViewModelAtIndexZero() {
         let visitor = CapturingEventDetailViewModelVisitor()
         context.viewModel?.describe(componentAt: 0, to: visitor)
         
-        XCTAssertEqual([context.makeExpectedEventSummaryViewModel()], visitor.visitedViewModels)
+        XCTAssertEqual([context.makeExpectedEventGraphicViewModel()], visitor.visitedViewModels)
     }
     
-    func testProduceExpectedGraphicViewModelAtIndexOne() {
+    func testProduceExpectedSummaryViewModelAtIndexOne() {
         let visitor = CapturingEventDetailViewModelVisitor()
         context.viewModel?.describe(componentAt: 1, to: visitor)
         
-        XCTAssertEqual([context.makeExpectedEventGraphicViewModel()], visitor.visitedViewModels)
+        XCTAssertEqual([context.makeExpectedEventSummaryViewModel()], visitor.visitedViewModels)
     }
     
     func testProduceExpectedDescriptionViewModelAtIndexTwo() {

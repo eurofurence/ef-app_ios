@@ -76,6 +76,11 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
     func makeViewModel(for event: Event2, completionHandler: @escaping (EventDetailViewModel) -> Void) {
         var components = [EventDetailViewModelComponent]()
 
+        if let graphicData = event.posterGraphicPNGData ?? event.bannerGraphicPNGData {
+            let graphicViewModel = EventGraphicViewModel(pngGraphicData: graphicData)
+            components.append(ViewModel.GraphicComponent(viewModel: graphicViewModel))
+        }
+
         let startEndTimeString = dateRangeFormatter.string(from: event.startDate, to: event.endDate)
         let summaryViewModel = EventSummaryViewModel(title: event.title,
                                                      subtitle: event.abstract,
@@ -84,11 +89,6 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
                                                      trackName: event.track.name,
                                                      eventHosts: event.hosts)
         components.append(ViewModel.SummaryComponent(viewModel: summaryViewModel))
-
-        if let graphicData = event.posterGraphicPNGData ?? event.bannerGraphicPNGData {
-            let graphicViewModel = EventGraphicViewModel(pngGraphicData: graphicData)
-            components.append(ViewModel.GraphicComponent(viewModel: graphicViewModel))
-        }
 
         if !event.eventDescription.isEmpty, event.eventDescription != event.abstract {
             let descriptionViewModel = EventDescriptionViewModel(contents: event.eventDescription)
