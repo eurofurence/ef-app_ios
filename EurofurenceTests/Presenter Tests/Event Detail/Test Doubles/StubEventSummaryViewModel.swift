@@ -25,4 +25,8 @@ struct StubEventSummaryViewModel: EventDetailViewModel {
         visitor.visit(summary.randomized(ifFalse: index == expectedIndex))
     }
     
+    func favourite() {
+        
+    }
+    
 }

@@ -123,4 +123,8 @@ extension CapturingEventDetailScene {
         return binder?.bindComponent(at: indexPath, using: componentFactory)
     }
     
+    func simulateFavouriteEventButtonTapped() {
+        delegate?.eventDetailSceneDidTapFavouriteEventButton()
+    }
+    
 }

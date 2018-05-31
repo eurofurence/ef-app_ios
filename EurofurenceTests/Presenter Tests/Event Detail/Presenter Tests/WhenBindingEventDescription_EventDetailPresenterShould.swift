@@ -24,6 +24,10 @@ struct StubEventDescriptionViewModel: EventDetailViewModel {
         visitor.visit(eventDescription.randomized(ifFalse: index == expectedIndex))
     }
     
+    func favourite() {
+        
+    }
+    
 }
 
 class WhenBindingEventDescription_EventDetailPresenterShould: XCTestCase {

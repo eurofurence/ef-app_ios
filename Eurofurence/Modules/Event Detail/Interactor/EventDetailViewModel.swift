@@ -12,6 +12,7 @@ protocol EventDetailViewModel {
 
     var numberOfComponents: Int { get }
     func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor)
+    func favourite()
 
 }
 

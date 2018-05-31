@@ -25,6 +25,10 @@ class StubEventGraphicViewModel: EventDetailViewModel {
         visitor.visit(graphic.randomized(ifFalse: index == expectedIndex))
     }
     
+    func favourite() {
+        
+    }
+    
 }
 
 class WhenBindingEventBanner_EventDetailPresenterShould: XCTestCase {

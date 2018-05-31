@@ -61,6 +61,10 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
             components[index].describe(to: visitor)
         }
 
+        func favourite() {
+
+        }
+
     }
 
     private let dateRangeFormatter: DateRangeFormatter
