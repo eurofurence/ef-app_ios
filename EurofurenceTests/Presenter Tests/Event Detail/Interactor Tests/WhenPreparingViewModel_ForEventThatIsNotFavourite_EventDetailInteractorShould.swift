@@ -21,4 +21,14 @@ class WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorSho
         XCTAssertTrue(delegate.toldEventUnfavourited)
     }
     
+    func testNotTellTheDelegateItIsFavourited() {
+        var event = Event2.random
+        event.isFavourite = false
+        let context = EventDetailInteractorTestBuilder().build(for: event)
+        let delegate = CapturingEventDetailViewModelDelegate()
+        context.viewModel?.setDelegate(delegate)
+        
+        XCTAssertFalse(delegate.toldEventFavourited)
+    }
+    
 }

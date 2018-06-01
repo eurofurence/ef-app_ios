@@ -46,19 +46,19 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         }
 
-        private let components: [EventDetailViewModelComponent]
-
-        init(components: [EventDetailViewModelComponent]) {
-            self.components = components
-        }
+        var components: [EventDetailViewModelComponent]
+        var event: Event2
 
         var numberOfComponents: Int {
             return components.count
         }
 
         func setDelegate(_ delegate: EventDetailViewModelDelegate) {
-            delegate.eventFavourited()
-            delegate.eventUnfavourited()
+            if event.isFavourite {
+                delegate.eventFavourited()
+            } else {
+                delegate.eventUnfavourited()
+            }
         }
 
         func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
@@ -108,7 +108,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
             components.append(ViewModel.DescriptionComponent(viewModel: descriptionViewModel))
         }
 
-        let viewModel = ViewModel(components: components)
+        let viewModel = ViewModel(components: components, event: event)
         completionHandler(viewModel)
     }
 
