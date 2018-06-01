@@ -16,8 +16,9 @@ class CapturingEventDetailViewModelDelegate: EventDetailViewModelDelegate {
         toldEventFavourited = true
     }
     
+    private(set) var toldEventUnfavourited = false
     func eventUnfavourited() {
-        
+        toldEventUnfavourited = true
     }
     
 }

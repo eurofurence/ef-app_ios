@@ -58,6 +58,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         func setDelegate(_ delegate: EventDetailViewModelDelegate) {
             delegate.eventFavourited()
+            delegate.eventUnfavourited()
         }
 
         func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {

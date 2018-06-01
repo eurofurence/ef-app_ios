@@ -235,6 +235,7 @@
 		CA0F763620331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F763520331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift */; };
 		CA131BD120C1851A00DB1036 /* WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA131BD020C1851A00DB1036 /* WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould.swift */; };
 		CA131BD320C1866D00DB1036 /* CapturingEventDetailViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA131BD220C1866D00DB1036 /* CapturingEventDetailViewModelDelegate.swift */; };
+		CA131BD520C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA131BD420C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift */; };
 		CA162E6E20A468E7004AFED6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E6D20A468E7004AFED6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift */; };
 		CA162E7020A4B691004AFED6 /* DateDistanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */; };
 		CA162E7320A4B6A5004AFED6 /* ConventionStartDateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7220A4B6A5004AFED6 /* ConventionStartDateRepository.swift */; };
@@ -1034,6 +1035,7 @@
 		CA0F763520331896009DA079 /* KnowledgeListSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListSectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		CA131BD020C1851A00DB1036 /* WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
 		CA131BD220C1866D00DB1036 /* CapturingEventDetailViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventDetailViewModelDelegate.swift; sourceTree = "<group>"; };
+		CA131BD420C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
 		CA162E6D20A468E7004AFED6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift; sourceTree = "<group>"; };
 		CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDistanceCalculator.swift; sourceTree = "<group>"; };
 		CA162E7220A4B6A5004AFED6 /* ConventionStartDateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConventionStartDateRepository.swift; sourceTree = "<group>"; };
@@ -3717,6 +3719,7 @@
 				CACF1EB920B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift */,
 				CACF1EAB20B5C14F00D904B5 /* WhenPreparingViewModelForEventWithIdenticalAbstractAndDescription_EventDetailInteractorShould.swift */,
 				CACF1EA920B5BFF100D904B5 /* WhenPreparingViewModelForEventWithNoDescription_EventDetailInteractorShould.swift */,
+				CA131BD420C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift */,
 			);
 			path = "Interactor Tests";
 			sourceTree = "<group>";
@@ -5049,6 +5052,7 @@
 				CAD3BDC5205FE42A00C91E6E /* WhenLookingUpWebLinks.swift in Sources */,
 				CA63756C208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift in Sources */,
 				CA162EB220AA2DE0004AFED6 /* WhenObservingRunningEventsBeforeLoadingAnything.swift in Sources */,
+				CA131BD520C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift in Sources */,
 				CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */,
 				CA8276BA204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift in Sources */,
 				CAF9A9581F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift in Sources */,
