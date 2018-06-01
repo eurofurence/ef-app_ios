@@ -140,7 +140,8 @@ class ApplicationTestBuilder {
                           endDate: event.endDateTime,
                           eventDescription: event.eventDescription,
                           posterGraphicPNGData: expectedPosterGraphic,
-                          bannerGraphicPNGData: expectedBannerGraphic)
+                          bannerGraphicPNGData: expectedBannerGraphic,
+                          isFavourite: false)
         }
         
     }
