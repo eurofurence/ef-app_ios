@@ -11,56 +11,6 @@ import XCTest
 
 class WhenPerformingSyncThatSucceeds: XCTestCase {
     
-    func testTheKnowledgeGroupsArePersistedIntoTheStore() {
-        let context = ApplicationTestBuilder().build()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
-        let expected = syncResponse.knowledgeGroups.changed
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
-        
-        XCTAssertTrue(context.dataStore.didSave(expected))
-    }
-    
-    func testTheKnowledgeEntriesArePersistedIntoTheStore() {
-        let context = ApplicationTestBuilder().build()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
-        let expected = syncResponse.knowledgeEntries.changed
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
-        
-        XCTAssertTrue(context.dataStore.didSave(expected))
-    }
-    
-    func testTheAnnouncementsArePersistedToTheStore() {
-        let context = ApplicationTestBuilder().build()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
-        let expected = syncResponse.announcements.changed
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
-        
-        XCTAssertTrue(context.dataStore.didSave(expected))
-    }
-    
-    func testTheEventsArePersistedToTheStore() {
-        let context = ApplicationTestBuilder().build()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
-        let expected = syncResponse.events.changed
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
-        
-        XCTAssertTrue(context.dataStore.didSave(expected))
-    }
-    
-    func testTheRoomsArePersistedToTheStore() {
-        let context = ApplicationTestBuilder().build()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
-        let expected = syncResponse.rooms.changed
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
-        
-        XCTAssertTrue(context.dataStore.didSave(expected))
-    }
-    
     func testTheCompletionHandlerIsInvokedWithoutAnError() {
         let context = ApplicationTestBuilder().build()
         var invokedWithNilError = false
