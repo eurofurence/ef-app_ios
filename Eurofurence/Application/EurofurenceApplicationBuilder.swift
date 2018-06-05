@@ -33,6 +33,14 @@ class EurofurenceApplicationBuilder {
         }
 
         struct DummyEurofurenceDataStore: EurofurenceDataStore {
+            func fetchKnowledgeGroups(completionHandler: ([APIKnowledgeGroup]?) -> Void) {
+
+            }
+
+            func fetchKnowledgeEntries(completionHandler: ([APIKnowledgeEntry]?) -> Void) {
+
+            }
+
             func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
 
             }

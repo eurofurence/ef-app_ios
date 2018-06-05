@@ -29,3 +29,14 @@ struct KnowledgeEntry2: Comparable, Equatable, Hashable {
     }
 
 }
+
+extension KnowledgeEntry2 {
+
+    static func fromServerModel(_ entry: APIKnowledgeEntry) -> KnowledgeEntry2 {
+        return KnowledgeEntry2(title: entry.title,
+                               order: entry.order,
+                               contents: entry.text,
+                               links: Link.fromServerModels(entry.links).sorted())
+    }
+
+}

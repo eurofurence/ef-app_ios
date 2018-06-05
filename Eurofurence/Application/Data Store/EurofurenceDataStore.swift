@@ -10,7 +10,9 @@ protocol EurofurenceDataStore {
 
     func resolveContentsState(completionHandler: @escaping (EurofurenceDataStoreContentsState) -> Void)
     func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void)
-    func fetchKnowledgeGroups(completionHandler: ([KnowledgeGroup2]?) -> Void)
+
+    func fetchKnowledgeGroups(completionHandler: ([APIKnowledgeGroup]?) -> Void)
+    func fetchKnowledgeEntries(completionHandler: ([APIKnowledgeEntry]?) -> Void)
 
 }
 

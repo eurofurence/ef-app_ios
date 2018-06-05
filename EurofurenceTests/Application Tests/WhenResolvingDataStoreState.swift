@@ -16,9 +16,14 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
         capturedResolveContentsStateHandler = completionHandler
     }
     
-    var stubbedKnowledgeGroups: [KnowledgeGroup2]?
-    func fetchKnowledgeGroups(completionHandler: ([KnowledgeGroup2]?) -> Void) {
-        completionHandler(stubbedKnowledgeGroups)
+    var stubbedKnowledgeGroups: [APIKnowledgeGroup]?
+    func fetchKnowledgeGroups(completionHandler: ([APIKnowledgeGroup]?) -> Void) {
+        completionHandler(transaction?.persistedKnowledgeGroups)
+    }
+    
+    var stubbedKnowledgeEntries: [APIKnowledgeEntry]?
+    func fetchKnowledgeEntries(completionHandler: ([APIKnowledgeEntry]?) -> Void) {
+        completionHandler(transaction?.persistedKnowledgeEntries)
     }
     
     private(set) var capturedKnowledgeGroupsToSave: [KnowledgeGroup2]?

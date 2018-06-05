@@ -12,20 +12,7 @@ import Foundation
 extension APISyncResponse {
     
     static var randomWithoutDeletions: APISyncResponse {
-        let knowledgeGroups = APISyncDelta<APIKnowledgeGroup>(changed: .random)
-        var knowledgeEntries = [APIKnowledgeEntry]()
-        for group in knowledgeGroups.changed {
-            let upperLimit = Int.random(upperLimit: 10) + 1
-            let range = 0..<upperLimit
-            let entries = range.map({ (_) -> APIKnowledgeEntry in
-                var entry = APIKnowledgeEntry.random
-                entry.groupIdentifier = group.identifier
-                return entry
-            })
-            
-            knowledgeEntries.append(contentsOf: entries)
-        }
-        
+        let knowledge = APIKnowledgeGroup.makeRandomGroupsAndEntries()
         let rooms = [APIRoom].random
         let tracks = [APITrack].random
         let events = (0...Int.random(upperLimit: 10) + 5).map { (_) -> APIEvent in
@@ -42,8 +29,8 @@ extension APISyncResponse {
                             bannerImageId: .random)
         }
         
-        return APISyncResponse(knowledgeGroups: knowledgeGroups,
-                               knowledgeEntries: APISyncDelta(changed: knowledgeEntries),
+        return APISyncResponse(knowledgeGroups: APISyncDelta(changed: knowledge.groups),
+                               knowledgeEntries: APISyncDelta(changed: knowledge.entries),
                                announcements: APISyncDelta(changed: .random),
                                events: APISyncDelta(changed: events),
                                rooms: APISyncDelta(changed: rooms),
@@ -56,6 +43,24 @@ extension APIKnowledgeGroup: RandomValueProviding {
     
     static var random: APIKnowledgeGroup {
         return APIKnowledgeGroup(identifier: .random, order: .random, groupName: .random, groupDescription: .random)
+    }
+    
+    static func makeRandomGroupsAndEntries() -> (groups: [APIKnowledgeGroup], entries: [APIKnowledgeEntry]) {
+        let knowledgeGroups = [APIKnowledgeGroup].random
+        var knowledgeEntries = [APIKnowledgeEntry]()
+        for group in knowledgeGroups {
+            let upperLimit = Int.random(upperLimit: 10) + 1
+            let range = 0..<upperLimit
+            let entries = range.map({ (_) -> APIKnowledgeEntry in
+                var entry = APIKnowledgeEntry.random
+                entry.groupIdentifier = group.identifier
+                return entry
+            })
+            
+            knowledgeEntries.append(contentsOf: entries)
+        }
+        
+        return (groups: knowledgeGroups, entries: knowledgeEntries)
     }
     
 }

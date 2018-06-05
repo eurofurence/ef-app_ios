@@ -36,4 +36,8 @@ extension Link {
         return Link(name: link.name, type: Link.Kind(rawValue: link.fragmentType.rawValue)!, contents: link.target)
     }
 
+    static func fromServerModels(_ links: [APILink]) -> [Link] {
+        return links.map(fromServerModel)
+    }
+
 }
