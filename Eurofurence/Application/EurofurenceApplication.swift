@@ -174,6 +174,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
                     self.dataStore.performTransaction({ (transaction) in
                         transaction.saveKnowledgeGroups(response.knowledgeGroups.changed)
+                        transaction.saveKnowledgeEntries(response.knowledgeEntries.changed)
                         transaction.saveAnnouncements(response.announcements.changed)
                     })
 

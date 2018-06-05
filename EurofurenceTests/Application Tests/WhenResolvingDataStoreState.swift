@@ -40,6 +40,11 @@ extension CapturingEurofurenceDataStore {
         return persistedKnowledgeGroups.contains(elementsFrom: knowledgeGroups)
     }
     
+    func didSave(_ knowledgeEntries: [APIKnowledgeEntry]) -> Bool {
+        guard let persistedKnowledgeEntries = transaction?.persistedKnowledgeEntries else { return false }
+        return persistedKnowledgeEntries.contains(elementsFrom: knowledgeEntries)
+    }
+    
     func didSave(_ announcements: [APIAnnouncement]) -> Bool {
         guard let persistedAnnouncements = transaction?.persistedAnnouncements else { return false }
         return persistedAnnouncements.contains(elementsFrom: announcements)
@@ -66,6 +71,11 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
     private(set) var persistedKnowledgeGroups: [APIKnowledgeGroup] = []
     func saveKnowledgeGroups(_ knowledgeGroups: [APIKnowledgeGroup]) {
         self.persistedKnowledgeGroups = knowledgeGroups
+    }
+    
+    private(set) var persistedKnowledgeEntries: [APIKnowledgeEntry] = []
+    func saveKnowledgeEntries(_ knowledgeEntries: [APIKnowledgeEntry]) {
+        persistedKnowledgeEntries = knowledgeEntries
     }
     
     private(set) var persistedAnnouncements: [APIAnnouncement] = []

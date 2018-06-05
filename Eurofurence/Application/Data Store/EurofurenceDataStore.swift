@@ -17,6 +17,7 @@ protocol EurofurenceDataStore {
 protocol EurofurenceDataStoreTransaction {
 
     func saveKnowledgeGroups(_ knowledgeGroups: [APIKnowledgeGroup])
+    func saveKnowledgeEntries(_ knowledgeEntries: [APIKnowledgeEntry])
     func saveAnnouncements(_ announcements: [APIAnnouncement])
 
 }
