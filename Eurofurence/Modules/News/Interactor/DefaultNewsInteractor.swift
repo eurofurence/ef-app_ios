@@ -167,7 +167,7 @@ class DefaultNewsInteractor: NewsInteractor,
         if !runningEvents.isEmpty {
             components.append(EventsComponent(title: .runningEvents,
                                               events: runningEvents,
-                                              startTimeFormatter: { (event) -> String in
+                                              startTimeFormatter: { (_) -> String in
                                                 return .now
             }, hoursDateFormatter: hoursDateFormatter))
         }

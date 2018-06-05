@@ -115,7 +115,7 @@ class LoginPresenter: LoginSceneDelegate {
             self.authenticationService.login(request, completionHandler: { (result) in
                 dismissable.dismiss {
                     switch result {
-                    case .success(_):
+                    case .success:
                         self.delegate.loginModuleDidLoginSuccessfully()
 
                     case .failure:

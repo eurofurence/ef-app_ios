@@ -43,13 +43,13 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
         }
 
         func visit(_ countdown: ConventionCountdownComponentViewModel) {
-            boundComponent = componentFactory.makeConventionCountdownComponent() { (component) in
+            boundComponent = componentFactory.makeConventionCountdownComponent { (component) in
                 component.setTimeUntilConvention(countdown.timeUntilConvention)
             }
         }
 
         func visit(_ userWidget: UserWidgetComponentViewModel) {
-            boundComponent = componentFactory.makeUserWidgetComponent() { (component) in
+            boundComponent = componentFactory.makeUserWidgetComponent { (component) in
                 component.setPrompt(userWidget.prompt)
                 component.setDetailedPrompt(userWidget.detailedPrompt)
 
@@ -64,14 +64,14 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
         }
 
         func visit(_ announcement: AnnouncementComponentViewModel) {
-            boundComponent = componentFactory.makeAnnouncementComponent() { (component) in
+            boundComponent = componentFactory.makeAnnouncementComponent { (component) in
                 component.setAnnouncementTitle(announcement.title)
                 component.setAnnouncementDetail(announcement.detail)
             }
         }
 
         func visit(_ event: EventComponentViewModel) {
-            boundComponent = componentFactory.makeEventComponent() { (component) in
+            boundComponent = componentFactory.makeEventComponent { (component) in
                 component.setEventStartTime(event.startTime)
                 component.setEventEndTime(event.endTime)
                 component.setEventName(event.eventName)
