@@ -55,6 +55,11 @@ extension CapturingEurofurenceDataStore {
         return persistedEvents.contains(elementsFrom: events)
     }
     
+    func didSave(_ events: [APIRoom]) -> Bool {
+        guard let persistedRooms = transaction?.persistedRooms else { return false }
+        return persistedRooms.contains(elementsFrom: events)
+    }
+    
 }
 
 extension Array where Element: Equatable {
@@ -91,6 +96,11 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
     private(set) var persistedEvents: [APIEvent] = []
     func saveEvents(_ events: [APIEvent]) {
         persistedEvents = events
+    }
+    
+    private(set) var persistedRooms: [APIRoom] = []
+    func saveRooms(_ rooms: [APIRoom]) {
+        persistedRooms = rooms
     }
     
 }

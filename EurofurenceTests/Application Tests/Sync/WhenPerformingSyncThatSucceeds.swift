@@ -51,6 +51,16 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         XCTAssertTrue(context.dataStore.didSave(expected))
     }
     
+    func testTheRoomsArePersistedToTheStore() {
+        let context = ApplicationTestBuilder().build()
+        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let expected = syncResponse.rooms.changed
+        context.refreshLocalStore()
+        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        
+        XCTAssertTrue(context.dataStore.didSave(expected))
+    }
+    
     func testTheCompletionHandlerIsInvokedWithoutAnError() {
         let context = ApplicationTestBuilder().build()
         var invokedWithNilError = false

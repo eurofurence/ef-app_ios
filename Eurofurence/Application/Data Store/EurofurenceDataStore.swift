@@ -20,6 +20,7 @@ protocol EurofurenceDataStoreTransaction {
     func saveKnowledgeEntries(_ knowledgeEntries: [APIKnowledgeEntry])
     func saveAnnouncements(_ announcements: [APIAnnouncement])
     func saveEvents(_ events: [APIEvent])
+    func saveRooms(_ rooms: [APIRoom])
 
 }
 
