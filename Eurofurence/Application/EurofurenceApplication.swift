@@ -173,8 +173,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                     self.updateAnnouncements(from: response)
 
                     self.dataStore.performTransaction({ (transaction) in
-                        transaction.saveKnowledgeGroups(self.knowledgeGroups)
-                        transaction.saveAnnouncements(self.announcements)
+                        transaction.saveKnowledgeGroups(response.knowledgeGroups.changed)
+                        transaction.saveAnnouncements(response.announcements.changed)
                     })
 
                     self.announcementsObservers.forEach({ $0.eurofurenceApplicationDidChangeUnreadAnnouncements(to: self.announcements) })

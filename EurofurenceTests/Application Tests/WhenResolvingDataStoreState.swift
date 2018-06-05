@@ -35,12 +35,12 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
 
 extension CapturingEurofurenceDataStore {
     
-    func didSave(_ knowledgeGroups: [KnowledgeGroup2]) -> Bool {
+    func didSave(_ knowledgeGroups: [APIKnowledgeGroup]) -> Bool {
         guard let persistedKnowledgeGroups = transaction?.persistedKnowledgeGroups else { return false }
         return persistedKnowledgeGroups.contains(elementsFrom: knowledgeGroups)
     }
     
-    func didSave(_ announcements: [Announcement2]) -> Bool {
+    func didSave(_ announcements: [APIAnnouncement]) -> Bool {
         guard let persistedAnnouncements = transaction?.persistedAnnouncements else { return false }
         return persistedAnnouncements.contains(elementsFrom: announcements)
     }
@@ -63,13 +63,13 @@ extension Array where Element: Equatable {
 
 class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction {
     
-    private(set) var persistedKnowledgeGroups: [KnowledgeGroup2] = []
-    func saveKnowledgeGroups(_ knowledgeGroups: [KnowledgeGroup2]) {
+    private(set) var persistedKnowledgeGroups: [APIKnowledgeGroup] = []
+    func saveKnowledgeGroups(_ knowledgeGroups: [APIKnowledgeGroup]) {
         self.persistedKnowledgeGroups = knowledgeGroups
     }
     
-    private(set) var persistedAnnouncements: [Announcement2] = []
-    func saveAnnouncements(_ announcements: [Announcement2]) {
+    private(set) var persistedAnnouncements: [APIAnnouncement] = []
+    func saveAnnouncements(_ announcements: [APIAnnouncement]) {
         persistedAnnouncements = announcements
     }
     

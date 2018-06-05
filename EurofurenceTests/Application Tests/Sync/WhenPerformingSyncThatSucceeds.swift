@@ -14,8 +14,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
     func testTheKnowledgeGroupsArePersistedIntoTheStore() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
-        let expected = KnowledgeGroup2.fromServerModels(groups: syncResponse.knowledgeGroups.changed, entries: syncResponse.knowledgeEntries.changed)
-        
+        let expected = syncResponse.knowledgeGroups.changed
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(syncResponse)
         
@@ -25,7 +24,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
     func testTheAnnouncementsArePersistedToTheStore() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
-        let expected = Announcement2.fromServerModels(syncResponse.announcements.changed)
+        let expected = syncResponse.announcements.changed
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(syncResponse)
         
