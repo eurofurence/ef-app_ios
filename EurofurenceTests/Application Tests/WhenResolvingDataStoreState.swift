@@ -60,6 +60,11 @@ extension CapturingEurofurenceDataStore {
         return persistedRooms.contains(elementsFrom: events)
     }
     
+    func didSave(_ tracks: [APITrack]) -> Bool {
+        guard let persistedTracks = transaction?.persistedTracks else { return false }
+        return persistedTracks.contains(elementsFrom: tracks)
+    }
+    
 }
 
 extension Array where Element: Equatable {
@@ -101,6 +106,11 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
     private(set) var persistedRooms: [APIRoom] = []
     func saveRooms(_ rooms: [APIRoom]) {
         persistedRooms = rooms
+    }
+    
+    private(set) var persistedTracks: [APITrack] = []
+    func saveTracks(_ tracks: [APITrack]) {
+        persistedTracks = tracks
     }
     
 }

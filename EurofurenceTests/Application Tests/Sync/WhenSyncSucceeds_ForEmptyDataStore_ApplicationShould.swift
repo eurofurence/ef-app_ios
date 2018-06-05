@@ -48,4 +48,9 @@ class WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould: XCTestCase {
         XCTAssertTrue(context.dataStore.didSave(expected))
     }
     
+    func testSaveTheTracksIntoToTheStore() {
+        let expected = syncResponse.tracks.changed
+        XCTAssertTrue(context.dataStore.didSave(expected))
+    }
+    
 }

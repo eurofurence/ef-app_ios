@@ -178,6 +178,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                         transaction.saveAnnouncements(response.announcements.changed)
                         transaction.saveEvents(response.events.changed)
                         transaction.saveRooms(response.rooms.changed)
+                        transaction.saveTracks(response.tracks.changed)
                     })
 
                     self.announcementsObservers.forEach({ $0.eurofurenceApplicationDidChangeUnreadAnnouncements(to: self.announcements) })

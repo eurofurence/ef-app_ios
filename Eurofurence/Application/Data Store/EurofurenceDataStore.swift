@@ -21,6 +21,7 @@ protocol EurofurenceDataStoreTransaction {
     func saveAnnouncements(_ announcements: [APIAnnouncement])
     func saveEvents(_ events: [APIEvent])
     func saveRooms(_ rooms: [APIRoom])
+    func saveTracks(_ tracks: [APITrack])
 
 }
 
