@@ -76,6 +76,15 @@ extension CapturingImageRepository {
         return savedImages.contains(elementsFrom: images)
     }
     
+    func stub(identifier: String) {
+        let entity = ImageEntity(identifier: identifier, pngImageData: identifier.data(using: .utf8)!)
+        save(entity)
+    }
+    
+    func stub(identifiers: [String]) {
+        identifiers.forEach(stub)
+    }
+    
 }
 
 class ApplicationTestBuilder {
