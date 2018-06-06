@@ -575,6 +575,7 @@
 		CABA43A11FD57A78009CB5B0 /* PreloadModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43A01FD57A78009CB5B0 /* PreloadModuleBuilder.swift */; };
 		CABA43A31FD57C65009CB5B0 /* TutorialModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */; };
 		CABA43AC1FD5DC68009CB5B0 /* LoginScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43AB1FD5DC68009CB5B0 /* LoginScene.swift */; };
+		CABEB0D220C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */; };
 		CABF03B42041BC870028BD62 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03B32041BC870028BD62 /* UITableView+Extensions.swift */; };
 		CABF03B72041C2150028BD62 /* DefaultKnowledgeListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03B62041C2150028BD62 /* DefaultKnowledgeListInteractorTests.swift */; };
 		CABF03BA2041C2B00028BD62 /* KnowledgeEntry2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03B82041C2B00028BD62 /* KnowledgeEntry2.swift */; };
@@ -1378,6 +1379,7 @@
 		CABA43A01FD57A78009CB5B0 /* PreloadModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA43AB1FD5DC68009CB5B0 /* LoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScene.swift; sourceTree = "<group>"; };
+		CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift; sourceTree = "<group>"; };
 		CABF03B32041BC870028BD62 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		CABF03B62041C2150028BD62 /* DefaultKnowledgeListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeListInteractorTests.swift; sourceTree = "<group>"; };
 		CABF03B82041C2B00028BD62 /* KnowledgeEntry2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeEntry2.swift; sourceTree = "<group>"; };
@@ -2449,6 +2451,7 @@
 		CA162EAF20AA2DC0004AFED6 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */,
 				CACF1EBF20B60D2B00D904B5 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift */,
 				CA162EB020AA2DC9004AFED6 /* Running */,
 				CA3990F020ACD693001E3F1A /* Upcoming */,
@@ -5142,6 +5145,7 @@
 				CA637556208CBBCE00536BE2 /* StubMessageDetailModuleProviding.swift in Sources */,
 				CA73AEDD201A0823004E77BF /* CapturingKnowledgeListScene.swift in Sources */,
 				CA60C002207F7D2100697566 /* WhenNewsSceneDidLoad.swift in Sources */,
+				CABEB0D220C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift in Sources */,
 				CA63758C208CE06100536BE2 /* WhenBuildingEventsModule.swift in Sources */,
 				CA162EA220A8D4A9004AFED6 /* StubEventsService.swift in Sources */,
 				CA3990F420ACD73D001E3F1A /* WhenObservingUpcomingEvents_ThenLoadSucceeds.swift in Sources */,

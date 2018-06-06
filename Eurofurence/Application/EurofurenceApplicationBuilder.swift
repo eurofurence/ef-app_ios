@@ -33,6 +33,18 @@ class EurofurenceApplicationBuilder {
         }
 
         struct DummyEurofurenceDataStore: EurofurenceDataStore {
+            func getSavedRooms() -> [APIRoom]? {
+                return nil
+            }
+
+            func getSavedTracks() -> [APITrack]? {
+                return nil
+            }
+
+            func getSavedEvents() -> [APIEvent]? {
+                return nil
+            }
+
             func fetchKnowledgeGroups(completionHandler: ([APIKnowledgeGroup]?) -> Void) {
 
             }
@@ -62,6 +74,10 @@ class EurofurenceApplicationBuilder {
         struct DummyImageRepository: ImageRepository {
             func save(_ image: ImageEntity) {
 
+            }
+
+            func loadImage(identifier: String) -> ImageEntity? {
+                return nil
             }
         }
 

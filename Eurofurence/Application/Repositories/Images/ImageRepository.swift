@@ -11,5 +11,6 @@ import Foundation
 protocol ImageRepository {
 
     func save(_ image: ImageEntity)
+    func loadImage(identifier: String) -> ImageEntity?
 
 }

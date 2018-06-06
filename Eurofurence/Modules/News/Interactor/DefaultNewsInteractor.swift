@@ -131,6 +131,10 @@ class DefaultNewsInteractor: NewsInteractor,
 
     // MARK: EventsServiceObserver
 
+    func eurofurenceApplicationDidUpdateEvents(to events: [Event2]) {
+
+    }
+
     func eurofurenceApplicationDidUpdateRunningEvents(to events: [Event2]) {
         runningEvents = events
         regenerateViewModel()

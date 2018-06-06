@@ -257,6 +257,41 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         eventsObservers.append(observer)
         observer.eurofurenceApplicationDidUpdateRunningEvents(to: makeRunningEvents())
         observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: [])
+
+        let events = dataStore.getSavedEvents()
+        let rooms = dataStore.getSavedRooms()
+        let tracks = dataStore.getSavedTracks()
+
+        if let events = events, let rooms = rooms, let tracks = tracks {
+            self.events = events.flatMap { (event) -> Event2? in
+                guard let room = rooms.first(where: { $0.roomIdentifier == event.roomIdentifier }) else { return nil }
+                guard let track = tracks.first(where: { $0.trackIdentifier == event.trackIdentifier }) else { return nil }
+
+                var posterGraphicData: Data?
+                if let posterImageIdentifier = event.posterImageId {
+                    posterGraphicData = imageCache.cachedImageData(for: posterImageIdentifier)
+                }
+
+                var bannerGraphicData: Data?
+                if let bannerImageIdentifier = event.bannerImageId {
+                    bannerGraphicData = imageCache.cachedImageData(for: bannerImageIdentifier)
+                }
+
+                return Event2(title: event.title,
+                              abstract: event.abstract,
+                              room: Room(name: room.name),
+                              track: Track(name: track.name),
+                              hosts: event.panelHosts,
+                              startDate: event.startDateTime,
+                              endDate: event.endDateTime,
+                              eventDescription: event.eventDescription,
+                              posterGraphicPNGData: posterGraphicData,
+                              bannerGraphicPNGData: bannerGraphicData,
+                              isFavourite: false)
+            }
+        }
+
+        observer.eurofurenceApplicationDidUpdateEvents(to: self.events)
     }
 
     private func makeRunningEvents() -> [Event2] {

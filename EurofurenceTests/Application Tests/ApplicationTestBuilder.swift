@@ -64,6 +64,10 @@ class CapturingImageRepository: ImageRepository {
         savedImages.append(image)
     }
     
+    func loadImage(identifier: String) -> ImageEntity? {
+        return savedImages.first { $0.identifier == identifier }
+    }
+    
 }
 
 extension CapturingImageRepository {
@@ -144,6 +148,10 @@ class ApplicationTestBuilder {
                           isFavourite: false)
         }
         
+        func makeExpectedEvents(from events: [APIEvent], response: APISyncResponse) -> [Event2] {
+            return events.map { makeExpectedEvent(from: $0, response: response) }
+        }
+        
     }
     
     private let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()
@@ -158,6 +166,7 @@ class ApplicationTestBuilder {
     private let syncAPI = CapturingSyncAPI()
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval = .greatestFiniteMagnitude
     private var imageAPI: FakeImageAPI = FakeImageAPI()
+    private var imageRepository = CapturingImageRepository()
     
     func with(_ currentDate: Date) -> ApplicationTestBuilder {
         stubClock = StubClock(currentDate: currentDate)
@@ -203,6 +212,12 @@ class ApplicationTestBuilder {
         return self
     }
     
+    @discardableResult
+    func with(_ imageRepository: CapturingImageRepository) -> ApplicationTestBuilder {
+        self.imageRepository = imageRepository
+        return self
+    }
+    
     func loggedInWithValidCredential() -> ApplicationTestBuilder {
         let credential = Credential(username: "User",
                                     registrationNumber: 42,
@@ -216,7 +231,6 @@ class ApplicationTestBuilder {
         let dateDistanceCalculator = StubDateDistanceCalculator()
         let conventionStartDateRepository = StubConventionStartDateRepository()
         let significantTimeChangeEventSource = FakeSignificantTimeChangeEventSource()
-        let imageRepository = CapturingImageRepository()
         let app = EurofurenceApplicationBuilder()
             .with(stubClock)
             .with(capturingCredentialStore)

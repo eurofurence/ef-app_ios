@@ -26,6 +26,18 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
         completionHandler(transaction?.persistedKnowledgeEntries)
     }
     
+    func getSavedRooms() -> [APIRoom]? {
+        return transaction?.persistedRooms
+    }
+    
+    func getSavedTracks() -> [APITrack]? {
+        return transaction?.persistedTracks
+    }
+    
+    func getSavedEvents() -> [APIEvent]? {
+        return transaction?.persistedEvents
+    }
+    
     private(set) var capturedKnowledgeGroupsToSave: [KnowledgeGroup2]?
     private(set) var transaction: CapturingEurofurenceDataStoreTransaction?
     var transactionInvokedBlock: (() -> Void)?

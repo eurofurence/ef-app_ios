@@ -11,6 +11,11 @@ import Foundation
 
 class CapturingEventsServiceObserver: EventsServiceObserver {
     
+    private(set) var allEvents = [Event2]()
+    func eurofurenceApplicationDidUpdateEvents(to events: [Event2]) {
+        allEvents = events
+    }
+    
     private(set) var wasProvidedWithEmptyRunningEvents = false
     private(set) var runningEvents = [Event2]()
     func eurofurenceApplicationDidUpdateRunningEvents(to events: [Event2]) {

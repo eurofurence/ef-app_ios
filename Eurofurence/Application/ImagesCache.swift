@@ -25,7 +25,12 @@ class ImagesCache: EventConsumer {
     // MARK: Functions
 
     func cachedImageData(for identifier: String) -> Data? {
-        return images.first(where: { $0.identifier == identifier })?.pngImageData
+        let inMemoryCacheHit = images.first(where: { $0.identifier == identifier })?.pngImageData
+        if let hit = inMemoryCacheHit {
+            return hit
+        } else {
+            return imageRepository.loadImage(identifier: identifier)?.pngImageData
+        }
     }
 
     func save() {

@@ -13,6 +13,9 @@ protocol EurofurenceDataStore {
 
     func fetchKnowledgeGroups(completionHandler: ([APIKnowledgeGroup]?) -> Void)
     func fetchKnowledgeEntries(completionHandler: ([APIKnowledgeEntry]?) -> Void)
+    func getSavedRooms() -> [APIRoom]?
+    func getSavedTracks() -> [APITrack]?
+    func getSavedEvents() -> [APIEvent]?
 
 }
 
