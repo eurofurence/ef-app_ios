@@ -255,7 +255,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     private var eventsObservers = [EventsServiceObserver]()
-    fileprivate func reconstituteEventsFromDataStore() {
+
+    private func reconstituteEventsFromDataStore() {
         let events = dataStore.getSavedEvents()
         let rooms = dataStore.getSavedRooms()
         let tracks = dataStore.getSavedTracks()
@@ -353,6 +354,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                           bannerGraphicPNGData: bannerGraphicData,
                           isFavourite: false)
         })
+
+        eventsObservers.forEach({ $0.eurofurenceApplicationDidUpdateEvents(to: events) })
     }
 
 }
