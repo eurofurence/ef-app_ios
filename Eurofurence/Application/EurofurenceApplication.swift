@@ -86,6 +86,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                                                                       clock: clock)
 
         imageCache = ImagesCache(eventBus: eventBus, imageRepository: imageRepository)
+
+        reconstituteEventsFromDataStore()
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
@@ -253,11 +255,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     private var eventsObservers = [EventsServiceObserver]()
-    func add(_ observer: EventsServiceObserver) {
-        eventsObservers.append(observer)
-        observer.eurofurenceApplicationDidUpdateRunningEvents(to: makeRunningEvents())
-        observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: [])
-
+    fileprivate func reconstituteEventsFromDataStore() {
         let events = dataStore.getSavedEvents()
         let rooms = dataStore.getSavedRooms()
         let tracks = dataStore.getSavedTracks()
@@ -290,8 +288,13 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                               isFavourite: false)
             }
         }
+    }
 
-        observer.eurofurenceApplicationDidUpdateEvents(to: self.events)
+    func add(_ observer: EventsServiceObserver) {
+        eventsObservers.append(observer)
+        observer.eurofurenceApplicationDidUpdateRunningEvents(to: makeRunningEvents())
+        observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: [])
+        observer.eurofurenceApplicationDidUpdateEvents(to: events)
     }
 
     private func makeRunningEvents() -> [Event2] {
