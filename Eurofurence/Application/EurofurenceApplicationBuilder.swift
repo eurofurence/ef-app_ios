@@ -49,20 +49,16 @@ class EurofurenceApplicationBuilder {
                 return nil
             }
 
-            func fetchKnowledgeGroups(completionHandler: ([APIKnowledgeGroup]?) -> Void) {
-
+            func getSavedKnowledgeGroups() -> [APIKnowledgeGroup]? {
+                return nil
             }
 
-            func fetchKnowledgeEntries(completionHandler: ([APIKnowledgeEntry]?) -> Void) {
-
+            func getSavedKnowledgeEntries() -> [APIKnowledgeEntry]? {
+                return nil
             }
 
             func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
 
-            }
-
-            func fetchKnowledgeGroups(completionHandler: ([KnowledgeGroup2]?) -> Void) {
-                completionHandler(nil)
             }
         }
 

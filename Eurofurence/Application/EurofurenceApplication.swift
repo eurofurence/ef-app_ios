@@ -138,16 +138,12 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func fetchKnowledgeGroups(completionHandler: @escaping ([KnowledgeGroup2]) -> Void) {
-        dataStore.fetchKnowledgeGroups { (groups) in
-            guard let groups = groups else { completionHandler([]); return }
-            dataStore.fetchKnowledgeEntries { (entries) in
-                guard let entries = entries else { return }
+        guard let groups = dataStore.getSavedKnowledgeGroups() else { completionHandler([]); return }
+        guard let entries = dataStore.getSavedKnowledgeEntries() else { return }
 
-                let knowledgeGroups = KnowledgeGroup2.fromServerModels(groups: groups,
-                                                                       entries: entries)
-                completionHandler(knowledgeGroups)
-            }
-        }
+        let knowledgeGroups = KnowledgeGroup2.fromServerModels(groups: groups,
+                                                               entries: entries)
+        completionHandler(knowledgeGroups)
     }
 
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {

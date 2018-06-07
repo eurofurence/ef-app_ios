@@ -15,14 +15,12 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
         return transaction?.persistedLastRefreshDate
     }
     
-    var stubbedKnowledgeGroups: [APIKnowledgeGroup]?
-    func fetchKnowledgeGroups(completionHandler: ([APIKnowledgeGroup]?) -> Void) {
-        completionHandler(transaction?.persistedKnowledgeGroups)
+    func getSavedKnowledgeGroups() -> [APIKnowledgeGroup]? {
+        return transaction?.persistedKnowledgeGroups
     }
     
-    var stubbedKnowledgeEntries: [APIKnowledgeEntry]?
-    func fetchKnowledgeEntries(completionHandler: ([APIKnowledgeEntry]?) -> Void) {
-        completionHandler(transaction?.persistedKnowledgeEntries)
+    func getSavedKnowledgeEntries() -> [APIKnowledgeEntry]? {
+        return transaction?.persistedKnowledgeEntries
     }
     
     func getSavedRooms() -> [APIRoom]? {

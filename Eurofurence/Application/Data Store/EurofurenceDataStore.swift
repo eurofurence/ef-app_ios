@@ -13,8 +13,8 @@ protocol EurofurenceDataStore {
     func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void)
 
     func getLastRefreshDate() -> Date?
-    func fetchKnowledgeGroups(completionHandler: ([APIKnowledgeGroup]?) -> Void)
-    func fetchKnowledgeEntries(completionHandler: ([APIKnowledgeEntry]?) -> Void)
+    func getSavedKnowledgeGroups() -> [APIKnowledgeGroup]?
+    func getSavedKnowledgeEntries() -> [APIKnowledgeEntry]?
     func getSavedRooms() -> [APIRoom]?
     func getSavedTracks() -> [APITrack]?
     func getSavedEvents() -> [APIEvent]?
