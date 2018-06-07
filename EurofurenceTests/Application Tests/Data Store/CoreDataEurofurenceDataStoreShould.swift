@@ -27,6 +27,10 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         
     }
     
+    func getLastRefreshDate() -> Date? {
+        return nil
+    }
+    
     func getSavedRooms() -> [APIRoom]? {
         return nil
     }

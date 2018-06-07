@@ -91,17 +91,13 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
-        dataStore.resolveContentsState { (state) in
-            switch state {
-            case .empty:
-                completionHandler(.absent)
-
-            case .present:
-                if self.userPreferences.refreshStoreOnLaunch {
-                    completionHandler(.stale)
-                } else {
-                    completionHandler(.available)
-                }
+        if dataStore.getLastRefreshDate() == nil {
+            completionHandler(.absent)
+        } else {
+            if userPreferences.refreshStoreOnLaunch {
+                completionHandler(.stale)
+            } else {
+                completionHandler(.available)
             }
         }
     }

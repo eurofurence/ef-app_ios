@@ -33,6 +33,10 @@ class EurofurenceApplicationBuilder {
         }
 
         struct DummyEurofurenceDataStore: EurofurenceDataStore {
+            func getLastRefreshDate() -> Date? {
+                return nil
+            }
+
             func getSavedRooms() -> [APIRoom]? {
                 return nil
             }

@@ -16,6 +16,10 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
         capturedResolveContentsStateHandler = completionHandler
     }
     
+    func getLastRefreshDate() -> Date? {
+        return transaction?.persistedLastRefreshDate
+    }
+    
     var stubbedKnowledgeGroups: [APIKnowledgeGroup]?
     func fetchKnowledgeGroups(completionHandler: ([APIKnowledgeGroup]?) -> Void) {
         completionHandler(transaction?.persistedKnowledgeGroups)
@@ -130,6 +134,11 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
         persistedTracks = tracks
     }
     
+    private(set) var persistedLastRefreshDate: Date?
+    func saveLastRefreshDate(_ lastRefreshDate: Date) {
+        persistedLastRefreshDate = lastRefreshDate
+    }
+    
 }
 
 class StubUserPreferences: UserPreferences {
@@ -140,6 +149,45 @@ class StubUserPreferences: UserPreferences {
 
 class WhenResolvingDataStoreState: XCTestCase {
     
+    func testStoreWithNoLastRefreshTimeIsAbsent() {
+        let capturingDataStore = CapturingEurofurenceDataStore()
+        let context = ApplicationTestBuilder().with(capturingDataStore).build()
+        var state: EurofurenceDataStoreState?
+        context.application.resolveDataStoreState { state = $0 }
+        
+        XCTAssertEqual(.absent, state)
+    }
+    
+    func testStoreWithLastRefreshDateWithRefreshOnLaunchEnabledIsStale() {
+        let capturingDataStore = CapturingEurofurenceDataStore()
+        capturingDataStore.performTransaction { (transaction) in
+            transaction.saveLastRefreshDate(.random)
+        }
+        
+        let userPreferences = StubUserPreferences()
+        userPreferences.refreshStoreOnLaunch = true
+        let context = ApplicationTestBuilder().with(capturingDataStore).with(userPreferences).build()
+        var state: EurofurenceDataStoreState?
+        context.application.resolveDataStoreState { state = $0 }
+        
+        XCTAssertEqual(.stale, state)
+    }
+    
+    func testStoreWithLastRefreshDateWithRefreshOnLaunchDisabledIsAvailable() {
+        let capturingDataStore = CapturingEurofurenceDataStore()
+        capturingDataStore.performTransaction { (transaction) in
+            transaction.saveLastRefreshDate(.random)
+        }
+        
+        let userPreferences = StubUserPreferences()
+        userPreferences.refreshStoreOnLaunch = false
+        let context = ApplicationTestBuilder().with(capturingDataStore).with(userPreferences).build()
+        var state: EurofurenceDataStoreState?
+        context.application.resolveDataStoreState { state = $0 }
+        
+        XCTAssertEqual(.available, state)
+    }
+    
     func testEmptyStateStoreProvidesAbsentStore() {
         let capturingDataStore = CapturingEurofurenceDataStore()
         let context = ApplicationTestBuilder().with(capturingDataStore).build()
@@ -148,53 +196,6 @@ class WhenResolvingDataStoreState: XCTestCase {
         capturingDataStore.capturedResolveContentsStateHandler?(.empty)
         
         XCTAssertEqual(.absent, state)
-    }
-    
-    func testNonEmptyStoreWhenUserRequestedRefreshOnLaunchReturnsStale() {
-        let capturingDataStore = CapturingEurofurenceDataStore()
-        let userPreferences = StubUserPreferences()
-        userPreferences.refreshStoreOnLaunch = true
-        let context = ApplicationTestBuilder().with(capturingDataStore).with(userPreferences).build()
-        var state: EurofurenceDataStoreState?
-        context.application.resolveDataStoreState { state = $0 }
-        capturingDataStore.capturedResolveContentsStateHandler?(.present)
-        
-        XCTAssertEqual(.stale, state)
-    }
-    
-    func testEmptyDataStoreWhenUserRequestedRefreshOnLaunchReturnsAbsent() {
-        let capturingDataStore = CapturingEurofurenceDataStore()
-        let userPreferences = StubUserPreferences()
-        userPreferences.refreshStoreOnLaunch = true
-        let context = ApplicationTestBuilder().with(capturingDataStore).with(userPreferences).build()
-        var state: EurofurenceDataStoreState?
-        context.application.resolveDataStoreState { state = $0 }
-        capturingDataStore.capturedResolveContentsStateHandler?(.empty)
-        
-        XCTAssertEqual(.absent, state)
-    }
-    
-    func testNonEmptyStoreWhenUserDidNotRequestRefreshOnLaunchReturnsAvailable() {
-        let capturingDataStore = CapturingEurofurenceDataStore()
-        let userPreferences = StubUserPreferences()
-        userPreferences.refreshStoreOnLaunch = false
-        let context = ApplicationTestBuilder().with(capturingDataStore).with(userPreferences).build()
-        var state: EurofurenceDataStoreState?
-        context.application.resolveDataStoreState { state = $0 }
-        capturingDataStore.capturedResolveContentsStateHandler?(.present)
-        
-        XCTAssertEqual(.available, state)
-    }
-    
-    func testResolutionHandlerNotInvokedBeforeDataStoreResolvesContentsState() {
-        let capturingDataStore = CapturingEurofurenceDataStore()
-        let userPreferences = StubUserPreferences()
-        userPreferences.refreshStoreOnLaunch = true
-        let context = ApplicationTestBuilder().with(capturingDataStore).with(userPreferences).build()
-        var state: EurofurenceDataStoreState?
-        context.application.resolveDataStoreState { state = $0 }
-        
-        XCTAssertNil(state)
     }
     
 }
