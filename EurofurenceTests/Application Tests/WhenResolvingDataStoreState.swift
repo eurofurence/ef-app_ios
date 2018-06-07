@@ -11,11 +11,6 @@ import XCTest
 
 class CapturingEurofurenceDataStore: EurofurenceDataStore {
     
-    private(set) var capturedResolveContentsStateHandler: ((EurofurenceDataStoreContentsState) -> Void)?
-    func resolveContentsState(completionHandler: @escaping (EurofurenceDataStoreContentsState) -> Void) {
-        capturedResolveContentsStateHandler = completionHandler
-    }
-    
     func getLastRefreshDate() -> Date? {
         return transaction?.persistedLastRefreshDate
     }
@@ -186,16 +181,6 @@ class WhenResolvingDataStoreState: XCTestCase {
         context.application.resolveDataStoreState { state = $0 }
         
         XCTAssertEqual(.available, state)
-    }
-    
-    func testEmptyStateStoreProvidesAbsentStore() {
-        let capturingDataStore = CapturingEurofurenceDataStore()
-        let context = ApplicationTestBuilder().with(capturingDataStore).build()
-        var state: EurofurenceDataStoreState?
-        context.application.resolveDataStoreState { state = $0 }
-        capturingDataStore.capturedResolveContentsStateHandler?(.empty)
-        
-        XCTAssertEqual(.absent, state)
     }
     
 }

@@ -11,10 +11,6 @@ import XCTest
 
 struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
     
-    func resolveContentsState(completionHandler: @escaping (EurofurenceDataStoreContentsState) -> Void) {
-        completionHandler(.empty)
-    }
-    
     func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
         
     }
@@ -46,13 +42,5 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
 }
 
 class CoreDataEurofurenceDataStoreShould: XCTestCase {
-    
-    func testBeEmptyWhenStoreDoesNotExist() {
-        let dataStore = CoreDataEurofurenceDataStore()
-        var state: EurofurenceDataStoreContentsState?
-        dataStore.resolveContentsState { state = $0 }
-        
-        XCTAssertEqual(.empty, state)
-    }
     
 }

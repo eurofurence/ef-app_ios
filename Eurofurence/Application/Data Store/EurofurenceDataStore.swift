@@ -10,7 +10,6 @@ import Foundation
 
 protocol EurofurenceDataStore {
 
-    func resolveContentsState(completionHandler: @escaping (EurofurenceDataStoreContentsState) -> Void)
     func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void)
 
     func getLastRefreshDate() -> Date?
@@ -32,9 +31,4 @@ protocol EurofurenceDataStoreTransaction {
     func saveRooms(_ rooms: [APIRoom])
     func saveTracks(_ tracks: [APITrack])
 
-}
-
-enum EurofurenceDataStoreContentsState {
-    case empty
-    case present
 }
