@@ -180,6 +180,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                         transaction.saveEvents(response.events.changed)
                         transaction.saveRooms(response.rooms.changed)
                         transaction.saveTracks(response.tracks.changed)
+                        transaction.saveLastRefreshDate(self.clock.currentDate)
                     })
 
                     self.announcementsObservers.forEach({ $0.eurofurenceApplicationDidChangeUnreadAnnouncements(to: self.announcements) })

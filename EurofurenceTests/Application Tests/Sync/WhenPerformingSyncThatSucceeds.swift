@@ -77,4 +77,14 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         XCTAssertTrue(didFinish)
     }
     
+    func testTheDataStoreIsToldToSaveTheLastSyncDateTime() {
+        let context = ApplicationTestBuilder().build()
+        context.refreshLocalStore()
+        let randomTime = Date.random
+        context.clock.currentDate = randomTime
+        context.syncAPI.simulateSuccessfulSync(.randomWithoutDeletions)
+        
+        XCTAssertTrue(context.dataStore.didSaveLastRefreshTime(randomTime))
+    }
+    
 }

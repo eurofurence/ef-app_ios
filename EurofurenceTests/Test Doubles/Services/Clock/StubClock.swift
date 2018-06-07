@@ -9,15 +9,11 @@
 @testable import Eurofurence
 import Foundation
 
-struct StubClock: Clock {
+class StubClock: Clock {
     
     var currentDate: Date
     
-    init() {
-        self.init(currentDate: Date())
-    }
-    
-    init(currentDate: Date) {
+    init(currentDate: Date = Date()) {
         self.currentDate = currentDate
     }
     

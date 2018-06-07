@@ -91,7 +91,7 @@ class ApplicationTestBuilder {
     
     struct Context {
         var application: EurofurenceApplicationProtocol
-        
+        var clock: StubClock
         var capturingTokenRegistration: CapturingRemoteNotificationsTokenRegistration
         var capturingCredentialStore: CapturingCredentialStore
         var loginAPI: CapturingLoginAPI
@@ -260,6 +260,7 @@ class ApplicationTestBuilder {
             .build()
         
         return Context(application: app,
+                       clock: stubClock,
                        capturingTokenRegistration: capturingTokenRegistration,
                        capturingCredentialStore: capturingCredentialStore,
                        loginAPI: loginAPI,

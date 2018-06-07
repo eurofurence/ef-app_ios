@@ -81,6 +81,10 @@ extension CapturingEurofurenceDataStore {
         return persistedTracks.contains(elementsFrom: tracks)
     }
     
+    func didSaveLastRefreshTime(_ lastRefreshTime: Date) -> Bool {
+        return lastRefreshTime == transaction?.persistedLastRefreshDate
+    }
+    
 }
 
 extension Array where Element: Equatable {
