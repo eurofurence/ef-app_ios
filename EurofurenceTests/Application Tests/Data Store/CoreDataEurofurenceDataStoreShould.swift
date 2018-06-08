@@ -9,38 +9,41 @@
 @testable import Eurofurence
 import XCTest
 
-struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
-    
-    func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
-        
-    }
-    
-    func getSavedKnowledgeGroups() -> [APIKnowledgeGroup]? {
-        return nil
-    }
-    
-    func getSavedKnowledgeEntries() -> [APIKnowledgeEntry]? {
-        return nil
-    }
-    
-    func getLastRefreshDate() -> Date? {
-        return nil
-    }
-    
-    func getSavedRooms() -> [APIRoom]? {
-        return nil
-    }
-    
-    func getSavedTracks() -> [APITrack]? {
-        return nil
-    }
-    
-    func getSavedEvents() -> [APIEvent]? {
-        return nil
-    }
-    
-}
-
 class CoreDataEurofurenceDataStoreShould: XCTestCase {
+    
+    var storeIdentifier: String!
+    var store: CoreDataEurofurenceDataStore!
+    
+    private func recreateStore() {
+        store = CoreDataEurofurenceDataStore(storeName: storeIdentifier)
+    }
+    
+    override func setUp() {
+        super.setUp()
+        
+        storeIdentifier = .random
+        recreateStore()
+    }
+    
+    func testSaveKnowledgeGroups() {
+        let expected = [APIKnowledgeGroup].random
+        store.performTransaction { (transaction) in
+            transaction.saveKnowledgeGroups(expected)
+        }
+        
+        recreateStore()
+        let actual = store.getSavedKnowledgeGroups()
+        
+        assertThat(expected, isEqualTo: actual)
+    }
+    
+    private func assertThat<T>(_ expected: [T], isEqualTo actual: [T]?, file: StaticString = #file, line: UInt = #line) where T: Equatable {
+        guard let actual = actual else {
+            XCTFail("Expected actual values, but got nil", file: file, line: line)
+            return
+        }
+        
+        XCTAssertEqual(expected, actual, file: file, line: line)
+    }
     
 }

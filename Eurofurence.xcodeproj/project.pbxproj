@@ -578,6 +578,8 @@
 		CABEB0D220C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */; };
 		CABEB0D420C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */; };
 		CABEB0D920C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D820C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift */; };
+		CABEB0DC20C9C7A3000BEE66 /* CoreDataEurofurenceDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0DB20C9C7A3000BEE66 /* CoreDataEurofurenceDataStore.swift */; };
+		CABEB0DF20C9C7ED000BEE66 /* EurofurenceApplicationModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0DD20C9C7ED000BEE66 /* EurofurenceApplicationModel.xcdatamodeld */; };
 		CABF03B42041BC870028BD62 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03B32041BC870028BD62 /* UITableView+Extensions.swift */; };
 		CABF03B72041C2150028BD62 /* DefaultKnowledgeListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03B62041C2150028BD62 /* DefaultKnowledgeListInteractorTests.swift */; };
 		CABF03BA2041C2B00028BD62 /* KnowledgeEntry2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03B82041C2B00028BD62 /* KnowledgeEntry2.swift */; };
@@ -1384,6 +1386,8 @@
 		CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift; sourceTree = "<group>"; };
 		CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncCompletesWithEvents_ApplicationShould.swift; sourceTree = "<group>"; };
 		CABEB0D820C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEurofurenceDataStoreShould.swift; sourceTree = "<group>"; };
+		CABEB0DB20C9C7A3000BEE66 /* CoreDataEurofurenceDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEurofurenceDataStore.swift; sourceTree = "<group>"; };
+		CABEB0DE20C9C7ED000BEE66 /* EurofurenceApplicationModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EurofurenceApplicationModel.xcdatamodel; sourceTree = "<group>"; };
 		CABF03B32041BC870028BD62 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		CABF03B62041C2150028BD62 /* DefaultKnowledgeListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeListInteractorTests.swift; sourceTree = "<group>"; };
 		CABF03B82041C2B00028BD62 /* KnowledgeEntry2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeEntry2.swift; sourceTree = "<group>"; };
@@ -3544,6 +3548,15 @@
 			path = "Data Store";
 			sourceTree = "<group>";
 		};
+		CABEB0DA20C9C79B000BEE66 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				CABEB0DB20C9C7A3000BEE66 /* CoreDataEurofurenceDataStore.swift */,
+				CABEB0DD20C9C7ED000BEE66 /* EurofurenceApplicationModel.xcdatamodeld */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
 		CABF03B22041BC770028BD62 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -3945,6 +3958,7 @@
 			isa = PBXGroup;
 			children = (
 				CA2D07FA1FE902ED00BFD785 /* EurofurenceDataStore.swift */,
+				CABEB0DA20C9C79B000BEE66 /* Core Data */,
 			);
 			path = "Data Store";
 			sourceTree = "<group>";
@@ -4538,6 +4552,7 @@
 				CA8D97D5201613010074838F /* RemoteNotificationRegistrationController.swift in Sources */,
 				9ACF99911EC858B2006FC958 /* Image.swift in Sources */,
 				9A861EB01F2554F900B75A8C /* TutorialPresentationContext.swift in Sources */,
+				CABEB0DF20C9C7ED000BEE66 /* EurofurenceApplicationModel.xcdatamodeld in Sources */,
 				CA0E5220208FC994005259FE /* NewsUserWidgetTableViewCell.swift in Sources */,
 				CAD780431F1D4CA3002A8333 /* Credential.swift in Sources */,
 				CA637582208CDE2000536BE2 /* EventsModuleProviding.swift in Sources */,
@@ -4691,6 +4706,7 @@
 				CA7EB7D51F799991002674A6 /* TutorialScene.swift in Sources */,
 				78C86D7D1F12B8FD003A20E6 /* EgyptianQuoteGenerator.swift in Sources */,
 				CA2D07FD1FE904CD00BFD785 /* UserPreferences.swift in Sources */,
+				CABEB0DC20C9C7A3000BEE66 /* CoreDataEurofurenceDataStore.swift in Sources */,
 				CA17FE8120580082005A4C05 /* LinkScene.swift in Sources */,
 				CA6AA0061FD6C96B0092C6DB /* RootModuleBuilder.swift in Sources */,
 				CAF5979820449A1100089BE8 /* APIKnowledgeGroup.swift in Sources */,
@@ -5810,6 +5826,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CABEB0DD20C9C7ED000BEE66 /* EurofurenceApplicationModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CABEB0DE20C9C7ED000BEE66 /* EurofurenceApplicationModel.xcdatamodel */,
+			);
+			currentVersion = CABEB0DE20C9C7ED000BEE66 /* EurofurenceApplicationModel.xcdatamodel */;
+			path = EurofurenceApplicationModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9ACF992C1EBE172D006FC958 /* Project object */;
 }
