@@ -103,7 +103,11 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
             }
 
             func saveTracks(_ tracks: [APITrack]) {
-
+                tracks.forEach { (track) in
+                    let entity = TrackEntity(context: context)
+                    entity.trackIdentifier = track.trackIdentifier
+                    entity.name = track.name
+                }
             }
 
         }
@@ -151,7 +155,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
     }
 
     func getSavedTracks() -> [APITrack]? {
-        return nil
+        return getModels(fetchRequest: TrackEntity.fetchRequest())
     }
 
     func getSavedEvents() -> [APIEvent]? {

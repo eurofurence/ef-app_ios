@@ -708,6 +708,7 @@
 		CAE8B0B920CA4E450029D4D6 /* KnowledgeEntryEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8B0B820CA4E450029D4D6 /* KnowledgeEntryEntity+Adaptation.swift */; };
 		CAE8B0BB20CA54C30029D4D6 /* EventEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8B0BA20CA54C30029D4D6 /* EventEntity+Adaptation.swift */; };
 		CAE8B0BD20CA57590029D4D6 /* RoomEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8B0BC20CA57590029D4D6 /* RoomEntity+Adaptation.swift */; };
+		CAE8B0BF20CA583D0029D4D6 /* TrackEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8B0BE20CA583D0029D4D6 /* TrackEntity+Adaptation.swift */; };
 		CAEAEBE71FDC94F800C0EE7C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */; };
 		CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */; };
 		CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */; };
@@ -1524,6 +1525,7 @@
 		CAE8B0B820CA4E450029D4D6 /* KnowledgeEntryEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KnowledgeEntryEntity+Adaptation.swift"; sourceTree = "<group>"; };
 		CAE8B0BA20CA54C30029D4D6 /* EventEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventEntity+Adaptation.swift"; sourceTree = "<group>"; };
 		CAE8B0BC20CA57590029D4D6 /* RoomEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomEntity+Adaptation.swift"; sourceTree = "<group>"; };
+		CAE8B0BE20CA583D0029D4D6 /* TrackEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackEntity+Adaptation.swift"; sourceTree = "<group>"; };
 		CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailModuleProviding.swift; sourceTree = "<group>"; };
 		CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailModuleBuilder.swift; sourceTree = "<group>"; };
@@ -3910,6 +3912,7 @@
 				CAE8B0B120CA4C530029D4D6 /* KnowledgeGroupEntity+Adaptation.swift */,
 				CAE8B0B620CA4E100029D4D6 /* LinkEntity+Adaptation.swift */,
 				CAE8B0BC20CA57590029D4D6 /* RoomEntity+Adaptation.swift */,
+				CAE8B0BE20CA583D0029D4D6 /* TrackEntity+Adaptation.swift */,
 			);
 			path = "Model Adaptation";
 			sourceTree = "<group>";
@@ -4598,6 +4601,7 @@
 				CAF705641F82D0DF00A9FEA2 /* RootModuleProviding.swift in Sources */,
 				9A05254D1ECB097500578798 /* DataContextProtocol.swift in Sources */,
 				CA804DD21F20CE8F00E07A4A /* V2LoginAPI.swift in Sources */,
+				CAE8B0BF20CA583D0029D4D6 /* TrackEntity+Adaptation.swift in Sources */,
 				CAB138131FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift in Sources */,
 				9A8ECA2F1F2D245F00351A83 /* CollectEmAllViewController.swift in Sources */,
 				9A34B97F1ED06946004A249E /* ContextResolver.swift in Sources */,
