@@ -8,13 +8,17 @@
 
 import Foundation
 
-struct APIKnowledgeEntry: Equatable {
+struct APIKnowledgeEntry: Comparable, Equatable {
 
     var groupIdentifier: String
     var title: String
     var order: Int
     var text: String
     var links: [APILink]
+
+    static func <(lhs: APIKnowledgeEntry, rhs: APIKnowledgeEntry) -> Bool {
+        return lhs.title < rhs.title
+    }
 
     static func ==(lhs: APIKnowledgeEntry, rhs: APIKnowledgeEntry) -> Bool {
         return lhs.groupIdentifier == rhs.groupIdentifier &&

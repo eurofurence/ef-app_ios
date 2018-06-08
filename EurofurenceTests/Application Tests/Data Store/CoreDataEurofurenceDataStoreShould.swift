@@ -37,13 +37,28 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         assertThat(expected, isEqualTo: actual)
     }
     
+    func testSaveKnowledgeEntries() {
+        let expected = [APIKnowledgeEntry].random.sorted()
+        store.performTransaction { (transaction) in
+            transaction.saveKnowledgeEntries(expected)
+        }
+        
+        recreateStore()
+        let actual = store.getSavedKnowledgeEntries()
+        
+        assertThat(expected, isEqualTo: actual?.sorted())
+    }
+    
     private func assertThat<T>(_ expected: [T], isEqualTo actual: [T]?, file: StaticString = #file, line: UInt = #line) where T: Equatable {
         guard let actual = actual else {
             XCTFail("Expected actual values, but got nil", file: file, line: line)
             return
         }
         
-        XCTAssertTrue(expected.contains(elementsFrom: actual), file: file, line: line)
+        XCTAssertTrue(expected.contains(elementsFrom: actual),
+                      "Expected \(expected), got \(actual)",
+                      file: file,
+                      line: line)
     }
     
 }
