@@ -11,9 +11,12 @@ import Foundation
 
 struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
 
-    private let container: NSPersistentContainer
+    // MARK: Properties
 
+    private let container: NSPersistentContainer
     let storeLocation: URL
+
+    // MARK: Initialization
 
     init(storeName: String) {
         container = NSPersistentContainer(name: "EurofurenceApplicationModel")
@@ -28,6 +31,8 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
     init() {
         self.init(storeName: "Application")
     }
+
+    // MARK: EurofurenceDataStore
 
     func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
         struct Transaction: EurofurenceDataStoreTransaction {
@@ -98,24 +103,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
     }
 
     func getSavedKnowledgeGroups() -> [APIKnowledgeGroup]? {
-        var groups: [APIKnowledgeGroup]?
-        let fetchRequest: NSFetchRequest<KnowledgeGroupEntity> = KnowledgeGroupEntity.fetchRequest()
-        let context = container.viewContext
-        context.performAndWait {
-            do {
-                let entities = try fetchRequest.execute()
-                groups = entities.map { (entity) -> APIKnowledgeGroup in
-                    return APIKnowledgeGroup(identifier: entity.identifier!,
-                                             order: Int(entity.order),
-                                             groupName: entity.groupName!,
-                                             groupDescription: entity.groupDescription!)
-                }
-            } catch {
-                print(error)
-            }
-        }
-
-        return groups
+        return getModels(fetchRequest: KnowledgeGroupEntity.fetchRequest())
     }
 
     func getSavedKnowledgeEntries() -> [APIKnowledgeEntry]? {
@@ -165,6 +153,23 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
 
     func getSavedEvents() -> [APIEvent]? {
         return nil
+    }
+
+    // MARK: Private
+
+    private func getModels<Entity>(fetchRequest: NSFetchRequest<Entity>) -> [Entity.AdaptedType]? where Entity: EntityAdapting {
+        var models: [Entity.AdaptedType]?
+        let context = container.viewContext
+        context.performAndWait {
+            do {
+                let entities = try fetchRequest.execute()
+                models = entities.map({ $0.asAdaptedType() })
+            } catch {
+                print(error)
+            }
+        }
+
+        return models
     }
 
 }
