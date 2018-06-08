@@ -79,7 +79,19 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
             }
 
             func saveEvents(_ events: [APIEvent]) {
-
+                events.forEach { (event) in
+                    let entity = EventEntity(context: context)
+                    entity.roomIdentifier = event.roomIdentifier
+                    entity.trackIdentifier = event.trackIdentifier
+                    entity.startDateTime = event.startDateTime as NSDate
+                    entity.endDateTime = event.endDateTime as NSDate
+                    entity.title = event.title
+                    entity.abstract = event.abstract
+                    entity.panelHosts = event.panelHosts
+                    entity.eventDescription = event.eventDescription
+                    entity.posterImageId = event.posterImageId
+                    entity.bannerImageId = event.bannerImageId
+                }
             }
 
             func saveRooms(_ rooms: [APIRoom]) {
@@ -139,7 +151,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
     }
 
     func getSavedEvents() -> [APIEvent]? {
-        return nil
+        return getModels(fetchRequest: EventEntity.fetchRequest())
     }
 
     // MARK: Private

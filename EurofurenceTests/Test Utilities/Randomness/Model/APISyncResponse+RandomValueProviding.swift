@@ -113,3 +113,20 @@ extension APITrack: RandomValueProviding {
     }
     
 }
+
+extension APIEvent: RandomValueProviding {
+    
+    static var random: APIEvent {
+        return APIEvent(roomIdentifier: .random,
+                        trackIdentifier: .random,
+                        startDateTime: .random,
+                        endDateTime: .random,
+                        title: .random,
+                        abstract: .random,
+                        panelHosts: .random,
+                        eventDescription: .random,
+                        posterImageId: .random,
+                        bannerImageId: .random)
+    }
+    
+}

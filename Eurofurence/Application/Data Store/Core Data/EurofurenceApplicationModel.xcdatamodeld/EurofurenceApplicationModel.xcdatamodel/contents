@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="EventEntity" representedClassName="EventEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="abstract" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bannerImageId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="eventDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="panelHosts" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="posterImageId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="roomIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trackIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="KnowledgeEntryEntity" representedClassName="KnowledgeEntryEntity" syncable="YES" codeGenerationType="class">
         <attribute name="groupIdentifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="order" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -27,5 +39,6 @@
         <element name="KnowledgeEntryEntity" positionX="-63" positionY="9" width="128" height="120"/>
         <element name="LinkEntity" positionX="-54" positionY="36" width="128" height="105"/>
         <element name="LastRefreshEntity" positionX="-45" positionY="63" width="128" height="60"/>
+        <element name="EventEntity" positionX="-36" positionY="72" width="128" height="195"/>
     </elements>
 </model>

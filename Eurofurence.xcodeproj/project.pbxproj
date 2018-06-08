@@ -706,6 +706,7 @@
 		CAE8B0B420CA4C6B0029D4D6 /* EntityAdapting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8B0B320CA4C6B0029D4D6 /* EntityAdapting.swift */; };
 		CAE8B0B720CA4E100029D4D6 /* LinkEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8B0B620CA4E100029D4D6 /* LinkEntity+Adaptation.swift */; };
 		CAE8B0B920CA4E450029D4D6 /* KnowledgeEntryEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8B0B820CA4E450029D4D6 /* KnowledgeEntryEntity+Adaptation.swift */; };
+		CAE8B0BB20CA54C30029D4D6 /* EventEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8B0BA20CA54C30029D4D6 /* EventEntity+Adaptation.swift */; };
 		CAEAEBE71FDC94F800C0EE7C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */; };
 		CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */; };
 		CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */; };
@@ -1520,6 +1521,7 @@
 		CAE8B0B320CA4C6B0029D4D6 /* EntityAdapting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityAdapting.swift; sourceTree = "<group>"; };
 		CAE8B0B620CA4E100029D4D6 /* LinkEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinkEntity+Adaptation.swift"; sourceTree = "<group>"; };
 		CAE8B0B820CA4E450029D4D6 /* KnowledgeEntryEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KnowledgeEntryEntity+Adaptation.swift"; sourceTree = "<group>"; };
+		CAE8B0BA20CA54C30029D4D6 /* EventEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventEntity+Adaptation.swift"; sourceTree = "<group>"; };
 		CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailModuleProviding.swift; sourceTree = "<group>"; };
 		CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailModuleBuilder.swift; sourceTree = "<group>"; };
@@ -3900,10 +3902,11 @@
 		CAE8B0B520CA4D800029D4D6 /* Model Adaptation */ = {
 			isa = PBXGroup;
 			children = (
-				CAE8B0B120CA4C530029D4D6 /* KnowledgeGroupEntity+Adaptation.swift */,
 				CAE8B0B320CA4C6B0029D4D6 /* EntityAdapting.swift */,
-				CAE8B0B620CA4E100029D4D6 /* LinkEntity+Adaptation.swift */,
+				CAE8B0BA20CA54C30029D4D6 /* EventEntity+Adaptation.swift */,
 				CAE8B0B820CA4E450029D4D6 /* KnowledgeEntryEntity+Adaptation.swift */,
+				CAE8B0B120CA4C530029D4D6 /* KnowledgeGroupEntity+Adaptation.swift */,
+				CAE8B0B620CA4E100029D4D6 /* LinkEntity+Adaptation.swift */,
 			);
 			path = "Model Adaptation";
 			sourceTree = "<group>";
@@ -4741,6 +4744,7 @@
 				CA72844F209D04D3007D912A /* AnnouncementDetailModuleBuilder.swift in Sources */,
 				CA8E7EFA1FB0926E00F0BF10 /* PhoneTutorialSceneFactory.swift in Sources */,
 				CAEAEBFF1FE0044900C0EE7C /* MessageDetailScene.swift in Sources */,
+				CAE8B0BB20CA54C30029D4D6 /* EventEntity+Adaptation.swift in Sources */,
 				CA3990EF20ACD559001E3F1A /* FoundationHoursDateFormatter.swift in Sources */,
 				9ACF99971EC858B2006FC958 /* Map.swift in Sources */,
 				6EEC6DA51F1BFC7700205F2D /* AppVersionProviding.swift in Sources */,
