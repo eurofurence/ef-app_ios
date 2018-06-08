@@ -95,7 +95,11 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
             }
 
             func saveRooms(_ rooms: [APIRoom]) {
-
+                rooms.forEach { (room) in
+                    let entity = RoomEntity(context: context)
+                    entity.roomIdentifier = room.roomIdentifier
+                    entity.name = room.name
+                }
             }
 
             func saveTracks(_ tracks: [APITrack]) {
@@ -143,7 +147,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
     }
 
     func getSavedRooms() -> [APIRoom]? {
-        return nil
+        return getModels(fetchRequest: RoomEntity.fetchRequest())
     }
 
     func getSavedTracks() -> [APITrack]? {

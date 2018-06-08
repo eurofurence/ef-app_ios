@@ -707,6 +707,7 @@
 		CAE8B0B720CA4E100029D4D6 /* LinkEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8B0B620CA4E100029D4D6 /* LinkEntity+Adaptation.swift */; };
 		CAE8B0B920CA4E450029D4D6 /* KnowledgeEntryEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8B0B820CA4E450029D4D6 /* KnowledgeEntryEntity+Adaptation.swift */; };
 		CAE8B0BB20CA54C30029D4D6 /* EventEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8B0BA20CA54C30029D4D6 /* EventEntity+Adaptation.swift */; };
+		CAE8B0BD20CA57590029D4D6 /* RoomEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8B0BC20CA57590029D4D6 /* RoomEntity+Adaptation.swift */; };
 		CAEAEBE71FDC94F800C0EE7C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */; };
 		CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */; };
 		CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */; };
@@ -1522,6 +1523,7 @@
 		CAE8B0B620CA4E100029D4D6 /* LinkEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinkEntity+Adaptation.swift"; sourceTree = "<group>"; };
 		CAE8B0B820CA4E450029D4D6 /* KnowledgeEntryEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KnowledgeEntryEntity+Adaptation.swift"; sourceTree = "<group>"; };
 		CAE8B0BA20CA54C30029D4D6 /* EventEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventEntity+Adaptation.swift"; sourceTree = "<group>"; };
+		CAE8B0BC20CA57590029D4D6 /* RoomEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomEntity+Adaptation.swift"; sourceTree = "<group>"; };
 		CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailModuleProviding.swift; sourceTree = "<group>"; };
 		CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailModuleBuilder.swift; sourceTree = "<group>"; };
@@ -3907,6 +3909,7 @@
 				CAE8B0B820CA4E450029D4D6 /* KnowledgeEntryEntity+Adaptation.swift */,
 				CAE8B0B120CA4C530029D4D6 /* KnowledgeGroupEntity+Adaptation.swift */,
 				CAE8B0B620CA4E100029D4D6 /* LinkEntity+Adaptation.swift */,
+				CAE8B0BC20CA57590029D4D6 /* RoomEntity+Adaptation.swift */,
 			);
 			path = "Model Adaptation";
 			sourceTree = "<group>";
@@ -4784,6 +4787,7 @@
 				781A943C1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift in Sources */,
 				CA6375A6208E009D00536BE2 /* DealersModuleProviding.swift in Sources */,
 				9A861ED61F25564900B75A8C /* StoryboardSplashScreenRouter.swift in Sources */,
+				CAE8B0BD20CA57590029D4D6 /* RoomEntity+Adaptation.swift in Sources */,
 				CA6EC4712051656C00402894 /* KnowledgeDetailModuleProviding.swift in Sources */,
 				CAD3BDB92059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift in Sources */,
 				9A80EF591F291E2B00FD0D37 /* NewsTableViewController.swift in Sources */,
