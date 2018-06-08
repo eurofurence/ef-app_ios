@@ -43,7 +43,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
             return
         }
         
-        XCTAssertEqual(expected, actual, file: file, line: line)
+        XCTAssertTrue(expected.contains(elementsFrom: actual), file: file, line: line)
     }
     
 }
