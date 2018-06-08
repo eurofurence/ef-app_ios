@@ -25,6 +25,18 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         recreateStore()
     }
     
+    func testSaveLastRefreshDate() {
+        let expected = Date.random
+        store.performTransaction { (transaction) in
+            transaction.saveLastRefreshDate(expected)
+        }
+        
+        recreateStore()
+        let actual = store.getLastRefreshDate()
+        
+        XCTAssertEqual(expected, actual)
+    }
+    
     func testSaveKnowledgeGroups() {
         let expected = [APIKnowledgeGroup].random
         store.performTransaction { (transaction) in

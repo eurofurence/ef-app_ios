@@ -40,7 +40,8 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
             var context: NSManagedObjectContext
 
             func saveLastRefreshDate(_ lastRefreshDate: Date) {
-
+                let entity = LastRefreshEntity(context: context)
+                entity.lastRefreshDate = lastRefreshDate as NSDate
             }
 
             func saveKnowledgeGroups(_ knowledgeGroups: [APIKnowledgeGroup]) {
@@ -111,7 +112,22 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
     }
 
     func getLastRefreshDate() -> Date? {
-        return nil
+        var lastRefreshDate: Date?
+        let context = container.viewContext
+        context.performAndWait {
+            do {
+                let fetchRequest: NSFetchRequest<LastRefreshEntity> = LastRefreshEntity.fetchRequest()
+                fetchRequest.fetchLimit = 1
+                let entity = try fetchRequest.execute()
+                if let date = entity.first?.lastRefreshDate {
+                    lastRefreshDate = date as Date
+                }
+            } catch {
+                print(error)
+            }
+        }
+
+        return lastRefreshDate
     }
 
     func getSavedRooms() -> [APIRoom]? {
