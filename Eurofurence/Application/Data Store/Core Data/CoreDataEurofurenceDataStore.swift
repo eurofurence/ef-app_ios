@@ -107,36 +107,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
     }
 
     func getSavedKnowledgeEntries() -> [APIKnowledgeEntry]? {
-        var entries: [APIKnowledgeEntry]?
-        let fetchRequest: NSFetchRequest<KnowledgeEntryEntity> = KnowledgeEntryEntity.fetchRequest()
-        let context = container.viewContext
-        context.performAndWait {
-            do {
-                let entities = try fetchRequest.execute()
-                entries = entities.map { (entity) -> APIKnowledgeEntry in
-                    var links: [APILink] = []
-                    if let entryLinks = entity.links as? Set<LinkEntity> {
-                        links = entryLinks.map { (entity) -> APILink in
-                            return APILink(name: entity.name!,
-                                           fragmentType: APILink.FragmentType(rawValue: Int(entity.fragmentType))!,
-                                           target: entity.target!)
-                        }
-
-                        links.sort()
-                    }
-
-                    return APIKnowledgeEntry(groupIdentifier: entity.groupIdentifier!,
-                                             title: entity.title!,
-                                             order: Int(entity.order),
-                                             text: entity.text!,
-                                             links: links)
-                }
-            } catch {
-                print(error)
-            }
-        }
-
-        return entries
+        return getModels(fetchRequest: KnowledgeEntryEntity.fetchRequest())
     }
 
     func getLastRefreshDate() -> Date? {
