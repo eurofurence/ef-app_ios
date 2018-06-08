@@ -35,83 +35,6 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
     // MARK: EurofurenceDataStore
 
     func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
-        struct Transaction: EurofurenceDataStoreTransaction {
-
-            var context: NSManagedObjectContext
-
-            func saveLastRefreshDate(_ lastRefreshDate: Date) {
-                let entity = LastRefreshEntity(context: context)
-                entity.lastRefreshDate = lastRefreshDate as NSDate
-            }
-
-            func saveKnowledgeGroups(_ knowledgeGroups: [APIKnowledgeGroup]) {
-                knowledgeGroups.forEach { (group) in
-                    let entity = KnowledgeGroupEntity(context: context)
-                    entity.identifier = group.identifier
-                    entity.order = Int64(group.order)
-                    entity.groupName = group.groupName
-                    entity.groupDescription = group.groupDescription
-                }
-            }
-
-            func saveKnowledgeEntries(_ knowledgeEntries: [APIKnowledgeEntry]) {
-                knowledgeEntries.forEach { (entry) in
-                    let links = entry.links.map { (link) -> LinkEntity in
-                        let entity = LinkEntity(context: context)
-                        entity.name = link.name
-                        entity.target = link.target
-                        entity.fragmentType = Int16(link.fragmentType.rawValue)
-
-                        return entity
-                    }
-
-                    let entity = KnowledgeEntryEntity(context: context)
-                    entity.title = entry.title
-                    entity.text = entry.text
-                    entity.groupIdentifier = entry.groupIdentifier
-                    entity.order = Int64(entry.order)
-                    links.forEach(entity.addToLinks)
-                }
-            }
-
-            func saveAnnouncements(_ announcements: [APIAnnouncement]) {
-
-            }
-
-            func saveEvents(_ events: [APIEvent]) {
-                events.forEach { (event) in
-                    let entity = EventEntity(context: context)
-                    entity.roomIdentifier = event.roomIdentifier
-                    entity.trackIdentifier = event.trackIdentifier
-                    entity.startDateTime = event.startDateTime as NSDate
-                    entity.endDateTime = event.endDateTime as NSDate
-                    entity.title = event.title
-                    entity.abstract = event.abstract
-                    entity.panelHosts = event.panelHosts
-                    entity.eventDescription = event.eventDescription
-                    entity.posterImageId = event.posterImageId
-                    entity.bannerImageId = event.bannerImageId
-                }
-            }
-
-            func saveRooms(_ rooms: [APIRoom]) {
-                rooms.forEach { (room) in
-                    let entity = RoomEntity(context: context)
-                    entity.roomIdentifier = room.roomIdentifier
-                    entity.name = room.name
-                }
-            }
-
-            func saveTracks(_ tracks: [APITrack]) {
-                tracks.forEach { (track) in
-                    let entity = TrackEntity(context: context)
-                    entity.trackIdentifier = track.trackIdentifier
-                    entity.name = track.name
-                }
-            }
-
-        }
-
         let context = container.viewContext
         let transaction = Transaction(context: context)
         block(transaction)
@@ -177,6 +100,83 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         }
 
         return models
+    }
+
+    struct Transaction: EurofurenceDataStoreTransaction {
+
+        var context: NSManagedObjectContext
+
+        func saveLastRefreshDate(_ lastRefreshDate: Date) {
+            let entity = LastRefreshEntity(context: context)
+            entity.lastRefreshDate = lastRefreshDate as NSDate
+        }
+
+        func saveKnowledgeGroups(_ knowledgeGroups: [APIKnowledgeGroup]) {
+            knowledgeGroups.forEach { (group) in
+                let entity = KnowledgeGroupEntity(context: context)
+                entity.identifier = group.identifier
+                entity.order = Int64(group.order)
+                entity.groupName = group.groupName
+                entity.groupDescription = group.groupDescription
+            }
+        }
+
+        func saveKnowledgeEntries(_ knowledgeEntries: [APIKnowledgeEntry]) {
+            knowledgeEntries.forEach { (entry) in
+                let links = entry.links.map { (link) -> LinkEntity in
+                    let entity = LinkEntity(context: context)
+                    entity.name = link.name
+                    entity.target = link.target
+                    entity.fragmentType = Int16(link.fragmentType.rawValue)
+
+                    return entity
+                }
+
+                let entity = KnowledgeEntryEntity(context: context)
+                entity.title = entry.title
+                entity.text = entry.text
+                entity.groupIdentifier = entry.groupIdentifier
+                entity.order = Int64(entry.order)
+                links.forEach(entity.addToLinks)
+            }
+        }
+
+        func saveAnnouncements(_ announcements: [APIAnnouncement]) {
+
+        }
+
+        func saveEvents(_ events: [APIEvent]) {
+            events.forEach { (event) in
+                let entity = EventEntity(context: context)
+                entity.roomIdentifier = event.roomIdentifier
+                entity.trackIdentifier = event.trackIdentifier
+                entity.startDateTime = event.startDateTime as NSDate
+                entity.endDateTime = event.endDateTime as NSDate
+                entity.title = event.title
+                entity.abstract = event.abstract
+                entity.panelHosts = event.panelHosts
+                entity.eventDescription = event.eventDescription
+                entity.posterImageId = event.posterImageId
+                entity.bannerImageId = event.bannerImageId
+            }
+        }
+
+        func saveRooms(_ rooms: [APIRoom]) {
+            rooms.forEach { (room) in
+                let entity = RoomEntity(context: context)
+                entity.roomIdentifier = room.roomIdentifier
+                entity.name = room.name
+            }
+        }
+
+        func saveTracks(_ tracks: [APITrack]) {
+            tracks.forEach { (track) in
+                let entity = TrackEntity(context: context)
+                entity.trackIdentifier = track.trackIdentifier
+                entity.name = track.name
+            }
+        }
+
     }
 
 }
