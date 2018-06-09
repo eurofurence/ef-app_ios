@@ -22,12 +22,7 @@ class Announcements {
 
         func consume(event: DomainEvent.LatestDataFetchedEvent) {
             let response = event.response
-            let sortedAnnouncements = response.announcements.changed.sorted(by: { (first, second) -> Bool in
-                return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedAscending
-            })
-
-            let models = Announcement2.fromServerModels(sortedAnnouncements)
-            announcements.models = models
+            announcements.updateModel(from: response.announcements.changed)
         }
 
     }
@@ -48,9 +43,7 @@ class Announcements {
         eventBus.subscribe(consumer: AnnouncementsUpdater(announcements: self))
 
         if let persistedAnnouncements = dataStore.getSavedAnnouncements() {
-            models = persistedAnnouncements.sorted(by: { (first, second) -> Bool in
-                return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedAscending
-            }).map(Announcement2.init)
+            updateModel(from: persistedAnnouncements)
         }
     }
 
@@ -59,6 +52,14 @@ class Announcements {
     func add(_ observer: AnnouncementsServiceObserver) {
         provideLatestData(to: observer)
         announcementsObservers.append(observer)
+    }
+
+    private func updateModel(from announcements: [APIAnnouncement]) {
+        models = announcements.sorted(by: isLastEditTimeAscending).map(Announcement2.init)
+    }
+
+    private func isLastEditTimeAscending(_ first: APIAnnouncement, _ second: APIAnnouncement) -> Bool {
+        return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedAscending
     }
 
     private func provideLatestData(to observer: AnnouncementsServiceObserver) {
