@@ -6,6 +6,7 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import CoreData
 @testable import Eurofurence
 import XCTest
 
@@ -93,6 +94,33 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         
         XCTAssertEqual(1, savedEntries?.count)
         XCTAssertEqual(entry.title, savedEntries?.first?.title)
+    }
+    
+    // TODO: This is sorta testing internals, but not sure if there's another avenue for us to assert upon
+    func testNotDuplicateLinksWhenUpdatingKnowledgeEntries() {
+        let entry = APIKnowledgeEntry.random
+        store.performTransaction { (transaction) in
+            transaction.saveKnowledgeEntries([entry])
+        }
+        
+        store.performTransaction { (transaction) in
+            transaction.saveKnowledgeEntries([entry])
+        }
+        
+        let link = entry.links.randomElement().element
+        
+        let linksFetchRequest: NSFetchRequest<LinkEntity> = LinkEntity.fetchRequest()
+        linksFetchRequest.predicate = NSPredicate(format: "\(#keyPath(LinkEntity.name)) == %@ AND \(#keyPath(LinkEntity.target)) == %@ AND \(#keyPath(LinkEntity.fragmentType)) == %li", link.name, link.target, link.fragmentType.rawValue)
+        
+        store.container.viewContext.performAndWait {
+            do {
+                let result = try linksFetchRequest.execute()
+                XCTAssertEqual(1, result.count)
+            }
+            catch {
+                XCTFail("\(error)")
+            }
+        }
     }
     
     func testSaveEvents() {

@@ -13,7 +13,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
 
     // MARK: Properties
 
-    private let container: NSPersistentContainer
+    let container: NSPersistentContainer
     let storeLocation: URL
 
     // MARK: Initialization
@@ -151,7 +151,8 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                     let entity: KnowledgeEntryEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: predicate)
 
                     let links = entry.links.map { (link) -> LinkEntity in
-                        let entity = LinkEntity(context: context)
+                        let predicate = NSPredicate(format: "\(#keyPath(LinkEntity.name)) == %@ AND \(#keyPath(LinkEntity.target)) == %@ AND \(#keyPath(LinkEntity.fragmentType)) == %li", link.name, link.target, link.fragmentType.rawValue)
+                        let entity: LinkEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: predicate)
                         entity.name = link.name
                         entity.target = link.target
                         entity.fragmentType = Int16(link.fragmentType.rawValue)
