@@ -36,9 +36,9 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
 
     func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
         let context = container.viewContext
-        let transaction = Transaction(context: context)
+        let transaction = Transaction()
         block(transaction)
-        transaction.performMutations()
+        transaction.performMutations(context: context)
 
         do {
             try context.save()
@@ -111,34 +111,45 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
 
         // MARK: Properties
 
-        private let context: NSManagedObjectContext
-        private var mutations = [() -> Void]()
-
-        // MARK: Initialization
-
-        init(context: NSManagedObjectContext) {
-            self.context = context
-        }
+        private var mutations = [(NSManagedObjectContext) -> Void]()
 
         // MARK: Functions
 
-        func performMutations() {
-            mutations.forEach { $0() }
+        func performMutations(context: NSManagedObjectContext) {
+            context.performAndWait {
+                mutations.forEach { $0(context) }
+            }
         }
 
         // MARK: EurofurenceDataStoreTransaction
 
         func saveLastRefreshDate(_ lastRefreshDate: Date) {
-            mutations.append {
-                let entity = LastRefreshEntity(context: self.context)
+            mutations.append { (context) in
+                let entity = LastRefreshEntity(context: context)
                 entity.lastRefreshDate = lastRefreshDate as NSDate
             }
         }
 
         func saveKnowledgeGroups(_ knowledgeGroups: [APIKnowledgeGroup]) {
-            mutations.append {
+            mutations.append { (context) in
                 knowledgeGroups.forEach { (group) in
-                    let entity = KnowledgeGroupEntity(context: self.context)
+                    let fetchRequest: NSFetchRequest<KnowledgeGroupEntity> = KnowledgeGroupEntity.fetchRequest()
+                    fetchRequest.fetchLimit = 1
+                    fetchRequest.predicate = NSPredicate(format: "\(#keyPath(KnowledgeGroupEntity.identifier)) == %@", group.identifier)
+
+                    let entity: KnowledgeGroupEntity
+
+                    do {
+                        let results = try fetchRequest.execute()
+                        if let result = results.first {
+                            entity = result
+                        } else {
+                            entity = KnowledgeGroupEntity(context: context)
+                        }
+                    } catch {
+                        entity = KnowledgeGroupEntity(context: context)
+                    }
+
                     entity.identifier = group.identifier
                     entity.order = Int64(group.order)
                     entity.groupName = group.groupName
@@ -148,10 +159,10 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         }
 
         func saveKnowledgeEntries(_ knowledgeEntries: [APIKnowledgeEntry]) {
-            mutations.append {
+            mutations.append { (context) in
                 knowledgeEntries.forEach { (entry) in
                     let links = entry.links.map { (link) -> LinkEntity in
-                        let entity = LinkEntity(context: self.context)
+                        let entity = LinkEntity(context: context)
                         entity.name = link.name
                         entity.target = link.target
                         entity.fragmentType = Int16(link.fragmentType.rawValue)
@@ -159,7 +170,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                         return entity
                     }
 
-                    let entity = KnowledgeEntryEntity(context: self.context)
+                    let entity = KnowledgeEntryEntity(context: context)
                     entity.identifier = entry.identifier
                     entity.title = entry.title
                     entity.text = entry.text
@@ -171,9 +182,9 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         }
 
         func saveAnnouncements(_ announcements: [APIAnnouncement]) {
-            mutations.append {
+            mutations.append { (context) in
                 announcements.forEach { (announcement) in
-                    let entity = AnnouncementEntity(context: self.context)
+                    let entity = AnnouncementEntity(context: context)
                     entity.identifier = announcement.identifier
                     entity.title = announcement.title
                     entity.content = announcement.content
@@ -183,9 +194,9 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         }
 
         func saveEvents(_ events: [APIEvent]) {
-            mutations.append {
+            mutations.append { (context) in
                 events.forEach { (event) in
-                    let entity = EventEntity(context: self.context)
+                    let entity = EventEntity(context: context)
                     entity.identifier = event.identifier
                     entity.roomIdentifier = event.roomIdentifier
                     entity.trackIdentifier = event.trackIdentifier
@@ -202,9 +213,9 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         }
 
         func saveRooms(_ rooms: [APIRoom]) {
-            mutations.append {
+            mutations.append { (context) in
                 rooms.forEach { (room) in
-                    let entity = RoomEntity(context: self.context)
+                    let entity = RoomEntity(context: context)
                     entity.roomIdentifier = room.roomIdentifier
                     entity.name = room.name
                 }
@@ -212,9 +223,9 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         }
 
         func saveTracks(_ tracks: [APITrack]) {
-            mutations.append {
+            mutations.append { (context) in
                 tracks.forEach { (track) in
-                    let entity = TrackEntity(context: self.context)
+                    let entity = TrackEntity(context: context)
                     entity.trackIdentifier = track.trackIdentifier
                     entity.name = track.name
                 }
