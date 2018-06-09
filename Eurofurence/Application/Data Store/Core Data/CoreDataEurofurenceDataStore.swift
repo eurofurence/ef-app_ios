@@ -87,7 +87,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
     }
 
     func getSavedAnnouncements() -> [APIAnnouncement]? {
-        return nil
+        return getModels(fetchRequest: AnnouncementEntity.fetchRequest())
     }
 
     // MARK: Private
@@ -170,7 +170,14 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         }
 
         func saveAnnouncements(_ announcements: [APIAnnouncement]) {
-
+            mutations.append {
+                announcements.forEach { (announcement) in
+                    let entity = AnnouncementEntity(context: self.context)
+                    entity.title = announcement.title
+                    entity.content = announcement.content
+                    entity.lastChangedDateTime = announcement.lastChangedDateTime as NSDate
+                }
+            }
         }
 
         func saveEvents(_ events: [APIEvent]) {
