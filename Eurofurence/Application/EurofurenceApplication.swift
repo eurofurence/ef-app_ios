@@ -37,10 +37,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private let conventionCountdownController: ConventionCountdownController
     private var syncResponse: APISyncResponse?
     private var knowledgeGroups = [KnowledgeGroup2]()
-    private var announcements = [Announcement2]()
     private var events = [Event2]()
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
     private let imageCache: ImagesCache
+    private let announcements: Announcements
 
     init(userPreferences: UserPreferences,
          dataStore: EurofurenceDataStore,
@@ -86,6 +86,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                                                                       clock: clock)
 
         imageCache = ImagesCache(eventBus: eventBus, imageRepository: imageRepository)
+        announcements = Announcements(eventBus: eventBus)
 
         reconstituteEventsFromDataStore()
     }
@@ -157,6 +158,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             if let response = response {
                 self.syncResponse = response
 
+                self.eventBus.post(DomainEvent.LatestDataFetchedEvent(response: response))
+
                 let posterImageIdentifiers = response.events.changed.map({ $0.posterImageId })
                 let bannerImageIdentifiers = response.events.changed.map({ $0.bannerImageId })
                 let imageIdentifiers = (posterImageIdentifiers + bannerImageIdentifiers).flatMap({ $0 })
@@ -167,7 +170,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
                     self.updateEvents(from: response)
                     self.updateKnowledgeGroups(from: response)
-                    self.updateAnnouncements(from: response)
 
                     self.dataStore.performTransaction({ (transaction) in
                         transaction.saveKnowledgeGroups(response.knowledgeGroups.changed)
@@ -177,11 +179,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                         transaction.saveRooms(response.rooms.changed)
                         transaction.saveTracks(response.tracks.changed)
                         transaction.saveLastRefreshDate(self.clock.currentDate)
-                    })
-
-                    self.announcementsObservers.forEach({
-                        $0.eurofurenceApplicationDidChangeUnreadAnnouncements(to: self.announcements)
-                        $0.eurofurenceApplicationDidChangeAnnouncements(self.announcements)
                     })
 
                     let runningEvents = self.makeRunningEvents()
@@ -236,12 +233,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         return .web(url)
     }
 
-    private var announcementsObservers = [AnnouncementsServiceObserver]()
     func add(_ observer: AnnouncementsServiceObserver) {
-        observer.eurofurenceApplicationDidChangeUnreadAnnouncements(to: announcements)
-        observer.eurofurenceApplicationDidChangeAnnouncements(announcements)
-
-        announcementsObservers.append(observer)
+        announcements.add(observer)
     }
 
     func add(_ observer: ConventionCountdownServiceObserver) {
@@ -310,14 +303,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         return events.filter { (event) -> Bool in
             return event.startDate > now && range.contains(event.startDate)
         }
-    }
-
-    private func updateAnnouncements(from response: APISyncResponse) {
-        let sortedAnnouncements = response.announcements.changed.sorted(by: { (first, second) -> Bool in
-            return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedAscending
-        })
-
-        announcements = Announcement2.fromServerModels(sortedAnnouncements)
     }
 
     private func updateKnowledgeGroups(from response: APISyncResponse) {

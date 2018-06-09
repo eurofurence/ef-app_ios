@@ -295,6 +295,8 @@
 		CA1ECB491FE6E8100076083A /* MessageComponentBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB481FE6E8100076083A /* MessageComponentBinder.swift */; };
 		CA1ECB4D1FE7F2A10076083A /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB4C1FE7F2A10076083A /* NewsPresenter.swift */; };
 		CA1F7D6120CB82F600FB87F5 /* WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F7D6020CB82F600FB87F5 /* WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould.swift */; };
+		CA1F7D6320CB83A100FB87F5 /* Announcements.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F7D6220CB83A100FB87F5 /* Announcements.swift */; };
+		CA1F7D6720CB856D00FB87F5 /* LatestDataFetchedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F7D6620CB856D00FB87F5 /* LatestDataFetchedEvent.swift */; };
 		CA1FE9971F9FCCA4009C7DF3 /* MessagesModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleProviding.swift */; };
 		CA1FE9991FA0B3AE009C7DF3 /* ApplicationDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE9981FA0B3AE009C7DF3 /* ApplicationDirector.swift */; };
 		CA1FE99B1FA0B3EB009C7DF3 /* WindowWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */; };
@@ -1109,6 +1111,8 @@
 		CA1ECB481FE6E8100076083A /* MessageComponentBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageComponentBinder.swift; sourceTree = "<group>"; };
 		CA1ECB4C1FE7F2A10076083A /* NewsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPresenter.swift; sourceTree = "<group>"; };
 		CA1F7D6020CB82F600FB87F5 /* WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA1F7D6220CB83A100FB87F5 /* Announcements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcements.swift; sourceTree = "<group>"; };
+		CA1F7D6620CB856D00FB87F5 /* LatestDataFetchedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestDataFetchedEvent.swift; sourceTree = "<group>"; };
 		CA1FE9961F9FCCA4009C7DF3 /* MessagesModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesModuleProviding.swift; sourceTree = "<group>"; };
 		CA1FE9981FA0B3AE009C7DF3 /* ApplicationDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationDirector.swift; path = ../Director/ApplicationDirector.swift; sourceTree = "<group>"; };
 		CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WindowWireframe.swift; path = ../Director/WindowWireframe.swift; sourceTree = "<group>"; };
@@ -2013,6 +2017,7 @@
 		78D7EEB61F196B1F005372A9 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				CA1F7D6220CB83A100FB87F5 /* Announcements.swift */,
 				CA0E5212208F4CD7005259FE /* AnnouncementsService.swift */,
 				CA162E8520A5BB85004AFED6 /* ConventionCountdownController.swift */,
 				CA72843A209CEF47007D912A /* ConventionCountdownService.swift */,
@@ -3396,9 +3401,10 @@
 			isa = PBXGroup;
 			children = (
 				CA8D97CC201610EC0074838F /* DomainEvent.swift */,
+				CACF1ECE20B6D8CB00D904B5 /* ImageDownloadedEvent.swift */,
+				CA1F7D6620CB856D00FB87F5 /* LatestDataFetchedEvent.swift */,
 				CA8D97D02016126E0074838F /* LoggedIn.swift */,
 				CA8D97D2201612A70074838F /* RemoteNotificationRegistrationSucceeded.swift */,
-				CACF1ECE20B6D8CB00D904B5 /* ImageDownloadedEvent.swift */,
 			);
 			path = "Domain Events";
 			sourceTree = "<group>";
@@ -4701,6 +4707,7 @@
 				9ACF99941EC858B2006FC958 /* LinkFragment.swift in Sources */,
 				CA8E7EFC1FB0932700F0BF10 /* StoryboardNewsSceneFactory.swift in Sources */,
 				9A861EB71F25550700B75A8C /* SplashScene.swift in Sources */,
+				CA1F7D6320CB83A100FB87F5 /* Announcements.swift in Sources */,
 				CAF9A9431F50B87600628833 /* EurofurenceApplicationProtocol.swift in Sources */,
 				6EF96CDD1F0F544B00EE6134 /* EventKitCalendarEvent.swift in Sources */,
 				CA17FE9220586A30005A4C05 /* WikiRenderer.swift in Sources */,
@@ -4869,6 +4876,7 @@
 				9A2A94891F12D152004D66FB /* LastSyncDateProviding.swift in Sources */,
 				9A861EC91F25555000B75A8C /* UserDefaultsWitnessedTutorialPushPermissionsRequest.swift in Sources */,
 				7820A7031F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift in Sources */,
+				CA1F7D6720CB856D00FB87F5 /* LatestDataFetchedEvent.swift in Sources */,
 				CAF705681F82D13F00A9FEA2 /* TutorialModuleProviding.swift in Sources */,
 				9A2A94871F12CBC0004D66FB /* SyncState.swift in Sources */,
 				CA8E7EF81FB08ED700F0BF10 /* PhoneRootModuleFactory.swift in Sources */,
