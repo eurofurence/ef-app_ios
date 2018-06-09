@@ -78,6 +78,23 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         assertThat(expected, isEqualTo: actual?.sorted())
     }
     
+    func testUpdateExistingKnowledgeEntriesByIdentifier() {
+        var entry = APIKnowledgeEntry.random
+        store.performTransaction { (transaction) in
+            transaction.saveKnowledgeEntries([entry])
+        }
+        
+        entry.title = .random
+        store.performTransaction { (transaction) in
+            transaction.saveKnowledgeEntries([entry])
+        }
+        
+        let savedEntries = store.getSavedKnowledgeEntries()
+        
+        XCTAssertEqual(1, savedEntries?.count)
+        XCTAssertEqual(entry.title, savedEntries?.first?.title)
+    }
+    
     func testSaveEvents() {
         let expected = [APIEvent].random
         store.performTransaction { (transaction) in

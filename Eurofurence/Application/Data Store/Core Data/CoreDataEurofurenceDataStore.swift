@@ -147,6 +147,9 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         func saveKnowledgeEntries(_ knowledgeEntries: [APIKnowledgeEntry]) {
             mutations.append { (context) in
                 knowledgeEntries.forEach { (entry) in
+                    let predicate = NSPredicate(format: "\(#keyPath(KnowledgeEntryEntity.identifier)) == %@", entry.identifier)
+                    let entity: KnowledgeEntryEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: predicate)
+
                     let links = entry.links.map { (link) -> LinkEntity in
                         let entity = LinkEntity(context: context)
                         entity.name = link.name
@@ -156,7 +159,6 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                         return entity
                     }
 
-                    let entity = KnowledgeEntryEntity(context: context)
                     entity.identifier = entry.identifier
                     entity.title = entry.title
                     entity.text = entry.text
