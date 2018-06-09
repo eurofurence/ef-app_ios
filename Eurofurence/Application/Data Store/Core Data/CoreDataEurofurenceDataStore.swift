@@ -160,6 +160,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                     }
 
                     let entity = KnowledgeEntryEntity(context: self.context)
+                    entity.identifier = entry.identifier
                     entity.title = entry.title
                     entity.text = entry.text
                     entity.groupIdentifier = entry.groupIdentifier

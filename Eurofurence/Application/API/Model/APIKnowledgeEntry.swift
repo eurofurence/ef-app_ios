@@ -10,6 +10,7 @@ import Foundation
 
 struct APIKnowledgeEntry: Comparable, Equatable {
 
+    var identifier: String
     var groupIdentifier: String
     var title: String
     var order: Int
@@ -21,7 +22,8 @@ struct APIKnowledgeEntry: Comparable, Equatable {
     }
 
     static func ==(lhs: APIKnowledgeEntry, rhs: APIKnowledgeEntry) -> Bool {
-        return lhs.groupIdentifier == rhs.groupIdentifier &&
+        return lhs.identifier == rhs.identifier &&
+               lhs.groupIdentifier == rhs.groupIdentifier &&
                lhs.title == rhs.title &&
                lhs.order == rhs.order &&
                lhs.text == rhs.text &&

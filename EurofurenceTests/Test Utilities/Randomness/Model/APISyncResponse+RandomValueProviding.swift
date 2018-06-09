@@ -70,7 +70,12 @@ extension APIKnowledgeEntry: RandomValueProviding {
     
     static var random: APIKnowledgeEntry {
         let links = [APILink].random.sorted()
-        return APIKnowledgeEntry(groupIdentifier: .random, title: .random, order: .random, text: .random, links: links)
+        return APIKnowledgeEntry(identifier: .random,
+                                 groupIdentifier: .random,
+                                 title: .random,
+                                 order: .random,
+                                 text: .random,
+                                 links: links)
     }
     
 }

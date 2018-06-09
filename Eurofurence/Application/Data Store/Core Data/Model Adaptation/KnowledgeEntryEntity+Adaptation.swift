@@ -15,7 +15,8 @@ extension KnowledgeEntryEntity: EntityAdapting {
     func asAdaptedType() -> APIKnowledgeEntry {
         let links = Array((self.links as? Set<LinkEntity>) ?? Set<LinkEntity>())
 
-        return APIKnowledgeEntry(groupIdentifier: groupIdentifier!,
+        return APIKnowledgeEntry(identifier: identifier!,
+                                 groupIdentifier: groupIdentifier!,
                                  title: title!,
                                  order: Int(order),
                                  text: text!,

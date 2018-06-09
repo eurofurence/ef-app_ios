@@ -68,6 +68,8 @@ private struct JSONSyncResponse: Decodable {
     }
 
     struct JSONKnowledgeEntry: Decodable, ModelRepresenting {
+
+        var Id: String
         var KnowledgeGroupId: String
         var Title: String
         var Order: Int
@@ -75,7 +77,8 @@ private struct JSONSyncResponse: Decodable {
         var Links: [JSONLink]
 
         var modelValue: APIKnowledgeEntry {
-            return APIKnowledgeEntry(groupIdentifier: KnowledgeGroupId,
+            return APIKnowledgeEntry(identifier: Id,
+                                     groupIdentifier: KnowledgeGroupId,
                                      title: Title,
                                      order: Order,
                                      text: Text,

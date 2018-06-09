@@ -21,6 +21,7 @@
     </entity>
     <entity name="KnowledgeEntryEntity" representedClassName="KnowledgeEntryEntity" syncable="YES" codeGenerationType="class">
         <attribute name="groupIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="order" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
@@ -51,7 +52,7 @@
     </entity>
     <elements>
         <element name="EventEntity" positionX="-36" positionY="72" width="128" height="210"/>
-        <element name="KnowledgeEntryEntity" positionX="-63" positionY="9" width="128" height="120"/>
+        <element name="KnowledgeEntryEntity" positionX="-63" positionY="9" width="128" height="135"/>
         <element name="KnowledgeGroupEntity" positionX="-63" positionY="-18" width="128" height="105"/>
         <element name="LastRefreshEntity" positionX="-45" positionY="63" width="128" height="60"/>
         <element name="LinkEntity" positionX="-54" positionY="36" width="128" height="105"/>
