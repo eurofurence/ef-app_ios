@@ -133,8 +133,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         func saveKnowledgeGroups(_ knowledgeGroups: [APIKnowledgeGroup]) {
             mutations.append { (context) in
                 knowledgeGroups.forEach { (group) in
-                    let predicate = NSPredicate(format: "\(#keyPath(KnowledgeGroupEntity.identifier)) == %@", group.identifier)
-                    let entity: KnowledgeGroupEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: predicate)
+                    let entity: KnowledgeGroupEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: group.identifier)
 
                     entity.identifier = group.identifier
                     entity.order = Int64(group.order)
@@ -147,8 +146,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         func saveKnowledgeEntries(_ knowledgeEntries: [APIKnowledgeEntry]) {
             mutations.append { (context) in
                 knowledgeEntries.forEach { (entry) in
-                    let predicate = NSPredicate(format: "\(#keyPath(KnowledgeEntryEntity.identifier)) == %@", entry.identifier)
-                    let entity: KnowledgeEntryEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: predicate)
+                    let entity: KnowledgeEntryEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: entry.identifier)
 
                     let links = entry.links.map { (link) -> LinkEntity in
                         let predicate = NSPredicate(format: "\(#keyPath(LinkEntity.name)) == %@ AND \(#keyPath(LinkEntity.target)) == %@ AND \(#keyPath(LinkEntity.fragmentType)) == %li", link.name, link.target, link.fragmentType.rawValue)
@@ -185,8 +183,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         func saveEvents(_ events: [APIEvent]) {
             mutations.append { (context) in
                 events.forEach { (event) in
-                    let predicate = NSPredicate(format: "\(#keyPath(EventEntity.identifier)) == %@", event.identifier)
-                    let entity: EventEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: predicate)
+                    let entity: EventEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: event.identifier)
 
                     entity.identifier = event.identifier
                     entity.roomIdentifier = event.roomIdentifier
@@ -224,6 +221,12 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         }
 
         // MARK: Private
+
+        private func makeEntity<Entity>(in context: NSManagedObjectContext,
+                                        uniquelyIdentifiedBy identifier: String) -> Entity where Entity: NSManagedObject {
+            let predicate = NSPredicate(format: "identifier == %@", identifier)
+            return makeEntity(in: context, uniquelyIdentifiedBy: predicate)
+        }
 
         private func makeEntity<Entity>(in context: NSManagedObjectContext,
                                         uniquelyIdentifiedBy predicate: NSPredicate) -> Entity where Entity: NSManagedObject {
