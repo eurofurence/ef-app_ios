@@ -107,12 +107,14 @@ private struct JSONSyncResponse: Decodable {
 
     struct JSONAnnouncement: Decodable, ModelRepresenting {
 
+        var Id: String
         var Title: String
         var Content: String
         var LastChangeDateTimeUtc: Date
 
         var modelValue: APIAnnouncement {
-            return APIAnnouncement(title: Title,
+            return APIAnnouncement(identifier: Id,
+                                   title: Title,
                                    content: Content,
                                    lastChangedDateTime: LastChangeDateTimeUtc)
         }

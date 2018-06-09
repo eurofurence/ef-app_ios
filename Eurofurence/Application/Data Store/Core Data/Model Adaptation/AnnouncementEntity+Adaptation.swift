@@ -13,7 +13,8 @@ extension AnnouncementEntity: EntityAdapting {
     typealias AdaptedType = APIAnnouncement
 
     func asAdaptedType() -> APIAnnouncement {
-        return APIAnnouncement(title: title!,
+        return APIAnnouncement(identifier: identifier!,
+                               title: title!,
                                content: content!,
                                lastChangedDateTime: lastChangedDateTime! as Date)
     }

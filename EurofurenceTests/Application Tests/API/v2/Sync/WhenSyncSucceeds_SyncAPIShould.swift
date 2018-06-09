@@ -40,10 +40,12 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
         let expectedFirstComponents = DateComponents(calendar: .current, timeZone: TimeZone(secondsFromGMT: 0), year: 2018, month: 4, day: 5, hour: 12, minute: 47, second: 0)
         let expectedSecondComponents = DateComponents(calendar: .current, timeZone: TimeZone(secondsFromGMT: 0), year: 2018, month: 4, day: 5, hour: 12, minute: 49, second: 54)
         
-        let expected = APISyncDelta<APIAnnouncement>(changed: [APIAnnouncement(title: "Test-Announcement-Title",
+        let expected = APISyncDelta<APIAnnouncement>(changed: [APIAnnouncement(identifier: "b89567a0-beda-46e8-8261-26a5bf2d6a30",
+                                                                               title: "Test-Announcement-Title",
                                                                                content: "This is Content.\n\n**with markdown**",
                                                                                lastChangedDateTime: expectedFirstComponents.date!)],
-                                                     deleted: [APIAnnouncement(title: "Test-Announcement 2",
+                                                     deleted: [APIAnnouncement(identifier: "c8c8a9ad-4f43-489f-905d-9d22d0ef045f",
+                                                                               title: "Test-Announcement 2",
                                                                                content: "This is Content.\n\n**with markdown**",
                                                                                lastChangedDateTime: expectedSecondComponents.date!)])
         XCTAssertEqual(expected, response?.announcements)

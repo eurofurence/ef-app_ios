@@ -173,6 +173,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
             mutations.append {
                 announcements.forEach { (announcement) in
                     let entity = AnnouncementEntity(context: self.context)
+                    entity.identifier = announcement.identifier
                     entity.title = announcement.title
                     entity.content = announcement.content
                     entity.lastChangedDateTime = announcement.lastChangedDateTime as NSDate

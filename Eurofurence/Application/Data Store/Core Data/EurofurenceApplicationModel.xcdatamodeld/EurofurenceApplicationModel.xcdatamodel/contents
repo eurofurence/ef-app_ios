@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AnnouncementEntity" representedClassName="AnnouncementEntity" syncable="YES" codeGenerationType="class">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastChangedDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -55,6 +56,6 @@
         <element name="LinkEntity" positionX="-54" positionY="36" width="128" height="105"/>
         <element name="RoomEntity" positionX="-18" positionY="135" width="128" height="75"/>
         <element name="TrackEntity" positionX="0" positionY="144" width="128" height="75"/>
-        <element name="AnnouncementEntity" positionX="-36" positionY="99" width="128" height="90"/>
+        <element name="AnnouncementEntity" positionX="-36" positionY="99" width="128" height="105"/>
     </elements>
 </model>
