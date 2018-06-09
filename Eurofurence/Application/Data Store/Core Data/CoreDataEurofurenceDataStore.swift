@@ -171,7 +171,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         func saveAnnouncements(_ announcements: [APIAnnouncement]) {
             mutations.append { (context) in
                 announcements.forEach { (announcement) in
-                    let entity = AnnouncementEntity(context: context)
+                    let entity: AnnouncementEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: announcement.identifier)
                     entity.identifier = announcement.identifier
                     entity.title = announcement.title
                     entity.content = announcement.content
@@ -203,7 +203,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         func saveRooms(_ rooms: [APIRoom]) {
             mutations.append { (context) in
                 rooms.forEach { (room) in
-                    let entity = RoomEntity(context: context)
+                    let entity: RoomEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: room.roomIdentifier)
                     entity.identifier = room.roomIdentifier
                     entity.name = room.name
                 }
@@ -213,7 +213,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         func saveTracks(_ tracks: [APITrack]) {
             mutations.append { (context) in
                 tracks.forEach { (track) in
-                    let entity = TrackEntity(context: context)
+                    let entity: TrackEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: track.trackIdentifier)
                     entity.identifier = track.trackIdentifier
                     entity.name = track.name
                 }

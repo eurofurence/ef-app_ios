@@ -164,6 +164,23 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         assertThat(expected, isEqualTo: actual)
     }
     
+    func testUpdateExistingRoomsByIdentifier() {
+        var room = APIRoom.random
+        store.performTransaction { (transaction) in
+            transaction.saveRooms([room])
+        }
+        
+        room.name = .random
+        store.performTransaction { (transaction) in
+            transaction.saveRooms([room])
+        }
+        
+        let savedRooms = store.getSavedRooms()
+        
+        XCTAssertEqual(1, savedRooms?.count)
+        XCTAssertEqual(room.name, savedRooms?.first?.name)
+    }
+    
     func testSaveTracks() {
         let expected = [APITrack].random
         store.performTransaction { (transaction) in
@@ -176,6 +193,23 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         assertThat(expected, isEqualTo: actual)
     }
     
+    func testUpdateExistingTracksByIdentifier() {
+        var track = APITrack.random
+        store.performTransaction { (transaction) in
+            transaction.saveTracks([track])
+        }
+        
+        track.name = .random
+        store.performTransaction { (transaction) in
+            transaction.saveTracks([track])
+        }
+        
+        let savedTracks = store.getSavedTracks()
+        
+        XCTAssertEqual(1, savedTracks?.count)
+        XCTAssertEqual(track.name, savedTracks?.first?.name)
+    }
+    
     func testSaveAnnouncements() {
         let expected = [APIAnnouncement].random
         store.performTransaction { (transaction) in
@@ -186,6 +220,23 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         let actual = store.getSavedAnnouncements()
         
         assertThat(expected, isEqualTo: actual)
+    }
+    
+    func testUpdateExistingAnnouncementsByIdentifier() {
+        var announcement = APIAnnouncement.random
+        store.performTransaction { (transaction) in
+            transaction.saveAnnouncements([announcement])
+        }
+        
+        announcement.title = .random
+        store.performTransaction { (transaction) in
+            transaction.saveAnnouncements([announcement])
+        }
+        
+        let savedAnnouncements = store.getSavedAnnouncements()
+        
+        XCTAssertEqual(1, savedAnnouncements?.count)
+        XCTAssertEqual(announcement.title, savedAnnouncements?.first?.title)
     }
     
     private func assertThat<T>(_ expected: [T], isEqualTo actual: [T]?, file: StaticString = #file, line: UInt = #line) where T: Equatable {
