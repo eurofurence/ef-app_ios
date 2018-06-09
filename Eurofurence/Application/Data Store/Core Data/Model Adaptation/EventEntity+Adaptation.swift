@@ -13,7 +13,8 @@ extension EventEntity: EntityAdapting {
     typealias AdaptedType = APIEvent
 
     func asAdaptedType() -> APIEvent {
-        return APIEvent(roomIdentifier: roomIdentifier!,
+        return APIEvent(identifier: identifier!,
+                        roomIdentifier: roomIdentifier!,
                         trackIdentifier: trackIdentifier!,
                         startDateTime: startDateTime! as Date,
                         endDateTime: endDateTime! as Date,

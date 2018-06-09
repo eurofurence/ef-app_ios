@@ -185,6 +185,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
             mutations.append {
                 events.forEach { (event) in
                     let entity = EventEntity(context: self.context)
+                    entity.identifier = event.identifier
                     entity.roomIdentifier = event.roomIdentifier
                     entity.trackIdentifier = event.trackIdentifier
                     entity.startDateTime = event.startDateTime as NSDate

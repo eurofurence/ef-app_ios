@@ -17,7 +17,8 @@ extension APISyncResponse {
         let tracks = [APITrack].random
         let events = (0...Int.random(upperLimit: 10) + 5).map { (_) -> APIEvent in
             let eventStartTime: Date = .random
-            return APIEvent(roomIdentifier: rooms.randomElement().element.roomIdentifier,
+            return APIEvent(identifier: .random,
+                            roomIdentifier: rooms.randomElement().element.roomIdentifier,
                             trackIdentifier: tracks.randomElement().element.trackIdentifier,
                             startDateTime: eventStartTime,
                             endDateTime: eventStartTime.addingTimeInterval(.random),
@@ -117,7 +118,8 @@ extension APITrack: RandomValueProviding {
 extension APIEvent: RandomValueProviding {
     
     static var random: APIEvent {
-        return APIEvent(roomIdentifier: .random,
+        return APIEvent(identifier: .random,
+                        roomIdentifier: .random,
                         trackIdentifier: .random,
                         startDateTime: .random,
                         endDateTime: .random,

@@ -124,7 +124,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                  minute: 0,
                                                  second: 0)
         
-        let events = APISyncDelta<APIEvent>(changed: [APIEvent(roomIdentifier: "87148f04-4c4b-433d-9469-c8a970952443",
+        let events = APISyncDelta<APIEvent>(changed: [APIEvent(identifier: "22b70985-ccd9-44f7-920b-ad9224558b9f",
+                                                               roomIdentifier: "87148f04-4c4b-433d-9469-c8a970952443",
                                                                trackIdentifier: "ea76c202-5544-4bc7-92b7-1d1221211a55",
                                                                startDateTime: changedEventStartDate.date!,
                                                                endDateTime: changedEventEndDate.date!,
@@ -134,7 +135,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                eventDescription: "NOT FINAL\r\n\r\n\r\nDo you like spending your evening around other artists, drawing and chatting about techniques, supplies and other themes? Then this social event, taking place every evening, is the right place for you to be creative and get to know eachother!\r\n\r\nCome sit with other artists and watch, chat and have a good time together while being productive on your convention commissions. This is the perfect opportunity to use your time effectively, get critique and help on your work and relax from the working day at the Dealers' Den or Artist Alley.\r\n",
                                                                posterImageId: "postertest",
                                                                bannerImageId: "bannertest")],
-                                            deleted: [APIEvent(roomIdentifier: "c72e2290-49fd-496a-9efc-2f68a5f0f0f8",
+                                            deleted: [APIEvent(identifier: "1452d472-feae-4483-8f55-93c25f7ec920",
+                                                               roomIdentifier: "c72e2290-49fd-496a-9efc-2f68a5f0f0f8",
                                                                trackIdentifier: "a14380b6-b6e1-4b29-8502-e1e1b446c6a2",
                                                                startDateTime: deletedEventStartDate.date!,
                                                                endDateTime: deletedEventEndDate.date!,

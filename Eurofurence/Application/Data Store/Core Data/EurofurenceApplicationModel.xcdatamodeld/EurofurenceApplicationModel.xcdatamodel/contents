@@ -11,6 +11,7 @@
         <attribute name="bannerImageId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="eventDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="panelHosts" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="posterImageId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="roomIdentifier" optional="YES" attributeType="String" syncable="YES"/>
@@ -49,7 +50,7 @@
         <attribute name="trackIdentifier" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="EventEntity" positionX="-36" positionY="72" width="128" height="195"/>
+        <element name="EventEntity" positionX="-36" positionY="72" width="128" height="210"/>
         <element name="KnowledgeEntryEntity" positionX="-63" positionY="9" width="128" height="120"/>
         <element name="KnowledgeGroupEntity" positionX="-63" positionY="-18" width="128" height="105"/>
         <element name="LastRefreshEntity" positionX="-45" positionY="63" width="128" height="60"/>
