@@ -236,6 +236,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private var announcementsObservers = [AnnouncementsServiceObserver]()
     func add(_ observer: AnnouncementsServiceObserver) {
         observer.eurofurenceApplicationDidChangeUnreadAnnouncements(to: announcements)
+        observer.eurofurenceApplicationDidChangeAnnouncements(announcements)
+
         announcementsObservers.append(observer)
     }
 

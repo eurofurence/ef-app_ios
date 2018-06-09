@@ -11,6 +11,11 @@ import Foundation
 
 class CapturingAnnouncementsServiceObserver: AnnouncementsServiceObserver {
     
+    private(set) var allAnnouncements: [Announcement2] = []
+    func eurofurenceApplicationDidChangeAnnouncements(_ announcements: [Announcement2]) {
+        allAnnouncements = announcements
+    }
+    
     private(set) var unreadAnnouncements: [Announcement2] = []
     private(set) var didReceieveEmptyUnreadAnnouncements = false
     func eurofurenceApplicationDidChangeUnreadAnnouncements(to announcements: [Announcement2]) {

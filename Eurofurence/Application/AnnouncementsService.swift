@@ -14,6 +14,7 @@ protocol AnnouncementsService {
 
 protocol AnnouncementsServiceObserver {
 
+    func eurofurenceApplicationDidChangeAnnouncements(_ announcements: [Announcement2])
     func eurofurenceApplicationDidChangeUnreadAnnouncements(to announcements: [Announcement2])
 
 }

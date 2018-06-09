@@ -132,6 +132,11 @@ class ApplicationTestBuilder {
             }
         }
         
+        func expectedUnreadAnnouncements(from syncResponse: APISyncResponse) -> [Announcement2] {
+            // TODO: Needs to take into account any unread status information
+            return expectedAnnouncements(from: syncResponse)
+        }
+        
         func expectedAnnouncements(from syncResponse: APISyncResponse) -> [Announcement2] {
             return Announcement2.fromServerModels(syncResponse.announcements.changed.sorted { (first, second) -> Bool in
                 return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedAscending
