@@ -185,7 +185,9 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         func saveEvents(_ events: [APIEvent]) {
             mutations.append { (context) in
                 events.forEach { (event) in
-                    let entity = EventEntity(context: context)
+                    let predicate = NSPredicate(format: "\(#keyPath(EventEntity.identifier)) == %@", event.identifier)
+                    let entity: EventEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: predicate)
+
                     entity.identifier = event.identifier
                     entity.roomIdentifier = event.roomIdentifier
                     entity.trackIdentifier = event.trackIdentifier
