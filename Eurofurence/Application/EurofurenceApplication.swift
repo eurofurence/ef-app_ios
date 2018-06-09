@@ -179,7 +179,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                         transaction.saveLastRefreshDate(self.clock.currentDate)
                     })
 
-                    self.announcementsObservers.forEach({ $0.eurofurenceApplicationDidChangeUnreadAnnouncements(to: self.announcements) })
+                    self.announcementsObservers.forEach({
+                        $0.eurofurenceApplicationDidChangeUnreadAnnouncements(to: self.announcements)
+                        $0.eurofurenceApplicationDidChangeAnnouncements(self.announcements)
+                    })
 
                     let runningEvents = self.makeRunningEvents()
                     let upcomingEvents = self.makeUpcomingEvents()
