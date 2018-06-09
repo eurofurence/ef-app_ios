@@ -57,6 +57,10 @@ class EurofurenceApplicationBuilder {
                 return nil
             }
 
+            func getSavedAnnouncements() -> [APIAnnouncement]? {
+                return nil
+            }
+
             func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
 
             }

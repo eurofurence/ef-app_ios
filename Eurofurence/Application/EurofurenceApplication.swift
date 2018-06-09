@@ -86,7 +86,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                                                                       clock: clock)
 
         imageCache = ImagesCache(eventBus: eventBus, imageRepository: imageRepository)
-        announcements = Announcements(eventBus: eventBus)
+        announcements = Announcements(eventBus: eventBus, dataStore: dataStore)
 
         reconstituteEventsFromDataStore()
     }

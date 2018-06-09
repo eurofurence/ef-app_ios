@@ -18,6 +18,7 @@ protocol EurofurenceDataStore {
     func getSavedRooms() -> [APIRoom]?
     func getSavedTracks() -> [APITrack]?
     func getSavedEvents() -> [APIEvent]?
+    func getSavedAnnouncements() -> [APIAnnouncement]?
 
 }
 

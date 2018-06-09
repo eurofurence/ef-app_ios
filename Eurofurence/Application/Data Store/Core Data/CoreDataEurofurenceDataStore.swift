@@ -86,6 +86,10 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         return getModels(fetchRequest: EventEntity.fetchRequest())
     }
 
+    func getSavedAnnouncements() -> [APIAnnouncement]? {
+        return nil
+    }
+
     // MARK: Private
 
     private func getModels<Entity>(fetchRequest: NSFetchRequest<Entity>) -> [Entity.AdaptedType]? where Entity: EntityAdapting {

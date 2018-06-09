@@ -10,6 +10,9 @@
 import XCTest
 
 class CapturingEurofurenceDataStore: EurofurenceDataStore {
+    func getSavedAnnouncements() -> [APIAnnouncement]? {
+        return transaction?.persistedAnnouncements
+    }
     
     func getLastRefreshDate() -> Date? {
         return transaction?.persistedLastRefreshDate

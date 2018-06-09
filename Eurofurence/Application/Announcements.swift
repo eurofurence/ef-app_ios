@@ -44,8 +44,14 @@ class Announcements {
 
     // MARK: Initialization
 
-    init(eventBus: EventBus) {
+    init(eventBus: EventBus, dataStore: EurofurenceDataStore) {
         eventBus.subscribe(consumer: AnnouncementsUpdater(announcements: self))
+
+        if let persistedAnnouncements = dataStore.getSavedAnnouncements() {
+            models = persistedAnnouncements.sorted(by: { (first, second) -> Bool in
+                return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedAscending
+            }).map(Announcement2.init)
+        }
     }
 
     // MARK: Functions

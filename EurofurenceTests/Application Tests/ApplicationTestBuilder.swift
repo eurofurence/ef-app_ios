@@ -138,7 +138,11 @@ class ApplicationTestBuilder {
         }
         
         func expectedAnnouncements(from syncResponse: APISyncResponse) -> [Announcement2] {
-            return Announcement2.fromServerModels(syncResponse.announcements.changed.sorted { (first, second) -> Bool in
+            return expectedAnnouncements(from: syncResponse.announcements.changed)
+        }
+        
+        func expectedAnnouncements(from announcements: [APIAnnouncement]) -> [Announcement2] {
+            return Announcement2.fromServerModels(announcements.sorted { (first, second) -> Bool in
                 return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedAscending
             })
         }
