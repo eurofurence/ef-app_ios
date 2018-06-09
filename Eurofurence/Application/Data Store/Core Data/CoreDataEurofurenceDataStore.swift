@@ -133,22 +133,8 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         func saveKnowledgeGroups(_ knowledgeGroups: [APIKnowledgeGroup]) {
             mutations.append { (context) in
                 knowledgeGroups.forEach { (group) in
-                    let fetchRequest: NSFetchRequest<KnowledgeGroupEntity> = KnowledgeGroupEntity.fetchRequest()
-                    fetchRequest.fetchLimit = 1
-                    fetchRequest.predicate = NSPredicate(format: "\(#keyPath(KnowledgeGroupEntity.identifier)) == %@", group.identifier)
-
-                    let entity: KnowledgeGroupEntity
-
-                    do {
-                        let results = try fetchRequest.execute()
-                        if let result = results.first {
-                            entity = result
-                        } else {
-                            entity = KnowledgeGroupEntity(context: context)
-                        }
-                    } catch {
-                        entity = KnowledgeGroupEntity(context: context)
-                    }
+                    let predicate = NSPredicate(format: "\(#keyPath(KnowledgeGroupEntity.identifier)) == %@", group.identifier)
+                    let entity: KnowledgeGroupEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: predicate)
 
                     entity.identifier = group.identifier
                     entity.order = Int64(group.order)
@@ -230,6 +216,29 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                     entity.name = track.name
                 }
             }
+        }
+
+        // MARK: Private
+
+        private func makeEntity<Entity>(in context: NSManagedObjectContext,
+                                        uniquelyIdentifiedBy predicate: NSPredicate) -> Entity where Entity: NSManagedObject {
+            let fetchRequest = Entity.fetchRequest() as? NSFetchRequest<Entity>
+            fetchRequest?.fetchLimit = 1
+            fetchRequest?.predicate = predicate
+
+            let entity: Entity
+            do {
+                let results = try fetchRequest?.execute()
+                if let result = results?.first {
+                    entity = result
+                } else {
+                    entity = Entity(context: context)
+                }
+            } catch {
+                entity = Entity(context: context)
+            }
+
+            return entity
         }
 
     }
