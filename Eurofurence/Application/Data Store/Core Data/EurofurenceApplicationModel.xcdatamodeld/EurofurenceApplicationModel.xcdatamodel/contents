@@ -43,12 +43,12 @@
         <relationship name="knowledgeEntry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KnowledgeEntryEntity" inverseName="links" inverseEntity="KnowledgeEntryEntity" syncable="YES"/>
     </entity>
     <entity name="RoomEntity" representedClassName="RoomEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="roomIdentifier" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="TrackEntity" representedClassName="TrackEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="trackIdentifier" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="EventEntity" positionX="-36" positionY="72" width="128" height="210"/>

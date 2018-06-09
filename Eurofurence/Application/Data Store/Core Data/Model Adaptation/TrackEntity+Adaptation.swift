@@ -13,7 +13,7 @@ extension TrackEntity: EntityAdapting {
     typealias AdaptedType = APITrack
 
     func asAdaptedType() -> APITrack {
-        return APITrack(trackIdentifier: trackIdentifier!, name: name!)
+        return APITrack(trackIdentifier: identifier!, name: name!)
     }
 
 }

@@ -13,7 +13,7 @@ extension RoomEntity: EntityAdapting {
     typealias AdaptedType = APIRoom
 
     func asAdaptedType() -> APIRoom {
-        return APIRoom(roomIdentifier: roomIdentifier!, name: name!)
+        return APIRoom(roomIdentifier: identifier!, name: name!)
     }
 
 }

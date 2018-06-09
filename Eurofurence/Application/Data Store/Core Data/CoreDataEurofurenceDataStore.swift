@@ -202,7 +202,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
             mutations.append { (context) in
                 rooms.forEach { (room) in
                     let entity = RoomEntity(context: context)
-                    entity.roomIdentifier = room.roomIdentifier
+                    entity.identifier = room.roomIdentifier
                     entity.name = room.name
                 }
             }
@@ -212,7 +212,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
             mutations.append { (context) in
                 tracks.forEach { (track) in
                     let entity = TrackEntity(context: context)
-                    entity.trackIdentifier = track.trackIdentifier
+                    entity.identifier = track.trackIdentifier
                     entity.name = track.name
                 }
             }
