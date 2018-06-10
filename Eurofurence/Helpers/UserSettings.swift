@@ -16,6 +16,7 @@ enum UserSettings: String {
     case NotifyOnAnnouncement
     case RefreshInBackgroundOnMobile
 	case DebugTimeOffset
+    case DebugTimeOffsetIntoFuture
 	case DebugSettingsEnabled
     case UseDirector
 
@@ -37,6 +38,8 @@ enum UserSettings: String {
 			return true as! T
 		case .DebugTimeOffset:
 			return 0.0 as! T
+        case .DebugTimeOffsetIntoFuture:
+            return true as! T
 		case .DebugSettingsEnabled:
 			return false as! T
         case .UseDirector:
