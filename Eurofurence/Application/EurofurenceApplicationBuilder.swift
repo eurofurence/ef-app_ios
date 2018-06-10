@@ -28,22 +28,6 @@ class EurofurenceApplicationBuilder {
     private var imageRepository: ImageRepository
 
     init() {
-        struct DummyImageAPI: ImageAPI {
-            func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void) {
-                completionHandler(nil)
-            }
-        }
-
-        struct DummyImageRepository: ImageRepository {
-            func save(_ image: ImageEntity) {
-
-            }
-
-            func loadImage(identifier: String) -> ImageEntity? {
-                return nil
-            }
-        }
-
         userPreferences = UserDefaultsPreferences()
         dataStore = CoreDataEurofurenceDataStore()
 
@@ -62,12 +46,12 @@ class EurofurenceApplicationBuilder {
         loginAPI = V2LoginAPI(jsonSession: jsonSession)
         privateMessagesAPI = V2PrivateMessagesAPI(jsonSession: jsonSession)
         syncAPI = V2SyncAPI(jsonSession: jsonSession)
-        imageAPI = DummyImageAPI()
+        imageAPI = V2ImageAPI(jsonSession: jsonSession)
         dateDistanceCalculator = FoundationDateDistanceCalculator()
         conventionStartDateRepository = EF24StartDateRepository()
         significantTimeChangeEventSource = ApplicationSignificantTimeChangeEventSource.shared
         timeIntervalForUpcomingEventsSinceNow = 3600
-        imageRepository = DummyImageRepository()
+        imageRepository = PersistentImageRepository()
     }
 
     @discardableResult

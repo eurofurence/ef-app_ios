@@ -11,15 +11,11 @@ import Foundation
 struct PersistentImageRepository: ImageRepository {
 
     func save(_ image: ImageEntity) {
-        let errorPrinter = { print("Failed to store image with identifier \(image.identifier)") }
-
         do {
             let imageURL = try makeImageRepositoryURL(for: image.identifier)
-            if FileManager.default.createFile(atPath: imageURL.path, contents: image.pngImageData) == false {
-                errorPrinter()
-            }
+            try image.pngImageData.write(to: imageURL)
         } catch {
-            errorPrinter()
+            print(error)
         }
     }
 
@@ -40,6 +36,10 @@ struct PersistentImageRepository: ImageRepository {
                                                                          appropriateFor: nil,
                                                                          create: false)
         let cacheDirectoryURL = applicationSupportDirectoryURL.appendingPathComponent("EFImageCache")
+
+        if FileManager.default.fileExists(atPath: cacheDirectoryURL.path, isDirectory: nil) == false {
+            try FileManager.default.createDirectory(at: cacheDirectoryURL, withIntermediateDirectories: false)
+        }
 
         return cacheDirectoryURL.appendingPathComponent(identifier)
     }
