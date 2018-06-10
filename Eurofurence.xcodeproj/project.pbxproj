@@ -589,6 +589,7 @@
 		CABA83EA20CDBBD600DD0795 /* PersistentImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83E920CDBBD600DD0795 /* PersistentImageRepository.swift */; };
 		CABA83EC20CDBE8F00DD0795 /* V2ImageAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83EB20CDBE8F00DD0795 /* V2ImageAPITests.swift */; };
 		CABA83EE20CDC0CA00DD0795 /* V2ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83ED20CDC0CA00DD0795 /* V2ImageAPI.swift */; };
+		CABA83F020CDC80500DD0795 /* WhenSyncSuceeds_ThenObservingUpcomingEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83EF20CDC80500DD0795 /* WhenSyncSuceeds_ThenObservingUpcomingEvents.swift */; };
 		CABEB0D220C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */; };
 		CABEB0D420C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */; };
 		CABEB0D920C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D820C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift */; };
@@ -1418,6 +1419,7 @@
 		CABA83E920CDBBD600DD0795 /* PersistentImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentImageRepository.swift; sourceTree = "<group>"; };
 		CABA83EB20CDBE8F00DD0795 /* V2ImageAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2ImageAPITests.swift; sourceTree = "<group>"; };
 		CABA83ED20CDC0CA00DD0795 /* V2ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2ImageAPI.swift; sourceTree = "<group>"; };
+		CABA83EF20CDC80500DD0795 /* WhenSyncSuceeds_ThenObservingUpcomingEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncSuceeds_ThenObservingUpcomingEvents.swift; sourceTree = "<group>"; };
 		CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift; sourceTree = "<group>"; };
 		CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncCompletesWithEvents_ApplicationShould.swift; sourceTree = "<group>"; };
 		CABEB0D820C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEurofurenceDataStoreShould.swift; sourceTree = "<group>"; };
@@ -2645,8 +2647,9 @@
 		CA3990F020ACD693001E3F1A /* Upcoming */ = {
 			isa = PBXGroup;
 			children = (
-				CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */,
 				CA3990F320ACD73D001E3F1A /* WhenObservingUpcomingEvents_ThenLoadSucceeds.swift */,
+				CABA83EF20CDC80500DD0795 /* WhenSyncSuceeds_ThenObservingUpcomingEvents.swift */,
+				CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */,
 			);
 			path = Upcoming;
 			sourceTree = "<group>";
@@ -5341,6 +5344,7 @@
 				CAD260A320C03543007E3618 /* CapturingEventDetailViewModel.swift in Sources */,
 				7820A6E11F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift in Sources */,
 				781A94461F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift in Sources */,
+				CABA83F020CDC80500DD0795 /* WhenSyncSuceeds_ThenObservingUpcomingEvents.swift in Sources */,
 				CA17FE7F2058006F005A4C05 /* CapturingLinkScene.swift in Sources */,
 				CABF03CE20422B240028BD62 /* CapturingSyncAPI.swift in Sources */,
 				CA0E5215208F52EE005259FE /* CapturingNewsInteractorDelegate.swift in Sources */,

@@ -77,7 +77,7 @@ class Schedule {
     func add(_ observer: EventsServiceObserver) {
         observers.append(observer)
         observer.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents)
-        observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: [])
+        observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: upcomingEvents)
         observer.eurofurenceApplicationDidUpdateEvents(to: models)
     }
 
