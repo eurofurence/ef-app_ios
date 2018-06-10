@@ -32,40 +32,6 @@ class EurofurenceApplicationBuilder {
             var refreshStoreOnLaunch: Bool = true
         }
 
-        struct DummyEurofurenceDataStore: EurofurenceDataStore {
-            func getLastRefreshDate() -> Date? {
-                return nil
-            }
-
-            func getSavedRooms() -> [APIRoom]? {
-                return nil
-            }
-
-            func getSavedTracks() -> [APITrack]? {
-                return nil
-            }
-
-            func getSavedEvents() -> [APIEvent]? {
-                return nil
-            }
-
-            func getSavedKnowledgeGroups() -> [APIKnowledgeGroup]? {
-                return nil
-            }
-
-            func getSavedKnowledgeEntries() -> [APIKnowledgeEntry]? {
-                return nil
-            }
-
-            func getSavedAnnouncements() -> [APIAnnouncement]? {
-                return nil
-            }
-
-            func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
-
-            }
-        }
-
         struct DummyImageAPI: ImageAPI {
             func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void) {
                 completionHandler(nil)
@@ -83,7 +49,7 @@ class EurofurenceApplicationBuilder {
         }
 
         userPreferences = DummyUserPreferences()
-        dataStore = DummyEurofurenceDataStore()
+        dataStore = CoreDataEurofurenceDataStore()
 
         let jsonSession = URLSessionBasedJSONSession()
 
