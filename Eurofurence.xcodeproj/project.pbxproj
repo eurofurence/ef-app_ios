@@ -587,6 +587,8 @@
 		CABA43A31FD57C65009CB5B0 /* TutorialModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */; };
 		CABA43AC1FD5DC68009CB5B0 /* LoginScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43AB1FD5DC68009CB5B0 /* LoginScene.swift */; };
 		CABA83EA20CDBBD600DD0795 /* PersistentImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83E920CDBBD600DD0795 /* PersistentImageRepository.swift */; };
+		CABA83EC20CDBE8F00DD0795 /* V2ImageAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83EB20CDBE8F00DD0795 /* V2ImageAPITests.swift */; };
+		CABA83EE20CDC0CA00DD0795 /* V2ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83ED20CDC0CA00DD0795 /* V2ImageAPI.swift */; };
 		CABEB0D220C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */; };
 		CABEB0D420C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */; };
 		CABEB0D920C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D820C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift */; };
@@ -1414,6 +1416,8 @@
 		CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA43AB1FD5DC68009CB5B0 /* LoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScene.swift; sourceTree = "<group>"; };
 		CABA83E920CDBBD600DD0795 /* PersistentImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentImageRepository.swift; sourceTree = "<group>"; };
+		CABA83EB20CDBE8F00DD0795 /* V2ImageAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2ImageAPITests.swift; sourceTree = "<group>"; };
+		CABA83ED20CDC0CA00DD0795 /* V2ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2ImageAPI.swift; sourceTree = "<group>"; };
 		CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift; sourceTree = "<group>"; };
 		CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncCompletesWithEvents_ApplicationShould.swift; sourceTree = "<group>"; };
 		CABEB0D820C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEurofurenceDataStoreShould.swift; sourceTree = "<group>"; };
@@ -3340,6 +3344,7 @@
 		CA804DD01F20CE6600E07A4A /* v2 */ = {
 			isa = PBXGroup;
 			children = (
+				CABA83ED20CDC0CA00DD0795 /* V2ImageAPI.swift */,
 				CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */,
 				CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */,
 				CAF597A52045F1C000089BE8 /* V2SyncAPI.swift */,
@@ -3358,6 +3363,7 @@
 		CA804DD81F20D2E500E07A4A /* v2 */ = {
 			isa = PBXGroup;
 			children = (
+				CABA83EB20CDBE8F00DD0795 /* V2ImageAPITests.swift */,
 				CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */,
 				CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */,
 				CA65A21D2091F16C0078A4A7 /* Sync */,
@@ -4605,6 +4611,7 @@
 				9A80EF5B1F29203C00FD0D37 /* AnnouncementsShowAllProviding.swift in Sources */,
 				CA162E8620A5BB85004AFED6 /* ConventionCountdownController.swift in Sources */,
 				9A861EA31F2554AB00B75A8C /* CompleteTutorial.swift in Sources */,
+				CABA83EE20CDC0CA00DD0795 /* V2ImageAPI.swift in Sources */,
 				CAE8B0B420CA4C6B0029D4D6 /* EntityAdapting.swift in Sources */,
 				CACF1E5020AE2B6100D904B5 /* EventDetailModule.swift in Sources */,
 				CA162E9220A652B5004AFED6 /* Event2.swift in Sources */,
@@ -5108,6 +5115,7 @@
 				78C86D6C1F123FD8003A20E6 /* PresentationTestBuilder.swift in Sources */,
 				CA30EABC1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift in Sources */,
 				CAF9A94E1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift in Sources */,
+				CABA83EC20CDBE8F00DD0795 /* V2ImageAPITests.swift in Sources */,
 				CAF705611F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift in Sources */,
 				CA89CBAB207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift in Sources */,
 				CAD780521F1E2D2E002A8333 /* CapturingCredentialStore.swift in Sources */,
