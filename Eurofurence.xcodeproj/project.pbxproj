@@ -427,6 +427,7 @@
 		CA680F7E20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */; };
 		CA680F8020CDA49D006ACD3D /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7F20CDA49D006ACD3D /* Schedule.swift */; };
 		CA680F8220CDABB6006ACD3D /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F8120CDABB6006ACD3D /* ImageDownloader.swift */; };
+		CA680F8520CDAE2F006ACD3D /* PersistentImageRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F8420CDAE2F006ACD3D /* PersistentImageRepositoryTests.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -585,6 +586,7 @@
 		CABA43A11FD57A78009CB5B0 /* PreloadModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43A01FD57A78009CB5B0 /* PreloadModuleBuilder.swift */; };
 		CABA43A31FD57C65009CB5B0 /* TutorialModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */; };
 		CABA43AC1FD5DC68009CB5B0 /* LoginScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA43AB1FD5DC68009CB5B0 /* LoginScene.swift */; };
+		CABA83EA20CDBBD600DD0795 /* PersistentImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83E920CDBBD600DD0795 /* PersistentImageRepository.swift */; };
 		CABEB0D220C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */; };
 		CABEB0D420C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */; };
 		CABEB0D920C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D820C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift */; };
@@ -1250,6 +1252,7 @@
 		CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift; sourceTree = "<group>"; };
 		CA680F7F20CDA49D006ACD3D /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		CA680F8120CDABB6006ACD3D /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		CA680F8420CDAE2F006ACD3D /* PersistentImageRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentImageRepositoryTests.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -1410,6 +1413,7 @@
 		CABA43A01FD57A78009CB5B0 /* PreloadModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModuleBuilder.swift; sourceTree = "<group>"; };
 		CABA43AB1FD5DC68009CB5B0 /* LoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScene.swift; sourceTree = "<group>"; };
+		CABA83E920CDBBD600DD0795 /* PersistentImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentImageRepository.swift; sourceTree = "<group>"; };
 		CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift; sourceTree = "<group>"; };
 		CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncCompletesWithEvents_ApplicationShould.swift; sourceTree = "<group>"; };
 		CABEB0D820C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEurofurenceDataStoreShould.swift; sourceTree = "<group>"; };
@@ -2011,6 +2015,7 @@
 				CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */,
 				CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */,
 				CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */,
+				CA680F8320CDAD32006ACD3D /* Adapter Tests */,
 				CA65A21A2091120C0078A4A7 /* Announcements */,
 				CA804DD71F20D2E000E07A4A /* API */,
 				CA81D4951FEA950600A52A2F /* Authentication */,
@@ -2042,6 +2047,7 @@
 				CACF1EC520B6C31000D904B5 /* ImagesCache.swift */,
 				CA680F7920CD7AD7006ACD3D /* Knowledge.swift */,
 				CABF03BC2041C2B70028BD62 /* KnowledgeService.swift */,
+				CABA83E920CDBBD600DD0795 /* PersistentImageRepository.swift */,
 				CAF3F63A2016797400374B4C /* PrivateMessagesController.swift */,
 				CA680F7F20CDA49D006ACD3D /* Schedule.swift */,
 				CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */,
@@ -2888,6 +2894,14 @@
 				CA65A21E2091F1EC0078A4A7 /* WhenSyncSucceeds_SyncAPIShould.swift */,
 			);
 			path = Sync;
+			sourceTree = "<group>";
+		};
+		CA680F8320CDAD32006ACD3D /* Adapter Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CA680F8420CDAE2F006ACD3D /* PersistentImageRepositoryTests.swift */,
+			);
+			path = "Adapter Tests";
 			sourceTree = "<group>";
 		};
 		CA6A9FEF1FD5DE0E0092C6DB /* View */ = {
@@ -4846,6 +4860,7 @@
 				CA6EC4732051662B00402894 /* KnowledgeDetailModule.swift in Sources */,
 				CABF03BD2041C2B70028BD62 /* KnowledgeService.swift in Sources */,
 				7820A6FB1F16BBB2004C0FB5 /* PushPermissionsStateProviding.swift in Sources */,
+				CABA83EA20CDBBD600DD0795 /* PersistentImageRepository.swift in Sources */,
 				9A861ED71F25564900B75A8C /* StoryboardRouters.swift in Sources */,
 				78567B431F10303600EBA31D /* ApplicationActivityIndicatorRefreshDelegate.swift in Sources */,
 				D6F3D4C7FF8BB27C46EF4D3D /* ServiceResolver.swift in Sources */,
@@ -5256,6 +5271,7 @@
 				CA162EA220A8D4A9004AFED6 /* StubEventsService.swift in Sources */,
 				CA3990F420ACD73D001E3F1A /* WhenObservingUpcomingEvents_ThenLoadSucceeds.swift in Sources */,
 				CAD260AD20C066B0007E3618 /* WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift in Sources */,
+				CA680F8520CDAE2F006ACD3D /* PersistentImageRepositoryTests.swift in Sources */,
 				CA63755C208CBC3C00536BE2 /* StubLinkRouter.swift in Sources */,
 				CABF03CC204220460028BD62 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift in Sources */,
 				CA2547C11FEB1B2A0023F2CB /* WhenRefreshingMessages.swift in Sources */,
