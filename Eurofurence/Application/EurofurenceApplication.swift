@@ -39,6 +39,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private var events = [Event2]()
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
     private let imageCache: ImagesCache
+    private let imageDownloader: ImageDownloader
     private let announcements: Announcements
     private let knowledge: Knowledge
     private let schedule: Schedule
@@ -90,6 +91,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         announcements = Announcements(eventBus: eventBus, dataStore: dataStore)
         knowledge = Knowledge(eventBus: eventBus, dataStore: dataStore)
         schedule = Schedule(eventBus: eventBus, dataStore: dataStore, imageCache: imageCache, clock: clock, timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow)
+        imageDownloader = ImageDownloader(eventBus: eventBus, imageAPI: imageAPI)
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
@@ -155,57 +157,33 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         let progress = Progress()
 
         syncAPI.fetchLatestData { (response) in
-            if let response = response {
-                self.syncResponse = response
-
-                let posterImageIdentifiers = response.events.changed.map({ $0.posterImageId })
-                let bannerImageIdentifiers = response.events.changed.map({ $0.bannerImageId })
-                let imageIdentifiers = (posterImageIdentifiers + bannerImageIdentifiers).flatMap({ $0 })
-                progress.totalUnitCount = Int64(imageIdentifiers.count)
-
-                let completeSync: () -> Void = {
-                    self.imageCache.save()
-                    self.eventBus.post(DomainEvent.LatestDataFetchedEvent(response: response))
-
-                    self.dataStore.performTransaction({ (transaction) in
-                        transaction.saveKnowledgeGroups(response.knowledgeGroups.changed)
-                        transaction.saveKnowledgeEntries(response.knowledgeEntries.changed)
-                        transaction.saveAnnouncements(response.announcements.changed)
-                        transaction.saveEvents(response.events.changed)
-                        transaction.saveRooms(response.rooms.changed)
-                        transaction.saveTracks(response.tracks.changed)
-                        transaction.saveLastRefreshDate(self.clock.currentDate)
-                    })
-
-                    self.privateMessagesController.fetchPrivateMessages { (_) in completionHandler(nil) }
-                }
-
-                if imageIdentifiers.isEmpty {
-                    completeSync()
-                } else {
-                    var pendingImageIdentifiers = imageIdentifiers
-                    imageIdentifiers.forEach({ (posterID) in
-                        self.imageAPI.fetchImage(identifier: posterID, completionHandler: { (posterData) in
-                            guard let idx = pendingImageIdentifiers.index(of: posterID) else { return }
-                            pendingImageIdentifiers.remove(at: idx)
-
-                            if let data = posterData {
-                                let event = ImageDownloadedEvent(identifier: posterID, pngImageData: data)
-                                self.eventBus.post(event)
-                            }
-
-                            var completedUnitCount = progress.completedUnitCount
-                            completedUnitCount += 1
-                            progress.completedUnitCount = completedUnitCount
-
-                            if pendingImageIdentifiers.isEmpty {
-                                completeSync()
-                            }
-                        })
-                    })
-                }
-            } else {
+            guard let response = response else {
                 completionHandler(SyncError.failedToLoadResponse)
+                return
+            }
+
+            self.syncResponse = response
+
+            let posterImageIdentifiers = response.events.changed.map({ $0.posterImageId })
+            let bannerImageIdentifiers = response.events.changed.map({ $0.bannerImageId })
+            let imageIdentifiers = (posterImageIdentifiers + bannerImageIdentifiers).flatMap({ $0 })
+            progress.totalUnitCount = Int64(imageIdentifiers.count)
+
+            self.imageDownloader.downloadImages(identifiers: imageIdentifiers, parentProgress: progress) {
+                self.imageCache.save()
+                self.eventBus.post(DomainEvent.LatestDataFetchedEvent(response: response))
+
+                self.dataStore.performTransaction({ (transaction) in
+                    transaction.saveKnowledgeGroups(response.knowledgeGroups.changed)
+                    transaction.saveKnowledgeEntries(response.knowledgeEntries.changed)
+                    transaction.saveAnnouncements(response.announcements.changed)
+                    transaction.saveEvents(response.events.changed)
+                    transaction.saveRooms(response.rooms.changed)
+                    transaction.saveTracks(response.tracks.changed)
+                    transaction.saveLastRefreshDate(self.clock.currentDate)
+                })
+
+                self.privateMessagesController.fetchPrivateMessages { (_) in completionHandler(nil) }
             }
         }
 
