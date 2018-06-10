@@ -1,5 +1,5 @@
 # Dependency management for the Eurofurence app
-platform :ios, '9.0'
+platform :ios, '10.0'
 inhibit_all_warnings!
 use_frameworks!
 
