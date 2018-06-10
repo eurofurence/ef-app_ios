@@ -19,6 +19,10 @@ class StubRootModuleFactory: RootModuleProviding {
 
 extension StubRootModuleFactory {
     
+    func simulateAppReady() {
+        delegate?.rootModuleDidDetermineRootModuleShouldBePresented()
+    }
+    
     func simulateTutorialShouldBePresented() {
         delegate?.rootModuleDidDetermineTutorialShouldBePresented()
     }

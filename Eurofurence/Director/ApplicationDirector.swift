@@ -115,7 +115,7 @@ class ApplicationDirector: RootModuleDelegate,
     }
 
     func rootModuleDidDetermineRootModuleShouldBePresented() {
-
+        showTabModule()
     }
 
     // MARK: TutorialModuleDelegate
@@ -131,31 +131,7 @@ class ApplicationDirector: RootModuleDelegate,
     }
 
     func preloadModuleDidFinishPreloading() {
-        let newsController = newsModuleProviding.makeNewsModule(self)
-        self.newsController = newsController
-
-        let knowledgeListController = knowledgeListModuleProviding.makeKnowledgeListModule(self)
-        knowledgeNavigationController.setViewControllers([knowledgeListController], animated: animate)
-        knowledgeNavigationController.tabBarItem = knowledgeListController.tabBarItem
-
-        newsNavigationController.setViewControllers([newsController], animated: animate)
-        newsNavigationController.tabBarItem = newsController.tabBarItem
-
-        let eventsViewController = eventsModuleProviding.makeEventsModule()
-        let eventsNavigationController = UINavigationController(rootViewController: eventsViewController)
-        eventsNavigationController.tabBarItem = eventsViewController.tabBarItem
-
-        let dealersViewController = dealersModuleProviding.makeDealersModule()
-        let dealersNavigationController = UINavigationController(rootViewController: dealersViewController)
-        dealersNavigationController.tabBarItem = dealersViewController.tabBarItem
-
-        let tabModule = tabModuleProviding.makeTabModule([newsNavigationController,
-                                                          eventsNavigationController,
-                                                          dealersNavigationController,
-                                                          knowledgeNavigationController])
-        tabController = tabModule
-
-        rootNavigationController.setViewControllers([tabModule], animated: animate)
+        showTabModule()
     }
 
     // MARK: NewsModuleDelegate
@@ -242,6 +218,34 @@ class ApplicationDirector: RootModuleDelegate,
     private func showTutorial() {
         let tutorialViewController = tutorialModuleProviding.makeTutorialModule(self)
         rootNavigationController.setViewControllers([tutorialViewController], animated: animate)
+    }
+
+    private func showTabModule() {
+        let newsController = newsModuleProviding.makeNewsModule(self)
+        self.newsController = newsController
+
+        let knowledgeListController = knowledgeListModuleProviding.makeKnowledgeListModule(self)
+        knowledgeNavigationController.setViewControllers([knowledgeListController], animated: animate)
+        knowledgeNavigationController.tabBarItem = knowledgeListController.tabBarItem
+
+        newsNavigationController.setViewControllers([newsController], animated: animate)
+        newsNavigationController.tabBarItem = newsController.tabBarItem
+
+        let eventsViewController = eventsModuleProviding.makeEventsModule()
+        let eventsNavigationController = UINavigationController(rootViewController: eventsViewController)
+        eventsNavigationController.tabBarItem = eventsViewController.tabBarItem
+
+        let dealersViewController = dealersModuleProviding.makeDealersModule()
+        let dealersNavigationController = UINavigationController(rootViewController: dealersViewController)
+        dealersNavigationController.tabBarItem = dealersViewController.tabBarItem
+
+        let tabModule = tabModuleProviding.makeTabModule([newsNavigationController,
+                                                          eventsNavigationController,
+                                                          dealersNavigationController,
+                                                          knowledgeNavigationController])
+        tabController = tabModule
+
+        rootNavigationController.setViewControllers([tabModule], animated: animate)
     }
 
 }
