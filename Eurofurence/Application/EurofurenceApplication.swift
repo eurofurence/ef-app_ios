@@ -41,6 +41,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private let imageCache: ImagesCache
     private let announcements: Announcements
     private let knowledge: Knowledge
+    private let schedule: Schedule
 
     init(userPreferences: UserPreferences,
          dataStore: EurofurenceDataStore,
@@ -88,8 +89,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         imageCache = ImagesCache(eventBus: eventBus, imageRepository: imageRepository)
         announcements = Announcements(eventBus: eventBus, dataStore: dataStore)
         knowledge = Knowledge(eventBus: eventBus, dataStore: dataStore)
-
-        reconstituteEventsFromDataStore()
+        schedule = Schedule(eventBus: eventBus, dataStore: dataStore, imageCache: imageCache, clock: clock, timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow)
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
@@ -143,6 +143,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         knowledge.fetchKnowledgeGroups(completionHandler: completionHandler)
     }
 
+    func add(_ observer: EventsServiceObserver) {
+        schedule.add(observer)
+    }
+
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
         enum SyncError: Error {
             case failedToLoadResponse
@@ -154,8 +158,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             if let response = response {
                 self.syncResponse = response
 
-                self.eventBus.post(DomainEvent.LatestDataFetchedEvent(response: response))
-
                 let posterImageIdentifiers = response.events.changed.map({ $0.posterImageId })
                 let bannerImageIdentifiers = response.events.changed.map({ $0.bannerImageId })
                 let imageIdentifiers = (posterImageIdentifiers + bannerImageIdentifiers).flatMap({ $0 })
@@ -163,8 +165,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
                 let completeSync: () -> Void = {
                     self.imageCache.save()
+                    self.eventBus.post(DomainEvent.LatestDataFetchedEvent(response: response))
 
-                    self.updateEvents(from: response)
                     self.dataStore.performTransaction({ (transaction) in
                         transaction.saveKnowledgeGroups(response.knowledgeGroups.changed)
                         transaction.saveKnowledgeEntries(response.knowledgeEntries.changed)
@@ -173,13 +175,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                         transaction.saveRooms(response.rooms.changed)
                         transaction.saveTracks(response.tracks.changed)
                         transaction.saveLastRefreshDate(self.clock.currentDate)
-                    })
-
-                    let runningEvents = self.makeRunningEvents()
-                    let upcomingEvents = self.makeUpcomingEvents()
-                    self.eventsObservers.forEach({ (observer) in
-                        observer.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents)
-                        observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: upcomingEvents)
                     })
 
                     self.privateMessagesController.fetchPrivateMessages { (_) in completionHandler(nil) }
@@ -237,97 +232,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     func add(_ observer: AuthenticationStateObserver) {
         authenticationCoordinator.add(observer)
-    }
-
-    private var eventsObservers = [EventsServiceObserver]()
-
-    private func reconstituteEventsFromDataStore() {
-        let events = dataStore.getSavedEvents()
-        let rooms = dataStore.getSavedRooms()
-        let tracks = dataStore.getSavedTracks()
-
-        if let events = events, let rooms = rooms, let tracks = tracks {
-            self.events = events.flatMap { (event) -> Event2? in
-                guard let room = rooms.first(where: { $0.roomIdentifier == event.roomIdentifier }) else { return nil }
-                guard let track = tracks.first(where: { $0.trackIdentifier == event.trackIdentifier }) else { return nil }
-
-                var posterGraphicData: Data?
-                if let posterImageIdentifier = event.posterImageId {
-                    posterGraphicData = imageCache.cachedImageData(for: posterImageIdentifier)
-                }
-
-                var bannerGraphicData: Data?
-                if let bannerImageIdentifier = event.bannerImageId {
-                    bannerGraphicData = imageCache.cachedImageData(for: bannerImageIdentifier)
-                }
-
-                return Event2(title: event.title,
-                              abstract: event.abstract,
-                              room: Room(name: room.name),
-                              track: Track(name: track.name),
-                              hosts: event.panelHosts,
-                              startDate: event.startDateTime,
-                              endDate: event.endDateTime,
-                              eventDescription: event.eventDescription,
-                              posterGraphicPNGData: posterGraphicData,
-                              bannerGraphicPNGData: bannerGraphicData,
-                              isFavourite: false)
-            }
-        }
-    }
-
-    func add(_ observer: EventsServiceObserver) {
-        eventsObservers.append(observer)
-        observer.eurofurenceApplicationDidUpdateRunningEvents(to: makeRunningEvents())
-        observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: [])
-        observer.eurofurenceApplicationDidUpdateEvents(to: events)
-    }
-
-    private func makeRunningEvents() -> [Event2] {
-        let now = clock.currentDate
-        return events.filter { (event) -> Bool in
-            let range = DateInterval(start: event.startDate, end: event.endDate)
-            return range.contains(now)
-        }
-    }
-
-    private func makeUpcomingEvents() -> [Event2] {
-        let now = clock.currentDate
-        let range = DateInterval(start: now, end: now.addingTimeInterval(timeIntervalForUpcomingEventsSinceNow))
-        return events.filter { (event) -> Bool in
-            return event.startDate > now && range.contains(event.startDate)
-        }
-    }
-
-    private func updateEvents(from response: APISyncResponse) {
-        events = response.events.changed.flatMap({ (event) -> Event2? in
-            guard let room = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier }) else { return nil }
-            guard let track = response.tracks.changed.first(where: { $0.trackIdentifier == event.trackIdentifier }) else { return nil }
-
-            var posterGraphicData: Data?
-            if let posterImageIdentifier = event.posterImageId {
-                posterGraphicData = imageCache.cachedImageData(for: posterImageIdentifier)
-            }
-
-            var bannerGraphicData: Data?
-            if let bannerImageIdentifier = event.bannerImageId {
-                bannerGraphicData = imageCache.cachedImageData(for: bannerImageIdentifier)
-            }
-
-            return Event2(title: event.title,
-                          abstract: event.abstract,
-                          room: Room(name: room.name),
-                          track: Track(name: track.name),
-                          hosts: event.panelHosts,
-                          startDate: event.startDateTime,
-                          endDate: event.endDateTime,
-                          eventDescription: event.eventDescription,
-                          posterGraphicPNGData: posterGraphicData,
-                          bannerGraphicPNGData: bannerGraphicData,
-                          isFavourite: false)
-        })
-
-        eventsObservers.forEach({ $0.eurofurenceApplicationDidUpdateEvents(to: events) })
     }
 
 }
