@@ -25,8 +25,10 @@ class TimeService: NSObject {
 	override init() {
 		super.init()
 
-		UserDefaults.standard.addObserver(self, forKeyPath: UserSettings.DebugTimeOffset.rawValue, options: NSKeyValueObservingOptions.new, context: nil)
-		offset.swap(UserSettings.DebugTimeOffset.currentValueOrDefault())
+        UserDefaults.standard.addObserver(self, forKeyPath: UserSettings.DebugTimeOffset.rawValue, options: NSKeyValueObservingOptions.new, context: nil)
+        UserDefaults.standard.addObserver(self, forKeyPath: UserSettings.DebugTimeOffsetIntoFuture.rawValue, options: NSKeyValueObservingOptions.new, context: nil)
+
+        offset.swap((UserSettings.DebugTimeOffsetIntoFuture.currentValueOrDefault() ? 1 : -1) * UserSettings.DebugTimeOffset.currentValueOrDefault())
 		resume()
 
 		disposables += offset.signal.observeValues({ [unowned self] _ in
@@ -37,9 +39,11 @@ class TimeService: NSObject {
 	}
 
 	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-		if let change = change, let firstChange = change.first, let newOffset = firstChange.value as? TimeInterval, keyPath == UserSettings.DebugTimeOffset.rawValue {
-			offset.swap(newOffset)
-		}
+        if let change = change, let firstChange = change.first, let newOffset = firstChange.value as? TimeInterval, keyPath == UserSettings.DebugTimeOffset.rawValue {
+            offset.swap((UserSettings.DebugTimeOffsetIntoFuture.currentValueOrDefault() ? 1 : -1) * newOffset)
+        } else if let change = change, let firstChange = change.first, let isOffsetIntoFuture = firstChange.value as? Bool, keyPath == UserSettings.DebugTimeOffsetIntoFuture.rawValue {
+            offset.swap((isOffsetIntoFuture ? 1 : -1) * abs(offset.value))
+        }
 	}
 
 	/**
