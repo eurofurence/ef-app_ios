@@ -29,7 +29,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
     }
 
     init() {
-        self.init(storeName: "Application")
+        self.init(storeName: "EF24")
     }
 
     // MARK: EurofurenceDataStore
