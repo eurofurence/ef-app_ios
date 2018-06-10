@@ -87,7 +87,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
         imageCache = ImagesCache(eventBus: eventBus, imageRepository: imageRepository)
         announcements = Announcements(eventBus: eventBus, dataStore: dataStore)
-        knowledge = Knowledge(eventBus: eventBus)
+        knowledge = Knowledge(eventBus: eventBus, dataStore: dataStore)
 
         reconstituteEventsFromDataStore()
     }
@@ -140,12 +140,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func fetchKnowledgeGroups(completionHandler: @escaping ([KnowledgeGroup2]) -> Void) {
-        guard let groups = dataStore.getSavedKnowledgeGroups() else { completionHandler([]); return }
-        guard let entries = dataStore.getSavedKnowledgeEntries() else { return }
-
-        let knowledgeGroups = KnowledgeGroup2.fromServerModels(groups: groups,
-                                                               entries: entries)
-        completionHandler(knowledgeGroups)
+        knowledge.fetchKnowledgeGroups(completionHandler: completionHandler)
     }
 
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {

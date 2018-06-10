@@ -33,8 +33,12 @@ class Knowledge {
 
     // MARK: Initialization
 
-    init(eventBus: EventBus) {
+    init(eventBus: EventBus, dataStore: EurofurenceDataStore) {
         eventBus.subscribe(consumer: KnowledgeUpdater(knowledge: self))
+
+        if let groups = dataStore.getSavedKnowledgeGroups(), let entries = dataStore.getSavedKnowledgeEntries() {
+            updateKnowledge(groups: groups, entries: entries)
+        }
     }
 
     // MARK: Functions
