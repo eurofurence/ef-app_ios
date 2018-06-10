@@ -423,6 +423,7 @@
 		CA65A87F209B7CA200B72533 /* WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A87E209B7CA200B72533 /* WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould.swift */; };
 		CA65A881209B7E1000B72533 /* WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A880209B7E1000B72533 /* WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift */; };
 		CA680F7A20CD7AD7006ACD3D /* Knowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7920CD7AD7006ACD3D /* Knowledge.swift */; };
+		CA680F7C20CD819F006ACD3D /* UserDefaultsPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -1242,6 +1243,7 @@
 		CA65A87E209B7CA200B72533 /* WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA65A880209B7E1000B72533 /* WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA680F7920CD7AD7006ACD3D /* Knowledge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knowledge.swift; sourceTree = "<group>"; };
+		CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPreferences.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -2034,6 +2036,7 @@
 				CA680F7920CD7AD7006ACD3D /* Knowledge.swift */,
 				CABF03BC2041C2B70028BD62 /* KnowledgeService.swift */,
 				CAF3F63A2016797400374B4C /* PrivateMessagesController.swift */,
+				CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */,
 				CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */,
 				CA804DCF1F20CE5F00E07A4A /* API */,
 				CAF3F63E20167E7000374B4C /* Authentication */,
@@ -4802,6 +4805,7 @@
 				9A861EBD1F25551400B75A8C /* PresentationTier.swift in Sources */,
 				7820A6EF1F14F15D004C0FB5 /* Quote.swift in Sources */,
 				CABA43AC1FD5DC68009CB5B0 /* LoginScene.swift in Sources */,
+				CA680F7C20CD819F006ACD3D /* UserDefaultsPreferences.swift in Sources */,
 				CACF1E8220B2E6B400D904B5 /* EventDetailSummaryTableViewCell.swift in Sources */,
 				CA8E17ED1F817A70003C348C /* PreloadInteractor.swift in Sources */,
 				D6F3DD6B0659E1A44E01075B /* CurrentEventsViewModel.swift in Sources */,

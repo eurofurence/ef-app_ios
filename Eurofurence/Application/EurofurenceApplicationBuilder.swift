@@ -28,10 +28,6 @@ class EurofurenceApplicationBuilder {
     private var imageRepository: ImageRepository
 
     init() {
-        struct DummyUserPreferences: UserPreferences {
-            var refreshStoreOnLaunch: Bool = true
-        }
-
         struct DummyImageAPI: ImageAPI {
             func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void) {
                 completionHandler(nil)
@@ -48,7 +44,7 @@ class EurofurenceApplicationBuilder {
             }
         }
 
-        userPreferences = DummyUserPreferences()
+        userPreferences = UserDefaultsPreferences()
         dataStore = CoreDataEurofurenceDataStore()
 
         let jsonSession = URLSessionBasedJSONSession()

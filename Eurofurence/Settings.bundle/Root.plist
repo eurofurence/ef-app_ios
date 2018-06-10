@@ -8,6 +8,16 @@
 	<array>
 		<dict>
 			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Auto-Refresh App on Launch</string>
+			<key>Key</key>
+			<string>EFAutoRefreshDataStoreWhenAppDidLaunch</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 			<key>Title</key>
 			<string>Third Party Acknowledgements</string>
