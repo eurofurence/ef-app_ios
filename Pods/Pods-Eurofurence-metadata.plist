@@ -166,54 +166,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>Dependency Injection for Swift made easy.</string>
 			<key>version</key>
-			<string>5.1</string>
-		</dict>
-		<dict>
-			<key>authors</key>
-			<dict>
-				<key>Ilya Puchka</key>
-				<string>ilya@puchka.me</string>
-				<key>Olivier Halligon</key>
-				<string>olivier@halligon.net</string>
-			</dict>
-			<key>description</key>
-			<string>&lt;p&gt;Dip-UI is a simple extension for Dip - Dependency Injection container for Swift.
-It adds features to support dependency injection for objects
-created by storyboards or loaded from nib files.&lt;/p&gt;
-</string>
-			<key>homepage</key>
-			<string>https://github.com/AliSoftware/Dip-UI</string>
-			<key>licenseText</key>
-			<string>Copyright (c) 2016 Olivier Halligon &lt;olivier@halligon.net&gt;, Ilya Puchka &lt;ilyapuchka@gmail.net&gt;
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-</string>
-			<key>licenseType</key>
-			<string>MIT</string>
-			<key>name</key>
-			<string>Dip-UI</string>
-			<key>socialMediaURL</key>
-			<string>https://twitter.com/aligatr</string>
-			<key>summary</key>
-			<string>Dip UI extension</string>
-			<key>version</key>
-			<string>1.1</string>
+			<string>6.1</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -312,7 +265,7 @@ SOFTWARE.
 			<key>summary</key>
 			<string>Elegant iOS Forms in pure Swift</string>
 			<key>version</key>
-			<string>3.0.0</string>
+			<string>4.1.1</string>
 		</dict>
 		<dict>
 			<key>authors</key>
@@ -1086,7 +1039,7 @@ THE SOFTWARE.
 			<key>summary</key>
 			<string>Replacement for Apple's Reachability re-written in Swift with callbacks.</string>
 			<key>version</key>
-			<string>4.0-beta1</string>
+			<string>4.1.0</string>
 		</dict>
 		<dict>
 			<key>authors</key>

@@ -73,9 +73,8 @@ extension SelectableSectionType where Self: Section {
      Returns the selected rows of this section. Should be used if selectionType is MultipleSelection
      */
     public func selectedRows() -> [SelectableRow] {
-        return filter({ (row: BaseRow) -> Bool in
-            row is SelectableRow && row.baseValue != nil
-        }).map({ $0 as! SelectableRow})
+        let selectedRows: [BaseRow] = self.filter { $0 is SelectableRow && $0.baseValue != nil }
+        return selectedRows.map { $0 as! SelectableRow }
     }
 
     /**
@@ -90,7 +89,8 @@ extension SelectableSectionType where Self: Section {
                     case .multipleSelection:
                         row.value = row.value == nil ? row.selectableValue : nil
                     case let .singleSelection(enableDeselection):
-                        s.filter { $0.baseValue != nil && $0 != row }.forEach {
+                        s.forEach {
+                            guard $0.baseValue != nil && $0 != row && $0 is SelectableRow else { return }
                             $0.baseValue = nil
                             $0.updateCell()
                         }
@@ -141,6 +141,12 @@ open class SelectableSection<Row>: Section, SelectableSectionType where Row: Sel
     public required init() {
         super.init()
     }
+
+    #if swift(>=4.1)
+    public required init<S>(_ elements: S) where S : Sequence, S.Element == BaseRow {
+        super.init(elements)
+    }
+    #endif
 
     open override func rowsHaveBeenAdded(_ rows: [BaseRow], at: IndexSet) {
         prepare(selectableRows: rows)

@@ -6,12 +6,23 @@ It is compatible with **iOS** (8.0 - 11.0), **OSX** (10.9 - 10.13) and **tvOS** 
 
 Inspired by https://github.com/tonymillion/Reachability
 
+## Supporting **Reachability.swift**
+Keeping **Reachability.swift** up-to-date is a time consuming task. Making updates, reviewing pull requests, responding to issues and answering emails all take time. If you'd like to help keep me motivated, please download my free app, [Photo Flipper] from the App Store. (To really motivate me, pay $1.99 for the IAP 😀)
+
+And don't forget to **★** the repo. This increases its visibility and encourages others to contribute.
+
+Thanks
+Ash
+
 # IMPORTANT
 
 ## Version 4.0 breaking changes
 
-### Previously:
+### CocoaPods:
 
+If you're adding **Reachability.swift** using CocoaPods, note that the framework name has changed from `ReachabilitySwift` to `Reachability` (for consistency with Carthage)
+
+### Previously:
 
 ```swift
 enum NetworkStatus {
@@ -50,14 +61,6 @@ var connection: Connection
 
 Please read https://github.com/ashleymills/Reachability.swift/wiki/Raising-an-issue before raising an issue.
 
-## Supporting **Reachability.swift**
-Keeping **Reachability.swift** up-to-date is a time consuming task. Making updates, reviewing pull requests, responding to issues and answering emails all take time. If you'd like to help keep me motivated, please download my free app, [Foto Flipper] from the App Store. (To really motivate me, pay $0.99 for the IAP!)
-
-And don't forget to **★** the repo. This increases its visibility and encourages others to contribute.
-
-Thanks
-Ash
-
 ## Installation
 ### Manual
 Just drop the **Reachability.swift** file into your project. That's it!
@@ -80,7 +83,7 @@ Just drop the **Reachability.swift** file into your project. That's it!
 [CocoaPods Installation]: https://guides.cocoapods.org/using/getting-started.html#getting-started
  
  4. In your code import Reachability like so:
-   `import ReachabilitySwift`
+   `import Reachability`
 
 ### Carthage
 [Carthage][] is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
@@ -96,13 +99,17 @@ To install Reachability.swift with Carthage:
 
 3. Run `carthage update`.
 
-4. Drag `Reachability.framework` from the `Carthage/Build/iOS/` directory to the `Linked Frameworks and Libraries` section of your Xcode project’s `General` settings.
+4. Drag `ReachabilitySwift.framework` from the `Carthage/Build/iOS/` directory to the `Linked Frameworks and Libraries` section of your Xcode project’s `General` settings.
 
-5. Add `$(SRCROOT)/Carthage/Build/iOS/Reachability.framework` to `Input Files` of Run Script Phase for Carthage.
+5. Add `$(SRCROOT)/Carthage/Build/iOS/ReachabilitySwiift.framework` to `Input Files` of Run Script Phase for Carthage.
+
+6. In your code import Reachability likse so:
+`import Reachability`
+
 
 [Carthage]: https://github.com/Carthage/Carthage
 [Homebrew]: http://brew.sh
-[Foto Flipper]: http://itunes.com/apps/fotoflipper
+[Photo Flipper]: https://itunes.apple.com/app/apple-store/id749627884?pt=215893&ct=GitHubReachability&mt=8
 
 ## Example - closures
 

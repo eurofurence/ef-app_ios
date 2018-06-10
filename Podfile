@@ -9,13 +9,12 @@ target 'Eurofurence' do
 	pod 'Alamofire', '~> 4.5'
 	pod 'AlamofireImage', '~> 3.0'
 	pod 'Changeset'
-	pod 'Dip'
-	pod 'Dip-UI'
-    pod 'Eureka', :git => 'https://github.com/xmartlabs/Eureka.git', :branch => 'feature/Xcode9-Swift3_2'
+    pod 'Dip', :git => 'https://github.com/AliSoftware/Dip.git', :branch => 'swift42'
+    pod 'Eureka'
 	pod 'EVReflection'
 	pod 'EVReflection/Alamofire'
 	pod 'SwiftLint'
-	pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift'
+	pod 'ReachabilitySwift'
 	pod 'ReactiveSwift', '~> 1.1'
 	pod 'ReactiveCocoa', '~> 5.0.0'
 	pod 'Firebase/Core'
@@ -33,4 +32,15 @@ target 'Eurofurence' do
         pod 'Firebase/Core'
         pod 'Firebase/Crash'
     end
+    
+    post_install do |installer|
+        installer.pods_project.targets.each do |target|
+            if target.name == "Eureka"
+                target.build_configurations.each do |config|
+                    config.build_settings['SWIFT_VERSION'] = '4.1'
+                end
+            end
+        end
+    end
+    
 end
