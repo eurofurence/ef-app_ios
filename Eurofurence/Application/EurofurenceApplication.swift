@@ -36,11 +36,11 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private let imageAPI: ImageAPI
     private let conventionCountdownController: ConventionCountdownController
     private var syncResponse: APISyncResponse?
-    private var knowledgeGroups = [KnowledgeGroup2]()
     private var events = [Event2]()
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
     private let imageCache: ImagesCache
     private let announcements: Announcements
+    private let knowledge: Knowledge
 
     init(userPreferences: UserPreferences,
          dataStore: EurofurenceDataStore,
@@ -87,6 +87,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
         imageCache = ImagesCache(eventBus: eventBus, imageRepository: imageRepository)
         announcements = Announcements(eventBus: eventBus, dataStore: dataStore)
+        knowledge = Knowledge(eventBus: eventBus)
 
         reconstituteEventsFromDataStore()
     }
@@ -169,8 +170,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                     self.imageCache.save()
 
                     self.updateEvents(from: response)
-                    self.updateKnowledgeGroups(from: response)
-
                     self.dataStore.performTransaction({ (transaction) in
                         transaction.saveKnowledgeGroups(response.knowledgeGroups.changed)
                         transaction.saveKnowledgeEntries(response.knowledgeEntries.changed)
@@ -303,11 +302,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         return events.filter { (event) -> Bool in
             return event.startDate > now && range.contains(event.startDate)
         }
-    }
-
-    private func updateKnowledgeGroups(from response: APISyncResponse) {
-        knowledgeGroups = KnowledgeGroup2.fromServerModels(groups: response.knowledgeGroups.changed,
-                                                           entries: response.knowledgeEntries.changed)
     }
 
     private func updateEvents(from response: APISyncResponse) {
