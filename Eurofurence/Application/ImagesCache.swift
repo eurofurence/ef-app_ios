@@ -33,15 +33,12 @@ class ImagesCache: EventConsumer {
         }
     }
 
-    func save() {
-        images.forEach(imageRepository.save)
-    }
-
     // MARK: EventConsumer
 
     func consume(event: ImageDownloadedEvent) {
         let entity = ImageEntity(identifier: event.identifier, pngImageData: event.pngImageData)
         images.append(entity)
+        imageRepository.save(entity)
     }
 
 }

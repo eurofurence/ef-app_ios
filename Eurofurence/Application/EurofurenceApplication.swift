@@ -170,7 +170,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             progress.totalUnitCount = Int64(imageIdentifiers.count)
 
             self.imageDownloader.downloadImages(identifiers: imageIdentifiers, parentProgress: progress) {
-                self.imageCache.save()
                 self.eventBus.post(DomainEvent.LatestDataFetchedEvent(response: response))
 
                 self.dataStore.performTransaction({ (transaction) in
