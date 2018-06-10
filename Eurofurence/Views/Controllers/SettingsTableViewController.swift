@@ -15,6 +15,7 @@ class SettingsTableViewController: FormViewController {
 
 	private let contextManager: ContextManager = try! ContextResolver.container.resolve()
 	private let imageService: ImageServiceProtocol = try! ServiceResolver.container.resolve()
+    private let timeService: TimeService = try! ServiceResolver.container.resolve()
 	private var versionTapCount = 0
 
     override func viewDidLoad() {
@@ -294,10 +295,25 @@ class SettingsTableViewController: FormViewController {
                         UserSettings.DebugTimeOffset.setValue(value)
                     }
                     row.updateCell()
-                }.cellUpdate { cell, _ in
-                    cell.textLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
-                    cell.backgroundColor = UIColor.lightText
-			}
+                }
+            <<< SwitchRow("TimeOffsetIntoFuture") {
+                $0.title = "Offset Time into Future"
+                $0.value = UserSettings.DebugTimeOffsetIntoFuture.currentValueOrDefault()
+                }.onChange({ (row) in
+                    if let value = row.value {
+                        UserSettings.DebugTimeOffsetIntoFuture.setValue(value)
+                    }
+                    row.updateCell()
+                })
+            <<< LabelRow { row in
+                let defaultTitle = "Current Time: n/a"
+                timeService.currentTime.signal.observe({
+                    guard let date = $0.value else { row.title = defaultTitle; row.updateCell(); return }
+                    row.title = "Current Time: \(DateFormatters.dateTimeShort.string(from: date))"
+                    row.updateCell()
+                })
+                row.title = defaultTitle
+                }
             <<< SwitchRow("DirectorSettings") {
                 $0.title = "Enable Director"
                 $0.value = UserSettings.UseDirector.currentValueOrDefault()
