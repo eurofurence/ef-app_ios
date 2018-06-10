@@ -76,9 +76,7 @@ class Schedule {
 
     func add(_ observer: EventsServiceObserver) {
         observers.append(observer)
-        observer.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents)
-        observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: upcomingEvents)
-        observer.eurofurenceApplicationDidUpdateEvents(to: models)
+        provideScheduleInformation(to: observer)
     }
 
     // MARK: Private
@@ -86,6 +84,7 @@ class Schedule {
     private func provideScheduleInformation(to observer: EventsServiceObserver) {
         observer.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents)
         observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: upcomingEvents)
+        observer.eurofurenceApplicationDidUpdateEvents(to: models)
     }
 
     private func reconstituteEvents(from dataStore: EurofurenceDataStore) {
@@ -125,8 +124,6 @@ class Schedule {
                           bannerGraphicPNGData: bannerGraphicData,
                           isFavourite: false)
         })
-
-        observers.forEach({ $0.eurofurenceApplicationDidUpdateEvents(to: models) })
     }
 
 }
