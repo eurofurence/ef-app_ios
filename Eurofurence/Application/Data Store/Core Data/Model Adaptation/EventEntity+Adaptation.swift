@@ -22,8 +22,8 @@ extension EventEntity: EntityAdapting {
                         abstract: abstract!,
                         panelHosts: panelHosts!,
                         eventDescription: eventDescription!,
-                        posterImageId: posterImageId!,
-                        bannerImageId: bannerImageId!)
+                        posterImageId: posterImageId,
+                        bannerImageId: bannerImageId)
     }
 
 }
