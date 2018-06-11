@@ -16,6 +16,10 @@ struct UserDefaultsPreferences: UserPreferences {
         static var refreshStoreOnLaunchKey = "EFAutoRefreshDataStoreWhenAppDidLaunch"
     }
 
+    init() {
+        defaults.register(defaults: [Keys.refreshStoreOnLaunchKey: true])
+    }
+
     var refreshStoreOnLaunch: Bool {
         return defaults.bool(forKey: Keys.refreshStoreOnLaunchKey)
     }

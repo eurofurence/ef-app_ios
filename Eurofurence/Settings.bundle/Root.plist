@@ -14,7 +14,7 @@
 			<key>Key</key>
 			<string>EFAutoRefreshDataStoreWhenAppDidLaunch</string>
 			<key>DefaultValue</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Type</key>
