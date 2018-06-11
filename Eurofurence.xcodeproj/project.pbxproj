@@ -2523,12 +2523,10 @@
 		CA162EAF20AA2DC0004AFED6 /* Events */ = {
 			isa = PBXGroup;
 			children = (
-				CABA83F720CE9B9C00DD0795 /* WhenFavouritingEvent_ApplicationShould.swift */,
-				CABA83FB20CEF4B500DD0795 /* WhenFavouritingMultipleEvents_ApplicationShould.swift */,
 				CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */,
 				CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */,
 				CACF1EBF20B60D2B00D904B5 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift */,
-				CABA83F920CE9D2500DD0795 /* WhenUnfavouritingEvent_ApplicationShould.swift */,
+				CABA83FD20CEF88800DD0795 /* Favourites */,
 				CA162EB020AA2DC9004AFED6 /* Running */,
 				CA3990F020ACD693001E3F1A /* Upcoming */,
 			);
@@ -3618,6 +3616,16 @@
 				CABA438A1FBCDBBA009CB5B0 /* PhoneLoginModuleFactory.swift */,
 			);
 			path = Module;
+			sourceTree = "<group>";
+		};
+		CABA83FD20CEF88800DD0795 /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				CABA83F720CE9B9C00DD0795 /* WhenFavouritingEvent_ApplicationShould.swift */,
+				CABA83FB20CEF4B500DD0795 /* WhenFavouritingMultipleEvents_ApplicationShould.swift */,
+				CABA83F920CE9D2500DD0795 /* WhenUnfavouritingEvent_ApplicationShould.swift */,
+			);
+			path = Favourites;
 			sourceTree = "<group>";
 		};
 		CABEB0D720C8A7C1000BEE66 /* Data Store */ = {
