@@ -251,6 +251,21 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         assertThat(exected.sorted(), isEqualTo: actual?.sorted())
     }
     
+    func testDeleteSavedFavouriteEventIdentifiers() {
+        let identifier = Event2.Identifier.random
+        store.performTransaction { (transaction) in
+            transaction.saveFavouriteEventIdentifier(identifier)
+        }
+        
+        store.performTransaction { (transaction) in
+            transaction.deleteFavouriteEventIdentifier(identifier)
+        }
+        
+        let actual = store.getSavedFavouriteEventIdentifiers()
+        
+        assertThat([], isEqualTo: actual)
+    }
+    
     private func assertThat<T>(_ expected: [T], isEqualTo actual: [T]?, file: StaticString = #file, line: UInt = #line) where T: Equatable {
         guard let actual = actual else {
             XCTFail("Expected actual values, but got nil", file: file, line: line)

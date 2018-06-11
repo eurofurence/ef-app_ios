@@ -232,7 +232,20 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         }
 
         func deleteFavouriteEventIdentifier(_ identifier: Event2.Identifier) {
+            mutations.append { (context) in
+                let fetchRequest: NSFetchRequest<FavouriteEventEntity> = FavouriteEventEntity.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "eventIdentifier == %@", identifier.rawValue)
+                fetchRequest.fetchLimit = 1
 
+                do {
+                    let results = try fetchRequest.execute()
+                    if let result = results.first {
+                        context.delete(result)
+                    }
+                } catch {
+                    print(error)
+                }
+            }
         }
 
         // MARK: Private
