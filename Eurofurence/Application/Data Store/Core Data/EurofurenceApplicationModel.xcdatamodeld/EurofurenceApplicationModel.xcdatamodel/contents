@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AnnouncementEntity" representedClassName="AnnouncementEntity" syncable="YES" codeGenerationType="class">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,6 +18,9 @@
         <attribute name="startDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="trackIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="FavouriteEventEntity" representedClassName="FavouriteEventEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="eventIdentifier" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="KnowledgeEntryEntity" representedClassName="KnowledgeEntryEntity" syncable="YES" codeGenerationType="class">
         <attribute name="groupIdentifier" optional="YES" attributeType="String" syncable="YES"/>
@@ -51,6 +54,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="AnnouncementEntity" positionX="-36" positionY="99" width="128" height="105"/>
         <element name="EventEntity" positionX="-36" positionY="72" width="128" height="210"/>
         <element name="KnowledgeEntryEntity" positionX="-63" positionY="9" width="128" height="135"/>
         <element name="KnowledgeGroupEntity" positionX="-63" positionY="-18" width="128" height="105"/>
@@ -58,6 +62,6 @@
         <element name="LinkEntity" positionX="-54" positionY="36" width="128" height="105"/>
         <element name="RoomEntity" positionX="-18" positionY="135" width="128" height="75"/>
         <element name="TrackEntity" positionX="0" positionY="144" width="128" height="75"/>
-        <element name="AnnouncementEntity" positionX="-36" positionY="99" width="128" height="105"/>
+        <element name="FavouriteEventEntity" positionX="-36" positionY="108" width="128" height="60"/>
     </elements>
 </model>

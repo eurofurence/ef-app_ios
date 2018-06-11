@@ -91,7 +91,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
     }
 
     func getSavedFavouriteEventIdentifiers() -> [Event2.Identifier]? {
-        return nil
+        return getModels(fetchRequest: FavouriteEventEntity.fetchRequest())
     }
 
     // MARK: Private
@@ -225,7 +225,10 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         }
 
         func saveFavouriteEventIdentifier(_ identifier: Event2.Identifier) {
-
+            mutations.append { (context) in
+                let entity = FavouriteEventEntity(context: context)
+                entity.eventIdentifier = identifier.rawValue
+            }
         }
 
         func deleteFavouriteEventIdentifier(_ identifier: Event2.Identifier) {

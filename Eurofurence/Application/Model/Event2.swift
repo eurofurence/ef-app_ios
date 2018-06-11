@@ -10,7 +10,7 @@ import Foundation
 
 struct Event2: Equatable {
 
-    struct Identifier: Equatable, Hashable, RawRepresentable {
+    struct Identifier: Comparable, Equatable, Hashable, RawRepresentable {
 
         typealias RawValue = String
 
@@ -23,6 +23,10 @@ struct Event2: Equatable {
         }
 
         var rawValue: String
+
+        static func < (lhs: Event2.Identifier, rhs: Event2.Identifier) -> Bool {
+            return lhs.rawValue < rhs.rawValue
+        }
 
     }
 
