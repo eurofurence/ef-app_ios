@@ -10,8 +10,9 @@
 
 class CapturingEventsService: EventsService {
     
+    private var observers = [EventsServiceObserver]()
     func add(_ observer: EventsServiceObserver) {
-        
+        observers.append(observer)
     }
     
     private(set) var favouritedEventIdentifier: Event2.Identifier?
@@ -22,6 +23,14 @@ class CapturingEventsService: EventsService {
     private(set) var unfavouritedEventIdentifier: Event2.Identifier?
     func unfavouriteEvent(identifier: Event2.Identifier) {
         unfavouritedEventIdentifier = identifier
+    }
+    
+}
+
+extension CapturingEventsService {
+    
+    func simulateEventFavourited(identifier: Event2.Identifier) {
+        observers.forEach { $0.eventsServiceDidResolveFavouriteEvents([identifier]) }
     }
     
 }

@@ -14,7 +14,7 @@ private protocol EventDetailViewModelComponent {
 
 class DefaultEventDetailInteractor: EventDetailInteractor {
 
-    private struct ViewModel: EventDetailViewModel {
+    private class ViewModel: EventDetailViewModel, EventsServiceObserver {
 
         struct SummaryComponent: EventDetailViewModelComponent {
 
@@ -46,15 +46,27 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         }
 
-        var components: [EventDetailViewModelComponent]
-        var event: Event2
-        var eventsService: EventsService
+        private let components: [EventDetailViewModelComponent]
+        private let event: Event2
+        private let eventsService: EventsService
+
+        init(components: [EventDetailViewModelComponent],
+             event: Event2,
+             eventsService: EventsService) {
+            self.components = components
+            self.event = event
+            self.eventsService = eventsService
+
+            eventsService.add(self)
+        }
 
         var numberOfComponents: Int {
             return components.count
         }
 
+        private var delegate: EventDetailViewModelDelegate?
         func setDelegate(_ delegate: EventDetailViewModelDelegate) {
+            self.delegate = delegate
             if event.isFavourite {
                 delegate.eventFavourited()
             } else {
@@ -73,6 +85,16 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         func unfavourite() {
             eventsService.unfavouriteEvent(identifier: event.identifier)
+        }
+
+        func eurofurenceApplicationDidUpdateEvents(to events: [Event2]) { }
+        func eurofurenceApplicationDidUpdateRunningEvents(to events: [Event2]) { }
+        func eurofurenceApplicationDidUpdateUpcomingEvents(to events: [Event2]) { }
+
+        func eventsServiceDidResolveFavouriteEvents(_ identifiers: [Event2.Identifier]) {
+            if identifiers.contains(event.identifier) {
+                delegate?.eventFavourited()
+            }
         }
 
     }

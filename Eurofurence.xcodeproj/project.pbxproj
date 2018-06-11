@@ -598,6 +598,7 @@
 		CABA83FC20CEF4B500DD0795 /* WhenFavouritingMultipleEvents_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83FB20CEF4B500DD0795 /* WhenFavouritingMultipleEvents_ApplicationShould.swift */; };
 		CABA83FF20CEF91400DD0795 /* WhenLaunchingApplicationWithPreexistingFavourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83FE20CEF91400DD0795 /* WhenLaunchingApplicationWithPreexistingFavourites.swift */; };
 		CABA840120CEFCCD00DD0795 /* FavouriteEventEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA840020CEFCCD00DD0795 /* FavouriteEventEntity+Adaptation.swift */; };
+		CABA840320CEFF9300DD0795 /* WhenServiceIndicatesEventIsFavourited_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA840220CEFF9300DD0795 /* WhenServiceIndicatesEventIsFavourited_EventDetailInteractorShould.swift */; };
 		CABEB0D220C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */; };
 		CABEB0D420C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */; };
 		CABEB0D920C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D820C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift */; };
@@ -1436,6 +1437,7 @@
 		CABA83FB20CEF4B500DD0795 /* WhenFavouritingMultipleEvents_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFavouritingMultipleEvents_ApplicationShould.swift; sourceTree = "<group>"; };
 		CABA83FE20CEF91400DD0795 /* WhenLaunchingApplicationWithPreexistingFavourites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplicationWithPreexistingFavourites.swift; sourceTree = "<group>"; };
 		CABA840020CEFCCD00DD0795 /* FavouriteEventEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteEventEntity+Adaptation.swift"; sourceTree = "<group>"; };
+		CABA840220CEFF9300DD0795 /* WhenServiceIndicatesEventIsFavourited_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenServiceIndicatesEventIsFavourited_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
 		CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift; sourceTree = "<group>"; };
 		CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncCompletesWithEvents_ApplicationShould.swift; sourceTree = "<group>"; };
 		CABEB0D820C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEurofurenceDataStoreShould.swift; sourceTree = "<group>"; };
@@ -3839,14 +3841,15 @@
 		CACF1E8320B34E5F00D904B5 /* Interactor Tests */ = {
 			isa = PBXGroup;
 			children = (
+				CABA83F320CE988B00DD0795 /* WhenFavouritingEventViewModel_EventDetailInteractorShould.swift */,
 				CACF1E8420B34E7A00D904B5 /* WhenPreparingViewModel_EventDetailInteractorShould.swift */,
 				CA131BD020C1851A00DB1036 /* WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould.swift */,
+				CA131BD420C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift */,
 				CAD2609E20C02E7C007E3618 /* WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailInteractorShould.swift */,
 				CACF1EB920B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift */,
 				CACF1EAB20B5C14F00D904B5 /* WhenPreparingViewModelForEventWithIdenticalAbstractAndDescription_EventDetailInteractorShould.swift */,
 				CACF1EA920B5BFF100D904B5 /* WhenPreparingViewModelForEventWithNoDescription_EventDetailInteractorShould.swift */,
-				CA131BD420C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift */,
-				CABA83F320CE988B00DD0795 /* WhenFavouritingEventViewModel_EventDetailInteractorShould.swift */,
+				CABA840220CEFF9300DD0795 /* WhenServiceIndicatesEventIsFavourited_EventDetailInteractorShould.swift */,
 				CABA83F520CE9A6800DD0795 /* WhenUnfavouritingEventViewModel_EventDetailInteractorShould.swift */,
 			);
 			path = "Interactor Tests";
@@ -5181,6 +5184,7 @@
 				CA2B4FA61F1EA1B300F007E1 /* ApplicationTestBuilder.swift in Sources */,
 				CA637548208CBB5D00536BE2 /* StubPreloadModuleFactory.swift in Sources */,
 				CAF597A220458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift in Sources */,
+				CABA840320CEFF9300DD0795 /* WhenServiceIndicatesEventIsFavourited_EventDetailInteractorShould.swift in Sources */,
 				CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */,
 				CA637572208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift in Sources */,
 				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,
