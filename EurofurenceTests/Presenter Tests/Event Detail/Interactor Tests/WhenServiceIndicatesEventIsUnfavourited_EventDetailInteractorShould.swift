@@ -1,5 +1,5 @@
 //
-//  WhenServiceIndicatesEventIsFavourited_EventDetailInteractorShould.swift
+//  WhenServiceIndicatesEventIsUnfavourited_EventDetailInteractorShould.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 11/06/2018.
@@ -9,28 +9,29 @@
 @testable import Eurofurence
 import XCTest
 
-class WhenServiceIndicatesEventIsFavourited_EventDetailInteractorShould: XCTestCase {
+class WhenServiceIndicatesEventIsUnfavourited_EventDetailInteractorShould: XCTestCase {
     
-    func testTellTheViewModelDelegateTheEventIsFavourited() {
+    func testTellTheViewModelDelegateTheEventIsUnfavourited() {
         var event = Event2.random
-        event.isFavourite = false
+        event.isFavourite = true
+        let context = EventDetailInteractorTestBuilder().build(for: event)
+        let delegate = CapturingEventDetailViewModelDelegate()
+        context.viewModel?.setDelegate(delegate)
+        context.viewModel?.unfavourite()
+        
+        XCTAssertTrue(delegate.toldEventUnfavourited)
+    }
+    
+    func testNotTellTheViewModelDelegateTheEventIsUnfavouritedWhenAnotherEventIsUnfavourited() {
+        var event = Event2.random
+        event.isFavourite = true
         let context = EventDetailInteractorTestBuilder().build(for: event)
         let delegate = CapturingEventDetailViewModelDelegate()
         context.viewModel?.setDelegate(delegate)
         context.viewModel?.favourite()
+        context.eventsService.simulateEventUnfavourited(identifier: .random)
         
-        XCTAssertTrue(delegate.toldEventFavourited)
-    }
-    
-    func testNotTellTheViewModelDelegateTheEventIsFavouritedWhenNotInFavouriteIdentifiers() {
-        var event = Event2.random
-        event.isFavourite = false
-        let context = EventDetailInteractorTestBuilder().build(for: event)
-        let delegate = CapturingEventDetailViewModelDelegate()
-        context.viewModel?.setDelegate(delegate)
-        context.eventsService.simulateEventFavourited(identifier: .random)
-        
-        XCTAssertFalse(delegate.toldEventFavourited)
+        XCTAssertFalse(delegate.toldEventUnfavourited)
     }
     
 }

@@ -15,14 +15,22 @@ class CapturingEventsService: EventsService {
         observers.append(observer)
     }
     
+    fileprivate var favourites = [Event2.Identifier]()
     private(set) var favouritedEventIdentifier: Event2.Identifier?
     func favouriteEvent(identifier: Event2.Identifier) {
         favouritedEventIdentifier = identifier
+        favourites.append(identifier)
+        observers.forEach { $0.eventsServiceDidResolveFavouriteEvents(favourites) }
     }
     
     private(set) var unfavouritedEventIdentifier: Event2.Identifier?
     func unfavouriteEvent(identifier: Event2.Identifier) {
         unfavouritedEventIdentifier = identifier
+        if let idx = favourites.index(of: identifier) {
+            favourites.remove(at: idx)
+        }
+        
+        observers.forEach { $0.eventsServiceDidResolveFavouriteEvents([]) }
     }
     
 }
@@ -30,7 +38,16 @@ class CapturingEventsService: EventsService {
 extension CapturingEventsService {
     
     func simulateEventFavourited(identifier: Event2.Identifier) {
-        observers.forEach { $0.eventsServiceDidResolveFavouriteEvents([identifier]) }
+        favourites.append(identifier)
+        observers.forEach { $0.eventsServiceDidResolveFavouriteEvents(favourites) }
+    }
+    
+    func simulateEventUnfavourited(identifier: Event2.Identifier) {
+        if let idx = favourites.index(of: identifier) {
+            favourites.remove(at: idx)
+        }
+        
+        observers.forEach { $0.eventsServiceDidResolveFavouriteEvents(favourites) }
     }
     
 }

@@ -94,6 +94,8 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
         func eventsServiceDidResolveFavouriteEvents(_ identifiers: [Event2.Identifier]) {
             if identifiers.contains(event.identifier) {
                 delegate?.eventFavourited()
+            } else {
+                delegate?.eventUnfavourited()
             }
         }
 
