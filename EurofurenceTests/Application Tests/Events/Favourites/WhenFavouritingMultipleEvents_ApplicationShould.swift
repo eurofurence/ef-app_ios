@@ -51,7 +51,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         
         let expected = events.sorted(by: { $0.startDateTime < $1.startDateTime }).map({ Event2.Identifier($0.identifier) })
         
-        XCTAssertEqual(expected, observer.capturedFavouriteEventIdentifiers)
+        XCTAssertTrue(expected.contains(elementsFrom: observer.capturedFavouriteEventIdentifiers))
     }
     
 }

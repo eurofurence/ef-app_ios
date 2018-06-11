@@ -163,6 +163,7 @@ class Schedule {
 
     private func reconstituteFavouritesFromDataStore() {
         favouriteEventIdentifiers = dataStore.getSavedFavouriteEventIdentifiers() ?? []
+        reorderFavouriteEventsByEventStartTime()
     }
 
     private func reorderFavouriteEventsByEventStartTime() {
