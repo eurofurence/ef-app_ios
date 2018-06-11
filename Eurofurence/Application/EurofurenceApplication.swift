@@ -156,7 +156,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
         let progress = Progress()
 
-        syncAPI.fetchLatestData { (response) in
+        let lastSyncTime = dataStore.getLastRefreshDate()
+        syncAPI.fetchLatestData(lastSyncTime: lastSyncTime) { (response) in
             guard let response = response else {
                 completionHandler(SyncError.failedToLoadResponse)
                 return

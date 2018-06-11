@@ -7,11 +7,14 @@
 //
 
 @testable import Eurofurence
+import Foundation
 
 class CapturingSyncAPI: SyncAPI {
     
     fileprivate var completionHandler: ((APISyncResponse?) -> Void)?
-    func fetchLatestData(completionHandler: @escaping (APISyncResponse?) -> Void) {
+    private(set) var capturedLastSyncTime: Date?
+    func fetchLatestData(lastSyncTime: Date?, completionHandler: @escaping (APISyncResponse?) -> Void) {
+        capturedLastSyncTime = lastSyncTime
         self.completionHandler = completionHandler
     }
     

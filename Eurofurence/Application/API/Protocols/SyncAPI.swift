@@ -10,6 +10,6 @@ import Foundation
 
 protocol SyncAPI {
 
-    func fetchLatestData(completionHandler: @escaping (APISyncResponse?) -> Void)
+    func fetchLatestData(lastSyncTime: Date?, completionHandler: @escaping (APISyncResponse?) -> Void)
 
 }

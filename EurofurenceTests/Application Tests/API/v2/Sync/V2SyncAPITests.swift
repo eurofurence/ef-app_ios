@@ -15,7 +15,7 @@ class V2SyncAPITests: XCTestCase {
         let jsonSession = CapturingJSONSession()
         let syncApi = V2SyncAPI(jsonSession: jsonSession)
         let url = "https://app.eurofurence.org/api/v2/Sync"
-        syncApi.fetchLatestData { (_) in }
+        syncApi.fetchLatestData(lastSyncTime: nil) { (_) in }
         
         XCTAssertEqual(url, jsonSession.getRequestURL)
     }
@@ -25,7 +25,7 @@ class V2SyncAPITests: XCTestCase {
         let syncApi = V2SyncAPI(jsonSession: jsonSession)
         let invalidResponseData = "{not json!".data(using: .utf8)
         var providedWithNilResponse = false
-        syncApi.fetchLatestData { providedWithNilResponse = $0 == nil }
+        syncApi.fetchLatestData(lastSyncTime: nil) { providedWithNilResponse = $0 == nil }
         jsonSession.invokeLastGETCompletionHandler(responseData: invalidResponseData)
         
         XCTAssertTrue(providedWithNilResponse)
@@ -38,7 +38,7 @@ class V2SyncAPITests: XCTestCase {
         let responseData = try! Data(contentsOf: responseDataURL)
         let providedWithNilResponseExpectation = expectation(description: "Should not be provided with nil response when parsing valid sync response")
         providedWithNilResponseExpectation.isInverted = true
-        syncApi.fetchLatestData { if $0 == nil { providedWithNilResponseExpectation.fulfill() } }
+        syncApi.fetchLatestData(lastSyncTime: nil) { if $0 == nil { providedWithNilResponseExpectation.fulfill() } }
         jsonSession.invokeLastGETCompletionHandler(responseData: responseData)
         
         waitForExpectations(timeout: 0.1)
@@ -48,7 +48,7 @@ class V2SyncAPITests: XCTestCase {
         let jsonSession = CapturingJSONSession()
         let syncApi = V2SyncAPI(jsonSession: jsonSession)
         var providedWithNilResponse = false
-        syncApi.fetchLatestData { providedWithNilResponse = $0 == nil }
+        syncApi.fetchLatestData(lastSyncTime: nil) { providedWithNilResponse = $0 == nil }
         jsonSession.invokeLastGETCompletionHandler(responseData: nil)
         
         XCTAssertTrue(providedWithNilResponse)

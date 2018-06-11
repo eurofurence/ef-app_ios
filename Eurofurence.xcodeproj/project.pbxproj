@@ -590,6 +590,7 @@
 		CABA83EC20CDBE8F00DD0795 /* V2ImageAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83EB20CDBE8F00DD0795 /* V2ImageAPITests.swift */; };
 		CABA83EE20CDC0CA00DD0795 /* V2ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83ED20CDC0CA00DD0795 /* V2ImageAPI.swift */; };
 		CABA83F020CDC80500DD0795 /* WhenSyncSuceeds_ThenObservingUpcomingEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83EF20CDC80500DD0795 /* WhenSyncSuceeds_ThenObservingUpcomingEvents.swift */; };
+		CABA83F220CE332500DD0795 /* WhenPerformingSubsequentSync_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83F120CE332500DD0795 /* WhenPerformingSubsequentSync_ApplicationShould.swift */; };
 		CABEB0D220C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */; };
 		CABEB0D420C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */; };
 		CABEB0D920C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D820C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift */; };
@@ -1420,6 +1421,7 @@
 		CABA83EB20CDBE8F00DD0795 /* V2ImageAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2ImageAPITests.swift; sourceTree = "<group>"; };
 		CABA83ED20CDC0CA00DD0795 /* V2ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2ImageAPI.swift; sourceTree = "<group>"; };
 		CABA83EF20CDC80500DD0795 /* WhenSyncSuceeds_ThenObservingUpcomingEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncSuceeds_ThenObservingUpcomingEvents.swift; sourceTree = "<group>"; };
+		CABA83F120CE332500DD0795 /* WhenPerformingSubsequentSync_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSubsequentSync_ApplicationShould.swift; sourceTree = "<group>"; };
 		CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift; sourceTree = "<group>"; };
 		CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncCompletesWithEvents_ApplicationShould.swift; sourceTree = "<group>"; };
 		CABEB0D820C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEurofurenceDataStoreShould.swift; sourceTree = "<group>"; };
@@ -4062,13 +4064,14 @@
 		CAF597A020458D0100089BE8 /* Sync */ = {
 			isa = PBXGroup;
 			children = (
+				CABA83F120CE332500DD0795 /* WhenPerformingSubsequentSync_ApplicationShould.swift */,
 				CACF1EC120B6B92F00D904B5 /* WhenPerformingSync_BeforeImageDownload.swift */,
 				CACF1EC320B6B9B500D904B5 /* WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift */,
 				CA8276B7204F19CA006A7419 /* WhenPerformingSyncThatFails.swift */,
 				CAF597A120458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift */,
-				CAFD012720C6F2A2004F3935 /* WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould.swift */,
 				CA8276B9204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift */,
 				CA72849720A1C091007D912A /* WhenSyncingWhileLoggedIn.swift */,
+				CAFD012720C6F2A2004F3935 /* WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould.swift */,
 			);
 			path = Sync;
 			sourceTree = "<group>";
@@ -5251,6 +5254,7 @@
 				CA162E8B20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift in Sources */,
 				CAC1E1391F50431000195513 /* NewsPresenterTestBuilder.swift in Sources */,
 				CA6375B9208E03C000536BE2 /* CapturingDealersScene.swift in Sources */,
+				CABA83F220CE332500DD0795 /* WhenPerformingSubsequentSync_ApplicationShould.swift in Sources */,
 				CACF1E8C20B351EA00D904B5 /* FakeDateRangeFormatter.swift in Sources */,
 				78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */,
 				CAD6882C208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift in Sources */,

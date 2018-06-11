@@ -22,7 +22,7 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
         let syncApi = V2SyncAPI(jsonSession: jsonSession)
         let responseDataURL = Bundle(for: V2SyncAPITests.self).url(forResource: "V2SyncAPIResponse", withExtension: "json")!
         let responseData = try! Data(contentsOf: responseDataURL)
-        syncApi.fetchLatestData { self.response = $0 }
+        syncApi.fetchLatestData(lastSyncTime: nil) { self.response = $0 }
         jsonSession.invokeLastGETCompletionHandler(responseData: responseData)
     }
     

@@ -20,7 +20,7 @@ struct V2SyncAPI: SyncAPI {
         decoder.dateDecodingStrategy = .formatted(Iso8601DateFormatter())
     }
 
-    func fetchLatestData(completionHandler: @escaping (APISyncResponse?) -> Void) {
+    func fetchLatestData(lastSyncTime: Date?, completionHandler: @escaping (APISyncResponse?) -> Void) {
         let url = "https://app.eurofurence.org/api/v2/Sync"
         let request = JSONRequest(url: url, body: Data())
         jsonSession.get(request) { (data, _) in
