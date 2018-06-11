@@ -10,9 +10,14 @@
 
 class CapturingEventsService: EventsService {
     
+    init(favourites: [Event2.Identifier] = []) {
+        self.favourites = favourites
+    }
+    
     private var observers = [EventsServiceObserver]()
     func add(_ observer: EventsServiceObserver) {
         observers.append(observer)
+        observer.eventsServiceDidResolveFavouriteEvents(favourites)
     }
     
     fileprivate var favourites = [Event2.Identifier]()
@@ -62,8 +67,19 @@ class EventDetailInteractorTestBuilder {
         var eventsService: CapturingEventsService
     }
     
+    private var eventsService: CapturingEventsService
+    
+    init() {
+        eventsService = CapturingEventsService()
+    }
+    
+    @discardableResult
+    func with(_ eventsService: CapturingEventsService) -> EventDetailInteractorTestBuilder {
+        self.eventsService = eventsService
+        return self
+    }
+    
     func build(for event: Event2 = .random) -> Context {
-        let eventsService = CapturingEventsService()
         let dateRangeFormatter = FakeDateRangeFormatter()
         let interactor = DefaultEventDetailInteractor(dateRangeFormatter: dateRangeFormatter, eventsService: eventsService)
         var viewModel: EventDetailViewModel?

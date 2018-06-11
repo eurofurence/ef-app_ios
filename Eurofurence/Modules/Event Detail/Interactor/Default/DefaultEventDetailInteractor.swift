@@ -49,6 +49,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
         private let components: [EventDetailViewModelComponent]
         private let event: Event2
         private let eventsService: EventsService
+        private var isFavourite = false
 
         init(components: [EventDetailViewModelComponent],
              event: Event2,
@@ -67,11 +68,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
         private var delegate: EventDetailViewModelDelegate?
         func setDelegate(_ delegate: EventDetailViewModelDelegate) {
             self.delegate = delegate
-            if event.isFavourite {
-                delegate.eventFavourited()
-            } else {
-                delegate.eventUnfavourited()
-            }
+            informDelegateAboutEventFavouriteState()
         }
 
         func describe(componentAt index: Int, to visitor: EventDetailViewModelVisitor) {
@@ -92,7 +89,12 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
         func eurofurenceApplicationDidUpdateUpcomingEvents(to events: [Event2]) { }
 
         func eventsServiceDidResolveFavouriteEvents(_ identifiers: [Event2.Identifier]) {
-            if identifiers.contains(event.identifier) {
+            isFavourite = identifiers.contains(event.identifier)
+            informDelegateAboutEventFavouriteState()
+        }
+
+        private func informDelegateAboutEventFavouriteState() {
+            if isFavourite {
                 delegate?.eventFavourited()
             } else {
                 delegate?.eventUnfavourited()
