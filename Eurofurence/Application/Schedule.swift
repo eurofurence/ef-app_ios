@@ -89,9 +89,7 @@ class Schedule {
         }
 
         favouriteEventIdentifiers.append(identifier)
-        observers.forEach { (observer) in
-            observer.eventsServiceDidResolveFavouriteEvents(favouriteEventIdentifiers)
-        }
+        provideFavouritesInformationToObservers()
     }
 
     func unfavouriteEvent(identifier: Event2.Identifier) {
@@ -103,9 +101,7 @@ class Schedule {
             favouriteEventIdentifiers.remove(at: idx)
         }
 
-        observers.forEach { (observer) in
-            observer.eventsServiceDidResolveFavouriteEvents(favouriteEventIdentifiers)
-        }
+        provideFavouritesInformationToObservers()
     }
 
     // MARK: Private
@@ -115,6 +111,12 @@ class Schedule {
         observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: upcomingEvents)
         observer.eurofurenceApplicationDidUpdateEvents(to: models)
         observer.eventsServiceDidResolveFavouriteEvents(favouriteEventIdentifiers)
+    }
+
+    private func provideFavouritesInformationToObservers() {
+        observers.forEach { (observer) in
+            observer.eventsServiceDidResolveFavouriteEvents(favouriteEventIdentifiers)
+        }
     }
 
     private func reconstituteEvents(from dataStore: EurofurenceDataStore) {
