@@ -29,4 +29,14 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
         XCTAssertTrue(observer.capturedFavouriteEventIdentifiers.contains(identifier))
     }
     
+    func testTellLateAddedObserversAboutTheFavouritedEvent() {
+        let context = ApplicationTestBuilder().build()
+        let identifier = Event2.Identifier.random
+        let observer = CapturingEventsServiceObserver()
+        context.application.favouriteEvent(identifier: identifier)
+        context.application.add(observer)
+        
+        XCTAssertTrue(observer.capturedFavouriteEventIdentifiers.contains(identifier))
+    }
+    
 }

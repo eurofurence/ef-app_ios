@@ -114,6 +114,7 @@ class Schedule {
         observer.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents)
         observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: upcomingEvents)
         observer.eurofurenceApplicationDidUpdateEvents(to: models)
+        observer.eventsServiceDidResolveFavouriteEvents(favouriteEventIdentifiers)
     }
 
     private func reconstituteEvents(from dataStore: EurofurenceDataStore) {
