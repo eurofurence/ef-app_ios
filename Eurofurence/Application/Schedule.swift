@@ -98,6 +98,14 @@ class Schedule {
         dataStore.performTransaction { (transaction) in
             transaction.deleteFavouriteEventIdentifier(identifier)
         }
+
+        if let idx = favouriteEventIdentifiers.index(of: identifier) {
+            favouriteEventIdentifiers.remove(at: idx)
+        }
+
+        observers.forEach { (observer) in
+            observer.eventsServiceDidResolveFavouriteEvents(favouriteEventIdentifiers)
+        }
     }
 
     // MARK: Private

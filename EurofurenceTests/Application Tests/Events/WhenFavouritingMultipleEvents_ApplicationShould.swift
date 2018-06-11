@@ -21,4 +21,18 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         XCTAssertEqual(identifiers, observer.capturedFavouriteEventIdentifiers)
     }
     
+    func testTellEventsObserversWhenOnlyOneEventHasBeenUnfavourited() {
+        let context = ApplicationTestBuilder().build()
+        let identifiers = [Event2.Identifier].random
+        let observer = CapturingEventsServiceObserver()
+        context.application.add(observer)
+        identifiers.forEach(context.application.favouriteEvent)
+        let randomIdentifier = identifiers.randomElement()
+        context.application.unfavouriteEvent(identifier: randomIdentifier.element)
+        var expected = identifiers
+        expected.remove(at: randomIdentifier.index)
+        
+        XCTAssertEqual(expected, observer.capturedFavouriteEventIdentifiers)
+    }
+    
 }
