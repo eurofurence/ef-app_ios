@@ -23,7 +23,7 @@ struct SwiftNetworkReachability: NetworkReachability {
     }
 
     var wifiReachable: Bool {
-        return reachability.isReachableViaWiFi
+        return reachability.connection == .wifi
     }
 
 }

@@ -166,7 +166,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
             let posterImageIdentifiers = response.events.changed.map({ $0.posterImageId })
             let bannerImageIdentifiers = response.events.changed.map({ $0.bannerImageId })
-            let imageIdentifiers = (posterImageIdentifiers + bannerImageIdentifiers).flatMap({ $0 })
+            let imageIdentifiers = (posterImageIdentifiers + bannerImageIdentifiers).compactMap({ $0 })
             progress.totalUnitCount = Int64(imageIdentifiers.count)
 
             self.imageDownloader.downloadImages(identifiers: imageIdentifiers, parentProgress: progress) {

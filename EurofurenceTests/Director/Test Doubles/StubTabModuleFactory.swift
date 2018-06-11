@@ -20,7 +20,7 @@ class StubTabModuleFactory: TabModuleProviding {
     
     func navigationController(for viewController: UIViewController) -> CapturingNavigationController? {
         return capturedTabModules
-            .flatMap({ $0 as? CapturingNavigationController })
+            .compactMap({ $0 as? CapturingNavigationController })
             .first(where: { $0.contains(viewController) })
     }
     

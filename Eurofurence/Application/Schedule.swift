@@ -98,7 +98,7 @@ class Schedule {
     }
 
     private func updateSchedule(events: [APIEvent], rooms: [APIRoom], tracks: [APITrack]) {
-        models = events.flatMap({ (event) -> Event2? in
+        models = events.compactMap({ (event) -> Event2? in
             guard let room = rooms.first(where: { $0.roomIdentifier == event.roomIdentifier }) else { return nil }
             guard let track = tracks.first(where: { $0.trackIdentifier == event.trackIdentifier }) else { return nil }
 

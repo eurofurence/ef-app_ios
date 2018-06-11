@@ -181,7 +181,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
             let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: bufferSize)
 
             defer {
-                buffer.deallocate(capacity: bufferSize)
+                buffer.deallocate()
                 stream.close()
             }
 

@@ -244,7 +244,7 @@ class DealerViewController: UIViewController {
 
 	private func replaceUnicodeNewlines(in text: String?) -> String? {
 		return text?.utf16.split { CharacterSet.newlines.contains(UnicodeScalar($0)!) }
-			.flatMap(String.init).joined(separator: "\n")
+			.compactMap(String.init).joined(separator: "\n")
 	}
 
 	private func createSocialButton(icon: String, action: Selector, accessibilityLabel: String) {

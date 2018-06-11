@@ -31,7 +31,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         
         let expected = syncResponse.events.changed.map({
             $0.posterImageId
-        }).flatMap({
+        }).compactMap({
             $0
         }).map({
             ImageEntity(identifier: $0, pngImageData: context.imageAPI.stubbedImage(for: $0)!)
@@ -51,7 +51,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         
         let expected = syncResponse.events.changed.map({
             $0.bannerImageId
-        }).flatMap({
+        }).compactMap({
             $0
         }).map({
             ImageEntity(identifier: $0, pngImageData: context.imageAPI.stubbedImage(for: $0)!)

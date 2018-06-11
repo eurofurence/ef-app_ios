@@ -27,14 +27,14 @@ class WhenShowingTabModule_DirectorShould: XCTestCase {
     }
     
     private func rootNavigationTabControllers() -> [UINavigationController] {
-        return context.tabModule.capturedTabModules.flatMap({ $0 as? UINavigationController })
+        return context.tabModule.capturedTabModules.compactMap({ $0 as? UINavigationController })
     }
     
     func testShowTheModulesInDefaultOrder() {
         let expectedModuleControllers = makeExpectedTabViewControllerRoots()
-        let presentedModules = rootNavigationTabControllers().flatMap({ $0.topViewController })
+        let presentedModules = rootNavigationTabControllers().compactMap({ $0.topViewController })
         let expectedTabBarItems: [UITabBarItem] = expectedModuleControllers.map({ $0.tabBarItem })
-        let actualTabBarItems: [UITabBarItem] = rootNavigationTabControllers().flatMap({ $0.tabBarItem })
+        let actualTabBarItems: [UITabBarItem] = rootNavigationTabControllers().compactMap({ $0.tabBarItem })
         
         XCTAssertEqual(expectedModuleControllers, presentedModules)
         XCTAssertEqual(expectedTabBarItems, actualTabBarItems)

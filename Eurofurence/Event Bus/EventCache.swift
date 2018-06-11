@@ -23,7 +23,7 @@ final class EventCache {
     }
 
     func cachedEvent<Event>(ofType type: Event.Type) -> Event? {
-        return storage.flatMap({ $0 as? Event }).first
+        return storage.compactMap({ $0 as? Event }).first
     }
 
 }
