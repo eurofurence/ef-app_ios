@@ -43,6 +43,8 @@ class Schedule {
         }
     }
 
+    private var favouriteEventIdentifiers = [Event2.Identifier]()
+
     var runningEvents: [Event2] {
         let now = clock.currentDate
         return models.filter { (event) -> Bool in
@@ -84,6 +86,11 @@ class Schedule {
     func favouriteEvent(identifier: Event2.Identifier) {
         dataStore.performTransaction { (transaction) in
             transaction.saveFavouriteEventIdentifier(identifier)
+        }
+
+        favouriteEventIdentifiers.append(identifier)
+        observers.forEach { (observer) in
+            observer.eventsServiceDidResolveFavouriteEvents(favouriteEventIdentifiers)
         }
     }
 

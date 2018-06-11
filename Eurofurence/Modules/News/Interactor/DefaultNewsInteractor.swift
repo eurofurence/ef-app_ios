@@ -149,6 +149,10 @@ class DefaultNewsInteractor: NewsInteractor,
         regenerateViewModel()
     }
 
+    func eventsServiceDidResolveFavouriteEvents(_ identifiers: [Event2.Identifier]) {
+
+    }
+
     // MARK: Private
 
     private func regenerateViewModel() {
