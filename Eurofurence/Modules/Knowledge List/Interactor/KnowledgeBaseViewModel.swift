@@ -12,10 +12,6 @@ struct KnowledgeListViewModel: Equatable {
 
     var knowledgeGroups: [KnowledgeListGroupViewModel]
 
-    static func ==(lhs: KnowledgeListViewModel, rhs: KnowledgeListViewModel) -> Bool {
-        return lhs.knowledgeGroups == rhs.knowledgeGroups
-    }
-
 }
 
 struct KnowledgeListGroupViewModel: Equatable {
@@ -37,9 +33,5 @@ struct KnowledgeListGroupViewModel: Equatable {
 struct KnowledgeListEntryViewModel: Equatable {
 
     var title: String
-
-    static func ==(lhs: KnowledgeListEntryViewModel, rhs: KnowledgeListEntryViewModel) -> Bool {
-        return lhs.title == rhs.title
-    }
 
 }

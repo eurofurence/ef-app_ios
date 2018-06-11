@@ -10,10 +10,6 @@ import Foundation
 
 struct Room: Equatable {
 
-    static func ==(lhs: Room, rhs: Room) -> Bool {
-        return lhs.name == rhs.name
-    }
-
     var name: String
 
 }

@@ -11,10 +11,6 @@ struct Announcement2: Equatable {
     var title: String
     var content: String
 
-    static func ==(lhs: Announcement2, rhs: Announcement2) -> Bool {
-        return lhs.title == rhs.title && lhs.content == rhs.content
-    }
-
 }
 
 extension Announcement2 {

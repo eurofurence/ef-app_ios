@@ -14,10 +14,4 @@ struct LoginArguments: Equatable {
     var username: String
     var password: String
 
-    static func ==(lhs: LoginArguments, rhs: LoginArguments) -> Bool {
-        return lhs.registrationNumber == rhs.registrationNumber &&
-               lhs.username == rhs.username &&
-               lhs.password == rhs.password
-    }
-
 }

@@ -55,28 +55,12 @@ struct ConventionCountdownComponentViewModel: Hashable {
 
     var timeUntilConvention: String
 
-    var hashValue: Int {
-        return timeUntilConvention.hashValue
-    }
-
-    static func ==(lhs: ConventionCountdownComponentViewModel, rhs: ConventionCountdownComponentViewModel) -> Bool {
-        return lhs.timeUntilConvention == rhs.timeUntilConvention
-    }
-
 }
 
 struct AnnouncementComponentViewModel: Hashable {
 
     var title: String
     var detail: String
-
-    var hashValue: Int {
-        return title.hashValue ^ detail.hashValue
-    }
-
-    static func ==(lhs: AnnouncementComponentViewModel, rhs: AnnouncementComponentViewModel) -> Bool {
-        return lhs.title == rhs.title && lhs.detail == rhs.detail
-    }
 
 }
 
@@ -112,13 +96,5 @@ struct UserWidgetComponentViewModel: Hashable {
     var prompt: String
     var detailedPrompt: String
     var hasUnreadMessages: Bool
-
-    var hashValue: Int {
-        return prompt.hashValue ^ detailedPrompt.hashValue ^ hasUnreadMessages.hashValue
-    }
-
-    static func ==(lhs: UserWidgetComponentViewModel, rhs: UserWidgetComponentViewModel) -> Bool {
-        return lhs.prompt == rhs.prompt && lhs.detailedPrompt == rhs.detailedPrompt && lhs.hasUnreadMessages == rhs.hasUnreadMessages
-    }
 
 }

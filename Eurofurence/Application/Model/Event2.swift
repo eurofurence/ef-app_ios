@@ -10,20 +10,6 @@ import Foundation
 
 struct Event2: Equatable {
 
-    static func ==(lhs: Event2, rhs: Event2) -> Bool {
-        return lhs.title == rhs.title &&
-               lhs.abstract == rhs.abstract &&
-               lhs.room == rhs.room &&
-               lhs.track == rhs.track &&
-               lhs.hosts == rhs.hosts &&
-               lhs.startDate == rhs.startDate &&
-               lhs.endDate == rhs.endDate &&
-               lhs.eventDescription == rhs.eventDescription &&
-               lhs.posterGraphicPNGData == rhs.posterGraphicPNGData &&
-               lhs.bannerGraphicPNGData == rhs.bannerGraphicPNGData &&
-               lhs.isFavourite == rhs.isFavourite
-    }
-
     var title: String
     var abstract: String
     var room: Room

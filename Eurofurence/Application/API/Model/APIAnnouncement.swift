@@ -15,11 +15,4 @@ struct APIAnnouncement: Equatable {
     var content: String
     var lastChangedDateTime: Date
 
-    static func ==(lhs: APIAnnouncement, rhs: APIAnnouncement) -> Bool {
-        return lhs.identifier == rhs.identifier &&
-               lhs.title == rhs.title &&
-               lhs.content == rhs.content &&
-               lhs.lastChangedDateTime == rhs.lastChangedDateTime
-    }
-
 }

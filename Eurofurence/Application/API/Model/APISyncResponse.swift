@@ -18,10 +18,6 @@ struct APISyncDelta<T>: Equatable where T: Equatable {
         self.deleted = deleted
     }
 
-    static func ==(lhs: APISyncDelta<T>, rhs: APISyncDelta<T>) -> Bool {
-        return lhs.changed == rhs.changed && lhs.deleted == rhs.deleted
-    }
-
 }
 
 struct APISyncResponse: Equatable {
@@ -32,13 +28,5 @@ struct APISyncResponse: Equatable {
     var events: APISyncDelta<APIEvent>
     var rooms: APISyncDelta<APIRoom>
     var tracks: APISyncDelta<APITrack>
-
-    static func ==(lhs: APISyncResponse, rhs: APISyncResponse) -> Bool {
-        return lhs.knowledgeGroups == rhs.knowledgeGroups &&
-               lhs.knowledgeEntries == rhs.knowledgeEntries &&
-               lhs.announcements == rhs.announcements &&
-               lhs.events == rhs.events &&
-               lhs.rooms == rhs.rooms
-    }
 
 }

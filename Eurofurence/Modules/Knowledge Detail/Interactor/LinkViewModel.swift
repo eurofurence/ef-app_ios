@@ -12,8 +12,4 @@ struct LinkViewModel: Equatable {
 
     var name: String
 
-    static func ==(lhs: LinkViewModel, rhs: LinkViewModel) -> Bool {
-        return lhs.name == rhs.name
-    }
-
 }

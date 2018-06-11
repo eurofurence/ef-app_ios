@@ -10,10 +10,6 @@ import Foundation
 
 struct APIRoom: Equatable {
 
-    static func ==(lhs: APIRoom, rhs: APIRoom) -> Bool {
-        return lhs.roomIdentifier == rhs.roomIdentifier && lhs.name == rhs.name
-    }
-
     var roomIdentifier: String
     var name: String
 

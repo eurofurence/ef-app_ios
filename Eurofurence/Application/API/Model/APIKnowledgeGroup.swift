@@ -15,8 +15,4 @@ struct APIKnowledgeGroup: Equatable {
     var groupName: String
     var groupDescription: String
 
-    static func ==(lhs: APIKnowledgeGroup, rhs: APIKnowledgeGroup) -> Bool {
-        return lhs.identifier == rhs.identifier && lhs.order == rhs.order && lhs.groupName == rhs.groupName && lhs.groupDescription == rhs.groupDescription
-    }
-
 }

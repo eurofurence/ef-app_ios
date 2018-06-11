@@ -13,9 +13,4 @@ struct User: Equatable {
     var registrationNumber: Int
     var username: String
 
-    static func ==(lhs: User, rhs: User) -> Bool {
-        return lhs.registrationNumber == rhs.registrationNumber &&
-               lhs.username == rhs.username
-    }
-
 }

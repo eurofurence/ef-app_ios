@@ -10,11 +10,6 @@ import Foundation
 
 struct APITrack: Equatable {
 
-    static func ==(lhs: APITrack, rhs: APITrack) -> Bool {
-        return lhs.trackIdentifier == rhs.trackIdentifier &&
-               lhs.name == rhs.name
-    }
-
     var trackIdentifier: String
     var name: String
 
