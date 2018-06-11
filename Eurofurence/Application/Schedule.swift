@@ -157,10 +157,26 @@ class Schedule {
                           posterGraphicPNGData: posterGraphicData,
                           bannerGraphicPNGData: bannerGraphicData)
         })
+
+        reorderFavouriteEventsByEventStartTime()
     }
 
     private func reconstituteFavouritesFromDataStore() {
         favouriteEventIdentifiers = dataStore.getSavedFavouriteEventIdentifiers() ?? []
+    }
+
+    private func reorderFavouriteEventsByEventStartTime() {
+        let events = models.filter(isFavourite)
+        let ordered = events.sorted(by: { $0.startDate < $1.startDate })
+        favouriteEventIdentifiers = ordered.map({ $0.identifier })
+    }
+
+    private func isFavourite(_ event: Event2) -> Bool {
+        return favouriteEventIdentifiers.contains(event.identifier)
+    }
+
+    private func compareEventsByStartDate(_ first: Event2, second: Event2) -> Bool {
+        return first.startDate < second.startDate
     }
 
 }

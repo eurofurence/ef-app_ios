@@ -17,7 +17,7 @@ class StubEventsService: EventsService {
     var favouriteEventIdentifiers: [Event2.Identifier] = []
     
     func stubSomeFavouriteEvents() {
-        allEvents = .random
+        allEvents = .random(minimum: 1)
         favouriteEventIdentifiers = Array(allEvents.dropFirst()).map({ $0.identifier })
     }
     
