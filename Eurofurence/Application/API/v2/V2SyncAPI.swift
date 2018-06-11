@@ -22,7 +22,14 @@ struct V2SyncAPI: SyncAPI {
 
     func fetchLatestData(lastSyncTime: Date?, completionHandler: @escaping (APISyncResponse?) -> Void) {
         let url = "https://app.eurofurence.org/api/v2/Sync"
-        let request = JSONRequest(url: url, body: Data())
+
+        var headers: [String: String] = [:]
+        if let lastSyncTime = lastSyncTime {
+            headers["since"] = Iso8601DateFormatter.instance.string(from: lastSyncTime)
+        }
+
+        let request = JSONRequest(url: url, body: Data(), headers: headers)
+
         jsonSession.get(request) { (data, _) in
             var response: APISyncResponse?
             defer { completionHandler(response) }

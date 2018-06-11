@@ -54,4 +54,14 @@ class V2SyncAPITests: XCTestCase {
         XCTAssertTrue(providedWithNilResponse)
     }
     
+    func testSupplyingLastSyncTimeSuppliesSinceHeader() {
+        let jsonSession = CapturingJSONSession()
+        let syncApi = V2SyncAPI(jsonSession: jsonSession)
+        let lastSyncTime = Date.random
+        let expected = Iso8601DateFormatter.instance.string(from: lastSyncTime)
+        syncApi.fetchLatestData(lastSyncTime: lastSyncTime) { (_) in }
+        
+        XCTAssertEqual(expected, jsonSession.capturedAdditionalGETHeaders?["since"])
+    }
+    
 }
