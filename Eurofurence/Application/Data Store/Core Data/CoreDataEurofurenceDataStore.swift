@@ -220,6 +220,14 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
             }
         }
 
+        func saveFavouriteEventIdentifier(_ identifier: Event2.Identifier) {
+
+        }
+
+        func deleteFavouriteEventIdentifier(_ identifier: Event2.Identifier) {
+
+        }
+
         // MARK: Private
 
         private func makeEntity<Entity>(in context: NSManagedObjectContext,

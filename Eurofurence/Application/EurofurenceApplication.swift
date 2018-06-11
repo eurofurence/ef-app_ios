@@ -150,11 +150,11 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func favouriteEvent(identifier: Event2.Identifier) {
-
+        schedule.favouriteEvent(identifier: identifier)
     }
 
     func unfavouriteEvent(identifier: Event2.Identifier) {
-
+        schedule.unfavouriteEvent(identifier: identifier)
     }
 
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {

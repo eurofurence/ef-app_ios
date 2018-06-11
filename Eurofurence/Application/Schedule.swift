@@ -32,6 +32,7 @@ class Schedule {
     // MARK: Properties
 
     private var observers = [EventsServiceObserver]()
+    private let dataStore: EurofurenceDataStore
     private let imageCache: ImagesCache
     private let clock: Clock
     private let timeIntervalForUpcomingEventsSinceNow: TimeInterval
@@ -64,6 +65,7 @@ class Schedule {
          imageCache: ImagesCache,
          clock: Clock,
          timeIntervalForUpcomingEventsSinceNow: TimeInterval) {
+        self.dataStore = dataStore
         self.imageCache = imageCache
         self.clock = clock
         self.timeIntervalForUpcomingEventsSinceNow = timeIntervalForUpcomingEventsSinceNow
@@ -77,6 +79,18 @@ class Schedule {
     func add(_ observer: EventsServiceObserver) {
         observers.append(observer)
         provideScheduleInformation(to: observer)
+    }
+
+    func favouriteEvent(identifier: Event2.Identifier) {
+        dataStore.performTransaction { (transaction) in
+            transaction.saveFavouriteEventIdentifier(identifier)
+        }
+    }
+
+    func unfavouriteEvent(identifier: Event2.Identifier) {
+        dataStore.performTransaction { (transaction) in
+            transaction.deleteFavouriteEventIdentifier(identifier)
+        }
     }
 
     // MARK: Private

@@ -86,6 +86,14 @@ extension CapturingEurofurenceDataStore {
         return lastRefreshTime == transaction?.persistedLastRefreshDate
     }
     
+    func didFavouriteEvent(_ identifier: Event2.Identifier) -> Bool {
+        return transaction?.persistedFavouriteEvents.contains(identifier) ?? false
+    }
+    
+    func didDeleteFavouriteEvent(_ identifier: Event2.Identifier) -> Bool {
+        return transaction?.deletedFavouriteEvents.contains(identifier) ?? false
+    }
+    
 }
 
 extension Array where Element: Equatable {
@@ -137,6 +145,16 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
     private(set) var persistedLastRefreshDate: Date?
     func saveLastRefreshDate(_ lastRefreshDate: Date) {
         persistedLastRefreshDate = lastRefreshDate
+    }
+    
+    private(set) var persistedFavouriteEvents = [Event2.Identifier]()
+    func saveFavouriteEventIdentifier(_ identifier: Event2.Identifier) {
+        persistedFavouriteEvents.append(identifier)
+    }
+    
+    private(set) var deletedFavouriteEvents = [Event2.Identifier]()
+    func deleteFavouriteEventIdentifier(_ identifier: Event2.Identifier) {
+        deletedFavouriteEvents.append(identifier)
     }
     
 }

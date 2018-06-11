@@ -593,6 +593,8 @@
 		CABA83F220CE332500DD0795 /* WhenPerformingSubsequentSync_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83F120CE332500DD0795 /* WhenPerformingSubsequentSync_ApplicationShould.swift */; };
 		CABA83F420CE988B00DD0795 /* WhenFavouritingEventViewModel_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83F320CE988B00DD0795 /* WhenFavouritingEventViewModel_EventDetailInteractorShould.swift */; };
 		CABA83F620CE9A6800DD0795 /* WhenUnfavouritingEventViewModel_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83F520CE9A6800DD0795 /* WhenUnfavouritingEventViewModel_EventDetailInteractorShould.swift */; };
+		CABA83F820CE9B9C00DD0795 /* WhenFavouritingEvent_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83F720CE9B9C00DD0795 /* WhenFavouritingEvent_ApplicationShould.swift */; };
+		CABA83FA20CE9D2500DD0795 /* WhenUnfavouritingEvent_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA83F920CE9D2500DD0795 /* WhenUnfavouritingEvent_ApplicationShould.swift */; };
 		CABEB0D220C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */; };
 		CABEB0D420C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */; };
 		CABEB0D920C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABEB0D820C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift */; };
@@ -1426,6 +1428,8 @@
 		CABA83F120CE332500DD0795 /* WhenPerformingSubsequentSync_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSubsequentSync_ApplicationShould.swift; sourceTree = "<group>"; };
 		CABA83F320CE988B00DD0795 /* WhenFavouritingEventViewModel_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFavouritingEventViewModel_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
 		CABA83F520CE9A6800DD0795 /* WhenUnfavouritingEventViewModel_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUnfavouritingEventViewModel_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
+		CABA83F720CE9B9C00DD0795 /* WhenFavouritingEvent_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFavouritingEvent_ApplicationShould.swift; sourceTree = "<group>"; };
+		CABA83F920CE9D2500DD0795 /* WhenUnfavouritingEvent_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUnfavouritingEvent_ApplicationShould.swift; sourceTree = "<group>"; };
 		CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift; sourceTree = "<group>"; };
 		CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncCompletesWithEvents_ApplicationShould.swift; sourceTree = "<group>"; };
 		CABEB0D820C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataEurofurenceDataStoreShould.swift; sourceTree = "<group>"; };
@@ -2517,9 +2521,11 @@
 		CA162EAF20AA2DC0004AFED6 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				CABA83F720CE9B9C00DD0795 /* WhenFavouritingEvent_ApplicationShould.swift */,
 				CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */,
 				CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */,
 				CACF1EBF20B60D2B00D904B5 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift */,
+				CABA83F920CE9D2500DD0795 /* WhenUnfavouritingEvent_ApplicationShould.swift */,
 				CA162EB020AA2DC9004AFED6 /* Running */,
 				CA3990F020ACD693001E3F1A /* Upcoming */,
 			);
@@ -5184,6 +5190,7 @@
 				CAD3BDB72059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift in Sources */,
 				CA2B4FAA1F1F7F1200F007E1 /* CapturingLoginObserver.swift in Sources */,
 				CA73AEF8201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift in Sources */,
+				CABA83FA20CE9D2500DD0795 /* WhenUnfavouritingEvent_ApplicationShould.swift in Sources */,
 				CA162E7620A4B6CE004AFED6 /* StubDateDistanceCalculator.swift in Sources */,
 				CA0E5217208FBEA9005259FE /* StubAnnouncementsService.swift in Sources */,
 				CA162EA620A9B18E004AFED6 /* WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift in Sources */,
@@ -5246,6 +5253,7 @@
 				CA72844D209D0358007D912A /* WhenBuildingAnnouncementDetailPresenter.swift in Sources */,
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
 				CA63755A208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift in Sources */,
+				CABA83F820CE9B9C00DD0795 /* WhenFavouritingEvent_ApplicationShould.swift in Sources */,
 				78D7EEB51F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift in Sources */,
 				CA73AED8201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift in Sources */,
 				CAD68828208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift in Sources */,
