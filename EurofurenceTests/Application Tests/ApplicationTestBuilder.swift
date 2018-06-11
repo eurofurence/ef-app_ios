@@ -163,8 +163,7 @@ class ApplicationTestBuilder {
                           endDate: event.endDateTime,
                           eventDescription: event.eventDescription,
                           posterGraphicPNGData: expectedPosterGraphic,
-                          bannerGraphicPNGData: expectedBannerGraphic,
-                          isFavourite: false)
+                          bannerGraphicPNGData: expectedBannerGraphic)
         }
         
         func makeExpectedEvents(from events: [APIEvent], response: APISyncResponse) -> [Event2] {

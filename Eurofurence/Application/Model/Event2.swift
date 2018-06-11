@@ -41,6 +41,5 @@ struct Event2: Equatable {
     var eventDescription: String
     var posterGraphicPNGData: Data?
     var bannerGraphicPNGData: Data?
-    var isFavourite: Bool
 
 }
