@@ -135,8 +135,12 @@ class DefaultNewsInteractor: NewsInteractor,
 
     // MARK: EventsServiceObserver
 
+    private var allEvents = [Event2]()
+    private var favouriteEvents = [Event2]()
+    private var favouriteEventIdentifiers = [Event2.Identifier]()
     func eurofurenceApplicationDidUpdateEvents(to events: [Event2]) {
-
+        allEvents = events
+        regenerateFavouriteEvents()
     }
 
     func eurofurenceApplicationDidUpdateRunningEvents(to events: [Event2]) {
@@ -150,10 +154,16 @@ class DefaultNewsInteractor: NewsInteractor,
     }
 
     func eventsServiceDidResolveFavouriteEvents(_ identifiers: [Event2.Identifier]) {
-
+        favouriteEventIdentifiers = identifiers
+        regenerateFavouriteEvents()
     }
 
     // MARK: Private
+
+    private func regenerateFavouriteEvents() {
+        favouriteEvents = allEvents.filter({ favouriteEventIdentifiers.contains($0.identifier) })
+        regenerateViewModel()
+    }
 
     private func regenerateViewModel() {
         let userWidgetViewModel = makeUserWidgetViewModel()
@@ -181,6 +191,14 @@ class DefaultNewsInteractor: NewsInteractor,
                                               events: runningEvents,
                                               startTimeFormatter: { (_) -> String in
                                                 return .now
+            }, hoursDateFormatter: hoursDateFormatter))
+        }
+
+        if !favouriteEvents.isEmpty {
+            components.append(EventsComponent(title: .favouriteEvents,
+                                              events: favouriteEvents,
+                                              startTimeFormatter: { (event) -> String in
+                                                return self.hoursDateFormatter.hoursString(from: event.startDate)
             }, hoursDateFormatter: hoursDateFormatter))
         }
 

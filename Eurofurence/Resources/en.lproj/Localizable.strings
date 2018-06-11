@@ -29,6 +29,7 @@
 "DaysUntilConventionHeader" = "Days Until Eurofurence";
 "UpcomingEvents" = "Upcoming Events";
 "RunningEvents" = "Running Events";
+"FavouriteEvents" = "Favourite Events";
 "Now" = "Now";
 
 "anonymousUserLoginPrompt" = "You are currently not logged in";

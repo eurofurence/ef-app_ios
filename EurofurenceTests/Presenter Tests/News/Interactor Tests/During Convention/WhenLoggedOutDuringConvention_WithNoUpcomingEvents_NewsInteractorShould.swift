@@ -11,11 +11,12 @@ import XCTest
 
 class WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould: XCTestCase {
     
-    func testProduceViewModelWithMessagesPrompt_Announcements_AndUpcomingEvents() {
+    func testProduceViewModelWithMessagesPrompt_Announcements_RunningEvents_AndFavouriteEvents() {
         let eventsService = StubEventsService()
         let upcomingEvents = [Event2]()
         eventsService.runningEvents = .random
         eventsService.upcomingEvents = upcomingEvents
+        eventsService.stubSomeFavouriteEvents()
         let context = DefaultNewsInteractorTestBuilder()
             .with(FakeAuthenticationService.loggedOutService())
             .with(StubAnnouncementsService(announcements: .random))
@@ -29,6 +30,7 @@ class WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould: X
             .hasYourEurofurence()
             .hasAnnouncements()
             .hasRunningEvents()
+            .hasFavouriteEvents()
             .verify()
     }
     

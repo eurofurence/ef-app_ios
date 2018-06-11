@@ -209,6 +209,13 @@ extension DefaultNewsInteractorTestBuilder.Context {
             return self
         }
         
+        func hasFavouriteEvents() -> ViewModelAssertionBuilder {
+            let expectedEvents = context.eventsService.allEvents.filter({ context.eventsService.favouriteEventIdentifiers.contains($0.identifier) }).map(makeExpectedViewModelForFavouriteEvent)
+            components.append(Component(title: .favouriteEvents, components: expectedEvents))
+            
+            return self
+        }
+        
         private func makeExpectedAnnouncementsViewModelsFromStubbedAnnouncements() -> [AnyHashable] {
             return context.announcements.map(makeExpectedAnnouncementViewModel)
         }
@@ -233,6 +240,14 @@ extension DefaultNewsInteractorTestBuilder.Context {
         private func makeExpectedEventViewModelForUpcomingEvent(from event: Event2) -> AnyHashable {
             let timeDifference = event.startDate.timeIntervalSince1970 - context.clock.currentDate.timeIntervalSince1970
             return EventComponentViewModel(startTime: context.relativeTimeFormatter.relativeString(from: timeDifference),
+                                           endTime: context.hoursDateFormatter.hoursString(from: event.endDate),
+                                           eventName: event.title,
+                                           location: event.room.name,
+                                           icon: nil)
+        }
+        
+        private func makeExpectedViewModelForFavouriteEvent(from event: Event2) -> AnyHashable {
+            return EventComponentViewModel(startTime: context.hoursDateFormatter.hoursString(from: event.startDate),
                                            endTime: context.hoursDateFormatter.hoursString(from: event.endDate),
                                            eventName: event.title,
                                            location: event.room.name,

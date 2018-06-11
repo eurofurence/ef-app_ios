@@ -13,10 +13,19 @@ class StubEventsService: EventsService {
     
     var runningEvents: [Event2] = []
     var upcomingEvents: [Event2] = []
+    var allEvents: [Event2] = []
+    var favouriteEventIdentifiers: [Event2.Identifier] = []
+    
+    func stubSomeFavouriteEvents() {
+        allEvents = .random
+        favouriteEventIdentifiers = Array(allEvents.dropFirst()).map({ $0.identifier })
+    }
     
     func add(_ observer: EventsServiceObserver) {
+        observer.eurofurenceApplicationDidUpdateEvents(to: allEvents)
         observer.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents)
         observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: upcomingEvents)
+        observer.eventsServiceDidResolveFavouriteEvents(favouriteEventIdentifiers)
     }
     
     func favouriteEvent(identifier: Event2.Identifier) {
