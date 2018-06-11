@@ -38,6 +38,10 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
         return transaction?.persistedEvents
     }
     
+    func getSavedFavouriteEventIdentifiers() -> [Event2.Identifier]? {
+        return transaction?.persistedFavouriteEvents
+    }
+    
     private(set) var capturedKnowledgeGroupsToSave: [KnowledgeGroup2]?
     private(set) var transaction: CapturingEurofurenceDataStoreTransaction?
     var transactionInvokedBlock: (() -> Void)?

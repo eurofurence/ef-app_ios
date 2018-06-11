@@ -73,7 +73,8 @@ class Schedule {
         self.timeIntervalForUpcomingEventsSinceNow = timeIntervalForUpcomingEventsSinceNow
 
         eventBus.subscribe(consumer: ScheduleUpdater(schedule: self))
-        reconstituteEvents(from: dataStore)
+        reconstituteEventsFromDataStore()
+        reconstituteFavouritesFromDataStore()
     }
 
     // MARK: Functions
@@ -119,7 +120,7 @@ class Schedule {
         }
     }
 
-    private func reconstituteEvents(from dataStore: EurofurenceDataStore) {
+    private func reconstituteEventsFromDataStore() {
         let events = dataStore.getSavedEvents()
         let rooms = dataStore.getSavedRooms()
         let tracks = dataStore.getSavedTracks()
@@ -157,6 +158,10 @@ class Schedule {
                           bannerGraphicPNGData: bannerGraphicData,
                           isFavourite: false)
         })
+    }
+
+    private func reconstituteFavouritesFromDataStore() {
+        favouriteEventIdentifiers = dataStore.getSavedFavouriteEventIdentifiers() ?? []
     }
 
 }

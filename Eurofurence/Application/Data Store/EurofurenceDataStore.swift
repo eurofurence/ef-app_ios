@@ -19,6 +19,7 @@ protocol EurofurenceDataStore {
     func getSavedTracks() -> [APITrack]?
     func getSavedEvents() -> [APIEvent]?
     func getSavedAnnouncements() -> [APIAnnouncement]?
+    func getSavedFavouriteEventIdentifiers() -> [Event2.Identifier]?
 
 }
 
