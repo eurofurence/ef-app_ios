@@ -112,7 +112,8 @@ class Schedule {
                 bannerGraphicData = imageCache.cachedImageData(for: bannerImageIdentifier)
             }
 
-            return Event2(title: event.title,
+            return Event2(identifier: Event2.Identifier(event.identifier),
+                          title: event.title,
                           abstract: event.abstract,
                           room: Room(name: room.name),
                           track: Track(name: track.name),

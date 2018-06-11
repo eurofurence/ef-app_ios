@@ -10,6 +10,23 @@ import Foundation
 
 struct Event2: Equatable {
 
+    struct Identifier: Equatable, Hashable, RawRepresentable {
+
+        typealias RawValue = String
+
+        init(_ value: String) {
+            self.rawValue = value
+        }
+
+        init?(rawValue: String) {
+            self.rawValue = rawValue
+        }
+
+        var rawValue: String
+
+    }
+
+    var identifier: Event2.Identifier
     var title: String
     var abstract: String
     var room: Room

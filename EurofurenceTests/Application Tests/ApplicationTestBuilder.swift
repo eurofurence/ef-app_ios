@@ -153,7 +153,8 @@ class ApplicationTestBuilder {
             let expectedPosterGraphic = imageAPI.stubbedImage(for: event.posterImageId)
             let expectedBannerGraphic = imageAPI.stubbedImage(for: event.bannerImageId)
             
-            return Event2(title: event.title,
+            return Event2(identifier: Event2.Identifier(event.identifier),
+                          title: event.title,
                           abstract: event.abstract,
                           room: Room(name: expectedRoom.name),
                           track: Track(name: expectedTrack.name),

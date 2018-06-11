@@ -13,7 +13,8 @@ extension Event2: RandomValueProviding {
     
     static var random: Event2 {
         let startDate = Date.random
-        return Event2(title: .random,
+        return Event2(identifier: .random,
+                      title: .random,
                       abstract: .random,
                       room: .random,
                       track: .random,
@@ -24,6 +25,14 @@ extension Event2: RandomValueProviding {
                       posterGraphicPNGData: .random,
                       bannerGraphicPNGData: .random,
                       isFavourite: .random)
+    }
+    
+}
+
+extension Event2.Identifier: RandomValueProviding {
+    
+    static var random: Event2.Identifier {
+        return Event2.Identifier(.random)
     }
     
 }
