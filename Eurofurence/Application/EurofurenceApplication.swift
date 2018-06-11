@@ -149,6 +149,14 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         schedule.add(observer)
     }
 
+    func favouriteEvent(identifier: Event2.Identifier) {
+
+    }
+
+    func unfavouriteEvent(identifier: Event2.Identifier) {
+
+    }
+
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
         enum SyncError: Error {
             case failedToLoadResponse

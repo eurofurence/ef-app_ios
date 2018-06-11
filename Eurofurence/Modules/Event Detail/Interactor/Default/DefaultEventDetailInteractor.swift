@@ -48,6 +48,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         var components: [EventDetailViewModelComponent]
         var event: Event2
+        var eventsService: EventsService
 
         var numberOfComponents: Int {
             return components.count
@@ -67,23 +68,26 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
         }
 
         func favourite() {
-
+            eventsService.favouriteEvent(identifier: event.identifier)
         }
 
         func unfavourite() {
-
+            eventsService.unfavouriteEvent(identifier: event.identifier)
         }
 
     }
 
     private let dateRangeFormatter: DateRangeFormatter
+    private let eventsService: EventsService
 
     convenience init() {
-        self.init(dateRangeFormatter: FoundationDateRangeFormatter.shared)
+        self.init(dateRangeFormatter: FoundationDateRangeFormatter.shared,
+                  eventsService: EurofurenceApplication.shared)
     }
 
-    init(dateRangeFormatter: DateRangeFormatter) {
+    init(dateRangeFormatter: DateRangeFormatter, eventsService: EventsService) {
         self.dateRangeFormatter = dateRangeFormatter
+        self.eventsService = eventsService
     }
 
     func makeViewModel(for event: Event2, completionHandler: @escaping (EventDetailViewModel) -> Void) {
@@ -108,7 +112,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
             components.append(ViewModel.DescriptionComponent(viewModel: descriptionViewModel))
         }
 
-        let viewModel = ViewModel(components: components, event: event)
+        let viewModel = ViewModel(components: components, event: event, eventsService: eventsService)
         completionHandler(viewModel)
     }
 

@@ -19,4 +19,12 @@ class StubEventsService: EventsService {
         observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: upcomingEvents)
     }
     
+    func favouriteEvent(identifier: Event2.Identifier) {
+        
+    }
+    
+    func unfavouriteEvent(identifier: Event2.Identifier) {
+        
+    }
+    
 }

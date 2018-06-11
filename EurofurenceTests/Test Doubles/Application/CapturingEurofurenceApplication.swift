@@ -11,6 +11,14 @@ import Foundation
 
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
     
+    func favouriteEvent(identifier: Event2.Identifier) {
+        
+    }
+    
+    func unfavouriteEvent(identifier: Event2.Identifier) {
+        
+    }
+    
     var localPrivateMessages: [Message] = []
     
     private(set) var capturedStoreStateResolutionHandler: (((EurofurenceDataStoreState) -> Void))?

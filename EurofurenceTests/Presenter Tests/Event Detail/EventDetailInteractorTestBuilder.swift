@@ -8,6 +8,24 @@
 
 @testable import Eurofurence
 
+class CapturingEventsService: EventsService {
+    
+    func add(_ observer: EventsServiceObserver) {
+        
+    }
+    
+    private(set) var favouritedEventIdentifier: Event2.Identifier?
+    func favouriteEvent(identifier: Event2.Identifier) {
+        favouritedEventIdentifier = identifier
+    }
+    
+    private(set) var unfavouritedEventIdentifier: Event2.Identifier?
+    func unfavouriteEvent(identifier: Event2.Identifier) {
+        unfavouritedEventIdentifier = identifier
+    }
+    
+}
+
 class EventDetailInteractorTestBuilder {
     
     struct Context {
@@ -15,18 +33,21 @@ class EventDetailInteractorTestBuilder {
         var dateRangeFormatter: FakeDateRangeFormatter
         var interactor: DefaultEventDetailInteractor
         var viewModel: EventDetailViewModel?
+        var eventsService: CapturingEventsService
     }
     
     func build(for event: Event2 = .random) -> Context {
+        let eventsService = CapturingEventsService()
         let dateRangeFormatter = FakeDateRangeFormatter()
-        let interactor = DefaultEventDetailInteractor(dateRangeFormatter: dateRangeFormatter)
+        let interactor = DefaultEventDetailInteractor(dateRangeFormatter: dateRangeFormatter, eventsService: eventsService)
         var viewModel: EventDetailViewModel?
         interactor.makeViewModel(for: event) { viewModel = $0 }
         
         return Context(event: event,
                        dateRangeFormatter: dateRangeFormatter,
                        interactor: interactor,
-                       viewModel: viewModel)
+                       viewModel: viewModel,
+                       eventsService: eventsService)
     }
     
 }
