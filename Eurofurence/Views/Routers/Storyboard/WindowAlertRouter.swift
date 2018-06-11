@@ -32,7 +32,7 @@ struct WindowAlertRouter: AlertRouter {
             presenting = presented
         }
 
-        presenting.present(alertController, animated: true) { (_) in
+        presenting.present(alertController, animated: true) {
             alert.onCompletedPresentation?(Dismissable(viewController: presenting))
         }
     }

@@ -180,7 +180,7 @@ class SettingsTableViewController: FormViewController {
         form +++ Section("Data Storage")
             <<< ButtonRow {
                 $0.title = "Force Full Synchronisation"
-                }.onCellSelection { _ in
+                }.onCellSelection { _, _  in
 					// TODO: Provide feedback about background operations
 					let confirmationAlert = UIAlertController(title: "Force Full Synchronisation", message: "All data and all images missing from cache will be downloaded from the server.", preferredStyle: UIAlertControllerStyle.alert)
 					confirmationAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_: UIAlertAction!) in
@@ -194,7 +194,7 @@ class SettingsTableViewController: FormViewController {
 			}
 			<<< ButtonRow {
 				$0.title = "Clear Storage and Cache"
-				}.onCellSelection { _ in
+				}.onCellSelection { _, _  in
 					// TODO: Provide feedback about background operations
 					// TODO: Segue to start screen, asking the user to confirm inital sync
 					let confirmationAlert = UIAlertController(title: "Clear Storage and Cache", message: "All offline data will be deleted and must be downloaded again afterwards, before the app can be used again!", preferredStyle: UIAlertControllerStyle.alert)
@@ -217,7 +217,7 @@ class SettingsTableViewController: FormViewController {
 			}
 			<<< ButtonRow {
 				$0.title = "Clear Image Cache"
-				}.onCellSelection { _ in
+				}.onCellSelection { _, _  in
 					// TODO: Provide feedback about background operations
 					let confirmationAlert = UIAlertController(title: "Clear Image Cache", message: "All cached images will be deleted and must be downloaded again!", preferredStyle: UIAlertControllerStyle.alert)
 					confirmationAlert.addAction(UIAlertAction(title: "Clear Cache", style: .destructive, handler: { (_: UIAlertAction!) in
@@ -233,7 +233,7 @@ class SettingsTableViewController: FormViewController {
             <<< LabelRow { row in
                 let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
                 row.title = "Version: \(version)"
-				}.onCellSelection { _ in
+				}.onCellSelection { _, _  in
 					self.versionTapCount += 1
 					if let showDebugSettingsRow = self.form.rowBy(tag: "ShowDebugSettings") as? SwitchRow,
 						self.versionTapCount == 7 && !(showDebugSettingsRow.value ?? true) {

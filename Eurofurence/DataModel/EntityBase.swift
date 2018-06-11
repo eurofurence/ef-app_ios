@@ -25,7 +25,7 @@ class EntityBase: EVObject, Comparable, VersionedDataModel {
 		return lhs.equalTo(rhs)
 	}
 
-	public dynamic func equalTo(_ rhs: EntityBase) -> Bool {
+	@objc public dynamic func equalTo(_ rhs: EntityBase) -> Bool {
 		return self.Id == rhs.Id &&
 			self.LastChangeDateTimeUtc == rhs.LastChangeDateTimeUtc &&
 			self.IsDeleted == rhs.IsDeleted
@@ -35,7 +35,7 @@ class EntityBase: EVObject, Comparable, VersionedDataModel {
 		return lhs.lessThan(rhs)
 	}
 
-	public dynamic func lessThan(_ rhs: EntityBase) -> Bool {
+	@objc public dynamic func lessThan(_ rhs: EntityBase) -> Bool {
 		return self.LastChangeDateTimeUtc < rhs.LastChangeDateTimeUtc
 	}
 

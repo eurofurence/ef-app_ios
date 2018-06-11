@@ -134,7 +134,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 		adjustZoom(animated: true, doPanAndZoom: true)
 	}
 
-	func adjustZoom(animated: Bool = false, doPanAndZoom: Bool = true) {
+	@objc func adjustZoom(animated: Bool = false, doPanAndZoom: Bool = true) {
 		guard let mapImage = mapView?.image else {
 			return
 		}
@@ -184,7 +184,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 		}
 	}
 
-    func notificationRefresh(_ notification: Notification) {
+    @objc func notificationRefresh(_ notification: Notification) {
         DispatchQueue.main.async {
             self.reloadData()
         }
@@ -281,7 +281,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
         }
     }
 
-    func checkMapEntries(_ tapGesture: UITapGestureRecognizer) {
+    @objc func checkMapEntries(_ tapGesture: UITapGestureRecognizer) {
         guard let map = map, let mapView = mapView else {
 			return
 		}
@@ -428,7 +428,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
 		return scrollView.subviews.first
 	}
 
-    func zoom(_ tapGesture: UITapGestureRecognizer) {
+    @objc func zoom(_ tapGesture: UITapGestureRecognizer) {
         if (mapContainerView.zoomScale < mapContainerView.maximumZoomScale) {
             mapContainerView.setZoomScale(mapContainerView.zoomScale + mapContainerView.maximumZoomScale /  CGFloat(MapViewController.ZOOM_STEPS), animated: true)
         } else {

@@ -284,7 +284,7 @@ class DealerViewController: UIViewController {
 
 	// MARK: Actions
 
-	func openTelegramLink() {
+	@objc func openTelegramLink() {
 		guard let telegramHandle = dealer?.TelegramHandle else { return }
 
 		let telegramLink = DealerViewController.telegramLinkBase.appending(telegramHandle)
@@ -293,14 +293,14 @@ class DealerViewController: UIViewController {
 		open(link: telegramUrl)
 	}
 
-	func openTwitterLink() {
+	@objc func openTwitterLink() {
 		guard let twitterHandle = dealer?.TwitterHandle else { return }
 
 		let twitterLink = DealerViewController.twitterLinkBase.appending(twitterHandle)
         open(link: URL(string: twitterLink))
 	}
 
-	func openExternalLink() {
+	@objc func openExternalLink() {
 		guard let links = dealer?.Links, links.count > 0 else { return }
 
 		let linkFragment = links[0]
@@ -314,7 +314,7 @@ class DealerViewController: UIViewController {
 		}
 	}
 
-	func showOnMap(_ tapGesture: UITapGestureRecognizer) {
+	@objc func showOnMap(_ tapGesture: UITapGestureRecognizer) {
 		if let mapEntry = dealer?.MapEntry {
 			self.performSegue(withIdentifier: "DealerDetailViewToMapSegue", sender: mapEntry)
 		}

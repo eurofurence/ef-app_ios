@@ -170,7 +170,7 @@ class EventViewController: UIViewController {
 		}
 	}
 
-	func showOnMap(_ tapGesture: UITapGestureRecognizer) {
+	@objc func showOnMap(_ tapGesture: UITapGestureRecognizer) {
 		guard let event = event, let mapEntry = event.ConferenceRoom?.MapEntry else {
 			return
 		}

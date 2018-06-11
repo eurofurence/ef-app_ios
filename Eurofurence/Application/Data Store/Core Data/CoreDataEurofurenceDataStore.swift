@@ -126,7 +126,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         func saveLastRefreshDate(_ lastRefreshDate: Date) {
             mutations.append { (context) in
                 let entity = LastRefreshEntity(context: context)
-                entity.lastRefreshDate = lastRefreshDate as NSDate
+                entity.lastRefreshDate = lastRefreshDate
             }
         }
 
@@ -175,7 +175,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                     entity.identifier = announcement.identifier
                     entity.title = announcement.title
                     entity.content = announcement.content
-                    entity.lastChangedDateTime = announcement.lastChangedDateTime as NSDate
+                    entity.lastChangedDateTime = announcement.lastChangedDateTime
                 }
             }
         }
@@ -188,8 +188,8 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                     entity.identifier = event.identifier
                     entity.roomIdentifier = event.roomIdentifier
                     entity.trackIdentifier = event.trackIdentifier
-                    entity.startDateTime = event.startDateTime as NSDate
-                    entity.endDateTime = event.endDateTime as NSDate
+                    entity.startDateTime = event.startDateTime
+                    entity.endDateTime = event.endDateTime
                     entity.title = event.title
                     entity.abstract = event.abstract
                     entity.panelHosts = event.panelHosts

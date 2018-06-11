@@ -168,7 +168,7 @@ class NewsTableViewController: UITableViewController,
 
 	// TODO: Pull into super class for all refreshable ViewControllers
     /// Initiates sync with API via refreshControl
-    func refresh(_ sender: AnyObject) {
+    @objc func refresh(_ sender: AnyObject) {
 		DataStoreRefreshController.shared.refreshStore()
     }
 

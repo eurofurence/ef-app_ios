@@ -12,9 +12,9 @@ import Result
 
 class CurrentEventsViewModel {
 	let RunningEvents = MutableProperty<[Event]>([])
-	let RunningEventsEdits = MutableProperty<([Event], [Edit<Event>])>([] as [Event], [] as [Edit<Event>])
+	let RunningEventsEdits = MutableProperty<([Event], [Edit<Event>])>(([] as [Event], [] as [Edit<Event>]))
 	let UpcomingEvents = MutableProperty<[Event]>([])
-	let UpcomingEventsEdits = MutableProperty<([Event], [Edit<Event>])>([] as [Event], [] as [Edit<Event>])
+	let UpcomingEventsEdits = MutableProperty<([Event], [Edit<Event>])>(([] as [Event], [] as [Edit<Event>]))
 
 	private let dataContext: DataContextProtocol
 	private let timeService: TimeService = try! ServiceResolver.container.resolve()

@@ -38,7 +38,7 @@ class MessageDetailViewController: UITableViewController {
         let font = messageLabel.font!
         let size = message.contents.boundingRect(with: availableSize,
                                                  options: .usesLineFragmentOrigin,
-                                                 attributes: [NSFontAttributeName: font],
+                                                 attributes: [NSAttributedStringKey.font: font],
                                                  context: nil)
 
         let superHeight = super.tableView(tableView, heightForRowAt: indexPath)

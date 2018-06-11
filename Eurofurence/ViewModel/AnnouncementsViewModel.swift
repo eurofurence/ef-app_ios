@@ -12,7 +12,7 @@ import Result
 
 class AnnouncementsViewModel {
 	let Announcements = MutableProperty<[Announcement]>([])
-	let AnnouncementsEdits = MutableProperty<([Announcement], [Edit<Announcement>])>([] as [Announcement], [] as [Edit<Announcement>])
+	let AnnouncementsEdits = MutableProperty<([Announcement], [Edit<Announcement>])>(([] as [Announcement], [] as [Edit<Announcement>]))
 	let TimeSinceLastSync = MutableProperty<TimeInterval>(-1.0)
 	private let dataContext: DataContextProtocol
 	private let lastSyncDateProvider: LastSyncDateProviding

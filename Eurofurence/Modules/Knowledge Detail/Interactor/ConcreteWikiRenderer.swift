@@ -13,7 +13,7 @@ struct ConcreteWikiRenderer: WikiRenderer {
 
     func renderContents(from wikiText: String) -> NSAttributedString {
         let text = NSMutableAttributedString(attributedString: WikiText.transform(wikiText))
-        text.removeAttribute(NSForegroundColorAttributeName, range: NSRange(location: 0, length: text.length))
+        text.removeAttribute(NSAttributedStringKey.foregroundColor, range: NSRange(location: 0, length: text.length))
 
         return text
     }

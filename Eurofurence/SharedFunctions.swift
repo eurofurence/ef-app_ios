@@ -109,7 +109,7 @@ public extension UITableView {
 
 extension Collection {
 	/// Checks whether index is within the collection's bounds and returns null if not.
-	subscript (safe index: Index) -> Generator.Element? {
+	subscript (safe index: Index) -> Iterator.Element? {
 		return indices.contains(index) ? self[index] : nil
 	}
 }

@@ -48,7 +48,7 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
         var request = JSONRequest(url: url, body: messageContentsToSupportSwagger)
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
 
-        jsonSession.post(request, completionHandler: { (_) in })
+        jsonSession.post(request, completionHandler: { (_, _)  in })
     }
 
     // MARK: Private

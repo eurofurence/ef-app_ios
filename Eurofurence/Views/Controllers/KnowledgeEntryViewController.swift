@@ -88,7 +88,7 @@ class KnowledgeEntryViewController: UIViewController {
 		disposables.dispose()
 	}
 
-    func urlButtonAction(_ button: UIButton) {
+    @objc func urlButtonAction(_ button: UIButton) {
         if let link = buttonLinks[button] {
 			switch link.FragmentType {
 			case .DealerDetail:

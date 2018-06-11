@@ -23,14 +23,14 @@ class RefreshControlDataStoreDelegate: DataStoreRefreshDelegate {
 		}
 
 		refreshControl.attributedTitle = NSAttributedString(string: "Last sync: \(lastSyncText)", attributes: [
-			NSForegroundColorAttributeName: UIColor.lightText
+			NSAttributedStringKey.foregroundColor: UIColor.lightText
 			])
         refreshControl.beginRefreshing()
     }
 
 	func dataStoreRefreshDidFinish() {
 		refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh", attributes: [
-			NSForegroundColorAttributeName: UIColor.lightText
+			NSAttributedStringKey.foregroundColor: UIColor.lightText
 			])
         refreshControl.endRefreshing()
     }
