@@ -43,7 +43,16 @@ class Schedule {
         }
     }
 
-    private var favouriteEventIdentifiers = [Event2.Identifier]()
+    private var favouriteEventIdentifiers = [Event2.Identifier]() {
+        didSet {
+            favouriteEventIdentifiers.sort { (first, second) -> Bool in
+                guard let firstEvent = models.first(where: { $0.identifier == first }) else { return false }
+                guard let secondEvent = models.first(where: { $0.identifier == second }) else { return false }
+
+                return firstEvent.startDate < secondEvent.startDate
+            }
+        }
+    }
 
     var runningEvents: [Event2] {
         let now = clock.currentDate
@@ -90,7 +99,6 @@ class Schedule {
         }
 
         favouriteEventIdentifiers.append(identifier)
-        reorderFavouriteEventsByEventStartTime()
         provideFavouritesInformationToObservers()
     }
 
@@ -158,19 +166,10 @@ class Schedule {
                           posterGraphicPNGData: posterGraphicData,
                           bannerGraphicPNGData: bannerGraphicData)
         })
-
-        reorderFavouriteEventsByEventStartTime()
     }
 
     private func reconstituteFavouritesFromDataStore() {
         favouriteEventIdentifiers = dataStore.getSavedFavouriteEventIdentifiers() ?? []
-        reorderFavouriteEventsByEventStartTime()
-    }
-
-    private func reorderFavouriteEventsByEventStartTime() {
-        let events = models.filter(isFavourite)
-        let ordered = events.sorted(by: { $0.startDate < $1.startDate })
-        favouriteEventIdentifiers = ordered.map({ $0.identifier })
     }
 
     private func isFavourite(_ event: Event2) -> Bool {
