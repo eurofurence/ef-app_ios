@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import UIKit.UIViewController
 
-class StubEventsModuleFactory: EventsModuleProviding {
+class StubEventsModuleFactory: ScheduleModuleProviding {
     
     let stubInterface = UIViewController()
     func makeEventsModule() -> UIViewController {

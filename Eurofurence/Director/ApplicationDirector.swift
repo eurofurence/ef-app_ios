@@ -35,7 +35,7 @@ class ApplicationDirector: RootModuleDelegate,
     private let preloadModuleProviding: PreloadModuleProviding
     private let tabModuleProviding: TabModuleProviding
     private let newsModuleProviding: NewsModuleProviding
-    private let eventsModuleProviding: EventsModuleProviding
+    private let eventsModuleProviding: ScheduleModuleProviding
     private let dealersModuleProviding: DealersModuleProviding
     private let messagesModuleProviding: MessagesModuleProviding
     private let loginModuleProviding: LoginModuleProviding
@@ -64,7 +64,7 @@ class ApplicationDirector: RootModuleDelegate,
          preloadModuleProviding: PreloadModuleProviding,
          tabModuleProviding: TabModuleProviding,
          newsModuleProviding: NewsModuleProviding,
-         eventsModuleProviding: EventsModuleProviding,
+         eventsModuleProviding: ScheduleModuleProviding,
          dealersModuleProviding: DealersModuleProviding,
          messagesModuleProviding: MessagesModuleProviding,
          loginModuleProviding: LoginModuleProviding,

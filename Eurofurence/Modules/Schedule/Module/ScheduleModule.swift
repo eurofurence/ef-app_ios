@@ -1,5 +1,5 @@
 //
-//  EventsModule.swift
+//  ScheduleModule.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 22/04/2018.
@@ -8,7 +8,7 @@
 
 import UIKit.UIViewController
 
-struct EventsModule: EventsModuleProviding {
+struct ScheduleModule: ScheduleModuleProviding {
 
     var eventsSceneFactory: ScheduleSceneFactory
 

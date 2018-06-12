@@ -20,7 +20,7 @@ class DirectorBuilder {
     private var preloadModuleProviding: PreloadModuleProviding
     private var tabModuleProviding: TabModuleProviding
     private var newsModuleProviding: NewsModuleProviding
-    private var eventsModuleProviding: EventsModuleProviding
+    private var eventsModuleProviding: ScheduleModuleProviding
     private var dealersModuleProviding: DealersModuleProviding
     private var messagesModuleProviding: MessagesModuleProviding
     private var loginModuleProviding: LoginModuleProviding
@@ -41,7 +41,7 @@ class DirectorBuilder {
         tutorialModuleProviding = TutorialModuleBuilder().build()
         preloadModuleProviding = PreloadModuleBuilder().build()
         newsModuleProviding = NewsModuleBuilder().build()
-        eventsModuleProviding = EventsModuleBuilder().build()
+        eventsModuleProviding = ScheduleModuleBuilder().build()
         dealersModuleProviding = DealersModuleBuilder().build()
         messagesModuleProviding = MessagesModuleBuilder().build()
         loginModuleProviding = LoginModuleBuilder().build()
@@ -111,7 +111,7 @@ class DirectorBuilder {
     }
 
     @discardableResult
-    func with(_ eventsModuleProviding: EventsModuleProviding) -> DirectorBuilder {
+    func with(_ eventsModuleProviding: ScheduleModuleProviding) -> DirectorBuilder {
         self.eventsModuleProviding = eventsModuleProviding
         return self
     }

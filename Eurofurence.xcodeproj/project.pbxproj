@@ -388,9 +388,9 @@
 		CA63757A208CDB7B00536BE2 /* Message+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637579208CDB7B00536BE2 /* Message+RandomValueProviding.swift */; };
 		CA63757C208CDBAA00536BE2 /* Date+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63757B208CDBAA00536BE2 /* Date+RandomValueProviding.swift */; };
 		CA63757E208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63757D208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift */; };
-		CA637582208CDE2000536BE2 /* EventsModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637581208CDE2000536BE2 /* EventsModuleProviding.swift */; };
-		CA637584208CDE3F00536BE2 /* EventsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637583208CDE3F00536BE2 /* EventsModuleBuilder.swift */; };
-		CA637586208CDE5D00536BE2 /* EventsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637585208CDE5D00536BE2 /* EventsModule.swift */; };
+		CA637582208CDE2000536BE2 /* ScheduleModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637581208CDE2000536BE2 /* ScheduleModuleProviding.swift */; };
+		CA637584208CDE3F00536BE2 /* ScheduleModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637583208CDE3F00536BE2 /* ScheduleModuleBuilder.swift */; };
+		CA637586208CDE5D00536BE2 /* ScheduleModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637585208CDE5D00536BE2 /* ScheduleModule.swift */; };
 		CA637588208CDE9000536BE2 /* StubEventsModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637587208CDE9000536BE2 /* StubEventsModuleProviding.swift */; };
 		CA63758C208CE06100536BE2 /* WhenBuildingScheduleModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63758B208CE06100536BE2 /* WhenBuildingScheduleModule.swift */; };
 		CA637590208CE4E100536BE2 /* ScheduleSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63758F208CE4E100536BE2 /* ScheduleSceneFactory.swift */; };
@@ -1226,9 +1226,9 @@
 		CA637579208CDB7B00536BE2 /* Message+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA63757B208CDBAA00536BE2 /* Date+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA63757D208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenUserSelectsKnowledgeEntry_DirectorShould.swift; sourceTree = "<group>"; };
-		CA637581208CDE2000536BE2 /* EventsModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModuleProviding.swift; sourceTree = "<group>"; };
-		CA637583208CDE3F00536BE2 /* EventsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModuleBuilder.swift; sourceTree = "<group>"; };
-		CA637585208CDE5D00536BE2 /* EventsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModule.swift; sourceTree = "<group>"; };
+		CA637581208CDE2000536BE2 /* ScheduleModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModuleProviding.swift; sourceTree = "<group>"; };
+		CA637583208CDE3F00536BE2 /* ScheduleModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModuleBuilder.swift; sourceTree = "<group>"; };
+		CA637585208CDE5D00536BE2 /* ScheduleModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModule.swift; sourceTree = "<group>"; };
 		CA637587208CDE9000536BE2 /* StubEventsModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubEventsModuleProviding.swift; sourceTree = "<group>"; };
 		CA63758B208CE06100536BE2 /* WhenBuildingScheduleModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingScheduleModule.swift; sourceTree = "<group>"; };
 		CA63758F208CE4E100536BE2 /* ScheduleSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSceneFactory.swift; sourceTree = "<group>"; };
@@ -1783,7 +1783,7 @@
 				6EF96CE81F126B0400EE6134 /* Bootstrap */,
 				CA6375A3208E008A00536BE2 /* Dealers */,
 				CACF1E4920AE2A3D00D904B5 /* Event Detail */,
-				CA63757F208CDE1000536BE2 /* Events */,
+				CA63757F208CDE1000536BE2 /* Schedule */,
 				CA6EC46E2051655600402894 /* Knowledge Detail */,
 				CA73AEE0201A084C004E77BF /* Knowledge List */,
 				CABA43841FBC6FD3009CB5B0 /* Login */,
@@ -2764,21 +2764,21 @@
 			path = "Test Doubles";
 			sourceTree = "<group>";
 		};
-		CA63757F208CDE1000536BE2 /* Events */ = {
+		CA63757F208CDE1000536BE2 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
 				CA637580208CDE1A00536BE2 /* Module */,
 				CA63758D208CE4D500536BE2 /* View */,
 			);
-			path = Events;
+			path = Schedule;
 			sourceTree = "<group>";
 		};
 		CA637580208CDE1A00536BE2 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				CA637581208CDE2000536BE2 /* EventsModuleProviding.swift */,
-				CA637583208CDE3F00536BE2 /* EventsModuleBuilder.swift */,
-				CA637585208CDE5D00536BE2 /* EventsModule.swift */,
+				CA637581208CDE2000536BE2 /* ScheduleModuleProviding.swift */,
+				CA637583208CDE3F00536BE2 /* ScheduleModuleBuilder.swift */,
+				CA637585208CDE5D00536BE2 /* ScheduleModule.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -4678,7 +4678,7 @@
 				CABEB0DF20C9C7ED000BEE66 /* EurofurenceApplicationModel.xcdatamodeld in Sources */,
 				CA0E5220208FC994005259FE /* NewsUserWidgetTableViewCell.swift in Sources */,
 				CAD780431F1D4CA3002A8333 /* Credential.swift in Sources */,
-				CA637582208CDE2000536BE2 /* EventsModuleProviding.swift in Sources */,
+				CA637582208CDE2000536BE2 /* ScheduleModuleProviding.swift in Sources */,
 				CACF1E5A20AE2DFB00D904B5 /* EventDetailScene.swift in Sources */,
 				9ACF99931EC858B2006FC958 /* Dealer.swift in Sources */,
 				CA162E7020A4B691004AFED6 /* DateDistanceCalculator.swift in Sources */,
@@ -5039,7 +5039,7 @@
 				CA2D07FB1FE902ED00BFD785 /* EurofurenceDataStore.swift in Sources */,
 				CABA438D1FBCDBDF009CB5B0 /* LoginPresenter.swift in Sources */,
 				CA6375A8208E011C00536BE2 /* DealersModuleBuilder.swift in Sources */,
-				CA637586208CDE5D00536BE2 /* EventsModule.swift in Sources */,
+				CA637586208CDE5D00536BE2 /* ScheduleModule.swift in Sources */,
 				CA9845DA1F29199E00E8821D /* ScreenshotAssistant.swift in Sources */,
 				7820A6F81F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift in Sources */,
 				CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */,
@@ -5064,7 +5064,7 @@
 				CA72848A209F927B007D912A /* DefaultAnnouncementDetailInteractorFactory.swift in Sources */,
 				CA8E7EF61FB08E2500F0BF10 /* PhoneWindowWireframe.swift in Sources */,
 				9A861ED51F25564900B75A8C /* StoryboardTutorialRouter.swift in Sources */,
-				CA637584208CDE3F00536BE2 /* EventsModuleBuilder.swift in Sources */,
+				CA637584208CDE3F00536BE2 /* ScheduleModuleBuilder.swift in Sources */,
 				CA0F761F203229CF009DA079 /* KnowledgeBaseViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

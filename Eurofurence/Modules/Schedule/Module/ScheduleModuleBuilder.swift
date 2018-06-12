@@ -1,5 +1,5 @@
 //
-//  EventsModuleBuilder.swift
+//  ScheduleModuleBuilder.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 22/04/2018.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit.UIViewController
 
-class EventsModuleBuilder {
+class ScheduleModuleBuilder {
 
     private var eventsSceneFactory: ScheduleSceneFactory
 
@@ -18,13 +18,13 @@ class EventsModuleBuilder {
     }
 
     @discardableResult
-    func with(_ eventsSceneFactory: ScheduleSceneFactory) -> EventsModuleBuilder {
+    func with(_ eventsSceneFactory: ScheduleSceneFactory) -> ScheduleModuleBuilder {
         self.eventsSceneFactory = eventsSceneFactory
         return self
     }
 
-    func build() -> EventsModuleProviding {
-        return EventsModule(eventsSceneFactory: eventsSceneFactory)
+    func build() -> ScheduleModuleProviding {
+        return ScheduleModule(eventsSceneFactory: eventsSceneFactory)
     }
 
 }

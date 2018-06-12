@@ -1,5 +1,5 @@
 //
-//  EventsModuleProviding.swift
+//  ScheduleModuleProviding.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 22/04/2018.
@@ -8,7 +8,7 @@
 
 import UIKit.UIViewController
 
-protocol EventsModuleProviding {
+protocol ScheduleModuleProviding {
 
     func makeEventsModule() -> UIViewController
 
