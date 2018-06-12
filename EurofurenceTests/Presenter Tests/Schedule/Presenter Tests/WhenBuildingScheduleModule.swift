@@ -1,5 +1,5 @@
 //
-//  WhenBuildingEventsModule.swift
+//  WhenBuildingScheduleModule.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 22/04/2018.
@@ -9,15 +9,15 @@
 @testable import Eurofurence
 import XCTest
 
-class WhenBuildingEventsModule: XCTestCase {
+class WhenBuildingScheduleModule: XCTestCase {
     
     func testTheSceneFromTheFactoryIsReturnedFromTheModule() {
-        let context = EventsPresenterTestBuilder().build()
+        let context = SchedulePresenterTestBuilder().build()
         XCTAssertTrue(context.scene === context.producedViewController)
     }
     
-    func testTheSceneIsToldToShowTheEventsTitle() {
-        let context = EventsPresenterTestBuilder().build()
+    func testTheSceneIsToldToShowTheScheduleTitle() {
+        let context = SchedulePresenterTestBuilder().build()
         XCTAssertEqual(.events, context.scene.capturedTitle)
     }
     

@@ -1,5 +1,5 @@
 //
-//  EventsViewController.swift
+//  ScheduleViewController.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 23/04/2018.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class EventsViewController: UIViewController, EventsScene {
+class ScheduleViewController: UIViewController, ScheduleScene {
 
     // MARK: EventsScene
 
-    func setEventsTitle(_ title: String) {
+    func setScheduleTitle(_ title: String) {
         super.title = title
     }
 

@@ -1,5 +1,5 @@
 //
-//  CapturingEventsScene.swift
+//  CapturingScheduleScene.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 23/04/2018.
@@ -9,10 +9,10 @@
 @testable import Eurofurence
 import UIKit.UIViewController
 
-class CapturingEventsScene: UIViewController, EventsScene {
+class CapturingScheduleScene: UIViewController, ScheduleScene {
     
     private(set) var capturedTitle: String?
-    func setEventsTitle(_ title: String) {
+    func setScheduleTitle(_ title: String) {
         capturedTitle = title
     }
     

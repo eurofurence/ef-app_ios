@@ -1,5 +1,5 @@
 //
-//  EventsPresenterTestBuilder.swift
+//  SchedulePresenterTestBuilder.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 23/04/2018.
@@ -9,15 +9,15 @@
 @testable import Eurofurence
 import UIKit.UIViewController
 
-class EventsPresenterTestBuilder {
+class SchedulePresenterTestBuilder {
     
     struct Context {
         var producedViewController: UIViewController
-        var scene: CapturingEventsScene
+        var scene: CapturingScheduleScene
     }
     
     func build() -> Context {
-        let sceneFactory = StubEventsSceneFactory()
+        let sceneFactory = StubScheduleSceneFactory()
         let viewController = EventsModuleBuilder().with(sceneFactory).build().makeEventsModule()
         
         return Context(producedViewController: viewController, scene: sceneFactory.scene)

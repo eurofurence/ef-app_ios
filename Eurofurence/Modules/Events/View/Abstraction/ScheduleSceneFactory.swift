@@ -1,5 +1,5 @@
 //
-//  EventsSceneFactory.swift
+//  ScheduleSceneFactory.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 22/04/2018.
@@ -8,8 +8,8 @@
 
 import UIKit.UIViewController
 
-protocol EventsSceneFactory {
+protocol ScheduleSceneFactory {
 
-    func makeEventsScene() -> UIViewController & EventsScene
+    func makeEventsScene() -> UIViewController & ScheduleScene
 
 }

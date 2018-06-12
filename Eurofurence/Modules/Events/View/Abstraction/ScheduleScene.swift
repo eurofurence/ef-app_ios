@@ -1,13 +1,13 @@
 //
-//  EventsScene.swift
+//  ScheduleScene.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 22/04/2018.
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-protocol EventsScene {
+protocol ScheduleScene {
 
-    func setEventsTitle(_ title: String)
+    func setScheduleTitle(_ title: String)
 
 }

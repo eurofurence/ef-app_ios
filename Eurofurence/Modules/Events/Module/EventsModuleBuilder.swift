@@ -11,14 +11,14 @@ import UIKit.UIViewController
 
 class EventsModuleBuilder {
 
-    private var eventsSceneFactory: EventsSceneFactory
+    private var eventsSceneFactory: ScheduleSceneFactory
 
     init() {
-        eventsSceneFactory = StoryboardEventsSceneFactory()
+        eventsSceneFactory = StoryboardScheduleSceneFactory()
     }
 
     @discardableResult
-    func with(_ eventsSceneFactory: EventsSceneFactory) -> EventsModuleBuilder {
+    func with(_ eventsSceneFactory: ScheduleSceneFactory) -> EventsModuleBuilder {
         self.eventsSceneFactory = eventsSceneFactory
         return self
     }

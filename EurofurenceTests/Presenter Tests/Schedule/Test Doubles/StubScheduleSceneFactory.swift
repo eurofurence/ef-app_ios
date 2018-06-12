@@ -1,5 +1,5 @@
 //
-//  StubEventsSceneFactory.swift
+//  StubScheduleSceneFactory.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 23/04/2018.
@@ -9,10 +9,10 @@
 @testable import Eurofurence
 import UIKit.UIViewController
 
-class StubEventsSceneFactory: EventsSceneFactory {
+class StubScheduleSceneFactory: ScheduleSceneFactory {
     
-    let scene = CapturingEventsScene()
-    func makeEventsScene() -> UIViewController & EventsScene {
+    let scene = CapturingScheduleScene()
+    func makeEventsScene() -> UIViewController & ScheduleScene {
         return scene
     }
     

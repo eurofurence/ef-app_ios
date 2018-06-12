@@ -10,11 +10,11 @@ import UIKit.UIViewController
 
 struct EventsModule: EventsModuleProviding {
 
-    var eventsSceneFactory: EventsSceneFactory
+    var eventsSceneFactory: ScheduleSceneFactory
 
     func makeEventsModule() -> UIViewController {
         let scene = eventsSceneFactory.makeEventsScene()
-        scene.setEventsTitle(.events)
+        scene.setScheduleTitle(.events)
 
         return scene
     }

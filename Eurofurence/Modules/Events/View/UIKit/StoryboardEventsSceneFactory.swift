@@ -1,5 +1,5 @@
 //
-//  StoryboardEventsSceneFactory.swift
+//  StoryboardScheduleSceneFactory.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 23/04/2018.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-struct StoryboardEventsSceneFactory: EventsSceneFactory {
+struct StoryboardScheduleSceneFactory: ScheduleSceneFactory {
 
-    private let storyboard = UIStoryboard(name: "Events", bundle: .main)
+    private let storyboard = UIStoryboard(name: "Schedule", bundle: .main)
 
-    func makeEventsScene() -> UIViewController & EventsScene {
-        return storyboard.instantiate(EventsViewController.self)
+    func makeEventsScene() -> UIViewController & ScheduleScene {
+        return storyboard.instantiate(ScheduleViewController.self)
     }
 
 }
