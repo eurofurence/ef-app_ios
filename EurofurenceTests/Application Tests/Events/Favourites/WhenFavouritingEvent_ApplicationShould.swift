@@ -11,9 +11,14 @@ import XCTest
 
 class WhenFavouritingEvent_ApplicationShould: XCTestCase {
     
-    func testTellTheDataStoreToSaveTheEventIdentifier() {
+    var context: ApplicationTestBuilder.Context!
+    var events: [APIEvent]!
+    
+    override func setUp() {
+        super.setUp()
+        
         let response = APISyncResponse.randomWithoutDeletions
-        let events = response.events.changed
+        events = response.events.changed
         let dataStore = CapturingEurofurenceDataStore()
         dataStore.performTransaction { (transaction) in
             transaction.saveEvents(response.events.changed)
@@ -21,7 +26,10 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
             transaction.saveTracks(response.tracks.changed)
         }
         
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        context = ApplicationTestBuilder().with(dataStore).build()
+    }
+    
+    func testTellTheDataStoreToSaveTheEventIdentifier() {
         let identifier = Event2.Identifier(events.randomElement().element.identifier)
         context.application.favouriteEvent(identifier: identifier)
         
@@ -29,16 +37,6 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
     }
     
     func testTellEventsObserversTheEventIsNowFavourited() {
-        let response = APISyncResponse.randomWithoutDeletions
-        let events = response.events.changed
-        let dataStore = CapturingEurofurenceDataStore()
-        dataStore.performTransaction { (transaction) in
-            transaction.saveEvents(response.events.changed)
-            transaction.saveRooms(response.rooms.changed)
-            transaction.saveTracks(response.tracks.changed)
-        }
-        
-        let context = ApplicationTestBuilder().with(dataStore).build()
         let identifier = Event2.Identifier(events.randomElement().element.identifier)
         let observer = CapturingEventsServiceObserver()
         context.application.add(observer)
@@ -48,16 +46,6 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
     }
     
     func testTellLateAddedObserversAboutTheFavouritedEvent() {
-        let response = APISyncResponse.randomWithoutDeletions
-        let events = response.events.changed
-        let dataStore = CapturingEurofurenceDataStore()
-        dataStore.performTransaction { (transaction) in
-            transaction.saveEvents(response.events.changed)
-            transaction.saveRooms(response.rooms.changed)
-            transaction.saveTracks(response.tracks.changed)
-        }
-        
-        let context = ApplicationTestBuilder().with(dataStore).build()
         let identifier = Event2.Identifier(events.randomElement().element.identifier)
         let observer = CapturingEventsServiceObserver()
         context.application.favouriteEvent(identifier: identifier)
@@ -67,27 +55,12 @@ class WhenFavouritingEvent_ApplicationShould: XCTestCase {
     }
     
     func testOrganiseTheFavouritesInStartTimeOrder() {
-        let response = APISyncResponse.randomWithoutDeletions
-        let events = response.events.changed
-        let identifier = events.randomElement().element.identifier
-        let storedFavourites = events.map({ $0.identifier })
-        let dataStore = CapturingEurofurenceDataStore()
-        dataStore.performTransaction { (transaction) in
-            transaction.saveEvents(response.events.changed)
-            transaction.saveRooms(response.rooms.changed)
-            transaction.saveTracks(response.tracks.changed)
-            
-            for storedFavourite in storedFavourites {
-                if storedFavourite != identifier {
-                    transaction.saveFavouriteEventIdentifier(Event2.Identifier(storedFavourite))
-                }
-            }
-        }
-        
-        let context = ApplicationTestBuilder().with(dataStore).build()
+        let identifier = Event2.Identifier(events.randomElement().element.identifier)
+        let storedFavourites = events.map({ Event2.Identifier($0.identifier) })
+        storedFavourites.filter({ $0 != identifier }).forEach(context.application.favouriteEvent)
         let observer = CapturingEventsServiceObserver()
         context.application.add(observer)
-        context.application.favouriteEvent(identifier: Event2.Identifier(identifier))
+        context.application.favouriteEvent(identifier: identifier)
         let expected = events.sorted(by: { $0.startDateTime < $1.startDateTime }).map({ Event2.Identifier($0.identifier) })
         
         XCTAssertEqual(expected, observer.capturedFavouriteEventIdentifiers)
