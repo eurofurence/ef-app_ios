@@ -90,6 +90,7 @@ class Schedule {
         }
 
         favouriteEventIdentifiers.append(identifier)
+        reorderFavouriteEventsByEventStartTime()
         provideFavouritesInformationToObservers()
     }
 

@@ -12,18 +12,36 @@ import XCTest
 class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
     
     func testTellEventsObserversTheEventsAreNowFavourited() {
-        let context = ApplicationTestBuilder().build()
-        let identifiers = [Event2.Identifier].random
+        let response = APISyncResponse.randomWithoutDeletions
+        let events = response.events.changed
+        let dataStore = CapturingEurofurenceDataStore()
+        dataStore.performTransaction { (transaction) in
+            transaction.saveEvents(response.events.changed)
+            transaction.saveRooms(response.rooms.changed)
+            transaction.saveTracks(response.tracks.changed)
+        }
+        
+        let context = ApplicationTestBuilder().with(dataStore).build()
+        let identifiers = events.map({ Event2.Identifier($0.identifier) })
         let observer = CapturingEventsServiceObserver()
         context.application.add(observer)
         identifiers.forEach(context.application.favouriteEvent)
         
-        XCTAssertEqual(identifiers, observer.capturedFavouriteEventIdentifiers)
+        XCTAssertTrue(identifiers.contains(elementsFrom: observer.capturedFavouriteEventIdentifiers))
     }
     
     func testTellEventsObserversWhenOnlyOneEventHasBeenUnfavourited() {
-        let context = ApplicationTestBuilder().build()
-        let identifiers = [Event2.Identifier].random
+        let response = APISyncResponse.randomWithoutDeletions
+        let events = response.events.changed
+        let dataStore = CapturingEurofurenceDataStore()
+        dataStore.performTransaction { (transaction) in
+            transaction.saveEvents(response.events.changed)
+            transaction.saveRooms(response.rooms.changed)
+            transaction.saveTracks(response.tracks.changed)
+        }
+        
+        let context = ApplicationTestBuilder().with(dataStore).build()
+        let identifiers = events.map({ Event2.Identifier($0.identifier) })
         let observer = CapturingEventsServiceObserver()
         context.application.add(observer)
         identifiers.forEach(context.application.favouriteEvent)
@@ -32,7 +50,7 @@ class WhenFavouritingMultipleEvents_ApplicationShould: XCTestCase {
         var expected = identifiers
         expected.remove(at: randomIdentifier.index)
         
-        XCTAssertEqual(expected, observer.capturedFavouriteEventIdentifiers)
+        XCTAssertTrue(expected.contains(elementsFrom: observer.capturedFavouriteEventIdentifiers))
     }
     
     func testSortTheFavouriteIdentifiersByEventStartTime() {
