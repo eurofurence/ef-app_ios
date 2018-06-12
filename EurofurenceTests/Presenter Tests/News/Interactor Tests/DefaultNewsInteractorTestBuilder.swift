@@ -141,9 +141,13 @@ extension DefaultNewsInteractorTestBuilder.Context {
     
     class ViewModelAssertionBuilder {
         
-        fileprivate struct Component {
+        fileprivate struct Component: CustomStringConvertible {
             var title: String
             var components: [AnyHashable]
+            
+            var description: String {
+                return "\(title) | \(components)"
+            }
         }
         
         private var components = [Component]()
@@ -339,7 +343,8 @@ fileprivate extension DefaultNewsInteractorTestBuilder.Context {
             let actual = traverse(through: viewModel)
             
             guard actual.count == components.count else {
-                XCTFail("Expected \(components.count) components; got \(actual.count)",
+                let description = "Expected \(components.count) components; got \(actual.count)\n\n\(components)\n\n\(actual)"
+                XCTFail(description,
                     file: file,
                     line: line)
                 return
