@@ -51,6 +51,8 @@ class Schedule {
 
                 return firstEvent.startDate < secondEvent.startDate
             }
+
+            provideFavouritesInformationToObservers()
         }
     }
 
@@ -99,7 +101,6 @@ class Schedule {
         }
 
         favouriteEventIdentifiers.append(identifier)
-        provideFavouritesInformationToObservers()
     }
 
     func unfavouriteEvent(identifier: Event2.Identifier) {
@@ -110,8 +111,6 @@ class Schedule {
         if let idx = favouriteEventIdentifiers.index(of: identifier) {
             favouriteEventIdentifiers.remove(at: idx)
         }
-
-        provideFavouritesInformationToObservers()
     }
 
     // MARK: Private
