@@ -224,6 +224,7 @@
 		CA00AE6720D1784500C2FBB0 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA00AE6520D1784500C2FBB0 /* EventTableViewCell.xib */; };
 		CA00AE6C20D178FA00C2FBB0 /* UITableView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE6B20D178FA00C2FBB0 /* UITableView+Convenience.swift */; };
 		CA00AE6E20D179ED00C2FBB0 /* EventTableViewCell+NewsEventComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE6D20D179ED00C2FBB0 /* EventTableViewCell+NewsEventComponent.swift */; };
+		CA00AE7020D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE6F20D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift */; };
 		CA057A5B2088BDBB00504FA4 /* NewsAnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */; };
 		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
 		CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5206208E700E005259FE /* DealersViewController.swift */; };
@@ -1081,6 +1082,7 @@
 		CA00AE6520D1784500C2FBB0 /* EventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
 		CA00AE6B20D178FA00C2FBB0 /* UITableView+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Convenience.swift"; sourceTree = "<group>"; };
 		CA00AE6D20D179ED00C2FBB0 /* EventTableViewCell+NewsEventComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventTableViewCell+NewsEventComponent.swift"; sourceTree = "<group>"; };
+		CA00AE6F20D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventTableViewCell+ScheduleEventComponent.swift"; sourceTree = "<group>"; };
 		CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsAnnouncementTableViewCell.swift; sourceTree = "<group>"; };
 		CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardDealersSceneFactory.swift; sourceTree = "<group>"; };
 		CA0E5206208E700E005259FE /* DealersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersViewController.swift; sourceTree = "<group>"; };
@@ -2936,6 +2938,7 @@
 			isa = PBXGroup;
 			children = (
 				CA63759B208DFDF900536BE2 /* Schedule.storyboard */,
+				CA00AE6F20D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift */,
 				CA63759D208DFE0500536BE2 /* ScheduleViewController.swift */,
 				CA63759F208DFE2E00536BE2 /* StoryboardEventsSceneFactory.swift */,
 			);
@@ -5052,6 +5055,7 @@
 				CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */,
 				CAA39E0820051B5C00F2F3D3 /* LocalizedStrings.swift in Sources */,
 				D6F3DEDDAFE507E873CB3806 /* WikiText.swift in Sources */,
+				CA00AE7020D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift in Sources */,
 				CA72846A209D1442007D912A /* AnnouncementViewModel.swift in Sources */,
 				CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */,
 				9A80EF4E1F28C78900FD0D37 /* TargetRouter.swift in Sources */,
