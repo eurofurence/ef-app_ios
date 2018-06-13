@@ -10,6 +10,17 @@ import Foundation
 
 struct SchedulePresenter: ScheduleSceneDelegate, ScheduleInteractorDelegate {
 
+    private struct Binder: ScheduleSceneBinder {
+
+        var viewModel: ScheduleViewModel
+
+        func bind(_ header: ScheduleEventGroupHeader, forGroupAt index: Int) {
+            let group = viewModel.eventGroups[index]
+            header.setEventGroupTitle(group.title)
+        }
+
+    }
+
     private let scene: ScheduleScene
     private let interactor: ScheduleInteractor
 
@@ -26,7 +37,8 @@ struct SchedulePresenter: ScheduleSceneDelegate, ScheduleInteractorDelegate {
 
     func scheduleInteractorDidPrepareViewModel(_ viewModel: ScheduleViewModel) {
         let numberOfItemsPerGroup = viewModel.eventGroups.map { $0.events.count }
-        scene.bind(numberOfItemsPerSection: numberOfItemsPerGroup)
+        let binder = Binder(viewModel: viewModel)
+        scene.bind(numberOfItemsPerSection: numberOfItemsPerGroup, using: binder)
     }
 
 }

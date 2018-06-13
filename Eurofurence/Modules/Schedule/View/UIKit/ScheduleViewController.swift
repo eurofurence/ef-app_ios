@@ -28,7 +28,7 @@ class ScheduleViewController: UIViewController, ScheduleScene {
         super.title = title
     }
 
-    func bind(numberOfItemsPerSection: [Int]) {
+    func bind(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder) {
 
     }
 

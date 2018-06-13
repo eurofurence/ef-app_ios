@@ -213,6 +213,10 @@
 		CA00AE5020D16D8900C2FBB0 /* WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4F20D16D8900C2FBB0 /* WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift */; };
 		CA00AE5220D16FC000C2FBB0 /* ScheduleEventGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE5120D16FC000C2FBB0 /* ScheduleEventGroupViewModel.swift */; };
 		CA00AE5420D16FD300C2FBB0 /* ScheduleEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE5320D16FD300C2FBB0 /* ScheduleEventViewModel.swift */; };
+		CA00AE5620D1710300C2FBB0 /* WhenBindingEventGroup_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE5520D1710300C2FBB0 /* WhenBindingEventGroup_SchedulePresenterShould.swift */; };
+		CA00AE5820D171D600C2FBB0 /* ScheduleSceneBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE5720D171D600C2FBB0 /* ScheduleSceneBinder.swift */; };
+		CA00AE5A20D171E700C2FBB0 /* ScheduleEventGroupHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE5920D171E700C2FBB0 /* ScheduleEventGroupHeader.swift */; };
+		CA00AE5C20D171F200C2FBB0 /* CapturingScheduleEventGroupHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE5B20D171F200C2FBB0 /* CapturingScheduleEventGroupHeader.swift */; };
 		CA057A5B2088BDBB00504FA4 /* NewsAnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */; };
 		CA057A5D2088BDC900504FA4 /* NewsEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5C2088BDC900504FA4 /* NewsEventTableViewCell.swift */; };
 		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
@@ -1060,6 +1064,10 @@
 		CA00AE4F20D16D8900C2FBB0 /* WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA00AE5120D16FC000C2FBB0 /* ScheduleEventGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEventGroupViewModel.swift; sourceTree = "<group>"; };
 		CA00AE5320D16FD300C2FBB0 /* ScheduleEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEventViewModel.swift; sourceTree = "<group>"; };
+		CA00AE5520D1710300C2FBB0 /* WhenBindingEventGroup_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingEventGroup_SchedulePresenterShould.swift; sourceTree = "<group>"; };
+		CA00AE5720D171D600C2FBB0 /* ScheduleSceneBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSceneBinder.swift; sourceTree = "<group>"; };
+		CA00AE5920D171E700C2FBB0 /* ScheduleEventGroupHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEventGroupHeader.swift; sourceTree = "<group>"; };
+		CA00AE5B20D171F200C2FBB0 /* CapturingScheduleEventGroupHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleEventGroupHeader.swift; sourceTree = "<group>"; };
 		CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsAnnouncementTableViewCell.swift; sourceTree = "<group>"; };
 		CA057A5C2088BDC900504FA4 /* NewsEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsEventTableViewCell.swift; sourceTree = "<group>"; };
 		CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardDealersSceneFactory.swift; sourceTree = "<group>"; };
@@ -2838,6 +2846,7 @@
 				CA63758B208CE06100536BE2 /* WhenBuildingScheduleModule.swift */,
 				CA00AE4F20D16D8900C2FBB0 /* WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift */,
 				CABA840620D0671E00DD0795 /* WhenScheduleSceneLoads_SchedulePresenterShould.swift */,
+				CA00AE5520D1710300C2FBB0 /* WhenBindingEventGroup_SchedulePresenterShould.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -2856,6 +2865,8 @@
 			children = (
 				CA63758F208CE4E100536BE2 /* ScheduleSceneFactory.swift */,
 				CA637591208CE4F700536BE2 /* ScheduleScene.swift */,
+				CA00AE5720D171D600C2FBB0 /* ScheduleSceneBinder.swift */,
+				CA00AE5920D171E700C2FBB0 /* ScheduleEventGroupHeader.swift */,
 			);
 			path = Abstraction;
 			sourceTree = "<group>";
@@ -2866,6 +2877,7 @@
 				CA637594208DFD3700536BE2 /* CapturingScheduleScene.swift */,
 				CA637596208DFD4B00536BE2 /* StubScheduleSceneFactory.swift */,
 				CA00AE4820D16BD900C2FBB0 /* FakeScheduleInteractor.swift */,
+				CA00AE5B20D171F200C2FBB0 /* CapturingScheduleEventGroupHeader.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -4693,6 +4705,7 @@
 				CA8E7EFE1FB093D800F0BF10 /* PhoneNavigationControllerFactory.swift in Sources */,
 				CA89CBB22080030300570D54 /* NewsComponentsBinder.swift in Sources */,
 				CA728480209F8764007D912A /* AnnouncementDetailInteractorFactory.swift in Sources */,
+				CA00AE5A20D171E700C2FBB0 /* ScheduleEventGroupHeader.swift in Sources */,
 				CA1ECB471FE6E7DA0076083A /* MessageComponent.swift in Sources */,
 				9A861ECC1F25555000B75A8C /* TutorialViewController.swift in Sources */,
 				9A80EF5B1F29203C00FD0D37 /* AnnouncementsShowAllProviding.swift in Sources */,
@@ -5014,6 +5027,7 @@
 				9A861EC91F25555000B75A8C /* UserDefaultsWitnessedTutorialPushPermissionsRequest.swift in Sources */,
 				7820A7031F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift in Sources */,
 				CA1F7D6720CB856D00FB87F5 /* LatestDataFetchedEvent.swift in Sources */,
+				CA00AE5820D171D600C2FBB0 /* ScheduleSceneBinder.swift in Sources */,
 				CAF705681F82D13F00A9FEA2 /* TutorialModuleProviding.swift in Sources */,
 				9A2A94871F12CBC0004D66FB /* SyncState.swift in Sources */,
 				CA8E7EF81FB08ED700F0BF10 /* PhoneRootModuleFactory.swift in Sources */,
@@ -5177,6 +5191,7 @@
 				CA0F762F2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift in Sources */,
 				CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */,
 				CA63757C208CDBAA00536BE2 /* Date+RandomValueProviding.swift in Sources */,
+				CA00AE5C20D171F200C2FBB0 /* CapturingScheduleEventGroupHeader.swift in Sources */,
 				CAD3BDBD205AA61B00C91E6E /* URL+RandomValueProviding.swift in Sources */,
 				CA65A21C2091121D0078A4A7 /* WhenAddingAnnouncementsObserverBeforeLoadingAnything.swift in Sources */,
 				CABA840720D0671E00DD0795 /* WhenScheduleSceneLoads_SchedulePresenterShould.swift in Sources */,
@@ -5266,6 +5281,7 @@
 				CAD6882E208A13D400B31F5F /* Bool+RandomValueProviding.swift in Sources */,
 				CAD3BDB72059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift in Sources */,
 				CA2B4FAA1F1F7F1200F007E1 /* CapturingLoginObserver.swift in Sources */,
+				CA00AE5620D1710300C2FBB0 /* WhenBindingEventGroup_SchedulePresenterShould.swift in Sources */,
 				CA73AEF8201A0908004E77BF /* WhenBuildingKnowledgePresenter.swift in Sources */,
 				CABA83FA20CE9D2500DD0795 /* WhenUnfavouritingEvent_ApplicationShould.swift in Sources */,
 				CA162E7620A4B6CE004AFED6 /* StubDateDistanceCalculator.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  ScheduleEventGroupViewModel.swift
+//  ScheduleSceneBinder.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 13/06/2018.
@@ -8,9 +8,8 @@
 
 import Foundation
 
-struct ScheduleEventGroupViewModel: Equatable {
+protocol ScheduleSceneBinder {
 
-    var title: String
-    var events: [ScheduleEventViewModel]
+    func bind(_ header: ScheduleEventGroupHeader, forGroupAt index: Int)
 
 }

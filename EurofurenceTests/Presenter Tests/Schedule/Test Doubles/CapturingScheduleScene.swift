@@ -22,8 +22,10 @@ class CapturingScheduleScene: UIViewController, ScheduleScene {
     }
     
     private(set) var boundItemsPerSection: [Int] = []
-    func bind(numberOfItemsPerSection: [Int]) {
+    private(set) var binder: ScheduleSceneBinder?
+    func bind(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder) {
         boundItemsPerSection = numberOfItemsPerSection
+        self.binder = binder
     }
     
 }
