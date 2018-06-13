@@ -55,6 +55,10 @@ extension CapturingEventsService {
         observers.forEach { $0.eventsServiceDidResolveFavouriteEvents(favourites) }
     }
     
+    func simulateEventsChanged(_ events: [Event2]) {
+        observers.forEach { $0.eurofurenceApplicationDidUpdateEvents(to: events) }
+    }
+    
 }
 
 class EventDetailInteractorTestBuilder {

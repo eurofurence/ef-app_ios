@@ -40,7 +40,10 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
     // MARK: ScheduleInteractor
 
+    private var delegate: ScheduleInteractorDelegate?
     func setDelegate(_ delegate: ScheduleInteractorDelegate) {
+        self.delegate = delegate
+
         if let viewModel = viewModel {
             delegate.scheduleInteractorDidPrepareViewModel(viewModel)
         }
@@ -63,7 +66,9 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             return ScheduleEventGroupViewModel(title: title, events: viewModels)
         }
 
-        viewModel = ScheduleViewModel(eventGroups: groupViewModels)
+        let viewModel = ScheduleViewModel(eventGroups: groupViewModels)
+        self.viewModel = viewModel
+        delegate?.scheduleInteractorDidPrepareViewModel(viewModel)
     }
 
     func eurofurenceApplicationDidUpdateRunningEvents(to events: [Event2]) { }
