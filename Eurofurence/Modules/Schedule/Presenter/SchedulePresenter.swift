@@ -25,7 +25,8 @@ struct SchedulePresenter: ScheduleSceneDelegate, ScheduleInteractorDelegate {
     }
 
     func scheduleInteractorDidPrepareViewModel(_ viewModel: ScheduleViewModel) {
-        scene.bind(numberOfItemsPerSection: viewModel.eventsPerGroup)
+        let numberOfItemsPerGroup = viewModel.eventGroups.map { $0.events.count }
+        scene.bind(numberOfItemsPerSection: numberOfItemsPerGroup)
     }
 
 }

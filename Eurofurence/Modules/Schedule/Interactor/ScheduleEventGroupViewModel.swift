@@ -1,5 +1,5 @@
 //
-//  ScheduleViewModel.swift
+//  ScheduleEventGroupViewModel.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 13/06/2018.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct ScheduleViewModel {
+struct ScheduleEventGroupViewModel: Equatable {
 
-    var eventGroups: [ScheduleEventGroupViewModel]
+    var events: [ScheduleEventViewModel]
 
 }

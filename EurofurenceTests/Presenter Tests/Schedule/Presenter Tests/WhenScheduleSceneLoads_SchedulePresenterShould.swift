@@ -16,8 +16,9 @@ class WhenScheduleSceneLoads_SchedulePresenterShould: XCTestCase {
         let interactor = FakeScheduleInteractor(viewModel: viewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
+        let expected = viewModel.eventGroups.map({ $0.events.count })
         
-        XCTAssertEqual(viewModel.eventsPerGroup, context.scene.boundItemsPerSection)
+        XCTAssertEqual(expected, context.scene.boundItemsPerSection)
     }
     
 }

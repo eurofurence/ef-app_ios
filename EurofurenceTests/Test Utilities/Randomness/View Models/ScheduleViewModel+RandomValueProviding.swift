@@ -12,7 +12,23 @@ import Foundation
 extension ScheduleViewModel: RandomValueProviding {
     
     static var random: ScheduleViewModel {
-        return ScheduleViewModel(eventsPerGroup: .random(minimum: 1))
+        return ScheduleViewModel(eventGroups: .random)
+    }
+    
+}
+
+extension ScheduleEventGroupViewModel: RandomValueProviding {
+    
+    static var random: ScheduleEventGroupViewModel {
+        return ScheduleEventGroupViewModel(events: .random)
+    }
+    
+}
+
+extension ScheduleEventViewModel: RandomValueProviding {
+    
+    static var random: ScheduleEventViewModel {
+        return ScheduleEventViewModel()
     }
     
 }
