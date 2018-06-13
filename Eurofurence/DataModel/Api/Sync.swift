@@ -8,6 +8,7 @@
 import Foundation
 import EVReflection
 
+@objcMembers
 class Sync: EVNetworkingObject {
 	var Announcements: SyncEntityDelta<Announcement> = SyncEntityDelta()
 	var CurrentDateTimeUtc: Date = Date()

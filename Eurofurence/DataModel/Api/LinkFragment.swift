@@ -8,6 +8,7 @@
 import Foundation
 import EVReflection
 
+@objcMembers
 class LinkFragment: EVObject, VersionedDataModel {
 	class var DataModelVersion: Int { return 2 }
 

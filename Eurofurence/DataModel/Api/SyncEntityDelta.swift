@@ -32,6 +32,7 @@ class SyncEntityDelta<EntityType>: SyncEntityDeltaBase, EVGenericsKVC where Enti
 Base protocol for generic wrapper. Necessary due to internal implementation
 details of EVReflection (see documentation for details).
 */
+@objcMembers
 class SyncEntityDeltaBase: EVNetworkingObject {
 	var DeletedEntities: [String] = []
 	var RemoveAllBeforeInsert: Bool = true
