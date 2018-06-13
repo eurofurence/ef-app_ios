@@ -1,5 +1,5 @@
 //
-//  ScheduleDayViewModel.swift
+//  ScheduleDayComponent.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 13/06/2018.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct ScheduleDayViewModel: Equatable {
+protocol ScheduleDayComponent {
 
-    var title: String
+    func setDayTitle(_ title: String)
 
 }

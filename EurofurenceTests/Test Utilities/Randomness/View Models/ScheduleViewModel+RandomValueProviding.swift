@@ -39,7 +39,7 @@ extension ScheduleEventViewModel: RandomValueProviding {
 extension ScheduleDayViewModel: RandomValueProviding {
     
     static var random: ScheduleDayViewModel {
-        return ScheduleDayViewModel()
+        return ScheduleDayViewModel(title: .random)
     }
     
 }

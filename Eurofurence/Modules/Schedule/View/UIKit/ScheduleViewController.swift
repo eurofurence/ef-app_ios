@@ -41,7 +41,7 @@ class ScheduleViewController: UIViewController, ScheduleScene {
         super.title = title
     }
 
-    func bind(numberOfDays: Int) {
+    func bind(numberOfDays: Int, using binder: ScheduleDaysBinder) {
 
     }
 
