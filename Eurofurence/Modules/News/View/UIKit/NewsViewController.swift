@@ -23,6 +23,7 @@ class NewsViewController: UIViewController, NewsScene {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.register(EventTableViewCell.self)
         tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
         delegate?.newsSceneDidLoad()
     }
@@ -91,7 +92,7 @@ class NewsViewController: UIViewController, NewsScene {
         }
 
         func makeEventComponent(configuringUsing block: (NewsEventComponent) -> Void) -> UITableViewCell {
-            return manufacture(NewsEventTableViewCell.self, configuration: block)
+            return manufacture(EventTableViewCell.self, configuration: block)
         }
 
         private func manufacture<T>(_ cellType: T.Type, configuration: (T) -> Void) -> T where T: UITableViewCell {
