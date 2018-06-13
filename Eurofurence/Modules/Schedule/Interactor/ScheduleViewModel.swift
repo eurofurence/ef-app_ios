@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ScheduleViewModel {
+struct ScheduleViewModel: Equatable {
 
     var eventGroups: [ScheduleEventGroupViewModel]
 
