@@ -19,6 +19,13 @@ struct SchedulePresenter: ScheduleSceneDelegate, ScheduleInteractorDelegate {
             header.setEventGroupTitle(group.title)
         }
 
+        func bind(_ eventComponent: ScheduleEventComponent, forEventAt indexPath: IndexPath) {
+            let group = viewModel.eventGroups[indexPath.section]
+            let event = group.events[indexPath.item]
+
+            eventComponent.setEventTitle(event.title)
+        }
+
     }
 
     private let scene: ScheduleScene

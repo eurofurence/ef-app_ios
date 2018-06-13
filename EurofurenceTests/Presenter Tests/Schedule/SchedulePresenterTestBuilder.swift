@@ -47,4 +47,8 @@ extension SchedulePresenterTestBuilder.Context {
         scene.binder?.bind(header, forGroupAt: index)
     }
     
+    func bind(_ eventComponent: ScheduleEventComponent, forEventAt indexPath: IndexPath) {
+        scene.binder?.bind(eventComponent, forEventAt: indexPath)
+    }
+    
 }

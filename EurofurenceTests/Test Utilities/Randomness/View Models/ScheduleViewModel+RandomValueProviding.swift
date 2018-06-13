@@ -28,7 +28,7 @@ extension ScheduleEventGroupViewModel: RandomValueProviding {
 extension ScheduleEventViewModel: RandomValueProviding {
     
     static var random: ScheduleEventViewModel {
-        return ScheduleEventViewModel()
+        return ScheduleEventViewModel(title: .random)
     }
     
 }

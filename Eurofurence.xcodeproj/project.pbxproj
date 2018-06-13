@@ -217,6 +217,9 @@
 		CA00AE5820D171D600C2FBB0 /* ScheduleSceneBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE5720D171D600C2FBB0 /* ScheduleSceneBinder.swift */; };
 		CA00AE5A20D171E700C2FBB0 /* ScheduleEventGroupHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE5920D171E700C2FBB0 /* ScheduleEventGroupHeader.swift */; };
 		CA00AE5C20D171F200C2FBB0 /* CapturingScheduleEventGroupHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE5B20D171F200C2FBB0 /* CapturingScheduleEventGroupHeader.swift */; };
+		CA00AE5E20D173C000C2FBB0 /* WhenBindingEvent_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE5D20D173C000C2FBB0 /* WhenBindingEvent_SchedulePresenterShould.swift */; };
+		CA00AE6020D1746900C2FBB0 /* ScheduleEventComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE5F20D1746900C2FBB0 /* ScheduleEventComponent.swift */; };
+		CA00AE6220D1749200C2FBB0 /* CapturingScheduleEventComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE6120D1749200C2FBB0 /* CapturingScheduleEventComponent.swift */; };
 		CA057A5B2088BDBB00504FA4 /* NewsAnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */; };
 		CA057A5D2088BDC900504FA4 /* NewsEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5C2088BDC900504FA4 /* NewsEventTableViewCell.swift */; };
 		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
@@ -1068,6 +1071,9 @@
 		CA00AE5720D171D600C2FBB0 /* ScheduleSceneBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSceneBinder.swift; sourceTree = "<group>"; };
 		CA00AE5920D171E700C2FBB0 /* ScheduleEventGroupHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEventGroupHeader.swift; sourceTree = "<group>"; };
 		CA00AE5B20D171F200C2FBB0 /* CapturingScheduleEventGroupHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleEventGroupHeader.swift; sourceTree = "<group>"; };
+		CA00AE5D20D173C000C2FBB0 /* WhenBindingEvent_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingEvent_SchedulePresenterShould.swift; sourceTree = "<group>"; };
+		CA00AE5F20D1746900C2FBB0 /* ScheduleEventComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEventComponent.swift; sourceTree = "<group>"; };
+		CA00AE6120D1749200C2FBB0 /* CapturingScheduleEventComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleEventComponent.swift; sourceTree = "<group>"; };
 		CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsAnnouncementTableViewCell.swift; sourceTree = "<group>"; };
 		CA057A5C2088BDC900504FA4 /* NewsEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsEventTableViewCell.swift; sourceTree = "<group>"; };
 		CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardDealersSceneFactory.swift; sourceTree = "<group>"; };
@@ -2847,6 +2853,7 @@
 				CA00AE4F20D16D8900C2FBB0 /* WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift */,
 				CABA840620D0671E00DD0795 /* WhenScheduleSceneLoads_SchedulePresenterShould.swift */,
 				CA00AE5520D1710300C2FBB0 /* WhenBindingEventGroup_SchedulePresenterShould.swift */,
+				CA00AE5D20D173C000C2FBB0 /* WhenBindingEvent_SchedulePresenterShould.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -2863,10 +2870,11 @@
 		CA63758E208CE4DB00536BE2 /* Abstraction */ = {
 			isa = PBXGroup;
 			children = (
-				CA63758F208CE4E100536BE2 /* ScheduleSceneFactory.swift */,
+				CA00AE5F20D1746900C2FBB0 /* ScheduleEventComponent.swift */,
+				CA00AE5920D171E700C2FBB0 /* ScheduleEventGroupHeader.swift */,
 				CA637591208CE4F700536BE2 /* ScheduleScene.swift */,
 				CA00AE5720D171D600C2FBB0 /* ScheduleSceneBinder.swift */,
-				CA00AE5920D171E700C2FBB0 /* ScheduleEventGroupHeader.swift */,
+				CA63758F208CE4E100536BE2 /* ScheduleSceneFactory.swift */,
 			);
 			path = Abstraction;
 			sourceTree = "<group>";
@@ -2878,6 +2886,7 @@
 				CA637596208DFD4B00536BE2 /* StubScheduleSceneFactory.swift */,
 				CA00AE4820D16BD900C2FBB0 /* FakeScheduleInteractor.swift */,
 				CA00AE5B20D171F200C2FBB0 /* CapturingScheduleEventGroupHeader.swift */,
+				CA00AE6120D1749200C2FBB0 /* CapturingScheduleEventComponent.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -5004,6 +5013,7 @@
 				9A80EF4E1F28C78900FD0D37 /* TargetRouter.swift in Sources */,
 				D6F3D523BDCDDA3A2A163E55 /* TimeLabelCell.swift in Sources */,
 				78567B451F103C3800EBA31D /* RefreshControlDataStoreDelegate.swift in Sources */,
+				CA00AE6020D1746900C2FBB0 /* ScheduleEventComponent.swift in Sources */,
 				9A861E9D1F2547E200B75A8C /* NotificationRouter.swift in Sources */,
 				9A80EF641F29230300FD0D37 /* UserDetailsEventTablePreferences.swift in Sources */,
 				CAB3A72D1F753308005DF77B /* PushPermissionsRequester.swift in Sources */,
@@ -5234,6 +5244,7 @@
 				CA89CBBA2084CA8A00570D54 /* StubNewsViewModel.swift in Sources */,
 				CA804DDA1F20D2F500E07A4A /* V2LoginAPITests.swift in Sources */,
 				CA6EC4842051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift in Sources */,
+				CA00AE5E20D173C000C2FBB0 /* WhenBindingEvent_SchedulePresenterShould.swift in Sources */,
 				CA162EAC20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift in Sources */,
 				CA2D08061FE94BF000BFD785 /* RootModuleTestBuilder.swift in Sources */,
 				CACF1E4820AE29CB00D904B5 /* StubEventDetailModuleFactory.swift in Sources */,
@@ -5351,6 +5362,7 @@
 				78D7EEB51F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift in Sources */,
 				CA73AED8201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift in Sources */,
 				CAD68828208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift in Sources */,
+				CA00AE6220D1749200C2FBB0 /* CapturingScheduleEventComponent.swift in Sources */,
 				CACF1EB220B5FF9900D904B5 /* EventGraphicViewModel+RandomValueProviding.swift in Sources */,
 				CA162EA020A8D499004AFED6 /* FakeRelativeTimeIntervalCountdownFormatter.swift in Sources */,
 				CA162E7A20A4B6F5004AFED6 /* CapturingConventionCountdownServiceObserver.swift in Sources */,

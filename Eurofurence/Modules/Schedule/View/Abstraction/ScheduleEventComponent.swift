@@ -1,5 +1,5 @@
 //
-//  ScheduleEventViewModel.swift
+//  ScheduleEventComponent.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 13/06/2018.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct ScheduleEventViewModel: Equatable {
+protocol ScheduleEventComponent {
 
-    var title: String
+    func setEventTitle(_ title: String)
 
 }
