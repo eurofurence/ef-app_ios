@@ -15,12 +15,8 @@ class ScheduleModuleBuilder {
     private var interactor: ScheduleInteractor
 
     init() {
-        struct DummyScheduleInteractor: ScheduleInteractor {
-            func setDelegate(_ delegate: ScheduleInteractorDelegate) {}
-        }
-
         eventsSceneFactory = StoryboardScheduleSceneFactory()
-        interactor = DummyScheduleInteractor()
+        interactor = DefaultScheduleInteractor()
     }
 
     @discardableResult

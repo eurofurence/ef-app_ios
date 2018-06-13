@@ -28,6 +28,11 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
     // MARK: Initialization
 
+    convenience init() {
+        self.init(eventsService: EurofurenceApplication.shared,
+                  hoursDateFormatter: FoundationHoursDateFormatter.shared)
+    }
+
     init(eventsService: EventsService,
          hoursDateFormatter: HoursDateFormatter) {
         self.hoursDateFormatter = hoursDateFormatter
