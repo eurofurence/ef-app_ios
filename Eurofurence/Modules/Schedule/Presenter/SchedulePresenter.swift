@@ -24,6 +24,9 @@ struct SchedulePresenter: ScheduleSceneDelegate, ScheduleInteractorDelegate {
             let event = group.events[indexPath.item]
 
             eventComponent.setEventTitle(event.title)
+            eventComponent.setEventStartTime(event.startTime)
+            eventComponent.setEventEndTime(event.endTime)
+            eventComponent.setEventLocation(event.location)
         }
 
     }

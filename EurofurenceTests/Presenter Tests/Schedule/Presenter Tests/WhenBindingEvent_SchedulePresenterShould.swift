@@ -11,18 +11,39 @@ import XCTest
 
 class WhenBindingEvent_SchedulePresenterShould: XCTestCase {
     
-    func testBindTheEventNameOntoTheComponent() {
+    var context: SchedulePresenterTestBuilder.Context!
+    var component: CapturingScheduleEventComponent!
+    var eventViewModel: ScheduleEventViewModel!
+    
+    override func setUp() {
+        super.setUp()
+        
         let viewModel = ScheduleViewModel.random
         let interactor = FakeScheduleInteractor(viewModel: viewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let randomGroup = viewModel.eventGroups.randomElement()
         let randomEvent = randomGroup.element.events.randomElement()
+        eventViewModel = randomEvent.element
         let indexPath = IndexPath(item: randomEvent.index, section: randomGroup.index)
-        let component = CapturingScheduleEventComponent()
+        component = CapturingScheduleEventComponent()
         context.bind(component, forEventAt: indexPath)
-        
-        XCTAssertEqual(component.capturedEventTitle, randomEvent.element.title)
+    }
+    
+    func testBindTheEventNameOntoTheComponent() {
+        XCTAssertEqual(eventViewModel.title, component.capturedEventTitle)
+    }
+    
+    func testBindTheStartTimeFromTheEventOntoTheEventScene() {
+        XCTAssertEqual(eventViewModel.startTime, component.capturedStartTime)
+    }
+    
+    func testBindTheEndTimeFromTheEventOntoTheEventScene() {
+        XCTAssertEqual(eventViewModel.endTime, component.capturedEndTime)
+    }
+    
+    func testBindTheEventLocationFromTheEventOntoTheEventScene() {
+        XCTAssertEqual(eventViewModel.location, component.capturedLocation)
     }
     
 }

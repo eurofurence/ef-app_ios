@@ -16,4 +16,19 @@ class CapturingScheduleEventComponent: ScheduleEventComponent {
         capturedEventTitle = title
     }
     
+    private(set) var capturedStartTime: String?
+    func setEventStartTime(_ startTime: String) {
+        capturedStartTime = startTime
+    }
+    
+    private(set) var capturedEndTime: String?
+    func setEventEndTime(_ endTime: String) {
+        capturedEndTime = endTime
+    }
+    
+    private(set) var capturedLocation: String?
+    func setEventLocation(_ location: String) {
+        capturedLocation = location
+    }
+    
 }

@@ -11,5 +11,8 @@ import Foundation
 struct ScheduleEventViewModel: Equatable {
 
     var title: String
+    var startTime: String
+    var endTime: String
+    var location: String
 
 }
