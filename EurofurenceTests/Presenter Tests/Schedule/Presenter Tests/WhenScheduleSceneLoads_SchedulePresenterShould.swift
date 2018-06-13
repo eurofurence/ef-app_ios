@@ -11,6 +11,16 @@ import XCTest
 
 class WhenScheduleSceneLoads_SchedulePresenterShould: XCTestCase {
     
+    func testBindNumberOfConferenceDaysOntoTheScene() {
+        let viewModel = ScheduleViewModel.random
+        let interactor = FakeScheduleInteractor(viewModel: viewModel)
+        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        context.simulateSceneDidLoad()
+        let expected = viewModel.days.count
+        
+        XCTAssertEqual(expected, context.scene.boundNumberOfDays)
+    }
+    
     func testBindNumberOfGroupsOntoScheduleScene() {
         let viewModel = ScheduleViewModel.random
         let interactor = FakeScheduleInteractor(viewModel: viewModel)

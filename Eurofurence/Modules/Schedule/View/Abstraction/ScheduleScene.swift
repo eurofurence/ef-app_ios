@@ -10,6 +10,7 @@ protocol ScheduleScene {
 
     func setDelegate(_ delegate: ScheduleSceneDelegate)
     func setScheduleTitle(_ title: String)
+    func bind(numberOfDays: Int)
     func bind(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder)
 
 }

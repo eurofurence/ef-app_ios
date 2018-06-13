@@ -41,6 +41,10 @@ class ScheduleViewController: UIViewController, ScheduleScene {
         super.title = title
     }
 
+    func bind(numberOfDays: Int) {
+
+    }
+
     func bind(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder) {
         tableController = TableController(numberOfItemsPerSection: numberOfItemsPerSection, binder: binder)
     }

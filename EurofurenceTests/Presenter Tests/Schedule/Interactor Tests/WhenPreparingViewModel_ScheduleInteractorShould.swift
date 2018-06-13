@@ -45,7 +45,8 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
                                           location: event.room.name)
         }
         
-        let expected = ScheduleViewModel(eventGroups: [
+        let expected = ScheduleViewModel(days: [],
+                                         eventGroups: [
             ScheduleEventGroupViewModel(title: hoursFormatter.hoursString(from: firstGroupDate),
                                         events: firstGroup.map(eventViewModelFromEvent)),
             ScheduleEventGroupViewModel(title: hoursFormatter.hoursString(from: secondGroupDate),
@@ -89,7 +90,8 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
                                           location: event.room.name)
         }
         
-        let expected = ScheduleViewModel(eventGroups: [
+        let expected = ScheduleViewModel(days: [],
+                                         eventGroups: [
             ScheduleEventGroupViewModel(title: hoursFormatter.hoursString(from: firstGroupDate),
                                         events: firstGroup.map(eventViewModelFromEvent)),
             ScheduleEventGroupViewModel(title: hoursFormatter.hoursString(from: secondGroupDate),

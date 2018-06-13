@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Title-->
         <scene sceneID="Jbz-n1-W9d">
             <objects>
                 <viewController storyboardIdentifier="ScheduleViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uUW-Is-Btl" customClass="ScheduleViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,6 +33,7 @@
                         <viewLayoutGuide key="safeArea" id="UnK-qE-skU"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" image="Calendar" selectedImage="Calendar" id="YEX-4v-gXn"/>
+                    <navigationItem key="navigationItem" title="Title" id="2OJ-rN-eRD"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

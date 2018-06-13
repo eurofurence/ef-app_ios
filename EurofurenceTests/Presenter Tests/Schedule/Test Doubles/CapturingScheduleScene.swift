@@ -21,6 +21,11 @@ class CapturingScheduleScene: UIViewController, ScheduleScene {
         capturedTitle = title
     }
     
+    private(set) var boundNumberOfDays: Int?
+    func bind(numberOfDays: Int) {
+        boundNumberOfDays = numberOfDays
+    }
+    
     private(set) var boundItemsPerSection: [Int] = []
     private(set) var binder: ScheduleSceneBinder?
     func bind(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder) {

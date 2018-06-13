@@ -10,6 +10,7 @@ import Foundation
 
 struct ScheduleViewModel: Equatable {
 
+    var days: [ScheduleDayViewModel]
     var eventGroups: [ScheduleEventGroupViewModel]
 
 }

@@ -228,6 +228,7 @@
 		CA00AE7320D18D1E00C2FBB0 /* WhenPreparingViewModel_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE7220D18D1E00C2FBB0 /* WhenPreparingViewModel_ScheduleInteractorShould.swift */; };
 		CA00AE7520D1AA0F00C2FBB0 /* DefaultScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE7420D1AA0F00C2FBB0 /* DefaultScheduleInteractor.swift */; };
 		CA00AE7720D1AA2100C2FBB0 /* CapturingScheduleInteractorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE7620D1AA2000C2FBB0 /* CapturingScheduleInteractorDelegate.swift */; };
+		CA00AE7B20D1BF6D00C2FBB0 /* ScheduleDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE7A20D1BF6D00C2FBB0 /* ScheduleDayViewModel.swift */; };
 		CA057A5B2088BDBB00504FA4 /* NewsAnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */; };
 		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
 		CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5206208E700E005259FE /* DealersViewController.swift */; };
@@ -1089,6 +1090,7 @@
 		CA00AE7220D18D1E00C2FBB0 /* WhenPreparingViewModel_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
 		CA00AE7420D1AA0F00C2FBB0 /* DefaultScheduleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultScheduleInteractor.swift; sourceTree = "<group>"; };
 		CA00AE7620D1AA2000C2FBB0 /* CapturingScheduleInteractorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleInteractorDelegate.swift; sourceTree = "<group>"; };
+		CA00AE7A20D1BF6D00C2FBB0 /* ScheduleDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDayViewModel.swift; sourceTree = "<group>"; };
 		CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsAnnouncementTableViewCell.swift; sourceTree = "<group>"; };
 		CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardDealersSceneFactory.swift; sourceTree = "<group>"; };
 		CA0E5206208E700E005259FE /* DealersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersViewController.swift; sourceTree = "<group>"; };
@@ -2493,6 +2495,7 @@
 				CA00AE4420D16BBD00C2FBB0 /* ScheduleInteractor.swift */,
 				CA00AE4620D16BCB00C2FBB0 /* ScheduleViewModel.swift */,
 				CA00AE7420D1AA0F00C2FBB0 /* DefaultScheduleInteractor.swift */,
+				CA00AE7A20D1BF6D00C2FBB0 /* ScheduleDayViewModel.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -5054,6 +5057,7 @@
 				781A94401F1A1A72002DE70F /* FirebaseMessagingAdapter.swift in Sources */,
 				CA72848C209F9288007D912A /* DefaultAnnouncementDetailInteractor.swift in Sources */,
 				9A861EC11F25551400B75A8C /* ApplicationContext.swift in Sources */,
+				CA00AE7B20D1BF6D00C2FBB0 /* ScheduleDayViewModel.swift in Sources */,
 				CAEAEBFD1FE0043B00C0EE7C /* MessageDetailSceneFactory.swift in Sources */,
 				CA30EAA31F2129700053DBF6 /* LoginAPI.swift in Sources */,
 				9A80EF4C1F28BD0300FD0D37 /* PostDataStoreRoutingDelegate.swift in Sources */,

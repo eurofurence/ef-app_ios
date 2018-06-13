@@ -68,7 +68,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             return ScheduleEventGroupViewModel(title: title, events: viewModels)
         }
 
-        let viewModel = ScheduleViewModel(eventGroups: groupViewModels)
+        let viewModel = ScheduleViewModel(days: [], eventGroups: groupViewModels)
         self.viewModel = viewModel
         delegate?.scheduleInteractorDidPrepareViewModel(viewModel)
     }
