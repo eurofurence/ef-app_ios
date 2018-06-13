@@ -12,9 +12,15 @@ import UIKit.UIViewController
 class ScheduleModuleBuilder {
 
     private var eventsSceneFactory: ScheduleSceneFactory
+    private var interactor: ScheduleInteractor
 
     init() {
+        struct DummyScheduleInteractor: ScheduleInteractor {
+            func setDelegate(_ delegate: ScheduleInteractorDelegate) {}
+        }
+
         eventsSceneFactory = StoryboardScheduleSceneFactory()
+        interactor = DummyScheduleInteractor()
     }
 
     @discardableResult
@@ -23,8 +29,14 @@ class ScheduleModuleBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ interactor: ScheduleInteractor) -> ScheduleModuleBuilder {
+        self.interactor = interactor
+        return self
+    }
+
     func build() -> ScheduleModuleProviding {
-        return ScheduleModule(eventsSceneFactory: eventsSceneFactory)
+        return ScheduleModule(eventsSceneFactory: eventsSceneFactory, interactor: interactor)
     }
 
 }

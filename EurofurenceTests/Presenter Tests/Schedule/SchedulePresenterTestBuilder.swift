@@ -16,11 +16,31 @@ class SchedulePresenterTestBuilder {
         var scene: CapturingScheduleScene
     }
     
+    private var interactor: ScheduleInteractor
+    
+    init() {
+        interactor = FakeScheduleInteractor()
+    }
+    
+    @discardableResult
+    func with(_ interactor: ScheduleInteractor) -> SchedulePresenterTestBuilder {
+        self.interactor = interactor
+        return self
+    }
+    
     func build() -> Context {
         let sceneFactory = StubScheduleSceneFactory()
-        let viewController = ScheduleModuleBuilder().with(sceneFactory).build().makeEventsModule()
+        let viewController = ScheduleModuleBuilder().with(sceneFactory).with(interactor).build().makeEventsModule()
         
         return Context(producedViewController: viewController, scene: sceneFactory.scene)
+    }
+    
+}
+
+extension SchedulePresenterTestBuilder.Context {
+    
+    func simulateSceneDidLoad() {
+        scene.delegate?.scheduleSceneDidLoad()
     }
     
 }

@@ -8,6 +8,14 @@
 
 protocol ScheduleScene {
 
+    func setDelegate(_ delegate: ScheduleSceneDelegate)
     func setScheduleTitle(_ title: String)
+    func bind(numberOfItemsPerSection: [Int])
+
+}
+
+protocol ScheduleSceneDelegate {
+
+    func scheduleSceneDidLoad()
 
 }

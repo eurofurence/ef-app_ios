@@ -10,10 +10,26 @@ import UIKit
 
 class ScheduleViewController: UIViewController, ScheduleScene {
 
+    // MARK: Overrides
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        delegate?.scheduleSceneDidLoad()
+    }
+
     // MARK: EventsScene
+
+    private var delegate: ScheduleSceneDelegate?
+    func setDelegate(_ delegate: ScheduleSceneDelegate) {
+        self.delegate = delegate
+    }
 
     func setScheduleTitle(_ title: String) {
         super.title = title
+    }
+
+    func bind(numberOfItemsPerSection: [Int]) {
+
     }
 
 }
