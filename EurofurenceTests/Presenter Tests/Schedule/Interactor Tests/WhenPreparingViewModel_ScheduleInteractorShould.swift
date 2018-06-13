@@ -33,10 +33,8 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
         eventsService.allEvents = allEvents
         
         let hoursFormatter = FakeHoursDateFormatter()
-        let clock = StubClock()
         let interactor = DefaultScheduleInteractor(eventsService: eventsService,
-                                                   hoursDateFormatter: hoursFormatter,
-                                                   clock: clock)
+                                                   hoursDateFormatter: hoursFormatter)
         let delegate = CapturingScheduleInteractorDelegate()
         interactor.setDelegate(delegate)
         
@@ -76,10 +74,8 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
         
         let eventsService = CapturingEventsService()
         let hoursFormatter = FakeHoursDateFormatter()
-        let clock = StubClock()
         let interactor = DefaultScheduleInteractor(eventsService: eventsService,
-                                                   hoursDateFormatter: hoursFormatter,
-                                                   clock: clock)
+                                                   hoursDateFormatter: hoursFormatter)
         let delegate = CapturingScheduleInteractorDelegate()
         interactor.setDelegate(delegate)
         

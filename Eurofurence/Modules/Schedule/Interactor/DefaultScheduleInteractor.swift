@@ -24,16 +24,13 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
     // MARK: Properties
 
     private let hoursDateFormatter: HoursDateFormatter
-    private let clock: Clock
     private var viewModel: ScheduleViewModel?
 
     // MARK: Initialization
 
     init(eventsService: EventsService,
-         hoursDateFormatter: HoursDateFormatter,
-         clock: Clock) {
+         hoursDateFormatter: HoursDateFormatter) {
         self.hoursDateFormatter = hoursDateFormatter
-        self.clock = clock
 
         eventsService.add(self)
     }
