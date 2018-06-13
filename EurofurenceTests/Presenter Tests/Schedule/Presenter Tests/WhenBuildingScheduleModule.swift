@@ -18,7 +18,7 @@ class WhenBuildingScheduleModule: XCTestCase {
     
     func testTheSceneIsToldToShowTheScheduleTitle() {
         let context = SchedulePresenterTestBuilder().build()
-        XCTAssertEqual(.events, context.scene.capturedTitle)
+        XCTAssertEqual(.schedule, context.scene.capturedTitle)
     }
     
 }

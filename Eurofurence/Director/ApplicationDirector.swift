@@ -231,7 +231,7 @@ class ApplicationDirector: RootModuleDelegate,
         newsNavigationController.setViewControllers([newsController], animated: animate)
         newsNavigationController.tabBarItem = newsController.tabBarItem
 
-        let eventsViewController = eventsModuleProviding.makeEventsModule()
+        let eventsViewController = eventsModuleProviding.makeScheduleModule()
         let eventsNavigationController = UINavigationController(rootViewController: eventsViewController)
         eventsNavigationController.tabBarItem = eventsViewController.tabBarItem
 

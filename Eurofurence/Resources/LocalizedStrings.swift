@@ -106,8 +106,8 @@ public extension String {
     public static let messages = NSLocalizedString("Messages",
                                                    comment: "Title for the view that displays the user's private messages")
 
-    public static let events = NSLocalizedString("Events",
-                                                 comment: "Title for the view that shows all the events during the convention")
+    public static let schedule = NSLocalizedString("Schedule",
+                                                   comment: "Title for the view that shows the convention schedule")
 
     public static let dealers = NSLocalizedString("Dealers",
                                                   comment: "Title for the view that shows the dealers listed in the dealers den during the convention")

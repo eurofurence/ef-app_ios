@@ -30,7 +30,7 @@ class SchedulePresenterTestBuilder {
     
     func build() -> Context {
         let sceneFactory = StubScheduleSceneFactory()
-        let viewController = ScheduleModuleBuilder().with(sceneFactory).with(interactor).build().makeEventsModule()
+        let viewController = ScheduleModuleBuilder().with(sceneFactory).with(interactor).build().makeScheduleModule()
         
         return Context(producedViewController: viewController, scene: sceneFactory.scene)
     }

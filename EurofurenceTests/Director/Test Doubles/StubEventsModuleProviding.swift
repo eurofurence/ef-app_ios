@@ -12,7 +12,7 @@ import UIKit.UIViewController
 class StubEventsModuleFactory: ScheduleModuleProviding {
     
     let stubInterface = UIViewController()
-    func makeEventsModule() -> UIViewController {
+    func makeScheduleModule() -> UIViewController {
         return stubInterface
     }
     
