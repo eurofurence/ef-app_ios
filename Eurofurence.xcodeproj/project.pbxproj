@@ -210,6 +210,7 @@
 		CA00AE4920D16BD900C2FBB0 /* FakeScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4820D16BD900C2FBB0 /* FakeScheduleInteractor.swift */; };
 		CA00AE4B20D16BF300C2FBB0 /* ScheduleViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4A20D16BF300C2FBB0 /* ScheduleViewModel+RandomValueProviding.swift */; };
 		CA00AE4E20D16CAE00C2FBB0 /* SchedulePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4D20D16CAE00C2FBB0 /* SchedulePresenter.swift */; };
+		CA00AE5020D16D8900C2FBB0 /* WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4F20D16D8900C2FBB0 /* WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift */; };
 		CA057A5B2088BDBB00504FA4 /* NewsAnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */; };
 		CA057A5D2088BDC900504FA4 /* NewsEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5C2088BDC900504FA4 /* NewsEventTableViewCell.swift */; };
 		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
@@ -1054,6 +1055,7 @@
 		CA00AE4820D16BD900C2FBB0 /* FakeScheduleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeScheduleInteractor.swift; sourceTree = "<group>"; };
 		CA00AE4A20D16BF300C2FBB0 /* ScheduleViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScheduleViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA00AE4D20D16CAE00C2FBB0 /* SchedulePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePresenter.swift; sourceTree = "<group>"; };
+		CA00AE4F20D16D8900C2FBB0 /* WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsAnnouncementTableViewCell.swift; sourceTree = "<group>"; };
 		CA057A5C2088BDC900504FA4 /* NewsEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsEventTableViewCell.swift; sourceTree = "<group>"; };
 		CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardDealersSceneFactory.swift; sourceTree = "<group>"; };
@@ -2828,6 +2830,7 @@
 			isa = PBXGroup;
 			children = (
 				CA63758B208CE06100536BE2 /* WhenBuildingScheduleModule.swift */,
+				CA00AE4F20D16D8900C2FBB0 /* WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift */,
 				CABA840620D0671E00DD0795 /* WhenScheduleSceneLoads_SchedulePresenterShould.swift */,
 			);
 			path = "Presenter Tests";
@@ -5268,6 +5271,7 @@
 				CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */,
 				CAFD012820C6F2A2004F3935 /* WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould.swift in Sources */,
 				7820A6FF1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift in Sources */,
+				CA00AE5020D16D8900C2FBB0 /* WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift in Sources */,
 				CA73AEDB201A080F004E77BF /* StubKnowledgeListSceneFactory.swift in Sources */,
 				CA72843F209CF8D2007D912A /* WhenLoggedInBeforeConvention_ThenDaysUntilConventionChanges_NewsInteractorShould.swift in Sources */,
 				CA89CBC22085385900570D54 /* AnnouncementsViewModel.swift in Sources */,

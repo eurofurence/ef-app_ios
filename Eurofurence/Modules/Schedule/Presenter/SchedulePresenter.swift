@@ -8,12 +8,19 @@
 
 import Foundation
 
-struct SchedulePresenter: ScheduleInteractorDelegate {
+struct SchedulePresenter: ScheduleSceneDelegate, ScheduleInteractorDelegate {
 
     private let scene: ScheduleScene
+    private let interactor: ScheduleInteractor
 
     init(scene: ScheduleScene, interactor: ScheduleInteractor) {
         self.scene = scene
+        self.interactor = interactor
+
+        scene.setDelegate(self)
+    }
+
+    func scheduleSceneDidLoad() {
         interactor.setDelegate(self)
     }
 
