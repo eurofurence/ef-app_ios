@@ -23,10 +23,10 @@ struct SchedulePresenter: ScheduleSceneDelegate, ScheduleInteractorDelegate {
             let group = viewModel.eventGroups[indexPath.section]
             let event = group.events[indexPath.item]
 
-            eventComponent.setEventTitle(event.title)
+            eventComponent.setEventName(event.title)
             eventComponent.setEventStartTime(event.startTime)
             eventComponent.setEventEndTime(event.endTime)
-            eventComponent.setEventLocation(event.location)
+            eventComponent.setLocation(event.location)
         }
 
     }

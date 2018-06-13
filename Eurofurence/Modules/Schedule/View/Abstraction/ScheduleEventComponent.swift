@@ -10,9 +10,9 @@ import Foundation
 
 protocol ScheduleEventComponent {
 
-    func setEventTitle(_ title: String)
+    func setEventName(_ title: String)
     func setEventStartTime(_ startTime: String)
     func setEventEndTime(_ endTime: String)
-    func setEventLocation(_ location: String)
+    func setLocation(_ location: String)
 
 }

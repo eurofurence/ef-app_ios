@@ -12,7 +12,7 @@ import Foundation
 class CapturingScheduleEventComponent: ScheduleEventComponent {
     
     private(set) var capturedEventTitle: String?
-    func setEventTitle(_ title: String) {
+    func setEventName(_ title: String) {
         capturedEventTitle = title
     }
     
@@ -27,7 +27,7 @@ class CapturingScheduleEventComponent: ScheduleEventComponent {
     }
     
     private(set) var capturedLocation: String?
-    func setEventLocation(_ location: String) {
+    func setLocation(_ location: String) {
         capturedLocation = location
     }
     
