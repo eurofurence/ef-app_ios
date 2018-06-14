@@ -105,7 +105,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             }
         }
 
-        var selectedDayIndex: Int = -1
+        var selectedDayIndex = 0
 
         func setDelegate(_ delegate: ScheduleViewModelDelegate) {
             self.delegate = delegate

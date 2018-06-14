@@ -175,4 +175,12 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
         XCTAssertEqual(currentDay.index, delegate.currentDayIndex)
     }
     
+    func testProvideZeroIndexWhenCurrentDayIsNotAvailable() {
+        let context = ScheduleInteractorTestBuilder().build()
+        let delegate = CapturingScheduleInteractorDelegate()
+        context.interactor.setDelegate(delegate)
+        
+        XCTAssertEqual(0, delegate.currentDayIndex)
+    }
+    
 }
