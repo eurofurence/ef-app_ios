@@ -237,6 +237,10 @@
 		CA00AE8720D28A8B00C2FBB0 /* ShortFormDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8620D28A8B00C2FBB0 /* ShortFormDateFormatter.swift */; };
 		CA00AE8920D28AAD00C2FBB0 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8820D28AAD00C2FBB0 /* Day.swift */; };
 		CA00AE8B20D28AF400C2FBB0 /* Day+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */; };
+		CA00AE8E20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */; };
+		CA00AE8F20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA00AE8D20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.xib */; };
+		CA00AE9120D293B800C2FBB0 /* UICollectionView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE9020D293B800C2FBB0 /* UICollectionView+Convenience.swift */; };
+		CA00AE9320D2975400C2FBB0 /* ScheduleDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE9220D2975400C2FBB0 /* ScheduleDaysView.swift */; };
 		CA057A5B2088BDBB00504FA4 /* NewsAnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */; };
 		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
 		CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5206208E700E005259FE /* DealersViewController.swift */; };
@@ -1107,6 +1111,10 @@
 		CA00AE8620D28A8B00C2FBB0 /* ShortFormDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortFormDateFormatter.swift; sourceTree = "<group>"; };
 		CA00AE8820D28AAD00C2FBB0 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDayCollectionViewCell.swift; sourceTree = "<group>"; };
+		CA00AE8D20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleDayCollectionViewCell.xib; sourceTree = "<group>"; };
+		CA00AE9020D293B800C2FBB0 /* UICollectionView+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Convenience.swift"; sourceTree = "<group>"; };
+		CA00AE9220D2975400C2FBB0 /* ScheduleDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaysView.swift; sourceTree = "<group>"; };
 		CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsAnnouncementTableViewCell.swift; sourceTree = "<group>"; };
 		CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardDealersSceneFactory.swift; sourceTree = "<group>"; };
 		CA0E5206208E700E005259FE /* DealersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersViewController.swift; sourceTree = "<group>"; };
@@ -2555,6 +2563,7 @@
 			children = (
 				CA6AA01B1FD88D930092C6DB /* UIStoryboard+Convenience.swift */,
 				CA00AE6B20D178FA00C2FBB0 /* UITableView+Convenience.swift */,
+				CA00AE9020D293B800C2FBB0 /* UICollectionView+Convenience.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2981,8 +2990,11 @@
 			children = (
 				CA63759B208DFDF900536BE2 /* Schedule.storyboard */,
 				CA00AE6F20D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift */,
+				CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */,
 				CA63759D208DFE0500536BE2 /* ScheduleViewController.swift */,
 				CA63759F208DFE2E00536BE2 /* StoryboardEventsSceneFactory.swift */,
+				CA00AE8D20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.xib */,
+				CA00AE9220D2975400C2FBB0 /* ScheduleDaysView.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -4585,6 +4597,7 @@
 			files = (
 				9A8ECA1E1F2BB46000351A83 /* j1_generic.caf in Resources */,
 				9A8ECA1F1F2BB46000351A83 /* j1_themed.caf in Resources */,
+				CA00AE8F20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.xib in Resources */,
 				9A8ECA201F2BB46000351A83 /* j2_generic.caf in Resources */,
 				9A8ECA2D1F2D0A2000351A83 /* none.caf in Resources */,
 				9A8ECA211F2BB46000351A83 /* j2_themed.caf in Resources */,
@@ -4889,6 +4902,7 @@
 				9A0525431ECA2C5A00578798 /* SyncEntityDelta.swift in Sources */,
 				CAF3C7501F9FC74C0008F027 /* NewsSceneFactory.swift in Sources */,
 				CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */,
+				CA00AE9320D2975400C2FBB0 /* ScheduleDaysView.swift in Sources */,
 				CA637592208CE4F700536BE2 /* ScheduleScene.swift in Sources */,
 				CA30EAA11F2127350053DBF6 /* LoginResponse.swift in Sources */,
 				CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */,
@@ -4901,6 +4915,7 @@
 				CABF03BA2041C2B00028BD62 /* KnowledgeEntry2.swift in Sources */,
 				9A8477981ED99EDE00F0DF3F /* NavigationResolver.swift in Sources */,
 				CAD3BDCB2061394700C91E6E /* AppURLOpener.swift in Sources */,
+				CA00AE8E20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift in Sources */,
 				CA17FE9420586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift in Sources */,
 				9ACF99921EC858B2006FC958 /* EventConferenceDay.swift in Sources */,
 				CACF1E6D20B1CDB800D904B5 /* EventDetailInteractor.swift in Sources */,
@@ -4929,6 +4944,7 @@
 				9A0525471ECB091900578798 /* MockApiConnection.swift in Sources */,
 				CA162E7320A4B6A5004AFED6 /* ConventionStartDateRepository.swift in Sources */,
 				CAB3A72F1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift in Sources */,
+				CA00AE9120D293B800C2FBB0 /* UICollectionView+Convenience.swift in Sources */,
 				CACF1EA420B5ACD400D904B5 /* EventDetailDescriptionTableViewCell.swift in Sources */,
 				CA73AEE7201A0883004E77BF /* KnowledgeListScene.swift in Sources */,
 				9A34B9871ED08C7E004A249E /* JsonDataStore.swift in Sources */,

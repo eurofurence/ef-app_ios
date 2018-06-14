@@ -12,7 +12,9 @@ class ScheduleViewController: UIViewController, ScheduleScene {
 
     // MARK: Properties
 
+    @IBOutlet weak var daysView: ScheduleDaysView!
     @IBOutlet weak var tableView: UITableView!
+
     private var tableController: TableController? {
         didSet {
             tableView.dataSource = tableController
@@ -43,7 +45,7 @@ class ScheduleViewController: UIViewController, ScheduleScene {
     }
 
     func bind(numberOfDays: Int, using binder: ScheduleDaysBinder) {
-
+        daysView.bind(numberOfDays: numberOfDays, using: binder)
     }
 
     func bind(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder) {
@@ -51,7 +53,7 @@ class ScheduleViewController: UIViewController, ScheduleScene {
     }
 
     func selectDay(at index: Int) {
-
+//        collectionView.selectItem(at: IndexPath(item: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
     }
 
     // MARK: Private
