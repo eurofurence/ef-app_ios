@@ -9,6 +9,35 @@
 @testable import Eurofurence
 import XCTest
 
+class ScheduleInteractorTestBuilder {
+    
+    struct Context {
+        var interactor: DefaultScheduleInteractor
+        var hoursFormatter: FakeHoursDateFormatter
+    }
+    
+    private var eventsService: EventsService
+    
+    init() {
+        eventsService = StubEventsService()
+    }
+    
+    @discardableResult
+    func with(_ eventsService: EventsService) -> ScheduleInteractorTestBuilder {
+        self.eventsService = eventsService
+        return self
+    }
+    
+    func build() -> Context {
+        let hoursFormatter = FakeHoursDateFormatter()
+        let interactor = DefaultScheduleInteractor(eventsService: eventsService,
+                                                   hoursDateFormatter: hoursFormatter)
+        
+        return Context(interactor: interactor, hoursFormatter: hoursFormatter)
+    }
+    
+}
+
 class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
     
     func testGroupEventsByStartTime() {
@@ -32,22 +61,20 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
         let eventsService = StubEventsService()
         eventsService.allEvents = allEvents
         
-        let hoursFormatter = FakeHoursDateFormatter()
-        let interactor = DefaultScheduleInteractor(eventsService: eventsService,
-                                                   hoursDateFormatter: hoursFormatter)
+        let context = ScheduleInteractorTestBuilder().with(eventsService).build()
         let delegate = CapturingScheduleInteractorDelegate()
-        interactor.setDelegate(delegate)
+        context.interactor.setDelegate(delegate)
         
         let eventViewModelFromEvent: (Event2) -> ScheduleEventViewModel = { (event) in
             return ScheduleEventViewModel(title: event.title,
-                                          startTime: hoursFormatter.hoursString(from: event.startDate),
-                                          endTime: hoursFormatter.hoursString(from: event.endDate),
+                                          startTime: context.hoursFormatter.hoursString(from: event.startDate),
+                                          endTime: context.hoursFormatter.hoursString(from: event.endDate),
                                           location: event.room.name)
         }
         
-        let expected = [ScheduleEventGroupViewModel(title: hoursFormatter.hoursString(from: firstGroupDate),
+        let expected = [ScheduleEventGroupViewModel(title: context.hoursFormatter.hoursString(from: firstGroupDate),
                                                     events: firstGroup.map(eventViewModelFromEvent)),
-                        ScheduleEventGroupViewModel(title: hoursFormatter.hoursString(from: secondGroupDate),
+                        ScheduleEventGroupViewModel(title: context.hoursFormatter.hoursString(from: secondGroupDate),
                                                     events: secondGroup.map(eventViewModelFromEvent))
         ]
         
@@ -71,26 +98,24 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
         e.startDate = secondGroupDate
         let secondGroup = [d, e].sorted(by: { $0.title < $1.title })
         
-        let eventsService = CapturingEventsService()
-        let hoursFormatter = FakeHoursDateFormatter()
-        let interactor = DefaultScheduleInteractor(eventsService: eventsService,
-                                                   hoursDateFormatter: hoursFormatter)
-        let delegate = CapturingScheduleInteractorDelegate()
-        interactor.setDelegate(delegate)
-        
         let allEvents = firstGroup + secondGroup
+        let eventsService = CapturingEventsService()
+        
+        let context = ScheduleInteractorTestBuilder().with(eventsService).build()
+        let delegate = CapturingScheduleInteractorDelegate()
+        context.interactor.setDelegate(delegate)
         eventsService.simulateEventsChanged(allEvents)
         
         let eventViewModelFromEvent: (Event2) -> ScheduleEventViewModel = { (event) in
             return ScheduleEventViewModel(title: event.title,
-                                          startTime: hoursFormatter.hoursString(from: event.startDate),
-                                          endTime: hoursFormatter.hoursString(from: event.endDate),
+                                          startTime: context.hoursFormatter.hoursString(from: event.startDate),
+                                          endTime: context.hoursFormatter.hoursString(from: event.endDate),
                                           location: event.room.name)
         }
         
-        let expected = [ScheduleEventGroupViewModel(title: hoursFormatter.hoursString(from: firstGroupDate),
+        let expected = [ScheduleEventGroupViewModel(title: context.hoursFormatter.hoursString(from: firstGroupDate),
                                                     events: firstGroup.map(eventViewModelFromEvent)),
-                        ScheduleEventGroupViewModel(title: hoursFormatter.hoursString(from: secondGroupDate),
+                        ScheduleEventGroupViewModel(title: context.hoursFormatter.hoursString(from: secondGroupDate),
                                                     events: secondGroup.map(eventViewModelFromEvent))
         ]
         
