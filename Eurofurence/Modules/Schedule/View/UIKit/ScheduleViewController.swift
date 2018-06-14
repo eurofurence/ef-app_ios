@@ -49,6 +49,10 @@ class ScheduleViewController: UIViewController, ScheduleScene {
         tableController = TableController(numberOfItemsPerSection: numberOfItemsPerSection, binder: binder)
     }
 
+    func selectDay(at index: Int) {
+
+    }
+
     // MARK: Private
 
     private class Header: UITableViewHeaderFooterView, ScheduleEventGroupHeader {

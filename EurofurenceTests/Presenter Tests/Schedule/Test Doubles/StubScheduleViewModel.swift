@@ -13,10 +13,12 @@ struct StubScheduleViewModel: ScheduleViewModel {
     
     var days: [ScheduleDayViewModel]
     var events: [ScheduleEventGroupViewModel]
+    var currentDay: Int
     
     func setDelegate(_ delegate: ScheduleViewModelDelegate) {
         delegate.scheduleViewModelDidUpdateDays(days)
         delegate.scheduleViewModelDidUpdateEvents(events)
+        delegate.scheduleViewModelDidUpdateCurrentDayIndex(to: currentDay)
     }
     
 }

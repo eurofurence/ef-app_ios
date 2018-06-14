@@ -12,7 +12,7 @@ import Foundation
 extension StubScheduleViewModel: RandomValueProviding {
     
     static var random: StubScheduleViewModel {
-        return StubScheduleViewModel(days: .random, events: .random)
+        return StubScheduleViewModel(days: .random, events: .random, currentDay: .random)
     }
     
 }

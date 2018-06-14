@@ -31,4 +31,13 @@ class WhenScheduleSceneLoads_SchedulePresenterShould: XCTestCase {
         XCTAssertEqual(expected, context.scene.boundItemsPerSection)
     }
     
+    func testTellTheSceneToSelectTheCurrentDayUsingIndexFromViewModel() {
+        let viewModel = StubScheduleViewModel.random
+        let interactor = FakeScheduleInteractor(viewModel: viewModel)
+        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        context.simulateSceneDidLoad()
+        
+        XCTAssertEqual(viewModel.currentDay, context.scene.selectedDayIndex)
+    }
+    
 }

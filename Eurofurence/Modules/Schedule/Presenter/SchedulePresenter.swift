@@ -65,7 +65,7 @@ struct SchedulePresenter: ScheduleSceneDelegate, ScheduleInteractorDelegate, Sch
     }
 
     func scheduleViewModelDidUpdateCurrentDayIndex(to index: Int) {
-
+        scene.selectDay(at: index)
     }
 
     func scheduleViewModelDidUpdateEvents(_ events: [ScheduleEventGroupViewModel]) {

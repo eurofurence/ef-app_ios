@@ -35,4 +35,9 @@ class CapturingScheduleScene: UIViewController, ScheduleScene {
         self.binder = binder
     }
     
+    private(set) var selectedDayIndex: Int?
+    func selectDay(at index: Int) {
+        selectedDayIndex = index
+    }
+    
 }
