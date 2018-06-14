@@ -12,7 +12,7 @@ import XCTest
 class WhenBindingDay_SchedulePresenterShould: XCTestCase {
     
     func testBindTheDayNameOntoTheComponent() {
-        let viewModel = ScheduleViewModel.random
+        let viewModel = StubScheduleViewModel.random
         let interactor = FakeScheduleInteractor(viewModel: viewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()

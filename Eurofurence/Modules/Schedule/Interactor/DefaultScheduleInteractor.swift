@@ -68,9 +68,21 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             return ScheduleEventGroupViewModel(title: title, events: viewModels)
         }
 
-        let viewModel = ScheduleViewModel(days: [], eventGroups: groupViewModels)
+        let viewModel = ViewModel(days: [], eventGroups: groupViewModels)
         self.viewModel = viewModel
         delegate?.scheduleInteractorDidPrepareViewModel(viewModel)
+    }
+
+    private struct ViewModel: ScheduleViewModel {
+
+        var days: [ScheduleDayViewModel]
+        var eventGroups: [ScheduleEventGroupViewModel]
+
+        func setDelegate(_ delegate: ScheduleViewModelDelegate) {
+            delegate.scheduleViewModelDidUpdateDays(days)
+            delegate.scheduleViewModelDidUpdateEvents(eventGroups)
+        }
+
     }
 
     func eurofurenceApplicationDidUpdateRunningEvents(to events: [Event2]) { }

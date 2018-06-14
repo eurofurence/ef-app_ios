@@ -8,19 +8,19 @@
 
 import Foundation
 
-struct SchedulePresenter: ScheduleSceneDelegate, ScheduleInteractorDelegate {
+struct SchedulePresenter: ScheduleSceneDelegate, ScheduleInteractorDelegate, ScheduleViewModelDelegate {
 
     private struct EventsBinder: ScheduleSceneBinder {
 
-        var viewModel: ScheduleViewModel
+        var viewModels: [ScheduleEventGroupViewModel]
 
         func bind(_ header: ScheduleEventGroupHeader, forGroupAt index: Int) {
-            let group = viewModel.eventGroups[index]
+            let group = viewModels[index]
             header.setEventGroupTitle(group.title)
         }
 
         func bind(_ eventComponent: ScheduleEventComponent, forEventAt indexPath: IndexPath) {
-            let group = viewModel.eventGroups[indexPath.section]
+            let group = viewModels[indexPath.section]
             let event = group.events[indexPath.item]
 
             eventComponent.setEventName(event.title)
@@ -33,10 +33,10 @@ struct SchedulePresenter: ScheduleSceneDelegate, ScheduleInteractorDelegate {
 
     private struct DaysBinder: ScheduleDaysBinder {
 
-        var viewModel: ScheduleViewModel
+        var viewModels: [ScheduleDayViewModel]
 
         func bind(_ dayComponent: ScheduleDayComponent, forDayAt index: Int) {
-            let day = viewModel.days[index]
+            let day = viewModels[index]
             dayComponent.setDayTitle(day.title)
         }
 
@@ -57,10 +57,16 @@ struct SchedulePresenter: ScheduleSceneDelegate, ScheduleInteractorDelegate {
     }
 
     func scheduleInteractorDidPrepareViewModel(_ viewModel: ScheduleViewModel) {
-        scene.bind(numberOfDays: viewModel.days.count, using: DaysBinder(viewModel: viewModel))
+        viewModel.setDelegate(self)
+    }
 
-        let numberOfItemsPerGroup = viewModel.eventGroups.map { $0.events.count }
-        let binder = EventsBinder(viewModel: viewModel)
+    func scheduleViewModelDidUpdateDays(_ days: [ScheduleDayViewModel]) {
+        scene.bind(numberOfDays: days.count, using: DaysBinder(viewModels: days))
+    }
+
+    func scheduleViewModelDidUpdateEvents(_ events: [ScheduleEventGroupViewModel]) {
+        let numberOfItemsPerGroup = events.map { $0.events.count }
+        let binder = EventsBinder(viewModels: events)
         scene.bind(numberOfItemsPerSection: numberOfItemsPerGroup, using: binder)
     }
 

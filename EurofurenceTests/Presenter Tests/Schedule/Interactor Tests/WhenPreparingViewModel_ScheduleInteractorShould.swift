@@ -45,15 +45,13 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
                                           location: event.room.name)
         }
         
-        let expected = ScheduleViewModel(days: [],
-                                         eventGroups: [
-            ScheduleEventGroupViewModel(title: hoursFormatter.hoursString(from: firstGroupDate),
-                                        events: firstGroup.map(eventViewModelFromEvent)),
-            ScheduleEventGroupViewModel(title: hoursFormatter.hoursString(from: secondGroupDate),
-                                        events: secondGroup.map(eventViewModelFromEvent))
-            ])
+        let expected = [ScheduleEventGroupViewModel(title: hoursFormatter.hoursString(from: firstGroupDate),
+                                                    events: firstGroup.map(eventViewModelFromEvent)),
+                        ScheduleEventGroupViewModel(title: hoursFormatter.hoursString(from: secondGroupDate),
+                                                    events: secondGroup.map(eventViewModelFromEvent))
+        ]
         
-        XCTAssertEqual(expected, delegate.viewModel)
+        XCTAssertEqual(expected, delegate.eventsViewModels)
     }
     
     func testProvideUpdatedGroupsToDelegate() {
@@ -90,15 +88,13 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
                                           location: event.room.name)
         }
         
-        let expected = ScheduleViewModel(days: [],
-                                         eventGroups: [
-            ScheduleEventGroupViewModel(title: hoursFormatter.hoursString(from: firstGroupDate),
-                                        events: firstGroup.map(eventViewModelFromEvent)),
-            ScheduleEventGroupViewModel(title: hoursFormatter.hoursString(from: secondGroupDate),
-                                        events: secondGroup.map(eventViewModelFromEvent))
-            ])
+        let expected = [ScheduleEventGroupViewModel(title: hoursFormatter.hoursString(from: firstGroupDate),
+                                                    events: firstGroup.map(eventViewModelFromEvent)),
+                        ScheduleEventGroupViewModel(title: hoursFormatter.hoursString(from: secondGroupDate),
+                                                    events: secondGroup.map(eventViewModelFromEvent))
+        ]
         
-        XCTAssertEqual(expected, delegate.viewModel)
+        XCTAssertEqual(expected, delegate.eventsViewModels)
     }
     
 }

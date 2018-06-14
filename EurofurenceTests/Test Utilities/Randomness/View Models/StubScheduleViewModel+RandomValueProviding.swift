@@ -1,5 +1,5 @@
 //
-//  ScheduleViewModel+RandomValueProviding.swift
+//  StubScheduleViewModel+RandomValueProviding.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 13/06/2018.
@@ -9,10 +9,10 @@
 @testable import Eurofurence
 import Foundation
 
-extension ScheduleViewModel: RandomValueProviding {
+extension StubScheduleViewModel: RandomValueProviding {
     
-    static var random: ScheduleViewModel {
-        return ScheduleViewModel(days: .random, eventGroups: .random)
+    static var random: StubScheduleViewModel {
+        return StubScheduleViewModel(days: .random, events: .random)
     }
     
 }

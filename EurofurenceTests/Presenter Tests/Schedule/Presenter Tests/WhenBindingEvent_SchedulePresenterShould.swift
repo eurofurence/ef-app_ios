@@ -18,11 +18,11 @@ class WhenBindingEvent_SchedulePresenterShould: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let viewModel = ScheduleViewModel.random
+        let viewModel = StubScheduleViewModel.random
         let interactor = FakeScheduleInteractor(viewModel: viewModel)
         context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
-        let randomGroup = viewModel.eventGroups.randomElement()
+        let randomGroup = viewModel.events.randomElement()
         let randomEvent = randomGroup.element.events.randomElement()
         eventViewModel = randomEvent.element
         let indexPath = IndexPath(item: randomEvent.index, section: randomGroup.index)

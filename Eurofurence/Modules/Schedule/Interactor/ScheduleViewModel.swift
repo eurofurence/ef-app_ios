@@ -8,9 +8,15 @@
 
 import Foundation
 
-struct ScheduleViewModel: Equatable {
+protocol ScheduleViewModel {
 
-    var days: [ScheduleDayViewModel]
-    var eventGroups: [ScheduleEventGroupViewModel]
+    func setDelegate(_ delegate: ScheduleViewModelDelegate)
+
+}
+
+protocol ScheduleViewModelDelegate {
+
+    func scheduleViewModelDidUpdateDays(_ days: [ScheduleDayViewModel])
+    func scheduleViewModelDidUpdateEvents(_ events: [ScheduleEventGroupViewModel])
 
 }

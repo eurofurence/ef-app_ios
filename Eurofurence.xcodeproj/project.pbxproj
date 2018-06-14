@@ -208,7 +208,7 @@
 		CA00AE4520D16BBD00C2FBB0 /* ScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4420D16BBD00C2FBB0 /* ScheduleInteractor.swift */; };
 		CA00AE4720D16BCB00C2FBB0 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4620D16BCB00C2FBB0 /* ScheduleViewModel.swift */; };
 		CA00AE4920D16BD900C2FBB0 /* FakeScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4820D16BD900C2FBB0 /* FakeScheduleInteractor.swift */; };
-		CA00AE4B20D16BF300C2FBB0 /* ScheduleViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4A20D16BF300C2FBB0 /* ScheduleViewModel+RandomValueProviding.swift */; };
+		CA00AE4B20D16BF300C2FBB0 /* StubScheduleViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4A20D16BF300C2FBB0 /* StubScheduleViewModel+RandomValueProviding.swift */; };
 		CA00AE4E20D16CAE00C2FBB0 /* SchedulePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4D20D16CAE00C2FBB0 /* SchedulePresenter.swift */; };
 		CA00AE5020D16D8900C2FBB0 /* WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4F20D16D8900C2FBB0 /* WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift */; };
 		CA00AE5220D16FC000C2FBB0 /* ScheduleEventGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE5120D16FC000C2FBB0 /* ScheduleEventGroupViewModel.swift */; };
@@ -233,6 +233,7 @@
 		CA00AE7F20D1C11400C2FBB0 /* ScheduleDayComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE7E20D1C11400C2FBB0 /* ScheduleDayComponent.swift */; };
 		CA00AE8120D1C15900C2FBB0 /* ScheduleDaysBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8020D1C15900C2FBB0 /* ScheduleDaysBinder.swift */; };
 		CA00AE8320D1C21900C2FBB0 /* CapturingScheduleDayComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8220D1C21900C2FBB0 /* CapturingScheduleDayComponent.swift */; };
+		CA00AE8520D2320700C2FBB0 /* StubScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8420D2320700C2FBB0 /* StubScheduleViewModel.swift */; };
 		CA057A5B2088BDBB00504FA4 /* NewsAnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */; };
 		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
 		CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5206208E700E005259FE /* DealersViewController.swift */; };
@@ -1074,7 +1075,7 @@
 		CA00AE4420D16BBD00C2FBB0 /* ScheduleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInteractor.swift; sourceTree = "<group>"; };
 		CA00AE4620D16BCB00C2FBB0 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		CA00AE4820D16BD900C2FBB0 /* FakeScheduleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeScheduleInteractor.swift; sourceTree = "<group>"; };
-		CA00AE4A20D16BF300C2FBB0 /* ScheduleViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScheduleViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA00AE4A20D16BF300C2FBB0 /* StubScheduleViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StubScheduleViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA00AE4D20D16CAE00C2FBB0 /* SchedulePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePresenter.swift; sourceTree = "<group>"; };
 		CA00AE4F20D16D8900C2FBB0 /* WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA00AE5120D16FC000C2FBB0 /* ScheduleEventGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEventGroupViewModel.swift; sourceTree = "<group>"; };
@@ -1099,6 +1100,7 @@
 		CA00AE7E20D1C11400C2FBB0 /* ScheduleDayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDayComponent.swift; sourceTree = "<group>"; };
 		CA00AE8020D1C15900C2FBB0 /* ScheduleDaysBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaysBinder.swift; sourceTree = "<group>"; };
 		CA00AE8220D1C21900C2FBB0 /* CapturingScheduleDayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleDayComponent.swift; sourceTree = "<group>"; };
+		CA00AE8420D2320700C2FBB0 /* StubScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubScheduleViewModel.swift; sourceTree = "<group>"; };
 		CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsAnnouncementTableViewCell.swift; sourceTree = "<group>"; };
 		CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardDealersSceneFactory.swift; sourceTree = "<group>"; };
 		CA0E5206208E700E005259FE /* DealersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersViewController.swift; sourceTree = "<group>"; };
@@ -2955,13 +2957,14 @@
 		CA637593208DFD2B00536BE2 /* Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
-				CA637594208DFD3700536BE2 /* CapturingScheduleScene.swift */,
-				CA637596208DFD4B00536BE2 /* StubScheduleSceneFactory.swift */,
-				CA00AE4820D16BD900C2FBB0 /* FakeScheduleInteractor.swift */,
-				CA00AE5B20D171F200C2FBB0 /* CapturingScheduleEventGroupHeader.swift */,
-				CA00AE6120D1749200C2FBB0 /* CapturingScheduleEventComponent.swift */,
-				CA00AE7620D1AA2000C2FBB0 /* CapturingScheduleInteractorDelegate.swift */,
 				CA00AE8220D1C21900C2FBB0 /* CapturingScheduleDayComponent.swift */,
+				CA00AE6120D1749200C2FBB0 /* CapturingScheduleEventComponent.swift */,
+				CA00AE5B20D171F200C2FBB0 /* CapturingScheduleEventGroupHeader.swift */,
+				CA00AE7620D1AA2000C2FBB0 /* CapturingScheduleInteractorDelegate.swift */,
+				CA637594208DFD3700536BE2 /* CapturingScheduleScene.swift */,
+				CA00AE4820D16BD900C2FBB0 /* FakeScheduleInteractor.swift */,
+				CA637596208DFD4B00536BE2 /* StubScheduleSceneFactory.swift */,
+				CA00AE8420D2320700C2FBB0 /* StubScheduleViewModel.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -3252,7 +3255,7 @@
 				CA0F7620203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift */,
 				CA89CBAA207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift */,
 				CAD68829208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift */,
-				CA00AE4A20D16BF300C2FBB0 /* ScheduleViewModel+RandomValueProviding.swift */,
+				CA00AE4A20D16BF300C2FBB0 /* StubScheduleViewModel+RandomValueProviding.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -5333,7 +5336,7 @@
 				CA162EAC20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift in Sources */,
 				CA2D08061FE94BF000BFD785 /* RootModuleTestBuilder.swift in Sources */,
 				CACF1E4820AE29CB00D904B5 /* StubEventDetailModuleFactory.swift in Sources */,
-				CA00AE4B20D16BF300C2FBB0 /* ScheduleViewModel+RandomValueProviding.swift in Sources */,
+				CA00AE4B20D16BF300C2FBB0 /* StubScheduleViewModel+RandomValueProviding.swift in Sources */,
 				CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */,
 				CA321F4E1F7BC7FD0050E489 /* PhonePreloadSceneFactoryTests.swift in Sources */,
 				78C86D791F12ADF8003A20E6 /* CapturingSplashScene.swift in Sources */,
@@ -5414,6 +5417,7 @@
 				CA71A348204031F700C847C3 /* RandomValueProviding.swift in Sources */,
 				7820A6FD1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift in Sources */,
 				CA72849820A1C091007D912A /* WhenSyncingWhileLoggedIn.swift in Sources */,
+				CA00AE8520D2320700C2FBB0 /* StubScheduleViewModel.swift in Sources */,
 				CA71A34C204032FC00C847C3 /* Integer+RandomValueProviding.swift in Sources */,
 				CABEB0D420C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift in Sources */,
 				7820A7051F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift in Sources */,

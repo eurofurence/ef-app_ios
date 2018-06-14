@@ -12,7 +12,7 @@ import XCTest
 class WhenScheduleSceneLoads_SchedulePresenterShould: XCTestCase {
     
     func testBindNumberOfConferenceDaysOntoTheScene() {
-        let viewModel = ScheduleViewModel.random
+        let viewModel = StubScheduleViewModel.random
         let interactor = FakeScheduleInteractor(viewModel: viewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
@@ -22,11 +22,11 @@ class WhenScheduleSceneLoads_SchedulePresenterShould: XCTestCase {
     }
     
     func testBindNumberOfGroupsOntoScheduleScene() {
-        let viewModel = ScheduleViewModel.random
+        let viewModel = StubScheduleViewModel.random
         let interactor = FakeScheduleInteractor(viewModel: viewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
-        let expected = viewModel.eventGroups.map({ $0.events.count })
+        let expected = viewModel.events.map({ $0.events.count })
         
         XCTAssertEqual(expected, context.scene.boundItemsPerSection)
     }

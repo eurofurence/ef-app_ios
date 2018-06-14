@@ -13,7 +13,7 @@ class FakeScheduleInteractor: ScheduleInteractor {
     
     private let viewModel: ScheduleViewModel
     
-    init(viewModel: ScheduleViewModel = .random) {
+    init(viewModel: StubScheduleViewModel = .random) {
         self.viewModel = viewModel
     }
     
