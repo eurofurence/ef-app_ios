@@ -25,6 +25,7 @@ class ScheduleViewController: UIViewController, ScheduleScene {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.navigationBar.shadowImage = UIImage(named: "Transparent Pixel")
         tableView.register(EventTableViewCell.self)
         tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
         delegate?.scheduleSceneDidLoad()
