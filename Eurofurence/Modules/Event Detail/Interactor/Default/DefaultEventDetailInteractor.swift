@@ -88,6 +88,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
         func eurofurenceApplicationDidUpdateRunningEvents(to events: [Event2]) { }
         func eurofurenceApplicationDidUpdateUpcomingEvents(to events: [Event2]) { }
         func eventsServiceDidUpdateDays(to days: [Day]) { }
+        func eventsServiceDidUpdateCurrentDay(to day: Day?) { }
 
         func eventsServiceDidResolveFavouriteEvents(_ identifiers: [Event2.Identifier]) {
             isFavourite = identifiers.contains(event.identifier)

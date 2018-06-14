@@ -159,6 +159,7 @@ class DefaultNewsInteractor: NewsInteractor,
     }
 
     func eventsServiceDidUpdateDays(to days: [Day]) { }
+    func eventsServiceDidUpdateCurrentDay(to day: Day?) { }
 
     // MARK: Private
 

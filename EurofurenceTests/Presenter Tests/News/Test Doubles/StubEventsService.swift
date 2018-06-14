@@ -16,6 +16,7 @@ class StubEventsService: EventsService {
     var allEvents: [Event2] = []
     var favouriteEventIdentifiers: [Event2.Identifier] = []
     var allDays: [Day] = []
+    var currentDay: Day?
     
     func stubSomeFavouriteEvents() {
         allEvents = .random(minimum: 3)
@@ -28,6 +29,7 @@ class StubEventsService: EventsService {
         observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: upcomingEvents)
         observer.eventsServiceDidResolveFavouriteEvents(favouriteEventIdentifiers)
         observer.eventsServiceDidUpdateDays(to: allDays)
+        observer.eventsServiceDidUpdateCurrentDay(to: currentDay)
     }
     
     func favouriteEvent(identifier: Event2.Identifier) {

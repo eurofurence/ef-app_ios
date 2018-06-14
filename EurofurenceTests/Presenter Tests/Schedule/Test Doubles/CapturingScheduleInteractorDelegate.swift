@@ -22,6 +22,11 @@ class CapturingScheduleInteractorDelegate: ScheduleInteractorDelegate, ScheduleV
         daysViewModels = days
     }
     
+    private(set) var currentDayIndex: Int?
+    func scheduleViewModelDidUpdateCurrentDayIndex(to index: Int) {
+        currentDayIndex = index
+    }
+    
     private(set) var eventsViewModels: [ScheduleEventGroupViewModel] = []
     func scheduleViewModelDidUpdateEvents(_ events: [ScheduleEventGroupViewModel]) {
         eventsViewModels = events

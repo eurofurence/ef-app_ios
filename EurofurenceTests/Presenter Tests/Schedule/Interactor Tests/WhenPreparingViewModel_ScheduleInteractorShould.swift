@@ -162,4 +162,17 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
         XCTAssertEqual(expected, delegate.daysViewModels)
     }
     
+    func testProvideCurrentDayIndex() {
+        let days = [Day].random.sorted()
+        let currentDay = days.randomElement()
+        let eventsService = StubEventsService()
+        eventsService.allDays = days
+        eventsService.currentDay = currentDay.element
+        let context = ScheduleInteractorTestBuilder().with(eventsService).build()
+        let delegate = CapturingScheduleInteractorDelegate()
+        context.interactor.setDelegate(delegate)
+        
+        XCTAssertEqual(currentDay.index, delegate.currentDayIndex)
+    }
+    
 }

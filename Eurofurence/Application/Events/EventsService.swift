@@ -23,5 +23,6 @@ protocol EventsServiceObserver {
     func eurofurenceApplicationDidUpdateUpcomingEvents(to events: [Event2])
     func eventsServiceDidResolveFavouriteEvents(_ identifiers: [Event2.Identifier])
     func eventsServiceDidUpdateDays(to days: [Day])
+    func eventsServiceDidUpdateCurrentDay(to day: Day?)
 
 }

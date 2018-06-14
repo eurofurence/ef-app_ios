@@ -39,4 +39,8 @@ class CapturingEventsServiceObserver: EventsServiceObserver {
         
     }
     
+    func eventsServiceDidUpdateCurrentDay(to day: Day?) {
+        
+    }
+    
 }

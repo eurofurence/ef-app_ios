@@ -64,6 +64,10 @@ struct SchedulePresenter: ScheduleSceneDelegate, ScheduleInteractorDelegate, Sch
         scene.bind(numberOfDays: days.count, using: DaysBinder(viewModels: days))
     }
 
+    func scheduleViewModelDidUpdateCurrentDayIndex(to index: Int) {
+
+    }
+
     func scheduleViewModelDidUpdateEvents(_ events: [ScheduleEventGroupViewModel]) {
         let numberOfItemsPerGroup = events.map { $0.events.count }
         let binder = EventsBinder(viewModels: events)

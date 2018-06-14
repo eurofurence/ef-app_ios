@@ -26,6 +26,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
     private let hoursDateFormatter: HoursDateFormatter
     private let shortFormDateFormatter: ShortFormDateFormatter
     private let viewModel = ViewModel()
+    private var days: [Day] = []
 
     // MARK: Initialization
 
@@ -77,9 +78,15 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
     }
 
     func eventsServiceDidUpdateDays(to days: [Day]) {
+        self.days = days
         viewModel.days = days.sorted().map { (day) -> ScheduleDayViewModel in
             return ScheduleDayViewModel(title: shortFormDateFormatter.dateString(from: day.date))
         }
+    }
+
+    func eventsServiceDidUpdateCurrentDay(to day: Day?) {
+        guard let day = day, let idx = days.index(where: { $0.date == day.date }) else { return }
+        viewModel.selectedDayIndex = idx
     }
 
     private class ViewModel: ScheduleViewModel {
@@ -98,11 +105,14 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             }
         }
 
+        var selectedDayIndex: Int = -1
+
         func setDelegate(_ delegate: ScheduleViewModelDelegate) {
             self.delegate = delegate
 
             delegate.scheduleViewModelDidUpdateDays(days)
             delegate.scheduleViewModelDidUpdateEvents(eventGroups)
+            delegate.scheduleViewModelDidUpdateCurrentDayIndex(to: selectedDayIndex)
         }
 
     }
