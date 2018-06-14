@@ -9,11 +9,20 @@
 @testable import Eurofurence
 import XCTest
 
+class FakeShortFormDateFormatter: ShortFormDateFormatter {
+    
+    func dateString(from date: Date) -> String {
+        return "Short Form | \(date.description)"
+    }
+    
+}
+
 class ScheduleInteractorTestBuilder {
     
     struct Context {
         var interactor: DefaultScheduleInteractor
         var hoursFormatter: FakeHoursDateFormatter
+        var shortFormDateFormatter: FakeShortFormDateFormatter
     }
     
     private var eventsService: EventsService
@@ -30,10 +39,14 @@ class ScheduleInteractorTestBuilder {
     
     func build() -> Context {
         let hoursFormatter = FakeHoursDateFormatter()
+        let shortFormDateFormatter = FakeShortFormDateFormatter()
         let interactor = DefaultScheduleInteractor(eventsService: eventsService,
-                                                   hoursDateFormatter: hoursFormatter)
+                                                   hoursDateFormatter: hoursFormatter,
+                                                   shortFormDateFormatter: shortFormDateFormatter)
         
-        return Context(interactor: interactor, hoursFormatter: hoursFormatter)
+        return Context(interactor: interactor,
+                       hoursFormatter: hoursFormatter,
+                       shortFormDateFormatter: shortFormDateFormatter)
     }
     
 }
@@ -45,6 +58,10 @@ extension ScheduleInteractorTestBuilder.Context {
                                       startTime: hoursFormatter.hoursString(from: event.startDate),
                                       endTime: hoursFormatter.hoursString(from: event.endDate),
                                       location: event.room.name)
+    }
+    
+    func makeExpectedDayViewModel(from day: Day) -> ScheduleDayViewModel {
+        return ScheduleDayViewModel(title: shortFormDateFormatter.dateString(from: day.date))
     }
     
 }
@@ -117,6 +134,19 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
         ]
         
         XCTAssertEqual(expected, delegate.eventsViewModels)
+    }
+    
+    func testProvideDaysInDateOrder() {
+        let days = [Day].random
+        let eventsService = StubEventsService()
+        eventsService.allDays = days
+        let context = ScheduleInteractorTestBuilder().with(eventsService).build()
+        let delegate = CapturingScheduleInteractorDelegate()
+        context.interactor.setDelegate(delegate)
+        
+        let expected = days.sorted().map(context.makeExpectedDayViewModel)
+        
+        XCTAssertEqual(expected, delegate.daysViewModels)
     }
     
 }

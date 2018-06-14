@@ -234,6 +234,9 @@
 		CA00AE8120D1C15900C2FBB0 /* ScheduleDaysBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8020D1C15900C2FBB0 /* ScheduleDaysBinder.swift */; };
 		CA00AE8320D1C21900C2FBB0 /* CapturingScheduleDayComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8220D1C21900C2FBB0 /* CapturingScheduleDayComponent.swift */; };
 		CA00AE8520D2320700C2FBB0 /* StubScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8420D2320700C2FBB0 /* StubScheduleViewModel.swift */; };
+		CA00AE8720D28A8B00C2FBB0 /* ShortFormDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8620D28A8B00C2FBB0 /* ShortFormDateFormatter.swift */; };
+		CA00AE8920D28AAD00C2FBB0 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8820D28AAD00C2FBB0 /* Day.swift */; };
+		CA00AE8B20D28AF400C2FBB0 /* Day+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */; };
 		CA057A5B2088BDBB00504FA4 /* NewsAnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */; };
 		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
 		CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5206208E700E005259FE /* DealersViewController.swift */; };
@@ -1101,6 +1104,9 @@
 		CA00AE8020D1C15900C2FBB0 /* ScheduleDaysBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaysBinder.swift; sourceTree = "<group>"; };
 		CA00AE8220D1C21900C2FBB0 /* CapturingScheduleDayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleDayComponent.swift; sourceTree = "<group>"; };
 		CA00AE8420D2320700C2FBB0 /* StubScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubScheduleViewModel.swift; sourceTree = "<group>"; };
+		CA00AE8620D28A8B00C2FBB0 /* ShortFormDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortFormDateFormatter.swift; sourceTree = "<group>"; };
+		CA00AE8820D28AAD00C2FBB0 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsAnnouncementTableViewCell.swift; sourceTree = "<group>"; };
 		CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardDealersSceneFactory.swift; sourceTree = "<group>"; };
 		CA0E5206208E700E005259FE /* DealersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersViewController.swift; sourceTree = "<group>"; };
@@ -2697,17 +2703,18 @@
 		CA18B3451F49AF4500038E52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CACF1EC720B6D5A300D904B5 /* Entities */,
 				CA0E520E208F4BDF005259FE /* Announcement2.swift */,
 				CAD780421F1D4CA3002A8333 /* Credential.swift */,
+				CA00AE8820D28AAD00C2FBB0 /* Day.swift */,
 				CA162E9120A652B5004AFED6 /* Event2.swift */,
 				CABF03B82041C2B00028BD62 /* KnowledgeEntry2.swift */,
 				CABF03B92041C2B00028BD62 /* KnowledgeGroup2.swift */,
 				CAD3BDAE205870B500C91E6E /* Link.swift */,
 				CA30EAC31F2672BF0053DBF6 /* Message.swift */,
 				CA162E9520A88854004AFED6 /* Room.swift */,
-				CA30EAAD1F2148780053DBF6 /* User.swift */,
 				CACF1E8F20B36B5800D904B5 /* Track.swift */,
+				CA30EAAD1F2148780053DBF6 /* User.swift */,
+				CACF1EC720B6D5A300D904B5 /* Entities */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3661,6 +3668,7 @@
 				CA162E9D20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift */,
 				CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */,
 				CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */,
+				CA00AE8620D28A8B00C2FBB0 /* ShortFormDateFormatter.swift */,
 			);
 			path = "System Services";
 			sourceTree = "<group>";
@@ -3820,14 +3828,15 @@
 			children = (
 				CA0E5210208F4BF3005259FE /* Announcement2+RandomValueProviding.swift */,
 				CAF5979C20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift */,
+				CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */,
 				CA162E9320A87D3D004AFED6 /* Event2+RandomValueProviding.swift */,
 				CABF03C22041C2FD0028BD62 /* KnowledgeEntry2.swift */,
 				CABF03C02041C2EC0028BD62 /* KnowledgeGroup2.swift */,
 				CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */,
 				CA637579208CDB7B00536BE2 /* Message+RandomValueProviding.swift */,
-				CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */,
 				CA162E9720A8886C004AFED6 /* Room+RandomValueProviding.swift */,
 				CACF1E9120B36BC800D904B5 /* Track+RandomValueProviding.swift */,
+				CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4839,6 +4848,7 @@
 				9A80EF501F28C9A600FD0D37 /* StoryboardTargetRouter.swift in Sources */,
 				CA49E94A2015480A00EB571C /* EventBusRegistration.swift in Sources */,
 				CAF705641F82D0DF00A9FEA2 /* RootModuleProviding.swift in Sources */,
+				CA00AE8920D28AAD00C2FBB0 /* Day.swift in Sources */,
 				9A05254D1ECB097500578798 /* DataContextProtocol.swift in Sources */,
 				CA804DD21F20CE8F00E07A4A /* V2LoginAPI.swift in Sources */,
 				CAE8B0BF20CA583D0029D4D6 /* TrackEntity+Adaptation.swift in Sources */,
@@ -4945,6 +4955,7 @@
 				CAF9A9431F50B87600628833 /* EurofurenceApplicationProtocol.swift in Sources */,
 				6EF96CDD1F0F544B00EE6134 /* EventKitCalendarEvent.swift in Sources */,
 				CA17FE9220586A30005A4C05 /* WikiRenderer.swift in Sources */,
+				CA00AE8720D28A8B00C2FBB0 /* ShortFormDateFormatter.swift in Sources */,
 				CA8D97CF201611430074838F /* EventBus.swift in Sources */,
 				CAD3BDAD20586AF600C91E6E /* ConcreteWikiRenderer.swift in Sources */,
 				CAF5979A20449A1D00089BE8 /* APIKnowledgeEntry.swift in Sources */,
@@ -5565,6 +5576,7 @@
 				CA2D08141FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift in Sources */,
 				CAD260A320C03543007E3618 /* CapturingEventDetailViewModel.swift in Sources */,
 				7820A6E11F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift in Sources */,
+				CA00AE8B20D28AF400C2FBB0 /* Day+RandomValueProviding.swift in Sources */,
 				781A94461F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift in Sources */,
 				CABA83F020CDC80500DD0795 /* WhenSyncSuceeds_ThenObservingUpcomingEvents.swift in Sources */,
 				CA17FE7F2058006F005A4C05 /* CapturingLinkScene.swift in Sources */,

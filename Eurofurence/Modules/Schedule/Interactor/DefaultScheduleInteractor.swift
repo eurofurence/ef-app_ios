@@ -24,18 +24,28 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
     // MARK: Properties
 
     private let hoursDateFormatter: HoursDateFormatter
-    private var viewModel: ScheduleViewModel?
+    private let shortFormDateFormatter: ShortFormDateFormatter
+    private let viewModel = ViewModel()
 
     // MARK: Initialization
 
     convenience init() {
+        struct DummyShortFormDateFormatter: ShortFormDateFormatter {
+            func dateString(from date: Date) -> String {
+                return ""
+            }
+        }
+
         self.init(eventsService: EurofurenceApplication.shared,
-                  hoursDateFormatter: FoundationHoursDateFormatter.shared)
+                  hoursDateFormatter: FoundationHoursDateFormatter.shared,
+                  shortFormDateFormatter: DummyShortFormDateFormatter())
     }
 
     init(eventsService: EventsService,
-         hoursDateFormatter: HoursDateFormatter) {
+         hoursDateFormatter: HoursDateFormatter,
+         shortFormDateFormatter: ShortFormDateFormatter) {
         self.hoursDateFormatter = hoursDateFormatter
+        self.shortFormDateFormatter = shortFormDateFormatter
 
         eventsService.add(self)
     }
@@ -45,10 +55,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
     private var delegate: ScheduleInteractorDelegate?
     func setDelegate(_ delegate: ScheduleInteractorDelegate) {
         self.delegate = delegate
-
-        if let viewModel = viewModel {
-            delegate.scheduleInteractorDidPrepareViewModel(viewModel)
-        }
+        delegate.scheduleInteractorDidPrepareViewModel(viewModel)
     }
 
     // MARK: EventsServiceObserver
@@ -56,7 +63,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
     func eurofurenceApplicationDidUpdateEvents(to events: [Event2]) {
         let groupedByDate = Dictionary(grouping: events, by: { $0.startDate })
         let orderedGroups = groupedByDate.map(EventsGroupedByDate.init).sorted()
-        let groupViewModels = orderedGroups.map { (group) -> ScheduleEventGroupViewModel in
+        viewModel.eventGroups = orderedGroups.map { (group) -> ScheduleEventGroupViewModel in
             let title = hoursDateFormatter.hoursString(from: group.date)
             let viewModels = group.events.map { (event) -> ScheduleEventViewModel in
                 return ScheduleEventViewModel(title: event.title,
@@ -68,15 +75,19 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             return ScheduleEventGroupViewModel(title: title, events: viewModels)
         }
 
-        let viewModel = ViewModel(days: [], eventGroups: groupViewModels)
-        self.viewModel = viewModel
         delegate?.scheduleInteractorDidPrepareViewModel(viewModel)
     }
 
-    private struct ViewModel: ScheduleViewModel {
+    func eventsServiceDidUpdateDays(to days: [Day]) {
+        viewModel.days = days.sorted().map { (day) -> ScheduleDayViewModel in
+            return ScheduleDayViewModel(title: shortFormDateFormatter.dateString(from: day.date))
+        }
+    }
 
-        var days: [ScheduleDayViewModel]
-        var eventGroups: [ScheduleEventGroupViewModel]
+    private class ViewModel: ScheduleViewModel {
+
+        var days: [ScheduleDayViewModel] = []
+        var eventGroups: [ScheduleEventGroupViewModel] = []
 
         func setDelegate(_ delegate: ScheduleViewModelDelegate) {
             delegate.scheduleViewModelDidUpdateDays(days)
@@ -86,9 +97,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
     }
 
     func eurofurenceApplicationDidUpdateRunningEvents(to events: [Event2]) { }
-
     func eurofurenceApplicationDidUpdateUpcomingEvents(to events: [Event2]) { }
-
     func eventsServiceDidResolveFavouriteEvents(_ identifiers: [Event2.Identifier]) { }
 
 }

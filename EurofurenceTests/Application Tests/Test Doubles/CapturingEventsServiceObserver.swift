@@ -35,4 +35,8 @@ class CapturingEventsServiceObserver: EventsServiceObserver {
         capturedFavouriteEventIdentifiers = identifiers
     }
     
+    func eventsServiceDidUpdateDays(to days: [Day]) {
+        
+    }
+    
 }
