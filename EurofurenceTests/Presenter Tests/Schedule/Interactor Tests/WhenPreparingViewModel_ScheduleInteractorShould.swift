@@ -38,6 +38,17 @@ class ScheduleInteractorTestBuilder {
     
 }
 
+extension ScheduleInteractorTestBuilder.Context {
+    
+    func makeExpectedEventViewModel(from event: Event2) -> ScheduleEventViewModel {
+        return ScheduleEventViewModel(title: event.title,
+                                      startTime: hoursFormatter.hoursString(from: event.startDate),
+                                      endTime: hoursFormatter.hoursString(from: event.endDate),
+                                      location: event.room.name)
+    }
+    
+}
+
 class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
     
     func testGroupEventsByStartTime() {
@@ -65,17 +76,10 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
         let delegate = CapturingScheduleInteractorDelegate()
         context.interactor.setDelegate(delegate)
         
-        let eventViewModelFromEvent: (Event2) -> ScheduleEventViewModel = { (event) in
-            return ScheduleEventViewModel(title: event.title,
-                                          startTime: context.hoursFormatter.hoursString(from: event.startDate),
-                                          endTime: context.hoursFormatter.hoursString(from: event.endDate),
-                                          location: event.room.name)
-        }
-        
         let expected = [ScheduleEventGroupViewModel(title: context.hoursFormatter.hoursString(from: firstGroupDate),
-                                                    events: firstGroup.map(eventViewModelFromEvent)),
+                                                    events: firstGroup.map(context.makeExpectedEventViewModel)),
                         ScheduleEventGroupViewModel(title: context.hoursFormatter.hoursString(from: secondGroupDate),
-                                                    events: secondGroup.map(eventViewModelFromEvent))
+                                                    events: secondGroup.map(context.makeExpectedEventViewModel))
         ]
         
         XCTAssertEqual(expected, delegate.eventsViewModels)
@@ -106,17 +110,10 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
         context.interactor.setDelegate(delegate)
         eventsService.simulateEventsChanged(allEvents)
         
-        let eventViewModelFromEvent: (Event2) -> ScheduleEventViewModel = { (event) in
-            return ScheduleEventViewModel(title: event.title,
-                                          startTime: context.hoursFormatter.hoursString(from: event.startDate),
-                                          endTime: context.hoursFormatter.hoursString(from: event.endDate),
-                                          location: event.room.name)
-        }
-        
         let expected = [ScheduleEventGroupViewModel(title: context.hoursFormatter.hoursString(from: firstGroupDate),
-                                                    events: firstGroup.map(eventViewModelFromEvent)),
+                                                    events: firstGroup.map(context.makeExpectedEventViewModel)),
                         ScheduleEventGroupViewModel(title: context.hoursFormatter.hoursString(from: secondGroupDate),
-                                                    events: secondGroup.map(eventViewModelFromEvent))
+                                                    events: secondGroup.map(context.makeExpectedEventViewModel))
         ]
         
         XCTAssertEqual(expected, delegate.eventsViewModels)
