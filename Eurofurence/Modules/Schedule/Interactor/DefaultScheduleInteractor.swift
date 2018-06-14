@@ -86,10 +86,19 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
     private class ViewModel: ScheduleViewModel {
 
-        var days: [ScheduleDayViewModel] = []
+        private var delegate: ScheduleViewModelDelegate?
+
+        var days: [ScheduleDayViewModel] = [] {
+            didSet {
+                delegate?.scheduleViewModelDidUpdateDays(days)
+            }
+        }
+
         var eventGroups: [ScheduleEventGroupViewModel] = []
 
         func setDelegate(_ delegate: ScheduleViewModelDelegate) {
+            self.delegate = delegate
+
             delegate.scheduleViewModelDidUpdateDays(days)
             delegate.scheduleViewModelDidUpdateEvents(eventGroups)
         }

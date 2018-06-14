@@ -149,4 +149,17 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
         XCTAssertEqual(expected, delegate.daysViewModels)
     }
     
+    func testInformDelegateAboutLaterDayChanges() {
+        let days = [Day].random
+        let eventsService = CapturingEventsService()
+        let context = ScheduleInteractorTestBuilder().with(eventsService).build()
+        let delegate = CapturingScheduleInteractorDelegate()
+        context.interactor.setDelegate(delegate)
+        eventsService.simulateDaysChanged(days)
+        
+        let expected = days.sorted().map(context.makeExpectedDayViewModel)
+        
+        XCTAssertEqual(expected, delegate.daysViewModels)
+    }
+    
 }

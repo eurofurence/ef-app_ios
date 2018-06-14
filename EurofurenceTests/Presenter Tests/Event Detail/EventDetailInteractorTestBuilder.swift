@@ -59,6 +59,10 @@ extension CapturingEventsService {
         observers.forEach { $0.eurofurenceApplicationDidUpdateEvents(to: events) }
     }
     
+    func simulateDaysChanged(_ days: [Day]) {
+        observers.forEach { $0.eventsServiceDidUpdateDays(to: days) }
+    }
+    
 }
 
 class EventDetailInteractorTestBuilder {
