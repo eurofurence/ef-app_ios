@@ -74,8 +74,6 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
             return ScheduleEventGroupViewModel(title: title, events: viewModels)
         }
-
-        delegate?.scheduleInteractorDidPrepareViewModel(viewModel)
     }
 
     func eventsServiceDidUpdateDays(to days: [Day]) {
@@ -94,7 +92,11 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             }
         }
 
-        var eventGroups: [ScheduleEventGroupViewModel] = []
+        var eventGroups: [ScheduleEventGroupViewModel] = [] {
+            didSet {
+                delegate?.scheduleViewModelDidUpdateEvents(eventGroups)
+            }
+        }
 
         func setDelegate(_ delegate: ScheduleViewModelDelegate) {
             self.delegate = delegate
