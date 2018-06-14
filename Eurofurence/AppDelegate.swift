@@ -20,6 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	lazy var notificationRouter: NotificationRouter = StoryboardNotificationRouter(window: self.window!, targetRouter: self.targetRouter)
     private var director: ApplicationDirector?
 
+    private func applyDirectorBasedTheme() {
+        let navigationBarAppearence = UINavigationBar.appearance()
+        navigationBarAppearence.isTranslucent = false
+
+        let tabBarAppearence = UITabBar.appearance()
+        tabBarAppearence.isTranslucent = false
+    }
+
 	func application(_ application: UIApplication,
 	                 didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         ScreenshotAssistant.prepare()
@@ -34,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DataStoreRefreshController.shared.add(ApplicationActivityIndicatorRefreshDelegate())
 
         if UserSettings.UseDirector.currentValueOrDefault() {
+            applyDirectorBasedTheme()
             director = DirectorBuilder().build()
         } else {
             PresentationTier.assemble(window: window!)
