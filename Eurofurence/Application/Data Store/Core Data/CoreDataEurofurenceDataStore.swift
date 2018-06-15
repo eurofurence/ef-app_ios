@@ -91,7 +91,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
     }
 
     func getSavedConferenceDays() -> [APIConferenceDay]? {
-        return nil
+        return getModels(fetchRequest: ConferenceDayEntity.fetchRequest())
     }
 
     func getSavedFavouriteEventIdentifiers() -> [Event2.Identifier]? {
@@ -229,7 +229,12 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         }
 
         func saveConferenceDays(_ conferenceDays: [APIConferenceDay]) {
-
+            mutations.append { (context) in
+                conferenceDays.forEach { (conferenceDay) in
+                    let entity = ConferenceDayEntity(context: context)
+                    entity.date = conferenceDay.date
+                }
+            }
         }
 
         func saveFavouriteEventIdentifier(_ identifier: Event2.Identifier) {

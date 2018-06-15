@@ -246,6 +246,7 @@
 		CA08157D20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157C20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift */; };
 		CA08157F20D3D52D00F750D4 /* APIConferenceDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157E20D3D52D00F750D4 /* APIConferenceDay.swift */; };
 		CA08158120D3D7AB00F750D4 /* WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08158020D3D7AB00F750D4 /* WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays.swift */; };
+		CA08158320D3DBC200F750D4 /* ConferenceDayEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08158220D3DBC200F750D4 /* ConferenceDayEntity+Adaptation.swift */; };
 		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
 		CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5206208E700E005259FE /* DealersViewController.swift */; };
 		CA0E5209208E7020005259FE /* Dealers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0E5208208E7020005259FE /* Dealers.storyboard */; };
@@ -1124,6 +1125,7 @@
 		CA08157C20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncCompletesWithConferenceDays_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA08157E20D3D52D00F750D4 /* APIConferenceDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConferenceDay.swift; sourceTree = "<group>"; };
 		CA08158020D3D7AB00F750D4 /* WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays.swift; sourceTree = "<group>"; };
+		CA08158220D3DBC200F750D4 /* ConferenceDayEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConferenceDayEntity+Adaptation.swift"; sourceTree = "<group>"; };
 		CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardDealersSceneFactory.swift; sourceTree = "<group>"; };
 		CA0E5206208E700E005259FE /* DealersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersViewController.swift; sourceTree = "<group>"; };
 		CA0E5208208E7020005259FE /* Dealers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dealers.storyboard; sourceTree = "<group>"; };
@@ -4177,6 +4179,7 @@
 			isa = PBXGroup;
 			children = (
 				CA1F7D6C20CBBD9200FB87F5 /* AnnouncementEntity+Adaptation.swift */,
+				CA08158220D3DBC200F750D4 /* ConferenceDayEntity+Adaptation.swift */,
 				CAE8B0B320CA4C6B0029D4D6 /* EntityAdapting.swift */,
 				CAE8B0BA20CA54C30029D4D6 /* EventEntity+Adaptation.swift */,
 				CABA840020CEFCCD00DD0795 /* FavouriteEventEntity+Adaptation.swift */,
@@ -5233,6 +5236,7 @@
 				CAF3F63D20167B3100374B4C /* EurofurenceApplicationBuilder.swift in Sources */,
 				CAD2609D20C02BCF007E3618 /* EventDetailBannerTableViewCell.swift in Sources */,
 				CA8D97D3201612A70074838F /* RemoteNotificationRegistrationSucceeded.swift in Sources */,
+				CA08158320D3DBC200F750D4 /* ConferenceDayEntity+Adaptation.swift in Sources */,
 				CACF1EBC20B60A6000D904B5 /* ImageAPI.swift in Sources */,
 				CAF9A9531F55F3B300628833 /* EurofurencePrivateMessagesService.swift in Sources */,
 				D6F3D339BFBA2C299453B6BA /* SettingsTableViewController.swift in Sources */,

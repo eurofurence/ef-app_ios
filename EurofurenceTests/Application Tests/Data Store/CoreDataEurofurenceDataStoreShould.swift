@@ -266,6 +266,18 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         assertThat([], isEqualTo: actual)
     }
     
+    func testSaveConferenceDays() {
+        let conferenceDays = [APIConferenceDay].random
+        store.performTransaction { (transaction) in
+            transaction.saveConferenceDays(conferenceDays)
+        }
+        
+        recreateStore()
+        let actual = store.getSavedConferenceDays()
+        
+        assertThat(conferenceDays, isEqualTo: actual)
+    }
+    
     private func assertThat<T>(_ expected: [T], isEqualTo actual: [T]?, file: StaticString = #file, line: UInt = #line) where T: Equatable {
         guard let actual = actual else {
             XCTFail("Expected actual values, but got nil", file: file, line: line)
