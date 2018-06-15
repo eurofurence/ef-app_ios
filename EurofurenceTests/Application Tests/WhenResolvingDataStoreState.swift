@@ -60,6 +60,18 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
 
 extension CapturingEurofurenceDataStore {
     
+    func save(_ response: APISyncResponse) {
+        performTransaction { (transaction) in
+            transaction.saveKnowledgeGroups(response.knowledgeGroups.changed)
+            transaction.saveKnowledgeEntries(response.knowledgeEntries.changed)
+            transaction.saveAnnouncements(response.announcements.changed)
+            transaction.saveEvents(response.events.changed)
+            transaction.saveRooms(response.rooms.changed)
+            transaction.saveTracks(response.tracks.changed)
+            transaction.saveConferenceDays(response.conferenceDays.changed)
+        }
+    }
+    
     func didSave(_ knowledgeGroups: [APIKnowledgeGroup]) -> Bool {
         guard let persistedKnowledgeGroups = transaction?.persistedKnowledgeGroups else { return false }
         return persistedKnowledgeGroups.contains(elementsFrom: knowledgeGroups)

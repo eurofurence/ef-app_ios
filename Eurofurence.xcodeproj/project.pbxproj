@@ -256,6 +256,7 @@
 		CA08159720D475B500F750D4 /* FakeEventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08159620D475B500F750D4 /* FakeEventsService.swift */; };
 		CA08159A20D47B9600F750D4 /* WhenAppHasNoSavedEvents_ThenSyncFinishesSuccessfully_EventsScheduleShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08159920D47B9600F750D4 /* WhenAppHasNoSavedEvents_ThenSyncFinishesSuccessfully_EventsScheduleShould.swift */; };
 		CA08159C20D47BEA00F750D4 /* CapturingEventsScheduleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08159B20D47BEA00F750D4 /* CapturingEventsScheduleDelegate.swift */; };
+		CA0815A020D47D4100F750D4 /* WhenRestrictingEventsToSpecificDay_ScheduleShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08159F20D47D4100F750D4 /* WhenRestrictingEventsToSpecificDay_ScheduleShould.swift */; };
 		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
 		CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5206208E700E005259FE /* DealersViewController.swift */; };
 		CA0E5209208E7020005259FE /* Dealers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0E5208208E7020005259FE /* Dealers.storyboard */; };
@@ -1143,6 +1144,7 @@
 		CA08159620D475B500F750D4 /* FakeEventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeEventsService.swift; sourceTree = "<group>"; };
 		CA08159920D47B9600F750D4 /* WhenAppHasNoSavedEvents_ThenSyncFinishesSuccessfully_EventsScheduleShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAppHasNoSavedEvents_ThenSyncFinishesSuccessfully_EventsScheduleShould.swift; sourceTree = "<group>"; };
 		CA08159B20D47BEA00F750D4 /* CapturingEventsScheduleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventsScheduleDelegate.swift; sourceTree = "<group>"; };
+		CA08159F20D47D4100F750D4 /* WhenRestrictingEventsToSpecificDay_ScheduleShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRestrictingEventsToSpecificDay_ScheduleShould.swift; sourceTree = "<group>"; };
 		CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardDealersSceneFactory.swift; sourceTree = "<group>"; };
 		CA0E5206208E700E005259FE /* DealersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersViewController.swift; sourceTree = "<group>"; };
 		CA0E5208208E7020005259FE /* Dealers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dealers.storyboard; sourceTree = "<group>"; };
@@ -2619,6 +2621,7 @@
 			isa = PBXGroup;
 			children = (
 				CA08159920D47B9600F750D4 /* WhenAppHasNoSavedEvents_ThenSyncFinishesSuccessfully_EventsScheduleShould.swift */,
+				CA08159F20D47D4100F750D4 /* WhenRestrictingEventsToSpecificDay_ScheduleShould.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -5486,6 +5489,7 @@
 				CABEB0D920C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift in Sources */,
 				CABF03C12041C2EC0028BD62 /* KnowledgeGroup2.swift in Sources */,
 				CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */,
+				CA0815A020D47D4100F750D4 /* WhenRestrictingEventsToSpecificDay_ScheduleShould.swift in Sources */,
 				CAFD012820C6F2A2004F3935 /* WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould.swift in Sources */,
 				7820A6FF1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift in Sources */,
 				CA00AE5020D16D8900C2FBB0 /* WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift in Sources */,

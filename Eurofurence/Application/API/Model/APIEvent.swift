@@ -13,6 +13,7 @@ struct APIEvent: Equatable {
     var identifier: String
     var roomIdentifier: String
     var trackIdentifier: String
+    var dayIdentifier: String
     var startDateTime: Date
     var endDateTime: Date
     var title: String

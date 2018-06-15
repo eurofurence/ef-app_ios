@@ -148,6 +148,7 @@ private struct JSONSyncResponse: Decodable {
         var Id: String
         var ConferenceRoomId: String
         var ConferenceTrackId: String
+        var ConferenceDayId: String
         var StartDateTimeUtc: Date
         var EndDateTimeUtc: Date
         var Title: String
@@ -161,6 +162,7 @@ private struct JSONSyncResponse: Decodable {
             return APIEvent(identifier: Id,
                             roomIdentifier: ConferenceRoomId,
                             trackIdentifier: ConferenceTrackId,
+                            dayIdentifier: ConferenceDayId,
                             startDateTime: StartDateTimeUtc,
                             endDateTime: EndDateTimeUtc,
                             title: Title,

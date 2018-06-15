@@ -196,6 +196,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                     entity.identifier = event.identifier
                     entity.roomIdentifier = event.roomIdentifier
                     entity.trackIdentifier = event.trackIdentifier
+                    entity.dayIdentifier = event.dayIdentifier
                     entity.startDateTime = event.startDateTime
                     entity.endDateTime = event.endDateTime
                     entity.title = event.title

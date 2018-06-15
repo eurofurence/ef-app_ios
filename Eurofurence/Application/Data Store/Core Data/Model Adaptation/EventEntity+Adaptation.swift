@@ -16,6 +16,7 @@ extension EventEntity: EntityAdapting {
         return APIEvent(identifier: identifier!,
                         roomIdentifier: roomIdentifier!,
                         trackIdentifier: trackIdentifier!,
+                        dayIdentifier: dayIdentifier!,
                         startDateTime: startDateTime! as Date,
                         endDateTime: endDateTime! as Date,
                         title: title!,

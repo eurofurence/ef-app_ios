@@ -19,6 +19,18 @@ extension Array where Element: RandomValueProviding {
         return (0...upperLimit).map { (_) in Element.random }
     }
     
+    static func randomWithMutations(_ block: (inout Element) -> Void) -> [Element] {
+        let elements = self.random
+        var copy = elements
+        for (idx, element) in elements.enumerated() {
+            var elementCopy = element
+            block(&elementCopy)
+            copy[idx] = elementCopy
+        }
+        
+        return copy
+    }
+    
 }
 
 extension Array {
