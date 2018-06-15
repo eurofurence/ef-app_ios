@@ -1,5 +1,5 @@
 //
-//  WhenViewModelIsTolsToShowEventsForSpecificDay_ScheduleInteractorShould.swift
+//  WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 15/06/2018.
@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import XCTest
 
-class WhenViewModelIsTolsToShowEventsForSpecificDay_ScheduleInteractorShould: XCTestCase {
+class WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould: XCTestCase {
     
     func testTellTheScheduleToRestrictEventsToSpecifiedDay() {
         let days: [Day] = .random
