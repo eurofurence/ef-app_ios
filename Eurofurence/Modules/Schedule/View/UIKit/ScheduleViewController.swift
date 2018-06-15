@@ -12,13 +12,20 @@ class ScheduleViewController: UIViewController, ScheduleScene {
 
     // MARK: Properties
 
-    @IBOutlet weak var daysView: ScheduleDaysView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var daysCollectionView: UICollectionView!
 
     private var tableController: TableController? {
         didSet {
             tableView.dataSource = tableController
             tableView.delegate = tableController
+        }
+    }
+
+    private var daysController: DaysController? {
+        didSet {
+            daysCollectionView.dataSource = daysController
+            daysCollectionView.delegate = daysController
         }
     }
 
@@ -45,7 +52,8 @@ class ScheduleViewController: UIViewController, ScheduleScene {
     }
 
     func bind(numberOfDays: Int, using binder: ScheduleDaysBinder) {
-        daysView.bind(numberOfDays: numberOfDays, using: binder)
+//        daysView.bind(numberOfDays: numberOfDays, using: binder)
+        daysController = DaysController(numberOfDays: numberOfDays, binder: binder)
     }
 
     func bind(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder) {
@@ -96,6 +104,37 @@ class ScheduleViewController: UIViewController, ScheduleScene {
             let cell = tableView.dequeue(EventTableViewCell.self)
             binder.bind(cell, forEventAt: indexPath)
             return cell
+        }
+
+    }
+
+    private class DaysController: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
+        private let numberOfDays: Int
+        private let binder: ScheduleDaysBinder
+
+        init(numberOfDays: Int, binder: ScheduleDaysBinder) {
+            self.numberOfDays = numberOfDays
+            self.binder = binder
+        }
+
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return numberOfDays
+        }
+
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            let cell = collectionView.dequeue(ScheduleDayCollectionViewCell.self, for: indexPath)
+            binder.bind(cell, forDayAt: indexPath.item)
+            return cell
+        }
+
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+            var safeAreaInsets: UIEdgeInsets = .zero
+            if #available(iOS 11.0, *) {
+                safeAreaInsets = collectionView.safeAreaInsets
+            }
+
+            return UIEdgeInsets(top: 0, left: safeAreaInsets.left, bottom: 0, right: safeAreaInsets.right)
         }
 
     }

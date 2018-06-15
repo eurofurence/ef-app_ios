@@ -19,6 +19,11 @@ class ScheduleDayCollectionViewCell: UICollectionViewCell, ScheduleDayComponent 
         }
     }
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        selectedDecorationView.isHidden = true
+    }
+
     func setDayTitle(_ title: String) {
         dayTitleLabel.text = title
     }

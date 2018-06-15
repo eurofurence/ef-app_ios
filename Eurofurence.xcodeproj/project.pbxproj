@@ -238,10 +238,10 @@
 		CA00AE8920D28AAD00C2FBB0 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8820D28AAD00C2FBB0 /* Day.swift */; };
 		CA00AE8B20D28AF400C2FBB0 /* Day+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */; };
 		CA00AE8E20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */; };
-		CA00AE8F20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA00AE8D20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.xib */; };
 		CA00AE9120D293B800C2FBB0 /* UICollectionView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE9020D293B800C2FBB0 /* UICollectionView+Convenience.swift */; };
 		CA00AE9320D2975400C2FBB0 /* ScheduleDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE9220D2975400C2FBB0 /* ScheduleDaysView.swift */; };
 		CA057A5B2088BDBB00504FA4 /* NewsAnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */; };
+		CA08157820D3865600F750D4 /* NavigationBarViewExtensionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */; };
 		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
 		CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5206208E700E005259FE /* DealersViewController.swift */; };
 		CA0E5209208E7020005259FE /* Dealers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0E5208208E7020005259FE /* Dealers.storyboard */; };
@@ -1112,10 +1112,10 @@
 		CA00AE8820D28AAD00C2FBB0 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDayCollectionViewCell.swift; sourceTree = "<group>"; };
-		CA00AE8D20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleDayCollectionViewCell.xib; sourceTree = "<group>"; };
 		CA00AE9020D293B800C2FBB0 /* UICollectionView+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Convenience.swift"; sourceTree = "<group>"; };
 		CA00AE9220D2975400C2FBB0 /* ScheduleDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaysView.swift; sourceTree = "<group>"; };
 		CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsAnnouncementTableViewCell.swift; sourceTree = "<group>"; };
+		CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewExtensionContainer.swift; sourceTree = "<group>"; };
 		CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardDealersSceneFactory.swift; sourceTree = "<group>"; };
 		CA0E5206208E700E005259FE /* DealersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersViewController.swift; sourceTree = "<group>"; };
 		CA0E5208208E7020005259FE /* Dealers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dealers.storyboard; sourceTree = "<group>"; };
@@ -2990,11 +2990,11 @@
 			children = (
 				CA63759B208DFDF900536BE2 /* Schedule.storyboard */,
 				CA00AE6F20D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift */,
+				CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */,
 				CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */,
+				CA00AE9220D2975400C2FBB0 /* ScheduleDaysView.swift */,
 				CA63759D208DFE0500536BE2 /* ScheduleViewController.swift */,
 				CA63759F208DFE2E00536BE2 /* StoryboardEventsSceneFactory.swift */,
-				CA00AE8D20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.xib */,
-				CA00AE9220D2975400C2FBB0 /* ScheduleDaysView.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -4597,7 +4597,6 @@
 			files = (
 				9A8ECA1E1F2BB46000351A83 /* j1_generic.caf in Resources */,
 				9A8ECA1F1F2BB46000351A83 /* j1_themed.caf in Resources */,
-				CA00AE8F20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.xib in Resources */,
 				9A8ECA201F2BB46000351A83 /* j2_generic.caf in Resources */,
 				9A8ECA2D1F2D0A2000351A83 /* none.caf in Resources */,
 				9A8ECA211F2BB46000351A83 /* j2_themed.caf in Resources */,
@@ -5051,6 +5050,7 @@
 				CA321F511F7BC8550050E489 /* PreloadSceneFactory.swift in Sources */,
 				CA0F762720322E36009DA079 /* KnowledgeGroupHeaderScene.swift in Sources */,
 				CA72849B20A1C338007D912A /* PrivateMessagesObserver.swift in Sources */,
+				CA08157820D3865600F750D4 /* NavigationBarViewExtensionContainer.swift in Sources */,
 				CAD3BDAF205870B500C91E6E /* Link.swift in Sources */,
 				CABF03B42041BC870028BD62 /* UITableView+Extensions.swift in Sources */,
 				CABA439D1FD576D0009CB5B0 /* MessagesModuleBuilder.swift in Sources */,

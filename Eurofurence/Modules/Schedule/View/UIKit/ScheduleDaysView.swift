@@ -14,7 +14,10 @@ class ScheduleDaysView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
 
-        return UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: layout)
+        collectionView.backgroundColor = .white
+
+        return collectionView
     }()
 
     private var daysController: DaysController? {
@@ -34,19 +37,19 @@ class ScheduleDaysView: UIView {
     }
 
     private func setUp() {
-        addSubview(collectionView)
-        if #available(iOS 11.0, *) {
-            collectionView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor).isActive = true
-            collectionView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor).isActive = true
-        } else {
-            collectionView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-            collectionView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        }
-
-        collectionView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-
-        collectionView.register(ScheduleDayCollectionViewCell.self)
+//        addSubview(collectionView)
+//        if #available(iOS 11.0, *) {
+//            collectionView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor).isActive = true
+//            collectionView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor).isActive = true
+//        } else {
+//            collectionView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+//            collectionView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+//        }
+//
+//        collectionView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+//        collectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+//
+//        collectionView.register(ScheduleDayCollectionViewCell.self)
     }
 
     override func willMove(toWindow newWindow: UIWindow?) {
