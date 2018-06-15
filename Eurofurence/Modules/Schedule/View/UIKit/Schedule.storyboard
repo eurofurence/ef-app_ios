@@ -42,31 +42,29 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="81" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bSN-M2-R83">
-                                                            <rect key="frame" x="0.0" y="0.0" width="205" height="109"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Su9-HI-gRA">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="81" height="36"/>
-                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7CY-vy-v5l">
-                                                                    <rect key="frame" x="0.0" y="36" width="81" height="7"/>
-                                                                    <color key="backgroundColor" red="0.14117647059999999" green="0.3411764706" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="7" id="KRj-TA-BCD"/>
-                                                                    </constraints>
-                                                                </view>
-                                                            </subviews>
-                                                        </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Su9-HI-gRA">
+                                                            <rect key="frame" x="0.0" y="0.0" width="81" height="43"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7CY-vy-v5l">
+                                                            <rect key="frame" x="0.0" y="36" width="81" height="7"/>
+                                                            <color key="backgroundColor" red="0.14117647059999999" green="0.3411764706" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="7" id="KRj-TA-BCD"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                 </view>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="bSN-M2-R83" secondAttribute="trailing" id="Ji5-cB-bcy"/>
-                                                    <constraint firstItem="bSN-M2-R83" firstAttribute="leading" secondItem="bOB-Bt-zn3" secondAttribute="leading" id="Suq-nU-3JV"/>
-                                                    <constraint firstAttribute="bottom" secondItem="bSN-M2-R83" secondAttribute="bottom" id="TYo-Gn-0PB"/>
-                                                    <constraint firstItem="bSN-M2-R83" firstAttribute="top" secondItem="bOB-Bt-zn3" secondAttribute="top" id="mxz-fw-dwq"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Su9-HI-gRA" secondAttribute="bottom" id="B6F-lg-9SM"/>
+                                                    <constraint firstAttribute="trailing" secondItem="7CY-vy-v5l" secondAttribute="trailing" id="CbS-7G-GDd"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Su9-HI-gRA" secondAttribute="trailing" id="Gu0-Xd-b1l"/>
+                                                    <constraint firstItem="Su9-HI-gRA" firstAttribute="top" secondItem="bOB-Bt-zn3" secondAttribute="top" id="eyT-BA-fdC"/>
+                                                    <constraint firstItem="Su9-HI-gRA" firstAttribute="leading" secondItem="bOB-Bt-zn3" secondAttribute="leading" id="j50-gO-4JR"/>
+                                                    <constraint firstItem="7CY-vy-v5l" firstAttribute="leading" secondItem="bOB-Bt-zn3" secondAttribute="leading" id="p4P-YC-aO8"/>
+                                                    <constraint firstAttribute="bottom" secondItem="7CY-vy-v5l" secondAttribute="bottom" id="x1m-6J-rFr"/>
                                                 </constraints>
                                                 <viewLayoutGuide key="safeArea" id="Mjo-72-YSZ"/>
                                                 <size key="customSize" width="81" height="43"/>
