@@ -253,6 +253,7 @@
 		CA08158F20D4557400F750D4 /* ScheduleInteractorTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08158E20D4557400F750D4 /* ScheduleInteractorTestBuilder.swift */; };
 		CA08159320D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08159220D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift */; };
 		CA08159520D472B700F750D4 /* FakeEventsSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08159420D472B700F750D4 /* FakeEventsSchedule.swift */; };
+		CA08159720D475B500F750D4 /* FakeEventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08159620D475B500F750D4 /* FakeEventsService.swift */; };
 		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
 		CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5206208E700E005259FE /* DealersViewController.swift */; };
 		CA0E5209208E7020005259FE /* Dealers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0E5208208E7020005259FE /* Dealers.storyboard */; };
@@ -1137,6 +1138,7 @@
 		CA08158E20D4557400F750D4 /* ScheduleInteractorTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInteractorTestBuilder.swift; sourceTree = "<group>"; };
 		CA08159220D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
 		CA08159420D472B700F750D4 /* FakeEventsSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeEventsSchedule.swift; sourceTree = "<group>"; };
+		CA08159620D475B500F750D4 /* FakeEventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeEventsService.swift; sourceTree = "<group>"; };
 		CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardDealersSceneFactory.swift; sourceTree = "<group>"; };
 		CA0E5206208E700E005259FE /* DealersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersViewController.swift; sourceTree = "<group>"; };
 		CA0E5208208E7020005259FE /* Dealers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dealers.storyboard; sourceTree = "<group>"; };
@@ -3946,10 +3948,10 @@
 			isa = PBXGroup;
 			children = (
 				CACF1E5C20AE2EE100D904B5 /* EventDetailPresenterTestBuilder.swift */,
+				CACF1EAD20B5C2E500D904B5 /* EventDetailInteractorTestBuilder.swift */,
 				CACF1E8320B34E5F00D904B5 /* Interactor Tests */,
 				CACF1E5220AE2D1C00D904B5 /* Presenter Tests */,
 				CACF1E5B20AE2ED500D904B5 /* Test Doubles */,
-				CACF1EAD20B5C2E500D904B5 /* EventDetailInteractorTestBuilder.swift */,
 			);
 			path = "Event Detail";
 			sourceTree = "<group>";
@@ -4005,6 +4007,7 @@
 				CACF1E8B20B351EA00D904B5 /* FakeDateRangeFormatter.swift */,
 				CAD260A220C03543007E3618 /* CapturingEventDetailViewModel.swift */,
 				CA131BD220C1866D00DB1036 /* CapturingEventDetailViewModelDelegate.swift */,
+				CA08159620D475B500F750D4 /* FakeEventsService.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -5356,6 +5359,7 @@
 				CA637544208CBB3A00536BE2 /* StubRootModuleFactory.swift in Sources */,
 				CABA43951FCE0A49009CB5B0 /* CapturingLoginScene.swift in Sources */,
 				CA08158F20D4557400F750D4 /* ScheduleInteractorTestBuilder.swift in Sources */,
+				CA08159720D475B500F750D4 /* FakeEventsService.swift in Sources */,
 				CA63754C208CBB7800536BE2 /* StubMessagesModuleFactory.swift in Sources */,
 				CA0F762F2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift in Sources */,
 				CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */,
