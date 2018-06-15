@@ -57,7 +57,7 @@ class ScheduleViewController: UIViewController, ScheduleScene {
     }
 
     func bind(numberOfDays: Int, using binder: ScheduleDaysBinder) {
-        daysController = DaysController(numberOfDays: numberOfDays, binder: binder)
+        daysController = DaysController(numberOfDays: numberOfDays, binder: binder, onDaySelected: dayPickerDidSelectDay)
     }
 
     func bind(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder) {
@@ -71,6 +71,10 @@ class ScheduleViewController: UIViewController, ScheduleScene {
     }
 
     // MARK: Private
+
+    private func dayPickerDidSelectDay(_ index: Int) {
+        delegate?.scheduleSceneDidSelectDay(at: index)
+    }
 
     private class Header: UITableViewHeaderFooterView, ScheduleEventGroupHeader {
 
@@ -118,10 +122,12 @@ class ScheduleViewController: UIViewController, ScheduleScene {
 
         private let numberOfDays: Int
         private let binder: ScheduleDaysBinder
+        private let onDaySelected: (Int) -> Void
 
-        init(numberOfDays: Int, binder: ScheduleDaysBinder) {
+        init(numberOfDays: Int, binder: ScheduleDaysBinder, onDaySelected: @escaping (Int) -> Void) {
             self.numberOfDays = numberOfDays
             self.binder = binder
+            self.onDaySelected = onDaySelected
         }
 
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -147,6 +153,10 @@ class ScheduleViewController: UIViewController, ScheduleScene {
             let itemWidth = max(sensibleMinimumWidth, availableWidth / CGFloat(numberOfItems))
 
             return CGSize(width: itemWidth, height: collectionView.bounds.height)
+        }
+
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            onDaySelected(indexPath.item)
         }
 
     }
