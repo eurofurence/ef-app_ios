@@ -10,6 +10,13 @@
 import Foundation
 
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
+    func makeEventsSchedule() -> EventsSchedule {
+        struct DummyEventsSchedule: EventsSchedule {
+            func restrictEvents(to day: Day) { }
+        }
+        
+        return DummyEventsSchedule()
+    }
     
     func favouriteEvent(identifier: Event2.Identifier) {
         

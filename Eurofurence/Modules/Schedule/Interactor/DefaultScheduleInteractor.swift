@@ -25,8 +25,10 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
     private let hoursDateFormatter: HoursDateFormatter
     private let shortFormDateFormatter: ShortFormDateFormatter
-    private let viewModel = ViewModel()
-    private var days: [Day] = []
+    private let viewModel: ViewModel
+    private var days: [Day] = [] {
+        didSet { viewModel.dayModels = days }
+    }
 
     // MARK: Initialization
 
@@ -41,6 +43,8 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
          shortFormDateFormatter: ShortFormDateFormatter) {
         self.hoursDateFormatter = hoursDateFormatter
         self.shortFormDateFormatter = shortFormDateFormatter
+        let schedule = eventsService.makeEventsSchedule()
+        viewModel = ViewModel(schedule: schedule)
 
         eventsService.add(self)
     }
@@ -97,7 +101,14 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             }
         }
 
+        private let schedule: EventsSchedule
+
+        init(schedule: EventsSchedule) {
+            self.schedule = schedule
+        }
+
         var selectedDayIndex = 0
+        var dayModels: [Day] = []
 
         func setDelegate(_ delegate: ScheduleViewModelDelegate) {
             self.delegate = delegate
@@ -108,7 +119,8 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         }
 
         func showEventsForDay(at index: Int) {
-
+            let day = dayModels[index]
+            schedule.restrictEvents(to: day)
         }
 
     }

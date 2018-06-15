@@ -40,4 +40,12 @@ class StubEventsService: EventsService {
         
     }
     
+    func makeEventsSchedule() -> EventsSchedule {
+        struct DummyEventsSchedule: EventsSchedule {
+            func restrictEvents(to day: Day) { }
+        }
+        
+        return DummyEventsSchedule()
+    }
+    
 }

@@ -8,11 +8,18 @@
 
 import Foundation
 
+protocol EventsSchedule {
+
+    func restrictEvents(to day: Day)
+
+}
+
 protocol EventsService {
 
     func add(_ observer: EventsServiceObserver)
     func favouriteEvent(identifier: Event2.Identifier)
     func unfavouriteEvent(identifier: Event2.Identifier)
+    func makeEventsSchedule() -> EventsSchedule
 
 }
 

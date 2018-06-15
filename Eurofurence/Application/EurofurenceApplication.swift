@@ -157,6 +157,14 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         schedule.unfavouriteEvent(identifier: identifier)
     }
 
+    func makeEventsSchedule() -> EventsSchedule {
+        struct DummyEventsSchedule: EventsSchedule {
+            func restrictEvents(to day: Day) { }
+        }
+
+        return DummyEventsSchedule()
+    }
+
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
         enum SyncError: Error {
             case failedToLoadResponse

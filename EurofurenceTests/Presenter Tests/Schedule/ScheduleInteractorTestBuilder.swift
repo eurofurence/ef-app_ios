@@ -58,8 +58,15 @@ extension ScheduleInteractorTestBuilder.Context {
         return viewModelDelegate.currentDayIndex
     }
     
-    func makeViewModel() {
-        interactor.makeViewModel { $0.setDelegate(self.viewModelDelegate) }
+    @discardableResult
+    func makeViewModel() -> ScheduleViewModel? {
+        var viewModel: ScheduleViewModel?
+        interactor.makeViewModel { (vm) in
+            viewModel = vm
+            vm.setDelegate(self.viewModelDelegate)
+        }
+        
+        return viewModel
     }
     
     func makeExpectedEventViewModel(from event: Event2) -> ScheduleEventViewModel {

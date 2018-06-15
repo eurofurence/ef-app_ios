@@ -38,6 +38,13 @@ class CapturingEventsService: EventsService {
         observers.forEach { $0.favouriteEventsDidChange([]) }
     }
     
+    private(set) var lastProducedSchedule: FakeEventsSchedule?
+    func makeEventsSchedule() -> EventsSchedule {
+        let schedule = FakeEventsSchedule()
+        lastProducedSchedule = schedule
+        return schedule
+    }
+    
 }
 
 extension CapturingEventsService {
