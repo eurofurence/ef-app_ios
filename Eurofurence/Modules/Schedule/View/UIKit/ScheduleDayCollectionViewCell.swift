@@ -15,13 +15,17 @@ class ScheduleDayCollectionViewCell: UICollectionViewCell, ScheduleDayComponent 
 
     override var isSelected: Bool {
         didSet {
-            selectedDecorationView.isHidden = !isSelected
+            updateDecorationViewVisibility()
         }
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectedDecorationView.isHidden = true
+        updateDecorationViewVisibility()
+    }
+
+    private func updateDecorationViewVisibility() {
+        selectedDecorationView.alpha = isSelected ? 1 : 0
     }
 
     func setDayTitle(_ title: String) {
