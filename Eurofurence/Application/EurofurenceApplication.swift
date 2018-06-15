@@ -158,12 +158,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func makeEventsSchedule() -> EventsSchedule {
-        struct DummyEventsSchedule: EventsSchedule {
-            func setDelegate(_ delegate: EventsScheduleDelegate) { }
-            func restrictEvents(to day: Day) { }
-        }
-
-        return DummyEventsSchedule()
+        return schedule
     }
 
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Schedule {
+class Schedule: EventsSchedule {
 
     // MARK: Nested Types
 
@@ -41,6 +41,7 @@ class Schedule {
     private var models = [Event2]() {
         didSet {
             observers.forEach(provideScheduleInformation)
+            delegate?.eventsDidChange(to: models)
         }
     }
 
@@ -90,6 +91,17 @@ class Schedule {
         reconstituteEventsFromDataStore()
         reconstituteFavouritesFromDataStore()
         reconstituteDaysFromDataStore()
+    }
+
+    // MARK: EventsSchedule
+
+    private var delegate: EventsScheduleDelegate?
+    func setDelegate(_ delegate: EventsScheduleDelegate) {
+        self.delegate = delegate
+    }
+
+    func restrictEvents(to day: Day) {
+
     }
 
     // MARK: Functions
