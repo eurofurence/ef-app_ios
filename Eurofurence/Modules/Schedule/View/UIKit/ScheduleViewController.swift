@@ -40,6 +40,11 @@ class ScheduleViewController: UIViewController, ScheduleScene {
         delegate?.scheduleSceneDidLoad()
     }
 
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        daysCollectionView.collectionViewLayout.invalidateLayout()
+    }
+
     // MARK: EventsScene
 
     private var delegate: ScheduleSceneDelegate?
@@ -52,7 +57,6 @@ class ScheduleViewController: UIViewController, ScheduleScene {
     }
 
     func bind(numberOfDays: Int, using binder: ScheduleDaysBinder) {
-//        daysView.bind(numberOfDays: numberOfDays, using: binder)
         daysController = DaysController(numberOfDays: numberOfDays, binder: binder)
     }
 
@@ -61,7 +65,9 @@ class ScheduleViewController: UIViewController, ScheduleScene {
     }
 
     func selectDay(at index: Int) {
-//        collectionView.selectItem(at: IndexPath(item: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+        daysCollectionView.selectItem(at: IndexPath(item: index, section: 0),
+                                      animated: true,
+                                      scrollPosition: .centeredHorizontally)
     }
 
     // MARK: Private
@@ -128,13 +134,19 @@ class ScheduleViewController: UIViewController, ScheduleScene {
             return cell
         }
 
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            var safeAreaInsets: UIEdgeInsets = .zero
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            let availableWidth: CGFloat
             if #available(iOS 11.0, *) {
-                safeAreaInsets = collectionView.safeAreaInsets
+                availableWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
+            } else {
+                availableWidth = collectionView.bounds.width
             }
 
-            return UIEdgeInsets(top: 0, left: safeAreaInsets.left, bottom: 0, right: safeAreaInsets.right)
+            let sensibleMinimumWidth: CGFloat = 64
+            let numberOfItems = collectionView.numberOfItems(inSection: indexPath.section)
+            let itemWidth = max(sensibleMinimumWidth, availableWidth / CGFloat(numberOfItems))
+
+            return CGSize(width: itemWidth, height: collectionView.bounds.height)
         }
 
     }
