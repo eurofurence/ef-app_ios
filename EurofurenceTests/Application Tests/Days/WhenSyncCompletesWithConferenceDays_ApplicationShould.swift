@@ -35,4 +35,13 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
         XCTAssertEqual(expected, observer.allDays)
     }
     
+    func testSaveTheConferenceDaysToTheDataStore() {
+        let context = ApplicationTestBuilder().build()
+        let syncResponse = APISyncResponse.randomWithoutDeletions
+        context.refreshLocalStore()
+        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        
+        XCTAssertTrue(context.dataStore.didSave(syncResponse.conferenceDays.changed))
+    }
+    
 }

@@ -224,6 +224,10 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
             }
         }
 
+        func saveConferenceDays(_ conferenceDays: [APIConferenceDay]) {
+
+        }
+
         func saveFavouriteEventIdentifier(_ identifier: Event2.Identifier) {
             mutations.append { (context) in
                 let entity = FavouriteEventEntity(context: context)

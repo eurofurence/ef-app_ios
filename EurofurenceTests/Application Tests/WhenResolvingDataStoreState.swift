@@ -98,6 +98,11 @@ extension CapturingEurofurenceDataStore {
         return transaction?.deletedFavouriteEvents.contains(identifier) ?? false
     }
     
+    func didSave(_ conferenceDays: [APIConferenceDay]) -> Bool {
+        guard let persistedConferenceDays = transaction?.persistedConferenceDays else { return false }
+        return persistedConferenceDays.contains(elementsFrom: conferenceDays)
+    }
+    
 }
 
 extension Array where Element: Equatable {
@@ -144,6 +149,11 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
     private(set) var persistedTracks: [APITrack] = []
     func saveTracks(_ tracks: [APITrack]) {
         persistedTracks = tracks
+    }
+    
+    private(set) var persistedConferenceDays: [APIConferenceDay] = []
+    func saveConferenceDays(_ conferenceDays: [APIConferenceDay]) {
+        persistedConferenceDays = conferenceDays
     }
     
     private(set) var persistedLastRefreshDate: Date?
