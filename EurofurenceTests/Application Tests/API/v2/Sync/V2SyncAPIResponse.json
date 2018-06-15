@@ -57,39 +57,13 @@
                             "Id": "5f2e5aa4-a172-4f8b-8441-1e676ea3be9f",
                             "Name": "Early Arrival",
                             "Date": "2017-08-15T00:00:00.000Z"
-                            },
-                            {
+                            }],
+        "DeletedEntities": [{
                             "LastChangeDateTimeUtc": "2018-01-12T08:56:45.915Z",
                             "Id": "db8e0455-8c49-4bc5-b472-e0033fe06b99",
                             "Name": "Official Con Start/Con Day 1",
                             "Date": "2017-08-16T00:00:00.000Z"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.916Z",
-                            "Id": "679d8ffc-5ba2-4ca2-810c-46ec9ba37736",
-                            "Name": "Con Day 2",
-                            "Date": "2017-08-17T00:00:00.000Z"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.918Z",
-                            "Id": "baccbe52-d1d8-437b-8368-da91fbd707a7",
-                            "Name": "Con Day 3",
-                            "Date": "2017-08-18T00:00:00.000Z"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.919Z",
-                            "Id": "61f65c0b-89b1-45e1-bbad-2a791af4ef3c",
-                            "Name": "Con Day 4",
-                            "Date": "2017-08-19T00:00:00.000Z"
-                            },
-                            {
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.920Z",
-                            "Id": "b3796695-ba5d-4ed2-aa11-06a876beeb60",
-                            "Name": "Last Day/Con Day 5",
-                            "Date": "2017-08-20T00:00:00.000Z"
-                            }
-                            ],
-        "DeletedEntities": []
+                            }]
     },
     "EventConferenceRooms": {
         "StorageLastChangeDateTimeUtc": "2018-01-12T08:56:45.897Z",

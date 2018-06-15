@@ -51,7 +51,7 @@ private struct JSONSyncResponse: Decodable {
                                events: Events.delta,
                                rooms: EventConferenceRooms.delta,
                                tracks: EventConferenceTracks.delta,
-                               conferenceDays: APISyncDelta())
+                               conferenceDays: EventConferenceDays.delta)
     }
 
     struct Leaf<T>: Decodable where T: Decodable & ModelRepresenting {
@@ -184,12 +184,24 @@ private struct JSONSyncResponse: Decodable {
 
     }
 
+    struct JSONEventConferenceDay: Decodable, ModelRepresenting {
+
+        var Id: String
+        var Date: Date
+
+        var modelValue: APIConferenceDay {
+            return APIConferenceDay(identifier: Id, date: Date)
+        }
+
+    }
+
     var KnowledgeGroups: Leaf<JSONKnowledgeGroup>
     var KnowledgeEntries: Leaf<JSONKnowledgeEntry>
     var Announcements: Leaf<JSONAnnouncement>
     var EventConferenceRooms: Leaf<JSONRoom>
     var Events: Leaf<JSONEvent>
     var EventConferenceTracks: Leaf<JSONTrack>
+    var EventConferenceDays: Leaf<JSONEventConferenceDay>
 
 }
 

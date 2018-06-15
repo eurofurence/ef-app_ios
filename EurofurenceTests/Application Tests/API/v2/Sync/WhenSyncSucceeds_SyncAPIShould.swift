@@ -66,6 +66,11 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
         XCTAssertEqual(expected, response?.tracks)
     }
     
+    func testProduceExpectedConferenceDays() {
+        let expected = makeExpectedSyncResponseFromTestFile().conferenceDays
+        XCTAssertEqual(expected, response?.conferenceDays)
+    }
+    
     private func makeExpectedSyncResponseFromTestFile() -> APISyncResponse {
         let knowledgeGroups = APISyncDelta<APIKnowledgeGroup>(changed: [APIKnowledgeGroup(identifier: "ec031cbf-d8d0-825d-4c36-b782ed8d19d8",
                                                                                           order: 0,
@@ -154,13 +159,28 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                             deleted: [APITrack(trackIdentifier: "cf410a89-379d-40c7-89ea-d0b6b51ea914",
                                                                name: "Supersponsor Event")])
         
+        let changedConferenceDayDate = DateComponents(calendar: .current,
+                                                      timeZone: TimeZone(secondsFromGMT: 0),
+                                                      year: 2017,
+                                                      month: 8,
+                                                      day: 15).date!
+        let deletedConferenceDayDate = DateComponents(calendar: .current,
+                                                      timeZone: TimeZone(secondsFromGMT: 0),
+                                                      year: 2017,
+                                                      month: 8,
+                                                      day: 16).date!
+        let conferenceDays = APISyncDelta<APIConferenceDay>(changed: [APIConferenceDay(identifier: "5f2e5aa4-a172-4f8b-8441-1e676ea3be9f",
+                                                                                       date: changedConferenceDayDate)],
+                                                            deleted: [APIConferenceDay(identifier: "db8e0455-8c49-4bc5-b472-e0033fe06b99",
+                                                                                       date: deletedConferenceDayDate)])
+        
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,
                                announcements: APISyncDelta(),
                                events: events,
                                rooms: rooms,
                                tracks: tracks,
-                               conferenceDays: APISyncDelta())
+                               conferenceDays: conferenceDays)
     }
     
 }
