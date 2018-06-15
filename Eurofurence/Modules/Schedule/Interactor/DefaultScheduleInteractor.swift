@@ -73,7 +73,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
     func eventsServiceDidUpdateDays(to days: [Day]) {
         self.days = days
-        viewModel.days = days.sorted().map { (day) -> ScheduleDayViewModel in
+        viewModel.days = days.map { (day) -> ScheduleDayViewModel in
             return ScheduleDayViewModel(title: shortFormDateFormatter.dateString(from: day.date))
         }
     }

@@ -136,7 +136,7 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
         XCTAssertEqual(expected, delegate.eventsViewModels)
     }
     
-    func testProvideDaysInDateOrder() {
+    func testAdaptDaysIntoViewModelsWithFriendlyDateTitles() {
         let days = [Day].random
         let eventsService = StubEventsService()
         eventsService.allDays = days
@@ -144,7 +144,7 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
         let delegate = CapturingScheduleInteractorDelegate()
         context.interactor.setDelegate(delegate)
         
-        let expected = days.sorted().map(context.makeExpectedDayViewModel)
+        let expected = days.map(context.makeExpectedDayViewModel)
         
         XCTAssertEqual(expected, delegate.daysViewModels)
     }
@@ -157,7 +157,7 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
         context.interactor.setDelegate(delegate)
         eventsService.simulateDaysChanged(days)
         
-        let expected = days.sorted().map(context.makeExpectedDayViewModel)
+        let expected = days.map(context.makeExpectedDayViewModel)
         
         XCTAssertEqual(expected, delegate.daysViewModels)
     }
