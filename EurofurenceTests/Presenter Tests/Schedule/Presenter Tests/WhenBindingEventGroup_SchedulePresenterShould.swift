@@ -12,7 +12,7 @@ import XCTest
 class WhenBindingEventGroup_SchedulePresenterShould: XCTestCase {
     
     func testBindTheGroupTitleOntoTheHeader() {
-        let viewModel = StubScheduleViewModel.random
+        let viewModel = CapturingScheduleViewModel.random
         let interactor = FakeScheduleInteractor(viewModel: viewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()

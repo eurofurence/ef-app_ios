@@ -109,6 +109,10 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             delegate.scheduleViewModelDidUpdateCurrentDayIndex(to: selectedDayIndex)
         }
 
+        func showEventsForDay(at index: Int) {
+
+        }
+
     }
 
     func eurofurenceApplicationDidUpdateRunningEvents(to events: [Event2]) { }

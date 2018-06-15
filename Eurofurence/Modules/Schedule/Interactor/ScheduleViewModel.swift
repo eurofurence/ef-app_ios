@@ -11,6 +11,7 @@ import Foundation
 protocol ScheduleViewModel {
 
     func setDelegate(_ delegate: ScheduleViewModelDelegate)
+    func showEventsForDay(at index: Int)
 
 }
 

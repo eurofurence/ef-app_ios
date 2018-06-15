@@ -1,5 +1,5 @@
 //
-//  StubScheduleViewModel.swift
+//  CapturingScheduleViewModel.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 14/06/2018.
@@ -9,16 +9,27 @@
 @testable import Eurofurence
 import Foundation
 
-struct StubScheduleViewModel: ScheduleViewModel {
+final class CapturingScheduleViewModel: ScheduleViewModel {
     
     var days: [ScheduleDayViewModel]
     var events: [ScheduleEventGroupViewModel]
     var currentDay: Int
     
+    init(days: [ScheduleDayViewModel], events: [ScheduleEventGroupViewModel], currentDay: Int) {
+        self.days = days
+        self.events = events
+        self.currentDay = currentDay
+    }
+    
     func setDelegate(_ delegate: ScheduleViewModelDelegate) {
         delegate.scheduleViewModelDidUpdateDays(days)
         delegate.scheduleViewModelDidUpdateEvents(events)
         delegate.scheduleViewModelDidUpdateCurrentDayIndex(to: currentDay)
+    }
+    
+    private(set) var capturedDayToShowIndex: Int?
+    func showEventsForDay(at index: Int) {
+        capturedDayToShowIndex = index
     }
     
 }

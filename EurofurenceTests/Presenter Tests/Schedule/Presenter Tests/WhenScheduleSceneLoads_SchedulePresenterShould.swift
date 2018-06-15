@@ -12,7 +12,7 @@ import XCTest
 class WhenScheduleSceneLoads_SchedulePresenterShould: XCTestCase {
     
     func testBindNumberOfConferenceDaysOntoTheScene() {
-        let viewModel = StubScheduleViewModel.random
+        let viewModel = CapturingScheduleViewModel.random
         let interactor = FakeScheduleInteractor(viewModel: viewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
@@ -22,7 +22,7 @@ class WhenScheduleSceneLoads_SchedulePresenterShould: XCTestCase {
     }
     
     func testBindNumberOfGroupsOntoScheduleScene() {
-        let viewModel = StubScheduleViewModel.random
+        let viewModel = CapturingScheduleViewModel.random
         let interactor = FakeScheduleInteractor(viewModel: viewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
@@ -32,7 +32,7 @@ class WhenScheduleSceneLoads_SchedulePresenterShould: XCTestCase {
     }
     
     func testTellTheSceneToSelectTheCurrentDayUsingIndexFromViewModel() {
-        let viewModel = StubScheduleViewModel.random
+        let viewModel = CapturingScheduleViewModel.random
         let interactor = FakeScheduleInteractor(viewModel: viewModel)
         let context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()

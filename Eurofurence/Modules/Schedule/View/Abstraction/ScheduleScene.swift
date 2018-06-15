@@ -19,5 +19,6 @@ protocol ScheduleScene {
 protocol ScheduleSceneDelegate {
 
     func scheduleSceneDidLoad()
+    func scheduleSceneDidSelectDay(at index: Int)
 
 }

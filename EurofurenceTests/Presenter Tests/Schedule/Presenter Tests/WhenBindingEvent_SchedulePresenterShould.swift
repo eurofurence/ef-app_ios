@@ -18,7 +18,7 @@ class WhenBindingEvent_SchedulePresenterShould: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let viewModel = StubScheduleViewModel.random
+        let viewModel = CapturingScheduleViewModel.random
         let interactor = FakeScheduleInteractor(viewModel: viewModel)
         context = SchedulePresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()

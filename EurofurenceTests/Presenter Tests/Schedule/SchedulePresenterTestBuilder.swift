@@ -43,6 +43,10 @@ extension SchedulePresenterTestBuilder.Context {
         scene.delegate?.scheduleSceneDidLoad()
     }
     
+    func simulateSceneDidSelectDay(at index: Int) {
+        scene.delegate?.scheduleSceneDidSelectDay(at: index)
+    }
+    
     func bind(_ header: ScheduleEventGroupHeader, forGroupAt index: Int) {
         scene.binder?.bind(header, forGroupAt: index)
     }
