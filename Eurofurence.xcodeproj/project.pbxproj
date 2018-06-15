@@ -242,6 +242,7 @@
 		CA00AE9320D2975400C2FBB0 /* ScheduleDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE9220D2975400C2FBB0 /* ScheduleDaysView.swift */; };
 		CA057A5B2088BDBB00504FA4 /* NewsAnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */; };
 		CA08157820D3865600F750D4 /* NavigationBarViewExtensionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */; };
+		CA08157A20D3877700F750D4 /* FoundationShortFormDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */; };
 		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
 		CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5206208E700E005259FE /* DealersViewController.swift */; };
 		CA0E5209208E7020005259FE /* Dealers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0E5208208E7020005259FE /* Dealers.storyboard */; };
@@ -1116,6 +1117,7 @@
 		CA00AE9220D2975400C2FBB0 /* ScheduleDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaysView.swift; sourceTree = "<group>"; };
 		CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsAnnouncementTableViewCell.swift; sourceTree = "<group>"; };
 		CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewExtensionContainer.swift; sourceTree = "<group>"; };
+		CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationShortFormDateFormatter.swift; sourceTree = "<group>"; };
 		CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardDealersSceneFactory.swift; sourceTree = "<group>"; };
 		CA0E5206208E700E005259FE /* DealersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersViewController.swift; sourceTree = "<group>"; };
 		CA0E5208208E7020005259FE /* Dealers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dealers.storyboard; sourceTree = "<group>"; };
@@ -3681,6 +3683,7 @@
 				CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */,
 				CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */,
 				CA00AE8620D28A8B00C2FBB0 /* ShortFormDateFormatter.swift */,
+				CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */,
 			);
 			path = "System Services";
 			sourceTree = "<group>";
@@ -5123,6 +5126,7 @@
 				CA00AE7020D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift in Sources */,
 				CA72846A209D1442007D912A /* AnnouncementViewModel.swift in Sources */,
 				CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */,
+				CA08157A20D3877700F750D4 /* FoundationShortFormDateFormatter.swift in Sources */,
 				9A80EF4E1F28C78900FD0D37 /* TargetRouter.swift in Sources */,
 				D6F3D523BDCDDA3A2A163E55 /* TimeLabelCell.swift in Sources */,
 				78567B451F103C3800EBA31D /* RefreshControlDataStoreDelegate.swift in Sources */,

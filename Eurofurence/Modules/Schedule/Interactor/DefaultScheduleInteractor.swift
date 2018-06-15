@@ -31,15 +31,9 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
     // MARK: Initialization
 
     convenience init() {
-        struct DummyShortFormDateFormatter: ShortFormDateFormatter {
-            func dateString(from date: Date) -> String {
-                return ""
-            }
-        }
-
         self.init(eventsService: EurofurenceApplication.shared,
                   hoursDateFormatter: FoundationHoursDateFormatter.shared,
-                  shortFormDateFormatter: DummyShortFormDateFormatter())
+                  shortFormDateFormatter: FoundationShortFormDateFormatter.shared)
     }
 
     init(eventsService: EventsService,
