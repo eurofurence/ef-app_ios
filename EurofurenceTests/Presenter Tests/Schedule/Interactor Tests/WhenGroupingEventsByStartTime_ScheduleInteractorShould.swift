@@ -12,7 +12,7 @@ import XCTest
 class WhenGroupingEventsByStartTime_ScheduleInteractorShould: XCTestCase {
     
     var events: [Event2]!
-    var eventsService: CapturingEventsService!
+    var eventsService: FakeEventsService!
     var context: ScheduleInteractorTestBuilder.Context!
     var expectedEventViewModels: [ScheduleEventGroupViewModel]!
     
@@ -36,7 +36,7 @@ class WhenGroupingEventsByStartTime_ScheduleInteractorShould: XCTestCase {
         let secondGroupEvents = [d, e].sorted(by: { $0.title < $1.title })
         
         events = firstGroupEvents + secondGroupEvents
-        eventsService = CapturingEventsService()
+        eventsService = FakeEventsService()
         
         context = ScheduleInteractorTestBuilder().with(eventsService).build()
         expectedEventViewModels = [ScheduleEventGroupViewModel(title: context.hoursFormatter.hoursString(from: firstGroupDate),

@@ -13,7 +13,7 @@ class WhenServiceIndicatesEventIsUnfavourited_EventDetailInteractorShould: XCTes
     
     func testTellTheViewModelDelegateTheEventIsUnfavourited() {
         let event = Event2.random
-        let service = CapturingEventsService(favourites: [event.identifier])
+        let service = FakeEventsService(favourites: [event.identifier])
         let context = EventDetailInteractorTestBuilder().with(service).build(for: event)
         let delegate = CapturingEventDetailViewModelDelegate()
         context.viewModel?.setDelegate(delegate)
@@ -24,7 +24,7 @@ class WhenServiceIndicatesEventIsUnfavourited_EventDetailInteractorShould: XCTes
     
     func testNotTellTheViewModelDelegateTheEventIsUnfavouritedWhenAnotherEventIsUnfavourited() {
         let event = Event2.random
-        let service = CapturingEventsService(favourites: [event.identifier])
+        let service = FakeEventsService(favourites: [event.identifier])
         let context = EventDetailInteractorTestBuilder().with(service).build(for: event)
         let delegate = CapturingEventDetailViewModelDelegate()
         context.viewModel?.setDelegate(delegate)

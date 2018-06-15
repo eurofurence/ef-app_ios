@@ -13,13 +13,13 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
     
     var context: ScheduleInteractorTestBuilder.Context!
     var days: [Day]!
-    var eventsService: CapturingEventsService!
+    var eventsService: FakeEventsService!
     
     override func setUp() {
         super.setUp()
         
         days = .random
-        eventsService = CapturingEventsService()
+        eventsService = FakeEventsService()
         context = ScheduleInteractorTestBuilder().with(eventsService).build()
     }
     

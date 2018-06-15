@@ -8,7 +8,19 @@
 
 @testable import Eurofurence
 
-class CapturingEventsService: EventsService {
+class FakeEventsService: EventsService {
+    
+    var runningEvents: [Event2] = []
+    var upcomingEvents: [Event2] = []
+    var allEvents: [Event2] = []
+    var favourites: [Event2.Identifier] = []
+    var allDays: [Day] = []
+    var currentDay: Day?
+    
+    func stubSomeFavouriteEvents() {
+        allEvents = .random(minimum: 3)
+        favourites = Array(allEvents.dropFirst()).map({ $0.identifier })
+    }
     
     init(favourites: [Event2.Identifier] = []) {
         self.favourites = favourites
@@ -17,10 +29,15 @@ class CapturingEventsService: EventsService {
     private var observers = [EventsServiceObserver]()
     func add(_ observer: EventsServiceObserver) {
         observers.append(observer)
+        
+        observer.eventsDidChange(to: allEvents)
+        observer.runningEventsDidChange(to: runningEvents)
+        observer.upcomingEventsDidChange(to: upcomingEvents)
         observer.favouriteEventsDidChange(favourites)
+        observer.eventDaysDidChange(to: allDays)
+        observer.currentEventDayDidChange(to: currentDay)
     }
     
-    fileprivate var favourites = [Event2.Identifier]()
     private(set) var favouritedEventIdentifier: Event2.Identifier?
     func favouriteEvent(identifier: Event2.Identifier) {
         favouritedEventIdentifier = identifier
@@ -47,7 +64,7 @@ class CapturingEventsService: EventsService {
     
 }
 
-extension CapturingEventsService {
+extension FakeEventsService {
     
     func simulateEventFavourited(identifier: Event2.Identifier) {
         favourites.append(identifier)
@@ -83,17 +100,17 @@ class EventDetailInteractorTestBuilder {
         var dateRangeFormatter: FakeDateRangeFormatter
         var interactor: DefaultEventDetailInteractor
         var viewModel: EventDetailViewModel?
-        var eventsService: CapturingEventsService
+        var eventsService: FakeEventsService
     }
     
-    private var eventsService: CapturingEventsService
+    private var eventsService: FakeEventsService
     
     init() {
-        eventsService = CapturingEventsService()
+        eventsService = FakeEventsService()
     }
     
     @discardableResult
-    func with(_ eventsService: CapturingEventsService) -> EventDetailInteractorTestBuilder {
+    func with(_ eventsService: FakeEventsService) -> EventDetailInteractorTestBuilder {
         self.eventsService = eventsService
         return self
     }

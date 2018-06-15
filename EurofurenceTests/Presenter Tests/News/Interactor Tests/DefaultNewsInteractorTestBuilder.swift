@@ -39,7 +39,7 @@ class DefaultNewsInteractorTestBuilder {
         var announcementsService: StubAnnouncementsService
         var privateMessagesService: CapturingPrivateMessagesService
         var daysUntilConventionService: StubConventionCountdownService
-        var eventsService: StubEventsService
+        var eventsService: FakeEventsService
         var dateDistanceCalculator: StubDateDistanceCalculator
         var clock: StubClock
     }
@@ -48,14 +48,14 @@ class DefaultNewsInteractorTestBuilder {
     private var authenticationService: FakeAuthenticationService
     private var privateMessagesService: CapturingPrivateMessagesService
     private var daysUntilConventionService: StubConventionCountdownService
-    private var eventsService: StubEventsService
+    private var eventsService: FakeEventsService
     
     init() {
         announcementsService = StubAnnouncementsService(announcements: [])
         authenticationService = FakeAuthenticationService(authState: .loggedOut)
         privateMessagesService = CapturingPrivateMessagesService()
         daysUntilConventionService = StubConventionCountdownService()
-        eventsService = StubEventsService()
+        eventsService = FakeEventsService()
     }
     
     @discardableResult
@@ -83,7 +83,7 @@ class DefaultNewsInteractorTestBuilder {
     }
     
     @discardableResult
-    func with(_ eventsService: StubEventsService) -> DefaultNewsInteractorTestBuilder {
+    func with(_ eventsService: FakeEventsService) -> DefaultNewsInteractorTestBuilder {
         self.eventsService = eventsService
         return self
     }
@@ -214,7 +214,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
         }
         
         func hasFavouriteEvents() -> ViewModelAssertionBuilder {
-            let expectedEvents = context.eventsService.allEvents.filter({ context.eventsService.favouriteEventIdentifiers.contains($0.identifier) }).map(makeExpectedViewModelForFavouriteEvent)
+            let expectedEvents = context.eventsService.allEvents.filter({ context.eventsService.favourites.contains($0.identifier) }).map(makeExpectedViewModelForFavouriteEvent)
             components.append(Component(title: .favouriteEvents, components: expectedEvents))
             
             return self

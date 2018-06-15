@@ -12,7 +12,7 @@ import XCTest
 class WhenLoggedOutDuringConvention_WithNoRunningEvents_NewsInteractorShould: XCTestCase {
     
     func testProduceViewModelWithMessagesPrompt_Announcements_UpcomingEvents_AndFavouriteEvents() {
-        let eventsService = StubEventsService()
+        let eventsService = FakeEventsService()
         let runningEvents = [Event2]()
         eventsService.runningEvents = runningEvents
         eventsService.upcomingEvents = .random(minimum: 1)

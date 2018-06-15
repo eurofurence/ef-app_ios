@@ -21,7 +21,7 @@ class ScheduleInteractorTestBuilder {
     private var eventsService: EventsService
     
     init() {
-        eventsService = StubEventsService()
+        eventsService = FakeEventsService()
     }
     
     @discardableResult

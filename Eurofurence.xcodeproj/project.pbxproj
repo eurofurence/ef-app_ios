@@ -305,7 +305,6 @@
 		CA162E9A20A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9920A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift */; };
 		CA162E9E20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9D20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift */; };
 		CA162EA020A8D499004AFED6 /* FakeRelativeTimeIntervalCountdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9F20A8D499004AFED6 /* FakeRelativeTimeIntervalCountdownFormatter.swift */; };
-		CA162EA220A8D4A9004AFED6 /* StubEventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EA120A8D4A9004AFED6 /* StubEventsService.swift */; };
 		CA162EA420A9B0AB004AFED6 /* WhenLoggedOutDuringConvention_WithNoRunningEvents_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EA320A9B0AB004AFED6 /* WhenLoggedOutDuringConvention_WithNoRunningEvents_NewsInteractorShould.swift */; };
 		CA162EA620A9B18E004AFED6 /* WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EA520A9B18E004AFED6 /* WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift */; };
 		CA162EA820AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EA720AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift */; };
@@ -1190,7 +1189,6 @@
 		CA162E9920A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeTimeIntervalCountdownFormatter.swift; sourceTree = "<group>"; };
 		CA162E9D20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationRelativeTimeIntervalCountdownFormatter.swift; sourceTree = "<group>"; };
 		CA162E9F20A8D499004AFED6 /* FakeRelativeTimeIntervalCountdownFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeRelativeTimeIntervalCountdownFormatter.swift; sourceTree = "<group>"; };
-		CA162EA120A8D4A9004AFED6 /* StubEventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubEventsService.swift; sourceTree = "<group>"; };
 		CA162EA320A9B0AB004AFED6 /* WhenLoggedOutDuringConvention_WithNoRunningEvents_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutDuringConvention_WithNoRunningEvents_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA162EA520A9B18E004AFED6 /* WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA162EA720AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAuthenticationStateObserver.swift; sourceTree = "<group>"; };
@@ -2886,7 +2884,6 @@
 				CA89CBBF2085383100570D54 /* StubNewsInteractor.swift */,
 				CA89CBB92084CA8A00570D54 /* StubNewsViewModel.swift */,
 				CA162E9F20A8D499004AFED6 /* FakeRelativeTimeIntervalCountdownFormatter.swift */,
-				CA162EA120A8D4A9004AFED6 /* StubEventsService.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -5576,7 +5573,6 @@
 				CA60C002207F7D2100697566 /* WhenNewsSceneDidLoad.swift in Sources */,
 				CABEB0D220C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift in Sources */,
 				CA63758C208CE06100536BE2 /* WhenBuildingScheduleModule.swift in Sources */,
-				CA162EA220A8D4A9004AFED6 /* StubEventsService.swift in Sources */,
 				CA3990F420ACD73D001E3F1A /* WhenObservingUpcomingEvents_ThenLoadSucceeds.swift in Sources */,
 				CAD260AD20C066B0007E3618 /* WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift in Sources */,
 				CA680F8520CDAE2F006ACD3D /* PersistentImageRepositoryTests.swift in Sources */,

@@ -13,7 +13,7 @@ class WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould: XC
     
     func testTellTheScheduleToRestrictEventsToSpecifiedDay() {
         let days: [Day] = .random
-        let eventsService = CapturingEventsService()
+        let eventsService = FakeEventsService()
         let context = ScheduleInteractorTestBuilder().with(eventsService).build()
         eventsService.simulateDaysChanged(days)
         let viewModel = context.makeViewModel()
