@@ -68,7 +68,20 @@ extension ScheduleInteractorTestBuilder.Context {
 
 class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
     
-    func testGroupEventsByStartTime() {
+    struct DateGroupedEvents {
+        var date: Date
+        var events: [Event2]
+    }
+    
+    var firstGroup: DateGroupedEvents!
+    var secondGroup: DateGroupedEvents!
+    var eventsService: CapturingEventsService!
+    var context: ScheduleInteractorTestBuilder.Context!
+    var expectedEventViewModels: [ScheduleEventGroupViewModel]!
+    
+    override func setUp() {
+        super.setUp()
+        
         let firstGroupDate = Date.random
         var a = Event2.random
         a.startDate = firstGroupDate
@@ -76,71 +89,46 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
         b.startDate = firstGroupDate
         var c = Event2.random
         c.startDate = firstGroupDate
-        let firstGroup = [a, b, c].sorted(by: { $0.title < $1.title })
+        let firstGroupEvents = [a, b, c].sorted(by: { $0.title < $1.title })
+        firstGroup = DateGroupedEvents(date: firstGroupDate, events: firstGroupEvents)
         
         let secondGroupDate = firstGroupDate.addingTimeInterval(100)
         var d = Event2.random
         d.startDate = secondGroupDate
         var e = Event2.random
         e.startDate = secondGroupDate
-        let secondGroup = [d, e].sorted(by: { $0.title < $1.title })
+        let secondGroupEvents = [d, e].sorted(by: { $0.title < $1.title })
+        secondGroup = DateGroupedEvents(date: secondGroupDate, events: secondGroupEvents)
         
-        let allEvents = firstGroup + secondGroup
-        let eventsService = StubEventsService()
-        eventsService.allEvents = allEvents
+        eventsService = CapturingEventsService()
         
-        let context = ScheduleInteractorTestBuilder().with(eventsService).build()
+        context = ScheduleInteractorTestBuilder().with(eventsService).build()
+        expectedEventViewModels = [ScheduleEventGroupViewModel(title: context.hoursFormatter.hoursString(from: firstGroup.date),
+                                                               events: firstGroup.events.map(context.makeExpectedEventViewModel)),
+                                   ScheduleEventGroupViewModel(title: context.hoursFormatter.hoursString(from: secondGroup.date),
+                                                               events: secondGroup.events.map(context.makeExpectedEventViewModel))
+        ]
+    }
+    
+    func testGroupEventsByStartTime() {
         let delegate = CapturingScheduleInteractorDelegate()
         context.interactor.setDelegate(delegate)
+        eventsService.simulateEventsChanged(firstGroup.events + secondGroup.events)
         
-        let expected = [ScheduleEventGroupViewModel(title: context.hoursFormatter.hoursString(from: firstGroupDate),
-                                                    events: firstGroup.map(context.makeExpectedEventViewModel)),
-                        ScheduleEventGroupViewModel(title: context.hoursFormatter.hoursString(from: secondGroupDate),
-                                                    events: secondGroup.map(context.makeExpectedEventViewModel))
-        ]
-        
-        XCTAssertEqual(expected, delegate.eventsViewModels)
+        XCTAssertEqual(expectedEventViewModels, delegate.eventsViewModels)
     }
     
     func testProvideUpdatedGroupsToDelegate() {
-        let firstGroupDate = Date.random
-        var a = Event2.random
-        a.startDate = firstGroupDate
-        var b = Event2.random
-        b.startDate = firstGroupDate
-        var c = Event2.random
-        c.startDate = firstGroupDate
-        let firstGroup = [a, b, c].sorted(by: { $0.title < $1.title })
-        
-        let secondGroupDate = firstGroupDate.addingTimeInterval(100)
-        var d = Event2.random
-        d.startDate = secondGroupDate
-        var e = Event2.random
-        e.startDate = secondGroupDate
-        let secondGroup = [d, e].sorted(by: { $0.title < $1.title })
-        
-        let allEvents = firstGroup + secondGroup
-        let eventsService = CapturingEventsService()
-        
-        let context = ScheduleInteractorTestBuilder().with(eventsService).build()
+        eventsService.simulateEventsChanged(firstGroup.events + secondGroup.events)
         let delegate = CapturingScheduleInteractorDelegate()
         context.interactor.setDelegate(delegate)
-        eventsService.simulateEventsChanged(allEvents)
         
-        let expected = [ScheduleEventGroupViewModel(title: context.hoursFormatter.hoursString(from: firstGroupDate),
-                                                    events: firstGroup.map(context.makeExpectedEventViewModel)),
-                        ScheduleEventGroupViewModel(title: context.hoursFormatter.hoursString(from: secondGroupDate),
-                                                    events: secondGroup.map(context.makeExpectedEventViewModel))
-        ]
-        
-        XCTAssertEqual(expected, delegate.eventsViewModels)
+        XCTAssertEqual(expectedEventViewModels, delegate.eventsViewModels)
     }
     
     func testAdaptDaysIntoViewModelsWithFriendlyDateTitles() {
         let days = [Day].random
-        let eventsService = StubEventsService()
-        eventsService.allDays = days
-        let context = ScheduleInteractorTestBuilder().with(eventsService).build()
+        eventsService.simulateDaysChanged(days)
         let delegate = CapturingScheduleInteractorDelegate()
         context.interactor.setDelegate(delegate)
         
@@ -151,8 +139,6 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
     
     func testInformDelegateAboutLaterDayChanges() {
         let days = [Day].random
-        let eventsService = CapturingEventsService()
-        let context = ScheduleInteractorTestBuilder().with(eventsService).build()
         let delegate = CapturingScheduleInteractorDelegate()
         context.interactor.setDelegate(delegate)
         eventsService.simulateDaysChanged(days)
