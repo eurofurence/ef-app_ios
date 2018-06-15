@@ -34,6 +34,10 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
         return transaction?.persistedTracks
     }
     
+    func getSavedConferenceDays() -> [APIConferenceDay]? {
+        return transaction?.persistedConferenceDays
+    }
+    
     func getSavedEvents() -> [APIEvent]? {
         return transaction?.persistedEvents
     }

@@ -89,6 +89,7 @@ class Schedule {
         eventBus.subscribe(consumer: ScheduleUpdater(schedule: self))
         reconstituteEventsFromDataStore()
         reconstituteFavouritesFromDataStore()
+        reconstituteDaysFromDataStore()
     }
 
     // MARK: Functions
@@ -173,7 +174,7 @@ class Schedule {
                           bannerGraphicPNGData: bannerGraphicData)
         })
 
-        dayModels = days.map { Day(date: $0.date) }
+        dayModels = days.map(makeDay)
         observers.forEach { $0.eventsServiceDidUpdateDays(to: dayModels) }
     }
 
@@ -187,6 +188,15 @@ class Schedule {
 
     private func compareEventsByStartDate(_ first: Event2, second: Event2) -> Bool {
         return first.startDate < second.startDate
+    }
+
+    private func reconstituteDaysFromDataStore() {
+        guard let conferenceDays = dataStore.getSavedConferenceDays() else { return }
+        dayModels = conferenceDays.map(makeDay)
+    }
+
+    private func makeDay(from model: APIConferenceDay) -> Day {
+        return Day(date: model.date)
     }
 
 }

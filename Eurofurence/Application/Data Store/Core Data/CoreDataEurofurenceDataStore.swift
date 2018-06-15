@@ -90,6 +90,10 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         return getModels(fetchRequest: AnnouncementEntity.fetchRequest())
     }
 
+    func getSavedConferenceDays() -> [APIConferenceDay]? {
+        return nil
+    }
+
     func getSavedFavouriteEventIdentifiers() -> [Event2.Identifier]? {
         return getModels(fetchRequest: FavouriteEventEntity.fetchRequest())
     }
