@@ -170,6 +170,10 @@ class ApplicationTestBuilder {
             return events.map { makeExpectedEvent(from: $0, response: response) }
         }
         
+        func makeExpectedDays(from response: APISyncResponse) -> [Day] {
+            return response.conferenceDays.changed.map { Day(date: $0.date) }
+        }
+        
     }
     
     private let capturingTokenRegistration = CapturingRemoteNotificationsTokenRegistration()

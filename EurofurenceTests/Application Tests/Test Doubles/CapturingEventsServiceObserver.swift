@@ -35,8 +35,9 @@ class CapturingEventsServiceObserver: EventsServiceObserver {
         capturedFavouriteEventIdentifiers = identifiers
     }
     
+    private(set) var allDays: [Day] = []
     func eventsServiceDidUpdateDays(to days: [Day]) {
-        
+        allDays = days
     }
     
     func eventsServiceDidUpdateCurrentDay(to day: Day?) {

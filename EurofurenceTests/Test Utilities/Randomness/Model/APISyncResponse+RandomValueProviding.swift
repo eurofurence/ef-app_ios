@@ -35,7 +35,8 @@ extension APISyncResponse {
                                announcements: APISyncDelta(changed: .random),
                                events: APISyncDelta(changed: events),
                                rooms: APISyncDelta(changed: rooms),
-                               tracks: APISyncDelta(changed: tracks))
+                               tracks: APISyncDelta(changed: tracks),
+                               conferenceDays: APISyncDelta(changed: .random))
     }
     
 }
@@ -134,6 +135,14 @@ extension APIEvent: RandomValueProviding {
                         eventDescription: .random,
                         posterImageId: .random,
                         bannerImageId: .random)
+    }
+    
+}
+
+extension APIConferenceDay: RandomValueProviding {
+    
+    static var random: APIConferenceDay {
+        return APIConferenceDay(date: .random)
     }
     
 }

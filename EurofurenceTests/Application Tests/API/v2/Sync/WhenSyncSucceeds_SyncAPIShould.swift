@@ -159,7 +159,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                announcements: APISyncDelta(),
                                events: events,
                                rooms: rooms,
-                               tracks: tracks)
+                               tracks: tracks,
+                               conferenceDays: APISyncDelta())
     }
     
 }

@@ -24,7 +24,8 @@ class Schedule {
             let response = event.response
             schedule.updateSchedule(events: response.events.changed,
                                     rooms: response.rooms.changed,
-                                    tracks: response.tracks.changed)
+                                    tracks: response.tracks.changed,
+                                    days: response.conferenceDays.changed)
         }
 
     }
@@ -134,11 +135,14 @@ class Schedule {
         let tracks = dataStore.getSavedTracks()
 
         if let events = events, let rooms = rooms, let tracks = tracks {
-            updateSchedule(events: events, rooms: rooms, tracks: tracks)
+            updateSchedule(events: events, rooms: rooms, tracks: tracks, days: [])
         }
     }
 
-    private func updateSchedule(events: [APIEvent], rooms: [APIRoom], tracks: [APITrack]) {
+    private func updateSchedule(events: [APIEvent],
+                                rooms: [APIRoom],
+                                tracks: [APITrack],
+                                days: [APIConferenceDay]) {
         models = events.compactMap({ (event) -> Event2? in
             guard let room = rooms.first(where: { $0.roomIdentifier == event.roomIdentifier }) else { return nil }
             guard let track = tracks.first(where: { $0.trackIdentifier == event.trackIdentifier }) else { return nil }
@@ -165,6 +169,9 @@ class Schedule {
                           posterGraphicPNGData: posterGraphicData,
                           bannerGraphicPNGData: bannerGraphicData)
         })
+
+        let modelDays = days.map { Day(date: $0.date) }
+        observers.forEach { $0.eventsServiceDidUpdateDays(to: modelDays) }
     }
 
     private func reconstituteFavouritesFromDataStore() {
