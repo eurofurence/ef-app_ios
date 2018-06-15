@@ -55,7 +55,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
     // MARK: EventsServiceObserver
 
-    func eurofurenceApplicationDidUpdateEvents(to events: [Event2]) {
+    func eventsDidChange(to events: [Event2]) {
         let groupedByDate = Dictionary(grouping: events, by: { $0.startDate })
         let orderedGroups = groupedByDate.map(EventsGroupedByDate.init).sorted()
         viewModel.eventGroups = orderedGroups.map { (group) -> ScheduleEventGroupViewModel in
@@ -71,14 +71,14 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         }
     }
 
-    func eventsServiceDidUpdateDays(to days: [Day]) {
+    func eventDaysDidChange(to days: [Day]) {
         self.days = days
         viewModel.days = days.map { (day) -> ScheduleDayViewModel in
             return ScheduleDayViewModel(title: shortFormDateFormatter.dateString(from: day.date))
         }
     }
 
-    func eventsServiceDidUpdateCurrentDay(to day: Day?) {
+    func currentEventDayDidChange(to day: Day?) {
         guard let day = day, let idx = days.index(where: { $0.date == day.date }) else { return }
         viewModel.selectedDayIndex = idx
     }
@@ -115,8 +115,8 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
     }
 
-    func eurofurenceApplicationDidUpdateRunningEvents(to events: [Event2]) { }
-    func eurofurenceApplicationDidUpdateUpcomingEvents(to events: [Event2]) { }
-    func eventsServiceDidResolveFavouriteEvents(_ identifiers: [Event2.Identifier]) { }
+    func runningEventsDidChange(to events: [Event2]) { }
+    func upcomingEventsDidChange(to events: [Event2]) { }
+    func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) { }
 
 }

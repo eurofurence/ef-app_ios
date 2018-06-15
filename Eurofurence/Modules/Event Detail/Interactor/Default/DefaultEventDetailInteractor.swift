@@ -84,13 +84,13 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
             eventsService.unfavouriteEvent(identifier: event.identifier)
         }
 
-        func eurofurenceApplicationDidUpdateEvents(to events: [Event2]) { }
-        func eurofurenceApplicationDidUpdateRunningEvents(to events: [Event2]) { }
-        func eurofurenceApplicationDidUpdateUpcomingEvents(to events: [Event2]) { }
-        func eventsServiceDidUpdateDays(to days: [Day]) { }
-        func eventsServiceDidUpdateCurrentDay(to day: Day?) { }
+        func eventsDidChange(to events: [Event2]) { }
+        func runningEventsDidChange(to events: [Event2]) { }
+        func upcomingEventsDidChange(to events: [Event2]) { }
+        func eventDaysDidChange(to days: [Day]) { }
+        func currentEventDayDidChange(to day: Day?) { }
 
-        func eventsServiceDidResolveFavouriteEvents(_ identifiers: [Event2.Identifier]) {
+        func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) {
             isFavourite = identifiers.contains(event.identifier)
             informDelegateAboutEventFavouriteState()
         }

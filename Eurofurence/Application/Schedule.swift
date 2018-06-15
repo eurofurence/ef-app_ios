@@ -120,16 +120,16 @@ class Schedule {
     // MARK: Private
 
     private func provideScheduleInformation(to observer: EventsServiceObserver) {
-        observer.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents)
-        observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: upcomingEvents)
-        observer.eurofurenceApplicationDidUpdateEvents(to: models)
-        observer.eventsServiceDidResolveFavouriteEvents(favouriteEventIdentifiers)
-        observer.eventsServiceDidUpdateDays(to: dayModels)
+        observer.runningEventsDidChange(to: runningEvents)
+        observer.upcomingEventsDidChange(to: upcomingEvents)
+        observer.eventsDidChange(to: models)
+        observer.favouriteEventsDidChange(favouriteEventIdentifiers)
+        observer.eventDaysDidChange(to: dayModels)
     }
 
     private func provideFavouritesInformationToObservers() {
         observers.forEach { (observer) in
-            observer.eventsServiceDidResolveFavouriteEvents(favouriteEventIdentifiers)
+            observer.favouriteEventsDidChange(favouriteEventIdentifiers)
         }
     }
 
@@ -175,7 +175,7 @@ class Schedule {
         })
 
         dayModels = makeDays(from: days)
-        observers.forEach { $0.eventsServiceDidUpdateDays(to: dayModels) }
+        observers.forEach { $0.eventDaysDidChange(to: dayModels) }
     }
 
     private func reconstituteFavouritesFromDataStore() {

@@ -24,12 +24,12 @@ class StubEventsService: EventsService {
     }
     
     func add(_ observer: EventsServiceObserver) {
-        observer.eurofurenceApplicationDidUpdateEvents(to: allEvents)
-        observer.eurofurenceApplicationDidUpdateRunningEvents(to: runningEvents)
-        observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: upcomingEvents)
-        observer.eventsServiceDidResolveFavouriteEvents(favouriteEventIdentifiers)
-        observer.eventsServiceDidUpdateDays(to: allDays)
-        observer.eventsServiceDidUpdateCurrentDay(to: currentDay)
+        observer.eventsDidChange(to: allEvents)
+        observer.runningEventsDidChange(to: runningEvents)
+        observer.upcomingEventsDidChange(to: upcomingEvents)
+        observer.favouriteEventsDidChange(favouriteEventIdentifiers)
+        observer.eventDaysDidChange(to: allDays)
+        observer.currentEventDayDidChange(to: currentDay)
     }
     
     func favouriteEvent(identifier: Event2.Identifier) {

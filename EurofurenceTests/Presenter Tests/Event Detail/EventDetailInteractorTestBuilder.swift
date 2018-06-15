@@ -17,7 +17,7 @@ class CapturingEventsService: EventsService {
     private var observers = [EventsServiceObserver]()
     func add(_ observer: EventsServiceObserver) {
         observers.append(observer)
-        observer.eventsServiceDidResolveFavouriteEvents(favourites)
+        observer.favouriteEventsDidChange(favourites)
     }
     
     fileprivate var favourites = [Event2.Identifier]()
@@ -25,7 +25,7 @@ class CapturingEventsService: EventsService {
     func favouriteEvent(identifier: Event2.Identifier) {
         favouritedEventIdentifier = identifier
         favourites.append(identifier)
-        observers.forEach { $0.eventsServiceDidResolveFavouriteEvents(favourites) }
+        observers.forEach { $0.favouriteEventsDidChange(favourites) }
     }
     
     private(set) var unfavouritedEventIdentifier: Event2.Identifier?
@@ -35,7 +35,7 @@ class CapturingEventsService: EventsService {
             favourites.remove(at: idx)
         }
         
-        observers.forEach { $0.eventsServiceDidResolveFavouriteEvents([]) }
+        observers.forEach { $0.favouriteEventsDidChange([]) }
     }
     
 }
@@ -44,7 +44,7 @@ extension CapturingEventsService {
     
     func simulateEventFavourited(identifier: Event2.Identifier) {
         favourites.append(identifier)
-        observers.forEach { $0.eventsServiceDidResolveFavouriteEvents(favourites) }
+        observers.forEach { $0.favouriteEventsDidChange(favourites) }
     }
     
     func simulateEventUnfavourited(identifier: Event2.Identifier) {
@@ -52,19 +52,19 @@ extension CapturingEventsService {
             favourites.remove(at: idx)
         }
         
-        observers.forEach { $0.eventsServiceDidResolveFavouriteEvents(favourites) }
+        observers.forEach { $0.favouriteEventsDidChange(favourites) }
     }
     
     func simulateEventsChanged(_ events: [Event2]) {
-        observers.forEach { $0.eurofurenceApplicationDidUpdateEvents(to: events) }
+        observers.forEach { $0.eventsDidChange(to: events) }
     }
     
     func simulateDaysChanged(_ days: [Day]) {
-        observers.forEach { $0.eventsServiceDidUpdateDays(to: days) }
+        observers.forEach { $0.eventDaysDidChange(to: days) }
     }
     
     func simulateDayChanged(to day: Day) {
-        observers.forEach { $0.eventsServiceDidUpdateCurrentDay(to: day) }
+        observers.forEach { $0.currentEventDayDidChange(to: day) }
     }
     
 }

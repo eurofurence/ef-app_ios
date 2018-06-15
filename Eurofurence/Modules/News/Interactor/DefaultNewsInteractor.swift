@@ -138,28 +138,28 @@ class DefaultNewsInteractor: NewsInteractor,
     private var allEvents = [Event2]()
     private var favouriteEvents = [Event2]()
     private var favouriteEventIdentifiers = [Event2.Identifier]()
-    func eurofurenceApplicationDidUpdateEvents(to events: [Event2]) {
+    func eventsDidChange(to events: [Event2]) {
         allEvents = events
         regenerateFavouriteEvents()
     }
 
-    func eurofurenceApplicationDidUpdateRunningEvents(to events: [Event2]) {
+    func runningEventsDidChange(to events: [Event2]) {
         runningEvents = events
         regenerateViewModel()
     }
 
-    func eurofurenceApplicationDidUpdateUpcomingEvents(to events: [Event2]) {
+    func upcomingEventsDidChange(to events: [Event2]) {
         upcomingEvents = events
         regenerateViewModel()
     }
 
-    func eventsServiceDidResolveFavouriteEvents(_ identifiers: [Event2.Identifier]) {
+    func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) {
         favouriteEventIdentifiers = identifiers
         regenerateFavouriteEvents()
     }
 
-    func eventsServiceDidUpdateDays(to days: [Day]) { }
-    func eventsServiceDidUpdateCurrentDay(to day: Day?) { }
+    func eventDaysDidChange(to days: [Day]) { }
+    func currentEventDayDidChange(to day: Day?) { }
 
     // MARK: Private
 
