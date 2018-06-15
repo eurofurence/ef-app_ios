@@ -12,6 +12,7 @@ import Foundation
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
     func makeEventsSchedule() -> EventsSchedule {
         struct DummyEventsSchedule: EventsSchedule {
+            func setDelegate(_ delegate: EventsScheduleDelegate) { }
             func restrictEvents(to day: Day) { }
         }
         

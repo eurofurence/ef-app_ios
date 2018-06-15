@@ -44,7 +44,9 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         self.hoursDateFormatter = hoursDateFormatter
         self.shortFormDateFormatter = shortFormDateFormatter
         let schedule = eventsService.makeEventsSchedule()
-        viewModel = ViewModel(schedule: schedule)
+        viewModel = ViewModel(schedule: schedule,
+                              hoursDateFormatter: hoursDateFormatter,
+                              shortFormDateFormatter: shortFormDateFormatter)
 
         eventsService.add(self)
     }
@@ -58,19 +60,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
     // MARK: EventsServiceObserver
 
     func eventsDidChange(to events: [Event2]) {
-        let groupedByDate = Dictionary(grouping: events, by: { $0.startDate })
-        let orderedGroups = groupedByDate.map(EventsGroupedByDate.init).sorted()
-        viewModel.eventGroups = orderedGroups.map { (group) -> ScheduleEventGroupViewModel in
-            let title = hoursDateFormatter.hoursString(from: group.date)
-            let viewModels = group.events.map { (event) -> ScheduleEventViewModel in
-                return ScheduleEventViewModel(title: event.title,
-                                              startTime: hoursDateFormatter.hoursString(from: event.startDate),
-                                              endTime: hoursDateFormatter.hoursString(from: event.endDate),
-                                              location: event.room.name)
-            }
 
-            return ScheduleEventGroupViewModel(title: title, events: viewModels)
-        }
     }
 
     func eventDaysDidChange(to days: [Day]) {
@@ -85,7 +75,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         viewModel.selectedDayIndex = idx
     }
 
-    private class ViewModel: ScheduleViewModel {
+    private class ViewModel: ScheduleViewModel, EventsScheduleDelegate {
 
         private var delegate: ScheduleViewModelDelegate?
 
@@ -102,13 +92,37 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         }
 
         private let schedule: EventsSchedule
+        private let hoursDateFormatter: HoursDateFormatter
+        private let shortFormDateFormatter: ShortFormDateFormatter
 
-        init(schedule: EventsSchedule) {
+        init(schedule: EventsSchedule,
+             hoursDateFormatter: HoursDateFormatter,
+             shortFormDateFormatter: ShortFormDateFormatter) {
             self.schedule = schedule
+            self.hoursDateFormatter = hoursDateFormatter
+            self.shortFormDateFormatter = shortFormDateFormatter
+
+            schedule.setDelegate(self)
         }
 
         var selectedDayIndex = 0
         var dayModels: [Day] = []
+
+        func eventsDidChange(to events: [Event2]) {
+            let groupedByDate = Dictionary(grouping: events, by: { $0.startDate })
+            let orderedGroups = groupedByDate.map(EventsGroupedByDate.init).sorted()
+            eventGroups = orderedGroups.map { (group) -> ScheduleEventGroupViewModel in
+                let title = hoursDateFormatter.hoursString(from: group.date)
+                let viewModels = group.events.map { (event) -> ScheduleEventViewModel in
+                    return ScheduleEventViewModel(title: event.title,
+                                                  startTime: hoursDateFormatter.hoursString(from: event.startDate),
+                                                  endTime: hoursDateFormatter.hoursString(from: event.endDate),
+                                                  location: event.room.name)
+                }
+
+                return ScheduleEventGroupViewModel(title: title, events: viewModels)
+            }
+        }
 
         func setDelegate(_ delegate: ScheduleViewModelDelegate) {
             self.delegate = delegate

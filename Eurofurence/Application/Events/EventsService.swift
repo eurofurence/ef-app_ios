@@ -10,7 +10,14 @@ import Foundation
 
 protocol EventsSchedule {
 
+    func setDelegate(_ delegate: EventsScheduleDelegate)
     func restrictEvents(to day: Day)
+
+}
+
+protocol EventsScheduleDelegate {
+
+    func eventsDidChange(to events: [Event2])
 
 }
 

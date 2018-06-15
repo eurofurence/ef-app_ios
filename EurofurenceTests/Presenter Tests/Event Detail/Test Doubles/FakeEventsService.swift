@@ -81,7 +81,7 @@ extension FakeEventsService {
     }
     
     func simulateEventsChanged(_ events: [Event2]) {
-        observers.forEach { $0.eventsDidChange(to: events) }
+        lastProducedSchedule?.simulateEventsChanged(events)
     }
     
     func simulateDaysChanged(_ days: [Day]) {
