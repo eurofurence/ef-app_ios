@@ -63,6 +63,10 @@ extension CapturingEventsService {
         observers.forEach { $0.eventsServiceDidUpdateDays(to: days) }
     }
     
+    func simulateDayChanged(to day: Day) {
+        observers.forEach { $0.eventsServiceDidUpdateCurrentDay(to: day) }
+    }
+    
 }
 
 class EventDetailInteractorTestBuilder {
