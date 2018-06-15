@@ -44,6 +44,8 @@ class Schedule {
         }
     }
 
+    private var dayModels = [Day]()
+
     private var favouriteEventIdentifiers = [Event2.Identifier]() {
         didSet {
             favouriteEventIdentifiers.sort { (first, second) -> Bool in
@@ -121,6 +123,7 @@ class Schedule {
         observer.eurofurenceApplicationDidUpdateUpcomingEvents(to: upcomingEvents)
         observer.eurofurenceApplicationDidUpdateEvents(to: models)
         observer.eventsServiceDidResolveFavouriteEvents(favouriteEventIdentifiers)
+        observer.eventsServiceDidUpdateDays(to: dayModels)
     }
 
     private func provideFavouritesInformationToObservers() {
@@ -170,8 +173,8 @@ class Schedule {
                           bannerGraphicPNGData: bannerGraphicData)
         })
 
-        let modelDays = days.map { Day(date: $0.date) }
-        observers.forEach { $0.eventsServiceDidUpdateDays(to: modelDays) }
+        dayModels = days.map { Day(date: $0.date) }
+        observers.forEach { $0.eventsServiceDidUpdateDays(to: dayModels) }
     }
 
     private func reconstituteFavouritesFromDataStore() {

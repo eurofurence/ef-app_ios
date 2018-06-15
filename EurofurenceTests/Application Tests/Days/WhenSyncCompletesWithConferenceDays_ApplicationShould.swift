@@ -23,4 +23,16 @@ class WhenSyncCompletesWithConferenceDays_ApplicationShould: XCTestCase {
         XCTAssertEqual(expected, observer.allDays)
     }
     
+    func testProvideLateAddedObserversWithAdaptedDays() {
+        let context = ApplicationTestBuilder().build()
+        let syncResponse = APISyncResponse.randomWithoutDeletions
+        context.refreshLocalStore()
+        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        let observer = CapturingEventsServiceObserver()
+        context.application.add(observer)
+        let expected = context.makeExpectedDays(from: syncResponse)
+        
+        XCTAssertEqual(expected, observer.allDays)
+    }
+    
 }
