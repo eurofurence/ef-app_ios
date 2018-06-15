@@ -17,8 +17,8 @@ class FakeScheduleInteractor: ScheduleInteractor {
         self.viewModel = viewModel
     }
     
-    func setDelegate(_ delegate: ScheduleInteractorDelegate) {
-        delegate.scheduleInteractorDidPrepareViewModel(viewModel)
+    func makeViewModel(completionHandler: @escaping (ScheduleViewModel) -> Void) {
+        completionHandler(viewModel)
     }
     
 }

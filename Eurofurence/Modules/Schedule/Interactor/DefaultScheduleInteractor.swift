@@ -47,10 +47,8 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
     // MARK: ScheduleInteractor
 
-    private var delegate: ScheduleInteractorDelegate?
-    func setDelegate(_ delegate: ScheduleInteractorDelegate) {
-        self.delegate = delegate
-        delegate.scheduleInteractorDidPrepareViewModel(viewModel)
+    func makeViewModel(completionHandler: @escaping (ScheduleViewModel) -> Void) {
+        completionHandler(viewModel)
     }
 
     // MARK: EventsServiceObserver

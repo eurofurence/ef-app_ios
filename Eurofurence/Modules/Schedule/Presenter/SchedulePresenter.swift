@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SchedulePresenter: ScheduleSceneDelegate, ScheduleInteractorDelegate, ScheduleViewModelDelegate {
+class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate {
 
     private struct EventsBinder: ScheduleSceneBinder {
 
@@ -54,16 +54,14 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleInteractorDelegate, Sche
     }
 
     func scheduleSceneDidLoad() {
-        interactor.setDelegate(self)
+        interactor.makeViewModel { (viewModel) in
+            self.viewModel = viewModel
+            viewModel.setDelegate(self)
+        }
     }
 
     func scheduleSceneDidSelectDay(at index: Int) {
         viewModel?.showEventsForDay(at: index)
-    }
-
-    func scheduleInteractorDidPrepareViewModel(_ viewModel: ScheduleViewModel) {
-        self.viewModel = viewModel
-        viewModel.setDelegate(self)
     }
 
     func scheduleViewModelDidUpdateDays(_ days: [ScheduleDayViewModel]) {

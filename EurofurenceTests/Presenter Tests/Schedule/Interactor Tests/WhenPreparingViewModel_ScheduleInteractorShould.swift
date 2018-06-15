@@ -25,22 +25,20 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
     
     func testAdaptDaysIntoViewModelsWithFriendlyDateTitles() {
         eventsService.simulateDaysChanged(days)
-        let delegate = CapturingScheduleInteractorDelegate()
-        context.interactor.setDelegate(delegate)
+        context.makeViewModel()
         
         let expected = days.map(context.makeExpectedDayViewModel)
         
-        XCTAssertEqual(expected, delegate.daysViewModels)
+        XCTAssertEqual(expected, context.daysViewModels)
     }
     
     func testInformDelegateAboutLaterDayChanges() {
-        let delegate = CapturingScheduleInteractorDelegate()
-        context.interactor.setDelegate(delegate)
+        context.makeViewModel()
         eventsService.simulateDaysChanged(days)
         
         let expected = days.map(context.makeExpectedDayViewModel)
         
-        XCTAssertEqual(expected, delegate.daysViewModels)
+        XCTAssertEqual(expected, context.daysViewModels)
     }
     
     func testProvideCurrentDayIndex() {
@@ -48,18 +46,16 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
         let context = ScheduleInteractorTestBuilder().with(eventsService).build()
         eventsService.simulateDaysChanged(days)
         eventsService.simulateDayChanged(to: currentDay.element)
-        let delegate = CapturingScheduleInteractorDelegate()
-        context.interactor.setDelegate(delegate)
+        context.makeViewModel()
         
-        XCTAssertEqual(currentDay.index, delegate.currentDayIndex)
+        XCTAssertEqual(currentDay.index, context.currentDayIndex)
     }
     
     func testProvideZeroIndexWhenCurrentDayIsNotAvailable() {
         let context = ScheduleInteractorTestBuilder().build()
-        let delegate = CapturingScheduleInteractorDelegate()
-        context.interactor.setDelegate(delegate)
+        context.makeViewModel()
         
-        XCTAssertEqual(0, delegate.currentDayIndex)
+        XCTAssertEqual(0, context.currentDayIndex)
     }
     
 }

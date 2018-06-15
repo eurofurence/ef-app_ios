@@ -15,6 +15,7 @@ class ScheduleInteractorTestBuilder {
         var interactor: DefaultScheduleInteractor
         var hoursFormatter: FakeHoursDateFormatter
         var shortFormDateFormatter: FakeShortFormDateFormatter
+        let viewModelDelegate = CapturingScheduleViewModelDelegate()
     }
     
     private var eventsService: EventsService
@@ -44,6 +45,22 @@ class ScheduleInteractorTestBuilder {
 }
 
 extension ScheduleInteractorTestBuilder.Context {
+    
+    var eventsViewModels: [ScheduleEventGroupViewModel] {
+        return viewModelDelegate.eventsViewModels
+    }
+    
+    var daysViewModels: [ScheduleDayViewModel] {
+        return viewModelDelegate.daysViewModels
+    }
+    
+    var currentDayIndex: Int? {
+        return viewModelDelegate.currentDayIndex
+    }
+    
+    func makeViewModel() {
+        interactor.makeViewModel { $0.setDelegate(self.viewModelDelegate) }
+    }
     
     func makeExpectedEventViewModel(from event: Event2) -> ScheduleEventViewModel {
         return ScheduleEventViewModel(title: event.title,

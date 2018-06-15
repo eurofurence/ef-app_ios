@@ -10,12 +10,6 @@ import Foundation
 
 protocol ScheduleInteractor {
 
-    func setDelegate(_ delegate: ScheduleInteractorDelegate)
-
-}
-
-protocol ScheduleInteractorDelegate {
-
-    func scheduleInteractorDidPrepareViewModel(_ viewModel: ScheduleViewModel)
+    func makeViewModel(completionHandler: @escaping (ScheduleViewModel) -> Void)
 
 }

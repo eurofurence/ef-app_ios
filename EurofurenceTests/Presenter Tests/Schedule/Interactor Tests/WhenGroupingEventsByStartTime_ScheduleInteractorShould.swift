@@ -52,18 +52,16 @@ class WhenGroupingEventsByStartTime_ScheduleInteractorShould: XCTestCase {
     
     func testGroupEventsByStartTime() {
         simulateEventsChanged()
-        let delegate = CapturingScheduleInteractorDelegate()
-        context.interactor.setDelegate(delegate)
+        context.makeViewModel()
         
-        XCTAssertEqual(expectedEventViewModels, delegate.eventsViewModels)
+        XCTAssertEqual(expectedEventViewModels, context.eventsViewModels)
     }
     
     func testProvideUpdatedGroupsToDelegate() {
-        let delegate = CapturingScheduleInteractorDelegate()
-        context.interactor.setDelegate(delegate)
+        context.makeViewModel()
         simulateEventsChanged()
         
-        XCTAssertEqual(expectedEventViewModels, delegate.eventsViewModels)
+        XCTAssertEqual(expectedEventViewModels, context.eventsViewModels)
     }
     
 }

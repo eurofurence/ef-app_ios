@@ -227,7 +227,7 @@
 		CA00AE7020D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE6F20D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift */; };
 		CA00AE7320D18D1E00C2FBB0 /* WhenPreparingViewModel_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE7220D18D1E00C2FBB0 /* WhenPreparingViewModel_ScheduleInteractorShould.swift */; };
 		CA00AE7520D1AA0F00C2FBB0 /* DefaultScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE7420D1AA0F00C2FBB0 /* DefaultScheduleInteractor.swift */; };
-		CA00AE7720D1AA2100C2FBB0 /* CapturingScheduleInteractorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE7620D1AA2000C2FBB0 /* CapturingScheduleInteractorDelegate.swift */; };
+		CA00AE7720D1AA2100C2FBB0 /* CapturingScheduleViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE7620D1AA2000C2FBB0 /* CapturingScheduleViewModelDelegate.swift */; };
 		CA00AE7B20D1BF6D00C2FBB0 /* ScheduleDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE7A20D1BF6D00C2FBB0 /* ScheduleDayViewModel.swift */; };
 		CA00AE7D20D1C08B00C2FBB0 /* WhenBindingDay_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE7C20D1C08B00C2FBB0 /* WhenBindingDay_SchedulePresenterShould.swift */; };
 		CA00AE7F20D1C11400C2FBB0 /* ScheduleDayComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE7E20D1C11400C2FBB0 /* ScheduleDayComponent.swift */; };
@@ -1110,7 +1110,7 @@
 		CA00AE6F20D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventTableViewCell+ScheduleEventComponent.swift"; sourceTree = "<group>"; };
 		CA00AE7220D18D1E00C2FBB0 /* WhenPreparingViewModel_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
 		CA00AE7420D1AA0F00C2FBB0 /* DefaultScheduleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultScheduleInteractor.swift; sourceTree = "<group>"; };
-		CA00AE7620D1AA2000C2FBB0 /* CapturingScheduleInteractorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleInteractorDelegate.swift; sourceTree = "<group>"; };
+		CA00AE7620D1AA2000C2FBB0 /* CapturingScheduleViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleViewModelDelegate.swift; sourceTree = "<group>"; };
 		CA00AE7A20D1BF6D00C2FBB0 /* ScheduleDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDayViewModel.swift; sourceTree = "<group>"; };
 		CA00AE7C20D1C08B00C2FBB0 /* WhenBindingDay_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingDay_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA00AE7E20D1C11400C2FBB0 /* ScheduleDayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDayComponent.swift; sourceTree = "<group>"; };
@@ -3007,7 +3007,7 @@
 				CA00AE8220D1C21900C2FBB0 /* CapturingScheduleDayComponent.swift */,
 				CA00AE6120D1749200C2FBB0 /* CapturingScheduleEventComponent.swift */,
 				CA00AE5B20D171F200C2FBB0 /* CapturingScheduleEventGroupHeader.swift */,
-				CA00AE7620D1AA2000C2FBB0 /* CapturingScheduleInteractorDelegate.swift */,
+				CA00AE7620D1AA2000C2FBB0 /* CapturingScheduleViewModelDelegate.swift */,
 				CA637594208DFD3700536BE2 /* CapturingScheduleScene.swift */,
 				CA00AE4820D16BD900C2FBB0 /* FakeScheduleInteractor.swift */,
 				CA637596208DFD4B00536BE2 /* StubScheduleSceneFactory.swift */,
@@ -5626,7 +5626,7 @@
 				CA63757A208CDB7B00536BE2 /* Message+RandomValueProviding.swift in Sources */,
 				CA728482209F8885007D912A /* StubAnnouncementDetailInteractorFactory.swift in Sources */,
 				CA637578208CDB4700536BE2 /* WhenUserSelectsMessage_DirectorShould.swift in Sources */,
-				CA00AE7720D1AA2100C2FBB0 /* CapturingScheduleInteractorDelegate.swift in Sources */,
+				CA00AE7720D1AA2100C2FBB0 /* CapturingScheduleViewModelDelegate.swift in Sources */,
 				CA0E5211208F4BF3005259FE /* Announcement2+RandomValueProviding.swift in Sources */,
 				CACF1EA620B5B77700D904B5 /* WhenBindingEventSummary_EventDetailPresenterShould.swift in Sources */,
 				CA30EACA1F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift in Sources */,

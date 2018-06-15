@@ -1,5 +1,5 @@
 //
-//  CapturingScheduleInteractorDelegate.swift
+//  CapturingScheduleViewModelDelegate.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 13/06/2018.
@@ -9,13 +9,7 @@
 @testable import Eurofurence
 import Foundation
 
-class CapturingScheduleInteractorDelegate: ScheduleInteractorDelegate, ScheduleViewModelDelegate {
-    
-    private(set) var viewModel: ScheduleViewModel?
-    func scheduleInteractorDidPrepareViewModel(_ viewModel: ScheduleViewModel) {
-        self.viewModel = viewModel
-        viewModel.setDelegate(self)
-    }
+class CapturingScheduleViewModelDelegate: ScheduleViewModelDelegate {
     
     private(set) var daysViewModels: [ScheduleDayViewModel] = []
     func scheduleViewModelDidUpdateDays(_ days: [ScheduleDayViewModel]) {
