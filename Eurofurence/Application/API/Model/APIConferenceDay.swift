@@ -10,6 +10,7 @@ import Foundation
 
 struct APIConferenceDay: Equatable {
 
+    var identifier: String
     var date: Date
 
 }

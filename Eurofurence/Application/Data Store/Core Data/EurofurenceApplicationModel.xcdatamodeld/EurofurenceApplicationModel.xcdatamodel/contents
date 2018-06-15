@@ -8,6 +8,7 @@
     </entity>
     <entity name="ConferenceDayEntity" representedClassName="ConferenceDayEntity" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="EventEntity" representedClassName="EventEntity" syncable="YES" codeGenerationType="class">
         <attribute name="abstract" optional="YES" attributeType="String" syncable="YES"/>
@@ -66,6 +67,6 @@
         <element name="LinkEntity" positionX="-54" positionY="36" width="128" height="105"/>
         <element name="RoomEntity" positionX="-18" positionY="135" width="128" height="75"/>
         <element name="TrackEntity" positionX="0" positionY="144" width="128" height="75"/>
-        <element name="ConferenceDayEntity" positionX="-36" positionY="108" width="128" height="60"/>
+        <element name="ConferenceDayEntity" positionX="-36" positionY="108" width="128" height="75"/>
     </elements>
 </model>

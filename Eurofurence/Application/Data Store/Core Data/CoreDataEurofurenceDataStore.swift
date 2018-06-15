@@ -231,7 +231,8 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         func saveConferenceDays(_ conferenceDays: [APIConferenceDay]) {
             mutations.append { (context) in
                 conferenceDays.forEach { (conferenceDay) in
-                    let entity = ConferenceDayEntity(context: context)
+                    let entity: ConferenceDayEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: conferenceDay.identifier)
+                    entity.identifier = conferenceDay.identifier
                     entity.date = conferenceDay.date
                 }
             }

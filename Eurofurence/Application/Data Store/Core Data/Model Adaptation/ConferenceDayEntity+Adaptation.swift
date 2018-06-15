@@ -13,7 +13,7 @@ extension ConferenceDayEntity: EntityAdapting {
     typealias AdaptedType = APIConferenceDay
 
     func asAdaptedType() -> APIConferenceDay {
-        return APIConferenceDay(date: date!)
+        return APIConferenceDay(identifier: identifier!, date: date!)
     }
 
 }

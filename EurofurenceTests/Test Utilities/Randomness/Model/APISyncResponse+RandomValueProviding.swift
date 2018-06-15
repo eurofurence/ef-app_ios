@@ -142,7 +142,7 @@ extension APIEvent: RandomValueProviding {
 extension APIConferenceDay: RandomValueProviding {
     
     static var random: APIConferenceDay {
-        return APIConferenceDay(date: .random)
+        return APIConferenceDay(identifier: .random, date: .random)
     }
     
 }
