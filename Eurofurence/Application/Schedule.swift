@@ -174,7 +174,7 @@ class Schedule {
                           bannerGraphicPNGData: bannerGraphicData)
         })
 
-        dayModels = days.map(makeDay)
+        dayModels = makeDays(from: days)
         observers.forEach { $0.eventsServiceDidUpdateDays(to: dayModels) }
     }
 
@@ -192,7 +192,11 @@ class Schedule {
 
     private func reconstituteDaysFromDataStore() {
         guard let conferenceDays = dataStore.getSavedConferenceDays() else { return }
-        dayModels = conferenceDays.map(makeDay)
+        dayModels = makeDays(from: conferenceDays)
+    }
+
+    private func makeDays(from models: [APIConferenceDay]) -> [Day] {
+        return models.map(makeDay).sorted()
     }
 
     private func makeDay(from model: APIConferenceDay) -> Day {

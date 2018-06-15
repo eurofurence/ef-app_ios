@@ -171,7 +171,7 @@ class ApplicationTestBuilder {
         }
         
         func makeExpectedDays(from response: APISyncResponse) -> [Day] {
-            return response.conferenceDays.changed.map { Day(date: $0.date) }
+            return response.conferenceDays.changed.map({ Day(date: $0.date) }).sorted(by: { $0.date < $1.date })
         }
         
     }
