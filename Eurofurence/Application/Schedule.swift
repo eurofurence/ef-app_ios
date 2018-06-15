@@ -98,6 +98,7 @@ class Schedule: EventsSchedule {
     private var delegate: EventsScheduleDelegate?
     func setDelegate(_ delegate: EventsScheduleDelegate) {
         self.delegate = delegate
+        delegate.eventsDidChange(to: models)
     }
 
     func restrictEvents(to day: Day) {
