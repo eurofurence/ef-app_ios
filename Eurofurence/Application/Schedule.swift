@@ -41,6 +41,7 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
     func setDelegate(_ delegate: EventsScheduleDelegate) {
         self.delegate = delegate
         delegate.eventsDidChange(to: events)
+        delegate.currentEventDayDidChange(to: nil)
     }
 
     func restrictEvents(to day: Day) {

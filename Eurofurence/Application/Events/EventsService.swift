@@ -18,6 +18,7 @@ protocol EventsSchedule {
 protocol EventsScheduleDelegate {
 
     func eventsDidChange(to events: [Event2])
+    func currentEventDayDidChange(to day: Day?)
 
 }
 
