@@ -29,10 +29,6 @@ class EurofurenceApplicationBuilder {
     private var significantTimeChangeAdapter: SignificantTimeChangeAdapter
 
     init() {
-        struct DummySignificantTimeChangeAdapter: SignificantTimeChangeAdapter {
-            func setDelegate(_ delegate: SignificantTimeChangeAdapterDelegate) { }
-        }
-
         userPreferences = UserDefaultsPreferences()
         dataStore = CoreDataEurofurenceDataStore()
 
@@ -57,7 +53,7 @@ class EurofurenceApplicationBuilder {
         significantTimeChangeEventSource = ApplicationSignificantTimeChangeEventSource.shared
         timeIntervalForUpcomingEventsSinceNow = 3600
         imageRepository = PersistentImageRepository()
-        significantTimeChangeAdapter = DummySignificantTimeChangeAdapter()
+        significantTimeChangeAdapter = ApplicationSignificantTimeChangeAdapter()
     }
 
     @discardableResult
