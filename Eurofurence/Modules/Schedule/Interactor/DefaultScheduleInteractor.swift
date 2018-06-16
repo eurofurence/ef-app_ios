@@ -109,7 +109,10 @@ class DefaultScheduleInteractor: ScheduleInteractor {
         }
 
         func currentEventDayDidChange(to day: Day?) {
-            guard let day = day, let idx = days.index(where: { $0.date == day.date }) else { return }
+            guard let day = day else { return }
+            schedule.restrictEvents(to: day)
+
+            guard let idx = days.index(where: { $0.date == day.date }) else { return }
             selectedDayIndex = idx
         }
 
