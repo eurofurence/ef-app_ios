@@ -17,8 +17,10 @@ class CapturingEventsScheduleDelegate: EventsScheduleDelegate {
     }
     
     private(set) var toldChangedToNilDay = false
+    private(set) var capturedCurrentDay: Day?
     func currentEventDayDidChange(to day: Day?) {
         toldChangedToNilDay = day == nil
+        capturedCurrentDay = day
     }
     
 }

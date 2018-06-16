@@ -179,8 +179,12 @@ class ApplicationTestBuilder {
             return events.map { makeExpectedEvent(from: $0, response: response) }
         }
         
+        func makeExpectedDay(from day: APIConferenceDay) -> Day {
+            return Day(date: day.date)
+        }
+        
         func makeExpectedDays(from response: APISyncResponse) -> [Day] {
-            return response.conferenceDays.changed.map({ Day(date: $0.date) }).sorted(by: { $0.date < $1.date })
+            return response.conferenceDays.changed.map(makeExpectedDay).sorted(by: { $0.date < $1.date })
         }
         
     }

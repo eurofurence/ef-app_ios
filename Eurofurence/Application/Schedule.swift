@@ -17,8 +17,10 @@ private protocol EventFilter {
 class EventsScheduleAdapter: EventsSchedule, EventConsumer {
 
     private let schedule: Schedule
+    private let clock: Clock
     private var events = [Event2]()
     private var filters = [EventFilter]()
+    private var currentDay: Day?
 
     private struct DayRestrictionFilter: EventFilter {
 
@@ -30,22 +32,25 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
 
     }
 
-    init(schedule: Schedule, eventBus: EventBus) {
+    init(schedule: Schedule, clock: Clock, eventBus: EventBus) {
         self.schedule = schedule
+        self.clock = clock
         events = schedule.eventModels
 
         eventBus.subscribe(consumer: self)
+        regenerateSchedule()
     }
 
     private var delegate: EventsScheduleDelegate?
     func setDelegate(_ delegate: EventsScheduleDelegate) {
         self.delegate = delegate
+
         delegate.eventsDidChange(to: events)
-        delegate.currentEventDayDidChange(to: nil)
+        delegate.currentEventDayDidChange(to: currentDay)
     }
 
     func restrictEvents(to day: Day) {
-        guard let day = schedule.days.first(where: { $0.date == day.date }) else { return }
+        guard let day = findDay(for: day.date) else { return }
 
         if let idx = filters.index(where: { $0 is DayRestrictionFilter }) {
             filters.remove(at: idx)
@@ -65,6 +70,14 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
 
         events = allEvents.compactMap(schedule.makeEventModel)
         delegate?.eventsDidChange(to: events)
+
+        if let day = findDay(for: clock.currentDate) {
+            currentDay = Day(date: day.date)
+        }
+    }
+
+    private func findDay(for date: Date) -> APIConferenceDay? {
+        return schedule.days.first(where: { $0.date == date })
     }
 
     func consume(event: Schedule.ChangedEvent) {
@@ -169,7 +182,7 @@ class Schedule {
     // MARK: Functions
 
     func makeScheduleAdapter() -> EventsSchedule {
-        return EventsScheduleAdapter(schedule: self, eventBus: eventBus)
+        return EventsScheduleAdapter(schedule: self, clock: clock, eventBus: eventBus)
     }
 
     func add(_ observer: EventsServiceObserver) {
