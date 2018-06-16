@@ -58,4 +58,13 @@ class WhenPreparingViewModel_ScheduleInteractorShould: XCTestCase {
         XCTAssertEqual(0, context.currentDayIndex)
     }
     
+    func testTellScheduleToRestrictEventsToFirstDayWhenDayNotAvailable() {
+        let days = [Day].random
+        eventsService.simulateDaysChanged(days)
+        eventsService.simulateDayChanged(to: nil)
+        context.makeViewModel()
+        
+        XCTAssertEqual(days.first!, eventsService.lastProducedSchedule?.dayUsedToRestrictEvents)
+    }
+    
 }
