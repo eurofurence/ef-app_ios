@@ -401,6 +401,10 @@
 		CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */; };
 		CA52C67520D58EC6009D3A9E /* WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C67420D58EC6009D3A9E /* WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould.swift */; };
 		CA52C67720D590BF009D3A9E /* WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C67620D590BF009D3A9E /* WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould.swift */; };
+		CA52C67920D59357009D3A9E /* WhenSignificantTimeChanges_ScheduleShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C67820D59357009D3A9E /* WhenSignificantTimeChanges_ScheduleShould.swift */; };
+		CA52C67B20D59457009D3A9E /* SignificantTimeChangeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C67A20D59457009D3A9E /* SignificantTimeChangeAdapter.swift */; };
+		CA52C67D20D59560009D3A9E /* SignificantTimeObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C67C20D59560009D3A9E /* SignificantTimeObserver.swift */; };
+		CA52C67F20D59572009D3A9E /* SignificantTimePassedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C67E20D59572009D3A9E /* SignificantTimePassedEvent.swift */; };
 		CA5BF9D51F7AF9160045DBC0 /* PreloadPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */; };
 		CA60BFE32078E42800697566 /* User+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */; };
 		CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */; };
@@ -1291,6 +1295,10 @@
 		CA4FBE111F7304B400D29405 /* DateFormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterProtocol.swift; sourceTree = "<group>"; };
 		CA52C67420D58EC6009D3A9E /* WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould.swift; sourceTree = "<group>"; };
 		CA52C67620D590BF009D3A9E /* WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould.swift; sourceTree = "<group>"; };
+		CA52C67820D59357009D3A9E /* WhenSignificantTimeChanges_ScheduleShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSignificantTimeChanges_ScheduleShould.swift; sourceTree = "<group>"; };
+		CA52C67A20D59457009D3A9E /* SignificantTimeChangeAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignificantTimeChangeAdapter.swift; sourceTree = "<group>"; };
+		CA52C67C20D59560009D3A9E /* SignificantTimeObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignificantTimeObserver.swift; sourceTree = "<group>"; };
+		CA52C67E20D59572009D3A9E /* SignificantTimePassedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignificantTimePassedEvent.swift; sourceTree = "<group>"; };
 		CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadPresenterTests.swift; sourceTree = "<group>"; };
 		CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesService.swift; sourceTree = "<group>"; };
@@ -2183,6 +2191,7 @@
 				CABA83E920CDBBD600DD0795 /* PersistentImageRepository.swift */,
 				CAF3F63A2016797400374B4C /* PrivateMessagesController.swift */,
 				CA680F7F20CDA49D006ACD3D /* Schedule.swift */,
+				CA52C67C20D59560009D3A9E /* SignificantTimeObserver.swift */,
 				CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */,
 				CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */,
 				CA804DCF1F20CE5F00E07A4A /* API */,
@@ -2628,6 +2637,7 @@
 				CA52C67420D58EC6009D3A9E /* WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould.swift */,
 				CA08159F20D47D4100F750D4 /* WhenRestrictingEventsToSpecificDay_ScheduleShould.swift */,
 				CA52C67620D590BF009D3A9E /* WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould.swift */,
+				CA52C67820D59357009D3A9E /* WhenSignificantTimeChanges_ScheduleShould.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -3690,6 +3700,7 @@
 				CA1F7D6620CB856D00FB87F5 /* LatestDataFetchedEvent.swift */,
 				CA8D97D02016126E0074838F /* LoggedIn.swift */,
 				CA8D97D2201612A70074838F /* RemoteNotificationRegistrationSucceeded.swift */,
+				CA52C67E20D59572009D3A9E /* SignificantTimePassedEvent.swift */,
 			);
 			path = "Domain Events";
 			sourceTree = "<group>";
@@ -3742,6 +3753,7 @@
 				CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */,
 				CA00AE8620D28A8B00C2FBB0 /* ShortFormDateFormatter.swift */,
 				CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */,
+				CA52C67A20D59457009D3A9E /* SignificantTimeChangeAdapter.swift */,
 			);
 			path = "System Services";
 			sourceTree = "<group>";
@@ -4941,6 +4953,7 @@
 				CAD3BDC7205FE88900C91E6E /* SafariWebModuleProviding.swift in Sources */,
 				78567B3D1F100BAF00EBA31D /* DataStoreRefreshController.swift in Sources */,
 				CACF1E8A20B351D400D904B5 /* DateRangeFormatter.swift in Sources */,
+				CA52C67B20D59457009D3A9E /* SignificantTimeChangeAdapter.swift in Sources */,
 				78D7EEBD1F196B62005372A9 /* EurofurenceApplication.swift in Sources */,
 				CA321F531F7BC88D0050E489 /* PhonePreloadSceneFactory.swift in Sources */,
 				9ACB010C1F18FAB3001CE9D2 /* EventFavoritesService.swift in Sources */,
@@ -4961,6 +4974,7 @@
 				CAD2343E1F5D7211004BB959 /* MessagesPresenter.swift in Sources */,
 				CA6AA0161FD883390092C6DB /* NewsViewController.swift in Sources */,
 				CA680F8020CDA49D006ACD3D /* Schedule.swift in Sources */,
+				CA52C67F20D59572009D3A9E /* SignificantTimePassedEvent.swift in Sources */,
 				CA680F7A20CD7AD7006ACD3D /* Knowledge.swift in Sources */,
 				9A0525431ECA2C5A00578798 /* SyncEntityDelta.swift in Sources */,
 				CAF3C7501F9FC74C0008F027 /* NewsSceneFactory.swift in Sources */,
@@ -5014,6 +5028,7 @@
 				CA00AE4720D16BCB00C2FBB0 /* ScheduleViewModel.swift in Sources */,
 				CA8D97CD201610EC0074838F /* DomainEvent.swift in Sources */,
 				CACF1E9420B36C5A00D904B5 /* APITrack.swift in Sources */,
+				CA52C67D20D59560009D3A9E /* SignificantTimeObserver.swift in Sources */,
 				CAEAEC081FE06F3C00C0EE7C /* MessageDetailViewControllerV2.swift in Sources */,
 				CA162E9E20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift in Sources */,
 				CAD3BDB3205874AF00C91E6E /* APILink.swift in Sources */,
@@ -5414,6 +5429,7 @@
 				CA637560208CBC5F00536BE2 /* CapturingURLOpener.swift in Sources */,
 				78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */,
 				CABF03C32041C2FD0028BD62 /* KnowledgeEntry2.swift in Sources */,
+				CA52C67920D59357009D3A9E /* WhenSignificantTimeChanges_ScheduleShould.swift in Sources */,
 				CAD260AB20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift in Sources */,
 				CA0E521B208FC107005259FE /* ConventionCountdownComponentViewModel+RandomValueProviding.swift in Sources */,
 				CA131BD320C1866D00DB1036 /* CapturingEventDetailViewModelDelegate.swift in Sources */,

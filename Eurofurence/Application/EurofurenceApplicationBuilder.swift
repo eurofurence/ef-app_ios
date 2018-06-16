@@ -26,8 +26,13 @@ class EurofurenceApplicationBuilder {
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
     private var imageAPI: ImageAPI
     private var imageRepository: ImageRepository
+    private var significantTimeChangeAdapter: SignificantTimeChangeAdapter
 
     init() {
+        struct DummySignificantTimeChangeAdapter: SignificantTimeChangeAdapter {
+            func setDelegate(_ delegate: SignificantTimeChangeAdapterDelegate) { }
+        }
+
         userPreferences = UserDefaultsPreferences()
         dataStore = CoreDataEurofurenceDataStore()
 
@@ -52,6 +57,7 @@ class EurofurenceApplicationBuilder {
         significantTimeChangeEventSource = ApplicationSignificantTimeChangeEventSource.shared
         timeIntervalForUpcomingEventsSinceNow = 3600
         imageRepository = PersistentImageRepository()
+        significantTimeChangeAdapter = DummySignificantTimeChangeAdapter()
     }
 
     @discardableResult
@@ -150,6 +156,12 @@ class EurofurenceApplicationBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ significantTimeChangeAdapter: SignificantTimeChangeAdapter) -> EurofurenceApplicationBuilder {
+        self.significantTimeChangeAdapter = significantTimeChangeAdapter
+        return self
+    }
+
     func build() -> EurofurenceApplicationProtocol {
         return EurofurenceApplication(userPreferences: userPreferences,
                                       dataStore: dataStore,
@@ -166,7 +178,8 @@ class EurofurenceApplicationBuilder {
                                       conventionStartDateRepository: conventionStartDateRepository,
                                       significantTimeChangeEventSource: significantTimeChangeEventSource,
                                       timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow,
-                                      imageRepository: imageRepository)
+                                      imageRepository: imageRepository,
+                                      significantTimeChangeAdapter: significantTimeChangeAdapter)
     }
 
 }

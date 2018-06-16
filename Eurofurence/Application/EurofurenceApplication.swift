@@ -38,11 +38,13 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private var syncResponse: APISyncResponse?
     private var events = [Event2]()
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
+
     private let imageCache: ImagesCache
     private let imageDownloader: ImageDownloader
     private let announcements: Announcements
     private let knowledge: Knowledge
     private let schedule: Schedule
+    private let significantTimeObserver: SignificantTimeObserver
 
     init(userPreferences: UserPreferences,
          dataStore: EurofurenceDataStore,
@@ -59,7 +61,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
          conventionStartDateRepository: ConventionStartDateRepository,
          significantTimeChangeEventSource: SignificantTimeChangeEventSource,
          timeIntervalForUpcomingEventsSinceNow: TimeInterval,
-         imageRepository: ImageRepository) {
+         imageRepository: ImageRepository,
+         significantTimeChangeAdapter: SignificantTimeChangeAdapter) {
         self.userPreferences = userPreferences
         self.dataStore = dataStore
         self.pushPermissionsRequester = pushPermissionsRequester
@@ -92,6 +95,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         knowledge = Knowledge(eventBus: eventBus, dataStore: dataStore)
         schedule = Schedule(eventBus: eventBus, dataStore: dataStore, imageCache: imageCache, clock: clock, timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow)
         imageDownloader = ImageDownloader(eventBus: eventBus, imageAPI: imageAPI)
+        significantTimeObserver = SignificantTimeObserver(significantTimeChangeAdapter: significantTimeChangeAdapter,
+                                                          eventBus: eventBus)
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {

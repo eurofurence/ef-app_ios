@@ -96,6 +96,23 @@ extension CapturingImageRepository {
     
 }
 
+class CapturingSignificantTimeChangeAdapter: SignificantTimeChangeAdapter {
+    
+    private(set) var delegate: SignificantTimeChangeAdapterDelegate?
+    func setDelegate(_ delegate: SignificantTimeChangeAdapterDelegate) {
+        self.delegate = delegate
+    }
+    
+}
+
+extension CapturingSignificantTimeChangeAdapter {
+    
+    func simulateSignificantTimeChange() {
+        delegate?.significantTimeChangeDidOccur()
+    }
+    
+}
+
 class ApplicationTestBuilder {
     
     struct Context {
@@ -112,6 +129,7 @@ class ApplicationTestBuilder {
         var significantTimeChangeEventSource: FakeSignificantTimeChangeEventSource
         var imageAPI: FakeImageAPI
         var imageRepository: CapturingImageRepository
+        var significantTimeChangeAdapter: CapturingSignificantTimeChangeAdapter
         
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
@@ -185,6 +203,10 @@ class ApplicationTestBuilder {
         
         func makeExpectedDays(from response: APISyncResponse) -> [Day] {
             return response.conferenceDays.changed.map(makeExpectedDay).sorted(by: { $0.date < $1.date })
+        }
+        
+        func simulateSignificantTimeChange() {
+            significantTimeChangeAdapter.simulateSignificantTimeChange()
         }
         
     }
@@ -266,6 +288,7 @@ class ApplicationTestBuilder {
         let dateDistanceCalculator = StubDateDistanceCalculator()
         let conventionStartDateRepository = StubConventionStartDateRepository()
         let significantTimeChangeEventSource = FakeSignificantTimeChangeEventSource()
+        let significantTimeChangeAdapter = CapturingSignificantTimeChangeAdapter()
         let app = EurofurenceApplicationBuilder()
             .with(stubClock)
             .with(capturingCredentialStore)
@@ -283,6 +306,7 @@ class ApplicationTestBuilder {
             .with(timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow)
             .with(imageAPI)
             .with(imageRepository)
+            .with(significantTimeChangeAdapter)
             .build()
         
         return Context(application: app,
@@ -297,7 +321,8 @@ class ApplicationTestBuilder {
                        conventionStartDateRepository: conventionStartDateRepository,
                        significantTimeChangeEventSource: significantTimeChangeEventSource,
                        imageAPI: imageAPI,
-                       imageRepository: imageRepository)
+                       imageRepository: imageRepository,
+                       significantTimeChangeAdapter: significantTimeChangeAdapter)
     }
     
 }

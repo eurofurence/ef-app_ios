@@ -20,7 +20,11 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
     private let clock: Clock
     private var events = [Event2]()
     private var filters = [EventFilter]()
-    private var currentDay: Day?
+    private var currentDay: Day? {
+        didSet {
+            delegate?.currentEventDayDidChange(to: currentDay)
+        }
+    }
 
     private struct DayRestrictionFilter: EventFilter {
 
@@ -32,12 +36,23 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
 
     }
 
+    private struct UpdateCurrentDayWhenSignificantTimePasses: EventConsumer {
+
+        var scheduleAdapter: EventsScheduleAdapter
+
+        func consume(event: DomainEvent.SignificantTimePassedEvent) {
+            scheduleAdapter.updateCurrentDay()
+        }
+
+    }
+
     init(schedule: Schedule, clock: Clock, eventBus: EventBus) {
         self.schedule = schedule
         self.clock = clock
         events = schedule.eventModels
 
         eventBus.subscribe(consumer: self)
+        eventBus.subscribe(consumer: UpdateCurrentDayWhenSignificantTimePasses(scheduleAdapter: self))
         regenerateSchedule()
     }
 
@@ -62,6 +77,14 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
         regenerateSchedule()
     }
 
+    private func updateCurrentDay() {
+        if let day = findDay(for: clock.currentDate) {
+            currentDay = Day(date: day.date)
+        } else {
+            currentDay = nil
+        }
+    }
+
     private func regenerateSchedule() {
         var allEvents = schedule.events
         filters.forEach { (filter) in
@@ -71,9 +94,7 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
         events = allEvents.compactMap(schedule.makeEventModel)
         delegate?.eventsDidChange(to: events)
 
-        if let day = findDay(for: clock.currentDate) {
-            currentDay = Day(date: day.date)
-        }
+        updateCurrentDay()
     }
 
     private func findDay(for date: Date) -> APIConferenceDay? {
