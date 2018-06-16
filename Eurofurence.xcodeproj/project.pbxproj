@@ -405,6 +405,9 @@
 		CA52C67B20D59457009D3A9E /* SignificantTimeChangeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C67A20D59457009D3A9E /* SignificantTimeChangeAdapter.swift */; };
 		CA52C67D20D59560009D3A9E /* SignificantTimeObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C67C20D59560009D3A9E /* SignificantTimeObserver.swift */; };
 		CA52C67F20D59572009D3A9E /* SignificantTimePassedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C67E20D59572009D3A9E /* SignificantTimePassedEvent.swift */; };
+		CA52C68120D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */; };
+		CA52C68320D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68220D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift */; };
+		CA52C68520D59A5B009D3A9E /* CapturingSignificantTimeChangeAdapterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68420D59A5B009D3A9E /* CapturingSignificantTimeChangeAdapterDelegate.swift */; };
 		CA5BF9D51F7AF9160045DBC0 /* PreloadPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */; };
 		CA60BFE32078E42800697566 /* User+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */; };
 		CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */; };
@@ -1299,6 +1302,9 @@
 		CA52C67A20D59457009D3A9E /* SignificantTimeChangeAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignificantTimeChangeAdapter.swift; sourceTree = "<group>"; };
 		CA52C67C20D59560009D3A9E /* SignificantTimeObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignificantTimeObserver.swift; sourceTree = "<group>"; };
 		CA52C67E20D59572009D3A9E /* SignificantTimePassedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignificantTimePassedEvent.swift; sourceTree = "<group>"; };
+		CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSignificantTimeChangeAdapter.swift; sourceTree = "<group>"; };
+		CA52C68220D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSignificantTimeChangeAdapterTests.swift; sourceTree = "<group>"; };
+		CA52C68420D59A5B009D3A9E /* CapturingSignificantTimeChangeAdapterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingSignificantTimeChangeAdapterDelegate.swift; sourceTree = "<group>"; };
 		CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadPresenterTests.swift; sourceTree = "<group>"; };
 		CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesService.swift; sourceTree = "<group>"; };
@@ -2710,6 +2716,7 @@
 				CA162EAB20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift */,
 				CA162EB320AA2E12004AFED6 /* CapturingEventsServiceObserver.swift */,
 				CA08159B20D47BEA00F750D4 /* CapturingEventsScheduleDelegate.swift */,
+				CA52C68420D59A5B009D3A9E /* CapturingSignificantTimeChangeAdapterDelegate.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -3159,6 +3166,7 @@
 			isa = PBXGroup;
 			children = (
 				CA680F8420CDAE2F006ACD3D /* PersistentImageRepositoryTests.swift */,
+				CA52C68220D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift */,
 			);
 			path = "Adapter Tests";
 			sourceTree = "<group>";
@@ -3754,6 +3762,7 @@
 				CA00AE8620D28A8B00C2FBB0 /* ShortFormDateFormatter.swift */,
 				CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */,
 				CA52C67A20D59457009D3A9E /* SignificantTimeChangeAdapter.swift */,
+				CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */,
 			);
 			path = "System Services";
 			sourceTree = "<group>";
@@ -4970,6 +4979,7 @@
 				CA162E8820A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift in Sources */,
 				9A34B9781ECF6E3B004A249E /* Iso8601DateFormatter.swift in Sources */,
 				9A861EBF1F25551400B75A8C /* PresentationAssets.swift in Sources */,
+				CA52C68120D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift in Sources */,
 				CAF7056A1F82D15D00A9FEA2 /* PreloadModuleProviding.swift in Sources */,
 				CAD2343E1F5D7211004BB959 /* MessagesPresenter.swift in Sources */,
 				CA6AA0161FD883390092C6DB /* NewsViewController.swift in Sources */,
@@ -5474,6 +5484,7 @@
 				CAF597A220458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift in Sources */,
 				CABA840320CEFF9300DD0795 /* WhenServiceIndicatesEventIsFavourited_EventDetailInteractorShould.swift in Sources */,
 				CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */,
+				CA52C68320D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift in Sources */,
 				CA637572208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift in Sources */,
 				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,
 				CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */,
@@ -5594,6 +5605,7 @@
 				CAD6882C208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift in Sources */,
 				CA162EA820AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift in Sources */,
 				CA637552208CBBAE00536BE2 /* StubLoginModuleFactory.swift in Sources */,
+				CA52C68520D59A5B009D3A9E /* CapturingSignificantTimeChangeAdapterDelegate.swift in Sources */,
 				CA65A879209A538600B72533 /* WhenLoggedInBeforeConvention_NewsInteractorShould.swift in Sources */,
 				CA162EA420A9B0AB004AFED6 /* WhenLoggedOutDuringConvention_WithNoRunningEvents_NewsInteractorShould.swift in Sources */,
 				CACF1E7A20B1D12E00D904B5 /* BeforeEventDetailSceneLoads_EventDetailPresenterShould.swift in Sources */,
