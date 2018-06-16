@@ -158,7 +158,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func makeEventsSchedule() -> EventsSchedule {
-        return schedule
+        return schedule.makeScheduleAdapter()
     }
 
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {

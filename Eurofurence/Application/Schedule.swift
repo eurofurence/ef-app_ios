@@ -8,9 +8,71 @@
 
 import Foundation
 
-class Schedule: EventsSchedule {
+private protocol EventFilter {
+
+    func shouldFilter(event: APIEvent) -> Bool
+
+}
+
+class EventsScheduleAdapter: EventsSchedule, EventConsumer {
+
+    private let schedule: Schedule
+    private var events = [Event2]()
+    private var filters = [EventFilter]()
+
+    private struct DayRestrictionFilter: EventFilter {
+
+        var day: APIConferenceDay
+
+        func shouldFilter(event: APIEvent) -> Bool {
+            return event.dayIdentifier == day.identifier
+        }
+
+    }
+
+    init(schedule: Schedule, eventBus: EventBus) {
+        self.schedule = schedule
+        events = schedule.eventModels
+
+        eventBus.subscribe(consumer: self)
+    }
+
+    private var delegate: EventsScheduleDelegate?
+    func setDelegate(_ delegate: EventsScheduleDelegate) {
+        self.delegate = delegate
+        delegate.eventsDidChange(to: events)
+    }
+
+    func restrictEvents(to day: Day) {
+        guard let day = schedule.days.first(where: { $0.date == day.date }) else { return }
+
+        let filter = DayRestrictionFilter(day: day)
+        filters.append(filter)
+
+        regenerateSchedule()
+    }
+
+    private func regenerateSchedule() {
+        var allEvents = schedule.events
+        filters.forEach { (filter) in
+            allEvents = allEvents.filter(filter.shouldFilter)
+        }
+
+        events = allEvents.compactMap(schedule.makeEventModel)
+        delegate?.eventsDidChange(to: events)
+    }
+
+    func consume(event: Schedule.ChangedEvent) {
+        regenerateSchedule()
+    }
+
+}
+
+class Schedule {
 
     // MARK: Nested Types
+
+    struct ChangedEvent {}
 
     private class ScheduleUpdater: EventConsumer {
 
@@ -37,22 +99,20 @@ class Schedule: EventsSchedule {
     private let imageCache: ImagesCache
     private let clock: Clock
     private let timeIntervalForUpcomingEventsSinceNow: TimeInterval
+    private let eventBus: EventBus
 
-    private var events = [APIEvent]()
-    private var rooms = [APIRoom]()
-    private var tracks = [APITrack]()
-    private var eventModels = [Event2]() {
+    private(set) var events = [APIEvent]()
+    private(set) var rooms = [APIRoom]()
+    private(set) var tracks = [APITrack]()
+    private(set) var days = [APIConferenceDay]()
+
+    private(set) var eventModels = [Event2]() {
         didSet {
             observers.forEach(provideScheduleInformation)
-            scheduleModels = eventModels
-            delegate?.eventsDidChange(to: eventModels)
         }
     }
 
-    private var scheduleModels = [Event2]()
-
     private var dayModels = [Day]()
-    private var days = [APIConferenceDay]()
 
     private var favouriteEventIdentifiers = [Event2.Identifier]() {
         didSet {
@@ -93,6 +153,7 @@ class Schedule: EventsSchedule {
         self.imageCache = imageCache
         self.clock = clock
         self.timeIntervalForUpcomingEventsSinceNow = timeIntervalForUpcomingEventsSinceNow
+        self.eventBus = eventBus
 
         eventBus.subscribe(consumer: ScheduleUpdater(schedule: self))
         reconstituteEventsFromDataStore()
@@ -100,25 +161,11 @@ class Schedule: EventsSchedule {
         reconstituteDaysFromDataStore()
     }
 
-    // MARK: EventsSchedule
-
-    private var delegate: EventsScheduleDelegate?
-    func setDelegate(_ delegate: EventsScheduleDelegate) {
-        self.delegate = delegate
-        delegate.eventsDidChange(to: eventModels)
-    }
-
-    func restrictEvents(to day: Day) {
-        guard let identifier = days.first(where: { $0.date == day.date })?.identifier else { return }
-
-        scheduleModels = events.filter({ (event) -> Bool in
-            return event.dayIdentifier == identifier
-        }).compactMap(makeEventModel)
-
-        delegate?.eventsDidChange(to: scheduleModels)
-    }
-
     // MARK: Functions
+
+    func makeScheduleAdapter() -> EventsSchedule {
+        return EventsScheduleAdapter(schedule: self, eventBus: eventBus)
+    }
 
     func add(_ observer: EventsServiceObserver) {
         observers.append(observer)
@@ -182,9 +229,10 @@ class Schedule: EventsSchedule {
 
         dayModels = makeDays(from: days)
         observers.forEach { $0.eventDaysDidChange(to: dayModels) }
+        eventBus.post(Schedule.ChangedEvent())
     }
 
-    private func makeEventModel(from event: APIEvent) -> Event2? {
+    fileprivate func makeEventModel(from event: APIEvent) -> Event2? {
         guard let room = rooms.first(where: { $0.roomIdentifier == event.roomIdentifier }) else { return nil }
         guard let track = tracks.first(where: { $0.trackIdentifier == event.trackIdentifier }) else { return nil }
 

@@ -29,4 +29,24 @@ class WhenRestrictingEventsToSpecificDay_ScheduleShould: XCTestCase {
         XCTAssertEqual(expected, delegate.events)
     }
     
+    func testUpdateRestrictedScheduleWhenLaterSyncCompletes() {
+        let response = APISyncResponse.randomWithoutDeletions
+        let dataStore = CapturingEurofurenceDataStore()
+        dataStore.save(response)
+        let imageRepository = CapturingImageRepository()
+        imageRepository.stubEverything(response)
+        let context = ApplicationTestBuilder().with(dataStore).with(imageRepository).build()
+        let schedule = context.application.makeEventsSchedule()
+        let delegate = CapturingEventsScheduleDelegate()
+        let randomDay = response.conferenceDays.changed.randomElement()
+        let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.element.identifier })
+        let expected = context.makeExpectedEvents(from: expectedEvents, response: response)
+        schedule.restrictEvents(to: Day(date: randomDay.element.date))
+        context.refreshLocalStore()
+        context.syncAPI.simulateSuccessfulSync(response)
+        schedule.setDelegate(delegate)
+        
+        XCTAssertEqual(expected, delegate.events)
+    }
+    
 }
