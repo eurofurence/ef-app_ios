@@ -46,6 +46,10 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
     func restrictEvents(to day: Day) {
         guard let day = schedule.days.first(where: { $0.date == day.date }) else { return }
 
+        if let idx = filters.index(where: { $0 is DayRestrictionFilter }) {
+            filters.remove(at: idx)
+        }
+
         let filter = DayRestrictionFilter(day: day)
         filters.append(filter)
 
