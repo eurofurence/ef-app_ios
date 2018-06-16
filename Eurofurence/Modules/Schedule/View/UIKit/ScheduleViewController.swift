@@ -19,6 +19,7 @@ class ScheduleViewController: UIViewController, ScheduleScene {
         didSet {
             tableView.dataSource = tableController
             tableView.delegate = tableController
+            tableView.reloadData()
         }
     }
 
