@@ -11,6 +11,8 @@ import XCTest
 
 class WhenGroupingEventsByStartTime_ScheduleInteractorShould: XCTestCase {
     
+    var firstGroupEvents: [Event2]!
+    var secondGroupEvents: [Event2]!
     var events: [Event2]!
     var eventsService: FakeEventsService!
     var context: ScheduleInteractorTestBuilder.Context!
@@ -26,14 +28,14 @@ class WhenGroupingEventsByStartTime_ScheduleInteractorShould: XCTestCase {
         b.startDate = firstGroupDate
         var c = Event2.random
         c.startDate = firstGroupDate
-        let firstGroupEvents = [a, b, c].sorted(by: { $0.title < $1.title })
+        firstGroupEvents = [a, b, c].sorted(by: { $0.title < $1.title })
         
         let secondGroupDate = firstGroupDate.addingTimeInterval(100)
         var d = Event2.random
         d.startDate = secondGroupDate
         var e = Event2.random
         e.startDate = secondGroupDate
-        let secondGroupEvents = [d, e].sorted(by: { $0.title < $1.title })
+        secondGroupEvents = [d, e].sorted(by: { $0.title < $1.title })
         
         events = firstGroupEvents + secondGroupEvents
         eventsService = FakeEventsService()
@@ -62,6 +64,18 @@ class WhenGroupingEventsByStartTime_ScheduleInteractorShould: XCTestCase {
         simulateEventsChanged()
         
         XCTAssertEqual(expectedEventViewModels, context.eventsViewModels)
+    }
+    
+    func testProvideTheExpectedIdentifier() {
+        simulateEventsChanged()
+        let viewModel = context.makeViewModel()
+        
+        let randomEventInGroupOne = firstGroupEvents.randomElement()
+        let indexPath = IndexPath(item: randomEventInGroupOne.index, section: 0)
+        let expected = randomEventInGroupOne.element.identifier
+        let actual = viewModel?.identifierForEvent(at: indexPath)
+        
+        XCTAssertEqual(expected, actual)
     }
     
 }

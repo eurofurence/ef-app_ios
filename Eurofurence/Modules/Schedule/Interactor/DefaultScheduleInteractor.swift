@@ -10,18 +10,8 @@ import Foundation
 
 class DefaultScheduleInteractor: ScheduleInteractor {
 
-    // MARK: Nested Types
-
-    private struct EventsGroupedByDate: Comparable {
-        static func < (lhs: EventsGroupedByDate, rhs: EventsGroupedByDate) -> Bool {
-            return lhs.date < rhs.date
-        }
-
-        var date: Date
-        var events: [Event2]
-    }
-
     // MARK: Properties
+
     private let viewModel: ViewModel
 
     // MARK: Initialization
@@ -50,7 +40,17 @@ class DefaultScheduleInteractor: ScheduleInteractor {
 
     private class ViewModel: ScheduleViewModel, EventsServiceObserver, EventsScheduleDelegate {
 
+        private struct EventsGroupedByDate: Comparable {
+            static func < (lhs: EventsGroupedByDate, rhs: EventsGroupedByDate) -> Bool {
+                return lhs.date < rhs.date
+            }
+
+            var date: Date
+            var events: [Event2]
+        }
+
         private var delegate: ScheduleViewModelDelegate?
+        private var rawModelGroups = [EventsGroupedByDate]()
 
         private var days = [Day]()
         var dayViewModels: [ScheduleDayViewModel] = [] {
@@ -83,8 +83,8 @@ class DefaultScheduleInteractor: ScheduleInteractor {
 
         func eventsDidChange(to events: [Event2]) {
             let groupedByDate = Dictionary(grouping: events, by: { $0.startDate })
-            let orderedGroups = groupedByDate.map(EventsGroupedByDate.init).sorted()
-            eventGroupViewModels = orderedGroups.map { (group) -> ScheduleEventGroupViewModel in
+            rawModelGroups = groupedByDate.map(EventsGroupedByDate.init).sorted()
+            eventGroupViewModels = rawModelGroups.map { (group) -> ScheduleEventGroupViewModel in
                 let title = hoursDateFormatter.hoursString(from: group.date)
                 let viewModels = group.events.map { (event) -> ScheduleEventViewModel in
                     return ScheduleEventViewModel(title: event.title,
@@ -126,7 +126,7 @@ class DefaultScheduleInteractor: ScheduleInteractor {
         }
 
         func identifierForEvent(at indexPath: IndexPath) -> Event2.Identifier? {
-            return nil
+            return rawModelGroups[indexPath.section].events[indexPath.row].identifier
         }
 
         func runningEventsDidChange(to events: [Event2]) { }
