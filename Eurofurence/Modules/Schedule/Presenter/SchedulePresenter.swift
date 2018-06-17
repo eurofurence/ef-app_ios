@@ -44,11 +44,13 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate {
 
     private let scene: ScheduleScene
     private let interactor: ScheduleInteractor
+    private let delegate: ScheduleModuleDelegate
     private var viewModel: ScheduleViewModel?
 
-    init(scene: ScheduleScene, interactor: ScheduleInteractor) {
+    init(scene: ScheduleScene, interactor: ScheduleInteractor, delegate: ScheduleModuleDelegate) {
         self.scene = scene
         self.interactor = interactor
+        self.delegate = delegate
 
         scene.setDelegate(self)
     }
@@ -62,6 +64,11 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate {
 
     func scheduleSceneDidSelectDay(at index: Int) {
         viewModel?.showEventsForDay(at: index)
+    }
+
+    func scheduleSceneDidSelectEvent(at indexPath: IndexPath) {
+        guard let identifier = viewModel?.identifierForEvent(at: indexPath) else { return }
+        delegate.scheduleModuleDidSelectEvent(identifier: identifier)
     }
 
     func scheduleViewModelDidUpdateDays(_ days: [ScheduleDayViewModel]) {

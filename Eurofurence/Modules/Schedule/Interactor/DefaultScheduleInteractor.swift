@@ -125,6 +125,10 @@ class DefaultScheduleInteractor: ScheduleInteractor {
             schedule.restrictEvents(to: day)
         }
 
+        func identifierForEvent(at indexPath: IndexPath) -> Event2.Identifier? {
+            return nil
+        }
+
         func runningEventsDidChange(to events: [Event2]) { }
         func upcomingEventsDidChange(to events: [Event2]) { }
         func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) { }

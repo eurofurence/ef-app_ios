@@ -13,9 +13,9 @@ struct ScheduleModule: ScheduleModuleProviding {
     var eventsSceneFactory: ScheduleSceneFactory
     var interactor: ScheduleInteractor
 
-    func makeScheduleModule() -> UIViewController {
+    func makeScheduleModule(_ delegate: ScheduleModuleDelegate) -> UIViewController {
         let scene = eventsSceneFactory.makeEventsScene()
-        _ = SchedulePresenter(scene: scene, interactor: interactor)
+        _ = SchedulePresenter(scene: scene, interactor: interactor, delegate: delegate)
         scene.setScheduleTitle(.schedule)
 
         return scene

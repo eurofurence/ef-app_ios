@@ -6,6 +6,8 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import Foundation
+
 protocol ScheduleScene {
 
     func setDelegate(_ delegate: ScheduleSceneDelegate)
@@ -20,5 +22,6 @@ protocol ScheduleSceneDelegate {
 
     func scheduleSceneDidLoad()
     func scheduleSceneDidSelectDay(at index: Int)
+    func scheduleSceneDidSelectEvent(at indexPath: IndexPath)
 
 }

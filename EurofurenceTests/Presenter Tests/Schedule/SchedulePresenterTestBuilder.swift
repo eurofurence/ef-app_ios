@@ -14,6 +14,7 @@ class SchedulePresenterTestBuilder {
     struct Context {
         var producedViewController: UIViewController
         var scene: CapturingScheduleScene
+        var delegate: CapturingScheduleModuleDelegate
     }
     
     private var interactor: ScheduleInteractor
@@ -30,9 +31,10 @@ class SchedulePresenterTestBuilder {
     
     func build() -> Context {
         let sceneFactory = StubScheduleSceneFactory()
-        let viewController = ScheduleModuleBuilder().with(sceneFactory).with(interactor).build().makeScheduleModule()
+        let delegate = CapturingScheduleModuleDelegate()
+        let viewController = ScheduleModuleBuilder().with(sceneFactory).with(interactor).build().makeScheduleModule(delegate)
         
-        return Context(producedViewController: viewController, scene: sceneFactory.scene)
+        return Context(producedViewController: viewController, scene: sceneFactory.scene, delegate: delegate)
     }
     
 }
@@ -41,6 +43,10 @@ extension SchedulePresenterTestBuilder.Context {
     
     func simulateSceneDidLoad() {
         scene.delegate?.scheduleSceneDidLoad()
+    }
+    
+    func simulateSceneDidSelectEvent(at indexPath: IndexPath) {
+        scene.delegate?.scheduleSceneDidSelectEvent(at: indexPath)
     }
     
     func simulateSceneDidSelectDay(at index: Int) {

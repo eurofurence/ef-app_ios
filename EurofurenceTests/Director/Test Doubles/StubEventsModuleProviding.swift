@@ -10,9 +10,9 @@
 import UIKit.UIViewController
 
 class StubEventsModuleFactory: ScheduleModuleProviding {
-    
+
     let stubInterface = UIViewController()
-    func makeScheduleModule() -> UIViewController {
+    func makeScheduleModule(_ delegate: ScheduleModuleDelegate) -> UIViewController {
         return stubInterface
     }
     

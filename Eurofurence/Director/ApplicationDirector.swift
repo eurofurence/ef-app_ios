@@ -12,6 +12,7 @@ class ApplicationDirector: RootModuleDelegate,
                            TutorialModuleDelegate,
                            PreloadModuleDelegate,
                            NewsModuleDelegate,
+                           ScheduleModuleDelegate,
                            MessagesModuleDelegate,
                            LoginModuleDelegate,
                            KnowledgeListModuleDelegate,
@@ -150,6 +151,12 @@ class ApplicationDirector: RootModuleDelegate,
         newsNavigationController.pushViewController(module, animated: animate)
     }
 
+    // MARK: ScheduleModuleDelegate
+
+    func scheduleModuleDidSelectEvent(identifier: Event2.Identifier) {
+
+    }
+
     // MARK: MessagesModuleDelegate
 
     private var messagesModuleResolutionHandler: ((Bool) -> Void)?
@@ -231,7 +238,7 @@ class ApplicationDirector: RootModuleDelegate,
         newsNavigationController.setViewControllers([newsController], animated: animate)
         newsNavigationController.tabBarItem = newsController.tabBarItem
 
-        let eventsViewController = eventsModuleProviding.makeScheduleModule()
+        let eventsViewController = eventsModuleProviding.makeScheduleModule(self)
         let eventsNavigationController = UINavigationController(rootViewController: eventsViewController)
         eventsNavigationController.tabBarItem = eventsViewController.tabBarItem
 

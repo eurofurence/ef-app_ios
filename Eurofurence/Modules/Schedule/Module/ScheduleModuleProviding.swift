@@ -10,6 +10,6 @@ import UIKit.UIViewController
 
 protocol ScheduleModuleProviding {
 
-    func makeScheduleModule() -> UIViewController
+    func makeScheduleModule(_ delegate: ScheduleModuleDelegate) -> UIViewController
 
 }

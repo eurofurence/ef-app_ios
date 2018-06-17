@@ -32,4 +32,17 @@ final class CapturingScheduleViewModel: ScheduleViewModel {
         capturedDayToShowIndex = index
     }
     
+    fileprivate var stubbedIdentifiersByIndexPath = [IndexPath : Event2.Identifier]()
+    func identifierForEvent(at indexPath: IndexPath) -> Event2.Identifier? {
+        return stubbedIdentifiersByIndexPath[indexPath]
+    }
+    
+}
+
+extension CapturingScheduleViewModel {
+    
+    func stub(_ identifier: Event2.Identifier, at indexPath: IndexPath) {
+        stubbedIdentifiersByIndexPath[indexPath] = identifier
+    }
+    
 }
