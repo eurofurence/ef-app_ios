@@ -146,7 +146,7 @@ class ApplicationDirector: RootModuleDelegate,
     }
 
     func newsModuleDidSelectEvent(_ event: Event2) {
-        let module = eventDetailModuleProviding.makeEventDetailModule(for: event)
+        let module = eventDetailModuleProviding.makeEventDetailModule(for: event.identifier)
         newsNavigationController.pushViewController(module, animated: animate)
     }
 

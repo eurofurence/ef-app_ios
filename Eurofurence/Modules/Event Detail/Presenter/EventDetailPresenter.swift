@@ -63,10 +63,10 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
 
     private let scene: EventDetailScene
     private let interactor: EventDetailInteractor
-    private let event: Event2
+    private let event: Event2.Identifier
     private var viewModel: EventDetailViewModel?
 
-    init(scene: EventDetailScene, interactor: EventDetailInteractor, event: Event2) {
+    init(scene: EventDetailScene, interactor: EventDetailInteractor, event: Event2.Identifier) {
         self.scene = scene
         self.interactor = interactor
         self.event = event
@@ -75,7 +75,7 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
     }
 
     func eventDetailSceneDidLoad() {
-        interactor.makeViewModel(for: event.identifier, completionHandler: eventDetailViewModelReady)
+        interactor.makeViewModel(for: event, completionHandler: eventDetailViewModelReady)
     }
 
     func eventDetailSceneDidTapFavouriteEventButton() {

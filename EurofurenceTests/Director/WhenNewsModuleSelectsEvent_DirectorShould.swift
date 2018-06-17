@@ -19,7 +19,7 @@ class WhenNewsModuleSelectsEvent_DirectorShould: XCTestCase {
         context.newsModule.simulateDidSelectEvent(event)
         
         XCTAssertEqual(context.eventDetailModule.stubInterface, newsNavigationController?.topViewController)
-        XCTAssertEqual(event, context.eventDetailModule.capturedModel)
+        XCTAssertEqual(event.identifier, context.eventDetailModule.capturedModel)
     }
     
 }

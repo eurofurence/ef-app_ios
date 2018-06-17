@@ -35,7 +35,7 @@ class EventDetailPresenterTestBuilder {
             .with(sceneFactory)
             .with(interactor)
             .build()
-            .makeEventDetailModule(for: event)
+            .makeEventDetailModule(for: event.identifier)
         
         return Context(producedViewController: module, scene: sceneFactory.interface)
     }
