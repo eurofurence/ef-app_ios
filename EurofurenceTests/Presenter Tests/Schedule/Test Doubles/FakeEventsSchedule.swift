@@ -29,4 +29,8 @@ extension FakeEventsSchedule {
         delegate?.eventsDidChange(to: events)
     }
     
+    func simulateDayChanged(to day: Day?) {
+        delegate?.currentEventDayDidChange(to: day)
+    }
+    
 }

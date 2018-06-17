@@ -38,6 +38,5 @@ protocol EventsServiceObserver {
     func upcomingEventsDidChange(to events: [Event2])
     func favouriteEventsDidChange(_ identifiers: [Event2.Identifier])
     func eventDaysDidChange(to days: [Day])
-    func currentEventDayDidChange(to day: Day?)
 
 }
