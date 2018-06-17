@@ -99,7 +99,13 @@
                         <viewLayoutGuide key="safeArea" id="UnK-qE-skU"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" image="Calendar" selectedImage="Calendar" id="YEX-4v-gXn"/>
-                    <navigationItem key="navigationItem" title="Title" id="2OJ-rN-eRD"/>
+                    <navigationItem key="navigationItem" title="Title" id="2OJ-rN-eRD">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="1g4-We-X2t">
+                            <connections>
+                                <action selector="openSearch:" destination="uUW-Is-Btl" id="ATq-Lg-mZX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

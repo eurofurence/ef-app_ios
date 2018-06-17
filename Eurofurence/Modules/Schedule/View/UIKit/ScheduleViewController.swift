@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScheduleViewController: UIViewController, ScheduleScene {
+class ScheduleViewController: UIViewController, UISearchControllerDelegate, ScheduleScene {
 
     // MARK: Properties
 
@@ -31,10 +31,20 @@ class ScheduleViewController: UIViewController, ScheduleScene {
         }
     }
 
+    private var searchController: UISearchController?
+
+    @IBAction func openSearch(_ sender: Any) {
+        searchController?.isActive = true
+    }
+
     // MARK: Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        definesPresentationContext = true
+        searchController = UISearchController(searchResultsController: UIViewController())
+        searchController?.delegate = self
 
         navigationController?.delegate = navigationBarShadowDelegate
         tableView.register(EventTableViewCell.self)
@@ -45,6 +55,12 @@ class ScheduleViewController: UIViewController, ScheduleScene {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         daysCollectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    // MARK: UISearchControllerDelegate
+    
+    func presentSearchController(_ searchController: UISearchController) {
+        present(searchController, animated: true)
     }
 
     // MARK: EventsScene
