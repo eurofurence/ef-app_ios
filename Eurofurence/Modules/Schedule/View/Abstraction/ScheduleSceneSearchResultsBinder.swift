@@ -11,5 +11,6 @@ import Foundation
 protocol ScheduleSceneSearchResultsBinder {
 
     func bind(_ eventComponent: ScheduleEventComponent, forSearchResultAt indexPath: IndexPath)
+    func bind(_ header: ScheduleEventGroupHeader, forSearchResultGroupAt index: Int)
 
 }

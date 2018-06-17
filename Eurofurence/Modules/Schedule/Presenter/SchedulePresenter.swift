@@ -56,6 +56,11 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
             eventComponent.setLocation(event.location)
         }
 
+        func bind(_ header: ScheduleEventGroupHeader, forSearchResultGroupAt index: Int) {
+            let group = viewModels[index]
+            header.setEventGroupTitle(group.title)
+        }
+
     }
 
     private let scene: ScheduleScene

@@ -73,4 +73,8 @@ extension SchedulePresenterTestBuilder.Context {
         scene.searchResultsBinder?.bind(component, forSearchResultAt: indexPath)
     }
     
+    func bindSearchResultHeading(_ component: ScheduleEventGroupHeader, forSearchResultGroupAt index: Int) {
+        scene.searchResultsBinder?.bind(component, forSearchResultGroupAt: index)
+    }
+    
 }
