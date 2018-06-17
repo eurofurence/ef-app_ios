@@ -44,4 +44,21 @@ class WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould: XCTestCase {
         XCTAssertEqual(expected, delegate.capturedCurrentDay)
     }
     
+    func testProvideEventsForThatDay() {
+        let response = APISyncResponse.randomWithoutDeletions
+        let randomDay = response.conferenceDays.changed.randomElement().element
+        let dataStore = CapturingEurofurenceDataStore()
+        dataStore.save(response)
+        let imageRepository = CapturingImageRepository()
+        imageRepository.stubEverything(response)
+        let context = ApplicationTestBuilder().with(dataStore).with(randomDay.date).with(imageRepository).build()
+        let schedule = context.application.makeEventsSchedule()
+        let delegate = CapturingEventsScheduleDelegate()
+        schedule.setDelegate(delegate)
+        let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == randomDay.identifier })
+        let expected = context.makeExpectedEvents(from: expectedEvents, response: response)
+        
+        XCTAssertEqual(expected, delegate.events)
+    }
+    
 }

@@ -68,7 +68,10 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
 
     func restrictEvents(to day: Day) {
         guard let day = findDay(for: day.date) else { return }
+        restrictScheduleToEvents(on: day)
+    }
 
+    private func restrictScheduleToEvents(on day: APIConferenceDay) {
         if let idx = filters.index(where: { $0 is DayRestrictionFilter }) {
             let filter = filters[idx] as! DayRestrictionFilter
             guard filter.day != day else { return }
@@ -84,6 +87,7 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
     private func updateCurrentDay() {
         if let day = findDay(for: clock.currentDate) {
             currentDay = Day(date: day.date)
+            restrictScheduleToEvents(on: day)
         } else {
             currentDay = nil
         }
