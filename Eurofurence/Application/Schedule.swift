@@ -62,6 +62,7 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
         self.delegate = delegate
 
         delegate.eventsDidChange(to: events)
+        updateDelegateWithAllDays()
         delegate.currentEventDayDidChange(to: currentDay)
     }
 
@@ -113,8 +114,13 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
         return calendar.dateComponents(dateCalendarComponents, from: date)
     }
 
+    private func updateDelegateWithAllDays() {
+        delegate?.eventDaysDidChange(to: schedule.dayModels)
+    }
+
     func consume(event: Schedule.ChangedEvent) {
         regenerateSchedule()
+        updateDelegateWithAllDays()
     }
 
 }
@@ -163,7 +169,7 @@ class Schedule {
         }
     }
 
-    private var dayModels = [Day]()
+    var dayModels = [Day]()
 
     private var favouriteEventIdentifiers = [Event2.Identifier]() {
         didSet {
@@ -248,7 +254,6 @@ class Schedule {
         observer.upcomingEventsDidChange(to: upcomingEvents)
         observer.eventsDidChange(to: eventModels)
         observer.favouriteEventsDidChange(favouriteEventIdentifiers)
-        observer.eventDaysDidChange(to: dayModels)
     }
 
     private func provideFavouritesInformationToObservers() {
@@ -279,7 +284,6 @@ class Schedule {
         eventModels = events.compactMap(makeEventModel)
 
         dayModels = makeDays(from: days)
-        observers.forEach { $0.eventDaysDidChange(to: dayModels) }
         eventBus.post(Schedule.ChangedEvent())
     }
 

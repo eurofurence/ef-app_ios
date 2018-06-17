@@ -15,8 +15,6 @@ class FakeEventsService: EventsService {
     var upcomingEvents: [Event2] = []
     var allEvents: [Event2] = []
     var favourites: [Event2.Identifier] = []
-    var allDays: [Day] = []
-    var currentDay: Day?
     
     init(favourites: [Event2.Identifier] = []) {
         self.favourites = favourites
@@ -30,7 +28,6 @@ class FakeEventsService: EventsService {
         observer.runningEventsDidChange(to: runningEvents)
         observer.upcomingEventsDidChange(to: upcomingEvents)
         observer.favouriteEventsDidChange(favourites)
-        observer.eventDaysDidChange(to: allDays)
     }
     
     private(set) var favouritedEventIdentifier: Event2.Identifier?
@@ -84,7 +81,7 @@ extension FakeEventsService {
     }
     
     func simulateDaysChanged(_ days: [Day]) {
-        observers.forEach { $0.eventDaysDidChange(to: days) }
+        lastProducedSchedule?.simulateDaysChanged(days)
     }
     
     func simulateDayChanged(to day: Day?) {

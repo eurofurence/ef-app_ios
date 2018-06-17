@@ -18,6 +18,7 @@ protocol EventsSchedule {
 protocol EventsScheduleDelegate {
 
     func eventsDidChange(to events: [Event2])
+    func eventDaysDidChange(to days: [Day])
     func currentEventDayDidChange(to day: Day?)
 
 }
@@ -37,6 +38,5 @@ protocol EventsServiceObserver {
     func runningEventsDidChange(to events: [Event2])
     func upcomingEventsDidChange(to events: [Event2])
     func favouriteEventsDidChange(_ identifiers: [Event2.Identifier])
-    func eventDaysDidChange(to days: [Day])
 
 }

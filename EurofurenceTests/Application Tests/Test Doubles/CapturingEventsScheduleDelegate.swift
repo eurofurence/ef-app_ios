@@ -23,4 +23,9 @@ class CapturingEventsScheduleDelegate: EventsScheduleDelegate {
         capturedCurrentDay = day
     }
     
+    private(set) var allDays = [Day]()
+    func eventDaysDidChange(to days: [Day]) {
+        self.allDays = days
+    }
+    
 }

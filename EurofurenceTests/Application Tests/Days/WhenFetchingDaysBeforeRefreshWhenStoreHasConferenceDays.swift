@@ -20,11 +20,12 @@ class WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays: XCTestCase {
         }
         
         let context = ApplicationTestBuilder().with(dataStore).build()
-        let observer = CapturingEventsServiceObserver()
-        context.application.add(observer)
+        let delegate = CapturingEventsScheduleDelegate()
+        let schedule = context.application.makeEventsSchedule()
+        schedule.setDelegate(delegate)
         let expected = context.makeExpectedDays(from: response)
         
-        XCTAssertEqual(expected, observer.allDays)
+        XCTAssertEqual(expected, delegate.allDays)
     }
     
 }
