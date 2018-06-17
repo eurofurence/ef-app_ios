@@ -54,6 +54,7 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
         eventBus.subscribe(consumer: self)
         eventBus.subscribe(consumer: UpdateCurrentDayWhenSignificantTimePasses(scheduleAdapter: self))
         regenerateSchedule()
+        updateCurrentDay()
     }
 
     private var delegate: EventsScheduleDelegate?
@@ -68,6 +69,8 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
         guard let day = findDay(for: day.date) else { return }
 
         if let idx = filters.index(where: { $0 is DayRestrictionFilter }) {
+            let filter = filters[idx] as! DayRestrictionFilter
+            guard filter.day != day else { return }
             filters.remove(at: idx)
         }
 
@@ -93,12 +96,21 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
 
         events = allEvents.compactMap(schedule.makeEventModel)
         delegate?.eventsDidChange(to: events)
-
-        updateCurrentDay()
     }
 
     private func findDay(for date: Date) -> APIConferenceDay? {
-        return schedule.days.first(where: { $0.date == date })
+        let dateOnlyComponents = resolveDateOnlyComponents(from: date)
+
+        return schedule.days.first { (day) in
+            let dayComponents = resolveDateOnlyComponents(from: day.date)
+            return dayComponents == dateOnlyComponents
+        }
+    }
+
+    private func resolveDateOnlyComponents(from date: Date) -> DateComponents {
+        let dateCalendarComponents: Set<Calendar.Component> = Set([.day, .month, .year])
+        let calendar = Calendar.current
+        return calendar.dateComponents(dateCalendarComponents, from: date)
     }
 
     func consume(event: Schedule.ChangedEvent) {
