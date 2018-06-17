@@ -233,7 +233,7 @@ class Schedule {
     }
 
     func makeEventsSearchController() -> EventsSearchController {
-        return InMemoryEventsSearchController()
+        return InMemoryEventsSearchController(schedule: self)
     }
 
     func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2?) -> Void) {

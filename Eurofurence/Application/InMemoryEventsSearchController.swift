@@ -8,14 +8,22 @@
 
 import Foundation
 
-struct InMemoryEventsSearchController: EventsSearchController {
+class InMemoryEventsSearchController: EventsSearchController {
 
+    private let schedule: Schedule
+
+    init(schedule: Schedule) {
+        self.schedule = schedule
+    }
+
+    private var delegate: EventsSearchControllerDelegate?
     func setResultsDelegate(_ delegate: EventsSearchControllerDelegate) {
-        delegate.searchResultsDidUpdate(to: [])
+        self.delegate = delegate
     }
 
     func changeSearchTerm(_ term: String) {
-
+        let matches = schedule.eventModels.filter({ $0.title == term })
+        delegate?.searchResultsDidUpdate(to: matches)
     }
 
 }
