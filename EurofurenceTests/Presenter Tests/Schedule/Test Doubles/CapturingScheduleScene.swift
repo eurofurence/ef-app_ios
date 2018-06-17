@@ -40,4 +40,9 @@ class CapturingScheduleScene: UIViewController, ScheduleScene {
         selectedDayIndex = index
     }
     
+    private(set) var deselectedEventIndexPath: IndexPath?
+    func deselectEvent(at indexPath: IndexPath) {
+        deselectedEventIndexPath = indexPath
+    }
+    
 }

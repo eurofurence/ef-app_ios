@@ -15,6 +15,7 @@ protocol ScheduleScene {
     func bind(numberOfDays: Int, using binder: ScheduleDaysBinder)
     func bind(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder)
     func selectDay(at index: Int)
+    func deselectEvent(at indexPath: IndexPath)
 
 }
 

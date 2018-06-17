@@ -73,6 +73,10 @@ class ScheduleViewController: UIViewController, ScheduleScene {
                                       scrollPosition: .centeredHorizontally)
     }
 
+    func deselectEvent(at indexPath: IndexPath) {
+
+    }
+
     // MARK: Private
 
     private func scheduleTableViewDidSelectRow(_ indexPath: IndexPath) {

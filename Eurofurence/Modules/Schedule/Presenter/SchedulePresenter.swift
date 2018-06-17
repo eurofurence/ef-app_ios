@@ -67,6 +67,8 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate {
     }
 
     func scheduleSceneDidSelectEvent(at indexPath: IndexPath) {
+        scene.deselectEvent(at: indexPath)
+
         guard let identifier = viewModel?.identifierForEvent(at: indexPath) else { return }
         delegate.scheduleModuleDidSelectEvent(identifier: identifier)
     }

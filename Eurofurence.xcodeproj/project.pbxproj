@@ -414,6 +414,7 @@
 		CA52C68F20D6AB47009D3A9E /* ScheduleModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68E20D6AB47009D3A9E /* ScheduleModuleDelegate.swift */; };
 		CA52C69120D6AB53009D3A9E /* CapturingScheduleModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69020D6AB53009D3A9E /* CapturingScheduleModuleDelegate.swift */; };
 		CA52C69520D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69420D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift */; };
+		CA52C69720D6B24A009D3A9E /* IndexPath+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69620D6B24A009D3A9E /* IndexPath+RandomValueProviding.swift */; };
 		CA5BF9D51F7AF9160045DBC0 /* PreloadPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */; };
 		CA60BFE32078E42800697566 /* User+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */; };
 		CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */; };
@@ -1317,6 +1318,7 @@
 		CA52C68E20D6AB47009D3A9E /* ScheduleModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModuleDelegate.swift; sourceTree = "<group>"; };
 		CA52C69020D6AB53009D3A9E /* CapturingScheduleModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleModuleDelegate.swift; sourceTree = "<group>"; };
 		CA52C69420D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenScheduleModuleSelectsEvent_DirectorShould.swift; sourceTree = "<group>"; };
+		CA52C69620D6B24A009D3A9E /* IndexPath+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndexPath+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadPresenterTests.swift; sourceTree = "<group>"; };
 		CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesService.swift; sourceTree = "<group>"; };
@@ -3346,12 +3348,13 @@
 			children = (
 				CA71A3512041B59600C847C3 /* Array+RandomConvenience.swift */,
 				CAD6882D208A13D400B31F5F /* Bool+RandomValueProviding.swift */,
+				CACF1EB320B5FFB600D904B5 /* Data+RandomValueProviding.swift */,
 				CA63757B208CDBAA00536BE2 /* Date+RandomValueProviding.swift */,
 				CA71A34F2040371D00C847C3 /* FloatingPoint+RandomValueProviding.swift */,
+				CA52C69620D6B24A009D3A9E /* IndexPath+RandomValueProviding.swift */,
 				CA71A34B204032FC00C847C3 /* Integer+RandomValueProviding.swift */,
 				CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */,
 				CAD3BDBC205AA61B00C91E6E /* URL+RandomValueProviding.swift */,
-				CACF1EB320B5FFB600D904B5 /* Data+RandomValueProviding.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -5591,6 +5594,7 @@
 				CA89CBC02085383100570D54 /* StubNewsInteractor.swift in Sources */,
 				CA6375AC208E021A00536BE2 /* WhenBuildingDealersModule.swift in Sources */,
 				CA728445209D00B7007D912A /* StubAnnouncementDetailModuleFactory.swift in Sources */,
+				CA52C69720D6B24A009D3A9E /* IndexPath+RandomValueProviding.swift in Sources */,
 				CABF03CA20421B490028BD62 /* WhenFetchingKnowledgeGroupsWithoutLoadingAnything.swift in Sources */,
 				CA00AE7D20D1C08B00C2FBB0 /* WhenBindingDay_SchedulePresenterShould.swift in Sources */,
 				CA728458209D058A007D912A /* StubAnnouncementDetailSceneFactory.swift in Sources */,
