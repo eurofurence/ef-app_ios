@@ -167,17 +167,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func makeEventsSearchController() -> EventsSearchController {
-        struct DummyEventsSearchController: EventsSearchController {
-            func setResultsDelegate(_ delegate: EventsSearchControllerDelegate) {
-
-            }
-
-            func changeSearchTerm(_ term: String) {
-
-            }
-        }
-
-        return DummyEventsSearchController()
+        return schedule.makeEventsSearchController()
     }
 
     func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2?) -> Void) {

@@ -232,6 +232,10 @@ class Schedule {
         return EventsScheduleAdapter(schedule: self, clock: clock, eventBus: eventBus)
     }
 
+    func makeEventsSearchController() -> EventsSearchController {
+        return InMemoryEventsSearchController()
+    }
+
     func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2?) -> Void) {
         let event = eventModels.first(where: { $0.identifier == identifier })
         completionHandler(event)

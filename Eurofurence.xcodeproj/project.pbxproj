@@ -402,6 +402,9 @@
 		CA321F4E1F7BC7FD0050E489 /* PhonePreloadSceneFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA321F4D1F7BC7FD0050E489 /* PhonePreloadSceneFactoryTests.swift */; };
 		CA321F511F7BC8550050E489 /* PreloadSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */; };
 		CA321F531F7BC88D0050E489 /* PhonePreloadSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA321F521F7BC88D0050E489 /* PhonePreloadSceneFactory.swift */; };
+		CA36A44120D7020900EE6537 /* WhenSearchingForEvents_BeforeAnyAreAvailable_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44020D7020900EE6537 /* WhenSearchingForEvents_BeforeAnyAreAvailable_ApplicationShould.swift */; };
+		CA36A44320D703FA00EE6537 /* CapturingEventsSearchControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44220D703FA00EE6537 /* CapturingEventsSearchControllerDelegate.swift */; };
+		CA36A44520D7051900EE6537 /* InMemoryEventsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44420D7051900EE6537 /* InMemoryEventsSearchController.swift */; };
 		CA3990ED20ACD35C001E3F1A /* HoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */; };
 		CA3990EF20ACD559001E3F1A /* FoundationHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */; };
 		CA3990F220ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */; };
@@ -1321,6 +1324,9 @@
 		CA321F4D1F7BC7FD0050E489 /* PhonePreloadSceneFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePreloadSceneFactoryTests.swift; sourceTree = "<group>"; };
 		CA321F501F7BC8550050E489 /* PreloadSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadSceneFactory.swift; sourceTree = "<group>"; };
 		CA321F521F7BC88D0050E489 /* PhonePreloadSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePreloadSceneFactory.swift; sourceTree = "<group>"; };
+		CA36A44020D7020900EE6537 /* WhenSearchingForEvents_BeforeAnyAreAvailable_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSearchingForEvents_BeforeAnyAreAvailable_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA36A44220D703FA00EE6537 /* CapturingEventsSearchControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventsSearchControllerDelegate.swift; sourceTree = "<group>"; };
+		CA36A44420D7051900EE6537 /* InMemoryEventsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryEventsSearchController.swift; sourceTree = "<group>"; };
 		CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationHoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUpcomingEventsBeforeLoadingAnything.swift; sourceTree = "<group>"; };
@@ -2229,6 +2235,7 @@
 			children = (
 				CA1F7D6220CB83A100FB87F5 /* Announcements.swift */,
 				CA0E5212208F4CD7005259FE /* AnnouncementsService.swift */,
+				CA36A44420D7051900EE6537 /* InMemoryEventsSearchController.swift */,
 				CA162E8520A5BB85004AFED6 /* ConventionCountdownController.swift */,
 				CA72843A209CEF47007D912A /* ConventionCountdownService.swift */,
 				78D7EEBC1F196B62005372A9 /* EurofurenceApplication.swift */,
@@ -2765,6 +2772,7 @@
 				CA162EB320AA2E12004AFED6 /* CapturingEventsServiceObserver.swift */,
 				CA08159B20D47BEA00F750D4 /* CapturingEventsScheduleDelegate.swift */,
 				CA52C68420D59A5B009D3A9E /* CapturingSignificantTimeChangeAdapterDelegate.swift */,
+				CA36A44220D703FA00EE6537 /* CapturingEventsSearchControllerDelegate.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -2798,6 +2806,7 @@
 				CABA83FD20CEF88800DD0795 /* Favourites */,
 				CA162EB020AA2DC9004AFED6 /* Running */,
 				CA3990F020ACD693001E3F1A /* Upcoming */,
+				CA36A44020D7020900EE6537 /* WhenSearchingForEvents_BeforeAnyAreAvailable_ApplicationShould.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -5243,6 +5252,7 @@
 				CA0F762320322DEF009DA079 /* KnowledgeListBinder.swift in Sources */,
 				78FE77CF1F1A2E8600E9A0BE /* JSONSession.swift in Sources */,
 				CABA438F1FBCDBEE009CB5B0 /* LoginSceneFactory.swift in Sources */,
+				CA36A44520D7051900EE6537 /* InMemoryEventsSearchController.swift in Sources */,
 				CA8E7F0A1FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift in Sources */,
 				CA49E94D20154AF900EB571C /* EventConsumer.swift in Sources */,
 				CA680F8220CDABB6006ACD3D /* ImageDownloader.swift in Sources */,
@@ -5520,6 +5530,7 @@
 				CA52C67920D59357009D3A9E /* WhenSignificantTimeChanges_ScheduleShould.swift in Sources */,
 				CAD260AB20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift in Sources */,
 				CA0E521B208FC107005259FE /* ConventionCountdownComponentViewModel+RandomValueProviding.swift in Sources */,
+				CA36A44120D7020900EE6537 /* WhenSearchingForEvents_BeforeAnyAreAvailable_ApplicationShould.swift in Sources */,
 				CA131BD320C1866D00DB1036 /* CapturingEventDetailViewModelDelegate.swift in Sources */,
 				CA63757E208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift in Sources */,
 				CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */,
@@ -5746,6 +5757,7 @@
 				CAD2609F20C02E7C007E3618 /* WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailInteractorShould.swift in Sources */,
 				CA637562208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift in Sources */,
 				CA162E8420A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift in Sources */,
+				CA36A44320D703FA00EE6537 /* CapturingEventsSearchControllerDelegate.swift in Sources */,
 				CA250DD820D6E4AF00E7513C /* WhenBindingGroupFromSearchResult_SchedulePresenterShould.swift in Sources */,
 				CAF9A9451F50B89000628833 /* CapturingEurofurenceApplication.swift in Sources */,
 				CA637570208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift in Sources */,
