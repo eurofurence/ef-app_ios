@@ -31,6 +31,7 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, Sche
         }
     }
 
+    private var searchViewController: ScheduleSearchTableViewController?
     private var searchController: UISearchController?
 
     @IBAction func openSearch(_ sender: Any) {
@@ -43,7 +44,8 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, Sche
         super.viewDidLoad()
 
         definesPresentationContext = true
-        searchController = UISearchController(searchResultsController: UIViewController())
+        searchViewController = storyboard?.instantiate(ScheduleSearchTableViewController.self)
+        searchController = UISearchController(searchResultsController: searchViewController)
         searchController?.delegate = self
 
         navigationController?.delegate = navigationBarShadowDelegate
@@ -85,7 +87,7 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, Sche
     }
 
     func bindSearchResults(numberOfItemsPerSection: [Int], using binder: ScheduleSceneSearchResultsBinder) {
-
+        searchViewController?.updateSearchResults(numberOfItemsPerSection: numberOfItemsPerSection, binder: binder)
     }
 
     func selectDay(at index: Int) {

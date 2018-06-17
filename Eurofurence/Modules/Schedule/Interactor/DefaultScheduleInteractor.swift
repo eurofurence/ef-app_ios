@@ -39,7 +39,7 @@ class DefaultScheduleInteractor: ScheduleInteractor {
     }
 
     func makeSearchViewModel(completionHandler: @escaping (ScheduleSearchViewModel) -> Void) {
-
+        
     }
 
     private class ViewModel: ScheduleViewModel, EventsServiceObserver, EventsScheduleDelegate {

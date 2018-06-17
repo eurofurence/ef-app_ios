@@ -117,6 +117,24 @@
             </objects>
             <point key="canvasLocation" x="-316" y="179.46026986506749"/>
         </scene>
+        <!--Schedule Search Table View Controller-->
+        <scene sceneID="KKe-Vk-Mhu">
+            <objects>
+                <tableViewController storyboardIdentifier="ScheduleSearchTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tcu-9T-Yzs" customClass="ScheduleSearchTableViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="KdN-4J-0ib">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="tcu-9T-Yzs" id="juj-XZ-yQd"/>
+                            <outlet property="delegate" destination="tcu-9T-Yzs" id="XZx-x7-wp4"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gPr-GB-8XD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="463" y="179"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Calendar" width="25" height="25"/>
