@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScheduleViewController: UIViewController, UISearchControllerDelegate, ScheduleScene {
+class ScheduleViewController: UIViewController, UISearchControllerDelegate, UISearchResultsUpdating, ScheduleScene {
 
     // MARK: Properties
 
@@ -47,6 +47,7 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, Sche
         searchViewController = storyboard?.instantiate(ScheduleSearchTableViewController.self)
         searchController = UISearchController(searchResultsController: searchViewController)
         searchController?.delegate = self
+        searchController?.searchResultsUpdater = self
 
         navigationController?.delegate = navigationBarShadowDelegate
         tableView.register(EventTableViewCell.self)
@@ -63,6 +64,14 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, Sche
 
     func presentSearchController(_ searchController: UISearchController) {
         present(searchController, animated: true)
+    }
+
+    // MARK: UISearchResultsUpdating
+
+    func updateSearchResults(for searchController: UISearchController) {
+        if let query = searchController.searchBar.text {
+            delegate?.scheduleSceneDidUpdateSearchQuery(query)
+        }
     }
 
     // MARK: EventsScene
@@ -101,6 +110,10 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, Sche
     }
 
     // MARK: Private
+
+    private func searchQueryChanged(_ query: String) {
+        delegate?.scheduleSceneDidUpdateSearchQuery(query)
+    }
 
     private func scheduleTableViewDidSelectRow(_ indexPath: IndexPath) {
         delegate?.scheduleSceneDidSelectEvent(at: indexPath)
