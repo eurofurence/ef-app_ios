@@ -98,10 +98,6 @@ class DefaultScheduleInteractor: ScheduleInteractor {
         }
 
         func eventDaysDidChange(to days: [Day]) {
-            if let day = days.first {
-                schedule.restrictEvents(to: day)
-            }
-
             self.days = days
             self.dayViewModels = days.map { (day) -> ScheduleDayViewModel in
                 return ScheduleDayViewModel(title: shortFormDateFormatter.dateString(from: day.date))
