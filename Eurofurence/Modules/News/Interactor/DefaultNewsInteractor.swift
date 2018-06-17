@@ -158,9 +158,6 @@ class DefaultNewsInteractor: NewsInteractor,
         regenerateFavouriteEvents()
     }
 
-    func eventDaysDidChange(to days: [Day]) { }
-    func currentEventDayDidChange(to day: Day?) { }
-
     // MARK: Private
 
     private func regenerateFavouriteEvents() {

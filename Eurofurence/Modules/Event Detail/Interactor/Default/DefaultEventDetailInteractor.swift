@@ -87,8 +87,6 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
         func eventsDidChange(to events: [Event2]) { }
         func runningEventsDidChange(to events: [Event2]) { }
         func upcomingEventsDidChange(to events: [Event2]) { }
-        func eventDaysDidChange(to days: [Day]) { }
-        func currentEventDayDidChange(to day: Day?) { }
 
         func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) {
             isFavourite = identifiers.contains(event.identifier)
