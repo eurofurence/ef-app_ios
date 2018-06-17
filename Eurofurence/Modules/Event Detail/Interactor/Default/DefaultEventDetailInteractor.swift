@@ -116,30 +116,32 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
         self.eventsService = eventsService
     }
 
-    func makeViewModel(for event: Event2, completionHandler: @escaping (EventDetailViewModel) -> Void) {
-        var components = [EventDetailViewModelComponent]()
+    func makeViewModel(for identifier: Event2.Identifier, completionHandler: @escaping (EventDetailViewModel) -> Void) {
+        eventsService.fetchEvent(for: identifier) { (event) in
+            var components = [EventDetailViewModelComponent]()
 
-        if let graphicData = event.posterGraphicPNGData ?? event.bannerGraphicPNGData {
-            let graphicViewModel = EventGraphicViewModel(pngGraphicData: graphicData)
-            components.append(ViewModel.GraphicComponent(viewModel: graphicViewModel))
+            if let graphicData = event.posterGraphicPNGData ?? event.bannerGraphicPNGData {
+                let graphicViewModel = EventGraphicViewModel(pngGraphicData: graphicData)
+                components.append(ViewModel.GraphicComponent(viewModel: graphicViewModel))
+            }
+
+            let startEndTimeString = self.dateRangeFormatter.string(from: event.startDate, to: event.endDate)
+            let summaryViewModel = EventSummaryViewModel(title: event.title,
+                                                         subtitle: event.abstract,
+                                                         eventStartEndTime: startEndTimeString,
+                                                         location: event.room.name,
+                                                         trackName: event.track.name,
+                                                         eventHosts: event.hosts)
+            components.append(ViewModel.SummaryComponent(viewModel: summaryViewModel))
+
+            if !event.eventDescription.isEmpty, event.eventDescription != event.abstract {
+                let descriptionViewModel = EventDescriptionViewModel(contents: event.eventDescription)
+                components.append(ViewModel.DescriptionComponent(viewModel: descriptionViewModel))
+            }
+
+            let viewModel = ViewModel(components: components, event: event, eventsService: self.eventsService)
+            completionHandler(viewModel)
         }
-
-        let startEndTimeString = dateRangeFormatter.string(from: event.startDate, to: event.endDate)
-        let summaryViewModel = EventSummaryViewModel(title: event.title,
-                                                     subtitle: event.abstract,
-                                                     eventStartEndTime: startEndTimeString,
-                                                     location: event.room.name,
-                                                     trackName: event.track.name,
-                                                     eventHosts: event.hosts)
-        components.append(ViewModel.SummaryComponent(viewModel: summaryViewModel))
-
-        if !event.eventDescription.isEmpty, event.eventDescription != event.abstract {
-            let descriptionViewModel = EventDescriptionViewModel(contents: event.eventDescription)
-            components.append(ViewModel.DescriptionComponent(viewModel: descriptionViewModel))
-        }
-
-        let viewModel = ViewModel(components: components, event: event, eventsService: eventsService)
-        completionHandler(viewModel)
     }
 
 }

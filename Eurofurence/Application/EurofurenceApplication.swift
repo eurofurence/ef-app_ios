@@ -166,6 +166,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         return schedule.makeScheduleAdapter()
     }
 
+    func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2) -> Void) {
+
+    }
+
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
         enum SyncError: Error {
             case failedToLoadResponse

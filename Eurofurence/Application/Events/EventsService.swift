@@ -29,6 +29,7 @@ protocol EventsService {
     func favouriteEvent(identifier: Event2.Identifier)
     func unfavouriteEvent(identifier: Event2.Identifier)
     func makeEventsSchedule() -> EventsSchedule
+    func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2) -> Void)
 
 }
 

@@ -75,7 +75,7 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
     }
 
     func eventDetailSceneDidLoad() {
-        interactor.makeViewModel(for: event, completionHandler: eventDetailViewModelReady)
+        interactor.makeViewModel(for: event.identifier, completionHandler: eventDetailViewModelReady)
     }
 
     func eventDetailSceneDidTapFavouriteEventButton() {

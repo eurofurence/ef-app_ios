@@ -11,7 +11,7 @@ import Foundation
 
 struct DummyEventDetailInteractor: EventDetailInteractor {
     
-    func makeViewModel(for event: Event2, completionHandler: @escaping (EventDetailViewModel) -> Void) {
+    func makeViewModel(for event: Event2.Identifier, completionHandler: @escaping (EventDetailViewModel) -> Void) {
         
     }
     

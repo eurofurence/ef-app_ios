@@ -19,6 +19,10 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         return DummyEventsSchedule()
     }
     
+    func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2) -> Void) {
+        
+    }
+    
     func favouriteEvent(identifier: Event2.Identifier) {
         
     }
