@@ -9,12 +9,31 @@
 @testable import Eurofurence
 import Foundation
 
+class FakeShortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter {
+    
+    private var strings = [Date : String]()
+    
+    func dayAndHoursString(from date: Date) -> String {
+        var output = String.random
+        if let previous = strings[date] {
+            output = previous
+        }
+        else {
+            strings[date] = output
+        }
+        
+        return output
+    }
+    
+}
+
 class ScheduleInteractorTestBuilder {
     
     struct Context {
         var interactor: DefaultScheduleInteractor
         var hoursFormatter: FakeHoursDateFormatter
         var shortFormDateFormatter: FakeShortFormDateFormatter
+        var shortFormDayAndTimeFormatter: FakeShortFormDayAndTimeFormatter
         let viewModelDelegate = CapturingScheduleViewModelDelegate()
         let searchViewModelDelegate = CapturingScheduleSearchViewModelDelegate()
     }
@@ -34,13 +53,16 @@ class ScheduleInteractorTestBuilder {
     func build() -> Context {
         let hoursFormatter = FakeHoursDateFormatter()
         let shortFormDateFormatter = FakeShortFormDateFormatter()
+        let shortFormDayAndTimeFormatter = FakeShortFormDayAndTimeFormatter()
         let interactor = DefaultScheduleInteractor(eventsService: eventsService,
                                                    hoursDateFormatter: hoursFormatter,
-                                                   shortFormDateFormatter: shortFormDateFormatter)
+                                                   shortFormDateFormatter: shortFormDateFormatter,
+                                                   shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter)
         
         return Context(interactor: interactor,
                        hoursFormatter: hoursFormatter,
-                       shortFormDateFormatter: shortFormDateFormatter)
+                       shortFormDateFormatter: shortFormDateFormatter,
+                       shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter)
     }
     
 }
@@ -70,6 +92,7 @@ extension ScheduleInteractorTestBuilder.Context {
         return viewModel
     }
     
+    @discardableResult
     func makeSearchViewModel() -> ScheduleSearchViewModel? {
         var searchViewModel: ScheduleSearchViewModel?
         interactor.makeSearchViewModel { (viewModel) in

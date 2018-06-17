@@ -364,6 +364,8 @@
 		CA250DDE20D6EA0500E7513C /* CapturingScheduleSearchViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DDD20D6EA0500E7513C /* CapturingScheduleSearchViewModelDelegate.swift */; };
 		CA250DE020D6EAF500E7513C /* EventsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DDF20D6EAF500E7513C /* EventsSearchController.swift */; };
 		CA250DE220D6EB0300E7513C /* FakeEventsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DE120D6EB0300E7513C /* FakeEventsSearchController.swift */; };
+		CA250DE420D6F68700E7513C /* WhenSearchControllerProducesNewResults_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DE320D6F68700E7513C /* WhenSearchControllerProducesNewResults_ScheduleInteractorShould.swift */; };
+		CA250DE620D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DE520D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift */; };
 		CA2547C11FEB1B2A0023F2CB /* WhenRefreshingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2547C01FEB1B2A0023F2CB /* WhenRefreshingMessages.swift */; };
 		CA281B641F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
@@ -1281,6 +1283,8 @@
 		CA250DDD20D6EA0500E7513C /* CapturingScheduleSearchViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleSearchViewModelDelegate.swift; sourceTree = "<group>"; };
 		CA250DDF20D6EAF500E7513C /* EventsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsSearchController.swift; sourceTree = "<group>"; };
 		CA250DE120D6EB0300E7513C /* FakeEventsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeEventsSearchController.swift; sourceTree = "<group>"; };
+		CA250DE320D6F68700E7513C /* WhenSearchControllerProducesNewResults_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSearchControllerProducesNewResults_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
+		CA250DE520D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortFormDayAndTimeFormatter.swift; sourceTree = "<group>"; };
 		CA2547C01FEB1B2A0023F2CB /* WhenRefreshingMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRefreshingMessages.swift; sourceTree = "<group>"; };
 		CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
@@ -2664,6 +2668,7 @@
 			children = (
 				CA08158A20D4554900F750D4 /* WhenGroupingEventsByStartTime_ScheduleInteractorShould.swift */,
 				CA00AE7220D18D1E00C2FBB0 /* WhenPreparingViewModel_ScheduleInteractorShould.swift */,
+				CA250DE320D6F68700E7513C /* WhenSearchControllerProducesNewResults_ScheduleInteractorShould.swift */,
 				CA250DDB20D6E85700E7513C /* WhenSearching_ScheduleInteractorShould.swift */,
 				CA08159220D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift */,
 			);
@@ -3821,6 +3826,7 @@
 				CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */,
 				CA52C67A20D59457009D3A9E /* SignificantTimeChangeAdapter.swift */,
 				CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */,
+				CA250DE520D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift */,
 			);
 			path = "System Services";
 			sourceTree = "<group>";
@@ -5299,6 +5305,7 @@
 				CA637590208CE4E100536BE2 /* ScheduleSceneFactory.swift in Sources */,
 				CAEAEC0A1FE06FA500C0EE7C /* PhoneMessageDetailSceneFactory.swift in Sources */,
 				CACF1EC620B6C31000D904B5 /* ImagesCache.swift in Sources */,
+				CA250DE620D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift in Sources */,
 				CAEAEC0E1FE07AD700C0EE7C /* MessageBubbleBackgroundView.swift in Sources */,
 				CA6EC48B2051CDC800402894 /* KnowledgeDetailViewController.swift in Sources */,
 				9A2A94891F12D152004D66FB /* LastSyncDateProviding.swift in Sources */,
@@ -5528,6 +5535,7 @@
 				CA00AE7320D18D1E00C2FBB0 /* WhenPreparingViewModel_ScheduleInteractorShould.swift in Sources */,
 				CABA83EC20CDBE8F00DD0795 /* V2ImageAPITests.swift in Sources */,
 				CAF705611F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift in Sources */,
+				CA250DE420D6F68700E7513C /* WhenSearchControllerProducesNewResults_ScheduleInteractorShould.swift in Sources */,
 				CA89CBAB207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift in Sources */,
 				CAD780521F1E2D2E002A8333 /* CapturingCredentialStore.swift in Sources */,
 				CA89CBBA2084CA8A00570D54 /* StubNewsViewModel.swift in Sources */,

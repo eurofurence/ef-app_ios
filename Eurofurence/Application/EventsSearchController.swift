@@ -10,6 +10,13 @@ import Foundation
 
 protocol EventsSearchController {
 
+    func setResultsDelegate(_ delegate: EventsSearchControllerDelegate)
     func changeSearchTerm(_ term: String)
+
+}
+
+protocol EventsSearchControllerDelegate {
+
+    func searchResultsDidUpdate(to results: [Event2])
 
 }

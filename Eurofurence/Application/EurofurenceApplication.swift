@@ -168,6 +168,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     func makeEventsSearchController() -> EventsSearchController {
         struct DummyEventsSearchController: EventsSearchController {
+            func setResultsDelegate(_ delegate: EventsSearchControllerDelegate) {
+
+            }
+
             func changeSearchTerm(_ term: String) {
 
             }

@@ -18,20 +18,28 @@ class DefaultScheduleInteractor: ScheduleInteractor {
     // MARK: Initialization
 
     convenience init() {
+        struct DummyShortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter {
+            func dayAndHoursString(from date: Date) -> String { return "" }
+        }
+
         self.init(eventsService: EurofurenceApplication.shared,
                   hoursDateFormatter: FoundationHoursDateFormatter.shared,
-                  shortFormDateFormatter: FoundationShortFormDateFormatter.shared)
+                  shortFormDateFormatter: FoundationShortFormDateFormatter.shared,
+                  shortFormDayAndTimeFormatter: DummyShortFormDayAndTimeFormatter())
     }
 
     init(eventsService: EventsService,
          hoursDateFormatter: HoursDateFormatter,
-         shortFormDateFormatter: ShortFormDateFormatter) {
+         shortFormDateFormatter: ShortFormDateFormatter,
+         shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter) {
         let schedule = eventsService.makeEventsSchedule()
         let searchController = eventsService.makeEventsSearchController()
         viewModel = ViewModel(schedule: schedule,
                               hoursDateFormatter: hoursDateFormatter,
                               shortFormDateFormatter: shortFormDateFormatter)
-        searchViewModel = SearchViewModel(searchController: searchController)
+        searchViewModel = SearchViewModel(searchController: searchController,
+                                          shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter,
+                                          hoursDateFormatter: hoursDateFormatter)
 
         eventsService.add(viewModel)
     }
@@ -143,20 +151,56 @@ class DefaultScheduleInteractor: ScheduleInteractor {
 
     }
 
-    private class SearchViewModel: ScheduleSearchViewModel {
+    private class SearchViewModel: ScheduleSearchViewModel, EventsSearchControllerDelegate {
 
-        private let searchController: EventsSearchController
+        private struct EventsGroupedByDate: Comparable {
+            static func < (lhs: EventsGroupedByDate, rhs: EventsGroupedByDate) -> Bool {
+                return lhs.date < rhs.date
+            }
 
-        init(searchController: EventsSearchController) {
-            self.searchController = searchController
+            var date: Date
+            var events: [Event2]
         }
 
-        func setDelegate(_ delegate: ScheduleSearchViewModelDelegate) {
+        private let searchController: EventsSearchController
+        private let shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter
+        private let hoursDateFormatter: HoursDateFormatter
 
+        init(searchController: EventsSearchController,
+             shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter,
+             hoursDateFormatter: HoursDateFormatter) {
+            self.searchController = searchController
+            self.hoursDateFormatter = hoursDateFormatter
+            self.shortFormDayAndTimeFormatter = shortFormDayAndTimeFormatter
+
+            searchController.setResultsDelegate(self)
+        }
+
+        private var delegate: ScheduleSearchViewModelDelegate?
+        func setDelegate(_ delegate: ScheduleSearchViewModelDelegate) {
+            self.delegate = delegate
         }
 
         func updateSearchResults(input: String) {
             searchController.changeSearchTerm(input)
+        }
+
+        func searchResultsDidUpdate(to results: [Event2]) {
+            let groupedByDate = Dictionary(grouping: results, by: { $0.startDate })
+            let rawModelGroups = groupedByDate.map(EventsGroupedByDate.init).sorted()
+            let eventGroupViewModels = rawModelGroups.map { (group) -> ScheduleEventGroupViewModel in
+                let title = shortFormDayAndTimeFormatter.dayAndHoursString(from: group.date)
+                let viewModels = group.events.map { (event) -> ScheduleEventViewModel in
+                    return ScheduleEventViewModel(title: event.title,
+                                                  startTime: hoursDateFormatter.hoursString(from: event.startDate),
+                                                  endTime: hoursDateFormatter.hoursString(from: event.endDate),
+                                                  location: event.room.name)
+                }
+
+                return ScheduleEventGroupViewModel(title: title, events: viewModels)
+            }
+
+            delegate?.scheduleSearchResultsUpdated(eventGroupViewModels)
         }
 
     }
