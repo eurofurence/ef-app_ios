@@ -19,7 +19,7 @@ class ApplicationDirectorTestBuilder {
         var preloadModule: StubPreloadModuleFactory
         var tabModule: StubTabModuleFactory
         var newsModule: StubNewsModuleFactory
-        var eventsModule: StubEventsModuleFactory
+        var scheduleModule: StubScheduleModuleFactory
         var dealersModule: StubDealersModuleFactory
         var messages: StubMessagesModuleFactory
         var loginModule: StubLoginModuleFactory
@@ -41,7 +41,7 @@ class ApplicationDirectorTestBuilder {
     private let preloadModule: StubPreloadModuleFactory
     private let tabModule: StubTabModuleFactory
     private let newsModule: StubNewsModuleFactory
-    private let eventsModule: StubEventsModuleFactory
+    private let scheduleModule: StubScheduleModuleFactory
     private let dealersModule: StubDealersModuleFactory
     private let messagesModule: StubMessagesModuleFactory
     private let loginModule: StubLoginModuleFactory
@@ -62,7 +62,7 @@ class ApplicationDirectorTestBuilder {
         windowWireframe = CapturingWindowWireframe()
         tabModule = StubTabModuleFactory()
         newsModule = StubNewsModuleFactory()
-        eventsModule = StubEventsModuleFactory()
+        scheduleModule = StubScheduleModuleFactory()
         dealersModule = StubDealersModuleFactory()
         messagesModule = StubMessagesModuleFactory()
         loginModule = StubLoginModuleFactory()
@@ -84,7 +84,7 @@ class ApplicationDirectorTestBuilder {
         builder.with(preloadModule)
         builder.with(tabModule)
         builder.with(newsModule)
-        builder.with(eventsModule)
+        builder.with(scheduleModule)
         builder.with(dealersModule)
         builder.with(messagesModule)
         builder.with(loginModule)
@@ -107,7 +107,7 @@ class ApplicationDirectorTestBuilder {
                        preloadModule: preloadModule,
                        tabModule: tabModule,
                        newsModule: newsModule,
-                       eventsModule: eventsModule,
+                       scheduleModule: scheduleModule,
                        dealersModule: dealersModule,
                        messages: messagesModule,
                        loginModule: loginModule,

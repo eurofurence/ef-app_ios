@@ -21,7 +21,7 @@ class WhenShowingTabModule_DirectorShould: XCTestCase {
     
     private func makeExpectedTabViewControllerRoots() -> [UIViewController] {
         return [context.newsModule.stubInterface,
-                context.eventsModule.stubInterface,
+                context.scheduleModule.stubInterface,
                 context.dealersModule.stubInterface,
                 context.knowledgeListModule.stubInterface]
     }

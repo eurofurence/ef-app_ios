@@ -20,7 +20,7 @@ class DirectorBuilder {
     private var preloadModuleProviding: PreloadModuleProviding
     private var tabModuleProviding: TabModuleProviding
     private var newsModuleProviding: NewsModuleProviding
-    private var eventsModuleProviding: ScheduleModuleProviding
+    private var scheduleModuleProviding: ScheduleModuleProviding
     private var dealersModuleProviding: DealersModuleProviding
     private var messagesModuleProviding: MessagesModuleProviding
     private var loginModuleProviding: LoginModuleProviding
@@ -41,7 +41,7 @@ class DirectorBuilder {
         tutorialModuleProviding = TutorialModuleBuilder().build()
         preloadModuleProviding = PreloadModuleBuilder().build()
         newsModuleProviding = NewsModuleBuilder().build()
-        eventsModuleProviding = ScheduleModuleBuilder().build()
+        scheduleModuleProviding = ScheduleModuleBuilder().build()
         dealersModuleProviding = DealersModuleBuilder().build()
         messagesModuleProviding = MessagesModuleBuilder().build()
         loginModuleProviding = LoginModuleBuilder().build()
@@ -111,8 +111,8 @@ class DirectorBuilder {
     }
 
     @discardableResult
-    func with(_ eventsModuleProviding: ScheduleModuleProviding) -> DirectorBuilder {
-        self.eventsModuleProviding = eventsModuleProviding
+    func with(_ scheduleModuleProviding: ScheduleModuleProviding) -> DirectorBuilder {
+        self.scheduleModuleProviding = scheduleModuleProviding
         return self
     }
 
@@ -188,7 +188,7 @@ class DirectorBuilder {
                                    preloadModuleProviding: preloadModuleProviding,
                                    tabModuleProviding: tabModuleProviding,
                                    newsModuleProviding: newsModuleProviding,
-                                   eventsModuleProviding: eventsModuleProviding,
+                                   scheduleModuleProviding: scheduleModuleProviding,
                                    dealersModuleProviding: dealersModuleProviding,
                                    messagesModuleProviding: messagesModuleProviding,
                                    loginModuleProviding: loginModuleProviding,

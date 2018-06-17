@@ -36,7 +36,7 @@ class ApplicationDirector: RootModuleDelegate,
     private let preloadModuleProviding: PreloadModuleProviding
     private let tabModuleProviding: TabModuleProviding
     private let newsModuleProviding: NewsModuleProviding
-    private let eventsModuleProviding: ScheduleModuleProviding
+    private let scheduleModuleProviding: ScheduleModuleProviding
     private let dealersModuleProviding: DealersModuleProviding
     private let messagesModuleProviding: MessagesModuleProviding
     private let loginModuleProviding: LoginModuleProviding
@@ -52,6 +52,7 @@ class ApplicationDirector: RootModuleDelegate,
     private var tabController: UIViewController?
     private var newsController: UIViewController?
     private let newsNavigationController: UINavigationController
+    private let scheduleNavigationController: UINavigationController
     private let knowledgeNavigationController: UINavigationController
 
     init(animate: Bool,
@@ -65,7 +66,7 @@ class ApplicationDirector: RootModuleDelegate,
          preloadModuleProviding: PreloadModuleProviding,
          tabModuleProviding: TabModuleProviding,
          newsModuleProviding: NewsModuleProviding,
-         eventsModuleProviding: ScheduleModuleProviding,
+         scheduleModuleProviding: ScheduleModuleProviding,
          dealersModuleProviding: DealersModuleProviding,
          messagesModuleProviding: MessagesModuleProviding,
          loginModuleProviding: LoginModuleProviding,
@@ -84,7 +85,7 @@ class ApplicationDirector: RootModuleDelegate,
         self.preloadModuleProviding = preloadModuleProviding
         self.tabModuleProviding = tabModuleProviding
         self.newsModuleProviding = newsModuleProviding
-        self.eventsModuleProviding = eventsModuleProviding
+        self.scheduleModuleProviding = scheduleModuleProviding
         self.dealersModuleProviding = dealersModuleProviding
         self.messagesModuleProviding = messagesModuleProviding
         self.loginModuleProviding = loginModuleProviding
@@ -100,6 +101,7 @@ class ApplicationDirector: RootModuleDelegate,
         windowWireframe.setRoot(rootNavigationController)
 
         newsNavigationController = navigationControllerFactory.makeNavigationController()
+        scheduleNavigationController = navigationControllerFactory.makeNavigationController()
         knowledgeNavigationController = navigationControllerFactory.makeNavigationController()
 
         rootModuleProviding.makeRootModule(self)
@@ -154,7 +156,8 @@ class ApplicationDirector: RootModuleDelegate,
     // MARK: ScheduleModuleDelegate
 
     func scheduleModuleDidSelectEvent(identifier: Event2.Identifier) {
-
+        let module = eventDetailModuleProviding.makeEventDetailModule(for: identifier)
+        scheduleNavigationController.pushViewController(module, animated: animate)
     }
 
     // MARK: MessagesModuleDelegate
@@ -238,16 +241,16 @@ class ApplicationDirector: RootModuleDelegate,
         newsNavigationController.setViewControllers([newsController], animated: animate)
         newsNavigationController.tabBarItem = newsController.tabBarItem
 
-        let eventsViewController = eventsModuleProviding.makeScheduleModule(self)
-        let eventsNavigationController = UINavigationController(rootViewController: eventsViewController)
-        eventsNavigationController.tabBarItem = eventsViewController.tabBarItem
+        let scheduleViewController = scheduleModuleProviding.makeScheduleModule(self)
+        scheduleNavigationController.setViewControllers([scheduleViewController], animated: animate)
+        scheduleNavigationController.tabBarItem = scheduleViewController.tabBarItem
 
         let dealersViewController = dealersModuleProviding.makeDealersModule()
         let dealersNavigationController = UINavigationController(rootViewController: dealersViewController)
         dealersNavigationController.tabBarItem = dealersViewController.tabBarItem
 
         let tabModule = tabModuleProviding.makeTabModule([newsNavigationController,
-                                                          eventsNavigationController,
+                                                          scheduleNavigationController,
                                                           dealersNavigationController,
                                                           knowledgeNavigationController])
         tabController = tabModule
