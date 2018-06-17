@@ -90,6 +90,10 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
             restrictScheduleToEvents(on: day)
         } else {
             currentDay = nil
+
+            if let firstDay = schedule.days.sorted(by: { $0.date < $1.date }).first {
+                restrictScheduleToEvents(on: firstDay)
+            }
         }
     }
 

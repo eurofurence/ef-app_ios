@@ -23,4 +23,21 @@ class WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould: XCTestCas
         XCTAssertTrue(delegate.toldChangedToNilDay)
     }
     
+    func testRestrictEventsToTheFirstConferenceDay() {
+        let response = APISyncResponse.randomWithoutDeletions
+        let firstDay = response.conferenceDays.changed.sorted(by: { $0.date < $1.date }).first!
+        let dataStore = CapturingEurofurenceDataStore()
+        dataStore.save(response)
+        let imageRepository = CapturingImageRepository()
+        imageRepository.stubEverything(response)
+        let context = ApplicationTestBuilder().with(dataStore).with(.distantPast).with(imageRepository).build()
+        let schedule = context.application.makeEventsSchedule()
+        let delegate = CapturingEventsScheduleDelegate()
+        schedule.setDelegate(delegate)
+        let expectedEvents = response.events.changed.filter({ $0.dayIdentifier == firstDay.identifier })
+        let expected = context.makeExpectedEvents(from: expectedEvents, response: response)
+        
+        XCTAssertEqual(expected, delegate.events)
+    }
+    
 }
