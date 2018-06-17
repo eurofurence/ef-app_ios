@@ -74,7 +74,7 @@ class ScheduleViewController: UIViewController, ScheduleScene {
     }
 
     func deselectEvent(at indexPath: IndexPath) {
-
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     // MARK: Private
