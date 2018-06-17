@@ -415,6 +415,7 @@
 		CA52C69120D6AB53009D3A9E /* CapturingScheduleModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69020D6AB53009D3A9E /* CapturingScheduleModuleDelegate.swift */; };
 		CA52C69520D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69420D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift */; };
 		CA52C69720D6B24A009D3A9E /* IndexPath+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69620D6B24A009D3A9E /* IndexPath+RandomValueProviding.swift */; };
+		CA52C69920D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69820D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift */; };
 		CA5BF9D51F7AF9160045DBC0 /* PreloadPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */; };
 		CA60BFE32078E42800697566 /* User+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */; };
 		CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */; };
@@ -1319,6 +1320,7 @@
 		CA52C69020D6AB53009D3A9E /* CapturingScheduleModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleModuleDelegate.swift; sourceTree = "<group>"; };
 		CA52C69420D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenScheduleModuleSelectsEvent_DirectorShould.swift; sourceTree = "<group>"; };
 		CA52C69620D6B24A009D3A9E /* IndexPath+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndexPath+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA52C69820D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideNavigationBarShadowForSpecificViewControllerDelegate.swift; sourceTree = "<group>"; };
 		CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadPresenterTests.swift; sourceTree = "<group>"; };
 		CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA60BFE52078E5F700697566 /* CapturingPrivateMessagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPrivateMessagesService.swift; sourceTree = "<group>"; };
@@ -3086,6 +3088,7 @@
 			children = (
 				CA63759B208DFDF900536BE2 /* Schedule.storyboard */,
 				CA00AE6F20D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift */,
+				CA52C69820D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift */,
 				CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */,
 				CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */,
 				CA00AE9220D2975400C2FBB0 /* ScheduleDaysView.swift */,
@@ -5032,6 +5035,7 @@
 				CA6AA0141FD74F910092C6DB /* ViewControllerDissolveTransitioning.swift in Sources */,
 				CA73AEF1201A08BA004E77BF /* KnowledgeListModuleProviding.swift in Sources */,
 				CAD3BDBF205AA69600C91E6E /* LinkLookupService.swift in Sources */,
+				CA52C69920D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift in Sources */,
 				CACF1E9A20B437A500D904B5 /* EventDescriptionComponent.swift in Sources */,
 				CA30EAB01F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift in Sources */,
 				9A861EAB1F2554D700B75A8C /* BootstrappingModule.swift in Sources */,

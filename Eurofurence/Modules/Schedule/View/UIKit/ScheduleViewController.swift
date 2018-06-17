@@ -8,12 +8,13 @@
 
 import UIKit
 
-class ScheduleViewController: UIViewController, ScheduleScene {
+class ScheduleViewController: UIViewController, UINavigationControllerDelegate, ScheduleScene {
 
     // MARK: Properties
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var daysCollectionView: UICollectionView!
+    private lazy var navigationBarShadowDelegate = HideNavigationBarShadowForSpecificViewControllerDelegate(viewControllerToHideNavigationBarShadow: self)
 
     private var tableController: TableController? {
         didSet {
@@ -35,7 +36,7 @@ class ScheduleViewController: UIViewController, ScheduleScene {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.navigationBar.shadowImage = UIImage(named: "Transparent Pixel")
+        navigationController?.delegate = navigationBarShadowDelegate
         tableView.register(EventTableViewCell.self)
         tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
         delegate?.scheduleSceneDidLoad()
