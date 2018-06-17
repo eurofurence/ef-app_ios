@@ -62,7 +62,9 @@ class ScheduleViewController: UIViewController, ScheduleScene {
     }
 
     func bind(numberOfItemsPerSection: [Int], using binder: ScheduleSceneBinder) {
-        tableController = TableController(numberOfItemsPerSection: numberOfItemsPerSection, binder: binder)
+        tableController = TableController(numberOfItemsPerSection: numberOfItemsPerSection,
+                                          binder: binder,
+                                          onDidSelectRow: scheduleTableViewDidSelectRow)
     }
 
     func selectDay(at index: Int) {
@@ -72,6 +74,10 @@ class ScheduleViewController: UIViewController, ScheduleScene {
     }
 
     // MARK: Private
+
+    private func scheduleTableViewDidSelectRow(_ indexPath: IndexPath) {
+        delegate?.scheduleSceneDidSelectEvent(at: indexPath)
+    }
 
     private func dayPickerDidSelectDay(_ index: Int) {
         delegate?.scheduleSceneDidSelectDay(at: index)
@@ -91,10 +97,12 @@ class ScheduleViewController: UIViewController, ScheduleScene {
 
         private let numberOfItemsPerSection: [Int]
         private let binder: ScheduleSceneBinder
+        private let onDidSelectRow: (IndexPath) -> Void
 
-        init(numberOfItemsPerSection: [Int], binder: ScheduleSceneBinder) {
+        init(numberOfItemsPerSection: [Int], binder: ScheduleSceneBinder, onDidSelectRow: @escaping (IndexPath) -> Void) {
             self.numberOfItemsPerSection = numberOfItemsPerSection
             self.binder = binder
+            self.onDidSelectRow = onDidSelectRow
         }
 
         func numberOfSections(in tableView: UITableView) -> Int {
@@ -115,6 +123,10 @@ class ScheduleViewController: UIViewController, ScheduleScene {
             let cell = tableView.dequeue(EventTableViewCell.self)
             binder.bind(cell, forEventAt: indexPath)
             return cell
+        }
+
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            onDidSelectRow(indexPath)
         }
 
     }
