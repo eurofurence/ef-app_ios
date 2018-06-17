@@ -167,7 +167,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2?) -> Void) {
-        completionHandler(nil)
+        schedule.fetchEvent(for: identifier, completionHandler: completionHandler)
     }
 
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
