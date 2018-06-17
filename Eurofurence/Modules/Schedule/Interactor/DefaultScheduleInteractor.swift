@@ -13,6 +13,7 @@ class DefaultScheduleInteractor: ScheduleInteractor {
     // MARK: Properties
 
     private let viewModel: ViewModel
+    private let searchViewModel: SearchViewModel
 
     // MARK: Initialization
 
@@ -26,9 +27,12 @@ class DefaultScheduleInteractor: ScheduleInteractor {
          hoursDateFormatter: HoursDateFormatter,
          shortFormDateFormatter: ShortFormDateFormatter) {
         let schedule = eventsService.makeEventsSchedule()
+        let searchController = eventsService.makeEventsSearchController()
         viewModel = ViewModel(schedule: schedule,
                               hoursDateFormatter: hoursDateFormatter,
                               shortFormDateFormatter: shortFormDateFormatter)
+        searchViewModel = SearchViewModel(searchController: searchController)
+
         eventsService.add(viewModel)
     }
 
@@ -39,7 +43,7 @@ class DefaultScheduleInteractor: ScheduleInteractor {
     }
 
     func makeSearchViewModel(completionHandler: @escaping (ScheduleSearchViewModel) -> Void) {
-        
+        completionHandler(searchViewModel)
     }
 
     private class ViewModel: ScheduleViewModel, EventsServiceObserver, EventsScheduleDelegate {
@@ -136,6 +140,24 @@ class DefaultScheduleInteractor: ScheduleInteractor {
         func runningEventsDidChange(to events: [Event2]) { }
         func upcomingEventsDidChange(to events: [Event2]) { }
         func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) { }
+
+    }
+
+    private class SearchViewModel: ScheduleSearchViewModel {
+
+        private let searchController: EventsSearchController
+
+        init(searchController: EventsSearchController) {
+            self.searchController = searchController
+        }
+
+        func setDelegate(_ delegate: ScheduleSearchViewModelDelegate) {
+
+        }
+
+        func updateSearchResults(input: String) {
+            searchController.changeSearchTerm(input)
+        }
 
     }
 

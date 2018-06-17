@@ -54,6 +54,13 @@ class FakeEventsService: EventsService {
         return schedule
     }
     
+    private(set) var lastProducedSearchController: FakeEventsSearchController?
+    func makeEventsSearchController() -> EventsSearchController {
+        let searchController = FakeEventsSearchController()
+        lastProducedSearchController = searchController
+        return searchController
+    }
+    
     fileprivate var stubbedEvents = [Event2.Identifier : Event2]()
     func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2?) -> Void) {
         completionHandler(stubbedEvents[identifier])

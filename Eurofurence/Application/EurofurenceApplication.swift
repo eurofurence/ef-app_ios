@@ -166,6 +166,16 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         return schedule.makeScheduleAdapter()
     }
 
+    func makeEventsSearchController() -> EventsSearchController {
+        struct DummyEventsSearchController: EventsSearchController {
+            func changeSearchTerm(_ term: String) {
+
+            }
+        }
+
+        return DummyEventsSearchController()
+    }
+
     func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2?) -> Void) {
         schedule.fetchEvent(for: identifier, completionHandler: completionHandler)
     }

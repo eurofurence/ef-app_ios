@@ -16,6 +16,7 @@ class ScheduleInteractorTestBuilder {
         var hoursFormatter: FakeHoursDateFormatter
         var shortFormDateFormatter: FakeShortFormDateFormatter
         let viewModelDelegate = CapturingScheduleViewModelDelegate()
+        let searchViewModelDelegate = CapturingScheduleSearchViewModelDelegate()
     }
     
     private var eventsService: EventsService
@@ -67,6 +68,16 @@ extension ScheduleInteractorTestBuilder.Context {
         }
         
         return viewModel
+    }
+    
+    func makeSearchViewModel() -> ScheduleSearchViewModel? {
+        var searchViewModel: ScheduleSearchViewModel?
+        interactor.makeSearchViewModel { (viewModel) in
+            searchViewModel = viewModel
+            viewModel.setDelegate(self.searchViewModelDelegate)
+        }
+        
+        return searchViewModel
     }
     
     func makeExpectedEventViewModel(from event: Event2) -> ScheduleEventViewModel {
