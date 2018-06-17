@@ -84,6 +84,10 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, Sche
                                           onDidSelectRow: scheduleTableViewDidSelectRow)
     }
 
+    func bindSearchResults(numberOfItemsPerSection: [Int]) {
+
+    }
+
     func selectDay(at index: Int) {
         daysCollectionView.selectItem(at: IndexPath(item: index, section: 0),
                                       animated: true,

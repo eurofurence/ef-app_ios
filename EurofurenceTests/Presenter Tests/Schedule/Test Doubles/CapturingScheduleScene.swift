@@ -45,4 +45,9 @@ class CapturingScheduleScene: UIViewController, ScheduleScene {
         deselectedEventIndexPath = indexPath
     }
     
+    private(set) var boundSearchItemsPerSection = [Int]()
+    func bindSearchResults(numberOfItemsPerSection: [Int]) {
+        boundSearchItemsPerSection = numberOfItemsPerSection
+    }
+    
 }

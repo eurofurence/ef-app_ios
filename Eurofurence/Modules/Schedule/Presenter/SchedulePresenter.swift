@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate {
+class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, ScheduleSearchViewModelDelegate {
 
     private struct EventsBinder: ScheduleSceneBinder {
 
@@ -64,6 +64,7 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate {
 
         interactor.makeSearchViewModel { (viewModel) in
             self.searchViewModel = viewModel
+            viewModel.setDelegate(self)
         }
     }
 
@@ -94,6 +95,11 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate {
         let numberOfItemsPerGroup = events.map { $0.events.count }
         let binder = EventsBinder(viewModels: events)
         scene.bind(numberOfItemsPerSection: numberOfItemsPerGroup, using: binder)
+    }
+
+    func scheduleSearchResultsUpdated(_ results: [ScheduleEventGroupViewModel]) {
+        let numberOfItemsPerGroup = results.map { $0.events.count }
+        scene.bindSearchResults(numberOfItemsPerSection: numberOfItemsPerGroup)
     }
 
 }

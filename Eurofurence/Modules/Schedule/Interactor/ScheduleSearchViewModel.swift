@@ -10,6 +10,13 @@ import Foundation
 
 protocol ScheduleSearchViewModel {
 
+    func setDelegate(_ delegate: ScheduleSearchViewModelDelegate)
     func updateSearchResults(input: String)
+
+}
+
+protocol ScheduleSearchViewModelDelegate {
+
+    func scheduleSearchResultsUpdated(_ results: [ScheduleEventGroupViewModel])
 
 }
