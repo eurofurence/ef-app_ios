@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScheduleViewController: UIViewController, UINavigationControllerDelegate, ScheduleScene {
+class ScheduleViewController: UIViewController, ScheduleScene {
 
     // MARK: Properties
 
