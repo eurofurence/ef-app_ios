@@ -69,4 +69,8 @@ extension SchedulePresenterTestBuilder.Context {
         scene.daysBinder?.bind(dayComponent, forDayAt: index)
     }
     
+    func bindSearchResultComponent(_ component: ScheduleEventComponent, forSearchResultAt indexPath: IndexPath) {
+        scene.searchResultsBinder?.bind(component, forSearchResultAt: indexPath)
+    }
+    
 }

@@ -42,6 +42,22 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
 
     }
 
+    private struct SearchResultsBinder: ScheduleSceneSearchResultsBinder {
+
+        var viewModels: [ScheduleEventGroupViewModel]
+
+        func bind(_ eventComponent: ScheduleEventComponent, forSearchResultAt indexPath: IndexPath) {
+            let group = viewModels[indexPath.section]
+            let event = group.events[indexPath.item]
+
+            eventComponent.setEventName(event.title)
+            eventComponent.setEventStartTime(event.startTime)
+            eventComponent.setEventEndTime(event.endTime)
+            eventComponent.setLocation(event.location)
+        }
+
+    }
+
     private let scene: ScheduleScene
     private let interactor: ScheduleInteractor
     private let delegate: ScheduleModuleDelegate
@@ -99,7 +115,8 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
 
     func scheduleSearchResultsUpdated(_ results: [ScheduleEventGroupViewModel]) {
         let numberOfItemsPerGroup = results.map { $0.events.count }
-        scene.bindSearchResults(numberOfItemsPerSection: numberOfItemsPerGroup)
+        let binder = SearchResultsBinder(viewModels: results)
+        scene.bindSearchResults(numberOfItemsPerSection: numberOfItemsPerGroup, using: binder)
     }
 
 }
