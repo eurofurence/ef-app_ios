@@ -118,6 +118,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
     func makeViewModel(for identifier: Event2.Identifier, completionHandler: @escaping (EventDetailViewModel) -> Void) {
         eventsService.fetchEvent(for: identifier) { (event) in
+            guard let event = event else { return }
             var components = [EventDetailViewModelComponent]()
 
             if let graphicData = event.posterGraphicPNGData ?? event.bannerGraphicPNGData {

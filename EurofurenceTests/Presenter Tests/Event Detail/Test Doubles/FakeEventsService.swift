@@ -55,10 +55,8 @@ class FakeEventsService: EventsService {
     }
     
     fileprivate var stubbedEvents = [Event2.Identifier : Event2]()
-    func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2) -> Void) {
-        if let event = stubbedEvents[identifier] {
-            completionHandler(event)
-        }
+    func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2?) -> Void) {
+        completionHandler(stubbedEvents[identifier])
     }
     
 }

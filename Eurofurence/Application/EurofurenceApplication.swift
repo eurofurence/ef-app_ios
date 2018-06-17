@@ -166,8 +166,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         return schedule.makeScheduleAdapter()
     }
 
-    func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2) -> Void) {
-
+    func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2?) -> Void) {
+        completionHandler(nil)
     }
 
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
