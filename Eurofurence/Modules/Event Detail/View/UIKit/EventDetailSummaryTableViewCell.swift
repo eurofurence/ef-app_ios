@@ -19,6 +19,13 @@ class EventDetailSummaryTableViewCell: UITableViewCell, EventSummaryComponent {
     @IBOutlet weak var eventTrackLabel: UILabel!
     @IBOutlet weak var eventHostsLabel: UILabel!
 
+    // MARK: Overrides
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        accessibilityElements = [eventTrackLabel, eventTitleLabel, eventTimesLabel, eventLocationLabel, eventHostsLabel, eventSubtitleLabel]
+    }
+
     // MARK: EventSummaryComponent
 
     func setEventTitle(_ title: String) {
