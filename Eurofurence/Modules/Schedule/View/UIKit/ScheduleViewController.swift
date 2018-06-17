@@ -56,9 +56,9 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, Sche
         super.traitCollectionDidChange(previousTraitCollection)
         daysCollectionView.collectionViewLayout.invalidateLayout()
     }
-    
+
     // MARK: UISearchControllerDelegate
-    
+
     func presentSearchController(_ searchController: UISearchController) {
         present(searchController, animated: true)
     }

@@ -46,6 +46,7 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate {
     private let interactor: ScheduleInteractor
     private let delegate: ScheduleModuleDelegate
     private var viewModel: ScheduleViewModel?
+    private var searchViewModel: ScheduleSearchViewModel?
 
     init(scene: ScheduleScene, interactor: ScheduleInteractor, delegate: ScheduleModuleDelegate) {
         self.scene = scene
@@ -60,6 +61,10 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate {
             self.viewModel = viewModel
             viewModel.setDelegate(self)
         }
+
+        interactor.makeSearchViewModel { (viewModel) in
+            self.searchViewModel = viewModel
+        }
     }
 
     func scheduleSceneDidSelectDay(at index: Int) {
@@ -71,6 +76,10 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate {
 
         guard let identifier = viewModel?.identifierForEvent(at: indexPath) else { return }
         delegate.scheduleModuleDidSelectEvent(identifier: identifier)
+    }
+
+    func scheduleSceneDidUpdateSearchQuery(_ query: String) {
+        searchViewModel?.updateSearchResults(input: query)
     }
 
     func scheduleViewModelDidUpdateDays(_ days: [ScheduleDayViewModel]) {

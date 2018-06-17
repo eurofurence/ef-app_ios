@@ -38,6 +38,10 @@ class DefaultScheduleInteractor: ScheduleInteractor {
         completionHandler(viewModel)
     }
 
+    func makeSearchViewModel(completionHandler: @escaping (ScheduleSearchViewModel) -> Void) {
+
+    }
+
     private class ViewModel: ScheduleViewModel, EventsServiceObserver, EventsScheduleDelegate {
 
         private struct EventsGroupedByDate: Comparable {
