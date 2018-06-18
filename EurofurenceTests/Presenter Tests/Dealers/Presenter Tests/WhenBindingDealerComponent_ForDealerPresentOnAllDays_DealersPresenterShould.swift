@@ -14,9 +14,7 @@ class WhenBindingDealerComponent_ForDealerPresentOnAllDays_DealersPresenterShoul
     func testNotShowTheWarningIndicatingTheyAreNotPresentOnAllDays() {
         let dealerViewModel = StubDealerViewModel.random
         dealerViewModel.isPresentForAllDays = true
-        let group = DealersGroupViewModel(dealers: [dealerViewModel])
-        let viewModel = CapturingDealersViewModel(dealerGroups: [group])
-        let interactor = FakeDealersInteractor(viewModel: viewModel)
+        let interactor = FakeDealersInteractor(dealerViewModel: dealerViewModel)
         let context = DealersPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let indexPath = IndexPath(item: 0, section: 0)
@@ -29,9 +27,7 @@ class WhenBindingDealerComponent_ForDealerPresentOnAllDays_DealersPresenterShoul
     func testHideTheWarningIndicatingTheyAreNotPresentOnAllDays() {
         let dealerViewModel = StubDealerViewModel.random
         dealerViewModel.isPresentForAllDays = true
-        let group = DealersGroupViewModel(dealers: [dealerViewModel])
-        let viewModel = CapturingDealersViewModel(dealerGroups: [group])
-        let interactor = FakeDealersInteractor(viewModel: viewModel)
+        let interactor = FakeDealersInteractor(dealerViewModel: dealerViewModel)
         let context = DealersPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let indexPath = IndexPath(item: 0, section: 0)

@@ -13,6 +13,16 @@ struct FakeDealersInteractor: DealersInteractor {
     
     var viewModel: DealersViewModel
     
+    init(dealerViewModel: DealerViewModel) {
+        let group = DealersGroupViewModel(dealers: [dealerViewModel])
+        let viewModel = CapturingDealersViewModel(dealerGroups: [group])
+        self.init(viewModel: viewModel)
+    }
+    
+    init(viewModel: DealersViewModel) {
+        self.viewModel = viewModel
+    }
+    
     func makeDealersViewModel(completionHandler: @escaping (DealersViewModel) -> Void) {
         completionHandler(viewModel)
     }
