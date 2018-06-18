@@ -45,6 +45,7 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, UISe
 
         definesPresentationContext = true
         searchViewController = storyboard?.instantiate(ScheduleSearchTableViewController.self)
+        searchViewController?.onDidSelectSearchResultAtIndexPath = didSelectSearchResult
         searchController = UISearchController(searchResultsController: searchViewController)
         searchController?.delegate = self
         searchController?.searchResultsUpdater = self
@@ -113,6 +114,10 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, UISe
 
     private func searchQueryChanged(_ query: String) {
         delegate?.scheduleSceneDidUpdateSearchQuery(query)
+    }
+
+    private func didSelectSearchResult(at indexPath: IndexPath) {
+        delegate?.scheduleSceneDidSelectSearchResult(at: indexPath)
     }
 
     private func scheduleTableViewDidSelectRow(_ indexPath: IndexPath) {

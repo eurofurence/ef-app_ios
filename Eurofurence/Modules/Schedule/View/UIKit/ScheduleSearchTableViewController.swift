@@ -14,6 +14,7 @@ class ScheduleSearchTableViewController: UITableViewController {
 
     private var numberOfItemsPerSection: [Int] = []
     private var binder: ScheduleSceneSearchResultsBinder?
+    var onDidSelectSearchResultAtIndexPath: ((IndexPath) -> Void)?
 
     func updateSearchResults(numberOfItemsPerSection: [Int], binder: ScheduleSceneSearchResultsBinder) {
         self.numberOfItemsPerSection = numberOfItemsPerSection
@@ -48,6 +49,10 @@ class ScheduleSearchTableViewController: UITableViewController {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.identifier) as! Header
         binder?.bind(header, forSearchResultGroupAt: section)
         return header
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        onDidSelectSearchResultAtIndexPath?(indexPath)
     }
 
     // MARK: Private
