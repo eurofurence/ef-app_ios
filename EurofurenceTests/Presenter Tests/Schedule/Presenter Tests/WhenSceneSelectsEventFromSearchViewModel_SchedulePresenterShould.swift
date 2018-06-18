@@ -28,4 +28,13 @@ class WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould: XCTestCa
         XCTAssertEqual(selectedIdentifier, context.delegate.capturedEventIdentifier)
     }
     
+    func testTellTheSceneToDeselectTheSelectedSearchResult() {
+        let context = SchedulePresenterTestBuilder().build()
+        context.simulateSceneDidLoad()
+        let indexPath = IndexPath.random
+        context.simulateSceneDidSelectSearchResult(at: indexPath)
+        
+        XCTAssertEqual(indexPath, context.scene.deselectedSearchResultIndexPath)
+    }
+    
 }

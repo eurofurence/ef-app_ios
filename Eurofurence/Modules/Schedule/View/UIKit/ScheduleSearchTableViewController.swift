@@ -22,6 +22,10 @@ class ScheduleSearchTableViewController: UITableViewController {
         tableView.reloadData()
     }
 
+    func deselectSearchResult(at indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
     // MARK: Overrides
 
     override func viewDidLoad() {

@@ -110,6 +110,10 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, UISe
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
+    func deselectSearchResult(at indexPath: IndexPath) {
+        searchViewController?.deselectSearchResult(at: indexPath)
+    }
+
     // MARK: Private
 
     private func searchQueryChanged(_ query: String) {
