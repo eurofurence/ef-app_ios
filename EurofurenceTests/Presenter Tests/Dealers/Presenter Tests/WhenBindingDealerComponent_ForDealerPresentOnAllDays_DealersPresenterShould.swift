@@ -1,5 +1,5 @@
 //
-//  WhenBindingDealerComponent_ForDealerNotPresentOnAllDays_DealersPresenterShould.swift
+//  WhenBindingDealerComponent_ForDealerPresentOnAllDays_DealersPresenterShould.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 18/06/2018.
@@ -9,11 +9,11 @@
 @testable import Eurofurence
 import XCTest
 
-class WhenBindingDealerComponent_ForDealerNotPresentOnAllDays_DealersPresenterShould: XCTestCase {
+class WhenBindingDealerComponent_ForDealerPresentOnAllDays_DealersPresenterShould: XCTestCase {
     
-    func testTellTheSceneToShowTheNotPresentOnAllDaysWarning() {
+    func testNotShowTheWarningIndicatingTheyAreNotPresentOnAllDays() {
         let dealerViewModel = StubDealerViewModel.random
-        dealerViewModel.isPresentForAllDays = false
+        dealerViewModel.isPresentForAllDays = true
         let group = DealersGroupViewModel(dealers: [dealerViewModel])
         let viewModel = CapturingDealersViewModel(dealerGroups: [group])
         let interactor = FakeDealersInteractor(viewModel: viewModel)
@@ -23,7 +23,7 @@ class WhenBindingDealerComponent_ForDealerNotPresentOnAllDays_DealersPresenterSh
         let component = CapturingDealerComponent()
         context.bind(component, toDealerAt: indexPath)
         
-        XCTAssertTrue(component.didShowNotPresentOnAllDaysWarning)
+        XCTAssertFalse(component.didShowNotPresentOnAllDaysWarning)
     }
     
 }
