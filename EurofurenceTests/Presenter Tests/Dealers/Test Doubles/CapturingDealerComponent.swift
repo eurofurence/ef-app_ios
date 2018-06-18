@@ -26,4 +26,9 @@ class CapturingDealerComponent: DealerComponent {
         capturedDealerPNGData = pngData
     }
     
+    private(set) var didShowNotPresentOnAllDaysWarning = false
+    func showNotPresentOnAllDaysWarning() {
+        didShowNotPresentOnAllDaysWarning = true
+    }
+    
 }

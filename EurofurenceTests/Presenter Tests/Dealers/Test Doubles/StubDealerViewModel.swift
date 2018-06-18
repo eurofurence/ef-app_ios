@@ -14,6 +14,7 @@ final class StubDealerViewModel: DealerViewModel {
     var title: String = .random
     var subtitle: String = .random
     var iconPNGData: Data? = .random
+    var isPresentForAllDays: Bool = .random
     
     func fetchIconPNGData(completionHandler: @escaping (Data?) -> Void) {
         completionHandler(iconPNGData)

@@ -21,6 +21,7 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate {
             component.setDealerTitle(dealer.title)
             component.setDealerSubtitle(dealer.subtitle)
             dealer.fetchIconPNGData(completionHandler: component.setDealerIconPNGData)
+            component.showNotPresentOnAllDaysWarning()
         }
 
     }
