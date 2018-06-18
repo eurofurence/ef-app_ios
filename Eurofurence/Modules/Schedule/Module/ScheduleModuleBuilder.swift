@@ -13,10 +13,18 @@ class ScheduleModuleBuilder {
 
     private var eventsSceneFactory: ScheduleSceneFactory
     private var interactor: ScheduleInteractor
+    private var hapticEngine: HapticEngine
 
     init() {
+        struct DummyHapticEngine: HapticEngine {
+            func playSelectionHaptic() {
+
+            }
+        }
+
         eventsSceneFactory = StoryboardScheduleSceneFactory()
         interactor = DefaultScheduleInteractor()
+        hapticEngine = DummyHapticEngine()
     }
 
     @discardableResult
@@ -31,8 +39,16 @@ class ScheduleModuleBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ hapticEngine: HapticEngine) -> ScheduleModuleBuilder {
+        self.hapticEngine = hapticEngine
+        return self
+    }
+
     func build() -> ScheduleModuleProviding {
-        return ScheduleModule(eventsSceneFactory: eventsSceneFactory, interactor: interactor)
+        return ScheduleModule(eventsSceneFactory: eventsSceneFactory,
+                              interactor: interactor,
+                              hapticEngine: hapticEngine)
     }
 
 }

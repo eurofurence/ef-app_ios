@@ -407,6 +407,8 @@
 		CA36A44520D7051900EE6537 /* InMemoryEventsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44420D7051900EE6537 /* InMemoryEventsSearchController.swift */; };
 		CA36A44720D7065800EE6537 /* WhenSearchingForEvents_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44620D7065800EE6537 /* WhenSearchingForEvents_ApplicationShould.swift */; };
 		CA36A44920D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44820D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift */; };
+		CA36A44B20D771B500EE6537 /* HapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44A20D771B500EE6537 /* HapticEngine.swift */; };
+		CA36A44D20D771C400EE6537 /* CapturingHapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44C20D771C400EE6537 /* CapturingHapticEngine.swift */; };
 		CA3990ED20ACD35C001E3F1A /* HoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */; };
 		CA3990EF20ACD559001E3F1A /* FoundationHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */; };
 		CA3990F220ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */; };
@@ -1331,6 +1333,8 @@
 		CA36A44420D7051900EE6537 /* InMemoryEventsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryEventsSearchController.swift; sourceTree = "<group>"; };
 		CA36A44620D7065800EE6537 /* WhenSearchingForEvents_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSearchingForEvents_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA36A44820D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationShortFormDayAndTimeFormatter.swift; sourceTree = "<group>"; };
+		CA36A44A20D771B500EE6537 /* HapticEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticEngine.swift; sourceTree = "<group>"; };
+		CA36A44C20D771C400EE6537 /* CapturingHapticEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingHapticEngine.swift; sourceTree = "<group>"; };
 		CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationHoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUpcomingEventsBeforeLoadingAnything.swift; sourceTree = "<group>"; };
@@ -3119,19 +3123,20 @@
 		CA637593208DFD2B00536BE2 /* Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
+				CA36A44C20D771C400EE6537 /* CapturingHapticEngine.swift */,
 				CA00AE8220D1C21900C2FBB0 /* CapturingScheduleDayComponent.swift */,
 				CA00AE6120D1749200C2FBB0 /* CapturingScheduleEventComponent.swift */,
 				CA00AE5B20D171F200C2FBB0 /* CapturingScheduleEventGroupHeader.swift */,
-				CA00AE7620D1AA2000C2FBB0 /* CapturingScheduleViewModelDelegate.swift */,
-				CA637594208DFD3700536BE2 /* CapturingScheduleScene.swift */,
-				CA00AE4820D16BD900C2FBB0 /* FakeScheduleInteractor.swift */,
-				CA637596208DFD4B00536BE2 /* StubScheduleSceneFactory.swift */,
-				CA00AE8420D2320700C2FBB0 /* StubScheduleViewModel.swift */,
-				CA08158C20D4556700F750D4 /* FakeShortFormDateFormatter.swift */,
-				CA08159420D472B700F750D4 /* FakeEventsSchedule.swift */,
 				CA52C69020D6AB53009D3A9E /* CapturingScheduleModuleDelegate.swift */,
+				CA637594208DFD3700536BE2 /* CapturingScheduleScene.swift */,
 				CA250DCF20D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift */,
 				CA250DDD20D6EA0500E7513C /* CapturingScheduleSearchViewModelDelegate.swift */,
+				CA00AE7620D1AA2000C2FBB0 /* CapturingScheduleViewModelDelegate.swift */,
+				CA08159420D472B700F750D4 /* FakeEventsSchedule.swift */,
+				CA00AE4820D16BD900C2FBB0 /* FakeScheduleInteractor.swift */,
+				CA08158C20D4556700F750D4 /* FakeShortFormDateFormatter.swift */,
+				CA637596208DFD4B00536BE2 /* StubScheduleSceneFactory.swift */,
+				CA00AE8420D2320700C2FBB0 /* StubScheduleViewModel.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -3842,6 +3847,7 @@
 				CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */,
 				CA250DE520D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift */,
 				CA36A44820D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift */,
+				CA36A44A20D771B500EE6537 /* HapticEngine.swift */,
 			);
 			path = "System Services";
 			sourceTree = "<group>";
@@ -5115,6 +5121,7 @@
 				CAB3A72F1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift in Sources */,
 				CA00AE9120D293B800C2FBB0 /* UICollectionView+Convenience.swift in Sources */,
 				CACF1EA420B5ACD400D904B5 /* EventDetailDescriptionTableViewCell.swift in Sources */,
+				CA36A44B20D771B500EE6537 /* HapticEngine.swift in Sources */,
 				CA73AEE7201A0883004E77BF /* KnowledgeListScene.swift in Sources */,
 				9A34B9871ED08C7E004A249E /* JsonDataStore.swift in Sources */,
 				CA00AE4720D16BCB00C2FBB0 /* ScheduleViewModel.swift in Sources */,
@@ -5739,6 +5746,7 @@
 				CA63758C208CE06100536BE2 /* WhenBuildingScheduleModule.swift in Sources */,
 				CA3990F420ACD73D001E3F1A /* WhenObservingUpcomingEvents_ThenLoadSucceeds.swift in Sources */,
 				CAD260AD20C066B0007E3618 /* WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift in Sources */,
+				CA36A44D20D771C400EE6537 /* CapturingHapticEngine.swift in Sources */,
 				CA680F8520CDAE2F006ACD3D /* PersistentImageRepositoryTests.swift in Sources */,
 				CA63755C208CBC3C00536BE2 /* StubLinkRouter.swift in Sources */,
 				CABF03CC204220460028BD62 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift in Sources */,
