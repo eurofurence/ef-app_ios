@@ -9,10 +9,10 @@
 @testable import Eurofurence
 import Foundation
 
-extension DealerViewModel: RandomValueProviding {
+extension StubDealerViewModel: RandomValueProviding {
     
-    static var random: DealerViewModel {
-        return DealerViewModel(title: .random, subtitle: .random)
+    static var random: StubDealerViewModel {
+        return StubDealerViewModel()
     }
     
 }

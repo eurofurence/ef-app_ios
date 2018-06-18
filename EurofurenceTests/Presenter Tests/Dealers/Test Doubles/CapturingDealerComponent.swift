@@ -21,4 +21,9 @@ class CapturingDealerComponent: DealerComponent {
         capturedDealerSubtitle = subtitle
     }
     
+    private(set) var capturedDealerPNGData: Data?
+    func setDealerIconPNGData(_ pngData: Data?) {
+        capturedDealerPNGData = pngData
+    }
+    
 }

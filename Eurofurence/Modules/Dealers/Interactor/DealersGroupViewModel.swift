@@ -14,9 +14,11 @@ struct DealersGroupViewModel {
 
 }
 
-struct DealerViewModel {
+protocol DealerViewModel {
 
-    var title: String
-    var subtitle: String
+    var title: String { get }
+    var subtitle: String { get }
+
+    func fetchIconPNGData(completionHandler: @escaping (Data?) -> Void)
 
 }

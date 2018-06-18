@@ -12,7 +12,7 @@ import XCTest
 class WhenBindingDealerComponent_DealersPresenterShould: XCTestCase {
     
     var context: DealersPresenterTestBuilder.Context!
-    var dealer: DealerViewModel!
+    var dealer: StubDealerViewModel!
     var component: CapturingDealerComponent!
     
     override func setUp() {
@@ -25,7 +25,7 @@ class WhenBindingDealerComponent_DealersPresenterShould: XCTestCase {
         context.simulateSceneDidLoad()
         let randomGroup = dealerGroups.randomElement()
         let randomDealer = randomGroup.element.dealers.randomElement()
-        dealer = randomDealer.element
+        dealer = randomDealer.element as! StubDealerViewModel
         let indexPath = IndexPath(item: randomDealer.index, section: randomGroup.index)
         component = CapturingDealerComponent()
         context.bind(component, toDealerAt: indexPath)
@@ -37,6 +37,10 @@ class WhenBindingDealerComponent_DealersPresenterShould: XCTestCase {
     
     func testBindTheDealerSubtitleOntoTheComponent() {
         XCTAssertEqual(dealer.subtitle, component.capturedDealerSubtitle)
+    }
+    
+    func testBindTheDealerIconPNGDataOntoTheComponent() {
+        XCTAssertEqual(dealer.iconPNGData, component.capturedDealerPNGData)
     }
     
 }
