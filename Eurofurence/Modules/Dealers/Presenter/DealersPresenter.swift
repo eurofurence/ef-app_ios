@@ -22,11 +22,11 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate {
             component.setDealerSubtitle(dealer.subtitle)
             dealer.fetchIconPNGData(completionHandler: component.setDealerIconPNGData)
 
-            if !dealer.isPresentForAllDays {
+            if dealer.isPresentForAllDays {
+                component.hideNotPresentOnAllDaysWarning()
+            } else {
                 component.showNotPresentOnAllDaysWarning()
             }
-
-            component.hideNotPresentOnAllDaysWarning()
         }
 
     }
