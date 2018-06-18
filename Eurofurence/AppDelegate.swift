@@ -21,11 +21,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var director: ApplicationDirector?
 
     private func applyDirectorBasedTheme() {
+        let whiteTextAttributes: [NSAttributedStringKey: Any] = [.foregroundColor: UIColor.white]
+
         let navigationBarAppearence = UINavigationBar.appearance()
         navigationBarAppearence.isTranslucent = false
+        navigationBarAppearence.barTintColor = .pantone330U
+        navigationBarAppearence.titleTextAttributes = whiteTextAttributes
 
         let tabBarAppearence = UITabBar.appearance()
         tabBarAppearence.isTranslucent = false
+        tabBarAppearence.barTintColor = .pantone330U
+        tabBarAppearence.tintColor = .white
+
+        let tabBarItemAppearence = UITabBarItem.appearance()
+        tabBarItemAppearence.setTitleTextAttributes(whiteTextAttributes, for: .normal)
+
+        let buttonsInsideNavigationBarAppearence = UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self])
+        buttonsInsideNavigationBarAppearence.tintColor = .white
+
+        let navigationBarExtensionAppearence = NavigationBarViewExtensionContainer.appearance()
+        navigationBarExtensionAppearence.backgroundColor = .pantone330U
+
+        let labelsInsideNavigationBarExtension = UILabel.appearance(whenContainedInInstancesOf: [NavigationBarViewExtensionContainer.self])
+        labelsInsideNavigationBarExtension.textColor = .white
     }
 
 	func application(_ application: UIApplication,
