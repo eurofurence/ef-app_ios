@@ -161,6 +161,7 @@ class DefaultScheduleInteractor: ScheduleInteractor {
         private let searchController: EventsSearchController
         private let shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter
         private let hoursDateFormatter: HoursDateFormatter
+        private var rawModelGroups = [EventsGroupedByDate]()
 
         init(searchController: EventsSearchController,
              shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter,
@@ -182,12 +183,12 @@ class DefaultScheduleInteractor: ScheduleInteractor {
         }
 
         func identifierForEvent(at indexPath: IndexPath) -> Event2.Identifier? {
-            return nil
+            return rawModelGroups[indexPath.section].events[indexPath.row].identifier
         }
 
         func searchResultsDidUpdate(to results: [Event2]) {
             let groupedByDate = Dictionary(grouping: results, by: { $0.startDate })
-            let rawModelGroups = groupedByDate.map(EventsGroupedByDate.init).sorted()
+            rawModelGroups = groupedByDate.map(EventsGroupedByDate.init).sorted()
             let eventGroupViewModels = rawModelGroups.map { (group) -> ScheduleEventGroupViewModel in
                 let title = shortFormDayAndTimeFormatter.dayAndHoursString(from: group.date)
                 let viewModels = group.events.map { (event) -> ScheduleEventViewModel in
