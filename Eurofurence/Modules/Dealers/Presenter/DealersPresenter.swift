@@ -11,20 +11,20 @@ import Foundation
 class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate {
 
     private let scene: DealersScene
+    private let interactor: DealersInteractor
 
     init(scene: DealersScene, interactor: DealersInteractor) {
         self.scene = scene
-
-        interactor.makeDealersViewModel { (viewModel) in
-            viewModel.setDelegate(self)
-        }
+        self.interactor = interactor
 
         scene.setDelegate(self)
         scene.setDealersTitle(.dealers)
     }
 
     func dealersSceneDidLoad() {
-
+        interactor.makeDealersViewModel { (viewModel) in
+            viewModel.setDelegate(self)
+        }
     }
 
     func dealerGroupsDidChange(_ groups: [DealersGroupViewModel]) {
