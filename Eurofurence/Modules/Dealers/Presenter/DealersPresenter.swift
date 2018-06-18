@@ -25,6 +25,8 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate {
             if !dealer.isPresentForAllDays {
                 component.showNotPresentOnAllDaysWarning()
             }
+
+            component.hideNotPresentOnAllDaysWarning()
         }
 
     }
