@@ -16,15 +16,9 @@ class ScheduleModuleBuilder {
     private var hapticEngine: HapticEngine
 
     init() {
-        struct DummyHapticEngine: HapticEngine {
-            func playSelectionHaptic() {
-
-            }
-        }
-
         eventsSceneFactory = StoryboardScheduleSceneFactory()
         interactor = DefaultScheduleInteractor()
-        hapticEngine = DummyHapticEngine()
+        hapticEngine = CocoaTouchHapticEngine()
     }
 
     @discardableResult

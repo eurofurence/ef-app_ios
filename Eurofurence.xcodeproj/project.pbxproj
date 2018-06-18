@@ -409,6 +409,7 @@
 		CA36A44920D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44820D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift */; };
 		CA36A44B20D771B500EE6537 /* HapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44A20D771B500EE6537 /* HapticEngine.swift */; };
 		CA36A44D20D771C400EE6537 /* CapturingHapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44C20D771C400EE6537 /* CapturingHapticEngine.swift */; };
+		CA36A44F20D772F300EE6537 /* CocoaTouchHapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44E20D772F300EE6537 /* CocoaTouchHapticEngine.swift */; };
 		CA3990ED20ACD35C001E3F1A /* HoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */; };
 		CA3990EF20ACD559001E3F1A /* FoundationHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */; };
 		CA3990F220ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */; };
@@ -1335,6 +1336,7 @@
 		CA36A44820D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationShortFormDayAndTimeFormatter.swift; sourceTree = "<group>"; };
 		CA36A44A20D771B500EE6537 /* HapticEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticEngine.swift; sourceTree = "<group>"; };
 		CA36A44C20D771C400EE6537 /* CapturingHapticEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingHapticEngine.swift; sourceTree = "<group>"; };
+		CA36A44E20D772F300EE6537 /* CocoaTouchHapticEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaTouchHapticEngine.swift; sourceTree = "<group>"; };
 		CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationHoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUpcomingEventsBeforeLoadingAnything.swift; sourceTree = "<group>"; };
@@ -3848,6 +3850,7 @@
 				CA250DE520D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift */,
 				CA36A44820D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift */,
 				CA36A44A20D771B500EE6537 /* HapticEngine.swift */,
+				CA36A44E20D772F300EE6537 /* CocoaTouchHapticEngine.swift */,
 			);
 			path = "System Services";
 			sourceTree = "<group>";
@@ -5274,6 +5277,7 @@
 				9AB64BCD1F018365004E8D91 /* KnowledgeEntryCell.swift in Sources */,
 				CA6EC4732051662B00402894 /* KnowledgeDetailModule.swift in Sources */,
 				CABF03BD2041C2B70028BD62 /* KnowledgeService.swift in Sources */,
+				CA36A44F20D772F300EE6537 /* CocoaTouchHapticEngine.swift in Sources */,
 				7820A6FB1F16BBB2004C0FB5 /* PushPermissionsStateProviding.swift in Sources */,
 				CABA83EA20CDBBD600DD0795 /* PersistentImageRepository.swift in Sources */,
 				9A861ED71F25564900B75A8C /* StoryboardRouters.swift in Sources */,
