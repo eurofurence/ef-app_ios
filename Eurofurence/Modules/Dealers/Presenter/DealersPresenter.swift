@@ -28,8 +28,11 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate {
                 component.showNotPresentOnAllDaysWarning()
             }
 
-            component.showAfterDarkContentWarning()
-            component.hideAfterDarkContentWarning()
+            if dealer.isAfterDarkContentPresent {
+                component.showAfterDarkContentWarning()
+            } else {
+                component.hideAfterDarkContentWarning()
+            }
         }
 
     }

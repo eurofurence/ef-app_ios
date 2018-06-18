@@ -22,4 +22,15 @@ class WhenBindingDealerComponent_ForDealerWithAfterDarkContent_DealersPresenterS
         XCTAssertTrue(component.didShowAfterDarkContentWarning)
     }
     
+    func testNotHideTheAfterDarkWarning() {
+        let dealerViewModel = StubDealerViewModel.random
+        dealerViewModel.isAfterDarkContentPresent = true
+        let interactor = FakeDealersInteractor(dealerViewModel: dealerViewModel)
+        let context = DealersPresenterTestBuilder().with(interactor).build()
+        context.simulateSceneDidLoad()
+        let component = context.makeAndBindDealer(at: IndexPath(item: 0, section: 0))
+        
+        XCTAssertFalse(component.didHideAfterDarkContentWarning)
+    }
+    
 }
