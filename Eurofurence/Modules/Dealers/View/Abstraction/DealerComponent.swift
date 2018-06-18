@@ -16,5 +16,6 @@ protocol DealerComponent {
     func showNotPresentOnAllDaysWarning()
     func hideNotPresentOnAllDaysWarning()
     func showAfterDarkContentWarning()
+    func hideAfterDarkContentWarning()
 
 }

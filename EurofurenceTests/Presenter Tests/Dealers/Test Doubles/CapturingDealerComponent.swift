@@ -41,4 +41,9 @@ class CapturingDealerComponent: DealerComponent {
         didShowAfterDarkContentWarning = true
     }
     
+    private(set) var didHideAfterDarkContentWarning = false
+    func hideAfterDarkContentWarning() {
+        didHideAfterDarkContentWarning = true
+    }
+    
 }

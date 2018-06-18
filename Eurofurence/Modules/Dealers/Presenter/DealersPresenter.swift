@@ -29,6 +29,7 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate {
             }
 
             component.showAfterDarkContentWarning()
+            component.hideAfterDarkContentWarning()
         }
 
     }
