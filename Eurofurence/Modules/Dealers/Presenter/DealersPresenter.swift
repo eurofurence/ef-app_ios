@@ -10,6 +10,18 @@ import Foundation
 
 class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate {
 
+    private struct Binder: DealersBinder {
+
+        var viewModels: [DealersGroupViewModel]
+
+        func bind(_ component: DealerComponent, toDealerAt indexPath: IndexPath) {
+            let group = viewModels[indexPath.section]
+            let dealer = group.dealers[indexPath.item]
+            component.setDealerTitle(dealer.title)
+        }
+
+    }
+
     private let scene: DealersScene
     private let interactor: DealersInteractor
 
@@ -29,7 +41,7 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate {
 
     func dealerGroupsDidChange(_ groups: [DealersGroupViewModel]) {
         let itemsPerSection = groups.map({ $0.dealers.count })
-        scene.bind(numberOfDealersPerSection: itemsPerSection)
+        scene.bind(numberOfDealersPerSection: itemsPerSection, using: Binder(viewModels: groups))
     }
 
 }

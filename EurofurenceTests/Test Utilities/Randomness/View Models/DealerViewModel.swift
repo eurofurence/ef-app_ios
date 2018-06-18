@@ -12,7 +12,7 @@ import Foundation
 extension DealerViewModel: RandomValueProviding {
     
     static var random: DealerViewModel {
-        return DealerViewModel()
+        return DealerViewModel(title: .random)
     }
     
 }

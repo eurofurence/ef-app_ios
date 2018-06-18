@@ -1,5 +1,5 @@
 //
-//  DealersGroupViewModel.swift
+//  DealersBinder.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 18/06/2018.
@@ -8,14 +8,8 @@
 
 import Foundation
 
-struct DealersGroupViewModel {
+protocol DealersBinder {
 
-    var dealers: [DealerViewModel]
-
-}
-
-struct DealerViewModel {
-
-    var title: String
+    func bind(_ component: DealerComponent, toDealerAt indexPath: IndexPath)
 
 }
