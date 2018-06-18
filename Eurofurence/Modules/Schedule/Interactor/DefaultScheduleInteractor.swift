@@ -18,14 +18,10 @@ class DefaultScheduleInteractor: ScheduleInteractor {
     // MARK: Initialization
 
     convenience init() {
-        struct DummyShortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter {
-            func dayAndHoursString(from date: Date) -> String { return "" }
-        }
-
         self.init(eventsService: EurofurenceApplication.shared,
                   hoursDateFormatter: FoundationHoursDateFormatter.shared,
                   shortFormDateFormatter: FoundationShortFormDateFormatter.shared,
-                  shortFormDayAndTimeFormatter: DummyShortFormDayAndTimeFormatter())
+                  shortFormDayAndTimeFormatter: FoundationShortFormDayAndTimeFormatter.shared)
     }
 
     init(eventsService: EventsService,

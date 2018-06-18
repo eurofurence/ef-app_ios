@@ -406,6 +406,7 @@
 		CA36A44320D703FA00EE6537 /* CapturingEventsSearchControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44220D703FA00EE6537 /* CapturingEventsSearchControllerDelegate.swift */; };
 		CA36A44520D7051900EE6537 /* InMemoryEventsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44420D7051900EE6537 /* InMemoryEventsSearchController.swift */; };
 		CA36A44720D7065800EE6537 /* WhenSearchingForEvents_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44620D7065800EE6537 /* WhenSearchingForEvents_ApplicationShould.swift */; };
+		CA36A44920D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44820D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift */; };
 		CA3990ED20ACD35C001E3F1A /* HoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */; };
 		CA3990EF20ACD559001E3F1A /* FoundationHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */; };
 		CA3990F220ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */; };
@@ -1329,6 +1330,7 @@
 		CA36A44220D703FA00EE6537 /* CapturingEventsSearchControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventsSearchControllerDelegate.swift; sourceTree = "<group>"; };
 		CA36A44420D7051900EE6537 /* InMemoryEventsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryEventsSearchController.swift; sourceTree = "<group>"; };
 		CA36A44620D7065800EE6537 /* WhenSearchingForEvents_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSearchingForEvents_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA36A44820D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationShortFormDayAndTimeFormatter.swift; sourceTree = "<group>"; };
 		CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationHoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUpcomingEventsBeforeLoadingAnything.swift; sourceTree = "<group>"; };
@@ -3839,6 +3841,7 @@
 				CA52C67A20D59457009D3A9E /* SignificantTimeChangeAdapter.swift */,
 				CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */,
 				CA250DE520D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift */,
+				CA36A44820D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift */,
 			);
 			path = "System Services";
 			sourceTree = "<group>";
@@ -5183,6 +5186,7 @@
 				CAE8B0B220CA4C530029D4D6 /* KnowledgeGroupEntity+Adaptation.swift in Sources */,
 				CA2D07FD1FE904CD00BFD785 /* UserPreferences.swift in Sources */,
 				CABEB0DC20C9C7A3000BEE66 /* CoreDataEurofurenceDataStore.swift in Sources */,
+				CA36A44920D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift in Sources */,
 				CA250DCE20D6D4E500E7513C /* ScheduleSearchViewModel.swift in Sources */,
 				CA00AE8120D1C15900C2FBB0 /* ScheduleDaysBinder.swift in Sources */,
 				CA17FE8120580082005A4C05 /* LinkScene.swift in Sources */,
