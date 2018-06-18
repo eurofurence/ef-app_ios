@@ -27,6 +27,8 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate {
             } else {
                 component.showNotPresentOnAllDaysWarning()
             }
+
+            component.showAfterDarkContentWarning()
         }
 
     }

@@ -36,4 +36,9 @@ class CapturingDealerComponent: DealerComponent {
         didHideNotPresentOnAllDaysWarning = true
     }
     
+    private(set) var didShowAfterDarkContentWarning = false
+    func showAfterDarkContentWarning() {
+        didShowAfterDarkContentWarning = true
+    }
+    
 }

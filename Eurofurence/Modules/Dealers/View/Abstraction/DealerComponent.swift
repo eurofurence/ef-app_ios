@@ -15,5 +15,6 @@ protocol DealerComponent {
     func setDealerIconPNGData(_ pngData: Data?)
     func showNotPresentOnAllDaysWarning()
     func hideNotPresentOnAllDaysWarning()
+    func showAfterDarkContentWarning()
 
 }
