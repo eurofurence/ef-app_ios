@@ -16,6 +16,6 @@ protocol DealersViewModel {
 
 protocol DealersViewModelDelegate {
 
-    func dealerGroupsDidChange(_ groups: [DealersGroupViewModel])
+    func dealerGroupsDidChange(_ groups: [DealersGroupViewModel], indexTitles: [String])
 
 }

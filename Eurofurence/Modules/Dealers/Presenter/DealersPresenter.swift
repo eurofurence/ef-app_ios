@@ -54,9 +54,11 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate {
         }
     }
 
-    func dealerGroupsDidChange(_ groups: [DealersGroupViewModel]) {
+    func dealerGroupsDidChange(_ groups: [DealersGroupViewModel], indexTitles: [String]) {
         let itemsPerSection = groups.map({ $0.dealers.count })
-        scene.bind(numberOfDealersPerSection: itemsPerSection, using: Binder(viewModels: groups))
+        scene.bind(numberOfDealersPerSection: itemsPerSection,
+                   sectionIndexTitles: indexTitles,
+                   using: Binder(viewModels: groups))
     }
 
 }

@@ -22,4 +22,13 @@ class WhenDealersSceneLoads_DealersPresenterShould: XCTestCase {
         XCTAssertEqual(expected, context.scene.capturedDealersPerSectionToBind)
     }
     
+    func testBindTheSectionIndexTitlesFromTheViewModelOntoTheScene() {
+        let viewModel = CapturingDealersViewModel()
+        let interactor = FakeDealersInteractor(viewModel: viewModel)
+        let context = DealersPresenterTestBuilder().with(interactor).build()
+        context.simulateSceneDidLoad()
+        
+        XCTAssertEqual(viewModel.sectionIndexTitles, context.scene.capturedSectionIndexTitles)
+    }
+    
 }

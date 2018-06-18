@@ -10,7 +10,7 @@ protocol DealersScene {
 
     func setDelegate(_ delegate: DealersSceneDelegate)
     func setDealersTitle(_ title: String)
-    func bind(numberOfDealersPerSection: [Int], using binder: DealersBinder)
+    func bind(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersBinder)
 
 }
 

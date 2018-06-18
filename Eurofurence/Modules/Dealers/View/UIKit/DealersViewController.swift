@@ -20,7 +20,7 @@ class DealersViewController: UIViewController, DealersScene {
         super.title = title
     }
 
-    func bind(numberOfDealersPerSection: [Int], using binder: DealersBinder) {
+    func bind(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersBinder) {
 
     }
 

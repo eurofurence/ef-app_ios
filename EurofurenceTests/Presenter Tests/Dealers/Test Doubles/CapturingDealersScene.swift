@@ -22,9 +22,11 @@ class CapturingDealersScene: UIViewController, DealersScene {
     }
     
     private(set) var capturedDealersPerSectionToBind = [Int]()
+    private(set) var capturedSectionIndexTitles = [String]()
     private(set) var binder: DealersBinder?
-    func bind(numberOfDealersPerSection: [Int], using binder: DealersBinder) {
+    func bind(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersBinder) {
         capturedDealersPerSectionToBind = numberOfDealersPerSection
+        capturedSectionIndexTitles = sectionIndexTitles
         self.binder = binder
     }
     

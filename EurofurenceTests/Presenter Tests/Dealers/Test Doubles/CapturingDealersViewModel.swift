@@ -12,9 +12,14 @@ import Foundation
 struct CapturingDealersViewModel: DealersViewModel {
     
     var dealerGroups: [DealersGroupViewModel]
+    var sectionIndexTitles: [String] = .random
+    
+    init(dealerGroups: [DealersGroupViewModel] = .random) {
+        self.dealerGroups = dealerGroups
+    }
     
     func setDelegate(_ delegate: DealersViewModelDelegate) {
-        delegate.dealerGroupsDidChange(dealerGroups)
+        delegate.dealerGroupsDidChange(dealerGroups, indexTitles: sectionIndexTitles)
     }
     
 }
