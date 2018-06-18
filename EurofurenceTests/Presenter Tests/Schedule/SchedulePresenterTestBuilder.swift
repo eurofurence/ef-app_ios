@@ -59,6 +59,10 @@ extension SchedulePresenterTestBuilder.Context {
         scene.delegate?.scheduleSceneDidSelectEvent(at: indexPath)
     }
     
+    func simulateSceneDidSelectSearchResult(at indexPath: IndexPath) {
+        scene.delegate?.scheduleSceneDidSelectSearchResult(at: indexPath)
+    }
+    
     func simulateSceneDidSelectDay(at index: Int) {
         scene.delegate?.scheduleSceneDidSelectDay(at: index)
     }

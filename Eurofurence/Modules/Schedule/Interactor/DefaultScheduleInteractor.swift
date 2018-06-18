@@ -181,6 +181,10 @@ class DefaultScheduleInteractor: ScheduleInteractor {
             searchController.changeSearchTerm(input)
         }
 
+        func identifierForEvent(at indexPath: IndexPath) -> Event2.Identifier? {
+            return nil
+        }
+
         func searchResultsDidUpdate(to results: [Event2]) {
             let groupedByDate = Dictionary(grouping: results, by: { $0.startDate })
             let rawModelGroups = groupedByDate.map(EventsGroupedByDate.init).sorted()

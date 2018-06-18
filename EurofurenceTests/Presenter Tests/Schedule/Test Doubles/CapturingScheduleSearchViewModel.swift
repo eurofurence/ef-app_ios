@@ -21,12 +21,21 @@ class CapturingScheduleSearchViewModel: ScheduleSearchViewModel {
         capturedSearchInput = input
     }
     
+    fileprivate var stubbedIdentifiersByIndexPath = [IndexPath : Event2.Identifier]()
+    func identifierForEvent(at indexPath: IndexPath) -> Event2.Identifier? {
+        return stubbedIdentifiersByIndexPath[indexPath]
+    }
+    
 }
 
 extension CapturingScheduleSearchViewModel {
     
     func simulateSearchResultsUpdated(_ results: [ScheduleEventGroupViewModel]) {
         delegate?.scheduleSearchResultsUpdated(results)
+    }
+    
+    func stub(_ identifier: Event2.Identifier, at indexPath: IndexPath) {
+        stubbedIdentifiersByIndexPath[indexPath] = identifier
     }
     
 }
