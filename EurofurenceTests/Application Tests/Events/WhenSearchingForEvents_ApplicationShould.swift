@@ -42,4 +42,22 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
         XCTAssertEqual([expected], delegate.capturedSearchResults)
     }
     
+    func testBeCaseInsensitive() {
+        let context = ApplicationTestBuilder().build()
+        var syncResponse = APISyncResponse.randomWithoutDeletions
+        let randomEvent = syncResponse.events.changed.randomElement()
+        var event = randomEvent.element
+        event.title = "iGNoRe tHe rANdoM CAsing"
+        syncResponse.events.changed[randomEvent.index] = event
+        context.refreshLocalStore()
+        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        let eventsSearchController = context.application.makeEventsSearchController()
+        let delegate = CapturingEventsSearchControllerDelegate()
+        eventsSearchController.setResultsDelegate(delegate)
+        eventsSearchController.changeSearchTerm("random")
+        let expected = context.makeExpectedEvent(from: event, response: syncResponse)
+        
+        XCTAssertEqual([expected], delegate.capturedSearchResults)
+    }
+    
 }

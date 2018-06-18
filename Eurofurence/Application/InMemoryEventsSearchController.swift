@@ -22,7 +22,7 @@ class InMemoryEventsSearchController: EventsSearchController {
     }
 
     func changeSearchTerm(_ term: String) {
-        let matches = schedule.eventModels.filter({ $0.title.contains(term) })
+        let matches = schedule.eventModels.filter({ $0.title.localizedCaseInsensitiveContains(term) })
         delegate?.searchResultsDidUpdate(to: matches)
     }
 
