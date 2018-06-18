@@ -14,6 +14,14 @@ import Whisper
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    private func makePantone330UShadowImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 1, height: 1))
+        return renderer.image { (context) in
+            UIColor.pantone330U.setFill()
+            context.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
+        }
+    }
+
 	var window: UIWindow?
     lazy var app = EurofurenceApplication.shared
 	lazy var targetRouter: TargetRouter = StoryboardTargetRouter(window: self.window!)
@@ -22,16 +30,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func applyDirectorBasedTheme() {
         let whiteTextAttributes: [NSAttributedStringKey: Any] = [.foregroundColor: UIColor.white]
+        let pantone330UColourImage = makePantone330UShadowImage()
 
         let navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.isTranslucent = false
         navigationBarAppearance.barTintColor = .pantone330U
         navigationBarAppearance.titleTextAttributes = whiteTextAttributes
+        navigationBarAppearance.shadowImage = pantone330UColourImage
 
         let tabBarAppearance = UITabBar.appearance()
         tabBarAppearance.isTranslucent = false
         tabBarAppearance.barTintColor = .pantone330U
         tabBarAppearance.tintColor = .white
+        tabBarAppearance.backgroundImage = pantone330UColourImage
+        tabBarAppearance.shadowImage = pantone330UColourImage
 
         let tabBarItemAppearance = UITabBarItem.appearance()
         tabBarItemAppearance.setTitleTextAttributes(whiteTextAttributes, for: .normal)
