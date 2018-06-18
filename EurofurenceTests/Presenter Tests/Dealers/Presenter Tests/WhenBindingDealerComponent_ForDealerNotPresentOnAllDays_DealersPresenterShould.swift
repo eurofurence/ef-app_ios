@@ -17,9 +17,7 @@ class WhenBindingDealerComponent_ForDealerNotPresentOnAllDays_DealersPresenterSh
         let interactor = FakeDealersInteractor(dealerViewModel: dealerViewModel)
         let context = DealersPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
-        let indexPath = IndexPath(item: 0, section: 0)
-        let component = CapturingDealerComponent()
-        context.bind(component, toDealerAt: indexPath)
+        let component = context.makeAndBindDealer(at: IndexPath(item: 0, section: 0))
         
         XCTAssertTrue(component.didShowNotPresentOnAllDaysWarning)
     }
@@ -30,9 +28,7 @@ class WhenBindingDealerComponent_ForDealerNotPresentOnAllDays_DealersPresenterSh
         let interactor = FakeDealersInteractor(dealerViewModel: dealerViewModel)
         let context = DealersPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
-        let indexPath = IndexPath(item: 0, section: 0)
-        let component = CapturingDealerComponent()
-        context.bind(component, toDealerAt: indexPath)
+        let component = context.makeAndBindDealer(at: IndexPath(item: 0, section: 0))
         
         XCTAssertFalse(component.didHideNotPresentOnAllDaysWarning)
     }

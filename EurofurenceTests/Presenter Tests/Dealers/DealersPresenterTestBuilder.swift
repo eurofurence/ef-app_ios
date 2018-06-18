@@ -48,6 +48,12 @@ extension DealersPresenterTestBuilder.Context {
         scene.delegate?.dealersSceneDidLoad()
     }
     
+    func makeAndBindDealer(at indexPath: IndexPath) -> CapturingDealerComponent {
+        let component = CapturingDealerComponent()
+        bind(component, toDealerAt: indexPath)
+        return component
+    }
+    
     func bind(_ component: DealerComponent, toDealerAt indexPath: IndexPath) {
         scene.binder?.bind(component, toDealerAt: indexPath)
     }
