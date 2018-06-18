@@ -17,5 +17,6 @@ struct DealersGroupViewModel {
 struct DealerViewModel {
 
     var title: String
+    var subtitle: String
 
 }

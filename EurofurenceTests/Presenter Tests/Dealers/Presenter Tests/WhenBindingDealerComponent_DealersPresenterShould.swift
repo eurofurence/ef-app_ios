@@ -11,19 +11,32 @@ import XCTest
 
 class WhenBindingDealerComponent_DealersPresenterShould: XCTestCase {
     
-    func testBindTheDealerTitleLabelOntoTheComponent() {
+    var context: DealersPresenterTestBuilder.Context!
+    var dealer: DealerViewModel!
+    var component: CapturingDealerComponent!
+    
+    override func setUp() {
+        super.setUp()
+        
         let dealerGroups = [DealersGroupViewModel].random
         let viewModel = CapturingDealersViewModel(dealerGroups: dealerGroups)
         let interactor = FakeDealersInteractor(viewModel: viewModel)
-        let context = DealersPresenterTestBuilder().with(interactor).build()
+        context = DealersPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         let randomGroup = dealerGroups.randomElement()
         let randomDealer = randomGroup.element.dealers.randomElement()
+        dealer = randomDealer.element
         let indexPath = IndexPath(item: randomDealer.index, section: randomGroup.index)
-        let component = CapturingDealerComponent()
+        component = CapturingDealerComponent()
         context.bind(component, toDealerAt: indexPath)
-        
-        XCTAssertEqual(randomDealer.element.title, component.capturedDealerTitle)
+    }
+    
+    func testBindTheDealerTitleOntoTheComponent() {
+        XCTAssertEqual(dealer.title, component.capturedDealerTitle)
+    }
+    
+    func testBindTheDealerSubtitleOntoTheComponent() {
+        XCTAssertEqual(dealer.subtitle, component.capturedDealerSubtitle)
     }
     
 }
