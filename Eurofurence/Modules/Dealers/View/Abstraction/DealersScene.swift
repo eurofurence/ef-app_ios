@@ -8,6 +8,14 @@
 
 protocol DealersScene {
 
+    func setDelegate(_ delegate: DealersSceneDelegate)
     func setDealersTitle(_ title: String)
+    func bind(numberOfDealersPerSection: [Int])
+
+}
+
+protocol DealersSceneDelegate {
+
+    func dealersSceneDidLoad()
 
 }

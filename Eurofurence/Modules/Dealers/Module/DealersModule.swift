@@ -11,10 +11,11 @@ import UIKit.UIViewController
 struct DealersModule: DealersModuleProviding {
 
     var dealersSceneFactory: DealersSceneFactory
+    var interactor: DealersInteractor
 
     func makeDealersModule() -> UIViewController {
         let scene = dealersSceneFactory.makeDealersScene()
-        scene.setDealersTitle(.dealers)
+        _ = DealersPresenter(scene: scene, interactor: interactor)
 
         return scene
     }

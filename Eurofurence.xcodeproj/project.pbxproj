@@ -412,6 +412,16 @@
 		CA36A44F20D772F300EE6537 /* CocoaTouchHapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A44E20D772F300EE6537 /* CocoaTouchHapticEngine.swift */; };
 		CA36A45120D773B300EE6537 /* WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A45020D773B300EE6537 /* WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould.swift */; };
 		CA36A45320D82D9700EE6537 /* UIColor+Eurofurence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A45220D82D9700EE6537 /* UIColor+Eurofurence.swift */; };
+		CA36A45720D8464800EE6537 /* WhenDealersSceneLoads_DealersPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A45620D8464800EE6537 /* WhenDealersSceneLoads_DealersPresenterShould.swift */; };
+		CA36A45A20D8472300EE6537 /* DealersInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A45920D8472300EE6537 /* DealersInteractor.swift */; };
+		CA36A45C20D8472E00EE6537 /* DealersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A45B20D8472E00EE6537 /* DealersViewModel.swift */; };
+		CA36A45E20D8487700EE6537 /* DealersGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A45D20D8487700EE6537 /* DealersGroupViewModel.swift */; };
+		CA36A46120D8497400EE6537 /* DealersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A46020D8497400EE6537 /* DealersPresenter.swift */; };
+		CA36A46320D84A7100EE6537 /* CapturingDealersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A46220D84A7100EE6537 /* CapturingDealersViewModel.swift */; };
+		CA36A46520D84A8100EE6537 /* FakeDealersInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A46420D84A8100EE6537 /* FakeDealersInteractor.swift */; };
+		CA36A46720D84A9B00EE6537 /* CapturingDealersViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A46620D84A9B00EE6537 /* CapturingDealersViewModel+RandomValueProviding.swift */; };
+		CA36A46920D84AA900EE6537 /* DealersGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A46820D84AA900EE6537 /* DealersGroupViewModel.swift */; };
+		CA36A46B20D84AB600EE6537 /* DealerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A46A20D84AB600EE6537 /* DealerViewModel.swift */; };
 		CA3990ED20ACD35C001E3F1A /* HoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */; };
 		CA3990EF20ACD559001E3F1A /* FoundationHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */; };
 		CA3990F220ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */; };
@@ -1341,6 +1351,16 @@
 		CA36A44E20D772F300EE6537 /* CocoaTouchHapticEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaTouchHapticEngine.swift; sourceTree = "<group>"; };
 		CA36A45020D773B300EE6537 /* WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA36A45220D82D9700EE6537 /* UIColor+Eurofurence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Eurofurence.swift"; sourceTree = "<group>"; };
+		CA36A45620D8464800EE6537 /* WhenDealersSceneLoads_DealersPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDealersSceneLoads_DealersPresenterShould.swift; sourceTree = "<group>"; };
+		CA36A45920D8472300EE6537 /* DealersInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersInteractor.swift; sourceTree = "<group>"; };
+		CA36A45B20D8472E00EE6537 /* DealersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersViewModel.swift; sourceTree = "<group>"; };
+		CA36A45D20D8487700EE6537 /* DealersGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersGroupViewModel.swift; sourceTree = "<group>"; };
+		CA36A46020D8497400EE6537 /* DealersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersPresenter.swift; sourceTree = "<group>"; };
+		CA36A46220D84A7100EE6537 /* CapturingDealersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDealersViewModel.swift; sourceTree = "<group>"; };
+		CA36A46420D84A8100EE6537 /* FakeDealersInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDealersInteractor.swift; sourceTree = "<group>"; };
+		CA36A46620D84A9B00EE6537 /* CapturingDealersViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CapturingDealersViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA36A46820D84AA900EE6537 /* DealersGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersGroupViewModel.swift; sourceTree = "<group>"; };
+		CA36A46A20D84AB600EE6537 /* DealerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerViewModel.swift; sourceTree = "<group>"; };
 		CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationHoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUpcomingEventsBeforeLoadingAnything.swift; sourceTree = "<group>"; };
@@ -2952,6 +2972,24 @@
 			path = Preload;
 			sourceTree = "<group>";
 		};
+		CA36A45820D8471500EE6537 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CA36A45920D8472300EE6537 /* DealersInteractor.swift */,
+				CA36A45B20D8472E00EE6537 /* DealersViewModel.swift */,
+				CA36A45D20D8487700EE6537 /* DealersGroupViewModel.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CA36A45F20D8496B00EE6537 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CA36A46020D8497400EE6537 /* DealersPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		CA3990F020ACD693001E3F1A /* Upcoming */ = {
 			isa = PBXGroup;
 			children = (
@@ -3168,8 +3206,10 @@
 		CA6375A3208E008A00536BE2 /* Dealers */ = {
 			isa = PBXGroup;
 			children = (
-				CA6375AD208E02C100536BE2 /* View */,
+				CA36A45F20D8496B00EE6537 /* Presenter */,
+				CA36A45820D8471500EE6537 /* Interactor */,
 				CA6375A4208E008F00536BE2 /* Module */,
+				CA6375AD208E02C100536BE2 /* View */,
 			);
 			path = Dealers;
 			sourceTree = "<group>";
@@ -3198,6 +3238,7 @@
 			isa = PBXGroup;
 			children = (
 				CA6375AB208E021A00536BE2 /* WhenBuildingDealersModule.swift */,
+				CA36A45620D8464800EE6537 /* WhenDealersSceneLoads_DealersPresenterShould.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -3225,6 +3266,8 @@
 			children = (
 				CA6375B8208E03C000536BE2 /* CapturingDealersScene.swift */,
 				CA6375BA208E03D100536BE2 /* StubDealersSceneFactory.swift */,
+				CA36A46220D84A7100EE6537 /* CapturingDealersViewModel.swift */,
+				CA36A46420D84A8100EE6537 /* FakeDealersInteractor.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -3443,6 +3486,9 @@
 				CA89CBAA207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift */,
 				CAD68829208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift */,
 				CA00AE4A20D16BF300C2FBB0 /* StubScheduleViewModel+RandomValueProviding.swift */,
+				CA36A46620D84A9B00EE6537 /* CapturingDealersViewModel+RandomValueProviding.swift */,
+				CA36A46820D84AA900EE6537 /* DealersGroupViewModel.swift */,
+				CA36A46A20D84AB600EE6537 /* DealerViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -5074,6 +5120,7 @@
 				CA1FE99E1FA0B41E009C7DF3 /* NavigationControllerFactory.swift in Sources */,
 				CA162E8820A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift in Sources */,
 				9A34B9781ECF6E3B004A249E /* Iso8601DateFormatter.swift in Sources */,
+				CA36A45A20D8472300EE6537 /* DealersInteractor.swift in Sources */,
 				9A861EBF1F25551400B75A8C /* PresentationAssets.swift in Sources */,
 				CA52C68120D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift in Sources */,
 				CAF7056A1F82D15D00A9FEA2 /* PreloadModuleProviding.swift in Sources */,
@@ -5082,6 +5129,7 @@
 				CA680F8020CDA49D006ACD3D /* Schedule.swift in Sources */,
 				CA52C67F20D59572009D3A9E /* SignificantTimePassedEvent.swift in Sources */,
 				CA680F7A20CD7AD7006ACD3D /* Knowledge.swift in Sources */,
+				CA36A45E20D8487700EE6537 /* DealersGroupViewModel.swift in Sources */,
 				9A0525431ECA2C5A00578798 /* SyncEntityDelta.swift in Sources */,
 				CAF3C7501F9FC74C0008F027 /* NewsSceneFactory.swift in Sources */,
 				CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */,
@@ -5114,6 +5162,7 @@
 				CA6EC47F2051CBC800402894 /* KnowledgeDetailScene.swift in Sources */,
 				CA73AEE9201A088C004E77BF /* KnowledgeListSceneDelegate.swift in Sources */,
 				9A7FDA141F3445890050C325 /* CopyableLabel.swift in Sources */,
+				CA36A45C20D8472E00EE6537 /* DealersViewModel.swift in Sources */,
 				CAE27B4C1F855E0E005FDE39 /* TabModuleProviding.swift in Sources */,
 				9A34B9851ED089BB004A249E /* NavigationResolverProtocol.swift in Sources */,
 				CA8E17F51F817AE8003C348C /* PreloadPresenter.swift in Sources */,
@@ -5222,6 +5271,7 @@
 				CAD7805A1F1E8E7D002A8333 /* KeychainCredentialStore.swift in Sources */,
 				CAB138101FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift in Sources */,
 				CAF9A94A1F54BB5600628833 /* PrivateMessagesService.swift in Sources */,
+				CA36A46120D8497400EE6537 /* DealersPresenter.swift in Sources */,
 				78567B3F1F1016B000EBA31D /* TabViewController.swift in Sources */,
 				9A8ECA231F2BC2BE00351A83 /* StatusWhistleRefreshDelegate.swift in Sources */,
 				CA30EACC1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift in Sources */,
@@ -5461,12 +5511,14 @@
 			files = (
 				CA0F7629203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift in Sources */,
 				CA131BD120C1851A00DB1036 /* WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould.swift in Sources */,
+				CA36A46720D84A9B00EE6537 /* CapturingDealersViewModel+RandomValueProviding.swift in Sources */,
 				CA250DDE20D6EA0500E7513C /* CapturingScheduleSearchViewModelDelegate.swift in Sources */,
 				CA65A87D209B2F6A00B72533 /* WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould.swift in Sources */,
 				CACF1E5D20AE2EE100D904B5 /* EventDetailPresenterTestBuilder.swift in Sources */,
 				CA162E7820A4B6E0004AFED6 /* StubConventionStartDateRepository.swift in Sources */,
 				CABA83FF20CEF91400DD0795 /* WhenLaunchingApplicationWithPreexistingFavourites.swift in Sources */,
 				CA08159C20D47BEA00F750D4 /* CapturingEventsScheduleDelegate.swift in Sources */,
+				CA36A46320D84A7100EE6537 /* CapturingDealersViewModel.swift in Sources */,
 				CACF1EAA20B5BFF100D904B5 /* WhenPreparingViewModelForEventWithNoDescription_EventDetailInteractorShould.swift in Sources */,
 				CABA83F420CE988B00DD0795 /* WhenFavouritingEventViewModel_EventDetailInteractorShould.swift in Sources */,
 				CAD260A720C03909007E3618 /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift in Sources */,
@@ -5559,6 +5611,7 @@
 				CA36A44120D7020900EE6537 /* WhenSearchingForEvents_BeforeAnyAreAvailable_ApplicationShould.swift in Sources */,
 				CA131BD320C1866D00DB1036 /* CapturingEventDetailViewModelDelegate.swift in Sources */,
 				CA63757E208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift in Sources */,
+				CA36A45720D8464800EE6537 /* WhenDealersSceneLoads_DealersPresenterShould.swift in Sources */,
 				CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */,
 				CA08158D20D4556700F750D4 /* FakeShortFormDateFormatter.swift in Sources */,
 				CA17FE8E205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift in Sources */,
@@ -5645,6 +5698,7 @@
 				CABF03C12041C2EC0028BD62 /* KnowledgeGroup2.swift in Sources */,
 				CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */,
 				CA0815A020D47D4100F750D4 /* WhenRestrictingEventsToSpecificDay_ScheduleShould.swift in Sources */,
+				CA36A46520D84A8100EE6537 /* FakeDealersInteractor.swift in Sources */,
 				CAFD012820C6F2A2004F3935 /* WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould.swift in Sources */,
 				7820A6FF1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift in Sources */,
 				CA00AE5020D16D8900C2FBB0 /* WhenScheduleSceneHasNotLoaded_SchedulePresenterShould.swift in Sources */,
@@ -5782,6 +5836,7 @@
 				CA6375A2208E005E00536BE2 /* StubDealersModuleFactory.swift in Sources */,
 				CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */,
 				CA73AEDF201A0833004E77BF /* CapturingKnowledgeInteractor.swift in Sources */,
+				CA36A46B20D84AB600EE6537 /* DealerViewModel.swift in Sources */,
 				CAD2609F20C02E7C007E3618 /* WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailInteractorShould.swift in Sources */,
 				CA637562208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift in Sources */,
 				CA162E8420A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift in Sources */,
@@ -5834,6 +5889,7 @@
 				CA17FE7F2058006F005A4C05 /* CapturingLinkScene.swift in Sources */,
 				CABA83F620CE9A6800DD0795 /* WhenUnfavouritingEventViewModel_EventDetailInteractorShould.swift in Sources */,
 				CABF03CE20422B240028BD62 /* CapturingSyncAPI.swift in Sources */,
+				CA36A46920D84AA900EE6537 /* DealersGroupViewModel.swift in Sources */,
 				CA0E5215208F52EE005259FE /* CapturingNewsInteractorDelegate.swift in Sources */,
 				CA637599208DFD5F00536BE2 /* SchedulePresenterTestBuilder.swift in Sources */,
 			);

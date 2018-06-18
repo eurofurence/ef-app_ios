@@ -12,8 +12,16 @@ class DealersViewController: UIViewController, DealersScene {
 
     // MARK: DealersScene
 
+    func setDelegate(_ delegate: DealersSceneDelegate) {
+
+    }
+
     func setDealersTitle(_ title: String) {
         super.title = title
+    }
+
+    func bind(numberOfDealersPerSection: [Int]) {
+
     }
 
 }

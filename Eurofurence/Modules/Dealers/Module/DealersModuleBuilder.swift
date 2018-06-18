@@ -6,14 +6,20 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-import UIKit.UIViewController
-
 class DealersModuleBuilder {
 
     private var dealersSceneFactory: DealersSceneFactory
+    private var interactor: DealersInteractor
 
     init() {
+        struct DummyDealersInteractor: DealersInteractor {
+            func makeDealersViewModel(completionHandler: @escaping (DealersViewModel) -> Void) {
+
+            }
+        }
+
         dealersSceneFactory = StoryboardDealersSceneFactory()
+        interactor = DummyDealersInteractor()
     }
 
     @discardableResult
@@ -22,8 +28,14 @@ class DealersModuleBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ interactor: DealersInteractor) -> DealersModuleBuilder {
+        self.interactor = interactor
+        return self
+    }
+
     func build() -> DealersModuleProviding {
-        return DealersModule(dealersSceneFactory: dealersSceneFactory)
+        return DealersModule(dealersSceneFactory: dealersSceneFactory, interactor: interactor)
     }
 
 }
