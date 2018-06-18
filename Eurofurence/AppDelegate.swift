@@ -23,27 +23,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func applyDirectorBasedTheme() {
         let whiteTextAttributes: [NSAttributedStringKey: Any] = [.foregroundColor: UIColor.white]
 
-        let navigationBarAppearence = UINavigationBar.appearance()
-        navigationBarAppearence.isTranslucent = false
-        navigationBarAppearence.barTintColor = .pantone330U
-        navigationBarAppearence.titleTextAttributes = whiteTextAttributes
+        let navigationBarAppearance = UINavigationBar.appearance()
+        navigationBarAppearance.isTranslucent = false
+        navigationBarAppearance.barTintColor = .pantone330U
+        navigationBarAppearance.titleTextAttributes = whiteTextAttributes
 
-        let tabBarAppearence = UITabBar.appearance()
-        tabBarAppearence.isTranslucent = false
-        tabBarAppearence.barTintColor = .pantone330U
-        tabBarAppearence.tintColor = .white
+        let tabBarAppearance = UITabBar.appearance()
+        tabBarAppearance.isTranslucent = false
+        tabBarAppearance.barTintColor = .pantone330U
+        tabBarAppearance.tintColor = .white
 
-        let tabBarItemAppearence = UITabBarItem.appearance()
-        tabBarItemAppearence.setTitleTextAttributes(whiteTextAttributes, for: .normal)
+        let tabBarItemAppearance = UITabBarItem.appearance()
+        tabBarItemAppearance.setTitleTextAttributes(whiteTextAttributes, for: .normal)
 
-        let buttonsInsideNavigationBarAppearence = UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self])
-        buttonsInsideNavigationBarAppearence.tintColor = .white
+        let buttonsInsideNavigationBarAppearance = UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self])
+        buttonsInsideNavigationBarAppearance.tintColor = .white
 
-        let navigationBarExtensionAppearence = NavigationBarViewExtensionContainer.appearance()
-        navigationBarExtensionAppearence.backgroundColor = .pantone330U
+        let navigationBarExtensionAppearance = NavigationBarViewExtensionContainer.appearance()
+        navigationBarExtensionAppearance.backgroundColor = .pantone330U
 
-        let labelsInsideNavigationBarExtension = UILabel.appearance(whenContainedInInstancesOf: [NavigationBarViewExtensionContainer.self])
-        labelsInsideNavigationBarExtension.textColor = .white
+        let labelsInsideNavigationBarExtensionAppearance = UILabel.appearance(whenContainedInInstancesOf: [NavigationBarViewExtensionContainer.self])
+        labelsInsideNavigationBarExtensionAppearance.textColor = .white
+
+        let searchBarAppearance = UISearchBar.appearance()
+        searchBarAppearance.barTintColor = .pantone330U
+        searchBarAppearance.isTranslucent = false
+
+        let buttonsInsideSearchBarAppearance = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])
+        buttonsInsideSearchBarAppearance.setTitleTextAttributes(whiteTextAttributes, for: .normal)
     }
 
 	func application(_ application: UIApplication,
