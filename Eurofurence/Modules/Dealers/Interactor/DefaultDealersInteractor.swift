@@ -7,12 +7,23 @@
 //
 
 import Foundation
+import UIKit
 
 struct DefaultDealersInteractor: DealersInteractor {
 
     private let viewModel: ViewModel
 
-    init(dealersService: DealersService, defaultIconData: Data = Data()) {
+    init() {
+        self.init(dealersService: EurofurenceApplication.shared)
+    }
+
+    init(dealersService: DealersService) {
+        let defaultIcon = #imageLiteral(resourceName: "defaultAvatar")
+        let defaultIconData = UIImagePNGRepresentation(defaultIcon)!
+        self.init(dealersService: dealersService, defaultIconData: defaultIconData)
+    }
+
+    init(dealersService: DealersService, defaultIconData: Data) {
         viewModel = ViewModel(dealersService: dealersService, defaultIconData: defaultIconData)
     }
 

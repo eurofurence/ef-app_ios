@@ -33,7 +33,7 @@ class Dealers: DealersService {
         }
 
         private func updateAlphebetisedDealers() {
-            let grouped = Dictionary(grouping: dealers.dealerModels) { String($0.preferredName.first!) }
+            let grouped = Dictionary(grouping: dealers.dealerModels) { String($0.preferredName.first!).uppercased() }
             let sortedGroups = grouped.sorted(by: { $0.key < $1.key })
             alphebetisedDealers = sortedGroups.map({ (arg) -> AlphabetisedDealersGroup in
                 let (index, dealers) = arg
