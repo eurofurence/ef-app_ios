@@ -9,24 +9,6 @@
 @testable import Eurofurence
 import XCTest
 
-class FakeDealersIndex: DealersIndex {
-    
-    var alphabetisedDealers = [AlphabetisedDealersGroup].random
-    
-    func setDelegate(_ delegate: DealersIndexDelegate) {
-        delegate.alphabetisedDealersDidChange(to: alphabetisedDealers)
-    }
-    
-}
-
-extension AlphabetisedDealersGroup: RandomValueProviding {
-    
-    static var random: AlphabetisedDealersGroup {
-        return AlphabetisedDealersGroup(indexingString: .random, dealers: .random)
-    }
-    
-}
-
 class WhenPreparingViewModel_DealersInteractorShould: XCTestCase {
     
     func testConvertIndexedDealersIntoExpectedGroupTitles() {
