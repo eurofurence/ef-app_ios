@@ -82,8 +82,16 @@ class Dealers: DealersService {
 
     private func updateDealers(from dealers: [APIDealer]) {
         dealerModels = dealers.map { (dealer) -> Dealer2 in
+            var preferredName = dealer.displayName
+            if preferredName.isEmpty {
+                preferredName = dealer.attendeeNickname
+                if preferredName.isEmpty {
+                    preferredName = "?"
+                }
+            }
+
             return Dealer2(identifier: Dealer2.Identifier(dealer.identifier),
-                           preferredName: dealer.displayName.isEmpty ? dealer.attendeeNickname : dealer.displayName,
+                           preferredName: preferredName,
                            alternateName: dealer.attendeeNickname == dealer.displayName ? nil : dealer.attendeeNickname,
                            isAttendingOnThursday: dealer.attendsOnThursday,
                            isAttendingOnFriday: dealer.attendsOnFriday,

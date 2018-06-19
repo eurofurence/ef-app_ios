@@ -64,4 +64,21 @@ class WhenAdaptingDealersFromResponse_ApplicationShould: XCTestCase {
         XCTAssertEqual(nickname, model?.preferredName)
     }
     
+    func testUseQuestionMarkAsPreferredNameIfAttendeeNicknameAndDisplayNameNotSpecified_toAvoidCrashing() {
+        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var dealer = APIDealer.random
+        dealer.displayName = ""
+        dealer.attendeeNickname = ""
+        syncResponse.dealers.changed = [dealer]
+        let dataStore = CapturingEurofurenceDataStore()
+        dataStore.save(syncResponse)
+        let context = ApplicationTestBuilder().with(dataStore).build()
+        let dealersIndex = context.application.makeDealersIndex()
+        let delegate = CapturingDealersIndexDelegate()
+        dealersIndex.setDelegate(delegate)
+        let model = delegate.capturedAlphabetisedDealerGroups.first?.dealers.first
+        
+        XCTAssertEqual("?", model?.preferredName)
+    }
+    
 }
