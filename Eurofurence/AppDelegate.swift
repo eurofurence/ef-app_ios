@@ -45,6 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarAppearance.backgroundImage = pantone330UColourImage
         tabBarAppearance.shadowImage = pantone330UColourImage
 
+        let tableViewProxy = UITableView.appearance()
+        tableViewProxy.sectionIndexColor = .pantone330U
+
         let tabBarItemAppearance = UITabBarItem.appearance()
         tabBarItemAppearance.setTitleTextAttributes(whiteTextAttributes, for: .normal)
 
