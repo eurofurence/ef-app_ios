@@ -459,6 +459,7 @@
 		CA36A4B420D99C4B00EE6537 /* WhenAdaptingDealersFromResponse_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4B320D99C4B00EE6537 /* WhenAdaptingDealersFromResponse_ApplicationShould.swift */; };
 		CA36A4B620D9A5C300EE6537 /* WhenDealersHaveCaseVaryingNames_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4B520D9A5C300EE6537 /* WhenDealersHaveCaseVaryingNames_ApplicationShould.swift */; };
 		CA36A4B820D9A99500EE6537 /* WhenFetchingIconDataForDealerWithArtwork_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4B720D9A99500EE6537 /* WhenFetchingIconDataForDealerWithArtwork_ApplicationShould.swift */; };
+		CA36A4BA20D9AC9F00EE6537 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4B920D9AC9F00EE6537 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift */; };
 		CA3990ED20ACD35C001E3F1A /* HoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */; };
 		CA3990EF20ACD559001E3F1A /* FoundationHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */; };
 		CA3990F220ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */; };
@@ -1435,6 +1436,7 @@
 		CA36A4B320D99C4B00EE6537 /* WhenAdaptingDealersFromResponse_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAdaptingDealersFromResponse_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA36A4B520D9A5C300EE6537 /* WhenDealersHaveCaseVaryingNames_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDealersHaveCaseVaryingNames_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA36A4B720D9A99500EE6537 /* WhenFetchingIconDataForDealerWithArtwork_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingIconDataForDealerWithArtwork_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA36A4B920D9AC9F00EE6537 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationHoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUpcomingEventsBeforeLoadingAnything.swift; sourceTree = "<group>"; };
@@ -3098,6 +3100,7 @@
 				CA36A4B320D99C4B00EE6537 /* WhenAdaptingDealersFromResponse_ApplicationShould.swift */,
 				CA36A4B520D9A5C300EE6537 /* WhenDealersHaveCaseVaryingNames_ApplicationShould.swift */,
 				CA36A4B720D9A99500EE6537 /* WhenFetchingIconDataForDealerWithArtwork_ApplicationShould.swift */,
+				CA36A4B920D9AC9F00EE6537 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift */,
 				CA36A4B120D99AA300EE6537 /* WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift */,
 				CA36A4AB20D988D800EE6537 /* WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould.swift */,
 				CA36A4A520D9847200EE6537 /* WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift */,
@@ -5873,6 +5876,7 @@
 				CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */,
 				CA8276BA204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift in Sources */,
 				CAF9A9581F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift in Sources */,
+				CA36A4BA20D9AC9F00EE6537 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift in Sources */,
 				CA08157D20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift in Sources */,
 				CA63756E208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift in Sources */,
 				CA2D07F91FE9021A00BFD785 /* WhenResolvingDataStoreState.swift in Sources */,

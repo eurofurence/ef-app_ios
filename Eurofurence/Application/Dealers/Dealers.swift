@@ -81,10 +81,13 @@ class Dealers: DealersService {
 
     func fetchIconPNGData(for identifier: Dealer2.Identifier, completionHandler: @escaping (Data?) -> Void) {
         guard let dealer = models.first(where: { $0.identifier == identifier.rawValue }) else { return }
-        guard let iconIdentifier = dealer.artistThumbnailImageId else { return }
 
-        let artworkData = imageCache.cachedImageData(for: iconIdentifier)
-        completionHandler(artworkData)
+        var iconData: Data?
+        if let iconIdentifier = dealer.artistThumbnailImageId {
+            iconData = imageCache.cachedImageData(for: iconIdentifier)
+        }
+
+        completionHandler(iconData)
     }
 
     private func updateDealers(from dealers: [APIDealer]) {
