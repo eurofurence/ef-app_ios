@@ -188,7 +188,7 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                   attendsOnFriday: true,
                                                                   attendsOnSaturday: true,
                                                                   isAfterDark: true,
-                                                                  artistThumbnailImageId: "")],
+                                                                  artistThumbnailImageId: nil)],
                                               deleted: [APIDealer(identifier: "d53e6f6b-fdcb-4754-a4b9-6892e8d317d7",
                                                                   displayName: "",
                                                                   attendeeNickname: "Frazzle",
@@ -196,7 +196,7 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                   attendsOnFriday: true,
                                                                   attendsOnSaturday: true,
                                                                   isAfterDark: false,
-                                                                  artistThumbnailImageId: "")])
+                                                                  artistThumbnailImageId: "59b6023f-f739-4d40-a977-3d6bad1ab434")])
         
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,
