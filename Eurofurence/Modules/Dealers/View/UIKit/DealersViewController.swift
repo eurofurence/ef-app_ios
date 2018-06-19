@@ -16,6 +16,7 @@ class DealersViewController: UIViewController, DealersScene {
     private var tableController: TableController? {
         didSet {
             tableView.dataSource = tableController
+            tableView.delegate = tableController
         }
     }
 
@@ -24,6 +25,7 @@ class DealersViewController: UIViewController, DealersScene {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
         tableView.register(DealerComponentTableViewCell.self)
         delegate?.dealersSceneDidLoad()
     }
@@ -47,7 +49,17 @@ class DealersViewController: UIViewController, DealersScene {
 
     // MARK: Private
 
-    private class TableController: NSObject, UITableViewDataSource {
+    private class Header: UITableViewHeaderFooterView, DealerGroupHeader {
+
+        static let identifier = "Header"
+
+        func setDealersGroupTitle(_ title: String) {
+            textLabel?.text = title
+        }
+
+    }
+
+    private class TableController: NSObject, UITableViewDataSource, UITableViewDelegate {
 
         private let numberOfDealersPerSection: [Int]
         private let sectionIndexTitles: [String]
@@ -71,6 +83,12 @@ class DealersViewController: UIViewController, DealersScene {
             let cell = tableView.dequeue(DealerComponentTableViewCell.self)
             binder.bind(cell, toDealerAt: indexPath)
             return cell
+        }
+
+        func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.identifier) as! Header
+            binder.bind(header, toDealerGroupAt: section)
+            return header
         }
 
         func sectionIndexTitles(for tableView: UITableView) -> [String]? {
