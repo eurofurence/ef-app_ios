@@ -13,17 +13,23 @@ struct DefaultDealersInteractor: DealersInteractor {
     private let viewModel: ViewModel
 
     init(dealersService: DealersService) {
-        viewModel = ViewModel()
-        dealersService.add(viewModel)
+        let index = dealersService.makeDealersIndex()
+        viewModel = ViewModel(index: index)
     }
 
     func makeDealersViewModel(completionHandler: @escaping (DealersViewModel) -> Void) {
         completionHandler(viewModel)
     }
 
-    private class ViewModel: DealersViewModel, DealersServiceObserver {
+    private class ViewModel: DealersViewModel, DealersIndexDelegate {
 
+        private let index: DealersIndex
         private var groups = [DealersGroupViewModel]()
+
+        init(index: DealersIndex) {
+            self.index = index
+            index.setDelegate(self)
+        }
 
         private var delegate: DealersViewModelDelegate?
         func setDelegate(_ delegate: DealersViewModelDelegate) {
@@ -31,11 +37,10 @@ struct DefaultDealersInteractor: DealersInteractor {
             delegate.dealerGroupsDidChange(groups, indexTitles: [])
         }
 
-        func dealersDidChange(_ dealers: [Dealer2]) {
-            let grouped = Dictionary(grouping: dealers, by: { $0.preferredName.first! })
-            groups = grouped.map({ (key, _) -> DealersGroupViewModel in
-                return DealersGroupViewModel(title: String(key), dealers: [])
-            }).sorted(by: { $0.title < $1.title })
+        func alphabetisedDealersDidChange(to alphabetisedGroups: [AlphabetisedDealersGroup]) {
+            groups = alphabetisedGroups.map { (alphabetisedGroup) -> DealersGroupViewModel in
+                return DealersGroupViewModel(title: alphabetisedGroup.indexingString, dealers: [])
+            }
         }
 
     }

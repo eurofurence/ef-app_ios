@@ -9,17 +9,35 @@
 @testable import Eurofurence
 import XCTest
 
+class FakeDealersIndex: DealersIndex {
+    
+    var alphabetisedDealers = [AlphabetisedDealersGroup].random
+    
+    func setDelegate(_ delegate: DealersIndexDelegate) {
+        delegate.alphabetisedDealersDidChange(to: alphabetisedDealers)
+    }
+    
+}
+
+extension AlphabetisedDealersGroup: RandomValueProviding {
+    
+    static var random: AlphabetisedDealersGroup {
+        return AlphabetisedDealersGroup(indexingString: .random, dealers: .random)
+    }
+    
+}
+
 class WhenPreparingViewModel_DealersInteractorShould: XCTestCase {
     
-    func testGroupDealersByFirstCharacterOfTitle() {
-        let dealers = [Dealer2].random
-        let dealersService = FakeDealersService(dealers: dealers)
+    func testConvertIndexedDealersIntoExpectedGroupTitles() {
+        let dealersService = FakeDealersService()
         let interactor = DefaultDealersInteractor(dealersService: dealersService)
         var viewModel: DealersViewModel?
         interactor.makeDealersViewModel { viewModel = $0 }
         let delegate = CapturingDealersViewModelDelegate()
         viewModel?.setDelegate(delegate)
-        let expected = Dictionary(grouping: dealers, by: { $0.preferredName.first! }).map({ String($0.key) }).sorted()
+        let modelDealers = dealersService.lastCreatedDealersIndex?.alphabetisedDealers
+        let expected = modelDealers?.map { $0.indexingString }
         let actual = delegate.capturedGroups.map({ $0.title })
         
         XCTAssertEqual(expected, actual)

@@ -9,12 +9,13 @@
 @testable import Eurofurence
 import Foundation
 
-struct FakeDealersService: DealersService {
+class FakeDealersService: DealersService {
     
-    var dealers: [Dealer2]
-    
-    func add(_ dealersServiceObserver: DealersServiceObserver) {
-        dealersServiceObserver.dealersDidChange(dealers)
+    private(set) var lastCreatedDealersIndex: FakeDealersIndex?
+    func makeDealersIndex() -> DealersIndex {
+        let index = FakeDealersIndex()
+        lastCreatedDealersIndex = index
+        return index
     }
     
 }

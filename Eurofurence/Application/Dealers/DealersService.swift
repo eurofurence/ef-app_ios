@@ -10,12 +10,25 @@ import Foundation
 
 protocol DealersService {
 
-    func add(_ dealersServiceObserver: DealersServiceObserver)
+    func makeDealersIndex() -> DealersIndex
 
 }
 
-protocol DealersServiceObserver {
+protocol DealersIndex {
 
-    func dealersDidChange(_ dealers: [Dealer2])
+    func setDelegate(_ delegate: DealersIndexDelegate)
+
+}
+
+protocol DealersIndexDelegate {
+
+    func alphabetisedDealersDidChange(to alphabetisedGroups: [AlphabetisedDealersGroup])
+
+}
+
+struct AlphabetisedDealersGroup {
+
+    var indexingString: String
+    var dealers: [Dealer2]
 
 }
