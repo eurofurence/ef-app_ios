@@ -14,7 +14,7 @@ class V2SyncAPITests: XCTestCase {
     func testTheSyncEndpointShouldReceieveRequest() {
         let jsonSession = CapturingJSONSession()
         let syncApi = V2SyncAPI(jsonSession: jsonSession)
-        let url = "https://app.eurofurence.org/api/v2/Sync"
+        let url = "https://app.eurofurence.org:40000/api/v2/Sync"
         syncApi.fetchLatestData(lastSyncTime: nil) { (_) in }
         
         XCTAssertEqual(url, jsonSession.getRequestURL)
