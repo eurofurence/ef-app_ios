@@ -21,7 +21,7 @@ struct V2SyncAPI: SyncAPI {
     }
 
     func fetchLatestData(lastSyncTime: Date?, completionHandler: @escaping (APISyncResponse?) -> Void) {
-        let url = "https://app.eurofurence.org/api/v2/Sync"
+        let url = "https://app.eurofurence.org:40000/api/v2/Sync"
 
         var headers: [String: String] = [:]
         if let lastSyncTime = lastSyncTime {
