@@ -35,7 +35,12 @@ struct V2SyncAPI: SyncAPI {
             defer { completionHandler(response) }
 
             if let data = data {
-                response = (try? self.decoder.decode(JSONSyncResponse.self, from: data))?.asAPIResponse()
+                do {
+                    let decodedResponse = try self.decoder.decode(JSONSyncResponse.self, from: data)
+                    response = decodedResponse.asAPIResponse()
+                } catch {
+                    print(error)
+                }
             }
         }
     }
