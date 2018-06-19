@@ -61,10 +61,13 @@ class Dealers: DealersService {
     private struct UpdatedEvent {}
 
     private var dealerModels = [Dealer2]()
+    private var models = [APIDealer]()
     private let eventBus: EventBus
+    private let imageCache: ImagesCache
 
-    init(eventBus: EventBus, dataStore: EurofurenceDataStore) {
+    init(eventBus: EventBus, dataStore: EurofurenceDataStore, imageCache: ImagesCache) {
         self.eventBus = eventBus
+        self.imageCache = imageCache
         eventBus.subscribe(consumer: UpdateDealersWhenSyncOccurs(dealers: self))
 
         if let savedDealers = dataStore.getSavedDealers() {
@@ -77,10 +80,15 @@ class Dealers: DealersService {
     }
 
     func fetchIconPNGData(for identifier: Dealer2.Identifier, completionHandler: @escaping (Data?) -> Void) {
+        guard let dealer = models.first(where: { $0.identifier == identifier.rawValue }) else { return }
+        guard let iconIdentifier = dealer.artistThumbnailImageId else { return }
 
+        let artworkData = imageCache.cachedImageData(for: iconIdentifier)
+        completionHandler(artworkData)
     }
 
     private func updateDealers(from dealers: [APIDealer]) {
+        models = dealers
         dealerModels = dealers.map { (dealer) -> Dealer2 in
             var preferredName = dealer.displayName
             if preferredName.isEmpty {
