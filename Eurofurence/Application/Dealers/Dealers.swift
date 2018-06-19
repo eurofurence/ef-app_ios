@@ -10,18 +10,26 @@ import Foundation
 
 class Dealers: DealersService {
 
-    class Index: DealersIndex {
+    private class Index: DealersIndex, EventConsumer {
 
         private let dealers: Dealers
         private var alphebetisedDealers = [AlphabetisedDealersGroup]()
 
-        init(dealers: Dealers) {
+        init(dealers: Dealers, eventBus: EventBus) {
             self.dealers = dealers
+            eventBus.subscribe(consumer: self)
         }
 
+        private var delegate: DealersIndexDelegate?
         func setDelegate(_ delegate: DealersIndexDelegate) {
+            self.delegate = delegate
             updateAlphebetisedDealers()
             delegate.alphabetisedDealersDidChange(to: alphebetisedDealers)
+        }
+
+        func consume(event: Dealers.UpdatedEvent) {
+            updateAlphebetisedDealers()
+            delegate?.alphabetisedDealersDidChange(to: alphebetisedDealers)
         }
 
         private func updateAlphebetisedDealers() {
@@ -50,14 +58,18 @@ class Dealers: DealersService {
 
     }
 
+    private struct UpdatedEvent {}
+
     private var dealerModels = [Dealer2]()
+    private let eventBus: EventBus
 
     init(eventBus: EventBus) {
+        self.eventBus = eventBus
         eventBus.subscribe(consumer: UpdateDealersWhenSyncOccurs(dealers: self))
     }
 
     func makeDealersIndex() -> DealersIndex {
-        return Index(dealers: self)
+        return Index(dealers: self, eventBus: eventBus)
     }
 
     func fetchIconPNGData(for identifier: Dealer2.Identifier, completionHandler: @escaping (Data?) -> Void) {
@@ -74,6 +86,8 @@ class Dealers: DealersService {
                            isAttendingOnSaturday: false,
                            isAfterDark: false)
         }
+
+        eventBus.post(Dealers.UpdatedEvent())
     }
 
 }
