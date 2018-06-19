@@ -71,6 +71,11 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
         XCTAssertEqual(expected, response?.conferenceDays)
     }
     
+    func testProduceExpectedDealers() {
+        let expected = makeExpectedSyncResponseFromTestFile().dealers
+        XCTAssertEqual(expected, response?.dealers)
+    }
+    
     private func makeExpectedSyncResponseFromTestFile() -> APISyncResponse {
         let knowledgeGroups = APISyncDelta<APIKnowledgeGroup>(changed: [APIKnowledgeGroup(identifier: "ec031cbf-d8d0-825d-4c36-b782ed8d19d8",
                                                                                           order: 0,
@@ -176,6 +181,21 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                             deleted: [APIConferenceDay(identifier: "db8e0455-8c49-4bc5-b472-e0033fe06b99",
                                                                                        date: deletedConferenceDayDate)])
         
+        let dealers = APISyncDelta<APIDealer>(changed: [APIDealer(identifier: "f112a4db-7856-4087-806d-b2704717dba3",
+                                                                  displayName: "Akifu Toys",
+                                                                  attendeeNickname: "Akeela",
+                                                                  attendsOnThursday: true,
+                                                                  attendsOnFriday: true,
+                                                                  attendsOnSaturday: true,
+                                                                  isAfterDark: true)],
+                                              deleted: [APIDealer(identifier: "d53e6f6b-fdcb-4754-a4b9-6892e8d317d7",
+                                                                  displayName: "",
+                                                                  attendeeNickname: "Frazzle",
+                                                                  attendsOnThursday: true,
+                                                                  attendsOnFriday: true,
+                                                                  attendsOnSaturday: true,
+                                                                  isAfterDark: false)])
+        
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,
                                announcements: APISyncDelta(),
@@ -183,7 +203,7 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                rooms: rooms,
                                tracks: tracks,
                                conferenceDays: conferenceDays,
-                               dealers: APISyncDelta())
+                               dealers: dealers)
     }
     
 }
