@@ -18,7 +18,7 @@ struct DealersGroupViewModel {
 protocol DealerViewModel {
 
     var title: String { get }
-    var subtitle: String { get }
+    var subtitle: String? { get }
     var isPresentForAllDays: Bool { get }
     var isAfterDarkContentPresent: Bool { get }
 

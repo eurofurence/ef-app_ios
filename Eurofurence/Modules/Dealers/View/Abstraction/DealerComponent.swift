@@ -11,7 +11,7 @@ import Foundation
 protocol DealerComponent {
 
     func setDealerTitle(_ title: String)
-    func setDealerSubtitle(_ subtitle: String)
+    func setDealerSubtitle(_ subtitle: String?)
     func setDealerIconPNGData(_ pngData: Data)
     func showNotPresentOnAllDaysWarning()
     func hideNotPresentOnAllDaysWarning()

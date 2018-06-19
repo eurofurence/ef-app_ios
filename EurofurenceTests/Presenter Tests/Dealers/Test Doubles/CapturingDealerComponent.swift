@@ -17,7 +17,7 @@ class CapturingDealerComponent: DealerComponent {
     }
     
     private(set) var capturedDealerSubtitle: String?
-    func setDealerSubtitle(_ subtitle: String) {
+    func setDealerSubtitle(_ subtitle: String?) {
         capturedDealerSubtitle = subtitle
     }
     

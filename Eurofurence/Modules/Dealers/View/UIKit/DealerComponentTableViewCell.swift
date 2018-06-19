@@ -34,7 +34,7 @@ class DealerComponentTableViewCell: UITableViewCell, DealerComponent {
         dealerTitleLabel.text = title
     }
 
-    func setDealerSubtitle(_ subtitle: String) {
+    func setDealerSubtitle(_ subtitle: String?) {
         dealerSubtitleLabel.text = subtitle
     }
 

@@ -53,7 +53,7 @@ struct DefaultDealersInteractor: DealersInteractor {
         }
 
         var title: String = ""
-        var subtitle: String = ""
+        var subtitle: String?
         var isPresentForAllDays: Bool = false
         var isAfterDarkContentPresent: Bool = false
 
