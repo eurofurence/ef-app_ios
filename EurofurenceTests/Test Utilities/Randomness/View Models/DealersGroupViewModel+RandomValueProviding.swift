@@ -12,7 +12,7 @@ import Foundation
 extension DealersGroupViewModel: RandomValueProviding {
     
     static var random: DealersGroupViewModel {
-        return DealersGroupViewModel(dealers: [StubDealerViewModel].random)
+        return DealersGroupViewModel(title: .random, dealers: [StubDealerViewModel].random)
     }
     
 }

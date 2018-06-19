@@ -10,6 +10,7 @@ import Foundation
 
 struct DealersGroupViewModel {
 
+    var title: String
     var dealers: [DealerViewModel]
 
 }

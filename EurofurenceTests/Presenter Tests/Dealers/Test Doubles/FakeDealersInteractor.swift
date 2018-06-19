@@ -14,8 +14,12 @@ struct FakeDealersInteractor: DealersInteractor {
     var viewModel: DealersViewModel
     
     init(dealerViewModel: DealerViewModel) {
-        let group = DealersGroupViewModel(dealers: [dealerViewModel])
-        let viewModel = CapturingDealersViewModel(dealerGroups: [group])
+        let group = DealersGroupViewModel(title: .random, dealers: [dealerViewModel])
+        self.init(dealerGroupViewModels: [group])
+    }
+    
+    init(dealerGroupViewModels: [DealersGroupViewModel]) {
+        let viewModel = CapturingDealersViewModel(dealerGroups: dealerGroupViewModels)
         self.init(viewModel: viewModel)
     }
     

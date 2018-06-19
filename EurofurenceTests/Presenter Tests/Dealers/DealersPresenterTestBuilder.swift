@@ -42,6 +42,15 @@ class DealersPresenterTestBuilder {
     
 }
 
+class CapturingDealerGroupHeader: DealerGroupHeader {
+    
+    private(set) var capturedDealersGroupTitle: String?
+    func setDealersGroupTitle(_ title: String) {
+        capturedDealersGroupTitle = title
+    }
+    
+}
+
 extension DealersPresenterTestBuilder.Context {
     
     func simulateSceneDidLoad() {
@@ -54,8 +63,18 @@ extension DealersPresenterTestBuilder.Context {
         return component
     }
     
+    func makeAndBindComponentHeader(at index: Int) -> CapturingDealerGroupHeader {
+        let component = CapturingDealerGroupHeader()
+        bind(component, toDealerGroupAt: index)
+        return component
+    }
+    
     func bind(_ component: DealerComponent, toDealerAt indexPath: IndexPath) {
         scene.binder?.bind(component, toDealerAt: indexPath)
+    }
+    
+    func bind(_ component: DealerGroupHeader, toDealerGroupAt index: Int) {
+        scene.binder?.bind(component, toDealerGroupAt: index)
     }
     
 }
