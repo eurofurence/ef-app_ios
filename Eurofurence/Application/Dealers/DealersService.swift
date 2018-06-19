@@ -27,7 +27,7 @@ protocol DealersIndexDelegate {
 
 }
 
-struct AlphabetisedDealersGroup {
+struct AlphabetisedDealersGroup: Equatable {
 
     var indexingString: String
     var dealers: [Dealer2]

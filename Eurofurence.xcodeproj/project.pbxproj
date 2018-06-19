@@ -452,6 +452,8 @@
 		CA36A4A620D9847200EE6537 /* WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4A520D9847200EE6537 /* WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift */; };
 		CA36A4A820D984E400EE6537 /* Dealers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4A720D984E400EE6537 /* Dealers.swift */; };
 		CA36A4AA20D985FD00EE6537 /* CapturingDealersIndexDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4A920D985FD00EE6537 /* CapturingDealersIndexDelegate.swift */; };
+		CA36A4AC20D988D800EE6537 /* WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4AB20D988D800EE6537 /* WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould.swift */; };
+		CA36A4AE20D9895600EE6537 /* APIDealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4AD20D9895600EE6537 /* APIDealer.swift */; };
 		CA3990ED20ACD35C001E3F1A /* HoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */; };
 		CA3990EF20ACD559001E3F1A /* FoundationHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */; };
 		CA3990F220ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */; };
@@ -1421,6 +1423,8 @@
 		CA36A4A520D9847200EE6537 /* WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA36A4A720D984E400EE6537 /* Dealers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dealers.swift; sourceTree = "<group>"; };
 		CA36A4A920D985FD00EE6537 /* CapturingDealersIndexDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDealersIndexDelegate.swift; sourceTree = "<group>"; };
+		CA36A4AB20D988D800EE6537 /* WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA36A4AD20D9895600EE6537 /* APIDealer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDealer.swift; sourceTree = "<group>"; };
 		CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationHoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUpcomingEventsBeforeLoadingAnything.swift; sourceTree = "<group>"; };
@@ -3081,6 +3085,7 @@
 		CA36A4A420D9845A00EE6537 /* Dealers */ = {
 			isa = PBXGroup;
 			children = (
+				CA36A4AB20D988D800EE6537 /* WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould.swift */,
 				CA36A4A520D9847200EE6537 /* WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift */,
 			);
 			path = Dealers;
@@ -4589,6 +4594,7 @@
 			children = (
 				CA65A2222091F6020078A4A7 /* APIAnnouncement.swift */,
 				CA08157E20D3D52D00F750D4 /* APIConferenceDay.swift */,
+				CA36A4AD20D9895600EE6537 /* APIDealer.swift */,
 				CA162EB720AA2FB9004AFED6 /* APIEvent.swift */,
 				CAF5979920449A1D00089BE8 /* APIKnowledgeEntry.swift */,
 				CAF5979720449A1100089BE8 /* APIKnowledgeGroup.swift */,
@@ -5605,6 +5611,7 @@
 				CA8276B3204EC013006A7419 /* ApplicationPreloadInteractor.swift in Sources */,
 				78567B471F10D1C400EBA31D /* DataStoreLoadController.swift in Sources */,
 				9A861EA21F2554AB00B75A8C /* ShowInitiateDownloadTutorialPage.swift in Sources */,
+				CA36A4AE20D9895600EE6537 /* APIDealer.swift in Sources */,
 				CA30EAD01F27D8620053DBF6 /* MessageTableViewCell.swift in Sources */,
 				CAD3BDC92061382000C91E6E /* URLOpener.swift in Sources */,
 				D6F3D0434C71907BD410190E /* ImageServiceProtocol.swift in Sources */,
@@ -5808,6 +5815,7 @@
 				CA30EABA1F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift in Sources */,
 				CA6AA0101FD73CFE0092C6DB /* PreloadViewControllerTests.swift in Sources */,
 				78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */,
+				CA36A4AC20D988D800EE6537 /* WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould.swift in Sources */,
 				CA60BFE8207B88ED00697566 /* WhenBuildingNewsPresenter.swift in Sources */,
 				CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */,
 				CACF1E5F20AE2EF400D904B5 /* StubEventDetailSceneFactory.swift in Sources */,

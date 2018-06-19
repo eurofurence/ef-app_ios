@@ -205,6 +205,16 @@ class ApplicationTestBuilder {
             return response.conferenceDays.changed.map(makeExpectedDay).sorted(by: { $0.date < $1.date })
         }
         
+        func makeExpectedDealer(from dealer: APIDealer) -> Dealer2 {
+            return Dealer2(identifier: Dealer2.Identifier(""),
+                           preferredName: dealer.displayName,
+                           alternateName: nil,
+                           isAttendingOnThursday: false,
+                           isAttendingOnFriday: false,
+                           isAttendingOnSaturday: false,
+                           isAfterDark: false)
+        }
+        
         func simulateSignificantTimeChange() {
             significantTimeChangeAdapter.simulateSignificantTimeChange()
         }

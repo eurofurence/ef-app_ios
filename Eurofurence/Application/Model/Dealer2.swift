@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Dealer2 {
+struct Dealer2: Equatable {
 
     struct Identifier: Equatable, Hashable, RawRepresentable {
 

@@ -29,5 +29,6 @@ struct APISyncResponse: Equatable {
     var rooms: APISyncDelta<APIRoom>
     var tracks: APISyncDelta<APITrack>
     var conferenceDays: APISyncDelta<APIConferenceDay>
+    var dealers: APISyncDelta<APIDealer>
 
 }
