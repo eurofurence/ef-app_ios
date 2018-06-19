@@ -82,13 +82,13 @@ class Dealers: DealersService {
 
     private func updateDealers(from dealers: [APIDealer]) {
         dealerModels = dealers.map { (dealer) -> Dealer2 in
-            return Dealer2(identifier: Dealer2.Identifier(""),
+            return Dealer2(identifier: Dealer2.Identifier(dealer.identifier),
                            preferredName: dealer.displayName,
                            alternateName: dealer.attendeeNickname == dealer.displayName ? nil : dealer.attendeeNickname,
-                           isAttendingOnThursday: false,
-                           isAttendingOnFriday: false,
-                           isAttendingOnSaturday: false,
-                           isAfterDark: false)
+                           isAttendingOnThursday: dealer.attendsOnThursday,
+                           isAttendingOnFriday: dealer.attendsOnFriday,
+                           isAttendingOnSaturday: dealer.attendsOnSaturday,
+                           isAfterDark: dealer.isAfterDark)
         }
 
         eventBus.post(Dealers.UpdatedEvent())

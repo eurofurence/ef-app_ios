@@ -154,7 +154,13 @@ extension APIConferenceDay: RandomValueProviding {
 extension APIDealer: RandomValueProviding {
     
     static var random: APIDealer {
-        return APIDealer(displayName: .random, attendeeNickname: .random)
+        return APIDealer(identifier: .random,
+                         displayName: .random,
+                         attendeeNickname: .random,
+                         attendsOnThursday: .random,
+                         attendsOnFriday: .random,
+                         attendsOnSaturday: .random,
+                         isAfterDark: .random)
     }
     
 }

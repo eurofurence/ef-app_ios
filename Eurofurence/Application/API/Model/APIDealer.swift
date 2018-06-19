@@ -10,7 +10,12 @@ import Foundation
 
 struct APIDealer: Equatable {
 
+    var identifier: String
     var displayName: String
     var attendeeNickname: String
+    var attendsOnThursday: Bool
+    var attendsOnFriday: Bool
+    var attendsOnSaturday: Bool
+    var isAfterDark: Bool
 
 }

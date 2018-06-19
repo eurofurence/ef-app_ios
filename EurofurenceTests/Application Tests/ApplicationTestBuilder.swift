@@ -206,13 +206,13 @@ class ApplicationTestBuilder {
         }
         
         func makeExpectedDealer(from dealer: APIDealer) -> Dealer2 {
-            return Dealer2(identifier: Dealer2.Identifier(""),
+            return Dealer2(identifier: Dealer2.Identifier(dealer.identifier),
                            preferredName: dealer.displayName,
                            alternateName: dealer.attendeeNickname == dealer.displayName ? nil : dealer.attendeeNickname,
-                           isAttendingOnThursday: false,
-                           isAttendingOnFriday: false,
-                           isAttendingOnSaturday: false,
-                           isAfterDark: false)
+                           isAttendingOnThursday: dealer.attendsOnThursday,
+                           isAttendingOnFriday: dealer.attendsOnFriday,
+                           isAttendingOnSaturday: dealer.attendsOnSaturday,
+                           isAfterDark: dealer.isAfterDark)
         }
         
         func makeExpectedAlphabetisedDealers(from response: APISyncResponse) -> [AlphabetisedDealersGroup] {
