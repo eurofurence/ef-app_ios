@@ -12,8 +12,8 @@ struct DefaultDealersInteractor: DealersInteractor {
 
     private let viewModel: ViewModel
 
-    init(dealersService: DealersService) {
-        viewModel = ViewModel(dealersService: dealersService)
+    init(dealersService: DealersService, defaultIconData: Data = Data()) {
+        viewModel = ViewModel(dealersService: dealersService, defaultIconData: defaultIconData)
     }
 
     func makeDealersViewModel(completionHandler: @escaping (DealersViewModel) -> Void) {
@@ -24,10 +24,12 @@ struct DefaultDealersInteractor: DealersInteractor {
 
         private let index: DealersIndex
         private let dealersService: DealersService
+        private let defaultIconData: Data
         private var groups = [DealersGroupViewModel]()
 
-        init(dealersService: DealersService) {
+        init(dealersService: DealersService, defaultIconData: Data) {
             self.dealersService = dealersService
+            self.defaultIconData = defaultIconData
             self.index = dealersService.makeDealersIndex()
 
             index.setDelegate(self)
@@ -47,7 +49,7 @@ struct DefaultDealersInteractor: DealersInteractor {
         }
 
         private func makeDealerViewModel(for dealer: Dealer2) -> DealerVM {
-            return DealerVM(dealer: dealer, dealersService: dealersService)
+            return DealerVM(dealer: dealer, dealersService: dealersService, defaultIconData: defaultIconData)
         }
 
     }
@@ -56,10 +58,12 @@ struct DefaultDealersInteractor: DealersInteractor {
 
         private let dealer: Dealer2
         private let dealersService: DealersService
+        private let defaultIconData: Data
 
-        init(dealer: Dealer2, dealersService: DealersService) {
+        init(dealer: Dealer2, dealersService: DealersService, defaultIconData: Data) {
             self.dealer = dealer
             self.dealersService = dealersService
+            self.defaultIconData = defaultIconData
 
             title = dealer.preferredName
             subtitle = dealer.alternateName
@@ -74,9 +78,7 @@ struct DefaultDealersInteractor: DealersInteractor {
 
         func fetchIconPNGData(completionHandler: @escaping (Data) -> Void) {
             dealersService.fetchIconPNGData(for: dealer.identifier) { (iconPNGData) in
-                if let iconPNGData = iconPNGData {
-                    completionHandler(iconPNGData)
-                }
+                completionHandler(iconPNGData ?? self.defaultIconData)
             }
         }
 

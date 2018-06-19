@@ -448,6 +448,7 @@
 		CA36A49D20D97D0100EE6537 /* WhenResolvingDealerAvailability_DealersInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A49C20D97D0100EE6537 /* WhenResolvingDealerAvailability_DealersInteractorShould.swift */; };
 		CA36A49F20D97FAA00EE6537 /* WhenResolvingDealerAfterDarkContent_DealersInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A49E20D97FAA00EE6537 /* WhenResolvingDealerAfterDarkContent_DealersInteractorShould.swift */; };
 		CA36A4A120D9813D00EE6537 /* WhenFetchingIconDataForDealerWithAvatar_DealersInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4A020D9813D00EE6537 /* WhenFetchingIconDataForDealerWithAvatar_DealersInteractorShould.swift */; };
+		CA36A4A320D9834900EE6537 /* WhenFetchingIconDataForDealerWithoutAvatar_DealersInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4A220D9834900EE6537 /* WhenFetchingIconDataForDealerWithoutAvatar_DealersInteractorShould.swift */; };
 		CA3990ED20ACD35C001E3F1A /* HoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */; };
 		CA3990EF20ACD559001E3F1A /* FoundationHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */; };
 		CA3990F220ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */; };
@@ -1413,6 +1414,7 @@
 		CA36A49C20D97D0100EE6537 /* WhenResolvingDealerAvailability_DealersInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResolvingDealerAvailability_DealersInteractorShould.swift; sourceTree = "<group>"; };
 		CA36A49E20D97FAA00EE6537 /* WhenResolvingDealerAfterDarkContent_DealersInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResolvingDealerAfterDarkContent_DealersInteractorShould.swift; sourceTree = "<group>"; };
 		CA36A4A020D9813D00EE6537 /* WhenFetchingIconDataForDealerWithAvatar_DealersInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingIconDataForDealerWithAvatar_DealersInteractorShould.swift; sourceTree = "<group>"; };
+		CA36A4A220D9834900EE6537 /* WhenFetchingIconDataForDealerWithoutAvatar_DealersInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingIconDataForDealerWithoutAvatar_DealersInteractorShould.swift; sourceTree = "<group>"; };
 		CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationHoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUpcomingEventsBeforeLoadingAnything.swift; sourceTree = "<group>"; };
@@ -3051,6 +3053,7 @@
 			isa = PBXGroup;
 			children = (
 				CA36A4A020D9813D00EE6537 /* WhenFetchingIconDataForDealerWithAvatar_DealersInteractorShould.swift */,
+				CA36A4A220D9834900EE6537 /* WhenFetchingIconDataForDealerWithoutAvatar_DealersInteractorShould.swift */,
 				CA36A48920D927D200EE6537 /* WhenPreparingViewModel_DealersInteractorShould.swift */,
 				CA36A49E20D97FAA00EE6537 /* WhenResolvingDealerAfterDarkContent_DealersInteractorShould.swift */,
 				CA36A49C20D97D0100EE6537 /* WhenResolvingDealerAvailability_DealersInteractorShould.swift */,
@@ -5747,6 +5750,7 @@
 				CA00AE4B20D16BF300C2FBB0 /* StubScheduleViewModel+RandomValueProviding.swift in Sources */,
 				CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */,
 				CA52C68D20D6A9EB009D3A9E /* WhenSceneSelectsEvent_SchedulePresenterShould.swift in Sources */,
+				CA36A4A320D9834900EE6537 /* WhenFetchingIconDataForDealerWithoutAvatar_DealersInteractorShould.swift in Sources */,
 				CA321F4E1F7BC7FD0050E489 /* PhonePreloadSceneFactoryTests.swift in Sources */,
 				78C86D791F12ADF8003A20E6 /* CapturingSplashScene.swift in Sources */,
 				78C86D4C1F119B2F003A20E6 /* StoryboardSplashScreenRouterTests.swift in Sources */,
