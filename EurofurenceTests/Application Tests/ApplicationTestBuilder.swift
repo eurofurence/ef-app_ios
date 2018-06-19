@@ -215,6 +215,23 @@ class ApplicationTestBuilder {
                            isAfterDark: false)
         }
         
+        func makeExpectedAlphabetisedDealers(from response: APISyncResponse) -> [AlphabetisedDealersGroup] {
+            let dealers: [APIDealer] = response.dealers.changed
+            let indexTitles = dealers.map({ String($0.displayName.first!) })
+            var dealersByIndexBuckets = [String : [Dealer2]]()
+            for title in indexTitles {
+                let dealersInBucket = dealers.filter({ $0.displayName.hasPrefix(title) })
+                    .sorted(by: { $0.displayName < $1.displayName })
+                    .map(makeExpectedDealer)
+                dealersByIndexBuckets[title] = dealersInBucket
+            }
+            
+            return dealersByIndexBuckets.sorted(by: { $0.key < $1.key }).map { (arg) -> AlphabetisedDealersGroup in
+                let (title, dealers) = arg
+                return AlphabetisedDealersGroup(indexingString: title, dealers: dealers)
+            }
+        }
+        
         func simulateSignificantTimeChange() {
             significantTimeChangeAdapter.simulateSignificantTimeChange()
         }

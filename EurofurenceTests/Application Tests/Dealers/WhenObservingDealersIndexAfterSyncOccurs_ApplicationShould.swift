@@ -19,19 +19,7 @@ class WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould: XCTestCase {
         let dealersIndex = context.application.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
-        
-        let dealers: [APIDealer] = syncResponse.dealers.changed
-        let indexTitles = dealers.map({ String($0.displayName.first!) })
-        var dealersByIndexBuckets = [String : [Dealer2]]()
-        for title in indexTitles {
-            let dealersInBucket = dealers.filter({ $0.displayName.hasPrefix(title) }).sorted(by: { $0.displayName < $1.displayName }).map(context.makeExpectedDealer)
-            dealersByIndexBuckets[title] = dealersInBucket
-        }
-        
-        let expected = dealersByIndexBuckets.sorted(by: { $0.key < $1.key }).map { (arg) -> AlphabetisedDealersGroup in
-            let (title, dealers) = arg
-            return AlphabetisedDealersGroup(indexingString: title, dealers: dealers)
-        }
+        let expected = context.makeExpectedAlphabetisedDealers(from: syncResponse)
         
         XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerGroups)
     }
