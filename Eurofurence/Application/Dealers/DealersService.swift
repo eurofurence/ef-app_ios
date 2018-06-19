@@ -11,6 +11,7 @@ import Foundation
 protocol DealersService {
 
     func makeDealersIndex() -> DealersIndex
+    func fetchIconPNGData(for identifier: Dealer2.Identifier, completionHandler: @escaping (Data?) -> Void)
 
 }
 

@@ -10,6 +10,24 @@ import Foundation
 
 struct Dealer2 {
 
+    struct Identifier: Equatable, Hashable, RawRepresentable {
+
+        typealias RawValue = String
+
+        init(_ value: String) {
+            self.rawValue = value
+        }
+
+        init?(rawValue: String) {
+            self.rawValue = rawValue
+        }
+
+        var rawValue: String
+
+    }
+
+    var identifier: Dealer2.Identifier
+
     var preferredName: String
     var alternateName: String?
 

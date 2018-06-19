@@ -13,8 +13,7 @@ struct DefaultDealersInteractor: DealersInteractor {
     private let viewModel: ViewModel
 
     init(dealersService: DealersService) {
-        let index = dealersService.makeDealersIndex()
-        viewModel = ViewModel(index: index)
+        viewModel = ViewModel(dealersService: dealersService)
     }
 
     func makeDealersViewModel(completionHandler: @escaping (DealersViewModel) -> Void) {
@@ -24,10 +23,13 @@ struct DefaultDealersInteractor: DealersInteractor {
     private class ViewModel: DealersViewModel, DealersIndexDelegate {
 
         private let index: DealersIndex
+        private let dealersService: DealersService
         private var groups = [DealersGroupViewModel]()
 
-        init(index: DealersIndex) {
-            self.index = index
+        init(dealersService: DealersService) {
+            self.dealersService = dealersService
+            self.index = dealersService.makeDealersIndex()
+
             index.setDelegate(self)
         }
 
@@ -40,15 +42,25 @@ struct DefaultDealersInteractor: DealersInteractor {
         func alphabetisedDealersDidChange(to alphabetisedGroups: [AlphabetisedDealersGroup]) {
             groups = alphabetisedGroups.map { (alphabetisedGroup) -> DealersGroupViewModel in
                 return DealersGroupViewModel(title: alphabetisedGroup.indexingString,
-                                             dealers: alphabetisedGroup.dealers.map(DealerVM.init))
+                                             dealers: alphabetisedGroup.dealers.map(makeDealerViewModel))
             }
+        }
+
+        private func makeDealerViewModel(for dealer: Dealer2) -> DealerVM {
+            return DealerVM(dealer: dealer, dealersService: dealersService)
         }
 
     }
 
     private struct DealerVM: DealerViewModel {
 
-        init(dealer: Dealer2) {
+        private let dealer: Dealer2
+        private let dealersService: DealersService
+
+        init(dealer: Dealer2, dealersService: DealersService) {
+            self.dealer = dealer
+            self.dealersService = dealersService
+
             title = dealer.preferredName
             subtitle = dealer.alternateName
             isPresentForAllDays = dealer.isAttendingOnThursday && dealer.isAttendingOnFriday && dealer.isAttendingOnSaturday
@@ -61,7 +73,11 @@ struct DefaultDealersInteractor: DealersInteractor {
         var isAfterDarkContentPresent: Bool = false
 
         func fetchIconPNGData(completionHandler: @escaping (Data) -> Void) {
-
+            dealersService.fetchIconPNGData(for: dealer.identifier) { (iconPNGData) in
+                if let iconPNGData = iconPNGData {
+                    completionHandler(iconPNGData)
+                }
+            }
         }
 
     }

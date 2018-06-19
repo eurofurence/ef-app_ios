@@ -21,4 +21,17 @@ class FakeDealersService: DealersService {
         return index
     }
     
+    fileprivate var iconData = [Dealer2.Identifier : Data]()
+    func fetchIconPNGData(for identifier: Dealer2.Identifier, completionHandler: @escaping (Data?) -> Void) {
+        completionHandler(iconData[identifier])
+    }
+    
+}
+
+extension FakeDealersService {
+    
+    func stubIconPNGData(_ data: Data, for identifier: Dealer2.Identifier) {
+        iconData[identifier] = data
+    }
+    
 }
