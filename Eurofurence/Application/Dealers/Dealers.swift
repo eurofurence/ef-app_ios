@@ -84,7 +84,7 @@ class Dealers: DealersService {
         dealerModels = dealers.map { (dealer) -> Dealer2 in
             return Dealer2(identifier: Dealer2.Identifier(""),
                            preferredName: dealer.displayName,
-                           alternateName: nil,
+                           alternateName: dealer.attendeeNickname == dealer.displayName ? nil : dealer.attendeeNickname,
                            isAttendingOnThursday: false,
                            isAttendingOnFriday: false,
                            isAttendingOnSaturday: false,

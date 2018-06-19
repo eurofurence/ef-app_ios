@@ -11,5 +11,6 @@ import Foundation
 struct APIDealer: Equatable {
 
     var displayName: String
+    var attendeeNickname: String
 
 }

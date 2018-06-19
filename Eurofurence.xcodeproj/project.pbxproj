@@ -456,6 +456,7 @@
 		CA36A4AE20D9895600EE6537 /* APIDealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4AD20D9895600EE6537 /* APIDealer.swift */; };
 		CA36A4B020D9983D00EE6537 /* WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4AF20D9983D00EE6537 /* WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift */; };
 		CA36A4B220D99AA300EE6537 /* WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4B120D99AA300EE6537 /* WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift */; };
+		CA36A4B420D99C4B00EE6537 /* WhenAdaptingDealersFromResponse_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4B320D99C4B00EE6537 /* WhenAdaptingDealersFromResponse_ApplicationShould.swift */; };
 		CA3990ED20ACD35C001E3F1A /* HoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */; };
 		CA3990EF20ACD559001E3F1A /* FoundationHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */; };
 		CA3990F220ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */; };
@@ -1429,6 +1430,7 @@
 		CA36A4AD20D9895600EE6537 /* APIDealer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDealer.swift; sourceTree = "<group>"; };
 		CA36A4AF20D9983D00EE6537 /* WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA36A4B120D99AA300EE6537 /* WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA36A4B320D99C4B00EE6537 /* WhenAdaptingDealersFromResponse_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAdaptingDealersFromResponse_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationHoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUpcomingEventsBeforeLoadingAnything.swift; sourceTree = "<group>"; };
@@ -3089,10 +3091,11 @@
 		CA36A4A420D9845A00EE6537 /* Dealers */ = {
 			isa = PBXGroup;
 			children = (
+				CA36A4B320D99C4B00EE6537 /* WhenAdaptingDealersFromResponse_ApplicationShould.swift */,
+				CA36A4B120D99AA300EE6537 /* WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift */,
 				CA36A4AB20D988D800EE6537 /* WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould.swift */,
 				CA36A4A520D9847200EE6537 /* WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift */,
 				CA36A4AF20D9983D00EE6537 /* WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift */,
-				CA36A4B120D99AA300EE6537 /* WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift */,
 			);
 			path = Dealers;
 			sourceTree = "<group>";
@@ -5958,6 +5961,7 @@
 				CA0F7621203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift in Sources */,
 				CA162EAA20AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift in Sources */,
 				7820A6ED1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift in Sources */,
+				CA36A4B420D99C4B00EE6537 /* WhenAdaptingDealersFromResponse_ApplicationShould.swift in Sources */,
 				CACF1EB020B5F86700D904B5 /* WhenBindingEventBanner_EventDetailPresenterShould.swift in Sources */,
 				CA52C68720D6A671009D3A9E /* WhenResolvingEventByIdentifier_ForEventThatDoesNotExist_ApplicationShould.swift in Sources */,
 				CA728467209D1197007D912A /* WhenAnnouncementDetailSceneDidLoad_AnnouncementDetailPresenterShould.swift in Sources */,
