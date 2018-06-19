@@ -11,10 +11,8 @@ import Foundation
 
 class FakeDealersService: DealersService {
     
-    private(set) var lastCreatedDealersIndex: FakeDealersIndex?
+    let index = FakeDealersIndex()
     func makeDealersIndex() -> DealersIndex {
-        let index = FakeDealersIndex()
-        lastCreatedDealersIndex = index
         return index
     }
     

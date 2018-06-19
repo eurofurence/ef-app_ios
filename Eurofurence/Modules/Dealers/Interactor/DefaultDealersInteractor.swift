@@ -39,13 +39,18 @@ struct DefaultDealersInteractor: DealersInteractor {
 
         func alphabetisedDealersDidChange(to alphabetisedGroups: [AlphabetisedDealersGroup]) {
             groups = alphabetisedGroups.map { (alphabetisedGroup) -> DealersGroupViewModel in
-                return DealersGroupViewModel(title: alphabetisedGroup.indexingString, dealers: [])
+                return DealersGroupViewModel(title: alphabetisedGroup.indexingString,
+                                             dealers: alphabetisedGroup.dealers.map(DealerVM.init))
             }
         }
 
     }
 
     private struct DealerVM: DealerViewModel {
+
+        init(dealer: Dealer2) {
+            title = dealer.preferredName
+        }
 
         var title: String = ""
         var subtitle: String = ""

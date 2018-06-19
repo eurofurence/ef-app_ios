@@ -19,3 +19,16 @@ class CapturingDealersViewModelDelegate: DealersViewModelDelegate {
     }
     
 }
+
+extension CapturingDealersViewModelDelegate {
+    
+    func capturedDealerViewModel(at indexPath: IndexPath) -> DealerViewModel? {
+        guard capturedGroups.count > indexPath.section else { return nil }
+        
+        let group = capturedGroups[indexPath.section]
+        guard group.dealers.count > indexPath.item else { return nil }
+        
+        return group.dealers[indexPath.item]
+    }
+    
+}

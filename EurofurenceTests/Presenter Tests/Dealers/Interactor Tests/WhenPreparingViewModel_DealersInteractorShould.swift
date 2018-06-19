@@ -18,8 +18,8 @@ class WhenPreparingViewModel_DealersInteractorShould: XCTestCase {
         interactor.makeDealersViewModel { viewModel = $0 }
         let delegate = CapturingDealersViewModelDelegate()
         viewModel?.setDelegate(delegate)
-        let modelDealers = dealersService.lastCreatedDealersIndex?.alphabetisedDealers
-        let expected = modelDealers?.map { $0.indexingString }
+        let modelDealers = dealersService.index.alphabetisedDealers
+        let expected = modelDealers.map { $0.indexingString }
         let actual = delegate.capturedGroups.map({ $0.title })
         
         XCTAssertEqual(expected, actual)
@@ -32,11 +32,27 @@ class WhenPreparingViewModel_DealersInteractorShould: XCTestCase {
         interactor.makeDealersViewModel { viewModel = $0 }
         let delegate = CapturingDealersViewModelDelegate()
         viewModel?.setDelegate(delegate)
-        let modelDealers = dealersService.lastCreatedDealersIndex?.alphabetisedDealers
-        let expected = modelDealers?.map { $0.indexingString }
+        let modelDealers = dealersService.index.alphabetisedDealers
+        let expected = modelDealers.map { $0.indexingString }
         let actual = delegate.capturedIndexTitles
         
         XCTAssertEqual(expected, actual)
+    }
+    
+    func testBindPreferredDealerNameOntoDealerViewModelTitle() {
+        let dealersService = FakeDealersService()
+        let interactor = DefaultDealersInteractor(dealersService: dealersService)
+        var viewModel: DealersViewModel?
+        interactor.makeDealersViewModel { viewModel = $0 }
+        let delegate = CapturingDealersViewModelDelegate()
+        viewModel?.setDelegate(delegate)
+        let modelDealers = dealersService.index.alphabetisedDealers
+        let randomGroup = modelDealers.randomElement()
+        let randomDealer = randomGroup.element.dealers.randomElement()
+        let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: randomDealer.index, section: randomGroup.index))
+        let expected = randomDealer.element.preferredName
+        
+        XCTAssertEqual(expected, dealerViewModel?.title)
     }
     
 }
