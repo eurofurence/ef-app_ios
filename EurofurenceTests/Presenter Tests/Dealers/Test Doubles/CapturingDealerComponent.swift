@@ -22,7 +22,7 @@ class CapturingDealerComponent: DealerComponent {
     }
     
     private(set) var capturedDealerPNGData: Data?
-    func setDealerIconPNGData(_ pngData: Data?) {
+    func setDealerIconPNGData(_ pngData: Data) {
         capturedDealerPNGData = pngData
     }
     

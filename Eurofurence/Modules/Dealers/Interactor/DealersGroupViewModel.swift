@@ -21,6 +21,6 @@ protocol DealerViewModel {
     var isPresentForAllDays: Bool { get }
     var isAfterDarkContentPresent: Bool { get }
 
-    func fetchIconPNGData(completionHandler: @escaping (Data?) -> Void)
+    func fetchIconPNGData(completionHandler: @escaping (Data) -> Void)
 
 }
