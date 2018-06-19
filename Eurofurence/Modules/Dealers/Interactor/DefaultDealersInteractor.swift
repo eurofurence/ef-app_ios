@@ -34,7 +34,7 @@ struct DefaultDealersInteractor: DealersInteractor {
         private var delegate: DealersViewModelDelegate?
         func setDelegate(_ delegate: DealersViewModelDelegate) {
             self.delegate = delegate
-            delegate.dealerGroupsDidChange(groups, indexTitles: [])
+            delegate.dealerGroupsDidChange(groups, indexTitles: groups.map({ $0.title }))
         }
 
         func alphabetisedDealersDidChange(to alphabetisedGroups: [AlphabetisedDealersGroup]) {

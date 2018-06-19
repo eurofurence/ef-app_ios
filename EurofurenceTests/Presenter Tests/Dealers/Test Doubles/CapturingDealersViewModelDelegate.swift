@@ -12,8 +12,10 @@ import Foundation
 class CapturingDealersViewModelDelegate: DealersViewModelDelegate {
     
     private(set) var capturedGroups = [DealersGroupViewModel]()
+    private(set) var capturedIndexTitles = [String]()
     func dealerGroupsDidChange(_ groups: [DealersGroupViewModel], indexTitles: [String]) {
         capturedGroups = groups
+        capturedIndexTitles = indexTitles
     }
     
 }

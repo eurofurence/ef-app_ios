@@ -25,4 +25,18 @@ class WhenPreparingViewModel_DealersInteractorShould: XCTestCase {
         XCTAssertEqual(expected, actual)
     }
     
+    func testProduceIndexTitlesUsingGroupedIndicies() {
+        let dealersService = FakeDealersService()
+        let interactor = DefaultDealersInteractor(dealersService: dealersService)
+        var viewModel: DealersViewModel?
+        interactor.makeDealersViewModel { viewModel = $0 }
+        let delegate = CapturingDealersViewModelDelegate()
+        viewModel?.setDelegate(delegate)
+        let modelDealers = dealersService.lastCreatedDealersIndex?.alphabetisedDealers
+        let expected = modelDealers?.map { $0.indexingString }
+        let actual = delegate.capturedIndexTitles
+        
+        XCTAssertEqual(expected, actual)
+    }
+    
 }
