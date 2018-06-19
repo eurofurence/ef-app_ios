@@ -15,8 +15,18 @@ class DealerComponentTableViewCell: UITableViewCell, DealerComponent {
     @IBOutlet weak var dealerIconImageView: UIImageView!
     @IBOutlet weak var dealerTitleLabel: UILabel!
     @IBOutlet weak var dealerSubtitleLabel: UILabel!
-    @IBOutlet weak var notAvailableForEntireConferenceWarningView: UIView!
-    @IBOutlet weak var containsAfterDarkContentWarningView: UIView!
+    @IBOutlet weak var notAvailableForEntireConferenceWarningView: UILabel!
+    @IBOutlet weak var containsAfterDarkContentWarningView: UILabel!
+
+    // MARK: Overrides
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        applyFontAwesomeCharacters()
+        notAvailableForEntireConferenceWarningView.textColor = .pantone330U
+        containsAfterDarkContentWarningView.textColor = .pantone330U
+    }
 
     // MARK: DealerComponent
 
@@ -46,6 +56,13 @@ class DealerComponentTableViewCell: UITableViewCell, DealerComponent {
 
     func hideAfterDarkContentWarning() {
         containsAfterDarkContentWarningView.isHidden = true
+    }
+
+    // MARK: Private
+
+    private func applyFontAwesomeCharacters() {
+        notAvailableForEntireConferenceWarningView.text = "\u{f071}"
+        containsAfterDarkContentWarningView.text = "\u{f186}"
     }
 
 }
