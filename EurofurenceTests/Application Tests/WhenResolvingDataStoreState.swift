@@ -46,6 +46,10 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
         return transaction?.persistedFavouriteEvents
     }
     
+    func getSavedDealers() -> [APIDealer]? {
+        return transaction?.persistedDealers
+    }
+    
     private(set) var capturedKnowledgeGroupsToSave: [KnowledgeGroup2]?
     private(set) var transaction: CapturingEurofurenceDataStoreTransaction?
     var transactionInvokedBlock: (() -> Void)?
@@ -69,6 +73,7 @@ extension CapturingEurofurenceDataStore {
             transaction.saveRooms(response.rooms.changed)
             transaction.saveTracks(response.tracks.changed)
             transaction.saveConferenceDays(response.conferenceDays.changed)
+            transaction.saveDealers(response.dealers.changed)
         }
     }
     
@@ -185,6 +190,11 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
     private(set) var deletedFavouriteEvents = [Event2.Identifier]()
     func deleteFavouriteEventIdentifier(_ identifier: Event2.Identifier) {
         deletedFavouriteEvents.append(identifier)
+    }
+    
+    private(set) var persistedDealers: [APIDealer] = []
+    func saveDealers(_ dealers: [APIDealer]) {
+        persistedDealers = dealers
     }
     
 }

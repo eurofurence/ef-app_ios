@@ -98,7 +98,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         imageDownloader = ImageDownloader(eventBus: eventBus, imageAPI: imageAPI)
         significantTimeObserver = SignificantTimeObserver(significantTimeChangeAdapter: significantTimeChangeAdapter,
                                                           eventBus: eventBus)
-        dealers = Dealers(eventBus: eventBus)
+        dealers = Dealers(eventBus: eventBus, dataStore: dataStore)
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {

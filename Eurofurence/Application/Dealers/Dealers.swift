@@ -53,7 +53,7 @@ class Dealers: DealersService {
         }
 
         func consume(event: DomainEvent.LatestDataFetchedEvent) {
-            dealers.updateDealers(from: event.response)
+            dealers.updateDealers(from: event.response.dealers.changed)
         }
 
     }
@@ -63,9 +63,13 @@ class Dealers: DealersService {
     private var dealerModels = [Dealer2]()
     private let eventBus: EventBus
 
-    init(eventBus: EventBus) {
+    init(eventBus: EventBus, dataStore: EurofurenceDataStore) {
         self.eventBus = eventBus
         eventBus.subscribe(consumer: UpdateDealersWhenSyncOccurs(dealers: self))
+
+        if let savedDealers = dataStore.getSavedDealers() {
+            updateDealers(from: savedDealers)
+        }
     }
 
     func makeDealersIndex() -> DealersIndex {
@@ -76,8 +80,8 @@ class Dealers: DealersService {
 
     }
 
-    private func updateDealers(from response: APISyncResponse) {
-        dealerModels = response.dealers.changed.map { (dealer) -> Dealer2 in
+    private func updateDealers(from dealers: [APIDealer]) {
+        dealerModels = dealers.map { (dealer) -> Dealer2 in
             return Dealer2(identifier: Dealer2.Identifier(""),
                            preferredName: dealer.displayName,
                            alternateName: nil,

@@ -21,6 +21,7 @@ protocol EurofurenceDataStore {
     func getSavedAnnouncements() -> [APIAnnouncement]?
     func getSavedConferenceDays() -> [APIConferenceDay]?
     func getSavedFavouriteEventIdentifiers() -> [Event2.Identifier]?
+    func getSavedDealers() -> [APIDealer]?
 
 }
 
@@ -35,6 +36,7 @@ protocol EurofurenceDataStoreTransaction {
     func saveTracks(_ tracks: [APITrack])
     func saveConferenceDays(_ conferenceDays: [APIConferenceDay])
     func saveFavouriteEventIdentifier(_ identifier: Event2.Identifier)
+    func saveDealers(_ dealers: [APIDealer])
 
     func deleteFavouriteEventIdentifier(_ identifier: Event2.Identifier)
 

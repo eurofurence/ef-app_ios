@@ -98,6 +98,10 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         return getModels(fetchRequest: FavouriteEventEntity.fetchRequest())
     }
 
+    func getSavedDealers() -> [APIDealer]? {
+        return nil
+    }
+
     // MARK: Private
 
     private func getModels<Entity>(fetchRequest: NSFetchRequest<Entity>) -> [Entity.AdaptedType]? where Entity: EntityAdapting {
@@ -261,6 +265,10 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                     print(error)
                 }
             }
+        }
+
+        func saveDealers(_ dealers: [APIDealer]) {
+
         }
 
         // MARK: Private

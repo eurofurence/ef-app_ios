@@ -455,6 +455,7 @@
 		CA36A4AC20D988D800EE6537 /* WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4AB20D988D800EE6537 /* WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould.swift */; };
 		CA36A4AE20D9895600EE6537 /* APIDealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4AD20D9895600EE6537 /* APIDealer.swift */; };
 		CA36A4B020D9983D00EE6537 /* WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4AF20D9983D00EE6537 /* WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift */; };
+		CA36A4B220D99AA300EE6537 /* WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4B120D99AA300EE6537 /* WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift */; };
 		CA3990ED20ACD35C001E3F1A /* HoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */; };
 		CA3990EF20ACD559001E3F1A /* FoundationHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */; };
 		CA3990F220ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */; };
@@ -1427,6 +1428,7 @@
 		CA36A4AB20D988D800EE6537 /* WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA36A4AD20D9895600EE6537 /* APIDealer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDealer.swift; sourceTree = "<group>"; };
 		CA36A4AF20D9983D00EE6537 /* WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA36A4B120D99AA300EE6537 /* WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationHoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUpcomingEventsBeforeLoadingAnything.swift; sourceTree = "<group>"; };
@@ -3090,6 +3092,7 @@
 				CA36A4AB20D988D800EE6537 /* WhenObservingDealersIndexAfterSyncOccurs_ApplicationShould.swift */,
 				CA36A4A520D9847200EE6537 /* WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift */,
 				CA36A4AF20D9983D00EE6537 /* WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift */,
+				CA36A4B120D99AA300EE6537 /* WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift */,
 			);
 			path = Dealers;
 			sourceTree = "<group>";
@@ -5748,6 +5751,7 @@
 				CAD260AB20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift in Sources */,
 				CA0E521B208FC107005259FE /* ConventionCountdownComponentViewModel+RandomValueProviding.swift in Sources */,
 				CA36A44120D7020900EE6537 /* WhenSearchingForEvents_BeforeAnyAreAvailable_ApplicationShould.swift in Sources */,
+				CA36A4B220D99AA300EE6537 /* WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift in Sources */,
 				CA131BD320C1866D00DB1036 /* CapturingEventDetailViewModelDelegate.swift in Sources */,
 				CA63757E208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift in Sources */,
 				CA36A46F20D84C0700EE6537 /* WhenBindingDealerComponent_DealersPresenterShould.swift in Sources */,
