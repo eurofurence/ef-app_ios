@@ -55,7 +55,7 @@ struct DefaultDealersInteractor: DealersInteractor {
 
         var title: String = ""
         var subtitle: String?
-        var isPresentForAllDays: Bool = false
+        var isPresentForAllDays: Bool = true
         var isAfterDarkContentPresent: Bool = false
 
         func fetchIconPNGData(completionHandler: @escaping (Data) -> Void) {

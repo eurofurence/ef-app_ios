@@ -445,6 +445,7 @@
 		CA36A49720D92EF700EE6537 /* CapturingDealersViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A49620D92EF700EE6537 /* CapturingDealersViewModelDelegate.swift */; };
 		CA36A49920D9778400EE6537 /* FakeDealersIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A49820D9778400EE6537 /* FakeDealersIndex.swift */; };
 		CA36A49B20D9779C00EE6537 /* AlphabetisedDealersGroup+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A49A20D9779C00EE6537 /* AlphabetisedDealersGroup+RandomValueProviding.swift */; };
+		CA36A49D20D97D0100EE6537 /* WhenResolvingDealerAvailability_DealersInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A49C20D97D0100EE6537 /* WhenResolvingDealerAvailability_DealersInteractorShould.swift */; };
 		CA3990ED20ACD35C001E3F1A /* HoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */; };
 		CA3990EF20ACD559001E3F1A /* FoundationHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */; };
 		CA3990F220ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */; };
@@ -1407,6 +1408,7 @@
 		CA36A49620D92EF700EE6537 /* CapturingDealersViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDealersViewModelDelegate.swift; sourceTree = "<group>"; };
 		CA36A49820D9778400EE6537 /* FakeDealersIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDealersIndex.swift; sourceTree = "<group>"; };
 		CA36A49A20D9779C00EE6537 /* AlphabetisedDealersGroup+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlphabetisedDealersGroup+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA36A49C20D97D0100EE6537 /* WhenResolvingDealerAvailability_DealersInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResolvingDealerAvailability_DealersInteractorShould.swift; sourceTree = "<group>"; };
 		CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationHoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUpcomingEventsBeforeLoadingAnything.swift; sourceTree = "<group>"; };
@@ -3045,6 +3047,7 @@
 			isa = PBXGroup;
 			children = (
 				CA36A48920D927D200EE6537 /* WhenPreparingViewModel_DealersInteractorShould.swift */,
+				CA36A49C20D97D0100EE6537 /* WhenResolvingDealerAvailability_DealersInteractorShould.swift */,
 			);
 			path = "Interactor Tests";
 			sourceTree = "<group>";
@@ -5867,6 +5870,7 @@
 				CA00AE6220D1749200C2FBB0 /* CapturingScheduleEventComponent.swift in Sources */,
 				CACF1EB220B5FF9900D904B5 /* EventGraphicViewModel+RandomValueProviding.swift in Sources */,
 				CA162EA020A8D499004AFED6 /* FakeRelativeTimeIntervalCountdownFormatter.swift in Sources */,
+				CA36A49D20D97D0100EE6537 /* WhenResolvingDealerAvailability_DealersInteractorShould.swift in Sources */,
 				CA162E7A20A4B6F5004AFED6 /* CapturingConventionCountdownServiceObserver.swift in Sources */,
 				CA63754A208CBB6C00536BE2 /* StubNewsModuleFactory.swift in Sources */,
 				CACF1E7820B1D10E00D904B5 /* DummyEventDetailInteractor.swift in Sources */,

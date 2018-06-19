@@ -11,7 +11,12 @@ import Foundation
 
 class FakeDealersService: DealersService {
     
-    let index = FakeDealersIndex()
+    let index: FakeDealersIndex
+    
+    init(index: FakeDealersIndex = FakeDealersIndex()) {
+        self.index = index
+    }
+    
     func makeDealersIndex() -> DealersIndex {
         return index
     }

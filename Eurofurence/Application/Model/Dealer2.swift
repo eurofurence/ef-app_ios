@@ -13,4 +13,8 @@ struct Dealer2 {
     var preferredName: String
     var alternateName: String?
 
+    var isAttendingOnThursday: Bool
+    var isAttendingOnFriday: Bool
+    var isAttendingOnSaturday: Bool
+
 }

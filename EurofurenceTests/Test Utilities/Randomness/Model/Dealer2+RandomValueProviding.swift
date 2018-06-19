@@ -12,7 +12,11 @@ import Foundation
 extension Dealer2: RandomValueProviding {
     
     static var random: Dealer2 {
-        return Dealer2(preferredName: .random, alternateName: .random)
+        return Dealer2(preferredName: .random,
+                       alternateName: .random,
+                       isAttendingOnThursday: .random,
+                       isAttendingOnFriday: .random,
+                       isAttendingOnSaturday: .random)
     }
     
 }

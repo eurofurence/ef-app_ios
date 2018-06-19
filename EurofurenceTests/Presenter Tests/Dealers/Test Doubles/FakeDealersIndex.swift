@@ -11,7 +11,11 @@ import Foundation
 
 class FakeDealersIndex: DealersIndex {
     
-    var alphabetisedDealers = [AlphabetisedDealersGroup].random
+    let alphabetisedDealers: [AlphabetisedDealersGroup]
+    
+    init(alphabetisedDealers: [AlphabetisedDealersGroup] = .random) {
+        self.alphabetisedDealers = alphabetisedDealers
+    }
     
     func setDelegate(_ delegate: DealersIndexDelegate) {
         delegate.alphabetisedDealersDidChange(to: alphabetisedDealers)
