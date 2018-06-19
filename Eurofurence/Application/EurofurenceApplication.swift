@@ -44,6 +44,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private let announcements: Announcements
     private let knowledge: Knowledge
     private let schedule: Schedule
+    private let dealers: Dealers
     private let significantTimeObserver: SignificantTimeObserver
 
     init(userPreferences: UserPreferences,
@@ -97,6 +98,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         imageDownloader = ImageDownloader(eventBus: eventBus, imageAPI: imageAPI)
         significantTimeObserver = SignificantTimeObserver(significantTimeChangeAdapter: significantTimeChangeAdapter,
                                                           eventBus: eventBus)
+        dealers = Dealers()
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
@@ -172,6 +174,14 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2?) -> Void) {
         schedule.fetchEvent(for: identifier, completionHandler: completionHandler)
+    }
+
+    func makeDealersIndex() -> DealersIndex {
+        return dealers.makeDealersIndex()
+    }
+
+    func fetchIconPNGData(for identifier: Dealer2.Identifier, completionHandler: @escaping (Data?) -> Void) {
+
     }
 
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {

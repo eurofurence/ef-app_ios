@@ -449,6 +449,9 @@
 		CA36A49F20D97FAA00EE6537 /* WhenResolvingDealerAfterDarkContent_DealersInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A49E20D97FAA00EE6537 /* WhenResolvingDealerAfterDarkContent_DealersInteractorShould.swift */; };
 		CA36A4A120D9813D00EE6537 /* WhenFetchingIconDataForDealerWithAvatar_DealersInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4A020D9813D00EE6537 /* WhenFetchingIconDataForDealerWithAvatar_DealersInteractorShould.swift */; };
 		CA36A4A320D9834900EE6537 /* WhenFetchingIconDataForDealerWithoutAvatar_DealersInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4A220D9834900EE6537 /* WhenFetchingIconDataForDealerWithoutAvatar_DealersInteractorShould.swift */; };
+		CA36A4A620D9847200EE6537 /* WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4A520D9847200EE6537 /* WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift */; };
+		CA36A4A820D984E400EE6537 /* Dealers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4A720D984E400EE6537 /* Dealers.swift */; };
+		CA36A4AA20D985FD00EE6537 /* CapturingDealersIndexDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4A920D985FD00EE6537 /* CapturingDealersIndexDelegate.swift */; };
 		CA3990ED20ACD35C001E3F1A /* HoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */; };
 		CA3990EF20ACD559001E3F1A /* FoundationHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */; };
 		CA3990F220ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */; };
@@ -1415,6 +1418,9 @@
 		CA36A49E20D97FAA00EE6537 /* WhenResolvingDealerAfterDarkContent_DealersInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResolvingDealerAfterDarkContent_DealersInteractorShould.swift; sourceTree = "<group>"; };
 		CA36A4A020D9813D00EE6537 /* WhenFetchingIconDataForDealerWithAvatar_DealersInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingIconDataForDealerWithAvatar_DealersInteractorShould.swift; sourceTree = "<group>"; };
 		CA36A4A220D9834900EE6537 /* WhenFetchingIconDataForDealerWithoutAvatar_DealersInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingIconDataForDealerWithoutAvatar_DealersInteractorShould.swift; sourceTree = "<group>"; };
+		CA36A4A520D9847200EE6537 /* WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA36A4A720D984E400EE6537 /* Dealers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dealers.swift; sourceTree = "<group>"; };
+		CA36A4A920D985FD00EE6537 /* CapturingDealersIndexDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDealersIndexDelegate.swift; sourceTree = "<group>"; };
 		CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationHoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUpcomingEventsBeforeLoadingAnything.swift; sourceTree = "<group>"; };
@@ -2305,6 +2311,7 @@
 				CA162E6C20A468C4004AFED6 /* Countdown */,
 				CABEB0D720C8A7C1000BEE66 /* Data Store */,
 				CA08157B20D3D45A00F750D4 /* Days */,
+				CA36A4A420D9845A00EE6537 /* Dealers */,
 				CA162EAF20AA2DC0004AFED6 /* Events */,
 				CABF03C820421B2A0028BD62 /* Knowledge */,
 				CAD3BDC3205FE3EA00C91E6E /* Links */,
@@ -2865,6 +2872,7 @@
 				CA08159B20D47BEA00F750D4 /* CapturingEventsScheduleDelegate.swift */,
 				CA52C68420D59A5B009D3A9E /* CapturingSignificantTimeChangeAdapterDelegate.swift */,
 				CA36A44220D703FA00EE6537 /* CapturingEventsSearchControllerDelegate.swift */,
+				CA36A4A920D985FD00EE6537 /* CapturingDealersIndexDelegate.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -3065,6 +3073,15 @@
 			isa = PBXGroup;
 			children = (
 				CA36A48E20D92EAA00EE6537 /* DealersService.swift */,
+				CA36A4A720D984E400EE6537 /* Dealers.swift */,
+			);
+			path = Dealers;
+			sourceTree = "<group>";
+		};
+		CA36A4A420D9845A00EE6537 /* Dealers */ = {
+			isa = PBXGroup;
+			children = (
+				CA36A4A520D9847200EE6537 /* WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift */,
 			);
 			path = Dealers;
 			sourceTree = "<group>";
@@ -5232,6 +5249,7 @@
 				CA36A45E20D8487700EE6537 /* DealersGroupViewModel.swift in Sources */,
 				9A0525431ECA2C5A00578798 /* SyncEntityDelta.swift in Sources */,
 				CAF3C7501F9FC74C0008F027 /* NewsSceneFactory.swift in Sources */,
+				CA36A4A820D984E400EE6537 /* Dealers.swift in Sources */,
 				CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */,
 				CA00AE9320D2975400C2FBB0 /* ScheduleDaysView.swift in Sources */,
 				CA637592208CE4F700536BE2 /* ScheduleScene.swift in Sources */,
@@ -5708,6 +5726,7 @@
 				CA1F7D6120CB82F600FB87F5 /* WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould.swift in Sources */,
 				CA36A47B20D854E200EE6537 /* WhenBindingDealerComponent_ForDealerPresentOnAllDays_DealersPresenterShould.swift in Sources */,
 				CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */,
+				CA36A4AA20D985FD00EE6537 /* CapturingDealersIndexDelegate.swift in Sources */,
 				CABF03B72041C2150028BD62 /* DefaultKnowledgeListInteractorTests.swift in Sources */,
 				7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */,
 				CA250DD020D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift in Sources */,
@@ -5973,6 +5992,7 @@
 				CACF1EC420B6B9B500D904B5 /* WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift in Sources */,
 				CAD3BDB12058719300C91E6E /* Link+RandomValueProviding.swift in Sources */,
 				CA637542208CBB2400536BE2 /* StubNavigationControllerFactory.swift in Sources */,
+				CA36A4A620D9847200EE6537 /* WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift in Sources */,
 				CA81D4901FE9A91000A52A2F /* WhenTheTutorialAppears.swift in Sources */,
 				CABA43891FBCD94E009CB5B0 /* LoginPresenterTests.swift in Sources */,
 				CA2D08121FE9540F00BFD785 /* WhenThePerformInitialDownloadPageAppears.swift in Sources */,

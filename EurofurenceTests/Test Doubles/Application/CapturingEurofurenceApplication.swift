@@ -10,6 +10,20 @@
 import Foundation
 
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
+    func makeDealersIndex() -> DealersIndex {
+        struct DummyDealersIndex: DealersIndex {
+            func setDelegate(_ delegate: DealersIndexDelegate) {
+                
+            }
+        }
+        
+        return DummyDealersIndex()
+    }
+    
+    func fetchIconPNGData(for identifier: Dealer2.Identifier, completionHandler: @escaping (Data?) -> Void) {
+        
+    }
+    
     func makeEventsSchedule() -> EventsSchedule {
         struct DummyEventsSchedule: EventsSchedule {
             func setDelegate(_ delegate: EventsScheduleDelegate) { }
