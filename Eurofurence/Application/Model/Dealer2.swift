@@ -17,4 +17,6 @@ struct Dealer2 {
     var isAttendingOnFriday: Bool
     var isAttendingOnSaturday: Bool
 
+    var isAfterDark: Bool
+
 }

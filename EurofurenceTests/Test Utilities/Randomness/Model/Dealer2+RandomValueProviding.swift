@@ -16,7 +16,8 @@ extension Dealer2: RandomValueProviding {
                        alternateName: .random,
                        isAttendingOnThursday: .random,
                        isAttendingOnFriday: .random,
-                       isAttendingOnSaturday: .random)
+                       isAttendingOnSaturday: .random,
+                       isAfterDark: .random)
     }
     
 }

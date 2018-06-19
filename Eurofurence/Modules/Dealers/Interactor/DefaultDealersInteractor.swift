@@ -52,6 +52,7 @@ struct DefaultDealersInteractor: DealersInteractor {
             title = dealer.preferredName
             subtitle = dealer.alternateName
             isPresentForAllDays = dealer.isAttendingOnThursday && dealer.isAttendingOnFriday && dealer.isAttendingOnSaturday
+            isAfterDarkContentPresent = dealer.isAfterDark
         }
 
         var title: String = ""
