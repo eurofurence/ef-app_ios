@@ -50,6 +50,7 @@ struct DefaultDealersInteractor: DealersInteractor {
 
         init(dealer: Dealer2) {
             title = dealer.preferredName
+            subtitle = dealer.alternateName
         }
 
         var title: String = ""

@@ -56,4 +56,9 @@ class WhenPreparingViewModel_DealersInteractorShould: XCTestCase {
         XCTAssertEqual(context.dealer.preferredName, context.viewModel?.title)
     }
     
+    func testBindAlternateDealerNameOntoDealerViewModelSubtitle() {
+        let context = fetchRandomDealerAndAssociatedViewModel()
+        XCTAssertEqual(context.dealer.alternateName, context.viewModel?.subtitle)
+    }
+    
 }
