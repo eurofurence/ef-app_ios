@@ -11,13 +11,31 @@ import XCTest
 
 class WhenPreparingViewModel_DealersInteractorShould: XCTestCase {
     
-    func testConvertIndexedDealersIntoExpectedGroupTitles() {
-        let dealersService = FakeDealersService()
-        let interactor = DefaultDealersInteractor(dealersService: dealersService)
+    var interactor: DefaultDealersInteractor!
+    var dealersService: FakeDealersService!
+    var delegate: CapturingDealersViewModelDelegate!
+    
+    override func setUp() {
+        super.setUp()
+        
+        dealersService = FakeDealersService()
+        interactor = DefaultDealersInteractor(dealersService: dealersService)
         var viewModel: DealersViewModel?
         interactor.makeDealersViewModel { viewModel = $0 }
-        let delegate = CapturingDealersViewModelDelegate()
+        delegate = CapturingDealersViewModelDelegate()
         viewModel?.setDelegate(delegate)
+    }
+    
+    private func fetchRandomDealerAndAssociatedViewModel() -> (dealer: Dealer2, viewModel: DealerViewModel?) {
+        let modelDealers = dealersService.index.alphabetisedDealers
+        let randomGroup = modelDealers.randomElement()
+        let randomDealer = randomGroup.element.dealers.randomElement()
+        let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: randomDealer.index, section: randomGroup.index))
+        
+        return (dealer: randomDealer.element, viewModel: dealerViewModel)
+    }
+    
+    func testConvertIndexedDealersIntoExpectedGroupTitles() {
         let modelDealers = dealersService.index.alphabetisedDealers
         let expected = modelDealers.map { $0.indexingString }
         let actual = delegate.capturedGroups.map({ $0.title })
@@ -26,12 +44,6 @@ class WhenPreparingViewModel_DealersInteractorShould: XCTestCase {
     }
     
     func testProduceIndexTitlesUsingGroupedIndicies() {
-        let dealersService = FakeDealersService()
-        let interactor = DefaultDealersInteractor(dealersService: dealersService)
-        var viewModel: DealersViewModel?
-        interactor.makeDealersViewModel { viewModel = $0 }
-        let delegate = CapturingDealersViewModelDelegate()
-        viewModel?.setDelegate(delegate)
         let modelDealers = dealersService.index.alphabetisedDealers
         let expected = modelDealers.map { $0.indexingString }
         let actual = delegate.capturedIndexTitles
@@ -40,19 +52,8 @@ class WhenPreparingViewModel_DealersInteractorShould: XCTestCase {
     }
     
     func testBindPreferredDealerNameOntoDealerViewModelTitle() {
-        let dealersService = FakeDealersService()
-        let interactor = DefaultDealersInteractor(dealersService: dealersService)
-        var viewModel: DealersViewModel?
-        interactor.makeDealersViewModel { viewModel = $0 }
-        let delegate = CapturingDealersViewModelDelegate()
-        viewModel?.setDelegate(delegate)
-        let modelDealers = dealersService.index.alphabetisedDealers
-        let randomGroup = modelDealers.randomElement()
-        let randomDealer = randomGroup.element.dealers.randomElement()
-        let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: randomDealer.index, section: randomGroup.index))
-        let expected = randomDealer.element.preferredName
-        
-        XCTAssertEqual(expected, dealerViewModel?.title)
+        let context = fetchRandomDealerAndAssociatedViewModel()
+        XCTAssertEqual(context.dealer.preferredName, context.viewModel?.title)
     }
     
 }
