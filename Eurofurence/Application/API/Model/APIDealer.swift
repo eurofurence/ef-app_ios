@@ -17,5 +17,6 @@ struct APIDealer: Equatable {
     var attendsOnFriday: Bool
     var attendsOnSaturday: Bool
     var isAfterDark: Bool
+    var artistThumbnailImageId: String?
 
 }

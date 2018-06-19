@@ -187,14 +187,16 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                   attendsOnThursday: true,
                                                                   attendsOnFriday: true,
                                                                   attendsOnSaturday: true,
-                                                                  isAfterDark: true)],
+                                                                  isAfterDark: true,
+                                                                  artistThumbnailImageId: "")],
                                               deleted: [APIDealer(identifier: "d53e6f6b-fdcb-4754-a4b9-6892e8d317d7",
                                                                   displayName: "",
                                                                   attendeeNickname: "Frazzle",
                                                                   attendsOnThursday: true,
                                                                   attendsOnFriday: true,
                                                                   attendsOnSaturday: true,
-                                                                  isAfterDark: false)])
+                                                                  isAfterDark: false,
+                                                                  artistThumbnailImageId: "")])
         
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,

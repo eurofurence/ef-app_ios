@@ -220,7 +220,8 @@ private struct JSONSyncResponse: Decodable {
                              attendsOnThursday: AttendsOnThursday,
                              attendsOnFriday: AttendsOnFriday,
                              attendsOnSaturday: AttendsOnSaturday,
-                             isAfterDark: IsAfterDark)
+                             isAfterDark: IsAfterDark,
+                             artistThumbnailImageId: "")
         }
 
     }
