@@ -15,11 +15,11 @@ class EventDetailViewController: UIViewController, EventDetailScene {
     @IBOutlet weak var tableView: UITableView!
     private var tableController: TableController?
 
-    private lazy var favouriteEventBarButtonItem = UIBarButtonItem(title: .favourite,
+    private lazy var favouriteEventBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Favorite"),
                                                                    style: .plain,
                                                                    target: self,
                                                                    action: #selector(favouriteButtonTapped))
-    private lazy var unfavouriteEventBarButtonItem = UIBarButtonItem(title: .unfavourite,
+    private lazy var unfavouriteEventBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Unfavourite"),
                                                                      style: .plain,
                                                                      target: self,
                                                                      action: #selector(unfavouriteButtonTapped))
