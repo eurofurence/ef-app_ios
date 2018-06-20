@@ -13,10 +13,12 @@ class EventDetailModuleBuilder {
 
     private var sceneFactory: EventDetailSceneFactory
     private var interactor: EventDetailInteractor
+    private var hapticEngine: HapticEngine
 
     init() {
         sceneFactory = StoryboardEventDetailSceneFactory()
         interactor = DefaultEventDetailInteractor()
+        hapticEngine = CocoaTouchHapticEngine()
     }
 
     @discardableResult
@@ -31,8 +33,16 @@ class EventDetailModuleBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ hapticEngine: HapticEngine) -> EventDetailModuleBuilder {
+        self.hapticEngine = hapticEngine
+        return self
+    }
+
     func build() -> EventDetailModuleProviding {
-        return EventDetailModule(sceneFactory: sceneFactory, interactor: interactor)
+        return EventDetailModule(sceneFactory: sceneFactory,
+                                 interactor: interactor,
+                                 hapticEngine: hapticEngine)
     }
 
 }

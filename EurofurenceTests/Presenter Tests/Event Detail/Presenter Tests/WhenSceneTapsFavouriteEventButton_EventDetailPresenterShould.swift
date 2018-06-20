@@ -22,4 +22,12 @@ class WhenSceneTapsFavouriteEventButton_EventDetailPresenterShould: XCTestCase {
         XCTAssertTrue(viewModel.wasToldToFavouriteEvent)
     }
     
+    func testPlaySelectionHaptic() {
+        let context = EventDetailPresenterTestBuilder().build()
+        context.simulateSceneDidLoad()
+        context.scene.simulateFavouriteEventButtonTapped()
+        
+        XCTAssertTrue(context.hapticEngine.didPlaySelectionHaptic)
+    }
+    
 }

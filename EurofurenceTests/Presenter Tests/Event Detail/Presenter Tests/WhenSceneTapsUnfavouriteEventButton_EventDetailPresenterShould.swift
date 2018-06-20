@@ -22,4 +22,12 @@ class WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould: XCTestCase
         XCTAssertTrue(viewModel.wasToldToUnfavouriteEvent)
     }
     
+    func testPlaySelectionHaptic() {
+        let context = EventDetailPresenterTestBuilder().build()
+        context.simulateSceneDidLoad()
+        context.scene.simulateUnfavouriteEventButtonTapped()
+        
+        XCTAssertTrue(context.hapticEngine.didPlaySelectionHaptic)
+    }
+    
 }
