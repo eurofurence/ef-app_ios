@@ -23,7 +23,7 @@ class Dealers: DealersService {
         func performSearch(term: String) {
             let matches = alphebetisedDealers.compactMap { (group) -> AlphabetisedDealersGroup? in
                 let matchingDealers = group.dealers.compactMap { (dealer) -> Dealer2? in
-                    guard dealer.preferredName == term else { return nil }
+                    guard dealer.preferredName.contains(term) else { return nil }
                     return dealer
                 }
 
