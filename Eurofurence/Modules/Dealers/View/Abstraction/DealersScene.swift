@@ -6,6 +6,8 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import Foundation
+
 protocol DealersScene {
 
     func setDelegate(_ delegate: DealersSceneDelegate)
@@ -19,5 +21,6 @@ protocol DealersSceneDelegate {
 
     func dealersSceneDidLoad()
     func dealersSceneDidChangeSearchQuery(to query: String)
+    func dealersSceneDidSelectDealer(at indexPath: IndexPath)
 
 }

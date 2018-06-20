@@ -12,7 +12,7 @@ import UIKit.UIViewController
 class StubDealersModuleFactory: DealersModuleProviding {
     
     let stubInterface = UIViewController()
-    func makeDealersModule() -> UIViewController {
+    func makeDealersModule(_ delegate: DealersModuleDelegate) -> UIViewController {
         return stubInterface
     }
     

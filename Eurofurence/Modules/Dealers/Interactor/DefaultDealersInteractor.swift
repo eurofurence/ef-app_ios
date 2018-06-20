@@ -110,6 +110,10 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
             delegate.dealerGroupsDidChange(groups, indexTitles: indexTitles)
         }
 
+        func identifierForDealer(at indexPath: IndexPath) -> Dealer2.Identifier? {
+            return nil
+        }
+
         func consume(event: AllDealersChangedEvent) {
             groups = event.alphabetisedGroups
             indexTitles = event.indexTitles

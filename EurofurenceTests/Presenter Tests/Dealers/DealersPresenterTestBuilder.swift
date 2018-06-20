@@ -14,6 +14,7 @@ class DealersPresenterTestBuilder {
     struct Context {
         var producedViewController: UIViewController
         var scene: CapturingDealersScene
+        var delegate: CapturingDealersModuleDelegate
     }
     
     private var interactor: DealersInteractor
@@ -30,14 +31,16 @@ class DealersPresenterTestBuilder {
     
     func build() -> Context {
         let sceneFactory = StubDealersSceneFactory()
+        let delegate = CapturingDealersModuleDelegate()
         let viewController = DealersModuleBuilder()
             .with(sceneFactory)
             .with(interactor)
             .build()
-            .makeDealersModule()
+            .makeDealersModule(delegate)
         
         return Context(producedViewController: viewController,
-                       scene: sceneFactory.scene)
+                       scene: sceneFactory.scene,
+                       delegate: delegate)
     }
     
 }
@@ -59,6 +62,10 @@ extension DealersPresenterTestBuilder.Context {
     
     func simulateSceneDidChangeSearchQuery(to query: String) {
         scene.delegate?.dealersSceneDidChangeSearchQuery(to: query)
+    }
+    
+    func simulateSceneDidSelectDealer(at indexPath: IndexPath) {
+        scene.delegate?.dealersSceneDidSelectDealer(at: indexPath)
     }
     
     func makeAndBindDealer(at indexPath: IndexPath) -> CapturingDealerComponent {

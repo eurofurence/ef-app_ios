@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import Foundation
 
-struct CapturingDealersViewModel: DealersViewModel {
+final class CapturingDealersViewModel: DealersViewModel {
     
     var dealerGroups: [DealersGroupViewModel]
     var sectionIndexTitles: [String] = .random
@@ -20,6 +20,19 @@ struct CapturingDealersViewModel: DealersViewModel {
     
     func setDelegate(_ delegate: DealersViewModelDelegate) {
         delegate.dealerGroupsDidChange(dealerGroups, indexTitles: sectionIndexTitles)
+    }
+    
+    fileprivate var dealerIdentifiers = [IndexPath : Dealer2.Identifier]()
+    func identifierForDealer(at indexPath: IndexPath) -> Dealer2.Identifier? {
+        return dealerIdentifiers[indexPath]
+    }
+    
+}
+
+extension CapturingDealersViewModel {
+    
+    func stub(_ identifier: Dealer2.Identifier, forDealerAt indexPath: IndexPath) {
+        dealerIdentifiers[indexPath] = identifier
     }
     
 }

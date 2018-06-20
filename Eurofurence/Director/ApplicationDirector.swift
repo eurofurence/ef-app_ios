@@ -15,6 +15,7 @@ class ApplicationDirector: RootModuleDelegate,
                            ScheduleModuleDelegate,
                            MessagesModuleDelegate,
                            LoginModuleDelegate,
+                           DealersModuleDelegate,
                            KnowledgeListModuleDelegate,
                            KnowledgeDetailModuleDelegate {
 
@@ -196,6 +197,12 @@ class ApplicationDirector: RootModuleDelegate,
         tabController?.dismiss(animated: animate)
     }
 
+    // MARK: DealersModuleDelegate
+
+    func dealersModuleDidSelectDealer(identifier: Dealer2.Identifier) {
+
+    }
+
     // MARK: KnowledgeListModuleDelegate
 
     func knowledgeListModuleDidSelectKnowledgeEntry(_ knowledgeEntry: KnowledgeEntry2) {
@@ -245,7 +252,7 @@ class ApplicationDirector: RootModuleDelegate,
         scheduleNavigationController.setViewControllers([scheduleViewController], animated: animate)
         scheduleNavigationController.tabBarItem = scheduleViewController.tabBarItem
 
-        let dealersViewController = dealersModuleProviding.makeDealersModule()
+        let dealersViewController = dealersModuleProviding.makeDealersModule(self)
         let dealersNavigationController = UINavigationController(rootViewController: dealersViewController)
         dealersNavigationController.tabBarItem = dealersViewController.tabBarItem
 

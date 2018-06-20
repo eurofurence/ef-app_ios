@@ -10,6 +10,6 @@ import UIKit.UIViewController
 
 protocol DealersModuleProviding {
 
-    func makeDealersModule() -> UIViewController
+    func makeDealersModule(_ delegate: DealersModuleDelegate) -> UIViewController
 
 }
