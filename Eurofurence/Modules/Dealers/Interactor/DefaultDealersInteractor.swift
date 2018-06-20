@@ -55,7 +55,9 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
 
     func indexDidProduceSearchResults(_ searchResults: [AlphabetisedDealersGroup]) {
         let (groups, indexTitles) = makeViewModels(from: searchResults)
-        eventBus.post(SearchResultsDidChangeEvent(alphabetisedGroups: groups, indexTitles: indexTitles))
+        eventBus.post(SearchResultsDidChangeEvent(rawGroups: searchResults,
+                                                  alphabetisedGroups: groups,
+                                                  indexTitles: indexTitles))
     }
 
     private func makeViewModels(from alphabetisedGroups: [AlphabetisedDealersGroup]) -> (groups: [DealersGroupViewModel], titles: [String]) {
@@ -89,10 +91,12 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
 
     private struct SearchResultsDidChangeEvent {
 
+        private(set) var rawGroups: [AlphabetisedDealersGroup]
         private(set) var alphabetisedGroups: [DealersGroupViewModel]
         private(set) var indexTitles: [String]
 
-        init(alphabetisedGroups: [DealersGroupViewModel], indexTitles: [String]) {
+        init(rawGroups: [AlphabetisedDealersGroup], alphabetisedGroups: [DealersGroupViewModel], indexTitles: [String]) {
+            self.rawGroups = rawGroups
             self.alphabetisedGroups = alphabetisedGroups
             self.indexTitles = indexTitles
         }
@@ -132,6 +136,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
     private class SearchViewModel: DealersSearchViewModel, EventConsumer {
 
         private let index: DealersIndex
+        private var rawGroups = [AlphabetisedDealersGroup]()
         private var groups = [DealersGroupViewModel]()
         private var indexTitles = [String]()
 
@@ -151,10 +156,11 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
         }
 
         func identifierForDealer(at indexPath: IndexPath) -> Dealer2.Identifier? {
-            return nil
+            return rawGroups[indexPath.section].dealers[indexPath.item].identifier
         }
 
         func consume(event: SearchResultsDidChangeEvent) {
+            rawGroups = event.rawGroups
             groups = event.alphabetisedGroups
             indexTitles = event.indexTitles
 
