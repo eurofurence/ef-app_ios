@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate {
+class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersSearchViewModelDelegate {
 
     private struct Binder: DealersBinder {
 
@@ -61,6 +61,7 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate {
 
         interactor.makeDealersSearchViewModel { (viewModel) in
             self.searchViewModel = viewModel
+            viewModel.searchSearchResultsDelegate(self)
         }
     }
 
@@ -73,6 +74,12 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate {
         scene.bind(numberOfDealersPerSection: itemsPerSection,
                    sectionIndexTitles: indexTitles,
                    using: Binder(viewModels: groups))
+    }
+
+    func dealerSearchResultsDidChange(_ groups: [DealersGroupViewModel], indexTitles: [String]) {
+        let itemsPerSection = groups.map({ $0.dealers.count })
+        scene.bindSearchResults(numberOfDealersPerSection: itemsPerSection,
+                                sectionIndexTitles: indexTitles)
     }
 
 }

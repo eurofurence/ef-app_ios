@@ -67,6 +67,10 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, Deale
                                           binder: binder)
     }
 
+    func bindSearchResults(numberOfDealersPerSection: [Int], sectionIndexTitles: [String]) {
+
+    }
+
     // MARK: Private
 
     private class Header: UITableViewHeaderFooterView, DealerGroupHeader {

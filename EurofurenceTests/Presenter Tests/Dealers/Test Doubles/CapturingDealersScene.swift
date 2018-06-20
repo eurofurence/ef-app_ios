@@ -30,4 +30,11 @@ class CapturingDealersScene: UIViewController, DealersScene {
         self.binder = binder
     }
     
+    private(set) var capturedDealersPerSectionToBindToSearchResults = [Int]()
+    private(set) var capturedSectionIndexTitlesToBindToSearchResults = [String]()
+    func bindSearchResults(numberOfDealersPerSection: [Int], sectionIndexTitles: [String]) {
+        capturedDealersPerSectionToBindToSearchResults = numberOfDealersPerSection
+        capturedSectionIndexTitlesToBindToSearchResults = sectionIndexTitles
+    }
+    
 }

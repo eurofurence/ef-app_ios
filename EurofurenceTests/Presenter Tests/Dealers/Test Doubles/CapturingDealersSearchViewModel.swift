@@ -11,6 +11,18 @@ import Foundation
 
 class CapturingDealersSearchViewModel: DealersSearchViewModel {
     
+    var dealerGroups: [DealersGroupViewModel]
+    var sectionIndexTitles: [String]
+    
+    init(dealerGroups: [DealersGroupViewModel] = .random, sectionIndexTitles: [String] = .random) {
+        self.dealerGroups = dealerGroups
+        self.sectionIndexTitles = sectionIndexTitles
+    }
+    
+    func searchSearchResultsDelegate(_ delegate: DealersSearchViewModelDelegate) {
+        delegate.dealerSearchResultsDidChange(dealerGroups, indexTitles: sectionIndexTitles)
+    }
+    
     private(set) var capturedSearchQuery: String?
     func updateSearchResults(with query: String) {
         capturedSearchQuery = query
