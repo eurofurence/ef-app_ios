@@ -49,4 +49,23 @@ class WhenTellingDealersIndexToSearch_ApplicationShould: XCTestCase {
         XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerSearchResults)
     }
     
+    func testMatchDealersIgnoringCase() {
+        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var dealer = APIDealer.random
+        let preferredName = "coOL DudE"
+        dealer.displayName = preferredName
+        syncResponse.dealers.changed = [dealer]
+        let dataStore = CapturingEurofurenceDataStore()
+        dataStore.save(syncResponse)
+        let context = ApplicationTestBuilder().with(dataStore).build()
+        let dealersIndex = context.application.makeDealersIndex()
+        let delegate = CapturingDealersIndexDelegate()
+        dealersIndex.setDelegate(delegate)
+        dealersIndex.performSearch(term: "dude")
+        let expectedDealer = context.makeExpectedDealer(from: dealer)
+        let expected = [AlphabetisedDealersGroup(indexingString: "C", dealers: [expectedDealer])]
+        
+        XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerSearchResults)
+    }
+    
 }
