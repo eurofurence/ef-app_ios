@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DealersViewController: UIViewController, UISearchControllerDelegate, DealersScene {
+class DealersViewController: UIViewController, UISearchControllerDelegate, UISearchResultsUpdating, DealersScene {
 
     // MARK: Properties
 
@@ -38,6 +38,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, Deale
         searchViewController = storyboard?.instantiate(DealersSearchTableViewController.self)
         searchController = UISearchController(searchResultsController: searchViewController)
         searchController?.delegate = self
+        searchController?.searchResultsUpdater = self
 
         tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
         tableView.register(DealerComponentTableViewCell.self)
@@ -48,6 +49,14 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, Deale
 
     func presentSearchController(_ searchController: UISearchController) {
         present(searchController, animated: true)
+    }
+
+    // MARK: UISearchResultsUpdating
+
+    func updateSearchResults(for searchController: UISearchController) {
+        if let query = searchController.searchBar.text {
+            delegate?.dealersSceneDidChangeSearchQuery(to: query)
+        }
     }
 
     // MARK: DealersScene
