@@ -47,6 +47,16 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
     }
 
     func alphabetisedDealersDidChange(to alphabetisedGroups: [AlphabetisedDealersGroup]) {
+        let (groups, indexTitles) = makeViewModels(from: alphabetisedGroups)
+        eventBus.post(AllDealersChangedEvent(alphabetisedGroups: groups, indexTitles: indexTitles))
+    }
+
+    func indexDidProduceSearchResults(_ searchResults: [AlphabetisedDealersGroup]) {
+        let (groups, indexTitles) = makeViewModels(from: searchResults)
+        eventBus.post(SearchResultsDidChangeEvent(alphabetisedGroups: groups, indexTitles: indexTitles))
+    }
+
+    private func makeViewModels(from alphabetisedGroups: [AlphabetisedDealersGroup]) -> (groups: [DealersGroupViewModel], titles: [String]) {
         let groups = alphabetisedGroups.map { (alphabetisedGroup) -> DealersGroupViewModel in
             return DealersGroupViewModel(title: alphabetisedGroup.indexingString,
                                          dealers: alphabetisedGroup.dealers.map(makeDealerViewModel))
@@ -54,18 +64,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
 
         let indexTitles = alphabetisedGroups.map({ $0.indexingString })
 
-        eventBus.post(AllDealersChangedEvent(alphabetisedGroups: groups, indexTitles: indexTitles))
-    }
-
-    func indexDidProduceSearchResults(_ searchResults: [AlphabetisedDealersGroup]) {
-        let groups = searchResults.map { (alphabetisedGroup) -> DealersGroupViewModel in
-            return DealersGroupViewModel(title: alphabetisedGroup.indexingString,
-                                         dealers: [])
-        }
-
-        let indexTitles = searchResults.map({ $0.indexingString })
-
-        eventBus.post(SearchResultsDidChangeEvent(alphabetisedGroups: groups, indexTitles: indexTitles))
+        return (groups: groups, titles: indexTitles)
     }
 
     private func makeDealerViewModel(for dealer: Dealer2) -> DealerVM {
