@@ -12,6 +12,10 @@ import Foundation
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
     func makeDealersIndex() -> DealersIndex {
         struct DummyDealersIndex: DealersIndex {
+            func performSearch(term: String) {
+                
+            }
+            
             func setDelegate(_ delegate: DealersIndexDelegate) {
                 
             }

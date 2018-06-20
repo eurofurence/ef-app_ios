@@ -12,6 +12,7 @@ import UIKit
 struct DefaultDealersInteractor: DealersInteractor {
 
     private let viewModel: ViewModel
+    private let searchViewModel: SearchViewModel
 
     init() {
         self.init(dealersService: EurofurenceApplication.shared)
@@ -24,7 +25,9 @@ struct DefaultDealersInteractor: DealersInteractor {
     }
 
     init(dealersService: DealersService, defaultIconData: Data) {
-        viewModel = ViewModel(dealersService: dealersService, defaultIconData: defaultIconData)
+        let index = dealersService.makeDealersIndex()
+        viewModel = ViewModel(dealersService: dealersService, index: index, defaultIconData: defaultIconData)
+        searchViewModel = SearchViewModel(index: index)
     }
 
     func makeDealersViewModel(completionHandler: @escaping (DealersViewModel) -> Void) {
@@ -32,7 +35,7 @@ struct DefaultDealersInteractor: DealersInteractor {
     }
 
     func makeDealersSearchViewModel(completionHandler: @escaping (DealersSearchViewModel) -> Void) {
-
+        completionHandler(searchViewModel)
     }
 
     private class ViewModel: DealersViewModel, DealersIndexDelegate {
@@ -42,10 +45,10 @@ struct DefaultDealersInteractor: DealersInteractor {
         private let defaultIconData: Data
         private var groups = [DealersGroupViewModel]()
 
-        init(dealersService: DealersService, defaultIconData: Data) {
+        init(dealersService: DealersService, index: DealersIndex, defaultIconData: Data) {
             self.dealersService = dealersService
             self.defaultIconData = defaultIconData
-            self.index = dealersService.makeDealersIndex()
+            self.index = index
 
             index.setDelegate(self)
         }
@@ -65,6 +68,20 @@ struct DefaultDealersInteractor: DealersInteractor {
 
         private func makeDealerViewModel(for dealer: Dealer2) -> DealerVM {
             return DealerVM(dealer: dealer, dealersService: dealersService, defaultIconData: defaultIconData)
+        }
+
+    }
+
+    private struct SearchViewModel: DealersSearchViewModel {
+
+        var index: DealersIndex
+
+        func searchSearchResultsDelegate(_ delegate: DealersSearchViewModelDelegate) {
+
+        }
+
+        func updateSearchResults(with query: String) {
+            index.performSearch(term: query)
         }
 
     }

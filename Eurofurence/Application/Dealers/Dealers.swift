@@ -20,6 +20,10 @@ class Dealers: DealersService {
             eventBus.subscribe(consumer: self)
         }
 
+        func performSearch(term: String) {
+
+        }
+
         private var delegate: DealersIndexDelegate?
         func setDelegate(_ delegate: DealersIndexDelegate) {
             self.delegate = delegate

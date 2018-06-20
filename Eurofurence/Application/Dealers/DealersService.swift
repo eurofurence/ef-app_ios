@@ -18,6 +18,7 @@ protocol DealersService {
 protocol DealersIndex {
 
     func setDelegate(_ delegate: DealersIndexDelegate)
+    func performSearch(term: String)
 
 }
 
