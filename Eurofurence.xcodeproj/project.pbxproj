@@ -205,6 +205,7 @@
 		A034379A14212C5E996E6321 /* Pods_Eurofurence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */; };
 		AF4A956010879F8B4E26FB61 /* Pods-EurofurenceTests-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 977F50DE0F3E7ACD20CDD40D /* Pods-EurofurenceTests-metadata.plist */; };
 		C61870E020DAD8E00089E836 /* StubV2ApiUrlProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61870DF20DAD8E00089E836 /* StubV2ApiUrlProviding.swift */; };
+		C61870E220DAE28D0089E836 /* BuildConfigurationV2ApiUrlProvidingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61870E120DAE28D0089E836 /* BuildConfigurationV2ApiUrlProvidingTest.swift */; };
 		C6DD58D420D91069001893ED /* V2ApiUrlProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DD58D320D91069001893ED /* V2ApiUrlProviding.swift */; };
 		C74800FDD10051941095AB9F /* Pods-Eurofurence-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7E8E02928B7F019466A32E8B /* Pods-Eurofurence-metadata.plist */; };
 		CA00AE4520D16BBD00C2FBB0 /* ScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4420D16BBD00C2FBB0 /* ScheduleInteractor.swift */; };
@@ -1195,6 +1196,7 @@
 		A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eurofurence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4939A463603D9F022E19825 /* Pods-EurofurenceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C61870DF20DAD8E00089E836 /* StubV2ApiUrlProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubV2ApiUrlProviding.swift; sourceTree = "<group>"; };
+		C61870E120DAE28D0089E836 /* BuildConfigurationV2ApiUrlProvidingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConfigurationV2ApiUrlProvidingTest.swift; sourceTree = "<group>"; };
 		C6DD58D320D91069001893ED /* V2ApiUrlProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2ApiUrlProviding.swift; sourceTree = "<group>"; };
 		CA00AE4420D16BBD00C2FBB0 /* ScheduleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInteractor.swift; sourceTree = "<group>"; };
 		CA00AE4620D16BCB00C2FBB0 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
@@ -3937,6 +3939,7 @@
 				CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */,
 				CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */,
 				CA65A21D2091F16C0078A4A7 /* Sync */,
+				C61870E120DAE28D0089E836 /* BuildConfigurationV2ApiUrlProvidingTest.swift */,
 			);
 			path = v2;
 			sourceTree = "<group>";
@@ -6079,6 +6082,7 @@
 				CA0F762520322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift in Sources */,
 				CAEAEC0C1FE0702500C0EE7C /* MessageDetailViewControllerTests.swift in Sources */,
 				CAD260A120C03350007E3618 /* WhenSceneTapsFavouriteEventButton_EventDetailPresenterShould.swift in Sources */,
+				C61870E220DAE28D0089E836 /* BuildConfigurationV2ApiUrlProvidingTest.swift in Sources */,
 				CA65A881209B7E1000B72533 /* WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift in Sources */,
 				CA89CBBC2084CB4200570D54 /* WhenBindingAnnouncement_NewsPresenterShould.swift in Sources */,
 				CA65A87F209B7CA200B72533 /* WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould.swift in Sources */,
