@@ -10,7 +10,35 @@ import Foundation
 
 class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersSearchViewModelDelegate {
 
-    private struct Binder: DealersBinder {
+    private struct AllDealersBinder: DealersBinder {
+
+        var binder: DealerGroupsBinder
+
+        func bind(_ component: DealerGroupHeader, toDealerGroupAt index: Int) {
+            binder.bind(component, toDealerGroupAt: index)
+        }
+
+        func bind(_ component: DealerComponent, toDealerAt indexPath: IndexPath) {
+            binder.bind(component, toDealerAt: indexPath)
+        }
+
+    }
+
+    private struct SearchResultsBindingAdapter: DealersSearchResultsBinder {
+
+        var binder: DealerGroupsBinder
+
+        func bind(_ component: DealerGroupHeader, toDealerSearchResultGroupAt index: Int) {
+            binder.bind(component, toDealerGroupAt: index)
+        }
+
+        func bind(_ component: DealerComponent, toDealerSearchResultAt indexPath: IndexPath) {
+            binder.bind(component, toDealerAt: indexPath)
+        }
+
+    }
+
+    private struct DealerGroupsBinder {
 
         var viewModels: [DealersGroupViewModel]
 
@@ -38,26 +66,6 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
             } else {
                 component.hideAfterDarkContentWarning()
             }
-        }
-
-    }
-
-    private struct SearchResultsBinder: DealersSearchResultsBinder {
-
-        var viewModels: [DealersGroupViewModel]
-
-        func bind(_ component: DealerGroupHeader, toDealerSearchResultGroupAt index: Int) {
-            let group = viewModels[index]
-            component.setDealersGroupTitle(group.title)
-        }
-
-        func bind(_ component: DealerComponent, toDealerSearchResultAt indexPath: IndexPath) {
-            let group = viewModels[indexPath.section]
-            let dealer = group.dealers[indexPath.item]
-
-            component.setDealerTitle(dealer.title)
-            component.setDealerSubtitle(dealer.subtitle)
-            dealer.fetchIconPNGData(completionHandler: component.setDealerIconPNGData)
         }
 
     }
@@ -91,16 +99,18 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
 
     func dealerGroupsDidChange(_ groups: [DealersGroupViewModel], indexTitles: [String]) {
         let itemsPerSection = groups.map({ $0.dealers.count })
+        let binder = DealerGroupsBinder(viewModels: groups)
         scene.bind(numberOfDealersPerSection: itemsPerSection,
                    sectionIndexTitles: indexTitles,
-                   using: Binder(viewModels: groups))
+                   using: AllDealersBinder(binder: binder))
     }
 
     func dealerSearchResultsDidChange(_ groups: [DealersGroupViewModel], indexTitles: [String]) {
         let itemsPerSection = groups.map({ $0.dealers.count })
+        let binder = DealerGroupsBinder(viewModels: groups)
         scene.bindSearchResults(numberOfDealersPerSection: itemsPerSection,
                                 sectionIndexTitles: indexTitles,
-                                using: SearchResultsBinder(viewModels: groups))
+                                using: SearchResultsBindingAdapter(binder: binder))
     }
 
 }
