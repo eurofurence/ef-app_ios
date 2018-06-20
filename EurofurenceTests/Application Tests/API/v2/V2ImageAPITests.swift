@@ -13,9 +13,10 @@ class V2ImageAPITests: XCTestCase {
     
     func testSubmitsExpectedURL() {
         let identifier = String.random
-        let expected = URL(string: "https://app.eurofurence.org:40000/api/v2/Images/\(identifier)/Content")!.absoluteString
+        let apiUrl = StubV2ApiUrlProviding()
+        let expected = URL(string: apiUrl.url + "Images/\(identifier)/Content")!.absoluteString
         let jsonSession = CapturingJSONSession()
-        let api = V2ImageAPI(jsonSession: jsonSession)
+        let api = V2ImageAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         api.fetchImage(identifier: identifier) { (_) in }
         
         XCTAssertEqual(expected, jsonSession.getRequestURL)
@@ -23,7 +24,8 @@ class V2ImageAPITests: XCTestCase {
     
     func testProvidesDataFromRequest() {
         let jsonSession = CapturingJSONSession()
-        let api = V2ImageAPI(jsonSession: jsonSession)
+        let apiUrl = StubV2ApiUrlProviding()
+        let api = V2ImageAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         let expected = Data.random
         var actual: Data?
         api.fetchImage(identifier: .random) { actual = $0 }

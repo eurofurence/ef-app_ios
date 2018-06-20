@@ -19,7 +19,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
         super.setUp()
         
         let jsonSession = CapturingJSONSession()
-        let syncApi = V2SyncAPI(jsonSession: jsonSession)
+        let apiUrl = StubV2ApiUrlProviding()
+        let syncApi = V2SyncAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         let responseDataURL = Bundle(for: V2SyncAPITests.self).url(forResource: "V2SyncAPIResponse", withExtension: "json")!
         let responseData = try! Data(contentsOf: responseDataURL)
         syncApi.fetchLatestData(lastSyncTime: nil) { self.response = $0 }
