@@ -270,7 +270,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         func saveDealers(_ dealers: [APIDealer]) {
             mutations.append { (context) in
                 dealers.forEach { (dealer) in
-                    let entity = DealerEntity(context: context)
+                    let entity: DealerEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: dealer.identifier)
                     entity.identifier = dealer.identifier
                     entity.displayName = dealer.displayName
                     entity.attendeeNickname = dealer.attendeeNickname
