@@ -71,6 +71,10 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         super.title = title
     }
 
+    func deselectDealer(at indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
     func bind(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersBinder) {
         tableController = TableController(numberOfDealersPerSection: numberOfDealersPerSection,
                                           sectionIndexTitles: sectionIndexTitles,

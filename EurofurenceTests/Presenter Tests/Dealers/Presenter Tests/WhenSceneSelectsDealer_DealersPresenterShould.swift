@@ -24,4 +24,13 @@ class WhenSceneSelectsDealer_DealersPresenterShould: XCTestCase {
         XCTAssertEqual(identifier, context.delegate.capturedSelectedDealerIdentifier)
     }
     
+    func testTellTheSceneToDeselectTheSelectedDealer() {
+        let indexPath = IndexPath.random
+        let context = DealersPresenterTestBuilder().build()
+        context.simulateSceneDidLoad()
+        context.simulateSceneDidSelectDealer(at: indexPath)
+        
+        XCTAssertEqual(indexPath, context.scene.capturedIndexPathToDeselect)
+    }
+    
 }

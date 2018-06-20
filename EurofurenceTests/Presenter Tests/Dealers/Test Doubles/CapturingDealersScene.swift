@@ -39,4 +39,9 @@ class CapturingDealersScene: UIViewController, DealersScene {
         searchResultsBinder = binder
     }
     
+    private(set) var capturedIndexPathToDeselect: IndexPath?
+    func deselectDealer(at indexPath: IndexPath) {
+        capturedIndexPathToDeselect = indexPath
+    }
+    
 }
