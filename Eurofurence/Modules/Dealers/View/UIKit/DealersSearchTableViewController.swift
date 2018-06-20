@@ -12,6 +12,7 @@ class DealersSearchTableViewController: UITableViewController {
 
     // MARK: Functions
 
+    var onDidSelectSearchResultAtIndexPath: ((IndexPath) -> Void)?
     private var numberOfDealersPerSection: [Int] = []
     private var sectionIndexTitles: [String]?
     private var binder: DealersSearchResultsBinder?
@@ -57,6 +58,10 @@ class DealersSearchTableViewController: UITableViewController {
 
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return sectionIndexTitles
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        onDidSelectSearchResultAtIndexPath?(indexPath)
     }
 
     // MARK: Private

@@ -36,6 +36,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
 
         definesPresentationContext = true
         searchViewController = storyboard?.instantiate(DealersSearchTableViewController.self)
+        searchViewController?.onDidSelectSearchResultAtIndexPath = didSelectSearchResult
         searchController = UISearchController(searchResultsController: searchViewController)
         searchController?.delegate = self
         searchController?.searchResultsUpdater = self
@@ -73,7 +74,8 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     func bind(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersBinder) {
         tableController = TableController(numberOfDealersPerSection: numberOfDealersPerSection,
                                           sectionIndexTitles: sectionIndexTitles,
-                                          binder: binder)
+                                          binder: binder,
+                                          onDidSelectRowAtIndexPath: didSelectDealer)
     }
 
     func bindSearchResults(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersSearchResultsBinder) {
@@ -83,6 +85,14 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     }
 
     // MARK: Private
+
+    private func didSelectDealer(at indexPath: IndexPath) {
+        delegate?.dealersSceneDidSelectDealer(at: indexPath)
+    }
+
+    private func didSelectSearchResult(at indexPath: IndexPath) {
+        delegate?.dealersSceneDidSelectDealerSearchResult(at: indexPath)
+    }
 
     private class Header: UITableViewHeaderFooterView, DealerGroupHeader {
 
@@ -99,11 +109,16 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         private let numberOfDealersPerSection: [Int]
         private let sectionIndexTitles: [String]
         private let binder: DealersBinder
+        private let onDidSelectRowAtIndexPath: (IndexPath) -> Void
 
-        init(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], binder: DealersBinder) {
+        init(numberOfDealersPerSection: [Int],
+             sectionIndexTitles: [String],
+             binder: DealersBinder,
+             onDidSelectRowAtIndexPath: @escaping (IndexPath) -> Void) {
             self.numberOfDealersPerSection = numberOfDealersPerSection
             self.sectionIndexTitles = sectionIndexTitles
             self.binder = binder
+            self.onDidSelectRowAtIndexPath = onDidSelectRowAtIndexPath
         }
 
         func numberOfSections(in tableView: UITableView) -> Int {
@@ -128,6 +143,10 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
 
         func sectionIndexTitles(for tableView: UITableView) -> [String]? {
             return sectionIndexTitles
+        }
+
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            onDidSelectRowAtIndexPath(indexPath)
         }
 
     }
