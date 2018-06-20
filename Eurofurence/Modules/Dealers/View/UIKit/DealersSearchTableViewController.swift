@@ -51,6 +51,7 @@ class DealersSearchTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.identifier) as! Header
+        binder?.bind(header, toDealerSearchResultGroupAt: section)
         return header
     }
 
