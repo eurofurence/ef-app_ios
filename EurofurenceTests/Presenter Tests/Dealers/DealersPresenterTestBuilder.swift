@@ -73,12 +73,22 @@ extension DealersPresenterTestBuilder.Context {
         return component
     }
     
+    func makeAndBindComponentHeader(forSearchResultGroupAt index: Int) -> CapturingDealerGroupHeader {
+        let component = CapturingDealerGroupHeader()
+        bind(component, toDealerSearchResultGroupAt: index)
+        return component
+    }
+    
     func bind(_ component: DealerComponent, toDealerAt indexPath: IndexPath) {
         scene.binder?.bind(component, toDealerAt: indexPath)
     }
     
     func bind(_ component: DealerGroupHeader, toDealerGroupAt index: Int) {
         scene.binder?.bind(component, toDealerGroupAt: index)
+    }
+    
+    func bind(_ component: DealerGroupHeader, toDealerSearchResultGroupAt index: Int) {
+        scene.searchResultsBinder?.bind(component, toDealerSearchResultGroupAt: index)
     }
     
     func bind(_ component: DealerComponent, toDealerSearchResultAt indexPath: IndexPath) {

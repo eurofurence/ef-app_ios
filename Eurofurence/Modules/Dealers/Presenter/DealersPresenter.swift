@@ -46,6 +46,11 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
 
         var viewModels: [DealersGroupViewModel]
 
+        func bind(_ component: DealerGroupHeader, toDealerSearchResultGroupAt index: Int) {
+            let group = viewModels[index]
+            component.setDealersGroupTitle(group.title)
+        }
+
         func bind(_ component: DealerComponent, toDealerSearchResultAt indexPath: IndexPath) {
             let group = viewModels[indexPath.section]
             let dealer = group.dealers[indexPath.item]
