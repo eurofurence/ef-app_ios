@@ -461,6 +461,7 @@
 		CA36A4B820D9A99500EE6537 /* WhenFetchingIconDataForDealerWithArtwork_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4B720D9A99500EE6537 /* WhenFetchingIconDataForDealerWithArtwork_ApplicationShould.swift */; };
 		CA36A4BA20D9AC9F00EE6537 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4B920D9AC9F00EE6537 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift */; };
 		CA36A4BC20DA1DE400EE6537 /* DealerEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4BB20DA1DE400EE6537 /* DealerEntity+Adaptation.swift */; };
+		CA36A4BE20DA70B000EE6537 /* DealersSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4BD20DA70B000EE6537 /* DealersSearchTableViewController.swift */; };
 		CA3990ED20ACD35C001E3F1A /* HoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */; };
 		CA3990EF20ACD559001E3F1A /* FoundationHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */; };
 		CA3990F220ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */; };
@@ -1439,6 +1440,7 @@
 		CA36A4B720D9A99500EE6537 /* WhenFetchingIconDataForDealerWithArtwork_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingIconDataForDealerWithArtwork_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA36A4B920D9AC9F00EE6537 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA36A4BB20DA1DE400EE6537 /* DealerEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealerEntity+Adaptation.swift"; sourceTree = "<group>"; };
+		CA36A4BD20DA70B000EE6537 /* DealersSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersSearchTableViewController.swift; sourceTree = "<group>"; };
 		CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationHoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUpcomingEventsBeforeLoadingAnything.swift; sourceTree = "<group>"; };
@@ -2823,6 +2825,7 @@
 			children = (
 				CA0E5208208E7020005259FE /* Dealers.storyboard */,
 				CA36A48020D8C89700EE6537 /* DealerComponentTableViewCell.swift */,
+				CA36A4BD20DA70B000EE6537 /* DealersSearchTableViewController.swift */,
 				CA0E5206208E700E005259FE /* DealersViewController.swift */,
 				CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */,
 				CA36A48120D8C89700EE6537 /* DealerComponentTableViewCell.xib */,
@@ -5284,6 +5287,7 @@
 				CA30EAA11F2127350053DBF6 /* LoginResponse.swift in Sources */,
 				CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */,
 				9A861ECB1F25555000B75A8C /* UserCompletedTutorialStateProviding.swift in Sources */,
+				CA36A4BE20DA70B000EE6537 /* DealersSearchTableViewController.swift in Sources */,
 				CA49E94B2015480A00EB571C /* EventCache.swift in Sources */,
 				CAE8B0B920CA4E450029D4D6 /* KnowledgeEntryEntity+Adaptation.swift in Sources */,
 				9A0525451ECB090700578798 /* WebApiConnection.swift in Sources */,

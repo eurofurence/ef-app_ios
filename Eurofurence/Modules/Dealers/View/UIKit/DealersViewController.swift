@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DealersViewController: UIViewController, DealersScene {
+class DealersViewController: UIViewController, UISearchControllerDelegate, DealersScene {
 
     // MARK: Properties
 
@@ -20,14 +20,34 @@ class DealersViewController: UIViewController, DealersScene {
         }
     }
 
+    private var searchViewController: DealersSearchTableViewController?
+    private var searchController: UISearchController?
+
+    // MARK: IBActions
+
+    @IBAction func openSearch(_ sender: Any) {
+        searchController?.isActive = true
+    }
+
     // MARK: Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        definesPresentationContext = true
+        searchViewController = storyboard?.instantiate(DealersSearchTableViewController.self)
+        searchController = UISearchController(searchResultsController: searchViewController)
+        searchController?.delegate = self
+
         tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
         tableView.register(DealerComponentTableViewCell.self)
         delegate?.dealersSceneDidLoad()
+    }
+
+    // MARK: UISearchControllerDelegate
+
+    func presentSearchController(_ searchController: UISearchController) {
+        present(searchController, animated: true)
     }
 
     // MARK: DealersScene
