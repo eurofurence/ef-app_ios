@@ -23,7 +23,14 @@ class Dealers: DealersService {
         func performSearch(term: String) {
             let matches = alphebetisedDealers.compactMap { (group) -> AlphabetisedDealersGroup? in
                 let matchingDealers = group.dealers.compactMap { (dealer) -> Dealer2? in
-                    guard dealer.preferredName.localizedCaseInsensitiveContains(term) else { return nil }
+                    let preferredNameMatches = dealer.preferredName.localizedCaseInsensitiveContains(term)
+                    var alternateNameMatches = false
+                    if let alternateName = dealer.alternateName {
+                        alternateNameMatches = alternateName.localizedCaseInsensitiveContains(term)
+                    }
+
+                    guard preferredNameMatches || alternateNameMatches else { return nil }
+
                     return dealer
                 }
 
