@@ -22,6 +22,7 @@ class DirectorBuilder {
     private var newsModuleProviding: NewsModuleProviding
     private var scheduleModuleProviding: ScheduleModuleProviding
     private var dealersModuleProviding: DealersModuleProviding
+    private var dealerDetailModuleProviding: DealerDetailModuleProviding
     private var messagesModuleProviding: MessagesModuleProviding
     private var loginModuleProviding: LoginModuleProviding
     private var messageDetailModuleProviding: MessageDetailModuleProviding
@@ -43,6 +44,7 @@ class DirectorBuilder {
         newsModuleProviding = NewsModuleBuilder().build()
         scheduleModuleProviding = ScheduleModuleBuilder().build()
         dealersModuleProviding = DealersModuleBuilder().build()
+        dealerDetailModuleProviding = DealerDetailModuleBuilder().build()
         messagesModuleProviding = MessagesModuleBuilder().build()
         loginModuleProviding = LoginModuleBuilder().build()
         messageDetailModuleProviding = MessageDetailModuleBuilder().build()
@@ -123,6 +125,12 @@ class DirectorBuilder {
     }
 
     @discardableResult
+    func with(_ dealerDetailModuleProviding: DealerDetailModuleProviding) -> DirectorBuilder {
+        self.dealerDetailModuleProviding = dealerDetailModuleProviding
+        return self
+    }
+
+    @discardableResult
     func with(_ messagesModuleProviding: MessagesModuleProviding) -> DirectorBuilder {
         self.messagesModuleProviding = messagesModuleProviding
         return self
@@ -190,6 +198,7 @@ class DirectorBuilder {
                                    newsModuleProviding: newsModuleProviding,
                                    scheduleModuleProviding: scheduleModuleProviding,
                                    dealersModuleProviding: dealersModuleProviding,
+                                   dealerDetailModuleProviding: dealerDetailModuleProviding,
                                    messagesModuleProviding: messagesModuleProviding,
                                    loginModuleProviding: loginModuleProviding,
                                    messageDetailModuleProviding: messageDetailModuleProviding,

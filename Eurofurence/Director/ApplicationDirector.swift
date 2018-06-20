@@ -39,6 +39,7 @@ class ApplicationDirector: RootModuleDelegate,
     private let newsModuleProviding: NewsModuleProviding
     private let scheduleModuleProviding: ScheduleModuleProviding
     private let dealersModuleProviding: DealersModuleProviding
+    private let dealerDetailModuleProviding: DealerDetailModuleProviding
     private let messagesModuleProviding: MessagesModuleProviding
     private let loginModuleProviding: LoginModuleProviding
     private let messageDetailModuleProviding: MessageDetailModuleProviding
@@ -54,6 +55,7 @@ class ApplicationDirector: RootModuleDelegate,
     private var newsController: UIViewController?
     private let newsNavigationController: UINavigationController
     private let scheduleNavigationController: UINavigationController
+    private let dealersNavigationController: UINavigationController
     private let knowledgeNavigationController: UINavigationController
 
     init(animate: Bool,
@@ -69,6 +71,7 @@ class ApplicationDirector: RootModuleDelegate,
          newsModuleProviding: NewsModuleProviding,
          scheduleModuleProviding: ScheduleModuleProviding,
          dealersModuleProviding: DealersModuleProviding,
+         dealerDetailModuleProviding: DealerDetailModuleProviding,
          messagesModuleProviding: MessagesModuleProviding,
          loginModuleProviding: LoginModuleProviding,
          messageDetailModuleProviding: MessageDetailModuleProviding,
@@ -88,6 +91,7 @@ class ApplicationDirector: RootModuleDelegate,
         self.newsModuleProviding = newsModuleProviding
         self.scheduleModuleProviding = scheduleModuleProviding
         self.dealersModuleProviding = dealersModuleProviding
+        self.dealerDetailModuleProviding = dealerDetailModuleProviding
         self.messagesModuleProviding = messagesModuleProviding
         self.loginModuleProviding = loginModuleProviding
         self.messageDetailModuleProviding = messageDetailModuleProviding
@@ -103,6 +107,7 @@ class ApplicationDirector: RootModuleDelegate,
 
         newsNavigationController = navigationControllerFactory.makeNavigationController()
         scheduleNavigationController = navigationControllerFactory.makeNavigationController()
+        dealersNavigationController = navigationControllerFactory.makeNavigationController()
         knowledgeNavigationController = navigationControllerFactory.makeNavigationController()
 
         rootModuleProviding.makeRootModule(self)
@@ -200,7 +205,8 @@ class ApplicationDirector: RootModuleDelegate,
     // MARK: DealersModuleDelegate
 
     func dealersModuleDidSelectDealer(identifier: Dealer2.Identifier) {
-
+        let module = dealerDetailModuleProviding.makeDealerDetailModule(for: identifier)
+        dealersNavigationController.pushViewController(module, animated: animate)
     }
 
     // MARK: KnowledgeListModuleDelegate
@@ -253,7 +259,7 @@ class ApplicationDirector: RootModuleDelegate,
         scheduleNavigationController.tabBarItem = scheduleViewController.tabBarItem
 
         let dealersViewController = dealersModuleProviding.makeDealersModule(self)
-        let dealersNavigationController = UINavigationController(rootViewController: dealersViewController)
+        dealersNavigationController.setViewControllers([dealersViewController], animated: animate)
         dealersNavigationController.tabBarItem = dealersViewController.tabBarItem
 
         let tabModule = tabModuleProviding.makeTabModule([newsNavigationController,

@@ -21,6 +21,7 @@ class ApplicationDirectorTestBuilder {
         var newsModule: StubNewsModuleFactory
         var scheduleModule: StubScheduleModuleFactory
         var dealersModule: StubDealersModuleFactory
+        var dealerDetailModule: StubDealerDetailModuleProviding
         var messages: StubMessagesModuleFactory
         var loginModule: StubLoginModuleFactory
         var windowWireframe: CapturingWindowWireframe
@@ -43,6 +44,7 @@ class ApplicationDirectorTestBuilder {
     private let newsModule: StubNewsModuleFactory
     private let scheduleModule: StubScheduleModuleFactory
     private let dealersModule: StubDealersModuleFactory
+    private let dealerDetailModule: StubDealerDetailModuleProviding
     private let messagesModule: StubMessagesModuleFactory
     private let loginModule: StubLoginModuleFactory
     private let windowWireframe: CapturingWindowWireframe
@@ -64,6 +66,7 @@ class ApplicationDirectorTestBuilder {
         newsModule = StubNewsModuleFactory()
         scheduleModule = StubScheduleModuleFactory()
         dealersModule = StubDealersModuleFactory()
+        dealerDetailModule = StubDealerDetailModuleProviding()
         messagesModule = StubMessagesModuleFactory()
         loginModule = StubLoginModuleFactory()
         messageDetailModule = StubMessageDetailModuleProviding()
@@ -86,6 +89,7 @@ class ApplicationDirectorTestBuilder {
         builder.with(newsModule)
         builder.with(scheduleModule)
         builder.with(dealersModule)
+        builder.with(dealerDetailModule)
         builder.with(messagesModule)
         builder.with(loginModule)
         builder.with(messageDetailModule)
@@ -109,6 +113,7 @@ class ApplicationDirectorTestBuilder {
                        newsModule: newsModule,
                        scheduleModule: scheduleModule,
                        dealersModule: dealersModule,
+                       dealerDetailModule: dealerDetailModule,
                        messages: messagesModule,
                        loginModule: loginModule,
                        windowWireframe: windowWireframe,
