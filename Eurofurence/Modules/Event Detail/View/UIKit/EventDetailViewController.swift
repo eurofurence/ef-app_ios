@@ -28,6 +28,9 @@ class EventDetailViewController: UIViewController, EventDetailScene {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        favouriteEventBarButtonItem.accessibilityLabel = .favourite
+        unfavouriteEventBarButtonItem.accessibilityLabel = .unfavourite
         delegate?.eventDetailSceneDidLoad()
     }
 
