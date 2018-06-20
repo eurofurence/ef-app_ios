@@ -13,7 +13,7 @@ class V2ImageAPITests: XCTestCase {
     
     func testSubmitsExpectedURL() {
         let identifier = String.random
-        let expected = URL(string: "https://app.eurofurence.org/api/v2/Images/\(identifier)/Content")!.absoluteString
+        let expected = URL(string: "https://app.eurofurence.org:40000/api/v2/Images/\(identifier)/Content")!.absoluteString
         let jsonSession = CapturingJSONSession()
         let api = V2ImageAPI(jsonSession: jsonSession)
         api.fetchImage(identifier: identifier) { (_) in }

@@ -17,7 +17,7 @@ struct V2ImageAPI: ImageAPI {
     }
 
     func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void) {
-        let request = JSONRequest(url: "https://app.eurofurence.org/api/v2/Images/\(identifier)/Content", body: Data())
+        let request = JSONRequest(url: "https://app.eurofurence.org:40000/api/v2/Images/\(identifier)/Content", body: Data())
         jsonSession.get(request) { (data, _) in
             completionHandler(data)
         }
