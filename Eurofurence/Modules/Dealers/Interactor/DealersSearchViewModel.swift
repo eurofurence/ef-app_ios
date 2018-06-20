@@ -12,6 +12,7 @@ protocol DealersSearchViewModel {
 
     func setSearchResultsDelegate(_ delegate: DealersSearchViewModelDelegate)
     func updateSearchResults(with query: String)
+    func identifierForDealer(at indexPath: IndexPath) -> Dealer2.Identifier?
 
 }
 

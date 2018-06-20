@@ -28,4 +28,17 @@ class CapturingDealersSearchViewModel: DealersSearchViewModel {
         capturedSearchQuery = query
     }
     
+    fileprivate var dealerIdentifiers = [IndexPath : Dealer2.Identifier]()
+    func identifierForDealer(at indexPath: IndexPath) -> Dealer2.Identifier? {
+        return dealerIdentifiers[indexPath]
+    }
+    
+}
+
+extension CapturingDealersSearchViewModel {
+    
+    func stub(_ identifier: Dealer2.Identifier, forDealerAt indexPath: IndexPath) {
+        dealerIdentifiers[indexPath] = identifier
+    }
+    
 }

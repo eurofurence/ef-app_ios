@@ -68,6 +68,10 @@ extension DealersPresenterTestBuilder.Context {
         scene.delegate?.dealersSceneDidSelectDealer(at: indexPath)
     }
     
+    func simulateSceneDidSelectSearchResult(at indexPath: IndexPath) {
+        scene.delegate?.dealersSceneDidSelectDealerSearchResult(at: indexPath)
+    }
+    
     func makeAndBindDealer(at indexPath: IndexPath) -> CapturingDealerComponent {
         let component = CapturingDealerComponent()
         bind(component, toDealerAt: indexPath)

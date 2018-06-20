@@ -106,6 +106,11 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
         delegate.dealersModuleDidSelectDealer(identifier: identifier)
     }
 
+    func dealersSceneDidSelectDealerSearchResult(at indexPath: IndexPath) {
+        guard let identifier = searchViewModel?.identifierForDealer(at: indexPath) else { return }
+        delegate.dealersModuleDidSelectDealer(identifier: identifier)
+    }
+
     func dealerGroupsDidChange(_ groups: [DealersGroupViewModel], indexTitles: [String]) {
         let itemsPerSection = groups.map({ $0.dealers.count })
         let binder = DealerGroupsBinder(viewModels: groups)

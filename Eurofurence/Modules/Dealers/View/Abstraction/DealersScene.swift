@@ -22,5 +22,6 @@ protocol DealersSceneDelegate {
     func dealersSceneDidLoad()
     func dealersSceneDidChangeSearchQuery(to query: String)
     func dealersSceneDidSelectDealer(at indexPath: IndexPath)
+    func dealersSceneDidSelectDealerSearchResult(at indexPath: IndexPath)
 
 }

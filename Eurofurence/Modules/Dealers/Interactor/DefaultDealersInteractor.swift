@@ -144,6 +144,10 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
             index.performSearch(term: query)
         }
 
+        func identifierForDealer(at indexPath: IndexPath) -> Dealer2.Identifier? {
+            return nil
+        }
+
         func consume(event: SearchResultsDidChangeEvent) {
             groups = event.alphabetisedGroups
             indexTitles = event.indexTitles
