@@ -99,7 +99,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
     }
 
     func getSavedDealers() -> [APIDealer]? {
-        return nil
+        return getModels(fetchRequest: DealerEntity.fetchRequest())
     }
 
     // MARK: Private
@@ -268,7 +268,19 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         }
 
         func saveDealers(_ dealers: [APIDealer]) {
-
+            mutations.append { (context) in
+                dealers.forEach { (dealer) in
+                    let entity = DealerEntity(context: context)
+                    entity.identifier = dealer.identifier
+                    entity.displayName = dealer.displayName
+                    entity.attendeeNickname = dealer.attendeeNickname
+                    entity.attendsOnThursday = dealer.attendsOnThursday
+                    entity.attendsOnFriday = dealer.attendsOnFriday
+                    entity.attendsOnSaturday = dealer.attendsOnSaturday
+                    entity.isAfterDark = dealer.isAfterDark
+                    entity.artistThumbnailImageId = dealer.artistThumbnailImageId
+                }
+            }
         }
 
         // MARK: Private

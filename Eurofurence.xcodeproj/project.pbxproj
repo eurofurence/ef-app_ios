@@ -460,6 +460,7 @@
 		CA36A4B620D9A5C300EE6537 /* WhenDealersHaveCaseVaryingNames_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4B520D9A5C300EE6537 /* WhenDealersHaveCaseVaryingNames_ApplicationShould.swift */; };
 		CA36A4B820D9A99500EE6537 /* WhenFetchingIconDataForDealerWithArtwork_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4B720D9A99500EE6537 /* WhenFetchingIconDataForDealerWithArtwork_ApplicationShould.swift */; };
 		CA36A4BA20D9AC9F00EE6537 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4B920D9AC9F00EE6537 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift */; };
+		CA36A4BC20DA1DE400EE6537 /* DealerEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4BB20DA1DE400EE6537 /* DealerEntity+Adaptation.swift */; };
 		CA3990ED20ACD35C001E3F1A /* HoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */; };
 		CA3990EF20ACD559001E3F1A /* FoundationHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */; };
 		CA3990F220ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */; };
@@ -1437,6 +1438,7 @@
 		CA36A4B520D9A5C300EE6537 /* WhenDealersHaveCaseVaryingNames_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDealersHaveCaseVaryingNames_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA36A4B720D9A99500EE6537 /* WhenFetchingIconDataForDealerWithArtwork_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingIconDataForDealerWithArtwork_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA36A4B920D9AC9F00EE6537 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA36A4BB20DA1DE400EE6537 /* DealerEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealerEntity+Adaptation.swift"; sourceTree = "<group>"; };
 		CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationHoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUpcomingEventsBeforeLoadingAnything.swift; sourceTree = "<group>"; };
@@ -4520,6 +4522,7 @@
 			children = (
 				CA1F7D6C20CBBD9200FB87F5 /* AnnouncementEntity+Adaptation.swift */,
 				CA08158220D3DBC200F750D4 /* ConferenceDayEntity+Adaptation.swift */,
+				CA36A4BB20DA1DE400EE6537 /* DealerEntity+Adaptation.swift */,
 				CAE8B0B320CA4C6B0029D4D6 /* EntityAdapting.swift */,
 				CAE8B0BA20CA54C30029D4D6 /* EventEntity+Adaptation.swift */,
 				CABA840020CEFCCD00DD0795 /* FavouriteEventEntity+Adaptation.swift */,
@@ -5257,6 +5260,7 @@
 				CA6375B2208E02E300536BE2 /* DealersScene.swift in Sources */,
 				CA30EAC41F2672BF0053DBF6 /* Message.swift in Sources */,
 				CAE8B0B720CA4E100029D4D6 /* LinkEntity+Adaptation.swift in Sources */,
+				CA36A4BC20DA1DE400EE6537 /* DealerEntity+Adaptation.swift in Sources */,
 				CA1FE99E1FA0B41E009C7DF3 /* NavigationControllerFactory.swift in Sources */,
 				CA162E8820A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift in Sources */,
 				9A34B9781ECF6E3B004A249E /* Iso8601DateFormatter.swift in Sources */,
