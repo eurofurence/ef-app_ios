@@ -67,7 +67,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, Deale
                                           binder: binder)
     }
 
-    func bindSearchResults(numberOfDealersPerSection: [Int], sectionIndexTitles: [String]) {
+    func bindSearchResults(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersSearchResultsBinder) {
 
     }
 

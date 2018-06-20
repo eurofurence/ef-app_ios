@@ -81,4 +81,8 @@ extension DealersPresenterTestBuilder.Context {
         scene.binder?.bind(component, toDealerGroupAt: index)
     }
     
+    func bind(_ component: DealerComponent, toDealerSearchResultAt indexPath: IndexPath) {
+        scene.searchResultsBinder?.bind(component, toDealerSearchResultAt: indexPath)
+    }
+    
 }

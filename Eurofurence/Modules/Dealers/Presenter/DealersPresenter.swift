@@ -42,6 +42,21 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
 
     }
 
+    private struct SearchResultsBinder: DealersSearchResultsBinder {
+
+        var viewModels: [DealersGroupViewModel]
+
+        func bind(_ component: DealerComponent, toDealerSearchResultAt indexPath: IndexPath) {
+            let group = viewModels[indexPath.section]
+            let dealer = group.dealers[indexPath.item]
+
+            component.setDealerTitle(dealer.title)
+            component.setDealerSubtitle(dealer.subtitle)
+            dealer.fetchIconPNGData(completionHandler: component.setDealerIconPNGData)
+        }
+
+    }
+
     private let scene: DealersScene
     private let interactor: DealersInteractor
     private var searchViewModel: DealersSearchViewModel?
@@ -79,7 +94,8 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
     func dealerSearchResultsDidChange(_ groups: [DealersGroupViewModel], indexTitles: [String]) {
         let itemsPerSection = groups.map({ $0.dealers.count })
         scene.bindSearchResults(numberOfDealersPerSection: itemsPerSection,
-                                sectionIndexTitles: indexTitles)
+                                sectionIndexTitles: indexTitles,
+                                using: SearchResultsBinder(viewModels: groups))
     }
 
 }
