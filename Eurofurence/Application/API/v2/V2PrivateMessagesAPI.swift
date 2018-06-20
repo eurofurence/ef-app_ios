@@ -13,14 +13,12 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
     // MARK: Properties
 
     private var jsonSession: JSONSession
-    let apiUrl: String
     private var decoder: JSONDecoder
 
     // MARK: Initialization
 
-    init(jsonSession: JSONSession, apiUrl: V2ApiUrlProviding) {
+    init(jsonSession: JSONSession) {
         self.jsonSession = jsonSession
-        self.apiUrl = apiUrl.url
 
         decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(Iso8601DateFormatter.instance)
@@ -30,8 +28,7 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
 
     func loadPrivateMessages(authorizationToken: String,
                              completionHandler: @escaping ([Message]?) -> Void) {
-        let url = apiUrl + "Communication/PrivateMessages"
-        var request = JSONRequest(url: url, body: Data())
+        var request = JSONRequest(url: "https://app.eurofurence.org/api/v2/Communication/PrivateMessages", body: Data())
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]
         jsonSession.get(request) { (data, _) in
             var messages: [Message]?
@@ -46,7 +43,7 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
     }
 
     func markMessageWithIdentifierAsRead(_ identifier: String, authorizationToken: String) {
-        let url = apiUrl + "Communication/PrivateMessages/\(identifier)/Read"
+        let url = "https://app.eurofurence.org/api/v2/Communication/PrivateMessages/\(identifier)/Read"
         let messageContentsToSupportSwagger = "true".data(using: .utf8)!
         var request = JSONRequest(url: url, body: messageContentsToSupportSwagger)
         request.headers = ["Authorization": "Bearer \(authorizationToken)"]

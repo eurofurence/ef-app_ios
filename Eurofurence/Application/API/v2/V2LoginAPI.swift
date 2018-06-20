@@ -13,15 +13,13 @@ struct V2LoginAPI: LoginAPI {
     // MARK: Properties
 
     private let jsonSession: JSONSession
-    let apiUrl: String
     private let decoder: JSONDecoder
     private let encoder: JSONEncoder
 
     // MARK: Initialization
 
-    init(jsonSession: JSONSession, apiUrl: V2ApiUrlProviding) {
+    init(jsonSession: JSONSession) {
         self.jsonSession = jsonSession
-        self.apiUrl = apiUrl.url
 
         // TODO: Investigate why system ios8601 formatter fails to parse our dates
         decoder = JSONDecoder()
@@ -33,7 +31,7 @@ struct V2LoginAPI: LoginAPI {
     // MARK: LoginAPI
 
     func performLogin(request: LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void) {
-        let url = apiUrl + "Tokens/RegSys"
+        let url = "https://app.eurofurence.org/api/v2/Tokens/RegSys"
         let jsonData = try! encoder.encode(Request(from: request))
         let jsonRequest = JSONRequest(url: url, body: jsonData)
         jsonSession.post(jsonRequest) { (data, _) in
