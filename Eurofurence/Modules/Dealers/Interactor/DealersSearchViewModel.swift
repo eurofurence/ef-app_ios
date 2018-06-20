@@ -10,7 +10,7 @@ import Foundation
 
 protocol DealersSearchViewModel {
 
-    func searchSearchResultsDelegate(_ delegate: DealersSearchViewModelDelegate)
+    func setSearchResultsDelegate(_ delegate: DealersSearchViewModelDelegate)
     func updateSearchResults(with query: String)
 
 }

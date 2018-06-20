@@ -19,7 +19,7 @@ class CapturingDealersSearchViewModel: DealersSearchViewModel {
         self.sectionIndexTitles = sectionIndexTitles
     }
     
-    func searchSearchResultsDelegate(_ delegate: DealersSearchViewModelDelegate) {
+    func setSearchResultsDelegate(_ delegate: DealersSearchViewModelDelegate) {
         delegate.dealerSearchResultsDidChange(dealerGroups, indexTitles: sectionIndexTitles)
     }
     

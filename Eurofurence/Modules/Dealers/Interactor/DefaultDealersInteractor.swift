@@ -9,10 +9,13 @@
 import Foundation
 import UIKit
 
-struct DefaultDealersInteractor: DealersInteractor {
+struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
 
+    private let dealersService: DealersService
+    private let defaultIconData: Data
     private let viewModel: ViewModel
     private let searchViewModel: SearchViewModel
+    private let eventBus = EventBus()
 
     init() {
         self.init(dealersService: EurofurenceApplication.shared)
@@ -25,9 +28,14 @@ struct DefaultDealersInteractor: DealersInteractor {
     }
 
     init(dealersService: DealersService, defaultIconData: Data) {
+        self.dealersService = dealersService
+        self.defaultIconData = defaultIconData
+
         let index = dealersService.makeDealersIndex()
-        viewModel = ViewModel(dealersService: dealersService, index: index, defaultIconData: defaultIconData)
-        searchViewModel = SearchViewModel(index: index)
+        viewModel = ViewModel(eventBus: eventBus)
+        searchViewModel = SearchViewModel(eventBus: eventBus, index: index)
+
+        index.setDelegate(self)
     }
 
     func makeDealersViewModel(completionHandler: @escaping (DealersViewModel) -> Void) {
@@ -38,50 +46,106 @@ struct DefaultDealersInteractor: DealersInteractor {
         completionHandler(searchViewModel)
     }
 
-    private class ViewModel: DealersViewModel, DealersIndexDelegate {
+    func alphabetisedDealersDidChange(to alphabetisedGroups: [AlphabetisedDealersGroup]) {
+        let groups = alphabetisedGroups.map { (alphabetisedGroup) -> DealersGroupViewModel in
+            return DealersGroupViewModel(title: alphabetisedGroup.indexingString,
+                                         dealers: alphabetisedGroup.dealers.map(makeDealerViewModel))
+        }
 
-        private let index: DealersIndex
-        private let dealersService: DealersService
-        private let defaultIconData: Data
+        let indexTitles = alphabetisedGroups.map({ $0.indexingString })
+
+        eventBus.post(AllDealersChangedEvent(alphabetisedGroups: groups, indexTitles: indexTitles))
+    }
+
+    func indexDidProduceSearchResults(_ searchResults: [AlphabetisedDealersGroup]) {
+        let groups = searchResults.map { (alphabetisedGroup) -> DealersGroupViewModel in
+            return DealersGroupViewModel(title: alphabetisedGroup.indexingString,
+                                         dealers: [])
+        }
+
+        let indexTitles = searchResults.map({ $0.indexingString })
+
+        eventBus.post(SearchResultsDidChangeEvent(alphabetisedGroups: groups, indexTitles: indexTitles))
+    }
+
+    private func makeDealerViewModel(for dealer: Dealer2) -> DealerVM {
+        return DealerVM(dealer: dealer, dealersService: dealersService, defaultIconData: defaultIconData)
+    }
+
+    private class AllDealersChangedEvent {
+
+        private(set) var alphabetisedGroups: [DealersGroupViewModel]
+        private(set) var indexTitles: [String]
+
+        init(alphabetisedGroups: [DealersGroupViewModel], indexTitles: [String]) {
+            self.alphabetisedGroups = alphabetisedGroups
+            self.indexTitles = indexTitles
+        }
+
+    }
+
+    private struct SearchResultsDidChangeEvent {
+
+        private(set) var alphabetisedGroups: [DealersGroupViewModel]
+        private(set) var indexTitles: [String]
+
+        init(alphabetisedGroups: [DealersGroupViewModel], indexTitles: [String]) {
+            self.alphabetisedGroups = alphabetisedGroups
+            self.indexTitles = indexTitles
+        }
+
+    }
+
+    private class ViewModel: DealersViewModel, EventConsumer {
+
         private var groups = [DealersGroupViewModel]()
+        private var indexTitles = [String]()
 
-        init(dealersService: DealersService, index: DealersIndex, defaultIconData: Data) {
-            self.dealersService = dealersService
-            self.defaultIconData = defaultIconData
-            self.index = index
-
-            index.setDelegate(self)
+        init(eventBus: EventBus) {
+            eventBus.subscribe(consumer: self)
         }
 
         private var delegate: DealersViewModelDelegate?
         func setDelegate(_ delegate: DealersViewModelDelegate) {
             self.delegate = delegate
-            delegate.dealerGroupsDidChange(groups, indexTitles: groups.map({ $0.title }))
+            delegate.dealerGroupsDidChange(groups, indexTitles: indexTitles)
         }
 
-        func alphabetisedDealersDidChange(to alphabetisedGroups: [AlphabetisedDealersGroup]) {
-            groups = alphabetisedGroups.map { (alphabetisedGroup) -> DealersGroupViewModel in
-                return DealersGroupViewModel(title: alphabetisedGroup.indexingString,
-                                             dealers: alphabetisedGroup.dealers.map(makeDealerViewModel))
-            }
-        }
+        func consume(event: AllDealersChangedEvent) {
+            groups = event.alphabetisedGroups
+            indexTitles = event.indexTitles
 
-        private func makeDealerViewModel(for dealer: Dealer2) -> DealerVM {
-            return DealerVM(dealer: dealer, dealersService: dealersService, defaultIconData: defaultIconData)
+            delegate?.dealerGroupsDidChange(groups, indexTitles: indexTitles)
         }
 
     }
 
-    private struct SearchViewModel: DealersSearchViewModel {
+    private class SearchViewModel: DealersSearchViewModel, EventConsumer {
 
-        var index: DealersIndex
+        private let index: DealersIndex
+        private var groups = [DealersGroupViewModel]()
+        private var indexTitles = [String]()
 
-        func searchSearchResultsDelegate(_ delegate: DealersSearchViewModelDelegate) {
+        init(eventBus: EventBus, index: DealersIndex) {
+            self.index = index
+            eventBus.subscribe(consumer: self)
+        }
 
+        private var delegate: DealersSearchViewModelDelegate?
+        func setSearchResultsDelegate(_ delegate: DealersSearchViewModelDelegate) {
+            self.delegate = delegate
+            delegate.dealerSearchResultsDidChange(groups, indexTitles: indexTitles)
         }
 
         func updateSearchResults(with query: String) {
             index.performSearch(term: query)
+        }
+
+        func consume(event: SearchResultsDidChangeEvent) {
+            groups = event.alphabetisedGroups
+            indexTitles = event.indexTitles
+
+            delegate?.dealerSearchResultsDidChange(groups, indexTitles: indexTitles)
         }
 
     }
@@ -103,7 +167,7 @@ struct DefaultDealersInteractor: DealersInteractor {
             isAfterDarkContentPresent = dealer.isAfterDark
         }
 
-        var title: String = ""
+        var title: String
         var subtitle: String?
         var isPresentForAllDays: Bool = true
         var isAfterDarkContentPresent: Bool = false

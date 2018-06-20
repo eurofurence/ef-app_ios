@@ -17,6 +17,7 @@ class FakeDealersIndex: DealersIndex {
         self.alphabetisedDealers = alphabetisedDealers
     }
     
+    let alphabetisedDealersSearchResult: [AlphabetisedDealersGroup] = .random
     private(set) var capturedSearchTerm: String?
     func performSearch(term: String) {
         capturedSearchTerm = term
@@ -24,6 +25,7 @@ class FakeDealersIndex: DealersIndex {
     
     func setDelegate(_ delegate: DealersIndexDelegate) {
         delegate.alphabetisedDealersDidChange(to: alphabetisedDealers)
+        delegate.indexDidProduceSearchResults(alphabetisedDealersSearchResult)
     }
     
 }

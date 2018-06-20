@@ -470,6 +470,7 @@
 		CA36A4CA20DA7B1B00EE6537 /* DealersSearchResultsBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4C920DA7B1B00EE6537 /* DealersSearchResultsBinder.swift */; };
 		CA36A4CC20DA7C9000EE6537 /* WhenBindingDealerSearchResultGroupHeading_DealersPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4CB20DA7C9000EE6537 /* WhenBindingDealerSearchResultGroupHeading_DealersPresenterShould.swift */; };
 		CA36A4CE20DA7ED800EE6537 /* WhenSearching_DealersInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4CD20DA7ED800EE6537 /* WhenSearching_DealersInteractorShould.swift */; };
+		CA36A4D020DAC08100EE6537 /* WhenDealersIndexProducesNewSearchResults_DealersInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A4CF20DAC08100EE6537 /* WhenDealersIndexProducesNewSearchResults_DealersInteractorShould.swift */; };
 		CA3990ED20ACD35C001E3F1A /* HoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */; };
 		CA3990EF20ACD559001E3F1A /* FoundationHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */; };
 		CA3990F220ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */; };
@@ -1457,6 +1458,7 @@
 		CA36A4C920DA7B1B00EE6537 /* DealersSearchResultsBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersSearchResultsBinder.swift; sourceTree = "<group>"; };
 		CA36A4CB20DA7C9000EE6537 /* WhenBindingDealerSearchResultGroupHeading_DealersPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingDealerSearchResultGroupHeading_DealersPresenterShould.swift; sourceTree = "<group>"; };
 		CA36A4CD20DA7ED800EE6537 /* WhenSearching_DealersInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSearching_DealersInteractorShould.swift; sourceTree = "<group>"; };
+		CA36A4CF20DAC08100EE6537 /* WhenDealersIndexProducesNewSearchResults_DealersInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDealersIndexProducesNewSearchResults_DealersInteractorShould.swift; sourceTree = "<group>"; };
 		CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationHoursDateFormatter.swift; sourceTree = "<group>"; };
 		CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUpcomingEventsBeforeLoadingAnything.swift; sourceTree = "<group>"; };
@@ -3098,6 +3100,7 @@
 		CA36A48820D927BD00EE6537 /* Interactor Tests */ = {
 			isa = PBXGroup;
 			children = (
+				CA36A4CF20DAC08100EE6537 /* WhenDealersIndexProducesNewSearchResults_DealersInteractorShould.swift */,
 				CA36A4A020D9813D00EE6537 /* WhenFetchingIconDataForDealerWithAvatar_DealersInteractorShould.swift */,
 				CA36A4A220D9834900EE6537 /* WhenFetchingIconDataForDealerWithoutAvatar_DealersInteractorShould.swift */,
 				CA36A48920D927D200EE6537 /* WhenPreparingViewModel_DealersInteractorShould.swift */,
@@ -5946,6 +5949,7 @@
 				CA89CBC02085383100570D54 /* StubNewsInteractor.swift in Sources */,
 				CA6375AC208E021A00536BE2 /* WhenBuildingDealersModule.swift in Sources */,
 				CA728445209D00B7007D912A /* StubAnnouncementDetailModuleFactory.swift in Sources */,
+				CA36A4D020DAC08100EE6537 /* WhenDealersIndexProducesNewSearchResults_DealersInteractorShould.swift in Sources */,
 				CA52C69720D6B24A009D3A9E /* IndexPath+RandomValueProviding.swift in Sources */,
 				CABF03CA20421B490028BD62 /* WhenFetchingKnowledgeGroupsWithoutLoadingAnything.swift in Sources */,
 				CA00AE7D20D1C08B00C2FBB0 /* WhenBindingDay_SchedulePresenterShould.swift in Sources */,

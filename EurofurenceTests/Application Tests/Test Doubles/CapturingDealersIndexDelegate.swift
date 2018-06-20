@@ -11,6 +11,10 @@ import Foundation
 
 class CapturingDealersIndexDelegate: DealersIndexDelegate {
     
+    func indexDidProduceSearchResults(_ searchResults: [AlphabetisedDealersGroup]) {
+        
+    }
+    
     private(set) var toldAlphabetisedDealersDidChangeToEmptyValue = false
     private(set) var capturedAlphabetisedDealerGroups = [AlphabetisedDealersGroup]()
     func alphabetisedDealersDidChange(to alphabetisedGroups: [AlphabetisedDealersGroup]) {

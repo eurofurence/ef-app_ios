@@ -89,7 +89,7 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
 
         interactor.makeDealersSearchViewModel { (viewModel) in
             self.searchViewModel = viewModel
-            viewModel.searchSearchResultsDelegate(self)
+            viewModel.setSearchResultsDelegate(self)
         }
     }
 

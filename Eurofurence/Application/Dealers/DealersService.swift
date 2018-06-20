@@ -25,6 +25,7 @@ protocol DealersIndex {
 protocol DealersIndexDelegate {
 
     func alphabetisedDealersDidChange(to alphabetisedGroups: [AlphabetisedDealersGroup])
+    func indexDidProduceSearchResults(_ searchResults: [AlphabetisedDealersGroup])
 
 }
 
