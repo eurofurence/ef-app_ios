@@ -48,7 +48,9 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
 
     func alphabetisedDealersDidChange(to alphabetisedGroups: [AlphabetisedDealersGroup]) {
         let (groups, indexTitles) = makeViewModels(from: alphabetisedGroups)
-        eventBus.post(AllDealersChangedEvent(alphabetisedGroups: groups, indexTitles: indexTitles))
+        eventBus.post(AllDealersChangedEvent(rawGroups: alphabetisedGroups,
+                                             alphabetisedGroups: groups,
+                                             indexTitles: indexTitles))
     }
 
     func indexDidProduceSearchResults(_ searchResults: [AlphabetisedDealersGroup]) {
@@ -73,10 +75,12 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
 
     private class AllDealersChangedEvent {
 
+        private(set) var rawGroups: [AlphabetisedDealersGroup]
         private(set) var alphabetisedGroups: [DealersGroupViewModel]
         private(set) var indexTitles: [String]
 
-        init(alphabetisedGroups: [DealersGroupViewModel], indexTitles: [String]) {
+        init(rawGroups: [AlphabetisedDealersGroup], alphabetisedGroups: [DealersGroupViewModel], indexTitles: [String]) {
+            self.rawGroups = rawGroups
             self.alphabetisedGroups = alphabetisedGroups
             self.indexTitles = indexTitles
         }
@@ -97,6 +101,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
 
     private class ViewModel: DealersViewModel, EventConsumer {
 
+        private var rawGroups = [AlphabetisedDealersGroup]()
         private var groups = [DealersGroupViewModel]()
         private var indexTitles = [String]()
 
@@ -111,10 +116,11 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
         }
 
         func identifierForDealer(at indexPath: IndexPath) -> Dealer2.Identifier? {
-            return nil
+            return rawGroups[indexPath.section].dealers[indexPath.item].identifier
         }
 
         func consume(event: AllDealersChangedEvent) {
+            rawGroups = event.rawGroups
             groups = event.alphabetisedGroups
             indexTitles = event.indexTitles
 
