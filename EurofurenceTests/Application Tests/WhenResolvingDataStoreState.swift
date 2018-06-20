@@ -115,6 +115,11 @@ extension CapturingEurofurenceDataStore {
         return transaction?.persistedFavouriteEvents.contains(identifier) ?? false
     }
     
+    func didSave(_ dealers: [APIDealer]) -> Bool {
+        guard let persistedDealers = transaction?.persistedDealers else { return false }
+        return persistedDealers.contains(elementsFrom: dealers)
+    }
+    
     func didDeleteFavouriteEvent(_ identifier: Event2.Identifier) -> Bool {
         return transaction?.deletedFavouriteEvents.contains(identifier) ?? false
     }

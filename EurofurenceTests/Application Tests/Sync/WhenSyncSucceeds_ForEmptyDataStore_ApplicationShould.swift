@@ -53,4 +53,9 @@ class WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould: XCTestCase {
         XCTAssertTrue(context.dataStore.didSave(expected))
     }
     
+    func testSaveTheDealersIntoTheStore() {
+        let expected = syncResponse.dealers.changed
+        XCTAssertTrue(context.dataStore.didSave(expected))
+    }
+    
 }
