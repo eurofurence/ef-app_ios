@@ -68,7 +68,9 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, Deale
     }
 
     func bindSearchResults(numberOfDealersPerSection: [Int], sectionIndexTitles: [String], using binder: DealersSearchResultsBinder) {
-
+        searchViewController?.bindSearchResults(numberOfDealersPerSection: numberOfDealersPerSection,
+                                                sectionIndexTitles: sectionIndexTitles,
+                                                using: binder)
     }
 
     // MARK: Private
