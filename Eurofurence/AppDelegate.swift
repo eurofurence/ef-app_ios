@@ -64,6 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         searchBarAppearance.barTintColor = .pantone330U
         searchBarAppearance.isTranslucent = false
 
+        let textFieldAppearance = UITextField.appearance()
+        textFieldAppearance.tintColor = .pantone330U
+
         let buttonsInsideSearchBarAppearance = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])
         buttonsInsideSearchBarAppearance.setTitleTextAttributes(whiteTextAttributes, for: .normal)
     }
