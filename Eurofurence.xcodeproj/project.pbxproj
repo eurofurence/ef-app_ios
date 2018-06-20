@@ -204,6 +204,7 @@
 		9AF159ED1EF5BE7F00DB287D /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF159EC1EF5BE7F00DB287D /* EventCell.swift */; };
 		A034379A14212C5E996E6321 /* Pods_Eurofurence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */; };
 		AF4A956010879F8B4E26FB61 /* Pods-EurofurenceTests-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 977F50DE0F3E7ACD20CDD40D /* Pods-EurofurenceTests-metadata.plist */; };
+		C6DD58D420D91069001893ED /* V2ApiUrlProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DD58D320D91069001893ED /* V2ApiUrlProviding.swift */; };
 		C74800FDD10051941095AB9F /* Pods-Eurofurence-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7E8E02928B7F019466A32E8B /* Pods-Eurofurence-metadata.plist */; };
 		CA00AE4520D16BBD00C2FBB0 /* ScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4420D16BBD00C2FBB0 /* ScheduleInteractor.swift */; };
 		CA00AE4720D16BCB00C2FBB0 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4620D16BCB00C2FBB0 /* ScheduleViewModel.swift */; };
@@ -1192,6 +1193,7 @@
 		A5BC6AE61AB3CCDF97473815 /* Pods-EurofurenceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.release.xcconfig"; sourceTree = "<group>"; };
 		A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eurofurence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4939A463603D9F022E19825 /* Pods-EurofurenceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C6DD58D320D91069001893ED /* V2ApiUrlProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2ApiUrlProviding.swift; sourceTree = "<group>"; };
 		CA00AE4420D16BBD00C2FBB0 /* ScheduleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInteractor.swift; sourceTree = "<group>"; };
 		CA00AE4620D16BCB00C2FBB0 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		CA00AE4820D16BD900C2FBB0 /* FakeScheduleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeScheduleInteractor.swift; sourceTree = "<group>"; };
@@ -3912,6 +3914,7 @@
 				CA804DD11F20CE8F00E07A4A /* V2LoginAPI.swift */,
 				CA30EACB1F267E9C0053DBF6 /* V2PrivateMessagesAPI.swift */,
 				CAF597A52045F1C000089BE8 /* V2SyncAPI.swift */,
+				C6DD58D320D91069001893ED /* V2ApiUrlProviding.swift */,
 			);
 			path = v2;
 			sourceTree = "<group>";
@@ -5236,6 +5239,7 @@
 				9A80EF551F291A5500FD0D37 /* UserDetailsNewsPreferences.swift in Sources */,
 				CA6375A0208DFE2E00536BE2 /* StoryboardEventsSceneFactory.swift in Sources */,
 				9A0F87E71F1BADD200FF294B /* KeyedLocalNotificationStore.swift in Sources */,
+				C6DD58D420D91069001893ED /* V2ApiUrlProviding.swift in Sources */,
 				9ACF99961EC858B2006FC958 /* EventConferenceTrack.swift in Sources */,
 				CA8D97D5201613010074838F /* RemoteNotificationRegistrationController.swift in Sources */,
 				9ACF99911EC858B2006FC958 /* Image.swift in Sources */,

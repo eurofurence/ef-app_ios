@@ -33,9 +33,11 @@ class EurofurenceApplicationBuilder {
         dataStore = CoreDataEurofurenceDataStore()
 
         let jsonSession = URLSessionBasedJSONSession()
+        let buildConfiguration = PreprocessorBuildConfigurationProviding()
+        let apiUrl = BuildConfigurationV2ApiUrlProviding(buildConfiguration)
 
         let fcmRegistration = EurofurenceFCMDeviceRegistration(JSONSession: jsonSession)
-        remoteNotificationsTokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: PreprocessorBuildConfigurationProviding(),
+        remoteNotificationsTokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfiguration,
                                                                                             appVersion: BundleAppVersionProviding(),
                                                                                             firebaseAdapter: FirebaseMessagingAdapter(),
                                                                                             fcmRegistration: fcmRegistration)
@@ -44,10 +46,10 @@ class EurofurenceApplicationBuilder {
         pushPermissionsStateProviding = UserDefaultsWitnessedSystemPushPermissionsRequest()
         clock = SystemClock()
         credentialStore = KeychainCredentialStore()
-        loginAPI = V2LoginAPI(jsonSession: jsonSession)
-        privateMessagesAPI = V2PrivateMessagesAPI(jsonSession: jsonSession)
-        syncAPI = V2SyncAPI(jsonSession: jsonSession)
-        imageAPI = V2ImageAPI(jsonSession: jsonSession)
+        loginAPI = V2LoginAPI(jsonSession: jsonSession, apiUrl: apiUrl)
+        privateMessagesAPI = V2PrivateMessagesAPI(jsonSession: jsonSession, apiUrl: apiUrl)
+        syncAPI = V2SyncAPI(jsonSession: jsonSession, apiUrl: apiUrl)
+        imageAPI = V2ImageAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         dateDistanceCalculator = FoundationDateDistanceCalculator()
         conventionStartDateRepository = EF24StartDateRepository()
         significantTimeChangeEventSource = ApplicationSignificantTimeChangeEventSource.shared

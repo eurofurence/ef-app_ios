@@ -11,13 +11,16 @@ import Foundation
 struct V2ImageAPI: ImageAPI {
 
     private let jsonSession: JSONSession
+    let apiUrl: String
 
-    init(jsonSession: JSONSession) {
+    init(jsonSession: JSONSession, apiUrl: V2ApiUrlProviding) {
         self.jsonSession = jsonSession
+        self.apiUrl = apiUrl.url
     }
 
     func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void) {
-        let request = JSONRequest(url: "https://app.eurofurence.org:40000/api/v2/Images/\(identifier)/Content", body: Data())
+        let url = apiUrl + "Images/\(identifier)/Content"
+        let request = JSONRequest(url: url, body: Data())
         jsonSession.get(request) { (data, _) in
             completionHandler(data)
         }
