@@ -17,5 +17,6 @@ protocol DealersScene {
 protocol DealersSceneDelegate {
 
     func dealersSceneDidLoad()
+    func dealersSceneDidChangeSearchQuery(to query: String)
 
 }

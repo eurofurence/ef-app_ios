@@ -12,6 +12,12 @@ import Foundation
 struct FakeDealersInteractor: DealersInteractor {
     
     var viewModel: DealersViewModel
+    var searchViewModel: DealersSearchViewModel
+    
+    init(searchViewModel: DealersSearchViewModel) {
+        self.searchViewModel = searchViewModel
+        self.viewModel = CapturingDealersViewModel()
+    }
     
     init(dealerViewModel: DealerViewModel) {
         let group = DealersGroupViewModel(title: .random, dealers: [dealerViewModel])
@@ -25,10 +31,15 @@ struct FakeDealersInteractor: DealersInteractor {
     
     init(viewModel: DealersViewModel) {
         self.viewModel = viewModel
+        self.searchViewModel = CapturingDealersSearchViewModel()
     }
     
     func makeDealersViewModel(completionHandler: @escaping (DealersViewModel) -> Void) {
         completionHandler(viewModel)
+    }
+    
+    func makeDealersSearchViewModel(completionHandler: @escaping (DealersSearchViewModel) -> Void) {
+        completionHandler(searchViewModel)
     }
     
 }

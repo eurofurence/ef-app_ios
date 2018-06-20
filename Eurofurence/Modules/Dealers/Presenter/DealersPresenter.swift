@@ -44,6 +44,7 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate {
 
     private let scene: DealersScene
     private let interactor: DealersInteractor
+    private var searchViewModel: DealersSearchViewModel?
 
     init(scene: DealersScene, interactor: DealersInteractor) {
         self.scene = scene
@@ -57,6 +58,14 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate {
         interactor.makeDealersViewModel { (viewModel) in
             viewModel.setDelegate(self)
         }
+
+        interactor.makeDealersSearchViewModel { (viewModel) in
+            self.searchViewModel = viewModel
+        }
+    }
+
+    func dealersSceneDidChangeSearchQuery(to query: String) {
+        searchViewModel?.updateSearchResults(with: query)
     }
 
     func dealerGroupsDidChange(_ groups: [DealersGroupViewModel], indexTitles: [String]) {

@@ -31,6 +31,10 @@ struct DefaultDealersInteractor: DealersInteractor {
         completionHandler(viewModel)
     }
 
+    func makeDealersSearchViewModel(completionHandler: @escaping (DealersSearchViewModel) -> Void) {
+
+    }
+
     private class ViewModel: DealersViewModel, DealersIndexDelegate {
 
         private let index: DealersIndex
