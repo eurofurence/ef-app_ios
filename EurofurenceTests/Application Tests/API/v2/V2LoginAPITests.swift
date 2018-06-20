@@ -24,12 +24,14 @@ class V2LoginAPITests: XCTestCase {
     
     var api: V2LoginAPI!
     var jsonSession: CapturingJSONSession!
+    var apiUrl: V2ApiUrlProviding!
     
     override func setUp() {
         super.setUp()
         
         jsonSession = CapturingJSONSession()
-        api = V2LoginAPI(jsonSession: jsonSession)
+        apiUrl = StubV2ApiUrlProviding()
+        api = V2LoginAPI(jsonSession: jsonSession, apiUrl: apiUrl)
     }
     
     private func makeSuccessfulLoginPayload(username: String = "",
@@ -81,7 +83,7 @@ class V2LoginAPITests: XCTestCase {
     
     func testTheLoginEndpointShouldReceieveRequest() {
         performLogin(makeLoginParameters())
-        XCTAssertEqual("https://app.eurofurence.org/api/v2/Tokens/RegSys", jsonSession.postedURL)
+        XCTAssertEqual(apiUrl.url + "Tokens/RegSys", jsonSession.postedURL)
     }
     
     func testTheLoginEndpointShouldNotReceieveRequestUntilCallingLogin() {

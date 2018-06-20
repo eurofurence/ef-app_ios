@@ -30,12 +30,14 @@ class V2PrivateMessagesAPITests: XCTestCase {
     
     var JSONSession: CapturingJSONSession!
     var api: V2PrivateMessagesAPI!
+    var apiUrl: V2ApiUrlProviding!
     
     override func setUp() {
         super.setUp()
         
         JSONSession = CapturingJSONSession()
-        api = V2PrivateMessagesAPI(jsonSession: JSONSession)
+        apiUrl = StubV2ApiUrlProviding()
+        api = V2PrivateMessagesAPI(jsonSession: JSONSession, apiUrl: apiUrl)
     }
     
     private func makeCapturingObserverForResponse(_ response: String?) -> CapturingV2PrivateMessagesObserver {
@@ -71,7 +73,7 @@ class V2PrivateMessagesAPITests: XCTestCase {
     }
     
     func testThePrivateMessagesEndpointShouldReceieveRequest() {
-        let expectedURL = "https://app.eurofurence.org/api/v2/Communication/PrivateMessages"
+        let expectedURL = apiUrl.url + "Communication/PrivateMessages"
         api.loadPrivateMessages(authorizationToken: "", completionHandler: { _ in } )
         
         XCTAssertEqual(expectedURL, JSONSession.getRequestURL)
@@ -173,7 +175,7 @@ class V2PrivateMessagesAPITests: XCTestCase {
     func testMarkingAPIMessageAsReadSubmitsPOSTRequestToMessageReadURL() {
         let identifier = "Test"
         api.markMessageWithIdentifierAsRead(identifier, authorizationToken: "")
-        let expectedURL = "https://app.eurofurence.org/api/v2/Communication/PrivateMessages/\(identifier)/Read"
+        let expectedURL = apiUrl.url + "Communication/PrivateMessages/\(identifier)/Read"
         
         XCTAssertEqual(expectedURL, JSONSession.postedURL)
     }

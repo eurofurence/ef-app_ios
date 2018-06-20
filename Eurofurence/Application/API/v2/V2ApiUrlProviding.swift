@@ -6,8 +6,6 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-import Foundation
-
 protocol V2ApiUrlProviding {
 
     var url: String { get }
