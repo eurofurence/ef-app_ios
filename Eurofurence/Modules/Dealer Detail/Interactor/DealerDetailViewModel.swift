@@ -27,5 +27,6 @@ struct DealerDetailSummaryViewModel: Hashable {
     var title: String
     var subtitle: String
     var categories: String
+    var shortDescription: String
 
 }

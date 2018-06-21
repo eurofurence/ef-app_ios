@@ -35,5 +35,6 @@ protocol DealerDetailSummaryComponent {
     func setDealerTitle(_ title: String)
     func setDealerSubtitle(_ subtitle: String)
     func setDealerCategories(_ categories: String)
+    func setDealerShortDescription(_ shortDescription: String)
 
 }

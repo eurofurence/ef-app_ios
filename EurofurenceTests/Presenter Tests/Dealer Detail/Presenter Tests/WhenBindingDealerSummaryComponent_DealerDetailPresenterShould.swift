@@ -46,4 +46,8 @@ class WhenBindingDealerSummaryComponent_DealerDetailPresenterShould: XCTestCase 
         XCTAssertEqual(summaryViewModel.categories, context.boundDealerSummaryComponent?.capturedDealerCategories)
     }
     
+    func testSetTheDealerShortDescriptionOntoTheComponent() {
+        XCTAssertEqual(summaryViewModel.shortDescription, context.boundDealerSummaryComponent?.capturedDealerShortDescription)
+    }
+    
 }

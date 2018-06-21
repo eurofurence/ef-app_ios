@@ -15,7 +15,8 @@ extension DealerDetailSummaryViewModel: RandomValueProviding {
         return DealerDetailSummaryViewModel(artistImagePNGData: .random,
                                             title: .random,
                                             subtitle: .random,
-                                            categories: .random)
+                                            categories: .random,
+                                            shortDescription: .random)
     }
     
 }

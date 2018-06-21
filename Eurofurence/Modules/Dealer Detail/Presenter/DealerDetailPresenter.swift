@@ -40,6 +40,7 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
                     component.setDealerTitle(summary.title)
                     component.setDealerSubtitle(summary.subtitle)
                     component.setDealerCategories(summary.categories)
+                    component.setDealerShortDescription(summary.shortDescription)
                 }
             }
 
