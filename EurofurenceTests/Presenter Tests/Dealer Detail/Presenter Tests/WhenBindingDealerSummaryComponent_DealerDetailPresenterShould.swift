@@ -33,4 +33,15 @@ class WhenBindingDealerSummaryComponent_DealerDetailPresenterShould: XCTestCase 
         XCTAssertTrue(boundComponent === context.boundDealerSummaryComponent)
     }
     
+    func testSetTheDealerTitleOntoTheComponent() {
+        let dealerSummaryViewModel = DealerDetailSummaryViewModel.random
+        let viewModel = FakeDealerDetailSummaryViewModel(summary: dealerSummaryViewModel)
+        let interactor = FakeDealerDetailInteractor(viewModel: viewModel)
+        let context = DealerDetailPresenterTestBuilder().with(interactor).build()
+        context.simulateSceneDidLoad()
+        context.bindComponent(at: 0)
+        
+        XCTAssertEqual(dealerSummaryViewModel.title, context.boundDealerSummaryComponent?.capturedDealerTitle)
+    }
+    
 }

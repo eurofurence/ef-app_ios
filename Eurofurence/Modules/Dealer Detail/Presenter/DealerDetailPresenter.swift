@@ -37,6 +37,7 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
             func visit(_ summary: DealerDetailSummaryViewModel) {
                 boundComponent = componentFactory.makeDealerSummaryComponent { (component) in
                     component.showArtistArtworkImageWithPNGData(summary.artistImagePNGData)
+                    component.setDealerTitle(summary.title)
                 }
             }
 

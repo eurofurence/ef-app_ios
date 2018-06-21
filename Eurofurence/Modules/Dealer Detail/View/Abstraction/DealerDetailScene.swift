@@ -32,5 +32,6 @@ protocol DealerDetailComponentFactory {
 protocol DealerDetailSummaryComponent {
 
     func showArtistArtworkImageWithPNGData(_ data: Data)
+    func setDealerTitle(_ title: String)
 
 }

@@ -12,7 +12,8 @@ import Foundation
 extension DealerDetailSummaryViewModel: RandomValueProviding {
     
     static var random: DealerDetailSummaryViewModel {
-        return DealerDetailSummaryViewModel(artistImagePNGData: .random)
+        return DealerDetailSummaryViewModel(artistImagePNGData: .random,
+                                            title: .random)
     }
     
 }

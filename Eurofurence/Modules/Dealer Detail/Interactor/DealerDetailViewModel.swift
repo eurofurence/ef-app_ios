@@ -24,5 +24,6 @@ protocol DealerDetailViewModelVisitor {
 struct DealerDetailSummaryViewModel: Hashable {
 
     var artistImagePNGData: Data
+    var title: String
 
 }

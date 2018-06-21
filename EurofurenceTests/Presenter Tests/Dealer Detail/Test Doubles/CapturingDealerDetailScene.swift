@@ -51,4 +51,9 @@ class CapturingDealerDetailSummaryComponent: DealerDetailSummaryComponent {
         capturedArtistImagePNGData = data
     }
     
+    private(set) var capturedDealerTitle: String?
+    func setDealerTitle(_ title: String) {
+        capturedDealerTitle = title
+    }
+    
 }
