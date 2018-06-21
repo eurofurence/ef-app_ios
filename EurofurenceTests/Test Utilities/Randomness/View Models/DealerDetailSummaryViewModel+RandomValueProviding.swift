@@ -13,7 +13,8 @@ extension DealerDetailSummaryViewModel: RandomValueProviding {
     
     static var random: DealerDetailSummaryViewModel {
         return DealerDetailSummaryViewModel(artistImagePNGData: .random,
-                                            title: .random)
+                                            title: .random,
+                                            subtitle: .random)
     }
     
 }

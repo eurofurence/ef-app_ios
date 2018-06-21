@@ -56,4 +56,9 @@ class CapturingDealerDetailSummaryComponent: DealerDetailSummaryComponent {
         capturedDealerTitle = title
     }
     
+    private(set) var capturedDealerSubtitle: String?
+    func setDealerSubtitle(_ subtitle: String) {
+        capturedDealerSubtitle = subtitle
+    }
+    
 }

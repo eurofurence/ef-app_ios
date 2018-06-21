@@ -38,6 +38,7 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
                 boundComponent = componentFactory.makeDealerSummaryComponent { (component) in
                     component.showArtistArtworkImageWithPNGData(summary.artistImagePNGData)
                     component.setDealerTitle(summary.title)
+                    component.setDealerSubtitle(summary.subtitle)
                 }
             }
 
