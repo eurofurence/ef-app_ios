@@ -8,11 +8,23 @@
 
 import Foundation
 
-struct DealerDetailPresenter {
+struct DealerDetailPresenter: DealerDetailSceneDelegate {
+
+    private let scene: DealerDetailScene
+    private let interactor: DealerDetailInteractor
+    private let dealer: Dealer2.Identifier
 
     init(scene: DealerDetailScene, interactor: DealerDetailInteractor, dealer: Dealer2.Identifier) {
+        self.scene = scene
+        self.interactor = interactor
+        self.dealer = dealer
+
+        scene.setDelegate(self)
+    }
+
+    func dealerDetailSceneDidLoad() {
         interactor.makeDealerDetailViewModel(for: dealer) { (viewModel) in
-            scene.bind(numberOfComponents: viewModel.numberOfComponents)
+            self.scene.bind(numberOfComponents: viewModel.numberOfComponents)
         }
     }
 

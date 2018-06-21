@@ -354,6 +354,7 @@
 		CA1B6F2420DB886300ADF414 /* DealerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F2320DB886300ADF414 /* DealerDetailViewModel.swift */; };
 		CA1B6F2620DB887100ADF414 /* FakeDealerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F2520DB887100ADF414 /* FakeDealerDetailViewModel.swift */; };
 		CA1B6F2920DB89FE00ADF414 /* DealerDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F2820DB89FE00ADF414 /* DealerDetailPresenter.swift */; };
+		CA1B6F2B20DB8A9C00ADF414 /* BeforeDealerDetailSceneLoads_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F2A20DB8A9C00ADF414 /* BeforeDealerDetailSceneLoads_DealerDetailPresenterShould.swift */; };
 		CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */; };
 		CA1ECB3F1FE333090076083A /* WhenInitialMessageLoadFails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */; };
 		CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */; };
@@ -1372,6 +1373,7 @@
 		CA1B6F2320DB886300ADF414 /* DealerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailViewModel.swift; sourceTree = "<group>"; };
 		CA1B6F2520DB887100ADF414 /* FakeDealerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDealerDetailViewModel.swift; sourceTree = "<group>"; };
 		CA1B6F2820DB89FE00ADF414 /* DealerDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailPresenter.swift; sourceTree = "<group>"; };
+		CA1B6F2A20DB8A9C00ADF414 /* BeforeDealerDetailSceneLoads_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeDealerDetailSceneLoads_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessagesLoadCompletesWithNoMessages.swift; sourceTree = "<group>"; };
 		CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessageLoadFails.swift; sourceTree = "<group>"; };
 		CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewingMessageWhileLoggedInWithLocalMessage.swift; sourceTree = "<group>"; };
@@ -3092,6 +3094,7 @@
 			children = (
 				CA1B6F0620DB805300ADF414 /* WhenBuildingDealerDetailModule.swift */,
 				CA1B6F1C20DB843E00ADF414 /* WhenDealerDetailSceneLoads_DealerDetailPresenterShould.swift */,
+				CA1B6F2A20DB8A9C00ADF414 /* BeforeDealerDetailSceneLoads_DealerDetailPresenterShould.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -6012,6 +6015,7 @@
 				CA89CBAB207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift in Sources */,
 				CAD780521F1E2D2E002A8333 /* CapturingCredentialStore.swift in Sources */,
 				CA89CBBA2084CA8A00570D54 /* StubNewsViewModel.swift in Sources */,
+				CA1B6F2B20DB8A9C00ADF414 /* BeforeDealerDetailSceneLoads_DealerDetailPresenterShould.swift in Sources */,
 				CA36A45120D773B300EE6537 /* WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould.swift in Sources */,
 				CA804DDA1F20D2F500E07A4A /* V2LoginAPITests.swift in Sources */,
 				CA6EC4842051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift in Sources */,
