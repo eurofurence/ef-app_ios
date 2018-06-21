@@ -11,9 +11,17 @@ import Foundation
 class DealerDetailModuleBuilder {
 
     private var dealerDetailSceneFactory: DealerDetailSceneFactory
+    private var dealerDetailInteractor: DealerDetailInteractor
 
     init() {
+        struct DummyDealerDetailInteractor: DealerDetailInteractor {
+            func makeDealerDetailViewModel(for identifier: Dealer2.Identifier) {
+
+            }
+        }
+
         dealerDetailSceneFactory = StoryboardDealerDetailSceneFactory()
+        dealerDetailInteractor = DummyDealerDetailInteractor()
     }
 
     @discardableResult
@@ -22,8 +30,15 @@ class DealerDetailModuleBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ dealerDetailInteractor: DealerDetailInteractor) -> DealerDetailModuleBuilder {
+        self.dealerDetailInteractor = dealerDetailInteractor
+        return self
+    }
+
     func build() -> DealerDetailModuleProviding {
-        return DealerDetailModule(dealerDetailSceneFactory: dealerDetailSceneFactory)
+        return DealerDetailModule(dealerDetailSceneFactory: dealerDetailSceneFactory,
+                                  dealerDetailInteractor: dealerDetailInteractor)
     }
 
 }

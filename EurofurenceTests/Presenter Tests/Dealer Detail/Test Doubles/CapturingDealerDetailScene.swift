@@ -11,4 +11,9 @@ import UIKit
 
 class CapturingDealerDetailScene: UIViewController, DealerDetailScene {
     
+    private(set) var delegate: DealerDetailSceneDelegate?
+    func setDelegate(_ delegate: DealerDetailSceneDelegate) {
+        self.delegate = delegate
+    }
+    
 }

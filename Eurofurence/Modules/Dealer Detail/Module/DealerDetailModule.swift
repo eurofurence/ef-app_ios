@@ -11,8 +11,10 @@ import UIKit
 struct DealerDetailModule: DealerDetailModuleProviding {
 
     var dealerDetailSceneFactory: DealerDetailSceneFactory
+    var dealerDetailInteractor: DealerDetailInteractor
 
     func makeDealerDetailModule(for dealer: Dealer2.Identifier) -> UIViewController {
+        dealerDetailInteractor.makeDealerDetailViewModel(for: dealer)
         return dealerDetailSceneFactory.makeDealerDetailScene()
     }
 

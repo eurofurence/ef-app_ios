@@ -10,4 +10,10 @@ import UIKit
 
 class DealerDetailViewController: UIViewController, DealerDetailScene {
 
+    // MARK: DealerDetailScene
+
+    func setDelegate(_ delegate: DealerDetailSceneDelegate) {
+
+    }
+
 }

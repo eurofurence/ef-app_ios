@@ -10,4 +10,12 @@ import Foundation
 
 protocol DealerDetailScene {
 
+    func setDelegate(_ delegate: DealerDetailSceneDelegate)
+
+}
+
+protocol DealerDetailSceneDelegate {
+
+    func dealerDetailSceneDidLoad()
+
 }
