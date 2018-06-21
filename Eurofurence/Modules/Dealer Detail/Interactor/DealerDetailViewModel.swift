@@ -13,6 +13,8 @@ protocol DealerDetailViewModel {
     var numberOfComponents: Int { get }
     func describeComponent(at index: Int, to visitor: DealerDetailViewModelVisitor)
 
+    func openWebsite()
+
 }
 
 protocol DealerDetailViewModelVisitor {

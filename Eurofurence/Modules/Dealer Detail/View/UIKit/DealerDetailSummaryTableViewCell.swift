@@ -17,12 +17,18 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     @IBOutlet weak var dealerSubtitleLabel: UILabel!
     @IBOutlet weak var dealerCategoriesLabel: UILabel!
     @IBOutlet weak var dealerShortDescriptionLabel: UILabel!
-    @IBOutlet weak var dealerWebsiteLabel: UILabel!
+    @IBOutlet weak var dealerWebsiteButton: UIButton!
     @IBOutlet weak var dealerWebsiteContainer: UIView!
     @IBOutlet weak var dealerTwitterHandleLabel: UILabel!
     @IBOutlet weak var dealerTwitterHandleContainer: UIView!
     @IBOutlet weak var dealerTelegramHandle: UILabel!
     @IBOutlet weak var dealerTelegramContainer: UIView!
+
+    // MARK: Actions
+
+    @IBAction func websiteButtonTapped(_ sender: Any) {
+        websiteSelected?()
+    }
 
     // MARK: DealerDetailSummaryComponent
 
@@ -63,7 +69,7 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     }
 
     func showDealerWebsite(_ website: String) {
-        dealerWebsiteLabel.text = website
+        dealerWebsiteButton.titleLabel?.text = website
         dealerWebsiteContainer.isHidden = false
     }
 
@@ -87,6 +93,11 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
 
     func hideTelegramHandle() {
         dealerTelegramContainer.isHidden = true
+    }
+
+    private var websiteSelected: (() -> Void)?
+    func onWebsiteSelected(perform block: @escaping () -> Void) {
+        websiteSelected = block
     }
 
 }

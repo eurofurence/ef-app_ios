@@ -80,12 +80,13 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfF-M7-cwA">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ube-uh-Wg8">
                                                                     <rect key="frame" x="39" y="0.0" width="306" height="36.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
+                                                                    <state key="normal" title="Website"/>
+                                                                    <connections>
+                                                                        <action selector="websiteButtonTapped:" destination="la1-S3-uWw" eventType="touchUpInside" id="csE-HX-AFv"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XvX-TG-6gG">
@@ -142,8 +143,8 @@
                                             <outlet property="dealerTitleLabel" destination="HAU-My-jch" id="oi4-Pk-3KD"/>
                                             <outlet property="dealerTwitterHandleContainer" destination="XvX-TG-6gG" id="zjK-4m-E5y"/>
                                             <outlet property="dealerTwitterHandleLabel" destination="FuK-wO-vQ0" id="1CK-Ir-YDS"/>
+                                            <outlet property="dealerWebsiteButton" destination="Ube-uh-Wg8" id="AGi-fL-oW4"/>
                                             <outlet property="dealerWebsiteContainer" destination="5bm-HD-IZa" id="OSu-eU-vvy"/>
-                                            <outlet property="dealerWebsiteLabel" destination="bfF-M7-cwA" id="w2N-p7-UL8"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

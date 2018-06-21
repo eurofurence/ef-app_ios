@@ -19,6 +19,11 @@ class FakeDealerDetailViewModel: DealerDetailViewModel {
     
     func describeComponent(at index: Int, to visitor: DealerDetailViewModelVisitor) { }
     
+    private(set) var toldToOpenWebsite = false
+    func openWebsite() {
+        toldToOpenWebsite = true
+    }
+    
 }
 
 class FakeDealerDetailSummaryViewModel: FakeDealerDetailViewModel {

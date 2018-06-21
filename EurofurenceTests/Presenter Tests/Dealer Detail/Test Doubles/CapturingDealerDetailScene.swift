@@ -46,6 +46,11 @@ extension CapturingDealerDetailScene {
 
 class CapturingDealerDetailSummaryComponent: DealerDetailSummaryComponent {
     
+    private(set) var capturedOnWebsiteSelected: (() -> Void)?
+    func onWebsiteSelected(perform block: @escaping () -> Void) {
+        capturedOnWebsiteSelected = block
+    }
+    
     private(set) var capturedArtistImagePNGData: Data?
     func showArtistArtworkImageWithPNGData(_ data: Data) {
         capturedArtistImagePNGData = data

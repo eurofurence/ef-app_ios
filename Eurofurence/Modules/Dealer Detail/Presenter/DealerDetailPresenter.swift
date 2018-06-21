@@ -15,7 +15,7 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
         var viewModel: DealerDetailViewModel
 
         func bindComponent<T>(at index: Int, using componentFactory: T) -> T.Component where T: DealerDetailComponentFactory {
-            let visitor = Visitor(componentFactory)
+            let visitor = Visitor(componentFactory, viewModel: viewModel)
             viewModel.describeComponent(at: index, to: visitor)
 
             guard let component = visitor.boundComponent else {
@@ -28,10 +28,12 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
         private class Visitor<T>: DealerDetailViewModelVisitor where T: DealerDetailComponentFactory {
 
             private let componentFactory: T
+            private let viewModel: DealerDetailViewModel
             private(set) var boundComponent: T.Component?
 
-            init(_ componentFactory: T) {
+            init(_ componentFactory: T, viewModel: DealerDetailViewModel) {
                 self.componentFactory = componentFactory
+                self.viewModel = viewModel
             }
 
             func visit(_ summary: DealerDetailSummaryViewModel) {
@@ -44,6 +46,7 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
                     component.hideTwitterHandle()
                     component.hideTelegramHandle()
                     component.hideDealerWebsite()
+                    component.onWebsiteSelected(perform: viewModel.openWebsite)
 
                     if let artworkData = summary.artistImagePNGData {
                         component.showArtistArtworkImageWithPNGData(artworkData)

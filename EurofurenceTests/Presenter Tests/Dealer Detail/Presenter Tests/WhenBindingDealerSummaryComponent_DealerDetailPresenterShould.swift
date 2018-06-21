@@ -12,6 +12,7 @@ import XCTest
 class WhenBindingDealerSummaryComponent_DealerDetailPresenterShould: XCTestCase {
     
     var context: DealerDetailPresenterTestBuilder.Context!
+    var viewModel: FakeDealerDetailViewModel!
     var summaryViewModel: DealerDetailSummaryViewModel!
     var boundComponent: AnyObject?
     
@@ -19,7 +20,7 @@ class WhenBindingDealerSummaryComponent_DealerDetailPresenterShould: XCTestCase 
         super.setUp()
         
         summaryViewModel = DealerDetailSummaryViewModel.random
-        let viewModel = FakeDealerDetailSummaryViewModel(summary: summaryViewModel)
+        viewModel = FakeDealerDetailSummaryViewModel(summary: summaryViewModel)
         let interactor = FakeDealerDetailInteractor(viewModel: viewModel)
         context = DealerDetailPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
@@ -60,6 +61,11 @@ class WhenBindingDealerSummaryComponent_DealerDetailPresenterShould: XCTestCase 
     
     func testSetTheDealerTelegramHandleOntoTheComponent() {
         XCTAssertEqual(summaryViewModel.telegramHandle, context.boundDealerSummaryComponent?.capturedDealerTelegramHandle)
+    }
+    
+    func testTellTheViewModelToOpenTheWebsiteLinkWhenItIsSelected() {
+        context.boundDealerSummaryComponent?.capturedOnWebsiteSelected?()
+        XCTAssertTrue(viewModel.toldToOpenWebsite)
     }
     
 }

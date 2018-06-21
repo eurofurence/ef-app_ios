@@ -46,4 +46,6 @@ protocol DealerDetailSummaryComponent {
     func showDealerTelegramHandle(_ telegramHandle: String)
     func hideTelegramHandle()
 
+    func onWebsiteSelected(perform block: @escaping () -> Void)
+
 }
