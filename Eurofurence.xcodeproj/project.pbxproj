@@ -358,6 +358,7 @@
 		CA1B6F2D20DB8BDC00ADF414 /* WhenBindingDealerSummaryComponent_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F2C20DB8BDC00ADF414 /* WhenBindingDealerSummaryComponent_DealerDetailPresenterShould.swift */; };
 		CA1B6F2F20DB8E0900ADF414 /* DealerDetailSceneBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F2E20DB8E0900ADF414 /* DealerDetailSceneBinder.swift */; };
 		CA1B6F3120DB91F500ADF414 /* DealerDetailSummaryViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F3020DB91F500ADF414 /* DealerDetailSummaryViewModel+RandomValueProviding.swift */; };
+		CA1B6F3320DB9B4F00ADF414 /* DealerDetailSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F3220DB9B4F00ADF414 /* DealerDetailSummaryTableViewCell.swift */; };
 		CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */; };
 		CA1ECB3F1FE333090076083A /* WhenInitialMessageLoadFails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */; };
 		CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */; };
@@ -1380,6 +1381,7 @@
 		CA1B6F2C20DB8BDC00ADF414 /* WhenBindingDealerSummaryComponent_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingDealerSummaryComponent_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA1B6F2E20DB8E0900ADF414 /* DealerDetailSceneBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailSceneBinder.swift; sourceTree = "<group>"; };
 		CA1B6F3020DB91F500ADF414 /* DealerDetailSummaryViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealerDetailSummaryViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA1B6F3220DB9B4F00ADF414 /* DealerDetailSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailSummaryTableViewCell.swift; sourceTree = "<group>"; };
 		CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessagesLoadCompletesWithNoMessages.swift; sourceTree = "<group>"; };
 		CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessageLoadFails.swift; sourceTree = "<group>"; };
 		CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewingMessageWhileLoggedInWithLocalMessage.swift; sourceTree = "<group>"; };
@@ -3142,6 +3144,7 @@
 				CA1B6F1820DB81F400ADF414 /* DealerDetail.storyboard */,
 				CA1B6F1A20DB820100ADF414 /* DealerDetailViewController.swift */,
 				CA1B6F1620DB81DB00ADF414 /* StoryboardDealerDetailSceneFactory.swift */,
+				CA1B6F3220DB9B4F00ADF414 /* DealerDetailSummaryTableViewCell.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -5876,6 +5879,7 @@
 				CABA439F1FD578E1009CB5B0 /* NewsModuleBuilder.swift in Sources */,
 				CA6EC4892051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift in Sources */,
 				CA73AEF3201A08C4004E77BF /* KnowledgeListModule.swift in Sources */,
+				CA1B6F3320DB9B4F00ADF414 /* DealerDetailSummaryTableViewCell.swift in Sources */,
 				CA1B6F0B20DB816600ADF414 /* DealerDetailSceneFactory.swift in Sources */,
 				CA30EAAE1F2148780053DBF6 /* User.swift in Sources */,
 				CA72848A209F927B007D912A /* DefaultAnnouncementDetailInteractorFactory.swift in Sources */,
