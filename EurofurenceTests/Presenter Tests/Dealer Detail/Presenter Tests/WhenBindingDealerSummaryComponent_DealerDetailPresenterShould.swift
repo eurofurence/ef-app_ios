@@ -22,4 +22,15 @@ class WhenBindingDealerSummaryComponent_DealerDetailPresenterShould: XCTestCase 
         XCTAssertEqual(dealerSummaryViewModel.artistImagePNGData, context.boundDealerSummaryComponent?.capturedArtistImagePNGData)
     }
     
+    func testReturnTheBoundComponentBackToTheScene() {
+        let dealerSummaryViewModel = DealerDetailSummaryViewModel.random
+        let viewModel = FakeDealerDetailSummaryViewModel(summary: dealerSummaryViewModel)
+        let interactor = FakeDealerDetailInteractor(viewModel: viewModel)
+        let context = DealerDetailPresenterTestBuilder().with(interactor).build()
+        context.simulateSceneDidLoad()
+        let boundComponent = context.bindComponent(at: 0)
+        
+        XCTAssertTrue(boundComponent === context.boundDealerSummaryComponent)
+    }
+    
 }

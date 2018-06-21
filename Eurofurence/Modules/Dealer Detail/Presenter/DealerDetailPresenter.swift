@@ -14,21 +14,28 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
 
         var viewModel: DealerDetailViewModel
 
-        func bindComponent<T>(at index: Int, using componentFactory: T) where T: DealerDetailComponentFactory {
+        func bindComponent<T>(at index: Int, using componentFactory: T) -> T.Component where T: DealerDetailComponentFactory {
             let visitor = Visitor(componentFactory)
             viewModel.describeComponent(at: index, to: visitor)
+
+            guard let component = visitor.boundComponent else {
+                fatalError("Unable to bind component for DealerDetailScene at index \(index)")
+            }
+
+            return component
         }
 
         private class Visitor<T>: DealerDetailViewModelVisitor where T: DealerDetailComponentFactory {
 
             private let componentFactory: T
+            private(set) var boundComponent: T.Component?
 
             init(_ componentFactory: T) {
                 self.componentFactory = componentFactory
             }
 
             func visit(_ summary: DealerDetailSummaryViewModel) {
-                _ = componentFactory.makeDealerSummaryComponent { (component) in
+                boundComponent = componentFactory.makeDealerSummaryComponent { (component) in
                     component.showArtistArtworkImageWithPNGData(summary.artistImagePNGData)
                 }
             }

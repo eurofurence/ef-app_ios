@@ -23,10 +23,10 @@ class CapturingDealerDetailScene: UIViewController, DealerDetailScene, DealerDet
         self.binder = binder
     }
     
-    typealias Component = Any
+    typealias Component = AnyObject
     
     private(set) var boundDealerSummaryComponent: CapturingDealerDetailSummaryComponent?
-    func makeDealerSummaryComponent(configureUsing block: (DealerDetailSummaryComponent) -> Void) -> Any {
+    func makeDealerSummaryComponent(configureUsing block: (DealerDetailSummaryComponent) -> Void) -> Component {
         let component = CapturingDealerDetailSummaryComponent()
         block(component)
         boundDealerSummaryComponent = component
@@ -37,8 +37,9 @@ class CapturingDealerDetailScene: UIViewController, DealerDetailScene, DealerDet
 
 extension CapturingDealerDetailScene {
     
-    func bindComponent(at index: Int) {
-        binder?.bindComponent(at: index, using: self)
+    @discardableResult
+    func bindComponent(at index: Int) -> Component? {
+        return binder?.bindComponent(at: index, using: self)
     }
     
 }
