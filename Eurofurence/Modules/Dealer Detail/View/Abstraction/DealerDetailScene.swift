@@ -36,5 +36,8 @@ protocol DealerDetailSummaryComponent {
     func setDealerSubtitle(_ subtitle: String)
     func setDealerCategories(_ categories: String)
     func setDealerShortDescription(_ shortDescription: String)
+    func setDealerWebsite(_ website: String)
+    func setDealerTwitterHandle(_ twitterHandle: String)
+    func setDealerTelegramHandle(_ telegramHandle: String)
 
 }

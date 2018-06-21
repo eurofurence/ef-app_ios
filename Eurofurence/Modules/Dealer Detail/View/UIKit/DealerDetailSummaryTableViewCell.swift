@@ -40,4 +40,16 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
         dealerShortDescriptionLabel.text = shortDescription
     }
 
+    func setDealerWebsite(_ website: String) {
+
+    }
+
+    func setDealerTwitterHandle(_ twitterHandle: String) {
+
+    }
+
+    func setDealerTelegramHandle(_ telegramHandle: String) {
+
+    }
+
 }

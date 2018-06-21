@@ -71,4 +71,19 @@ class CapturingDealerDetailSummaryComponent: DealerDetailSummaryComponent {
         capturedDealerShortDescription = shortDescription
     }
     
+    private(set) var capturedDealerWebsite: String?
+    func setDealerWebsite(_ website: String) {
+        capturedDealerWebsite = website
+    }
+    
+    private(set) var capturedDealerTwitterHandle: String?
+    func setDealerTwitterHandle(_ twitterHandle: String) {
+        capturedDealerTwitterHandle = twitterHandle
+    }
+    
+    private(set) var capturedDealerTelegramHandle: String?
+    func setDealerTelegramHandle(_ telegramHandle: String) {
+        capturedDealerTelegramHandle = telegramHandle
+    }
+    
 }

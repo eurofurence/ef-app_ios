@@ -41,6 +41,18 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
                     component.setDealerSubtitle(summary.subtitle)
                     component.setDealerCategories(summary.categories)
                     component.setDealerShortDescription(summary.shortDescription)
+
+                    if let website = summary.website {
+                        component.setDealerWebsite(website)
+                    }
+
+                    if let twitterHandle = summary.twitterHandle {
+                        component.setDealerTwitterHandle(twitterHandle)
+                    }
+
+                    if let telegramHandle = summary.telegramHandle {
+                        component.setDealerTelegramHandle(telegramHandle)
+                    }
                 }
             }
 

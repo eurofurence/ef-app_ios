@@ -21,12 +21,15 @@ protocol DealerDetailViewModelVisitor {
 
 }
 
-struct DealerDetailSummaryViewModel: Hashable {
+struct DealerDetailSummaryViewModel: Equatable {
 
     var artistImagePNGData: Data
     var title: String
     var subtitle: String
     var categories: String
     var shortDescription: String
+    var website: String?
+    var twitterHandle: String?
+    var telegramHandle: String?
 
 }

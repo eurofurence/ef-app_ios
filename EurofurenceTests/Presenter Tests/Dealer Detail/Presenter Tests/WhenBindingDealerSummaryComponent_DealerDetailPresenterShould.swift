@@ -50,4 +50,16 @@ class WhenBindingDealerSummaryComponent_DealerDetailPresenterShould: XCTestCase 
         XCTAssertEqual(summaryViewModel.shortDescription, context.boundDealerSummaryComponent?.capturedDealerShortDescription)
     }
     
+    func testSetTheDealerWebsiteOntoTheComponent() {
+        XCTAssertEqual(summaryViewModel.website, context.boundDealerSummaryComponent?.capturedDealerWebsite)
+    }
+    
+    func testSetTheDealerTwitterHandleOntoTheComponent() {
+        XCTAssertEqual(summaryViewModel.twitterHandle, context.boundDealerSummaryComponent?.capturedDealerTwitterHandle)
+    }
+    
+    func testSetTheDealerTelegramHandleOntoTheComponent() {
+        XCTAssertEqual(summaryViewModel.telegramHandle, context.boundDealerSummaryComponent?.capturedDealerTelegramHandle)
+    }
+    
 }

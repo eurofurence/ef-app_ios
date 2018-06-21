@@ -16,7 +16,10 @@ extension DealerDetailSummaryViewModel: RandomValueProviding {
                                             title: .random,
                                             subtitle: .random,
                                             categories: .random,
-                                            shortDescription: .random)
+                                            shortDescription: .random,
+                                            website: .random,
+                                            twitterHandle: .random,
+                                            telegramHandle: .random)
     }
     
 }
