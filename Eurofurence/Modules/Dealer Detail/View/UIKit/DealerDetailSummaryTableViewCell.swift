@@ -31,6 +31,10 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
         artistImageView.isHidden = false
     }
 
+    func hideArtistArtwork() {
+        artistImageView.isHidden = true
+    }
+
     func setDealerTitle(_ title: String) {
         dealerTitleLabel.text = title
         dealerTitleLabel.isHidden = false
@@ -39,6 +43,10 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     func showDealerSubtitle(_ subtitle: String) {
         dealerSubtitleLabel.text = subtitle
         dealerSubtitleLabel.isHidden = false
+    }
+
+    func hideDealerSubtitle() {
+        dealerSubtitleLabel.isHidden = true
     }
 
     func setDealerCategories(_ categories: String) {
@@ -50,9 +58,17 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
         dealerShortDescriptionLabel.isHidden = false
     }
 
+    func hideDealerShortDescription() {
+        dealerShortDescriptionLabel.isHidden = true
+    }
+
     func showDealerWebsite(_ website: String) {
         dealerWebsiteLabel.text = website
         dealerWebsiteContainer.isHidden = false
+    }
+
+    func hideDealerWebsite() {
+        dealerWebsiteContainer.isHidden = true
     }
 
     func showDealerTwitterHandle(_ twitterHandle: String) {
@@ -60,9 +76,17 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
         dealerTwitterHandleContainer.isHidden = false
     }
 
+    func hideTwitterHandle() {
+        dealerTwitterHandleContainer.isHidden = true
+    }
+
     func showDealerTelegramHandle(_ telegramHandle: String) {
         dealerTelegramHandle.text = telegramHandle
         dealerTelegramContainer.isHidden = false
+    }
+
+    func hideTelegramHandle() {
+        dealerTelegramContainer.isHidden = true
     }
 
 }

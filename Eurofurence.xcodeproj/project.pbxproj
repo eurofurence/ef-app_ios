@@ -359,6 +359,7 @@
 		CA1B6F2F20DB8E0900ADF414 /* DealerDetailSceneBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F2E20DB8E0900ADF414 /* DealerDetailSceneBinder.swift */; };
 		CA1B6F3120DB91F500ADF414 /* DealerDetailSummaryViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F3020DB91F500ADF414 /* DealerDetailSummaryViewModel+RandomValueProviding.swift */; };
 		CA1B6F3320DB9B4F00ADF414 /* DealerDetailSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F3220DB9B4F00ADF414 /* DealerDetailSummaryTableViewCell.swift */; };
+		CA1B6F3520DC171200ADF414 /* WhenBindingDealerSummaryWithMissingAttributes_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F3420DC171200ADF414 /* WhenBindingDealerSummaryWithMissingAttributes_DealerDetailPresenterShould.swift */; };
 		CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */; };
 		CA1ECB3F1FE333090076083A /* WhenInitialMessageLoadFails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */; };
 		CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */; };
@@ -1382,6 +1383,7 @@
 		CA1B6F2E20DB8E0900ADF414 /* DealerDetailSceneBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailSceneBinder.swift; sourceTree = "<group>"; };
 		CA1B6F3020DB91F500ADF414 /* DealerDetailSummaryViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealerDetailSummaryViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA1B6F3220DB9B4F00ADF414 /* DealerDetailSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailSummaryTableViewCell.swift; sourceTree = "<group>"; };
+		CA1B6F3420DC171200ADF414 /* WhenBindingDealerSummaryWithMissingAttributes_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingDealerSummaryWithMissingAttributes_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessagesLoadCompletesWithNoMessages.swift; sourceTree = "<group>"; };
 		CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessageLoadFails.swift; sourceTree = "<group>"; };
 		CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewingMessageWhileLoggedInWithLocalMessage.swift; sourceTree = "<group>"; };
@@ -3102,6 +3104,7 @@
 			children = (
 				CA1B6F2A20DB8A9C00ADF414 /* BeforeDealerDetailSceneLoads_DealerDetailPresenterShould.swift */,
 				CA1B6F2C20DB8BDC00ADF414 /* WhenBindingDealerSummaryComponent_DealerDetailPresenterShould.swift */,
+				CA1B6F3420DC171200ADF414 /* WhenBindingDealerSummaryWithMissingAttributes_DealerDetailPresenterShould.swift */,
 				CA1B6F0620DB805300ADF414 /* WhenBuildingDealerDetailModule.swift */,
 				CA1B6F1C20DB843E00ADF414 /* WhenDealerDetailSceneLoads_DealerDetailPresenterShould.swift */,
 			);
@@ -6062,6 +6065,7 @@
 				CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */,
 				CA52C68320D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift in Sources */,
 				CA637572208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift in Sources */,
+				CA1B6F3520DC171200ADF414 /* WhenBindingDealerSummaryWithMissingAttributes_DealerDetailPresenterShould.swift in Sources */,
 				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,
 				CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */,
 				CA6EC4792051CAFA00402894 /* WhenBuildingKnowledgeDetailModule.swift in Sources */,

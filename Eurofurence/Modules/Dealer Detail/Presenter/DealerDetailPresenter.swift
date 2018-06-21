@@ -38,6 +38,12 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
                 boundComponent = componentFactory.makeDealerSummaryComponent { (component) in
                     component.setDealerTitle(summary.title)
                     component.setDealerCategories(summary.categories)
+                    component.hideArtistArtwork()
+                    component.hideDealerSubtitle()
+                    component.hideDealerShortDescription()
+                    component.hideTwitterHandle()
+                    component.hideTelegramHandle()
+                    component.hideDealerWebsite()
 
                     if let artworkData = summary.artistImagePNGData {
                         component.showArtistArtworkImageWithPNGData(artworkData)

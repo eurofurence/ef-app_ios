@@ -34,10 +34,16 @@ protocol DealerDetailSummaryComponent {
     func setDealerTitle(_ title: String)
     func setDealerCategories(_ categories: String)
     func showArtistArtworkImageWithPNGData(_ data: Data)
+    func hideArtistArtwork()
     func showDealerSubtitle(_ subtitle: String)
+    func hideDealerSubtitle()
     func showDealerShortDescription(_ shortDescription: String)
+    func hideDealerShortDescription()
     func showDealerWebsite(_ website: String)
+    func hideDealerWebsite()
     func showDealerTwitterHandle(_ twitterHandle: String)
+    func hideTwitterHandle()
     func showDealerTelegramHandle(_ telegramHandle: String)
+    func hideTelegramHandle()
 
 }

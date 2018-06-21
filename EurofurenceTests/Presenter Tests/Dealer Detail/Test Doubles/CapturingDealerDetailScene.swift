@@ -51,6 +51,11 @@ class CapturingDealerDetailSummaryComponent: DealerDetailSummaryComponent {
         capturedArtistImagePNGData = data
     }
     
+    private(set) var didHideArtistArtwork = false
+    func hideArtistArtwork() {
+        didHideArtistArtwork = true
+    }
+    
     private(set) var capturedDealerTitle: String?
     func setDealerTitle(_ title: String) {
         capturedDealerTitle = title
@@ -59,6 +64,11 @@ class CapturingDealerDetailSummaryComponent: DealerDetailSummaryComponent {
     private(set) var capturedDealerSubtitle: String?
     func showDealerSubtitle(_ subtitle: String) {
         capturedDealerSubtitle = subtitle
+    }
+    
+    private(set) var didHideSubtitle = false
+    func hideDealerSubtitle() {
+        didHideSubtitle = true
     }
     
     private(set) var capturedDealerCategories: String?
@@ -71,9 +81,19 @@ class CapturingDealerDetailSummaryComponent: DealerDetailSummaryComponent {
         capturedDealerShortDescription = shortDescription
     }
     
+    private(set) var didHideShortDescription = false
+    func hideDealerShortDescription() {
+        didHideShortDescription = true
+    }
+    
     private(set) var capturedDealerWebsite: String?
     func showDealerWebsite(_ website: String) {
         capturedDealerWebsite = website
+    }
+    
+    private(set) var didHideWebsite = false
+    func hideDealerWebsite() {
+        didHideWebsite = true
     }
     
     private(set) var capturedDealerTwitterHandle: String?
@@ -81,9 +101,19 @@ class CapturingDealerDetailSummaryComponent: DealerDetailSummaryComponent {
         capturedDealerTwitterHandle = twitterHandle
     }
     
+    private(set) var didHideTwitterHandle = false
+    func hideTwitterHandle() {
+        didHideTwitterHandle = true
+    }
+    
     private(set) var capturedDealerTelegramHandle: String?
     func showDealerTelegramHandle(_ telegramHandle: String) {
         capturedDealerTelegramHandle = telegramHandle
+    }
+    
+    private(set) var didHideTelegramHandle = false
+    func hideTelegramHandle() {
+        didHideTelegramHandle = true
     }
     
 }
