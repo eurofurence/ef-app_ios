@@ -10,8 +10,20 @@ import Foundation
 
 class DealerDetailModuleBuilder {
 
+    private var dealerDetailSceneFactory: DealerDetailSceneFactory
+
+    init() {
+        dealerDetailSceneFactory = StoryboardDealerDetailSceneFactory()
+    }
+
+    @discardableResult
+    func with(_ dealerDetailSceneFactory: DealerDetailSceneFactory) -> DealerDetailModuleBuilder {
+        self.dealerDetailSceneFactory = dealerDetailSceneFactory
+        return self
+    }
+
     func build() -> DealerDetailModuleProviding {
-        return DealerDetailModule()
+        return DealerDetailModule(dealerDetailSceneFactory: dealerDetailSceneFactory)
     }
 
 }

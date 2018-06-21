@@ -10,8 +10,10 @@ import UIKit
 
 struct DealerDetailModule: DealerDetailModuleProviding {
 
+    var dealerDetailSceneFactory: DealerDetailSceneFactory
+
     func makeDealerDetailModule(for dealer: Dealer2.Identifier) -> UIViewController {
-        return UIViewController()
+        return dealerDetailSceneFactory.makeDealerDetailScene()
     }
 
 }
