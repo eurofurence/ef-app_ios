@@ -10,6 +10,33 @@ import Foundation
 
 struct DealerDetailPresenter: DealerDetailSceneDelegate {
 
+    private struct Binder: DealerDetailSceneBinder {
+
+        var viewModel: DealerDetailViewModel
+
+        func bindComponent<T>(at index: Int, using componentFactory: T) where T: DealerDetailComponentFactory {
+            let visitor = Visitor(componentFactory)
+            viewModel.describeComponent(at: index, to: visitor)
+        }
+
+        private class Visitor<T>: DealerDetailViewModelVisitor where T: DealerDetailComponentFactory {
+
+            private let componentFactory: T
+
+            init(_ componentFactory: T) {
+                self.componentFactory = componentFactory
+            }
+
+            func visit(_ summary: DealerDetailSummaryViewModel) {
+                _ = componentFactory.makeDealerSummaryComponent { (component) in
+                    component.showArtistArtworkImageWithPNGData(summary.artistImagePNGData)
+                }
+            }
+
+        }
+
+    }
+
     private let scene: DealerDetailScene
     private let interactor: DealerDetailInteractor
     private let dealer: Dealer2.Identifier
@@ -24,7 +51,8 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
 
     func dealerDetailSceneDidLoad() {
         interactor.makeDealerDetailViewModel(for: dealer) { (viewModel) in
-            self.scene.bind(numberOfComponents: viewModel.numberOfComponents)
+            self.scene.bind(numberOfComponents: viewModel.numberOfComponents,
+                            using: Binder(viewModel: viewModel))
         }
     }
 

@@ -17,4 +17,21 @@ class FakeDealerDetailViewModel: DealerDetailViewModel {
     
     var numberOfComponents: Int
     
+    func describeComponent(at index: Int, to visitor: DealerDetailViewModelVisitor) { }
+    
+}
+
+class FakeDealerDetailSummaryViewModel: FakeDealerDetailViewModel {
+    
+    private let summary: DealerDetailSummaryViewModel
+    
+    init(summary: DealerDetailSummaryViewModel) {
+        self.summary = summary
+        super.init(numberOfComponents: 1)
+    }
+    
+    override func describeComponent(at index: Int, to visitor: DealerDetailViewModelVisitor) {
+        visitor.visit(summary)
+    }
+    
 }

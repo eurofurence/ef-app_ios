@@ -11,5 +11,18 @@ import Foundation
 protocol DealerDetailViewModel {
 
     var numberOfComponents: Int { get }
+    func describeComponent(at index: Int, to visitor: DealerDetailViewModelVisitor)
+
+}
+
+protocol DealerDetailViewModelVisitor {
+
+    func visit(_ summary: DealerDetailSummaryViewModel)
+
+}
+
+struct DealerDetailSummaryViewModel: Hashable {
+
+    var artistImagePNGData: Data
 
 }

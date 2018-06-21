@@ -51,4 +51,12 @@ extension DealerDetailPresenterTestBuilder.Context {
         scene.delegate?.dealerDetailSceneDidLoad()
     }
     
+    func bindComponent(at index: Int) {
+        scene.bindComponent(at: index)
+    }
+    
+    var boundDealerSummaryComponent: CapturingDealerDetailSummaryComponent? {
+        return scene.boundDealerSummaryComponent
+    }
+    
 }

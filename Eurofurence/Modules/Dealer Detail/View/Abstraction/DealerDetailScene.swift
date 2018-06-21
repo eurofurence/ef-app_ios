@@ -11,12 +11,26 @@ import Foundation
 protocol DealerDetailScene {
 
     func setDelegate(_ delegate: DealerDetailSceneDelegate)
-    func bind(numberOfComponents: Int)
+    func bind(numberOfComponents: Int, using binder: DealerDetailSceneBinder)
 
 }
 
 protocol DealerDetailSceneDelegate {
 
     func dealerDetailSceneDidLoad()
+
+}
+
+protocol DealerDetailComponentFactory {
+
+    associatedtype Component
+
+    func makeDealerSummaryComponent(configureUsing block: (DealerDetailSummaryComponent) -> Void) -> Component
+
+}
+
+protocol DealerDetailSummaryComponent {
+
+    func showArtistArtworkImageWithPNGData(_ data: Data)
 
 }
