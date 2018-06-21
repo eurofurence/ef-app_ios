@@ -18,9 +18,20 @@ class DealerDetailPresenterTestBuilder {
         var interactor: FakeDealerDetailInteractor
     }
     
+    private var interactor: FakeDealerDetailInteractor
+    
+    init() {
+        interactor = FakeDealerDetailInteractor()
+    }
+    
+    @discardableResult
+    func with(_ interactor: FakeDealerDetailInteractor) -> DealerDetailPresenterTestBuilder {
+        self.interactor = interactor
+        return self
+    }
+    
     func build(for identifier: Dealer2.Identifier = .random) -> Context {
         let sceneFactory = StubDealerDetailSceneFactory()
-        let interactor = FakeDealerDetailInteractor()
         let module = DealerDetailModuleBuilder()
             .with(sceneFactory)
             .with(interactor)

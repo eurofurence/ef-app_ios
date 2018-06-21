@@ -351,6 +351,9 @@
 		CA1B6F1D20DB843E00ADF414 /* WhenDealerDetailSceneLoads_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F1C20DB843E00ADF414 /* WhenDealerDetailSceneLoads_DealerDetailPresenterShould.swift */; };
 		CA1B6F2020DB84E400ADF414 /* DealerDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F1F20DB84E400ADF414 /* DealerDetailInteractor.swift */; };
 		CA1B6F2220DB84F400ADF414 /* FakeDealerDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F2120DB84F400ADF414 /* FakeDealerDetailInteractor.swift */; };
+		CA1B6F2420DB886300ADF414 /* DealerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F2320DB886300ADF414 /* DealerDetailViewModel.swift */; };
+		CA1B6F2620DB887100ADF414 /* FakeDealerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F2520DB887100ADF414 /* FakeDealerDetailViewModel.swift */; };
+		CA1B6F2920DB89FE00ADF414 /* DealerDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F2820DB89FE00ADF414 /* DealerDetailPresenter.swift */; };
 		CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */; };
 		CA1ECB3F1FE333090076083A /* WhenInitialMessageLoadFails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */; };
 		CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */; };
@@ -1366,6 +1369,9 @@
 		CA1B6F1C20DB843E00ADF414 /* WhenDealerDetailSceneLoads_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDealerDetailSceneLoads_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA1B6F1F20DB84E400ADF414 /* DealerDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailInteractor.swift; sourceTree = "<group>"; };
 		CA1B6F2120DB84F400ADF414 /* FakeDealerDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDealerDetailInteractor.swift; sourceTree = "<group>"; };
+		CA1B6F2320DB886300ADF414 /* DealerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailViewModel.swift; sourceTree = "<group>"; };
+		CA1B6F2520DB887100ADF414 /* FakeDealerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDealerDetailViewModel.swift; sourceTree = "<group>"; };
+		CA1B6F2820DB89FE00ADF414 /* DealerDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailPresenter.swift; sourceTree = "<group>"; };
 		CA1ECB3C1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessagesLoadCompletesWithNoMessages.swift; sourceTree = "<group>"; };
 		CA1ECB3E1FE333090076083A /* WhenInitialMessageLoadFails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInitialMessageLoadFails.swift; sourceTree = "<group>"; };
 		CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewingMessageWhileLoggedInWithLocalMessage.swift; sourceTree = "<group>"; };
@@ -3114,6 +3120,7 @@
 				CA1B6F0F20DB818A00ADF414 /* CapturingDealerDetailScene.swift */,
 				CA1B6F2120DB84F400ADF414 /* FakeDealerDetailInteractor.swift */,
 				CA1B6F1120DB819A00ADF414 /* StubDealerDetailSceneFactory.swift */,
+				CA1B6F2520DB887100ADF414 /* FakeDealerDetailViewModel.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -3132,8 +3139,17 @@
 			isa = PBXGroup;
 			children = (
 				CA1B6F1F20DB84E400ADF414 /* DealerDetailInteractor.swift */,
+				CA1B6F2320DB886300ADF414 /* DealerDetailViewModel.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CA1B6F2720DB89F500ADF414 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CA1B6F2820DB89FE00ADF414 /* DealerDetailPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		CA1FE99C1FA0B3F2009C7DF3 /* Director */ = {
@@ -3263,6 +3279,7 @@
 		CA36A4E120DAFF6D00EE6537 /* Dealer Detail */ = {
 			isa = PBXGroup;
 			children = (
+				CA1B6F2720DB89F500ADF414 /* Presenter */,
 				CA1B6F1E20DB84DE00ADF414 /* Interactor */,
 				CA1B6F0820DB815B00ADF414 /* View */,
 				CA36A4E220DAFF7600EE6537 /* Module */,
@@ -5708,6 +5725,7 @@
 				CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */,
 				CAA39E0820051B5C00F2F3D3 /* LocalizedStrings.swift in Sources */,
 				D6F3DEDDAFE507E873CB3806 /* WikiText.swift in Sources */,
+				CA1B6F2420DB886300ADF414 /* DealerDetailViewModel.swift in Sources */,
 				CA00AE7020D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift in Sources */,
 				CA72846A209D1442007D912A /* AnnouncementViewModel.swift in Sources */,
 				CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */,
@@ -5820,6 +5838,7 @@
 				CA728455209D0576007D912A /* AnnouncementDetailSceneFactory.swift in Sources */,
 				D6F3D204D352FE26C3F90906 /* KnowledgeTableViewController.swift in Sources */,
 				CA2D07FB1FE902ED00BFD785 /* EurofurenceDataStore.swift in Sources */,
+				CA1B6F2920DB89FE00ADF414 /* DealerDetailPresenter.swift in Sources */,
 				CABA438D1FBCDBDF009CB5B0 /* LoginPresenter.swift in Sources */,
 				CA6375A8208E011C00536BE2 /* DealersModuleBuilder.swift in Sources */,
 				CA637586208CDE5D00536BE2 /* ScheduleModule.swift in Sources */,
@@ -6031,6 +6050,7 @@
 				CA162EAE20AA29DC004AFED6 /* WhenAddingAnnouncementsObserverThenRefreshSucceeds.swift in Sources */,
 				CA2D080E1FE9504600BFD785 /* WhenThePushNotificationPermissionsPageAppears.swift in Sources */,
 				CA250DD420D6E28B00E7513C /* WhenBindingEventFromSearchResult_SchedulePresenterShould.swift in Sources */,
+				CA1B6F2620DB887100ADF414 /* FakeDealerDetailViewModel.swift in Sources */,
 				7820A6E51F140056004C0FB5 /* CapturingAlertRouter.swift in Sources */,
 				CA17FE9020586A15005A4C05 /* StubWikiRenderer.swift in Sources */,
 				CA8276B0204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift in Sources */,

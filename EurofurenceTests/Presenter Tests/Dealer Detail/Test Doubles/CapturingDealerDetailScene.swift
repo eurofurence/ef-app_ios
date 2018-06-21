@@ -16,4 +16,9 @@ class CapturingDealerDetailScene: UIViewController, DealerDetailScene {
         self.delegate = delegate
     }
     
+    private(set) var boundNumberOfComponents: Int?
+    func bind(numberOfComponents: Int) {
+        boundNumberOfComponents = numberOfComponents
+    }
+    
 }

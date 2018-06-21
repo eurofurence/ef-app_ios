@@ -19,4 +19,13 @@ class WhenDealerDetailSceneLoads_DealerDetailPresenterShould: XCTestCase {
         XCTAssertEqual(identifier, context.interactor.capturedIdentifierForProducingViewModel)
     }
     
+    func testTellTheSceneToBindNumberOfComponentsFromTheViewModelOntoTheScene() {
+        let viewModel = FakeDealerDetailViewModel(numberOfComponents: .random)
+        let interactor = FakeDealerDetailInteractor(viewModel: viewModel)
+        let context = DealerDetailPresenterTestBuilder().with(interactor).build()
+        context.simulateSceneDidLoad()
+        
+        XCTAssertEqual(viewModel.numberOfComponents, context.scene.boundNumberOfComponents)
+    }
+    
 }

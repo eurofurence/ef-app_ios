@@ -15,7 +15,7 @@ class DealerDetailModuleBuilder {
 
     init() {
         struct DummyDealerDetailInteractor: DealerDetailInteractor {
-            func makeDealerDetailViewModel(for identifier: Dealer2.Identifier) {
+            func makeDealerDetailViewModel(for identifier: Dealer2.Identifier, completionHandler: @escaping (DealerDetailViewModel) -> Void) {
 
             }
         }

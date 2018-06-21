@@ -10,6 +10,6 @@ import Foundation
 
 protocol DealerDetailInteractor {
 
-    func makeDealerDetailViewModel(for identifier: Dealer2.Identifier)
+    func makeDealerDetailViewModel(for identifier: Dealer2.Identifier, completionHandler: @escaping (DealerDetailViewModel) -> Void)
 
 }

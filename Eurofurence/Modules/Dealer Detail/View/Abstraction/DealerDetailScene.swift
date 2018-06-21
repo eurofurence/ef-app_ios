@@ -11,6 +11,7 @@ import Foundation
 protocol DealerDetailScene {
 
     func setDelegate(_ delegate: DealerDetailSceneDelegate)
+    func bind(numberOfComponents: Int)
 
 }
 

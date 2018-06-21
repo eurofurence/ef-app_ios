@@ -16,4 +16,8 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
 
     }
 
+    func bind(numberOfComponents: Int) {
+
+    }
+
 }
