@@ -19,7 +19,7 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     @IBOutlet weak var dealerShortDescriptionLabel: UILabel!
     @IBOutlet weak var dealerWebsiteButton: UIButton!
     @IBOutlet weak var dealerWebsiteContainer: UIView!
-    @IBOutlet weak var dealerTwitterHandleLabel: UILabel!
+    @IBOutlet weak var dealerTwitterHandleButton: UIButton!
     @IBOutlet weak var dealerTwitterHandleContainer: UIView!
     @IBOutlet weak var dealerTelegramHandle: UILabel!
     @IBOutlet weak var dealerTelegramContainer: UIView!
@@ -28,6 +28,10 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
 
     @IBAction func websiteButtonTapped(_ sender: Any) {
         websiteSelected?()
+    }
+
+    @IBAction func twitterButtonTapped(_ sender: Any) {
+        twitterSelected?()
     }
 
     // MARK: DealerDetailSummaryComponent
@@ -78,7 +82,7 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     }
 
     func showDealerTwitterHandle(_ twitterHandle: String) {
-        dealerTwitterHandleLabel.text = twitterHandle
+        dealerTwitterHandleButton.titleLabel?.text = twitterHandle
         dealerTwitterHandleContainer.isHidden = false
     }
 
@@ -98,6 +102,11 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     private var websiteSelected: (() -> Void)?
     func onWebsiteSelected(perform block: @escaping () -> Void) {
         websiteSelected = block
+    }
+
+    private var twitterSelected: (() -> Void)?
+    func onTwitterSelected(perform block: @escaping () -> Void) {
+        twitterSelected = block
     }
 
 }

@@ -47,6 +47,7 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
                     component.hideTelegramHandle()
                     component.hideDealerWebsite()
                     component.onWebsiteSelected(perform: viewModel.openWebsite)
+                    component.onTwitterSelected(perform: viewModel.openTwitter)
 
                     if let artworkData = summary.artistImagePNGData {
                         component.showArtistArtworkImageWithPNGData(artworkData)

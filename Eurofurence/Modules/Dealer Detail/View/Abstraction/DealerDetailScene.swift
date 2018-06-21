@@ -47,5 +47,6 @@ protocol DealerDetailSummaryComponent {
     func hideTelegramHandle()
 
     func onWebsiteSelected(perform block: @escaping () -> Void)
+    func onTwitterSelected(perform block: @escaping () -> Void)
 
 }

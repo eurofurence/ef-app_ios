@@ -98,12 +98,13 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FuK-wO-vQ0">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dih-Vt-VDu">
                                                                     <rect key="frame" x="39" y="0.0" width="306" height="36.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
+                                                                    <state key="normal" title="Twitter"/>
+                                                                    <connections>
+                                                                        <action selector="twitterButtonTapped:" destination="la1-S3-uWw" eventType="touchUpInside" id="WSa-hu-d2C"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="a5H-Ie-5gN">
@@ -141,8 +142,8 @@
                                             <outlet property="dealerTelegramContainer" destination="a5H-Ie-5gN" id="rvJ-5s-dIo"/>
                                             <outlet property="dealerTelegramHandle" destination="t1h-Ia-Xtn" id="mcB-Ls-ggH"/>
                                             <outlet property="dealerTitleLabel" destination="HAU-My-jch" id="oi4-Pk-3KD"/>
+                                            <outlet property="dealerTwitterHandleButton" destination="Dih-Vt-VDu" id="Qhc-rE-z8b"/>
                                             <outlet property="dealerTwitterHandleContainer" destination="XvX-TG-6gG" id="zjK-4m-E5y"/>
-                                            <outlet property="dealerTwitterHandleLabel" destination="FuK-wO-vQ0" id="1CK-Ir-YDS"/>
                                             <outlet property="dealerWebsiteButton" destination="Ube-uh-Wg8" id="AGi-fL-oW4"/>
                                             <outlet property="dealerWebsiteContainer" destination="5bm-HD-IZa" id="OSu-eU-vvy"/>
                                         </connections>

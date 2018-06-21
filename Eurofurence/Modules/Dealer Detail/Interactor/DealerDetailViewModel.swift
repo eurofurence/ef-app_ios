@@ -14,6 +14,7 @@ protocol DealerDetailViewModel {
     func describeComponent(at index: Int, to visitor: DealerDetailViewModelVisitor)
 
     func openWebsite()
+    func openTwitter()
 
 }
 

@@ -68,4 +68,9 @@ class WhenBindingDealerSummaryComponent_DealerDetailPresenterShould: XCTestCase 
         XCTAssertTrue(viewModel.toldToOpenWebsite)
     }
     
+    func testTellTheViewModelToOpenTheTwitterLinkWhenItIsSelected() {
+        context.boundDealerSummaryComponent?.capturedOnTwitterSelected?()
+        XCTAssertTrue(viewModel.toldToOpenTwitter)
+    }
+    
 }
