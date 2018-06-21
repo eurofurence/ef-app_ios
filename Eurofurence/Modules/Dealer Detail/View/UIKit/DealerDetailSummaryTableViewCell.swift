@@ -22,33 +22,37 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
 
     func showArtistArtworkImageWithPNGData(_ data: Data) {
         artistImageView.image = UIImage(data: data)
+        artistImageView.isHidden = false
     }
 
     func setDealerTitle(_ title: String) {
         dealerTitleLabel.text = title
+        dealerTitleLabel.isHidden = false
     }
 
-    func setDealerSubtitle(_ subtitle: String) {
+    func showDealerSubtitle(_ subtitle: String) {
         dealerSubtitleLabel.text = subtitle
+        dealerSubtitleLabel.isHidden = false
     }
 
     func setDealerCategories(_ categories: String) {
         dealerCategoriesLabel.text = categories
     }
 
-    func setDealerShortDescription(_ shortDescription: String) {
+    func showDealerShortDescription(_ shortDescription: String) {
         dealerShortDescriptionLabel.text = shortDescription
+        dealerShortDescriptionLabel.isHidden = false
     }
 
-    func setDealerWebsite(_ website: String) {
-
-    }
-
-    func setDealerTwitterHandle(_ twitterHandle: String) {
+    func showDealerWebsite(_ website: String) {
 
     }
 
-    func setDealerTelegramHandle(_ telegramHandle: String) {
+    func showDealerTwitterHandle(_ twitterHandle: String) {
+
+    }
+
+    func showDealerTelegramHandle(_ telegramHandle: String) {
 
     }
 

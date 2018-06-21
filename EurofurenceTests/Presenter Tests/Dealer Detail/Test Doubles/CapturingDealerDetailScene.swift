@@ -57,7 +57,7 @@ class CapturingDealerDetailSummaryComponent: DealerDetailSummaryComponent {
     }
     
     private(set) var capturedDealerSubtitle: String?
-    func setDealerSubtitle(_ subtitle: String) {
+    func showDealerSubtitle(_ subtitle: String) {
         capturedDealerSubtitle = subtitle
     }
     
@@ -67,22 +67,22 @@ class CapturingDealerDetailSummaryComponent: DealerDetailSummaryComponent {
     }
     
     private(set) var capturedDealerShortDescription: String?
-    func setDealerShortDescription(_ shortDescription: String) {
+    func showDealerShortDescription(_ shortDescription: String) {
         capturedDealerShortDescription = shortDescription
     }
     
     private(set) var capturedDealerWebsite: String?
-    func setDealerWebsite(_ website: String) {
+    func showDealerWebsite(_ website: String) {
         capturedDealerWebsite = website
     }
     
     private(set) var capturedDealerTwitterHandle: String?
-    func setDealerTwitterHandle(_ twitterHandle: String) {
+    func showDealerTwitterHandle(_ twitterHandle: String) {
         capturedDealerTwitterHandle = twitterHandle
     }
     
     private(set) var capturedDealerTelegramHandle: String?
-    func setDealerTelegramHandle(_ telegramHandle: String) {
+    func showDealerTelegramHandle(_ telegramHandle: String) {
         capturedDealerTelegramHandle = telegramHandle
     }
     

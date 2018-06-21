@@ -31,13 +31,13 @@ protocol DealerDetailComponentFactory {
 
 protocol DealerDetailSummaryComponent {
 
-    func showArtistArtworkImageWithPNGData(_ data: Data)
     func setDealerTitle(_ title: String)
-    func setDealerSubtitle(_ subtitle: String)
     func setDealerCategories(_ categories: String)
-    func setDealerShortDescription(_ shortDescription: String)
-    func setDealerWebsite(_ website: String)
-    func setDealerTwitterHandle(_ twitterHandle: String)
-    func setDealerTelegramHandle(_ telegramHandle: String)
+    func showArtistArtworkImageWithPNGData(_ data: Data)
+    func showDealerSubtitle(_ subtitle: String)
+    func showDealerShortDescription(_ shortDescription: String)
+    func showDealerWebsite(_ website: String)
+    func showDealerTwitterHandle(_ twitterHandle: String)
+    func showDealerTelegramHandle(_ telegramHandle: String)
 
 }

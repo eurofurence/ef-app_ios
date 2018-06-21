@@ -36,22 +36,31 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
 
             func visit(_ summary: DealerDetailSummaryViewModel) {
                 boundComponent = componentFactory.makeDealerSummaryComponent { (component) in
-                    component.showArtistArtworkImageWithPNGData(summary.artistImagePNGData)
                     component.setDealerTitle(summary.title)
-                    component.setDealerSubtitle(summary.subtitle)
                     component.setDealerCategories(summary.categories)
-                    component.setDealerShortDescription(summary.shortDescription)
+
+                    if let artworkData = summary.artistImagePNGData {
+                        component.showArtistArtworkImageWithPNGData(artworkData)
+                    }
+
+                    if let subtitle = summary.subtitle {
+                        component.showDealerSubtitle(subtitle)
+                    }
+
+                    if let shortDescription = summary.shortDescription {
+                        component.showDealerShortDescription(shortDescription)
+                    }
 
                     if let website = summary.website {
-                        component.setDealerWebsite(website)
+                        component.showDealerWebsite(website)
                     }
 
                     if let twitterHandle = summary.twitterHandle {
-                        component.setDealerTwitterHandle(twitterHandle)
+                        component.showDealerTwitterHandle(twitterHandle)
                     }
 
                     if let telegramHandle = summary.telegramHandle {
-                        component.setDealerTelegramHandle(telegramHandle)
+                        component.showDealerTelegramHandle(telegramHandle)
                     }
                 }
             }
