@@ -39,6 +39,7 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
                     component.showArtistArtworkImageWithPNGData(summary.artistImagePNGData)
                     component.setDealerTitle(summary.title)
                     component.setDealerSubtitle(summary.subtitle)
+                    component.setDealerCategories(summary.categories)
                 }
             }
 

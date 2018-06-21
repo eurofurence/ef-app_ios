@@ -26,5 +26,6 @@ struct DealerDetailSummaryViewModel: Hashable {
     var artistImagePNGData: Data
     var title: String
     var subtitle: String
+    var categories: String
 
 }

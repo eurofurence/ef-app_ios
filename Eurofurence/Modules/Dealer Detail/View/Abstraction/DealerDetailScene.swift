@@ -34,5 +34,6 @@ protocol DealerDetailSummaryComponent {
     func showArtistArtworkImageWithPNGData(_ data: Data)
     func setDealerTitle(_ title: String)
     func setDealerSubtitle(_ subtitle: String)
+    func setDealerCategories(_ categories: String)
 
 }
