@@ -17,6 +17,12 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     @IBOutlet weak var dealerSubtitleLabel: UILabel!
     @IBOutlet weak var dealerCategoriesLabel: UILabel!
     @IBOutlet weak var dealerShortDescriptionLabel: UILabel!
+    @IBOutlet weak var dealerWebsiteLabel: UILabel!
+    @IBOutlet weak var dealerWebsiteContainer: UIView!
+    @IBOutlet weak var dealerTwitterHandleLabel: UILabel!
+    @IBOutlet weak var dealerTwitterHandleContainer: UIView!
+    @IBOutlet weak var dealerTelegramHandle: UILabel!
+    @IBOutlet weak var dealerTelegramContainer: UIView!
 
     // MARK: DealerDetailSummaryComponent
 
@@ -45,15 +51,18 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     }
 
     func showDealerWebsite(_ website: String) {
-
+        dealerWebsiteLabel.text = website
+        dealerWebsiteContainer.isHidden = false
     }
 
     func showDealerTwitterHandle(_ twitterHandle: String) {
-
+        dealerTwitterHandleLabel.text = twitterHandle
+        dealerTwitterHandleContainer.isHidden = false
     }
 
     func showDealerTelegramHandle(_ telegramHandle: String) {
-
+        dealerTelegramHandle.text = telegramHandle
+        dealerTelegramContainer.isHidden = false
     }
 
 }
