@@ -82,9 +82,17 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
                     component.hideLimitedAvailbilityWarning()
                     component.hideAfterDarkDenNotice()
 
-                    component.showMapPNGGraphicData(location.mapPNGGraphicData)
-                    component.showDealerLimitedAvailabilityWarning(location.limitedAvailabilityWarning)
-                    component.showLocatedInAfterDarkDealersDenMessage(location.locatedInAfterDarkDealersDenMessage)
+                    if let mapPNGGraphicData = location.mapPNGGraphicData {
+                        component.showMapPNGGraphicData(mapPNGGraphicData)
+                    }
+                    
+                    if let limitedAvailabilityWarning = location.limitedAvailabilityWarning {
+                        component.showDealerLimitedAvailabilityWarning(limitedAvailabilityWarning)
+                    }
+                    
+                    if let locatedInAfterDarkDealersDenMessage = location.locatedInAfterDarkDealersDenMessage {
+                        component.showLocatedInAfterDarkDealersDenMessage(locatedInAfterDarkDealersDenMessage)
+                    }
                 }
             }
 

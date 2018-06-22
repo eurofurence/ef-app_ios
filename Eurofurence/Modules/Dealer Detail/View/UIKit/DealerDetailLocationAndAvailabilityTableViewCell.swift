@@ -12,15 +12,15 @@ class DealerDetailLocationAndAvailabilityTableViewCell: UITableViewCell, DealerL
 
     // MARK: DealerLocationAndAvailabilityComponent
 
-    func showMapPNGGraphicData(_ data: Data?) {
+    func showMapPNGGraphicData(_ data: Data) {
 
     }
 
-    func showDealerLimitedAvailabilityWarning(_ warning: String?) {
+    func showDealerLimitedAvailabilityWarning(_ warning: String) {
 
     }
 
-    func showLocatedInAfterDarkDealersDenMessage(_ message: String?) {
+    func showLocatedInAfterDarkDealersDenMessage(_ message: String) {
 
     }
 

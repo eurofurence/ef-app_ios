@@ -144,17 +144,17 @@ class CapturingDealerDetailSummaryComponent: DealerDetailSummaryComponent {
 class CapturingDealerLocationAndAvailabilityComponent: DealerLocationAndAvailabilityComponent {
     
     private(set) var capturedMapPNGGraphicData: Data?
-    func showMapPNGGraphicData(_ data: Data?) {
+    func showMapPNGGraphicData(_ data: Data) {
         capturedMapPNGGraphicData = data
     }
     
     private(set) var capturedLimitedAvailabilityWarning: String?
-    func showDealerLimitedAvailabilityWarning(_ warning: String?) {
+    func showDealerLimitedAvailabilityWarning(_ warning: String) {
         capturedLimitedAvailabilityWarning = warning
     }
     
     private(set) var capturedLocatedInAfterDarkDealersDenMessage: String?
-    func showLocatedInAfterDarkDealersDenMessage(_ message: String?) {
+    func showLocatedInAfterDarkDealersDenMessage(_ message: String) {
         capturedLocatedInAfterDarkDealersDenMessage = message
     }
     
