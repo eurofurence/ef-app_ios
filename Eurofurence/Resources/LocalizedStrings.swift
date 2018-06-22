@@ -124,6 +124,11 @@ public extension String {
     public static let unfavourite = NSLocalizedString("Unfavourite",
                                                       comment: "Title for the button used to remove an event from the user's favourites")
 
+    public static let locationAndAvailability = NSLocalizedString("LocationAndAvailability",
+                                                                  comment: "Heading for component in the dealer detail view explaining their location, convention availability and their AD status")
+    public static let locatedWithinAfterDarkDen = NSLocalizedString("LocatedWithinAfterDarkDen",
+                                                                    comment: "Short sentence describing that the dealer is located within the after-dark dealers den")
+
     private struct Formatters {
         static var numbers = NumberFormatter()
     }

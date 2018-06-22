@@ -54,4 +54,8 @@ extension FakeDealersService {
         return fetchOrMakeExtendedDealerData(for: identifier)
     }
     
+    func stub(_ data: ExtendedDealerData, for identifier: Dealer2.Identifier) {
+        fakedDealerData[identifier] = data
+    }
+    
 }

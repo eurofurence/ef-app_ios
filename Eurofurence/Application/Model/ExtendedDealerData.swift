@@ -15,6 +15,10 @@ struct ExtendedDealerData {
     var alternateName: String?
     var categories: [String]
     var dealerShortDescription: String
+    var isAttendingOnThursday: Bool
+    var isAttendingOnFriday: Bool
+    var isAttendingOnSaturday: Bool
+    var isAfterDark: Bool
     var websiteName: String?
     var twitterUsername: String?
     var telegramUsername: String?

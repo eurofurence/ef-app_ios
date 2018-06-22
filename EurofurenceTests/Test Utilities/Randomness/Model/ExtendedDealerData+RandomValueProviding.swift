@@ -16,6 +16,10 @@ extension ExtendedDealerData: RandomValueProviding {
                                   alternateName: .random,
                                   categories: .random,
                                   dealerShortDescription: .random,
+                                  isAttendingOnThursday: .random,
+                                  isAttendingOnFriday: .random,
+                                  isAttendingOnSaturday: .random,
+                                  isAfterDark: .random,
                                   websiteName: .random,
                                   twitterUsername: .random,
                                   telegramUsername: .random)

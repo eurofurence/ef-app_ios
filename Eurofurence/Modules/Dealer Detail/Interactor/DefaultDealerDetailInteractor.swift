@@ -28,6 +28,16 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
 
         }
 
+        struct LocationAndAvailabilityComponent: DetailViewModelComponent {
+
+            var locationAndAvailability: DealerDetailLocationAndAvailabilityViewModel
+
+            func describe(to visitor: DealerDetailViewModelVisitor) {
+                visitor.visit(locationAndAvailability)
+            }
+
+        }
+
         private var components = [DetailViewModelComponent]()
 
         init(data: ExtendedDealerData) {
@@ -41,6 +51,13 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
                                                        telegramHandle: data.telegramUsername)
             let summaryComponent = SummaryComponent(summary: summary)
             components.append(summaryComponent)
+
+            let locationAndAvailability = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
+                                                                                       mapPNGGraphicData: nil,
+                                                                                       limitedAvailabilityWarning: nil,
+                                                                                       locatedInAfterDarkDealersDenMessage: .locatedWithinAfterDarkDen)
+            let locationAndAvailabilityComponent = LocationAndAvailabilityComponent(locationAndAvailability: locationAndAvailability)
+            components.append(locationAndAvailabilityComponent)
         }
 
         var numberOfComponents: Int {
