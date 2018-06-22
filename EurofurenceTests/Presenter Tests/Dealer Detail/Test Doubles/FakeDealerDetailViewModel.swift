@@ -80,3 +80,18 @@ class FakeDealerDetailAboutTheArtistViewModel: FakeDealerDetailViewModel {
     }
     
 }
+
+class FakeDealerDetailAboutTheArtViewModel: FakeDealerDetailViewModel {
+    
+    private let aboutTheArt: DealerDetailAboutTheArtViewModel
+    
+    init(aboutTheArt: DealerDetailAboutTheArtViewModel) {
+        self.aboutTheArt = aboutTheArt
+        super.init(numberOfComponents: 1)
+    }
+    
+    override func describeComponent(at index: Int, to visitor: DealerDetailViewModelVisitor) {
+        visitor.visit(aboutTheArt)
+    }
+    
+}

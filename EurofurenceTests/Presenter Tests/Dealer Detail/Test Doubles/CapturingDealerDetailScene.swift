@@ -49,6 +49,14 @@ class CapturingDealerDetailScene: UIViewController, DealerDetailScene, DealerDet
         return component
     }
     
+    private(set) var boundAboutTheArtComponent: CapturingAboutTheArtComponent?
+    func makeAboutTheArtComponent(configureUsing block: (AboutTheArtComponent) -> Void) -> Component {
+        let component = CapturingAboutTheArtComponent()
+        block(component)
+        boundAboutTheArtComponent = component
+        return component
+    }
+    
 }
 
 extension CapturingDealerDetailScene {
@@ -198,6 +206,15 @@ class CapturingAboutTheArtistComponent: DealerAboutTheArtistComponent {
     private(set) var capturedArtistDescription: String?
     func setArtistDescription(_ artistDescription: String) {
         capturedArtistDescription = artistDescription
+    }
+    
+}
+
+class CapturingAboutTheArtComponent: AboutTheArtComponent {
+    
+    private(set) var capturedTitle: String?
+    func setComponentTitle(_ title: String) {
+        capturedTitle = title
     }
     
 }

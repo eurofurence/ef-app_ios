@@ -24,6 +24,7 @@ protocol DealerDetailViewModelVisitor {
     func visit(_ summary: DealerDetailSummaryViewModel)
     func visit(_ location: DealerDetailLocationAndAvailabilityViewModel)
     func visit(_ aboutTheArtist: DealerDetailAboutTheArtistViewModel)
+    func visit(_ aboutTheArt: DealerDetailAboutTheArtViewModel)
 
 }
 
@@ -53,5 +54,11 @@ struct DealerDetailAboutTheArtistViewModel: Equatable {
 
     var title: String
     var artistDescription: String
+
+}
+
+struct DealerDetailAboutTheArtViewModel: Equatable {
+
+    var title: String
 
 }
