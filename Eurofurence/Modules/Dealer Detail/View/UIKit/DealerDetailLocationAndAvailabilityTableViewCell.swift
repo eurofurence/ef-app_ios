@@ -25,7 +25,9 @@ class DealerDetailLocationAndAvailabilityTableViewCell: UITableViewCell, DealerL
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        limitedAvailabilityIconLabel.textColor = .pantone330U
         limitedAvailabilityIconLabel.text = "\u{f071}"
+        afterDarkInformationIconLabel.textColor = .pantone330U
         afterDarkInformationIconLabel.text = "\u{f186}"
     }
 
@@ -37,12 +39,12 @@ class DealerDetailLocationAndAvailabilityTableViewCell: UITableViewCell, DealerL
 
     func showDealerLimitedAvailabilityWarning(_ warning: String) {
         limitedAvailabilityWarningLabel.text = warning
-        limitedAvailabilityWarningLabel.isHidden = false
+        limitedAvailabilityWarningContainer.isHidden = false
     }
 
     func showLocatedInAfterDarkDealersDenMessage(_ message: String) {
         afterDarkInformationLabel.text = message
-        afterDarkInformationLabel.isHidden = false
+        afterDarkInformationContainer.isHidden = false
     }
 
     func hideMap() {

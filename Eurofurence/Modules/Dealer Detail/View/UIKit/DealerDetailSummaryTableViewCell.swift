@@ -18,11 +18,14 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     @IBOutlet weak var dealerCategoriesLabel: UILabel!
     @IBOutlet weak var dealerShortDescriptionLabel: UILabel!
     @IBOutlet weak var dealerWebsiteButton: UIButton!
+    @IBOutlet weak var dealerWebsiteIconLabel: UILabel!
     @IBOutlet weak var dealerWebsiteContainer: UIView!
+    @IBOutlet weak var twitterIconLabel: UILabel!
     @IBOutlet weak var dealerTwitterHandleButton: UIButton!
     @IBOutlet weak var dealerTwitterHandleContainer: UIView!
     @IBOutlet weak var dealerTelegramHandleButton: UIButton!
     @IBOutlet weak var dealerTelegramContainer: UIView!
+    @IBOutlet weak var telegramIconLabel: UILabel!
 
     // MARK: Actions
 
@@ -36,6 +39,26 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
 
     @IBAction func telegramButtonTapped(_ sender: Any) {
         telegramSelected?()
+    }
+
+    // MARK: Overrides
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        contentView.backgroundColor = .pantone330U
+
+        let labelTextColor = UIColor.white
+        dealerTitleLabel.textColor = labelTextColor
+        dealerSubtitleLabel.textColor = labelTextColor
+        dealerCategoriesLabel.textColor = labelTextColor
+        dealerShortDescriptionLabel.textColor = labelTextColor
+        twitterIconLabel.textColor = labelTextColor
+        telegramIconLabel.textColor = labelTextColor
+        dealerWebsiteIconLabel.textColor = labelTextColor
+        dealerWebsiteButton.setTitleColor(labelTextColor, for: .normal)
+        dealerTwitterHandleButton.setTitleColor(labelTextColor, for: .normal)
+        dealerTelegramHandleButton.setTitleColor(labelTextColor, for: .normal)
     }
 
     // MARK: DealerDetailSummaryComponent
@@ -77,7 +100,7 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     }
 
     func showDealerWebsite(_ website: String) {
-        dealerWebsiteButton.titleLabel?.text = website
+        dealerWebsiteButton.setTitle(website, for: .normal)
         dealerWebsiteContainer.isHidden = false
     }
 
@@ -86,7 +109,7 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     }
 
     func showDealerTwitterHandle(_ twitterHandle: String) {
-        dealerTwitterHandleButton.titleLabel?.text = twitterHandle
+        dealerTwitterHandleButton.setTitle(twitterHandle, for: .normal)
         dealerTwitterHandleContainer.isHidden = false
     }
 
@@ -95,7 +118,7 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     }
 
     func showDealerTelegramHandle(_ telegramHandle: String) {
-        dealerTelegramHandleButton.titleLabel?.text = telegramHandle
+        dealerTelegramHandleButton.setTitle(telegramHandle, for: .normal)
         dealerTelegramContainer.isHidden = false
     }
 
