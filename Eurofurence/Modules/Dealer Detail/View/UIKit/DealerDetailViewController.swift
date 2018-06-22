@@ -77,7 +77,9 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
         }
 
         func makeAboutTheArtistComponent(configureUsing block: (DealerAboutTheArtistComponent) -> Void) -> UITableViewCell {
-            fatalError()
+            let cell = tableView.dequeue(DealerAboutTheArtistTableViewCell.self)
+            block(cell)
+            return cell
         }
 
     }

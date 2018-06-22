@@ -961,6 +961,7 @@
 		CAF81C5E20DD91B700898C52 /* WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C5D20DD91B700898C52 /* WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould.swift */; };
 		CAF81C6020DD92E900898C52 /* DealerAboutTheArtistComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C5F20DD92E900898C52 /* DealerAboutTheArtistComponent.swift */; };
 		CAF81C6220DD95BC00898C52 /* DealerDetailAboutTheArtistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C6120DD95BC00898C52 /* DealerDetailAboutTheArtistViewModel.swift */; };
+		CAF81C6420DD95FB00898C52 /* DealerAboutTheArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C6320DD95FB00898C52 /* DealerAboutTheArtistTableViewCell.swift */; };
 		CAF9A9431F50B87600628833 /* EurofurenceApplicationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */; };
 		CAF9A9451F50B89000628833 /* CapturingEurofurenceApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */; };
 		CAF9A9471F50B95F00628833 /* WhenRequestingCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */; };
@@ -1996,6 +1997,7 @@
 		CAF81C5D20DD91B700898C52 /* WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAF81C5F20DD92E900898C52 /* DealerAboutTheArtistComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerAboutTheArtistComponent.swift; sourceTree = "<group>"; };
 		CAF81C6120DD95BC00898C52 /* DealerDetailAboutTheArtistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailAboutTheArtistViewModel.swift; sourceTree = "<group>"; };
+		CAF81C6320DD95FB00898C52 /* DealerAboutTheArtistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerAboutTheArtistTableViewCell.swift; sourceTree = "<group>"; };
 		CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurofurenceApplicationProtocol.swift; sourceTree = "<group>"; };
 		CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingEurofurenceApplication.swift; sourceTree = "<group>"; };
 		CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenRequestingCurrentUser.swift; sourceTree = "<group>"; };
@@ -3167,6 +3169,7 @@
 				CA1B6F3220DB9B4F00ADF414 /* DealerDetailSummaryTableViewCell.swift */,
 				CA1B6F1A20DB820100ADF414 /* DealerDetailViewController.swift */,
 				CA1B6F1620DB81DB00ADF414 /* StoryboardDealerDetailSceneFactory.swift */,
+				CAF81C6320DD95FB00898C52 /* DealerAboutTheArtistTableViewCell.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -5791,6 +5794,7 @@
 				D6F3D620BA994A6570325C66 /* DealersTableViewCell.swift in Sources */,
 				CACF1EB620B600F200D904B5 /* EventGraphicComponent.swift in Sources */,
 				D6F3DDCB5EF23B138BD25865 /* EventHeaderCellTableViewCell.swift in Sources */,
+				CAF81C6420DD95FB00898C52 /* DealerAboutTheArtistTableViewCell.swift in Sources */,
 				CA637590208CE4E100536BE2 /* ScheduleSceneFactory.swift in Sources */,
 				CA1B6F1720DB81DB00ADF414 /* StoryboardDealerDetailSceneFactory.swift in Sources */,
 				CAEAEC0A1FE06FA500C0EE7C /* PhoneMessageDetailSceneFactory.swift in Sources */,
