@@ -37,4 +37,8 @@ class WhenBindingAboutTheArtComponent_DealerDetailPresenterShould: XCTestCase {
         XCTAssertEqual(aboutTheArtViewModel.artPreviewImagePNGData, context.boundAboutTheArtComponent?.capturedArtPreviewImagePNGData)
     }
     
+    func testBindTheArtPreviewCaptionOntoTheComponent() {
+        XCTAssertEqual(aboutTheArtViewModel.artPreviewCaption, context.boundAboutTheArtComponent?.capturedArtPreviewCaption)
+    }
+    
 }
