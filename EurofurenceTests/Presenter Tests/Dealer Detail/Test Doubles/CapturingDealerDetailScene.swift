@@ -222,4 +222,9 @@ class CapturingAboutTheArtComponent: AboutTheArtComponent {
         capturedAboutTheArt = aboutTheArt
     }
     
+    private(set) var capturedArtPreviewImagePNGData: Data?
+    func showArtPreviewImagePNGData(_ artPreviewImagePNGData: Data) {
+        capturedArtPreviewImagePNGData = artPreviewImagePNGData
+    }
+    
 }

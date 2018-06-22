@@ -11,26 +11,30 @@ import XCTest
 
 class WhenBindingAboutTheArtComponent_DealerDetailPresenterShould: XCTestCase {
     
-    func testBindTheTitleOntoTheComponent() {
-        let aboutTheArtViewModel = DealerDetailAboutTheArtViewModel.random
+    var context: DealerDetailPresenterTestBuilder.Context!
+    var aboutTheArtViewModel: DealerDetailAboutTheArtViewModel!
+    
+    override func setUp() {
+        super.setUp()
+        
+        aboutTheArtViewModel = DealerDetailAboutTheArtViewModel.random
         let viewModel = FakeDealerDetailAboutTheArtViewModel(aboutTheArt: aboutTheArtViewModel)
         let interactor = FakeDealerDetailInteractor(viewModel: viewModel)
-        let context = DealerDetailPresenterTestBuilder().with(interactor).build()
+        context = DealerDetailPresenterTestBuilder().with(interactor).build()
         context.simulateSceneDidLoad()
         context.bindComponent(at: 0)
-        
+    }
+    
+    func testBindTheTitleOntoTheComponent() {
         XCTAssertEqual(aboutTheArtViewModel.title, context.boundAboutTheArtComponent?.capturedTitle)
     }
     
     func testBindTheArtDescriptionOntoTheComponent() {
-        let aboutTheArtViewModel = DealerDetailAboutTheArtViewModel.random
-        let viewModel = FakeDealerDetailAboutTheArtViewModel(aboutTheArt: aboutTheArtViewModel)
-        let interactor = FakeDealerDetailInteractor(viewModel: viewModel)
-        let context = DealerDetailPresenterTestBuilder().with(interactor).build()
-        context.simulateSceneDidLoad()
-        context.bindComponent(at: 0)
-        
         XCTAssertEqual(aboutTheArtViewModel.aboutTheArt, context.boundAboutTheArtComponent?.capturedAboutTheArt)
+    }
+    
+    func testBindTheArtPreviewImagePNGDataOntoTheComponent() {
+        XCTAssertEqual(aboutTheArtViewModel.artPreviewImagePNGData, context.boundAboutTheArtComponent?.capturedArtPreviewImagePNGData)
     }
     
 }

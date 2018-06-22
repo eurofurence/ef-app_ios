@@ -111,6 +111,10 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
                     if let aboutTheArt = aboutTheArt.aboutTheArt {
                         component.showAboutTheArtDescription(aboutTheArt)
                     }
+
+                    if let artPreviewImagePNGData = aboutTheArt.artPreviewImagePNGData {
+                        component.showArtPreviewImagePNGData(artPreviewImagePNGData)
+                    }
                 }
             }
 
