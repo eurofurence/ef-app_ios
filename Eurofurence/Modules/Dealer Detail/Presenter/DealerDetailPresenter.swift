@@ -99,6 +99,7 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
 
             func visit(_ aboutTheArtist: DealerDetailAboutTheArtistViewModel) {
                 boundComponent = componentFactory.makeAboutTheArtistComponent { (component) in
+                    component.setAboutTheArtistTitle(aboutTheArtist.title)
                     component.setArtistDescription(aboutTheArtist.artistDescription)
                 }
             }

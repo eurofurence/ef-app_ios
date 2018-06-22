@@ -51,6 +51,7 @@ struct DealerDetailLocationAndAvailabilityViewModel: Equatable {
 
 struct DealerDetailAboutTheArtistViewModel: Equatable {
 
+    var title: String
     var artistDescription: String
 
 }

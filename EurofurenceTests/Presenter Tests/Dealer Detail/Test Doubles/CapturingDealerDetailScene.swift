@@ -190,6 +190,11 @@ class CapturingDealerLocationAndAvailabilityComponent: DealerLocationAndAvailabi
 
 class CapturingAboutTheArtistComponent: DealerAboutTheArtistComponent {
     
+    private(set) var capturedTitle: String?
+    func setAboutTheArtistTitle(_ title: String) {
+        capturedTitle = title
+    }
+    
     private(set) var capturedArtistDescription: String?
     func setArtistDescription(_ artistDescription: String) {
         capturedArtistDescription = artistDescription
