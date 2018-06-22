@@ -26,12 +26,32 @@ class FakeDealersService: DealersService {
         completionHandler(iconData[identifier])
     }
     
+    fileprivate var fakedDealerData = [Dealer2.Identifier : ExtendedDealerData]()
+    func fetchExtendedDealerData(for dealer: Dealer2.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
+        let data = fetchOrMakeExtendedDealerData(for: dealer)
+        completionHandler(data)
+    }
+    
 }
 
 extension FakeDealersService {
     
     func stubIconPNGData(_ data: Data, for identifier: Dealer2.Identifier) {
         iconData[identifier] = data
+    }
+    
+    fileprivate func fetchOrMakeExtendedDealerData(for dealer: Dealer2.Identifier) -> ExtendedDealerData {
+        if let data = fakedDealerData[dealer] {
+            return data
+        }
+        
+        let data = ExtendedDealerData.random
+        fakedDealerData[dealer] = data
+        return data
+    }
+    
+    func fakedDealerData(for identifier: Dealer2.Identifier) -> ExtendedDealerData {
+        return fetchOrMakeExtendedDealerData(for: identifier)
     }
     
 }

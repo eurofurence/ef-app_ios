@@ -184,6 +184,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         dealers.fetchIconPNGData(for: identifier, completionHandler: completionHandler)
     }
 
+    func fetchExtendedDealerData(for dealer: Dealer2.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
+
+    }
+
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
         enum SyncError: Error {
             case failedToLoadResponse

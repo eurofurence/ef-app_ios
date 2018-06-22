@@ -111,6 +111,10 @@ class Dealers: DealersService {
         completionHandler(iconData)
     }
 
+    func fetchExtendedDealerData(for dealer: Dealer2.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
+
+    }
+
     private func updateDealers(from dealers: [APIDealer]) {
         models = dealers
         dealerModels = dealers.map { (dealer) -> Dealer2 in

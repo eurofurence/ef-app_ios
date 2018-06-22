@@ -10,6 +10,10 @@
 import Foundation
 
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
+    func fetchExtendedDealerData(for dealer: Dealer2.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
+        
+    }
+    
     func makeDealersIndex() -> DealersIndex {
         struct DummyDealersIndex: DealersIndex {
             func performSearch(term: String) {
