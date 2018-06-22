@@ -23,6 +23,7 @@ protocol DealerDetailViewModelVisitor {
 
     func visit(_ summary: DealerDetailSummaryViewModel)
     func visit(_ location: DealerDetailLocationAndAvailabilityViewModel)
+    func visit(_ aboutTheArtist: DealerDetailAboutTheArtistViewModel)
 
 }
 
@@ -45,5 +46,11 @@ struct DealerDetailLocationAndAvailabilityViewModel: Equatable {
     var mapPNGGraphicData: Data?
     var limitedAvailabilityWarning: String?
     var locatedInAfterDarkDealersDenMessage: String?
+
+}
+
+struct DealerDetailAboutTheArtistViewModel: Equatable {
+
+    var artistDescription: String
 
 }

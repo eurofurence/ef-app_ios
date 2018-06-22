@@ -65,3 +65,18 @@ class FakeDealerDetailLocationAndAvailabilityViewModel: FakeDealerDetailViewMode
     }
     
 }
+
+class FakeDealerDetailAboutTheArtistViewModel: FakeDealerDetailViewModel {
+    
+    private let aboutTheArtist: DealerDetailAboutTheArtistViewModel
+    
+    init(aboutTheArtist: DealerDetailAboutTheArtistViewModel) {
+        self.aboutTheArtist = aboutTheArtist
+        super.init(numberOfComponents: 1)
+    }
+    
+    override func describeComponent(at index: Int, to visitor: DealerDetailViewModelVisitor) {
+        visitor.visit(aboutTheArtist)
+    }
+    
+}

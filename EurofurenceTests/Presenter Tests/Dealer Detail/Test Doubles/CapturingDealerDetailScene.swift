@@ -41,6 +41,14 @@ class CapturingDealerDetailScene: UIViewController, DealerDetailScene, DealerDet
         return component
     }
     
+    private(set) var boundAboutTheArtistComponent: CapturingAboutTheArtistComponent?
+    func makeAboutTheArtistComponent(configureUsing block: (DealerAboutTheArtistComponent) -> Void) -> Component {
+        let component = CapturingAboutTheArtistComponent()
+        block(component)
+        boundAboutTheArtistComponent = component
+        return component
+    }
+    
 }
 
 extension CapturingDealerDetailScene {
@@ -176,6 +184,15 @@ class CapturingDealerLocationAndAvailabilityComponent: DealerLocationAndAvailabi
     private(set) var didHideAfterDarkDenNotice = false
     func hideAfterDarkDenNotice() {
         didHideAfterDarkDenNotice = true
+    }
+    
+}
+
+class CapturingAboutTheArtistComponent: DealerAboutTheArtistComponent {
+    
+    private(set) var capturedArtistDescription: String?
+    func setArtistDescription(_ artistDescription: String) {
+        capturedArtistDescription = artistDescription
     }
     
 }

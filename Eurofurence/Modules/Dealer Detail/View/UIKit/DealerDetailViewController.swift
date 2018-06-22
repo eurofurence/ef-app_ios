@@ -76,6 +76,10 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
             return cell
         }
 
+        func makeAboutTheArtistComponent(configureUsing block: (DealerAboutTheArtistComponent) -> Void) -> UITableViewCell {
+            fatalError()
+        }
+
     }
 
 }

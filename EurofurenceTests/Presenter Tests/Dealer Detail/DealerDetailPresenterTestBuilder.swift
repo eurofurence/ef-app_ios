@@ -64,4 +64,8 @@ extension DealerDetailPresenterTestBuilder.Context {
         return scene.boundLocationAndAvailabilityComponent
     }
     
+    var boundAboutTheArtistComponent: CapturingAboutTheArtistComponent? {
+        return scene.boundAboutTheArtistComponent
+    }
+    
 }
