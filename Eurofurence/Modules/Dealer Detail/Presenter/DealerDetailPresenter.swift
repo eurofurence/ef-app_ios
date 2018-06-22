@@ -107,6 +107,10 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
             func visit(_ aboutTheArt: DealerDetailAboutTheArtViewModel) {
                 boundComponent = componentFactory.makeAboutTheArtComponent { (component) in
                     component.setComponentTitle(aboutTheArt.title)
+
+                    if let aboutTheArt = aboutTheArt.aboutTheArt {
+                        component.showAboutTheArtDescription(aboutTheArt)
+                    }
                 }
             }
 

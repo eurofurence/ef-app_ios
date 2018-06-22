@@ -11,7 +11,8 @@
 extension DealerDetailAboutTheArtViewModel: RandomValueProviding {
     
     static var random: DealerDetailAboutTheArtViewModel {
-        return DealerDetailAboutTheArtViewModel(title: .random)
+        return DealerDetailAboutTheArtViewModel(title: .random,
+                                                aboutTheArt: .random)
     }
     
 }

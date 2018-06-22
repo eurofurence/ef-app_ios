@@ -217,4 +217,9 @@ class CapturingAboutTheArtComponent: AboutTheArtComponent {
         capturedTitle = title
     }
     
+    private(set) var capturedAboutTheArt: String?
+    func showAboutTheArtDescription(_ aboutTheArt: String) {
+        capturedAboutTheArt = aboutTheArt
+    }
+    
 }

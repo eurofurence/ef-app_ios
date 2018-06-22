@@ -60,5 +60,6 @@ struct DealerDetailAboutTheArtistViewModel: Equatable {
 struct DealerDetailAboutTheArtViewModel: Equatable {
 
     var title: String
+    var aboutTheArt: String?
 
 }

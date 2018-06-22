@@ -22,4 +22,15 @@ class WhenBindingAboutTheArtComponent_DealerDetailPresenterShould: XCTestCase {
         XCTAssertEqual(aboutTheArtViewModel.title, context.boundAboutTheArtComponent?.capturedTitle)
     }
     
+    func testBindTheArtDescriptionOntoTheComponent() {
+        let aboutTheArtViewModel = DealerDetailAboutTheArtViewModel.random
+        let viewModel = FakeDealerDetailAboutTheArtViewModel(aboutTheArt: aboutTheArtViewModel)
+        let interactor = FakeDealerDetailInteractor(viewModel: viewModel)
+        let context = DealerDetailPresenterTestBuilder().with(interactor).build()
+        context.simulateSceneDidLoad()
+        context.bindComponent(at: 0)
+        
+        XCTAssertEqual(aboutTheArtViewModel.aboutTheArt, context.boundAboutTheArtComponent?.capturedAboutTheArt)
+    }
+    
 }

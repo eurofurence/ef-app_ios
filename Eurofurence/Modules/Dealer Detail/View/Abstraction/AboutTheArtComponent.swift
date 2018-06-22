@@ -11,5 +11,6 @@ import Foundation
 protocol AboutTheArtComponent {
 
     func setComponentTitle(_ title: String)
+    func showAboutTheArtDescription(_ aboutTheArt: String)
 
 }
