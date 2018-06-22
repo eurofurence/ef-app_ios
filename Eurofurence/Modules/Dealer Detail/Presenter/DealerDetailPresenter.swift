@@ -80,6 +80,7 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
                 boundComponent = componentFactory.makeDealerLocationAndAvailabilityComponent { (component) in
                     component.showMapPNGGraphicData(location.mapPNGGraphicData)
                     component.showDealerLimitedAvailabilityWarning(location.limitedAvailabilityWarning)
+                    component.showLocatedInAfterDarkDealersDenMessage(location.locatedInAfterDarkDealersDenMessage)
                 }
             }
 

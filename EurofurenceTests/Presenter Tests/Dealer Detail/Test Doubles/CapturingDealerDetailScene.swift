@@ -153,4 +153,9 @@ class CapturingDealerLocationAndAvailabilityComponent: DealerLocationAndAvailabi
         capturedLimitedAvailabilityWarning = warning
     }
     
+    private(set) var capturedLocatedInAfterDarkDealersDenMessage: String?
+    func showLocatedInAfterDarkDealersDenMessage(_ message: String?) {
+        capturedLocatedInAfterDarkDealersDenMessage = message
+    }
+    
 }

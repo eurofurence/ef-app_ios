@@ -43,5 +43,6 @@ struct DealerDetailLocationAndAvailabilityViewModel: Equatable {
 
     var mapPNGGraphicData: Data?
     var limitedAvailabilityWarning: String?
+    var locatedInAfterDarkDealersDenMessage: String?
 
 }

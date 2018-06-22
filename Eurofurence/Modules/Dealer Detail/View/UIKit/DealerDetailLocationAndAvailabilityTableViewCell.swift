@@ -20,4 +20,8 @@ class DealerDetailLocationAndAvailabilityTableViewCell: UITableViewCell, DealerL
 
     }
 
+    func showLocatedInAfterDarkDealersDenMessage(_ message: String?) {
+
+    }
+
 }

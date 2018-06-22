@@ -33,4 +33,15 @@ class WhenBindingDealerLocationAndAvailability_DealerDetailPresenterShould: XCTe
         XCTAssertEqual(locationAndAvailabilityViewModel.limitedAvailabilityWarning, context.boundLocationAndAvailabilityComponent?.capturedLimitedAvailabilityWarning)
     }
     
+    func testBindTheLocatedInAfterDarkDealersDenNoticeOntoTheComponent() {
+        let locationAndAvailabilityViewModel = DealerDetailLocationAndAvailabilityViewModel.random
+        let viewModel = FakeDealerDetailLocationAndAvailabilityViewModel(location: locationAndAvailabilityViewModel)
+        let interactor = FakeDealerDetailInteractor(viewModel: viewModel)
+        let context = DealerDetailPresenterTestBuilder().with(interactor).build()
+        context.simulateSceneDidLoad()
+        context.bindComponent(at: 0)
+        
+        XCTAssertEqual(locationAndAvailabilityViewModel.locatedInAfterDarkDealersDenMessage, context.boundLocationAndAvailabilityComponent?.capturedLocatedInAfterDarkDealersDenMessage)
+    }
+    
 }
