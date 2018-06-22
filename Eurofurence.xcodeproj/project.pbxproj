@@ -967,6 +967,8 @@
 		CAF81C6A20DDA10C00898C52 /* DealerDetailAboutTheArtViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C6920DDA10C00898C52 /* DealerDetailAboutTheArtViewModel+RandomValueProviding.swift */; };
 		CAF81C6C20DDA5B800898C52 /* WhenBindingAboutTheArtComponentWithMissingAttributes_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C6B20DDA5B800898C52 /* WhenBindingAboutTheArtComponentWithMissingAttributes_DealerDetailPresenterShould.swift */; };
 		CAF81C6E20DDA70D00898C52 /* AboutTheArtTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C6D20DDA70D00898C52 /* AboutTheArtTableViewCell.swift */; };
+		CAF81C7120DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7020DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould.swift */; };
+		CAF81C7320DDA9D100898C52 /* DefaultDealerDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7220DDA9D100898C52 /* DefaultDealerDetailInteractor.swift */; };
 		CAF9A9431F50B87600628833 /* EurofurenceApplicationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */; };
 		CAF9A9451F50B89000628833 /* CapturingEurofurenceApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */; };
 		CAF9A9471F50B95F00628833 /* WhenRequestingCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */; };
@@ -2008,6 +2010,8 @@
 		CAF81C6920DDA10C00898C52 /* DealerDetailAboutTheArtViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealerDetailAboutTheArtViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAF81C6B20DDA5B800898C52 /* WhenBindingAboutTheArtComponentWithMissingAttributes_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingAboutTheArtComponentWithMissingAttributes_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAF81C6D20DDA70D00898C52 /* AboutTheArtTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTheArtTableViewCell.swift; sourceTree = "<group>"; };
+		CAF81C7020DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould.swift; sourceTree = "<group>"; };
+		CAF81C7220DDA9D100898C52 /* DefaultDealerDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDealerDetailInteractor.swift; sourceTree = "<group>"; };
 		CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurofurenceApplicationProtocol.swift; sourceTree = "<group>"; };
 		CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingEurofurenceApplication.swift; sourceTree = "<group>"; };
 		CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenRequestingCurrentUser.swift; sourceTree = "<group>"; };
@@ -3119,6 +3123,7 @@
 			isa = PBXGroup;
 			children = (
 				CA1B6F1320DB81B800ADF414 /* DealerDetailPresenterTestBuilder.swift */,
+				CAF81C6F20DDA8C700898C52 /* Interactor Tests */,
 				CA1B6F0520DB804400ADF414 /* Presenter Tests */,
 				CA1B6F0E20DB818300ADF414 /* Test Doubles */,
 			);
@@ -3193,6 +3198,7 @@
 			children = (
 				CA1B6F1F20DB84E400ADF414 /* DealerDetailInteractor.swift */,
 				CA1B6F2320DB886300ADF414 /* DealerDetailViewModel.swift */,
+				CAF81C7220DDA9D100898C52 /* DefaultDealerDetailInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -4934,6 +4940,14 @@
 			path = Root;
 			sourceTree = "<group>";
 		};
+		CAF81C6F20DDA8C700898C52 /* Interactor Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CAF81C7020DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould.swift */,
+			);
+			path = "Interactor Tests";
+			sourceTree = "<group>";
+		};
 		CAF9A93B1F50484A00628833 /* Interactors */ = {
 			isa = PBXGroup;
 			children = (
@@ -5614,6 +5628,7 @@
 				CA8E7EFC1FB0932700F0BF10 /* StoryboardNewsSceneFactory.swift in Sources */,
 				9A861EB71F25550700B75A8C /* SplashScene.swift in Sources */,
 				CA1F7D6320CB83A100FB87F5 /* Announcements.swift in Sources */,
+				CAF81C7320DDA9D100898C52 /* DefaultDealerDetailInteractor.swift in Sources */,
 				CAF9A9431F50B87600628833 /* EurofurenceApplicationProtocol.swift in Sources */,
 				6EF96CDD1F0F544B00EE6134 /* EventKitCalendarEvent.swift in Sources */,
 				CA36A4D620DAE2C000EE6537 /* DealersModuleDelegate.swift in Sources */,
@@ -6182,6 +6197,7 @@
 				CAF9A9581F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift in Sources */,
 				CA36A4BA20D9AC9F00EE6537 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift in Sources */,
 				CA08157D20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift in Sources */,
+				CAF81C7120DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould.swift in Sources */,
 				CA63756E208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift in Sources */,
 				CA2D07F91FE9021A00BFD785 /* WhenResolvingDataStoreState.swift in Sources */,
 				CA637576208CD96A00536BE2 /* WhenMessagesModuleRequestsUserResolution_DirectorShould.swift in Sources */,
