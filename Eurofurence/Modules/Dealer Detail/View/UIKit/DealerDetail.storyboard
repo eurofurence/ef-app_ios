@@ -29,7 +29,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="mFN-Kq-6ZC">
-                                    <rect key="frame" x="0.0" y="422" width="375" height="1"/>
+                                    <rect key="frame" x="0.0" y="521" width="375" height="1"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
@@ -149,13 +149,72 @@
                                             <outlet property="dealerWebsiteContainer" destination="5bm-HD-IZa" id="OSu-eU-vvy"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DealerDetailLocationAndAvailabilityTableViewCell" rowHeight="49" id="5OB-1Y-Lr7" customClass="DealerDetailLocationAndAvailabilityTableViewCell" customModule="Eurofurence" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="373" width="375" height="49"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DealerDetailLocationAndAvailabilityTableViewCell" rowHeight="148" id="5OB-1Y-Lr7" customClass="DealerDetailLocationAndAvailabilityTableViewCell" customModule="Eurofurence" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="373" width="375" height="148"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5OB-1Y-Lr7" id="btE-pK-8HS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="48.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="147.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GBa-Ww-wMx">
+                                                    <rect key="frame" x="15" y="11" width="345" height="126"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cx7-8r-FhW">
+                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="37"/>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DeP-4Y-ySD">
+                                                            <rect key="frame" x="0.0" y="45" width="345" height="36.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQW-ed-lfg">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="36" height="36.5"/>
+                                                                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="36"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Limited Availability Warning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdb-MN-Zbo">
+                                                                    <rect key="frame" x="44" y="0.0" width="301" height="36.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jnq-Zj-EzG">
+                                                            <rect key="frame" x="0.0" y="89.5" width="345" height="36.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ca0-u5-7r4">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="36" height="36.5"/>
+                                                                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="36"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="After Dark Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vkf-kb-z4N">
+                                                                    <rect key="frame" x="44" y="0.0" width="301" height="36.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="GBa-Ww-wMx" secondAttribute="trailing" id="5QC-L1-Pfq"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="GBa-Ww-wMx" secondAttribute="bottom" id="6gB-p6-Uy5"/>
+                                                <constraint firstItem="GBa-Ww-wMx" firstAttribute="top" secondItem="btE-pK-8HS" secondAttribute="topMargin" id="HDR-1N-CiM"/>
+                                                <constraint firstItem="GBa-Ww-wMx" firstAttribute="leading" secondItem="btE-pK-8HS" secondAttribute="leadingMargin" id="gT0-Pa-Sou"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="afterDarkInformationContainer" destination="jnq-Zj-EzG" id="BlL-mI-PDx"/>
+                                            <outlet property="afterDarkInformationIconLabel" destination="ca0-u5-7r4" id="zVN-lb-h7H"/>
+                                            <outlet property="afterDarkInformationLabel" destination="Vkf-kb-z4N" id="8gz-zP-5LF"/>
+                                            <outlet property="dealerMapImageView" destination="cx7-8r-FhW" id="Ouj-d2-qTC"/>
+                                            <outlet property="limitedAvailabilityIconLabel" destination="NQW-ed-lfg" id="26e-IU-zet"/>
+                                            <outlet property="limitedAvailabilityWarningContainer" destination="DeP-4Y-ySD" id="1do-XZ-uXM"/>
+                                            <outlet property="limitedAvailabilityWarningLabel" destination="Bdb-MN-Zbo" id="SYf-Ph-8ix"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
