@@ -966,6 +966,7 @@
 		CAF81C6820DDA07B00898C52 /* AboutTheArtComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C6720DDA07B00898C52 /* AboutTheArtComponent.swift */; };
 		CAF81C6A20DDA10C00898C52 /* DealerDetailAboutTheArtViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C6920DDA10C00898C52 /* DealerDetailAboutTheArtViewModel+RandomValueProviding.swift */; };
 		CAF81C6C20DDA5B800898C52 /* WhenBindingAboutTheArtComponentWithMissingAttributes_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C6B20DDA5B800898C52 /* WhenBindingAboutTheArtComponentWithMissingAttributes_DealerDetailPresenterShould.swift */; };
+		CAF81C6E20DDA70D00898C52 /* AboutTheArtTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C6D20DDA70D00898C52 /* AboutTheArtTableViewCell.swift */; };
 		CAF9A9431F50B87600628833 /* EurofurenceApplicationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */; };
 		CAF9A9451F50B89000628833 /* CapturingEurofurenceApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */; };
 		CAF9A9471F50B95F00628833 /* WhenRequestingCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */; };
@@ -2006,6 +2007,7 @@
 		CAF81C6720DDA07B00898C52 /* AboutTheArtComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTheArtComponent.swift; sourceTree = "<group>"; };
 		CAF81C6920DDA10C00898C52 /* DealerDetailAboutTheArtViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealerDetailAboutTheArtViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAF81C6B20DDA5B800898C52 /* WhenBindingAboutTheArtComponentWithMissingAttributes_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingAboutTheArtComponentWithMissingAttributes_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
+		CAF81C6D20DDA70D00898C52 /* AboutTheArtTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTheArtTableViewCell.swift; sourceTree = "<group>"; };
 		CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurofurenceApplicationProtocol.swift; sourceTree = "<group>"; };
 		CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingEurofurenceApplication.swift; sourceTree = "<group>"; };
 		CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenRequestingCurrentUser.swift; sourceTree = "<group>"; };
@@ -3176,11 +3178,12 @@
 			isa = PBXGroup;
 			children = (
 				CA1B6F1820DB81F400ADF414 /* DealerDetail.storyboard */,
+				CAF81C6D20DDA70D00898C52 /* AboutTheArtTableViewCell.swift */,
+				CAF81C6320DD95FB00898C52 /* DealerAboutTheArtistTableViewCell.swift */,
 				CAF81C5620DD208100898C52 /* DealerDetailLocationAndAvailabilityTableViewCell.swift */,
 				CA1B6F3220DB9B4F00ADF414 /* DealerDetailSummaryTableViewCell.swift */,
 				CA1B6F1A20DB820100ADF414 /* DealerDetailViewController.swift */,
 				CA1B6F1620DB81DB00ADF414 /* StoryboardDealerDetailSceneFactory.swift */,
-				CAF81C6320DD95FB00898C52 /* DealerAboutTheArtistTableViewCell.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -5462,6 +5465,7 @@
 				9A34B97A1ECF87B2004A249E /* ContextManager.swift in Sources */,
 				9AB64BC91EFE6592004E8D91 /* EventsViewModel.swift in Sources */,
 				CA1FE9991FA0B3AE009C7DF3 /* ApplicationDirector.swift in Sources */,
+				CAF81C6E20DDA70D00898C52 /* AboutTheArtTableViewCell.swift in Sources */,
 				9A80EF551F291A5500FD0D37 /* UserDetailsNewsPreferences.swift in Sources */,
 				CA6375A0208DFE2E00536BE2 /* StoryboardEventsSceneFactory.swift in Sources */,
 				9A0F87E71F1BADD200FF294B /* KeyedLocalNotificationStore.swift in Sources */,
