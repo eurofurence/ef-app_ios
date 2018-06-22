@@ -9,14 +9,6 @@
 @testable import Eurofurence
 import XCTest
 
-extension DealerDetailAboutTheArtistViewModel: RandomValueProviding {
-    
-    static var random: DealerDetailAboutTheArtistViewModel {
-        return DealerDetailAboutTheArtistViewModel(title: .random, artistDescription: .random)
-    }
-    
-}
-
 class WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould: XCTestCase {
     
     func testBindTheArtistDescriptionOntoTheComponent() {

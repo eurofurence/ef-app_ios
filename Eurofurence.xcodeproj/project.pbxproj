@@ -960,6 +960,7 @@
 		CAF81C5920DD23AC00898C52 /* WhenBindingDealerLocationAndAvailabilityWithMissingAttributes_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C5820DD23AC00898C52 /* WhenBindingDealerLocationAndAvailabilityWithMissingAttributes_DealerDetailPresenterShould.swift */; };
 		CAF81C5E20DD91B700898C52 /* WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C5D20DD91B700898C52 /* WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould.swift */; };
 		CAF81C6020DD92E900898C52 /* DealerAboutTheArtistComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C5F20DD92E900898C52 /* DealerAboutTheArtistComponent.swift */; };
+		CAF81C6220DD95BC00898C52 /* DealerDetailAboutTheArtistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C6120DD95BC00898C52 /* DealerDetailAboutTheArtistViewModel.swift */; };
 		CAF9A9431F50B87600628833 /* EurofurenceApplicationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */; };
 		CAF9A9451F50B89000628833 /* CapturingEurofurenceApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */; };
 		CAF9A9471F50B95F00628833 /* WhenRequestingCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */; };
@@ -1994,6 +1995,7 @@
 		CAF81C5820DD23AC00898C52 /* WhenBindingDealerLocationAndAvailabilityWithMissingAttributes_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingDealerLocationAndAvailabilityWithMissingAttributes_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAF81C5D20DD91B700898C52 /* WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAF81C5F20DD92E900898C52 /* DealerAboutTheArtistComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerAboutTheArtistComponent.swift; sourceTree = "<group>"; };
+		CAF81C6120DD95BC00898C52 /* DealerDetailAboutTheArtistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailAboutTheArtistViewModel.swift; sourceTree = "<group>"; };
 		CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurofurenceApplicationProtocol.swift; sourceTree = "<group>"; };
 		CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingEurofurenceApplication.swift; sourceTree = "<group>"; };
 		CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenRequestingCurrentUser.swift; sourceTree = "<group>"; };
@@ -3859,6 +3861,7 @@
 				CA36A46A20D84AB600EE6537 /* StubDealerViewModel+RandomValueProviding.swift */,
 				CA1B6F3020DB91F500ADF414 /* DealerDetailSummaryViewModel+RandomValueProviding.swift */,
 				CA1B6F3820DD1D9D00ADF414 /* DealerDetailLocationAndAvailabilityViewModel+RandomValueProviding.swift */,
+				CAF81C6120DD95BC00898C52 /* DealerDetailAboutTheArtistViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -6172,6 +6175,7 @@
 				CABEB0D420C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift in Sources */,
 				7820A7051F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift in Sources */,
 				CA63755E208CBC4E00536BE2 /* StubWebMobuleProviding.swift in Sources */,
+				CAF81C6220DD95BC00898C52 /* DealerDetailAboutTheArtistViewModel.swift in Sources */,
 				CA8E7EF41FB08D3B00F0BF10 /* PhoneWindowWireframeTests.swift in Sources */,
 				CACF1E9E20B4386B00D904B5 /* WhenBindingEventDescription_EventDetailPresenterShould.swift in Sources */,
 				7820A6DF1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift in Sources */,
