@@ -41,6 +41,7 @@ struct DealerDetailSummaryViewModel: Equatable {
 
 struct DealerDetailLocationAndAvailabilityViewModel: Equatable {
 
+    var title: String
     var mapPNGGraphicData: Data?
     var limitedAvailabilityWarning: String?
     var locatedInAfterDarkDealersDenMessage: String?

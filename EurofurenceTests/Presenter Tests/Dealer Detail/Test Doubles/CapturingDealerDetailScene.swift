@@ -143,6 +143,11 @@ class CapturingDealerDetailSummaryComponent: DealerDetailSummaryComponent {
 
 class CapturingDealerLocationAndAvailabilityComponent: DealerLocationAndAvailabilityComponent {
     
+    private(set) var capturedTitle: String?
+    func setComponentTitle(_ title: String) {
+        capturedTitle = title
+    }
+    
     private(set) var capturedMapPNGGraphicData: Data?
     func showMapPNGGraphicData(_ data: Data) {
         capturedMapPNGGraphicData = data

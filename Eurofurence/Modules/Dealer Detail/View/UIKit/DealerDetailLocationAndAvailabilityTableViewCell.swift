@@ -12,6 +12,7 @@ class DealerDetailLocationAndAvailabilityTableViewCell: UITableViewCell, DealerL
 
     // MARK: Properties
 
+    @IBOutlet weak var componentTitleLabel: UILabel!
     @IBOutlet weak var dealerMapImageView: UIImageView!
     @IBOutlet weak var limitedAvailabilityWarningContainer: UIStackView!
     @IBOutlet weak var limitedAvailabilityIconLabel: UILabel!
@@ -32,6 +33,10 @@ class DealerDetailLocationAndAvailabilityTableViewCell: UITableViewCell, DealerL
     }
 
     // MARK: DealerLocationAndAvailabilityComponent
+
+    func setComponentTitle(_ title: String) {
+        componentTitleLabel.text = title
+    }
 
     func showMapPNGGraphicData(_ data: Data) {
         dealerMapImageView.image = UIImage(data: data)

@@ -55,6 +55,7 @@ protocol DealerDetailSummaryComponent {
 
 protocol DealerLocationAndAvailabilityComponent {
 
+    func setComponentTitle(_ title: String)
     func showMapPNGGraphicData(_ data: Data)
     func showDealerLimitedAvailabilityWarning(_ warning: String)
     func showLocatedInAfterDarkDealersDenMessage(_ message: String)

@@ -161,8 +161,14 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GBa-Ww-wMx">
                                                     <rect key="frame" x="15" y="11" width="345" height="126"/>
                                                     <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf4-V0-I8o">
+                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="18"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                            <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cx7-8r-FhW">
-                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="62"/>
+                                                            <rect key="frame" x="0.0" y="26" width="345" height="36"/>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DeP-4Y-ySD">
                                                             <rect key="frame" x="0.0" y="70" width="345" height="24"/>
@@ -212,6 +218,7 @@
                                             <outlet property="afterDarkInformationContainer" destination="jnq-Zj-EzG" id="BlL-mI-PDx"/>
                                             <outlet property="afterDarkInformationIconLabel" destination="ca0-u5-7r4" id="zVN-lb-h7H"/>
                                             <outlet property="afterDarkInformationLabel" destination="Vkf-kb-z4N" id="8gz-zP-5LF"/>
+                                            <outlet property="componentTitleLabel" destination="hf4-V0-I8o" id="uyT-3k-TvU"/>
                                             <outlet property="dealerMapImageView" destination="cx7-8r-FhW" id="Ouj-d2-qTC"/>
                                             <outlet property="limitedAvailabilityIconLabel" destination="NQW-ed-lfg" id="26e-IU-zet"/>
                                             <outlet property="limitedAvailabilityWarningContainer" destination="DeP-4Y-ySD" id="1do-XZ-uXM"/>
