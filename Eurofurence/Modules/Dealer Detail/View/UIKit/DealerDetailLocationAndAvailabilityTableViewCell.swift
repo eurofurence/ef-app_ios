@@ -24,4 +24,16 @@ class DealerDetailLocationAndAvailabilityTableViewCell: UITableViewCell, DealerL
 
     }
 
+    func hideMap() {
+
+    }
+
+    func hideLimitedAvailbilityWarning() {
+
+    }
+
+    func hideAfterDarkDenNotice() {
+
+    }
+
 }

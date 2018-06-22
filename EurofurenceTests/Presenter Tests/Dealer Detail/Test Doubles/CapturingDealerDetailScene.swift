@@ -158,4 +158,19 @@ class CapturingDealerLocationAndAvailabilityComponent: DealerLocationAndAvailabi
         capturedLocatedInAfterDarkDealersDenMessage = message
     }
     
+    private(set) var didHideMap = false
+    func hideMap() {
+        didHideMap = true
+    }
+    
+    private(set) var didHideLimitedAvailbilityWarning = false
+    func hideLimitedAvailbilityWarning() {
+        didHideLimitedAvailbilityWarning = true
+    }
+    
+    private(set) var didHideAfterDarkDenNotice = false
+    func hideAfterDarkDenNotice() {
+        didHideAfterDarkDenNotice = true
+    }
+    
 }
