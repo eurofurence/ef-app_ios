@@ -21,7 +21,7 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     @IBOutlet weak var dealerWebsiteContainer: UIView!
     @IBOutlet weak var dealerTwitterHandleButton: UIButton!
     @IBOutlet weak var dealerTwitterHandleContainer: UIView!
-    @IBOutlet weak var dealerTelegramHandle: UILabel!
+    @IBOutlet weak var dealerTelegramHandleButton: UIButton!
     @IBOutlet weak var dealerTelegramContainer: UIView!
 
     // MARK: Actions
@@ -32,6 +32,10 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
 
     @IBAction func twitterButtonTapped(_ sender: Any) {
         twitterSelected?()
+    }
+
+    @IBAction func telegramButtonTapped(_ sender: Any) {
+        telegramSelected?()
     }
 
     // MARK: DealerDetailSummaryComponent
@@ -91,7 +95,7 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     }
 
     func showDealerTelegramHandle(_ telegramHandle: String) {
-        dealerTelegramHandle.text = telegramHandle
+        dealerTelegramHandleButton.titleLabel?.text = telegramHandle
         dealerTelegramContainer.isHidden = false
     }
 
@@ -107,6 +111,11 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     private var twitterSelected: (() -> Void)?
     func onTwitterSelected(perform block: @escaping () -> Void) {
         twitterSelected = block
+    }
+
+    private var telegramSelected: (() -> Void)?
+    func onTelegramSelected(perform block: @escaping () -> Void) {
+        telegramSelected = block
     }
 
 }

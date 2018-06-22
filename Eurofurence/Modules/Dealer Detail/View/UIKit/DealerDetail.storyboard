@@ -116,12 +116,13 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telegram" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1h-Ia-Xtn">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sen-cR-6zo">
                                                                     <rect key="frame" x="44" y="0.0" width="301" height="36.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
+                                                                    <state key="normal" title="Telegram"/>
+                                                                    <connections>
+                                                                        <action selector="telegramButtonTapped:" destination="la1-S3-uWw" eventType="touchUpInside" id="Mzu-My-Vhy"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
@@ -140,7 +141,7 @@
                                             <outlet property="dealerShortDescriptionLabel" destination="vah-PY-Nbz" id="Eh6-zv-Q32"/>
                                             <outlet property="dealerSubtitleLabel" destination="O78-6o-h9P" id="RrF-bL-l0o"/>
                                             <outlet property="dealerTelegramContainer" destination="a5H-Ie-5gN" id="rvJ-5s-dIo"/>
-                                            <outlet property="dealerTelegramHandle" destination="t1h-Ia-Xtn" id="mcB-Ls-ggH"/>
+                                            <outlet property="dealerTelegramHandleButton" destination="sen-cR-6zo" id="yB7-HQ-ykY"/>
                                             <outlet property="dealerTitleLabel" destination="HAU-My-jch" id="oi4-Pk-3KD"/>
                                             <outlet property="dealerTwitterHandleButton" destination="Dih-Vt-VDu" id="Qhc-rE-z8b"/>
                                             <outlet property="dealerTwitterHandleContainer" destination="XvX-TG-6gG" id="zjK-4m-E5y"/>

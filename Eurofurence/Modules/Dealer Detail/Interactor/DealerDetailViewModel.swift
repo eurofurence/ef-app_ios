@@ -15,6 +15,7 @@ protocol DealerDetailViewModel {
 
     func openWebsite()
     func openTwitter()
+    func openTelegram()
 
 }
 

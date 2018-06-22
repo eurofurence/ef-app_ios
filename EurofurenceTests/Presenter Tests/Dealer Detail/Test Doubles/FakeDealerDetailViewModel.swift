@@ -29,6 +29,11 @@ class FakeDealerDetailViewModel: DealerDetailViewModel {
         toldToOpenTwitter = true
     }
     
+    private(set) var toldToOpenTelegram = false
+    func openTelegram() {
+        toldToOpenTelegram = true
+    }
+    
 }
 
 class FakeDealerDetailSummaryViewModel: FakeDealerDetailViewModel {

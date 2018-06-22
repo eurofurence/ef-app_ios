@@ -48,5 +48,6 @@ protocol DealerDetailSummaryComponent {
 
     func onWebsiteSelected(perform block: @escaping () -> Void)
     func onTwitterSelected(perform block: @escaping () -> Void)
+    func onTelegramSelected(perform block: @escaping () -> Void)
 
 }

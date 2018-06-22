@@ -56,6 +56,11 @@ class CapturingDealerDetailSummaryComponent: DealerDetailSummaryComponent {
         capturedOnTwitterSelected = block
     }
     
+    private(set) var capturedOnTelegramSelected: (() -> Void)?
+    func onTelegramSelected(perform block: @escaping () -> Void) {
+        capturedOnTelegramSelected = block
+    }
+    
     private(set) var capturedArtistImagePNGData: Data?
     func showArtistArtworkImageWithPNGData(_ data: Data) {
         capturedArtistImagePNGData = data

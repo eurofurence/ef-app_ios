@@ -73,4 +73,9 @@ class WhenBindingDealerSummaryComponent_DealerDetailPresenterShould: XCTestCase 
         XCTAssertTrue(viewModel.toldToOpenTwitter)
     }
     
+    func testTellTheViewModelToOpenTheTelegramLinkWhenItIsSelected() {
+        context.boundDealerSummaryComponent?.capturedOnTelegramSelected?()
+        XCTAssertTrue(viewModel.toldToOpenTelegram)
+    }
+    
 }
