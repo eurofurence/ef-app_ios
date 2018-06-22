@@ -50,3 +50,18 @@ class FakeDealerDetailSummaryViewModel: FakeDealerDetailViewModel {
     }
     
 }
+
+class FakeDealerDetailLocationAndAvailabilityViewModel: FakeDealerDetailViewModel {
+    
+    private let location: DealerDetailLocationAndAvailabilityViewModel
+    
+    init(location: DealerDetailLocationAndAvailabilityViewModel) {
+        self.location = location
+        super.init(numberOfComponents: 1)
+    }
+    
+    override func describeComponent(at index: Int, to visitor: DealerDetailViewModelVisitor) {
+        visitor.visit(location)
+    }
+    
+}

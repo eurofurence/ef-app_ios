@@ -22,6 +22,7 @@ protocol DealerDetailViewModel {
 protocol DealerDetailViewModelVisitor {
 
     func visit(_ summary: DealerDetailSummaryViewModel)
+    func visit(_ location: DealerDetailLocationAndAvailabilityViewModel)
 
 }
 
@@ -35,5 +36,11 @@ struct DealerDetailSummaryViewModel: Equatable {
     var website: String?
     var twitterHandle: String?
     var telegramHandle: String?
+
+}
+
+struct DealerDetailLocationAndAvailabilityViewModel: Equatable {
+
+    var mapPNGGraphicData: Data?
 
 }

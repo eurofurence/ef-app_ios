@@ -26,6 +26,7 @@ protocol DealerDetailComponentFactory {
     associatedtype Component
 
     func makeDealerSummaryComponent(configureUsing block: (DealerDetailSummaryComponent) -> Void) -> Component
+    func makeDealerLocationAndAvailabilityComponent(configureUsing block: (DealerLocationAndAvailabilityComponent) -> Void) -> Component
 
 }
 
@@ -49,5 +50,11 @@ protocol DealerDetailSummaryComponent {
     func onWebsiteSelected(perform block: @escaping () -> Void)
     func onTwitterSelected(perform block: @escaping () -> Void)
     func onTelegramSelected(perform block: @escaping () -> Void)
+
+}
+
+protocol DealerLocationAndAvailabilityComponent {
+
+    func showMapPNGGraphicData(_ data: Data?)
 
 }

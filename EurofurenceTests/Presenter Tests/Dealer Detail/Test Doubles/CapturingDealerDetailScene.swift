@@ -33,6 +33,14 @@ class CapturingDealerDetailScene: UIViewController, DealerDetailScene, DealerDet
         return component
     }
     
+    private(set) var boundLocationAndAvailabilityComponent: CapturingDealerLocationAndAvailabilityComponent?
+    func makeDealerLocationAndAvailabilityComponent(configureUsing block: (DealerLocationAndAvailabilityComponent) -> Void) -> Component {
+        let component = CapturingDealerLocationAndAvailabilityComponent()
+        block(component)
+        boundLocationAndAvailabilityComponent = component
+        return component
+    }
+    
 }
 
 extension CapturingDealerDetailScene {
@@ -129,6 +137,15 @@ class CapturingDealerDetailSummaryComponent: DealerDetailSummaryComponent {
     private(set) var didHideTelegramHandle = false
     func hideTelegramHandle() {
         didHideTelegramHandle = true
+    }
+    
+}
+
+class CapturingDealerLocationAndAvailabilityComponent: DealerLocationAndAvailabilityComponent {
+    
+    private(set) var capturedMapPNGGraphicData: Data?
+    func showMapPNGGraphicData(_ data: Data?) {
+        capturedMapPNGGraphicData = data
     }
     
 }

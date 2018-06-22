@@ -60,4 +60,8 @@ extension DealerDetailPresenterTestBuilder.Context {
         return scene.boundDealerSummaryComponent
     }
     
+    var boundLocationAndAvailabilityComponent: CapturingDealerLocationAndAvailabilityComponent? {
+        return scene.boundLocationAndAvailabilityComponent
+    }
+    
 }

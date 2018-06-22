@@ -70,6 +70,12 @@ class DealerDetailViewController: UIViewController, DealerDetailScene {
             return cell
         }
 
+        func makeDealerLocationAndAvailabilityComponent(configureUsing block: (DealerLocationAndAvailabilityComponent) -> Void) -> UITableViewCell {
+            let cell = tableView.dequeue(DealerDetailLocationAndAvailabilityTableViewCell.self)
+            block(cell)
+            return cell
+        }
+
     }
 
 }
