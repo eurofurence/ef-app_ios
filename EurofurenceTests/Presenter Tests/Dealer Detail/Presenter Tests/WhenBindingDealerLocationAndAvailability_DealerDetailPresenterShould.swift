@@ -22,4 +22,15 @@ class WhenBindingDealerLocationAndAvailability_DealerDetailPresenterShould: XCTe
         XCTAssertEqual(locationAndAvailabilityViewModel.mapPNGGraphicData, context.boundLocationAndAvailabilityComponent?.capturedMapPNGGraphicData)
     }
     
+    func testBindTheLimitedAvailabilityWarningFromTheViewModelOntoTheComponent() {
+        let locationAndAvailabilityViewModel = DealerDetailLocationAndAvailabilityViewModel.random
+        let viewModel = FakeDealerDetailLocationAndAvailabilityViewModel(location: locationAndAvailabilityViewModel)
+        let interactor = FakeDealerDetailInteractor(viewModel: viewModel)
+        let context = DealerDetailPresenterTestBuilder().with(interactor).build()
+        context.simulateSceneDidLoad()
+        context.bindComponent(at: 0)
+        
+        XCTAssertEqual(locationAndAvailabilityViewModel.limitedAvailabilityWarning, context.boundLocationAndAvailabilityComponent?.capturedLimitedAvailabilityWarning)
+    }
+    
 }

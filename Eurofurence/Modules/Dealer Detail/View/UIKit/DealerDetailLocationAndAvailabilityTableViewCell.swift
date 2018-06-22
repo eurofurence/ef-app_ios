@@ -16,4 +16,8 @@ class DealerDetailLocationAndAvailabilityTableViewCell: UITableViewCell, DealerL
 
     }
 
+    func showDealerLimitedAvailabilityWarning(_ warning: String?) {
+
+    }
+
 }

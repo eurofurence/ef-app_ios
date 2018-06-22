@@ -79,6 +79,7 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
             func visit(_ location: DealerDetailLocationAndAvailabilityViewModel) {
                 boundComponent = componentFactory.makeDealerLocationAndAvailabilityComponent { (component) in
                     component.showMapPNGGraphicData(location.mapPNGGraphicData)
+                    component.showDealerLimitedAvailabilityWarning(location.limitedAvailabilityWarning)
                 }
             }
 

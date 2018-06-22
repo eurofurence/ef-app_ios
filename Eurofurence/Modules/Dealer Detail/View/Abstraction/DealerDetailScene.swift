@@ -56,5 +56,6 @@ protocol DealerDetailSummaryComponent {
 protocol DealerLocationAndAvailabilityComponent {
 
     func showMapPNGGraphicData(_ data: Data?)
+    func showDealerLimitedAvailabilityWarning(_ warning: String?)
 
 }

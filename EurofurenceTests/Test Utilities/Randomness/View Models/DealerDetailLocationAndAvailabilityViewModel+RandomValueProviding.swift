@@ -11,7 +11,8 @@
 extension DealerDetailLocationAndAvailabilityViewModel: RandomValueProviding {
     
     static var random: DealerDetailLocationAndAvailabilityViewModel {
-        return DealerDetailLocationAndAvailabilityViewModel(mapPNGGraphicData: .random)
+        return DealerDetailLocationAndAvailabilityViewModel(mapPNGGraphicData: .random,
+                                                            limitedAvailabilityWarning: .random)
     }
     
 }

@@ -148,4 +148,9 @@ class CapturingDealerLocationAndAvailabilityComponent: DealerLocationAndAvailabi
         capturedMapPNGGraphicData = data
     }
     
+    private(set) var capturedLimitedAvailabilityWarning: String?
+    func showDealerLimitedAvailabilityWarning(_ warning: String?) {
+        capturedLimitedAvailabilityWarning = warning
+    }
+    
 }
