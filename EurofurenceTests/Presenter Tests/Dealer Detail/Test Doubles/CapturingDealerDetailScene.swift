@@ -222,14 +222,29 @@ class CapturingAboutTheArtComponent: AboutTheArtComponent {
         capturedAboutTheArt = aboutTheArt
     }
     
+    private(set) var didHideAboutTheArtDescription = false
+    func hideAboutTheArtDescription() {
+        didHideAboutTheArtDescription = true
+    }
+    
     private(set) var capturedArtPreviewImagePNGData: Data?
     func showArtPreviewImagePNGData(_ artPreviewImagePNGData: Data) {
         capturedArtPreviewImagePNGData = artPreviewImagePNGData
     }
     
+    private(set) var didHideArtPreview = false
+    func hideArtPreviewImage() {
+        didHideArtPreview = true
+    }
+    
     private(set) var capturedArtPreviewCaption: String?
     func showArtPreviewCaption(_ caption: String) {
         capturedArtPreviewCaption = caption
+    }
+    
+    private(set) var didHideArtPreviewCaption = false
+    func hideArtPreviewCaption() {
+        didHideArtPreviewCaption = true
     }
     
 }

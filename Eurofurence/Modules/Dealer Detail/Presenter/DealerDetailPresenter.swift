@@ -107,6 +107,9 @@ struct DealerDetailPresenter: DealerDetailSceneDelegate {
             func visit(_ aboutTheArt: DealerDetailAboutTheArtViewModel) {
                 boundComponent = componentFactory.makeAboutTheArtComponent { (component) in
                     component.setComponentTitle(aboutTheArt.title)
+                    component.hideAboutTheArtDescription()
+                    component.hideArtPreviewImage()
+                    component.hideArtPreviewCaption()
 
                     if let aboutTheArt = aboutTheArt.aboutTheArt {
                         component.showAboutTheArtDescription(aboutTheArt)

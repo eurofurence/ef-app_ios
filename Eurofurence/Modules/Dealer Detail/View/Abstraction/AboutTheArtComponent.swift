@@ -15,4 +15,8 @@ protocol AboutTheArtComponent {
     func showArtPreviewImagePNGData(_ artPreviewImagePNGData: Data)
     func showArtPreviewCaption(_ caption: String)
 
+    func hideAboutTheArtDescription()
+    func hideArtPreviewImage()
+    func hideArtPreviewCaption()
+
 }
