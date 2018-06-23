@@ -185,7 +185,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func fetchExtendedDealerData(for dealer: Dealer2.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
-
+        dealers.fetchExtendedDealerData(for: dealer, completionHandler: completionHandler)
     }
 
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {

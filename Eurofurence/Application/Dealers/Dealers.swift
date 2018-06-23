@@ -112,7 +112,26 @@ class Dealers: DealersService {
     }
 
     func fetchExtendedDealerData(for dealer: Dealer2.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
+        guard let model = dealerModels.first(where: { $0.identifier == dealer }) else { return }
 
+        let extendedData = ExtendedDealerData(artistImagePNGData: nil,
+                                              dealersDenMapLocationGraphicPNGData: nil,
+                                              preferredName: "",
+                                              alternateName: model.alternateName,
+                                              categories: [],
+                                              dealerShortDescription: "",
+                                              isAttendingOnThursday: false,
+                                              isAttendingOnFriday: false,
+                                              isAttendingOnSaturday: false,
+                                              isAfterDark: false,
+                                              websiteName: nil,
+                                              twitterUsername: nil,
+                                              telegramUsername: nil,
+                                              aboutTheArtist: nil,
+                                              aboutTheArt: nil,
+                                              artPreviewImagePNGData: nil,
+                                              artPreviewCaption: nil)
+        completionHandler(extendedData)
     }
 
     private func updateDealers(from dealers: [APIDealer]) {

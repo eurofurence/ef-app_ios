@@ -972,6 +972,7 @@
 		CAF81C7520DDAA9C00898C52 /* CapturingDealerDetailViewModelVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7420DDAA9C00898C52 /* CapturingDealerDetailViewModelVisitor.swift */; };
 		CAF81C7720DDAD6F00898C52 /* ExtendedDealerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7620DDAD6F00898C52 /* ExtendedDealerData.swift */; };
 		CAF81C7920DDAEAA00898C52 /* ExtendedDealerData+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7820DDAEAA00898C52 /* ExtendedDealerData+RandomValueProviding.swift */; };
+		CAF81C7B20DEE80900898C52 /* WhenFetchingExtendedDealerData_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7A20DEE80900898C52 /* WhenFetchingExtendedDealerData_ApplicationShould.swift */; };
 		CAF9A9431F50B87600628833 /* EurofurenceApplicationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */; };
 		CAF9A9451F50B89000628833 /* CapturingEurofurenceApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */; };
 		CAF9A9471F50B95F00628833 /* WhenRequestingCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */; };
@@ -2018,6 +2019,7 @@
 		CAF81C7420DDAA9C00898C52 /* CapturingDealerDetailViewModelVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDealerDetailViewModelVisitor.swift; sourceTree = "<group>"; };
 		CAF81C7620DDAD6F00898C52 /* ExtendedDealerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedDealerData.swift; sourceTree = "<group>"; };
 		CAF81C7820DDAEAA00898C52 /* ExtendedDealerData+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExtendedDealerData+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CAF81C7A20DEE80900898C52 /* WhenFetchingExtendedDealerData_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingExtendedDealerData_ApplicationShould.swift; sourceTree = "<group>"; };
 		CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurofurenceApplicationProtocol.swift; sourceTree = "<group>"; };
 		CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingEurofurenceApplication.swift; sourceTree = "<group>"; };
 		CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenRequestingCurrentUser.swift; sourceTree = "<group>"; };
@@ -3332,6 +3334,7 @@
 			children = (
 				CA36A4B320D99C4B00EE6537 /* WhenAdaptingDealersFromResponse_ApplicationShould.swift */,
 				CA36A4B520D9A5C300EE6537 /* WhenDealersHaveCaseVaryingNames_ApplicationShould.swift */,
+				CAF81C7A20DEE80900898C52 /* WhenFetchingExtendedDealerData_ApplicationShould.swift */,
 				CA36A4B720D9A99500EE6537 /* WhenFetchingIconDataForDealerWithArtwork_ApplicationShould.swift */,
 				CA36A4B920D9AC9F00EE6537 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift */,
 				CA36A4B120D99AA300EE6537 /* WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift */,
@@ -6414,6 +6417,7 @@
 				CABA83F620CE9A6800DD0795 /* WhenUnfavouritingEventViewModel_EventDetailInteractorShould.swift in Sources */,
 				CABF03CE20422B240028BD62 /* CapturingSyncAPI.swift in Sources */,
 				CA36A46920D84AA900EE6537 /* DealersGroupViewModel+RandomValueProviding.swift in Sources */,
+				CAF81C7B20DEE80900898C52 /* WhenFetchingExtendedDealerData_ApplicationShould.swift in Sources */,
 				CA0E5215208F52EE005259FE /* CapturingNewsInteractorDelegate.swift in Sources */,
 				CA637599208DFD5F00536BE2 /* SchedulePresenterTestBuilder.swift in Sources */,
 			);
