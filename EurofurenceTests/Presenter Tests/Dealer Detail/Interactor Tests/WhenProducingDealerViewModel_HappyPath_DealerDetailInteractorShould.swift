@@ -269,6 +269,7 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
         viewModel?.describeComponent(at: 3, to: visitor)
         
         XCTAssertNil(visitor.visitedAboutTheArt)
+        XCTAssertEqual(3, viewModel?.numberOfComponents)
     }
     
 }

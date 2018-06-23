@@ -150,7 +150,7 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
         }
 
         var numberOfComponents: Int {
-            return 4
+            return components.count
         }
 
         func describeComponent(at index: Int, to visitor: DealerDetailViewModelVisitor) {
