@@ -11,19 +11,28 @@ import XCTest
 
 class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
     
-    func testUseTheSameAttributesFromTheShortFormDealerModel() {
-        let response = APISyncResponse.randomWithoutDeletions
-        let context = ApplicationTestBuilder().build()
+    var context: ApplicationTestBuilder.Context!
+    var response: APISyncResponse!
+    var randomDealer: APIDealer!
+    var dealerData: ExtendedDealerData!
+    
+    override func setUp() {
+        super.setUp()
+        
+        response = APISyncResponse.randomWithoutDeletions
+        context = ApplicationTestBuilder().build()
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)
-        let randomDealer = response.dealers.changed.randomElement().element
+        randomDealer = response.dealers.changed.randomElement().element
         let identifier = Dealer2.Identifier(randomDealer.identifier)
-        var dealerData: ExtendedDealerData?
-        context.application.fetchExtendedDealerData(for: identifier) { dealerData = $0 }
+        context.application.fetchExtendedDealerData(for: identifier) { self.dealerData = $0 }
+    }
+    
+    func testUseTheSameAttributesFromTheShortFormDealerModel() {
         let index = context.application.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         index.setDelegate(delegate)
-        let shortFormModel = delegate.capturedDealer(for: identifier)
+        let shortFormModel = delegate.capturedDealer(for: Dealer2.Identifier(randomDealer.identifier))
         
         XCTAssertEqual(shortFormModel?.preferredName, dealerData?.preferredName)
         XCTAssertEqual(shortFormModel?.alternateName, dealerData?.alternateName)
@@ -34,30 +43,12 @@ class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
     }
     
     func testProvideTheArtistImageData() {
-        let response = APISyncResponse.randomWithoutDeletions
-        let context = ApplicationTestBuilder().build()
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(response)
-        let randomDealer = response.dealers.changed.randomElement().element
-        let identifier = Dealer2.Identifier(randomDealer.identifier)
-        var dealerData: ExtendedDealerData?
-        context.application.fetchExtendedDealerData(for: identifier) { dealerData = $0 }
         let expected = context.imageAPI.stubbedImage(for: randomDealer.artistImageId)
-        
         XCTAssertEqual(expected, dealerData?.artistImagePNGData)
     }
     
     func testProvideTheArtPreviewImageData() {
-        let response = APISyncResponse.randomWithoutDeletions
-        let context = ApplicationTestBuilder().build()
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(response)
-        let randomDealer = response.dealers.changed.randomElement().element
-        let identifier = Dealer2.Identifier(randomDealer.identifier)
-        var dealerData: ExtendedDealerData?
-        context.application.fetchExtendedDealerData(for: identifier) { dealerData = $0 }
         let expected = context.imageAPI.stubbedImage(for: randomDealer.artPreviewImageId)
-        
         XCTAssertEqual(expected, dealerData?.artPreviewImagePNGData)
     }
     
