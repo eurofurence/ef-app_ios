@@ -9,24 +9,49 @@
 @testable import Eurofurence
 import XCTest
 
+class DealerDetailInteractorTestBuilder {
+    
+    struct Context {
+        var interactor: DefaultDealerDetailInteractor
+        var dealerData: ExtendedDealerData
+        var dealerIdentifier: Dealer2.Identifier
+    }
+    
+    func build(data: ExtendedDealerData = .random) -> Context {
+        let identifier = Dealer2.Identifier.random
+        let dealersService = FakeDealersService()
+        dealersService.stub(data, for: identifier)
+        let interactor = DefaultDealerDetailInteractor(dealersService: dealersService)
+        
+        return Context(interactor: interactor, dealerData: data, dealerIdentifier: identifier)
+    }
+    
+}
+
+extension DealerDetailInteractorTestBuilder.Context {
+    
+    func makeViewModel() -> DealerDetailViewModel? {
+        var viewModel: DealerDetailViewModel?
+        interactor.makeDealerDetailViewModel(for: dealerIdentifier) { viewModel = $0 }
+        
+        return viewModel
+    }
+    
+}
+
 class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTestCase {
     
     func testProduceExpectedNumberOfComponents() {
-        let dealersService = FakeDealersService()
-        let interactor = DefaultDealerDetailInteractor(dealersService: dealersService)
-        var viewModel: DealerDetailViewModel?
-        interactor.makeDealerDetailViewModel(for: .random) { viewModel = $0 }
+        let context = DealerDetailInteractorTestBuilder().build()
+        let viewModel = context.makeViewModel()
         
         XCTAssertEqual(4, viewModel?.numberOfComponents)
     }
     
     func testProduceExpectedSummaryAtIndexZero() {
-        let dealersService = FakeDealersService()
-        let interactor = DefaultDealerDetailInteractor(dealersService: dealersService)
-        var viewModel: DealerDetailViewModel?
-        let identifier = Dealer2.Identifier.random
-        interactor.makeDealerDetailViewModel(for: identifier) { viewModel = $0 }
-        let dealerData = dealersService.fakedDealerData(for: identifier)
+        let context = DealerDetailInteractorTestBuilder().build()
+        let dealerData = context.dealerData
+        let viewModel = context.makeViewModel()
         let expected = DealerDetailSummaryViewModel(artistImagePNGData: dealerData.artistImagePNGData,
                                                     title: dealerData.preferredName,
                                                     subtitle: dealerData.alternateName,
@@ -42,18 +67,13 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
     }
     
     func testProduceExpectedLocationAndAvailability_WhenAlwaysAvailable_AndInAfterDarkDen_AtIndexOne() {
-        let identifier = Dealer2.Identifier.random
         var extendedDealerData = ExtendedDealerData.random
         extendedDealerData.isAttendingOnThursday = true
         extendedDealerData.isAttendingOnFriday = true
         extendedDealerData.isAttendingOnSaturday = true
         extendedDealerData.isAfterDark = true
-        let dealersService = FakeDealersService()
-        dealersService.stub(extendedDealerData, for: identifier)
-        let interactor = DefaultDealerDetailInteractor(dealersService: dealersService)
-        var viewModel: DealerDetailViewModel?
-        interactor.makeDealerDetailViewModel(for: identifier) { viewModel = $0 }
-        
+        let context = DealerDetailInteractorTestBuilder().build(data: extendedDealerData)
+        let viewModel = context.makeViewModel()
         let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
                                                                     mapPNGGraphicData: nil,
                                                                     limitedAvailabilityWarning: nil,
@@ -65,17 +85,13 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
     }
     
     func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnThursday_AndNotInAfterDarkDen_AtIndexOne() {
-        let identifier = Dealer2.Identifier.random
         var extendedDealerData = ExtendedDealerData.random
         extendedDealerData.isAttendingOnThursday = false
         extendedDealerData.isAttendingOnFriday = true
         extendedDealerData.isAttendingOnSaturday = true
         extendedDealerData.isAfterDark = false
-        let dealersService = FakeDealersService()
-        dealersService.stub(extendedDealerData, for: identifier)
-        let interactor = DefaultDealerDetailInteractor(dealersService: dealersService)
-        var viewModel: DealerDetailViewModel?
-        interactor.makeDealerDetailViewModel(for: identifier) { viewModel = $0 }
+        let context = DealerDetailInteractorTestBuilder().build(data: extendedDealerData)
+        let viewModel = context.makeViewModel()
         
         let limitedAvailabilityWarning = String.formattedOnlyPresentOnDaysString(["Friday", "Saturday"])
         let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
