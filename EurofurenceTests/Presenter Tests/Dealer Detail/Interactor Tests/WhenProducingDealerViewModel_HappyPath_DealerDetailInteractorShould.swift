@@ -231,4 +231,17 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
         XCTAssertEqual(expected, visitor.visitedAboutTheArtist)
     }
     
+    func testProduceAboutTheArtistComponentWithPlaceholderTextWhenCustomDescriptionMissingAtIndexTwo() {
+        var extendedDealerData = ExtendedDealerData.random
+        extendedDealerData.aboutTheArtist = nil
+        let context = DealerDetailInteractorTestBuilder().build(data: extendedDealerData)
+        let viewModel = context.makeViewModel()
+        let expected = DealerDetailAboutTheArtistViewModel(title: .aboutTheArtist,
+                                                           artistDescription: .aboutTheArtistPlaceholder)
+        let visitor = CapturingDealerDetailViewModelVisitor()
+        viewModel?.describeComponent(at: 2, to: visitor)
+        
+        XCTAssertEqual(expected, visitor.visitedAboutTheArtist)
+    }
+    
 }

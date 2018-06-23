@@ -110,7 +110,7 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
                 components.append(locationAndAvailabilityComponent)
             }
 
-            var aboutTheArtistText: String = ""
+            var aboutTheArtistText: String = .aboutTheArtistPlaceholder
             if let text = data.aboutTheArtist {
                 aboutTheArtistText = text
             }

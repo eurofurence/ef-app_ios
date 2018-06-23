@@ -134,6 +134,8 @@ public extension String {
 
     public static let aboutTheArtist = NSLocalizedString("AboutTheArtist",
                                                          comment: "Title for section in the Dealer Details screen showing the description provided by the artist")
+    public static let aboutTheArtistPlaceholder = NSLocalizedString("AboutTheArtistPlaceholder",
+                                                                    comment: "Placeholder text displayed in the Dealer Details screen when the artist did not provide a custom description about themselves")
 
     private struct Formatters {
         static var numbers = NumberFormatter()
