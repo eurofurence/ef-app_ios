@@ -204,4 +204,19 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
         XCTAssertEqual(expected, visitor.visitedLocationAndAvailability)
     }
     
+    func testNotProduceLocationAndAvailabilityViewModelAtIndexOneWhenNoInformationAvailable() {
+        var extendedDealerData = ExtendedDealerData.random
+        extendedDealerData.dealersDenMapLocationGraphicPNGData = nil
+        extendedDealerData.isAttendingOnThursday = true
+        extendedDealerData.isAttendingOnFriday = true
+        extendedDealerData.isAttendingOnSaturday = true
+        extendedDealerData.isAfterDark = false
+        let context = DealerDetailInteractorTestBuilder().build(data: extendedDealerData)
+        let viewModel = context.makeViewModel()
+        let visitor = CapturingDealerDetailViewModelVisitor()
+        viewModel?.describeComponent(at: 1, to: visitor)
+        
+        XCTAssertNil(visitor.visitedLocationAndAvailability)
+    }
+    
 }

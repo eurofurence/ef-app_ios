@@ -32,6 +32,16 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
 
             var locationAndAvailability: DealerDetailLocationAndAvailabilityViewModel
 
+            init?(locationAndAvailability: DealerDetailLocationAndAvailabilityViewModel) {
+                guard locationAndAvailability.mapPNGGraphicData != nil ||
+                      locationAndAvailability.limitedAvailabilityWarning != nil ||
+                      locationAndAvailability.locatedInAfterDarkDealersDenMessage != nil else {
+                    return nil
+                }
+
+                self.locationAndAvailability = locationAndAvailability
+            }
+
             func describe(to visitor: DealerDetailViewModelVisitor) {
                 visitor.visit(locationAndAvailability)
             }
@@ -86,8 +96,9 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
                                                                                        mapPNGGraphicData: data.dealersDenMapLocationGraphicPNGData,
                                                                                        limitedAvailabilityWarning: limitedAvailabilityMessage,
                                                                                        locatedInAfterDarkDealersDenMessage: afterDarkMessage)
-            let locationAndAvailabilityComponent = LocationAndAvailabilityComponent(locationAndAvailability: locationAndAvailability)
-            components.append(locationAndAvailabilityComponent)
+            if let locationAndAvailabilityComponent = LocationAndAvailabilityComponent(locationAndAvailability: locationAndAvailability) {
+                components.append(locationAndAvailabilityComponent)
+            }
         }
 
         var numberOfComponents: Int {
@@ -95,6 +106,7 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
         }
 
         func describeComponent(at index: Int, to visitor: DealerDetailViewModelVisitor) {
+            guard index < components.count else { return }
             components[index].describe(to: visitor)
         }
 
