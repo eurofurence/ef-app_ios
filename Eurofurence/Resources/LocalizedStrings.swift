@@ -158,7 +158,7 @@ public extension String {
     }
 
     static func formattedOnlyPresentOnDaysString(_ days: [String]) -> String {
-        return localizedStringWithFormat(onlyPresentOnSpecificDaysFormat, days.joined(separator: ","))
+        return localizedStringWithFormat(onlyPresentOnSpecificDaysFormat, days.joined(separator: ", "))
     }
 
 }
