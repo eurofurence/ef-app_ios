@@ -11,7 +11,7 @@ import XCTest
 
 class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
     
-    func testUseTheSameAlternateNameAsTheShortFormDealerModel() {
+    func testUseTheSameAttributesFromTheShortFormDealerModel() {
         let response = APISyncResponse.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
         context.refreshLocalStore()
@@ -23,9 +23,14 @@ class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
         let index = context.application.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         index.setDelegate(delegate)
-        let shortFormModel = delegate.capturedAlphabetisedDealerGroups.first?.dealers.first
+        let shortFormModel = delegate.capturedDealer(for: identifier)
         
+        XCTAssertEqual(shortFormModel?.preferredName, dealerData?.preferredName)
         XCTAssertEqual(shortFormModel?.alternateName, dealerData?.alternateName)
+        XCTAssertEqual(shortFormModel?.isAttendingOnThursday, dealerData?.isAttendingOnThursday)
+        XCTAssertEqual(shortFormModel?.isAttendingOnFriday, dealerData?.isAttendingOnFriday)
+        XCTAssertEqual(shortFormModel?.isAttendingOnSaturday, dealerData?.isAttendingOnSaturday)
+        XCTAssertEqual(shortFormModel?.isAfterDark, dealerData?.isAfterDark)
     }
     
 }

@@ -24,3 +24,11 @@ class CapturingDealersIndexDelegate: DealersIndexDelegate {
     }
     
 }
+
+extension CapturingDealersIndexDelegate {
+    
+    func capturedDealer(for identifier: Dealer2.Identifier) -> Dealer2? {
+        return capturedAlphabetisedDealerGroups.map({ $0.dealers }).joined().first(where: { $0.identifier == identifier })
+    }
+    
+}
