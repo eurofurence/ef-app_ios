@@ -219,4 +219,16 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
         XCTAssertNil(visitor.visitedLocationAndAvailability)
     }
     
+    func testProduceExpectedAboutTheArtistComponentAtIndexTwo() {
+        let context = DealerDetailInteractorTestBuilder().build()
+        let dealerData = context.dealerData
+        let viewModel = context.makeViewModel()
+        let expected = DealerDetailAboutTheArtistViewModel(title: .aboutTheArtist,
+                                                           artistDescription: dealerData.aboutTheArtist!)
+        let visitor = CapturingDealerDetailViewModelVisitor()
+        viewModel?.describeComponent(at: 2, to: visitor)
+        
+        XCTAssertEqual(expected, visitor.visitedAboutTheArtist)
+    }
+    
 }

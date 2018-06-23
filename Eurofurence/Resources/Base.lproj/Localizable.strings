@@ -38,4 +38,20 @@
 "loginError" = "Login Error";
 "loginErrorDetail" = "Please verify your login details and make sure you are connected to the internet";
 
-"messages" = "Messages";
+"Messages" = "Messages";
+
+"Schedule" = "Schedule";
+
+"Dealers" = "Dealers";
+
+"ConventionInformation" = "Convention Information";
+
+"Announcement" = "Announcement";
+
+"Favourite" = "Favourite";
+"Unfavourite" = "Unfavourite";
+
+"LocationAndAvailability" = "Location and Availability";
+"LocatedWithinAfterDarkDen" = "Located in the after-dark dealers den";
+"OnlyPresentOnSpecificDaysFormat" = "Only present on: %@";
+"AboutTheArtist" = "About the Artist";

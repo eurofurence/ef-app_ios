@@ -23,7 +23,8 @@ extension ExtendedDealerData: RandomValueProviding {
                                   isAfterDark: .random,
                                   websiteName: .random,
                                   twitterUsername: .random,
-                                  telegramUsername: .random)
+                                  telegramUsername: .random,
+                                  aboutTheArtist: .random)
     }
     
 }

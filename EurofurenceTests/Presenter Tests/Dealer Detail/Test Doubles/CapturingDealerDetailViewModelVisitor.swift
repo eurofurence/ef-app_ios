@@ -21,8 +21,9 @@ class CapturingDealerDetailViewModelVisitor: DealerDetailViewModelVisitor {
         visitedLocationAndAvailability = location
     }
     
+    private(set) var visitedAboutTheArtist: DealerDetailAboutTheArtistViewModel?
     func visit(_ aboutTheArtist: DealerDetailAboutTheArtistViewModel) {
-        
+        visitedAboutTheArtist = aboutTheArtist
     }
     
     func visit(_ aboutTheArt: DealerDetailAboutTheArtViewModel) {

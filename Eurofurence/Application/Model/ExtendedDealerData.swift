@@ -23,5 +23,6 @@ struct ExtendedDealerData {
     var websiteName: String?
     var twitterUsername: String?
     var telegramUsername: String?
+    var aboutTheArtist: String?
 
 }

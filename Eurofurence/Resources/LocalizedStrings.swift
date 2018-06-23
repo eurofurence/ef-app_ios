@@ -132,6 +132,9 @@ public extension String {
     static let onlyPresentOnSpecificDaysFormat = NSLocalizedString("OnlyPresentOnSpecificDaysFormat",
                                                                    comment: "Text displayed with the days during the convention a dealer is present for, e.g. 'Thursday'")
 
+    public static let aboutTheArtist = NSLocalizedString("AboutTheArtist",
+                                                         comment: "Title for section in the Dealer Details screen showing the description provided by the artist")
+
     private struct Formatters {
         static var numbers = NumberFormatter()
     }

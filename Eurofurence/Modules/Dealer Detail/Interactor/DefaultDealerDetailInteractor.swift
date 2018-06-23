@@ -48,6 +48,16 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
 
         }
 
+        struct AboutTheArtistComponent: DetailViewModelComponent {
+
+            var aboutTheArtist: DealerDetailAboutTheArtistViewModel
+
+            func describe(to visitor: DealerDetailViewModelVisitor) {
+                visitor.visit(aboutTheArtist)
+            }
+
+        }
+
         private var components = [DetailViewModelComponent]()
 
         init(data: ExtendedDealerData) {
@@ -99,6 +109,16 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
             if let locationAndAvailabilityComponent = LocationAndAvailabilityComponent(locationAndAvailability: locationAndAvailability) {
                 components.append(locationAndAvailabilityComponent)
             }
+
+            var aboutTheArtistText: String = ""
+            if let text = data.aboutTheArtist {
+                aboutTheArtistText = text
+            }
+
+            let aboutTheArtist = DealerDetailAboutTheArtistViewModel(title: .aboutTheArtist,
+                                                                     artistDescription: aboutTheArtistText)
+            let aboutTheArtistComponent = AboutTheArtistComponent(aboutTheArtist: aboutTheArtist)
+            components.append(aboutTheArtistComponent)
         }
 
         var numberOfComponents: Int {
