@@ -14,14 +14,8 @@ class DealerDetailModuleBuilder {
     private var dealerDetailInteractor: DealerDetailInteractor
 
     init() {
-        struct DummyDealerDetailInteractor: DealerDetailInteractor {
-            func makeDealerDetailViewModel(for identifier: Dealer2.Identifier, completionHandler: @escaping (DealerDetailViewModel) -> Void) {
-
-            }
-        }
-
         dealerDetailSceneFactory = StoryboardDealerDetailSceneFactory()
-        dealerDetailInteractor = DummyDealerDetailInteractor()
+        dealerDetailInteractor = DefaultDealerDetailInteractor()
     }
 
     @discardableResult
