@@ -104,4 +104,104 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
         XCTAssertEqual(expected, visitor.visitedLocationAndAvailability)
     }
     
+    func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnFriday_AndNotInAfterDarkDen_AtIndexOne() {
+        var extendedDealerData = ExtendedDealerData.random
+        extendedDealerData.isAttendingOnThursday = true
+        extendedDealerData.isAttendingOnFriday = false
+        extendedDealerData.isAttendingOnSaturday = true
+        extendedDealerData.isAfterDark = false
+        let context = DealerDetailInteractorTestBuilder().build(data: extendedDealerData)
+        let viewModel = context.makeViewModel()
+        
+        let limitedAvailabilityWarning = String.formattedOnlyPresentOnDaysString(["Thursday", "Saturday"])
+        let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
+                                                                    mapPNGGraphicData: nil,
+                                                                    limitedAvailabilityWarning: limitedAvailabilityWarning,
+                                                                    locatedInAfterDarkDealersDenMessage: nil)
+        let visitor = CapturingDealerDetailViewModelVisitor()
+        viewModel?.describeComponent(at: 1, to: visitor)
+        
+        XCTAssertEqual(expected, visitor.visitedLocationAndAvailability)
+    }
+    
+    func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnSaturday_AndNotInAfterDarkDen_AtIndexOne() {
+        var extendedDealerData = ExtendedDealerData.random
+        extendedDealerData.isAttendingOnThursday = true
+        extendedDealerData.isAttendingOnFriday = true
+        extendedDealerData.isAttendingOnSaturday = false
+        extendedDealerData.isAfterDark = false
+        let context = DealerDetailInteractorTestBuilder().build(data: extendedDealerData)
+        let viewModel = context.makeViewModel()
+        
+        let limitedAvailabilityWarning = String.formattedOnlyPresentOnDaysString(["Thursday", "Friday"])
+        let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
+                                                                    mapPNGGraphicData: nil,
+                                                                    limitedAvailabilityWarning: limitedAvailabilityWarning,
+                                                                    locatedInAfterDarkDealersDenMessage: nil)
+        let visitor = CapturingDealerDetailViewModelVisitor()
+        viewModel?.describeComponent(at: 1, to: visitor)
+        
+        XCTAssertEqual(expected, visitor.visitedLocationAndAvailability)
+    }
+    
+    func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnFridayAndSaturdaySaturday_AndNotInAfterDarkDen_AtIndexOne() {
+        var extendedDealerData = ExtendedDealerData.random
+        extendedDealerData.isAttendingOnThursday = true
+        extendedDealerData.isAttendingOnFriday = false
+        extendedDealerData.isAttendingOnSaturday = false
+        extendedDealerData.isAfterDark = false
+        let context = DealerDetailInteractorTestBuilder().build(data: extendedDealerData)
+        let viewModel = context.makeViewModel()
+        
+        let limitedAvailabilityWarning = String.formattedOnlyPresentOnDaysString(["Thursday"])
+        let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
+                                                                    mapPNGGraphicData: nil,
+                                                                    limitedAvailabilityWarning: limitedAvailabilityWarning,
+                                                                    locatedInAfterDarkDealersDenMessage: nil)
+        let visitor = CapturingDealerDetailViewModelVisitor()
+        viewModel?.describeComponent(at: 1, to: visitor)
+        
+        XCTAssertEqual(expected, visitor.visitedLocationAndAvailability)
+    }
+    
+    func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnThursdayAndSaturday_AndNotInAfterDarkDen_AtIndexOne() {
+        var extendedDealerData = ExtendedDealerData.random
+        extendedDealerData.isAttendingOnThursday = false
+        extendedDealerData.isAttendingOnFriday = true
+        extendedDealerData.isAttendingOnSaturday = false
+        extendedDealerData.isAfterDark = false
+        let context = DealerDetailInteractorTestBuilder().build(data: extendedDealerData)
+        let viewModel = context.makeViewModel()
+        
+        let limitedAvailabilityWarning = String.formattedOnlyPresentOnDaysString(["Friday"])
+        let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
+                                                                    mapPNGGraphicData: nil,
+                                                                    limitedAvailabilityWarning: limitedAvailabilityWarning,
+                                                                    locatedInAfterDarkDealersDenMessage: nil)
+        let visitor = CapturingDealerDetailViewModelVisitor()
+        viewModel?.describeComponent(at: 1, to: visitor)
+        
+        XCTAssertEqual(expected, visitor.visitedLocationAndAvailability)
+    }
+    
+    func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnThursdayAndFriday_AndNotInAfterDarkDen_AtIndexOne() {
+        var extendedDealerData = ExtendedDealerData.random
+        extendedDealerData.isAttendingOnThursday = false
+        extendedDealerData.isAttendingOnFriday = false
+        extendedDealerData.isAttendingOnSaturday = true
+        extendedDealerData.isAfterDark = false
+        let context = DealerDetailInteractorTestBuilder().build(data: extendedDealerData)
+        let viewModel = context.makeViewModel()
+        
+        let limitedAvailabilityWarning = String.formattedOnlyPresentOnDaysString(["Saturday"])
+        let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
+                                                                    mapPNGGraphicData: nil,
+                                                                    limitedAvailabilityWarning: limitedAvailabilityWarning,
+                                                                    locatedInAfterDarkDealersDenMessage: nil)
+        let visitor = CapturingDealerDetailViewModelVisitor()
+        viewModel?.describeComponent(at: 1, to: visitor)
+        
+        XCTAssertEqual(expected, visitor.visitedLocationAndAvailability)
+    }
+    
 }

@@ -62,6 +62,26 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
                 limitedAvailabilityMessage = String.formattedOnlyPresentOnDaysString(["Friday", "Saturday"])
             }
 
+            if !data.isAttendingOnFriday {
+                limitedAvailabilityMessage = String.formattedOnlyPresentOnDaysString(["Thursday", "Saturday"])
+            }
+
+            if !data.isAttendingOnSaturday {
+                limitedAvailabilityMessage = String.formattedOnlyPresentOnDaysString(["Thursday", "Friday"])
+            }
+
+            if !data.isAttendingOnFriday && !data.isAttendingOnSaturday {
+                limitedAvailabilityMessage = String.formattedOnlyPresentOnDaysString(["Thursday"])
+            }
+
+            if !data.isAttendingOnThursday && !data.isAttendingOnSaturday {
+                limitedAvailabilityMessage = String.formattedOnlyPresentOnDaysString(["Friday"])
+            }
+
+            if !data.isAttendingOnThursday && !data.isAttendingOnFriday {
+                limitedAvailabilityMessage = String.formattedOnlyPresentOnDaysString(["Saturday"])
+            }
+
             let locationAndAvailability = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
                                                                                        mapPNGGraphicData: nil,
                                                                                        limitedAvailabilityWarning: limitedAvailabilityMessage,
