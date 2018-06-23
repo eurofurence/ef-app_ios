@@ -83,7 +83,7 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
             }
 
             let locationAndAvailability = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
-                                                                                       mapPNGGraphicData: nil,
+                                                                                       mapPNGGraphicData: data.dealersDenMapLocationGraphicPNGData,
                                                                                        limitedAvailabilityWarning: limitedAvailabilityMessage,
                                                                                        locatedInAfterDarkDealersDenMessage: afterDarkMessage)
             let locationAndAvailabilityComponent = LocationAndAvailabilityComponent(locationAndAvailability: locationAndAvailability)

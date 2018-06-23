@@ -75,7 +75,7 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
         let context = DealerDetailInteractorTestBuilder().build(data: extendedDealerData)
         let viewModel = context.makeViewModel()
         let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
-                                                                    mapPNGGraphicData: nil,
+                                                                    mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
                                                                     limitedAvailabilityWarning: nil,
                                                                     locatedInAfterDarkDealersDenMessage: .locatedWithinAfterDarkDen)
         let visitor = CapturingDealerDetailViewModelVisitor()
@@ -95,7 +95,7 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
         
         let limitedAvailabilityWarning = String.formattedOnlyPresentOnDaysString(["Friday", "Saturday"])
         let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
-                                                                    mapPNGGraphicData: nil,
+                                                                    mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
                                                                     limitedAvailabilityWarning: limitedAvailabilityWarning,
                                                                     locatedInAfterDarkDealersDenMessage: nil)
         let visitor = CapturingDealerDetailViewModelVisitor()
@@ -115,7 +115,7 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
         
         let limitedAvailabilityWarning = String.formattedOnlyPresentOnDaysString(["Thursday", "Saturday"])
         let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
-                                                                    mapPNGGraphicData: nil,
+                                                                    mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
                                                                     limitedAvailabilityWarning: limitedAvailabilityWarning,
                                                                     locatedInAfterDarkDealersDenMessage: nil)
         let visitor = CapturingDealerDetailViewModelVisitor()
@@ -135,7 +135,7 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
         
         let limitedAvailabilityWarning = String.formattedOnlyPresentOnDaysString(["Thursday", "Friday"])
         let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
-                                                                    mapPNGGraphicData: nil,
+                                                                    mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
                                                                     limitedAvailabilityWarning: limitedAvailabilityWarning,
                                                                     locatedInAfterDarkDealersDenMessage: nil)
         let visitor = CapturingDealerDetailViewModelVisitor()
@@ -155,7 +155,7 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
         
         let limitedAvailabilityWarning = String.formattedOnlyPresentOnDaysString(["Thursday"])
         let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
-                                                                    mapPNGGraphicData: nil,
+                                                                    mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
                                                                     limitedAvailabilityWarning: limitedAvailabilityWarning,
                                                                     locatedInAfterDarkDealersDenMessage: nil)
         let visitor = CapturingDealerDetailViewModelVisitor()
@@ -175,7 +175,7 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
         
         let limitedAvailabilityWarning = String.formattedOnlyPresentOnDaysString(["Friday"])
         let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
-                                                                    mapPNGGraphicData: nil,
+                                                                    mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
                                                                     limitedAvailabilityWarning: limitedAvailabilityWarning,
                                                                     locatedInAfterDarkDealersDenMessage: nil)
         let visitor = CapturingDealerDetailViewModelVisitor()
@@ -195,7 +195,7 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
         
         let limitedAvailabilityWarning = String.formattedOnlyPresentOnDaysString(["Saturday"])
         let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
-                                                                    mapPNGGraphicData: nil,
+                                                                    mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
                                                                     limitedAvailabilityWarning: limitedAvailabilityWarning,
                                                                     locatedInAfterDarkDealersDenMessage: nil)
         let visitor = CapturingDealerDetailViewModelVisitor()

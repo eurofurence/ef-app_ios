@@ -12,6 +12,7 @@ extension ExtendedDealerData: RandomValueProviding {
     
     static var random: ExtendedDealerData {
         return ExtendedDealerData(artistImagePNGData: .random,
+                                  dealersDenMapLocationGraphicPNGData: .random,
                                   preferredName: .random,
                                   alternateName: .random,
                                   categories: .random,

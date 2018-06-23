@@ -11,6 +11,7 @@ import Foundation
 struct ExtendedDealerData {
 
     var artistImagePNGData: Data?
+    var dealersDenMapLocationGraphicPNGData: Data?
     var preferredName: String
     var alternateName: String?
     var categories: [String]
