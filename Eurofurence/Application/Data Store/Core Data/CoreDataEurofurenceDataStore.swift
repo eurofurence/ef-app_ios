@@ -280,6 +280,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                     entity.isAfterDark = dealer.isAfterDark
                     entity.artistThumbnailImageId = dealer.artistThumbnailImageId
                     entity.artistImageId = dealer.artistImageId
+                    entity.artPreviewImageId = dealer.artPreviewImageId
                 }
             }
         }

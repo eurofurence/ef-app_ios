@@ -216,6 +216,7 @@ private struct JSONSyncResponse: Decodable {
         var IsAfterDark: Bool
         var ArtistThumbnailImageId: String?
         var ArtistImageId: String?
+        var ArtPreviewImageId: String?
 
         var modelValue: APIDealer {
             return APIDealer(identifier: Id,
@@ -226,7 +227,8 @@ private struct JSONSyncResponse: Decodable {
                              attendsOnSaturday: AttendsOnSaturday,
                              isAfterDark: IsAfterDark,
                              artistThumbnailImageId: ArtistThumbnailImageId,
-                             artistImageId: ArtistImageId)
+                             artistImageId: ArtistImageId,
+                             artPreviewImageId: ArtPreviewImageId)
         }
 
     }

@@ -121,4 +121,21 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         XCTAssertTrue(context.imageRepository.didSave(expected))
     }
     
+    func testTheDealerArtistArtPreviewImagesAreSavedIntoTheImageRepository() {
+        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let context = ApplicationTestBuilder().build()
+        context.refreshLocalStore()
+        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        
+        let expected = syncResponse.dealers.changed.map({
+            $0.artPreviewImageId
+        }).compactMap({
+            $0
+        }).map({
+            ImageEntity(identifier: $0, pngImageData: context.imageAPI.stubbedImage(for: $0)!)
+        })
+        
+        XCTAssertTrue(context.imageRepository.didSave(expected))
+    }
+    
 }

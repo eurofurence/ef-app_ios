@@ -19,5 +19,6 @@ struct APIDealer: Equatable {
     var isAfterDark: Bool
     var artistThumbnailImageId: String?
     var artistImageId: String?
+    var artPreviewImageId: String?
 
 }
