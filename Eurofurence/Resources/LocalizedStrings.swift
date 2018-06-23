@@ -129,6 +129,9 @@ public extension String {
     public static let locatedWithinAfterDarkDen = NSLocalizedString("LocatedWithinAfterDarkDen",
                                                                     comment: "Short sentence describing that the dealer is located within the after-dark dealers den")
 
+    static let onlyPresentOnSpecificDaysFormat = NSLocalizedString("OnlyPresentOnSpecificDaysFormat",
+                                                                   comment: "Text displayed with the days during the convention a dealer is present for, e.g. 'Thursday'")
+
     private struct Formatters {
         static var numbers = NumberFormatter()
     }
@@ -145,6 +148,10 @@ public extension String {
 
     static func daysUntilConventionMessage(days: Int) -> String {
         return localizedStringWithFormat(daysRemainingFormat, days)
+    }
+
+    static func formattedOnlyPresentOnDaysString(_ days: [String]) -> String {
+        return localizedStringWithFormat(onlyPresentOnSpecificDaysFormat, days.joined(separator: ","))
     }
 
 }

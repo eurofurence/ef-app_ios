@@ -61,3 +61,4 @@
 
 "LocationAndAvailability" = "Location and Availability";
 "LocatedWithinAfterDarkDen" = "Located in the after-dark dealers den";
+"OnlyPresentOnSpecificDaysFormat" = "Only present on: %@";

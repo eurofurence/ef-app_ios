@@ -64,4 +64,28 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
         XCTAssertEqual(expected, visitor.visitedLocationAndAvailability)
     }
     
+    func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnThursday_AndNotInAfterDarkDen_AtIndexOne() {
+        let identifier = Dealer2.Identifier.random
+        var extendedDealerData = ExtendedDealerData.random
+        extendedDealerData.isAttendingOnThursday = false
+        extendedDealerData.isAttendingOnFriday = true
+        extendedDealerData.isAttendingOnSaturday = true
+        extendedDealerData.isAfterDark = false
+        let dealersService = FakeDealersService()
+        dealersService.stub(extendedDealerData, for: identifier)
+        let interactor = DefaultDealerDetailInteractor(dealersService: dealersService)
+        var viewModel: DealerDetailViewModel?
+        interactor.makeDealerDetailViewModel(for: identifier) { viewModel = $0 }
+        
+        let limitedAvailabilityWarning = String.formattedOnlyPresentOnDaysString(["Friday", "Saturday"])
+        let expected = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
+                                                                    mapPNGGraphicData: nil,
+                                                                    limitedAvailabilityWarning: limitedAvailabilityWarning,
+                                                                    locatedInAfterDarkDealersDenMessage: nil)
+        let visitor = CapturingDealerDetailViewModelVisitor()
+        viewModel?.describeComponent(at: 1, to: visitor)
+        
+        XCTAssertEqual(expected, visitor.visitedLocationAndAvailability)
+    }
+    
 }

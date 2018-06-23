@@ -52,10 +52,20 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
             let summaryComponent = SummaryComponent(summary: summary)
             components.append(summaryComponent)
 
+            var afterDarkMessage: String?
+            if data.isAfterDark {
+                afterDarkMessage = .locatedWithinAfterDarkDen
+            }
+
+            var limitedAvailabilityMessage: String?
+            if !data.isAttendingOnThursday {
+                limitedAvailabilityMessage = String.formattedOnlyPresentOnDaysString(["Friday", "Saturday"])
+            }
+
             let locationAndAvailability = DealerDetailLocationAndAvailabilityViewModel(title: .locationAndAvailability,
                                                                                        mapPNGGraphicData: nil,
-                                                                                       limitedAvailabilityWarning: nil,
-                                                                                       locatedInAfterDarkDealersDenMessage: .locatedWithinAfterDarkDen)
+                                                                                       limitedAvailabilityWarning: limitedAvailabilityMessage,
+                                                                                       locatedInAfterDarkDealersDenMessage: afterDarkMessage)
             let locationAndAvailabilityComponent = LocationAndAvailabilityComponent(locationAndAvailability: locationAndAvailability)
             components.append(locationAndAvailabilityComponent)
         }
