@@ -161,7 +161,8 @@ extension APIDealer: RandomValueProviding {
                          attendsOnFriday: .random,
                          attendsOnSaturday: .random,
                          isAfterDark: .random,
-                         artistThumbnailImageId: .random)
+                         artistThumbnailImageId: .random,
+                         artistImageId: .random)
     }
     
 }

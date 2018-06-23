@@ -20,7 +20,8 @@ extension DealerEntity: EntityAdapting {
                          attendsOnFriday: attendsOnFriday,
                          attendsOnSaturday: attendsOnSaturday,
                          isAfterDark: isAfterDark,
-                         artistThumbnailImageId: artistThumbnailImageId)
+                         artistThumbnailImageId: artistThumbnailImageId,
+                         artistImageId: artistImageId)
     }
 
 }

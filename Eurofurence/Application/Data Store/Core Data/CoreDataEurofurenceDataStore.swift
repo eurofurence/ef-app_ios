@@ -279,6 +279,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                     entity.attendsOnSaturday = dealer.attendsOnSaturday
                     entity.isAfterDark = dealer.isAfterDark
                     entity.artistThumbnailImageId = dealer.artistThumbnailImageId
+                    entity.artistImageId = dealer.artistImageId
                 }
             }
         }
