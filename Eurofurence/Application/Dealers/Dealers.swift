@@ -120,6 +120,11 @@ class Dealers: DealersService {
             artistImagePNGData = imageCache.cachedImageData(for: artistImageId)
         }
 
+        var artPreviewImagePNGData: Data?
+        if let artPreviewImageId = model.artPreviewImageId {
+            artPreviewImagePNGData = imageCache.cachedImageData(for: artPreviewImageId)
+        }
+
         let extendedData = ExtendedDealerData(artistImagePNGData: artistImagePNGData,
                                               dealersDenMapLocationGraphicPNGData: nil,
                                               preferredName: dealerModel.preferredName,
@@ -135,7 +140,7 @@ class Dealers: DealersService {
                                               telegramUsername: nil,
                                               aboutTheArtist: nil,
                                               aboutTheArt: nil,
-                                              artPreviewImagePNGData: nil,
+                                              artPreviewImagePNGData: artPreviewImagePNGData,
                                               artPreviewCaption: nil)
         completionHandler(extendedData)
     }

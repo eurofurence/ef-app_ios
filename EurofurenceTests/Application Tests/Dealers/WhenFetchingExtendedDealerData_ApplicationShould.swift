@@ -47,4 +47,18 @@ class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
         XCTAssertEqual(expected, dealerData?.artistImagePNGData)
     }
     
+    func testProvideTheArtPreviewImageData() {
+        let response = APISyncResponse.randomWithoutDeletions
+        let context = ApplicationTestBuilder().build()
+        context.refreshLocalStore()
+        context.syncAPI.simulateSuccessfulSync(response)
+        let randomDealer = response.dealers.changed.randomElement().element
+        let identifier = Dealer2.Identifier(randomDealer.identifier)
+        var dealerData: ExtendedDealerData?
+        context.application.fetchExtendedDealerData(for: identifier) { dealerData = $0 }
+        let expected = context.imageAPI.stubbedImage(for: randomDealer.artPreviewImageId)
+        
+        XCTAssertEqual(expected, dealerData?.artPreviewImagePNGData)
+    }
+    
 }
