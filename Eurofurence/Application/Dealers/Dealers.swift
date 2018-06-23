@@ -112,18 +112,24 @@ class Dealers: DealersService {
     }
 
     func fetchExtendedDealerData(for dealer: Dealer2.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
-        guard let model = dealerModels.first(where: { $0.identifier == dealer }) else { return }
+        guard let dealerModel = dealerModels.first(where: { $0.identifier == dealer }) else { return }
+        guard let model = models.first(where: { $0.identifier == dealer.rawValue }) else { return }
 
-        let extendedData = ExtendedDealerData(artistImagePNGData: nil,
+        var artistImagePNGData: Data?
+        if let artistImageId = model.artistImageId {
+            artistImagePNGData = imageCache.cachedImageData(for: artistImageId)
+        }
+
+        let extendedData = ExtendedDealerData(artistImagePNGData: artistImagePNGData,
                                               dealersDenMapLocationGraphicPNGData: nil,
-                                              preferredName: model.preferredName,
-                                              alternateName: model.alternateName,
+                                              preferredName: dealerModel.preferredName,
+                                              alternateName: dealerModel.alternateName,
                                               categories: [],
                                               dealerShortDescription: "",
-                                              isAttendingOnThursday: model.isAttendingOnThursday,
-                                              isAttendingOnFriday: model.isAttendingOnFriday,
-                                              isAttendingOnSaturday: model.isAttendingOnSaturday,
-                                              isAfterDark: model.isAfterDark,
+                                              isAttendingOnThursday: dealerModel.isAttendingOnThursday,
+                                              isAttendingOnFriday: dealerModel.isAttendingOnFriday,
+                                              isAttendingOnSaturday: dealerModel.isAttendingOnSaturday,
+                                              isAfterDark: dealerModel.isAfterDark,
                                               websiteName: nil,
                                               twitterUsername: nil,
                                               telegramUsername: nil,
