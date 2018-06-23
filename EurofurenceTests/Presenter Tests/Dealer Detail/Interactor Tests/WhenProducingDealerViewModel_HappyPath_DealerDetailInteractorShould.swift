@@ -258,4 +258,17 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
         XCTAssertEqual(expected, visitor.visitedAboutTheArt)
     }
     
+    func testNotProduceAboutTheAboutTheArtComponentWhenNoInformationHasBeenSupplied() {
+        var extendedDealerData = ExtendedDealerData.random
+        extendedDealerData.aboutTheArt = nil
+        extendedDealerData.artPreviewImagePNGData = nil
+        extendedDealerData.artPreviewCaption = nil
+        let context = DealerDetailInteractorTestBuilder().build(data: extendedDealerData)
+        let viewModel = context.makeViewModel()
+        let visitor = CapturingDealerDetailViewModelVisitor()
+        viewModel?.describeComponent(at: 3, to: visitor)
+        
+        XCTAssertNil(visitor.visitedAboutTheArt)
+    }
+    
 }

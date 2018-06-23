@@ -62,6 +62,16 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
 
             var aboutTheArt: DealerDetailAboutTheArtViewModel
 
+            init?(aboutTheArt: DealerDetailAboutTheArtViewModel) {
+                guard aboutTheArt.aboutTheArt != nil ||
+                      aboutTheArt.artPreviewImagePNGData != nil ||
+                      aboutTheArt.artPreviewImagePNGData != nil else {
+                    return nil
+                }
+
+                self.aboutTheArt = aboutTheArt
+            }
+
             func describe(to visitor: DealerDetailViewModelVisitor) {
                 visitor.visit(aboutTheArt)
             }
@@ -134,8 +144,9 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
                                                                aboutTheArt: data.aboutTheArt,
                                                                artPreviewImagePNGData: data.artPreviewImagePNGData,
                                                                artPreviewCaption: data.artPreviewCaption)
-            let aboutTheArtComponent = AboutTheArtComponent(aboutTheArt: aboutTheArt)
-            components.append(aboutTheArtComponent)
+            if let aboutTheArtComponent = AboutTheArtComponent(aboutTheArt: aboutTheArt) {
+                components.append(aboutTheArtComponent)
+            }
         }
 
         var numberOfComponents: Int {
