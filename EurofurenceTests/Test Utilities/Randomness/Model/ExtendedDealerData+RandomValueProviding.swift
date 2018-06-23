@@ -24,7 +24,10 @@ extension ExtendedDealerData: RandomValueProviding {
                                   websiteName: .random,
                                   twitterUsername: .random,
                                   telegramUsername: .random,
-                                  aboutTheArtist: .random)
+                                  aboutTheArtist: .random,
+                                  aboutTheArt: .random,
+                                  artPreviewImagePNGData: .random,
+                                  artPreviewCaption: .random)
     }
     
 }

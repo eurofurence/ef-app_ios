@@ -24,5 +24,8 @@ struct ExtendedDealerData {
     var twitterUsername: String?
     var telegramUsername: String?
     var aboutTheArtist: String?
+    var aboutTheArt: String?
+    var artPreviewImagePNGData: Data?
+    var artPreviewCaption: String?
 
 }

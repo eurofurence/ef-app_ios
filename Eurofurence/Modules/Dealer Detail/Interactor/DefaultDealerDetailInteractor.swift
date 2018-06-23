@@ -58,6 +58,16 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
 
         }
 
+        struct AboutTheArtComponent: DetailViewModelComponent {
+
+            var aboutTheArt: DealerDetailAboutTheArtViewModel
+
+            func describe(to visitor: DealerDetailViewModelVisitor) {
+                visitor.visit(aboutTheArt)
+            }
+
+        }
+
         private var components = [DetailViewModelComponent]()
 
         init(data: ExtendedDealerData) {
@@ -119,6 +129,13 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
                                                                      artistDescription: aboutTheArtistText)
             let aboutTheArtistComponent = AboutTheArtistComponent(aboutTheArtist: aboutTheArtist)
             components.append(aboutTheArtistComponent)
+
+            let aboutTheArt = DealerDetailAboutTheArtViewModel(title: .aboutTheArt,
+                                                               aboutTheArt: data.aboutTheArt,
+                                                               artPreviewImagePNGData: data.artPreviewImagePNGData,
+                                                               artPreviewCaption: data.artPreviewCaption)
+            let aboutTheArtComponent = AboutTheArtComponent(aboutTheArt: aboutTheArt)
+            components.append(aboutTheArtComponent)
         }
 
         var numberOfComponents: Int {
