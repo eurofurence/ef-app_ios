@@ -25,4 +25,19 @@ class WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould
         XCTAssertEqual(expected, urlOpener.capturedURLToOpen)
     }
     
+    func testNotTellTheApplicationToOpenTheTwitterURLWhenTheDealersHandleIsEmpty() {
+        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var dealer = APIDealer.random
+        dealer.twitterHandle = ""
+        syncResponse.dealers.changed = [dealer]
+        let urlOpener = HappyPathURLOpener()
+        let context = ApplicationTestBuilder().with(urlOpener).build()
+        context.refreshLocalStore()
+        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        let dealerIdentifier = Dealer2.Identifier(dealer.identifier)
+        context.application.openTwitter(for: dealerIdentifier)
+        
+        XCTAssertNil(urlOpener.capturedURLToOpen)
+    }
+    
 }

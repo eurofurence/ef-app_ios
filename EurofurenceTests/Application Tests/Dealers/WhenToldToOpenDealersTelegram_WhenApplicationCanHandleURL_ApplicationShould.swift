@@ -25,4 +25,19 @@ class WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShoul
         XCTAssertEqual(expected, urlOpener.capturedURLToOpen)
     }
     
+    func testNotTellTheApplicationToOpenTheTelegramURLWhenTheDealersHandleIsEmpty() {
+        var syncResponse = APISyncResponse.randomWithoutDeletions
+        var dealer = APIDealer.random
+        dealer.telegramHandle = ""
+        syncResponse.dealers.changed = [dealer]
+        let urlOpener = HappyPathURLOpener()
+        let context = ApplicationTestBuilder().with(urlOpener).build()
+        context.refreshLocalStore()
+        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        let dealerIdentifier = Dealer2.Identifier(dealer.identifier)
+        context.application.openTelegram(for: dealerIdentifier)
+        
+        XCTAssertNil(urlOpener.capturedURLToOpen)
+    }
+    
 }

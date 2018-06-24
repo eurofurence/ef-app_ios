@@ -157,14 +157,14 @@ class Dealers: DealersService {
     }
 
     func openTwitter(for identifier: Dealer2.Identifier) {
-        guard let dealer = fetchDealer(identifier) else { return }
+        guard let dealer = fetchDealer(identifier), dealer.twitterHandle.isEmpty == false else { return }
         guard let url = URL(string: "https://twitter.com/")?.appendingPathComponent(dealer.twitterHandle) else { return }
 
         open(url)
     }
 
     func openTelegram(for identifier: Dealer2.Identifier) {
-        guard let dealer = fetchDealer(identifier) else { return }
+        guard let dealer = fetchDealer(identifier), dealer.telegramHandle.isEmpty == false else { return }
         guard let url = URL(string: "https://t.me/")?.appendingPathComponent(dealer.twitterHandle) else { return }
 
         open(url)
