@@ -13,6 +13,7 @@ extension DealerEntity: EntityAdapting {
     typealias AdaptedType = APIDealer
 
     func asAdaptedType() -> APIDealer {
+        let linksArray = (links?.allObjects as? [LinkEntity])?.map({ $0.asAdaptedType() })
         return APIDealer(identifier: identifier!,
                          displayName: displayName!,
                          attendeeNickname: attendeeNickname!,
@@ -24,7 +25,8 @@ extension DealerEntity: EntityAdapting {
                          artistImageId: artistImageId,
                          artPreviewImageId: artPreviewImageId,
                          categories: categories ?? [],
-                         shortDescription: dealerShortDescription!)
+                         shortDescription: dealerShortDescription!,
+                         links: linksArray?.sorted())
     }
 
 }

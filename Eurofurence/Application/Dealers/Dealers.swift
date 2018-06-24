@@ -135,7 +135,7 @@ class Dealers: DealersService {
                                               isAttendingOnFriday: dealerModel.isAttendingOnFriday,
                                               isAttendingOnSaturday: dealerModel.isAttendingOnSaturday,
                                               isAfterDark: dealerModel.isAfterDark,
-                                              websiteName: nil,
+                                              websiteName: model.links?.first(where: { $0.fragmentType == .WebExternal })?.target,
                                               twitterUsername: nil,
                                               telegramUsername: nil,
                                               aboutTheArtist: nil,

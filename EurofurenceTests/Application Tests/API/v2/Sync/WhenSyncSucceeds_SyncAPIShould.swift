@@ -193,7 +193,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                   artistImageId: nil,
                                                                   artPreviewImageId: nil,
                                                                   categories: ["General", "Art"],
-                                                                  shortDescription: "")],
+                                                                  shortDescription: "",
+                                                                  links: nil)],
                                               deleted: [APIDealer(identifier: "d53e6f6b-fdcb-4754-a4b9-6892e8d317d7",
                                                                   displayName: "",
                                                                   attendeeNickname: "Frazzle",
@@ -205,7 +206,10 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                   artistImageId: "81e6a80a-21cb-4524-a961-9d356aada9a1",
                                                                   artPreviewImageId: "6a624433-bc5f-4d31-b18e-0c443611f497",
                                                                   categories: [],
-                                                                  shortDescription: "Frazzle, the SewerRat. Knallratte. Cartoon animator, comic artist, menace to balloons. Creator of Trixie Vixen.\r\nAt my table, you will find pretty oldschool style print media and merchandise from own production, often featuring busty and toony anthro girl. \r\nLive Sketch Commissions - feel free to stay and watch!")])
+                                                                  shortDescription: "Frazzle, the SewerRat. Knallratte. Cartoon animator, comic artist, menace to balloons. Creator of Trixie Vixen.\r\nAt my table, you will find pretty oldschool style print media and merchandise from own production, often featuring busty and toony anthro girl. \r\nLive Sketch Commissions - feel free to stay and watch!",
+                                                                  links: [APILink(name: "",
+                                                                                  fragmentType: .WebExternal,
+                                                                                  target: "http://www.furaffinity.net/user/frazzle/")])])
         
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,

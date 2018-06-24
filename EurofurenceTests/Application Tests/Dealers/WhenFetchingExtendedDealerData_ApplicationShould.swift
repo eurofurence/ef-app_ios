@@ -60,4 +60,8 @@ class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
         XCTAssertEqual(randomDealer.shortDescription, dealerData?.dealerShortDescription)
     }
     
+    func testProvideTheNameOfTheFirstExternalLinkAsTheWebsiteName() {
+        XCTAssertEqual(randomDealer.links?.first(where: { $0.fragmentType == .WebExternal })?.target, dealerData.websiteName)
+    }
+    
 }

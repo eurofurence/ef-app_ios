@@ -165,7 +165,8 @@ extension APIDealer: RandomValueProviding {
                          artistImageId: .random,
                          artPreviewImageId: .random,
                          categories: .random,
-                         shortDescription: .random)
+                         shortDescription: .random,
+                         links: [APILink].random.sorted())
     }
     
 }

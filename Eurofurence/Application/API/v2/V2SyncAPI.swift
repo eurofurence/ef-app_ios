@@ -219,6 +219,7 @@ private struct JSONSyncResponse: Decodable {
         var ArtPreviewImageId: String?
         var Categories: [String]
         var ShortDescription: String
+        var Links: [JSONLink]?
 
         var modelValue: APIDealer {
             return APIDealer(identifier: Id,
@@ -232,7 +233,8 @@ private struct JSONSyncResponse: Decodable {
                              artistImageId: ArtistImageId,
                              artPreviewImageId: ArtPreviewImageId,
                              categories: Categories,
-                             shortDescription: ShortDescription)
+                             shortDescription: ShortDescription,
+                             links: Links?.map({ $0.modelValue }))
         }
 
     }
