@@ -10,14 +10,30 @@ import UIKit
 
 class CollectThemAllModuleBuilder {
 
-    func build() -> CollectThemAllModuleProviding {
-        struct DummyCollectThemAllModuleProviding: CollectThemAllModuleProviding {
-            func makeCollectThemAllModule() -> UIViewController {
-                return UIViewController()
+    private var sceneFactory: CollectThemAllSceneFactory
+
+    init() {
+        struct DummyCollectThemAllSceneFactory: CollectThemAllSceneFactory {
+            func makeCollectThemAllScene() -> UIViewController & CollectThemAllScene {
+                class DummyCollectThemAllScene: UIViewController, CollectThemAllScene {
+
+                }
+
+                return DummyCollectThemAllScene()
             }
         }
 
-        return DummyCollectThemAllModuleProviding()
+        sceneFactory = DummyCollectThemAllSceneFactory()
+    }
+
+    @discardableResult
+    func with(_ sceneFactory: CollectThemAllSceneFactory) -> CollectThemAllModuleBuilder {
+        self.sceneFactory = sceneFactory
+        return self
+    }
+
+    func build() -> CollectThemAllModuleProviding {
+        return CollectThemAllModule(sceneFactory: sceneFactory)
     }
 
 }
