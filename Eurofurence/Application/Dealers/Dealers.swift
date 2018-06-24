@@ -139,7 +139,7 @@ class Dealers: DealersService {
                                               twitterUsername: model.twitterHandle,
                                               telegramUsername: model.telegramHandle,
                                               aboutTheArtist: model.aboutTheArtistText,
-                                              aboutTheArt: nil,
+                                              aboutTheArt: model.aboutTheArtText,
                                               artPreviewImagePNGData: artPreviewImagePNGData,
                                               artPreviewCaption: nil)
         completionHandler(extendedData)

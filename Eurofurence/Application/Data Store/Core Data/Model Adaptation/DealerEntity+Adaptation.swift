@@ -29,7 +29,8 @@ extension DealerEntity: EntityAdapting {
                          links: linksArray?.sorted(),
                          twitterHandle: twitterHandle!,
                          telegramHandle: telegramHandle!,
-                         aboutTheArtistText: aboutTheArtist!)
+                         aboutTheArtistText: aboutTheArtist!,
+                         aboutTheArtText: aboutTheArtText!)
     }
 
 }
