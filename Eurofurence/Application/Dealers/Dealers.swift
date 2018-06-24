@@ -138,7 +138,7 @@ class Dealers: DealersService {
                                               websiteName: model.links?.first(where: { $0.fragmentType == .WebExternal })?.target,
                                               twitterUsername: model.twitterHandle,
                                               telegramUsername: model.telegramHandle,
-                                              aboutTheArtist: nil,
+                                              aboutTheArtist: model.aboutTheArtistText,
                                               aboutTheArt: nil,
                                               artPreviewImagePNGData: artPreviewImagePNGData,
                                               artPreviewCaption: nil)

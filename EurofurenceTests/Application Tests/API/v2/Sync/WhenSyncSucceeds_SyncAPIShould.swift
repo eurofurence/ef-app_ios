@@ -196,7 +196,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                   shortDescription: "",
                                                                   links: nil,
                                                                   twitterHandle: "",
-                                                                  telegramHandle: "")],
+                                                                  telegramHandle: "",
+                                                                  aboutTheArtistText: "")],
                                               deleted: [APIDealer(identifier: "d53e6f6b-fdcb-4754-a4b9-6892e8d317d7",
                                                                   displayName: "",
                                                                   attendeeNickname: "Frazzle",
@@ -213,7 +214,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                                   fragmentType: .WebExternal,
                                                                                   target: "http://www.furaffinity.net/user/frazzle/")],
                                                                   twitterHandle: "FrazzleRat",
-                                                                  telegramHandle: "HefeleToons")])
+                                                                  telegramHandle: "HefeleToons",
+                                                                  aboutTheArtistText: "My name is Chris Hefele, been around in the Furry Fandom since the late 90s. In Germany as \"SewerRat\" or \"die Knallratte\", and internationally as \"Frazzle\". \r\nIn RL, I work as a traditional 2D animator (handdrawn/full), so a bit of a dinosaur. Aside of that, it is illustrations, character design, storyboard and other areas of film making and advertising. Very soft spot for foxes.")])
         
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,
