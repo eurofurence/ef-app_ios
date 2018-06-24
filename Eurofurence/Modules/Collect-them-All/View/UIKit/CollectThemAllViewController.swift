@@ -25,9 +25,15 @@ class CollectThemAllViewController: UIViewController, CollectThemAllScene {
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView?.allowsLinkPreview = false
         view = webView
+        delegate?.collectThemAllSceneDidLoad()
     }
 
     // MARK: CollectThemAllScene
+
+    private var delegate: CollectThemAllSceneDelegate?
+    func setDelegate(_ delegate: CollectThemAllSceneDelegate) {
+        self.delegate = delegate
+    }
 
     func setShortCollectThemAllTitle(_ shortTitle: String) {
         tabBarItem.title = shortTitle
@@ -35,6 +41,10 @@ class CollectThemAllViewController: UIViewController, CollectThemAllScene {
 
     func setCollectThemAllTitle(_ title: String) {
         navigationItem.title = title
+    }
+
+    func loadGame(at urlRequest: URLRequest) {
+
     }
 
 }
