@@ -14,4 +14,8 @@ struct DefaultCollectThemAllRequestFactory: CollectThemAllRequestFactory {
         return URLRequest(url: URL(string: "https://app.eurofurence.org/collectemall/")!)
     }
 
+    func makeAuthenticatedGameURLRequest(credential: Credential) -> URLRequest {
+        return URLRequest(url: URL(string: "https://app.eurofurence.org/collectemall/")!)
+    }
+
 }

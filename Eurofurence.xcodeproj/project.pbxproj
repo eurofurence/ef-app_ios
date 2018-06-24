@@ -426,6 +426,7 @@
 		CA2761CA20E03143000E52AC /* DefaultCollectThemAllRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761C920E03143000E52AC /* DefaultCollectThemAllRequestFactory.swift */; };
 		CA2761CC20E034BD000E52AC /* StubCollectThemAllRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761CB20E034BD000E52AC /* StubCollectThemAllRequestFactory.swift */; };
 		CA2761CE20E034CB000E52AC /* CapturingCollectThemAllURLObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761CD20E034CB000E52AC /* CapturingCollectThemAllURLObserver.swift */; };
+		CA2761D020E0353F000E52AC /* WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761CF20E0353F000E52AC /* WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould.swift */; };
 		CA281B641F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
@@ -1502,6 +1503,7 @@
 		CA2761C920E03143000E52AC /* DefaultCollectThemAllRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCollectThemAllRequestFactory.swift; sourceTree = "<group>"; };
 		CA2761CB20E034BD000E52AC /* StubCollectThemAllRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubCollectThemAllRequestFactory.swift; sourceTree = "<group>"; };
 		CA2761CD20E034CB000E52AC /* CapturingCollectThemAllURLObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingCollectThemAllURLObserver.swift; sourceTree = "<group>"; };
+		CA2761CF20E0353F000E52AC /* WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
@@ -3412,6 +3414,7 @@
 			isa = PBXGroup;
 			children = (
 				CA2761C720E0305D000E52AC /* DefaultCollectThemAllRequestFactoryShould.swift */,
+				CA2761CF20E0353F000E52AC /* WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould.swift */,
 				CA2761C320E02D74000E52AC /* WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould.swift */,
 			);
 			path = "Collect-them-All";
@@ -6564,6 +6567,7 @@
 				CA89CBB42080031000570D54 /* CapturingNewsComponentHeaderScene.swift in Sources */,
 				CACF1E8520B34E7A00D904B5 /* WhenPreparingViewModel_EventDetailInteractorShould.swift in Sources */,
 				CA9AC16B208546530039C0C2 /* WhenBindingEvent_NewsPresenterShould.swift in Sources */,
+				CA2761D020E0353F000E52AC /* WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould.swift in Sources */,
 				CA08158B20D4554900F750D4 /* WhenGroupingEventsByStartTime_ScheduleInteractorShould.swift in Sources */,
 				CAD3BDCD20613A2800C91E6E /* WhenLookingUpMailToLinks.swift in Sources */,
 				CAF5979F2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift in Sources */,

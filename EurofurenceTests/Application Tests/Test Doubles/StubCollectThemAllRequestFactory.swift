@@ -16,4 +16,9 @@ class StubCollectThemAllRequestFactory: CollectThemAllRequestFactory {
         return anonymousGameURLRequest
     }
     
+    func makeAuthenticatedGameURLRequest(credential: Credential) -> URLRequest {
+        let url = URL(string: "https://stub.\(credential.authenticationToken)")!
+        return URLRequest(url: url)
+    }
+    
 }

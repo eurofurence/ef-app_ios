@@ -39,6 +39,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private var events = [Event2]()
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
     private let collectThemAllRequestFactory: CollectThemAllRequestFactory
+    private let credentialStore: CredentialStore
 
     private let imageCache: ImagesCache
     private let imageDownloader: ImageDownloader
@@ -77,6 +78,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         self.imageAPI = imageAPI
         self.timeIntervalForUpcomingEventsSinceNow = timeIntervalForUpcomingEventsSinceNow
         self.collectThemAllRequestFactory = collectThemAllRequestFactory
+        self.credentialStore = credentialStore
 
         if pushPermissionsStateProviding.requestedPushNotificationAuthorization {
             pushPermissionsRequester.requestPushPermissions()
@@ -120,6 +122,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {
+
         authenticationCoordinator.login(arguments, completionHandler: completionHandler)
     }
 
@@ -211,7 +214,11 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func subscribe(_ observer: CollectThemAllURLObserver) {
-        observer.collectThemAllGameRequestDidChange(collectThemAllRequestFactory.makeAnonymousGameURLRequest())
+        if let credential = credentialStore.persistedCredential {
+            observer.collectThemAllGameRequestDidChange(collectThemAllRequestFactory.makeAuthenticatedGameURLRequest(credential: credential))
+        } else {
+            observer.collectThemAllGameRequestDidChange(collectThemAllRequestFactory.makeAnonymousGameURLRequest())
+        }
     }
 
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
