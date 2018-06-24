@@ -8,12 +8,19 @@
 
 import Foundation
 
-struct CollectThemAllPresenter: CollectThemAllURLObserver {
+struct CollectThemAllPresenter: CollectThemAllSceneDelegate, CollectThemAllURLObserver {
 
     private let scene: CollectThemAllScene
+    private let service: CollectThemAllService
 
     init(scene: CollectThemAllScene, service: CollectThemAllService) {
         self.scene = scene
+        self.service = service
+
+        scene.setDelegate(self)
+    }
+
+    func collectThemAllSceneDidLoad() {
         service.subscribe(self)
     }
 
