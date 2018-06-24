@@ -102,7 +102,7 @@ class Dealers: DealersService {
     }
 
     func fetchIconPNGData(for identifier: Dealer2.Identifier, completionHandler: @escaping (Data?) -> Void) {
-        guard let dealer = models.first(where: { $0.identifier == identifier.rawValue }) else { return }
+        guard let dealer = fetchDealer(identifier) else { return }
 
         var iconData: Data?
         if let iconIdentifier = dealer.artistThumbnailImageId {
@@ -114,7 +114,7 @@ class Dealers: DealersService {
 
     func fetchExtendedDealerData(for dealer: Dealer2.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
         guard let dealerModel = dealerModels.first(where: { $0.identifier == dealer }) else { return }
-        guard let model = models.first(where: { $0.identifier == dealer.rawValue }) else { return }
+        guard let model = fetchDealer(dealer) else { return }
 
         var artistImagePNGData: Data?
         if let artistImageId = model.artistImageId {
@@ -149,7 +149,7 @@ class Dealers: DealersService {
     }
 
     func openWebsite(for identifier: Dealer2.Identifier) {
-        guard let dealer = models.first(where: { $0.identifier == identifier.rawValue }) else { return }
+        guard let dealer = fetchDealer(identifier) else { return }
         guard let externalLink = dealer.links?.first(where: { $0.fragmentType == .WebExternal }) else { return }
         guard let url = URL(string: externalLink.target) else { return }
 
@@ -157,7 +157,7 @@ class Dealers: DealersService {
     }
 
     func openTwitter(for identifier: Dealer2.Identifier) {
-        guard let dealer = models.first(where: { $0.identifier == identifier.rawValue }) else { return }
+        guard let dealer = fetchDealer(identifier) else { return }
         guard let url = URL(string: "https://twitter.com/")?.appendingPathComponent(dealer.twitterHandle) else { return }
 
         eventBus.post(DomainEvent.OpenURL(url: url))
@@ -165,6 +165,10 @@ class Dealers: DealersService {
 
     func openTelegram(for identifier: Dealer2.Identifier) {
 
+    }
+
+    private func fetchDealer(_ identifier: Dealer2.Identifier) -> APIDealer? {
+        return models.first(where: { $0.identifier == identifier.rawValue })
     }
 
     private func updateDealers(from dealers: [APIDealer]) {
