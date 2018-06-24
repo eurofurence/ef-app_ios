@@ -153,20 +153,24 @@ class Dealers: DealersService {
         guard let externalLink = dealer.links?.first(where: { $0.fragmentType == .WebExternal }) else { return }
         guard let url = URL(string: externalLink.target) else { return }
 
-        eventBus.post(DomainEvent.OpenURL(url: url))
+        open(url)
     }
 
     func openTwitter(for identifier: Dealer2.Identifier) {
         guard let dealer = fetchDealer(identifier) else { return }
         guard let url = URL(string: "https://twitter.com/")?.appendingPathComponent(dealer.twitterHandle) else { return }
 
-        eventBus.post(DomainEvent.OpenURL(url: url))
+        open(url)
     }
 
     func openTelegram(for identifier: Dealer2.Identifier) {
         guard let dealer = fetchDealer(identifier) else { return }
         guard let url = URL(string: "https://t.me/")?.appendingPathComponent(dealer.twitterHandle) else { return }
 
+        open(url)
+    }
+
+    private func open(_ url: URL) {
         eventBus.post(DomainEvent.OpenURL(url: url))
     }
 
