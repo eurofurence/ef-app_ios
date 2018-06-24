@@ -23,6 +23,7 @@ class KnowledgeListPresenter: KnowledgeListSceneDelegate {
         self.delegate = delegate
 
         scene.setKnowledgeListTitle(.conventionInformation)
+        scene.setKnowledgeListShortTitle(.information)
     }
 
     func knowledgeListSceneDidLoad() {

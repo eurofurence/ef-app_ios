@@ -23,7 +23,11 @@ class KnowledgeListViewController: UIViewController, KnowledgeListScene {
     }
 
     func setKnowledgeListTitle(_ title: String) {
-        super.title = title
+        navigationItem.title = title
+    }
+
+    func setKnowledgeListShortTitle(_ shortTitle: String) {
+        tabBarItem.title = shortTitle
     }
 
     func showLoadingIndicator() {

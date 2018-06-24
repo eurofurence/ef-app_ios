@@ -21,6 +21,11 @@ class CapturingKnowledgeListScene: UIViewController, KnowledgeListScene {
         capturedTitle = title
     }
     
+    private(set) var capturedShortTitle: String?
+    func setKnowledgeListShortTitle(_ shortTitle: String) {
+        capturedShortTitle = shortTitle
+    }
+    
     private(set) var didShowLoadingIndicator = false
     func showLoadingIndicator() {
         didShowLoadingIndicator = true

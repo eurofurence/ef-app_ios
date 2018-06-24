@@ -37,4 +37,8 @@ class WhenBuildingKnowledgePresenter: XCTestCase {
         XCTAssertEqual(.conventionInformation, context.scene.capturedTitle)
     }
     
+    func testTheSceneIsToldToShowTheConventionShortTitle() {
+        XCTAssertEqual(.information, context.scene.capturedShortTitle)
+    }
+    
 }

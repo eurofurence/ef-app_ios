@@ -115,6 +115,9 @@ public extension String {
     public static let conventionInformation = NSLocalizedString("ConventionInformation",
                                                                 comment: "Title for the view showing all the categorised convention information")
 
+    public static let information = NSLocalizedString("Information",
+                                                      comment: "Tab bar item title for the view showing all the categoried convention information")
+
     public static let announcement = NSLocalizedString("Announcement",
                                                        comment: "Title for the view showing detailed information for an announcement")
 
