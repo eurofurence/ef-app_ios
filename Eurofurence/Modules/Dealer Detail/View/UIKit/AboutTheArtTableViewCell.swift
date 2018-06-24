@@ -32,12 +32,6 @@ class AboutTheArtTableViewCell: UITableViewCell, AboutTheArtComponent {
         let image = UIImage(data: artPreviewImagePNGData)
         artworkImageView.image = image
         artworkImageView.isHidden = false
-
-        if let image = image {
-            let size = image.size
-            let aspectRatio = size.width / size.height
-            artworkImageView.widthAnchor.constraint(equalTo: artworkImageView.heightAnchor, multiplier: aspectRatio).isActive = true
-        }
     }
 
     func showArtPreviewCaption(_ caption: String) {

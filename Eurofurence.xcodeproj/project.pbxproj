@@ -393,6 +393,7 @@
 		CA250DE420D6F68700E7513C /* WhenSearchControllerProducesNewResults_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DE320D6F68700E7513C /* WhenSearchControllerProducesNewResults_ScheduleInteractorShould.swift */; };
 		CA250DE620D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DE520D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift */; };
 		CA2547C11FEB1B2A0023F2CB /* WhenRefreshingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2547C01FEB1B2A0023F2CB /* WhenRefreshingMessages.swift */; };
+		CA27618220DF932C000E52AC /* AspectRatioConstrainedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */; };
 		CA281B641F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
@@ -1436,6 +1437,7 @@
 		CA250DE320D6F68700E7513C /* WhenSearchControllerProducesNewResults_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSearchControllerProducesNewResults_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
 		CA250DE520D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortFormDayAndTimeFormatter.swift; sourceTree = "<group>"; };
 		CA2547C01FEB1B2A0023F2CB /* WhenRefreshingMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRefreshingMessages.swift; sourceTree = "<group>"; };
+		CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioConstrainedImageView.swift; sourceTree = "<group>"; };
 		CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
@@ -2886,6 +2888,7 @@
 			children = (
 				CA00AE6A20D178EC00C2FBB0 /* Extensions */,
 				CA00AE6820D178D700C2FBB0 /* Table View Cells */,
+				CA27618020DF9315000E52AC /* Views */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -3235,6 +3238,14 @@
 				CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */,
 			);
 			path = Director;
+			sourceTree = "<group>";
+		};
+		CA27618020DF9315000E52AC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		CA2D07FE1FE94AD200BFD785 /* Root */ = {
@@ -5544,6 +5555,7 @@
 				CA162EB820AA2FB9004AFED6 /* APIEvent.swift in Sources */,
 				CAF9A9551F55F9DB00628833 /* LoginPromptTableViewCell.swift in Sources */,
 				78D7EEB81F196B30005372A9 /* BuildConfigurationProviding.swift in Sources */,
+				CA27618220DF932C000E52AC /* AspectRatioConstrainedImageView.swift in Sources */,
 				CA6375B2208E02E300536BE2 /* DealersScene.swift in Sources */,
 				CA30EAC41F2672BF0053DBF6 /* Message.swift in Sources */,
 				CAE8B0B720CA4E100029D4D6 /* LinkEntity+Adaptation.swift in Sources */,

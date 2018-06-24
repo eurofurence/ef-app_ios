@@ -67,12 +67,6 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
         let image = UIImage(data: data)
         artistImageView.image = image
         artistImageView.isHidden = false
-
-        if let image = image {
-            let size = image.size
-            let aspectRatio = size.width / size.height
-            artistImageView.widthAnchor.constraint(equalTo: artistImageView.heightAnchor, multiplier: aspectRatio).isActive = true
-        }
     }
 
     func hideArtistArtwork() {
