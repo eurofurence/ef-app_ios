@@ -125,6 +125,8 @@ class Dealers: DealersService {
             artPreviewImagePNGData = imageCache.cachedImageData(for: artPreviewImageId)
         }
 
+        let convertEmptyStringsIntoNil: (String) -> String? = { $0.isEmpty ? nil : $0 }
+
         let extendedData = ExtendedDealerData(artistImagePNGData: artistImagePNGData,
                                               dealersDenMapLocationGraphicPNGData: nil,
                                               preferredName: dealerModel.preferredName,
@@ -136,12 +138,12 @@ class Dealers: DealersService {
                                               isAttendingOnSaturday: dealerModel.isAttendingOnSaturday,
                                               isAfterDark: dealerModel.isAfterDark,
                                               websiteName: model.links?.first(where: { $0.fragmentType == .WebExternal })?.target,
-                                              twitterUsername: model.twitterHandle,
-                                              telegramUsername: model.telegramHandle,
-                                              aboutTheArtist: model.aboutTheArtistText,
-                                              aboutTheArt: model.aboutTheArtText,
+                                              twitterUsername: convertEmptyStringsIntoNil(model.twitterHandle),
+                                              telegramUsername: convertEmptyStringsIntoNil(model.telegramHandle),
+                                              aboutTheArtist: convertEmptyStringsIntoNil(model.aboutTheArtistText),
+                                              aboutTheArt: convertEmptyStringsIntoNil(model.aboutTheArtText),
                                               artPreviewImagePNGData: artPreviewImagePNGData,
-                                              artPreviewCaption: model.artPreviewCaption)
+                                              artPreviewCaption: convertEmptyStringsIntoNil(model.artPreviewCaption))
         completionHandler(extendedData)
     }
 
