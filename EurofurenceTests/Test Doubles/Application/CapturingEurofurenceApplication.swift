@@ -10,6 +10,10 @@
 import Foundation
 
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
+    func openTelegram(for identifier: Dealer2.Identifier) {
+        
+    }
+    
     func openTwitter(for identifier: Dealer2.Identifier) {
         
     }

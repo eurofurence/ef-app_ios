@@ -15,6 +15,7 @@ protocol DealersService {
     func fetchExtendedDealerData(for dealer: Dealer2.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void)
     func openWebsite(for identifier: Dealer2.Identifier)
     func openTwitter(for identifier: Dealer2.Identifier)
+    func openTelegram(for identifier: Dealer2.Identifier)
 
 }
 

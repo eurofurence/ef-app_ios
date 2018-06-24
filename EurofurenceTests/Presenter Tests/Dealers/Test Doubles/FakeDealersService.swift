@@ -42,6 +42,11 @@ class FakeDealersService: DealersService {
         capturedIdentifierForOpeningTwitter = identifier
     }
     
+    private(set) var capturedIdentifierForOpeningTelegram: Dealer2.Identifier?
+    func openTelegram(for identifier: Dealer2.Identifier) {
+        capturedIdentifierForOpeningTelegram = identifier
+    }
+    
 }
 
 extension FakeDealersService {

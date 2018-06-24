@@ -172,7 +172,7 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
         }
 
         func openTelegram() {
-
+            dealersService.openTelegram(for: dealerIdentifier)
         }
 
     }

@@ -155,6 +155,10 @@ class Dealers: DealersService {
 
     }
 
+    func openTelegram(for identifier: Dealer2.Identifier) {
+
+    }
+
     private func updateDealers(from dealers: [APIDealer]) {
         models = dealers
         dealerModels = dealers.map { (dealer) -> Dealer2 in
