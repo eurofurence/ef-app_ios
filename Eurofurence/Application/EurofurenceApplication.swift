@@ -192,6 +192,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     }
 
+    func openTwitter(for identifier: Dealer2.Identifier) {
+
+    }
+
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
         enum SyncError: Error {
             case failedToLoadResponse

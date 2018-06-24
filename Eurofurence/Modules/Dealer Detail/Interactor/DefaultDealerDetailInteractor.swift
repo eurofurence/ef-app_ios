@@ -168,7 +168,7 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
         }
 
         func openTwitter() {
-
+            dealersService.openTwitter(for: dealerIdentifier)
         }
 
         func openTelegram() {

@@ -10,6 +10,10 @@
 import Foundation
 
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
+    func openTwitter(for identifier: Dealer2.Identifier) {
+        
+    }
+    
     func openWebsite(for identifier: Dealer2.Identifier) {
         
     }
