@@ -141,7 +141,7 @@ class Dealers: DealersService {
                                               aboutTheArtist: model.aboutTheArtistText,
                                               aboutTheArt: model.aboutTheArtText,
                                               artPreviewImagePNGData: artPreviewImagePNGData,
-                                              artPreviewCaption: nil)
+                                              artPreviewCaption: model.artPreviewCaption)
         completionHandler(extendedData)
     }
 

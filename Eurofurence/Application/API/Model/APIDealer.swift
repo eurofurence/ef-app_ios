@@ -27,5 +27,6 @@ struct APIDealer: Equatable {
     var telegramHandle: String
     var aboutTheArtistText: String
     var aboutTheArtText: String
+    var artPreviewCaption: String
 
 }

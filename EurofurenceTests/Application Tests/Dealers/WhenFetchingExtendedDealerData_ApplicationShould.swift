@@ -80,4 +80,8 @@ class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
         XCTAssertEqual(randomDealer.aboutTheArtText, dealerData?.aboutTheArt)
     }
     
+    func testProvideTheArtPreviewCaption() {
+        XCTAssertEqual(randomDealer.artPreviewCaption, dealerData?.artPreviewCaption)
+    }
+    
 }

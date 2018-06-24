@@ -198,7 +198,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                   twitterHandle: "",
                                                                   telegramHandle: "",
                                                                   aboutTheArtistText: "",
-                                                                  aboutTheArtText: "")],
+                                                                  aboutTheArtText: "",
+                                                                  artPreviewCaption: "")],
                                               deleted: [APIDealer(identifier: "d53e6f6b-fdcb-4754-a4b9-6892e8d317d7",
                                                                   displayName: "",
                                                                   attendeeNickname: "Frazzle",
@@ -217,7 +218,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                   twitterHandle: "FrazzleRat",
                                                                   telegramHandle: "HefeleToons",
                                                                   aboutTheArtistText: "My name is Chris Hefele, been around in the Furry Fandom since the late 90s. In Germany as \"SewerRat\" or \"die Knallratte\", and internationally as \"Frazzle\". \r\nIn RL, I work as a traditional 2D animator (handdrawn/full), so a bit of a dinosaur. Aside of that, it is illustrations, character design, storyboard and other areas of film making and advertising. Very soft spot for foxes.",
-                                                                  aboutTheArtText: "Got my mind stuck in the 80s, my art stuck in the 90s, and I am not ashamed to say I looove cheesy pin-up flat-color black-outlined top-heavy toonyness. Strongly inspired by Chuck Jones and Disney work from days gone by, and trying to keep that flame alive. \r\nI got a thing for anvil-and-dynamite style toon stuff (this is where the little rat comes from), strong female leads, and a recurring topic of \"Bad Girls vs. Balloons\", which I am perhaps a bit infamous for.\r\nNot to be taken too seriously.")])
+                                                                  aboutTheArtText: "Got my mind stuck in the 80s, my art stuck in the 90s, and I am not ashamed to say I looove cheesy pin-up flat-color black-outlined top-heavy toonyness. Strongly inspired by Chuck Jones and Disney work from days gone by, and trying to keep that flame alive. \r\nI got a thing for anvil-and-dynamite style toon stuff (this is where the little rat comes from), strong female leads, and a recurring topic of \"Bad Girls vs. Balloons\", which I am perhaps a bit infamous for.\r\nNot to be taken too seriously.",
+                                                                  artPreviewCaption: "Pin-Ups focusing on joie-de-vivre, flirtatious and strong anthro girls. These ladies will try to cheer you up and help you pull through life, no matter if on a Zippo in your pocket, on a college bag around your shoulder, or as a print on your wall. But you better treat 'em well, or they might just pull an anvil out of their pocket and throw it! ;)")])
         
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,

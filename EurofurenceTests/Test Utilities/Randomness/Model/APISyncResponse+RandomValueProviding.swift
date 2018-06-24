@@ -170,7 +170,8 @@ extension APIDealer: RandomValueProviding {
                          twitterHandle: .random,
                          telegramHandle: .random,
                          aboutTheArtistText: .random,
-                         aboutTheArtText: .random)
+                         aboutTheArtText: .random,
+                         artPreviewCaption: .random)
     }
     
 }

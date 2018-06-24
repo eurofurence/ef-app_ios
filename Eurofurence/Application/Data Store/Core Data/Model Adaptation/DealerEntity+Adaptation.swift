@@ -30,7 +30,8 @@ extension DealerEntity: EntityAdapting {
                          twitterHandle: twitterHandle!,
                          telegramHandle: telegramHandle!,
                          aboutTheArtistText: aboutTheArtist!,
-                         aboutTheArtText: aboutTheArtText!)
+                         aboutTheArtText: aboutTheArtText!,
+                         artPreviewCaption: artPreviewCaption!)
     }
 
 }

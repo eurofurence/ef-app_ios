@@ -224,6 +224,7 @@ private struct JSONSyncResponse: Decodable {
         var TelegramHandle: String
         var AboutTheArtistText: String
         var AboutTheArtText: String
+        var ArtPreviewCaption: String
 
         var modelValue: APIDealer {
             return APIDealer(identifier: Id,
@@ -242,7 +243,8 @@ private struct JSONSyncResponse: Decodable {
                              twitterHandle: TwitterHandle,
                              telegramHandle: TelegramHandle,
                              aboutTheArtistText: AboutTheArtistText,
-                             aboutTheArtText: AboutTheArtText)
+                             aboutTheArtText: AboutTheArtText,
+                             artPreviewCaption: ArtPreviewCaption)
         }
 
     }
