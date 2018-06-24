@@ -403,6 +403,8 @@
 		CA27619020DFF0A5000E52AC /* WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618F20DFF0A5000E52AC /* WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould.swift */; };
 		CA27619220DFF30D000E52AC /* WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27619120DFF30D000E52AC /* WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShould.swift */; };
 		CA27619420DFF66F000E52AC /* WhenApplicationRequestsHandlingOfExternalContent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27619320DFF66F000E52AC /* WhenApplicationRequestsHandlingOfExternalContent_DirectorShould.swift */; };
+		CA27619A20E01D0F000E52AC /* CollectThemAllModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27619920E01D0F000E52AC /* CollectThemAllModuleProviding.swift */; };
+		CA27619C20E01E01000E52AC /* CollectThemAllModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27619B20E01E01000E52AC /* CollectThemAllModuleBuilder.swift */; };
 		CA281B641F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
@@ -1456,6 +1458,8 @@
 		CA27618F20DFF0A5000E52AC /* WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA27619120DFF30D000E52AC /* WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA27619320DFF66F000E52AC /* WhenApplicationRequestsHandlingOfExternalContent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenApplicationRequestsHandlingOfExternalContent_DirectorShould.swift; sourceTree = "<group>"; };
+		CA27619920E01D0F000E52AC /* CollectThemAllModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectThemAllModuleProviding.swift; sourceTree = "<group>"; };
+		CA27619B20E01E01000E52AC /* CollectThemAllModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectThemAllModuleBuilder.swift; sourceTree = "<group>"; };
 		CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
@@ -2210,6 +2214,7 @@
 		6EF96CE01F12688700EE6134 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CA27619720E01CF3000E52AC /* Collect-them-All */,
 				CA728446209D0119007D912A /* Announcement Detail */,
 				6EF96CE81F126B0400EE6134 /* Bootstrap */,
 				CA36A4E120DAFF6D00EE6537 /* Dealer Detail */,
@@ -3266,6 +3271,23 @@
 				CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CA27619720E01CF3000E52AC /* Collect-them-All */ = {
+			isa = PBXGroup;
+			children = (
+				CA27619B20E01E01000E52AC /* CollectThemAllModuleBuilder.swift */,
+				CA27619820E01D08000E52AC /* Module */,
+			);
+			path = "Collect-them-All";
+			sourceTree = "<group>";
+		};
+		CA27619820E01D08000E52AC /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				CA27619920E01D0F000E52AC /* CollectThemAllModuleProviding.swift */,
+			);
+			path = Module;
 			sourceTree = "<group>";
 		};
 		CA2D07FE1FE94AD200BFD785 /* Root */ = {
@@ -5754,6 +5776,7 @@
 				CA3990EF20ACD559001E3F1A /* FoundationHoursDateFormatter.swift in Sources */,
 				9ACF99971EC858B2006FC958 /* Map.swift in Sources */,
 				6EEC6DA51F1BFC7700205F2D /* AppVersionProviding.swift in Sources */,
+				CA27619C20E01E01000E52AC /* CollectThemAllModuleBuilder.swift in Sources */,
 				CAD7805A1F1E8E7D002A8333 /* KeychainCredentialStore.swift in Sources */,
 				CAB138101FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift in Sources */,
 				CAF9A94A1F54BB5600628833 /* PrivateMessagesService.swift in Sources */,
@@ -5983,6 +6006,7 @@
 				CA36A4AE20D9895600EE6537 /* APIDealer.swift in Sources */,
 				CA30EAD01F27D8620053DBF6 /* MessageTableViewCell.swift in Sources */,
 				CAD3BDC92061382000C91E6E /* URLOpener.swift in Sources */,
+				CA27619A20E01D0F000E52AC /* CollectThemAllModuleProviding.swift in Sources */,
 				D6F3D0434C71907BD410190E /* ImageServiceProtocol.swift in Sources */,
 				9A7FDA121F33B7630050C325 /* UserDefaultsTabBarOrderProvider.swift in Sources */,
 				CAE27B501F857A99005FDE39 /* PhonePreloadModuleFactory.swift in Sources */,

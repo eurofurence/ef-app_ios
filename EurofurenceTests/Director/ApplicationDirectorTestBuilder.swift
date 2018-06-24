@@ -9,6 +9,15 @@
 @testable import Eurofurence
 import UIKit.UIViewController
 
+class StubCollectThemAllModuleProviding: CollectThemAllModuleProviding {
+    
+    let stubInterface = UIViewController()
+    func makeCollectThemAllModule() -> UIViewController {
+        return stubInterface
+    }
+    
+}
+
 class ApplicationDirectorTestBuilder {
     
     struct Context {
@@ -22,6 +31,7 @@ class ApplicationDirectorTestBuilder {
         var scheduleModule: StubScheduleModuleFactory
         var dealersModule: StubDealersModuleFactory
         var dealerDetailModule: StubDealerDetailModuleProviding
+        var collectThemAllModule: StubCollectThemAllModuleProviding
         var messages: StubMessagesModuleFactory
         var loginModule: StubLoginModuleFactory
         var windowWireframe: CapturingWindowWireframe
@@ -45,6 +55,7 @@ class ApplicationDirectorTestBuilder {
     private let scheduleModule: StubScheduleModuleFactory
     private let dealersModule: StubDealersModuleFactory
     private let dealerDetailModule: StubDealerDetailModuleProviding
+    private let collectThemAllModule: StubCollectThemAllModuleProviding
     private let messagesModule: StubMessagesModuleFactory
     private let loginModule: StubLoginModuleFactory
     private let windowWireframe: CapturingWindowWireframe
@@ -67,6 +78,7 @@ class ApplicationDirectorTestBuilder {
         scheduleModule = StubScheduleModuleFactory()
         dealersModule = StubDealersModuleFactory()
         dealerDetailModule = StubDealerDetailModuleProviding()
+        collectThemAllModule = StubCollectThemAllModuleProviding()
         messagesModule = StubMessagesModuleFactory()
         loginModule = StubLoginModuleFactory()
         messageDetailModule = StubMessageDetailModuleProviding()
@@ -90,6 +102,7 @@ class ApplicationDirectorTestBuilder {
         builder.with(scheduleModule)
         builder.with(dealersModule)
         builder.with(dealerDetailModule)
+        builder.with(collectThemAllModule)
         builder.with(messagesModule)
         builder.with(loginModule)
         builder.with(messageDetailModule)
@@ -114,6 +127,7 @@ class ApplicationDirectorTestBuilder {
                        scheduleModule: scheduleModule,
                        dealersModule: dealersModule,
                        dealerDetailModule: dealerDetailModule,
+                       collectThemAllModule: collectThemAllModule,
                        messages: messagesModule,
                        loginModule: loginModule,
                        windowWireframe: windowWireframe,

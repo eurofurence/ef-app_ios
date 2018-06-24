@@ -23,6 +23,7 @@ class WhenShowingTabModule_DirectorShould: XCTestCase {
         return [context.newsModule.stubInterface,
                 context.scheduleModule.stubInterface,
                 context.dealersModule.stubInterface,
+                context.collectThemAllModule.stubInterface,
                 context.knowledgeListModule.stubInterface]
     }
     

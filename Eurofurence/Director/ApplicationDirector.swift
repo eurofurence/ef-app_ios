@@ -41,6 +41,7 @@ class ApplicationDirector: ExternalContentHandler,
     private let scheduleModuleProviding: ScheduleModuleProviding
     private let dealersModuleProviding: DealersModuleProviding
     private let dealerDetailModuleProviding: DealerDetailModuleProviding
+    private let collectThemAllModuleProviding: CollectThemAllModuleProviding
     private let messagesModuleProviding: MessagesModuleProviding
     private let loginModuleProviding: LoginModuleProviding
     private let messageDetailModuleProviding: MessageDetailModuleProviding
@@ -73,6 +74,7 @@ class ApplicationDirector: ExternalContentHandler,
          scheduleModuleProviding: ScheduleModuleProviding,
          dealersModuleProviding: DealersModuleProviding,
          dealerDetailModuleProviding: DealerDetailModuleProviding,
+         collectThemAllModuleProviding: CollectThemAllModuleProviding,
          messagesModuleProviding: MessagesModuleProviding,
          loginModuleProviding: LoginModuleProviding,
          messageDetailModuleProviding: MessageDetailModuleProviding,
@@ -93,6 +95,7 @@ class ApplicationDirector: ExternalContentHandler,
         self.scheduleModuleProviding = scheduleModuleProviding
         self.dealersModuleProviding = dealersModuleProviding
         self.dealerDetailModuleProviding = dealerDetailModuleProviding
+        self.collectThemAllModuleProviding = collectThemAllModuleProviding
         self.messagesModuleProviding = messagesModuleProviding
         self.loginModuleProviding = loginModuleProviding
         self.messageDetailModuleProviding = messageDetailModuleProviding
@@ -270,9 +273,14 @@ class ApplicationDirector: ExternalContentHandler,
         dealersNavigationController.setViewControllers([dealersViewController], animated: animate)
         dealersNavigationController.tabBarItem = dealersViewController.tabBarItem
 
+        let collectThemAllModule = collectThemAllModuleProviding.makeCollectThemAllModule()
+        let collectThemAllNavigationController = UINavigationController(rootViewController: collectThemAllModule)
+        collectThemAllNavigationController.tabBarItem = collectThemAllModule.tabBarItem
+
         let tabModule = tabModuleProviding.makeTabModule([newsNavigationController,
                                                           scheduleNavigationController,
                                                           dealersNavigationController,
+                                                          collectThemAllNavigationController,
                                                           knowledgeNavigationController])
         tabController = tabModule
 

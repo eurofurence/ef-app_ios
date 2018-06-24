@@ -23,6 +23,7 @@ class DirectorBuilder {
     private var scheduleModuleProviding: ScheduleModuleProviding
     private var dealersModuleProviding: DealersModuleProviding
     private var dealerDetailModuleProviding: DealerDetailModuleProviding
+    private var collectThemAllModuleProviding: CollectThemAllModuleProviding
     private var messagesModuleProviding: MessagesModuleProviding
     private var loginModuleProviding: LoginModuleProviding
     private var messageDetailModuleProviding: MessageDetailModuleProviding
@@ -33,6 +34,12 @@ class DirectorBuilder {
     private var urlOpener: URLOpener
 
     init() {
+        struct DummyCollectThemAllModuleProviding: CollectThemAllModuleProviding {
+            func makeCollectThemAllModule() -> UIViewController {
+                return UIViewController()
+            }
+        }
+
         animate = true
         windowWireframe = PhoneWindowWireframe.shared
         navigationControllerFactory = PhoneNavigationControllerFactory()
@@ -45,6 +52,7 @@ class DirectorBuilder {
         scheduleModuleProviding = ScheduleModuleBuilder().build()
         dealersModuleProviding = DealersModuleBuilder().build()
         dealerDetailModuleProviding = DealerDetailModuleBuilder().build()
+        collectThemAllModuleProviding = CollectThemAllModuleBuilder().build()
         messagesModuleProviding = MessagesModuleBuilder().build()
         loginModuleProviding = LoginModuleBuilder().build()
         messageDetailModuleProviding = MessageDetailModuleBuilder().build()
@@ -131,6 +139,12 @@ class DirectorBuilder {
     }
 
     @discardableResult
+    func with(_ collectThemAllModuleProviding: CollectThemAllModuleProviding) -> DirectorBuilder {
+        self.collectThemAllModuleProviding = collectThemAllModuleProviding
+        return self
+    }
+
+    @discardableResult
     func with(_ messagesModuleProviding: MessagesModuleProviding) -> DirectorBuilder {
         self.messagesModuleProviding = messagesModuleProviding
         return self
@@ -199,6 +213,7 @@ class DirectorBuilder {
                                    scheduleModuleProviding: scheduleModuleProviding,
                                    dealersModuleProviding: dealersModuleProviding,
                                    dealerDetailModuleProviding: dealerDetailModuleProviding,
+                                   collectThemAllModuleProviding: collectThemAllModuleProviding,
                                    messagesModuleProviding: messagesModuleProviding,
                                    loginModuleProviding: loginModuleProviding,
                                    messageDetailModuleProviding: messageDetailModuleProviding,
