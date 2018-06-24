@@ -86,7 +86,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if UserSettings.UseDirector.currentValueOrDefault() {
             applyDirectorBasedTheme()
-            director = DirectorBuilder().build()
+
+            let director = DirectorBuilder().build()
+            self.director = director
+            EurofurenceApplication.shared.setExternalContentHandler(director)
         } else {
             PresentationTier.assemble(window: window!)
         }
