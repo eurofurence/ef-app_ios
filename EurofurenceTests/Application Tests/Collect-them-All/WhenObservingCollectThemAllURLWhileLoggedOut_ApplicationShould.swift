@@ -9,24 +9,6 @@
 @testable import Eurofurence
 import XCTest
 
-class CapturingCollectThemAllURLObserver: CollectThemAllURLObserver {
-    
-    private(set) var capturedURLRequest: URLRequest?
-    func collectThemAllGameRequestDidChange(_ urlRequest: URLRequest) {
-        capturedURLRequest = urlRequest
-    }
-    
-}
-
-class StubCollectThemAllRequestFactory: CollectThemAllRequestFactory {
-    
-    let anonymousGameURLRequest = URLRequest(url: .random)
-    func makeAnonymousGameURLRequest() -> URLRequest {
-        return anonymousGameURLRequest
-    }
-    
-}
-
 class WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould: XCTestCase {
     
     func testEmitAnonymousGameURL() {
