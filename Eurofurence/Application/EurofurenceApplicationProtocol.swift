@@ -20,7 +20,8 @@ protocol EurofurenceApplicationProtocol: AnnouncementsService,
                                          DealersService,
                                          KnowledgeService,
                                          LinkLookupService,
-                                         ConventionCountdownService {
+                                         ConventionCountdownService,
+                                         CollectThemAllService {
 
     func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler)
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress

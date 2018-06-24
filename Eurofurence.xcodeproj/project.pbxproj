@@ -420,6 +420,8 @@
 		CA2761BC20E02A25000E52AC /* FakeCollectThemAllService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761BB20E02A25000E52AC /* FakeCollectThemAllService.swift */; };
 		CA2761BF20E02B93000E52AC /* CollectThemAllPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761BE20E02B93000E52AC /* CollectThemAllPresenter.swift */; };
 		CA2761C120E02C68000E52AC /* BeforeCollectThemAllSceneLoads_PresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761C020E02C68000E52AC /* BeforeCollectThemAllSceneLoads_PresenterShould.swift */; };
+		CA2761C420E02D74000E52AC /* WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761C320E02D74000E52AC /* WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould.swift */; };
+		CA2761C620E02EDC000E52AC /* CollectThemAllRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761C520E02EDC000E52AC /* CollectThemAllRequestFactory.swift */; };
 		CA281B641F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
@@ -1490,6 +1492,8 @@
 		CA2761BB20E02A25000E52AC /* FakeCollectThemAllService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCollectThemAllService.swift; sourceTree = "<group>"; };
 		CA2761BE20E02B93000E52AC /* CollectThemAllPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectThemAllPresenter.swift; sourceTree = "<group>"; };
 		CA2761C020E02C68000E52AC /* BeforeCollectThemAllSceneLoads_PresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeCollectThemAllSceneLoads_PresenterShould.swift; sourceTree = "<group>"; };
+		CA2761C320E02D74000E52AC /* WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA2761C520E02EDC000E52AC /* CollectThemAllRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectThemAllRequestFactory.swift; sourceTree = "<group>"; };
 		CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
@@ -2515,6 +2519,7 @@
 				CA65A21A2091120C0078A4A7 /* Announcements */,
 				CA804DD71F20D2E000E07A4A /* API */,
 				CA81D4951FEA950600A52A2F /* Authentication */,
+				CA2761C220E02D57000E52AC /* Collect-them-All */,
 				CA162E6C20A468C4004AFED6 /* Countdown */,
 				CABEB0D720C8A7C1000BEE66 /* Data Store */,
 				CA08157B20D3D45A00F750D4 /* Days */,
@@ -2537,6 +2542,7 @@
 			children = (
 				CA1F7D6220CB83A100FB87F5 /* Announcements.swift */,
 				CA0E5212208F4CD7005259FE /* AnnouncementsService.swift */,
+				CA2761C520E02EDC000E52AC /* CollectThemAllRequestFactory.swift */,
 				CA2761B920E02A16000E52AC /* CollectThemAllService.swift */,
 				CA162E8520A5BB85004AFED6 /* ConventionCountdownController.swift */,
 				CA72843A209CEF47007D912A /* ConventionCountdownService.swift */,
@@ -3389,6 +3395,14 @@
 				CA2761BE20E02B93000E52AC /* CollectThemAllPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CA2761C220E02D57000E52AC /* Collect-them-All */ = {
+			isa = PBXGroup;
+			children = (
+				CA2761C320E02D74000E52AC /* WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould.swift */,
+			);
+			path = "Collect-them-All";
 			sourceTree = "<group>";
 		};
 		CA2D07FE1FE94AD200BFD785 /* Root */ = {
@@ -5761,6 +5775,7 @@
 				CA52C69920D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift in Sources */,
 				CACF1E9A20B437A500D904B5 /* EventDescriptionComponent.swift in Sources */,
 				CA30EAB01F214C3A0053DBF6 /* UnreadMessagesTableViewCell.swift in Sources */,
+				CA2761C620E02EDC000E52AC /* CollectThemAllRequestFactory.swift in Sources */,
 				9A861EAB1F2554D700B75A8C /* BootstrappingModule.swift in Sources */,
 				CA6EC47F2051CBC800402894 /* KnowledgeDetailScene.swift in Sources */,
 				CA73AEE9201A088C004E77BF /* KnowledgeListSceneDelegate.swift in Sources */,
@@ -6336,6 +6351,7 @@
 				7820A6E51F140056004C0FB5 /* CapturingAlertRouter.swift in Sources */,
 				CA17FE9020586A15005A4C05 /* StubWikiRenderer.swift in Sources */,
 				CA8276B0204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift in Sources */,
+				CA2761C420E02D74000E52AC /* WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould.swift in Sources */,
 				CA36A4DA20DAE4CF00EE6537 /* WhenSceneSelectsSearchResult_DealersPresenterShould.swift in Sources */,
 				CA36A48520D9243E00EE6537 /* WhenBindingDealerGroupHeading_DealersPresenterShould.swift in Sources */,
 				CACF1EA220B59C3A00D904B5 /* EventDescriptionViewModel+RandomValueProviding.swift in Sources */,

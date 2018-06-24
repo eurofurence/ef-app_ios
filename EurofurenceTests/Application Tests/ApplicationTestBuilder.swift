@@ -253,6 +253,7 @@ class ApplicationTestBuilder {
     private var imageAPI: FakeImageAPI = FakeImageAPI()
     private var imageRepository = CapturingImageRepository()
     private var urlOpener: CapturingURLOpener = CapturingURLOpener()
+    private var collectThemAllRequestFactory: CollectThemAllRequestFactory = StubCollectThemAllRequestFactory()
     
     func with(_ currentDate: Date) -> ApplicationTestBuilder {
         stubClock = StubClock(currentDate: currentDate)
@@ -310,6 +311,12 @@ class ApplicationTestBuilder {
         return self
     }
     
+    @discardableResult
+    func with(_ collectThemAllRequestFactory: CollectThemAllRequestFactory) -> ApplicationTestBuilder {
+        self.collectThemAllRequestFactory = collectThemAllRequestFactory
+        return self
+    }
+    
     func loggedInWithValidCredential() -> ApplicationTestBuilder {
         let credential = Credential(username: "User",
                                     registrationNumber: 42,
@@ -343,6 +350,7 @@ class ApplicationTestBuilder {
             .with(imageRepository)
             .with(significantTimeChangeAdapter)
             .with(urlOpener)
+            .with(collectThemAllRequestFactory)
             .build()
         
         return Context(application: app,

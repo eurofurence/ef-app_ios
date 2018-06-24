@@ -28,6 +28,7 @@ class EurofurenceApplicationBuilder {
     private var imageRepository: ImageRepository
     private var significantTimeChangeAdapter: SignificantTimeChangeAdapter
     private var urlOpener: URLOpener
+    private var collectThemAllRequestFactory: CollectThemAllRequestFactory
 
     init() {
         userPreferences = UserDefaultsPreferences()
@@ -58,6 +59,14 @@ class EurofurenceApplicationBuilder {
         imageRepository = PersistentImageRepository()
         significantTimeChangeAdapter = ApplicationSignificantTimeChangeAdapter()
         urlOpener = AppURLOpener()
+
+        struct DummyCollectThemAllRequestFactory: CollectThemAllRequestFactory {
+            func makeAnonymousGameURLRequest() -> URLRequest {
+                return URLRequest(url: URL(string: "https://www.eurofurence.org")!)
+            }
+        }
+
+        collectThemAllRequestFactory = DummyCollectThemAllRequestFactory()
     }
 
     @discardableResult
@@ -168,6 +177,12 @@ class EurofurenceApplicationBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ collectThemAllRequestFactory: CollectThemAllRequestFactory) -> EurofurenceApplicationBuilder {
+        self.collectThemAllRequestFactory = collectThemAllRequestFactory
+        return self
+    }
+
     func build() -> EurofurenceApplicationProtocol {
         return EurofurenceApplication(userPreferences: userPreferences,
                                       dataStore: dataStore,
@@ -186,7 +201,8 @@ class EurofurenceApplicationBuilder {
                                       timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow,
                                       imageRepository: imageRepository,
                                       significantTimeChangeAdapter: significantTimeChangeAdapter,
-                                      urlOpener: urlOpener)
+                                      urlOpener: urlOpener,
+                                      collectThemAllRequestFactory: collectThemAllRequestFactory)
     }
 
 }

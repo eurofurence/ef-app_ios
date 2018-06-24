@@ -38,6 +38,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private var syncResponse: APISyncResponse?
     private var events = [Event2]()
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
+    private let collectThemAllRequestFactory: CollectThemAllRequestFactory
 
     private let imageCache: ImagesCache
     private let imageDownloader: ImageDownloader
@@ -65,7 +66,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
          timeIntervalForUpcomingEventsSinceNow: TimeInterval,
          imageRepository: ImageRepository,
          significantTimeChangeAdapter: SignificantTimeChangeAdapter,
-         urlOpener: URLOpener) {
+         urlOpener: URLOpener,
+         collectThemAllRequestFactory: CollectThemAllRequestFactory) {
         self.userPreferences = userPreferences
         self.dataStore = dataStore
         self.pushPermissionsRequester = pushPermissionsRequester
@@ -74,6 +76,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         self.syncAPI = syncAPI
         self.imageAPI = imageAPI
         self.timeIntervalForUpcomingEventsSinceNow = timeIntervalForUpcomingEventsSinceNow
+        self.collectThemAllRequestFactory = collectThemAllRequestFactory
 
         if pushPermissionsStateProviding.requestedPushNotificationAuthorization {
             pushPermissionsRequester.requestPushPermissions()
@@ -205,6 +208,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler) {
         urlHandler.externalContentHandler = externalContentHandler
+    }
+
+    func subscribe(_ observer: CollectThemAllURLObserver) {
+        observer.collectThemAllGameRequestDidChange(collectThemAllRequestFactory.makeAnonymousGameURLRequest())
     }
 
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {

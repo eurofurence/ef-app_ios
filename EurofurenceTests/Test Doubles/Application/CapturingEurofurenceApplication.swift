@@ -10,6 +10,10 @@
 import Foundation
 
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
+    func subscribe(_ observer: CollectThemAllURLObserver) {
+        
+    }
+    
     func openTelegram(for identifier: Dealer2.Identifier) {
         
     }
