@@ -56,4 +56,8 @@ class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
         XCTAssertEqual(randomDealer.categories.sorted(), dealerData?.categories)
     }
     
+    func testProvideTheShortDescription() {
+        XCTAssertEqual(randomDealer.shortDescription, dealerData?.dealerShortDescription)
+    }
+    
 }

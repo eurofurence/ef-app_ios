@@ -130,7 +130,7 @@ class Dealers: DealersService {
                                               preferredName: dealerModel.preferredName,
                                               alternateName: dealerModel.alternateName,
                                               categories: model.categories.sorted(),
-                                              dealerShortDescription: "",
+                                              dealerShortDescription: model.shortDescription,
                                               isAttendingOnThursday: dealerModel.isAttendingOnThursday,
                                               isAttendingOnFriday: dealerModel.isAttendingOnFriday,
                                               isAttendingOnSaturday: dealerModel.isAttendingOnSaturday,

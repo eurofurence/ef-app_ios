@@ -21,5 +21,6 @@ struct APIDealer: Equatable {
     var artistImageId: String?
     var artPreviewImageId: String?
     var categories: [String]
+    var shortDescription: String
 
 }

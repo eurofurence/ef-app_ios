@@ -192,7 +192,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                   artistThumbnailImageId: nil,
                                                                   artistImageId: nil,
                                                                   artPreviewImageId: nil,
-                                                                  categories: ["General", "Art"])],
+                                                                  categories: ["General", "Art"],
+                                                                  shortDescription: "")],
                                               deleted: [APIDealer(identifier: "d53e6f6b-fdcb-4754-a4b9-6892e8d317d7",
                                                                   displayName: "",
                                                                   attendeeNickname: "Frazzle",
@@ -203,7 +204,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                   artistThumbnailImageId: "59b6023f-f739-4d40-a977-3d6bad1ab434",
                                                                   artistImageId: "81e6a80a-21cb-4524-a961-9d356aada9a1",
                                                                   artPreviewImageId: "6a624433-bc5f-4d31-b18e-0c443611f497",
-                                                                  categories: [])])
+                                                                  categories: [],
+                                                                  shortDescription: "Frazzle, the SewerRat. Knallratte. Cartoon animator, comic artist, menace to balloons. Creator of Trixie Vixen.\r\nAt my table, you will find pretty oldschool style print media and merchandise from own production, often featuring busty and toony anthro girl. \r\nLive Sketch Commissions - feel free to stay and watch!")])
         
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,

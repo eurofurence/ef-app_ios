@@ -23,7 +23,8 @@ extension DealerEntity: EntityAdapting {
                          artistThumbnailImageId: artistThumbnailImageId,
                          artistImageId: artistImageId,
                          artPreviewImageId: artPreviewImageId,
-                         categories: categories ?? [])
+                         categories: categories ?? [],
+                         shortDescription: dealerShortDescription!)
     }
 
 }
