@@ -44,7 +44,7 @@ class CollectThemAllViewController: UIViewController, CollectThemAllScene {
     }
 
     func loadGame(at urlRequest: URLRequest) {
-
+        webView?.load(urlRequest)
     }
 
 }
