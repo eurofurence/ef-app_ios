@@ -16,4 +16,8 @@ class CollectThemAllViewController: UIViewController, CollectThemAllScene {
         tabBarItem.title = shortTitle
     }
 
+    func setCollectThemAllTitle(_ title: String) {
+        super.title = title
+    }
+
 }

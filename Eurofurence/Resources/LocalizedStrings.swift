@@ -142,6 +142,9 @@ public extension String {
     public static let collect = NSLocalizedString("Collect",
                                                   comment: "Short title for the Collect-them-All screen shown in the tab bar")
 
+    public static let collectThemAll = NSLocalizedString("CollectThemAll",
+                                                         comment: "Title shown at the top of the Collect-them-All screen")
+
     private struct Formatters {
         static var numbers = NumberFormatter()
     }

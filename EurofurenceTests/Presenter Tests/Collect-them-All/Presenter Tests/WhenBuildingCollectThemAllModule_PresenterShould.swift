@@ -21,4 +21,9 @@ class WhenBuildingCollectThemAllModule_PresenterShould: XCTestCase {
         XCTAssertEqual(.collect, context.scene.capturedShortTitle)
     }
     
+    func testApplyTheTitleToTheScene() {
+        let context = CollectThemAllPresenterTestBuilder().build()
+        XCTAssertEqual(.collectThemAll, context.scene.capturedTitle)
+    }
+    
 }

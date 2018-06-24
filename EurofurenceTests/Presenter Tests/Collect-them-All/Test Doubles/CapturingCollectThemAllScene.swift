@@ -16,4 +16,9 @@ class CapturingCollectThemAllScene: UIViewController, CollectThemAllScene {
         capturedShortTitle = shortTitle
     }
     
+    private(set) var capturedTitle: String?
+    func setCollectThemAllTitle(_ title: String) {
+        capturedTitle = title
+    }
+    
 }

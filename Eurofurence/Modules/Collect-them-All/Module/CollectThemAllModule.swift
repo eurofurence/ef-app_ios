@@ -15,6 +15,7 @@ struct CollectThemAllModule: CollectThemAllModuleProviding {
     func makeCollectThemAllModule() -> UIViewController {
         let scene = sceneFactory.makeCollectThemAllScene()
         scene.setShortCollectThemAllTitle(.collect)
+        scene.setCollectThemAllTitle(.collectThemAll)
 
         return scene
     }

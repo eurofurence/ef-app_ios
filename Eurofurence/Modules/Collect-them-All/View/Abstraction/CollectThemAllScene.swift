@@ -11,5 +11,6 @@ import Foundation
 protocol CollectThemAllScene {
 
     func setShortCollectThemAllTitle(_ shortTitle: String)
+    func setCollectThemAllTitle(_ title: String)
 
 }
