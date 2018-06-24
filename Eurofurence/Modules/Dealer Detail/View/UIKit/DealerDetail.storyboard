@@ -41,31 +41,31 @@
                                                     <rect key="frame" x="15" y="11" width="345" height="323"/>
                                                     <subviews>
                                                         <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ACW-Ab-Pof">
-                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="215"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="227"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y3k-Nd-KMW" customClass="AspectRatioConstrainedImageView" customModule="Eurofurence" customModuleProvider="target">
                                                                     <rect key="frame" x="58.5" y="0.0" width="228" height="78"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAU-My-jch">
-                                                                    <rect key="frame" x="154" y="86" width="37.5" height="46"/>
+                                                                    <rect key="frame" x="154" y="86" width="37.5" height="58"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O78-6o-h9P">
-                                                                    <rect key="frame" x="146" y="140" width="53" height="18"/>
+                                                                    <rect key="frame" x="146" y="152" width="53" height="18"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJ4-Xk-tsX">
-                                                                    <rect key="frame" x="129" y="166" width="87.5" height="20.5"/>
+                                                                    <rect key="frame" x="129" y="178" width="87.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Short Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vah-PY-Nbz">
-                                                                    <rect key="frame" x="105.5" y="194.5" width="134.5" height="20.5"/>
+                                                                    <rect key="frame" x="105.5" y="206.5" width="134.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -76,61 +76,58 @@
                                                             </constraints>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5bm-HD-IZa">
-                                                            <rect key="frame" x="0.0" y="223" width="345" height="28"/>
+                                                            <rect key="frame" x="0.0" y="235" width="345" height="24"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="751" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCS-dS-JqI">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="24" height="28"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="751" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCS-dS-JqI">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                                                     <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="24"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ube-uh-Wg8">
-                                                                    <rect key="frame" x="32" y="0.0" width="313" height="28"/>
-                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                                    <state key="normal" title="Website"/>
-                                                                    <connections>
-                                                                        <action selector="websiteButtonTapped:" destination="la1-S3-uWw" eventType="touchUpInside" id="csE-HX-AFv"/>
-                                                                    </connections>
-                                                                </button>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W22-vM-wV5">
+                                                                    <rect key="frame" x="32" y="0.0" width="313" height="24"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
+                                                            <gestureRecognizers/>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XvX-TG-6gG">
-                                                            <rect key="frame" x="0.0" y="259" width="345" height="28"/>
+                                                            <rect key="frame" x="0.0" y="267" width="345" height="24"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="751" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wU1-GB-Nnj">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="24" height="28"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="751" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wU1-GB-Nnj">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                                                     <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="24"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dih-Vt-VDu">
-                                                                    <rect key="frame" x="32" y="0.0" width="313" height="28"/>
-                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                                    <state key="normal" title="Twitter"/>
-                                                                    <connections>
-                                                                        <action selector="twitterButtonTapped:" destination="la1-S3-uWw" eventType="touchUpInside" id="WSa-hu-d2C"/>
-                                                                    </connections>
-                                                                </button>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rc5-YM-x7L">
+                                                                    <rect key="frame" x="32" y="0.0" width="313" height="24"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
+                                                            <gestureRecognizers/>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="a5H-Ie-5gN">
-                                                            <rect key="frame" x="0.0" y="295" width="345" height="28"/>
+                                                            <rect key="frame" x="0.0" y="299" width="345" height="24"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="751" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mh-ji-uRT">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="24" height="28"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="751" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mh-ji-uRT">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                                                     <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="24"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sen-cR-6zo">
-                                                                    <rect key="frame" x="32" y="0.0" width="313" height="28"/>
-                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                                    <state key="normal" title="Telegram"/>
-                                                                    <connections>
-                                                                        <action selector="telegramButtonTapped:" destination="la1-S3-uWw" eventType="touchUpInside" id="Mzu-My-Vhy"/>
-                                                                    </connections>
-                                                                </button>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telegram" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rj8-wq-7f0">
+                                                                    <rect key="frame" x="32" y="0.0" width="313" height="24"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
+                                                            <gestureRecognizers/>
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
@@ -152,13 +149,13 @@
                                             <outlet property="dealerShortDescriptionLabel" destination="vah-PY-Nbz" id="Eh6-zv-Q32"/>
                                             <outlet property="dealerSubtitleLabel" destination="O78-6o-h9P" id="RrF-bL-l0o"/>
                                             <outlet property="dealerTelegramContainer" destination="a5H-Ie-5gN" id="rvJ-5s-dIo"/>
-                                            <outlet property="dealerTelegramHandleButton" destination="sen-cR-6zo" id="yB7-HQ-ykY"/>
+                                            <outlet property="dealerTelegramHandleLabel" destination="Rj8-wq-7f0" id="adb-Fj-QNg"/>
                                             <outlet property="dealerTitleLabel" destination="HAU-My-jch" id="oi4-Pk-3KD"/>
-                                            <outlet property="dealerTwitterHandleButton" destination="Dih-Vt-VDu" id="Qhc-rE-z8b"/>
                                             <outlet property="dealerTwitterHandleContainer" destination="XvX-TG-6gG" id="zjK-4m-E5y"/>
-                                            <outlet property="dealerWebsiteButton" destination="Ube-uh-Wg8" id="AGi-fL-oW4"/>
+                                            <outlet property="dealerTwitterHandleLabel" destination="Rc5-YM-x7L" id="V7a-pl-I1i"/>
                                             <outlet property="dealerWebsiteContainer" destination="5bm-HD-IZa" id="OSu-eU-vvy"/>
                                             <outlet property="dealerWebsiteIconLabel" destination="BCS-dS-JqI" id="PMH-YB-0nU"/>
+                                            <outlet property="dealerWebsiteLabel" destination="W22-vM-wV5" id="vPx-xL-NnQ"/>
                                             <outlet property="telegramIconLabel" destination="6mh-ji-uRT" id="S1b-9U-xaA"/>
                                             <outlet property="twitterIconLabel" destination="wU1-GB-Nnj" id="ynL-UG-00R"/>
                                         </connections>

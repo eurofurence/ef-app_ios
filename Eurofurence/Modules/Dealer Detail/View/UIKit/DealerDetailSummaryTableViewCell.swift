@@ -17,29 +17,15 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     @IBOutlet weak var dealerSubtitleLabel: UILabel!
     @IBOutlet weak var dealerCategoriesLabel: UILabel!
     @IBOutlet weak var dealerShortDescriptionLabel: UILabel!
-    @IBOutlet weak var dealerWebsiteButton: UIButton!
+    @IBOutlet weak var dealerWebsiteLabel: UILabel!
     @IBOutlet weak var dealerWebsiteIconLabel: UILabel!
     @IBOutlet weak var dealerWebsiteContainer: UIView!
     @IBOutlet weak var twitterIconLabel: UILabel!
-    @IBOutlet weak var dealerTwitterHandleButton: UIButton!
+    @IBOutlet weak var dealerTwitterHandleLabel: UILabel!
     @IBOutlet weak var dealerTwitterHandleContainer: UIView!
-    @IBOutlet weak var dealerTelegramHandleButton: UIButton!
+    @IBOutlet weak var dealerTelegramHandleLabel: UILabel!
     @IBOutlet weak var dealerTelegramContainer: UIView!
     @IBOutlet weak var telegramIconLabel: UILabel!
-
-    // MARK: Actions
-
-    @IBAction func websiteButtonTapped(_ sender: Any) {
-        websiteSelected?()
-    }
-
-    @IBAction func twitterButtonTapped(_ sender: Any) {
-        twitterSelected?()
-    }
-
-    @IBAction func telegramButtonTapped(_ sender: Any) {
-        telegramSelected?()
-    }
 
     // MARK: Overrides
 
@@ -56,9 +42,18 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
         twitterIconLabel.textColor = labelTextColor
         telegramIconLabel.textColor = labelTextColor
         dealerWebsiteIconLabel.textColor = labelTextColor
-        dealerWebsiteButton.setTitleColor(labelTextColor, for: .normal)
-        dealerTwitterHandleButton.setTitleColor(labelTextColor, for: .normal)
-        dealerTelegramHandleButton.setTitleColor(labelTextColor, for: .normal)
+        dealerWebsiteLabel.textColor = labelTextColor
+        dealerTwitterHandleLabel.textColor = labelTextColor
+        dealerTelegramHandleLabel.textColor = labelTextColor
+
+        let websiteTappedRecognizer = UITapGestureRecognizer(target: self, action: #selector(websiteTapped))
+        dealerWebsiteContainer.addGestureRecognizer(websiteTappedRecognizer)
+
+        let twitterTappedRecognizer = UITapGestureRecognizer(target: self, action: #selector(twitterTapped))
+        dealerTwitterHandleContainer.addGestureRecognizer(twitterTappedRecognizer)
+
+        let telegramTappedGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(telegramTapped))
+        dealerTelegramContainer.addGestureRecognizer(telegramTappedGestureRecognizer)
     }
 
     // MARK: DealerDetailSummaryComponent
@@ -101,7 +96,7 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     }
 
     func showDealerWebsite(_ website: String) {
-        dealerWebsiteButton.setTitle(website, for: .normal)
+        dealerWebsiteLabel.text = website
         dealerWebsiteContainer.isHidden = false
     }
 
@@ -110,7 +105,7 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     }
 
     func showDealerTwitterHandle(_ twitterHandle: String) {
-        dealerTwitterHandleButton.setTitle(twitterHandle, for: .normal)
+        dealerTwitterHandleLabel.text = twitterHandle
         dealerTwitterHandleContainer.isHidden = false
     }
 
@@ -119,7 +114,7 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     }
 
     func showDealerTelegramHandle(_ telegramHandle: String) {
-        dealerTelegramHandleButton.setTitle(telegramHandle, for: .normal)
+        dealerTelegramHandleLabel.text = telegramHandle
         dealerTelegramContainer.isHidden = false
     }
 
@@ -140,6 +135,20 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     private var telegramSelected: (() -> Void)?
     func onTelegramSelected(perform block: @escaping () -> Void) {
         telegramSelected = block
+    }
+
+    // MARK: Private
+
+    @objc private func websiteTapped(_ sender: Any) {
+        websiteSelected?()
+    }
+
+    @objc private func twitterTapped(_ sender: Any) {
+        twitterSelected?()
+    }
+
+    @objc private func telegramTapped(_ sender: Any) {
+        telegramSelected?()
     }
 
 }
