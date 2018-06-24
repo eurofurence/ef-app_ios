@@ -20,10 +20,12 @@ class URLHandler: EventConsumer {
     }
 
     func consume(event: DomainEvent.OpenURL) {
-        if urlOpener.canOpen(event.preferredURL) {
-            urlOpener.open(event.preferredURL)
-        } else if let backupURL = event.backupURL {
-            externalContentHandler?.handleExternalContent(url: backupURL)
+        let url = event.url
+
+        if urlOpener.canOpen(url) {
+            urlOpener.open(url)
+        } else {
+            externalContentHandler?.handleExternalContent(url: url)
         }
     }
 

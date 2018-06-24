@@ -151,28 +151,27 @@ class Dealers: DealersService {
     func openWebsite(for identifier: Dealer2.Identifier) {
         guard let dealer = fetchDealer(identifier) else { return }
         guard let externalLink = dealer.links?.first(where: { $0.fragmentType == .WebExternal }) else { return }
-        guard let preferredURL = URL(string: externalLink.target) else { return }
+        guard let url = URL(string: externalLink.target) else { return }
 
-        open(preferredURL, preferredURL)
+        open(url)
     }
 
     func openTwitter(for identifier: Dealer2.Identifier) {
         guard let dealer = fetchDealer(identifier), dealer.twitterHandle.isEmpty == false else { return }
-        guard let url = URL(string: "twitter://user?screen_name=\(dealer.twitterHandle)"),
-              let backupURL = URL(string: "https://twitter.com/")?.appendingPathComponent(dealer.twitterHandle) else { return }
+        guard let url = URL(string: "twitter://user?screen_name=\(dealer.twitterHandle)") else { return }
 
-        open(url, backupURL)
+        open(url)
     }
 
     func openTelegram(for identifier: Dealer2.Identifier) {
         guard let dealer = fetchDealer(identifier), dealer.telegramHandle.isEmpty == false else { return }
         guard let url = URL(string: "https://t.me/")?.appendingPathComponent(dealer.twitterHandle) else { return }
 
-        open(url, nil)
+        open(url)
     }
 
-    private func open(_ url: URL, _ backupURL: URL?) {
-        eventBus.post(DomainEvent.OpenURL(preferredURL: url, backupURL: backupURL))
+    private func open(_ url: URL) {
+        eventBus.post(DomainEvent.OpenURL(url: url))
     }
 
     private func fetchDealer(_ identifier: Dealer2.Identifier) -> APIDealer? {
