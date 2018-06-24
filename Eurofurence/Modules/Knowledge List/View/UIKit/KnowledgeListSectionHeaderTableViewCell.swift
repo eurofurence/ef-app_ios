@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KnowledgeListSectionHeaderTableViewCell: UITableViewCell, KnowledgeGroupHeaderScene {
+class KnowledgeListSectionHeaderTableViewCell: UITableViewCell, KnowledgeGroupScene {
 
     // MARK: IBOutlets
 

@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import UIKit.UIImage
 
-class CapturingKnowledgeGroupHeaderScene: KnowledgeGroupHeaderScene {
+class CapturingKnowledgeGroupHeaderScene: KnowledgeGroupScene {
     
     private(set) var capturedTitle: String?
     func setKnowledgeGroupTitle(_ title: String) {

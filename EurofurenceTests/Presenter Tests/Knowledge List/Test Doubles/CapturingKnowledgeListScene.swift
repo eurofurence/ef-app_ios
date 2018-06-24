@@ -47,7 +47,7 @@ class CapturingKnowledgeListScene: UIViewController, KnowledgeListScene {
 
 extension CapturingKnowledgeListScene {
     
-    func bind(_ headerScene: KnowledgeGroupHeaderScene, toGroupAt index: Int) {
+    func bind(_ headerScene: KnowledgeGroupScene, toGroupAt index: Int) {
         binder?.bind(headerScene, toGroupAt: index)
     }
     

@@ -278,7 +278,7 @@
 		CA0F7621203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F7620203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift */; };
 		CA0F762320322DEF009DA079 /* KnowledgeListBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F762220322DEF009DA079 /* KnowledgeListBinder.swift */; };
 		CA0F762520322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F762420322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift */; };
-		CA0F762720322E36009DA079 /* KnowledgeGroupHeaderScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F762620322E36009DA079 /* KnowledgeGroupHeaderScene.swift */; };
+		CA0F762720322E36009DA079 /* KnowledgeGroupScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F762620322E36009DA079 /* KnowledgeGroupScene.swift */; };
 		CA0F7629203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F7628203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift */; };
 		CA0F762B203230F2009DA079 /* KnowledgeGroupEntryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F762A203230F2009DA079 /* KnowledgeGroupEntryScene.swift */; };
 		CA0F762D2033118D009DA079 /* KnowledgeListModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0F762C2033118D009DA079 /* KnowledgeListModuleDelegate.swift */; };
@@ -1357,7 +1357,7 @@
 		CA0F7620203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KnowledgeListViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA0F762220322DEF009DA079 /* KnowledgeListBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListBinder.swift; sourceTree = "<group>"; };
 		CA0F762420322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeGroupHeaderScene.swift; sourceTree = "<group>"; };
-		CA0F762620322E36009DA079 /* KnowledgeGroupHeaderScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupHeaderScene.swift; sourceTree = "<group>"; };
+		CA0F762620322E36009DA079 /* KnowledgeGroupScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupScene.swift; sourceTree = "<group>"; };
 		CA0F7628203230E1009DA079 /* CapturingKnowledgeGroupEntryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeGroupEntryScene.swift; sourceTree = "<group>"; };
 		CA0F762A203230F2009DA079 /* KnowledgeGroupEntryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupEntryScene.swift; sourceTree = "<group>"; };
 		CA0F762C2033118D009DA079 /* KnowledgeListModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListModuleDelegate.swift; sourceTree = "<group>"; };
@@ -4291,7 +4291,7 @@
 		CA73AEE5201A0879004E77BF /* Abstraction */ = {
 			isa = PBXGroup;
 			children = (
-				CA0F762620322E36009DA079 /* KnowledgeGroupHeaderScene.swift */,
+				CA0F762620322E36009DA079 /* KnowledgeGroupScene.swift */,
 				CA0F762220322DEF009DA079 /* KnowledgeListBinder.swift */,
 				CA73AEE6201A0883004E77BF /* KnowledgeListScene.swift */,
 				CA73AEE8201A088C004E77BF /* KnowledgeListSceneDelegate.swift */,
@@ -5944,7 +5944,7 @@
 				78455B471F11779D005BE2D7 /* SplashScreenRouter.swift in Sources */,
 				CA957B601F705AF9004DFD5A /* MessagesViewControllerV2.swift in Sources */,
 				CA321F511F7BC8550050E489 /* PreloadSceneFactory.swift in Sources */,
-				CA0F762720322E36009DA079 /* KnowledgeGroupHeaderScene.swift in Sources */,
+				CA0F762720322E36009DA079 /* KnowledgeGroupScene.swift in Sources */,
 				CA72849B20A1C338007D912A /* PrivateMessagesObserver.swift in Sources */,
 				CA08157820D3865600F750D4 /* NavigationBarViewExtensionContainer.swift in Sources */,
 				CAD3BDAF205870B500C91E6E /* Link.swift in Sources */,

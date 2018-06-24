@@ -52,7 +52,7 @@ class KnowledgeListPresenter: KnowledgeListSceneDelegate {
 
         var viewModel: KnowledgeListViewModel
 
-        func bind(_ header: KnowledgeGroupHeaderScene, toGroupAt index: Int) {
+        func bind(_ header: KnowledgeGroupScene, toGroupAt index: Int) {
             let group = viewModel.knowledgeGroups[index]
 
             header.setKnowledgeGroupTitle(group.title)

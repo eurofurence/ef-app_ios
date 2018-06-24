@@ -8,7 +8,7 @@
 
 protocol KnowledgeListBinder {
 
-    func bind(_ header: KnowledgeGroupHeaderScene, toGroupAt index: Int)
+    func bind(_ header: KnowledgeGroupScene, toGroupAt index: Int)
     func bind(_ entry: KnowledgeGroupEntryScene, toEntryInGroup groupIndex: Int, at entryIndex: Int)
 
 }

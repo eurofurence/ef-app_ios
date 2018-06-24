@@ -1,5 +1,5 @@
 //
-//  KnowledgeGroupHeaderScene.swift
+//  KnowledgeGroupScene.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 12/02/2018.
@@ -8,7 +8,7 @@
 
 import UIKit.UIImage
 
-protocol KnowledgeGroupHeaderScene {
+protocol KnowledgeGroupScene {
 
     func setKnowledgeGroupTitle(_ title: String)
     func setKnowledgeGroupIcon(_ icon: UIImage)
