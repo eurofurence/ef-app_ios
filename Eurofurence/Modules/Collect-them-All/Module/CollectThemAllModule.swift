@@ -13,7 +13,10 @@ struct CollectThemAllModule: CollectThemAllModuleProviding {
     var sceneFactory: CollectThemAllSceneFactory
 
     func makeCollectThemAllModule() -> UIViewController {
-        return sceneFactory.makeCollectThemAllScene()
+        let scene = sceneFactory.makeCollectThemAllScene()
+        scene.setShortCollectThemAllTitle(.collect)
+
+        return scene
     }
 
 }

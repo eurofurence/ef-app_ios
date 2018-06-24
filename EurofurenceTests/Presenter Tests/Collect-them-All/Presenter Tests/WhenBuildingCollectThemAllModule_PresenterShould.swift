@@ -16,4 +16,9 @@ class WhenBuildingCollectThemAllModule_PresenterShould: XCTestCase {
         XCTAssertEqual(context.scene, context.producedViewController)
     }
     
+    func testApplyTheShortTitleToTheScene() {
+        let context = CollectThemAllPresenterTestBuilder().build()
+        XCTAssertEqual(.collect, context.scene.capturedShortTitle)
+    }
+    
 }

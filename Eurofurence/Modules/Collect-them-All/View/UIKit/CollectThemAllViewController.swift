@@ -10,4 +10,10 @@ import UIKit
 
 class CollectThemAllViewController: UIViewController, CollectThemAllScene {
 
+    // MARK: CollectThemAllScene
+
+    func setShortCollectThemAllTitle(_ shortTitle: String) {
+        tabBarItem.title = shortTitle
+    }
+
 }

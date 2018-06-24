@@ -10,4 +10,6 @@ import Foundation
 
 protocol CollectThemAllScene {
 
+    func setShortCollectThemAllTitle(_ shortTitle: String)
+
 }

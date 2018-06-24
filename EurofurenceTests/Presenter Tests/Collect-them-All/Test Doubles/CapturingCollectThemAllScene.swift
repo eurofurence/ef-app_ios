@@ -11,4 +11,9 @@ import UIKit
 
 class CapturingCollectThemAllScene: UIViewController, CollectThemAllScene {
     
+    private(set) var capturedShortTitle: String?
+    func setShortCollectThemAllTitle(_ shortTitle: String) {
+        capturedShortTitle = shortTitle
+    }
+    
 }

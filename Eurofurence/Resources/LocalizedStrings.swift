@@ -139,6 +139,9 @@ public extension String {
     public static let aboutTheArt = NSLocalizedString("AboutTheArt",
                                                       comment: "Title for section in the Dealer Details screen showing the sample art provided by the dealer")
 
+    public static let collect = NSLocalizedString("Collect",
+                                                  comment: "Short title for the Collect-them-All screen shown in the tab bar")
+
     private struct Formatters {
         static var numbers = NumberFormatter()
     }
