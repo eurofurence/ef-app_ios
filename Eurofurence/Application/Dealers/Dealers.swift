@@ -155,7 +155,9 @@ class Dealers: DealersService {
         guard let externalLink = dealer.links?.first(where: { $0.fragmentType == .WebExternal }) else { return }
         guard let url = URL(string: externalLink.target) else { return }
 
-        urlOpener.open(url)
+        if urlOpener.canOpen(url) {
+            urlOpener.open(url)
+        }
     }
 
     func openTwitter(for identifier: Dealer2.Identifier) {
