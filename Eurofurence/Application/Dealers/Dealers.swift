@@ -159,9 +159,9 @@ class Dealers: DealersService {
 
         if urlOpener.canOpen(url) {
             urlOpener.open(url)
+        } else {
+            externalContentHandler?.handleExternalContent(url: url)
         }
-
-        externalContentHandler?.handleExternalContent(url: url)
     }
 
     func openTwitter(for identifier: Dealer2.Identifier) {
