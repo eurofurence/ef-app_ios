@@ -19,4 +19,16 @@ class DefaultCollectThemAllRequestFactoryShould: XCTestCase {
         XCTAssertEqual(expectedURL, anonymousRequest.url)
     }
     
+    func testProduceExpectedAuthenticatedRequest() {
+        let factory = DefaultCollectThemAllRequestFactory()
+        let credential = Credential(username: .random,
+                                    registrationNumber: .random,
+                                    authenticationToken: .random,
+                                    tokenExpiryDate: .random)
+        let authenticatedRequest = factory.makeAuthenticatedGameURLRequest(credential: credential)
+        let expectedURL = URL(string: "https://app.eurofurence.org/collectemall/")!.appendingPathComponent("#token-\(credential.authenticationToken)")
+        
+        XCTAssertEqual(expectedURL, authenticatedRequest.url)
+    }
+    
 }
