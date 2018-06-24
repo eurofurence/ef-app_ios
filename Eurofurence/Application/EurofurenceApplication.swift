@@ -201,6 +201,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     }
 
+    func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler) {
+        dealers.externalContentHandler = externalContentHandler
+    }
+
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
         enum SyncError: Error {
             case failedToLoadResponse

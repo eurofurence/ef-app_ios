@@ -87,6 +87,8 @@ class Dealers: DealersService {
     private let imageCache: ImagesCache
     private let urlOpener: URLOpener
 
+    var externalContentHandler: ExternalContentHandler?
+
     init(eventBus: EventBus, dataStore: EurofurenceDataStore, imageCache: ImagesCache, urlOpener: URLOpener) {
         self.eventBus = eventBus
         self.imageCache = imageCache
@@ -158,6 +160,8 @@ class Dealers: DealersService {
         if urlOpener.canOpen(url) {
             urlOpener.open(url)
         }
+
+        externalContentHandler?.handleExternalContent(url: url)
     }
 
     func openTwitter(for identifier: Dealer2.Identifier) {

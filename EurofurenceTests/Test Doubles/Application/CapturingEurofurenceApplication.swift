@@ -139,6 +139,10 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         return nil
     }
     
+    func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler) {
+        
+    }
+    
     private(set) var wasToldToRefreshLocalStore = false
     fileprivate var refreshCompletionHandler: ((Error?) -> Void)?
     fileprivate var refreshProgress: Progress?
