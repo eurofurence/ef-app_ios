@@ -164,7 +164,10 @@ class Dealers: DealersService {
     }
 
     func openTelegram(for identifier: Dealer2.Identifier) {
+        guard let dealer = fetchDealer(identifier) else { return }
+        guard let url = URL(string: "https://t.me/")?.appendingPathComponent(dealer.twitterHandle) else { return }
 
+        eventBus.post(DomainEvent.OpenURL(url: url))
     }
 
     private func fetchDealer(_ identifier: Dealer2.Identifier) -> APIDealer? {

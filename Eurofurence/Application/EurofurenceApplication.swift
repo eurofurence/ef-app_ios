@@ -200,7 +200,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func openTelegram(for identifier: Dealer2.Identifier) {
-
+        dealers.openTelegram(for: identifier)
     }
 
     func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler) {
