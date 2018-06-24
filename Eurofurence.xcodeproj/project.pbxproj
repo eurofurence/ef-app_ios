@@ -400,6 +400,7 @@
 		CA27618A20DFEE00000E52AC /* ExternalContentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618920DFEE00000E52AC /* ExternalContentHandler.swift */; };
 		CA27618C20DFEF6E000E52AC /* OpenURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618B20DFEF6E000E52AC /* OpenURL.swift */; };
 		CA27618E20DFEFB4000E52AC /* URLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618D20DFEFB4000E52AC /* URLHandler.swift */; };
+		CA27619020DFF0A5000E52AC /* WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618F20DFF0A5000E52AC /* WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould.swift */; };
 		CA281B641F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
@@ -1450,6 +1451,7 @@
 		CA27618920DFEE00000E52AC /* ExternalContentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalContentHandler.swift; sourceTree = "<group>"; };
 		CA27618B20DFEF6E000E52AC /* OpenURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURL.swift; sourceTree = "<group>"; };
 		CA27618D20DFEFB4000E52AC /* URLHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHandler.swift; sourceTree = "<group>"; };
+		CA27618F20DFF0A5000E52AC /* WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
@@ -3368,6 +3370,7 @@
 				CA36A4A520D9847200EE6537 /* WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift */,
 				CA36A4AF20D9983D00EE6537 /* WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift */,
 				CA36A4D120DACDA100EE6537 /* WhenTellingDealersIndexToSearch_ApplicationShould.swift */,
+				CA27618F20DFF0A5000E52AC /* WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould.swift */,
 				CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */,
 				CA27618720DFEC73000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCannotHandleURL_ApplicationShould.swift */,
 			);
@@ -6258,6 +6261,7 @@
 				CA71A348204031F700C847C3 /* RandomValueProviding.swift in Sources */,
 				7820A6FD1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift in Sources */,
 				CA72849820A1C091007D912A /* WhenSyncingWhileLoggedIn.swift in Sources */,
+				CA27619020DFF0A5000E52AC /* WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */,
 				CA00AE8520D2320700C2FBB0 /* StubScheduleViewModel.swift in Sources */,
 				CA71A34C204032FC00C847C3 /* Integer+RandomValueProviding.swift in Sources */,
 				CABEB0D420C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift in Sources */,

@@ -196,7 +196,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func openTwitter(for identifier: Dealer2.Identifier) {
-
+        dealers.openTwitter(for: identifier)
     }
 
     func openTelegram(for identifier: Dealer2.Identifier) {

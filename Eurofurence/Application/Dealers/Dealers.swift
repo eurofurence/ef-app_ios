@@ -157,7 +157,10 @@ class Dealers: DealersService {
     }
 
     func openTwitter(for identifier: Dealer2.Identifier) {
+        guard let dealer = models.first(where: { $0.identifier == identifier.rawValue }) else { return }
+        guard let url = URL(string: "https://twitter.com/")?.appendingPathComponent(dealer.twitterHandle) else { return }
 
+        eventBus.post(DomainEvent.OpenURL(url: url))
     }
 
     func openTelegram(for identifier: Dealer2.Identifier) {
