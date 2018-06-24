@@ -158,7 +158,7 @@ class Dealers: DealersService {
 
     func openTwitter(for identifier: Dealer2.Identifier) {
         guard let dealer = fetchDealer(identifier), dealer.twitterHandle.isEmpty == false else { return }
-        guard let url = URL(string: "https://twitter.com/")?.appendingPathComponent(dealer.twitterHandle) else { return }
+        guard let url = URL(string: "twitter://user?screen_name=\(dealer.twitterHandle)") else { return }
 
         open(url)
     }

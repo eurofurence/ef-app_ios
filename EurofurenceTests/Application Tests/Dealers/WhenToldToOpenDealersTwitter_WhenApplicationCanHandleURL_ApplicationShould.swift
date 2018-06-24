@@ -20,7 +20,7 @@ class WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould
         context.syncAPI.simulateSuccessfulSync(syncResponse)
         let dealerIdentifier = Dealer2.Identifier(dealer.identifier)
         context.application.openTwitter(for: dealerIdentifier)
-        let expected = URL(string: "https://twitter.com/")!.appendingPathComponent(dealer.twitterHandle)
+        let expected = URL(string: "twitter://user?screen_name=\(dealer.twitterHandle)")!
         
         XCTAssertEqual(expected, urlOpener.capturedURLToOpen)
     }
