@@ -11,7 +11,8 @@ import Foundation
 extension DomainEvent {
 
     struct OpenURL {
-        var url: URL
+        var preferredURL: URL
+        var backupURL: URL?
     }
 
 }
