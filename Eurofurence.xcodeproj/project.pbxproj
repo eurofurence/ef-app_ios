@@ -398,6 +398,8 @@
 		CA27618620DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */; };
 		CA27618820DFEC73000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCannotHandleURL_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618720DFEC73000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCannotHandleURL_ApplicationShould.swift */; };
 		CA27618A20DFEE00000E52AC /* ExternalContentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618920DFEE00000E52AC /* ExternalContentHandler.swift */; };
+		CA27618C20DFEF6E000E52AC /* OpenURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618B20DFEF6E000E52AC /* OpenURL.swift */; };
+		CA27618E20DFEFB4000E52AC /* URLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618D20DFEFB4000E52AC /* URLHandler.swift */; };
 		CA281B641F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
@@ -1446,6 +1448,8 @@
 		CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA27618720DFEC73000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCannotHandleURL_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersWebsite_WhenApplicationCannotHandleURL_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA27618920DFEE00000E52AC /* ExternalContentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalContentHandler.swift; sourceTree = "<group>"; };
+		CA27618B20DFEF6E000E52AC /* OpenURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURL.swift; sourceTree = "<group>"; };
+		CA27618D20DFEFB4000E52AC /* URLHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHandler.swift; sourceTree = "<group>"; };
 		CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
@@ -2522,6 +2526,7 @@
 				CA72849920A1C332007D912A /* Observers */,
 				CACF1ECA20B6D64300D904B5 /* Repositories */,
 				CAB3A72B1F7532DF005DF77B /* System Services */,
+				CA27618D20DFEFB4000E52AC /* URLHandler.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -4276,6 +4281,7 @@
 				CACF1ECE20B6D8CB00D904B5 /* ImageDownloadedEvent.swift */,
 				CA1F7D6620CB856D00FB87F5 /* LatestDataFetchedEvent.swift */,
 				CA8D97D02016126E0074838F /* LoggedIn.swift */,
+				CA27618B20DFEF6E000E52AC /* OpenURL.swift */,
 				CA8D97D2201612A70074838F /* RemoteNotificationRegistrationSucceeded.swift */,
 				CA52C67E20D59572009D3A9E /* SignificantTimePassedEvent.swift */,
 			);
@@ -5505,6 +5511,7 @@
 				CACF1E5020AE2B6100D904B5 /* EventDetailModule.swift in Sources */,
 				CA162E9220A652B5004AFED6 /* Event2.swift in Sources */,
 				9A861ED81F25564900B75A8C /* StoryboardNotificationRouter.swift in Sources */,
+				CA27618E20DFEFB4000E52AC /* URLHandler.swift in Sources */,
 				CA00AE6C20D178FA00C2FBB0 /* UITableView+Convenience.swift in Sources */,
 				9A9488011F21382E00119DC8 /* EventsEntity.swift in Sources */,
 				9ACF99761EBE3B4C006FC958 /* SharedFunctions.swift in Sources */,
@@ -5837,6 +5844,7 @@
 				CABA43831FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift in Sources */,
 				CA4FBE121F7304B400D29405 /* DateFormatterProtocol.swift in Sources */,
 				CAA39E0820051B5C00F2F3D3 /* LocalizedStrings.swift in Sources */,
+				CA27618C20DFEF6E000E52AC /* OpenURL.swift in Sources */,
 				D6F3DEDDAFE507E873CB3806 /* WikiText.swift in Sources */,
 				CA1B6F2420DB886300ADF414 /* DealerDetailViewModel.swift in Sources */,
 				CA00AE7020D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift in Sources */,

@@ -46,6 +46,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private let schedule: Schedule
     private let dealers: Dealers
     private let significantTimeObserver: SignificantTimeObserver
+    private let urlHandler: URLHandler
 
     init(userPreferences: UserPreferences,
          dataStore: EurofurenceDataStore,
@@ -99,7 +100,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         imageDownloader = ImageDownloader(eventBus: eventBus, imageAPI: imageAPI)
         significantTimeObserver = SignificantTimeObserver(significantTimeChangeAdapter: significantTimeChangeAdapter,
                                                           eventBus: eventBus)
-        dealers = Dealers(eventBus: eventBus, dataStore: dataStore, imageCache: imageCache, urlOpener: urlOpener)
+        dealers = Dealers(eventBus: eventBus, dataStore: dataStore, imageCache: imageCache)
+        urlHandler = URLHandler(eventBus: eventBus, urlOpener: urlOpener)
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
@@ -202,7 +204,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler) {
-        dealers.externalContentHandler = externalContentHandler
+        urlHandler.externalContentHandler = externalContentHandler
     }
 
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {

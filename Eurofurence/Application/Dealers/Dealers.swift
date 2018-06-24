@@ -85,14 +85,10 @@ class Dealers: DealersService {
     private var models = [APIDealer]()
     private let eventBus: EventBus
     private let imageCache: ImagesCache
-    private let urlOpener: URLOpener
 
-    var externalContentHandler: ExternalContentHandler?
-
-    init(eventBus: EventBus, dataStore: EurofurenceDataStore, imageCache: ImagesCache, urlOpener: URLOpener) {
+    init(eventBus: EventBus, dataStore: EurofurenceDataStore, imageCache: ImagesCache) {
         self.eventBus = eventBus
         self.imageCache = imageCache
-        self.urlOpener = urlOpener
 
         eventBus.subscribe(consumer: UpdateDealersWhenSyncOccurs(dealers: self))
 
@@ -157,11 +153,7 @@ class Dealers: DealersService {
         guard let externalLink = dealer.links?.first(where: { $0.fragmentType == .WebExternal }) else { return }
         guard let url = URL(string: externalLink.target) else { return }
 
-        if urlOpener.canOpen(url) {
-            urlOpener.open(url)
-        } else {
-            externalContentHandler?.handleExternalContent(url: url)
-        }
+        eventBus.post(DomainEvent.OpenURL(url: url))
     }
 
     func openTwitter(for identifier: Dealer2.Identifier) {
