@@ -7,8 +7,25 @@
 //
 
 import UIKit
+import WebKit
 
 class CollectThemAllViewController: UIViewController, CollectThemAllScene {
+
+    // MARK: Properties
+
+    private var webView: WKWebView?
+
+    // MARK: Overrides
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let webConfiguration = WKWebViewConfiguration()
+        webConfiguration.preferences.javaScriptEnabled = true
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView?.allowsLinkPreview = false
+        view = webView
+    }
 
     // MARK: CollectThemAllScene
 
@@ -17,7 +34,7 @@ class CollectThemAllViewController: UIViewController, CollectThemAllScene {
     }
 
     func setCollectThemAllTitle(_ title: String) {
-        super.title = title
+        navigationItem.title = title
     }
 
 }
