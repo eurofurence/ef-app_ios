@@ -59,14 +59,7 @@ class EurofurenceApplicationBuilder {
         imageRepository = PersistentImageRepository()
         significantTimeChangeAdapter = ApplicationSignificantTimeChangeAdapter()
         urlOpener = AppURLOpener()
-
-        struct DummyCollectThemAllRequestFactory: CollectThemAllRequestFactory {
-            func makeAnonymousGameURLRequest() -> URLRequest {
-                return URLRequest(url: URL(string: "https://www.eurofurence.org")!)
-            }
-        }
-
-        collectThemAllRequestFactory = DummyCollectThemAllRequestFactory()
+        collectThemAllRequestFactory = DefaultCollectThemAllRequestFactory()
     }
 
     @discardableResult
