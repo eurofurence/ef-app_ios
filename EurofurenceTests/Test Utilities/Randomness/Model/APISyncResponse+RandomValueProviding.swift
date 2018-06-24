@@ -163,7 +163,8 @@ extension APIDealer: RandomValueProviding {
                          isAfterDark: .random,
                          artistThumbnailImageId: .random,
                          artistImageId: .random,
-                         artPreviewImageId: .random)
+                         artPreviewImageId: .random,
+                         categories: .random)
     }
     
 }

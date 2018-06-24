@@ -331,7 +331,7 @@
                             "ArtistImageId": null,
                             "ArtPreviewImageId": null,
                             "IsAfterDark": true,
-                            "Categories": []
+                            "Categories": ["General", "Art"]
                             }],
         "DeletedEntities": [{
                             "LastChangeDateTimeUtc": "2018-03-28T09:32:16.110Z",

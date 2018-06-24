@@ -281,6 +281,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                     entity.artistThumbnailImageId = dealer.artistThumbnailImageId
                     entity.artistImageId = dealer.artistImageId
                     entity.artPreviewImageId = dealer.artPreviewImageId
+                    entity.categories = dealer.categories
                 }
             }
         }

@@ -191,7 +191,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                   isAfterDark: true,
                                                                   artistThumbnailImageId: nil,
                                                                   artistImageId: nil,
-                                                                  artPreviewImageId: nil)],
+                                                                  artPreviewImageId: nil,
+                                                                  categories: ["General", "Art"])],
                                               deleted: [APIDealer(identifier: "d53e6f6b-fdcb-4754-a4b9-6892e8d317d7",
                                                                   displayName: "",
                                                                   attendeeNickname: "Frazzle",
@@ -201,7 +202,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                   isAfterDark: false,
                                                                   artistThumbnailImageId: "59b6023f-f739-4d40-a977-3d6bad1ab434",
                                                                   artistImageId: "81e6a80a-21cb-4524-a961-9d356aada9a1",
-                                                                  artPreviewImageId: "6a624433-bc5f-4d31-b18e-0c443611f497")])
+                                                                  artPreviewImageId: "6a624433-bc5f-4d31-b18e-0c443611f497",
+                                                                  categories: [])])
         
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,

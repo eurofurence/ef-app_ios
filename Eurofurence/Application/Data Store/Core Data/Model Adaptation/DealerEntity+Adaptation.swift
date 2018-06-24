@@ -22,7 +22,8 @@ extension DealerEntity: EntityAdapting {
                          isAfterDark: isAfterDark,
                          artistThumbnailImageId: artistThumbnailImageId,
                          artistImageId: artistImageId,
-                         artPreviewImageId: artPreviewImageId)
+                         artPreviewImageId: artPreviewImageId,
+                         categories: categories ?? [])
     }
 
 }

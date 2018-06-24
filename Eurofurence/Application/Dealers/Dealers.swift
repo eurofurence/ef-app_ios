@@ -129,7 +129,7 @@ class Dealers: DealersService {
                                               dealersDenMapLocationGraphicPNGData: nil,
                                               preferredName: dealerModel.preferredName,
                                               alternateName: dealerModel.alternateName,
-                                              categories: [],
+                                              categories: model.categories.sorted(),
                                               dealerShortDescription: "",
                                               isAttendingOnThursday: dealerModel.isAttendingOnThursday,
                                               isAttendingOnFriday: dealerModel.isAttendingOnFriday,

@@ -52,4 +52,8 @@ class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
         XCTAssertEqual(expected, dealerData?.artPreviewImagePNGData)
     }
     
+    func testProvideTheDealerCategories() {
+        XCTAssertEqual(randomDealer.categories.sorted(), dealerData?.categories)
+    }
+    
 }
