@@ -17,7 +17,7 @@ struct UserDefaultsPreferences: UserPreferences {
     }
 
     init() {
-        defaults.register(defaults: [Keys.refreshStoreOnLaunchKey: true])
+        defaults.register(defaults: [Keys.refreshStoreOnLaunchKey: false])
     }
 
     var refreshStoreOnLaunch: Bool {
