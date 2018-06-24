@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ApplicationDirector: RootModuleDelegate,
+class ApplicationDirector: ExternalContentHandler,
+                           RootModuleDelegate,
                            TutorialModuleDelegate,
                            PreloadModuleDelegate,
                            NewsModuleDelegate,
@@ -111,6 +112,13 @@ class ApplicationDirector: RootModuleDelegate,
         knowledgeNavigationController = navigationControllerFactory.makeNavigationController()
 
         rootModuleProviding.makeRootModule(self)
+    }
+
+    // MARK: ExternalContentHandler
+
+    func handleExternalContent(url: URL) {
+        let module = webModuleProviding.makeWebModule(for: url)
+        tabController?.present(module, animated: true)
     }
 
     // MARK: RootModuleDelegate
