@@ -14,14 +14,8 @@ class CollectThemAllModuleBuilder {
     private var service: CollectThemAllService
 
     init() {
-        struct DummyCollectThemAllService: CollectThemAllService {
-            func subscribe(_ observer: CollectThemAllURLObserver) {
-
-            }
-        }
-
         sceneFactory = StoryboardCollectThemAllSceneFactory()
-        service = DummyCollectThemAllService()
+        service = EurofurenceApplication.shared
     }
 
     @discardableResult
