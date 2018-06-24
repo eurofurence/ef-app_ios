@@ -13,17 +13,7 @@ class CollectThemAllModuleBuilder {
     private var sceneFactory: CollectThemAllSceneFactory
 
     init() {
-        struct DummyCollectThemAllSceneFactory: CollectThemAllSceneFactory {
-            func makeCollectThemAllScene() -> UIViewController & CollectThemAllScene {
-                class DummyCollectThemAllScene: UIViewController, CollectThemAllScene {
-
-                }
-
-                return DummyCollectThemAllScene()
-            }
-        }
-
-        sceneFactory = DummyCollectThemAllSceneFactory()
+        sceneFactory = StoryboardCollectThemAllSceneFactory()
     }
 
     @discardableResult
