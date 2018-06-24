@@ -79,8 +79,13 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
         }
 
         private var components = [DetailViewModelComponent]()
+        private let dealerIdentifier: Dealer2.Identifier
+        private let dealersService: DealersService
 
-        init(data: ExtendedDealerData) {
+        init(data: ExtendedDealerData, dealerIdentifier: Dealer2.Identifier, dealersService: DealersService) {
+            self.dealerIdentifier = dealerIdentifier
+            self.dealersService = dealersService
+
             let summary = DealerDetailSummaryViewModel(artistImagePNGData: data.artistImagePNGData,
                                                        title: data.preferredName,
                                                        subtitle: data.alternateName,
@@ -159,7 +164,7 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
         }
 
         func openWebsite() {
-
+            dealersService.openWebsite(for: dealerIdentifier)
         }
 
         func openTwitter() {
@@ -185,7 +190,7 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
     func makeDealerDetailViewModel(for identifier: Dealer2.Identifier,
                                    completionHandler: @escaping (DealerDetailViewModel) -> Void) {
         dealersService.fetchExtendedDealerData(for: identifier) { (data) in
-            completionHandler(ViewModel(data: data))
+            completionHandler(ViewModel(data: data, dealerIdentifier: identifier, dealersService: self.dealersService))
         }
     }
 

@@ -32,6 +32,11 @@ class FakeDealersService: DealersService {
         completionHandler(data)
     }
     
+    private(set) var capturedIdentifierForOpeningWebsite: Dealer2.Identifier?
+    func openWebsite(for identifier: Dealer2.Identifier) {
+        capturedIdentifierForOpeningWebsite = identifier
+    }
+    
 }
 
 extension FakeDealersService {

@@ -13,6 +13,7 @@ protocol DealersService {
     func makeDealersIndex() -> DealersIndex
     func fetchIconPNGData(for identifier: Dealer2.Identifier, completionHandler: @escaping (Data?) -> Void)
     func fetchExtendedDealerData(for dealer: Dealer2.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void)
+    func openWebsite(for identifier: Dealer2.Identifier)
 
 }
 

@@ -13,6 +13,7 @@ class DealerDetailInteractorTestBuilder {
     
     struct Context {
         var interactor: DefaultDealerDetailInteractor
+        var dealersService: FakeDealersService
         var dealerData: ExtendedDealerData
         var dealerIdentifier: Dealer2.Identifier
     }
@@ -23,7 +24,7 @@ class DealerDetailInteractorTestBuilder {
         dealersService.stub(data, for: identifier)
         let interactor = DefaultDealerDetailInteractor(dealersService: dealersService)
         
-        return Context(interactor: interactor, dealerData: data, dealerIdentifier: identifier)
+        return Context(interactor: interactor, dealersService: dealersService, dealerData: data, dealerIdentifier: identifier)
     }
     
 }
@@ -270,6 +271,14 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould: XCTes
         
         XCTAssertNil(visitor.visitedAboutTheArt)
         XCTAssertEqual(3, viewModel?.numberOfComponents)
+    }
+    
+    func testTellTheDealerServiceToOpenWebsiteForDealerWhenViewModelIsToldToOpenWebsite() {
+        let context = DealerDetailInteractorTestBuilder().build()
+        let viewModel = context.makeViewModel()
+        viewModel?.openWebsite()
+        
+        XCTAssertEqual(context.dealerIdentifier, context.dealersService.capturedIdentifierForOpeningWebsite)
     }
     
 }

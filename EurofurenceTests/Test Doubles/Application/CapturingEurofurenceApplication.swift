@@ -10,6 +10,10 @@
 import Foundation
 
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
+    func openWebsite(for identifier: Dealer2.Identifier) {
+        
+    }
+    
     func fetchExtendedDealerData(for dealer: Dealer2.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
         
     }
