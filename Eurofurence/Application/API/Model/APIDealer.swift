@@ -23,5 +23,6 @@ struct APIDealer: Equatable {
     var categories: [String]
     var shortDescription: String
     var links: [APILink]?
+    var twitterHandle: String
 
 }

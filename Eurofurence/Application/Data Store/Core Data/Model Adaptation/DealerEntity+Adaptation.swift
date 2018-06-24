@@ -26,7 +26,8 @@ extension DealerEntity: EntityAdapting {
                          artPreviewImageId: artPreviewImageId,
                          categories: categories ?? [],
                          shortDescription: dealerShortDescription!,
-                         links: linksArray?.sorted())
+                         links: linksArray?.sorted(),
+                         twitterHandle: twitterHandle!)
     }
 
 }

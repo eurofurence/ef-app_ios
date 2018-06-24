@@ -23,6 +23,7 @@
         <attribute name="displayName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isAfterDark" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="twitterHandle" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="links" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LinkEntity" inverseName="dealer" inverseEntity="LinkEntity" syncable="YES"/>
     </entity>
     <entity name="EventEntity" representedClassName="EventEntity" syncable="YES" codeGenerationType="class">
@@ -77,7 +78,7 @@
     <elements>
         <element name="AnnouncementEntity" positionX="-36" positionY="99" width="128" height="105"/>
         <element name="ConferenceDayEntity" positionX="-36" positionY="108" width="128" height="75"/>
-        <element name="DealerEntity" positionX="-36" positionY="117" width="128" height="240"/>
+        <element name="DealerEntity" positionX="-36" positionY="117" width="128" height="255"/>
         <element name="EventEntity" positionX="-36" positionY="72" width="128" height="225"/>
         <element name="FavouriteEventEntity" positionX="-36" positionY="108" width="128" height="60"/>
         <element name="KnowledgeEntryEntity" positionX="-63" positionY="9" width="128" height="135"/>

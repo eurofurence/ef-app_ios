@@ -283,6 +283,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                     entity.artPreviewImageId = dealer.artPreviewImageId
                     entity.categories = dealer.categories
                     entity.dealerShortDescription = dealer.shortDescription
+                    entity.twitterHandle = dealer.twitterHandle
 
                     let links = dealer.links?.map { (link) -> LinkEntity in
                         let predicate = NSPredicate(format: "\(#keyPath(LinkEntity.name)) == %@ AND \(#keyPath(LinkEntity.target)) == %@ AND \(#keyPath(LinkEntity.fragmentType)) == %li", link.name, link.target, link.fragmentType.rawValue)
