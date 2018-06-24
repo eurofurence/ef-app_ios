@@ -27,6 +27,7 @@ class CapturingCredentialStore: CredentialStore {
     private(set) var didDeletePersistedToken = false
     func deletePersistedToken() {
         didDeletePersistedToken = true
+        persistedCredential = nil
     }
     
 }

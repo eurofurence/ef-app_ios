@@ -25,4 +25,19 @@ class WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould: XCTestCase 
         XCTAssertEqual(expected, observer.capturedURLRequest)
     }
     
+    func testUpdateTheObserversWithTheAnonymousRequestWhenLoggingOut() {
+        let collectThemAllRequestFactory = StubCollectThemAllRequestFactory()
+        let credential = Credential(username: .random,
+                                    registrationNumber: .random,
+                                    authenticationToken: .random,
+                                    tokenExpiryDate: .random)
+        let context = ApplicationTestBuilder().with(collectThemAllRequestFactory).with(credential).build()
+        let observer = CapturingCollectThemAllURLObserver()
+        context.application.subscribe(observer)
+        context.application.logout() { (_) in }
+        context.capturingTokenRegistration.succeedLastRequest()
+        
+        XCTAssertEqual(collectThemAllRequestFactory.anonymousGameURLRequest, observer.capturedURLRequest)
+    }
+    
 }

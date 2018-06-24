@@ -49,6 +49,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private let dealers: Dealers
     private let significantTimeObserver: SignificantTimeObserver
     private let urlHandler: URLHandler
+    private let collectThemAll: CollectThemAll
 
     init(userPreferences: UserPreferences,
          dataStore: EurofurenceDataStore,
@@ -107,6 +108,9 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                                                           eventBus: eventBus)
         dealers = Dealers(eventBus: eventBus, dataStore: dataStore, imageCache: imageCache)
         urlHandler = URLHandler(eventBus: eventBus, urlOpener: urlOpener)
+        collectThemAll = CollectThemAll(eventBus: eventBus,
+                                        collectThemAllRequestFactory: collectThemAllRequestFactory,
+                                        credentialStore: credentialStore)
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
@@ -214,11 +218,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func subscribe(_ observer: CollectThemAllURLObserver) {
-        if let credential = credentialStore.persistedCredential {
-            observer.collectThemAllGameRequestDidChange(collectThemAllRequestFactory.makeAuthenticatedGameURLRequest(credential: credential))
-        } else {
-            observer.collectThemAllGameRequestDidChange(collectThemAllRequestFactory.makeAnonymousGameURLRequest())
-        }
+        collectThemAll.subscribe(observer)
     }
 
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {

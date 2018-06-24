@@ -427,6 +427,8 @@
 		CA2761CC20E034BD000E52AC /* StubCollectThemAllRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761CB20E034BD000E52AC /* StubCollectThemAllRequestFactory.swift */; };
 		CA2761CE20E034CB000E52AC /* CapturingCollectThemAllURLObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761CD20E034CB000E52AC /* CapturingCollectThemAllURLObserver.swift */; };
 		CA2761D020E0353F000E52AC /* WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761CF20E0353F000E52AC /* WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould.swift */; };
+		CA2761D220E03B29000E52AC /* CollectThemAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761D120E03B29000E52AC /* CollectThemAll.swift */; };
+		CA2761D420E03B88000E52AC /* LoggedOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761D320E03B88000E52AC /* LoggedOut.swift */; };
 		CA281B641F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
@@ -1504,6 +1506,8 @@
 		CA2761CB20E034BD000E52AC /* StubCollectThemAllRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubCollectThemAllRequestFactory.swift; sourceTree = "<group>"; };
 		CA2761CD20E034CB000E52AC /* CapturingCollectThemAllURLObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingCollectThemAllURLObserver.swift; sourceTree = "<group>"; };
 		CA2761CF20E0353F000E52AC /* WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA2761D120E03B29000E52AC /* CollectThemAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectThemAll.swift; sourceTree = "<group>"; };
+		CA2761D320E03B88000E52AC /* LoggedOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOut.swift; sourceTree = "<group>"; };
 		CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
@@ -2552,6 +2556,7 @@
 			children = (
 				CA1F7D6220CB83A100FB87F5 /* Announcements.swift */,
 				CA0E5212208F4CD7005259FE /* AnnouncementsService.swift */,
+				CA2761D120E03B29000E52AC /* CollectThemAll.swift */,
 				CA2761C520E02EDC000E52AC /* CollectThemAllRequestFactory.swift */,
 				CA2761B920E02A16000E52AC /* CollectThemAllService.swift */,
 				CA162E8520A5BB85004AFED6 /* ConventionCountdownController.swift */,
@@ -4441,6 +4446,7 @@
 				CACF1ECE20B6D8CB00D904B5 /* ImageDownloadedEvent.swift */,
 				CA1F7D6620CB856D00FB87F5 /* LatestDataFetchedEvent.swift */,
 				CA8D97D02016126E0074838F /* LoggedIn.swift */,
+				CA2761D320E03B88000E52AC /* LoggedOut.swift */,
 				CA27618B20DFEF6E000E52AC /* OpenURL.swift */,
 				CA8D97D2201612A70074838F /* RemoteNotificationRegistrationSucceeded.swift */,
 				CA52C67E20D59572009D3A9E /* SignificantTimePassedEvent.swift */,
@@ -5829,6 +5835,7 @@
 				CA162EE020AAF7C3004AFED6 /* APIRoom.swift in Sources */,
 				CA63759E208DFE0500536BE2 /* ScheduleViewController.swift in Sources */,
 				CA89CBA9207F7F9A00570D54 /* NewsViewModel.swift in Sources */,
+				CA2761D220E03B29000E52AC /* CollectThemAll.swift in Sources */,
 				9A861EB61F25550700B75A8C /* TutorialPageScene.swift in Sources */,
 				CA162E9A20A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift in Sources */,
 				9A2A948D1F12D64B004D66FB /* DataModelVersionProviding.swift in Sources */,
@@ -5850,6 +5857,7 @@
 				CA36A48720D9260000EE6537 /* DealerGroupHeader.swift in Sources */,
 				CAF5979A20449A1D00089BE8 /* APIKnowledgeEntry.swift in Sources */,
 				781A943E1F1A1A13002DE70F /* FirebaseRemoteNotificationsTokenRegistration.swift in Sources */,
+				CA2761D420E03B88000E52AC /* LoggedOut.swift in Sources */,
 				CA1ECB4D1FE7F2A10076083A /* NewsPresenter.swift in Sources */,
 				CA17FE83205800A7005A4C05 /* LinkViewModel.swift in Sources */,
 				CA17FE8720580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift in Sources */,

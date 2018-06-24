@@ -61,6 +61,7 @@ class UserAuthenticationCoordinator {
                 self.loggedInUser = nil
                 self.userAuthenticationToken = nil
                 self.observers.forEach({ $0.userDidLogout() })
+                self.eventBus.post(DomainEvent.LoggedOut())
                 completionHandler(.success)
             }
         }
