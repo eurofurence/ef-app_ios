@@ -167,7 +167,8 @@ extension APIDealer: RandomValueProviding {
                          categories: .random,
                          shortDescription: .random,
                          links: [APILink].random.sorted(),
-                         twitterHandle: .random)
+                         twitterHandle: .random,
+                         telegramHandle: .random)
     }
     
 }

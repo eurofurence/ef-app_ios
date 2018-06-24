@@ -68,4 +68,8 @@ class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
         XCTAssertEqual(randomDealer.twitterHandle, dealerData?.twitterUsername)
     }
     
+    func testProvideTheTelegramUsername() {
+        XCTAssertEqual(randomDealer.telegramHandle, dealerData?.telegramUsername)
+    }
+    
 }

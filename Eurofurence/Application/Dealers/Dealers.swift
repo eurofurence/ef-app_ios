@@ -137,7 +137,7 @@ class Dealers: DealersService {
                                               isAfterDark: dealerModel.isAfterDark,
                                               websiteName: model.links?.first(where: { $0.fragmentType == .WebExternal })?.target,
                                               twitterUsername: model.twitterHandle,
-                                              telegramUsername: nil,
+                                              telegramUsername: model.telegramHandle,
                                               aboutTheArtist: nil,
                                               aboutTheArt: nil,
                                               artPreviewImagePNGData: artPreviewImagePNGData,

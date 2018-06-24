@@ -27,7 +27,8 @@ extension DealerEntity: EntityAdapting {
                          categories: categories ?? [],
                          shortDescription: dealerShortDescription!,
                          links: linksArray?.sorted(),
-                         twitterHandle: twitterHandle!)
+                         twitterHandle: twitterHandle!,
+                         telegramHandle: telegramHandle!)
     }
 
 }

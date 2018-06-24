@@ -221,6 +221,7 @@ private struct JSONSyncResponse: Decodable {
         var ShortDescription: String
         var Links: [JSONLink]?
         var TwitterHandle: String
+        var TelegramHandle: String
 
         var modelValue: APIDealer {
             return APIDealer(identifier: Id,
@@ -236,7 +237,8 @@ private struct JSONSyncResponse: Decodable {
                              categories: Categories,
                              shortDescription: ShortDescription,
                              links: Links?.map({ $0.modelValue }),
-                             twitterHandle: TwitterHandle)
+                             twitterHandle: TwitterHandle,
+                             telegramHandle: TelegramHandle)
         }
 
     }

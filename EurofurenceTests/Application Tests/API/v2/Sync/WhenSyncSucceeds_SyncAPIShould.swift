@@ -195,7 +195,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                   categories: ["General", "Art"],
                                                                   shortDescription: "",
                                                                   links: nil,
-                                                                  twitterHandle: "")],
+                                                                  twitterHandle: "",
+                                                                  telegramHandle: "")],
                                               deleted: [APIDealer(identifier: "d53e6f6b-fdcb-4754-a4b9-6892e8d317d7",
                                                                   displayName: "",
                                                                   attendeeNickname: "Frazzle",
@@ -211,7 +212,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                   links: [APILink(name: "",
                                                                                   fragmentType: .WebExternal,
                                                                                   target: "http://www.furaffinity.net/user/frazzle/")],
-                                                                  twitterHandle: "FrazzleRat")])
+                                                                  twitterHandle: "FrazzleRat",
+                                                                  telegramHandle: "HefeleToons")])
         
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,

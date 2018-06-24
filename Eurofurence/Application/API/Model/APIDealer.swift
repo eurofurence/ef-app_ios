@@ -24,5 +24,6 @@ struct APIDealer: Equatable {
     var shortDescription: String
     var links: [APILink]?
     var twitterHandle: String
+    var telegramHandle: String
 
 }
