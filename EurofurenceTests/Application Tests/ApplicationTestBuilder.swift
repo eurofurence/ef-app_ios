@@ -130,6 +130,7 @@ class ApplicationTestBuilder {
         var imageAPI: FakeImageAPI
         var imageRepository: CapturingImageRepository
         var significantTimeChangeAdapter: CapturingSignificantTimeChangeAdapter
+        var urlOpener: CapturingURLOpener
         
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
@@ -251,6 +252,7 @@ class ApplicationTestBuilder {
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval = .greatestFiniteMagnitude
     private var imageAPI: FakeImageAPI = FakeImageAPI()
     private var imageRepository = CapturingImageRepository()
+    private var urlOpener: CapturingURLOpener = CapturingURLOpener()
     
     func with(_ currentDate: Date) -> ApplicationTestBuilder {
         stubClock = StubClock(currentDate: currentDate)
@@ -302,6 +304,12 @@ class ApplicationTestBuilder {
         return self
     }
     
+    @discardableResult
+    func with(_ urlOpener: CapturingURLOpener) -> ApplicationTestBuilder {
+        self.urlOpener = urlOpener
+        return self
+    }
+    
     func loggedInWithValidCredential() -> ApplicationTestBuilder {
         let credential = Credential(username: "User",
                                     registrationNumber: 42,
@@ -334,6 +342,7 @@ class ApplicationTestBuilder {
             .with(imageAPI)
             .with(imageRepository)
             .with(significantTimeChangeAdapter)
+            .with(urlOpener)
             .build()
         
         return Context(application: app,
@@ -349,7 +358,8 @@ class ApplicationTestBuilder {
                        significantTimeChangeEventSource: significantTimeChangeEventSource,
                        imageAPI: imageAPI,
                        imageRepository: imageRepository,
-                       significantTimeChangeAdapter: significantTimeChangeAdapter)
+                       significantTimeChangeAdapter: significantTimeChangeAdapter,
+                       urlOpener: urlOpener)
     }
     
 }

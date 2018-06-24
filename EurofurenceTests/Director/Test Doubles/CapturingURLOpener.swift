@@ -11,6 +11,10 @@ import Foundation.NSURL
 
 class CapturingURLOpener: URLOpener {
     
+    func canOpen(_ url: URL) -> Bool {
+        return true
+    }
+    
     private(set) var capturedURLToOpen: URL?
     func open(_ url: URL) {
         capturedURLToOpen = url

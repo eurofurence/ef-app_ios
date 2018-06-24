@@ -27,6 +27,7 @@ class EurofurenceApplicationBuilder {
     private var imageAPI: ImageAPI
     private var imageRepository: ImageRepository
     private var significantTimeChangeAdapter: SignificantTimeChangeAdapter
+    private var urlOpener: URLOpener
 
     init() {
         userPreferences = UserDefaultsPreferences()
@@ -56,6 +57,7 @@ class EurofurenceApplicationBuilder {
         timeIntervalForUpcomingEventsSinceNow = 3600
         imageRepository = PersistentImageRepository()
         significantTimeChangeAdapter = ApplicationSignificantTimeChangeAdapter()
+        urlOpener = AppURLOpener()
     }
 
     @discardableResult
@@ -160,6 +162,12 @@ class EurofurenceApplicationBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ urlOpener: URLOpener) -> EurofurenceApplicationBuilder {
+        self.urlOpener = urlOpener
+        return self
+    }
+
     func build() -> EurofurenceApplicationProtocol {
         return EurofurenceApplication(userPreferences: userPreferences,
                                       dataStore: dataStore,
@@ -177,7 +185,8 @@ class EurofurenceApplicationBuilder {
                                       significantTimeChangeEventSource: significantTimeChangeEventSource,
                                       timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow,
                                       imageRepository: imageRepository,
-                                      significantTimeChangeAdapter: significantTimeChangeAdapter)
+                                      significantTimeChangeAdapter: significantTimeChangeAdapter,
+                                      urlOpener: urlOpener)
     }
 
 }

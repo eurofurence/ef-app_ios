@@ -63,7 +63,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
          significantTimeChangeEventSource: SignificantTimeChangeEventSource,
          timeIntervalForUpcomingEventsSinceNow: TimeInterval,
          imageRepository: ImageRepository,
-         significantTimeChangeAdapter: SignificantTimeChangeAdapter) {
+         significantTimeChangeAdapter: SignificantTimeChangeAdapter,
+         urlOpener: URLOpener) {
         self.userPreferences = userPreferences
         self.dataStore = dataStore
         self.pushPermissionsRequester = pushPermissionsRequester
@@ -98,7 +99,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         imageDownloader = ImageDownloader(eventBus: eventBus, imageAPI: imageAPI)
         significantTimeObserver = SignificantTimeObserver(significantTimeChangeAdapter: significantTimeChangeAdapter,
                                                           eventBus: eventBus)
-        dealers = Dealers(eventBus: eventBus, dataStore: dataStore, imageCache: imageCache)
+        dealers = Dealers(eventBus: eventBus, dataStore: dataStore, imageCache: imageCache, urlOpener: urlOpener)
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
@@ -189,7 +190,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func openWebsite(for identifier: Dealer2.Identifier) {
-
+        dealers.openWebsite(for: identifier)
     }
 
     func openTwitter(for identifier: Dealer2.Identifier) {
