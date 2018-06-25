@@ -15,6 +15,18 @@ class DealerAboutTheArtistTableViewCell: UITableViewCell, DealerAboutTheArtistCo
     @IBOutlet weak var componentTitleLabel: UILabel!
     @IBOutlet weak var artistDescriptionLabel: UILabel!
 
+    // MARK: Overrides
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        isAccessibilityElement = false
+        accessibilityElements = [
+            componentTitleLabel,
+            artistDescriptionLabel
+        ]
+    }
+
     // MARK: DealerAboutTheArtistComponent
 
     func setAboutTheArtistTitle(_ title: String) {

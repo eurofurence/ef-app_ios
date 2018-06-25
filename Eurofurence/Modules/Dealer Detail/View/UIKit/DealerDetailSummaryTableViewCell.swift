@@ -32,6 +32,17 @@ class DealerDetailSummaryTableViewCell: UITableViewCell, DealerDetailSummaryComp
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        isAccessibilityElement = false
+        accessibilityElements = [
+            dealerTitleLabel,
+            dealerSubtitleLabel,
+            dealerCategoriesLabel,
+            dealerShortDescriptionLabel,
+            dealerWebsiteContainer,
+            dealerTwitterHandleContainer,
+            dealerTelegramContainer
+        ]
+
         contentView.backgroundColor = .pantone330U
 
         let labelTextColor = UIColor.white

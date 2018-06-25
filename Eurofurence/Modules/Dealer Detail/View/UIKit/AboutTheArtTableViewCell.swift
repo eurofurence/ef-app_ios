@@ -17,6 +17,19 @@ class AboutTheArtTableViewCell: UITableViewCell, AboutTheArtComponent {
     @IBOutlet weak var artworkImageView: UIImageView!
     @IBOutlet weak var artworkCaptionLabel: UILabel!
 
+    // MARK: Overrides
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        isAccessibilityElement = false
+        accessibilityElements = [
+            componentTitleLabel,
+            artDescriptionLabel,
+            artworkCaptionLabel
+        ]
+    }
+
     // MARK: AboutTheArtComponent
 
     func setComponentTitle(_ title: String) {

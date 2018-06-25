@@ -26,6 +26,14 @@ class DealerDetailLocationAndAvailabilityTableViewCell: UITableViewCell, DealerL
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        isAccessibilityElement = false
+        accessibilityElements = [
+            componentTitleLabel,
+            dealerMapImageView,
+            limitedAvailabilityWarningContainer,
+            afterDarkInformationContainer
+        ]
+
         limitedAvailabilityIconLabel.textColor = .pantone330U
         limitedAvailabilityIconLabel.text = "\u{f071}"
         afterDarkInformationIconLabel.textColor = .pantone330U
