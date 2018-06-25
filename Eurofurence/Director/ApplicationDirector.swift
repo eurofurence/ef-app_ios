@@ -203,7 +203,8 @@ class ApplicationDirector: ExternalContentHandler,
     }
 
     func showLogoutAlert(presentedHandler: @escaping (@escaping () -> Void) -> Void) {
-
+        let alert = UIAlertController(title: .loggingOut, message: .loggingOutAlertDetail, preferredStyle: .alert)
+        tabController?.present(alert, animated: animate, completion: { presentedHandler({}) })
     }
 
     func showLogoutFailedAlert() {
