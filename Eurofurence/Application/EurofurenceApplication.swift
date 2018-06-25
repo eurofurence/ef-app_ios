@@ -126,7 +126,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {
-
         authenticationCoordinator.login(arguments, completionHandler: completionHandler)
     }
 

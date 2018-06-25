@@ -55,6 +55,11 @@ class FakeAuthenticationService: AuthenticationService {
         capturedCompletionHandler = completionHandler
     }
     
+    private(set) var wasToldToLogout = false
+    func logout(completionHandler: @escaping (LogoutResult) -> Void) {
+        wasToldToLogout = true
+    }
+    
 }
 
 extension FakeAuthenticationService {

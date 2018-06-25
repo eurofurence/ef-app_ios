@@ -19,4 +19,13 @@ class WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould: XCTestCase {
         XCTAssertTrue(context.delegate.wasToldToShowLoggingOutAlert)
     }
     
+    func testTellTheAuthenticationServiceToLogoutWhenTheLoginAlertIsPresented() {
+        let context = MessagesPresenterTestContext.makeTestCaseForAuthenticatedUser()
+        context.scene.delegate?.messagesSceneWillAppear()
+        context.scene.delegate?.messagesSceneDidTapLogoutButton()
+        context.delegate.capturedAlertPresentedBlock?()
+        
+        XCTAssertTrue(context.authenticationService.wasToldToLogout)
+    }
+    
 }

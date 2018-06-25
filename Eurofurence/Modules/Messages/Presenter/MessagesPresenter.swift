@@ -53,7 +53,11 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
     }
 
     func messagesSceneDidTapLogoutButton() {
-        delegate.showLogoutAlert()
+        delegate.showLogoutAlert {
+            self.authenticationService.logout { (_) in
+
+            }
+        }
     }
 
     // MARK: AuthenticationStateObserver

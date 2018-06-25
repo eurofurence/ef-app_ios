@@ -10,6 +10,7 @@ protocol AuthenticationService {
 
     func add(_ observer: AuthenticationStateObserver)
     func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void)
+    func logout(completionHandler: @escaping (LogoutResult) -> Void)
 
 }
 
