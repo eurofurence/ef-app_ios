@@ -54,8 +54,16 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
 
     func messagesSceneDidTapLogoutButton() {
         delegate.showLogoutAlert { (dismissAlert) in
-            self.authenticationService.logout { (_) in
+            self.authenticationService.logout { (result) in
                 dismissAlert()
+
+                switch result {
+                case .success:
+                    self.delegate.messagesModuleDidRequestDismissal()
+
+                case .failure:
+                    break
+                }
             }
         }
     }
