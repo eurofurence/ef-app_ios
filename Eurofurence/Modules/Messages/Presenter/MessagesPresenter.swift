@@ -62,7 +62,7 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
                     self.delegate.messagesModuleDidRequestDismissal()
 
                 case .failure:
-                    break
+                    self.delegate.showLogoutFailedAlert()
                 }
             }
         }

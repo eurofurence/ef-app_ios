@@ -34,6 +34,11 @@ class CapturingMessagesModuleDelegate: MessagesModuleDelegate {
         capturedAlertPresentedBlock = presentedHandler
     }
     
+    private(set) var wasToldToShowLogoutFailedAlert = false
+    func showLogoutFailedAlert() {
+        wasToldToShowLogoutFailedAlert = true
+    }
+    
     func resolveUser() {
         userResolutionCompletionHandler?(true)
     }

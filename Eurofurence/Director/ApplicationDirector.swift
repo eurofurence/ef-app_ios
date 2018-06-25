@@ -206,6 +206,10 @@ class ApplicationDirector: ExternalContentHandler,
 
     }
 
+    func showLogoutFailedAlert() {
+
+    }
+
     // MARK: LoginModuleDelegate
 
     func loginModuleDidCancelLogin() {

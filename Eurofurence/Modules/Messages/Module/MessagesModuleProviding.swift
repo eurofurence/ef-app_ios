@@ -20,5 +20,6 @@ protocol MessagesModuleDelegate {
     func messagesModuleDidRequestPresentation(for message: Message)
     func messagesModuleDidRequestDismissal()
     func showLogoutAlert(presentedHandler: @escaping (@escaping () -> Void) -> Void)
+    func showLogoutFailedAlert()
 
 }
