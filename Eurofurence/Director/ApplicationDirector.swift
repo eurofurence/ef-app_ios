@@ -202,7 +202,7 @@ class ApplicationDirector: ExternalContentHandler,
         tabController?.dismiss(animated: animate)
     }
 
-    func showLogoutAlert(presentedHandler: @escaping () -> Void) {
+    func showLogoutAlert(presentedHandler: @escaping (@escaping () -> Void) -> Void) {
 
     }
 

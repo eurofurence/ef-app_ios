@@ -56,8 +56,10 @@ class FakeAuthenticationService: AuthenticationService {
     }
     
     private(set) var wasToldToLogout = false
+    private(set) var capturedLogoutHandler: ((LogoutResult) -> Void)?
     func logout(completionHandler: @escaping (LogoutResult) -> Void) {
         wasToldToLogout = true
+        capturedLogoutHandler = completionHandler
     }
     
 }

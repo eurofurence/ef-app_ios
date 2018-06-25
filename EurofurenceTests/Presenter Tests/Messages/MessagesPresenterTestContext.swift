@@ -28,8 +28,8 @@ class CapturingMessagesModuleDelegate: MessagesModuleDelegate {
     }
     
     private(set) var wasToldToShowLoggingOutAlert = false
-    private(set) var capturedAlertPresentedBlock: (() -> Void)?
-    func showLogoutAlert(presentedHandler: @escaping () -> Void) {
+    private(set) var capturedAlertPresentedBlock: ((@escaping () -> Void) -> Void)?
+    func showLogoutAlert(presentedHandler: @escaping (@escaping () -> Void) -> Void) {
         wasToldToShowLoggingOutAlert = true
         capturedAlertPresentedBlock = presentedHandler
     }
