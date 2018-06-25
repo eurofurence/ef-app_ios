@@ -52,6 +52,10 @@ class MessagesPresenter: MessagesSceneDelegate, AuthenticationStateObserver, Pri
         reloadPrivateMessages()
     }
 
+    func messagesSceneDidTapLogoutButton() {
+        delegate.showLogoutAlert()
+    }
+
     // MARK: AuthenticationStateObserver
 
     func userDidLogin(_ user: User) {

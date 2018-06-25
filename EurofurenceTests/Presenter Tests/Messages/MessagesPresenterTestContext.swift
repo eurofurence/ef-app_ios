@@ -27,6 +27,11 @@ class CapturingMessagesModuleDelegate: MessagesModuleDelegate {
         dismissed = true
     }
     
+    private(set) var wasToldToShowLoggingOutAlert = false
+    func showLogoutAlert() {
+        wasToldToShowLoggingOutAlert = true
+    }
+    
     func resolveUser() {
         userResolutionCompletionHandler?(true)
     }

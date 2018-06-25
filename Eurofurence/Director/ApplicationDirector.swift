@@ -202,6 +202,10 @@ class ApplicationDirector: ExternalContentHandler,
         tabController?.dismiss(animated: animate)
     }
 
+    func showLogoutAlert() {
+
+    }
+
     // MARK: LoginModuleDelegate
 
     func loginModuleDidCancelLogin() {

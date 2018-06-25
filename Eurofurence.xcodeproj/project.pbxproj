@@ -790,6 +790,7 @@
 		CA9AC16D2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9AC16C2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift */; };
 		CAA39E0820051B5C00F2F3D3 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */; };
 		CAA39E0920051C6C00F2F3D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAA39E0B20051C6C00F2F3D3 /* Localizable.strings */; };
+		CAA6DD1120E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */; };
 		CAB138101FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB1380E1FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift */; };
 		CAB138131FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */; };
 		CAB3A72A1F7532A2005DF77B /* CapturingPushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */; };
@@ -1871,6 +1872,7 @@
 		CA9AC16C2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventComponentViewModel+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 		CAA39E0A20051C6C00F2F3D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CAB1380E1FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleCollectionViewCell.swift; sourceTree = "<group>"; };
 		CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPushPermissionsRequester.swift; sourceTree = "<group>"; };
@@ -5205,6 +5207,7 @@
 				CAD2343F1F5D726C004BB959 /* WhenViewingMessagesWhileLoggedIn.swift */,
 				CAF9A9571F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift */,
 				CA1ECB401FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift */,
+				CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -6543,6 +6546,7 @@
 				CA1B6F0720DB805300ADF414 /* WhenBuildingDealerDetailModule.swift in Sources */,
 				CA72845A209D059A007D912A /* AnnouncementDetailPresenterTestBuilder.swift in Sources */,
 				CA17FE732056B0BD005A4C05 /* WhenKnowledgeDetailSceneLoads.swift in Sources */,
+				CAA6DD1120E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift in Sources */,
 				CA0F7621203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift in Sources */,
 				CA162EAA20AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift in Sources */,
 				7820A6ED1F14ED25004C0FB5 /* CapturingQuoteGenerator.swift in Sources */,

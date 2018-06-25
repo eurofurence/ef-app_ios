@@ -178,6 +178,12 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, UISe
             onDidSelectRow(indexPath)
         }
 
+        func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+            return [UITableViewRowAction(style: .default, title: "Test", handler: { (_, _) in
+
+            })]
+        }
+
     }
 
     private class DaysController: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

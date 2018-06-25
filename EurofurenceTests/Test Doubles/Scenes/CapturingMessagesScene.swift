@@ -116,6 +116,9 @@ class CapturingMessageItemScene: MessageItemScene {
 }
 
 class CapturingMessagesSceneDelegate: MessagesSceneDelegate {
+    func messagesSceneDidTapLogoutButton() {
+        
+    }
     
     private(set) var toldMessagesSceneWillAppear = false
     func messagesSceneWillAppear() {
