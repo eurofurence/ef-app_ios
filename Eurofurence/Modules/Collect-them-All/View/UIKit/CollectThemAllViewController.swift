@@ -28,6 +28,7 @@ class CollectThemAllViewController: UIViewController, CollectThemAllScene {
 
         let webConfiguration = WKWebViewConfiguration()
         webConfiguration.preferences.javaScriptEnabled = true
+        webConfiguration.websiteDataStore = .nonPersistent()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView?.allowsLinkPreview = false
         view = webView
