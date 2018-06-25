@@ -18,11 +18,4 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
 
-    // MARK: Overrides
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        accessibilityElements = [startTimeLabel, endTimeLabel, eventNameLabel, locationLabel]
-    }
-
 }
