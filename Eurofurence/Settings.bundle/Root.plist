@@ -24,6 +24,14 @@
 			<key>File</key>
 			<string>Pods-Eurofurence-settings-metadata</string>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+			<key>Title</key>
+			<string>Further Acknowledgements</string>
+			<key>File</key>
+			<string>Additional-Acknowledgements</string>
+		</dict>
 	</array>
 </dict>
 </plist>
