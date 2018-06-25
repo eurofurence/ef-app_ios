@@ -204,11 +204,13 @@ class ApplicationDirector: ExternalContentHandler,
 
     func showLogoutAlert(presentedHandler: @escaping (@escaping () -> Void) -> Void) {
         let alert = UIAlertController(title: .loggingOut, message: .loggingOutAlertDetail, preferredStyle: .alert)
-        tabController?.present(alert, animated: animate, completion: { presentedHandler({}) })
+        tabController?.present(alert, animated: animate, completion: { presentedHandler({ alert.dismiss(animated: true) }) })
     }
 
     func showLogoutFailedAlert() {
-
+        let alert = UIAlertController(title: .logoutFailed, message: .logoutFailedAlertDetail, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: .ok, style: .cancel))
+        tabController?.present(alert, animated: animate)
     }
 
     // MARK: LoginModuleDelegate

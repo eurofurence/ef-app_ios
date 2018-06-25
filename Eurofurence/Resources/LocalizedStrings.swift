@@ -112,6 +112,11 @@ public extension String {
     public static let loggingOutAlertDetail = NSLocalizedString("LoggingOutAlertDetail",
                                                                 comment: "Message for the alert shown when the user has requested to be logged out")
 
+    public static let logoutFailed = NSLocalizedString("LogoutFailed",
+                                                       comment: "Title for the alert shown when a user has requested to be logged out, but the app encountered an error")
+    public static let logoutFailedAlertDetail = NSLocalizedString("LogoutFailedAlertDetail",
+                                                                  comment: "Message for the alert shown when a user has requested to be logged out, but the app encountered an error")
+
     public static let messages = NSLocalizedString("Messages",
                                                    comment: "Title for the view that displays the user's private messages")
 

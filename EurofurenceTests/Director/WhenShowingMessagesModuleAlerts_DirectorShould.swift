@@ -25,4 +25,15 @@ class WhenShowingMessagesModuleAlerts_DirectorShould: XCTestCase {
         XCTAssertEqual(.loggingOutAlertDetail, presentedAlertController?.message)
     }
     
+    func testShowLogoutErrorAlertWithExpectedText() {
+        let context = ApplicationDirectorTestBuilder().build()
+        context.navigateToTabController()
+        context.newsModule.simulatePrivateMessagesDisplayRequested()
+        context.messages.delegate?.showLogoutFailedAlert()
+        let presentedAlertController = context.tabModule.stubInterface.capturedPresentedViewController as? UIAlertController
+        
+        XCTAssertEqual(.logoutFailed, presentedAlertController?.title)
+        XCTAssertEqual(.logoutFailedAlertDetail, presentedAlertController?.message)
+    }
+    
 }
