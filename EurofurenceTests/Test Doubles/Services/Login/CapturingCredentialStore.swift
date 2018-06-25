@@ -21,6 +21,7 @@ class CapturingCredentialStore: CredentialStore {
     var blockToRunBeforeCompletingCredentialStorage: (() -> Void)?
     func store(_ credential: Credential) {
         capturedCredential = credential
+        persistedCredential = credential
         blockToRunBeforeCompletingCredentialStorage?()
     }
     
