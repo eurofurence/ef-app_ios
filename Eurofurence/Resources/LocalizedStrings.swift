@@ -103,6 +103,9 @@ public extension String {
     public static let loginErrorDetail = NSLocalizedString("loginErrorDetail",
                                                            comment: "Description for the alert displayed when we're unable to log the user in")
 
+    public static let logout = NSLocalizedString("Logout",
+                                                 comment: "Title for the bar button in the Messages tab allowing the user to log out of the app")
+
     public static let messages = NSLocalizedString("Messages",
                                                    comment: "Title for the view that displays the user's private messages")
 

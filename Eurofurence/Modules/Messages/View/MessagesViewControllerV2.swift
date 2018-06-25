@@ -16,6 +16,14 @@ class MessagesViewControllerV2: UIViewController,
     @IBOutlet weak var noMessagesPlaceholder: UIView!
     let refreshIndicator = UIRefreshControl(frame: .zero)
     private let dataSource = MessagesTableViewDataSource()
+    private lazy var logoutBarButtonItem = UIBarButtonItem(title: .logout,
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(logoutButtonTapped))
+
+    @objc private func logoutButtonTapped() {
+        delegate?.messagesSceneDidTapLogoutButton()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +32,7 @@ class MessagesViewControllerV2: UIViewController,
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.addSubview(refreshIndicator)
+        navigationItem.rightBarButtonItem = logoutBarButtonItem
     }
 
     override func viewWillAppear(_ animated: Bool) {
