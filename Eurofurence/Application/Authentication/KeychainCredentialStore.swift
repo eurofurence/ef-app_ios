@@ -26,7 +26,7 @@ struct KeychainCredentialStore: CredentialStore {
 
     func store(_ credential: Credential) {
         do {
-            try Locksmith.saveData(data: credential.keychainData, forUserAccount: userAccount)
+            try Locksmith.updateData(data: credential.keychainData, forUserAccount: userAccount)
         } catch {
             print("Unable to save credentials to Keychain: \(error)")
         }
