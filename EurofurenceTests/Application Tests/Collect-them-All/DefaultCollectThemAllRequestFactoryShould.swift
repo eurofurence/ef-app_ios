@@ -26,7 +26,7 @@ class DefaultCollectThemAllRequestFactoryShould: XCTestCase {
                                     authenticationToken: .random,
                                     tokenExpiryDate: .random)
         let authenticatedRequest = factory.makeAuthenticatedGameURLRequest(credential: credential)
-        let expectedURL = URL(string: "https://app.eurofurence.org/collectemall/")!.appendingPathComponent("#token-\(credential.authenticationToken)")
+        let expectedURL = URL(string: "https://app.eurofurence.org/collectemall/#token-\(credential.authenticationToken)")!
         
         XCTAssertEqual(expectedURL, authenticatedRequest.url)
     }

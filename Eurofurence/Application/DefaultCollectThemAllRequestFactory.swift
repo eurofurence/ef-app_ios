@@ -10,15 +10,15 @@ import Foundation
 
 struct DefaultCollectThemAllRequestFactory: CollectThemAllRequestFactory {
 
-    private let baseURL = URL(string: "https://app.eurofurence.org/collectemall/")!
+    private let baseURLString = "https://app.eurofurence.org/collectemall/"
 
     func makeAnonymousGameURLRequest() -> URLRequest {
-        return URLRequest(url: baseURL)
+        return URLRequest(url: URL(string: baseURLString)!)
     }
 
     func makeAuthenticatedGameURLRequest(credential: Credential) -> URLRequest {
-        let authenticatedURL = baseURL.appendingPathComponent("#token-\(credential.authenticationToken)")
-        return URLRequest(url: authenticatedURL)
+        let authenticatedURL = "\(baseURLString)#token-\(credential.authenticationToken)"
+        return URLRequest(url: URL(string: authenticatedURL)!)
     }
 
 }
