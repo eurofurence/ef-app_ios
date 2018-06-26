@@ -24,13 +24,20 @@ class Maps {
 
     }
 
-    private var models = [Map2]()
+    private var models = [Map2]() {
+        didSet {
+            observers.forEach({ $0.mapsServiceDidChangeMaps(models) })
+        }
+    }
+
+    private var observers = [MapsObserver]()
 
     init(eventBus: EventBus) {
         eventBus.subscribe(consumer: RefreshMapsAfterSync(handler: updateModels))
     }
 
     func add(_ observer: MapsObserver) {
+        observers.append(observer)
         observer.mapsServiceDidChangeMaps(models)
     }
 
