@@ -25,10 +25,10 @@
                                     <size key="itemSize" width="347" height="196"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="14" minY="14" maxX="14" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="14" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gvh-um-AZu" customClass="MapCollectionViewCell" customModule="Eurofurence" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MapCollectionViewCell" id="gvh-um-AZu" customClass="MapCollectionViewCell" customModule="Eurofurence" customModuleProvider="target">
                                         <rect key="frame" x="14" y="14" width="347" height="196"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -94,6 +94,9 @@
                     <navigationItem key="navigationItem" title="Title" id="oMn-EM-3ei"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="collectionView" destination="qEc-9u-fXy" id="zi7-E3-Xtw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QvQ-Bi-TR3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
