@@ -10,6 +10,17 @@ import Foundation
 
 struct MapsPresenter: MapsSceneDelegate {
 
+    private struct Binder: MapsBinder {
+
+        var viewModel: MapsViewModel
+
+        func bind(_ component: MapComponent, at index: Int) {
+            let map = viewModel.mapViewModel(at: index)
+            component.setMapName(map.mapName)
+        }
+
+    }
+
     private let scene: MapsScene
     private let interactor: MapsInteractor
 
@@ -23,7 +34,7 @@ struct MapsPresenter: MapsSceneDelegate {
 
     func mapsSceneDidLoad() {
         interactor.makeMapsViewModel { (viewModel) in
-            self.scene.bind(numberOfMaps: viewModel.numberOfMaps)
+            self.scene.bind(numberOfMaps: viewModel.numberOfMaps, using: Binder(viewModel: viewModel))
         }
     }
 

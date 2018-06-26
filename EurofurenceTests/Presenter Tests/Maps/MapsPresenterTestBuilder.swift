@@ -47,4 +47,10 @@ extension MapsPresenterTestBuilder.Context {
         scene.delegate?.mapsSceneDidLoad()
     }
     
+    func bindMap(at index: Int) -> CapturingMapComponent {
+        let component = CapturingMapComponent()
+        scene.binder?.bind(component, at: index)
+        return component
+    }
+    
 }

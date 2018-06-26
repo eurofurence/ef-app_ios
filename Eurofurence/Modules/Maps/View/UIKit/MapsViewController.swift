@@ -28,7 +28,7 @@ class MapsViewController: UIViewController, MapsScene {
         super.title = title
     }
 
-    func bind(numberOfMaps: Int) {
+    func bind(numberOfMaps: Int, using binder: MapsBinder) {
 
     }
 

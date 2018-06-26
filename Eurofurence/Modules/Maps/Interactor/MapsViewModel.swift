@@ -11,5 +11,12 @@ import Foundation
 protocol MapsViewModel {
 
     var numberOfMaps: Int { get }
+    func mapViewModel(at index: Int) -> MapViewModel2
+
+}
+
+struct MapViewModel2 {
+
+    var mapName: String
 
 }

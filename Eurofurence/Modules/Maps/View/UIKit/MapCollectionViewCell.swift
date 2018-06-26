@@ -9,10 +9,10 @@
 import UIKit
 
 class MapCollectionViewCell: UICollectionViewCell {
-    
+
     // MARK: Properties
-    
+
     @IBOutlet weak var mapPreviewImageView: UIImageView!
     @IBOutlet weak var mapNameLabel: UILabel!
-    
+
 }

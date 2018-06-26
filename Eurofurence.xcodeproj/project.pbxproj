@@ -672,6 +672,11 @@
 		CA6A8D8E20E2BC6C007536CD /* MapsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D8D20E2BC6C007536CD /* MapsPresenter.swift */; };
 		CA6A8D9020E2C2C8007536CD /* BeforeMapsSceneLoads_MapsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D8F20E2C2C8007536CD /* BeforeMapsSceneLoads_MapsPresenterShould.swift */; };
 		CA6A8D9220E2C554007536CD /* MapCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D9120E2C554007536CD /* MapCollectionViewCell.swift */; };
+		CA6A8D9420E2C596007536CD /* WhenBindingMap_MapsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D9320E2C596007536CD /* WhenBindingMap_MapsPresenterShould.swift */; };
+		CA6A8D9620E2C61B007536CD /* CapturingMapComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D9520E2C61B007536CD /* CapturingMapComponent.swift */; };
+		CA6A8D9820E2C634007536CD /* MapComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D9720E2C634007536CD /* MapComponent.swift */; };
+		CA6A8D9A20E2C678007536CD /* MapsBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D9920E2C678007536CD /* MapsBinder.swift */; };
+		CA6A8D9C20E2C737007536CD /* MapViewModel2+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D9B20E2C737007536CD /* MapViewModel2+RandomValueProviding.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -1773,6 +1778,11 @@
 		CA6A8D8D20E2BC6C007536CD /* MapsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsPresenter.swift; sourceTree = "<group>"; };
 		CA6A8D8F20E2C2C8007536CD /* BeforeMapsSceneLoads_MapsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeMapsSceneLoads_MapsPresenterShould.swift; sourceTree = "<group>"; };
 		CA6A8D9120E2C554007536CD /* MapCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCollectionViewCell.swift; sourceTree = "<group>"; };
+		CA6A8D9320E2C596007536CD /* WhenBindingMap_MapsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingMap_MapsPresenterShould.swift; sourceTree = "<group>"; };
+		CA6A8D9520E2C61B007536CD /* CapturingMapComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingMapComponent.swift; sourceTree = "<group>"; };
+		CA6A8D9720E2C634007536CD /* MapComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent.swift; sourceTree = "<group>"; };
+		CA6A8D9920E2C678007536CD /* MapsBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsBinder.swift; sourceTree = "<group>"; };
+		CA6A8D9B20E2C737007536CD /* MapViewModel2+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewModel2+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -3970,9 +3980,9 @@
 		CA6A8D6420E26387007536CD /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				CA6A8D7720E264D6007536CD /* MapsPresenterTestBuilder.swift */,
 				CA6A8D6520E26390007536CD /* Presenter Tests */,
 				CA6A8D7220E264AB007536CD /* Test Doubles */,
-				CA6A8D7720E264D6007536CD /* MapsPresenterTestBuilder.swift */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -3983,6 +3993,7 @@
 				CA6A8D8F20E2C2C8007536CD /* BeforeMapsSceneLoads_MapsPresenterShould.swift */,
 				CA6A8D6620E263A0007536CD /* WhenBuildingMapsModule.swift */,
 				CA6A8D8120E2BA6C007536CD /* WhenMapsSceneLoads_MapsPresenterShould.swift */,
+				CA6A8D9320E2C596007536CD /* WhenBindingMap_MapsPresenterShould.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -4001,6 +4012,8 @@
 			children = (
 				CA6A8D6A20E26478007536CD /* MapsScene.swift */,
 				CA6A8D6C20E26482007536CD /* MapsSceneFactory.swift */,
+				CA6A8D9720E2C634007536CD /* MapComponent.swift */,
+				CA6A8D9920E2C678007536CD /* MapsBinder.swift */,
 			);
 			path = Abstraction;
 			sourceTree = "<group>";
@@ -4012,6 +4025,7 @@
 				CA6A8D8A20E2BBB1007536CD /* FakeMapsInteractor.swift */,
 				CA6A8D8820E2BBA4007536CD /* FakeMapsViewModel.swift */,
 				CA6A8D7520E264C5007536CD /* StubMapsSceneFactory.swift */,
+				CA6A8D9520E2C61B007536CD /* CapturingMapComponent.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -4234,6 +4248,7 @@
 				CA1B6F3820DD1D9D00ADF414 /* DealerDetailLocationAndAvailabilityViewModel+RandomValueProviding.swift */,
 				CAF81C6120DD95BC00898C52 /* DealerDetailAboutTheArtistViewModel+RandomValueProviding.swift */,
 				CAF81C6920DDA10C00898C52 /* DealerDetailAboutTheArtViewModel+RandomValueProviding.swift */,
+				CA6A8D9B20E2C737007536CD /* MapViewModel2+RandomValueProviding.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -5864,6 +5879,7 @@
 				CA27618A20DFEE00000E52AC /* ExternalContentHandler.swift in Sources */,
 				78C86D751F12AC0F003A20E6 /* QuoteGenerator.swift in Sources */,
 				9A80EF501F28C9A600FD0D37 /* StoryboardTargetRouter.swift in Sources */,
+				CA6A8D9A20E2C678007536CD /* MapsBinder.swift in Sources */,
 				CA49E94A2015480A00EB571C /* EventBusRegistration.swift in Sources */,
 				CAF705641F82D0DF00A9FEA2 /* RootModuleProviding.swift in Sources */,
 				CA00AE8920D28AAD00C2FBB0 /* Day.swift in Sources */,
@@ -6286,6 +6302,7 @@
 				CACF1EBC20B60A6000D904B5 /* ImageAPI.swift in Sources */,
 				CAF9A9531F55F3B300628833 /* EurofurencePrivateMessagesService.swift in Sources */,
 				D6F3D339BFBA2C299453B6BA /* SettingsTableViewController.swift in Sources */,
+				CA6A8D9820E2C634007536CD /* MapComponent.swift in Sources */,
 				CACF1EC920B6D5AA00D904B5 /* ImageEntity.swift in Sources */,
 				D6F3D40D3515E7ABE9565906 /* AboutViewController.swift in Sources */,
 				D6F3DEED2F3250C61DB692D9 /* DealerViewController.swift in Sources */,
@@ -6378,6 +6395,7 @@
 				CACF1EC020B60D2B00D904B5 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift in Sources */,
 				CA6375BB208E03D100536BE2 /* StubDealersSceneFactory.swift in Sources */,
 				CA2D08041FE94B9100BFD785 /* WhenTheAppLaunchesWithAvailableDataStore.swift in Sources */,
+				CA6A8D9420E2C596007536CD /* WhenBindingMap_MapsPresenterShould.swift in Sources */,
 				CA8E17F11F817AA2003C348C /* CapturingPreloadModuleDelegate.swift in Sources */,
 				CACF1EAC20B5C14F00D904B5 /* WhenPreparingViewModelForEventWithIdenticalAbstractAndDescription_EventDetailInteractorShould.swift in Sources */,
 				CA71A34A2040320A00C847C3 /* String+RandomValueProviding.swift in Sources */,
@@ -6440,6 +6458,7 @@
 				CA6A8D6720E263A0007536CD /* WhenBuildingMapsModule.swift in Sources */,
 				CA5BF9D51F7AF9160045DBC0 /* PreloadPresenterTests.swift in Sources */,
 				CA2761A920E021FB000E52AC /* CapturingCollectThemAllScene.swift in Sources */,
+				CA6A8D9620E2C61B007536CD /* CapturingMapComponent.swift in Sources */,
 				CAF81C7920DDAEAA00898C52 /* ExtendedDealerData+RandomValueProviding.swift in Sources */,
 				CABA83FC20CEF4B500DD0795 /* WhenFavouritingMultipleEvents_ApplicationShould.swift in Sources */,
 				CACF1E5420AE2D2700D904B5 /* WhenBuildingEventDetailModule.swift in Sources */,
@@ -6459,6 +6478,7 @@
 				CA250DD020D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift in Sources */,
 				CA637560208CBC5F00536BE2 /* CapturingURLOpener.swift in Sources */,
 				78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */,
+				CA6A8D9C20E2C737007536CD /* MapViewModel2+RandomValueProviding.swift in Sources */,
 				CA2761AB20E0220A000E52AC /* StubCollectThemAllSceneFactory.swift in Sources */,
 				CABF03C32041C2FD0028BD62 /* KnowledgeEntry2.swift in Sources */,
 				CA52C67920D59357009D3A9E /* WhenSignificantTimeChanges_ScheduleShould.swift in Sources */,

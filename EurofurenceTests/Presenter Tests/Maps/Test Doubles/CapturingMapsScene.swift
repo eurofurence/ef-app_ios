@@ -22,8 +22,10 @@ class CapturingMapsScene: UIViewController, MapsScene {
     }
     
     private(set) var boundNumberOfMaps: Int?
-    func bind(numberOfMaps: Int) {
+    private(set) var binder: MapsBinder?
+    func bind(numberOfMaps: Int, using binder: MapsBinder) {
         boundNumberOfMaps = numberOfMaps
+        self.binder = binder
     }
     
 }

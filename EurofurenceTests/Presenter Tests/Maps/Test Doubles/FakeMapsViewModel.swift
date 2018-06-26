@@ -11,6 +11,14 @@ import Foundation
 
 class FakeMapsViewModel: MapsViewModel {
     
-    var numberOfMaps: Int = .random
+    var numberOfMaps: Int {
+        return maps.count
+    }
+    
+    var maps: [MapViewModel2] = .random
+    
+    func mapViewModel(at index: Int) -> MapViewModel2 {
+        return maps[index]
+    }
     
 }
