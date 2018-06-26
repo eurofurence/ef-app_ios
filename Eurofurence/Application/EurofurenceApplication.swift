@@ -112,7 +112,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         collectThemAll = CollectThemAll(eventBus: eventBus,
                                         collectThemAllRequestFactory: collectThemAllRequestFactory,
                                         credentialStore: credentialStore)
-        maps = Maps(eventBus: eventBus)
+        maps = Maps(eventBus: eventBus, imageRepository: imageRepository)
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
@@ -227,7 +227,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func fetchImagePNGDataForMap(identifier: Map2.Identifier, completionHandler: @escaping (Data) -> Void) {
-
+        maps.fetchImagePNGDataForMap(identifier: identifier, completionHandler: completionHandler)
     }
 
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {

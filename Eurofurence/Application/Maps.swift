@@ -24,6 +24,9 @@ class Maps {
 
     }
 
+    private let imageRepository: ImageRepository
+
+    private var serverModels = [APIMap]()
     private var models = [Map2]() {
         didSet {
             observers.forEach({ $0.mapsServiceDidChangeMaps(models) })
@@ -32,7 +35,9 @@ class Maps {
 
     private var observers = [MapsObserver]()
 
-    init(eventBus: EventBus) {
+    init(eventBus: EventBus, imageRepository: ImageRepository) {
+        self.imageRepository = imageRepository
+
         eventBus.subscribe(consumer: RefreshMapsAfterSync(handler: updateModels))
     }
 
@@ -41,7 +46,16 @@ class Maps {
         observer.mapsServiceDidChangeMaps(models)
     }
 
+    func fetchImagePNGDataForMap(identifier: Map2.Identifier, completionHandler: @escaping (Data) -> Void) {
+        guard let map = serverModels.first(where: { $0.identifier == identifier.rawValue }) else { return }
+        guard let entity = imageRepository.loadImage(identifier: map.imageIdentifier) else { return }
+
+        completionHandler(entity.pngImageData)
+    }
+
     private func updateModels(_ serverModels: [APIMap]) {
+        self.serverModels = serverModels
+
         models = serverModels.map({ (map) -> Map2 in
             return Map2(identifier: Map2.Identifier(map.identifier), location: map.mapDescription)
         }).sorted(by: { (first, second) -> Bool in
