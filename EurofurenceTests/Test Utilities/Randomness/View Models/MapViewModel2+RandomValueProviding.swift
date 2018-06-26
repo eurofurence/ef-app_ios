@@ -12,7 +12,7 @@ import Foundation
 extension MapViewModel2: RandomValueProviding {
     
     static var random: MapViewModel2 {
-        return MapViewModel2(mapName: .random)
+        return MapViewModel2(mapName: .random, mapPreviewImagePNGData: .random)
     }
     
 }

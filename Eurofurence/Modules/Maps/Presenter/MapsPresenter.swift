@@ -16,7 +16,9 @@ struct MapsPresenter: MapsSceneDelegate {
 
         func bind(_ component: MapComponent, at index: Int) {
             let map = viewModel.mapViewModel(at: index)
+
             component.setMapName(map.mapName)
+            component.setMapPreviewImagePNGData(map.mapPreviewImagePNGData)
         }
 
     }

@@ -18,5 +18,6 @@ protocol MapsViewModel {
 struct MapViewModel2 {
 
     var mapName: String
+    var mapPreviewImagePNGData: Data
 
 }

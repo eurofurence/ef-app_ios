@@ -16,4 +16,9 @@ class CapturingMapComponent: MapComponent {
         boundMapName = mapName
     }
     
+    private(set) var boundMapPreviewData: Data?
+    func setMapPreviewImagePNGData(_ data: Data) {
+        boundMapPreviewData = data
+    }
+    
 }
