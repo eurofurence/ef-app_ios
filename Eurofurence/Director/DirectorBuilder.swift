@@ -29,13 +29,14 @@ class DirectorBuilder {
     private var messageDetailModuleProviding: MessageDetailModuleProviding
     private var knowledgeListModuleProviding: KnowledgeListModuleProviding
     private var knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding
+    private var mapsModuleProviding: MapsModuleProviding
     private var announcementDetailModuleProviding: AnnouncementDetailModuleProviding
     private var eventDetailModuleProviding: EventDetailModuleProviding
     private var urlOpener: URLOpener
 
     init() {
-        struct DummyCollectThemAllModuleProviding: CollectThemAllModuleProviding {
-            func makeCollectThemAllModule() -> UIViewController {
+        struct DummyMapsModuleProviding: MapsModuleProviding {
+            func makeMapsModule() -> UIViewController {
                 return UIViewController()
             }
         }
@@ -58,6 +59,7 @@ class DirectorBuilder {
         messageDetailModuleProviding = MessageDetailModuleBuilder().build()
         knowledgeListModuleProviding = KnowledgeListModuleBuilder().build()
         knowledgeDetailModuleProviding = KnowledgeDetailModuleBuilder().build()
+        mapsModuleProviding = DummyMapsModuleProviding()
         announcementDetailModuleProviding = AnnouncementDetailModuleBuilder().build()
         eventDetailModuleProviding = EventDetailModuleBuilder().build()
 
@@ -175,6 +177,12 @@ class DirectorBuilder {
     }
 
     @discardableResult
+    func with(_ mapsModuleProviding: MapsModuleProviding) -> DirectorBuilder {
+        self.mapsModuleProviding = mapsModuleProviding
+        return self
+    }
+
+    @discardableResult
     func with(_ announcementDetailModuleProviding: AnnouncementDetailModuleProviding) -> DirectorBuilder {
         self.announcementDetailModuleProviding = announcementDetailModuleProviding
         return self
@@ -219,6 +227,7 @@ class DirectorBuilder {
                                    messageDetailModuleProviding: messageDetailModuleProviding,
                                    knowledgeListModuleProviding: knowledgeListModuleProviding,
                                    knowledgeDetailModuleProviding: knowledgeDetailModuleProviding,
+                                   mapsModuleProviding: mapsModuleProviding,
                                    announcementDetailModuleProviding: announcementDetailModuleProviding,
                                    eventDetailModuleProviding: eventDetailModuleProviding)
     }

@@ -24,7 +24,8 @@ class WhenShowingTabModule_DirectorShould: XCTestCase {
                 context.scheduleModule.stubInterface,
                 context.dealersModule.stubInterface,
                 context.collectThemAllModule.stubInterface,
-                context.knowledgeListModule.stubInterface]
+                context.knowledgeListModule.stubInterface,
+                context.mapsModule.stubInterface]
     }
     
     private func rootNavigationTabControllers() -> [UINavigationController] {

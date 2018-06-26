@@ -47,6 +47,7 @@ class ApplicationDirector: ExternalContentHandler,
     private let messageDetailModuleProviding: MessageDetailModuleProviding
     private let knowledgeListModuleProviding: KnowledgeListModuleProviding
     private let knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding
+    private let mapsModuleProviding: MapsModuleProviding
     private let announcementDetailModuleProviding: AnnouncementDetailModuleProviding
     private let eventDetailModuleProviding: EventDetailModuleProviding
 
@@ -80,6 +81,7 @@ class ApplicationDirector: ExternalContentHandler,
          messageDetailModuleProviding: MessageDetailModuleProviding,
          knowledgeListModuleProviding: KnowledgeListModuleProviding,
          knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding,
+         mapsModuleProviding: MapsModuleProviding,
          announcementDetailModuleProviding: AnnouncementDetailModuleProviding,
          eventDetailModuleProviding: EventDetailModuleProviding) {
         self.animate = animate
@@ -101,6 +103,7 @@ class ApplicationDirector: ExternalContentHandler,
         self.messageDetailModuleProviding = messageDetailModuleProviding
         self.knowledgeListModuleProviding = knowledgeListModuleProviding
         self.knowledgeDetailModuleProviding = knowledgeDetailModuleProviding
+        self.mapsModuleProviding = mapsModuleProviding
         self.announcementDetailModuleProviding = announcementDetailModuleProviding
         self.eventDetailModuleProviding = eventDetailModuleProviding
 
@@ -288,11 +291,16 @@ class ApplicationDirector: ExternalContentHandler,
         let collectThemAllNavigationController = UINavigationController(rootViewController: collectThemAllModule)
         collectThemAllNavigationController.tabBarItem = collectThemAllModule.tabBarItem
 
+        let mapsModule = mapsModuleProviding.makeMapsModule()
+        let mapsNavigationController = UINavigationController(rootViewController: mapsModule)
+        mapsNavigationController.tabBarItem = mapsModule.tabBarItem
+
         let tabModule = tabModuleProviding.makeTabModule([newsNavigationController,
                                                           scheduleNavigationController,
                                                           dealersNavigationController,
                                                           collectThemAllNavigationController,
-                                                          knowledgeNavigationController])
+                                                          knowledgeNavigationController,
+                                                          mapsNavigationController])
         tabController = tabModule
 
         rootNavigationController.setViewControllers([tabModule], animated: animate)

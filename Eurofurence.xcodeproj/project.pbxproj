@@ -652,6 +652,7 @@
 		CA680F8220CDABB6006ACD3D /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F8120CDABB6006ACD3D /* ImageDownloader.swift */; };
 		CA680F8520CDAE2F006ACD3D /* PersistentImageRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F8420CDAE2F006ACD3D /* PersistentImageRepositoryTests.swift */; };
 		CA6A8D5F20E16BB3007536CD /* WhenShowingMessagesModuleAlerts_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D5E20E16BB3007536CD /* WhenShowingMessagesModuleAlerts_DirectorShould.swift */; };
+		CA6A8D6320E26247007536CD /* MapsModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D6220E26247007536CD /* MapsModuleProviding.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -1733,6 +1734,7 @@
 		CA680F8120CDABB6006ACD3D /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		CA680F8420CDAE2F006ACD3D /* PersistentImageRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentImageRepositoryTests.swift; sourceTree = "<group>"; };
 		CA6A8D5E20E16BB3007536CD /* WhenShowingMessagesModuleAlerts_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenShowingMessagesModuleAlerts_DirectorShould.swift; sourceTree = "<group>"; };
+		CA6A8D6220E26247007536CD /* MapsModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsModuleProviding.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -2266,15 +2268,16 @@
 		6EF96CE01F12688700EE6134 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				CA27619720E01CF3000E52AC /* Collect-them-All */,
 				CA728446209D0119007D912A /* Announcement Detail */,
 				6EF96CE81F126B0400EE6134 /* Bootstrap */,
+				CA27619720E01CF3000E52AC /* Collect-them-All */,
 				CA36A4E120DAFF6D00EE6537 /* Dealer Detail */,
 				CA6375A3208E008A00536BE2 /* Dealers */,
 				CACF1E4920AE2A3D00D904B5 /* Event Detail */,
 				CA6EC46E2051655600402894 /* Knowledge Detail */,
 				CA73AEE0201A084C004E77BF /* Knowledge List */,
 				CABA43841FBC6FD3009CB5B0 /* Login */,
+				CA6A8D6020E26233007536CD /* Maps */,
 				CAEAEBF21FDEB53800C0EE7C /* Message Detail */,
 				CAD234381F5D71D9004BB959 /* Messages */,
 				CAC1E1251F50409800195513 /* News */,
@@ -3902,6 +3905,22 @@
 				CA52C68220D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift */,
 			);
 			path = "Adapter Tests";
+			sourceTree = "<group>";
+		};
+		CA6A8D6020E26233007536CD /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				CA6A8D6120E2623F007536CD /* Module */,
+			);
+			path = Maps;
+			sourceTree = "<group>";
+		};
+		CA6A8D6120E2623F007536CD /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				CA6A8D6220E26247007536CD /* MapsModuleProviding.swift */,
+			);
+			path = Module;
 			sourceTree = "<group>";
 		};
 		CA6A9FEF1FD5DE0E0092C6DB /* View */ = {
@@ -5798,6 +5817,7 @@
 				9ACF998D1EC858B2006FC958 /* KnowledgeGroup.swift in Sources */,
 				78C86D561F12334D003A20E6 /* Routers.swift in Sources */,
 				CA6AA0141FD74F910092C6DB /* ViewControllerDissolveTransitioning.swift in Sources */,
+				CA6A8D6320E26247007536CD /* MapsModuleProviding.swift in Sources */,
 				CA73AEF1201A08BA004E77BF /* KnowledgeListModuleProviding.swift in Sources */,
 				CAD3BDBF205AA69600C91E6E /* LinkLookupService.swift in Sources */,
 				CA52C69920D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift in Sources */,

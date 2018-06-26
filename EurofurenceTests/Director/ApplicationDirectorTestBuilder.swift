@@ -18,6 +18,15 @@ class StubCollectThemAllModuleProviding: CollectThemAllModuleProviding {
     
 }
 
+class StubMapsModuleProviding: MapsModuleProviding {
+    
+    let stubInterface = UIViewController()
+    func makeMapsModule() -> UIViewController {
+        return stubInterface
+    }
+    
+}
+
 class ApplicationDirectorTestBuilder {
     
     struct Context {
@@ -38,6 +47,7 @@ class ApplicationDirectorTestBuilder {
         var messageDetailModule: StubMessageDetailModuleProviding
         var knowledgeListModule: StubKnowledgeListModuleProviding
         var knowledgeDetailModule: StubKnowledgeDetailModuleProviding
+        var mapsModule: StubMapsModuleProviding
         var announcementDetailModule: StubAnnouncementDetailModuleFactory
         var eventDetailModule: StubEventDetailModuleFactory
         var linkRouter: StubLinkRouter
@@ -62,6 +72,7 @@ class ApplicationDirectorTestBuilder {
     private let messageDetailModule: StubMessageDetailModuleProviding
     private let knowledgeListModule: StubKnowledgeListModuleProviding
     private let knowledgeDetailModule: StubKnowledgeDetailModuleProviding
+    private let mapsModule: StubMapsModuleProviding
     private let announcementDetailModule: StubAnnouncementDetailModuleFactory
     private let eventDetailModule: StubEventDetailModuleFactory
     private let linkRouter: StubLinkRouter
@@ -84,6 +95,7 @@ class ApplicationDirectorTestBuilder {
         messageDetailModule = StubMessageDetailModuleProviding()
         knowledgeListModule = StubKnowledgeListModuleProviding()
         knowledgeDetailModule = StubKnowledgeDetailModuleProviding()
+        mapsModule = StubMapsModuleProviding()
         announcementDetailModule = StubAnnouncementDetailModuleFactory()
         eventDetailModule = StubEventDetailModuleFactory()
         linkRouter = StubLinkRouter()
@@ -108,6 +120,7 @@ class ApplicationDirectorTestBuilder {
         builder.with(messageDetailModule)
         builder.with(knowledgeListModule)
         builder.with(knowledgeDetailModule)
+        builder.with(mapsModule)
         builder.with(announcementDetailModule)
         builder.with(eventDetailModule)
         builder.with(linkRouter)
@@ -134,6 +147,7 @@ class ApplicationDirectorTestBuilder {
                        messageDetailModule: messageDetailModule,
                        knowledgeListModule: knowledgeListModule,
                        knowledgeDetailModule: knowledgeDetailModule,
+                       mapsModule: mapsModule,
                        announcementDetailModule: announcementDetailModule,
                        eventDetailModule: eventDetailModule,
                        linkRouter: linkRouter,
