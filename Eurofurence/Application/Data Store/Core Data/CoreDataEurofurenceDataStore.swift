@@ -304,6 +304,10 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
             }
         }
 
+        func saveMaps(_ maps: [APIMap]) {
+
+        }
+
         // MARK: Private
 
         private func makeEntity<Entity>(in context: NSManagedObjectContext,

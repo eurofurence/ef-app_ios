@@ -37,6 +37,7 @@ protocol EurofurenceDataStoreTransaction {
     func saveConferenceDays(_ conferenceDays: [APIConferenceDay])
     func saveFavouriteEventIdentifier(_ identifier: Event2.Identifier)
     func saveDealers(_ dealers: [APIDealer])
+    func saveMaps(_ maps: [APIMap])
 
     func deleteFavouriteEventIdentifier(_ identifier: Event2.Identifier)
 

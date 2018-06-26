@@ -274,6 +274,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                     transaction.saveTracks(response.tracks.changed)
                     transaction.saveConferenceDays(response.conferenceDays.changed)
                     transaction.saveDealers(response.dealers.changed)
+                    transaction.saveMaps(response.maps.changed)
                     transaction.saveLastRefreshDate(self.clock.currentDate)
                 })
 

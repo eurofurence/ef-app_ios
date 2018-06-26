@@ -129,6 +129,11 @@ extension CapturingEurofurenceDataStore {
         return persistedConferenceDays.contains(elementsFrom: conferenceDays)
     }
     
+    func didSave(_ maps: [APIMap]) -> Bool {
+        guard let persistedMaps = transaction?.persistedMaps else { return false }
+        return persistedMaps.contains(elementsFrom: maps)
+    }
+    
 }
 
 extension Array where Element: Equatable {
@@ -200,6 +205,11 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
     private(set) var persistedDealers: [APIDealer] = []
     func saveDealers(_ dealers: [APIDealer]) {
         persistedDealers = dealers
+    }
+    
+    private(set) var persistedMaps: [APIMap] = []
+    func saveMaps(_ maps: [APIMap]) {
+        persistedMaps = maps
     }
     
 }

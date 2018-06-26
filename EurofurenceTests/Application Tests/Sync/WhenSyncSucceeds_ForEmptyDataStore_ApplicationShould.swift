@@ -58,4 +58,9 @@ class WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould: XCTestCase {
         XCTAssertTrue(context.dataStore.didSave(expected))
     }
     
+    func testSaveTheMapsIntoTheStore() {
+        let expected = syncResponse.maps.changed
+        XCTAssertTrue(context.dataStore.didSave(expected))
+    }
+    
 }
