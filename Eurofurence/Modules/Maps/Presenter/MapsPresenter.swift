@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MapsPresenter: MapsSceneDelegate {
+class MapsPresenter: MapsSceneDelegate {
 
     private struct Binder: MapsBinder {
 
@@ -25,10 +25,13 @@ struct MapsPresenter: MapsSceneDelegate {
 
     private let scene: MapsScene
     private let interactor: MapsInteractor
+    private let delegate: MapsModuleDelegate
+    private var viewModel: MapsViewModel?
 
-    init(scene: MapsScene, interactor: MapsInteractor) {
+    init(scene: MapsScene, interactor: MapsInteractor, delegate: MapsModuleDelegate) {
         self.scene = scene
         self.interactor = interactor
+        self.delegate = delegate
 
         scene.setMapsTitle(.maps)
         scene.setDelegate(self)
@@ -36,8 +39,14 @@ struct MapsPresenter: MapsSceneDelegate {
 
     func mapsSceneDidLoad() {
         interactor.makeMapsViewModel { (viewModel) in
+            self.viewModel = viewModel
             self.scene.bind(numberOfMaps: viewModel.numberOfMaps, using: Binder(viewModel: viewModel))
         }
+    }
+
+    func simulateSceneDidSelectMap(at index: Int) {
+        guard let identifier = viewModel?.identifierForMap(at: index) else { return }
+        delegate.mapsModuleDidSelectMap(identifier: identifier)
     }
 
 }

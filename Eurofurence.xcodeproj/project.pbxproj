@@ -677,6 +677,10 @@
 		CA6A8D9820E2C634007536CD /* MapComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D9720E2C634007536CD /* MapComponent.swift */; };
 		CA6A8D9A20E2C678007536CD /* MapsBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D9920E2C678007536CD /* MapsBinder.swift */; };
 		CA6A8D9C20E2C737007536CD /* MapViewModel2+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D9B20E2C737007536CD /* MapViewModel2+RandomValueProviding.swift */; };
+		CA6A8D9E20E2CA58007536CD /* WhenSelectingMap_MapsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D9D20E2CA58007536CD /* WhenSelectingMap_MapsPresenterShould.swift */; };
+		CA6A8DA020E2CAB7007536CD /* Map2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D9F20E2CAB7007536CD /* Map2.swift */; };
+		CA6A8DA220E2CB5C007536CD /* MapsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DA120E2CB5C007536CD /* MapsModuleDelegate.swift */; };
+		CA6A8DA420E2CB66007536CD /* CapturingMapsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DA320E2CB66007536CD /* CapturingMapsModuleDelegate.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -1783,6 +1787,10 @@
 		CA6A8D9720E2C634007536CD /* MapComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent.swift; sourceTree = "<group>"; };
 		CA6A8D9920E2C678007536CD /* MapsBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsBinder.swift; sourceTree = "<group>"; };
 		CA6A8D9B20E2C737007536CD /* MapViewModel2+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewModel2+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA6A8D9D20E2CA58007536CD /* WhenSelectingMap_MapsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSelectingMap_MapsPresenterShould.swift; sourceTree = "<group>"; };
+		CA6A8D9F20E2CAB7007536CD /* Map2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map2.swift; sourceTree = "<group>"; };
+		CA6A8DA120E2CB5C007536CD /* MapsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsModuleDelegate.swift; sourceTree = "<group>"; };
+		CA6A8DA320E2CB66007536CD /* CapturingMapsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingMapsModuleDelegate.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -3247,6 +3255,7 @@
 				CABF03B82041C2B00028BD62 /* KnowledgeEntry2.swift */,
 				CABF03B92041C2B00028BD62 /* KnowledgeGroup2.swift */,
 				CAD3BDAE205870B500C91E6E /* Link.swift */,
+				CA6A8D9F20E2CAB7007536CD /* Map2.swift */,
 				CA30EAC31F2672BF0053DBF6 /* Message.swift */,
 				CA162E9520A88854004AFED6 /* Room.swift */,
 				CACF1E8F20B36B5800D904B5 /* Track.swift */,
@@ -3973,6 +3982,7 @@
 			children = (
 				CA6A8D6220E26247007536CD /* MapsModuleProviding.swift */,
 				CA6A8D7020E2649C007536CD /* MapsModule.swift */,
+				CA6A8DA120E2CB5C007536CD /* MapsModuleDelegate.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -3991,9 +4001,10 @@
 			isa = PBXGroup;
 			children = (
 				CA6A8D8F20E2C2C8007536CD /* BeforeMapsSceneLoads_MapsPresenterShould.swift */,
+				CA6A8D9320E2C596007536CD /* WhenBindingMap_MapsPresenterShould.swift */,
 				CA6A8D6620E263A0007536CD /* WhenBuildingMapsModule.swift */,
 				CA6A8D8120E2BA6C007536CD /* WhenMapsSceneLoads_MapsPresenterShould.swift */,
-				CA6A8D9320E2C596007536CD /* WhenBindingMap_MapsPresenterShould.swift */,
+				CA6A8D9D20E2CA58007536CD /* WhenSelectingMap_MapsPresenterShould.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -4021,11 +4032,12 @@
 		CA6A8D7220E264AB007536CD /* Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
+				CA6A8D9520E2C61B007536CD /* CapturingMapComponent.swift */,
+				CA6A8DA320E2CB66007536CD /* CapturingMapsModuleDelegate.swift */,
 				CA6A8D7320E264B5007536CD /* CapturingMapsScene.swift */,
 				CA6A8D8A20E2BBB1007536CD /* FakeMapsInteractor.swift */,
 				CA6A8D8820E2BBA4007536CD /* FakeMapsViewModel.swift */,
 				CA6A8D7520E264C5007536CD /* StubMapsSceneFactory.swift */,
-				CA6A8D9520E2C61B007536CD /* CapturingMapComponent.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -5894,6 +5906,7 @@
 				CACF1E5820AE2DED00D904B5 /* EventDetailSceneFactory.swift in Sources */,
 				CA2761BA20E02A16000E52AC /* CollectThemAllService.swift in Sources */,
 				9ACF99681EBE3479006FC958 /* EntityBase.swift in Sources */,
+				CA6A8DA220E2CB5C007536CD /* MapsModuleDelegate.swift in Sources */,
 				CA6A8D6B20E26478007536CD /* MapsScene.swift in Sources */,
 				CA17FE8B20585D9C005A4C05 /* LinkTableViewCell.swift in Sources */,
 				CA6A8D8720E2BB90007536CD /* MapsViewModel.swift in Sources */,
@@ -6339,6 +6352,7 @@
 				CACF1E6F20B1CDC300D904B5 /* EventDetailViewModel.swift in Sources */,
 				CABA439F1FD578E1009CB5B0 /* NewsModuleBuilder.swift in Sources */,
 				CA6EC4892051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift in Sources */,
+				CA6A8DA020E2CAB7007536CD /* Map2.swift in Sources */,
 				CA73AEF3201A08C4004E77BF /* KnowledgeListModule.swift in Sources */,
 				CA2761B620E0238F000E52AC /* CollectThemAllViewController.swift in Sources */,
 				CA1B6F3320DB9B4F00ADF414 /* DealerDetailSummaryTableViewCell.swift in Sources */,
@@ -6493,6 +6507,7 @@
 				CA1B6F3120DB91F500ADF414 /* DealerDetailSummaryViewModel+RandomValueProviding.swift in Sources */,
 				CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */,
 				CA08158D20D4556700F750D4 /* FakeShortFormDateFormatter.swift in Sources */,
+				CA6A8D9E20E2CA58007536CD /* WhenSelectingMap_MapsPresenterShould.swift in Sources */,
 				CA36A4CC20DA7C9000EE6537 /* WhenBindingDealerSearchResultGroupHeading_DealersPresenterShould.swift in Sources */,
 				CA17FE8E205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift in Sources */,
 				CA162EB620AA2F34004AFED6 /* WhenObservingRunningEventsAfterSuccessfulLoad.swift in Sources */,
@@ -6770,6 +6785,7 @@
 				CA728463209D0F7B007D912A /* CapturingAnnouncementDetailScene.swift in Sources */,
 				CA65A2212091F5320078A4A7 /* WhenAddingAnnouncementsObserverAfterSuccessfulRefresh.swift in Sources */,
 				CA6375A2208E005E00536BE2 /* StubDealersModuleFactory.swift in Sources */,
+				CA6A8DA420E2CB66007536CD /* CapturingMapsModuleDelegate.swift in Sources */,
 				CA36A48A20D927D200EE6537 /* WhenPreparingViewModel_DealersInteractorShould.swift in Sources */,
 				CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */,
 				CA73AEDF201A0833004E77BF /* CapturingKnowledgeInteractor.swift in Sources */,

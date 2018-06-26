@@ -18,7 +18,8 @@ class ApplicationDirector: ExternalContentHandler,
                            LoginModuleDelegate,
                            DealersModuleDelegate,
                            KnowledgeListModuleDelegate,
-                           KnowledgeDetailModuleDelegate {
+                           KnowledgeDetailModuleDelegate,
+                           MapsModuleDelegate {
 
     private class DissolveTransitionAnimationProviding: NSObject, UINavigationControllerDelegate {
 
@@ -256,6 +257,12 @@ class ApplicationDirector: ExternalContentHandler,
         }
     }
 
+    // MARK: MapsModuleDelegate
+
+    func mapsModuleDidSelectMap(identifier: Map2.Identifier) {
+
+    }
+
     // MARK: Private
 
     private func showPreloadModule() {
@@ -291,7 +298,7 @@ class ApplicationDirector: ExternalContentHandler,
         let collectThemAllNavigationController = UINavigationController(rootViewController: collectThemAllModule)
         collectThemAllNavigationController.tabBarItem = collectThemAllModule.tabBarItem
 
-        let mapsModule = mapsModuleProviding.makeMapsModule()
+        let mapsModule = mapsModuleProviding.makeMapsModule(self)
         let mapsNavigationController = UINavigationController(rootViewController: mapsModule)
         mapsNavigationController.tabBarItem = mapsModule.tabBarItem
 

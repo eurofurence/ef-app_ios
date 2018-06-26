@@ -14,6 +14,7 @@ class MapsPresenterTestBuilder {
     struct Context {
         var scene: CapturingMapsScene
         var producedViewController: UIViewController
+        var delegate: CapturingMapsModuleDelegate
     }
     
     private var interactor: MapsInteractor
@@ -30,13 +31,16 @@ class MapsPresenterTestBuilder {
     
     func build() -> Context {
         let sceneFactory = StubMapsSceneFactory()
+        let delegate = CapturingMapsModuleDelegate()
         let module = MapsModuleBuilder()
             .with(interactor)
             .with(sceneFactory)
             .build()
-            .makeMapsModule()
+            .makeMapsModule(delegate)
         
-        return Context(scene: sceneFactory.scene, producedViewController: module)
+        return Context(scene: sceneFactory.scene,
+                       producedViewController: module,
+                       delegate: delegate)
     }
     
 }
@@ -45,6 +49,10 @@ extension MapsPresenterTestBuilder.Context {
     
     func simulateSceneDidLoad() {
         scene.delegate?.mapsSceneDidLoad()
+    }
+    
+    func simulateSceneDidSelectMap(at index: Int) {
+        scene.delegate?.simulateSceneDidSelectMap(at: index)
     }
     
     func bindMap(at index: Int) -> CapturingMapComponent {

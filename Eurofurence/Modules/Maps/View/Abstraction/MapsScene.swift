@@ -19,5 +19,6 @@ protocol MapsScene {
 protocol MapsSceneDelegate {
 
     func mapsSceneDidLoad()
+    func simulateSceneDidSelectMap(at index: Int)
 
 }

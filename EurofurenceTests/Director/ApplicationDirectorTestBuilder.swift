@@ -21,7 +21,7 @@ class StubCollectThemAllModuleProviding: CollectThemAllModuleProviding {
 class StubMapsModuleProviding: MapsModuleProviding {
     
     let stubInterface = UIViewController()
-    func makeMapsModule() -> UIViewController {
+    func makeMapsModule(_ delegate: MapsModuleDelegate) -> UIViewController {
         return stubInterface
     }
     
