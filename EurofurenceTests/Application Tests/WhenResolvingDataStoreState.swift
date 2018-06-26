@@ -50,6 +50,10 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
         return transaction?.persistedDealers
     }
     
+    func getSavedMaps() -> [APIMap]? {
+        return transaction?.persistedMaps
+    }
+    
     private(set) var capturedKnowledgeGroupsToSave: [KnowledgeGroup2]?
     private(set) var transaction: CapturingEurofurenceDataStoreTransaction?
     var transactionInvokedBlock: (() -> Void)?
@@ -74,6 +78,7 @@ extension CapturingEurofurenceDataStore {
             transaction.saveTracks(response.tracks.changed)
             transaction.saveConferenceDays(response.conferenceDays.changed)
             transaction.saveDealers(response.dealers.changed)
+            transaction.saveMaps(response.maps.changed)
         }
     }
     

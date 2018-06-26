@@ -102,6 +102,10 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         return getModels(fetchRequest: DealerEntity.fetchRequest())
     }
 
+    func getSavedMaps() -> [APIMap]? {
+        return nil
+    }
+
     // MARK: Private
 
     private func getModels<Entity>(fetchRequest: NSFetchRequest<Entity>) -> [Entity.AdaptedType]? where Entity: EntityAdapting {

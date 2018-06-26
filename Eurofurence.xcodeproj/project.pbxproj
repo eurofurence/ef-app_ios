@@ -690,6 +690,7 @@
 		CA6A8DB820E2DC62007536CD /* Maps.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DB720E2DC62007536CD /* Maps.swift */; };
 		CA6A8DBA20E2DD79007536CD /* WhenObservingMaps_ThenSyncSucceeds_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DB920E2DD79007536CD /* WhenObservingMaps_ThenSyncSucceeds_ApplicationShould.swift */; };
 		CA6A8DBC20E2DF09007536CD /* WhenFetchingMapImageData_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DBB20E2DF09007536CD /* WhenFetchingMapImageData_ApplicationShould.swift */; };
+		CA6A8DBE20E2E1ED007536CD /* WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DBD20E2E1ED007536CD /* WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -1809,6 +1810,7 @@
 		CA6A8DB720E2DC62007536CD /* Maps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maps.swift; sourceTree = "<group>"; };
 		CA6A8DB920E2DD79007536CD /* WhenObservingMaps_ThenSyncSucceeds_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingMaps_ThenSyncSucceeds_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA6A8DBB20E2DF09007536CD /* WhenFetchingMapImageData_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingMapImageData_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA6A8DBD20E2E1ED007536CD /* WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -4113,9 +4115,10 @@
 		CA6A8DB420E2DA1F007536CD /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				CA6A8DBD20E2E1ED007536CD /* WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift */,
+				CA6A8DBB20E2DF09007536CD /* WhenFetchingMapImageData_ApplicationShould.swift */,
 				CA6A8DB520E2DA44007536CD /* WhenObservingMaps_AfterSyncSucceeds_ApplicationShould.swift */,
 				CA6A8DB920E2DD79007536CD /* WhenObservingMaps_ThenSyncSucceeds_ApplicationShould.swift */,
-				CA6A8DBB20E2DF09007536CD /* WhenFetchingMapImageData_ApplicationShould.swift */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -6577,6 +6580,7 @@
 				CA30EABC1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift in Sources */,
 				CAF9A94E1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift in Sources */,
 				CA00AE7320D18D1E00C2FBB0 /* WhenPreparingViewModel_ScheduleInteractorShould.swift in Sources */,
+				CA6A8DBE20E2E1ED007536CD /* WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift in Sources */,
 				CABA83EC20CDBE8F00DD0795 /* V2ImageAPITests.swift in Sources */,
 				CAF705611F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift in Sources */,
 				CA250DE420D6F68700E7513C /* WhenSearchControllerProducesNewResults_ScheduleInteractorShould.swift in Sources */,

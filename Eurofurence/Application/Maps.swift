@@ -35,10 +35,13 @@ class Maps {
 
     private var observers = [MapsObserver]()
 
-    init(eventBus: EventBus, imageRepository: ImageRepository) {
+    init(eventBus: EventBus, dataStore: EurofurenceDataStore, imageRepository: ImageRepository) {
         self.imageRepository = imageRepository
-
         eventBus.subscribe(consumer: RefreshMapsAfterSync(handler: updateModels))
+
+        if let maps = dataStore.getSavedMaps() {
+            updateModels(maps)
+        }
     }
 
     func add(_ observer: MapsObserver) {

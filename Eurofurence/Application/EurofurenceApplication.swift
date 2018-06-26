@@ -112,7 +112,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         collectThemAll = CollectThemAll(eventBus: eventBus,
                                         collectThemAllRequestFactory: collectThemAllRequestFactory,
                                         credentialStore: credentialStore)
-        maps = Maps(eventBus: eventBus, imageRepository: imageRepository)
+        maps = Maps(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository)
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
