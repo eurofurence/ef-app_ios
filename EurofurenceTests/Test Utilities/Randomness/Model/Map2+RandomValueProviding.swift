@@ -12,7 +12,7 @@ import Foundation
 extension Map2: RandomValueProviding {
     
     static var random: Map2 {
-        return Map2()
+        return Map2(location: .random)
     }
     
 }

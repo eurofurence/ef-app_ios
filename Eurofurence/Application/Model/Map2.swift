@@ -30,4 +30,6 @@ struct Map2 {
 
     }
 
+    var location: String
+
 }

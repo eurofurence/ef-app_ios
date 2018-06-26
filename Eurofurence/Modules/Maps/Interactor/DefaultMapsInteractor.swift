@@ -23,7 +23,8 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
         }
 
         func mapViewModel(at index: Int) -> MapViewModel2 {
-            return MapViewModel2(mapName: "",
+            let map = maps[index]
+            return MapViewModel2(mapName: map.location,
                                  mapPreviewImagePNGData: Data())
         }
 
