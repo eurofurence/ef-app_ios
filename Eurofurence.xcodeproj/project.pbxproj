@@ -671,6 +671,7 @@
 		CA6A8D8B20E2BBB1007536CD /* FakeMapsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D8A20E2BBB1007536CD /* FakeMapsInteractor.swift */; };
 		CA6A8D8E20E2BC6C007536CD /* MapsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D8D20E2BC6C007536CD /* MapsPresenter.swift */; };
 		CA6A8D9020E2C2C8007536CD /* BeforeMapsSceneLoads_MapsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D8F20E2C2C8007536CD /* BeforeMapsSceneLoads_MapsPresenterShould.swift */; };
+		CA6A8D9220E2C554007536CD /* MapCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D9120E2C554007536CD /* MapCollectionViewCell.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -1771,6 +1772,7 @@
 		CA6A8D8A20E2BBB1007536CD /* FakeMapsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMapsInteractor.swift; sourceTree = "<group>"; };
 		CA6A8D8D20E2BC6C007536CD /* MapsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsPresenter.swift; sourceTree = "<group>"; };
 		CA6A8D8F20E2C2C8007536CD /* BeforeMapsSceneLoads_MapsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeMapsSceneLoads_MapsPresenterShould.swift; sourceTree = "<group>"; };
+		CA6A8D9120E2C554007536CD /* MapCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -4020,6 +4022,7 @@
 				CA6A8D7A20E26588007536CD /* Maps.storyboard */,
 				CA6A8D7C20E265B0007536CD /* MapsViewController.swift */,
 				CA6A8D7F20E265BE007536CD /* StoryboardMapsScenefactory.swift */,
+				CA6A8D9120E2C554007536CD /* MapCollectionViewCell.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -6310,6 +6313,7 @@
 				D6F3D0434C71907BD410190E /* ImageServiceProtocol.swift in Sources */,
 				9A7FDA121F33B7630050C325 /* UserDefaultsTabBarOrderProvider.swift in Sources */,
 				CAE27B501F857A99005FDE39 /* PhonePreloadModuleFactory.swift in Sources */,
+				CA6A8D9220E2C554007536CD /* MapCollectionViewCell.swift in Sources */,
 				D6F3D749FF814981E076850E /* ImageService.swift in Sources */,
 				CA162E7C20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift in Sources */,
 				CA6AA0011FD6C5FD0092C6DB /* LoginModuleBuilder.swift in Sources */,
