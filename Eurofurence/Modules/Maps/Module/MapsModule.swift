@@ -11,10 +11,11 @@ import UIKit
 struct MapsModule: MapsModuleProviding {
 
     var sceneFactory: MapsSceneFactory
+    var interactor: MapsInteractor
 
     func makeMapsModule() -> UIViewController {
         let scene = sceneFactory.makeMapsScene()
-        scene.setMapsTitle(.maps)
+        _ = MapsPresenter(scene: scene, interactor: interactor)
 
         return scene
     }

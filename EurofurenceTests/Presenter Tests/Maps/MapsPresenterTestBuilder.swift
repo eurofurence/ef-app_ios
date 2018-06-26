@@ -16,11 +16,35 @@ class MapsPresenterTestBuilder {
         var producedViewController: UIViewController
     }
     
+    private var interactor: MapsInteractor
+    
+    init() {
+        interactor = FakeMapsInteractor()
+    }
+    
+    @discardableResult
+    func with(_ interactor: MapsInteractor) -> MapsPresenterTestBuilder {
+        self.interactor = interactor
+        return self
+    }
+    
     func build() -> Context {
         let sceneFactory = StubMapsSceneFactory()
-        let module = MapsModuleBuilder().with(sceneFactory).build().makeMapsModule()
+        let module = MapsModuleBuilder()
+            .with(interactor)
+            .with(sceneFactory)
+            .build()
+            .makeMapsModule()
         
         return Context(scene: sceneFactory.scene, producedViewController: module)
+    }
+    
+}
+
+extension MapsPresenterTestBuilder.Context {
+    
+    func simulateSceneDidLoad() {
+        scene.delegate?.mapsSceneDidLoad()
     }
     
 }

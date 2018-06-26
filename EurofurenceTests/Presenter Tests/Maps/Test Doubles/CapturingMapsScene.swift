@@ -11,9 +11,19 @@ import UIKit
 
 class CapturingMapsScene: UIViewController, MapsScene {
     
+    private(set) var delegate: MapsSceneDelegate?
+    func setDelegate(_ delegate: MapsSceneDelegate) {
+        self.delegate = delegate
+    }
+    
     private(set) var capturedTitle: String?
     func setMapsTitle(_ title: String) {
         capturedTitle = title
+    }
+    
+    private(set) var boundNumberOfMaps: Int?
+    func bind(numberOfMaps: Int) {
+        boundNumberOfMaps = numberOfMaps
     }
     
 }

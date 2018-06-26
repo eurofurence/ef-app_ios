@@ -10,10 +10,26 @@ import UIKit
 
 class MapsViewController: UIViewController, MapsScene {
 
+    // MARK: Overrides
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        delegate?.mapsSceneDidLoad()
+    }
+
     // MARK: MapsScene
+
+    private var delegate: MapsSceneDelegate?
+    func setDelegate(_ delegate: MapsSceneDelegate) {
+        self.delegate = delegate
+    }
 
     func setMapsTitle(_ title: String) {
         super.title = title
+    }
+
+    func bind(numberOfMaps: Int) {
+
     }
 
 }

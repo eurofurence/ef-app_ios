@@ -10,10 +10,24 @@ import Foundation
 
 class MapsModuleBuilder {
 
+    private var interactor: MapsInteractor
     private var sceneFactory: MapsSceneFactory
 
     init() {
+        struct DummyMapsInteractor: MapsInteractor {
+            func makeMapsViewModel(completionHandler: @escaping (MapsViewModel) -> Void) {
+
+            }
+        }
+
+        interactor = DummyMapsInteractor()
         sceneFactory = StoryboardMapsScenefactory()
+    }
+
+    @discardableResult
+    func with(_ interactor: MapsInteractor) -> MapsModuleBuilder {
+        self.interactor = interactor
+        return self
     }
 
     @discardableResult
@@ -23,7 +37,7 @@ class MapsModuleBuilder {
     }
 
     func build() -> MapsModuleProviding {
-        return MapsModule(sceneFactory: sceneFactory)
+        return MapsModule(sceneFactory: sceneFactory, interactor: interactor)
     }
 
 }

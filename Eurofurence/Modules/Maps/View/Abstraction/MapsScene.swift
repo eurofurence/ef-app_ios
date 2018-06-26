@@ -10,6 +10,14 @@ import Foundation
 
 protocol MapsScene {
 
+    func setDelegate(_ delegate: MapsSceneDelegate)
     func setMapsTitle(_ title: String)
+    func bind(numberOfMaps: Int)
+
+}
+
+protocol MapsSceneDelegate {
+
+    func mapsSceneDidLoad()
 
 }
