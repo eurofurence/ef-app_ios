@@ -38,9 +38,11 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
     private struct SingleViewModel: MapViewModel2 {
 
         private let map: Map2
+        private let mapsService: MapsService
 
         init(map: Map2, mapsService: MapsService) {
             self.map = map
+            self.mapsService = mapsService
         }
 
         var mapName: String {
@@ -48,7 +50,7 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
         }
 
         func fetchMapPreviewPNGData(completionHandler: @escaping (Data) -> Void) {
-
+            mapsService.fetchImagePNGDataForMap(identifier: map.identifier, completionHandler: completionHandler)
         }
 
     }

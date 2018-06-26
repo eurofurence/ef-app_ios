@@ -12,7 +12,15 @@ import Foundation
 extension Map2: RandomValueProviding {
     
     static var random: Map2 {
-        return Map2(location: .random)
+        return Map2(identifier: .random, location: .random)
+    }
+    
+}
+
+extension Map2.Identifier: RandomValueProviding {
+    
+    static var random: Map2.Identifier {
+        return Map2.Identifier(.random)
     }
     
 }

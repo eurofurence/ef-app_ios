@@ -11,6 +11,7 @@ import Foundation
 protocol MapsService {
 
     func add(_ observer: MapsObserver)
+    func fetchImagePNGDataForMap(identifier: Map2.Identifier, completionHandler: @escaping (Data) -> Void)
 
 }
 

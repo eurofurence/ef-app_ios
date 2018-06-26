@@ -16,4 +16,16 @@ class FakeMapsService: MapsService {
         observer.mapsServiceDidChangeMaps(maps)
     }
     
+    func fetchImagePNGDataForMap(identifier: Map2.Identifier, completionHandler: @escaping (Data) -> Void) {
+        completionHandler(imagePNGDataForMap(identifier: identifier))
+    }
+    
+}
+
+extension FakeMapsService {
+    
+    func imagePNGDataForMap(identifier: Map2.Identifier) -> Data {
+        return identifier.rawValue.data(using: .utf8)!
+    }
+    
 }
