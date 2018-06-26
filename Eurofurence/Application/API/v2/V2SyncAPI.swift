@@ -60,7 +60,7 @@ private struct JSONSyncResponse: Decodable {
                                tracks: EventConferenceTracks.delta,
                                conferenceDays: EventConferenceDays.delta,
                                dealers: Dealers.delta,
-                               maps: APISyncDelta())
+                               maps: Maps.delta)
     }
 
     struct Leaf<T>: Decodable where T: Decodable & ModelRepresenting {
@@ -250,6 +250,20 @@ private struct JSONSyncResponse: Decodable {
 
     }
 
+    struct JSONMap: Decodable, ModelRepresenting {
+
+        var Id: String
+        var ImageId: String
+        var Description: String
+
+        var modelValue: APIMap {
+            return APIMap(identifier: Id,
+                          imageIdentifier: ImageId,
+                          mapDescription: Description)
+        }
+
+    }
+
     var KnowledgeGroups: Leaf<JSONKnowledgeGroup>
     var KnowledgeEntries: Leaf<JSONKnowledgeEntry>
     var Announcements: Leaf<JSONAnnouncement>
@@ -258,6 +272,7 @@ private struct JSONSyncResponse: Decodable {
     var EventConferenceTracks: Leaf<JSONTrack>
     var EventConferenceDays: Leaf<JSONEventConferenceDay>
     var Dealers: Leaf<JSONDealer>
+    var Maps: Leaf<JSONMap>
 
 }
 

@@ -393,7 +393,45 @@
         "StorageLastChangeDateTimeUtc": "2018-01-12T07:32:35.138Z",
         "StorageDeltaStartChangeDateTimeUtc": "2018-01-12T07:32:35.138Z",
         "RemoveAllBeforeInsert": true,
-        "ChangedEntities": [],
-        "DeletedEntities": []
+        "ChangedEntities": [{"LastChangeDateTimeUtc": "2017-08-13T19:13:52.708Z",
+                            "Id": "d6f1c9b4-6d03-41cc-ae5d-ee278e5121f0",
+                            "ImageId": "28c15af7-6d82-4ee7-bf3b-2603076e785e",
+                            "Description": "Dealers Den",
+                            "IsBrowseable": true,
+                            "Entries": [
+                                        {
+                                        "Id": "651ab75e-d87f-40a6-bcad-669432ee7a86",
+                                        "X": 747,
+                                        "Y": 201,
+                                        "TapRadius": 50,
+                                        "Links": [
+                                                  {
+                                                  "FragmentType": "DealerDetail",
+                                                  "Name": "Mirri",
+                                                  "Target": "b2166372-3b76-45d3-b3f9-e1675cade2db"
+                                                  }
+                                                  ]
+                                        }]
+                            }],
+        "DeletedEntities": [{"LastChangeDateTimeUtc": "2017-08-08T15:50:34.777Z",
+                            "Id": "157e1849-d6fc-46ab-9d47-1b785cd867c7",
+                            "ImageId": "ba02881c-ab37-4e0c-b7f3-ef161c756714",
+                            "Description": "Venue (Estrel)",
+                            "IsBrowseable": true,
+                            "Entries": [
+                                        {
+                                        "Id": "c75f177c-a868-4365-88b4-88480fcc588f",
+                                        "X": 693,
+                                        "Y": 1055,
+                                        "TapRadius": 30,
+                                        "Links": [
+                                                  {
+                                                  "FragmentType": "MapEntry",
+                                                  "Name": "Rotunda",
+                                                  "Target": "8b92250c-5d80-4adf-bbf7-56d247bd18cc"
+                                                  }
+                                                  ]
+                                        }]
+                            }]
     }
 }

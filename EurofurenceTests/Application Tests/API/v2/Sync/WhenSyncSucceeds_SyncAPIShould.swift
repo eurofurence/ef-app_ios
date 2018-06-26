@@ -77,6 +77,11 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
         XCTAssertEqual(expected, response?.dealers)
     }
     
+    func testProduceExpectedMaps() {
+        let expected = makeExpectedSyncResponseFromTestFile().maps
+        XCTAssertEqual(expected, response?.maps)
+    }
+    
     private func makeExpectedSyncResponseFromTestFile() -> APISyncResponse {
         let knowledgeGroups = APISyncDelta<APIKnowledgeGroup>(changed: [APIKnowledgeGroup(identifier: "ec031cbf-d8d0-825d-4c36-b782ed8d19d8",
                                                                                           order: 0,
@@ -221,6 +226,13 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                   aboutTheArtText: "Got my mind stuck in the 80s, my art stuck in the 90s, and I am not ashamed to say I looove cheesy pin-up flat-color black-outlined top-heavy toonyness. Strongly inspired by Chuck Jones and Disney work from days gone by, and trying to keep that flame alive. \r\nI got a thing for anvil-and-dynamite style toon stuff (this is where the little rat comes from), strong female leads, and a recurring topic of \"Bad Girls vs. Balloons\", which I am perhaps a bit infamous for.\r\nNot to be taken too seriously.",
                                                                   artPreviewCaption: "Pin-Ups focusing on joie-de-vivre, flirtatious and strong anthro girls. These ladies will try to cheer you up and help you pull through life, no matter if on a Zippo in your pocket, on a college bag around your shoulder, or as a print on your wall. But you better treat 'em well, or they might just pull an anvil out of their pocket and throw it! ;)")])
         
+        let maps = APISyncDelta<APIMap>(changed: [APIMap(identifier: "d6f1c9b4-6d03-41cc-ae5d-ee278e5121f0",
+                                                         imageIdentifier: "28c15af7-6d82-4ee7-bf3b-2603076e785e",
+                                                         mapDescription: "Dealers Den")],
+                                        deleted: [APIMap(identifier: "157e1849-d6fc-46ab-9d47-1b785cd867c7",
+                                                         imageIdentifier: "ba02881c-ab37-4e0c-b7f3-ef161c756714",
+                                                         mapDescription: "Venue (Estrel)")])
+        
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,
                                announcements: APISyncDelta(),
@@ -229,7 +241,7 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                tracks: tracks,
                                conferenceDays: conferenceDays,
                                dealers: dealers,
-                               maps: APISyncDelta())
+                               maps: maps)
     }
     
 }
