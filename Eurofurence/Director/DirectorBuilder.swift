@@ -35,12 +35,6 @@ class DirectorBuilder {
     private var urlOpener: URLOpener
 
     init() {
-        struct DummyMapsModuleProviding: MapsModuleProviding {
-            func makeMapsModule() -> UIViewController {
-                return UIViewController()
-            }
-        }
-
         animate = true
         windowWireframe = PhoneWindowWireframe.shared
         navigationControllerFactory = PhoneNavigationControllerFactory()
@@ -59,7 +53,7 @@ class DirectorBuilder {
         messageDetailModuleProviding = MessageDetailModuleBuilder().build()
         knowledgeListModuleProviding = KnowledgeListModuleBuilder().build()
         knowledgeDetailModuleProviding = KnowledgeDetailModuleBuilder().build()
-        mapsModuleProviding = DummyMapsModuleProviding()
+        mapsModuleProviding = MapsModuleBuilder().build()
         announcementDetailModuleProviding = AnnouncementDetailModuleBuilder().build()
         eventDetailModuleProviding = EventDetailModuleBuilder().build()
 
