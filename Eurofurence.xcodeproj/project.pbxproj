@@ -685,6 +685,7 @@
 		CA6A8DAB20E2CF6D007536CD /* FakeMapsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DAA20E2CF6D007536CD /* FakeMapsService.swift */; };
 		CA6A8DAE20E2CF87007536CD /* MapsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DAD20E2CF87007536CD /* MapsService.swift */; };
 		CA6A8DB020E2CF97007536CD /* DefaultMapsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DAF20E2CF97007536CD /* DefaultMapsInteractor.swift */; };
+		CA6A8DB320E2D773007536CD /* APIMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DB220E2D773007536CD /* APIMap.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -1799,6 +1800,7 @@
 		CA6A8DAA20E2CF6D007536CD /* FakeMapsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMapsService.swift; sourceTree = "<group>"; };
 		CA6A8DAD20E2CF87007536CD /* MapsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsService.swift; sourceTree = "<group>"; };
 		CA6A8DAF20E2CF97007536CD /* DefaultMapsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMapsInteractor.swift; sourceTree = "<group>"; };
+		CA6A8DB220E2D773007536CD /* APIMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMap.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -5288,6 +5290,7 @@
 				CAF5979920449A1D00089BE8 /* APIKnowledgeEntry.swift */,
 				CAF5979720449A1100089BE8 /* APIKnowledgeGroup.swift */,
 				CAD3BDB2205874AF00C91E6E /* APILink.swift */,
+				CA6A8DB220E2D773007536CD /* APIMap.swift */,
 				CA162EDF20AAF7C3004AFED6 /* APIRoom.swift */,
 				CAF5979520449A0400089BE8 /* APISyncResponse.swift */,
 				CACF1E9320B36C5A00D904B5 /* APITrack.swift */,
@@ -6105,6 +6108,7 @@
 				9ACF998F1EC858B2006FC958 /* Announcement.swift in Sources */,
 				7820A6F21F1696F1004C0FB5 /* PushPermissionsRequesting.swift in Sources */,
 				CAF5979620449A0400089BE8 /* APISyncResponse.swift in Sources */,
+				CA6A8DB320E2D773007536CD /* APIMap.swift in Sources */,
 				CABA43A31FD57C65009CB5B0 /* TutorialModuleBuilder.swift in Sources */,
 				CA08157F20D3D52D00F750D4 /* APIConferenceDay.swift in Sources */,
 				CABA840120CEFCCD00DD0795 /* FavouriteEventEntity+Adaptation.swift in Sources */,

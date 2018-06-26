@@ -39,7 +39,8 @@ extension APISyncResponse {
                                rooms: APISyncDelta(changed: rooms),
                                tracks: APISyncDelta(changed: tracks),
                                conferenceDays: APISyncDelta(changed: days),
-                               dealers: APISyncDelta(changed: .random))
+                               dealers: APISyncDelta(changed: .random),
+                               maps: APISyncDelta(changed: .random))
     }
     
 }
@@ -172,6 +173,14 @@ extension APIDealer: RandomValueProviding {
                          aboutTheArtistText: .random,
                          aboutTheArtText: .random,
                          artPreviewCaption: .random)
+    }
+    
+}
+
+extension APIMap: RandomValueProviding {
+    
+    static var random: APIMap {
+        return APIMap(imageIdentifier: .random)
     }
     
 }

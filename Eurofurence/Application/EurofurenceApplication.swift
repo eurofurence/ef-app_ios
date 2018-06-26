@@ -241,10 +241,18 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             let artistThumbnailImageIdentifiers = response.dealers.changed.map({ $0.artistThumbnailImageId })
             let artistImageIdentifiers = response.dealers.changed.map({ $0.artistImageId })
             let artistPreviewImageIdentifiers = response.dealers.changed.map({ $0.artPreviewImageId })
-            let imageIdentifiers = (posterImageIdentifiers + bannerImageIdentifiers + artistThumbnailImageIdentifiers + artistImageIdentifiers + artistPreviewImageIdentifiers).compactMap({ $0 })
+            let mapImageIdentifiers = response.maps.changed.map({ $0.imageIdentifier })
+            var imageIdentifiers: [String?] = []
+            imageIdentifiers.append(contentsOf: posterImageIdentifiers)
+            imageIdentifiers.append(contentsOf: bannerImageIdentifiers)
+            imageIdentifiers.append(contentsOf: artistThumbnailImageIdentifiers)
+            imageIdentifiers.append(contentsOf: artistImageIdentifiers)
+            imageIdentifiers.append(contentsOf: artistPreviewImageIdentifiers)
+            imageIdentifiers.append(contentsOf: mapImageIdentifiers)
+            let nonOptionalImageIdentifiers = imageIdentifiers.compactMap({ $0 })
             progress.totalUnitCount = Int64(imageIdentifiers.count)
 
-            self.imageDownloader.downloadImages(identifiers: imageIdentifiers, parentProgress: progress) {
+            self.imageDownloader.downloadImages(identifiers: nonOptionalImageIdentifiers, parentProgress: progress) {
                 self.eventBus.post(DomainEvent.LatestDataFetchedEvent(response: response))
 
                 self.dataStore.performTransaction({ (transaction) in

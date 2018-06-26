@@ -138,4 +138,19 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         XCTAssertTrue(context.imageRepository.didSave(expected))
     }
     
+    func testTheMapImagesAreSavedIntoTheImageRepository() {
+        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let context = ApplicationTestBuilder().build()
+        context.refreshLocalStore()
+        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        
+        let expected = syncResponse.maps.changed.map({
+            $0.imageIdentifier
+        }).map({
+            ImageEntity(identifier: $0, pngImageData: context.imageAPI.stubbedImage(for: $0)!)
+        })
+        
+        XCTAssertTrue(context.imageRepository.didSave(expected))
+    }
+    
 }
