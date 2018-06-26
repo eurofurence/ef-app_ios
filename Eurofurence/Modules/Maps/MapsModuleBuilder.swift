@@ -14,13 +14,7 @@ class MapsModuleBuilder {
     private var sceneFactory: MapsSceneFactory
 
     init() {
-        struct DummyMapsInteractor: MapsInteractor {
-            func makeMapsViewModel(completionHandler: @escaping (MapsViewModel) -> Void) {
-
-            }
-        }
-
-        interactor = DummyMapsInteractor()
+        interactor = DefaultMapsInteractor()
         sceneFactory = StoryboardMapsScenefactory()
     }
 

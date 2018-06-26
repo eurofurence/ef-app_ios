@@ -42,6 +42,8 @@ class MapsViewController: UIViewController, MapsScene {
         mapsController = MapsController(numberOfMaps: numberOfMaps,
                                         binder: binder,
                                         onDidSelectItemAtIndexPath: didSelectMap)
+        collectionView.reloadData()
+        collectionView.collectionViewLayout.invalidateLayout()
     }
 
     // MARK: Private
