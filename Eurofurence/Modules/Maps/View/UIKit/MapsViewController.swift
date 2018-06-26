@@ -39,19 +39,27 @@ class MapsViewController: UIViewController, MapsScene {
     }
 
     func bind(numberOfMaps: Int, using binder: MapsBinder) {
-        mapsController = MapsController(numberOfMaps: numberOfMaps, binder: binder)
+        mapsController = MapsController(numberOfMaps: numberOfMaps,
+                                        binder: binder,
+                                        onDidSelectItemAtIndexPath: didSelectMap)
     }
 
     // MARK: Private
+
+    private func didSelectMap(at indexPath: IndexPath) {
+        delegate?.simulateSceneDidSelectMap(at: indexPath.item)
+    }
 
     private class MapsController: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
         private let numberOfMaps: Int
         private let binder: MapsBinder
+        private let onDidSelectItemAtIndexPath: (IndexPath) -> Void
 
-        init(numberOfMaps: Int, binder: MapsBinder) {
+        init(numberOfMaps: Int, binder: MapsBinder, onDidSelectItemAtIndexPath: @escaping (IndexPath) -> Void) {
             self.numberOfMaps = numberOfMaps
             self.binder = binder
+            self.onDidSelectItemAtIndexPath = onDidSelectItemAtIndexPath
         }
 
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -69,6 +77,10 @@ class MapsViewController: UIViewController, MapsScene {
                             sizeForItemAt indexPath: IndexPath) -> CGSize {
             let collectionViewWidth = collectionView.bounds.width
             return CGSize(width: collectionViewWidth - 28, height: 196)
+        }
+
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            onDidSelectItemAtIndexPath(indexPath)
         }
 
     }
