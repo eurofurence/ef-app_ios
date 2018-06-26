@@ -30,7 +30,7 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
         }
 
         func identifierForMap(at index: Int) -> Map2.Identifier? {
-            return nil
+            return maps[index].identifier
         }
 
     }

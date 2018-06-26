@@ -44,4 +44,15 @@ class WhenPreparingViewModel_MapsInteractorShould: XCTestCase {
         XCTAssertEqual(mapsService.imagePNGDataForMap(identifier: randomMap.element.identifier), previewData)
     }
     
+    func testExposeIdentifierForSpecifiedMap() {
+        let mapsService = FakeMapsService()
+        let interactor = DefaultMapsInteractor(mapsService: mapsService)
+        var viewModel: MapsViewModel?
+        interactor.makeMapsViewModel { viewModel = $0 }
+        let randomMap = mapsService.maps.randomElement()
+        let identifier = viewModel?.identifierForMap(at: randomMap.index)
+        
+        XCTAssertEqual(randomMap.element.identifier, identifier)
+    }
+    
 }
