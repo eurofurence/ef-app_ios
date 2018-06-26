@@ -8,13 +8,22 @@
 
 import Foundation
 
-struct MapsPresenter {
+struct MapsPresenter: MapsSceneDelegate {
+
+    private let scene: MapsScene
+    private let interactor: MapsInteractor
 
     init(scene: MapsScene, interactor: MapsInteractor) {
-        scene.setMapsTitle(.maps)
+        self.scene = scene
+        self.interactor = interactor
 
+        scene.setMapsTitle(.maps)
+        scene.setDelegate(self)
+    }
+
+    func mapsSceneDidLoad() {
         interactor.makeMapsViewModel { (viewModel) in
-            scene.bind(numberOfMaps: viewModel.numberOfMaps)
+            self.scene.bind(numberOfMaps: viewModel.numberOfMaps)
         }
     }
 

@@ -670,6 +670,7 @@
 		CA6A8D8920E2BBA4007536CD /* FakeMapsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D8820E2BBA4007536CD /* FakeMapsViewModel.swift */; };
 		CA6A8D8B20E2BBB1007536CD /* FakeMapsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D8A20E2BBB1007536CD /* FakeMapsInteractor.swift */; };
 		CA6A8D8E20E2BC6C007536CD /* MapsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D8D20E2BC6C007536CD /* MapsPresenter.swift */; };
+		CA6A8D9020E2C2C8007536CD /* BeforeMapsSceneLoads_MapsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D8F20E2C2C8007536CD /* BeforeMapsSceneLoads_MapsPresenterShould.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -1769,6 +1770,7 @@
 		CA6A8D8820E2BBA4007536CD /* FakeMapsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMapsViewModel.swift; sourceTree = "<group>"; };
 		CA6A8D8A20E2BBB1007536CD /* FakeMapsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMapsInteractor.swift; sourceTree = "<group>"; };
 		CA6A8D8D20E2BC6C007536CD /* MapsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsPresenter.swift; sourceTree = "<group>"; };
+		CA6A8D8F20E2C2C8007536CD /* BeforeMapsSceneLoads_MapsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeMapsSceneLoads_MapsPresenterShould.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -3976,6 +3978,7 @@
 		CA6A8D6520E26390007536CD /* Presenter Tests */ = {
 			isa = PBXGroup;
 			children = (
+				CA6A8D8F20E2C2C8007536CD /* BeforeMapsSceneLoads_MapsPresenterShould.swift */,
 				CA6A8D6620E263A0007536CD /* WhenBuildingMapsModule.swift */,
 				CA6A8D8120E2BA6C007536CD /* WhenMapsSceneLoads_MapsPresenterShould.swift */,
 			);
@@ -6738,6 +6741,7 @@
 				CAF5979F2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift in Sources */,
 				CA65A21F2091F1EC0078A4A7 /* WhenSyncSucceeds_SyncAPIShould.swift in Sources */,
 				CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */,
+				CA6A8D9020E2C2C8007536CD /* BeforeMapsSceneLoads_MapsPresenterShould.swift in Sources */,
 				CA162E6E20A468E7004AFED6 /* WhenObservingCountdownUntilConvention_EurofurenceApplicationShould.swift in Sources */,
 				CA728463209D0F7B007D912A /* CapturingAnnouncementDetailScene.swift in Sources */,
 				CA65A2212091F5320078A4A7 /* WhenAddingAnnouncementsObserverAfterSuccessfulRefresh.swift in Sources */,
