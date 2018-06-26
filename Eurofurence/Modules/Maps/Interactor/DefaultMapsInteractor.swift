@@ -13,9 +13,11 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
     private struct ViewModel: MapsViewModel {
 
         private let maps: [Map2]
+        private let mapsService: MapsService
 
-        init(maps: [Map2]) {
+        init(maps: [Map2], mapsService: MapsService) {
             self.maps = maps
+            self.mapsService = mapsService
         }
 
         var numberOfMaps: Int {
@@ -24,8 +26,7 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
 
         func mapViewModel(at index: Int) -> MapViewModel2 {
             let map = maps[index]
-            return MapViewModel2(mapName: map.location,
-                                 mapPreviewImagePNGData: Data())
+            return SingleViewModel(map: map, mapsService: mapsService)
         }
 
         func identifierForMap(at index: Int) -> Map2.Identifier? {
@@ -34,9 +35,29 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
 
     }
 
+    private struct SingleViewModel: MapViewModel2 {
+
+        private let map: Map2
+
+        init(map: Map2, mapsService: MapsService) {
+            self.map = map
+        }
+
+        var mapName: String {
+            return map.location
+        }
+
+        func fetchMapPreviewPNGData(completionHandler: @escaping (Data) -> Void) {
+
+        }
+
+    }
+
+    private let mapsService: MapsService
     private var maps = [Map2]()
 
     init(mapsService: MapsService) {
+        self.mapsService = mapsService
         mapsService.add(self)
     }
 
@@ -45,7 +66,7 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
     }
 
     func makeMapsViewModel(completionHandler: @escaping (MapsViewModel) -> Void) {
-        completionHandler(ViewModel(maps: maps))
+        completionHandler(ViewModel(maps: maps, mapsService: mapsService))
     }
 
 }

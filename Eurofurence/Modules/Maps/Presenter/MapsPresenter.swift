@@ -18,7 +18,7 @@ class MapsPresenter: MapsSceneDelegate {
             let map = viewModel.mapViewModel(at: index)
 
             component.setMapName(map.mapName)
-            component.setMapPreviewImagePNGData(map.mapPreviewImagePNGData)
+            map.fetchMapPreviewPNGData(completionHandler: component.setMapPreviewImagePNGData)
         }
 
     }

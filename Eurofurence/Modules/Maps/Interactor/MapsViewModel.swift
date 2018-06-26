@@ -16,9 +16,9 @@ protocol MapsViewModel {
 
 }
 
-struct MapViewModel2 {
+protocol MapViewModel2 {
 
-    var mapName: String
-    var mapPreviewImagePNGData: Data
+    var mapName: String { get }
+    func fetchMapPreviewPNGData(completionHandler: @escaping (Data) -> Void)
 
 }

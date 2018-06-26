@@ -15,7 +15,7 @@ class FakeMapsViewModel: MapsViewModel {
         return maps.count
     }
     
-    var maps: [MapViewModel2] = .random
+    var maps = [FakeMapViewModel(), FakeMapViewModel(), FakeMapViewModel()]
     
     func mapViewModel(at index: Int) -> MapViewModel2 {
         return maps[index]
@@ -23,6 +23,17 @@ class FakeMapsViewModel: MapsViewModel {
     
     func identifierForMap(at index: Int) -> Map2.Identifier? {
         return Map2.Identifier("\(index)")
+    }
+    
+}
+
+class FakeMapViewModel: MapViewModel2 {
+    
+    var mapName: String = .random
+    var mapPreviewImagePNGData: Data = .random
+    
+    func fetchMapPreviewPNGData(completionHandler: @escaping (Data) -> Void) {
+        completionHandler(mapPreviewImagePNGData)
     }
     
 }
