@@ -16,4 +16,9 @@ class WhenBuildingMapsModule: XCTestCase {
         XCTAssertEqual(context.scene, context.producedViewController)
     }
     
+    func testTheMapsTitleIsAppliedToTheScene() {
+        let context = MapsPresenterTestBuilder().build()
+        XCTAssertEqual(.maps, context.scene.capturedTitle)
+    }
+    
 }

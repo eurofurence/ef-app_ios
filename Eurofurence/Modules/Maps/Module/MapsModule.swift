@@ -13,7 +13,10 @@ struct MapsModule: MapsModuleProviding {
     var sceneFactory: MapsSceneFactory
 
     func makeMapsModule() -> UIViewController {
-        return sceneFactory.makeMapsScene()
+        let scene = sceneFactory.makeMapsScene()
+        scene.setMapsTitle(.maps)
+
+        return scene
     }
 
 }

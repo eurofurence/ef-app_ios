@@ -10,4 +10,10 @@ import UIKit
 
 class MapsViewController: UIViewController, MapsScene {
 
+    // MARK: MapsScene
+
+    func setMapsTitle(_ title: String) {
+        super.title = title
+    }
+
 }

@@ -11,4 +11,9 @@ import UIKit
 
 class CapturingMapsScene: UIViewController, MapsScene {
     
+    private(set) var capturedTitle: String?
+    func setMapsTitle(_ title: String) {
+        capturedTitle = title
+    }
+    
 }

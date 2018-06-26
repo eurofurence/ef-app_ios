@@ -10,4 +10,6 @@ import Foundation
 
 protocol MapsScene {
 
+    func setMapsTitle(_ title: String)
+
 }

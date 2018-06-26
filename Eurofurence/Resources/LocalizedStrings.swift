@@ -162,6 +162,9 @@ public extension String {
     public static let collectThemAll = NSLocalizedString("CollectThemAll",
                                                          comment: "Title shown at the top of the Collect-them-All screen")
 
+    public static let maps = NSLocalizedString("Maps",
+                                               comment: "Title for the view containing the list of available convention maps")
+
     private struct Formatters {
         static var numbers = NumberFormatter()
     }
