@@ -21,7 +21,8 @@ protocol EurofurenceApplicationProtocol: AnnouncementsService,
                                          KnowledgeService,
                                          LinkLookupService,
                                          ConventionCountdownService,
-                                         CollectThemAllService {
+                                         CollectThemAllService,
+                                         MapsService {
 
     func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler)
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Map2 {
+struct Map2: Equatable {
 
     struct Identifier: Comparable, Equatable, Hashable, RawRepresentable {
 

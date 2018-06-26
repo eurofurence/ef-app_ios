@@ -233,6 +233,12 @@ class ApplicationTestBuilder {
             }
         }
         
+        func makeExpectedMaps(from response: APISyncResponse) -> [Map2] {
+            return response.maps.changed.map({ (map) -> Map2 in
+                return Map2(identifier: Map2.Identifier(map.identifier), location: map.mapDescription)
+            }).sorted(by: { $0.location < $1.location })
+        }
+        
         func simulateSignificantTimeChange() {
             significantTimeChangeAdapter.simulateSignificantTimeChange()
         }

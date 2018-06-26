@@ -180,7 +180,7 @@ extension APIDealer: RandomValueProviding {
 extension APIMap: RandomValueProviding {
     
     static var random: APIMap {
-        return APIMap(imageIdentifier: .random)
+        return APIMap(identifier: .random, imageIdentifier: .random, mapDescription: .random)
     }
     
 }

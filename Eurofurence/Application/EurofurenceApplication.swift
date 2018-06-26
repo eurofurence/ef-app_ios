@@ -50,6 +50,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private let significantTimeObserver: SignificantTimeObserver
     private let urlHandler: URLHandler
     private let collectThemAll: CollectThemAll
+    private let maps: Maps
 
     init(userPreferences: UserPreferences,
          dataStore: EurofurenceDataStore,
@@ -111,6 +112,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         collectThemAll = CollectThemAll(eventBus: eventBus,
                                         collectThemAllRequestFactory: collectThemAllRequestFactory,
                                         credentialStore: credentialStore)
+        maps = Maps(eventBus: eventBus)
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
@@ -218,6 +220,14 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     func subscribe(_ observer: CollectThemAllURLObserver) {
         collectThemAll.subscribe(observer)
+    }
+
+    func add(_ observer: MapsObserver) {
+        maps.add(observer)
+    }
+
+    func fetchImagePNGDataForMap(identifier: Map2.Identifier, completionHandler: @escaping (Data) -> Void) {
+
     }
 
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {

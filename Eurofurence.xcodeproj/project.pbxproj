@@ -686,6 +686,8 @@
 		CA6A8DAE20E2CF87007536CD /* MapsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DAD20E2CF87007536CD /* MapsService.swift */; };
 		CA6A8DB020E2CF97007536CD /* DefaultMapsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DAF20E2CF97007536CD /* DefaultMapsInteractor.swift */; };
 		CA6A8DB320E2D773007536CD /* APIMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DB220E2D773007536CD /* APIMap.swift */; };
+		CA6A8DB620E2DA44007536CD /* WhenObservingMaps_AfterSyncSucceeds_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DB520E2DA44007536CD /* WhenObservingMaps_AfterSyncSucceeds_ApplicationShould.swift */; };
+		CA6A8DB820E2DC62007536CD /* Maps.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DB720E2DC62007536CD /* Maps.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -1801,6 +1803,8 @@
 		CA6A8DAD20E2CF87007536CD /* MapsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsService.swift; sourceTree = "<group>"; };
 		CA6A8DAF20E2CF97007536CD /* DefaultMapsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMapsInteractor.swift; sourceTree = "<group>"; };
 		CA6A8DB220E2D773007536CD /* APIMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMap.swift; sourceTree = "<group>"; };
+		CA6A8DB520E2DA44007536CD /* WhenObservingMaps_AfterSyncSucceeds_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingMaps_AfterSyncSucceeds_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA6A8DB720E2DC62007536CD /* Maps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maps.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -2615,6 +2619,7 @@
 				CA162EAF20AA2DC0004AFED6 /* Events */,
 				CABF03C820421B2A0028BD62 /* Knowledge */,
 				CAD3BDC3205FE3EA00C91E6E /* Links */,
+				CA6A8DB420E2DA1F007536CD /* Maps */,
 				CA81D4971FEA952D00A52A2F /* Notification Registration */,
 				781A94431F1A1DC6002DE70F /* Notifications */,
 				CA81D4961FEA951D00A52A2F /* Private Messages */,
@@ -2646,6 +2651,7 @@
 				CA36A44420D7051900EE6537 /* InMemoryEventsSearchController.swift */,
 				CA680F7920CD7AD7006ACD3D /* Knowledge.swift */,
 				CABF03BC2041C2B70028BD62 /* KnowledgeService.swift */,
+				CA6A8DB720E2DC62007536CD /* Maps.swift */,
 				CABA83E920CDBBD600DD0795 /* PersistentImageRepository.swift */,
 				CAF3F63A2016797400374B4C /* PrivateMessagesController.swift */,
 				CA680F7F20CDA49D006ACD3D /* Schedule.swift */,
@@ -4096,6 +4102,14 @@
 			isa = PBXGroup;
 			children = (
 				CA6A8DAD20E2CF87007536CD /* MapsService.swift */,
+			);
+			path = Maps;
+			sourceTree = "<group>";
+		};
+		CA6A8DB420E2DA1F007536CD /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				CA6A8DB520E2DA44007536CD /* WhenObservingMaps_AfterSyncSucceeds_ApplicationShould.swift */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -6358,6 +6372,7 @@
 				CA00AE6620D1784500C2FBB0 /* EventTableViewCell.swift in Sources */,
 				CA728455209D0576007D912A /* AnnouncementDetailSceneFactory.swift in Sources */,
 				D6F3D204D352FE26C3F90906 /* KnowledgeTableViewController.swift in Sources */,
+				CA6A8DB820E2DC62007536CD /* Maps.swift in Sources */,
 				CA2D07FB1FE902ED00BFD785 /* EurofurenceDataStore.swift in Sources */,
 				CA1B6F2920DB89FE00ADF414 /* DealerDetailPresenter.swift in Sources */,
 				CABA438D1FBCDBDF009CB5B0 /* LoginPresenter.swift in Sources */,
@@ -6436,6 +6451,7 @@
 				78FE77D31F1A2EB000E9A0BE /* CapturingJSONSession.swift in Sources */,
 				CA9AC16D2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift in Sources */,
 				CA162E8020A5B738004AFED6 /* WhenObservingConventionCountdown_AndSignificantTimeChangeOccurs_EurofurenceApplicationShould.swift in Sources */,
+				CA6A8DB620E2DA44007536CD /* WhenObservingMaps_AfterSyncSucceeds_ApplicationShould.swift in Sources */,
 				78C86D541F1228B0003A20E6 /* TutorialViewControllerTests.swift in Sources */,
 				CA36A47720D8523400EE6537 /* StubDealerViewModel.swift in Sources */,
 				78455B3A1F116A7E005BE2D7 /* WhenTheAppLaunches.swift in Sources */,

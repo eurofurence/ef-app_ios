@@ -10,6 +10,8 @@ import Foundation
 
 struct APIMap: Equatable {
 
+    var identifier: String
     var imageIdentifier: String
+    var mapDescription: String
 
 }
