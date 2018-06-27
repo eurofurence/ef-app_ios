@@ -28,7 +28,8 @@ class MapDetailViewController: UIViewController, UIScrollViewDelegate, MapDetail
 
     @IBAction func scrollViewTapped(_ sender: UIGestureRecognizer) {
         let tapLocation = sender.location(in: imageView)
-        print(tapLocation)
+        let position = TappedMapPosition(x: Float(tapLocation.x), y: Float(tapLocation.y))
+        delegate?.mapDetailSceneDidTapMap(at: position)
     }
 
     // MARK: UIScrollViewDelegate
