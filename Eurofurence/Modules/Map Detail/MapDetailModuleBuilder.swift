@@ -14,14 +14,8 @@ class MapDetailModuleBuilder {
     private var interactor: MapDetailInteractor
 
     init() {
-        struct DummyMapDetailInteractor: MapDetailInteractor {
-            func makeViewModelForMap(identifier: Map2.Identifier, completionHandler: @escaping (MapDetailViewModel) -> Void) {
-
-            }
-        }
-
         sceneFactory = StoryboardMapDetailSceneFactory()
-        interactor = DummyMapDetailInteractor()
+        interactor = DefaultMapDetailInteractor()
     }
 
     @discardableResult

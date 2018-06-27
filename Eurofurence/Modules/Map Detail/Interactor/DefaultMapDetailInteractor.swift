@@ -20,6 +20,10 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
     private let mapsService: MapsService
     private var maps = [Map2]()
 
+    convenience init() {
+        self.init(mapsService: EurofurenceApplication.shared)
+    }
+
     init(mapsService: MapsService) {
         self.mapsService = mapsService
         mapsService.add(self)
