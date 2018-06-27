@@ -12,6 +12,7 @@ protocol MapDetailScene {
 
     func setDelegate(_ delegate: MapDetailSceneDelegate)
     func setMapImagePNGData(_ data: Data)
+    func setMapTitle(_ title: String)
 
 }
 

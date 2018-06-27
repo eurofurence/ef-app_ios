@@ -13,6 +13,7 @@ struct MapDetailPresenter {
     init(scene: MapDetailScene, interactor: MapDetailInteractor, identifier: Map2.Identifier) {
         interactor.makeViewModelForMap(identifier: identifier) { (viewModel) in
             scene.setMapImagePNGData(viewModel.mapImagePNGData)
+            scene.setMapTitle(viewModel.mapName)
         }
     }
 

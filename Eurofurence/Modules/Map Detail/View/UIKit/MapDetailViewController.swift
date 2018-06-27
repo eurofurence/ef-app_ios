@@ -28,4 +28,8 @@ class MapDetailViewController: UIViewController, MapDetailScene {
 
     }
 
+    func setMapTitle(_ title: String) {
+        navigationItem.title = title
+    }
+
 }

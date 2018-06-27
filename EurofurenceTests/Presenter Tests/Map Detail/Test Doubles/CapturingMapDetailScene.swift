@@ -21,4 +21,9 @@ class CapturingMapDetailScene: UIViewController, MapDetailScene {
         capturedMapImagePNGData = data
     }
     
+    private(set) var capturedTitle: String?
+    func setMapTitle(_ title: String) {
+        capturedTitle = title
+    }
+    
 }

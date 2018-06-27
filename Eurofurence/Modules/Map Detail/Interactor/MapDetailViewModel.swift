@@ -11,5 +11,6 @@ import Foundation
 protocol MapDetailViewModel {
 
     var mapImagePNGData: Data { get }
+    var mapName: String { get }
 
 }

@@ -28,5 +28,6 @@ class FakeMapDetailInteractor: MapDetailInteractor {
 class FakeMapDetailViewModel: MapDetailViewModel {
     
     var mapImagePNGData: Data = .random
+    var mapName: String = .random
     
 }
