@@ -10,8 +10,20 @@ import Foundation
 
 class MapDetailModuleBuilder {
 
+    private var sceneFactory: MapDetailSceneFactory
+
+    init() {
+        sceneFactory = StoryboardMapDetailSceneFactory()
+    }
+
+    @discardableResult
+    func with(_ sceneFactory: MapDetailSceneFactory) -> MapDetailModuleBuilder {
+        self.sceneFactory = sceneFactory
+        return self
+    }
+
     func build() -> MapDetailModuleProviding {
-        return MapDetailModule()
+        return MapDetailModule(sceneFactory: sceneFactory)
     }
 
 }

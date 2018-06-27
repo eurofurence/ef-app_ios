@@ -10,8 +10,10 @@ import UIKit
 
 struct MapDetailModule: MapDetailModuleProviding {
 
+    var sceneFactory: MapDetailSceneFactory
+
     func makeMapDetailModule(for map: Map2.Identifier) -> UIViewController {
-        return UIViewController()
+        return sceneFactory.makeMapDetailScene()
     }
 
 }
