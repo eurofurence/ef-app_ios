@@ -21,7 +21,28 @@ class StubCollectThemAllModuleProviding: CollectThemAllModuleProviding {
 class StubMapsModuleProviding: MapsModuleProviding {
     
     let stubInterface = UIViewController()
+    private(set) var delegate: MapsModuleDelegate?
     func makeMapsModule(_ delegate: MapsModuleDelegate) -> UIViewController {
+        self.delegate = delegate
+        return stubInterface
+    }
+    
+}
+
+extension StubMapsModuleProviding {
+    
+    func simulateDidSelectMap(_ map: Map2.Identifier) {
+        delegate?.mapsModuleDidSelectMap(identifier: map)
+    }
+    
+}
+
+class StubMapDetailModuleProviding: MapDetailModuleProviding {
+    
+    let stubInterface = UIViewController()
+    private(set) var capturedModel: Map2.Identifier?
+    func makeMapDetailModule(for map: Map2.Identifier) -> UIViewController {
+        capturedModel = map
         return stubInterface
     }
     
@@ -48,6 +69,7 @@ class ApplicationDirectorTestBuilder {
         var knowledgeListModule: StubKnowledgeListModuleProviding
         var knowledgeDetailModule: StubKnowledgeDetailModuleProviding
         var mapsModule: StubMapsModuleProviding
+        var mapDetailModule: StubMapDetailModuleProviding
         var announcementDetailModule: StubAnnouncementDetailModuleFactory
         var eventDetailModule: StubEventDetailModuleFactory
         var linkRouter: StubLinkRouter
@@ -73,6 +95,7 @@ class ApplicationDirectorTestBuilder {
     private let knowledgeListModule: StubKnowledgeListModuleProviding
     private let knowledgeDetailModule: StubKnowledgeDetailModuleProviding
     private let mapsModule: StubMapsModuleProviding
+    private let mapDetailModule: StubMapDetailModuleProviding
     private let announcementDetailModule: StubAnnouncementDetailModuleFactory
     private let eventDetailModule: StubEventDetailModuleFactory
     private let linkRouter: StubLinkRouter
@@ -96,6 +119,7 @@ class ApplicationDirectorTestBuilder {
         knowledgeListModule = StubKnowledgeListModuleProviding()
         knowledgeDetailModule = StubKnowledgeDetailModuleProviding()
         mapsModule = StubMapsModuleProviding()
+        mapDetailModule = StubMapDetailModuleProviding()
         announcementDetailModule = StubAnnouncementDetailModuleFactory()
         eventDetailModule = StubEventDetailModuleFactory()
         linkRouter = StubLinkRouter()
@@ -121,6 +145,7 @@ class ApplicationDirectorTestBuilder {
         builder.with(knowledgeListModule)
         builder.with(knowledgeDetailModule)
         builder.with(mapsModule)
+        builder.with(mapDetailModule)
         builder.with(announcementDetailModule)
         builder.with(eventDetailModule)
         builder.with(linkRouter)
@@ -148,6 +173,7 @@ class ApplicationDirectorTestBuilder {
                        knowledgeListModule: knowledgeListModule,
                        knowledgeDetailModule: knowledgeDetailModule,
                        mapsModule: mapsModule,
+                       mapDetailModule: mapDetailModule,
                        announcementDetailModule: announcementDetailModule,
                        eventDetailModule: eventDetailModule,
                        linkRouter: linkRouter,

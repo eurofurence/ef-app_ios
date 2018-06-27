@@ -50,6 +50,7 @@ class ApplicationDirector: ExternalContentHandler,
     private let knowledgeListModuleProviding: KnowledgeListModuleProviding
     private let knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding
     private let mapsModuleProviding: MapsModuleProviding
+    private let mapDetailModuleProviding: MapDetailModuleProviding
     private let announcementDetailModuleProviding: AnnouncementDetailModuleProviding
     private let eventDetailModuleProviding: EventDetailModuleProviding
 
@@ -85,6 +86,7 @@ class ApplicationDirector: ExternalContentHandler,
          knowledgeListModuleProviding: KnowledgeListModuleProviding,
          knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding,
          mapsModuleProviding: MapsModuleProviding,
+         mapDetailModuleProviding: MapDetailModuleProviding,
          announcementDetailModuleProviding: AnnouncementDetailModuleProviding,
          eventDetailModuleProviding: EventDetailModuleProviding) {
         self.animate = animate
@@ -108,6 +110,7 @@ class ApplicationDirector: ExternalContentHandler,
         self.knowledgeListModuleProviding = knowledgeListModuleProviding
         self.knowledgeDetailModuleProviding = knowledgeDetailModuleProviding
         self.mapsModuleProviding = mapsModuleProviding
+        self.mapDetailModuleProviding = mapDetailModuleProviding
         self.announcementDetailModuleProviding = announcementDetailModuleProviding
         self.eventDetailModuleProviding = eventDetailModuleProviding
 
@@ -258,7 +261,8 @@ class ApplicationDirector: ExternalContentHandler,
     // MARK: MapsModuleDelegate
 
     func mapsModuleDidSelectMap(identifier: Map2.Identifier) {
-
+        let detailModule = mapDetailModuleProviding.makeMapDetailModule(for: identifier)
+        mapsModule?.navigationController?.pushViewController(detailModule, animated: animate)
     }
 
     // MARK: Private
@@ -278,6 +282,7 @@ class ApplicationDirector: ExternalContentHandler,
         let scheduleNavigationController = navigationControllerFactory.makeNavigationController()
         let dealersNavigationController = navigationControllerFactory.makeNavigationController()
         let knowledgeNavigationController = navigationControllerFactory.makeNavigationController()
+        let mapsNavigationController = navigationControllerFactory.makeNavigationController()
 
         let newsController = newsModuleProviding.makeNewsModule(self)
         self.newsController = newsController
@@ -305,7 +310,7 @@ class ApplicationDirector: ExternalContentHandler,
 
         let mapsModule = mapsModuleProviding.makeMapsModule(self)
         self.mapsModule = mapsModule
-        let mapsNavigationController = UINavigationController(rootViewController: mapsModule)
+        mapsNavigationController.setViewControllers([mapsModule], animated: animate)
         mapsNavigationController.tabBarItem = mapsModule.tabBarItem
 
         let tabModule = tabModuleProviding.makeTabModule([newsNavigationController,
