@@ -324,6 +324,18 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         XCTAssertEqual(dealer.attendeeNickname, savedDealers?.first?.attendeeNickname)
     }
     
+    func testSaveMaps() {
+        let maps = [APIMap].random
+        store.performTransaction { (transaction) in
+            transaction.saveMaps(maps)
+        }
+        
+        recreateStore()
+        let actual = store.getSavedMaps()
+        
+        assertThat(maps, isEqualTo: actual)
+    }
+    
     private func assertThat<T>(_ expected: [T], isEqualTo actual: [T]?, file: StaticString = #file, line: UInt = #line) where T: Equatable {
         guard let actual = actual else {
             XCTFail("Expected actual values, but got nil", file: file, line: line)

@@ -691,6 +691,7 @@
 		CA6A8DBA20E2DD79007536CD /* WhenObservingMaps_ThenSyncSucceeds_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DB920E2DD79007536CD /* WhenObservingMaps_ThenSyncSucceeds_ApplicationShould.swift */; };
 		CA6A8DBC20E2DF09007536CD /* WhenFetchingMapImageData_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DBB20E2DF09007536CD /* WhenFetchingMapImageData_ApplicationShould.swift */; };
 		CA6A8DBE20E2E1ED007536CD /* WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DBD20E2E1ED007536CD /* WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift */; };
+		CA6A8DC020E3BF30007536CD /* MapEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DBF20E3BF30007536CD /* MapEntity+Adaptation.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -1811,6 +1812,7 @@
 		CA6A8DB920E2DD79007536CD /* WhenObservingMaps_ThenSyncSucceeds_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingMaps_ThenSyncSucceeds_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA6A8DBB20E2DF09007536CD /* WhenFetchingMapImageData_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingMapImageData_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA6A8DBD20E2E1ED007536CD /* WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA6A8DBF20E3BF30007536CD /* MapEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapEntity+Adaptation.swift"; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -5222,6 +5224,7 @@
 				CAE8B0B820CA4E450029D4D6 /* KnowledgeEntryEntity+Adaptation.swift */,
 				CAE8B0B120CA4C530029D4D6 /* KnowledgeGroupEntity+Adaptation.swift */,
 				CAE8B0B620CA4E100029D4D6 /* LinkEntity+Adaptation.swift */,
+				CA6A8DBF20E3BF30007536CD /* MapEntity+Adaptation.swift */,
 				CAE8B0BC20CA57590029D4D6 /* RoomEntity+Adaptation.swift */,
 				CAE8B0BE20CA583D0029D4D6 /* TrackEntity+Adaptation.swift */,
 			);
@@ -5933,6 +5936,7 @@
 				CAD780431F1D4CA3002A8333 /* Credential.swift in Sources */,
 				CA637582208CDE2000536BE2 /* ScheduleModuleProviding.swift in Sources */,
 				CACF1E5A20AE2DFB00D904B5 /* EventDetailScene.swift in Sources */,
+				CA6A8DC020E3BF30007536CD /* MapEntity+Adaptation.swift in Sources */,
 				9ACF99931EC858B2006FC958 /* Dealer.swift in Sources */,
 				CA162E7020A4B691004AFED6 /* DateDistanceCalculator.swift in Sources */,
 				CACF1E7C20B212A800D904B5 /* EventDetailBinder.swift in Sources */,

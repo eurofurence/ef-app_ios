@@ -103,7 +103,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
     }
 
     func getSavedMaps() -> [APIMap]? {
-        return nil
+        return getModels(fetchRequest: MapEntity.fetchRequest())
     }
 
     // MARK: Private
@@ -309,7 +309,14 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         }
 
         func saveMaps(_ maps: [APIMap]) {
-
+            mutations.append { (context) in
+                maps.forEach { (map) in
+                    let entity = MapEntity(context: context)
+                    entity.identifier = map.identifier
+                    entity.imageIdentifier = map.imageIdentifier
+                    entity.mapDescription = map.mapDescription
+                }
+            }
         }
 
         // MARK: Private
