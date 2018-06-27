@@ -24,6 +24,13 @@ class MapDetailViewController: UIViewController, UIScrollViewDelegate, MapDetail
         delegate?.mapDetailSceneDidLoad()
     }
 
+    // MARK: Actions
+
+    @IBAction func scrollViewTapped(_ sender: UIGestureRecognizer) {
+        let tapLocation = sender.location(in: imageView)
+        print(tapLocation)
+    }
+
     // MARK: UIScrollViewDelegate
 
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
