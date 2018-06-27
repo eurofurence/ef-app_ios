@@ -13,4 +13,6 @@ protocol MapDetailViewModel {
     var mapImagePNGData: Data { get }
     var mapName: String { get }
 
+    func showContentsAtPosition(x: Float, y: Float)
+
 }

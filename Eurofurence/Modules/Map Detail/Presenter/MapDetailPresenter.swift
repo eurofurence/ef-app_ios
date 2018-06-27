@@ -8,11 +8,12 @@
 
 import Foundation
 
-struct MapDetailPresenter: MapDetailSceneDelegate {
+class MapDetailPresenter: MapDetailSceneDelegate {
 
     private let scene: MapDetailScene
     private let interactor: MapDetailInteractor
     private let identifier: Map2.Identifier
+    private var viewModel: MapDetailViewModel?
 
     init(scene: MapDetailScene, interactor: MapDetailInteractor, identifier: Map2.Identifier) {
         self.scene = scene
@@ -26,7 +27,13 @@ struct MapDetailPresenter: MapDetailSceneDelegate {
         interactor.makeViewModelForMap(identifier: identifier, completionHandler: viewModelReady)
     }
 
+    func mapDetailSceneDidTapMap(at position: TappedMapPosition) {
+        viewModel?.showContentsAtPosition(x: position.x, y: position.y)
+    }
+
     private func viewModelReady(_ viewModel: MapDetailViewModel) {
+        self.viewModel = viewModel
+
         scene.setMapImagePNGData(viewModel.mapImagePNGData)
         scene.setMapTitle(viewModel.mapName)
     }

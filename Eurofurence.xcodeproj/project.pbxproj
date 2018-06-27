@@ -713,6 +713,7 @@
 		CA6A8DF020E424C1007536CD /* BeforeMapDetailSceneLoads_MapDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DEF20E424C1007536CD /* BeforeMapDetailSceneLoads_MapDetailPresenterShould.swift */; };
 		CA6A8DF320E425E2007536CD /* WhenPreparingViewModel_MapDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DF220E425E2007536CD /* WhenPreparingViewModel_MapDetailInteractorShould.swift */; };
 		CA6A8DF520E42731007536CD /* DefaultMapDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DF420E42731007536CD /* DefaultMapDetailInteractor.swift */; };
+		CA6A8DF720E42DC0007536CD /* WhenSceneTapsMapPosition_MapsDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DF620E42DC0007536CD /* WhenSceneTapsMapPosition_MapsDetailPresenterShould.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -1855,6 +1856,7 @@
 		CA6A8DEF20E424C1007536CD /* BeforeMapDetailSceneLoads_MapDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeMapDetailSceneLoads_MapDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA6A8DF220E425E2007536CD /* WhenPreparingViewModel_MapDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_MapDetailInteractorShould.swift; sourceTree = "<group>"; };
 		CA6A8DF420E42731007536CD /* DefaultMapDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMapDetailInteractor.swift; sourceTree = "<group>"; };
+		CA6A8DF620E42DC0007536CD /* WhenSceneTapsMapPosition_MapsDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneTapsMapPosition_MapsDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -4207,6 +4209,7 @@
 				CA6A8DEF20E424C1007536CD /* BeforeMapDetailSceneLoads_MapDetailPresenterShould.swift */,
 				CA6A8DCD20E41735007536CD /* WhenBuildingMapDetailModule.swift */,
 				CA6A8DE320E41CC8007536CD /* WhenMapDetailSceneLoads_MapsPresenterShould.swift */,
+				CA6A8DF620E42DC0007536CD /* WhenSceneTapsMapPosition_MapsDetailPresenterShould.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -6817,6 +6820,7 @@
 				CA36A4C420DA759800EE6537 /* CapturingDealersSearchViewModel.swift in Sources */,
 				CA637550208CBBA000536BE2 /* StubTabModuleFactory.swift in Sources */,
 				CA3990F220ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */,
+				CA6A8DF720E42DC0007536CD /* WhenSceneTapsMapPosition_MapsDetailPresenterShould.swift in Sources */,
 				CA36A4CE20DA7ED800EE6537 /* WhenSearching_DealersInteractorShould.swift in Sources */,
 				CACF1EA020B43D0900D904B5 /* EventSummaryViewModel+RandomValueProviding.swift in Sources */,
 				CABF03C72041C3270028BD62 /* StubKnowledgeService.swift in Sources */,

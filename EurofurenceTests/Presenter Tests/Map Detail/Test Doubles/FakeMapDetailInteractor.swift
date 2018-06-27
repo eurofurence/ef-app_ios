@@ -30,4 +30,9 @@ class FakeMapDetailViewModel: MapDetailViewModel {
     var mapImagePNGData: Data = .random
     var mapName: String = .random
     
+    private(set) var positionToldToShowMapContentsFor: (x: Float, y: Float)?
+    func showContentsAtPosition(x: Float, y: Float) {
+        positionToldToShowMapContentsFor = (x: x, y: y)
+    }
+    
 }

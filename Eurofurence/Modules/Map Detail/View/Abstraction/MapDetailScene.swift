@@ -19,5 +19,11 @@ protocol MapDetailScene {
 protocol MapDetailSceneDelegate {
 
     func mapDetailSceneDidLoad()
+    func mapDetailSceneDidTapMap(at position: TappedMapPosition)
 
+}
+
+struct TappedMapPosition {
+    var x: Float
+    var y: Float
 }
