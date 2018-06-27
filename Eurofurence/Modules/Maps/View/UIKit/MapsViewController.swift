@@ -27,6 +27,11 @@ class MapsViewController: UIViewController, MapsScene {
         delegate?.mapsSceneDidLoad()
     }
 
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+
     // MARK: MapsScene
 
     private var delegate: MapsSceneDelegate?

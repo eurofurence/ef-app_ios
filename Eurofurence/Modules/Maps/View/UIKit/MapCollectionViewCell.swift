@@ -15,6 +15,13 @@ class MapCollectionViewCell: UICollectionViewCell, MapComponent {
     @IBOutlet weak var mapPreviewImageView: UIImageView!
     @IBOutlet weak var mapNameLabel: UILabel!
 
+    // MARK: Overrides
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        layer.cornerRadius = 14
+    }
+
     // MARK: MapComponent
 
     func setMapName(_ mapName: String) {
