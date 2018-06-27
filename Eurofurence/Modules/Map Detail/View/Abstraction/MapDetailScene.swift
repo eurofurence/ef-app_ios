@@ -10,4 +10,13 @@ import Foundation
 
 protocol MapDetailScene {
 
+    func setDelegate(_ delegate: MapDetailSceneDelegate)
+    func setMapImagePNGData(_ data: Data)
+
+}
+
+protocol MapDetailSceneDelegate {
+
+    func mapDetailSceneDidLoad()
+
 }

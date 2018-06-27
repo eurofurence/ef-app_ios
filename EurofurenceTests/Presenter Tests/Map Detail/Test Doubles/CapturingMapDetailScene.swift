@@ -11,4 +11,14 @@ import UIKit
 
 class CapturingMapDetailScene: UIViewController, MapDetailScene {
     
+    private(set) var delegate: MapDetailSceneDelegate?
+    func setDelegate(_ delegate: MapDetailSceneDelegate) {
+        self.delegate = delegate
+    }
+    
+    private(set) var capturedMapImagePNGData: Data?
+    func setMapImagePNGData(_ data: Data) {
+        capturedMapImagePNGData = data
+    }
+    
 }

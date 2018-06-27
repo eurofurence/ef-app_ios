@@ -10,4 +10,22 @@ import UIKit
 
 class MapDetailViewController: UIViewController, MapDetailScene {
 
+    // MARK: Overrides
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        delegate?.mapDetailSceneDidLoad()
+    }
+
+    // MARK: MapDetailScene
+
+    private var delegate: MapDetailSceneDelegate?
+    func setDelegate(_ delegate: MapDetailSceneDelegate) {
+        self.delegate = delegate
+    }
+
+    func setMapImagePNGData(_ data: Data) {
+
+    }
+
 }

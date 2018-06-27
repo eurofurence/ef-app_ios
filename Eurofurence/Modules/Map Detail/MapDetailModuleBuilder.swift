@@ -11,9 +11,17 @@ import Foundation
 class MapDetailModuleBuilder {
 
     private var sceneFactory: MapDetailSceneFactory
+    private var interactor: MapDetailInteractor
 
     init() {
+        struct DummyMapDetailInteractor: MapDetailInteractor {
+            func makeViewModelForMap(identifier: Map2.Identifier, completionHandler: @escaping (MapDetailViewModel) -> Void) {
+
+            }
+        }
+
         sceneFactory = StoryboardMapDetailSceneFactory()
+        interactor = DummyMapDetailInteractor()
     }
 
     @discardableResult
@@ -22,8 +30,14 @@ class MapDetailModuleBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ interactor: MapDetailInteractor) -> MapDetailModuleBuilder {
+        self.interactor = interactor
+        return self
+    }
+
     func build() -> MapDetailModuleProviding {
-        return MapDetailModule(sceneFactory: sceneFactory)
+        return MapDetailModule(sceneFactory: sceneFactory, interactor: interactor)
     }
 
 }

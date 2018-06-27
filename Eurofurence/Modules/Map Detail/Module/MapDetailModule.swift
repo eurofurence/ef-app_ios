@@ -11,9 +11,13 @@ import UIKit
 struct MapDetailModule: MapDetailModuleProviding {
 
     var sceneFactory: MapDetailSceneFactory
+    var interactor: MapDetailInteractor
 
     func makeMapDetailModule(for map: Map2.Identifier) -> UIViewController {
-        return sceneFactory.makeMapDetailScene()
+        let scene = sceneFactory.makeMapDetailScene()
+        _ = MapDetailPresenter(scene: scene, interactor: interactor, identifier: map)
+
+        return scene
     }
 
 }

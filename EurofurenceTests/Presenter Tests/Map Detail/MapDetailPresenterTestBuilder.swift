@@ -16,14 +16,35 @@ class MapDetailPresenterTestBuilder {
         var producedViewController: UIViewController
     }
     
-    func build() -> Context {
+    private var interactor: MapDetailInteractor
+    
+    init() {
+        interactor = FakeMapDetailInteractor()
+    }
+    
+    @discardableResult
+    func with(_ interactor: MapDetailInteractor) -> MapDetailPresenterTestBuilder {
+        self.interactor = interactor
+        return self
+    }
+    
+    func build(for identifier: Map2.Identifier = .random) -> Context {
         let sceneFactory = StubMapDetailSceneFactory()
         let module = MapDetailModuleBuilder()
             .with(sceneFactory)
+            .with(interactor)
             .build()
-            .makeMapDetailModule(for: .random)
+            .makeMapDetailModule(for: identifier)
         
         return Context(scene: sceneFactory.scene, producedViewController: module)
+    }
+    
+}
+
+extension MapDetailPresenterTestBuilder.Context {
+    
+    func simulateSceneDidLoad() {
+        scene.delegate?.mapDetailSceneDidLoad()
     }
     
 }
