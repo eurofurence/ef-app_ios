@@ -8,13 +8,26 @@
 
 import UIKit
 
-class MapDetailViewController: UIViewController, MapDetailScene {
+class MapDetailViewController: UIViewController, UIScrollViewDelegate, MapDetailScene {
+
+    // MARK: Properties
+
+    @IBOutlet weak var scrollView: UIScrollView!
+    private var imageView: UIImageView?
 
     // MARK: Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        scrollView.delegate = self
         delegate?.mapDetailSceneDidLoad()
+    }
+
+    // MARK: UIScrollViewDelegate
+
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
     }
 
     // MARK: MapDetailScene
@@ -25,7 +38,14 @@ class MapDetailViewController: UIViewController, MapDetailScene {
     }
 
     func setMapImagePNGData(_ data: Data) {
+        let image = UIImage(data: data)
+        let imageView = UIImageView(image: image)
+        self.imageView = imageView
+        scrollView.addSubview(imageView)
 
+        if let image = image {
+            scrollView.contentSize = image.size
+        }
     }
 
     func setMapTitle(_ title: String) {

@@ -17,16 +17,30 @@
                     <view key="view" contentMode="scaleToFill" id="8ld-zT-9Zo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.33000000000000002" maximumZoomScale="5" translatesAutoresizingMaskIntoConstraints="NO" id="YPG-xz-tQx">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YPG-xz-tQx" firstAttribute="top" secondItem="8ld-zT-9Zo" secondAttribute="top" id="GIq-Up-gR1"/>
+                            <constraint firstItem="1hg-mS-4UM" firstAttribute="trailing" secondItem="YPG-xz-tQx" secondAttribute="trailing" id="GOQ-oH-whU"/>
+                            <constraint firstAttribute="bottom" secondItem="YPG-xz-tQx" secondAttribute="bottom" id="Hf8-UI-bVn"/>
+                            <constraint firstItem="YPG-xz-tQx" firstAttribute="leading" secondItem="1hg-mS-4UM" secondAttribute="leading" id="tIJ-JK-9ch"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1hg-mS-4UM"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="WmJ-uf-OmR"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="scrollView" destination="YPG-xz-tQx" id="1XV-Li-hdA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zLb-Jg-40o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="233" y="-91"/>
+            <point key="canvasLocation" x="232.80000000000001" y="-91.304347826086968"/>
         </scene>
     </scenes>
 </document>
