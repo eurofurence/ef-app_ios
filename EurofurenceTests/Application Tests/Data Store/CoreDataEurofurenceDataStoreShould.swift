@@ -336,6 +336,23 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         assertThat(maps, isEqualTo: actual)
     }
     
+    func testUpdateExistingMapsByIdentifier() {
+        var map = APIMap.random
+        store.performTransaction { (transaction) in
+            transaction.saveMaps([map])
+        }
+        
+        map.mapDescription = .random
+        store.performTransaction { (transaction) in
+            transaction.saveMaps([map])
+        }
+        
+        let savedMaps = store.getSavedMaps()
+        
+        XCTAssertEqual(1, savedMaps?.count)
+        XCTAssertEqual(map.mapDescription, savedMaps?.first?.mapDescription)
+    }
+    
     private func assertThat<T>(_ expected: [T], isEqualTo actual: [T]?, file: StaticString = #file, line: UInt = #line) where T: Equatable {
         guard let actual = actual else {
             XCTFail("Expected actual values, but got nil", file: file, line: line)

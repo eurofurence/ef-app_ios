@@ -311,7 +311,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         func saveMaps(_ maps: [APIMap]) {
             mutations.append { (context) in
                 maps.forEach { (map) in
-                    let entity = MapEntity(context: context)
+                    let entity: MapEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: map.identifier)
                     entity.identifier = map.identifier
                     entity.imageIdentifier = map.imageIdentifier
                     entity.mapDescription = map.mapDescription
