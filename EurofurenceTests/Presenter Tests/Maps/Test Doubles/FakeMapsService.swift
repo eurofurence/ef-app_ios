@@ -20,6 +20,15 @@ class FakeMapsService: MapsService {
         completionHandler(imagePNGDataForMap(identifier: identifier))
     }
     
+    private(set) var capturedIdentifierForShowingMapContents: Map2.Identifier?
+    private(set) var capturedXPositionForShowingMapContents: Float?
+    private(set) var capturedYPositionForShowingMapContents: Float?
+    func openContentsForMap(identifier: Map2.Identifier, atX x: Float, y: Float) {
+        capturedIdentifierForShowingMapContents = identifier
+        capturedXPositionForShowingMapContents = x
+        capturedYPositionForShowingMapContents = y
+    }
+    
 }
 
 extension FakeMapsService {

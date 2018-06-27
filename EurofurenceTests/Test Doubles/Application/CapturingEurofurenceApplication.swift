@@ -10,6 +10,10 @@
 import Foundation
 
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
+    func openContentsForMap(identifier: Map2.Identifier, atX x: Float, y: Float) {
+        
+    }
+    
     func add(_ observer: MapsObserver) {
         
     }
