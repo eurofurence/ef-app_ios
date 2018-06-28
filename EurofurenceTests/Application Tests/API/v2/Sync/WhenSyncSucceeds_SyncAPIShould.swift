@@ -228,10 +228,12 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
         
         let maps = APISyncDelta<APIMap>(changed: [APIMap(identifier: "d6f1c9b4-6d03-41cc-ae5d-ee278e5121f0",
                                                          imageIdentifier: "28c15af7-6d82-4ee7-bf3b-2603076e785e",
-                                                         mapDescription: "Dealers Den")],
+                                                         mapDescription: "Dealers Den",
+                                                         entries: [])],
                                         deleted: [APIMap(identifier: "157e1849-d6fc-46ab-9d47-1b785cd867c7",
                                                          imageIdentifier: "ba02881c-ab37-4e0c-b7f3-ef161c756714",
-                                                         mapDescription: "Venue (Estrel)")])
+                                                         mapDescription: "Venue (Estrel)",
+                                                         entries: [])])
         
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,

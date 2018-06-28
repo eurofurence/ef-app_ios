@@ -12,14 +12,14 @@ class Maps {
 
     private class RefreshMapsAfterSync: EventConsumer {
 
-        private let handler: ([APIMap]) -> Void
+        private let handler: ([APIMap], [APIRoom]) -> Void
 
-        init(handler: @escaping ([APIMap]) -> Void) {
+        init(handler: @escaping ([APIMap], [APIRoom]) -> Void) {
             self.handler = handler
         }
 
         func consume(event: DomainEvent.LatestDataFetchedEvent) {
-            handler(event.response.maps.changed)
+            handler(event.response.maps.changed, event.response.rooms.changed)
         }
 
     }
@@ -27,6 +27,7 @@ class Maps {
     private let imageRepository: ImageRepository
 
     private var serverModels = [APIMap]()
+    private var roomServerModels = [APIRoom]()
     private var models = [Map2]() {
         didSet {
             observers.forEach({ $0.mapsServiceDidChangeMaps(models) })
@@ -40,7 +41,7 @@ class Maps {
         eventBus.subscribe(consumer: RefreshMapsAfterSync(handler: updateModels))
 
         if let maps = dataStore.getSavedMaps() {
-            updateModels(maps)
+            updateModels(maps, roomServerModels: [])
         }
     }
 
@@ -56,8 +57,21 @@ class Maps {
         completionHandler(entity.pngImageData)
     }
 
-    private func updateModels(_ serverModels: [APIMap]) {
+    func fetchContent(for identifier: Map2.Identifier,
+                      atX x: Int,
+                      y: Int,
+                      completionHandler: @escaping (Map2.Content) -> Void) {
+        guard let model = serverModels.first(where: { $0.identifier == identifier.rawValue }) else { return }
+        guard let entry = model.entries.first(where: { $0.x == x && $0.y == y }) else { return }
+        guard let link = entry.links.first else { return }
+        guard let room = roomServerModels.first(where: { $0.roomIdentifier == link.target }) else { return }
+
+        completionHandler(.room(Room(name: room.name)))
+    }
+
+    private func updateModels(_ serverModels: [APIMap], roomServerModels: [APIRoom]) {
         self.serverModels = serverModels
+        self.roomServerModels = roomServerModels
 
         models = serverModels.map({ (map) -> Map2 in
             return Map2(identifier: Map2.Identifier(map.identifier), location: map.mapDescription)

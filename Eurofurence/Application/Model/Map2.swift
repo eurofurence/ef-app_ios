@@ -30,7 +30,7 @@ struct Map2: Equatable {
 
     }
 
-    enum Content {
+    enum Content: Equatable {
         case location(x: Float, y: Float)
         case room(Room)
     }

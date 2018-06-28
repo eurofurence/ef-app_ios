@@ -259,7 +259,8 @@ private struct JSONSyncResponse: Decodable {
         var modelValue: APIMap {
             return APIMap(identifier: Id,
                           imageIdentifier: ImageId,
-                          mapDescription: Description)
+                          mapDescription: Description,
+                          entries: [])
         }
 
     }

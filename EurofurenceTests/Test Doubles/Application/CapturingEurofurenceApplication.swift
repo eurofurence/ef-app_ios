@@ -11,8 +11,8 @@ import Foundation
 
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
     func fetchContent(for identifier: Map2.Identifier,
-                      atX x: Float,
-                      y: Float,
+                      atX x: Int,
+                      y: Int,
                       completionHandler: @escaping (Map2.Content) -> Void) {
         
     }

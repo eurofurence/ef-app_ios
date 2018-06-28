@@ -359,10 +359,10 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
             return
         }
         
-        XCTAssertTrue(expected.contains(elementsFrom: actual),
-                      "Expected \(expected), got \(actual)",
-                      file: file,
-                      line: line)
+        for item in expected {
+            if actual.contains(item) { continue }
+            XCTFail("Did not witness item: \(item)", file: file, line: line)
+        }
     }
     
 }

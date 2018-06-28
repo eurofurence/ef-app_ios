@@ -18,7 +18,7 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
         var mapName: String
 
         func showContentsAtPosition(x: Float, y: Float, describingTo visitor: MapContentVisitor) {
-            mapsService.fetchContent(for: mapIdentifier, atX: x, y: y) { (content) in
+            mapsService.fetchContent(for: mapIdentifier, atX: Int(x), y: Int(y)) { (content) in
                 switch content {
                 case .location(let altX, let altY):
                     visitor.visit(MapCoordinate(x: altX, y: altY))

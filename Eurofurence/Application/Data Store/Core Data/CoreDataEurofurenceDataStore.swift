@@ -315,6 +315,27 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                     entity.identifier = map.identifier
                     entity.imageIdentifier = map.imageIdentifier
                     entity.mapDescription = map.mapDescription
+
+                    let entries = map.entries.map { (entry) -> MapEntryEntity in
+                        let links = entry.links.map { (link) -> MapEntryLinkEntity in
+                            let entity = MapEntryLinkEntity(context: context)
+                            entity.type = Int16(link.type.rawValue)
+                            entity.name = link.name
+                            entity.target = link.target
+
+                            return entity
+                        }
+
+                        let entity = MapEntryEntity(context: context)
+                        entity.x = Int64(entry.x)
+                        entity.y = Int64(entry.y)
+                        entity.tapRadius = Int64(entry.tapRadius)
+                        links.forEach(entity.addToLinks)
+
+                        return entity
+                    }
+
+                    entries.forEach(entity.addToEntries)
                 }
             }
         }

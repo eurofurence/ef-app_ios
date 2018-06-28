@@ -231,10 +231,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func fetchContent(for identifier: Map2.Identifier,
-                      atX x: Float,
-                      y: Float,
+                      atX x: Int,
+                      y: Int,
                       completionHandler: @escaping (Map2.Content) -> Void) {
-
+        maps.fetchContent(for: identifier, atX: x, y: y, completionHandler: completionHandler)
     }
 
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {

@@ -180,7 +180,32 @@ extension APIDealer: RandomValueProviding {
 extension APIMap: RandomValueProviding {
     
     static var random: APIMap {
-        return APIMap(identifier: .random, imageIdentifier: .random, mapDescription: .random)
+        return APIMap(identifier: .random, imageIdentifier: .random, mapDescription: .random, entries: .random)
+    }
+    
+}
+
+extension APIMap.Entry: RandomValueProviding {
+    
+    static var random: APIMap.Entry {
+        return APIMap.Entry(x: .random, y: .random, tapRadius: .random, links: .random)
+    }
+    
+}
+
+extension APIMap.Entry.Link: RandomValueProviding {
+    
+    static var random: APIMap.Entry.Link {
+        return APIMap.Entry.Link(type: .random, name: .random, target: .random)
+    }
+    
+}
+
+extension APIMap.Entry.Link.FragmentType: RandomValueProviding {
+    
+    static var random: APIMap.Entry.Link.FragmentType {
+        let cases: [APIMap.Entry.Link.FragmentType] = [.conferenceRoom]
+        return cases.randomElement().element
     }
     
 }
