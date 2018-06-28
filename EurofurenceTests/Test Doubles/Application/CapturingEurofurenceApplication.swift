@@ -10,6 +10,13 @@
 import Foundation
 
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
+    func fetchContent(for identifier: Map2.Identifier,
+                      atX x: Float,
+                      y: Float,
+                      completionHandler: @escaping (Map2.Content) -> Void) {
+        
+    }
+    
     func add(_ observer: MapsObserver) {
         
     }

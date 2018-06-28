@@ -30,6 +30,10 @@ struct Map2: Equatable {
 
     }
 
+    enum Content {
+        case location(x: Float, y: Float)
+    }
+
     var identifier: Map2.Identifier
     var location: String
 

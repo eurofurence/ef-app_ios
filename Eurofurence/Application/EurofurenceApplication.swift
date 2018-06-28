@@ -230,6 +230,13 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         maps.fetchImagePNGDataForMap(identifier: identifier, completionHandler: completionHandler)
     }
 
+    func fetchContent(for identifier: Map2.Identifier,
+                      atX x: Float,
+                      y: Float,
+                      completionHandler: @escaping (Map2.Content) -> Void) {
+
+    }
+
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
         enum SyncError: Error {
             case failedToLoadResponse

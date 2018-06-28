@@ -12,11 +12,18 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
 
     private struct ViewModel: MapDetailViewModel {
 
-        var mapImagePNGData: Data = Data()
-        var mapName: String = ""
+        var mapsService: MapsService
+        var mapIdentifier: Map2.Identifier
+        var mapImagePNGData: Data
+        var mapName: String
 
         func showContentsAtPosition(x: Float, y: Float, describingTo visitor: MapContentVisitor) {
-
+            mapsService.fetchContent(for: mapIdentifier, atX: x, y: y) { (content) in
+                switch content {
+                case .location(let altX, let altY):
+                    visitor.visit(MapCoordinate(x: altX, y: altY))
+                }
+            }
         }
 
     }
@@ -37,9 +44,10 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
         guard let map = maps.first(where: { $0.identifier == identifier }) else { return }
 
         mapsService.fetchImagePNGDataForMap(identifier: identifier) { (mapGraphicData) in
-            var viewModel = ViewModel()
-            viewModel.mapImagePNGData = mapGraphicData
-            viewModel.mapName = map.location
+            let viewModel = ViewModel(mapsService: self.mapsService,
+                                      mapIdentifier: identifier,
+                                      mapImagePNGData: mapGraphicData,
+                                      mapName: map.location)
             completionHandler(viewModel)
         }
     }

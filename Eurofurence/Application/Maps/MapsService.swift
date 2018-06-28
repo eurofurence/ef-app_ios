@@ -12,6 +12,10 @@ protocol MapsService {
 
     func add(_ observer: MapsObserver)
     func fetchImagePNGDataForMap(identifier: Map2.Identifier, completionHandler: @escaping (Data) -> Void)
+    func fetchContent(for identifier: Map2.Identifier,
+                      atX x: Float,
+                      y: Float,
+                      completionHandler: @escaping (Map2.Content) -> Void)
 
 }
 
