@@ -64,4 +64,8 @@ class MapDetailViewController: UIViewController, UIScrollViewDelegate, MapDetail
 
     }
 
+    func show(contextualContent: MapInformationContextualContent) {
+
+    }
+
 }

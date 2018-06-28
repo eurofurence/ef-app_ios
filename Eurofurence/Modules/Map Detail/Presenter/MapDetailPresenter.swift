@@ -42,4 +42,8 @@ class MapDetailPresenter: MapDetailSceneDelegate, MapContentVisitor {
         scene.focusMapPosition(mapPosition)
     }
 
+    func visit(_ content: MapInformationContextualContent) {
+        scene.show(contextualContent: content)
+    }
+
 }

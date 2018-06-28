@@ -14,6 +14,7 @@ protocol MapDetailScene {
     func setMapImagePNGData(_ data: Data)
     func setMapTitle(_ title: String)
     func focusMapPosition(_ position: MapCoordinate)
+    func show(contextualContent: MapInformationContextualContent)
 
 }
 
@@ -27,4 +28,9 @@ protocol MapDetailSceneDelegate {
 struct MapCoordinate: Equatable {
     var x: Float
     var y: Float
+}
+
+struct MapInformationContextualContent: Equatable {
+    var coordinate: MapCoordinate
+    var content: String
 }

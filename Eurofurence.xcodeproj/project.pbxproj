@@ -715,6 +715,7 @@
 		CA6A8DF520E42731007536CD /* DefaultMapDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DF420E42731007536CD /* DefaultMapDetailInteractor.swift */; };
 		CA6A8DF720E42DC0007536CD /* WhenSceneTapsMapPosition_MapsDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DF620E42DC0007536CD /* WhenSceneTapsMapPosition_MapsDetailPresenterShould.swift */; };
 		CA6A8E0120E50008007536CD /* WhenSceneTapsMap_ThatRevealsAnotherPartOfTheMap_MapDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8E0020E50008007536CD /* WhenSceneTapsMap_ThatRevealsAnotherPartOfTheMap_MapDetailPresenterShould.swift */; };
+		CA6A8E0320E5048A007536CD /* WhenSceneTapsMapPosition_ThatProvidesSimpleContextualDetail_MapsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8E0220E5048A007536CD /* WhenSceneTapsMapPosition_ThatProvidesSimpleContextualDetail_MapsPresenterShould.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -1859,6 +1860,7 @@
 		CA6A8DF420E42731007536CD /* DefaultMapDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMapDetailInteractor.swift; sourceTree = "<group>"; };
 		CA6A8DF620E42DC0007536CD /* WhenSceneTapsMapPosition_MapsDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneTapsMapPosition_MapsDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA6A8E0020E50008007536CD /* WhenSceneTapsMap_ThatRevealsAnotherPartOfTheMap_MapDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneTapsMap_ThatRevealsAnotherPartOfTheMap_MapDetailPresenterShould.swift; sourceTree = "<group>"; };
+		CA6A8E0220E5048A007536CD /* WhenSceneTapsMapPosition_ThatProvidesSimpleContextualDetail_MapsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneTapsMapPosition_ThatProvidesSimpleContextualDetail_MapsPresenterShould.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -4213,6 +4215,7 @@
 				CA6A8DE320E41CC8007536CD /* WhenMapDetailSceneLoads_MapsPresenterShould.swift */,
 				CA6A8E0020E50008007536CD /* WhenSceneTapsMap_ThatRevealsAnotherPartOfTheMap_MapDetailPresenterShould.swift */,
 				CA6A8DF620E42DC0007536CD /* WhenSceneTapsMapPosition_MapsDetailPresenterShould.swift */,
+				CA6A8E0220E5048A007536CD /* WhenSceneTapsMapPosition_ThatProvidesSimpleContextualDetail_MapsPresenterShould.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -6617,6 +6620,7 @@
 				CACF1EAA20B5BFF100D904B5 /* WhenPreparingViewModelForEventWithNoDescription_EventDetailInteractorShould.swift in Sources */,
 				CABA83F420CE988B00DD0795 /* WhenFavouritingEventViewModel_EventDetailInteractorShould.swift in Sources */,
 				CAD260A720C03909007E3618 /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift in Sources */,
+				CA6A8E0320E5048A007536CD /* WhenSceneTapsMapPosition_ThatProvidesSimpleContextualDetail_MapsPresenterShould.swift in Sources */,
 				CA08159320D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift in Sources */,
 				CA2D08021FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleDataStore.swift in Sources */,
 				CA08159A20D47B9600F750D4 /* WhenAppHasNoSavedEvents_ThenSyncFinishesSuccessfully_EventsScheduleShould.swift in Sources */,

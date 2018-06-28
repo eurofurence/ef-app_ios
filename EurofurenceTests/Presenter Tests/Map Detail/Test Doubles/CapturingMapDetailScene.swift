@@ -31,4 +31,9 @@ class CapturingMapDetailScene: UIViewController, MapDetailScene {
         capturedMapPositionToFocus = position
     }
     
+    private(set) var presentedContextualContext: MapInformationContextualContent?
+    func show(contextualContent: MapInformationContextualContent) {
+        presentedContextualContext = contextualContent
+    }
+    
 }

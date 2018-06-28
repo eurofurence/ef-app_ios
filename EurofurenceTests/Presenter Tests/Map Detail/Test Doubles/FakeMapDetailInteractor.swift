@@ -45,4 +45,8 @@ extension FakeMapDetailViewModel {
         contentsVisitor?.visit(position)
     }
     
+    func resolvePositionalContent(with content: MapInformationContextualContent) {
+        contentsVisitor?.visit(content)
+    }
+    
 }
