@@ -15,7 +15,7 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
         var mapImagePNGData: Data = Data()
         var mapName: String = ""
 
-        func showContentsAtPosition(x: Float, y: Float) {
+        func showContentsAtPosition(x: Float, y: Float, describingTo visitor: MapContentVisitor) {
 
         }
 

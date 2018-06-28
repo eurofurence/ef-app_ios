@@ -31,8 +31,18 @@ class FakeMapDetailViewModel: MapDetailViewModel {
     var mapName: String = .random
     
     private(set) var positionToldToShowMapContentsFor: (x: Float, y: Float)?
-    func showContentsAtPosition(x: Float, y: Float) {
+    fileprivate var contentsVisitor: MapContentVisitor?
+    func showContentsAtPosition(x: Float, y: Float, describingTo visitor: MapContentVisitor) {
         positionToldToShowMapContentsFor = (x: x, y: y)
+        contentsVisitor = visitor
+    }
+    
+}
+
+extension FakeMapDetailViewModel {
+    
+    func resolvePositionalContent(with position: TappedMapPosition) {
+        contentsVisitor?.visit(position)
     }
     
 }

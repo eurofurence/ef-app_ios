@@ -26,4 +26,9 @@ class CapturingMapDetailScene: UIViewController, MapDetailScene {
         capturedTitle = title
     }
     
+    private(set) var capturedMapPositionToFocus: TappedMapPosition?
+    func focusMapPosition(_ position: TappedMapPosition) {
+        capturedMapPositionToFocus = position
+    }
+    
 }

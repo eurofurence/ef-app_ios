@@ -60,4 +60,8 @@ class MapDetailViewController: UIViewController, UIScrollViewDelegate, MapDetail
         navigationItem.title = title
     }
 
+    func focusMapPosition(_ position: TappedMapPosition) {
+
+    }
+
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MapDetailPresenter: MapDetailSceneDelegate {
+class MapDetailPresenter: MapDetailSceneDelegate, MapContentVisitor {
 
     private let scene: MapDetailScene
     private let interactor: MapDetailInteractor
@@ -28,7 +28,7 @@ class MapDetailPresenter: MapDetailSceneDelegate {
     }
 
     func mapDetailSceneDidTapMap(at position: TappedMapPosition) {
-        viewModel?.showContentsAtPosition(x: position.x, y: position.y)
+        viewModel?.showContentsAtPosition(x: position.x, y: position.y, describingTo: self)
     }
 
     private func viewModelReady(_ viewModel: MapDetailViewModel) {
@@ -36,6 +36,10 @@ class MapDetailPresenter: MapDetailSceneDelegate {
 
         scene.setMapImagePNGData(viewModel.mapImagePNGData)
         scene.setMapTitle(viewModel.mapName)
+    }
+
+    func visit(_ mapPosition: TappedMapPosition) {
+        scene.focusMapPosition(mapPosition)
     }
 
 }

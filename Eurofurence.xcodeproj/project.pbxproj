@@ -714,6 +714,7 @@
 		CA6A8DF320E425E2007536CD /* WhenPreparingViewModel_MapDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DF220E425E2007536CD /* WhenPreparingViewModel_MapDetailInteractorShould.swift */; };
 		CA6A8DF520E42731007536CD /* DefaultMapDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DF420E42731007536CD /* DefaultMapDetailInteractor.swift */; };
 		CA6A8DF720E42DC0007536CD /* WhenSceneTapsMapPosition_MapsDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DF620E42DC0007536CD /* WhenSceneTapsMapPosition_MapsDetailPresenterShould.swift */; };
+		CA6A8E0120E50008007536CD /* WhenSceneTapsMap_ThatRevealsAnotherPartOfTheMap_MapDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8E0020E50008007536CD /* WhenSceneTapsMap_ThatRevealsAnotherPartOfTheMap_MapDetailPresenterShould.swift */; };
 		CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */; };
 		CA6A9FF51FD5E7720092C6DB /* LoginViewControllerV2Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */; };
 		CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */; };
@@ -1857,6 +1858,7 @@
 		CA6A8DF220E425E2007536CD /* WhenPreparingViewModel_MapDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_MapDetailInteractorShould.swift; sourceTree = "<group>"; };
 		CA6A8DF420E42731007536CD /* DefaultMapDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMapDetailInteractor.swift; sourceTree = "<group>"; };
 		CA6A8DF620E42DC0007536CD /* WhenSceneTapsMapPosition_MapsDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneTapsMapPosition_MapsDetailPresenterShould.swift; sourceTree = "<group>"; };
+		CA6A8E0020E50008007536CD /* WhenSceneTapsMap_ThatRevealsAnotherPartOfTheMap_MapDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneTapsMap_ThatRevealsAnotherPartOfTheMap_MapDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA6A9FF21FD5E6BB0092C6DB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		CA6A9FF41FD5E7720092C6DB /* LoginViewControllerV2Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2Factory.swift; sourceTree = "<group>"; };
 		CA6A9FF61FD5E7850092C6DB /* LoginViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerV2.swift; sourceTree = "<group>"; };
@@ -4209,6 +4211,7 @@
 				CA6A8DEF20E424C1007536CD /* BeforeMapDetailSceneLoads_MapDetailPresenterShould.swift */,
 				CA6A8DCD20E41735007536CD /* WhenBuildingMapDetailModule.swift */,
 				CA6A8DE320E41CC8007536CD /* WhenMapDetailSceneLoads_MapsPresenterShould.swift */,
+				CA6A8E0020E50008007536CD /* WhenSceneTapsMap_ThatRevealsAnotherPartOfTheMap_MapDetailPresenterShould.swift */,
 				CA6A8DF620E42DC0007536CD /* WhenSceneTapsMapPosition_MapsDetailPresenterShould.swift */,
 			);
 			path = "Presenter Tests";
@@ -6688,6 +6691,7 @@
 				CA6A8D7620E264C5007536CD /* StubMapsSceneFactory.swift in Sources */,
 				CA0F762F2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift in Sources */,
 				CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */,
+				CA6A8E0120E50008007536CD /* WhenSceneTapsMap_ThatRevealsAnotherPartOfTheMap_MapDetailPresenterShould.swift in Sources */,
 				CA63757C208CDBAA00536BE2 /* Date+RandomValueProviding.swift in Sources */,
 				CA00AE5C20D171F200C2FBB0 /* CapturingScheduleEventGroupHeader.swift in Sources */,
 				CA250DE220D6EB0300E7513C /* FakeEventsSearchController.swift in Sources */,
