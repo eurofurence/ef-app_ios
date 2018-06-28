@@ -12,7 +12,6 @@ protocol MapsService {
 
     func add(_ observer: MapsObserver)
     func fetchImagePNGDataForMap(identifier: Map2.Identifier, completionHandler: @escaping (Data) -> Void)
-    func openContentsForMap(identifier: Map2.Identifier, atX x: Float, y: Float)
 
 }
 
