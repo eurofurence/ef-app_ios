@@ -16,9 +16,9 @@ class WhenSceneTapsMap_ThatRevealsAnotherPartOfTheMap_MapDetailPresenterShould: 
         let interactor = FakeMapDetailInteractor(expectedMapIdentifier: identifier)
         let context = MapDetailPresenterTestBuilder().with(interactor).build(for: identifier)
         context.simulateSceneDidLoad()
-        let randomLocation = TappedMapPosition(x: Float.random, y: Float.random)
+        let randomLocation = MapCoordinate(x: Float.random, y: Float.random)
         context.simulateSceneDidDidTapMap(at: randomLocation)
-        let expected = TappedMapPosition(x: .random, y: .random)
+        let expected = MapCoordinate(x: .random, y: .random)
         interactor.viewModel.resolvePositionalContent(with: expected)
         
         XCTAssertEqual(expected, context.scene.capturedMapPositionToFocus)

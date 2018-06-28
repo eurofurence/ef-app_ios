@@ -28,7 +28,7 @@ class MapDetailViewController: UIViewController, UIScrollViewDelegate, MapDetail
 
     @IBAction func scrollViewTapped(_ sender: UIGestureRecognizer) {
         let tapLocation = sender.location(in: imageView)
-        let position = TappedMapPosition(x: Float(tapLocation.x), y: Float(tapLocation.y))
+        let position = MapCoordinate(x: Float(tapLocation.x), y: Float(tapLocation.y))
         delegate?.mapDetailSceneDidTapMap(at: position)
     }
 
@@ -60,7 +60,7 @@ class MapDetailViewController: UIViewController, UIScrollViewDelegate, MapDetail
         navigationItem.title = title
     }
 
-    func focusMapPosition(_ position: TappedMapPosition) {
+    func focusMapPosition(_ position: MapCoordinate) {
 
     }
 

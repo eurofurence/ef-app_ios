@@ -16,7 +16,7 @@ class WhenSceneTapsMapPosition_MapsDetailPresenterShould: XCTestCase {
         let interactor = FakeMapDetailInteractor(expectedMapIdentifier: identifier)
         let context = MapDetailPresenterTestBuilder().with(interactor).build(for: identifier)
         context.simulateSceneDidLoad()
-        let randomLocation = TappedMapPosition(x: Float.random, y: Float.random)
+        let randomLocation = MapCoordinate(x: Float.random, y: Float.random)
         context.simulateSceneDidDidTapMap(at: randomLocation)
         
         XCTAssertEqual(randomLocation.x, interactor.viewModel.positionToldToShowMapContentsFor?.x)

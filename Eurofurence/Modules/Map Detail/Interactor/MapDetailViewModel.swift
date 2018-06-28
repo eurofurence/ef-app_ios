@@ -19,6 +19,6 @@ protocol MapDetailViewModel {
 
 protocol MapContentVisitor {
 
-    func visit(_ mapPosition: TappedMapPosition)
+    func visit(_ mapPosition: MapCoordinate)
 
 }

@@ -47,7 +47,7 @@ extension MapDetailPresenterTestBuilder.Context {
         scene.delegate?.mapDetailSceneDidLoad()
     }
     
-    func simulateSceneDidDidTapMap(at location: TappedMapPosition) {
+    func simulateSceneDidDidTapMap(at location: MapCoordinate) {
         scene.delegate?.mapDetailSceneDidTapMap(at: location)
     }
     

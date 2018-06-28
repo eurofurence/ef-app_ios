@@ -41,7 +41,7 @@ class FakeMapDetailViewModel: MapDetailViewModel {
 
 extension FakeMapDetailViewModel {
     
-    func resolvePositionalContent(with position: TappedMapPosition) {
+    func resolvePositionalContent(with position: MapCoordinate) {
         contentsVisitor?.visit(position)
     }
     

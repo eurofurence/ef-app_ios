@@ -13,18 +13,18 @@ protocol MapDetailScene {
     func setDelegate(_ delegate: MapDetailSceneDelegate)
     func setMapImagePNGData(_ data: Data)
     func setMapTitle(_ title: String)
-    func focusMapPosition(_ position: TappedMapPosition)
+    func focusMapPosition(_ position: MapCoordinate)
 
 }
 
 protocol MapDetailSceneDelegate {
 
     func mapDetailSceneDidLoad()
-    func mapDetailSceneDidTapMap(at position: TappedMapPosition)
+    func mapDetailSceneDidTapMap(at position: MapCoordinate)
 
 }
 
-struct TappedMapPosition: Equatable {
+struct MapCoordinate: Equatable {
     var x: Float
     var y: Float
 }

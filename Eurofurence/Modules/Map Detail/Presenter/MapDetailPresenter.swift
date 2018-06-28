@@ -27,7 +27,7 @@ class MapDetailPresenter: MapDetailSceneDelegate, MapContentVisitor {
         interactor.makeViewModelForMap(identifier: identifier, completionHandler: viewModelReady)
     }
 
-    func mapDetailSceneDidTapMap(at position: TappedMapPosition) {
+    func mapDetailSceneDidTapMap(at position: MapCoordinate) {
         viewModel?.showContentsAtPosition(x: position.x, y: position.y, describingTo: self)
     }
 
@@ -38,7 +38,7 @@ class MapDetailPresenter: MapDetailSceneDelegate, MapContentVisitor {
         scene.setMapTitle(viewModel.mapName)
     }
 
-    func visit(_ mapPosition: TappedMapPosition) {
+    func visit(_ mapPosition: MapCoordinate) {
         scene.focusMapPosition(mapPosition)
     }
 
