@@ -16,8 +16,9 @@ class CapturingMapContentVisitor: MapContentVisitor {
         capturedMapCoordinate = mapPosition
     }
     
+    private(set) var capturedContextualContent: MapInformationContextualContent?
     func visit(_ content: MapInformationContextualContent) {
-        
+        capturedContextualContent = content
     }
     
 }

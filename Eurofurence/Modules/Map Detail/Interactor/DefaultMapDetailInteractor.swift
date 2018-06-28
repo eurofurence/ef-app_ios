@@ -22,6 +22,11 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
                 switch content {
                 case .location(let altX, let altY):
                     visitor.visit(MapCoordinate(x: altX, y: altY))
+
+                case .room(let room):
+                    let coordinate = MapCoordinate(x: x, y: y)
+                    let contextualInfo = MapInformationContextualContent(coordinate: coordinate, content: room.name)
+                    visitor.visit(contextualInfo)
                 }
             }
         }

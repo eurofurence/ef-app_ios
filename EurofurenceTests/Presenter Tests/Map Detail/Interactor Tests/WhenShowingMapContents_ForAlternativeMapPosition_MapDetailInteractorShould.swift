@@ -28,4 +28,21 @@ class WhenShowingMapContents_ForAlternativeMapPosition_MapDetailInteractorShould
         XCTAssertEqual(expected, visitor.capturedMapCoordinate)
     }
     
+    func testConvertTheRoomIntoContextualContentWithRoomName() {
+        let mapsService = FakeMapsService()
+        let randomMap = mapsService.maps.randomElement()
+        let interactor = DefaultMapDetailInteractor(mapsService: mapsService)
+        var viewModel: MapDetailViewModel?
+        interactor.makeViewModelForMap(identifier: randomMap.element.identifier) { viewModel = $0 }
+        
+        let (x, y) = (Float.random, Float.random)
+        let room = Room.random
+        let expected = MapInformationContextualContent(coordinate: MapCoordinate(x: x, y: y), content: room.name)
+        let visitor = CapturingMapContentVisitor()
+        viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)
+        mapsService.resolveMapContents(identifier: randomMap.element.identifier, atX: x, y: y, with: .room(room))
+        
+        XCTAssertEqual(expected, visitor.capturedContextualContent)
+    }
+    
 }
