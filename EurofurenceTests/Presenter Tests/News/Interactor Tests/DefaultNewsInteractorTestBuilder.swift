@@ -35,6 +35,23 @@ class CapturingRefreshService: RefreshService {
         toldToRefresh = true
     }
     
+    private(set) var refreshObservers = [RefreshServiceObserver]()
+    func add(_ observer: RefreshServiceObserver) {
+        refreshObservers.append(observer)
+    }
+    
+}
+
+extension CapturingRefreshService {
+    
+    func simulateRefreshBegan() {
+        refreshObservers.forEach { $0.refreshServiceDidBeginRefreshing() }
+    }
+    
+    func simulateRefreshFinished() {
+        refreshObservers.forEach { $0.refreshServiceDidFinishRefreshing() }
+    }
+    
 }
 
 class DefaultNewsInteractorTestBuilder {

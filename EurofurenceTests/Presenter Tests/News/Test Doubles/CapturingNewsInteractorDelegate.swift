@@ -16,12 +16,14 @@ class CapturingNewsInteractorDelegate: NewsInteractorDelegate {
         self.viewModel = viewModel
     }
     
+    private(set) var toldRefreshDidBegin = false
     func refreshDidBegin() {
-        
+        toldRefreshDidBegin = true
     }
     
+    private(set) var toldRefreshDidFinish = false
     func refreshDidFinish() {
-        
+        toldRefreshDidFinish = true
     }
     
 }

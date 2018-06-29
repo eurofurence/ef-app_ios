@@ -10,6 +10,10 @@
 import Foundation
 
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
+    func add(_ observer: RefreshServiceObserver) {
+        
+    }
+    
     func performRefresh() {
         
     }

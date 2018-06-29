@@ -23,7 +23,8 @@ class DefaultNewsInteractor: NewsInteractor,
                              AuthenticationStateObserver,
                              PrivateMessagesServiceObserver,
                              ConventionCountdownServiceObserver,
-                             EventsServiceObserver {
+                             EventsServiceObserver,
+                             RefreshServiceObserver {
 
     // MARK: Properties
 
@@ -76,6 +77,7 @@ class DefaultNewsInteractor: NewsInteractor,
         privateMessagesService.add(self)
         daysUntilConventionService.add(self)
         eventsService.add(self)
+        refreshService.add(self)
     }
 
     // MARK: NewsInteractor
@@ -164,6 +166,16 @@ class DefaultNewsInteractor: NewsInteractor,
     func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) {
         favouriteEventIdentifiers = identifiers
         regenerateFavouriteEvents()
+    }
+
+    // MARK: RefreshServiceObserver
+
+    func refreshServiceDidBeginRefreshing() {
+        delegate?.refreshDidBegin()
+    }
+
+    func refreshServiceDidFinishRefreshing() {
+        delegate?.refreshDidFinish()
     }
 
     // MARK: Private

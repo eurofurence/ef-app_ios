@@ -118,6 +118,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         maps = Maps(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository)
     }
 
+    func add(_ observer: RefreshServiceObserver) {
+
+    }
+
     func performRefresh() {
 
     }

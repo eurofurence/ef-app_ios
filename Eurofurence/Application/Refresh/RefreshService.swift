@@ -10,6 +10,14 @@ import Foundation
 
 protocol RefreshService {
 
+    func add(_ observer: RefreshServiceObserver)
     func performRefresh()
+
+}
+
+protocol RefreshServiceObserver {
+
+    func refreshServiceDidBeginRefreshing()
+    func refreshServiceDidFinishRefreshing()
 
 }
