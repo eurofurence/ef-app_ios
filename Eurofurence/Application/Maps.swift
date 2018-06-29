@@ -66,16 +66,23 @@ class Maps {
 
         guard let model = serverModels.first(where: { $0.identifier == identifier.rawValue }) else { return }
 
-        let tappedWithinEntry: (APIMap.Entry) -> Bool = { (entry) -> Bool in
+        struct MapEntryDisplacementResult {
+            var entry: APIMap.Entry
+            var displacement: Double
+        }
+
+        let tappedWithinEntry: (APIMap.Entry) -> MapEntryDisplacementResult? = { (entry) -> MapEntryDisplacementResult? in
             let tapRadius = entry.tapRadius
             let horizontalDelta = abs(entry.x - x)
             let verticalDelta = abs(entry.y - y)
             let delta = hypot(Double(horizontalDelta), Double(verticalDelta))
-            
-            return delta < Double(tapRadius)
+
+            guard delta < Double(tapRadius) else { return nil }
+
+            return MapEntryDisplacementResult(entry: entry, displacement: delta)
         }
 
-        guard let entry = model.entries.first(where: tappedWithinEntry) else { return }
+        guard let entry = model.entries.compactMap(tappedWithinEntry).sorted(by: { $0.displacement < $1.displacement }).first?.entry else { return }
         guard let link = entry.links.first else { return }
         guard let room = roomServerModels.first(where: { $0.roomIdentifier == link.target }) else { return }
 
