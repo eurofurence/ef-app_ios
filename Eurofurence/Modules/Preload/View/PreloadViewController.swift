@@ -18,7 +18,10 @@ class PreloadViewController: UIViewController, SplashScene {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         view.backgroundColor = .pantone330U
+        progressBar.trackTintColor = .pantone330U_45
+        progressBar.progressTintColor = .white
     }
 
     override func viewWillAppear(_ animated: Bool) {
