@@ -453,7 +453,11 @@ class NewsTableViewController: UITableViewController,
     var delegate: NewsSceneDelegate?
 
     func showNewsTitle(_ title: String) {
+        super.title = title
+    }
 
+    func hideRefreshIndicator() {
+        refreshControl?.endRefreshing()
     }
 
     func showMessagesNavigationAction() {

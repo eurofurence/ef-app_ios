@@ -16,4 +16,8 @@ class CapturingNewsInteractorDelegate: NewsInteractorDelegate {
         self.viewModel = viewModel
     }
     
+    func refreshDidFinish() {
+        
+    }
+    
 }

@@ -39,6 +39,10 @@ class NewsViewController: UIViewController, NewsScene {
         super.title = title
     }
 
+    func hideRefreshIndicator() {
+        refreshControl.endRefreshing()
+    }
+
     func bind(numberOfItemsPerComponent: [Int], using binder: NewsComponentsBinder) {
         tableController = TableController(tableView: tableView, numberOfItemsPerComponent: numberOfItemsPerComponent, binder: binder)
         tableController?.onDidSelectRowAtIndexPath = tableViewDidSelectRow

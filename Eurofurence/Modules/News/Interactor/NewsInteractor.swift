@@ -16,5 +16,6 @@ protocol NewsInteractor {
 protocol NewsInteractorDelegate {
 
     func viewModelDidUpdate(_ viewModel: NewsViewModel)
+    func refreshDidFinish()
 
 }

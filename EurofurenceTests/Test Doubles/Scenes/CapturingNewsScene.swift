@@ -28,6 +28,11 @@ class CapturingNewsScene: UIViewController, NewsScene {
         capturedBinder = binder
     }
     
+    private(set) var didHideRefreshIndicator = false
+    func hideRefreshIndicator() {
+        didHideRefreshIndicator = true
+    }
+    
 }
 
 class StubNewsComponentFactory: NewsComponentFactory {
