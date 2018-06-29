@@ -269,7 +269,8 @@ class ApplicationDirector: ExternalContentHandler,
     // MARK: MapDetailModuleDelegate
 
     func mapDetailModuleDidSelectDealer(_ identifier: Dealer2.Identifier) {
-
+        let module = dealerDetailModuleProviding.makeDealerDetailModule(for: identifier)
+        mapsModule?.navigationController?.pushViewController(module, animated: animate)
     }
 
     // MARK: Private

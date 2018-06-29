@@ -41,9 +41,19 @@ class StubMapDetailModuleProviding: MapDetailModuleProviding {
     
     let stubInterface = UIViewController()
     private(set) var capturedModel: Map2.Identifier?
+    private(set) var delegate: MapDetailModuleDelegate?
     func makeMapDetailModule(for map: Map2.Identifier, delegate: MapDetailModuleDelegate) -> UIViewController {
         capturedModel = map
+        self.delegate = delegate
         return stubInterface
+    }
+    
+}
+
+extension StubMapDetailModuleProviding {
+    
+    func simulateDidSelectDealer(_ dealer: Dealer2.Identifier) {
+        delegate?.mapDetailModuleDidSelectDealer(dealer)
     }
     
 }
