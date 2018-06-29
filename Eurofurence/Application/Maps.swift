@@ -12,14 +12,14 @@ class Maps {
 
     private class RefreshMapsAfterSync: EventConsumer {
 
-        private let handler: ([APIMap], [APIRoom]) -> Void
+        private let handler: ([APIMap], [APIRoom], [APIDealer]) -> Void
 
-        init(handler: @escaping ([APIMap], [APIRoom]) -> Void) {
+        init(handler: @escaping ([APIMap], [APIRoom], [APIDealer]) -> Void) {
             self.handler = handler
         }
 
         func consume(event: DomainEvent.LatestDataFetchedEvent) {
-            handler(event.response.maps.changed, event.response.rooms.changed)
+            handler(event.response.maps.changed, event.response.rooms.changed, event.response.dealers.changed)
         }
 
     }
@@ -28,6 +28,8 @@ class Maps {
 
     private var serverModels = [APIMap]()
     private var roomServerModels = [APIRoom]()
+    private var dealerServerModels = [APIDealer]()
+
     private var models = [Map2]() {
         didSet {
             observers.forEach({ $0.mapsServiceDidChangeMaps(models) })
@@ -41,7 +43,7 @@ class Maps {
         eventBus.subscribe(consumer: RefreshMapsAfterSync(handler: updateModels))
 
         if let maps = dataStore.getSavedMaps() {
-            updateModels(maps, roomServerModels: [])
+            updateModels(maps, roomServerModels: [], dealerServerModels: dealerServerModels)
         }
     }
 
@@ -84,14 +86,20 @@ class Maps {
 
         guard let entry = model.entries.compactMap(tappedWithinEntry).sorted(by: { $0.displacement < $1.displacement }).first?.entry else { return }
         guard let link = entry.links.first else { return }
-        guard let room = roomServerModels.first(where: { $0.roomIdentifier == link.target }) else { return }
 
-        content = .room(Room(name: room.name))
+        if let room = roomServerModels.first(where: { $0.roomIdentifier == link.target }) {
+            content = .room(Room(name: room.name))
+        }
+
+        if let dealer = dealerServerModels.first(where: { $0.identifier == link.target }) {
+            content = .dealer(Dealer2.Identifier(dealer.identifier))
+        }
     }
 
-    private func updateModels(_ serverModels: [APIMap], roomServerModels: [APIRoom]) {
+    private func updateModels(_ serverModels: [APIMap], roomServerModels: [APIRoom], dealerServerModels: [APIDealer]) {
         self.serverModels = serverModels
         self.roomServerModels = roomServerModels
+        self.dealerServerModels = dealerServerModels
 
         models = serverModels.map({ (map) -> Map2 in
             return Map2(identifier: Map2.Identifier(map.identifier), location: map.mapDescription)
