@@ -22,7 +22,6 @@ struct PresentationTier {
         return ApplicationContext(
                 firstTimeLaunchProviding: UserDefaultsTutorialStateProvider(userDefaults: .standard),
                 witnessedTutorialPushPermissionsRequest: UserDefaultsWitnessedTutorialPushPermissionsRequest(userDefaults: .standard),
-                quoteGenerator: EgyptianQuoteGenerator(),
                 presentationAssets: ApplicationPresentationAssets(),
                 networkReachability: SwiftNetworkReachability.shared,
                 pushPermissionsRequesting: pushRequesting)

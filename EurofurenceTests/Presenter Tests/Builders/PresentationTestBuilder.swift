@@ -26,7 +26,6 @@ class PresentationTestBuilder {
     private var routers: Routers
     private var firstTimeLaunchProviding: UserCompletedTutorialStateProviding
     private var witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
-    private var quoteGenerator: QuoteGenerator
     private var presentationAssets: PresentationAssets
     private var networkReachability: NetworkReachability
     private var pushPermissionsRequesting: PushPermissionsRequesting
@@ -35,7 +34,6 @@ class PresentationTestBuilder {
         routers = StubRouters()
         firstTimeLaunchProviding = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: true)
         witnessedTutorialPushPermissionsRequest = UserNotAcknowledgedPushPermissions()
-        quoteGenerator = CapturingQuoteGenerator()
         presentationAssets = StubPresentationAssets()
         networkReachability = ReachableWiFiNetwork()
         pushPermissionsRequesting = CapturingPushPermissionsRequesting()
@@ -61,11 +59,6 @@ class PresentationTestBuilder {
         return self
     }
 
-    func withQuoteGenerator(_ quoteGenerator: QuoteGenerator) -> PresentationTestBuilder {
-        self.quoteGenerator = quoteGenerator
-        return self
-    }
-
     func withNetworkReachability(_ networkReachability: NetworkReachability) -> PresentationTestBuilder {
         self.networkReachability = networkReachability
         return self
@@ -79,7 +72,6 @@ class PresentationTestBuilder {
     func build() -> PresentationTestContext {
         let appContext = ApplicationContext(firstTimeLaunchProviding: firstTimeLaunchProviding,
                                             witnessedTutorialPushPermissionsRequest: witnessedTutorialPushPermissionsRequest,
-                                            quoteGenerator: quoteGenerator,
                                             presentationAssets: presentationAssets,
                                             networkReachability: networkReachability,
                                             pushPermissionsRequesting: pushPermissionsRequesting)

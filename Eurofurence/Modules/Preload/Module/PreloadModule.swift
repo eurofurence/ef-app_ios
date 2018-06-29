@@ -17,20 +17,17 @@ struct PreloadModule {
 
     private let delegate: PreloadModuleDelegate
     private let preloadSceneFactory: PreloadSceneFactory
-    private let quoteGenerator: QuoteGenerator
     private let preloadService: PreloadInteractor
     private let alertRouter: AlertRouter
 
     init(delegate: PreloadModuleDelegate,
          preloadSceneFactory: PreloadSceneFactory,
          preloadService: PreloadInteractor,
-         alertRouter: AlertRouter,
-         quoteGenerator: QuoteGenerator) {
+         alertRouter: AlertRouter) {
         self.delegate = delegate
         self.preloadSceneFactory = preloadSceneFactory
         self.preloadService = preloadService
         self.alertRouter = alertRouter
-        self.quoteGenerator = quoteGenerator
     }
 
     func attach() {
@@ -38,8 +35,7 @@ struct PreloadModule {
         _ = PreloadPresenter(delegate: delegate,
                              preloadScene: preloadScene,
                              preloadService: preloadService,
-                             alertRouter: alertRouter,
-                             quote: quoteGenerator.makeQuote())
+                             alertRouter: alertRouter)
     }
 
 }

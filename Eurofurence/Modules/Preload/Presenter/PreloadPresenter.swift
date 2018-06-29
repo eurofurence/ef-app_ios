@@ -12,25 +12,20 @@ struct PreloadPresenter: SplashSceneDelegate, PreloadInteractorDelegate {
     private let preloadScene: SplashScene
     private let preloadService: PreloadInteractor
     private let alertRouter: AlertRouter
-    private let quote: Quote
 
     init(delegate: PreloadModuleDelegate,
          preloadScene: SplashScene,
          preloadService: PreloadInteractor,
-         alertRouter: AlertRouter,
-         quote: Quote) {
+         alertRouter: AlertRouter) {
         self.delegate = delegate
         self.preloadScene = preloadScene
         self.preloadService = preloadService
         self.alertRouter = alertRouter
-        self.quote = quote
 
         preloadScene.delegate = self
     }
 
     func splashSceneWillAppear(_ splashScene: SplashScene) {
-        preloadScene.showQuote(quote.message)
-        preloadScene.showQuoteAuthor(quote.author)
         beginPreloading()
     }
 

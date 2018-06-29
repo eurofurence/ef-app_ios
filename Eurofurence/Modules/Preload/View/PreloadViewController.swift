@@ -12,14 +12,13 @@ class PreloadViewController: UIViewController, SplashScene {
 
     // MARK: IBOutlets
 
-    @IBOutlet weak var quoteLabel: UILabel!
-    @IBOutlet weak var quoteAuthorLabel: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
 
     // MARK: Overrides
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .pantone330U
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -30,14 +29,6 @@ class PreloadViewController: UIViewController, SplashScene {
     // MARK: SplashScene
 
     var delegate: SplashSceneDelegate?
-
-    func showQuote(_ quote: String) {
-        quoteLabel.text = quote
-    }
-
-    func showQuoteAuthor(_ author: String) {
-        quoteAuthorLabel.text = author
-    }
 
     func showProgress(_ progress: Float) {
         progressBar.setProgress(progress, animated: true)

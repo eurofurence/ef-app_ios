@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Hieroglify.ttf">
-            <string>Hieroglify</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Preload View Controller-->
         <scene sceneID="wvo-ql-YmX">
@@ -29,72 +22,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iFX-9U-QZz">
-                                <rect key="frame" x="32" y="453" width="311" height="2"/>
-                                <color key="progressTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="trackTintColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="iFX-9U-QZz">
+                                <rect key="frame" x="32" y="405" width="311" height="2"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;For knowledge... you should know that peace is an indispensable condition of getting it.&quot;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abY-h9-aE0">
-                                <rect key="frame" x="32" y="479" width="311" height="64.333333333333371"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Egyptian Proverb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Bq-Co-YW3">
-                                <rect key="frame" x="215" y="551.33333333333337" width="128" height="18"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHL-Sk-aTs">
-                                <rect key="frame" x="123.66666666666667" y="210" width="128.33333333333331" height="219"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <bool key="isElement" value="NO"/>
-                                </accessibility>
-                                <fontDescription key="fontDescription" name="Hieroglify" family="Hieroglify" pointSize="196"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.097791883679999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="abY-h9-aE0" firstAttribute="top" secondItem="iFX-9U-QZz" secondAttribute="bottom" constant="24" id="4wX-Uz-Gae"/>
-                            <constraint firstItem="iFX-9U-QZz" firstAttribute="centerY" secondItem="wKs-8b-dDh" secondAttribute="centerY" constant="48" id="DnZ-Sf-yrJ">
-                                <variation key="heightClass=compact" constant="-24"/>
-                            </constraint>
-                            <constraint firstItem="abY-h9-aE0" firstAttribute="trailing" secondItem="iFX-9U-QZz" secondAttribute="trailing" id="GIK-Wm-Doy"/>
-                            <constraint firstItem="abY-h9-aE0" firstAttribute="leading" secondItem="iFX-9U-QZz" secondAttribute="leading" multiplier="0.66" constant="12" id="Mdf-2r-ngA"/>
-                            <constraint firstItem="5Bq-Co-YW3" firstAttribute="top" secondItem="abY-h9-aE0" secondAttribute="bottom" constant="8" id="TWJ-qb-tLM"/>
-                            <constraint firstItem="iFX-9U-QZz" firstAttribute="leading" secondItem="wKs-8b-dDh" secondAttribute="leadingMargin" constant="16" id="UqV-NX-chK"/>
-                            <constraint firstItem="NHL-Sk-aTs" firstAttribute="centerX" secondItem="iFX-9U-QZz" secondAttribute="centerX" id="Y6h-15-Wry"/>
-                            <constraint firstItem="abY-h9-aE0" firstAttribute="leading" secondItem="iFX-9U-QZz" secondAttribute="leading" id="YmA-ae-Cbd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="iFX-9U-QZz" secondAttribute="trailing" constant="16" id="dIQ-Xl-8Jk"/>
-                            <constraint firstItem="5Bq-Co-YW3" firstAttribute="trailing" secondItem="abY-h9-aE0" secondAttribute="trailing" id="ktf-Q2-XKw"/>
-                            <constraint firstItem="iFX-9U-QZz" firstAttribute="top" secondItem="NHL-Sk-aTs" secondAttribute="bottom" constant="24" id="rF3-hb-9ag"/>
+                            <constraint firstItem="iFX-9U-QZz" firstAttribute="centerY" secondItem="wKs-8b-dDh" secondAttribute="centerY" id="DnZ-Sf-yrJ"/>
+                            <constraint firstItem="iFX-9U-QZz" firstAttribute="leading" secondItem="YSY-xI-SRW" secondAttribute="leading" constant="32" id="UqV-NX-chK"/>
+                            <constraint firstItem="YSY-xI-SRW" firstAttribute="trailing" secondItem="iFX-9U-QZz" secondAttribute="trailing" constant="32" id="dIQ-Xl-8Jk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YSY-xI-SRW"/>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Mdf-2r-ngA"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=compact">
-                            <mask key="subviews">
-                                <exclude reference="NHL-Sk-aTs"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=regular">
-                            <mask key="constraints">
-                                <include reference="Mdf-2r-ngA"/>
-                                <exclude reference="YmA-ae-Cbd"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="z7a-p3-QXn"/>
                     <connections>
                         <outlet property="progressBar" destination="iFX-9U-QZz" id="e99-hS-cmw"/>
-                        <outlet property="quoteAuthorLabel" destination="5Bq-Co-YW3" id="Woa-4b-EWd"/>
-                        <outlet property="quoteLabel" destination="abY-h9-aE0" id="awi-pz-2NF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFC-VO-sYX" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -13,13 +13,11 @@ class PreloadModuleBuilder {
     private var preloadSceneFactory: PreloadSceneFactory
     private var preloadService: PreloadInteractor
     private var alertRouter: AlertRouter
-    private var quoteGenerator: QuoteGenerator
 
     init() {
         preloadSceneFactory = PhonePreloadSceneFactory()
         preloadService = ApplicationPreloadInteractor()
         alertRouter = WindowAlertRouter.shared
-        quoteGenerator = EgyptianQuoteGenerator()
     }
 
     func with(_ preloadSceneFactory: PreloadSceneFactory) -> PreloadModuleBuilder {
@@ -37,16 +35,10 @@ class PreloadModuleBuilder {
         return self
     }
 
-    func with(_ quoteGenerator: QuoteGenerator) -> PreloadModuleBuilder {
-        self.quoteGenerator = quoteGenerator
-        return self
-    }
-
     func build() -> PreloadModuleProviding {
         return PhonePreloadModuleFactory(preloadSceneFactory: preloadSceneFactory,
                                          preloadService: preloadService,
-                                         alertRouter: alertRouter,
-                                         quoteGenerator: quoteGenerator)
+                                         alertRouter: alertRouter)
 
     }
 

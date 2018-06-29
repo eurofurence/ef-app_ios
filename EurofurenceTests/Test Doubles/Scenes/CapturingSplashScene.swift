@@ -21,16 +21,6 @@ class StubPreloadSceneFactory: PreloadSceneFactory {
 class CapturingSplashScene: UIViewController, SplashScene {
     
     var delegate: SplashSceneDelegate?
-
-    private(set) var shownQuote: String?
-    func showQuote(_ quote: String) {
-        shownQuote = quote
-    }
-
-    private(set) var shownQuoteAuthor: String?
-    func showQuoteAuthor(_ author: String) {
-        shownQuoteAuthor = author
-    }
     
     private(set) var capturedProgress: Float?
     func showProgress(_ progress: Float) {

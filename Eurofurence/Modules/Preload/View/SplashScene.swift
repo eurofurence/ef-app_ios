@@ -12,8 +12,6 @@ protocol SplashScene: class {
 
     var delegate: SplashSceneDelegate? { get set }
 
-    func showQuote(_ quote: String)
-    func showQuoteAuthor(_ author: String)
     func showProgress(_ progress: Float)
 
 }
