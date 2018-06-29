@@ -115,6 +115,10 @@ extension CapturingSignificantTimeChangeAdapter {
 
 class FakeLongRunningTaskManager: LongRunningTaskManager {
     
+    var finishedTask: Bool {
+        return terminatedLongRunningTaskToken == AnyHashable(stubTaskToken)
+    }
+    
     let stubTaskToken = String.random
     private(set) var didBeginTask = false
     func beginLongRunningTask() -> AnyHashable {

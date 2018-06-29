@@ -245,8 +245,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             case failedToLoadResponse
         }
 
-        let id = longRunningTaskManager.beginLongRunningTask()
-        longRunningTaskManager.finishLongRunningTask(token: id)
+        let longRunningTask = longRunningTaskManager.beginLongRunningTask()
 
         let progress = Progress()
         progress.totalUnitCount = -1
@@ -294,7 +293,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                     transaction.saveLastRefreshDate(self.clock.currentDate)
                 })
 
-                self.privateMessagesController.fetchPrivateMessages { (_) in completionHandler(nil) }
+                self.privateMessagesController.fetchPrivateMessages { (_) in
+                    completionHandler(nil)
+                    self.longRunningTaskManager.finishLongRunningTask(token: longRunningTask)
+                }
             }
         }
 
