@@ -204,7 +204,7 @@ extension APIMap.Entry.Link: RandomValueProviding {
 extension APIMap.Entry.Link.FragmentType: RandomValueProviding {
     
     static var random: APIMap.Entry.Link.FragmentType {
-        let cases: [APIMap.Entry.Link.FragmentType] = [.conferenceRoom]
+        let cases: [APIMap.Entry.Link.FragmentType] = [.conferenceRoom, .mapEntry, .dealerDetail]
         return cases.randomElement().element
     }
     

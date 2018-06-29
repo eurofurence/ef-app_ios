@@ -252,15 +252,57 @@ private struct JSONSyncResponse: Decodable {
 
     struct JSONMap: Decodable, ModelRepresenting {
 
+        struct JSONMapEntry: Decodable, ModelRepresenting {
+
+            struct JSONMapEntryLink: Decodable, ModelRepresenting {
+
+                enum LinkFragmentType: String, Decodable, ModelRepresenting {
+                    case DealerDetail
+                    case EventConferenceRoom
+                    case MapEntry
+
+                    var modelValue: APIMap.Entry.Link.FragmentType {
+                        switch self {
+                        case .DealerDetail:
+                            return .dealerDetail
+                        case .EventConferenceRoom:
+                            return .conferenceRoom
+                        case .MapEntry:
+                            return .mapEntry
+                        }
+                    }
+                }
+
+                var FragmentType: LinkFragmentType
+                var Name: String?
+                var Target: String
+
+                var modelValue: APIMap.Entry.Link {
+                    return APIMap.Entry.Link(type: FragmentType.modelValue, name: Name, target: Target)
+                }
+            }
+
+            var X: Int
+            var Y: Int
+            var TapRadius: Int
+            var Links: [JSONMapEntryLink]
+
+            var modelValue: APIMap.Entry {
+                return APIMap.Entry(x: X, y: Y, tapRadius: TapRadius, links: Links.map({ $0.modelValue }))
+            }
+
+        }
+
         var Id: String
         var ImageId: String
         var Description: String
+        var Entries: [JSONMapEntry]
 
         var modelValue: APIMap {
             return APIMap(identifier: Id,
                           imageIdentifier: ImageId,
                           mapDescription: Description,
-                          entries: [])
+                          entries: Entries.map({ $0.modelValue }))
         }
 
     }

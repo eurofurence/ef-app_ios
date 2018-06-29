@@ -14,6 +14,7 @@ struct APIMap: Equatable {
         return lhs.identifier == rhs.identifier &&
                lhs.imageIdentifier == rhs.imageIdentifier &&
                lhs.mapDescription == rhs.mapDescription &&
+               lhs.entries.count == rhs.entries.count &&
                lhs.entries.contains(elementsFrom: rhs.entries)
     }
 
@@ -23,6 +24,7 @@ struct APIMap: Equatable {
             return lhs.x == rhs.x &&
                    lhs.y == rhs.y &&
                    lhs.tapRadius == rhs.tapRadius &&
+                   lhs.links.count == rhs.links.count &&
                    lhs.links.contains(elementsFrom: rhs.links)
         }
 
@@ -30,10 +32,12 @@ struct APIMap: Equatable {
 
             enum FragmentType: Int {
                 case conferenceRoom
+                case mapEntry
+                case dealerDetail
             }
 
             var type: FragmentType
-            var name: String
+            var name: String?
             var target: String
 
         }

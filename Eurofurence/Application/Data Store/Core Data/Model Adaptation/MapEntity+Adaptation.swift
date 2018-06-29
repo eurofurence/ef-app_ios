@@ -42,7 +42,7 @@ extension MapEntryLinkEntity: EntityAdapting {
 
     func asAdaptedType() -> APIMap.Entry.Link {
         return APIMap.Entry.Link(type: APIMap.Entry.Link.FragmentType(rawValue: Int(type))!,
-                                 name: name!,
+                                 name: name,
                                  target: target!)
     }
 
