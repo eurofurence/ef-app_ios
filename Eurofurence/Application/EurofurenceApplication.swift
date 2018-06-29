@@ -243,6 +243,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         }
 
         let progress = Progress()
+        progress.totalUnitCount = -1
+        progress.completedUnitCount = -1
 
         let lastSyncTime = dataStore.getLastRefreshDate()
         syncAPI.fetchLatestData(lastSyncTime: lastSyncTime) { (response) in
@@ -267,6 +269,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             imageIdentifiers.append(contentsOf: artistPreviewImageIdentifiers)
             imageIdentifiers.append(contentsOf: mapImageIdentifiers)
             let nonOptionalImageIdentifiers = imageIdentifiers.compactMap({ $0 })
+            progress.completedUnitCount = 0
             progress.totalUnitCount = Int64(imageIdentifiers.count)
 
             self.imageDownloader.downloadImages(identifiers: nonOptionalImageIdentifiers, parentProgress: progress) {

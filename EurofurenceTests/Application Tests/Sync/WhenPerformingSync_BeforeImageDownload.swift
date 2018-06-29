@@ -16,6 +16,8 @@ class WhenPerformingSync_BeforeImageDownload: XCTestCase {
         let progress = context.refreshLocalStore()
         
         XCTAssertTrue(progress.isIndeterminate)
+        XCTAssertEqual(progress.totalUnitCount, -1)
+        XCTAssertEqual(progress.completedUnitCount, -1)
     }
     
 }
