@@ -12,7 +12,7 @@ protocol SplashScene: class {
 
     var delegate: SplashSceneDelegate? { get set }
 
-    func showProgress(_ progress: Float)
+    func showProgress(_ progress: Float, progressDescription: String)
 
 }
 

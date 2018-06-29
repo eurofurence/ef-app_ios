@@ -18,6 +18,6 @@ protocol PreloadInteractorDelegate {
 
     func preloadInteractorDidFailToPreload()
     func preloadInteractorDidFinishPreloading()
-    func preloadInteractorDidProgress(currentUnitCount: Int, totalUnitCount: Int)
+    func preloadInteractorDidProgress(currentUnitCount: Int, totalUnitCount: Int, localizedDescription: String)
 
 }

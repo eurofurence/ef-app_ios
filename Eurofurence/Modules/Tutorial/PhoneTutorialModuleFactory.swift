@@ -33,7 +33,7 @@ struct PhoneTutorialModuleFactory: TutorialModuleProviding {
 
                     }
 
-                    func showProgress(_ progress: Float) {
+                    func showProgress(_ progress: Float, progressDescription: String) {
 
                     }
                 }

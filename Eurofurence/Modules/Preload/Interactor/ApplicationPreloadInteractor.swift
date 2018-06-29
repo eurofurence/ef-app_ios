@@ -31,7 +31,11 @@ class ApplicationPreloadInteractor: PreloadInteractor {
         var totalUnitCount = 0
         var completedUnitCount = 0
 
-        let updateProgress = { delegate.preloadInteractorDidProgress(currentUnitCount: completedUnitCount, totalUnitCount: totalUnitCount) }
+        let updateProgress = {
+            delegate.preloadInteractorDidProgress(currentUnitCount: completedUnitCount,
+                                                  totalUnitCount: totalUnitCount,
+                                                  localizedDescription: progress.localizedDescription ?? "")
+        }
 
         observations.append(progress.observe(\.totalUnitCount, options: [.new]) { (_, change) in
             if let value = change.newValue {

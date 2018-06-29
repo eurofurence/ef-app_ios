@@ -22,9 +22,11 @@ class CapturingPreloadInteractorDelegate: PreloadInteractorDelegate {
     
     private(set) var capturedProgressCurrentUnitCount: Int?
     private(set) var capturedProgressTotalUnitCount: Int?
-    func preloadInteractorDidProgress(currentUnitCount: Int, totalUnitCount: Int) {
+    private(set) var capturedProgressLocalizedDescription: String?
+    func preloadInteractorDidProgress(currentUnitCount: Int, totalUnitCount: Int, localizedDescription: String) {
         capturedProgressCurrentUnitCount = currentUnitCount
         capturedProgressTotalUnitCount = totalUnitCount
+        capturedProgressLocalizedDescription = localizedDescription
     }
     
 }

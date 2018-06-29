@@ -23,8 +23,10 @@ class CapturingSplashScene: UIViewController, SplashScene {
     var delegate: SplashSceneDelegate?
     
     private(set) var capturedProgress: Float?
-    func showProgress(_ progress: Float) {
+    private(set) var capturedProgressDescription: String?
+    func showProgress(_ progress: Float, progressDescription: String) {
         capturedProgress = progress
+        capturedProgressDescription = progressDescription
     }
     
     func notifySceneWillAppear() {

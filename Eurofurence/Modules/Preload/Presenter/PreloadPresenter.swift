@@ -42,9 +42,9 @@ struct PreloadPresenter: SplashSceneDelegate, PreloadInteractorDelegate {
         delegate.preloadModuleDidFinishPreloading()
     }
 
-    func preloadInteractorDidProgress(currentUnitCount: Int, totalUnitCount: Int) {
+    func preloadInteractorDidProgress(currentUnitCount: Int, totalUnitCount: Int, localizedDescription: String) {
         let fractionalProgress = Float(currentUnitCount) / Float(totalUnitCount)
-        preloadScene.showProgress(fractionalProgress)
+        preloadScene.showProgress(fractionalProgress, progressDescription: localizedDescription)
     }
 
     private func beginPreloading() {

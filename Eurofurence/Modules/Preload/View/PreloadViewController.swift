@@ -13,6 +13,7 @@ class PreloadViewController: UIViewController, SplashScene {
     // MARK: IBOutlets
 
     @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var progressDescriptionLabel: UILabel!
 
     // MARK: Overrides
 
@@ -22,6 +23,7 @@ class PreloadViewController: UIViewController, SplashScene {
         view.backgroundColor = .pantone330U
         progressBar.trackTintColor = .pantone330U_45
         progressBar.progressTintColor = .white
+        progressDescriptionLabel.textColor = .white
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -33,8 +35,9 @@ class PreloadViewController: UIViewController, SplashScene {
 
     var delegate: SplashSceneDelegate?
 
-    func showProgress(_ progress: Float) {
+    func showProgress(_ progress: Float, progressDescription: String) {
         progressBar.setProgress(progress, animated: true)
+        progressDescriptionLabel.text = progressDescription
     }
 
 }

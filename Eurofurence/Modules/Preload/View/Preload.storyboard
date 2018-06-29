@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,21 +23,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="iFX-9U-QZz">
-                                <rect key="frame" x="32" y="405" width="311" height="2"/>
-                            </progressView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="HeY-F0-OwW">
+                                <rect key="frame" x="12" y="391.33333333333331" width="351" height="30.333333333333314"/>
+                                <subviews>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="iFX-9U-QZz">
+                                        <rect key="frame" x="0.0" y="0.0" width="351" height="2"/>
+                                    </progressView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMF-8F-eQb">
+                                        <rect key="frame" x="153.66666666666666" y="9.9999999999999982" width="43.666666666666657" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="iFX-9U-QZz" secondAttribute="trailing" id="tW1-OG-e4f"/>
+                                    <constraint firstItem="iFX-9U-QZz" firstAttribute="leading" secondItem="HeY-F0-OwW" secondAttribute="leading" id="v7c-Lk-nWH"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="iFX-9U-QZz" firstAttribute="centerY" secondItem="wKs-8b-dDh" secondAttribute="centerY" id="DnZ-Sf-yrJ"/>
-                            <constraint firstItem="iFX-9U-QZz" firstAttribute="leading" secondItem="YSY-xI-SRW" secondAttribute="leading" constant="32" id="UqV-NX-chK"/>
-                            <constraint firstItem="YSY-xI-SRW" firstAttribute="trailing" secondItem="iFX-9U-QZz" secondAttribute="trailing" constant="32" id="dIQ-Xl-8Jk"/>
+                            <constraint firstItem="HeY-F0-OwW" firstAttribute="leading" secondItem="YSY-xI-SRW" secondAttribute="leading" constant="12" id="66Z-QF-GZl"/>
+                            <constraint firstItem="YSY-xI-SRW" firstAttribute="trailing" secondItem="HeY-F0-OwW" secondAttribute="trailing" constant="12" id="EQN-gN-BN3"/>
+                            <constraint firstItem="HeY-F0-OwW" firstAttribute="centerY" secondItem="wKs-8b-dDh" secondAttribute="centerY" id="x00-rg-FUz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YSY-xI-SRW"/>
                     </view>
                     <navigationItem key="navigationItem" id="z7a-p3-QXn"/>
                     <connections>
                         <outlet property="progressBar" destination="iFX-9U-QZz" id="e99-hS-cmw"/>
+                        <outlet property="progressDescriptionLabel" destination="SMF-8F-eQb" id="I2T-Eb-kap"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFC-VO-sYX" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -270,7 +270,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             imageIdentifiers.append(contentsOf: mapImageIdentifiers)
             let nonOptionalImageIdentifiers = imageIdentifiers.compactMap({ $0 })
             progress.completedUnitCount = 0
-            progress.totalUnitCount = Int64(imageIdentifiers.count)
+            progress.totalUnitCount = Int64(nonOptionalImageIdentifiers.count)
 
             self.imageDownloader.downloadImages(identifiers: nonOptionalImageIdentifiers, parentProgress: progress) {
                 self.eventBus.post(DomainEvent.LatestDataFetchedEvent(response: response))

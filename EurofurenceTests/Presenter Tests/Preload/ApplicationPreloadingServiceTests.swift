@@ -71,6 +71,7 @@ class ApplicationPreloadingServiceTests: XCTestCase {
         
         XCTAssertEqual(currentUnitCount, delegate.capturedProgressCurrentUnitCount)
         XCTAssertEqual(totalUnitCount, delegate.capturedProgressTotalUnitCount)
+        XCTAssertNotNil(delegate.capturedProgressLocalizedDescription)
     }
     
 }

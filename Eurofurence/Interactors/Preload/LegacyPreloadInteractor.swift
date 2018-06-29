@@ -55,7 +55,7 @@ class LegacyPreloadInteractor: PreloadInteractor,
     }
 
     private func notifyDelegatesOfProgress(_ progress: Progress) {
-        delegates.forEach({ $0.preloadInteractorDidProgress(currentUnitCount: Int(progress.completedUnitCount), totalUnitCount: Int(progress.totalUnitCount)) })
+        delegates.forEach({ $0.preloadInteractorDidProgress(currentUnitCount: Int(progress.completedUnitCount), totalUnitCount: Int(progress.totalUnitCount), localizedDescription: "") })
     }
 
     private func notifyFinishedAndClearDelegates() {
