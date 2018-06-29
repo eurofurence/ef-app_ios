@@ -187,4 +187,9 @@ public extension String {
         return localizedStringWithFormat(onlyPresentOnSpecificDaysFormat, days.joined(separator: ", "))
     }
 
+    // MARK: Quips
+
+    public static let solvingPNP = NSLocalizedString("SolvingPEqualsNP",
+                                                     comment: "Quip shown when loading referring to the P=NP problem")
+
 }

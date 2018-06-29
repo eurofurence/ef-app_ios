@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,40 +20,42 @@
                         <viewControllerLayoutGuide type="bottom" id="82D-DE-LpW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wKs-8b-dDh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="HeY-F0-OwW">
-                                <rect key="frame" x="12" y="391.33333333333331" width="351" height="30.333333333333314"/>
-                                <subviews>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="iFX-9U-QZz">
-                                        <rect key="frame" x="0.0" y="0.0" width="351" height="2"/>
-                                    </progressView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMF-8F-eQb">
-                                        <rect key="frame" x="153.66666666666666" y="9.9999999999999982" width="43.666666666666657" height="20.333333333333329"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="iFX-9U-QZz" secondAttribute="trailing" id="tW1-OG-e4f"/>
-                                    <constraint firstItem="iFX-9U-QZz" firstAttribute="leading" secondItem="HeY-F0-OwW" secondAttribute="leading" id="v7c-Lk-nWH"/>
-                                </constraints>
-                            </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="JdN-KQ-26A">
+                                <rect key="frame" x="169" y="249.5" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMF-8F-eQb">
+                                <rect key="frame" x="14" y="323.5" width="347" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RmD-8C-EqR">
+                                <rect key="frame" x="14" y="386.5" width="347" height="18"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="HeY-F0-OwW" firstAttribute="leading" secondItem="YSY-xI-SRW" secondAttribute="leading" constant="12" id="66Z-QF-GZl"/>
-                            <constraint firstItem="YSY-xI-SRW" firstAttribute="trailing" secondItem="HeY-F0-OwW" secondAttribute="trailing" constant="12" id="EQN-gN-BN3"/>
-                            <constraint firstItem="HeY-F0-OwW" firstAttribute="centerY" secondItem="wKs-8b-dDh" secondAttribute="centerY" id="x00-rg-FUz"/>
+                            <constraint firstItem="SMF-8F-eQb" firstAttribute="centerY" secondItem="wKs-8b-dDh" secondAttribute="centerY" id="FbC-pC-tLp"/>
+                            <constraint firstItem="RmD-8C-EqR" firstAttribute="top" secondItem="SMF-8F-eQb" secondAttribute="bottom" multiplier="1.1" constant="8" symbolic="YES" id="Kh1-KQ-Jlh"/>
+                            <constraint firstItem="SMF-8F-eQb" firstAttribute="top" secondItem="JdN-KQ-26A" secondAttribute="bottom" multiplier="1.1" constant="8" symbolic="YES" id="LMg-3g-3y1"/>
+                            <constraint firstItem="RmD-8C-EqR" firstAttribute="leading" secondItem="YSY-xI-SRW" secondAttribute="leading" constant="14" id="RPW-7E-4zR"/>
+                            <constraint firstItem="YSY-xI-SRW" firstAttribute="trailing" secondItem="RmD-8C-EqR" secondAttribute="trailing" constant="14" id="S10-hg-TE9"/>
+                            <constraint firstItem="JdN-KQ-26A" firstAttribute="centerX" secondItem="YSY-xI-SRW" secondAttribute="centerX" id="Twk-3t-Hgq"/>
+                            <constraint firstItem="SMF-8F-eQb" firstAttribute="leading" secondItem="YSY-xI-SRW" secondAttribute="leading" constant="14" id="Uhx-3N-rep"/>
+                            <constraint firstItem="YSY-xI-SRW" firstAttribute="trailing" secondItem="SMF-8F-eQb" secondAttribute="trailing" constant="14" id="oHT-eo-uvk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YSY-xI-SRW"/>
                     </view>
                     <navigationItem key="navigationItem" id="z7a-p3-QXn"/>
                     <connections>
-                        <outlet property="progressBar" destination="iFX-9U-QZz" id="e99-hS-cmw"/>
                         <outlet property="progressDescriptionLabel" destination="SMF-8F-eQb" id="I2T-Eb-kap"/>
+                        <outlet property="randomQuipLabel" destination="RmD-8C-EqR" id="TYa-Th-8Ax"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFC-VO-sYX" userLabel="First Responder" sceneMemberID="firstResponder"/>
