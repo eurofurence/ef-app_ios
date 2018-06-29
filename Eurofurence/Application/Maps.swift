@@ -42,8 +42,8 @@ class Maps {
         self.imageRepository = imageRepository
         eventBus.subscribe(consumer: RefreshMapsAfterSync(handler: updateModels))
 
-        if let maps = dataStore.getSavedMaps() {
-            updateModels(maps, roomServerModels: [], dealerServerModels: dealerServerModels)
+        if let maps = dataStore.getSavedMaps(), let dealers = dataStore.getSavedDealers() {
+            updateModels(maps, roomServerModels: [], dealerServerModels: dealers)
         }
     }
 
