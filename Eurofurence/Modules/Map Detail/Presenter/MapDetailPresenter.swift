@@ -13,12 +13,17 @@ class MapDetailPresenter: MapDetailSceneDelegate, MapContentVisitor {
     private let scene: MapDetailScene
     private let interactor: MapDetailInteractor
     private let identifier: Map2.Identifier
+    private let delegate: MapDetailModuleDelegate
     private var viewModel: MapDetailViewModel?
 
-    init(scene: MapDetailScene, interactor: MapDetailInteractor, identifier: Map2.Identifier) {
+    init(scene: MapDetailScene,
+         interactor: MapDetailInteractor,
+         identifier: Map2.Identifier,
+         delegate: MapDetailModuleDelegate) {
         self.scene = scene
         self.interactor = interactor
         self.identifier = identifier
+        self.delegate = delegate
 
         scene.setDelegate(self)
     }
@@ -44,6 +49,10 @@ class MapDetailPresenter: MapDetailSceneDelegate, MapContentVisitor {
 
     func visit(_ content: MapInformationContextualContent) {
         scene.show(contextualContent: content)
+    }
+
+    func visit(_ dealer: Dealer2.Identifier) {
+        delegate.mapDetailModuleDidSelectDealer(dealer)
     }
 
 }

@@ -21,4 +21,8 @@ class CapturingMapContentVisitor: MapContentVisitor {
         capturedContextualContent = content
     }
     
+    func visit(_ dealer: Dealer2.Identifier) {
+        
+    }
+    
 }

@@ -41,7 +41,7 @@ class StubMapDetailModuleProviding: MapDetailModuleProviding {
     
     let stubInterface = UIViewController()
     private(set) var capturedModel: Map2.Identifier?
-    func makeMapDetailModule(for map: Map2.Identifier) -> UIViewController {
+    func makeMapDetailModule(for map: Map2.Identifier, delegate: MapDetailModuleDelegate) -> UIViewController {
         capturedModel = map
         return stubInterface
     }

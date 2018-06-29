@@ -13,9 +13,9 @@ struct MapDetailModule: MapDetailModuleProviding {
     var sceneFactory: MapDetailSceneFactory
     var interactor: MapDetailInteractor
 
-    func makeMapDetailModule(for map: Map2.Identifier) -> UIViewController {
+    func makeMapDetailModule(for map: Map2.Identifier, delegate: MapDetailModuleDelegate) -> UIViewController {
         let scene = sceneFactory.makeMapDetailScene()
-        _ = MapDetailPresenter(scene: scene, interactor: interactor, identifier: map)
+        _ = MapDetailPresenter(scene: scene, interactor: interactor, identifier: map, delegate: delegate)
 
         return scene
     }

@@ -10,6 +10,6 @@ import UIKit
 
 protocol MapDetailModuleProviding {
 
-    func makeMapDetailModule(for map: Map2.Identifier) -> UIViewController
+    func makeMapDetailModule(for map: Map2.Identifier, delegate: MapDetailModuleDelegate) -> UIViewController
 
 }

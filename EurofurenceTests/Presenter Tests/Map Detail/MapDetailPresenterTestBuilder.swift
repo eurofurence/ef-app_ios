@@ -9,11 +9,21 @@
 @testable import Eurofurence
 import UIKit
 
+class CapturingMapDetailModuleDelegate: MapDetailModuleDelegate {
+    
+    private(set) var capturedDealerToShow: Dealer2.Identifier?
+    func mapDetailModuleDidSelectDealer(_ identifier: Dealer2.Identifier) {
+        capturedDealerToShow = identifier
+    }
+    
+}
+
 class MapDetailPresenterTestBuilder {
     
     struct Context {
         var scene: CapturingMapDetailScene
         var producedViewController: UIViewController
+        var delegate: CapturingMapDetailModuleDelegate
     }
     
     private var interactor: MapDetailInteractor
@@ -30,13 +40,14 @@ class MapDetailPresenterTestBuilder {
     
     func build(for identifier: Map2.Identifier = .random) -> Context {
         let sceneFactory = StubMapDetailSceneFactory()
+        let delegate = CapturingMapDetailModuleDelegate()
         let module = MapDetailModuleBuilder()
             .with(sceneFactory)
             .with(interactor)
             .build()
-            .makeMapDetailModule(for: identifier)
+            .makeMapDetailModule(for: identifier, delegate: delegate)
         
-        return Context(scene: sceneFactory.scene, producedViewController: module)
+        return Context(scene: sceneFactory.scene, producedViewController: module, delegate: delegate)
     }
     
 }

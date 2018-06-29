@@ -389,6 +389,8 @@
 		CA250DE620D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA250DE520D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift */; };
 		CA2547C11FEB1B2A0023F2CB /* WhenRefreshingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2547C01FEB1B2A0023F2CB /* WhenRefreshingMessages.swift */; };
 		CA25A7F720E62E0400875891 /* WhenFetchingMapContents_TappingWithinRadiusOfMultipleEntries_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25A7F620E62E0400875891 /* WhenFetchingMapContents_TappingWithinRadiusOfMultipleEntries_ApplicationShould.swift */; };
+		CA25A7F920E63E0E00875891 /* WhenSceneTapsMapDetail_ThatRepresentsDealer_MapsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25A7F820E63E0E00875891 /* WhenSceneTapsMapDetail_ThatRepresentsDealer_MapsPresenterShould.swift */; };
+		CA25A7FB20E63E9E00875891 /* MapDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25A7FA20E63E9E00875891 /* MapDetailModuleDelegate.swift */; };
 		CA27618220DF932C000E52AC /* AspectRatioConstrainedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */; };
 		CA27618420DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618320DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift */; };
 		CA27618620DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */; };
@@ -1533,6 +1535,8 @@
 		CA250DE520D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortFormDayAndTimeFormatter.swift; sourceTree = "<group>"; };
 		CA2547C01FEB1B2A0023F2CB /* WhenRefreshingMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRefreshingMessages.swift; sourceTree = "<group>"; };
 		CA25A7F620E62E0400875891 /* WhenFetchingMapContents_TappingWithinRadiusOfMultipleEntries_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingMapContents_TappingWithinRadiusOfMultipleEntries_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA25A7F820E63E0E00875891 /* WhenSceneTapsMapDetail_ThatRepresentsDealer_MapsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneTapsMapDetail_ThatRepresentsDealer_MapsPresenterShould.swift; sourceTree = "<group>"; };
+		CA25A7FA20E63E9E00875891 /* MapDetailModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailModuleDelegate.swift; sourceTree = "<group>"; };
 		CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioConstrainedImageView.swift; sourceTree = "<group>"; };
 		CA27618320DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -4180,6 +4184,7 @@
 			children = (
 				CA6A8DC520E41513007536CD /* MapDetailModuleProviding.swift */,
 				CA6A8DC920E415EF007536CD /* MapDetailModule.swift */,
+				CA25A7FA20E63E9E00875891 /* MapDetailModuleDelegate.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -4202,6 +4207,7 @@
 				CA6A8DCD20E41735007536CD /* WhenBuildingMapDetailModule.swift */,
 				CA6A8DE320E41CC8007536CD /* WhenMapDetailSceneLoads_MapsPresenterShould.swift */,
 				CA6A8E0020E50008007536CD /* WhenSceneTapsMap_ThatRevealsAnotherPartOfTheMap_MapDetailPresenterShould.swift */,
+				CA25A7F820E63E0E00875891 /* WhenSceneTapsMapDetail_ThatRepresentsDealer_MapsPresenterShould.swift */,
 				CA6A8DF620E42DC0007536CD /* WhenSceneTapsMapPosition_MapsDetailPresenterShould.swift */,
 				CA6A8E0220E5048A007536CD /* WhenSceneTapsMapPosition_ThatProvidesSimpleContextualDetail_MapsPresenterShould.swift */,
 			);
@@ -6568,6 +6574,7 @@
 				CA36A4AE20D9895600EE6537 /* APIDealer.swift in Sources */,
 				CA30EAD01F27D8620053DBF6 /* MessageTableViewCell.swift in Sources */,
 				CAD3BDC92061382000C91E6E /* URLOpener.swift in Sources */,
+				CA25A7FB20E63E9E00875891 /* MapDetailModuleDelegate.swift in Sources */,
 				CA27619A20E01D0F000E52AC /* CollectThemAllModuleProviding.swift in Sources */,
 				D6F3D0434C71907BD410190E /* ImageServiceProtocol.swift in Sources */,
 				9A7FDA121F33B7630050C325 /* UserDefaultsTabBarOrderProvider.swift in Sources */,
@@ -6801,6 +6808,7 @@
 				CA2761B820E028F8000E52AC /* WhenCollectThemAllSceneLoads_PresenterShould.swift in Sources */,
 				CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */,
 				CA52C68320D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift in Sources */,
+				CA25A7F920E63E0E00875891 /* WhenSceneTapsMapDetail_ThatRepresentsDealer_MapsPresenterShould.swift in Sources */,
 				CA637572208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift in Sources */,
 				CA1B6F3520DC171200ADF414 /* WhenBindingDealerSummaryWithMissingAttributes_DealerDetailPresenterShould.swift in Sources */,
 				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,

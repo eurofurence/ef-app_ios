@@ -19,7 +19,8 @@ class ApplicationDirector: ExternalContentHandler,
                            DealersModuleDelegate,
                            KnowledgeListModuleDelegate,
                            KnowledgeDetailModuleDelegate,
-                           MapsModuleDelegate {
+                           MapsModuleDelegate,
+                           MapDetailModuleDelegate {
 
     private class DissolveTransitionAnimationProviding: NSObject, UINavigationControllerDelegate {
 
@@ -261,8 +262,14 @@ class ApplicationDirector: ExternalContentHandler,
     // MARK: MapsModuleDelegate
 
     func mapsModuleDidSelectMap(identifier: Map2.Identifier) {
-        let detailModule = mapDetailModuleProviding.makeMapDetailModule(for: identifier)
+        let detailModule = mapDetailModuleProviding.makeMapDetailModule(for: identifier, delegate: self)
         mapsModule?.navigationController?.pushViewController(detailModule, animated: animate)
+    }
+
+    // MARK: MapDetailModuleDelegate
+
+    func mapDetailModuleDidSelectDealer(_ identifier: Dealer2.Identifier) {
+
     }
 
     // MARK: Private
