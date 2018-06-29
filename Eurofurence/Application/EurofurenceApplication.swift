@@ -118,8 +118,9 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         maps = Maps(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository)
     }
 
+    private var refreshObservers = [RefreshServiceObserver]()
     func add(_ observer: RefreshServiceObserver) {
-
+        refreshObservers.append(observer)
     }
 
     func performRefresh() {
@@ -253,6 +254,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             case failedToLoadResponse
         }
 
+        refreshObservers.forEach({ $0.refreshServiceDidBeginRefreshing() })
+
         let longRunningTask = longRunningTaskManager.beginLongRunningTask()
 
         let progress = Progress()
@@ -262,6 +265,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         let lastSyncTime = dataStore.getLastRefreshDate()
         syncAPI.fetchLatestData(lastSyncTime: lastSyncTime) { (response) in
             guard let response = response else {
+                self.refreshObservers.forEach({ $0.refreshServiceDidFinishRefreshing() })
                 completionHandler(SyncError.failedToLoadResponse)
                 return
             }
@@ -303,6 +307,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
                 self.privateMessagesController.fetchPrivateMessages { (_) in
                     completionHandler(nil)
+                    self.refreshObservers.forEach({ $0.refreshServiceDidFinishRefreshing() })
                     self.longRunningTaskManager.finishLongRunningTask(token: longRunningTask)
                 }
             }
