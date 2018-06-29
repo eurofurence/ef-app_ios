@@ -40,6 +40,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
     private let collectThemAllRequestFactory: CollectThemAllRequestFactory
     private let credentialStore: CredentialStore
+    private let longRunningTaskManager: LongRunningTaskManager
 
     private let imageCache: ImagesCache
     private let imageDownloader: ImageDownloader
@@ -70,7 +71,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
          imageRepository: ImageRepository,
          significantTimeChangeAdapter: SignificantTimeChangeAdapter,
          urlOpener: URLOpener,
-         collectThemAllRequestFactory: CollectThemAllRequestFactory) {
+         collectThemAllRequestFactory: CollectThemAllRequestFactory,
+         longRunningTaskManager: LongRunningTaskManager) {
         self.userPreferences = userPreferences
         self.dataStore = dataStore
         self.pushPermissionsRequester = pushPermissionsRequester
@@ -81,6 +83,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         self.timeIntervalForUpcomingEventsSinceNow = timeIntervalForUpcomingEventsSinceNow
         self.collectThemAllRequestFactory = collectThemAllRequestFactory
         self.credentialStore = credentialStore
+        self.longRunningTaskManager = longRunningTaskManager
 
         if pushPermissionsStateProviding.requestedPushNotificationAuthorization {
             pushPermissionsRequester.requestPushPermissions()
@@ -241,6 +244,9 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         enum SyncError: Error {
             case failedToLoadResponse
         }
+
+        let id = longRunningTaskManager.beginLongRunningTask()
+        longRunningTaskManager.finishLongRunningTask(token: id)
 
         let progress = Progress()
         progress.totalUnitCount = -1

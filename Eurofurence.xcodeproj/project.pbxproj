@@ -432,6 +432,9 @@
 		CA2761D220E03B29000E52AC /* CollectThemAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761D120E03B29000E52AC /* CollectThemAll.swift */; };
 		CA2761D420E03B88000E52AC /* LoggedOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761D320E03B88000E52AC /* LoggedOut.swift */; };
 		CA281B641F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */; };
+		CA283A5820E6E23200F7D195 /* LongRunningTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A5720E6E23200F7D195 /* LongRunningTaskManager.swift */; };
+		CA283A5A20E6E24300F7D195 /* CocoaTouchLongRunningTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A5920E6E24300F7D195 /* CocoaTouchLongRunningTaskManager.swift */; };
+		CA283A5C20E6E40500F7D195 /* BeforeSyncInitiated_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A5B20E6E40500F7D195 /* BeforeSyncInitiated_ApplicationShould.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1582,6 +1585,9 @@
 		CA2761D120E03B29000E52AC /* CollectThemAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectThemAll.swift; sourceTree = "<group>"; };
 		CA2761D320E03B88000E52AC /* LoggedOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOut.swift; sourceTree = "<group>"; };
 		CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationCoordinator.swift; sourceTree = "<group>"; };
+		CA283A5720E6E23200F7D195 /* LongRunningTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongRunningTaskManager.swift; sourceTree = "<group>"; };
+		CA283A5920E6E24300F7D195 /* CocoaTouchLongRunningTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaTouchLongRunningTaskManager.swift; sourceTree = "<group>"; };
+		CA283A5B20E6E40500F7D195 /* BeforeSyncInitiated_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeSyncInitiated_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -4907,6 +4913,8 @@
 				CA36A44820D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift */,
 				CA36A44A20D771B500EE6537 /* HapticEngine.swift */,
 				CA36A44E20D772F300EE6537 /* CocoaTouchHapticEngine.swift */,
+				CA283A5720E6E23200F7D195 /* LongRunningTaskManager.swift */,
+				CA283A5920E6E24300F7D195 /* CocoaTouchLongRunningTaskManager.swift */,
 			);
 			path = "System Services";
 			sourceTree = "<group>";
@@ -5501,6 +5509,7 @@
 		CAF597A020458D0100089BE8 /* Sync */ = {
 			isa = PBXGroup;
 			children = (
+				CA283A5B20E6E40500F7D195 /* BeforeSyncInitiated_ApplicationShould.swift */,
 				CABA83F120CE332500DD0795 /* WhenPerformingSubsequentSync_ApplicationShould.swift */,
 				CACF1EC120B6B92F00D904B5 /* WhenPerformingSync_BeforeImageDownload.swift */,
 				CACF1EC320B6B9B500D904B5 /* WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift */,
@@ -6160,6 +6169,7 @@
 				CA73AEEB201A0896004E77BF /* KnowledgeListSceneFactory.swift in Sources */,
 				CA162EB820AA2FB9004AFED6 /* APIEvent.swift in Sources */,
 				CAF9A9551F55F9DB00628833 /* LoginPromptTableViewCell.swift in Sources */,
+				CA283A5820E6E23200F7D195 /* LongRunningTaskManager.swift in Sources */,
 				78D7EEB81F196B30005372A9 /* BuildConfigurationProviding.swift in Sources */,
 				CA27618220DF932C000E52AC /* AspectRatioConstrainedImageView.swift in Sources */,
 				CA6375B2208E02E300536BE2 /* DealersScene.swift in Sources */,
@@ -6598,6 +6608,7 @@
 				78F5559B1F10D65900BDA7D4 /* SplashViewController.swift in Sources */,
 				D6F3DCE06EF6B706F0A3EF09 /* TimeService.swift in Sources */,
 				CACF1E6F20B1CDC300D904B5 /* EventDetailViewModel.swift in Sources */,
+				CA283A5A20E6E24300F7D195 /* CocoaTouchLongRunningTaskManager.swift in Sources */,
 				CABA439F1FD578E1009CB5B0 /* NewsModuleBuilder.swift in Sources */,
 				CA6EC4892051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift in Sources */,
 				CA6A8DA020E2CAB7007536CD /* Map2.swift in Sources */,
@@ -6786,6 +6797,7 @@
 				CAD780521F1E2D2E002A8333 /* CapturingCredentialStore.swift in Sources */,
 				CA89CBBA2084CA8A00570D54 /* StubNewsViewModel.swift in Sources */,
 				CA1B6F2B20DB8A9C00ADF414 /* BeforeDealerDetailSceneLoads_DealerDetailPresenterShould.swift in Sources */,
+				CA283A5C20E6E40500F7D195 /* BeforeSyncInitiated_ApplicationShould.swift in Sources */,
 				CA36A45120D773B300EE6537 /* WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould.swift in Sources */,
 				CA804DDA1F20D2F500E07A4A /* V2LoginAPITests.swift in Sources */,
 				CA6EC4842051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift in Sources */,

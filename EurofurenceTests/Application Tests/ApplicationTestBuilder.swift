@@ -113,6 +113,22 @@ extension CapturingSignificantTimeChangeAdapter {
     
 }
 
+class FakeLongRunningTaskManager: LongRunningTaskManager {
+    
+    let stubTaskToken = String.random
+    private(set) var didBeginTask = false
+    func beginLongRunningTask() -> AnyHashable {
+        didBeginTask = true
+        return stubTaskToken
+    }
+    
+    private(set) var terminatedLongRunningTaskToken: AnyHashable?
+    func finishLongRunningTask(token: AnyHashable) {
+        terminatedLongRunningTaskToken = token
+    }
+    
+}
+
 class ApplicationTestBuilder {
     
     struct Context {
@@ -131,6 +147,7 @@ class ApplicationTestBuilder {
         var imageRepository: CapturingImageRepository
         var significantTimeChangeAdapter: CapturingSignificantTimeChangeAdapter
         var urlOpener: CapturingURLOpener
+        var longRunningTaskManager: FakeLongRunningTaskManager
         
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
@@ -337,6 +354,7 @@ class ApplicationTestBuilder {
         let conventionStartDateRepository = StubConventionStartDateRepository()
         let significantTimeChangeEventSource = FakeSignificantTimeChangeEventSource()
         let significantTimeChangeAdapter = CapturingSignificantTimeChangeAdapter()
+        let longRunningTaskManager = FakeLongRunningTaskManager()
         let app = EurofurenceApplicationBuilder()
             .with(stubClock)
             .with(capturingCredentialStore)
@@ -357,6 +375,7 @@ class ApplicationTestBuilder {
             .with(significantTimeChangeAdapter)
             .with(urlOpener)
             .with(collectThemAllRequestFactory)
+            .with(longRunningTaskManager)
             .build()
         
         return Context(application: app,
@@ -373,7 +392,8 @@ class ApplicationTestBuilder {
                        imageAPI: imageAPI,
                        imageRepository: imageRepository,
                        significantTimeChangeAdapter: significantTimeChangeAdapter,
-                       urlOpener: urlOpener)
+                       urlOpener: urlOpener,
+                       longRunningTaskManager: longRunningTaskManager)
     }
     
 }

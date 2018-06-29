@@ -29,6 +29,7 @@ class EurofurenceApplicationBuilder {
     private var significantTimeChangeAdapter: SignificantTimeChangeAdapter
     private var urlOpener: URLOpener
     private var collectThemAllRequestFactory: CollectThemAllRequestFactory
+    private var longRunningTaskManager: LongRunningTaskManager
 
     init() {
         userPreferences = UserDefaultsPreferences()
@@ -60,6 +61,7 @@ class EurofurenceApplicationBuilder {
         significantTimeChangeAdapter = ApplicationSignificantTimeChangeAdapter()
         urlOpener = AppURLOpener()
         collectThemAllRequestFactory = DefaultCollectThemAllRequestFactory()
+        longRunningTaskManager = CocoaTouchLongRunningTaskManager()
     }
 
     @discardableResult
@@ -176,6 +178,12 @@ class EurofurenceApplicationBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ longRunningTaskManager: LongRunningTaskManager) -> EurofurenceApplicationBuilder {
+        self.longRunningTaskManager = longRunningTaskManager
+        return self
+    }
+
     func build() -> EurofurenceApplicationProtocol {
         return EurofurenceApplication(userPreferences: userPreferences,
                                       dataStore: dataStore,
@@ -195,7 +203,8 @@ class EurofurenceApplicationBuilder {
                                       imageRepository: imageRepository,
                                       significantTimeChangeAdapter: significantTimeChangeAdapter,
                                       urlOpener: urlOpener,
-                                      collectThemAllRequestFactory: collectThemAllRequestFactory)
+                                      collectThemAllRequestFactory: collectThemAllRequestFactory,
+                                      longRunningTaskManager: longRunningTaskManager)
     }
 
 }

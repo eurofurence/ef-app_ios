@@ -20,6 +20,14 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         XCTAssertTrue(invokedWithNilError)
     }
     
+    func testTheLongRunningTaskManagerIsToldToEndTaskBeganAtStartOfSync() {
+        let context = ApplicationTestBuilder().build()
+        context.refreshLocalStore()
+        context.syncAPI.simulateSuccessfulSync(.randomWithoutDeletions)
+        
+        XCTAssertEqual(context.longRunningTaskManager.stubTaskToken, context.longRunningTaskManager.terminatedLongRunningTaskToken)
+    }
+    
     func testTheEventPosterImagesAreSavedIntoTheImageRepository() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         var randomEvent = syncResponse.events.changed.randomElement()
