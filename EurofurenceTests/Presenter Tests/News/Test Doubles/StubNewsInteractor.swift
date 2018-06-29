@@ -16,4 +16,8 @@ struct StubNewsInteractor: NewsInteractor {
         delegate.viewModelDidUpdate(viewModel)
     }
     
+    func refresh() {
+        
+    }
+    
 }

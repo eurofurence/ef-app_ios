@@ -20,4 +20,9 @@ class FakeNewsInteractor: NewsInteractor {
         delegate.viewModelDidUpdate(viewModel)
     }
     
+    private(set) var didRefresh = false
+    func refresh() {
+        didRefresh = true
+    }
+    
 }

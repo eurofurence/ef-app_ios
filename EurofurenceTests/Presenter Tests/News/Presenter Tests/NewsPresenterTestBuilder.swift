@@ -59,6 +59,10 @@ extension NewsPresenterTestBuilder.Context {
         newsScene.delegate?.newsSceneDidLoad()
     }
     
+    func simulateNewsSceneDidPerformRefreshAction() {
+        newsScene.delegate?.newsSceneDidPerformRefreshAction()
+    }
+    
     @discardableResult
     func bindSceneComponent(at indexPath: IndexPath) -> Any? {
         return newsScene.bindComponent(at: indexPath)

@@ -81,6 +81,10 @@ class DefaultNewsInteractor: NewsInteractor,
         regenerateViewModel()
     }
 
+    func refresh() {
+
+    }
+
     // MARK: AnnouncementsServiceObserver
 
     func eurofurenceApplicationDidChangeAnnouncements(_ announcements: [Announcement2]) {

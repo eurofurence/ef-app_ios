@@ -9,6 +9,7 @@
 protocol NewsInteractor {
 
     func subscribeViewModelUpdates(_ delegate: NewsInteractorDelegate)
+    func refresh()
 
 }
 

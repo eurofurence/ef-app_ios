@@ -154,6 +154,10 @@ class NewsTableViewController: UITableViewController,
             func subscribeViewModelUpdates(_ delegate: NewsInteractorDelegate) {
 
             }
+
+            func refresh() {
+
+            }
         }
 
         presenter = NewsPresenter(delegate: DummyNewsModuleDelegate(),

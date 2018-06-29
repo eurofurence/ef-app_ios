@@ -13,6 +13,7 @@ class NewsViewController: UIViewController, NewsScene {
     // MARK: IBOutlets
 
     @IBOutlet weak var tableView: UITableView!
+    private let refreshControl = UIRefreshControl(frame: .zero)
 
     // MARK: Properties
 
@@ -23,6 +24,8 @@ class NewsViewController: UIViewController, NewsScene {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        refreshControl.addTarget(self, action: #selector(refreshControlDidChangeValue), for: .valueChanged)
+        tableView.refreshControl = refreshControl
         tableView.register(EventTableViewCell.self)
         tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
         delegate?.newsSceneDidLoad()
@@ -45,6 +48,10 @@ class NewsViewController: UIViewController, NewsScene {
     }
 
     // MARK: Private
+
+    @objc private func refreshControlDidChangeValue() {
+        delegate?.newsSceneDidPerformRefreshAction()
+    }
 
     func tableViewDidSelectRow(at indexPath: IndexPath) {
         delegate?.newsSceneDidSelectComponent(at: indexPath)

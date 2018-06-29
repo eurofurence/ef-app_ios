@@ -123,6 +123,10 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
         }
     }
 
+    func newsSceneDidPerformRefreshAction() {
+        newsInteractor.refresh()
+    }
+
     // MARK: NewsInteractorDelegate
 
     func viewModelDidUpdate(_ viewModel: NewsViewModel) {

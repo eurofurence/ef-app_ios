@@ -12,6 +12,7 @@ protocol NewsSceneDelegate {
 
     func newsSceneDidLoad()
     func newsSceneDidSelectComponent(at indexPath: IndexPath)
+    func newsSceneDidPerformRefreshAction()
 
 }
 
