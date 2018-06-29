@@ -34,6 +34,7 @@ struct Map2: Equatable {
         case none
         case location(x: Float, y: Float)
         case room(Room)
+        case dealer(Dealer2.Identifier)
     }
 
     var identifier: Map2.Identifier

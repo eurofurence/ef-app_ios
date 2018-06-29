@@ -28,6 +28,9 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
                     let contextualInfo = MapInformationContextualContent(coordinate: coordinate, content: room.name)
                     visitor.visit(contextualInfo)
 
+                case .dealer(let dealer):
+                    visitor.visit(dealer)
+
                 case .none:
                     break
                 }
