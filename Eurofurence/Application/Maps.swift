@@ -61,12 +61,20 @@ class Maps {
                       atX x: Int,
                       y: Int,
                       completionHandler: @escaping (Map2.Content) -> Void) {
+        var content: Map2.Content = .none
+        defer { completionHandler(content) }
+
         guard let model = serverModels.first(where: { $0.identifier == identifier.rawValue }) else { return }
-        guard let entry = model.entries.first(where: { $0.x == x && $0.y == y }) else { return }
+
+        let tappedWithinEntry: (APIMap.Entry) -> Bool = { (entry) -> Bool in
+            return x < entry.x + entry.tapRadius && y < entry.y + entry.tapRadius
+        }
+
+        guard let entry = model.entries.first(where: tappedWithinEntry) else { return }
         guard let link = entry.links.first else { return }
         guard let room = roomServerModels.first(where: { $0.roomIdentifier == link.target }) else { return }
 
-        completionHandler(.room(Room(name: room.name)))
+        content = .room(Room(name: room.name))
     }
 
     private func updateModels(_ serverModels: [APIMap], roomServerModels: [APIRoom]) {

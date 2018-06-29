@@ -27,6 +27,9 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
                     let coordinate = MapCoordinate(x: x, y: y)
                     let contextualInfo = MapInformationContextualContent(coordinate: coordinate, content: room.name)
                     visitor.visit(contextualInfo)
+
+                case .none:
+                    break
                 }
             }
         }
