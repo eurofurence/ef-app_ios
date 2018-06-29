@@ -137,6 +137,10 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
         newsScene.bind(numberOfItemsPerComponent: itemsPerComponent, using: binder)
     }
 
+    func refreshDidBegin() {
+        newsScene.showRefreshIndicator()
+    }
+
     func refreshDidFinish() {
         newsScene.hideRefreshIndicator()
     }

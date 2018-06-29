@@ -30,4 +30,13 @@ class WhenSceneInstigatesPullToRefresh_NewsPresenterShould: XCTestCase {
         XCTAssertTrue(context.newsScene.didHideRefreshIndicator)
     }
     
+    func testTellTheSceneToShowTheRefreshIndicatorWhenRefreshBegins() {
+        let newsInteractor = FakeNewsInteractor()
+        let context = NewsPresenterTestBuilder().with(newsInteractor).build()
+        context.simulateNewsSceneDidLoad()
+        newsInteractor.simulateRefreshBegan()
+        
+        XCTAssertTrue(context.newsScene.didShowRefreshIndicator)
+    }
+    
 }

@@ -460,6 +460,10 @@ class NewsTableViewController: UITableViewController,
         refreshControl?.endRefreshing()
     }
 
+    func showRefreshIndicator() {
+        refreshControl?.beginRefreshing()
+    }
+
     func showMessagesNavigationAction() {
         showWelcomeUserBanner = true
         reloadUserMessagesBanner()

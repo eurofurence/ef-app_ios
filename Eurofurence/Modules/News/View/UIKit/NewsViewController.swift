@@ -39,6 +39,10 @@ class NewsViewController: UIViewController, NewsScene {
         super.title = title
     }
 
+    func showRefreshIndicator() {
+        refreshControl.beginRefreshing()
+    }
+
     func hideRefreshIndicator() {
         refreshControl.endRefreshing()
     }

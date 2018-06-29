@@ -32,6 +32,10 @@ class FakeNewsInteractor: NewsInteractor {
 
 extension FakeNewsInteractor {
     
+    func simulateRefreshBegan() {
+        delegate?.refreshDidBegin()
+    }
+    
     func simulateRefreshFinished() {
         delegate?.refreshDidFinish()
     }
