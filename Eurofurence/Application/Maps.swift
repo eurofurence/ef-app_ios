@@ -70,7 +70,9 @@ class Maps {
             let tapRadius = entry.tapRadius
             let horizontalDelta = abs(entry.x - x)
             let verticalDelta = abs(entry.y - y)
-            return horizontalDelta < tapRadius && verticalDelta < tapRadius
+            let delta = hypot(Double(horizontalDelta), Double(verticalDelta))
+            
+            return delta < Double(tapRadius)
         }
 
         guard let entry = model.entries.first(where: tappedWithinEntry) else { return }

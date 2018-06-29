@@ -88,5 +88,14 @@ class WhenFetchingMapContentThatRevealsRoom_ApplicationShould: XCTestCase {
         
         XCTAssertEqual(expected, content)
     }
+    
+    func testNotProvideTheRoomWhenOutsideOfTheTapToleranceDiagonally() {
+        let horizontalOffset = x + tapRadius - 1
+        let verticalOffet = y + tapRadius - 1
+        let expected = Map2.Content.none
+        let content = fetchContent(atX: horizontalOffset, y: verticalOffet)
+        
+        XCTAssertEqual(expected, content)
+    }
         
 }
