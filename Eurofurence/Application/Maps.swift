@@ -67,7 +67,10 @@ class Maps {
         guard let model = serverModels.first(where: { $0.identifier == identifier.rawValue }) else { return }
 
         let tappedWithinEntry: (APIMap.Entry) -> Bool = { (entry) -> Bool in
-            return x < entry.x + entry.tapRadius && y < entry.y + entry.tapRadius
+            let tapRadius = entry.tapRadius
+            let horizontalDelta = abs(entry.x - x)
+            let verticalDelta = abs(entry.y - y)
+            return horizontalDelta < tapRadius && verticalDelta < tapRadius
         }
 
         guard let entry = model.entries.first(where: tappedWithinEntry) else { return }
