@@ -38,6 +38,7 @@ class DefaultNewsInteractor: NewsInteractor,
     private var currentUser: User?
     private let dateDistanceCalculator: DateDistanceCalculator
     private let clock: Clock
+    private let refreshService: RefreshService
 
     // MARK: Initialization
 
@@ -50,7 +51,8 @@ class DefaultNewsInteractor: NewsInteractor,
                   relativeTimeIntervalCountdownFormatter: FoundationRelativeTimeIntervalCountdownFormatter.shared,
                   hoursDateFormatter: FoundationHoursDateFormatter.shared,
                   dateDistanceCalculator: FoundationDateDistanceCalculator(),
-                  clock: SystemClock())
+                  clock: SystemClock(),
+                  refreshService: EurofurenceApplication.shared)
     }
 
     init(announcementsService: AnnouncementsService,
@@ -61,11 +63,13 @@ class DefaultNewsInteractor: NewsInteractor,
          relativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCountdownFormatter,
          hoursDateFormatter: HoursDateFormatter,
          dateDistanceCalculator: DateDistanceCalculator,
-         clock: Clock) {
+         clock: Clock,
+         refreshService: RefreshService) {
         self.relativeTimeIntervalCountdownFormatter = relativeTimeIntervalCountdownFormatter
         self.hoursDateFormatter = hoursDateFormatter
         self.dateDistanceCalculator = dateDistanceCalculator
         self.clock = clock
+        self.refreshService = refreshService
 
         announcementsService.add(self)
         authenticationService.add(self)
@@ -82,7 +86,7 @@ class DefaultNewsInteractor: NewsInteractor,
     }
 
     func refresh() {
-
+        refreshService.performRefresh()
     }
 
     // MARK: AnnouncementsServiceObserver

@@ -14,7 +14,8 @@ enum EurofurenceDataStoreState {
     case available
 }
 
-protocol EurofurenceApplicationProtocol: AnnouncementsService,
+protocol EurofurenceApplicationProtocol: RefreshService,
+                                         AnnouncementsService,
                                          AuthenticationService,
                                          EventsService,
                                          DealersService,

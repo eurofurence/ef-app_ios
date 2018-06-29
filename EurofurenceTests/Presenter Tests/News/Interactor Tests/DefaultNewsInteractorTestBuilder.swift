@@ -28,6 +28,15 @@ class FakeHoursDateFormatter: HoursDateFormatter {
     
 }
 
+class CapturingRefreshService: RefreshService {
+    
+    private(set) var toldToRefresh = false
+    func performRefresh() {
+        toldToRefresh = true
+    }
+    
+}
+
 class DefaultNewsInteractorTestBuilder {
     
     struct Context {
@@ -42,6 +51,7 @@ class DefaultNewsInteractorTestBuilder {
         var eventsService: FakeEventsService
         var dateDistanceCalculator: StubDateDistanceCalculator
         var clock: StubClock
+        var refreshService: CapturingRefreshService
     }
     
     private var announcementsService: StubAnnouncementsService
@@ -93,6 +103,7 @@ class DefaultNewsInteractorTestBuilder {
         let clock = StubClock()
         let relativeTimeFormatter = FakeRelativeTimeIntervalCountdownFormatter()
         let hoursDateFormatter = FakeHoursDateFormatter()
+        let refreshService = CapturingRefreshService()
         let interactor = DefaultNewsInteractor(announcementsService: announcementsService,
                                                authenticationService: authenticationService,
                                                privateMessagesService: privateMessagesService,
@@ -101,7 +112,8 @@ class DefaultNewsInteractorTestBuilder {
                                                relativeTimeIntervalCountdownFormatter: relativeTimeFormatter,
                                                hoursDateFormatter: hoursDateFormatter,
                                                dateDistanceCalculator: dateDistanceCalculator,
-                                               clock: clock)
+                                               clock: clock,
+                                               refreshService: refreshService)
         let delegate = CapturingNewsInteractorDelegate()
         
         return Context(interactor: interactor,
@@ -114,7 +126,8 @@ class DefaultNewsInteractorTestBuilder {
                        daysUntilConventionService: daysUntilConventionService,
                        eventsService: eventsService,
                        dateDistanceCalculator: dateDistanceCalculator,
-                       clock: clock)
+                       clock: clock,
+                       refreshService: refreshService)
     }
     
 }

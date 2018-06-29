@@ -118,6 +118,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         maps = Maps(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository)
     }
 
+    func performRefresh() {
+
+    }
+
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
         if dataStore.getLastRefreshDate() == nil {
             completionHandler(.absent)

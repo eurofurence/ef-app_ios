@@ -10,6 +10,10 @@
 import Foundation
 
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
+    func performRefresh() {
+        
+    }
+    
     func fetchContent(for identifier: Map2.Identifier,
                       atX x: Int,
                       y: Int,
