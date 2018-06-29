@@ -265,6 +265,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         let lastSyncTime = dataStore.getLastRefreshDate()
         syncAPI.fetchLatestData(lastSyncTime: lastSyncTime) { (response) in
             guard let response = response else {
+                self.longRunningTaskManager.finishLongRunningTask(token: longRunningTask)
                 self.refreshObservers.forEach({ $0.refreshServiceDidFinishRefreshing() })
                 completionHandler(SyncError.failedToLoadResponse)
                 return

@@ -20,4 +20,12 @@ class WhenPerformingSyncThatFails: XCTestCase {
         XCTAssertNotNil(error)
     }
     
+    func testTheLongRunningTaskManagerIsToldToEndTaskBeganAtStartOfSync() {
+        let context = ApplicationTestBuilder().build()
+        context.refreshLocalStore()
+        context.syncAPI.simulateUnsuccessfulSync()
+        
+        XCTAssertTrue(context.longRunningTaskManager.finishedTask)
+    }
+    
 }
