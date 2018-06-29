@@ -394,6 +394,7 @@
 		CA25A7FD20E6412300875891 /* WhenFetchingMapContents_ThatRevealsDealer_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25A7FC20E6412300875891 /* WhenFetchingMapContents_ThatRevealsDealer_ApplicationShould.swift */; };
 		CA25A7FF20E6426C00875891 /* WhenMapsDetailModuleSelectsDealer_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25A7FE20E6426C00875891 /* WhenMapsDetailModuleSelectsDealer_DirectorShould.swift */; };
 		CA25A80120E6716A00875891 /* WhenFetchingMapContents_ThatRevealsDealer_ContentsSavedInDataStore_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25A80020E6716A00875891 /* WhenFetchingMapContents_ThatRevealsDealer_ContentsSavedInDataStore_ApplicationShould.swift */; };
+		CA25A80320E6730C00875891 /* WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25A80220E6730C00875891 /* WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_ApplicationShould.swift */; };
 		CA27618220DF932C000E52AC /* AspectRatioConstrainedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */; };
 		CA27618420DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618320DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift */; };
 		CA27618620DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */; };
@@ -1543,6 +1544,7 @@
 		CA25A7FC20E6412300875891 /* WhenFetchingMapContents_ThatRevealsDealer_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingMapContents_ThatRevealsDealer_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA25A7FE20E6426C00875891 /* WhenMapsDetailModuleSelectsDealer_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenMapsDetailModuleSelectsDealer_DirectorShould.swift; sourceTree = "<group>"; };
 		CA25A80020E6716A00875891 /* WhenFetchingMapContents_ThatRevealsDealer_ContentsSavedInDataStore_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingMapContents_ThatRevealsDealer_ContentsSavedInDataStore_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA25A80220E6730C00875891 /* WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioConstrainedImageView.swift; sourceTree = "<group>"; };
 		CA27618320DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -4167,6 +4169,7 @@
 				CA25A7F620E62E0400875891 /* WhenFetchingMapContents_TappingWithinRadiusOfMultipleEntries_ApplicationShould.swift */,
 				CA25A7FC20E6412300875891 /* WhenFetchingMapContents_ThatRevealsDealer_ApplicationShould.swift */,
 				CA25A80020E6716A00875891 /* WhenFetchingMapContents_ThatRevealsDealer_ContentsSavedInDataStore_ApplicationShould.swift */,
+				CA25A80220E6730C00875891 /* WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_ApplicationShould.swift */,
 				CA6A8E0820E57795007536CD /* WhenFetchingMapContentThatRevealsRoom_ApplicationShould.swift */,
 				CA6A8DBB20E2DF09007536CD /* WhenFetchingMapImageData_ApplicationShould.swift */,
 				CA6A8DB520E2DA44007536CD /* WhenObservingMaps_AfterSyncSucceeds_ApplicationShould.swift */,
@@ -6621,6 +6624,7 @@
 				CA131BD120C1851A00DB1036 /* WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould.swift in Sources */,
 				CA36A46720D84A9B00EE6537 /* CapturingDealersViewModel+RandomValueProviding.swift in Sources */,
 				CA250DDE20D6EA0500E7513C /* CapturingScheduleSearchViewModelDelegate.swift in Sources */,
+				CA25A80320E6730C00875891 /* WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_ApplicationShould.swift in Sources */,
 				CA65A87D209B2F6A00B72533 /* WhenLoggedOutBeforeConvention_ThenLogIn_NewsInteractorShould.swift in Sources */,
 				CACF1E5D20AE2EE100D904B5 /* EventDetailPresenterTestBuilder.swift in Sources */,
 				CA36A4E620DAFFB000EE6537 /* StubDealerDetailModuleFactory.swift in Sources */,
