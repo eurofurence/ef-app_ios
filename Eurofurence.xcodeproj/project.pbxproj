@@ -446,6 +446,7 @@
 		CA283A7120E8DCD000F7D195 /* WhenToldToRefresh_DealersViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A7020E8DCD000F7D195 /* WhenToldToRefresh_DealersViewModelShould.swift */; };
 		CA283A7320E8E84100F7D195 /* WhenApplicationRefreshStateChanges_DealersViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A7220E8E84100F7D195 /* WhenApplicationRefreshStateChanges_DealersViewModelShould.swift */; };
 		CA283A7520E8EB6500F7D195 /* WhenViewModelRefreshStateChanges_DealersPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A7420E8EB6500F7D195 /* WhenViewModelRefreshStateChanges_DealersPresenterShould.swift */; };
+		CA283A7820E8F53B00F7D195 /* WhenMakingWebModuleWithNonHTTPSchemedLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A7720E8F53B00F7D195 /* WhenMakingWebModuleWithNonHTTPSchemedLinks.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1610,6 +1611,7 @@
 		CA283A7020E8DCD000F7D195 /* WhenToldToRefresh_DealersViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToRefresh_DealersViewModelShould.swift; sourceTree = "<group>"; };
 		CA283A7220E8E84100F7D195 /* WhenApplicationRefreshStateChanges_DealersViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenApplicationRefreshStateChanges_DealersViewModelShould.swift; sourceTree = "<group>"; };
 		CA283A7420E8EB6500F7D195 /* WhenViewModelRefreshStateChanges_DealersPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewModelRefreshStateChanges_DealersPresenterShould.swift; sourceTree = "<group>"; };
+		CA283A7720E8F53B00F7D195 /* WhenMakingWebModuleWithNonHTTPSchemedLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenMakingWebModuleWithNonHTTPSchemedLinks.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -2650,6 +2652,7 @@
 				CA637589208CE04E00536BE2 /* Schedule */,
 				CA8E7EFF1FB0940600F0BF10 /* Tab */,
 				CA2D080A1FE94F8800BFD785 /* Tutorial */,
+				CA283A7620E8F51B00F7D195 /* Web */,
 			);
 			name = "Module Tests";
 			path = "Presenter Tests";
@@ -3599,6 +3602,14 @@
 				CA283A6220E6ED6400F7D195 /* RefreshService.swift */,
 			);
 			path = Refresh;
+			sourceTree = "<group>";
+		};
+		CA283A7620E8F51B00F7D195 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				CA283A7720E8F53B00F7D195 /* WhenMakingWebModuleWithNonHTTPSchemedLinks.swift */,
+			);
+			path = Web;
 			sourceTree = "<group>";
 		};
 		CA2D07FE1FE94AD200BFD785 /* Root */ = {
@@ -7106,6 +7117,7 @@
 				CA2761D020E0353F000E52AC /* WhenObservingCollectThemAllURLWhileLoggedIn_ApplicationShould.swift in Sources */,
 				CA08158B20D4554900F750D4 /* WhenGroupingEventsByStartTime_ScheduleInteractorShould.swift in Sources */,
 				CAD3BDCD20613A2800C91E6E /* WhenLookingUpMailToLinks.swift in Sources */,
+				CA283A7820E8F53B00F7D195 /* WhenMakingWebModuleWithNonHTTPSchemedLinks.swift in Sources */,
 				CAF5979F2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift in Sources */,
 				CA65A21F2091F1EC0078A4A7 /* WhenSyncSucceeds_SyncAPIShould.swift in Sources */,
 				CA283A6520E6F27200F7D195 /* WhenApplicationRefreshStateChanges_NewsInteractorShould.swift in Sources */,

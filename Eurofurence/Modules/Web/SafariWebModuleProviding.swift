@@ -11,7 +11,13 @@ import SafariServices
 struct SafariWebModuleProviding: WebModuleProviding {
 
     func makeWebModule(for url: URL) -> UIViewController {
-        return SFSafariViewController(url: url)
+        var safeURL = url
+        if var components = URLComponents(url: url, resolvingAgainstBaseURL: false), components.scheme != "https" {
+            components.scheme = "https"
+            safeURL = components.url!
+        }
+
+        return SFSafariViewController(url: safeURL)
     }
 
 }
