@@ -14,6 +14,7 @@ class NewsAnnouncementTableViewCell: UITableViewCell, NewsAnnouncementComponent 
 
     @IBOutlet weak var announcementTitleLabel: UILabel!
     @IBOutlet weak var announcementDescriptionLabel: UILabel!
+    @IBOutlet weak var unreadIndicatorView: UIView!
 
     // MARK: NewsAnnouncementComponent
 
@@ -26,11 +27,11 @@ class NewsAnnouncementTableViewCell: UITableViewCell, NewsAnnouncementComponent 
     }
 
     func hideUnreadIndicator() {
-
+        unreadIndicatorView.isHidden = true
     }
 
     func showUnreadIndicator() {
-
+        unreadIndicatorView.isHidden = false
     }
 
 }

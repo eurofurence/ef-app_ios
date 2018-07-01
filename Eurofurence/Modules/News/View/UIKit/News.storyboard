@@ -168,6 +168,7 @@
                                 <connections>
                                     <outlet property="announcementDescriptionLabel" destination="FgN-xU-MXR" id="bgg-2o-XrH"/>
                                     <outlet property="announcementTitleLabel" destination="eJB-3k-fKD" id="1zB-yi-OQ0"/>
+                                    <outlet property="unreadIndicatorView" destination="Oxv-gf-teI" id="BD1-mz-O5c"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsConventionCountdownTableViewCell" rowHeight="61" id="S1e-m1-dfl" customClass="NewsConventionCountdownTableViewCell" customModule="Eurofurence" customModuleProvider="target">
