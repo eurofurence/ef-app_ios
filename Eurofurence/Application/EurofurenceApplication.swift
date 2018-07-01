@@ -328,7 +328,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func openAnnouncement(identifier: Announcement2.Identifier, completionHandler: @escaping (Announcement2) -> Void) {
-
+        announcements.openAnnouncement(identifier: identifier, completionHandler: completionHandler)
     }
 
     func add(_ observer: ConventionCountdownServiceObserver) {

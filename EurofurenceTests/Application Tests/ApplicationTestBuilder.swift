@@ -196,6 +196,12 @@ class ApplicationTestBuilder {
             })
         }
         
+        func expectedAnnouncement(from announcement: APIAnnouncement) -> Announcement2 {
+            return Announcement2(identifier: Announcement2.Identifier(announcement.identifier),
+                                 title: announcement.title,
+                                 content: announcement.content)
+        }
+        
         func makeExpectedEvent(from event: APIEvent, response: APISyncResponse) -> Event2 {
             let expectedRoom = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier })!
             let expectedTrack = response.tracks.changed.first(where: { $0.trackIdentifier == event.trackIdentifier })!

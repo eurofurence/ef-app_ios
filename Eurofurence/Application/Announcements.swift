@@ -54,6 +54,13 @@ class Announcements {
         announcementsObservers.append(observer)
     }
 
+    func openAnnouncement(identifier: Announcement2.Identifier, completionHandler: @escaping (Announcement2) -> Void) {
+        guard let model = models.first(where: { $0.identifier == identifier }) else { return }
+        completionHandler(model)
+    }
+
+    // MARK: Private
+
     private func updateModel(from announcements: [APIAnnouncement]) {
         models = announcements.sorted(by: isLastEditTimeAscending).map(Announcement2.init)
     }

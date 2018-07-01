@@ -454,6 +454,7 @@
 		CA283A8420E9461800F7D195 /* UnreadIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A8320E9461800F7D195 /* UnreadIndicatorView.swift */; };
 		CA283A8620E9483F00F7D195 /* WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A8520E9483F00F7D195 /* WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift */; };
 		CA283A8820E9612900F7D195 /* AnnouncementDetailInteractorTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A8720E9612900F7D195 /* AnnouncementDetailInteractorTestBuilder.swift */; };
+		CA283A8A20E96E6500F7D195 /* WhenOpeningAnnouncement_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A8920E96E6500F7D195 /* WhenOpeningAnnouncement_ApplicationShould.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1623,6 +1624,7 @@
 		CA283A8320E9461800F7D195 /* UnreadIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadIndicatorView.swift; sourceTree = "<group>"; };
 		CA283A8520E9483F00F7D195 /* WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA283A8720E9612900F7D195 /* AnnouncementDetailInteractorTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailInteractorTestBuilder.swift; sourceTree = "<group>"; };
+		CA283A8920E96E6500F7D195 /* WhenOpeningAnnouncement_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenOpeningAnnouncement_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -4083,6 +4085,7 @@
 				CA65A21B2091121D0078A4A7 /* WhenAddingAnnouncementsObserverBeforeLoadingAnything.swift */,
 				CA162EAD20AA29DC004AFED6 /* WhenAddingAnnouncementsObserverThenRefreshSucceeds.swift */,
 				CA1F7D6A20CBB9DA00FB87F5 /* WhenApplicationInitialises_WithAnnouncementsSavedToStore.swift */,
+				CA283A8920E96E6500F7D195 /* WhenOpeningAnnouncement_ApplicationShould.swift */,
 			);
 			path = Announcements;
 			sourceTree = "<group>";
@@ -6869,6 +6872,7 @@
 				CA283A5C20E6E40500F7D195 /* BeforeSyncInitiated_ApplicationShould.swift in Sources */,
 				CA36A45120D773B300EE6537 /* WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould.swift in Sources */,
 				CA804DDA1F20D2F500E07A4A /* V2LoginAPITests.swift in Sources */,
+				CA283A8A20E96E6500F7D195 /* WhenOpeningAnnouncement_ApplicationShould.swift in Sources */,
 				CA6EC4842051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift in Sources */,
 				CA00AE5E20D173C000C2FBB0 /* WhenBindingEvent_SchedulePresenterShould.swift in Sources */,
 				CA162EAC20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift in Sources */,
