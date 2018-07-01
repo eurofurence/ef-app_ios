@@ -21,10 +21,10 @@ class AnnouncementDetailPresenterTestBuilder {
     func build() -> Context {
         let sceneFactory = StubAnnouncementDetailSceneFactory()
         let announcement: Announcement2 = .random
-        let announcementDetailInteractor = StubAnnouncementDetailInteractor()
+        let announcementDetailInteractor = StubAnnouncementDetailInteractor(for: announcement.identifier)
         let module = AnnouncementDetailModuleBuilder()
             .with(sceneFactory)
-            .with(StubAnnouncementDetailInteractorFactory(interactor: announcementDetailInteractor, for: announcement))
+            .with(announcementDetailInteractor)
             .build()
             .makeAnnouncementDetailModule(for: announcement)
         

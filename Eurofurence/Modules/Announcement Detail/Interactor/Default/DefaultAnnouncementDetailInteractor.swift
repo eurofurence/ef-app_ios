@@ -10,13 +10,25 @@ import Foundation.NSAttributedString
 
 struct DefaultAnnouncementDetailInteractor: AnnouncementDetailInteractor {
 
-    var announcement: Announcement2
-    var markdownRenderer: MarkdownRenderer
+    private let announcementsService: AnnouncementsService
+    private let markdownRenderer: MarkdownRenderer
 
-    func makeViewModel(completionHandler: @escaping (AnnouncementViewModel) -> Void) {
-        let contents = markdownRenderer.render(announcement.content)
-        let viewModel = AnnouncementViewModel(heading: announcement.title, contents: contents)
-        completionHandler(viewModel)
+    init() {
+        self.init(announcementsService: EurofurenceApplication.shared,
+                  markdownRenderer: DefaultMarkdownRenderer())
+    }
+
+    init(announcementsService: AnnouncementsService, markdownRenderer: MarkdownRenderer) {
+        self.announcementsService = announcementsService
+        self.markdownRenderer = markdownRenderer
+    }
+
+    func makeViewModel(for identifier: Announcement2.Identifier, completionHandler: @escaping (AnnouncementViewModel) -> Void) {
+        announcementsService.openAnnouncement(identifier: identifier) { (announcement) in
+            let contents = self.markdownRenderer.render(announcement.content)
+            let viewModel = AnnouncementViewModel(heading: announcement.title, contents: contents)
+            completionHandler(viewModel)
+        }
     }
 
 }

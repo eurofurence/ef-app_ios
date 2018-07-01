@@ -10,6 +10,10 @@
 import Foundation
 
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
+    func openAnnouncement(identifier: Announcement2.Identifier, completionHandler: @escaping (Announcement2) -> Void) {
+        
+    }
+    
     func add(_ observer: RefreshServiceObserver) {
         
     }

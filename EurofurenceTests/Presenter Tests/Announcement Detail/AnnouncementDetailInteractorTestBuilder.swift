@@ -17,11 +17,13 @@ class AnnouncementDetailInteractorTestBuilder {
         var announcement: Announcement2
     }
     
-    func build() -> Context {
+    func build(for identifier: Announcement2.Identifier = .random) -> Context {
+        var announcement = Announcement2.random
+        announcement.identifier = identifier
+        let announcementsService = StubAnnouncementsService(announcements: [announcement])
         let markdownRenderer = StubMarkdownRenderer()
-        let factory = DefaultAnnouncementDetailInteractorFactory(markdownRenderer: markdownRenderer)
-        let announcement = Announcement2.random
-        let interactor = factory.makeAnnouncementDetailInteractor(for: announcement)
+        let interactor = DefaultAnnouncementDetailInteractor(announcementsService: announcementsService,
+                                                             markdownRenderer: markdownRenderer)
         
         return Context(interactor: interactor,
                        markdownRenderer: markdownRenderer,
@@ -34,7 +36,7 @@ extension AnnouncementDetailInteractorTestBuilder.Context {
     
     func makeViewModel() -> AnnouncementViewModel? {
         var viewModel: AnnouncementViewModel?
-        interactor.makeViewModel { viewModel = $0 }
+        interactor.makeViewModel(for: announcement.identifier) { viewModel = $0 }
         
         return viewModel
     }

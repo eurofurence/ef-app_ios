@@ -9,11 +9,11 @@
 class AnnouncementDetailModuleBuilder {
 
     private var sceneFactory: AnnouncementDetailSceneFactory
-    private var announcementDetailInteractorFactory: AnnouncementDetailInteractorFactory
+    private var announcementDetailInteractor: AnnouncementDetailInteractor
 
     init() {
         sceneFactory = StoryboardAnnouncementDetailSceneFactory()
-        announcementDetailInteractorFactory = DefaultAnnouncementDetailInteractorFactory()
+        announcementDetailInteractor = DefaultAnnouncementDetailInteractor()
     }
 
     @discardableResult
@@ -23,14 +23,14 @@ class AnnouncementDetailModuleBuilder {
     }
 
     @discardableResult
-    func with(_ announcementDetailInteractorFactory: AnnouncementDetailInteractorFactory) -> AnnouncementDetailModuleBuilder {
-        self.announcementDetailInteractorFactory = announcementDetailInteractorFactory
+    func with(_ announcementDetailInteractor: AnnouncementDetailInteractor) -> AnnouncementDetailModuleBuilder {
+        self.announcementDetailInteractor = announcementDetailInteractor
         return self
     }
 
     func build() -> AnnouncementDetailModuleProviding {
         return AnnouncementDetailModule(sceneFactory: sceneFactory,
-                                        announcementDetailInteractorFactory: announcementDetailInteractorFactory)
+                                        announcementDetailInteractor: announcementDetailInteractor)
     }
 
 }

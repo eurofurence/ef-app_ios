@@ -11,8 +11,16 @@ import Foundation
 
 struct StubAnnouncementDetailInteractor: AnnouncementDetailInteractor {
     
-    var viewModel: AnnouncementViewModel = .random
-    func makeViewModel(completionHandler: @escaping (AnnouncementViewModel) -> Void) {
+    let viewModel: AnnouncementViewModel
+    private var identifier: Announcement2.Identifier
+    
+    init(viewModel: AnnouncementViewModel = .random, for identifier: Announcement2.Identifier = .random) {
+        self.viewModel = viewModel
+        self.identifier = identifier
+    }
+    
+    func makeViewModel(for announcement: Announcement2.Identifier, completionHandler: @escaping (AnnouncementViewModel) -> Void) {
+        guard identifier == announcement else { return }
         completionHandler(viewModel)
     }
     

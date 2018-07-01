@@ -8,6 +8,6 @@
 
 protocol AnnouncementDetailInteractor {
 
-    func makeViewModel(completionHandler: @escaping (AnnouncementViewModel) -> Void)
+    func makeViewModel(for announcement: Announcement2.Identifier, completionHandler: @escaping (AnnouncementViewModel) -> Void)
 
 }

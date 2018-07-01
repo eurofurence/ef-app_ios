@@ -10,17 +10,19 @@ struct AnnouncementDetailPresenter: AnnouncementDetailSceneDelegate {
 
     private let scene: AnnouncementDetailScene
     private let interactor: AnnouncementDetailInteractor
+    private let announcement: Announcement2.Identifier
 
-    init(scene: AnnouncementDetailScene, interactor: AnnouncementDetailInteractor) {
+    init(scene: AnnouncementDetailScene, interactor: AnnouncementDetailInteractor, announcement: Announcement2.Identifier) {
         self.scene = scene
         self.interactor = interactor
+        self.announcement = announcement
 
         scene.setDelegate(self)
         scene.setAnnouncementTitle(.announcement)
     }
 
     func announcementDetailSceneDidLoad() {
-        interactor.makeViewModel(completionHandler: announcementViewModelPrepared)
+        interactor.makeViewModel(for: announcement, completionHandler: announcementViewModelPrepared)
     }
 
     private func announcementViewModelPrepared(_ viewModel: AnnouncementViewModel) {
