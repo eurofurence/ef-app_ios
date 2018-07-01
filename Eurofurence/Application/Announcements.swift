@@ -49,6 +49,10 @@ class Announcements {
         if let persistedAnnouncements = dataStore.getSavedAnnouncements() {
             updateModel(from: persistedAnnouncements)
         }
+
+        if let readAnnouncements = dataStore.getSavedReadAnnouncementIdentifiers() {
+            readAnnouncementIdentifiers = readAnnouncements
+        }
     }
 
     // MARK: Functions

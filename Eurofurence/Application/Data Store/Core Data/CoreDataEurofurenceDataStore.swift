@@ -106,6 +106,10 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         return getModels(fetchRequest: MapEntity.fetchRequest())
     }
 
+    func getSavedReadAnnouncementIdentifiers() -> [Announcement2.Identifier]? {
+        return nil
+    }
+
     // MARK: Private
 
     private func getModels<Entity>(fetchRequest: NSFetchRequest<Entity>) -> [Entity.AdaptedType]? where Entity: EntityAdapting {

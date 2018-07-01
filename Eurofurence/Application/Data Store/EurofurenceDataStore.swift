@@ -23,6 +23,7 @@ protocol EurofurenceDataStore {
     func getSavedFavouriteEventIdentifiers() -> [Event2.Identifier]?
     func getSavedDealers() -> [APIDealer]?
     func getSavedMaps() -> [APIMap]?
+    func getSavedReadAnnouncementIdentifiers() -> [Announcement2.Identifier]?
 
 }
 

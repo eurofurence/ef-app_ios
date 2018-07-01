@@ -54,6 +54,10 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
         return transaction?.persistedMaps
     }
     
+    func getSavedReadAnnouncementIdentifiers() -> [Announcement2.Identifier]? {
+        return transaction?.persistedReadAnnouncementIdentifiers
+    }
+    
     private(set) var capturedKnowledgeGroupsToSave: [KnowledgeGroup2]?
     private(set) var transaction: CapturingEurofurenceDataStoreTransaction?
     var transactionInvokedBlock: (() -> Void)?

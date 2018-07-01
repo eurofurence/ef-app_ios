@@ -94,4 +94,25 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         XCTAssertTrue(observer.readAnnouncementIdentifiers.contains(elementsFrom: expected))
     }
     
+    func testTellObserversAboutReadAnnouncementsWhenLoadingFromStore() {
+        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let announcements = syncResponse.announcements.changed
+        let firstAnnouncement = announcements.randomElement().element
+        let firstIdentifier = firstAnnouncement.identifier
+        let secondAnnouncement = announcements.randomElement().element
+        let secondIdentifier = secondAnnouncement.identifier
+        let dataStore = CapturingEurofurenceDataStore()
+        let identifiers = [firstIdentifier, secondIdentifier].map({ Announcement2.Identifier($0) })
+        dataStore.save(syncResponse)
+        dataStore.performTransaction { (transaction) in
+            transaction.saveReadAnnouncements(identifiers)
+        }
+        
+        let context = ApplicationTestBuilder().with(dataStore).build()
+        let observer = CapturingAnnouncementsServiceObserver()
+        context.application.add(observer)
+        
+        XCTAssertTrue(observer.readAnnouncementIdentifiers.contains(elementsFrom: identifiers))
+    }
+    
 }
