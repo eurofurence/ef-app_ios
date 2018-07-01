@@ -88,7 +88,7 @@ class DefaultNewsInteractor: NewsInteractor,
     }
 
     func refresh() {
-        refreshService.performRefresh()
+        refreshService.refreshLocalStore { (_) in }
     }
 
     // MARK: AnnouncementsServiceObserver

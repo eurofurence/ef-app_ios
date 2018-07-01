@@ -123,10 +123,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         refreshObservers.append(observer)
     }
 
-    func performRefresh() {
-
-    }
-
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
         if dataStore.getLastRefreshDate() == nil {
             completionHandler(.absent)

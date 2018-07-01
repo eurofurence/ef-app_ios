@@ -11,7 +11,9 @@ import Foundation
 protocol RefreshService {
 
     func add(_ observer: RefreshServiceObserver)
-    func performRefresh()
+
+    @discardableResult
+    func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress
 
 }
 

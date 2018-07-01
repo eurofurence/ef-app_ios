@@ -31,8 +31,9 @@ class FakeHoursDateFormatter: HoursDateFormatter {
 class CapturingRefreshService: RefreshService {
     
     private(set) var toldToRefresh = false
-    func performRefresh() {
+    func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
         toldToRefresh = true
+        return Progress()
     }
     
     private(set) var refreshObservers = [RefreshServiceObserver]()

@@ -26,7 +26,6 @@ protocol EurofurenceApplicationProtocol: RefreshService,
                                          MapsService {
 
     func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler)
-    func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress
 
     var localPrivateMessages: [Message] { get }
 
