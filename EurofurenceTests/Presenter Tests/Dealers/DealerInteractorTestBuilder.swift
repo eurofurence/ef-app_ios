@@ -15,6 +15,7 @@ class DealerInteractorTestBuilder {
         var interactor: DefaultDealersInteractor
         var dealersService: FakeDealersService
         var defaultIconData: Data
+        var refreshService: CapturingRefreshService
     }
     
     private var dealersService: FakeDealersService
@@ -38,12 +39,27 @@ class DealerInteractorTestBuilder {
     }
     
     func build() -> Context {
+        let refreshService = CapturingRefreshService()
         let interactor = DefaultDealersInteractor(dealersService: dealersService,
-                                                  defaultIconData: defaultIconData)
+                                                  defaultIconData: defaultIconData,
+                                                  refreshService: refreshService)
         
         return Context(interactor: interactor,
                        dealersService: dealersService,
-                       defaultIconData: defaultIconData)
+                       defaultIconData: defaultIconData,
+                       refreshService: refreshService)
+    }
+    
+}
+
+extension DealerInteractorTestBuilder.Context {
+    
+    @discardableResult
+    func prepareViewModel() -> DealersViewModel? {
+        var viewModel: DealersViewModel?
+        interactor.makeDealersViewModel { viewModel = $0 }
+        
+        return viewModel
     }
     
 }

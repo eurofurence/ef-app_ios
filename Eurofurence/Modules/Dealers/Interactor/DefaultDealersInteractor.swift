@@ -13,6 +13,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
 
     private let dealersService: DealersService
     private let defaultIconData: Data
+    private let refreshService: RefreshService
     private let viewModel: ViewModel
     private let searchViewModel: SearchViewModel
     private let eventBus = EventBus()
@@ -24,15 +25,18 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
     init(dealersService: DealersService) {
         let defaultIcon = #imageLiteral(resourceName: "defaultAvatar")
         let defaultIconData = UIImagePNGRepresentation(defaultIcon)!
-        self.init(dealersService: dealersService, defaultIconData: defaultIconData)
+        self.init(dealersService: dealersService,
+                  defaultIconData: defaultIconData,
+                  refreshService: EurofurenceApplication.shared)
     }
 
-    init(dealersService: DealersService, defaultIconData: Data) {
+    init(dealersService: DealersService, defaultIconData: Data, refreshService: RefreshService) {
         self.dealersService = dealersService
         self.defaultIconData = defaultIconData
+        self.refreshService = refreshService
 
         let index = dealersService.makeDealersIndex()
-        viewModel = ViewModel(eventBus: eventBus)
+        viewModel = ViewModel(eventBus: eventBus, refreshService: refreshService)
         searchViewModel = SearchViewModel(eventBus: eventBus, index: index)
 
         index.setDelegate(self)
@@ -105,11 +109,13 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
 
     private class ViewModel: DealersViewModel, EventConsumer {
 
+        private let refreshService: RefreshService
         private var rawGroups = [AlphabetisedDealersGroup]()
         private var groups = [DealersGroupViewModel]()
         private var indexTitles = [String]()
 
-        init(eventBus: EventBus) {
+        init(eventBus: EventBus, refreshService: RefreshService) {
+            self.refreshService = refreshService
             eventBus.subscribe(consumer: self)
         }
 
@@ -124,7 +130,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
         }
 
         func refresh() {
-
+            refreshService.refreshLocalStore { (_) in }
         }
 
         func consume(event: AllDealersChangedEvent) {

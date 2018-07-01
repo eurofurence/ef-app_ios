@@ -443,6 +443,7 @@
 		CA283A6920E8D77800F7D195 /* WhenSceneInstigatesPullToRefresh_DealersPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A6820E8D77800F7D195 /* WhenSceneInstigatesPullToRefresh_DealersPresenterShould.swift */; };
 		CA283A6D20E8DA0300F7D195 /* DealerInteractorTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A6C20E8DA0300F7D195 /* DealerInteractorTestBuilder.swift */; };
 		CA283A6F20E8DA5D00F7D195 /* CapturingDealersSearchViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A6E20E8DA5D00F7D195 /* CapturingDealersSearchViewModelDelegate.swift */; };
+		CA283A7120E8DCD000F7D195 /* WhenToldToRefresh_DealersViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A7020E8DCD000F7D195 /* WhenToldToRefresh_DealersViewModelShould.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1604,6 +1605,7 @@
 		CA283A6820E8D77800F7D195 /* WhenSceneInstigatesPullToRefresh_DealersPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneInstigatesPullToRefresh_DealersPresenterShould.swift; sourceTree = "<group>"; };
 		CA283A6C20E8DA0300F7D195 /* DealerInteractorTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerInteractorTestBuilder.swift; sourceTree = "<group>"; };
 		CA283A6E20E8DA5D00F7D195 /* CapturingDealersSearchViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDealersSearchViewModelDelegate.swift; sourceTree = "<group>"; };
+		CA283A7020E8DCD000F7D195 /* WhenToldToRefresh_DealersViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToRefresh_DealersViewModelShould.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -3674,6 +3676,7 @@
 				CA36A49E20D97FAA00EE6537 /* WhenResolvingDealerAfterDarkContent_DealersInteractorShould.swift */,
 				CA36A49C20D97D0100EE6537 /* WhenResolvingDealerAvailability_DealersInteractorShould.swift */,
 				CA36A4CD20DA7ED800EE6537 /* WhenSearching_DealersInteractorShould.swift */,
+				CA283A7020E8DCD000F7D195 /* WhenToldToRefresh_DealersViewModelShould.swift */,
 			);
 			path = "Interactor Tests";
 			sourceTree = "<group>";
@@ -6944,6 +6947,7 @@
 				CA36A46D20D84B5600EE6537 /* BeforeDealersSceneLoads_DealersPresenterShould.swift in Sources */,
 				CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */,
 				CA8276BA204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift in Sources */,
+				CA283A7120E8DCD000F7D195 /* WhenToldToRefresh_DealersViewModelShould.swift in Sources */,
 				CAF9A9581F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift in Sources */,
 				CA36A4BA20D9AC9F00EE6537 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift in Sources */,
 				CA08157D20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift in Sources */,
