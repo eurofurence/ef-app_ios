@@ -13,10 +13,16 @@ class AnnouncementsViewModel: NewsViewModel {
     
     var announcements: [[AnnouncementComponentViewModel]]
     
-    init() {
-        announcements = (0...Int.random(upperLimit: 5) + 1).map { (index) -> [AnnouncementComponentViewModel] in
+    convenience init() {
+        let announcements = (0...Int.random(upperLimit: 5) + 1).map { (index) -> [AnnouncementComponentViewModel] in
             return [AnnouncementComponentViewModel].random
         }
+        
+        self.init(announcements: announcements)
+    }
+    
+    init(announcements: [[AnnouncementComponentViewModel]]) {
+        self.announcements = announcements
     }
     
     var numberOfComponents: Int {

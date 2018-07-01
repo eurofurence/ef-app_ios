@@ -61,6 +61,7 @@ struct AnnouncementComponentViewModel: Hashable {
 
     var title: String
     var detail: String
+    var isRead: Bool
 
 }
 

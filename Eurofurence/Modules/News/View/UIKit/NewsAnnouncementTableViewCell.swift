@@ -25,4 +25,12 @@ class NewsAnnouncementTableViewCell: UITableViewCell, NewsAnnouncementComponent 
         announcementDescriptionLabel.text = detail
     }
 
+    func hideUnreadIndicator() {
+
+    }
+
+    func showUnreadIndicator() {
+
+    }
+
 }

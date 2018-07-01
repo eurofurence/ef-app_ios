@@ -8,9 +8,15 @@
 
 @testable import Eurofurence
 
-struct StubAnnouncementsService: AnnouncementsService {
+class StubAnnouncementsService: AnnouncementsService {
     
     var announcements: [Announcement2]
+    var stubbedReadAnnouncements: [Announcement2.Identifier]
+    
+    init(announcements: [Announcement2], stubbedReadAnnouncements: [Announcement2.Identifier] = []) {
+        self.announcements = announcements
+        self.stubbedReadAnnouncements = stubbedReadAnnouncements
+    }
     
     func add(_ observer: AnnouncementsServiceObserver) {
         observer.eurofurenceApplicationDidChangeUnreadAnnouncements(to: announcements)

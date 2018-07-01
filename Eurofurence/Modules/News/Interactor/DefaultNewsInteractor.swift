@@ -294,7 +294,9 @@ class DefaultNewsInteractor: NewsInteractor,
         init(announcements: [Announcement2]) {
             self.announcements = announcements
             viewModels = announcements.map({ (announcement) -> AnnouncementComponentViewModel in
-                return AnnouncementComponentViewModel(title: announcement.title, detail: announcement.content)
+                return AnnouncementComponentViewModel(title: announcement.title,
+                                                      detail: announcement.content,
+                                                      isRead: false)
             })
         }
 

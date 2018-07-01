@@ -449,6 +449,8 @@
 		CA283A7A20E91A7900F7D195 /* WhenInstigatingPullToRefreshAction_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A7920E91A7900F7D195 /* WhenInstigatingPullToRefreshAction_SchedulePresenterShould.swift */; };
 		CA283A7C20E91F3600F7D195 /* WhenToldToRefresh_ScheduleViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A7B20E91F3600F7D195 /* WhenToldToRefresh_ScheduleViewModelShould.swift */; };
 		CA283A7E20E9211400F7D195 /* WhenApplicationRefreshStateChanges_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A7D20E9211400F7D195 /* WhenApplicationRefreshStateChanges_ScheduleInteractorShould.swift */; };
+		CA283A8020E93CBC00F7D195 /* WhenBindingReadAnnouncements_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A7F20E93CBC00F7D195 /* WhenBindingReadAnnouncements_NewsPresenterShould.swift */; };
+		CA283A8220E93F9600F7D195 /* WhenBindingUnreadAnnouncements_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A8120E93F9600F7D195 /* WhenBindingUnreadAnnouncements_NewsPresenterShould.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1616,6 +1618,8 @@
 		CA283A7920E91A7900F7D195 /* WhenInstigatingPullToRefreshAction_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInstigatingPullToRefreshAction_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA283A7B20E91F3600F7D195 /* WhenToldToRefresh_ScheduleViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToRefresh_ScheduleViewModelShould.swift; sourceTree = "<group>"; };
 		CA283A7D20E9211400F7D195 /* WhenApplicationRefreshStateChanges_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenApplicationRefreshStateChanges_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
+		CA283A7F20E93CBC00F7D195 /* WhenBindingReadAnnouncements_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingReadAnnouncements_NewsPresenterShould.swift; sourceTree = "<group>"; };
+		CA283A8120E93F9600F7D195 /* WhenBindingUnreadAnnouncements_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingUnreadAnnouncements_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -5397,6 +5401,8 @@
 				CA89CBBB2084CB4200570D54 /* WhenBindingAnnouncement_NewsPresenterShould.swift */,
 				CA0E5218208FC062005259FE /* WhenBindingConventionCountdown_NewsPresenterShould.swift */,
 				CA9AC16A208546530039C0C2 /* WhenBindingEvent_NewsPresenterShould.swift */,
+				CA283A7F20E93CBC00F7D195 /* WhenBindingReadAnnouncements_NewsPresenterShould.swift */,
+				CA283A8120E93F9600F7D195 /* WhenBindingUnreadAnnouncements_NewsPresenterShould.swift */,
 				CAD68827208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift */,
 				CAD6882F208A144800B31F5F /* WhenBindingUserWithNoUnreadMessages_NewsPresenterShould.swift */,
 				CAD6882B208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift */,
@@ -6781,6 +6787,7 @@
 				CA6A8D7620E264C5007536CD /* StubMapsSceneFactory.swift in Sources */,
 				CA0F762F2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift in Sources */,
 				CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */,
+				CA283A8220E93F9600F7D195 /* WhenBindingUnreadAnnouncements_NewsPresenterShould.swift in Sources */,
 				CA6A8E0120E50008007536CD /* WhenSceneTapsMap_ThatRevealsAnotherPartOfTheMap_MapDetailPresenterShould.swift in Sources */,
 				CA283A5E20E6E9FB00F7D195 /* WhenSceneInstigatesPullToRefresh_NewsPresenterShould.swift in Sources */,
 				CA63757C208CDBAA00536BE2 /* Date+RandomValueProviding.swift in Sources */,
@@ -6796,6 +6803,7 @@
 				CACF1EB420B5FFB600D904B5 /* Data+RandomValueProviding.swift in Sources */,
 				CA6A8D8220E2BA6C007536CD /* WhenMapsSceneLoads_MapsPresenterShould.swift in Sources */,
 				CAD234421F5F2FA8004BB959 /* AppDataBuilder.swift in Sources */,
+				CA283A8020E93CBC00F7D195 /* WhenBindingReadAnnouncements_NewsPresenterShould.swift in Sources */,
 				CA6A8D6720E263A0007536CD /* WhenBuildingMapsModule.swift in Sources */,
 				CA5BF9D51F7AF9160045DBC0 /* PreloadPresenterTests.swift in Sources */,
 				CA2761A920E021FB000E52AC /* CapturingCollectThemAllScene.swift in Sources */,

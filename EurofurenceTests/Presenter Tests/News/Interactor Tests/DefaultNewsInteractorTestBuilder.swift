@@ -256,7 +256,9 @@ extension DefaultNewsInteractorTestBuilder.Context {
         }
         
         private func makeExpectedAnnouncementViewModel(from announcement: Announcement2) -> AnyHashable {
-            return AnnouncementComponentViewModel(title: announcement.title, detail: announcement.content)
+            return AnnouncementComponentViewModel(title: announcement.title,
+                                                  detail: announcement.content,
+                                                  isRead: context.announcementsService.stubbedReadAnnouncements.contains(announcement.identifier))
         }
         
         private func resolveStubbedDaysUntilConvention() -> Int {

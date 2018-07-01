@@ -48,6 +48,8 @@ protocol NewsAnnouncementComponent {
 
     func setAnnouncementTitle(_ title: String)
     func setAnnouncementDetail(_ detail: String)
+    func hideUnreadIndicator()
+    func showUnreadIndicator()
 
 }
 

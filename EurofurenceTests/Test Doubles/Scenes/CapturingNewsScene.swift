@@ -91,6 +91,16 @@ class CapturingNewsAnnouncementComponent: NewsAnnouncementComponent {
         capturedDetail = detail
     }
     
+    private(set) var didHideUnreadIndicator = false
+    func hideUnreadIndicator() {
+        didHideUnreadIndicator = true
+    }
+    
+    private(set) var didShowUnreadIndicator = false
+    func showUnreadIndicator() {
+        didShowUnreadIndicator = true
+    }
+    
 }
 
 class CapturingNewsEventComponent: NewsEventComponent {

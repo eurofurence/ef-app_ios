@@ -67,6 +67,12 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
             boundComponent = componentFactory.makeAnnouncementComponent { (component) in
                 component.setAnnouncementTitle(announcement.title)
                 component.setAnnouncementDetail(announcement.detail)
+
+                if announcement.isRead {
+                    component.hideUnreadIndicator()
+                } else {
+                    component.showUnreadIndicator()
+                }
             }
         }
 
