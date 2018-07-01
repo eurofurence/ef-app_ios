@@ -11,14 +11,6 @@ import XCTest
 
 class WhenAddingAnnouncementsObserverBeforeLoadingAnything: XCTestCase {
     
-    func testEmptyUnreadAnnouncementsAreReturned() {
-        let context = ApplicationTestBuilder().build()
-        let observer = CapturingAnnouncementsServiceObserver()
-        context.application.add(observer)
-        
-        XCTAssertTrue(observer.didReceieveEmptyUnreadAnnouncements)
-    }
-    
     func testEmptyAnnouncementsAreReturned() {
         let context = ApplicationTestBuilder().build()
         let observer = CapturingAnnouncementsServiceObserver()

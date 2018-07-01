@@ -19,7 +19,7 @@ class StubAnnouncementsService: AnnouncementsService {
     }
     
     func add(_ observer: AnnouncementsServiceObserver) {
-        observer.eurofurenceApplicationDidChangeUnreadAnnouncements(to: announcements)
+        observer.eurofurenceApplicationDidChangeAnnouncements(announcements)
         observer.announcementsServiceDidUpdateReadAnnouncements(stubbedReadAnnouncements)
     }
     

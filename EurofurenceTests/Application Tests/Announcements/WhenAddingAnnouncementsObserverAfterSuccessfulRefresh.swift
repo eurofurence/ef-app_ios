@@ -11,19 +11,6 @@ import XCTest
 
 class WhenAddingAnnouncementsObserverAfterSuccessfulRefresh: XCTestCase {
     
-    func testTheAnnouncementsFromTheRefreshResponseAreAdaptedInLastChangedTimeOrder() {
-        let context = ApplicationTestBuilder().build()
-        let syncResponse = APISyncResponse.randomWithoutDeletions
-        let expected = context.expectedUnreadAnnouncements(from: syncResponse)
-        
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
-        let observer = CapturingAnnouncementsServiceObserver()
-        context.application.add(observer)
-        
-        XCTAssertEqual(expected, observer.unreadAnnouncements)
-    }
-    
     func testTheObserverIsProvidedWithAllAnnouncements() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions

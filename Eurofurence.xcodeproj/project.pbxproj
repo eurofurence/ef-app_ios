@@ -311,7 +311,6 @@
 		CA162EA820AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EA720AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift */; };
 		CA162EAA20AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EA920AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift */; };
 		CA162EAC20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EAB20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift */; };
-		CA162EAE20AA29DC004AFED6 /* WhenAddingAnnouncementsObserverThenRefreshSucceeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EAD20AA29DC004AFED6 /* WhenAddingAnnouncementsObserverThenRefreshSucceeds.swift */; };
 		CA162EB220AA2DE0004AFED6 /* WhenObservingRunningEventsBeforeLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EB120AA2DE0004AFED6 /* WhenObservingRunningEventsBeforeLoadingAnything.swift */; };
 		CA162EB420AA2E12004AFED6 /* CapturingEventsServiceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EB320AA2E12004AFED6 /* CapturingEventsServiceObserver.swift */; };
 		CA162EB620AA2F34004AFED6 /* WhenObservingRunningEventsAfterSuccessfulLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162EB520AA2F34004AFED6 /* WhenObservingRunningEventsAfterSuccessfulLoad.swift */; };
@@ -1482,7 +1481,6 @@
 		CA162EA720AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAuthenticationStateObserver.swift; sourceTree = "<group>"; };
 		CA162EA920AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift; sourceTree = "<group>"; };
 		CA162EAB20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAnnouncementsServiceObserver.swift; sourceTree = "<group>"; };
-		CA162EAD20AA29DC004AFED6 /* WhenAddingAnnouncementsObserverThenRefreshSucceeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAddingAnnouncementsObserverThenRefreshSucceeds.swift; sourceTree = "<group>"; };
 		CA162EB120AA2DE0004AFED6 /* WhenObservingRunningEventsBeforeLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingRunningEventsBeforeLoadingAnything.swift; sourceTree = "<group>"; };
 		CA162EB320AA2E12004AFED6 /* CapturingEventsServiceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventsServiceObserver.swift; sourceTree = "<group>"; };
 		CA162EB520AA2F34004AFED6 /* WhenObservingRunningEventsAfterSuccessfulLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingRunningEventsAfterSuccessfulLoad.swift; sourceTree = "<group>"; };
@@ -4085,7 +4083,6 @@
 				CA1F7D6020CB82F600FB87F5 /* WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould.swift */,
 				CA65A2202091F5320078A4A7 /* WhenAddingAnnouncementsObserverAfterSuccessfulRefresh.swift */,
 				CA65A21B2091121D0078A4A7 /* WhenAddingAnnouncementsObserverBeforeLoadingAnything.swift */,
-				CA162EAD20AA29DC004AFED6 /* WhenAddingAnnouncementsObserverThenRefreshSucceeds.swift */,
 				CA1F7D6A20CBB9DA00FB87F5 /* WhenApplicationInitialises_WithAnnouncementsSavedToStore.swift */,
 				CA283A8920E96E6500F7D195 /* WhenOpeningAnnouncement_ApplicationShould.swift */,
 			);
@@ -6920,7 +6917,6 @@
 				CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */,
 				CA6EC4792051CAFA00402894 /* WhenBuildingKnowledgeDetailModule.swift in Sources */,
 				CAC1E1311F50413500195513 /* CapturingNewsScene.swift in Sources */,
-				CA162EAE20AA29DC004AFED6 /* WhenAddingAnnouncementsObserverThenRefreshSucceeds.swift in Sources */,
 				CA2D080E1FE9504600BFD785 /* WhenThePushNotificationPermissionsPageAppears.swift in Sources */,
 				CA6A8D7820E264D6007536CD /* MapsPresenterTestBuilder.swift in Sources */,
 				CA250DD420D6E28B00E7513C /* WhenBindingEventFromSearchResult_SchedulePresenterShould.swift in Sources */,
