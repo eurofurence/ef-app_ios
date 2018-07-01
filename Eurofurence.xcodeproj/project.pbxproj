@@ -455,6 +455,7 @@
 		CA283A8620E9483F00F7D195 /* WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A8520E9483F00F7D195 /* WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift */; };
 		CA283A8820E9612900F7D195 /* AnnouncementDetailInteractorTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A8720E9612900F7D195 /* AnnouncementDetailInteractorTestBuilder.swift */; };
 		CA283A8A20E96E6500F7D195 /* WhenOpeningAnnouncement_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A8920E96E6500F7D195 /* WhenOpeningAnnouncement_ApplicationShould.swift */; };
+		CA283A8C20E979FA00F7D195 /* ReadAnnouncementEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A8B20E979FA00F7D195 /* ReadAnnouncementEntity.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1625,6 +1626,7 @@
 		CA283A8520E9483F00F7D195 /* WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA283A8720E9612900F7D195 /* AnnouncementDetailInteractorTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailInteractorTestBuilder.swift; sourceTree = "<group>"; };
 		CA283A8920E96E6500F7D195 /* WhenOpeningAnnouncement_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenOpeningAnnouncement_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA283A8B20E979FA00F7D195 /* ReadAnnouncementEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadAnnouncementEntity.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -5473,6 +5475,7 @@
 				CAE8B0B120CA4C530029D4D6 /* KnowledgeGroupEntity+Adaptation.swift */,
 				CAE8B0B620CA4E100029D4D6 /* LinkEntity+Adaptation.swift */,
 				CA6A8DBF20E3BF30007536CD /* MapEntity+Adaptation.swift */,
+				CA283A8B20E979FA00F7D195 /* ReadAnnouncementEntity.swift */,
 				CAE8B0BC20CA57590029D4D6 /* RoomEntity+Adaptation.swift */,
 				CAE8B0BE20CA583D0029D4D6 /* TrackEntity+Adaptation.swift */,
 			);
@@ -6243,6 +6246,7 @@
 				CA30EAC41F2672BF0053DBF6 /* Message.swift in Sources */,
 				CAE8B0B720CA4E100029D4D6 /* LinkEntity+Adaptation.swift in Sources */,
 				CA36A4BC20DA1DE400EE6537 /* DealerEntity+Adaptation.swift in Sources */,
+				CA283A8C20E979FA00F7D195 /* ReadAnnouncementEntity.swift in Sources */,
 				CA36A4E420DAFF7E00EE6537 /* DealerDetailModuleProviding.swift in Sources */,
 				CA1FE99E1FA0B41E009C7DF3 /* NavigationControllerFactory.swift in Sources */,
 				CA162E8820A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift in Sources */,

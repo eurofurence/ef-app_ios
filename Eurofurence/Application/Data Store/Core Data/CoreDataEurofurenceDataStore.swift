@@ -107,7 +107,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
     }
 
     func getSavedReadAnnouncementIdentifiers() -> [Announcement2.Identifier]? {
-        return nil
+        return getModels(fetchRequest: ReadAnnouncementEntity.fetchRequest())
     }
 
     // MARK: Private
@@ -345,7 +345,12 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         }
 
         func saveReadAnnouncements(_ announcements: [Announcement2.Identifier]) {
-
+            mutations.append { (context) in
+                announcements.forEach { (announcement) in
+                    let entity: ReadAnnouncementEntity = ReadAnnouncementEntity(context: context)
+                    entity.announcementIdentifier = announcement.rawValue
+                }
+            }
         }
 
         // MARK: Private

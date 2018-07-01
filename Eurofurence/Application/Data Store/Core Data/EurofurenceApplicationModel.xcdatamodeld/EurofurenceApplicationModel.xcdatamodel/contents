@@ -90,6 +90,9 @@
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="mapEntry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MapEntryEntity" inverseName="links" inverseEntity="MapEntryEntity" syncable="YES"/>
     </entity>
+    <entity name="ReadAnnouncementEntity" representedClassName="ReadAnnouncementEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="announcementIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="RoomEntity" representedClassName="RoomEntity" syncable="YES" codeGenerationType="class">
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -108,10 +111,11 @@
         <element name="KnowledgeGroupEntity" positionX="-63" positionY="-18" width="128" height="105"/>
         <element name="LastRefreshEntity" positionX="-45" positionY="63" width="128" height="60"/>
         <element name="LinkEntity" positionX="-54" positionY="36" width="128" height="120"/>
-        <element name="RoomEntity" positionX="-18" positionY="135" width="128" height="75"/>
-        <element name="TrackEntity" positionX="0" positionY="144" width="128" height="75"/>
         <element name="MapEntity" positionX="-36" positionY="135" width="128" height="105"/>
         <element name="MapEntryEntity" positionX="-27" positionY="144" width="128" height="120"/>
         <element name="MapEntryLinkEntity" positionX="-18" positionY="153" width="128" height="105"/>
+        <element name="RoomEntity" positionX="-18" positionY="135" width="128" height="75"/>
+        <element name="TrackEntity" positionX="0" positionY="144" width="128" height="75"/>
+        <element name="ReadAnnouncementEntity" positionX="-36" positionY="135" width="128" height="60"/>
     </elements>
 </model>
