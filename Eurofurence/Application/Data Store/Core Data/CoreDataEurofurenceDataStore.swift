@@ -347,7 +347,8 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         func saveReadAnnouncements(_ announcements: [Announcement2.Identifier]) {
             mutations.append { (context) in
                 announcements.forEach { (announcement) in
-                    let entity: ReadAnnouncementEntity = ReadAnnouncementEntity(context: context)
+                    let announcementIdentifierPredicate = NSPredicate(format: "announcementIdentifier == %@", announcement.rawValue)
+                    let entity: ReadAnnouncementEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: announcementIdentifierPredicate)
                     entity.announcementIdentifier = announcement.rawValue
                 }
             }

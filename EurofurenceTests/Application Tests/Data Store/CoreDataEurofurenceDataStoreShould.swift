@@ -365,6 +365,21 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         assertThat(expected, isEqualTo: actual)
     }
     
+    func testNotDuplicateReadAnnouncementIdentifiers() {
+        let expected = [Announcement2.Identifier].random
+        store.performTransaction { (transaction) in
+            transaction.saveReadAnnouncements(expected)
+        }
+        
+        store.performTransaction { (transaction) in
+            transaction.saveReadAnnouncements(expected)
+        }
+        
+        let actual = store.getSavedReadAnnouncementIdentifiers()
+        
+        XCTAssertEqual(expected.count, actual?.count)
+    }
+    
     private func assertThat<T>(_ expected: [T], isEqualTo actual: [T]?, file: StaticString = #file, line: UInt = #line) where T: Equatable {
         guard let actual = actual else {
             XCTFail("Expected actual values, but got nil", file: file, line: line)
