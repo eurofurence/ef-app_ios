@@ -19,9 +19,9 @@ class WhenResolvingDealerAvailability_DealersInteractorShould: XCTestCase {
         let group = AlphabetisedDealersGroup(indexingString: .random, dealers: [dealer])
         let index = FakeDealersIndex(alphabetisedDealers: [group])
         let dealersService = FakeDealersService(index: index)
-        let interactor = DefaultDealersInteractor(dealersService: dealersService)
+        let context = DealerInteractorTestBuilder().with(dealersService).build()
         var viewModel: DealersViewModel?
-        interactor.makeDealersViewModel { viewModel = $0 }
+        context.interactor.makeDealersViewModel { viewModel = $0 }
         let delegate = CapturingDealersViewModelDelegate()
         viewModel?.setDelegate(delegate)
         let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: 0, section: 0))
@@ -37,9 +37,9 @@ class WhenResolvingDealerAvailability_DealersInteractorShould: XCTestCase {
         let group = AlphabetisedDealersGroup(indexingString: .random, dealers: [dealer])
         let index = FakeDealersIndex(alphabetisedDealers: [group])
         let dealersService = FakeDealersService(index: index)
-        let interactor = DefaultDealersInteractor(dealersService: dealersService)
+        let context = DealerInteractorTestBuilder().with(dealersService).build()
         var viewModel: DealersViewModel?
-        interactor.makeDealersViewModel { viewModel = $0 }
+        context.interactor.makeDealersViewModel { viewModel = $0 }
         let delegate = CapturingDealersViewModelDelegate()
         viewModel?.setDelegate(delegate)
         let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: 0, section: 0))
@@ -55,9 +55,9 @@ class WhenResolvingDealerAvailability_DealersInteractorShould: XCTestCase {
         let group = AlphabetisedDealersGroup(indexingString: .random, dealers: [dealer])
         let index = FakeDealersIndex(alphabetisedDealers: [group])
         let dealersService = FakeDealersService(index: index)
-        let interactor = DefaultDealersInteractor(dealersService: dealersService)
+        let context = DealerInteractorTestBuilder().with(dealersService).build()
         var viewModel: DealersViewModel?
-        interactor.makeDealersViewModel { viewModel = $0 }
+        context.interactor.makeDealersViewModel { viewModel = $0 }
         let delegate = CapturingDealersViewModelDelegate()
         viewModel?.setDelegate(delegate)
         let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: 0, section: 0))
@@ -73,9 +73,9 @@ class WhenResolvingDealerAvailability_DealersInteractorShould: XCTestCase {
         let group = AlphabetisedDealersGroup(indexingString: .random, dealers: [dealer])
         let index = FakeDealersIndex(alphabetisedDealers: [group])
         let dealersService = FakeDealersService(index: index)
-        let interactor = DefaultDealersInteractor(dealersService: dealersService)
+        let context = DealerInteractorTestBuilder().with(dealersService).build()
         var viewModel: DealersViewModel?
-        interactor.makeDealersViewModel { viewModel = $0 }
+        context.interactor.makeDealersViewModel { viewModel = $0 }
         let delegate = CapturingDealersViewModelDelegate()
         viewModel?.setDelegate(delegate)
         let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: 0, section: 0))

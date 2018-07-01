@@ -13,9 +13,9 @@ class WhenFetchingIdentifierForSearchResult_DealersInteractorShould: XCTestCase 
     
     func testProvideTheIdentifierForTheDealer() {
         let dealersService = FakeDealersService()
-        let interactor = DefaultDealersInteractor(dealersService: dealersService)
+        let context = DealerInteractorTestBuilder().with(dealersService).build()
         var viewModel: DealersSearchViewModel?
-        interactor.makeDealersSearchViewModel { viewModel = $0 }
+        context.interactor.makeDealersSearchViewModel { viewModel = $0 }
         let modelDealers = dealersService.index.alphabetisedDealersSearchResult
         let randomGroup = modelDealers.randomElement()
         let randomDealer = randomGroup.element.dealers.randomElement()

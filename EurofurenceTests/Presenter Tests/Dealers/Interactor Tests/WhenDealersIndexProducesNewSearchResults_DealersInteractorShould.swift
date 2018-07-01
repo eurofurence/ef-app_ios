@@ -9,17 +9,6 @@
 @testable import Eurofurence
 import XCTest
 
-class CapturingDealersSearchViewModelDelegate: DealersSearchViewModelDelegate {
-    
-    private(set) var capturedSearchResults = [DealersGroupViewModel]()
-    private(set) var capturedIndexTitles = [String]()
-    func dealerSearchResultsDidChange(_ groups: [DealersGroupViewModel], indexTitles: [String]) {
-        capturedSearchResults = groups
-        capturedIndexTitles = indexTitles
-    }
-    
-}
-
 class WhenDealersIndexProducesNewSearchResults_DealersInteractorShould: XCTestCase {
     
     func testConvertIndexedDealersIntoExpectedGroupTitles() {
@@ -27,40 +16,14 @@ class WhenDealersIndexProducesNewSearchResults_DealersInteractorShould: XCTestCa
         let modelDealers = index.alphabetisedDealersSearchResult
         let expected = modelDealers.map { $0.indexingString }
         let dealersService = FakeDealersService(index: index)
-        let interactor = DefaultDealersInteractor(dealersService: dealersService)
+        let context = DealerInteractorTestBuilder().with(dealersService).build()
         var searchViewModel: DealersSearchViewModel?
-        interactor.makeDealersSearchViewModel { searchViewModel = $0 }
+        context.interactor.makeDealersSearchViewModel { searchViewModel = $0 }
         let delegate = CapturingDealersSearchViewModelDelegate()
         searchViewModel?.setSearchResultsDelegate(delegate)
         let actual = delegate.capturedSearchResults.map({ $0.title })
         
         XCTAssertEqual(expected, actual)
     }
-    
-//    func testConvertIndexedDealersIntoExpectedGroupTitles() {
-//        let modelDealers = dealersService.index.alphabetisedDealers
-//        let expected = modelDealers.map { $0.indexingString }
-//        let actual = delegate.capturedGroups.map({ $0.title })
-//
-//        XCTAssertEqual(expected, actual)
-//    }
-//
-//    func testProduceIndexTitlesUsingGroupedIndicies() {
-//        let modelDealers = dealersService.index.alphabetisedDealers
-//        let expected = modelDealers.map { $0.indexingString }
-//        let actual = delegate.capturedIndexTitles
-//
-//        XCTAssertEqual(expected, actual)
-//    }
-//
-//    func testBindPreferredDealerNameOntoDealerViewModelTitle() {
-//        let context = fetchRandomDealerAndAssociatedViewModel()
-//        XCTAssertEqual(context.dealer.preferredName, context.viewModel?.title)
-//    }
-//
-//    func testBindAlternateDealerNameOntoDealerViewModelSubtitle() {
-//        let context = fetchRandomDealerAndAssociatedViewModel()
-//        XCTAssertEqual(context.dealer.alternateName, context.viewModel?.subtitle)
-//    }
     
 }

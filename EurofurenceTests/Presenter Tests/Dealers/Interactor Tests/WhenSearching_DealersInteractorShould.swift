@@ -14,9 +14,9 @@ class WhenSearching_DealersInteractorShould: XCTestCase {
     func testChangeSearchTermToUsedInput() {
         let index = FakeDealersIndex()
         let dealersService = FakeDealersService(index: index)
-        let interactor = DefaultDealersInteractor(dealersService: dealersService)
+        let context = DealerInteractorTestBuilder().with(dealersService).build()
         var searchViewModel: DealersSearchViewModel?
-        interactor.makeDealersSearchViewModel { searchViewModel = $0 }
+        context.interactor.makeDealersSearchViewModel { searchViewModel = $0 }
         let searchTerm = String.random
         searchViewModel?.updateSearchResults(with: searchTerm)
         

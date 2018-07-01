@@ -441,6 +441,8 @@
 		CA283A6520E6F27200F7D195 /* WhenApplicationRefreshStateChanges_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A6420E6F27200F7D195 /* WhenApplicationRefreshStateChanges_NewsInteractorShould.swift */; };
 		CA283A6720E6F61B00F7D195 /* WhenPerformingSync_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A6620E6F61B00F7D195 /* WhenPerformingSync_ApplicationShould.swift */; };
 		CA283A6920E8D77800F7D195 /* WhenSceneInstigatesPullToRefresh_DealersPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A6820E8D77800F7D195 /* WhenSceneInstigatesPullToRefresh_DealersPresenterShould.swift */; };
+		CA283A6D20E8DA0300F7D195 /* DealerInteractorTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A6C20E8DA0300F7D195 /* DealerInteractorTestBuilder.swift */; };
+		CA283A6F20E8DA5D00F7D195 /* CapturingDealersSearchViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A6E20E8DA5D00F7D195 /* CapturingDealersSearchViewModelDelegate.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1600,6 +1602,8 @@
 		CA283A6420E6F27200F7D195 /* WhenApplicationRefreshStateChanges_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenApplicationRefreshStateChanges_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA283A6620E6F61B00F7D195 /* WhenPerformingSync_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSync_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA283A6820E8D77800F7D195 /* WhenSceneInstigatesPullToRefresh_DealersPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneInstigatesPullToRefresh_DealersPresenterShould.swift; sourceTree = "<group>"; };
+		CA283A6C20E8DA0300F7D195 /* DealerInteractorTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerInteractorTestBuilder.swift; sourceTree = "<group>"; };
+		CA283A6E20E8DA5D00F7D195 /* CapturingDealersSearchViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDealersSearchViewModelDelegate.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -3970,6 +3974,7 @@
 				CA36A48820D927BD00EE6537 /* Interactor Tests */,
 				CA6375AA208E020E00536BE2 /* Presenter Tests */,
 				CA6375B7208E03B600536BE2 /* Test Doubles */,
+				CA283A6C20E8DA0300F7D195 /* DealerInteractorTestBuilder.swift */,
 			);
 			path = Dealers;
 			sourceTree = "<group>";
@@ -4033,6 +4038,7 @@
 				CA36A47620D8523400EE6537 /* StubDealerViewModel.swift */,
 				CA36A4C320DA759800EE6537 /* CapturingDealersSearchViewModel.swift */,
 				CA36A4D720DAE2CE00EE6537 /* CapturingDealersModuleDelegate.swift */,
+				CA283A6E20E8DA5D00F7D195 /* CapturingDealersSearchViewModelDelegate.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -6959,6 +6965,7 @@
 				CA71A34C204032FC00C847C3 /* Integer+RandomValueProviding.swift in Sources */,
 				CABEB0D420C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift in Sources */,
 				7820A7051F16C222004C0FB5 /* UserDefaultsOptedIntoPushNotificationsTests.swift in Sources */,
+				CA283A6D20E8DA0300F7D195 /* DealerInteractorTestBuilder.swift in Sources */,
 				CA63755E208CBC4E00536BE2 /* StubWebMobuleProviding.swift in Sources */,
 				CAF81C6220DD95BC00898C52 /* DealerDetailAboutTheArtistViewModel+RandomValueProviding.swift in Sources */,
 				CA8E7EF41FB08D3B00F0BF10 /* PhoneWindowWireframeTests.swift in Sources */,
@@ -7103,6 +7110,7 @@
 				CA73AEDF201A0833004E77BF /* CapturingKnowledgeInteractor.swift in Sources */,
 				CA36A46B20D84AB600EE6537 /* StubDealerViewModel+RandomValueProviding.swift in Sources */,
 				CAD2609F20C02E7C007E3618 /* WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailInteractorShould.swift in Sources */,
+				CA283A6F20E8DA5D00F7D195 /* CapturingDealersSearchViewModelDelegate.swift in Sources */,
 				CA6A8DBC20E2DF09007536CD /* WhenFetchingMapImageData_ApplicationShould.swift in Sources */,
 				CA637562208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift in Sources */,
 				CA162E8420A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift in Sources */,

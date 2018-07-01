@@ -11,23 +11,21 @@ import XCTest
 
 class WhenPreparingViewModel_DealersInteractorShould: XCTestCase {
     
-    var interactor: DefaultDealersInteractor!
-    var dealersService: FakeDealersService!
+    var context: DealerInteractorTestBuilder.Context!
     var delegate: CapturingDealersViewModelDelegate!
     
     override func setUp() {
         super.setUp()
         
-        dealersService = FakeDealersService()
-        interactor = DefaultDealersInteractor(dealersService: dealersService)
+        context = DealerInteractorTestBuilder().build()
         var viewModel: DealersViewModel?
-        interactor.makeDealersViewModel { viewModel = $0 }
+        context.interactor.makeDealersViewModel { viewModel = $0 }
         delegate = CapturingDealersViewModelDelegate()
         viewModel?.setDelegate(delegate)
     }
     
     private func fetchRandomDealerAndAssociatedViewModel() -> (dealer: Dealer2, viewModel: DealerViewModel?) {
-        let modelDealers = dealersService.index.alphabetisedDealers
+        let modelDealers = context.dealersService.index.alphabetisedDealers
         let randomGroup = modelDealers.randomElement()
         let randomDealer = randomGroup.element.dealers.randomElement()
         let dealerViewModel = delegate.capturedDealerViewModel(at: IndexPath(item: randomDealer.index, section: randomGroup.index))
@@ -36,7 +34,7 @@ class WhenPreparingViewModel_DealersInteractorShould: XCTestCase {
     }
     
     func testConvertIndexedDealersIntoExpectedGroupTitles() {
-        let modelDealers = dealersService.index.alphabetisedDealers
+        let modelDealers = context.dealersService.index.alphabetisedDealers
         let expected = modelDealers.map { $0.indexingString }
         let actual = delegate.capturedGroups.map({ $0.title })
         
@@ -44,7 +42,7 @@ class WhenPreparingViewModel_DealersInteractorShould: XCTestCase {
     }
     
     func testProduceIndexTitlesUsingGroupedIndicies() {
-        let modelDealers = dealersService.index.alphabetisedDealers
+        let modelDealers = context.dealersService.index.alphabetisedDealers
         let expected = modelDealers.map { $0.indexingString }
         let actual = delegate.capturedIndexTitles
         
