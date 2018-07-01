@@ -452,6 +452,7 @@
 		CA283A8020E93CBC00F7D195 /* WhenBindingReadAnnouncements_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A7F20E93CBC00F7D195 /* WhenBindingReadAnnouncements_NewsPresenterShould.swift */; };
 		CA283A8220E93F9600F7D195 /* WhenBindingUnreadAnnouncements_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A8120E93F9600F7D195 /* WhenBindingUnreadAnnouncements_NewsPresenterShould.swift */; };
 		CA283A8420E9461800F7D195 /* UnreadIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A8320E9461800F7D195 /* UnreadIndicatorView.swift */; };
+		CA283A8620E9483F00F7D195 /* WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A8520E9483F00F7D195 /* WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1622,6 +1623,7 @@
 		CA283A7F20E93CBC00F7D195 /* WhenBindingReadAnnouncements_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingReadAnnouncements_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA283A8120E93F9600F7D195 /* WhenBindingUnreadAnnouncements_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingUnreadAnnouncements_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA283A8320E9461800F7D195 /* UnreadIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadIndicatorView.swift; sourceTree = "<group>"; };
+		CA283A8520E9483F00F7D195 /* WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -3826,6 +3828,7 @@
 			children = (
 				CA65A87A209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift */,
 				CA283A6420E6F27200F7D195 /* WhenApplicationRefreshStateChanges_NewsInteractorShould.swift */,
+				CA283A8520E9483F00F7D195 /* WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift */,
 				CA283A5F20E6ECD300F7D195 /* WhenToldToRefresh_NewsInteractorShould.swift */,
 				CA728493209F9A54007D912A /* Before Convention */,
 				CA162E8920A64339004AFED6 /* During Convention */,
@@ -7015,6 +7018,7 @@
 				CACF1E9E20B4386B00D904B5 /* WhenBindingEventDescription_EventDetailPresenterShould.swift in Sources */,
 				7820A6DF1F13F6CE004C0FB5 /* ApplicationPresentationAssetsTests.swift in Sources */,
 				CA36A49920D9778400EE6537 /* FakeDealersIndex.swift in Sources */,
+				CA283A8620E9483F00F7D195 /* WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift in Sources */,
 				CA30EAB61F26128A0053DBF6 /* WhenRequestingPrivateMessagesWhileAuthenticated.swift in Sources */,
 				CA8E17EF1F817A8C003C348C /* CapturingPreloadInteractor.swift in Sources */,
 				CAD3BDBB205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift in Sources */,

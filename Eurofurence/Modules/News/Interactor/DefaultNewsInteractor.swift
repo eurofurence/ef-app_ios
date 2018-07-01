@@ -36,6 +36,7 @@ class DefaultNewsInteractor: NewsInteractor,
     private var runningEvents = [Event2]()
     private var upcomingEvents = [Event2]()
     private var announcements = [Announcement2]()
+    private var readAnnouncements = [Announcement2.Identifier]()
     private var currentUser: User?
     private let dateDistanceCalculator: DateDistanceCalculator
     private let clock: Clock
@@ -99,6 +100,11 @@ class DefaultNewsInteractor: NewsInteractor,
 
     func eurofurenceApplicationDidChangeUnreadAnnouncements(to announcements: [Announcement2]) {
         self.announcements = announcements
+        regenerateViewModel()
+    }
+
+    func announcementsServiceDidUpdateReadAnnouncements(_ readAnnouncements: [Announcement2.Identifier]) {
+        self.readAnnouncements = readAnnouncements
         regenerateViewModel()
     }
 
@@ -194,7 +200,7 @@ class DefaultNewsInteractor: NewsInteractor,
             components.append(CountdownComponent(daysUntilConvention: daysUntilConvention))
         }
 
-        components.append(AnnouncementsComponent(announcements: announcements))
+        components.append(AnnouncementsComponent(announcements: announcements, readAnnouncements: readAnnouncements))
 
         if !upcomingEvents.isEmpty {
             components.append(EventsComponent(title: .upcomingEvents,
@@ -291,12 +297,12 @@ class DefaultNewsInteractor: NewsInteractor,
         private let announcements: [Announcement2]
         private let viewModels: [AnnouncementComponentViewModel]
 
-        init(announcements: [Announcement2]) {
+        init(announcements: [Announcement2], readAnnouncements: [Announcement2.Identifier]) {
             self.announcements = announcements
             viewModels = announcements.map({ (announcement) -> AnnouncementComponentViewModel in
                 return AnnouncementComponentViewModel(title: announcement.title,
                                                       detail: announcement.content,
-                                                      isRead: false)
+                                                      isRead: readAnnouncements.contains(announcement.identifier))
             })
         }
 
