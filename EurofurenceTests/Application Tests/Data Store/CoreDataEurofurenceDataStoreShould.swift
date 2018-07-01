@@ -251,6 +251,22 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         assertThat(exected.sorted(), isEqualTo: actual?.sorted())
     }
     
+    func testNotDuplicatedSavedFavouriteEventIdentifiers() {
+        let expected = [Event2.Identifier].random
+        store.performTransaction { (transaction) in
+            expected.forEach(transaction.saveFavouriteEventIdentifier)
+        }
+        
+        store.performTransaction { (transaction) in
+            expected.forEach(transaction.saveFavouriteEventIdentifier)
+        }
+        
+        recreateStore()
+        let actual = store.getSavedFavouriteEventIdentifiers()
+        
+        XCTAssertEqual(expected.count, actual?.count)
+    }
+    
     func testDeleteSavedFavouriteEventIdentifiers() {
         let identifier = Event2.Identifier.random
         store.performTransaction { (transaction) in

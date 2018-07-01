@@ -253,7 +253,8 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
 
         func saveFavouriteEventIdentifier(_ identifier: Event2.Identifier) {
             mutations.append { (context) in
-                let entity = FavouriteEventEntity(context: context)
+                let favouriteEventIdentifierPredicate = NSPredicate(format: "eventIdentifier == %@", identifier.rawValue)
+                let entity: FavouriteEventEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: favouriteEventIdentifierPredicate)
                 entity.eventIdentifier = identifier.rawValue
             }
         }
