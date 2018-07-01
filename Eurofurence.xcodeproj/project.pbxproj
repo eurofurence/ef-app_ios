@@ -237,7 +237,6 @@
 		CA00AE8B20D28AF400C2FBB0 /* Day+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */; };
 		CA00AE8E20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */; };
 		CA00AE9120D293B800C2FBB0 /* UICollectionView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE9020D293B800C2FBB0 /* UICollectionView+Convenience.swift */; };
-		CA00AE9320D2975400C2FBB0 /* ScheduleDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE9220D2975400C2FBB0 /* ScheduleDaysView.swift */; };
 		CA057A5B2088BDBB00504FA4 /* NewsAnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */; };
 		CA08157820D3865600F750D4 /* NavigationBarViewExtensionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */; };
 		CA08157A20D3877700F750D4 /* FoundationShortFormDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */; };
@@ -1405,7 +1404,6 @@
 		CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDayCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA00AE9020D293B800C2FBB0 /* UICollectionView+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Convenience.swift"; sourceTree = "<group>"; };
-		CA00AE9220D2975400C2FBB0 /* ScheduleDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDaysView.swift; sourceTree = "<group>"; };
 		CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsAnnouncementTableViewCell.swift; sourceTree = "<group>"; };
 		CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewExtensionContainer.swift; sourceTree = "<group>"; };
 		CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationShortFormDateFormatter.swift; sourceTree = "<group>"; };
@@ -3965,7 +3963,6 @@
 				CA52C69820D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift */,
 				CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */,
 				CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */,
-				CA00AE9220D2975400C2FBB0 /* ScheduleDaysView.swift */,
 				CA250DD920D6E5FD00E7513C /* ScheduleSearchTableViewController.swift */,
 				CA63759D208DFE0500536BE2 /* ScheduleViewController.swift */,
 				CA63759F208DFE2E00536BE2 /* StoryboardEventsSceneFactory.swift */,
@@ -6257,7 +6254,6 @@
 				CAF3C7501F9FC74C0008F027 /* NewsSceneFactory.swift in Sources */,
 				CA36A4A820D984E400EE6537 /* Dealers.swift in Sources */,
 				CA0E5207208E700E005259FE /* DealersViewController.swift in Sources */,
-				CA00AE9320D2975400C2FBB0 /* ScheduleDaysView.swift in Sources */,
 				CA637592208CE4F700536BE2 /* ScheduleScene.swift in Sources */,
 				CA30EAA11F2127350053DBF6 /* LoginResponse.swift in Sources */,
 				CAD780371F1D415A002A8333 /* MessagesViewController.swift in Sources */,
