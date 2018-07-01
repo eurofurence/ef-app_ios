@@ -144,6 +144,11 @@ extension CapturingEurofurenceDataStore {
         return persistedAnnouncementIdentifiers.contains(identifier)
     }
     
+    func didSaveReadAnnouncements(_ identifiers: [Announcement2.Identifier]) -> Bool {
+        guard let persistedAnnouncementIdentifiers = transaction?.persistedReadAnnouncementIdentifiers else { return false }
+        return persistedAnnouncementIdentifiers.contains(elementsFrom: identifiers)
+    }
+    
 }
 
 extension Array where Element: Equatable {

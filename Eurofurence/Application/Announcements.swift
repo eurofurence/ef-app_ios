@@ -30,6 +30,7 @@ class Announcements {
     // MARK: Properties
 
     private let dataStore: EurofurenceDataStore
+    private var readAnnouncementIdentifiers = [Announcement2.Identifier]()
 
     private var models = [Announcement2]() {
         didSet {
@@ -61,8 +62,10 @@ class Announcements {
         guard let model = models.first(where: { $0.identifier == identifier }) else { return }
         completionHandler(model)
 
+        readAnnouncementIdentifiers.append(identifier)
+
         dataStore.performTransaction { (transaction) in
-            transaction.saveReadAnnouncements([identifier])
+            transaction.saveReadAnnouncements(self.readAnnouncementIdentifiers)
         }
     }
 

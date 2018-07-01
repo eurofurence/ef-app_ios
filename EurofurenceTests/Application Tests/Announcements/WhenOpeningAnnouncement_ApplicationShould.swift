@@ -39,4 +39,21 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         XCTAssertTrue(context.dataStore.didSaveReadAnnouncement(Announcement2.Identifier(identifier)))
     }
     
+    func testSaveAllPreviouslyReadAnnouncementIdentifierAsRead() {
+        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let announcements = syncResponse.announcements.changed
+        let firstAnnouncement = announcements.randomElement().element
+        let firstIdentifier = firstAnnouncement.identifier
+        let secondAnnouncement = announcements.randomElement().element
+        let secondIdentifier = secondAnnouncement.identifier
+        let context = ApplicationTestBuilder().build()
+        context.refreshLocalStore()
+        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.application.openAnnouncement(identifier: Announcement2.Identifier(firstIdentifier)) { (_) in }
+        context.application.openAnnouncement(identifier: Announcement2.Identifier(secondIdentifier)) { (_) in }
+        let expected = [firstIdentifier, secondIdentifier].map({ Announcement2.Identifier($0) })
+        
+        XCTAssertTrue(context.dataStore.didSaveReadAnnouncements(expected))
+    }
+    
 }
