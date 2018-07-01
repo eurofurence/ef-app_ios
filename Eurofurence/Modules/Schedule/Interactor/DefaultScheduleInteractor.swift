@@ -21,18 +21,21 @@ class DefaultScheduleInteractor: ScheduleInteractor {
         self.init(eventsService: EurofurenceApplication.shared,
                   hoursDateFormatter: FoundationHoursDateFormatter.shared,
                   shortFormDateFormatter: FoundationShortFormDateFormatter.shared,
-                  shortFormDayAndTimeFormatter: FoundationShortFormDayAndTimeFormatter.shared)
+                  shortFormDayAndTimeFormatter: FoundationShortFormDayAndTimeFormatter.shared,
+                  refreshService: EurofurenceApplication.shared)
     }
 
     init(eventsService: EventsService,
          hoursDateFormatter: HoursDateFormatter,
          shortFormDateFormatter: ShortFormDateFormatter,
-         shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter) {
+         shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter,
+         refreshService: RefreshService) {
         let schedule = eventsService.makeEventsSchedule()
         let searchController = eventsService.makeEventsSearchController()
         viewModel = ViewModel(schedule: schedule,
                               hoursDateFormatter: hoursDateFormatter,
-                              shortFormDateFormatter: shortFormDateFormatter)
+                              shortFormDateFormatter: shortFormDateFormatter,
+                              refreshService: refreshService)
         searchViewModel = SearchViewModel(searchController: searchController,
                                           shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter,
                                           hoursDateFormatter: hoursDateFormatter)
@@ -80,13 +83,16 @@ class DefaultScheduleInteractor: ScheduleInteractor {
         private let schedule: EventsSchedule
         private let hoursDateFormatter: HoursDateFormatter
         private let shortFormDateFormatter: ShortFormDateFormatter
+        private let refreshService: RefreshService
 
         init(schedule: EventsSchedule,
              hoursDateFormatter: HoursDateFormatter,
-             shortFormDateFormatter: ShortFormDateFormatter) {
+             shortFormDateFormatter: ShortFormDateFormatter,
+             refreshService: RefreshService) {
             self.schedule = schedule
             self.hoursDateFormatter = hoursDateFormatter
             self.shortFormDateFormatter = shortFormDateFormatter
+            self.refreshService = refreshService
 
             schedule.setDelegate(self)
         }
@@ -133,7 +139,7 @@ class DefaultScheduleInteractor: ScheduleInteractor {
         }
 
         func refresh() {
-
+            refreshService.refreshLocalStore { (_) in }
         }
 
         func showEventsForDay(at index: Int) {

@@ -36,6 +36,7 @@ class ScheduleInteractorTestBuilder {
         var shortFormDayAndTimeFormatter: FakeShortFormDayAndTimeFormatter
         let viewModelDelegate = CapturingScheduleViewModelDelegate()
         let searchViewModelDelegate = CapturingScheduleSearchViewModelDelegate()
+        var refreshService: CapturingRefreshService
     }
     
     private var eventsService: EventsService
@@ -54,15 +55,18 @@ class ScheduleInteractorTestBuilder {
         let hoursFormatter = FakeHoursDateFormatter()
         let shortFormDateFormatter = FakeShortFormDateFormatter()
         let shortFormDayAndTimeFormatter = FakeShortFormDayAndTimeFormatter()
+        let refreshService = CapturingRefreshService()
         let interactor = DefaultScheduleInteractor(eventsService: eventsService,
                                                    hoursDateFormatter: hoursFormatter,
                                                    shortFormDateFormatter: shortFormDateFormatter,
-                                                   shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter)
+                                                   shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter,
+                                                   refreshService: refreshService)
         
         return Context(interactor: interactor,
                        hoursFormatter: hoursFormatter,
                        shortFormDateFormatter: shortFormDateFormatter,
-                       shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter)
+                       shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter,
+                       refreshService: refreshService)
     }
     
 }
