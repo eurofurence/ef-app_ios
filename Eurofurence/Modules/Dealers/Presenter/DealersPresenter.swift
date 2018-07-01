@@ -118,11 +118,11 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
     }
 
     func dealersRefreshDidBegin() {
-
+        scene.showRefreshIndicator()
     }
 
     func dealersRefreshDidFinish() {
-
+        scene.hideRefreshIndicator()
     }
 
     func dealerGroupsDidChange(_ groups: [DealersGroupViewModel], indexTitles: [String]) {

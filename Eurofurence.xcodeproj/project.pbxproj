@@ -445,6 +445,7 @@
 		CA283A6F20E8DA5D00F7D195 /* CapturingDealersSearchViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A6E20E8DA5D00F7D195 /* CapturingDealersSearchViewModelDelegate.swift */; };
 		CA283A7120E8DCD000F7D195 /* WhenToldToRefresh_DealersViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A7020E8DCD000F7D195 /* WhenToldToRefresh_DealersViewModelShould.swift */; };
 		CA283A7320E8E84100F7D195 /* WhenApplicationRefreshStateChanges_DealersViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A7220E8E84100F7D195 /* WhenApplicationRefreshStateChanges_DealersViewModelShould.swift */; };
+		CA283A7520E8EB6500F7D195 /* WhenViewModelRefreshStateChanges_DealersPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A7420E8EB6500F7D195 /* WhenViewModelRefreshStateChanges_DealersPresenterShould.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1608,6 +1609,7 @@
 		CA283A6E20E8DA5D00F7D195 /* CapturingDealersSearchViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDealersSearchViewModelDelegate.swift; sourceTree = "<group>"; };
 		CA283A7020E8DCD000F7D195 /* WhenToldToRefresh_DealersViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToRefresh_DealersViewModelShould.swift; sourceTree = "<group>"; };
 		CA283A7220E8E84100F7D195 /* WhenApplicationRefreshStateChanges_DealersViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenApplicationRefreshStateChanges_DealersViewModelShould.swift; sourceTree = "<group>"; };
+		CA283A7420E8EB6500F7D195 /* WhenViewModelRefreshStateChanges_DealersPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewModelRefreshStateChanges_DealersPresenterShould.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -4003,6 +4005,7 @@
 				CA36A4D320DAE15A00EE6537 /* WhenSceneSelectsDealer_DealersPresenterShould.swift */,
 				CA36A4D920DAE4CF00EE6537 /* WhenSceneSelectsSearchResult_DealersPresenterShould.swift */,
 				CA36A4BF20DA74CB00EE6537 /* WhenSceneUpdatesSearchQuery_DealersPresenterShould.swift */,
+				CA283A7420E8EB6500F7D195 /* WhenViewModelRefreshStateChanges_DealersPresenterShould.swift */,
 				CA36A4C520DA777800EE6537 /* WhenViewModelUpdatesSearchResults_DealersPresenterShould.swift */,
 			);
 			path = "Presenter Tests";
@@ -6751,6 +6754,7 @@
 				CA36A4B020D9983D00EE6537 /* WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift in Sources */,
 				CA52C67520D58EC6009D3A9E /* WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould.swift in Sources */,
 				CA637544208CBB3A00536BE2 /* StubRootModuleFactory.swift in Sources */,
+				CA283A7520E8EB6500F7D195 /* WhenViewModelRefreshStateChanges_DealersPresenterShould.swift in Sources */,
 				CABA43951FCE0A49009CB5B0 /* CapturingLoginScene.swift in Sources */,
 				CA08158F20D4557400F750D4 /* ScheduleInteractorTestBuilder.swift in Sources */,
 				CA08159720D475B500F750D4 /* FakeEventsService.swift in Sources */,

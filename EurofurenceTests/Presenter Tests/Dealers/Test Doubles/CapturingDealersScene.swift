@@ -21,6 +21,16 @@ class CapturingDealersScene: UIViewController, DealersScene {
         capturedTitle = title
     }
     
+    private(set) var didShowRefreshIndicator = false
+    func showRefreshIndicator() {
+        didShowRefreshIndicator = true
+    }
+    
+    private(set) var didHideRefreshIndicator = false
+    func hideRefreshIndicator() {
+        didHideRefreshIndicator = true
+    }
+    
     private(set) var capturedDealersPerSectionToBind = [Int]()
     private(set) var capturedSectionIndexTitles = [String]()
     private(set) var binder: DealersBinder?

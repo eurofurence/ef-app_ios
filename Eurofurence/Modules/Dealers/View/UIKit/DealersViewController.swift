@@ -75,6 +75,14 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         super.title = title
     }
 
+    func showRefreshIndicator() {
+        refreshControl.beginRefreshing()
+    }
+
+    func hideRefreshIndicator() {
+        refreshControl.endRefreshing()
+    }
+
     func deselectDealer(at indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }

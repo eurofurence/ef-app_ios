@@ -18,7 +18,9 @@ final class CapturingDealersViewModel: DealersViewModel {
         self.dealerGroups = dealerGroups
     }
     
+    private(set) var delegate: DealersViewModelDelegate?
     func setDelegate(_ delegate: DealersViewModelDelegate) {
+        self.delegate = delegate
         delegate.dealerGroupsDidChange(dealerGroups, indexTitles: sectionIndexTitles)
     }
     
