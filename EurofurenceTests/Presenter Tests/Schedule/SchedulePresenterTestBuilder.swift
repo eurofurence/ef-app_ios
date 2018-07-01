@@ -71,6 +71,10 @@ extension SchedulePresenterTestBuilder.Context {
         scene.delegate?.scheduleSceneDidUpdateSearchQuery(query)
     }
     
+    func simulateSceneDidPerformRefreshAction() {
+        scene.delegate?.scheduleSceneDidPerformRefreshAction()
+    }
+    
     func bind(_ header: ScheduleEventGroupHeader, forGroupAt index: Int) {
         scene.binder?.bind(header, forGroupAt: index)
     }

@@ -11,6 +11,7 @@ import Foundation
 protocol ScheduleViewModel {
 
     func setDelegate(_ delegate: ScheduleViewModelDelegate)
+    func refresh()
     func showEventsForDay(at index: Int)
     func identifierForEvent(at indexPath: IndexPath) -> Event2.Identifier?
 
@@ -18,6 +19,8 @@ protocol ScheduleViewModel {
 
 protocol ScheduleViewModelDelegate {
 
+    func scheduleViewModelDidBeginRefreshing()
+    func scheduleViewModelDidFinishRefreshing()
     func scheduleViewModelDidUpdateDays(_ days: [ScheduleDayViewModel])
     func scheduleViewModelDidUpdateCurrentDayIndex(to index: Int)
     func scheduleViewModelDidUpdateEvents(_ events: [ScheduleEventGroupViewModel])

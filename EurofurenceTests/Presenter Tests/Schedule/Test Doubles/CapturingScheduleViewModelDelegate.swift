@@ -11,6 +11,14 @@ import Foundation
 
 class CapturingScheduleViewModelDelegate: ScheduleViewModelDelegate {
     
+    func scheduleViewModelDidBeginRefreshing() {
+        
+    }
+    
+    func scheduleViewModelDidFinishRefreshing() {
+        
+    }
+    
     private(set) var daysViewModels: [ScheduleDayViewModel] = []
     func scheduleViewModelDidUpdateDays(_ days: [ScheduleDayViewModel]) {
         daysViewModels = days

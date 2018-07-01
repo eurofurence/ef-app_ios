@@ -14,6 +14,7 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, UISe
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var daysCollectionView: UICollectionView!
+    private let refreshControl = UIRefreshControl(frame: .zero)
     private lazy var navigationBarShadowDelegate = HideNavigationBarShadowForSpecificViewControllerDelegate(viewControllerToHideNavigationBarShadow: self)
 
     private var tableController: TableController? {
@@ -49,6 +50,9 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, UISe
         searchController = UISearchController(searchResultsController: searchViewController)
         searchController?.delegate = self
         searchController?.searchResultsUpdater = self
+
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshControlDidChangeValue), for: .valueChanged)
 
         navigationController?.delegate = navigationBarShadowDelegate
         tableView.register(EventTableViewCell.self)
@@ -86,6 +90,14 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, UISe
         super.title = title
     }
 
+    func showRefreshIndicator() {
+        refreshControl.beginRefreshing()
+    }
+
+    func hideRefreshIndicator() {
+        refreshControl.endRefreshing()
+    }
+
     func bind(numberOfDays: Int, using binder: ScheduleDaysBinder) {
         daysController = DaysController(numberOfDays: numberOfDays, binder: binder, onDaySelected: dayPickerDidSelectDay)
     }
@@ -115,6 +127,10 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, UISe
     }
 
     // MARK: Private
+
+    @objc private func refreshControlDidChangeValue() {
+        delegate?.scheduleSceneDidPerformRefreshAction()
+    }
 
     private func searchQueryChanged(_ query: String) {
         delegate?.scheduleSceneDidUpdateSearchQuery(query)

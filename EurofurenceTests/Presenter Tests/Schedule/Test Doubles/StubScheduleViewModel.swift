@@ -21,10 +21,17 @@ final class CapturingScheduleViewModel: ScheduleViewModel {
         self.currentDay = currentDay
     }
     
+    private(set) var delegate: ScheduleViewModelDelegate?
     func setDelegate(_ delegate: ScheduleViewModelDelegate) {
+        self.delegate = delegate
         delegate.scheduleViewModelDidUpdateDays(days)
         delegate.scheduleViewModelDidUpdateEvents(events)
         delegate.scheduleViewModelDidUpdateCurrentDayIndex(to: currentDay)
+    }
+    
+    private(set) var didPerformRefresh = false
+    func refresh() {
+        didPerformRefresh = true
     }
     
     private(set) var capturedDayToShowIndex: Int?
@@ -43,6 +50,14 @@ extension CapturingScheduleViewModel {
     
     func stub(_ identifier: Event2.Identifier, at indexPath: IndexPath) {
         stubbedIdentifiersByIndexPath[indexPath] = identifier
+    }
+    
+    func simulateScheduleRefreshDidBegin() {
+        delegate?.scheduleViewModelDidBeginRefreshing()
+    }
+    
+    func simulateScheduleRefreshDidFinish() {
+        delegate?.scheduleViewModelDidFinishRefreshing()
     }
     
 }

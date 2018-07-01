@@ -94,6 +94,10 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
         }
     }
 
+    func scheduleSceneDidPerformRefreshAction() {
+        viewModel?.refresh()
+    }
+
     func scheduleSceneDidSelectDay(at index: Int) {
         viewModel?.showEventsForDay(at: index)
         hapticEngine.playSelectionHaptic()
@@ -115,6 +119,14 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
 
     func scheduleSceneDidUpdateSearchQuery(_ query: String) {
         searchViewModel?.updateSearchResults(input: query)
+    }
+
+    func scheduleViewModelDidBeginRefreshing() {
+        scene.showRefreshIndicator()
+    }
+
+    func scheduleViewModelDidFinishRefreshing() {
+        scene.hideRefreshIndicator()
     }
 
     func scheduleViewModelDidUpdateDays(_ days: [ScheduleDayViewModel]) {

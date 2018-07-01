@@ -132,6 +132,10 @@ class DefaultScheduleInteractor: ScheduleInteractor {
             delegate.scheduleViewModelDidUpdateCurrentDayIndex(to: selectedDayIndex)
         }
 
+        func refresh() {
+
+        }
+
         func showEventsForDay(at index: Int) {
             let day = days[index]
             schedule.restrictEvents(to: day)

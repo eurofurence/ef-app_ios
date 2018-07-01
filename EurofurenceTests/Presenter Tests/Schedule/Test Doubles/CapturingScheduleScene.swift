@@ -21,6 +21,16 @@ class CapturingScheduleScene: UIViewController, ScheduleScene {
         capturedTitle = title
     }
     
+    private(set) var didShowRefreshIndicator = false
+    func showRefreshIndicator() {
+        didShowRefreshIndicator = true
+    }
+    
+    private(set) var didHideRefreshIndicator = false
+    func hideRefreshIndicator() {
+        didHideRefreshIndicator = true
+    }
+    
     private(set) var boundNumberOfDays: Int?
     private(set) var daysBinder: ScheduleDaysBinder?
     func bind(numberOfDays: Int, using binder: ScheduleDaysBinder) {
