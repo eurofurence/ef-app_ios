@@ -53,7 +53,7 @@ class DefaultScheduleInteractor: ScheduleInteractor {
         completionHandler(searchViewModel)
     }
 
-    private class ViewModel: ScheduleViewModel, EventsServiceObserver, EventsScheduleDelegate {
+    private class ViewModel: ScheduleViewModel, EventsServiceObserver, EventsScheduleDelegate, RefreshServiceObserver {
 
         private struct EventsGroupedByDate: Comparable {
             static func < (lhs: EventsGroupedByDate, rhs: EventsGroupedByDate) -> Bool {
@@ -94,6 +94,7 @@ class DefaultScheduleInteractor: ScheduleInteractor {
             self.shortFormDateFormatter = shortFormDateFormatter
             self.refreshService = refreshService
 
+            refreshService.add(self)
             schedule.setDelegate(self)
         }
 
@@ -149,6 +150,14 @@ class DefaultScheduleInteractor: ScheduleInteractor {
 
         func identifierForEvent(at indexPath: IndexPath) -> Event2.Identifier? {
             return rawModelGroups[indexPath.section].events[indexPath.row].identifier
+        }
+
+        func refreshServiceDidBeginRefreshing() {
+            delegate?.scheduleViewModelDidBeginRefreshing()
+        }
+
+        func refreshServiceDidFinishRefreshing() {
+            delegate?.scheduleViewModelDidFinishRefreshing()
         }
 
         func runningEventsDidChange(to events: [Event2]) { }

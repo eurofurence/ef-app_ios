@@ -11,12 +11,14 @@ import Foundation
 
 class CapturingScheduleViewModelDelegate: ScheduleViewModelDelegate {
     
+    private(set) var viewModelDidBeginRefreshing = false
     func scheduleViewModelDidBeginRefreshing() {
-        
+        viewModelDidBeginRefreshing = true
     }
     
+    private(set) var viewModelDidFinishRefreshing = false
     func scheduleViewModelDidFinishRefreshing() {
-        
+        viewModelDidFinishRefreshing = true
     }
     
     private(set) var daysViewModels: [ScheduleDayViewModel] = []

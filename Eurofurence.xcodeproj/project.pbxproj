@@ -449,6 +449,7 @@
 		CA283A7820E8F53B00F7D195 /* WhenMakingWebModuleWithNonHTTPSchemedLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A7720E8F53B00F7D195 /* WhenMakingWebModuleWithNonHTTPSchemedLinks.swift */; };
 		CA283A7A20E91A7900F7D195 /* WhenInstigatingPullToRefreshAction_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A7920E91A7900F7D195 /* WhenInstigatingPullToRefreshAction_SchedulePresenterShould.swift */; };
 		CA283A7C20E91F3600F7D195 /* WhenToldToRefresh_ScheduleViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A7B20E91F3600F7D195 /* WhenToldToRefresh_ScheduleViewModelShould.swift */; };
+		CA283A7E20E9211400F7D195 /* WhenApplicationRefreshStateChanges_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A7D20E9211400F7D195 /* WhenApplicationRefreshStateChanges_ScheduleInteractorShould.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1616,6 +1617,7 @@
 		CA283A7720E8F53B00F7D195 /* WhenMakingWebModuleWithNonHTTPSchemedLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenMakingWebModuleWithNonHTTPSchemedLinks.swift; sourceTree = "<group>"; };
 		CA283A7920E91A7900F7D195 /* WhenInstigatingPullToRefreshAction_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenInstigatingPullToRefreshAction_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA283A7B20E91F3600F7D195 /* WhenToldToRefresh_ScheduleViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToRefresh_ScheduleViewModelShould.swift; sourceTree = "<group>"; };
+		CA283A7D20E9211400F7D195 /* WhenApplicationRefreshStateChanges_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenApplicationRefreshStateChanges_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -3177,6 +3179,7 @@
 		CA00AE7120D18D0700C2FBB0 /* Interactor Tests */ = {
 			isa = PBXGroup;
 			children = (
+				CA283A7D20E9211400F7D195 /* WhenApplicationRefreshStateChanges_ScheduleInteractorShould.swift */,
 				CA08158A20D4554900F750D4 /* WhenGroupingEventsByStartTime_ScheduleInteractorShould.swift */,
 				CA00AE7220D18D1E00C2FBB0 /* WhenPreparingViewModel_ScheduleInteractorShould.swift */,
 				CA250DE320D6F68700E7513C /* WhenSearchControllerProducesNewResults_ScheduleInteractorShould.swift */,
@@ -6713,6 +6716,7 @@
 				CA30EAA61F2129C60053DBF6 /* CapturingLoginAPI.swift in Sources */,
 				CACF1E6120AE2F0100D904B5 /* CapturingEventDetailScene.swift in Sources */,
 				CACF1EAE20B5C2E500D904B5 /* EventDetailInteractorTestBuilder.swift in Sources */,
+				CA283A7E20E9211400F7D195 /* WhenApplicationRefreshStateChanges_ScheduleInteractorShould.swift in Sources */,
 				CAF5979D20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift in Sources */,
 				78D7EEBF1F196B77005372A9 /* StubBuildConfigurationProviding.swift in Sources */,
 				CA2761C120E02C68000E52AC /* BeforeCollectThemAllSceneLoads_PresenterShould.swift in Sources */,
