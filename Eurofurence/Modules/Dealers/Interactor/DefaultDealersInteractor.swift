@@ -123,6 +123,10 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
             return rawGroups[indexPath.section].dealers[indexPath.item].identifier
         }
 
+        func refresh() {
+
+        }
+
         func consume(event: AllDealersChangedEvent) {
             rawGroups = event.rawGroups
             groups = event.alphabetisedGroups

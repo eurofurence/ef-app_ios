@@ -20,6 +20,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         }
     }
 
+    private let refreshControl = UIRefreshControl(frame: .zero)
     private var searchViewController: DealersSearchTableViewController?
     private var searchController: UISearchController?
 
@@ -40,6 +41,9 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
         searchController = UISearchController(searchResultsController: searchViewController)
         searchController?.delegate = self
         searchController?.searchResultsUpdater = self
+
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshControlValueDidChange), for: .valueChanged)
 
         tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
         tableView.register(DealerComponentTableViewCell.self)
@@ -89,6 +93,10 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     }
 
     // MARK: Private
+
+    @objc private func refreshControlValueDidChange() {
+        delegate?.dealersSceneDidPerformRefreshAction()
+    }
 
     private func didSelectDealer(at indexPath: IndexPath) {
         delegate?.dealersSceneDidSelectDealer(at: indexPath)

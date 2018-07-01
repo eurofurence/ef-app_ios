@@ -440,6 +440,7 @@
 		CA283A6320E6ED6400F7D195 /* RefreshService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A6220E6ED6400F7D195 /* RefreshService.swift */; };
 		CA283A6520E6F27200F7D195 /* WhenApplicationRefreshStateChanges_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A6420E6F27200F7D195 /* WhenApplicationRefreshStateChanges_NewsInteractorShould.swift */; };
 		CA283A6720E6F61B00F7D195 /* WhenPerformingSync_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A6620E6F61B00F7D195 /* WhenPerformingSync_ApplicationShould.swift */; };
+		CA283A6920E8D77800F7D195 /* WhenSceneInstigatesPullToRefresh_DealersPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A6820E8D77800F7D195 /* WhenSceneInstigatesPullToRefresh_DealersPresenterShould.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1598,6 +1599,7 @@
 		CA283A6220E6ED6400F7D195 /* RefreshService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshService.swift; sourceTree = "<group>"; };
 		CA283A6420E6F27200F7D195 /* WhenApplicationRefreshStateChanges_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenApplicationRefreshStateChanges_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA283A6620E6F61B00F7D195 /* WhenPerformingSync_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingSync_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA283A6820E8D77800F7D195 /* WhenSceneInstigatesPullToRefresh_DealersPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneInstigatesPullToRefresh_DealersPresenterShould.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -3986,6 +3988,7 @@
 				CA36A4CB20DA7C9000EE6537 /* WhenBindingDealerSearchResultGroupHeading_DealersPresenterShould.swift */,
 				CA6375AB208E021A00536BE2 /* WhenBuildingDealersModule.swift */,
 				CA36A45620D8464800EE6537 /* WhenDealersSceneLoads_DealersPresenterShould.swift */,
+				CA283A6820E8D77800F7D195 /* WhenSceneInstigatesPullToRefresh_DealersPresenterShould.swift */,
 				CA36A4D320DAE15A00EE6537 /* WhenSceneSelectsDealer_DealersPresenterShould.swift */,
 				CA36A4D920DAE4CF00EE6537 /* WhenSceneSelectsSearchResult_DealersPresenterShould.swift */,
 				CA36A4BF20DA74CB00EE6537 /* WhenSceneUpdatesSearchQuery_DealersPresenterShould.swift */,
@@ -6887,6 +6890,7 @@
 				CA6A8DF720E42DC0007536CD /* WhenSceneTapsMapPosition_MapsDetailPresenterShould.swift in Sources */,
 				CA36A4CE20DA7ED800EE6537 /* WhenSearching_DealersInteractorShould.swift in Sources */,
 				CACF1EA020B43D0900D904B5 /* EventSummaryViewModel+RandomValueProviding.swift in Sources */,
+				CA283A6920E8D77800F7D195 /* WhenSceneInstigatesPullToRefresh_DealersPresenterShould.swift in Sources */,
 				CABF03C72041C3270028BD62 /* StubKnowledgeService.swift in Sources */,
 				CA30EABA1F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift in Sources */,
 				78CA0D0D1F0D8261006DFD64 /* CalendarServiceTests.swift in Sources */,

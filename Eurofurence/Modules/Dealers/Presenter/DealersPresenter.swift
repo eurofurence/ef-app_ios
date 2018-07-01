@@ -113,6 +113,10 @@ class DealersPresenter: DealersSceneDelegate, DealersViewModelDelegate, DealersS
         delegate.dealersModuleDidSelectDealer(identifier: identifier)
     }
 
+    func dealersSceneDidPerformRefreshAction() {
+        viewModel?.refresh()
+    }
+
     func dealerGroupsDidChange(_ groups: [DealersGroupViewModel], indexTitles: [String]) {
         let itemsPerSection = groups.map({ $0.dealers.count })
         let binder = DealerGroupsBinder(viewModels: groups)

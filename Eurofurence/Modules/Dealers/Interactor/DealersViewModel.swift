@@ -12,6 +12,7 @@ protocol DealersViewModel {
 
     func setDelegate(_ delegate: DealersViewModelDelegate)
     func identifierForDealer(at indexPath: IndexPath) -> Dealer2.Identifier?
+    func refresh()
 
 }
 

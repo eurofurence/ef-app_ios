@@ -27,6 +27,11 @@ final class CapturingDealersViewModel: DealersViewModel {
         return dealerIdentifiers[indexPath]
     }
     
+    private(set) var wasToldToRefresh = false
+    func refresh() {
+        wasToldToRefresh = true
+    }
+    
 }
 
 extension CapturingDealersViewModel {
