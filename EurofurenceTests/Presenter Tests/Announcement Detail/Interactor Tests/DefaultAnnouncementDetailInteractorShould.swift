@@ -11,34 +11,21 @@ import XCTest
 
 class DefaultAnnouncementDetailInteractorShould: XCTestCase {
     
-    var interactor: AnnouncementDetailInteractor!
-    var markdownRenderer: StubMarkdownRenderer!
-    var announcement: Announcement2!
+    var context: AnnouncementDetailInteractorTestBuilder.Context!
     
     override func setUp() {
         super.setUp()
-        
-        markdownRenderer = StubMarkdownRenderer()
-        let factory = DefaultAnnouncementDetailInteractorFactory(markdownRenderer: markdownRenderer)
-        announcement = Announcement2.random
-        interactor = factory.makeAnnouncementDetailInteractor(for: announcement)
+        context = AnnouncementDetailInteractorTestBuilder().build()
     }
     
     func testProduceViewModelUsingAnnouncementTitleAsHeading() {
-        let viewModel = makeViewModel()
-        XCTAssertEqual(announcement.title, viewModel?.heading)
+        let viewModel = context.makeViewModel()
+        XCTAssertEqual(context.announcement.title, viewModel?.heading)
     }
     
     func testProduceViewModelContentsUsingMarkdownRenderer() {
-        let viewModel = makeViewModel()
-        XCTAssertEqual(markdownRenderer.stubbedContents(for: announcement.content), viewModel?.contents)
-    }
-    
-    private func makeViewModel() -> AnnouncementViewModel? {
-        var viewModel: AnnouncementViewModel?
-        interactor.makeViewModel { viewModel = $0 }
-        
-        return viewModel
+        let viewModel = context.makeViewModel()
+        XCTAssertEqual(context.markdownRenderer.stubbedContents(for: context.announcement.content), viewModel?.contents)
     }
     
 }
