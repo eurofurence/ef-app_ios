@@ -63,6 +63,7 @@ class Announcements {
         completionHandler(model)
 
         readAnnouncementIdentifiers.append(identifier)
+        announcementsObservers.forEach({ $0.announcementsServiceDidUpdateReadAnnouncements(readAnnouncementIdentifiers) })
 
         dataStore.performTransaction { (transaction) in
             transaction.saveReadAnnouncements(self.readAnnouncementIdentifiers)
@@ -82,7 +83,7 @@ class Announcements {
     private func provideLatestData(to observer: AnnouncementsServiceObserver) {
         observer.eurofurenceApplicationDidChangeUnreadAnnouncements(to: models)
         observer.eurofurenceApplicationDidChangeAnnouncements(models)
-        observer.announcementsServiceDidUpdateReadAnnouncements([])
+        observer.announcementsServiceDidUpdateReadAnnouncements(readAnnouncementIdentifiers)
     }
 
 }

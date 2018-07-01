@@ -26,8 +26,10 @@ class CapturingAnnouncementsServiceObserver: AnnouncementsServiceObserver {
     }
     
     private(set) var didReceieveEmptyReadAnnouncements = false
+    private(set) var readAnnouncementIdentifiers = [Announcement2.Identifier]()
     func announcementsServiceDidUpdateReadAnnouncements(_ readAnnouncements: [Announcement2.Identifier]) {
         didReceieveEmptyReadAnnouncements = didReceieveEmptyReadAnnouncements || readAnnouncements.isEmpty
+        readAnnouncementIdentifiers = readAnnouncements
     }
     
 }
