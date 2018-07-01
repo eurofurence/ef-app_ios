@@ -107,7 +107,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
 
     }
 
-    private class ViewModel: DealersViewModel, EventConsumer {
+    private class ViewModel: DealersViewModel, EventConsumer, RefreshServiceObserver {
 
         private let refreshService: RefreshService
         private var rawGroups = [AlphabetisedDealersGroup]()
@@ -116,6 +116,8 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
 
         init(eventBus: EventBus, refreshService: RefreshService) {
             self.refreshService = refreshService
+
+            refreshService.add(self)
             eventBus.subscribe(consumer: self)
         }
 
@@ -139,6 +141,14 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
             indexTitles = event.indexTitles
 
             delegate?.dealerGroupsDidChange(groups, indexTitles: indexTitles)
+        }
+
+        func refreshServiceDidBeginRefreshing() {
+            delegate?.dealersRefreshDidBegin()
+        }
+
+        func refreshServiceDidFinishRefreshing() {
+            delegate?.dealersRefreshDidFinish()
         }
 
     }

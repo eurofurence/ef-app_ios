@@ -18,6 +18,8 @@ protocol DealersViewModel {
 
 protocol DealersViewModelDelegate {
 
+    func dealersRefreshDidBegin()
+    func dealersRefreshDidFinish()
     func dealerGroupsDidChange(_ groups: [DealersGroupViewModel], indexTitles: [String])
 
 }

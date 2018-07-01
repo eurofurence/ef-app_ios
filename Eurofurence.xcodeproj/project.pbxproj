@@ -444,6 +444,7 @@
 		CA283A6D20E8DA0300F7D195 /* DealerInteractorTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A6C20E8DA0300F7D195 /* DealerInteractorTestBuilder.swift */; };
 		CA283A6F20E8DA5D00F7D195 /* CapturingDealersSearchViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A6E20E8DA5D00F7D195 /* CapturingDealersSearchViewModelDelegate.swift */; };
 		CA283A7120E8DCD000F7D195 /* WhenToldToRefresh_DealersViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A7020E8DCD000F7D195 /* WhenToldToRefresh_DealersViewModelShould.swift */; };
+		CA283A7320E8E84100F7D195 /* WhenApplicationRefreshStateChanges_DealersViewModelShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A7220E8E84100F7D195 /* WhenApplicationRefreshStateChanges_DealersViewModelShould.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1606,6 +1607,7 @@
 		CA283A6C20E8DA0300F7D195 /* DealerInteractorTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerInteractorTestBuilder.swift; sourceTree = "<group>"; };
 		CA283A6E20E8DA5D00F7D195 /* CapturingDealersSearchViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDealersSearchViewModelDelegate.swift; sourceTree = "<group>"; };
 		CA283A7020E8DCD000F7D195 /* WhenToldToRefresh_DealersViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToRefresh_DealersViewModelShould.swift; sourceTree = "<group>"; };
+		CA283A7220E8E84100F7D195 /* WhenApplicationRefreshStateChanges_DealersViewModelShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenApplicationRefreshStateChanges_DealersViewModelShould.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -3677,6 +3679,7 @@
 				CA36A49C20D97D0100EE6537 /* WhenResolvingDealerAvailability_DealersInteractorShould.swift */,
 				CA36A4CD20DA7ED800EE6537 /* WhenSearching_DealersInteractorShould.swift */,
 				CA283A7020E8DCD000F7D195 /* WhenToldToRefresh_DealersViewModelShould.swift */,
+				CA283A7220E8E84100F7D195 /* WhenApplicationRefreshStateChanges_DealersViewModelShould.swift */,
 			);
 			path = "Interactor Tests";
 			sourceTree = "<group>";
@@ -6876,6 +6879,7 @@
 				CA637572208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift in Sources */,
 				CA1B6F3520DC171200ADF414 /* WhenBindingDealerSummaryWithMissingAttributes_DealerDetailPresenterShould.swift in Sources */,
 				78455B5D1F1182B7005BE2D7 /* TutorialPageViewControllerTests.swift in Sources */,
+				CA283A7320E8E84100F7D195 /* WhenApplicationRefreshStateChanges_DealersViewModelShould.swift in Sources */,
 				CA60BFE62078E5F700697566 /* CapturingPrivateMessagesService.swift in Sources */,
 				CA6EC4792051CAFA00402894 /* WhenBuildingKnowledgeDetailModule.swift in Sources */,
 				CAC1E1311F50413500195513 /* CapturingNewsScene.swift in Sources */,

@@ -18,6 +18,16 @@ class CapturingDealersViewModelDelegate: DealersViewModelDelegate {
         capturedIndexTitles = indexTitles
     }
     
+    private(set) var toldRefreshDidBegin = false
+    func dealersRefreshDidBegin() {
+        toldRefreshDidBegin = true
+    }
+    
+    private(set) var toldRefreshDidFinish = false
+    func dealersRefreshDidFinish() {
+        toldRefreshDidFinish = true
+    }
+    
 }
 
 extension CapturingDealersViewModelDelegate {
