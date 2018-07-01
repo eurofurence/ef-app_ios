@@ -139,6 +139,11 @@ extension CapturingEurofurenceDataStore {
         return persistedMaps.contains(elementsFrom: maps)
     }
     
+    func didSaveReadAnnouncement(_ identifier: Announcement2.Identifier) -> Bool {
+        guard let persistedAnnouncementIdentifiers = transaction?.persistedReadAnnouncementIdentifiers else { return false }
+        return persistedAnnouncementIdentifiers.contains(identifier)
+    }
+    
 }
 
 extension Array where Element: Equatable {
@@ -215,6 +220,11 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
     private(set) var persistedMaps: [APIMap] = []
     func saveMaps(_ maps: [APIMap]) {
         persistedMaps = maps
+    }
+    
+    private(set) var persistedReadAnnouncementIdentifiers: [Announcement2.Identifier] = []
+    func saveReadAnnouncements(_ announcements: [Announcement2.Identifier]) {
+        persistedReadAnnouncementIdentifiers = announcements
     }
     
 }

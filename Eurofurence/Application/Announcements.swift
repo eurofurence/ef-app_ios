@@ -29,6 +29,8 @@ class Announcements {
 
     // MARK: Properties
 
+    private let dataStore: EurofurenceDataStore
+
     private var models = [Announcement2]() {
         didSet {
             announcementsObservers.forEach(provideLatestData)
@@ -40,6 +42,7 @@ class Announcements {
     // MARK: Initialization
 
     init(eventBus: EventBus, dataStore: EurofurenceDataStore) {
+        self.dataStore = dataStore
         eventBus.subscribe(consumer: AnnouncementsUpdater(announcements: self))
 
         if let persistedAnnouncements = dataStore.getSavedAnnouncements() {
@@ -57,6 +60,10 @@ class Announcements {
     func openAnnouncement(identifier: Announcement2.Identifier, completionHandler: @escaping (Announcement2) -> Void) {
         guard let model = models.first(where: { $0.identifier == identifier }) else { return }
         completionHandler(model)
+
+        dataStore.performTransaction { (transaction) in
+            transaction.saveReadAnnouncements([identifier])
+        }
     }
 
     // MARK: Private

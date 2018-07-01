@@ -26,4 +26,17 @@ class WhenOpeningAnnouncement_ApplicationShould: XCTestCase {
         XCTAssertEqual(expected, model)
     }
     
+    func testSaveTheAnnouncementIdentifierAsReadAnnouncementToStore() {
+        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let announcements = syncResponse.announcements.changed
+        let announcement = announcements.randomElement().element
+        let identifier = announcement.identifier
+        let context = ApplicationTestBuilder().build()
+        context.refreshLocalStore()
+        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.application.openAnnouncement(identifier: Announcement2.Identifier(identifier)) { (_) in }
+        
+        XCTAssertTrue(context.dataStore.didSaveReadAnnouncement(Announcement2.Identifier(identifier)))
+    }
+    
 }

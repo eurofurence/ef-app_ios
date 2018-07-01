@@ -340,6 +340,10 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
             }
         }
 
+        func saveReadAnnouncements(_ announcements: [Announcement2.Identifier]) {
+
+        }
+
         // MARK: Private
 
         private func makeEntity<Entity>(in context: NSManagedObjectContext,
