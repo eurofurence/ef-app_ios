@@ -65,6 +65,7 @@ class Announcements {
     private func provideLatestData(to observer: AnnouncementsServiceObserver) {
         observer.eurofurenceApplicationDidChangeUnreadAnnouncements(to: models)
         observer.eurofurenceApplicationDidChangeAnnouncements(models)
+        observer.announcementsServiceDidUpdateReadAnnouncements([])
     }
 
 }
