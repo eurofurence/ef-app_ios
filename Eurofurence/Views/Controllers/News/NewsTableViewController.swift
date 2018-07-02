@@ -133,6 +133,10 @@ class NewsTableViewController: UITableViewController,
         super.viewWillAppear(animated)
 
         struct DummyNewsModuleDelegate: NewsModuleDelegate {
+            func newsModuleDidRequestShowingAllAnnouncements() {
+
+            }
+
             func newsModuleDidRequestLogin() {
 
             }

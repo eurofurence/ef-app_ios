@@ -26,4 +26,9 @@ class CapturingNewsModuleDelegate: NewsModuleDelegate {
         capturedEvent = event
     }
     
+    private(set) var showAllAnnouncementsRequested = false
+    func newsModuleDidRequestShowingAllAnnouncements() {
+        showAllAnnouncementsRequested = true
+    }
+    
 }

@@ -35,9 +35,7 @@ class ViewAllAnnouncementsViewModel: NewsViewModel {
     
     private var models = [IndexPath : NewsViewModelValue]()
     func fetchModelValue(at indexPath: IndexPath, completionHandler: @escaping (NewsViewModelValue) -> Void) {
-        if let model = models[indexPath] {
-            completionHandler(model)
-        }
+        completionHandler(.allAnnouncements)
     }
     
 }
@@ -54,6 +52,19 @@ class WhenBindingAllAnnouncementsComponent_NewsPresenterShould: XCTestCase {
         context.bindSceneComponent(at: indexPath)
         
         XCTAssertEqual(component.caption, context.newsScene.stubbedAllAnnouncementsComponent.capturedCaption)
+    }
+    
+    func testTellTheDelegateToShowAllAnnouncements() {
+        let component = ViewAllAnnouncementsComponentViewModel(caption: .random)
+        let viewModel = ViewAllAnnouncementsViewModel(component: component)
+        let indexPath = IndexPath(row: 0, section: 0)
+        let newsInteractor = StubNewsInteractor(viewModel: viewModel)
+        let context = NewsPresenterTestBuilder().with(newsInteractor).build()
+        context.simulateNewsSceneDidLoad()
+        context.bindSceneComponent(at: indexPath)
+        context.selectComponent(at: indexPath)
+        
+        XCTAssertTrue(context.delegate.showAllAnnouncementsRequested)
     }
     
 }

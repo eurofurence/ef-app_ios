@@ -176,6 +176,10 @@ class ApplicationDirector: ExternalContentHandler,
         newsController?.navigationController?.pushViewController(module, animated: animate)
     }
 
+    func newsModuleDidRequestShowingAllAnnouncements() {
+
+    }
+
     // MARK: ScheduleModuleDelegate
 
     func scheduleModuleDidSelectEvent(identifier: Event2.Identifier) {

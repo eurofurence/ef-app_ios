@@ -133,7 +133,7 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
                 self.delegate.newsModuleDidSelectEvent(event)
 
             case .allAnnouncements:
-                break
+                self.delegate.newsModuleDidRequestShowingAllAnnouncements()
             }
         }
     }
