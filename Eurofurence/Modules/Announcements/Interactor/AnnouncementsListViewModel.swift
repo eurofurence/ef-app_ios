@@ -12,6 +12,13 @@ protocol AnnouncementsListViewModel {
 
     var numberOfAnnouncements: Int { get }
 
+    func setDelegate(_ delegate: AnnouncementsListViewModelDelegate)
     func announcementViewModel(at index: Int) -> AnnouncementComponentViewModel
+
+}
+
+protocol AnnouncementsListViewModelDelegate {
+
+    func announcementsViewModelDidChangeAnnouncements()
 
 }

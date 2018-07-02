@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct AnnouncementsPresenter: AnnouncementsSceneDelegate {
+class AnnouncementsPresenter: AnnouncementsSceneDelegate, AnnouncementsListViewModelDelegate {
 
     private struct Binder: AnnouncementsBinder {
 
@@ -31,6 +31,7 @@ struct AnnouncementsPresenter: AnnouncementsSceneDelegate {
 
     private let scene: AnnouncementsScene
     private let interactor: AnnouncementsInteractor
+    private var viewModel: AnnouncementsListViewModel?
 
     init(scene: AnnouncementsScene, interactor: AnnouncementsInteractor) {
         self.scene = scene
@@ -41,9 +42,18 @@ struct AnnouncementsPresenter: AnnouncementsSceneDelegate {
     }
 
     func announcementsSceneDidLoad() {
-        interactor.makeViewModel { (viewModel) in
-            self.scene.bind(numberOfAnnouncements: viewModel.numberOfAnnouncements, using: Binder(viewModel: viewModel))
-        }
+        interactor.makeViewModel(completionHandler: viewModelPrepared)
+    }
+
+    func announcementsViewModelDidChangeAnnouncements() {
+        guard let viewModel = viewModel else { return }
+        scene.bind(numberOfAnnouncements: viewModel.numberOfAnnouncements, using: Binder(viewModel: viewModel))
+    }
+
+    private func viewModelPrepared(_ viewModel: AnnouncementsListViewModel) {
+        self.viewModel = viewModel
+        viewModel.setDelegate(self)
+        scene.bind(numberOfAnnouncements: viewModel.numberOfAnnouncements, using: Binder(viewModel: viewModel))
     }
 
 }

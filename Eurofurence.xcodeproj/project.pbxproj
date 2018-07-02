@@ -482,6 +482,7 @@
 		CA283ACA20EAB9E600F7D195 /* AnnouncementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AC920EAB9E600F7D195 /* AnnouncementComponent.swift */; };
 		CA283ACC20EAB9F400F7D195 /* CapturingAnnouncementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283ACB20EAB9F400F7D195 /* CapturingAnnouncementComponent.swift */; };
 		CA283ACF20EAC18500F7D195 /* AnnouncementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA283ACE20EAC18500F7D195 /* AnnouncementTableViewCell.xib */; };
+		CA283AD120EAC64A00F7D195 /* WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AD020EAC64A00F7D195 /* WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShould.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1679,6 +1680,7 @@
 		CA283AC920EAB9E600F7D195 /* AnnouncementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementComponent.swift; sourceTree = "<group>"; };
 		CA283ACB20EAB9F400F7D195 /* CapturingAnnouncementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAnnouncementComponent.swift; sourceTree = "<group>"; };
 		CA283ACE20EAC18500F7D195 /* AnnouncementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnouncementTableViewCell.xib; sourceTree = "<group>"; };
+		CA283AD020EAC64A00F7D195 /* WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShould.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -3718,6 +3720,7 @@
 			children = (
 				CA283ABF20EAB5AE00F7D195 /* BeforeAnnouncementsDetailSceneLoads_AnnouncementsPresenterShould.swift */,
 				CA283AB520EAA39800F7D195 /* WhenAnnouncementsSceneLoads_AnnouncementsPresenterShould.swift */,
+				CA283AD020EAC64A00F7D195 /* WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShould.swift */,
 				CA283AC520EAB85700F7D195 /* WhenBindingAnnouncement_AnnouncementsPresenterShould.swift */,
 				CA283A9D20EA9FB900F7D195 /* WhenBuildingAnnouncementsModule_AnnouncementsPresenterShould.swift */,
 			);
@@ -7158,6 +7161,7 @@
 				CA0815A020D47D4100F750D4 /* WhenRestrictingEventsToSpecificDay_ScheduleShould.swift in Sources */,
 				CA25A7FD20E6412300875891 /* WhenFetchingMapContents_ThatRevealsDealer_ApplicationShould.swift in Sources */,
 				CA36A46520D84A8100EE6537 /* FakeDealersInteractor.swift in Sources */,
+				CA283AD120EAC64A00F7D195 /* WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShould.swift in Sources */,
 				CA36A47D20D85D4500EE6537 /* WhenBindingDealerComponent_ForDealerWithAfterDarkContent_DealersPresenterShould.swift in Sources */,
 				CA2761BC20E02A25000E52AC /* FakeCollectThemAllService.swift in Sources */,
 				CAFD012820C6F2A2004F3935 /* WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould.swift in Sources */,

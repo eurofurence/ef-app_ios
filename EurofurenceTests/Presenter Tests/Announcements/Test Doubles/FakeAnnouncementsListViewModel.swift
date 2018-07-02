@@ -11,7 +11,7 @@ import Foundation
 
 class FakeAnnouncementsListViewModel: AnnouncementsListViewModel {
     
-    let announcements: [AnnouncementComponentViewModel]
+    private(set) var announcements: [AnnouncementComponentViewModel]
     
     init(announcements: [AnnouncementComponentViewModel] = .random) {
         self.announcements = announcements
@@ -21,8 +21,22 @@ class FakeAnnouncementsListViewModel: AnnouncementsListViewModel {
         return announcements.count
     }
     
+    fileprivate var delegate: AnnouncementsListViewModelDelegate?
+    func setDelegate(_ delegate: AnnouncementsListViewModelDelegate) {
+        self.delegate = delegate
+    }
+    
     func announcementViewModel(at index: Int) -> AnnouncementComponentViewModel {
         return announcements[index]
+    }
+    
+}
+
+extension FakeAnnouncementsListViewModel {
+    
+    func simulateUpdatedAnnouncements(_ newAnnouncements: [AnnouncementComponentViewModel]) {
+        self.announcements = newAnnouncements
+        delegate?.announcementsViewModelDidChangeAnnouncements()
     }
     
 }
