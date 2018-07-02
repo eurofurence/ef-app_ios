@@ -50,8 +50,8 @@ class StubNewsComponentFactory: NewsComponentFactory {
         return stubbedCountdownComponent
     }
     
-    let stubbedAnnouncementComponent = CapturingNewsAnnouncementComponent()
-    func makeAnnouncementComponent(configuringUsing block: (NewsAnnouncementComponent) -> Void) -> StubNewsComponentFactory.Component {
+    let stubbedAnnouncementComponent = CapturingAnnouncementComponent()
+    func makeAnnouncementComponent(configuringUsing block: (AnnouncementComponent) -> Void) -> StubNewsComponentFactory.Component {
         block(stubbedAnnouncementComponent)
         return stubbedAnnouncementComponent
     }
@@ -81,30 +81,6 @@ class CapturingConventionCountdownComponent: ConventionCountdownComponent {
     private(set) var capturedTimeUntilConvention: String?
     func setTimeUntilConvention(_ timeUntilConvention: String) {
         capturedTimeUntilConvention = timeUntilConvention
-    }
-    
-}
-
-class CapturingNewsAnnouncementComponent: NewsAnnouncementComponent {
-    
-    private(set) var capturedTitle: String?
-    func setAnnouncementTitle(_ title: String) {
-        capturedTitle = title
-    }
-    
-    private(set) var capturedDetail: String?
-    func setAnnouncementDetail(_ detail: String) {
-        capturedDetail = detail
-    }
-    
-    private(set) var didHideUnreadIndicator = false
-    func hideUnreadIndicator() {
-        didHideUnreadIndicator = true
-    }
-    
-    private(set) var didShowUnreadIndicator = false
-    func showUnreadIndicator() {
-        didShowUnreadIndicator = true
     }
     
 }
@@ -189,7 +165,7 @@ extension CapturingNewsScene {
         return componentFactory.stubbedCountdownComponent
     }
     
-    var stubbedAnnouncementComponent: CapturingNewsAnnouncementComponent {
+    var stubbedAnnouncementComponent: CapturingAnnouncementComponent {
         return componentFactory.stubbedAnnouncementComponent
     }
     

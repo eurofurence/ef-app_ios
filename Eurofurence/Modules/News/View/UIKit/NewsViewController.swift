@@ -26,7 +26,7 @@ class NewsViewController: UIViewController, NewsScene {
 
         refreshControl.addTarget(self, action: #selector(refreshControlDidChangeValue), for: .valueChanged)
         tableView.refreshControl = refreshControl
-        tableView.register(NewsAnnouncementTableViewCell.self)
+        tableView.register(AnnouncementTableViewCell.self)
         tableView.register(EventTableViewCell.self)
         tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
         delegate?.newsSceneDidLoad()
@@ -103,8 +103,8 @@ class NewsViewController: UIViewController, NewsScene {
             return manufacture(NewsUserWidgetTableViewCell.self, configuration: block)
         }
 
-        func makeAnnouncementComponent(configuringUsing block: (NewsAnnouncementComponent) -> Void) -> UITableViewCell {
-            return manufacture(NewsAnnouncementTableViewCell.self, configuration: block)
+        func makeAnnouncementComponent(configuringUsing block: (AnnouncementComponent) -> Void) -> UITableViewCell {
+            return manufacture(AnnouncementTableViewCell.self, configuration: block)
         }
 
         func makeAllAnnouncementsComponent(configuringUsing block: (AllAnnouncementsComponent) -> Void) -> Component {

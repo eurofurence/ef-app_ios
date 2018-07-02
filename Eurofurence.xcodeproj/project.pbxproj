@@ -237,7 +237,7 @@
 		CA00AE8B20D28AF400C2FBB0 /* Day+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */; };
 		CA00AE8E20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */; };
 		CA00AE9120D293B800C2FBB0 /* UICollectionView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE9020D293B800C2FBB0 /* UICollectionView+Convenience.swift */; };
-		CA057A5B2088BDBB00504FA4 /* NewsAnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */; };
+		CA057A5B2088BDBB00504FA4 /* AnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* AnnouncementTableViewCell.swift */; };
 		CA08157820D3865600F750D4 /* NavigationBarViewExtensionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */; };
 		CA08157A20D3877700F750D4 /* FoundationShortFormDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */; };
 		CA08157D20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157C20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift */; };
@@ -481,7 +481,7 @@
 		CA283AC820EAB9D100F7D195 /* AnnouncementsBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AC720EAB9D100F7D195 /* AnnouncementsBinder.swift */; };
 		CA283ACA20EAB9E600F7D195 /* AnnouncementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AC920EAB9E600F7D195 /* AnnouncementComponent.swift */; };
 		CA283ACC20EAB9F400F7D195 /* CapturingAnnouncementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283ACB20EAB9F400F7D195 /* CapturingAnnouncementComponent.swift */; };
-		CA283ACF20EAC18500F7D195 /* NewsAnnouncementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA283ACE20EAC18500F7D195 /* NewsAnnouncementTableViewCell.xib */; };
+		CA283ACF20EAC18500F7D195 /* AnnouncementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA283ACE20EAC18500F7D195 /* AnnouncementTableViewCell.xib */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1434,7 +1434,7 @@
 		CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDayCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA00AE9020D293B800C2FBB0 /* UICollectionView+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Convenience.swift"; sourceTree = "<group>"; };
-		CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsAnnouncementTableViewCell.swift; sourceTree = "<group>"; };
+		CA057A5A2088BDBA00504FA4 /* AnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementTableViewCell.swift; sourceTree = "<group>"; };
 		CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewExtensionContainer.swift; sourceTree = "<group>"; };
 		CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationShortFormDateFormatter.swift; sourceTree = "<group>"; };
 		CA08157C20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncCompletesWithConferenceDays_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -1678,7 +1678,7 @@
 		CA283AC720EAB9D100F7D195 /* AnnouncementsBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsBinder.swift; sourceTree = "<group>"; };
 		CA283AC920EAB9E600F7D195 /* AnnouncementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementComponent.swift; sourceTree = "<group>"; };
 		CA283ACB20EAB9F400F7D195 /* CapturingAnnouncementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAnnouncementComponent.swift; sourceTree = "<group>"; };
-		CA283ACE20EAC18500F7D195 /* NewsAnnouncementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsAnnouncementTableViewCell.xib; sourceTree = "<group>"; };
+		CA283ACE20EAC18500F7D195 /* AnnouncementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnouncementTableViewCell.xib; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -3786,8 +3786,8 @@
 		CA283ACD20EAC17100F7D195 /* Announcement */ = {
 			isa = PBXGroup;
 			children = (
-				CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */,
-				CA283ACE20EAC18500F7D195 /* NewsAnnouncementTableViewCell.xib */,
+				CA057A5A2088BDBA00504FA4 /* AnnouncementTableViewCell.swift */,
+				CA283ACE20EAC18500F7D195 /* AnnouncementTableViewCell.xib */,
 			);
 			path = Announcement;
 			sourceTree = "<group>";
@@ -6118,7 +6118,7 @@
 				78C86D701F12AA6C003A20E6 /* Hieroglify.ttf in Resources */,
 				9A0F87DC1F19311900FF294B /* EventCell.xib in Resources */,
 				CA36A48320D8C89700EE6537 /* DealerComponentTableViewCell.xib in Resources */,
-				CA283ACF20EAC18500F7D195 /* NewsAnnouncementTableViewCell.xib in Resources */,
+				CA283ACF20EAC18500F7D195 /* AnnouncementTableViewCell.xib in Resources */,
 				CA6EC4872051CD8F00402894 /* KnowledgeDetail.storyboard in Resources */,
 				9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */,
 				CA72843D209CF07A007D912A /* Localizable.stringsdict in Resources */,
@@ -6781,7 +6781,7 @@
 				D6F3D275FF81A313B9213277 /* AnnouncementCell.swift in Sources */,
 				CA72848E209F93A4007D912A /* MarkdownRenderer.swift in Sources */,
 				9A861ED91F25564900B75A8C /* RootViewControllerAnimator.swift in Sources */,
-				CA057A5B2088BDBB00504FA4 /* NewsAnnouncementTableViewCell.swift in Sources */,
+				CA057A5B2088BDBB00504FA4 /* AnnouncementTableViewCell.swift in Sources */,
 				D6F3D62A784F07D9C7A84DC8 /* KnowledgeEntryViewController.swift in Sources */,
 				CA0E5213208F4CD7005259FE /* AnnouncementsService.swift in Sources */,
 				CA1FE99B1FA0B3EB009C7DF3 /* WindowWireframe.swift in Sources */,

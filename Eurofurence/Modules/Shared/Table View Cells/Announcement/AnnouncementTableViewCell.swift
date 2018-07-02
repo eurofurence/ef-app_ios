@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewsAnnouncementTableViewCell: UITableViewCell, NewsAnnouncementComponent {
+class AnnouncementTableViewCell: UITableViewCell, AnnouncementComponent {
 
     // MARK: IBOutlets
 
@@ -16,7 +16,7 @@ class NewsAnnouncementTableViewCell: UITableViewCell, NewsAnnouncementComponent 
     @IBOutlet weak var announcementDescriptionLabel: UILabel!
     @IBOutlet weak var unreadIndicatorView: UIView!
 
-    // MARK: NewsAnnouncementComponent
+    // MARK: AnnouncementComponent
 
     func setAnnouncementTitle(_ title: String) {
         announcementTitleLabel.text = title
