@@ -17,7 +17,11 @@ struct SafariWebModuleProviding: WebModuleProviding {
             safeURL = components.url!
         }
 
-        return SFSafariViewController(url: safeURL)
+        let module = SFSafariViewController(url: safeURL)
+        module.preferredBarTintColor = .pantone330U
+        module.preferredControlTintColor = .white
+
+        return module
     }
 
 }
