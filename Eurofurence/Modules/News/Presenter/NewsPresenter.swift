@@ -76,6 +76,12 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
             }
         }
 
+        func visit(_ viewAllAnnouncements: ViewAllAnnouncementsComponentViewModel) {
+            boundComponent = componentFactory.makeAllAnnouncementsComponent { (component) in
+                component.showCaption(viewAllAnnouncements.caption)
+            }
+        }
+
         func visit(_ event: EventComponentViewModel) {
             boundComponent = componentFactory.makeEventComponent { (component) in
                 component.setEventStartTime(event.startTime)

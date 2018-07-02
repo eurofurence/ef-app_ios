@@ -356,6 +356,10 @@ fileprivate extension DefaultNewsInteractorTestBuilder.Context {
                 components.append(AnyHashable(announcement))
             }
             
+            func visit(_ viewAllAnnouncements: ViewAllAnnouncementsComponentViewModel) {
+                
+            }
+            
             func visit(_ event: EventComponentViewModel) {
                 components.append(AnyHashable(event))
             }

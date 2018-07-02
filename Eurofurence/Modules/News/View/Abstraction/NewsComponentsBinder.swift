@@ -23,6 +23,7 @@ protocol NewsComponentFactory {
     func makeConventionCountdownComponent(configuringUsing block: (ConventionCountdownComponent) -> Void) -> Component
     func makeUserWidgetComponent(configuringUsing block: (UserWidgetComponent) -> Void) -> Component
     func makeAnnouncementComponent(configuringUsing block: (NewsAnnouncementComponent) -> Void) -> Component
+    func makeAllAnnouncementsComponent(configuringUsing block: (AllAnnouncementsComponent) -> Void) -> Component
     func makeEventComponent(configuringUsing block: (NewsEventComponent) -> Void) -> Component
 
 }
@@ -50,6 +51,12 @@ protocol NewsAnnouncementComponent {
     func setAnnouncementDetail(_ detail: String)
     func hideUnreadIndicator()
     func showUnreadIndicator()
+
+}
+
+protocol AllAnnouncementsComponent {
+
+    func showCaption(_ caption: String)
 
 }
 

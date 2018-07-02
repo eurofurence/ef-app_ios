@@ -56,6 +56,12 @@ class StubNewsComponentFactory: NewsComponentFactory {
         return stubbedAnnouncementComponent
     }
     
+    let stubbedAllAnnouncementsComponent = CapturingAllAnnouncementsComponent()
+    func makeAllAnnouncementsComponent(configuringUsing block: (AllAnnouncementsComponent) -> Void) -> StubNewsComponentFactory.Component {
+        block(stubbedAllAnnouncementsComponent)
+        return stubbedAllAnnouncementsComponent
+    }
+    
     let stubbedEventComponent = CapturingNewsEventComponent()
     func makeEventComponent(configuringUsing block: (NewsEventComponent) -> Void) -> AnyObject {
         block(stubbedEventComponent)
@@ -99,6 +105,15 @@ class CapturingNewsAnnouncementComponent: NewsAnnouncementComponent {
     private(set) var didShowUnreadIndicator = false
     func showUnreadIndicator() {
         didShowUnreadIndicator = true
+    }
+    
+}
+
+class CapturingAllAnnouncementsComponent: AllAnnouncementsComponent {
+    
+    private(set) var capturedCaption: String?
+    func showCaption(_ caption: String) {
+        capturedCaption = caption
     }
     
 }
@@ -176,6 +191,10 @@ extension CapturingNewsScene {
     
     var stubbedAnnouncementComponent: CapturingNewsAnnouncementComponent {
         return componentFactory.stubbedAnnouncementComponent
+    }
+    
+    var stubbedAllAnnouncementsComponent: CapturingAllAnnouncementsComponent {
+        return componentFactory.stubbedAllAnnouncementsComponent
     }
     
     var stubbedEventComponent: CapturingNewsEventComponent {

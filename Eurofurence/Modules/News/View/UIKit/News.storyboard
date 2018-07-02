@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -42,7 +43,7 @@
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="ttW-jI-1Km">
-                            <rect key="frame" x="0.0" y="416" width="375" height="1"/>
+                            <rect key="frame" x="0.0" y="477" width="375" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -193,6 +194,31 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="timeUntilConventionLabel" destination="BR6-wC-Oa1" id="Lta-FW-M4o"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ViewAllAnnouncementsTableViewCell" rowHeight="61" id="zh4-3w-aak" customClass="ViewAllAnnouncementsTableViewCell" customModule="Eurofurence" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="416" width="375" height="61"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zh4-3w-aak" id="VVc-uh-ele">
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="60.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32I-3f-jmr">
+                                            <rect key="frame" x="20" y="11" width="301" height="39"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="32I-3f-jmr" firstAttribute="leading" secondItem="VVc-uh-ele" secondAttribute="leading" constant="20" symbolic="YES" id="BrE-Qd-Fgm"/>
+                                        <constraint firstAttribute="trailing" secondItem="32I-3f-jmr" secondAttribute="trailing" constant="20" symbolic="YES" id="Ufz-Ih-ewc"/>
+                                        <constraint firstItem="32I-3f-jmr" firstAttribute="top" secondItem="VVc-uh-ele" secondAttribute="topMargin" id="Vlw-0s-RGM"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="32I-3f-jmr" secondAttribute="bottom" id="XlJ-UI-d2y"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="allAnnouncementsCaptionLabel" destination="32I-3f-jmr" id="r6A-e2-8U2"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
