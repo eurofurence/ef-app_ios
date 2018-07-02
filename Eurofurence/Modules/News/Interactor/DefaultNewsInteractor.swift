@@ -302,17 +302,29 @@ class DefaultNewsInteractor: NewsInteractor,
             })
         }
 
-        var childCount: Int { return viewModels.count }
+        var childCount: Int { return viewModels.count + 1 }
         var title: String { return .announcements }
 
         func announceContent(at index: Int, to visitor: NewsViewModelVisitor) {
-            let viewModel = viewModels[index]
-            visitor.visit(viewModel)
+            switch index {
+            case 0:
+                visitor.visit(ViewAllAnnouncementsComponentViewModel(caption: .allAnnouncements))
+
+            default:
+                let viewModel = viewModels[index - 1]
+                visitor.visit(viewModel)
+            }
         }
 
         func announceValue(at index: Int, to completionHandler: @escaping (NewsViewModelValue) -> Void) {
-            let announcement = announcements[index]
-            completionHandler(.announcement(announcement))
+            switch index {
+            case 0:
+                break
+
+            default:
+                let announcement = announcements[index - 1]
+                completionHandler(.announcement(announcement))
+            }
         }
 
     }

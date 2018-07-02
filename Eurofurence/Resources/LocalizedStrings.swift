@@ -63,6 +63,8 @@ public extension String {
                                                           comment: "Heading for the messages widget in the News tab")
     public static let announcements = NSLocalizedString("Announcements",
                                                         comment: "Heading for the announcements shown to the user in the News tab")
+    public static let allAnnouncements = NSLocalizedString("AllAnnouncements",
+                                                           comment: "Title for the component in the News view to show a list of all the announcements sent during the convention")
     public static let daysUntilConvention = NSLocalizedString("DaysUntilConventionHeader",
                                                               comment: "Header shown above the widget describing how many days are left until the convention")
     public static let daysRemainingFormat = NSLocalizedString("DaysUntilConvention",
