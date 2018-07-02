@@ -131,6 +131,9 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
 
             case .event(let event):
                 self.delegate.newsModuleDidSelectEvent(event)
+
+            case .allAnnouncements:
+                break
             }
         }
     }

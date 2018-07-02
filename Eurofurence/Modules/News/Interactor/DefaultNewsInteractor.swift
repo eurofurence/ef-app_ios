@@ -319,7 +319,7 @@ class DefaultNewsInteractor: NewsInteractor,
         func announceValue(at index: Int, to completionHandler: @escaping (NewsViewModelValue) -> Void) {
             switch index {
             case 0:
-                break
+                completionHandler(.allAnnouncements)
 
             default:
                 let announcement = announcements[index - 1]

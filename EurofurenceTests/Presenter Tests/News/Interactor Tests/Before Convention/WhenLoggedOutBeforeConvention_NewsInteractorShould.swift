@@ -43,4 +43,9 @@ class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
         context.assert().thatModel().at(indexPath: announcementIndexPath, is: .announcement(randomAnnouncement.element))
     }
     
+    func testFetchAllAnnouncementsModuleValueWhenAskingForAllAnnouncementsIndex() {
+        let allAnnouncementsComponentIndexPath = IndexPath(item: 0, section: 2)
+        context.assert().thatModel().at(indexPath: allAnnouncementsComponentIndexPath, is: .allAnnouncements)
+    }
+    
 }
