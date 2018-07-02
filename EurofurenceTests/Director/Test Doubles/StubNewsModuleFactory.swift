@@ -34,4 +34,8 @@ extension StubNewsModuleFactory {
         delegate?.newsModuleDidSelectEvent(event)
     }
     
+    func simulateAllAnnouncementsDisplayRequested() {
+        delegate?.newsModuleDidRequestShowingAllAnnouncements()
+    }
+    
 }

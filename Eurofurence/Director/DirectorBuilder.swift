@@ -31,6 +31,7 @@ class DirectorBuilder {
     private var knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding
     private var mapsModuleProviding: MapsModuleProviding
     private var mapDetailModuleProviding: MapDetailModuleProviding
+    private var announcementsModuleFactory: AnnouncementsModuleProviding
     private var announcementDetailModuleProviding: AnnouncementDetailModuleProviding
     private var eventDetailModuleProviding: EventDetailModuleProviding
     private var urlOpener: URLOpener
@@ -56,6 +57,7 @@ class DirectorBuilder {
         knowledgeDetailModuleProviding = KnowledgeDetailModuleBuilder().build()
         mapsModuleProviding = MapsModuleBuilder().build()
         mapDetailModuleProviding = MapDetailModuleBuilder().build()
+        announcementsModuleFactory = AnnouncementsModuleBuilder().build()
         announcementDetailModuleProviding = AnnouncementDetailModuleBuilder().build()
         eventDetailModuleProviding = EventDetailModuleBuilder().build()
 
@@ -185,6 +187,12 @@ class DirectorBuilder {
     }
 
     @discardableResult
+    func with(_ announcementsModuleFactory: AnnouncementsModuleProviding) -> DirectorBuilder {
+        self.announcementsModuleFactory = announcementsModuleFactory
+        return self
+    }
+
+    @discardableResult
     func with(_ announcementDetailModuleProviding: AnnouncementDetailModuleProviding) -> DirectorBuilder {
         self.announcementDetailModuleProviding = announcementDetailModuleProviding
         return self
@@ -231,6 +239,7 @@ class DirectorBuilder {
                                    knowledgeDetailModuleProviding: knowledgeDetailModuleProviding,
                                    mapsModuleProviding: mapsModuleProviding,
                                    mapDetailModuleProviding: mapDetailModuleProviding,
+                                   announcementsModuleFactory: announcementsModuleFactory,
                                    announcementDetailModuleProviding: announcementDetailModuleProviding,
                                    eventDetailModuleProviding: eventDetailModuleProviding)
     }

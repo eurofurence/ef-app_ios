@@ -52,6 +52,7 @@ class ApplicationDirector: ExternalContentHandler,
     private let knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding
     private let mapsModuleProviding: MapsModuleProviding
     private let mapDetailModuleProviding: MapDetailModuleProviding
+    private let announcementsModuleFactory: AnnouncementsModuleProviding
     private let announcementDetailModuleProviding: AnnouncementDetailModuleProviding
     private let eventDetailModuleProviding: EventDetailModuleProviding
 
@@ -88,6 +89,7 @@ class ApplicationDirector: ExternalContentHandler,
          knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding,
          mapsModuleProviding: MapsModuleProviding,
          mapDetailModuleProviding: MapDetailModuleProviding,
+         announcementsModuleFactory: AnnouncementsModuleProviding,
          announcementDetailModuleProviding: AnnouncementDetailModuleProviding,
          eventDetailModuleProviding: EventDetailModuleProviding) {
         self.animate = animate
@@ -111,6 +113,7 @@ class ApplicationDirector: ExternalContentHandler,
         self.knowledgeListModuleProviding = knowledgeListModuleProviding
         self.knowledgeDetailModuleProviding = knowledgeDetailModuleProviding
         self.mapsModuleProviding = mapsModuleProviding
+        self.announcementsModuleFactory = announcementsModuleFactory
         self.mapDetailModuleProviding = mapDetailModuleProviding
         self.announcementDetailModuleProviding = announcementDetailModuleProviding
         self.eventDetailModuleProviding = eventDetailModuleProviding
@@ -177,7 +180,8 @@ class ApplicationDirector: ExternalContentHandler,
     }
 
     func newsModuleDidRequestShowingAllAnnouncements() {
-
+        let module = announcementsModuleFactory.makeAnnouncementsModule()
+        newsController?.navigationController?.pushViewController(module, animated: animate)
     }
 
     // MARK: ScheduleModuleDelegate
