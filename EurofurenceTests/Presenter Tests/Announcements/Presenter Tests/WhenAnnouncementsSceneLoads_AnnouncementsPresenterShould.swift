@@ -9,30 +9,6 @@
 @testable import Eurofurence
 import XCTest
 
-class FakeAnnouncementsListViewModel: AnnouncementsListViewModel {
-    
-    let announcements = [Announcement2].random
-    
-    var numberOfAnnouncements: Int {
-        return announcements.count
-    }
-    
-}
-
-struct FakeAnnouncementsInteractor: AnnouncementsInteractor {
-    
-    private let viewModel: AnnouncementsListViewModel
-    
-    init(viewModel: AnnouncementsListViewModel = FakeAnnouncementsListViewModel()) {
-        self.viewModel = viewModel
-    }
-    
-    func makeViewModel(completionHandler: @escaping (AnnouncementsListViewModel) -> Void) {
-        completionHandler(viewModel)
-    }
-    
-}
-
 class WhenAnnouncementsSceneLoads_AnnouncementsPresenterShould: XCTestCase {
     
     func testBindTheNumberOfAnnouncementsFromTheViewModelOntoTheScene() {
