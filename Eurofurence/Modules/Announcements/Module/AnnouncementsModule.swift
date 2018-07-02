@@ -12,10 +12,11 @@ import UIKit
 struct AnnouncementsModule: AnnouncementsModuleProviding {
 
     var announcementsSceneFactory: AnnouncementsSceneFactory
+    var announcementsInteractor: AnnouncementsInteractor
 
     func makeAnnouncementsModule() -> UIViewController {
         let scene = announcementsSceneFactory.makeAnnouncementsScene()
-        scene.setAnnouncementsTitle(.announcements)
+        _ = AnnouncementsPresenter(scene: scene, interactor: announcementsInteractor)
 
         return scene
     }

@@ -12,8 +12,16 @@ class AnnouncementsViewController: UIViewController, AnnouncementsScene {
 
     // MARK: AnnouncementsScene
 
+    func setDelegate(_ delegate: AnnouncementsSceneDelegate) {
+
+    }
+
     func setAnnouncementsTitle(_ title: String) {
         navigationItem.title = title
+    }
+
+    func bind(numberOfAnnouncements: Int) {
+
     }
 
 }

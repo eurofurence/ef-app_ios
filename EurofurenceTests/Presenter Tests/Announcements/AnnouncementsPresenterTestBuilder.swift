@@ -16,11 +16,35 @@ class AnnouncementsPresenterTestBuilder {
         var producedViewController: UIViewController
     }
     
+    private var announcementsInteractor: AnnouncementsInteractor
+    
+    init() {
+        announcementsInteractor = FakeAnnouncementsInteractor()
+    }
+    
+    @discardableResult
+    func with(_ announcementsInteractor: AnnouncementsInteractor) -> AnnouncementsPresenterTestBuilder {
+        self.announcementsInteractor = announcementsInteractor
+        return self
+    }
+    
     func build() -> Context {
         let sceneFactory = StubAnnouncementsSceneFactory()
-        let module = AnnouncementsModuleBuilder().with(sceneFactory).build().makeAnnouncementsModule()
+        let module = AnnouncementsModuleBuilder()
+            .with(sceneFactory)
+            .with(announcementsInteractor)
+            .build()
+            .makeAnnouncementsModule()
         
         return Context(scene: sceneFactory.scene, producedViewController: module)
+    }
+    
+}
+
+extension AnnouncementsPresenterTestBuilder.Context {
+    
+    func simulateSceneDidLoad() {
+        scene.delegate?.announcementsSceneDidLoad()
     }
     
 }

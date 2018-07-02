@@ -10,6 +10,14 @@ import Foundation
 
 protocol AnnouncementsScene {
 
+    func setDelegate(_ delegate: AnnouncementsSceneDelegate)
     func setAnnouncementsTitle(_ title: String)
+    func bind(numberOfAnnouncements: Int)
+
+}
+
+protocol AnnouncementsSceneDelegate {
+
+    func announcementsSceneDidLoad()
 
 }
