@@ -45,6 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarAppearance.backgroundImage = pantone330UColourImage
         tabBarAppearance.shadowImage = pantone330UColourImage
 
+        let buttonInsideTableView = UIButton.appearance(whenContainedInInstancesOf: [UITableView.self])
+        buttonInsideTableView.setTitleColor(.pantone330U, for: .normal)
+
         let tableViewProxy = UITableView.appearance()
         tableViewProxy.sectionIndexColor = .pantone330U
 
