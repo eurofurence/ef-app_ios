@@ -16,7 +16,15 @@ struct AnnouncementsPresenter: AnnouncementsSceneDelegate {
 
         func bind(_ component: AnnouncementComponent, at index: Int) {
             let announcement = viewModel.announcementViewModel(at: index)
+
             component.setAnnouncementTitle(announcement.title)
+            component.setAnnouncementDetail(announcement.detail)
+
+            if announcement.isRead {
+                component.hideUnreadIndicator()
+            } else {
+                component.showUnreadIndicator()
+            }
         }
 
     }

@@ -16,4 +16,19 @@ class CapturingAnnouncementComponent: AnnouncementComponent {
         capturedTitle = title
     }
     
+    private(set) var capturedDetail: String?
+    func setAnnouncementDetail(_ detail: String) {
+        capturedDetail = detail
+    }
+    
+    private(set) var didHideUnreadIndicator = false
+    func hideUnreadIndicator() {
+        didHideUnreadIndicator = true
+    }
+    
+    private(set) var didShowUnreadIndicator = false
+    func showUnreadIndicator() {
+        didShowUnreadIndicator = true
+    }
+    
 }

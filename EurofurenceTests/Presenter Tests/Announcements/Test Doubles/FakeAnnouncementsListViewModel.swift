@@ -11,7 +11,11 @@ import Foundation
 
 class FakeAnnouncementsListViewModel: AnnouncementsListViewModel {
     
-    let announcements = [AnnouncementComponentViewModel].random
+    let announcements: [AnnouncementComponentViewModel]
+    
+    init(announcements: [AnnouncementComponentViewModel] = .random) {
+        self.announcements = announcements
+    }
     
     var numberOfAnnouncements: Int {
         return announcements.count
