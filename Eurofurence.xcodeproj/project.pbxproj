@@ -483,6 +483,8 @@
 		CA283ACC20EAB9F400F7D195 /* CapturingAnnouncementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283ACB20EAB9F400F7D195 /* CapturingAnnouncementComponent.swift */; };
 		CA283ACF20EAC18500F7D195 /* AnnouncementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA283ACE20EAC18500F7D195 /* AnnouncementTableViewCell.xib */; };
 		CA283AD120EAC64A00F7D195 /* WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AD020EAC64A00F7D195 /* WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShould.swift */; };
+		CA283AD420EAC84300F7D195 /* WhenPreparingViewModel_AnnouncementsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AD320EAC84300F7D195 /* WhenPreparingViewModel_AnnouncementsInteractorShould.swift */; };
+		CA283AD620EAC9BA00F7D195 /* DefaultAnnouncementsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AD520EAC9BA00F7D195 /* DefaultAnnouncementsInteractor.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1681,6 +1683,8 @@
 		CA283ACB20EAB9F400F7D195 /* CapturingAnnouncementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAnnouncementComponent.swift; sourceTree = "<group>"; };
 		CA283ACE20EAC18500F7D195 /* AnnouncementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnouncementTableViewCell.xib; sourceTree = "<group>"; };
 		CA283AD020EAC64A00F7D195 /* WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShould.swift; sourceTree = "<group>"; };
+		CA283AD320EAC84300F7D195 /* WhenPreparingViewModel_AnnouncementsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_AnnouncementsInteractorShould.swift; sourceTree = "<group>"; };
+		CA283AD520EAC9BA00F7D195 /* DefaultAnnouncementsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAnnouncementsInteractor.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -3709,6 +3713,7 @@
 			isa = PBXGroup;
 			children = (
 				CA283AB120EAA1AB00F7D195 /* AnnouncementsPresenterTestBuilder.swift */,
+				CA283AD220EAC82B00F7D195 /* Interactor Tests */,
 				CA283A9C20EA9FB200F7D195 /* Presenter Tests */,
 				CA283AAC20EAA18100F7D195 /* Test Doubles */,
 			);
@@ -3774,6 +3779,7 @@
 			children = (
 				CA283ABA20EAA45000F7D195 /* AnnouncementsInteractor.swift */,
 				CA283AB820EAA44500F7D195 /* AnnouncementsListViewModel.swift */,
+				CA283AD520EAC9BA00F7D195 /* DefaultAnnouncementsInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -3793,6 +3799,14 @@
 				CA283ACE20EAC18500F7D195 /* AnnouncementTableViewCell.xib */,
 			);
 			path = Announcement;
+			sourceTree = "<group>";
+		};
+		CA283AD220EAC82B00F7D195 /* Interactor Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CA283AD320EAC84300F7D195 /* WhenPreparingViewModel_AnnouncementsInteractorShould.swift */,
+			);
+			path = "Interactor Tests";
 			sourceTree = "<group>";
 		};
 		CA2D07FE1FE94AD200BFD785 /* Root */ = {
@@ -6824,6 +6838,7 @@
 				CA6A8DE220E41903007536CD /* StoryboardMapDetailSceneFactory.swift in Sources */,
 				CA08158320D3DBC200F750D4 /* ConferenceDayEntity+Adaptation.swift in Sources */,
 				CACF1EBC20B60A6000D904B5 /* ImageAPI.swift in Sources */,
+				CA283AD620EAC9BA00F7D195 /* DefaultAnnouncementsInteractor.swift in Sources */,
 				CAF9A9531F55F3B300628833 /* EurofurencePrivateMessagesService.swift in Sources */,
 				D6F3D339BFBA2C299453B6BA /* SettingsTableViewController.swift in Sources */,
 				CA6A8D9820E2C634007536CD /* MapComponent.swift in Sources */,
@@ -7067,6 +7082,7 @@
 				CA36A45120D773B300EE6537 /* WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould.swift in Sources */,
 				CA804DDA1F20D2F500E07A4A /* V2LoginAPITests.swift in Sources */,
 				CA283AB220EAA1AB00F7D195 /* AnnouncementsPresenterTestBuilder.swift in Sources */,
+				CA283AD420EAC84300F7D195 /* WhenPreparingViewModel_AnnouncementsInteractorShould.swift in Sources */,
 				CA283A8A20E96E6500F7D195 /* WhenOpeningAnnouncement_ApplicationShould.swift in Sources */,
 				CA6EC4842051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift in Sources */,
 				CA00AE5E20D173C000C2FBB0 /* WhenBindingEvent_SchedulePresenterShould.swift in Sources */,
