@@ -460,6 +460,16 @@
 		CA283A9420EA9B8A00F7D195 /* WhenNewsModuleRequestsAllAnnouncements_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A9320EA9B8A00F7D195 /* WhenNewsModuleRequestsAllAnnouncements_DirectorShould.swift */; };
 		CA283A9820EA9CB100F7D195 /* AnnouncementsModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A9720EA9CB100F7D195 /* AnnouncementsModuleProviding.swift */; };
 		CA283A9A20EA9D9200F7D195 /* AnnouncementsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A9920EA9D9200F7D195 /* AnnouncementsModuleBuilder.swift */; };
+		CA283A9E20EA9FB900F7D195 /* WhenBuildingAnnouncementsModule_AnnouncementsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A9D20EA9FB900F7D195 /* WhenBuildingAnnouncementsModule_AnnouncementsPresenterShould.swift */; };
+		CA283AA220EAA04D00F7D195 /* AnnouncementsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AA120EAA04D00F7D195 /* AnnouncementsScene.swift */; };
+		CA283AA420EAA05900F7D195 /* AnnouncementsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AA320EAA05900F7D195 /* AnnouncementsSceneFactory.swift */; };
+		CA283AA720EAA09B00F7D195 /* StoryboardAnnouncementsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AA620EAA09B00F7D195 /* StoryboardAnnouncementsSceneFactory.swift */; };
+		CA283AA920EAA0AC00F7D195 /* Announcements.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA283AA820EAA0AC00F7D195 /* Announcements.storyboard */; };
+		CA283AAB20EAA0C800F7D195 /* AnnouncementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AAA20EAA0C800F7D195 /* AnnouncementsViewController.swift */; };
+		CA283AAE20EAA18D00F7D195 /* CapturingAnnouncementsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AAD20EAA18D00F7D195 /* CapturingAnnouncementsScene.swift */; };
+		CA283AB020EAA19C00F7D195 /* StubAnnouncementsSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AAF20EAA19C00F7D195 /* StubAnnouncementsSceneFactory.swift */; };
+		CA283AB220EAA1AB00F7D195 /* AnnouncementsPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AB120EAA1AB00F7D195 /* AnnouncementsPresenterTestBuilder.swift */; };
+		CA283AB420EAA1CE00F7D195 /* AnnouncementsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AB320EAA1CE00F7D195 /* AnnouncementsModule.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1635,6 +1645,16 @@
 		CA283A9320EA9B8A00F7D195 /* WhenNewsModuleRequestsAllAnnouncements_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsModuleRequestsAllAnnouncements_DirectorShould.swift; sourceTree = "<group>"; };
 		CA283A9720EA9CB100F7D195 /* AnnouncementsModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsModuleProviding.swift; sourceTree = "<group>"; };
 		CA283A9920EA9D9200F7D195 /* AnnouncementsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsModuleBuilder.swift; sourceTree = "<group>"; };
+		CA283A9D20EA9FB900F7D195 /* WhenBuildingAnnouncementsModule_AnnouncementsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingAnnouncementsModule_AnnouncementsPresenterShould.swift; sourceTree = "<group>"; };
+		CA283AA120EAA04D00F7D195 /* AnnouncementsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsScene.swift; sourceTree = "<group>"; };
+		CA283AA320EAA05900F7D195 /* AnnouncementsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsSceneFactory.swift; sourceTree = "<group>"; };
+		CA283AA620EAA09B00F7D195 /* StoryboardAnnouncementsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardAnnouncementsSceneFactory.swift; sourceTree = "<group>"; };
+		CA283AA820EAA0AC00F7D195 /* Announcements.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Announcements.storyboard; sourceTree = "<group>"; };
+		CA283AAA20EAA0C800F7D195 /* AnnouncementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsViewController.swift; sourceTree = "<group>"; };
+		CA283AAD20EAA18D00F7D195 /* CapturingAnnouncementsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAnnouncementsScene.swift; sourceTree = "<group>"; };
+		CA283AAF20EAA19C00F7D195 /* StubAnnouncementsSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAnnouncementsSceneFactory.swift; sourceTree = "<group>"; };
+		CA283AB120EAA1AB00F7D195 /* AnnouncementsPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsPresenterTestBuilder.swift; sourceTree = "<group>"; };
+		CA283AB320EAA1CE00F7D195 /* AnnouncementsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsModule.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -2654,6 +2674,7 @@
 				CA8E7EF31FB08D3B00F0BF10 /* PhoneWindowWireframeTests.swift */,
 				78455B391F116A7E005BE2D7 /* WhenTheAppLaunches.swift */,
 				CA72844A209D0338007D912A /* Announcement Detail */,
+				CA283A9B20EA9F9400F7D195 /* Announcements */,
 				78C86D6A1F123FC4003A20E6 /* Builders */,
 				CA27619D20E01F82000E52AC /* Collect-them-All */,
 				CA1B6F0420DB803000ADF414 /* Dealer Detail */,
@@ -3642,6 +3663,7 @@
 			children = (
 				CA283A9920EA9D9200F7D195 /* AnnouncementsModuleBuilder.swift */,
 				CA283A9620EA9CAB00F7D195 /* Module */,
+				CA283A9F20EAA03D00F7D195 /* View */,
 			);
 			path = Announcements;
 			sourceTree = "<group>";
@@ -3649,9 +3671,65 @@
 		CA283A9620EA9CAB00F7D195 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				CA283AB320EAA1CE00F7D195 /* AnnouncementsModule.swift */,
 				CA283A9720EA9CB100F7D195 /* AnnouncementsModuleProviding.swift */,
 			);
 			path = Module;
+			sourceTree = "<group>";
+		};
+		CA283A9B20EA9F9400F7D195 /* Announcements */ = {
+			isa = PBXGroup;
+			children = (
+				CA283AB120EAA1AB00F7D195 /* AnnouncementsPresenterTestBuilder.swift */,
+				CA283A9C20EA9FB200F7D195 /* Presenter Tests */,
+				CA283AAC20EAA18100F7D195 /* Test Doubles */,
+			);
+			path = Announcements;
+			sourceTree = "<group>";
+		};
+		CA283A9C20EA9FB200F7D195 /* Presenter Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CA283A9D20EA9FB900F7D195 /* WhenBuildingAnnouncementsModule_AnnouncementsPresenterShould.swift */,
+			);
+			path = "Presenter Tests";
+			sourceTree = "<group>";
+		};
+		CA283A9F20EAA03D00F7D195 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CA283AA020EAA04400F7D195 /* Abstraction */,
+				CA283AA520EAA08E00F7D195 /* UIKit */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CA283AA020EAA04400F7D195 /* Abstraction */ = {
+			isa = PBXGroup;
+			children = (
+				CA283AA120EAA04D00F7D195 /* AnnouncementsScene.swift */,
+				CA283AA320EAA05900F7D195 /* AnnouncementsSceneFactory.swift */,
+			);
+			path = Abstraction;
+			sourceTree = "<group>";
+		};
+		CA283AA520EAA08E00F7D195 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				CA283AA820EAA0AC00F7D195 /* Announcements.storyboard */,
+				CA283AAA20EAA0C800F7D195 /* AnnouncementsViewController.swift */,
+				CA283AA620EAA09B00F7D195 /* StoryboardAnnouncementsSceneFactory.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		CA283AAC20EAA18100F7D195 /* Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				CA283AAD20EAA18D00F7D195 /* CapturingAnnouncementsScene.swift */,
+				CA283AAF20EAA19C00F7D195 /* StubAnnouncementsSceneFactory.swift */,
+			);
+			path = "Test Doubles";
 			sourceTree = "<group>";
 		};
 		CA2D07FE1FE94AD200BFD785 /* Root */ = {
@@ -5967,6 +6045,7 @@
 				CA0E5209208E7020005259FE /* Dealers.storyboard in Resources */,
 				CA6AA0181FD8834D0092C6DB /* News.storyboard in Resources */,
 				CA1B6F1920DB81F400ADF414 /* DealerDetail.storyboard in Resources */,
+				CA283AA920EAA0AC00F7D195 /* Announcements.storyboard in Resources */,
 				78455B561F117B24005BE2D7 /* Tutorial.storyboard in Resources */,
 				78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */,
 				CA00AE6720D1784500C2FBB0 /* EventTableViewCell.xib in Resources */,
@@ -6280,6 +6359,7 @@
 				CA1FE99E1FA0B41E009C7DF3 /* NavigationControllerFactory.swift in Sources */,
 				CA162E8820A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift in Sources */,
 				9A34B9781ECF6E3B004A249E /* Iso8601DateFormatter.swift in Sources */,
+				CA283AB420EAA1CE00F7D195 /* AnnouncementsModule.swift in Sources */,
 				CA36A45A20D8472300EE6537 /* DealersInteractor.swift in Sources */,
 				9A861EBF1F25551400B75A8C /* PresentationAssets.swift in Sources */,
 				CA52C68120D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift in Sources */,
@@ -6287,6 +6367,7 @@
 				CA36A47320D84DC900EE6537 /* DealerComponent.swift in Sources */,
 				CAD2343E1F5D7211004BB959 /* MessagesPresenter.swift in Sources */,
 				CA6AA0161FD883390092C6DB /* NewsViewController.swift in Sources */,
+				CA283AA220EAA04D00F7D195 /* AnnouncementsScene.swift in Sources */,
 				CA283A9820EA9CB100F7D195 /* AnnouncementsModuleProviding.swift in Sources */,
 				CA680F8020CDA49D006ACD3D /* Schedule.swift in Sources */,
 				CA52C67F20D59572009D3A9E /* SignificantTimePassedEvent.swift in Sources */,
@@ -6494,6 +6575,7 @@
 				CA680F7C20CD819F006ACD3D /* UserDefaultsPreferences.swift in Sources */,
 				CACF1E8220B2E6B400D904B5 /* EventDetailSummaryTableViewCell.swift in Sources */,
 				CA8E17ED1F817A70003C348C /* PreloadInteractor.swift in Sources */,
+				CA283AA720EAA09B00F7D195 /* StoryboardAnnouncementsSceneFactory.swift in Sources */,
 				D6F3DD6B0659E1A44E01075B /* CurrentEventsViewModel.swift in Sources */,
 				CA0E521E208FC796005259FE /* NewsConventionCountdownTableViewCell.swift in Sources */,
 				781A943C1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift in Sources */,
@@ -6638,6 +6720,8 @@
 				D6F3D62A784F07D9C7A84DC8 /* KnowledgeEntryViewController.swift in Sources */,
 				CA0E5213208F4CD7005259FE /* AnnouncementsService.swift in Sources */,
 				CA1FE99B1FA0B3EB009C7DF3 /* WindowWireframe.swift in Sources */,
+				CA283AAB20EAA0C800F7D195 /* AnnouncementsViewController.swift in Sources */,
+				CA283AA420EAA05900F7D195 /* AnnouncementsSceneFactory.swift in Sources */,
 				CA2B4FA81F1EA72A00F007E1 /* LoginArguments.swift in Sources */,
 				78F555991F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift in Sources */,
 				9A8ECA251F2BE1E300351A83 /* NotificationSoundPlayer.swift in Sources */,
@@ -6834,10 +6918,12 @@
 				CA250DE220D6EB0300E7513C /* FakeEventsSearchController.swift in Sources */,
 				CAD3BDBD205AA61B00C91E6E /* URL+RandomValueProviding.swift in Sources */,
 				CA65A21C2091121D0078A4A7 /* WhenAddingAnnouncementsObserverBeforeLoadingAnything.swift in Sources */,
+				CA283A9E20EA9FB900F7D195 /* WhenBuildingAnnouncementsModule_AnnouncementsPresenterShould.swift in Sources */,
 				CABA840720D0671E00DD0795 /* WhenScheduleSceneLoads_SchedulePresenterShould.swift in Sources */,
 				CAF9A9471F50B95F00628833 /* WhenRequestingCurrentUser.swift in Sources */,
 				CAD6882A208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift in Sources */,
 				CA36A4D820DAE2CE00EE6537 /* CapturingDealersModuleDelegate.swift in Sources */,
+				CA283AAE20EAA18D00F7D195 /* CapturingAnnouncementsScene.swift in Sources */,
 				78455B521F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift in Sources */,
 				CACF1EB420B5FFB600D904B5 /* Data+RandomValueProviding.swift in Sources */,
 				CA6A8D8220E2BA6C007536CD /* WhenMapsSceneLoads_MapsPresenterShould.swift in Sources */,
@@ -6909,6 +6995,7 @@
 				CA283A5C20E6E40500F7D195 /* BeforeSyncInitiated_ApplicationShould.swift in Sources */,
 				CA36A45120D773B300EE6537 /* WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould.swift in Sources */,
 				CA804DDA1F20D2F500E07A4A /* V2LoginAPITests.swift in Sources */,
+				CA283AB220EAA1AB00F7D195 /* AnnouncementsPresenterTestBuilder.swift in Sources */,
 				CA283A8A20E96E6500F7D195 /* WhenOpeningAnnouncement_ApplicationShould.swift in Sources */,
 				CA6EC4842051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift in Sources */,
 				CA00AE5E20D173C000C2FBB0 /* WhenBindingEvent_SchedulePresenterShould.swift in Sources */,
@@ -7022,6 +7109,7 @@
 				CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */,
 				CA8276BA204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift in Sources */,
 				CA283A7120E8DCD000F7D195 /* WhenToldToRefresh_DealersViewModelShould.swift in Sources */,
+				CA283AB020EAA19C00F7D195 /* StubAnnouncementsSceneFactory.swift in Sources */,
 				CAF9A9581F5601A700628833 /* WhenViewingMessagesWhileLoggedOut.swift in Sources */,
 				CA36A4BA20D9AC9F00EE6537 /* WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould.swift in Sources */,
 				CA08157D20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift in Sources */,

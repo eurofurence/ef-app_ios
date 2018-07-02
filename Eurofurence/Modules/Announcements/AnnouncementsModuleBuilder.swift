@@ -11,14 +11,20 @@ import UIKit
 
 class AnnouncementsModuleBuilder {
 
-    func build() -> AnnouncementsModuleProviding {
-        struct DummyAnnouncementsModuleProviding: AnnouncementsModuleProviding {
-            func makeAnnouncementsModule() -> UIViewController {
-                return UIViewController()
-            }
-        }
+    private var announcementsSceneFactory: AnnouncementsSceneFactory
 
-        return DummyAnnouncementsModuleProviding()
+    init() {
+        announcementsSceneFactory = StoryboardAnnouncementsSceneFactory()
+    }
+
+    func build() -> AnnouncementsModuleProviding {
+        return AnnouncementsModule(announcementsSceneFactory: announcementsSceneFactory)
+    }
+
+    @discardableResult
+    func with(_ announcementsSceneFactory: AnnouncementsSceneFactory) -> AnnouncementsModuleBuilder {
+        self.announcementsSceneFactory = announcementsSceneFactory
+        return self
     }
 
 }
