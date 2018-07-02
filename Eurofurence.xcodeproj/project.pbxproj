@@ -481,6 +481,7 @@
 		CA283AC820EAB9D100F7D195 /* AnnouncementsBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AC720EAB9D100F7D195 /* AnnouncementsBinder.swift */; };
 		CA283ACA20EAB9E600F7D195 /* AnnouncementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AC920EAB9E600F7D195 /* AnnouncementComponent.swift */; };
 		CA283ACC20EAB9F400F7D195 /* CapturingAnnouncementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283ACB20EAB9F400F7D195 /* CapturingAnnouncementComponent.swift */; };
+		CA283ACF20EAC18500F7D195 /* NewsAnnouncementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA283ACE20EAC18500F7D195 /* NewsAnnouncementTableViewCell.xib */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1677,6 +1678,7 @@
 		CA283AC720EAB9D100F7D195 /* AnnouncementsBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsBinder.swift; sourceTree = "<group>"; };
 		CA283AC920EAB9E600F7D195 /* AnnouncementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementComponent.swift; sourceTree = "<group>"; };
 		CA283ACB20EAB9F400F7D195 /* CapturingAnnouncementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingAnnouncementComponent.swift; sourceTree = "<group>"; };
+		CA283ACE20EAC18500F7D195 /* NewsAnnouncementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsAnnouncementTableViewCell.xib; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -3209,6 +3211,7 @@
 		CA00AE6820D178D700C2FBB0 /* Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
+				CA283ACD20EAC17100F7D195 /* Announcement */,
 				CA00AE6920D178DF00C2FBB0 /* Event */,
 			);
 			path = "Table View Cells";
@@ -3287,7 +3290,6 @@
 			children = (
 				CA6AA0171FD8834D0092C6DB /* News.storyboard */,
 				CA00AE6D20D179ED00C2FBB0 /* EventTableViewCell+NewsEventComponent.swift */,
-				CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */,
 				CA0E521D208FC796005259FE /* NewsConventionCountdownTableViewCell.swift */,
 				CAC1E12A1F5040E100195513 /* NewsScene.swift */,
 				CAF3C74F1F9FC74C0008F027 /* NewsSceneFactory.swift */,
@@ -3779,6 +3781,15 @@
 				CA283ABD20EAA67B00F7D195 /* AnnouncementsPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CA283ACD20EAC17100F7D195 /* Announcement */ = {
+			isa = PBXGroup;
+			children = (
+				CA057A5A2088BDBA00504FA4 /* NewsAnnouncementTableViewCell.swift */,
+				CA283ACE20EAC18500F7D195 /* NewsAnnouncementTableViewCell.xib */,
+			);
+			path = Announcement;
 			sourceTree = "<group>";
 		};
 		CA2D07FE1FE94AD200BFD785 /* Root */ = {
@@ -6107,6 +6118,7 @@
 				78C86D701F12AA6C003A20E6 /* Hieroglify.ttf in Resources */,
 				9A0F87DC1F19311900FF294B /* EventCell.xib in Resources */,
 				CA36A48320D8C89700EE6537 /* DealerComponentTableViewCell.xib in Resources */,
+				CA283ACF20EAC18500F7D195 /* NewsAnnouncementTableViewCell.xib in Resources */,
 				CA6EC4872051CD8F00402894 /* KnowledgeDetail.storyboard in Resources */,
 				9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */,
 				CA72843D209CF07A007D912A /* Localizable.stringsdict in Resources */,

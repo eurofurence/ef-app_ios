@@ -26,6 +26,7 @@ class NewsViewController: UIViewController, NewsScene {
 
         refreshControl.addTarget(self, action: #selector(refreshControlDidChangeValue), for: .valueChanged)
         tableView.refreshControl = refreshControl
+        tableView.register(NewsAnnouncementTableViewCell.self)
         tableView.register(EventTableViewCell.self)
         tableView.register(Header.self, forHeaderFooterViewReuseIdentifier: Header.identifier)
         delegate?.newsSceneDidLoad()
