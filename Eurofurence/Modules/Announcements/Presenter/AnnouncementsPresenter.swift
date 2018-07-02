@@ -8,13 +8,22 @@
 
 import Foundation
 
-struct AnnouncementsPresenter {
+struct AnnouncementsPresenter: AnnouncementsSceneDelegate {
+
+    private let scene: AnnouncementsScene
+    private let interactor: AnnouncementsInteractor
 
     init(scene: AnnouncementsScene, interactor: AnnouncementsInteractor) {
-        scene.setAnnouncementsTitle(.announcements)
+        self.scene = scene
+        self.interactor = interactor
 
+        scene.setAnnouncementsTitle(.announcements)
+        scene.setDelegate(self)
+    }
+
+    func announcementsSceneDidLoad() {
         interactor.makeViewModel { (viewModel) in
-            scene.bind(numberOfAnnouncements: viewModel.numberOfAnnouncements)
+            self.scene.bind(numberOfAnnouncements: viewModel.numberOfAnnouncements)
         }
     }
 

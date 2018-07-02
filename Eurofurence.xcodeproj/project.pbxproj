@@ -474,6 +474,7 @@
 		CA283AB920EAA44500F7D195 /* AnnouncementsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AB820EAA44500F7D195 /* AnnouncementsListViewModel.swift */; };
 		CA283ABB20EAA45000F7D195 /* AnnouncementsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283ABA20EAA45000F7D195 /* AnnouncementsInteractor.swift */; };
 		CA283ABE20EAA67B00F7D195 /* AnnouncementsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283ABD20EAA67B00F7D195 /* AnnouncementsPresenter.swift */; };
+		CA283AC020EAB5AE00F7D195 /* BeforeAnnouncementsDetailSceneLoads_AnnouncementsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283ABF20EAB5AE00F7D195 /* BeforeAnnouncementsDetailSceneLoads_AnnouncementsPresenterShould.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1663,6 +1664,7 @@
 		CA283AB820EAA44500F7D195 /* AnnouncementsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsListViewModel.swift; sourceTree = "<group>"; };
 		CA283ABA20EAA45000F7D195 /* AnnouncementsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsInteractor.swift; sourceTree = "<group>"; };
 		CA283ABD20EAA67B00F7D195 /* AnnouncementsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsPresenter.swift; sourceTree = "<group>"; };
+		CA283ABF20EAB5AE00F7D195 /* BeforeAnnouncementsDetailSceneLoads_AnnouncementsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeAnnouncementsDetailSceneLoads_AnnouncementsPresenterShould.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -3702,6 +3704,7 @@
 			children = (
 				CA283A9D20EA9FB900F7D195 /* WhenBuildingAnnouncementsModule_AnnouncementsPresenterShould.swift */,
 				CA283AB520EAA39800F7D195 /* WhenAnnouncementsSceneLoads_AnnouncementsPresenterShould.swift */,
+				CA283ABF20EAB5AE00F7D195 /* BeforeAnnouncementsDetailSceneLoads_AnnouncementsPresenterShould.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -6963,6 +6966,7 @@
 				CA6A8D6720E263A0007536CD /* WhenBuildingMapsModule.swift in Sources */,
 				CA5BF9D51F7AF9160045DBC0 /* PreloadPresenterTests.swift in Sources */,
 				CA2761A920E021FB000E52AC /* CapturingCollectThemAllScene.swift in Sources */,
+				CA283AC020EAB5AE00F7D195 /* BeforeAnnouncementsDetailSceneLoads_AnnouncementsPresenterShould.swift in Sources */,
 				CA6A8DE420E41CC8007536CD /* WhenMapDetailSceneLoads_MapsPresenterShould.swift in Sources */,
 				CA6A8D9620E2C61B007536CD /* CapturingMapComponent.swift in Sources */,
 				CAF81C7920DDAEAA00898C52 /* ExtendedDealerData+RandomValueProviding.swift in Sources */,
