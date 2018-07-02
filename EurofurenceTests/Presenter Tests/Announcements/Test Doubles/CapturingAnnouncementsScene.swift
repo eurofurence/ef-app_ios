@@ -22,8 +22,10 @@ class CapturingAnnouncementsScene: UIViewController, AnnouncementsScene {
     }
     
     private(set) var capturedAnnouncementsToBind: Int?
-    func bind(numberOfAnnouncements: Int) {
+    private(set) var binder: AnnouncementsBinder?
+    func bind(numberOfAnnouncements: Int, using binder: AnnouncementsBinder) {
         capturedAnnouncementsToBind = numberOfAnnouncements
+        self.binder = binder
     }
     
 }

@@ -10,6 +10,17 @@ import Foundation
 
 struct AnnouncementsPresenter: AnnouncementsSceneDelegate {
 
+    private struct Binder: AnnouncementsBinder {
+
+        var viewModel: AnnouncementsListViewModel
+
+        func bind(_ component: AnnouncementComponent, at index: Int) {
+            let announcement = viewModel.announcementViewModel(at: index)
+            component.setAnnouncementTitle(announcement.title)
+        }
+
+    }
+
     private let scene: AnnouncementsScene
     private let interactor: AnnouncementsInteractor
 
@@ -23,7 +34,7 @@ struct AnnouncementsPresenter: AnnouncementsSceneDelegate {
 
     func announcementsSceneDidLoad() {
         interactor.makeViewModel { (viewModel) in
-            self.scene.bind(numberOfAnnouncements: viewModel.numberOfAnnouncements)
+            self.scene.bind(numberOfAnnouncements: viewModel.numberOfAnnouncements, using: Binder(viewModel: viewModel))
         }
     }
 

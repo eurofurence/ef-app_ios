@@ -11,10 +11,14 @@ import Foundation
 
 class FakeAnnouncementsListViewModel: AnnouncementsListViewModel {
     
-    let announcements = [Announcement2].random
+    let announcements = [AnnouncementComponentViewModel].random
     
     var numberOfAnnouncements: Int {
         return announcements.count
+    }
+    
+    func announcementViewModel(at index: Int) -> AnnouncementComponentViewModel {
+        return announcements[index]
     }
     
 }

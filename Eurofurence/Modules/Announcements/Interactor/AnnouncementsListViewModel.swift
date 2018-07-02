@@ -12,4 +12,6 @@ protocol AnnouncementsListViewModel {
 
     var numberOfAnnouncements: Int { get }
 
+    func announcementViewModel(at index: Int) -> AnnouncementComponentViewModel
+
 }

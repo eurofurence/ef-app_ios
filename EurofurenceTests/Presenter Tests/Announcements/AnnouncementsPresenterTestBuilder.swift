@@ -47,4 +47,10 @@ extension AnnouncementsPresenterTestBuilder.Context {
         scene.delegate?.announcementsSceneDidLoad()
     }
     
+    func bindAnnouncement(at index: Int) -> CapturingAnnouncementComponent {
+        let component = CapturingAnnouncementComponent()
+        scene.binder?.bind(component, at: index)
+        return component
+    }
+    
 }

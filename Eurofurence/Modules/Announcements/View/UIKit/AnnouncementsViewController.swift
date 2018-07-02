@@ -20,7 +20,7 @@ class AnnouncementsViewController: UIViewController, AnnouncementsScene {
         navigationItem.title = title
     }
 
-    func bind(numberOfAnnouncements: Int) {
+    func bind(numberOfAnnouncements: Int, using binder: AnnouncementsBinder) {
 
     }
 

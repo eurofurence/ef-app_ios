@@ -12,7 +12,7 @@ protocol AnnouncementsScene {
 
     func setDelegate(_ delegate: AnnouncementsSceneDelegate)
     func setAnnouncementsTitle(_ title: String)
-    func bind(numberOfAnnouncements: Int)
+    func bind(numberOfAnnouncements: Int, using binder: AnnouncementsBinder)
 
 }
 
