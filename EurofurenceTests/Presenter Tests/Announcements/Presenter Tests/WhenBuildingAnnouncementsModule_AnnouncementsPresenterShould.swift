@@ -16,4 +16,9 @@ class WhenBuildingAnnouncementsModule_AnnouncementsPresenterShould: XCTestCase {
         XCTAssertEqual(context.scene, context.producedViewController)
     }
     
+    func testApplyTheAnnouncementsTitleToTheScene() {
+        let context = AnnouncementsPresenterTestBuilder().build()
+        XCTAssertEqual(.announcements, context.scene.capturedTitle)
+    }
+    
 }

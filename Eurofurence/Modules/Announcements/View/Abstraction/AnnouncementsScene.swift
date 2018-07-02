@@ -10,4 +10,6 @@ import Foundation
 
 protocol AnnouncementsScene {
 
+    func setAnnouncementsTitle(_ title: String)
+
 }

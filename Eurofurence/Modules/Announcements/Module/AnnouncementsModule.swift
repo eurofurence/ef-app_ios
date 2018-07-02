@@ -14,7 +14,10 @@ struct AnnouncementsModule: AnnouncementsModuleProviding {
     var announcementsSceneFactory: AnnouncementsSceneFactory
 
     func makeAnnouncementsModule() -> UIViewController {
-        return announcementsSceneFactory.makeAnnouncementsScene()
+        let scene = announcementsSceneFactory.makeAnnouncementsScene()
+        scene.setAnnouncementsTitle(.announcements)
+
+        return scene
     }
 
 }

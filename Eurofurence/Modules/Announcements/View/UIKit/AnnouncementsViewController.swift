@@ -10,4 +10,10 @@ import UIKit
 
 class AnnouncementsViewController: UIViewController, AnnouncementsScene {
 
+    // MARK: AnnouncementsScene
+
+    func setAnnouncementsTitle(_ title: String) {
+        navigationItem.title = title
+    }
+
 }
