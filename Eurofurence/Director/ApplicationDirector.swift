@@ -169,7 +169,7 @@ class ApplicationDirector: ExternalContentHandler,
         newsController?.navigationController?.pushViewController(messagesModuleProviding.makeMessagesModule(self), animated: animate)
     }
 
-    func newsModuleDidSelectAnnouncement(_ announcement: Announcement2) {
+    func newsModuleDidSelectAnnouncement(_ announcement: Announcement2.Identifier) {
         let module = announcementDetailModuleProviding.makeAnnouncementDetailModule(for: announcement)
         newsController?.navigationController?.pushViewController(module, animated: animate)
     }

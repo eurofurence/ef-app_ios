@@ -26,7 +26,7 @@ class AnnouncementDetailPresenterTestBuilder {
             .with(sceneFactory)
             .with(announcementDetailInteractor)
             .build()
-            .makeAnnouncementDetailModule(for: announcement)
+            .makeAnnouncementDetailModule(for: announcement.identifier)
         
         return Context(announcementDetailScene: module,
                        sceneFactory: sceneFactory,

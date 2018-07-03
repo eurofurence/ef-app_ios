@@ -13,11 +13,11 @@ struct AnnouncementDetailModule: AnnouncementDetailModuleProviding {
     var sceneFactory: AnnouncementDetailSceneFactory
     var announcementDetailInteractor: AnnouncementDetailInteractor
 
-    func makeAnnouncementDetailModule(for announcement: Announcement2) -> UIViewController {
+    func makeAnnouncementDetailModule(for announcement: Announcement2.Identifier) -> UIViewController {
         let scene = sceneFactory.makeAnnouncementDetailScene()
         _ = AnnouncementDetailPresenter(scene: scene,
                                         interactor: announcementDetailInteractor,
-                                        announcement: announcement.identifier)
+                                        announcement: announcement)
 
         return scene
     }

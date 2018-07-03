@@ -145,7 +145,7 @@ class NewsTableViewController: UITableViewController,
 
             }
 
-            func newsModuleDidSelectAnnouncement(_ announcement: Announcement2) {
+            func newsModuleDidSelectAnnouncement(_ announcement: Announcement2.Identifier) {
 
             }
 

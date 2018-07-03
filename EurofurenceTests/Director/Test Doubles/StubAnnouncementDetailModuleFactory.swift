@@ -12,8 +12,8 @@ import UIKit.UIViewController
 class StubAnnouncementDetailModuleFactory: AnnouncementDetailModuleProviding {
     
     let stubInterface = UIViewController()
-    private(set) var capturedModel: Announcement2?
-    func makeAnnouncementDetailModule(for announcement: Announcement2) -> UIViewController {
+    private(set) var capturedModel: Announcement2.Identifier?
+    func makeAnnouncementDetailModule(for announcement: Announcement2.Identifier) -> UIViewController {
         capturedModel = announcement
         return stubInterface
     }

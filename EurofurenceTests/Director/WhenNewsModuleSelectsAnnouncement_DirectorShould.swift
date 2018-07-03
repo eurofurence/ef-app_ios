@@ -15,7 +15,7 @@ class WhenNewsModuleSelectsAnnouncement_DirectorShould: XCTestCase {
         let context = ApplicationDirectorTestBuilder().build()
         context.navigateToTabController()
         let newsNavigationController = context.navigationController(for: context.newsModule.stubInterface)
-        let announcement = Announcement2.random
+        let announcement = Announcement2.Identifier.random
         context.newsModule.simulateDidSelectAnnouncement(announcement)
         
         XCTAssertEqual(context.announcementDetailModule.stubInterface, newsNavigationController?.topViewController)

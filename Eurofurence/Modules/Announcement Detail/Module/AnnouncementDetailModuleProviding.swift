@@ -10,6 +10,6 @@ import UIKit.UIViewController
 
 protocol AnnouncementDetailModuleProviding {
 
-    func makeAnnouncementDetailModule(for announcement: Announcement2) -> UIViewController
+    func makeAnnouncementDetailModule(for announcement: Announcement2.Identifier) -> UIViewController
 
 }

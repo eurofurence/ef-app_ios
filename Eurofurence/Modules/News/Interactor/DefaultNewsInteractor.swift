@@ -323,7 +323,7 @@ class DefaultNewsInteractor: NewsInteractor,
 
             default:
                 let announcement = announcements[index - 1]
-                completionHandler(.announcement(announcement))
+                completionHandler(.announcement(announcement.identifier))
             }
         }
 
