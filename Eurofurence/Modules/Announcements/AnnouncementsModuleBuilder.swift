@@ -15,14 +15,8 @@ class AnnouncementsModuleBuilder {
     private var announcementsInteractor: AnnouncementsInteractor
 
     init() {
-        struct DummyAnnouncementsInteractor: AnnouncementsInteractor {
-            func makeViewModel(completionHandler: @escaping (AnnouncementsListViewModel) -> Void) {
-
-            }
-        }
-
         announcementsSceneFactory = StoryboardAnnouncementsSceneFactory()
-        announcementsInteractor = DummyAnnouncementsInteractor()
+        announcementsInteractor = DefaultAnnouncementsInteractor()
     }
 
     func build() -> AnnouncementsModuleProviding {

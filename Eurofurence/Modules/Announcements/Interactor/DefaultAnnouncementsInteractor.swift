@@ -12,6 +12,10 @@ struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
 
     private let announcementsService: AnnouncementsService
 
+    init() {
+        self.init(announcementsService: EurofurenceApplication.shared)
+    }
+
     init(announcementsService: AnnouncementsService) {
         self.announcementsService = announcementsService
     }
