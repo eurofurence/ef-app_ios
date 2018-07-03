@@ -37,7 +37,7 @@
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qOT-qt-l86">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Unfavourite" translatesAutoresizingMaskIntoConstraints="NO" id="qOT-qt-l86">
                                 <rect key="frame" x="20" y="21" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qOT-qt-l86" secondAttribute="height" multiplier="1:1" id="PXa-rJ-sjv"/>
@@ -98,11 +98,14 @@
             <connections>
                 <outlet property="endTimeLabel" destination="dgf-2F-Dr2" id="akd-qs-aAR"/>
                 <outlet property="eventNameLabel" destination="9ez-aA-Obc" id="f4n-tw-irQ"/>
-                <outlet property="iconImageView" destination="qOT-qt-l86" id="Pvi-d3-KgT"/>
+                <outlet property="favouritedImageView" destination="qOT-qt-l86" id="FDk-Ux-DqW"/>
                 <outlet property="locationLabel" destination="KlD-aa-FfM" id="RKl-P9-XT6"/>
                 <outlet property="startTimeLabel" destination="aLD-uI-rra" id="Id3-Mt-TEa"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="-143.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Unfavourite" width="21" height="21"/>
+    </resources>
 </document>

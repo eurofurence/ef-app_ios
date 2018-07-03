@@ -14,8 +14,15 @@ class EventTableViewCell: UITableViewCell {
 
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var endTimeLabel: UILabel!
-    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var favouritedImageView: UIImageView!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
+
+    // MARK: Overrides
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        favouritedImageView.tintColor = .red
+    }
 
 }

@@ -27,15 +27,15 @@ extension EventTableViewCell: NewsEventComponent {
     }
 
     func setIcon(_ icon: UIImage?) {
-        iconImageView.image = icon
+
     }
 
     func showFavouriteEventIndicator() {
-
+        favouritedImageView.isHidden = false
     }
 
     func hideFavouriteEventIndicator() {
-
+        favouritedImageView.isHidden = true
     }
 
 }
