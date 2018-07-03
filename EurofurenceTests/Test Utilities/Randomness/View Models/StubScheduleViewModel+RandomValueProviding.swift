@@ -31,7 +31,8 @@ extension ScheduleEventViewModel: RandomValueProviding {
         return ScheduleEventViewModel(title: .random,
                                       startTime: .random,
                                       endTime: .random,
-                                      location: .random)
+                                      location: .random,
+                                      isFavourite: .random)
     }
     
 }

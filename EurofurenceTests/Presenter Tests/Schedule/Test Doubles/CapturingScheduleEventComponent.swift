@@ -31,4 +31,9 @@ class CapturingScheduleEventComponent: ScheduleEventComponent {
         capturedLocation = location
     }
     
+    private(set) var didShowFavouriteEventIndicator = false
+    func showFavouriteEventIndicator() {
+        didShowFavouriteEventIndicator = true
+    }
+    
 }

@@ -27,6 +27,10 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
             eventComponent.setEventStartTime(event.startTime)
             eventComponent.setEventEndTime(event.endTime)
             eventComponent.setLocation(event.location)
+
+            if event.isFavourite {
+                eventComponent.showFavouriteEventIndicator()
+            }
         }
 
     }

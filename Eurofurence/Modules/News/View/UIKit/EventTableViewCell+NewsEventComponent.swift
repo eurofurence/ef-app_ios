@@ -30,4 +30,8 @@ extension EventTableViewCell: NewsEventComponent {
         iconImageView.image = icon
     }
 
+    func showFavouriteEventIndicator() {
+
+    }
+
 }

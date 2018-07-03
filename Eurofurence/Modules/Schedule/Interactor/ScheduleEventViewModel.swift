@@ -14,5 +14,6 @@ struct ScheduleEventViewModel: Equatable {
     var startTime: String
     var endTime: String
     var location: String
+    var isFavourite: Bool
 
 }

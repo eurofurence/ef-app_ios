@@ -109,7 +109,8 @@ class DefaultScheduleInteractor: ScheduleInteractor {
                     return ScheduleEventViewModel(title: event.title,
                                                   startTime: hoursDateFormatter.hoursString(from: event.startDate),
                                                   endTime: hoursDateFormatter.hoursString(from: event.endDate),
-                                                  location: event.room.name)
+                                                  location: event.room.name,
+                                                  isFavourite: false)
                 }
 
                 return ScheduleEventGroupViewModel(title: title, events: viewModels)
@@ -214,7 +215,8 @@ class DefaultScheduleInteractor: ScheduleInteractor {
                     return ScheduleEventViewModel(title: event.title,
                                                   startTime: hoursDateFormatter.hoursString(from: event.startDate),
                                                   endTime: hoursDateFormatter.hoursString(from: event.endDate),
-                                                  location: event.room.name)
+                                                  location: event.room.name,
+                                                  isFavourite: false)
                 }
 
                 return ScheduleEventGroupViewModel(title: title, events: viewModels)
