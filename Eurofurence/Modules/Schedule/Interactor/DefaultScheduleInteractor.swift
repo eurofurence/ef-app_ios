@@ -84,6 +84,8 @@ class DefaultScheduleInteractor: ScheduleInteractor {
         private let hoursDateFormatter: HoursDateFormatter
         private let shortFormDateFormatter: ShortFormDateFormatter
         private let refreshService: RefreshService
+        private var events = [Event2]()
+        private var favouriteEvents = [Event2.Identifier]()
 
         init(schedule: EventsSchedule,
              hoursDateFormatter: HoursDateFormatter,
@@ -100,7 +102,7 @@ class DefaultScheduleInteractor: ScheduleInteractor {
 
         var selectedDayIndex = 0
 
-        func eventsDidChange(to events: [Event2]) {
+        fileprivate func regenerateEventViewModels() {
             let groupedByDate = Dictionary(grouping: events, by: { $0.startDate })
             rawModelGroups = groupedByDate.map(EventsGroupedByDate.init).sorted()
             eventGroupViewModels = rawModelGroups.map { (group) -> ScheduleEventGroupViewModel in
@@ -110,11 +112,16 @@ class DefaultScheduleInteractor: ScheduleInteractor {
                                                   startTime: hoursDateFormatter.hoursString(from: event.startDate),
                                                   endTime: hoursDateFormatter.hoursString(from: event.endDate),
                                                   location: event.room.name,
-                                                  isFavourite: false)
+                                                  isFavourite: favouriteEvents.contains(event.identifier))
                 }
 
                 return ScheduleEventGroupViewModel(title: title, events: viewModels)
             }
+        }
+
+        func eventsDidChange(to events: [Event2]) {
+            self.events = events
+            regenerateEventViewModels()
         }
 
         func eventDaysDidChange(to days: [Day]) {
@@ -161,9 +168,13 @@ class DefaultScheduleInteractor: ScheduleInteractor {
             delegate?.scheduleViewModelDidFinishRefreshing()
         }
 
+        func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) {
+            favouriteEvents = identifiers
+            regenerateEventViewModels()
+        }
+
         func runningEventsDidChange(to events: [Event2]) { }
         func upcomingEventsDidChange(to events: [Event2]) { }
-        func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) { }
 
     }
 

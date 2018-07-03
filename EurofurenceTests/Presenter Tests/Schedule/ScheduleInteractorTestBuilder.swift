@@ -31,6 +31,7 @@ class ScheduleInteractorTestBuilder {
     
     struct Context {
         var interactor: DefaultScheduleInteractor
+        var eventsService: FakeEventsService
         var hoursFormatter: FakeHoursDateFormatter
         var shortFormDateFormatter: FakeShortFormDateFormatter
         var shortFormDayAndTimeFormatter: FakeShortFormDayAndTimeFormatter
@@ -39,14 +40,14 @@ class ScheduleInteractorTestBuilder {
         var refreshService: CapturingRefreshService
     }
     
-    private var eventsService: EventsService
+    private var eventsService: FakeEventsService
     
     init() {
         eventsService = FakeEventsService()
     }
     
     @discardableResult
-    func with(_ eventsService: EventsService) -> ScheduleInteractorTestBuilder {
+    func with(_ eventsService: FakeEventsService) -> ScheduleInteractorTestBuilder {
         self.eventsService = eventsService
         return self
     }
@@ -63,6 +64,7 @@ class ScheduleInteractorTestBuilder {
                                                    refreshService: refreshService)
         
         return Context(interactor: interactor,
+                       eventsService: eventsService,
                        hoursFormatter: hoursFormatter,
                        shortFormDateFormatter: shortFormDateFormatter,
                        shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter,
@@ -112,7 +114,7 @@ extension ScheduleInteractorTestBuilder.Context {
                                       startTime: hoursFormatter.hoursString(from: event.startDate),
                                       endTime: hoursFormatter.hoursString(from: event.endDate),
                                       location: event.room.name,
-                                      isFavourite: false)
+                                      isFavourite: eventsService.favourites.contains(event.identifier))
     }
     
     func makeExpectedDayViewModel(from day: Day) -> ScheduleDayViewModel {
