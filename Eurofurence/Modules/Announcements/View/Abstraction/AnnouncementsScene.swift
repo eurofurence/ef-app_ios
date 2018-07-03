@@ -19,5 +19,6 @@ protocol AnnouncementsScene {
 protocol AnnouncementsSceneDelegate {
 
     func announcementsSceneDidLoad()
+    func announcementsSceneDidSelectAnnouncement(at index: Int)
 
 }

@@ -51,6 +51,10 @@ struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
                                                   isRead: isRead)
         }
 
+        func identifierForAnnouncement(at index: Int) -> Announcement2.Identifier {
+            return Announcement2.Identifier("")
+        }
+
         func eurofurenceApplicationDidChangeAnnouncements(_ announcements: [Announcement2]) {
             self.announcements = announcements
         }

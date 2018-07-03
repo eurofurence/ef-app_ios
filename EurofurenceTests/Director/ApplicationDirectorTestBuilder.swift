@@ -61,7 +61,7 @@ extension StubMapDetailModuleProviding {
 class StubAnnouncementsModuleProviding: AnnouncementsModuleProviding {
     
     let stubInterface = UIViewController()
-    func makeAnnouncementsModule() -> UIViewController {
+    func makeAnnouncementsModule(_ delegate: AnnouncementsModuleDelegate) -> UIViewController {
         return stubInterface
     }
     

@@ -9,11 +9,21 @@
 @testable import Eurofurence
 import UIKit
 
+class CapturingAnnouncementsModuleDelegate: AnnouncementsModuleDelegate {
+    
+    private(set) var capturedSelectedAnnouncement: Announcement2.Identifier?
+    func announcementsModuleDidSelectAnnouncement(_ announcement: Announcement2.Identifier) {
+        capturedSelectedAnnouncement = announcement
+    }
+    
+}
+
 class AnnouncementsPresenterTestBuilder {
     
     struct Context {
         var scene: CapturingAnnouncementsScene
         var producedViewController: UIViewController
+        var delegate: CapturingAnnouncementsModuleDelegate
     }
     
     private var announcementsInteractor: AnnouncementsInteractor
@@ -30,13 +40,14 @@ class AnnouncementsPresenterTestBuilder {
     
     func build() -> Context {
         let sceneFactory = StubAnnouncementsSceneFactory()
+        let delegate = CapturingAnnouncementsModuleDelegate()
         let module = AnnouncementsModuleBuilder()
             .with(sceneFactory)
             .with(announcementsInteractor)
             .build()
-            .makeAnnouncementsModule()
+            .makeAnnouncementsModule(delegate)
         
-        return Context(scene: sceneFactory.scene, producedViewController: module)
+        return Context(scene: sceneFactory.scene, producedViewController: module, delegate: delegate)
     }
     
 }
@@ -45,6 +56,10 @@ extension AnnouncementsPresenterTestBuilder.Context {
     
     func simulateSceneDidLoad() {
         scene.delegate?.announcementsSceneDidLoad()
+    }
+    
+    func simulateSceneDidSelectAnnouncement(at index: Int) {
+        scene.delegate?.announcementsSceneDidSelectAnnouncement(at: index)
     }
     
     func bindAnnouncement(at index: Int) -> CapturingAnnouncementComponent {

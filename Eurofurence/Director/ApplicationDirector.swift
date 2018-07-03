@@ -20,7 +20,8 @@ class ApplicationDirector: ExternalContentHandler,
                            KnowledgeListModuleDelegate,
                            KnowledgeDetailModuleDelegate,
                            MapsModuleDelegate,
-                           MapDetailModuleDelegate {
+                           MapDetailModuleDelegate,
+                           AnnouncementsModuleDelegate {
 
     private class DissolveTransitionAnimationProviding: NSObject, UINavigationControllerDelegate {
 
@@ -180,7 +181,7 @@ class ApplicationDirector: ExternalContentHandler,
     }
 
     func newsModuleDidRequestShowingAllAnnouncements() {
-        let module = announcementsModuleFactory.makeAnnouncementsModule()
+        let module = announcementsModuleFactory.makeAnnouncementsModule(self)
         newsController?.navigationController?.pushViewController(module, animated: animate)
     }
 
@@ -279,6 +280,12 @@ class ApplicationDirector: ExternalContentHandler,
     func mapDetailModuleDidSelectDealer(_ identifier: Dealer2.Identifier) {
         let module = dealerDetailModuleProviding.makeDealerDetailModule(for: identifier)
         mapsModule?.navigationController?.pushViewController(module, animated: animate)
+    }
+
+    // MARK: AnnouncementsModuleDelegate
+
+    func announcementsModuleDidSelectAnnouncement(_ announcement: Announcement2.Identifier) {
+
     }
 
     // MARK: Private

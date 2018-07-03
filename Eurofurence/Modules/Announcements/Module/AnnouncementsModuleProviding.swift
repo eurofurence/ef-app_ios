@@ -10,6 +10,6 @@ import UIKit
 
 protocol AnnouncementsModuleProviding {
 
-    func makeAnnouncementsModule() -> UIViewController
+    func makeAnnouncementsModule(_ delegate: AnnouncementsModuleDelegate) -> UIViewController
 
 }

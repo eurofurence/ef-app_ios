@@ -31,11 +31,13 @@ class AnnouncementsPresenter: AnnouncementsSceneDelegate, AnnouncementsListViewM
 
     private let scene: AnnouncementsScene
     private let interactor: AnnouncementsInteractor
+    private let delegate: AnnouncementsModuleDelegate
     private var viewModel: AnnouncementsListViewModel?
 
-    init(scene: AnnouncementsScene, interactor: AnnouncementsInteractor) {
+    init(scene: AnnouncementsScene, interactor: AnnouncementsInteractor, delegate: AnnouncementsModuleDelegate) {
         self.scene = scene
         self.interactor = interactor
+        self.delegate = delegate
 
         scene.setAnnouncementsTitle(.announcements)
         scene.setDelegate(self)
@@ -43,6 +45,11 @@ class AnnouncementsPresenter: AnnouncementsSceneDelegate, AnnouncementsListViewM
 
     func announcementsSceneDidLoad() {
         interactor.makeViewModel(completionHandler: viewModelPrepared)
+    }
+
+    func announcementsSceneDidSelectAnnouncement(at index: Int) {
+        guard let identifier = viewModel?.identifierForAnnouncement(at: index) else { return }
+        delegate.announcementsModuleDidSelectAnnouncement(identifier)
     }
 
     func announcementsViewModelDidChangeAnnouncements() {

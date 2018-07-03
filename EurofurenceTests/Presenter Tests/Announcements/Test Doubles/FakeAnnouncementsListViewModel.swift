@@ -30,6 +30,10 @@ class FakeAnnouncementsListViewModel: AnnouncementsListViewModel {
         return announcements[index]
     }
     
+    func identifierForAnnouncement(at index: Int) -> Announcement2.Identifier {
+        return Announcement2.Identifier("\(index)")
+    }
+    
 }
 
 extension FakeAnnouncementsListViewModel {
