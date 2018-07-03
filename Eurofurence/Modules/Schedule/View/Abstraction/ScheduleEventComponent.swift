@@ -15,5 +15,6 @@ protocol ScheduleEventComponent {
     func setEventEndTime(_ endTime: String)
     func setLocation(_ location: String)
     func showFavouriteEventIndicator()
+    func hideFavouriteEventIndicator()
 
 }

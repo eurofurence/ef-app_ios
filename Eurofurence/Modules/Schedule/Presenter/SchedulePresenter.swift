@@ -30,6 +30,8 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
 
             if event.isFavourite {
                 eventComponent.showFavouriteEventIndicator()
+            } else {
+                eventComponent.hideFavouriteEventIndicator()
             }
         }
 

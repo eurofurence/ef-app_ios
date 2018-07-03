@@ -34,4 +34,8 @@ extension EventTableViewCell: NewsEventComponent {
 
     }
 
+    func hideFavouriteEventIndicator() {
+
+    }
+
 }
