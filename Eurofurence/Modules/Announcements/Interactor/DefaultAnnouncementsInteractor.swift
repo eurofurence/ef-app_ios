@@ -52,7 +52,7 @@ struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
         }
 
         func identifierForAnnouncement(at index: Int) -> Announcement2.Identifier {
-            return Announcement2.Identifier("")
+            return announcements[index].identifier
         }
 
         func eurofurenceApplicationDidChangeAnnouncements(_ announcements: [Announcement2]) {

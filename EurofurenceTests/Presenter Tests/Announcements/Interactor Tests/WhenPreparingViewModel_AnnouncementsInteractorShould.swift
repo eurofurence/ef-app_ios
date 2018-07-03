@@ -70,4 +70,16 @@ class WhenPreparingViewModel_AnnouncementsInteractorShould: XCTestCase {
         XCTAssertEqual(false, announcementViewModel?.isRead)
     }
     
+    func testProvideTheExpectedIdentifier() {
+        let announcements = [Announcement2].random
+        let randomAnnouncement = announcements.randomElement()
+        let announcementsService = StubAnnouncementsService(announcements: announcements)
+        let interactor = DefaultAnnouncementsInteractor(announcementsService: announcementsService)
+        var viewModel: AnnouncementsListViewModel?
+        interactor.makeViewModel { viewModel = $0 }
+        let actual = viewModel?.identifierForAnnouncement(at: randomAnnouncement.index)
+        
+        XCTAssertEqual(randomAnnouncement.element.identifier, actual)
+    }
+    
 }

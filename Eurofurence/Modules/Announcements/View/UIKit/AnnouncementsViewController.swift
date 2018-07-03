@@ -77,7 +77,7 @@ class AnnouncementsViewController: UIViewController, AnnouncementsScene {
         }
 
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+            onDidSelectRowAtIndexPath(indexPath)
         }
 
     }
