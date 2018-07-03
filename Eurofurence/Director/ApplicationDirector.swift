@@ -285,7 +285,8 @@ class ApplicationDirector: ExternalContentHandler,
     // MARK: AnnouncementsModuleDelegate
 
     func announcementsModuleDidSelectAnnouncement(_ announcement: Announcement2.Identifier) {
-
+        let module = announcementDetailModuleProviding.makeAnnouncementDetailModule(for: announcement)
+        newsController?.navigationController?.pushViewController(module, animated: animate)
     }
 
     // MARK: Private

@@ -487,6 +487,7 @@
 		CA283AD620EAC9BA00F7D195 /* DefaultAnnouncementsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AD520EAC9BA00F7D195 /* DefaultAnnouncementsInteractor.swift */; };
 		CA283AD820EB9A3C00F7D195 /* WhenSelectingAnnouncement_AnnouncementsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AD720EB9A3C00F7D195 /* WhenSelectingAnnouncement_AnnouncementsPresenterShould.swift */; };
 		CA283ADA20EB9CA600F7D195 /* AnnouncementsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AD920EB9CA600F7D195 /* AnnouncementsModuleDelegate.swift */; };
+		CA283ADC20EB9FD000F7D195 /* WhenAnnouncementsModuleSelectsAnnouncement_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283ADB20EB9FD000F7D195 /* WhenAnnouncementsModuleSelectsAnnouncement_DirectorShould.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1689,6 +1690,7 @@
 		CA283AD520EAC9BA00F7D195 /* DefaultAnnouncementsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAnnouncementsInteractor.swift; sourceTree = "<group>"; };
 		CA283AD720EB9A3C00F7D195 /* WhenSelectingAnnouncement_AnnouncementsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSelectingAnnouncement_AnnouncementsPresenterShould.swift; sourceTree = "<group>"; };
 		CA283AD920EB9CA600F7D195 /* AnnouncementsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsModuleDelegate.swift; sourceTree = "<group>"; };
+		CA283ADB20EB9FD000F7D195 /* WhenAnnouncementsModuleSelectsAnnouncement_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAnnouncementsModuleSelectsAnnouncement_DirectorShould.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -5785,6 +5787,7 @@
 			children = (
 				CA637561208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift */,
 				CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */,
+				CA283ADB20EB9FD000F7D195 /* WhenAnnouncementsModuleSelectsAnnouncement_DirectorShould.swift */,
 				CA27619320DFF66F000E52AC /* WhenApplicationRequestsHandlingOfExternalContent_DirectorShould.swift */,
 				CA637563208CC8F800536BE2 /* WhenBuilt_DirectorShould.swift */,
 				CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */,
@@ -6961,6 +6964,7 @@
 				CACF1EBA20B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift in Sources */,
 				CAF81C6A20DDA10C00898C52 /* DealerDetailAboutTheArtViewModel+RandomValueProviding.swift in Sources */,
 				CA728485209F88E0007D912A /* DefaultAnnouncementDetailInteractorShould.swift in Sources */,
+				CA283ADC20EB9FD000F7D195 /* WhenAnnouncementsModuleSelectsAnnouncement_DirectorShould.swift in Sources */,
 				CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */,
 				CA71A3502040371D00C847C3 /* FloatingPoint+RandomValueProviding.swift in Sources */,
 				781A94421F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */,
