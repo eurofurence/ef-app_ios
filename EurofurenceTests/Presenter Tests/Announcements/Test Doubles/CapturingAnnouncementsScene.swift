@@ -28,4 +28,9 @@ class CapturingAnnouncementsScene: UIViewController, AnnouncementsScene {
         self.binder = binder
     }
     
+    private(set) var capturedAnnouncementIndexToDeselect: Int?
+    func deselectAnnouncement(at index: Int) {
+        capturedAnnouncementIndexToDeselect = index
+    }
+    
 }

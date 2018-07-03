@@ -23,4 +23,15 @@ class WhenSelectingAnnouncement_AnnouncementsPresenterShould: XCTestCase {
         XCTAssertEqual(expected, context.delegate.capturedSelectedAnnouncement)
     }
     
+    func testTellTheSceneToDeselectTheSelectedAnnouncement() {
+        let viewModel = FakeAnnouncementsListViewModel()
+        let interactor = FakeAnnouncementsInteractor(viewModel: viewModel)
+        let context = AnnouncementsPresenterTestBuilder().with(interactor).build()
+        context.simulateSceneDidLoad()
+        let randomAnnouncement = viewModel.announcements.randomElement()
+        context.simulateSceneDidSelectAnnouncement(at: randomAnnouncement.index)
+        
+        XCTAssertEqual(randomAnnouncement.index, context.scene.capturedAnnouncementIndexToDeselect)
+    }
+    
 }

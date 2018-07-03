@@ -46,6 +46,11 @@ class AnnouncementsViewController: UIViewController, AnnouncementsScene {
                                           onDidSelectRowAtIndexPath: didSelectRowAtIndexPath)
     }
 
+    func deselectAnnouncement(at index: Int) {
+        let indexPath = IndexPath(item: index, section: 0)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
     // MARK: Private
 
     private func didSelectRowAtIndexPath(_ indexPath: IndexPath) {

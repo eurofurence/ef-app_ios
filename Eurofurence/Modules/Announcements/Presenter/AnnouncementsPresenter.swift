@@ -48,6 +48,8 @@ class AnnouncementsPresenter: AnnouncementsSceneDelegate, AnnouncementsListViewM
     }
 
     func announcementsSceneDidSelectAnnouncement(at index: Int) {
+        scene.deselectAnnouncement(at: index)
+
         guard let identifier = viewModel?.identifierForAnnouncement(at: index) else { return }
         delegate.announcementsModuleDidSelectAnnouncement(identifier)
     }
