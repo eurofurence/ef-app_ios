@@ -30,6 +30,7 @@ class WhenSearchControllerProducesNewResults_ScheduleInteractorShould: XCTestCas
         
         let results = firstGroupEvents + secondGroupEvents
         let eventsService = FakeEventsService()
+        eventsService.favourites = [firstGroupEvents.randomElement().element.identifier]
         
         let context = ScheduleInteractorTestBuilder().with(eventsService).build()
         context.makeSearchViewModel()

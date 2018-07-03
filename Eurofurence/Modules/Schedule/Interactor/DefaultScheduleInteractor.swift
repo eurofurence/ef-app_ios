@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DefaultScheduleInteractor: ScheduleInteractor {
+class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
     // MARK: Properties
 
@@ -40,7 +40,7 @@ class DefaultScheduleInteractor: ScheduleInteractor {
                                           shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter,
                                           hoursDateFormatter: hoursDateFormatter)
 
-        eventsService.add(viewModel)
+        eventsService.add(self)
     }
 
     // MARK: ScheduleInteractor
@@ -53,7 +53,23 @@ class DefaultScheduleInteractor: ScheduleInteractor {
         completionHandler(searchViewModel)
     }
 
-    private class ViewModel: ScheduleViewModel, EventsServiceObserver, EventsScheduleDelegate, RefreshServiceObserver {
+    // MARK: EventsServiceObserver
+
+    func eventsDidChange(to events: [Event2]) {
+        viewModel.eventsDidChange(to: events)
+    }
+
+    func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) {
+        viewModel.favouriteEventsDidChange(identifiers)
+        searchViewModel.favouriteEventsDidChange(identifiers)
+    }
+
+    func runningEventsDidChange(to events: [Event2]) {}
+    func upcomingEventsDidChange(to events: [Event2]) {}
+
+    // MARK: Private
+
+    private class ViewModel: ScheduleViewModel, EventsScheduleDelegate, RefreshServiceObserver {
 
         private struct EventsGroupedByDate: Comparable {
             static func < (lhs: EventsGroupedByDate, rhs: EventsGroupedByDate) -> Bool {
@@ -173,9 +189,6 @@ class DefaultScheduleInteractor: ScheduleInteractor {
             regenerateEventViewModels()
         }
 
-        func runningEventsDidChange(to events: [Event2]) { }
-        func upcomingEventsDidChange(to events: [Event2]) { }
-
     }
 
     private class SearchViewModel: ScheduleSearchViewModel, EventsSearchControllerDelegate {
@@ -193,6 +206,8 @@ class DefaultScheduleInteractor: ScheduleInteractor {
         private let shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter
         private let hoursDateFormatter: HoursDateFormatter
         private var rawModelGroups = [EventsGroupedByDate]()
+        private var searchResults = [Event2]()
+        private var favouriteEvents = [Event2.Identifier]()
 
         init(searchController: EventsSearchController,
              shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter,
@@ -218,7 +233,17 @@ class DefaultScheduleInteractor: ScheduleInteractor {
         }
 
         func searchResultsDidUpdate(to results: [Event2]) {
-            let groupedByDate = Dictionary(grouping: results, by: { $0.startDate })
+            searchResults = results
+            regenerateViewModel()
+        }
+
+        func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) {
+            favouriteEvents = identifiers
+            regenerateViewModel()
+        }
+
+        private func regenerateViewModel() {
+            let groupedByDate = Dictionary(grouping: searchResults, by: { $0.startDate })
             rawModelGroups = groupedByDate.map(EventsGroupedByDate.init).sorted()
             let eventGroupViewModels = rawModelGroups.map { (group) -> ScheduleEventGroupViewModel in
                 let title = shortFormDayAndTimeFormatter.dayAndHoursString(from: group.date)
@@ -227,7 +252,7 @@ class DefaultScheduleInteractor: ScheduleInteractor {
                                                   startTime: hoursDateFormatter.hoursString(from: event.startDate),
                                                   endTime: hoursDateFormatter.hoursString(from: event.endDate),
                                                   location: event.room.name,
-                                                  isFavourite: false)
+                                                  isFavourite: favouriteEvents.contains(event.identifier))
                 }
 
                 return ScheduleEventGroupViewModel(title: title, events: viewModels)
