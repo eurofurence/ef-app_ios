@@ -38,8 +38,9 @@ struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
             return announcements.count
         }
 
+        private var delegate: AnnouncementsListViewModelDelegate?
         func setDelegate(_ delegate: AnnouncementsListViewModelDelegate) {
-
+            self.delegate = delegate
         }
 
         func announcementViewModel(at index: Int) -> AnnouncementComponentViewModel {
@@ -57,10 +58,12 @@ struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
 
         func eurofurenceApplicationDidChangeAnnouncements(_ announcements: [Announcement2]) {
             self.announcements = announcements
+            delegate?.announcementsViewModelDidChangeAnnouncements()
         }
 
         func announcementsServiceDidUpdateReadAnnouncements(_ readAnnouncements: [Announcement2.Identifier]) {
             self.readAnnouncements = readAnnouncements
+            delegate?.announcementsViewModelDidChangeAnnouncements()
         }
 
     }

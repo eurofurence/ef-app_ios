@@ -16,6 +16,10 @@ extension Array where Element: RandomValueProviding {
     
     static func random(minimum: Int) -> [Element] {
         let upperLimit = Int.random(upperLimit: 10) + minimum
+        return random(upperLimit: upperLimit)
+    }
+    
+    static func random(upperLimit: Int) -> [Element] {
         return (0...upperLimit).map { (_) in Element.random }
     }
     
