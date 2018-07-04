@@ -31,5 +31,7 @@ protocol ScheduleSceneDelegate {
     func scheduleSceneDidSelectEvent(at indexPath: IndexPath)
     func scheduleSceneDidSelectSearchResult(at indexPath: IndexPath)
     func scheduleSceneDidUpdateSearchQuery(_ query: String)
+    func scheduleSelectDidSelectFavouritesOption()
+    func scheduleSelectDidSelectAllEventsOption()
 
 }

@@ -44,6 +44,16 @@ final class CapturingScheduleViewModel: ScheduleViewModel {
         return stubbedIdentifiersByIndexPath[indexPath]
     }
     
+    private(set) var toldToFilterToFavouritesOnly = false
+    func onlyShowFavourites() {
+        toldToFilterToFavouritesOnly = true
+    }
+    
+    private(set) var toldToShowAllEvents = false
+    func showAllEvents() {
+        toldToShowAllEvents = true
+    }
+    
 }
 
 extension CapturingScheduleViewModel {

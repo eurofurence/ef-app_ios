@@ -176,6 +176,14 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             return rawModelGroups[indexPath.section].events[indexPath.row].identifier
         }
 
+        func onlyShowFavourites() {
+
+        }
+
+        func showAllEvents() {
+
+        }
+
         func refreshServiceDidBeginRefreshing() {
             delegate?.scheduleViewModelDidBeginRefreshing()
         }

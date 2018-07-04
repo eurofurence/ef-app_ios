@@ -14,6 +14,8 @@ protocol ScheduleViewModel {
     func refresh()
     func showEventsForDay(at index: Int)
     func identifierForEvent(at indexPath: IndexPath) -> Event2.Identifier?
+    func onlyShowFavourites()
+    func showAllEvents()
 
 }
 
