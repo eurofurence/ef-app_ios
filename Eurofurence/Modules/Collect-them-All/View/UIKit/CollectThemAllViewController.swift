@@ -31,6 +31,7 @@ class CollectThemAllViewController: UIViewController, CollectThemAllScene {
         webConfiguration.websiteDataStore = .nonPersistent()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView?.allowsLinkPreview = false
+        webView?.allowsBackForwardNavigationGestures = true
         view = webView
         delegate?.collectThemAllSceneDidLoad()
     }
