@@ -73,8 +73,8 @@ public extension String {
                                                          comment: "Header shown above section in the News view for events that start soon")
     public static let runningEvents = NSLocalizedString("RunningEvents",
                                                         comment: "Header shown above section in the News view for events that are currently running")
-    public static let favouriteEvents = NSLocalizedString("FavouriteEvents",
-                                                          comment: "Header shown above section in the News view for events that the user has added to their favourites")
+    public static let todaysFavouriteEvents = NSLocalizedString("TodaysFavouriteEvents",
+                                                                comment: "Header shown above section in the News view for events that the user has added to their favourites that are taking place today")
     public static let now = NSLocalizedString("Now",
                                               comment: "Shown in place of the event start time when the event is running now")
 

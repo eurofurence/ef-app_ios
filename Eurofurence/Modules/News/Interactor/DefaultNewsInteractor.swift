@@ -246,7 +246,7 @@ class DefaultNewsInteractor: NewsInteractor,
         }
 
         if !favouriteEvents.isEmpty {
-            components.append(EventsComponent(title: .favouriteEvents,
+            components.append(EventsComponent(title: .todaysFavouriteEvents,
                                               events: favouriteEvents,
                                               startTimeFormatter: { (event) -> String in
                                                 return self.hoursDateFormatter.hoursString(from: event.startDate)

@@ -32,6 +32,8 @@
 "downloadError" = "Download Error";
 "preloadFailureMessage" = "Failed to download data from server. Please try again.";
 
+"TodaysFavouriteEvents" = "Todays Favourite Events";
+
 "login" = "Login";
 "loggingIn" = "Logging In";
 "loggingInDetail" = "This may take a few moments";

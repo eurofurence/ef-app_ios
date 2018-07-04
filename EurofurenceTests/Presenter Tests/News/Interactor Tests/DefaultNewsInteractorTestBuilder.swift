@@ -247,7 +247,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
         
         func hasFavouriteEvents() -> ViewModelAssertionBuilder {
             let expectedEvents = context.eventsService.allEvents.filter({ context.eventsService.favourites.contains($0.identifier) }).map(makeExpectedViewModelForFavouriteEvent)
-            components.append(Component(title: .favouriteEvents, components: expectedEvents))
+            components.append(Component(title: .todaysFavouriteEvents, components: expectedEvents))
             
             return self
         }
