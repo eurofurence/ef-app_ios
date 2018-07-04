@@ -21,13 +21,7 @@
                         <viewLayoutGuide key="safeArea" id="uBP-Oa-rxW"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" image="Collectemall-50" selectedImage="Collectemall-50" id="d5x-46-bVF"/>
-                    <navigationItem key="navigationItem" title="Title" id="eKf-JT-O3e">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="mNS-wx-NhQ">
-                            <connections>
-                                <action selector="refreshButtonTapped:" destination="JeW-cI-uOl" id="Eu3-0Y-Lke"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="eKf-JT-O3e"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>

@@ -15,12 +15,6 @@ class CollectThemAllViewController: UIViewController, CollectThemAllScene {
 
     private var webView: WKWebView?
 
-    // MARK: Actions
-
-    @IBAction func refreshButtonTapped(_ sender: Any) {
-        webView?.reload()
-    }
-
     // MARK: Overrides
 
     override func viewDidLoad() {
