@@ -23,22 +23,23 @@
 "cellularDownloadAlertMessage" = "Proceeding with the initial download will consume several megabytes of data.";
 "cellularDownloadAlertContinueOverCellularTitle" = "Continue Over Cellular";
 
+"anonymousUserLoginPrompt" = "You are currently not logged in";
+"anonymousUserLoginDescription" = "Tap here to login using your registration details and receive personalized messages from Eurofurence!";
+
+"authenticatedUserLoginPromptFormat" = "Welcome, %@ (%@)";
+"authentiatedUserLoginDescriptionFormat" = "You have (%@) unread messages";
+
+"downloadError" = "Download Error";
+"preloadFailureMessage" = "Failed to download data from server. Please try again.";
+
 "News" = "News";
 "YourEurofurence" = "Your Eurofurence";
 "Announcements" = "Announcements";
 "DaysUntilConventionHeader" = "Days Until Eurofurence";
 "UpcomingEvents" = "Upcoming Events";
 "RunningEvents" = "Running Events";
-"FavouriteEvents" = "Favourite Events";
+"TodaysFavouriteEvents" = "Todays Favourite Events";
 "Now" = "Now";
-
-"anonymousUserLoginPrompt" = "You are currently not logged in";
-"anonymousUserLoginDescription" = "Tap here to login using your registration details and receive personalized messages from Eurofurence!";
-
-"authenticatedUserLoginPromptFormat" = "Welcome, %@ (%@)";
-
-"downloadError" = "Download Error";
-"preloadFailureMessage" = "Failed to download data from server. Please try again.";
 
 "login" = "Login";
 "loggingIn" = "Logging In";

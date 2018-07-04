@@ -1,10 +1,10 @@
-/* 
-  Strings.strings
-  Eurofurence
-
-  Created by Thomas Sherwood on 09/01/2018.
-  Copyright © 2018 Eurofurence. All rights reserved.
-*/
+/*
+ Strings.strings
+ Eurofurence
+ 
+ Created by Thomas Sherwood on 09/01/2018.
+ Copyright © 2018 Eurofurence. All rights reserved.
+ */
 
 "ok" = "OK";
 "cancel" = "Cancel";
@@ -32,7 +32,14 @@
 "downloadError" = "Download Error";
 "preloadFailureMessage" = "Failed to download data from server. Please try again.";
 
+"News" = "News";
+"YourEurofurence" = "Your Eurofurence";
+"Announcements" = "Announcements";
+"DaysUntilConventionHeader" = "Days Until Eurofurence";
+"UpcomingEvents" = "Upcoming Events";
+"RunningEvents" = "Running Events";
 "TodaysFavouriteEvents" = "Todays Favourite Events";
+"Now" = "Now";
 
 "login" = "Login";
 "loggingIn" = "Logging In";
