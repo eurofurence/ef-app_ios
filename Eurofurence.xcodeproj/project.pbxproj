@@ -493,6 +493,7 @@
 		CA283AE220EC05B700F7D195 /* WhenPreparingViewModelForFavouritedEvent_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AE120EC05B700F7D195 /* WhenPreparingViewModelForFavouritedEvent_ScheduleInteractorShould.swift */; };
 		CA283AE420EC178600F7D195 /* WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AE320EC178600F7D195 /* WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift */; };
 		CA283AE620EC188E00F7D195 /* WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AE520EC188E00F7D195 /* WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift */; };
+		CA283AEC20ED421E00F7D195 /* WhenScheduleIndicatesCurrentDayHasChanged_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283AEB20ED421E00F7D195 /* WhenScheduleIndicatesCurrentDayHasChanged_NewsInteractorShould.swift */; };
 		CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */; };
 		CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1701,6 +1702,7 @@
 		CA283AE120EC05B700F7D195 /* WhenPreparingViewModelForFavouritedEvent_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModelForFavouritedEvent_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
 		CA283AE320EC178600F7D195 /* WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA283AE520EC188E00F7D195 /* WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift; sourceTree = "<group>"; };
+		CA283AEB20ED421E00F7D195 /* WhenScheduleIndicatesCurrentDayHasChanged_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenScheduleIndicatesCurrentDayHasChanged_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA29EF74203462E300672911 /* KnowledgeListEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListEntryTableViewCell.swift; sourceTree = "<group>"; };
 		CA29EF762034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -4030,6 +4032,7 @@
 				CA65A87A209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift */,
 				CA283A6420E6F27200F7D195 /* WhenApplicationRefreshStateChanges_NewsInteractorShould.swift */,
 				CA283A8520E9483F00F7D195 /* WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould.swift */,
+				CA283AEB20ED421E00F7D195 /* WhenScheduleIndicatesCurrentDayHasChanged_NewsInteractorShould.swift */,
 				CA283A5F20E6ECD300F7D195 /* WhenToldToRefresh_NewsInteractorShould.swift */,
 				CA728493209F9A54007D912A /* Before Convention */,
 				CA162E8920A64339004AFED6 /* During Convention */,
@@ -7440,6 +7443,7 @@
 				CA162E9820A8886C004AFED6 /* Room+RandomValueProviding.swift in Sources */,
 				CA6A8DDB20E41844007536CD /* MapDetailPresenterTestBuilder.swift in Sources */,
 				CA162E9420A87D3D004AFED6 /* Event2+RandomValueProviding.swift in Sources */,
+				CA283AEC20ED421E00F7D195 /* WhenScheduleIndicatesCurrentDayHasChanged_NewsInteractorShould.swift in Sources */,
 				78455B4B1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift in Sources */,
 				CA81D4941FEA92EA00A52A2F /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift in Sources */,
 				CACF1E7420B1D0ED00D904B5 /* FakeEventDetailInteractor.swift in Sources */,

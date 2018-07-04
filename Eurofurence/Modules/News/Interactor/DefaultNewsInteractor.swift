@@ -187,7 +187,9 @@ class DefaultNewsInteractor: NewsInteractor,
     }
 
     func currentEventDayDidChange(to day: Day?) {
-
+        if let day = day {
+            favouritesSchedule.restrictEvents(to: day)
+        }
     }
 
     // MARK: RefreshServiceObserver
