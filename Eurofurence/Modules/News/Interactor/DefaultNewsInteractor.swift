@@ -44,6 +44,7 @@ class DefaultNewsInteractor: NewsInteractor,
     private let refreshService: RefreshService
     private let favouritesSchedule: EventsSchedule
     private var todaysEvents = [Event2]()
+    private var currentDay: Day?
 
     // MARK: Initialization
 
@@ -187,6 +188,7 @@ class DefaultNewsInteractor: NewsInteractor,
     }
 
     func currentEventDayDidChange(to day: Day?) {
+        currentDay = day
         if let day = day {
             favouritesSchedule.restrictEvents(to: day)
         }
@@ -205,7 +207,12 @@ class DefaultNewsInteractor: NewsInteractor,
     // MARK: Private
 
     private func regenerateFavouriteEvents() {
-        favouriteEvents = todaysEvents.filter({ favouriteEventIdentifiers.contains($0.identifier) })
+        if currentDay == nil {
+            favouriteEvents = []
+        } else {
+            favouriteEvents = todaysEvents.filter({ favouriteEventIdentifiers.contains($0.identifier) })
+        }
+
         regenerateViewModel()
     }
 

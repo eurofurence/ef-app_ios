@@ -21,4 +21,19 @@ class WhenScheduleIndicatesCurrentDayHasChanged_NewsInteractorShould: XCTestCase
         XCTAssertEqual(day, eventsService.lastProducedSchedule?.dayUsedToRestrictEvents)
     }
     
+    func testNotIncludeFavouritesSectionWhenDayIsNil() {
+        let eventsService = FakeEventsService()
+        let context = DefaultNewsInteractorTestBuilder().with(eventsService).build()
+        context.subscribeViewModelUpdates()
+        eventsService.lastProducedSchedule?.simulateDayChanged(to: nil)
+        
+        context
+            .assert()
+            .thatViewModel()
+            .hasYourEurofurence()
+            .hasConventionCountdown()
+            .hasAnnouncements()
+            .verify()
+    }
+    
 }
