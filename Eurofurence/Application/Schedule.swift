@@ -223,7 +223,6 @@ class Schedule {
         eventBus.subscribe(consumer: ScheduleUpdater(schedule: self))
         reconstituteEventsFromDataStore()
         reconstituteFavouritesFromDataStore()
-        reconstituteDaysFromDataStore()
     }
 
     // MARK: Functions
@@ -283,9 +282,10 @@ class Schedule {
         let events = dataStore.getSavedEvents()
         let rooms = dataStore.getSavedRooms()
         let tracks = dataStore.getSavedTracks()
+        let conferenceDays = dataStore.getSavedConferenceDays()
 
-        if let events = events, let rooms = rooms, let tracks = tracks {
-            updateSchedule(events: events, rooms: rooms, tracks: tracks, days: [])
+        if let events = events, let rooms = rooms, let tracks = tracks, let conferenceDays = conferenceDays {
+            updateSchedule(events: events, rooms: rooms, tracks: tracks, days: conferenceDays)
         }
     }
 
@@ -341,13 +341,6 @@ class Schedule {
 
     private func compareEventsByStartDate(_ first: Event2, second: Event2) -> Bool {
         return first.startDate < second.startDate
-    }
-
-    private func reconstituteDaysFromDataStore() {
-        guard let conferenceDays = dataStore.getSavedConferenceDays() else { return }
-
-        days = conferenceDays
-        dayModels = makeDays(from: conferenceDays)
     }
 
     private func makeDays(from models: [APIConferenceDay]) -> [Day] {
