@@ -12,7 +12,7 @@ import Foundation
 class CapturingEventsScheduleDelegate: EventsScheduleDelegate {
     
     private(set) var events = [Event2]()
-    func eventsDidChange(to events: [Event2]) {
+    func scheduleEventsDidChange(to events: [Event2]) {
         self.events = events
     }
     

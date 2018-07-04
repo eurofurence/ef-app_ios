@@ -26,7 +26,7 @@ class FakeEventsSchedule: EventsSchedule {
 extension FakeEventsSchedule {
     
     func simulateEventsChanged(_ events: [Event2]) {
-        delegate?.eventsDidChange(to: events)
+        delegate?.scheduleEventsDidChange(to: events)
     }
     
     func simulateDaysChanged(_ days: [Day]) {

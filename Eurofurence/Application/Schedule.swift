@@ -61,7 +61,7 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
     func setDelegate(_ delegate: EventsScheduleDelegate) {
         self.delegate = delegate
 
-        delegate.eventsDidChange(to: events)
+        delegate.scheduleEventsDidChange(to: events)
         updateDelegateWithAllDays()
         delegate.currentEventDayDidChange(to: currentDay)
     }
@@ -104,7 +104,7 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
         }
 
         events = allEvents.compactMap(schedule.makeEventModel)
-        delegate?.eventsDidChange(to: events)
+        delegate?.scheduleEventsDidChange(to: events)
     }
 
     private func findDay(for date: Date) -> APIConferenceDay? {
