@@ -11,9 +11,16 @@ import Foundation
 
 class FakeEventsSchedule: EventsSchedule {
     
+    var events: [Event2]
+    
+    init(events: [Event2] = .random) {
+        self.events = events
+    }
+    
     fileprivate var delegate: EventsScheduleDelegate?
     func setDelegate(_ delegate: EventsScheduleDelegate) {
         self.delegate = delegate
+        delegate.scheduleEventsDidChange(to: events)
     }
     
     private(set) var dayUsedToRestrictEvents: Day?

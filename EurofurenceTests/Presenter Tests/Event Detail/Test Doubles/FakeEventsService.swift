@@ -49,7 +49,7 @@ class FakeEventsService: EventsService {
     
     private(set) var lastProducedSchedule: FakeEventsSchedule?
     func makeEventsSchedule() -> EventsSchedule {
-        let schedule = FakeEventsSchedule()
+        let schedule = FakeEventsSchedule(events: allEvents)
         lastProducedSchedule = schedule
         return schedule
     }

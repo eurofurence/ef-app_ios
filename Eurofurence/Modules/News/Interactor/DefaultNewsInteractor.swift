@@ -24,7 +24,8 @@ class DefaultNewsInteractor: NewsInteractor,
                              PrivateMessagesServiceObserver,
                              ConventionCountdownServiceObserver,
                              EventsServiceObserver,
-                             RefreshServiceObserver {
+                             RefreshServiceObserver,
+                             EventsScheduleDelegate {
 
     // MARK: Properties
 
@@ -41,6 +42,8 @@ class DefaultNewsInteractor: NewsInteractor,
     private let dateDistanceCalculator: DateDistanceCalculator
     private let clock: Clock
     private let refreshService: RefreshService
+    private let favouritesSchedule: EventsSchedule
+    private var todaysEvents = [Event2]()
 
     // MARK: Initialization
 
@@ -72,6 +75,8 @@ class DefaultNewsInteractor: NewsInteractor,
         self.dateDistanceCalculator = dateDistanceCalculator
         self.clock = clock
         self.refreshService = refreshService
+        favouritesSchedule = eventsService.makeEventsSchedule()
+        favouritesSchedule.setDelegate(self)
 
         announcementsService.add(self)
         authenticationService.add(self)
@@ -170,6 +175,21 @@ class DefaultNewsInteractor: NewsInteractor,
         regenerateFavouriteEvents()
     }
 
+    // MARK: EventsScheduleDelegate
+
+    func scheduleEventsDidChange(to events: [Event2]) {
+        todaysEvents = events
+        regenerateViewModel()
+    }
+
+    func eventDaysDidChange(to days: [Day]) {
+
+    }
+
+    func currentEventDayDidChange(to day: Day?) {
+
+    }
+
     // MARK: RefreshServiceObserver
 
     func refreshServiceDidBeginRefreshing() {
@@ -183,7 +203,7 @@ class DefaultNewsInteractor: NewsInteractor,
     // MARK: Private
 
     private func regenerateFavouriteEvents() {
-        favouriteEvents = allEvents.filter({ favouriteEventIdentifiers.contains($0.identifier) })
+        favouriteEvents = todaysEvents.filter({ favouriteEventIdentifiers.contains($0.identifier) })
         regenerateViewModel()
     }
 
