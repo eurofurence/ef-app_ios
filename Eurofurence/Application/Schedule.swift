@@ -165,6 +165,7 @@ class Schedule {
     private let clock: Clock
     private let timeIntervalForUpcomingEventsSinceNow: TimeInterval
     private let eventBus: EventBus
+    private let notificationsService: NotificationsService
 
     private(set) var events = [APIEvent]()
     private(set) var rooms = [APIRoom]()
@@ -213,12 +214,14 @@ class Schedule {
          dataStore: EurofurenceDataStore,
          imageCache: ImagesCache,
          clock: Clock,
-         timeIntervalForUpcomingEventsSinceNow: TimeInterval) {
+         timeIntervalForUpcomingEventsSinceNow: TimeInterval,
+         notificationsService: NotificationsService) {
         self.dataStore = dataStore
         self.imageCache = imageCache
         self.clock = clock
         self.timeIntervalForUpcomingEventsSinceNow = timeIntervalForUpcomingEventsSinceNow
         self.eventBus = eventBus
+        self.notificationsService = notificationsService
 
         eventBus.subscribe(consumer: ScheduleUpdater(schedule: self))
         reconstituteEventsFromDataStore()
@@ -251,6 +254,7 @@ class Schedule {
         }
 
         favouriteEventIdentifiers.append(identifier)
+        notificationsService.scheduleReminderForEvent(identifier: identifier)
     }
 
     func unfavouriteEvent(identifier: Event2.Identifier) {

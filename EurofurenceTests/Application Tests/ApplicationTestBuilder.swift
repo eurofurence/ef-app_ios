@@ -133,6 +133,15 @@ class FakeLongRunningTaskManager: LongRunningTaskManager {
     
 }
 
+class CapturingNotificationsService: NotificationsService {
+    
+    private(set) var capturedEventIdentifier: Event2.Identifier?
+    func scheduleReminderForEvent(identifier: Event2.Identifier) {
+        capturedEventIdentifier = identifier
+    }
+    
+}
+
 class ApplicationTestBuilder {
     
     struct Context {
@@ -152,6 +161,7 @@ class ApplicationTestBuilder {
         var significantTimeChangeAdapter: CapturingSignificantTimeChangeAdapter
         var urlOpener: CapturingURLOpener
         var longRunningTaskManager: FakeLongRunningTaskManager
+        var notificationsService: CapturingNotificationsService
         
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
@@ -365,6 +375,7 @@ class ApplicationTestBuilder {
         let significantTimeChangeEventSource = FakeSignificantTimeChangeEventSource()
         let significantTimeChangeAdapter = CapturingSignificantTimeChangeAdapter()
         let longRunningTaskManager = FakeLongRunningTaskManager()
+        let notificationsService = CapturingNotificationsService()
         let app = EurofurenceApplicationBuilder()
             .with(stubClock)
             .with(capturingCredentialStore)
@@ -386,6 +397,7 @@ class ApplicationTestBuilder {
             .with(urlOpener)
             .with(collectThemAllRequestFactory)
             .with(longRunningTaskManager)
+            .with(notificationsService)
             .build()
         
         return Context(application: app,
@@ -403,7 +415,8 @@ class ApplicationTestBuilder {
                        imageRepository: imageRepository,
                        significantTimeChangeAdapter: significantTimeChangeAdapter,
                        urlOpener: urlOpener,
-                       longRunningTaskManager: longRunningTaskManager)
+                       longRunningTaskManager: longRunningTaskManager,
+                       notificationsService: notificationsService)
     }
     
 }

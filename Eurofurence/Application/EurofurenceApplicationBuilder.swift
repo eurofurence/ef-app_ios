@@ -30,8 +30,15 @@ class EurofurenceApplicationBuilder {
     private var urlOpener: URLOpener
     private var collectThemAllRequestFactory: CollectThemAllRequestFactory
     private var longRunningTaskManager: LongRunningTaskManager
+    private var notificationsService: NotificationsService
 
     init() {
+        struct DummyNotificationsService: NotificationsService {
+            func scheduleReminderForEvent(identifier: Event2.Identifier) {
+
+            }
+        }
+
         userPreferences = UserDefaultsPreferences()
         dataStore = CoreDataEurofurenceDataStore()
 
@@ -62,6 +69,7 @@ class EurofurenceApplicationBuilder {
         urlOpener = AppURLOpener()
         collectThemAllRequestFactory = DefaultCollectThemAllRequestFactory()
         longRunningTaskManager = CocoaTouchLongRunningTaskManager()
+        notificationsService = DummyNotificationsService()
     }
 
     @discardableResult
@@ -184,6 +192,12 @@ class EurofurenceApplicationBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ notificationsService: NotificationsService) -> EurofurenceApplicationBuilder {
+        self.notificationsService = notificationsService
+        return self
+    }
+
     func build() -> EurofurenceApplicationProtocol {
         return EurofurenceApplication(userPreferences: userPreferences,
                                       dataStore: dataStore,
@@ -204,7 +218,8 @@ class EurofurenceApplicationBuilder {
                                       significantTimeChangeAdapter: significantTimeChangeAdapter,
                                       urlOpener: urlOpener,
                                       collectThemAllRequestFactory: collectThemAllRequestFactory,
-                                      longRunningTaskManager: longRunningTaskManager)
+                                      longRunningTaskManager: longRunningTaskManager,
+                                      notificationsService: notificationsService)
     }
 
 }

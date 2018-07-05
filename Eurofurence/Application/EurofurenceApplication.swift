@@ -72,7 +72,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
          significantTimeChangeAdapter: SignificantTimeChangeAdapter,
          urlOpener: URLOpener,
          collectThemAllRequestFactory: CollectThemAllRequestFactory,
-         longRunningTaskManager: LongRunningTaskManager) {
+         longRunningTaskManager: LongRunningTaskManager,
+         notificationsService: NotificationsService) {
         self.userPreferences = userPreferences
         self.dataStore = dataStore
         self.pushPermissionsRequester = pushPermissionsRequester
@@ -106,7 +107,12 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         imageCache = ImagesCache(eventBus: eventBus, imageRepository: imageRepository)
         announcements = Announcements(eventBus: eventBus, dataStore: dataStore)
         knowledge = Knowledge(eventBus: eventBus, dataStore: dataStore)
-        schedule = Schedule(eventBus: eventBus, dataStore: dataStore, imageCache: imageCache, clock: clock, timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow)
+        schedule = Schedule(eventBus: eventBus,
+                            dataStore: dataStore,
+                            imageCache: imageCache,
+                            clock: clock,
+                            timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow,
+                            notificationsService: notificationsService)
         imageDownloader = ImageDownloader(eventBus: eventBus, imageAPI: imageAPI)
         significantTimeObserver = SignificantTimeObserver(significantTimeChangeAdapter: significantTimeChangeAdapter,
                                                           eventBus: eventBus)
