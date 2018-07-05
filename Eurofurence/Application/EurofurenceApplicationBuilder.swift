@@ -31,10 +31,11 @@ class EurofurenceApplicationBuilder {
     private var collectThemAllRequestFactory: CollectThemAllRequestFactory
     private var longRunningTaskManager: LongRunningTaskManager
     private var notificationsService: NotificationsService
+    private var hoursDateFormatter: HoursDateFormatter
 
     init() {
         struct DummyNotificationsService: NotificationsService {
-            func scheduleReminderForEvent(identifier: Event2.Identifier, scheduledFor date: Date, title: String) {
+            func scheduleReminderForEvent(identifier: Event2.Identifier, scheduledFor date: Date, title: String, body: String) {
 
             }
         }
@@ -70,6 +71,7 @@ class EurofurenceApplicationBuilder {
         collectThemAllRequestFactory = DefaultCollectThemAllRequestFactory()
         longRunningTaskManager = CocoaTouchLongRunningTaskManager()
         notificationsService = DummyNotificationsService()
+        hoursDateFormatter = FoundationHoursDateFormatter.shared
     }
 
     @discardableResult
@@ -198,6 +200,12 @@ class EurofurenceApplicationBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ hoursDateFormatter: HoursDateFormatter) -> EurofurenceApplicationBuilder {
+        self.hoursDateFormatter = hoursDateFormatter
+        return self
+    }
+
     func build() -> EurofurenceApplicationProtocol {
         return EurofurenceApplication(userPreferences: userPreferences,
                                       dataStore: dataStore,
@@ -219,7 +227,8 @@ class EurofurenceApplicationBuilder {
                                       urlOpener: urlOpener,
                                       collectThemAllRequestFactory: collectThemAllRequestFactory,
                                       longRunningTaskManager: longRunningTaskManager,
-                                      notificationsService: notificationsService)
+                                      notificationsService: notificationsService,
+                                      hoursDateFormatter: hoursDateFormatter)
     }
 
 }

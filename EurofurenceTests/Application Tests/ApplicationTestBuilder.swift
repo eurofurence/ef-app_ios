@@ -138,10 +138,12 @@ class CapturingNotificationsService: NotificationsService {
     private(set) var capturedEventIdentifier: Event2.Identifier?
     private(set) var capturedEventNotificationScheduledDate: Date?
     private(set) var capturedEventNotificationTitle: String?
-    func scheduleReminderForEvent(identifier: Event2.Identifier, scheduledFor date: Date, title: String) {
+    private(set) var capturedEventNotificationBody: String?
+    func scheduleReminderForEvent(identifier: Event2.Identifier, scheduledFor date: Date, title: String, body: String) {
         capturedEventIdentifier = identifier
         capturedEventNotificationScheduledDate = date
         capturedEventNotificationTitle = title
+        capturedEventNotificationBody = body
     }
     
 }
@@ -166,6 +168,7 @@ class ApplicationTestBuilder {
         var urlOpener: CapturingURLOpener
         var longRunningTaskManager: FakeLongRunningTaskManager
         var notificationsService: CapturingNotificationsService
+        var hoursDateFormatter: FakeHoursDateFormatter
         
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
@@ -380,6 +383,7 @@ class ApplicationTestBuilder {
         let significantTimeChangeAdapter = CapturingSignificantTimeChangeAdapter()
         let longRunningTaskManager = FakeLongRunningTaskManager()
         let notificationsService = CapturingNotificationsService()
+        let hoursDateFormatter = FakeHoursDateFormatter()
         let app = EurofurenceApplicationBuilder()
             .with(stubClock)
             .with(capturingCredentialStore)
@@ -402,6 +406,7 @@ class ApplicationTestBuilder {
             .with(collectThemAllRequestFactory)
             .with(longRunningTaskManager)
             .with(notificationsService)
+            .with(hoursDateFormatter)
             .build()
         
         return Context(application: app,
@@ -420,7 +425,8 @@ class ApplicationTestBuilder {
                        significantTimeChangeAdapter: significantTimeChangeAdapter,
                        urlOpener: urlOpener,
                        longRunningTaskManager: longRunningTaskManager,
-                       notificationsService: notificationsService)
+                       notificationsService: notificationsService,
+                       hoursDateFormatter: hoursDateFormatter)
     }
     
 }

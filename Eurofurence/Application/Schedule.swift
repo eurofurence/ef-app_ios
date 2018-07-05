@@ -167,6 +167,7 @@ class Schedule {
     private let eventBus: EventBus
     private let notificationsService: NotificationsService
     private let userPreferences: UserPreferences
+    private let hoursDateFormatter: HoursDateFormatter
 
     private(set) var events = [APIEvent]()
     private(set) var rooms = [APIRoom]()
@@ -217,7 +218,8 @@ class Schedule {
          clock: Clock,
          timeIntervalForUpcomingEventsSinceNow: TimeInterval,
          notificationsService: NotificationsService,
-         userPreferences: UserPreferences) {
+         userPreferences: UserPreferences,
+         hoursDateFormatter: HoursDateFormatter) {
         self.dataStore = dataStore
         self.imageCache = imageCache
         self.clock = clock
@@ -225,6 +227,7 @@ class Schedule {
         self.eventBus = eventBus
         self.notificationsService = notificationsService
         self.userPreferences = userPreferences
+        self.hoursDateFormatter = hoursDateFormatter
 
         eventBus.subscribe(consumer: ScheduleUpdater(schedule: self))
         reconstituteEventsFromDataStore()
@@ -258,13 +261,16 @@ class Schedule {
 
         favouriteEventIdentifiers.append(identifier)
 
-        guard let event = events.first(where: { $0.identifier == identifier.rawValue }) else { return }
+        guard let event = eventModels.first(where: { $0.identifier == identifier }) else { return }
 
         let waitInterval = userPreferences.upcomingEventReminderInterval * -1
-        let reminderDate = event.startDateTime.addingTimeInterval(waitInterval)
+        let reminderDate = event.startDate.addingTimeInterval(waitInterval)
+        let startTimeString = hoursDateFormatter.hoursString(from: event.startDate)
+        let body = String.eventReminderBody(timeString: startTimeString, roomName: event.room.name)
         notificationsService.scheduleReminderForEvent(identifier: identifier,
                                                       scheduledFor: reminderDate,
-                                                      title: event.title)
+                                                      title: event.title,
+                                                      body: body)
     }
 
     func unfavouriteEvent(identifier: Event2.Identifier) {

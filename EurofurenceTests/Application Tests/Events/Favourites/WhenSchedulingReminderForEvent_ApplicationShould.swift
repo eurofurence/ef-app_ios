@@ -51,4 +51,25 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
         XCTAssertEqual(event.title, context.notificationsService.capturedEventNotificationTitle)
     }
     
+    func testSupplyFormattedStartTimeAndLocationAsNotificationBody() {
+        let response = APISyncResponse.randomWithoutDeletions
+        let events = response.events.changed
+        let dataStore = CapturingEurofurenceDataStore()
+        dataStore.performTransaction { (transaction) in
+            transaction.saveEvents(response.events.changed)
+            transaction.saveRooms(response.rooms.changed)
+            transaction.saveTracks(response.tracks.changed)
+        }
+        
+        let context = ApplicationTestBuilder().with(dataStore).build()
+        let event = events.randomElement().element
+        let identifier = Event2.Identifier(event.identifier)
+        context.application.favouriteEvent(identifier: identifier)
+        let expectedTimeString = context.hoursDateFormatter.hoursString(from: event.startDateTime)
+        let expectedLocationString = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier })!.name
+        let expected = String.eventReminderBody(timeString: expectedTimeString, roomName: expectedLocationString)
+        
+        XCTAssertEqual(expected, context.notificationsService.capturedEventNotificationBody)
+    }
+    
 }
