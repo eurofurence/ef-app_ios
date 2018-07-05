@@ -72,4 +72,25 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
         XCTAssertEqual(expected, context.notificationsService.capturedEventNotificationBody)
     }
     
+    func testSupplyCustomUserInfoWithEventTypeAndEventIdentifier() {
+        let response = APISyncResponse.randomWithoutDeletions
+        let events = response.events.changed
+        let dataStore = CapturingEurofurenceDataStore()
+        dataStore.performTransaction { (transaction) in
+            transaction.saveEvents(response.events.changed)
+            transaction.saveRooms(response.rooms.changed)
+            transaction.saveTracks(response.tracks.changed)
+        }
+        
+        let context = ApplicationTestBuilder().with(dataStore).build()
+        let event = events.randomElement().element
+        let identifier = Event2.Identifier(event.identifier)
+        context.application.favouriteEvent(identifier: identifier)
+        let expected: [ApplicationNotificationKey : String] =
+            [ApplicationNotificationKey.notificationContentKind : ApplicationNotificationContentKind.event.rawValue,
+             ApplicationNotificationKey.notificationContentIdentifier : event.identifier]
+        
+        XCTAssertEqual(expected, context.notificationsService.capturedEventNotificationUserInfo)
+    }
+    
 }

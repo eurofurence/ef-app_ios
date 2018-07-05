@@ -35,7 +35,11 @@ class EurofurenceApplicationBuilder {
 
     init() {
         struct DummyNotificationsService: NotificationsService {
-            func scheduleReminderForEvent(identifier: Event2.Identifier, scheduledFor date: Date, title: String, body: String) {
+            func scheduleReminderForEvent(identifier: Event2.Identifier,
+                                          scheduledFor date: Date,
+                                          title: String,
+                                          body: String,
+                                          userInfo: [ApplicationNotificationKey: String]) {
 
             }
         }

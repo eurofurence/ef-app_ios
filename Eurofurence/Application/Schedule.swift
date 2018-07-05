@@ -267,10 +267,16 @@ class Schedule {
         let reminderDate = event.startDate.addingTimeInterval(waitInterval)
         let startTimeString = hoursDateFormatter.hoursString(from: event.startDate)
         let body = String.eventReminderBody(timeString: startTimeString, roomName: event.room.name)
+        let userInfo: [ApplicationNotificationKey: String] = [
+            .notificationContentKind: ApplicationNotificationContentKind.event.rawValue,
+            .notificationContentIdentifier: identifier.rawValue
+        ]
+
         notificationsService.scheduleReminderForEvent(identifier: identifier,
                                                       scheduledFor: reminderDate,
                                                       title: event.title,
-                                                      body: body)
+                                                      body: body,
+                                                      userInfo: userInfo)
     }
 
     func unfavouriteEvent(identifier: Event2.Identifier) {

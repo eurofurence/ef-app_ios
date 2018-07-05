@@ -10,6 +10,19 @@ import Foundation
 
 protocol NotificationsService {
 
-    func scheduleReminderForEvent(identifier: Event2.Identifier, scheduledFor date: Date, title: String, body: String)
+    func scheduleReminderForEvent(identifier: Event2.Identifier,
+                                  scheduledFor date: Date,
+                                  title: String,
+                                  body: String,
+                                  userInfo: [ApplicationNotificationKey: String])
 
+}
+
+enum ApplicationNotificationKey: String {
+    case notificationContentKind
+    case notificationContentIdentifier
+}
+
+enum ApplicationNotificationContentKind: String {
+    case event
 }
