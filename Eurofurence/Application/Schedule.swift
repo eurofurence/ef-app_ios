@@ -260,7 +260,8 @@ class Schedule {
 
         guard let event = events.first(where: { $0.identifier == identifier.rawValue }) else { return }
 
-        let reminderDate = event.startDateTime.addingTimeInterval(userPreferences.upcomingEventReminderInterval)
+        let waitInterval = userPreferences.upcomingEventReminderInterval * -1
+        let reminderDate = event.startDateTime.addingTimeInterval(waitInterval)
         notificationsService.scheduleReminderForEvent(identifier: identifier, scheduledFor: reminderDate)
     }
 

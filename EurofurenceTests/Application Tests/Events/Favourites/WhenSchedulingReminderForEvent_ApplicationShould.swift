@@ -26,7 +26,7 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
         preferences.upcomingEventReminderInterval = upcomingEventReminderInterval
         let context = ApplicationTestBuilder().with(preferences).with(dataStore).build()
         let event = events.randomElement().element
-        let expectedScheduleTime = event.startDateTime.addingTimeInterval(upcomingEventReminderInterval)
+        let expectedScheduleTime = event.startDateTime.addingTimeInterval(-upcomingEventReminderInterval)
         let identifier = Event2.Identifier(event.identifier)
         context.application.favouriteEvent(identifier: identifier)
         
