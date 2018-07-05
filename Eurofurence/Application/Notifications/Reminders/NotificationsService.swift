@@ -18,11 +18,11 @@ protocol NotificationsService {
 
 }
 
-enum ApplicationNotificationKey: String {
+enum ApplicationNotificationKey: String, Codable {
     case notificationContentKind
     case notificationContentIdentifier
 }
 
-enum ApplicationNotificationContentKind: String {
+enum ApplicationNotificationContentKind: String, Codable {
     case event
 }

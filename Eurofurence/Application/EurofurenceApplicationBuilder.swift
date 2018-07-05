@@ -34,16 +34,6 @@ class EurofurenceApplicationBuilder {
     private var hoursDateFormatter: HoursDateFormatter
 
     init() {
-        struct DummyNotificationsService: NotificationsService {
-            func scheduleReminderForEvent(identifier: Event2.Identifier,
-                                          scheduledFor date: Date,
-                                          title: String,
-                                          body: String,
-                                          userInfo: [ApplicationNotificationKey: String]) {
-
-            }
-        }
-
         userPreferences = UserDefaultsPreferences()
         dataStore = CoreDataEurofurenceDataStore()
 
@@ -74,7 +64,7 @@ class EurofurenceApplicationBuilder {
         urlOpener = AppURLOpener()
         collectThemAllRequestFactory = DefaultCollectThemAllRequestFactory()
         longRunningTaskManager = CocoaTouchLongRunningTaskManager()
-        notificationsService = DummyNotificationsService()
+        notificationsService = UserNotificationsNotificationService()
         hoursDateFormatter = FoundationHoursDateFormatter.shared
     }
 
