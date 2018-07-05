@@ -6,15 +6,16 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-import UIKit
+import UserNotifications
 
 struct ApplicationPushPermissionsRequester: PushPermissionsRequester {
 
     func requestPushPermissions() {
-        let application = UIApplication.shared
-        let notificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-        application.registerUserNotificationSettings(notificationSettings)
-        application.registerForRemoteNotifications()
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (_, error) in
+            if let error = error {
+                print("Failed to register for notifications with error: \(error)")
+            }
+        }
     }
 
 }
