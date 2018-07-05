@@ -24,4 +24,8 @@ struct UserDefaultsPreferences: UserPreferences {
         return defaults.bool(forKey: Keys.refreshStoreOnLaunchKey)
     }
 
+    var upcomingEventReminderInterval: TimeInterval {
+        return 900
+    }
+
 }

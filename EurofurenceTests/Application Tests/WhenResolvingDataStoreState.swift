@@ -241,6 +241,7 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
 class StubUserPreferences: UserPreferences {
     
     var refreshStoreOnLaunch = false
+    var upcomingEventReminderInterval: TimeInterval = 0
     
 }
 

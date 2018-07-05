@@ -136,8 +136,10 @@ class FakeLongRunningTaskManager: LongRunningTaskManager {
 class CapturingNotificationsService: NotificationsService {
     
     private(set) var capturedEventIdentifier: Event2.Identifier?
-    func scheduleReminderForEvent(identifier: Event2.Identifier) {
+    private(set) var capturedEventNotificationScheduledDate: Date?
+    func scheduleReminderForEvent(identifier: Event2.Identifier, scheduledFor date: Date) {
         capturedEventIdentifier = identifier
+        capturedEventNotificationScheduledDate = date
     }
     
 }

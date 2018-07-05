@@ -10,6 +10,6 @@ import Foundation
 
 protocol NotificationsService {
 
-    func scheduleReminderForEvent(identifier: Event2.Identifier)
+    func scheduleReminderForEvent(identifier: Event2.Identifier, scheduledFor date: Date)
 
 }

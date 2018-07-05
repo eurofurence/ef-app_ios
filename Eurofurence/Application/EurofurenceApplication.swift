@@ -112,7 +112,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                             imageCache: imageCache,
                             clock: clock,
                             timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow,
-                            notificationsService: notificationsService)
+                            notificationsService: notificationsService,
+                            userPreferences: userPreferences)
         imageDownloader = ImageDownloader(eventBus: eventBus, imageAPI: imageAPI)
         significantTimeObserver = SignificantTimeObserver(significantTimeChangeAdapter: significantTimeChangeAdapter,
                                                           eventBus: eventBus)

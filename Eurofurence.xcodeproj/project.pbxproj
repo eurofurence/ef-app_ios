@@ -503,6 +503,7 @@
 		CA2B4FA81F1EA72A00F007E1 /* LoginArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */; };
 		CA2B4FAA1F1F7F1200F007E1 /* CapturingLoginObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA91F1F7F1200F007E1 /* CapturingLoginObserver.swift */; };
 		CA2D04FE20EE910E00CF54E1 /* NotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D04FD20EE910E00CF54E1 /* NotificationsService.swift */; };
+		CA2D050020EE92CD00CF54E1 /* WhenSchedulingReminderForEvent_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D04FF20EE92CD00CF54E1 /* WhenSchedulingReminderForEvent_ApplicationShould.swift */; };
 		CA2D07F91FE9021A00BFD785 /* WhenResolvingDataStoreState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */; };
 		CA2D07FB1FE902ED00BFD785 /* EurofurenceDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07FA1FE902ED00BFD785 /* EurofurenceDataStore.swift */; };
 		CA2D07FD1FE904CD00BFD785 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */; };
@@ -1715,6 +1716,7 @@
 		CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginArguments.swift; sourceTree = "<group>"; };
 		CA2B4FA91F1F7F1200F007E1 /* CapturingLoginObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingLoginObserver.swift; sourceTree = "<group>"; };
 		CA2D04FD20EE910E00CF54E1 /* NotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsService.swift; sourceTree = "<group>"; };
+		CA2D04FF20EE92CD00CF54E1 /* WhenSchedulingReminderForEvent_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSchedulingReminderForEvent_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA2D07F81FE9021A00BFD785 /* WhenResolvingDataStoreState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenResolvingDataStoreState.swift; sourceTree = "<group>"; };
 		CA2D07FA1FE902ED00BFD785 /* EurofurenceDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceDataStore.swift; sourceTree = "<group>"; };
 		CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
@@ -5318,6 +5320,7 @@
 				CABA83F720CE9B9C00DD0795 /* WhenFavouritingEvent_ApplicationShould.swift */,
 				CABA83FB20CEF4B500DD0795 /* WhenFavouritingMultipleEvents_ApplicationShould.swift */,
 				CABA83FE20CEF91400DD0795 /* WhenLaunchingApplicationWithPreexistingFavourites.swift */,
+				CA2D04FF20EE92CD00CF54E1 /* WhenSchedulingReminderForEvent_ApplicationShould.swift */,
 				CABA83F920CE9D2500DD0795 /* WhenUnfavouritingEvent_ApplicationShould.swift */,
 			);
 			path = Favourites;
@@ -7311,6 +7314,7 @@
 				78455B4D1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift in Sources */,
 				CA63755A208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift in Sources */,
 				CA52C69120D6AB53009D3A9E /* CapturingScheduleModuleDelegate.swift in Sources */,
+				CA2D050020EE92CD00CF54E1 /* WhenSchedulingReminderForEvent_ApplicationShould.swift in Sources */,
 				CABA83F820CE9B9C00DD0795 /* WhenFavouritingEvent_ApplicationShould.swift in Sources */,
 				78D7EEB51F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift in Sources */,
 				CA6A8DCE20E41735007536CD /* WhenBuildingMapDetailModule.swift in Sources */,
