@@ -262,7 +262,9 @@ class Schedule {
 
         let waitInterval = userPreferences.upcomingEventReminderInterval * -1
         let reminderDate = event.startDateTime.addingTimeInterval(waitInterval)
-        notificationsService.scheduleReminderForEvent(identifier: identifier, scheduledFor: reminderDate)
+        notificationsService.scheduleReminderForEvent(identifier: identifier,
+                                                      scheduledFor: reminderDate,
+                                                      title: event.title)
     }
 
     func unfavouriteEvent(identifier: Event2.Identifier) {

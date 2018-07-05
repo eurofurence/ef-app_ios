@@ -137,9 +137,11 @@ class CapturingNotificationsService: NotificationsService {
     
     private(set) var capturedEventIdentifier: Event2.Identifier?
     private(set) var capturedEventNotificationScheduledDate: Date?
-    func scheduleReminderForEvent(identifier: Event2.Identifier, scheduledFor date: Date) {
+    private(set) var capturedEventNotificationTitle: String?
+    func scheduleReminderForEvent(identifier: Event2.Identifier, scheduledFor date: Date, title: String) {
         capturedEventIdentifier = identifier
         capturedEventNotificationScheduledDate = date
+        capturedEventNotificationTitle = title
     }
     
 }
