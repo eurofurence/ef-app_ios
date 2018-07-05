@@ -924,6 +924,8 @@
 		CAA39E0820051B5C00F2F3D3 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */; };
 		CAA39E0920051C6C00F2F3D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAA39E0B20051C6C00F2F3D3 /* Localizable.strings */; };
 		CAA6060720EEB4F200075A4E /* UserNotificationsNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6060620EEB4F200075A4E /* UserNotificationsNotificationService.swift */; };
+		CAA6060A20EEC02C00075A4E /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA6060920EEC02C00075A4E /* Debug.storyboard */; };
+		CAA6060C20EEC06500075A4E /* DebugTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6060B20EEC06500075A4E /* DebugTableViewController.swift */; };
 		CAA6DD1120E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */; };
 		CAB138101FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB1380E1FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift */; };
 		CAB138131FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */; };
@@ -2140,6 +2142,8 @@
 		CAA39E0720051B5C00F2F3D3 /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 		CAA39E0A20051C6C00F2F3D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CAA6060620EEB4F200075A4E /* UserNotificationsNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsNotificationService.swift; sourceTree = "<group>"; };
+		CAA6060920EEC02C00075A4E /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
+		CAA6060B20EEC06500075A4E /* DebugTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugTableViewController.swift; sourceTree = "<group>"; };
 		CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CAB1380E1FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleCollectionViewCell.swift; sourceTree = "<group>"; };
 		CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
@@ -2531,12 +2535,13 @@
 		6EF96CE01F12688700EE6134 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				CA283A9520EA9CA400F7D195 /* Announcements */,
 				CA728446209D0119007D912A /* Announcement Detail */,
+				CA283A9520EA9CA400F7D195 /* Announcements */,
 				6EF96CE81F126B0400EE6134 /* Bootstrap */,
 				CA27619720E01CF3000E52AC /* Collect-them-All */,
 				CA36A4E120DAFF6D00EE6537 /* Dealer Detail */,
 				CA6375A3208E008A00536BE2 /* Dealers */,
+				CAA6060820EEC01C00075A4E /* Debug */,
 				CACF1E4920AE2A3D00D904B5 /* Event Detail */,
 				CA6EC46E2051655600402894 /* Knowledge Detail */,
 				CA73AEE0201A084C004E77BF /* Knowledge List */,
@@ -5186,6 +5191,15 @@
 			path = ScreenshotGenerator;
 			sourceTree = "<group>";
 		};
+		CAA6060820EEC01C00075A4E /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				CAA6060920EEC02C00075A4E /* Debug.storyboard */,
+				CAA6060B20EEC06500075A4E /* DebugTableViewController.swift */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
 		CAB3A72B1F7532DF005DF77B /* System Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -6165,6 +6179,7 @@
 				9A8ECA2D1F2D0A2000351A83 /* none.caf in Resources */,
 				9A8ECA211F2BB46000351A83 /* j2_themed.caf in Resources */,
 				CA2761B420E0236A000E52AC /* CollectThemAll.storyboard in Resources */,
+				CAA6060A20EEC02C00075A4E /* Debug.storyboard in Resources */,
 				CA63759C208DFDF900536BE2 /* Schedule.storyboard in Resources */,
 				CA6AA0081FD731640092C6DB /* Preload.storyboard in Resources */,
 				CA6A8DDE20E418DB007536CD /* MapDetail.storyboard in Resources */,
@@ -6828,6 +6843,7 @@
 				CA162E9020A652AA004AFED6 /* EventsService.swift in Sources */,
 				CA36A48220D8C89700EE6537 /* DealerComponentTableViewCell.swift in Sources */,
 				CA17FE7D2057FCCB005A4C05 /* KnowledgeEntryDetailViewModel.swift in Sources */,
+				CAA6060C20EEC06500075A4E /* DebugTableViewController.swift in Sources */,
 				9A80EF661F29233F00FD0D37 /* EventTablePreferences.swift in Sources */,
 				CA17FE8520580144005A4C05 /* LinksBinder.swift in Sources */,
 				D6F3D13A59E359E69EA66D7E /* MenuTableViewCell.swift in Sources */,
