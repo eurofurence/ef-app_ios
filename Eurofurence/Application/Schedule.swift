@@ -287,6 +287,8 @@ class Schedule {
         if let idx = favouriteEventIdentifiers.index(of: identifier) {
             favouriteEventIdentifiers.remove(at: idx)
         }
+
+        notificationsService.removeEventReminder(for: identifier)
     }
 
     // MARK: Private

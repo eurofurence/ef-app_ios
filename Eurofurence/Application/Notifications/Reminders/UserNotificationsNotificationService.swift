@@ -38,4 +38,8 @@ struct UserNotificationsNotificationService: NotificationsService {
         }
     }
 
+    func removeEventReminder(for identifier: Event2.Identifier) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier.rawValue])
+    }
+
 }

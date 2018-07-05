@@ -152,6 +152,11 @@ class CapturingNotificationsService: NotificationsService {
         capturedEventNotificationUserInfo = userInfo
     }
     
+    private(set) var capturedEventIdentifierToRemoveNotification: Event2.Identifier?
+    func removeEventReminder(for identifier: Event2.Identifier) {
+        capturedEventIdentifierToRemoveNotification = identifier
+    }
+    
 }
 
 class ApplicationTestBuilder {

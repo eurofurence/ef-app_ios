@@ -15,6 +15,7 @@ protocol NotificationsService {
                                   title: String,
                                   body: String,
                                   userInfo: [ApplicationNotificationKey: String])
+    func removeEventReminder(for identifier: Event2.Identifier)
 
 }
 
