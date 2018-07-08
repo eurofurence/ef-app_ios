@@ -239,6 +239,8 @@
 		CA00AE9120D293B800C2FBB0 /* UICollectionView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE9020D293B800C2FBB0 /* UICollectionView+Convenience.swift */; };
 		CA057A5B2088BDBB00504FA4 /* AnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* AnnouncementTableViewCell.swift */; };
 		CA063B3520F230E000241CC9 /* ApplicationNotificationHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B3420F230E000241CC9 /* ApplicationNotificationHandling.swift */; };
+		CA063B3820F2318A00241CC9 /* WhenToldToHandleNotification_ThatConcludesWithSuccessfulSync_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B3720F2318A00241CC9 /* WhenToldToHandleNotification_ThatConcludesWithSuccessfulSync_DirectorShould.swift */; };
+		CA063B3C20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B3B20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift */; };
 		CA08157820D3865600F750D4 /* NavigationBarViewExtensionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */; };
 		CA08157A20D3877700F750D4 /* FoundationShortFormDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */; };
 		CA08157D20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157C20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift */; };
@@ -1457,6 +1459,8 @@
 		CA00AE9020D293B800C2FBB0 /* UICollectionView+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Convenience.swift"; sourceTree = "<group>"; };
 		CA057A5A2088BDBA00504FA4 /* AnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementTableViewCell.swift; sourceTree = "<group>"; };
 		CA063B3420F230E000241CC9 /* ApplicationNotificationHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationNotificationHandling.swift; sourceTree = "<group>"; };
+		CA063B3720F2318A00241CC9 /* WhenToldToHandleNotification_ThatConcludesWithSuccessfulSync_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToHandleNotification_ThatConcludesWithSuccessfulSync_DirectorShould.swift; sourceTree = "<group>"; };
+		CA063B3B20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeApplicationNotificationHandling.swift; sourceTree = "<group>"; };
 		CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewExtensionContainer.swift; sourceTree = "<group>"; };
 		CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationShortFormDateFormatter.swift; sourceTree = "<group>"; };
 		CA08157C20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncCompletesWithConferenceDays_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -3328,6 +3332,14 @@
 			path = "Module Interactions";
 			sourceTree = "<group>";
 		};
+		CA063B3620F2317D00241CC9 /* Notification Handling */ = {
+			isa = PBXGroup;
+			children = (
+				CA063B3720F2318A00241CC9 /* WhenToldToHandleNotification_ThatConcludesWithSuccessfulSync_DirectorShould.swift */,
+			);
+			path = "Notification Handling";
+			sourceTree = "<group>";
+		};
 		CA08157B20D3D45A00F750D4 /* Days */ = {
 			isa = PBXGroup;
 			children = (
@@ -4126,6 +4138,7 @@
 				CA637545208CBB4E00536BE2 /* StubTutorialModuleFactory.swift */,
 				CA63755D208CBC4E00536BE2 /* StubWebMobuleProviding.swift */,
 				CA36A4E520DAFFB000EE6537 /* StubDealerDetailModuleFactory.swift */,
+				CA063B3B20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -5886,6 +5899,7 @@
 			children = (
 				CA637561208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift */,
 				CA063B3020F2303900241CC9 /* Module Interactions */,
+				CA063B3620F2317D00241CC9 /* Notification Handling */,
 				CA63753E208CBAFF00536BE2 /* Test Doubles */,
 			);
 			path = Director;
@@ -7126,6 +7140,7 @@
 				CA71A3522041B59600C847C3 /* Array+RandomConvenience.swift in Sources */,
 				CA1F7D6120CB82F600FB87F5 /* WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould.swift in Sources */,
 				CA36A47B20D854E200EE6537 /* WhenBindingDealerComponent_ForDealerPresentOnAllDays_DealersPresenterShould.swift in Sources */,
+				CA063B3820F2318A00241CC9 /* WhenToldToHandleNotification_ThatConcludesWithSuccessfulSync_DirectorShould.swift in Sources */,
 				CA1ECB3D1FE331750076083A /* WhenInitialMessagesLoadCompletesWithNoMessages.swift in Sources */,
 				CA36A4AA20D985FD00EE6537 /* CapturingDealersIndexDelegate.swift in Sources */,
 				CABF03B72041C2150028BD62 /* DefaultKnowledgeListInteractorTests.swift in Sources */,
@@ -7544,6 +7559,7 @@
 				CA283AE620EC188E00F7D195 /* WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift in Sources */,
 				CA0E5215208F52EE005259FE /* CapturingNewsInteractorDelegate.swift in Sources */,
 				CA637599208DFD5F00536BE2 /* SchedulePresenterTestBuilder.swift in Sources */,
+				CA063B3C20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

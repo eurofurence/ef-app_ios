@@ -105,10 +105,10 @@ class ApplicationDirectorTestBuilder {
         var linkRouter: StubLinkRouter
         var webModuleProviding: StubWebMobuleProviding
         var urlOpener: CapturingURLOpener
+        var notificationHandling: FakeApplicationNotificationHandling
         
     }
     
-    private let director: ApplicationDirector
     private let rootModule: StubRootModuleFactory
     private let tutorialModule: StubTutorialModuleFactory
     private let preloadModule: StubPreloadModuleFactory
@@ -157,6 +157,10 @@ class ApplicationDirectorTestBuilder {
         linkRouter = StubLinkRouter()
         webModuleProviding = StubWebMobuleProviding()
         urlOpener = CapturingURLOpener()
+    }
+    
+    func build() -> Context {
+        let notificationHandling = FakeApplicationNotificationHandling()
         
         let builder = DirectorBuilder()
         builder.withAnimations(false)
@@ -184,11 +188,10 @@ class ApplicationDirectorTestBuilder {
         builder.with(linkRouter)
         builder.with(webModuleProviding)
         builder.with(urlOpener)
+        builder.with(notificationHandling)
         
-        director = builder.build()
-    }
-    
-    func build() -> Context {
+        let director = builder.build()
+        
         return Context(director: director,
                        rootModule: rootModule,
                        tutorialModule: tutorialModule,
@@ -212,7 +215,8 @@ class ApplicationDirectorTestBuilder {
                        eventDetailModule: eventDetailModule,
                        linkRouter: linkRouter,
                        webModuleProviding: webModuleProviding,
-                       urlOpener: urlOpener)
+                       urlOpener: urlOpener,
+                       notificationHandling: notificationHandling)
     }
     
 }

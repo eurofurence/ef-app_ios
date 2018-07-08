@@ -127,6 +127,13 @@ class ApplicationDirector: ExternalContentHandler,
         rootModuleProviding.makeRootModule(self)
     }
 
+    // MARK: Public
+
+    func handleRemoteNotification(_ payload: [String: String],
+                                  completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        completionHandler(.newData)
+    }
+
     // MARK: ExternalContentHandler
 
     func handleExternalContent(url: URL) {

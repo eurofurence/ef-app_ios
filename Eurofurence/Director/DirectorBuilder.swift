@@ -216,6 +216,11 @@ class DirectorBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ notificationHandling: ApplicationNotificationHandling) -> DirectorBuilder {
+        return self
+    }
+
     func build() -> ApplicationDirector {
         return ApplicationDirector(animate: animate,
                                    linkLookupService: linkLookupService,
