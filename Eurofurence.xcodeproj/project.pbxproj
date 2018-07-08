@@ -3295,6 +3295,36 @@
 			path = "Interactor Tests";
 			sourceTree = "<group>";
 		};
+		CA063B3020F2303900241CC9 /* Module Interactions */ = {
+			isa = PBXGroup;
+			children = (
+				CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */,
+				CA283ADB20EB9FD000F7D195 /* WhenAnnouncementsModuleSelectsAnnouncement_DirectorShould.swift */,
+				CA27619320DFF66F000E52AC /* WhenApplicationRequestsHandlingOfExternalContent_DirectorShould.swift */,
+				CA637563208CC8F800536BE2 /* WhenBuilt_DirectorShould.swift */,
+				CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */,
+				CA36A4DF20DAFE7500EE6537 /* WhenDealersModuleSelectsDealer_DirectorShould.swift */,
+				CA25A7FE20E6426C00875891 /* WhenMapsDetailModuleSelectsDealer_DirectorShould.swift */,
+				CA637575208CD96A00536BE2 /* WhenMessagesModuleRequestsUserResolution_DirectorShould.swift */,
+				CA283A9320EA9B8A00F7D195 /* WhenNewsModuleRequestsAllAnnouncements_DirectorShould.swift */,
+				CA728440209D001B007D912A /* WhenNewsModuleSelectsAnnouncement_DirectorShould.swift */,
+				CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */,
+				CA63756D208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift */,
+				CA63756B208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift */,
+				CA52C69420D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift */,
+				CA6A8DC120E4143A007536CD /* WhenSelectingMap_DirectorShould.swift */,
+				CA637571208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift */,
+				CA6A8D5E20E16BB3007536CD /* WhenShowingMessagesModuleAlerts_DirectorShould.swift */,
+				CA63756F208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift */,
+				CA637565208CC94E00536BE2 /* WhenShowingTutorial_DirectorShould.swift */,
+				CA637569208CCB5800536BE2 /* WhenStoreShouldBeRefreshed_DirectorShould.swift */,
+				CA637567208CC9C700536BE2 /* WhenTutorialFinished_DirectorShould.swift */,
+				CA63757D208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift */,
+				CA637577208CDB4700536BE2 /* WhenUserSelectsMessage_DirectorShould.swift */,
+			);
+			path = "Module Interactions";
+			sourceTree = "<group>";
+		};
 		CA08157B20D3D45A00F750D4 /* Days */ = {
 			isa = PBXGroup;
 			children = (
@@ -5852,29 +5882,7 @@
 			isa = PBXGroup;
 			children = (
 				CA637561208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift */,
-				CAF705601F82CBDE00A9FEA2 /* ApplicationDirectorTests.swift */,
-				CA283ADB20EB9FD000F7D195 /* WhenAnnouncementsModuleSelectsAnnouncement_DirectorShould.swift */,
-				CA27619320DFF66F000E52AC /* WhenApplicationRequestsHandlingOfExternalContent_DirectorShould.swift */,
-				CA637563208CC8F800536BE2 /* WhenBuilt_DirectorShould.swift */,
-				CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */,
-				CA36A4DF20DAFE7500EE6537 /* WhenDealersModuleSelectsDealer_DirectorShould.swift */,
-				CA25A7FE20E6426C00875891 /* WhenMapsDetailModuleSelectsDealer_DirectorShould.swift */,
-				CA637575208CD96A00536BE2 /* WhenMessagesModuleRequestsUserResolution_DirectorShould.swift */,
-				CA283A9320EA9B8A00F7D195 /* WhenNewsModuleRequestsAllAnnouncements_DirectorShould.swift */,
-				CA728440209D001B007D912A /* WhenNewsModuleSelectsAnnouncement_DirectorShould.swift */,
-				CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */,
-				CA63756D208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift */,
-				CA63756B208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift */,
-				CA52C69420D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift */,
-				CA6A8DC120E4143A007536CD /* WhenSelectingMap_DirectorShould.swift */,
-				CA637571208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift */,
-				CA6A8D5E20E16BB3007536CD /* WhenShowingMessagesModuleAlerts_DirectorShould.swift */,
-				CA63756F208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift */,
-				CA637565208CC94E00536BE2 /* WhenShowingTutorial_DirectorShould.swift */,
-				CA637569208CCB5800536BE2 /* WhenStoreShouldBeRefreshed_DirectorShould.swift */,
-				CA637567208CC9C700536BE2 /* WhenTutorialFinished_DirectorShould.swift */,
-				CA63757D208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift */,
-				CA637577208CDB4700536BE2 /* WhenUserSelectsMessage_DirectorShould.swift */,
+				CA063B3020F2303900241CC9 /* Module Interactions */,
 				CA63753E208CBAFF00536BE2 /* Test Doubles */,
 			);
 			path = Director;
