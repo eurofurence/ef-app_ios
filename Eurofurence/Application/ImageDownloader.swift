@@ -29,6 +29,8 @@ class ImageDownloader {
         var pendingImageIdentifiers = identifiers
         let imagesToDownload = identifiers.filter({ imageRepository.containsImage(identifier: $0) == false })
         guard !imagesToDownload.isEmpty else {
+            parentProgress.totalUnitCount = 1
+            parentProgress.completedUnitCount = 1
             completionHandler()
             return
         }

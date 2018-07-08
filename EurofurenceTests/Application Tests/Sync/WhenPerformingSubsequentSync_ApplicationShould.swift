@@ -50,4 +50,17 @@ class WhenPerformingSubsequentSync_ApplicationShould: XCTestCase {
         XCTAssertTrue(didFinishSync)
     }
     
+    func testIndicateCompleteProgressIfNothingToDownload() {
+        let context = ApplicationTestBuilder().build()
+        let expected = Date.random
+        context.clock.currentDate = expected
+        context.refreshLocalStore()
+        let syncResponse = APISyncResponse.randomWithoutDeletions
+        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        let progress = context.refreshLocalStore()
+        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        
+        XCTAssertEqual(1.0, progress.fractionCompleted, accuracy: .ulpOfOne)
+    }
+    
 }
