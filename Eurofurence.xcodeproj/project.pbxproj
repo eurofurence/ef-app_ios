@@ -235,6 +235,7 @@
 		CA063B3C20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B3B20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift */; };
 		CA063B3E20F25EF600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithUnsuccessfulSync_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B3D20F25EF600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithUnsuccessfulSync_DirectorShould.swift */; };
 		CA063B4020F2869600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithAnnouncement_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B3F20F2869600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithAnnouncement_DirectorShould.swift */; };
+		CA063B4220F2929300241CC9 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B4120F2929300241CC9 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift */; };
 		CA08157820D3865600F750D4 /* NavigationBarViewExtensionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */; };
 		CA08157A20D3877700F750D4 /* FoundationShortFormDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */; };
 		CA08157D20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157C20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift */; };
@@ -1447,6 +1448,7 @@
 		CA063B3B20F25E5B00241CC9 /* FakeApplicationNotificationHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeApplicationNotificationHandling.swift; sourceTree = "<group>"; };
 		CA063B3D20F25EF600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithUnsuccessfulSync_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToHandleNotification_ThatConcludesWithUnsuccessfulSync_DirectorShould.swift; sourceTree = "<group>"; };
 		CA063B3F20F2869600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithAnnouncement_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToHandleNotification_ThatConcludesWithAnnouncement_DirectorShould.swift; sourceTree = "<group>"; };
+		CA063B4120F2929300241CC9 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewExtensionContainer.swift; sourceTree = "<group>"; };
 		CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationShortFormDateFormatter.swift; sourceTree = "<group>"; };
 		CA08157C20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncCompletesWithConferenceDays_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -5222,6 +5224,7 @@
 			isa = PBXGroup;
 			children = (
 				CAA6060E20EF913C00075A4E /* WhenToldToOpenNotification_ThatRepresentsSyncEvent_ApplicationShould.swift */,
+				CA063B4120F2929300241CC9 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift */,
 			);
 			path = "Notification Handling";
 			sourceTree = "<group>";
@@ -7274,6 +7277,7 @@
 				CA08157D20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift in Sources */,
 				CAF81C7120DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould.swift in Sources */,
 				CA63756E208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift in Sources */,
+				CA063B4220F2929300241CC9 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift in Sources */,
 				CA2D07F91FE9021A00BFD785 /* WhenResolvingDataStoreState.swift in Sources */,
 				CA637576208CD96A00536BE2 /* WhenMessagesModuleRequestsUserResolution_DirectorShould.swift in Sources */,
 				CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */,

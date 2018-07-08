@@ -123,7 +123,11 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     func handleRemoteNotification(payload: [String: String], completionHandler: @escaping (ApplicationPushActionResult) -> Void) {
         refreshLocalStore { (error) in
             if error == nil {
-                completionHandler(.successfulSync)
+                if let announcementIdentifier = payload["announcement_id"] {
+                    completionHandler(.announcement(Announcement2.Identifier(announcementIdentifier)))
+                } else {
+                    completionHandler(.successfulSync)
+                }
             } else {
                 completionHandler(.failedSync)
             }
