@@ -22,7 +22,7 @@ struct ApplicationPushPermissionsRequester: PushPermissionsRequester {
                 print("Failed to register for notifications with error: \(error)")
             }
 
-            completionHandler()
+            DispatchQueue.main.async(execute: completionHandler)
         }
     }
 
