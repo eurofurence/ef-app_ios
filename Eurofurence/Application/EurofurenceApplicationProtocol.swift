@@ -26,6 +26,7 @@ protocol EurofurenceApplicationProtocol: RefreshService,
                                          MapsService {
 
     func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler)
+    func handleRemoteNotification(payload: [String: String])
 
     var localPrivateMessages: [Message] { get }
 

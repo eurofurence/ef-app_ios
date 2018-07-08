@@ -13,7 +13,9 @@ class CapturingSyncAPI: SyncAPI {
     
     fileprivate var completionHandler: ((APISyncResponse?) -> Void)?
     private(set) var capturedLastSyncTime: Date?
+    private(set) var didBeginSync = false
     func fetchLatestData(lastSyncTime: Date?, completionHandler: @escaping (APISyncResponse?) -> Void) {
+        didBeginSync = true
         capturedLastSyncTime = lastSyncTime
         self.completionHandler = completionHandler
     }

@@ -127,6 +127,12 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         maps = Maps(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository)
     }
 
+    func handleRemoteNotification(payload: [String: String]) {
+        refreshLocalStore { (_) in
+
+        }
+    }
+
     private var refreshObservers = [RefreshServiceObserver]()
     func add(_ observer: RefreshServiceObserver) {
         refreshObservers.append(observer)
@@ -254,6 +260,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         maps.fetchContent(for: identifier, atX: x, y: y, completionHandler: completionHandler)
     }
 
+    @discardableResult
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
         enum SyncError: Error {
             case failedToLoadResponse
