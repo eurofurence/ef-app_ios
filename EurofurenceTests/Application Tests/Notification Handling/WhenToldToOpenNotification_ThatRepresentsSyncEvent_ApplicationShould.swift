@@ -11,30 +11,35 @@ import XCTest
 
 class WhenToldToOpenNotification_ThatRepresentsSyncEvent_ApplicationShould: XCTestCase {
     
-    func testRefreshTheLocalStore() {
-        let context = ApplicationTestBuilder().build()
-        let payload: [String : String] = ["event" : "sync"]
-        context.application.handleRemoteNotification(payload: payload) { (_) in }
+    var context: ApplicationTestBuilder.Context!
+    
+    override func setUp() {
+        super.setUp()
         
+        context = ApplicationTestBuilder().build()
+    }
+    
+    private func simulateSyncPushNotification(_ handler: @escaping (ApplicationPushActionResult) -> Void) {
+        let payload: [String : String] = ["event" : "sync"]
+        context.application.handleRemoteNotification(payload: payload, completionHandler: handler)
+    }
+    
+    func testRefreshTheLocalStore() {
+        simulateSyncPushNotification { (_) in }
         XCTAssertTrue(context.syncAPI.didBeginSync)
     }
     
     func testProvideSyncSuccessResultWhenDownloadSucceeds() {
-        let context = ApplicationTestBuilder().build()
-        let payload: [String : String] = ["event" : "sync"]
-        context.application.handleRemoteNotification(payload: payload) { (_) in }
         var result: ApplicationPushActionResult?
-        context.application.handleRemoteNotification(payload: payload) { result = $0 }
+        simulateSyncPushNotification { result = $0 }
         context.syncAPI.simulateSuccessfulSync(.randomWithoutDeletions)
         
         XCTAssertEqual(.successfulSync, result)
     }
     
     func testProideSyncFailedResponseWhenDownloadFails() {
-        let context = ApplicationTestBuilder().build()
-        let payload: [String : String] = ["event" : "sync"]
         var result: ApplicationPushActionResult?
-        context.application.handleRemoteNotification(payload: payload) { result = $0 }
+        simulateSyncPushNotification { result = $0 }
         context.syncAPI.simulateUnsuccessfulSync()
         
         XCTAssertEqual(.failedSync, result)
