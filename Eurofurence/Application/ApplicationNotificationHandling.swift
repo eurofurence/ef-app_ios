@@ -11,6 +11,7 @@ import Foundation
 enum ApplicationPushActionResult: Equatable {
     case successfulSync
     case failedSync
+    case announcement(Announcement2.Identifier)
 }
 
 protocol ApplicationNotificationHandling {

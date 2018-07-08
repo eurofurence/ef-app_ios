@@ -67,7 +67,7 @@ class ApplicationDirector: ExternalContentHandler,
     private var dealersViewController: UIViewController?
     private var mapsModule: UIViewController?
 
-    private var tabController: UIViewController?
+    private var tabController: UITabBarController?
 
     init(animate: Bool,
          linkLookupService: LinkLookupService,
@@ -148,6 +148,15 @@ class ApplicationDirector: ExternalContentHandler,
 
             case .failedSync:
                 completionHandler(.failed)
+
+            case .announcement(let announcement):
+                let module = self.announcementDetailModuleProviding.makeAnnouncementDetailModule(for: announcement)
+                if let newsNavigationController = self.newsController?.navigationController,
+                   let tabBarController = self.tabController,
+                   let index = tabBarController.viewControllers?.index(of: newsNavigationController) {
+                    tabBarController.selectedIndex = index
+                    newsNavigationController.pushViewController(module, animated: self.animate)
+                }
             }
         }
     }

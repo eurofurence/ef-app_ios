@@ -11,10 +11,11 @@ import UIKit.UIViewController
 
 class StubTabModuleFactory: TabModuleProviding {
     
-    let stubInterface = FakeViewController()
+    let stubInterface = FakeTabBarController()
     private(set) var capturedTabModules: [UIViewController] = []
-    func makeTabModule(_ childModules: [UIViewController]) -> UIViewController {
+    func makeTabModule(_ childModules: [UIViewController]) -> UITabBarController {
         capturedTabModules = childModules
+        stubInterface.viewControllers = childModules
         return stubInterface
     }
     
@@ -22,6 +23,29 @@ class StubTabModuleFactory: TabModuleProviding {
         return capturedTabModules
             .compactMap({ $0 as? CapturingNavigationController })
             .first(where: { $0.contains(viewController) })
+    }
+    
+}
+
+class FakeTabBarController: UITabBarController {
+    
+    private(set) var capturedPresentedViewController: UIViewController?
+    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        capturedPresentedViewController = viewControllerToPresent
+        super.present(viewControllerToPresent, animated: flag, completion: completion)
+    }
+    
+    private(set) var didDismissViewController = false
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        didDismissViewController = true
+        super.dismiss(animated: flag, completion: completion)
+    }
+    
+    private(set) var selectedTabIndex: Int = -1
+    override var selectedIndex: Int {
+        didSet {
+            selectedTabIndex = selectedIndex
+        }
     }
     
 }

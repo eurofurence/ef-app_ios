@@ -11,7 +11,7 @@ import UIKit.UIViewController
 
 struct PhoneTabModuleFactory: TabModuleProviding {
 
-    func makeTabModule(_ childModules: [UIViewController]) -> UIViewController {
+    func makeTabModule(_ childModules: [UIViewController]) -> UITabBarController {
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = childModules
 
