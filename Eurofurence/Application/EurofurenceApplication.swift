@@ -87,9 +87,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         self.credentialStore = credentialStore
         self.longRunningTaskManager = longRunningTaskManager
 
-        if pushPermissionsStateProviding.requestedPushNotificationAuthorization {
-            pushPermissionsRequester.requestPushPermissions {}
-        }
+        pushPermissionsRequester.requestPushPermissions {}
 
         remoteNotificationRegistrationController = RemoteNotificationRegistrationController(eventBus: eventBus,
                                                                                             remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration)

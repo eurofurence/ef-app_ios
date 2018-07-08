@@ -44,15 +44,6 @@ class WhenRegisteredForPushNotifications: XCTestCase {
         XCTAssertFalse(witnessedSystemPushes.didPermitRegisteringForPushNotifications)
     }
     
-    func testLaunchingTheAppWhenPushPermissionsNotRequestedBeforeShouldNotRequestPermissionAutomatically() {
-        let permissionsRequester = CapturingPushPermissionsRequester()
-        let witnessedSystemPushes = CapturingPushPermissionsStateProviding()
-        witnessedSystemPushes.requestedPushNotificationAuthorization = false
-        ApplicationTestBuilder().with(permissionsRequester).with(witnessedSystemPushes).build()
-        
-        XCTAssertFalse(permissionsRequester.wasToldToRequestPushPermissions)
-    }
-    
     func testLaunchingTheAppWhenPushPermissionsRequestedBeforeShouldRequestPermissionAutomatically() {
         let permissionsRequester = CapturingPushPermissionsRequester()
         let witnessedSystemPushes = CapturingPushPermissionsStateProviding()
