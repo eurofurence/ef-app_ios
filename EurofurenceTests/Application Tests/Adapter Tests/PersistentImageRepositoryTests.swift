@@ -23,4 +23,19 @@ class PersistentImageRepositoryTests: XCTestCase {
         XCTAssertEqual(expected, actual)
     }
     
+    func testSavingImageIndicatesRepositoryContainsImage() {
+        let identifier = String.random
+        let imageData = Data.random
+        let repository = PersistentImageRepository()
+        let expected = ImageEntity(identifier: identifier, pngImageData: imageData)
+        repository.save(expected)
+        
+        XCTAssertTrue(repository.containsImage(identifier: identifier))
+    }
+    
+    func testNotContainImageThatHasNotBeenSaved() {
+        let repository = PersistentImageRepository()
+        XCTAssertFalse(repository.containsImage(identifier: .random))
+    }
+    
 }

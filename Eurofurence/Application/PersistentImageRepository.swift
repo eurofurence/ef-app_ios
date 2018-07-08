@@ -31,15 +31,27 @@ struct PersistentImageRepository: ImageRepository {
     }
 
     func containsImage(identifier: String) -> Bool {
-        return false
+        do {
+            let cacheDirectoryURL = try makeImageCacheDirectoryURL()
+            let entityURL = cacheDirectoryURL.appendingPathComponent(identifier)
+
+            return FileManager.default.fileExists(atPath: entityURL.path, isDirectory: nil)
+        } catch {
+            print(error)
+            return false
+        }
     }
 
-    private func makeImageRepositoryURL(for identifier: String) throws -> URL {
+    private func makeImageCacheDirectoryURL() throws -> URL {
         let applicationSupportDirectoryURL = try FileManager.default.url(for: .applicationSupportDirectory,
                                                                          in: .userDomainMask,
                                                                          appropriateFor: nil,
                                                                          create: false)
-        let cacheDirectoryURL = applicationSupportDirectoryURL.appendingPathComponent("EFImageCache")
+        return applicationSupportDirectoryURL.appendingPathComponent("EFImageCache")
+    }
+
+    private func makeImageRepositoryURL(for identifier: String) throws -> URL {
+        let cacheDirectoryURL = try makeImageCacheDirectoryURL()
 
         if FileManager.default.fileExists(atPath: cacheDirectoryURL.path, isDirectory: nil) == false {
             try FileManager.default.createDirectory(at: cacheDirectoryURL, withIntermediateDirectories: false)
