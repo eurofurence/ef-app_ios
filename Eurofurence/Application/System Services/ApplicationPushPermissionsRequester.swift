@@ -16,13 +16,11 @@ struct ApplicationPushPermissionsRequester: PushPermissionsRequester {
 
     }
 
-    func requestPushPermissions(completionHandler: @escaping () -> Void) {
+    func requestPushPermissions() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (_, error) in
             if let error = error {
                 print("Failed to register for notifications with error: \(error)")
             }
-
-            DispatchQueue.main.async(execute: completionHandler)
         }
     }
 

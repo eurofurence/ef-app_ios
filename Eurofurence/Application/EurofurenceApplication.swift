@@ -84,7 +84,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         self.credentialStore = credentialStore
         self.longRunningTaskManager = longRunningTaskManager
 
-        pushPermissionsRequester.requestPushPermissions {}
+        pushPermissionsRequester.requestPushPermissions()
 
         remoteNotificationRegistrationController = RemoteNotificationRegistrationController(eventBus: eventBus,
                                                                                             remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration)
@@ -158,7 +158,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func requestPermissionsForPushNotifications() {
-        pushPermissionsRequester.requestPushPermissions {}
+        pushPermissionsRequester.requestPushPermissions()
     }
 
     func storeRemoteNotificationsToken(_ deviceToken: Data) {
