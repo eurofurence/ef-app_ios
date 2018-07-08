@@ -22,16 +22,6 @@ class TutorialPresenter {
         self.delegate = delegate
         self.context = context
 
-        if context.witnessedTutorialPushPermissionsRequest.witnessedTutorialPushPermissionsRequest {
-            showInitiateDownloadPage()
-        } else {
-            showRequestPushPermissionsPage()
-        }
-    }
-
-    // MARK: Private
-
-    private func showInitiateDownloadPage() {
         let completeTutorial = CompleteTutorial(delegate: delegate,
                                                 splashScreenRouter: context.splashScreenRouter,
                                                 tutorialStateProviding: context.tutorialStateProviding)
@@ -40,21 +30,6 @@ class TutorialPresenter {
                                                   alertRouter: context.alertRouter,
                                                   presentationAssets: context.presentationAssets,
                                                   networkReachability: context.networkReachability)
-    }
-
-    private func showRequestPushPermissionsPage() {
-        let delegate = ShowInitiateDownloadTutorialPage(delegate: self.delegate,
-                                                        tutorialScene: context.tutorialScene,
-                                                        splashScreenRouter: context.splashScreenRouter,
-                                                        alertRouter: context.alertRouter,
-                                                        presentationAssets: context.presentationAssets,
-                                                        networkReachability: context.networkReachability,
-                                                        tutorialStateProviding: context.tutorialStateProviding)
-        _ = RequestPushPermissionsTutorialPagePresenter(delegate: delegate,
-                                                        tutorialScene: context.tutorialScene,
-                                                        presentationAssets: context.presentationAssets,
-                                                        witnessedTutorialPushPermissionsRequest: context.witnessedTutorialPushPermissionsRequest,
-                                                        pushPermissionsRequesting: context.pushPermissionsRequesting)
     }
 
 }
