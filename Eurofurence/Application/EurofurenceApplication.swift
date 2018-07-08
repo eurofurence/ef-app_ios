@@ -27,7 +27,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private let userPreferences: UserPreferences
     private let dataStore: EurofurenceDataStore
     private let pushPermissionsRequester: PushPermissionsRequester
-    private let pushPermissionsStateProviding: PushPermissionsStateProviding
     private let clock: Clock
     private let remoteNotificationRegistrationController: RemoteNotificationRegistrationController
     private let authenticationCoordinator: UserAuthenticationCoordinator
@@ -57,7 +56,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
          dataStore: EurofurenceDataStore,
          remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
          pushPermissionsRequester: PushPermissionsRequester,
-         pushPermissionsStateProviding: PushPermissionsStateProviding,
          clock: Clock,
          credentialStore: CredentialStore,
          loginAPI: LoginAPI,
@@ -78,7 +76,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         self.userPreferences = userPreferences
         self.dataStore = dataStore
         self.pushPermissionsRequester = pushPermissionsRequester
-        self.pushPermissionsStateProviding = pushPermissionsStateProviding
         self.clock = clock
         self.syncAPI = syncAPI
         self.imageAPI = imageAPI
@@ -162,7 +159,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     func requestPermissionsForPushNotifications() {
         pushPermissionsRequester.requestPushPermissions {}
-        pushPermissionsStateProviding.attemptedPushAuthorizationRequest()
     }
 
     func storeRemoteNotificationsToken(_ deviceToken: Data) {

@@ -19,36 +19,10 @@ class WhenRegisteredForPushNotifications: XCTestCase {
         XCTAssertEqual(deviceToken, context.capturingTokenRegistration.capturedRemoteNotificationsDeviceToken)
     }
     
-    func testRequestingPushPermissionsTellsThePushRequesterToRequestPermissions() {
+    func testLaunchingAppRequestsPushPermissions() {
         let permissionsRequester = CapturingPushPermissionsRequester()
         let context = ApplicationTestBuilder().with(permissionsRequester).build()
         context.application.requestPermissionsForPushNotifications()
-        
-        XCTAssertTrue(permissionsRequester.wasToldToRequestPushPermissions)
-    }
-    
-    func testRequestingPushPermissionsMarksPushPermissionsWitness() {
-        let witnessedSystemPushes = CapturingPushPermissionsStateProviding()
-        witnessedSystemPushes.requestedPushNotificationAuthorization = false
-        let context = ApplicationTestBuilder().with(witnessedSystemPushes).build()
-        context.application.requestPermissionsForPushNotifications()
-        
-        XCTAssertTrue(witnessedSystemPushes.didPermitRegisteringForPushNotifications)
-    }
-    
-    func testWitnessedPushPermissionsStoreIsNotToldAboutItUntilRequestingPushPermissions() {
-        let witnessedSystemPushes = CapturingPushPermissionsStateProviding()
-        witnessedSystemPushes.requestedPushNotificationAuthorization = false
-        ApplicationTestBuilder().with(witnessedSystemPushes).build()
-        
-        XCTAssertFalse(witnessedSystemPushes.didPermitRegisteringForPushNotifications)
-    }
-    
-    func testLaunchingTheAppWhenPushPermissionsRequestedBeforeShouldRequestPermissionAutomatically() {
-        let permissionsRequester = CapturingPushPermissionsRequester()
-        let witnessedSystemPushes = CapturingPushPermissionsStateProviding()
-        witnessedSystemPushes.requestedPushNotificationAuthorization = true
-        ApplicationTestBuilder().with(permissionsRequester).with(witnessedSystemPushes).build()
         
         XCTAssertTrue(permissionsRequester.wasToldToRequestPushPermissions)
     }

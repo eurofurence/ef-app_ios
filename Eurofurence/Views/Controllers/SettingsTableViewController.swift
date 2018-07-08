@@ -55,28 +55,27 @@ class SettingsTableViewController: FormViewController {
 
 	private func makePushNotificationsSection() {
 		let defaults = UserDefaults.standard
-		let witnessedSystemPushRequest = UserDefaultsWitnessedSystemPushPermissionsRequest(userDefaults: defaults)
 		let remoteNotificationSoundProviding = UserDefaultsRemoteNotificationSoundProvider(userDefaults: defaults)
 
 		let section = Section("Push Notifications")
 		section <<< ButtonRow {
 			$0.title = "Enable Push Notifications"
-			if witnessedSystemPushRequest.requestedPushNotificationAuthorization {
-				$0.hidden = true
-			}
+//            if witnessedSystemPushRequest.requestedPushNotificationAuthorization {
+//                $0.hidden = true
+//            }
 
 			}.onCellSelection({ (_, _) in
-				if witnessedSystemPushRequest.requestedPushNotificationAuthorization {
-					let alert = UIAlertController(title: "Use Settings",
-					                              message: "Enable or disable Eurofurence's push notification permissions in Settings",
-					                              preferredStyle: .alert)
-					alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-					self.present(alert, animated: true)
-				} else {
+//                if witnessedSystemPushRequest.requestedPushNotificationAuthorization {
+//                    let alert = UIAlertController(title: "Use Settings",
+//                                                  message: "Enable or disable Eurofurence's push notification permissions in Settings",
+//                                                  preferredStyle: .alert)
+//                    alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+//                    self.present(alert, animated: true)
+//                } else {
 //                    ApplicationPushPermissionsRequesting().requestPushPermissions { }
 //                    witnessedSystemPushRequest.attemptedPushAuthorizationRequest()
 //                    defaults.synchronize()
-				}
+//                }
 			})
 
 			<<< PickerInlineRow<NotificationSound>("PushNotificationSound") {

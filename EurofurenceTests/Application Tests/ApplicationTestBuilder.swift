@@ -306,7 +306,6 @@ class ApplicationTestBuilder {
     private let loginAPI = CapturingLoginAPI()
     private let privateMessagesAPI = CapturingPrivateMessagesAPI()
     private var pushPermissionsRequester: PushPermissionsRequester = CapturingPushPermissionsRequester()
-    private var pushPermissionsStateProviding: PushPermissionsStateProviding = CapturingPushPermissionsStateProviding()
     private var dataStore = CapturingEurofurenceDataStore()
     private var userPreferences: UserPreferences = StubUserPreferences()
     private let syncAPI = CapturingSyncAPI()
@@ -328,11 +327,6 @@ class ApplicationTestBuilder {
     
     func with(_ pushPermissionsRequester: PushPermissionsRequester) -> ApplicationTestBuilder {
         self.pushPermissionsRequester = pushPermissionsRequester
-        return self
-    }
-    
-    func with(_ pushPermissionsStateProviding: PushPermissionsStateProviding) -> ApplicationTestBuilder {
-        self.pushPermissionsStateProviding = pushPermissionsStateProviding
         return self
     }
     
@@ -402,7 +396,6 @@ class ApplicationTestBuilder {
             .with(loginAPI)
             .with(privateMessagesAPI)
             .with(pushPermissionsRequester)
-            .with(pushPermissionsStateProviding)
             .with(capturingTokenRegistration)
             .with(userPreferences)
             .with(syncAPI)

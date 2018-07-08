@@ -14,7 +14,6 @@ class EurofurenceApplicationBuilder {
     private var dataStore: EurofurenceDataStore
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
     private var pushPermissionsRequester: PushPermissionsRequester
-    private var pushPermissionsStateProviding: PushPermissionsStateProviding
     private var clock: Clock
     private var credentialStore: CredentialStore
     private var loginAPI: LoginAPI
@@ -48,7 +47,6 @@ class EurofurenceApplicationBuilder {
                                                                                             fcmRegistration: fcmRegistration)
 
         pushPermissionsRequester = ApplicationPushPermissionsRequester.shared
-        pushPermissionsStateProviding = UserDefaultsWitnessedSystemPushPermissionsRequest()
         clock = SystemClock()
         credentialStore = KeychainCredentialStore()
         loginAPI = V2LoginAPI(jsonSession: jsonSession, apiUrl: apiUrl)
@@ -89,12 +87,6 @@ class EurofurenceApplicationBuilder {
     @discardableResult
     func with(_ pushPermissionsRequester: PushPermissionsRequester) -> EurofurenceApplicationBuilder {
         self.pushPermissionsRequester = pushPermissionsRequester
-        return self
-    }
-
-    @discardableResult
-    func with(_ pushPermissionsStateProviding: PushPermissionsStateProviding) -> EurofurenceApplicationBuilder {
-        self.pushPermissionsStateProviding = pushPermissionsStateProviding
         return self
     }
 
@@ -205,7 +197,6 @@ class EurofurenceApplicationBuilder {
                                       dataStore: dataStore,
                                       remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
                                       pushPermissionsRequester: pushPermissionsRequester,
-                                      pushPermissionsStateProviding: pushPermissionsStateProviding,
                                       clock: clock,
                                       credentialStore: credentialStore,
                                       loginAPI: loginAPI,
