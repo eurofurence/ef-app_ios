@@ -132,9 +132,16 @@ class ApplicationDirector: ExternalContentHandler,
 
     // MARK: Public
 
-    func handleRemoteNotification(_ payload: [String: String],
+    func handleRemoteNotification(_ payload: [AnyHashable: Any],
                                   completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        notificationHandling.handleRemoteNotification(payload: payload) { (result) in
+        let castedPayloadKeysAndValues = payload.compactMap { (key, value) -> (String, String)? in
+            guard let stringKey = key as? String, let stringValue = value as? String else { return nil }
+            return (stringKey, stringValue)
+        }
+
+        let castedPayload = castedPayloadKeysAndValues.reduce(into: [String: String](), { $0[$1.0] = $1.1 })
+
+        notificationHandling.handleRemoteNotification(payload: castedPayload) { (result) in
             switch result {
             case .successfulSync:
                 completionHandler(.newData)

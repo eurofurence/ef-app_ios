@@ -26,30 +26,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         installDebugModuleIntoWindow()
 
-		try! ContextResolver.container.bootstrap()
-		try! ServiceResolver.container.bootstrap()
-		try! ViewModelResolver.container.bootstrap()
+//        try! ContextResolver.container.bootstrap()
+//        try! ServiceResolver.container.bootstrap()
+//        try! ViewModelResolver.container.bootstrap()
+//
+//        PrintOptions.Active = .None
+//
+//        DataStoreRefreshController.shared.add(ApplicationActivityIndicatorRefreshDelegate())
 
-		PrintOptions.Active = .None
-
-        DataStoreRefreshController.shared.add(ApplicationActivityIndicatorRefreshDelegate())
-
-        if UserSettings.UseDirector.currentValueOrDefault() {
+//        if UserSettings.UseDirector.currentValueOrDefault() {
             applyDirectorBasedTheme()
 
             let director = DirectorBuilder().build()
             self.director = director
             EurofurenceApplication.shared.setExternalContentHandler(director)
-        } else {
-            PresentationTier.assemble(window: window!)
-        }
+//        } else {
+//            PresentationTier.assemble(window: window!)
+//        }
 
 		// App was launched from local or remote notification
-		if let notification = launchOptions?[.localNotification] as? UILocalNotification {
-			notificationRouter.showLocalNotificationTarget(for: notification, doWaitForDataStore: true)
-		} else if let userInfo = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
-			notificationRouter.showRemoteNotificationTarget(for: userInfo, doWaitForDataStore: true)
-		}
+//        if let notification = launchOptions?[.localNotification] as? UILocalNotification {
+//            notificationRouter.showLocalNotificationTarget(for: notification, doWaitForDataStore: true)
+//        } else if let userInfo = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
+//            notificationRouter.showRemoteNotificationTarget(for: userInfo, doWaitForDataStore: true)
+//        }
 
 		return true
 	}
@@ -65,61 +65,63 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ApplicationPushPermissionsRequesting.shared.handlePushRegistrationFailure()
 	}
 
-	func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
-		if application.applicationState == .inactive {
-			notificationRouter.showLocalNotificationTarget(for: notification, doWaitForDataStore: false)
-		} else if application.applicationState == .active {
-			notificationRouter.showLocalNotification(for: notification)
-		}
-	}
+//    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+//        if application.applicationState == .inactive {
+//            notificationRouter.showLocalNotificationTarget(for: notification, doWaitForDataStore: false)
+//        } else if application.applicationState == .active {
+//            notificationRouter.showLocalNotification(for: notification)
+//        }
+//    }
 
 	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-		if let contentTypeString = userInfo[NotificationUserInfoKey.ContentType.rawValue] as? String,
-			let contentType = NotificationContentType(rawValue: contentTypeString) {
+        director?.handleRemoteNotification(userInfo, completionHandler: completionHandler)
 
-			switch contentType {
-			case .Sync: // should have content-available == 1; triggers sync
-				// TODO: Inform the user about changes to his favourite events
-				DataStoreRefreshController.shared.add(NotificationSyncDataStoreRefreshDelegate(completionHandler: completionHandler))
-				DataStoreRefreshController.shared.refreshStore(withDelta: true)
-
-			case .Announcement: // Contains announcement title and message
-				if application.applicationState == .inactive {
-					// Application was launched from tapping the notification -> forward to detail view
-					notificationRouter.showRemoteNotificationTarget(for: userInfo, doWaitForDataStore: false)
-					completionHandler(.noData)
-				} else {
-					// Application is either in background or was already running in foreground
-					let wasAlreadyActive = application.applicationState == .active
-					DataStoreRefreshController.shared.add(NotificationSyncDataStoreRefreshDelegate(completionHandler: { result in
-						// Prevent the notification from being shown again once the app has become active,
-						// if the user foregrounded it by tapping on the background notification.
-						if wasAlreadyActive {
-							self.notificationRouter.showRemoteNotification(for: userInfo)
-						}
-						completionHandler(result)
-					}))
-					DataStoreRefreshController.shared.refreshStore(withDelta: true)
-				}
-
-			case .Notification: // There is something we should notify the user about, most likely new PMs.
-				switch application.applicationState {
-				case .inactive:
-					// Application was launched from tapping the notification -> forward to PM view
-					notificationRouter.showRemoteNotificationTarget(for: userInfo, doWaitForDataStore: false)
-				case .active:
-                    EurofurenceApplication.shared.fetchPrivateMessages { _ in }
-					notificationRouter.showRemoteNotification(for: userInfo)
-				case .background:
-					UIApplication.shared.applicationIconBadgeNumber += 1
-				}
-				// TODO: Pull new PMs from server
-				completionHandler(.noData)
-			default:
-				completionHandler(.noData)
-				break
-			}
-		}
+//        if let contentTypeString = userInfo[NotificationUserInfoKey.ContentType.rawValue] as? String,
+//            let contentType = NotificationContentType(rawValue: contentTypeString) {
+//
+//            switch contentType {
+//            case .Sync: // should have content-available == 1; triggers sync
+//                // TODO: Inform the user about changes to his favourite events
+//                DataStoreRefreshController.shared.add(NotificationSyncDataStoreRefreshDelegate(completionHandler: completionHandler))
+//                DataStoreRefreshController.shared.refreshStore(withDelta: true)
+//
+//            case .Announcement: // Contains announcement title and message
+//                if application.applicationState == .inactive {
+//                    // Application was launched from tapping the notification -> forward to detail view
+//                    notificationRouter.showRemoteNotificationTarget(for: userInfo, doWaitForDataStore: false)
+//                    completionHandler(.noData)
+//                } else {
+//                    // Application is either in background or was already running in foreground
+//                    let wasAlreadyActive = application.applicationState == .active
+//                    DataStoreRefreshController.shared.add(NotificationSyncDataStoreRefreshDelegate(completionHandler: { result in
+//                        // Prevent the notification from being shown again once the app has become active,
+//                        // if the user foregrounded it by tapping on the background notification.
+//                        if wasAlreadyActive {
+//                            self.notificationRouter.showRemoteNotification(for: userInfo)
+//                        }
+//                        completionHandler(result)
+//                    }))
+//                    DataStoreRefreshController.shared.refreshStore(withDelta: true)
+//                }
+//
+//            case .Notification: // There is something we should notify the user about, most likely new PMs.
+//                switch application.applicationState {
+//                case .inactive:
+//                    // Application was launched from tapping the notification -> forward to PM view
+//                    notificationRouter.showRemoteNotificationTarget(for: userInfo, doWaitForDataStore: false)
+//                case .active:
+//                    EurofurenceApplication.shared.fetchPrivateMessages { _ in }
+//                    notificationRouter.showRemoteNotification(for: userInfo)
+//                case .background:
+//                    UIApplication.shared.applicationIconBadgeNumber += 1
+//                }
+//                // TODO: Pull new PMs from server
+//                completionHandler(.noData)
+//            default:
+//                completionHandler(.noData)
+//                break
+//            }
+//        }
 	}
 
 }
