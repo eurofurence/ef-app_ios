@@ -57,13 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         app.storeRemoteNotificationsToken(deviceToken)
-        ApplicationPushPermissionsRequesting.shared.handlePushRegistrationSuccess()
     }
-
-    func application(_ application: UIApplication,
-                     didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        ApplicationPushPermissionsRequesting.shared.handlePushRegistrationFailure()
-	}
 
 //    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
 //        if application.applicationState == .inactive {

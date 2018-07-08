@@ -73,9 +73,9 @@ class SettingsTableViewController: FormViewController {
 					alert.addAction(UIAlertAction(title: "OK", style: .cancel))
 					self.present(alert, animated: true)
 				} else {
-					ApplicationPushPermissionsRequesting().requestPushPermissions { }
-					witnessedSystemPushRequest.attemptedPushAuthorizationRequest()
-					defaults.synchronize()
+//                    ApplicationPushPermissionsRequesting().requestPushPermissions { }
+//                    witnessedSystemPushRequest.attemptedPushAuthorizationRequest()
+//                    defaults.synchronize()
 				}
 			})
 

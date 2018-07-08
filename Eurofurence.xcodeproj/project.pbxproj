@@ -38,7 +38,6 @@
 		7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6E81F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift */; };
 		7820A6F21F1696F1004C0FB5 /* PushPermissionsRequesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6F11F1696F1004C0FB5 /* PushPermissionsRequesting.swift */; };
 		7820A6F61F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */; };
-		7820A6F81F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6F71F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift */; };
 		7820A6FB1F16BBB2004C0FB5 /* PushPermissionsStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6FA1F16BBB2004C0FB5 /* PushPermissionsStateProviding.swift */; };
 		7820A6FD1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6FC1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift */; };
 		7820A6FF1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7820A6FE1F16C0DE004C0FB5 /* CapturingPushPermissionsRequesting.swift */; };
@@ -1247,7 +1246,6 @@
 		7820A6E81F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardAlertRouterTests.swift; sourceTree = "<group>"; };
 		7820A6F11F1696F1004C0FB5 /* PushPermissionsRequesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushPermissionsRequesting.swift; sourceTree = "<group>"; };
 		7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift; sourceTree = "<group>"; };
-		7820A6F71F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationPushPermissionsRequesting.swift; sourceTree = "<group>"; };
 		7820A6F91F16B8A0004C0FB5 /* Eurofurence.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Eurofurence.entitlements; path = ../Eurofurence.entitlements; sourceTree = "<group>"; };
 		7820A6FA1F16BBB2004C0FB5 /* PushPermissionsStateProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushPermissionsStateProviding.swift; sourceTree = "<group>"; };
 		7820A6FC1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcknowledgedPushPermissionsRequestTestDoubles.swift; sourceTree = "<group>"; };
@@ -2663,7 +2661,6 @@
 			isa = PBXGroup;
 			children = (
 				7820A6F11F1696F1004C0FB5 /* PushPermissionsRequesting.swift */,
-				7820A6F71F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift */,
 				7820A6FA1F16BBB2004C0FB5 /* PushPermissionsStateProviding.swift */,
 				7820A7021F16C1F3004C0FB5 /* UserDefaultsWitnessedSystemPushPermissionsRequest.swift */,
 			);
@@ -6966,7 +6963,6 @@
 				CA6375A8208E011C00536BE2 /* DealersModuleBuilder.swift in Sources */,
 				CA637586208CDE5D00536BE2 /* ScheduleModule.swift in Sources */,
 				CA9845DA1F29199E00E8821D /* ScreenshotAssistant.swift in Sources */,
-				7820A6F81F16B41D004C0FB5 /* ApplicationPushPermissionsRequesting.swift in Sources */,
 				CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */,
 				CA6A8D7120E2649C007536CD /* MapsModule.swift in Sources */,
 				CA8276B3204EC013006A7419 /* ApplicationPreloadInteractor.swift in Sources */,
