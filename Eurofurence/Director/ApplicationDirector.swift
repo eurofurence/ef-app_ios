@@ -56,6 +56,7 @@ class ApplicationDirector: ExternalContentHandler,
     private let announcementsModuleFactory: AnnouncementsModuleProviding
     private let announcementDetailModuleProviding: AnnouncementDetailModuleProviding
     private let eventDetailModuleProviding: EventDetailModuleProviding
+    private let notificationHandling: ApplicationNotificationHandling
 
     private let rootNavigationController: UINavigationController
     private let rootNavigationControllerDelegate = DissolveTransitionAnimationProviding()
@@ -92,7 +93,8 @@ class ApplicationDirector: ExternalContentHandler,
          mapDetailModuleProviding: MapDetailModuleProviding,
          announcementsModuleFactory: AnnouncementsModuleProviding,
          announcementDetailModuleProviding: AnnouncementDetailModuleProviding,
-         eventDetailModuleProviding: EventDetailModuleProviding) {
+         eventDetailModuleProviding: EventDetailModuleProviding,
+         notificationHandling: ApplicationNotificationHandling) {
         self.animate = animate
         self.navigationControllerFactory = navigationControllerFactory
         self.linkLookupService = linkLookupService
@@ -118,6 +120,7 @@ class ApplicationDirector: ExternalContentHandler,
         self.mapDetailModuleProviding = mapDetailModuleProviding
         self.announcementDetailModuleProviding = announcementDetailModuleProviding
         self.eventDetailModuleProviding = eventDetailModuleProviding
+        self.notificationHandling = notificationHandling
 
         rootNavigationController = navigationControllerFactory.makeNavigationController()
         rootNavigationController.delegate = rootNavigationControllerDelegate
@@ -131,7 +134,15 @@ class ApplicationDirector: ExternalContentHandler,
 
     func handleRemoteNotification(_ payload: [String: String],
                                   completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        completionHandler(.newData)
+        notificationHandling.handleRemoteNotification(payload: payload) { (result) in
+            switch result {
+            case .successfulSync:
+                completionHandler(.newData)
+
+            case .failedSync:
+                completionHandler(.failed)
+            }
+        }
     }
 
     // MARK: ExternalContentHandler

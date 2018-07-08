@@ -35,6 +35,7 @@ class DirectorBuilder {
     private var announcementDetailModuleProviding: AnnouncementDetailModuleProviding
     private var eventDetailModuleProviding: EventDetailModuleProviding
     private var urlOpener: URLOpener
+    private var notificationHandling: ApplicationNotificationHandling
 
     init() {
         animate = true
@@ -64,6 +65,7 @@ class DirectorBuilder {
         linkLookupService = EurofurenceApplication.shared
         webModuleProviding = SafariWebModuleProviding()
         urlOpener = AppURLOpener()
+        notificationHandling = EurofurenceApplication.shared
     }
 
     @discardableResult
@@ -218,6 +220,7 @@ class DirectorBuilder {
 
     @discardableResult
     func with(_ notificationHandling: ApplicationNotificationHandling) -> DirectorBuilder {
+        self.notificationHandling = notificationHandling
         return self
     }
 
@@ -246,7 +249,8 @@ class DirectorBuilder {
                                    mapDetailModuleProviding: mapDetailModuleProviding,
                                    announcementsModuleFactory: announcementsModuleFactory,
                                    announcementDetailModuleProviding: announcementDetailModuleProviding,
-                                   eventDetailModuleProviding: eventDetailModuleProviding)
+                                   eventDetailModuleProviding: eventDetailModuleProviding,
+                                   notificationHandling: notificationHandling)
     }
 
 }
