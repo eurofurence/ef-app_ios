@@ -26,7 +26,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private let eventBus = EventBus()
     private let userPreferences: UserPreferences
     private let dataStore: EurofurenceDataStore
-    private let pushPermissionsRequester: PushPermissionsRequester
     private let clock: Clock
     private let remoteNotificationRegistrationController: RemoteNotificationRegistrationController
     private let authenticationCoordinator: UserAuthenticationCoordinator
@@ -75,7 +74,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
          hoursDateFormatter: HoursDateFormatter) {
         self.userPreferences = userPreferences
         self.dataStore = dataStore
-        self.pushPermissionsRequester = pushPermissionsRequester
         self.clock = clock
         self.syncAPI = syncAPI
         self.imageAPI = imageAPI
@@ -155,10 +153,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     func logout(completionHandler: @escaping (LogoutResult) -> Void) {
         authenticationCoordinator.logout(completionHandler: completionHandler)
-    }
-
-    func requestPermissionsForPushNotifications() {
-        pushPermissionsRequester.requestPushPermissions()
     }
 
     func storeRemoteNotificationsToken(_ deviceToken: Data) {

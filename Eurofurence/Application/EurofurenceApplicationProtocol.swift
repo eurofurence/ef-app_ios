@@ -30,7 +30,6 @@ protocol EurofurenceApplicationProtocol: ApplicationNotificationHandling,
 
     var localPrivateMessages: [Message] { get }
 
-    func requestPermissionsForPushNotifications()
     func storeRemoteNotificationsToken(_ deviceToken: Data)
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void)
     func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void)
