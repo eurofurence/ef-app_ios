@@ -80,5 +80,4 @@
 "Maps" = "Maps";
 
 "EventReminderBodyFormat" = "Starting at %@, in %@";
-
-"SolvingPEqualsNP" = "Solving P=NP...";
+"DownloadingLatestData" = "Updating...";

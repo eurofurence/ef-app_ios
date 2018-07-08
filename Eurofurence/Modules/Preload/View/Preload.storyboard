@@ -6,8 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,39 +23,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="JdN-KQ-26A">
-                                <rect key="frame" x="169" y="259" width="37" height="37"/>
-                            </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMF-8F-eQb">
-                                <rect key="frame" x="14" y="334" width="347" height="0.0"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RmD-8C-EqR">
-                                <rect key="frame" x="14" y="375" width="347" height="18"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="haS-Vl-jn7">
+                                <rect key="frame" x="0.0" y="301" width="375" height="65.5"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="JdN-KQ-26A">
+                                        <rect key="frame" x="169" y="0.0" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMF-8F-eQb">
+                                        <rect key="frame" x="166" y="45" width="43.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="SMF-8F-eQb" firstAttribute="centerY" secondItem="wKs-8b-dDh" secondAttribute="centerY" id="FbC-pC-tLp"/>
-                            <constraint firstItem="RmD-8C-EqR" firstAttribute="top" secondItem="SMF-8F-eQb" secondAttribute="bottom" multiplier="1.1" constant="8" symbolic="YES" id="Kh1-KQ-Jlh"/>
-                            <constraint firstItem="SMF-8F-eQb" firstAttribute="top" secondItem="JdN-KQ-26A" secondAttribute="bottom" multiplier="1.1" constant="8" symbolic="YES" id="LMg-3g-3y1"/>
-                            <constraint firstItem="RmD-8C-EqR" firstAttribute="leading" secondItem="YSY-xI-SRW" secondAttribute="leading" constant="14" id="RPW-7E-4zR"/>
-                            <constraint firstItem="YSY-xI-SRW" firstAttribute="trailing" secondItem="RmD-8C-EqR" secondAttribute="trailing" constant="14" id="S10-hg-TE9"/>
-                            <constraint firstItem="JdN-KQ-26A" firstAttribute="centerX" secondItem="YSY-xI-SRW" secondAttribute="centerX" id="Twk-3t-Hgq"/>
-                            <constraint firstItem="SMF-8F-eQb" firstAttribute="leading" secondItem="YSY-xI-SRW" secondAttribute="leading" constant="14" id="Uhx-3N-rep"/>
-                            <constraint firstItem="YSY-xI-SRW" firstAttribute="trailing" secondItem="SMF-8F-eQb" secondAttribute="trailing" constant="14" id="oHT-eo-uvk"/>
+                            <constraint firstItem="haS-Vl-jn7" firstAttribute="centerX" secondItem="wKs-8b-dDh" secondAttribute="centerX" id="Yg8-Qb-n0g"/>
+                            <constraint firstItem="haS-Vl-jn7" firstAttribute="centerY" secondItem="wKs-8b-dDh" secondAttribute="centerY" id="bfG-8h-FEZ"/>
+                            <constraint firstItem="haS-Vl-jn7" firstAttribute="leading" secondItem="YSY-xI-SRW" secondAttribute="leading" id="pZ1-FM-s6B"/>
+                            <constraint firstItem="YSY-xI-SRW" firstAttribute="trailing" secondItem="haS-Vl-jn7" secondAttribute="trailing" id="uC8-0F-3mw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YSY-xI-SRW"/>
                     </view>
                     <navigationItem key="navigationItem" id="z7a-p3-QXn"/>
                     <connections>
                         <outlet property="progressDescriptionLabel" destination="SMF-8F-eQb" id="I2T-Eb-kap"/>
-                        <outlet property="randomQuipLabel" destination="RmD-8C-EqR" id="TYa-Th-8Ax"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFC-VO-sYX" userLabel="First Responder" sceneMemberID="firstResponder"/>

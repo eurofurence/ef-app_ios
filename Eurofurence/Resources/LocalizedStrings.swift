@@ -170,6 +170,9 @@ public extension String {
     private static let eventReminderBodyFormat = NSLocalizedString("EventReminderBodyFormat",
                                                                    comment: "Format string used for event reminder notifications to tell the user when and where an upcoming event is taking place")
 
+    public static let downloadingLatestData = NSLocalizedString("DownloadingLatestData",
+                                                                comment: "Placeholder string displayed on the preload page to indicate to the user the app is updating")
+
     private struct Formatters {
         static var numbers = NumberFormatter()
     }
@@ -195,10 +198,5 @@ public extension String {
     static func eventReminderBody(timeString: String, roomName: String) -> String {
         return localizedStringWithFormat(eventReminderBodyFormat, timeString, roomName)
     }
-
-    // MARK: Quips
-
-    public static let solvingPNP = NSLocalizedString("SolvingPEqualsNP",
-                                                     comment: "Quip shown when loading referring to the P=NP problem")
 
 }

@@ -10,25 +10,9 @@ import UIKit.UIViewController
 
 class PreloadViewController: UIViewController, SplashScene {
 
-    // MARK: Private
-
-    private struct Quips {
-
-        private static var allQuips: [String] {
-            return [.solvingPNP]
-        }
-
-        static var random: String {
-            let upper = Int(arc4random_uniform(UInt32(allQuips.count)))
-            return allQuips[upper]
-        }
-
-    }
-
     // MARK: IBOutlets
 
     @IBOutlet weak var progressDescriptionLabel: UILabel!
-    @IBOutlet weak var randomQuipLabel: UILabel!
 
     // MARK: Overrides
 
@@ -36,9 +20,8 @@ class PreloadViewController: UIViewController, SplashScene {
         super.viewDidLoad()
 
         view.backgroundColor = .pantone330U
+        progressDescriptionLabel.text = .downloadingLatestData
         progressDescriptionLabel.textColor = .white
-        randomQuipLabel.text = Quips.random
-        randomQuipLabel.textColor = .white
     }
 
     override func viewWillAppear(_ animated: Bool) {
