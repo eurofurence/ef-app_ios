@@ -127,9 +127,13 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         maps = Maps(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository)
     }
 
-    func handleRemoteNotification(payload: [String: String]) {
-        refreshLocalStore { (_) in
-
+    func handleRemoteNotification(payload: [String: String], completionHandler: @escaping (ApplicationPushActionResult) -> Void) {
+        refreshLocalStore { (error) in
+            if error == nil {
+                completionHandler(.successfulSync)
+            } else {
+                completionHandler(.failedSync)
+            }
         }
     }
 

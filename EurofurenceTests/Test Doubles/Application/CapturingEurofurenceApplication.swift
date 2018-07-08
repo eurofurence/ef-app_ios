@@ -10,7 +10,7 @@
 import Foundation
 
 class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
-    func handleRemoteNotification(payload: [String : String]) {
+    func handleRemoteNotification(payload: [String: String], completionHandler: @escaping (ApplicationPushActionResult) -> Void) {
         
     }
     
