@@ -157,6 +157,8 @@ class ApplicationDirector: ExternalContentHandler,
                     tabBarController.selectedIndex = index
                     newsNavigationController.pushViewController(module, animated: self.animate)
                 }
+
+                completionHandler(.newData)
             }
         }
     }
