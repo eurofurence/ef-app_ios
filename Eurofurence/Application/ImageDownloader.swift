@@ -27,7 +27,13 @@ class ImageDownloader {
         }
 
         var pendingImageIdentifiers = identifiers
-        identifiers.filter({ imageRepository.containsImage(identifier: $0) == false }).forEach { (identifier) in
+        let imagesToDownload = identifiers.filter({ imageRepository.containsImage(identifier: $0) == false })
+        guard !imagesToDownload.isEmpty else {
+            completionHandler()
+            return
+        }
+
+        imagesToDownload.forEach { (identifier) in
             imageAPI.fetchImage(identifier: identifier) { (data) in
                 guard let idx = pendingImageIdentifiers.index(of: identifier) else { return }
                 pendingImageIdentifiers.remove(at: idx)

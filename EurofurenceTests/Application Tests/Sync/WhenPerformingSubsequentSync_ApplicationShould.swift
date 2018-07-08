@@ -36,4 +36,18 @@ class WhenPerformingSubsequentSync_ApplicationShould: XCTestCase {
         XCTAssertEqual(downloadedImages, context.imageAPI.downloadedImageIdentifiers)
     }
     
+    func testCompleteSyncWhenNotRedownloadingAnyImages() {
+        let context = ApplicationTestBuilder().build()
+        let expected = Date.random
+        context.clock.currentDate = expected
+        context.refreshLocalStore()
+        let syncResponse = APISyncResponse.randomWithoutDeletions
+        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        var didFinishSync = false
+        context.refreshLocalStore() { (_) in didFinishSync = true }
+        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        
+        XCTAssertTrue(didFinishSync)
+    }
+    
 }
