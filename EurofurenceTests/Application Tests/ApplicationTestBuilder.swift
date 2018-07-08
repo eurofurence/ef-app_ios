@@ -11,7 +11,9 @@ import Foundation
 
 class FakeImageAPI: ImageAPI {
     
+    private(set) var downloadedImageIdentifiers = [String]()
     func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void) {
+        downloadedImageIdentifiers.append(identifier)
         completionHandler(identifier.data(using: .utf8)!)
     }
     
@@ -66,6 +68,10 @@ class CapturingImageRepository: ImageRepository {
     
     func loadImage(identifier: String) -> ImageEntity? {
         return savedImages.first { $0.identifier == identifier }
+    }
+    
+    func containsImage(identifier: String) -> Bool {
+        return savedImages.contains(where: { $0.identifier == identifier })
     }
     
 }

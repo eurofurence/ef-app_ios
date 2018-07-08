@@ -12,5 +12,6 @@ protocol ImageRepository {
 
     func save(_ image: ImageEntity)
     func loadImage(identifier: String) -> ImageEntity?
+    func containsImage(identifier: String) -> Bool
 
 }

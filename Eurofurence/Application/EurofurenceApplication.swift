@@ -109,7 +109,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                             notificationsService: notificationsService,
                             userPreferences: userPreferences,
                             hoursDateFormatter: hoursDateFormatter)
-        imageDownloader = ImageDownloader(eventBus: eventBus, imageAPI: imageAPI)
+        imageDownloader = ImageDownloader(eventBus: eventBus, imageAPI: imageAPI, imageRepository: imageRepository)
         significantTimeObserver = SignificantTimeObserver(significantTimeChangeAdapter: significantTimeChangeAdapter,
                                                           eventBus: eventBus)
         dealers = Dealers(eventBus: eventBus, dataStore: dataStore, imageCache: imageCache)

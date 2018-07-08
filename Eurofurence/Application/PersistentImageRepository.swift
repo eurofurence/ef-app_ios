@@ -30,6 +30,10 @@ struct PersistentImageRepository: ImageRepository {
         }
     }
 
+    func containsImage(identifier: String) -> Bool {
+        return false
+    }
+
     private func makeImageRepositoryURL(for identifier: String) throws -> URL {
         let applicationSupportDirectoryURL = try FileManager.default.url(for: .applicationSupportDirectory,
                                                                          in: .userDomainMask,

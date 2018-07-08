@@ -12,10 +12,12 @@ class ImageDownloader {
 
     private let eventBus: EventBus
     private let imageAPI: ImageAPI
+    private let imageRepository: ImageRepository
 
-    init(eventBus: EventBus, imageAPI: ImageAPI) {
+    init(eventBus: EventBus, imageAPI: ImageAPI, imageRepository: ImageRepository) {
         self.eventBus = eventBus
         self.imageAPI = imageAPI
+        self.imageRepository = imageRepository
     }
 
     func downloadImages(identifiers: [String], parentProgress: Progress, completionHandler: @escaping () -> Void) {
@@ -25,7 +27,7 @@ class ImageDownloader {
         }
 
         var pendingImageIdentifiers = identifiers
-        identifiers.forEach { (identifier) in
+        identifiers.filter({ imageRepository.containsImage(identifier: $0) == false }).forEach { (identifier) in
             imageAPI.fetchImage(identifier: identifier) { (data) in
                 guard let idx = pendingImageIdentifiers.index(of: identifier) else { return }
                 pendingImageIdentifiers.remove(at: idx)
