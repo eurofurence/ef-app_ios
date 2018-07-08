@@ -238,6 +238,7 @@
 		CA00AE8E20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */; };
 		CA00AE9120D293B800C2FBB0 /* UICollectionView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE9020D293B800C2FBB0 /* UICollectionView+Convenience.swift */; };
 		CA057A5B2088BDBB00504FA4 /* AnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA057A5A2088BDBA00504FA4 /* AnnouncementTableViewCell.swift */; };
+		CA063B3520F230E000241CC9 /* ApplicationNotificationHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B3420F230E000241CC9 /* ApplicationNotificationHandling.swift */; };
 		CA08157820D3865600F750D4 /* NavigationBarViewExtensionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */; };
 		CA08157A20D3877700F750D4 /* FoundationShortFormDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */; };
 		CA08157D20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157C20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift */; };
@@ -1455,6 +1456,7 @@
 		CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDayCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA00AE9020D293B800C2FBB0 /* UICollectionView+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Convenience.swift"; sourceTree = "<group>"; };
 		CA057A5A2088BDBA00504FA4 /* AnnouncementTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementTableViewCell.swift; sourceTree = "<group>"; };
+		CA063B3420F230E000241CC9 /* ApplicationNotificationHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationNotificationHandling.swift; sourceTree = "<group>"; };
 		CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewExtensionContainer.swift; sourceTree = "<group>"; };
 		CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationShortFormDateFormatter.swift; sourceTree = "<group>"; };
 		CA08157C20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncCompletesWithConferenceDays_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -2830,6 +2832,7 @@
 			children = (
 				CA1F7D6220CB83A100FB87F5 /* Announcements.swift */,
 				CA0E5212208F4CD7005259FE /* AnnouncementsService.swift */,
+				CA063B3420F230E000241CC9 /* ApplicationNotificationHandling.swift */,
 				CA2761D120E03B29000E52AC /* CollectThemAll.swift */,
 				CA2761C520E02EDC000E52AC /* CollectThemAllRequestFactory.swift */,
 				CA2761B920E02A16000E52AC /* CollectThemAllService.swift */,
@@ -6726,6 +6729,7 @@
 				CA00AE4520D16BBD00C2FBB0 /* ScheduleInteractor.swift in Sources */,
 				78455B471F11779D005BE2D7 /* SplashScreenRouter.swift in Sources */,
 				CA957B601F705AF9004DFD5A /* MessagesViewControllerV2.swift in Sources */,
+				CA063B3520F230E000241CC9 /* ApplicationNotificationHandling.swift in Sources */,
 				CA321F511F7BC8550050E489 /* PreloadSceneFactory.swift in Sources */,
 				CA0F762720322E36009DA079 /* KnowledgeGroupScene.swift in Sources */,
 				CA72849B20A1C338007D912A /* PrivateMessagesObserver.swift in Sources */,

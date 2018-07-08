@@ -14,12 +14,8 @@ enum EurofurenceDataStoreState {
     case available
 }
 
-enum ApplicationPushActionResult: Equatable {
-    case successfulSync
-    case failedSync
-}
-
-protocol EurofurenceApplicationProtocol: RefreshService,
+protocol EurofurenceApplicationProtocol: ApplicationNotificationHandling,
+                                         RefreshService,
                                          AnnouncementsService,
                                          AuthenticationService,
                                          EventsService,
@@ -31,7 +27,6 @@ protocol EurofurenceApplicationProtocol: RefreshService,
                                          MapsService {
 
     func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler)
-    func handleRemoteNotification(payload: [String: String], completionHandler: @escaping (ApplicationPushActionResult) -> Void)
 
     var localPrivateMessages: [Message] { get }
 
