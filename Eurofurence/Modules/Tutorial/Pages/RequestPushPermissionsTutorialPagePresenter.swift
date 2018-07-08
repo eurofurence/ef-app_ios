@@ -11,13 +11,13 @@ struct RequestPushPermissionsTutorialPagePresenter: TutorialPage, TutorialPageSc
     private var delegate: TutorialPageDelegate
     private var presentationAssets: PresentationAssets
     private var witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
-    private var pushPermissionsRequesting: PushPermissionsRequesting
+    private var pushPermissionsRequesting: PushPermissionsRequester
 
     init(delegate: TutorialPageDelegate,
          tutorialScene: TutorialScene,
          presentationAssets: PresentationAssets,
          witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest,
-         pushPermissionsRequesting: PushPermissionsRequesting) {
+         pushPermissionsRequesting: PushPermissionsRequester) {
         self.delegate = delegate
         self.presentationAssets = presentationAssets
         self.witnessedTutorialPushPermissionsRequest = witnessedTutorialPushPermissionsRequest

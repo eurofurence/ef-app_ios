@@ -8,6 +8,6 @@
 
 protocol PushPermissionsRequester {
 
-    func requestPushPermissions()
+    func requestPushPermissions(completionHandler: @escaping () -> Void)
 
 }

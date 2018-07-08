@@ -62,11 +62,11 @@ class WhenThePushNotificationPermissionsPageAppears: XCTestCase {
     
     func testTappingPrimaryButtonShouldRequestPushPermissions() {
         context.tapPrimaryButton()
-        XCTAssertTrue(context.pushRequesting.didRequestPermission)
+        XCTAssertTrue(context.pushRequesting.wasToldToRequestPushPermissions)
     }
     
     func testPushPermissionsShouldNotBeRequestedWithoutUserInteraction() {
-        XCTAssertFalse(context.pushRequesting.didRequestPermission)
+        XCTAssertFalse(context.pushRequesting.wasToldToRequestPushPermissions)
     }
     
     func testRequestingPushPermissionsShouldNotCompleteTutorial() {

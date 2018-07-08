@@ -12,8 +12,18 @@ import Foundation
 class CapturingPushPermissionsRequester: PushPermissionsRequester {
     
     private(set) var wasToldToRequestPushPermissions = false
-    func requestPushPermissions() {
+    fileprivate var completionHandler: (() -> Void)?
+    func requestPushPermissions(completionHandler: @escaping () -> Void) {
         wasToldToRequestPushPermissions = true
+        self.completionHandler = completionHandler
+    }
+    
+}
+
+extension CapturingPushPermissionsRequester {
+    
+    func completeRegistrationRequest() {
+        completionHandler?()
     }
     
 }

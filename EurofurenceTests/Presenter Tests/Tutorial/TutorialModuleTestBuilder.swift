@@ -20,12 +20,12 @@ class TutorialModuleTestBuilder {
         var assets: PresentationAssets
         var alertRouter: CapturingAlertRouter
         var tutorialStateProviding: StubFirstTimeLaunchStateProvider
-        var pushRequesting: CapturingPushPermissionsRequesting
+        var pushRequesting: CapturingPushPermissionsRequester
     }
     
     let alertRouter = CapturingAlertRouter()
     let stateProviding = StubFirstTimeLaunchStateProvider(userHasCompletedTutorial: false)
-    let pushRequesting = CapturingPushPermissionsRequesting()
+    let pushRequesting = CapturingPushPermissionsRequester()
     let presentationAssets = StubPresentationAssets()
     let tutorialSceneFactory = StubTutorialSceneFactory()
     let delegate = CapturingTutorialModuleDelegate()

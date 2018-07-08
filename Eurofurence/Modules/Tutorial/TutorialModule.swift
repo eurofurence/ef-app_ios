@@ -44,7 +44,7 @@ struct TutorialModule {
     private let alertRouter: AlertRouter
     private let tutorialStateProviding: UserCompletedTutorialStateProviding
     private let networkReachability: NetworkReachability
-    private let pushPermissionsRequesting: PushPermissionsRequesting
+    private let pushPermissionsRequesting: PushPermissionsRequester
     private let witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
 
     init(delegate: TutorialModuleDelegate,
@@ -53,7 +53,7 @@ struct TutorialModule {
          alertRouter: AlertRouter,
          tutorialStateProviding: UserCompletedTutorialStateProviding,
          networkReachability: NetworkReachability,
-         pushPermissionsRequesting: PushPermissionsRequesting,
+         pushPermissionsRequesting: PushPermissionsRequester,
          witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest) {
         self.delegate = delegate
         self.tutorialSceneFactory = tutorialSceneFactory

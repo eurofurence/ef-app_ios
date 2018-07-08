@@ -14,13 +14,13 @@ struct ApplicationContext {
     var witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest
     var presentationAssets: PresentationAssets
     var networkReachability: NetworkReachability
-    var pushPermissionsRequesting: PushPermissionsRequesting
+    var pushPermissionsRequesting: PushPermissionsRequester
 
     init(firstTimeLaunchProviding: UserCompletedTutorialStateProviding,
          witnessedTutorialPushPermissionsRequest: WitnessedTutorialPushPermissionsRequest,
          presentationAssets: PresentationAssets,
          networkReachability: NetworkReachability,
-         pushPermissionsRequesting: PushPermissionsRequesting) {
+         pushPermissionsRequesting: PushPermissionsRequester) {
         self.firstTimeLaunchProviding = firstTimeLaunchProviding
         self.witnessedTutorialPushPermissionsRequest = witnessedTutorialPushPermissionsRequest
         self.presentationAssets = presentationAssets

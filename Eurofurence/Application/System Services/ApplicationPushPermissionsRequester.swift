@@ -10,11 +10,19 @@ import UserNotifications
 
 struct ApplicationPushPermissionsRequester: PushPermissionsRequester {
 
-    func requestPushPermissions() {
+    static let shared = ApplicationPushPermissionsRequester()
+
+    private init() {
+
+    }
+
+    func requestPushPermissions(completionHandler: @escaping () -> Void) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (_, error) in
             if let error = error {
                 print("Failed to register for notifications with error: \(error)")
             }
+
+            completionHandler()
         }
     }
 

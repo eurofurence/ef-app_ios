@@ -127,6 +127,8 @@ class TestURLProtocol: URLProtocol {
 }
 
 class URLSessionBasedJSONSessionTests: XCTestCase {
+    
+    private let testTimeout: TimeInterval = 0.5
 
     override func setUp() {
         super.setUp()
@@ -156,7 +158,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
         JournallingURLRequestLogger.shared.makeExpectation(self, expectingURL: expectedURL)
         post(expectedURL)
 
-        waitForExpectations(timeout: 0.1)
+        waitForExpectations(timeout: testTimeout)
     }
 
     func testPostingURLShouldRequestWithPOSTHTTPMethod() {
@@ -167,7 +169,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
 
         post(expectedURL)
 
-        waitForExpectations(timeout: 0.1)
+        waitForExpectations(timeout: testTimeout)
     }
 
     func testPostingURLShouldProvideBodyWithRequest() {
@@ -196,7 +198,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
 
         post(expectedURL, body: expectedData)
 
-        waitForExpectations(timeout: 0.1)
+        waitForExpectations(timeout: testTimeout)
     }
     
     func testPostingURLShouldUseJSONContentTypeHeader() {
@@ -208,7 +210,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
         
         post(expectedURL)
         
-        waitForExpectations(timeout: 0.1)
+        waitForExpectations(timeout: testTimeout)
     }
     
     func testPostingURLWithAdditionalHeadersSuppliesThemWithTheRequest() {
@@ -219,7 +221,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
         }
         
         post(expectedURL, headers: additionalHeaders)
-        waitForExpectations(timeout: 0.1)
+        waitForExpectations(timeout: testTimeout)
     }
     
     func testLoadingCompletesSuppliesResponseDataToCompletionHandler() {
@@ -234,7 +236,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
             }
         })
         
-        waitForExpectations(timeout: 0.1)
+        waitForExpectations(timeout: testTimeout)
     }
     
     func testLoadingCompletesSuppliesResponseDataOnMainQueue() {
@@ -248,7 +250,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
             }
         })
         
-        waitForExpectations(timeout: 0.1)
+        waitForExpectations(timeout: testTimeout)
     }
     
     func testGettingURLShouldRequestWithURL() {
@@ -256,7 +258,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
         JournallingURLRequestLogger.shared.makeExpectation(self, expectingURL: expectedURL)
         get(expectedURL)
         
-        waitForExpectations(timeout: 0.1)
+        waitForExpectations(timeout: testTimeout)
     }
     
     func testGettingURLShouldRequestWithGETMethod() {
@@ -267,7 +269,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
         
         get(expectedURL)
         
-        waitForExpectations(timeout: 0.1)
+        waitForExpectations(timeout: testTimeout)
     }
     
     func testGettingURLShouldUseJSONContentTypeHeader() {
@@ -279,7 +281,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
         
         get(expectedURL)
         
-        waitForExpectations(timeout: 0.1)
+        waitForExpectations(timeout: testTimeout)
     }
     
     func testGettingURLWithAdditionalHeadersSuppliesThemWithTheRequest() {
@@ -290,7 +292,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
         }
         
         get(expectedURL, headers: additionalHeaders)
-        waitForExpectations(timeout: 0.1)
+        waitForExpectations(timeout: testTimeout)
     }
     
     func testGetRequestCompletesSuppliesResponseDataToCompletionHandler() {
@@ -305,7 +307,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
             }
         })
         
-        waitForExpectations(timeout: 0.1)
+        waitForExpectations(timeout: testTimeout)
     }
     
     func testGettingCompletesSuppliesResponseDataOnMainQueue() {
@@ -336,7 +338,7 @@ class URLSessionBasedJSONSessionTests: XCTestCase {
             }
         })
         
-        waitForExpectations(timeout: 0.1)
+        waitForExpectations(timeout: testTimeout)
     }
     
 }

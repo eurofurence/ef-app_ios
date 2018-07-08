@@ -88,7 +88,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         self.longRunningTaskManager = longRunningTaskManager
 
         if pushPermissionsStateProviding.requestedPushNotificationAuthorization {
-            pushPermissionsRequester.requestPushPermissions()
+            pushPermissionsRequester.requestPushPermissions {}
         }
 
         remoteNotificationRegistrationController = RemoteNotificationRegistrationController(eventBus: eventBus,
@@ -163,7 +163,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func requestPermissionsForPushNotifications() {
-        pushPermissionsRequester.requestPushPermissions()
+        pushPermissionsRequester.requestPushPermissions {}
         pushPermissionsStateProviding.attemptedPushAuthorizationRequest()
     }
 

@@ -47,7 +47,7 @@ class EurofurenceApplicationBuilder {
                                                                                             firebaseAdapter: FirebaseMessagingAdapter(),
                                                                                             fcmRegistration: fcmRegistration)
 
-        pushPermissionsRequester = ApplicationPushPermissionsRequester()
+        pushPermissionsRequester = ApplicationPushPermissionsRequester.shared
         pushPermissionsStateProviding = UserDefaultsWitnessedSystemPushPermissionsRequest()
         clock = SystemClock()
         credentialStore = KeychainCredentialStore()
