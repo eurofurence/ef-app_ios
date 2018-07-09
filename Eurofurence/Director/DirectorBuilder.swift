@@ -39,22 +39,12 @@ class DirectorBuilder {
     private var orderingPolicy: ModuleOrderingPolicy
 
     init() {
-        struct DummyModuleOrderingPolicy: ModuleOrderingPolicy {
-            func order(modules: [UIViewController]) -> [UIViewController] {
-                return modules
-            }
-
-            func saveOrder(_ modules: [UIViewController]) {
-
-            }
-        }
-
         animate = true
         windowWireframe = PhoneWindowWireframe.shared
         navigationControllerFactory = PhoneNavigationControllerFactory()
         tabModuleProviding = PhoneTabModuleFactory()
 
-        orderingPolicy = DummyModuleOrderingPolicy()
+        orderingPolicy = RestorationIdentifierOrderingPolicy()
         rootModuleProviding = RootModuleBuilder().build()
         tutorialModuleProviding = TutorialModuleBuilder().build()
         preloadModuleProviding = PreloadModuleBuilder().build()
