@@ -35,6 +35,7 @@ class ApplicationDirector: ExternalContentHandler,
     private let navigationControllerFactory: NavigationControllerFactory
     private let linkLookupService: LinkLookupService
     private let urlOpener: URLOpener
+    private let orderingPolicy: ModuleOrderingPolicy
     private let webModuleProviding: WebModuleProviding
     private let windowWireframe: WindowWireframe
     private let rootModuleProviding: RootModuleProviding
@@ -72,6 +73,7 @@ class ApplicationDirector: ExternalContentHandler,
     init(animate: Bool,
          linkLookupService: LinkLookupService,
          urlOpener: URLOpener,
+         orderingPolicy: ModuleOrderingPolicy,
          webModuleProviding: WebModuleProviding,
          windowWireframe: WindowWireframe,
          navigationControllerFactory: NavigationControllerFactory,
@@ -99,6 +101,7 @@ class ApplicationDirector: ExternalContentHandler,
         self.navigationControllerFactory = navigationControllerFactory
         self.linkLookupService = linkLookupService
         self.urlOpener = urlOpener
+        self.orderingPolicy = orderingPolicy
         self.webModuleProviding = webModuleProviding
         self.windowWireframe = windowWireframe
         self.rootModuleProviding = rootModuleProviding
@@ -343,6 +346,7 @@ class ApplicationDirector: ExternalContentHandler,
         let dealersNavigationController = navigationControllerFactory.makeNavigationController()
         let knowledgeNavigationController = navigationControllerFactory.makeNavigationController()
         let mapsNavigationController = navigationControllerFactory.makeNavigationController()
+        let collectThemAllNavigationController = navigationControllerFactory.makeNavigationController()
 
         let newsController = newsModuleProviding.makeNewsModule(self)
         self.newsController = newsController
@@ -365,7 +369,7 @@ class ApplicationDirector: ExternalContentHandler,
         dealersNavigationController.tabBarItem = dealersViewController.tabBarItem
 
         let collectThemAllModule = collectThemAllModuleProviding.makeCollectThemAllModule()
-        let collectThemAllNavigationController = UINavigationController(rootViewController: collectThemAllModule)
+        collectThemAllNavigationController.setViewControllers([collectThemAllModule], animated: animate)
         collectThemAllNavigationController.tabBarItem = collectThemAllModule.tabBarItem
 
         let mapsModule = mapsModuleProviding.makeMapsModule(self)
@@ -373,12 +377,14 @@ class ApplicationDirector: ExternalContentHandler,
         mapsNavigationController.setViewControllers([mapsModule], animated: animate)
         mapsNavigationController.tabBarItem = mapsModule.tabBarItem
 
-        let tabModule = tabModuleProviding.makeTabModule([newsNavigationController,
-                                                          scheduleNavigationController,
-                                                          dealersNavigationController,
-                                                          collectThemAllNavigationController,
-                                                          knowledgeNavigationController,
-                                                          mapsNavigationController])
+        let moduleControllers: [UIViewController] = [newsNavigationController,
+                                                     scheduleNavigationController,
+                                                     dealersNavigationController,
+                                                     collectThemAllNavigationController,
+                                                     knowledgeNavigationController,
+                                                     mapsNavigationController]
+        let orderedControllers = orderingPolicy.order(modules: moduleControllers)
+        let tabModule = tabModuleProviding.makeTabModule(orderedControllers)
         tabController = tabModule
 
         rootNavigationController.setViewControllers([tabModule], animated: animate)

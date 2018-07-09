@@ -82,6 +82,7 @@ class ApplicationDirectorTestBuilder {
     struct Context {
         
         var director: ApplicationDirector
+        var moduleOrderingPolicy: FakeModuleOrderingPolicy
         var rootModule: StubRootModuleFactory
         var tutorialModule: StubTutorialModuleFactory
         var preloadModule: StubPreloadModuleFactory
@@ -109,6 +110,7 @@ class ApplicationDirectorTestBuilder {
         
     }
     
+    private let moduleOrderingPolicy: FakeModuleOrderingPolicy
     private let rootModule: StubRootModuleFactory
     private let tutorialModule: StubTutorialModuleFactory
     private let preloadModule: StubPreloadModuleFactory
@@ -134,6 +136,7 @@ class ApplicationDirectorTestBuilder {
     private let urlOpener: CapturingURLOpener
     
     init() {
+        moduleOrderingPolicy = FakeModuleOrderingPolicy()
         rootModule = StubRootModuleFactory()
         tutorialModule = StubTutorialModuleFactory()
         preloadModule = StubPreloadModuleFactory()
@@ -164,6 +167,7 @@ class ApplicationDirectorTestBuilder {
         
         let builder = DirectorBuilder()
         builder.withAnimations(false)
+        builder.with(moduleOrderingPolicy)
         builder.with(windowWireframe)
         builder.with(StubNavigationControllerFactory())
         builder.with(rootModule)
@@ -193,6 +197,7 @@ class ApplicationDirectorTestBuilder {
         let director = builder.build()
         
         return Context(director: director,
+                       moduleOrderingPolicy: moduleOrderingPolicy,
                        rootModule: rootModule,
                        tutorialModule: tutorialModule,
                        preloadModule: preloadModule,

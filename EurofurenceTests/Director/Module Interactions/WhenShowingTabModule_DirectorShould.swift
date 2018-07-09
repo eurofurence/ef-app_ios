@@ -6,39 +6,48 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+@testable import Eurofurence
 import XCTest
+
+class FakeModuleOrderingPolicy: ModuleOrderingPolicy {
+    
+    private(set) var producedModules = [UIViewController]()
+    func order(modules: [UIViewController]) -> [UIViewController] {
+        producedModules = modules.randomized()
+        return producedModules
+    }
+    
+}
+
+extension Array {
+    
+    func randomized() -> [Element] {
+        var copy = self
+        var output = [Element]()
+        while copy.isEmpty == false {
+            let next = copy.randomElement()
+            output.append(copy.remove(at: next.index))
+        }
+        
+        return output
+    }
+    
+}
 
 class WhenShowingTabModule_DirectorShould: XCTestCase {
     
-    var context: ApplicationDirectorTestBuilder.Context!
-    
-    override func setUp() {
-        super.setUp()
-        
-        context = ApplicationDirectorTestBuilder().build()
+    func testShowTheModulesInOrderDesignatedByOrderingPolicy() {
+        let context = ApplicationDirectorTestBuilder().build()
+        let moduleOrderingPolicy = context.moduleOrderingPolicy
         context.navigateToTabController()
-    }
-    
-    private func makeExpectedTabViewControllerRoots() -> [UIViewController] {
-        return [context.newsModule.stubInterface,
-                context.scheduleModule.stubInterface,
-                context.dealersModule.stubInterface,
-                context.collectThemAllModule.stubInterface,
-                context.knowledgeListModule.stubInterface,
-                context.mapsModule.stubInterface]
-    }
-    
-    private func rootNavigationTabControllers() -> [UINavigationController] {
-        return context.tabModule.capturedTabModules.compactMap({ $0 as? UINavigationController })
-    }
-    
-    func testShowTheModulesInDefaultOrder() {
-        let expectedModuleControllers = makeExpectedTabViewControllerRoots()
-        let presentedModules = rootNavigationTabControllers().compactMap({ $0.topViewController })
-        let expectedTabBarItems: [UITabBarItem] = expectedModuleControllers.map({ $0.tabBarItem })
-        let actualTabBarItems: [UITabBarItem] = rootNavigationTabControllers().compactMap({ $0.tabBarItem })
         
-        XCTAssertEqual(expectedModuleControllers, presentedModules)
+        let rootNavigationTabControllers = context.tabModule.capturedTabModules.compactMap({ $0 as? UINavigationController })
+        let expectedModuleControllers = moduleOrderingPolicy.producedModules
+        
+        let expectedTabBarItems: [UITabBarItem] = expectedModuleControllers.map({ $0.tabBarItem })
+        let actualTabBarItems: [UITabBarItem] = rootNavigationTabControllers.compactMap({ $0.tabBarItem })
+        
+        XCTAssertEqual(expectedModuleControllers, rootNavigationTabControllers)
         XCTAssertEqual(expectedTabBarItems, actualTabBarItems)
     }
     

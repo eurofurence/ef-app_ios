@@ -36,13 +36,21 @@ class DirectorBuilder {
     private var eventDetailModuleProviding: EventDetailModuleProviding
     private var urlOpener: URLOpener
     private var notificationHandling: ApplicationNotificationHandling
+    private var orderingPolicy: ModuleOrderingPolicy
 
     init() {
+        struct DummyModuleOrderingPolicy: ModuleOrderingPolicy {
+            func order(modules: [UIViewController]) -> [UIViewController] {
+                return modules
+            }
+        }
+
         animate = true
         windowWireframe = PhoneWindowWireframe.shared
         navigationControllerFactory = PhoneNavigationControllerFactory()
         tabModuleProviding = PhoneTabModuleFactory()
 
+        orderingPolicy = DummyModuleOrderingPolicy()
         rootModuleProviding = RootModuleBuilder().build()
         tutorialModuleProviding = TutorialModuleBuilder().build()
         preloadModuleProviding = PreloadModuleBuilder().build()
@@ -77,6 +85,12 @@ class DirectorBuilder {
     @discardableResult
     func withAnimations(_ animate: Bool) -> DirectorBuilder {
         self.animate = animate
+        return self
+    }
+
+    @discardableResult
+    func with(_ orderingPolicy: ModuleOrderingPolicy) -> DirectorBuilder {
+        self.orderingPolicy = orderingPolicy
         return self
     }
 
@@ -228,6 +242,7 @@ class DirectorBuilder {
         return ApplicationDirector(animate: animate,
                                    linkLookupService: linkLookupService,
                                    urlOpener: urlOpener,
+                                   orderingPolicy: orderingPolicy,
                                    webModuleProviding: webModuleProviding,
                                    windowWireframe: windowWireframe,
                                    navigationControllerFactory: navigationControllerFactory,

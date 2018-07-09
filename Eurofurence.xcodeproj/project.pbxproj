@@ -236,6 +236,7 @@
 		CA063B3E20F25EF600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithUnsuccessfulSync_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B3D20F25EF600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithUnsuccessfulSync_DirectorShould.swift */; };
 		CA063B4020F2869600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithAnnouncement_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B3F20F2869600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithAnnouncement_DirectorShould.swift */; };
 		CA063B4220F2929300241CC9 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B4120F2929300241CC9 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift */; };
+		CA063B4420F3862500241CC9 /* ModuleOrderingPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA063B4320F3862500241CC9 /* ModuleOrderingPolicy.swift */; };
 		CA08157820D3865600F750D4 /* NavigationBarViewExtensionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */; };
 		CA08157A20D3877700F750D4 /* FoundationShortFormDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */; };
 		CA08157D20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08157C20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift */; };
@@ -1449,6 +1450,7 @@
 		CA063B3D20F25EF600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithUnsuccessfulSync_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToHandleNotification_ThatConcludesWithUnsuccessfulSync_DirectorShould.swift; sourceTree = "<group>"; };
 		CA063B3F20F2869600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithAnnouncement_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToHandleNotification_ThatConcludesWithAnnouncement_DirectorShould.swift; sourceTree = "<group>"; };
 		CA063B4120F2929300241CC9 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA063B4320F3862500241CC9 /* ModuleOrderingPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleOrderingPolicy.swift; sourceTree = "<group>"; };
 		CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewExtensionContainer.swift; sourceTree = "<group>"; };
 		CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationShortFormDateFormatter.swift; sourceTree = "<group>"; };
 		CA08157C20D3D47E00F750D4 /* WhenSyncCompletesWithConferenceDays_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncCompletesWithConferenceDays_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -3619,6 +3621,7 @@
 				CAD3BDBE205AA69600C91E6E /* LinkLookupService.swift */,
 				CAD3BDC82061382000C91E6E /* URLOpener.swift */,
 				CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */,
+				CA063B4320F3862500241CC9 /* ModuleOrderingPolicy.swift */,
 			);
 			path = Director;
 			sourceTree = "<group>";
@@ -6831,6 +6834,7 @@
 				CA2761BF20E02B93000E52AC /* CollectThemAllPresenter.swift in Sources */,
 				CAEAEC0A1FE06FA500C0EE7C /* PhoneMessageDetailSceneFactory.swift in Sources */,
 				CACF1EC620B6C31000D904B5 /* ImagesCache.swift in Sources */,
+				CA063B4420F3862500241CC9 /* ModuleOrderingPolicy.swift in Sources */,
 				CA250DE620D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift in Sources */,
 				CAEAEC0E1FE07AD700C0EE7C /* MessageBubbleBackgroundView.swift in Sources */,
 				CA6EC48B2051CDC800402894 /* KnowledgeDetailViewController.swift in Sources */,
