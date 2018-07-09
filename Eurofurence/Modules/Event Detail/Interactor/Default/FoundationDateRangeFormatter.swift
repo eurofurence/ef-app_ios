@@ -14,8 +14,7 @@ struct FoundationDateRangeFormatter: DateRangeFormatter {
     private let formatter = DateIntervalFormatter()
 
     private init() {
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
+        formatter.dateTemplate = "E, d MMM HH:mm"
     }
 
     func string(from startDate: Date, to endDate: Date) -> String {
