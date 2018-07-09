@@ -43,6 +43,10 @@ class DirectorBuilder {
             func order(modules: [UIViewController]) -> [UIViewController] {
                 return modules
             }
+
+            func saveOrder(_ modules: [UIViewController]) {
+
+            }
         }
 
         animate = true

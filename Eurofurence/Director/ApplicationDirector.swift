@@ -31,6 +31,20 @@ class ApplicationDirector: ExternalContentHandler,
 
     }
 
+    private class SaveTabOrderWhenCustomizationFinishes: NSObject, UITabBarControllerDelegate {
+
+        private let orderingPolicy: ModuleOrderingPolicy
+
+        init(orderingPolicy: ModuleOrderingPolicy) {
+            self.orderingPolicy = orderingPolicy
+        }
+
+        func tabBarController(_ tabBarController: UITabBarController, didEndCustomizing viewControllers: [UIViewController], changed: Bool) {
+            orderingPolicy.saveOrder(viewControllers)
+        }
+
+    }
+
     private let animate: Bool
     private let navigationControllerFactory: NavigationControllerFactory
     private let linkLookupService: LinkLookupService
@@ -69,6 +83,8 @@ class ApplicationDirector: ExternalContentHandler,
     private var mapsModule: UIViewController?
 
     private var tabController: UITabBarController?
+
+    private let saveTabOrder: SaveTabOrderWhenCustomizationFinishes
 
     init(animate: Bool,
          linkLookupService: LinkLookupService,
@@ -124,6 +140,8 @@ class ApplicationDirector: ExternalContentHandler,
         self.announcementDetailModuleProviding = announcementDetailModuleProviding
         self.eventDetailModuleProviding = eventDetailModuleProviding
         self.notificationHandling = notificationHandling
+
+        saveTabOrder = SaveTabOrderWhenCustomizationFinishes(orderingPolicy: orderingPolicy)
 
         rootNavigationController = navigationControllerFactory.makeNavigationController()
         rootNavigationController.delegate = rootNavigationControllerDelegate
@@ -386,6 +404,7 @@ class ApplicationDirector: ExternalContentHandler,
         let orderedControllers = orderingPolicy.order(modules: moduleControllers)
         let tabModule = tabModuleProviding.makeTabModule(orderedControllers)
         tabController = tabModule
+        tabModule.delegate = saveTabOrder
 
         rootNavigationController.setViewControllers([tabModule], animated: animate)
     }

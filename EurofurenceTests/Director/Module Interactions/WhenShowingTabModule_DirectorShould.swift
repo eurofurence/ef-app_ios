@@ -17,6 +17,11 @@ class FakeModuleOrderingPolicy: ModuleOrderingPolicy {
         return producedModules
     }
     
+    private(set) var capturedModulesToSave = [UIViewController]()
+    func saveOrder(_ modules: [UIViewController]) {
+        capturedModulesToSave = modules
+    }
+    
 }
 
 extension Array {
@@ -49,6 +54,17 @@ class WhenShowingTabModule_DirectorShould: XCTestCase {
         
         XCTAssertEqual(expectedModuleControllers, rootNavigationTabControllers)
         XCTAssertEqual(expectedTabBarItems, actualTabBarItems)
+    }
+    
+    func testTellThePolicyToSaveTabOrderWhenEditingFinishes() {
+        let context = ApplicationDirectorTestBuilder().build()
+        let moduleOrderingPolicy = context.moduleOrderingPolicy
+        context.navigateToTabController()
+        let rootNavigationTabControllers = context.tabModule.capturedTabModules.compactMap({ $0 as? UINavigationController })
+        let tabBarController = context.tabModule.stubInterface
+        tabBarController.delegate?.tabBarController?(tabBarController, didEndCustomizing: rootNavigationTabControllers, changed: true)
+        
+        XCTAssertEqual(rootNavigationTabControllers, moduleOrderingPolicy.capturedModulesToSave)
     }
     
 }
