@@ -10,12 +10,27 @@ import UIKit
 
 class RestorationIdentifierOrderingPolicy: ModuleOrderingPolicy {
 
+    private let userDefaults = UserDefaults.standard
+    private struct Keys {
+        static let tabOrderKey = "EFModuleRestorationIdentifiers"
+    }
+
     func order(modules: [UIViewController]) -> [UIViewController] {
-        return modules
+        guard let order = userDefaults.stringArray(forKey: Keys.tabOrderKey) else { return modules }
+
+        return modules.sorted(by: { (first, second) -> Bool in
+            guard let firstIdentifier = first.restorationIdentifier,
+                  let secondIdentifier = second.restorationIdentifier,
+                  let firstIndex = order.index(of: firstIdentifier),
+                  let secondIndex = order.index(of: secondIdentifier) else { return false }
+
+            return firstIndex < secondIndex
+        })
     }
 
     func saveOrder(_ modules: [UIViewController]) {
-
+        let restorationIdentifiers = modules.compactMap({ $0.restorationIdentifier })
+        userDefaults.setValue(restorationIdentifiers, forKey: Keys.tabOrderKey)
     }
 
 }

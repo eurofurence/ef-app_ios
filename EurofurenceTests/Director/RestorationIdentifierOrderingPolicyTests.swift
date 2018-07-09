@@ -19,4 +19,21 @@ class RestorationIdentifierOrderingPolicyTests: XCTestCase {
         XCTAssertEqual(modules, ordered)
     }
     
+    func testMaintainOrderBetweenReloads() {
+        var policy = RestorationIdentifierOrderingPolicy()
+        let first = UIViewController()
+        first.restorationIdentifier = .random
+        let second = UIViewController()
+        second.restorationIdentifier = .random
+        let third = UIViewController()
+        third.restorationIdentifier = .random
+        let modules = [second, first, third]
+        let randomOrder = modules.randomized()
+        policy.saveOrder(randomOrder)
+        policy = RestorationIdentifierOrderingPolicy()
+        let ordered = policy.order(modules: modules)
+        
+        XCTAssertEqual(randomOrder, ordered)
+    }
+    
 }
