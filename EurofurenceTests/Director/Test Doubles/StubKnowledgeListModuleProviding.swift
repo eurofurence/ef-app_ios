@@ -11,7 +11,7 @@ import UIKit.UIViewController
 
 class StubKnowledgeListModuleProviding: KnowledgeListModuleProviding {
     
-    let stubInterface = UIViewController()
+    let stubInterface = FakeViewController()
     private(set) var delegate: KnowledgeListModuleDelegate?
     func makeKnowledgeListModule(_ delegate: KnowledgeListModuleDelegate) -> UIViewController {
         self.delegate = delegate

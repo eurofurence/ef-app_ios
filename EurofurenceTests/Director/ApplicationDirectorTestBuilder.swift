@@ -11,7 +11,7 @@ import UIKit.UIViewController
 
 class StubCollectThemAllModuleProviding: CollectThemAllModuleProviding {
     
-    let stubInterface = UIViewController()
+    let stubInterface = FakeViewController()
     func makeCollectThemAllModule() -> UIViewController {
         return stubInterface
     }
@@ -20,7 +20,7 @@ class StubCollectThemAllModuleProviding: CollectThemAllModuleProviding {
 
 class StubMapsModuleProviding: MapsModuleProviding {
     
-    let stubInterface = UIViewController()
+    let stubInterface = FakeViewController()
     private(set) var delegate: MapsModuleDelegate?
     func makeMapsModule(_ delegate: MapsModuleDelegate) -> UIViewController {
         self.delegate = delegate

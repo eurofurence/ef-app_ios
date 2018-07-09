@@ -395,12 +395,18 @@ class ApplicationDirector: ExternalContentHandler,
         mapsNavigationController.setViewControllers([mapsModule], animated: animate)
         mapsNavigationController.tabBarItem = mapsModule.tabBarItem
 
-        let moduleControllers: [UIViewController] = [newsNavigationController,
-                                                     scheduleNavigationController,
-                                                     dealersNavigationController,
-                                                     collectThemAllNavigationController,
-                                                     knowledgeNavigationController,
-                                                     mapsNavigationController]
+        let moduleControllers: [UINavigationController] = [newsNavigationController,
+                                                           scheduleNavigationController,
+                                                           dealersNavigationController,
+                                                           collectThemAllNavigationController,
+                                                           knowledgeNavigationController,
+                                                           mapsNavigationController]
+
+        moduleControllers.forEach { (navigationController) in
+            guard let identifier = navigationController.topViewController?.restorationIdentifier else { return }
+            navigationController.restorationIdentifier = "NAV_" + identifier
+        }
+
         let orderedControllers = orderingPolicy.order(modules: moduleControllers)
         let tabModule = tabModuleProviding.makeTabModule(orderedControllers)
         tabController = tabModule

@@ -11,7 +11,7 @@ import UIKit.UIViewController
 
 class StubNewsModuleFactory: NewsModuleProviding {
     
-    let stubInterface = UIViewController()
+    let stubInterface = FakeViewController()
     private(set) var delegate: NewsModuleDelegate?
     func makeNewsModule(_ delegate: NewsModuleDelegate) -> UIViewController {
         self.delegate = delegate

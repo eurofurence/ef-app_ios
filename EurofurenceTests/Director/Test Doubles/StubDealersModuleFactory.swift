@@ -11,7 +11,7 @@ import UIKit.UIViewController
 
 class StubDealersModuleFactory: DealersModuleProviding {
     
-    let stubInterface = UIViewController()
+    let stubInterface = FakeViewController()
     fileprivate var delegate: DealersModuleDelegate?
     func makeDealersModule(_ delegate: DealersModuleDelegate) -> UIViewController {
         self.delegate = delegate

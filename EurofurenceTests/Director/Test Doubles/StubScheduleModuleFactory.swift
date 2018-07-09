@@ -11,7 +11,7 @@ import UIKit.UIViewController
 
 class StubScheduleModuleFactory: ScheduleModuleProviding {
 
-    let stubInterface = UIViewController()
+    let stubInterface = FakeViewController()
     fileprivate var delegate: ScheduleModuleDelegate?
     func makeScheduleModule(_ delegate: ScheduleModuleDelegate) -> UIViewController {
         self.delegate = delegate

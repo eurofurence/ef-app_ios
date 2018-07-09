@@ -52,8 +52,12 @@ class WhenShowingTabModule_DirectorShould: XCTestCase {
         let expectedTabBarItems: [UITabBarItem] = expectedModuleControllers.map({ $0.tabBarItem })
         let actualTabBarItems: [UITabBarItem] = rootNavigationTabControllers.compactMap({ $0.tabBarItem })
         
+        let expectedRestorationIdentifiers = rootNavigationTabControllers.compactMap({ $0.topViewController?.restorationIdentifier }).map({ "NAV_" + $0 })
+        let actualRestorationIdentifiers = rootNavigationTabControllers.compactMap({ $0.restorationIdentifier })
+        
         XCTAssertEqual(expectedModuleControllers, rootNavigationTabControllers)
         XCTAssertEqual(expectedTabBarItems, actualTabBarItems)
+        XCTAssertEqual(expectedRestorationIdentifiers, actualRestorationIdentifiers)
     }
     
     func testTellThePolicyToSaveTabOrderWhenEditingFinishes() {
