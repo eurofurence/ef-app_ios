@@ -13,12 +13,14 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
     
     var capturingJSONSession: CapturingJSONSession!
     var registration: EurofurenceFCMDeviceRegistration!
+    var urlProviding: StubV2ApiUrlProviding!
     
     override func setUp() {
         super.setUp()
         
         capturingJSONSession = CapturingJSONSession()
-        registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession)
+        urlProviding = StubV2ApiUrlProviding()
+        registration = EurofurenceFCMDeviceRegistration(JSONSession: capturingJSONSession, urlProviding: urlProviding)
     }
     
     private func performRegistration(_ fcm: String = "",
@@ -30,7 +32,7 @@ class EurofurenceFCMDeviceRegistrationTests: XCTestCase {
     
     func testRegisteringTheFCMTokenSubmitsRequestToFCMRegistrationURL() {
         performRegistration()
-        let expectedURL = "https://app.eurofurence.org/api/v2/PushNotifications/FcmDeviceRegistration"
+        let expectedURL = urlProviding.url + "PushNotifications/FcmDeviceRegistration"
 
         XCTAssertEqual(expectedURL, capturingJSONSession.postedURL)
     }

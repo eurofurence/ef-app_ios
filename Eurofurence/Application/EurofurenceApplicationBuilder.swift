@@ -40,7 +40,7 @@ class EurofurenceApplicationBuilder {
         let buildConfiguration = PreprocessorBuildConfigurationProviding()
         let apiUrl = BuildConfigurationV2ApiUrlProviding(buildConfiguration)
 
-        let fcmRegistration = EurofurenceFCMDeviceRegistration(JSONSession: jsonSession)
+        let fcmRegistration = EurofurenceFCMDeviceRegistration(JSONSession: jsonSession, urlProviding: apiUrl)
         remoteNotificationsTokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfiguration,
                                                                                             appVersion: BundleAppVersionProviding(),
                                                                                             firebaseAdapter: FirebaseMessagingAdapter(),

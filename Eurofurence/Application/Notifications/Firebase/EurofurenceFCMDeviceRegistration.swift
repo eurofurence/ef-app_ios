@@ -11,6 +11,8 @@ import Foundation
 struct EurofurenceFCMDeviceRegistration: FCMDeviceRegistration {
 
     var JSONSession: JSONSession
+    var urlProviding: V2ApiUrlProviding
+
     private let jsonEncoder = JSONEncoder()
 
     func registerFCM(_ fcm: String,
@@ -20,7 +22,7 @@ struct EurofurenceFCMDeviceRegistration: FCMDeviceRegistration {
         let registrationRequest = Request(DeviceId: fcm, Topics: topics.map({ $0.description }))
         let jsonData = try! jsonEncoder.encode(registrationRequest)
 
-        let registrationURL = "https://app.eurofurence.org/api/v2/PushNotifications/FcmDeviceRegistration"
+        let registrationURL = urlProviding.url + "PushNotifications/FcmDeviceRegistration"
         var request = JSONRequest(url: registrationURL, body: jsonData)
 
         if let token = authenticationToken {
