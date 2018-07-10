@@ -10,9 +10,10 @@ import ReactiveSwift
 import EVReflection
 import Firebase
 import Whisper
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
 	var window: UIWindow?
     lazy var app = EurofurenceApplication.shared
@@ -25,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ScreenshotAssistant.prepare()
         FirebaseApp.configure()
         installDebugModuleIntoWindow()
+        UNUserNotificationCenter.current().delegate = self
 
 //        try! ContextResolver.container.bootstrap()
 //        try! ServiceResolver.container.bootstrap()
@@ -117,6 +119,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            }
 //        }
 	}
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Swift.Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
 
 }
 
