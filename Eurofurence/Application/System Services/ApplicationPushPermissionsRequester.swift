@@ -7,6 +7,7 @@
 //
 
 import UserNotifications
+import UIKit
 
 struct ApplicationPushPermissionsRequester: PushPermissionsRequester {
 
@@ -17,6 +18,7 @@ struct ApplicationPushPermissionsRequester: PushPermissionsRequester {
     }
 
     func requestPushPermissions() {
+        UIApplication.shared.registerForRemoteNotifications()
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (_, error) in
             if let error = error {
                 print("Failed to register for notifications with error: \(error)")
