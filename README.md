@@ -12,8 +12,8 @@ This app uses the [Eurofurence API](https://app.eurofurence.org/swagger/v2/ui/) 
 
 To build the app, you'll need:
 
-- Xcode 8.3.2
-- Cocoapods 1.3.0.beta.2
+- Xcode 9.4.1
+- Cocoapods 1.5.3
 
 Once you have the tools, to build the app from source you'll need to:
 
@@ -22,10 +22,6 @@ Once you have the tools, to build the app from source you'll need to:
 - Open `Eurofurence.xcworkspace`, activate the Eurofurence scheme if it isn't already
 - Build and run the scheme on the simulator of your choice
 - Sit back with a cold one 🍻
-
-## Test Coverage
-
-Tests are being backfilled within the project as work is being completed, with the intent to revisit the app at a later point to test-drive a new solution for longer term maintainability.
 
 ## Contributing
 
