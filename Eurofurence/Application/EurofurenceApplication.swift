@@ -118,6 +118,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                                         collectThemAllRequestFactory: collectThemAllRequestFactory,
                                         credentialStore: credentialStore)
         maps = Maps(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository)
+
+        fetchPrivateMessages { (_) in }
     }
 
     func handleRemoteNotification(payload: [String: String], completionHandler: @escaping (ApplicationPushActionResult) -> Void) {
