@@ -71,7 +71,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
          collectThemAllRequestFactory: CollectThemAllRequestFactory,
          longRunningTaskManager: LongRunningTaskManager,
          notificationsService: NotificationsService,
-         hoursDateFormatter: HoursDateFormatter) {
+         hoursDateFormatter: HoursDateFormatter,
+         mapCoordinateRender: MapCoordinateRender) {
         self.userPreferences = userPreferences
         self.dataStore = dataStore
         self.clock = clock
@@ -112,7 +113,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         imageDownloader = ImageDownloader(eventBus: eventBus, imageAPI: imageAPI, imageRepository: imageRepository)
         significantTimeObserver = SignificantTimeObserver(significantTimeChangeAdapter: significantTimeChangeAdapter,
                                                           eventBus: eventBus)
-        dealers = Dealers(eventBus: eventBus, dataStore: dataStore, imageCache: imageCache)
+        dealers = Dealers(eventBus: eventBus, dataStore: dataStore, imageCache: imageCache, mapCoordinateRender: mapCoordinateRender)
         urlHandler = URLHandler(eventBus: eventBus, urlOpener: urlOpener)
         collectThemAll = CollectThemAll(eventBus: eventBus,
                                         collectThemAllRequestFactory: collectThemAllRequestFactory,

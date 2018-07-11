@@ -84,11 +84,18 @@ class Dealers: DealersService {
     private var dealerModels = [Dealer2]()
     private var models = [APIDealer]()
     private let eventBus: EventBus
+    private let dataStore: EurofurenceDataStore
     private let imageCache: ImagesCache
+    private let mapCoordinateRender: MapCoordinateRender
 
-    init(eventBus: EventBus, dataStore: EurofurenceDataStore, imageCache: ImagesCache) {
+    init(eventBus: EventBus,
+         dataStore: EurofurenceDataStore,
+         imageCache: ImagesCache,
+         mapCoordinateRender: MapCoordinateRender) {
         self.eventBus = eventBus
+        self.dataStore = dataStore
         self.imageCache = imageCache
+        self.mapCoordinateRender = mapCoordinateRender
 
         eventBus.subscribe(consumer: UpdateDealersWhenSyncOccurs(dealers: self))
 
@@ -112,9 +119,27 @@ class Dealers: DealersService {
         completionHandler(iconData)
     }
 
+    private func fetchMapData(for identifier: Dealer2.Identifier) -> (map: APIMap, entry: APIMap.Entry)? {
+        guard let maps = dataStore.getSavedMaps() else { return nil }
+
+        for map in maps {
+            guard let entry = map.entries.first(where: { (entry) -> Bool in
+                return entry.links.contains(where: { $0.target == identifier.rawValue })
+            }) else { continue }
+
+            return (map: map, entry: entry)
+        }
+
+        return nil
+    }
+
     func fetchExtendedDealerData(for dealer: Dealer2.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
         guard let dealerModel = dealerModels.first(where: { $0.identifier == dealer }) else { return }
         guard let model = fetchDealer(dealer) else { return }
+
+        if let (map, entry) = fetchMapData(for: dealer), let mapData = imageCache.cachedImageData(for: map.imageIdentifier) {
+            mapCoordinateRender.render(x: entry.x, y: entry.y, radius: entry.tapRadius, onto: mapData)
+        }
 
         var artistImagePNGData: Data?
         if let artistImageId = model.artistImageId {

@@ -186,6 +186,7 @@ class ApplicationTestBuilder {
         var longRunningTaskManager: FakeLongRunningTaskManager
         var notificationsService: CapturingNotificationsService
         var hoursDateFormatter: FakeHoursDateFormatter
+        var mapCoordinateRender: CapturingMapCoordinateRender
         
         var authenticationToken: String? {
             return capturingCredentialStore.persistedCredential?.authenticationToken
@@ -395,6 +396,7 @@ class ApplicationTestBuilder {
         let longRunningTaskManager = FakeLongRunningTaskManager()
         let notificationsService = CapturingNotificationsService()
         let hoursDateFormatter = FakeHoursDateFormatter()
+        let mapCoordinateRender = CapturingMapCoordinateRender()
         let app = EurofurenceApplicationBuilder()
             .with(stubClock)
             .with(capturingCredentialStore)
@@ -417,6 +419,7 @@ class ApplicationTestBuilder {
             .with(longRunningTaskManager)
             .with(notificationsService)
             .with(hoursDateFormatter)
+            .with(mapCoordinateRender)
             .build()
         
         return Context(application: app,
@@ -436,7 +439,8 @@ class ApplicationTestBuilder {
                        urlOpener: urlOpener,
                        longRunningTaskManager: longRunningTaskManager,
                        notificationsService: notificationsService,
-                       hoursDateFormatter: hoursDateFormatter)
+                       hoursDateFormatter: hoursDateFormatter,
+                       mapCoordinateRender: mapCoordinateRender)
     }
     
 }

@@ -31,8 +31,15 @@ class EurofurenceApplicationBuilder {
     private var longRunningTaskManager: LongRunningTaskManager
     private var notificationsService: NotificationsService
     private var hoursDateFormatter: HoursDateFormatter
+    private var mapCoordinateRender: MapCoordinateRender
 
     init() {
+        struct DummyMapCoordinateRender: MapCoordinateRender {
+            func render(x: Int, y: Int, radius: Int, onto data: Data) {
+
+            }
+        }
+
         userPreferences = UserDefaultsPreferences()
         dataStore = CoreDataEurofurenceDataStore()
 
@@ -64,6 +71,7 @@ class EurofurenceApplicationBuilder {
         longRunningTaskManager = CocoaTouchLongRunningTaskManager()
         notificationsService = UserNotificationsNotificationService()
         hoursDateFormatter = FoundationHoursDateFormatter.shared
+        mapCoordinateRender = DummyMapCoordinateRender()
     }
 
     @discardableResult
@@ -192,6 +200,12 @@ class EurofurenceApplicationBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ mapCoordinateRender: MapCoordinateRender) -> EurofurenceApplicationBuilder {
+        self.mapCoordinateRender = mapCoordinateRender
+        return self
+    }
+
     func build() -> EurofurenceApplicationProtocol {
         return EurofurenceApplication(userPreferences: userPreferences,
                                       dataStore: dataStore,
@@ -213,7 +227,8 @@ class EurofurenceApplicationBuilder {
                                       collectThemAllRequestFactory: collectThemAllRequestFactory,
                                       longRunningTaskManager: longRunningTaskManager,
                                       notificationsService: notificationsService,
-                                      hoursDateFormatter: hoursDateFormatter)
+                                      hoursDateFormatter: hoursDateFormatter,
+                                      mapCoordinateRender: mapCoordinateRender)
     }
 
 }
