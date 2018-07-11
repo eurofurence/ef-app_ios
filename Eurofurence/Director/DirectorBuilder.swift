@@ -37,8 +37,13 @@ class DirectorBuilder {
     private var urlOpener: URLOpener
     private var notificationHandling: ApplicationNotificationHandling
     private var orderingPolicy: ModuleOrderingPolicy
+    private var autoRouteToContentStateProviding: AutoRouteToContentStateProviding
 
     init() {
+        struct DummyAutoRouteToContentStateProviding: AutoRouteToContentStateProviding {
+            var autoRoute: Bool = true
+        }
+
         animate = true
         windowWireframe = PhoneWindowWireframe.shared
         navigationControllerFactory = PhoneNavigationControllerFactory()
@@ -68,6 +73,7 @@ class DirectorBuilder {
         webModuleProviding = SafariWebModuleProviding()
         urlOpener = AppURLOpener()
         notificationHandling = EurofurenceApplication.shared
+        autoRouteToContentStateProviding = DummyAutoRouteToContentStateProviding()
     }
 
     @discardableResult
@@ -232,10 +238,17 @@ class DirectorBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ autoRouteToContentStateProviding: AutoRouteToContentStateProviding) -> DirectorBuilder {
+        self.autoRouteToContentStateProviding = autoRouteToContentStateProviding
+        return self
+    }
+
     func build() -> ApplicationDirector {
         return ApplicationDirector(animate: animate,
                                    linkLookupService: linkLookupService,
                                    urlOpener: urlOpener,
+                                   autoRouteToContentStateProviding: autoRouteToContentStateProviding,
                                    orderingPolicy: orderingPolicy,
                                    webModuleProviding: webModuleProviding,
                                    windowWireframe: windowWireframe,

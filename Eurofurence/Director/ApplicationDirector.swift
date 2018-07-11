@@ -49,6 +49,7 @@ class ApplicationDirector: ExternalContentHandler,
     private let navigationControllerFactory: NavigationControllerFactory
     private let linkLookupService: LinkLookupService
     private let urlOpener: URLOpener
+    private let autoRouteToContentStateProviding: AutoRouteToContentStateProviding
     private let orderingPolicy: ModuleOrderingPolicy
     private let webModuleProviding: WebModuleProviding
     private let windowWireframe: WindowWireframe
@@ -89,6 +90,7 @@ class ApplicationDirector: ExternalContentHandler,
     init(animate: Bool,
          linkLookupService: LinkLookupService,
          urlOpener: URLOpener,
+         autoRouteToContentStateProviding: AutoRouteToContentStateProviding,
          orderingPolicy: ModuleOrderingPolicy,
          webModuleProviding: WebModuleProviding,
          windowWireframe: WindowWireframe,
@@ -117,6 +119,7 @@ class ApplicationDirector: ExternalContentHandler,
         self.navigationControllerFactory = navigationControllerFactory
         self.linkLookupService = linkLookupService
         self.urlOpener = urlOpener
+        self.autoRouteToContentStateProviding = autoRouteToContentStateProviding
         self.orderingPolicy = orderingPolicy
         self.webModuleProviding = webModuleProviding
         self.windowWireframe = windowWireframe
@@ -172,7 +175,8 @@ class ApplicationDirector: ExternalContentHandler,
 
             case .announcement(let announcement):
                 let module = self.announcementDetailModuleProviding.makeAnnouncementDetailModule(for: announcement)
-                if let newsNavigationController = self.newsController?.navigationController,
+                if self.autoRouteToContentStateProviding.autoRoute,
+                   let newsNavigationController = self.newsController?.navigationController,
                    let tabBarController = self.tabController,
                    let index = tabBarController.viewControllers?.index(of: newsNavigationController) {
                     tabBarController.selectedIndex = index

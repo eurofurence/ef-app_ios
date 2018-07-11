@@ -70,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //    }
 
 	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print("Current state: \(application.applicationState.rawValue)")
         director?.handleRemoteNotification(userInfo, completionHandler: completionHandler)
 
 //        if let contentTypeString = userInfo[NotificationUserInfoKey.ContentType.rawValue] as? String,

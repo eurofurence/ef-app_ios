@@ -134,6 +134,7 @@ class ApplicationDirectorTestBuilder {
     private let linkRouter: StubLinkRouter
     private let webModuleProviding: StubWebMobuleProviding
     private let urlOpener: CapturingURLOpener
+    private var autoRouteToContentStateProviding: AutoRouteToContentStateProviding
     
     init() {
         moduleOrderingPolicy = FakeModuleOrderingPolicy()
@@ -160,6 +161,13 @@ class ApplicationDirectorTestBuilder {
         linkRouter = StubLinkRouter()
         webModuleProviding = StubWebMobuleProviding()
         urlOpener = CapturingURLOpener()
+        autoRouteToContentStateProviding = StubAutoRouteToContentStateProviding(autoRoute: true)
+    }
+    
+    @discardableResult
+    func with(_ autoRouteToContentStateProviding: AutoRouteToContentStateProviding) -> ApplicationDirectorTestBuilder {
+        self.autoRouteToContentStateProviding = autoRouteToContentStateProviding
+        return self
     }
     
     func build() -> Context {
@@ -193,6 +201,7 @@ class ApplicationDirectorTestBuilder {
         builder.with(webModuleProviding)
         builder.with(urlOpener)
         builder.with(notificationHandling)
+        builder.with(autoRouteToContentStateProviding)
         
         let director = builder.build()
         
