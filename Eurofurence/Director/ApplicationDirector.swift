@@ -281,6 +281,7 @@ class ApplicationDirector: ExternalContentHandler,
         loginModule.modalPresentationStyle = .formSheet
 
         let navigationController = UINavigationController(rootViewController: loginModule)
+        navigationController.modalPresentationStyle = .formSheet
         tabController?.present(navigationController, animated: animate)
     }
 

@@ -43,6 +43,7 @@ class WhenShowingMessages_DirectorShould: XCTestCase {
         let navController = context.tabModule.stubInterface.capturedPresentedViewController as? UINavigationController
         
         XCTAssertEqual(navController?.topViewController, context.loginModule.stubInterface)
+        XCTAssertEqual(navController?.modalPresentationStyle, .formSheet)
     }
     
     func testUseFormSheetPresentationWhenRequestingUserResolution() {
