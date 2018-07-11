@@ -125,8 +125,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        director?.handleRemoteNotification(response.notification.request.content.userInfo,
-                                           completionHandler: { (_) in completionHandler() })
+        director?.openNotification(response.notification.request.content.userInfo, completionHandler: completionHandler)
     }
 
 }

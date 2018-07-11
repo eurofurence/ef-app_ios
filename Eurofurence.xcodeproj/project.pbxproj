@@ -503,6 +503,7 @@
 		CA2A585A20F6713E002C69B6 /* AutoRouteToContentStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A585920F6713E002C69B6 /* AutoRouteToContentStateProviding.swift */; };
 		CA2A585C20F67165002C69B6 /* StubAutoRouteToContentStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A585B20F67165002C69B6 /* StubAutoRouteToContentStateProviding.swift */; };
 		CA2A585E20F672F0002C69B6 /* AutoRouteToContentWhenApplicationInactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A585D20F672F0002C69B6 /* AutoRouteToContentWhenApplicationInactive.swift */; };
+		CA2A586220F683DF002C69B6 /* WhenOpeningNotification_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586120F683DF002C69B6 /* WhenOpeningNotification_DirectorShould.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
 		CA2B4FA61F1EA1B300F007E1 /* ApplicationTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */; };
 		CA2B4FA81F1EA72A00F007E1 /* LoginArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */; };
@@ -1724,6 +1725,7 @@
 		CA2A585920F6713E002C69B6 /* AutoRouteToContentStateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRouteToContentStateProviding.swift; sourceTree = "<group>"; };
 		CA2A585B20F67165002C69B6 /* StubAutoRouteToContentStateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAutoRouteToContentStateProviding.swift; sourceTree = "<group>"; };
 		CA2A585D20F672F0002C69B6 /* AutoRouteToContentWhenApplicationInactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRouteToContentWhenApplicationInactive.swift; sourceTree = "<group>"; };
+		CA2A586120F683DF002C69B6 /* WhenOpeningNotification_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenOpeningNotification_DirectorShould.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
 		CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationTestBuilder.swift; sourceTree = "<group>"; };
 		CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginArguments.swift; sourceTree = "<group>"; };
@@ -3322,10 +3324,11 @@
 		CA063B3620F2317D00241CC9 /* Notification Handling */ = {
 			isa = PBXGroup;
 			children = (
+				CA2A586120F683DF002C69B6 /* WhenOpeningNotification_DirectorShould.swift */,
+				CA2A585720F66FB0002C69B6 /* WhenToldToHandleAnnouncementNotification_WhenAppShouldNotShowNotificationContent.swift */,
 				CA063B3F20F2869600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithAnnouncement_DirectorShould.swift */,
 				CA063B3720F2318A00241CC9 /* WhenToldToHandleNotification_ThatConcludesWithSuccessfulSync_DirectorShould.swift */,
 				CA063B3D20F25EF600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithUnsuccessfulSync_DirectorShould.swift */,
-				CA2A585720F66FB0002C69B6 /* WhenToldToHandleAnnouncementNotification_WhenAppShouldNotShowNotificationContent.swift */,
 			);
 			path = "Notification Handling";
 			sourceTree = "<group>";
@@ -7415,6 +7418,7 @@
 				7820A6E91F1415B0004C0FB5 /* StoryboardAlertRouterTests.swift in Sources */,
 				CA89CBBE208531FB00570D54 /* AnnouncementComponentViewModel+RandomValueProviding.swift in Sources */,
 				CA6EC4822051CBE600402894 /* CapturingKnowledgeDetailScene.swift in Sources */,
+				CA2A586220F683DF002C69B6 /* WhenOpeningNotification_DirectorShould.swift in Sources */,
 				CA1B6F1D20DB843E00ADF414 /* WhenDealerDetailSceneLoads_DealerDetailPresenterShould.swift in Sources */,
 				CA63754E208CBB8600536BE2 /* FakeViewController.swift in Sources */,
 				CA6A8E0720E56DE5007536CD /* CapturingMapContentVisitor.swift in Sources */,

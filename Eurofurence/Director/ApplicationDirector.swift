@@ -156,6 +156,36 @@ class ApplicationDirector: ExternalContentHandler,
 
     // MARK: Public
 
+    func openNotification(_ payload: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
+        let castedPayloadKeysAndValues = payload.compactMap { (key, value) -> (String, String)? in
+            guard let stringKey = key as? String, let stringValue = value as? String else { return nil }
+            return (stringKey, stringValue)
+        }
+
+        let castedPayload = castedPayloadKeysAndValues.reduce(into: [String: String](), { $0[$1.0] = $1.1 })
+
+        notificationHandling.handleRemoteNotification(payload: castedPayload) { (result) in
+            switch result {
+            case .successfulSync:
+                completionHandler()
+
+            case .failedSync:
+                completionHandler()
+
+            case .announcement(let announcement):
+                let module = self.announcementDetailModuleProviding.makeAnnouncementDetailModule(for: announcement)
+                if  let newsNavigationController = self.newsController?.navigationController,
+                    let tabBarController = self.tabController,
+                    let index = tabBarController.viewControllers?.index(of: newsNavigationController) {
+                    tabBarController.selectedIndex = index
+                    newsNavigationController.pushViewController(module, animated: self.animate)
+                }
+
+                completionHandler()
+            }
+        }
+    }
+
     func handleRemoteNotification(_ payload: [AnyHashable: Any],
                                   completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         let castedPayloadKeysAndValues = payload.compactMap { (key, value) -> (String, String)? in
