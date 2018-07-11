@@ -125,6 +125,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         completionHandler([.alert, .badge, .sound])
     }
 
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        director?.handleRemoteNotification(response.notification.request.content.userInfo,
+                                           completionHandler: { (_) in completionHandler() })
+    }
+
 }
 
 // MARK: - Themeing
