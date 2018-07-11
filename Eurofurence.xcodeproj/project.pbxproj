@@ -502,6 +502,7 @@
 		CA2A585820F66FB0002C69B6 /* WhenToldToHandleAnnouncementNotification_WhenAppShouldNotShowNotificationContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A585720F66FB0002C69B6 /* WhenToldToHandleAnnouncementNotification_WhenAppShouldNotShowNotificationContent.swift */; };
 		CA2A585A20F6713E002C69B6 /* AutoRouteToContentStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A585920F6713E002C69B6 /* AutoRouteToContentStateProviding.swift */; };
 		CA2A585C20F67165002C69B6 /* StubAutoRouteToContentStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A585B20F67165002C69B6 /* StubAutoRouteToContentStateProviding.swift */; };
+		CA2A585E20F672F0002C69B6 /* AutoRouteToContentWhenApplicationInactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A585D20F672F0002C69B6 /* AutoRouteToContentWhenApplicationInactive.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
 		CA2B4FA61F1EA1B300F007E1 /* ApplicationTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */; };
 		CA2B4FA81F1EA72A00F007E1 /* LoginArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */; };
@@ -1722,6 +1723,7 @@
 		CA2A585720F66FB0002C69B6 /* WhenToldToHandleAnnouncementNotification_WhenAppShouldNotShowNotificationContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToHandleAnnouncementNotification_WhenAppShouldNotShowNotificationContent.swift; sourceTree = "<group>"; };
 		CA2A585920F6713E002C69B6 /* AutoRouteToContentStateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRouteToContentStateProviding.swift; sourceTree = "<group>"; };
 		CA2A585B20F67165002C69B6 /* StubAutoRouteToContentStateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAutoRouteToContentStateProviding.swift; sourceTree = "<group>"; };
+		CA2A585D20F672F0002C69B6 /* AutoRouteToContentWhenApplicationInactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRouteToContentWhenApplicationInactive.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
 		CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationTestBuilder.swift; sourceTree = "<group>"; };
 		CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginArguments.swift; sourceTree = "<group>"; };
@@ -3637,6 +3639,7 @@
 				CA063B4320F3862500241CC9 /* ModuleOrderingPolicy.swift */,
 				CA063B4720F3E27000241CC9 /* RestorationIdentifierOrderingPolicy.swift */,
 				CA2A585920F6713E002C69B6 /* AutoRouteToContentStateProviding.swift */,
+				CA2A585D20F672F0002C69B6 /* AutoRouteToContentWhenApplicationInactive.swift */,
 			);
 			path = Director;
 			sourceTree = "<group>";
@@ -6523,6 +6526,7 @@
 				CA283A5820E6E23200F7D195 /* LongRunningTaskManager.swift in Sources */,
 				78D7EEB81F196B30005372A9 /* BuildConfigurationProviding.swift in Sources */,
 				CA27618220DF932C000E52AC /* AspectRatioConstrainedImageView.swift in Sources */,
+				CA2A585E20F672F0002C69B6 /* AutoRouteToContentWhenApplicationInactive.swift in Sources */,
 				CA6375B2208E02E300536BE2 /* DealersScene.swift in Sources */,
 				CA30EAC41F2672BF0053DBF6 /* Message.swift in Sources */,
 				CAE8B0B720CA4E100029D4D6 /* LinkEntity+Adaptation.swift in Sources */,

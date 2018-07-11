@@ -40,10 +40,6 @@ class DirectorBuilder {
     private var autoRouteToContentStateProviding: AutoRouteToContentStateProviding
 
     init() {
-        struct DummyAutoRouteToContentStateProviding: AutoRouteToContentStateProviding {
-            var autoRoute: Bool = true
-        }
-
         animate = true
         windowWireframe = PhoneWindowWireframe.shared
         navigationControllerFactory = PhoneNavigationControllerFactory()
@@ -73,7 +69,7 @@ class DirectorBuilder {
         webModuleProviding = SafariWebModuleProviding()
         urlOpener = AppURLOpener()
         notificationHandling = EurofurenceApplication.shared
-        autoRouteToContentStateProviding = DummyAutoRouteToContentStateProviding()
+        autoRouteToContentStateProviding = AutoRouteToContentWhenApplicationInactive()
     }
 
     @discardableResult
