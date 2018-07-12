@@ -81,7 +81,7 @@ class Announcements {
     }
 
     private func isLastEditTimeAscending(_ first: APIAnnouncement, _ second: APIAnnouncement) -> Bool {
-        return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedAscending
+        return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedDescending
     }
 
     private func provideLatestData(to observer: AnnouncementsServiceObserver) {

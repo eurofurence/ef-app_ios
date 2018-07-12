@@ -227,7 +227,7 @@ class ApplicationTestBuilder {
         
         func expectedAnnouncements(from announcements: [APIAnnouncement]) -> [Announcement2] {
             return Announcement2.fromServerModels(announcements.sorted { (first, second) -> Bool in
-                return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedAscending
+                return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedDescending
             })
         }
         
