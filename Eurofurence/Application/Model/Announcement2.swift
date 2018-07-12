@@ -6,6 +6,8 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import Foundation
+
 struct Announcement2: Equatable {
 
     struct Identifier: Comparable, Equatable, Hashable, RawRepresentable {
@@ -31,6 +33,7 @@ struct Announcement2: Equatable {
     var identifier: Identifier
     var title: String
     var content: String
+    var date: Date
 
 }
 
@@ -44,6 +47,7 @@ extension Announcement2 {
         identifier = Announcement2.Identifier(serverModel.identifier)
         title = serverModel.title
         content = serverModel.content
+        date = serverModel.lastChangedDateTime
     }
 
 }

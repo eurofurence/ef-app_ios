@@ -62,7 +62,12 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, UISe
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        daysCollectionView?.collectionViewLayout.invalidateLayout()
+        layoutDaysCollectionView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        layoutDaysCollectionView()
     }
 
     // MARK: UISearchControllerDelegate
@@ -146,6 +151,10 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, UISe
 
     private func dayPickerDidSelectDay(_ index: Int) {
         delegate?.scheduleSceneDidSelectDay(at: index)
+    }
+
+    private func layoutDaysCollectionView() {
+        daysCollectionView?.collectionViewLayout.invalidateLayout()
     }
 
     private class Header: UITableViewHeaderFooterView, ScheduleEventGroupHeader {

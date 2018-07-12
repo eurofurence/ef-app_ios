@@ -234,7 +234,8 @@ class ApplicationTestBuilder {
         func expectedAnnouncement(from announcement: APIAnnouncement) -> Announcement2 {
             return Announcement2(identifier: Announcement2.Identifier(announcement.identifier),
                                  title: announcement.title,
-                                 content: announcement.content)
+                                 content: announcement.content,
+                                 date: announcement.lastChangedDateTime)
         }
         
         func makeExpectedEvent(from event: APIEvent, response: APISyncResponse) -> Event2 {

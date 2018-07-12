@@ -13,7 +13,8 @@ extension Announcement2: RandomValueProviding {
     static var random: Announcement2 {
         return Announcement2(identifier: .random,
                              title: .random,
-                             content: .random)
+                             content: .random,
+                             date: .random)
     }
     
 }
