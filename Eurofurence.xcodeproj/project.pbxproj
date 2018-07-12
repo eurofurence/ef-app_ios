@@ -504,6 +504,7 @@
 		CA2A586920F69EA1002C69B6 /* CapturingMapCoordinateRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586820F69EA1002C69B6 /* CapturingMapCoordinateRender.swift */; };
 		CA2A586B20F69EB7002C69B6 /* MapCoordinateRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586A20F69EB7002C69B6 /* MapCoordinateRender.swift */; };
 		CA2A586D20F76F03002C69B6 /* CocoaTouchMapCoordinateRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586C20F76F03002C69B6 /* CocoaTouchMapCoordinateRender.swift */; };
+		CA2A586F20F7F137002C69B6 /* AnnouncementDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586E20F7F137002C69B6 /* AnnouncementDateFormatter.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
 		CA2B4FA61F1EA1B300F007E1 /* ApplicationTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */; };
 		CA2B4FA81F1EA72A00F007E1 /* LoginArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */; };
@@ -1726,6 +1727,7 @@
 		CA2A586820F69EA1002C69B6 /* CapturingMapCoordinateRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingMapCoordinateRender.swift; sourceTree = "<group>"; };
 		CA2A586A20F69EB7002C69B6 /* MapCoordinateRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinateRender.swift; sourceTree = "<group>"; };
 		CA2A586C20F76F03002C69B6 /* CocoaTouchMapCoordinateRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaTouchMapCoordinateRender.swift; sourceTree = "<group>"; };
+		CA2A586E20F7F137002C69B6 /* AnnouncementDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDateFormatter.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
 		CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationTestBuilder.swift; sourceTree = "<group>"; };
 		CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginArguments.swift; sourceTree = "<group>"; };
@@ -5278,6 +5280,7 @@
 				CA283A5720E6E23200F7D195 /* LongRunningTaskManager.swift */,
 				CA283A5920E6E24300F7D195 /* CocoaTouchLongRunningTaskManager.swift */,
 				CA2A586C20F76F03002C69B6 /* CocoaTouchMapCoordinateRender.swift */,
+				CA2A586E20F7F137002C69B6 /* AnnouncementDateFormatter.swift */,
 			);
 			path = "System Services";
 			sourceTree = "<group>";
@@ -6764,6 +6767,7 @@
 				9A861ED61F25564900B75A8C /* StoryboardSplashScreenRouter.swift in Sources */,
 				CAE8B0BD20CA57590029D4D6 /* RoomEntity+Adaptation.swift in Sources */,
 				CA6EC4712051656C00402894 /* KnowledgeDetailModuleProviding.swift in Sources */,
+				CA2A586F20F7F137002C69B6 /* AnnouncementDateFormatter.swift in Sources */,
 				CAD3BDB92059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift in Sources */,
 				9A80EF591F291E2B00FD0D37 /* NewsTableViewController.swift in Sources */,
 				CA0E520F208F4BDF005259FE /* Announcement2.swift in Sources */,

@@ -45,10 +45,17 @@ class DefaultNewsInteractor: NewsInteractor,
     private let favouritesSchedule: EventsSchedule
     private var todaysEvents = [Event2]()
     private var currentDay: Day?
+    private let announcementsDateFormatter: AnnouncementDateFormatter
 
     // MARK: Initialization
 
     convenience init() {
+        struct DummyAnnouncementsDateFormatter: AnnouncementDateFormatter {
+            func string(from date: Date) -> String {
+                return ""
+            }
+        }
+
         self.init(announcementsService: EurofurenceApplication.shared,
                   authenticationService: EurofurenceApplication.shared,
                   privateMessagesService: EurofurencePrivateMessagesService.shared,
@@ -58,7 +65,8 @@ class DefaultNewsInteractor: NewsInteractor,
                   hoursDateFormatter: FoundationHoursDateFormatter.shared,
                   dateDistanceCalculator: FoundationDateDistanceCalculator(),
                   clock: SystemClock(),
-                  refreshService: EurofurenceApplication.shared)
+                  refreshService: EurofurenceApplication.shared,
+                  announcementsDateFormatter: DummyAnnouncementsDateFormatter())
     }
 
     init(announcementsService: AnnouncementsService,
@@ -70,12 +78,14 @@ class DefaultNewsInteractor: NewsInteractor,
          hoursDateFormatter: HoursDateFormatter,
          dateDistanceCalculator: DateDistanceCalculator,
          clock: Clock,
-         refreshService: RefreshService) {
+         refreshService: RefreshService,
+         announcementsDateFormatter: AnnouncementDateFormatter) {
         self.relativeTimeIntervalCountdownFormatter = relativeTimeIntervalCountdownFormatter
         self.hoursDateFormatter = hoursDateFormatter
         self.dateDistanceCalculator = dateDistanceCalculator
         self.clock = clock
         self.refreshService = refreshService
+        self.announcementsDateFormatter = announcementsDateFormatter
         favouritesSchedule = eventsService.makeEventsSchedule()
         favouritesSchedule.setDelegate(self)
 
@@ -225,7 +235,7 @@ class DefaultNewsInteractor: NewsInteractor,
             components.append(CountdownComponent(daysUntilConvention: daysUntilConvention))
         }
 
-        components.append(AnnouncementsComponent(announcements: announcements, readAnnouncements: readAnnouncements))
+        components.append(AnnouncementsComponent(announcements: announcements, readAnnouncements: readAnnouncements, announcementsDateFormatter: announcementsDateFormatter))
 
         if !upcomingEvents.isEmpty {
             components.append(EventsComponent(title: .upcomingEvents,
@@ -322,12 +332,14 @@ class DefaultNewsInteractor: NewsInteractor,
         private let announcements: [Announcement2]
         private let viewModels: [AnnouncementComponentViewModel]
 
-        init(announcements: [Announcement2], readAnnouncements: [Announcement2.Identifier]) {
+        init(announcements: [Announcement2],
+             readAnnouncements: [Announcement2.Identifier],
+             announcementsDateFormatter: AnnouncementDateFormatter) {
             self.announcements = announcements
             viewModels = announcements.map({ (announcement) -> AnnouncementComponentViewModel in
                 return AnnouncementComponentViewModel(title: announcement.title,
                                                       detail: announcement.content,
-                                                      receivedDateTime: "",
+                                                      receivedDateTime: announcementsDateFormatter.string(from: announcement.date),
                                                       isRead: readAnnouncements.contains(announcement.identifier))
             })
         }

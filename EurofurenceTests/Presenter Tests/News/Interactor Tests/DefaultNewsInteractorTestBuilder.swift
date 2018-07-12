@@ -55,6 +55,24 @@ extension CapturingRefreshService {
     
 }
 
+class FakeAnnouncementDateFormatter: AnnouncementDateFormatter {
+    
+    private var strings = [Date : String]()
+    
+    func string(from date: Date) -> String {
+        var output = String.random
+        if let previous = strings[date] {
+            output = previous
+        }
+        else {
+            strings[date] = output
+        }
+        
+        return output
+    }
+    
+}
+
 class DefaultNewsInteractorTestBuilder {
     
     struct Context {
@@ -70,6 +88,7 @@ class DefaultNewsInteractorTestBuilder {
         var dateDistanceCalculator: StubDateDistanceCalculator
         var clock: StubClock
         var refreshService: CapturingRefreshService
+        var announcementDateFormatter: FakeAnnouncementDateFormatter
     }
     
     private var announcementsService: StubAnnouncementsService
@@ -122,6 +141,7 @@ class DefaultNewsInteractorTestBuilder {
         let relativeTimeFormatter = FakeRelativeTimeIntervalCountdownFormatter()
         let hoursDateFormatter = FakeHoursDateFormatter()
         let refreshService = CapturingRefreshService()
+        let announcementsDateFormatter = FakeAnnouncementDateFormatter()
         let interactor = DefaultNewsInteractor(announcementsService: announcementsService,
                                                authenticationService: authenticationService,
                                                privateMessagesService: privateMessagesService,
@@ -131,7 +151,8 @@ class DefaultNewsInteractorTestBuilder {
                                                hoursDateFormatter: hoursDateFormatter,
                                                dateDistanceCalculator: dateDistanceCalculator,
                                                clock: clock,
-                                               refreshService: refreshService)
+                                               refreshService: refreshService,
+                                               announcementsDateFormatter: announcementsDateFormatter)
         let delegate = CapturingNewsInteractorDelegate()
         
         return Context(interactor: interactor,
@@ -145,7 +166,8 @@ class DefaultNewsInteractorTestBuilder {
                        eventsService: eventsService,
                        dateDistanceCalculator: dateDistanceCalculator,
                        clock: clock,
-                       refreshService: refreshService)
+                       refreshService: refreshService,
+                       announcementDateFormatter: announcementsDateFormatter)
     }
     
 }
@@ -259,7 +281,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
         private func makeExpectedAnnouncementViewModel(from announcement: Announcement2) -> AnyHashable {
             return AnnouncementComponentViewModel(title: announcement.title,
                                                   detail: announcement.content,
-                                                  receivedDateTime: "",
+                                                  receivedDateTime: context.announcementDateFormatter.string(from: announcement.date),
                                                   isRead: context.announcementsService.stubbedReadAnnouncements.contains(announcement.identifier))
         }
         
