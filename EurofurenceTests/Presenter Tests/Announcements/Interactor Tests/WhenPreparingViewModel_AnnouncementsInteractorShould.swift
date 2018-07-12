@@ -20,10 +20,21 @@ class CapturingAnnouncementsListViewModelDelegate: AnnouncementsListViewModelDel
 
 class WhenPreparingViewModel_AnnouncementsInteractorShould: XCTestCase {
     
+    var announcementsService: StubAnnouncementsService!
+    var interactor: DefaultAnnouncementsInteractor!
+    var announcements: [Announcement2]!
+    var announcement: (element: Announcement2, index: Int)!
+    
+    override func setUp() {
+        super.setUp()
+        
+        announcements = [Announcement2].random
+        announcement = announcements.randomElement()
+        announcementsService = StubAnnouncementsService(announcements: announcements)
+        interactor = DefaultAnnouncementsInteractor(announcementsService: announcementsService)
+    }
+    
     func testIndicateTheTotalNumberOfAnnouncements() {
-        let announcements = [Announcement2].random
-        let announcementsService = StubAnnouncementsService(announcements: announcements)
-        let interactor = DefaultAnnouncementsInteractor(announcementsService: announcementsService)
         var viewModel: AnnouncementsListViewModel?
         interactor.makeViewModel { viewModel = $0 }
         
@@ -31,87 +42,61 @@ class WhenPreparingViewModel_AnnouncementsInteractorShould: XCTestCase {
     }
     
     func testAdaptAnnouncementTitles() {
-        let announcements = [Announcement2].random
-        let randomAnnouncement = announcements.randomElement()
-        let announcementsService = StubAnnouncementsService(announcements: announcements)
-        let interactor = DefaultAnnouncementsInteractor(announcementsService: announcementsService)
         var viewModel: AnnouncementsListViewModel?
         interactor.makeViewModel { viewModel = $0 }
-        let announcementViewModel = viewModel?.announcementViewModel(at: randomAnnouncement.index)
+        let announcementViewModel = viewModel?.announcementViewModel(at: announcement.index)
         
-        XCTAssertEqual(randomAnnouncement.element.title, announcementViewModel?.title)
+        XCTAssertEqual(announcement.element.title, announcementViewModel?.title)
     }
     
     func testAdaptAnnouncementContents() {
-        let announcements = [Announcement2].random
-        let randomAnnouncement = announcements.randomElement()
-        let announcementsService = StubAnnouncementsService(announcements: announcements)
-        let interactor = DefaultAnnouncementsInteractor(announcementsService: announcementsService)
         var viewModel: AnnouncementsListViewModel?
         interactor.makeViewModel { viewModel = $0 }
-        let announcementViewModel = viewModel?.announcementViewModel(at: randomAnnouncement.index)
+        let announcementViewModel = viewModel?.announcementViewModel(at: announcement.index)
         
-        XCTAssertEqual(randomAnnouncement.element.content, announcementViewModel?.detail)
+        XCTAssertEqual(announcement.element.content, announcementViewModel?.detail)
     }
     
     func testAdaptReadAnnouncements() {
-        let announcements = [Announcement2].random
-        let randomAnnouncement = announcements.randomElement()
-        let announcementsService = StubAnnouncementsService(announcements: announcements)
-        announcementsService.stubbedReadAnnouncements = [randomAnnouncement.element.identifier]
-        let interactor = DefaultAnnouncementsInteractor(announcementsService: announcementsService)
         var viewModel: AnnouncementsListViewModel?
+        announcementsService.stubbedReadAnnouncements = [announcement.element.identifier]
         interactor.makeViewModel { viewModel = $0 }
-        let announcementViewModel = viewModel?.announcementViewModel(at: randomAnnouncement.index)
+        let announcementViewModel = viewModel?.announcementViewModel(at: announcement.index)
         
         XCTAssertEqual(true, announcementViewModel?.isRead)
     }
     
     func testAdaptUnreadAnnouncements() {
-        let announcements = [Announcement2].random
-        let randomAnnouncement = announcements.randomElement()
-        let announcementsService = StubAnnouncementsService(announcements: announcements)
-        let interactor = DefaultAnnouncementsInteractor(announcementsService: announcementsService)
         var viewModel: AnnouncementsListViewModel?
         interactor.makeViewModel { viewModel = $0 }
-        let announcementViewModel = viewModel?.announcementViewModel(at: randomAnnouncement.index)
+        let announcementViewModel = viewModel?.announcementViewModel(at: announcement.index)
         
         XCTAssertEqual(false, announcementViewModel?.isRead)
     }
     
     func testProvideTheExpectedIdentifier() {
-        let announcements = [Announcement2].random
-        let randomAnnouncement = announcements.randomElement()
-        let announcementsService = StubAnnouncementsService(announcements: announcements)
-        let interactor = DefaultAnnouncementsInteractor(announcementsService: announcementsService)
         var viewModel: AnnouncementsListViewModel?
         interactor.makeViewModel { viewModel = $0 }
-        let actual = viewModel?.identifierForAnnouncement(at: randomAnnouncement.index)
+        let actual = viewModel?.identifierForAnnouncement(at: announcement.index)
         
-        XCTAssertEqual(randomAnnouncement.element.identifier, actual)
+        XCTAssertEqual(announcement.element.identifier, actual)
     }
     
     func testUpdateTheAvailableViewModelsWhenAnnouncementsChange() {
-        let originalAnnouncements = [Announcement2].random
-        let announcementsService = StubAnnouncementsService(announcements: originalAnnouncements)
-        let interactor = DefaultAnnouncementsInteractor(announcementsService: announcementsService)
         var viewModel: AnnouncementsListViewModel?
         interactor.makeViewModel { viewModel = $0 }
-        let newAnnouncements = [Announcement2].random(upperLimit: originalAnnouncements.count)
+        let newAnnouncements = [Announcement2].random(upperLimit: announcements.count)
         let delegate = CapturingAnnouncementsListViewModelDelegate()
         viewModel?.setDelegate(delegate)
         announcementsService.updateAnnouncements(newAnnouncements)
-        let randomAnnouncement = newAnnouncements.randomElement()
-        let announcementViewModel = viewModel?.announcementViewModel(at: randomAnnouncement.index)
+        let announcement = newAnnouncements.randomElement()
+        let announcementViewModel = viewModel?.announcementViewModel(at: announcement.index)
         
-        XCTAssertEqual(randomAnnouncement.element.title, announcementViewModel?.title)
+        XCTAssertEqual(announcement.element.title, announcementViewModel?.title)
         XCTAssertTrue(delegate.toldAnnouncementsDidChange)
     }
     
     func testUpdateTheAvailableViewModelsWhenReadAnnouncementsChange() {
-        let announcements = [Announcement2].random
-        let announcementsService = StubAnnouncementsService(announcements: announcements)
-        let interactor = DefaultAnnouncementsInteractor(announcementsService: announcementsService)
         var viewModel: AnnouncementsListViewModel?
         interactor.makeViewModel { viewModel = $0 }
         let delegate = CapturingAnnouncementsListViewModelDelegate()
