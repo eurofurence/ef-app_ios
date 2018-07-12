@@ -10,6 +10,6 @@ import Foundation
 
 protocol MapCoordinateRender {
 
-    func render(x: Int, y: Int, radius: Int, onto data: Data)
+    func render(x: Int, y: Int, radius: Int, onto data: Data) -> Data
 
 }

@@ -11,7 +11,7 @@ import XCTest
 
 class WhenPreparingDealerMapGraphic_ApplicationShould: XCTestCase {
     
-    func testProvideDealerMapDataAndCoordinatesToMapCoordinateRenderer() {
+    func testProvideRenderedMapDataInExtendedData() {
         var map = APIMap.random
         let dealerIdentifier = Dealer2.Identifier.random
         let dealerMapLink = APIMap.Entry.Link(type: .dealerDetail, name: .random, target: dealerIdentifier.rawValue)
@@ -26,12 +26,12 @@ class WhenPreparingDealerMapGraphic_ApplicationShould: XCTestCase {
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(syncResponse)
         let mapGraphic = context.imageAPI.stubbedImage(for: map.imageIdentifier)!
-        context.application.fetchExtendedDealerData(for: dealerIdentifier) { (_) in }
+        let renderedData = Data.random
+        context.mapCoordinateRender.stub(renderedData, forGraphic: mapGraphic, atX: dealerMapEntry.x, y: dealerMapEntry.y, radius: dealerMapEntry.tapRadius)
+        var extendedData: ExtendedDealerData?
+        context.application.fetchExtendedDealerData(for: dealerIdentifier) { extendedData = $0 }
         
-        XCTAssertEqual(mapGraphic, context.mapCoordinateRender.capturedMapData)
-        XCTAssertEqual(dealerMapEntry.x, context.mapCoordinateRender.x)
-        XCTAssertEqual(dealerMapEntry.y, context.mapCoordinateRender.y)
-        XCTAssertEqual(dealerMapEntry.tapRadius, context.mapCoordinateRender.radius)
+        XCTAssertEqual(renderedData, extendedData?.dealersDenMapLocationGraphicPNGData)
     }
     
 }

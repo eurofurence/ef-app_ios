@@ -137,8 +137,9 @@ class Dealers: DealersService {
         guard let dealerModel = dealerModels.first(where: { $0.identifier == dealer }) else { return }
         guard let model = fetchDealer(dealer) else { return }
 
+        var dealerMapLocationData: Data?
         if let (map, entry) = fetchMapData(for: dealer), let mapData = imageCache.cachedImageData(for: map.imageIdentifier) {
-            mapCoordinateRender.render(x: entry.x, y: entry.y, radius: entry.tapRadius, onto: mapData)
+            dealerMapLocationData = mapCoordinateRender.render(x: entry.x, y: entry.y, radius: entry.tapRadius, onto: mapData)
         }
 
         var artistImagePNGData: Data?
@@ -154,7 +155,7 @@ class Dealers: DealersService {
         let convertEmptyStringsIntoNil: (String) -> String? = { $0.isEmpty ? nil : $0 }
 
         let extendedData = ExtendedDealerData(artistImagePNGData: artistImagePNGData,
-                                              dealersDenMapLocationGraphicPNGData: nil,
+                                              dealersDenMapLocationGraphicPNGData: dealerMapLocationData,
                                               preferredName: dealerModel.preferredName,
                                               alternateName: dealerModel.alternateName,
                                               categories: model.categories.sorted(),
