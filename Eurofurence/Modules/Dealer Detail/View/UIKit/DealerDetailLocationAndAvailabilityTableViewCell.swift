@@ -34,6 +34,9 @@ class DealerDetailLocationAndAvailabilityTableViewCell: UITableViewCell, DealerL
             afterDarkInformationContainer
         ]
 
+        dealerMapImageView.layer.borderColor = UIColor.lightGray.cgColor
+        dealerMapImageView.layer.borderWidth = 1
+
         limitedAvailabilityIconLabel.textColor = .pantone330U
         limitedAvailabilityIconLabel.text = "\u{f071}"
         afterDarkInformationIconLabel.textColor = .pantone330U
