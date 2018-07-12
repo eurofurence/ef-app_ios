@@ -11,26 +11,31 @@ import Foundation
 struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
 
     private let announcementsService: AnnouncementsService
+    private let announcementDateFormatter: AnnouncementDateFormatter
 
     init() {
-        self.init(announcementsService: EurofurenceApplication.shared)
+        self.init(announcementsService: EurofurenceApplication.shared,
+                  announcementDateFormatter: FoundationAnnouncementDateFormatter.shared)
     }
 
-    init(announcementsService: AnnouncementsService) {
+    init(announcementsService: AnnouncementsService, announcementDateFormatter: AnnouncementDateFormatter) {
         self.announcementsService = announcementsService
+        self.announcementDateFormatter = announcementDateFormatter
     }
 
     func makeViewModel(completionHandler: @escaping (AnnouncementsListViewModel) -> Void) {
-        let viewModel = ViewModel(announcementsService: announcementsService)
+        let viewModel = ViewModel(announcementsService: announcementsService, announcementDateFormatter: announcementDateFormatter)
         completionHandler(viewModel)
     }
 
     private class ViewModel: AnnouncementsListViewModel, AnnouncementsServiceObserver {
 
+        private let announcementDateFormatter: AnnouncementDateFormatter
         private var announcements = [Announcement2]()
         private var readAnnouncements = [Announcement2.Identifier]()
 
-        init(announcementsService: AnnouncementsService) {
+        init(announcementsService: AnnouncementsService, announcementDateFormatter: AnnouncementDateFormatter) {
+            self.announcementDateFormatter = announcementDateFormatter
             announcementsService.add(self)
         }
 
@@ -49,7 +54,7 @@ struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
 
             return AnnouncementComponentViewModel(title: announcement.title,
                                                   detail: announcement.content,
-                                                  receivedDateTime: "",
+                                                  receivedDateTime: announcementDateFormatter.string(from: announcement.date),
                                                   isRead: isRead)
         }
 

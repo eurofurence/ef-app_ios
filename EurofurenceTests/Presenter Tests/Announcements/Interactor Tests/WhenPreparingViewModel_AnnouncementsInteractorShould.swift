@@ -22,6 +22,7 @@ class WhenPreparingViewModel_AnnouncementsInteractorShould: XCTestCase {
     
     var announcementsService: StubAnnouncementsService!
     var interactor: DefaultAnnouncementsInteractor!
+    var announcementDateFormatter: FakeAnnouncementDateFormatter!
     var announcements: [Announcement2]!
     var announcement: (element: Announcement2, index: Int)!
     
@@ -31,7 +32,8 @@ class WhenPreparingViewModel_AnnouncementsInteractorShould: XCTestCase {
         announcements = [Announcement2].random
         announcement = announcements.randomElement()
         announcementsService = StubAnnouncementsService(announcements: announcements)
-        interactor = DefaultAnnouncementsInteractor(announcementsService: announcementsService)
+        announcementDateFormatter = FakeAnnouncementDateFormatter()
+        interactor = DefaultAnnouncementsInteractor(announcementsService: announcementsService, announcementDateFormatter: announcementDateFormatter)
     }
     
     func testIndicateTheTotalNumberOfAnnouncements() {
@@ -55,6 +57,15 @@ class WhenPreparingViewModel_AnnouncementsInteractorShould: XCTestCase {
         let announcementViewModel = viewModel?.announcementViewModel(at: announcement.index)
         
         XCTAssertEqual(announcement.element.content, announcementViewModel?.detail)
+    }
+    
+    func testAdaptAnnouncementDate() {
+        var viewModel: AnnouncementsListViewModel?
+        interactor.makeViewModel { viewModel = $0 }
+        let announcementViewModel = viewModel?.announcementViewModel(at: announcement.index)
+        let expected = announcementDateFormatter.string(from: announcement.element.date)
+        
+        XCTAssertEqual(expected, announcementViewModel?.receivedDateTime)
     }
     
     func testAdaptReadAnnouncements() {
