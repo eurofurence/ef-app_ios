@@ -327,6 +327,7 @@ class DefaultNewsInteractor: NewsInteractor,
             viewModels = announcements.map({ (announcement) -> AnnouncementComponentViewModel in
                 return AnnouncementComponentViewModel(title: announcement.title,
                                                       detail: announcement.content,
+                                                      receivedDateTime: "",
                                                       isRead: readAnnouncements.contains(announcement.identifier))
             })
         }

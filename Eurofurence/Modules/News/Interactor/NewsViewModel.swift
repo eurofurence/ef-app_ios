@@ -66,6 +66,7 @@ struct AnnouncementComponentViewModel: Hashable {
 
     var title: String
     var detail: String
+    var receivedDateTime: String
     var isRead: Bool
 
 }

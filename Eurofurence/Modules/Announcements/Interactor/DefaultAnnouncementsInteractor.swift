@@ -49,6 +49,7 @@ struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
 
             return AnnouncementComponentViewModel(title: announcement.title,
                                                   detail: announcement.content,
+                                                  receivedDateTime: "",
                                                   isRead: isRead)
         }
 

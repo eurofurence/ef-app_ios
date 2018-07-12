@@ -21,6 +21,11 @@ class CapturingAnnouncementComponent: AnnouncementComponent {
         capturedDetail = detail
     }
     
+    private(set) var capturedReceivedDateTime: String?
+    func setAnnouncementReceivedDateTime(_ receivedDateTime: String) {
+        capturedReceivedDateTime = receivedDateTime
+    }
+    
     private(set) var didHideUnreadIndicator = false
     func hideUnreadIndicator() {
         didHideUnreadIndicator = true

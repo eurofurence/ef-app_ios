@@ -26,6 +26,10 @@ class AnnouncementTableViewCell: UITableViewCell, AnnouncementComponent {
         announcementDescriptionLabel.text = detail
     }
 
+    func setAnnouncementReceivedDateTime(_ receivedDateTime: String) {
+
+    }
+
     func hideUnreadIndicator() {
         unreadIndicatorView.isHidden = true
     }
