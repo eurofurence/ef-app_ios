@@ -12,6 +12,7 @@ class AnnouncementTableViewCell: UITableViewCell, AnnouncementComponent {
 
     // MARK: IBOutlets
 
+    @IBOutlet weak var announcementReceivedDateTimeLabel: UILabel!
     @IBOutlet weak var announcementTitleLabel: UILabel!
     @IBOutlet weak var announcementDescriptionLabel: UILabel!
     @IBOutlet weak var unreadIndicatorView: UIView!
@@ -27,7 +28,7 @@ class AnnouncementTableViewCell: UITableViewCell, AnnouncementComponent {
     }
 
     func setAnnouncementReceivedDateTime(_ receivedDateTime: String) {
-
+        announcementReceivedDateTimeLabel.text = receivedDateTime
     }
 
     func hideUnreadIndicator() {

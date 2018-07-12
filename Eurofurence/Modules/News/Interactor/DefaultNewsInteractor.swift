@@ -50,12 +50,6 @@ class DefaultNewsInteractor: NewsInteractor,
     // MARK: Initialization
 
     convenience init() {
-        struct DummyAnnouncementsDateFormatter: AnnouncementDateFormatter {
-            func string(from date: Date) -> String {
-                return ""
-            }
-        }
-
         self.init(announcementsService: EurofurenceApplication.shared,
                   authenticationService: EurofurenceApplication.shared,
                   privateMessagesService: EurofurencePrivateMessagesService.shared,
@@ -66,7 +60,7 @@ class DefaultNewsInteractor: NewsInteractor,
                   dateDistanceCalculator: FoundationDateDistanceCalculator(),
                   clock: SystemClock(),
                   refreshService: EurofurenceApplication.shared,
-                  announcementsDateFormatter: DummyAnnouncementsDateFormatter())
+                  announcementsDateFormatter: FoundationAnnouncementDateFormatter.shared)
     }
 
     init(announcementsService: AnnouncementsService,
