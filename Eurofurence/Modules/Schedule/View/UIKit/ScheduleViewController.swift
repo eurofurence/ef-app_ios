@@ -60,9 +60,9 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, UISe
         delegate?.scheduleSceneDidLoad()
     }
 
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        daysCollectionView.collectionViewLayout.invalidateLayout()
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        daysCollectionView?.collectionViewLayout.invalidateLayout()
     }
 
     // MARK: UISearchControllerDelegate
