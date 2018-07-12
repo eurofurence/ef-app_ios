@@ -33,6 +33,17 @@ class WhenBindingAnnouncement_AnnouncementsPresenterShould: XCTestCase {
         XCTAssertEqual(randomAnnouncement.element.detail, boundComponent.capturedDetail)
     }
     
+    func testBindTheAnnouncementDateTimeOntoTheComponent() {
+        let viewModel = FakeAnnouncementsListViewModel()
+        let interactor = FakeAnnouncementsInteractor(viewModel: viewModel)
+        let context = AnnouncementsPresenterTestBuilder().with(interactor).build()
+        let randomAnnouncement = viewModel.announcements.randomElement()
+        context.simulateSceneDidLoad()
+        let boundComponent = context.bindAnnouncement(at: randomAnnouncement.index)
+        
+        XCTAssertEqual(randomAnnouncement.element.receivedDateTime, boundComponent.capturedReceivedDateTime)
+    }
+    
     func testTellTheSceneToHideTheUnreadIndicatorForReadAnnouncements() {
         var announcement = AnnouncementComponentViewModel.random
         announcement.isRead = true

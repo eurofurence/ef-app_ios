@@ -19,6 +19,7 @@ class AnnouncementsPresenter: AnnouncementsSceneDelegate, AnnouncementsListViewM
 
             component.setAnnouncementTitle(announcement.title)
             component.setAnnouncementDetail(announcement.detail)
+            component.setAnnouncementReceivedDateTime(announcement.receivedDateTime)
 
             if announcement.isRead {
                 component.hideUnreadIndicator()
