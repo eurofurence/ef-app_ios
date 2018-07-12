@@ -34,12 +34,6 @@ class EurofurenceApplicationBuilder {
     private var mapCoordinateRender: MapCoordinateRender
 
     init() {
-        struct DummyMapCoordinateRender: MapCoordinateRender {
-            func render(x: Int, y: Int, radius: Int, onto data: Data) -> Data {
-                return Data()
-            }
-        }
-
         userPreferences = UserDefaultsPreferences()
         dataStore = CoreDataEurofurenceDataStore()
 
@@ -71,7 +65,7 @@ class EurofurenceApplicationBuilder {
         longRunningTaskManager = CocoaTouchLongRunningTaskManager()
         notificationsService = UserNotificationsNotificationService()
         hoursDateFormatter = FoundationHoursDateFormatter.shared
-        mapCoordinateRender = DummyMapCoordinateRender()
+        mapCoordinateRender = CocoaTouchMapCoordinateRender()
     }
 
     @discardableResult

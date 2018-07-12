@@ -48,6 +48,7 @@ class DealerDetailLocationAndAvailabilityTableViewCell: UITableViewCell, DealerL
 
     func showMapPNGGraphicData(_ data: Data) {
         dealerMapImageView.image = UIImage(data: data)
+        dealerMapImageView.isHidden = false
     }
 
     func showDealerLimitedAvailabilityWarning(_ warning: String) {

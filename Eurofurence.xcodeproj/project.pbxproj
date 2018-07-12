@@ -503,6 +503,7 @@
 		CA2A586720F698D1002C69B6 /* WhenPreparingDealerMapGraphic_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586620F698D1002C69B6 /* WhenPreparingDealerMapGraphic_ApplicationShould.swift */; };
 		CA2A586920F69EA1002C69B6 /* CapturingMapCoordinateRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586820F69EA1002C69B6 /* CapturingMapCoordinateRender.swift */; };
 		CA2A586B20F69EB7002C69B6 /* MapCoordinateRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586A20F69EB7002C69B6 /* MapCoordinateRender.swift */; };
+		CA2A586D20F76F03002C69B6 /* CocoaTouchMapCoordinateRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586C20F76F03002C69B6 /* CocoaTouchMapCoordinateRender.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
 		CA2B4FA61F1EA1B300F007E1 /* ApplicationTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */; };
 		CA2B4FA81F1EA72A00F007E1 /* LoginArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */; };
@@ -1724,6 +1725,7 @@
 		CA2A586620F698D1002C69B6 /* WhenPreparingDealerMapGraphic_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingDealerMapGraphic_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA2A586820F69EA1002C69B6 /* CapturingMapCoordinateRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingMapCoordinateRender.swift; sourceTree = "<group>"; };
 		CA2A586A20F69EB7002C69B6 /* MapCoordinateRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinateRender.swift; sourceTree = "<group>"; };
+		CA2A586C20F76F03002C69B6 /* CocoaTouchMapCoordinateRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaTouchMapCoordinateRender.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
 		CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationTestBuilder.swift; sourceTree = "<group>"; };
 		CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginArguments.swift; sourceTree = "<group>"; };
@@ -5275,6 +5277,7 @@
 				CA36A44E20D772F300EE6537 /* CocoaTouchHapticEngine.swift */,
 				CA283A5720E6E23200F7D195 /* LongRunningTaskManager.swift */,
 				CA283A5920E6E24300F7D195 /* CocoaTouchLongRunningTaskManager.swift */,
+				CA2A586C20F76F03002C69B6 /* CocoaTouchMapCoordinateRender.swift */,
 			);
 			path = "System Services";
 			sourceTree = "<group>";
@@ -6522,6 +6525,7 @@
 				9A05254C1ECB097500578798 /* DataStoreProtocol.swift in Sources */,
 				CA73AEEB201A0896004E77BF /* KnowledgeListSceneFactory.swift in Sources */,
 				CA162EB820AA2FB9004AFED6 /* APIEvent.swift in Sources */,
+				CA2A586D20F76F03002C69B6 /* CocoaTouchMapCoordinateRender.swift in Sources */,
 				CAF9A9551F55F9DB00628833 /* LoginPromptTableViewCell.swift in Sources */,
 				CA283A5820E6E23200F7D195 /* LongRunningTaskManager.swift in Sources */,
 				78D7EEB81F196B30005372A9 /* BuildConfigurationProviding.swift in Sources */,
