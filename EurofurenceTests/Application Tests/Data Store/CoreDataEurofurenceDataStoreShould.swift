@@ -26,6 +26,19 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         recreateStore()
     }
     
+    override func tearDown() {
+        super.tearDown()
+        
+        if let url = store?.storeLocation {
+            do {
+                try FileManager.default.removeItem(at: url)
+            }
+            catch {
+                print(error)
+            }
+        }
+    }
+    
     func testSaveLastRefreshDate() {
         let expected = Date.random
         store.performTransaction { (transaction) in

@@ -43,11 +43,7 @@ struct PersistentImageRepository: ImageRepository {
     }
 
     private func makeImageCacheDirectoryURL() throws -> URL {
-        let applicationSupportDirectoryURL = try FileManager.default.url(for: .applicationSupportDirectory,
-                                                                         in: .userDomainMask,
-                                                                         appropriateFor: nil,
-                                                                         create: false)
-        return applicationSupportDirectoryURL.appendingPathComponent("EFImageCache")
+        return FileUtilities.sharedContainerURL.appendingPathComponent("EFImageCache")
     }
 
     private func makeImageRepositoryURL(for identifier: String) throws -> URL {

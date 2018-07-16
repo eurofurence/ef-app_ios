@@ -11,6 +11,12 @@ import Foundation
 
 struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
 
+    private class EurofurencePersistentContainer: NSPersistentContainer {
+        override class func defaultDirectoryURL() -> URL {
+            return FileUtilities.sharedContainerURL.appendingPathComponent("Model")
+        }
+    }
+
     // MARK: Properties
 
     let container: NSPersistentContainer
@@ -19,9 +25,9 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
     // MARK: Initialization
 
     init(storeName: String) {
-        container = NSPersistentContainer(name: "EurofurenceApplicationModel")
+        container = EurofurencePersistentContainer(name: "EurofurenceApplicationModel")
 
-        storeLocation = NSPersistentContainer.defaultDirectoryURL().appendingPathComponent(storeName)
+        storeLocation = EurofurencePersistentContainer.defaultDirectoryURL().appendingPathComponent(storeName)
         let description = NSPersistentStoreDescription(url: storeLocation)
         description.type = NSSQLiteStoreType
         container.persistentStoreDescriptions = [description]

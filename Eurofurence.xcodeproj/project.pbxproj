@@ -1047,6 +1047,7 @@
 		CACF1EC920B6D5AA00D904B5 /* ImageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EC820B6D5AA00D904B5 /* ImageEntity.swift */; };
 		CACF1ECD20B6D65400D904B5 /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1ECC20B6D65400D904B5 /* ImageRepository.swift */; };
 		CACF1ECF20B6D8CB00D904B5 /* ImageDownloadedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1ECE20B6D8CB00D904B5 /* ImageDownloadedEvent.swift */; };
+		CACF26C520FCC04500EDE150 /* FileUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF26C420FCC04500EDE150 /* FileUtilities.swift */; };
 		CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */; };
 		CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */; };
 		CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343B1F5D7203004BB959 /* MessagesScene.swift */; };
@@ -2274,6 +2275,7 @@
 		CACF1EC820B6D5AA00D904B5 /* ImageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEntity.swift; sourceTree = "<group>"; };
 		CACF1ECC20B6D65400D904B5 /* ImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepository.swift; sourceTree = "<group>"; };
 		CACF1ECE20B6D8CB00D904B5 /* ImageDownloadedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadedEvent.swift; sourceTree = "<group>"; };
+		CACF26C420FCC04500EDE150 /* FileUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtilities.swift; sourceTree = "<group>"; };
 		CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenterTestContext.swift; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMessagesScene.swift; sourceTree = "<group>"; };
 		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
@@ -2842,11 +2844,13 @@
 				CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */,
 				CA250DDF20D6EAF500E7513C /* EventsSearchController.swift */,
 				CA27618920DFEE00000E52AC /* ExternalContentHandler.swift */,
+				CACF26C420FCC04500EDE150 /* FileUtilities.swift */,
 				CA680F8120CDABB6006ACD3D /* ImageDownloader.swift */,
 				CACF1EC520B6C31000D904B5 /* ImagesCache.swift */,
 				CA36A44420D7051900EE6537 /* InMemoryEventsSearchController.swift */,
 				CA680F7920CD7AD7006ACD3D /* Knowledge.swift */,
 				CABF03BC2041C2B70028BD62 /* KnowledgeService.swift */,
+				CA2A586A20F69EB7002C69B6 /* MapCoordinateRender.swift */,
 				CA6A8DB720E2DC62007536CD /* Maps.swift */,
 				CABA83E920CDBBD600DD0795 /* PersistentImageRepository.swift */,
 				CAF3F63A2016797400374B4C /* PrivateMessagesController.swift */,
@@ -2871,7 +2875,6 @@
 				CA283A6120E6ED5F00F7D195 /* Refresh */,
 				CACF1ECA20B6D64300D904B5 /* Repositories */,
 				CAB3A72B1F7532DF005DF77B /* System Services */,
-				CA2A586A20F69EB7002C69B6 /* MapCoordinateRender.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -6468,6 +6471,7 @@
 				CA29EF772034643C00672911 /* StoryboardKnowledgeListSceneFactory.swift in Sources */,
 				CA0F762D2033118D009DA079 /* KnowledgeListModuleDelegate.swift in Sources */,
 				CAF3C7441F9F5C550008F027 /* NewsModuleProviding.swift in Sources */,
+				CACF26C520FCC04500EDE150 /* FileUtilities.swift in Sources */,
 				9A34B97A1ECF87B2004A249E /* ContextManager.swift in Sources */,
 				9AB64BC91EFE6592004E8D91 /* EventsViewModel.swift in Sources */,
 				CA1FE9991FA0B3AE009C7DF3 /* ApplicationDirector.swift in Sources */,
