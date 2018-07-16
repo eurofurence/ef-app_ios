@@ -55,15 +55,12 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
     // MARK: EventsServiceObserver
 
-    func eventsDidChange(to events: [Event2]) {
-        viewModel.scheduleEventsDidChange(to: events)
-    }
-
     func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) {
         viewModel.favouriteEventsDidChange(identifiers)
         searchViewModel.favouriteEventsDidChange(identifiers)
     }
 
+    func eventsDidChange(to events: [Event2]) {}
     func runningEventsDidChange(to events: [Event2]) {}
     func upcomingEventsDidChange(to events: [Event2]) {}
 
