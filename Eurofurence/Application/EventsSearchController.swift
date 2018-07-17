@@ -12,6 +12,8 @@ protocol EventsSearchController {
 
     func setResultsDelegate(_ delegate: EventsSearchControllerDelegate)
     func changeSearchTerm(_ term: String)
+    func restrictResultsToFavourites()
+    func removeFavouritesEventsRestriction()
 
 }
 

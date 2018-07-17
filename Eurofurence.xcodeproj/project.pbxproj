@@ -1052,6 +1052,8 @@
 		CACF26CB20FE290000EDE150 /* WhenBindingNonFavouriteEvent_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF26CA20FE290000EDE150 /* WhenBindingNonFavouriteEvent_NewsPresenterShould.swift */; };
 		CACF26CD20FE576C00EDE150 /* WhenSceneChangesSearchScopeToFavouriteEvents_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF26CC20FE576C00EDE150 /* WhenSceneChangesSearchScopeToFavouriteEvents_SchedulePresenterShould.swift */; };
 		CACF26CF20FE590600EDE150 /* WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF26CE20FE590600EDE150 /* WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould.swift */; };
+		CACF26D120FE5B8300EDE150 /* WhenToldToFilterToFavouriteEvents_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF26D020FE5B8300EDE150 /* WhenToldToFilterToFavouriteEvents_ScheduleInteractorShould.swift */; };
+		CACF26D320FE5D2C00EDE150 /* WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF26D220FE5D2C00EDE150 /* WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift */; };
 		CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */; };
 		CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */; };
 		CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343B1F5D7203004BB959 /* MessagesScene.swift */; };
@@ -2284,6 +2286,8 @@
 		CACF26CA20FE290000EDE150 /* WhenBindingNonFavouriteEvent_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingNonFavouriteEvent_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CACF26CC20FE576C00EDE150 /* WhenSceneChangesSearchScopeToFavouriteEvents_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneChangesSearchScopeToFavouriteEvents_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CACF26CE20FE590600EDE150 /* WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould.swift; sourceTree = "<group>"; };
+		CACF26D020FE5B8300EDE150 /* WhenToldToFilterToFavouriteEvents_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToFilterToFavouriteEvents_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
+		CACF26D220FE5D2C00EDE150 /* WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
 		CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenterTestContext.swift; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMessagesScene.swift; sourceTree = "<group>"; };
 		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
@@ -3301,6 +3305,8 @@
 				CA283AE120EC05B700F7D195 /* WhenPreparingViewModelForFavouritedEvent_ScheduleInteractorShould.swift */,
 				CA250DE320D6F68700E7513C /* WhenSearchControllerProducesNewResults_ScheduleInteractorShould.swift */,
 				CA250DDB20D6E85700E7513C /* WhenSearching_ScheduleInteractorShould.swift */,
+				CACF26D220FE5D2C00EDE150 /* WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift */,
+				CACF26D020FE5B8300EDE150 /* WhenToldToFilterToFavouriteEvents_ScheduleInteractorShould.swift */,
 				CA283A7B20E91F3600F7D195 /* WhenToldToRefresh_ScheduleViewModelShould.swift */,
 				CA08159220D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift */,
 			);
@@ -7310,6 +7316,7 @@
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
 				CA65A87B209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift in Sources */,
 				C61870E020DAD8E00089E836 /* StubV2ApiUrlProviding.swift in Sources */,
+				CACF26D320FE5D2C00EDE150 /* WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift in Sources */,
 				CABEB0D920C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift in Sources */,
 				CABF03C12041C2EC0028BD62 /* KnowledgeGroup2.swift in Sources */,
 				CA4FBE0E1F72FF2A00D29405 /* MessagesPresenterTestsWhenBindingMessages.swift in Sources */,
@@ -7356,6 +7363,7 @@
 				CA72849820A1C091007D912A /* WhenSyncingWhileLoggedIn.swift in Sources */,
 				CA27619020DFF0A5000E52AC /* WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */,
 				CA00AE8520D2320700C2FBB0 /* StubScheduleViewModel.swift in Sources */,
+				CACF26D120FE5B8300EDE150 /* WhenToldToFilterToFavouriteEvents_ScheduleInteractorShould.swift in Sources */,
 				CA71A34C204032FC00C847C3 /* Integer+RandomValueProviding.swift in Sources */,
 				CA283A7A20E91A7900F7D195 /* WhenInstigatingPullToRefreshAction_SchedulePresenterShould.swift in Sources */,
 				CABEB0D420C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift in Sources */,

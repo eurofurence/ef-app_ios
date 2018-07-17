@@ -26,4 +26,12 @@ class InMemoryEventsSearchController: EventsSearchController {
         delegate?.searchResultsDidUpdate(to: matches)
     }
 
+    func restrictResultsToFavourites() {
+
+    }
+
+    func removeFavouritesEventsRestriction() {
+
+    }
+
 }

@@ -90,6 +90,14 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
     
     func makeEventsSearchController() -> EventsSearchController {
         struct DummyEventsSearchController: EventsSearchController {
+            func restrictResultsToFavourites() {
+                
+            }
+            
+            func removeFavouritesEventsRestriction() {
+                
+            }
+            
             func setResultsDelegate(_ delegate: EventsSearchControllerDelegate) {
                 
             }

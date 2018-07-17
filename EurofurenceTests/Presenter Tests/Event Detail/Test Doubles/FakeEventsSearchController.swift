@@ -21,6 +21,16 @@ class FakeEventsSearchController: EventsSearchController {
         capturedSearchTerm = term
     }
     
+    private(set) var didRestrictSearchResultsToFavourites = false
+    func restrictResultsToFavourites() {
+        didRestrictSearchResultsToFavourites = true
+    }
+    
+    private(set) var didLiftFavouritesSearchRestriction = false
+    func removeFavouritesEventsRestriction() {
+        didLiftFavouritesSearchRestriction = true
+    }
+    
 }
 
 extension FakeEventsSearchController {

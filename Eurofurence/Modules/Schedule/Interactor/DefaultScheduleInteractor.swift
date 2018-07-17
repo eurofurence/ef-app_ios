@@ -238,11 +238,11 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         }
 
         func filterToFavourites() {
-
+            searchController.restrictResultsToFavourites()
         }
 
         func filterToAllEvents() {
-
+            searchController.removeFavouritesEventsRestriction()
         }
 
         func searchResultsDidUpdate(to results: [Event2]) {
