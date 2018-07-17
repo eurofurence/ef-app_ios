@@ -295,7 +295,8 @@ extension DefaultNewsInteractorTestBuilder.Context {
                                            endTime: context.hoursDateFormatter.hoursString(from: event.endDate),
                                            eventName: event.title,
                                            location: event.room.name,
-                                           icon: nil)
+                                           icon: nil,
+                                           isFavourite: false)
         }
         
         private func makeExpectedEventViewModelForUpcomingEvent(from event: Event2) -> AnyHashable {
@@ -304,7 +305,8 @@ extension DefaultNewsInteractorTestBuilder.Context {
                                            endTime: context.hoursDateFormatter.hoursString(from: event.endDate),
                                            eventName: event.title,
                                            location: event.room.name,
-                                           icon: nil)
+                                           icon: nil,
+                                           isFavourite: false)
         }
         
         private func makeExpectedViewModelForFavouriteEvent(from event: Event2) -> AnyHashable {
@@ -312,7 +314,8 @@ extension DefaultNewsInteractorTestBuilder.Context {
                                            endTime: context.hoursDateFormatter.hoursString(from: event.endDate),
                                            eventName: event.title,
                                            location: event.room.name,
-                                           icon: nil)
+                                           icon: nil,
+                                           isFavourite: false)
         }
         
     }

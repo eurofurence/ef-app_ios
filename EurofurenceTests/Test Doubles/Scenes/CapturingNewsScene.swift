@@ -121,6 +121,16 @@ class CapturingNewsEventComponent: NewsEventComponent {
         capturedIcon = icon
     }
     
+    private(set) var didShowFavouriteEventIndicator = false
+    func showFavouriteEventIndicator() {
+        didShowFavouriteEventIndicator = true
+    }
+    
+    private(set) var didHideFavouriteEventIndicator = false
+    func hideFavouriteEventIndicator() {
+        didHideFavouriteEventIndicator = true
+    }
+    
 }
 
 class CapturingUserWidgetComponent: UserWidgetComponent {

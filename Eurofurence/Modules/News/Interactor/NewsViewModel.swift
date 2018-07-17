@@ -84,6 +84,7 @@ struct EventComponentViewModel: Hashable {
     var eventName: String
     var location: String
     var icon: UIImage?
+    var isFavourite: Bool
 
     var hashValue: Int {
         var iconHash = Int(arc4random())
@@ -91,7 +92,7 @@ struct EventComponentViewModel: Hashable {
             iconHash = icon.hashValue
         }
 
-        return startTime.hashValue ^ endTime.hashValue ^ eventName.hashValue ^ location.hashValue ^ iconHash
+        return startTime.hashValue ^ endTime.hashValue ^ eventName.hashValue ^ location.hashValue ^ iconHash ^ isFavourite.hashValue
     }
 
     static func ==(lhs: EventComponentViewModel, rhs: EventComponentViewModel) -> Bool {
@@ -99,7 +100,8 @@ struct EventComponentViewModel: Hashable {
                lhs.endTime == rhs.endTime &&
                lhs.eventName == rhs.eventName &&
                lhs.location == rhs.location &&
-               lhs.icon == rhs.icon
+               lhs.icon == rhs.icon &&
+               lhs.isFavourite == rhs.isFavourite
     }
 
 }

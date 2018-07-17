@@ -58,5 +58,7 @@ protocol NewsEventComponent {
     func setEventName(_ eventName: String)
     func setLocation(_ location: String)
     func setIcon(_ icon: UIImage?)
+    func showFavouriteEventIndicator()
+    func hideFavouriteEventIndicator()
 
 }

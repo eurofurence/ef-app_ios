@@ -90,6 +90,12 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
                 component.setEventName(event.eventName)
                 component.setLocation(event.location)
                 component.setIcon(event.icon)
+
+                if event.isFavourite {
+                    component.showFavouriteEventIndicator()
+                } else {
+                    component.hideFavouriteEventIndicator()
+                }
             }
         }
 
