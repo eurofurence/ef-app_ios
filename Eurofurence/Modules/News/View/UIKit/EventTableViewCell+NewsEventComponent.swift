@@ -30,12 +30,4 @@ extension EventTableViewCell: NewsEventComponent {
 
     }
 
-    func showFavouriteEventIndicator() {
-        favouritedImageView.isHidden = false
-    }
-
-    func hideFavouriteEventIndicator() {
-        favouritedImageView.isHidden = true
-    }
-
 }

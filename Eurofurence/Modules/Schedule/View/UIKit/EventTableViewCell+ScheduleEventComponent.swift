@@ -8,4 +8,14 @@
 
 import UIKit
 
-extension EventTableViewCell: ScheduleEventComponent {}
+extension EventTableViewCell: ScheduleEventComponent {
+
+    func showFavouriteEventIndicator() {
+        favouritedImageView.isHidden = false
+    }
+
+    func hideFavouriteEventIndicator() {
+        favouritedImageView.isHidden = true
+    }
+
+}
