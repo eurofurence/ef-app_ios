@@ -237,6 +237,14 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             return rawModelGroups[indexPath.section].events[indexPath.row].identifier
         }
 
+        func filterToFavourites() {
+
+        }
+
+        func filterToAllEvents() {
+
+        }
+
         func searchResultsDidUpdate(to results: [Event2]) {
             searchResults = results
             regenerateViewModel()

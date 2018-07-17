@@ -133,6 +133,14 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
         searchViewModel?.updateSearchResults(input: query)
     }
 
+    func scheduleSceneDidChangeSearchScopeToAllEvents() {
+        searchViewModel?.filterToAllEvents()
+    }
+
+    func scheduleSceneDidChangeSearchScopeToFavouriteEvents() {
+        searchViewModel?.filterToFavourites()
+    }
+
     func scheduleSelectDidSelectFavouritesOption() {
         viewModel?.onlyShowFavourites()
     }

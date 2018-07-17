@@ -26,6 +26,16 @@ class CapturingScheduleSearchViewModel: ScheduleSearchViewModel {
         return stubbedIdentifiersByIndexPath[indexPath]
     }
     
+    private(set) var didFilterToFavourites = false
+    func filterToFavourites() {
+        didFilterToFavourites = true
+    }
+    
+    private(set) var didFilterToAllEvents = false
+    func filterToAllEvents() {
+        didFilterToAllEvents = true
+    }
+    
 }
 
 extension CapturingScheduleSearchViewModel {

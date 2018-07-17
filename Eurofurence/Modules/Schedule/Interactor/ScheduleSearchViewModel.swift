@@ -13,6 +13,8 @@ protocol ScheduleSearchViewModel {
     func setDelegate(_ delegate: ScheduleSearchViewModelDelegate)
     func updateSearchResults(input: String)
     func identifierForEvent(at indexPath: IndexPath) -> Event2.Identifier?
+    func filterToFavourites()
+    func filterToAllEvents()
 
 }
 
