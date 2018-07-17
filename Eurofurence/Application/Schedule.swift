@@ -127,6 +127,7 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
     }
 
     func consume(event: Schedule.ChangedEvent) {
+        updateCurrentDay()
         regenerateSchedule()
         updateDelegateWithAllDays()
     }

@@ -21,8 +21,10 @@ class WhenAppHasNoSavedEvents_ThenSyncFinishesSuccessfully_EventsScheduleShould:
         
         context = ApplicationTestBuilder().build()
         syncResponse = APISyncResponse.randomWithoutDeletions
+        let firstDay = syncResponse.conferenceDays.changed.sorted(by: { $0.date < $1.date }).first!
         schedule = context.application.makeEventsSchedule()
-        expectedEvents = context.makeExpectedEvents(from: syncResponse.events.changed, response: syncResponse)
+        let expected = syncResponse.events.changed.filter({ $0.dayIdentifier == firstDay.identifier })
+        expectedEvents = context.makeExpectedEvents(from: expected, response: syncResponse)
     }
     
     private func performSuccessfulRefresh() {
@@ -30,7 +32,7 @@ class WhenAppHasNoSavedEvents_ThenSyncFinishesSuccessfully_EventsScheduleShould:
         context.syncAPI.simulateSuccessfulSync(syncResponse)
     }
     
-    func testUpdateSchedulesWithTheirNewEvents() {
+    func testUpdateSchedulesWithTheirNewEventsForCurrentDay() {
         let delegate = CapturingEventsScheduleDelegate()
         schedule.setDelegate(delegate)
         performSuccessfulRefresh()
@@ -38,7 +40,7 @@ class WhenAppHasNoSavedEvents_ThenSyncFinishesSuccessfully_EventsScheduleShould:
         XCTAssertEqual(expectedEvents, delegate.events)
     }
     
-    func testUpdatesLateBoundScheduleDelegatesWithTheirNewEvents() {
+    func testUpdatesLateBoundScheduleDelegatesWithTheirNewEventsForCurrentDay() {
         let delegate = CapturingEventsScheduleDelegate()
         schedule.setDelegate(delegate)
         performSuccessfulRefresh()
