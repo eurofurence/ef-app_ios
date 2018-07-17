@@ -234,6 +234,7 @@ class DefaultNewsInteractor: NewsInteractor,
         if !upcomingEvents.isEmpty {
             components.append(EventsComponent(title: .upcomingEvents,
                                               events: upcomingEvents,
+                                              favouriteEventIdentifiers: favouriteEventIdentifiers,
                                               startTimeFormatter: { (event) -> String in
                                                 let now = clock.currentDate
                                                 let difference = event.startDate.timeIntervalSince1970 - now.timeIntervalSince1970
@@ -244,6 +245,7 @@ class DefaultNewsInteractor: NewsInteractor,
         if !runningEvents.isEmpty {
             components.append(EventsComponent(title: .runningEvents,
                                               events: runningEvents,
+                                              favouriteEventIdentifiers: favouriteEventIdentifiers,
                                               startTimeFormatter: { (_) -> String in
                                                 return .now
             }, hoursDateFormatter: hoursDateFormatter))
@@ -252,6 +254,7 @@ class DefaultNewsInteractor: NewsInteractor,
         if !favouriteEvents.isEmpty {
             components.append(EventsComponent(title: .todaysFavouriteEvents,
                                               events: favouriteEvents,
+                                              favouriteEventIdentifiers: favouriteEventIdentifiers,
                                               startTimeFormatter: { (event) -> String in
                                                 return self.hoursDateFormatter.hoursString(from: event.startDate)
             }, hoursDateFormatter: hoursDateFormatter))
@@ -372,6 +375,7 @@ class DefaultNewsInteractor: NewsInteractor,
 
         init(title: String,
              events: [Event2],
+             favouriteEventIdentifiers: [Event2.Identifier],
              startTimeFormatter: (Event2) -> String,
              hoursDateFormatter: HoursDateFormatter) {
             self.title = title
@@ -383,7 +387,7 @@ class DefaultNewsInteractor: NewsInteractor,
                                                eventName: event.title,
                                                location: event.room.name,
                                                icon: nil,
-                                               isFavourite: false)
+                                               isFavourite: favouriteEventIdentifiers.contains(event.identifier))
             }
         }
 

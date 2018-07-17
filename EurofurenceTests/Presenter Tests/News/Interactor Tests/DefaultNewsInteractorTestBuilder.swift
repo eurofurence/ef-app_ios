@@ -310,12 +310,13 @@ extension DefaultNewsInteractorTestBuilder.Context {
         }
         
         private func makeExpectedViewModelForFavouriteEvent(from event: Event2) -> AnyHashable {
+            let isFavourite = context.eventsService.favourites.contains(event.identifier)
             return EventComponentViewModel(startTime: context.hoursDateFormatter.hoursString(from: event.startDate),
                                            endTime: context.hoursDateFormatter.hoursString(from: event.endDate),
                                            eventName: event.title,
                                            location: event.room.name,
                                            icon: nil,
-                                           isFavourite: false)
+                                           isFavourite: isFavourite)
         }
         
     }
