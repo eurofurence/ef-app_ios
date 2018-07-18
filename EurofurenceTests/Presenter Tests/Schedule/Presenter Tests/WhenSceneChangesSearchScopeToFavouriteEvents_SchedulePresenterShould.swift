@@ -21,4 +21,12 @@ class WhenSceneChangesSearchScopeToFavouriteEvents_SchedulePresenterShould: XCTe
         XCTAssertTrue(searchViewModel.didFilterToFavourites)
     }
     
+    func testTellTheSearchResultsToAppear() {
+        let context = SchedulePresenterTestBuilder().build()
+        context.simulateSceneDidLoad()
+        context.scene.delegate?.scheduleSceneDidChangeSearchScopeToFavouriteEvents()
+        
+        XCTAssertTrue(context.scene.didShowSearchResults)
+    }
+    
 }

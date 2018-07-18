@@ -21,4 +21,21 @@ class WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould: XCTestCase
         XCTAssertTrue(searchViewModel.didFilterToAllEvents)
     }
     
+    func testTellTheSearchResultsToHide() {
+        let context = SchedulePresenterTestBuilder().build()
+        context.simulateSceneDidLoad()
+        context.scene.delegate?.scheduleSceneDidChangeSearchScopeToAllEvents()
+        
+        XCTAssertTrue(context.scene.didHideSearchResults)
+    }
+    
+    func testNotHideTheSearchResultsWhenQueryActive() {
+        let context = SchedulePresenterTestBuilder().build()
+        context.simulateSceneDidLoad()
+        context.scene.delegate?.scheduleSceneDidUpdateSearchQuery("Something")
+        context.scene.delegate?.scheduleSceneDidChangeSearchScopeToAllEvents()
+        
+        XCTAssertFalse(context.scene.didHideSearchResults)
+    }
+    
 }

@@ -20,6 +20,8 @@ protocol ScheduleScene {
     func selectDay(at index: Int)
     func deselectEvent(at indexPath: IndexPath)
     func deselectSearchResult(at indexPath: IndexPath)
+    func showSearchResults()
+    func hideSearchResults()
 
 }
 

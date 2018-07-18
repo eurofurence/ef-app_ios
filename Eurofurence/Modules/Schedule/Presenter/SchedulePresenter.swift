@@ -129,16 +129,23 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
         delegate.scheduleModuleDidSelectEvent(identifier: identifier)
     }
 
+    private var currentSearchQuery: String = ""
     func scheduleSceneDidUpdateSearchQuery(_ query: String) {
+        currentSearchQuery = query
         searchViewModel?.updateSearchResults(input: query)
     }
 
     func scheduleSceneDidChangeSearchScopeToAllEvents() {
         searchViewModel?.filterToAllEvents()
+
+        if currentSearchQuery.isEmpty {
+            scene.hideSearchResults()
+        }
     }
 
     func scheduleSceneDidChangeSearchScopeToFavouriteEvents() {
         searchViewModel?.filterToFavourites()
+        scene.showSearchResults()
     }
 
     func scheduleSelectDidSelectFavouritesOption() {

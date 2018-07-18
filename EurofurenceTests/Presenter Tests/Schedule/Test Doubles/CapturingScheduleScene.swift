@@ -67,4 +67,14 @@ class CapturingScheduleScene: UIViewController, ScheduleScene {
         searchResultsBinder = binder
     }
     
+    private(set) var didShowSearchResults = false
+    func showSearchResults() {
+        didShowSearchResults = true
+    }
+    
+    private(set) var didHideSearchResults = false
+    func hideSearchResults() {
+        didHideSearchResults = true
+    }
+    
 }

@@ -135,6 +135,14 @@ class ScheduleViewController: UIViewController,
         searchViewController?.updateSearchResults(numberOfItemsPerSection: numberOfItemsPerSection, binder: binder)
     }
 
+    func showSearchResults() {
+        searchController?.searchResultsController?.view.isHidden = false
+    }
+
+    func hideSearchResults() {
+        searchController?.searchResultsController?.view.isHidden = true
+    }
+
     func selectDay(at index: Int) {
         daysCollectionView.selectItem(at: IndexPath(item: index, section: 0),
                                       animated: true,
