@@ -91,6 +91,7 @@ class ScheduleViewController: UIViewController,
     // MARK: UISearchControllerDelegate
 
     func presentSearchController(_ searchController: UISearchController) {
+        resetSearchSceneForSearchingAllEvents()
         present(searchController, animated: true)
     }
 
@@ -181,6 +182,11 @@ class ScheduleViewController: UIViewController,
 
     private func layoutDaysCollectionView() {
         daysCollectionView?.collectionViewLayout.invalidateLayout()
+    }
+    
+    private func resetSearchSceneForSearchingAllEvents() {
+        searchController?.searchBar.selectedScopeButtonIndex = 0
+        delegate?.scheduleSceneDidChangeSearchScopeToAllEvents()
     }
 
     private class Header: UITableViewHeaderFooterView, ScheduleEventGroupHeader {
