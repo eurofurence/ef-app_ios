@@ -38,4 +38,14 @@ class WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould: XCTestCase
         XCTAssertFalse(context.scene.didHideSearchResults)
     }
     
+    func testNotTellTheSearchResultsToAppearWhenQueryChangesToEmptyString() {
+        let context = SchedulePresenterTestBuilder().build()
+        context.simulateSceneDidLoad()
+        context.scene.delegate?.scheduleSceneDidChangeSearchScopeToFavouriteEvents()
+        context.scene.delegate?.scheduleSceneDidChangeSearchScopeToAllEvents()
+        context.scene.delegate?.scheduleSceneDidUpdateSearchQuery("")
+        
+        XCTAssertEqual(1, context.scene.didShowSearchResultsCount)
+    }
+    
 }

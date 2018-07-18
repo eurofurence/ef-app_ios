@@ -29,4 +29,13 @@ class WhenSceneChangesSearchScopeToFavouriteEvents_SchedulePresenterShould: XCTe
         XCTAssertTrue(context.scene.didShowSearchResults)
     }
     
+    func testTellTheSearchResultsToAppearWhenQueryChangesToEmptyString() {
+        let context = SchedulePresenterTestBuilder().build()
+        context.simulateSceneDidLoad()
+        context.scene.delegate?.scheduleSceneDidChangeSearchScopeToFavouriteEvents()
+        context.scene.delegate?.scheduleSceneDidUpdateSearchQuery("")
+        
+        XCTAssertEqual(2, context.scene.didShowSearchResultsCount)
+    }
+    
 }

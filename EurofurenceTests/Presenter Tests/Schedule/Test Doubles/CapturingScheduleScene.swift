@@ -68,8 +68,10 @@ class CapturingScheduleScene: UIViewController, ScheduleScene {
     }
     
     private(set) var didShowSearchResults = false
+    private(set) var didShowSearchResultsCount = 0
     func showSearchResults() {
         didShowSearchResults = true
+        didShowSearchResultsCount += 1
     }
     
     private(set) var didHideSearchResults = false

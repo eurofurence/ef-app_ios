@@ -133,9 +133,14 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
     func scheduleSceneDidUpdateSearchQuery(_ query: String) {
         currentSearchQuery = query
         searchViewModel?.updateSearchResults(input: query)
+
+        if isShowingFavourites {
+            scene.showSearchResults()
+        }
     }
 
     func scheduleSceneDidChangeSearchScopeToAllEvents() {
+        isShowingFavourites = false
         searchViewModel?.filterToAllEvents()
 
         if currentSearchQuery.isEmpty {
@@ -143,9 +148,11 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
         }
     }
 
+    private var isShowingFavourites = false
     func scheduleSceneDidChangeSearchScopeToFavouriteEvents() {
         searchViewModel?.filterToFavourites()
         scene.showSearchResults()
+        isShowingFavourites = true
     }
 
     func scheduleSelectDidSelectFavouritesOption() {
