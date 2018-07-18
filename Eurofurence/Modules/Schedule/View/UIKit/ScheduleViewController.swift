@@ -79,7 +79,13 @@ class ScheduleViewController: UIViewController,
     // MARK: UISearchBarDelegate
 
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        switch selectedScope {
+        case 0:
+            delegate?.scheduleSceneDidChangeSearchScopeToAllEvents()
 
+        default:
+            delegate?.scheduleSceneDidChangeSearchScopeToFavouriteEvents()
+        }
     }
 
     // MARK: UISearchControllerDelegate
