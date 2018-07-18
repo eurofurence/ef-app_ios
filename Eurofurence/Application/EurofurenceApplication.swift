@@ -124,6 +124,23 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func handleRemoteNotification(payload: [String: String], completionHandler: @escaping (ApplicationPushActionResult) -> Void) {
+        if payload[ApplicationNotificationKey.notificationContentKind.rawValue] == ApplicationNotificationContentKind.event.rawValue {
+            guard let identifier = payload[ApplicationNotificationKey.notificationContentIdentifier.rawValue] else {
+                completionHandler(.unknown)
+                return
+            }
+
+            guard schedule.eventModels.contains(where: { $0.identifier.rawValue == identifier }) else {
+                completionHandler(.unknown)
+                return
+            }
+
+            let action = ApplicationPushActionResult.event(Event2.Identifier(identifier))
+            completionHandler(action)
+
+            return
+        }
+
         refreshLocalStore { (error) in
             if error == nil {
                 if let announcementIdentifier = payload["announcement_id"] {

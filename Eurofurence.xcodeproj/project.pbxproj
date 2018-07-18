@@ -992,6 +992,7 @@
 		CAC1E1391F50431000195513 /* NewsPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1381F50431000195513 /* NewsPresenterTestBuilder.swift */; };
 		CAC2337A20FF3EC800E73486 /* WhenRemovingFavouritesRestrictionForEvents_ScheduleShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2337920FF3EC800E73486 /* WhenRemovingFavouritesRestrictionForEvents_ScheduleShould.swift */; };
 		CAC2337C20FF46E800E73486 /* WhenRemovingFavouritesRestrictionForEvents_WhileQueryActive_ScheduleShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2337B20FF46E800E73486 /* WhenRemovingFavouritesRestrictionForEvents_WhileQueryActive_ScheduleShould.swift */; };
+		CAC2337E20FF7F5E00E73486 /* WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2337D20FF7F5E00E73486 /* WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould.swift */; };
 		CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */; };
 		CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */; };
 		CACF1E4620AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */; };
@@ -2229,6 +2230,7 @@
 		CAC1E1381F50431000195513 /* NewsPresenterTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CAC2337920FF3EC800E73486 /* WhenRemovingFavouritesRestrictionForEvents_ScheduleShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRemovingFavouritesRestrictionForEvents_ScheduleShould.swift; sourceTree = "<group>"; };
 		CAC2337B20FF46E800E73486 /* WhenRemovingFavouritesRestrictionForEvents_WhileQueryActive_ScheduleShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRemovingFavouritesRestrictionForEvents_WhileQueryActive_ScheduleShould.swift; sourceTree = "<group>"; };
+		CAC2337D20FF7F5E00E73486 /* WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould.swift; sourceTree = "<group>"; };
 		CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingOut.swift; sourceTree = "<group>"; };
 		CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingLogoutObserver.swift; sourceTree = "<group>"; };
 		CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsModuleSelectsEvent_DirectorShould.swift; sourceTree = "<group>"; };
@@ -5282,6 +5284,7 @@
 			children = (
 				CAA6060E20EF913C00075A4E /* WhenToldToOpenNotification_ThatRepresentsSyncEvent_ApplicationShould.swift */,
 				CA063B4120F2929300241CC9 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift */,
+				CAC2337D20FF7F5E00E73486 /* WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould.swift */,
 			);
 			path = "Notification Handling";
 			sourceTree = "<group>";
@@ -7287,6 +7290,7 @@
 				7820A6E51F140056004C0FB5 /* CapturingAlertRouter.swift in Sources */,
 				CA17FE9020586A15005A4C05 /* StubWikiRenderer.swift in Sources */,
 				CA8276B0204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift in Sources */,
+				CAC2337E20FF7F5E00E73486 /* WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould.swift in Sources */,
 				CA2761C420E02D74000E52AC /* WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould.swift in Sources */,
 				CA36A4DA20DAE4CF00EE6537 /* WhenSceneSelectsSearchResult_DealersPresenterShould.swift in Sources */,
 				CA283AF220ED68BE00F7D195 /* WhenScheduleSceneSelectsAllEventsOption_SchedulePresenterShould.swift in Sources */,

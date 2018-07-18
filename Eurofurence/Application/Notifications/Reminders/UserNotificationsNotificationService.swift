@@ -27,7 +27,7 @@ struct UserNotificationsNotificationService: NotificationsService {
         content.userInfo = payload
 
         let desiredComponents: Set<Calendar.Component> = Set([.year, .month, .day, .hour, .minute])
-        let components = Calendar.current.dateComponents(desiredComponents, from: date)
+        let components = Calendar.current.dateComponents(desiredComponents, from: Date().addingTimeInterval(5))
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
 
         let request = UNNotificationRequest(identifier: identifier.rawValue, content: content, trigger: trigger)

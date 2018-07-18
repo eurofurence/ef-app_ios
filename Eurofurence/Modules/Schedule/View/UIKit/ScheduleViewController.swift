@@ -183,7 +183,7 @@ class ScheduleViewController: UIViewController,
     private func layoutDaysCollectionView() {
         daysCollectionView?.collectionViewLayout.invalidateLayout()
     }
-    
+
     private func resetSearchSceneForSearchingAllEvents() {
         searchController?.searchBar.selectedScopeButtonIndex = 0
         delegate?.scheduleSceneDidChangeSearchScopeToAllEvents()

@@ -179,6 +179,12 @@ class ApplicationDirector: ExternalContentHandler,
                 }
 
                 completionHandler()
+
+            case .event:
+                break
+
+            case .unknown:
+                break
             }
         }
     }
@@ -202,6 +208,12 @@ class ApplicationDirector: ExternalContentHandler,
 
             case .announcement:
                 completionHandler(.newData)
+
+            case .event:
+                break
+
+            case .unknown:
+                break
             }
         }
     }
