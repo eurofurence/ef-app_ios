@@ -92,7 +92,12 @@ class InMemoryEventsSearchController: EventsSearchController {
 
     func removeFavouritesEventsRestriction() {
         favouritesFilter.enabled = false
-        delegate?.searchResultsDidUpdate(to: [])
+
+        if queryFilter.query.isEmpty {
+            delegate?.searchResultsDidUpdate(to: [])
+        } else {
+            regenerateSearchResults()
+        }
     }
 
     private func regenerateSearchResults() {
