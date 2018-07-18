@@ -1054,6 +1054,7 @@
 		CACF26CF20FE590600EDE150 /* WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF26CE20FE590600EDE150 /* WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould.swift */; };
 		CACF26D120FE5B8300EDE150 /* WhenToldToFilterToFavouriteEvents_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF26D020FE5B8300EDE150 /* WhenToldToFilterToFavouriteEvents_ScheduleInteractorShould.swift */; };
 		CACF26D320FE5D2C00EDE150 /* WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF26D220FE5D2C00EDE150 /* WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift */; };
+		CACF26D520FE78DB00EDE150 /* WhenRestrictingSearchResultsToFavourites_ScheduleShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF26D420FE78DB00EDE150 /* WhenRestrictingSearchResultsToFavourites_ScheduleShould.swift */; };
 		CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */; };
 		CAD234351F5D719F004BB959 /* CapturingMessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */; };
 		CAD2343C1F5D7203004BB959 /* MessagesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2343B1F5D7203004BB959 /* MessagesScene.swift */; };
@@ -2288,6 +2289,7 @@
 		CACF26CE20FE590600EDE150 /* WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CACF26D020FE5B8300EDE150 /* WhenToldToFilterToFavouriteEvents_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToFilterToFavouriteEvents_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
 		CACF26D220FE5D2C00EDE150 /* WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
+		CACF26D420FE78DB00EDE150 /* WhenRestrictingSearchResultsToFavourites_ScheduleShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRestrictingSearchResultsToFavourites_ScheduleShould.swift; sourceTree = "<group>"; };
 		CAD234301F5D7156004BB959 /* MessagesPresenterTestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenterTestContext.swift; sourceTree = "<group>"; };
 		CAD234341F5D719F004BB959 /* CapturingMessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingMessagesScene.swift; sourceTree = "<group>"; };
 		CAD2343B1F5D7203004BB959 /* MessagesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesScene.swift; sourceTree = "<group>"; };
@@ -3368,8 +3370,9 @@
 			children = (
 				CA08159920D47B9600F750D4 /* WhenAppHasNoSavedEvents_ThenSyncFinishesSuccessfully_EventsScheduleShould.swift */,
 				CA52C67420D58EC6009D3A9E /* WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould.swift */,
-				CA08159F20D47D4100F750D4 /* WhenRestrictingEventsToSpecificDay_ScheduleShould.swift */,
 				CA52C67620D590BF009D3A9E /* WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould.swift */,
+				CA08159F20D47D4100F750D4 /* WhenRestrictingEventsToSpecificDay_ScheduleShould.swift */,
+				CACF26D420FE78DB00EDE150 /* WhenRestrictingSearchResultsToFavourites_ScheduleShould.swift */,
 				CA52C67820D59357009D3A9E /* WhenSignificantTimeChanges_ScheduleShould.swift */,
 			);
 			path = Schedule;
@@ -7190,6 +7193,7 @@
 				CA131BD320C1866D00DB1036 /* CapturingEventDetailViewModelDelegate.swift in Sources */,
 				CA63757E208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift in Sources */,
 				CA6A8DA920E2CE2C007536CD /* Map2+RandomValueProviding.swift in Sources */,
+				CACF26D520FE78DB00EDE150 /* WhenRestrictingSearchResultsToFavourites_ScheduleShould.swift in Sources */,
 				CA6A8DEE20E4219F007536CD /* FakeMapDetailInteractor.swift in Sources */,
 				CA36A46F20D84C0700EE6537 /* WhenBindingDealerComponent_DealersPresenterShould.swift in Sources */,
 				CA36A45720D8464800EE6537 /* WhenDealersSceneLoads_DealersPresenterShould.swift in Sources */,

@@ -8,7 +8,11 @@
 
 import UIKit
 
-class ScheduleViewController: UIViewController, UISearchControllerDelegate, UISearchResultsUpdating, ScheduleScene {
+class ScheduleViewController: UIViewController,
+                              UISearchControllerDelegate,
+                              UISearchResultsUpdating,
+                              UISearchBarDelegate,
+                              ScheduleScene {
 
     // MARK: Properties
 
@@ -49,6 +53,8 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, UISe
         searchViewController?.onDidSelectSearchResultAtIndexPath = didSelectSearchResult
         searchController = UISearchController(searchResultsController: searchViewController)
         searchController?.delegate = self
+        searchController?.searchBar.delegate = self
+        searchController?.searchBar.scopeButtonTitles = [.allEvents, .favourites]
         searchController?.searchResultsUpdater = self
 
         tableView.refreshControl = refreshControl
@@ -68,6 +74,12 @@ class ScheduleViewController: UIViewController, UISearchControllerDelegate, UISe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         layoutDaysCollectionView()
+    }
+
+    // MARK: UISearchBarDelegate
+
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+
     }
 
     // MARK: UISearchControllerDelegate

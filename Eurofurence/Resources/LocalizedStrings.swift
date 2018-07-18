@@ -173,6 +173,12 @@ public extension String {
     public static let downloadingLatestData = NSLocalizedString("DownloadingLatestData",
                                                                 comment: "Placeholder string displayed on the preload page to indicate to the user the app is updating")
 
+    public static let allEvents = NSLocalizedString("AllEvents",
+                                                    comment: "Title for the button used under the events search bar to search through all events")
+
+    public static let favourites = NSLocalizedString("Favourites",
+                                                     comment: "Title for the button used under the events search bar to search through only the user's favourites")
+
     private struct Formatters {
         static var numbers = NumberFormatter()
     }

@@ -186,6 +186,9 @@ extension AppDelegate {
 
         let buttonsInsideSearchBarAppearance = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])
         buttonsInsideSearchBarAppearance.setTitleTextAttributes(whiteTextAttributes, for: .normal)
+
+        let segmentControlAppearance = UISegmentedControl.appearance()
+        segmentControlAppearance.tintColor = .white
     }
 
 }

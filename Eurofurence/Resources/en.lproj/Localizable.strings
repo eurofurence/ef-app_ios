@@ -81,3 +81,6 @@
 
 "EventReminderBodyFormat" = "Starting at %@, in %@";
 "DownloadingLatestData" = "Updating...";
+
+"AllEvents" = "All Events";
+"Favourites" = "Favourites";

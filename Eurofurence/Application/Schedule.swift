@@ -183,7 +183,7 @@ class Schedule {
 
     var dayModels = [Day]()
 
-    private var favouriteEventIdentifiers = [Event2.Identifier]() {
+    private(set) var favouriteEventIdentifiers = [Event2.Identifier]() {
         didSet {
             favouriteEventIdentifiers.sort { (first, second) -> Bool in
                 guard let firstEvent = eventModels.first(where: { $0.identifier == first }) else { return false }
