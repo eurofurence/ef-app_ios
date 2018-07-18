@@ -181,6 +181,14 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
         }
 
+        func favouriteEvent(at indexPath: IndexPath) {
+
+        }
+
+        func unfavouriteEvent(at indexPath: IndexPath) {
+
+        }
+
         func refreshServiceDidBeginRefreshing() {
             delegate?.scheduleViewModelDidBeginRefreshing()
         }

@@ -13,6 +13,7 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
     private struct EventsBinder: ScheduleSceneBinder {
 
         var viewModels: [ScheduleEventGroupViewModel]
+        var scheduleViewModel: ScheduleViewModel?
 
         func bind(_ header: ScheduleEventGroupHeader, forGroupAt index: Int) {
             let group = viewModels[index]
@@ -32,6 +33,21 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
                 eventComponent.showFavouriteEventIndicator()
             } else {
                 eventComponent.hideFavouriteEventIndicator()
+            }
+        }
+
+        func eventActionForComponent(at indexPath: IndexPath) -> ScheduleEventComponentAction {
+            let group = viewModels[indexPath.section]
+            let event = group.events[indexPath.item]
+
+            if event.isFavourite {
+                return ScheduleEventComponentAction(title: .unfavourite, run: {
+                    self.scheduleViewModel?.unfavouriteEvent(at: indexPath)
+                })
+            } else {
+                return ScheduleEventComponentAction(title: .favourite, run: {
+                    self.scheduleViewModel?.favouriteEvent(at: indexPath)
+                })
             }
         }
 
@@ -181,7 +197,7 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
 
     func scheduleViewModelDidUpdateEvents(_ events: [ScheduleEventGroupViewModel]) {
         let numberOfItemsPerGroup = events.map { $0.events.count }
-        let binder = EventsBinder(viewModels: events)
+        let binder = EventsBinder(viewModels: events, scheduleViewModel: viewModel)
         scene.bind(numberOfItemsPerSection: numberOfItemsPerGroup, using: binder)
     }
 
