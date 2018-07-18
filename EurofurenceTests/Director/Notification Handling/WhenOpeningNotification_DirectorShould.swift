@@ -31,6 +31,16 @@ class WhenOpeningNotification_DirectorShould: XCTestCase {
         XCTAssertTrue(didInvokeHandler)
     }
     
+    func testInvokeTheHandlerForUnknownContent() {
+        let context = ApplicationDirectorTestBuilder().build()
+        let payload = [String.random : String.random]
+        context.notificationHandling.stub(.unknown, for: payload)
+        var didInvokeHandler = false
+        context.director.openNotification(payload) { didInvokeHandler = true }
+        
+        XCTAssertTrue(didInvokeHandler)
+    }
+    
     func testInvokeTheHandlerForAnnouncementNotifications() {
         let context = ApplicationDirectorTestBuilder().build()
         let payload = [String.random : String.random]

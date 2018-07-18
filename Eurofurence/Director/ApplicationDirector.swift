@@ -192,7 +192,7 @@ class ApplicationDirector: ExternalContentHandler,
                 completionHandler()
 
             case .unknown:
-                break
+                completionHandler()
             }
         }
     }
@@ -221,7 +221,7 @@ class ApplicationDirector: ExternalContentHandler,
                 completionHandler(.noData)
 
             case .unknown:
-                break
+                completionHandler(.noData)
             }
         }
     }

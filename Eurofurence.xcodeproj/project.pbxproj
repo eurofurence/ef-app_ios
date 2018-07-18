@@ -994,6 +994,7 @@
 		CAC2337C20FF46E800E73486 /* WhenRemovingFavouritesRestrictionForEvents_WhileQueryActive_ScheduleShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2337B20FF46E800E73486 /* WhenRemovingFavouritesRestrictionForEvents_WhileQueryActive_ScheduleShould.swift */; };
 		CAC2337E20FF7F5E00E73486 /* WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2337D20FF7F5E00E73486 /* WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould.swift */; };
 		CAC2338020FF86EE00E73486 /* WhenToldToHandleNotification_ThatConcludesWithEvent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2337F20FF86EE00E73486 /* WhenToldToHandleNotification_ThatConcludesWithEvent_DirectorShould.swift */; };
+		CAC2338220FF8A4A00E73486 /* WhenToldToHandleNotification_ThatConcludesWithUnknownContent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2338120FF8A4A00E73486 /* WhenToldToHandleNotification_ThatConcludesWithUnknownContent_DirectorShould.swift */; };
 		CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */; };
 		CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */; };
 		CACF1E4620AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */; };
@@ -2233,6 +2234,7 @@
 		CAC2337B20FF46E800E73486 /* WhenRemovingFavouritesRestrictionForEvents_WhileQueryActive_ScheduleShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRemovingFavouritesRestrictionForEvents_WhileQueryActive_ScheduleShould.swift; sourceTree = "<group>"; };
 		CAC2337D20FF7F5E00E73486 /* WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould.swift; sourceTree = "<group>"; };
 		CAC2337F20FF86EE00E73486 /* WhenToldToHandleNotification_ThatConcludesWithEvent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToHandleNotification_ThatConcludesWithEvent_DirectorShould.swift; sourceTree = "<group>"; };
+		CAC2338120FF8A4A00E73486 /* WhenToldToHandleNotification_ThatConcludesWithUnknownContent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToHandleNotification_ThatConcludesWithUnknownContent_DirectorShould.swift; sourceTree = "<group>"; };
 		CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingOut.swift; sourceTree = "<group>"; };
 		CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingLogoutObserver.swift; sourceTree = "<group>"; };
 		CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsModuleSelectsEvent_DirectorShould.swift; sourceTree = "<group>"; };
@@ -3360,6 +3362,7 @@
 				CA063B3F20F2869600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithAnnouncement_DirectorShould.swift */,
 				CAC2337F20FF86EE00E73486 /* WhenToldToHandleNotification_ThatConcludesWithEvent_DirectorShould.swift */,
 				CA063B3720F2318A00241CC9 /* WhenToldToHandleNotification_ThatConcludesWithSuccessfulSync_DirectorShould.swift */,
+				CAC2338120FF8A4A00E73486 /* WhenToldToHandleNotification_ThatConcludesWithUnknownContent_DirectorShould.swift */,
 				CA063B3D20F25EF600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithUnsuccessfulSync_DirectorShould.swift */,
 			);
 			path = "Notification Handling";
@@ -7545,6 +7548,7 @@
 				CA283A6F20E8DA5D00F7D195 /* CapturingDealersSearchViewModelDelegate.swift in Sources */,
 				CA6A8DBC20E2DF09007536CD /* WhenFetchingMapImageData_ApplicationShould.swift in Sources */,
 				CA637562208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift in Sources */,
+				CAC2338220FF8A4A00E73486 /* WhenToldToHandleNotification_ThatConcludesWithUnknownContent_DirectorShould.swift in Sources */,
 				CA162E8420A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift in Sources */,
 				CA36A44320D703FA00EE6537 /* CapturingEventsSearchControllerDelegate.swift in Sources */,
 				CA250DD820D6E4AF00E7513C /* WhenBindingGroupFromSearchResult_SchedulePresenterShould.swift in Sources */,
