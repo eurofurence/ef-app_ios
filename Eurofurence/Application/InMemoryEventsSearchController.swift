@@ -91,7 +91,8 @@ class InMemoryEventsSearchController: EventsSearchController {
     }
 
     func removeFavouritesEventsRestriction() {
-
+        favouritesFilter.enabled = false
+        delegate?.searchResultsDidUpdate(to: [])
     }
 
     private func regenerateSearchResults() {

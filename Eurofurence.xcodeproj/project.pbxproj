@@ -990,6 +990,7 @@
 		CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E12A1F5040E100195513 /* NewsScene.swift */; };
 		CAC1E1311F50413500195513 /* CapturingNewsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1301F50413500195513 /* CapturingNewsScene.swift */; };
 		CAC1E1391F50431000195513 /* NewsPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC1E1381F50431000195513 /* NewsPresenterTestBuilder.swift */; };
+		CAC2337A20FF3EC800E73486 /* WhenRemovingFavouritesRestrictionForEvents_ScheduleShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2337920FF3EC800E73486 /* WhenRemovingFavouritesRestrictionForEvents_ScheduleShould.swift */; };
 		CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */; };
 		CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */; };
 		CACF1E4620AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */; };
@@ -2225,6 +2226,7 @@
 		CAC1E12A1F5040E100195513 /* NewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsScene.swift; sourceTree = "<group>"; };
 		CAC1E1301F50413500195513 /* CapturingNewsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingNewsScene.swift; sourceTree = "<group>"; };
 		CAC1E1381F50431000195513 /* NewsPresenterTestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPresenterTestBuilder.swift; sourceTree = "<group>"; };
+		CAC2337920FF3EC800E73486 /* WhenRemovingFavouritesRestrictionForEvents_ScheduleShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRemovingFavouritesRestrictionForEvents_ScheduleShould.swift; sourceTree = "<group>"; };
 		CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingOut.swift; sourceTree = "<group>"; };
 		CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingLogoutObserver.swift; sourceTree = "<group>"; };
 		CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsModuleSelectsEvent_DirectorShould.swift; sourceTree = "<group>"; };
@@ -3371,6 +3373,7 @@
 				CA08159920D47B9600F750D4 /* WhenAppHasNoSavedEvents_ThenSyncFinishesSuccessfully_EventsScheduleShould.swift */,
 				CA52C67420D58EC6009D3A9E /* WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould.swift */,
 				CA52C67620D590BF009D3A9E /* WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould.swift */,
+				CAC2337920FF3EC800E73486 /* WhenRemovingFavouritesRestrictionForEvents_ScheduleShould.swift */,
 				CA08159F20D47D4100F750D4 /* WhenRestrictingEventsToSpecificDay_ScheduleShould.swift */,
 				CACF26D420FE78DB00EDE150 /* WhenRestrictingSearchResultsToFavourites_ScheduleShould.swift */,
 				CA52C67820D59357009D3A9E /* WhenSignificantTimeChanges_ScheduleShould.swift */,
@@ -7442,6 +7445,7 @@
 				CACF1E8C20B351EA00D904B5 /* FakeDateRangeFormatter.swift in Sources */,
 				78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */,
 				CAD6882C208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift in Sources */,
+				CAC2337A20FF3EC800E73486 /* WhenRemovingFavouritesRestrictionForEvents_ScheduleShould.swift in Sources */,
 				CA36A49120D92EC100EE6537 /* FakeDealersService.swift in Sources */,
 				CA162EA820AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift in Sources */,
 				CA36A47F20D85E0500EE6537 /* WhenBindingDealerComponent_ForDealerWithoutAfterDarkContent_DealersPresenterShould.swift in Sources */,
