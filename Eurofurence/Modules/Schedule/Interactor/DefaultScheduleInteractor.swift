@@ -33,6 +33,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         let schedule = eventsService.makeEventsSchedule()
         let searchController = eventsService.makeEventsSearchController()
         viewModel = ViewModel(schedule: schedule,
+                              eventsService: eventsService,
                               hoursDateFormatter: hoursDateFormatter,
                               shortFormDateFormatter: shortFormDateFormatter,
                               refreshService: refreshService)
@@ -94,6 +95,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         }
 
         private let schedule: EventsSchedule
+        private let eventsService: EventsService
         private let hoursDateFormatter: HoursDateFormatter
         private let shortFormDateFormatter: ShortFormDateFormatter
         private let refreshService: RefreshService
@@ -101,10 +103,12 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         private var favouriteEvents = [Event2.Identifier]()
 
         init(schedule: EventsSchedule,
+             eventsService: EventsService,
              hoursDateFormatter: HoursDateFormatter,
              shortFormDateFormatter: ShortFormDateFormatter,
              refreshService: RefreshService) {
             self.schedule = schedule
+            self.eventsService = eventsService
             self.hoursDateFormatter = hoursDateFormatter
             self.shortFormDateFormatter = shortFormDateFormatter
             self.refreshService = refreshService
@@ -182,11 +186,13 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         }
 
         func favouriteEvent(at indexPath: IndexPath) {
-
+            let event = rawModelGroups[indexPath.section].events[indexPath.item]
+            eventsService.favouriteEvent(identifier: event.identifier)
         }
 
         func unfavouriteEvent(at indexPath: IndexPath) {
-
+            let event = rawModelGroups[indexPath.section].events[indexPath.item]
+            eventsService.unfavouriteEvent(identifier: event.identifier)
         }
 
         func refreshServiceDidBeginRefreshing() {

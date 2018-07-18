@@ -995,6 +995,8 @@
 		CAC2337E20FF7F5E00E73486 /* WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2337D20FF7F5E00E73486 /* WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould.swift */; };
 		CAC2338020FF86EE00E73486 /* WhenToldToHandleNotification_ThatConcludesWithEvent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2337F20FF86EE00E73486 /* WhenToldToHandleNotification_ThatConcludesWithEvent_DirectorShould.swift */; };
 		CAC2338220FF8A4A00E73486 /* WhenToldToHandleNotification_ThatConcludesWithUnknownContent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2338120FF8A4A00E73486 /* WhenToldToHandleNotification_ThatConcludesWithUnknownContent_DirectorShould.swift */; };
+		CAC2338420FFDE0900E73486 /* WhenToldToFavouriteEvent_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2338320FFDE0900E73486 /* WhenToldToFavouriteEvent_ScheduleInteractorShould.swift */; };
+		CAC2338620FFE1BD00E73486 /* WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2338520FFE1BD00E73486 /* WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift */; };
 		CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */; };
 		CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */; };
 		CACF1E4620AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */; };
@@ -2235,6 +2237,8 @@
 		CAC2337D20FF7F5E00E73486 /* WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould.swift; sourceTree = "<group>"; };
 		CAC2337F20FF86EE00E73486 /* WhenToldToHandleNotification_ThatConcludesWithEvent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToHandleNotification_ThatConcludesWithEvent_DirectorShould.swift; sourceTree = "<group>"; };
 		CAC2338120FF8A4A00E73486 /* WhenToldToHandleNotification_ThatConcludesWithUnknownContent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToHandleNotification_ThatConcludesWithUnknownContent_DirectorShould.swift; sourceTree = "<group>"; };
+		CAC2338320FFDE0900E73486 /* WhenToldToFavouriteEvent_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToFavouriteEvent_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
+		CAC2338520FFE1BD00E73486 /* WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
 		CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingOut.swift; sourceTree = "<group>"; };
 		CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingLogoutObserver.swift; sourceTree = "<group>"; };
 		CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsModuleSelectsEvent_DirectorShould.swift; sourceTree = "<group>"; };
@@ -3317,9 +3321,11 @@
 				CA283AE120EC05B700F7D195 /* WhenPreparingViewModelForFavouritedEvent_ScheduleInteractorShould.swift */,
 				CA250DE320D6F68700E7513C /* WhenSearchControllerProducesNewResults_ScheduleInteractorShould.swift */,
 				CA250DDB20D6E85700E7513C /* WhenSearching_ScheduleInteractorShould.swift */,
+				CAC2338320FFDE0900E73486 /* WhenToldToFavouriteEvent_ScheduleInteractorShould.swift */,
 				CACF26D220FE5D2C00EDE150 /* WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift */,
 				CACF26D020FE5B8300EDE150 /* WhenToldToFilterToFavouriteEvents_ScheduleInteractorShould.swift */,
 				CA283A7B20E91F3600F7D195 /* WhenToldToRefresh_ScheduleViewModelShould.swift */,
+				CAC2338520FFE1BD00E73486 /* WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift */,
 				CA08159220D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift */,
 			);
 			path = "Interactor Tests";
@@ -7243,6 +7249,7 @@
 				CA1B6F2B20DB8A9C00ADF414 /* BeforeDealerDetailSceneLoads_DealerDetailPresenterShould.swift in Sources */,
 				CA283A5C20E6E40500F7D195 /* BeforeSyncInitiated_ApplicationShould.swift in Sources */,
 				CA36A45120D773B300EE6537 /* WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould.swift in Sources */,
+				CAC2338620FFE1BD00E73486 /* WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift in Sources */,
 				CA804DDA1F20D2F500E07A4A /* V2LoginAPITests.swift in Sources */,
 				CA283AB220EAA1AB00F7D195 /* AnnouncementsPresenterTestBuilder.swift in Sources */,
 				CA283AD420EAC84300F7D195 /* WhenPreparingViewModel_AnnouncementsInteractorShould.swift in Sources */,
@@ -7371,6 +7378,7 @@
 				CAF81C7120DDA8EA00898C52 /* WhenProducingDealerViewModel_HappyPath_DealerDetailInteractorShould.swift in Sources */,
 				CA63756E208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift in Sources */,
 				CA063B4220F2929300241CC9 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift in Sources */,
+				CAC2338420FFDE0900E73486 /* WhenToldToFavouriteEvent_ScheduleInteractorShould.swift in Sources */,
 				CA2D07F91FE9021A00BFD785 /* WhenResolvingDataStoreState.swift in Sources */,
 				CA637576208CD96A00536BE2 /* WhenMessagesModuleRequestsUserResolution_DirectorShould.swift in Sources */,
 				CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */,
