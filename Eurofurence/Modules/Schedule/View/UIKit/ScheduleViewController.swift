@@ -235,6 +235,17 @@ class ScheduleViewController: UIViewController,
             onDidSelectRow(indexPath)
         }
 
+        func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+            let action = binder.eventActionForComponent(at: indexPath)
+            let rowAction: UITableViewRowAction = UITableViewRowAction(style: .normal, title: action.title, handler: { (_, _) in
+                action.run()
+            })
+
+            rowAction.backgroundColor = .pantone330U
+
+            return [rowAction]
+        }
+
     }
 
     private class DaysController: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

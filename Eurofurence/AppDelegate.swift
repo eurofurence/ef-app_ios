@@ -159,7 +159,7 @@ extension AppDelegate {
         tabBarAppearance.backgroundImage = pantone330UColourImage
         tabBarAppearance.shadowImage = pantone330UColourImage
 
-        let buttonInsideTableView = UIButton.appearance(whenContainedInInstancesOf: [UITableView.self])
+        let buttonInsideTableView = UIButton.appearance(whenContainedInInstancesOf: [UITableViewCell.self])
         buttonInsideTableView.setTitleColor(.pantone330U, for: .normal)
 
         let tableViewProxy = UITableView.appearance()
