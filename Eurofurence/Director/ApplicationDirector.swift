@@ -180,8 +180,16 @@ class ApplicationDirector: ExternalContentHandler,
 
                 completionHandler()
 
-            case .event:
-                break
+            case .event(let event):
+                let module = self.eventDetailModuleProviding.makeEventDetailModule(for: event)
+                if  let scheduleNavigationController = self.scheduleViewController?.navigationController,
+                    let tabBarController = self.tabController,
+                    let index = tabBarController.viewControllers?.index(of: scheduleNavigationController) {
+                    tabBarController.selectedIndex = index
+                    scheduleNavigationController.pushViewController(module, animated: self.animate)
+                }
+
+                completionHandler()
 
             case .unknown:
                 break
@@ -210,7 +218,7 @@ class ApplicationDirector: ExternalContentHandler,
                 completionHandler(.newData)
 
             case .event:
-                break
+                completionHandler(.noData)
 
             case .unknown:
                 break
