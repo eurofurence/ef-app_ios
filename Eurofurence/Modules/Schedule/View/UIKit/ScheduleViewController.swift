@@ -69,6 +69,7 @@ class ScheduleViewController: UIViewController,
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         layoutDaysCollectionView()
+        tableView.setEditing(false, animated: false)
     }
 
     override func viewWillAppear(_ animated: Bool) {

@@ -35,6 +35,11 @@ class ScheduleSearchTableViewController: UITableViewController {
         tableView.register(EventTableViewCell.self)
     }
 
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        tableView.setEditing(false, animated: false)
+    }
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return numberOfItemsPerSection.count
     }
