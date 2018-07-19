@@ -38,6 +38,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
                               shortFormDateFormatter: shortFormDateFormatter,
                               refreshService: refreshService)
         searchViewModel = SearchViewModel(searchController: searchController,
+                                          eventsService: eventsService,
                                           shortFormDayAndTimeFormatter: shortFormDayAndTimeFormatter,
                                           hoursDateFormatter: hoursDateFormatter)
 
@@ -222,6 +223,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         }
 
         private let searchController: EventsSearchController
+        private let eventsService: EventsService
         private let shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter
         private let hoursDateFormatter: HoursDateFormatter
         private var rawModelGroups = [EventsGroupedByDate]()
@@ -229,8 +231,10 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         private var favouriteEvents = [Event2.Identifier]()
 
         init(searchController: EventsSearchController,
+             eventsService: EventsService,
              shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter,
              hoursDateFormatter: HoursDateFormatter) {
+            self.eventsService = eventsService
             self.searchController = searchController
             self.hoursDateFormatter = hoursDateFormatter
             self.shortFormDayAndTimeFormatter = shortFormDayAndTimeFormatter
@@ -267,6 +271,16 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) {
             favouriteEvents = identifiers
             regenerateViewModel()
+        }
+
+        func favouriteEvent(at indexPath: IndexPath) {
+            let event = rawModelGroups[indexPath.section].events[indexPath.item]
+            eventsService.favouriteEvent(identifier: event.identifier)
+        }
+
+        func unfavouriteEvent(at indexPath: IndexPath) {
+            let event = rawModelGroups[indexPath.section].events[indexPath.item]
+            eventsService.unfavouriteEvent(identifier: event.identifier)
         }
 
         private func regenerateViewModel() {

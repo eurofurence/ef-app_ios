@@ -15,6 +15,8 @@ protocol ScheduleSearchViewModel {
     func identifierForEvent(at indexPath: IndexPath) -> Event2.Identifier?
     func filterToFavourites()
     func filterToAllEvents()
+    func favouriteEvent(at indexPath: IndexPath)
+    func unfavouriteEvent(at indexPath: IndexPath)
 
 }
 

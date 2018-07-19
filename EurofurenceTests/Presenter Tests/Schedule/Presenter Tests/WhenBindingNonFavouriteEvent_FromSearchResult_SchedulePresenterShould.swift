@@ -43,4 +43,35 @@ class WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCT
         XCTAssertTrue(component.didHideFavouriteEventIndicator)
     }
     
+    func testSupplyFavouriteActionInformation() {
+        let searchViewModel = CapturingScheduleSearchViewModel()
+        let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
+        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        context.simulateSceneDidLoad()
+        var searchResult = ScheduleEventViewModel.random
+        searchResult.isFavourite = false
+        let results = [ScheduleEventGroupViewModel(title: .random, events: [searchResult])]
+        searchViewModel.simulateSearchResultsUpdated(results)
+        let indexPath = IndexPath(item: 0, section: 0)
+        let action = context.scene.searchResultsBinder?.eventActionForComponent(at: indexPath)
+        
+        XCTAssertEqual(.favourite, action?.title)
+    }
+    
+    func testTellViewModelToFavouriteEventAtIndexPathWhenInvokingAction() {
+        let searchViewModel = CapturingScheduleSearchViewModel()
+        let interactor = FakeScheduleInteractor(searchViewModel: searchViewModel)
+        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        context.simulateSceneDidLoad()
+        var searchResult = ScheduleEventViewModel.random
+        searchResult.isFavourite = false
+        let results = [ScheduleEventGroupViewModel(title: .random, events: [searchResult])]
+        searchViewModel.simulateSearchResultsUpdated(results)
+        let indexPath = IndexPath(item: 0, section: 0)
+        let action = context.scene.searchResultsBinder?.eventActionForComponent(at: indexPath)
+        action?.run()
+        
+        XCTAssertEqual(indexPath, searchViewModel.indexPathForFavouritedEvent)
+    }
+    
 }

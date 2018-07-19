@@ -997,6 +997,8 @@
 		CAC2338220FF8A4A00E73486 /* WhenToldToHandleNotification_ThatConcludesWithUnknownContent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2338120FF8A4A00E73486 /* WhenToldToHandleNotification_ThatConcludesWithUnknownContent_DirectorShould.swift */; };
 		CAC2338420FFDE0900E73486 /* WhenToldToFavouriteEvent_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2338320FFDE0900E73486 /* WhenToldToFavouriteEvent_ScheduleInteractorShould.swift */; };
 		CAC2338620FFE1BD00E73486 /* WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2338520FFE1BD00E73486 /* WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift */; };
+		CAC233882100C0F700E73486 /* WhenToldToFavouriteEvent_FromSearchViewModel_InteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC233872100C0F700E73486 /* WhenToldToFavouriteEvent_FromSearchViewModel_InteractorShould.swift */; };
+		CAC2338A2100C4DA00E73486 /* WhenToldToUnfavouriteEvent_FromSearchViewModel_InteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC233892100C4DA00E73486 /* WhenToldToUnfavouriteEvent_FromSearchViewModel_InteractorShould.swift */; };
 		CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */; };
 		CACE1B071F2BBEC900DFCB60 /* CapturingLogoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */; };
 		CACF1E4620AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */; };
@@ -2239,6 +2241,8 @@
 		CAC2338120FF8A4A00E73486 /* WhenToldToHandleNotification_ThatConcludesWithUnknownContent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToHandleNotification_ThatConcludesWithUnknownContent_DirectorShould.swift; sourceTree = "<group>"; };
 		CAC2338320FFDE0900E73486 /* WhenToldToFavouriteEvent_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToFavouriteEvent_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
 		CAC2338520FFE1BD00E73486 /* WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
+		CAC233872100C0F700E73486 /* WhenToldToFavouriteEvent_FromSearchViewModel_InteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToFavouriteEvent_FromSearchViewModel_InteractorShould.swift; sourceTree = "<group>"; };
+		CAC233892100C4DA00E73486 /* WhenToldToUnfavouriteEvent_FromSearchViewModel_InteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToUnfavouriteEvent_FromSearchViewModel_InteractorShould.swift; sourceTree = "<group>"; };
 		CACE1B041F2BBA1A00DFCB60 /* WhenLoggingOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingOut.swift; sourceTree = "<group>"; };
 		CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingLogoutObserver.swift; sourceTree = "<group>"; };
 		CACF1E4520AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenNewsModuleSelectsEvent_DirectorShould.swift; sourceTree = "<group>"; };
@@ -3321,10 +3325,12 @@
 				CA283AE120EC05B700F7D195 /* WhenPreparingViewModelForFavouritedEvent_ScheduleInteractorShould.swift */,
 				CA250DE320D6F68700E7513C /* WhenSearchControllerProducesNewResults_ScheduleInteractorShould.swift */,
 				CA250DDB20D6E85700E7513C /* WhenSearching_ScheduleInteractorShould.swift */,
+				CAC233872100C0F700E73486 /* WhenToldToFavouriteEvent_FromSearchViewModel_InteractorShould.swift */,
 				CAC2338320FFDE0900E73486 /* WhenToldToFavouriteEvent_ScheduleInteractorShould.swift */,
 				CACF26D220FE5D2C00EDE150 /* WhenToldToFilterToAllEvents_ScheduleInteractorShould.swift */,
 				CACF26D020FE5B8300EDE150 /* WhenToldToFilterToFavouriteEvents_ScheduleInteractorShould.swift */,
 				CA283A7B20E91F3600F7D195 /* WhenToldToRefresh_ScheduleViewModelShould.swift */,
+				CAC233892100C4DA00E73486 /* WhenToldToUnfavouriteEvent_FromSearchViewModel_InteractorShould.swift */,
 				CAC2338520FFE1BD00E73486 /* WhenToldToUnfavouriteEvent_ScheduleInteractorShould.swift */,
 				CA08159220D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift */,
 			);
@@ -7312,6 +7318,7 @@
 				CACF1EA220B59C3A00D904B5 /* EventDescriptionViewModel+RandomValueProviding.swift in Sources */,
 				781A94381F1A19BD002DE70F /* CapturingFirebaseAdapter.swift in Sources */,
 				CA6A8E0920E57795007536CD /* WhenFetchingMapContentThatRevealsRoom_ApplicationShould.swift in Sources */,
+				CAC2338A2100C4DA00E73486 /* WhenToldToUnfavouriteEvent_FromSearchViewModel_InteractorShould.swift in Sources */,
 				CA36A4C420DA759800EE6537 /* CapturingDealersSearchViewModel.swift in Sources */,
 				CA637550208CBBA000536BE2 /* StubTabModuleFactory.swift in Sources */,
 				CA3990F220ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */,
@@ -7463,6 +7470,7 @@
 				CAC1E1391F50431000195513 /* NewsPresenterTestBuilder.swift in Sources */,
 				CA27618820DFEC73000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCannotHandleURL_ApplicationShould.swift in Sources */,
 				CA6375B9208E03C000536BE2 /* CapturingDealersScene.swift in Sources */,
+				CAC233882100C0F700E73486 /* WhenToldToFavouriteEvent_FromSearchViewModel_InteractorShould.swift in Sources */,
 				CABA83F220CE332500DD0795 /* WhenPerformingSubsequentSync_ApplicationShould.swift in Sources */,
 				CACF1E8C20B351EA00D904B5 /* FakeDateRangeFormatter.swift in Sources */,
 				78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */,

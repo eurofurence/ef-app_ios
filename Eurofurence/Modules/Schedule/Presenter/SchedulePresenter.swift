@@ -67,6 +67,7 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
     private struct SearchResultsBinder: ScheduleSceneSearchResultsBinder {
 
         var viewModels: [ScheduleEventGroupViewModel]
+        var scheduleSearchViewModel: ScheduleSearchViewModel?
 
         func bind(_ eventComponent: ScheduleEventComponent, forSearchResultAt indexPath: IndexPath) {
             let group = viewModels[indexPath.section]
@@ -87,6 +88,21 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
         func bind(_ header: ScheduleEventGroupHeader, forSearchResultGroupAt index: Int) {
             let group = viewModels[index]
             header.setEventGroupTitle(group.title)
+        }
+
+        func eventActionForComponent(at indexPath: IndexPath) -> ScheduleEventComponentAction {
+            let group = viewModels[indexPath.section]
+            let event = group.events[indexPath.item]
+
+            if event.isFavourite {
+                return ScheduleEventComponentAction(title: .unfavourite, run: {
+                    self.scheduleSearchViewModel?.unfavouriteEvent(at: indexPath)
+                })
+            } else {
+                return ScheduleEventComponentAction(title: .favourite, run: {
+                    self.scheduleSearchViewModel?.favouriteEvent(at: indexPath)
+                })
+            }
         }
 
     }
@@ -203,7 +219,7 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
 
     func scheduleSearchResultsUpdated(_ results: [ScheduleEventGroupViewModel]) {
         let numberOfItemsPerGroup = results.map { $0.events.count }
-        let binder = SearchResultsBinder(viewModels: results)
+        let binder = SearchResultsBinder(viewModels: results, scheduleSearchViewModel: searchViewModel)
         scene.bindSearchResults(numberOfItemsPerSection: numberOfItemsPerGroup, using: binder)
     }
 

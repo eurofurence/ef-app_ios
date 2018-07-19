@@ -36,6 +36,16 @@ class CapturingScheduleSearchViewModel: ScheduleSearchViewModel {
         didFilterToAllEvents = true
     }
     
+    private(set) var indexPathForFavouritedEvent: IndexPath?
+    func favouriteEvent(at indexPath: IndexPath) {
+        indexPathForFavouritedEvent = indexPath
+    }
+    
+    private(set) var indexPathForUnfavouritedEvent: IndexPath?
+    func unfavouriteEvent(at indexPath: IndexPath) {
+        indexPathForUnfavouritedEvent = indexPath
+    }
+    
 }
 
 extension CapturingScheduleSearchViewModel {
