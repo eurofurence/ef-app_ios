@@ -149,6 +149,7 @@ extension AppDelegate {
         let navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.isTranslucent = false
         navigationBarAppearance.barTintColor = .pantone330U
+        navigationBarAppearance.tintColor = .white
         navigationBarAppearance.titleTextAttributes = whiteTextAttributes
         navigationBarAppearance.shadowImage = pantone330UColourImage
 
