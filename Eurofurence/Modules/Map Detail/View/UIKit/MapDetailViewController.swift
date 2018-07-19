@@ -53,6 +53,7 @@ class MapDetailViewController: UIViewController, UIScrollViewDelegate, MapDetail
 
         if let image = image {
             scrollView.contentSize = image.size
+            adjustZoomLevelToFit(image)
         }
     }
 
@@ -66,6 +67,25 @@ class MapDetailViewController: UIViewController, UIScrollViewDelegate, MapDetail
 
     func show(contextualContent: MapInformationContextualContent) {
 
+    }
+
+    // MARK: Private
+
+    private func adjustZoomLevelToFit(_ image: UIImage) {
+        let imageSize = image.size
+        let scrollViewWidth: CGFloat = scrollView.bounds.width
+        let scrollViewHeight: CGFloat = scrollView.bounds.height
+        let deltaWidth = abs(imageSize.width - scrollViewWidth)
+        let deltaHeight = abs(imageSize.height - scrollViewHeight)
+
+        let factor: CGFloat
+        if deltaWidth / scrollViewWidth < deltaHeight / scrollViewHeight {
+            factor = scrollViewWidth / imageSize.width
+        } else {
+            factor = scrollViewHeight / imageSize.height
+        }
+
+        scrollView.zoomScale = min(1.0, factor)
     }
 
 }
