@@ -50,4 +50,26 @@ class WhenRestrictingSearchResultsToFavourites_ScheduleShould: XCTestCase {
         XCTAssertFalse(delegate.capturedSearchResults.contains(where: { $0.identifier == notAFavourite.element }))
     }
     
+    func testUpdateDelegateWhenUnfavouritingEvent() {
+        let response = APISyncResponse.randomWithoutDeletions
+        let dataStore = CapturingEurofurenceDataStore()
+        let favourites = response.events.changed.map({ Event2.Identifier($0.identifier) })
+        let randomFavourite = favourites.randomElement()
+        dataStore.save(response) { (transaction) in
+            favourites.forEach(transaction.saveFavouriteEventIdentifier)
+        }
+        
+        let context = ApplicationTestBuilder().with(dataStore).build()
+        let schedule = context.application.makeEventsSearchController()
+        let delegate = CapturingEventsSearchControllerDelegate()
+        schedule.setResultsDelegate(delegate)
+        schedule.restrictResultsToFavourites()
+        context.application.unfavouriteEvent(identifier: randomFavourite.element)
+        var expected = favourites
+        expected.remove(at: randomFavourite.index)
+        let searchResultIdentifiers = delegate.capturedSearchResults.map({ $0.identifier })
+        
+        XCTAssertEqual(Set(expected), Set(searchResultIdentifiers))
+    }
+    
 }

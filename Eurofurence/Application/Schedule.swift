@@ -140,6 +140,10 @@ class Schedule {
 
     struct ChangedEvent {}
 
+    struct EventUnfavouritedEvent {
+        var identifier: Event2.Identifier
+    }
+
     private class ScheduleUpdater: EventConsumer {
 
         private let schedule: Schedule
@@ -242,7 +246,7 @@ class Schedule {
     }
 
     func makeEventsSearchController() -> EventsSearchController {
-        return InMemoryEventsSearchController(schedule: self)
+        return InMemoryEventsSearchController(schedule: self, eventBus: eventBus)
     }
 
     func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2?) -> Void) {
@@ -290,6 +294,9 @@ class Schedule {
         }
 
         notificationsService.removeEventReminder(for: identifier)
+
+        let event = EventUnfavouritedEvent(identifier: identifier)
+        eventBus.post(event)
     }
 
     // MARK: Private

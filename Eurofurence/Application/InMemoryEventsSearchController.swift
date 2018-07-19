@@ -63,16 +63,31 @@ class InMemoryEventsSearchController: EventsSearchController {
 
     }
 
+    private class RegenerateResultsWhenEventUnfavourited: EventConsumer {
+
+        private let searchController: InMemoryEventsSearchController
+
+        init(searchController: InMemoryEventsSearchController) {
+            self.searchController = searchController
+        }
+
+        func consume(event: Schedule.EventUnfavouritedEvent) {
+            searchController.regenerateSearchResults()
+        }
+
+    }
+
     private let schedule: Schedule
     private let filters: CompositeFilter
     private let queryFilter: QueryFilter
     private let favouritesFilter: FavouritesFilter
 
-    init(schedule: Schedule) {
+    init(schedule: Schedule, eventBus: EventBus) {
         self.schedule = schedule
         queryFilter = QueryFilter()
         favouritesFilter = FavouritesFilter(schedule: schedule)
         filters = CompositeFilter(filters: queryFilter, favouritesFilter)
+        eventBus.subscribe(consumer: RegenerateResultsWhenEventUnfavourited(searchController: self))
     }
 
     private var delegate: EventsSearchControllerDelegate?
