@@ -59,6 +59,17 @@ class ScheduleSearchTableViewController: UITableViewController {
         onDidSelectSearchResultAtIndexPath?(indexPath)
     }
 
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        guard let action = binder?.eventActionForComponent(at: indexPath) else { return nil }
+        let rowAction: UITableViewRowAction = UITableViewRowAction(style: .normal, title: action.title, handler: { (_, _) in
+            action.run()
+        })
+
+        rowAction.backgroundColor = .pantone330U
+
+        return [rowAction]
+    }
+
     // MARK: Private
 
     private class Header: UITableViewHeaderFooterView, ScheduleEventGroupHeader {
