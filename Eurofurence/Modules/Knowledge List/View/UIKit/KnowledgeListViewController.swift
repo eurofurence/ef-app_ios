@@ -58,6 +58,9 @@ class KnowledgeListViewController: UIViewController, KnowledgeListScene {
         tableViewRenderer.onDidSelectRowAtIndexPath = didSelectRow
         tableView.dataSource = tableViewRenderer
         tableView.delegate = tableViewRenderer
+        tableView.estimatedSectionHeaderHeight = 64
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         delegate?.knowledgeListSceneDidLoad()
     }
 
@@ -93,10 +96,6 @@ class KnowledgeListViewController: UIViewController, KnowledgeListScene {
             binder?.bind(header, toGroupAt: section)
 
             return header
-        }
-
-        func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-            return 1
         }
 
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
