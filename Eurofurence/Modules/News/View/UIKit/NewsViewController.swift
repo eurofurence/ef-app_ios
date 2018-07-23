@@ -137,6 +137,10 @@ class NewsViewController: UIViewController, NewsScene {
 
         // MARK: UITableViewDelegate
 
+        func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+            return 1
+        }
+
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Header.identifier) as! Header
             binder.bindTitleForSection(at: section, scene: header)
