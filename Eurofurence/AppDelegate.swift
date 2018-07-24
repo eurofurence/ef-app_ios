@@ -151,6 +151,7 @@ extension AppDelegate {
         navigationBarAppearance.barTintColor = .pantone330U
         navigationBarAppearance.tintColor = .white
         navigationBarAppearance.titleTextAttributes = whiteTextAttributes
+        navigationBarAppearance.setBackgroundImage(pantone330UColourImage, for: .default)
         navigationBarAppearance.shadowImage = pantone330UColourImage
 
         let tabBarAppearance = UITabBar.appearance()
