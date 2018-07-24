@@ -1131,7 +1131,6 @@
 		CAEAEC061FE06F2800C0EE7C /* MessageDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAEAEC051FE06F2800C0EE7C /* MessageDetail.storyboard */; };
 		CAEAEC081FE06F3C00C0EE7C /* MessageDetailViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEC071FE06F3C00C0EE7C /* MessageDetailViewControllerV2.swift */; };
 		CAEAEC0A1FE06FA500C0EE7C /* PhoneMessageDetailSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEC091FE06FA500C0EE7C /* PhoneMessageDetailSceneFactory.swift */; };
-		CAEAEC0C1FE0702500C0EE7C /* MessageDetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEC0B1FE0702500C0EE7C /* MessageDetailViewControllerTests.swift */; };
 		CAEAEC0E1FE07AD700C0EE7C /* MessageBubbleBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEC0D1FE07AD700C0EE7C /* MessageBubbleBackgroundView.swift */; };
 		CAF3C7441F9F5C550008F027 /* NewsModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7431F9F5C550008F027 /* NewsModuleProviding.swift */; };
 		CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */; };
@@ -2376,7 +2375,6 @@
 		CAEAEC051FE06F2800C0EE7C /* MessageDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MessageDetail.storyboard; sourceTree = "<group>"; };
 		CAEAEC071FE06F3C00C0EE7C /* MessageDetailViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewControllerV2.swift; sourceTree = "<group>"; };
 		CAEAEC091FE06FA500C0EE7C /* PhoneMessageDetailSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneMessageDetailSceneFactory.swift; sourceTree = "<group>"; };
-		CAEAEC0B1FE0702500C0EE7C /* MessageDetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewControllerTests.swift; sourceTree = "<group>"; };
 		CAEAEC0D1FE07AD700C0EE7C /* MessageBubbleBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleBackgroundView.swift; sourceTree = "<group>"; };
 		CAF3C7431F9F5C550008F027 /* NewsModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModuleProviding.swift; sourceTree = "<group>"; };
 		CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNewsModuleDelegate.swift; sourceTree = "<group>"; };
@@ -5863,7 +5861,6 @@
 			isa = PBXGroup;
 			children = (
 				CAEAEBF91FE0037700C0EE7C /* MessageDetailPresenterTests.swift */,
-				CAEAEC0B1FE0702500C0EE7C /* MessageDetailViewControllerTests.swift */,
 			);
 			path = "Message Detail";
 			sourceTree = "<group>";
@@ -7588,7 +7585,6 @@
 				781A943A1F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift in Sources */,
 				CA46A73920F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift in Sources */,
 				CA0F762520322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift in Sources */,
-				CAEAEC0C1FE0702500C0EE7C /* MessageDetailViewControllerTests.swift in Sources */,
 				CAD260A120C03350007E3618 /* WhenSceneTapsFavouriteEventButton_EventDetailPresenterShould.swift in Sources */,
 				C61870E220DAE28D0089E836 /* BuildConfigurationV2ApiUrlProvidingTest.swift in Sources */,
 				CA65A881209B7E1000B72533 /* WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift in Sources */,
