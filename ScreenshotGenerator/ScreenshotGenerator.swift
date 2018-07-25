@@ -79,8 +79,13 @@ class ScreenshotGenerator: XCTestCase {
         
         snapshot("04_DealerDetail")
         
-        app.tabBars.buttons["More"].tap()
-        app.staticTexts["Information"].tap()
+        if app.tabBars.buttons["More"].exists {
+            app.tabBars.buttons["More"].tap()
+            app.staticTexts["Information"].tap()
+        }
+        else {
+            app.tabBars.buttons["Information"].tap()
+        }
         
         snapshot("05_Information")
     }
