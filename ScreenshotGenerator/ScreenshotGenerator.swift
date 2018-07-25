@@ -26,10 +26,13 @@ class ScreenshotGenerator: XCTestCase {
             return
         }
         
-        let skipPushRegistrationButton = app.buttons["No Thanks"]
-        if skipPushRegistrationButton.exists {
-            skipPushRegistrationButton.tap()
-            app.buttons["Begin Download"].tap()
+        if app.alerts.element.collectionViews.buttons["Allow"].exists {
+            app.tap()
+        }
+        
+        let beginDownloadButton = app.buttons["Begin Download"]
+        if beginDownloadButton.exists {
+            beginDownloadButton.tap()
         }
         
         let beganWaitingAt = Date()
@@ -42,61 +45,43 @@ class ScreenshotGenerator: XCTestCase {
         } while waitingForTabItemToAppear && totalWaitTimeSeconds < 30
     }
     
-    private func takeNewsScreenshot() {
-        app.tables
-            .staticTexts["Eurofurence is approaching and only a few more days away!\n\nMost of the content we aggregate in the app is final by now - or at least close to it - and we want to focus on ironing out the small imperfections and issues that may still be around. At this point - let us thank you for all the feedback you all have provided so far. We tried to fix all the bugs you brought up, and we've collected all the feedback into a 'wishlist' with a small amount already making its way into the app this year - and the rest stored safely so we can hopefully make the app even better next year.\n\nWe'll be pushing lots of updates to the stores in the next days, and that means that the version you have on your phone at this instant is not the final one. Please treat this as a friendly reminder to keep your application version up to date and check for updates *often*. There may not be one at all times, but please take the time to check.\n\nThank you for helping us make this app (and convention) awesome! :3"]
-            .swipeLeft()
-        snapshot("01_News")
-    }
-    
-    private func navigateToEventsTab() {
-        app.tabBars.buttons["Events"].tap()
-    }
-    
-    private func takeEventsScreenshot() {
-        app.tables.children(matching: .cell).element(boundBy: 2).staticTexts["Fursuit Lounge"].swipeLeft()
-        snapshot("02_Events")
-    }
-    
-    private func takeEventDetailScreenshot() {
-        let interestingEventCell = app.tables.cells.containing(.staticText, identifier:"Neon Dance").children(matching: .staticText).matching(identifier: "Neon Dance").element(boundBy: 0)
-        interestingEventCell.tap()
-        interestingEventCell.tap()
-        snapshot("03_Event_Detail")
-    }
-    
-    func navigateToMapsTab() {
-        app.tabBars.buttons["Maps"].tap()
-    }
-    
-    func takeMapsScreenshot() {
-        snapshot("04_Maps")
-    }
-    
-    func navigateToInformation() {
-        if app.tabBars.buttons["Convention Info"].exists {
-           app.tabBars.buttons["Convention Info"].tap()
-        }
-        else {
-            app.tabBars.buttons["More"].tap()
-            app.staticTexts["Convention Info"].tap()
-        }
-    }
-    
-    func takeMoreInformationScreenshot() {
-        snapshot("05_Information")
-    }
-    
     func testScreenshots() {
         navigateToRootTabController()
-        takeNewsScreenshot()
-        navigateToEventsTab()
-        takeEventsScreenshot()
-        takeEventDetailScreenshot()
-        navigateToMapsTab()
-        takeMapsScreenshot()
-        navigateToInformation()
-        takeMoreInformationScreenshot()
+        
+        snapshot("01_News")
+        
+        app.tabBars.buttons["Schedule"].tap()
+        
+        app.navigationBars.buttons["Search"].tap()
+        app.searchFields["Search"].tap()
+        app.searchFields["Search"].typeText("Ap")
+        app.tables.cells.staticTexts["Designing a Mobile App for a Furry Convention"].swipeLeft()
+        
+        snapshot("02_ScheduleSearch")
+        
+        app.tables.cells.staticTexts["Designing a Mobile App for a Furry Convention"].swipeRight()
+        
+        repeat {
+            app.tables.cells.staticTexts["Designing a Mobile App for a Furry Convention"].tap()
+        } while app.navigationBars["Eurofurence.EventDetailView"].exists == false
+        
+        
+        let favouriteButton = app.navigationBars["Eurofurence.EventDetailView"].buttons["Favourite"]
+        if favouriteButton.exists {
+            favouriteButton.tap()
+        }
+        
+        snapshot("03_EventDetail")
+        
+        app.tabBars.buttons["Dealers"].tap()
+        app.tables.cells.staticTexts["Eurofurence ConStore"].firstMatch.tap()
+        
+        snapshot("04_DealerDetail")
+        
+        app.tabBars.buttons["More"].tap()
+        app.staticTexts["Information"].tap()
+        
+        snapshot("05_Information")
     }
     
 }
