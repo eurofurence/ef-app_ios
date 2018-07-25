@@ -55,6 +55,7 @@ class ScreenshotGenerator: XCTestCase {
         app.navigationBars.buttons["Search"].tap()
         app.searchFields["Search"].tap()
         app.searchFields["Search"].typeText("Ap")
+        app/*@START_MENU_TOKEN@*/.buttons["Search"]/*[[".keyboards.buttons[\"Search\"]",".buttons[\"Search\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app.tables.cells.staticTexts["Designing a Mobile App for a Furry Convention"].swipeLeft()
         
         snapshot("02_ScheduleSearch")
