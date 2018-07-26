@@ -155,7 +155,7 @@ class Schedule {
         func consume(event: DomainEvent.LatestDataFetchedEvent) {
             let response = event.response
             schedule.updateSchedule(events: response.events,
-                                    rooms: response.rooms.changed,
+                                    rooms: response.rooms,
                                     tracks: response.tracks,
                                     days: response.conferenceDays.changed)
         }
@@ -334,15 +334,16 @@ class Schedule {
     }
 
     private func updateSchedule(events: APISyncDelta<APIEvent>,
-                                rooms: [APIRoom],
+                                rooms: APISyncDelta<APIRoom>,
                                 tracks: APISyncDelta<APITrack>,
                                 days: [APIConferenceDay]) {
         dataStore.performTransaction { (transaction) in
             events.deleted.forEach(transaction.deleteEvent)
             tracks.deleted.forEach(transaction.deleteTrack)
+            rooms.deleted.forEach(transaction.deleteRoom)
 
             transaction.saveEvents(events.changed)
-            transaction.saveRooms(rooms)
+            transaction.saveRooms(rooms.changed)
             transaction.saveTracks(tracks.changed)
             transaction.saveConferenceDays(days)
         }

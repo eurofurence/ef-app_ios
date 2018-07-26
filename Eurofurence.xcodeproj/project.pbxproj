@@ -862,6 +862,7 @@
 		CA734D6D2109F36D00221886 /* WhenDeletingAnnouncement_AfterSuccessfulSync_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA734D6C2109F36D00221886 /* WhenDeletingAnnouncement_AfterSuccessfulSync_ApplicationShould.swift */; };
 		CA734D6F210A3E9A00221886 /* WhenDeletingEvent_AfterSuccessfulSync_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA734D6E210A3E9A00221886 /* WhenDeletingEvent_AfterSuccessfulSync_ApplicationShould.swift */; };
 		CA734D71210A443400221886 /* WhenDeletingTrack_AfterSuccessfulSync_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA734D70210A443400221886 /* WhenDeletingTrack_AfterSuccessfulSync_ApplicationShould.swift */; };
+		CA734D73210A45C100221886 /* WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA734D72210A45C100221886 /* WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould.swift */; };
 		CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */; };
 		CA73AED8201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED7201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift */; };
 		CA73AEDB201A080F004E77BF /* StubKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */; };
@@ -2105,6 +2106,7 @@
 		CA734D6C2109F36D00221886 /* WhenDeletingAnnouncement_AfterSuccessfulSync_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDeletingAnnouncement_AfterSuccessfulSync_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA734D6E210A3E9A00221886 /* WhenDeletingEvent_AfterSuccessfulSync_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDeletingEvent_AfterSuccessfulSync_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA734D70210A443400221886 /* WhenDeletingTrack_AfterSuccessfulSync_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDeletingTrack_AfterSuccessfulSync_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA734D72210A45C100221886 /* WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeListSceneDidLoad.swift; sourceTree = "<group>"; };
 		CA73AED7201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
@@ -5045,6 +5047,7 @@
 				CA734D6C2109F36D00221886 /* WhenDeletingAnnouncement_AfterSuccessfulSync_ApplicationShould.swift */,
 				CA734D6E210A3E9A00221886 /* WhenDeletingEvent_AfterSuccessfulSync_ApplicationShould.swift */,
 				CA734D70210A443400221886 /* WhenDeletingTrack_AfterSuccessfulSync_ApplicationShould.swift */,
+				CA734D72210A45C100221886 /* WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould.swift */,
 			);
 			path = Deletions;
 			sourceTree = "<group>";
@@ -7594,6 +7597,7 @@
 				CAD3BDB12058719300C91E6E /* Link+RandomValueProviding.swift in Sources */,
 				CA637542208CBB2400536BE2 /* StubNavigationControllerFactory.swift in Sources */,
 				CAC2337C20FF46E800E73486 /* WhenRemovingFavouritesRestrictionForEvents_WhileQueryActive_ScheduleShould.swift in Sources */,
+				CA734D73210A45C100221886 /* WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CA36A4A620D9847200EE6537 /* WhenObservingDealersIndexBeforeSyncOccurs_ApplicationShould.swift in Sources */,
 				CA6A8D7420E264B5007536CD /* CapturingMapsScene.swift in Sources */,
 				CA81D4901FE9A91000A52A2F /* WhenTheTutorialAppears.swift in Sources */,

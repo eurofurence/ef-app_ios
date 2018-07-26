@@ -191,6 +191,11 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
         persistedRooms.append(contentsOf: rooms)
     }
     
+    private(set) var deletedRooms: [String] = []
+    func deleteRoom(identifier: String) {
+        deletedRooms.append(identifier)
+    }
+    
     private(set) var persistedTracks: [APITrack] = []
     func saveTracks(_ tracks: [APITrack]) {
         persistedTracks.append(contentsOf: tracks)
