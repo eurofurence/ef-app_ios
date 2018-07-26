@@ -196,6 +196,11 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
         persistedTracks.append(contentsOf: tracks)
     }
     
+    private(set) var deletedTracks: [String] = []
+    func deleteTrack(identifier: String) {
+        deletedTracks.append(identifier)
+    }
+    
     private(set) var persistedConferenceDays: [APIConferenceDay] = []
     func saveConferenceDays(_ conferenceDays: [APIConferenceDay]) {
         persistedConferenceDays.append(contentsOf: conferenceDays)
