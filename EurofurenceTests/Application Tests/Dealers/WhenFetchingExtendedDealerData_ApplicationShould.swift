@@ -47,11 +47,6 @@ class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
         XCTAssertEqual(expected, dealerData?.artistImagePNGData)
     }
     
-    func testProvideTheArtPreviewImageData() {
-        let expected = context.imageAPI.stubbedImage(for: randomDealer.artPreviewImageId)
-        XCTAssertEqual(expected, dealerData?.artPreviewImagePNGData)
-    }
-    
     func testProvideTheDealerCategories() {
         XCTAssertEqual(randomDealer.categories.sorted(), dealerData?.categories)
     }
@@ -80,8 +75,12 @@ class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
         XCTAssertEqual(randomDealer.aboutTheArtText, dealerData?.aboutTheArt)
     }
     
-    func testProvideTheArtPreviewCaption() {
-        XCTAssertEqual(randomDealer.artPreviewCaption, dealerData?.artPreviewCaption)
+    func testNotProvideTheArtPreviewImageData_DueToAppStoreRejectionForOffensiveContent() {
+        XCTAssertNil(dealerData?.artPreviewImagePNGData)
+    }
+    
+    func testNotProvideTheArtPreviewCaption_WhileWeDontProvideTheArtwork() {
+        XCTAssertNil(dealerData?.artPreviewCaption)
     }
     
 }
