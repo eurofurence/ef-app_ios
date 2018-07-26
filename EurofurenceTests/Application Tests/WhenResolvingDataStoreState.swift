@@ -115,7 +115,7 @@ extension CapturingEurofurenceDataStore {
     }
     
     func didFavouriteEvent(_ identifier: Event2.Identifier) -> Bool {
-        return transaction.persistedFavouriteEvents.contains(identifier) ?? false
+        return transaction.persistedFavouriteEvents.contains(identifier)
     }
     
     func didSave(_ dealers: [APIDealer]) -> Bool {
@@ -123,7 +123,7 @@ extension CapturingEurofurenceDataStore {
     }
     
     func didDeleteFavouriteEvent(_ identifier: Event2.Identifier) -> Bool {
-        return transaction.deletedFavouriteEvents.contains(identifier) ?? false
+        return transaction.deletedFavouriteEvents.contains(identifier)
     }
     
     func didSave(_ conferenceDays: [APIConferenceDay]) -> Bool {
@@ -178,6 +178,12 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
     private(set) var persistedEvents: [APIEvent] = []
     func saveEvents(_ events: [APIEvent]) {
         persistedEvents.append(contentsOf: events)
+    }
+    
+    func deleteEvent(identifier: String) {
+        if let idx = persistedEvents.index(where: { $0.identifier == identifier }) {
+            persistedEvents.remove(at: idx)
+        }
     }
     
     private(set) var persistedRooms: [APIRoom] = []

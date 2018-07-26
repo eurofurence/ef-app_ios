@@ -154,7 +154,7 @@ class Schedule {
 
         func consume(event: DomainEvent.LatestDataFetchedEvent) {
             let response = event.response
-            schedule.updateSchedule(events: response.events.changed,
+            schedule.updateSchedule(events: response.events,
                                     rooms: response.rooms.changed,
                                     tracks: response.tracks.changed,
                                     days: response.conferenceDays.changed)
@@ -321,23 +321,31 @@ class Schedule {
         let conferenceDays = dataStore.getSavedConferenceDays()
 
         if let events = events, let rooms = rooms, let tracks = tracks, let conferenceDays = conferenceDays {
-            updateSchedule(events: events, rooms: rooms, tracks: tracks, days: conferenceDays)
+            self.days = conferenceDays
+            self.events = events
+            self.rooms = rooms
+            self.tracks = tracks
+
+            eventModels = events.compactMap(makeEventModel)
+
+            dayModels = makeDays(from: days)
+            eventBus.post(Schedule.ChangedEvent())
         }
     }
 
-    private func updateSchedule(events: [APIEvent],
+    private func updateSchedule(events: APISyncDelta<APIEvent>,
                                 rooms: [APIRoom],
                                 tracks: [APITrack],
                                 days: [APIConferenceDay]) {
-        self.days = days
-        self.events = events
-        self.rooms = rooms
-        self.tracks = tracks
+        dataStore.performTransaction { (transaction) in
+            events.deleted.forEach(transaction.deleteEvent)
+            transaction.saveEvents(events.changed)
+            transaction.saveRooms(rooms)
+            transaction.saveTracks(tracks)
+            transaction.saveConferenceDays(days)
+        }
 
-        eventModels = events.compactMap(makeEventModel)
-
-        dayModels = makeDays(from: days)
-        eventBus.post(Schedule.ChangedEvent())
+        reconstituteEventsFromDataStore()
     }
 
     fileprivate func makeEventModel(from event: APIEvent) -> Event2? {

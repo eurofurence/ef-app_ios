@@ -286,6 +286,10 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
 
         }
 
+        func deleteEvent(identifier: String) {
+
+        }
+
         func saveDealers(_ dealers: [APIDealer]) {
             mutations.append { (context) in
                 dealers.forEach { (dealer) in
