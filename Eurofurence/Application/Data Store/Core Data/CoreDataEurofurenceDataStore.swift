@@ -271,14 +271,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                 fetchRequest.predicate = NSPredicate(format: "eventIdentifier == %@", identifier.rawValue)
                 fetchRequest.fetchLimit = 1
 
-                do {
-                    let results = try fetchRequest.execute()
-                    if let result = results.first {
-                        context.delete(result)
-                    }
-                } catch {
-                    print(error)
-                }
+                self.deleteFirstMatch(for: fetchRequest, in: context)
             }
         }
 
@@ -288,14 +281,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                 fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
                 fetchRequest.fetchLimit = 1
 
-                do {
-                    let results = try fetchRequest.execute()
-                    if let result = results.first {
-                        context.delete(result)
-                    }
-                } catch {
-                    print(error)
-                }
+                self.deleteFirstMatch(for: fetchRequest, in: context)
             }
         }
 
@@ -309,14 +295,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                 fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
                 fetchRequest.fetchLimit = 1
 
-                do {
-                    let results = try fetchRequest.execute()
-                    if let result = results.first {
-                        context.delete(result)
-                    }
-                } catch {
-                    print(error)
-                }
+                self.deleteFirstMatch(for: fetchRequest, in: context)
             }
         }
 
@@ -450,6 +429,18 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
             }
 
             return entity
+        }
+
+        private func deleteFirstMatch<T>(for fetchRequest: NSFetchRequest<T>,
+                                         in context: NSManagedObjectContext) where T: NSManagedObject {
+            do {
+                let results = try fetchRequest.execute()
+                if let result = results.first {
+                    context.delete(result)
+                }
+            } catch {
+                print(error)
+            }
         }
 
     }
