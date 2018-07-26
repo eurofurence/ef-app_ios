@@ -165,6 +165,11 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
         self.persistedKnowledgeGroups.append(contentsOf: knowledgeGroups)
     }
     
+    private(set) var deletedKnowledgeGroups: [String] = []
+    func deleteKnowledgeGroup(identifier: String) {
+        deletedKnowledgeGroups.append(identifier)
+    }
+    
     private(set) var persistedKnowledgeEntries: [APIKnowledgeEntry] = []
     func saveKnowledgeEntries(_ knowledgeEntries: [APIKnowledgeEntry]) {
         persistedKnowledgeEntries.append(contentsOf: knowledgeEntries)

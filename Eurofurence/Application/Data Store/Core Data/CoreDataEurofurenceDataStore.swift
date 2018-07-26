@@ -282,6 +282,10 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
             }
         }
 
+        func deleteKnowledgeGroup(identifier: String) {
+
+        }
+
         func deleteAnnouncement(identifier: String) {
 
         }

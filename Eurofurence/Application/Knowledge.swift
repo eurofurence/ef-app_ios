@@ -22,23 +22,23 @@ class Knowledge {
 
         func consume(event: DomainEvent.LatestDataFetchedEvent) {
             let response = event.response
-            knowledge.updateKnowledge(groups: response.knowledgeGroups.changed, entries: response.knowledgeEntries.changed)
+            knowledge.updateKnowledge(groups: response.knowledgeGroups, entries: response.knowledgeEntries)
         }
 
     }
 
     // MARK: Properties
 
+    private let dataStore: EurofurenceDataStore
     private var models = [KnowledgeGroup2]()
 
     // MARK: Initialization
 
     init(eventBus: EventBus, dataStore: EurofurenceDataStore) {
+        self.dataStore = dataStore
         eventBus.subscribe(consumer: KnowledgeUpdater(knowledge: self))
 
-        if let groups = dataStore.getSavedKnowledgeGroups(), let entries = dataStore.getSavedKnowledgeEntries() {
-            updateKnowledge(groups: groups, entries: entries)
-        }
+        reloadKnowledgeBaseFromDataStore()
     }
 
     // MARK: Functions
@@ -49,9 +49,25 @@ class Knowledge {
 
     // MARK: Private
 
-    private func updateKnowledge(groups: [APIKnowledgeGroup],
-                                 entries: [APIKnowledgeEntry]) {
+    private func reloadKnowledgeBaseFromDataStore() {
+        guard let groups = dataStore.getSavedKnowledgeGroups(),
+              let entries = dataStore.getSavedKnowledgeEntries() else {
+                return
+        }
+
         models = KnowledgeGroup2.fromServerModels(groups: groups, entries: entries)
+    }
+
+    private func updateKnowledge(groups: APISyncDelta<APIKnowledgeGroup>,
+                                 entries: APISyncDelta<APIKnowledgeEntry>) {
+        dataStore.performTransaction { (transaction) in
+            groups.deleted.forEach(transaction.deleteKnowledgeGroup)
+
+            transaction.saveKnowledgeGroups(groups.changed)
+            transaction.saveKnowledgeEntries(entries.changed)
+        }
+
+        reloadKnowledgeBaseFromDataStore()
     }
 
 }

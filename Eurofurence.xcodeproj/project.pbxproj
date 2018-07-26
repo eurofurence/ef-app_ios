@@ -864,6 +864,7 @@
 		CA734D71210A443400221886 /* WhenDeletingTrack_AfterSuccessfulSync_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA734D70210A443400221886 /* WhenDeletingTrack_AfterSuccessfulSync_ApplicationShould.swift */; };
 		CA734D73210A45C100221886 /* WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA734D72210A45C100221886 /* WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould.swift */; };
 		CA734D75210A477600221886 /* WhenDeletingConferenceDay_AfterSuccessfulSync_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA734D74210A477600221886 /* WhenDeletingConferenceDay_AfterSuccessfulSync_ApplicationShould.swift */; };
+		CA734D77210A49B300221886 /* WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA734D76210A49B300221886 /* WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould.swift */; };
 		CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */; };
 		CA73AED8201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AED7201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift */; };
 		CA73AEDB201A080F004E77BF /* StubKnowledgeListSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */; };
@@ -2109,6 +2110,7 @@
 		CA734D70210A443400221886 /* WhenDeletingTrack_AfterSuccessfulSync_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDeletingTrack_AfterSuccessfulSync_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA734D72210A45C100221886 /* WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA734D74210A477600221886 /* WhenDeletingConferenceDay_AfterSuccessfulSync_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDeletingConferenceDay_AfterSuccessfulSync_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA734D76210A49B300221886 /* WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA73AED3201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenKnowledgeListSceneDidLoad.swift; sourceTree = "<group>"; };
 		CA73AED7201A07E7004E77BF /* KnowledgeListPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeListPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA73AEDA201A080F004E77BF /* StubKnowledgeListSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeListSceneFactory.swift; sourceTree = "<group>"; };
@@ -5049,6 +5051,7 @@
 				CA734D6C2109F36D00221886 /* WhenDeletingAnnouncement_AfterSuccessfulSync_ApplicationShould.swift */,
 				CA734D74210A477600221886 /* WhenDeletingConferenceDay_AfterSuccessfulSync_ApplicationShould.swift */,
 				CA734D6E210A3E9A00221886 /* WhenDeletingEvent_AfterSuccessfulSync_ApplicationShould.swift */,
+				CA734D76210A49B300221886 /* WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould.swift */,
 				CA734D72210A45C100221886 /* WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould.swift */,
 				CA734D70210A443400221886 /* WhenDeletingTrack_AfterSuccessfulSync_ApplicationShould.swift */,
 			);
@@ -7232,6 +7235,7 @@
 				78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */,
 				CA2761AB20E0220A000E52AC /* StubCollectThemAllSceneFactory.swift in Sources */,
 				CABF03C32041C2FD0028BD62 /* KnowledgeEntry2.swift in Sources */,
+				CA734D77210A49B300221886 /* WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CA52C67920D59357009D3A9E /* WhenSignificantTimeChanges_ScheduleShould.swift in Sources */,
 				CAD260AB20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift in Sources */,
 				CACF26CB20FE290000EDE150 /* WhenBindingNonFavouriteEvent_NewsPresenterShould.swift in Sources */,
