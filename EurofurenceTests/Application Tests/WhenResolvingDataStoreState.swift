@@ -191,6 +191,11 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
         persistedRooms.append(contentsOf: rooms)
     }
     
+    private(set) var deletedConferenceDays: [String] = []
+    func deleteConferenceDay(identifier: String) {
+        deletedConferenceDays.append(identifier)
+    }
+    
     private(set) var deletedRooms: [String] = []
     func deleteRoom(identifier: String) {
         deletedRooms.append(identifier)

@@ -157,7 +157,7 @@ class Schedule {
             schedule.updateSchedule(events: response.events,
                                     rooms: response.rooms,
                                     tracks: response.tracks,
-                                    days: response.conferenceDays.changed)
+                                    days: response.conferenceDays)
         }
 
     }
@@ -336,16 +336,17 @@ class Schedule {
     private func updateSchedule(events: APISyncDelta<APIEvent>,
                                 rooms: APISyncDelta<APIRoom>,
                                 tracks: APISyncDelta<APITrack>,
-                                days: [APIConferenceDay]) {
+                                days: APISyncDelta<APIConferenceDay>) {
         dataStore.performTransaction { (transaction) in
             events.deleted.forEach(transaction.deleteEvent)
             tracks.deleted.forEach(transaction.deleteTrack)
             rooms.deleted.forEach(transaction.deleteRoom)
+            days.deleted.forEach(transaction.deleteConferenceDay)
 
             transaction.saveEvents(events.changed)
             transaction.saveRooms(rooms.changed)
             transaction.saveTracks(tracks.changed)
-            transaction.saveConferenceDays(days)
+            transaction.saveConferenceDays(days.changed)
         }
 
         reconstituteEventsFromDataStore()
