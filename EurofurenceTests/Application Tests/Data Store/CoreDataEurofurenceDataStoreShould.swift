@@ -424,6 +424,21 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         XCTAssertEqual([], store.getSavedAnnouncements())
     }
     
+    func testDeleteKnowledgeGroups() {
+        let knowledgeGroup = APIKnowledgeGroup.random
+        store.performTransaction { (transaction) in
+            transaction.saveKnowledgeGroups([knowledgeGroup])
+        }
+        
+        store.performTransaction { (transaction) in
+            transaction.deleteKnowledgeGroup(identifier: knowledgeGroup.identifier)
+        }
+        
+        recreateStore()
+        
+        XCTAssertEqual([], store.getSavedKnowledgeGroups())
+    }
+    
     private func assertThat<T>(_ expected: [T], isEqualTo actual: [T]?, file: StaticString = #file, line: UInt = #line) where T: Equatable {
         guard let actual = actual else {
             XCTFail("Expected actual values, but got nil", file: file, line: line)

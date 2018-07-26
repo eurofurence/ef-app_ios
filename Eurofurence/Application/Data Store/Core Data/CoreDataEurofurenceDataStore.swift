@@ -283,7 +283,20 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         }
 
         func deleteKnowledgeGroup(identifier: String) {
+            mutations.append { (context) in
+                let fetchRequest: NSFetchRequest<KnowledgeGroupEntity> = KnowledgeGroupEntity.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+                fetchRequest.fetchLimit = 1
 
+                do {
+                    let results = try fetchRequest.execute()
+                    if let result = results.first {
+                        context.delete(result)
+                    }
+                } catch {
+                    print(error)
+                }
+            }
         }
 
         func deleteKnowledgeEntry(identifier: String) {
