@@ -74,7 +74,7 @@ class Dealers: DealersService {
         }
 
         func consume(event: DomainEvent.LatestDataFetchedEvent) {
-            dealers.updateDealers(from: event.response.dealers.changed)
+            dealers.updateDealers(from: event.response.dealers)
         }
 
     }
@@ -98,10 +98,7 @@ class Dealers: DealersService {
         self.mapCoordinateRender = mapCoordinateRender
 
         eventBus.subscribe(consumer: UpdateDealersWhenSyncOccurs(dealers: self))
-
-        if let savedDealers = dataStore.getSavedDealers() {
-            updateDealers(from: savedDealers)
-        }
+        reloadDealersFromDataStore()
     }
 
     func makeDealersIndex() -> DealersIndex {
@@ -199,9 +196,11 @@ class Dealers: DealersService {
         return models.first(where: { $0.identifier == identifier.rawValue })
     }
 
-    private func updateDealers(from dealers: [APIDealer]) {
+    fileprivate func reloadDealersFromDataStore() {
+        guard let dealers = dataStore.getSavedDealers() else { return }
+
         models = dealers
-        dealerModels = dealers.map { (dealer) -> Dealer2 in
+        dealerModels = models.map { (dealer) -> Dealer2 in
             var preferredName = dealer.displayName
             if preferredName.isEmpty {
                 preferredName = dealer.attendeeNickname
@@ -220,6 +219,15 @@ class Dealers: DealersService {
         }
 
         eventBus.post(Dealers.UpdatedEvent())
+    }
+
+    private func updateDealers(from dealers: APISyncDelta<APIDealer>) {
+        dataStore.performTransaction { (transaction) in
+            dealers.deleted.forEach(transaction.deleteDealer)
+            transaction.saveDealers(dealers.changed)
+        }
+
+        reloadDealersFromDataStore()
     }
 
 }
