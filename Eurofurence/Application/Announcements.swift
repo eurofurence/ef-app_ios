@@ -22,7 +22,7 @@ class Announcements {
 
         func consume(event: DomainEvent.LatestDataFetchedEvent) {
             let response = event.response
-            announcements.updateModel(from: response.announcements.changed)
+            announcements.updateModel(change: response.announcements)
         }
 
     }
@@ -46,9 +46,7 @@ class Announcements {
         self.dataStore = dataStore
         eventBus.subscribe(consumer: AnnouncementsUpdater(announcements: self))
 
-        if let persistedAnnouncements = dataStore.getSavedAnnouncements() {
-            updateModel(from: persistedAnnouncements)
-        }
+        reloadAnnouncementsFromStore()
 
         if let readAnnouncements = dataStore.getSavedReadAnnouncementIdentifiers() {
             readAnnouncementIdentifiers = readAnnouncements
@@ -76,8 +74,18 @@ class Announcements {
 
     // MARK: Private
 
-    private func updateModel(from announcements: [APIAnnouncement]) {
+    private func reloadAnnouncementsFromStore() {
+        guard let announcements = dataStore.getSavedAnnouncements() else { return }
         models = announcements.sorted(by: isLastEditTimeAscending).map(Announcement2.init)
+    }
+
+    private func updateModel(change: APISyncDelta<APIAnnouncement>) {
+        dataStore.performTransaction { (transaction) in
+            change.deleted.forEach(transaction.deleteAnnouncement)
+            transaction.saveAnnouncements(change.changed)
+        }
+
+        reloadAnnouncementsFromStore()
     }
 
     private func isLastEditTimeAscending(_ first: APIAnnouncement, _ second: APIAnnouncement) -> Bool {

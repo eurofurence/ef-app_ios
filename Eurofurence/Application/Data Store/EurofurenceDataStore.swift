@@ -43,5 +43,6 @@ protocol EurofurenceDataStoreTransaction {
     func saveReadAnnouncements(_ announcements: [Announcement2.Identifier])
 
     func deleteFavouriteEventIdentifier(_ identifier: Event2.Identifier)
+    func deleteAnnouncement(identifier: String)
 
 }
