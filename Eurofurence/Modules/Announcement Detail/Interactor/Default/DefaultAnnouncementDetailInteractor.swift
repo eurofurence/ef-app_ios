@@ -15,7 +15,7 @@ struct DefaultAnnouncementDetailInteractor: AnnouncementDetailInteractor {
 
     init() {
         self.init(announcementsService: EurofurenceApplication.shared,
-                  markdownRenderer: DefaultMarkdownRenderer())
+                  markdownRenderer: DownMarkdownRenderer())
     }
 
     init(announcementsService: AnnouncementsService, markdownRenderer: MarkdownRenderer) {

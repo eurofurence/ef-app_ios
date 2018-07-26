@@ -3938,39 +3938,6 @@
 			};
 			name = Profiling;
 		};
-		160B8E3457A9FE3B128F46F4E05A655F /* Profiling */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5BE2F5693110849D731AA0EFC221C9AD /* Down.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Down/Down-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Down/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Down/Down.modulemap";
-				PRODUCT_MODULE_NAME = Down;
-				PRODUCT_NAME = Down;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Profiling;
-		};
 		1724AF2026E3361FFF08BB4AA5915865 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 278170C54B33C262E94403E14ABC2FF0 /* Alamofire.xcconfig */;
@@ -4389,39 +4356,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		3DA6E94AB99CBEB4DFBFBE96F1514FEA /* Screenshots */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5BE2F5693110849D731AA0EFC221C9AD /* Down.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Down/Down-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Down/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Down/Down.modulemap";
-				PRODUCT_MODULE_NAME = Down;
-				PRODUCT_NAME = Down;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Screenshots;
 		};
 		3DEDA4A6CB200B0C41E7751A2DC7DCB9 /* Screenshots */ = {
 			isa = XCBuildConfiguration;
@@ -5397,6 +5331,39 @@
 			};
 			name = Profiling;
 		};
+		8F2947617303631548CF81F1773D3EAC /* Profiling */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BE2F5693110849D731AA0EFC221C9AD /* Down.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Down/Down-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Down/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Down/Down.modulemap";
+				PRODUCT_MODULE_NAME = Down;
+				PRODUCT_NAME = Down;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Profiling;
+		};
 		8F7349909B259A7E8E5BDBA15345399C /* Screenshots */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3DC14350886082B135B51B3BE4C9B417 /* Locksmith.xcconfig */;
@@ -5566,71 +5533,6 @@
 			};
 			name = Profiling;
 		};
-		9D49D2371BE80DFFBE4BF9C60DE1A354 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5BE2F5693110849D731AA0EFC221C9AD /* Down.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Down/Down-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Down/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Down/Down.modulemap";
-				PRODUCT_MODULE_NAME = Down;
-				PRODUCT_NAME = Down;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		9F7799D1DD3DC4898E8885C5F8733C1D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5BE2F5693110849D731AA0EFC221C9AD /* Down.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Down/Down-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Down/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Down/Down.modulemap";
-				PRODUCT_MODULE_NAME = Down;
-				PRODUCT_NAME = Down;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		9F84D982B4B800B6B17676C2CA146AC5 /* Profiling */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6A426A66E2C749E3B23B79420E5F77D4 /* Whisper.xcconfig */;
@@ -5695,6 +5597,39 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		A127DFB4DD6ECBE500DD6D99F87C5171 /* Screenshots */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BE2F5693110849D731AA0EFC221C9AD /* Down.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Down/Down-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Down/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Down/Down.modulemap";
+				PRODUCT_MODULE_NAME = Down;
+				PRODUCT_NAME = Down;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Screenshots;
 		};
 		A413B3479C690EA073F1732775075AC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -5883,6 +5818,39 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B8337BDF4F756EF0E6D2F5D7643F0960 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BE2F5693110849D731AA0EFC221C9AD /* Down.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Down/Down-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Down/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Down/Down.modulemap";
+				PRODUCT_MODULE_NAME = Down;
+				PRODUCT_NAME = Down;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -6520,6 +6488,38 @@
 			};
 			name = Profiling;
 		};
+		F464EDD5C1396B8AD98C72343B4056CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BE2F5693110849D731AA0EFC221C9AD /* Down.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Down/Down-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Down/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Down/Down.modulemap";
+				PRODUCT_MODULE_NAME = Down;
+				PRODUCT_NAME = Down;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		F650F8E35642C06A0F7AAA58EAA9AE65 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F9CA0B906AC781DDAD0EE372E2757C04 /* GTMSessionFetcher.xcconfig */;
@@ -6688,10 +6688,10 @@
 		47970780830E3FDDC96261D1A95C5759 /* Build configuration list for PBXNativeTarget "Down" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9F7799D1DD3DC4898E8885C5F8733C1D /* Debug */,
-				160B8E3457A9FE3B128F46F4E05A655F /* Profiling */,
-				9D49D2371BE80DFFBE4BF9C60DE1A354 /* Release */,
-				3DA6E94AB99CBEB4DFBFBE96F1514FEA /* Screenshots */,
+				F464EDD5C1396B8AD98C72343B4056CC /* Debug */,
+				8F2947617303631548CF81F1773D3EAC /* Profiling */,
+				B8337BDF4F756EF0E6D2F5D7643F0960 /* Release */,
+				A127DFB4DD6ECBE500DD6D99F87C5171 /* Screenshots */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

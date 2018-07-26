@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		09CCA668D5E112B61A53B5E6 /* Pods-EurofurenceTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A91AD0059ADB02A143766DB /* Pods-EurofurenceTests-settings-metadata.plist */; };
+		20E87E17210A34D800B55A04 /* DownMarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E87E16210A34D800B55A04 /* DownMarkdownRenderer.swift */; };
 		6EEC6DA11F1BF79F00205F2D /* FirebaseTopicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA01F1BF79F00205F2D /* FirebaseTopicTests.swift */; };
 		6EEC6DA31F1BFC5000205F2D /* StubAppVersionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */; };
 		6EEC6DA51F1BFC7700205F2D /* AppVersionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA41F1BFC7700205F2D /* AppVersionProviding.swift */; };
@@ -1239,6 +1240,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20E87E16210A34D800B55A04 /* DownMarkdownRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownMarkdownRenderer.swift; sourceTree = "<group>"; };
 		27C948D12455A352D46AF5B6 /* Pods-Eurofurence.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence.release.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence.release.xcconfig"; sourceTree = "<group>"; };
 		4A31159EA20CC82848488181 /* Pods-EurofurenceTests.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.profiling.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.profiling.xcconfig"; sourceTree = "<group>"; };
 		513BAD2C582D99F2993B8162 /* Pods-Eurofurence.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence.debug.xcconfig"; sourceTree = "<group>"; };
@@ -5022,6 +5024,7 @@
 				CA72848B209F9288007D912A /* DefaultAnnouncementDetailInteractor.swift */,
 				CA72848F209F9482007D912A /* DefaultMarkdownRenderer.swift */,
 				CA72848D209F93A4007D912A /* MarkdownRenderer.swift */,
+				20E87E16210A34D800B55A04 /* DownMarkdownRenderer.swift */,
 			);
 			path = Default;
 			sourceTree = "<group>";
@@ -6906,6 +6909,7 @@
 				CA36A48C20D92E9000EE6537 /* DefaultDealersInteractor.swift in Sources */,
 				9ACB006F1F16C945001CE9D2 /* EventFavorite.swift in Sources */,
 				CACF1E8020B212BE00D904B5 /* EventSummaryComponent.swift in Sources */,
+				20E87E17210A34D800B55A04 /* DownMarkdownRenderer.swift in Sources */,
 				D6F3D7A4B9F91A234AF77285 /* RoutingAppChooser.swift in Sources */,
 				CA0F7632203314FE009DA079 /* KnowledgeListViewController.swift in Sources */,
 				CA728490209F9482007D912A /* DefaultMarkdownRenderer.swift in Sources */,
