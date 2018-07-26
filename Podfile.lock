@@ -4,6 +4,7 @@ PODS:
     - Alamofire (~> 4.5)
   - Changeset (2.1.2)
   - Dip (6.1)
+  - Down (0.5.2)
   - Eureka (4.1.1)
   - EVReflection (4.19.1):
     - EVReflection/Core (= 4.19.1)
@@ -80,6 +81,7 @@ DEPENDENCIES:
   - AlamofireImage (~> 3.0)
   - Changeset
   - Dip (from `https://github.com/AliSoftware/Dip.git`, branch `swift42`)
+  - Down
   - Eureka
   - EVReflection
   - EVReflection/Alamofire
@@ -100,6 +102,7 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - Changeset
+    - Down
     - Eureka
     - EVReflection
     - Firebase
@@ -137,6 +140,7 @@ SPEC CHECKSUMS:
   AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
   Changeset: 58ffd3e157651f8aba3964bf723d4ed649d2071b
   Dip: e6af9f4e7644e1a142995c1ab0bffa61351a849d
+  Down: 587371ad58002b06023d9c602519216862c3acbc
   Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
   EVReflection: 93817c1981460105cd3b44c67ea87a5b6f5bb98e
   Firebase: 052c0de688fc87b414996eea13e223dd9fee3fa2
@@ -159,6 +163,6 @@ SPEC CHECKSUMS:
   SwiftLint: 1134786caedd2caab0560d2f36b76414a5a56808
   Whisper: 051f25e704bf8992641ffd28b20d5682ddc5f5d3
 
-PODFILE CHECKSUM: c08d0d1fbeb10373c695aaec17472cc6c1f9adf7
+PODFILE CHECKSUM: f891b49b6555318f4d051a866da4be5ab9f12c56
 
 COCOAPODS: 1.5.3

@@ -10,6 +10,7 @@ target 'Eurofurence' do
 	pod 'AlamofireImage', '~> 3.0'
 	pod 'Changeset'
 	pod 'Dip', :git => 'https://github.com/AliSoftware/Dip.git', :branch => 'swift42'
+	pod 'Down'
 	pod 'Eureka'
 	pod 'EVReflection'
 	pod 'EVReflection/Alamofire'
