@@ -4,13 +4,13 @@ inhibit_all_warnings!
 use_frameworks!
 
 target 'Eurofurence' do
-    plugin 'cocoapods-acknowledgements', :settings_bundle => true
-    
+	plugin 'cocoapods-acknowledgements', :settings_bundle => true
+	
 	pod 'Alamofire', '~> 4.5'
 	pod 'AlamofireImage', '~> 3.0'
 	pod 'Changeset'
-    pod 'Dip', :git => 'https://github.com/AliSoftware/Dip.git', :branch => 'swift42'
-    pod 'Eureka'
+	pod 'Dip', :git => 'https://github.com/AliSoftware/Dip.git', :branch => 'swift42'
+	pod 'Eureka'
 	pod 'EVReflection'
 	pod 'EVReflection/Alamofire'
 	pod 'SwiftLint'
@@ -19,28 +19,28 @@ target 'Eurofurence' do
 	pod 'ReactiveCocoa', '~> 5.0.0'
 	pod 'Firebase/Core'
 	pod 'Firebase/Crash'
-    pod 'Firebase/Messaging'
+	pod 'Firebase/Messaging'
 	pod 'Firebase/Performance'
-    pod 'Locksmith'
+	pod 'Locksmith'
 	pod 'Whisper'
-    
-    pod 'SimulatorStatusMagic', :configurations => ['Screenshots']
+	
+	pod 'SimulatorStatusMagic', :configurations => ['Screenshots']
 
-    target :EurofurenceTests do
-        inherit! :search_paths
+	target :EurofurenceTests do
+		inherit! :search_paths
 
-        pod 'Firebase/Core'
-        pod 'Firebase/Crash'
-    end
-    
-    post_install do |installer|
-        installer.pods_project.targets.each do |target|
-            if target.name == "Eureka"
-                target.build_configurations.each do |config|
-                    config.build_settings['SWIFT_VERSION'] = '4.1'
-                end
-            end
-        end
-    end
-    
+		pod 'Firebase/Core'
+		pod 'Firebase/Crash'
+	end
+	
+	post_install do |installer|
+		installer.pods_project.targets.each do |target|
+			if target.name == "Eureka"
+				target.build_configurations.each do |config|
+					config.build_settings['SWIFT_VERSION'] = '4.1'
+				end
+			end
+		end
+	end
+	
 end
