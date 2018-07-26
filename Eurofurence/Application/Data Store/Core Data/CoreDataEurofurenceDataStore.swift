@@ -286,7 +286,13 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         }
 
         func deleteKnowledgeEntry(identifier: String) {
+            mutations.append { (context) in
+                let fetchRequest: NSFetchRequest<KnowledgeEntryEntity> = KnowledgeEntryEntity.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+                fetchRequest.fetchLimit = 1
 
+                self.deleteFirstMatch(for: fetchRequest, in: context)
+            }
         }
 
         func deleteAnnouncement(identifier: String) {
