@@ -44,6 +44,7 @@ protocol EurofurenceDataStoreTransaction {
 
     func deleteFavouriteEventIdentifier(_ identifier: Event2.Identifier)
     func deleteKnowledgeGroup(identifier: String)
+    func deleteKnowledgeEntry(identifier: String)
     func deleteAnnouncement(identifier: String)
     func deleteEvent(identifier: String)
     func deleteTrack(identifier: String)

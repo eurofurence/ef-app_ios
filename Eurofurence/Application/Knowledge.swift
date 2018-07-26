@@ -61,6 +61,7 @@ class Knowledge {
     private func updateKnowledge(groups: APISyncDelta<APIKnowledgeGroup>,
                                  entries: APISyncDelta<APIKnowledgeEntry>) {
         dataStore.performTransaction { (transaction) in
+            entries.deleted.forEach(transaction.deleteKnowledgeEntry)
             groups.deleted.forEach(transaction.deleteKnowledgeGroup)
 
             transaction.saveKnowledgeGroups(groups.changed)
