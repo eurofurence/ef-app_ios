@@ -11,60 +11,58 @@ import XCTest
 
 class CapturingEurofurenceDataStore: EurofurenceDataStore {
     func getSavedAnnouncements() -> [APIAnnouncement]? {
-        return transaction?.persistedAnnouncements
+        return transaction.persistedAnnouncements
     }
     
     func getLastRefreshDate() -> Date? {
-        return transaction?.persistedLastRefreshDate
+        return transaction.persistedLastRefreshDate
     }
     
     func getSavedKnowledgeGroups() -> [APIKnowledgeGroup]? {
-        return transaction?.persistedKnowledgeGroups
+        return transaction.persistedKnowledgeGroups
     }
     
     func getSavedKnowledgeEntries() -> [APIKnowledgeEntry]? {
-        return transaction?.persistedKnowledgeEntries
+        return transaction.persistedKnowledgeEntries
     }
     
     func getSavedRooms() -> [APIRoom]? {
-        return transaction?.persistedRooms
+        return transaction.persistedRooms
     }
     
     func getSavedTracks() -> [APITrack]? {
-        return transaction?.persistedTracks
+        return transaction.persistedTracks
     }
     
     func getSavedConferenceDays() -> [APIConferenceDay]? {
-        return transaction?.persistedConferenceDays
+        return transaction.persistedConferenceDays
     }
     
     func getSavedEvents() -> [APIEvent]? {
-        return transaction?.persistedEvents
+        return transaction.persistedEvents
     }
     
     func getSavedFavouriteEventIdentifiers() -> [Event2.Identifier]? {
-        return transaction?.persistedFavouriteEvents
+        return transaction.persistedFavouriteEvents
     }
     
     func getSavedDealers() -> [APIDealer]? {
-        return transaction?.persistedDealers
+        return transaction.persistedDealers
     }
     
     func getSavedMaps() -> [APIMap]? {
-        return transaction?.persistedMaps
+        return transaction.persistedMaps
     }
     
     func getSavedReadAnnouncementIdentifiers() -> [Announcement2.Identifier]? {
-        return transaction?.persistedReadAnnouncementIdentifiers
+        return transaction.persistedReadAnnouncementIdentifiers
     }
     
     private(set) var capturedKnowledgeGroupsToSave: [KnowledgeGroup2]?
-    private(set) var transaction: CapturingEurofurenceDataStoreTransaction?
     var transactionInvokedBlock: (() -> Void)?
+    let transaction = CapturingEurofurenceDataStoreTransaction()
     func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
-        let transaction = CapturingEurofurenceDataStoreTransaction()
         block(transaction)
-        self.transaction = transaction
         transactionInvokedBlock?()
     }
     
@@ -89,70 +87,59 @@ extension CapturingEurofurenceDataStore {
     }
     
     func didSave(_ knowledgeGroups: [APIKnowledgeGroup]) -> Bool {
-        guard let persistedKnowledgeGroups = transaction?.persistedKnowledgeGroups else { return false }
-        return persistedKnowledgeGroups.contains(elementsFrom: knowledgeGroups)
+        return transaction.persistedKnowledgeGroups.contains(elementsFrom: knowledgeGroups)
     }
     
     func didSave(_ knowledgeEntries: [APIKnowledgeEntry]) -> Bool {
-        guard let persistedKnowledgeEntries = transaction?.persistedKnowledgeEntries else { return false }
-        return persistedKnowledgeEntries.contains(elementsFrom: knowledgeEntries)
+        return transaction.persistedKnowledgeEntries.contains(elementsFrom: knowledgeEntries)
     }
     
     func didSave(_ announcements: [APIAnnouncement]) -> Bool {
-        guard let persistedAnnouncements = transaction?.persistedAnnouncements else { return false }
-        return persistedAnnouncements.contains(elementsFrom: announcements)
+        return transaction.persistedAnnouncements.contains(elementsFrom: announcements)
     }
     
     func didSave(_ events: [APIEvent]) -> Bool {
-        guard let persistedEvents = transaction?.persistedEvents else { return false }
-        return persistedEvents.contains(elementsFrom: events)
+        return transaction.persistedEvents.contains(elementsFrom: events)
     }
     
     func didSave(_ events: [APIRoom]) -> Bool {
-        guard let persistedRooms = transaction?.persistedRooms else { return false }
-        return persistedRooms.contains(elementsFrom: events)
+        return transaction.persistedRooms.contains(elementsFrom: events)
     }
     
     func didSave(_ tracks: [APITrack]) -> Bool {
-        guard let persistedTracks = transaction?.persistedTracks else { return false }
-        return persistedTracks.contains(elementsFrom: tracks)
+        return transaction.persistedTracks.contains(elementsFrom: tracks)
     }
     
     func didSaveLastRefreshTime(_ lastRefreshTime: Date) -> Bool {
-        return lastRefreshTime == transaction?.persistedLastRefreshDate
+        return lastRefreshTime == transaction.persistedLastRefreshDate
     }
     
     func didFavouriteEvent(_ identifier: Event2.Identifier) -> Bool {
-        return transaction?.persistedFavouriteEvents.contains(identifier) ?? false
+        return transaction.persistedFavouriteEvents.contains(identifier) ?? false
     }
     
     func didSave(_ dealers: [APIDealer]) -> Bool {
-        guard let persistedDealers = transaction?.persistedDealers else { return false }
-        return persistedDealers.contains(elementsFrom: dealers)
+        return transaction.persistedDealers.contains(elementsFrom: dealers)
     }
     
     func didDeleteFavouriteEvent(_ identifier: Event2.Identifier) -> Bool {
-        return transaction?.deletedFavouriteEvents.contains(identifier) ?? false
+        return transaction.deletedFavouriteEvents.contains(identifier) ?? false
     }
     
     func didSave(_ conferenceDays: [APIConferenceDay]) -> Bool {
-        guard let persistedConferenceDays = transaction?.persistedConferenceDays else { return false }
-        return persistedConferenceDays.contains(elementsFrom: conferenceDays)
+        return transaction.persistedConferenceDays.contains(elementsFrom: conferenceDays)
     }
     
     func didSave(_ maps: [APIMap]) -> Bool {
-        guard let persistedMaps = transaction?.persistedMaps else { return false }
-        return persistedMaps.contains(elementsFrom: maps)
+        return transaction.persistedMaps.contains(elementsFrom: maps)
     }
     
     func didSaveReadAnnouncement(_ identifier: Announcement2.Identifier) -> Bool {
-        guard let persistedAnnouncementIdentifiers = transaction?.persistedReadAnnouncementIdentifiers else { return false }
-        return persistedAnnouncementIdentifiers.contains(identifier)
+        return transaction.persistedReadAnnouncementIdentifiers.contains(identifier)
     }
     
     func didSaveReadAnnouncements(_ identifiers: [Announcement2.Identifier]) -> Bool {
-        guard let persistedAnnouncementIdentifiers = transaction?.persistedReadAnnouncementIdentifiers else { return false }
-        return persistedAnnouncementIdentifiers.contains(elementsFrom: identifiers)
+        return transaction.persistedReadAnnouncementIdentifiers.contains(elementsFrom: identifiers)
     }
     
 }
@@ -175,37 +162,37 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
     
     private(set) var persistedKnowledgeGroups: [APIKnowledgeGroup] = []
     func saveKnowledgeGroups(_ knowledgeGroups: [APIKnowledgeGroup]) {
-        self.persistedKnowledgeGroups = knowledgeGroups
+        self.persistedKnowledgeGroups.append(contentsOf: knowledgeGroups)
     }
     
     private(set) var persistedKnowledgeEntries: [APIKnowledgeEntry] = []
     func saveKnowledgeEntries(_ knowledgeEntries: [APIKnowledgeEntry]) {
-        persistedKnowledgeEntries = knowledgeEntries
+        persistedKnowledgeEntries.append(contentsOf: knowledgeEntries)
     }
     
     private(set) var persistedAnnouncements: [APIAnnouncement] = []
     func saveAnnouncements(_ announcements: [APIAnnouncement]) {
-        persistedAnnouncements = announcements
+        persistedAnnouncements.append(contentsOf: announcements)
     }
     
     private(set) var persistedEvents: [APIEvent] = []
     func saveEvents(_ events: [APIEvent]) {
-        persistedEvents = events
+        persistedEvents.append(contentsOf: events)
     }
     
     private(set) var persistedRooms: [APIRoom] = []
     func saveRooms(_ rooms: [APIRoom]) {
-        persistedRooms = rooms
+        persistedRooms.append(contentsOf: rooms)
     }
     
     private(set) var persistedTracks: [APITrack] = []
     func saveTracks(_ tracks: [APITrack]) {
-        persistedTracks = tracks
+        persistedTracks.append(contentsOf: tracks)
     }
     
     private(set) var persistedConferenceDays: [APIConferenceDay] = []
     func saveConferenceDays(_ conferenceDays: [APIConferenceDay]) {
-        persistedConferenceDays = conferenceDays
+        persistedConferenceDays.append(contentsOf: conferenceDays)
     }
     
     private(set) var persistedLastRefreshDate: Date?
@@ -223,14 +210,20 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
         deletedFavouriteEvents.append(identifier)
     }
     
+    func deleteAnnouncement(identifier: String) {
+        if let idx = persistedAnnouncements.index(where: { $0.identifier == identifier }) {
+            persistedAnnouncements.remove(at: idx)
+        }
+    }
+    
     private(set) var persistedDealers: [APIDealer] = []
     func saveDealers(_ dealers: [APIDealer]) {
-        persistedDealers = dealers
+        persistedDealers.append(contentsOf: dealers)
     }
     
     private(set) var persistedMaps: [APIMap] = []
     func saveMaps(_ maps: [APIMap]) {
-        persistedMaps = maps
+        persistedMaps.append(contentsOf: maps)
     }
     
     private(set) var persistedReadAnnouncementIdentifiers: [Announcement2.Identifier] = []
