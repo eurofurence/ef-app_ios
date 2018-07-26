@@ -11,9 +11,9 @@ import Foundation
 struct APISyncDelta<T>: Equatable where T: Equatable {
 
     var changed: [T]
-    var deleted: [T]
+    var deleted: [String]
 
-    init(changed: [T] = [], deleted: [T] = []) {
+    init(changed: [T] = [], deleted: [String] = []) {
         self.changed = changed
         self.deleted = deleted
     }

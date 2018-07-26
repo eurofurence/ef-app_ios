@@ -26,27 +26,7 @@
                             "BannerImageId": "bannertest",
                             "PosterImageId": "postertest"
                             }],
-        "DeletedEntities": [{
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:46.128Z",
-                            "Id": "1452d472-feae-4483-8f55-93c25f7ec920",
-                            "Slug": "fursuit_lounge_tue",
-                            "Title": "Fursuit Lounge",
-                            "SubTitle": "",
-                            "Abstract": "Welcome to the Athropomorphic Wellness and First-Aid Center.",
-                            "ConferenceDayId": "5f2e5aa4-a172-4f8b-8441-1e676ea3be9f",
-                            "ConferenceTrackId": "a14380b6-b6e1-4b29-8502-e1e1b446c6a2",
-                            "ConferenceRoomId": "c72e2290-49fd-496a-9efc-2f68a5f0f0f8",
-                            "Description": "",
-                            "Duration": "08:00:00",
-                            "StartTime": "18:00:00",
-                            "EndTime": "02:00:00",
-                            "StartDateTimeUtc": "2017-08-15T16:00:00.000Z",
-                            "EndDateTimeUtc": "2017-08-16T00:00:00.000Z",
-                            "PanelHosts": "Mystifur",
-                            "IsDeviatingFromConBook": false,
-                            "BannerImageId": null,
-                            "PosterImageId": null
-                            }]
+        "DeletedEntities": ["1452d472-feae-4483-8f55-93c25f7ec920"]
     },
     "EventConferenceDays": {
         "StorageLastChangeDateTimeUtc": "2018-01-12T08:56:45.920Z",
@@ -58,12 +38,7 @@
                             "Name": "Early Arrival",
                             "Date": "2017-08-15T00:00:00.000Z"
                             }],
-        "DeletedEntities": [{
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.915Z",
-                            "Id": "db8e0455-8c49-4bc5-b472-e0033fe06b99",
-                            "Name": "Official Con Start/Con Day 1",
-                            "Date": "2017-08-16T00:00:00.000Z"
-                            }]
+        "DeletedEntities": ["db8e0455-8c49-4bc5-b472-e0033fe06b99"]
     },
     "EventConferenceRooms": {
         "StorageLastChangeDateTimeUtc": "2018-01-12T08:56:45.897Z",
@@ -74,11 +49,7 @@
                             "Id": "dfa62eae-f881-4aab-a592-acf8fab14ae9",
                             "Name": "Art Show — Convention Hall Section D"
                             }],
-        "DeletedEntities": [{
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.883Z",
-                            "Id": "87148f04-4c4b-433d-9469-c8a970952443",
-                            "Name": "Artist Lounge — ECC Foyer 4"
-                            }]
+        "DeletedEntities": ["87148f04-4c4b-433d-9469-c8a970952443"]
     },
     "EventConferenceTracks": {
         "StorageLastChangeDateTimeUtc": "2018-01-12T08:56:45.867Z",
@@ -89,11 +60,7 @@
                             "Id": "f92a4fc0-303f-4c13-9194-44121d80bd20",
                             "Name": "Stage"
                             }],
-        "DeletedEntities": [{
-                            "LastChangeDateTimeUtc": "2018-01-12T08:56:45.866Z",
-                            "Id": "cf410a89-379d-40c7-89ea-d0b6b51ea914",
-                            "Name": "Supersponsor Event"
-                            }]
+        "DeletedEntities": ["cf410a89-379d-40c7-89ea-d0b6b51ea914"]
     },
     "KnowledgeGroups": {
         "StorageLastChangeDateTimeUtc": "2018-01-12T08:00:13.169Z",
@@ -108,15 +75,7 @@
                             "ShowInHamburgerMenu": false,
                             "FontAwesomeIconCharacterUnicodeAddress": "f129"
                             }],
-        "DeletedEntities": [{
-                            "LastChangeDateTimeUtc": "2018-01-12T08:00:13.161Z",
-                            "Id": "6232ae2f-4e9d-fcf4-6341-f1751b405e45",
-                            "Name": "Security",
-                            "Description": "Rules & Policies",
-                            "Order": 1,
-                            "ShowInHamburgerMenu": false,
-                            "FontAwesomeIconCharacterUnicodeAddress": "f132"
-                            }]
+        "DeletedEntities": ["6232ae2f-4e9d-fcf4-6341-f1751b405e45"]
     },
     "KnowledgeEntries": {
         "StorageLastChangeDateTimeUtc": "2018-01-23T13:28:27.186Z",
@@ -136,18 +95,7 @@
                                       }],
                             "ImageIds": []
                             }],
-        "DeletedEntities": [{
-                            "LastChangeDateTimeUtc": "2018-01-12T08:00:14.173Z",
-                            "Id": "ba2f31ad-d42a-9e40-2c79-17bb9b2f36f3",
-                            "KnowledgeGroupId": "66e14f56-743c-1ece-a50c-b691143a3f93",
-                            "Title": "Clockwork Creature Studio",
-                            "Text": "Clockwork Creature Studio was founded in 2005 by Qarrezel and is a wellknown artistic costume and design studio based in Towson, Maryland, USA. Two years later the studio changed its focus and became an active small creature costuming business.",
-                            "Order": 1,
-                            "Links": [],
-                            "ImageIds": [
-                                         "fd6b59fc-ef8f-45ba-985b-55f1982b3ab0"
-                                         ]
-                            }]
+        "DeletedEntities": ["ba2f31ad-d42a-9e40-2c79-17bb9b2f36f3"]
     },
     "Images": {
         "StorageLastChangeDateTimeUtc": "2018-01-12T08:00:13.101Z",
@@ -333,35 +281,7 @@
                             "IsAfterDark": true,
                             "Categories": ["General", "Art"]
                             }],
-        "DeletedEntities": [{
-                            "LastChangeDateTimeUtc": "2018-03-28T09:32:16.110Z",
-                            "Id": "d53e6f6b-fdcb-4754-a4b9-6892e8d317d7",
-                            "RegistrationNumber": 565,
-                            "AttendeeNickname": "Frazzle",
-                            "DisplayName": "",
-                            "Merchandise": "own brand printed goods (paper-based and merchandising), probably animated media, on-site live commissions",
-                            "ShortDescription": "Frazzle, the SewerRat. Knallratte. Cartoon animator, comic artist, menace to balloons. Creator of Trixie Vixen.\r\nAt my table, you will find pretty oldschool style print media and merchandise from own production, often featuring busty and toony anthro girl. \r\nLive Sketch Commissions - feel free to stay and watch!",
-                            "AboutTheArtistText": "My name is Chris Hefele, been around in the Furry Fandom since the late 90s. In Germany as \"SewerRat\" or \"die Knallratte\", and internationally as \"Frazzle\". \r\nIn RL, I work as a traditional 2D animator (handdrawn/full), so a bit of a dinosaur. Aside of that, it is illustrations, character design, storyboard and other areas of film making and advertising. Very soft spot for foxes.",
-                            "AboutTheArtText": "Got my mind stuck in the 80s, my art stuck in the 90s, and I am not ashamed to say I looove cheesy pin-up flat-color black-outlined top-heavy toonyness. Strongly inspired by Chuck Jones and Disney work from days gone by, and trying to keep that flame alive. \r\nI got a thing for anvil-and-dynamite style toon stuff (this is where the little rat comes from), strong female leads, and a recurring topic of \"Bad Girls vs. Balloons\", which I am perhaps a bit infamous for.\r\nNot to be taken too seriously.",
-                            "Links": [
-                                      {
-                                      "FragmentType": "WebExternal",
-                                      "Name": "",
-                                      "Target": "http://www.furaffinity.net/user/frazzle/"
-                                      }
-                                      ],
-                            "TwitterHandle": "FrazzleRat",
-                            "TelegramHandle": "HefeleToons",
-                            "AttendsOnThursday": true,
-                            "AttendsOnFriday": true,
-                            "AttendsOnSaturday": true,
-                            "IsAfterDark": false,
-                            "ArtPreviewCaption": "Pin-Ups focusing on joie-de-vivre, flirtatious and strong anthro girls. These ladies will try to cheer you up and help you pull through life, no matter if on a Zippo in your pocket, on a college bag around your shoulder, or as a print on your wall. But you better treat 'em well, or they might just pull an anvil out of their pocket and throw it! ;)",
-                            "ArtistThumbnailImageId": "59b6023f-f739-4d40-a977-3d6bad1ab434",
-                            "ArtistImageId": "81e6a80a-21cb-4524-a961-9d356aada9a1",
-                            "ArtPreviewImageId": "6a624433-bc5f-4d31-b18e-0c443611f497",
-                            "Categories": []
-                            }]
+        "DeletedEntities": ["d53e6f6b-fdcb-4754-a4b9-6892e8d317d7"]
     },
     "Announcements": {
         "StorageLastChangeDateTimeUtc": "2018-04-05T12:49:54.480Z",
@@ -378,16 +298,7 @@
                             "Title": "Test-Announcement-Title",
                             "Content": "This is Content.\n\n**with markdown**"
                             }],
-        "DeletedEntities": [{
-                            "LastChangeDateTimeUtc": "2018-04-05T12:49:54.000Z",
-                            "Id": "c8c8a9ad-4f43-489f-905d-9d22d0ef045f",
-                            "ValidFromDateTimeUtc": "2018-04-05T10:59:58.217Z",
-                            "ValidUntilDateTimeUtc": "2018-11-05T10:59:58.217Z",
-                            "Area": "Test-Area",
-                            "Author": "Luchs",
-                            "Title": "Test-Announcement 2",
-                            "Content": "This is Content.\n\n**with markdown**"
-                            }]
+        "DeletedEntities": ["c8c8a9ad-4f43-489f-905d-9d22d0ef045f"]
     },
     "Maps": {
         "StorageLastChangeDateTimeUtc": "2018-01-12T07:32:35.138Z",
@@ -413,25 +324,6 @@
                                                   ]
                                         }]
                             }],
-        "DeletedEntities": [{"LastChangeDateTimeUtc": "2017-08-08T15:50:34.777Z",
-                            "Id": "157e1849-d6fc-46ab-9d47-1b785cd867c7",
-                            "ImageId": "ba02881c-ab37-4e0c-b7f3-ef161c756714",
-                            "Description": "Venue (Estrel)",
-                            "IsBrowseable": true,
-                            "Entries": [
-                                        {
-                                        "Id": "c75f177c-a868-4365-88b4-88480fcc588f",
-                                        "X": 693,
-                                        "Y": 1055,
-                                        "TapRadius": 30,
-                                        "Links": [
-                                                  {
-                                                  "FragmentType": "MapEntry",
-                                                  "Name": "Rotunda",
-                                                  "Target": "8b92250c-5d80-4adf-bbf7-56d247bd18cc"
-                                                  }
-                                                  ]
-                                        }]
-                            }]
+        "DeletedEntities": ["157e1849-d6fc-46ab-9d47-1b785cd867c7"]
     }
 }
