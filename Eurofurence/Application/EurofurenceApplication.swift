@@ -322,7 +322,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                 self.eventBus.post(DomainEvent.LatestDataFetchedEvent(response: response))
 
                 self.dataStore.performTransaction({ (transaction) in
-                    transaction.saveMaps(response.maps.changed)
                     transaction.saveLastRefreshDate(self.clock.currentDate)
                 })
 

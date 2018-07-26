@@ -263,6 +263,12 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
         persistedMaps.append(contentsOf: maps)
     }
     
+    func deleteMap(identifier: String) {
+        if let idx = persistedMaps.index(where: { $0.identifier == identifier }) {
+            persistedMaps.remove(at: idx)
+        }
+    }
+    
     private(set) var persistedReadAnnouncementIdentifiers: [Announcement2.Identifier] = []
     func saveReadAnnouncements(_ announcements: [Announcement2.Identifier]) {
         persistedReadAnnouncementIdentifiers = announcements

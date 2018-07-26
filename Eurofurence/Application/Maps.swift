@@ -12,18 +12,20 @@ class Maps {
 
     private class RefreshMapsAfterSync: EventConsumer {
 
-        private let handler: ([APIMap], [APIRoom], [APIDealer]) -> Void
+        private let maps: Maps
 
-        init(handler: @escaping ([APIMap], [APIRoom], [APIDealer]) -> Void) {
-            self.handler = handler
+        init(maps: Maps) {
+            self.maps = maps
         }
 
         func consume(event: DomainEvent.LatestDataFetchedEvent) {
-            handler(event.response.maps.changed, event.response.rooms.changed, event.response.dealers.changed)
+            let response = event.response
+            maps.updateModels(response.maps, roomServerModels: response.rooms, dealerServerModels: response.dealers)
         }
 
     }
 
+    private let dataStore: EurofurenceDataStore
     private let imageRepository: ImageRepository
 
     private var serverModels = [APIMap]()
@@ -39,14 +41,11 @@ class Maps {
     private var observers = [MapsObserver]()
 
     init(eventBus: EventBus, dataStore: EurofurenceDataStore, imageRepository: ImageRepository) {
+        self.dataStore = dataStore
         self.imageRepository = imageRepository
-        eventBus.subscribe(consumer: RefreshMapsAfterSync(handler: updateModels))
+        eventBus.subscribe(consumer: RefreshMapsAfterSync(maps: self))
 
-        if let maps = dataStore.getSavedMaps(),
-           let rooms = dataStore.getSavedRooms(),
-           let dealers = dataStore.getSavedDealers() {
-            updateModels(maps, roomServerModels: rooms, dealerServerModels: dealers)
-        }
+        reloadMapsFromDataStore()
     }
 
     func add(_ observer: MapsObserver) {
@@ -98,10 +97,27 @@ class Maps {
         }
     }
 
-    private func updateModels(_ serverModels: [APIMap], roomServerModels: [APIRoom], dealerServerModels: [APIDealer]) {
-        self.serverModels = serverModels
-        self.roomServerModels = roomServerModels
-        self.dealerServerModels = dealerServerModels
+    private func updateModels(_ serverModels: APISyncDelta<APIMap>,
+                              roomServerModels: APISyncDelta<APIRoom>,
+                              dealerServerModels: APISyncDelta<APIDealer>) {
+        dataStore.performTransaction { (transaction) in
+            serverModels.deleted.forEach(transaction.deleteMap)
+            transaction.saveMaps(serverModels.changed)
+        }
+
+        reloadMapsFromDataStore()
+    }
+
+    private func reloadMapsFromDataStore() {
+        guard let maps = dataStore.getSavedMaps(),
+              let rooms = dataStore.getSavedRooms(),
+              let dealers = dataStore.getSavedDealers() else {
+                return
+        }
+
+        serverModels = maps
+        roomServerModels = rooms
+        dealerServerModels = dealers
 
         models = serverModels.map({ (map) -> Map2 in
             return Map2(identifier: Map2.Identifier(map.identifier), location: map.mapDescription)

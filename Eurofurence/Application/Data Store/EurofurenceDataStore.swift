@@ -51,5 +51,6 @@ protocol EurofurenceDataStoreTransaction {
     func deleteRoom(identifier: String)
     func deleteConferenceDay(identifier: String)
     func deleteDealer(identifier: String)
+    func deleteMap(identifier: String)
 
 }
