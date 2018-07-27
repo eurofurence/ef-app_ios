@@ -472,6 +472,24 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
                        loadingBlock: { $0.getSavedConferenceDays })
     }
     
+    func testDeleteDealers() {
+        let element = APIDealer.random
+        verifyDeletion(for: element,
+                       elementIdentifier: element.identifier,
+                       savingBlock: { $0.saveDealers },
+                       deletionBlock: { $0.deleteDealer },
+                       loadingBlock: { $0.getSavedDealers })
+    }
+    
+    func testDeleteMaps() {
+        let element = APIMap.random
+        verifyDeletion(for: element,
+                       elementIdentifier: element.identifier,
+                       savingBlock: { $0.saveMaps },
+                       deletionBlock: { $0.deleteMap },
+                       loadingBlock: { $0.getSavedMaps })
+    }
+    
     private func verifyDeletion<T>(for element: T,
                                    elementIdentifier: String,
                                    savingBlock: @escaping (EurofurenceDataStoreTransaction) -> ([T]) -> Void,

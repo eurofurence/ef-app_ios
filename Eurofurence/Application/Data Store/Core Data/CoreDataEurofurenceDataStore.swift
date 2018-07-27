@@ -346,11 +346,23 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         }
 
         func deleteDealer(identifier: String) {
+            mutations.append { (context) in
+                let fetchRequest: NSFetchRequest<DealerEntity> = DealerEntity.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+                fetchRequest.fetchLimit = 1
 
+                self.deleteFirstMatch(for: fetchRequest, in: context)
+            }
         }
 
         func deleteMap(identifier: String) {
+            mutations.append { (context) in
+                let fetchRequest: NSFetchRequest<MapEntity> = MapEntity.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+                fetchRequest.fetchLimit = 1
 
+                self.deleteFirstMatch(for: fetchRequest, in: context)
+            }
         }
 
         func saveDealers(_ dealers: [APIDealer]) {
