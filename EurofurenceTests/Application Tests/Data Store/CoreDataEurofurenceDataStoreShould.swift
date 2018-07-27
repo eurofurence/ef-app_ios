@@ -410,48 +410,55 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
     
     func testDeleteAnnouncements() {
-        let announcement = APIAnnouncement.random
-        store.performTransaction { (transaction) in
-            transaction.saveAnnouncements([announcement])
-        }
-        
-        store.performTransaction { (transaction) in
-            transaction.deleteAnnouncement(identifier: announcement.identifier)
-        }
-        
-        recreateStore()
-        
-        XCTAssertEqual([], store.getSavedAnnouncements())
+        let element = APIAnnouncement.random
+        verifyDeletion(for: element,
+                       elementIdentifier: element.identifier,
+                       savingBlock: { $0.saveAnnouncements },
+                       deletionBlock: { $0.deleteAnnouncement },
+                       loadingBlock: { $0.getSavedAnnouncements })
     }
     
     func testDeleteKnowledgeGroups() {
-        let knowledgeGroup = APIKnowledgeGroup.random
-        store.performTransaction { (transaction) in
-            transaction.saveKnowledgeGroups([knowledgeGroup])
-        }
-        
-        store.performTransaction { (transaction) in
-            transaction.deleteKnowledgeGroup(identifier: knowledgeGroup.identifier)
-        }
-        
-        recreateStore()
-        
-        XCTAssertEqual([], store.getSavedKnowledgeGroups())
+        let element = APIKnowledgeGroup.random
+        verifyDeletion(for: element,
+                       elementIdentifier: element.identifier,
+                       savingBlock: { $0.saveKnowledgeGroups },
+                       deletionBlock: { $0.deleteKnowledgeGroup },
+                       loadingBlock: { $0.getSavedKnowledgeGroups })
     }
     
     func testDeleteKnowledgeEntries() {
-        let knowledgeEntry = APIKnowledgeEntry.random
+        let element = APIKnowledgeEntry.random
+        verifyDeletion(for: element,
+                       elementIdentifier: element.identifier,
+                       savingBlock: { $0.saveKnowledgeEntries },
+                       deletionBlock: { $0.deleteKnowledgeEntry },
+                       loadingBlock: { $0.getSavedKnowledgeEntries })
+    }
+    
+    private func verifyDeletion<T>(for element: T,
+                                   elementIdentifier: String,
+                                   savingBlock: @escaping (EurofurenceDataStoreTransaction) -> ([T]) -> Void,
+                                   deletionBlock: @escaping (EurofurenceDataStoreTransaction) -> (String) -> Void,
+                                   loadingBlock: (EurofurenceDataStore) -> () -> [T]?,
+                                   file: StaticString = #file,
+                                   line: UInt = #line) where T: Equatable {
         store.performTransaction { (transaction) in
-            transaction.saveKnowledgeEntries([knowledgeEntry])
+            let block = savingBlock(transaction)
+            block([element])
         }
         
         store.performTransaction { (transaction) in
-            transaction.deleteKnowledgeEntry(identifier: knowledgeEntry.identifier)
+            let block = deletionBlock(transaction)
+            block(elementIdentifier)
         }
         
         recreateStore()
         
-        XCTAssertEqual([], store.getSavedKnowledgeEntries())
+        let loader = loadingBlock(store)
+        let elements = loader()
+        
+        XCTAssertEqual([T](), elements, file: file, line: line)
     }
     
     private func assertThat<T>(_ expected: [T], isEqualTo actual: [T]?, file: StaticString = #file, line: UInt = #line) where T: Equatable {
