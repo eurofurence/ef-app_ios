@@ -306,19 +306,43 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         }
 
         func deleteEvent(identifier: String) {
+            mutations.append { (context) in
+                let fetchRequest: NSFetchRequest<EventEntity> = EventEntity.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+                fetchRequest.fetchLimit = 1
 
+                self.deleteFirstMatch(for: fetchRequest, in: context)
+            }
         }
 
         func deleteTrack(identifier: String) {
+            mutations.append { (context) in
+                let fetchRequest: NSFetchRequest<TrackEntity> = TrackEntity.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+                fetchRequest.fetchLimit = 1
 
+                self.deleteFirstMatch(for: fetchRequest, in: context)
+            }
         }
 
         func deleteRoom(identifier: String) {
+            mutations.append { (context) in
+                let fetchRequest: NSFetchRequest<RoomEntity> = RoomEntity.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+                fetchRequest.fetchLimit = 1
 
+                self.deleteFirstMatch(for: fetchRequest, in: context)
+            }
         }
 
         func deleteConferenceDay(identifier: String) {
+            mutations.append { (context) in
+                let fetchRequest: NSFetchRequest<ConferenceDayEntity> = ConferenceDayEntity.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+                fetchRequest.fetchLimit = 1
 
+                self.deleteFirstMatch(for: fetchRequest, in: context)
+            }
         }
 
         func deleteDealer(identifier: String) {
