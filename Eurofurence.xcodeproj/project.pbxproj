@@ -2587,6 +2587,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		20597CF5210CDDD80003D6C3 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				20597CF6210CDDE80003D6C3 /* MarkdownRenderer */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		20597CF6210CDDE80003D6C3 /* MarkdownRenderer */ = {
+			isa = PBXGroup;
+			children = (
+				CA72848F209F9482007D912A /* DefaultMarkdownRenderer.swift */,
+				CA72848D209F93A4007D912A /* MarkdownRenderer.swift */,
+				20E87E16210A34D800B55A04 /* DownMarkdownRenderer.swift */,
+			);
+			path = MarkdownRenderer;
+			sourceTree = "<group>";
+		};
 		2A4A738C931BBD9059F30151 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -3374,6 +3392,7 @@
 		CA00AE6320D1782600C2FBB0 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				20597CF5210CDDD80003D6C3 /* Interactors */,
 				CA00AE6A20D178EC00C2FBB0 /* Extensions */,
 				CA00AE6820D178D700C2FBB0 /* Table View Cells */,
 				CA27618020DF9315000E52AC /* Views */,
@@ -5224,9 +5243,6 @@
 			isa = PBXGroup;
 			children = (
 				CA72848B209F9288007D912A /* DefaultAnnouncementDetailInteractor.swift */,
-				CA72848F209F9482007D912A /* DefaultMarkdownRenderer.swift */,
-				CA72848D209F93A4007D912A /* MarkdownRenderer.swift */,
-				20E87E16210A34D800B55A04 /* DownMarkdownRenderer.swift */,
 			);
 			path = Default;
 			sourceTree = "<group>";
