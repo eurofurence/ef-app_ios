@@ -174,7 +174,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                tracks: tracks,
                                conferenceDays: conferenceDays,
                                dealers: dealers,
-                               maps: maps)
+                               maps: maps,
+                               images: APISyncDelta())
     }
     
 }

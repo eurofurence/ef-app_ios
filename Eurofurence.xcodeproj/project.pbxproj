@@ -625,6 +625,7 @@
 		CA3990F220ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */; };
 		CA3990F420ACD73D001E3F1A /* WhenObservingUpcomingEvents_ThenLoadSucceeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990F320ACD73D001E3F1A /* WhenObservingUpcomingEvents_ThenLoadSucceeds.swift */; };
 		CA401057210A6BAD0056E16C /* WhenDeletingMap_AfterSuccessfulSync_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401056210A6BAD0056E16C /* WhenDeletingMap_AfterSuccessfulSync_ApplicationShould.swift */; };
+		CA401059210B9FD40056E16C /* APIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401058210B9FD40056E16C /* APIImage.swift */; };
 		CA46A73920F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */; };
 		CA49E9462015480A00EB571C /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */; };
 		CA49E94A2015480A00EB571C /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E9422015480A00EB571C /* EventBusRegistration.swift */; };
@@ -1875,6 +1876,7 @@
 		CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUpcomingEventsBeforeLoadingAnything.swift; sourceTree = "<group>"; };
 		CA3990F320ACD73D001E3F1A /* WhenObservingUpcomingEvents_ThenLoadSucceeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUpcomingEvents_ThenLoadSucceeds.swift; sourceTree = "<group>"; };
 		CA401056210A6BAD0056E16C /* WhenDeletingMap_AfterSuccessfulSync_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDeletingMap_AfterSuccessfulSync_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA401058210B9FD40056E16C /* APIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIImage.swift; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -5963,6 +5965,7 @@
 				CA162EDF20AAF7C3004AFED6 /* APIRoom.swift */,
 				CAF5979520449A0400089BE8 /* APISyncResponse.swift */,
 				CACF1E9320B36C5A00D904B5 /* APITrack.swift */,
+				CA401058210B9FD40056E16C /* APIImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -6972,6 +6975,7 @@
 				CA283A8420E9461800F7D195 /* UnreadIndicatorView.swift in Sources */,
 				CA1F7D6720CB856D00FB87F5 /* LatestDataFetchedEvent.swift in Sources */,
 				CA00AE5820D171D600C2FBB0 /* ScheduleSceneBinder.swift in Sources */,
+				CA401059210B9FD40056E16C /* APIImage.swift in Sources */,
 				CAF705681F82D13F00A9FEA2 /* TutorialModuleProviding.swift in Sources */,
 				9A2A94871F12CBC0004D66FB /* SyncState.swift in Sources */,
 				CA8E7EF81FB08ED700F0BF10 /* PhoneRootModuleFactory.swift in Sources */,

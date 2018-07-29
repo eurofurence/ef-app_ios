@@ -12,18 +12,15 @@ import XCTest
 class WhenFetchingIconDataForDealerWithArtwork_ApplicationShould: XCTestCase {
     
     func testReturnTheArtworkFromTheImageAPIForTheArtistThumbnailIdentifier() {
-        var syncResponse = APISyncResponse.randomWithoutDeletions
-        var dealer = APIDealer.random
-        let artistArtworkThumbnailID = String.random
-        dealer.artistThumbnailImageId = artistArtworkThumbnailID
-        syncResponse.dealers.changed = [dealer]
+        let syncResponse = APISyncResponse.randomWithoutDeletions
+        let dealer = syncResponse.dealers.changed.randomElement().element
         let context = ApplicationTestBuilder().build()
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(syncResponse)
         let dealersIndex = context.application.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
-        let expected = context.imageAPI.stubbedImage(for: artistArtworkThumbnailID)
+        let expected = context.imageAPI.stubbedImage(for: dealer.artistThumbnailImageId)
         var artworkData: Data?
         context.application.fetchIconPNGData(for: Dealer2.Identifier(dealer.identifier)) { artworkData = $0 }
         

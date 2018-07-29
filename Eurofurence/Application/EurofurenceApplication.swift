@@ -301,20 +301,20 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
             self.syncResponse = response
 
-            let posterImageIdentifiers = response.events.changed.map({ $0.posterImageId })
-            let bannerImageIdentifiers = response.events.changed.map({ $0.bannerImageId })
-            let artistThumbnailImageIdentifiers = response.dealers.changed.map({ $0.artistThumbnailImageId })
-            let artistImageIdentifiers = response.dealers.changed.map({ $0.artistImageId })
-            let artistPreviewImageIdentifiers = response.dealers.changed.map({ $0.artPreviewImageId })
-            let mapImageIdentifiers = response.maps.changed.map({ $0.imageIdentifier })
-            var imageIdentifiers: [String?] = []
-            imageIdentifiers.append(contentsOf: posterImageIdentifiers)
-            imageIdentifiers.append(contentsOf: bannerImageIdentifiers)
-            imageIdentifiers.append(contentsOf: artistThumbnailImageIdentifiers)
-            imageIdentifiers.append(contentsOf: artistImageIdentifiers)
-            imageIdentifiers.append(contentsOf: artistPreviewImageIdentifiers)
-            imageIdentifiers.append(contentsOf: mapImageIdentifiers)
-            let nonOptionalImageIdentifiers = imageIdentifiers.compactMap({ $0 })
+//            let posterImageIdentifiers = response.events.changed.map({ $0.posterImageId })
+//            let bannerImageIdentifiers = response.events.changed.map({ $0.bannerImageId })
+//            let artistThumbnailImageIdentifiers = response.dealers.changed.map({ $0.artistThumbnailImageId })
+//            let artistImageIdentifiers = response.dealers.changed.map({ $0.artistImageId })
+//            let artistPreviewImageIdentifiers = response.dealers.changed.map({ $0.artPreviewImageId })
+//            let mapImageIdentifiers = response.maps.changed.map({ $0.imageIdentifier })
+//            var imageIdentifiers: [String?] = []
+//            imageIdentifiers.append(contentsOf: posterImageIdentifiers)
+//            imageIdentifiers.append(contentsOf: bannerImageIdentifiers)
+//            imageIdentifiers.append(contentsOf: artistThumbnailImageIdentifiers)
+//            imageIdentifiers.append(contentsOf: artistImageIdentifiers)
+//            imageIdentifiers.append(contentsOf: artistPreviewImageIdentifiers)
+//            imageIdentifiers.append(contentsOf: mapImageIdentifiers)
+            let nonOptionalImageIdentifiers = response.images.changed.map({ $0.identifier })
             progress.completedUnitCount = 0
             progress.totalUnitCount = Int64(nonOptionalImageIdentifiers.count)
 

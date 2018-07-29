@@ -12,24 +12,21 @@ import XCTest
 class WhenPreparingDealerMapGraphic_ApplicationShould: XCTestCase {
     
     func testProvideRenderedMapDataInExtendedData() {
-        var map = APIMap.random
-        let dealerIdentifier = Dealer2.Identifier.random
-        let dealerMapLink = APIMap.Entry.Link(type: .dealerDetail, name: .random, target: dealerIdentifier.rawValue)
-        let dealerMapEntry = APIMap.Entry(x: .random, y: .random, tapRadius: .random, links: [dealerMapLink])
-        map.entries = [dealerMapEntry]
-        var dealer = APIDealer.random
-        dealer.identifier = dealerIdentifier.rawValue
         var syncResponse = APISyncResponse.randomWithoutDeletions
-        syncResponse.maps.changed = [map]
-        syncResponse.dealers.changed = [dealer]
+        let randomDealer = syncResponse.dealers.changed.randomElement()
+        var randomMap = syncResponse.maps.changed.randomElement()
+        let dealerMapLink = APIMap.Entry.Link(type: .dealerDetail, name: .random, target: randomDealer.element.identifier)
+        let dealerMapEntry = APIMap.Entry(x: .random, y: .random, tapRadius: .random, links: [dealerMapLink])
+        randomMap.element.entries = [dealerMapEntry]
+        syncResponse.maps.changed[randomMap.index] = randomMap.element
         let context = ApplicationTestBuilder().build()
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(syncResponse)
-        let mapGraphic = context.imageAPI.stubbedImage(for: map.imageIdentifier)!
+        let mapGraphic = context.imageAPI.stubbedImage(for: randomMap.element.imageIdentifier)!
         let renderedData = Data.random
         context.mapCoordinateRender.stub(renderedData, forGraphic: mapGraphic, atX: dealerMapEntry.x, y: dealerMapEntry.y, radius: dealerMapEntry.tapRadius)
         var extendedData: ExtendedDealerData?
-        context.application.fetchExtendedDealerData(for: dealerIdentifier) { extendedData = $0 }
+        context.application.fetchExtendedDealerData(for: Dealer2.Identifier(rawValue: randomDealer.element.identifier)!) { extendedData = $0 }
         
         XCTAssertEqual(renderedData, extendedData?.dealersDenMapLocationGraphicPNGData)
     }

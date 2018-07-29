@@ -60,7 +60,8 @@ private struct JSONSyncResponse: Decodable {
                                tracks: EventConferenceTracks.delta,
                                conferenceDays: EventConferenceDays.delta,
                                dealers: Dealers.delta,
-                               maps: Maps.delta)
+                               maps: Maps.delta,
+                               images: APISyncDelta())
     }
 
     struct Leaf<T>: Decodable where T: Decodable & ModelRepresenting {

@@ -31,5 +31,6 @@ struct APISyncResponse: Equatable {
     var conferenceDays: APISyncDelta<APIConferenceDay>
     var dealers: APISyncDelta<APIDealer>
     var maps: APISyncDelta<APIMap>
+    var images: APISyncDelta<APIImage>
 
 }

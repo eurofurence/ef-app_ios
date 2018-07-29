@@ -32,6 +32,16 @@ extension APISyncResponse {
                             bannerImageId: .random)
         }
         
+        let dealers: APISyncDelta<APIDealer> = APISyncDelta(changed: .random)
+        let maps: APISyncDelta<APIMap> = APISyncDelta(changed: .random)
+        
+        var allImages: [APIImage] = events.compactMap({ $0.bannerImageId }).map({ APIImage(identifier: $0, internalReference: "") })
+        allImages.append(contentsOf: events.compactMap({ $0.posterImageId }).map({ APIImage(identifier: $0, internalReference: "") }))
+        allImages.append(contentsOf: dealers.changed.compactMap({ $0.artistImageId }).map({ APIImage(identifier: $0, internalReference: "") }))
+        allImages.append(contentsOf: dealers.changed.compactMap({ $0.artistThumbnailImageId }).map({ APIImage(identifier: $0, internalReference: "") }))
+        allImages.append(contentsOf: dealers.changed.compactMap({ $0.artPreviewImageId }).map({ APIImage(identifier: $0, internalReference: "") }))
+        allImages.append(contentsOf: maps.changed.map({ APIImage(identifier: $0.imageIdentifier, internalReference: "") }))
+        
         return APISyncResponse(knowledgeGroups: APISyncDelta(changed: knowledge.groups),
                                knowledgeEntries: APISyncDelta(changed: knowledge.entries),
                                announcements: APISyncDelta(changed: .random),
@@ -39,8 +49,9 @@ extension APISyncResponse {
                                rooms: APISyncDelta(changed: rooms),
                                tracks: APISyncDelta(changed: tracks),
                                conferenceDays: APISyncDelta(changed: days),
-                               dealers: APISyncDelta(changed: .random),
-                               maps: APISyncDelta(changed: .random))
+                               dealers: dealers,
+                               maps: maps,
+                               images: APISyncDelta(changed: allImages))
     }
     
 }
@@ -206,6 +217,14 @@ extension APIMap.Entry.Link.FragmentType: RandomValueProviding {
     static var random: APIMap.Entry.Link.FragmentType {
         let cases: [APIMap.Entry.Link.FragmentType] = [.conferenceRoom, .mapEntry, .dealerDetail]
         return cases.randomElement().element
+    }
+    
+}
+
+extension APIImage: RandomValueProviding {
+    
+    static var random: APIImage {
+        return APIImage(identifier: .random, internalReference: .random)
     }
     
 }
