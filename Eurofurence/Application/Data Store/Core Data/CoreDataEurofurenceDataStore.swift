@@ -444,6 +444,14 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
             }
         }
 
+        func saveImages(_ images: [APIImage]) {
+
+        }
+
+        func deleteImage(identifier: String) {
+
+        }
+
         // MARK: Private
 
         private func makeEntity<Entity>(in context: NSManagedObjectContext,

@@ -142,6 +142,10 @@ extension CapturingEurofurenceDataStore {
         return transaction.persistedReadAnnouncementIdentifiers.contains(elementsFrom: identifiers)
     }
     
+    func didSave(_ images: [APIImage]) -> Bool {
+        return transaction.persistedImages.contains(elementsFrom: images)
+    }
+    
 }
 
 extension Array where Element: Equatable {
@@ -272,6 +276,20 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
     private(set) var persistedReadAnnouncementIdentifiers: [Announcement2.Identifier] = []
     func saveReadAnnouncements(_ announcements: [Announcement2.Identifier]) {
         persistedReadAnnouncementIdentifiers = announcements
+    }
+    
+    private(set) var persistedImages = [APIImage]()
+    func saveImages(_ images: [APIImage]) {
+        persistedImages.append(contentsOf: images)
+    }
+    
+    private(set) var deletedImages = [String]()
+    func deleteImage(identifier: String) {
+        deletedImages.append(identifier)
+        
+        if let idx = persistedImages.index(where: { $0.identifier == identifier }) {
+            persistedImages.remove(at: idx)
+        }
     }
     
 }

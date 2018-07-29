@@ -626,6 +626,8 @@
 		CA3990F420ACD73D001E3F1A /* WhenObservingUpcomingEvents_ThenLoadSucceeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3990F320ACD73D001E3F1A /* WhenObservingUpcomingEvents_ThenLoadSucceeds.swift */; };
 		CA401057210A6BAD0056E16C /* WhenDeletingMap_AfterSuccessfulSync_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401056210A6BAD0056E16C /* WhenDeletingMap_AfterSuccessfulSync_ApplicationShould.swift */; };
 		CA401059210B9FD40056E16C /* APIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401058210B9FD40056E16C /* APIImage.swift */; };
+		CA40105C210E19660056E16C /* WhenSyncSucceedsWithChangedImages_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40105B210E19660056E16C /* WhenSyncSucceedsWithChangedImages_ApplicationShould.swift */; };
+		CA40105E210E1A9D0056E16C /* WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40105D210E1A9D0056E16C /* WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift */; };
 		CA46A73920F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */; };
 		CA49E9462015480A00EB571C /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */; };
 		CA49E94A2015480A00EB571C /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E9422015480A00EB571C /* EventBusRegistration.swift */; };
@@ -1877,6 +1879,8 @@
 		CA3990F320ACD73D001E3F1A /* WhenObservingUpcomingEvents_ThenLoadSucceeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingUpcomingEvents_ThenLoadSucceeds.swift; sourceTree = "<group>"; };
 		CA401056210A6BAD0056E16C /* WhenDeletingMap_AfterSuccessfulSync_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenDeletingMap_AfterSuccessfulSync_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA401058210B9FD40056E16C /* APIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIImage.swift; sourceTree = "<group>"; };
+		CA40105B210E19660056E16C /* WhenSyncSucceedsWithChangedImages_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncSucceedsWithChangedImages_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA40105D210E1A9D0056E16C /* WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -2866,6 +2870,7 @@
 				CA36A4A420D9845A00EE6537 /* Dealers */,
 				CA734D6B2109F35100221886 /* Deletions */,
 				CA162EAF20AA2DC0004AFED6 /* Events */,
+				CA40105A210E19520056E16C /* Images */,
 				CABF03C820421B2A0028BD62 /* Knowledge */,
 				CAD3BDC3205FE3EA00C91E6E /* Links */,
 				CA6A8DB420E2DA1F007536CD /* Maps */,
@@ -4114,6 +4119,15 @@
 				CA3990F120ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift */,
 			);
 			path = Upcoming;
+			sourceTree = "<group>";
+		};
+		CA40105A210E19520056E16C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				CA40105B210E19660056E16C /* WhenSyncSucceedsWithChangedImages_ApplicationShould.swift */,
+				CA40105D210E1A9D0056E16C /* WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		CA49E93B201547ED00EB571C /* Event Bus */ = {
@@ -7184,6 +7198,7 @@
 				CA2A586720F698D1002C69B6 /* WhenPreparingDealerMapGraphic_ApplicationShould.swift in Sources */,
 				CACF1E9220B36BC800D904B5 /* Track+RandomValueProviding.swift in Sources */,
 				CA250DD220D6D63600E7513C /* WhenSearchableViewModelProducesNewResult_SchedulePresenterShould.swift in Sources */,
+				CA40105C210E19660056E16C /* WhenSyncSucceedsWithChangedImages_ApplicationShould.swift in Sources */,
 				CA2761A020E01F9F000E52AC /* WhenBuildingCollectThemAllModule_PresenterShould.swift in Sources */,
 				CA6375B6208E03A800536BE2 /* DealersPresenterTestBuilder.swift in Sources */,
 				CA08158120D3D7AB00F750D4 /* WhenFetchingDaysBeforeRefreshWhenStoreHasConferenceDays.swift in Sources */,
@@ -7621,6 +7636,7 @@
 				CA637570208CD00400536BE2 /* WhenShowingTabModule_DirectorShould.swift in Sources */,
 				CA734D6F210A3E9A00221886 /* WhenDeletingEvent_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				78C86D5A1F1234F0003A20E6 /* StubRouters.swift in Sources */,
+				CA40105E210E1A9D0056E16C /* WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift in Sources */,
 				CA728473209D163E007D912A /* StubAnnouncementDetailInteractor.swift in Sources */,
 				CACF1EC420B6B9B500D904B5 /* WhenPerformingSync_WhenNumberOfImagesToDownloadIsKnown.swift in Sources */,
 				CAD3BDB12058719300C91E6E /* Link+RandomValueProviding.swift in Sources */,

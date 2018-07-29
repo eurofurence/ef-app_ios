@@ -41,6 +41,7 @@ protocol EurofurenceDataStoreTransaction {
     func saveDealers(_ dealers: [APIDealer])
     func saveMaps(_ maps: [APIMap])
     func saveReadAnnouncements(_ announcements: [Announcement2.Identifier])
+    func saveImages(_ images: [APIImage])
 
     func deleteFavouriteEventIdentifier(_ identifier: Event2.Identifier)
     func deleteKnowledgeGroup(identifier: String)
@@ -52,5 +53,6 @@ protocol EurofurenceDataStoreTransaction {
     func deleteConferenceDay(identifier: String)
     func deleteDealer(identifier: String)
     func deleteMap(identifier: String)
+    func deleteImage(identifier: String)
 
 }

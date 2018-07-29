@@ -310,6 +310,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
                 self.dataStore.performTransaction({ (transaction) in
                     transaction.saveLastRefreshDate(self.clock.currentDate)
+                    transaction.saveImages(response.images.changed)
+                    response.images.deleted.forEach(transaction.deleteImage)
                 })
 
                 self.privateMessagesController.fetchPrivateMessages { (_) in
