@@ -16,8 +16,8 @@ class CapturingAnnouncementComponent: AnnouncementComponent {
         capturedTitle = title
     }
     
-    private(set) var capturedDetail: String?
-    func setAnnouncementDetail(_ detail: String) {
+    private(set) var capturedDetail: NSAttributedString?
+    func setAnnouncementDetail(_ detail: NSAttributedString) {
         capturedDetail = detail
     }
     

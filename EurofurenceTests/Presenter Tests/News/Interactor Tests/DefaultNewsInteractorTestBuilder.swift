@@ -280,7 +280,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
         
         private func makeExpectedAnnouncementViewModel(from announcement: Announcement2) -> AnyHashable {
             return AnnouncementComponentViewModel(title: announcement.title,
-                                                  detail: announcement.content,
+                                                  detail: context.markdownRenderer.stubbedContents(for: announcement.content),
                                                   receivedDateTime: context.announcementDateFormatter.string(from: announcement.date),
                                                   isRead: context.announcementsService.stubbedReadAnnouncements.contains(announcement.identifier))
         }
