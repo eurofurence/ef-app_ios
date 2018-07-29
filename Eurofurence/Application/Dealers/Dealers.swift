@@ -144,6 +144,11 @@ class Dealers: DealersService {
             artistImagePNGData = imageCache.cachedImageData(for: artistImageId)
         }
 
+        var artPreviewImagePNGData: Data?
+        if let artPreviewImageId = model.artPreviewImageId {
+            artPreviewImagePNGData = imageCache.cachedImageData(for: artPreviewImageId)
+        }
+
         let convertEmptyStringsIntoNil: (String) -> String? = { $0.isEmpty ? nil : $0 }
 
         let extendedData = ExtendedDealerData(artistImagePNGData: artistImagePNGData,
@@ -161,8 +166,8 @@ class Dealers: DealersService {
                                               telegramUsername: convertEmptyStringsIntoNil(model.telegramHandle),
                                               aboutTheArtist: convertEmptyStringsIntoNil(model.aboutTheArtistText),
                                               aboutTheArt: convertEmptyStringsIntoNil(model.aboutTheArtText),
-                                              artPreviewImagePNGData: nil,
-                                              artPreviewCaption: nil)
+                                              artPreviewImagePNGData: artPreviewImagePNGData,
+                                              artPreviewCaption: convertEmptyStringsIntoNil(model.artPreviewCaption))
         completionHandler(extendedData)
     }
 
