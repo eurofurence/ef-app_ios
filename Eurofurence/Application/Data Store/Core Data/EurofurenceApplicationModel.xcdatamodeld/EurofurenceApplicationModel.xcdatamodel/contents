@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AnnouncementEntity" representedClassName="AnnouncementEntity" syncable="YES" codeGenerationType="class">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
@@ -46,6 +46,10 @@
     </entity>
     <entity name="FavouriteEventEntity" representedClassName="FavouriteEventEntity" syncable="YES" codeGenerationType="class">
         <attribute name="eventIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ImageModelEntity" representedClassName="ImageModelEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="internalReference" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="KnowledgeEntryEntity" representedClassName="KnowledgeEntryEntity" syncable="YES" codeGenerationType="class">
         <attribute name="groupIdentifier" optional="YES" attributeType="String" syncable="YES"/>
@@ -114,8 +118,9 @@
         <element name="MapEntity" positionX="-36" positionY="135" width="128" height="105"/>
         <element name="MapEntryEntity" positionX="-27" positionY="144" width="128" height="120"/>
         <element name="MapEntryLinkEntity" positionX="-18" positionY="153" width="128" height="105"/>
+        <element name="ReadAnnouncementEntity" positionX="-36" positionY="135" width="128" height="60"/>
         <element name="RoomEntity" positionX="-18" positionY="135" width="128" height="75"/>
         <element name="TrackEntity" positionX="0" positionY="144" width="128" height="75"/>
-        <element name="ReadAnnouncementEntity" positionX="-36" positionY="135" width="128" height="60"/>
+        <element name="ImageModelEntity" positionX="-36" positionY="135" width="128" height="75"/>
     </elements>
 </model>

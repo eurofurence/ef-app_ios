@@ -116,6 +116,10 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         return getModels(fetchRequest: ReadAnnouncementEntity.fetchRequest())
     }
 
+    func getSavedImages() -> [APIImage]? {
+        return getModels(fetchRequest: ImageModelEntity.fetchRequest())
+    }
+
     // MARK: Private
 
     private func getModels<Entity>(fetchRequest: NSFetchRequest<Entity>) -> [Entity.AdaptedType]? where Entity: EntityAdapting {
@@ -445,11 +449,23 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         }
 
         func saveImages(_ images: [APIImage]) {
-
+            mutations.append { (context) in
+                images.forEach { (image) in
+                    let entity: ImageModelEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: image.identifier)
+                    entity.identifier = image.identifier
+                    entity.internalReference = image.internalReference
+                }
+            }
         }
 
         func deleteImage(identifier: String) {
+            mutations.append { (context) in
+                let fetchRequest: NSFetchRequest<ImageModelEntity> = ImageModelEntity.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+                fetchRequest.fetchLimit = 1
 
+                self.deleteFirstMatch(for: fetchRequest, in: context)
+            }
         }
 
         // MARK: Private

@@ -58,6 +58,10 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
         return transaction.persistedReadAnnouncementIdentifiers
     }
     
+    func getSavedImages() -> [APIImage]? {
+        return transaction.persistedImages
+    }
+    
     private(set) var capturedKnowledgeGroupsToSave: [KnowledgeGroup2]?
     var transactionInvokedBlock: (() -> Void)?
     let transaction = CapturingEurofurenceDataStoreTransaction()

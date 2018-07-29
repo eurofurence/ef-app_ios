@@ -628,6 +628,7 @@
 		CA401059210B9FD40056E16C /* APIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401058210B9FD40056E16C /* APIImage.swift */; };
 		CA40105C210E19660056E16C /* WhenSyncSucceedsWithChangedImages_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40105B210E19660056E16C /* WhenSyncSucceedsWithChangedImages_ApplicationShould.swift */; };
 		CA40105E210E1A9D0056E16C /* WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40105D210E1A9D0056E16C /* WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift */; };
+		CA401060210E1E430056E16C /* ImageModelEntity+Adaptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40105F210E1E430056E16C /* ImageModelEntity+Adaptation.swift */; };
 		CA46A73920F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */; };
 		CA49E9462015480A00EB571C /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */; };
 		CA49E94A2015480A00EB571C /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E9422015480A00EB571C /* EventBusRegistration.swift */; };
@@ -1881,6 +1882,7 @@
 		CA401058210B9FD40056E16C /* APIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIImage.swift; sourceTree = "<group>"; };
 		CA40105B210E19660056E16C /* WhenSyncSucceedsWithChangedImages_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncSucceedsWithChangedImages_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA40105D210E1A9D0056E16C /* WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA40105F210E1E430056E16C /* ImageModelEntity+Adaptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageModelEntity+Adaptation.swift"; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -5880,6 +5882,7 @@
 				CAE8B0B320CA4C6B0029D4D6 /* EntityAdapting.swift */,
 				CAE8B0BA20CA54C30029D4D6 /* EventEntity+Adaptation.swift */,
 				CABA840020CEFCCD00DD0795 /* FavouriteEventEntity+Adaptation.swift */,
+				CA40105F210E1E430056E16C /* ImageModelEntity+Adaptation.swift */,
 				CAE8B0B820CA4E450029D4D6 /* KnowledgeEntryEntity+Adaptation.swift */,
 				CAE8B0B120CA4C530029D4D6 /* KnowledgeGroupEntity+Adaptation.swift */,
 				CAE8B0B620CA4E100029D4D6 /* LinkEntity+Adaptation.swift */,
@@ -6795,6 +6798,7 @@
 				CA36A47120D84D9D00EE6537 /* DealersBinder.swift in Sources */,
 				9AF0B4FE1F08459D000AAA0A /* TimeIntervalRow.swift in Sources */,
 				9A861EB11F2554F900B75A8C /* TutorialModule.swift in Sources */,
+				CA401060210E1E430056E16C /* ImageModelEntity+Adaptation.swift in Sources */,
 				9AF159ED1EF5BE7F00DB287D /* EventCell.swift in Sources */,
 				CA36A4C220DA757B00EE6537 /* DealersSearchViewModel.swift in Sources */,
 				CA73AEF5201A08D1004E77BF /* KnowledgeListPresenter.swift in Sources */,

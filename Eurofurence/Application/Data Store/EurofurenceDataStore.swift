@@ -24,6 +24,7 @@ protocol EurofurenceDataStore {
     func getSavedDealers() -> [APIDealer]?
     func getSavedMaps() -> [APIMap]?
     func getSavedReadAnnouncementIdentifiers() -> [Announcement2.Identifier]?
+    func getSavedImages() -> [APIImage]?
 
 }
 

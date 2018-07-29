@@ -490,6 +490,44 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
                        loadingBlock: { $0.getSavedMaps })
     }
     
+    func testSaveImages() {
+        let expected = [APIImage].random
+        store.performTransaction { (transaction) in
+            transaction.saveImages(expected)
+        }
+        
+        recreateStore()
+        let actual = store.getSavedImages()
+        
+        assertThat(expected, isEqualTo: actual)
+    }
+    
+    func testUpdateExistingImagesByIdentifier() {
+        var image = APIImage.random
+        store.performTransaction { (transaction) in
+            transaction.saveImages([image])
+        }
+
+        image.internalReference = .random
+        store.performTransaction { (transaction) in
+            transaction.saveImages([image])
+        }
+
+        let savedImages = store.getSavedImages()
+
+        XCTAssertEqual(1, savedImages?.count)
+        XCTAssertEqual(image.internalReference, savedImages?.first?.internalReference)
+    }
+    
+    func testDeleteImages() {
+        let element = APIImage.random
+        verifyDeletion(for: element,
+                       elementIdentifier: element.identifier,
+                       savingBlock: { $0.saveImages },
+                       deletionBlock: { $0.deleteImage },
+                       loadingBlock: { $0.getSavedImages })
+    }
+    
     private func verifyDeletion<T>(for element: T,
                                    elementIdentifier: String,
                                    savingBlock: @escaping (EurofurenceDataStoreTransaction) -> ([T]) -> Void,
