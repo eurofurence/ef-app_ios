@@ -78,6 +78,11 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
         XCTAssertEqual(expected, response?.maps)
     }
     
+    func testProduceExpectedImages() {
+        let expected = makeExpectedSyncResponseFromTestFile().images
+        XCTAssertEqual(expected, response?.images)
+    }
+    
     private func makeExpectedSyncResponseFromTestFile() -> APISyncResponse {
         let knowledgeGroups = APISyncDelta<APIKnowledgeGroup>(changed: [APIKnowledgeGroup(identifier: "ec031cbf-d8d0-825d-4c36-b782ed8d19d8",
                                                                                           order: 0,
@@ -166,6 +171,10 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                          entries: [APIMap.Entry(x: 747, y: 201, tapRadius: 50, links: [APIMap.Entry.Link(type: .dealerDetail, name: "Mirri", target: "b2166372-3b76-45d3-b3f9-e1675cade2db")])])],
                                         deleted: ["157e1849-d6fc-46ab-9d47-1b785cd867c7"])
         
+        let images = APISyncDelta<APIImage>(changed: [APIImage(identifier: "8ae7d323-b56d-4155-8a88-6b418bcfd057",
+                                                               internalReference: "knowledge:1b9f7858-454d-0a68-824b-359e5bbfa5b0")],
+                                            deleted: ["2513aa0a-48a0-49cf-807e-8a57cf5306f8"])
+        
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,
                                announcements: APISyncDelta(),
@@ -175,7 +184,7 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                conferenceDays: conferenceDays,
                                dealers: dealers,
                                maps: maps,
-                               images: APISyncDelta())
+                               images: images)
     }
     
 }
