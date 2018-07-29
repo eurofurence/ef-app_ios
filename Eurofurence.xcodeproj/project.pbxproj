@@ -2605,6 +2605,22 @@
 			path = MarkdownRenderer;
 			sourceTree = "<group>";
 		};
+		20597CF8210E168C0003D6C3 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				20597CF9210E16930003D6C3 /* Test Doubles */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		20597CF9210E16930003D6C3 /* Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				CA728491209F9540007D912A /* StubMarkdownRenderer.swift */,
+			);
+			path = "Test Doubles";
+			sourceTree = "<group>";
+		};
 		2A4A738C931BBD9059F30151 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2901,6 +2917,7 @@
 				CA5BF9D31F7AEE070045DBC0 /* Preload */,
 				CA2D07FE1FE94AD200BFD785 /* Root */,
 				CA637589208CE04E00536BE2 /* Schedule */,
+				20597CF8210E168C0003D6C3 /* Shared */,
 				CA8E7EFF1FB0940600F0BF10 /* Tab */,
 				CA2D080A1FE94F8800BFD785 /* Tutorial */,
 				CA283A7620E8F51B00F7D195 /* Web */,
@@ -5198,7 +5215,6 @@
 				CA728462209D0F7B007D912A /* CapturingAnnouncementDetailScene.swift */,
 				CA728457209D058A007D912A /* StubAnnouncementDetailSceneFactory.swift */,
 				CA728472209D163E007D912A /* StubAnnouncementDetailInteractor.swift */,
-				CA728491209F9540007D912A /* StubMarkdownRenderer.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
