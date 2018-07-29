@@ -65,7 +65,7 @@ struct ConventionCountdownComponentViewModel: Hashable {
 struct AnnouncementComponentViewModel: Hashable {
 
     var title: String
-    var detail: String
+    var detail: NSAttributedString
     var receivedDateTime: String
     var isRead: Bool
 

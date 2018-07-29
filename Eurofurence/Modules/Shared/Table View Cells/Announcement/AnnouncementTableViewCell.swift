@@ -23,8 +23,8 @@ class AnnouncementTableViewCell: UITableViewCell, AnnouncementComponent {
         announcementTitleLabel.text = title
     }
 
-    func setAnnouncementDetail(_ detail: String) {
-        announcementDescriptionLabel.text = detail
+    func setAnnouncementDetail(_ detail: NSAttributedString) {
+        announcementDescriptionLabel.attributedText = detail
     }
 
     func setAnnouncementReceivedDateTime(_ receivedDateTime: String) {
