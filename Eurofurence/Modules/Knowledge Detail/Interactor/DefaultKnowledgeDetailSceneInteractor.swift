@@ -14,6 +14,17 @@ struct DefaultKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
 
         var contents: NSAttributedString
         var links: [LinkViewModel]
+        private var linkModels: [Link]
+
+        init(contents: NSAttributedString, links: [Link]) {
+            self.contents = contents
+            self.linkModels = links
+            self.links = links.map({ LinkViewModel(name: $0.name) })
+        }
+
+        func link(at index: Int) -> Link {
+            return linkModels[index]
+        }
 
     }
 
@@ -23,14 +34,8 @@ struct DefaultKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
     func makeViewModel(for identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping (KnowledgeEntryDetailViewModel) -> Void) {
         knowledgeService.fetchKnowledgeEntry(for: identifier) { (theEntry) in
             let renderedContents = self.renderer.renderContents(from: theEntry.contents)
-            let linkViewModels = theEntry.links.map(self.makeLinkViewModel)
-
-            completionHandler(ViewModel(contents: renderedContents, links: linkViewModels))
+            completionHandler(ViewModel(contents: renderedContents, links: theEntry.links))
         }
-    }
-
-    private func makeLinkViewModel(from link: Link) -> LinkViewModel {
-        return LinkViewModel(name: link.name)
     }
 
 }

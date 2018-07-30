@@ -14,17 +14,27 @@ struct StubKnowledgeEntryDetailViewModel: KnowledgeEntryDetailViewModel {
     var contents: NSAttributedString
     var links: [LinkViewModel]
     
+    var modelLinks: [Link]
+    
+    func link(at index: Int) -> Link {
+        return modelLinks[index]
+    }
+    
 }
 
 extension StubKnowledgeEntryDetailViewModel: RandomValueProviding {
     
     static var random: StubKnowledgeEntryDetailViewModel {
-        return StubKnowledgeEntryDetailViewModel(contents: .random, links: .random)
+        let linkViewModels: [LinkViewModel] = .random
+        return StubKnowledgeEntryDetailViewModel(contents: .random,
+                                                 links: linkViewModels,
+                                                 modelLinks: .random(upperLimit: linkViewModels.count))
     }
     
     static var randomWithoutLinks: StubKnowledgeEntryDetailViewModel {
         var viewModel = random
         viewModel.links = []
+        viewModel.modelLinks = []
         
         return viewModel
     }

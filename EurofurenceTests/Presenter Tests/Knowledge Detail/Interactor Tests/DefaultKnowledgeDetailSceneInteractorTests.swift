@@ -73,4 +73,16 @@ class DefaultKnowledgeDetailSceneInteractorTests: XCTestCase {
         XCTAssertEqual(expected, viewModel?.links)
     }
     
+    func testRequestingLinkAtIndexReturnsExpectedLink() {
+        let entry = KnowledgeEntry2.random
+        var viewModel: KnowledgeEntryDetailViewModel?
+        interactor.makeViewModel(for: entry.identifier) { viewModel = $0 }
+        let randomizedEntry = knowledgeService.stubbedKnowledgeEntry(for: entry.identifier)
+        let randomLink = randomizedEntry.links.randomElement()
+        let expected = randomLink.element
+        let actual = viewModel?.link(at: randomLink.index)
+        
+        XCTAssertEqual(expected, actual)
+    }
+    
 }

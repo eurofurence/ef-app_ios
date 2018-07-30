@@ -13,4 +13,6 @@ protocol KnowledgeEntryDetailViewModel {
     var contents: NSAttributedString { get }
     var links: [LinkViewModel] { get }
 
+    func link(at index: Int) -> Link
+
 }

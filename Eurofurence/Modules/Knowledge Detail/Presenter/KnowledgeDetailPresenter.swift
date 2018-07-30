@@ -6,12 +6,13 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-struct KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
+class KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
 
     private let delegate: KnowledgeDetailModuleDelegate
     private let knowledgeDetailScene: KnowledgeDetailScene
     private let knowledgeEntry: KnowledgeEntry2
     private let knowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor
+    private var viewModel: KnowledgeEntryDetailViewModel?
 
     init(delegate: KnowledgeDetailModuleDelegate,
          knowledgeDetailScene: KnowledgeDetailScene,
@@ -31,11 +32,12 @@ struct KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
     }
 
     func knowledgeDetailSceneDidSelectLink(at index: Int) {
-        let link = knowledgeEntry.links[index]
+        guard let link = viewModel?.link(at: index) else { return }
         delegate.knowledgeDetailModuleDidSelectLink(link)
     }
 
     private func knowledgeDetailViewModelPrepared(_ viewModel: KnowledgeEntryDetailViewModel) {
+        self.viewModel = viewModel
         knowledgeDetailScene.setAttributedKnowledgeEntryContents(viewModel.contents)
 
         let links = viewModel.links
