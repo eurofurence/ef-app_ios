@@ -9,13 +9,20 @@
 @testable import Eurofurence
 import Foundation
 
-extension KnowledgeEntryDetailViewModel: RandomValueProviding {
+struct StubKnowledgeEntryDetailViewModel: KnowledgeEntryDetailViewModel {
     
-    static var random: KnowledgeEntryDetailViewModel {
-        return KnowledgeEntryDetailViewModel(contents: .random, links: .random)
+    var contents: NSAttributedString
+    var links: [LinkViewModel]
+    
+}
+
+extension StubKnowledgeEntryDetailViewModel: RandomValueProviding {
+    
+    static var random: StubKnowledgeEntryDetailViewModel {
+        return StubKnowledgeEntryDetailViewModel(contents: .random, links: .random)
     }
     
-    static var randomWithoutLinks: KnowledgeEntryDetailViewModel {
+    static var randomWithoutLinks: StubKnowledgeEntryDetailViewModel {
         var viewModel = random
         viewModel.links = []
         
@@ -42,7 +49,7 @@ extension NSAttributedString {
 
 class StubKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
     
-    var viewModel = KnowledgeEntryDetailViewModel.random
+    var viewModel = StubKnowledgeEntryDetailViewModel.random
     func makeViewModel(for entry: KnowledgeEntry2.Identifier, completionHandler: @escaping (KnowledgeEntryDetailViewModel) -> Void) {
         completionHandler(viewModel)
     }

@@ -10,6 +10,13 @@ import Foundation
 
 struct DefaultKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
 
+    private struct ViewModel: KnowledgeEntryDetailViewModel {
+
+        var contents: NSAttributedString
+        var links: [LinkViewModel]
+
+    }
+
     var knowledgeService: KnowledgeService = EurofurenceApplication.shared
     var renderer: WikiRenderer = ConcreteWikiRenderer()
 
@@ -18,7 +25,7 @@ struct DefaultKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
             let renderedContents = self.renderer.renderContents(from: theEntry.contents)
             let linkViewModels = theEntry.links.map(self.makeLinkViewModel)
 
-            completionHandler(KnowledgeEntryDetailViewModel(contents: renderedContents, links: linkViewModels))
+            completionHandler(ViewModel(contents: renderedContents, links: linkViewModels))
         }
     }
 

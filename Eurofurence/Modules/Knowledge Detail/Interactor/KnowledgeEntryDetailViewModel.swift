@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct KnowledgeEntryDetailViewModel {
+protocol KnowledgeEntryDetailViewModel {
 
-    var contents: NSAttributedString
-    var links: [LinkViewModel]
+    var contents: NSAttributedString { get }
+    var links: [LinkViewModel] { get }
 
 }
