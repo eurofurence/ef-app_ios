@@ -1,5 +1,5 @@
 //
-//  DefaultKnowledgeListInteractorTests.swift
+//  DefaultKnowledgeGroupsInteractorTests.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 24/02/2018.
@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import XCTest
 
-class DefaultKnowledgeListInteractorTests: XCTestCase {
+class DefaultKnowledgeGroupsInteractorTests: XCTestCase {
     
     private func expectedViewModelForGroup(_ group: KnowledgeGroup2) -> KnowledgeListGroupViewModel {
         let entriesViewModels = group.entries.map(expectedViewModelForEntry)
@@ -25,12 +25,12 @@ class DefaultKnowledgeListInteractorTests: XCTestCase {
     
     func testKnowledgeGroupsFromServiceAreTurnedIntoExpectedViewModels() {
         let service = StubKnowledgeService()
-        let interactor = DefaultKnowledgeListInteractor(service: service)
-        var actual: KnowledgeListViewModel?
+        let interactor = DefaultKnowledgeGroupsInteractor(service: service)
+        var actual: KnowledgeGroupsListViewModel?
         interactor.prepareViewModel { actual = $0 }
         
         let models: [KnowledgeGroup2] = .random
-        let expected = KnowledgeListViewModel(knowledgeGroups: models.map(expectedViewModelForGroup))
+        let expected = KnowledgeGroupsListViewModel(knowledgeGroups: models.map(expectedViewModelForGroup))
         service.simulateFetchSucceeded(models)
         
         XCTAssertEqual(expected, actual)
@@ -38,7 +38,7 @@ class DefaultKnowledgeListInteractorTests: XCTestCase {
     
     func testFetchingKnowledgeEntryReturnsExpectedEntryFromService() {
         let service = StubKnowledgeService()
-        let interactor = DefaultKnowledgeListInteractor(service: service)
+        let interactor = DefaultKnowledgeGroupsInteractor(service: service)
         var actual: KnowledgeEntry2?
         let models: [KnowledgeGroup2] = .random
         let group = models.randomElement()

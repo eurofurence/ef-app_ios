@@ -96,7 +96,7 @@ class ApplicationDirectorTestBuilder {
         var loginModule: StubLoginModuleFactory
         var windowWireframe: CapturingWindowWireframe
         var messageDetailModule: StubMessageDetailModuleProviding
-        var knowledgeListModule: StubKnowledgeListModuleProviding
+        var knowledgeListModule: StubKnowledgeGroupsListModuleProviding
         var knowledgeDetailModule: StubKnowledgeDetailModuleProviding
         var mapsModule: StubMapsModuleProviding
         var mapDetailModule: StubMapDetailModuleProviding
@@ -124,7 +124,7 @@ class ApplicationDirectorTestBuilder {
     private let loginModule: StubLoginModuleFactory
     private let windowWireframe: CapturingWindowWireframe
     private let messageDetailModule: StubMessageDetailModuleProviding
-    private let knowledgeListModule: StubKnowledgeListModuleProviding
+    private let knowledgeListModule: StubKnowledgeGroupsListModuleProviding
     private let knowledgeDetailModule: StubKnowledgeDetailModuleProviding
     private let mapsModule: StubMapsModuleProviding
     private let mapDetailModule: StubMapDetailModuleProviding
@@ -150,7 +150,7 @@ class ApplicationDirectorTestBuilder {
         messagesModule = StubMessagesModuleFactory()
         loginModule = StubLoginModuleFactory()
         messageDetailModule = StubMessageDetailModuleProviding()
-        knowledgeListModule = StubKnowledgeListModuleProviding()
+        knowledgeListModule = StubKnowledgeGroupsListModuleProviding()
         knowledgeDetailModule = StubKnowledgeDetailModuleProviding()
         mapsModule = StubMapsModuleProviding()
         mapDetailModule = StubMapDetailModuleProviding()

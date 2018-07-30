@@ -1,5 +1,5 @@
 //
-//  KnowledgeListPresenter.swift
+//  KnowledgeGroupsListPresenter.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 25/01/2018.
@@ -8,16 +8,16 @@
 
 import Foundation.NSIndexPath
 
-class KnowledgeListPresenter: KnowledgeListSceneDelegate {
+class KnowledgeGroupsListPresenter: KnowledgeListSceneDelegate {
 
     private let scene: KnowledgeListScene
-    private let knowledgeListInteractor: KnowledgeInteractor
-    private let delegate: KnowledgeListModuleDelegate
-    private var viewModel: KnowledgeListViewModel?
+    private let knowledgeListInteractor: KnowledgeGroupsInteractor
+    private let delegate: KnowledgeGroupsListModuleDelegate
+    private var viewModel: KnowledgeGroupsListViewModel?
 
     init(scene: KnowledgeListScene,
-         knowledgeListInteractor: KnowledgeInteractor,
-         delegate: KnowledgeListModuleDelegate) {
+         knowledgeListInteractor: KnowledgeGroupsInteractor,
+         delegate: KnowledgeGroupsListModuleDelegate) {
         self.scene = scene
         self.knowledgeListInteractor = knowledgeListInteractor
         self.delegate = delegate
@@ -39,7 +39,7 @@ class KnowledgeListPresenter: KnowledgeListSceneDelegate {
         }
     }
 
-    private func viewModelPrepared(_ viewModel: KnowledgeListViewModel) {
+    private func viewModelPrepared(_ viewModel: KnowledgeGroupsListViewModel) {
         self.viewModel = viewModel
         scene.hideLoadingIndicator()
 
@@ -51,7 +51,7 @@ class KnowledgeListPresenter: KnowledgeListSceneDelegate {
 
     private struct ListBinder: KnowledgeListBinder {
 
-        var viewModel: KnowledgeListViewModel
+        var viewModel: KnowledgeGroupsListViewModel
 
         func bind(_ header: KnowledgeGroupScene, toGroupAt index: Int) {
             let group = viewModel.knowledgeGroups[index]

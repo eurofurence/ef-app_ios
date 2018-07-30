@@ -1,34 +1,34 @@
 //
-//  KnowledgeListModuleBuilder.swift
+//  KnowledgeGroupsModuleBuilder.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 25/01/2018.
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-class KnowledgeListModuleBuilder {
+class KnowledgeGroupsModuleBuilder {
 
-    private var knowledgeListInteractor: KnowledgeInteractor
+    private var knowledgeListInteractor: KnowledgeGroupsInteractor
     private var knowledgeSceneFactory: KnowledgeListSceneFactory
 
     init() {
-        knowledgeListInteractor = DefaultKnowledgeListInteractor(service: EurofurenceApplication.shared)
+        knowledgeListInteractor = DefaultKnowledgeGroupsInteractor(service: EurofurenceApplication.shared)
         knowledgeSceneFactory = StoryboardKnowledgeListSceneFactory()
     }
 
     @discardableResult
-    func with(_ knowledgeListInteractor: KnowledgeInteractor) -> KnowledgeListModuleBuilder {
+    func with(_ knowledgeListInteractor: KnowledgeGroupsInteractor) -> KnowledgeGroupsModuleBuilder {
         self.knowledgeListInteractor = knowledgeListInteractor
         return self
     }
 
     @discardableResult
-    func with(_ knowledgeSceneFactory: KnowledgeListSceneFactory) -> KnowledgeListModuleBuilder {
+    func with(_ knowledgeSceneFactory: KnowledgeListSceneFactory) -> KnowledgeGroupsModuleBuilder {
         self.knowledgeSceneFactory = knowledgeSceneFactory
         return self
     }
 
-    func build() -> KnowledgeListModuleProviding {
+    func build() -> KnowledgeGroupsListModuleProviding {
         return KnowledgeListModule(knowledgeSceneFactory: knowledgeSceneFactory,
                                    knowledgeListInteractor: knowledgeListInteractor)
     }

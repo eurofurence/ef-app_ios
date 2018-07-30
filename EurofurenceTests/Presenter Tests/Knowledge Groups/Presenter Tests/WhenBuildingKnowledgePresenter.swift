@@ -10,11 +10,11 @@ import XCTest
 
 class WhenBuildingKnowledgePresenter: XCTestCase {
     
-    var context: KnowledgeListPresenterTestBuilder.Context!
+    var context: KnowledgeGroupsPresenterTestBuilder.Context!
     
     override func setUp() {
         super.setUp()
-        context = KnowledgeListPresenterTestBuilder().build()
+        context = KnowledgeGroupsPresenterTestBuilder().build()
     }
     
     func testItShouldNotTellInteractorToPrepareViewModel() {

@@ -1,5 +1,5 @@
 //
-//  StubKnowledgeListModuleProviding.swift
+//  StubKnowledgeGroupsListModuleProviding.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 22/04/2018.
@@ -9,18 +9,18 @@
 @testable import Eurofurence
 import UIKit.UIViewController
 
-class StubKnowledgeListModuleProviding: KnowledgeListModuleProviding {
+class StubKnowledgeGroupsListModuleProviding: KnowledgeGroupsListModuleProviding {
     
     let stubInterface = FakeViewController()
-    private(set) var delegate: KnowledgeListModuleDelegate?
-    func makeKnowledgeListModule(_ delegate: KnowledgeListModuleDelegate) -> UIViewController {
+    private(set) var delegate: KnowledgeGroupsListModuleDelegate?
+    func makeKnowledgeListModule(_ delegate: KnowledgeGroupsListModuleDelegate) -> UIViewController {
         self.delegate = delegate
         return stubInterface
     }
     
 }
 
-extension StubKnowledgeListModuleProviding {
+extension StubKnowledgeGroupsListModuleProviding {
     
     func simulateKnowledgeEntrySelected(_ entry: KnowledgeEntry2) {
         delegate?.knowledgeListModuleDidSelectKnowledgeEntry(entry)

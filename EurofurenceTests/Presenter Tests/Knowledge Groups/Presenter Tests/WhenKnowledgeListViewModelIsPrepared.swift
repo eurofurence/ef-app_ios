@@ -1,5 +1,5 @@
 //
-//  WhenKnowledgeListViewModelIsPrepared.swift
+//  WhenKnowledgeGroupsListViewModelIsPrepared.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 12/02/2018.
@@ -9,15 +9,15 @@
 @testable import Eurofurence
 import XCTest
 
-class WhenKnowledgeListViewModelIsPrepared: XCTestCase {
+class WhenKnowledgeGroupsListViewModelIsPrepared: XCTestCase {
     
-    var context: KnowledgeListPresenterTestBuilder.Context!
-    var viewModel: KnowledgeListViewModel!
+    var context: KnowledgeGroupsPresenterTestBuilder.Context!
+    var viewModel: KnowledgeGroupsListViewModel!
     
     override func setUp() {
         super.setUp()
         
-        context = KnowledgeListPresenterTestBuilder().build()
+        context = KnowledgeGroupsPresenterTestBuilder().build()
         context.scene.delegate?.knowledgeListSceneDidLoad()
         viewModel = .random
         context.simulateLoadingViewModel(viewModel)

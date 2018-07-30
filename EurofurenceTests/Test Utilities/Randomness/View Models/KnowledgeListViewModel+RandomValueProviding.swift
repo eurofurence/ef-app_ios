@@ -1,5 +1,5 @@
 //
-//  KnowledgeListViewModel+RandomValueProviding.swift
+//  KnowledgeGroupsListViewModel+RandomValueProviding.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 12/02/2018.
@@ -10,10 +10,10 @@ import Darwin
 @testable import Eurofurence
 import UIKit.UIImage
 
-extension KnowledgeListViewModel: RandomValueProviding {
+extension KnowledgeGroupsListViewModel: RandomValueProviding {
     
-    static var random: KnowledgeListViewModel {
-        return KnowledgeListViewModel(knowledgeGroups: .random)
+    static var random: KnowledgeGroupsListViewModel {
+        return KnowledgeGroupsListViewModel(knowledgeGroups: .random)
     }
     
 }

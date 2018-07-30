@@ -1,5 +1,5 @@
 //
-//  KnowledgeListViewModel.swift
+//  KnowledgeGroupsListViewModel.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 12/02/2018.
@@ -8,7 +8,7 @@
 
 import UIKit.UIImage
 
-struct KnowledgeListViewModel: Equatable {
+struct KnowledgeGroupsListViewModel: Equatable {
 
     var knowledgeGroups: [KnowledgeListGroupViewModel]
 

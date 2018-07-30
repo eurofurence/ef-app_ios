@@ -1,5 +1,5 @@
 //
-//  CapturingKnowledgeListModuleDelegate.swift
+//  CapturingKnowledgeGroupsListModuleDelegate.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 13/02/2018.
@@ -8,7 +8,7 @@
 
 @testable import Eurofurence
 
-class CapturingKnowledgeListModuleDelegate: KnowledgeListModuleDelegate {
+class CapturingKnowledgeGroupsListModuleDelegate: KnowledgeGroupsListModuleDelegate {
     
     private(set) var capturedKnowledgeEntryToPresent: KnowledgeEntry2?
     func knowledgeListModuleDidSelectKnowledgeEntry(_ knowledgeEntry: KnowledgeEntry2) {

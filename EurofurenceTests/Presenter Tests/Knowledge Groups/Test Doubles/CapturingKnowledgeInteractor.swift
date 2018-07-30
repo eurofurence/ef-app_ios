@@ -1,5 +1,5 @@
 //
-//  CapturingKnowledgeInteractor.swift
+//  CapturingKnowledgeGroupsInteractor.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 25/01/2018.
@@ -9,12 +9,12 @@
 @testable import Eurofurence
 import Foundation.NSIndexPath
 
-class CapturingKnowledgeInteractor: KnowledgeInteractor {
+class CapturingKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
     
     var prepareViewModelInvokedHandler: (() -> Void)?
     private(set) var toldToPrepareViewModel = false
-    fileprivate var completionHandler: ((KnowledgeListViewModel) -> Void)?
-    func prepareViewModel(completionHandler: @escaping (KnowledgeListViewModel) -> Void) {
+    fileprivate var completionHandler: ((KnowledgeGroupsListViewModel) -> Void)?
+    func prepareViewModel(completionHandler: @escaping (KnowledgeGroupsListViewModel) -> Void) {
         toldToPrepareViewModel = true
         self.completionHandler = completionHandler
         prepareViewModelInvokedHandler?()
@@ -27,9 +27,9 @@ class CapturingKnowledgeInteractor: KnowledgeInteractor {
     
 }
 
-extension CapturingKnowledgeInteractor {
+extension CapturingKnowledgeGroupsInteractor {
     
-    func simulateViewModelPrepared(_ viewModel: KnowledgeListViewModel) {
+    func simulateViewModelPrepared(_ viewModel: KnowledgeGroupsListViewModel) {
         completionHandler?(viewModel)
     }
     

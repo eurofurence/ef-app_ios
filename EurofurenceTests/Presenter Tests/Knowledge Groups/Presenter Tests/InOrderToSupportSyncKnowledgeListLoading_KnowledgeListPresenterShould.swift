@@ -1,5 +1,5 @@
 //
-//  InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould.swift
+//  InOrderToSupportSyncKnowledgeListLoading_KnowledgeGroupsListPresenterShould.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 06/03/2018.
@@ -9,10 +9,10 @@
 @testable import Eurofurence
 import XCTest
 
-class InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould: XCTestCase {
+class InOrderToSupportSyncKnowledgeListLoading_KnowledgeGroupsListPresenterShould: XCTestCase {
     
     func testShowTheLoadingIndicatorBeforeRequestingViewModelToBePrepared() {
-        let context = KnowledgeListPresenterTestBuilder().build()
+        let context = KnowledgeGroupsPresenterTestBuilder().build()
         context.knowledgeInteractor.prepareViewModelInvokedHandler = {
             XCTAssertTrue(context.scene.didShowLoadingIndicator)
         }

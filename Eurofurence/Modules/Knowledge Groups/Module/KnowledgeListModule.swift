@@ -8,14 +8,14 @@
 
 import UIKit.UIViewController
 
-struct KnowledgeListModule: KnowledgeListModuleProviding {
+struct KnowledgeListModule: KnowledgeGroupsListModuleProviding {
 
     var knowledgeSceneFactory: KnowledgeListSceneFactory
-    var knowledgeListInteractor: KnowledgeInteractor
+    var knowledgeListInteractor: KnowledgeGroupsInteractor
 
-    func makeKnowledgeListModule(_ delegate: KnowledgeListModuleDelegate) -> UIViewController {
+    func makeKnowledgeListModule(_ delegate: KnowledgeGroupsListModuleDelegate) -> UIViewController {
         let scene = knowledgeSceneFactory.makeKnowledgeListScene()
-        let presenter = KnowledgeListPresenter(scene: scene,
+        let presenter = KnowledgeGroupsListPresenter(scene: scene,
                                                knowledgeListInteractor: knowledgeListInteractor,
                                                delegate: delegate)
         scene.setDelegate(presenter)

@@ -27,7 +27,7 @@ class DirectorBuilder {
     private var messagesModuleProviding: MessagesModuleProviding
     private var loginModuleProviding: LoginModuleProviding
     private var messageDetailModuleProviding: MessageDetailModuleProviding
-    private var knowledgeListModuleProviding: KnowledgeListModuleProviding
+    private var knowledgeListModuleProviding: KnowledgeGroupsListModuleProviding
     private var knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding
     private var mapsModuleProviding: MapsModuleProviding
     private var mapDetailModuleProviding: MapDetailModuleProviding
@@ -56,7 +56,7 @@ class DirectorBuilder {
         messagesModuleProviding = MessagesModuleBuilder().build()
         loginModuleProviding = LoginModuleBuilder().build()
         messageDetailModuleProviding = MessageDetailModuleBuilder().build()
-        knowledgeListModuleProviding = KnowledgeListModuleBuilder().build()
+        knowledgeListModuleProviding = KnowledgeGroupsModuleBuilder().build()
         knowledgeDetailModuleProviding = KnowledgeDetailModuleBuilder().build()
         mapsModuleProviding = MapsModuleBuilder().build()
         mapDetailModuleProviding = MapDetailModuleBuilder().build()
@@ -173,7 +173,7 @@ class DirectorBuilder {
     }
 
     @discardableResult
-    func with(_ knowledgeListModuleProviding: KnowledgeListModuleProviding) -> DirectorBuilder {
+    func with(_ knowledgeListModuleProviding: KnowledgeGroupsListModuleProviding) -> DirectorBuilder {
         self.knowledgeListModuleProviding = knowledgeListModuleProviding
         return self
     }

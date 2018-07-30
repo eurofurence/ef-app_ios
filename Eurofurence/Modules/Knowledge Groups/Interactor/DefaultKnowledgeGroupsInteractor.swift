@@ -1,5 +1,5 @@
 //
-//  DefaultKnowledgeListInteractor.swift
+//  DefaultKnowledgeGroupsInteractor.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 24/02/2018.
@@ -8,13 +8,13 @@
 
 import UIKit.UIImage
 
-struct DefaultKnowledgeListInteractor: KnowledgeInteractor {
+struct DefaultKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
 
     var service: KnowledgeService
 
-    func prepareViewModel(completionHandler: @escaping (KnowledgeListViewModel) -> Void) {
+    func prepareViewModel(completionHandler: @escaping (KnowledgeGroupsListViewModel) -> Void) {
         service.fetchKnowledgeGroups { (groups) in
-            let viewModel = KnowledgeListViewModel(knowledgeGroups: groups.map(self.knowledgeGroupViewModel))
+            let viewModel = KnowledgeGroupsListViewModel(knowledgeGroups: groups.map(self.knowledgeGroupViewModel))
             completionHandler(viewModel)
         }
     }

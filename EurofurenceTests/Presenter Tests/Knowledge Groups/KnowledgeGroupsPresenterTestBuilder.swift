@@ -1,5 +1,5 @@
 //
-//  KnowledgeListPresenterTestBuilder.swift
+//  KnowledgeGroupsPresenterTestBuilder.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 25/01/2018.
@@ -9,20 +9,20 @@
 @testable import Eurofurence
 import UIKit.UIViewController
 
-class KnowledgeListPresenterTestBuilder {
+class KnowledgeGroupsPresenterTestBuilder {
     
     struct Context {
-        var knowledgeInteractor: CapturingKnowledgeInteractor
+        var knowledgeInteractor: CapturingKnowledgeGroupsInteractor
         var scene: CapturingKnowledgeListScene
-        var delegate: CapturingKnowledgeListModuleDelegate
+        var delegate: CapturingKnowledgeGroupsListModuleDelegate
         var producedViewController: UIViewController
     }
     
     func build() -> Context {
-        let knowledgeInteractor = CapturingKnowledgeInteractor()
+        let knowledgeInteractor = CapturingKnowledgeGroupsInteractor()
         let sceneFactory = StubKnowledgeListSceneFactory()
-        let delegate = CapturingKnowledgeListModuleDelegate()
-        let producedViewController = KnowledgeListModuleBuilder()
+        let delegate = CapturingKnowledgeGroupsListModuleDelegate()
+        let producedViewController = KnowledgeGroupsModuleBuilder()
             .with(knowledgeInteractor)
             .with(sceneFactory)
             .build()
@@ -36,9 +36,9 @@ class KnowledgeListPresenterTestBuilder {
     
 }
 
-extension KnowledgeListPresenterTestBuilder.Context {
+extension KnowledgeGroupsPresenterTestBuilder.Context {
     
-    func simulateLoadingViewModel(_ viewModel: KnowledgeListViewModel = .random) {
+    func simulateLoadingViewModel(_ viewModel: KnowledgeGroupsListViewModel = .random) {
         knowledgeInteractor.simulateViewModelPrepared(viewModel)
     }
     

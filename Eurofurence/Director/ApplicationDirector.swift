@@ -17,7 +17,7 @@ class ApplicationDirector: ExternalContentHandler,
                            MessagesModuleDelegate,
                            LoginModuleDelegate,
                            DealersModuleDelegate,
-                           KnowledgeListModuleDelegate,
+                           KnowledgeGroupsListModuleDelegate,
                            KnowledgeDetailModuleDelegate,
                            MapsModuleDelegate,
                            MapDetailModuleDelegate,
@@ -64,7 +64,7 @@ class ApplicationDirector: ExternalContentHandler,
     private let messagesModuleProviding: MessagesModuleProviding
     private let loginModuleProviding: LoginModuleProviding
     private let messageDetailModuleProviding: MessageDetailModuleProviding
-    private let knowledgeListModuleProviding: KnowledgeListModuleProviding
+    private let knowledgeListModuleProviding: KnowledgeGroupsListModuleProviding
     private let knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding
     private let mapsModuleProviding: MapsModuleProviding
     private let mapDetailModuleProviding: MapDetailModuleProviding
@@ -105,7 +105,7 @@ class ApplicationDirector: ExternalContentHandler,
          messagesModuleProviding: MessagesModuleProviding,
          loginModuleProviding: LoginModuleProviding,
          messageDetailModuleProviding: MessageDetailModuleProviding,
-         knowledgeListModuleProviding: KnowledgeListModuleProviding,
+         knowledgeListModuleProviding: KnowledgeGroupsListModuleProviding,
          knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding,
          mapsModuleProviding: MapsModuleProviding,
          mapDetailModuleProviding: MapDetailModuleProviding,
@@ -346,7 +346,7 @@ class ApplicationDirector: ExternalContentHandler,
         dealersViewController?.navigationController?.pushViewController(module, animated: animate)
     }
 
-    // MARK: KnowledgeListModuleDelegate
+    // MARK: KnowledgeGroupsListModuleDelegate
 
     func knowledgeListModuleDidSelectKnowledgeEntry(_ knowledgeEntry: KnowledgeEntry2) {
         let knowledgeDetailModule = knowledgeDetailModuleProviding.makeKnowledgeListModule(knowledgeEntry.identifier, delegate: self)
