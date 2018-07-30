@@ -12,11 +12,13 @@ struct DefaultKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
 
     private struct ViewModel: KnowledgeEntryDetailViewModel {
 
+        var title: String
         var contents: NSAttributedString
         var links: [LinkViewModel]
         private var linkModels: [Link]
 
-        init(contents: NSAttributedString, links: [Link]) {
+        init(title: String, contents: NSAttributedString, links: [Link]) {
+            self.title = title
             self.contents = contents
             self.linkModels = links
             self.links = links.map({ LinkViewModel(name: $0.name) })
@@ -32,9 +34,10 @@ struct DefaultKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
     var renderer: WikiRenderer = ConcreteWikiRenderer()
 
     func makeViewModel(for identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping (KnowledgeEntryDetailViewModel) -> Void) {
-        knowledgeService.fetchKnowledgeEntry(for: identifier) { (theEntry) in
-            let renderedContents = self.renderer.renderContents(from: theEntry.contents)
-            completionHandler(ViewModel(contents: renderedContents, links: theEntry.links))
+        knowledgeService.fetchKnowledgeEntry(for: identifier) { (entry) in
+            let renderedContents = self.renderer.renderContents(from: entry.contents)
+            let viewModel = ViewModel(title: entry.title, contents: renderedContents, links: entry.links)
+            completionHandler(viewModel)
         }
     }
 

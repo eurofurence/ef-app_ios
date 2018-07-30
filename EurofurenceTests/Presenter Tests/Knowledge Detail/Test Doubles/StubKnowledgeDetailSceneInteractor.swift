@@ -11,6 +11,7 @@ import Foundation
 
 struct StubKnowledgeEntryDetailViewModel: KnowledgeEntryDetailViewModel {
     
+    var title: String
     var contents: NSAttributedString
     var links: [LinkViewModel]
     
@@ -26,7 +27,8 @@ extension StubKnowledgeEntryDetailViewModel: RandomValueProviding {
     
     static var random: StubKnowledgeEntryDetailViewModel {
         let linkViewModels: [LinkViewModel] = .random
-        return StubKnowledgeEntryDetailViewModel(contents: .random,
+        return StubKnowledgeEntryDetailViewModel(title: .random,
+                                                 contents: .random,
                                                  links: linkViewModels,
                                                  modelLinks: .random(upperLimit: linkViewModels.count))
     }

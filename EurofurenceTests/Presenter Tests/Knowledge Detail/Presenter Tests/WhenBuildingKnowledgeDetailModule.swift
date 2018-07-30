@@ -16,9 +16,4 @@ class WhenBuildingKnowledgeDetailModule: XCTestCase {
         XCTAssertEqual(context.knowledgeDetailScene, context.module)
     }
     
-    func testTheKnowledgeEntryTitleIsSetAsTheSceneTitle() {
-        let context = KnowledgeDetailPresenterTestBuilder().build()
-        XCTAssertEqual(context.knowledgeDetailScene.capturedTitle, context.knowledgeEntry.title)
-    }
-    
 }

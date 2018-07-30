@@ -85,4 +85,13 @@ class DefaultKnowledgeDetailSceneInteractorTests: XCTestCase {
         XCTAssertEqual(expected, actual)
     }
     
+    func testUsesTitlesOfEntryAsTitle() {
+        let entry = KnowledgeEntry2.random
+        var viewModel: KnowledgeEntryDetailViewModel?
+        interactor.makeViewModel(for: entry.identifier) { viewModel = $0 }
+        let randomizedEntry = knowledgeService.stubbedKnowledgeEntry(for: entry.identifier)
+        
+        XCTAssertEqual(randomizedEntry.title, viewModel?.title)
+    }
+    
 }

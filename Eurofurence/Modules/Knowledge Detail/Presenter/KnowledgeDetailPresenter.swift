@@ -24,7 +24,6 @@ class KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
         self.knowledgeDetailSceneInteractor = knowledgeDetailSceneInteractor
 
         knowledgeDetailScene.setKnowledgeDetailSceneDelegate(self)
-        knowledgeDetailScene.setKnowledgeDetailTitle(knowledgeEntry.title)
     }
 
     func knowledgeDetailSceneDidLoad() {
@@ -38,6 +37,8 @@ class KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
 
     private func knowledgeDetailViewModelPrepared(_ viewModel: KnowledgeEntryDetailViewModel) {
         self.viewModel = viewModel
+
+        knowledgeDetailScene.setKnowledgeDetailTitle(viewModel.title)
         knowledgeDetailScene.setAttributedKnowledgeEntryContents(viewModel.contents)
 
         let links = viewModel.links

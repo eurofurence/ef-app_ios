@@ -10,6 +10,7 @@ import Foundation
 
 protocol KnowledgeEntryDetailViewModel {
 
+    var title: String { get }
     var contents: NSAttributedString { get }
     var links: [LinkViewModel] { get }
 

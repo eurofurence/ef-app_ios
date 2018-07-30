@@ -29,4 +29,12 @@ class WhenKnowledgeDetailSceneLoads: XCTestCase {
         XCTAssertEqual(randomLink.element.name, linkScene.capturedLinkName)
     }
     
+    func testTheTitleFromTheViewModelIsBoundOntoTheScene() {
+        let context = KnowledgeDetailPresenterTestBuilder().build()
+        context.knowledgeDetailScene.simulateSceneDidLoad()
+        let expected = context.interactor.viewModel.title
+        
+        XCTAssertEqual(expected, context.knowledgeDetailScene.capturedTitle)
+    }
+    
 }
