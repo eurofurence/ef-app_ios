@@ -27,7 +27,7 @@ struct KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
     }
 
     func knowledgeDetailSceneDidLoad() {
-        knowledgeDetailSceneInteractor.makeViewModel(for: knowledgeEntry, completionHandler: knowledgeDetailViewModelPrepared)
+        knowledgeDetailSceneInteractor.makeViewModel(for: knowledgeEntry.identifier, completionHandler: knowledgeDetailViewModelPrepared)
     }
 
     func knowledgeDetailSceneDidSelectLink(at index: Int) {
