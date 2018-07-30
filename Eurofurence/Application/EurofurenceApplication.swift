@@ -206,7 +206,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func fetchKnowledgeEntry(for identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping (KnowledgeEntry2) -> Void) {
-
+        knowledge.fetchKnowledgeEntry(for: identifier, completionHandler: completionHandler)
     }
 
     func add(_ observer: EventsServiceObserver) {
