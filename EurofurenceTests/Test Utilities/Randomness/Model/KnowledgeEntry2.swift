@@ -12,7 +12,15 @@ import Foundation
 extension KnowledgeEntry2: RandomValueProviding {
     
     static var random: KnowledgeEntry2 {
-        return KnowledgeEntry2(title: .random, order: .random, contents: .random, links: .random)
+        return KnowledgeEntry2(identifier: .random, title: .random, order: .random, contents: .random, links: .random)
+    }
+    
+}
+
+extension KnowledgeEntry2.Identifier: RandomValueProviding {
+    
+    static var random: KnowledgeEntry2.Identifier {
+        return KnowledgeEntry2.Identifier(.random)
     }
     
 }

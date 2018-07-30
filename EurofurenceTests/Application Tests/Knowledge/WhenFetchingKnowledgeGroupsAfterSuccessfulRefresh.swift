@@ -16,7 +16,8 @@ class WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh: XCTestCase {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         var expected = syncResponse.knowledgeGroups.changed.map { (group) -> KnowledgeGroup2 in
             let entries = syncResponse.knowledgeEntries.changed.filter({ $0.groupIdentifier == group.identifier }).map { (entry) in
-                return KnowledgeEntry2(title: entry.title,
+                return KnowledgeEntry2(identifier: KnowledgeEntry2.Identifier(entry.identifier),
+                                       title: entry.title,
                                        order: entry.order,
                                        contents: entry.text,
                                        links: entry.links.map({ return Link(name: $0.name, type: Link.Kind(rawValue: $0.fragmentType.rawValue)!, contents: $0.target) }).sorted(by: { $0.name < $1.name }))
