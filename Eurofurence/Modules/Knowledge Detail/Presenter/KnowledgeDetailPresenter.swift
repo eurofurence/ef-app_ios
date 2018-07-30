@@ -10,24 +10,24 @@ class KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
 
     private let delegate: KnowledgeDetailModuleDelegate
     private let knowledgeDetailScene: KnowledgeDetailScene
-    private let knowledgeEntry: KnowledgeEntry2
+    private let identifier: KnowledgeEntry2.Identifier
     private let knowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor
     private var viewModel: KnowledgeEntryDetailViewModel?
 
     init(delegate: KnowledgeDetailModuleDelegate,
          knowledgeDetailScene: KnowledgeDetailScene,
-         knowledgeEntry: KnowledgeEntry2,
+         identifier: KnowledgeEntry2.Identifier,
          knowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor) {
         self.delegate = delegate
         self.knowledgeDetailScene = knowledgeDetailScene
-        self.knowledgeEntry = knowledgeEntry
+        self.identifier = identifier
         self.knowledgeDetailSceneInteractor = knowledgeDetailSceneInteractor
 
         knowledgeDetailScene.setKnowledgeDetailSceneDelegate(self)
     }
 
     func knowledgeDetailSceneDidLoad() {
-        knowledgeDetailSceneInteractor.makeViewModel(for: knowledgeEntry.identifier, completionHandler: knowledgeDetailViewModelPrepared)
+        knowledgeDetailSceneInteractor.makeViewModel(for: identifier, completionHandler: knowledgeDetailViewModelPrepared)
     }
 
     func knowledgeDetailSceneDidSelectLink(at index: Int) {

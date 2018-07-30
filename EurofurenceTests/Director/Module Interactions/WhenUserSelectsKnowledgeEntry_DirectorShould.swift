@@ -19,7 +19,7 @@ class WhenUserSelectsKnowledgeEntry_DirectorShould: XCTestCase {
         context.knowledgeListModule.simulateKnowledgeEntrySelected(entry)
         
         XCTAssertEqual(context.knowledgeDetailModule.stubInterface, knowledgeNavigationController?.topViewController)
-        XCTAssertEqual(entry, context.knowledgeDetailModule.capturedModel)
+        XCTAssertEqual(entry.identifier, context.knowledgeDetailModule.capturedModel)
     }
     
 }

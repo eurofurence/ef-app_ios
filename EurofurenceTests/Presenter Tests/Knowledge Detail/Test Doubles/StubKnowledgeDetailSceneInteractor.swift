@@ -26,11 +26,12 @@ struct StubKnowledgeEntryDetailViewModel: KnowledgeEntryDetailViewModel {
 extension StubKnowledgeEntryDetailViewModel: RandomValueProviding {
     
     static var random: StubKnowledgeEntryDetailViewModel {
-        let linkViewModels: [LinkViewModel] = .random
+        let linkModels = [Link].random
+        let linkViewModels: [LinkViewModel] = .random(upperLimit: linkModels.count)
         return StubKnowledgeEntryDetailViewModel(title: .random,
                                                  contents: .random,
                                                  links: linkViewModels,
-                                                 modelLinks: .random(upperLimit: linkViewModels.count))
+                                                 modelLinks: linkModels)
     }
     
     static var randomWithoutLinks: StubKnowledgeEntryDetailViewModel {
