@@ -27,7 +27,15 @@ struct KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
     }
 
     func knowledgeDetailSceneDidLoad() {
-        let viewModel = knowledgeDetailSceneInteractor.makeViewModel(for: knowledgeEntry)
+        knowledgeDetailSceneInteractor.makeViewModel(for: knowledgeEntry, completionHandler: knowledgeDetailViewModelPrepared)
+    }
+
+    func knowledgeDetailSceneDidSelectLink(at index: Int) {
+        let link = knowledgeEntry.links[index]
+        delegate.knowledgeDetailModuleDidSelectLink(link)
+    }
+
+    private func knowledgeDetailViewModelPrepared(_ viewModel: KnowledgeEntryDetailViewModel) {
         knowledgeDetailScene.setAttributedKnowledgeEntryContents(viewModel.contents)
 
         let links = viewModel.links
@@ -36,11 +44,6 @@ struct KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
             let binder = ViewModelLinksBinder(viewModels: links)
             knowledgeDetailScene.presentLinks(count: links.count, using: binder)
         }
-    }
-
-    func knowledgeDetailSceneDidSelectLink(at index: Int) {
-        let link = knowledgeEntry.links[index]
-        delegate.knowledgeDetailModuleDidSelectLink(link)
     }
 
     private struct ViewModelLinksBinder: LinksBinder {

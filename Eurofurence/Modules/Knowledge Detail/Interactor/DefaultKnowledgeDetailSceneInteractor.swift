@@ -13,21 +13,22 @@ struct DefaultKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
     var knowledgeService: KnowledgeService = EurofurenceApplication.shared
     var renderer: WikiRenderer = ConcreteWikiRenderer()
 
-    func makeViewModel(for entry: KnowledgeEntry2) -> KnowledgeEntryDetailViewModel {
+    func makeViewModel(for entry: KnowledgeEntry2, completionHandler: @escaping (KnowledgeEntryDetailViewModel) -> Void) {
         var modelEntry: KnowledgeEntry2? = nil
-        knowledgeService.fetchKnowledgeEntry(for: entry.identifier) { modelEntry = $0 }
+        knowledgeService.fetchKnowledgeEntry(for: entry.identifier) { (theEntry) in
+            modelEntry = theEntry
+            let renderedContents = self.renderer.renderContents(from: theEntry.contents)
+            let linkViewModels = theEntry.links.map(self.makeLinkViewModel)
 
-        guard let theEntry = modelEntry else {
+            completionHandler(KnowledgeEntryDetailViewModel(contents: renderedContents, links: linkViewModels))
+        }
+
+        if modelEntry == nil {
             let renderedContents = renderer.renderContents(from: entry.contents)
             let linkViewModels = entry.links.map(makeLinkViewModel)
 
-            return KnowledgeEntryDetailViewModel(contents: renderedContents, links: linkViewModels)
+            completionHandler(KnowledgeEntryDetailViewModel(contents: renderedContents, links: linkViewModels))
         }
-
-        let renderedContents = renderer.renderContents(from: theEntry.contents)
-        let linkViewModels = theEntry.links.map(makeLinkViewModel)
-
-        return KnowledgeEntryDetailViewModel(contents: renderedContents, links: linkViewModels)
     }
 
     private func makeLinkViewModel(from link: Link) -> LinkViewModel {

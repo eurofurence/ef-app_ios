@@ -42,9 +42,11 @@ extension NSAttributedString {
 
 class StubKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
     
+    
+    
     var viewModel = KnowledgeEntryDetailViewModel.random
-    func makeViewModel(for entry: KnowledgeEntry2) -> KnowledgeEntryDetailViewModel {
-        return viewModel
+    func makeViewModel(for entry: KnowledgeEntry2, completionHandler: @escaping (KnowledgeEntryDetailViewModel) -> Void) {
+        completionHandler(viewModel)
     }
     
 }

@@ -55,20 +55,22 @@ class DefaultKnowledgeDetailSceneInteractorTests: XCTestCase {
     
     func testProducingViewModelConvertsKnowledgeEntryContentsViaWikiRenderer() {
         let entry = KnowledgeEntry2.random
-        let viewModel = interactor.makeViewModel(for: entry)
+        var viewModel: KnowledgeEntryDetailViewModel?
+        interactor.makeViewModel(for: entry) { viewModel = $0 }
         let randomizedEntry = knowledgeService.stubbedKnowledgeEntry(for: entry.identifier)
         let expected = renderer.stubbedEntryContents[randomizedEntry.contents]
         
-        XCTAssertEqual(expected, viewModel.contents)
+        XCTAssertEqual(expected, viewModel?.contents)
     }
     
     func testProducingViewModelConvertsLinksIntoViewModels() {
         let entry = KnowledgeEntry2.random
-        let viewModel = interactor.makeViewModel(for: entry)
+        var viewModel: KnowledgeEntryDetailViewModel?
+        interactor.makeViewModel(for: entry) { viewModel = $0 }
         let randomizedEntry = knowledgeService.stubbedKnowledgeEntry(for: entry.identifier)
         let expected = randomizedEntry.links.map { (link) in return LinkViewModel(name: link.name) }
         
-        XCTAssertEqual(expected, viewModel.links)
+        XCTAssertEqual(expected, viewModel?.links)
     }
     
 }
