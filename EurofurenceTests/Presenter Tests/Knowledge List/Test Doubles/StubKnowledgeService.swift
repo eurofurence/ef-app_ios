@@ -15,6 +15,10 @@ class StubKnowledgeService: KnowledgeService {
         capturedFetchCompletionHandler = completionHandler
     }
     
+    func fetchKnowledgeEntry(for identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping (KnowledgeEntry2) -> Void) {
+        
+    }
+    
 }
 
 extension StubKnowledgeService {

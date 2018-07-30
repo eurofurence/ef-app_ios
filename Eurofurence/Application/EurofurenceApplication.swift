@@ -205,6 +205,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         knowledge.fetchKnowledgeGroups(completionHandler: completionHandler)
     }
 
+    func fetchKnowledgeEntry(for identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping (KnowledgeEntry2) -> Void) {
+
+    }
+
     func add(_ observer: EventsServiceObserver) {
         schedule.add(observer)
     }

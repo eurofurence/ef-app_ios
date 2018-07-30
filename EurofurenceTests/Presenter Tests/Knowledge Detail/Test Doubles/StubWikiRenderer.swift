@@ -11,17 +11,12 @@ import Foundation
 
 class StubWikiRenderer: WikiRenderer {
     
-    fileprivate var stubbedEntryContents = [String : NSAttributedString]()
+    private(set) var stubbedEntryContents = [String : NSAttributedString]()
     func renderContents(from wikiText: String) -> NSAttributedString {
-        return stubbedEntryContents[wikiText] ?? NSAttributedString()
-    }
-    
-}
-
-extension StubWikiRenderer {
-    
-    func stub(_ entry: KnowledgeEntry2, with: NSAttributedString) {
-        stubbedEntryContents[entry.contents] = with
+        let entry = NSAttributedString.random
+        stubbedEntryContents[wikiText] = entry
+        
+        return entry
     }
     
 }

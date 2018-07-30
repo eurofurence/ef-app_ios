@@ -9,8 +9,38 @@
 @testable import Eurofurence
 import XCTest
 
+class FakeKnowledgeService: KnowledgeService {
+    
+    func fetchKnowledgeGroups(completionHandler: @escaping ([KnowledgeGroup2]) -> Void) {
+        
+    }
+    
+    private var stubbedKnowledgeEntries = [KnowledgeEntry2.Identifier : KnowledgeEntry2]()
+    func fetchKnowledgeEntry(for identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping (KnowledgeEntry2) -> Void) {
+        completionHandler(stubbedKnowledgeEntry(for: identifier))
+    }
+    
+}
+
+extension FakeKnowledgeService {
+    
+    func stubbedKnowledgeEntry(for identifier: KnowledgeEntry2.Identifier) -> KnowledgeEntry2 {
+        if let entry = stubbedKnowledgeEntries[identifier] {
+            return entry
+        }
+        
+        var randomEntry = KnowledgeEntry2.random
+        randomEntry.identifier = identifier
+        stubbedKnowledgeEntries[identifier] = randomEntry
+        
+        return randomEntry
+    }
+    
+}
+
 class DefaultKnowledgeDetailSceneInteractorTests: XCTestCase {
     
+    var knowledgeService: FakeKnowledgeService!
     var renderer: StubWikiRenderer!
     var interactor: DefaultKnowledgeDetailSceneInteractor!
     
@@ -18,14 +48,16 @@ class DefaultKnowledgeDetailSceneInteractorTests: XCTestCase {
         super.setUp()
         
         renderer = StubWikiRenderer()
-        interactor = DefaultKnowledgeDetailSceneInteractor(renderer: renderer)
+        knowledgeService = FakeKnowledgeService()
+        interactor = DefaultKnowledgeDetailSceneInteractor(knowledgeService: knowledgeService,
+                                                           renderer: renderer)
     }
     
     func testProducingViewModelConvertsKnowledgeEntryContentsViaWikiRenderer() {
-        let expected = NSAttributedString.random
         let entry = KnowledgeEntry2.random
-        renderer.stub(entry, with: expected)
         let viewModel = interactor.makeViewModel(for: entry)
+        let randomizedEntry = knowledgeService.stubbedKnowledgeEntry(for: entry.identifier)
+        let expected = renderer.stubbedEntryContents[randomizedEntry.contents]
         
         XCTAssertEqual(expected, viewModel.contents)
     }
@@ -33,7 +65,8 @@ class DefaultKnowledgeDetailSceneInteractorTests: XCTestCase {
     func testProducingViewModelConvertsLinksIntoViewModels() {
         let entry = KnowledgeEntry2.random
         let viewModel = interactor.makeViewModel(for: entry)
-        let expected = entry.links.map { (link) in return LinkViewModel(name: link.name) }
+        let randomizedEntry = knowledgeService.stubbedKnowledgeEntry(for: entry.identifier)
+        let expected = randomizedEntry.links.map { (link) in return LinkViewModel(name: link.name) }
         
         XCTAssertEqual(expected, viewModel.links)
     }
