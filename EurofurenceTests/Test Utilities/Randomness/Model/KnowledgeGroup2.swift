@@ -16,3 +16,11 @@ extension KnowledgeGroup2: RandomValueProviding {
     }
     
 }
+
+extension KnowledgeGroup2.Identifier: RandomValueProviding {
+    
+    static var random: KnowledgeGroup2.Identifier {
+        return KnowledgeGroup2.Identifier(.random)
+    }
+    
+}

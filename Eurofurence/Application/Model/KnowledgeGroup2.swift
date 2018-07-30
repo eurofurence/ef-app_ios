@@ -10,6 +10,26 @@ import Foundation
 
 struct KnowledgeGroup2: Comparable, Equatable {
 
+    struct Identifier: Comparable, Equatable, Hashable, RawRepresentable {
+
+        typealias RawValue = String
+
+        init(_ value: String) {
+            self.rawValue = value
+        }
+
+        init?(rawValue: String) {
+            self.rawValue = rawValue
+        }
+
+        var rawValue: String
+
+        static func < (lhs: KnowledgeGroup2.Identifier, rhs: KnowledgeGroup2.Identifier) -> Bool {
+            return lhs.rawValue < rhs.rawValue
+        }
+
+    }
+
     var title: String
     var groupDescription: String
     var order: Int
@@ -17,13 +37,6 @@ struct KnowledgeGroup2: Comparable, Equatable {
 
     static func <(lhs: KnowledgeGroup2, rhs: KnowledgeGroup2) -> Bool {
         return lhs.order < rhs.order
-    }
-
-    static func ==(lhs: KnowledgeGroup2, rhs: KnowledgeGroup2) -> Bool {
-        return lhs.title == rhs.title &&
-               lhs.groupDescription == rhs.groupDescription &&
-               lhs.order == rhs.order &&
-               lhs.entries == rhs.entries
     }
 
 }
