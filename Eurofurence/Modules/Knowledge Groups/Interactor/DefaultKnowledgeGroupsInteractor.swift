@@ -23,7 +23,7 @@ struct DefaultKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
                 }
 
                 return KnowledgeListGroupViewModel(title: group.title,
-                                                   fontAwesomeCharacter: " ",
+                                                   fontAwesomeCharacter: group.fontAwesomeCharacterAddress,
                                                    groupDescription: group.groupDescription,
                                                    knowledgeEntries: entries)
             }

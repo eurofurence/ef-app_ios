@@ -33,6 +33,7 @@ struct KnowledgeGroup2: Comparable, Equatable {
     var identifier: KnowledgeGroup2.Identifier
     var title: String
     var groupDescription: String
+    var fontAwesomeCharacterAddress: Character
     var order: Int
     var entries: [KnowledgeEntry2]
 
@@ -51,6 +52,7 @@ extension KnowledgeGroup2 {
             return KnowledgeGroup2(identifier: KnowledgeGroup2.Identifier(group.identifier),
                                    title: group.groupName,
                                    groupDescription: group.groupDescription,
+                                   fontAwesomeCharacterAddress: " ",
                                    order: group.order,
                                    entries: entries)
         }).sorted()

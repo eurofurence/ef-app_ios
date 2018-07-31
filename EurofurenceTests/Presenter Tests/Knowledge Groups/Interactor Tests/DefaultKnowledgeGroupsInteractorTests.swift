@@ -14,7 +14,7 @@ class DefaultKnowledgeGroupsInteractorTests: XCTestCase {
     private func expectedViewModelForGroup(_ group: KnowledgeGroup2) -> KnowledgeListGroupViewModel {
         let entriesViewModels = group.entries.map(expectedViewModelForEntry)
         return KnowledgeListGroupViewModel(title: group.title,
-                                           fontAwesomeCharacter: " ",
+                                           fontAwesomeCharacter: group.fontAwesomeCharacterAddress,
                                            groupDescription: group.groupDescription,
                                            knowledgeEntries: entriesViewModels)
     }

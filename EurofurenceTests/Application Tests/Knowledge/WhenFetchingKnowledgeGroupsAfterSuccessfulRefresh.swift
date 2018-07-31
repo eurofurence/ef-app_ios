@@ -26,6 +26,7 @@ class WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh: XCTestCase {
             return KnowledgeGroup2(identifier: KnowledgeGroup2.Identifier(group.identifier),
                                    title: group.groupName,
                                    groupDescription: group.groupDescription,
+                                   fontAwesomeCharacterAddress: " ",
                                    order: group.order,
                                    entries: entries)
         }

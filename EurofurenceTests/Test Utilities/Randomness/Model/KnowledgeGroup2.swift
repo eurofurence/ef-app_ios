@@ -15,6 +15,7 @@ extension KnowledgeGroup2: RandomValueProviding {
         return KnowledgeGroup2(identifier: .random,
                                title: .random,
                                groupDescription: .random,
+                               fontAwesomeCharacterAddress: .random,
                                order: .random,
                                entries: .random)
     }
