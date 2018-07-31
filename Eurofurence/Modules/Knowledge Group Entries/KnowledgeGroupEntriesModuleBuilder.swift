@@ -14,13 +14,7 @@ class KnowledgeGroupEntriesModuleBuilder {
     private var sceneFactory: KnowledgeGroupEntriesSceneFactory
 
     init() {
-        struct DummyKnowledgeGroupEntriesInteractor: KnowledgeGroupEntriesInteractor {
-            func makeViewModelForGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping (KnowledgeGroupEntriesViewModel) -> Void) {
-
-            }
-        }
-
-        interactor = DummyKnowledgeGroupEntriesInteractor()
+        interactor = DefaultKnowledgeGroupEntriesInteractor()
         sceneFactory = StoryboardKnowledgeGroupEntriesSceneFactory()
     }
 
