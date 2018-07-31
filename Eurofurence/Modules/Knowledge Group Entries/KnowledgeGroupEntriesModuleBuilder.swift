@@ -23,10 +23,11 @@ class KnowledgeGroupEntriesModuleBuilder {
         struct DummyKnowledgeGroupEntriesSceneFactory: KnowledgeGroupEntriesSceneFactory {
             func makeKnowledgeGroupEntriesScene() -> KnowledgeGroupEntriesScene {
                 struct DummyKnowledgeGroupEntriesScene: KnowledgeGroupEntriesScene {
-                    func setDelegate(_ delegate: KnowledgeGroupEntriesSceneDelegate) {
+                    func bind(numberOfEntries: Int, using binder: KnowledgeGroupEntriesBinder) {
 
                     }
-                    func bind(numberOfEntries: Int) {
+
+                    func setDelegate(_ delegate: KnowledgeGroupEntriesSceneDelegate) {
 
                     }
                 }

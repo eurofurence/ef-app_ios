@@ -11,14 +11,22 @@ import Foundation
 
 struct StubKnowledgeGroupEntriesViewModel: KnowledgeGroupEntriesViewModel {
     
-    var numberOfEntries: Int
+    var numberOfEntries: Int {
+        return entries.count
+    }
+    
+    func knowledgeEntry(at index: Int) -> KnowledgeListEntryViewModel {
+        return entries[index]
+    }
+    
+    var entries: [KnowledgeListEntryViewModel]
     
 }
 
 extension StubKnowledgeGroupEntriesViewModel: RandomValueProviding {
     
     static var random: StubKnowledgeGroupEntriesViewModel {
-        return StubKnowledgeGroupEntriesViewModel(numberOfEntries: .random)
+        return StubKnowledgeGroupEntriesViewModel(entries: .random)
     }
     
 }

@@ -12,4 +12,6 @@ protocol KnowledgeGroupEntriesViewModel {
 
     var numberOfEntries: Int { get }
 
+    func knowledgeEntry(at index: Int) -> KnowledgeListEntryViewModel
+
 }

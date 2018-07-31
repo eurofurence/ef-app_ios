@@ -645,6 +645,8 @@
 		CA401084210FAFB10056E16C /* BeforeKnowledgeGroupEntriesSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401083210FAFB10056E16C /* BeforeKnowledgeGroupEntriesSceneLoads.swift */; };
 		CA401087210FB8010056E16C /* KnowledgeGroupEntriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401086210FB8010056E16C /* KnowledgeGroupEntriesPresenter.swift */; };
 		CA40108B21107BC30056E16C /* KnowledgeGroupEntriesPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40108A21107BC30056E16C /* KnowledgeGroupEntriesPresenterTestBuilder.swift */; };
+		CA40108D21107C2C0056E16C /* WhenBindingKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40108C21107C2C0056E16C /* WhenBindingKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift */; };
+		CA40108F21107D020056E16C /* KnowledgeGroupEntriesBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40108E21107D020056E16C /* KnowledgeGroupEntriesBinder.swift */; };
 		CA46A73920F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */; };
 		CA49E9462015480A00EB571C /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */; };
 		CA49E94A2015480A00EB571C /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E9422015480A00EB571C /* EventBusRegistration.swift */; };
@@ -1915,6 +1917,8 @@
 		CA401083210FAFB10056E16C /* BeforeKnowledgeGroupEntriesSceneLoads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeKnowledgeGroupEntriesSceneLoads.swift; sourceTree = "<group>"; };
 		CA401086210FB8010056E16C /* KnowledgeGroupEntriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupEntriesPresenter.swift; sourceTree = "<group>"; };
 		CA40108A21107BC30056E16C /* KnowledgeGroupEntriesPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupEntriesPresenterTestBuilder.swift; sourceTree = "<group>"; };
+		CA40108C21107C2C0056E16C /* WhenBindingKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift; sourceTree = "<group>"; };
+		CA40108E21107D020056E16C /* KnowledgeGroupEntriesBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupEntriesBinder.swift; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -4179,8 +4183,9 @@
 		CA401064210FA86F0056E16C /* Presenter Tests */ = {
 			isa = PBXGroup;
 			children = (
-				CA401065210FA8830056E16C /* WhenKnowledgeGroupEntriesSceneLoads.swift */,
 				CA401083210FAFB10056E16C /* BeforeKnowledgeGroupEntriesSceneLoads.swift */,
+				CA40108C21107C2C0056E16C /* WhenBindingKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift */,
+				CA401065210FA8830056E16C /* WhenKnowledgeGroupEntriesSceneLoads.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -4228,6 +4233,7 @@
 			children = (
 				CA401078210FAF040056E16C /* KnowledgeGroupEntriesScene.swift */,
 				CA401076210FAEF60056E16C /* KnowledgeGroupEntriesSceneFactory.swift */,
+				CA40108E21107D020056E16C /* KnowledgeGroupEntriesBinder.swift */,
 			);
 			path = Abstraction;
 			sourceTree = "<group>";
@@ -7165,6 +7171,7 @@
 				CAEAEC041FE0057800C0EE7C /* MessageDetailPresenter.swift in Sources */,
 				CA3990ED20ACD35C001E3F1A /* HoursDateFormatter.swift in Sources */,
 				CACF1E6820AE2FB700D904B5 /* StoryboardEventDetailSceneFactory.swift in Sources */,
+				CA40108F21107D020056E16C /* KnowledgeGroupEntriesBinder.swift in Sources */,
 				CA250DD620D6E34A00E7513C /* ScheduleSceneSearchResultsBinder.swift in Sources */,
 				CACF1ECF20B6D8CB00D904B5 /* ImageDownloadedEvent.swift in Sources */,
 				9A0F87E51F1BAD2C00FF294B /* LocalNotificationStore.swift in Sources */,
@@ -7377,6 +7384,7 @@
 				CA6A8D8220E2BA6C007536CD /* WhenMapsSceneLoads_MapsPresenterShould.swift in Sources */,
 				CAD234421F5F2FA8004BB959 /* AppDataBuilder.swift in Sources */,
 				CA283A8020E93CBC00F7D195 /* WhenBindingReadAnnouncements_NewsPresenterShould.swift in Sources */,
+				CA40108D21107C2C0056E16C /* WhenBindingKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift in Sources */,
 				CA6A8D6720E263A0007536CD /* WhenBuildingMapsModule.swift in Sources */,
 				CA5BF9D51F7AF9160045DBC0 /* PreloadPresenterTests.swift in Sources */,
 				CA2761A920E021FB000E52AC /* CapturingCollectThemAllScene.swift in Sources */,

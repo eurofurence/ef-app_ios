@@ -38,4 +38,8 @@ extension KnowledgeGroupEntriesPresenterTestBuilder.Context {
         sceneFactory.scene.simulateSceneDidLoad()
     }
     
+    func bind(_ component: CapturingKnowledgeGroupEntryScene, at index: Int) {
+        sceneFactory.scene.binder?.bind(component, at: index)
+    }
+    
 }

@@ -10,6 +10,17 @@ import Foundation
 
 struct KnowledgeGroupEntriesPresenter: KnowledgeGroupEntriesSceneDelegate {
 
+    private struct Binder: KnowledgeGroupEntriesBinder {
+
+        var viewModel: KnowledgeGroupEntriesViewModel
+
+        func bind(_ component: KnowledgeGroupEntryScene, at index: Int) {
+            let entryViewModel = viewModel.knowledgeEntry(at: index)
+            component.setKnowledgeEntryTitle(entryViewModel.title)
+        }
+
+    }
+
     private let scene: KnowledgeGroupEntriesScene
     private let interactor: KnowledgeGroupEntriesInteractor
     private let groupIdentifier: KnowledgeGroup2.Identifier
@@ -29,7 +40,7 @@ struct KnowledgeGroupEntriesPresenter: KnowledgeGroupEntriesSceneDelegate {
     }
 
     private func viewModelReady(_ viewModel: KnowledgeGroupEntriesViewModel) {
-        scene.bind(numberOfEntries: viewModel.numberOfEntries)
+        scene.bind(numberOfEntries: viewModel.numberOfEntries, using: Binder(viewModel: viewModel))
     }
 
 }

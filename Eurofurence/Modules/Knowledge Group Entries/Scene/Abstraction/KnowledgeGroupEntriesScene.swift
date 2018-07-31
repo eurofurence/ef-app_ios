@@ -11,7 +11,7 @@ import Foundation
 protocol KnowledgeGroupEntriesScene {
 
     func setDelegate(_ delegate: KnowledgeGroupEntriesSceneDelegate)
-    func bind(numberOfEntries: Int)
+    func bind(numberOfEntries: Int, using binder: KnowledgeGroupEntriesBinder)
 
 }
 

@@ -17,8 +17,10 @@ class CapturingKnowledgeGroupEntriesScene: KnowledgeGroupEntriesScene {
     }
     
     private(set) var capturedNumberOfEntriesToBind: Int?
-    func bind(numberOfEntries: Int) {
+    private(set) var binder: KnowledgeGroupEntriesBinder?
+    func bind(numberOfEntries: Int, using binder: KnowledgeGroupEntriesBinder) {
         capturedNumberOfEntriesToBind = numberOfEntries
+        self.binder = binder
     }
     
 }
