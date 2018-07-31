@@ -60,6 +60,7 @@
         <relationship name="links" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LinkEntity" inverseName="knowledgeEntry" inverseEntity="LinkEntity" syncable="YES"/>
     </entity>
     <entity name="KnowledgeGroupEntity" representedClassName="KnowledgeGroupEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="fontAwesomeCharacterAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="groupDescription" attributeType="String" syncable="YES"/>
         <attribute name="groupName" attributeType="String" syncable="YES"/>
         <attribute name="identifier" attributeType="String" syncable="YES"/>
@@ -111,8 +112,9 @@
         <element name="DealerEntity" positionX="-36" positionY="117" width="128" height="315"/>
         <element name="EventEntity" positionX="-36" positionY="72" width="128" height="225"/>
         <element name="FavouriteEventEntity" positionX="-36" positionY="108" width="128" height="60"/>
+        <element name="ImageModelEntity" positionX="-36" positionY="135" width="128" height="75"/>
         <element name="KnowledgeEntryEntity" positionX="-63" positionY="9" width="128" height="135"/>
-        <element name="KnowledgeGroupEntity" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="KnowledgeGroupEntity" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="LastRefreshEntity" positionX="-45" positionY="63" width="128" height="60"/>
         <element name="LinkEntity" positionX="-54" positionY="36" width="128" height="120"/>
         <element name="MapEntity" positionX="-36" positionY="135" width="128" height="105"/>
@@ -121,6 +123,5 @@
         <element name="ReadAnnouncementEntity" positionX="-36" positionY="135" width="128" height="60"/>
         <element name="RoomEntity" positionX="-18" positionY="135" width="128" height="75"/>
         <element name="TrackEntity" positionX="0" positionY="144" width="128" height="75"/>
-        <element name="ImageModelEntity" positionX="-36" positionY="135" width="128" height="75"/>
     </elements>
 </model>

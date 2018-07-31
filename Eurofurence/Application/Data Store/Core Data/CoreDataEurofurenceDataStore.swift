@@ -30,6 +30,8 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         storeLocation = EurofurencePersistentContainer.defaultDirectoryURL().appendingPathComponent(storeName)
         let description = NSPersistentStoreDescription(url: storeLocation)
         description.type = NSSQLiteStoreType
+        description.shouldMigrateStoreAutomatically = true
+        description.shouldInferMappingModelAutomatically = true
         container.persistentStoreDescriptions = [description]
         container.loadPersistentStores { (_, _) in }
     }
@@ -169,6 +171,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                     entity.order = Int64(group.order)
                     entity.groupName = group.groupName
                     entity.groupDescription = group.groupDescription
+                    entity.fontAwesomeCharacterAddress = group.fontAwesomeCharacterAddress
                 }
             }
         }

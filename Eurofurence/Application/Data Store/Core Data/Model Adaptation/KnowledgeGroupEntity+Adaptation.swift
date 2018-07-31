@@ -16,7 +16,8 @@ extension KnowledgeGroupEntity: EntityAdapting {
         return APIKnowledgeGroup(identifier: identifier!,
                                  order: Int(order),
                                  groupName: groupName!,
-                                 groupDescription: groupDescription!)
+                                 groupDescription: groupDescription!,
+                                 fontAwesomeCharacterAddress: fontAwesomeCharacterAddress ?? "")
     }
 
 }

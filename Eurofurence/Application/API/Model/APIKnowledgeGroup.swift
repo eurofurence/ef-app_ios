@@ -14,5 +14,6 @@ struct APIKnowledgeGroup: Equatable {
     var order: Int
     var groupName: String
     var groupDescription: String
+    var fontAwesomeCharacterAddress: String
 
 }

@@ -79,9 +79,14 @@ private struct JSONSyncResponse: Decodable {
         var Order: Int
         var Name: String
         var Description: String
+        var FontAwesomeIconCharacterUnicodeAddress: String
 
         var modelValue: APIKnowledgeGroup {
-            return APIKnowledgeGroup(identifier: Id, order: Order, groupName: Name, groupDescription: Description)
+            return APIKnowledgeGroup(identifier: Id,
+                                     order: Order,
+                                     groupName: Name,
+                                     groupDescription: Description,
+                                     fontAwesomeCharacterAddress: FontAwesomeIconCharacterUnicodeAddress)
         }
     }
 

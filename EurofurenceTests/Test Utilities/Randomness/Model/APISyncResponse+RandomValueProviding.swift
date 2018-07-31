@@ -59,7 +59,11 @@ extension APISyncResponse {
 extension APIKnowledgeGroup: RandomValueProviding {
     
     static var random: APIKnowledgeGroup {
-        return APIKnowledgeGroup(identifier: .random, order: .random, groupName: .random, groupDescription: .random)
+        return APIKnowledgeGroup(identifier: .random,
+                                 order: .random,
+                                 groupName: .random,
+                                 groupDescription: .random,
+                                 fontAwesomeCharacterAddress: .random)
     }
     
     static func makeRandomGroupsAndEntries() -> (groups: [APIKnowledgeGroup], entries: [APIKnowledgeEntry]) {
