@@ -396,6 +396,7 @@
 		CA25A80120E6716A00875891 /* WhenFetchingMapContents_ThatRevealsDealer_ContentsSavedInDataStore_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25A80020E6716A00875891 /* WhenFetchingMapContents_ThatRevealsDealer_ContentsSavedInDataStore_ApplicationShould.swift */; };
 		CA25A80320E6730C00875891 /* WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25A80220E6730C00875891 /* WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_ApplicationShould.swift */; };
 		CA27254C2110D3BE004C6D0A /* WhenFetchingKnowledgeEntriesForSpecificGroup_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27254B2110D3BE004C6D0A /* WhenFetchingKnowledgeEntriesForSpecificGroup_ApplicationShould.swift */; };
+		CA27254E2110DEE2004C6D0A /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27254D2110DEE2004C6D0A /* Optional+Extensions.swift */; };
 		CA27618220DF932C000E52AC /* AspectRatioConstrainedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */; };
 		CA27618420DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618320DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift */; };
 		CA27618620DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */; };
@@ -1677,6 +1678,7 @@
 		CA25A80020E6716A00875891 /* WhenFetchingMapContents_ThatRevealsDealer_ContentsSavedInDataStore_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingMapContents_ThatRevealsDealer_ContentsSavedInDataStore_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA25A80220E6730C00875891 /* WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingMapContents_ThatRevealsRoom_ContentsSavedInDataStore_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA27254B2110D3BE004C6D0A /* WhenFetchingKnowledgeEntriesForSpecificGroup_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingKnowledgeEntriesForSpecificGroup_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA27254D2110DEE2004C6D0A /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
 		CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioConstrainedImageView.swift; sourceTree = "<group>"; };
 		CA27618320DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -5695,6 +5697,7 @@
 		CABF03B22041BC770028BD62 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CA27254D2110DEE2004C6D0A /* Optional+Extensions.swift */,
 				CA65A876209A523400B72533 /* UIColor+Extensions.swift */,
 				CABF03B32041BC870028BD62 /* UITableView+Extensions.swift */,
 			);
@@ -7214,6 +7217,7 @@
 				CA283AA420EAA05900F7D195 /* AnnouncementsSceneFactory.swift in Sources */,
 				CA2B4FA81F1EA72A00F007E1 /* LoginArguments.swift in Sources */,
 				78F555991F10D5A800BDA7D4 /* ReplaceViewControllersSegue.swift in Sources */,
+				CA27254E2110DEE2004C6D0A /* Optional+Extensions.swift in Sources */,
 				9A8ECA251F2BE1E300351A83 /* NotificationSoundPlayer.swift in Sources */,
 				CAEAEC041FE0057800C0EE7C /* MessageDetailPresenter.swift in Sources */,
 				CA3990ED20ACD35C001E3F1A /* HoursDateFormatter.swift in Sources */,

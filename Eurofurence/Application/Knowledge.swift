@@ -48,13 +48,11 @@ class Knowledge {
     }
 
     func fetchKnowledgeEntry(for identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping (KnowledgeEntry2) -> Void) {
-        guard let model = models.reduce([], { $0 + $1.entries }).first(where: { $0.identifier == identifier }) else { return }
-        completionHandler(model)
+        models.reduce([], { $0 + $1.entries }).first(where: { $0.identifier == identifier }).let(completionHandler)
     }
 
     func fetchKnowledgeEntriesForGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping ([KnowledgeEntry2]) -> Void) {
-        guard let entries = models.first(where: { $0.identifier == identifier })?.entries else { return }
-        completionHandler(entries)
+        models.first(where: { $0.identifier == identifier }).let { completionHandler($0.entries) }
     }
 
     // MARK: Private

@@ -54,10 +54,10 @@ class Maps {
     }
 
     func fetchImagePNGDataForMap(identifier: Map2.Identifier, completionHandler: @escaping (Data) -> Void) {
-        guard let map = serverModels.first(where: { $0.identifier == identifier.rawValue }) else { return }
-        guard let entity = imageRepository.loadImage(identifier: map.imageIdentifier) else { return }
-
-        completionHandler(entity.pngImageData)
+        serverModels
+            .first(where: { $0.identifier == identifier.rawValue })
+            .let({ imageRepository.loadImage(identifier: $0.imageIdentifier) })
+            .let({ completionHandler($0.pngImageData) })
     }
 
     func fetchContent(for identifier: Map2.Identifier,
