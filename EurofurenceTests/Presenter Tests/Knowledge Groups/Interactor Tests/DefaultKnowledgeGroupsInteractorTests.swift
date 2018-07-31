@@ -36,4 +36,20 @@ class DefaultKnowledgeGroupsInteractorTests: XCTestCase {
         XCTAssertEqual(expected, actual?.knowledgeGroups)
     }
     
+    func testProvideExpectedKnowledgeGroupByIndex() {
+        let service = StubKnowledgeService()
+        let interactor = DefaultKnowledgeGroupsInteractor(service: service)
+        var viewModel: KnowledgeGroupsListViewModel?
+        interactor.prepareViewModel { viewModel = $0 }
+        let models: [KnowledgeGroup2] = .random
+        service.simulateFetchSucceeded(models)
+        
+        let randomGroup = models.randomElement()
+        let expected = randomGroup.element.identifier
+        var actual: KnowledgeGroup2.Identifier?
+        viewModel?.fetchIdentifierForGroup(at: randomGroup.index) { actual = $0 }
+        
+        XCTAssertEqual(expected, actual)
+    }
+    
 }
