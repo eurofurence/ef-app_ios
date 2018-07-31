@@ -18,5 +18,6 @@ protocol KnowledgeGroupEntriesScene {
 protocol KnowledgeGroupEntriesSceneDelegate {
 
     func knowledgeGroupEntriesSceneDidLoad()
+    func knowledgeGroupEntriesSceneDidSelectEntry(at index: Int)
 
 }

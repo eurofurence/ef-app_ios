@@ -14,6 +14,7 @@ class KnowledgeGroupEntriesPresenterTestBuilder {
     struct Context {
         var viewModel: StubKnowledgeGroupEntriesViewModel
         var sceneFactory: StubKnowledgeGroupEntriesSceneFactory
+        var delegate: CapturingKnowledgeGroupEntriesModuleDelegate
     }
     
     func build() -> Context {
@@ -21,13 +22,14 @@ class KnowledgeGroupEntriesPresenterTestBuilder {
         let groupIdentifier = KnowledgeGroup2.Identifier.random
         let interactor = FakeKnowledgeGroupEntriesInteractor(for: groupIdentifier, viewModel: viewModel)
         let sceneFactory = StubKnowledgeGroupEntriesSceneFactory()
+        let delegate = CapturingKnowledgeGroupEntriesModuleDelegate()
         _ = KnowledgeGroupEntriesModuleBuilder()
             .with(interactor)
             .with(sceneFactory)
             .build()
-            .makeKnowledgeGroupEntriesModule(groupIdentifier)
+            .makeKnowledgeGroupEntriesModule(groupIdentifier, delegate: delegate)
         
-        return Context(viewModel: viewModel, sceneFactory: sceneFactory)
+        return Context(viewModel: viewModel, sceneFactory: sceneFactory, delegate: delegate)
     }
     
 }
@@ -36,6 +38,10 @@ extension KnowledgeGroupEntriesPresenterTestBuilder.Context {
     
     func simulateSceneDidLoad() {
         sceneFactory.scene.simulateSceneDidLoad()
+    }
+    
+    func simulateSceneDidSelectEntry(at index: Int) {
+        sceneFactory.scene.simulateSceneDidSelectEntry(at: index)
     }
     
     func bind(_ component: CapturingKnowledgeGroupEntryScene, at index: Int) {

@@ -31,4 +31,8 @@ extension CapturingKnowledgeGroupEntriesScene {
         delegate?.knowledgeGroupEntriesSceneDidLoad()
     }
     
+    func simulateSceneDidSelectEntry(at index: Int) {
+        delegate?.knowledgeGroupEntriesSceneDidSelectEntry(at: index)
+    }
+    
 }

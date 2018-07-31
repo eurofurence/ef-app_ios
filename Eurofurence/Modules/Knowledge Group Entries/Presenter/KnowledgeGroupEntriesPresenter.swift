@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct KnowledgeGroupEntriesPresenter: KnowledgeGroupEntriesSceneDelegate {
+class KnowledgeGroupEntriesPresenter: KnowledgeGroupEntriesSceneDelegate {
 
     private struct Binder: KnowledgeGroupEntriesBinder {
 
@@ -24,13 +24,17 @@ struct KnowledgeGroupEntriesPresenter: KnowledgeGroupEntriesSceneDelegate {
     private let scene: KnowledgeGroupEntriesScene
     private let interactor: KnowledgeGroupEntriesInteractor
     private let groupIdentifier: KnowledgeGroup2.Identifier
+    private let delegate: KnowledgeGroupEntriesModuleDelegate
+    private var viewModel: KnowledgeGroupEntriesViewModel?
 
     init(scene: KnowledgeGroupEntriesScene,
          interactor: KnowledgeGroupEntriesInteractor,
-         groupIdentifier: KnowledgeGroup2.Identifier) {
+         groupIdentifier: KnowledgeGroup2.Identifier,
+         delegate: KnowledgeGroupEntriesModuleDelegate) {
         self.scene = scene
         self.interactor = interactor
         self.groupIdentifier = groupIdentifier
+        self.delegate = delegate
 
         scene.setDelegate(self)
     }
@@ -39,7 +43,13 @@ struct KnowledgeGroupEntriesPresenter: KnowledgeGroupEntriesSceneDelegate {
         interactor.makeViewModelForGroup(identifier: groupIdentifier, completionHandler: viewModelReady)
     }
 
+    func knowledgeGroupEntriesSceneDidSelectEntry(at index: Int) {
+        guard let identifier = viewModel?.identifierForKnowledgeEntry(at: index) else { return }
+        delegate.knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: identifier)
+    }
+
     private func viewModelReady(_ viewModel: KnowledgeGroupEntriesViewModel) {
+        self.viewModel = viewModel
         scene.bind(numberOfEntries: viewModel.numberOfEntries, using: Binder(viewModel: viewModel))
     }
 

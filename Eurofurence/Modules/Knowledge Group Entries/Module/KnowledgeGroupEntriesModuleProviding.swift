@@ -10,6 +10,6 @@ import Foundation
 
 protocol KnowledgeGroupEntriesModuleProviding {
 
-    func makeKnowledgeGroupEntriesModule(_ groupIdentifier: KnowledgeGroup2.Identifier)
+    func makeKnowledgeGroupEntriesModule(_ groupIdentifier: KnowledgeGroup2.Identifier, delegate: KnowledgeGroupEntriesModuleDelegate)
 
 }

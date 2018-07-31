@@ -647,6 +647,9 @@
 		CA40108B21107BC30056E16C /* KnowledgeGroupEntriesPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40108A21107BC30056E16C /* KnowledgeGroupEntriesPresenterTestBuilder.swift */; };
 		CA40108D21107C2C0056E16C /* WhenBindingKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40108C21107C2C0056E16C /* WhenBindingKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift */; };
 		CA40108F21107D020056E16C /* KnowledgeGroupEntriesBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40108E21107D020056E16C /* KnowledgeGroupEntriesBinder.swift */; };
+		CA40109121107ED00056E16C /* WhenSceneSelectsKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40109021107ED00056E16C /* WhenSceneSelectsKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift */; };
+		CA40109321107F7C0056E16C /* CapturingKnowledgeGroupEntriesModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40109221107F7C0056E16C /* CapturingKnowledgeGroupEntriesModuleDelegate.swift */; };
+		CA40109521107FBB0056E16C /* KnowledgeGroupEntriesModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40109421107FBB0056E16C /* KnowledgeGroupEntriesModuleDelegate.swift */; };
 		CA46A73920F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */; };
 		CA49E9462015480A00EB571C /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */; };
 		CA49E94A2015480A00EB571C /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E9422015480A00EB571C /* EventBusRegistration.swift */; };
@@ -1919,6 +1922,9 @@
 		CA40108A21107BC30056E16C /* KnowledgeGroupEntriesPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupEntriesPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA40108C21107C2C0056E16C /* WhenBindingKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift; sourceTree = "<group>"; };
 		CA40108E21107D020056E16C /* KnowledgeGroupEntriesBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupEntriesBinder.swift; sourceTree = "<group>"; };
+		CA40109021107ED00056E16C /* WhenSceneSelectsKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneSelectsKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift; sourceTree = "<group>"; };
+		CA40109221107F7C0056E16C /* CapturingKnowledgeGroupEntriesModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeGroupEntriesModuleDelegate.swift; sourceTree = "<group>"; };
+		CA40109421107FBB0056E16C /* KnowledgeGroupEntriesModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupEntriesModuleDelegate.swift; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -4186,6 +4192,7 @@
 				CA401083210FAFB10056E16C /* BeforeKnowledgeGroupEntriesSceneLoads.swift */,
 				CA40108C21107C2C0056E16C /* WhenBindingKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift */,
 				CA401065210FA8830056E16C /* WhenKnowledgeGroupEntriesSceneLoads.swift */,
+				CA40109021107ED00056E16C /* WhenSceneSelectsKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -4207,6 +4214,7 @@
 			children = (
 				CA40106B210FAEB20056E16C /* KnowledgeGroupEntriesModule.swift */,
 				CA40106D210FAEC30056E16C /* KnowledgeGroupEntriesModuleProviding.swift */,
+				CA40109421107FBB0056E16C /* KnowledgeGroupEntriesModuleDelegate.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -4245,6 +4253,7 @@
 				CA40107D210FAF410056E16C /* FakeKnowledgeGroupEntriesInteractor.swift */,
 				CA40107F210FAF4C0056E16C /* StubKnowledgeGroupEntriesSceneFactory.swift */,
 				CA40107B210FAF210056E16C /* StubKnowledgeGroupEntriesViewModel.swift */,
+				CA40109221107F7C0056E16C /* CapturingKnowledgeGroupEntriesModuleDelegate.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -7081,6 +7090,7 @@
 				CA1B6F2420DB886300ADF414 /* DealerDetailViewModel.swift in Sources */,
 				CA00AE7020D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift in Sources */,
 				CA72846A209D1442007D912A /* AnnouncementViewModel.swift in Sources */,
+				CA40109521107FBB0056E16C /* KnowledgeGroupEntriesModuleDelegate.swift in Sources */,
 				CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */,
 				CA08157A20D3877700F750D4 /* FoundationShortFormDateFormatter.swift in Sources */,
 				9A80EF4E1F28C78900FD0D37 /* TargetRouter.swift in Sources */,
@@ -7295,6 +7305,7 @@
 				CA6A8D5F20E16BB3007536CD /* WhenShowingMessagesModuleAlerts_DirectorShould.swift in Sources */,
 				CA81D4921FE9AC9200A52A2F /* PhoneTabModuleFactoryTests.swift in Sources */,
 				CA2761C820E0305D000E52AC /* DefaultCollectThemAllRequestFactoryShould.swift in Sources */,
+				CA40109121107ED00056E16C /* WhenSceneSelectsKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift in Sources */,
 				78FE77D31F1A2EB000E9A0BE /* CapturingJSONSession.swift in Sources */,
 				CA9AC16D2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift in Sources */,
 				CA162E8020A5B738004AFED6 /* WhenObservingConventionCountdown_AndSignificantTimeChangeOccurs_EurofurenceApplicationShould.swift in Sources */,
@@ -7398,6 +7409,7 @@
 				CA36A49F20D97FAA00EE6537 /* WhenResolvingDealerAfterDarkContent_DealersInteractorShould.swift in Sources */,
 				CA162E8D20A64C8C004AFED6 /* WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift in Sources */,
 				CACF1EC220B6B92F00D904B5 /* WhenPerformingSync_BeforeImageDownload.swift in Sources */,
+				CA40109321107F7C0056E16C /* CapturingKnowledgeGroupEntriesModuleDelegate.swift in Sources */,
 				CA36A44720D7065800EE6537 /* WhenSearchingForEvents_ApplicationShould.swift in Sources */,
 				CA680F7E20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift in Sources */,
 				CA71A3522041B59600C847C3 /* Array+RandomConvenience.swift in Sources */,
