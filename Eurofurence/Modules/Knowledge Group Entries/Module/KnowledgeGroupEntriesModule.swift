@@ -21,7 +21,7 @@ struct KnowledgeGroupEntriesModule: KnowledgeGroupEntriesModuleProviding {
                                            groupIdentifier: groupIdentifier,
                                            delegate: delegate)
 
-        return UIViewController()
+        return scene
     }
 
 }

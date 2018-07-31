@@ -8,8 +8,9 @@
 
 @testable import Eurofurence
 import Foundation
+import UIKit
 
-class CapturingKnowledgeGroupEntriesScene: KnowledgeGroupEntriesScene {
+class CapturingKnowledgeGroupEntriesScene: UIViewController, KnowledgeGroupEntriesScene {
     
     fileprivate var delegate: KnowledgeGroupEntriesSceneDelegate?
     func setDelegate(_ delegate: KnowledgeGroupEntriesSceneDelegate) {

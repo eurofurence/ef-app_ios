@@ -6,10 +6,10 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol KnowledgeGroupEntriesSceneFactory {
 
-    func makeKnowledgeGroupEntriesScene() -> KnowledgeGroupEntriesScene
+    func makeKnowledgeGroupEntriesScene() -> UIViewController & KnowledgeGroupEntriesScene
 
 }

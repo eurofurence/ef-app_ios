@@ -7,12 +7,12 @@
 //
 
 @testable import Eurofurence
-import Foundation
+import UIKit
 
 class StubKnowledgeGroupEntriesSceneFactory: KnowledgeGroupEntriesSceneFactory {
     
     let scene = CapturingKnowledgeGroupEntriesScene()
-    func makeKnowledgeGroupEntriesScene() -> KnowledgeGroupEntriesScene {
+    func makeKnowledgeGroupEntriesScene() -> UIViewController & KnowledgeGroupEntriesScene {
         return scene
     }
     

@@ -8,10 +8,12 @@
 
 @testable import Eurofurence
 import Foundation
+import UIKit
 
 class KnowledgeGroupEntriesPresenterTestBuilder {
     
     struct Context {
+        var viewController: UIViewController
         var viewModel: StubKnowledgeGroupEntriesViewModel
         var sceneFactory: StubKnowledgeGroupEntriesSceneFactory
         var delegate: CapturingKnowledgeGroupEntriesModuleDelegate
@@ -23,13 +25,16 @@ class KnowledgeGroupEntriesPresenterTestBuilder {
         let interactor = FakeKnowledgeGroupEntriesInteractor(for: groupIdentifier, viewModel: viewModel)
         let sceneFactory = StubKnowledgeGroupEntriesSceneFactory()
         let delegate = CapturingKnowledgeGroupEntriesModuleDelegate()
-        _ = KnowledgeGroupEntriesModuleBuilder()
+        let module = KnowledgeGroupEntriesModuleBuilder()
             .with(interactor)
             .with(sceneFactory)
             .build()
             .makeKnowledgeGroupEntriesModule(groupIdentifier, delegate: delegate)
         
-        return Context(viewModel: viewModel, sceneFactory: sceneFactory, delegate: delegate)
+        return Context(viewController: module,
+                       viewModel: viewModel,
+                       sceneFactory: sceneFactory,
+                       delegate: delegate)
     }
     
 }

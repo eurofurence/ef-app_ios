@@ -12,7 +12,7 @@ struct StoryboardKnowledgeGroupEntriesSceneFactory: KnowledgeGroupEntriesSceneFa
 
     private let storyboard = UIStoryboard(name: "KnowledgeGroupEntries", bundle: .main)
 
-    func makeKnowledgeGroupEntriesScene() -> KnowledgeGroupEntriesScene {
+    func makeKnowledgeGroupEntriesScene() -> UIViewController & KnowledgeGroupEntriesScene {
         return storyboard.instantiate(KnowledgeGroupEntriesViewController.self)
     }
 
