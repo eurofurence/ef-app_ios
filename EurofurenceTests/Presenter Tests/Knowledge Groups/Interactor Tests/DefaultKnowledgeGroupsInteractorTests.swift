@@ -36,18 +36,4 @@ class DefaultKnowledgeGroupsInteractorTests: XCTestCase {
         XCTAssertEqual(expected, actual)
     }
     
-    func testFetchingKnowledgeEntryReturnsExpectedEntryFromService() {
-        let service = StubKnowledgeService()
-        let interactor = DefaultKnowledgeGroupsInteractor(service: service)
-        var actual: KnowledgeEntry2?
-        let models: [KnowledgeGroup2] = .random
-        let group = models.randomElement()
-        let entry = group.element.entries.randomElement()
-        let expected = entry.element
-        interactor.fetchEntry(inGroup: group.index, index: entry.index) { actual = $0 }
-        service.simulateFetchSucceeded(models)
-        
-        XCTAssertEqual(expected, actual)
-    }
-    
 }

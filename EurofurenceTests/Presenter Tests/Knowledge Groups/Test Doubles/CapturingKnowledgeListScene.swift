@@ -56,8 +56,8 @@ extension CapturingKnowledgeListScene {
         binder?.bind(headerScene, toGroupAt: index)
     }
     
-    func simulateSelectingKnowledgeEntry(inGroup groupIndex: Int, at entryIndex: Int) {
-        delegate?.knowledgeListSceneDidSelectKnowledgeEntry(inGroup: groupIndex, at: entryIndex)
+    func simulateSelectingKnowledgeGroup(at groupIndex: Int) {
+        delegate?.knowledgeListSceneDidSelectKnowledgeGroup(at: groupIndex)
     }
     
 }

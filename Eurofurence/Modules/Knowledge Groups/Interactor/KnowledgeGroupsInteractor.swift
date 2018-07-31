@@ -9,6 +9,5 @@
 protocol KnowledgeGroupsInteractor {
 
     func prepareViewModel(completionHandler: @escaping (KnowledgeGroupsListViewModel) -> Void)
-    func fetchEntry(inGroup group: Int, index: Int, completionHandler: @escaping (KnowledgeEntry2) -> Void)
 
 }

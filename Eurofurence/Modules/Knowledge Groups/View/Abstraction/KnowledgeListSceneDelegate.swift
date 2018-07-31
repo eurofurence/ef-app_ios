@@ -9,6 +9,6 @@
 protocol KnowledgeListSceneDelegate {
 
     func knowledgeListSceneDidLoad()
-    func knowledgeListSceneDidSelectKnowledgeEntry(inGroup groupIndex: Int, at entryIndex: Int)
+    func knowledgeListSceneDidSelectKnowledgeGroup(at groupIndex: Int)
 
 }

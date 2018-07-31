@@ -20,11 +20,6 @@ class CapturingKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
         prepareViewModelInvokedHandler?()
     }
     
-    var entriesByGroupAndEntry = [IndexPath : KnowledgeEntry2]()
-    func fetchEntry(inGroup group: Int, index: Int, completionHandler: @escaping (KnowledgeEntry2) -> Void) {
-        completionHandler(entriesByGroupAndEntry[IndexPath(item: index, section: group)] ?? .random)
-    }
-    
 }
 
 extension CapturingKnowledgeGroupsInteractor {

@@ -67,7 +67,7 @@ class KnowledgeListViewController: UIViewController, KnowledgeListScene {
     // MARK: Private
 
     private func didSelectRow(at indexPath: IndexPath) {
-        delegate?.knowledgeListSceneDidSelectKnowledgeEntry(inGroup: indexPath.section, at: indexPath.row)
+        delegate?.knowledgeListSceneDidSelectKnowledgeGroup(at: indexPath.row)
     }
 
     private class TableViewDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
