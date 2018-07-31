@@ -53,7 +53,7 @@ class KnowledgeGroupsListPresenter: KnowledgeListSceneDelegate {
             let group = viewModel.knowledgeGroups[index]
 
             header.setKnowledgeGroupTitle(group.title)
-            header.setKnowledgeGroupIcon(group.icon)
+            header.setKnowledgeGroupFontAwesomeCharacter(group.fontAwesomeCharacter)
             header.setKnowledgeGroupDescription(group.groupDescription)
         }
 

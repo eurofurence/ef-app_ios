@@ -14,9 +14,9 @@ extension KnowledgeListGroupViewModel: RandomValueProviding {
     
     static var random: KnowledgeListGroupViewModel {
         return KnowledgeListGroupViewModel(title: .random,
-                                       icon: UIImage(),
-                                       groupDescription: .random,
-                                       knowledgeEntries: .random)
+                                           fontAwesomeCharacter: .random,
+                                           groupDescription: .random,
+                                           knowledgeEntries: .random)
     }
     
 }

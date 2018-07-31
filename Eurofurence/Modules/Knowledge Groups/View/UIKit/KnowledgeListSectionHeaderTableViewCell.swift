@@ -13,7 +13,6 @@ class KnowledgeListSectionHeaderTableViewCell: UITableViewCell, KnowledgeGroupSc
     // MARK: IBOutlets
 
     @IBOutlet weak var knowledgeGroupTitleLabel: UILabel!
-//    @IBOutlet weak var knowledgeGroupIconImageView: UIImageView!
     @IBOutlet weak var knowledgeGroupDescriptionLabel: UILabel!
 
     // MARK: KnowledgeGroupHeaderScene
@@ -22,8 +21,8 @@ class KnowledgeListSectionHeaderTableViewCell: UITableViewCell, KnowledgeGroupSc
         knowledgeGroupTitleLabel.text = title
     }
 
-    func setKnowledgeGroupIcon(_ icon: UIImage) {
-//        knowledgeGroupIconImageView.image = icon
+    func setKnowledgeGroupFontAwesomeCharacter(_ character: Character) {
+
     }
 
     func setKnowledgeGroupDescription(_ groupDescription: String) {

@@ -6,12 +6,12 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-import UIKit.UIImage
+import Foundation
 
 protocol KnowledgeGroupScene {
 
     func setKnowledgeGroupTitle(_ title: String)
-    func setKnowledgeGroupIcon(_ icon: UIImage)
+    func setKnowledgeGroupFontAwesomeCharacter(_ character: Character)
     func setKnowledgeGroupDescription(_ groupDescription: String)
 
 }

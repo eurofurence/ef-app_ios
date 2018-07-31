@@ -16,9 +16,9 @@ class CapturingKnowledgeGroupHeaderScene: KnowledgeGroupScene {
         capturedTitle = title
     }
     
-    private(set) var capturedIcon: UIImage?
-    func setKnowledgeGroupIcon(_ icon: UIImage) {
-        capturedIcon = icon
+    private(set) var capturedFontAwesomeCharacter: Character?
+    func setKnowledgeGroupFontAwesomeCharacter(_ character: Character) {
+        capturedFontAwesomeCharacter = character
     }
     
     private(set) var capturedGroupDescription: String?

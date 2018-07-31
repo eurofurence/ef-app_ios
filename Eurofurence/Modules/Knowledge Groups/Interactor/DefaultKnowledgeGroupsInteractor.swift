@@ -23,7 +23,7 @@ struct DefaultKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
                 }
 
                 return KnowledgeListGroupViewModel(title: group.title,
-                                                   icon: UIImage(),
+                                                   fontAwesomeCharacter: " ",
                                                    groupDescription: group.groupDescription,
                                                    knowledgeEntries: entries)
             }

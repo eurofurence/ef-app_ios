@@ -19,16 +19,9 @@ protocol KnowledgeGroupsListViewModel {
 struct KnowledgeListGroupViewModel: Equatable {
 
     var title: String
-    var icon: UIImage
+    var fontAwesomeCharacter: Character
     var groupDescription: String
     var knowledgeEntries: [KnowledgeListEntryViewModel]
-
-    static func ==(lhs: KnowledgeListGroupViewModel, rhs: KnowledgeListGroupViewModel) -> Bool {
-        return lhs.title == rhs.title &&
-//               lhs.icon == rhs.icon &&
-               lhs.groupDescription == rhs.groupDescription &&
-               lhs.knowledgeEntries == rhs.knowledgeEntries
-    }
 
 }
 
