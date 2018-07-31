@@ -77,6 +77,23 @@ extension StubAnnouncementsModuleProviding {
     
 }
 
+class StubKnowledgeGroupEntriesModuleProviding: KnowledgeGroupEntriesModuleProviding {
+    
+    private(set) var delegate: KnowledgeGroupEntriesModuleDelegate?
+    func makeKnowledgeGroupEntriesModule(_ groupIdentifier: KnowledgeGroup2.Identifier, delegate: KnowledgeGroupEntriesModuleDelegate) {
+        self.delegate = delegate
+    }
+    
+}
+
+extension StubKnowledgeGroupEntriesModuleProviding {
+    
+    func simulateKnowledgeEntrySelected(_ entry: KnowledgeEntry2.Identifier) {
+        delegate?.knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: entry)
+    }
+    
+}
+
 class ApplicationDirectorTestBuilder {
     
     struct Context {
@@ -97,6 +114,7 @@ class ApplicationDirectorTestBuilder {
         var windowWireframe: CapturingWindowWireframe
         var messageDetailModule: StubMessageDetailModuleProviding
         var knowledgeListModule: StubKnowledgeGroupsListModuleProviding
+        var knowledgeGroupEntriesModule: StubKnowledgeGroupEntriesModuleProviding
         var knowledgeDetailModule: StubKnowledgeDetailModuleProviding
         var mapsModule: StubMapsModuleProviding
         var mapDetailModule: StubMapDetailModuleProviding
@@ -125,6 +143,7 @@ class ApplicationDirectorTestBuilder {
     private let windowWireframe: CapturingWindowWireframe
     private let messageDetailModule: StubMessageDetailModuleProviding
     private let knowledgeListModule: StubKnowledgeGroupsListModuleProviding
+    private let knowledgeGroupEntriesModule: StubKnowledgeGroupEntriesModuleProviding
     private let knowledgeDetailModule: StubKnowledgeDetailModuleProviding
     private let mapsModule: StubMapsModuleProviding
     private let mapDetailModule: StubMapDetailModuleProviding
@@ -151,6 +170,7 @@ class ApplicationDirectorTestBuilder {
         loginModule = StubLoginModuleFactory()
         messageDetailModule = StubMessageDetailModuleProviding()
         knowledgeListModule = StubKnowledgeGroupsListModuleProviding()
+        knowledgeGroupEntriesModule = StubKnowledgeGroupEntriesModuleProviding()
         knowledgeDetailModule = StubKnowledgeDetailModuleProviding()
         mapsModule = StubMapsModuleProviding()
         mapDetailModule = StubMapDetailModuleProviding()
@@ -183,6 +203,7 @@ class ApplicationDirectorTestBuilder {
         builder.with(loginModule)
         builder.with(messageDetailModule)
         builder.with(knowledgeListModule)
+        builder.with(knowledgeGroupEntriesModule)
         builder.with(knowledgeDetailModule)
         builder.with(mapsModule)
         builder.with(mapDetailModule)
@@ -212,6 +233,7 @@ class ApplicationDirectorTestBuilder {
                        windowWireframe: windowWireframe,
                        messageDetailModule: messageDetailModule,
                        knowledgeListModule: knowledgeListModule,
+                       knowledgeGroupEntriesModule: knowledgeGroupEntriesModule,
                        knowledgeDetailModule: knowledgeDetailModule,
                        mapsModule: mapsModule,
                        mapDetailModule: mapDetailModule,

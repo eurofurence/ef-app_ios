@@ -8,6 +8,6 @@
 
 protocol KnowledgeGroupsListModuleDelegate {
 
-    func knowledgeListModuleDidSelectKnowledgeEntry(_ knowledgeEntry: KnowledgeEntry2)
+    func knowledgeListModuleDidSelectKnowledgeGroup(_ knowledgeGroup: KnowledgeGroup2.Identifier)
 
 }

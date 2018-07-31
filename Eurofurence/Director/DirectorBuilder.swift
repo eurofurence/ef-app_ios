@@ -28,6 +28,7 @@ class DirectorBuilder {
     private var loginModuleProviding: LoginModuleProviding
     private var messageDetailModuleProviding: MessageDetailModuleProviding
     private var knowledgeListModuleProviding: KnowledgeGroupsListModuleProviding
+    private var knowledgeGroupEntriesModule: KnowledgeGroupEntriesModuleProviding
     private var knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding
     private var mapsModuleProviding: MapsModuleProviding
     private var mapDetailModuleProviding: MapDetailModuleProviding
@@ -57,6 +58,7 @@ class DirectorBuilder {
         loginModuleProviding = LoginModuleBuilder().build()
         messageDetailModuleProviding = MessageDetailModuleBuilder().build()
         knowledgeListModuleProviding = KnowledgeGroupsModuleBuilder().build()
+        knowledgeGroupEntriesModule = KnowledgeGroupEntriesModuleBuilder().build()
         knowledgeDetailModuleProviding = KnowledgeDetailModuleBuilder().build()
         mapsModuleProviding = MapsModuleBuilder().build()
         mapDetailModuleProviding = MapDetailModuleBuilder().build()
@@ -179,6 +181,12 @@ class DirectorBuilder {
     }
 
     @discardableResult
+    func with(_ knowledgeGroupEntriesModule: KnowledgeGroupEntriesModuleProviding) -> DirectorBuilder {
+        self.knowledgeGroupEntriesModule = knowledgeGroupEntriesModule
+        return self
+    }
+
+    @discardableResult
     func with(_ knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding) -> DirectorBuilder {
         self.knowledgeDetailModuleProviding = knowledgeDetailModuleProviding
         return self
@@ -253,6 +261,7 @@ class DirectorBuilder {
                                    loginModuleProviding: loginModuleProviding,
                                    messageDetailModuleProviding: messageDetailModuleProviding,
                                    knowledgeListModuleProviding: knowledgeListModuleProviding,
+                                   knowledgeGroupEntriesModule: knowledgeGroupEntriesModule,
                                    knowledgeDetailModuleProviding: knowledgeDetailModuleProviding,
                                    mapsModuleProviding: mapsModuleProviding,
                                    mapDetailModuleProviding: mapDetailModuleProviding,

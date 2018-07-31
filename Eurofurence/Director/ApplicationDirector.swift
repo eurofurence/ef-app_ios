@@ -18,6 +18,7 @@ class ApplicationDirector: ExternalContentHandler,
                            LoginModuleDelegate,
                            DealersModuleDelegate,
                            KnowledgeGroupsListModuleDelegate,
+                           KnowledgeGroupEntriesModuleDelegate,
                            KnowledgeDetailModuleDelegate,
                            MapsModuleDelegate,
                            MapDetailModuleDelegate,
@@ -65,6 +66,7 @@ class ApplicationDirector: ExternalContentHandler,
     private let loginModuleProviding: LoginModuleProviding
     private let messageDetailModuleProviding: MessageDetailModuleProviding
     private let knowledgeListModuleProviding: KnowledgeGroupsListModuleProviding
+    private let knowledgeGroupEntriesModule: KnowledgeGroupEntriesModuleProviding
     private let knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding
     private let mapsModuleProviding: MapsModuleProviding
     private let mapDetailModuleProviding: MapDetailModuleProviding
@@ -106,6 +108,7 @@ class ApplicationDirector: ExternalContentHandler,
          loginModuleProviding: LoginModuleProviding,
          messageDetailModuleProviding: MessageDetailModuleProviding,
          knowledgeListModuleProviding: KnowledgeGroupsListModuleProviding,
+         knowledgeGroupEntriesModule: KnowledgeGroupEntriesModuleProviding,
          knowledgeDetailModuleProviding: KnowledgeDetailModuleProviding,
          mapsModuleProviding: MapsModuleProviding,
          mapDetailModuleProviding: MapDetailModuleProviding,
@@ -133,6 +136,7 @@ class ApplicationDirector: ExternalContentHandler,
         self.loginModuleProviding = loginModuleProviding
         self.messageDetailModuleProviding = messageDetailModuleProviding
         self.knowledgeListModuleProviding = knowledgeListModuleProviding
+        self.knowledgeGroupEntriesModule = knowledgeGroupEntriesModule
         self.knowledgeDetailModuleProviding = knowledgeDetailModuleProviding
         self.mapsModuleProviding = mapsModuleProviding
         self.announcementsModuleFactory = announcementsModuleFactory
@@ -348,8 +352,14 @@ class ApplicationDirector: ExternalContentHandler,
 
     // MARK: KnowledgeGroupsListModuleDelegate
 
-    func knowledgeListModuleDidSelectKnowledgeEntry(_ knowledgeEntry: KnowledgeEntry2) {
-        let knowledgeDetailModule = knowledgeDetailModuleProviding.makeKnowledgeListModule(knowledgeEntry.identifier, delegate: self)
+    func knowledgeListModuleDidSelectKnowledgeGroup(_ knowledgeGroup: KnowledgeGroup2.Identifier) {
+        knowledgeGroupEntriesModule.makeKnowledgeGroupEntriesModule(KnowledgeGroup2.Identifier(""), delegate: self)
+    }
+
+    // MARK: KnowledgeGroupEntriesModuleDelegate
+
+    func knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: KnowledgeEntry2.Identifier) {
+        let knowledgeDetailModule = knowledgeDetailModuleProviding.makeKnowledgeListModule(identifier, delegate: self)
         knowledgeListController?.navigationController?.pushViewController(knowledgeDetailModule, animated: animate)
     }
 

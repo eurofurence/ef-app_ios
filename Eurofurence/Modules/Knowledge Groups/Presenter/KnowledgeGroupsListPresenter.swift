@@ -33,7 +33,7 @@ class KnowledgeGroupsListPresenter: KnowledgeListSceneDelegate {
 
     func knowledgeListSceneDidSelectKnowledgeGroup(at groupIndex: Int) {
         scene.deselectKnowledgeEntry(at: IndexPath(item: groupIndex, section: 0))
-
+        viewModel?.fetchIdentifierForGroup(at: groupIndex, completionHandler: delegate.knowledgeListModuleDidSelectKnowledgeGroup)
     }
 
     private func viewModelPrepared(_ viewModel: KnowledgeGroupsListViewModel) {

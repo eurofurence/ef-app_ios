@@ -12,6 +12,8 @@ protocol KnowledgeGroupsListViewModel {
 
     var knowledgeGroups: [KnowledgeListGroupViewModel] { get }
 
+    func fetchIdentifierForGroup(at index: Int, completionHandler: @escaping (KnowledgeGroup2.Identifier) -> Void)
+
 }
 
 struct KnowledgeListGroupViewModel: Equatable {

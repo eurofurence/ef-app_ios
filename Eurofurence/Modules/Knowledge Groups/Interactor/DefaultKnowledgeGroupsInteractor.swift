@@ -14,6 +14,10 @@ struct DefaultKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
 
         var knowledgeGroups: [KnowledgeListGroupViewModel]
 
+        func fetchIdentifierForGroup(at index: Int, completionHandler: @escaping (KnowledgeGroup2.Identifier) -> Void) {
+
+        }
+
     }
 
     var service: KnowledgeService
