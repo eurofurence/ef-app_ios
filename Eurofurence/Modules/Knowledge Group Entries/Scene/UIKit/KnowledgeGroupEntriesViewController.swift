@@ -29,6 +29,10 @@ class KnowledgeGroupEntriesViewController: UITableViewController, KnowledgeGroup
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        knowledgeGroupEntriesSceneDelegate?.knowledgeGroupEntriesSceneDidSelectEntry(at: indexPath.row)
+    }
+
     // MARK: KnowledgeGroupEntriesScene
 
     private var knowledgeGroupEntriesSceneDelegate: KnowledgeGroupEntriesSceneDelegate?
