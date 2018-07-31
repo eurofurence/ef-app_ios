@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
 protocol KnowledgeGroupEntriesModuleProviding {
 
-    func makeKnowledgeGroupEntriesModule(_ groupIdentifier: KnowledgeGroup2.Identifier, delegate: KnowledgeGroupEntriesModuleDelegate)
+    func makeKnowledgeGroupEntriesModule(_ groupIdentifier: KnowledgeGroup2.Identifier, delegate: KnowledgeGroupEntriesModuleDelegate) -> UIViewController
 
 }

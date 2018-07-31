@@ -398,6 +398,7 @@
 		CA27254C2110D3BE004C6D0A /* WhenFetchingKnowledgeEntriesForSpecificGroup_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27254B2110D3BE004C6D0A /* WhenFetchingKnowledgeEntriesForSpecificGroup_ApplicationShould.swift */; };
 		CA27254E2110DEE2004C6D0A /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27254D2110DEE2004C6D0A /* Optional+Extensions.swift */; };
 		CA2725502110F12F004C6D0A /* StubKnowledgeGroupsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27254F2110F12F004C6D0A /* StubKnowledgeGroupsListViewModel.swift */; };
+		CA2725522110FA40004C6D0A /* WhenSelectingKnowledgeGroup_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2725512110FA40004C6D0A /* WhenSelectingKnowledgeGroup_DirectorShould.swift */; };
 		CA27618220DF932C000E52AC /* AspectRatioConstrainedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */; };
 		CA27618420DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618320DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift */; };
 		CA27618620DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */; };
@@ -1681,6 +1682,7 @@
 		CA27254B2110D3BE004C6D0A /* WhenFetchingKnowledgeEntriesForSpecificGroup_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingKnowledgeEntriesForSpecificGroup_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA27254D2110DEE2004C6D0A /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
 		CA27254F2110F12F004C6D0A /* StubKnowledgeGroupsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeGroupsListViewModel.swift; sourceTree = "<group>"; };
+		CA2725512110FA40004C6D0A /* WhenSelectingKnowledgeGroup_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSelectingKnowledgeGroup_DirectorShould.swift; sourceTree = "<group>"; };
 		CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioConstrainedImageView.swift; sourceTree = "<group>"; };
 		CA27618320DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -3442,6 +3444,7 @@
 				CA63756D208CCBD400536BE2 /* WhenPreloadCompletes_DirectorShould.swift */,
 				CA63756B208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift */,
 				CA52C69420D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift */,
+				CA2725512110FA40004C6D0A /* WhenSelectingKnowledgeGroup_DirectorShould.swift */,
 				CA6A8DC120E4143A007536CD /* WhenSelectingMap_DirectorShould.swift */,
 				CA637571208CD15700536BE2 /* WhenShowingMessages_DirectorShould.swift */,
 				CA6A8D5E20E16BB3007536CD /* WhenShowingMessagesModuleAlerts_DirectorShould.swift */,
@@ -7690,6 +7693,7 @@
 				CA637597208DFD4B00536BE2 /* StubScheduleSceneFactory.swift in Sources */,
 				7820A6F61F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift in Sources */,
 				CA89CBC02085383100570D54 /* StubNewsInteractor.swift in Sources */,
+				CA2725522110FA40004C6D0A /* WhenSelectingKnowledgeGroup_DirectorShould.swift in Sources */,
 				CA6375AC208E021A00536BE2 /* WhenBuildingDealersModule.swift in Sources */,
 				CA728445209D00B7007D912A /* StubAnnouncementDetailModuleFactory.swift in Sources */,
 				CA36A4D020DAC08100EE6537 /* WhenDealersIndexProducesNewSearchResults_DealersInteractorShould.swift in Sources */,
