@@ -20,24 +20,8 @@ class KnowledgeGroupEntriesModuleBuilder {
             }
         }
 
-        struct DummyKnowledgeGroupEntriesSceneFactory: KnowledgeGroupEntriesSceneFactory {
-            func makeKnowledgeGroupEntriesScene() -> KnowledgeGroupEntriesScene {
-                struct DummyKnowledgeGroupEntriesScene: KnowledgeGroupEntriesScene {
-                    func bind(numberOfEntries: Int, using binder: KnowledgeGroupEntriesBinder) {
-
-                    }
-
-                    func setDelegate(_ delegate: KnowledgeGroupEntriesSceneDelegate) {
-
-                    }
-                }
-
-                return DummyKnowledgeGroupEntriesScene()
-            }
-        }
-
         interactor = DummyKnowledgeGroupEntriesInteractor()
-        sceneFactory = DummyKnowledgeGroupEntriesSceneFactory()
+        sceneFactory = StoryboardKnowledgeGroupEntriesSceneFactory()
     }
 
     @discardableResult
