@@ -22,7 +22,7 @@ struct DefaultKnowledgeGroupEntriesInteractor: KnowledgeGroupEntriesInteractor {
         }
 
         func identifierForKnowledgeEntry(at index: Int) -> KnowledgeEntry2.Identifier {
-            return KnowledgeEntry2.Identifier("")
+            return entries[index].identifier
         }
 
     }
