@@ -12,18 +12,10 @@ import XCTest
 class WhenKnowledgeGroupEntriesSceneLoads: XCTestCase {
     
     func testTheNumberOfEntriesFromTheViewModelAreBoundOntoTheScene() {
-        let viewModel = StubKnowledgeGroupEntriesViewModel.random
-        let groupIdentifier = KnowledgeGroup2.Identifier.random
-        let interactor = FakeKnowledgeGroupEntriesInteractor(for: groupIdentifier, viewModel: viewModel)
-        let sceneFactory = StubKnowledgeGroupEntriesSceneFactory()
-        _ = KnowledgeGroupEntriesModuleBuilder()
-            .with(interactor)
-            .with(sceneFactory)
-            .build()
-            .makeKnowledgeGroupEntriesModule(groupIdentifier)
-        sceneFactory.scene.simulateSceneDidLoad()
+        let context = KnowledgeGroupEntriesPresenterTestBuilder().build()
+        context.simulateSceneDidLoad()
         
-        XCTAssertEqual(viewModel.numberOfEntries, sceneFactory.scene.capturedNumberOfEntriesToBind)
+        XCTAssertEqual(context.viewModel.numberOfEntries, context.sceneFactory.scene.capturedNumberOfEntriesToBind)
     }
     
 }

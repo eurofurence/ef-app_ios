@@ -12,17 +12,8 @@ import XCTest
 class BeforeKnowledgeGroupEntriesSceneLoads: XCTestCase {
     
     func testNoBindingsOccurOntoTheScene() {
-        let viewModel = StubKnowledgeGroupEntriesViewModel.random
-        let groupIdentifier = KnowledgeGroup2.Identifier.random
-        let interactor = FakeKnowledgeGroupEntriesInteractor(for: groupIdentifier, viewModel: viewModel)
-        let sceneFactory = StubKnowledgeGroupEntriesSceneFactory()
-        _ = KnowledgeGroupEntriesModuleBuilder()
-            .with(interactor)
-            .with(sceneFactory)
-            .build()
-            .makeKnowledgeGroupEntriesModule(groupIdentifier)
-        
-        XCTAssertNil(sceneFactory.scene.capturedNumberOfEntriesToBind)
+        let context = KnowledgeGroupEntriesPresenterTestBuilder().build()
+        XCTAssertNil(context.sceneFactory.scene.capturedNumberOfEntriesToBind)
     }
     
 }

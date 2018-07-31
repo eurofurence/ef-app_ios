@@ -644,6 +644,7 @@
 		CA401082210FAF620056E16C /* CapturingKnowledgeGroupEntriesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401081210FAF620056E16C /* CapturingKnowledgeGroupEntriesScene.swift */; };
 		CA401084210FAFB10056E16C /* BeforeKnowledgeGroupEntriesSceneLoads.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401083210FAFB10056E16C /* BeforeKnowledgeGroupEntriesSceneLoads.swift */; };
 		CA401087210FB8010056E16C /* KnowledgeGroupEntriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA401086210FB8010056E16C /* KnowledgeGroupEntriesPresenter.swift */; };
+		CA40108B21107BC30056E16C /* KnowledgeGroupEntriesPresenterTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40108A21107BC30056E16C /* KnowledgeGroupEntriesPresenterTestBuilder.swift */; };
 		CA46A73920F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */; };
 		CA49E9462015480A00EB571C /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */; };
 		CA49E94A2015480A00EB571C /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E9422015480A00EB571C /* EventBusRegistration.swift */; };
@@ -1913,6 +1914,7 @@
 		CA401081210FAF620056E16C /* CapturingKnowledgeGroupEntriesScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeGroupEntriesScene.swift; sourceTree = "<group>"; };
 		CA401083210FAFB10056E16C /* BeforeKnowledgeGroupEntriesSceneLoads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeKnowledgeGroupEntriesSceneLoads.swift; sourceTree = "<group>"; };
 		CA401086210FB8010056E16C /* KnowledgeGroupEntriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupEntriesPresenter.swift; sourceTree = "<group>"; };
+		CA40108A21107BC30056E16C /* KnowledgeGroupEntriesPresenterTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupEntriesPresenterTestBuilder.swift; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -4167,6 +4169,7 @@
 		CA401063210FA8650056E16C /* Knowledge Group Entries */ = {
 			isa = PBXGroup;
 			children = (
+				CA40108A21107BC30056E16C /* KnowledgeGroupEntriesPresenterTestBuilder.swift */,
 				CA401064210FA86F0056E16C /* Presenter Tests */,
 				CA40107A210FAF150056E16C /* Test Doubles */,
 			);
@@ -7338,6 +7341,7 @@
 				6EF96CDB1F0EE0A100EE6134 /* EventKitCalendarEventTests.swift in Sources */,
 				CA08159520D472B700F750D4 /* FakeEventsSchedule.swift in Sources */,
 				CA6A8DD720E4181A007536CD /* StubMapDetailSceneFactory.swift in Sources */,
+				CA40108B21107BC30056E16C /* KnowledgeGroupEntriesPresenterTestBuilder.swift in Sources */,
 				CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */,
 				CAD7805D1F1E8EB0002A8333 /* KeychainCredentialStoreTests.swift in Sources */,
 				CA36A4B820D9A99500EE6537 /* WhenFetchingIconDataForDealerWithArtwork_ApplicationShould.swift in Sources */,
