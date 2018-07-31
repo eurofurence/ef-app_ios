@@ -15,7 +15,7 @@ protocol KnowledgeListScene {
     func setKnowledgeListShortTitle(_ shortTitle: String)
     func showLoadingIndicator()
     func hideLoadingIndicator()
-    func prepareToDisplayKnowledgeGroups(entriesPerGroup: [Int], binder: KnowledgeListBinder)
+    func prepareToDisplayKnowledgeGroups(numberOfGroups: Int, binder: KnowledgeListBinder)
     func deselectKnowledgeEntry(at indexPath: IndexPath)
 
 }

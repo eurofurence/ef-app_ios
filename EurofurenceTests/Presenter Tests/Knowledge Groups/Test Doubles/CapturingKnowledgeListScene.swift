@@ -36,10 +36,10 @@ class CapturingKnowledgeListScene: UIViewController, KnowledgeListScene {
         didHideLoadingIndicator = true
     }
     
-    private(set) var capturedEntriesPerGroup: [Int] = []
+    private(set) var capturedEntriesPerGroup: Int?
     fileprivate var binder: KnowledgeListBinder?
-    func prepareToDisplayKnowledgeGroups(entriesPerGroup: [Int], binder: KnowledgeListBinder) {
-        capturedEntriesPerGroup = entriesPerGroup
+    func prepareToDisplayKnowledgeGroups(numberOfGroups: Int, binder: KnowledgeListBinder) {
+        capturedEntriesPerGroup = numberOfGroups
         self.binder = binder
     }
     
@@ -54,10 +54,6 @@ extension CapturingKnowledgeListScene {
     
     func bind(_ headerScene: KnowledgeGroupScene, toGroupAt index: Int) {
         binder?.bind(headerScene, toGroupAt: index)
-    }
-    
-    func bind(_ headerScene: KnowledgeGroupEntryScene, toEntryInGroup groupIndex: Int, at entryIndex: Int) {
-        binder?.bind(headerScene, toEntryInGroup: groupIndex, at: entryIndex)
     }
     
     func simulateSelectingKnowledgeEntry(inGroup groupIndex: Int, at entryIndex: Int) {

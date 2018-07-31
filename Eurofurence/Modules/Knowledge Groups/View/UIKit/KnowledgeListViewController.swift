@@ -39,8 +39,8 @@ class KnowledgeListViewController: UIViewController, KnowledgeListScene {
     }
 
     private lazy var tableViewRenderer = TableViewDataSource()
-    func prepareToDisplayKnowledgeGroups(entriesPerGroup: [Int], binder: KnowledgeListBinder) {
-        tableViewRenderer.entryCounts = entriesPerGroup
+    func prepareToDisplayKnowledgeGroups(numberOfGroups: Int, binder: KnowledgeListBinder) {
+        tableViewRenderer.entryCounts = numberOfGroups
         tableViewRenderer.binder = binder
 
         tableView.reloadData()
@@ -72,34 +72,31 @@ class KnowledgeListViewController: UIViewController, KnowledgeListScene {
 
     private class TableViewDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
 
-        var entryCounts = [Int]()
+        var entryCounts = 0
         var binder: KnowledgeListBinder?
         var onDidSelectRowAtIndexPath: ((IndexPath) -> Void)?
 
-        func numberOfSections(in tableView: UITableView) -> Int {
-            return entryCounts.count
-        }
-
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return entryCounts[section]
+            return entryCounts
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeue(KnowledgeListEntryTableViewCell.self, for: indexPath)
-            binder?.bind(cell, toEntryInGroup: indexPath.section, at: indexPath.row)
+            let cell = tableView.dequeue(KnowledgeListSectionHeaderTableViewCell.self)
+            binder?.bind(cell, toGroupAt: indexPath.row)
 
             return cell
         }
 
-        func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            let header = tableView.dequeue(KnowledgeListSectionHeaderTableViewCell.self)
-            binder?.bind(header, toGroupAt: section)
-
-            return header
-        }
-
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             onDidSelectRowAtIndexPath?(indexPath)
+        }
+
+        func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+            return 0
+        }
+
+        func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+            return UIView()
         }
 
     }

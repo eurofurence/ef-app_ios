@@ -28,7 +28,7 @@ class WhenKnowledgeGroupsListViewModelIsPrepared: XCTestCase {
     }
     
     func testTheSceneIsToldToDisplayKnowledgeGroups() {
-        let expected = viewModel.knowledgeGroups.map({ $0.knowledgeEntries.count })
+        let expected = viewModel.knowledgeGroups.count
         XCTAssertEqual(expected, context.scene.capturedEntriesPerGroup)
     }
     
@@ -57,16 +57,6 @@ class WhenKnowledgeGroupsListViewModelIsPrepared: XCTestCase {
         context.scene.bind(scene, toGroupAt: randomGroup.index)
         
         XCTAssertEqual(expected, scene.capturedGroupDescription)
-    }
-    
-    func testBindingKnowledgeGroupEntrySetsTitleOntoScene() {
-        let randomGroup = viewModel.knowledgeGroups.randomElement()
-        let randomEntry = randomGroup.element.knowledgeEntries.randomElement()
-        let expected = randomEntry.element.title
-        let scene = CapturingKnowledgeGroupEntryScene()
-        context.scene.bind(scene, toEntryInGroup: randomGroup.index, at: randomEntry.index)
-        
-        XCTAssertEqual(expected, scene.capturedTitle)
     }
     
     func testSelectingKnowledgeEntryTellsDelegateToPresentSelectedEntry() {

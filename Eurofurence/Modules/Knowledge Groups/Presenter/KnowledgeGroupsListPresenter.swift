@@ -44,9 +44,8 @@ class KnowledgeGroupsListPresenter: KnowledgeListSceneDelegate {
         scene.hideLoadingIndicator()
 
         let knowledgeGroups = viewModel.knowledgeGroups
-        let entriesPerGroup = knowledgeGroups.map({ $0.knowledgeEntries.count })
         let binder = ListBinder(viewModel: viewModel)
-        scene.prepareToDisplayKnowledgeGroups(entriesPerGroup: entriesPerGroup, binder: binder)
+        scene.prepareToDisplayKnowledgeGroups(numberOfGroups: knowledgeGroups.count, binder: binder)
     }
 
     private struct ListBinder: KnowledgeListBinder {
@@ -59,12 +58,6 @@ class KnowledgeGroupsListPresenter: KnowledgeListSceneDelegate {
             header.setKnowledgeGroupTitle(group.title)
             header.setKnowledgeGroupIcon(group.icon)
             header.setKnowledgeGroupDescription(group.groupDescription)
-        }
-
-        func bind(_ entryScene: KnowledgeGroupEntryScene, toEntryInGroup groupIndex: Int, at entryIndex: Int) {
-            let group = viewModel.knowledgeGroups[groupIndex]
-            let entry = group.knowledgeEntries[entryIndex]
-            entryScene.setKnowledgeEntryTitle(entry.title)
         }
 
     }
