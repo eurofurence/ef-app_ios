@@ -23,7 +23,8 @@ class WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh: XCTestCase {
                                        links: entry.links.map({ return Link(name: $0.name, type: Link.Kind(rawValue: $0.fragmentType.rawValue)!, contents: $0.target) }).sorted(by: { $0.name < $1.name }))
             }.sorted(by: { $0.order < $1.order })
             
-            return KnowledgeGroup2(title: group.groupName,
+            return KnowledgeGroup2(identifier: KnowledgeGroup2.Identifier(group.identifier),
+                                   title: group.groupName,
                                    groupDescription: group.groupDescription,
                                    order: group.order,
                                    entries: entries)

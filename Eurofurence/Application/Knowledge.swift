@@ -52,6 +52,11 @@ class Knowledge {
         completionHandler(model)
     }
 
+    func fetchKnowledgeEntriesForGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping ([KnowledgeEntry2]) -> Void) {
+        guard let entries = models.first(where: { $0.identifier == identifier })?.entries else { return }
+        completionHandler(entries)
+    }
+
     // MARK: Private
 
     private func reloadKnowledgeBaseFromDataStore() {

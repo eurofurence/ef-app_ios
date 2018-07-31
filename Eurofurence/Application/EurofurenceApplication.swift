@@ -210,7 +210,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func fetchKnowledgeEntriesForGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping ([KnowledgeEntry2]) -> Void) {
-
+        knowledge.fetchKnowledgeEntriesForGroup(identifier: identifier, completionHandler: completionHandler)
     }
 
     func add(_ observer: EventsServiceObserver) {

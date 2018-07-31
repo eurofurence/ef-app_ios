@@ -30,6 +30,7 @@ struct KnowledgeGroup2: Comparable, Equatable {
 
     }
 
+    var identifier: KnowledgeGroup2.Identifier
     var title: String
     var groupDescription: String
     var order: Int
@@ -47,7 +48,8 @@ extension KnowledgeGroup2 {
         return groups.map({ (group) -> KnowledgeGroup2 in
             let entries = entries.filter({ $0.groupIdentifier == group.identifier }).map(KnowledgeEntry2.fromServerModel).sorted()
 
-            return KnowledgeGroup2(title: group.groupName,
+            return KnowledgeGroup2(identifier: KnowledgeGroup2.Identifier(group.identifier),
+                                   title: group.groupName,
                                    groupDescription: group.groupDescription,
                                    order: group.order,
                                    entries: entries)

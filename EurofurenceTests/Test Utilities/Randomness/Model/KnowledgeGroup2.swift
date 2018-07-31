@@ -12,7 +12,11 @@ import Foundation
 extension KnowledgeGroup2: RandomValueProviding {
     
     static var random: KnowledgeGroup2 {
-        return KnowledgeGroup2(title: .random, groupDescription: .random, order: .random, entries: .random)
+        return KnowledgeGroup2(identifier: .random,
+                               title: .random,
+                               groupDescription: .random,
+                               order: .random,
+                               entries: .random)
     }
     
 }
