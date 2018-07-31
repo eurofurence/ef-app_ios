@@ -10,11 +10,17 @@ import UIKit.UIImage
 
 struct DefaultKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
 
+    private struct ViewModel: KnowledgeGroupsListViewModel {
+
+        var knowledgeGroups: [KnowledgeListGroupViewModel]
+
+    }
+
     var service: KnowledgeService
 
     func prepareViewModel(completionHandler: @escaping (KnowledgeGroupsListViewModel) -> Void) {
         service.fetchKnowledgeGroups { (groups) in
-            let viewModel = KnowledgeGroupsListViewModel(knowledgeGroups: groups.map(self.knowledgeGroupViewModel))
+            let viewModel = ViewModel(knowledgeGroups: groups.map(self.knowledgeGroupViewModel))
             completionHandler(viewModel)
         }
     }

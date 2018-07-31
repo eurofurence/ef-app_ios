@@ -38,7 +38,7 @@ class KnowledgeGroupsPresenterTestBuilder {
 
 extension KnowledgeGroupsPresenterTestBuilder.Context {
     
-    func simulateLoadingViewModel(_ viewModel: KnowledgeGroupsListViewModel = .random) {
+    func simulateLoadingViewModel(_ viewModel: StubKnowledgeGroupsListViewModel = .random) {
         knowledgeInteractor.simulateViewModelPrepared(viewModel)
     }
     

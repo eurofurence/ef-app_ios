@@ -10,14 +10,6 @@ import Darwin
 @testable import Eurofurence
 import UIKit.UIImage
 
-extension KnowledgeGroupsListViewModel: RandomValueProviding {
-    
-    static var random: KnowledgeGroupsListViewModel {
-        return KnowledgeGroupsListViewModel(knowledgeGroups: .random)
-    }
-    
-}
-
 extension KnowledgeListGroupViewModel: RandomValueProviding {
     
     static var random: KnowledgeListGroupViewModel {

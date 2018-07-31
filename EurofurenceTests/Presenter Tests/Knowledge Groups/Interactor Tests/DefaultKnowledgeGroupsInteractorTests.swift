@@ -30,10 +30,10 @@ class DefaultKnowledgeGroupsInteractorTests: XCTestCase {
         interactor.prepareViewModel { actual = $0 }
         
         let models: [KnowledgeGroup2] = .random
-        let expected = KnowledgeGroupsListViewModel(knowledgeGroups: models.map(expectedViewModelForGroup))
+        let expected = models.map(expectedViewModelForGroup)
         service.simulateFetchSucceeded(models)
         
-        XCTAssertEqual(expected, actual)
+        XCTAssertEqual(expected, actual?.knowledgeGroups)
     }
     
 }

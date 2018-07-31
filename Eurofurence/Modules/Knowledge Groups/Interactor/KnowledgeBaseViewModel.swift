@@ -8,9 +8,9 @@
 
 import UIKit.UIImage
 
-struct KnowledgeGroupsListViewModel: Equatable {
+protocol KnowledgeGroupsListViewModel {
 
-    var knowledgeGroups: [KnowledgeListGroupViewModel]
+    var knowledgeGroups: [KnowledgeListGroupViewModel] { get }
 
 }
 

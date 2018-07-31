@@ -12,7 +12,7 @@ import XCTest
 class WhenKnowledgeGroupsListViewModelIsPrepared: XCTestCase {
     
     var context: KnowledgeGroupsPresenterTestBuilder.Context!
-    var viewModel: KnowledgeGroupsListViewModel!
+    var viewModel: StubKnowledgeGroupsListViewModel!
     
     override func setUp() {
         super.setUp()
