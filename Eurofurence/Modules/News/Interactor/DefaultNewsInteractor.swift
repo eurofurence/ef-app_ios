@@ -46,7 +46,7 @@ class DefaultNewsInteractor: NewsInteractor,
     private var todaysEvents = [Event2]()
     private var currentDay: Day?
     private let announcementsDateFormatter: AnnouncementDateFormatter
-	private let markdownRenderer: MarkdownRenderer
+	private let announcementsMarkdownRenderer: MarkdownRenderer
 
     // MARK: Initialization
 
@@ -62,7 +62,7 @@ class DefaultNewsInteractor: NewsInteractor,
                   clock: SystemClock(),
                   refreshService: EurofurenceApplication.shared,
                   announcementsDateFormatter: FoundationAnnouncementDateFormatter.shared,
-				  markdownRenderer: DownMarkdownRenderer())
+				  announcementsMarkdownRenderer: SubtleDownMarkdownRenderer())
     }
 
     init(announcementsService: AnnouncementsService,
@@ -76,14 +76,14 @@ class DefaultNewsInteractor: NewsInteractor,
          clock: Clock,
          refreshService: RefreshService,
          announcementsDateFormatter: AnnouncementDateFormatter,
-		 markdownRenderer: MarkdownRenderer) {
+		 announcementsMarkdownRenderer: MarkdownRenderer) {
         self.relativeTimeIntervalCountdownFormatter = relativeTimeIntervalCountdownFormatter
         self.hoursDateFormatter = hoursDateFormatter
         self.dateDistanceCalculator = dateDistanceCalculator
         self.clock = clock
         self.refreshService = refreshService
         self.announcementsDateFormatter = announcementsDateFormatter
-		self.markdownRenderer = markdownRenderer
+		self.announcementsMarkdownRenderer = announcementsMarkdownRenderer
         favouritesSchedule = eventsService.makeEventsSchedule()
         favouritesSchedule.setDelegate(self)
 
@@ -233,7 +233,7 @@ class DefaultNewsInteractor: NewsInteractor,
             components.append(CountdownComponent(daysUntilConvention: daysUntilConvention))
         }
 
-		components.append(AnnouncementsComponent(announcements: announcements, readAnnouncements: readAnnouncements, announcementsDateFormatter: announcementsDateFormatter, markdownRenderer: markdownRenderer))
+		components.append(AnnouncementsComponent(announcements: announcements, readAnnouncements: readAnnouncements, announcementsDateFormatter: announcementsDateFormatter, markdownRenderer: announcementsMarkdownRenderer))
 
         if !upcomingEvents.isEmpty {
             components.append(EventsComponent(title: .upcomingEvents,

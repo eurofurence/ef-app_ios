@@ -155,7 +155,7 @@ class DefaultNewsInteractorTestBuilder {
                                                clock: clock,
                                                refreshService: refreshService,
                                                announcementsDateFormatter: announcementsDateFormatter,
-											   markdownRenderer: markdownRenderer)
+											   announcementsMarkdownRenderer: markdownRenderer)
         let delegate = CapturingNewsInteractorDelegate()
         
         return Context(interactor: interactor,
