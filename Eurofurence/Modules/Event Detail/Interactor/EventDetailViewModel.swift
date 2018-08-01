@@ -36,7 +36,7 @@ protocol EventDetailViewModelVisitor {
 struct EventSummaryViewModel: Equatable, Hashable {
 
     var title: String
-    var subtitle: String
+    var subtitle: NSAttributedString
     var eventStartEndTime: String
     var location: String
     var trackName: String
@@ -46,7 +46,7 @@ struct EventSummaryViewModel: Equatable, Hashable {
 
 struct EventDescriptionViewModel: Equatable, Hashable {
 
-    var contents: String
+    var contents: NSAttributedString
 
 }
 
