@@ -46,6 +46,10 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
         linkItems.forEach(tableController.add)
     }
 
+    func bindImages(count: Int, using binder: KnowledgentryImagesBinder) {
+
+    }
+
     // MARK: Private
 
     private struct ContentsItem: TableViewDataItem {

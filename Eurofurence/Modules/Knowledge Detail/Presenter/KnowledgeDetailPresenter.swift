@@ -41,12 +41,27 @@ class KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
         knowledgeDetailScene.setKnowledgeDetailTitle(viewModel.title)
         knowledgeDetailScene.setAttributedKnowledgeEntryContents(viewModel.contents)
 
+        let images: [KnowledgeEntryImageViewModel] = viewModel.images
+        let imagesBinder = ViewModelImagesBinder(viewModels: images)
+        knowledgeDetailScene.bindImages(count: images.count, using: imagesBinder)
+
         let links = viewModel.links
 
         if links.isEmpty == false {
             let binder = ViewModelLinksBinder(viewModels: links)
             knowledgeDetailScene.presentLinks(count: links.count, using: binder)
         }
+    }
+
+    private struct ViewModelImagesBinder: KnowledgentryImagesBinder {
+
+        var viewModels: [KnowledgeEntryImageViewModel]
+
+        func bind(_ scene: KnowledgeEntryImageScene, at index: Int) {
+            let viewModel = viewModels[index]
+            scene.showImagePNGData(viewModel.imagePNGData)
+        }
+
     }
 
     private struct ViewModelLinksBinder: LinksBinder {

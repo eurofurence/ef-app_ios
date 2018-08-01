@@ -14,6 +14,7 @@ struct StubKnowledgeEntryDetailViewModel: KnowledgeEntryDetailViewModel {
     var title: String
     var contents: NSAttributedString
     var links: [LinkViewModel]
+    var images: [KnowledgeEntryImageViewModel]
     
     var modelLinks: [Link]
     
@@ -31,6 +32,7 @@ extension StubKnowledgeEntryDetailViewModel: RandomValueProviding {
         return StubKnowledgeEntryDetailViewModel(title: .random,
                                                  contents: .random,
                                                  links: linkViewModels,
+                                                 images: .random,
                                                  modelLinks: linkModels)
     }
     
@@ -48,6 +50,14 @@ extension LinkViewModel: RandomValueProviding {
     
     static var random: LinkViewModel {
         return LinkViewModel(name: .random)
+    }
+    
+}
+
+extension KnowledgeEntryImageViewModel: RandomValueProviding {
+    
+    static var random: KnowledgeEntryImageViewModel {
+        return KnowledgeEntryImageViewModel(imagePNGData: .random)
     }
     
 }

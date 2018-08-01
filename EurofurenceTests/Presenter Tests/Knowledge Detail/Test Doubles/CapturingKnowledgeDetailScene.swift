@@ -33,6 +33,13 @@ class CapturingKnowledgeDetailScene: UIViewController, KnowledgeDetailScene {
         linksBinder = binder
     }
     
+    private(set) var boundImagesCount: Int?
+    private(set) var imagesBinder: KnowledgentryImagesBinder?
+    func bindImages(count: Int, using binder: KnowledgentryImagesBinder) {
+        boundImagesCount = count
+        imagesBinder = binder
+    }
+    
 }
 
 extension CapturingKnowledgeDetailScene {

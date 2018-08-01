@@ -15,6 +15,7 @@ struct DefaultKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
         var title: String
         var contents: NSAttributedString
         var links: [LinkViewModel]
+        var images: [KnowledgeEntryImageViewModel]
         private var linkModels: [Link]
 
         init(title: String, contents: NSAttributedString, links: [Link]) {
@@ -22,6 +23,7 @@ struct DefaultKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
             self.contents = contents
             self.linkModels = links
             self.links = links.map({ LinkViewModel(name: $0.name) })
+            images = []
         }
 
         func link(at index: Int) -> Link {
