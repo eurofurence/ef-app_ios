@@ -10,5 +10,5 @@ import Foundation
 import Down
 
 struct SubtleDownMarkdownRenderer: DownMarkdownRenderer {
-	let stylesheet: String? =  "* { font: -apple-system-caption2; color: #7f7f7f; } strong { font-weight: bold; }"
+	let stylesheet: String? =  "* { font: -apple-system-caption2; color: #7f7f7f; } strong { font-weight: bold; } em { font-style: italic; }"
 }

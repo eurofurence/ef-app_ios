@@ -9,5 +9,5 @@
 import Foundation
 
 struct DefaultDownMarkdownRenderer: DownMarkdownRenderer {
-	let stylesheet: String? = "* { font: -apple-system-body; } strong { font-weight: bold; }"
+	let stylesheet: String? = "* { font: -apple-system-body; } strong { font-weight: bold; } em { font-style: italic; }"
 }
