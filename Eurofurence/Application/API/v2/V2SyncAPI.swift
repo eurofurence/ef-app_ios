@@ -98,6 +98,7 @@ private struct JSONSyncResponse: Decodable {
         var Order: Int
         var Text: String
         var Links: [JSONLink]
+        var ImageIds: [String]
 
         var modelValue: APIKnowledgeEntry {
             return APIKnowledgeEntry(identifier: Id,
@@ -105,7 +106,8 @@ private struct JSONSyncResponse: Decodable {
                                      title: Title,
                                      order: Order,
                                      text: Text,
-                                     links: Links.map({ $0.modelValue }))
+                                     links: Links.map({ $0.modelValue }),
+                                     imageIdentifiers: ImageIds)
         }
     }
 

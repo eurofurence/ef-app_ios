@@ -95,7 +95,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                                            title: "Parkhaus Neukölln Arcaden",
                                                                                            order: 0,
                                                                                            text: "The Parkhaus Neukölln Arcaden is about 2.5 km away from the hotel which means an average walking time of 30 minutes. Compared to the hotel parking this is rather cheap.",
-                                                                                           links: [APILink(name: "Info Site (German)", fragmentType: .WebExternal, target: "https://www.mein-contipark.de/parkplatz-finden/parken-in-berlin/parkhaus-neukoelln-arcaden-berlin--ci3cp11881")])],
+                                                                                           links: [APILink(name: "Info Site (German)", fragmentType: .WebExternal, target: "https://www.mein-contipark.de/parkplatz-finden/parken-in-berlin/parkhaus-neukoelln-arcaden-berlin--ci3cp11881")],
+                                                                                           imageIdentifiers: ["518ade34-48a5-4c20-a512-07e9722fe2f6"])],
                                                                deleted: ["ba2f31ad-d42a-9e40-2c79-17bb9b2f36f3"])
         
         let rooms = APISyncDelta<APIRoom>(changed: [APIRoom(roomIdentifier: "dfa62eae-f881-4aab-a592-acf8fab14ae9",

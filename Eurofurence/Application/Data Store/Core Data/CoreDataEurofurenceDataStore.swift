@@ -196,6 +196,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                     entity.text = entry.text
                     entity.groupIdentifier = entry.groupIdentifier
                     entity.order = Int64(entry.order)
+                    entity.imageIdentifiers = entry.imageIdentifiers
                     links.forEach(entity.addToLinks)
                 }
             }

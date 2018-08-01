@@ -95,7 +95,8 @@ extension APIKnowledgeEntry: RandomValueProviding {
                                  title: .random,
                                  order: .random,
                                  text: .random,
-                                 links: links)
+                                 links: links,
+                                 imageIdentifiers: .random)
     }
     
 }
