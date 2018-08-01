@@ -16,6 +16,7 @@ class EventDetailInteractorTestBuilder {
         var interactor: DefaultEventDetailInteractor
         var viewModel: EventDetailViewModel?
         var eventsService: FakeEventsService
+		var markdownRenderer: StubMarkdownRenderer
     }
     
     private var eventsService: FakeEventsService
@@ -36,12 +37,14 @@ class EventDetailInteractorTestBuilder {
         let interactor = DefaultEventDetailInteractor(dateRangeFormatter: dateRangeFormatter, eventsService: eventsService)
         var viewModel: EventDetailViewModel?
         interactor.makeViewModel(for: event.identifier) { viewModel = $0 }
+		let markdownRenderer = StubMarkdownRenderer()
         
         return Context(event: event,
                        dateRangeFormatter: dateRangeFormatter,
                        interactor: interactor,
                        viewModel: viewModel,
-                       eventsService: eventsService)
+                       eventsService: eventsService,
+					   markdownRenderer: markdownRenderer)
     }
     
 }
@@ -50,7 +53,7 @@ extension EventDetailInteractorTestBuilder.Context {
     
     func makeExpectedEventSummaryViewModel() -> EventSummaryViewModel {
         return EventSummaryViewModel(title: event.title,
-                                     subtitle: event.abstract,
+                                     subtitle: markdownRenderer.stubbedContents(for: event.abstract),
                                      eventStartEndTime: dateRangeFormatter.string(from: event.startDate, to: event.endDate),
                                      location: event.room.name,
                                      trackName: event.track.name,
@@ -65,7 +68,7 @@ extension EventDetailInteractorTestBuilder.Context {
     }
     
     func makeExpectedEventDescriptionViewModel() -> EventDescriptionViewModel {
-        return EventDescriptionViewModel(contents: event.eventDescription)
+        return EventDescriptionViewModel(contents: markdownRenderer.stubbedContents(for: event.eventDescription))
     }
     
 }
