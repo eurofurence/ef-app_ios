@@ -312,10 +312,15 @@ class ApplicationTestBuilder {
                                            links: entry.links.map({ return Link(name: $0.name, type: Link.Kind(rawValue: $0.fragmentType.rawValue)!, contents: $0.target) }).sorted(by: { $0.name < $1.name }))
                     }.sorted(by: { $0.order < $1.order })
                 
+                let addressString = group.fontAwesomeCharacterAddress
+                let intValue = Int(addressString, radix: 16)!
+                let unicodeScalar = UnicodeScalar(intValue)!
+                let character = Character(unicodeScalar)
+                
                 return KnowledgeGroup2(identifier: KnowledgeGroup2.Identifier(group.identifier),
                                        title: group.groupName,
                                        groupDescription: group.groupDescription,
-                                       fontAwesomeCharacterAddress: " ",
+                                       fontAwesomeCharacterAddress: character,
                                        order: group.order,
                                        entries: entries)
             }).sorted(by: { $0.order < $1.order })

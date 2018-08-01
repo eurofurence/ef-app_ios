@@ -63,7 +63,7 @@ extension APIKnowledgeGroup: RandomValueProviding {
                                  order: .random,
                                  groupName: .random,
                                  groupDescription: .random,
-                                 fontAwesomeCharacterAddress: .random)
+                                 fontAwesomeCharacterAddress: "\(Int.random(upperLimit: 100))")
     }
     
     static func makeRandomGroupsAndEntries() -> (groups: [APIKnowledgeGroup], entries: [APIKnowledgeEntry]) {

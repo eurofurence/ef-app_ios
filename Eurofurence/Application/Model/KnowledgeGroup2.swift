@@ -48,11 +48,16 @@ extension KnowledgeGroup2 {
     static func fromServerModels(groups: [APIKnowledgeGroup], entries: [APIKnowledgeEntry]) -> [KnowledgeGroup2] {
         return groups.map({ (group) -> KnowledgeGroup2 in
             let entries = entries.filter({ $0.groupIdentifier == group.identifier }).map(KnowledgeEntry2.fromServerModel).sorted()
+            let defaultFontAwesomeBackupCharacter: Character = " "
+            let fontAwesomeCharacter: Character = Int(group.fontAwesomeCharacterAddress, radix: 16)
+                .let(UnicodeScalar.init)
+                .let(Character.init)
+                .or(defaultFontAwesomeBackupCharacter)
 
             return KnowledgeGroup2(identifier: KnowledgeGroup2.Identifier(group.identifier),
                                    title: group.groupName,
                                    groupDescription: group.groupDescription,
-                                   fontAwesomeCharacterAddress: " ",
+                                   fontAwesomeCharacterAddress: fontAwesomeCharacter,
                                    order: group.order,
                                    entries: entries)
         }).sorted()
