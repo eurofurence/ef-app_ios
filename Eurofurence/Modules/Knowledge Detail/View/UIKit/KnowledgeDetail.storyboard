@@ -23,13 +23,35 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="uiV-y7-f6E" userLabel="Remove Undesired Seperators">
-                                    <rect key="frame" x="0.0" y="116" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="160" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="KnowledgeDetailContentsTableViewCell" id="nmm-PW-NnN" customClass="KnowledgeDetailContentsTableViewCell" customModule="Eurofurence" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="KnowledgeDetailImageTableViewCell" id="a3g-c7-4TJ" customClass="KnowledgeDetailImageTableViewCell" customModule="Eurofurence" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a3g-c7-4TJ" id="bXk-I4-52h">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TKr-4i-DdQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="TKr-4i-DdQ" secondAttribute="trailing" id="3yV-yP-WJb"/>
+                                                <constraint firstItem="TKr-4i-DdQ" firstAttribute="top" secondItem="bXk-I4-52h" secondAttribute="top" id="5hd-O3-FkU"/>
+                                                <constraint firstItem="TKr-4i-DdQ" firstAttribute="leading" secondItem="bXk-I4-52h" secondAttribute="leading" id="K6h-z2-UtU"/>
+                                                <constraint firstAttribute="bottom" secondItem="TKr-4i-DdQ" secondAttribute="bottom" id="yC1-jT-d1E"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="entryImageView" destination="TKr-4i-DdQ" id="VAe-Ox-90m"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="KnowledgeDetailContentsTableViewCell" id="nmm-PW-NnN" customClass="KnowledgeDetailContentsTableViewCell" customModule="Eurofurence" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nmm-PW-NnN" id="4Yb-Ni-WbZ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -56,7 +78,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LinkTableViewCell" id="0Ed-jY-bnV" customClass="LinkTableViewCell" customModule="Eurofurence" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="116" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Ed-jY-bnV" id="G8F-VH-xdh">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>

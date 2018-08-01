@@ -404,6 +404,7 @@
 		CA27255C2112525E004C6D0A /* CapturingKnowledgeEntryImageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27255B2112525E004C6D0A /* CapturingKnowledgeEntryImageScene.swift */; };
 		CA27255E21125393004C6D0A /* KnowledgeEntryImageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27255D21125393004C6D0A /* KnowledgeEntryImageScene.swift */; };
 		CA2725602112542D004C6D0A /* KnowledgentryImagesBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27255F2112542D004C6D0A /* KnowledgentryImagesBinder.swift */; };
+		CA272562211255DE004C6D0A /* KnowledgeDetailImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA272561211255DE004C6D0A /* KnowledgeDetailImageTableViewCell.swift */; };
 		CA27618220DF932C000E52AC /* AspectRatioConstrainedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */; };
 		CA27618420DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618320DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift */; };
 		CA27618620DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */; };
@@ -1693,6 +1694,7 @@
 		CA27255B2112525E004C6D0A /* CapturingKnowledgeEntryImageScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeEntryImageScene.swift; sourceTree = "<group>"; };
 		CA27255D21125393004C6D0A /* KnowledgeEntryImageScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryImageScene.swift; sourceTree = "<group>"; };
 		CA27255F2112542D004C6D0A /* KnowledgentryImagesBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgentryImagesBinder.swift; sourceTree = "<group>"; };
+		CA272561211255DE004C6D0A /* KnowledgeDetailImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailImageTableViewCell.swift; sourceTree = "<group>"; };
 		CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioConstrainedImageView.swift; sourceTree = "<group>"; };
 		CA27618320DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -5052,10 +5054,11 @@
 			isa = PBXGroup;
 			children = (
 				CA6EC4862051CD8F00402894 /* KnowledgeDetail.storyboard */,
-				CA6EC48A2051CDC800402894 /* KnowledgeDetailViewController.swift */,
-				CA6EC4882051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift */,
 				CA17FE8620580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift */,
+				CA272561211255DE004C6D0A /* KnowledgeDetailImageTableViewCell.swift */,
+				CA6EC48A2051CDC800402894 /* KnowledgeDetailViewController.swift */,
 				CA17FE8A20585D9C005A4C05 /* LinkTableViewCell.swift */,
+				CA6EC4882051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -6817,6 +6820,7 @@
 				CAB138131FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift in Sources */,
 				9A8ECA2F1F2D245F00351A83 /* CollectEmAllViewController.swift in Sources */,
 				9A34B97F1ED06946004A249E /* ContextResolver.swift in Sources */,
+				CA272562211255DE004C6D0A /* KnowledgeDetailImageTableViewCell.swift in Sources */,
 				6EF96CC81F0EDAE800EE6134 /* CalendarStore.swift in Sources */,
 				9ACF998E1EC858B2006FC958 /* Event.swift in Sources */,
 				CACF1E5820AE2DED00D904B5 /* EventDetailSceneFactory.swift in Sources */,
