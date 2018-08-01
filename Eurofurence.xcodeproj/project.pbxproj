@@ -333,7 +333,6 @@
 		CA17FE8720580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8620580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift */; };
 		CA17FE8B20585D9C005A4C05 /* LinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8A20585D9C005A4C05 /* LinkTableViewCell.swift */; };
 		CA17FE8E205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8D205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift */; };
-		CA17FE9220586A30005A4C05 /* WikiRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE9120586A30005A4C05 /* WikiRenderer.swift */; };
 		CA17FE9420586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE9320586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift */; };
 		CA1B6F0720DB805300ADF414 /* WhenBuildingDealerDetailModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F0620DB805300ADF414 /* WhenBuildingDealerDetailModule.swift */; };
 		CA1B6F0B20DB816600ADF414 /* DealerDetailSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F0A20DB816600ADF414 /* DealerDetailSceneFactory.swift */; };
@@ -1125,7 +1124,6 @@
 		CAD260A720C03909007E3618 /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD260A620C03909007E3618 /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift */; };
 		CAD260AB20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD260AA20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift */; };
 		CAD260AD20C066B0007E3618 /* WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD260AC20C066B0007E3618 /* WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift */; };
-		CAD3BDAD20586AF600C91E6E /* ConcreteWikiRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDAC20586AF600C91E6E /* ConcreteWikiRenderer.swift */; };
 		CAD3BDAF205870B500C91E6E /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDAE205870B500C91E6E /* Link.swift */; };
 		CAD3BDB12058719300C91E6E /* Link+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */; };
 		CAD3BDB3205874AF00C91E6E /* APILink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB2205874AF00C91E6E /* APILink.swift */; };
@@ -1620,7 +1618,6 @@
 		CA17FE8620580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailContentsTableViewCell.swift; sourceTree = "<group>"; };
 		CA17FE8A20585D9C005A4C05 /* LinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkTableViewCell.swift; sourceTree = "<group>"; };
 		CA17FE8D205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeDetailSceneInteractorTests.swift; sourceTree = "<group>"; };
-		CA17FE9120586A30005A4C05 /* WikiRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiRenderer.swift; sourceTree = "<group>"; };
 		CA17FE9320586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
 		CA1B6F0620DB805300ADF414 /* WhenBuildingDealerDetailModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingDealerDetailModule.swift; sourceTree = "<group>"; };
 		CA1B6F0A20DB816600ADF414 /* DealerDetailSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailSceneFactory.swift; sourceTree = "<group>"; };
@@ -2415,7 +2412,6 @@
 		CAD260A620C03909007E3618 /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAD260AA20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAD260AC20C066B0007E3618 /* WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
-		CAD3BDAC20586AF600C91E6E /* ConcreteWikiRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteWikiRenderer.swift; sourceTree = "<group>"; };
 		CAD3BDAE205870B500C91E6E /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Link+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAD3BDB2205874AF00C91E6E /* APILink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILink.swift; sourceTree = "<group>"; };
@@ -3671,9 +3667,7 @@
 				CA17FE772056B1B4005A4C05 /* KnowledgeDetailSceneInteractor.swift */,
 				CA17FE7C2057FCCB005A4C05 /* KnowledgeEntryDetailViewModel.swift */,
 				CA17FE82205800A7005A4C05 /* LinkViewModel.swift */,
-				CA17FE9120586A30005A4C05 /* WikiRenderer.swift */,
 				CA17FE9320586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift */,
-				CAD3BDAC20586AF600C91E6E /* ConcreteWikiRenderer.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -6986,10 +6980,8 @@
 				CA6A8DB020E2CF97007536CD /* DefaultMapsInteractor.swift in Sources */,
 				CA2761B220E0234C000E52AC /* StoryboardCollectThemAllSceneFactory.swift in Sources */,
 				CA36A4D620DAE2C000EE6537 /* DealersModuleDelegate.swift in Sources */,
-				CA17FE9220586A30005A4C05 /* WikiRenderer.swift in Sources */,
 				CA00AE8720D28A8B00C2FBB0 /* ShortFormDateFormatter.swift in Sources */,
 				CA8D97CF201611430074838F /* EventBus.swift in Sources */,
-				CAD3BDAD20586AF600C91E6E /* ConcreteWikiRenderer.swift in Sources */,
 				CA6A8DEC20E41F85007536CD /* MapDetailPresenter.swift in Sources */,
 				CA36A48720D9260000EE6537 /* DealerGroupHeader.swift in Sources */,
 				CAF5979A20449A1D00089BE8 /* APIKnowledgeEntry.swift in Sources */,
