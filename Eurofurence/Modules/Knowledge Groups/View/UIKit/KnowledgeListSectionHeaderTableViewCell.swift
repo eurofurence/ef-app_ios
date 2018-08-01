@@ -13,6 +13,7 @@ class KnowledgeListSectionHeaderTableViewCell: UITableViewCell, KnowledgeGroupSc
     // MARK: IBOutlets
 
     @IBOutlet weak var knowledgeGroupTitleLabel: UILabel!
+    @IBOutlet weak var fontAwesomeCharacterLabel: UILabel!
     @IBOutlet weak var knowledgeGroupDescriptionLabel: UILabel!
 
     // MARK: KnowledgeGroupHeaderScene
@@ -22,7 +23,7 @@ class KnowledgeListSectionHeaderTableViewCell: UITableViewCell, KnowledgeGroupSc
     }
 
     func setKnowledgeGroupFontAwesomeCharacter(_ character: Character) {
-
+        fontAwesomeCharacterLabel.text = String(character)
     }
 
     func setKnowledgeGroupDescription(_ groupDescription: String) {
