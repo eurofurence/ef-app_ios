@@ -333,7 +333,6 @@
 		CA17FE8720580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8620580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift */; };
 		CA17FE8B20585D9C005A4C05 /* LinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8A20585D9C005A4C05 /* LinkTableViewCell.swift */; };
 		CA17FE8E205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8D205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift */; };
-		CA17FE9020586A15005A4C05 /* StubWikiRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8F20586A15005A4C05 /* StubWikiRenderer.swift */; };
 		CA17FE9220586A30005A4C05 /* WikiRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE9120586A30005A4C05 /* WikiRenderer.swift */; };
 		CA17FE9420586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE9320586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift */; };
 		CA1B6F0720DB805300ADF414 /* WhenBuildingDealerDetailModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F0620DB805300ADF414 /* WhenBuildingDealerDetailModule.swift */; };
@@ -1621,7 +1620,6 @@
 		CA17FE8620580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailContentsTableViewCell.swift; sourceTree = "<group>"; };
 		CA17FE8A20585D9C005A4C05 /* LinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkTableViewCell.swift; sourceTree = "<group>"; };
 		CA17FE8D205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeDetailSceneInteractorTests.swift; sourceTree = "<group>"; };
-		CA17FE8F20586A15005A4C05 /* StubWikiRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubWikiRenderer.swift; sourceTree = "<group>"; };
 		CA17FE9120586A30005A4C05 /* WikiRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiRenderer.swift; sourceTree = "<group>"; };
 		CA17FE9320586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
 		CA1B6F0620DB805300ADF414 /* WhenBuildingDealerDetailModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingDealerDetailModule.swift; sourceTree = "<group>"; };
@@ -5075,7 +5073,6 @@
 				CA6EC4832051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift */,
 				CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */,
 				CA17FE7E2058006F005A4C05 /* CapturingLinkScene.swift */,
-				CA17FE8F20586A15005A4C05 /* StubWikiRenderer.swift */,
 				CAD3BDBA205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift */,
 			);
 			path = "Test Doubles";
@@ -7623,7 +7620,6 @@
 				CA250DD420D6E28B00E7513C /* WhenBindingEventFromSearchResult_SchedulePresenterShould.swift in Sources */,
 				CA1B6F2620DB887100ADF414 /* FakeDealerDetailViewModel.swift in Sources */,
 				7820A6E51F140056004C0FB5 /* CapturingAlertRouter.swift in Sources */,
-				CA17FE9020586A15005A4C05 /* StubWikiRenderer.swift in Sources */,
 				CA8276B0204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift in Sources */,
 				CAC2337E20FF7F5E00E73486 /* WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould.swift in Sources */,
 				CA2761C420E02D74000E52AC /* WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould.swift in Sources */,
