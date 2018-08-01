@@ -14,24 +14,7 @@ class WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh: XCTestCase {
     func testEntriesAreConsolidatedByGroupIdentifierInGroupOrder() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
-        var expected = syncResponse.knowledgeGroups.changed.map { (group) -> KnowledgeGroup2 in
-            let entries = syncResponse.knowledgeEntries.changed.filter({ $0.groupIdentifier == group.identifier }).map { (entry) in
-                return KnowledgeEntry2(identifier: KnowledgeEntry2.Identifier(entry.identifier),
-                                       title: entry.title,
-                                       order: entry.order,
-                                       contents: entry.text,
-                                       links: entry.links.map({ return Link(name: $0.name, type: Link.Kind(rawValue: $0.fragmentType.rawValue)!, contents: $0.target) }).sorted(by: { $0.name < $1.name }))
-            }.sorted(by: { $0.order < $1.order })
-            
-            return KnowledgeGroup2(identifier: KnowledgeGroup2.Identifier(group.identifier),
-                                   title: group.groupName,
-                                   groupDescription: group.groupDescription,
-                                   fontAwesomeCharacterAddress: " ",
-                                   order: group.order,
-                                   entries: entries)
-        }
-        
-        expected.sort(by: { $0.order < $1.order })
+        let expected = context.expectedKnowledgeGroups(from: syncResponse)
         
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(syncResponse)
