@@ -17,6 +17,7 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var favouritedImageView: UIImageView!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var superSponsorEventIndicator: UIView!
 
     // MARK: Overrides
 

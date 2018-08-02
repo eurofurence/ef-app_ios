@@ -19,11 +19,11 @@ extension EventTableViewCell: ScheduleEventComponent {
     }
 
     func showSuperSponsorOnlyEventIndicator() {
-
+        superSponsorEventIndicator.isHidden = false
     }
 
     func hideSuperSponsorOnlyEventIndicator() {
-
+        superSponsorEventIndicator.isHidden = true
     }
 
 }

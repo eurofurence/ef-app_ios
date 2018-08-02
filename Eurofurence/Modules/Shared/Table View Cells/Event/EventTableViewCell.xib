@@ -10,6 +10,11 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="fontawesome-webfont.ttf">
+            <string>FontAwesome</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -35,24 +40,35 @@
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Unfavourite" translatesAutoresizingMaskIntoConstraints="NO" id="qOT-qt-l86">
-                                <rect key="frame" x="20" y="21" width="16" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="qOT-qt-l86" secondAttribute="height" multiplier="1:1" id="PXa-rJ-sjv"/>
-                                    <constraint firstAttribute="width" constant="16" id="gIX-nw-07a"/>
-                                </constraints>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="OtJ-2c-b0V">
+                                <rect key="frame" x="20" y="22" width="16" height="36"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Unfavourite" translatesAutoresizingMaskIntoConstraints="NO" id="qOT-qt-l86">
+                                        <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="qOT-qt-l86" secondAttribute="height" multiplier="1:1" id="PXa-rJ-sjv"/>
+                                            <constraint firstAttribute="width" constant="16" id="gIX-nw-07a"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRM-iE-ADK">
+                                        <rect key="frame" x="0.0" y="19" width="16" height="17"/>
+                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
+                                        <color key="textColor" red="0.97772413489999999" green="0.86473608020000003" blue="0.40772730109999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="9ez-aA-Obc" firstAttribute="leading" secondItem="qOT-qt-l86" secondAttribute="trailing" constant="8" id="3m1-Ov-s4w"/>
                             <constraint firstItem="9ez-aA-Obc" firstAttribute="top" secondItem="eAF-SI-2EK" secondAttribute="top" constant="20" symbolic="YES" id="7av-ZM-IsJ"/>
                             <constraint firstAttribute="trailing" secondItem="KlD-aa-FfM" secondAttribute="trailing" constant="20" symbolic="YES" id="MOz-GI-mBo"/>
                             <constraint firstItem="KlD-aa-FfM" firstAttribute="leading" secondItem="9ez-aA-Obc" secondAttribute="leading" id="R5c-sr-PCi"/>
+                            <constraint firstItem="OtJ-2c-b0V" firstAttribute="leading" secondItem="eAF-SI-2EK" secondAttribute="leading" constant="20" symbolic="YES" id="YbO-Ro-tNh"/>
                             <constraint firstAttribute="trailing" secondItem="9ez-aA-Obc" secondAttribute="trailing" constant="20" symbolic="YES" id="c2j-4Q-mE1"/>
-                            <constraint firstItem="qOT-qt-l86" firstAttribute="leading" secondItem="eAF-SI-2EK" secondAttribute="leading" constant="20" symbolic="YES" id="fMw-rL-WGf"/>
                             <constraint firstItem="KlD-aa-FfM" firstAttribute="top" secondItem="9ez-aA-Obc" secondAttribute="bottom" constant="8" symbolType="layoutAnchor" id="i0G-aZ-veM"/>
                             <constraint firstAttribute="bottom" secondItem="KlD-aa-FfM" secondAttribute="bottom" constant="20" symbolic="YES" id="qIl-EY-2HC"/>
+                            <constraint firstItem="9ez-aA-Obc" firstAttribute="leading" secondItem="OtJ-2c-b0V" secondAttribute="trailing" constant="8" id="wyx-Mw-Pp3"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zUw-Cz-UWR">
@@ -85,7 +101,7 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="eAF-SI-2EK" secondAttribute="bottom" id="0jQ-wx-NOb"/>
                     <constraint firstItem="zUw-Cz-UWR" firstAttribute="leading" secondItem="PcW-bI-OhX" secondAttribute="leading" id="MaW-el-czk"/>
-                    <constraint firstItem="qOT-qt-l86" firstAttribute="centerY" secondItem="aLD-uI-rra" secondAttribute="centerY" id="lRG-1k-d32"/>
+                    <constraint firstItem="qOT-qt-l86" firstAttribute="centerY" secondItem="aLD-uI-rra" secondAttribute="centerY" id="igu-FJ-w9c"/>
                     <constraint firstItem="zUw-Cz-UWR" firstAttribute="top" secondItem="PcW-bI-OhX" secondAttribute="top" id="lbD-rp-2No"/>
                     <constraint firstAttribute="bottom" secondItem="zUw-Cz-UWR" secondAttribute="bottom" id="lq2-ug-JoI"/>
                     <constraint firstAttribute="trailing" secondItem="eAF-SI-2EK" secondAttribute="trailing" id="meQ-Oe-Q0y"/>
@@ -99,6 +115,7 @@
                 <outlet property="favouritedImageView" destination="qOT-qt-l86" id="FDk-Ux-DqW"/>
                 <outlet property="locationLabel" destination="KlD-aa-FfM" id="RKl-P9-XT6"/>
                 <outlet property="startTimeLabel" destination="aLD-uI-rra" id="Id3-Mt-TEa"/>
+                <outlet property="superSponsorEventIndicator" destination="pRM-iE-ADK" id="lac-ib-aoS"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="-132.5"/>
         </tableViewCell>
