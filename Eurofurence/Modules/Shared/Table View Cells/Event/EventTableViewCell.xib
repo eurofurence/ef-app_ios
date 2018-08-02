@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,47 +29,44 @@
                         <rect key="frame" x="94" y="0.0" width="247" height="108.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="Event Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ez-aA-Obc">
-                                <rect key="frame" x="32" y="20" width="195" height="19.5"/>
+                                <rect key="frame" x="38" y="20" width="189" height="19.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Event Location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KlD-aa-FfM">
-                                <rect key="frame" x="32" y="47.5" width="195" height="41"/>
+                                <rect key="frame" x="38" y="47.5" width="189" height="41"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="OtJ-2c-b0V">
-                                <rect key="frame" x="8" y="22" width="16" height="56"/>
+                                <rect key="frame" x="8" y="20" width="22" height="71"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Unfavourite" translatesAutoresizingMaskIntoConstraints="NO" id="qOT-qt-l86">
-                                        <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="qOT-qt-l86" secondAttribute="height" multiplier="1:1" id="PXa-rJ-sjv"/>
-                                            <constraint firstAttribute="width" constant="16" id="gIX-nw-07a"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="0.0" width="22" height="21"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJw-lJ-1Nj">
-                                        <rect key="frame" x="0.0" y="19" width="16" height="17"/>
-                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJw-lJ-1Nj">
+                                        <rect key="frame" x="0.0" y="24" width="22" height="22"/>
+                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="22"/>
                                         <color key="textColor" red="0.97772413489999999" green="0.86473608020000003" blue="0.40772730109999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRM-iE-ADK">
-                                        <rect key="frame" x="0.0" y="39" width="16" height="17"/>
-                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRM-iE-ADK">
+                                        <rect key="frame" x="0.0" y="49" width="22" height="22"/>
+                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="22"/>
                                         <color key="textColor" red="0.97772413489999999" green="0.86473608020000003" blue="0.40772730109999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="16" id="aam-WJ-kWh"/>
+                                    <constraint firstAttribute="width" constant="22" id="aam-WJ-kWh"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="OtJ-2c-b0V" firstAttribute="top" secondItem="9ez-aA-Obc" secondAttribute="top" id="472-IT-PQe"/>
                             <constraint firstItem="9ez-aA-Obc" firstAttribute="top" secondItem="eAF-SI-2EK" secondAttribute="top" constant="20" symbolic="YES" id="7av-ZM-IsJ"/>
                             <constraint firstAttribute="trailing" secondItem="KlD-aa-FfM" secondAttribute="trailing" constant="20" symbolic="YES" id="MOz-GI-mBo"/>
                             <constraint firstItem="OtJ-2c-b0V" firstAttribute="leading" secondItem="eAF-SI-2EK" secondAttribute="leadingMargin" id="YbO-Ro-tNh"/>
@@ -111,7 +107,6 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="eAF-SI-2EK" secondAttribute="bottom" id="0jQ-wx-NOb"/>
                     <constraint firstItem="zUw-Cz-UWR" firstAttribute="leading" secondItem="PcW-bI-OhX" secondAttribute="leading" id="MaW-el-czk"/>
-                    <constraint firstItem="qOT-qt-l86" firstAttribute="centerY" secondItem="aLD-uI-rra" secondAttribute="centerY" id="igu-FJ-w9c"/>
                     <constraint firstItem="zUw-Cz-UWR" firstAttribute="top" secondItem="PcW-bI-OhX" secondAttribute="top" id="lbD-rp-2No"/>
                     <constraint firstAttribute="bottom" secondItem="zUw-Cz-UWR" secondAttribute="bottom" id="lq2-ug-JoI"/>
                     <constraint firstAttribute="trailing" secondItem="eAF-SI-2EK" secondAttribute="trailing" id="meQ-Oe-Q0y"/>
