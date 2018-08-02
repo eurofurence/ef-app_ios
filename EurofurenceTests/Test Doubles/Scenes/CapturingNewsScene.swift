@@ -62,8 +62,8 @@ class StubNewsComponentFactory: NewsComponentFactory {
         return stubbedAllAnnouncementsComponent
     }
     
-    let stubbedEventComponent = CapturingNewsEventComponent()
-    func makeEventComponent(configuringUsing block: (NewsEventComponent) -> Void) -> AnyObject {
+    let stubbedEventComponent = CapturingScheduleEventComponent()
+    func makeEventComponent(configuringUsing block: (ScheduleEventComponent) -> Void) -> AnyObject {
         block(stubbedEventComponent)
         return stubbedEventComponent
     }
@@ -193,7 +193,7 @@ extension CapturingNewsScene {
         return componentFactory.stubbedAllAnnouncementsComponent
     }
     
-    var stubbedEventComponent: CapturingNewsEventComponent {
+    var stubbedEventComponent: CapturingScheduleEventComponent {
         return componentFactory.stubbedEventComponent
     }
     

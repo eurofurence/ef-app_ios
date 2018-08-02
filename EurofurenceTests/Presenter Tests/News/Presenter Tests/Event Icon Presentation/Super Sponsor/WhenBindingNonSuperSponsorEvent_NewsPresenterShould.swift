@@ -21,7 +21,7 @@ class WhenBindingNonSuperSponsorEvent_NewsPresenterShould: XCTestCase {
         context.simulateNewsSceneDidLoad()
         context.bindSceneComponent(at: indexPath)
         
-        XCTAssertFalse(context.newsScene.stubbedEventComponent.didShowSuperSponsorIndicator)
+        XCTAssertFalse(context.newsScene.stubbedEventComponent.didShowSuperSponsorOnlyEventIndicator)
     }
     
     func testHideTheSuperSponsorOnlyIndicator() {
@@ -34,7 +34,7 @@ class WhenBindingNonSuperSponsorEvent_NewsPresenterShould: XCTestCase {
         context.simulateNewsSceneDidLoad()
         context.bindSceneComponent(at: indexPath)
         
-        XCTAssertTrue(context.newsScene.stubbedEventComponent.didHideSuperSponsorIndicator)
+        XCTAssertTrue(context.newsScene.stubbedEventComponent.didHideSuperSponsorOnlyEventIndicator)
     }
     
 }
