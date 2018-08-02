@@ -1,5 +1,5 @@
 //
-//  InOrderToSupportSponsorTag_ApplicationShould.swift
+//  InOrderToSupportSuperSponsorTag_ApplicationShould.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 02/08/2018.
@@ -9,13 +9,13 @@
 @testable import Eurofurence
 import XCTest
 
-class InOrderToSupportSponsorTag_ApplicationShould: XCTestCase {
+class InOrderToSupportSuperSponsorTag_ApplicationShould: XCTestCase {
     
-    func testIndicateItIsSponsorEventWhenTagPresent() {
+    func testIndicateItIsSuperSponsorEventWhenTagPresent() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
         var event = randomEvent.element
-        event.tags = ["sponsors_only"]
+        event.tags = ["supersponsors_only"]
         syncResponse.events.changed = [event]
         let context = ApplicationTestBuilder().build()
         context.refreshLocalStore()
@@ -24,10 +24,10 @@ class InOrderToSupportSponsorTag_ApplicationShould: XCTestCase {
         context.application.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first
         
-        XCTAssertEqual(true, observedEvent?.isSponsorOnly)
+        XCTAssertEqual(true, observedEvent?.isSuperSponsorOnly)
     }
     
-    func testNotIndicateItIsSponsorEventWhenTagNotPresent() {
+    func testNotIndicateItIsSponsorEventWhenTagotPresent() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let randomEvent = syncResponse.events.changed.randomElement()
         var event = randomEvent.element
@@ -40,7 +40,7 @@ class InOrderToSupportSponsorTag_ApplicationShould: XCTestCase {
         context.application.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first
         
-        XCTAssertEqual(false, observedEvent?.isSponsorOnly)
+        XCTAssertEqual(false, observedEvent?.isSuperSponsorOnly)
     }
     
 }

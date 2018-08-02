@@ -417,6 +417,7 @@
 		CA27258821139D21004C6D0A /* WhenBindingSponsorEvent_ForSearchResult_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27258721139D21004C6D0A /* WhenBindingSponsorEvent_ForSearchResult_SchedulePresenterShould.swift */; };
 		CA27258A21139DA4004C6D0A /* WhenBindingNonSponsorEvent_ForSearchResult_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27258921139DA4004C6D0A /* WhenBindingNonSponsorEvent_ForSearchResult_SchedulePresenterShould.swift */; };
 		CA27258D2113B1F4004C6D0A /* InOrderToSupportSponsorTag_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27258C2113B1F4004C6D0A /* InOrderToSupportSponsorTag_ApplicationShould.swift */; };
+		CA27258F2113B665004C6D0A /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27258E2113B665004C6D0A /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift */; };
 		CA27618220DF932C000E52AC /* AspectRatioConstrainedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */; };
 		CA27618420DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618320DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift */; };
 		CA27618620DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */; };
@@ -1719,6 +1720,7 @@
 		CA27258721139D21004C6D0A /* WhenBindingSponsorEvent_ForSearchResult_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingSponsorEvent_ForSearchResult_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA27258921139DA4004C6D0A /* WhenBindingNonSponsorEvent_ForSearchResult_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingNonSponsorEvent_ForSearchResult_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA27258C2113B1F4004C6D0A /* InOrderToSupportSponsorTag_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOrderToSupportSponsorTag_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA27258E2113B665004C6D0A /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOrderToSupportSuperSponsorTag_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioConstrainedImageView.swift; sourceTree = "<group>"; };
 		CA27618320DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -3908,6 +3910,7 @@
 			isa = PBXGroup;
 			children = (
 				CA27258C2113B1F4004C6D0A /* InOrderToSupportSponsorTag_ApplicationShould.swift */,
+				CA27258E2113B665004C6D0A /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift */,
 			);
 			path = "Tag Adaption";
 			sourceTree = "<group>";
@@ -7660,6 +7663,7 @@
 				CA283A8A20E96E6500F7D195 /* WhenOpeningAnnouncement_ApplicationShould.swift in Sources */,
 				CA6EC4842051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift in Sources */,
 				CA00AE5E20D173C000C2FBB0 /* WhenBindingEvent_SchedulePresenterShould.swift in Sources */,
+				CA27258F2113B665004C6D0A /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift in Sources */,
 				CA162EAC20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift in Sources */,
 				CA2D08061FE94BF000BFD785 /* RootModuleTestBuilder.swift in Sources */,
 				CA52C67720D590BF009D3A9E /* WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould.swift in Sources */,
