@@ -18,4 +18,8 @@ extension EventTableViewCell: ScheduleEventComponent {
         favouritedImageView.isHidden = true
     }
 
+    func showSuperSponsorOnlyEventIndicator() {
+
+    }
+
 }

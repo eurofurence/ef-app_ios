@@ -16,5 +16,6 @@ protocol ScheduleEventComponent {
     func setLocation(_ location: String)
     func showFavouriteEventIndicator()
     func hideFavouriteEventIndicator()
+    func showSuperSponsorOnlyEventIndicator()
 
 }
