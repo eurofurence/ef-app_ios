@@ -295,7 +295,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
                                            endTime: context.hoursDateFormatter.hoursString(from: event.endDate),
                                            eventName: event.title,
                                            location: event.room.name,
-                                           icon: nil,
+                                           isSuperSponsorEvent: false,
                                            isFavourite: false)
         }
         
@@ -305,7 +305,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
                                            endTime: context.hoursDateFormatter.hoursString(from: event.endDate),
                                            eventName: event.title,
                                            location: event.room.name,
-                                           icon: nil,
+                                           isSuperSponsorEvent: false,
                                            isFavourite: false)
         }
         
@@ -315,7 +315,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
                                            endTime: context.hoursDateFormatter.hoursString(from: event.endDate),
                                            eventName: event.title,
                                            location: event.room.name,
-                                           icon: nil,
+                                           isSuperSponsorEvent: false,
                                            isFavourite: isFavourite)
         }
         

@@ -83,26 +83,8 @@ struct EventComponentViewModel: Hashable {
     var endTime: String
     var eventName: String
     var location: String
-    var icon: UIImage?
+    var isSuperSponsorEvent: Bool
     var isFavourite: Bool
-
-    var hashValue: Int {
-        var iconHash = Int(arc4random())
-        if let icon = icon {
-            iconHash = icon.hashValue
-        }
-
-        return startTime.hashValue ^ endTime.hashValue ^ eventName.hashValue ^ location.hashValue ^ iconHash ^ isFavourite.hashValue
-    }
-
-    static func ==(lhs: EventComponentViewModel, rhs: EventComponentViewModel) -> Bool {
-        return lhs.startTime == rhs.startTime &&
-               lhs.endTime == rhs.endTime &&
-               lhs.eventName == rhs.eventName &&
-               lhs.location == rhs.location &&
-               lhs.icon == rhs.icon &&
-               lhs.isFavourite == rhs.isFavourite
-    }
 
 }
 

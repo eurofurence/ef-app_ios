@@ -26,8 +26,4 @@ extension EventTableViewCell: NewsEventComponent {
         locationLabel.text = location
     }
 
-    func setIcon(_ icon: UIImage?) {
-
-    }
-
 }

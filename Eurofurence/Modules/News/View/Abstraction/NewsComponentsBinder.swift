@@ -7,7 +7,6 @@
 //
 
 import Foundation.NSIndexPath
-import UIKit.UIImage
 
 protocol NewsComponentsBinder {
 
@@ -57,8 +56,8 @@ protocol NewsEventComponent {
     func setEventEndTime(_ endTime: String)
     func setEventName(_ eventName: String)
     func setLocation(_ location: String)
-    func setIcon(_ icon: UIImage?)
     func showFavouriteEventIndicator()
     func hideFavouriteEventIndicator()
+    func showSuperSponsorOnlyEventIndicator()
 
 }

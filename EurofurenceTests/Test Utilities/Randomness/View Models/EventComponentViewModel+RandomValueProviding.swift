@@ -7,12 +7,16 @@
 //
 
 @testable import Eurofurence
-import UIKit.UIImage
 
 extension EventComponentViewModel: RandomValueProviding {
     
     static var random: EventComponentViewModel {
-        return EventComponentViewModel(startTime: .random, endTime: .random, eventName: .random, location: .random, icon: UIImage(), isFavourite: .random)
+        return EventComponentViewModel(startTime: .random,
+                                       endTime: .random,
+                                       eventName: .random,
+                                       location: .random,
+                                       isSuperSponsorEvent: .random,
+                                       isFavourite: .random)
     }
     
 }
