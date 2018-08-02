@@ -416,6 +416,7 @@
 		CA27258621139B57004C6D0A /* WhenBindingNonSponsorEvent_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27258521139B57004C6D0A /* WhenBindingNonSponsorEvent_SchedulePresenterShould.swift */; };
 		CA27258821139D21004C6D0A /* WhenBindingSponsorEvent_ForSearchResult_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27258721139D21004C6D0A /* WhenBindingSponsorEvent_ForSearchResult_SchedulePresenterShould.swift */; };
 		CA27258A21139DA4004C6D0A /* WhenBindingNonSponsorEvent_ForSearchResult_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27258921139DA4004C6D0A /* WhenBindingNonSponsorEvent_ForSearchResult_SchedulePresenterShould.swift */; };
+		CA27258D2113B1F4004C6D0A /* InOrderToSponsorTag_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27258C2113B1F4004C6D0A /* InOrderToSponsorTag_ApplicationShould.swift */; };
 		CA27618220DF932C000E52AC /* AspectRatioConstrainedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */; };
 		CA27618420DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618320DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift */; };
 		CA27618620DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */; };
@@ -1717,6 +1718,7 @@
 		CA27258521139B57004C6D0A /* WhenBindingNonSponsorEvent_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingNonSponsorEvent_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA27258721139D21004C6D0A /* WhenBindingSponsorEvent_ForSearchResult_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingSponsorEvent_ForSearchResult_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA27258921139DA4004C6D0A /* WhenBindingNonSponsorEvent_ForSearchResult_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingNonSponsorEvent_ForSearchResult_SchedulePresenterShould.swift; sourceTree = "<group>"; };
+		CA27258C2113B1F4004C6D0A /* InOrderToSponsorTag_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOrderToSponsorTag_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioConstrainedImageView.swift; sourceTree = "<group>"; };
 		CA27618320DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -3633,12 +3635,13 @@
 				CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */,
 				CA52C68620D6A671009D3A9E /* WhenResolvingEventByIdentifier_ForEventThatDoesNotExist_ApplicationShould.swift */,
 				CA52C68820D6A756009D3A9E /* WhenResolvingEventByIdentifier_ForEventThatExists_ApplicationShould.swift */,
-				CA36A44020D7020900EE6537 /* WhenSearchingForEvents_BeforeAnyAreAvailable_ApplicationShould.swift */,
 				CA36A44620D7065800EE6537 /* WhenSearchingForEvents_ApplicationShould.swift */,
+				CA36A44020D7020900EE6537 /* WhenSearchingForEvents_BeforeAnyAreAvailable_ApplicationShould.swift */,
 				CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */,
 				CACF1EBF20B60D2B00D904B5 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift */,
 				CABA83FD20CEF88800DD0795 /* Favourites */,
 				CA162EB020AA2DC9004AFED6 /* Running */,
+				CA27258B2113B1E3004C6D0A /* Tag Adaption */,
 				CA3990F020ACD693001E3F1A /* Upcoming */,
 			);
 			path = Events;
@@ -3899,6 +3902,14 @@
 				CA27258921139DA4004C6D0A /* WhenBindingNonSponsorEvent_ForSearchResult_SchedulePresenterShould.swift */,
 			);
 			path = Sponsor;
+			sourceTree = "<group>";
+		};
+		CA27258B2113B1E3004C6D0A /* Tag Adaption */ = {
+			isa = PBXGroup;
+			children = (
+				CA27258C2113B1F4004C6D0A /* InOrderToSponsorTag_ApplicationShould.swift */,
+			);
+			path = "Tag Adaption";
 			sourceTree = "<group>";
 		};
 		CA27618020DF9315000E52AC /* Views */ = {
@@ -7765,6 +7776,7 @@
 				CA63756C208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift in Sources */,
 				CA162EB220AA2DE0004AFED6 /* WhenObservingRunningEventsBeforeLoadingAnything.swift in Sources */,
 				CA131BD520C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift in Sources */,
+				CA27258D2113B1F4004C6D0A /* InOrderToSponsorTag_ApplicationShould.swift in Sources */,
 				CA36A46D20D84B5600EE6537 /* BeforeDealersSceneLoads_DealersPresenterShould.swift in Sources */,
 				CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */,
 				CA8276BA204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift in Sources */,

@@ -366,6 +366,9 @@ class Schedule {
             bannerGraphicData = imageCache.cachedImageData(for: bannerImageIdentifier)
         }
 
+        let tags = event.tags
+        let containsTag: (String) -> Bool = { tags?.contains($0) ?? false }
+
         return Event2(identifier: Event2.Identifier(event.identifier),
                       title: event.title,
                       abstract: event.abstract,
@@ -377,7 +380,7 @@ class Schedule {
                       eventDescription: event.eventDescription,
                       posterGraphicPNGData: posterGraphicData,
                       bannerGraphicPNGData: bannerGraphicData,
-                      isSponsorOnly: false,
+                      isSponsorOnly: containsTag("sponsors_only"),
                       isSuperSponsorOnly: false)
     }
 
