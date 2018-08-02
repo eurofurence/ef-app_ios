@@ -3803,6 +3803,35 @@
 			path = Director;
 			sourceTree = "<group>";
 		};
+		CA27256921132755004C6D0A /* Icon Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				CA27256B21132778004C6D0A /* List */,
+				CA27256A21132771004C6D0A /* Search */,
+			);
+			path = "Icon Presentation";
+			sourceTree = "<group>";
+		};
+		CA27256A21132771004C6D0A /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				CA283AE320EC178600F7D195 /* WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift */,
+				CA283AE520EC188E00F7D195 /* WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		CA27256B21132778004C6D0A /* List */ = {
+			isa = PBXGroup;
+			children = (
+				CA283ADD20EC00F100F7D195 /* WhenBindingFavouriteEvent_SchedulePresenterShould.swift */,
+				CA283ADF20EC032B00F7D195 /* WhenBindingNonFavouriteEvent_SchedulePresenterShould.swift */,
+				CA27256521132287004C6D0A /* WhenBindingNonSuperSponsorOnlyEvent_SchedulePresenterShould.swift */,
+				CA27256321132032004C6D0A /* WhenBindingSuperSponsorOnlyEvent_SchedulePresenterShould.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
 		CA27618020DF9315000E52AC /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -4457,13 +4486,7 @@
 				CA00AE5D20D173C000C2FBB0 /* WhenBindingEvent_SchedulePresenterShould.swift */,
 				CA250DD320D6E28B00E7513C /* WhenBindingEventFromSearchResult_SchedulePresenterShould.swift */,
 				CA00AE5520D1710300C2FBB0 /* WhenBindingEventGroup_SchedulePresenterShould.swift */,
-				CA283AE320EC178600F7D195 /* WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift */,
-				CA283ADD20EC00F100F7D195 /* WhenBindingFavouriteEvent_SchedulePresenterShould.swift */,
 				CA250DD720D6E4AF00E7513C /* WhenBindingGroupFromSearchResult_SchedulePresenterShould.swift */,
-				CA283AE520EC188E00F7D195 /* WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift */,
-				CA283ADF20EC032B00F7D195 /* WhenBindingNonFavouriteEvent_SchedulePresenterShould.swift */,
-				CA27256521132287004C6D0A /* WhenBindingNonSuperSponsorOnlyEvent_SchedulePresenterShould.swift */,
-				CA27256321132032004C6D0A /* WhenBindingSuperSponsorOnlyEvent_SchedulePresenterShould.swift */,
 				CA63758B208CE06100536BE2 /* WhenBuildingScheduleModule.swift */,
 				CA283A7920E91A7900F7D195 /* WhenInstigatingPullToRefreshAction_SchedulePresenterShould.swift */,
 				CACF26CE20FE590600EDE150 /* WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould.swift */,
@@ -4477,6 +4500,7 @@
 				CA08158820D448DC00F750D4 /* WhenScheduleSceneSelectsDay_SchedulePresenterShould.swift */,
 				CA283AEF20ED67D600F7D195 /* WhenScheduleSceneSelectsFavouritesOption_SchedulePresenterShould.swift */,
 				CA250DD120D6D63600E7513C /* WhenSearchableViewModelProducesNewResult_SchedulePresenterShould.swift */,
+				CA27256921132755004C6D0A /* Icon Presentation */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
