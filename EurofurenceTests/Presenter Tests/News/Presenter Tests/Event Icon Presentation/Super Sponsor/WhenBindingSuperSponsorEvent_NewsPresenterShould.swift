@@ -14,27 +14,17 @@ class WhenBindingSuperSponsorEvent_NewsPresenterShould: XCTestCase {
     func testShowTheSuperSponsorOnlyIndicator() {
         var eventViewModel: EventComponentViewModel = .random
         eventViewModel.isSuperSponsorEvent = true
-        let viewModel = SingleEventNewsViewModel(event: eventViewModel)
-        let indexPath = IndexPath(item: 0, section: 0)
-        let newsInteractor = StubNewsInteractor(viewModel: viewModel)
-        let context = NewsPresenterTestBuilder().with(newsInteractor).build()
-        context.simulateNewsSceneDidLoad()
-        context.bindSceneComponent(at: indexPath)
+        let component = NewsPresenterTestBuilder.buildForAssertingAgainstEventComponent(eventViewModel: eventViewModel)
         
-        XCTAssertTrue(context.newsScene.stubbedEventComponent.didShowSuperSponsorOnlyEventIndicator)
+        XCTAssertTrue(component.didShowSuperSponsorOnlyEventIndicator)
     }
     
     func testNotHideTheSuperSponsorOnlyIndicator() {
         var eventViewModel: EventComponentViewModel = .random
         eventViewModel.isSuperSponsorEvent = true
-        let viewModel = SingleEventNewsViewModel(event: eventViewModel)
-        let indexPath = IndexPath(item: 0, section: 0)
-        let newsInteractor = StubNewsInteractor(viewModel: viewModel)
-        let context = NewsPresenterTestBuilder().with(newsInteractor).build()
-        context.simulateNewsSceneDidLoad()
-        context.bindSceneComponent(at: indexPath)
+        let component = NewsPresenterTestBuilder.buildForAssertingAgainstEventComponent(eventViewModel: eventViewModel)
         
-        XCTAssertFalse(context.newsScene.stubbedEventComponent.didHideSuperSponsorOnlyEventIndicator)
+        XCTAssertFalse(component.didHideSuperSponsorOnlyEventIndicator)
     }
     
 }

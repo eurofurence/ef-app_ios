@@ -90,6 +90,12 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
                 component.setEventName(event.eventName)
                 component.setLocation(event.location)
 
+                if event.isSponsorEvent {
+                    component.showSponsorEventIndicator()
+                } else {
+                    component.hideSponsorEventIndicator()
+                }
+
                 if event.isSuperSponsorEvent {
                     component.showSuperSponsorOnlyEventIndicator()
                 } else {

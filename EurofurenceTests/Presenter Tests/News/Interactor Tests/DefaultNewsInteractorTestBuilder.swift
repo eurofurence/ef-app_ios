@@ -291,30 +291,35 @@ extension DefaultNewsInteractorTestBuilder.Context {
         }
         
         private func makeExpectedEventViewModelForRunningEvent(from event: Event2) -> AnyHashable {
-            return EventComponentViewModel(startTime: .now,
-                                           endTime: context.hoursDateFormatter.hoursString(from: event.endDate),
-                                           eventName: event.title,
-                                           location: event.room.name,
-                                           isSuperSponsorEvent: false,
-                                           isFavourite: false)
+            return makeExpectedEventViewModel(event: event,
+                                              startTime: .now,
+                                              endTime: context.hoursDateFormatter.hoursString(from: event.endDate))
         }
         
         private func makeExpectedEventViewModelForUpcomingEvent(from event: Event2) -> AnyHashable {
             let timeDifference = event.startDate.timeIntervalSince1970 - context.clock.currentDate.timeIntervalSince1970
-            return EventComponentViewModel(startTime: context.relativeTimeFormatter.relativeString(from: timeDifference),
-                                           endTime: context.hoursDateFormatter.hoursString(from: event.endDate),
-                                           eventName: event.title,
-                                           location: event.room.name,
-                                           isSuperSponsorEvent: false,
-                                           isFavourite: false)
+            return makeExpectedEventViewModel(event: event,
+                                              startTime: context.relativeTimeFormatter.relativeString(from: timeDifference),
+                                              endTime: context.hoursDateFormatter.hoursString(from: event.endDate))
         }
         
         private func makeExpectedViewModelForFavouriteEvent(from event: Event2) -> AnyHashable {
             let isFavourite = context.eventsService.favourites.contains(event.identifier)
-            return EventComponentViewModel(startTime: context.hoursDateFormatter.hoursString(from: event.startDate),
-                                           endTime: context.hoursDateFormatter.hoursString(from: event.endDate),
+            return makeExpectedEventViewModel(event: event,
+                                              startTime: context.hoursDateFormatter.hoursString(from: event.startDate),
+                                              endTime: context.hoursDateFormatter.hoursString(from: event.endDate),
+                                              isFavourite: isFavourite)
+        }
+        
+        private func makeExpectedEventViewModel(event: Event2,
+                                                startTime: String,
+                                                endTime: String,
+                                                isFavourite: Bool = false) -> AnyHashable {
+            return EventComponentViewModel(startTime: startTime,
+                                           endTime: endTime,
                                            eventName: event.title,
                                            location: event.room.name,
+                                           isSponsorEvent: false,
                                            isSuperSponsorEvent: false,
                                            isFavourite: isFavourite)
         }

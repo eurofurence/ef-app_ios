@@ -15,6 +15,7 @@ extension EventComponentViewModel: RandomValueProviding {
                                        endTime: .random,
                                        eventName: .random,
                                        location: .random,
+                                       isSponsorEvent: .random,
                                        isSuperSponsorEvent: .random,
                                        isFavourite: .random)
     }

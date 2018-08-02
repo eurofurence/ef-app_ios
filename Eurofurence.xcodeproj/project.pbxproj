@@ -410,6 +410,8 @@
 		CA27257321138AFF004C6D0A /* WhenBindingSuperSponsorEvent_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27257221138AFF004C6D0A /* WhenBindingSuperSponsorEvent_NewsPresenterShould.swift */; };
 		CA27257821138D21004C6D0A /* SingleEventNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27257721138D21004C6D0A /* SingleEventNewsViewModel.swift */; };
 		CA27257A21138DC0004C6D0A /* WhenBindingNonSuperSponsorEvent_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27257921138DC0004C6D0A /* WhenBindingNonSuperSponsorEvent_NewsPresenterShould.swift */; };
+		CA27257F211394C4004C6D0A /* WhenBindingSponsorEvent_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27257E211394C4004C6D0A /* WhenBindingSponsorEvent_NewsPresenterShould.swift */; };
+		CA27258121139750004C6D0A /* WhenBindingNonSponsorEvent_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27258021139750004C6D0A /* WhenBindingNonSponsorEvent_NewsPresenterShould.swift */; };
 		CA27618220DF932C000E52AC /* AspectRatioConstrainedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */; };
 		CA27618420DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618320DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift */; };
 		CA27618620DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */; };
@@ -1705,6 +1707,8 @@
 		CA27257221138AFF004C6D0A /* WhenBindingSuperSponsorEvent_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingSuperSponsorEvent_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA27257721138D21004C6D0A /* SingleEventNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleEventNewsViewModel.swift; sourceTree = "<group>"; };
 		CA27257921138DC0004C6D0A /* WhenBindingNonSuperSponsorEvent_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingNonSuperSponsorEvent_NewsPresenterShould.swift; sourceTree = "<group>"; };
+		CA27257E211394C4004C6D0A /* WhenBindingSponsorEvent_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingSponsorEvent_NewsPresenterShould.swift; sourceTree = "<group>"; };
+		CA27258021139750004C6D0A /* WhenBindingNonSponsorEvent_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingNonSponsorEvent_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioConstrainedImageView.swift; sourceTree = "<group>"; };
 		CA27618320DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -3842,9 +3846,10 @@
 		CA27257421138B0A004C6D0A /* Event Icon Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				CA27257521138B18004C6D0A /* Favourites */,
-				CA27257621138B1F004C6D0A /* Super Sponsor */,
 				CA27257721138D21004C6D0A /* SingleEventNewsViewModel.swift */,
+				CA27257521138B18004C6D0A /* Favourites */,
+				CA27257D211394B1004C6D0A /* Sponsor */,
+				CA27257621138B1F004C6D0A /* Super Sponsor */,
 			);
 			path = "Event Icon Presentation";
 			sourceTree = "<group>";
@@ -3865,6 +3870,15 @@
 				CA27257221138AFF004C6D0A /* WhenBindingSuperSponsorEvent_NewsPresenterShould.swift */,
 			);
 			path = "Super Sponsor";
+			sourceTree = "<group>";
+		};
+		CA27257D211394B1004C6D0A /* Sponsor */ = {
+			isa = PBXGroup;
+			children = (
+				CA27258021139750004C6D0A /* WhenBindingNonSponsorEvent_NewsPresenterShould.swift */,
+				CA27257E211394C4004C6D0A /* WhenBindingSponsorEvent_NewsPresenterShould.swift */,
+			);
+			path = Sponsor;
 			sourceTree = "<group>";
 		};
 		CA27618020DF9315000E52AC /* Views */ = {
@@ -7667,6 +7681,7 @@
 				CA36A4DA20DAE4CF00EE6537 /* WhenSceneSelectsSearchResult_DealersPresenterShould.swift in Sources */,
 				CA283AF220ED68BE00F7D195 /* WhenScheduleSceneSelectsAllEventsOption_SchedulePresenterShould.swift in Sources */,
 				CA36A48520D9243E00EE6537 /* WhenBindingDealerGroupHeading_DealersPresenterShould.swift in Sources */,
+				CA27257F211394C4004C6D0A /* WhenBindingSponsorEvent_NewsPresenterShould.swift in Sources */,
 				CACF1EA220B59C3A00D904B5 /* EventDescriptionViewModel+RandomValueProviding.swift in Sources */,
 				781A94381F1A19BD002DE70F /* CapturingFirebaseAdapter.swift in Sources */,
 				CA6A8E0920E57795007536CD /* WhenFetchingMapContentThatRevealsRoom_ApplicationShould.swift in Sources */,
@@ -7834,6 +7849,7 @@
 				CACF1E8C20B351EA00D904B5 /* FakeDateRangeFormatter.swift in Sources */,
 				78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */,
 				CAD6882C208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift in Sources */,
+				CA27258121139750004C6D0A /* WhenBindingNonSponsorEvent_NewsPresenterShould.swift in Sources */,
 				CAC2337A20FF3EC800E73486 /* WhenRemovingFavouritesRestrictionForEvents_ScheduleShould.swift in Sources */,
 				CA36A49120D92EC100EE6537 /* FakeDealersService.swift in Sources */,
 				CA162EA820AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift in Sources */,

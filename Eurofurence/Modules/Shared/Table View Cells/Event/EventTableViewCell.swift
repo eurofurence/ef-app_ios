@@ -52,6 +52,14 @@ class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
         favouritedImageView.isHidden = true
     }
 
+    func showSponsorEventIndicator() {
+
+    }
+
+    func hideSponsorEventIndicator() {
+
+    }
+
     func showSuperSponsorOnlyEventIndicator() {
         superSponsorEventIndicator.isHidden = false
     }
