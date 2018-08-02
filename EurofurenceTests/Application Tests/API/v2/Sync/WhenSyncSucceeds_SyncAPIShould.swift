@@ -131,7 +131,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                panelHosts: "Akulatraxas",
                                                                eventDescription: "NOT FINAL\r\n\r\n\r\nDo you like spending your evening around other artists, drawing and chatting about techniques, supplies and other themes? Then this social event, taking place every evening, is the right place for you to be creative and get to know eachother!\r\n\r\nCome sit with other artists and watch, chat and have a good time together while being productive on your convention commissions. This is the perfect opportunity to use your time effectively, get critique and help on your work and relax from the working day at the Dealers' Den or Artist Alley.\r\n",
                                                                posterImageId: "postertest",
-                                                               bannerImageId: "bannertest")],
+                                                               bannerImageId: "bannertest",
+                                                               tags: ["photoshoot"])],
                                             deleted: ["1452d472-feae-4483-8f55-93c25f7ec920"])
         
         let tracks = APISyncDelta<APITrack>(changed: [APITrack(trackIdentifier: "f92a4fc0-303f-4c13-9194-44121d80bd20",

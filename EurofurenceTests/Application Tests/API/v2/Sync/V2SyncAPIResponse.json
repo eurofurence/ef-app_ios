@@ -24,7 +24,8 @@
                             "PanelHosts": "Akulatraxas",
                             "IsDeviatingFromConBook": false,
                             "BannerImageId": "bannertest",
-                            "PosterImageId": "postertest"
+                            "PosterImageId": "postertest",
+                            "Tags": ["photoshoot"]
                             }],
         "DeletedEntities": ["1452d472-feae-4483-8f55-93c25f7ec920"]
     },

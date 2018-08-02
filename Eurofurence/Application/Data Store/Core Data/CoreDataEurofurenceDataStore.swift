@@ -231,6 +231,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                     entity.eventDescription = event.eventDescription
                     entity.posterImageId = event.posterImageId
                     entity.bannerImageId = event.bannerImageId
+                    entity.tags = event.tags
                 }
             }
         }
