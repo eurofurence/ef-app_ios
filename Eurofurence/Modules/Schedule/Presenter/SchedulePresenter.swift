@@ -90,6 +90,12 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
             eventComponent.setEventEndTime(event.endTime)
             eventComponent.setLocation(event.location)
 
+            if event.isSponsorOnly {
+                eventComponent.showSponsorEventIndicator()
+            } else {
+                eventComponent.hideSponsorEventIndicator()
+            }
+
             if event.isSuperSponsorOnly {
                 eventComponent.showSuperSponsorOnlyEventIndicator()
             } else {
