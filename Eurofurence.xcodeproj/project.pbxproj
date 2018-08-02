@@ -3806,30 +3806,30 @@
 		CA27256921132755004C6D0A /* Icon Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				CA27256B21132778004C6D0A /* List */,
-				CA27256A21132771004C6D0A /* Search */,
+				CA27256D21137E91004C6D0A /* Favourite */,
+				CA27256C21137E82004C6D0A /* Super Sponsor */,
 			);
 			path = "Icon Presentation";
 			sourceTree = "<group>";
 		};
-		CA27256A21132771004C6D0A /* Search */ = {
+		CA27256C21137E82004C6D0A /* Super Sponsor */ = {
 			isa = PBXGroup;
 			children = (
-				CA283AE320EC178600F7D195 /* WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift */,
-				CA283AE520EC188E00F7D195 /* WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift */,
+				CA27256521132287004C6D0A /* WhenBindingNonSuperSponsorOnlyEvent_SchedulePresenterShould.swift */,
+				CA27256321132032004C6D0A /* WhenBindingSuperSponsorOnlyEvent_SchedulePresenterShould.swift */,
 			);
-			path = Search;
+			path = "Super Sponsor";
 			sourceTree = "<group>";
 		};
-		CA27256B21132778004C6D0A /* List */ = {
+		CA27256D21137E91004C6D0A /* Favourite */ = {
 			isa = PBXGroup;
 			children = (
 				CA283ADD20EC00F100F7D195 /* WhenBindingFavouriteEvent_SchedulePresenterShould.swift */,
 				CA283ADF20EC032B00F7D195 /* WhenBindingNonFavouriteEvent_SchedulePresenterShould.swift */,
-				CA27256521132287004C6D0A /* WhenBindingNonSuperSponsorOnlyEvent_SchedulePresenterShould.swift */,
-				CA27256321132032004C6D0A /* WhenBindingSuperSponsorOnlyEvent_SchedulePresenterShould.swift */,
+				CA283AE320EC178600F7D195 /* WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift */,
+				CA283AE520EC188E00F7D195 /* WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift */,
 			);
-			path = List;
+			path = Favourite;
 			sourceTree = "<group>";
 		};
 		CA27618020DF9315000E52AC /* Views */ = {
