@@ -319,8 +319,8 @@ extension DefaultNewsInteractorTestBuilder.Context {
                                            endTime: endTime,
                                            eventName: event.title,
                                            location: event.room.name,
-                                           isSponsorEvent: false,
-                                           isSuperSponsorEvent: false,
+                                           isSponsorEvent: event.isSponsorOnly,
+                                           isSuperSponsorEvent: event.isSuperSponsorOnly,
                                            isFavourite: isFavourite)
         }
         
