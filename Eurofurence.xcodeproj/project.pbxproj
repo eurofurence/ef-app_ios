@@ -214,7 +214,6 @@
 		CA00AE6620D1784500C2FBB0 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE6420D1784500C2FBB0 /* EventTableViewCell.swift */; };
 		CA00AE6720D1784500C2FBB0 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA00AE6520D1784500C2FBB0 /* EventTableViewCell.xib */; };
 		CA00AE6C20D178FA00C2FBB0 /* UITableView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE6B20D178FA00C2FBB0 /* UITableView+Convenience.swift */; };
-		CA00AE6E20D179ED00C2FBB0 /* EventTableViewCell+NewsEventComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE6D20D179ED00C2FBB0 /* EventTableViewCell+NewsEventComponent.swift */; };
 		CA00AE7020D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE6F20D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift */; };
 		CA00AE7320D18D1E00C2FBB0 /* WhenPreparingViewModel_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE7220D18D1E00C2FBB0 /* WhenPreparingViewModel_ScheduleInteractorShould.swift */; };
 		CA00AE7520D1AA0F00C2FBB0 /* DefaultScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE7420D1AA0F00C2FBB0 /* DefaultScheduleInteractor.swift */; };
@@ -1511,7 +1510,6 @@
 		CA00AE6420D1784500C2FBB0 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		CA00AE6520D1784500C2FBB0 /* EventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
 		CA00AE6B20D178FA00C2FBB0 /* UITableView+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Convenience.swift"; sourceTree = "<group>"; };
-		CA00AE6D20D179ED00C2FBB0 /* EventTableViewCell+NewsEventComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventTableViewCell+NewsEventComponent.swift"; sourceTree = "<group>"; };
 		CA00AE6F20D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventTableViewCell+ScheduleEventComponent.swift"; sourceTree = "<group>"; };
 		CA00AE7220D18D1E00C2FBB0 /* WhenPreparingViewModel_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
 		CA00AE7420D1AA0F00C2FBB0 /* DefaultScheduleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultScheduleInteractor.swift; sourceTree = "<group>"; };
@@ -3538,7 +3536,6 @@
 			isa = PBXGroup;
 			children = (
 				CA6AA0171FD8834D0092C6DB /* News.storyboard */,
-				CA00AE6D20D179ED00C2FBB0 /* EventTableViewCell+NewsEventComponent.swift */,
 				CA0E521D208FC796005259FE /* NewsConventionCountdownTableViewCell.swift */,
 				CAC1E12A1F5040E100195513 /* NewsScene.swift */,
 				CAF3C74F1F9FC74C0008F027 /* NewsSceneFactory.swift */,
@@ -7190,7 +7187,6 @@
 				CABA83EA20CDBBD600DD0795 /* PersistentImageRepository.swift in Sources */,
 				9A861ED71F25564900B75A8C /* StoryboardRouters.swift in Sources */,
 				78567B431F10303600EBA31D /* ApplicationActivityIndicatorRefreshDelegate.swift in Sources */,
-				CA00AE6E20D179ED00C2FBB0 /* EventTableViewCell+NewsEventComponent.swift in Sources */,
 				D6F3D4C7FF8BB27C46EF4D3D /* ServiceResolver.swift in Sources */,
 				CA73AEEE201A08A6004E77BF /* KnowledgeGroupsInteractor.swift in Sources */,
 				CA728461209D0642007D912A /* AnnouncementDetailViewController.swift in Sources */,

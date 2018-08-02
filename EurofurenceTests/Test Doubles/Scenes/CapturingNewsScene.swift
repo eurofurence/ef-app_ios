@@ -94,55 +94,6 @@ class CapturingAllAnnouncementsComponent: AllAnnouncementsComponent {
     
 }
 
-class CapturingNewsEventComponent: NewsEventComponent {
-    
-    private(set) var capturedStartTime: String?
-    func setEventStartTime(_ startTime: String) {
-        capturedStartTime = startTime
-    }
-    
-    private(set) var capturedEndTime: String?
-    func setEventEndTime(_ endTime: String) {
-        capturedEndTime = endTime
-    }
-    
-    private(set) var capturedEventName: String?
-    func setEventName(_ eventName: String) {
-        capturedEventName = eventName
-    }
-    
-    private(set) var capturedLocation: String?
-    func setLocation(_ location: String) {
-        capturedLocation = location
-    }
-    
-    private(set) var capturedIcon: UIImage?
-    func setIcon(_ icon: UIImage?) {
-        capturedIcon = icon
-    }
-    
-    private(set) var didShowFavouriteEventIndicator = false
-    func showFavouriteEventIndicator() {
-        didShowFavouriteEventIndicator = true
-    }
-    
-    private(set) var didHideFavouriteEventIndicator = false
-    func hideFavouriteEventIndicator() {
-        didHideFavouriteEventIndicator = true
-    }
-    
-    private(set) var didShowSuperSponsorIndicator = false
-    func showSuperSponsorOnlyEventIndicator() {
-        didShowSuperSponsorIndicator = true
-    }
-    
-    private(set) var didHideSuperSponsorIndicator = false
-    func hideSuperSponsorOnlyEventIndicator() {
-        didHideSuperSponsorIndicator = true
-    }
-    
-}
-
 class CapturingUserWidgetComponent: UserWidgetComponent {
     
     private(set) var capturedPrompt: String?

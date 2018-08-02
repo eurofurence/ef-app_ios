@@ -49,16 +49,3 @@ protocol AllAnnouncementsComponent {
     func showCaption(_ caption: String)
 
 }
-
-protocol NewsEventComponent {
-
-    func setEventStartTime(_ startTime: String)
-    func setEventEndTime(_ endTime: String)
-    func setEventName(_ eventName: String)
-    func setLocation(_ location: String)
-    func showFavouriteEventIndicator()
-    func hideFavouriteEventIndicator()
-    func showSuperSponsorOnlyEventIndicator()
-    func hideSuperSponsorOnlyEventIndicator()
-
-}
