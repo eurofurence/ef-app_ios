@@ -376,7 +376,9 @@ class Schedule {
                       endDate: event.endDateTime,
                       eventDescription: event.eventDescription,
                       posterGraphicPNGData: posterGraphicData,
-                      bannerGraphicPNGData: bannerGraphicData)
+                      bannerGraphicPNGData: bannerGraphicData,
+                      isSponsorOnly: false,
+                      isSuperSponsorOnly: false)
     }
 
     private func reconstituteFavouritesFromDataStore() {

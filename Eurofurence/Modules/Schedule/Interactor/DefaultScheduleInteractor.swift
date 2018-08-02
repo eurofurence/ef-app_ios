@@ -131,8 +131,8 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
                                                   endTime: hoursDateFormatter.hoursString(from: event.endDate),
                                                   location: event.room.name,
                                                   isFavourite: favouriteEvents.contains(event.identifier),
-                                                  isSponsorOnly: false,
-                                                  isSuperSponsorOnly: false)
+                                                  isSponsorOnly: event.isSponsorOnly,
+                                                  isSuperSponsorOnly: event.isSuperSponsorOnly)
                 }
 
                 return ScheduleEventGroupViewModel(title: title, events: viewModels)
@@ -296,8 +296,8 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
                                                   endTime: hoursDateFormatter.hoursString(from: event.endDate),
                                                   location: event.room.name,
                                                   isFavourite: favouriteEvents.contains(event.identifier),
-                                                  isSponsorOnly: false,
-                                                  isSuperSponsorOnly: false)
+                                                  isSponsorOnly: event.isSponsorOnly,
+                                                  isSuperSponsorOnly: event.isSuperSponsorOnly)
                 }
 
                 return ScheduleEventGroupViewModel(title: title, events: viewModels)
