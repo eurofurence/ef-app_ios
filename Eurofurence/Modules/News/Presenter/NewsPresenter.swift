@@ -92,6 +92,8 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
 
                 if event.isSuperSponsorEvent {
                     component.showSuperSponsorOnlyEventIndicator()
+                } else {
+                    component.hideSuperSponsorOnlyEventIndicator()
                 }
 
                 if event.isFavourite {

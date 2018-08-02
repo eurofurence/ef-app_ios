@@ -136,6 +136,11 @@ class CapturingNewsEventComponent: NewsEventComponent {
         didShowSuperSponsorIndicator = true
     }
     
+    private(set) var didHideSuperSponsorIndicator = false
+    func hideSuperSponsorOnlyEventIndicator() {
+        didHideSuperSponsorIndicator = true
+    }
+    
 }
 
 class CapturingUserWidgetComponent: UserWidgetComponent {

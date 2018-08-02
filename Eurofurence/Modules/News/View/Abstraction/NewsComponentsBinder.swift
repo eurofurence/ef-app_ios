@@ -59,5 +59,6 @@ protocol NewsEventComponent {
     func showFavouriteEventIndicator()
     func hideFavouriteEventIndicator()
     func showSuperSponsorOnlyEventIndicator()
+    func hideSuperSponsorOnlyEventIndicator()
 
 }
