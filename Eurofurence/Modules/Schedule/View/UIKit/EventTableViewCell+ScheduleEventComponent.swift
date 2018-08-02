@@ -22,4 +22,8 @@ extension EventTableViewCell: ScheduleEventComponent {
 
     }
 
+    func hideSuperSponsorOnlyEventIndicator() {
+
+    }
+
 }

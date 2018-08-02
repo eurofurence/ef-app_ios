@@ -26,4 +26,19 @@ class WhenBindingNonSuperSponsorOnlyEvent_SchedulePresenterShould: XCTestCase {
         XCTAssertFalse(component.didShowSuperSponsorOnlyEventIndicator)
     }
     
+    func testHideTheSponsorOnlyIndicator() {
+        var eventViewModel = ScheduleEventViewModel.random
+        eventViewModel.isSuperSponsorOnly = false
+        let eventGroupViewModel = ScheduleEventGroupViewModel(title: .random, events: [eventViewModel])
+        let viewModel = CapturingScheduleViewModel(days: .random, events: [eventGroupViewModel], currentDay: 0)
+        let interactor = FakeScheduleInteractor(viewModel: viewModel)
+        let context = SchedulePresenterTestBuilder().with(interactor).build()
+        context.simulateSceneDidLoad()
+        let indexPath = IndexPath(item: 0, section: 0)
+        let component = CapturingScheduleEventComponent()
+        context.bind(component, forEventAt: indexPath)
+        
+        XCTAssertTrue(component.didHideSuperSponsorOnlyEventIndicator)
+    }
+    
 }

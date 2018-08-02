@@ -31,6 +31,8 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
 
             if event.isSuperSponsorOnly {
                 eventComponent.showSuperSponsorOnlyEventIndicator()
+            } else {
+                eventComponent.hideSuperSponsorOnlyEventIndicator()
             }
 
             if event.isFavourite {
