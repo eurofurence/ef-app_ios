@@ -1,5 +1,5 @@
 //
-//  InOrderToSponsorTag_ApplicationShould.swift
+//  InOrderToSupportSponsorTag_ApplicationShould.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 02/08/2018.
@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import XCTest
 
-class InOrderToSponsorTag_ApplicationShould: XCTestCase {
+class InOrderToSupportSponsorTag_ApplicationShould: XCTestCase {
     
     func testIndicateItIsSponsorEventWhenTagPresent() {
         var syncResponse = APISyncResponse.randomWithoutDeletions
