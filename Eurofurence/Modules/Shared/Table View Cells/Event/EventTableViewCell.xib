@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,19 +30,19 @@
                         <rect key="frame" x="94" y="0.0" width="247" height="108.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="Event Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ez-aA-Obc">
-                                <rect key="frame" x="44" y="20" width="183" height="19.5"/>
+                                <rect key="frame" x="32" y="20" width="195" height="19.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Event Location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KlD-aa-FfM">
-                                <rect key="frame" x="44" y="47.5" width="183" height="41"/>
+                                <rect key="frame" x="32" y="47.5" width="195" height="41"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="OtJ-2c-b0V">
-                                <rect key="frame" x="20" y="22" width="16" height="56"/>
+                                <rect key="frame" x="8" y="22" width="16" height="56"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Unfavourite" translatesAutoresizingMaskIntoConstraints="NO" id="qOT-qt-l86">
                                         <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -63,18 +64,21 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="16" id="aam-WJ-kWh"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="9ez-aA-Obc" firstAttribute="top" secondItem="eAF-SI-2EK" secondAttribute="top" constant="20" symbolic="YES" id="7av-ZM-IsJ"/>
                             <constraint firstAttribute="trailing" secondItem="KlD-aa-FfM" secondAttribute="trailing" constant="20" symbolic="YES" id="MOz-GI-mBo"/>
-                            <constraint firstItem="KlD-aa-FfM" firstAttribute="leading" secondItem="9ez-aA-Obc" secondAttribute="leading" id="R5c-sr-PCi"/>
-                            <constraint firstItem="OtJ-2c-b0V" firstAttribute="leading" secondItem="eAF-SI-2EK" secondAttribute="leading" constant="20" symbolic="YES" id="YbO-Ro-tNh"/>
+                            <constraint firstItem="OtJ-2c-b0V" firstAttribute="leading" secondItem="eAF-SI-2EK" secondAttribute="leadingMargin" id="YbO-Ro-tNh"/>
                             <constraint firstAttribute="trailing" secondItem="9ez-aA-Obc" secondAttribute="trailing" constant="20" symbolic="YES" id="c2j-4Q-mE1"/>
                             <constraint firstItem="KlD-aa-FfM" firstAttribute="top" secondItem="9ez-aA-Obc" secondAttribute="bottom" constant="8" symbolType="layoutAnchor" id="i0G-aZ-veM"/>
                             <constraint firstAttribute="bottom" secondItem="KlD-aa-FfM" secondAttribute="bottom" constant="20" symbolic="YES" id="qIl-EY-2HC"/>
                             <constraint firstItem="9ez-aA-Obc" firstAttribute="leading" secondItem="OtJ-2c-b0V" secondAttribute="trailing" constant="8" id="wyx-Mw-Pp3"/>
+                            <constraint firstItem="KlD-aa-FfM" firstAttribute="leading" secondItem="OtJ-2c-b0V" secondAttribute="trailing" constant="8" id="ztD-Gj-0w2"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zUw-Cz-UWR">
