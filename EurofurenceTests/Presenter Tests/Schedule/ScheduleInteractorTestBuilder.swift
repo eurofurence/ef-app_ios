@@ -115,6 +115,7 @@ extension ScheduleInteractorTestBuilder.Context {
                                       endTime: hoursFormatter.hoursString(from: event.endDate),
                                       location: event.room.name,
                                       isFavourite: eventsService.favourites.contains(event.identifier),
+                                      isSponsorOnly: false,
                                       isSuperSponsorOnly: false)
     }
     

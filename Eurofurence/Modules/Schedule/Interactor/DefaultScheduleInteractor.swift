@@ -131,6 +131,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
                                                   endTime: hoursDateFormatter.hoursString(from: event.endDate),
                                                   location: event.room.name,
                                                   isFavourite: favouriteEvents.contains(event.identifier),
+                                                  isSponsorOnly: false,
                                                   isSuperSponsorOnly: false)
                 }
 
@@ -295,6 +296,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
                                                   endTime: hoursDateFormatter.hoursString(from: event.endDate),
                                                   location: event.room.name,
                                                   isFavourite: favouriteEvents.contains(event.identifier),
+                                                  isSponsorOnly: false,
                                                   isSuperSponsorOnly: false)
                 }
 
