@@ -41,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="OtJ-2c-b0V">
-                                <rect key="frame" x="20" y="22" width="16" height="36"/>
+                                <rect key="frame" x="20" y="22" width="16" height="56"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Unfavourite" translatesAutoresizingMaskIntoConstraints="NO" id="qOT-qt-l86">
                                         <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -50,8 +50,14 @@
                                             <constraint firstAttribute="width" constant="16" id="gIX-nw-07a"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRM-iE-ADK">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJw-lJ-1Nj">
                                         <rect key="frame" x="0.0" y="19" width="16" height="17"/>
+                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
+                                        <color key="textColor" red="0.97772413489999999" green="0.86473608020000003" blue="0.40772730109999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRM-iE-ADK">
+                                        <rect key="frame" x="0.0" y="39" width="16" height="17"/>
                                         <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
                                         <color key="textColor" red="0.97772413489999999" green="0.86473608020000003" blue="0.40772730109999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -114,6 +120,7 @@
                 <outlet property="eventNameLabel" destination="9ez-aA-Obc" id="f4n-tw-irQ"/>
                 <outlet property="favouritedImageView" destination="qOT-qt-l86" id="FDk-Ux-DqW"/>
                 <outlet property="locationLabel" destination="KlD-aa-FfM" id="RKl-P9-XT6"/>
+                <outlet property="sponsorEventIndicator" destination="HJw-lJ-1Nj" id="sqv-mp-1X1"/>
                 <outlet property="startTimeLabel" destination="aLD-uI-rra" id="Id3-Mt-TEa"/>
                 <outlet property="superSponsorEventIndicator" destination="pRM-iE-ADK" id="lac-ib-aoS"/>
             </connections>

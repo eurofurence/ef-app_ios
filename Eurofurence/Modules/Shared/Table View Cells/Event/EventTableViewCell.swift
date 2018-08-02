@@ -17,6 +17,7 @@ class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
     @IBOutlet weak var favouritedImageView: UIImageView!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var sponsorEventIndicator: UILabel!
     @IBOutlet weak var superSponsorEventIndicator: UIView!
 
     // MARK: Overrides
@@ -53,11 +54,11 @@ class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
     }
 
     func showSponsorEventIndicator() {
-
+        sponsorEventIndicator.isHidden = false
     }
 
     func hideSponsorEventIndicator() {
-
+        sponsorEventIndicator.isHidden = true
     }
 
     func showSuperSponsorOnlyEventIndicator() {
