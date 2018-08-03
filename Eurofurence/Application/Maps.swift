@@ -27,6 +27,7 @@ class Maps {
 
     private let dataStore: EurofurenceDataStore
     private let imageRepository: ImageRepository
+    private let dealers: Dealers
 
     private var serverModels = [APIMap]()
     private var roomServerModels = [APIRoom]()
@@ -40,9 +41,13 @@ class Maps {
 
     private var observers = [MapsObserver]()
 
-    init(eventBus: EventBus, dataStore: EurofurenceDataStore, imageRepository: ImageRepository) {
+    init(eventBus: EventBus,
+         dataStore: EurofurenceDataStore,
+         imageRepository: ImageRepository,
+         dealers: Dealers) {
         self.dataStore = dataStore
         self.imageRepository = imageRepository
+        self.dealers = dealers
         eventBus.subscribe(consumer: RefreshMapsAfterSync(maps: self))
 
         reloadMapsFromDataStore()
@@ -92,8 +97,8 @@ class Maps {
             content = .room(Room(name: room.name))
         }
 
-        if let dealer = dealerServerModels.first(where: { $0.identifier == link.target }) {
-            content = .dealer(Dealer2.Identifier(dealer.identifier))
+        if let dealer = dealers.dealer(for: link.target) {
+            content = .dealer(dealer)
         }
     }
 

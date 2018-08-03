@@ -45,7 +45,7 @@ class WhenShowingMapContents_ForAlternativeMapPosition_MapDetailInteractorShould
         XCTAssertEqual(expected, visitor.capturedContextualContent)
     }
     
-    func testProvideTheDealerIdentifierForSelectedDealer() {
+    func testProvideTheDealerForSelectedDealer() {
         let mapsService = FakeMapsService()
         let randomMap = mapsService.maps.randomElement()
         let interactor = DefaultMapDetailInteractor(mapsService: mapsService)
@@ -55,10 +55,10 @@ class WhenShowingMapContents_ForAlternativeMapPosition_MapDetailInteractorShould
         let (x, y) = (Float.random, Float.random)
         let visitor = CapturingMapContentVisitor()
         viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)
-        let expected = Dealer2.Identifier.random
+        let expected = Dealer2.random
         mapsService.resolveMapContents(identifier: randomMap.element.identifier, atX: Int(x), y: Int(y), with: .dealer(expected))
         
-        XCTAssertEqual(expected, visitor.capturedDealer)
+        XCTAssertEqual(expected.identifier, visitor.capturedDealer)
     }
     
 }

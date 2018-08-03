@@ -118,7 +118,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         collectThemAll = CollectThemAll(eventBus: eventBus,
                                         collectThemAllRequestFactory: collectThemAllRequestFactory,
                                         credentialStore: credentialStore)
-        maps = Maps(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository)
+        maps = Maps(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository, dealers: dealers)
 
         fetchPrivateMessages { (_) in }
     }

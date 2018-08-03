@@ -235,4 +235,8 @@ class Dealers: DealersService {
         reloadDealersFromDataStore()
     }
 
+    func dealer(for identifier: String) -> Dealer2? {
+        return dealerModels.first(where: { $0.identifier.rawValue == identifier })
+    }
+
 }

@@ -11,10 +11,11 @@ import XCTest
 
 class WhenFetchingMapContents_ThatRevealsDealer_ApplicationShould: XCTestCase {
     
-    func testProvideTheDealerIdentifer() {
+    func testProvideTheDealer() {
         let context = ApplicationTestBuilder().build()
         var syncResponse = APISyncResponse.randomWithoutDeletions
         let dealer = APIDealer.random
+        let expectedDealer = context.makeExpectedDealer(from: dealer)
         let (x, y, tapRadius) = (Int.random, Int.random, Int.random)
         var map = APIMap.random
         let link = APIMap.Entry.Link(type: .dealerDetail, name: .random, target: dealer.identifier)
@@ -27,7 +28,7 @@ class WhenFetchingMapContents_ThatRevealsDealer_ApplicationShould: XCTestCase {
         
         var content: Map2.Content?
         context.application.fetchContent(for: Map2.Identifier(map.identifier), atX: x, y: y) { content = $0 }
-        let expected = Map2.Content.dealer(Dealer2.Identifier(dealer.identifier))
+        let expected = Map2.Content.dealer(expectedDealer)
         
         XCTAssertEqual(expected, content)
     }

@@ -29,7 +29,7 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
                     visitor.visit(contextualInfo)
 
                 case .dealer(let dealer):
-                    visitor.visit(dealer)
+                    visitor.visit(dealer.identifier)
 
                 case .none:
                     break
