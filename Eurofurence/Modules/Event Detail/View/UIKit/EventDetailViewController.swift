@@ -109,7 +109,11 @@ class EventDetailViewController: UIViewController, EventDetailScene {
         }
 
         func makeSuperSponsorsOnlyBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> UITableViewCell {
-            fatalError()
+            let cell = tableView.dequeue(EventInformationBannerTableViewCell.self)
+            block(cell)
+            cell.iconLabel.text = ""
+
+            return cell
         }
 
         // MARK: UITableViewDataSource
