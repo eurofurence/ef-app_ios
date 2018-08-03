@@ -182,6 +182,9 @@ public extension String {
     public static let thisEventIsForSponsorsOnly = NSLocalizedString("ThisEventIsForSponsorsOnly",
                                                                      comment: "Message shown in the event detail view when viewing an event that's only available for attendees who are sponsors")
 
+    public static let thisEventIsForSuperSponsorsOnly = NSLocalizedString("ThisEventIsForSuperSponsorsOnly",
+                                                                          comment: "Message shown in the event detail view when viewing an event that's only available for attendees who are super sponsors")
+
     private struct Formatters {
         static var numbers = NumberFormatter()
     }

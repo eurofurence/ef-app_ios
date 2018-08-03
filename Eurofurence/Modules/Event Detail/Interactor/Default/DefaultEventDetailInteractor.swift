@@ -54,6 +54,14 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         }
 
+        struct SuperSponsorsOnlyComponent: EventDetailViewModelComponent {
+
+            func describe(to visitor: EventDetailViewModelVisitor) {
+                visitor.visit(EventSuperSponsorsOnlyWarningViewModel(message: .thisEventIsForSuperSponsorsOnly))
+            }
+
+        }
+
         private let components: [EventDetailViewModelComponent]
         private let event: Event2
         private let eventsService: EventsService
@@ -149,6 +157,10 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
             if event.isSponsorOnly {
                 components.append(ViewModel.SponsorsOnlyComponent())
+            }
+
+            if event.isSuperSponsorOnly {
+                components.append(ViewModel.SuperSponsorsOnlyComponent())
             }
 
             if !event.eventDescription.isEmpty, event.eventDescription != event.abstract {
