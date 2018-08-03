@@ -6498,6 +6498,7 @@
 				9ACF99311EBE172D006FC958 /* Frameworks */,
 				9ACF99321EBE172D006FC958 /* Resources */,
 				AD43207D87B13D6AADFF543F /* [CP] Embed Pods Frameworks */,
+				2055AB1121145F4600EB490B /* Set version in Root.plist */,
 				9ACB01051F1808BA001CE9D2 /* Upload to Firebase */,
 			);
 			buildRules = (
@@ -6693,6 +6694,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2055AB1121145F4600EB490B /* Set version in Root.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Set version in Root.plist";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PLISTBUDDY=\"/usr/libexec/PlistBuddy\"\nINFO_PLIST=\"$CODESIGNING_FOLDER_PATH/Info.plist\"\nSETTINGS_PLIST=\"$CODESIGNING_FOLDER_PATH/Settings.bundle/Root.plist\"\nVERSION_NUMBER=\"`$PLISTBUDDY -c \\\"Print CFBundleShortVersionString\\\" \\\"$INFO_PLIST\\\"`\"\nBUILD_NUMBER=\"`$PLISTBUDDY -c \\\"Print CFBundleVersion\\\" \\\"$INFO_PLIST\\\"`\"\nVERSION=\"$VERSION_NUMBER ($BUILD_NUMBER)\"\n\necho $VERSION\necho $SETTINGS_PLIST\n# The PreferenceSpecifier is currently at position 3 in the array.\n# This value needs to be adjusted if the entry is moved further up or down!\n$PLISTBUDDY -c \"Set :PreferenceSpecifiers:3:DefaultValue '$VERSION'\" \"$SETTINGS_PLIST\"";
+		};
 		78CA0D0B1F0D7D81006DFD64 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

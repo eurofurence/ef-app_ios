@@ -32,6 +32,16 @@
 			<key>File</key>
 			<string>Additional-Acknowledgements</string>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Version</string>
+			<key>Key</key>
+			<string>EFAppVersion</string>
+			<key>DefaultValue</key>
+			<string>Unknown</string>
+		</dict>
 	</array>
 </dict>
 </plist>
