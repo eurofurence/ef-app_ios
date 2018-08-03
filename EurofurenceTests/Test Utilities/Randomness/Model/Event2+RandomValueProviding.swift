@@ -28,6 +28,14 @@ extension Event2: RandomValueProviding {
                       isSuperSponsorOnly: .random)
     }
     
+    static var randomStandardEvent: Event2 {
+        var event = Event2.random
+        event.isSponsorOnly = false
+        event.isSuperSponsorOnly = false
+        
+        return event
+    }
+    
 }
 
 extension Event2.Identifier: RandomValueProviding {

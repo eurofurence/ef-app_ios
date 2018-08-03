@@ -179,6 +179,9 @@ public extension String {
     public static let favourites = NSLocalizedString("Favourites",
                                                      comment: "Title for the button used under the events search bar to search through only the user's favourites")
 
+    public static let thisEventIsForSponsorsOnly = NSLocalizedString("ThisEventIsForSponsorsOnly",
+                                                                     comment: "Message shown in the event detail view when viewing an event that's only available for attendees who are sponsors")
+
     private struct Formatters {
         static var numbers = NumberFormatter()
     }

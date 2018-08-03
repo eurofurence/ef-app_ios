@@ -418,6 +418,7 @@
 		CA27258A21139DA4004C6D0A /* WhenBindingNonSponsorEvent_ForSearchResult_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27258921139DA4004C6D0A /* WhenBindingNonSponsorEvent_ForSearchResult_SchedulePresenterShould.swift */; };
 		CA27258D2113B1F4004C6D0A /* InOrderToSupportSponsorTag_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27258C2113B1F4004C6D0A /* InOrderToSupportSponsorTag_ApplicationShould.swift */; };
 		CA27258F2113B665004C6D0A /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27258E2113B665004C6D0A /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift */; };
+		CA2725912113BAB9004C6D0A /* WhenPreparingViewModel_ForSponsorsOnlyEvent_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2725902113BAB9004C6D0A /* WhenPreparingViewModel_ForSponsorsOnlyEvent_EventDetailInteractorShould.swift */; };
 		CA2725932113BE9A004C6D0A /* WhenBindingSponsorsOnlyMessage_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2725922113BE9A004C6D0A /* WhenBindingSponsorsOnlyMessage_EventDetailPresenterShould.swift */; };
 		CA2725952113BFD9004C6D0A /* EventInformationBannerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2725942113BFD9004C6D0A /* EventInformationBannerComponent.swift */; };
 		CA27618220DF932C000E52AC /* AspectRatioConstrainedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */; };
@@ -1723,6 +1724,7 @@
 		CA27258921139DA4004C6D0A /* WhenBindingNonSponsorEvent_ForSearchResult_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingNonSponsorEvent_ForSearchResult_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA27258C2113B1F4004C6D0A /* InOrderToSupportSponsorTag_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOrderToSupportSponsorTag_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA27258E2113B665004C6D0A /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOrderToSupportSuperSponsorTag_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA2725902113BAB9004C6D0A /* WhenPreparingViewModel_ForSponsorsOnlyEvent_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ForSponsorsOnlyEvent_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
 		CA2725922113BE9A004C6D0A /* WhenBindingSponsorsOnlyMessage_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingSponsorsOnlyMessage_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA2725942113BFD9004C6D0A /* EventInformationBannerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInformationBannerComponent.swift; sourceTree = "<group>"; };
 		CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioConstrainedImageView.swift; sourceTree = "<group>"; };
@@ -6072,6 +6074,7 @@
 				CA131BD420C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift */,
 				CAD2609E20C02E7C007E3618 /* WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailInteractorShould.swift */,
 				CACF1EB920B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift */,
+				CA2725902113BAB9004C6D0A /* WhenPreparingViewModel_ForSponsorsOnlyEvent_EventDetailInteractorShould.swift */,
 				CACF1EAB20B5C14F00D904B5 /* WhenPreparingViewModelForEventWithIdenticalAbstractAndDescription_EventDetailInteractorShould.swift */,
 				CACF1EA920B5BFF100D904B5 /* WhenPreparingViewModelForEventWithNoDescription_EventDetailInteractorShould.swift */,
 				CABA840220CEFF9300DD0795 /* WhenServiceIndicatesEventIsFavourited_EventDetailInteractorShould.swift */,
@@ -7739,6 +7742,7 @@
 				CA637564208CC8F800536BE2 /* WhenBuilt_DirectorShould.swift in Sources */,
 				78455B3C1F116E24005BE2D7 /* UserDefaultsTutorialStateProvider.swift in Sources */,
 				CA1ECB3F1FE333090076083A /* WhenInitialMessageLoadFails.swift in Sources */,
+				CA2725912113BAB9004C6D0A /* WhenPreparingViewModel_ForSponsorsOnlyEvent_EventDetailInteractorShould.swift in Sources */,
 				CAD234401F5D726C004BB959 /* WhenViewingMessagesWhileLoggedIn.swift in Sources */,
 				CA08158920D448DC00F750D4 /* WhenScheduleSceneSelectsDay_SchedulePresenterShould.swift in Sources */,
 				CA6A8E0520E56BAA007536CD /* WhenShowingMapContents_ForAlternativeMapPosition_MapDetailInteractorShould.swift in Sources */,

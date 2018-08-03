@@ -31,7 +31,7 @@ class EventDetailInteractorTestBuilder {
         return self
     }
     
-    func build(for event: Event2 = .random) -> Context {
+    func build(for event: Event2 = .randomStandardEvent) -> Context {
         let dateRangeFormatter = FakeDateRangeFormatter()
 		let markdownRenderer = StubMarkdownRenderer()
         eventsService.stub(event, for: event.identifier)

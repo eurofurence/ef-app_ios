@@ -46,6 +46,14 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         }
 
+        struct SponsorsOnlyComponent: EventDetailViewModelComponent {
+
+            func describe(to visitor: EventDetailViewModelVisitor) {
+                visitor.visit(EventSponsorsOnlyWarningViewModel(message: .thisEventIsForSponsorsOnly))
+            }
+
+        }
+
         private let components: [EventDetailViewModelComponent]
         private let event: Event2
         private let eventsService: EventsService
@@ -138,6 +146,10 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
                                                          trackName: event.track.name,
                                                          eventHosts: event.hosts)
             components.append(ViewModel.SummaryComponent(viewModel: summaryViewModel))
+
+            if event.isSponsorOnly {
+                components.append(ViewModel.SponsorsOnlyComponent())
+            }
 
             if !event.eventDescription.isEmpty, event.eventDescription != event.abstract {
 				let description = self.markdownRenderer.render(event.eventDescription)

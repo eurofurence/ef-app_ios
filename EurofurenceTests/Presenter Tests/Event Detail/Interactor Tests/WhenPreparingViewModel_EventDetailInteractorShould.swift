@@ -27,7 +27,7 @@ class CapturingEventDetailViewModelVisitor: EventDetailViewModelVisitor {
     }
     
     func visit(_ sponsorsOnlyMessage: EventSponsorsOnlyWarningViewModel) {
-        
+        visitedViewModels.append(sponsorsOnlyMessage)
     }
     
 }
