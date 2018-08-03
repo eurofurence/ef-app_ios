@@ -26,6 +26,10 @@ class CapturingEventDetailViewModelVisitor: EventDetailViewModelVisitor {
         visitedViewModels.append(graphic)
     }
     
+    func visit(_ sponsorsOnlyMessage: EventSponsorsOnlyWarningViewModel) {
+        
+    }
+    
 }
 
 class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {

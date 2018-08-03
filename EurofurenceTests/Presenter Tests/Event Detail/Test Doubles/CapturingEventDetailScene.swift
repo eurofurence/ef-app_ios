@@ -62,6 +62,15 @@ class CapturingEventGraphicComponent: EventGraphicComponent {
     
 }
 
+class CapturingEventInformationBannerComponent: EventInformationBannerComponent {
+    
+    private(set) var capturedMessage: String?
+    func setBannerMessage(_ message: String) {
+        capturedMessage = message
+    }
+    
+}
+
 class StubEventDetailComponentFactory: EventDetailComponentFactory {
     
     let stubbedEventSummaryComponent = CapturingEventSummaryComponent()
@@ -80,6 +89,12 @@ class StubEventDetailComponentFactory: EventDetailComponentFactory {
     func makeEventGraphicComponent(configuringUsing block: (EventGraphicComponent) -> Void) -> Any {
         block(stubbedEventGraphicComponent)
         return stubbedEventGraphicComponent
+    }
+    
+    let stubbedSponsorsOnlyComponent = CapturingEventInformationBannerComponent()
+    func makeSponsorsOnlyBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> Any {
+        block(stubbedSponsorsOnlyComponent)
+        return stubbedSponsorsOnlyComponent
     }
     
 }
@@ -125,10 +140,15 @@ extension CapturingEventDetailScene {
         return componentFactory.stubbedEventGraphicComponent
     }
     
+    var stubbedSponsorsOnlyComponent: CapturingEventInformationBannerComponent {
+        return componentFactory.stubbedSponsorsOnlyComponent
+    }
+    
     func simulateSceneDidLoad() {
         delegate?.eventDetailSceneDidLoad()
     }
     
+    @discardableResult
     func bindComponent(at indexPath: IndexPath) -> Any? {
         return binder?.bindComponent(at: indexPath, using: componentFactory)
     }

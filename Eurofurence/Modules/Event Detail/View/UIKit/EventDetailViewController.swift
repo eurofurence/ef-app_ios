@@ -100,6 +100,10 @@ class EventDetailViewController: UIViewController, EventDetailScene {
             return cell
         }
 
+        func makeSponsorsOnlyBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> Component {
+            fatalError()
+        }
+
         // MARK: UITableViewDataSource
 
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

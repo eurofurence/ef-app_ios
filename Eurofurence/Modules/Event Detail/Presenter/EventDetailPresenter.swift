@@ -59,6 +59,12 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
             }
         }
 
+        func visit(_ sponsorsOnlyMessage: EventSponsorsOnlyWarningViewModel) {
+            boundComponent = componentFactory.makeSponsorsOnlyBannerComponent { (component) in
+                component.setBannerMessage(sponsorsOnlyMessage.message)
+            }
+        }
+
     }
 
     private let scene: EventDetailScene
