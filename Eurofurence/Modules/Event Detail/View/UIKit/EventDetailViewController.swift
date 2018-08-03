@@ -100,12 +100,16 @@ class EventDetailViewController: UIViewController, EventDetailScene {
             return cell
         }
 
-        func makeSponsorsOnlyBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> Component {
+        func makeSponsorsOnlyBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> UITableViewCell {
             let cell = tableView.dequeue(EventInformationBannerTableViewCell.self)
             block(cell)
             cell.iconLabel.text = ""
 
             return cell
+        }
+
+        func makeSuperSponsorsOnlyBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> UITableViewCell {
+            fatalError()
         }
 
         // MARK: UITableViewDataSource

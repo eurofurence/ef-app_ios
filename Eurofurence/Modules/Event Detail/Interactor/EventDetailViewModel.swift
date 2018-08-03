@@ -31,6 +31,7 @@ protocol EventDetailViewModelVisitor {
     func visit(_ description: EventDescriptionViewModel)
     func visit(_ graphic: EventGraphicViewModel)
     func visit(_ sponsorsOnlyMessage: EventSponsorsOnlyWarningViewModel)
+    func visit(_ superSponsorsOnlyMessage: EventSuperSponsorsOnlyWarningViewModel)
 
 }
 
@@ -58,6 +59,12 @@ struct EventGraphicViewModel: Equatable, Hashable {
 }
 
 struct EventSponsorsOnlyWarningViewModel: Equatable, Hashable {
+
+    var message: String
+
+}
+
+struct EventSuperSponsorsOnlyWarningViewModel: Equatable, Hashable {
 
     var message: String
 
