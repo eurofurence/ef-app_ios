@@ -74,7 +74,16 @@ class MapDetailViewController: UIViewController, UIScrollViewDelegate, MapDetail
                         atX x: Float,
                         y: Float,
                         selectionHandler: @escaping (Int) -> Void) {
+        let alertController = UIAlertController(title: heading, message: nil, preferredStyle: .actionSheet)
+        for (idx, option) in options.enumerated() {
+            alertController.addAction(UIAlertAction(title: option, style: .default, handler: { (_) in selectionHandler(idx) }))
+        }
 
+        let sourceRect = CGRect(x: CGFloat(x), y: CGFloat(y), width: 0, height: 0)
+        alertController.popoverPresentationController?.sourceView = imageView
+        alertController.popoverPresentationController?.sourceRect = sourceRect
+
+        present(alertController, animated: true)
     }
 
     // MARK: Private
