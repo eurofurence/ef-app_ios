@@ -69,7 +69,11 @@ class MapDetailViewController: UIViewController, UIScrollViewDelegate, MapDetail
 
     }
 
-    func showMapOptions(heading: String, options: [String], atX x: Float, y: Float) {
+    func showMapOptions(heading: String,
+                        options: [String],
+                        atX x: Float,
+                        y: Float,
+                        selectionHandler: @escaping (Int) -> Void) {
 
     }
 

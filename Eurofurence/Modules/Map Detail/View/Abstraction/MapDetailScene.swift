@@ -15,7 +15,11 @@ protocol MapDetailScene {
     func setMapTitle(_ title: String)
     func focusMapPosition(_ position: MapCoordinate)
     func show(contextualContent: MapInformationContextualContent)
-    func showMapOptions(heading: String, options: [String], atX x: Float, y: Float)
+    func showMapOptions(heading: String,
+                        options: [String],
+                        atX x: Float,
+                        y: Float,
+                        selectionHandler: @escaping (Int) -> Void)
 
 }
 
@@ -40,5 +44,7 @@ protocol MapContentOptionsViewModel {
 
     var optionsHeading: String { get }
     var options: [String] { get }
+
+    func selectOption(at index: Int)
 
 }

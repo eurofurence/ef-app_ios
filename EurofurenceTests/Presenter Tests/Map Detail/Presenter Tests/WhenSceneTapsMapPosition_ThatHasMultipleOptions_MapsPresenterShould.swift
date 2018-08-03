@@ -29,4 +29,19 @@ class WhenSceneTapsMapPosition_ThatHasMultipleOptions_MapsPresenterShould: XCTes
         XCTAssertEqual(y, context.scene.capturedOptionsPresentationY.or(.random), accuracy: .ulpOfOne)
     }
     
+    func testTellTheViewModelWhichOptionIsSelected() {
+        let identifier = Map2.Identifier.random
+        let interactor = FakeMapDetailInteractor(expectedMapIdentifier: identifier)
+        let context = MapDetailPresenterTestBuilder().with(interactor).build(for: identifier)
+        context.simulateSceneDidLoad()
+        let randomLocation = MapCoordinate(x: .random, y: .random)
+        context.simulateSceneDidDidTapMap(at: randomLocation)
+        let contentOptions = StubMapContentOptionsViewModel.random
+        interactor.viewModel.resolvePositionalContent(with: contentOptions)
+        let selectedOptionIndex = contentOptions.options.randomElement().index
+        context.simulateSceneTappedMapOption(at: selectedOptionIndex)
+        
+        XCTAssertEqual(selectedOptionIndex, contentOptions.selectedOptionIndex)
+    }
+    
 }

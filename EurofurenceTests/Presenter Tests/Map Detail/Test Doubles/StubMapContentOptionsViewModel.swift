@@ -9,10 +9,20 @@
 @testable import Eurofurence
 import Foundation
 
-struct StubMapContentOptionsViewModel: MapContentOptionsViewModel {
+final class StubMapContentOptionsViewModel: MapContentOptionsViewModel {
     
-    var optionsHeading: String
-    var options: [String]
+    let optionsHeading: String
+    let options: [String]
+    
+    init(optionsHeading: String, options: [String]) {
+        self.optionsHeading = optionsHeading
+        self.options = options
+    }
+    
+    private(set) var selectedOptionIndex: Int?
+    func selectOption(at index: Int) {
+        selectedOptionIndex = index
+    }
     
 }
 

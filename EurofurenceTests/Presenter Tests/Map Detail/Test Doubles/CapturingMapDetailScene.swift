@@ -40,11 +40,17 @@ class CapturingMapDetailScene: UIViewController, MapDetailScene {
     private(set) var capturedOptionsPresentationX: Float?
     private(set) var capturedOptionsPresentationY: Float?
     private(set) var capturedOptionsToShow: [String] = []
-    func showMapOptions(heading: String, options: [String], atX x: Float, y: Float) {
+    private(set) var mapOptionSelectionHandler: ((Int) -> Void)?
+    func showMapOptions(heading: String,
+                        options: [String],
+                        atX x: Float,
+                        y: Float,
+                        selectionHandler: @escaping (Int) -> Void) {
         capturedOptionsHeading = heading
         capturedOptionsToShow = options
         capturedOptionsPresentationX = x
         capturedOptionsPresentationY = y
+        mapOptionSelectionHandler = selectionHandler
     }
     
 }

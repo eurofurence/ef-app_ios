@@ -62,4 +62,8 @@ extension MapDetailPresenterTestBuilder.Context {
         scene.delegate?.mapDetailSceneDidTapMap(at: location)
     }
     
+    func simulateSceneTappedMapOption(at index: Int) {
+        scene.mapOptionSelectionHandler?(index)
+    }
+    
 }

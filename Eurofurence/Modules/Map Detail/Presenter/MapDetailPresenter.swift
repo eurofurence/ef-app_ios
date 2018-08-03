@@ -68,7 +68,8 @@ class MapDetailPresenter: MapDetailSceneDelegate {
             scene.showMapOptions(heading: mapContents.optionsHeading,
                                  options: mapContents.options,
                                  atX: x,
-                                 y: y)
+                                 y: y,
+                                 selectionHandler: mapContents.selectOption)
         }
 
     }
