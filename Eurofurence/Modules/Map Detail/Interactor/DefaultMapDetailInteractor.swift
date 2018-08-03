@@ -31,10 +31,40 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
                 case .dealer(let dealer):
                     visitor.visit(dealer.identifier)
 
+                case .multiple(let contents):
+                    visitor.visit(OptionsViewModel(contents: contents))
+
                 case .none:
                     break
                 }
             }
+        }
+
+        private struct OptionsViewModel: MapContentOptionsViewModel {
+
+            init(contents: [Map2.Content]) {
+                optionsHeading = ""
+                options = contents.compactMap { (content) -> String? in
+                    switch content {
+                    case .room(let room):
+                        return room.name
+
+                    case .dealer(let dealer):
+                        return dealer.preferredName
+
+                    default:
+                        return nil
+                    }
+                }
+            }
+
+            var optionsHeading: String
+            var options: [String]
+
+            func selectOption(at index: Int) {
+
+            }
+
         }
 
     }

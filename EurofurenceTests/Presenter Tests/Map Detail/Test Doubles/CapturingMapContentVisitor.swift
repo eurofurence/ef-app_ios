@@ -26,8 +26,9 @@ class CapturingMapContentVisitor: MapContentVisitor {
         capturedDealer = dealer
     }
     
+    private(set) var capturedMapContents: MapContentOptionsViewModel?
     func visit(_ mapContents: MapContentOptionsViewModel) {
-        
+        capturedMapContents = mapContents
     }
     
 }
