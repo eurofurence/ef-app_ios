@@ -109,7 +109,7 @@ class DefaultNewsInteractor: NewsInteractor,
     // MARK: AnnouncementsServiceObserver
 
     func eurofurenceApplicationDidChangeAnnouncements(_ announcements: [Announcement2]) {
-        self.announcements = announcements
+        self.announcements = Array(announcements.prefix(3))
         regenerateViewModel()
     }
 

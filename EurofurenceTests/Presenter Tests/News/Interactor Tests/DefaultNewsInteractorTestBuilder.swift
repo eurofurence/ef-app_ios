@@ -243,7 +243,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
         
         func hasAnnouncements() -> ViewModelAssertionBuilder {
             let allAnnouncementsComponent = ViewAllAnnouncementsComponentViewModel(caption: .allAnnouncements)
-            let announcementsComponents = context.announcements.map(makeExpectedAnnouncementViewModel)
+            let announcementsComponents = context.announcements.prefix(3).map(makeExpectedAnnouncementViewModel)
             components.append(Component(title: .announcements, components: [allAnnouncementsComponent] + announcementsComponents))
             
             return self
