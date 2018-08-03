@@ -391,7 +391,8 @@ class DefaultNewsInteractor: NewsInteractor,
                                                endTime: hoursDateFormatter.hoursString(from: event.endDate),
                                                eventName: event.title,
                                                location: event.room.name,
-                                               icon: nil,
+                                               isSponsorEvent: event.isSponsorOnly,
+                                               isSuperSponsorEvent: event.isSuperSponsorOnly,
                                                isFavourite: favouriteEventIdentifiers.contains(event.identifier))
             }
         }

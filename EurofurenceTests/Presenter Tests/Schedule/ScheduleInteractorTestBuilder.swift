@@ -114,7 +114,9 @@ extension ScheduleInteractorTestBuilder.Context {
                                       startTime: hoursFormatter.hoursString(from: event.startDate),
                                       endTime: hoursFormatter.hoursString(from: event.endDate),
                                       location: event.room.name,
-                                      isFavourite: eventsService.favourites.contains(event.identifier))
+                                      isFavourite: eventsService.favourites.contains(event.identifier),
+                                      isSponsorOnly: event.isSponsorOnly,
+                                      isSuperSponsorOnly: event.isSuperSponsorOnly)
     }
     
     func makeExpectedDayViewModel(from day: Day) -> ScheduleDayViewModel {

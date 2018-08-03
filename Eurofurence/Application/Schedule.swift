@@ -366,6 +366,9 @@ class Schedule {
             bannerGraphicData = imageCache.cachedImageData(for: bannerImageIdentifier)
         }
 
+        let tags = event.tags
+        let containsTag: (String) -> Bool = { tags?.contains($0) ?? false }
+
         return Event2(identifier: Event2.Identifier(event.identifier),
                       title: event.title,
                       abstract: event.abstract,
@@ -376,7 +379,9 @@ class Schedule {
                       endDate: event.endDateTime,
                       eventDescription: event.eventDescription,
                       posterGraphicPNGData: posterGraphicData,
-                      bannerGraphicPNGData: bannerGraphicData)
+                      bannerGraphicPNGData: bannerGraphicData,
+                      isSponsorOnly: containsTag("sponsors_only"),
+                      isSuperSponsorOnly: containsTag("supersponsors_only"))
     }
 
     private func reconstituteFavouritesFromDataStore() {

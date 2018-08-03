@@ -196,6 +196,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                     entity.text = entry.text
                     entity.groupIdentifier = entry.groupIdentifier
                     entity.order = Int64(entry.order)
+                    entity.imageIdentifiers = entry.imageIdentifiers
                     links.forEach(entity.addToLinks)
                 }
             }
@@ -230,6 +231,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                     entity.eventDescription = event.eventDescription
                     entity.posterImageId = event.posterImageId
                     entity.bannerImageId = event.bannerImageId
+                    entity.tags = event.tags
                 }
             }
         }

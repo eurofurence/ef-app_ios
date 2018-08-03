@@ -46,6 +46,10 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
         linkItems.forEach(tableController.add)
     }
 
+    func bindImages(count: Int, using binder: KnowledgentryImagesBinder) {
+        (0..<count).map({ ImageItem(binder: binder, index: $0) }).forEach(tableController.add)
+    }
+
     // MARK: Private
 
     private struct ContentsItem: TableViewDataItem {
@@ -55,6 +59,23 @@ class KnowledgeDetailViewController: UIViewController, KnowledgeDetailScene {
         func makeCell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeue(KnowledgeDetailContentsTableViewCell.self)
             cell.textView.attributedText = contents
+            return cell
+        }
+
+        func selected() {
+
+        }
+
+    }
+
+    private struct ImageItem: TableViewDataItem {
+
+        var binder: KnowledgentryImagesBinder
+        var index: Int
+
+        func makeCell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeue(KnowledgeDetailImageTableViewCell.self)
+            binder.bind(cell, at: index)
             return cell
         }
 

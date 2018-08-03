@@ -41,4 +41,24 @@ class CapturingScheduleEventComponent: ScheduleEventComponent {
         didHideFavouriteEventIndicator = true
     }
     
+    private(set) var didShowSponsorEventIndicator = false
+    func showSponsorEventIndicator() {
+        didShowSponsorEventIndicator = true
+    }
+    
+    private(set) var didHideSponsorEventIndicator = false
+    func hideSponsorEventIndicator() {
+        didHideSponsorEventIndicator = true
+    }
+    
+    private(set) var didShowSuperSponsorOnlyEventIndicator = false
+    func showSuperSponsorOnlyEventIndicator() {
+        didShowSuperSponsorOnlyEventIndicator = true
+    }
+    
+    private(set) var didHideSuperSponsorOnlyEventIndicator = false
+    func hideSuperSponsorOnlyEventIndicator() {
+        didHideSuperSponsorOnlyEventIndicator = true
+    }
+    
 }

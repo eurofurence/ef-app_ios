@@ -22,5 +22,6 @@ struct APIEvent: Equatable {
     var eventDescription: String
     var posterImageId: String?
     var bannerImageId: String?
+    var tags: [String]?
 
 }

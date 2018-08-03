@@ -243,6 +243,7 @@ class ApplicationTestBuilder {
             let expectedTrack = response.tracks.changed.first(where: { $0.trackIdentifier == event.trackIdentifier })!
             let expectedPosterGraphic = imageAPI.stubbedImage(for: event.posterImageId)
             let expectedBannerGraphic = imageAPI.stubbedImage(for: event.bannerImageId)
+            let tags = event.tags.or([])
             
             return Event2(identifier: Event2.Identifier(event.identifier),
                           title: event.title,
@@ -254,7 +255,9 @@ class ApplicationTestBuilder {
                           endDate: event.endDateTime,
                           eventDescription: event.eventDescription,
                           posterGraphicPNGData: expectedPosterGraphic,
-                          bannerGraphicPNGData: expectedBannerGraphic)
+                          bannerGraphicPNGData: expectedBannerGraphic,
+                          isSponsorOnly: tags.contains("sponsors_only"),
+                          isSuperSponsorOnly: tags.contains("supersponsors_only"))
         }
         
         func makeExpectedEvents(from events: [APIEvent], response: APISyncResponse) -> [Event2] {

@@ -23,7 +23,9 @@ extension Event2: RandomValueProviding {
                       endDate: startDate.addingTimeInterval(.random),
                       eventDescription: .random,
                       posterGraphicPNGData: .random,
-                      bannerGraphicPNGData: .random)
+                      bannerGraphicPNGData: .random,
+                      isSponsorOnly: .random,
+                      isSuperSponsorOnly: .random)
     }
     
 }

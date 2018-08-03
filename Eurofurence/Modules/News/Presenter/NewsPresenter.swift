@@ -89,7 +89,18 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
                 component.setEventEndTime(event.endTime)
                 component.setEventName(event.eventName)
                 component.setLocation(event.location)
-                component.setIcon(event.icon)
+
+                if event.isSponsorEvent {
+                    component.showSponsorEventIndicator()
+                } else {
+                    component.hideSponsorEventIndicator()
+                }
+
+                if event.isSuperSponsorEvent {
+                    component.showSuperSponsorOnlyEventIndicator()
+                } else {
+                    component.hideSuperSponsorOnlyEventIndicator()
+                }
 
                 if event.isFavourite {
                     component.showFavouriteEventIndicator()

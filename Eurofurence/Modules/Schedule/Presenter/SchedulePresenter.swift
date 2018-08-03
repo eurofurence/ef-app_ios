@@ -29,6 +29,18 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
             eventComponent.setEventEndTime(event.endTime)
             eventComponent.setLocation(event.location)
 
+            if event.isSponsorOnly {
+                eventComponent.showSponsorEventIndicator()
+            } else {
+                eventComponent.hideSponsorEventIndicator()
+            }
+
+            if event.isSuperSponsorOnly {
+                eventComponent.showSuperSponsorOnlyEventIndicator()
+            } else {
+                eventComponent.hideSuperSponsorOnlyEventIndicator()
+            }
+
             if event.isFavourite {
                 eventComponent.showFavouriteEventIndicator()
             } else {
@@ -77,6 +89,18 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
             eventComponent.setEventStartTime(event.startTime)
             eventComponent.setEventEndTime(event.endTime)
             eventComponent.setLocation(event.location)
+
+            if event.isSponsorOnly {
+                eventComponent.showSponsorEventIndicator()
+            } else {
+                eventComponent.hideSponsorEventIndicator()
+            }
+
+            if event.isSuperSponsorOnly {
+                eventComponent.showSuperSponsorOnlyEventIndicator()
+            } else {
+                eventComponent.hideSuperSponsorOnlyEventIndicator()
+            }
 
             if event.isFavourite {
                 eventComponent.showFavouriteEventIndicator()

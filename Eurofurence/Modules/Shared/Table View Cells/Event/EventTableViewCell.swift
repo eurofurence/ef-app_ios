@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EventTableViewCell: UITableViewCell {
+class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
 
     // MARK: IBOutlets
 
@@ -17,12 +17,56 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var favouritedImageView: UIImageView!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var sponsorEventIndicator: UILabel!
+    @IBOutlet weak var superSponsorEventIndicator: UIView!
 
     // MARK: Overrides
 
     override func awakeFromNib() {
         super.awakeFromNib()
         favouritedImageView.tintColor = .red
+    }
+
+    // MARK: ScheduleEventComponent
+
+    func setEventStartTime(_ startTime: String) {
+        startTimeLabel.text = startTime
+    }
+
+    func setEventEndTime(_ endTime: String) {
+        endTimeLabel.text = endTime
+    }
+
+    func setEventName(_ eventName: String) {
+        eventNameLabel.text = eventName
+    }
+
+    func setLocation(_ location: String) {
+        locationLabel.text = location
+    }
+
+    func showFavouriteEventIndicator() {
+        favouritedImageView.isHidden = false
+    }
+
+    func hideFavouriteEventIndicator() {
+        favouritedImageView.isHidden = true
+    }
+
+    func showSponsorEventIndicator() {
+        sponsorEventIndicator.isHidden = false
+    }
+
+    func hideSponsorEventIndicator() {
+        sponsorEventIndicator.isHidden = true
+    }
+
+    func showSuperSponsorOnlyEventIndicator() {
+        superSponsorEventIndicator.isHidden = false
+    }
+
+    func hideSuperSponsorOnlyEventIndicator() {
+        superSponsorEventIndicator.isHidden = true
     }
 
 }

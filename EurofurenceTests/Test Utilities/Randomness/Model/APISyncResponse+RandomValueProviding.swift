@@ -29,7 +29,8 @@ extension APISyncResponse {
                             panelHosts: .random,
                             eventDescription: .random,
                             posterImageId: .random,
-                            bannerImageId: .random)
+                            bannerImageId: .random,
+                            tags: .random)
         }
         
         let dealers: APISyncDelta<APIDealer> = APISyncDelta(changed: .random)
@@ -95,7 +96,8 @@ extension APIKnowledgeEntry: RandomValueProviding {
                                  title: .random,
                                  order: .random,
                                  text: .random,
-                                 links: links)
+                                 links: links,
+                                 imageIdentifiers: .random)
     }
     
 }
@@ -154,7 +156,8 @@ extension APIEvent: RandomValueProviding {
                         panelHosts: .random,
                         eventDescription: .random,
                         posterImageId: .random,
-                        bannerImageId: .random)
+                        bannerImageId: .random,
+                        tags: .random)
     }
     
 }

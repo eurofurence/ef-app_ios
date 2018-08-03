@@ -130,7 +130,9 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
                                                   startTime: hoursDateFormatter.hoursString(from: event.startDate),
                                                   endTime: hoursDateFormatter.hoursString(from: event.endDate),
                                                   location: event.room.name,
-                                                  isFavourite: favouriteEvents.contains(event.identifier))
+                                                  isFavourite: favouriteEvents.contains(event.identifier),
+                                                  isSponsorOnly: event.isSponsorOnly,
+                                                  isSuperSponsorOnly: event.isSuperSponsorOnly)
                 }
 
                 return ScheduleEventGroupViewModel(title: title, events: viewModels)
@@ -293,7 +295,9 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
                                                   startTime: hoursDateFormatter.hoursString(from: event.startDate),
                                                   endTime: hoursDateFormatter.hoursString(from: event.endDate),
                                                   location: event.room.name,
-                                                  isFavourite: favouriteEvents.contains(event.identifier))
+                                                  isFavourite: favouriteEvents.contains(event.identifier),
+                                                  isSponsorOnly: event.isSponsorOnly,
+                                                  isSuperSponsorOnly: event.isSuperSponsorOnly)
                 }
 
                 return ScheduleEventGroupViewModel(title: title, events: viewModels)

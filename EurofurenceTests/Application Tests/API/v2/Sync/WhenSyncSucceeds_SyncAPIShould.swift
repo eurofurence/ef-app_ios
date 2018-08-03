@@ -95,7 +95,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                                            title: "Parkhaus Neukölln Arcaden",
                                                                                            order: 0,
                                                                                            text: "The Parkhaus Neukölln Arcaden is about 2.5 km away from the hotel which means an average walking time of 30 minutes. Compared to the hotel parking this is rather cheap.",
-                                                                                           links: [APILink(name: "Info Site (German)", fragmentType: .WebExternal, target: "https://www.mein-contipark.de/parkplatz-finden/parken-in-berlin/parkhaus-neukoelln-arcaden-berlin--ci3cp11881")])],
+                                                                                           links: [APILink(name: "Info Site (German)", fragmentType: .WebExternal, target: "https://www.mein-contipark.de/parkplatz-finden/parken-in-berlin/parkhaus-neukoelln-arcaden-berlin--ci3cp11881")],
+                                                                                           imageIdentifiers: ["518ade34-48a5-4c20-a512-07e9722fe2f6"])],
                                                                deleted: ["ba2f31ad-d42a-9e40-2c79-17bb9b2f36f3"])
         
         let rooms = APISyncDelta<APIRoom>(changed: [APIRoom(roomIdentifier: "dfa62eae-f881-4aab-a592-acf8fab14ae9",
@@ -130,7 +131,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                panelHosts: "Akulatraxas",
                                                                eventDescription: "NOT FINAL\r\n\r\n\r\nDo you like spending your evening around other artists, drawing and chatting about techniques, supplies and other themes? Then this social event, taking place every evening, is the right place for you to be creative and get to know eachother!\r\n\r\nCome sit with other artists and watch, chat and have a good time together while being productive on your convention commissions. This is the perfect opportunity to use your time effectively, get critique and help on your work and relax from the working day at the Dealers' Den or Artist Alley.\r\n",
                                                                posterImageId: "postertest",
-                                                               bannerImageId: "bannertest")],
+                                                               bannerImageId: "bannertest",
+                                                               tags: ["photoshoot"])],
                                             deleted: ["1452d472-feae-4483-8f55-93c25f7ec920"])
         
         let tracks = APISyncDelta<APITrack>(changed: [APITrack(trackIdentifier: "f92a4fc0-303f-4c13-9194-44121d80bd20",

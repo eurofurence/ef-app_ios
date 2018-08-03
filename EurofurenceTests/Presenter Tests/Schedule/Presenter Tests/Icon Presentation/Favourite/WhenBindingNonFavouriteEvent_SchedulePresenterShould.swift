@@ -14,14 +14,7 @@ class WhenBindingNonFavouriteEvent_SchedulePresenterShould: XCTestCase {
     func testNotTellTheSceneToShowTheFavouriteEventIndicator() {
         var eventViewModel = ScheduleEventViewModel.random
         eventViewModel.isFavourite = false
-        let eventGroupViewModel = ScheduleEventGroupViewModel(title: .random, events: [eventViewModel])
-        let viewModel = CapturingScheduleViewModel(days: .random, events: [eventGroupViewModel], currentDay: 0)
-        let interactor = FakeScheduleInteractor(viewModel: viewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
-        context.simulateSceneDidLoad()
-        let indexPath = IndexPath(item: 0, section: 0)
-        let component = CapturingScheduleEventComponent()
-        context.bind(component, forEventAt: indexPath)
+        let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
         
         XCTAssertFalse(component.didShowFavouriteEventIndicator)
     }
@@ -29,14 +22,7 @@ class WhenBindingNonFavouriteEvent_SchedulePresenterShould: XCTestCase {
     func testTellTheSceneToHideTheFavouriteEventIndicator() {
         var eventViewModel = ScheduleEventViewModel.random
         eventViewModel.isFavourite = false
-        let eventGroupViewModel = ScheduleEventGroupViewModel(title: .random, events: [eventViewModel])
-        let viewModel = CapturingScheduleViewModel(days: .random, events: [eventGroupViewModel], currentDay: 0)
-        let interactor = FakeScheduleInteractor(viewModel: viewModel)
-        let context = SchedulePresenterTestBuilder().with(interactor).build()
-        context.simulateSceneDidLoad()
-        let indexPath = IndexPath(item: 0, section: 0)
-        let component = CapturingScheduleEventComponent()
-        context.bind(component, forEventAt: indexPath)
+        let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
         
         XCTAssertTrue(component.didHideFavouriteEventIndicator)
     }

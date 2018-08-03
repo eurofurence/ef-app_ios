@@ -74,7 +74,7 @@ class WhenBindingEvent_NewsPresenterShould: XCTestCase {
     }
     
     func testReturnTheEventComponentWhenBinding() {
-        XCTAssertTrue(context.newsScene.stubbedEventComponent === (boundComponent as? CapturingNewsEventComponent))
+        XCTAssertTrue(context.newsScene.stubbedEventComponent === (boundComponent as? CapturingScheduleEventComponent))
     }
     
     func testBindTheStartTimeFromTheEventOntoTheEventScene() {
@@ -86,15 +86,11 @@ class WhenBindingEvent_NewsPresenterShould: XCTestCase {
     }
     
     func testBindTheEventNameFromTheEventOntoTheEventScene() {
-        XCTAssertEqual(eventViewModel.eventName, context.newsScene.stubbedEventComponent.capturedEventName)
+        XCTAssertEqual(eventViewModel.eventName, context.newsScene.stubbedEventComponent.capturedEventTitle)
     }
     
     func testBindTheEventLocationFromTheEventOntoTheEventScene() {
         XCTAssertEqual(eventViewModel.location, context.newsScene.stubbedEventComponent.capturedLocation)
-    }
-    
-    func testBindTheEventIconFromTheEventOntoTheEventScene() {
-        XCTAssertEqual(eventViewModel.icon, context.newsScene.stubbedEventComponent.capturedIcon)
     }
     
     func testTellTheDelegateEventSelectedWhenSceneSelectsComponentAtIndexPath() {

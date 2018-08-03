@@ -32,7 +32,9 @@ extension ScheduleEventViewModel: RandomValueProviding {
                                       startTime: .random,
                                       endTime: .random,
                                       location: .random,
-                                      isFavourite: .random)
+                                      isFavourite: .random,
+                                      isSponsorOnly: .random,
+                                      isSuperSponsorOnly: .random)
     }
     
 }

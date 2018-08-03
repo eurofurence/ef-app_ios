@@ -53,6 +53,21 @@ class NewsPresenterTestBuilder {
     
 }
 
+extension NewsPresenterTestBuilder {
+    
+    static func buildForAssertingAgainstEventComponent(eventViewModel: EventComponentViewModel) -> CapturingScheduleEventComponent {
+        let viewModel = SingleEventNewsViewModel(event: eventViewModel)
+        let indexPath = IndexPath(item: 0, section: 0)
+        let newsInteractor = StubNewsInteractor(viewModel: viewModel)
+        let context = NewsPresenterTestBuilder().with(newsInteractor).build()
+        context.simulateNewsSceneDidLoad()
+        context.bindSceneComponent(at: indexPath)
+        
+        return context.newsScene.stubbedEventComponent
+    }
+    
+}
+
 extension NewsPresenterTestBuilder.Context {
     
     func simulateNewsSceneDidLoad() {

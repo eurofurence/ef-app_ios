@@ -16,18 +16,10 @@ struct APIKnowledgeEntry: Comparable, Equatable {
     var order: Int
     var text: String
     var links: [APILink]
+    var imageIdentifiers: [String]
 
     static func <(lhs: APIKnowledgeEntry, rhs: APIKnowledgeEntry) -> Bool {
         return lhs.title < rhs.title
-    }
-
-    static func ==(lhs: APIKnowledgeEntry, rhs: APIKnowledgeEntry) -> Bool {
-        return lhs.identifier == rhs.identifier &&
-               lhs.groupIdentifier == rhs.groupIdentifier &&
-               lhs.title == rhs.title &&
-               lhs.order == rhs.order &&
-               lhs.text == rhs.text &&
-               lhs.links == rhs.links
     }
 
 }

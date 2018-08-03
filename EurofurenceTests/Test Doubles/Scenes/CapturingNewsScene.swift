@@ -62,8 +62,8 @@ class StubNewsComponentFactory: NewsComponentFactory {
         return stubbedAllAnnouncementsComponent
     }
     
-    let stubbedEventComponent = CapturingNewsEventComponent()
-    func makeEventComponent(configuringUsing block: (NewsEventComponent) -> Void) -> AnyObject {
+    let stubbedEventComponent = CapturingScheduleEventComponent()
+    func makeEventComponent(configuringUsing block: (ScheduleEventComponent) -> Void) -> AnyObject {
         block(stubbedEventComponent)
         return stubbedEventComponent
     }
@@ -90,45 +90,6 @@ class CapturingAllAnnouncementsComponent: AllAnnouncementsComponent {
     private(set) var capturedCaption: String?
     func showCaption(_ caption: String) {
         capturedCaption = caption
-    }
-    
-}
-
-class CapturingNewsEventComponent: NewsEventComponent {
-    
-    private(set) var capturedStartTime: String?
-    func setEventStartTime(_ startTime: String) {
-        capturedStartTime = startTime
-    }
-    
-    private(set) var capturedEndTime: String?
-    func setEventEndTime(_ endTime: String) {
-        capturedEndTime = endTime
-    }
-    
-    private(set) var capturedEventName: String?
-    func setEventName(_ eventName: String) {
-        capturedEventName = eventName
-    }
-    
-    private(set) var capturedLocation: String?
-    func setLocation(_ location: String) {
-        capturedLocation = location
-    }
-    
-    private(set) var capturedIcon: UIImage?
-    func setIcon(_ icon: UIImage?) {
-        capturedIcon = icon
-    }
-    
-    private(set) var didShowFavouriteEventIndicator = false
-    func showFavouriteEventIndicator() {
-        didShowFavouriteEventIndicator = true
-    }
-    
-    private(set) var didHideFavouriteEventIndicator = false
-    func hideFavouriteEventIndicator() {
-        didHideFavouriteEventIndicator = true
     }
     
 }
@@ -183,7 +144,7 @@ extension CapturingNewsScene {
         return componentFactory.stubbedAllAnnouncementsComponent
     }
     
-    var stubbedEventComponent: CapturingNewsEventComponent {
+    var stubbedEventComponent: CapturingScheduleEventComponent {
         return componentFactory.stubbedEventComponent
     }
     

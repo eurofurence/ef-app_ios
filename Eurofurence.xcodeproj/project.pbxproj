@@ -216,8 +216,6 @@
 		CA00AE6620D1784500C2FBB0 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE6420D1784500C2FBB0 /* EventTableViewCell.swift */; };
 		CA00AE6720D1784500C2FBB0 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA00AE6520D1784500C2FBB0 /* EventTableViewCell.xib */; };
 		CA00AE6C20D178FA00C2FBB0 /* UITableView+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE6B20D178FA00C2FBB0 /* UITableView+Convenience.swift */; };
-		CA00AE6E20D179ED00C2FBB0 /* EventTableViewCell+NewsEventComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE6D20D179ED00C2FBB0 /* EventTableViewCell+NewsEventComponent.swift */; };
-		CA00AE7020D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE6F20D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift */; };
 		CA00AE7320D18D1E00C2FBB0 /* WhenPreparingViewModel_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE7220D18D1E00C2FBB0 /* WhenPreparingViewModel_ScheduleInteractorShould.swift */; };
 		CA00AE7520D1AA0F00C2FBB0 /* DefaultScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE7420D1AA0F00C2FBB0 /* DefaultScheduleInteractor.swift */; };
 		CA00AE7720D1AA2100C2FBB0 /* CapturingScheduleViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE7620D1AA2000C2FBB0 /* CapturingScheduleViewModelDelegate.swift */; };
@@ -401,6 +399,25 @@
 		CA2725522110FA40004C6D0A /* WhenSelectingKnowledgeGroup_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2725512110FA40004C6D0A /* WhenSelectingKnowledgeGroup_DirectorShould.swift */; };
 		CA2725542110FBAF004C6D0A /* WhenBuildingKnowledgeGroupEntriesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2725532110FBAF004C6D0A /* WhenBuildingKnowledgeGroupEntriesModule.swift */; };
 		CA272556211102F1004C6D0A /* Character+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA272555211102F1004C6D0A /* Character+RandomValueProviding.swift */; };
+		CA27255C2112525E004C6D0A /* CapturingKnowledgeEntryImageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27255B2112525E004C6D0A /* CapturingKnowledgeEntryImageScene.swift */; };
+		CA27255E21125393004C6D0A /* KnowledgeEntryImageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27255D21125393004C6D0A /* KnowledgeEntryImageScene.swift */; };
+		CA2725602112542D004C6D0A /* KnowledgentryImagesBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27255F2112542D004C6D0A /* KnowledgentryImagesBinder.swift */; };
+		CA272562211255DE004C6D0A /* KnowledgeDetailImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA272561211255DE004C6D0A /* KnowledgeDetailImageTableViewCell.swift */; };
+		CA27256421132032004C6D0A /* WhenBindingSuperSponsorOnlyEvent_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27256321132032004C6D0A /* WhenBindingSuperSponsorOnlyEvent_SchedulePresenterShould.swift */; };
+		CA27256621132287004C6D0A /* WhenBindingNonSuperSponsorOnlyEvent_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27256521132287004C6D0A /* WhenBindingNonSuperSponsorOnlyEvent_SchedulePresenterShould.swift */; };
+		CA27256F21137EED004C6D0A /* WhenBindingSuperSponsorOnlyEvent_FromSearchResult_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27256E21137EED004C6D0A /* WhenBindingSuperSponsorOnlyEvent_FromSearchResult_SchedulePresenterShould.swift */; };
+		CA27257121137FD4004C6D0A /* WhenBindingNonSuperSponsorOnlyEvent_FromSearchResult_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27257021137FD4004C6D0A /* WhenBindingNonSuperSponsorOnlyEvent_FromSearchResult_SchedulePresenterShould.swift */; };
+		CA27257321138AFF004C6D0A /* WhenBindingSuperSponsorEvent_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27257221138AFF004C6D0A /* WhenBindingSuperSponsorEvent_NewsPresenterShould.swift */; };
+		CA27257821138D21004C6D0A /* SingleEventNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27257721138D21004C6D0A /* SingleEventNewsViewModel.swift */; };
+		CA27257A21138DC0004C6D0A /* WhenBindingNonSuperSponsorEvent_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27257921138DC0004C6D0A /* WhenBindingNonSuperSponsorEvent_NewsPresenterShould.swift */; };
+		CA27257F211394C4004C6D0A /* WhenBindingSponsorEvent_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27257E211394C4004C6D0A /* WhenBindingSponsorEvent_NewsPresenterShould.swift */; };
+		CA27258121139750004C6D0A /* WhenBindingNonSponsorEvent_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27258021139750004C6D0A /* WhenBindingNonSponsorEvent_NewsPresenterShould.swift */; };
+		CA27258421139A1D004C6D0A /* WhenBindingSponsorEvent_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27258321139A1D004C6D0A /* WhenBindingSponsorEvent_SchedulePresenterShould.swift */; };
+		CA27258621139B57004C6D0A /* WhenBindingNonSponsorEvent_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27258521139B57004C6D0A /* WhenBindingNonSponsorEvent_SchedulePresenterShould.swift */; };
+		CA27258821139D21004C6D0A /* WhenBindingSponsorEvent_ForSearchResult_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27258721139D21004C6D0A /* WhenBindingSponsorEvent_ForSearchResult_SchedulePresenterShould.swift */; };
+		CA27258A21139DA4004C6D0A /* WhenBindingNonSponsorEvent_ForSearchResult_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27258921139DA4004C6D0A /* WhenBindingNonSponsorEvent_ForSearchResult_SchedulePresenterShould.swift */; };
+		CA27258D2113B1F4004C6D0A /* InOrderToSupportSponsorTag_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27258C2113B1F4004C6D0A /* InOrderToSupportSponsorTag_ApplicationShould.swift */; };
+		CA27258F2113B665004C6D0A /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27258E2113B665004C6D0A /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift */; };
 		CA27618220DF932C000E52AC /* AspectRatioConstrainedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */; };
 		CA27618420DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618320DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift */; };
 		CA27618620DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */; };
@@ -1501,8 +1518,6 @@
 		CA00AE6420D1784500C2FBB0 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		CA00AE6520D1784500C2FBB0 /* EventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
 		CA00AE6B20D178FA00C2FBB0 /* UITableView+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Convenience.swift"; sourceTree = "<group>"; };
-		CA00AE6D20D179ED00C2FBB0 /* EventTableViewCell+NewsEventComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventTableViewCell+NewsEventComponent.swift"; sourceTree = "<group>"; };
-		CA00AE6F20D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventTableViewCell+ScheduleEventComponent.swift"; sourceTree = "<group>"; };
 		CA00AE7220D18D1E00C2FBB0 /* WhenPreparingViewModel_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
 		CA00AE7420D1AA0F00C2FBB0 /* DefaultScheduleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultScheduleInteractor.swift; sourceTree = "<group>"; };
 		CA00AE7620D1AA2000C2FBB0 /* CapturingScheduleViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingScheduleViewModelDelegate.swift; sourceTree = "<group>"; };
@@ -1686,6 +1701,25 @@
 		CA2725512110FA40004C6D0A /* WhenSelectingKnowledgeGroup_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSelectingKnowledgeGroup_DirectorShould.swift; sourceTree = "<group>"; };
 		CA2725532110FBAF004C6D0A /* WhenBuildingKnowledgeGroupEntriesModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingKnowledgeGroupEntriesModule.swift; sourceTree = "<group>"; };
 		CA272555211102F1004C6D0A /* Character+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA27255B2112525E004C6D0A /* CapturingKnowledgeEntryImageScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeEntryImageScene.swift; sourceTree = "<group>"; };
+		CA27255D21125393004C6D0A /* KnowledgeEntryImageScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntryImageScene.swift; sourceTree = "<group>"; };
+		CA27255F2112542D004C6D0A /* KnowledgentryImagesBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgentryImagesBinder.swift; sourceTree = "<group>"; };
+		CA272561211255DE004C6D0A /* KnowledgeDetailImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailImageTableViewCell.swift; sourceTree = "<group>"; };
+		CA27256321132032004C6D0A /* WhenBindingSuperSponsorOnlyEvent_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingSuperSponsorOnlyEvent_SchedulePresenterShould.swift; sourceTree = "<group>"; };
+		CA27256521132287004C6D0A /* WhenBindingNonSuperSponsorOnlyEvent_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingNonSuperSponsorOnlyEvent_SchedulePresenterShould.swift; sourceTree = "<group>"; };
+		CA27256E21137EED004C6D0A /* WhenBindingSuperSponsorOnlyEvent_FromSearchResult_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingSuperSponsorOnlyEvent_FromSearchResult_SchedulePresenterShould.swift; sourceTree = "<group>"; };
+		CA27257021137FD4004C6D0A /* WhenBindingNonSuperSponsorOnlyEvent_FromSearchResult_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingNonSuperSponsorOnlyEvent_FromSearchResult_SchedulePresenterShould.swift; sourceTree = "<group>"; };
+		CA27257221138AFF004C6D0A /* WhenBindingSuperSponsorEvent_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingSuperSponsorEvent_NewsPresenterShould.swift; sourceTree = "<group>"; };
+		CA27257721138D21004C6D0A /* SingleEventNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleEventNewsViewModel.swift; sourceTree = "<group>"; };
+		CA27257921138DC0004C6D0A /* WhenBindingNonSuperSponsorEvent_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingNonSuperSponsorEvent_NewsPresenterShould.swift; sourceTree = "<group>"; };
+		CA27257E211394C4004C6D0A /* WhenBindingSponsorEvent_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingSponsorEvent_NewsPresenterShould.swift; sourceTree = "<group>"; };
+		CA27258021139750004C6D0A /* WhenBindingNonSponsorEvent_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingNonSponsorEvent_NewsPresenterShould.swift; sourceTree = "<group>"; };
+		CA27258321139A1D004C6D0A /* WhenBindingSponsorEvent_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingSponsorEvent_SchedulePresenterShould.swift; sourceTree = "<group>"; };
+		CA27258521139B57004C6D0A /* WhenBindingNonSponsorEvent_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingNonSponsorEvent_SchedulePresenterShould.swift; sourceTree = "<group>"; };
+		CA27258721139D21004C6D0A /* WhenBindingSponsorEvent_ForSearchResult_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingSponsorEvent_ForSearchResult_SchedulePresenterShould.swift; sourceTree = "<group>"; };
+		CA27258921139DA4004C6D0A /* WhenBindingNonSponsorEvent_ForSearchResult_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingNonSponsorEvent_ForSearchResult_SchedulePresenterShould.swift; sourceTree = "<group>"; };
+		CA27258C2113B1F4004C6D0A /* InOrderToSupportSponsorTag_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOrderToSupportSponsorTag_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA27258E2113B665004C6D0A /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOrderToSupportSuperSponsorTag_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA27618120DF932C000E52AC /* AspectRatioConstrainedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioConstrainedImageView.swift; sourceTree = "<group>"; };
 		CA27618320DFE09B000E52AC /* WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingExtendedDealerDetail_WhenMissingAttributes_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA27618520DFE8F6000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould.swift; sourceTree = "<group>"; };
@@ -3552,7 +3586,6 @@
 			isa = PBXGroup;
 			children = (
 				CA6AA0171FD8834D0092C6DB /* News.storyboard */,
-				CA00AE6D20D179ED00C2FBB0 /* EventTableViewCell+NewsEventComponent.swift */,
 				CA0E521D208FC796005259FE /* NewsConventionCountdownTableViewCell.swift */,
 				CAC1E12A1F5040E100195513 /* NewsScene.swift */,
 				CAF3C74F1F9FC74C0008F027 /* NewsSceneFactory.swift */,
@@ -3640,12 +3673,13 @@
 				CABEB0D120C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift */,
 				CA52C68620D6A671009D3A9E /* WhenResolvingEventByIdentifier_ForEventThatDoesNotExist_ApplicationShould.swift */,
 				CA52C68820D6A756009D3A9E /* WhenResolvingEventByIdentifier_ForEventThatExists_ApplicationShould.swift */,
-				CA36A44020D7020900EE6537 /* WhenSearchingForEvents_BeforeAnyAreAvailable_ApplicationShould.swift */,
 				CA36A44620D7065800EE6537 /* WhenSearchingForEvents_ApplicationShould.swift */,
+				CA36A44020D7020900EE6537 /* WhenSearchingForEvents_BeforeAnyAreAvailable_ApplicationShould.swift */,
 				CABEB0D320C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift */,
 				CACF1EBF20B60D2B00D904B5 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift */,
 				CABA83FD20CEF88800DD0795 /* Favourites */,
 				CA162EB020AA2DC9004AFED6 /* Running */,
+				CA27258B2113B1E3004C6D0A /* Tag Adaption */,
 				CA3990F020ACD693001E3F1A /* Upcoming */,
 			);
 			path = Events;
@@ -3823,6 +3857,96 @@
 				CA063B4720F3E27000241CC9 /* RestorationIdentifierOrderingPolicy.swift */,
 			);
 			path = Director;
+			sourceTree = "<group>";
+		};
+		CA27256921132755004C6D0A /* Icon Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				CA27256D21137E91004C6D0A /* Favourite */,
+				CA27258221139A05004C6D0A /* Sponsor */,
+				CA27256C21137E82004C6D0A /* Super Sponsor */,
+			);
+			path = "Icon Presentation";
+			sourceTree = "<group>";
+		};
+		CA27256C21137E82004C6D0A /* Super Sponsor */ = {
+			isa = PBXGroup;
+			children = (
+				CA27257021137FD4004C6D0A /* WhenBindingNonSuperSponsorOnlyEvent_FromSearchResult_SchedulePresenterShould.swift */,
+				CA27256521132287004C6D0A /* WhenBindingNonSuperSponsorOnlyEvent_SchedulePresenterShould.swift */,
+				CA27256E21137EED004C6D0A /* WhenBindingSuperSponsorOnlyEvent_FromSearchResult_SchedulePresenterShould.swift */,
+				CA27256321132032004C6D0A /* WhenBindingSuperSponsorOnlyEvent_SchedulePresenterShould.swift */,
+			);
+			path = "Super Sponsor";
+			sourceTree = "<group>";
+		};
+		CA27256D21137E91004C6D0A /* Favourite */ = {
+			isa = PBXGroup;
+			children = (
+				CA283ADD20EC00F100F7D195 /* WhenBindingFavouriteEvent_SchedulePresenterShould.swift */,
+				CA283ADF20EC032B00F7D195 /* WhenBindingNonFavouriteEvent_SchedulePresenterShould.swift */,
+				CA283AE320EC178600F7D195 /* WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift */,
+				CA283AE520EC188E00F7D195 /* WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift */,
+			);
+			path = Favourite;
+			sourceTree = "<group>";
+		};
+		CA27257421138B0A004C6D0A /* Event Icon Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				CA27257721138D21004C6D0A /* SingleEventNewsViewModel.swift */,
+				CA27257521138B18004C6D0A /* Favourites */,
+				CA27257D211394B1004C6D0A /* Sponsor */,
+				CA27257621138B1F004C6D0A /* Super Sponsor */,
+			);
+			path = "Event Icon Presentation";
+			sourceTree = "<group>";
+		};
+		CA27257521138B18004C6D0A /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				CACF26C820FE258B00EDE150 /* WhenBindingFavouriteEvent_NewsPresenterShould.swift */,
+				CACF26CA20FE290000EDE150 /* WhenBindingNonFavouriteEvent_NewsPresenterShould.swift */,
+			);
+			path = Favourites;
+			sourceTree = "<group>";
+		};
+		CA27257621138B1F004C6D0A /* Super Sponsor */ = {
+			isa = PBXGroup;
+			children = (
+				CA27257921138DC0004C6D0A /* WhenBindingNonSuperSponsorEvent_NewsPresenterShould.swift */,
+				CA27257221138AFF004C6D0A /* WhenBindingSuperSponsorEvent_NewsPresenterShould.swift */,
+			);
+			path = "Super Sponsor";
+			sourceTree = "<group>";
+		};
+		CA27257D211394B1004C6D0A /* Sponsor */ = {
+			isa = PBXGroup;
+			children = (
+				CA27258021139750004C6D0A /* WhenBindingNonSponsorEvent_NewsPresenterShould.swift */,
+				CA27257E211394C4004C6D0A /* WhenBindingSponsorEvent_NewsPresenterShould.swift */,
+			);
+			path = Sponsor;
+			sourceTree = "<group>";
+		};
+		CA27258221139A05004C6D0A /* Sponsor */ = {
+			isa = PBXGroup;
+			children = (
+				CA27258521139B57004C6D0A /* WhenBindingNonSponsorEvent_SchedulePresenterShould.swift */,
+				CA27258721139D21004C6D0A /* WhenBindingSponsorEvent_ForSearchResult_SchedulePresenterShould.swift */,
+				CA27258321139A1D004C6D0A /* WhenBindingSponsorEvent_SchedulePresenterShould.swift */,
+				CA27258921139DA4004C6D0A /* WhenBindingNonSponsorEvent_ForSearchResult_SchedulePresenterShould.swift */,
+			);
+			path = Sponsor;
+			sourceTree = "<group>";
+		};
+		CA27258B2113B1E3004C6D0A /* Tag Adaption */ = {
+			isa = PBXGroup;
+			children = (
+				CA27258C2113B1F4004C6D0A /* InOrderToSupportSponsorTag_ApplicationShould.swift */,
+				CA27258E2113B665004C6D0A /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift */,
+			);
+			path = "Tag Adaption";
 			sourceTree = "<group>";
 		};
 		CA27618020DF9315000E52AC /* Views */ = {
@@ -4479,11 +4603,7 @@
 				CA00AE5D20D173C000C2FBB0 /* WhenBindingEvent_SchedulePresenterShould.swift */,
 				CA250DD320D6E28B00E7513C /* WhenBindingEventFromSearchResult_SchedulePresenterShould.swift */,
 				CA00AE5520D1710300C2FBB0 /* WhenBindingEventGroup_SchedulePresenterShould.swift */,
-				CA283AE320EC178600F7D195 /* WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift */,
-				CA283ADD20EC00F100F7D195 /* WhenBindingFavouriteEvent_SchedulePresenterShould.swift */,
 				CA250DD720D6E4AF00E7513C /* WhenBindingGroupFromSearchResult_SchedulePresenterShould.swift */,
-				CA283AE520EC188E00F7D195 /* WhenBindingNonFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift */,
-				CA283ADF20EC032B00F7D195 /* WhenBindingNonFavouriteEvent_SchedulePresenterShould.swift */,
 				CA63758B208CE06100536BE2 /* WhenBuildingScheduleModule.swift */,
 				CA283A7920E91A7900F7D195 /* WhenInstigatingPullToRefreshAction_SchedulePresenterShould.swift */,
 				CACF26CE20FE590600EDE150 /* WhenSceneChangesSearchScopeToAllEvents_SchedulePresenterShould.swift */,
@@ -4497,6 +4617,7 @@
 				CA08158820D448DC00F750D4 /* WhenScheduleSceneSelectsDay_SchedulePresenterShould.swift */,
 				CA283AEF20ED67D600F7D195 /* WhenScheduleSceneSelectsFavouritesOption_SchedulePresenterShould.swift */,
 				CA250DD120D6D63600E7513C /* WhenSearchableViewModelProducesNewResult_SchedulePresenterShould.swift */,
+				CA27256921132755004C6D0A /* Icon Presentation */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -4550,7 +4671,6 @@
 			isa = PBXGroup;
 			children = (
 				CA63759B208DFDF900536BE2 /* Schedule.storyboard */,
-				CA00AE6F20D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift */,
 				CA52C69820D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift */,
 				CA08157720D3865600F750D4 /* NavigationBarViewExtensionContainer.swift */,
 				CA00AE8C20D2925500C2FBB0 /* ScheduleDayCollectionViewCell.swift */,
@@ -5054,8 +5174,10 @@
 			children = (
 				CA6EC47E2051CBC800402894 /* KnowledgeDetailScene.swift */,
 				CA6EC47C2051CBB800402894 /* KnowledgeDetailSceneFactory.swift */,
-				CA17FE8020580082005A4C05 /* LinkScene.swift */,
+				CA27255D21125393004C6D0A /* KnowledgeEntryImageScene.swift */,
+				CA27255F2112542D004C6D0A /* KnowledgentryImagesBinder.swift */,
 				CA17FE8420580144005A4C05 /* LinksBinder.swift */,
+				CA17FE8020580082005A4C05 /* LinkScene.swift */,
 			);
 			path = Abstraction;
 			sourceTree = "<group>";
@@ -5063,11 +5185,12 @@
 		CA6EC4802051CBDF00402894 /* Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
+				CAD3BDBA205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift */,
 				CA6EC4812051CBE600402894 /* CapturingKnowledgeDetailScene.swift */,
+				CA27255B2112525E004C6D0A /* CapturingKnowledgeEntryImageScene.swift */,
+				CA17FE7E2058006F005A4C05 /* CapturingLinkScene.swift */,
 				CA6EC4832051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift */,
 				CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */,
-				CA17FE7E2058006F005A4C05 /* CapturingLinkScene.swift */,
-				CAD3BDBA205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -5076,10 +5199,11 @@
 			isa = PBXGroup;
 			children = (
 				CA6EC4862051CD8F00402894 /* KnowledgeDetail.storyboard */,
-				CA6EC48A2051CDC800402894 /* KnowledgeDetailViewController.swift */,
-				CA6EC4882051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift */,
 				CA17FE8620580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift */,
+				CA272561211255DE004C6D0A /* KnowledgeDetailImageTableViewCell.swift */,
+				CA6EC48A2051CDC800402894 /* KnowledgeDetailViewController.swift */,
 				CA17FE8A20585D9C005A4C05 /* LinkTableViewCell.swift */,
+				CA6EC4882051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -6028,8 +6152,6 @@
 				CA89CBBB2084CB4200570D54 /* WhenBindingAnnouncement_NewsPresenterShould.swift */,
 				CA0E5218208FC062005259FE /* WhenBindingConventionCountdown_NewsPresenterShould.swift */,
 				CA9AC16A208546530039C0C2 /* WhenBindingEvent_NewsPresenterShould.swift */,
-				CACF26C820FE258B00EDE150 /* WhenBindingFavouriteEvent_NewsPresenterShould.swift */,
-				CACF26CA20FE290000EDE150 /* WhenBindingNonFavouriteEvent_NewsPresenterShould.swift */,
 				CA283A7F20E93CBC00F7D195 /* WhenBindingReadAnnouncements_NewsPresenterShould.swift */,
 				CA283A8120E93F9600F7D195 /* WhenBindingUnreadAnnouncements_NewsPresenterShould.swift */,
 				CAD68827208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift */,
@@ -6039,6 +6161,7 @@
 				CA60BFE7207B88ED00697566 /* WhenBuildingNewsPresenter.swift */,
 				CA60C001207F7D2100697566 /* WhenNewsSceneDidLoad.swift */,
 				CA283A5D20E6E9FB00F7D195 /* WhenSceneInstigatesPullToRefresh_NewsPresenterShould.swift */,
+				CA27257421138B0A004C6D0A /* Event Icon Presentation */,
 				CA60BFE9207B88F100697566 /* Unauthenticated */,
 			);
 			path = "Presenter Tests";
@@ -6404,6 +6527,7 @@
 				9ACF99311EBE172D006FC958 /* Frameworks */,
 				9ACF99321EBE172D006FC958 /* Resources */,
 				AD43207D87B13D6AADFF543F /* [CP] Embed Pods Frameworks */,
+				2055AB1121145F4600EB490B /* Set version in Root.plist */,
 				9ACB01051F1808BA001CE9D2 /* Upload to Firebase */,
 			);
 			buildRules = (
@@ -6599,6 +6723,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2055AB1121145F4600EB490B /* Set version in Root.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Set version in Root.plist";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PLISTBUDDY=\"/usr/libexec/PlistBuddy\"\nINFO_PLIST=\"$CODESIGNING_FOLDER_PATH/Info.plist\"\nSETTINGS_PLIST=\"$CODESIGNING_FOLDER_PATH/Settings.bundle/Root.plist\"\nVERSION_NUMBER=\"`$PLISTBUDDY -c \\\"Print CFBundleShortVersionString\\\" \\\"$INFO_PLIST\\\"`\"\nBUILD_NUMBER=\"`$PLISTBUDDY -c \\\"Print CFBundleVersion\\\" \\\"$INFO_PLIST\\\"`\"\nVERSION=\"$VERSION_NUMBER ($BUILD_NUMBER)\"\n\necho $VERSION\necho $SETTINGS_PLIST\n# The PreferenceSpecifier is currently at position 3 in the array.\n# This value needs to be adjusted if the entry is moved further up or down!\n$PLISTBUDDY -c \"Set :PreferenceSpecifiers:3:DefaultValue '$VERSION'\" \"$SETTINGS_PLIST\"";
+		};
 		78CA0D0B1F0D7D81006DFD64 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -6761,6 +6899,7 @@
 				CA6EC4752051664D00402894 /* KnowledgeDetailModuleBuilder.swift in Sources */,
 				CA8D97D7201616DF0074838F /* BlockEventConsumer.swift in Sources */,
 				781A94331F1A1994002DE70F /* FCMDeviceRegistration.swift in Sources */,
+				CA2725602112542D004C6D0A /* KnowledgentryImagesBinder.swift in Sources */,
 				CA2D04FE20EE910E00CF54E1 /* NotificationsService.swift in Sources */,
 				9A861EAF1F2554F900B75A8C /* TutorialPresenter.swift in Sources */,
 				6EF96CCC1F0EDB0500EE6134 /* CalendarEvent.swift in Sources */,
@@ -6836,6 +6975,7 @@
 				CAB138131FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift in Sources */,
 				9A8ECA2F1F2D245F00351A83 /* CollectEmAllViewController.swift in Sources */,
 				9A34B97F1ED06946004A249E /* ContextResolver.swift in Sources */,
+				CA272562211255DE004C6D0A /* KnowledgeDetailImageTableViewCell.swift in Sources */,
 				6EF96CC81F0EDAE800EE6134 /* CalendarStore.swift in Sources */,
 				9ACF998E1EC858B2006FC958 /* Event.swift in Sources */,
 				CACF1E5820AE2DED00D904B5 /* EventDetailSceneFactory.swift in Sources */,
@@ -7019,6 +7159,7 @@
 				CA36A4C220DA757B00EE6537 /* DealersSearchViewModel.swift in Sources */,
 				CA73AEF5201A08D1004E77BF /* KnowledgeGroupsListPresenter.swift in Sources */,
 				9A2A94911F12E7D6004D66FB /* SyncStateProvider.swift in Sources */,
+				CA27255E21125393004C6D0A /* KnowledgeEntryImageScene.swift in Sources */,
 				CA2761AF20E022CB000E52AC /* CollectThemAllModule.swift in Sources */,
 				CAD780501F1E2D13002A8333 /* CredentialStore.swift in Sources */,
 				CA65A87520990C9500B72533 /* EventBus+Convenience.swift in Sources */,
@@ -7134,7 +7275,6 @@
 				CABA83EA20CDBBD600DD0795 /* PersistentImageRepository.swift in Sources */,
 				9A861ED71F25564900B75A8C /* StoryboardRouters.swift in Sources */,
 				78567B431F10303600EBA31D /* ApplicationActivityIndicatorRefreshDelegate.swift in Sources */,
-				CA00AE6E20D179ED00C2FBB0 /* EventTableViewCell+NewsEventComponent.swift in Sources */,
 				D6F3D4C7FF8BB27C46EF4D3D /* ServiceResolver.swift in Sources */,
 				CA73AEEE201A08A6004E77BF /* KnowledgeGroupsInteractor.swift in Sources */,
 				CA728461209D0642007D912A /* AnnouncementDetailViewController.swift in Sources */,
@@ -7168,7 +7308,6 @@
 				CA27618C20DFEF6E000E52AC /* OpenURL.swift in Sources */,
 				D6F3DEDDAFE507E873CB3806 /* WikiText.swift in Sources */,
 				CA1B6F2420DB886300ADF414 /* DealerDetailViewModel.swift in Sources */,
-				CA00AE7020D17A8C00C2FBB0 /* EventTableViewCell+ScheduleEventComponent.swift in Sources */,
 				CA72846A209D1442007D912A /* AnnouncementViewModel.swift in Sources */,
 				CA40109521107FBB0056E16C /* KnowledgeGroupEntriesModuleDelegate.swift in Sources */,
 				CA6A9FF71FD5E7850092C6DB /* LoginViewControllerV2.swift in Sources */,
@@ -7366,12 +7505,14 @@
 				CA162E7820A4B6E0004AFED6 /* StubConventionStartDateRepository.swift in Sources */,
 				CABA83FF20CEF91400DD0795 /* WhenLaunchingApplicationWithPreexistingFavourites.swift in Sources */,
 				CA08159C20D47BEA00F750D4 /* CapturingEventsScheduleDelegate.swift in Sources */,
+				CA27258621139B57004C6D0A /* WhenBindingNonSponsorEvent_SchedulePresenterShould.swift in Sources */,
 				CA734D7B210A4DFE00221886 /* WhenDeletingDealer_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CA36A46320D84A7100EE6537 /* CapturingDealersViewModel.swift in Sources */,
 				CAA6060F20EF913C00075A4E /* WhenToldToOpenNotification_ThatRepresentsSyncEvent_ApplicationShould.swift in Sources */,
 				CACF1EAA20B5BFF100D904B5 /* WhenPreparingViewModelForEventWithNoDescription_EventDetailInteractorShould.swift in Sources */,
 				CABA83F420CE988B00DD0795 /* WhenFavouritingEventViewModel_EventDetailInteractorShould.swift in Sources */,
 				CAD260A720C03909007E3618 /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift in Sources */,
+				CA27255C2112525E004C6D0A /* CapturingKnowledgeEntryImageScene.swift in Sources */,
 				CA6A8E0320E5048A007536CD /* WhenSceneTapsMapPosition_ThatProvidesSimpleContextualDetail_MapsPresenterShould.swift in Sources */,
 				CA283A7C20E91F3600F7D195 /* WhenToldToRefresh_ScheduleViewModelShould.swift in Sources */,
 				CA08159320D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift in Sources */,
@@ -7479,6 +7620,7 @@
 				CAD234421F5F2FA8004BB959 /* AppDataBuilder.swift in Sources */,
 				CA283A8020E93CBC00F7D195 /* WhenBindingReadAnnouncements_NewsPresenterShould.swift in Sources */,
 				CA40108D21107C2C0056E16C /* WhenBindingKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift in Sources */,
+				CA27258A21139DA4004C6D0A /* WhenBindingNonSponsorEvent_ForSearchResult_SchedulePresenterShould.swift in Sources */,
 				CA6A8D6720E263A0007536CD /* WhenBuildingMapsModule.swift in Sources */,
 				CA5BF9D51F7AF9160045DBC0 /* PreloadPresenterTests.swift in Sources */,
 				CA2761A920E021FB000E52AC /* CapturingCollectThemAllScene.swift in Sources */,
@@ -7565,6 +7707,7 @@
 				CA283A8A20E96E6500F7D195 /* WhenOpeningAnnouncement_ApplicationShould.swift in Sources */,
 				CA6EC4842051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift in Sources */,
 				CA00AE5E20D173C000C2FBB0 /* WhenBindingEvent_SchedulePresenterShould.swift in Sources */,
+				CA27258F2113B665004C6D0A /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift in Sources */,
 				CA162EAC20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift in Sources */,
 				CA2D08061FE94BF000BFD785 /* RootModuleTestBuilder.swift in Sources */,
 				CA52C67720D590BF009D3A9E /* WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould.swift in Sources */,
@@ -7618,6 +7761,7 @@
 				CA36A4DA20DAE4CF00EE6537 /* WhenSceneSelectsSearchResult_DealersPresenterShould.swift in Sources */,
 				CA283AF220ED68BE00F7D195 /* WhenScheduleSceneSelectsAllEventsOption_SchedulePresenterShould.swift in Sources */,
 				CA36A48520D9243E00EE6537 /* WhenBindingDealerGroupHeading_DealersPresenterShould.swift in Sources */,
+				CA27257F211394C4004C6D0A /* WhenBindingSponsorEvent_NewsPresenterShould.swift in Sources */,
 				CACF1EA220B59C3A00D904B5 /* EventDescriptionViewModel+RandomValueProviding.swift in Sources */,
 				781A94381F1A19BD002DE70F /* CapturingFirebaseAdapter.swift in Sources */,
 				CA6A8E0920E57795007536CD /* WhenFetchingMapContentThatRevealsRoom_ApplicationShould.swift in Sources */,
@@ -7641,6 +7785,7 @@
 				CAF3C74E1F9FC72C0008F027 /* StubNewsSceneFactory.swift in Sources */,
 				CAD6882E208A13D400B31F5F /* Bool+RandomValueProviding.swift in Sources */,
 				CAD3BDB72059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift in Sources */,
+				CA27258421139A1D004C6D0A /* WhenBindingSponsorEvent_SchedulePresenterShould.swift in Sources */,
 				CA2B4FAA1F1F7F1200F007E1 /* CapturingLoginObserver.swift in Sources */,
 				CA00AE5620D1710300C2FBB0 /* WhenBindingEventGroup_SchedulePresenterShould.swift in Sources */,
 				CA283A8820E9612900F7D195 /* AnnouncementDetailInteractorTestBuilder.swift in Sources */,
@@ -7678,6 +7823,7 @@
 				CA63756C208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift in Sources */,
 				CA162EB220AA2DE0004AFED6 /* WhenObservingRunningEventsBeforeLoadingAnything.swift in Sources */,
 				CA131BD520C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift in Sources */,
+				CA27258D2113B1F4004C6D0A /* InOrderToSupportSponsorTag_ApplicationShould.swift in Sources */,
 				CA36A46D20D84B5600EE6537 /* BeforeDealersSceneLoads_DealersPresenterShould.swift in Sources */,
 				CA957B5A1F705A6D004DFD5A /* MessagesViewControllerTests.swift in Sources */,
 				CA8276BA204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift in Sources */,
@@ -7728,6 +7874,7 @@
 				CA637597208DFD4B00536BE2 /* StubScheduleSceneFactory.swift in Sources */,
 				7820A6F61F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift in Sources */,
 				CA89CBC02085383100570D54 /* StubNewsInteractor.swift in Sources */,
+				CA27256621132287004C6D0A /* WhenBindingNonSuperSponsorOnlyEvent_SchedulePresenterShould.swift in Sources */,
 				CA2725522110FA40004C6D0A /* WhenSelectingKnowledgeGroup_DirectorShould.swift in Sources */,
 				CA6375AC208E021A00536BE2 /* WhenBuildingDealersModule.swift in Sources */,
 				CA728445209D00B7007D912A /* StubAnnouncementDetailModuleFactory.swift in Sources */,
@@ -7758,6 +7905,7 @@
 				78D7EEB51F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift in Sources */,
 				CA6A8DCE20E41735007536CD /* WhenBuildingMapDetailModule.swift in Sources */,
 				CA73AED8201A07E7004E77BF /* KnowledgeGroupsPresenterTestBuilder.swift in Sources */,
+				CA27257121137FD4004C6D0A /* WhenBindingNonSuperSponsorOnlyEvent_FromSearchResult_SchedulePresenterShould.swift in Sources */,
 				CAD68828208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift in Sources */,
 				CA00AE6220D1749200C2FBB0 /* CapturingScheduleEventComponent.swift in Sources */,
 				CA2761AD20E0221A000E52AC /* CollectThemAllPresenterTestBuilder.swift in Sources */,
@@ -7783,6 +7931,7 @@
 				CACF1E8C20B351EA00D904B5 /* FakeDateRangeFormatter.swift in Sources */,
 				78C86D651F123B20003A20E6 /* CapturingTutorialPageScene.swift in Sources */,
 				CAD6882C208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift in Sources */,
+				CA27258121139750004C6D0A /* WhenBindingNonSponsorEvent_NewsPresenterShould.swift in Sources */,
 				CAC2337A20FF3EC800E73486 /* WhenRemovingFavouritesRestrictionForEvents_ScheduleShould.swift in Sources */,
 				CA36A49120D92EC100EE6537 /* FakeDealersService.swift in Sources */,
 				CA162EA820AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift in Sources */,
@@ -7818,6 +7967,7 @@
 				CAA6DD1120E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift in Sources */,
 				CA0F7621203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift in Sources */,
 				CA162EAA20AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift in Sources */,
+				CA27257A21138DC0004C6D0A /* WhenBindingNonSuperSponsorEvent_NewsPresenterShould.swift in Sources */,
 				CA36A4B420D99C4B00EE6537 /* WhenAdaptingDealersFromResponse_ApplicationShould.swift in Sources */,
 				CA36A4DC20DAF9E800EE6537 /* WhenFetchingIdentifierForDealer_DealersInteractorShould.swift in Sources */,
 				CACF1EB020B5F86700D904B5 /* WhenBindingEventBanner_EventDetailPresenterShould.swift in Sources */,
@@ -7844,6 +7994,7 @@
 				CA0E5219208FC062005259FE /* WhenBindingConventionCountdown_NewsPresenterShould.swift in Sources */,
 				CA637540208CBB0E00536BE2 /* CapturingNavigationController.swift in Sources */,
 				CA27619220DFF30D000E52AC /* WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */,
+				CA27256F21137EED004C6D0A /* WhenBindingSuperSponsorOnlyEvent_FromSearchResult_SchedulePresenterShould.swift in Sources */,
 				CA36A4B620D9A5C300EE6537 /* WhenDealersHaveCaseVaryingNames_ApplicationShould.swift in Sources */,
 				CA89CBB42080031000570D54 /* CapturingNewsComponentHeaderScene.swift in Sources */,
 				CACF1E8520B34E7A00D904B5 /* WhenPreparingViewModel_EventDetailInteractorShould.swift in Sources */,
@@ -7862,12 +8013,15 @@
 				CA728463209D0F7B007D912A /* CapturingAnnouncementDetailScene.swift in Sources */,
 				CA65A2212091F5320078A4A7 /* WhenAddingAnnouncementsObserverAfterSuccessfulRefresh.swift in Sources */,
 				CA6375A2208E005E00536BE2 /* StubDealersModuleFactory.swift in Sources */,
+				CA27256421132032004C6D0A /* WhenBindingSuperSponsorOnlyEvent_SchedulePresenterShould.swift in Sources */,
+				CA27257821138D21004C6D0A /* SingleEventNewsViewModel.swift in Sources */,
 				CA6A8DA420E2CB66007536CD /* CapturingMapsModuleDelegate.swift in Sources */,
 				CA734D75210A477600221886 /* WhenDeletingConferenceDay_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CA36A48A20D927D200EE6537 /* WhenPreparingViewModel_DealersInteractorShould.swift in Sources */,
 				CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */,
 				CA6A8DBA20E2DD79007536CD /* WhenObservingMaps_ThenSyncSucceeds_ApplicationShould.swift in Sources */,
 				CA73AEDF201A0833004E77BF /* CapturingKnowledgeInteractor.swift in Sources */,
+				CA27257321138AFF004C6D0A /* WhenBindingSuperSponsorEvent_NewsPresenterShould.swift in Sources */,
 				CA36A46B20D84AB600EE6537 /* StubDealerViewModel+RandomValueProviding.swift in Sources */,
 				CAD2609F20C02E7C007E3618 /* WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailInteractorShould.swift in Sources */,
 				CA283A6F20E8DA5D00F7D195 /* CapturingDealersSearchViewModelDelegate.swift in Sources */,
@@ -7920,6 +8074,7 @@
 				78455B4B1F1177C0005BE2D7 /* CapturingSplashScreenRouter.swift in Sources */,
 				CA81D4941FEA92EA00A52A2F /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift in Sources */,
 				CACF1E7420B1D0ED00D904B5 /* FakeEventDetailInteractor.swift in Sources */,
+				CA27258821139D21004C6D0A /* WhenBindingSponsorEvent_ForSearchResult_SchedulePresenterShould.swift in Sources */,
 				CA60BFE32078E42800697566 /* User+RandomValueProviding.swift in Sources */,
 				CA283A6020E6ECD300F7D195 /* WhenToldToRefresh_NewsInteractorShould.swift in Sources */,
 				CA63757A208CDB7B00536BE2 /* Message+RandomValueProviding.swift in Sources */,

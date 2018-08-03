@@ -111,7 +111,7 @@ class NewsViewController: UIViewController, NewsScene {
             return manufacture(ViewAllAnnouncementsTableViewCell.self, configuration: block)
         }
 
-        func makeEventComponent(configuringUsing block: (NewsEventComponent) -> Void) -> UITableViewCell {
+        func makeEventComponent(configuringUsing block: (ScheduleEventComponent) -> Void) -> UITableViewCell {
             return manufacture(EventTableViewCell.self, configuration: block)
         }
 

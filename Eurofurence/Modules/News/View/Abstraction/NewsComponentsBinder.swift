@@ -7,7 +7,6 @@
 //
 
 import Foundation.NSIndexPath
-import UIKit.UIImage
 
 protocol NewsComponentsBinder {
 
@@ -24,7 +23,7 @@ protocol NewsComponentFactory {
     func makeUserWidgetComponent(configuringUsing block: (UserWidgetComponent) -> Void) -> Component
     func makeAnnouncementComponent(configuringUsing block: (AnnouncementComponent) -> Void) -> Component
     func makeAllAnnouncementsComponent(configuringUsing block: (AllAnnouncementsComponent) -> Void) -> Component
-    func makeEventComponent(configuringUsing block: (NewsEventComponent) -> Void) -> Component
+    func makeEventComponent(configuringUsing block: (ScheduleEventComponent) -> Void) -> Component
 
 }
 
@@ -48,17 +47,5 @@ protocol UserWidgetComponent {
 protocol AllAnnouncementsComponent {
 
     func showCaption(_ caption: String)
-
-}
-
-protocol NewsEventComponent {
-
-    func setEventStartTime(_ startTime: String)
-    func setEventEndTime(_ endTime: String)
-    func setEventName(_ eventName: String)
-    func setLocation(_ location: String)
-    func setIcon(_ icon: UIImage?)
-    func showFavouriteEventIndicator()
-    func hideFavouriteEventIndicator()
 
 }

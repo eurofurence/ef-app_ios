@@ -20,7 +20,8 @@ extension KnowledgeEntryEntity: EntityAdapting {
                                  title: title!,
                                  order: Int(order),
                                  text: text!,
-                                 links: links.map({ $0.asAdaptedType() }).sorted())
+                                 links: links.map({ $0.asAdaptedType() }).sorted(),
+                                 imageIdentifiers: imageIdentifiers.or([]))
     }
 
 }

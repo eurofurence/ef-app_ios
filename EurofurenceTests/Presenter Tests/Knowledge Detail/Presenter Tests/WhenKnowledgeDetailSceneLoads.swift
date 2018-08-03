@@ -37,4 +37,15 @@ class WhenKnowledgeDetailSceneLoads: XCTestCase {
         XCTAssertEqual(expected, context.knowledgeDetailScene.capturedTitle)
     }
     
+    func testBindTheImagesFromTheViewModelOntoTheScene() {
+        let context = KnowledgeDetailPresenterTestBuilder().build()
+        context.knowledgeDetailScene.simulateSceneDidLoad()
+        let randomImage = context.interactor.viewModel.images.randomElement()
+        let imageScene = CapturingKnowledgeEntryImageScene()
+        context.knowledgeDetailScene.imagesBinder?.bind(imageScene, at: randomImage.index)
+        
+        XCTAssertEqual(context.interactor.viewModel.images.count, context.knowledgeDetailScene.boundImagesCount)
+        XCTAssertEqual(randomImage.element.imagePNGData, imageScene.capturedImagePNGData)
+    }
+    
 }
