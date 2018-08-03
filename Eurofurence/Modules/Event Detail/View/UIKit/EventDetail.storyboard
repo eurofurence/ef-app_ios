@@ -6,10 +6,16 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="fontawesome-webfont.ttf">
+            <string>FontAwesome</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Event Detail View Controller-->
         <scene sceneID="cFY-D9-VSe">
@@ -188,19 +194,16 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yV4-AK-hGk">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uy-XH-efE">
-                                                            <rect key="frame" x="20" y="20" width="84" height="43.5"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="84" id="lJg-Os-ckW"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uy-XH-efE">
+                                                            <rect key="frame" x="20" y="20" width="0.0" height="43.5"/>
+                                                            <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NiZ-ON-SJH">
-                                                            <rect key="frame" x="112" y="20" width="243" height="43.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NiZ-ON-SJH">
+                                                            <rect key="frame" x="30" y="20" width="325" height="43.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -208,7 +211,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="NiZ-ON-SJH" secondAttribute="trailing" constant="20" symbolic="YES" id="2jc-z1-lRG"/>
                                                         <constraint firstAttribute="bottom" secondItem="NiZ-ON-SJH" secondAttribute="bottom" constant="20" symbolic="YES" id="43u-YZ-Pqx"/>
-                                                        <constraint firstItem="NiZ-ON-SJH" firstAttribute="leading" secondItem="5uy-XH-efE" secondAttribute="trailing" constant="8" symbolic="YES" id="Efu-W2-3y5"/>
+                                                        <constraint firstItem="NiZ-ON-SJH" firstAttribute="leading" secondItem="5uy-XH-efE" secondAttribute="trailing" multiplier="1.1" constant="8" symbolic="YES" id="Efu-W2-3y5"/>
                                                         <constraint firstAttribute="bottom" secondItem="5uy-XH-efE" secondAttribute="bottom" constant="20" symbolic="YES" id="O97-Cz-Ogu"/>
                                                         <constraint firstItem="NiZ-ON-SJH" firstAttribute="top" secondItem="yV4-AK-hGk" secondAttribute="top" constant="20" symbolic="YES" id="OSD-5q-gNw"/>
                                                         <constraint firstItem="5uy-XH-efE" firstAttribute="leading" secondItem="yV4-AK-hGk" secondAttribute="leading" constant="20" symbolic="YES" id="XHR-M8-Aar"/>
