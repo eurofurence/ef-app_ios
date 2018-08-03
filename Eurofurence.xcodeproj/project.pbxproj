@@ -1174,6 +1174,7 @@
 		CAD780521F1E2D2E002A8333 /* CapturingCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780511F1E2D2E002A8333 /* CapturingCredentialStore.swift */; };
 		CAD7805A1F1E8E7D002A8333 /* KeychainCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780591F1E8E7D002A8333 /* KeychainCredentialStore.swift */; };
 		CAD7805D1F1E8EB0002A8333 /* KeychainCredentialStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7805C1F1E8EB0002A8333 /* KeychainCredentialStoreTests.swift */; };
+		CADABEF021147D560023C3B6 /* EventInformationBannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEEF21147D560023C3B6 /* EventInformationBannerTableViewCell.swift */; };
 		CAE27B4C1F855E0E005FDE39 /* TabModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4B1F855E0E005FDE39 /* TabModuleProviding.swift */; };
 		CAE27B4E1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4D1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift */; };
 		CAE27B501F857A99005FDE39 /* PhonePreloadModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4F1F857A99005FDE39 /* PhonePreloadModuleFactory.swift */; };
@@ -2482,6 +2483,7 @@
 		CAD780511F1E2D2E002A8333 /* CapturingCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingCredentialStore.swift; sourceTree = "<group>"; };
 		CAD780591F1E8E7D002A8333 /* KeychainCredentialStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainCredentialStore.swift; sourceTree = "<group>"; };
 		CAD7805C1F1E8EB0002A8333 /* KeychainCredentialStoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainCredentialStoreTests.swift; sourceTree = "<group>"; };
+		CADABEEF21147D560023C3B6 /* EventInformationBannerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInformationBannerTableViewCell.swift; sourceTree = "<group>"; };
 		CAE27B4B1F855E0E005FDE39 /* TabModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModuleProviding.swift; sourceTree = "<group>"; };
 		CAE27B4D1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTutorialModuleFactory.swift; sourceTree = "<group>"; };
 		CAE27B4F1F857A99005FDE39 /* PhonePreloadModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePreloadModuleFactory.swift; sourceTree = "<group>"; };
@@ -6038,6 +6040,7 @@
 				CACF1E6520AE2F9800D904B5 /* EventDetailViewController.swift */,
 				CACF1E6720AE2FB700D904B5 /* StoryboardEventDetailSceneFactory.swift */,
 				CAD2609C20C02BCF007E3618 /* EventDetailBannerTableViewCell.swift */,
+				CADABEEF21147D560023C3B6 /* EventInformationBannerTableViewCell.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -7473,6 +7476,7 @@
 				CAE27B501F857A99005FDE39 /* PhonePreloadModuleFactory.swift in Sources */,
 				CA6A8D9220E2C554007536CD /* MapCollectionViewCell.swift in Sources */,
 				D6F3D749FF814981E076850E /* ImageService.swift in Sources */,
+				CADABEF021147D560023C3B6 /* EventInformationBannerTableViewCell.swift in Sources */,
 				CA162E7C20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift in Sources */,
 				CA6AA0011FD6C5FD0092C6DB /* LoginModuleBuilder.swift in Sources */,
 				78F5559B1F10D65900BDA7D4 /* SplashViewController.swift in Sources */,
