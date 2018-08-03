@@ -52,13 +52,13 @@ extension FakeKnowledgeService {
 class DefaultKnowledgeDetailSceneInteractorTests: XCTestCase {
     
     var knowledgeService: FakeKnowledgeService!
-    var renderer: StubWikiRenderer!
+    var renderer: StubMarkdownRenderer!
     var interactor: DefaultKnowledgeDetailSceneInteractor!
     
     override func setUp() {
         super.setUp()
         
-        renderer = StubWikiRenderer()
+        renderer = StubMarkdownRenderer()
         knowledgeService = FakeKnowledgeService()
         interactor = DefaultKnowledgeDetailSceneInteractor(knowledgeService: knowledgeService,
                                                            renderer: renderer)
@@ -69,7 +69,7 @@ class DefaultKnowledgeDetailSceneInteractorTests: XCTestCase {
         var viewModel: KnowledgeEntryDetailViewModel?
         interactor.makeViewModel(for: entry.identifier) { viewModel = $0 }
         let randomizedEntry = knowledgeService.stubbedKnowledgeEntry(for: entry.identifier)
-        let expected = renderer.stubbedEntryContents[randomizedEntry.contents]
+		let expected = renderer.stubbedContents(for: randomizedEntry.contents)
         
         XCTAssertEqual(expected, viewModel?.contents)
     }

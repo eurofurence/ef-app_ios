@@ -16,6 +16,7 @@ class EventDetailInteractorTestBuilder {
         var interactor: DefaultEventDetailInteractor
         var viewModel: EventDetailViewModel?
         var eventsService: FakeEventsService
+		var markdownRenderer: StubMarkdownRenderer
     }
     
     private var eventsService: FakeEventsService
@@ -32,8 +33,9 @@ class EventDetailInteractorTestBuilder {
     
     func build(for event: Event2 = .random) -> Context {
         let dateRangeFormatter = FakeDateRangeFormatter()
+		let markdownRenderer = StubMarkdownRenderer()
         eventsService.stub(event, for: event.identifier)
-        let interactor = DefaultEventDetailInteractor(dateRangeFormatter: dateRangeFormatter, eventsService: eventsService)
+		let interactor = DefaultEventDetailInteractor(dateRangeFormatter: dateRangeFormatter, eventsService: eventsService, markdownRenderer: markdownRenderer)
         var viewModel: EventDetailViewModel?
         interactor.makeViewModel(for: event.identifier) { viewModel = $0 }
         
@@ -41,7 +43,8 @@ class EventDetailInteractorTestBuilder {
                        dateRangeFormatter: dateRangeFormatter,
                        interactor: interactor,
                        viewModel: viewModel,
-                       eventsService: eventsService)
+                       eventsService: eventsService,
+					   markdownRenderer: markdownRenderer)
     }
     
 }
@@ -50,7 +53,7 @@ extension EventDetailInteractorTestBuilder.Context {
     
     func makeExpectedEventSummaryViewModel() -> EventSummaryViewModel {
         return EventSummaryViewModel(title: event.title,
-                                     subtitle: event.abstract,
+                                     subtitle: markdownRenderer.stubbedContents(for: event.abstract),
                                      eventStartEndTime: dateRangeFormatter.string(from: event.startDate, to: event.endDate),
                                      location: event.room.name,
                                      trackName: event.track.name,
@@ -65,7 +68,7 @@ extension EventDetailInteractorTestBuilder.Context {
     }
     
     func makeExpectedEventDescriptionViewModel() -> EventDescriptionViewModel {
-        return EventDescriptionViewModel(contents: event.eventDescription)
+        return EventDescriptionViewModel(contents: markdownRenderer.stubbedContents(for: event.eventDescription))
     }
     
 }

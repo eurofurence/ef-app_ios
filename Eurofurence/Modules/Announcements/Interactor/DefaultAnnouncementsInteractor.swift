@@ -12,30 +12,39 @@ struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
 
     private let announcementsService: AnnouncementsService
     private let announcementDateFormatter: AnnouncementDateFormatter
+	private let markdownRenderer: MarkdownRenderer
 
     init() {
         self.init(announcementsService: EurofurenceApplication.shared,
-                  announcementDateFormatter: FoundationAnnouncementDateFormatter.shared)
+                  announcementDateFormatter: FoundationAnnouncementDateFormatter.shared,
+				  markdownRenderer: SubtleDownMarkdownRenderer())
     }
 
-    init(announcementsService: AnnouncementsService, announcementDateFormatter: AnnouncementDateFormatter) {
+	init(announcementsService: AnnouncementsService, announcementDateFormatter: AnnouncementDateFormatter, markdownRenderer: MarkdownRenderer) {
         self.announcementsService = announcementsService
         self.announcementDateFormatter = announcementDateFormatter
+		self.markdownRenderer = markdownRenderer
     }
 
     func makeViewModel(completionHandler: @escaping (AnnouncementsListViewModel) -> Void) {
-        let viewModel = ViewModel(announcementsService: announcementsService, announcementDateFormatter: announcementDateFormatter)
+        let viewModel = ViewModel(
+			announcementsService: announcementsService,
+			announcementDateFormatter: announcementDateFormatter,
+			markdownRenderer: markdownRenderer)
         completionHandler(viewModel)
     }
 
     private class ViewModel: AnnouncementsListViewModel, AnnouncementsServiceObserver {
 
         private let announcementDateFormatter: AnnouncementDateFormatter
+		private let markdownRenderer: MarkdownRenderer
         private var announcements = [Announcement2]()
         private var readAnnouncements = [Announcement2.Identifier]()
 
-        init(announcementsService: AnnouncementsService, announcementDateFormatter: AnnouncementDateFormatter) {
+        init(announcementsService: AnnouncementsService, announcementDateFormatter: AnnouncementDateFormatter,
+			 markdownRenderer: MarkdownRenderer) {
             self.announcementDateFormatter = announcementDateFormatter
+			self.markdownRenderer = markdownRenderer
             announcementsService.add(self)
         }
 
@@ -51,10 +60,12 @@ struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
         func announcementViewModel(at index: Int) -> AnnouncementComponentViewModel {
             let announcement = announcements[index]
             let isRead = readAnnouncements.contains(announcement.identifier)
+			let detail = markdownRenderer.render(announcement.content)
+			let receivedDateTime = announcementDateFormatter.string(from: announcement.date)
 
             return AnnouncementComponentViewModel(title: announcement.title,
-                                                  detail: announcement.content,
-                                                  receivedDateTime: announcementDateFormatter.string(from: announcement.date),
+                                                  detail: detail,
+                                                  receivedDateTime: receivedDateTime,
                                                   isRead: isRead)
         }
 

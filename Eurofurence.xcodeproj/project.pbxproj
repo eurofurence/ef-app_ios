@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		09CCA668D5E112B61A53B5E6 /* Pods-EurofurenceTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A91AD0059ADB02A143766DB /* Pods-EurofurenceTests-settings-metadata.plist */; };
+		20516AC621121AE400C399C0 /* SubtleDownMarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20516AC521121AE400C399C0 /* SubtleDownMarkdownRenderer.swift */; };
+		20516AC821123E5500C399C0 /* DefaultDownMarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20516AC721123E5500C399C0 /* DefaultDownMarkdownRenderer.swift */; };
 		20E87E17210A34D800B55A04 /* DownMarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E87E16210A34D800B55A04 /* DownMarkdownRenderer.swift */; };
 		6EEC6DA11F1BF79F00205F2D /* FirebaseTopicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA01F1BF79F00205F2D /* FirebaseTopicTests.swift */; };
 		6EEC6DA31F1BFC5000205F2D /* StubAppVersionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */; };
@@ -329,8 +331,6 @@
 		CA17FE8720580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8620580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift */; };
 		CA17FE8B20585D9C005A4C05 /* LinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8A20585D9C005A4C05 /* LinkTableViewCell.swift */; };
 		CA17FE8E205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8D205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift */; };
-		CA17FE9020586A15005A4C05 /* StubWikiRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8F20586A15005A4C05 /* StubWikiRenderer.swift */; };
-		CA17FE9220586A30005A4C05 /* WikiRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE9120586A30005A4C05 /* WikiRenderer.swift */; };
 		CA17FE9420586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE9320586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift */; };
 		CA1B6F0720DB805300ADF414 /* WhenBuildingDealerDetailModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F0620DB805300ADF414 /* WhenBuildingDealerDetailModule.swift */; };
 		CA1B6F0B20DB816600ADF414 /* DealerDetailSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F0A20DB816600ADF414 /* DealerDetailSceneFactory.swift */; };
@@ -1141,7 +1141,6 @@
 		CAD260A720C03909007E3618 /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD260A620C03909007E3618 /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift */; };
 		CAD260AB20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD260AA20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift */; };
 		CAD260AD20C066B0007E3618 /* WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD260AC20C066B0007E3618 /* WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift */; };
-		CAD3BDAD20586AF600C91E6E /* ConcreteWikiRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDAC20586AF600C91E6E /* ConcreteWikiRenderer.swift */; };
 		CAD3BDAF205870B500C91E6E /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDAE205870B500C91E6E /* Link.swift */; };
 		CAD3BDB12058719300C91E6E /* Link+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */; };
 		CAD3BDB3205874AF00C91E6E /* APILink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB2205874AF00C91E6E /* APILink.swift */; };
@@ -1295,6 +1294,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20516AC521121AE400C399C0 /* SubtleDownMarkdownRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtleDownMarkdownRenderer.swift; sourceTree = "<group>"; };
+		20516AC721123E5500C399C0 /* DefaultDownMarkdownRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDownMarkdownRenderer.swift; sourceTree = "<group>"; };
 		20E87E16210A34D800B55A04 /* DownMarkdownRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownMarkdownRenderer.swift; sourceTree = "<group>"; };
 		27C948D12455A352D46AF5B6 /* Pods-Eurofurence.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence.release.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence.release.xcconfig"; sourceTree = "<group>"; };
 		4A31159EA20CC82848488181 /* Pods-EurofurenceTests.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.profiling.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.profiling.xcconfig"; sourceTree = "<group>"; };
@@ -1632,8 +1633,6 @@
 		CA17FE8620580527005A4C05 /* KnowledgeDetailContentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeDetailContentsTableViewCell.swift; sourceTree = "<group>"; };
 		CA17FE8A20585D9C005A4C05 /* LinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkTableViewCell.swift; sourceTree = "<group>"; };
 		CA17FE8D205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeDetailSceneInteractorTests.swift; sourceTree = "<group>"; };
-		CA17FE8F20586A15005A4C05 /* StubWikiRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubWikiRenderer.swift; sourceTree = "<group>"; };
-		CA17FE9120586A30005A4C05 /* WikiRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiRenderer.swift; sourceTree = "<group>"; };
 		CA17FE9320586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
 		CA1B6F0620DB805300ADF414 /* WhenBuildingDealerDetailModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingDealerDetailModule.swift; sourceTree = "<group>"; };
 		CA1B6F0A20DB816600ADF414 /* DealerDetailSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailSceneFactory.swift; sourceTree = "<group>"; };
@@ -2447,7 +2446,6 @@
 		CAD260A620C03909007E3618 /* WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewModelIndicatesEventIsFavourite_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAD260AA20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CAD260AC20C066B0007E3618 /* WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
-		CAD3BDAC20586AF600C91E6E /* ConcreteWikiRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteWikiRenderer.swift; sourceTree = "<group>"; };
 		CAD3BDAE205870B500C91E6E /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Link+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CAD3BDB2205874AF00C91E6E /* APILink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILink.swift; sourceTree = "<group>"; };
@@ -2619,6 +2617,42 @@
 				A4BE2399E8F0912910303B02 /* Pods_EurofurenceTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		20597CF5210CDDD80003D6C3 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				20597CF6210CDDE80003D6C3 /* MarkdownRenderer */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		20597CF6210CDDE80003D6C3 /* MarkdownRenderer */ = {
+			isa = PBXGroup;
+			children = (
+				20516AC521121AE400C399C0 /* SubtleDownMarkdownRenderer.swift */,
+				CA72848F209F9482007D912A /* DefaultMarkdownRenderer.swift */,
+				CA72848D209F93A4007D912A /* MarkdownRenderer.swift */,
+				20E87E16210A34D800B55A04 /* DownMarkdownRenderer.swift */,
+				20516AC721123E5500C399C0 /* DefaultDownMarkdownRenderer.swift */,
+			);
+			path = MarkdownRenderer;
+			sourceTree = "<group>";
+		};
+		20597CF8210E168C0003D6C3 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				20597CF9210E16930003D6C3 /* Test Doubles */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		20597CF9210E16930003D6C3 /* Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				CA728491209F9540007D912A /* StubMarkdownRenderer.swift */,
+			);
+			path = "Test Doubles";
 			sourceTree = "<group>";
 		};
 		2A4A738C931BBD9059F30151 /* Pods */ = {
@@ -2917,6 +2951,7 @@
 				CA5BF9D31F7AEE070045DBC0 /* Preload */,
 				CA2D07FE1FE94AD200BFD785 /* Root */,
 				CA637589208CE04E00536BE2 /* Schedule */,
+				20597CF8210E168C0003D6C3 /* Shared */,
 				CA8E7EFF1FB0940600F0BF10 /* Tab */,
 				CA2D080A1FE94F8800BFD785 /* Tutorial */,
 				CA283A7620E8F51B00F7D195 /* Web */,
@@ -3408,6 +3443,7 @@
 		CA00AE6320D1782600C2FBB0 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				20597CF5210CDDD80003D6C3 /* Interactors */,
 				CA00AE6A20D178EC00C2FBB0 /* Extensions */,
 				CA00AE6820D178D700C2FBB0 /* Table View Cells */,
 				CA27618020DF9315000E52AC /* Views */,
@@ -3665,9 +3701,7 @@
 				CA17FE772056B1B4005A4C05 /* KnowledgeDetailSceneInteractor.swift */,
 				CA17FE7C2057FCCB005A4C05 /* KnowledgeEntryDetailViewModel.swift */,
 				CA17FE82205800A7005A4C05 /* LinkViewModel.swift */,
-				CA17FE9120586A30005A4C05 /* WikiRenderer.swift */,
 				CA17FE9320586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift */,
-				CAD3BDAC20586AF600C91E6E /* ConcreteWikiRenderer.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -5157,7 +5191,6 @@
 				CA17FE7E2058006F005A4C05 /* CapturingLinkScene.swift */,
 				CA6EC4832051CBF600402894 /* StubKnowledgeDetailSceneFactory.swift */,
 				CA17FE742056B196005A4C05 /* StubKnowledgeDetailSceneInteractor.swift */,
-				CA17FE8F20586A15005A4C05 /* StubWikiRenderer.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -5303,7 +5336,6 @@
 				CA728462209D0F7B007D912A /* CapturingAnnouncementDetailScene.swift */,
 				CA728457209D058A007D912A /* StubAnnouncementDetailSceneFactory.swift */,
 				CA728472209D163E007D912A /* StubAnnouncementDetailInteractor.swift */,
-				CA728491209F9540007D912A /* StubMarkdownRenderer.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -5348,9 +5380,6 @@
 			isa = PBXGroup;
 			children = (
 				CA72848B209F9288007D912A /* DefaultAnnouncementDetailInteractor.swift */,
-				CA72848F209F9482007D912A /* DefaultMarkdownRenderer.swift */,
-				CA72848D209F93A4007D912A /* MarkdownRenderer.swift */,
-				20E87E16210A34D800B55A04 /* DownMarkdownRenderer.swift */,
 			);
 			path = Default;
 			sourceTree = "<group>";
@@ -7091,10 +7120,8 @@
 				CA6A8DB020E2CF97007536CD /* DefaultMapsInteractor.swift in Sources */,
 				CA2761B220E0234C000E52AC /* StoryboardCollectThemAllSceneFactory.swift in Sources */,
 				CA36A4D620DAE2C000EE6537 /* DealersModuleDelegate.swift in Sources */,
-				CA17FE9220586A30005A4C05 /* WikiRenderer.swift in Sources */,
 				CA00AE8720D28A8B00C2FBB0 /* ShortFormDateFormatter.swift in Sources */,
 				CA8D97CF201611430074838F /* EventBus.swift in Sources */,
-				CAD3BDAD20586AF600C91E6E /* ConcreteWikiRenderer.swift in Sources */,
 				CA6A8DEC20E41F85007536CD /* MapDetailPresenter.swift in Sources */,
 				CA36A48720D9260000EE6537 /* DealerGroupHeader.swift in Sources */,
 				CAF5979A20449A1D00089BE8 /* APIKnowledgeEntry.swift in Sources */,
@@ -7127,6 +7154,7 @@
 				9AF0B4FE1F08459D000AAA0A /* TimeIntervalRow.swift in Sources */,
 				9A861EB11F2554F900B75A8C /* TutorialModule.swift in Sources */,
 				CA401060210E1E430056E16C /* ImageModelEntity+Adaptation.swift in Sources */,
+				20516AC621121AE400C399C0 /* SubtleDownMarkdownRenderer.swift in Sources */,
 				9AF159ED1EF5BE7F00DB287D /* EventCell.swift in Sources */,
 				CA36A4C220DA757B00EE6537 /* DealersSearchViewModel.swift in Sources */,
 				CA73AEF5201A08D1004E77BF /* KnowledgeGroupsListPresenter.swift in Sources */,
@@ -7355,6 +7383,7 @@
 				9A861E991F24B0B800B75A8C /* NewsSectionHeader.swift in Sources */,
 				CA52C68F20D6AB47009D3A9E /* ScheduleModuleDelegate.swift in Sources */,
 				CAF3F63B2016797400374B4C /* PrivateMessagesController.swift in Sources */,
+				20516AC821123E5500C399C0 /* DefaultDownMarkdownRenderer.swift in Sources */,
 				9A861ECD1F25555000B75A8C /* TutorialPageViewController.swift in Sources */,
 				CABA43861FBC6FE1009CB5B0 /* LoginModuleProviding.swift in Sources */,
 				D6F3D275FF81A313B9213277 /* AnnouncementCell.swift in Sources */,
@@ -7726,7 +7755,6 @@
 				CA250DD420D6E28B00E7513C /* WhenBindingEventFromSearchResult_SchedulePresenterShould.swift in Sources */,
 				CA1B6F2620DB887100ADF414 /* FakeDealerDetailViewModel.swift in Sources */,
 				7820A6E51F140056004C0FB5 /* CapturingAlertRouter.swift in Sources */,
-				CA17FE9020586A15005A4C05 /* StubWikiRenderer.swift in Sources */,
 				CA8276B0204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift in Sources */,
 				CAC2337E20FF7F5E00E73486 /* WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould.swift in Sources */,
 				CA2761C420E02D74000E52AC /* WhenObservingCollectThemAllURLWhileLoggedOut_ApplicationShould.swift in Sources */,

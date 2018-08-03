@@ -89,6 +89,7 @@ class DefaultNewsInteractorTestBuilder {
         var clock: StubClock
         var refreshService: CapturingRefreshService
         var announcementDateFormatter: FakeAnnouncementDateFormatter
+		var markdownRenderer: StubMarkdownRenderer
     }
     
     private var announcementsService: StubAnnouncementsService
@@ -142,6 +143,7 @@ class DefaultNewsInteractorTestBuilder {
         let hoursDateFormatter = FakeHoursDateFormatter()
         let refreshService = CapturingRefreshService()
         let announcementsDateFormatter = FakeAnnouncementDateFormatter()
+		let markdownRenderer = StubMarkdownRenderer()
         let interactor = DefaultNewsInteractor(announcementsService: announcementsService,
                                                authenticationService: authenticationService,
                                                privateMessagesService: privateMessagesService,
@@ -152,7 +154,8 @@ class DefaultNewsInteractorTestBuilder {
                                                dateDistanceCalculator: dateDistanceCalculator,
                                                clock: clock,
                                                refreshService: refreshService,
-                                               announcementsDateFormatter: announcementsDateFormatter)
+                                               announcementsDateFormatter: announcementsDateFormatter,
+											   announcementsMarkdownRenderer: markdownRenderer)
         let delegate = CapturingNewsInteractorDelegate()
         
         return Context(interactor: interactor,
@@ -167,7 +170,8 @@ class DefaultNewsInteractorTestBuilder {
                        dateDistanceCalculator: dateDistanceCalculator,
                        clock: clock,
                        refreshService: refreshService,
-                       announcementDateFormatter: announcementsDateFormatter)
+                       announcementDateFormatter: announcementsDateFormatter,
+					   markdownRenderer: markdownRenderer)
     }
     
 }
@@ -280,7 +284,7 @@ extension DefaultNewsInteractorTestBuilder.Context {
         
         private func makeExpectedAnnouncementViewModel(from announcement: Announcement2) -> AnyHashable {
             return AnnouncementComponentViewModel(title: announcement.title,
-                                                  detail: announcement.content,
+                                                  detail: context.markdownRenderer.stubbedContents(for: announcement.content),
                                                   receivedDateTime: context.announcementDateFormatter.string(from: announcement.date),
                                                   isRead: context.announcementsService.stubbedReadAnnouncements.contains(announcement.identifier))
         }

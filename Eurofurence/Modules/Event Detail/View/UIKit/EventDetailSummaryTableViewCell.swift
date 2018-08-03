@@ -32,8 +32,8 @@ class EventDetailSummaryTableViewCell: UITableViewCell, EventSummaryComponent {
         eventTitleLabel.text = title
     }
 
-    func setEventSubtitle(_ subtitle: String) {
-        eventSubtitleLabel.text = subtitle
+    func setEventSubtitle(_ subtitle: NSAttributedString) {
+        eventSubtitleLabel.attributedText = subtitle
     }
 
     func setEventStartEndTime(_ startEndTime: String) {

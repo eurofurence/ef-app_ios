@@ -9,12 +9,15 @@
 import Foundation
 import Down
 
-struct DownMarkdownRenderer: MarkdownRenderer {
+protocol DownMarkdownRenderer: MarkdownRenderer {
+	var stylesheet: String? { get }
+}
 
+extension DownMarkdownRenderer {
 	func render(_ contents: String) -> NSAttributedString {
 		let down = Down(markdownString: contents)
 		do {
-			return try down.toAttributedString()
+			return try down.toAttributedString(stylesheet: stylesheet)
 		} catch {
 			return NSAttributedString(string: contents)
 		}

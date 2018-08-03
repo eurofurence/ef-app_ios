@@ -17,8 +17,8 @@ class CapturingEventSummaryComponent: EventSummaryComponent {
         capturedTitle = title
     }
     
-    private(set) var capturedSubtitle: String?
-    func setEventSubtitle(_ subtitle: String) {
+    private(set) var capturedSubtitle: NSAttributedString?
+    func setEventSubtitle(_ subtitle: NSAttributedString) {
         capturedSubtitle = subtitle
     }
     
@@ -46,8 +46,8 @@ class CapturingEventSummaryComponent: EventSummaryComponent {
 
 class CapturingEventDescriptionComponent: EventDescriptionComponent {
     
-    private(set) var capturedEventDescription: String?
-    func setEventDescription(_ eventDescription: String) {
+    private(set) var capturedEventDescription: NSAttributedString?
+    func setEventDescription(_ eventDescription: NSAttributedString) {
         capturedEventDescription = eventDescription
     }
     

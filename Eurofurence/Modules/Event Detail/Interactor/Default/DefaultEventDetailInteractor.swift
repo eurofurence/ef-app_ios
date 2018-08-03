@@ -105,15 +105,18 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
     private let dateRangeFormatter: DateRangeFormatter
     private let eventsService: EventsService
+	private let markdownRenderer: MarkdownRenderer
 
     convenience init() {
         self.init(dateRangeFormatter: FoundationDateRangeFormatter.shared,
-                  eventsService: EurofurenceApplication.shared)
+                  eventsService: EurofurenceApplication.shared,
+				  markdownRenderer: DefaultDownMarkdownRenderer())
     }
 
-    init(dateRangeFormatter: DateRangeFormatter, eventsService: EventsService) {
+	init(dateRangeFormatter: DateRangeFormatter, eventsService: EventsService, markdownRenderer: MarkdownRenderer) {
         self.dateRangeFormatter = dateRangeFormatter
         self.eventsService = eventsService
+		self.markdownRenderer = markdownRenderer
     }
 
     func makeViewModel(for identifier: Event2.Identifier, completionHandler: @escaping (EventDetailViewModel) -> Void) {
@@ -126,9 +129,10 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
                 components.append(ViewModel.GraphicComponent(viewModel: graphicViewModel))
             }
 
+			let abstract = self.markdownRenderer.render(event.abstract)
             let startEndTimeString = self.dateRangeFormatter.string(from: event.startDate, to: event.endDate)
             let summaryViewModel = EventSummaryViewModel(title: event.title,
-                                                         subtitle: event.abstract,
+                                                         subtitle: abstract,
                                                          eventStartEndTime: startEndTimeString,
                                                          location: event.room.name,
                                                          trackName: event.track.name,
@@ -136,7 +140,8 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
             components.append(ViewModel.SummaryComponent(viewModel: summaryViewModel))
 
             if !event.eventDescription.isEmpty, event.eventDescription != event.abstract {
-                let descriptionViewModel = EventDescriptionViewModel(contents: event.eventDescription)
+				let description = self.markdownRenderer.render(event.eventDescription)
+                let descriptionViewModel = EventDescriptionViewModel(contents: description)
                 components.append(ViewModel.DescriptionComponent(viewModel: descriptionViewModel))
             }
 

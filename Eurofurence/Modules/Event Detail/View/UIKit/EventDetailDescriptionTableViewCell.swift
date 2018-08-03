@@ -23,8 +23,8 @@ class EventDetailDescriptionTableViewCell: UITableViewCell, EventDescriptionComp
 
     // MARK: EventDescriptionComponent
 
-    func setEventDescription(_ eventDescription: String) {
-        eventDescriptionTextView.text = eventDescription
+    func setEventDescription(_ eventDescription: NSAttributedString) {
+        eventDescriptionTextView.attributedText = eventDescription
     }
 
 }

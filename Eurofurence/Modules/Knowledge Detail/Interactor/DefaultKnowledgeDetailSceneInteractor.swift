@@ -33,11 +33,11 @@ struct DefaultKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
     }
 
     var knowledgeService: KnowledgeService = EurofurenceApplication.shared
-    var renderer: WikiRenderer = ConcreteWikiRenderer()
+    var renderer: MarkdownRenderer = DefaultDownMarkdownRenderer()
 
     func makeViewModel(for identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping (KnowledgeEntryDetailViewModel) -> Void) {
         knowledgeService.fetchKnowledgeEntry(for: identifier) { (entry) in
-            let renderedContents = self.renderer.renderContents(from: entry.contents)
+            let renderedContents = self.renderer.render(entry.contents)
             let viewModel = ViewModel(title: entry.title, contents: renderedContents, links: entry.links)
             completionHandler(viewModel)
         }
