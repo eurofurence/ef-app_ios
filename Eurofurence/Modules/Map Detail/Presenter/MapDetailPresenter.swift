@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MapDetailPresenter: MapDetailSceneDelegate, MapContentVisitor {
+class MapDetailPresenter: MapDetailSceneDelegate {
 
     private let scene: MapDetailScene
     private let interactor: MapDetailInteractor
@@ -33,7 +33,9 @@ class MapDetailPresenter: MapDetailSceneDelegate, MapContentVisitor {
     }
 
     func mapDetailSceneDidTapMap(at position: MapCoordinate) {
-        viewModel?.showContentsAtPosition(x: position.x, y: position.y, describingTo: self)
+        let (x, y) = (position.x, position.y)
+        let visitor = ContentsVisitor(scene: scene, delegate: delegate, x: x, y: y)
+        viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)
     }
 
     private func viewModelReady(_ viewModel: MapDetailViewModel) {
@@ -43,16 +45,32 @@ class MapDetailPresenter: MapDetailSceneDelegate, MapContentVisitor {
         scene.setMapTitle(viewModel.mapName)
     }
 
-    func visit(_ mapPosition: MapCoordinate) {
-        scene.focusMapPosition(mapPosition)
-    }
+    private struct ContentsVisitor: MapContentVisitor {
 
-    func visit(_ content: MapInformationContextualContent) {
-        scene.show(contextualContent: content)
-    }
+        var scene: MapDetailScene
+        var delegate: MapDetailModuleDelegate
+        var x: Float
+        var y: Float
 
-    func visit(_ dealer: Dealer2.Identifier) {
-        delegate.mapDetailModuleDidSelectDealer(dealer)
+        func visit(_ mapPosition: MapCoordinate) {
+            scene.focusMapPosition(mapPosition)
+        }
+
+        func visit(_ content: MapInformationContextualContent) {
+            scene.show(contextualContent: content)
+        }
+
+        func visit(_ dealer: Dealer2.Identifier) {
+            delegate.mapDetailModuleDidSelectDealer(dealer)
+        }
+
+        func visit(_ mapContents: MapContentOptionsViewModel) {
+            scene.showMapOptions(heading: mapContents.optionsHeading,
+                                 options: mapContents.options,
+                                 atX: x,
+                                 y: y)
+        }
+
     }
 
 }

@@ -69,6 +69,10 @@ class MapDetailViewController: UIViewController, UIScrollViewDelegate, MapDetail
 
     }
 
+    func showMapOptions(heading: String, options: [String], atX x: Float, y: Float) {
+
+    }
+
     // MARK: Private
 
     private func adjustZoomLevelToFit(_ image: UIImage) {

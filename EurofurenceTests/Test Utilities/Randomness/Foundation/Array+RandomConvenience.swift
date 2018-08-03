@@ -35,6 +35,19 @@ extension Array where Element: RandomValueProviding {
         return copy
     }
     
+    func take(upTo count: Int) -> [Element] {
+        var output = [Element]()
+        var i = 0
+        repeat {
+            guard i < count else { break }
+            
+            output.append(self[i])
+            i += 1
+        } while i < count
+        
+        return output
+    }
+    
 }
 
 extension Array {

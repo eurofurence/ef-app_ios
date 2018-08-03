@@ -37,7 +37,7 @@ class WhenLoggedOutBeforeConvention_NewsInteractorShould: XCTestCase {
     }
     
     func testFetchAnnouncementModuleValueWhenAskingForModelInSecondSection() {
-        let randomAnnouncement = context.announcements.randomElement()
+        let randomAnnouncement = context.displayedAnnouncements.randomElement()
         let announcementIndexPath = IndexPath(item: randomAnnouncement.index + 1, section: 2)
         
         context.assert().thatModel().at(indexPath: announcementIndexPath, is: .announcement(randomAnnouncement.element.identifier))

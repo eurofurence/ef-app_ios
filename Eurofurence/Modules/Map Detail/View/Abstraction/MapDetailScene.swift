@@ -15,6 +15,7 @@ protocol MapDetailScene {
     func setMapTitle(_ title: String)
     func focusMapPosition(_ position: MapCoordinate)
     func show(contextualContent: MapInformationContextualContent)
+    func showMapOptions(heading: String, options: [String], atX x: Float, y: Float)
 
 }
 
@@ -33,4 +34,11 @@ struct MapCoordinate: Equatable {
 struct MapInformationContextualContent: Equatable {
     var coordinate: MapCoordinate
     var content: String
+}
+
+protocol MapContentOptionsViewModel {
+
+    var optionsHeading: String { get }
+    var options: [String] { get }
+
 }

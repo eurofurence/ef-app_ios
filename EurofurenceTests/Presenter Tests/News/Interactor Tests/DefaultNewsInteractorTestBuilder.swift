@@ -188,6 +188,10 @@ extension DefaultNewsInteractorTestBuilder.Context {
         return announcementsService.announcements
     }
     
+    var displayedAnnouncements: [Announcement2] {
+        return Array(announcementsService.announcements.prefix(3))
+    }
+    
     var runningEvents: [Event2] {
         return eventsService.runningEvents
     }

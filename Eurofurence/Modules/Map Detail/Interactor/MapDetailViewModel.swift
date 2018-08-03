@@ -22,5 +22,6 @@ protocol MapContentVisitor {
     func visit(_ mapPosition: MapCoordinate)
     func visit(_ content: MapInformationContextualContent)
     func visit(_ dealer: Dealer2.Identifier)
+    func visit(_ mapContents: MapContentOptionsViewModel)
 
 }

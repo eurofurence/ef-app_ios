@@ -36,4 +36,15 @@ class CapturingMapDetailScene: UIViewController, MapDetailScene {
         presentedContextualContext = contextualContent
     }
     
+    private(set) var capturedOptionsHeading: String?
+    private(set) var capturedOptionsPresentationX: Float?
+    private(set) var capturedOptionsPresentationY: Float?
+    private(set) var capturedOptionsToShow: [String] = []
+    func showMapOptions(heading: String, options: [String], atX x: Float, y: Float) {
+        capturedOptionsHeading = heading
+        capturedOptionsToShow = options
+        capturedOptionsPresentationX = x
+        capturedOptionsPresentationY = y
+    }
+    
 }
