@@ -18,7 +18,17 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
         var mapName: String
 
         func showContentsAtPosition(x: Float, y: Float, describingTo visitor: MapContentVisitor) {
-            mapsService.fetchContent(for: mapIdentifier, atX: Int(x), y: Int(y)) { (content) in
+            let contentHandler = ContentHandler(x: x, y: y, visitor: visitor)
+            mapsService.fetchContent(for: mapIdentifier, atX: Int(x), y: Int(y), completionHandler: contentHandler.handle)
+        }
+
+        private struct ContentHandler {
+
+            var x: Float
+            var y: Float
+            var visitor: MapContentVisitor
+
+            func handle(_ content: Map2.Content) {
                 switch content {
                 case .location(let altX, let altY):
                     visitor.visit(MapCoordinate(x: altX, y: altY))
@@ -32,17 +42,23 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
                     visitor.visit(dealer.identifier)
 
                 case .multiple(let contents):
-                    visitor.visit(OptionsViewModel(contents: contents))
+                    visitor.visit(OptionsViewModel(contents: contents, handler: self))
 
                 case .none:
                     break
                 }
             }
+
         }
 
         private struct OptionsViewModel: MapContentOptionsViewModel {
 
-            init(contents: [Map2.Content]) {
+            private let contents: [Map2.Content]
+            private let handler: ContentHandler
+
+            init(contents: [Map2.Content], handler: ContentHandler) {
+                self.contents = contents
+                self.handler = handler
                 optionsHeading = .selectAnOption
                 options = contents.compactMap { (content) -> String? in
                     switch content {
@@ -62,7 +78,8 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
             var options: [String]
 
             func selectOption(at index: Int) {
-
+                let content = contents[index]
+                handler.handle(content)
             }
 
         }
