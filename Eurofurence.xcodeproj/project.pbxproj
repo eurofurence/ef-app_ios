@@ -1181,6 +1181,7 @@
 		CADABEF62114B4990023C3B6 /* WhenSceneTapsMapPosition_ThatHasMultipleOptions_MapsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEF52114B4990023C3B6 /* WhenSceneTapsMapPosition_ThatHasMultipleOptions_MapsPresenterShould.swift */; };
 		CADABEF82114F86C0023C3B6 /* StubMapContentOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEF72114F86C0023C3B6 /* StubMapContentOptionsViewModel.swift */; };
 		CADABEFA211504310023C3B6 /* WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEF9211504310023C3B6 /* WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorShould.swift */; };
+		CADABEFC2116211E0023C3B6 /* WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEFB2116211E0023C3B6 /* WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould.swift */; };
 		CAE27B4C1F855E0E005FDE39 /* TabModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4B1F855E0E005FDE39 /* TabModuleProviding.swift */; };
 		CAE27B4E1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4D1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift */; };
 		CAE27B501F857A99005FDE39 /* PhonePreloadModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE27B4F1F857A99005FDE39 /* PhonePreloadModuleFactory.swift */; };
@@ -2496,6 +2497,7 @@
 		CADABEF52114B4990023C3B6 /* WhenSceneTapsMapPosition_ThatHasMultipleOptions_MapsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneTapsMapPosition_ThatHasMultipleOptions_MapsPresenterShould.swift; sourceTree = "<group>"; };
 		CADABEF72114F86C0023C3B6 /* StubMapContentOptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubMapContentOptionsViewModel.swift; sourceTree = "<group>"; };
 		CADABEF9211504310023C3B6 /* WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorShould.swift; sourceTree = "<group>"; };
+		CADABEFB2116211E0023C3B6 /* WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould.swift; sourceTree = "<group>"; };
 		CAE27B4B1F855E0E005FDE39 /* TabModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModuleProviding.swift; sourceTree = "<group>"; };
 		CAE27B4D1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTutorialModuleFactory.swift; sourceTree = "<group>"; };
 		CAE27B4F1F857A99005FDE39 /* PhonePreloadModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePreloadModuleFactory.swift; sourceTree = "<group>"; };
@@ -4957,6 +4959,7 @@
 			isa = PBXGroup;
 			children = (
 				CA6A8DBD20E2E1ED007536CD /* WhenDataStoreAlreadyContainsMaps_ApplicationShould.swift */,
+				CADABEFB2116211E0023C3B6 /* WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould.swift */,
 				CA25A7F620E62E0400875891 /* WhenFetchingMapContents_TappingWithinRadiusOfMultipleEntries_ApplicationShould.swift */,
 				CA25A7FC20E6412300875891 /* WhenFetchingMapContents_ThatRevealsDealer_ApplicationShould.swift */,
 				CA25A80020E6716A00875891 /* WhenFetchingMapContents_ThatRevealsDealer_ContentsSavedInDataStore_ApplicationShould.swift */,
@@ -7579,6 +7582,7 @@
 				CA71A34A2040320A00C847C3 /* String+RandomValueProviding.swift in Sources */,
 				CA2A586920F69EA1002C69B6 /* CapturingMapCoordinateRender.swift in Sources */,
 				CA52C69520D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift in Sources */,
+				CADABEFC2116211E0023C3B6 /* WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould.swift in Sources */,
 				CA283A9020EA8BE900F7D195 /* WhenBindingAllAnnouncementsComponent_NewsPresenterShould.swift in Sources */,
 				CAEAEBFA1FE0037700C0EE7C /* MessageDetailPresenterTests.swift in Sources */,
 				CACF1EBA20B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift in Sources */,

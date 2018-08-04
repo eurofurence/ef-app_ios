@@ -91,15 +91,21 @@ class Maps {
         }
 
         guard let entry = model.entries.compactMap(tappedWithinEntry).sorted(by: { $0.displacement < $1.displacement }).first?.entry else { return }
-        guard let link = entry.links.first else { return }
 
-        if let room = roomServerModels.first(where: { $0.roomIdentifier == link.target }) {
-            content = .room(Room(name: room.name))
+        let contentFromLink: (APIMap.Entry.Link) -> Map2.Content? = { (link) in
+            if let room = self.roomServerModels.first(where: { $0.roomIdentifier == link.target }) {
+                return .room(Room(name: room.name))
+            }
+
+            if let dealer = self.dealers.dealer(for: link.target) {
+                return .dealer(dealer)
+            }
+
+            return nil
         }
 
-        if let dealer = dealers.dealer(for: link.target) {
-            content = .dealer(dealer)
-        }
+        let links = entry.links
+        content = links.compactMap(contentFromLink).reduce(into: Map2.Content.none, +)
     }
 
     private func updateModels(_ serverModels: APISyncDelta<APIMap>,

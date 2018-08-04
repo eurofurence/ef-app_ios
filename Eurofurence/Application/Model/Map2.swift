@@ -36,6 +36,20 @@ struct Map2: Equatable {
         case room(Room)
         case dealer(Dealer2)
         indirect case multiple([Map2.Content])
+
+        static func + (lhs: inout Map2.Content, rhs: Map2.Content) {
+            switch lhs {
+            case .multiple(let inner):
+                lhs = .multiple(inner + [rhs])
+
+            case .none:
+                lhs = rhs
+
+            default:
+                lhs = .multiple([lhs, rhs])
+            }
+        }
+
     }
 
     var identifier: Map2.Identifier
