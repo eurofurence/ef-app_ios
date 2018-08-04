@@ -43,7 +43,7 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
         private struct OptionsViewModel: MapContentOptionsViewModel {
 
             init(contents: [Map2.Content]) {
-                optionsHeading = ""
+                optionsHeading = .selectAnOption
                 options = contents.compactMap { (content) -> String? in
                     switch content {
                     case .room(let room):

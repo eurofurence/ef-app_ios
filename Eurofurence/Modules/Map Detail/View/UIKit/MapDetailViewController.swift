@@ -78,7 +78,7 @@ class MapDetailViewController: UIViewController, UIScrollViewDelegate, MapDetail
         for (idx, option) in options.enumerated() {
             alertController.addAction(UIAlertAction(title: option, style: .default, handler: { (_) in selectionHandler(idx) }))
         }
-        
+
         alertController.addAction(UIAlertAction(title: .cancel, style: .cancel))
 
         let sourceRect = CGRect(x: CGFloat(x), y: CGFloat(y), width: 0, height: 0)

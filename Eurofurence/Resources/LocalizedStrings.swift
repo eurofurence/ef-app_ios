@@ -185,6 +185,9 @@ public extension String {
     public static let thisEventIsForSuperSponsorsOnly = NSLocalizedString("ThisEventIsForSuperSponsorsOnly",
                                                                           comment: "Message shown in the event detail view when viewing an event that's only available for attendees who are super sponsors")
 
+    public static let selectAnOption = NSLocalizedString("SelectAnOption",
+                                                         comment: "Title for action sheets present on top of maps when multiple options available for a tapped target")
+
     private struct Formatters {
         static var numbers = NumberFormatter()
     }
