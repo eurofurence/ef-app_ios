@@ -10,23 +10,6 @@ import Foundation
 
 class Announcements {
 
-    // MARK: Nested Types
-
-    private class AnnouncementsUpdater: EventConsumer {
-
-        private let announcements: Announcements
-
-        init(announcements: Announcements) {
-            self.announcements = announcements
-        }
-
-        func consume(event: DomainEvent.LatestDataFetchedEvent) {
-            let response = event.response
-            announcements.updateModel(change: response.announcements)
-        }
-
-    }
-
     // MARK: Properties
 
     private let dataStore: EurofurenceDataStore
@@ -44,7 +27,7 @@ class Announcements {
 
     init(eventBus: EventBus, dataStore: EurofurenceDataStore) {
         self.dataStore = dataStore
-        eventBus.subscribe(consumer: AnnouncementsUpdater(announcements: self))
+        eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reloadAnnouncementsFromStore))
 
         reloadAnnouncementsFromStore()
 
@@ -77,15 +60,6 @@ class Announcements {
     private func reloadAnnouncementsFromStore() {
         guard let announcements = dataStore.getSavedAnnouncements() else { return }
         models = announcements.sorted(by: isLastEditTimeAscending).map(Announcement2.init)
-    }
-
-    private func updateModel(change: APISyncDelta<APIAnnouncement>) {
-        dataStore.performTransaction { (transaction) in
-            change.deleted.forEach(transaction.deleteAnnouncement)
-            transaction.saveAnnouncements(change.changed)
-        }
-
-        reloadAnnouncementsFromStore()
     }
 
     private func isLastEditTimeAscending(_ first: APIAnnouncement, _ second: APIAnnouncement) -> Bool {

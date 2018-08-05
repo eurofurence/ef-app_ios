@@ -144,24 +144,6 @@ class Schedule {
         var identifier: Event2.Identifier
     }
 
-    private class ScheduleUpdater: EventConsumer {
-
-        private let schedule: Schedule
-
-        init(schedule: Schedule) {
-            self.schedule = schedule
-        }
-
-        func consume(event: DomainEvent.LatestDataFetchedEvent) {
-            let response = event.response
-            schedule.updateSchedule(events: response.events,
-                                    rooms: response.rooms,
-                                    tracks: response.tracks,
-                                    days: response.conferenceDays)
-        }
-
-    }
-
     // MARK: Properties
 
     private var observers = [EventsServiceObserver]()
@@ -234,7 +216,7 @@ class Schedule {
         self.userPreferences = userPreferences
         self.hoursDateFormatter = hoursDateFormatter
 
-        eventBus.subscribe(consumer: ScheduleUpdater(schedule: self))
+        eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reconstituteEventsFromDataStore))
         reconstituteEventsFromDataStore()
         reconstituteFavouritesFromDataStore()
     }
@@ -331,25 +313,6 @@ class Schedule {
             dayModels = makeDays(from: days)
             eventBus.post(Schedule.ChangedEvent())
         }
-    }
-
-    private func updateSchedule(events: APISyncDelta<APIEvent>,
-                                rooms: APISyncDelta<APIRoom>,
-                                tracks: APISyncDelta<APITrack>,
-                                days: APISyncDelta<APIConferenceDay>) {
-        dataStore.performTransaction { (transaction) in
-            events.deleted.forEach(transaction.deleteEvent)
-            tracks.deleted.forEach(transaction.deleteTrack)
-            rooms.deleted.forEach(transaction.deleteRoom)
-            days.deleted.forEach(transaction.deleteConferenceDay)
-
-            transaction.saveEvents(events.changed)
-            transaction.saveRooms(rooms.changed)
-            transaction.saveTracks(tracks.changed)
-            transaction.saveConferenceDays(days.changed)
-        }
-
-        reconstituteEventsFromDataStore()
     }
 
     fileprivate func makeEventModel(from event: APIEvent) -> Event2? {

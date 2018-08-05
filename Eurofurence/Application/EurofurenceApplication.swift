@@ -317,10 +317,32 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                 self.eventBus.post(DomainEvent.LatestDataFetchedEvent(response: response))
 
                 self.dataStore.performTransaction({ (transaction) in
+                    response.events.deleted.forEach(transaction.deleteEvent)
+                    response.tracks.deleted.forEach(transaction.deleteTrack)
+                    response.rooms.deleted.forEach(transaction.deleteRoom)
+                    response.conferenceDays.deleted.forEach(transaction.deleteConferenceDay)
+                    response.maps.deleted.forEach(transaction.deleteMap)
+                    response.dealers.deleted.forEach(transaction.deleteDealer)
+                    response.knowledgeEntries.deleted.forEach(transaction.deleteKnowledgeEntry)
+                    response.knowledgeGroups.deleted.forEach(transaction.deleteKnowledgeGroup)
+                    response.announcements.deleted.forEach(transaction.deleteAnnouncement)
+
+                    transaction.saveEvents(response.events.changed)
+                    transaction.saveRooms(response.rooms.changed)
+                    transaction.saveTracks(response.tracks.changed)
+                    transaction.saveConferenceDays(response.conferenceDays.changed)
+                    transaction.saveMaps(response.maps.changed)
+                    transaction.saveDealers(response.dealers.changed)
+                    transaction.saveKnowledgeGroups(response.knowledgeGroups.changed)
+                    transaction.saveKnowledgeEntries(response.knowledgeEntries.changed)
+                    transaction.saveAnnouncements(response.announcements.changed)
+
                     transaction.saveLastRefreshDate(self.clock.currentDate)
                     transaction.saveImages(response.images.changed)
                     response.images.deleted.forEach(transaction.deleteImage)
                 })
+
+                self.eventBus.post(DomainEvent.DataStoreChangedEvent())
 
                 self.privateMessagesController.fetchPrivateMessages { (_) in
                     completionHandler(nil)

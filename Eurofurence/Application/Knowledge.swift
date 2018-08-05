@@ -10,23 +10,6 @@ import Foundation
 
 class Knowledge {
 
-    // MARK: Nested Types
-
-    private class KnowledgeUpdater: EventConsumer {
-
-        private let knowledge: Knowledge
-
-        init(knowledge: Knowledge) {
-            self.knowledge = knowledge
-        }
-
-        func consume(event: DomainEvent.LatestDataFetchedEvent) {
-            let response = event.response
-            knowledge.updateKnowledge(groups: response.knowledgeGroups, entries: response.knowledgeEntries)
-        }
-
-    }
-
     // MARK: Properties
 
     private let dataStore: EurofurenceDataStore
@@ -36,7 +19,7 @@ class Knowledge {
 
     init(eventBus: EventBus, dataStore: EurofurenceDataStore) {
         self.dataStore = dataStore
-        eventBus.subscribe(consumer: KnowledgeUpdater(knowledge: self))
+        eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reloadKnowledgeBaseFromDataStore))
 
         reloadKnowledgeBaseFromDataStore()
     }
@@ -64,19 +47,6 @@ class Knowledge {
         }
 
         models = KnowledgeGroup2.fromServerModels(groups: groups, entries: entries)
-    }
-
-    private func updateKnowledge(groups: APISyncDelta<APIKnowledgeGroup>,
-                                 entries: APISyncDelta<APIKnowledgeEntry>) {
-        dataStore.performTransaction { (transaction) in
-            entries.deleted.forEach(transaction.deleteKnowledgeEntry)
-            groups.deleted.forEach(transaction.deleteKnowledgeGroup)
-
-            transaction.saveKnowledgeGroups(groups.changed)
-            transaction.saveKnowledgeEntries(entries.changed)
-        }
-
-        reloadKnowledgeBaseFromDataStore()
     }
 
 }

@@ -10,21 +10,6 @@ import Foundation
 
 class Maps {
 
-    private class RefreshMapsAfterSync: EventConsumer {
-
-        private let maps: Maps
-
-        init(maps: Maps) {
-            self.maps = maps
-        }
-
-        func consume(event: DomainEvent.LatestDataFetchedEvent) {
-            let response = event.response
-            maps.updateModels(response.maps, roomServerModels: response.rooms, dealerServerModels: response.dealers)
-        }
-
-    }
-
     private let dataStore: EurofurenceDataStore
     private let imageRepository: ImageRepository
     private let dealers: Dealers
@@ -48,7 +33,7 @@ class Maps {
         self.dataStore = dataStore
         self.imageRepository = imageRepository
         self.dealers = dealers
-        eventBus.subscribe(consumer: RefreshMapsAfterSync(maps: self))
+        eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reloadMapsFromDataStore))
 
         reloadMapsFromDataStore()
     }
@@ -106,17 +91,6 @@ class Maps {
 
         let links = entry.links
         content = links.compactMap(contentFromLink).reduce(into: Map2.Content.none, +)
-    }
-
-    private func updateModels(_ serverModels: APISyncDelta<APIMap>,
-                              roomServerModels: APISyncDelta<APIRoom>,
-                              dealerServerModels: APISyncDelta<APIDealer>) {
-        dataStore.performTransaction { (transaction) in
-            serverModels.deleted.forEach(transaction.deleteMap)
-            transaction.saveMaps(serverModels.changed)
-        }
-
-        reloadMapsFromDataStore()
     }
 
     private func reloadMapsFromDataStore() {

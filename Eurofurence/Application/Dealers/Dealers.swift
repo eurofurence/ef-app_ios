@@ -65,20 +65,6 @@ class Dealers: DealersService {
 
     }
 
-    private class UpdateDealersWhenSyncOccurs: EventConsumer {
-
-        private let dealers: Dealers
-
-        init(dealers: Dealers) {
-            self.dealers = dealers
-        }
-
-        func consume(event: DomainEvent.LatestDataFetchedEvent) {
-            dealers.updateDealers(from: event.response.dealers)
-        }
-
-    }
-
     private struct UpdatedEvent {}
 
     private var dealerModels = [Dealer2]()
@@ -97,7 +83,7 @@ class Dealers: DealersService {
         self.imageCache = imageCache
         self.mapCoordinateRender = mapCoordinateRender
 
-        eventBus.subscribe(consumer: UpdateDealersWhenSyncOccurs(dealers: self))
+        eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reloadDealersFromDataStore))
         reloadDealersFromDataStore()
     }
 
@@ -224,15 +210,6 @@ class Dealers: DealersService {
         }
 
         eventBus.post(Dealers.UpdatedEvent())
-    }
-
-    private func updateDealers(from dealers: APISyncDelta<APIDealer>) {
-        dataStore.performTransaction { (transaction) in
-            dealers.deleted.forEach(transaction.deleteDealer)
-            transaction.saveDealers(dealers.changed)
-        }
-
-        reloadDealersFromDataStore()
     }
 
     func dealer(for identifier: String) -> Dealer2? {
