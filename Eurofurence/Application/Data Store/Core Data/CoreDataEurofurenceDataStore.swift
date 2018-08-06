@@ -180,6 +180,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
             mutations.append { (context) in
                 knowledgeEntries.forEach { (entry) in
                     let entity: KnowledgeEntryEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: entry.identifier)
+                    entity.links.let(entity.removeFromLinks)
 
                     let links = entry.links.map { (link) -> LinkEntity in
                         let predicate = NSPredicate(format: "\(#keyPath(LinkEntity.name)) == %@ AND \(#keyPath(LinkEntity.target)) == %@ AND \(#keyPath(LinkEntity.fragmentType)) == %li", link.name, link.target, link.fragmentType.rawValue)

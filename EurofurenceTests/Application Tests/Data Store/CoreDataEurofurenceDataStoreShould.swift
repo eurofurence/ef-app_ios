@@ -136,6 +136,27 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         }
     }
     
+    func testEnsureLinksDeletedFromRemoteModelAreNotReconstitutedLater_BUG() {
+        var entry = APIKnowledgeEntry.random
+        store.performTransaction { (transaction) in
+            transaction.saveKnowledgeEntries([entry])
+        }
+        
+        let deletedLink = entry.links.randomElement()
+        entry.links.remove(at: deletedLink.index)
+        store.performTransaction { (transaction) in
+            transaction.saveKnowledgeEntries([entry])
+        }
+        
+        if let entry = store.getSavedKnowledgeEntries()?.first {
+            XCTAssertFalse(entry.links.contains(deletedLink.element),
+                           "Link deleted from remote model not deleted from local data store")
+        }
+        else {
+            XCTFail("Failed to save knowledge entry into data store")
+        }
+    }
+    
     func testSaveEvents() {
         let expected = [APIEvent].random
         store.performTransaction { (transaction) in
