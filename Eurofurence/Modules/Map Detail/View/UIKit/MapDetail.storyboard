@@ -51,5 +51,50 @@
             </objects>
             <point key="canvasLocation" x="232.80000000000001" y="-91.304347826086968"/>
         </scene>
+        <!--Map Contextual Content View Controller-->
+        <scene sceneID="vkL-td-5CQ">
+            <objects>
+                <viewController storyboardIdentifier="MapContextualContentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XmU-WK-IIC" customClass="MapContextualContentViewController" customModule="Eurofurence" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aUf-do-dvC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="doP-77-91S">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Room Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5a-fB-zLf">
+                                        <rect key="frame" x="20" y="20" width="335" height="60"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="A5a-fB-zLf" firstAttribute="leading" secondItem="doP-77-91S" secondAttribute="leading" constant="20" symbolic="YES" id="6rf-B0-oqc"/>
+                                    <constraint firstAttribute="trailing" secondItem="A5a-fB-zLf" secondAttribute="trailing" constant="20" symbolic="YES" id="CSg-Ia-BMa"/>
+                                    <constraint firstItem="A5a-fB-zLf" firstAttribute="top" secondItem="doP-77-91S" secondAttribute="top" constant="20" symbolic="YES" id="jX6-tA-CPb"/>
+                                    <constraint firstAttribute="bottom" secondItem="A5a-fB-zLf" secondAttribute="bottom" constant="20" symbolic="YES" id="kRS-cH-dCE"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="doP-77-91S" firstAttribute="leading" secondItem="aUf-do-dvC" secondAttribute="leading" id="1YB-19-XhE"/>
+                            <constraint firstAttribute="trailing" secondItem="doP-77-91S" secondAttribute="trailing" id="XGa-5x-tUx"/>
+                            <constraint firstItem="doP-77-91S" firstAttribute="top" secondItem="aUf-do-dvC" secondAttribute="top" id="clz-0i-2pe"/>
+                            <constraint firstAttribute="bottom" secondItem="doP-77-91S" secondAttribute="bottom" id="r8k-U8-stx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gNF-ut-8Or"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="100"/>
+                    <connections>
+                        <outlet property="titleLabel" destination="A5a-fB-zLf" id="xhF-Kx-mGb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="awv-bg-9dx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="981.60000000000002" y="-92.653673163418304"/>
+        </scene>
     </scenes>
 </document>

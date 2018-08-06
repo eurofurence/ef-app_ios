@@ -8,7 +8,13 @@
 
 import UIKit
 
-class MapDetailViewController: UIViewController, UIScrollViewDelegate, MapDetailScene {
+class MapDetailViewController: UIViewController, UIScrollViewDelegate, UIPopoverPresentationControllerDelegate, MapDetailScene {
+
+    // MARK: Nested Types
+
+    private struct Segues {
+        static let ShowContextualPopup = "ShowContextualPopup"
+    }
 
     // MARK: Properties
 
@@ -36,6 +42,12 @@ class MapDetailViewController: UIViewController, UIScrollViewDelegate, MapDetail
 
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
+    }
+
+    // MARK: UIPopoverPresentationControllerDelegate
+
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 
     // MARK: MapDetailScene
@@ -66,7 +78,20 @@ class MapDetailViewController: UIViewController, UIScrollViewDelegate, MapDetail
     }
 
     func show(contextualContent: MapInformationContextualContent) {
+        guard let viewController = storyboard?.instantiate(MapContextualContentViewController.self) else { return }
 
+        viewController.loadView()
+        viewController.setContextualContent(contextualContent.content)
+        viewController.modalPresentationStyle = .popover
+        viewController.popoverPresentationController.let { (popover) in
+            popover.delegate = self
+            popover.sourceView = imageView
+            popover.sourceRect = CGRect(x: CGFloat(contextualContent.coordinate.x),
+                                        y: CGFloat(contextualContent.coordinate.y),
+                                        width: 0,
+                                        height: 0)
+        }
+        present(viewController, animated: true)
     }
 
     func showMapOptions(heading: String,

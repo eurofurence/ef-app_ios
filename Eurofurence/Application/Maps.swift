@@ -90,7 +90,8 @@ class Maps {
         }
 
         let links = entry.links
-        content = links.compactMap(contentFromLink).reduce(into: Map2.Content.none, +)
+        let contents: [Map2.Content] = links.compactMap(contentFromLink)
+        content = contents.reduce(into: Map2.Content.none, +)
     }
 
     private func reloadMapsFromDataStore() {
