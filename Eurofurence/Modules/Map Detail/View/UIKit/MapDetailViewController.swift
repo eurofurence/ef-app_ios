@@ -85,6 +85,7 @@ class MapDetailViewController: UIViewController, UIScrollViewDelegate, UIPopover
         viewController.modalPresentationStyle = .popover
         viewController.popoverPresentationController.let { (popover) in
             popover.delegate = self
+            popover.backgroundColor = .white
             popover.sourceView = imageView
             popover.sourceRect = CGRect(x: CGFloat(contextualContent.coordinate.x),
                                         y: CGFloat(contextualContent.coordinate.y),
