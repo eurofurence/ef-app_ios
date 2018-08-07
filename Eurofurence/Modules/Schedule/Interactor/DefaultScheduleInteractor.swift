@@ -299,7 +299,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
                                                   isFavourite: favouriteEvents.contains(event.identifier),
                                                   isSponsorOnly: event.isSponsorOnly,
                                                   isSuperSponsorOnly: event.isSuperSponsorOnly,
-                                                  isArtShow: false)
+                                                  isArtShow: event.isArtShow)
                 }
 
                 return ScheduleEventGroupViewModel(title: title, events: viewModels)

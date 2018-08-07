@@ -19,6 +19,14 @@ class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var sponsorEventIndicator: UILabel!
     @IBOutlet weak var superSponsorEventIndicator: UIView!
+    @IBOutlet weak var artShowIndicatorView: UILabel!
+
+    // MARK: Overrides
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        artShowIndicatorView.text = "\u{f03e}"
+    }
 
     // MARK: ScheduleEventComponent
 
@@ -63,11 +71,11 @@ class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
     }
 
     func showArtShowEventIndicator() {
-
+        artShowIndicatorView.isHidden = false
     }
 
     func hideArtShowEventIndicator() {
-
+        artShowIndicatorView.isHidden = true
     }
 
 }
