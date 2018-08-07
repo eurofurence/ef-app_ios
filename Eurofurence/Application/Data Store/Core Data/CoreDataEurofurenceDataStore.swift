@@ -420,6 +420,8 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                     entity.imageIdentifier = map.imageIdentifier
                     entity.mapDescription = map.mapDescription
 
+                    entity.entries.let(entity.removeFromEntries)
+
                     let entries = map.entries.map { (entry) -> MapEntryEntity in
                         let links = entry.links.map { (link) -> MapEntryLinkEntity in
                             let entity = MapEntryLinkEntity(context: context)

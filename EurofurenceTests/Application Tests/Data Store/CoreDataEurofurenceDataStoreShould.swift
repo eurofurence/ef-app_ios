@@ -157,6 +157,27 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
         }
     }
     
+    func testEnsureDeletedMapEntriesAreNotReconstitutedLater_BUG() {
+        var map = APIMap.random
+        store.performTransaction { (transaction) in
+            transaction.saveMaps([map])
+        }
+        
+        let deletedMapEntry = map.entries.randomElement()
+        map.entries.remove(at: deletedMapEntry.index)
+        store.performTransaction { (transaction) in
+            transaction.saveMaps([map])
+        }
+        
+        if let map = store.getSavedMaps()?.first {
+            XCTAssertFalse(map.entries.contains(deletedMapEntry.element),
+                           "Map entry deleted from remote model not deleted from local data store")
+        }
+        else {
+            XCTFail("Failed to save knowledge entry into data store")
+        }
+    }
+    
     func testSaveEvents() {
         let expected = [APIEvent].random
         store.performTransaction { (transaction) in
