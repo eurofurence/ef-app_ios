@@ -691,6 +691,8 @@
 		CA44C347211A3523003C1C4E /* InOrderToSupportArtShowTag_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C346211A3523003C1C4E /* InOrderToSupportArtShowTag_ApplicationShould.swift */; };
 		CA44C34A211A37AA003C1C4E /* WhenBindingArtShowEvent_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C349211A37AA003C1C4E /* WhenBindingArtShowEvent_NewsPresenterShould.swift */; };
 		CA44C34C211A38D8003C1C4E /* WhenBindingNonArtShowEvent_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C34B211A38D8003C1C4E /* WhenBindingNonArtShowEvent_NewsPresenterShould.swift */; };
+		CA44C34E211A3A30003C1C4E /* WhenBindingArtShowMessage_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C34D211A3A30003C1C4E /* WhenBindingArtShowMessage_EventDetailPresenterShould.swift */; };
+		CA44C350211A3D43003C1C4E /* WhenPreparingViewModel_ForArtShowEvent_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C34F211A3D43003C1C4E /* WhenPreparingViewModel_ForArtShowEvent_EventDetailInteractorShould.swift */; };
 		CA46A73920F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */; };
 		CA49E9462015480A00EB571C /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */; };
 		CA49E94A2015480A00EB571C /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E9422015480A00EB571C /* EventBusRegistration.swift */; };
@@ -2018,6 +2020,8 @@
 		CA44C346211A3523003C1C4E /* InOrderToSupportArtShowTag_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOrderToSupportArtShowTag_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA44C349211A37AA003C1C4E /* WhenBindingArtShowEvent_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingArtShowEvent_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA44C34B211A38D8003C1C4E /* WhenBindingNonArtShowEvent_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingNonArtShowEvent_NewsPresenterShould.swift; sourceTree = "<group>"; };
+		CA44C34D211A3A30003C1C4E /* WhenBindingArtShowMessage_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingArtShowMessage_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
+		CA44C34F211A3D43003C1C4E /* WhenPreparingViewModel_ForArtShowEvent_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ForArtShowEvent_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -6053,6 +6057,7 @@
 			isa = PBXGroup;
 			children = (
 				CACF1E7920B1D12E00D904B5 /* BeforeEventDetailSceneLoads_EventDetailPresenterShould.swift */,
+				CA44C34D211A3A30003C1C4E /* WhenBindingArtShowMessage_EventDetailPresenterShould.swift */,
 				CACF1EAF20B5F86700D904B5 /* WhenBindingEventBanner_EventDetailPresenterShould.swift */,
 				CACF1E9D20B4386B00D904B5 /* WhenBindingEventDescription_EventDetailPresenterShould.swift */,
 				CACF1EA520B5B77700D904B5 /* WhenBindingEventSummary_EventDetailPresenterShould.swift */,
@@ -6146,6 +6151,7 @@
 			children = (
 				CABA83F320CE988B00DD0795 /* WhenFavouritingEventViewModel_EventDetailInteractorShould.swift */,
 				CACF1E8420B34E7A00D904B5 /* WhenPreparingViewModel_EventDetailInteractorShould.swift */,
+				CA44C34F211A3D43003C1C4E /* WhenPreparingViewModel_ForArtShowEvent_EventDetailInteractorShould.swift */,
 				CA131BD020C1851A00DB1036 /* WhenPreparingViewModel_ForEventThatIsFavourite_EventDetailInteractorShould.swift */,
 				CA131BD420C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift */,
 				CAD2609E20C02E7C007E3618 /* WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailInteractorShould.swift */,
@@ -8054,6 +8060,7 @@
 				CAC1E1391F50431000195513 /* NewsPresenterTestBuilder.swift in Sources */,
 				CA27618820DFEC73000E52AC /* WhenToldToOpenDealersWebsite_WhenApplicationCannotHandleURL_ApplicationShould.swift in Sources */,
 				CA6375B9208E03C000536BE2 /* CapturingDealersScene.swift in Sources */,
+				CA44C350211A3D43003C1C4E /* WhenPreparingViewModel_ForArtShowEvent_EventDetailInteractorShould.swift in Sources */,
 				CAC233882100C0F700E73486 /* WhenToldToFavouriteEvent_FromSearchViewModel_InteractorShould.swift in Sources */,
 				CABA83F220CE332500DD0795 /* WhenPerformingSubsequentSync_ApplicationShould.swift in Sources */,
 				CACF1E8C20B351EA00D904B5 /* FakeDateRangeFormatter.swift in Sources */,
@@ -8221,6 +8228,7 @@
 				CA30EACA1F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift in Sources */,
 				CAF597A42045EF5A00089BE8 /* V2SyncAPITests.swift in Sources */,
 				CA89CBAF207F823A00570D54 /* WhenBuildingNewsModule.swift in Sources */,
+				CA44C34E211A3A30003C1C4E /* WhenBindingArtShowMessage_EventDetailPresenterShould.swift in Sources */,
 				CA637566208CC94E00536BE2 /* WhenShowingTutorial_DirectorShould.swift in Sources */,
 				CA734D79210A4BA500221886 /* WhenDeletingKnowledgeEntry_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CA2D08141FE9549600BFD785 /* WhenThePerformInitialDownloadPageAppearsWithUnreachableNetwork.swift in Sources */,

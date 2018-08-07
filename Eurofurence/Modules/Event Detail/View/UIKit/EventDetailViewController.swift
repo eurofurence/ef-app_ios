@@ -116,6 +116,14 @@ class EventDetailViewController: UIViewController, EventDetailScene {
             return cell
         }
 
+        func makeArtShowBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> Component {
+            let cell = tableView.dequeue(EventInformationBannerTableViewCell.self)
+            block(cell)
+            cell.iconLabel.text = "\u{f03e}"
+
+            return cell
+        }
+
         // MARK: UITableViewDataSource
 
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

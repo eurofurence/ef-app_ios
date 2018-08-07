@@ -71,6 +71,12 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
             }
         }
 
+        func visit(_ artShowMessage: EventArtShowMessageViewModel) {
+            boundComponent = componentFactory.makeArtShowBannerComponent { (component) in
+                component.setBannerMessage(artShowMessage.message)
+            }
+        }
+
     }
 
     private let scene: EventDetailScene

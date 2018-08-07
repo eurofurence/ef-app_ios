@@ -62,6 +62,14 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         }
 
+        struct ArtShowComponent: EventDetailViewModelComponent {
+
+            func describe(to visitor: EventDetailViewModelVisitor) {
+                visitor.visit(EventArtShowMessageViewModel(message: .artShow))
+            }
+
+        }
+
         private let components: [EventDetailViewModelComponent]
         private let event: Event2
         private let eventsService: EventsService
@@ -161,6 +169,10 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
             if event.isSuperSponsorOnly {
                 components.append(ViewModel.SuperSponsorsOnlyComponent())
+            }
+
+            if event.isArtShow {
+                components.append(ViewModel.ArtShowComponent())
             }
 
             if !event.eventDescription.isEmpty, event.eventDescription != event.abstract {

@@ -188,6 +188,9 @@ public extension String {
     public static let selectAnOption = NSLocalizedString("SelectAnOption",
                                                          comment: "Title for action sheets present on top of maps when multiple options available for a tapped target")
 
+    public static let artShow = NSLocalizedString("ArtShow",
+                                                  comment: "Message shown in the event detail view when viewing an event that's part of the art show")
+
     private struct Formatters {
         static var numbers = NumberFormatter()
     }

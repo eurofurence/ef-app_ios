@@ -34,6 +34,10 @@ class CapturingEventDetailViewModelVisitor: EventDetailViewModelVisitor {
         visitedViewModels.append(superSponsorsOnlyMessage)
     }
     
+    func visit(_ artShowMessage: EventArtShowMessageViewModel) {
+        visitedViewModels.append(artShowMessage)
+    }
+    
 }
 
 class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {

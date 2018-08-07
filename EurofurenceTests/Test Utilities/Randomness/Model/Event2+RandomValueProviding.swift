@@ -33,6 +33,7 @@ extension Event2: RandomValueProviding {
         var event = Event2.random
         event.isSponsorOnly = false
         event.isSuperSponsorOnly = false
+        event.isArtShow = false
         
         return event
     }
