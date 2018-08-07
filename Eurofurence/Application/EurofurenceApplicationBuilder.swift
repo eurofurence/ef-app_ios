@@ -32,6 +32,7 @@ class EurofurenceApplicationBuilder {
     private var notificationsService: NotificationsService
     private var hoursDateFormatter: HoursDateFormatter
     private var mapCoordinateRender: MapCoordinateRender
+    private var forceRefreshRequired: ForceRefreshRequired
 
     init() {
         userPreferences = UserDefaultsPreferences()
@@ -66,6 +67,12 @@ class EurofurenceApplicationBuilder {
         notificationsService = UserNotificationsNotificationService()
         hoursDateFormatter = FoundationHoursDateFormatter.shared
         mapCoordinateRender = CocoaTouchMapCoordinateRender()
+
+        struct DummyForceRefreshRequired: ForceRefreshRequired {
+            var isForceRefreshRequired: Bool = false
+        }
+
+        forceRefreshRequired = DummyForceRefreshRequired()
     }
 
     @discardableResult
@@ -200,6 +207,12 @@ class EurofurenceApplicationBuilder {
         return self
     }
 
+    @discardableResult
+    func with(_ forceRefreshRequired: ForceRefreshRequired) -> EurofurenceApplicationBuilder {
+        self.forceRefreshRequired = forceRefreshRequired
+        return self
+    }
+
     func build() -> EurofurenceApplicationProtocol {
         return EurofurenceApplication(userPreferences: userPreferences,
                                       dataStore: dataStore,
@@ -222,7 +235,8 @@ class EurofurenceApplicationBuilder {
                                       longRunningTaskManager: longRunningTaskManager,
                                       notificationsService: notificationsService,
                                       hoursDateFormatter: hoursDateFormatter,
-                                      mapCoordinateRender: mapCoordinateRender)
+                                      mapCoordinateRender: mapCoordinateRender,
+                                      forceRefreshRequired: forceRefreshRequired)
     }
 
 }

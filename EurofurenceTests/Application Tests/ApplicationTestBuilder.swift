@@ -349,6 +349,7 @@ class ApplicationTestBuilder {
     private var imageRepository = CapturingImageRepository()
     private var urlOpener: CapturingURLOpener = CapturingURLOpener()
     private var collectThemAllRequestFactory: CollectThemAllRequestFactory = StubCollectThemAllRequestFactory()
+    private var forceUpgradeRequired: ForceRefreshRequired = StubForceRefreshRequired(isForceRefreshRequired: false)
     
     func with(_ currentDate: Date) -> ApplicationTestBuilder {
         stubClock = StubClock(currentDate: currentDate)
@@ -416,6 +417,12 @@ class ApplicationTestBuilder {
     }
     
     @discardableResult
+    func with(_ forceUpgradeRequired: ForceRefreshRequired) -> ApplicationTestBuilder {
+        self.forceUpgradeRequired = forceUpgradeRequired
+        return self
+    }
+    
+    @discardableResult
     func build() -> Context {
         let dateDistanceCalculator = StubDateDistanceCalculator()
         let conventionStartDateRepository = StubConventionStartDateRepository()
@@ -448,6 +455,7 @@ class ApplicationTestBuilder {
             .with(notificationsService)
             .with(hoursDateFormatter)
             .with(mapCoordinateRender)
+            .with(forceUpgradeRequired)
             .build()
         
         return Context(application: app,

@@ -74,8 +74,9 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
 
 extension CapturingEurofurenceDataStore {
     
-    func save(_ response: APISyncResponse, block: ((EurofurenceDataStoreTransaction) -> Void)? = nil) {
+    func save(_ response: APISyncResponse, lastRefreshDate: Date = Date(), block: ((EurofurenceDataStoreTransaction) -> Void)? = nil) {
         performTransaction { (transaction) in
+            transaction.saveLastRefreshDate(lastRefreshDate)
             transaction.saveKnowledgeGroups(response.knowledgeGroups.changed)
             transaction.saveKnowledgeEntries(response.knowledgeEntries.changed)
             transaction.saveAnnouncements(response.announcements.changed)

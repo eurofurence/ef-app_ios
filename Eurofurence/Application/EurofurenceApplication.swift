@@ -39,6 +39,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private let collectThemAllRequestFactory: CollectThemAllRequestFactory
     private let credentialStore: CredentialStore
     private let longRunningTaskManager: LongRunningTaskManager
+    private let forceRefreshRequired: ForceRefreshRequired
 
     private let imageCache: ImagesCache
     private let imageDownloader: ImageDownloader
@@ -72,7 +73,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
          longRunningTaskManager: LongRunningTaskManager,
          notificationsService: NotificationsService,
          hoursDateFormatter: HoursDateFormatter,
-         mapCoordinateRender: MapCoordinateRender) {
+         mapCoordinateRender: MapCoordinateRender,
+         forceRefreshRequired: ForceRefreshRequired) {
         self.userPreferences = userPreferences
         self.dataStore = dataStore
         self.clock = clock
@@ -82,6 +84,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         self.collectThemAllRequestFactory = collectThemAllRequestFactory
         self.credentialStore = credentialStore
         self.longRunningTaskManager = longRunningTaskManager
+        self.forceRefreshRequired = forceRefreshRequired
 
         pushPermissionsRequester.requestPushPermissions()
 
@@ -163,7 +166,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         if dataStore.getLastRefreshDate() == nil {
             completionHandler(.absent)
         } else {
-            if userPreferences.refreshStoreOnLaunch {
+            if userPreferences.refreshStoreOnLaunch || forceRefreshRequired.isForceRefreshRequired {
                 completionHandler(.stale)
             } else {
                 completionHandler(.available)
