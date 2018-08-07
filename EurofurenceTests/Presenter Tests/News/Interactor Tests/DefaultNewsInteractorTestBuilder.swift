@@ -329,7 +329,8 @@ extension DefaultNewsInteractorTestBuilder.Context {
                                            location: event.room.name,
                                            isSponsorEvent: event.isSponsorOnly,
                                            isSuperSponsorEvent: event.isSuperSponsorOnly,
-                                           isFavourite: isFavourite)
+                                           isFavourite: isFavourite,
+                                           isArtShowEvent: false)
         }
         
     }

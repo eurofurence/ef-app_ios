@@ -689,6 +689,8 @@
 		CA44C343211A304A003C1C4E /* WhenBindingArtShowEvent_ForSearchResult_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C342211A304A003C1C4E /* WhenBindingArtShowEvent_ForSearchResult_SchedulePresenterShould.swift */; };
 		CA44C345211A30DE003C1C4E /* WhenBindingNonArtShowEvent_ForSearchResult_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C344211A30DE003C1C4E /* WhenBindingNonArtShowEvent_ForSearchResult_SchedulePresenterShould.swift */; };
 		CA44C347211A3523003C1C4E /* InOrderToSupportArtShowTag_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C346211A3523003C1C4E /* InOrderToSupportArtShowTag_ApplicationShould.swift */; };
+		CA44C34A211A37AA003C1C4E /* WhenBindingArtShowEvent_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C349211A37AA003C1C4E /* WhenBindingArtShowEvent_NewsPresenterShould.swift */; };
+		CA44C34C211A38D8003C1C4E /* WhenBindingNonArtShowEvent_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C34B211A38D8003C1C4E /* WhenBindingNonArtShowEvent_NewsPresenterShould.swift */; };
 		CA46A73920F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */; };
 		CA49E9462015480A00EB571C /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */; };
 		CA49E94A2015480A00EB571C /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E9422015480A00EB571C /* EventBusRegistration.swift */; };
@@ -2014,6 +2016,8 @@
 		CA44C342211A304A003C1C4E /* WhenBindingArtShowEvent_ForSearchResult_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingArtShowEvent_ForSearchResult_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA44C344211A30DE003C1C4E /* WhenBindingNonArtShowEvent_ForSearchResult_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingNonArtShowEvent_ForSearchResult_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA44C346211A3523003C1C4E /* InOrderToSupportArtShowTag_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOrderToSupportArtShowTag_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA44C349211A37AA003C1C4E /* WhenBindingArtShowEvent_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingArtShowEvent_NewsPresenterShould.swift; sourceTree = "<group>"; };
+		CA44C34B211A38D8003C1C4E /* WhenBindingNonArtShowEvent_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingNonArtShowEvent_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -3945,6 +3949,7 @@
 			isa = PBXGroup;
 			children = (
 				CA27257721138D21004C6D0A /* SingleEventNewsViewModel.swift */,
+				CA44C348211A3794003C1C4E /* Art Show */,
 				CA27257521138B18004C6D0A /* Favourites */,
 				CA27257D211394B1004C6D0A /* Sponsor */,
 				CA27257621138B1F004C6D0A /* Super Sponsor */,
@@ -4527,6 +4532,15 @@
 				CA44C33E211A2B60003C1C4E /* WhenBindingArtShowEvent_SchedulePresenterShould.swift */,
 				CA44C344211A30DE003C1C4E /* WhenBindingNonArtShowEvent_ForSearchResult_SchedulePresenterShould.swift */,
 				CA44C340211A2CAB003C1C4E /* WhenBindingNonArtShowEvent_SchedulePresenterShould.swift */,
+			);
+			path = "Art Show";
+			sourceTree = "<group>";
+		};
+		CA44C348211A3794003C1C4E /* Art Show */ = {
+			isa = PBXGroup;
+			children = (
+				CA44C349211A37AA003C1C4E /* WhenBindingArtShowEvent_NewsPresenterShould.swift */,
+				CA44C34B211A38D8003C1C4E /* WhenBindingNonArtShowEvent_NewsPresenterShould.swift */,
 			);
 			path = "Art Show";
 			sourceTree = "<group>";
@@ -7766,6 +7780,7 @@
 				CA0E521B208FC107005259FE /* ConventionCountdownComponentViewModel+RandomValueProviding.swift in Sources */,
 				CA36A44120D7020900EE6537 /* WhenSearchingForEvents_BeforeAnyAreAvailable_ApplicationShould.swift in Sources */,
 				CA36A4B220D99AA300EE6537 /* WhenObservingDealersAfterLoadingFromStore_ApplicationShould.swift in Sources */,
+				CA44C34C211A38D8003C1C4E /* WhenBindingNonArtShowEvent_NewsPresenterShould.swift in Sources */,
 				CA131BD320C1866D00DB1036 /* CapturingEventDetailViewModelDelegate.swift in Sources */,
 				CA63757E208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift in Sources */,
 				CA6A8DA920E2CE2C007536CD /* Map2+RandomValueProviding.swift in Sources */,
@@ -7847,6 +7862,7 @@
 				CAF597A220458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift in Sources */,
 				CABA840320CEFF9300DD0795 /* WhenServiceIndicatesEventIsFavourited_EventDetailInteractorShould.swift in Sources */,
 				CA283A6720E6F61B00F7D195 /* WhenPerformingSync_ApplicationShould.swift in Sources */,
+				CA44C34A211A37AA003C1C4E /* WhenBindingArtShowEvent_NewsPresenterShould.swift in Sources */,
 				CA2761B820E028F8000E52AC /* WhenCollectThemAllSceneLoads_PresenterShould.swift in Sources */,
 				CACE1B051F2BBA1A00DFCB60 /* WhenLoggingOut.swift in Sources */,
 				CA52C68320D5980C009D3A9E /* ApplicationSignificantTimeChangeAdapterTests.swift in Sources */,

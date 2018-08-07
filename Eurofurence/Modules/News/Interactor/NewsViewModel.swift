@@ -86,6 +86,7 @@ struct EventComponentViewModel: Hashable {
     var isSponsorEvent: Bool
     var isSuperSponsorEvent: Bool
     var isFavourite: Bool
+    var isArtShowEvent: Bool
 
 }
 

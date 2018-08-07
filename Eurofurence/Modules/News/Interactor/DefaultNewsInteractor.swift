@@ -393,7 +393,8 @@ class DefaultNewsInteractor: NewsInteractor,
                                                location: event.room.name,
                                                isSponsorEvent: event.isSponsorOnly,
                                                isSuperSponsorEvent: event.isSuperSponsorOnly,
-                                               isFavourite: favouriteEventIdentifiers.contains(event.identifier))
+                                               isFavourite: favouriteEventIdentifiers.contains(event.identifier),
+                                               isArtShowEvent: false)
             }
         }
 
