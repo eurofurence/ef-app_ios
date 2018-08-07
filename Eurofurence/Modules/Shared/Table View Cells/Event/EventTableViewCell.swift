@@ -62,4 +62,12 @@ class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
         superSponsorEventIndicator.isHidden = true
     }
 
+    func showArtShowEventIndicator() {
+
+    }
+
+    func hideArtShowEventIndicator() {
+
+    }
+
 }

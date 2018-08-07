@@ -46,6 +46,12 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
             } else {
                 eventComponent.hideFavouriteEventIndicator()
             }
+
+            if event.isArtShow {
+                eventComponent.showArtShowEventIndicator()
+            } else {
+                eventComponent.hideArtShowEventIndicator()
+            }
         }
 
         func eventActionForComponent(at indexPath: IndexPath) -> ScheduleEventComponentAction {
@@ -106,6 +112,12 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
                 eventComponent.showFavouriteEventIndicator()
             } else {
                 eventComponent.hideFavouriteEventIndicator()
+            }
+
+            if event.isArtShow {
+                eventComponent.showArtShowEventIndicator()
+            } else {
+                eventComponent.hideArtShowEventIndicator()
             }
         }
 

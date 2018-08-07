@@ -20,5 +20,7 @@ protocol ScheduleEventComponent {
     func hideSponsorEventIndicator()
     func showSuperSponsorOnlyEventIndicator()
     func hideSuperSponsorOnlyEventIndicator()
+    func showArtShowEventIndicator()
+    func hideArtShowEventIndicator()
 
 }

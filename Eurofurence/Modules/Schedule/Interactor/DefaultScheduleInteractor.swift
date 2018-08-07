@@ -132,7 +132,8 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
                                                   location: event.room.name,
                                                   isFavourite: favouriteEvents.contains(event.identifier),
                                                   isSponsorOnly: event.isSponsorOnly,
-                                                  isSuperSponsorOnly: event.isSuperSponsorOnly)
+                                                  isSuperSponsorOnly: event.isSuperSponsorOnly,
+                                                  isArtShow: false)
                 }
 
                 return ScheduleEventGroupViewModel(title: title, events: viewModels)
@@ -297,7 +298,8 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
                                                   location: event.room.name,
                                                   isFavourite: favouriteEvents.contains(event.identifier),
                                                   isSponsorOnly: event.isSponsorOnly,
-                                                  isSuperSponsorOnly: event.isSuperSponsorOnly)
+                                                  isSuperSponsorOnly: event.isSuperSponsorOnly,
+                                                  isArtShow: false)
                 }
 
                 return ScheduleEventGroupViewModel(title: title, events: viewModels)
