@@ -43,5 +43,6 @@ struct Event2: Equatable {
     var bannerGraphicPNGData: Data?
     var isSponsorOnly: Bool
     var isSuperSponsorOnly: Bool
+    var isArtShow: Bool
 
 }

@@ -257,7 +257,8 @@ class ApplicationTestBuilder {
                           posterGraphicPNGData: expectedPosterGraphic,
                           bannerGraphicPNGData: expectedBannerGraphic,
                           isSponsorOnly: tags.contains("sponsors_only"),
-                          isSuperSponsorOnly: tags.contains("supersponsors_only"))
+                          isSuperSponsorOnly: tags.contains("supersponsors_only"),
+                          isArtShow: false)
         }
         
         func makeExpectedEvents(from events: [APIEvent], response: APISyncResponse) -> [Event2] {
