@@ -67,12 +67,7 @@ class EurofurenceApplicationBuilder {
         notificationsService = UserNotificationsNotificationService()
         hoursDateFormatter = FoundationHoursDateFormatter.shared
         mapCoordinateRender = CocoaTouchMapCoordinateRender()
-
-        struct DummyForceRefreshRequired: ForceRefreshRequired {
-            var isForceRefreshRequired: Bool = false
-        }
-
-        forceRefreshRequired = DummyForceRefreshRequired()
+        forceRefreshRequired = UserDefaultsForceRefreshRequired()
     }
 
     @discardableResult

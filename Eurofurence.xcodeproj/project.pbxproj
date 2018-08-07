@@ -682,6 +682,8 @@
 		CA40109F211083610056E16C /* DefaultKnowledgeGroupEntriesInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40109E211083610056E16C /* DefaultKnowledgeGroupEntriesInteractorShould.swift */; };
 		CA4010A12110854E0056E16C /* DefaultKnowledgeGroupEntriesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4010A02110854E0056E16C /* DefaultKnowledgeGroupEntriesInteractor.swift */; };
 		CA44C3382119BFFE003C1C4E /* ForceRefreshRequired.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C3372119BFFE003C1C4E /* ForceRefreshRequired.swift */; };
+		CA44C33A211A1CAE003C1C4E /* UserDefaultsForceRefreshRequired.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C339211A1CAE003C1C4E /* UserDefaultsForceRefreshRequired.swift */; };
+		CA44C33C211A2727003C1C4E /* UserDefaultsForceRefreshRequired.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C33B211A2727003C1C4E /* UserDefaultsForceRefreshRequired.swift */; };
 		CA46A73920F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */; };
 		CA49E9462015480A00EB571C /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */; };
 		CA49E94A2015480A00EB571C /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E9422015480A00EB571C /* EventBusRegistration.swift */; };
@@ -2000,6 +2002,8 @@
 		CA40109E211083610056E16C /* DefaultKnowledgeGroupEntriesInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeGroupEntriesInteractorShould.swift; sourceTree = "<group>"; };
 		CA4010A02110854E0056E16C /* DefaultKnowledgeGroupEntriesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeGroupEntriesInteractor.swift; sourceTree = "<group>"; };
 		CA44C3372119BFFE003C1C4E /* ForceRefreshRequired.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceRefreshRequired.swift; sourceTree = "<group>"; };
+		CA44C339211A1CAE003C1C4E /* UserDefaultsForceRefreshRequired.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsForceRefreshRequired.swift; sourceTree = "<group>"; };
+		CA44C33B211A2727003C1C4E /* UserDefaultsForceRefreshRequired.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsForceRefreshRequired.swift; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -6251,6 +6255,7 @@
 		CADABF072119BE630023C3B6 /* Upgrade Path */ = {
 			isa = PBXGroup;
 			children = (
+				CA44C339211A1CAE003C1C4E /* UserDefaultsForceRefreshRequired.swift */,
 				CADABF082119BE770023C3B6 /* WhenUpgradingBetweenAppVersions_ApplicationShould.swift */,
 			);
 			path = "Upgrade Path";
@@ -6260,6 +6265,7 @@
 			isa = PBXGroup;
 			children = (
 				CA44C3372119BFFE003C1C4E /* ForceRefreshRequired.swift */,
+				CA44C33B211A2727003C1C4E /* UserDefaultsForceRefreshRequired.swift */,
 			);
 			path = "Upgrade Path";
 			sourceTree = "<group>";
@@ -7257,6 +7263,7 @@
 				CAEAEBFF1FE0044900C0EE7C /* MessageDetailScene.swift in Sources */,
 				CAE8B0BB20CA54C30029D4D6 /* EventEntity+Adaptation.swift in Sources */,
 				CA3990EF20ACD559001E3F1A /* FoundationHoursDateFormatter.swift in Sources */,
+				CA44C33C211A2727003C1C4E /* UserDefaultsForceRefreshRequired.swift in Sources */,
 				9ACF99971EC858B2006FC958 /* Map.swift in Sources */,
 				6EEC6DA51F1BFC7700205F2D /* AppVersionProviding.swift in Sources */,
 				CA27619C20E01E01000E52AC /* CollectThemAllModuleBuilder.swift in Sources */,
@@ -8101,6 +8108,7 @@
 				CA73AED4201A0413004E77BF /* WhenKnowledgeListSceneDidLoad.swift in Sources */,
 				CA6A8DBA20E2DD79007536CD /* WhenObservingMaps_ThenSyncSucceeds_ApplicationShould.swift in Sources */,
 				CA73AEDF201A0833004E77BF /* CapturingKnowledgeInteractor.swift in Sources */,
+				CA44C33A211A1CAE003C1C4E /* UserDefaultsForceRefreshRequired.swift in Sources */,
 				CA27257321138AFF004C6D0A /* WhenBindingSuperSponsorEvent_NewsPresenterShould.swift in Sources */,
 				CA36A46B20D84AB600EE6537 /* StubDealerViewModel+RandomValueProviding.swift in Sources */,
 				CAD2609F20C02E7C007E3618 /* WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailInteractorShould.swift in Sources */,
