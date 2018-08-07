@@ -688,6 +688,7 @@
 		CA44C341211A2CAB003C1C4E /* WhenBindingNonArtShowEvent_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C340211A2CAB003C1C4E /* WhenBindingNonArtShowEvent_SchedulePresenterShould.swift */; };
 		CA44C343211A304A003C1C4E /* WhenBindingArtShowEvent_ForSearchResult_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C342211A304A003C1C4E /* WhenBindingArtShowEvent_ForSearchResult_SchedulePresenterShould.swift */; };
 		CA44C345211A30DE003C1C4E /* WhenBindingNonArtShowEvent_ForSearchResult_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C344211A30DE003C1C4E /* WhenBindingNonArtShowEvent_ForSearchResult_SchedulePresenterShould.swift */; };
+		CA44C347211A3523003C1C4E /* InOrderToSupportArtShowTag_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C346211A3523003C1C4E /* InOrderToSupportArtShowTag_ApplicationShould.swift */; };
 		CA46A73920F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */; };
 		CA49E9462015480A00EB571C /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */; };
 		CA49E94A2015480A00EB571C /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E9422015480A00EB571C /* EventBusRegistration.swift */; };
@@ -2012,6 +2013,7 @@
 		CA44C340211A2CAB003C1C4E /* WhenBindingNonArtShowEvent_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingNonArtShowEvent_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA44C342211A304A003C1C4E /* WhenBindingArtShowEvent_ForSearchResult_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingArtShowEvent_ForSearchResult_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA44C344211A30DE003C1C4E /* WhenBindingNonArtShowEvent_ForSearchResult_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingNonArtShowEvent_ForSearchResult_SchedulePresenterShould.swift; sourceTree = "<group>"; };
+		CA44C346211A3523003C1C4E /* InOrderToSupportArtShowTag_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOrderToSupportArtShowTag_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -3991,6 +3993,7 @@
 		CA27258B2113B1E3004C6D0A /* Tag Adaption */ = {
 			isa = PBXGroup;
 			children = (
+				CA44C346211A3523003C1C4E /* InOrderToSupportArtShowTag_ApplicationShould.swift */,
 				CA27258C2113B1F4004C6D0A /* InOrderToSupportSponsorTag_ApplicationShould.swift */,
 				CA27258E2113B665004C6D0A /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift */,
 			);
@@ -8116,6 +8119,7 @@
 				CA283A7820E8F53B00F7D195 /* WhenMakingWebModuleWithNonHTTPSchemedLinks.swift in Sources */,
 				CAF5979F2045886A00089BE8 /* WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups.swift in Sources */,
 				CA65A21F2091F1EC0078A4A7 /* WhenSyncSucceeds_SyncAPIShould.swift in Sources */,
+				CA44C347211A3523003C1C4E /* InOrderToSupportArtShowTag_ApplicationShould.swift in Sources */,
 				CA283A6520E6F27200F7D195 /* WhenApplicationRefreshStateChanges_NewsInteractorShould.swift in Sources */,
 				CA6A9FF31FD5E6BB0092C6DB /* LoginViewControllerTests.swift in Sources */,
 				CA6A8D9020E2C2C8007536CD /* BeforeMapsSceneLoads_MapsPresenterShould.swift in Sources */,
