@@ -15,6 +15,16 @@ struct StubForceRefreshRequired: ForceRefreshRequired {
     
 }
 
+class CapturingForceRefreshRequired: ForceRefreshRequired {
+    
+    private(set) var wasEnquiredWhetherForceRefreshRequired = false
+    var isForceRefreshRequired: Bool {
+        wasEnquiredWhetherForceRefreshRequired = true
+        return true
+    }
+    
+}
+
 class WhenUpgradingBetweenAppVersions_ApplicationShould: XCTestCase {
     
     func testIndicateStoreIsStale() {
@@ -26,6 +36,18 @@ class WhenUpgradingBetweenAppVersions_ApplicationShould: XCTestCase {
         context.application.resolveDataStoreState { dataStoreState = $0 }
         
         XCTAssertEqual(EurofurenceDataStoreState.stale, dataStoreState)
+    }
+    
+    func testAlwaysEnquireWhetherUpgradeRequiredEvenWhenRefreshWouldOccurByPreference() {
+        let forceUpgradeRequired = CapturingForceRefreshRequired()
+        let presentDataStore = CapturingEurofurenceDataStore()
+        presentDataStore.save(.randomWithoutDeletions)
+        let preferences = StubUserPreferences()
+        preferences.refreshStoreOnLaunch = true
+        let context = ApplicationTestBuilder().with(preferences).with(presentDataStore).with(forceUpgradeRequired).build()
+        context.application.resolveDataStoreState { (_) in }
+        
+        XCTAssertTrue(forceUpgradeRequired.wasEnquiredWhetherForceRefreshRequired)
     }
     
 }

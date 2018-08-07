@@ -166,7 +166,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         if dataStore.getLastRefreshDate() == nil {
             completionHandler(.absent)
         } else {
-            if userPreferences.refreshStoreOnLaunch || forceRefreshRequired.isForceRefreshRequired {
+            if forceRefreshRequired.isForceRefreshRequired || userPreferences.refreshStoreOnLaunch {
                 completionHandler(.stale)
             } else {
                 completionHandler(.available)
