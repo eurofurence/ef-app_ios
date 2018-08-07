@@ -28,7 +28,8 @@ extension MapEntryEntity: EntityAdapting {
 
     func asAdaptedType() -> APIMap.Entry {
         let links = ((self.links as? Set<MapEntryLinkEntity>) ?? Set())
-        return APIMap.Entry(x: Int(x),
+        return APIMap.Entry(identifier: identifier.or(""),
+                            x: Int(x),
                             y: Int(y),
                             tapRadius: Int(tapRadius),
                             links: links.map({ $0.asAdaptedType() }))

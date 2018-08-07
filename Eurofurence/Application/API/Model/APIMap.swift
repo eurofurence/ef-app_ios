@@ -21,7 +21,8 @@ struct APIMap: Equatable {
     struct Entry: Equatable {
 
         static func == (lhs: Entry, rhs: Entry) -> Bool {
-            return lhs.x == rhs.x &&
+            return lhs.identifier == rhs.identifier &&
+                   lhs.x == rhs.x &&
                    lhs.y == rhs.y &&
                    lhs.tapRadius == rhs.tapRadius &&
                    lhs.links.count == rhs.links.count &&
@@ -42,6 +43,7 @@ struct APIMap: Equatable {
 
         }
 
+        var identifier: String
         var x: Int
         var y: Int
         var tapRadius: Int

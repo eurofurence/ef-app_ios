@@ -27,8 +27,8 @@ class WhenFetchingMapContentThatRevealsRoom_ApplicationShould: XCTestCase {
         (x, y, tapRadius) = (Int.random, Int.random, Int.random)
         map = APIMap.random
         let link = APIMap.Entry.Link(type: .conferenceRoom, name: .random, target: room.roomIdentifier)
-        let entry = APIMap.Entry(x: x, y: y, tapRadius: tapRadius, links: [link])
-        let unrelatedEntry = APIMap.Entry(x: .random, y: .random, tapRadius: 0, links: .random)
+        let entry = APIMap.Entry(identifier: .random, x: x, y: y, tapRadius: tapRadius, links: [link])
+        let unrelatedEntry = APIMap.Entry(identifier: .random, x: .random, y: .random, tapRadius: 0, links: .random)
         map.entries = [entry, unrelatedEntry]
         syncResponse.maps.changed = [map]
         syncResponse.rooms.changed = [room]

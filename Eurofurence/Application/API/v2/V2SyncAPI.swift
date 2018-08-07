@@ -292,13 +292,18 @@ private struct JSONSyncResponse: Decodable {
                 }
             }
 
+            var Id: String
             var X: Int
             var Y: Int
             var TapRadius: Int
             var Links: [JSONMapEntryLink]
 
             var modelValue: APIMap.Entry {
-                return APIMap.Entry(x: X, y: Y, tapRadius: TapRadius, links: Links.map({ $0.modelValue }))
+                return APIMap.Entry(identifier: Id,
+                                    x: X,
+                                    y: Y,
+                                    tapRadius: TapRadius,
+                                    links: Links.map({ $0.modelValue }))
             }
 
         }

@@ -433,6 +433,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                         }
 
                         let entity = MapEntryEntity(context: context)
+                        entity.identifier = entry.identifier
                         entity.x = Int64(entry.x)
                         entity.y = Int64(entry.y)
                         entity.tapRadius = Int64(entry.tapRadius)

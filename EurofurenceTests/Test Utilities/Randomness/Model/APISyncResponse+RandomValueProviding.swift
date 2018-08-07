@@ -206,7 +206,7 @@ extension APIMap: RandomValueProviding {
 extension APIMap.Entry: RandomValueProviding {
     
     static var random: APIMap.Entry {
-        return APIMap.Entry(x: .random, y: .random, tapRadius: .random, links: .random)
+        return APIMap.Entry(identifier: .random, x: .random, y: .random, tapRadius: .random, links: .random)
     }
     
 }

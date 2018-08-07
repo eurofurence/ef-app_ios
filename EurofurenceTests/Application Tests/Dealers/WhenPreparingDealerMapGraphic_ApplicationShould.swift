@@ -16,7 +16,7 @@ class WhenPreparingDealerMapGraphic_ApplicationShould: XCTestCase {
         let randomDealer = syncResponse.dealers.changed.randomElement()
         var randomMap = syncResponse.maps.changed.randomElement()
         let dealerMapLink = APIMap.Entry.Link(type: .dealerDetail, name: .random, target: randomDealer.element.identifier)
-        let dealerMapEntry = APIMap.Entry(x: .random, y: .random, tapRadius: .random, links: [dealerMapLink])
+        let dealerMapEntry = APIMap.Entry(identifier: .random, x: .random, y: .random, tapRadius: .random, links: [dealerMapLink])
         randomMap.element.entries = [dealerMapEntry]
         syncResponse.maps.changed[randomMap.index] = randomMap.element
         let context = ApplicationTestBuilder().build()

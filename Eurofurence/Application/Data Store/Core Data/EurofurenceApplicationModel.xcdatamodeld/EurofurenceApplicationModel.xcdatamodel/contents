@@ -85,6 +85,7 @@
         <relationship name="entries" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MapEntryEntity" inverseName="map" inverseEntity="MapEntryEntity" syncable="YES"/>
     </entity>
     <entity name="MapEntryEntity" representedClassName="MapEntryEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tapRadius" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="x" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="y" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -120,7 +121,7 @@
         <element name="LastRefreshEntity" positionX="-45" positionY="63" width="128" height="60"/>
         <element name="LinkEntity" positionX="-54" positionY="36" width="128" height="120"/>
         <element name="MapEntity" positionX="-36" positionY="135" width="128" height="105"/>
-        <element name="MapEntryEntity" positionX="-27" positionY="144" width="128" height="120"/>
+        <element name="MapEntryEntity" positionX="-27" positionY="144" width="128" height="135"/>
         <element name="MapEntryLinkEntity" positionX="-18" positionY="153" width="128" height="105"/>
         <element name="ReadAnnouncementEntity" positionX="-36" positionY="135" width="128" height="60"/>
         <element name="RoomEntity" positionX="-18" positionY="135" width="128" height="75"/>

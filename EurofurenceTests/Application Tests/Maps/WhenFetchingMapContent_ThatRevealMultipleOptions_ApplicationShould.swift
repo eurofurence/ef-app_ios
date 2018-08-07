@@ -21,7 +21,7 @@ class WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould: XCTest
         let dealer = syncResponse.dealers.changed.randomElement().element
         let roomLink = APIMap.Entry.Link(type: .conferenceRoom, name: .random, target: room.roomIdentifier)
         let dealerLink = APIMap.Entry.Link(type: .dealerDetail, name: .random, target: dealer.identifier)
-        let entry = APIMap.Entry(x: x, y: y, tapRadius: tapRadius, links: [roomLink, dealerLink])
+        let entry = APIMap.Entry(identifier: .random, x: x, y: y, tapRadius: tapRadius, links: [roomLink, dealerLink])
         map.entries = [entry]
         syncResponse.maps.changed[randomMap.index] = map
         context.refreshLocalStore()
