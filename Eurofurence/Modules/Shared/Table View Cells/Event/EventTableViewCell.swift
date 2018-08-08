@@ -20,12 +20,17 @@ class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
     @IBOutlet weak var sponsorEventIndicator: UILabel!
     @IBOutlet weak var superSponsorEventIndicator: UIView!
     @IBOutlet weak var artShowIndicatorView: UILabel!
+    @IBOutlet weak var kageBugIndicatorView: UILabel!
+    @IBOutlet weak var kageWineGlassIndicatorView: UILabel!
 
     // MARK: Overrides
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
         artShowIndicatorView.text = "\u{f03e}"
+        kageBugIndicatorView.text = "\u{f188}"
+        kageWineGlassIndicatorView.text = "\u{f000}"
     }
 
     // MARK: ScheduleEventComponent
@@ -79,11 +84,13 @@ class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
     }
 
     func showKageEventIndicator() {
-
+        kageBugIndicatorView.isHidden = false
+        kageWineGlassIndicatorView.isHidden = false
     }
 
     func hideKageEventIndicator() {
-
+        kageBugIndicatorView.isHidden = true
+        kageWineGlassIndicatorView.isHidden = true
     }
 
 }
