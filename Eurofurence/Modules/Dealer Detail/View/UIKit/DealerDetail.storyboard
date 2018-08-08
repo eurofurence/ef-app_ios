@@ -204,9 +204,14 @@
                                                                     <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cx7-8r-FhW" customClass="AspectRatioConstrainedImageView" customModule="Eurofurence" customModuleProvider="target">
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VhK-Wj-yrJ">
                                                                     <rect key="frame" x="0.0" y="29" width="335" height="50"/>
-                                                                </imageView>
+                                                                    <subviews>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cx7-8r-FhW">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
+                                                                        </imageView>
+                                                                    </subviews>
+                                                                </stackView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DeP-4Y-ySD">
                                                                     <rect key="frame" x="0.0" y="87" width="335" height="24"/>
                                                                     <subviews>
