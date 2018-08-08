@@ -345,7 +345,8 @@ class Schedule {
                       bannerGraphicPNGData: bannerGraphicData,
                       isSponsorOnly: containsTag("sponsors_only"),
                       isSuperSponsorOnly: containsTag("supersponsors_only"),
-                      isArtShow: containsTag("art_show"))
+                      isArtShow: containsTag("art_show"),
+                      isKageEvent: containsTag("kage"))
     }
 
     private func reconstituteFavouritesFromDataStore() {

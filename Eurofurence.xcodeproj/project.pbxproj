@@ -693,6 +693,7 @@
 		CA44C34C211A38D8003C1C4E /* WhenBindingNonArtShowEvent_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C34B211A38D8003C1C4E /* WhenBindingNonArtShowEvent_NewsPresenterShould.swift */; };
 		CA44C34E211A3A30003C1C4E /* WhenBindingArtShowMessage_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C34D211A3A30003C1C4E /* WhenBindingArtShowMessage_EventDetailPresenterShould.swift */; };
 		CA44C350211A3D43003C1C4E /* WhenPreparingViewModel_ForArtShowEvent_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C34F211A3D43003C1C4E /* WhenPreparingViewModel_ForArtShowEvent_EventDetailInteractorShould.swift */; };
+		CA44C352211AB44A003C1C4E /* InOrderToSupportKageTag_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C351211AB44A003C1C4E /* InOrderToSupportKageTag_ApplicationShould.swift */; };
 		CA46A73920F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */; };
 		CA49E9462015480A00EB571C /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */; };
 		CA49E94A2015480A00EB571C /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E9422015480A00EB571C /* EventBusRegistration.swift */; };
@@ -2022,6 +2023,7 @@
 		CA44C34B211A38D8003C1C4E /* WhenBindingNonArtShowEvent_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingNonArtShowEvent_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA44C34D211A3A30003C1C4E /* WhenBindingArtShowMessage_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingArtShowMessage_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA44C34F211A3D43003C1C4E /* WhenPreparingViewModel_ForArtShowEvent_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ForArtShowEvent_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
+		CA44C351211AB44A003C1C4E /* InOrderToSupportKageTag_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOrderToSupportKageTag_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -4003,6 +4005,7 @@
 			isa = PBXGroup;
 			children = (
 				CA44C346211A3523003C1C4E /* InOrderToSupportArtShowTag_ApplicationShould.swift */,
+				CA44C351211AB44A003C1C4E /* InOrderToSupportKageTag_ApplicationShould.swift */,
 				CA27258C2113B1F4004C6D0A /* InOrderToSupportSponsorTag_ApplicationShould.swift */,
 				CA27258E2113B665004C6D0A /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift */,
 			);
@@ -7952,6 +7955,7 @@
 				CA36A4D220DACDA200EE6537 /* WhenTellingDealersIndexToSearch_ApplicationShould.swift in Sources */,
 				CAD3BDC5205FE42A00C91E6E /* WhenLookingUpWebLinks.swift in Sources */,
 				CA63756C208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift in Sources */,
+				CA44C352211AB44A003C1C4E /* InOrderToSupportKageTag_ApplicationShould.swift in Sources */,
 				CA162EB220AA2DE0004AFED6 /* WhenObservingRunningEventsBeforeLoadingAnything.swift in Sources */,
 				CA131BD520C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift in Sources */,
 				CA27258D2113B1F4004C6D0A /* InOrderToSupportSponsorTag_ApplicationShould.swift in Sources */,

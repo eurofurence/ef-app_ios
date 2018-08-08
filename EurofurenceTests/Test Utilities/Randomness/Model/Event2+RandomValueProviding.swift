@@ -26,7 +26,8 @@ extension Event2: RandomValueProviding {
                       bannerGraphicPNGData: .random,
                       isSponsorOnly: .random,
                       isSuperSponsorOnly: .random,
-                      isArtShow: .random)
+                      isArtShow: .random,
+                      isKageEvent: .random)
     }
     
     static var randomStandardEvent: Event2 {
