@@ -18,7 +18,7 @@ struct BuildConfigurationV2ApiUrlProviding: V2ApiUrlProviding {
 
     init(_ buildConfiguration: BuildConfigurationProviding) {
         self.init(buildConfiguration,
-                  debugUrl: "https://app.eurofurence.org:40000/api/v2/",
+                  debugUrl: "https://app.eurofurence.org/api/v2/",
                   releaseUrl: "https://app.eurofurence.org/api/v2/")
     }
 
