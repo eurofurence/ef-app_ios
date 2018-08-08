@@ -696,6 +696,7 @@
 		CA44C352211AB44A003C1C4E /* InOrderToSupportKageTag_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C351211AB44A003C1C4E /* InOrderToSupportKageTag_ApplicationShould.swift */; };
 		CA44C354211AB5E0003C1C4E /* InOrderToSupportDealersDenTag_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C353211AB5E0003C1C4E /* InOrderToSupportDealersDenTag_ApplicationShould.swift */; };
 		CA44C356211B07F6003C1C4E /* InOrderToSupportMainStageTag_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C355211B07F6003C1C4E /* InOrderToSupportMainStageTag_ApplicationShould.swift */; };
+		CA44C358211B094A003C1C4E /* InOrderToSupportPhotoshootTag_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C357211B094A003C1C4E /* InOrderToSupportPhotoshootTag_ApplicationShould.swift */; };
 		CA46A73920F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */; };
 		CA49E9462015480A00EB571C /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */; };
 		CA49E94A2015480A00EB571C /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E9422015480A00EB571C /* EventBusRegistration.swift */; };
@@ -2028,6 +2029,7 @@
 		CA44C351211AB44A003C1C4E /* InOrderToSupportKageTag_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOrderToSupportKageTag_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA44C353211AB5E0003C1C4E /* InOrderToSupportDealersDenTag_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOrderToSupportDealersDenTag_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA44C355211B07F6003C1C4E /* InOrderToSupportMainStageTag_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOrderToSupportMainStageTag_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA44C357211B094A003C1C4E /* InOrderToSupportPhotoshootTag_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOrderToSupportPhotoshootTag_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -4014,6 +4016,7 @@
 				CA27258C2113B1F4004C6D0A /* InOrderToSupportSponsorTag_ApplicationShould.swift */,
 				CA27258E2113B665004C6D0A /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift */,
 				CA44C355211B07F6003C1C4E /* InOrderToSupportMainStageTag_ApplicationShould.swift */,
+				CA44C357211B094A003C1C4E /* InOrderToSupportPhotoshootTag_ApplicationShould.swift */,
 			);
 			path = "Tag Adaption";
 			sourceTree = "<group>";
@@ -7912,6 +7915,7 @@
 				CA6A8DF720E42DC0007536CD /* WhenSceneTapsMapPosition_MapsDetailPresenterShould.swift in Sources */,
 				CA36A4CE20DA7ED800EE6537 /* WhenSearching_DealersInteractorShould.swift in Sources */,
 				CACF1EA020B43D0900D904B5 /* EventSummaryViewModel+RandomValueProviding.swift in Sources */,
+				CA44C358211B094A003C1C4E /* InOrderToSupportPhotoshootTag_ApplicationShould.swift in Sources */,
 				CA283A6920E8D77800F7D195 /* WhenSceneInstigatesPullToRefresh_DealersPresenterShould.swift in Sources */,
 				CABF03C72041C3270028BD62 /* StubKnowledgeService.swift in Sources */,
 				CA30EABA1F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift in Sources */,

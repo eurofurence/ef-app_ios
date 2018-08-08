@@ -261,7 +261,8 @@ class ApplicationTestBuilder {
                           isArtShow: tags.contains("art_show"),
                           isKageEvent: tags.contains("kage"),
                           isDealersDen: tags.contains("dealers_den"),
-                          isMainStage: false)
+                          isMainStage: tags.contains("main_stage"),
+                          isPhotoshoot: tags.contains("photshoot"))
         }
         
         func makeExpectedEvents(from events: [APIEvent], response: APISyncResponse) -> [Event2] {

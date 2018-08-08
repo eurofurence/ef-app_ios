@@ -47,5 +47,6 @@ struct Event2: Equatable {
     var isKageEvent: Bool
     var isDealersDen: Bool
     var isMainStage: Bool
+    var isPhotoshoot: Bool
 
 }
