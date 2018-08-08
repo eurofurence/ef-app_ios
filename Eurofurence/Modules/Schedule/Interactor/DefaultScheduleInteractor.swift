@@ -301,7 +301,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
                                                   isSponsorOnly: event.isSponsorOnly,
                                                   isSuperSponsorOnly: event.isSuperSponsorOnly,
                                                   isArtShow: event.isArtShow,
-                                                  isKageEvent: false)
+                                                  isKageEvent: event.isKageEvent)
                 }
 
                 return ScheduleEventGroupViewModel(title: title, events: viewModels)
