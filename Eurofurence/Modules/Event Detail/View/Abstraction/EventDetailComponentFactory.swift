@@ -20,5 +20,6 @@ protocol EventDetailComponentFactory {
     func makeArtShowBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> Component
     func makeKageBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> Component
     func makeDealersDenBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> Component
+    func makeMainStageBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> Component
 
 }

@@ -89,6 +89,12 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
             }
         }
 
+        func visit(_ mainStageMessage: EventMainStageMessageViewModel) {
+            boundComponent = componentFactory.makeMainStageBannerComponent { (component) in
+                component.setBannerMessage(mainStageMessage.message)
+            }
+        }
+
     }
 
     private let scene: EventDetailScene

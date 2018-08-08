@@ -86,6 +86,14 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         }
 
+        struct MainStageComponent: EventDetailViewModelComponent {
+
+            func describe(to visitor: EventDetailViewModelVisitor) {
+                visitor.visit(EventMainStageMessageViewModel(message: .mainStageEvent))
+            }
+
+        }
+
         private let components: [EventDetailViewModelComponent]
         private let event: Event2
         private let eventsService: EventsService
@@ -197,6 +205,10 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
             if event.isDealersDen {
                 components.append(ViewModel.DealersDenComponent())
+            }
+
+            if event.isMainStage {
+                components.append(ViewModel.MainStageComponent())
             }
 
             if !event.eventDescription.isEmpty, event.eventDescription != event.abstract {

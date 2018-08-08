@@ -46,6 +46,10 @@ class CapturingEventDetailViewModelVisitor: EventDetailViewModelVisitor {
         visitedViewModels.append(dealersDenMessage)
     }
     
+    func visit(_ mainStageMessage: EventMainStageMessageViewModel) {
+        visitedViewModels.append(mainStageMessage)
+    }
+    
 }
 
 class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {

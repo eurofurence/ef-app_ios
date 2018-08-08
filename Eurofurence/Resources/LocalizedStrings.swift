@@ -197,6 +197,9 @@ public extension String {
     public static let dealersDen = NSLocalizedString("DealersDen",
                                                      comment: "Message shown in the event detail view when viewing an event that takes place in the dealers den")
 
+    public static let mainStageEvent = NSLocalizedString("MainStageEvent",
+                                                         comment: "Message shown in the event detail view when viewing an event that takes place in the main stage")
+
     private struct Formatters {
         static var numbers = NumberFormatter()
     }

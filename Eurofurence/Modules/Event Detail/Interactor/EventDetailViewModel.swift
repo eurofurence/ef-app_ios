@@ -35,6 +35,7 @@ protocol EventDetailViewModelVisitor {
     func visit(_ artShowMessage: EventArtShowMessageViewModel)
     func visit(_ kageMessage: EventKageMessageViewModel)
     func visit(_ dealersDenMessage: EventDealersDenMessageViewModel)
+    func visit(_ mainStageMessage: EventMainStageMessageViewModel)
 
 }
 
@@ -86,6 +87,12 @@ struct EventKageMessageViewModel: Equatable, Hashable {
 }
 
 struct EventDealersDenMessageViewModel: Equatable, Hashable {
+
+    var message: String
+
+}
+
+struct EventMainStageMessageViewModel: Equatable, Hashable {
 
     var message: String
 
