@@ -133,7 +133,8 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
                                                   isFavourite: favouriteEvents.contains(event.identifier),
                                                   isSponsorOnly: event.isSponsorOnly,
                                                   isSuperSponsorOnly: event.isSuperSponsorOnly,
-                                                  isArtShow: event.isArtShow)
+                                                  isArtShow: event.isArtShow,
+                                                  isKageEvent: event.isKageEvent)
                 }
 
                 return ScheduleEventGroupViewModel(title: title, events: viewModels)
@@ -299,7 +300,8 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
                                                   isFavourite: favouriteEvents.contains(event.identifier),
                                                   isSponsorOnly: event.isSponsorOnly,
                                                   isSuperSponsorOnly: event.isSuperSponsorOnly,
-                                                  isArtShow: event.isArtShow)
+                                                  isArtShow: event.isArtShow,
+                                                  isKageEvent: false)
                 }
 
                 return ScheduleEventGroupViewModel(title: title, events: viewModels)

@@ -78,4 +78,12 @@ class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
         artShowIndicatorView.isHidden = true
     }
 
+    func showKageEventIndicator() {
+
+    }
+
+    func hideKageEventIndicator() {
+
+    }
+
 }

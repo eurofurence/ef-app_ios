@@ -71,4 +71,14 @@ class CapturingScheduleEventComponent: ScheduleEventComponent {
         didHideArtShowEventIndicator = true
     }
     
+    private(set) var didShowKageEventIndicator = false
+    func showKageEventIndicator() {
+        didShowKageEventIndicator = true
+    }
+    
+    private(set) var didHideKageEventIndicator = false
+    func hideKageEventIndicator() {
+        didHideKageEventIndicator = true
+    }
+    
 }

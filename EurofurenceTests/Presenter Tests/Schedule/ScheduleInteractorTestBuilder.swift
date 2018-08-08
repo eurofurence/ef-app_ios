@@ -117,7 +117,8 @@ extension ScheduleInteractorTestBuilder.Context {
                                       isFavourite: eventsService.favourites.contains(event.identifier),
                                       isSponsorOnly: event.isSponsorOnly,
                                       isSuperSponsorOnly: event.isSuperSponsorOnly,
-                                      isArtShow: event.isArtShow)
+                                      isArtShow: event.isArtShow,
+                                      isKageEvent: event.isKageEvent)
     }
     
     func makeExpectedDayViewModel(from day: Day) -> ScheduleDayViewModel {

@@ -18,5 +18,6 @@ struct ScheduleEventViewModel: Equatable {
     var isSponsorOnly: Bool
     var isSuperSponsorOnly: Bool
     var isArtShow: Bool
+    var isKageEvent: Bool
 
 }
