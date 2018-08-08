@@ -45,5 +45,6 @@ struct Event2: Equatable {
     var isSuperSponsorOnly: Bool
     var isArtShow: Bool
     var isKageEvent: Bool
+    var isDealersDen: Bool
 
 }

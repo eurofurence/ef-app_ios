@@ -27,7 +27,8 @@ extension Event2: RandomValueProviding {
                       isSponsorOnly: .random,
                       isSuperSponsorOnly: .random,
                       isArtShow: .random,
-                      isKageEvent: .random)
+                      isKageEvent: .random,
+                      isDealersDen: .random)
     }
     
     static var randomStandardEvent: Event2 {

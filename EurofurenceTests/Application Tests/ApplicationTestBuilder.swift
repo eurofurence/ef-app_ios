@@ -259,7 +259,8 @@ class ApplicationTestBuilder {
                           isSponsorOnly: tags.contains("sponsors_only"),
                           isSuperSponsorOnly: tags.contains("supersponsors_only"),
                           isArtShow: tags.contains("art_show"),
-                          isKageEvent: tags.contains("kage"))
+                          isKageEvent: tags.contains("kage"),
+                          isDealersDen: tags.contains("dealers_den"))
         }
         
         func makeExpectedEvents(from events: [APIEvent], response: APISyncResponse) -> [Event2] {

@@ -346,7 +346,8 @@ class Schedule {
                       isSponsorOnly: containsTag("sponsors_only"),
                       isSuperSponsorOnly: containsTag("supersponsors_only"),
                       isArtShow: containsTag("art_show"),
-                      isKageEvent: containsTag("kage"))
+                      isKageEvent: containsTag("kage"),
+                      isDealersDen: containsTag("dealers_den"))
     }
 
     private func reconstituteFavouritesFromDataStore() {
