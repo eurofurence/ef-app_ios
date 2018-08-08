@@ -70,6 +70,14 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         }
 
+        struct KageComponent: EventDetailViewModelComponent {
+
+            func describe(to visitor: EventDetailViewModelVisitor) {
+                visitor.visit(EventKageMessageViewModel(message: .kageGuestMessage))
+            }
+
+        }
+
         private let components: [EventDetailViewModelComponent]
         private let event: Event2
         private let eventsService: EventsService
@@ -173,6 +181,10 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
             if event.isArtShow {
                 components.append(ViewModel.ArtShowComponent())
+            }
+
+            if event.isKageEvent {
+                components.append(ViewModel.KageComponent())
             }
 
             if !event.eventDescription.isEmpty, event.eventDescription != event.abstract {

@@ -191,6 +191,9 @@ public extension String {
     public static let artShow = NSLocalizedString("ArtShow",
                                                   comment: "Message shown in the event detail view when viewing an event that's part of the art show")
 
+    public static let kageGuestMessage = NSLocalizedString("KageGuestMessage",
+                                                           comment: "Message shown in the event detail view when viewing an event that Kage is hosting")
+
     private struct Formatters {
         static var numbers = NumberFormatter()
     }
