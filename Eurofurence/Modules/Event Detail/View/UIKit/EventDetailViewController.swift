@@ -116,6 +116,10 @@ class EventDetailViewController: UIViewController, EventDetailScene {
             return makeBannerComponent(text: "\u{f000}\u{f188}", configuration: block)
         }
 
+        func makeDealersDenBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> UITableViewCell {
+            return makeBannerComponent(text: "\u{f07a}", configuration: block)
+        }
+
         // MARK: UITableViewDataSource
 
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

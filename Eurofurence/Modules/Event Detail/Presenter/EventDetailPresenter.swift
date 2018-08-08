@@ -83,6 +83,12 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
             }
         }
 
+        func visit(_ dealersDenMessage: EventDealersDenMessageViewModel) {
+            boundComponent = componentFactory.makeDealersDenBannerComponent { (component) in
+                component.setBannerMessage(dealersDenMessage.message)
+            }
+        }
+
     }
 
     private let scene: EventDetailScene

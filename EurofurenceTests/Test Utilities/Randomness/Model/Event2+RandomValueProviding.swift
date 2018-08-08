@@ -41,6 +41,7 @@ extension Event2: RandomValueProviding {
         event.isKageEvent = false
         event.isMainStage = false
         event.isPhotoshoot = false
+        event.isDealersDen = false
         
         return event
     }

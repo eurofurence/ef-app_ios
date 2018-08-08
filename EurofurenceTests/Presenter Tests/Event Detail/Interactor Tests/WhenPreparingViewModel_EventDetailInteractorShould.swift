@@ -42,6 +42,10 @@ class CapturingEventDetailViewModelVisitor: EventDetailViewModelVisitor {
         visitedViewModels.append(kageMessage)
     }
     
+    func visit(_ dealersDenMessage: EventDealersDenMessageViewModel) {
+        visitedViewModels.append(dealersDenMessage)
+    }
+    
 }
 
 class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {

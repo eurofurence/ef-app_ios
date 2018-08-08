@@ -194,6 +194,9 @@ public extension String {
     public static let kageGuestMessage = NSLocalizedString("KageGuestMessage",
                                                            comment: "Message shown in the event detail view when viewing an event that Kage is hosting")
 
+    public static let dealersDen = NSLocalizedString("DealersDen",
+                                                     comment: "Message shown in the event detail view when viewing an event that takes place in the dealers den")
+
     private struct Formatters {
         static var numbers = NumberFormatter()
     }
