@@ -703,6 +703,8 @@
 		CA44C360211B1013003C1C4E /* WhenPreparingViewModel_ForDealersDenEvent_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C35F211B1013003C1C4E /* WhenPreparingViewModel_ForDealersDenEvent_EventDetailInteractorShould.swift */; };
 		CA44C362211B1238003C1C4E /* WhenBindingMainStageEvent_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C361211B1238003C1C4E /* WhenBindingMainStageEvent_EventDetailPresenterShould.swift */; };
 		CA44C364211B55EB003C1C4E /* WhenPreparingViewModel_ForMainStageEvent_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C363211B55EB003C1C4E /* WhenPreparingViewModel_ForMainStageEvent_EventDetailInteractorShould.swift */; };
+		CA44C366211B692A003C1C4E /* WhenBindingPhotoshootBanner_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C365211B692A003C1C4E /* WhenBindingPhotoshootBanner_EventDetailPresenterShould.swift */; };
+		CA44C368211B6C20003C1C4E /* WhenPreparingViewModel_ForPhotoshootEvent_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C367211B6C20003C1C4E /* WhenPreparingViewModel_ForPhotoshootEvent_EventDetailInteractorShould.swift */; };
 		CA46A73920F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */; };
 		CA49E9462015480A00EB571C /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */; };
 		CA49E94A2015480A00EB571C /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E9422015480A00EB571C /* EventBusRegistration.swift */; };
@@ -2042,6 +2044,8 @@
 		CA44C35F211B1013003C1C4E /* WhenPreparingViewModel_ForDealersDenEvent_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ForDealersDenEvent_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
 		CA44C361211B1238003C1C4E /* WhenBindingMainStageEvent_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingMainStageEvent_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA44C363211B55EB003C1C4E /* WhenPreparingViewModel_ForMainStageEvent_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ForMainStageEvent_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
+		CA44C365211B692A003C1C4E /* WhenBindingPhotoshootBanner_EventDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingPhotoshootBanner_EventDetailPresenterShould.swift; sourceTree = "<group>"; };
+		CA44C367211B6C20003C1C4E /* WhenPreparingViewModel_ForPhotoshootEvent_EventDetailInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_ForPhotoshootEvent_EventDetailInteractorShould.swift; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -6088,6 +6092,7 @@
 				CACF1EA520B5B77700D904B5 /* WhenBindingEventSummary_EventDetailPresenterShould.swift */,
 				CA44C359211B0A8D003C1C4E /* WhenBindingKageBanner_EventDetailPresenterShould.swift */,
 				CA44C361211B1238003C1C4E /* WhenBindingMainStageEvent_EventDetailPresenterShould.swift */,
+				CA44C365211B692A003C1C4E /* WhenBindingPhotoshootBanner_EventDetailPresenterShould.swift */,
 				CA2725922113BE9A004C6D0A /* WhenBindingSponsorsOnlyMessage_EventDetailPresenterShould.swift */,
 				CADABEF12114A9370023C3B6 /* WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould.swift */,
 				CACF1E5320AE2D2700D904B5 /* WhenBuildingEventDetailModule.swift */,
@@ -6186,6 +6191,7 @@
 				CA44C35B211B0D14003C1C4E /* WhenPreparingViewModel_ForEventWithKage_EventDetailInteractorShould.swift */,
 				CACF1EB920B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift */,
 				CA44C363211B55EB003C1C4E /* WhenPreparingViewModel_ForMainStageEvent_EventDetailInteractorShould.swift */,
+				CA44C367211B6C20003C1C4E /* WhenPreparingViewModel_ForPhotoshootEvent_EventDetailInteractorShould.swift */,
 				CA2725902113BAB9004C6D0A /* WhenPreparingViewModel_ForSponsorsOnlyEvent_EventDetailInteractorShould.swift */,
 				CADABEF32114ACA50023C3B6 /* WhenPreparingViewModel_ForSuperSponsorsOnlyEvent_EventDetailInteractorShould.swift */,
 				CACF1EAB20B5C14F00D904B5 /* WhenPreparingViewModelForEventWithIdenticalAbstractAndDescription_EventDetailInteractorShould.swift */,
@@ -7721,6 +7727,7 @@
 				CABA43971FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift in Sources */,
 				CA9845DC1F2A62D100E8821D /* WhenMarkingMessageAsRead.swift in Sources */,
 				CA8276B8204F19CA006A7419 /* WhenPerformingSyncThatFails.swift in Sources */,
+				CA44C366211B692A003C1C4E /* WhenBindingPhotoshootBanner_EventDetailPresenterShould.swift in Sources */,
 				CA36A49520D92EE600EE6537 /* Dealer2+RandomValueProviding.swift in Sources */,
 				CA1B6F3920DD1D9D00ADF414 /* DealerDetailLocationAndAvailabilityViewModel+RandomValueProviding.swift in Sources */,
 				CA81D48E1FE9A8DB00A52A2F /* CapturingTutorialModuleDelegate.swift in Sources */,
@@ -8144,6 +8151,7 @@
 				CA0F7621203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift in Sources */,
 				CA162EAA20AA1E6A004AFED6 /* WhenViewingMessagesWhenLoggedIn_BeforeSceneAppears.swift in Sources */,
 				CA27257A21138DC0004C6D0A /* WhenBindingNonSuperSponsorEvent_NewsPresenterShould.swift in Sources */,
+				CA44C368211B6C20003C1C4E /* WhenPreparingViewModel_ForPhotoshootEvent_EventDetailInteractorShould.swift in Sources */,
 				CA36A4B420D99C4B00EE6537 /* WhenAdaptingDealersFromResponse_ApplicationShould.swift in Sources */,
 				CA36A4DC20DAF9E800EE6537 /* WhenFetchingIdentifierForDealer_DealersInteractorShould.swift in Sources */,
 				CACF1EB020B5F86700D904B5 /* WhenBindingEventBanner_EventDetailPresenterShould.swift in Sources */,

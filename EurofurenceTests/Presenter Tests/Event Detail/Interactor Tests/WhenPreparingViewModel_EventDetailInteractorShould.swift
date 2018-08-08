@@ -50,6 +50,10 @@ class CapturingEventDetailViewModelVisitor: EventDetailViewModelVisitor {
         visitedViewModels.append(mainStageMessage)
     }
     
+    func visit(_ photoshootMessage: EventPhotoshootMessageViewModel) {
+        visitedViewModels.append(photoshootMessage)
+    }
+    
 }
 
 class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {

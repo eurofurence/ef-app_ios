@@ -95,6 +95,12 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
             }
         }
 
+        func visit(_ photoshootMessage: EventPhotoshootMessageViewModel) {
+            boundComponent = componentFactory.makePhotoshootBannerComponent { (component) in
+                component.setBannerMessage(photoshootMessage.message)
+            }
+        }
+
     }
 
     private let scene: EventDetailScene

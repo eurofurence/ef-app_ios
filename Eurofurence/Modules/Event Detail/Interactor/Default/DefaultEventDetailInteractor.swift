@@ -94,6 +94,14 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
         }
 
+        struct PhotoshootComponent: EventDetailViewModelComponent {
+
+            func describe(to visitor: EventDetailViewModelVisitor) {
+                visitor.visit(EventPhotoshootMessageViewModel(message: .photoshoot))
+            }
+
+        }
+
         private let components: [EventDetailViewModelComponent]
         private let event: Event2
         private let eventsService: EventsService
@@ -209,6 +217,10 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 
             if event.isMainStage {
                 components.append(ViewModel.MainStageComponent())
+            }
+
+            if event.isPhotoshoot {
+                components.append(ViewModel.PhotoshootComponent())
             }
 
             if !event.eventDescription.isEmpty, event.eventDescription != event.abstract {

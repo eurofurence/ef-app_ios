@@ -200,6 +200,9 @@ public extension String {
     public static let mainStageEvent = NSLocalizedString("MainStageEvent",
                                                          comment: "Message shown in the event detail view when viewing an event that takes place in the main stage")
 
+    public static let photoshoot = NSLocalizedString("Photoshoot",
+                                                     comment: "Message shown in the event detail view when viewing an event that is part of a photoshoot")
+
     private struct Formatters {
         static var numbers = NumberFormatter()
     }

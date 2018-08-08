@@ -127,6 +127,12 @@ class StubEventDetailComponentFactory: EventDetailComponentFactory {
         return stubbedMainStageMessageComponent
     }
     
+    let stubbedPhotoshootMessageComponent = CapturingEventInformationBannerComponent()
+    func makePhotoshootBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> Any {
+        block(stubbedPhotoshootMessageComponent)
+        return stubbedPhotoshootMessageComponent
+    }
+    
 }
 
 class CapturingEventDetailScene: UIViewController, EventDetailScene {
@@ -192,6 +198,10 @@ extension CapturingEventDetailScene {
     
     var stubbedMainStageMessageComponent: CapturingEventInformationBannerComponent {
         return componentFactory.stubbedMainStageMessageComponent
+    }
+    
+    var stubbedPhotoshootMessageComponent: CapturingEventInformationBannerComponent {
+        return componentFactory.stubbedPhotoshootMessageComponent
     }
     
     func simulateSceneDidLoad() {
