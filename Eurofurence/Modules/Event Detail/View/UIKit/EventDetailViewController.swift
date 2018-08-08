@@ -101,27 +101,19 @@ class EventDetailViewController: UIViewController, EventDetailScene {
         }
 
         func makeSponsorsOnlyBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> UITableViewCell {
-            let cell = tableView.dequeue(EventInformationBannerTableViewCell.self)
-            block(cell)
-            cell.iconLabel.text = ""
-
-            return cell
+            return makeBannerComponent(text: "", configuration: block)
         }
 
         func makeSuperSponsorsOnlyBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> UITableViewCell {
-            let cell = tableView.dequeue(EventInformationBannerTableViewCell.self)
-            block(cell)
-            cell.iconLabel.text = ""
-
-            return cell
+            return makeBannerComponent(text: "", configuration: block)
         }
 
-        func makeArtShowBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> Component {
-            let cell = tableView.dequeue(EventInformationBannerTableViewCell.self)
-            block(cell)
-            cell.iconLabel.text = "\u{f03e}"
+        func makeArtShowBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> UITableViewCell {
+            return makeBannerComponent(text: "\u{f03e}", configuration: block)
+        }
 
-            return cell
+        func makeKageBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> UITableViewCell {
+            return makeBannerComponent(text: "\u{f000}\u{f188}", configuration: block)
         }
 
         // MARK: UITableViewDataSource
@@ -132,6 +124,16 @@ class EventDetailViewController: UIViewController, EventDetailScene {
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             return binder.bindComponent(at: indexPath, using: self)
+        }
+
+        // MARK: Private
+
+        private func makeBannerComponent(text: String, configuration: (EventInformationBannerComponent) -> Void) -> UITableViewCell {
+            let cell = tableView.dequeue(EventInformationBannerTableViewCell.self)
+            configuration(cell)
+            cell.iconLabel.text = text
+
+            return cell
         }
 
     }

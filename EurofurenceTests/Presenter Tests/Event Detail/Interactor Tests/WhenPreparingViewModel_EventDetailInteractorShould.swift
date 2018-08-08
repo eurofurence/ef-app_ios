@@ -38,6 +38,10 @@ class CapturingEventDetailViewModelVisitor: EventDetailViewModelVisitor {
         visitedViewModels.append(artShowMessage)
     }
     
+    func visit(_ kageMessage: EventKageMessageViewModel) {
+        visitedViewModels.append(kageMessage)
+    }
+    
 }
 
 class WhenPreparingViewModel_EventDetailInteractorShould: XCTestCase {

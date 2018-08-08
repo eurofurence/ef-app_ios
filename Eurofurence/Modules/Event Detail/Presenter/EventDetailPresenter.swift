@@ -77,6 +77,12 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
             }
         }
 
+        func visit(_ kageMessage: EventKageMessageViewModel) {
+            boundComponent = componentFactory.makeKageBannerComponent { (component) in
+                component.setBannerMessage(kageMessage.message)
+            }
+        }
+
     }
 
     private let scene: EventDetailScene

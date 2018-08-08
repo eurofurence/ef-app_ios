@@ -109,6 +109,12 @@ class StubEventDetailComponentFactory: EventDetailComponentFactory {
         return stubbedArtShowMessageComponent
     }
     
+    let stubbedKageMessageComponent = CapturingEventInformationBannerComponent()
+    func makeKageBannerComponent(configuringUsing block: (EventInformationBannerComponent) -> Void) -> Any {
+        block(stubbedKageMessageComponent)
+        return stubbedKageMessageComponent
+    }
+    
 }
 
 class CapturingEventDetailScene: UIViewController, EventDetailScene {
@@ -162,6 +168,10 @@ extension CapturingEventDetailScene {
     
     var stubbedArtShowMessageComponent: CapturingEventInformationBannerComponent {
         return componentFactory.stubbedArtShowMessageComponent
+    }
+    
+    var stubbedKageMessageComponent: CapturingEventInformationBannerComponent {
+        return componentFactory.stubbedKageMessageComponent
     }
     
     func simulateSceneDidLoad() {
