@@ -1,5 +1,5 @@
 //
-//  WhenBindingNonSuperSponsorEvent_NewsPresenterShould.swift
+//  NewsPresenterSuperSponsorIconBindingTests.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 02/08/2018.
@@ -9,14 +9,15 @@
 @testable import Eurofurence
 import XCTest
 
-class WhenBindingNonSuperSponsorEvent_NewsPresenterShould: XCTestCase {
+class NewsPresenterSuperSponsorIconBindingTests: XCTestCase {
     
-    func testNotShowTheSuperSponsorOnlyIndicator() {
+    func testShowTheSuperSponsorOnlyIndicator() {
         var eventViewModel: EventComponentViewModel = .random
-        eventViewModel.isSuperSponsorEvent = false
+        eventViewModel.isSuperSponsorEvent = true
         let component = NewsPresenterTestBuilder.buildForAssertingAgainstEventComponent(eventViewModel: eventViewModel)
         
-        XCTAssertFalse(component.didShowSuperSponsorOnlyEventIndicator)
+        XCTAssertTrue(component.didShowSuperSponsorOnlyEventIndicator)
+        XCTAssertFalse(component.didHideSuperSponsorOnlyEventIndicator)
     }
     
     func testHideTheSuperSponsorOnlyIndicator() {
@@ -24,6 +25,7 @@ class WhenBindingNonSuperSponsorEvent_NewsPresenterShould: XCTestCase {
         eventViewModel.isSuperSponsorEvent = false
         let component = NewsPresenterTestBuilder.buildForAssertingAgainstEventComponent(eventViewModel: eventViewModel)
         
+        XCTAssertFalse(component.didShowSuperSponsorOnlyEventIndicator)
         XCTAssertTrue(component.didHideSuperSponsorOnlyEventIndicator)
     }
     

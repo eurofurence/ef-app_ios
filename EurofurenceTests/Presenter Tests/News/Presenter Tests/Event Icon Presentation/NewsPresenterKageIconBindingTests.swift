@@ -1,5 +1,5 @@
 //
-//  WhenBindingKageEvent_NewsPresenterShould.swift
+//  NewsPresenterKageIconBindingTests.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 08/08/2018.
@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import XCTest
 
-class WhenBindingKageEvent_NewsPresenterShould: XCTestCase {
+class NewsPresenterKageIconBindingTests: XCTestCase {
     
     func testShowTheKageIndicator() {
         var eventViewModel: EventComponentViewModel = .random
@@ -17,14 +17,16 @@ class WhenBindingKageEvent_NewsPresenterShould: XCTestCase {
         let component = NewsPresenterTestBuilder.buildForAssertingAgainstEventComponent(eventViewModel: eventViewModel)
         
         XCTAssertTrue(component.didShowKageEventIndicator)
+        XCTAssertFalse(component.didHideKageEventIndicator)
     }
     
-    func testNotHideTheKageIndicator() {
+    func testHideTheKageIndicator() {
         var eventViewModel: EventComponentViewModel = .random
-        eventViewModel.isKageEvent = true
+        eventViewModel.isKageEvent = false
         let component = NewsPresenterTestBuilder.buildForAssertingAgainstEventComponent(eventViewModel: eventViewModel)
         
-        XCTAssertFalse(component.didHideKageEventIndicator)
+        XCTAssertFalse(component.didShowKageEventIndicator)
+        XCTAssertTrue(component.didHideKageEventIndicator)
     }
     
 }
