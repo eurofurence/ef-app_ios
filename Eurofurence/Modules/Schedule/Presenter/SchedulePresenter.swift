@@ -53,6 +53,12 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
             } else {
                 component.hideDealersDenEventIndicator()
             }
+
+            if event.isMainStageEvent {
+                component.showMainStageEventIndicator()
+            } else {
+                component.hideMainStageEventIndicator()
+            }
         }
 
     }

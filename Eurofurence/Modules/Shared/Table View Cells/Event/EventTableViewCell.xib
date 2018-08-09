@@ -41,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="OtJ-2c-b0V">
-                                <rect key="frame" x="8" y="20" width="21" height="154.5"/>
+                                <rect key="frame" x="8" y="20" width="21" height="174.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuh-NJ-CKs">
                                         <rect key="frame" x="0.0" y="0.0" width="21" height="20"/>
@@ -79,8 +79,14 @@
                                         <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1X-LF-omt">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1X-LF-omt">
                                         <rect key="frame" x="0.0" y="137.5" width="21" height="17"/>
+                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plC-i8-Rn6">
+                                        <rect key="frame" x="0.0" y="157.5" width="21" height="17"/>
                                         <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -151,6 +157,7 @@
                 <outlet property="kageBugIndicatorView" destination="ju9-Jk-IBf" id="sCu-xy-JP4"/>
                 <outlet property="kageWineGlassIndicatorView" destination="97T-cY-9zS" id="0pe-Pj-EiQ"/>
                 <outlet property="locationLabel" destination="KlD-aa-FfM" id="RKl-P9-XT6"/>
+                <outlet property="mainStageIndicatorView" destination="plC-i8-Rn6" id="bLO-72-Bf1"/>
                 <outlet property="sponsorEventIndicator" destination="HJw-lJ-1Nj" id="sqv-mp-1X1"/>
                 <outlet property="startTimeLabel" destination="aLD-uI-rra" id="Id3-Mt-TEa"/>
                 <outlet property="superSponsorEventIndicator" destination="pRM-iE-ADK" id="lac-ib-aoS"/>
