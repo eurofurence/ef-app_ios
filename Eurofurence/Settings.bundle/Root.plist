@@ -20,6 +20,14 @@
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 			<key>Title</key>
+			<string>Credits</string>
+			<key>File</key>
+			<string>Credits</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+			<key>Title</key>
 			<string>Third Party Acknowledgements</string>
 			<key>File</key>
 			<string>Pods-Eurofurence-settings-metadata</string>

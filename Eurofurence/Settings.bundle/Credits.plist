@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>PreferenceSpecifiers</key>
+		<array>
+			<dict>
+				<key>Title</key>
+				<string>iOS App Development</string>
+				<key>FooterText</key>
+				<string>Fenrikur
+Shez</string>
+				<key>Type</key>
+				<string>PSGroupSpecifier</string>
+			</dict>
+			<dict>
+				<key>Title</key>
+				<string>Android Development</string>
+				<key>FooterText</key>
+				<string>Pazuzu
+Requinard</string>
+				<key>Type</key>
+				<string>PSGroupSpecifier</string>
+			</dict>
+			<dict>
+				<key>Title</key>
+				<string>Windows Mobile Development</string>
+				<key>FooterText</key>
+				<string>Luchs</string>
+				<key>Type</key>
+				<string>PSGroupSpecifier</string>
+			</dict>
+			<dict>
+				<key>Title</key>
+				<string>Program Management</string>
+				<key>FooterText</key>
+				<string>Luchs
+Zefiro</string>
+				<key>Type</key>
+				<string>PSGroupSpecifier</string>
+			</dict>
+			<dict>
+				<key>Title</key>
+				<string>Special Thanks</string>
+				<key>FooterText</key>
+				<string>Akulatraxas
+Aragon Tigerseye
+Atkelar
+Cairyn
+Carenath Stormwind
+Jul
+Liam
+NordicFuzzCon (Catch'em all)
+Pattarchus
+Snow-wolf
+StrefiGreif
+Xil</string>
+				<key>Type</key>
+				<string>PSGroupSpecifier</string>
+			</dict>
+		</array>
+		<key>StringsTable</key>
+		<string>Credits</string>
+		<key>Title</key>
+		<string>Credits</string>
+	</dict>
+</plist>
