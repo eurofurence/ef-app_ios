@@ -30,10 +30,7 @@ class Announcements {
         eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reloadAnnouncementsFromStore))
 
         reloadAnnouncementsFromStore()
-
-        if let readAnnouncements = dataStore.getSavedReadAnnouncementIdentifiers() {
-            readAnnouncementIdentifiers = readAnnouncements
-        }
+        readAnnouncementIdentifiers = dataStore.getSavedReadAnnouncementIdentifiers().or([])
     }
 
     // MARK: Functions

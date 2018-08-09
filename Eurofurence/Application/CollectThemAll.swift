@@ -62,13 +62,9 @@ class CollectThemAll {
     }
 
     private func provideLatestRequestToObserver(_ observer: CollectThemAllURLObserver) {
-        var request: URLRequest
-        if let credential = credentialStore.persistedCredential {
-            request = collectThemAllRequestFactory.makeAuthenticatedGameURLRequest(credential: credential)
-
-        } else {
-            request = collectThemAllRequestFactory.makeAnonymousGameURLRequest()
-        }
+        let request: URLRequest = credentialStore.persistedCredential
+            .let(collectThemAllRequestFactory.makeAuthenticatedGameURLRequest)
+            .or(collectThemAllRequestFactory.makeAnonymousGameURLRequest())
 
         observer.collectThemAllGameRequestDidChange(request)
     }

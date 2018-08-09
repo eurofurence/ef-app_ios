@@ -163,15 +163,14 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
-        if dataStore.getLastRefreshDate() == nil {
-            completionHandler(.absent)
-        } else {
-            if forceRefreshRequired.isForceRefreshRequired || userPreferences.refreshStoreOnLaunch {
-                completionHandler(.stale)
-            } else {
-                completionHandler(.available)
-            }
-        }
+        let state: EurofurenceDataStoreState = {
+            guard dataStore.getLastRefreshDate() != nil else { return .absent }
+
+            let dataStoreStale = forceRefreshRequired.isForceRefreshRequired || userPreferences.refreshStoreOnLaunch
+            return dataStoreStale ? .stale : .available
+        }()
+
+        completionHandler(state)
     }
 
     func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {

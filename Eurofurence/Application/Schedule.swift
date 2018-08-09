@@ -271,10 +271,7 @@ class Schedule {
             transaction.deleteFavouriteEventIdentifier(identifier)
         }
 
-        if let idx = favouriteEventIdentifiers.index(of: identifier) {
-            favouriteEventIdentifiers.remove(at: idx)
-        }
-
+        favouriteEventIdentifiers.index(of: identifier).let({ favouriteEventIdentifiers.remove(at: $0) })
         notificationsService.removeEventReminder(for: identifier)
 
         let event = EventUnfavouritedEvent(identifier: identifier)
@@ -319,15 +316,8 @@ class Schedule {
         guard let room = rooms.first(where: { $0.roomIdentifier == event.roomIdentifier }) else { return nil }
         guard let track = tracks.first(where: { $0.trackIdentifier == event.trackIdentifier }) else { return nil }
 
-        var posterGraphicData: Data?
-        if let posterImageIdentifier = event.posterImageId {
-            posterGraphicData = imageCache.cachedImageData(for: posterImageIdentifier)
-        }
-
-        var bannerGraphicData: Data?
-        if let bannerImageIdentifier = event.bannerImageId {
-            bannerGraphicData = imageCache.cachedImageData(for: bannerImageIdentifier)
-        }
+        let posterGraphicData: Data? = event.posterImageId.let(imageCache.cachedImageData)
+        let bannerGraphicData: Data? = event.bannerImageId.let(imageCache.cachedImageData)
 
         let tags = event.tags
         let containsTag: (String) -> Bool = { tags?.contains($0) ?? false }
@@ -353,7 +343,7 @@ class Schedule {
     }
 
     private func reconstituteFavouritesFromDataStore() {
-        favouriteEventIdentifiers = dataStore.getSavedFavouriteEventIdentifiers() ?? []
+        favouriteEventIdentifiers = dataStore.getSavedFavouriteEventIdentifiers().or([])
     }
 
     private func isFavourite(_ event: Event2) -> Bool {

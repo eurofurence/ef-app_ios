@@ -10,6 +10,7 @@ import Foundation
 
 extension Optional {
 
+    @discardableResult
     func `let`<T>(_ block: (Wrapped) throws -> T?) rethrows -> T? {
         if case .some(let value) = self { return try block(value) } else { return nil }
     }
