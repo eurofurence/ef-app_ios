@@ -38,12 +38,12 @@ class KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
     private func knowledgeDetailViewModelPrepared(_ viewModel: KnowledgeEntryDetailViewModel) {
         self.viewModel = viewModel
 
-        knowledgeDetailScene.setKnowledgeDetailTitle(viewModel.title)
-        knowledgeDetailScene.setAttributedKnowledgeEntryContents(viewModel.contents)
-
         let images: [KnowledgeEntryImageViewModel] = viewModel.images
         let imagesBinder = ViewModelImagesBinder(viewModels: images)
         knowledgeDetailScene.bindImages(count: images.count, using: imagesBinder)
+
+        knowledgeDetailScene.setKnowledgeDetailTitle(viewModel.title)
+        knowledgeDetailScene.setAttributedKnowledgeEntryContents(viewModel.contents)
 
         let links = viewModel.links
 
