@@ -81,4 +81,34 @@ class CapturingScheduleEventComponent: ScheduleEventComponent {
         didHideKageEventIndicator = true
     }
     
+    private(set) var didShowDealersDenEventIndicator = false
+    func showDealersDenEventIndicator() {
+        didShowDealersDenEventIndicator  = true
+    }
+    
+    private(set) var didHideDealersDenEventIndicator = false
+    func hideDealersDenEventIndicator() {
+        didHideDealersDenEventIndicator = true
+    }
+    
+    private(set) var didShowMainStageEventIndicator = false
+    func showMainStageEventIndicator() {
+        didShowMainStageEventIndicator = true
+    }
+    
+    private(set) var didHideMainStageEventIndicator = false
+    func hideMainStageEventIndicator() {
+        didHideMainStageEventIndicator = true
+    }
+    
+    private(set) var didShowPhotoshootStageEventIndicator = false
+    func showPhotoshootStageEventIndicator() {
+        didShowPhotoshootStageEventIndicator = true
+    }
+    
+    private(set) var didHidePhotoshootStageEventIndicator = false
+    func hidePhotoshootStageEventIndicator() {
+        didHidePhotoshootStageEventIndicator = true
+    }
+    
 }

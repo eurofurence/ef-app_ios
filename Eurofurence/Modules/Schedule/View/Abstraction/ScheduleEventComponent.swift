@@ -24,5 +24,11 @@ protocol ScheduleEventComponent {
     func hideArtShowEventIndicator()
     func showKageEventIndicator()
     func hideKageEventIndicator()
+    func showDealersDenEventIndicator()
+    func hideDealersDenEventIndicator()
+    func showMainStageEventIndicator()
+    func hideMainStageEventIndicator()
+    func showPhotoshootStageEventIndicator()
+    func hidePhotoshootStageEventIndicator()
 
 }

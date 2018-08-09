@@ -93,4 +93,28 @@ class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
         kageWineGlassIndicatorView.isHidden = true
     }
 
+    func showDealersDenEventIndicator() {
+
+    }
+
+    func hideDealersDenEventIndicator() {
+
+    }
+
+    func showMainStageEventIndicator() {
+
+    }
+
+    func hideMainStageEventIndicator() {
+
+    }
+
+    func showPhotoshootStageEventIndicator() {
+
+    }
+
+    func hidePhotoshootStageEventIndicator() {
+
+    }
+
 }
