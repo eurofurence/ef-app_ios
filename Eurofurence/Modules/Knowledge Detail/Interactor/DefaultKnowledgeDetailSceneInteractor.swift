@@ -18,12 +18,12 @@ struct DefaultKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
         var images: [KnowledgeEntryImageViewModel]
         private var linkModels: [Link]
 
-        init(title: String, contents: NSAttributedString, links: [Link]) {
+        init(title: String, contents: NSAttributedString, links: [Link], images: [Data]) {
             self.title = title
             self.contents = contents
             self.linkModels = links
             self.links = links.map({ LinkViewModel(name: $0.name) })
-            images = []
+            self.images = images.map(KnowledgeEntryImageViewModel.init)
         }
 
         func link(at index: Int) -> Link {
@@ -36,10 +36,13 @@ struct DefaultKnowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor {
     var renderer: MarkdownRenderer = DefaultDownMarkdownRenderer()
 
     func makeViewModel(for identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping (KnowledgeEntryDetailViewModel) -> Void) {
-        knowledgeService.fetchKnowledgeEntry(for: identifier) { (entry) in
-            let renderedContents = self.renderer.render(entry.contents)
-            let viewModel = ViewModel(title: entry.title, contents: renderedContents, links: entry.links)
-            completionHandler(viewModel)
+        let service = knowledgeService
+        service.fetchKnowledgeEntry(for: identifier) { (entry) in
+            service.fetchImagesForKnowledgeEntry(identifier: identifier) { (images) in
+                let renderedContents = self.renderer.render(entry.contents)
+                let viewModel = ViewModel(title: entry.title, contents: renderedContents, links: entry.links, images: images)
+                completionHandler(viewModel)
+            }
         }
     }
 

@@ -6,10 +6,13 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import Foundation
+
 protocol KnowledgeService {
 
     func fetchKnowledgeEntry(for identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping (KnowledgeEntry2) -> Void)
     func fetchKnowledgeEntriesForGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping ([KnowledgeEntry2]) -> Void)
+    func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping ([Data]) -> Void)
 
     func fetchKnowledgeGroups(completionHandler: @escaping ([KnowledgeGroup2]) -> Void)
 

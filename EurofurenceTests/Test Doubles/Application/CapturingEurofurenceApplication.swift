@@ -178,6 +178,10 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
+    func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping ([Data]) -> Void) {
+        
+    }
+    
     func add(_ observer: AnnouncementsServiceObserver) {
         
     }

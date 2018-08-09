@@ -20,6 +20,10 @@ class FakeKnowledgeService: KnowledgeService {
         completionHandler(stubbedKnowledgeEntry(for: identifier))
     }
     
+    func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping ([Data]) -> Void) {
+        completionHandler(stubbedKnowledgeEntryImages(for: identifier))
+    }
+    
     private var knowledgeGroupEntries = [KnowledgeGroup2.Identifier : [KnowledgeEntry2]]()
     func fetchKnowledgeEntriesForGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping ([KnowledgeEntry2]) -> Void) {
         if let entries = knowledgeGroupEntries[identifier] {
@@ -45,6 +49,10 @@ extension FakeKnowledgeService {
     
     func stub(_ entries: [KnowledgeEntry2], for identifier: KnowledgeGroup2.Identifier) {
         knowledgeGroupEntries[identifier] = entries
+    }
+    
+    func stubbedKnowledgeEntryImages(for identifier: KnowledgeEntry2.Identifier) -> [Data] {
+        return [identifier.rawValue.data(using: .utf8)!]
     }
     
 }
@@ -103,6 +111,15 @@ class DefaultKnowledgeDetailSceneInteractorTests: XCTestCase {
         let randomizedEntry = knowledgeService.stubbedKnowledgeEntry(for: entry.identifier)
         
         XCTAssertEqual(randomizedEntry.title, viewModel?.title)
+    }
+    
+    func testAdaptsImagesFromService() {
+        let entry = KnowledgeEntry2.random
+        var viewModel: KnowledgeEntryDetailViewModel?
+        interactor.makeViewModel(for: entry.identifier) { viewModel = $0 }
+        let expected = knowledgeService.stubbedKnowledgeEntryImages(for: entry.identifier).map(KnowledgeEntryImageViewModel.init)
+        
+        XCTAssertEqual(expected, viewModel?.images)
     }
     
 }

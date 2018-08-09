@@ -7,6 +7,7 @@
 //
 
 @testable import Eurofurence
+import Foundation
 
 class StubKnowledgeService: KnowledgeService {
     
@@ -20,6 +21,10 @@ class StubKnowledgeService: KnowledgeService {
     }
     
     func fetchKnowledgeEntriesForGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping ([KnowledgeEntry2]) -> Void) {
+        
+    }
+    
+    func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping ([Data]) -> Void) {
         
     }
     

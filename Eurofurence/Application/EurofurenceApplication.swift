@@ -216,6 +216,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         knowledge.fetchKnowledgeEntriesForGroup(identifier: identifier, completionHandler: completionHandler)
     }
 
+    func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping ([Data]) -> Void) {
+
+    }
+
     func add(_ observer: EventsServiceObserver) {
         schedule.add(observer)
     }
