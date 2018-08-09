@@ -1,5 +1,5 @@
 //
-//  WhenBindingSponsorEvent_SchedulePresenterShould.swift
+//  SchedulePresenterSponsorIconBindingTests.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 02/08/2018.
@@ -9,7 +9,7 @@
 @testable import Eurofurence
 import XCTest
 
-class WhenBindingSponsorEvent_SchedulePresenterShould: XCTestCase {
+class SchedulePresenterSponsorIconBindingTests: XCTestCase {
     
     func testShowTheSponsorOnlyIndicator() {
         var eventViewModel = ScheduleEventViewModel.random
@@ -17,14 +17,16 @@ class WhenBindingSponsorEvent_SchedulePresenterShould: XCTestCase {
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
         
         XCTAssertTrue(component.didShowSponsorEventIndicator)
+        XCTAssertFalse(component.didHideSponsorEventIndicator)
     }
     
-    func testNotHideTheSponsorOnlyIndicator() {
+    func testHideTheSponsorOnlyIndicator() {
         var eventViewModel = ScheduleEventViewModel.random
-        eventViewModel.isSponsorOnly = true
+        eventViewModel.isSponsorOnly = false
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
         
-        XCTAssertFalse(component.didHideSponsorEventIndicator)
+        XCTAssertFalse(component.didShowSponsorEventIndicator)
+        XCTAssertTrue(component.didHideSponsorEventIndicator)
     }
     
 }

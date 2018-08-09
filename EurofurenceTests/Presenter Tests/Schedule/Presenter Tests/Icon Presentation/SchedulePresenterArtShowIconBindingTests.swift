@@ -1,5 +1,5 @@
 //
-//  WhenBindingNonArtShowEvent_SchedulePresenterShould.swift
+//  SchedulePresenterArtShowIconBindingTests.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 07/08/2018.
@@ -9,14 +9,15 @@
 @testable import Eurofurence
 import XCTest
 
-class WhenBindingNonArtShowEvent_SchedulePresenterShould: XCTestCase {
+class SchedulePresenterArtShowIconBindingTests: XCTestCase {
     
-    func testNotShowTheArtShowIndicator() {
+    func testShowTheArtShowIndicator() {
         var eventViewModel = ScheduleEventViewModel.random
-        eventViewModel.isArtShow = false
+        eventViewModel.isArtShow = true
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
         
-        XCTAssertFalse(component.didShowArtShowEventIndicator)
+        XCTAssertTrue(component.didShowArtShowEventIndicator)
+        XCTAssertFalse(component.didHideArtShowEventIndicator)
     }
     
     func testHideTheArtShowIndicator() {
@@ -24,6 +25,7 @@ class WhenBindingNonArtShowEvent_SchedulePresenterShould: XCTestCase {
         eventViewModel.isArtShow = false
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
         
+        XCTAssertFalse(component.didShowArtShowEventIndicator)
         XCTAssertTrue(component.didHideArtShowEventIndicator)
     }
     

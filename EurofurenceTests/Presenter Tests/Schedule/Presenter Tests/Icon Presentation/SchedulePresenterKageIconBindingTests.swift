@@ -1,5 +1,5 @@
 //
-//  WhenBindingNonKageEvent_SchedulePresenterShould.swift
+//  SchedulePresenterKageIconBindingTests.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 08/08/2018.
@@ -9,14 +9,15 @@
 @testable import Eurofurence
 import XCTest
 
-class WhenBindingNonKageEvent_SchedulePresenterShould: XCTestCase {
+class SchedulePresenterKageIconBindingTests: XCTestCase {
     
-    func testNotShowTheKageIndicator() {
+    func testShowTheKageIndicator() {
         var eventViewModel = ScheduleEventViewModel.random
-        eventViewModel.isKageEvent = false
+        eventViewModel.isKageEvent = true
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
         
-        XCTAssertFalse(component.didShowKageEventIndicator)
+        XCTAssertTrue(component.didShowKageEventIndicator)
+        XCTAssertFalse(component.didHideKageEventIndicator)
     }
     
     func testHideTheKageIndicator() {
@@ -24,6 +25,7 @@ class WhenBindingNonKageEvent_SchedulePresenterShould: XCTestCase {
         eventViewModel.isKageEvent = false
         let component = SchedulePresenterTestBuilder.buildForTestingBindingOfEvent(eventViewModel)
         
+        XCTAssertFalse(component.didShowKageEventIndicator)
         XCTAssertTrue(component.didHideKageEventIndicator)
     }
     
