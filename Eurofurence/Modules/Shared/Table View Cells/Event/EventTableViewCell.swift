@@ -22,6 +22,7 @@ class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
     @IBOutlet weak var artShowIndicatorView: UILabel!
     @IBOutlet weak var kageBugIndicatorView: UILabel!
     @IBOutlet weak var kageWineGlassIndicatorView: UILabel!
+    @IBOutlet weak var dealersDenIndicatorView: UILabel!
 
     // MARK: Overrides
 
@@ -31,6 +32,7 @@ class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
         artShowIndicatorView.text = "\u{f03e}"
         kageBugIndicatorView.text = "\u{f188}"
         kageWineGlassIndicatorView.text = "\u{f000}"
+        dealersDenIndicatorView.text = "\u{f07a}"
     }
 
     // MARK: ScheduleEventComponent
@@ -94,11 +96,11 @@ class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
     }
 
     func showDealersDenEventIndicator() {
-
+        dealersDenIndicatorView.isHidden = false
     }
 
     func hideDealersDenEventIndicator() {
-
+        dealersDenIndicatorView.isHidden = true
     }
 
     func showMainStageEventIndicator() {

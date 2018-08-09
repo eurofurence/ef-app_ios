@@ -119,6 +119,12 @@ class NewsPresenter: NewsSceneDelegate, NewsInteractorDelegate {
                 } else {
                     component.hideKageEventIndicator()
                 }
+
+                if event.isDealersDenEvent {
+                    component.showDealersDenEventIndicator()
+                } else {
+                    component.hideDealersDenEventIndicator()
+                }
             }
         }
 

@@ -47,6 +47,12 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
             } else {
                 component.hideKageEventIndicator()
             }
+
+            if event.isDealersDenEvent {
+                component.showDealersDenEventIndicator()
+            } else {
+                component.hideDealersDenEventIndicator()
+            }
         }
 
     }
