@@ -699,6 +699,8 @@
 		CA44C376211C6617003C1C4E /* SchedulePresenterDealersDenIconBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C375211C6617003C1C4E /* SchedulePresenterDealersDenIconBindingTests.swift */; };
 		CA44C378211CAC8E003C1C4E /* SchedulePresenterMainStageIconBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C377211CAC8E003C1C4E /* SchedulePresenterMainStageIconBindingTests.swift */; };
 		CA44C37A211CAD69003C1C4E /* NewsPresenterMainStageIconBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C379211CAD69003C1C4E /* NewsPresenterMainStageIconBindingTests.swift */; };
+		CA44C37C211CAE55003C1C4E /* SchedulePresenterPhotoshootIconBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C37B211CAE55003C1C4E /* SchedulePresenterPhotoshootIconBindingTests.swift */; };
+		CA44C37E211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C37D211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift */; };
 		CA46A73920F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */; };
 		CA49E9462015480A00EB571C /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */; };
 		CA49E94A2015480A00EB571C /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E9422015480A00EB571C /* EventBusRegistration.swift */; };
@@ -2034,6 +2036,8 @@
 		CA44C375211C6617003C1C4E /* SchedulePresenterDealersDenIconBindingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePresenterDealersDenIconBindingTests.swift; sourceTree = "<group>"; };
 		CA44C377211CAC8E003C1C4E /* SchedulePresenterMainStageIconBindingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePresenterMainStageIconBindingTests.swift; sourceTree = "<group>"; };
 		CA44C379211CAD69003C1C4E /* NewsPresenterMainStageIconBindingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresenterMainStageIconBindingTests.swift; sourceTree = "<group>"; };
+		CA44C37B211CAE55003C1C4E /* SchedulePresenterPhotoshootIconBindingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePresenterPhotoshootIconBindingTests.swift; sourceTree = "<group>"; };
+		CA44C37D211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresenterPhotoshootIconBindingTests.swift; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -3935,6 +3939,7 @@
 				CA44C375211C6617003C1C4E /* SchedulePresenterDealersDenIconBindingTests.swift */,
 				CA44C36A211B70B2003C1C4E /* SchedulePresenterKageIconBindingTests.swift */,
 				CA44C377211CAC8E003C1C4E /* SchedulePresenterMainStageIconBindingTests.swift */,
+				CA44C37B211CAE55003C1C4E /* SchedulePresenterPhotoshootIconBindingTests.swift */,
 				CA27258321139A1D004C6D0A /* SchedulePresenterSponsorIconBindingTests.swift */,
 				CA27256E21137EED004C6D0A /* SchedulePresenterSuperSponsorIconBindingTests.swift */,
 				CA27256D21137E91004C6D0A /* Favourite */,
@@ -3960,6 +3965,7 @@
 				CA44C373211C655E003C1C4E /* NewsPresenterDealersDenIconBindingTests.swift */,
 				CA44C36F211B77AC003C1C4E /* NewsPresenterKageIconBindingTests.swift */,
 				CA44C379211CAD69003C1C4E /* NewsPresenterMainStageIconBindingTests.swift */,
+				CA44C37D211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift */,
 				CA27257E211394C4004C6D0A /* NewsPresenterSponsorIconBindingTests.swift */,
 				CA27257221138AFF004C6D0A /* NewsPresenterSuperSponsorIconBindingTests.swift */,
 				CA27257721138D21004C6D0A /* SingleEventNewsViewModel.swift */,
@@ -7870,6 +7876,7 @@
 				CAC2338A2100C4DA00E73486 /* WhenToldToUnfavouriteEvent_FromSearchViewModel_InteractorShould.swift in Sources */,
 				CA36A4C420DA759800EE6537 /* CapturingDealersSearchViewModel.swift in Sources */,
 				CA637550208CBBA000536BE2 /* StubTabModuleFactory.swift in Sources */,
+				CA44C37E211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift in Sources */,
 				CA3990F220ACD6A6001E3F1A /* WhenObservingUpcomingEventsBeforeLoadingAnything.swift in Sources */,
 				CA6A8DF720E42DC0007536CD /* WhenSceneTapsMapPosition_MapsDetailPresenterShould.swift in Sources */,
 				CA36A4CE20DA7ED800EE6537 /* WhenSearching_DealersInteractorShould.swift in Sources */,
@@ -8066,6 +8073,7 @@
 				CA2A586220F683DF002C69B6 /* WhenOpeningNotification_DirectorShould.swift in Sources */,
 				CA1B6F1D20DB843E00ADF414 /* WhenDealerDetailSceneLoads_DealerDetailPresenterShould.swift in Sources */,
 				CADABEF22114A9370023C3B6 /* WhenBindingSuperSponsorsOnlyMessage_EventDetailPresenterShould.swift in Sources */,
+				CA44C37C211CAE55003C1C4E /* SchedulePresenterPhotoshootIconBindingTests.swift in Sources */,
 				CA63754E208CBB8600536BE2 /* FakeViewController.swift in Sources */,
 				CA6A8E0720E56DE5007536CD /* CapturingMapContentVisitor.swift in Sources */,
 				CAF81C7520DDAA9C00898C52 /* CapturingDealerDetailViewModelVisitor.swift in Sources */,
