@@ -41,8 +41,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SdV-DJ-Zto">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SdV-DJ-Zto" customClass="AspectRatioConstrainedImageView" customModule="Eurofurence" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="500" id="g84-lQ-sUp"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
