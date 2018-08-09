@@ -331,7 +331,10 @@ extension DefaultNewsInteractorTestBuilder.Context {
                                            isSuperSponsorEvent: event.isSuperSponsorOnly,
                                            isFavourite: isFavourite,
                                            isArtShowEvent: event.isArtShow,
-                                           isKageEvent: event.isKageEvent)
+                                           isKageEvent: event.isKageEvent,
+                                           isDealersDenEvent: event.isDealersDen,
+                                           isMainStageEvent: event.isMainStage,
+                                           isPhotoshootEvent: event.isPhotoshoot)
         }
         
     }

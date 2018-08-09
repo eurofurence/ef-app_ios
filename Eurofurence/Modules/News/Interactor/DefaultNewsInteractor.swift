@@ -395,7 +395,10 @@ class DefaultNewsInteractor: NewsInteractor,
                                                isSuperSponsorEvent: event.isSuperSponsorOnly,
                                                isFavourite: favouriteEventIdentifiers.contains(event.identifier),
                                                isArtShowEvent: event.isArtShow,
-                                               isKageEvent: event.isKageEvent)
+                                               isKageEvent: event.isKageEvent,
+                                               isDealersDenEvent: event.isDealersDen,
+                                               isMainStageEvent: event.isMainStage,
+                                               isPhotoshootEvent: event.isPhotoshoot)
             }
         }
 

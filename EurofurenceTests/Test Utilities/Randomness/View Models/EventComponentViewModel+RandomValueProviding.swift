@@ -19,7 +19,10 @@ extension EventComponentViewModel: RandomValueProviding {
                                        isSuperSponsorEvent: .random,
                                        isFavourite: .random,
                                        isArtShowEvent: .random,
-                                       isKageEvent: .random)
+                                       isKageEvent: .random,
+                                       isDealersDenEvent: .random,
+                                       isMainStageEvent: .random,
+                                       isPhotoshootEvent: .random)
     }
     
 }

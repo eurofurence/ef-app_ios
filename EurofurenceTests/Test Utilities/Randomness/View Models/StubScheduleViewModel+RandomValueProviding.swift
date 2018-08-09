@@ -36,7 +36,10 @@ extension ScheduleEventViewModel: RandomValueProviding {
                                       isSponsorOnly: .random,
                                       isSuperSponsorOnly: .random,
                                       isArtShow: .random,
-                                      isKageEvent: .random)
+                                      isKageEvent: .random,
+                                      isDealersDenEvent: .random,
+                                      isMainStageEvent: .random,
+                                      isPhotoshootEvent: .random)
     }
     
 }

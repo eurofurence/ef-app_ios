@@ -134,7 +134,10 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
                                                   isSponsorOnly: event.isSponsorOnly,
                                                   isSuperSponsorOnly: event.isSuperSponsorOnly,
                                                   isArtShow: event.isArtShow,
-                                                  isKageEvent: event.isKageEvent)
+                                                  isKageEvent: event.isKageEvent,
+                                                  isDealersDenEvent: event.isDealersDen,
+                                                  isMainStageEvent: event.isMainStage,
+                                                  isPhotoshootEvent: event.isPhotoshoot)
                 }
 
                 return ScheduleEventGroupViewModel(title: title, events: viewModels)
@@ -301,7 +304,10 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
                                                   isSponsorOnly: event.isSponsorOnly,
                                                   isSuperSponsorOnly: event.isSuperSponsorOnly,
                                                   isArtShow: event.isArtShow,
-                                                  isKageEvent: event.isKageEvent)
+                                                  isKageEvent: event.isKageEvent,
+                                                  isDealersDenEvent: event.isDealersDen,
+                                                  isMainStageEvent: event.isMainStage,
+                                                  isPhotoshootEvent: event.isPhotoshoot)
                 }
 
                 return ScheduleEventGroupViewModel(title: title, events: viewModels)
