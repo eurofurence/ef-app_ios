@@ -20,7 +20,9 @@ class AspectRatioConstrainedImageView: UIImageView {
 
     private func applyAspectRatioImageConstraints(size: CGSize) {
         let aspectRatio = size.width / size.height
-        widthAnchor.constraint(equalTo: heightAnchor, multiplier: aspectRatio).isActive = true
+        let aspectRatioConstraint = widthAnchor.constraint(equalTo: heightAnchor, multiplier: aspectRatio)
+        aspectRatioConstraint.priority = UILayoutPriority(999)
+        aspectRatioConstraint.isActive = true
     }
 
 }
