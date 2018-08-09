@@ -15,10 +15,5 @@ class ApplicationPresentationAssetsTests: XCTestCase {
         XCTAssertEqual(#imageLiteral(resourceName: "tuto02_informationIcon"),
                        ApplicationPresentationAssets().initialLoadInformationAsset)
     }
-
-    func testTheRequestNotificationsAssetShouldProvideThePushNotificationIconAsset() {
-        XCTAssertEqual(#imageLiteral(resourceName: "tuto01_notificationIcon"),
-                       ApplicationPresentationAssets().requestPushNotificationPermissionsAsset)
-    }
     
 }

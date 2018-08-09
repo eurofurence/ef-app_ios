@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -155,7 +155,7 @@ If you do not have access to them, come to our ConOps or Security office. They c
                         </sections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="dZI-xo-l39">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="1CI-qH-Za0">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="1CI-qH-Za0">
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="P1u-PJ-I6i" id="Ymv-dX-Qgj"/>
                             </connections>

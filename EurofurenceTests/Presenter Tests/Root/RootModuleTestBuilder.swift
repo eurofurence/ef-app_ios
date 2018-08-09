@@ -8,6 +8,25 @@
 
 @testable import Eurofurence
 
+class CapturingRootModuleDelegate: RootModuleDelegate {
+    
+    private(set) var toldTutorialShouldBePresented = false
+    func rootModuleDidDetermineTutorialShouldBePresented() {
+        toldTutorialShouldBePresented = true
+    }
+    
+    private(set) var toldStoreShouldRefresh = false
+    func rootModuleDidDetermineStoreShouldRefresh() {
+        toldStoreShouldRefresh = true
+    }
+    
+    private(set) var toldPrincipleModuleShouldBePresented = false
+    func rootModuleDidDetermineRootModuleShouldBePresented() {
+        toldPrincipleModuleShouldBePresented = true
+    }
+    
+}
+
 class RootModuleTestBuilder {
     
     struct Context {

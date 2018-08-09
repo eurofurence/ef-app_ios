@@ -6,24 +6,14 @@ use_frameworks!
 target 'Eurofurence' do
 	plugin 'cocoapods-acknowledgements', :settings_bundle => true
 	
-	pod 'Alamofire', '~> 4.5'
-	pod 'AlamofireImage', '~> 3.0'
-	pod 'Changeset'
-	pod 'Dip', :git => 'https://github.com/AliSoftware/Dip.git', :branch => 'swift42'
 	pod 'Down'
-	pod 'Eureka'
-	pod 'EVReflection'
-	pod 'EVReflection/Alamofire'
 	pod 'SwiftLint'
 	pod 'ReachabilitySwift'
-	pod 'ReactiveSwift', '~> 1.1'
-	pod 'ReactiveCocoa', '~> 5.0.0'
 	pod 'Firebase/Core'
 	pod 'Firebase/Crash'
 	pod 'Firebase/Messaging'
 	pod 'Firebase/Performance'
 	pod 'Locksmith'
-	pod 'Whisper'
 	
 	pod 'SimulatorStatusMagic', :configurations => ['Screenshots']
 

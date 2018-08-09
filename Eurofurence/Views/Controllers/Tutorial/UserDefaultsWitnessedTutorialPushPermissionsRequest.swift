@@ -23,9 +23,6 @@ struct UserDefaultsWitnessedTutorialPushPermissionsRequest: WitnessedTutorialPus
     }
 
     func markWitnessedTutorialPushPermissionsRequest() {
-		let remoteNotificationSoundProviding = UserDefaultsRemoteNotificationSoundProvider(userDefaults: userDefaults)
-		remoteNotificationSoundProviding.setRemoteNotificationSound(remoteNotificationSoundProviding.remoteNotificationSound)
-
         userDefaults.set(true, forKey: UserDefaultsWitnessedTutorialPushPermissionsRequest.WitnessedTutorialPushPermissionsRequestKey)
     }
 
