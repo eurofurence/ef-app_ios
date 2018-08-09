@@ -701,6 +701,8 @@
 		CA44C37A211CAD69003C1C4E /* NewsPresenterMainStageIconBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C379211CAD69003C1C4E /* NewsPresenterMainStageIconBindingTests.swift */; };
 		CA44C37C211CAE55003C1C4E /* SchedulePresenterPhotoshootIconBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C37B211CAE55003C1C4E /* SchedulePresenterPhotoshootIconBindingTests.swift */; };
 		CA44C37E211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C37D211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift */; };
+		CA44C380211CB6C4003C1C4E /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasNoImages_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C37F211CB6C4003C1C4E /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasNoImages_ApplicationShould.swift */; };
+		CA44C382211CB7D6003C1C4E /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA44C381211CB7D6003C1C4E /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould.swift */; };
 		CA46A73920F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */; };
 		CA49E9462015480A00EB571C /* EventHandlerRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */; };
 		CA49E94A2015480A00EB571C /* EventBusRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49E9422015480A00EB571C /* EventBusRegistration.swift */; };
@@ -2038,6 +2040,8 @@
 		CA44C379211CAD69003C1C4E /* NewsPresenterMainStageIconBindingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresenterMainStageIconBindingTests.swift; sourceTree = "<group>"; };
 		CA44C37B211CAE55003C1C4E /* SchedulePresenterPhotoshootIconBindingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePresenterPhotoshootIconBindingTests.swift; sourceTree = "<group>"; };
 		CA44C37D211CAF29003C1C4E /* NewsPresenterPhotoshootIconBindingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresenterPhotoshootIconBindingTests.swift; sourceTree = "<group>"; };
+		CA44C37F211CB6C4003C1C4E /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasNoImages_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingImagesForKnowledgeEntry_WhenEntryHasNoImages_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA44C381211CB7D6003C1C4E /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA46A73820F53CBC005999FF /* WhenLaunchingApplication_PrivateMessagesShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLaunchingApplication_PrivateMessagesShould.swift; sourceTree = "<group>"; };
 		CA49E93E2015480A00EB571C /* EventHandlerRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerRegistration.swift; sourceTree = "<group>"; };
 		CA49E9422015480A00EB571C /* EventBusRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegistration.swift; sourceTree = "<group>"; };
@@ -5957,6 +5961,8 @@
 		CABF03C820421B2A0028BD62 /* Knowledge */ = {
 			isa = PBXGroup;
 			children = (
+				CA44C381211CB7D6003C1C4E /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould.swift */,
+				CA44C37F211CB6C4003C1C4E /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasNoImages_ApplicationShould.swift */,
 				CA27254B2110D3BE004C6D0A /* WhenFetchingKnowledgeEntriesForSpecificGroup_ApplicationShould.swift */,
 				CA401061210F900F0056E16C /* WhenFetchingKnowledgeEntryByIdentifier_ApplicationShould.swift */,
 				CABF03CB204220460028BD62 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift */,
@@ -8061,6 +8067,7 @@
 				CA162EA420A9B0AB004AFED6 /* WhenLoggedOutDuringConvention_WithNoRunningEvents_NewsInteractorShould.swift in Sources */,
 				CACF1E7A20B1D12E00D904B5 /* BeforeEventDetailSceneLoads_EventDetailPresenterShould.swift in Sources */,
 				CA283AE420EC178600F7D195 /* WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould.swift in Sources */,
+				CA44C380211CB6C4003C1C4E /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasNoImages_ApplicationShould.swift in Sources */,
 				CA36A49720D92EF700EE6537 /* CapturingDealersViewModelDelegate.swift in Sources */,
 				CAF9A94C1F55877100628833 /* EurofurencePrivateMessagesServiceTests.swift in Sources */,
 				CA2D080C1FE94F9900BFD785 /* TutorialModuleTestBuilder.swift in Sources */,
@@ -8186,6 +8193,7 @@
 				CA65A87F209B7CA200B72533 /* WhenLoggedInBeforeConvention_ThenLogOut_NewsInteractorShould.swift in Sources */,
 				CA6A8D8920E2BBA4007536CD /* FakeMapsViewModel.swift in Sources */,
 				CA36A4C020DA74CB00EE6537 /* WhenSceneUpdatesSearchQuery_DealersPresenterShould.swift in Sources */,
+				CA44C382211CB7D6003C1C4E /* WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould.swift in Sources */,
 				CACF1E7620B1D0FC00D904B5 /* StubEventSummaryViewModel.swift in Sources */,
 				CAD3BDB520587DD800C91E6E /* WhenShowingKnowledgeEntryWithoutLinks.swift in Sources */,
 				CA637568208CC9C700536BE2 /* WhenTutorialFinished_DirectorShould.swift in Sources */,

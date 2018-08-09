@@ -13,12 +13,14 @@ class Knowledge {
     // MARK: Properties
 
     private let dataStore: EurofurenceDataStore
+    private let imageRepository: ImageRepository
     private var models = [KnowledgeGroup2]()
 
     // MARK: Initialization
 
-    init(eventBus: EventBus, dataStore: EurofurenceDataStore) {
+    init(eventBus: EventBus, dataStore: EurofurenceDataStore, imageRepository: ImageRepository) {
         self.dataStore = dataStore
+        self.imageRepository = imageRepository
         eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reloadKnowledgeBaseFromDataStore))
 
         reloadKnowledgeBaseFromDataStore()
@@ -36,6 +38,18 @@ class Knowledge {
 
     func fetchKnowledgeEntriesForGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping ([KnowledgeEntry2]) -> Void) {
         models.first(where: { $0.identifier == identifier }).let { completionHandler($0.entries) }
+    }
+
+    func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping ([Data]) -> Void) {
+        let imageIdentifiers: [String] = {
+            guard let entries = dataStore.getSavedKnowledgeEntries() else { return [] }
+            guard let entry = entries.first(where: { $0.identifier == identifier.rawValue }) else { return [] }
+
+            return entry.imageIdentifiers
+        }()
+
+        let images = imageIdentifiers.compactMap(imageRepository.loadImage).map({ $0.pngImageData })
+        completionHandler(images)
     }
 
     // MARK: Private

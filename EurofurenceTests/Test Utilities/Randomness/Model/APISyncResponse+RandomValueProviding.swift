@@ -43,6 +43,10 @@ extension APISyncResponse {
         allImages.append(contentsOf: dealers.changed.compactMap({ $0.artPreviewImageId }).map({ APIImage(identifier: $0, internalReference: "") }))
         allImages.append(contentsOf: maps.changed.map({ APIImage(identifier: $0.imageIdentifier, internalReference: "") }))
         
+        let knowledgeEntryImages = knowledge.entries.reduce([String](), { $0 + $1.imageIdentifiers })
+        let knowledgeEntryAPIImages = knowledgeEntryImages.map({ APIImage(identifier: $0, internalReference: "") })
+        allImages.append(contentsOf: knowledgeEntryAPIImages)
+        
         return APISyncResponse(knowledgeGroups: APISyncDelta(changed: knowledge.groups),
                                knowledgeEntries: APISyncDelta(changed: knowledge.entries),
                                announcements: APISyncDelta(changed: .random),

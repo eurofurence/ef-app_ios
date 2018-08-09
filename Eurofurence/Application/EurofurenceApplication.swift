@@ -104,7 +104,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
         imageCache = ImagesCache(eventBus: eventBus, imageRepository: imageRepository)
         announcements = Announcements(eventBus: eventBus, dataStore: dataStore)
-        knowledge = Knowledge(eventBus: eventBus, dataStore: dataStore)
+        knowledge = Knowledge(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository)
         schedule = Schedule(eventBus: eventBus,
                             dataStore: dataStore,
                             imageCache: imageCache,
@@ -217,7 +217,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping ([Data]) -> Void) {
-
+        knowledge.fetchImagesForKnowledgeEntry(identifier: identifier, completionHandler: completionHandler)
     }
 
     func add(_ observer: EventsServiceObserver) {
