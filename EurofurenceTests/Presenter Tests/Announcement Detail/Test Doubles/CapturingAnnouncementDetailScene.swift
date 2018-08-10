@@ -31,4 +31,9 @@ class CapturingAnnouncementDetailScene: UIViewController, AnnouncementDetailScen
         capturedAnnouncementContents = contents
     }
     
+    private(set) var capturedAnnouncementImagePNGData: Data?
+    func setAnnouncementImagePNGData(_ pngData: Data) {
+        capturedAnnouncementImagePNGData = pngData
+    }
+    
 }

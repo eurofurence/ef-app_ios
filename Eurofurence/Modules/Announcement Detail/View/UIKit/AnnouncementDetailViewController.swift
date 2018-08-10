@@ -47,4 +47,8 @@ class AnnouncementDetailViewController: UITableViewController, AnnouncementDetai
         announcementContentsTextView.attributedText = contents
     }
 
+    func setAnnouncementImagePNGData(_ pngData: Data) {
+
+    }
+
 }

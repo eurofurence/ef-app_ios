@@ -11,7 +11,7 @@
 extension AnnouncementViewModel: RandomValueProviding {
     
     static var random: AnnouncementViewModel {
-        return AnnouncementViewModel(heading: .random, contents: .random)
+        return AnnouncementViewModel(heading: .random, contents: .random, imagePNGData: .random)
     }
     
 }

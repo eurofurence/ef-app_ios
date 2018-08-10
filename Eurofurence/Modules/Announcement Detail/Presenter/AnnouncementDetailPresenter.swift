@@ -28,6 +28,7 @@ struct AnnouncementDetailPresenter: AnnouncementDetailSceneDelegate {
     private func announcementViewModelPrepared(_ viewModel: AnnouncementViewModel) {
         scene.setAnnouncementContents(viewModel.contents)
         scene.setAnnouncementHeading(viewModel.heading)
+        viewModel.imagePNGData.let(scene.setAnnouncementImagePNGData)
     }
 
 }

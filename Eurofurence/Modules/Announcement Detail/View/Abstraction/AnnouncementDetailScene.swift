@@ -14,6 +14,7 @@ protocol AnnouncementDetailScene {
     func setAnnouncementTitle(_ title: String)
     func setAnnouncementHeading(_ heading: String)
     func setAnnouncementContents(_ contents: NSAttributedString)
+    func setAnnouncementImagePNGData(_ pngData: Data)
 
 }
 

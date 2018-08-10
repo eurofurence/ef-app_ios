@@ -232,6 +232,7 @@
 		CA17FE8B20585D9C005A4C05 /* LinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8A20585D9C005A4C05 /* LinkTableViewCell.swift */; };
 		CA17FE8E205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE8D205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift */; };
 		CA17FE9420586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17FE9320586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift */; };
+		CA1B5F63211DA4DA007A24B5 /* WhenAnnouncementContainsImage_AnnouncementDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B5F62211DA4DA007A24B5 /* WhenAnnouncementContainsImage_AnnouncementDetailPresenterShould.swift */; };
 		CA1B6F0720DB805300ADF414 /* WhenBuildingDealerDetailModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F0620DB805300ADF414 /* WhenBuildingDealerDetailModule.swift */; };
 		CA1B6F0B20DB816600ADF414 /* DealerDetailSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F0A20DB816600ADF414 /* DealerDetailSceneFactory.swift */; };
 		CA1B6F0D20DB817400ADF414 /* DealerDetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B6F0C20DB817400ADF414 /* DealerDetailScene.swift */; };
@@ -1442,6 +1443,7 @@
 		CA17FE8A20585D9C005A4C05 /* LinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkTableViewCell.swift; sourceTree = "<group>"; };
 		CA17FE8D205867EB005A4C05 /* DefaultKnowledgeDetailSceneInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeDetailSceneInteractorTests.swift; sourceTree = "<group>"; };
 		CA17FE9320586A3C005A4C05 /* DefaultKnowledgeDetailSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeDetailSceneInteractor.swift; sourceTree = "<group>"; };
+		CA1B5F62211DA4DA007A24B5 /* WhenAnnouncementContainsImage_AnnouncementDetailPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAnnouncementContainsImage_AnnouncementDetailPresenterShould.swift; sourceTree = "<group>"; };
 		CA1B6F0620DB805300ADF414 /* WhenBuildingDealerDetailModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuildingDealerDetailModule.swift; sourceTree = "<group>"; };
 		CA1B6F0A20DB816600ADF414 /* DealerDetailSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailSceneFactory.swift; sourceTree = "<group>"; };
 		CA1B6F0C20DB817400ADF414 /* DealerDetailScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailScene.swift; sourceTree = "<group>"; };
@@ -4894,6 +4896,7 @@
 			children = (
 				CA728466209D1197007D912A /* WhenAnnouncementDetailSceneDidLoad_AnnouncementDetailPresenterShould.swift */,
 				CA72844C209D0358007D912A /* WhenBuildingAnnouncementDetailPresenter.swift */,
+				CA1B5F62211DA4DA007A24B5 /* WhenAnnouncementContainsImage_AnnouncementDetailPresenterShould.swift */,
 			);
 			path = "Presenter Tests";
 			sourceTree = "<group>";
@@ -7386,6 +7389,7 @@
 				CA63754E208CBB8600536BE2 /* FakeViewController.swift in Sources */,
 				CA6A8E0720E56DE5007536CD /* CapturingMapContentVisitor.swift in Sources */,
 				CAF81C7520DDAA9C00898C52 /* CapturingDealerDetailViewModelVisitor.swift in Sources */,
+				CA1B5F63211DA4DA007A24B5 /* WhenAnnouncementContainsImage_AnnouncementDetailPresenterShould.swift in Sources */,
 				78FE77D71F1B9FA500E9A0BE /* URLSessionBasedJSONSessionTests.swift in Sources */,
 				CA44C374211C655E003C1C4E /* NewsPresenterDealersDenIconBindingTests.swift in Sources */,
 				CABA840520CF01C600DD0795 /* WhenServiceIndicatesEventIsUnfavourited_EventDetailInteractorShould.swift in Sources */,
