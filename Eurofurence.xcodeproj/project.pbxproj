@@ -2569,17 +2569,23 @@
 		6EF96CE31F1268BA00EE6134 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				6EEC6D9B1F173DCF00205F2D /* Pages */,
+				78455B551F117B24005BE2D7 /* Tutorial.storyboard */,
+				CAE27B4D1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift */,
+				CA8E7EF91FB0926E00F0BF10 /* PhoneTutorialSceneFactory.swift */,
+				9A861EAE1F2554F900B75A8C /* TutorialModule.swift */,
+				CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */,
 				CAF705671F82D13F00A9FEA2 /* TutorialModuleProviding.swift */,
 				9A861EB31F25550700B75A8C /* TutorialPageScene.swift */,
-				CAE27B4D1F85611C005FDE39 /* PhoneTutorialModuleFactory.swift */,
-				9A861EAE1F2554F900B75A8C /* TutorialModule.swift */,
+				9A861EC71F25555000B75A8C /* TutorialPageViewController.swift */,
 				9A861EAD1F2554F900B75A8C /* TutorialPresentationContext.swift */,
 				9A861EAC1F2554F900B75A8C /* TutorialPresenter.swift */,
 				CA7EB7D41F799991002674A6 /* TutorialScene.swift */,
-				CA8E7EF91FB0926E00F0BF10 /* PhoneTutorialSceneFactory.swift */,
-				CABA43A21FD57C65009CB5B0 /* TutorialModuleBuilder.swift */,
-				78455B551F117B24005BE2D7 /* Tutorial.storyboard */,
+				9A861EC61F25555000B75A8C /* TutorialViewController.swift */,
+				9A861EC51F25555000B75A8C /* UserCompletedTutorialStateProviding.swift */,
+				9A861EC41F25555000B75A8C /* UserDefaultsTutorialStateProvider.swift */,
+				9A861EC31F25555000B75A8C /* UserDefaultsWitnessedTutorialPushPermissionsRequest.swift */,
+				9A861EC21F25555000B75A8C /* WitnessedTutorialPushPermissionsRequest.swift */,
+				6EEC6D9B1F173DCF00205F2D /* Pages */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";
@@ -2653,19 +2659,6 @@
 			path = Actions;
 			sourceTree = "<group>";
 		};
-		78455B3D1F11770C005BE2D7 /* Tutorial */ = {
-			isa = PBXGroup;
-			children = (
-				9A861EC71F25555000B75A8C /* TutorialPageViewController.swift */,
-				9A861EC61F25555000B75A8C /* TutorialViewController.swift */,
-				9A861EC51F25555000B75A8C /* UserCompletedTutorialStateProviding.swift */,
-				9A861EC41F25555000B75A8C /* UserDefaultsTutorialStateProvider.swift */,
-				9A861EC31F25555000B75A8C /* UserDefaultsWitnessedTutorialPushPermissionsRequest.swift */,
-				9A861EC21F25555000B75A8C /* WitnessedTutorialPushPermissionsRequest.swift */,
-			);
-			path = Tutorial;
-			sourceTree = "<group>";
-		};
 		78455B431F11777D005BE2D7 /* Routers */ = {
 			isa = PBXGroup;
 			children = (
@@ -2681,7 +2674,6 @@
 		78455B4E1F117843005BE2D7 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
-				9A861EBB1F25551400B75A8C /* NetworkReachability.swift */,
 				9A861EBA1F25551400B75A8C /* PresentationAssets.swift */,
 			);
 			path = Presenters;
@@ -2869,15 +2861,6 @@
 			path = "Build Config";
 			sourceTree = "<group>";
 		};
-		78FE77CD1F1A2E7900E9A0BE /* HTTP */ = {
-			isa = PBXGroup;
-			children = (
-				78FE77CE1F1A2E8600E9A0BE /* JSONSession.swift */,
-				78FE77D81F1BB9E400E9A0BE /* URLSessionBasedJSONSession.swift */,
-			);
-			path = HTTP;
-			sourceTree = "<group>";
-		};
 		78FE77D01F1A2E9500E9A0BE /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -2955,7 +2938,6 @@
 				CAF9A93B1F50484A00628833 /* Interactors */,
 				6EF96CE01F12688700EE6134 /* Modules */,
 				9ACF999B1ECA259C006FC958 /* Resources */,
-				D6F3D0327856D0D0294EF5E6 /* Services */,
 				9ACF99591EBE32FE006FC958 /* Views */,
 			);
 			path = Eurofurence;
@@ -2994,8 +2976,6 @@
 		9ACF99591EBE32FE006FC958 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9AF159E91EF5B3AE00DB287D /* Cells */,
-				D6F3DE4616D9A2E243387004 /* Controllers */,
 				78455B601F118685005BE2D7 /* Controls */,
 				9ACF99401EBE172D006FC958 /* LaunchScreen.storyboard */,
 				78455B4E1F117843005BE2D7 /* Presenters */,
@@ -3020,14 +3000,6 @@
 				CAA39E0B20051C6C00F2F3D3 /* Localizable.strings */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		9AF159E91EF5B3AE00DB287D /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		CA00AE4320D16BAF00C2FBB0 /* Interactor */ = {
@@ -4669,10 +4641,11 @@
 		CA6A9FEF1FD5DE0E0092C6DB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CAD2343B1F5D7203004BB959 /* MessagesScene.swift */,
-				CABA43821FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift */,
-				CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */,
 				CA6AA01D1FD88F6B0092C6DB /* Messages.storyboard */,
+				CAD2343B1F5D7203004BB959 /* MessagesScene.swift */,
+				CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */,
+				CA30EACF1F27D8620053DBF6 /* MessageTableViewCell.swift */,
+				CABA43821FB84834009CB5B0 /* PhoneMessagesSceneFactory.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5302,6 +5275,12 @@
 				CA2A586C20F76F03002C69B6 /* CocoaTouchMapCoordinateRender.swift */,
 				CA2A586E20F7F137002C69B6 /* AnnouncementDateFormatter.swift */,
 				CA2A587020F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift */,
+				6EF96CF01F1495F400EE6134 /* SystemNetworkReachability.swift */,
+				9A861EBB1F25551400B75A8C /* NetworkReachability.swift */,
+				CAD7804B1F1D5212002A8333 /* Clock.swift */,
+				CAD7804D1F1D5227002A8333 /* SystemClock.swift */,
+				78FE77CE1F1A2E8600E9A0BE /* JSONSession.swift */,
+				78FE77D81F1BB9E400E9A0BE /* URLSessionBasedJSONSession.swift */,
 			);
 			path = "System Services";
 			sourceTree = "<group>";
@@ -5775,15 +5754,6 @@
 			path = Clock;
 			sourceTree = "<group>";
 		};
-		CAD7804A1F1D5208002A8333 /* Clock */ = {
-			isa = PBXGroup;
-			children = (
-				CAD7804B1F1D5212002A8333 /* Clock.swift */,
-				CAD7804D1F1D5227002A8333 /* SystemClock.swift */,
-			);
-			path = Clock;
-			sourceTree = "<group>";
-		};
 		CAD7805B1F1E8EA2002A8333 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -6031,24 +6001,6 @@
 				CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */,
 			);
 			path = Messages;
-			sourceTree = "<group>";
-		};
-		D6F3D0327856D0D0294EF5E6 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				CAD7804A1F1D5208002A8333 /* Clock */,
-				78FE77CD1F1A2E7900E9A0BE /* HTTP */,
-				6EF96CF01F1495F400EE6134 /* SystemNetworkReachability.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		D6F3DE4616D9A2E243387004 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				78455B3D1F11770C005BE2D7 /* Tutorial */,
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
