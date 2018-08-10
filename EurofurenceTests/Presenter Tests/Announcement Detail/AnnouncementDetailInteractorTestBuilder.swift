@@ -15,6 +15,7 @@ class AnnouncementDetailInteractorTestBuilder {
         var interactor: AnnouncementDetailInteractor
         var markdownRenderer: StubMarkdownRenderer
         var announcement: Announcement2
+        var announcementsService: StubAnnouncementsService
     }
     
     func build(for identifier: Announcement2.Identifier = .random) -> Context {
@@ -27,7 +28,8 @@ class AnnouncementDetailInteractorTestBuilder {
         
         return Context(interactor: interactor,
                        markdownRenderer: markdownRenderer,
-                       announcement: announcement)
+                       announcement: announcement,
+                       announcementsService: announcementsService)
     }
     
 }

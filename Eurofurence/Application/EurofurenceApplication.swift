@@ -379,6 +379,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         announcements.openAnnouncement(identifier: identifier, completionHandler: completionHandler)
     }
 
+    func fetchAnnouncementImage(identifier: Announcement2.Identifier, completionHandler: @escaping (Data?) -> Void) {
+
+    }
+
     func add(_ observer: ConventionCountdownServiceObserver) {
         conventionCountdownController.observeDaysUntilConvention(using: observer)
     }

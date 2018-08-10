@@ -28,4 +28,12 @@ class DefaultAnnouncementDetailInteractorShould: XCTestCase {
         XCTAssertEqual(context.markdownRenderer.stubbedContents(for: context.announcement.content), viewModel?.contents)
     }
     
+    func testProduceViewModelWithAnnouncementImage() {
+        let viewModel = context.makeViewModel()
+        let announcementIdentifier = context.announcement.identifier
+        let expected = context.announcementsService.stubbedAnnouncementImageData(for: announcementIdentifier)
+        
+        XCTAssertEqual(expected, viewModel?.imagePNGData)
+    }
+    
 }

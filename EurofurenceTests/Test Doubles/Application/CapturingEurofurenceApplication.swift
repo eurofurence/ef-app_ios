@@ -18,6 +18,10 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
+    func fetchAnnouncementImage(identifier: Announcement2.Identifier, completionHandler: @escaping (Data?) -> Void) {
+        
+    }
+    
     func add(_ observer: RefreshServiceObserver) {
         
     }

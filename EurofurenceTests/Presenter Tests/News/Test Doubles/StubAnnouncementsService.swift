@@ -7,6 +7,7 @@
 //
 
 @testable import Eurofurence
+import Foundation
 
 class StubAnnouncementsService: AnnouncementsService {
     
@@ -30,6 +31,10 @@ class StubAnnouncementsService: AnnouncementsService {
         completionHandler(announcement)
     }
     
+    func fetchAnnouncementImage(identifier: Announcement2.Identifier, completionHandler: @escaping (Data?) -> Void) {
+        completionHandler(stubbedAnnouncementImageData(for: identifier))
+    }
+    
 }
 
 extension StubAnnouncementsService {
@@ -40,6 +45,10 @@ extension StubAnnouncementsService {
     
     func updateReadAnnouncements(_ readAnnouncements: [Announcement2.Identifier]) {
         observers.forEach({ $0.announcementsServiceDidUpdateReadAnnouncements(readAnnouncements) })
+    }
+    
+    func stubbedAnnouncementImageData(for announcement: Announcement2.Identifier) -> Data {
+        return announcement.rawValue.data(using: .utf8)!
     }
     
 }

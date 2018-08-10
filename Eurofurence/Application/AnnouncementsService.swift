@@ -6,10 +6,13 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import Foundation
+
 protocol AnnouncementsService {
 
     func add(_ observer: AnnouncementsServiceObserver)
     func openAnnouncement(identifier: Announcement2.Identifier, completionHandler: @escaping (Announcement2) -> Void)
+    func fetchAnnouncementImage(identifier: Announcement2.Identifier, completionHandler: @escaping (Data?) -> Void)
 
 }
 
