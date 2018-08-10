@@ -19,8 +19,7 @@ class WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould: X
         let context = ApplicationTestBuilder().with(imageAPI).with(simulatedTime).build()
         let observer = CapturingEventsServiceObserver()
         context.application.add(observer)
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         imageAPI.resolvePendingFetches()
         let expected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
         

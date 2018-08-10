@@ -28,8 +28,7 @@ class WhenAppHasNoSavedEvents_ThenSyncFinishesSuccessfully_EventsScheduleShould:
     }
     
     private func performSuccessfulRefresh() {
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
     }
     
     func testUpdateSchedulesWithTheirNewEventsForCurrentDay() {

@@ -16,8 +16,7 @@ class WhenObservingMaps_ThenSyncSucceeds_ApplicationShould: XCTestCase {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let observer = CapturingMapsObserver()
         context.application.add(observer)
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let expected = context.makeExpectedMaps(from: syncResponse)
         
         XCTAssertEqual(expected, observer.capturedMaps)

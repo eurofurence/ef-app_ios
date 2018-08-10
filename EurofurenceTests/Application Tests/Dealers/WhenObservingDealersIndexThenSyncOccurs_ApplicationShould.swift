@@ -17,8 +17,7 @@ class WhenObservingDealersIndexThenSyncOccurs_ApplicationShould: XCTestCase {
         let dealersIndex = context.application.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let expected = context.makeExpectedAlphabetisedDealers(from: syncResponse)
         
         XCTAssertEqual(expected, delegate.capturedAlphabetisedDealerGroups)

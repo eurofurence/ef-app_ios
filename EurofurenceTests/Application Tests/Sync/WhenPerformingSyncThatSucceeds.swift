@@ -35,8 +35,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
     func testAllImagesAreDownloaded() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let expected = syncResponse.images.changed.map({ ImageEntity(identifier: $0.identifier, pngImageData: context.imageAPI.stubbedImage(for: $0.identifier)!) })
         
         XCTAssertTrue(context.imageRepository.didSave(expected))

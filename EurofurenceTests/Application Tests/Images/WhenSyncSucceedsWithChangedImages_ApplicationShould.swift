@@ -15,8 +15,7 @@ class WhenSyncSucceedsWithChangedImages_ApplicationShould: XCTestCase {
         let dataStore = CapturingEurofurenceDataStore()
         let context = ApplicationTestBuilder().with(dataStore).build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         
         XCTAssertTrue(dataStore.didSave(syncResponse.images.changed))
     }

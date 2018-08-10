@@ -15,8 +15,7 @@ class WhenFetchingIconDataForDealerWithArtwork_ApplicationShould: XCTestCase {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let dealer = syncResponse.dealers.changed.randomElement().element
         let context = ApplicationTestBuilder().build()
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let dealersIndex = context.application.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)

@@ -19,8 +19,7 @@ class WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould: XCTestCase {
         
         context = ApplicationTestBuilder().build()
         syncResponse = APISyncResponse.randomWithoutDeletions
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
     }
     
     func testSaveTheKnowledgeGroupsIntoTheStore() {

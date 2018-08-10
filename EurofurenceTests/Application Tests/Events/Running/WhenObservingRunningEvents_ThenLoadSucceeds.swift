@@ -18,8 +18,7 @@ class WhenObservingRunningEvents_ThenLoadSucceeds: XCTestCase {
         let context = ApplicationTestBuilder().with(simulatedTime).build()
         let observer = CapturingEventsServiceObserver()
         context.application.add(observer)
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let expected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)
         
         XCTAssertTrue(observer.runningEvents.contains(expected))

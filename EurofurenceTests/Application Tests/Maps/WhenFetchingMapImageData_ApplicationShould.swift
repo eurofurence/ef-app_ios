@@ -14,8 +14,7 @@ class WhenFetchingMapImageData_ApplicationShould: XCTestCase {
     func testReturnTheDataForTheMapsImageIdentifier() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let randomMap = syncResponse.maps.changed.randomElement()
         var mapImageData: Data?
         context.application.fetchImagePNGDataForMap(identifier: Map2.Identifier(randomMap.element.identifier)) { mapImageData = $0 }

@@ -16,8 +16,7 @@ class WhenAddingAnnouncementsObserverAfterSuccessfulRefresh: XCTestCase {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let expected = context.expectedAnnouncements(from: syncResponse)
         
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let observer = CapturingAnnouncementsServiceObserver()
         context.application.add(observer)
         

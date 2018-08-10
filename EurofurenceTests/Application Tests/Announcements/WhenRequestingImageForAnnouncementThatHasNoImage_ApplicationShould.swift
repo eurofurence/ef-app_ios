@@ -18,8 +18,7 @@ class WhenRequestingImageForAnnouncementThatHasNoImage_ApplicationShould: XCTest
         announcement.imageIdentifier = nil
         syncResponse.announcements.changed[randomAnnouncement.index] = announcement
         let context = ApplicationTestBuilder().build()
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let identifier = Announcement2.Identifier(announcement.identifier)
         var invokedHandlerWithNilData = false
         context.application.fetchAnnouncementImage(identifier: identifier) { invokedHandlerWithNilData = $0 == nil }

@@ -16,8 +16,7 @@ class WhenSyncSuceeds_ThenObservingUpcomingEvents: XCTestCase {
         let randomEvent = syncResponse.events.changed.randomElement().element
         let simulatedTime = randomEvent.startDateTime.addingTimeInterval(-1)
         let context = ApplicationTestBuilder().with(simulatedTime).build()
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let observer = CapturingEventsServiceObserver()
         context.application.add(observer)
         let expected = context.makeExpectedEvent(from: randomEvent, response: syncResponse)

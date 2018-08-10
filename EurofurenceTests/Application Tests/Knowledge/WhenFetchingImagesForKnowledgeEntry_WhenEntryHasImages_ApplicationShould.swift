@@ -14,8 +14,7 @@ class WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould: 
     func testProvideTheImageDataFromTheRepository() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let randomEntry = syncResponse.knowledgeEntries.changed.randomElement().element
         let images = randomEntry.imageIdentifiers
         let expected = images.compactMap(context.imageRepository.loadImage).map({ $0.pngImageData })

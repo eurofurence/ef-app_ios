@@ -27,8 +27,7 @@ class WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould
         let expected = URL(string: "https://www.eurofurence.org")!
         let urlOpener = HappyPathURLOpener()
         let context = ApplicationTestBuilder().with(urlOpener).build()
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = Dealer2.Identifier(dealer.identifier)
         context.application.openWebsite(for: dealerIdentifier)
         
@@ -44,8 +43,7 @@ class WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould
         let context = ApplicationTestBuilder().with(urlOpener).build()
         let externalContentHandler = CapturingExternalContentHandler()
         context.application.setExternalContentHandler(externalContentHandler)
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = Dealer2.Identifier(dealer.identifier)
         context.application.openWebsite(for: dealerIdentifier)
         

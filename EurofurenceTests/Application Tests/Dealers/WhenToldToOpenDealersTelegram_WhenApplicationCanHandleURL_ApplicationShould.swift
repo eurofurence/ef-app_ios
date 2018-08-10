@@ -16,8 +16,7 @@ class WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShoul
         let dealer = syncResponse.dealers.changed.randomElement().element
         let urlOpener = HappyPathURLOpener()
         let context = ApplicationTestBuilder().with(urlOpener).build()
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = Dealer2.Identifier(dealer.identifier)
         context.application.openTelegram(for: dealerIdentifier)
         let expected = URL(string: "https://t.me/")!.appendingPathComponent(dealer.twitterHandle)
@@ -32,8 +31,7 @@ class WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShoul
         syncResponse.dealers.changed = [dealer]
         let urlOpener = HappyPathURLOpener()
         let context = ApplicationTestBuilder().with(urlOpener).build()
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let dealerIdentifier = Dealer2.Identifier(dealer.identifier)
         context.application.openTelegram(for: dealerIdentifier)
         

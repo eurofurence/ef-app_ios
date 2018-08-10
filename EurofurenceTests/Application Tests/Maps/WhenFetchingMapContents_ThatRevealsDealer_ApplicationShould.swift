@@ -23,8 +23,7 @@ class WhenFetchingMapContents_ThatRevealsDealer_ApplicationShould: XCTestCase {
         map.entries = [entry]
         syncResponse.maps.changed = [map]
         syncResponse.dealers.changed = [dealer]
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         
         var content: Map2.Content?
         context.application.fetchContent(for: Map2.Identifier(map.identifier), atX: x, y: y) { content = $0 }

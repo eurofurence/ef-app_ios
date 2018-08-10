@@ -24,8 +24,7 @@ class WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould: XCTest
         let entry = APIMap.Entry(identifier: .random, x: x, y: y, tapRadius: tapRadius, links: [roomLink, dealerLink])
         map.entries = [entry]
         syncResponse.maps.changed[randomMap.index] = map
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         var content: Map2.Content?
         context.application.fetchContent(for: Map2.Identifier(map.identifier), atX: x, y: y) { content = $0 }
         let expected = Map2.Content.multiple([.room(Room(name: room.name)), .dealer(context.makeExpectedDealer(from: dealer))])

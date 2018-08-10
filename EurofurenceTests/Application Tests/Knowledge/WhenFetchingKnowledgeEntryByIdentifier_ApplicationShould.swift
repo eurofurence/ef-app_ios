@@ -14,8 +14,7 @@ class WhenFetchingKnowledgeEntryByIdentifier_ApplicationShould: XCTestCase {
     func testReturnTheSpecifiedEntry() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let randomEntry = syncResponse.knowledgeEntries.changed.randomElement().element
         let expected =  KnowledgeEntry2(identifier: KnowledgeEntry2.Identifier(randomEntry.identifier),
                                         title: randomEntry.title,

@@ -18,8 +18,7 @@ class WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould: XCT
         
         let observer = CapturingAnnouncementsServiceObserver()
         context.application.add(observer)
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         
         XCTAssertEqual(expected, observer.allAnnouncements)
     }

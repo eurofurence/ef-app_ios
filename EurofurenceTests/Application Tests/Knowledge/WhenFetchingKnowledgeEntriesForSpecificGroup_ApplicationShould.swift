@@ -14,8 +14,7 @@ class WhenFetchingKnowledgeEntriesForSpecificGroup_ApplicationShould: XCTestCase
     func testReturnOnlyEntriesForThatGroup() {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let context = ApplicationTestBuilder().build()
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let randomGroup = syncResponse.knowledgeGroups.changed.randomElement()
         let expected = syncResponse.knowledgeEntries.changed.filter({ $0.groupIdentifier == randomGroup.element.identifier }).map ({ (entry) -> KnowledgeEntry2 in
             return KnowledgeEntry2(identifier: KnowledgeEntry2.Identifier(entry.identifier),

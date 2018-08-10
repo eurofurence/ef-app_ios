@@ -15,8 +15,7 @@ class WhenRequestingImageForAnnouncementThatHasImage_ApplicationShould: XCTestCa
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let announcement = syncResponse.announcements.changed.randomElement().element
         let context = ApplicationTestBuilder().build()
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let expected = context.imageAPI.stubbedImage(for: announcement.imageIdentifier)
         let identifier = Announcement2.Identifier(announcement.identifier)
         var actual: Data?

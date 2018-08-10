@@ -14,8 +14,7 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
     func testReturnExactMatchesOnTitles() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let eventsSearchController = context.application.makeEventsSearchController()
         let randomEvent = syncResponse.events.changed.randomElement().element
         let delegate = CapturingEventsSearchControllerDelegate()
@@ -29,8 +28,7 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
     func testReturnFuzzyMatchesOnTitles() {
         let context = ApplicationTestBuilder().build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let eventsSearchController = context.application.makeEventsSearchController()
         let randomEvent = syncResponse.events.changed.randomElement().element
         let delegate = CapturingEventsSearchControllerDelegate()
@@ -49,8 +47,7 @@ class WhenSearchingForEvents_ApplicationShould: XCTestCase {
         var event = randomEvent.element
         event.title = "iGNoRe tHe rANdoM CAsing"
         syncResponse.events.changed[randomEvent.index] = event
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let eventsSearchController = context.application.makeEventsSearchController()
         let delegate = CapturingEventsSearchControllerDelegate()
         eventsSearchController.setResultsDelegate(delegate)

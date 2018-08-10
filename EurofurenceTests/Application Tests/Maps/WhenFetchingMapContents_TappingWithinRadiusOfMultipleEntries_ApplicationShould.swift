@@ -23,8 +23,7 @@ class WhenFetchingMapContents_TappingWithinRadiusOfMultipleEntries_ApplicationSh
         map.entries = [anotherCloseEntry, entry]
         syncResponse.maps.changed = [map]
         syncResponse.rooms.changed = [room]
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         
         var content: Map2.Content?
         context.application.fetchContent(for: Map2.Identifier(map.identifier), atX: x, y: y) { content = $0 }

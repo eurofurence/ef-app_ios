@@ -32,8 +32,7 @@ class WhenFetchingMapContentThatRevealsRoom_ApplicationShould: XCTestCase {
         map.entries = [entry, unrelatedEntry]
         syncResponse.maps.changed = [map]
         syncResponse.rooms.changed = [room]
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
     }
     
     private func fetchContent(atX x: Int, y: Int) -> Map2.Content? {

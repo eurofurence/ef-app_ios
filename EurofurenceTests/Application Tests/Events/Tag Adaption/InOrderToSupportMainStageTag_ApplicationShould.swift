@@ -18,8 +18,7 @@ class InOrderToSupportMainStageTag_ApplicationShould: XCTestCase {
         event.tags = ["main_stage"]
         syncResponse.events.changed = [event]
         let context = ApplicationTestBuilder().build()
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let eventsObserver = CapturingEventsServiceObserver()
         context.application.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first
@@ -34,8 +33,7 @@ class InOrderToSupportMainStageTag_ApplicationShould: XCTestCase {
         event.tags = []
         syncResponse.events.changed = [event]
         let context = ApplicationTestBuilder().build()
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let eventsObserver = CapturingEventsServiceObserver()
         context.application.add(eventsObserver)
         let observedEvent = eventsObserver.allEvents.first

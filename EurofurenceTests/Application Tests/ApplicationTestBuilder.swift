@@ -216,6 +216,11 @@ class ApplicationTestBuilder {
             }
         }
         
+        func performSuccessfulSync(response: APISyncResponse) {
+            refreshLocalStore()
+            syncAPI.simulateSuccessfulSync(response)
+        }
+        
         func expectedUnreadAnnouncements(from syncResponse: APISyncResponse) -> [Announcement2] {
             // TODO: Needs to take into account any unread status information
             return expectedAnnouncements(from: syncResponse)

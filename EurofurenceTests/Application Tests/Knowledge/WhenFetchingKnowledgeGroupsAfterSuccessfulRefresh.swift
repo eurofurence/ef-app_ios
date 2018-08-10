@@ -16,8 +16,7 @@ class WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh: XCTestCase {
         let syncResponse = APISyncResponse.randomWithoutDeletions
         let expected = context.expectedKnowledgeGroups(from: syncResponse)
         
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         let expectedKnowledgeGroupsExpectation = expectation(description: "Expected knowledge groups to be extracted from sync response")
         context.application.fetchKnowledgeGroups { (groups) in
             if expected == groups {

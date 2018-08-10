@@ -30,8 +30,7 @@ class WhenSyncFinishes_ApplicationShould: XCTestCase {
         let assertion = SingleTransactionOnlyAllowed()
         let context = ApplicationTestBuilder().with(assertion).build()
         let syncResponse = APISyncResponse.randomWithoutDeletions
-        context.refreshLocalStore()
-        context.syncAPI.simulateSuccessfulSync(syncResponse)
+        context.performSuccessfulSync(response: syncResponse)
         
         assertion.verify()
     }
