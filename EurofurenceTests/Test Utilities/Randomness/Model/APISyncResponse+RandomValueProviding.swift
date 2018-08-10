@@ -47,9 +47,13 @@ extension APISyncResponse {
         let knowledgeEntryAPIImages = knowledgeEntryImages.map({ APIImage(identifier: $0, internalReference: "") })
         allImages.append(contentsOf: knowledgeEntryAPIImages)
         
+        let announcements = [APIAnnouncement].random
+        let announcementImages = announcements.compactMap({ $0.imageIdentifier }).map({ APIImage(identifier: $0, internalReference: "") })
+        allImages.append(contentsOf: announcementImages)
+        
         return APISyncResponse(knowledgeGroups: APISyncDelta(changed: knowledge.groups),
                                knowledgeEntries: APISyncDelta(changed: knowledge.entries),
-                               announcements: APISyncDelta(changed: .random),
+                               announcements: APISyncDelta(changed: announcements),
                                events: APISyncDelta(changed: events),
                                rooms: APISyncDelta(changed: rooms),
                                tracks: APISyncDelta(changed: tracks),

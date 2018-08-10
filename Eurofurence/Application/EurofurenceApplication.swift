@@ -103,7 +103,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                                                                       clock: clock)
 
         imageCache = ImagesCache(eventBus: eventBus, imageRepository: imageRepository)
-        announcements = Announcements(eventBus: eventBus, dataStore: dataStore)
+        announcements = Announcements(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository)
         knowledge = Knowledge(eventBus: eventBus, dataStore: dataStore, imageRepository: imageRepository)
         schedule = Schedule(eventBus: eventBus,
                             dataStore: dataStore,
@@ -380,7 +380,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func fetchAnnouncementImage(identifier: Announcement2.Identifier, completionHandler: @escaping (Data?) -> Void) {
-
+        announcements.fetchAnnouncementImage(identifier: identifier, completionHandler: completionHandler)
     }
 
     func add(_ observer: ConventionCountdownServiceObserver) {

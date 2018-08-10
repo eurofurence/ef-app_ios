@@ -13,6 +13,7 @@ class Announcements {
     // MARK: Properties
 
     private let dataStore: EurofurenceDataStore
+    private let imageRepository: ImageRepository
     private var readAnnouncementIdentifiers = [Announcement2.Identifier]()
 
     private var models = [Announcement2]() {
@@ -25,8 +26,9 @@ class Announcements {
 
     // MARK: Initialization
 
-    init(eventBus: EventBus, dataStore: EurofurenceDataStore) {
+    init(eventBus: EventBus, dataStore: EurofurenceDataStore, imageRepository: ImageRepository) {
         self.dataStore = dataStore
+        self.imageRepository = imageRepository
         eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reloadAnnouncementsFromStore))
 
         reloadAnnouncementsFromStore()
@@ -50,6 +52,16 @@ class Announcements {
         dataStore.performTransaction { (transaction) in
             transaction.saveReadAnnouncements(self.readAnnouncementIdentifiers)
         }
+    }
+
+    func fetchAnnouncementImage(identifier: Announcement2.Identifier, completionHandler: @escaping (Data?) -> Void) {
+        let announcement = dataStore.getSavedAnnouncements()?.first(where: { $0.identifier == identifier.rawValue })
+        let imageData: Data? = announcement.let { (announcement) in
+            let entity: ImageEntity? = announcement.imageIdentifier.let(imageRepository.loadImage)
+            return entity?.pngImageData
+        }
+
+        completionHandler(imageData)
     }
 
     // MARK: Private
