@@ -94,3 +94,5 @@
 "Photoshoot" = "Photoshoot";
 
 "SelectAnOption" = "Select an option";
+
+"RestrictEventsToDateFormat" = "Double tap to restrict events to %@";

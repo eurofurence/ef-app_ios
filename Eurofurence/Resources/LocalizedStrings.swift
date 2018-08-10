@@ -203,6 +203,9 @@ public extension String {
     public static let photoshoot = NSLocalizedString("Photoshoot",
                                                      comment: "Message shown in the event detail view when viewing an event that is part of a photoshoot")
 
+    public static let restrictEventsToDateFormat = NSLocalizedString("RestrictEventsToDateFormat",
+                                                                     comment: "Format string used to build up an accessibility hint for the days button in the Schedule tab")
+
     private struct Formatters {
         static var numbers = NumberFormatter()
     }
@@ -227,6 +230,10 @@ public extension String {
 
     static func eventReminderBody(timeString: String, roomName: String) -> String {
         return localizedStringWithFormat(eventReminderBodyFormat, timeString, roomName)
+    }
+
+    static func restrictEventsAccessibilityHint(date: String) -> String {
+        return localizedStringWithFormat(restrictEventsToDateFormat, date)
     }
 
 }

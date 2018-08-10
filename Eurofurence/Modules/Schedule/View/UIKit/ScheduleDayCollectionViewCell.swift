@@ -30,6 +30,7 @@ class ScheduleDayCollectionViewCell: UICollectionViewCell, ScheduleDayComponent 
 
     func setDayTitle(_ title: String) {
         dayTitleLabel.text = title
+        dayTitleLabel.accessibilityHint = .restrictEventsAccessibilityHint(date: title)
     }
 
 }
