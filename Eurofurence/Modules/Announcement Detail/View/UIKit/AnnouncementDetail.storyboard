@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue-Bold</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Announcement Detail View Controller-->
         <scene sceneID="oAK-xk-s9U">
@@ -23,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="M2q-fq-5Lq" userLabel="Suppress Seperators Footer View">
-                            <rect key="frame" x="0.0" y="220" width="375" height="5"/>
+                            <rect key="frame" x="0.0" y="287" width="375" height="5"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -52,27 +48,38 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="156" id="b6w-kW-siy">
-                                        <rect key="frame" x="0.0" y="64" width="375" height="156"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="223" id="b6w-kW-siy">
+                                        <rect key="frame" x="0.0" y="64" width="375" height="223"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b6w-kW-siy" id="wOk-WQ-S12">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="155.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="222.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="njH-NO-vWh">
-                                                    <rect key="frame" x="20" y="20" width="335" height="115.5"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
-                                                </textView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bOj-d1-elS">
+                                                    <rect key="frame" x="20" y="20" width="335" height="182.5"/>
+                                                    <subviews>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="njH-NO-vWh">
+                                                            <rect key="frame" x="0.0" y="0.0" width="335" height="124.5"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                            <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
+                                                        </textView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0xx-yx-bDS" customClass="AspectRatioConstrainedImageView" customModule="Eurofurence" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="132.5" width="335" height="50"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="333" id="DqR-Kd-CTU"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="njH-NO-vWh" firstAttribute="top" secondItem="wOk-WQ-S12" secondAttribute="top" constant="20" symbolic="YES" id="HE5-KT-yu2"/>
-                                                <constraint firstAttribute="bottom" secondItem="njH-NO-vWh" secondAttribute="bottom" constant="20" symbolic="YES" id="KvS-bl-xsv"/>
-                                                <constraint firstItem="njH-NO-vWh" firstAttribute="leading" secondItem="wOk-WQ-S12" secondAttribute="leading" constant="20" symbolic="YES" id="QcQ-V7-yMU"/>
-                                                <constraint firstAttribute="trailing" secondItem="njH-NO-vWh" secondAttribute="trailing" constant="20" symbolic="YES" id="ZjQ-L3-acb"/>
+                                                <constraint firstItem="bOj-d1-elS" firstAttribute="top" secondItem="wOk-WQ-S12" secondAttribute="top" constant="20" symbolic="YES" id="5rm-D0-1Zf"/>
+                                                <constraint firstAttribute="bottom" secondItem="bOj-d1-elS" secondAttribute="bottom" constant="20" symbolic="YES" id="AdJ-vI-9rB"/>
+                                                <constraint firstAttribute="trailing" secondItem="bOj-d1-elS" secondAttribute="trailing" constant="20" symbolic="YES" id="exL-Qw-WHy"/>
+                                                <constraint firstItem="bOj-d1-elS" firstAttribute="leading" secondItem="wOk-WQ-S12" secondAttribute="leading" constant="20" symbolic="YES" id="fEc-8E-xBt"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -89,6 +96,7 @@
                     <connections>
                         <outlet property="announcementContentsTextView" destination="njH-NO-vWh" id="JnN-Q6-k4g"/>
                         <outlet property="announcementHeadingLabel" destination="da6-8O-yZP" id="YvS-jq-Eqk"/>
+                        <outlet property="announcementImageView" destination="0xx-yx-bDS" id="XZr-ES-W4v"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oPI-ZK-JRv" userLabel="First Responder" sceneMemberID="firstResponder"/>

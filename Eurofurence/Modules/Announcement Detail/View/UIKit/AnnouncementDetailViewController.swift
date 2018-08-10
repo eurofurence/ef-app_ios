@@ -14,6 +14,7 @@ class AnnouncementDetailViewController: UITableViewController, AnnouncementDetai
 
     @IBOutlet weak var announcementHeadingLabel: UILabel!
     @IBOutlet weak var announcementContentsTextView: UITextView!
+    @IBOutlet weak var announcementImageView: UIImageView!
 
     // MARK: Overrides
 
@@ -48,7 +49,7 @@ class AnnouncementDetailViewController: UITableViewController, AnnouncementDetai
     }
 
     func setAnnouncementImagePNGData(_ pngData: Data) {
-
+        announcementImageView.image = UIImage(data: pngData)
     }
 
 }
