@@ -14,5 +14,6 @@ struct APIAnnouncement: Equatable {
     var title: String
     var content: String
     var lastChangedDateTime: Date
+    var imageIdentifier: String?
 
 }

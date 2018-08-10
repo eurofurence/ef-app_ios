@@ -125,7 +125,11 @@ extension APILink.FragmentType: RandomValueProviding {
 extension APIAnnouncement: RandomValueProviding {
     
     static var random: APIAnnouncement {
-        return APIAnnouncement(identifier: .random, title: .random, content: .random, lastChangedDateTime: .random)
+        return APIAnnouncement(identifier: .random,
+                               title: .random,
+                               content: .random,
+                               lastChangedDateTime: .random,
+                               imageIdentifier: .random)
     }
     
 }

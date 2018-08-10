@@ -156,7 +156,8 @@
                             "Area": "Test-Area",
                             "Author": "Luchs",
                             "Title": "Test-Announcement-Title",
-                            "Content": "This is Content.\n\n**with markdown**"
+                            "Content": "This is Content.\n\n**with markdown**",
+                            "ImageId": "e5b6efdd-8bbf-42f1-aa9e-159744c732b7"
                             }],
         "DeletedEntities": ["c8c8a9ad-4f43-489f-905d-9d22d0ef045f"]
     },

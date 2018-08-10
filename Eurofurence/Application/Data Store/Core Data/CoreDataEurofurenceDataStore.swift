@@ -211,6 +211,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                     entity.title = announcement.title
                     entity.content = announcement.content
                     entity.lastChangedDateTime = announcement.lastChangedDateTime
+                    entity.imageIdentifier = announcement.imageIdentifier
                 }
             }
         }

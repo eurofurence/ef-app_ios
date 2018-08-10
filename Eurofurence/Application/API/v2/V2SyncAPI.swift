@@ -139,12 +139,14 @@ private struct JSONSyncResponse: Decodable {
         var Title: String
         var Content: String
         var LastChangeDateTimeUtc: Date
+        var ImageId: String?
 
         var modelValue: APIAnnouncement {
             return APIAnnouncement(identifier: Id,
                                    title: Title,
                                    content: Content,
-                                   lastChangedDateTime: LastChangeDateTimeUtc)
+                                   lastChangedDateTime: LastChangeDateTimeUtc,
+                                   imageIdentifier: ImageId)
         }
 
     }

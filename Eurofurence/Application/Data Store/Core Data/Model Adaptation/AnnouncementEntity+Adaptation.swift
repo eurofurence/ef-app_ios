@@ -16,7 +16,8 @@ extension AnnouncementEntity: EntityAdapting {
         return APIAnnouncement(identifier: identifier!,
                                title: title!,
                                content: content!,
-                               lastChangedDateTime: lastChangedDateTime! as Date)
+                               lastChangedDateTime: lastChangedDateTime! as Date,
+                               imageIdentifier: imageIdentifier)
     }
 
 }

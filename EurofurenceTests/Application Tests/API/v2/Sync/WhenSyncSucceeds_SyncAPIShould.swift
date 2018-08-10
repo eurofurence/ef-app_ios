@@ -43,7 +43,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
         let expected = APISyncDelta<APIAnnouncement>(changed: [APIAnnouncement(identifier: "b89567a0-beda-46e8-8261-26a5bf2d6a30",
                                                                                title: "Test-Announcement-Title",
                                                                                content: "This is Content.\n\n**with markdown**",
-                                                                               lastChangedDateTime: expectedFirstComponents.date!)],
+                                                                               lastChangedDateTime: expectedFirstComponents.date!,
+                                                                               imageIdentifier: "e5b6efdd-8bbf-42f1-aa9e-159744c732b7")],
                                                      deleted: ["c8c8a9ad-4f43-489f-905d-9d22d0ef045f"])
         XCTAssertEqual(expected, response?.announcements)
     }
