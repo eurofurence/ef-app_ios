@@ -11,18 +11,11 @@ import XCTest
 
 class PhoneTabModuleFactoryTests: XCTestCase {
     
-    func testReturnsTabBarController() {
-        let factory = PhoneTabModuleFactory()
-        let vc = factory.makeTabModule([])
-        
-        XCTAssertTrue(vc is UITabBarController)
-    }
-    
     func testSetsChildModulesAsChildViewControllers() {
         let childModules = [UIViewController(), UIViewController()]
         let factory = PhoneTabModuleFactory()
         let vc = factory.makeTabModule(childModules)
-        let actual: [UIViewController] = (vc as? UITabBarController)?.viewControllers ?? []
+        let actual: [UIViewController] = vc.viewControllers ?? []
         
         XCTAssertEqual(childModules, actual)
     }

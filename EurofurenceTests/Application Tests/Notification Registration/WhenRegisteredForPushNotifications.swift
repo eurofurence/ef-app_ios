@@ -21,7 +21,7 @@ class WhenRegisteredForPushNotifications: XCTestCase {
     
     func testLaunchingAppRequestsPushPermissions() {
         let permissionsRequester = CapturingPushPermissionsRequester()
-        let context = ApplicationTestBuilder().with(permissionsRequester).build()
+        ApplicationTestBuilder().with(permissionsRequester).build()
         
         XCTAssertTrue(permissionsRequester.wasToldToRequestPushPermissions)
     }
