@@ -50,4 +50,15 @@ class WhenUpgradingBetweenAppVersions_ApplicationShould: XCTestCase {
         XCTAssertTrue(forceUpgradeRequired.wasEnquiredWhetherForceRefreshRequired)
     }
     
+    func testDetermineWhetherForceRefreshRequiredBeforeFirstEverSync() {
+        let forceUpgradeRequired = CapturingForceRefreshRequired()
+        let absentDataStore = CapturingEurofurenceDataStore()
+        let preferences = StubUserPreferences()
+        preferences.refreshStoreOnLaunch = true
+        let context = ApplicationTestBuilder().with(preferences).with(absentDataStore).with(forceUpgradeRequired).build()
+        context.application.resolveDataStoreState { (_) in }
+        
+        XCTAssertTrue(forceUpgradeRequired.wasEnquiredWhetherForceRefreshRequired)
+    }
+    
 }

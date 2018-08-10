@@ -163,10 +163,11 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
+        let shouldPerformForceRefresh: Bool = forceRefreshRequired.isForceRefreshRequired
         let state: EurofurenceDataStoreState = {
             guard dataStore.getLastRefreshDate() != nil else { return .absent }
 
-            let dataStoreStale = forceRefreshRequired.isForceRefreshRequired || userPreferences.refreshStoreOnLaunch
+            let dataStoreStale = shouldPerformForceRefresh || userPreferences.refreshStoreOnLaunch
             return dataStoreStale ? .stale : .available
         }()
 
