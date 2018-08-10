@@ -197,7 +197,6 @@
 		CA162E8220A5B7BC004AFED6 /* SignificantTimeChangeEventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8120A5B7BC004AFED6 /* SignificantTimeChangeEventSource.swift */; };
 		CA162E8420A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8320A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift */; };
 		CA162E8620A5BB85004AFED6 /* ConventionCountdownController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8520A5BB85004AFED6 /* ConventionCountdownController.swift */; };
-		CA162E8820A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8720A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift */; };
 		CA162E8B20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8A20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift */; };
 		CA162E8D20A64C8C004AFED6 /* WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8C20A64C8C004AFED6 /* WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift */; };
 		CA162E9020A652AA004AFED6 /* EventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8F20A652AA004AFED6 /* EventsService.swift */; };
@@ -1410,7 +1409,6 @@
 		CA162E8120A5B7BC004AFED6 /* SignificantTimeChangeEventSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignificantTimeChangeEventSource.swift; sourceTree = "<group>"; };
 		CA162E8320A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSignificantTimeChangeEventSource.swift; sourceTree = "<group>"; };
 		CA162E8520A5BB85004AFED6 /* ConventionCountdownController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConventionCountdownController.swift; sourceTree = "<group>"; };
-		CA162E8720A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSignificantTimeChangeEventSource.swift; sourceTree = "<group>"; };
 		CA162E8A20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutDuringConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA162E8C20A64C8C004AFED6 /* WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift; sourceTree = "<group>"; };
 		CA162E8F20A652AA004AFED6 /* EventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsService.swift; sourceTree = "<group>"; };
@@ -2931,6 +2929,7 @@
 				9ACF99431EBE172D006FC958 /* Info.plist */,
 				9ACF99371EBE172D006FC958 /* AppDelegate.swift */,
 				78D7EEB61F196B1F005372A9 /* Application */,
+				CAF1A674211E4B3600513226 /* Application Adapter Implementations */,
 				9ACF99571EBE32ED006FC958 /* DataModel */,
 				CA1FE99C1FA0B3F2009C7DF3 /* Director */,
 				CA49E93B201547ED00EB571C /* Event Bus */,
@@ -3012,6 +3011,7 @@
 				CA00AE4420D16BBD00C2FBB0 /* ScheduleInteractor.swift */,
 				CA250DCD20D6D4E500E7513C /* ScheduleSearchViewModel.swift */,
 				CA00AE4620D16BCB00C2FBB0 /* ScheduleViewModel.swift */,
+				CAF1A678211E4C7600513226 /* Formatters */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -3027,8 +3027,10 @@
 		CA00AE6320D1782600C2FBB0 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				20597CF5210CDDD80003D6C3 /* Interactors */,
 				CA00AE6A20D178EC00C2FBB0 /* Extensions */,
+				CAF1A675211E4BF400513226 /* Formatters */,
+				20597CF5210CDDD80003D6C3 /* Interactors */,
+				CAF1A673211E4B0700513226 /* Services */,
 				CA00AE6820D178D700C2FBB0 /* Table View Cells */,
 				CA27618020DF9315000E52AC /* Views */,
 			);
@@ -5180,9 +5182,13 @@
 		CA89CBA7207F7F8F00570D54 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				CA89CBA8207F7F9A00570D54 /* NewsViewModel.swift */,
-				CA89CBAC207F802400570D54 /* NewsInteractor.swift */,
+				CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */,
 				CA0E520C208E759F005259FE /* DefaultNewsInteractor.swift */,
+				CA162E7B20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift */,
+				CA162E9D20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift */,
+				CA89CBAC207F802400570D54 /* NewsInteractor.swift */,
+				CA89CBA8207F7F9A00570D54 /* NewsViewModel.swift */,
+				CA162E9920A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -5252,35 +5258,13 @@
 		CAB3A72B1F7532DF005DF77B /* System Services */ = {
 			isa = PBXGroup;
 			children = (
-				CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */,
-				CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */,
-				CA162E7B20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift */,
+				CA283A5720E6E23200F7D195 /* LongRunningTaskManager.swift */,
 				CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */,
 				CA162E8120A5B7BC004AFED6 /* SignificantTimeChangeEventSource.swift */,
-				CA162E8720A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift */,
-				CA162E9920A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift */,
-				CA162E9D20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift */,
-				CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */,
-				CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */,
-				CA00AE8620D28A8B00C2FBB0 /* ShortFormDateFormatter.swift */,
-				CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */,
 				CA52C67A20D59457009D3A9E /* SignificantTimeChangeAdapter.swift */,
-				CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */,
-				CA250DE520D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift */,
-				CA36A44820D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift */,
-				CA36A44A20D771B500EE6537 /* HapticEngine.swift */,
-				CA36A44E20D772F300EE6537 /* CocoaTouchHapticEngine.swift */,
-				CA283A5720E6E23200F7D195 /* LongRunningTaskManager.swift */,
-				CA283A5920E6E24300F7D195 /* CocoaTouchLongRunningTaskManager.swift */,
-				CA2A586C20F76F03002C69B6 /* CocoaTouchMapCoordinateRender.swift */,
-				CA2A586E20F7F137002C69B6 /* AnnouncementDateFormatter.swift */,
-				CA2A587020F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift */,
-				6EF96CF01F1495F400EE6134 /* SystemNetworkReachability.swift */,
-				9A861EBB1F25551400B75A8C /* NetworkReachability.swift */,
-				CAD7804B1F1D5212002A8333 /* Clock.swift */,
-				CAD7804D1F1D5227002A8333 /* SystemClock.swift */,
-				78FE77CE1F1A2E8600E9A0BE /* JSONSession.swift */,
-				78FE77D81F1BB9E400E9A0BE /* URLSessionBasedJSONSession.swift */,
+				CAF1A671211E4AA200513226 /* Reachability */,
+				CAF1A672211E4AAC00513226 /* Time */,
+				CAF1A66E211E4A7C00513226 /* Network */,
 			);
 			path = "System Services";
 			sourceTree = "<group>";
@@ -5861,6 +5845,99 @@
 				CAEAEC031FE0057800C0EE7C /* MessageDetailPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CAF1A66E211E4A7C00513226 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				78FE77CE1F1A2E8600E9A0BE /* JSONSession.swift */,
+				78FE77D81F1BB9E400E9A0BE /* URLSessionBasedJSONSession.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CAF1A66F211E4A8900513226 /* Haptics */ = {
+			isa = PBXGroup;
+			children = (
+				CA36A44A20D771B500EE6537 /* HapticEngine.swift */,
+				CA36A44E20D772F300EE6537 /* CocoaTouchHapticEngine.swift */,
+			);
+			path = Haptics;
+			sourceTree = "<group>";
+		};
+		CAF1A671211E4AA200513226 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				6EF96CF01F1495F400EE6134 /* SystemNetworkReachability.swift */,
+				9A861EBB1F25551400B75A8C /* NetworkReachability.swift */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		CAF1A672211E4AAC00513226 /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				CAD7804B1F1D5212002A8333 /* Clock.swift */,
+				CAD7804D1F1D5227002A8333 /* SystemClock.swift */,
+			);
+			path = Time;
+			sourceTree = "<group>";
+		};
+		CAF1A673211E4B0700513226 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CAF1A66F211E4A8900513226 /* Haptics */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CAF1A674211E4B3600513226 /* Application Adapter Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */,
+				CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */,
+				CA2A586C20F76F03002C69B6 /* CocoaTouchMapCoordinateRender.swift */,
+				CA283A5920E6E24300F7D195 /* CocoaTouchLongRunningTaskManager.swift */,
+			);
+			path = "Application Adapter Implementations";
+			sourceTree = "<group>";
+		};
+		CAF1A675211E4BF400513226 /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				CAF1A676211E4BFF00513226 /* Announcement Dates */,
+				CAF1A677211E4C3C00513226 /* Time */,
+			);
+			path = Formatters;
+			sourceTree = "<group>";
+		};
+		CAF1A676211E4BFF00513226 /* Announcement Dates */ = {
+			isa = PBXGroup;
+			children = (
+				CA2A586E20F7F137002C69B6 /* AnnouncementDateFormatter.swift */,
+				CA2A587020F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift */,
+			);
+			path = "Announcement Dates";
+			sourceTree = "<group>";
+		};
+		CAF1A677211E4C3C00513226 /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */,
+				CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */,
+			);
+			path = Time;
+			sourceTree = "<group>";
+		};
+		CAF1A678211E4C7600513226 /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				CA08157920D3877700F750D4 /* FoundationShortFormDateFormatter.swift */,
+				CA36A44820D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift */,
+				CA00AE8620D28A8B00C2FBB0 /* ShortFormDateFormatter.swift */,
+				CA250DE520D6F72200E7513C /* ShortFormDayAndTimeFormatter.swift */,
+			);
+			path = Formatters;
 			sourceTree = "<group>";
 		};
 		CAF3F63E20167E7000374B4C /* Authentication */ = {
@@ -6466,7 +6543,6 @@
 				CA283A8C20E979FA00F7D195 /* ReadAnnouncementEntity.swift in Sources */,
 				CA36A4E420DAFF7E00EE6537 /* DealerDetailModuleProviding.swift in Sources */,
 				CA1FE99E1FA0B41E009C7DF3 /* NavigationControllerFactory.swift in Sources */,
-				CA162E8820A5BC74004AFED6 /* ApplicationSignificantTimeChangeEventSource.swift in Sources */,
 				9A34B9781ECF6E3B004A249E /* Iso8601DateFormatter.swift in Sources */,
 				CA283AB420EAA1CE00F7D195 /* AnnouncementsModule.swift in Sources */,
 				CA36A45A20D8472300EE6537 /* DealersInteractor.swift in Sources */,

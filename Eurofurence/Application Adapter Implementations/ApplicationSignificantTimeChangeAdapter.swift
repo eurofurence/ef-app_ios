@@ -1,13 +1,31 @@
 //
-//  ApplicationSignificantTimeChangeEventSource.swift
+//  ApplicationSignificantTimeChangeAdapter.swift
 //  Eurofurence
 //
-//  Created by Thomas Sherwood on 11/05/2018.
+//  Created by Thomas Sherwood on 16/06/2018.
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-import Foundation
-import UIKit.UIApplication
+import UIKit
+
+// TODO: Why are there two of these?
+
+class ApplicationSignificantTimeChangeAdapter: SignificantTimeChangeAdapter {
+
+    private var notificationRegistration: NSObjectProtocol?
+
+    init() {
+        notificationRegistration = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationSignificantTimeChange, object: nil, queue: .main) { (_) in
+            self.delegate?.significantTimeChangeDidOccur()
+        }
+    }
+
+    private var delegate: SignificantTimeChangeAdapterDelegate?
+    func setDelegate(_ delegate: SignificantTimeChangeAdapterDelegate) {
+        self.delegate = delegate
+    }
+
+}
 
 class ApplicationSignificantTimeChangeEventSource: SignificantTimeChangeEventSource {
 
