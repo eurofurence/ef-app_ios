@@ -93,4 +93,14 @@ class WhenOpeningNotification_DirectorShould: XCTestCase {
         XCTAssertEqual(scheduleTabIndex, context.tabModule.stubInterface.selectedTabIndex)
     }
     
+    func testInvokeTheCompletionHandlerForInvalidatedAnnouncements() {
+        let context = ApplicationDirectorTestBuilder().build()
+        let payload = [String.random : String.random]
+        context.notificationHandling.stub(.invalidatedAnnouncement, for: payload)
+        var didInvokeHandler = false
+        context.director.openNotification(payload) { didInvokeHandler = true }
+        
+        XCTAssertTrue(didInvokeHandler)
+    }
+    
 }

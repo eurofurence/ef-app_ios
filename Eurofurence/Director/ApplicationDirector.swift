@@ -185,7 +185,7 @@ class ApplicationDirector: ExternalContentHandler,
                 completionHandler()
 
             case .invalidatedAnnouncement:
-                break
+                completionHandler()
 
             case .event(let event):
                 let module = self.eventDetailModuleProviding.makeEventDetailModule(for: event)
