@@ -228,7 +228,7 @@ class ApplicationDirector: ExternalContentHandler,
                 completionHandler(.noData)
 
             case .invalidatedAnnouncement:
-                break
+                completionHandler(.noData)
 
             case .unknown:
                 completionHandler(.noData)
