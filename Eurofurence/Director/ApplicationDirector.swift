@@ -185,6 +185,12 @@ class ApplicationDirector: ExternalContentHandler,
                 completionHandler()
 
             case .invalidatedAnnouncement:
+                let alert = UIAlertController(title: .invalidAnnouncementAlertTitle,
+                                              message: .invalidAnnouncementAlertMessage,
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: .ok, style: .cancel))
+                self.tabController?.present(alert, animated: self.animate, completion: nil)
+
                 completionHandler()
 
             case .event(let event):

@@ -206,6 +206,12 @@ public extension String {
     public static let restrictEventsToDateFormat = NSLocalizedString("RestrictEventsToDateFormat",
                                                                      comment: "Format string used to build up an accessibility hint for the days button in the Schedule tab")
 
+    public static let invalidAnnouncementAlertTitle = NSLocalizedString("InvalidAnnouncementAlertTitle",
+                                                                        comment: "Title for the alert shown when trying to open an announcenent that has been deleted")
+
+    public static let invalidAnnouncementAlertMessage = NSLocalizedString("InvalidAnnouncementAlertMessage",
+                                                                          comment: "Message for the alert shown when trying to open an announcenent that has been deleted")
+
     private struct Formatters {
         static var numbers = NumberFormatter()
     }

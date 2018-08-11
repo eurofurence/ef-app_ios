@@ -103,4 +103,16 @@ class WhenOpeningNotification_DirectorShould: XCTestCase {
         XCTAssertTrue(didInvokeHandler)
     }
     
+    func testShowTheInvalidatedAnnouncementAlertForInvalidatedAnnouncement() {
+        let context = ApplicationDirectorTestBuilder().build()
+        context.navigateToTabController()
+        let payload = [String.random : String.random]
+        context.notificationHandling.stub(.invalidatedAnnouncement, for: payload)
+        context.director.openNotification(payload) { }
+        let presentedAlert = context.tabModule.stubInterface.capturedPresentedViewController as? UIAlertController
+        
+        XCTAssertEqual(.invalidAnnouncementAlertTitle, presentedAlert?.title)
+        XCTAssertEqual(.invalidAnnouncementAlertMessage, presentedAlert?.message)
+    }
+    
 }
