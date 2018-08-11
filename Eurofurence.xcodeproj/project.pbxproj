@@ -13,6 +13,7 @@
 		20516AC621121AE400C399C0 /* SubtleDownMarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20516AC521121AE400C399C0 /* SubtleDownMarkdownRenderer.swift */; };
 		20516AC821123E5500C399C0 /* DefaultDownMarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20516AC721123E5500C399C0 /* DefaultDownMarkdownRenderer.swift */; };
 		205AC0E0211E11BB00A35BA0 /* WhenLookingUpTelLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205AC0DF211E11BB00A35BA0 /* WhenLookingUpTelLinks.swift */; };
+		205B8D2E211F8E5700D9EE35 /* DownMarkdownRendererTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B8D2D211F8E5700D9EE35 /* DownMarkdownRendererTest.swift */; };
 		20E87E17210A34D800B55A04 /* DownMarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E87E16210A34D800B55A04 /* DownMarkdownRenderer.swift */; };
 		6EEC6DA11F1BF79F00205F2D /* FirebaseTopicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA01F1BF79F00205F2D /* FirebaseTopicTests.swift */; };
 		6EEC6DA31F1BFC5000205F2D /* StubAppVersionProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */; };
@@ -1212,6 +1213,7 @@
 		20516AC521121AE400C399C0 /* SubtleDownMarkdownRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtleDownMarkdownRenderer.swift; sourceTree = "<group>"; };
 		20516AC721123E5500C399C0 /* DefaultDownMarkdownRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDownMarkdownRenderer.swift; sourceTree = "<group>"; };
 		205AC0DF211E11BB00A35BA0 /* WhenLookingUpTelLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLookingUpTelLinks.swift; sourceTree = "<group>"; };
+		205B8D2D211F8E5700D9EE35 /* DownMarkdownRendererTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownMarkdownRendererTest.swift; sourceTree = "<group>"; };
 		20E87E16210A34D800B55A04 /* DownMarkdownRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownMarkdownRenderer.swift; sourceTree = "<group>"; };
 		27C948D12455A352D46AF5B6 /* Pods-Eurofurence.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurofurence.release.xcconfig"; path = "Pods/Target Support Files/Pods-Eurofurence/Pods-Eurofurence.release.xcconfig"; sourceTree = "<group>"; };
 		4A31159EA20CC82848488181 /* Pods-EurofurenceTests.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurofurenceTests.profiling.xcconfig"; path = "Pods/Target Support Files/Pods-EurofurenceTests/Pods-EurofurenceTests.profiling.xcconfig"; sourceTree = "<group>"; };
@@ -2467,6 +2469,7 @@
 		20597CF8210E168C0003D6C3 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				205B8D2B211F8DED00D9EE35 /* Interactors */,
 				20597CF9210E16930003D6C3 /* Test Doubles */,
 			);
 			path = Shared;
@@ -2478,6 +2481,22 @@
 				CA728491209F9540007D912A /* StubMarkdownRenderer.swift */,
 			);
 			path = "Test Doubles";
+			sourceTree = "<group>";
+		};
+		205B8D2B211F8DED00D9EE35 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				205B8D2C211F8DF900D9EE35 /* MarkdownRenderer */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		205B8D2C211F8DF900D9EE35 /* MarkdownRenderer */ = {
+			isa = PBXGroup;
+			children = (
+				205B8D2D211F8E5700D9EE35 /* DownMarkdownRendererTest.swift */,
+			);
+			path = MarkdownRenderer;
 			sourceTree = "<group>";
 		};
 		2A4A738C931BBD9059F30151 /* Pods */ = {
@@ -7062,6 +7081,7 @@
 				CA6A8D7620E264C5007536CD /* StubMapsSceneFactory.swift in Sources */,
 				CA0F762F2033119B009DA079 /* CapturingKnowledgeListModuleDelegate.swift in Sources */,
 				CA60BFFE207CDC1700697566 /* FakeAuthenticationService.swift in Sources */,
+				205B8D2E211F8E5700D9EE35 /* DownMarkdownRendererTest.swift in Sources */,
 				CA283A8220E93F9600F7D195 /* WhenBindingUnreadAnnouncements_NewsPresenterShould.swift in Sources */,
 				CA6A8E0120E50008007536CD /* WhenSceneTapsMap_ThatRevealsAnotherPartOfTheMap_MapDetailPresenterShould.swift in Sources */,
 				CA283A5E20E6E9FB00F7D195 /* WhenSceneInstigatesPullToRefresh_NewsPresenterShould.swift in Sources */,
