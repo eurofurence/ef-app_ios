@@ -98,5 +98,5 @@
 
 "RestrictEventsToDateFormat" = "Double tap to restrict events to %@";
 
-"InvalidAnnouncementAlertTitle" = "Invalid Announcement";
-"InvalidAnnouncementAlertMessage" = "The selected announcement is no longer valid, and has been automatically removed.";
+"InvalidAnnouncementAlertTitle" = "Expired Announcement";
+"InvalidAnnouncementAlertMessage" = "The selected announcement has been removed as its contents are no longer valid";
