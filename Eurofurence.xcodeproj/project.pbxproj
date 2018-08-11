@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		09CCA668D5E112B61A53B5E6 /* Pods-EurofurenceTests-settings-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A91AD0059ADB02A143766DB /* Pods-EurofurenceTests-settings-metadata.plist */; };
+		2020ECCB211CDB870036E2CF /* NSAttributedString+trim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2020ECCA211CDB870036E2CF /* NSAttributedString+trim.swift */; };
+		2020ECCD211CDBA50036E2CF /* NSMutableAttributedString+trim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2020ECCC211CDBA50036E2CF /* NSMutableAttributedString+trim.swift */; };
 		20516AC621121AE400C399C0 /* SubtleDownMarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20516AC521121AE400C399C0 /* SubtleDownMarkdownRenderer.swift */; };
 		20516AC821123E5500C399C0 /* DefaultDownMarkdownRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20516AC721123E5500C399C0 /* DefaultDownMarkdownRenderer.swift */; };
 		205AC0E0211E11BB00A35BA0 /* WhenLookingUpTelLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205AC0DF211E11BB00A35BA0 /* WhenLookingUpTelLinks.swift */; };
@@ -1205,6 +1207,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2020ECCA211CDB870036E2CF /* NSAttributedString+trim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+trim.swift"; sourceTree = "<group>"; };
+		2020ECCC211CDBA50036E2CF /* NSMutableAttributedString+trim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+trim.swift"; sourceTree = "<group>"; };
 		20516AC521121AE400C399C0 /* SubtleDownMarkdownRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtleDownMarkdownRenderer.swift; sourceTree = "<group>"; };
 		20516AC721123E5500C399C0 /* DefaultDownMarkdownRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDownMarkdownRenderer.swift; sourceTree = "<group>"; };
 		205AC0DF211E11BB00A35BA0 /* WhenLookingUpTelLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLookingUpTelLinks.swift; sourceTree = "<group>"; };
@@ -3064,6 +3068,8 @@
 				CA00AE6B20D178FA00C2FBB0 /* UITableView+Convenience.swift */,
 				CA00AE9020D293B800C2FBB0 /* UICollectionView+Convenience.swift */,
 				CA36A45220D82D9700EE6537 /* UIColor+Eurofurence.swift */,
+				2020ECCA211CDB870036E2CF /* NSAttributedString+trim.swift */,
+				2020ECCC211CDBA50036E2CF /* NSMutableAttributedString+trim.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -6587,6 +6593,7 @@
 				CA73AEF1201A08BA004E77BF /* KnowledgeGroupsListModuleProviding.swift in Sources */,
 				CAD3BDBF205AA69600C91E6E /* LinkLookupService.swift in Sources */,
 				CA52C69920D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift in Sources */,
+				2020ECCD211CDBA50036E2CF /* NSMutableAttributedString+trim.swift in Sources */,
 				CACF1E9A20B437A500D904B5 /* EventDescriptionComponent.swift in Sources */,
 				CA2761C620E02EDC000E52AC /* CollectThemAllRequestFactory.swift in Sources */,
 				CA063B4820F3E27000241CC9 /* RestorationIdentifierOrderingPolicy.swift in Sources */,
@@ -6752,6 +6759,7 @@
 				CA0F762320322DEF009DA079 /* KnowledgeListBinder.swift in Sources */,
 				78FE77CF1F1A2E8600E9A0BE /* JSONSession.swift in Sources */,
 				CABA438F1FBCDBEE009CB5B0 /* LoginSceneFactory.swift in Sources */,
+				2020ECCB211CDB870036E2CF /* NSAttributedString+trim.swift in Sources */,
 				CA36A44520D7051900EE6537 /* InMemoryEventsSearchController.swift in Sources */,
 				CA8E7F0A1FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift in Sources */,
 				CA2A586B20F69EB7002C69B6 /* MapCoordinateRender.swift in Sources */,
