@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,12 +32,21 @@
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="News Banner" translatesAutoresizingMaskIntoConstraints="NO" id="Y24-HB-RGm">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
                                 </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ef" translatesAutoresizingMaskIntoConstraints="NO" id="ai7-2H-aoV">
+                                    <rect key="frame" x="192.33333333333337" y="-0.6666666666666714" width="174.66666666666663" height="175.33333333333337"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="ai7-2H-aoV" secondAttribute="height" multiplier="1:1" id="D9G-Ub-HYm"/>
+                                        <constraint firstAttribute="height" constant="175" id="K8l-M9-pq4"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="Y24-HB-RGm" firstAttribute="leading" secondItem="bWY-v5-DtH" secondAttribute="leading" id="Ph4-WC-eIO"/>
                                 <constraint firstItem="Y24-HB-RGm" firstAttribute="top" secondItem="bWY-v5-DtH" secondAttribute="top" id="Uds-IC-y94"/>
                                 <constraint firstAttribute="trailing" secondItem="Y24-HB-RGm" secondAttribute="trailing" id="Yd0-rT-3xi"/>
+                                <constraint firstItem="ai7-2H-aoV" firstAttribute="centerY" secondItem="bWY-v5-DtH" secondAttribute="centerY" id="ahA-2z-WtW"/>
+                                <constraint firstItem="ai7-2H-aoV" firstAttribute="trailing" secondItem="bWY-v5-DtH" secondAttribute="trailingMargin" id="cNN-BK-vku"/>
                                 <constraint firstAttribute="bottom" secondItem="Y24-HB-RGm" secondAttribute="bottom" id="zKB-3T-3HV"/>
                             </constraints>
                         </view>
@@ -188,5 +198,6 @@
     <resources>
         <image name="News" width="16" height="16"/>
         <image name="News Banner" width="500" height="166"/>
+        <image name="ef" width="341" height="341"/>
     </resources>
 </document>
