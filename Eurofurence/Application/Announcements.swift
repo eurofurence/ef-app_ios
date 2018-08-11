@@ -16,7 +16,7 @@ class Announcements {
     private let imageRepository: ImageRepository
     private var readAnnouncementIdentifiers = [Announcement2.Identifier]()
 
-    private var models = [Announcement2]() {
+    var models = [Announcement2]() {
         didSet {
             announcementsObservers.forEach(provideLatestData)
         }

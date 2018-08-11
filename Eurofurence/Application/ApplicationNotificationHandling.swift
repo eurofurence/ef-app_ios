@@ -13,6 +13,7 @@ enum ApplicationPushActionResult: Equatable {
     case failedSync
     case unknown
     case announcement(Announcement2.Identifier)
+    case invalidatedAnnouncement
     case event(Event2.Identifier)
 }
 

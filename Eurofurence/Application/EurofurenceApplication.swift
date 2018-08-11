@@ -147,7 +147,12 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         refreshLocalStore { (error) in
             if error == nil {
                 if let announcementIdentifier = payload["announcement_id"] {
-                    completionHandler(.announcement(Announcement2.Identifier(announcementIdentifier)))
+                    let identifier = Announcement2.Identifier(announcementIdentifier)
+                    if self.announcements.models.contains(where: { $0.identifier == identifier }) {
+                        completionHandler(.announcement(identifier))
+                    } else {
+                        completionHandler(.invalidatedAnnouncement)
+                    }
                 } else {
                     completionHandler(.successfulSync)
                 }

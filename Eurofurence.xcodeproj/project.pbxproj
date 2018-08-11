@@ -1130,6 +1130,7 @@
 		CAEAEC081FE06F3C00C0EE7C /* MessageDetailViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEC071FE06F3C00C0EE7C /* MessageDetailViewControllerV2.swift */; };
 		CAEAEC0A1FE06FA500C0EE7C /* PhoneMessageDetailSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEC091FE06FA500C0EE7C /* PhoneMessageDetailSceneFactory.swift */; };
 		CAEAEC0E1FE07AD700C0EE7C /* MessageBubbleBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEC0D1FE07AD700C0EE7C /* MessageBubbleBackgroundView.swift */; };
+		CAF1A67A211F6A0800513226 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ThatHasBeenDeleted_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1A679211F6A0800513226 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ThatHasBeenDeleted_ApplicationShould.swift */; };
 		CAF3C7441F9F5C550008F027 /* NewsModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7431F9F5C550008F027 /* NewsModuleProviding.swift */; };
 		CAF3C7481F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */; };
 		CAF3C74C1F9F619C0008F027 /* PhoneNewsModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C74B1F9F619C0008F027 /* PhoneNewsModuleFactory.swift */; };
@@ -2346,6 +2347,7 @@
 		CAEAEC071FE06F3C00C0EE7C /* MessageDetailViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewControllerV2.swift; sourceTree = "<group>"; };
 		CAEAEC091FE06FA500C0EE7C /* PhoneMessageDetailSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneMessageDetailSceneFactory.swift; sourceTree = "<group>"; };
 		CAEAEC0D1FE07AD700C0EE7C /* MessageBubbleBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleBackgroundView.swift; sourceTree = "<group>"; };
+		CAF1A679211F6A0800513226 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ThatHasBeenDeleted_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToOpenNotification_ThatRepresentsAnnouncement_ThatHasBeenDeleted_ApplicationShould.swift; sourceTree = "<group>"; };
 		CAF3C7431F9F5C550008F027 /* NewsModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModuleProviding.swift; sourceTree = "<group>"; };
 		CAF3C7471F9F5EBF0008F027 /* CapturingNewsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingNewsModuleDelegate.swift; sourceTree = "<group>"; };
 		CAF3C74B1F9F619C0008F027 /* PhoneNewsModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNewsModuleFactory.swift; sourceTree = "<group>"; };
@@ -5250,9 +5252,10 @@
 		CAA6060D20EF912500075A4E /* Notification Handling */ = {
 			isa = PBXGroup;
 			children = (
-				CAA6060E20EF913C00075A4E /* WhenToldToOpenNotification_ThatRepresentsSyncEvent_ApplicationShould.swift */,
 				CA063B4120F2929300241CC9 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould.swift */,
+				CAF1A679211F6A0800513226 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ThatHasBeenDeleted_ApplicationShould.swift */,
 				CAC2337D20FF7F5E00E73486 /* WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould.swift */,
+				CAA6060E20EF913C00075A4E /* WhenToldToOpenNotification_ThatRepresentsSyncEvent_ApplicationShould.swift */,
 			);
 			path = "Notification Handling";
 			sourceTree = "<group>";
@@ -7077,6 +7080,7 @@
 				CA40108D21107C2C0056E16C /* WhenBindingKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift in Sources */,
 				CA6A8D6720E263A0007536CD /* WhenBuildingMapsModule.swift in Sources */,
 				CADABEF62114B4990023C3B6 /* WhenSceneTapsMapPosition_ThatHasMultipleOptions_MapsPresenterShould.swift in Sources */,
+				CAF1A67A211F6A0800513226 /* WhenToldToOpenNotification_ThatRepresentsAnnouncement_ThatHasBeenDeleted_ApplicationShould.swift in Sources */,
 				CA5BF9D51F7AF9160045DBC0 /* PreloadPresenterTests.swift in Sources */,
 				CA2761A920E021FB000E52AC /* CapturingCollectThemAllScene.swift in Sources */,
 				CA283AC020EAB5AE00F7D195 /* BeforeAnnouncementsDetailSceneLoads_AnnouncementsPresenterShould.swift in Sources */,

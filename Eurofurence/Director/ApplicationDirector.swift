@@ -184,6 +184,9 @@ class ApplicationDirector: ExternalContentHandler,
 
                 completionHandler()
 
+            case .invalidatedAnnouncement:
+                break
+
             case .event(let event):
                 let module = self.eventDetailModuleProviding.makeEventDetailModule(for: event)
                 if  let scheduleNavigationController = self.scheduleViewController?.navigationController,
@@ -223,6 +226,9 @@ class ApplicationDirector: ExternalContentHandler,
 
             case .event:
                 completionHandler(.noData)
+
+            case .invalidatedAnnouncement:
+                break
 
             case .unknown:
                 completionHandler(.noData)
