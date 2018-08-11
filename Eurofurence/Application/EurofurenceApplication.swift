@@ -365,11 +365,11 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     func lookupContent(for link: Link) -> LinkContentLookupResult? {
         guard let urlString = link.contents as? String, let url = URL(string: urlString) else { return nil }
 
-        if let scheme = url.scheme, scheme == "mailto" {
-            return .externalURL(url)
+        if let scheme = url.scheme, scheme == "https" || scheme == "http" {
+            return .web(url)
         }
 
-        return .web(url)
+        return .externalURL(url)
     }
 
     func add(_ observer: AnnouncementsServiceObserver) {
