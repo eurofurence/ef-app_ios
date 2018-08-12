@@ -170,7 +170,7 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
-    func fetchKnowledgeGroups(completionHandler: @escaping ([KnowledgeGroup2]) -> Void) {
+    func add(_ observer: KnowledgeServiceObserver) {
         
     }
     

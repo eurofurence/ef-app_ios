@@ -10,12 +10,12 @@ import UIKit.UIImage
 
 struct DefaultKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
 
-    private struct ViewModel: KnowledgeGroupsListViewModel {
+    private class ViewModel: KnowledgeGroupsListViewModel, KnowledgeServiceObserver {
 
-        private let groups: [KnowledgeGroup2]
-        var knowledgeGroups: [KnowledgeListGroupViewModel]
+        private var groups = [KnowledgeGroup2]()
+        var knowledgeGroups: [KnowledgeListGroupViewModel] = []
 
-        init(groups: [KnowledgeGroup2]) {
+        func knowledgeGroupsDidChange(to groups: [KnowledgeGroup2]) {
             self.groups = groups
             knowledgeGroups = groups.map { (group) -> KnowledgeListGroupViewModel in
                 let entries = group.entries.map { (entry) -> KnowledgeListEntryViewModel in
@@ -37,11 +37,14 @@ struct DefaultKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
 
     var service: KnowledgeService
 
+    init(service: KnowledgeService) {
+        self.service = service
+    }
+
     func prepareViewModel(completionHandler: @escaping (KnowledgeGroupsListViewModel) -> Void) {
-        service.fetchKnowledgeGroups { (groups) in
-            let viewModel = ViewModel(groups: groups)
-            completionHandler(viewModel)
-        }
+        let viewModel = ViewModel()
+        service.add(viewModel)
+        completionHandler(viewModel)
     }
 
 }

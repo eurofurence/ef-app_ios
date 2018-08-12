@@ -929,6 +929,7 @@
 		CAA6DD1120E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */; };
 		CAB138101FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB1380E1FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift */; };
 		CAB138131FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */; };
+		CAB258E32120431A00909C79 /* CapturingKnowledgeServiceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB258E22120431A00909C79 /* CapturingKnowledgeServiceObserver.swift */; };
 		CAB3A72A1F7532A2005DF77B /* CapturingPushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */; };
 		CAB3A72D1F753308005DF77B /* PushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */; };
 		CAB3A72F1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */; };
@@ -2149,6 +2150,7 @@
 		CAA6DD1020E1649600328C37 /* WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenMessagesSceneTapsLogoutButton_MessagesPresenterShould.swift; sourceTree = "<group>"; };
 		CAB1380E1FE08D0E00AD61FE /* MessageBubbleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleCollectionViewCell.swift; sourceTree = "<group>"; };
 		CAB138121FE1555C00AD61FE /* MessagesCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		CAB258E22120431A00909C79 /* CapturingKnowledgeServiceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingKnowledgeServiceObserver.swift; sourceTree = "<group>"; };
 		CAB3A7291F7532A2005DF77B /* CapturingPushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPushPermissionsRequester.swift; sourceTree = "<group>"; };
 		CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushPermissionsRequester.swift; sourceTree = "<group>"; };
 		CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPushPermissionsRequester.swift; sourceTree = "<group>"; };
@@ -3263,6 +3265,7 @@
 				CA2761CB20E034BD000E52AC /* StubCollectThemAllRequestFactory.swift */,
 				CA2761CD20E034CB000E52AC /* CapturingCollectThemAllURLObserver.swift */,
 				CA2A586820F69EA1002C69B6 /* CapturingMapCoordinateRender.swift */,
+				CAB258E22120431A00909C79 /* CapturingKnowledgeServiceObserver.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -7012,6 +7015,7 @@
 				CA6A8D5F20E16BB3007536CD /* WhenShowingMessagesModuleAlerts_DirectorShould.swift in Sources */,
 				CA81D4921FE9AC9200A52A2F /* PhoneTabModuleFactoryTests.swift in Sources */,
 				CA2761C820E0305D000E52AC /* DefaultCollectThemAllRequestFactoryShould.swift in Sources */,
+				CAB258E32120431A00909C79 /* CapturingKnowledgeServiceObserver.swift in Sources */,
 				CA40109121107ED00056E16C /* WhenSceneSelectsKnowledgeEntry_KnowledgeGroupEntriesPresenterShould.swift in Sources */,
 				78FE77D31F1A2EB000E9A0BE /* CapturingJSONSession.swift in Sources */,
 				CA9AC16D2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift in Sources */,

@@ -17,14 +17,10 @@ class WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh: XCTestCase {
         let expected = context.expectedKnowledgeGroups(from: syncResponse)
         
         context.performSuccessfulSync(response: syncResponse)
-        let expectedKnowledgeGroupsExpectation = expectation(description: "Expected knowledge groups to be extracted from sync response")
-        context.application.fetchKnowledgeGroups { (groups) in
-            if expected == groups {
-                expectedKnowledgeGroupsExpectation.fulfill()
-            }
-        }
+        let observer = CapturingKnowledgeServiceObserver()
+        context.application.add(observer)
         
-        waitForExpectations(timeout: 0.1)
+        XCTAssertEqual(expected, observer.capturedGroups)
     }
     
 }

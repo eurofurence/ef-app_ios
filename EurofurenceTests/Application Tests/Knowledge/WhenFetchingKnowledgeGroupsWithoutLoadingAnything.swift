@@ -13,14 +13,10 @@ class WhenFetchingKnowledgeGroupsWithoutLoadingAnything: XCTestCase {
     
     func testEmptyGroupsAreReturned() {
         let context = ApplicationTestBuilder().build()
-        let emptyGroupsExpectation = expectation(description: "Should have been given empty knowledge groups array")
-        context.application.fetchKnowledgeGroups { (groups) in
-            if groups.isEmpty {
-                emptyGroupsExpectation.fulfill()
-            }
-        }
+        let observer = CapturingKnowledgeServiceObserver()
+        context.application.add(observer)
         
-        waitForExpectations(timeout: 0.1)
+        XCTAssertTrue(observer.wasProvidedWithEmptyGroups)
     }
     
 }

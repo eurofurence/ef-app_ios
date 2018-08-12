@@ -15,6 +15,7 @@ class Knowledge {
     private let dataStore: EurofurenceDataStore
     private let imageRepository: ImageRepository
     private var models = [KnowledgeGroup2]()
+    private var observers = [KnowledgeServiceObserver]()
 
     // MARK: Initialization
 
@@ -28,8 +29,9 @@ class Knowledge {
 
     // MARK: Functions
 
-    func fetchKnowledgeGroups(completionHandler: @escaping ([KnowledgeGroup2]) -> Void) {
-        completionHandler(models)
+    func add(_ observer: KnowledgeServiceObserver) {
+        observers.append(observer)
+        observer.knowledgeGroupsDidChange(to: models)
     }
 
     func fetchKnowledgeEntry(for identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping (KnowledgeEntry2) -> Void) {

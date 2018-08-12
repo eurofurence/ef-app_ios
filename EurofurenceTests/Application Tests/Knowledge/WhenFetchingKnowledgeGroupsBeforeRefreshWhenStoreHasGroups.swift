@@ -17,11 +17,10 @@ class WhenFetchingKnowledgeGroupsBeforeRefreshWhenStoreHasGroups: XCTestCase {
         dataStore.save(syncResponse)
         let context = ApplicationTestBuilder().with(dataStore).build()
         let expected = context.expectedKnowledgeGroups(from: syncResponse)
+        let observer = CapturingKnowledgeServiceObserver()
+        context.application.add(observer)
         
-        var actual: [KnowledgeGroup2] = []
-        context.application.fetchKnowledgeGroups { actual = $0 }
-        
-        XCTAssertEqual(expected, actual)
+        XCTAssertEqual(expected, observer.capturedGroups)
     }
     
 }

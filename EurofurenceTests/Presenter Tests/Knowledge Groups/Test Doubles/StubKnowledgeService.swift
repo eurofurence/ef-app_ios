@@ -11,9 +11,9 @@ import Foundation
 
 class StubKnowledgeService: KnowledgeService {
     
-    fileprivate var capturedFetchCompletionHandler: (([KnowledgeGroup2]) -> Void)?
-    func fetchKnowledgeGroups(completionHandler: @escaping ([KnowledgeGroup2]) -> Void) {
-        capturedFetchCompletionHandler = completionHandler
+    fileprivate var observers: [KnowledgeServiceObserver] = []
+    func add(_ observer: KnowledgeServiceObserver) {
+        observers.append(observer)
     }
     
     func fetchKnowledgeEntry(for identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping (KnowledgeEntry2) -> Void) {
@@ -33,7 +33,7 @@ class StubKnowledgeService: KnowledgeService {
 extension StubKnowledgeService {
     
     func simulateFetchSucceeded(_ models: [KnowledgeGroup2]) {
-        capturedFetchCompletionHandler?(models)
+        observers.forEach { $0.knowledgeGroupsDidChange(to: models) }
     }
     
 }

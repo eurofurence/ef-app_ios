@@ -11,7 +11,7 @@ import XCTest
 
 class FakeKnowledgeService: KnowledgeService {
     
-    func fetchKnowledgeGroups(completionHandler: @escaping ([KnowledgeGroup2]) -> Void) {
+    func add(_ observer: KnowledgeServiceObserver) {
         
     }
     

@@ -10,10 +10,16 @@ import Foundation
 
 protocol KnowledgeService {
 
+    func add(_ observer: KnowledgeServiceObserver)
+
     func fetchKnowledgeEntry(for identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping (KnowledgeEntry2) -> Void)
     func fetchKnowledgeEntriesForGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping ([KnowledgeEntry2]) -> Void)
     func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping ([Data]) -> Void)
 
-    func fetchKnowledgeGroups(completionHandler: @escaping ([KnowledgeGroup2]) -> Void)
+}
+
+protocol KnowledgeServiceObserver {
+
+    func knowledgeGroupsDidChange(to groups: [KnowledgeGroup2])
 
 }
