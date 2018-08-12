@@ -23,14 +23,17 @@ struct V2SyncAPI: SyncAPI {
     }
 
     func fetchLatestData(lastSyncTime: Date?, completionHandler: @escaping (APISyncResponse?) -> Void) {
-        let url = apiUrl + "Sync"
+        let sinceParameterPathComponent: String = {
+            if let lastSyncTime = lastSyncTime {
+                let formattedTime = Iso8601DateFormatter.instance.string(from: lastSyncTime)
+                return "?since=\(formattedTime)"
+            } else {
+                return ""
+            }
+        }()
 
-        var headers: [String: String] = [:]
-        if let lastSyncTime = lastSyncTime {
-            headers["since"] = Iso8601DateFormatter.instance.string(from: lastSyncTime)
-        }
-
-        let request = JSONRequest(url: url, body: Data(), headers: headers)
+        let url = "\(apiUrl)Sync\(sinceParameterPathComponent)"
+        let request = JSONRequest(url: url, body: Data())
 
         jsonSession.get(request) { (data, _) in
             var response: APISyncResponse?

@@ -58,15 +58,17 @@ class V2SyncAPITests: XCTestCase {
         XCTAssertTrue(providedWithNilResponse)
     }
     
-    func testSupplyingLastSyncTimeSuppliesSinceHeader() {
+    func testSupplyingLastSyncTimeSuppliesSinceParameter() {
         let jsonSession = CapturingJSONSession()
         let apiUrl = StubV2ApiUrlProviding()
         let syncApi = V2SyncAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         let lastSyncTime = Date.random
-        let expected = Iso8601DateFormatter.instance.string(from: lastSyncTime)
         syncApi.fetchLatestData(lastSyncTime: lastSyncTime) { (_) in }
+        let expectedSinceTime = Iso8601DateFormatter.instance.string(from: lastSyncTime)
+        let expected = apiUrl.url.appending("Sync?since=\(expectedSinceTime)")
+        let actual = jsonSession.getRequestURL
         
-        XCTAssertEqual(expected, jsonSession.capturedAdditionalGETHeaders?["since"])
+        XCTAssertEqual(expected, actual)
     }
     
 }
