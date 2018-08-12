@@ -70,10 +70,12 @@ private struct JSONSyncResponse: Decodable {
     struct Leaf<T>: Decodable where T: Decodable & ModelRepresenting {
         var ChangedEntities: [T]
         var DeletedEntities: [String]
+        var RemoveAllBeforeInsert: Bool
 
         var delta: APISyncDelta<T.ModelType> {
             return APISyncDelta(changed: ChangedEntities.map({ $0.modelValue }),
-                                deleted: DeletedEntities)
+                                deleted: DeletedEntities,
+                                removeAllBeforeInsert: RemoveAllBeforeInsert)
         }
     }
 

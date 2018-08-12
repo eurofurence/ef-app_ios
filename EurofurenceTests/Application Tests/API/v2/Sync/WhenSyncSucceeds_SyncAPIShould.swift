@@ -45,7 +45,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                                content: "This is Content.\n\n**with markdown**",
                                                                                lastChangedDateTime: expectedFirstComponents.date!,
                                                                                imageIdentifier: "e5b6efdd-8bbf-42f1-aa9e-159744c732b7")],
-                                                     deleted: ["c8c8a9ad-4f43-489f-905d-9d22d0ef045f"])
+                                                     deleted: ["c8c8a9ad-4f43-489f-905d-9d22d0ef045f"],
+                                                     removeAllBeforeInsert: false)
         XCTAssertEqual(expected, response?.announcements)
     }
     
@@ -90,7 +91,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                                           groupName: "General Information",
                                                                                           groupDescription: "Helpful things all about and around the convention",
                                                                                           fontAwesomeCharacterAddress: "f129")],
-                                                              deleted: ["6232ae2f-4e9d-fcf4-6341-f1751b405e45"])
+                                                              deleted: ["6232ae2f-4e9d-fcf4-6341-f1751b405e45"],
+                                                              removeAllBeforeInsert: true)
         let knowledgeEntries = APISyncDelta<APIKnowledgeEntry>(changed: [APIKnowledgeEntry(identifier: "28b153de-4797-99b6-ab80-f1f851dd2bde",
                                                                                            groupIdentifier: "72cdaaba-e980-fa1a-ce94-7a1cc19d0f79",
                                                                                            title: "Parkhaus Neukölln Arcaden",
@@ -98,11 +100,13 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                                            text: "The Parkhaus Neukölln Arcaden is about 2.5 km away from the hotel which means an average walking time of 30 minutes. Compared to the hotel parking this is rather cheap.",
                                                                                            links: [APILink(name: "Info Site (German)", fragmentType: .WebExternal, target: "https://www.mein-contipark.de/parkplatz-finden/parken-in-berlin/parkhaus-neukoelln-arcaden-berlin--ci3cp11881")],
                                                                                            imageIdentifiers: ["518ade34-48a5-4c20-a512-07e9722fe2f6"])],
-                                                               deleted: ["ba2f31ad-d42a-9e40-2c79-17bb9b2f36f3"])
+                                                               deleted: ["ba2f31ad-d42a-9e40-2c79-17bb9b2f36f3"],
+                                                               removeAllBeforeInsert: true)
         
         let rooms = APISyncDelta<APIRoom>(changed: [APIRoom(roomIdentifier: "dfa62eae-f881-4aab-a592-acf8fab14ae9",
                                                             name: "Art Show — Convention Hall Section D")],
-                                          deleted: ["87148f04-4c4b-433d-9469-c8a970952443"])
+                                          deleted: ["87148f04-4c4b-433d-9469-c8a970952443"],
+                                          removeAllBeforeInsert: true)
         
         let changedEventStartDate = DateComponents(calendar: .current,
                                                    timeZone: TimeZone(secondsFromGMT: 0),
@@ -134,11 +138,13 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                posterImageId: "postertest",
                                                                bannerImageId: "bannertest",
                                                                tags: ["photoshoot"])],
-                                            deleted: ["1452d472-feae-4483-8f55-93c25f7ec920"])
+                                            deleted: ["1452d472-feae-4483-8f55-93c25f7ec920"],
+                                            removeAllBeforeInsert: true)
         
         let tracks = APISyncDelta<APITrack>(changed: [APITrack(trackIdentifier: "f92a4fc0-303f-4c13-9194-44121d80bd20",
                                                                name: "Stage")],
-                                            deleted: ["cf410a89-379d-40c7-89ea-d0b6b51ea914"])
+                                            deleted: ["cf410a89-379d-40c7-89ea-d0b6b51ea914"],
+                                            removeAllBeforeInsert: true)
         
         let changedConferenceDayDate = DateComponents(calendar: .current,
                                                       timeZone: TimeZone(secondsFromGMT: 0),
@@ -147,7 +153,8 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                       day: 15).date!
         let conferenceDays = APISyncDelta<APIConferenceDay>(changed: [APIConferenceDay(identifier: "5f2e5aa4-a172-4f8b-8441-1e676ea3be9f",
                                                                                        date: changedConferenceDayDate)],
-                                                            deleted: ["db8e0455-8c49-4bc5-b472-e0033fe06b99"])
+                                                            deleted: ["db8e0455-8c49-4bc5-b472-e0033fe06b99"],
+                                                            removeAllBeforeInsert: true)
         
         let dealers = APISyncDelta<APIDealer>(changed: [APIDealer(identifier: "f112a4db-7856-4087-806d-b2704717dba3",
                                                                   displayName: "Akifu Toys",
@@ -167,17 +174,20 @@ class WhenSyncSucceeds_SyncAPIShould: XCTestCase {
                                                                   aboutTheArtistText: "",
                                                                   aboutTheArtText: "",
                                                                   artPreviewCaption: "")],
-                                              deleted: ["d53e6f6b-fdcb-4754-a4b9-6892e8d317d7"])
+                                              deleted: ["d53e6f6b-fdcb-4754-a4b9-6892e8d317d7"],
+                                              removeAllBeforeInsert: true)
         
         let maps = APISyncDelta<APIMap>(changed: [APIMap(identifier: "d6f1c9b4-6d03-41cc-ae5d-ee278e5121f0",
                                                          imageIdentifier: "28c15af7-6d82-4ee7-bf3b-2603076e785e",
                                                          mapDescription: "Dealers Den",
                                                          entries: [APIMap.Entry(identifier: "651ab75e-d87f-40a6-bcad-669432ee7a86", x: 747, y: 201, tapRadius: 50, links: [APIMap.Entry.Link(type: .dealerDetail, name: "Mirri", target: "b2166372-3b76-45d3-b3f9-e1675cade2db")])])],
-                                        deleted: ["157e1849-d6fc-46ab-9d47-1b785cd867c7"])
+                                        deleted: ["157e1849-d6fc-46ab-9d47-1b785cd867c7"],
+                                        removeAllBeforeInsert: true)
         
         let images = APISyncDelta<APIImage>(changed: [APIImage(identifier: "8ae7d323-b56d-4155-8a88-6b418bcfd057",
                                                                internalReference: "knowledge:1b9f7858-454d-0a68-824b-359e5bbfa5b0")],
-                                            deleted: ["2513aa0a-48a0-49cf-807e-8a57cf5306f8"])
+                                            deleted: ["2513aa0a-48a0-49cf-807e-8a57cf5306f8"],
+                                            removeAllBeforeInsert: true)
         
         return APISyncResponse(knowledgeGroups: knowledgeGroups,
                                knowledgeEntries: knowledgeEntries,

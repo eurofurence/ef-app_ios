@@ -12,10 +12,12 @@ struct APISyncDelta<T>: Equatable where T: Equatable {
 
     var changed: [T]
     var deleted: [String]
+    var removeAllBeforeInsert: Bool
 
-    init(changed: [T] = [], deleted: [String] = []) {
+    init(changed: [T] = [], deleted: [String] = [], removeAllBeforeInsert: Bool = false) {
         self.changed = changed
         self.deleted = deleted
+        self.removeAllBeforeInsert = removeAllBeforeInsert
     }
 
 }
