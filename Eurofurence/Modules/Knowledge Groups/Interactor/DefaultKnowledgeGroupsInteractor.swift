@@ -13,7 +13,8 @@ struct DefaultKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
     private class ViewModel: KnowledgeGroupsListViewModel, KnowledgeServiceObserver {
 
         private var groups = [KnowledgeGroup2]()
-        var knowledgeGroups: [KnowledgeListGroupViewModel] = []
+        private var knowledgeGroups: [KnowledgeListGroupViewModel] = []
+        private var delegate: KnowledgeGroupsListViewModelDelegate?
 
         func knowledgeGroupsDidChange(to groups: [KnowledgeGroup2]) {
             self.groups = groups
@@ -27,6 +28,13 @@ struct DefaultKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
                                                    groupDescription: group.groupDescription,
                                                    knowledgeEntries: entries)
             }
+
+            delegate?.knowledgeGroupsViewModelsDidUpdate(to: knowledgeGroups)
+        }
+
+        func setDelegate(_ delegate: KnowledgeGroupsListViewModelDelegate) {
+            self.delegate = delegate
+            delegate.knowledgeGroupsViewModelsDidUpdate(to: knowledgeGroups)
         }
 
         func fetchIdentifierForGroup(at index: Int, completionHandler: @escaping (KnowledgeGroup2.Identifier) -> Void) {

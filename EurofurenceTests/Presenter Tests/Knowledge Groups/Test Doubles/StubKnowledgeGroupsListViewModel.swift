@@ -11,7 +11,11 @@ import Foundation
 
 struct StubKnowledgeGroupsListViewModel: KnowledgeGroupsListViewModel {
     
-    var knowledgeGroups: [KnowledgeListGroupViewModel]
+    var knowledgeGroups: [KnowledgeListGroupViewModel] = []
+    
+    func setDelegate(_ delegate: KnowledgeGroupsListViewModelDelegate) {
+        delegate.knowledgeGroupsViewModelsDidUpdate(to: knowledgeGroups)
+    }
     
     func fetchIdentifierForGroup(at index: Int, completionHandler: @escaping (KnowledgeGroup2.Identifier) -> Void) {
         completionHandler(stubbedGroupIdentifier(at: index))

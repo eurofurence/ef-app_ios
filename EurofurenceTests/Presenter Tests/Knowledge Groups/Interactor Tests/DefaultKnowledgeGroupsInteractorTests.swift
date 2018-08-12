@@ -9,6 +9,15 @@
 @testable import Eurofurence
 import XCTest
 
+class CapturingKnowledgeGroupsListViewModelDelegate: KnowledgeGroupsListViewModelDelegate {
+    
+    private(set) var capturedViewModels: [KnowledgeListGroupViewModel] = []
+    func knowledgeGroupsViewModelsDidUpdate(to viewModels: [KnowledgeListGroupViewModel]) {
+        capturedViewModels = viewModels
+    }
+    
+}
+
 class DefaultKnowledgeGroupsInteractorTests: XCTestCase {
     
     private func expectedViewModelForGroup(_ group: KnowledgeGroup2) -> KnowledgeListGroupViewModel {
@@ -26,14 +35,31 @@ class DefaultKnowledgeGroupsInteractorTests: XCTestCase {
     func testKnowledgeGroupsFromServiceAreTurnedIntoExpectedViewModels() {
         let service = StubKnowledgeService()
         let interactor = DefaultKnowledgeGroupsInteractor(service: service)
-        var actual: KnowledgeGroupsListViewModel?
-        interactor.prepareViewModel { actual = $0 }
+        var viewModel: KnowledgeGroupsListViewModel?
+        interactor.prepareViewModel { viewModel = $0 }
+        let delegate = CapturingKnowledgeGroupsListViewModelDelegate()
+        viewModel?.setDelegate(delegate)
         
         let models: [KnowledgeGroup2] = .random
         let expected = models.map(expectedViewModelForGroup)
         service.simulateFetchSucceeded(models)
         
-        XCTAssertEqual(expected, actual?.knowledgeGroups)
+        XCTAssertEqual(expected, delegate.capturedViewModels)
+    }
+    
+    func testLateBoundViewModelDelegateProvidedWithExpectedViewModels() {
+        let service = StubKnowledgeService()
+        let interactor = DefaultKnowledgeGroupsInteractor(service: service)
+        var viewModel: KnowledgeGroupsListViewModel?
+        interactor.prepareViewModel { viewModel = $0 }
+        let models: [KnowledgeGroup2] = .random
+        let expected = models.map(expectedViewModelForGroup)
+        service.simulateFetchSucceeded(models)
+        
+        let delegate = CapturingKnowledgeGroupsListViewModelDelegate()
+        viewModel?.setDelegate(delegate)
+        
+        XCTAssertEqual(expected, delegate.capturedViewModels)
     }
     
     func testProvideExpectedKnowledgeGroupByIndex() {

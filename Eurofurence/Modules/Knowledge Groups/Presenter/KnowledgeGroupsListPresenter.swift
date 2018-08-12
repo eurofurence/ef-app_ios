@@ -8,7 +8,7 @@
 
 import Foundation.NSIndexPath
 
-class KnowledgeGroupsListPresenter: KnowledgeListSceneDelegate {
+class KnowledgeGroupsListPresenter: KnowledgeListSceneDelegate, KnowledgeGroupsListViewModelDelegate {
 
     private let scene: KnowledgeListScene
     private let knowledgeListInteractor: KnowledgeGroupsInteractor
@@ -36,21 +36,23 @@ class KnowledgeGroupsListPresenter: KnowledgeListSceneDelegate {
         viewModel?.fetchIdentifierForGroup(at: groupIndex, completionHandler: delegate.knowledgeListModuleDidSelectKnowledgeGroup)
     }
 
+    func knowledgeGroupsViewModelsDidUpdate(to viewModels: [KnowledgeListGroupViewModel]) {
+        let binder = ListBinder(viewModels: viewModels)
+        scene.prepareToDisplayKnowledgeGroups(numberOfGroups: viewModels.count, binder: binder)
+    }
+
     private func viewModelPrepared(_ viewModel: KnowledgeGroupsListViewModel) {
         self.viewModel = viewModel
+        viewModel.setDelegate(self)
         scene.hideLoadingIndicator()
-
-        let knowledgeGroups = viewModel.knowledgeGroups
-        let binder = ListBinder(viewModel: viewModel)
-        scene.prepareToDisplayKnowledgeGroups(numberOfGroups: knowledgeGroups.count, binder: binder)
     }
 
     private struct ListBinder: KnowledgeListBinder {
 
-        var viewModel: KnowledgeGroupsListViewModel
+        var viewModels: [KnowledgeListGroupViewModel]
 
         func bind(_ header: KnowledgeGroupScene, toGroupAt index: Int) {
-            let group = viewModel.knowledgeGroups[index]
+            let group = viewModels[index]
 
             header.setKnowledgeGroupTitle(group.title)
             header.setKnowledgeGroupFontAwesomeCharacter(group.fontAwesomeCharacter)

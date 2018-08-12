@@ -10,9 +10,14 @@ import UIKit.UIImage
 
 protocol KnowledgeGroupsListViewModel {
 
-    var knowledgeGroups: [KnowledgeListGroupViewModel] { get }
-
+    func setDelegate(_ delegate: KnowledgeGroupsListViewModelDelegate)
     func fetchIdentifierForGroup(at index: Int, completionHandler: @escaping (KnowledgeGroup2.Identifier) -> Void)
+
+}
+
+protocol KnowledgeGroupsListViewModelDelegate {
+
+    func knowledgeGroupsViewModelsDidUpdate(to viewModels: [KnowledgeListGroupViewModel])
 
 }
 
