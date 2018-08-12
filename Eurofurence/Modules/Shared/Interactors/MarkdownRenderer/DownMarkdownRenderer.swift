@@ -17,7 +17,8 @@ extension DownMarkdownRenderer {
 	func render(_ contents: String) -> NSAttributedString {
 		let down = Down(markdownString: contents)
 		do {
-			return try down.toAttributedString(stylesheet: stylesheet)
+			let attributedString = try down.toAttributedString(DownOptions.smart, stylesheet: stylesheet)
+			return attributedString.attributedStringByTrimming(with: CharacterSet.whitespacesAndNewlines)
 		} catch {
 			return NSAttributedString(string: contents)
 		}
