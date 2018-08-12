@@ -339,6 +339,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                     response.knowledgeGroups.deleted.forEach(transaction.deleteKnowledgeGroup)
                     response.announcements.deleted.forEach(transaction.deleteAnnouncement)
 
+                    if response.announcements.removeAllBeforeInsert {
+                        self.announcements.models.map({ $0.identifier.rawValue }).forEach(transaction.deleteAnnouncement)
+                    }
+
                     transaction.saveEvents(response.events.changed)
                     transaction.saveRooms(response.rooms.changed)
                     transaction.saveTracks(response.tracks.changed)
