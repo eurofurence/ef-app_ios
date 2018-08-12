@@ -157,6 +157,15 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
 
         func saveLastRefreshDate(_ lastRefreshDate: Date) {
             mutations.append { (context) in
+                let fetchRequestForExistingRefreshDate: NSFetchRequest<LastRefreshEntity> = LastRefreshEntity.fetchRequest()
+
+                do {
+                    let existingEntities = try fetchRequestForExistingRefreshDate.execute()
+                    existingEntities.forEach(context.delete)
+                } catch {
+                    print(error)
+                }
+
                 let entity = LastRefreshEntity(context: context)
                 entity.lastRefreshDate = lastRefreshDate
             }
