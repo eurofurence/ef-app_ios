@@ -311,6 +311,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         progress.completedUnitCount = -1
 
         let lastSyncTime = dataStore.getLastRefreshDate()
+        let existingImages = dataStore.getSavedImages().or([])
         syncAPI.fetchLatestData(lastSyncTime: lastSyncTime) { (response) in
             guard let response = response else {
                 self.longRunningTaskManager.finishLongRunningTask(token: longRunningTask)
@@ -361,6 +362,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
                     if response.knowledgeEntries.removeAllBeforeInsert {
                         self.knowledge.models.reduce([], { $0 + $1.entries }).map({ $0.identifier.rawValue }).forEach(transaction.deleteKnowledgeEntry)
+                    }
+
+                    if response.maps.removeAllBeforeInsert {
+                        existingImages.map({ $0.identifier }).forEach(transaction.deleteImage)
                     }
 
                     transaction.saveEvents(response.events.changed)

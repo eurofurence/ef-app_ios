@@ -879,6 +879,7 @@
 		CA82408A2122115E007E4A70 /* EventConferenceTracksRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8240892122115E007E4A70 /* EventConferenceTracksRemoveAllBeforeInsertTests.swift */; };
 		CA82408C21221282007E4A70 /* KnowledgeGroupsRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82408B21221282007E4A70 /* KnowledgeGroupsRemoveAllBeforeInsertTests.swift */; };
 		CA82408E2122190D007E4A70 /* KnowledgeEntriesRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82408D2122190D007E4A70 /* KnowledgeEntriesRemoveAllBeforeInsertTests.swift */; };
+		CA82409021221A89007E4A70 /* ImagesRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82408F21221A89007E4A70 /* ImagesRemoveAllBeforeInsertTests.swift */; };
 		CA8276B0204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276AF204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift */; };
 		CA8276B3204EC013006A7419 /* ApplicationPreloadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B2204EC013006A7419 /* ApplicationPreloadInteractor.swift */; };
 		CA8276B6204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B5204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift */; };
@@ -2104,6 +2105,7 @@
 		CA8240892122115E007E4A70 /* EventConferenceTracksRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventConferenceTracksRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
 		CA82408B21221282007E4A70 /* KnowledgeGroupsRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupsRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
 		CA82408D2122190D007E4A70 /* KnowledgeEntriesRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntriesRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
+		CA82408F21221A89007E4A70 /* ImagesRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
 		CA8276AF204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPreloadingServiceTests.swift; sourceTree = "<group>"; };
 		CA8276B2204EC013006A7419 /* ApplicationPreloadInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPreloadInteractor.swift; sourceTree = "<group>"; };
 		CA8276B5204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPreloadInteractorDelegate.swift; sourceTree = "<group>"; };
@@ -5029,6 +5031,7 @@
 				CA8240852120B8E3007E4A70 /* EventConferenceDaysRemoveAllBeforeInsertTests.swift */,
 				CA82408721220FF2007E4A70 /* EventConferenceRoomsRemoveAllBeforeInsertTests.swift */,
 				CA8240892122115E007E4A70 /* EventConferenceTracksRemoveAllBeforeInsertTests.swift */,
+				CA82408F21221A89007E4A70 /* ImagesRemoveAllBeforeInsertTests.swift */,
 				CA82408D2122190D007E4A70 /* KnowledgeEntriesRemoveAllBeforeInsertTests.swift */,
 				CA82408B21221282007E4A70 /* KnowledgeGroupsRemoveAllBeforeInsertTests.swift */,
 				CA734D6C2109F36D00221886 /* WhenDeletingAnnouncement_AfterSuccessfulSync_ApplicationShould.swift */,
@@ -7560,6 +7563,7 @@
 				CA73AEDF201A0833004E77BF /* CapturingKnowledgeInteractor.swift in Sources */,
 				CA44C33A211A1CAE003C1C4E /* UserDefaultsForceRefreshRequired.swift in Sources */,
 				CA27257321138AFF004C6D0A /* NewsPresenterSuperSponsorIconBindingTests.swift in Sources */,
+				CA82409021221A89007E4A70 /* ImagesRemoveAllBeforeInsertTests.swift in Sources */,
 				CA36A46B20D84AB600EE6537 /* StubDealerViewModel+RandomValueProviding.swift in Sources */,
 				CAD2609F20C02E7C007E3618 /* WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailInteractorShould.swift in Sources */,
 				CA283A6F20E8DA5D00F7D195 /* CapturingDealersSearchViewModelDelegate.swift in Sources */,
