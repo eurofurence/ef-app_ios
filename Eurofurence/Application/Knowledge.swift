@@ -15,7 +15,7 @@ class Knowledge {
     private let dataStore: EurofurenceDataStore
     private let imageRepository: ImageRepository
     private var observers = [KnowledgeServiceObserver]()
-    private var models = [KnowledgeGroup2]() {
+    var models = [KnowledgeGroup2]() {
         didSet {
             observers.forEach { $0.knowledgeGroupsDidChange(to: models) }
         }

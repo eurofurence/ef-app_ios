@@ -355,6 +355,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                         self.schedule.tracks.map({ $0.trackIdentifier }).forEach(transaction.deleteTrack)
                     }
 
+                    if response.knowledgeGroups.removeAllBeforeInsert {
+                        self.knowledge.models.map({ $0.identifier.rawValue }).forEach(transaction.deleteKnowledgeGroup)
+                    }
+
                     transaction.saveEvents(response.events.changed)
                     transaction.saveRooms(response.rooms.changed)
                     transaction.saveTracks(response.tracks.changed)

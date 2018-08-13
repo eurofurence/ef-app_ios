@@ -877,6 +877,7 @@
 		CA8240862120B8E3007E4A70 /* EventConferenceDaysRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8240852120B8E3007E4A70 /* EventConferenceDaysRemoveAllBeforeInsertTests.swift */; };
 		CA82408821220FF2007E4A70 /* EventConferenceRoomsRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82408721220FF2007E4A70 /* EventConferenceRoomsRemoveAllBeforeInsertTests.swift */; };
 		CA82408A2122115E007E4A70 /* EventConferenceTracksRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8240892122115E007E4A70 /* EventConferenceTracksRemoveAllBeforeInsertTests.swift */; };
+		CA82408C21221282007E4A70 /* KnowledgeGroupsRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82408B21221282007E4A70 /* KnowledgeGroupsRemoveAllBeforeInsertTests.swift */; };
 		CA8276B0204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276AF204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift */; };
 		CA8276B3204EC013006A7419 /* ApplicationPreloadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B2204EC013006A7419 /* ApplicationPreloadInteractor.swift */; };
 		CA8276B6204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B5204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift */; };
@@ -2100,6 +2101,7 @@
 		CA8240852120B8E3007E4A70 /* EventConferenceDaysRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventConferenceDaysRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
 		CA82408721220FF2007E4A70 /* EventConferenceRoomsRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventConferenceRoomsRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
 		CA8240892122115E007E4A70 /* EventConferenceTracksRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventConferenceTracksRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
+		CA82408B21221282007E4A70 /* KnowledgeGroupsRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupsRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
 		CA8276AF204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPreloadingServiceTests.swift; sourceTree = "<group>"; };
 		CA8276B2204EC013006A7419 /* ApplicationPreloadInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPreloadInteractor.swift; sourceTree = "<group>"; };
 		CA8276B5204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPreloadInteractorDelegate.swift; sourceTree = "<group>"; };
@@ -5034,6 +5036,7 @@
 				CA401056210A6BAD0056E16C /* WhenDeletingMap_AfterSuccessfulSync_ApplicationShould.swift */,
 				CA734D72210A45C100221886 /* WhenDeletingRoom_AfterSuccessfulSync_ApplicationShould.swift */,
 				CA734D70210A443400221886 /* WhenDeletingTrack_AfterSuccessfulSync_ApplicationShould.swift */,
+				CA82408B21221282007E4A70 /* KnowledgeGroupsRemoveAllBeforeInsertTests.swift */,
 			);
 			path = Deletions;
 			sourceTree = "<group>";
@@ -7191,6 +7194,7 @@
 				CABA43931FCE0A2D009CB5B0 /* CapturingLoginModuleDelegate.swift in Sources */,
 				CA637588208CDE9000536BE2 /* StubScheduleModuleFactory.swift in Sources */,
 				CA52C68920D6A756009D3A9E /* WhenResolvingEventByIdentifier_ForEventThatExists_ApplicationShould.swift in Sources */,
+				CA82408C21221282007E4A70 /* KnowledgeGroupsRemoveAllBeforeInsertTests.swift in Sources */,
 				CA30EABC1F2660AD0053DBF6 /* CapturingPrivateMessagesAPI.swift in Sources */,
 				CAC2338020FF86EE00E73486 /* WhenToldToHandleNotification_ThatConcludesWithEvent_DirectorShould.swift in Sources */,
 				CAF9A94E1F558BEC00628833 /* WhenRetrievingLocalPrivateMessages.swift in Sources */,
