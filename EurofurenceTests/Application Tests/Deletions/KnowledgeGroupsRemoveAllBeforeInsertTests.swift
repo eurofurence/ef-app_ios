@@ -22,7 +22,7 @@ class KnowledgeGroupsRemoveAllBeforeInsertTests: XCTestCase {
         let deletedKnowledgeGroups = context.dataStore.transaction.deletedKnowledgeGroups
         
         XCTAssertTrue(originalGroupIdentifiers.equalsIgnoringOrder(deletedKnowledgeGroups),
-                      "Should have removed original days between sync events")
+                      "Should have removed original groups between sync events")
     }
     
 }
