@@ -876,6 +876,7 @@
 		CA8240842120A864007E4A70 /* AnnouncementRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8240832120A864007E4A70 /* AnnouncementRemoveAllBeforeInsertTests.swift */; };
 		CA8240862120B8E3007E4A70 /* EventConferenceDaysRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8240852120B8E3007E4A70 /* EventConferenceDaysRemoveAllBeforeInsertTests.swift */; };
 		CA82408821220FF2007E4A70 /* EventConferenceRoomsRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82408721220FF2007E4A70 /* EventConferenceRoomsRemoveAllBeforeInsertTests.swift */; };
+		CA82408A2122115E007E4A70 /* EventConferenceTracksRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8240892122115E007E4A70 /* EventConferenceTracksRemoveAllBeforeInsertTests.swift */; };
 		CA8276B0204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276AF204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift */; };
 		CA8276B3204EC013006A7419 /* ApplicationPreloadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B2204EC013006A7419 /* ApplicationPreloadInteractor.swift */; };
 		CA8276B6204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B5204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift */; };
@@ -2098,6 +2099,7 @@
 		CA8240832120A864007E4A70 /* AnnouncementRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
 		CA8240852120B8E3007E4A70 /* EventConferenceDaysRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventConferenceDaysRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
 		CA82408721220FF2007E4A70 /* EventConferenceRoomsRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventConferenceRoomsRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
+		CA8240892122115E007E4A70 /* EventConferenceTracksRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventConferenceTracksRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
 		CA8276AF204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPreloadingServiceTests.swift; sourceTree = "<group>"; };
 		CA8276B2204EC013006A7419 /* ApplicationPreloadInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPreloadInteractor.swift; sourceTree = "<group>"; };
 		CA8276B5204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPreloadInteractorDelegate.swift; sourceTree = "<group>"; };
@@ -5022,6 +5024,7 @@
 				CA8240832120A864007E4A70 /* AnnouncementRemoveAllBeforeInsertTests.swift */,
 				CA8240852120B8E3007E4A70 /* EventConferenceDaysRemoveAllBeforeInsertTests.swift */,
 				CA82408721220FF2007E4A70 /* EventConferenceRoomsRemoveAllBeforeInsertTests.swift */,
+				CA8240892122115E007E4A70 /* EventConferenceTracksRemoveAllBeforeInsertTests.swift */,
 				CA734D6C2109F36D00221886 /* WhenDeletingAnnouncement_AfterSuccessfulSync_ApplicationShould.swift */,
 				CA734D74210A477600221886 /* WhenDeletingConferenceDay_AfterSuccessfulSync_ApplicationShould.swift */,
 				CA734D7A210A4DFE00221886 /* WhenDeletingDealer_AfterSuccessfulSync_ApplicationShould.swift */,
@@ -7434,6 +7437,7 @@
 				CACF1E7820B1D10E00D904B5 /* DummyEventDetailInteractor.swift in Sources */,
 				CA36A47920D8538A00EE6537 /* WhenBindingDealerComponent_ForDealerNotPresentOnAllDays_DealersPresenterShould.swift in Sources */,
 				CA36A4D420DAE15A00EE6537 /* WhenSceneSelectsDealer_DealersPresenterShould.swift in Sources */,
+				CA82408A2122115E007E4A70 /* EventConferenceTracksRemoveAllBeforeInsertTests.swift in Sources */,
 				CA2D08001FE94AF900BFD785 /* WhenTheAppLaunchesWithAbsentDataStore.swift in Sources */,
 				CA8276BC204F25DF006A7419 /* InOrderToSupportSyncKnowledgeListLoading_KnowledgeListPresenterShould.swift in Sources */,
 				CA63753D208A6E4900536BE2 /* WhenLoggedOutBeforeConvention_NewsInteractorShould.swift in Sources */,

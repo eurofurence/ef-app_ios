@@ -351,6 +351,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                         self.schedule.rooms.map({ $0.roomIdentifier }).forEach(transaction.deleteRoom)
                     }
 
+                    if response.tracks.removeAllBeforeInsert {
+                        self.schedule.tracks.map({ $0.trackIdentifier }).forEach(transaction.deleteTrack)
+                    }
+
                     transaction.saveEvents(response.events.changed)
                     transaction.saveRooms(response.rooms.changed)
                     transaction.saveTracks(response.tracks.changed)
