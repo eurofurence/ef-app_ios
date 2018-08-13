@@ -27,6 +27,10 @@ class ImagesCache: EventConsumer {
         return imageRepository.loadImage(identifier: identifier)?.pngImageData
     }
 
+    func deleteImage(identifier: String) {
+        imageRepository.deleteEntity(identifier: identifier)
+    }
+
     // MARK: EventConsumer
 
     func consume(event: ImageDownloadedEvent) {

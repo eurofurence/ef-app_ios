@@ -365,7 +365,9 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                     }
 
                     if response.maps.removeAllBeforeInsert {
-                        existingImages.map({ $0.identifier }).forEach(transaction.deleteImage)
+                        let identifiersToDelete: [String] = existingImages.map({ $0.identifier })
+                        identifiersToDelete.forEach(transaction.deleteImage)
+                        existingImages.map({ $0.identifier }).forEach(self.imageCache.deleteImage)
                     }
 
                     transaction.saveEvents(response.events.changed)
@@ -381,6 +383,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                     transaction.saveLastRefreshDate(self.clock.currentDate)
                     transaction.saveImages(response.images.changed)
                     response.images.deleted.forEach(transaction.deleteImage)
+                    response.images.deleted.forEach(self.imageCache.deleteImage)
                 })
 
                 self.eventBus.post(DomainEvent.DataStoreChangedEvent())

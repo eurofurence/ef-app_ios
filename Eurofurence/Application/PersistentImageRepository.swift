@@ -19,6 +19,10 @@ struct PersistentImageRepository: ImageRepository {
         }
     }
 
+    func deleteEntity(identifier: String) {
+
+    }
+
     func loadImage(identifier: String) -> ImageEntity? {
         do {
             let imageURL = try makeImageRepositoryURL(for: identifier)

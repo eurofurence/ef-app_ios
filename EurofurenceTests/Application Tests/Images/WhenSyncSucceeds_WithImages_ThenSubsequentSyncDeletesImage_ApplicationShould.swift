@@ -22,6 +22,7 @@ class WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShou
         context.performSuccessfulSync(response: syncResponse)
         
         XCTAssertTrue(dataStore.transaction.deletedImages.contains(imageToDelegate.identifier))
+        XCTAssertTrue(context.imageRepository.deletedImages.contains(imageToDelegate.identifier))
     }
     
 }
