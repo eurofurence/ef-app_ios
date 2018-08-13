@@ -874,6 +874,8 @@
 		CA81D4921FE9AC9200A52A2F /* PhoneTabModuleFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D4911FE9AC9200A52A2F /* PhoneTabModuleFactoryTests.swift */; };
 		CA81D4941FEA92EA00A52A2F /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D4931FEA92EA00A52A2F /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift */; };
 		CA8240842120A864007E4A70 /* AnnouncementRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8240832120A864007E4A70 /* AnnouncementRemoveAllBeforeInsertTests.swift */; };
+		CA8240862120B8E3007E4A70 /* EventConferenceDaysRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8240852120B8E3007E4A70 /* EventConferenceDaysRemoveAllBeforeInsertTests.swift */; };
+		CA82408821220FF2007E4A70 /* EventConferenceRoomsRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82408721220FF2007E4A70 /* EventConferenceRoomsRemoveAllBeforeInsertTests.swift */; };
 		CA8276B0204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276AF204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift */; };
 		CA8276B3204EC013006A7419 /* ApplicationPreloadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B2204EC013006A7419 /* ApplicationPreloadInteractor.swift */; };
 		CA8276B6204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B5204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift */; };
@@ -2094,6 +2096,8 @@
 		CA81D4911FE9AC9200A52A2F /* PhoneTabModuleFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneTabModuleFactoryTests.swift; sourceTree = "<group>"; };
 		CA81D4931FEA92EA00A52A2F /* WhenRequestingPrivateMessagesWhileNotAuthenticated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRequestingPrivateMessagesWhileNotAuthenticated.swift; sourceTree = "<group>"; };
 		CA8240832120A864007E4A70 /* AnnouncementRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
+		CA8240852120B8E3007E4A70 /* EventConferenceDaysRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventConferenceDaysRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
+		CA82408721220FF2007E4A70 /* EventConferenceRoomsRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventConferenceRoomsRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
 		CA8276AF204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPreloadingServiceTests.swift; sourceTree = "<group>"; };
 		CA8276B2204EC013006A7419 /* ApplicationPreloadInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPreloadInteractor.swift; sourceTree = "<group>"; };
 		CA8276B5204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPreloadInteractorDelegate.swift; sourceTree = "<group>"; };
@@ -5016,6 +5020,8 @@
 			isa = PBXGroup;
 			children = (
 				CA8240832120A864007E4A70 /* AnnouncementRemoveAllBeforeInsertTests.swift */,
+				CA8240852120B8E3007E4A70 /* EventConferenceDaysRemoveAllBeforeInsertTests.swift */,
+				CA82408721220FF2007E4A70 /* EventConferenceRoomsRemoveAllBeforeInsertTests.swift */,
 				CA734D6C2109F36D00221886 /* WhenDeletingAnnouncement_AfterSuccessfulSync_ApplicationShould.swift */,
 				CA734D74210A477600221886 /* WhenDeletingConferenceDay_AfterSuccessfulSync_ApplicationShould.swift */,
 				CA734D7A210A4DFE00221886 /* WhenDeletingDealer_AfterSuccessfulSync_ApplicationShould.swift */,
@@ -7151,6 +7157,7 @@
 				CADABF092119BE770023C3B6 /* WhenUpgradingBetweenAppVersions_ApplicationShould.swift in Sources */,
 				CA2761AB20E0220A000E52AC /* StubCollectThemAllSceneFactory.swift in Sources */,
 				CABF03C32041C2FD0028BD62 /* KnowledgeEntry2.swift in Sources */,
+				CA8240862120B8E3007E4A70 /* EventConferenceDaysRemoveAllBeforeInsertTests.swift in Sources */,
 				CA734D77210A49B300221886 /* WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
 				CA52C67920D59357009D3A9E /* WhenSignificantTimeChanges_ScheduleShould.swift in Sources */,
 				CAD260AB20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift in Sources */,
@@ -7494,6 +7501,7 @@
 				CA637556208CBBCE00536BE2 /* StubMessageDetailModuleProviding.swift in Sources */,
 				CA73AEDD201A0823004E77BF /* CapturingKnowledgeListScene.swift in Sources */,
 				CA36A47520D84DD600EE6537 /* CapturingDealerComponent.swift in Sources */,
+				CA82408821220FF2007E4A70 /* EventConferenceRoomsRemoveAllBeforeInsertTests.swift in Sources */,
 				CA60C002207F7D2100697566 /* WhenNewsSceneDidLoad.swift in Sources */,
 				CABEB0D220C7694F000BEE66 /* WhenFetchingEventsBeforeRefreshWhenStoreHasEvents.swift in Sources */,
 				CA63758C208CE06100536BE2 /* WhenBuildingScheduleModule.swift in Sources */,

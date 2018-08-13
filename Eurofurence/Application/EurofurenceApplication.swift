@@ -343,6 +343,14 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                         self.announcements.models.map({ $0.identifier.rawValue }).forEach(transaction.deleteAnnouncement)
                     }
 
+                    if response.conferenceDays.removeAllBeforeInsert {
+                        self.schedule.days.map({ $0.identifier }).forEach(transaction.deleteConferenceDay)
+                    }
+
+                    if response.rooms.removeAllBeforeInsert {
+                        self.schedule.rooms.map({ $0.roomIdentifier }).forEach(transaction.deleteRoom)
+                    }
+
                     transaction.saveEvents(response.events.changed)
                     transaction.saveRooms(response.rooms.changed)
                     transaction.saveTracks(response.tracks.changed)
