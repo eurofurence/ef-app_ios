@@ -125,7 +125,7 @@
                             <tableViewSection id="fN0-ch-LjY">
                                 <string key="footerTitle">Please log in with your credentials for the Eurofurence Registration System.
 
-If you do not have access to them, come to ConOps or Registration. They can help you with an alternative login. Please bring your badge and a valid legal form of identification.</string>
+If you do not have access to them, come to our registration desk or security office. They can help you with an alternative login. Please bring your badge and a valid legal form of identification.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="A7S-XG-C45">
                                         <rect key="frame" x="0.0" y="203" width="375" height="44"/>
