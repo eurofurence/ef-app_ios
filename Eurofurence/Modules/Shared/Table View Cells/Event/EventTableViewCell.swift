@@ -17,6 +17,7 @@ class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
     @IBOutlet weak var favouritedEventIndicator: UIView!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var eventBannerImageView: UIImageView!
     @IBOutlet weak var sponsorEventIndicator: UILabel!
     @IBOutlet weak var superSponsorEventIndicator: UILabel!
     @IBOutlet weak var artShowIndicatorView: UILabel!
@@ -69,15 +70,15 @@ class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
     }
 
     func setBannerGraphicPNGData(_ graphicData: Data) {
-
+        eventBannerImageView.image = UIImage(data: graphicData)
     }
 
     func showBanner() {
-
+        eventBannerImageView.isHidden = false
     }
 
     func hideBanner() {
-
+        eventBannerImageView.isHidden = true
     }
 
     func showFavouriteEventIndicator() {
