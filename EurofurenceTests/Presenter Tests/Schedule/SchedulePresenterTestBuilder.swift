@@ -110,14 +110,6 @@ extension SchedulePresenterTestBuilder.Context {
         scene.delegate?.scheduleSceneDidPerformRefreshAction()
     }
     
-    func simulateSceneDidSelectFavouritesOnlyOption() {
-        scene.delegate?.scheduleSelectDidSelectFavouritesOption()
-    }
-    
-    func simulateSceneDidSelectAllEventsOption() {
-        scene.delegate?.scheduleSelectDidSelectAllEventsOption()
-    }
-    
     func bind(_ header: ScheduleEventGroupHeader, forGroupAt index: Int) {
         scene.binder?.bind(header, forGroupAt: index)
     }

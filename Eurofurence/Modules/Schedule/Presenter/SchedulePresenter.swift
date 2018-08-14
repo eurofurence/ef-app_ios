@@ -232,14 +232,6 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
         isShowingFavourites = true
     }
 
-    func scheduleSelectDidSelectFavouritesOption() {
-        viewModel?.onlyShowFavourites()
-    }
-
-    func scheduleSelectDidSelectAllEventsOption() {
-        viewModel?.showAllEvents()
-    }
-
     func scheduleViewModelDidBeginRefreshing() {
         scene.showRefreshIndicator()
     }

@@ -186,14 +186,6 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             return rawModelGroups[indexPath.section].events[indexPath.row].identifier
         }
 
-        func onlyShowFavourites() {
-
-        }
-
-        func showAllEvents() {
-
-        }
-
         func favouriteEvent(at indexPath: IndexPath) {
             let event = rawModelGroups[indexPath.section].events[indexPath.item]
             eventsService.favouriteEvent(identifier: event.identifier)

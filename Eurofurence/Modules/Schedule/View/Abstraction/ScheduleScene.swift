@@ -32,8 +32,6 @@ protocol ScheduleSceneDelegate {
     func scheduleSceneDidSelectDay(at index: Int)
     func scheduleSceneDidSelectEvent(at indexPath: IndexPath)
     func scheduleSceneDidSelectSearchResult(at indexPath: IndexPath)
-    func scheduleSelectDidSelectFavouritesOption()
-    func scheduleSelectDidSelectAllEventsOption()
 
     func scheduleSceneDidUpdateSearchQuery(_ query: String)
     func scheduleSceneDidChangeSearchScopeToAllEvents()
