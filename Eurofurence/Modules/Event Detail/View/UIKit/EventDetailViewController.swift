@@ -144,6 +144,7 @@ class EventDetailViewController: UIViewController, EventDetailScene {
             let cell = tableView.dequeue(EventInformationBannerTableViewCell.self)
             configuration(cell)
             cell.iconLabel.text = text
+            cell.iconLabel.textColor = .pantone330U
 
             return cell
         }
