@@ -880,6 +880,7 @@
 		CA82408C21221282007E4A70 /* KnowledgeGroupsRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82408B21221282007E4A70 /* KnowledgeGroupsRemoveAllBeforeInsertTests.swift */; };
 		CA82408E2122190D007E4A70 /* KnowledgeEntriesRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82408D2122190D007E4A70 /* KnowledgeEntriesRemoveAllBeforeInsertTests.swift */; };
 		CA82409021221A89007E4A70 /* ImagesRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82408F21221A89007E4A70 /* ImagesRemoveAllBeforeInsertTests.swift */; };
+		CA82409221222995007E4A70 /* DealersRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82409121222995007E4A70 /* DealersRemoveAllBeforeInsertTests.swift */; };
 		CA8276B0204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276AF204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift */; };
 		CA8276B3204EC013006A7419 /* ApplicationPreloadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B2204EC013006A7419 /* ApplicationPreloadInteractor.swift */; };
 		CA8276B6204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B5204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift */; };
@@ -2106,6 +2107,7 @@
 		CA82408B21221282007E4A70 /* KnowledgeGroupsRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroupsRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
 		CA82408D2122190D007E4A70 /* KnowledgeEntriesRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntriesRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
 		CA82408F21221A89007E4A70 /* ImagesRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
+		CA82409121222995007E4A70 /* DealersRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
 		CA8276AF204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPreloadingServiceTests.swift; sourceTree = "<group>"; };
 		CA8276B2204EC013006A7419 /* ApplicationPreloadInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPreloadInteractor.swift; sourceTree = "<group>"; };
 		CA8276B5204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPreloadInteractorDelegate.swift; sourceTree = "<group>"; };
@@ -5028,6 +5030,7 @@
 			isa = PBXGroup;
 			children = (
 				CA8240832120A864007E4A70 /* AnnouncementRemoveAllBeforeInsertTests.swift */,
+				CA82409121222995007E4A70 /* DealersRemoveAllBeforeInsertTests.swift */,
 				CA8240852120B8E3007E4A70 /* EventConferenceDaysRemoveAllBeforeInsertTests.swift */,
 				CA82408721220FF2007E4A70 /* EventConferenceRoomsRemoveAllBeforeInsertTests.swift */,
 				CA8240892122115E007E4A70 /* EventConferenceTracksRemoveAllBeforeInsertTests.swift */,
@@ -7535,6 +7538,7 @@
 				CA27619220DFF30D000E52AC /* WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */,
 				CA27256F21137EED004C6D0A /* SchedulePresenterSuperSponsorIconBindingTests.swift in Sources */,
 				CA36A4B620D9A5C300EE6537 /* WhenDealersHaveCaseVaryingNames_ApplicationShould.swift in Sources */,
+				CA82409221222995007E4A70 /* DealersRemoveAllBeforeInsertTests.swift in Sources */,
 				CA89CBB42080031000570D54 /* CapturingNewsComponentHeaderScene.swift in Sources */,
 				CA82408E2122190D007E4A70 /* KnowledgeEntriesRemoveAllBeforeInsertTests.swift in Sources */,
 				CACF1E8520B34E7A00D904B5 /* WhenPreparingViewModel_EventDetailInteractorShould.swift in Sources */,

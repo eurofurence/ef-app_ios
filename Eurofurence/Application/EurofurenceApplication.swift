@@ -312,6 +312,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
         let lastSyncTime = dataStore.getLastRefreshDate()
         let existingImages = dataStore.getSavedImages().or([])
+        let existingDealers = dataStore.getSavedDealers().or([])
         syncAPI.fetchLatestData(lastSyncTime: lastSyncTime) { (response) in
             guard let response = response else {
                 self.longRunningTaskManager.finishLongRunningTask(token: longRunningTask)
@@ -368,6 +369,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                         let identifiersToDelete: [String] = existingImages.map({ $0.identifier })
                         identifiersToDelete.forEach(transaction.deleteImage)
                         existingImages.map({ $0.identifier }).forEach(self.imageCache.deleteImage)
+                    }
+
+                    if response.dealers.removeAllBeforeInsert {
+                        existingDealers.map({ $0.identifier }).forEach(transaction.deleteDealer)
                     }
 
                     transaction.saveEvents(response.events.changed)
