@@ -10,19 +10,26 @@ import UIKit
 
 class AspectRatioConstrainedImageView: UIImageView {
 
+    private var aspectRatioConstraint: NSLayoutConstraint?
+
     override var image: UIImage? {
         didSet {
-            if let size = image?.size {
-                applyAspectRatioImageConstraints(size: size)
+            aspectRatioConstraint.let(removeConstraint)
+            aspectRatioConstraint = nil
+
+            image.let { (image) in
+                let size = image.size
+                let constraint = NSLayoutConstraint(item: self,
+                                                    attribute: .width,
+                                                    relatedBy: .equal,
+                                                    toItem: self,
+                                                    attribute: .height,
+                                                    multiplier: size.width / size.height,
+                                                    constant: 0)
+                addConstraint(constraint)
+                aspectRatioConstraint = constraint
             }
         }
-    }
-
-    private func applyAspectRatioImageConstraints(size: CGSize) {
-        let aspectRatio = size.width / size.height
-        let aspectRatioConstraint = widthAnchor.constraint(equalTo: heightAnchor, multiplier: aspectRatio)
-        aspectRatioConstraint.priority = UILayoutPriority(999)
-        aspectRatioConstraint.isActive = true
     }
 
 }
