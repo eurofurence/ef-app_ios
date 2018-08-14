@@ -68,6 +68,18 @@ class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
         locationLabel.text = location
     }
 
+    func setBannerGraphicPNGData(_ graphicData: Data) {
+
+    }
+
+    func showBanner() {
+
+    }
+
+    func hideBanner() {
+
+    }
+
     func showFavouriteEventIndicator() {
         favouritedEventIndicator.isHidden = false
     }

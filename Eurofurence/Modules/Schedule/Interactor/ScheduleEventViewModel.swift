@@ -14,6 +14,7 @@ struct ScheduleEventViewModel: Equatable {
     var startTime: String
     var endTime: String
     var location: String
+    var bannerGraphicPNGData: Data?
     var isFavourite: Bool
     var isSponsorOnly: Bool
     var isSuperSponsorOnly: Bool

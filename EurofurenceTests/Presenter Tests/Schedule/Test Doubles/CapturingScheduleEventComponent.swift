@@ -31,6 +31,21 @@ class CapturingScheduleEventComponent: ScheduleEventComponent {
         capturedLocation = location
     }
     
+    private(set) var capturedBannerGraphicPNGData: Data?
+    func setBannerGraphicPNGData(_ graphicData: Data) {
+        capturedBannerGraphicPNGData = graphicData
+    }
+    
+    private(set) var didShowBanner = false
+    func showBanner() {
+        didShowBanner = true
+    }
+    
+    private(set) var didHideBanner = false
+    func hideBanner() {
+        didHideBanner = true
+    }
+    
     private(set) var didShowFavouriteEventIndicator = false
     func showFavouriteEventIndicator() {
         didShowFavouriteEventIndicator = true

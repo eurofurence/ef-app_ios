@@ -46,4 +46,16 @@ class WhenBindingEvent_SchedulePresenterShould: XCTestCase {
         XCTAssertEqual(eventViewModel.location, component.capturedLocation)
     }
     
+    func testBindTheBannerGraphicDataOntoTheEventScene() {
+        XCTAssertEqual(eventViewModel.bannerGraphicPNGData, component.capturedBannerGraphicPNGData)
+    }
+    
+    func testShowTheBanner() {
+        XCTAssertTrue(component.didShowBanner)
+    }
+    
+    func testNotHideTheBanner() {
+        XCTAssertFalse(component.didHideBanner)
+    }
+    
 }

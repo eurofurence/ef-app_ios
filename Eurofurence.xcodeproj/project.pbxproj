@@ -881,6 +881,7 @@
 		CA82408E2122190D007E4A70 /* KnowledgeEntriesRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82408D2122190D007E4A70 /* KnowledgeEntriesRemoveAllBeforeInsertTests.swift */; };
 		CA82409021221A89007E4A70 /* ImagesRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82408F21221A89007E4A70 /* ImagesRemoveAllBeforeInsertTests.swift */; };
 		CA82409221222995007E4A70 /* DealersRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82409121222995007E4A70 /* DealersRemoveAllBeforeInsertTests.swift */; };
+		CA8240962122F62D007E4A70 /* WhenBindingEvent_WithNoPoster_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8240952122F62D007E4A70 /* WhenBindingEvent_WithNoPoster_SchedulePresenterShould.swift */; };
 		CA8276B0204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276AF204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift */; };
 		CA8276B3204EC013006A7419 /* ApplicationPreloadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B2204EC013006A7419 /* ApplicationPreloadInteractor.swift */; };
 		CA8276B6204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B5204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift */; };
@@ -2108,6 +2109,7 @@
 		CA82408D2122190D007E4A70 /* KnowledgeEntriesRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeEntriesRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
 		CA82408F21221A89007E4A70 /* ImagesRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
 		CA82409121222995007E4A70 /* DealersRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
+		CA8240952122F62D007E4A70 /* WhenBindingEvent_WithNoPoster_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingEvent_WithNoPoster_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA8276AF204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPreloadingServiceTests.swift; sourceTree = "<group>"; };
 		CA8276B2204EC013006A7419 /* ApplicationPreloadInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPreloadInteractor.swift; sourceTree = "<group>"; };
 		CA8276B5204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPreloadInteractorDelegate.swift; sourceTree = "<group>"; };
@@ -4213,6 +4215,7 @@
 			children = (
 				CA00AE7C20D1C08B00C2FBB0 /* WhenBindingDay_SchedulePresenterShould.swift */,
 				CA00AE5D20D173C000C2FBB0 /* WhenBindingEvent_SchedulePresenterShould.swift */,
+				CA8240952122F62D007E4A70 /* WhenBindingEvent_WithNoPoster_SchedulePresenterShould.swift */,
 				CA250DD320D6E28B00E7513C /* WhenBindingEventFromSearchResult_SchedulePresenterShould.swift */,
 				CA00AE5520D1710300C2FBB0 /* WhenBindingEventGroup_SchedulePresenterShould.swift */,
 				CA250DD720D6E4AF00E7513C /* WhenBindingGroupFromSearchResult_SchedulePresenterShould.swift */,
@@ -7240,6 +7243,7 @@
 				CA52C68D20D6A9EB009D3A9E /* WhenSceneSelectsEvent_SchedulePresenterShould.swift in Sources */,
 				CA36A4A320D9834900EE6537 /* WhenFetchingIconDataForDealerWithoutAvatar_DealersInteractorShould.swift in Sources */,
 				CA321F4E1F7BC7FD0050E489 /* PhonePreloadSceneFactoryTests.swift in Sources */,
+				CA8240962122F62D007E4A70 /* WhenBindingEvent_WithNoPoster_SchedulePresenterShould.swift in Sources */,
 				78C86D791F12ADF8003A20E6 /* CapturingSplashScene.swift in Sources */,
 				6EEC6DA31F1BFC5000205F2D /* StubAppVersionProviding.swift in Sources */,
 				CA63756A208CCB5800536BE2 /* WhenStoreShouldBeRefreshed_DirectorShould.swift in Sources */,

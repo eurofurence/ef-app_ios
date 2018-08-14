@@ -17,6 +17,13 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
             component.setEventStartTime(event.startTime)
             component.setEventEndTime(event.endTime)
             component.setLocation(event.location)
+            event.bannerGraphicPNGData.let(component.setBannerGraphicPNGData)
+
+            if event.bannerGraphicPNGData != nil {
+                component.showBanner()
+            } else {
+                component.hideBanner()
+            }
 
             if event.isSponsorOnly {
                 component.showSponsorEventIndicator()
