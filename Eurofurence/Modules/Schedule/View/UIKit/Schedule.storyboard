@@ -43,12 +43,12 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Su9-HI-gRA">
-                                                            <rect key="frame" x="0.0" y="0.0" width="81" height="43"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="81" height="36"/>
                                                             <accessibility key="accessibilityConfiguration">
                                                                 <accessibilityTraits key="traits" button="YES" staticText="YES"/>
                                                                 <bool key="isElement" value="YES"/>
                                                             </accessibility>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -62,9 +62,9 @@
                                                     </subviews>
                                                 </view>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="Su9-HI-gRA" secondAttribute="bottom" id="B6F-lg-9SM"/>
                                                     <constraint firstAttribute="trailing" secondItem="7CY-vy-v5l" secondAttribute="trailing" id="CbS-7G-GDd"/>
                                                     <constraint firstAttribute="trailing" secondItem="Su9-HI-gRA" secondAttribute="trailing" id="Gu0-Xd-b1l"/>
+                                                    <constraint firstItem="7CY-vy-v5l" firstAttribute="top" secondItem="Su9-HI-gRA" secondAttribute="bottom" id="NWU-R2-77k"/>
                                                     <constraint firstItem="Su9-HI-gRA" firstAttribute="top" secondItem="bOB-Bt-zn3" secondAttribute="top" id="eyT-BA-fdC"/>
                                                     <constraint firstItem="Su9-HI-gRA" firstAttribute="leading" secondItem="bOB-Bt-zn3" secondAttribute="leading" id="j50-gO-4JR"/>
                                                     <constraint firstItem="7CY-vy-v5l" firstAttribute="leading" secondItem="bOB-Bt-zn3" secondAttribute="leading" id="p4P-YC-aO8"/>

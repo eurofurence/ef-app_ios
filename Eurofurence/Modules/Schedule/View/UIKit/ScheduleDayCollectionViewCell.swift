@@ -15,17 +15,24 @@ class ScheduleDayCollectionViewCell: UICollectionViewCell, ScheduleDayComponent 
 
     override var isSelected: Bool {
         didSet {
-            updateDecorationViewVisibility()
+            updateSelectionStateAppearence()
         }
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        updateDecorationViewVisibility()
+        updateSelectionStateAppearence()
     }
 
-    private func updateDecorationViewVisibility() {
+    private func updateSelectionStateAppearence() {
         selectedDecorationView.alpha = isSelected ? 1 : 0
+
+        let font: UIFont = {
+            let size = UIFont.preferredFont(forTextStyle: .footnote).pointSize
+            return isSelected ? UIFont.boldSystemFont(ofSize: size) : UIFont.systemFont(ofSize: size)
+        }()
+
+        dayTitleLabel.font = font
     }
 
     func setDayTitle(_ title: String) {
