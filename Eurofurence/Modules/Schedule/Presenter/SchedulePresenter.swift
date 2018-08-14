@@ -198,16 +198,12 @@ class SchedulePresenter: ScheduleSceneDelegate, ScheduleViewModelDelegate, Sched
 
     func scheduleSceneDidSelectEvent(at indexPath: IndexPath) {
         scene.deselectEvent(at: indexPath)
-
-        guard let identifier = viewModel?.identifierForEvent(at: indexPath) else { return }
-        delegate.scheduleModuleDidSelectEvent(identifier: identifier)
+        viewModel?.identifierForEvent(at: indexPath).let(delegate.scheduleModuleDidSelectEvent)
     }
 
     func scheduleSceneDidSelectSearchResult(at indexPath: IndexPath) {
         scene.deselectSearchResult(at: indexPath)
-
-        guard let identifier = searchViewModel?.identifierForEvent(at: indexPath) else { return }
-        delegate.scheduleModuleDidSelectEvent(identifier: identifier)
+        searchViewModel?.identifierForEvent(at: indexPath).let(delegate.scheduleModuleDidSelectEvent)
     }
 
     private var currentSearchQuery: String = ""
