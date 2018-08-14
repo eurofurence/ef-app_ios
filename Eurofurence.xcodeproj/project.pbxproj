@@ -157,7 +157,6 @@
 		CA08159320D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08159220D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift */; };
 		CA08159520D472B700F750D4 /* FakeEventsSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08159420D472B700F750D4 /* FakeEventsSchedule.swift */; };
 		CA08159720D475B500F750D4 /* FakeEventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08159620D475B500F750D4 /* FakeEventsService.swift */; };
-		CA08159A20D47B9600F750D4 /* WhenAppHasNoSavedEvents_ThenSyncFinishesSuccessfully_EventsScheduleShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08159920D47B9600F750D4 /* WhenAppHasNoSavedEvents_ThenSyncFinishesSuccessfully_EventsScheduleShould.swift */; };
 		CA08159C20D47BEA00F750D4 /* CapturingEventsScheduleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08159B20D47BEA00F750D4 /* CapturingEventsScheduleDelegate.swift */; };
 		CA0815A020D47D4100F750D4 /* WhenRestrictingEventsToSpecificDay_ScheduleShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA08159F20D47D4100F750D4 /* WhenRestrictingEventsToSpecificDay_ScheduleShould.swift */; };
 		CA0E5205208E6FE4005259FE /* StoryboardDealersSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */; };
@@ -1383,7 +1382,6 @@
 		CA08159220D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift; sourceTree = "<group>"; };
 		CA08159420D472B700F750D4 /* FakeEventsSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeEventsSchedule.swift; sourceTree = "<group>"; };
 		CA08159620D475B500F750D4 /* FakeEventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeEventsService.swift; sourceTree = "<group>"; };
-		CA08159920D47B9600F750D4 /* WhenAppHasNoSavedEvents_ThenSyncFinishesSuccessfully_EventsScheduleShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenAppHasNoSavedEvents_ThenSyncFinishesSuccessfully_EventsScheduleShould.swift; sourceTree = "<group>"; };
 		CA08159B20D47BEA00F750D4 /* CapturingEventsScheduleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingEventsScheduleDelegate.swift; sourceTree = "<group>"; };
 		CA08159F20D47D4100F750D4 /* WhenRestrictingEventsToSpecificDay_ScheduleShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenRestrictingEventsToSpecificDay_ScheduleShould.swift; sourceTree = "<group>"; };
 		CA0E5204208E6FE4005259FE /* StoryboardDealersSceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardDealersSceneFactory.swift; sourceTree = "<group>"; };
@@ -3191,7 +3189,6 @@
 		CA08159820D47B7900F750D4 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				CA08159920D47B9600F750D4 /* WhenAppHasNoSavedEvents_ThenSyncFinishesSuccessfully_EventsScheduleShould.swift */,
 				CA52C67420D58EC6009D3A9E /* WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould.swift */,
 				CA52C67620D590BF009D3A9E /* WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould.swift */,
 				CAC2337920FF3EC800E73486 /* WhenRemovingFavouritesRestrictionForEvents_ScheduleShould.swift */,
@@ -7024,7 +7021,6 @@
 				CA08159320D470F800F750D4 /* WhenViewModelIsToldToShowEventsForSpecificDay_ScheduleInteractorShould.swift in Sources */,
 				CA2D08021FE94B5500BFD785 /* WhenTheAppLaunchesWithStaleDataStore.swift in Sources */,
 				CA44C362211B1238003C1C4E /* WhenBindingMainStageEvent_EventDetailPresenterShould.swift in Sources */,
-				CA08159A20D47B9600F750D4 /* WhenAppHasNoSavedEvents_ThenSyncFinishesSuccessfully_EventsScheduleShould.swift in Sources */,
 				CA30EAA61F2129C60053DBF6 /* CapturingLoginAPI.swift in Sources */,
 				CACF1E6120AE2F0100D904B5 /* CapturingEventDetailScene.swift in Sources */,
 				CACF1EAE20B5C2E500D904B5 /* EventDetailInteractorTestBuilder.swift in Sources */,

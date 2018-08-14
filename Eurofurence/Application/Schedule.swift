@@ -19,6 +19,7 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
     private let schedule: Schedule
     private let clock: Clock
     private var events = [Event2]()
+    private var days = [Day]()
     private var filters = [EventFilter]()
     private var currentDay: Day? {
         didSet {
@@ -50,6 +51,7 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
         self.schedule = schedule
         self.clock = clock
         events = schedule.eventModels
+        days = schedule.dayModels
 
         eventBus.subscribe(consumer: self)
         eventBus.subscribe(consumer: UpdateCurrentDayWhenSignificantTimePasses(scheduleAdapter: self))
@@ -127,9 +129,12 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
     }
 
     func consume(event: Schedule.ChangedEvent) {
-        updateCurrentDay()
         regenerateSchedule()
-        updateDelegateWithAllDays()
+
+        if days != schedule.dayModels {
+            self.days = schedule.dayModels
+            updateDelegateWithAllDays()
+        }
     }
 
 }
@@ -300,7 +305,11 @@ class Schedule {
         let conferenceDays = dataStore.getSavedConferenceDays()
 
         if let events = events, let rooms = rooms, let tracks = tracks, let conferenceDays = conferenceDays {
-            self.days = conferenceDays
+            self.days = conferenceDays.reduce([], { (result, next) in
+                if result.contains(where: { $0.identifier == next.identifier }) { return result }
+                return result + [next]
+            })
+
             self.events = events
             self.rooms = rooms
             self.tracks = tracks
