@@ -38,4 +38,18 @@ class PersistentImageRepositoryTests: XCTestCase {
         XCTAssertFalse(repository.containsImage(identifier: .random))
     }
     
+    func testDeletingImageDoesNotRestoreItLater() {
+        let identifier = String.random
+        let imageData = Data.random
+        var repository = PersistentImageRepository()
+        let entity = ImageEntity(identifier: identifier, pngImageData: imageData)
+        repository.save(entity)
+        repository = PersistentImageRepository()
+        repository.deleteEntity(identifier: entity.identifier)
+        repository = PersistentImageRepository()
+        
+        XCTAssertNil(repository.loadImage(identifier: entity.identifier),
+                     "Deleted images should not be restored by repository later")
+    }
+    
 }

@@ -20,7 +20,12 @@ struct PersistentImageRepository: ImageRepository {
     }
 
     func deleteEntity(identifier: String) {
-
+        do {
+            let imageURL = try makeImageRepositoryURL(for: identifier)
+            try FileManager.default.removeItem(at: imageURL)
+        } catch {
+            print(error)
+        }
     }
 
     func loadImage(identifier: String) -> ImageEntity? {
