@@ -79,6 +79,7 @@ class EventTableViewCell: UITableViewCell, ScheduleEventComponent {
 
     func hideBanner() {
         eventBannerImageView.isHidden = true
+        eventBannerImageView.image = nil
     }
 
     func showFavouriteEventIndicator() {
