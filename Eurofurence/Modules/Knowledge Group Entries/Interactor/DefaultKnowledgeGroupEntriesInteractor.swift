@@ -30,8 +30,8 @@ struct DefaultKnowledgeGroupEntriesInteractor: KnowledgeGroupEntriesInteractor {
     var service: KnowledgeService = EurofurenceApplication.shared
 
     func makeViewModelForGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping (KnowledgeGroupEntriesViewModel) -> Void) {
-        service.fetchKnowledgeEntriesForGroup(identifier: identifier) { (entries) in
-            let viewModel = ViewModel(entries: entries)
+        service.fetchKnowledgeGroup(identifier: identifier) { (group) in
+            let viewModel = ViewModel(entries: group.entries)
             completionHandler(viewModel)
         }
     }

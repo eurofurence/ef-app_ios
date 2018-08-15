@@ -42,8 +42,8 @@ class Knowledge {
         models.reduce([], { $0 + $1.entries }).first(where: { $0.identifier == identifier }).let(completionHandler)
     }
 
-    func fetchKnowledgeEntriesForGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping ([KnowledgeEntry2]) -> Void) {
-        models.first(where: { $0.identifier == identifier }).let { completionHandler($0.entries) }
+    func fetchKnowledgeGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping (KnowledgeGroup2) -> Void) {
+        models.first(where: { $0.identifier == identifier }).let(completionHandler)
     }
 
     func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping ([Data]) -> Void) {

@@ -322,26 +322,30 @@ class ApplicationTestBuilder {
         
         func expectedKnowledgeGroups(from syncResponse: APISyncResponse) -> [KnowledgeGroup2] {
             return syncResponse.knowledgeGroups.changed.map({ (group) -> KnowledgeGroup2 in
-                let entries = syncResponse.knowledgeEntries.changed.filter({ $0.groupIdentifier == group.identifier }).map { (entry) in
-                    return KnowledgeEntry2(identifier: KnowledgeEntry2.Identifier(entry.identifier),
-                                           title: entry.title,
-                                           order: entry.order,
-                                           contents: entry.text,
-                                           links: entry.links.map({ return Link(name: $0.name, type: Link.Kind(rawValue: $0.fragmentType.rawValue)!, contents: $0.target) }).sorted(by: { $0.name < $1.name }))
-                    }.sorted(by: { $0.order < $1.order })
-                
-                let addressString = group.fontAwesomeCharacterAddress
-                let intValue = Int(addressString, radix: 16)!
-                let unicodeScalar = UnicodeScalar(intValue)!
-                let character = Character(unicodeScalar)
-                
-                return KnowledgeGroup2(identifier: KnowledgeGroup2.Identifier(group.identifier),
-                                       title: group.groupName,
-                                       groupDescription: group.groupDescription,
-                                       fontAwesomeCharacterAddress: character,
-                                       order: group.order,
-                                       entries: entries)
+                return expectedKnowledgeGroup(from: group, syncResponse: syncResponse)
             }).sorted(by: { $0.order < $1.order })
+        }
+        
+        func expectedKnowledgeGroup(from group: APIKnowledgeGroup, syncResponse: APISyncResponse) -> KnowledgeGroup2 {
+            let entries = syncResponse.knowledgeEntries.changed.filter({ $0.groupIdentifier == group.identifier }).map { (entry) in
+                return KnowledgeEntry2(identifier: KnowledgeEntry2.Identifier(entry.identifier),
+                                       title: entry.title,
+                                       order: entry.order,
+                                       contents: entry.text,
+                                       links: entry.links.map({ return Link(name: $0.name, type: Link.Kind(rawValue: $0.fragmentType.rawValue)!, contents: $0.target) }).sorted(by: { $0.name < $1.name }))
+                }.sorted(by: { $0.order < $1.order })
+            
+            let addressString = group.fontAwesomeCharacterAddress
+            let intValue = Int(addressString, radix: 16)!
+            let unicodeScalar = UnicodeScalar(intValue)!
+            let character = Character(unicodeScalar)
+            
+            return KnowledgeGroup2(identifier: KnowledgeGroup2.Identifier(group.identifier),
+                                   title: group.groupName,
+                                   groupDescription: group.groupDescription,
+                                   fontAwesomeCharacterAddress: character,
+                                   order: group.order,
+                                   entries: entries)
         }
         
         func simulateSignificantTimeChange() {

@@ -24,11 +24,9 @@ class FakeKnowledgeService: KnowledgeService {
         completionHandler(stubbedKnowledgeEntryImages(for: identifier))
     }
     
-    private var knowledgeGroupEntries = [KnowledgeGroup2.Identifier : [KnowledgeEntry2]]()
-    func fetchKnowledgeEntriesForGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping ([KnowledgeEntry2]) -> Void) {
-        if let entries = knowledgeGroupEntries[identifier] {
-            completionHandler(entries)
-        }
+    private var stubbedGroups = [KnowledgeGroup2]()
+    func fetchKnowledgeGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping (KnowledgeGroup2) -> Void) {
+        stubbedGroups.first(where: { $0.identifier == identifier }).let(completionHandler)
     }
     
 }
@@ -47,8 +45,8 @@ extension FakeKnowledgeService {
         return randomEntry
     }
     
-    func stub(_ entries: [KnowledgeEntry2], for identifier: KnowledgeGroup2.Identifier) {
-        knowledgeGroupEntries[identifier] = entries
+    func stub(_ group: KnowledgeGroup2) {
+        stubbedGroups.append(group)
     }
     
     func stubbedKnowledgeEntryImages(for identifier: KnowledgeEntry2.Identifier) -> [Data] {

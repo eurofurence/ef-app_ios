@@ -11,6 +11,10 @@ import Foundation
 
 class StubKnowledgeService: KnowledgeService {
     
+    func fetchKnowledgeGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping (KnowledgeGroup2) -> Void) {
+        
+    }
+    
     fileprivate var observers: [KnowledgeServiceObserver] = []
     func add(_ observer: KnowledgeServiceObserver) {
         observers.append(observer)
@@ -20,7 +24,7 @@ class StubKnowledgeService: KnowledgeService {
         
     }
     
-    func fetchKnowledgeEntriesForGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping ([KnowledgeEntry2]) -> Void) {
+    func fetchKnowledgeGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping ([KnowledgeEntry2]) -> Void) {
         
     }
     
