@@ -879,6 +879,7 @@
 		CA82409021221A89007E4A70 /* ImagesRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82408F21221A89007E4A70 /* ImagesRemoveAllBeforeInsertTests.swift */; };
 		CA82409221222995007E4A70 /* DealersRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82409121222995007E4A70 /* DealersRemoveAllBeforeInsertTests.swift */; };
 		CA8240962122F62D007E4A70 /* WhenBindingEvent_WithNoPoster_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8240952122F62D007E4A70 /* WhenBindingEvent_WithNoPoster_SchedulePresenterShould.swift */; };
+		CA82409A21244A3D007E4A70 /* WhenTimePasses_AndAnEventIsNoLongerUpcoming_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82409921244A3D007E4A70 /* WhenTimePasses_AndAnEventIsNoLongerUpcoming_ApplicationShould.swift */; };
 		CA8276B0204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276AF204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift */; };
 		CA8276B3204EC013006A7419 /* ApplicationPreloadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B2204EC013006A7419 /* ApplicationPreloadInteractor.swift */; };
 		CA8276B6204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B5204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift */; };
@@ -2104,6 +2105,7 @@
 		CA82408F21221A89007E4A70 /* ImagesRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
 		CA82409121222995007E4A70 /* DealersRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
 		CA8240952122F62D007E4A70 /* WhenBindingEvent_WithNoPoster_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingEvent_WithNoPoster_SchedulePresenterShould.swift; sourceTree = "<group>"; };
+		CA82409921244A3D007E4A70 /* WhenTimePasses_AndAnEventIsNoLongerUpcoming_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTimePasses_AndAnEventIsNoLongerUpcoming_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA8276AF204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPreloadingServiceTests.swift; sourceTree = "<group>"; };
 		CA8276B2204EC013006A7419 /* ApplicationPreloadInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPreloadInteractor.swift; sourceTree = "<group>"; };
 		CA8276B5204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPreloadInteractorDelegate.swift; sourceTree = "<group>"; };
@@ -3196,6 +3198,7 @@
 				CA08159F20D47D4100F750D4 /* WhenRestrictingEventsToSpecificDay_ScheduleShould.swift */,
 				CACF26D420FE78DB00EDE150 /* WhenRestrictingSearchResultsToFavourites_ScheduleShould.swift */,
 				CA52C67820D59357009D3A9E /* WhenSignificantTimeChanges_ScheduleShould.swift */,
+				CA82409921244A3D007E4A70 /* WhenTimePasses_AndAnEventIsNoLongerUpcoming_ApplicationShould.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -7316,6 +7319,7 @@
 				CA0E5217208FBEA9005259FE /* StubAnnouncementsService.swift in Sources */,
 				CA162EA620A9B18E004AFED6 /* WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift in Sources */,
 				CA637546208CBB4E00536BE2 /* StubTutorialModuleFactory.swift in Sources */,
+				CA82409A21244A3D007E4A70 /* WhenTimePasses_AndAnEventIsNoLongerUpcoming_ApplicationShould.swift in Sources */,
 				CA2761CE20E034CB000E52AC /* CapturingCollectThemAllURLObserver.swift in Sources */,
 				78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */,
 				CA65A87B209A5BDA00B72533 /* DefaultNewsInteractorTestBuilder.swift in Sources */,

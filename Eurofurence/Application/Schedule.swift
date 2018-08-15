@@ -139,7 +139,7 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
 
 }
 
-class Schedule {
+class Schedule: ClockDelegate {
 
     // MARK: Nested Types
 
@@ -168,11 +168,11 @@ class Schedule {
 
     private(set) var eventModels = [Event2]() {
         didSet {
-            observers.forEach(provideScheduleInformation)
+            updateObserversWithLatestScheduleInformation()
         }
     }
 
-    var dayModels = [Day]()
+    private(set) var dayModels = [Day]()
 
     private(set) var favouriteEventIdentifiers = [Event2.Identifier]() {
         didSet {
@@ -224,6 +224,11 @@ class Schedule {
         eventBus.subscribe(consumer: DataStoreChangedConsumer(handler: reconstituteEventsFromDataStore))
         reconstituteEventsFromDataStore()
         reconstituteFavouritesFromDataStore()
+        clock.setDelegate(self)
+    }
+
+    func clockDidTick(to time: Date) {
+        updateObserversWithLatestScheduleInformation()
     }
 
     // MARK: Functions
@@ -284,6 +289,10 @@ class Schedule {
     }
 
     // MARK: Private
+
+    private func updateObserversWithLatestScheduleInformation() {
+        observers.forEach(provideScheduleInformation)
+    }
 
     private func provideScheduleInformation(to observer: EventsServiceObserver) {
         observer.runningEventsDidChange(to: runningEvents)

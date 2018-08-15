@@ -14,4 +14,8 @@ struct SystemClock: Clock {
         return Date()
     }
 
+    func setDelegate(_ delegate: ClockDelegate) {
+
+    }
+
 }

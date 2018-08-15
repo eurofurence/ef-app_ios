@@ -197,6 +197,10 @@ class ApplicationTestBuilder {
             return capturingCredentialStore.persistedCredential?.authenticationToken
         }
         
+        func tickTime(to time: Date) {
+            clock.tickTime(to: time)
+        }
+        
         func registerForRemoteNotifications(_ deviceToken: Data = Data()) {
             application.storeRemoteNotificationsToken(deviceToken)
         }

@@ -11,5 +11,12 @@ import Foundation
 protocol Clock {
 
     var currentDate: Date { get }
+    func setDelegate(_ delegate: ClockDelegate)
+
+}
+
+protocol ClockDelegate {
+
+    func clockDidTick(to time: Date)
 
 }

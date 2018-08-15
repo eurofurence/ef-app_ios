@@ -17,4 +17,18 @@ class StubClock: Clock {
         self.currentDate = currentDate
     }
     
+    fileprivate var delegate: ClockDelegate?
+    func setDelegate(_ delegate: ClockDelegate) {
+        self.delegate = delegate
+    }
+    
+}
+
+extension StubClock {
+    
+    func tickTime(to time: Date) {
+        currentDate = time
+        delegate?.clockDidTick(to: time)
+    }
+    
 }
