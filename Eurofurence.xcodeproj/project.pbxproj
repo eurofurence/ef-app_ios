@@ -704,6 +704,8 @@
 		CA65A881209B7E1000B72533 /* WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A880209B7E1000B72533 /* WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift */; };
 		CA66C0142124A24900F87AFE /* ReviewPromptAppVersionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0132124A24900F87AFE /* ReviewPromptAppVersionRepository.swift */; };
 		CA66C0162124A25400F87AFE /* FakeReviewPromptAppVersionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0152124A25400F87AFE /* FakeReviewPromptAppVersionRepository.swift */; };
+		CA66C0182124C58700F87AFE /* UserDefaultsReviewPromptAppVersionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0172124C58700F87AFE /* UserDefaultsReviewPromptAppVersionRepository.swift */; };
+		CA66C01A2124C5AA00F87AFE /* UserDefaultsReviewPromptAppVersionRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0192124C5AA00F87AFE /* UserDefaultsReviewPromptAppVersionRepositoryTests.swift */; };
 		CA680F7A20CD7AD7006ACD3D /* Knowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7920CD7AD7006ACD3D /* Knowledge.swift */; };
 		CA680F7C20CD819F006ACD3D /* UserDefaultsPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */; };
 		CA680F7E20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */; };
@@ -1936,6 +1938,8 @@
 		CA65A880209B7E1000B72533 /* WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA66C0132124A24900F87AFE /* ReviewPromptAppVersionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptAppVersionRepository.swift; sourceTree = "<group>"; };
 		CA66C0152124A25400F87AFE /* FakeReviewPromptAppVersionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeReviewPromptAppVersionRepository.swift; sourceTree = "<group>"; };
+		CA66C0172124C58700F87AFE /* UserDefaultsReviewPromptAppVersionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsReviewPromptAppVersionRepository.swift; sourceTree = "<group>"; };
+		CA66C0192124C5AA00F87AFE /* UserDefaultsReviewPromptAppVersionRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsReviewPromptAppVersionRepositoryTests.swift; sourceTree = "<group>"; };
 		CA680F7920CD7AD7006ACD3D /* Knowledge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knowledge.swift; sourceTree = "<group>"; };
 		CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPreferences.swift; sourceTree = "<group>"; };
 		CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift; sourceTree = "<group>"; };
@@ -5236,6 +5240,7 @@
 			isa = PBXGroup;
 			children = (
 				CA82409C21249907007E4A70 /* ReviewPromptControllerTests.swift */,
+				CA66C0192124C5AA00F87AFE /* UserDefaultsReviewPromptAppVersionRepositoryTests.swift */,
 				CA8240A321249A76007E4A70 /* Test Doubles */,
 			);
 			path = "Review Prompt";
@@ -5247,6 +5252,7 @@
 				CA82409F21249A5E007E4A70 /* ReviewPromptController.swift */,
 				CA8240A121249A69007E4A70 /* ReviewPromptAction.swift */,
 				CA66C0132124A24900F87AFE /* ReviewPromptAppVersionRepository.swift */,
+				CA66C0172124C58700F87AFE /* UserDefaultsReviewPromptAppVersionRepository.swift */,
 			);
 			path = "Review Prompt";
 			sourceTree = "<group>";
@@ -6784,6 +6790,7 @@
 				CA36A4CA20DA7B1B00EE6537 /* DealersSearchResultsBinder.swift in Sources */,
 				CA00AE8120D1C15900C2FBB0 /* ScheduleDaysBinder.swift in Sources */,
 				CA17FE8120580082005A4C05 /* LinkScene.swift in Sources */,
+				CA66C0182124C58700F87AFE /* UserDefaultsReviewPromptAppVersionRepository.swift in Sources */,
 				CA6AA0061FD6C96B0092C6DB /* RootModuleBuilder.swift in Sources */,
 				CAF5979820449A1100089BE8 /* APIKnowledgeGroup.swift in Sources */,
 				CAD7804E1F1D5227002A8333 /* SystemClock.swift in Sources */,
@@ -7300,6 +7307,7 @@
 				CA44C360211B1013003C1C4E /* WhenPreparingViewModel_ForDealersDenEvent_EventDetailInteractorShould.swift in Sources */,
 				CAF81C5E20DD91B700898C52 /* WhenBindingAboutTheArtistComponent_DealerDetailPresenterShould.swift in Sources */,
 				CA1B5F65211DAE65007A24B5 /* WhenRequestingImageForAnnouncementThatHasNoImage_ApplicationShould.swift in Sources */,
+				CA66C01A2124C5AA00F87AFE /* UserDefaultsReviewPromptAppVersionRepositoryTests.swift in Sources */,
 				CADABEF82114F86C0023C3B6 /* StubMapContentOptionsViewModel.swift in Sources */,
 				CA2B4FA61F1EA1B300F007E1 /* ApplicationTestBuilder.swift in Sources */,
 				CA637548208CBB5D00536BE2 /* StubPreloadModuleFactory.swift in Sources */,
