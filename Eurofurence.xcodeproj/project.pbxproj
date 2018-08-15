@@ -706,6 +706,8 @@
 		CA66C0162124A25400F87AFE /* FakeReviewPromptAppVersionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0152124A25400F87AFE /* FakeReviewPromptAppVersionRepository.swift */; };
 		CA66C0182124C58700F87AFE /* UserDefaultsReviewPromptAppVersionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0172124C58700F87AFE /* UserDefaultsReviewPromptAppVersionRepository.swift */; };
 		CA66C01A2124C5AA00F87AFE /* UserDefaultsReviewPromptAppVersionRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0192124C5AA00F87AFE /* UserDefaultsReviewPromptAppVersionRepositoryTests.swift */; };
+		CA66C01C2124C6C700F87AFE /* StoreKitReviewPromptAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C01B2124C6C700F87AFE /* StoreKitReviewPromptAction.swift */; };
+		CA66C01E2124C6D800F87AFE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA66C01D2124C6D800F87AFE /* StoreKit.framework */; };
 		CA680F7A20CD7AD7006ACD3D /* Knowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7920CD7AD7006ACD3D /* Knowledge.swift */; };
 		CA680F7C20CD819F006ACD3D /* UserDefaultsPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */; };
 		CA680F7E20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */; };
@@ -1940,6 +1942,8 @@
 		CA66C0152124A25400F87AFE /* FakeReviewPromptAppVersionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeReviewPromptAppVersionRepository.swift; sourceTree = "<group>"; };
 		CA66C0172124C58700F87AFE /* UserDefaultsReviewPromptAppVersionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsReviewPromptAppVersionRepository.swift; sourceTree = "<group>"; };
 		CA66C0192124C5AA00F87AFE /* UserDefaultsReviewPromptAppVersionRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsReviewPromptAppVersionRepositoryTests.swift; sourceTree = "<group>"; };
+		CA66C01B2124C6C700F87AFE /* StoreKitReviewPromptAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitReviewPromptAction.swift; sourceTree = "<group>"; };
+		CA66C01D2124C6D800F87AFE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CA680F7920CD7AD7006ACD3D /* Knowledge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knowledge.swift; sourceTree = "<group>"; };
 		CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPreferences.swift; sourceTree = "<group>"; };
 		CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift; sourceTree = "<group>"; };
@@ -2451,6 +2455,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA66C01E2124C6D800F87AFE /* StoreKit.framework in Frameworks */,
 				A034379A14212C5E996E6321 /* Pods_Eurofurence.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2476,6 +2481,7 @@
 		164F3A1C0E53F6ADD4C20674 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA66C01D2124C6D800F87AFE /* StoreKit.framework */,
 				A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */,
 				A4BE2399E8F0912910303B02 /* Pods_EurofurenceTests.framework */,
 			);
@@ -5253,6 +5259,7 @@
 				CA8240A121249A69007E4A70 /* ReviewPromptAction.swift */,
 				CA66C0132124A24900F87AFE /* ReviewPromptAppVersionRepository.swift */,
 				CA66C0172124C58700F87AFE /* UserDefaultsReviewPromptAppVersionRepository.swift */,
+				CA66C01B2124C6C700F87AFE /* StoreKitReviewPromptAction.swift */,
 			);
 			path = "Review Prompt";
 			sourceTree = "<group>";
@@ -6864,6 +6871,7 @@
 				CA8E7F0A1FB10D5000F0BF10 /* PhoneMessagesModuleFactory.swift in Sources */,
 				CA2A586B20F69EB7002C69B6 /* MapCoordinateRender.swift in Sources */,
 				CA49E94D20154AF900EB571C /* EventConsumer.swift in Sources */,
+				CA66C01C2124C6C700F87AFE /* StoreKitReviewPromptAction.swift in Sources */,
 				CA680F8220CDABB6006ACD3D /* ImageDownloader.swift in Sources */,
 				CA17FE782056B1B4005A4C05 /* KnowledgeDetailSceneInteractor.swift in Sources */,
 				CA36A45320D82D9700EE6537 /* UIColor+Eurofurence.swift in Sources */,
