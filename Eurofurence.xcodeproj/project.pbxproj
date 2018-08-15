@@ -880,6 +880,10 @@
 		CA82409221222995007E4A70 /* DealersRemoveAllBeforeInsertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82409121222995007E4A70 /* DealersRemoveAllBeforeInsertTests.swift */; };
 		CA8240962122F62D007E4A70 /* WhenBindingEvent_WithNoPoster_SchedulePresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8240952122F62D007E4A70 /* WhenBindingEvent_WithNoPoster_SchedulePresenterShould.swift */; };
 		CA82409A21244A3D007E4A70 /* WhenTimePasses_AndAnEventIsNoLongerUpcoming_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82409921244A3D007E4A70 /* WhenTimePasses_AndAnEventIsNoLongerUpcoming_ApplicationShould.swift */; };
+		CA82409D21249907007E4A70 /* ReviewPromptControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82409C21249907007E4A70 /* ReviewPromptControllerTests.swift */; };
+		CA8240A021249A5E007E4A70 /* ReviewPromptController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA82409F21249A5E007E4A70 /* ReviewPromptController.swift */; };
+		CA8240A221249A69007E4A70 /* ReviewPromptAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8240A121249A69007E4A70 /* ReviewPromptAction.swift */; };
+		CA8240A521249A80007E4A70 /* CapturingReviewPromptAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8240A421249A80007E4A70 /* CapturingReviewPromptAction.swift */; };
 		CA8276B0204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276AF204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift */; };
 		CA8276B3204EC013006A7419 /* ApplicationPreloadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B2204EC013006A7419 /* ApplicationPreloadInteractor.swift */; };
 		CA8276B6204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8276B5204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift */; };
@@ -2106,6 +2110,10 @@
 		CA82409121222995007E4A70 /* DealersRemoveAllBeforeInsertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersRemoveAllBeforeInsertTests.swift; sourceTree = "<group>"; };
 		CA8240952122F62D007E4A70 /* WhenBindingEvent_WithNoPoster_SchedulePresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBindingEvent_WithNoPoster_SchedulePresenterShould.swift; sourceTree = "<group>"; };
 		CA82409921244A3D007E4A70 /* WhenTimePasses_AndAnEventIsNoLongerUpcoming_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenTimePasses_AndAnEventIsNoLongerUpcoming_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA82409C21249907007E4A70 /* ReviewPromptControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptControllerTests.swift; sourceTree = "<group>"; };
+		CA82409F21249A5E007E4A70 /* ReviewPromptController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptController.swift; sourceTree = "<group>"; };
+		CA8240A121249A69007E4A70 /* ReviewPromptAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPromptAction.swift; sourceTree = "<group>"; };
+		CA8240A421249A80007E4A70 /* CapturingReviewPromptAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingReviewPromptAction.swift; sourceTree = "<group>"; };
 		CA8276AF204EBF0E006A7419 /* ApplicationPreloadingServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPreloadingServiceTests.swift; sourceTree = "<group>"; };
 		CA8276B2204EC013006A7419 /* ApplicationPreloadInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationPreloadInteractor.swift; sourceTree = "<group>"; };
 		CA8276B5204EC026006A7419 /* CapturingPreloadInteractorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingPreloadInteractorDelegate.swift; sourceTree = "<group>"; };
@@ -2982,6 +2990,7 @@
 				CAF9A93B1F50484A00628833 /* Interactors */,
 				6EF96CE01F12688700EE6134 /* Modules */,
 				9ACF999B1ECA259C006FC958 /* Resources */,
+				CA82409E21249A50007E4A70 /* Review Prompt */,
 				9ACF99591EBE32FE006FC958 /* Views */,
 			);
 			path = Eurofurence;
@@ -3002,6 +3011,7 @@
 				78D7EEB31F195E8B005372A9 /* Application Tests */,
 				CAF7055F1F82CBC800A9FEA2 /* Director */,
 				78C86D5B1F12355C003A20E6 /* Module Tests */,
+				CA82409B212498E6007E4A70 /* Review Prompt */,
 				78FE77D41F1B9F8A00E9A0BE /* Services Tests */,
 				6EF96CCD1F0EDB1300EE6134 /* Test Doubles */,
 				CAF9A94F1F558E6200628833 /* Test Utilities */,
@@ -5218,6 +5228,32 @@
 			path = "Notification Registration";
 			sourceTree = "<group>";
 		};
+		CA82409B212498E6007E4A70 /* Review Prompt */ = {
+			isa = PBXGroup;
+			children = (
+				CA82409C21249907007E4A70 /* ReviewPromptControllerTests.swift */,
+				CA8240A321249A76007E4A70 /* Test Doubles */,
+			);
+			path = "Review Prompt";
+			sourceTree = "<group>";
+		};
+		CA82409E21249A50007E4A70 /* Review Prompt */ = {
+			isa = PBXGroup;
+			children = (
+				CA82409F21249A5E007E4A70 /* ReviewPromptController.swift */,
+				CA8240A121249A69007E4A70 /* ReviewPromptAction.swift */,
+			);
+			path = "Review Prompt";
+			sourceTree = "<group>";
+		};
+		CA8240A321249A76007E4A70 /* Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				CA8240A421249A80007E4A70 /* CapturingReviewPromptAction.swift */,
+			);
+			path = "Test Doubles";
+			sourceTree = "<group>";
+		};
 		CA8276B1204EC002006A7419 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
@@ -6576,6 +6612,7 @@
 				CA272562211255DE004C6D0A /* KnowledgeDetailImageTableViewCell.swift in Sources */,
 				CACF1E5820AE2DED00D904B5 /* EventDetailSceneFactory.swift in Sources */,
 				CA2761BA20E02A16000E52AC /* CollectThemAllService.swift in Sources */,
+				CA8240A221249A69007E4A70 /* ReviewPromptAction.swift in Sources */,
 				CA283ACA20EAB9E600F7D195 /* AnnouncementComponent.swift in Sources */,
 				CA6A8DA220E2CB5C007536CD /* MapsModuleDelegate.swift in Sources */,
 				CA6A8D6B20E26478007536CD /* MapsScene.swift in Sources */,
@@ -6751,6 +6788,7 @@
 				CA8E7EFA1FB0926E00F0BF10 /* PhoneTutorialSceneFactory.swift in Sources */,
 				CAEAEBFF1FE0044900C0EE7C /* MessageDetailScene.swift in Sources */,
 				CAE8B0BB20CA54C30029D4D6 /* EventEntity+Adaptation.swift in Sources */,
+				CA8240A021249A5E007E4A70 /* ReviewPromptController.swift in Sources */,
 				CA3990EF20ACD559001E3F1A /* FoundationHoursDateFormatter.swift in Sources */,
 				CA44C33C211A2727003C1C4E /* UserDefaultsForceRefreshRequired.swift in Sources */,
 				6EEC6DA51F1BFC7700205F2D /* AppVersionProviding.swift in Sources */,
@@ -7305,6 +7343,7 @@
 				CA063B4620F3E0D800241CC9 /* RestorationIdentifierOrderingPolicyTests.swift in Sources */,
 				CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */,
 				CACF1E5F20AE2EF400D904B5 /* StubEventDetailSceneFactory.swift in Sources */,
+				CA8240A521249A80007E4A70 /* CapturingReviewPromptAction.swift in Sources */,
 				CA71A34E2040349300C847C3 /* RandomRangedValueProviding.swift in Sources */,
 				CAF3C74E1F9FC72C0008F027 /* StubNewsSceneFactory.swift in Sources */,
 				CAD6882E208A13D400B31F5F /* Bool+RandomValueProviding.swift in Sources */,
@@ -7523,6 +7562,7 @@
 				CAD260AD20C066B0007E3618 /* WhenSceneTapsUnfavouriteEventButton_EventDetailPresenterShould.swift in Sources */,
 				CA063B4020F2869600241CC9 /* WhenToldToHandleNotification_ThatConcludesWithAnnouncement_DirectorShould.swift in Sources */,
 				CA36A44D20D771C400EE6537 /* CapturingHapticEngine.swift in Sources */,
+				CA82409D21249907007E4A70 /* ReviewPromptControllerTests.swift in Sources */,
 				CA680F8520CDAE2F006ACD3D /* PersistentImageRepositoryTests.swift in Sources */,
 				CA63755C208CBC3C00536BE2 /* StubLinkRouter.swift in Sources */,
 				CABF03CC204220460028BD62 /* WhenFetchingKnowledgeGroupsAfterSuccessfulRefresh.swift in Sources */,
