@@ -708,6 +708,9 @@
 		CA66C01A2124C5AA00F87AFE /* UserDefaultsReviewPromptAppVersionRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0192124C5AA00F87AFE /* UserDefaultsReviewPromptAppVersionRepositoryTests.swift */; };
 		CA66C01C2124C6C700F87AFE /* StoreKitReviewPromptAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C01B2124C6C700F87AFE /* StoreKitReviewPromptAction.swift */; };
 		CA66C01E2124C6D800F87AFE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA66C01D2124C6D800F87AFE /* StoreKit.framework */; };
+		CA66C0202124CC6000F87AFE /* AppStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C01F2124CC6000F87AFE /* AppStateProviding.swift */; };
+		CA66C0222124CC6E00F87AFE /* FakeAppStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0212124CC6E00F87AFE /* FakeAppStateProviding.swift */; };
+		CA66C0242124CC9900F87AFE /* ApplicationAppStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0232124CC9900F87AFE /* ApplicationAppStateProviding.swift */; };
 		CA680F7A20CD7AD7006ACD3D /* Knowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7920CD7AD7006ACD3D /* Knowledge.swift */; };
 		CA680F7C20CD819F006ACD3D /* UserDefaultsPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */; };
 		CA680F7E20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */; };
@@ -1944,6 +1947,9 @@
 		CA66C0192124C5AA00F87AFE /* UserDefaultsReviewPromptAppVersionRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsReviewPromptAppVersionRepositoryTests.swift; sourceTree = "<group>"; };
 		CA66C01B2124C6C700F87AFE /* StoreKitReviewPromptAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitReviewPromptAction.swift; sourceTree = "<group>"; };
 		CA66C01D2124C6D800F87AFE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		CA66C01F2124CC6000F87AFE /* AppStateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateProviding.swift; sourceTree = "<group>"; };
+		CA66C0212124CC6E00F87AFE /* FakeAppStateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAppStateProviding.swift; sourceTree = "<group>"; };
+		CA66C0232124CC9900F87AFE /* ApplicationAppStateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationAppStateProviding.swift; sourceTree = "<group>"; };
 		CA680F7920CD7AD7006ACD3D /* Knowledge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knowledge.swift; sourceTree = "<group>"; };
 		CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPreferences.swift; sourceTree = "<group>"; };
 		CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift; sourceTree = "<group>"; };
@@ -5260,6 +5266,8 @@
 				CA66C0132124A24900F87AFE /* ReviewPromptAppVersionRepository.swift */,
 				CA66C0172124C58700F87AFE /* UserDefaultsReviewPromptAppVersionRepository.swift */,
 				CA66C01B2124C6C700F87AFE /* StoreKitReviewPromptAction.swift */,
+				CA66C01F2124CC6000F87AFE /* AppStateProviding.swift */,
+				CA66C0232124CC9900F87AFE /* ApplicationAppStateProviding.swift */,
 			);
 			path = "Review Prompt";
 			sourceTree = "<group>";
@@ -5269,6 +5277,7 @@
 			children = (
 				CA8240A421249A80007E4A70 /* CapturingReviewPromptAction.swift */,
 				CA66C0152124A25400F87AFE /* FakeReviewPromptAppVersionRepository.swift */,
+				CA66C0212124CC6E00F87AFE /* FakeAppStateProviding.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -6760,6 +6769,7 @@
 				CA29EF75203462E300672911 /* KnowledgeListEntryTableViewCell.swift in Sources */,
 				CA1B6F2020DB84E400ADF414 /* DealerDetailInteractor.swift in Sources */,
 				CA72843B209CEF47007D912A /* ConventionCountdownService.swift in Sources */,
+				CA66C0202124CC6000F87AFE /* AppStateProviding.swift in Sources */,
 				CA6AA0041FD6C7B50092C6DB /* DirectorBuilder.swift in Sources */,
 				CA162E9620A88854004AFED6 /* Room.swift in Sources */,
 				CACF1E8820B34F8900D904B5 /* DefaultEventDetailInteractor.swift in Sources */,
@@ -6992,6 +7002,7 @@
 				CA281B641F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift in Sources */,
 				78FE77D91F1BB9E400E9A0BE /* URLSessionBasedJSONSession.swift in Sources */,
 				CACF1E4E20AE2B3300D904B5 /* EventDetailModuleBuilder.swift in Sources */,
+				CA66C0242124CC9900F87AFE /* ApplicationAppStateProviding.swift in Sources */,
 				CABF03C52041C31A0028BD62 /* DefaultKnowledgeGroupsInteractor.swift in Sources */,
 				CA728449209D012D007D912A /* AnnouncementDetailModuleProviding.swift in Sources */,
 				CACF1E4C20AE2A5A00D904B5 /* EventDetailModuleProviding.swift in Sources */,
@@ -7107,6 +7118,7 @@
 				CA36A47720D8523400EE6537 /* StubDealerViewModel.swift in Sources */,
 				CADABEFE211778740023C3B6 /* WhenSyncFinishes_ApplicationShould.swift in Sources */,
 				CACF1E4620AE292D00D904B5 /* WhenNewsModuleSelectsEvent_DirectorShould.swift in Sources */,
+				CA66C0222124CC6E00F87AFE /* FakeAppStateProviding.swift in Sources */,
 				CACF1EC020B60D2B00D904B5 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift in Sources */,
 				CA6375BB208E03D100536BE2 /* StubDealersSceneFactory.swift in Sources */,
 				CA44C35C211B0D14003C1C4E /* WhenPreparingViewModel_ForEventWithKage_EventDetailInteractorShould.swift in Sources */,

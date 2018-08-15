@@ -27,6 +27,7 @@ class ReviewPromptControllerTests: XCTestCase {
     var controller: ReviewPromptController!
     var versionProviding: StubAppVersionProviding!
     var reviewPromptAppVersionRepository: FakeReviewPromptAppVersionRepository!
+    var appStateProviding: FakeAppStateProviding!
     
     override func setUp() {
         super.setUp()
@@ -38,10 +39,12 @@ class ReviewPromptControllerTests: XCTestCase {
         eventsService = FakeEventsService()
         versionProviding = StubAppVersionProviding(version: .random)
         reviewPromptAppVersionRepository = FakeReviewPromptAppVersionRepository()
+        appStateProviding = FakeAppStateProviding()
         controller = ReviewPromptController(config: config,
                                             reviewPromptAction: reviewPromptAction,
                                             versionProviding: versionProviding,
                                             reviewPromptAppVersionRepository: reviewPromptAppVersionRepository,
+                                            appStateProviding: appStateProviding,
                                             eventsService: eventsService)
     }
     
@@ -68,6 +71,13 @@ class ReviewPromptControllerTests: XCTestCase {
         simulateFavouritingEnoughEventsToSatisfyPromptRequirement()
         reviewPromptAction.reset()
         simulateFavouritingEvent()
+        
+        XCTAssertFalse(reviewPromptAction.didShowReviewPrompt)
+    }
+    
+    func testNotShowTheReviewPromptWhileTheAppIsLaunching() {
+        appStateProviding.isAppActive = false
+        simulateFavouritingEnoughEventsToSatisfyPromptRequirement()
         
         XCTAssertFalse(reviewPromptAction.didShowReviewPrompt)
     }

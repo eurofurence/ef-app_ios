@@ -20,6 +20,7 @@ struct ReviewPromptController: EventsServiceObserver {
     private var reviewPromptAction: ReviewPromptAction
     private var eventsService: EventsService
     private var versionProviding: AppVersionProviding
+    private var appStateProviding: AppStateProviding
     private var reviewPromptAppVersionRepository: ReviewPromptAppVersionRepository
 
     static func initialize() {
@@ -27,6 +28,7 @@ struct ReviewPromptController: EventsServiceObserver {
                                    reviewPromptAction: StoreKitReviewPromptAction(),
                                    versionProviding: BundleAppVersionProviding.shared,
                                    reviewPromptAppVersionRepository: UserDefaultsReviewPromptAppVersionRepository(),
+                                   appStateProviding: ApplicationAppStateProviding(),
                                    eventsService: EurofurenceApplication.shared)
     }
 
@@ -34,11 +36,13 @@ struct ReviewPromptController: EventsServiceObserver {
          reviewPromptAction: ReviewPromptAction,
          versionProviding: AppVersionProviding,
          reviewPromptAppVersionRepository: ReviewPromptAppVersionRepository,
+         appStateProviding: AppStateProviding,
          eventsService: EventsService) {
         self.config = config
         self.reviewPromptAction = reviewPromptAction
         self.versionProviding = versionProviding
         self.reviewPromptAppVersionRepository = reviewPromptAppVersionRepository
+        self.appStateProviding = appStateProviding
         self.eventsService = eventsService
 
         eventsService.add(self)
@@ -48,7 +52,7 @@ struct ReviewPromptController: EventsServiceObserver {
         let minimumNumberOfEventsFavourited: Bool = identifiers.count >= config.requiredNumberOfFavouriteEvents
         let runningDifferentAppVersionSinceLastPrompt: Bool = versionProviding.version != reviewPromptAppVersionRepository.lastPromptedAppVersion
 
-        if minimumNumberOfEventsFavourited && runningDifferentAppVersionSinceLastPrompt {
+        if minimumNumberOfEventsFavourited && runningDifferentAppVersionSinceLastPrompt && appStateProviding.isAppActive {
             reviewPromptAction.showReviewPrompt()
             reviewPromptAppVersionRepository.setLastPromptedAppVersion(versionProviding.version)
         }
