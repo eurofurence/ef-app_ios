@@ -17,6 +17,11 @@ class CapturingKnowledgeGroupEntriesScene: UIViewController, KnowledgeGroupEntri
         self.delegate = delegate
     }
     
+    private(set) var capturedTitle: String?
+    func setKnowledgeGroupTitle(_ title: String) {
+        capturedTitle = title
+    }
+    
     private(set) var capturedNumberOfEntriesToBind: Int?
     private(set) var binder: KnowledgeGroupEntriesBinder?
     func bind(numberOfEntries: Int, using binder: KnowledgeGroupEntriesBinder) {

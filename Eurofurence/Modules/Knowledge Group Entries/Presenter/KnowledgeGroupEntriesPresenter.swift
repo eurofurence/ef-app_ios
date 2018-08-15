@@ -50,6 +50,7 @@ class KnowledgeGroupEntriesPresenter: KnowledgeGroupEntriesSceneDelegate {
 
     private func viewModelReady(_ viewModel: KnowledgeGroupEntriesViewModel) {
         self.viewModel = viewModel
+        scene.setKnowledgeGroupTitle(viewModel.title)
         scene.bind(numberOfEntries: viewModel.numberOfEntries, using: Binder(viewModel: viewModel))
     }
 

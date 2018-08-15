@@ -40,6 +40,10 @@ class KnowledgeGroupEntriesViewController: UITableViewController, KnowledgeGroup
         self.knowledgeGroupEntriesSceneDelegate = delegate
     }
 
+    func setKnowledgeGroupTitle(_ title: String) {
+        super.title = title
+    }
+
     func bind(numberOfEntries: Int, using binder: KnowledgeGroupEntriesBinder) {
         numberOfRows = numberOfEntries
         self.binder = binder

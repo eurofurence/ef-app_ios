@@ -11,6 +11,7 @@ import Foundation
 protocol KnowledgeGroupEntriesScene {
 
     func setDelegate(_ delegate: KnowledgeGroupEntriesSceneDelegate)
+    func setKnowledgeGroupTitle(_ title: String)
     func bind(numberOfEntries: Int, using binder: KnowledgeGroupEntriesBinder)
 
 }
