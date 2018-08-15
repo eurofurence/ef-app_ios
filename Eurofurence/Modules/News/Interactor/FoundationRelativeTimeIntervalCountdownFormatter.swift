@@ -15,6 +15,7 @@ struct FoundationRelativeTimeIntervalCountdownFormatter: RelativeTimeIntervalCou
 
     private init() {
         formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute]
         formatter.unitsStyle = .abbreviated
     }
 
