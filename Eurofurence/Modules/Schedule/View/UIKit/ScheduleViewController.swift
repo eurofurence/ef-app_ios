@@ -120,7 +120,7 @@ class ScheduleViewController: UIViewController,
     }
 
     func hideRefreshIndicator() {
-        refreshControl.endRefreshing()
+        refreshControl.perform(#selector(UIRefreshControl.endRefreshing), with: nil, afterDelay: 0.1)
     }
 
     func bind(numberOfDays: Int, using binder: ScheduleDaysBinder) {

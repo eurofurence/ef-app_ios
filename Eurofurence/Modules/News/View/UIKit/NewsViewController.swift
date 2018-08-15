@@ -45,7 +45,7 @@ class NewsViewController: UIViewController, NewsScene {
     }
 
     func hideRefreshIndicator() {
-        refreshControl.endRefreshing()
+        refreshControl.perform(#selector(UIRefreshControl.endRefreshing), with: nil, afterDelay: 0.1)
     }
 
     func bind(numberOfItemsPerComponent: [Int], using binder: NewsComponentsBinder) {

@@ -80,7 +80,7 @@ class DealersViewController: UIViewController, UISearchControllerDelegate, UISea
     }
 
     func hideRefreshIndicator() {
-        refreshControl.endRefreshing()
+        refreshControl.perform(#selector(UIRefreshControl.endRefreshing), with: nil, afterDelay: 0.1)
     }
 
     func deselectDealer(at indexPath: IndexPath) {
