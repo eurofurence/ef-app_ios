@@ -59,7 +59,7 @@ class DefaultNewsInteractor: NewsInteractor,
                   relativeTimeIntervalCountdownFormatter: FoundationRelativeTimeIntervalCountdownFormatter.shared,
                   hoursDateFormatter: FoundationHoursDateFormatter.shared,
                   dateDistanceCalculator: FoundationDateDistanceCalculator(),
-                  clock: SystemClock(),
+                  clock: SystemClock.shared,
                   refreshService: EurofurenceApplication.shared,
                   announcementsDateFormatter: FoundationAnnouncementDateFormatter.shared,
 				  announcementsMarkdownRenderer: SubtleDownMarkdownRenderer())

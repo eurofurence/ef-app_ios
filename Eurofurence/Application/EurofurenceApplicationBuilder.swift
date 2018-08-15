@@ -49,7 +49,7 @@ class EurofurenceApplicationBuilder {
                                                                                             fcmRegistration: fcmRegistration)
 
         pushPermissionsRequester = ApplicationPushPermissionsRequester.shared
-        clock = SystemClock()
+        clock = SystemClock.shared
         credentialStore = KeychainCredentialStore()
         loginAPI = V2LoginAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         privateMessagesAPI = V2PrivateMessagesAPI(jsonSession: jsonSession, apiUrl: apiUrl)
