@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             EurofurenceApplication.shared.setExternalContentHandler(director)
 
         window?.makeKeyAndVisible()
+        ReviewPromptController.initialize()
 
 		return true
 	}
