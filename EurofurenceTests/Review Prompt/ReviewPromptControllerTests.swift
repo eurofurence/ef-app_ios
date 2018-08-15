@@ -25,6 +25,8 @@ class ReviewPromptControllerTests: XCTestCase {
     var config: ReviewPromptController.Config!
     var eventsService: FakeEventsService!
     var controller: ReviewPromptController!
+    var versionProviding: StubAppVersionProviding!
+    var reviewPromptAppVersionRepository: FakeReviewPromptAppVersionRepository!
     
     override func setUp() {
         super.setUp()
@@ -34,8 +36,12 @@ class ReviewPromptControllerTests: XCTestCase {
         
         reviewPromptAction = CapturingReviewPromptAction()
         eventsService = FakeEventsService()
+        versionProviding = StubAppVersionProviding(version: .random)
+        reviewPromptAppVersionRepository = FakeReviewPromptAppVersionRepository()
         controller = ReviewPromptController(config: config,
                                             reviewPromptAction: reviewPromptAction,
+                                            versionProviding: versionProviding,
+                                            reviewPromptAppVersionRepository: reviewPromptAppVersionRepository,
                                             eventsService: eventsService)
     }
     
@@ -43,17 +49,26 @@ class ReviewPromptControllerTests: XCTestCase {
         eventsService.simulateEventFavourited(identifier: .random)
     }
     
+    private func simulateFavouritingEnoughEventsToSatisfyPromptRequirement() {
+        let identifiers = (0..<config.requiredNumberOfFavouriteEvents).map({ (_) in Event2.Identifier.random })
+        eventsService.simulateEventFavouritesChanged(to: identifiers)
+    }
+    
     func testShowTheReviewPromptWhenRequiredNumberOfEventsFavourited() {
-        (0..<config.requiredNumberOfFavouriteEvents).forEachPerform(simulateFavouritingEvent)
-        
-        eventsService.simulateEventFavourited(identifier: .random)
-        eventsService.simulateEventFavourited(identifier: .random)
-        
+        simulateFavouritingEnoughEventsToSatisfyPromptRequirement()
         XCTAssertTrue(reviewPromptAction.didShowReviewPrompt)
     }
     
     func testNotShowTheReviewPromptBeforeTheConfiguredFavouriteCount() {
         (0..<config.requiredNumberOfFavouriteEvents - 1).forEachPerform(simulateFavouritingEvent)
+        XCTAssertFalse(reviewPromptAction.didShowReviewPrompt)
+    }
+    
+    func testNotShowTheReviewPromptWhenFavouritingRequiredEventCountAgainForSameAppVersion() {
+        simulateFavouritingEnoughEventsToSatisfyPromptRequirement()
+        reviewPromptAction.reset()
+        simulateFavouritingEvent()
+        
         XCTAssertFalse(reviewPromptAction.didShowReviewPrompt)
     }
     

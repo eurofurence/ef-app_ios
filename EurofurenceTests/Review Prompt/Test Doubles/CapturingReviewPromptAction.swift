@@ -16,4 +16,8 @@ class CapturingReviewPromptAction: ReviewPromptAction {
         didShowReviewPrompt = true
     }
     
+    func reset() {
+        didShowReviewPrompt = false
+    }
+    
 }

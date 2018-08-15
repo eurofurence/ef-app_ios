@@ -19,19 +19,30 @@ struct ReviewPromptController: EventsServiceObserver {
     private var config: ReviewPromptController.Config
     private var reviewPromptAction: ReviewPromptAction
     private var eventsService: EventsService
+    private var versionProviding: AppVersionProviding
+    private var reviewPromptAppVersionRepository: ReviewPromptAppVersionRepository
 
     init(config: ReviewPromptController.Config,
          reviewPromptAction: ReviewPromptAction,
+         versionProviding: AppVersionProviding,
+         reviewPromptAppVersionRepository: ReviewPromptAppVersionRepository,
          eventsService: EventsService) {
         self.config = config
         self.reviewPromptAction = reviewPromptAction
+        self.versionProviding = versionProviding
+        self.reviewPromptAppVersionRepository = reviewPromptAppVersionRepository
         self.eventsService = eventsService
+
         eventsService.add(self)
     }
 
     func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) {
-        if identifiers.count > config.requiredNumberOfFavouriteEvents {
+        let minimumNumberOfEventsFavourited: Bool = identifiers.count >= config.requiredNumberOfFavouriteEvents
+        let runningDifferentAppVersionSinceLastPrompt: Bool = versionProviding.version != reviewPromptAppVersionRepository.lastPromptedAppVersion
+
+        if minimumNumberOfEventsFavourited && runningDifferentAppVersionSinceLastPrompt {
             reviewPromptAction.showReviewPrompt()
+            reviewPromptAppVersionRepository.setLastPromptedAppVersion(versionProviding.version)
         }
     }
 

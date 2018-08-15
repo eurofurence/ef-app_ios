@@ -84,6 +84,11 @@ extension FakeEventsService {
         observers.forEach { $0.favouriteEventsDidChange(favourites) }
     }
     
+    func simulateEventFavouritesChanged(to identifiers: [Event2.Identifier]) {
+        favourites = identifiers
+        observers.forEach { $0.favouriteEventsDidChange(favourites) }
+    }
+    
     func simulateEventUnfavourited(identifier: Event2.Identifier) {
         if let idx = favourites.index(of: identifier) {
             favourites.remove(at: idx)
