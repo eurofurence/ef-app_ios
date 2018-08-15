@@ -44,7 +44,7 @@ class EurofurenceApplicationBuilder {
 
         let fcmRegistration = EurofurenceFCMDeviceRegistration(JSONSession: jsonSession, urlProviding: apiUrl)
         remoteNotificationsTokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfiguration,
-                                                                                            appVersion: BundleAppVersionProviding(),
+                                                                                            appVersion: BundleAppVersionProviding.shared,
                                                                                             firebaseAdapter: FirebaseMessagingAdapter(),
                                                                                             fcmRegistration: fcmRegistration)
 

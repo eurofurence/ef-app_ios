@@ -15,7 +15,7 @@ struct UserDefaultsForceRefreshRequired: ForceRefreshRequired {
     }
 
     var userDefaults: UserDefaults = .standard
-    var versionProviding: AppVersionProviding = BundleAppVersionProviding()
+    var versionProviding: AppVersionProviding = BundleAppVersionProviding.shared
 
     var isForceRefreshRequired: Bool {
         let forceRefreshRequired = userDefaults.string(forKey: Keys.lastWitnessedAppVersionKey) != versionProviding.version

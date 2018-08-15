@@ -16,6 +16,8 @@ protocol AppVersionProviding {
 
 struct BundleAppVersionProviding: AppVersionProviding {
 
+    static let shared = BundleAppVersionProviding()
+
     var version: String {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
     }
