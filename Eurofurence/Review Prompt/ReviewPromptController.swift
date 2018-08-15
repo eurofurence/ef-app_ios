@@ -10,17 +10,27 @@ import Foundation
 
 struct ReviewPromptController: EventsServiceObserver {
 
+    struct Config {
+        static let `default` = Config(requiredNumberOfFavouriteEvents: 3)
+
+        var requiredNumberOfFavouriteEvents: Int
+    }
+
+    private var config: ReviewPromptController.Config
     private var reviewPromptAction: ReviewPromptAction
     private var eventsService: EventsService
 
-    init(reviewPromptAction: ReviewPromptAction, eventsService: EventsService) {
+    init(config: ReviewPromptController.Config,
+         reviewPromptAction: ReviewPromptAction,
+         eventsService: EventsService) {
+        self.config = config
         self.reviewPromptAction = reviewPromptAction
         self.eventsService = eventsService
         eventsService.add(self)
     }
 
     func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) {
-        if identifiers.count > 2 {
+        if identifiers.count > config.requiredNumberOfFavouriteEvents {
             reviewPromptAction.showReviewPrompt()
         }
     }
