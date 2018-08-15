@@ -48,4 +48,15 @@ class DefaultKnowledgeGroupEntriesInteractorShould: XCTestCase {
         XCTAssertEqual(entry.element.identifier, entryIdentifier)
     }
     
+    func testUseGroupNameAsViewModelTitle() {
+        let service = FakeKnowledgeService()
+        let group = KnowledgeGroup2.random
+        service.stub(group)
+        let interactor = DefaultKnowledgeGroupEntriesInteractor(service: service)
+        var viewModel: KnowledgeGroupEntriesViewModel?
+        interactor.makeViewModelForGroup(identifier: group.identifier) { viewModel = $0 }
+        
+        XCTAssertEqual(group.title, viewModel?.title)
+    }
+    
 }

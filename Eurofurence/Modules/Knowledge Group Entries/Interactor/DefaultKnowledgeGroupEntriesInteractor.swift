@@ -12,6 +12,7 @@ struct DefaultKnowledgeGroupEntriesInteractor: KnowledgeGroupEntriesInteractor {
 
     private struct ViewModel: KnowledgeGroupEntriesViewModel {
 
+        var title: String
         var entries: [KnowledgeEntry2]
 
         var numberOfEntries: Int { return entries.count }
@@ -31,7 +32,7 @@ struct DefaultKnowledgeGroupEntriesInteractor: KnowledgeGroupEntriesInteractor {
 
     func makeViewModelForGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping (KnowledgeGroupEntriesViewModel) -> Void) {
         service.fetchKnowledgeGroup(identifier: identifier) { (group) in
-            let viewModel = ViewModel(entries: group.entries)
+            let viewModel = ViewModel(title: group.title, entries: group.entries)
             completionHandler(viewModel)
         }
     }

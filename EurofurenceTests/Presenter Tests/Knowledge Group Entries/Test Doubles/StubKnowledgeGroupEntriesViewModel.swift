@@ -11,6 +11,8 @@ import Foundation
 
 struct StubKnowledgeGroupEntriesViewModel: KnowledgeGroupEntriesViewModel {
     
+    var title: String
+    
     var numberOfEntries: Int {
         return entries.count
     }
@@ -30,7 +32,7 @@ struct StubKnowledgeGroupEntriesViewModel: KnowledgeGroupEntriesViewModel {
 extension StubKnowledgeGroupEntriesViewModel: RandomValueProviding {
     
     static var random: StubKnowledgeGroupEntriesViewModel {
-        return StubKnowledgeGroupEntriesViewModel(entries: .random)
+        return StubKnowledgeGroupEntriesViewModel(title: .random, entries: .random)
     }
     
 }
