@@ -22,6 +22,14 @@ struct ReviewPromptController: EventsServiceObserver {
     private var versionProviding: AppVersionProviding
     private var reviewPromptAppVersionRepository: ReviewPromptAppVersionRepository
 
+    static func initialize() {
+        _ = ReviewPromptController(config: .default,
+                                   reviewPromptAction: StoreKitReviewPromptAction(),
+                                   versionProviding: BundleAppVersionProviding.shared,
+                                   reviewPromptAppVersionRepository: UserDefaultsReviewPromptAppVersionRepository(),
+                                   eventsService: EurofurenceApplication.shared)
+    }
+
     init(config: ReviewPromptController.Config,
          reviewPromptAction: ReviewPromptAction,
          versionProviding: AppVersionProviding,
