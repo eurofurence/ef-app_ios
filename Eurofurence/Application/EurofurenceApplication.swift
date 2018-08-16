@@ -405,7 +405,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                         self.knowledge.models.reduce([], { $0 + $1.entries }).map({ $0.identifier.rawValue }).forEach(transaction.deleteKnowledgeEntry)
                     }
 
-                    if response.maps.removeAllBeforeInsert {
+                    if response.images.removeAllBeforeInsert {
                         let identifiersToDelete: [String] = existingImages.map({ $0.identifier })
                         identifiersToDelete.forEach(transaction.deleteImage)
                         existingImages.map({ $0.identifier }).forEach(self.imageCache.deleteImage)

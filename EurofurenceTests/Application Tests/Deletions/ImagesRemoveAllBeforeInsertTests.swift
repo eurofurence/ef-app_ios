@@ -14,7 +14,7 @@ class ImagesRemoveAllBeforeInsertTests: XCTestCase {
     func testTellTheDataStoreToDeleteTheImages() {
         let originalResponse = APISyncResponse.randomWithoutDeletions
         var subsequentResponse = originalResponse
-        subsequentResponse.maps.removeAllBeforeInsert = true
+        subsequentResponse.images.removeAllBeforeInsert = true
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
@@ -27,7 +27,7 @@ class ImagesRemoveAllBeforeInsertTests: XCTestCase {
     func testNotDeleteOriginalImagesWhenPurgeNotRequired() {
         let originalResponse = APISyncResponse.randomWithoutDeletions
         var subsequentResponse = originalResponse
-        subsequentResponse.maps.removeAllBeforeInsert = false
+        subsequentResponse.images.removeAllBeforeInsert = false
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
@@ -39,7 +39,7 @@ class ImagesRemoveAllBeforeInsertTests: XCTestCase {
     func testRemoveImagesFromTheCache() {
         let originalResponse = APISyncResponse.randomWithoutDeletions
         var subsequentResponse = originalResponse
-        subsequentResponse.maps.removeAllBeforeInsert = true
+        subsequentResponse.images.removeAllBeforeInsert = true
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
@@ -52,7 +52,7 @@ class ImagesRemoveAllBeforeInsertTests: XCTestCase {
     func testNotRemoveImagesFromTheCacheWhenPurgeNotRequired() {
         let originalResponse = APISyncResponse.randomWithoutDeletions
         var subsequentResponse = originalResponse
-        subsequentResponse.maps.removeAllBeforeInsert = false
+        subsequentResponse.images.removeAllBeforeInsert = false
         let context = ApplicationTestBuilder().build()
         context.performSuccessfulSync(response: originalResponse)
         context.performSuccessfulSync(response: subsequentResponse)
