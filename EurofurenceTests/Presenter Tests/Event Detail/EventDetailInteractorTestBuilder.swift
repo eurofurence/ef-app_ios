@@ -53,7 +53,7 @@ extension EventDetailInteractorTestBuilder.Context {
     
     func makeExpectedEventSummaryViewModel() -> EventSummaryViewModel {
         return EventSummaryViewModel(title: event.title,
-                                     subtitle: "",
+                                     subtitle: event.subtitle,
                                      abstract: markdownRenderer.stubbedContents(for: event.abstract),
                                      eventStartEndTime: dateRangeFormatter.string(from: event.startDate, to: event.endDate),
                                      location: event.room.name,

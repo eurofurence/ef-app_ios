@@ -32,6 +32,7 @@ struct Event2: Equatable {
 
     var identifier: Event2.Identifier
     var title: String
+    var subtitle: String
     var abstract: String
     var room: Room
     var track: Track

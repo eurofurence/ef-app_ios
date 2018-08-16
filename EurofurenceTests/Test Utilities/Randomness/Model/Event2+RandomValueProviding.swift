@@ -15,6 +15,7 @@ extension Event2: RandomValueProviding {
         let startDate = Date.random
         return Event2(identifier: .random,
                       title: .random,
+                      subtitle: .random,
                       abstract: .random,
                       room: .random,
                       track: .random,
