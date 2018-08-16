@@ -340,10 +340,17 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
             progress.completedUnitCount = 0
             progress.totalUnitCount = Int64(imageIdentifiers.count)
 
+            var imageIdentifiersToDelete: [String] = []
+            if response.images.removeAllBeforeInsert {
+                imageIdentifiersToDelete = existingImages.map({ $0.identifier })
+                imageIdentifiersToDelete.forEach(self.imageCache.deleteImage)
+            }
+
             self.imageDownloader.downloadImages(identifiers: imageIdentifiers, parentProgress: progress) {
                 self.eventBus.post(DomainEvent.LatestDataFetchedEvent(response: response))
 
                 self.dataStore.performTransaction({ (transaction) in
+                    imageIdentifiersToDelete.forEach(transaction.deleteImage)
                     response.events.deleted.forEach(transaction.deleteEvent)
                     response.tracks.deleted.forEach(transaction.deleteTrack)
                     response.rooms.deleted.forEach(transaction.deleteRoom)
@@ -403,12 +410,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
                     if response.knowledgeEntries.removeAllBeforeInsert {
                         self.knowledge.models.reduce([], { $0 + $1.entries }).map({ $0.identifier.rawValue }).forEach(transaction.deleteKnowledgeEntry)
-                    }
-
-                    if response.images.removeAllBeforeInsert {
-                        let identifiersToDelete: [String] = existingImages.map({ $0.identifier })
-                        identifiersToDelete.forEach(transaction.deleteImage)
-                        existingImages.map({ $0.identifier }).forEach(self.imageCache.deleteImage)
                     }
 
                     if response.dealers.removeAllBeforeInsert {

@@ -61,4 +61,18 @@ class ImagesRemoveAllBeforeInsertTests: XCTestCase {
                       "Should have not removed original images between sync events")
     }
     
+    func testProduceExpectedImageDataForDealerUsingNewResponse() {
+        let originalResponse = APISyncResponse.randomWithoutDeletions
+        var subsequentResponse = originalResponse
+        subsequentResponse.images.removeAllBeforeInsert = true
+        let context = ApplicationTestBuilder().build()
+        context.performSuccessfulSync(response: originalResponse)
+        context.performSuccessfulSync(response: subsequentResponse)
+        let randomDealer = subsequentResponse.dealers.changed.randomElement().element
+        var data: ExtendedDealerData?
+        context.application.fetchExtendedDealerData(for: Dealer2.Identifier(randomDealer.identifier)) { data = $0 }
+        
+        XCTAssertEqual(data?.artistImagePNGData, context.imageAPI.stubbedImage(for: randomDealer.artistImageId))
+    }
+    
 }
