@@ -13,6 +13,7 @@ class EventDetailSummaryTableViewCell: UITableViewCell, EventSummaryComponent {
     // MARK: IBOutlets
 
     @IBOutlet weak var eventTitleLabel: UILabel!
+    @IBOutlet weak var eventSubtitleLabel: UILabel!
     @IBOutlet weak var eventAbstractLabel: UILabel!
     @IBOutlet weak var eventTimesLabel: UILabel!
     @IBOutlet weak var eventLocationLabel: UILabel!
@@ -33,7 +34,7 @@ class EventDetailSummaryTableViewCell: UITableViewCell, EventSummaryComponent {
     }
 
     func setEventSubtitle(_ subtitle: String) {
-
+        eventSubtitleLabel.text = subtitle
     }
 
     func setEventAbstract(_ abstract: NSAttributedString) {
