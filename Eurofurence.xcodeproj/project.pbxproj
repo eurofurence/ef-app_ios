@@ -713,6 +713,7 @@
 		CA66C0242124CC9900F87AFE /* ApplicationAppStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0232124CC9900F87AFE /* ApplicationAppStateProviding.swift */; };
 		CA66C026212595B700F87AFE /* WhenPerformingFullStoreRefresh_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C025212595B700F87AFE /* WhenPerformingFullStoreRefresh_ApplicationShould.swift */; };
 		CA66C029212597F600F87AFE /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C028212597F600F87AFE /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift */; };
+		CA66C02B2125FC1A00F87AFE /* InOrderToSupportEssentialSubtitleTag_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C02A2125FC1A00F87AFE /* InOrderToSupportEssentialSubtitleTag_ApplicationShould.swift */; };
 		CA680F7A20CD7AD7006ACD3D /* Knowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7920CD7AD7006ACD3D /* Knowledge.swift */; };
 		CA680F7C20CD819F006ACD3D /* UserDefaultsPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */; };
 		CA680F7E20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */; };
@@ -1954,6 +1955,7 @@
 		CA66C0232124CC9900F87AFE /* ApplicationAppStateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationAppStateProviding.swift; sourceTree = "<group>"; };
 		CA66C025212595B700F87AFE /* WhenPerformingFullStoreRefresh_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingFullStoreRefresh_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA66C028212597F600F87AFE /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFullRefreshOccurs_YieldingOrphanedEntities.swift; sourceTree = "<group>"; };
+		CA66C02A2125FC1A00F87AFE /* InOrderToSupportEssentialSubtitleTag_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOrderToSupportEssentialSubtitleTag_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA680F7920CD7AD7006ACD3D /* Knowledge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knowledge.swift; sourceTree = "<group>"; };
 		CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPreferences.swift; sourceTree = "<group>"; };
 		CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift; sourceTree = "<group>"; };
@@ -3585,11 +3587,12 @@
 			children = (
 				CA44C346211A3523003C1C4E /* InOrderToSupportArtShowTag_ApplicationShould.swift */,
 				CA44C353211AB5E0003C1C4E /* InOrderToSupportDealersDenTag_ApplicationShould.swift */,
+				CA66C02A2125FC1A00F87AFE /* InOrderToSupportEssentialSubtitleTag_ApplicationShould.swift */,
 				CA44C351211AB44A003C1C4E /* InOrderToSupportKageTag_ApplicationShould.swift */,
-				CA27258C2113B1F4004C6D0A /* InOrderToSupportSponsorTag_ApplicationShould.swift */,
-				CA27258E2113B665004C6D0A /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift */,
 				CA44C355211B07F6003C1C4E /* InOrderToSupportMainStageTag_ApplicationShould.swift */,
 				CA44C357211B094A003C1C4E /* InOrderToSupportPhotoshootTag_ApplicationShould.swift */,
+				CA27258C2113B1F4004C6D0A /* InOrderToSupportSponsorTag_ApplicationShould.swift */,
+				CA27258E2113B665004C6D0A /* InOrderToSupportSuperSponsorTag_ApplicationShould.swift */,
 			);
 			path = "Tag Adaption";
 			sourceTree = "<group>";
@@ -7257,6 +7260,7 @@
 				CABF03C32041C2FD0028BD62 /* KnowledgeEntry2.swift in Sources */,
 				CA8240862120B8E3007E4A70 /* EventConferenceDaysRemoveAllBeforeInsertTests.swift in Sources */,
 				CA734D77210A49B300221886 /* WhenDeletingKnowledgeGroup_AfterSuccessfulSync_ApplicationShould.swift in Sources */,
+				CA66C02B2125FC1A00F87AFE /* InOrderToSupportEssentialSubtitleTag_ApplicationShould.swift in Sources */,
 				CA52C67920D59357009D3A9E /* WhenSignificantTimeChanges_ScheduleShould.swift in Sources */,
 				CAD260AB20C03D3E007E3618 /* WhenViewModelIndicatesEventIsNotFavourite_EventDetailPresenterShould.swift in Sources */,
 				CACF26CB20FE290000EDE150 /* WhenBindingNonFavouriteEvent_NewsPresenterShould.swift in Sources */,

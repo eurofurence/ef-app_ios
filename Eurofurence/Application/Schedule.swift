@@ -340,8 +340,16 @@ class Schedule: ClockDelegate {
         let tags = event.tags
         let containsTag: (String) -> Bool = { tags?.contains($0) ?? false }
 
+        let title: String = {
+            if containsTag("essential_subtitle") {
+                return event.title.appending(" - ").appending(event.subtitle)
+            } else {
+                return event.title
+            }
+        }()
+
         return Event2(identifier: Event2.Identifier(event.identifier),
-                      title: event.title,
+                      title: title,
                       subtitle: event.subtitle,
                       abstract: event.abstract,
                       room: Room(name: room.name),
