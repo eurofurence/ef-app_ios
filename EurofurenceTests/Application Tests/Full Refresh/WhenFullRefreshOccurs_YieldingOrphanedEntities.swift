@@ -68,4 +68,14 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
         XCTAssertTrue(deletedImageIdentifiers.contains(elementsFrom: imageIdentifiers))
     }
     
+    func testTheOrphanedDealersAreRemoved() {
+        let delegate = CapturingDealersIndexDelegate()
+        let index = context.application.makeDealersIndex()
+        index.setDelegate(delegate)
+        let originalDealerIdentifiers = originalResponse.dealers.changed.map({ $0.identifier })
+        let dealerIdentifiers = delegate.capturedAlphabetisedDealerGroups.reduce([], { $0 + $1.dealers }).map({ $0.identifier.rawValue })
+        
+        XCTAssertFalse(dealerIdentifiers.contains(elementsFrom: originalDealerIdentifiers))
+    }
+    
 }

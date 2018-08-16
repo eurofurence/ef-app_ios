@@ -386,6 +386,11 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                         let changedImageIdentifiers = response.images.changed.map({ $0.identifier })
                         let orphanedImages = existingImageIdentifiers.filter(not(changedImageIdentifiers.contains))
                         orphanedImages.forEach(self.imageRepository.deleteEntity)
+
+                        let existingDealerIdentifiers = existingDealers.map({ $0.identifier })
+                        let changedDealerIdentifiers = response.dealers.changed.map({ $0.identifier })
+                        let orphanedDealers = existingDealerIdentifiers.filter(not(changedDealerIdentifiers.contains))
+                        orphanedDealers.forEach(transaction.deleteDealer)
                     }
 
                     if response.announcements.removeAllBeforeInsert {
