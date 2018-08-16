@@ -40,15 +40,7 @@ struct PersistentImageRepository: ImageRepository {
     }
 
     func containsImage(identifier: String) -> Bool {
-        do {
-            let cacheDirectoryURL = try makeImageCacheDirectoryURL()
-            let entityURL = cacheDirectoryURL.appendingPathComponent(identifier)
-
-            return FileManager.default.fileExists(atPath: entityURL.path, isDirectory: nil)
-        } catch {
-            print(error)
-            return false
-        }
+        return loadImage(identifier: identifier) != nil
     }
 
     private func makeImageCacheDirectoryURL() throws -> URL {
