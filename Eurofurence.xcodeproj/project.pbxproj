@@ -712,6 +712,7 @@
 		CA66C0222124CC6E00F87AFE /* FakeAppStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0212124CC6E00F87AFE /* FakeAppStateProviding.swift */; };
 		CA66C0242124CC9900F87AFE /* ApplicationAppStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0232124CC9900F87AFE /* ApplicationAppStateProviding.swift */; };
 		CA66C026212595B700F87AFE /* WhenPerformingFullStoreRefresh_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C025212595B700F87AFE /* WhenPerformingFullStoreRefresh_ApplicationShould.swift */; };
+		CA66C029212597F600F87AFE /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C028212597F600F87AFE /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift */; };
 		CA680F7A20CD7AD7006ACD3D /* Knowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7920CD7AD7006ACD3D /* Knowledge.swift */; };
 		CA680F7C20CD819F006ACD3D /* UserDefaultsPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */; };
 		CA680F7E20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */; };
@@ -1952,6 +1953,7 @@
 		CA66C0212124CC6E00F87AFE /* FakeAppStateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAppStateProviding.swift; sourceTree = "<group>"; };
 		CA66C0232124CC9900F87AFE /* ApplicationAppStateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationAppStateProviding.swift; sourceTree = "<group>"; };
 		CA66C025212595B700F87AFE /* WhenPerformingFullStoreRefresh_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingFullStoreRefresh_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA66C028212597F600F87AFE /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFullRefreshOccurs_YieldingOrphanedEntities.swift; sourceTree = "<group>"; };
 		CA680F7920CD7AD7006ACD3D /* Knowledge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knowledge.swift; sourceTree = "<group>"; };
 		CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPreferences.swift; sourceTree = "<group>"; };
 		CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift; sourceTree = "<group>"; };
@@ -2844,6 +2846,7 @@
 				CA36A4A420D9845A00EE6537 /* Dealers */,
 				CA734D6B2109F35100221886 /* Deletions */,
 				CA162EAF20AA2DC0004AFED6 /* Events */,
+				CA66C027212597E000F87AFE /* Full Refresh */,
 				CA40105A210E19520056E16C /* Images */,
 				CABF03C820421B2A0028BD62 /* Knowledge */,
 				CAD3BDC3205FE3EA00C91E6E /* Links */,
@@ -4443,6 +4446,14 @@
 				CA65A21E2091F1EC0078A4A7 /* WhenSyncSucceeds_SyncAPIShould.swift */,
 			);
 			path = Sync;
+			sourceTree = "<group>";
+		};
+		CA66C027212597E000F87AFE /* Full Refresh */ = {
+			isa = PBXGroup;
+			children = (
+				CA66C028212597F600F87AFE /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift */,
+			);
+			path = "Full Refresh";
 			sourceTree = "<group>";
 		};
 		CA680F8320CDAD32006ACD3D /* Adapter Tests */ = {
@@ -7412,6 +7423,7 @@
 				CA36A46520D84A8100EE6537 /* FakeDealersInteractor.swift in Sources */,
 				CA283AD120EAC64A00F7D195 /* WhenAnnouncementsViewModelUpdatesAnnouncements_AnnouncementsPresenterShould.swift in Sources */,
 				CA36A47D20D85D4500EE6537 /* WhenBindingDealerComponent_ForDealerWithAfterDarkContent_DealersPresenterShould.swift in Sources */,
+				CA66C029212597F600F87AFE /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift in Sources */,
 				CA2761BC20E02A25000E52AC /* FakeCollectThemAllService.swift in Sources */,
 				CAFD012820C6F2A2004F3935 /* WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould.swift in Sources */,
 				CA36A49B20D9779C00EE6537 /* AlphabetisedDealersGroup+RandomValueProviding.swift in Sources */,

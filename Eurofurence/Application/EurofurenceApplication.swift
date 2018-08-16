@@ -318,6 +318,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         progress.totalUnitCount = -1
         progress.completedUnitCount = -1
 
+        let existingAnnouncements = dataStore.getSavedAnnouncements().or([])
+        let existingEvents = dataStore.getSavedEvents().or([])
         let existingImages = dataStore.getSavedImages().or([])
         let existingDealers = dataStore.getSavedDealers().or([])
         syncAPI.fetchLatestData(lastSyncTime: lastSyncTime) { (response) in
@@ -347,6 +349,20 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                     response.knowledgeEntries.deleted.forEach(transaction.deleteKnowledgeEntry)
                     response.knowledgeGroups.deleted.forEach(transaction.deleteKnowledgeGroup)
                     response.announcements.deleted.forEach(transaction.deleteAnnouncement)
+
+                    if lastSyncTime == nil {
+                        func not<T>(_ predicate: @escaping (T) -> Bool) -> (T) -> Bool {
+                            return { (element) in return !predicate(element) }
+                        }
+
+                        let changedAnnouncementIdentifiers = response.announcements.changed.map({ $0.identifier })
+                        let orphanedAnnouncements = existingAnnouncements.map({ $0.identifier }).filter(not(changedAnnouncementIdentifiers.contains))
+                        orphanedAnnouncements.forEach(transaction.deleteAnnouncement)
+
+                        let changedEventIdentifiers = response.events.changed.map({ $0.identifier })
+                        let orphanedEvents = existingEvents.map({ $0.identifier }).filter(not(changedEventIdentifiers.contains))
+                        orphanedEvents.forEach(transaction.deleteEvent)
+                    }
 
                     if response.announcements.removeAllBeforeInsert {
                         self.announcements.models.map({ $0.identifier.rawValue }).forEach(transaction.deleteAnnouncement)

@@ -1,0 +1,47 @@
+//
+//  WhenFullRefreshOccurs_YieldingOrphanedEntities.swift
+//  EurofurenceTests
+//
+//  Created by Thomas Sherwood on 16/08/2018.
+//  Copyright © 2018 Eurofurence. All rights reserved.
+//
+
+@testable import Eurofurence
+import XCTest
+
+class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
+    
+    var context: ApplicationTestBuilder.Context!
+    var originalResponse: APISyncResponse!
+    var fullSyncResponse: APISyncResponse!
+    
+    override func setUp() {
+        super.setUp()
+        
+        context = ApplicationTestBuilder().build()
+        originalResponse = .randomWithoutDeletions
+        fullSyncResponse = .randomWithoutDeletions
+        context.performSuccessfulSync(response: originalResponse)
+        _ = context.application.performFullStoreRefresh { (_) in }
+        context.syncAPI.simulateSuccessfulSync(fullSyncResponse)
+    }
+    
+    func testTheOrphanedAnnouncementsAreRemoved() {
+        let announcementsObserver = CapturingAnnouncementsServiceObserver()
+        context.application.add(announcementsObserver)
+        let originalAnnouncementIdentifiers = originalResponse.announcements.changed.map({ $0.identifier })
+        let announcementIdentifiers = announcementsObserver.allAnnouncements.map({ $0.identifier.rawValue })
+        
+        XCTAssertFalse(announcementIdentifiers.contains(elementsFrom: originalAnnouncementIdentifiers))
+    }
+    
+    func testTheOrphanedEventsAreRemove() {
+        let eventsObserver = CapturingEventsServiceObserver()
+        context.application.add(eventsObserver)
+        let originalEventIdentifiers = originalResponse.events.changed.map({ $0.identifier })
+        let eventIdentifiers = eventsObserver.allEvents.map({ $0.identifier.rawValue })
+        
+        XCTAssertFalse(eventIdentifiers.contains(elementsFrom: originalEventIdentifiers))
+    }
+    
+}
