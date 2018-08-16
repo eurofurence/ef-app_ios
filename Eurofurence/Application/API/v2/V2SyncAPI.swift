@@ -176,6 +176,7 @@ private struct JSONSyncResponse: Decodable {
         var StartDateTimeUtc: Date
         var EndDateTimeUtc: Date
         var Title: String
+        var SubTitle: String
         var Abstract: String
         var PanelHosts: String
         var Description: String
@@ -191,6 +192,7 @@ private struct JSONSyncResponse: Decodable {
                             startDateTime: StartDateTimeUtc,
                             endDateTime: EndDateTimeUtc,
                             title: Title,
+                            subtitle: SubTitle,
                             abstract: Abstract,
                             panelHosts: PanelHosts,
                             eventDescription: Description,

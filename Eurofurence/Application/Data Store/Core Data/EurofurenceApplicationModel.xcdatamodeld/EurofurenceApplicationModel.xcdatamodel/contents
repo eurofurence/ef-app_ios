@@ -42,6 +42,7 @@
         <attribute name="posterImageId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="roomIdentifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="subtitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tags" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="[String]" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="trackIdentifier" optional="YES" attributeType="String" syncable="YES"/>
@@ -114,7 +115,7 @@
         <element name="AnnouncementEntity" positionX="-36" positionY="99" width="128" height="120"/>
         <element name="ConferenceDayEntity" positionX="-36" positionY="108" width="128" height="75"/>
         <element name="DealerEntity" positionX="-36" positionY="117" width="128" height="315"/>
-        <element name="EventEntity" positionX="-36" positionY="72" width="128" height="240"/>
+        <element name="EventEntity" positionX="-36" positionY="72" width="128" height="255"/>
         <element name="FavouriteEventEntity" positionX="-36" positionY="108" width="128" height="60"/>
         <element name="ImageModelEntity" positionX="-36" positionY="135" width="128" height="75"/>
         <element name="KnowledgeEntryEntity" positionX="-63" positionY="9" width="128" height="150"/>

@@ -17,6 +17,7 @@ struct APIEvent: Equatable {
     var startDateTime: Date
     var endDateTime: Date
     var title: String
+    var subtitle: String
     var abstract: String
     var panelHosts: String
     var eventDescription: String

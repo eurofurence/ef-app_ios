@@ -237,6 +237,7 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
                     entity.startDateTime = event.startDateTime
                     entity.endDateTime = event.endDateTime
                     entity.title = event.title
+                    entity.subtitle = event.subtitle
                     entity.abstract = event.abstract
                     entity.panelHosts = event.panelHosts
                     entity.eventDescription = event.eventDescription
