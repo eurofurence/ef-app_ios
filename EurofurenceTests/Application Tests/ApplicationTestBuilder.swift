@@ -261,7 +261,7 @@ class ApplicationTestBuilder {
             
             return Event2(identifier: Event2.Identifier(event.identifier),
                           title: event.title,
-                          subtitle: "",
+                          subtitle: event.subtitle,
                           abstract: event.abstract,
                           room: Room(name: expectedRoom.name),
                           track: Track(name: expectedTrack.name),

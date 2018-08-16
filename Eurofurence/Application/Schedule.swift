@@ -342,7 +342,7 @@ class Schedule: ClockDelegate {
 
         return Event2(identifier: Event2.Identifier(event.identifier),
                       title: event.title,
-                      subtitle: "",
+                      subtitle: event.subtitle,
                       abstract: event.abstract,
                       room: Room(name: room.name),
                       track: Track(name: track.name),
