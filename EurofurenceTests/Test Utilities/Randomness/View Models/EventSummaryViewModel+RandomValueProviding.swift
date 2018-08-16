@@ -13,6 +13,7 @@ extension EventSummaryViewModel: RandomValueProviding {
     
     static var random: EventSummaryViewModel {
         return EventSummaryViewModel(title: .random,
+                                     subtitle: .random,
                                      abstract: .random,
                                      eventStartEndTime: .random,
                                      location: .random,

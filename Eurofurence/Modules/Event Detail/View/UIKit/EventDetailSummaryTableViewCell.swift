@@ -32,6 +32,10 @@ class EventDetailSummaryTableViewCell: UITableViewCell, EventSummaryComponent {
         eventTitleLabel.text = title
     }
 
+    func setEventSubtitle(_ subtitle: String) {
+
+    }
+
     func setEventAbstract(_ abstract: NSAttributedString) {
         eventAbstractLabel.attributedText = abstract
     }
