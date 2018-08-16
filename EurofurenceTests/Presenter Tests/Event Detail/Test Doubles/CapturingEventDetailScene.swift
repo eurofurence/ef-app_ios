@@ -17,9 +17,9 @@ class CapturingEventSummaryComponent: EventSummaryComponent {
         capturedTitle = title
     }
     
-    private(set) var capturedSubtitle: NSAttributedString?
-    func setEventSubtitle(_ subtitle: NSAttributedString) {
-        capturedSubtitle = subtitle
+    private(set) var capturedAbstract: NSAttributedString?
+    func setEventAbstract(_ abstract: NSAttributedString) {
+        capturedAbstract = abstract
     }
     
     private(set) var capturedEventStartTime: String?

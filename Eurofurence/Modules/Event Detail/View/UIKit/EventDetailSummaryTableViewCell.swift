@@ -13,7 +13,7 @@ class EventDetailSummaryTableViewCell: UITableViewCell, EventSummaryComponent {
     // MARK: IBOutlets
 
     @IBOutlet weak var eventTitleLabel: UILabel!
-    @IBOutlet weak var eventSubtitleLabel: UILabel!
+    @IBOutlet weak var eventAbstractLabel: UILabel!
     @IBOutlet weak var eventTimesLabel: UILabel!
     @IBOutlet weak var eventLocationLabel: UILabel!
     @IBOutlet weak var eventTrackLabel: UILabel!
@@ -23,7 +23,7 @@ class EventDetailSummaryTableViewCell: UITableViewCell, EventSummaryComponent {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        accessibilityElements = [eventTrackLabel, eventTitleLabel, eventTimesLabel, eventLocationLabel, eventHostsLabel, eventSubtitleLabel]
+        accessibilityElements = [eventTrackLabel, eventTitleLabel, eventTimesLabel, eventLocationLabel, eventHostsLabel, eventAbstractLabel]
     }
 
     // MARK: EventSummaryComponent
@@ -32,8 +32,8 @@ class EventDetailSummaryTableViewCell: UITableViewCell, EventSummaryComponent {
         eventTitleLabel.text = title
     }
 
-    func setEventSubtitle(_ subtitle: NSAttributedString) {
-        eventSubtitleLabel.attributedText = subtitle
+    func setEventAbstract(_ abstract: NSAttributedString) {
+        eventAbstractLabel.attributedText = abstract
     }
 
     func setEventStartEndTime(_ startEndTime: String) {

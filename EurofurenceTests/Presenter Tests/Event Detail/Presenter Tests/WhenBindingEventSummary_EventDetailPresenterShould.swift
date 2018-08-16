@@ -39,7 +39,7 @@ class WhenBindingEventSummary_EventDetailPresenterShould: XCTestCase {
     }
     
     func testApplyTheSubtitleOntoTheScene() {
-        XCTAssertEqual(summary.subtitle, context.scene.stubbedEventSummaryComponent.capturedSubtitle)
+        XCTAssertEqual(summary.subtitle, context.scene.stubbedEventSummaryComponent.capturedAbstract)
     }
     
     func testApplyTheEventStartTimeOntoTheScene() {
