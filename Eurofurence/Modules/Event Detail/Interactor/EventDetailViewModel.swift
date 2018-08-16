@@ -43,7 +43,7 @@ protocol EventDetailViewModelVisitor {
 struct EventSummaryViewModel: Equatable, Hashable {
 
     var title: String
-    var subtitle: NSAttributedString
+    var abstract: NSAttributedString
     var eventStartEndTime: String
     var location: String
     var trackName: String

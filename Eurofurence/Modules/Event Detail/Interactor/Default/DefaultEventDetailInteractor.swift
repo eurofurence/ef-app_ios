@@ -188,7 +188,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 			let abstract = self.markdownRenderer.render(event.abstract)
             let startEndTimeString = self.dateRangeFormatter.string(from: event.startDate, to: event.endDate)
             let summaryViewModel = EventSummaryViewModel(title: event.title,
-                                                         subtitle: abstract,
+                                                         abstract: abstract,
                                                          eventStartEndTime: startEndTimeString,
                                                          location: event.room.name,
                                                          trackName: event.track.name,

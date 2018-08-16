@@ -39,7 +39,7 @@ class EventDetailPresenter: EventDetailSceneDelegate, EventDetailViewModelDelega
         func visit(_ viewModel: EventSummaryViewModel) {
             boundComponent = componentFactory.makeEventSummaryComponent { (component) in
                 component.setEventTitle(viewModel.title)
-                component.setEventAbstract(viewModel.subtitle)
+                component.setEventAbstract(viewModel.abstract)
                 component.setEventStartEndTime(viewModel.eventStartEndTime)
                 component.setEventLocation(viewModel.location)
                 component.setTrackName(viewModel.trackName)
