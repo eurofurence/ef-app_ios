@@ -319,6 +319,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         progress.completedUnitCount = -1
 
         let existingAnnouncements = dataStore.getSavedAnnouncements().or([])
+        let existingKnowledgeGroups = dataStore.getSavedKnowledgeGroups().or([])
         let existingEvents = dataStore.getSavedEvents().or([])
         let existingImages = dataStore.getSavedImages().or([])
         let existingDealers = dataStore.getSavedDealers().or([])
@@ -362,6 +363,10 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                         let changedEventIdentifiers = response.events.changed.map({ $0.identifier })
                         let orphanedEvents = existingEvents.map({ $0.identifier }).filter(not(changedEventIdentifiers.contains))
                         orphanedEvents.forEach(transaction.deleteEvent)
+
+                        let changedKnowledgeGroupIdentifiers = response.knowledgeGroups.changed.map({ $0.identifier })
+                        let orphanedKnowledgeGroups = existingKnowledgeGroups.map({ $0.identifier }).filter(not(changedKnowledgeGroupIdentifiers.contains))
+                        orphanedKnowledgeGroups.forEach(transaction.deleteKnowledgeGroup)
                     }
 
                     if response.announcements.removeAllBeforeInsert {

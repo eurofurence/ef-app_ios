@@ -35,13 +35,22 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
         XCTAssertFalse(announcementIdentifiers.contains(elementsFrom: originalAnnouncementIdentifiers))
     }
     
-    func testTheOrphanedEventsAreRemove() {
+    func testTheOrphanedEventsAreRemoved() {
         let eventsObserver = CapturingEventsServiceObserver()
         context.application.add(eventsObserver)
         let originalEventIdentifiers = originalResponse.events.changed.map({ $0.identifier })
         let eventIdentifiers = eventsObserver.allEvents.map({ $0.identifier.rawValue })
         
         XCTAssertFalse(eventIdentifiers.contains(elementsFrom: originalEventIdentifiers))
+    }
+    
+    func testTheOrphanedKnowledgeGroupsAreRemoved() {
+        let knowledgeObserver = CapturingKnowledgeServiceObserver()
+        context.application.add(knowledgeObserver)
+        let originalGroupIdentifiers = originalResponse.knowledgeGroups.changed.map({ $0.identifier })
+        let groupIdentifiers = knowledgeObserver.capturedGroups.map({ $0.identifier.rawValue })
+        
+        XCTAssertFalse(groupIdentifiers.contains(elementsFrom: originalGroupIdentifiers))
     }
     
 }

@@ -177,6 +177,10 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
     private(set) var deletedKnowledgeGroups: [String] = []
     func deleteKnowledgeGroup(identifier: String) {
         deletedKnowledgeGroups.append(identifier)
+        
+        if let idx = persistedKnowledgeGroups.index(where: { $0.identifier == identifier }) {
+            persistedKnowledgeGroups.remove(at: idx)
+        }
     }
     
     private(set) var persistedKnowledgeEntries: [APIKnowledgeEntry] = []
