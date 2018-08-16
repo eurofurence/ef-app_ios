@@ -40,6 +40,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private let credentialStore: CredentialStore
     private let longRunningTaskManager: LongRunningTaskManager
     private let forceRefreshRequired: ForceRefreshRequired
+    private let imageRepository: ImageRepository
 
     private let imageCache: ImagesCache
     private let imageDownloader: ImageDownloader
@@ -85,6 +86,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         self.credentialStore = credentialStore
         self.longRunningTaskManager = longRunningTaskManager
         self.forceRefreshRequired = forceRefreshRequired
+        self.imageRepository = imageRepository
 
         pushPermissionsRequester.requestPushPermissions()
 
@@ -372,6 +374,11 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                         let changedKnowledgeEntryIdentifiers = response.knowledgeEntries.changed.map({ $0.identifier })
                         let orphanedKnowledgeEntries = existingKnowledgeEntries.map({ $0.identifier }).filter(not(changedKnowledgeEntryIdentifiers.contains))
                         orphanedKnowledgeEntries.forEach(transaction.deleteKnowledgeEntry)
+
+                        let existingImageIdentifiers = existingImages.map({ $0.identifier })
+                        let changedImageIdentifiers = response.images.changed.map({ $0.identifier })
+                        let orphanedImages = existingImageIdentifiers.filter(not(changedImageIdentifiers.contains))
+                        orphanedImages.forEach(self.imageRepository.deleteEntity)
                     }
 
                     if response.announcements.removeAllBeforeInsert {

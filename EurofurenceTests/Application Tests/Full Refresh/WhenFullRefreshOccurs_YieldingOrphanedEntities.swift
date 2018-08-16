@@ -61,4 +61,11 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
         XCTAssertTrue(context.dataStore.transaction.deletedKnowledgeEntries.contains(elementsFrom: originalEntryIdentifiers))
     }
     
+    func testTheOrphanedImagesAreRemoved() {
+        let imageIdentifiers = originalResponse.images.changed.map({ $0.identifier })
+        let deletedImageIdentifiers = context.imageRepository.deletedImages
+        
+        XCTAssertTrue(deletedImageIdentifiers.contains(elementsFrom: imageIdentifiers))
+    }
+    
 }
