@@ -69,6 +69,10 @@ class CapturingImageRepository: ImageRepository {
     private(set) var deletedImages = [String]()
     func deleteEntity(identifier: String) {
         deletedImages.append(identifier)
+        
+        if let idx = savedImages.index(where: { $0.identifier == identifier }) {
+            savedImages.remove(at: idx)
+        }
     }
     
     func loadImage(identifier: String) -> ImageEntity? {
