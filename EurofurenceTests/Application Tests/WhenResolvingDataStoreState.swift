@@ -200,7 +200,13 @@ class CapturingEurofurenceDataStoreTransaction: EurofurenceDataStoreTransaction 
     
     private(set) var persistedEvents: [APIEvent] = []
     func saveEvents(_ events: [APIEvent]) {
-        persistedEvents.append(contentsOf: events)
+        for event in events {
+            if let idx = persistedEvents.index(where: { $0.identifier == event.identifier }) {
+                persistedEvents.remove(at: idx)
+            }
+            
+            persistedEvents.append(event)
+        }
     }
     
     func deleteEvent(identifier: String) {

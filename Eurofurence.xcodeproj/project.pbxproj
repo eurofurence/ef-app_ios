@@ -714,6 +714,7 @@
 		CA66C026212595B700F87AFE /* WhenPerformingFullStoreRefresh_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C025212595B700F87AFE /* WhenPerformingFullStoreRefresh_ApplicationShould.swift */; };
 		CA66C029212597F600F87AFE /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C028212597F600F87AFE /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift */; };
 		CA66C02B2125FC1A00F87AFE /* InOrderToSupportEssentialSubtitleTag_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C02A2125FC1A00F87AFE /* InOrderToSupportEssentialSubtitleTag_ApplicationShould.swift */; };
+		CA66C02D21261E5600F87AFE /* WhenSyncSucceeds_ThenImageChanges_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C02C21261E5600F87AFE /* WhenSyncSucceeds_ThenImageChanges_ApplicationShould.swift */; };
 		CA680F7A20CD7AD7006ACD3D /* Knowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7920CD7AD7006ACD3D /* Knowledge.swift */; };
 		CA680F7C20CD819F006ACD3D /* UserDefaultsPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */; };
 		CA680F7E20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */; };
@@ -1956,6 +1957,7 @@
 		CA66C025212595B700F87AFE /* WhenPerformingFullStoreRefresh_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingFullStoreRefresh_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA66C028212597F600F87AFE /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFullRefreshOccurs_YieldingOrphanedEntities.swift; sourceTree = "<group>"; };
 		CA66C02A2125FC1A00F87AFE /* InOrderToSupportEssentialSubtitleTag_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOrderToSupportEssentialSubtitleTag_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA66C02C21261E5600F87AFE /* WhenSyncSucceeds_ThenImageChanges_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncSucceeds_ThenImageChanges_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA680F7920CD7AD7006ACD3D /* Knowledge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knowledge.swift; sourceTree = "<group>"; };
 		CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPreferences.swift; sourceTree = "<group>"; };
 		CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift; sourceTree = "<group>"; };
@@ -4001,6 +4003,7 @@
 			children = (
 				CA40105B210E19660056E16C /* WhenSyncSucceedsWithChangedImages_ApplicationShould.swift */,
 				CA40105D210E1A9D0056E16C /* WhenSyncSucceeds_WithImages_ThenSubsequentSyncDeletesImage_ApplicationShould.swift */,
+				CA66C02C21261E5600F87AFE /* WhenSyncSucceeds_ThenImageChanges_ApplicationShould.swift */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -7442,6 +7445,7 @@
 				CA63756C208CCB8900536BE2 /* WhenPreloadFails_DirectorShould.swift in Sources */,
 				CA44C352211AB44A003C1C4E /* InOrderToSupportKageTag_ApplicationShould.swift in Sources */,
 				CA162EB220AA2DE0004AFED6 /* WhenObservingRunningEventsBeforeLoadingAnything.swift in Sources */,
+				CA66C02D21261E5600F87AFE /* WhenSyncSucceeds_ThenImageChanges_ApplicationShould.swift in Sources */,
 				CA131BD520C186B300DB1036 /* WhenPreparingViewModel_ForEventThatIsNotFavourite_EventDetailInteractorShould.swift in Sources */,
 				CA27258D2113B1F4004C6D0A /* InOrderToSupportSponsorTag_ApplicationShould.swift in Sources */,
 				CA1B5F67211DB071007A24B5 /* WhenRequestingImageForAnnouncementThatHasImage_ApplicationShould.swift in Sources */,

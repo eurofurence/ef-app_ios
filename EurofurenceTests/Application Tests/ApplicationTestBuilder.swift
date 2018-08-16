@@ -101,12 +101,7 @@ extension CapturingImageRepository {
     }
     
     func stubEverything(_ response: APISyncResponse) {
-        var identifiers: [String] = []
-        let events = response.events.changed
-        identifiers.append(contentsOf: events.compactMap({ $0.bannerImageId }))
-        identifiers.append(contentsOf: events.compactMap({ $0.posterImageId }))
-        
-        identifiers.forEach(stub)
+        response.images.changed.map({ $0.identifier }).forEach(stub)
     }
     
 }
