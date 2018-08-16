@@ -296,8 +296,16 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         maps.fetchContent(for: identifier, atX: x, y: y, completionHandler: completionHandler)
     }
 
+    func performFullStoreRefresh(completionHandler: @escaping (Error?) -> Void) -> Progress {
+        return performSync(lastSyncTime: nil, completionHandler: completionHandler)
+    }
+
     @discardableResult
     func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
+        return performSync(lastSyncTime: dataStore.getLastRefreshDate(), completionHandler: completionHandler)
+    }
+
+    private func performSync(lastSyncTime: Date?, completionHandler: @escaping (Error?) -> Void) -> Progress {
         enum SyncError: Error {
             case failedToLoadResponse
         }
@@ -310,7 +318,6 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         progress.totalUnitCount = -1
         progress.completedUnitCount = -1
 
-        let lastSyncTime = dataStore.getLastRefreshDate()
         let existingImages = dataStore.getSavedImages().or([])
         let existingDealers = dataStore.getSavedDealers().or([])
         syncAPI.fetchLatestData(lastSyncTime: lastSyncTime) { (response) in

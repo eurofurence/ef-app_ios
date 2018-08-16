@@ -711,6 +711,7 @@
 		CA66C0202124CC6000F87AFE /* AppStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C01F2124CC6000F87AFE /* AppStateProviding.swift */; };
 		CA66C0222124CC6E00F87AFE /* FakeAppStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0212124CC6E00F87AFE /* FakeAppStateProviding.swift */; };
 		CA66C0242124CC9900F87AFE /* ApplicationAppStateProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C0232124CC9900F87AFE /* ApplicationAppStateProviding.swift */; };
+		CA66C026212595B700F87AFE /* WhenPerformingFullStoreRefresh_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C025212595B700F87AFE /* WhenPerformingFullStoreRefresh_ApplicationShould.swift */; };
 		CA680F7A20CD7AD7006ACD3D /* Knowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7920CD7AD7006ACD3D /* Knowledge.swift */; };
 		CA680F7C20CD819F006ACD3D /* UserDefaultsPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */; };
 		CA680F7E20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */; };
@@ -1950,6 +1951,7 @@
 		CA66C01F2124CC6000F87AFE /* AppStateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateProviding.swift; sourceTree = "<group>"; };
 		CA66C0212124CC6E00F87AFE /* FakeAppStateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAppStateProviding.swift; sourceTree = "<group>"; };
 		CA66C0232124CC9900F87AFE /* ApplicationAppStateProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationAppStateProviding.swift; sourceTree = "<group>"; };
+		CA66C025212595B700F87AFE /* WhenPerformingFullStoreRefresh_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPerformingFullStoreRefresh_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA680F7920CD7AD7006ACD3D /* Knowledge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knowledge.swift; sourceTree = "<group>"; };
 		CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPreferences.swift; sourceTree = "<group>"; };
 		CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift; sourceTree = "<group>"; };
@@ -6115,6 +6117,7 @@
 				CA8276B9204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift */,
 				CA72849720A1C091007D912A /* WhenSyncingWhileLoggedIn.swift */,
 				CAFD012720C6F2A2004F3935 /* WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould.swift */,
+				CA66C025212595B700F87AFE /* WhenPerformingFullStoreRefresh_ApplicationShould.swift */,
 			);
 			path = Sync;
 			sourceTree = "<group>";
@@ -7572,6 +7575,7 @@
 				CA1B5F63211DA4DA007A24B5 /* WhenAnnouncementContainsImage_AnnouncementDetailPresenterShould.swift in Sources */,
 				78FE77D71F1B9FA500E9A0BE /* URLSessionBasedJSONSessionTests.swift in Sources */,
 				CA44C374211C655E003C1C4E /* NewsPresenterDealersDenIconBindingTests.swift in Sources */,
+				CA66C026212595B700F87AFE /* WhenPerformingFullStoreRefresh_ApplicationShould.swift in Sources */,
 				CABA840520CF01C600DD0795 /* WhenServiceIndicatesEventIsUnfavourited_EventDetailInteractorShould.swift in Sources */,
 				CA36A4A120D9813D00EE6537 /* WhenFetchingIconDataForDealerWithAvatar_DealersInteractorShould.swift in Sources */,
 				CA1B6F0720DB805300ADF414 /* WhenBuildingDealerDetailModule.swift in Sources */,

@@ -217,6 +217,14 @@ class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         return refreshProgress!
     }
     
+    func performFullStoreRefresh(completionHandler: @escaping (Error?) -> Void) -> Progress {
+        wasToldToRefreshLocalStore = true
+        refreshCompletionHandler = completionHandler
+        refreshProgress = Progress()
+        
+        return refreshProgress!
+    }
+    
     func add(_ observer: ConventionCountdownServiceObserver) {
         
     }
