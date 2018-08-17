@@ -78,4 +78,13 @@ class WhenFullRefreshOccurs_YieldingOrphanedEntities: XCTestCase {
         XCTAssertFalse(dealerIdentifiers.contains(elementsFrom: originalDealerIdentifiers))
     }
     
+    func testTheOrphanedMapsAreRemoved() {
+        let mapsObserver = CapturingMapsObserver()
+        context.application.add(mapsObserver)
+        let originalMapsIdentifiers = originalResponse.maps.changed.map({ $0.identifier })
+        let mapsIdentifiers = mapsObserver.capturedMaps.map({ $0.identifier.rawValue })
+        
+        XCTAssertFalse(mapsIdentifiers.contains(elementsFrom: originalMapsIdentifiers))
+    }
+    
 }

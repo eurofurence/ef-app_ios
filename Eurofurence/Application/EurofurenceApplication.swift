@@ -326,6 +326,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         let existingEvents = dataStore.getSavedEvents().or([])
         let existingImages = dataStore.getSavedImages().or([])
         let existingDealers = dataStore.getSavedDealers().or([])
+        let existingMaps = dataStore.getSavedMaps().or([])
         syncAPI.fetchLatestData(lastSyncTime: lastSyncTime) { (response) in
             guard let response = response else {
                 self.longRunningTaskManager.finishLongRunningTask(token: longRunningTask)
@@ -391,6 +392,11 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                         let changedDealerIdentifiers = response.dealers.changed.map({ $0.identifier })
                         let orphanedDealers = existingDealerIdentifiers.filter(not(changedDealerIdentifiers.contains))
                         orphanedDealers.forEach(transaction.deleteDealer)
+
+                        let existingMapsIdentifiers = existingMaps.map({ $0.identifier })
+                        let changedMapIdentifiers = response.maps.changed.map({ $0.identifier })
+                        let orphanedMaps = existingMapsIdentifiers.filter(not(changedMapIdentifiers.contains))
+                        orphanedMaps.forEach(transaction.deleteMap)
                     }
 
                     if response.announcements.removeAllBeforeInsert {
