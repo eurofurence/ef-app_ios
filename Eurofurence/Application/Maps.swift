@@ -86,6 +86,10 @@ class Maps {
                 return .dealer(dealer)
             }
 
+			if link.type == .mapEntry, let linkedEntry = model.entries.first(where: { $0.identifier == link.target }), let name = link.name {
+				return .location(x: Float(linkedEntry.x), y: Float(linkedEntry.y), name: name)
+			}
+
             return nil
         }
 
