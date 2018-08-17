@@ -23,7 +23,7 @@ class WhenShowingMapContents_ForAlternativeMapPosition_MapDetailInteractorShould
         let expected = MapCoordinate(x: expectedX, y: expectedY)
         let visitor = CapturingMapContentVisitor()
         viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)
-        mapsService.resolveMapContents(identifier: randomMap.element.identifier, atX: Int(x), y: Int(y), with: .location(x: expectedX, y: expectedY))
+		mapsService.resolveMapContents(identifier: randomMap.element.identifier, atX: Int(x), y: Int(y), with: .location(x: expectedX, y: expectedY, name: nil))
         
         XCTAssertEqual(expected, visitor.capturedMapCoordinate)
     }

@@ -32,7 +32,7 @@ struct Map2: Equatable {
 
     enum Content: Equatable {
         case none
-        case location(x: Float, y: Float)
+		case location(x: Float, y: Float, name: String?)
         case room(Room)
         case dealer(Dealer2)
         indirect case multiple([Map2.Content])
