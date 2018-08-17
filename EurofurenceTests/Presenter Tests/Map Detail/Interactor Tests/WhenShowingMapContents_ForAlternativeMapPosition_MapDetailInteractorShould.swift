@@ -23,9 +23,28 @@ class WhenShowingMapContents_ForAlternativeMapPosition_MapDetailInteractorShould
         let expected = MapCoordinate(x: expectedX, y: expectedY)
         let visitor = CapturingMapContentVisitor()
         viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)
-        mapsService.resolveMapContents(identifier: randomMap.element.identifier, atX: Int(x), y: Int(y), with: .location(x: expectedX, y: expectedY))
+        mapsService.resolveMapContents(identifier: randomMap.element.identifier, atX: Int(x), y: Int(y), with: .location(x: expectedX, y: expectedY, name: nil))
         
         XCTAssertEqual(expected, visitor.capturedMapCoordinate)
+    }
+
+    func testConvertTheLocationIntoContextualContentWithLocationName() {
+        let mapsService = FakeMapsService()
+        let randomMap = mapsService.maps.randomElement()
+        let interactor = DefaultMapDetailInteractor(mapsService: mapsService)
+        var viewModel: MapDetailViewModel?
+        interactor.makeViewModelForMap(identifier: randomMap.element.identifier) { viewModel = $0 }
+
+        let (x, y) = (Float.random, Float.random)
+        let (expectedX, expectedY) = (Float.random, Float.random)
+		let expectedName = String.random
+        let expectedMapCoordinate = MapCoordinate(x: expectedX, y: expectedY)
+		let expected = MapInformationContextualContent(coordinate: expectedMapCoordinate, content: expectedName)
+        let visitor = CapturingMapContentVisitor()
+        viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)
+        mapsService.resolveMapContents(identifier: randomMap.element.identifier, atX: Int(x), y: Int(y), with: .location(x: expectedX, y: expectedY, name: expectedName))
+
+		XCTAssertEqual(expected, visitor.capturedContextualContent)
     }
     
     func testConvertTheRoomIntoContextualContentWithRoomName() {

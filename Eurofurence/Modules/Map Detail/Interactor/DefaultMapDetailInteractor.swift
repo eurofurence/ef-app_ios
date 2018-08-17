@@ -30,8 +30,13 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
 
             func handle(_ content: Map2.Content) {
                 switch content {
-                case .location(let altX, let altY):
-                    visitor.visit(MapCoordinate(x: altX, y: altY))
+                case .location(let altX, let altY, let name):
+					let coordinate = MapCoordinate(x: altX, y: altY)
+					if let name = name {
+						let contextualInfo = MapInformationContextualContent(coordinate: coordinate, content: name)
+						visitor.visit(contextualInfo)
+					}
+					visitor.visit(coordinate)
 
                 case .room(let room):
                     let coordinate = MapCoordinate(x: x, y: y)
