@@ -135,6 +135,10 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
             self.days = schedule.dayModels
             updateDelegateWithAllDays()
         }
+
+        if filters.contains(where: { $0 is DayRestrictionFilter }) == false {
+            updateCurrentDay()
+        }
     }
 
 }

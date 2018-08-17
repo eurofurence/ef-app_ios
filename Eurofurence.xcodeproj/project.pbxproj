@@ -715,6 +715,7 @@
 		CA66C029212597F600F87AFE /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C028212597F600F87AFE /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift */; };
 		CA66C02B2125FC1A00F87AFE /* InOrderToSupportEssentialSubtitleTag_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C02A2125FC1A00F87AFE /* InOrderToSupportEssentialSubtitleTag_ApplicationShould.swift */; };
 		CA66C02D21261E5600F87AFE /* WhenSyncSucceeds_ThenImageChanges_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C02C21261E5600F87AFE /* WhenSyncSucceeds_ThenImageChanges_ApplicationShould.swift */; };
+		CA66C02F212690FE00F87AFE /* TheFirstTimeSyncFinishes_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA66C02E212690FE00F87AFE /* TheFirstTimeSyncFinishes_ApplicationShould.swift */; };
 		CA680F7A20CD7AD7006ACD3D /* Knowledge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7920CD7AD7006ACD3D /* Knowledge.swift */; };
 		CA680F7C20CD819F006ACD3D /* UserDefaultsPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */; };
 		CA680F7E20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */; };
@@ -1958,6 +1959,7 @@
 		CA66C028212597F600F87AFE /* WhenFullRefreshOccurs_YieldingOrphanedEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenFullRefreshOccurs_YieldingOrphanedEntities.swift; sourceTree = "<group>"; };
 		CA66C02A2125FC1A00F87AFE /* InOrderToSupportEssentialSubtitleTag_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOrderToSupportEssentialSubtitleTag_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA66C02C21261E5600F87AFE /* WhenSyncSucceeds_ThenImageChanges_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSyncSucceeds_ThenImageChanges_ApplicationShould.swift; sourceTree = "<group>"; };
+		CA66C02E212690FE00F87AFE /* TheFirstTimeSyncFinishes_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheFirstTimeSyncFinishes_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA680F7920CD7AD7006ACD3D /* Knowledge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knowledge.swift; sourceTree = "<group>"; };
 		CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPreferences.swift; sourceTree = "<group>"; };
 		CA680F7D20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift; sourceTree = "<group>"; };
@@ -3230,6 +3232,7 @@
 		CA08159820D47B7900F750D4 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
+				CA66C02E212690FE00F87AFE /* TheFirstTimeSyncFinishes_ApplicationShould.swift */,
 				CA52C67420D58EC6009D3A9E /* WhenAppLaunchesWhenClockDoesNotReadConferenceDay_ScheduleShould.swift */,
 				CA52C67620D590BF009D3A9E /* WhenAppLaunchesWhenClockReadsConferenceDay_ScheduleShould.swift */,
 				CAC2337920FF3EC800E73486 /* WhenRemovingFavouritesRestrictionForEvents_ScheduleShould.swift */,
@@ -7198,6 +7201,7 @@
 				CA283A7520E8EB6500F7D195 /* WhenViewModelRefreshStateChanges_DealersPresenterShould.swift in Sources */,
 				CABA43951FCE0A49009CB5B0 /* CapturingLoginScene.swift in Sources */,
 				CA08158F20D4557400F750D4 /* ScheduleInteractorTestBuilder.swift in Sources */,
+				CA66C02F212690FE00F87AFE /* TheFirstTimeSyncFinishes_ApplicationShould.swift in Sources */,
 				CA08159720D475B500F750D4 /* FakeEventsService.swift in Sources */,
 				CA1B6F1020DB818A00ADF414 /* CapturingDealerDetailScene.swift in Sources */,
 				CA63754C208CBB7800536BE2 /* StubMessagesModuleFactory.swift in Sources */,
