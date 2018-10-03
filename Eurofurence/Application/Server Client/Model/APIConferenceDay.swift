@@ -8,9 +8,14 @@
 
 import Foundation
 
-struct APIConferenceDay: Equatable {
+public struct APIConferenceDay: Equatable {
 
-    var identifier: String
-    var date: Date
+    public var identifier: String
+    public var date: Date
+
+    public init(identifier: String, date: Date) {
+        self.identifier = identifier
+        self.date = date
+    }
 
 }

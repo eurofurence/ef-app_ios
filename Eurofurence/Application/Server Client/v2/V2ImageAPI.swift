@@ -8,17 +8,17 @@
 
 import Foundation
 
-struct V2ImageAPI: ImageAPI {
+public struct V2ImageAPI: ImageAPI {
 
     private let jsonSession: JSONSession
     let apiUrl: String
 
-    init(jsonSession: JSONSession, apiUrl: V2ApiUrlProviding) {
+    public init(jsonSession: JSONSession, apiUrl: V2ApiUrlProviding) {
         self.jsonSession = jsonSession
         self.apiUrl = apiUrl.url
     }
 
-    func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void) {
+    public func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void) {
         let url = apiUrl + "Images/\(identifier)/Content"
         let request = JSONRequest(url: url, body: Data())
         jsonSession.get(request) { (data, _) in

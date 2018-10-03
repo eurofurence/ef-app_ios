@@ -8,12 +8,12 @@
 
 import Foundation
 
-enum LogoutResult {
+public enum LogoutResult {
     case success
     case failure
 }
 
-enum PrivateMessageResult {
+public enum PrivateMessageResult {
     case success([Message])
     case failedToLoad
     case userNotAuthenticated

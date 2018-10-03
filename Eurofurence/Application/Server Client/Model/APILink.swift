@@ -8,21 +8,27 @@
 
 import Foundation
 
-struct APILink: Comparable, Equatable {
+public struct APILink: Comparable, Equatable {
 
-    enum FragmentType: Int {
+    public enum FragmentType: Int {
         case WebExternal
     }
 
-    var name: String
-    var fragmentType: FragmentType
-    var target: String
+    public var name: String
+    public var fragmentType: FragmentType
+    public var target: String
 
-    static func <(lhs: APILink, rhs: APILink) -> Bool {
+    public init(name: String, fragmentType: FragmentType, target: String) {
+        self.name = name
+        self.fragmentType = fragmentType
+        self.target = target
+    }
+
+    public static func <(lhs: APILink, rhs: APILink) -> Bool {
         return lhs.name < rhs.name
     }
 
-    static func ==(lhs: APILink, rhs: APILink) -> Bool {
+    public static func ==(lhs: APILink, rhs: APILink) -> Bool {
         return lhs.name == rhs.name && lhs.fragmentType == rhs.fragmentType && lhs.target == rhs.target
     }
 

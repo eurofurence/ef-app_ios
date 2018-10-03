@@ -6,7 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-protocol PrivateMessagesAPI {
+public protocol PrivateMessagesAPI {
 
     func loadPrivateMessages(authorizationToken: String, completionHandler: @escaping ([Message]?) -> Void)
     func markMessageWithIdentifierAsRead(_ identifier: String, authorizationToken: String)

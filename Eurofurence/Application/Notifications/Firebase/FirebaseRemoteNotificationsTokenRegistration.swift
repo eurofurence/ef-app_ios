@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct FirebaseRemoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration {
+public struct FirebaseRemoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration {
 
     private var buildConfiguration: BuildConfigurationProviding
     private var appVersion: AppVersionProviding
     private var firebaseAdapter: FirebaseAdapter
     private var fcmRegistration: FCMDeviceRegistration
 
-    init(buildConfiguration: BuildConfigurationProviding,
+    public init(buildConfiguration: BuildConfigurationProviding,
          appVersion: AppVersionProviding,
          firebaseAdapter: FirebaseAdapter,
          fcmRegistration: FCMDeviceRegistration) {
@@ -25,7 +25,7 @@ struct FirebaseRemoteNotificationsTokenRegistration: RemoteNotificationsTokenReg
         self.fcmRegistration = fcmRegistration
     }
 
-    func registerRemoteNotificationsDeviceToken(_ token: Data?,
+    public func registerRemoteNotificationsDeviceToken(_ token: Data?,
                                                 userAuthenticationToken: String?,
                                                 completionHandler: @escaping (Error?) -> Void) {
         firebaseAdapter.setAPNSToken(deviceToken: token)

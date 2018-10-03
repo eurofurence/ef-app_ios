@@ -6,7 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-protocol CredentialStore {
+public protocol CredentialStore {
 
     var persistedCredential: Credential? { get }
 

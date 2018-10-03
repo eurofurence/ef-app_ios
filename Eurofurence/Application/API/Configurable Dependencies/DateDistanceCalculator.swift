@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol DateDistanceCalculator {
+public protocol DateDistanceCalculator {
 
     func calculateDays(between first: Date, and second: Date) -> Int
 

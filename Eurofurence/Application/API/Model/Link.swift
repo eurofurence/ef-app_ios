@@ -6,37 +6,43 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-struct Link: Comparable, Hashable, Equatable {
+public struct Link: Comparable, Hashable, Equatable {
 
-    enum Kind: Int {
+    public enum Kind: Int {
         case webExternal
     }
 
-    var name: String
-    var type: Kind
-    var contents: AnyHashable
+    public var name: String
+    public var type: Kind
+    public var contents: AnyHashable
 
-    var hashValue: Int {
+    public init(name: String, type: Kind, contents: AnyHashable) {
+        self.name = name
+        self.type = type
+        self.contents = contents
+    }
+
+    public var hashValue: Int {
         return name.hashValue
     }
 
-    static func <(lhs: Link, rhs: Link) -> Bool {
+    public static func <(lhs: Link, rhs: Link) -> Bool {
         return lhs.name < rhs.name
     }
 
-    static func ==(lhs: Link, rhs: Link) -> Bool {
+    public static func ==(lhs: Link, rhs: Link) -> Bool {
         return lhs.name == rhs.name && lhs.type == rhs.type && lhs.contents == rhs.contents
     }
 
 }
 
-extension Link {
+public extension Link {
 
-    static func fromServerModel(_ link: APILink) -> Link {
+    public static func fromServerModel(_ link: APILink) -> Link {
         return Link(name: link.name, type: Link.Kind(rawValue: link.fragmentType.rawValue)!, contents: link.target)
     }
 
-    static func fromServerModels(_ links: [APILink]) -> [Link] {
+    public static func fromServerModels(_ links: [APILink]) -> [Link] {
         return links.map(fromServerModel)
     }
 

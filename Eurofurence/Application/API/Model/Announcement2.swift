@@ -8,42 +8,49 @@
 
 import Foundation
 
-struct Announcement2: Equatable {
+public struct Announcement2: Equatable {
 
-    struct Identifier: Comparable, Equatable, Hashable, RawRepresentable {
+    public struct Identifier: Comparable, Equatable, Hashable, RawRepresentable {
 
-        typealias RawValue = String
+        public typealias RawValue = String
 
-        init(_ value: String) {
+        public init(_ value: String) {
             self.rawValue = value
         }
 
-        init?(rawValue: String) {
+        public init?(rawValue: String) {
             self.rawValue = rawValue
         }
 
-        var rawValue: String
+        public var rawValue: String
 
-        static func < (lhs: Announcement2.Identifier, rhs: Announcement2.Identifier) -> Bool {
+        public static func < (lhs: Announcement2.Identifier, rhs: Announcement2.Identifier) -> Bool {
             return lhs.rawValue < rhs.rawValue
         }
 
     }
 
-    var identifier: Identifier
-    var title: String
-    var content: String
-    var date: Date
+    public var identifier: Identifier
+    public var title: String
+    public var content: String
+    public var date: Date
+
+    public init(identifier: Identifier, title: String, content: String, date: Date) {
+        self.identifier = identifier
+        self.title = title
+        self.content = content
+        self.date = date
+    }
 
 }
 
-extension Announcement2 {
+public extension Announcement2 {
 
-    static func fromServerModels(_ models: [APIAnnouncement]) -> [Announcement2] {
+    public static func fromServerModels(_ models: [APIAnnouncement]) -> [Announcement2] {
         return models.map(Announcement2.init)
     }
 
-    init(serverModel: APIAnnouncement) {
+    public init(serverModel: APIAnnouncement) {
         identifier = Announcement2.Identifier(serverModel.identifier)
         title = serverModel.title
         content = serverModel.content

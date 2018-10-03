@@ -8,7 +8,7 @@
 
 import Foundation
 
-class EurofurenceApplicationBuilder {
+public class EurofurenceApplicationBuilder {
 
     private var userPreferences: UserPreferences
     private var dataStore: EurofurenceDataStore
@@ -34,7 +34,7 @@ class EurofurenceApplicationBuilder {
     private var mapCoordinateRender: MapCoordinateRender
     private var forceRefreshRequired: ForceRefreshRequired
 
-    init() {
+    public init() {
         userPreferences = UserDefaultsPreferences()
         dataStore = CoreDataEurofurenceDataStore()
 
@@ -71,144 +71,144 @@ class EurofurenceApplicationBuilder {
     }
 
     @discardableResult
-    func with(_ userPreferences: UserPreferences) -> EurofurenceApplicationBuilder {
+    public func with(_ userPreferences: UserPreferences) -> EurofurenceApplicationBuilder {
         self.userPreferences = userPreferences
         return self
     }
 
     @discardableResult
-    func with(_ dataStore: EurofurenceDataStore) -> EurofurenceApplicationBuilder {
+    public func with(_ dataStore: EurofurenceDataStore) -> EurofurenceApplicationBuilder {
         self.dataStore = dataStore
         return self
     }
 
     @discardableResult
-    func with(_ remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration) -> EurofurenceApplicationBuilder {
+    public func with(_ remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration) -> EurofurenceApplicationBuilder {
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
         return self
     }
 
     @discardableResult
-    func with(_ pushPermissionsRequester: PushPermissionsRequester) -> EurofurenceApplicationBuilder {
+    public func with(_ pushPermissionsRequester: PushPermissionsRequester) -> EurofurenceApplicationBuilder {
         self.pushPermissionsRequester = pushPermissionsRequester
         return self
     }
 
     @discardableResult
-    func with(_ clock: Clock) -> EurofurenceApplicationBuilder {
+    public func with(_ clock: Clock) -> EurofurenceApplicationBuilder {
         self.clock = clock
         return self
     }
 
     @discardableResult
-    func with(_ credentialStore: CredentialStore) -> EurofurenceApplicationBuilder {
+    public func with(_ credentialStore: CredentialStore) -> EurofurenceApplicationBuilder {
         self.credentialStore = credentialStore
         return self
     }
 
     @discardableResult
-    func with(_ loginAPI: LoginAPI) -> EurofurenceApplicationBuilder {
+    public func with(_ loginAPI: LoginAPI) -> EurofurenceApplicationBuilder {
         self.loginAPI = loginAPI
         return self
     }
 
     @discardableResult
-    func with(_ privateMessagesAPI: PrivateMessagesAPI) -> EurofurenceApplicationBuilder {
+    public func with(_ privateMessagesAPI: PrivateMessagesAPI) -> EurofurenceApplicationBuilder {
         self.privateMessagesAPI = privateMessagesAPI
         return self
     }
 
     @discardableResult
-    func with(_ syncAPI: SyncAPI) -> EurofurenceApplicationBuilder {
+    public func with(_ syncAPI: SyncAPI) -> EurofurenceApplicationBuilder {
         self.syncAPI = syncAPI
         return self
     }
 
     @discardableResult
-    func with(_ dateDistanceCalculator: DateDistanceCalculator) -> EurofurenceApplicationBuilder {
+    public func with(_ dateDistanceCalculator: DateDistanceCalculator) -> EurofurenceApplicationBuilder {
         self.dateDistanceCalculator = dateDistanceCalculator
         return self
     }
 
     @discardableResult
-    func with(_ conventionStartDateRepository: ConventionStartDateRepository) -> EurofurenceApplicationBuilder {
+    public func with(_ conventionStartDateRepository: ConventionStartDateRepository) -> EurofurenceApplicationBuilder {
         self.conventionStartDateRepository = conventionStartDateRepository
         return self
     }
 
     @discardableResult
-    func with(_ significantTimeChangeEventSource: SignificantTimeChangeEventSource) -> EurofurenceApplicationBuilder {
+    public func with(_ significantTimeChangeEventSource: SignificantTimeChangeEventSource) -> EurofurenceApplicationBuilder {
         self.significantTimeChangeEventSource = significantTimeChangeEventSource
         return self
     }
 
     @discardableResult
-    func with(timeIntervalForUpcomingEventsSinceNow: TimeInterval) -> EurofurenceApplicationBuilder {
+    public func with(timeIntervalForUpcomingEventsSinceNow: TimeInterval) -> EurofurenceApplicationBuilder {
         self.timeIntervalForUpcomingEventsSinceNow = timeIntervalForUpcomingEventsSinceNow
         return self
     }
 
     @discardableResult
-    func with(_ imageAPI: ImageAPI) -> EurofurenceApplicationBuilder {
+    public func with(_ imageAPI: ImageAPI) -> EurofurenceApplicationBuilder {
         self.imageAPI = imageAPI
         return self
     }
 
     @discardableResult
-    func with(_ imageRepository: ImageRepository) -> EurofurenceApplicationBuilder {
+    public func with(_ imageRepository: ImageRepository) -> EurofurenceApplicationBuilder {
         self.imageRepository = imageRepository
         return self
     }
 
     @discardableResult
-    func with(_ significantTimeChangeAdapter: SignificantTimeChangeAdapter) -> EurofurenceApplicationBuilder {
+    public func with(_ significantTimeChangeAdapter: SignificantTimeChangeAdapter) -> EurofurenceApplicationBuilder {
         self.significantTimeChangeAdapter = significantTimeChangeAdapter
         return self
     }
 
     @discardableResult
-    func with(_ urlOpener: URLOpener) -> EurofurenceApplicationBuilder {
+    public func with(_ urlOpener: URLOpener) -> EurofurenceApplicationBuilder {
         self.urlOpener = urlOpener
         return self
     }
 
     @discardableResult
-    func with(_ collectThemAllRequestFactory: CollectThemAllRequestFactory) -> EurofurenceApplicationBuilder {
+    public func with(_ collectThemAllRequestFactory: CollectThemAllRequestFactory) -> EurofurenceApplicationBuilder {
         self.collectThemAllRequestFactory = collectThemAllRequestFactory
         return self
     }
 
     @discardableResult
-    func with(_ longRunningTaskManager: LongRunningTaskManager) -> EurofurenceApplicationBuilder {
+    public func with(_ longRunningTaskManager: LongRunningTaskManager) -> EurofurenceApplicationBuilder {
         self.longRunningTaskManager = longRunningTaskManager
         return self
     }
 
     @discardableResult
-    func with(_ notificationsService: NotificationsService) -> EurofurenceApplicationBuilder {
+    public func with(_ notificationsService: NotificationsService) -> EurofurenceApplicationBuilder {
         self.notificationsService = notificationsService
         return self
     }
 
     @discardableResult
-    func with(_ hoursDateFormatter: HoursDateFormatter) -> EurofurenceApplicationBuilder {
+    public func with(_ hoursDateFormatter: HoursDateFormatter) -> EurofurenceApplicationBuilder {
         self.hoursDateFormatter = hoursDateFormatter
         return self
     }
 
     @discardableResult
-    func with(_ mapCoordinateRender: MapCoordinateRender) -> EurofurenceApplicationBuilder {
+    public func with(_ mapCoordinateRender: MapCoordinateRender) -> EurofurenceApplicationBuilder {
         self.mapCoordinateRender = mapCoordinateRender
         return self
     }
 
     @discardableResult
-    func with(_ forceRefreshRequired: ForceRefreshRequired) -> EurofurenceApplicationBuilder {
+    public func with(_ forceRefreshRequired: ForceRefreshRequired) -> EurofurenceApplicationBuilder {
         self.forceRefreshRequired = forceRefreshRequired
         return self
     }
 
-    func build() -> EurofurenceApplicationProtocol {
+    public func build() -> EurofurenceApplicationProtocol {
         return EurofurenceApplication(userPreferences: userPreferences,
                                       dataStore: dataStore,
                                       remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,

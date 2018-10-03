@@ -8,13 +8,13 @@
 
 import Foundation
 
-enum EurofurenceDataStoreState {
+public enum EurofurenceDataStoreState {
     case absent
     case stale
     case available
 }
 
-protocol EurofurenceApplicationProtocol: ApplicationNotificationHandling,
+public protocol EurofurenceApplicationProtocol: ApplicationNotificationHandling,
                                          RefreshService,
                                          AnnouncementsService,
                                          AuthenticationService,

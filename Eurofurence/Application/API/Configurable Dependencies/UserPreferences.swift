@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol UserPreferences {
+public protocol UserPreferences {
 
     var refreshStoreOnLaunch: Bool { get }
     var upcomingEventReminderInterval: TimeInterval { get }

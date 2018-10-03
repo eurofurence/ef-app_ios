@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SyncAPI {
+public protocol SyncAPI {
 
     func fetchLatestData(lastSyncTime: Date?, completionHandler: @escaping (APISyncResponse?) -> Void)
 

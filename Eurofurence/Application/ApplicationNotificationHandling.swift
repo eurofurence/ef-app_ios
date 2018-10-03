@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ApplicationPushActionResult: Equatable {
+public enum ApplicationPushActionResult: Equatable {
     case successfulSync
     case failedSync
     case unknown
@@ -17,7 +17,7 @@ enum ApplicationPushActionResult: Equatable {
     case event(Event2.Identifier)
 }
 
-protocol ApplicationNotificationHandling {
+public protocol ApplicationNotificationHandling {
 
     func handleRemoteNotification(payload: [String: String], completionHandler: @escaping (ApplicationPushActionResult) -> Void)
 

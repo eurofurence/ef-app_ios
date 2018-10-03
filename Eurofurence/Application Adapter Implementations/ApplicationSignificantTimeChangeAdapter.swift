@@ -10,18 +10,18 @@ import UIKit
 
 // TODO: Why are there two of these?
 
-class ApplicationSignificantTimeChangeAdapter: SignificantTimeChangeAdapter {
+public class ApplicationSignificantTimeChangeAdapter: SignificantTimeChangeAdapter {
 
     private var notificationRegistration: NSObjectProtocol?
 
-    init() {
+    public init() {
         notificationRegistration = NotificationCenter.default.addObserver(forName: UIApplication.significantTimeChangeNotification, object: nil, queue: .main) { (_) in
             self.delegate?.significantTimeChangeDidOccur()
         }
     }
 
     private var delegate: SignificantTimeChangeAdapterDelegate?
-    func setDelegate(_ delegate: SignificantTimeChangeAdapterDelegate) {
+    public func setDelegate(_ delegate: SignificantTimeChangeAdapterDelegate) {
         self.delegate = delegate
     }
 

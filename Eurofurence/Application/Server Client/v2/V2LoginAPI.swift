@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct V2LoginAPI: LoginAPI {
+public struct V2LoginAPI: LoginAPI {
 
     // MARK: Properties
 
@@ -19,7 +19,7 @@ struct V2LoginAPI: LoginAPI {
 
     // MARK: Initialization
 
-    init(jsonSession: JSONSession, apiUrl: V2ApiUrlProviding) {
+    public init(jsonSession: JSONSession, apiUrl: V2ApiUrlProviding) {
         self.jsonSession = jsonSession
         self.apiUrl = apiUrl.url
 
@@ -32,7 +32,7 @@ struct V2LoginAPI: LoginAPI {
 
     // MARK: LoginAPI
 
-    func performLogin(request: LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void) {
+    public func performLogin(request: LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void) {
         let url = apiUrl + "Tokens/RegSys"
         let jsonData = try! encoder.encode(Request(from: request))
         let jsonRequest = JSONRequest(url: url, body: jsonData)

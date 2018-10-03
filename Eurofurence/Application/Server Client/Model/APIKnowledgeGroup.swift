@@ -8,12 +8,20 @@
 
 import Foundation
 
-struct APIKnowledgeGroup: Equatable {
+public struct APIKnowledgeGroup: Equatable {
 
-    var identifier: String
-    var order: Int
-    var groupName: String
-    var groupDescription: String
-    var fontAwesomeCharacterAddress: String
+    public var identifier: String
+    public var order: Int
+    public var groupName: String
+    public var groupDescription: String
+    public var fontAwesomeCharacterAddress: String
+
+    public init(identifier: String, order: Int, groupName: String, groupDescription: String, fontAwesomeCharacterAddress: String) {
+        self.identifier = identifier
+        self.order = order
+        self.groupName = groupName
+        self.groupDescription = groupDescription
+        self.fontAwesomeCharacterAddress = fontAwesomeCharacterAddress
+    }
 
 }

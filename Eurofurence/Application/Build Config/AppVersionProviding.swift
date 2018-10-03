@@ -8,17 +8,17 @@
 
 import Foundation
 
-protocol AppVersionProviding {
+public protocol AppVersionProviding {
 
     var version: String { get }
 
 }
 
-struct BundleAppVersionProviding: AppVersionProviding {
+public struct BundleAppVersionProviding: AppVersionProviding {
 
-    static let shared = BundleAppVersionProviding()
+    public static let shared = BundleAppVersionProviding()
 
-    var version: String {
+    public var version: String {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
     }
 

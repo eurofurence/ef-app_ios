@@ -8,25 +8,46 @@
 
 import Foundation
 
-struct APIDealer: Equatable {
+public struct APIDealer: Equatable {
 
-    var identifier: String
-    var displayName: String
-    var attendeeNickname: String
-    var attendsOnThursday: Bool
-    var attendsOnFriday: Bool
-    var attendsOnSaturday: Bool
-    var isAfterDark: Bool
-    var artistThumbnailImageId: String?
-    var artistImageId: String?
-    var artPreviewImageId: String?
-    var categories: [String]
-    var shortDescription: String
-    var links: [APILink]?
-    var twitterHandle: String
-    var telegramHandle: String
-    var aboutTheArtistText: String
-    var aboutTheArtText: String
-    var artPreviewCaption: String
+    public var identifier: String
+    public var displayName: String
+    public var attendeeNickname: String
+    public var attendsOnThursday: Bool
+    public var attendsOnFriday: Bool
+    public var attendsOnSaturday: Bool
+    public var isAfterDark: Bool
+    public var artistThumbnailImageId: String?
+    public var artistImageId: String?
+    public var artPreviewImageId: String?
+    public var categories: [String]
+    public var shortDescription: String
+    public var links: [APILink]?
+    public var twitterHandle: String
+    public var telegramHandle: String
+    public var aboutTheArtistText: String
+    public var aboutTheArtText: String
+    public var artPreviewCaption: String
+
+    public init(identifier: String, displayName: String, attendeeNickname: String, attendsOnThursday: Bool, attendsOnFriday: Bool, attendsOnSaturday: Bool, isAfterDark: Bool, artistThumbnailImageId: String?, artistImageId: String?, artPreviewImageId: String?, categories: [String], shortDescription: String, links: [APILink]?, twitterHandle: String, telegramHandle: String, aboutTheArtistText: String, aboutTheArtText: String, artPreviewCaption: String) {
+        self.identifier = identifier
+        self.displayName = displayName
+        self.attendeeNickname = attendeeNickname
+        self.attendsOnThursday = attendsOnThursday
+        self.attendsOnFriday = attendsOnFriday
+        self.attendsOnSaturday = attendsOnSaturday
+        self.isAfterDark = isAfterDark
+        self.artistThumbnailImageId = artistThumbnailImageId
+        self.artistImageId = artistImageId
+        self.artPreviewImageId = artPreviewImageId
+        self.categories = categories
+        self.shortDescription = shortDescription
+        self.links = links
+        self.twitterHandle = twitterHandle
+        self.telegramHandle = telegramHandle
+        self.aboutTheArtistText = aboutTheArtistText
+        self.aboutTheArtText = aboutTheArtText
+        self.artPreviewCaption = artPreviewCaption
+    }
 
 }

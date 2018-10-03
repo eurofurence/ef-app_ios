@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ImageRepository {
+public protocol ImageRepository {
 
     func save(_ image: ImageEntity)
     func deleteEntity(identifier: String)

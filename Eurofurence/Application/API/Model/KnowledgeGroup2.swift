@@ -8,44 +8,53 @@
 
 import Foundation
 
-struct KnowledgeGroup2: Comparable, Equatable {
+public struct KnowledgeGroup2: Comparable, Equatable {
 
-    struct Identifier: Comparable, Equatable, Hashable, RawRepresentable {
+    public struct Identifier: Comparable, Equatable, Hashable, RawRepresentable {
 
-        typealias RawValue = String
+        public typealias RawValue = String
 
-        init(_ value: String) {
+        public init(_ value: String) {
             self.rawValue = value
         }
 
-        init?(rawValue: String) {
+        public init?(rawValue: String) {
             self.rawValue = rawValue
         }
 
-        var rawValue: String
+        public var rawValue: String
 
-        static func < (lhs: KnowledgeGroup2.Identifier, rhs: KnowledgeGroup2.Identifier) -> Bool {
+        public static func < (lhs: KnowledgeGroup2.Identifier, rhs: KnowledgeGroup2.Identifier) -> Bool {
             return lhs.rawValue < rhs.rawValue
         }
 
     }
 
-    var identifier: KnowledgeGroup2.Identifier
-    var title: String
-    var groupDescription: String
-    var fontAwesomeCharacterAddress: Character
-    var order: Int
-    var entries: [KnowledgeEntry2]
+    public var identifier: KnowledgeGroup2.Identifier
+    public var title: String
+    public var groupDescription: String
+    public var fontAwesomeCharacterAddress: Character
+    public var order: Int
+    public var entries: [KnowledgeEntry2]
 
-    static func <(lhs: KnowledgeGroup2, rhs: KnowledgeGroup2) -> Bool {
+    public init(identifier: KnowledgeGroup2.Identifier, title: String, groupDescription: String, fontAwesomeCharacterAddress: Character, order: Int, entries: [KnowledgeEntry2]) {
+        self.identifier = identifier
+        self.title = title
+        self.groupDescription = groupDescription
+        self.fontAwesomeCharacterAddress = fontAwesomeCharacterAddress
+        self.order = order
+        self.entries = entries
+    }
+
+    public static func <(lhs: KnowledgeGroup2, rhs: KnowledgeGroup2) -> Bool {
         return lhs.order < rhs.order
     }
 
 }
 
-extension KnowledgeGroup2 {
+public extension KnowledgeGroup2 {
 
-    static func fromServerModels(groups: [APIKnowledgeGroup], entries: [APIKnowledgeEntry]) -> [KnowledgeGroup2] {
+    public static func fromServerModels(groups: [APIKnowledgeGroup], entries: [APIKnowledgeEntry]) -> [KnowledgeGroup2] {
         return groups.map({ (group) -> KnowledgeGroup2 in
             let entries = entries.filter({ $0.groupIdentifier == group.identifier }).map(KnowledgeEntry2.fromServerModel).sorted()
             let defaultFontAwesomeBackupCharacter: Character = " "

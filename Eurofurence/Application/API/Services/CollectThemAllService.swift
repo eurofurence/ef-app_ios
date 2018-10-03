@@ -8,13 +8,13 @@
 
 import Foundation
 
-protocol CollectThemAllService {
+public protocol CollectThemAllService {
 
     func subscribe(_ observer: CollectThemAllURLObserver)
 
 }
 
-protocol CollectThemAllURLObserver {
+public protocol CollectThemAllURLObserver {
 
     func collectThemAllGameRequestDidChange(_ urlRequest: URLRequest)
 

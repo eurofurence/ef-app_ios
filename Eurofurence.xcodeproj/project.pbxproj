@@ -2898,7 +2898,6 @@
 				CAF3F63E20167E7000374B4C /* Authentication */,
 				78D7EEC21F196BC3005372A9 /* Build Config */,
 				CA162E7120A4B69A004AFED6 /* Countdown */,
-				CAF3F63F20167EF700374B4C /* Data Store */,
 				CA36A48D20D92EA400EE6537 /* Dealers */,
 				CAAF4C772164E34F0017946C /* Default Dependency Implementations */,
 				CA8D97C9201610C80074838F /* Domain Events */,
@@ -3382,6 +3381,7 @@
 				CABF03B82041C2B00028BD62 /* KnowledgeEntry2.swift */,
 				CABF03B92041C2B00028BD62 /* KnowledgeGroup2.swift */,
 				CAD3BDAE205870B500C91E6E /* Link.swift */,
+				CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */,
 				CA6A8D9F20E2CAB7007536CD /* Map2.swift */,
 				CA30EAC31F2672BF0053DBF6 /* Message.swift */,
 				CA162E9520A88854004AFED6 /* Room.swift */,
@@ -6071,17 +6071,9 @@
 		CAF3F63E20167E7000374B4C /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */,
 				CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */,
 			);
 			path = Authentication;
-			sourceTree = "<group>";
-		};
-		CAF3F63F20167EF700374B4C /* Data Store */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Data Store";
 			sourceTree = "<group>";
 		};
 		CAF59794204499FB00089BE8 /* Model */ = {

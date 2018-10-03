@@ -8,20 +8,20 @@
 
 import Foundation
 
-protocol JSONSession {
+public protocol JSONSession {
 
     func get(_ request: JSONRequest, completionHandler: @escaping (Data?, Error?) -> Void)
     func post(_ request: JSONRequest, completionHandler: @escaping (Data?, Error?) -> Void)
 
 }
 
-struct JSONRequest {
+public struct JSONRequest {
 
-    var url: String
-    var body: Data
-    var headers: [String: String]
+    public var url: String
+    public var body: Data
+    public var headers: [String: String]
 
-    init(url: String, body: Data, headers: [String: String] = [:]) {
+    public init(url: String, body: Data, headers: [String: String] = [:]) {
         self.url = url
         self.body = body
         self.headers = headers

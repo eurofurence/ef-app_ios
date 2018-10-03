@@ -8,9 +8,14 @@
 
 import Foundation
 
-struct APITrack: Equatable {
+public struct APITrack: Equatable {
 
-    var trackIdentifier: String
-    var name: String
+    public var trackIdentifier: String
+    public var name: String
+
+    public init(trackIdentifier: String, name: String) {
+        self.trackIdentifier = trackIdentifier
+        self.name = name
+    }
 
 }

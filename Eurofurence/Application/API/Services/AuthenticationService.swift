@@ -6,7 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-protocol AuthenticationService {
+public protocol AuthenticationService {
 
     func add(_ observer: AuthenticationStateObserver)
     func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void)
@@ -14,12 +14,12 @@ protocol AuthenticationService {
 
 }
 
-enum LoginResult {
+public enum LoginResult {
     case success(User)
     case failure
 }
 
-protocol AuthenticationStateObserver {
+public protocol AuthenticationStateObserver {
 
     func userDidLogin(_ user: User)
     func userDidLogout()

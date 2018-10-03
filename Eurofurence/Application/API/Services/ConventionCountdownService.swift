@@ -6,18 +6,18 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-protocol ConventionCountdownService {
+public protocol ConventionCountdownService {
 
     func add(_ observer: ConventionCountdownServiceObserver)
 
 }
 
-enum ConventionCountdownState {
+public enum ConventionCountdownState {
     case countingDown(daysUntilConvention: Int)
     case countdownElapsed
 }
 
-protocol ConventionCountdownServiceObserver {
+public protocol ConventionCountdownServiceObserver {
 
     func conventionCountdownStateDidChange(to state: ConventionCountdownState)
 

@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
+public struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
 
     private class EurofurencePersistentContainer: NSPersistentContainer {
         override class func defaultDirectoryURL() -> URL {
@@ -19,12 +19,12 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
 
     // MARK: Properties
 
-    let container: NSPersistentContainer
-    let storeLocation: URL
+    public let container: NSPersistentContainer
+    public let storeLocation: URL
 
     // MARK: Initialization
 
-    init(storeName: String) {
+    public init(storeName: String) {
         container = EurofurencePersistentContainer(name: "EurofurenceApplicationModel")
 
         storeLocation = EurofurencePersistentContainer.defaultDirectoryURL().appendingPathComponent(storeName)
@@ -36,13 +36,13 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         container.loadPersistentStores { (_, _) in }
     }
 
-    init() {
+    public init() {
         self.init(storeName: "EF24")
     }
 
     // MARK: EurofurenceDataStore
 
-    func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
+    public func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
         let context = container.viewContext
         let transaction = Transaction()
         block(transaction)
@@ -55,15 +55,15 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         }
     }
 
-    func getSavedKnowledgeGroups() -> [APIKnowledgeGroup]? {
+    public func getSavedKnowledgeGroups() -> [APIKnowledgeGroup]? {
         return getModels(fetchRequest: KnowledgeGroupEntity.fetchRequest())
     }
 
-    func getSavedKnowledgeEntries() -> [APIKnowledgeEntry]? {
+    public func getSavedKnowledgeEntries() -> [APIKnowledgeEntry]? {
         return getModels(fetchRequest: KnowledgeEntryEntity.fetchRequest())
     }
 
-    func getLastRefreshDate() -> Date? {
+    public func getLastRefreshDate() -> Date? {
         var lastRefreshDate: Date?
         let context = container.viewContext
         context.performAndWait {
@@ -82,43 +82,43 @@ struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         return lastRefreshDate
     }
 
-    func getSavedRooms() -> [APIRoom]? {
+    public func getSavedRooms() -> [APIRoom]? {
         return getModels(fetchRequest: RoomEntity.fetchRequest())
     }
 
-    func getSavedTracks() -> [APITrack]? {
+    public func getSavedTracks() -> [APITrack]? {
         return getModels(fetchRequest: TrackEntity.fetchRequest())
     }
 
-    func getSavedEvents() -> [APIEvent]? {
+    public func getSavedEvents() -> [APIEvent]? {
         return getModels(fetchRequest: EventEntity.fetchRequest())
     }
 
-    func getSavedAnnouncements() -> [APIAnnouncement]? {
+    public func getSavedAnnouncements() -> [APIAnnouncement]? {
         return getModels(fetchRequest: AnnouncementEntity.fetchRequest())
     }
 
-    func getSavedConferenceDays() -> [APIConferenceDay]? {
+    public func getSavedConferenceDays() -> [APIConferenceDay]? {
         return getModels(fetchRequest: ConferenceDayEntity.fetchRequest())
     }
 
-    func getSavedFavouriteEventIdentifiers() -> [Event2.Identifier]? {
+    public func getSavedFavouriteEventIdentifiers() -> [Event2.Identifier]? {
         return getModels(fetchRequest: FavouriteEventEntity.fetchRequest())
     }
 
-    func getSavedDealers() -> [APIDealer]? {
+    public func getSavedDealers() -> [APIDealer]? {
         return getModels(fetchRequest: DealerEntity.fetchRequest())
     }
 
-    func getSavedMaps() -> [APIMap]? {
+    public func getSavedMaps() -> [APIMap]? {
         return getModels(fetchRequest: MapEntity.fetchRequest())
     }
 
-    func getSavedReadAnnouncementIdentifiers() -> [Announcement2.Identifier]? {
+    public func getSavedReadAnnouncementIdentifiers() -> [Announcement2.Identifier]? {
         return getModels(fetchRequest: ReadAnnouncementEntity.fetchRequest())
     }
 
-    func getSavedImages() -> [APIImage]? {
+    public func getSavedImages() -> [APIImage]? {
         return getModels(fetchRequest: ImageModelEntity.fetchRequest())
     }
 

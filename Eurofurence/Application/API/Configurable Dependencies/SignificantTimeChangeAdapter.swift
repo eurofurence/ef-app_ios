@@ -8,13 +8,13 @@
 
 import Foundation
 
-protocol SignificantTimeChangeAdapter {
+public protocol SignificantTimeChangeAdapter {
 
     func setDelegate(_ delegate: SignificantTimeChangeAdapterDelegate)
 
 }
 
-protocol SignificantTimeChangeAdapterDelegate {
+public protocol SignificantTimeChangeAdapterDelegate {
 
     func significantTimeChangeDidOccur()
 

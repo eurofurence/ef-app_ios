@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol EurofurenceDataStore {
+public protocol EurofurenceDataStore {
 
     func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void)
 
@@ -28,7 +28,7 @@ protocol EurofurenceDataStore {
 
 }
 
-protocol EurofurenceDataStoreTransaction {
+public protocol EurofurenceDataStoreTransaction {
 
     func saveLastRefreshDate(_ lastRefreshDate: Date)
     func saveKnowledgeGroups(_ knowledgeGroups: [APIKnowledgeGroup])

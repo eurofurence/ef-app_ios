@@ -8,9 +8,14 @@
 
 import Foundation
 
-struct APIImage: Equatable {
+public struct APIImage: Equatable {
 
-    var identifier: String
-    var internalReference: String
+    public var identifier: String
+    public var internalReference: String
+
+    public init(identifier: String, internalReference: String) {
+        self.identifier = identifier
+        self.internalReference = internalReference
+    }
 
 }

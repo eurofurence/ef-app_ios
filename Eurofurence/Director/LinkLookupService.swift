@@ -8,18 +8,18 @@
 
 import Foundation
 
-protocol LinkLookupService {
+public protocol LinkLookupService {
 
     func lookupContent(for link: Link) -> LinkContentLookupResult?
 
 }
 
-enum LinkContentLookupResult: Equatable {
+public enum LinkContentLookupResult: Equatable {
 
     case web(URL)
     case externalURL(URL)
 
-    static func ==(lhs: LinkContentLookupResult, rhs: LinkContentLookupResult) -> Bool {
+    public static func ==(lhs: LinkContentLookupResult, rhs: LinkContentLookupResult) -> Bool {
         switch (lhs, rhs) {
         case (.web(let l), .web(let r)):
             return l == r

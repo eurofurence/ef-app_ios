@@ -8,12 +8,16 @@
 
 import Foundation
 
-struct Day: Comparable {
+public struct Day: Comparable {
 
-    static func < (lhs: Day, rhs: Day) -> Bool {
+    public static func < (lhs: Day, rhs: Day) -> Bool {
         return lhs.date < rhs.date
     }
 
-    var date: Date
+    public var date: Date
+
+    public init(date: Date) {
+        self.date = date
+    }
 
 }

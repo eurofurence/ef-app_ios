@@ -8,13 +8,16 @@
 
 import Foundation
 
-struct DefaultCollectThemAllRequestFactory: CollectThemAllRequestFactory {
+public struct DefaultCollectThemAllRequestFactory: CollectThemAllRequestFactory {
 
-    func makeAnonymousGameURLRequest() -> URLRequest {
+    public init() {
+    }
+
+    public func makeAnonymousGameURLRequest() -> URLRequest {
         return URLRequest(url: makeGameURL(token: "empty"))
     }
 
-    func makeAuthenticatedGameURLRequest(credential: Credential) -> URLRequest {
+    public func makeAuthenticatedGameURLRequest(credential: Credential) -> URLRequest {
         return URLRequest(url: makeGameURL(token: credential.authenticationToken))
     }
 

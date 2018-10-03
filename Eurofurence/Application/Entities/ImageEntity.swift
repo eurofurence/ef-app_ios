@@ -8,17 +8,17 @@
 
 import Foundation
 
-class ImageEntity: Equatable {
+public class ImageEntity: Equatable {
 
-    static func ==(lhs: ImageEntity, rhs: ImageEntity) -> Bool {
+    public static func ==(lhs: ImageEntity, rhs: ImageEntity) -> Bool {
         return lhs.identifier == rhs.identifier &&
                lhs.pngImageData == rhs.pngImageData
     }
 
-    var identifier: String
-    var pngImageData: Data
+    public var identifier: String
+    public var pngImageData: Data
 
-    init(identifier: String, pngImageData: Data) {
+    public init(identifier: String, pngImageData: Data) {
         self.identifier = identifier
         self.pngImageData = pngImageData
     }

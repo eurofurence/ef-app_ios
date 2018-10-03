@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct V2PrivateMessagesAPI: PrivateMessagesAPI {
+public struct V2PrivateMessagesAPI: PrivateMessagesAPI {
 
     // MARK: Properties
 
@@ -18,7 +18,7 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
 
     // MARK: Initialization
 
-    init(jsonSession: JSONSession, apiUrl: V2ApiUrlProviding) {
+    public init(jsonSession: JSONSession, apiUrl: V2ApiUrlProviding) {
         self.jsonSession = jsonSession
         self.apiUrl = apiUrl.url
 
@@ -28,7 +28,7 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
 
     // MARK: PrivateMessagesAPI
 
-    func loadPrivateMessages(authorizationToken: String,
+    public func loadPrivateMessages(authorizationToken: String,
                              completionHandler: @escaping ([Message]?) -> Void) {
         let url = apiUrl + "Communication/PrivateMessages"
         var request = JSONRequest(url: url, body: Data())
@@ -45,7 +45,7 @@ struct V2PrivateMessagesAPI: PrivateMessagesAPI {
         }
     }
 
-    func markMessageWithIdentifierAsRead(_ identifier: String, authorizationToken: String) {
+    public func markMessageWithIdentifierAsRead(_ identifier: String, authorizationToken: String) {
         let url = apiUrl + "Communication/PrivateMessages/\(identifier)/Read"
         let messageContentsToSupportSwagger = "true".data(using: .utf8)!
         var request = JSONRequest(url: url, body: messageContentsToSupportSwagger)

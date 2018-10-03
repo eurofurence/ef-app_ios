@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol HoursDateFormatter {
+public protocol HoursDateFormatter {
 
     func hoursString(from date: Date) -> String
 

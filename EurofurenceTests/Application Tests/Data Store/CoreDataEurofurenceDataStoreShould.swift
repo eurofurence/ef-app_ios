@@ -7,7 +7,7 @@
 //
 
 import CoreData
-@testable import Eurofurence
+import Eurofurence
 import XCTest
 
 class CoreDataEurofurenceDataStoreShould: XCTestCase {

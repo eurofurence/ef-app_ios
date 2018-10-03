@@ -8,14 +8,14 @@
 
 import Foundation
 
-protocol EventsSchedule {
+public protocol EventsSchedule {
 
     func setDelegate(_ delegate: EventsScheduleDelegate)
     func restrictEvents(to day: Day)
 
 }
 
-protocol EventsScheduleDelegate {
+public protocol EventsScheduleDelegate {
 
     func scheduleEventsDidChange(to events: [Event2])
     func eventDaysDidChange(to days: [Day])
@@ -23,7 +23,7 @@ protocol EventsScheduleDelegate {
 
 }
 
-protocol EventsService {
+public protocol EventsService {
 
     func add(_ observer: EventsServiceObserver)
     func favouriteEvent(identifier: Event2.Identifier)
@@ -34,7 +34,7 @@ protocol EventsService {
 
 }
 
-protocol EventsServiceObserver {
+public protocol EventsServiceObserver {
 
     func eventsDidChange(to events: [Event2])
     func runningEventsDidChange(to events: [Event2])

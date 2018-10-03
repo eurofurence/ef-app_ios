@@ -8,11 +8,18 @@
 
 import Foundation
 
-struct LoginResponse {
+public struct LoginResponse {
 
-    var userIdentifier: String
-    var username: String
-    var token: String
-    var tokenValidUntil: Date
+    public var userIdentifier: String
+    public var username: String
+    public var token: String
+    public var tokenValidUntil: Date
+
+    public init(userIdentifier: String, username: String, token: String, tokenValidUntil: Date) {
+        self.userIdentifier = userIdentifier
+        self.username = username
+        self.token = token
+        self.tokenValidUntil = tokenValidUntil
+    }
 
 }

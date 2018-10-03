@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol FCMDeviceRegistration {
+public protocol FCMDeviceRegistration {
 
     func registerFCM(_ fcm: String,
                      topics: [FirebaseTopic],

@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct APISyncDelta<T>: Equatable where T: Equatable {
+public struct APISyncDelta<T>: Equatable where T: Equatable {
 
-    var changed: [T]
-    var deleted: [String]
-    var removeAllBeforeInsert: Bool
+    public var changed: [T]
+    public var deleted: [String]
+    public var removeAllBeforeInsert: Bool
 
-    init(changed: [T] = [], deleted: [String] = [], removeAllBeforeInsert: Bool = false) {
+    public init(changed: [T] = [], deleted: [String] = [], removeAllBeforeInsert: Bool = false) {
         self.changed = changed
         self.deleted = deleted
         self.removeAllBeforeInsert = removeAllBeforeInsert
@@ -22,17 +22,30 @@ struct APISyncDelta<T>: Equatable where T: Equatable {
 
 }
 
-struct APISyncResponse: Equatable {
+public struct APISyncResponse: Equatable {
 
-    var knowledgeGroups: APISyncDelta<APIKnowledgeGroup>
-    var knowledgeEntries: APISyncDelta<APIKnowledgeEntry>
-    var announcements: APISyncDelta<APIAnnouncement>
-    var events: APISyncDelta<APIEvent>
-    var rooms: APISyncDelta<APIRoom>
-    var tracks: APISyncDelta<APITrack>
-    var conferenceDays: APISyncDelta<APIConferenceDay>
-    var dealers: APISyncDelta<APIDealer>
-    var maps: APISyncDelta<APIMap>
-    var images: APISyncDelta<APIImage>
+    public var knowledgeGroups: APISyncDelta<APIKnowledgeGroup>
+    public var knowledgeEntries: APISyncDelta<APIKnowledgeEntry>
+    public var announcements: APISyncDelta<APIAnnouncement>
+    public var events: APISyncDelta<APIEvent>
+    public var rooms: APISyncDelta<APIRoom>
+    public var tracks: APISyncDelta<APITrack>
+    public var conferenceDays: APISyncDelta<APIConferenceDay>
+    public var dealers: APISyncDelta<APIDealer>
+    public var maps: APISyncDelta<APIMap>
+    public var images: APISyncDelta<APIImage>
+
+    public init(knowledgeGroups: APISyncDelta<APIKnowledgeGroup>, knowledgeEntries: APISyncDelta<APIKnowledgeEntry>, announcements: APISyncDelta<APIAnnouncement>, events: APISyncDelta<APIEvent>, rooms: APISyncDelta<APIRoom>, tracks: APISyncDelta<APITrack>, conferenceDays: APISyncDelta<APIConferenceDay>, dealers: APISyncDelta<APIDealer>, maps: APISyncDelta<APIMap>, images: APISyncDelta<APIImage>) {
+        self.knowledgeGroups = knowledgeGroups
+        self.knowledgeEntries = knowledgeEntries
+        self.announcements = announcements
+        self.events = events
+        self.rooms = rooms
+        self.tracks = tracks
+        self.conferenceDays = conferenceDays
+        self.dealers = dealers
+        self.maps = maps
+        self.images = images
+    }
 
 }

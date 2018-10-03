@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol NotificationsService {
+public protocol NotificationsService {
 
     func scheduleReminderForEvent(identifier: Event2.Identifier,
                                   scheduledFor date: Date,
@@ -19,11 +19,11 @@ protocol NotificationsService {
 
 }
 
-enum ApplicationNotificationKey: String, Codable {
+public enum ApplicationNotificationKey: String, Codable {
     case notificationContentKind
     case notificationContentIdentifier
 }
 
-enum ApplicationNotificationContentKind: String, Codable {
+public enum ApplicationNotificationContentKind: String, Codable {
     case event
 }

@@ -8,8 +8,12 @@
 
 import Foundation
 
-struct Room: Equatable {
+public struct Room: Equatable {
 
-    var name: String
+    public var name: String
+
+    public init(name: String) {
+        self.name = name
+    }
 
 }

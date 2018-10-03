@@ -8,9 +8,12 @@
 
 import Foundation
 
-struct PersistentImageRepository: ImageRepository {
+public struct PersistentImageRepository: ImageRepository {
 
-    func save(_ image: ImageEntity) {
+    public init() {
+    }
+
+    public func save(_ image: ImageEntity) {
         do {
             let imageURL = try makeImageRepositoryURL(for: image.identifier)
             try image.pngImageData.write(to: imageURL)
@@ -19,7 +22,7 @@ struct PersistentImageRepository: ImageRepository {
         }
     }
 
-    func deleteEntity(identifier: String) {
+    public func deleteEntity(identifier: String) {
         do {
             let imageURL = try makeImageRepositoryURL(for: identifier)
             try FileManager.default.removeItem(at: imageURL)
@@ -28,7 +31,7 @@ struct PersistentImageRepository: ImageRepository {
         }
     }
 
-    func loadImage(identifier: String) -> ImageEntity? {
+    public func loadImage(identifier: String) -> ImageEntity? {
         do {
             let imageURL = try makeImageRepositoryURL(for: identifier)
             let imageData = try Data(contentsOf: imageURL)
@@ -39,7 +42,7 @@ struct PersistentImageRepository: ImageRepository {
         }
     }
 
-    func containsImage(identifier: String) -> Bool {
+    public func containsImage(identifier: String) -> Bool {
         return loadImage(identifier: identifier) != nil
     }
 

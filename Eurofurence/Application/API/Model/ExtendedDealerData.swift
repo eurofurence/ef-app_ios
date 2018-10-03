@@ -8,24 +8,24 @@
 
 import Foundation
 
-struct ExtendedDealerData {
+public struct ExtendedDealerData {
 
-    var artistImagePNGData: Data?
-    var dealersDenMapLocationGraphicPNGData: Data?
-    var preferredName: String
-    var alternateName: String?
-    var categories: [String]
-    var dealerShortDescription: String
-    var isAttendingOnThursday: Bool
-    var isAttendingOnFriday: Bool
-    var isAttendingOnSaturday: Bool
-    var isAfterDark: Bool
-    var websiteName: String?
-    var twitterUsername: String?
-    var telegramUsername: String?
-    var aboutTheArtist: String?
-    var aboutTheArt: String?
-    var artPreviewImagePNGData: Data?
-    var artPreviewCaption: String?
+    public var artistImagePNGData: Data?
+    public var dealersDenMapLocationGraphicPNGData: Data?
+    public var preferredName: String
+    public var alternateName: String?
+    public var categories: [String]
+    public var dealerShortDescription: String
+    public var isAttendingOnThursday: Bool
+    public var isAttendingOnFriday: Bool
+    public var isAttendingOnSaturday: Bool
+    public var isAfterDark: Bool
+    public var websiteName: String?
+    public var twitterUsername: String?
+    public var telegramUsername: String?
+    public var aboutTheArtist: String?
+    public var aboutTheArt: String?
+    public var artPreviewImagePNGData: Data?
+    public var artPreviewCaption: String?
 
 }

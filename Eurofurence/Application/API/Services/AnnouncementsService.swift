@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol AnnouncementsService {
+public protocol AnnouncementsService {
 
     func add(_ observer: AnnouncementsServiceObserver)
     func openAnnouncement(identifier: Announcement2.Identifier, completionHandler: @escaping (Announcement2) -> Void)
@@ -16,7 +16,7 @@ protocol AnnouncementsService {
 
 }
 
-protocol AnnouncementsServiceObserver {
+public protocol AnnouncementsServiceObserver {
 
     func eurofurenceApplicationDidChangeAnnouncements(_ announcements: [Announcement2])
     func announcementsServiceDidUpdateReadAnnouncements(_ readAnnouncements: [Announcement2.Identifier])

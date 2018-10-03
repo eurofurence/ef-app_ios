@@ -8,14 +8,21 @@
 
 import Foundation
 
-struct Credential: Equatable {
+public struct Credential: Equatable {
 
-    var username: String
-    var registrationNumber: Int
-    var authenticationToken: String
-    var tokenExpiryDate: Date
+    public var username: String
+    public var registrationNumber: Int
+    public var authenticationToken: String
+    public var tokenExpiryDate: Date
 
-    func isValid(currentDate: Date) -> Bool {
+    public init(username: String, registrationNumber: Int, authenticationToken: String, tokenExpiryDate: Date) {
+        self.username = username
+        self.registrationNumber = registrationNumber
+        self.authenticationToken = authenticationToken
+        self.tokenExpiryDate = tokenExpiryDate
+    }
+
+    public func isValid(currentDate: Date) -> Bool {
         return currentDate < tokenExpiryDate
     }
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RefreshService {
+public protocol RefreshService {
 
     func add(_ observer: RefreshServiceObserver)
 
@@ -17,7 +17,7 @@ protocol RefreshService {
 
 }
 
-protocol RefreshServiceObserver {
+public protocol RefreshServiceObserver {
 
     func refreshServiceDidBeginRefreshing()
     func refreshServiceDidFinishRefreshing()

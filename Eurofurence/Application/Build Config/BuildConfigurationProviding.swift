@@ -6,20 +6,20 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-enum BuildConfiguration {
+public enum BuildConfiguration {
     case debug
     case release
 }
 
-protocol BuildConfigurationProviding {
+public protocol BuildConfigurationProviding {
 
     var configuration: BuildConfiguration { get }
 
 }
 
-struct PreprocessorBuildConfigurationProviding: BuildConfigurationProviding {
+public struct PreprocessorBuildConfigurationProviding: BuildConfigurationProviding {
 
-    var configuration: BuildConfiguration {
+    public var configuration: BuildConfiguration {
 #if DEBUG
             return .debug
 #else

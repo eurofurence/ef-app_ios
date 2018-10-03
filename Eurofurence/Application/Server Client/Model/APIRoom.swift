@@ -8,9 +8,14 @@
 
 import Foundation
 
-struct APIRoom: Equatable {
+public struct APIRoom: Equatable {
 
-    var roomIdentifier: String
-    var name: String
+    public var roomIdentifier: String
+    public var name: String
+
+    public init(roomIdentifier: String, name: String) {
+        self.roomIdentifier = roomIdentifier
+        self.name = name
+    }
 
 }

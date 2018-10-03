@@ -8,14 +8,19 @@
 
 import Foundation
 
-struct EurofurenceFCMDeviceRegistration: FCMDeviceRegistration {
+public struct EurofurenceFCMDeviceRegistration: FCMDeviceRegistration {
 
     var JSONSession: JSONSession
     var urlProviding: V2ApiUrlProviding
 
+    public init(JSONSession: JSONSession, urlProviding: V2ApiUrlProviding) {
+        self.JSONSession = JSONSession
+        self.urlProviding = urlProviding
+    }
+
     private let jsonEncoder = JSONEncoder()
 
-    func registerFCM(_ fcm: String,
+    public func registerFCM(_ fcm: String,
                      topics: [FirebaseTopic],
                      authenticationToken: String?,
                      completionHandler: @escaping (Error?) -> Void) {

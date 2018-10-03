@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ImageAPI {
+public protocol ImageAPI {
 
     func fetchImage(identifier: String, completionHandler: @escaping (Data?) -> Void)
 

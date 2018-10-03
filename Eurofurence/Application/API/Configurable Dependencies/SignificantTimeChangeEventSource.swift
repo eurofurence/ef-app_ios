@@ -8,13 +8,13 @@
 
 import Foundation
 
-protocol SignificantTimeChangeEventSource {
+public protocol SignificantTimeChangeEventSource {
 
     func add(_ observer: SignificantTimeChangeEventObserver)
 
 }
 
-protocol SignificantTimeChangeEventObserver {
+public protocol SignificantTimeChangeEventObserver {
 
     func significantTimeChangeDidOccur()
 

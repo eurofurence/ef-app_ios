@@ -9,23 +9,23 @@
 import FirebaseMessaging
 import Foundation
 
-struct FirebaseMessagingAdapter: FirebaseAdapter {
+public struct FirebaseMessagingAdapter: FirebaseAdapter {
 
     private let messaging = Messaging.messaging()
 
-    var fcmToken: String {
+    public var fcmToken: String {
         return messaging.fcmToken ?? ""
     }
 
-    func setAPNSToken(deviceToken: Data?) {
+    public func setAPNSToken(deviceToken: Data?) {
         messaging.apnsToken = deviceToken
     }
 
-    func subscribe(toTopic topic: FirebaseTopic) {
+    public func subscribe(toTopic topic: FirebaseTopic) {
         messaging.subscribe(toTopic: topic.description)
     }
 
-    func unsubscribe(fromTopic topic: FirebaseTopic) {
+    public func unsubscribe(fromTopic topic: FirebaseTopic) {
         messaging.unsubscribe(fromTopic: topic.description)
     }
 

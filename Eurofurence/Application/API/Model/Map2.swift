@@ -8,36 +8,36 @@
 
 import Foundation
 
-struct Map2: Equatable {
+public struct Map2: Equatable {
 
-    struct Identifier: Comparable, Equatable, Hashable, RawRepresentable {
+    public struct Identifier: Comparable, Equatable, Hashable, RawRepresentable {
 
-        typealias RawValue = String
+        public typealias RawValue = String
 
-        init(_ value: String) {
+        public init(_ value: String) {
             self.rawValue = value
         }
 
-        init?(rawValue: String) {
+        public init?(rawValue: String) {
             self.rawValue = rawValue
         }
 
-        var rawValue: String
+        public var rawValue: String
 
-        static func < (lhs: Map2.Identifier, rhs: Map2.Identifier) -> Bool {
+        public static func < (lhs: Map2.Identifier, rhs: Map2.Identifier) -> Bool {
             return lhs.rawValue < rhs.rawValue
         }
 
     }
 
-    enum Content: Equatable {
+    public enum Content: Equatable {
         case none
 		case location(x: Float, y: Float, name: String?)
         case room(Room)
         case dealer(Dealer2)
         indirect case multiple([Map2.Content])
 
-        static func + (lhs: inout Map2.Content, rhs: Map2.Content) {
+        public static func + (lhs: inout Map2.Content, rhs: Map2.Content) {
             switch lhs {
             case .multiple(let inner):
                 lhs = .multiple(inner + [rhs])
@@ -52,7 +52,12 @@ struct Map2: Equatable {
 
     }
 
-    var identifier: Map2.Identifier
-    var location: String
+    public var identifier: Map2.Identifier
+    public var location: String
+
+    public init(identifier: Map2.Identifier, location: String) {
+        self.identifier = identifier
+        self.location = location
+    }
 
 }

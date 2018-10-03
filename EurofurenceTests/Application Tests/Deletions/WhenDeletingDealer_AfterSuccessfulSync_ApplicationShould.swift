@@ -6,7 +6,7 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-@testable import Eurofurence
+import Eurofurence
 import XCTest
 
 class WhenDeletingDealer_AfterSuccessfulSync_ApplicationShould: XCTestCase {

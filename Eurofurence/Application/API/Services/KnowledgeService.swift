@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol KnowledgeService {
+public protocol KnowledgeService {
 
     func add(_ observer: KnowledgeServiceObserver)
 
@@ -18,7 +18,7 @@ protocol KnowledgeService {
 
 }
 
-protocol KnowledgeServiceObserver {
+public protocol KnowledgeServiceObserver {
 
     func knowledgeGroupsDidChange(to groups: [KnowledgeGroup2])
 

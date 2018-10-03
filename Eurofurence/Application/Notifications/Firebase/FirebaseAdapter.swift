@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum FirebaseTopic: CustomStringConvertible, Hashable {
+public enum FirebaseTopic: CustomStringConvertible, Hashable {
 
     case test
     case testAll
@@ -20,15 +20,15 @@ enum FirebaseTopic: CustomStringConvertible, Hashable {
     case debug
     case version(String)
 
-    static func ==(lhs: FirebaseTopic, rhs: FirebaseTopic) -> Bool {
+    public static func ==(lhs: FirebaseTopic, rhs: FirebaseTopic) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
 
-    var hashValue: Int {
+    public var hashValue: Int {
         return description.hashValue
     }
 
-    var description: String {
+    public var description: String {
         switch self {
         case .test:
             return "test"
@@ -53,7 +53,7 @@ enum FirebaseTopic: CustomStringConvertible, Hashable {
 
 }
 
-protocol FirebaseAdapter {
+public protocol FirebaseAdapter {
 
     var fcmToken: String { get }
 

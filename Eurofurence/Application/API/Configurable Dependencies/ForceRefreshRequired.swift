@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ForceRefreshRequired {
+public protocol ForceRefreshRequired {
 
     var isForceRefreshRequired: Bool { get }
 

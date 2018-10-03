@@ -6,7 +6,7 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-protocol PrivateMessagesObserver {
+public protocol PrivateMessagesObserver {
 
     func eurofurenceApplicationDidLoad(messages: [Message])
 

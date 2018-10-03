@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ExternalContentHandler {
+public protocol ExternalContentHandler {
 
     func handleExternalContent(url: URL)
 

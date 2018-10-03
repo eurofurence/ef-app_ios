@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RemoteNotificationsTokenRegistration {
+public protocol RemoteNotificationsTokenRegistration {
 
     func registerRemoteNotificationsDeviceToken(_ token: Data?,
                                                 userAuthenticationToken: String?,

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol MapsService {
+public protocol MapsService {
 
     func add(_ observer: MapsObserver)
     func fetchImagePNGDataForMap(identifier: Map2.Identifier, completionHandler: @escaping (Data) -> Void)
@@ -19,7 +19,7 @@ protocol MapsService {
 
 }
 
-protocol MapsObserver {
+public protocol MapsObserver {
 
     func mapsServiceDidChangeMaps(_ maps: [Map2])
 

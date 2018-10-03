@@ -8,17 +8,27 @@
 
 import Foundation
 
-struct APIKnowledgeEntry: Comparable, Equatable {
+public struct APIKnowledgeEntry: Comparable, Equatable {
 
-    var identifier: String
-    var groupIdentifier: String
-    var title: String
-    var order: Int
-    var text: String
-    var links: [APILink]
-    var imageIdentifiers: [String]
+    public var identifier: String
+    public var groupIdentifier: String
+    public var title: String
+    public var order: Int
+    public var text: String
+    public var links: [APILink]
+    public var imageIdentifiers: [String]
 
-    static func <(lhs: APIKnowledgeEntry, rhs: APIKnowledgeEntry) -> Bool {
+    public init(identifier: String, groupIdentifier: String, title: String, order: Int, text: String, links: [APILink], imageIdentifiers: [String]) {
+        self.identifier = identifier
+        self.groupIdentifier = groupIdentifier
+        self.title = title
+        self.order = order
+        self.text = text
+        self.links = links
+        self.imageIdentifiers = imageIdentifiers
+    }
+
+    public static func <(lhs: APIKnowledgeEntry, rhs: APIKnowledgeEntry) -> Bool {
         return lhs.title < rhs.title
     }
 

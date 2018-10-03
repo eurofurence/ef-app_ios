@@ -11,11 +11,11 @@ import Foundation
 Simple, hacky fix to support creating Dates from ISO8601 timestamps with and
 without fractional seconds.
 */
-class Iso8601DateFormatter: DateFormatter {
-	static let instance = Iso8601DateFormatter()
-	let noFractionsDateFormatter = DateFormatter()
+public class Iso8601DateFormatter: DateFormatter {
+	public static let instance = Iso8601DateFormatter()
+	public let noFractionsDateFormatter = DateFormatter()
 
-	override init() {
+	public override init() {
 		super.init()
 
 		locale = Locale(identifier: "en_US_POSIX")
@@ -27,11 +27,11 @@ class Iso8601DateFormatter: DateFormatter {
 		noFractionsDateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
 	}
 
-	required init?(coder aDecoder: NSCoder) {
+	public required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 	}
 
-	override func date(from string: String) -> Date? {
+	public override func date(from string: String) -> Date? {
 		if let date = noFractionsDateFormatter.date(from: string) {
 			return date
 		}
@@ -39,7 +39,7 @@ class Iso8601DateFormatter: DateFormatter {
 		return super.date(from: string)
 	}
 
-	override func string(from date: Date) -> String {
+	public override func string(from date: Date) -> String {
 		return super.string(from: date)
 	}
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-protocol PushPermissionsRequester {
+public protocol PushPermissionsRequester {
 
     func requestPushPermissions()
 

@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct APIMap: Equatable {
+public struct APIMap: Equatable {
 
-    static func == (lhs: APIMap, rhs: APIMap) -> Bool {
+    public static func == (lhs: APIMap, rhs: APIMap) -> Bool {
         return lhs.identifier == rhs.identifier &&
                lhs.imageIdentifier == rhs.imageIdentifier &&
                lhs.mapDescription == rhs.mapDescription &&
@@ -18,9 +18,9 @@ struct APIMap: Equatable {
                lhs.entries.contains(elementsFrom: rhs.entries)
     }
 
-    struct Entry: Equatable {
+    public struct Entry: Equatable {
 
-        static func == (lhs: Entry, rhs: Entry) -> Bool {
+        public static func == (lhs: Entry, rhs: Entry) -> Bool {
             return lhs.identifier == rhs.identifier &&
                    lhs.x == rhs.x &&
                    lhs.y == rhs.y &&
@@ -29,31 +29,52 @@ struct APIMap: Equatable {
                    lhs.links.contains(elementsFrom: rhs.links)
         }
 
-        struct Link: Equatable {
+        public struct Link: Equatable {
 
-            enum FragmentType: Int {
+            public enum FragmentType: Int {
                 case conferenceRoom
                 case mapEntry
                 case dealerDetail
             }
 
-            var type: FragmentType
-            var name: String?
-            var target: String
+            public var type: FragmentType
+            public var name: String?
+            public var target: String
+
+            public init(type: FragmentType, name: String?, target: String) {
+                self.type = type
+                self.name = name
+                self.target = target
+            }
 
         }
 
-        var identifier: String
-        var x: Int
-        var y: Int
-        var tapRadius: Int
-        var links: [Link]
+        public var identifier: String
+        public var x: Int
+        public var y: Int
+        public var tapRadius: Int
+        public var links: [Link]
+
+        public init(identifier: String, x: Int, y: Int, tapRadius: Int, links: [Link]) {
+            self.identifier = identifier
+            self.x = x
+            self.y = y
+            self.tapRadius = tapRadius
+            self.links = links
+        }
 
     }
 
-    var identifier: String
-    var imageIdentifier: String
-    var mapDescription: String
-    var entries: [Entry]
+    public var identifier: String
+    public var imageIdentifier: String
+    public var mapDescription: String
+    public var entries: [Entry]
+
+    public init(identifier: String, imageIdentifier: String, mapDescription: String, entries: [Entry]) {
+        self.identifier = identifier
+        self.imageIdentifier = imageIdentifier
+        self.mapDescription = mapDescription
+        self.entries = entries
+    }
 
 }

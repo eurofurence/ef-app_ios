@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol EventsSearchController {
+public protocol EventsSearchController {
 
     func setResultsDelegate(_ delegate: EventsSearchControllerDelegate)
     func changeSearchTerm(_ term: String)
@@ -17,7 +17,7 @@ protocol EventsSearchController {
 
 }
 
-protocol EventsSearchControllerDelegate {
+public protocol EventsSearchControllerDelegate {
 
     func searchResultsDidUpdate(to results: [Event2])
 

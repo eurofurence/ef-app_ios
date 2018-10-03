@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct V2SyncAPI: SyncAPI {
+public struct V2SyncAPI: SyncAPI {
 
     var jsonSession: JSONSession
     let apiUrl: String
     private let decoder: JSONDecoder
 
-    init(jsonSession: JSONSession, apiUrl: V2ApiUrlProviding) {
+    public init(jsonSession: JSONSession, apiUrl: V2ApiUrlProviding) {
         self.jsonSession = jsonSession
         self.apiUrl = apiUrl.url
 
@@ -22,7 +22,7 @@ struct V2SyncAPI: SyncAPI {
         decoder.dateDecodingStrategy = .formatted(Iso8601DateFormatter())
     }
 
-    func fetchLatestData(lastSyncTime: Date?, completionHandler: @escaping (APISyncResponse?) -> Void) {
+    public func fetchLatestData(lastSyncTime: Date?, completionHandler: @escaping (APISyncResponse?) -> Void) {
         let sinceParameterPathComponent: String = {
             if let lastSyncTime = lastSyncTime {
                 let formattedTime = Iso8601DateFormatter.instance.string(from: lastSyncTime)

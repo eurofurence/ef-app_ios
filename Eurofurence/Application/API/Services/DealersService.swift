@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol DealersService {
+public protocol DealersService {
 
     func makeDealersIndex() -> DealersIndex
     func fetchIconPNGData(for identifier: Dealer2.Identifier, completionHandler: @escaping (Data?) -> Void)
@@ -19,23 +19,28 @@ protocol DealersService {
 
 }
 
-protocol DealersIndex {
+public protocol DealersIndex {
 
     func setDelegate(_ delegate: DealersIndexDelegate)
     func performSearch(term: String)
 
 }
 
-protocol DealersIndexDelegate {
+public protocol DealersIndexDelegate {
 
     func alphabetisedDealersDidChange(to alphabetisedGroups: [AlphabetisedDealersGroup])
     func indexDidProduceSearchResults(_ searchResults: [AlphabetisedDealersGroup])
 
 }
 
-struct AlphabetisedDealersGroup: Equatable {
+public struct AlphabetisedDealersGroup: Equatable {
 
-    var indexingString: String
-    var dealers: [Dealer2]
+    public var indexingString: String
+    public var dealers: [Dealer2]
+
+    public init(indexingString: String, dealers: [Dealer2]) {
+        self.indexingString = indexingString
+        self.dealers = dealers
+    }
 
 }

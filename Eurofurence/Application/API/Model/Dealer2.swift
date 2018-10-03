@@ -8,33 +8,43 @@
 
 import Foundation
 
-struct Dealer2: Equatable {
+public struct Dealer2: Equatable {
 
-    struct Identifier: Equatable, Hashable, RawRepresentable {
+    public struct Identifier: Equatable, Hashable, RawRepresentable {
 
-        typealias RawValue = String
+        public typealias RawValue = String
 
-        init(_ value: String) {
+        public init(_ value: String) {
             self.rawValue = value
         }
 
-        init?(rawValue: String) {
+        public init?(rawValue: String) {
             self.rawValue = rawValue
         }
 
-        var rawValue: String
+        public var rawValue: String
 
     }
 
-    var identifier: Dealer2.Identifier
+    public var identifier: Dealer2.Identifier
 
-    var preferredName: String
-    var alternateName: String?
+    public var preferredName: String
+    public var alternateName: String?
 
-    var isAttendingOnThursday: Bool
-    var isAttendingOnFriday: Bool
-    var isAttendingOnSaturday: Bool
+    public var isAttendingOnThursday: Bool
+    public var isAttendingOnFriday: Bool
+    public var isAttendingOnSaturday: Bool
 
-    var isAfterDark: Bool
+    public var isAfterDark: Bool
+
+    public init(identifier: Dealer2.Identifier, preferredName: String, alternateName: String?, isAttendingOnThursday: Bool, isAttendingOnFriday: Bool, isAttendingOnSaturday: Bool, isAfterDark: Bool) {
+        self.identifier = identifier
+        self.preferredName = preferredName
+        self.alternateName = alternateName
+        self.isAttendingOnThursday = isAttendingOnThursday
+        self.isAttendingOnFriday = isAttendingOnFriday
+        self.isAttendingOnSaturday = isAttendingOnSaturday
+        self.isAfterDark = isAfterDark
+    }
 
 }

@@ -8,20 +8,29 @@
 
 import Foundation
 
-struct Message: Comparable, Equatable {
+public struct Message: Comparable, Equatable {
 
-    var identifier: String
-    var authorName: String
-    var receivedDateTime: Date
-    var subject: String
-    var contents: String
-    var isRead: Bool
+    public var identifier: String
+    public var authorName: String
+    public var receivedDateTime: Date
+    public var subject: String
+    public var contents: String
+    public var isRead: Bool
 
-    static func <(lhs: Message, rhs: Message) -> Bool {
+    public init(identifier: String, authorName: String, receivedDateTime: Date, subject: String, contents: String, isRead: Bool) {
+        self.identifier = identifier
+        self.authorName = authorName
+        self.receivedDateTime = receivedDateTime
+        self.subject = subject
+        self.contents = contents
+        self.isRead = isRead
+    }
+
+    public static func <(lhs: Message, rhs: Message) -> Bool {
         return lhs.receivedDateTime.compare(rhs.receivedDateTime) == .orderedDescending
     }
 
-    static func ==(lhs: Message, rhs: Message) -> Bool {
+    public static func ==(lhs: Message, rhs: Message) -> Bool {
         return  lhs.identifier == rhs.identifier &&
                 lhs.authorName == rhs.authorName &&
                 lhs.receivedDateTime == rhs.receivedDateTime &&
