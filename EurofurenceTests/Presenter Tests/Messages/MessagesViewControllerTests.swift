@@ -32,7 +32,9 @@ class MessagesViewControllerTests: XCTestCase {
         
         delegate = CapturingMessagesSceneDelegate()
         let factory = PhoneMessagesSceneFactory()
-        viewController = factory.makeMessagesScene() as! MessagesViewControllerV2
+        let viewController = factory.makeMessagesScene()
+        precondition(viewController is MessagesViewControllerV2)
+        self.viewController = viewController as? MessagesViewControllerV2
         viewController.delegate = delegate
         viewController.loadViewIfNeeded()
     }

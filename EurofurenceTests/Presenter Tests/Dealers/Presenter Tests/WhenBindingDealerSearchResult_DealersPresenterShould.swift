@@ -25,7 +25,8 @@ class WhenBindingDealerSearchResult_DealersPresenterShould: XCTestCase {
         context.simulateSceneDidLoad()
         let randomGroup = dealerGroups.randomElement()
         let randomDealer = randomGroup.element.dealers.randomElement()
-        dealer = randomDealer.element as! StubDealerViewModel
+        precondition(randomDealer.element is StubDealerViewModel)
+        dealer = randomDealer.element as? StubDealerViewModel
         let indexPath = IndexPath(item: randomDealer.index, section: randomGroup.index)
         component = CapturingDealerComponent()
         context.bind(component, toDealerSearchResultAt: indexPath)
