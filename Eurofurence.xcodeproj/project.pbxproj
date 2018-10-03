@@ -2875,18 +2875,12 @@
 			isa = PBXGroup;
 			children = (
 				CA1F7D6220CB83A100FB87F5 /* Announcements.swift */,
-				CA0E5212208F4CD7005259FE /* AnnouncementsService.swift */,
 				CA063B3420F230E000241CC9 /* ApplicationNotificationHandling.swift */,
 				CA2761D120E03B29000E52AC /* CollectThemAll.swift */,
-				CA2761C520E02EDC000E52AC /* CollectThemAllRequestFactory.swift */,
-				CA2761B920E02A16000E52AC /* CollectThemAllService.swift */,
 				CA162E8520A5BB85004AFED6 /* ConventionCountdownController.swift */,
-				CA72843A209CEF47007D912A /* ConventionCountdownService.swift */,
 				CADABF0121177B3B0023C3B6 /* DataStoreChangedConsumer.swift */,
 				CA2761C920E03143000E52AC /* DefaultCollectThemAllRequestFactory.swift */,
 				78D7EEBC1F196B62005372A9 /* EurofurenceApplication.swift */,
-				CAF3F63C20167B3100374B4C /* EurofurenceApplicationBuilder.swift */,
-				CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */,
 				CA250DDF20D6EAF500E7513C /* EventsSearchController.swift */,
 				CA27618920DFEE00000E52AC /* ExternalContentHandler.swift */,
 				CACF26C420FCC04500EDE150 /* FileUtilities.swift */,
@@ -2894,33 +2888,26 @@
 				CACF1EC520B6C31000D904B5 /* ImagesCache.swift */,
 				CA36A44420D7051900EE6537 /* InMemoryEventsSearchController.swift */,
 				CA680F7920CD7AD7006ACD3D /* Knowledge.swift */,
-				CABF03BC2041C2B70028BD62 /* KnowledgeService.swift */,
-				CA2A586A20F69EB7002C69B6 /* MapCoordinateRender.swift */,
 				CA6A8DB720E2DC62007536CD /* Maps.swift */,
 				CABA83E920CDBBD600DD0795 /* PersistentImageRepository.swift */,
 				CAF3F63A2016797400374B4C /* PrivateMessagesController.swift */,
 				CA680F7F20CDA49D006ACD3D /* Schedule.swift */,
 				CA52C67C20D59560009D3A9E /* SignificantTimeObserver.swift */,
 				CA27618D20DFEFB4000E52AC /* URLHandler.swift */,
-				CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */,
-				CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */,
-				CA804DCF1F20CE5F00E07A4A /* API */,
+				CAAF4C732164E1CF0017946C /* API */,
 				CAF3F63E20167E7000374B4C /* Authentication */,
 				78D7EEC21F196BC3005372A9 /* Build Config */,
 				CA162E7120A4B69A004AFED6 /* Countdown */,
 				CAF3F63F20167EF700374B4C /* Data Store */,
 				CA36A48D20D92EA400EE6537 /* Dealers */,
+				CAAF4C772164E34F0017946C /* Default Dependency Implementations */,
 				CA8D97C9201610C80074838F /* Domain Events */,
-				CA162E8E20A6529F004AFED6 /* Events */,
+				CACF1EC720B6D5A300D904B5 /* Entities */,
 				CA6A8E0A20E592D0007536CD /* Extensions */,
-				CA6A8DAC20E2CF7D007536CD /* Maps */,
-				CA18B3451F49AF4500038E52 /* Model */,
 				78D7EEB91F196B40005372A9 /* Notifications */,
 				CA72849920A1C332007D912A /* Observers */,
-				CA283A6120E6ED5F00F7D195 /* Refresh */,
-				CACF1ECA20B6D64300D904B5 /* Repositories */,
+				CA804DCF1F20CE5F00E07A4A /* Server Client */,
 				CAB3A72B1F7532DF005DF77B /* System Services */,
-				CADABF0A2119BF7E0023C3B6 /* Upgrade Path */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -2929,7 +2916,6 @@
 			isa = PBXGroup;
 			children = (
 				CA8D97D4201613010074838F /* RemoteNotificationRegistrationController.swift */,
-				781A943B1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift */,
 				781A94311F1A1981002DE70F /* Firebase */,
 				CA2D04FC20EE910600CF54E1 /* Reminders */,
 			);
@@ -3300,7 +3286,6 @@
 		CA162E7120A4B69A004AFED6 /* Countdown */ = {
 			isa = PBXGroup;
 			children = (
-				CA162E7220A4B6A5004AFED6 /* ConventionStartDateRepository.swift */,
 				CA162E7D20A4B9CD004AFED6 /* EF24StartDateRepository.swift */,
 			);
 			path = Countdown;
@@ -3336,14 +3321,6 @@
 				CA162EA520A9B18E004AFED6 /* WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould.swift */,
 			);
 			path = "During Convention";
-			sourceTree = "<group>";
-		};
-		CA162E8E20A6529F004AFED6 /* Events */ = {
-			isa = PBXGroup;
-			children = (
-				CA162E8F20A652AA004AFED6 /* EventsService.swift */,
-			);
-			path = Events;
 			sourceTree = "<group>";
 		};
 		CA162EAF20AA2DC0004AFED6 /* Events */ = {
@@ -3410,7 +3387,6 @@
 				CA162E9520A88854004AFED6 /* Room.swift */,
 				CACF1E8F20B36B5800D904B5 /* Track.swift */,
 				CA30EAAD1F2148780053DBF6 /* User.swift */,
-				CACF1EC720B6D5A300D904B5 /* Entities */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3530,7 +3506,6 @@
 				CA8E7EF51FB08E2500F0BF10 /* PhoneWindowWireframe.swift */,
 				CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */,
 				CAD3BDBE205AA69600C91E6E /* LinkLookupService.swift */,
-				CAD3BDC82061382000C91E6E /* URLOpener.swift */,
 				CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */,
 				CA063B4320F3862500241CC9 /* ModuleOrderingPolicy.swift */,
 				CA063B4720F3E27000241CC9 /* RestorationIdentifierOrderingPolicy.swift */,
@@ -3709,14 +3684,6 @@
 			path = "Collect-them-All";
 			sourceTree = "<group>";
 		};
-		CA283A6120E6ED5F00F7D195 /* Refresh */ = {
-			isa = PBXGroup;
-			children = (
-				CA283A6220E6ED6400F7D195 /* RefreshService.swift */,
-			);
-			path = Refresh;
-			sourceTree = "<group>";
-		};
 		CA283A7620E8F51B00F7D195 /* Web */ = {
 			isa = PBXGroup;
 			children = (
@@ -3851,8 +3818,6 @@
 		CA2D04FC20EE910600CF54E1 /* Reminders */ = {
 			isa = PBXGroup;
 			children = (
-				CA2D04FD20EE910E00CF54E1 /* NotificationsService.swift */,
-				CAA6060620EEB4F200075A4E /* UserNotificationsNotificationService.swift */,
 			);
 			path = Reminders;
 			sourceTree = "<group>";
@@ -3943,7 +3908,6 @@
 		CA36A48D20D92EA400EE6537 /* Dealers */ = {
 			isa = PBXGroup;
 			children = (
-				CA36A48E20D92EAA00EE6537 /* DealersService.swift */,
 				CA36A4A720D984E400EE6537 /* Dealers.swift */,
 			);
 			path = Dealers;
@@ -4592,14 +4556,6 @@
 			path = "Interactor Tests";
 			sourceTree = "<group>";
 		};
-		CA6A8DAC20E2CF7D007536CD /* Maps */ = {
-			isa = PBXGroup;
-			children = (
-				CA6A8DAD20E2CF87007536CD /* MapsService.swift */,
-			);
-			path = Maps;
-			sourceTree = "<group>";
-		};
 		CA6A8DB420E2DA1F007536CD /* Maps */ = {
 			isa = PBXGroup;
 			children = (
@@ -5201,14 +5157,14 @@
 			path = "Presenter Tests";
 			sourceTree = "<group>";
 		};
-		CA804DCF1F20CE5F00E07A4A /* API */ = {
+		CA804DCF1F20CE5F00E07A4A /* Server Client */ = {
 			isa = PBXGroup;
 			children = (
 				CAF59794204499FB00089BE8 /* Model */,
 				CA18B3471F49FE9800038E52 /* Protocols */,
 				CA804DD01F20CE6600E07A4A /* v2 */,
 			);
-			path = API;
+			path = "Server Client";
 			sourceTree = "<group>";
 		};
 		CA804DD01F20CE6600E07A4A /* v2 */ = {
@@ -5327,7 +5283,6 @@
 		CA89CBA7207F7F8F00570D54 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */,
 				CA0E520C208E759F005259FE /* DefaultNewsInteractor.swift */,
 				CA162E7B20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift */,
 				CA162E9D20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift */,
@@ -5401,15 +5356,84 @@
 			path = "Notification Handling";
 			sourceTree = "<group>";
 		};
+		CAAF4C732164E1CF0017946C /* API */ = {
+			isa = PBXGroup;
+			children = (
+				CAAF4C752164E2900017946C /* Builder */,
+				CAAF4C762164E33B0017946C /* Configurable Dependencies */,
+				CA18B3451F49AF4500038E52 /* Model */,
+				CAAF4C742164E2860017946C /* Services */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		CAAF4C742164E2860017946C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CA0E5212208F4CD7005259FE /* AnnouncementsService.swift */,
+				CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */,
+				CA2761B920E02A16000E52AC /* CollectThemAllService.swift */,
+				CA72843A209CEF47007D912A /* ConventionCountdownService.swift */,
+				CA36A48E20D92EAA00EE6537 /* DealersService.swift */,
+				CA162E8F20A652AA004AFED6 /* EventsService.swift */,
+				CABF03BC2041C2B70028BD62 /* KnowledgeService.swift */,
+				CA6A8DAD20E2CF87007536CD /* MapsService.swift */,
+				CA283A6220E6ED6400F7D195 /* RefreshService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CAAF4C752164E2900017946C /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				CAF3F63C20167B3100374B4C /* EurofurenceApplicationBuilder.swift */,
+				CAF9A9421F50B87600628833 /* EurofurenceApplicationProtocol.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		CAAF4C762164E33B0017946C /* Configurable Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				CAD7804B1F1D5212002A8333 /* Clock.swift */,
+				CA2761C520E02EDC000E52AC /* CollectThemAllRequestFactory.swift */,
+				CA162E7220A4B6A5004AFED6 /* ConventionStartDateRepository.swift */,
+				CAD7804F1F1E2D13002A8333 /* CredentialStore.swift */,
+				CA162E6F20A4B691004AFED6 /* DateDistanceCalculator.swift */,
+				CA2D07FA1FE902ED00BFD785 /* EurofurenceDataStore.swift */,
+				CA44C3372119BFFE003C1C4E /* ForceRefreshRequired.swift */,
+				CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */,
+				CACF1ECC20B6D65400D904B5 /* ImageRepository.swift */,
+				CA283A5720E6E23200F7D195 /* LongRunningTaskManager.swift */,
+				CA2A586A20F69EB7002C69B6 /* MapCoordinateRender.swift */,
+				CA2D04FD20EE910E00CF54E1 /* NotificationsService.swift */,
+				CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */,
+				781A943B1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift */,
+				CA52C67A20D59457009D3A9E /* SignificantTimeChangeAdapter.swift */,
+				CA162E8120A5B7BC004AFED6 /* SignificantTimeChangeEventSource.swift */,
+				CAD3BDC82061382000C91E6E /* URLOpener.swift */,
+				CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */,
+			);
+			path = "Configurable Dependencies";
+			sourceTree = "<group>";
+		};
+		CAAF4C772164E34F0017946C /* Default Dependency Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */,
+				CAD780591F1E8E7D002A8333 /* KeychainCredentialStore.swift */,
+				CAD7804D1F1D5227002A8333 /* SystemClock.swift */,
+				CA44C33B211A2727003C1C4E /* UserDefaultsForceRefreshRequired.swift */,
+				CA680F7B20CD819F006ACD3D /* UserDefaultsPreferences.swift */,
+				CABEB0DA20C9C79B000BEE66 /* Core Data Store */,
+			);
+			path = "Default Dependency Implementations";
+			sourceTree = "<group>";
+		};
 		CAB3A72B1F7532DF005DF77B /* System Services */ = {
 			isa = PBXGroup;
 			children = (
-				CA283A5720E6E23200F7D195 /* LongRunningTaskManager.swift */,
-				CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */,
-				CA162E8120A5B7BC004AFED6 /* SignificantTimeChangeEventSource.swift */,
-				CA52C67A20D59457009D3A9E /* SignificantTimeChangeAdapter.swift */,
 				CAF1A671211E4AA200513226 /* Reachability */,
-				CAF1A672211E4AAC00513226 /* Time */,
 				CAF1A66E211E4A7C00513226 /* Network */,
 			);
 			path = "System Services";
@@ -5540,14 +5564,14 @@
 			path = "Data Store";
 			sourceTree = "<group>";
 		};
-		CABEB0DA20C9C79B000BEE66 /* Core Data */ = {
+		CABEB0DA20C9C79B000BEE66 /* Core Data Store */ = {
 			isa = PBXGroup;
 			children = (
 				CABEB0DB20C9C7A3000BEE66 /* CoreDataEurofurenceDataStore.swift */,
 				CABEB0DD20C9C7ED000BEE66 /* EurofurenceApplicationModel.xcdatamodeld */,
 				CAE8B0B520CA4D800029D4D6 /* Model Adaptation */,
 			);
-			path = "Core Data";
+			path = "Core Data Store";
 			sourceTree = "<group>";
 		};
 		CABF03B22041BC770028BD62 /* Extensions */ = {
@@ -5799,22 +5823,6 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		CACF1ECA20B6D64300D904B5 /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-				CACF1ECB20B6D64E00D904B5 /* Images */,
-			);
-			path = Repositories;
-			sourceTree = "<group>";
-		};
-		CACF1ECB20B6D64E00D904B5 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				CACF1ECC20B6D65400D904B5 /* ImageRepository.swift */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
 		CAD234381F5D71D9004BB959 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
@@ -5898,15 +5906,6 @@
 			children = (
 				CA44C339211A1CAE003C1C4E /* UserDefaultsForceRefreshRequired.swift */,
 				CADABF082119BE770023C3B6 /* WhenUpgradingBetweenAppVersions_ApplicationShould.swift */,
-			);
-			path = "Upgrade Path";
-			sourceTree = "<group>";
-		};
-		CADABF0A2119BF7E0023C3B6 /* Upgrade Path */ = {
-			isa = PBXGroup;
-			children = (
-				CA44C3372119BFFE003C1C4E /* ForceRefreshRequired.swift */,
-				CA44C33B211A2727003C1C4E /* UserDefaultsForceRefreshRequired.swift */,
 			);
 			path = "Upgrade Path";
 			sourceTree = "<group>";
@@ -6021,15 +6020,6 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
-		CAF1A672211E4AAC00513226 /* Time */ = {
-			isa = PBXGroup;
-			children = (
-				CAD7804B1F1D5212002A8333 /* Clock.swift */,
-				CAD7804D1F1D5227002A8333 /* SystemClock.swift */,
-			);
-			path = Time;
-			sourceTree = "<group>";
-		};
 		CAF1A673211E4B0700513226 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -6043,8 +6033,9 @@
 			children = (
 				CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */,
 				CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */,
-				CA2A586C20F76F03002C69B6 /* CocoaTouchMapCoordinateRender.swift */,
 				CA283A5920E6E24300F7D195 /* CocoaTouchLongRunningTaskManager.swift */,
+				CA2A586C20F76F03002C69B6 /* CocoaTouchMapCoordinateRender.swift */,
+				CAA6060620EEB4F200075A4E /* UserNotificationsNotificationService.swift */,
 			);
 			path = "Application Adapter Implementations";
 			sourceTree = "<group>";
@@ -6053,7 +6044,6 @@
 			isa = PBXGroup;
 			children = (
 				CAF1A676211E4BFF00513226 /* Announcement Dates */,
-				CAF1A677211E4C3C00513226 /* Time */,
 			);
 			path = Formatters;
 			sourceTree = "<group>";
@@ -6065,15 +6055,6 @@
 				CA2A587020F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift */,
 			);
 			path = "Announcement Dates";
-			sourceTree = "<group>";
-		};
-		CAF1A677211E4C3C00513226 /* Time */ = {
-			isa = PBXGroup;
-			children = (
-				CA3990EE20ACD559001E3F1A /* FoundationHoursDateFormatter.swift */,
-				CA3990EC20ACD35C001E3F1A /* HoursDateFormatter.swift */,
-			);
-			path = Time;
 			sourceTree = "<group>";
 		};
 		CAF1A678211E4C7600513226 /* Formatters */ = {
@@ -6090,9 +6071,6 @@
 		CAF3F63E20167E7000374B4C /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */,
-				CAD7804F1F1E2D13002A8333 /* CredentialStore.swift */,
-				CAD780591F1E8E7D002A8333 /* KeychainCredentialStore.swift */,
 				CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */,
 				CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */,
 			);
@@ -6102,8 +6080,6 @@
 		CAF3F63F20167EF700374B4C /* Data Store */ = {
 			isa = PBXGroup;
 			children = (
-				CA2D07FA1FE902ED00BFD785 /* EurofurenceDataStore.swift */,
-				CABEB0DA20C9C79B000BEE66 /* Core Data */,
 			);
 			path = "Data Store";
 			sourceTree = "<group>";
