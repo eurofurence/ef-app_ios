@@ -14,7 +14,7 @@ class MapContextualContentViewController: UIViewController {
 
     func setContextualContent(_ content: String) {
         titleLabel.text = content
-        preferredContentSize = view.systemLayoutSizeFitting(UILayoutFittingExpandedSize)
+        preferredContentSize = view.systemLayoutSizeFitting(UIView.layoutFittingExpandedSize)
     }
 
 }

@@ -38,7 +38,7 @@ struct CocoaTouchMapCoordinateRender: MapCoordinateRender {
         guard let croppedImage = highlightedImage.cropping(to: croppingRect) else { return Data () }
 
         let drawable = UIImage(cgImage: croppedImage)
-        return UIImagePNGRepresentation(drawable) ?? Data()
+        return drawable.pngData() ?? Data()
     }
 
 }

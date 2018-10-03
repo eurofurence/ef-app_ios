@@ -15,7 +15,7 @@ class ApplicationSignificantTimeChangeAdapter: SignificantTimeChangeAdapter {
     private var notificationRegistration: NSObjectProtocol?
 
     init() {
-        notificationRegistration = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationSignificantTimeChange, object: nil, queue: .main) { (_) in
+        notificationRegistration = NotificationCenter.default.addObserver(forName: UIApplication.significantTimeChangeNotification, object: nil, queue: .main) { (_) in
             self.delegate?.significantTimeChangeDidOccur()
         }
     }
@@ -34,7 +34,7 @@ class ApplicationSignificantTimeChangeEventSource: SignificantTimeChangeEventSou
     private var notificationHandler: NSObjectProtocol?
 
     private init() {
-        notificationHandler = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationSignificantTimeChange,
+        notificationHandler = NotificationCenter.default.addObserver(forName: UIApplication.significantTimeChangeNotification,
                                                                      object: UIApplication.shared,
                                                                      queue: .main,
                                                                      using: significationTimeChangeNotificationHandler)

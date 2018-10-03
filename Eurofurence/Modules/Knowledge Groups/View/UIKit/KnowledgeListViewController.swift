@@ -59,8 +59,8 @@ class KnowledgeListViewController: UIViewController, KnowledgeListScene {
         tableView.dataSource = tableViewRenderer
         tableView.delegate = tableViewRenderer
         tableView.estimatedSectionHeaderHeight = 64
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
         delegate?.knowledgeListSceneDidLoad()
     }
 

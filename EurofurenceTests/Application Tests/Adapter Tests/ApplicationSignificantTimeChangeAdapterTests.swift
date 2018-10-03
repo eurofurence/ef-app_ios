@@ -15,7 +15,7 @@ class ApplicationSignificantTimeChangeAdapterTests: XCTestCase {
         let adapter = ApplicationSignificantTimeChangeAdapter()
         let delegate = CapturingSignificantTimeChangeAdapterDelegate()
         adapter.setDelegate(delegate)
-        NotificationCenter.default.post(name: NSNotification.Name.UIApplicationSignificantTimeChange, object: nil, userInfo: nil)
+        NotificationCenter.default.post(name: UIApplication.significantTimeChangeNotification, object: nil, userInfo: nil)
         
         XCTAssertTrue(delegate.toldSignificantTimeChangeOccurred)
     }

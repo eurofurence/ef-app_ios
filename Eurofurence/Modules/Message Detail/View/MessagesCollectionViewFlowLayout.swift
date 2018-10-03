@@ -16,7 +16,7 @@ class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         super.init(coder: aDecoder)
 
         if #available(iOS 10.0, *) {
-            estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
+            estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         }
     }
 

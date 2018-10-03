@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     private var director: ApplicationDirector?
 
 	func application(_ application: UIApplication,
-	                 didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+	                 didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         ScreenshotAssistant.prepare()
         FirebaseApp.configure()
         installDebugModuleIntoWindow()
@@ -66,7 +66,7 @@ extension AppDelegate {
     }
 
     private func applyDirectorBasedTheme() {
-        let whiteTextAttributes: [NSAttributedStringKey: Any] = [.foregroundColor: UIColor.white]
+        let whiteTextAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
         let pantone330UColourImage = makePantone330UShadowImage()
 
         let navigationBarAppearance = UINavigationBar.appearance()

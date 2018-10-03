@@ -6298,14 +6298,14 @@
 					78D7EEA01F17F40C005372A9 = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = 557SGQG5H4;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 9ACF99331EBE172D006FC958;
 					};
 					9ACF99331EBE172D006FC958 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 557SGQG5H4;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -6322,7 +6322,7 @@
 					9ACF99471EBE172D006FC958 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 557SGQG5H4;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 9ACF99331EBE172D006FC958;
 					};
@@ -7801,7 +7801,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = Eurofurence;
 			};
 			name = Debug;
@@ -7815,7 +7815,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = Eurofurence;
 			};
 			name = Release;
@@ -7884,7 +7884,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TAKING_SCREENSHOTS = 0;
 			};
 			name = Profiling;
@@ -7900,7 +7900,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Eurofurence.app/Eurofurence";
 			};
 			name = Profiling;
@@ -7914,7 +7914,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = Eurofurence;
 			};
 			name = Profiling;
@@ -8044,7 +8044,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TAKING_SCREENSHOTS = 0;
 			};
 			name = Debug;
@@ -8061,7 +8061,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TAKING_SCREENSHOTS = 0;
 			};
 			name = Release;
@@ -8077,7 +8077,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Eurofurence.app/Eurofurence";
 			};
 			name = Debug;
@@ -8093,7 +8093,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Eurofurence.app/Eurofurence";
 			};
 			name = Release;
@@ -8213,7 +8213,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TAKING_SCREENSHOTS = 1;
 			};
 			name = Screenshots;
@@ -8229,7 +8229,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Eurofurence.app/Eurofurence";
 			};
 			name = Screenshots;
@@ -8243,7 +8243,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = Eurofurence;
 			};
 			name = Screenshots;

@@ -24,7 +24,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
 
     init(dealersService: DealersService) {
         let defaultIcon = #imageLiteral(resourceName: "defaultAvatar")
-        let defaultIconData = UIImagePNGRepresentation(defaultIcon)!
+        let defaultIconData = defaultIcon.pngData()!
         self.init(dealersService: dealersService,
                   defaultIconData: defaultIconData,
                   refreshService: EurofurenceApplication.shared)

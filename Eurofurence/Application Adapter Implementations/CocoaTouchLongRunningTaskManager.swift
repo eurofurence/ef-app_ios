@@ -13,7 +13,7 @@ struct CocoaTouchLongRunningTaskManager: LongRunningTaskManager {
     private let app = UIApplication.shared
 
     func beginLongRunningTask() -> AnyHashable {
-        var identifier: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
+        var identifier: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
         identifier = app.beginBackgroundTask(expirationHandler: {
             self.finishLongRunningTask(token: identifier)
         })
