@@ -3,7 +3,7 @@ branches:
   - master
 
 language: swift
-osx_image: xcode9.3
+osx_image: xcode10
 xcode_workspace: Eurofurence.xcworkspace
 xcode_scheme: Eurofurence
 
