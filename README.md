@@ -12,7 +12,7 @@ This app uses the [Eurofurence API](https://app.eurofurence.org/swagger/v2/ui/) 
 
 To build the app, you'll need:
 
-- Xcode 9.4.1
+- Xcode 10
 - Cocoapods 1.5.3
 
 Once you have the tools, to build the app from source you'll need to:
