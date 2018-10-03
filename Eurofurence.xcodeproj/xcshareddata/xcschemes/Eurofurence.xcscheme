@@ -60,6 +60,17 @@
                ReferencedContainer = "container:Eurofurence.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CAEA0B812165626900B0C7A6"
+               BuildableName = "EurofurenceAppCoreTests.xctest"
+               BlueprintName = "EurofurenceAppCoreTests"
+               ReferencedContainer = "container:Eurofurence.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

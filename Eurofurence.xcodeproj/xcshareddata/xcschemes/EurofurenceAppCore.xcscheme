@@ -1,27 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0900"
+   LastUpgradeVersion = "1000"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
-   </BuildAction>
-   <TestAction
-      buildConfiguration = "Screenshots"
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-         <TestableReference
-            skipped = "NO">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CA9845C61F2907A800E8821D"
-               BuildableName = "ScreenshotGenerator.xctest"
-               BlueprintName = "ScreenshotGenerator"
+               BlueprintIdentifier = "CAEA0B792165626900B0C7A6"
+               BuildableName = "EurofurenceAppCore.framework"
+               BlueprintName = "EurofurenceAppCore"
                ReferencedContainer = "container:Eurofurence.xcodeproj">
             </BuildableReference>
-         </TestableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES"
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "CAEA0B792165626900B0C7A6"
+            BuildableName = "EurofurenceAppCore.framework"
+            BlueprintName = "EurofurenceAppCore"
+            ReferencedContainer = "container:Eurofurence.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
+      <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
@@ -36,9 +53,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9ACF99331EBE172D006FC958"
-            BuildableName = "Eurofurence.app"
-            BlueprintName = "Eurofurence"
+            BlueprintIdentifier = "CAEA0B792165626900B0C7A6"
+            BuildableName = "EurofurenceAppCore.framework"
+            BlueprintName = "EurofurenceAppCore"
             ReferencedContainer = "container:Eurofurence.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -46,7 +63,7 @@
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Screenshots"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -55,16 +72,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9ACF99331EBE172D006FC958"
-            BuildableName = "Eurofurence.app"
-            BlueprintName = "Eurofurence"
+            BlueprintIdentifier = "CAEA0B792165626900B0C7A6"
+            BuildableName = "EurofurenceAppCore.framework"
+            BlueprintName = "EurofurenceAppCore"
             ReferencedContainer = "container:Eurofurence.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -77,9 +93,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9ACF99331EBE172D006FC958"
-            BuildableName = "Eurofurence.app"
-            BlueprintName = "Eurofurence"
+            BlueprintIdentifier = "CAEA0B792165626900B0C7A6"
+            BuildableName = "EurofurenceAppCore.framework"
+            BlueprintName = "EurofurenceAppCore"
             ReferencedContainer = "container:Eurofurence.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
