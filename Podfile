@@ -8,12 +8,10 @@ target 'Eurofurence' do
 	
 	pod 'Down'
 	pod 'SwiftLint'
-	pod 'ReachabilitySwift'
 	pod 'Firebase/Core'
 	pod 'Firebase/Crash'
 	pod 'Firebase/Messaging'
 	pod 'Firebase/Performance'
-	pod 'Locksmith'
 	
 	pod 'SimulatorStatusMagic', :configurations => ['Screenshots']
 
@@ -24,18 +22,30 @@ target 'Eurofurence' do
 		pod 'Firebase/Crash'
 	end
 	
-	post_install do |installer|
-		installer.pods_project.targets.each do |target|
-			if target.name == "Eureka" || target.name == "Down"
-				target.build_configurations.each do |config|
-					config.build_settings['SWIFT_VERSION'] = '4.1'
-				end
-			else
-				target.build_configurations.each do |config|
-					config.build_settings['SWIFT_VERSION'] = '3.0'
-				end
-			end
-		end
-	end
-	
+end
+
+target :EurofurenceAppCore do
+    
+    pod 'SwiftLint'
+    pod 'ReachabilitySwift'
+    pod 'Locksmith'
+    
+    target :EurofurenceAppCoreTests do
+        inherit! :search_paths
+    end
+    
+end
+
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        if target.name == "Eureka" || target.name == "Down"
+            target.build_configurations.each do |config|
+                config.build_settings['SWIFT_VERSION'] = '4.1'
+            end
+            else
+            target.build_configurations.each do |config|
+                config.build_settings['SWIFT_VERSION'] = '3.0'
+            end
+        end
+    end
 end
