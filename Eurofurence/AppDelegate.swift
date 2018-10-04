@@ -35,9 +35,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         let pushPermissionsRequester = ApplicationPushPermissionsRequester.shared
 
+        let significantTimeChangeEventSource = ApplicationSignificantTimeChangeEventSource.shared
+
         app = EurofurenceApplicationBuilder()
             .with(remoteNotificationsTokenRegistration)
             .with(pushPermissionsRequester)
+            .with(significantTimeChangeEventSource)
             .build() as? EurofurenceApplication
 
         let director = DirectorBuilder().build()

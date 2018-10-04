@@ -21,7 +21,7 @@ public class EurofurenceApplicationBuilder {
     private var syncAPI: SyncAPI
     private var dateDistanceCalculator: DateDistanceCalculator
     private var conventionStartDateRepository: ConventionStartDateRepository
-    private var significantTimeChangeEventSource: SignificantTimeChangeEventSource
+    private var significantTimeChangeEventSource: SignificantTimeChangeEventSource?
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
     private var imageAPI: ImageAPI
     private var imageRepository: ImageRepository
@@ -50,7 +50,6 @@ public class EurofurenceApplicationBuilder {
         imageAPI = V2ImageAPI(jsonSession: jsonSession, apiUrl: apiUrl)
         dateDistanceCalculator = FoundationDateDistanceCalculator()
         conventionStartDateRepository = EF24StartDateRepository()
-        significantTimeChangeEventSource = ApplicationSignificantTimeChangeEventSource.shared
         timeIntervalForUpcomingEventsSinceNow = 3600
         imageRepository = PersistentImageRepository()
         significantTimeChangeAdapter = ApplicationSignificantTimeChangeAdapter()
