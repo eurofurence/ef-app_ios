@@ -3000,6 +3000,7 @@
 				CA8D97C9201610C80074838F /* Domain Events */,
 				CACF1EC720B6D5A300D904B5 /* Entities */,
 				CA6A8E0A20E592D0007536CD /* Extensions */,
+				CAEA0D812166B3F700B0C7A6 /* Formatters */,
 				78D7EEB91F196B40005372A9 /* Notifications */,
 				CA72849920A1C332007D912A /* Observers */,
 				CA804DCF1F20CE5F00E07A4A /* Server Client */,
@@ -3100,7 +3101,6 @@
 				9ACF99371EBE172D006FC958 /* AppDelegate.swift */,
 				78D7EEB61F196B1F005372A9 /* Application */,
 				CAF1A674211E4B3600513226 /* Application Adapter Implementations */,
-				9ACF99571EBE32ED006FC958 /* DataModel */,
 				CA1FE99C1FA0B3F2009C7DF3 /* Director */,
 				CA49E93B201547ED00EB571C /* Event Bus */,
 				CABF03B22041BC770028BD62 /* Extensions */,
@@ -3135,14 +3135,6 @@
 				CAF9A94F1F558E6200628833 /* Test Utilities */,
 			);
 			path = EurofurenceTests;
-			sourceTree = "<group>";
-		};
-		9ACF99571EBE32ED006FC958 /* DataModel */ = {
-			isa = PBXGroup;
-			children = (
-				9A34B9771ECF6E3B004A249E /* Iso8601DateFormatter.swift */,
-			);
-			path = DataModel;
 			sourceTree = "<group>";
 		};
 		9ACF99591EBE32FE006FC958 /* Views */ = {
@@ -3605,7 +3597,6 @@
 				CA8E7EFD1FB093D800F0BF10 /* PhoneNavigationControllerFactory.swift */,
 				CA8E7EF51FB08E2500F0BF10 /* PhoneWindowWireframe.swift */,
 				CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */,
-				CAD3BDBE205AA69600C91E6E /* LinkLookupService.swift */,
 				CA063B4320F3862500241CC9 /* ModuleOrderingPolicy.swift */,
 				CA063B4720F3E27000241CC9 /* RestorationIdentifierOrderingPolicy.swift */,
 			);
@@ -5376,7 +5367,6 @@
 			isa = PBXGroup;
 			children = (
 				CA0E520C208E759F005259FE /* DefaultNewsInteractor.swift */,
-				CA162E7B20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift */,
 				CA162E9D20A8D158004AFED6 /* FoundationRelativeTimeIntervalCountdownFormatter.swift */,
 				CA89CBAC207F802400570D54 /* NewsInteractor.swift */,
 				CA89CBA8207F7F9A00570D54 /* NewsViewModel.swift */,
@@ -5469,6 +5459,7 @@
 				CA36A48E20D92EAA00EE6537 /* DealersService.swift */,
 				CA162E8F20A652AA004AFED6 /* EventsService.swift */,
 				CABF03BC2041C2B70028BD62 /* KnowledgeService.swift */,
+				CAD3BDBE205AA69600C91E6E /* LinkLookupService.swift */,
 				CA6A8DAD20E2CF87007536CD /* MapsService.swift */,
 				CA283A6220E6ED6400F7D195 /* RefreshService.swift */,
 			);
@@ -6048,6 +6039,15 @@
 				CAEA0B8B2165626900B0C7A6 /* Info.plist */,
 			);
 			path = EurofurenceAppCoreTests;
+			sourceTree = "<group>";
+		};
+		CAEA0D812166B3F700B0C7A6 /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				CA162E7B20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift */,
+				9A34B9771ECF6E3B004A249E /* Iso8601DateFormatter.swift */,
+			);
+			path = Formatters;
 			sourceTree = "<group>";
 		};
 		CAEAEBF21FDEB53800C0EE7C /* Message Detail */ = {
