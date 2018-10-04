@@ -10,6 +10,8 @@ import Foundation
 
 struct URLSessionBasedJSONSession: JSONSession {
 
+    static let shared = URLSessionBasedJSONSession()
+
     var session: URLSession = .shared
 
     func get(_ request: JSONRequest, completionHandler: @escaping (Data?, Error?) -> Void) {

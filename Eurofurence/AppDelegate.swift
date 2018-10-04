@@ -13,7 +13,7 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
 	var window: UIWindow? = UIWindow()
-    lazy var app = EurofurenceApplication.shared
+    var app: EurofurenceApplication!
     private var director: ApplicationDirector?
 
 	func application(_ application: UIApplication,
@@ -24,9 +24,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         applyDirectorBasedTheme()
         UNUserNotificationCenter.current().delegate = self
 
-            let director = DirectorBuilder().build()
-            self.director = director
-            EurofurenceApplication.shared.setExternalContentHandler(director)
+        let jsonSession = URLSessionBasedJSONSession.shared
+        let buildConfiguration = PreprocessorBuildConfigurationProviding()
+        let apiUrl = BuildConfigurationV2ApiUrlProviding(buildConfiguration)
+        let fcmRegistration = EurofurenceFCMDeviceRegistration(JSONSession: jsonSession, urlProviding: apiUrl)
+        let remoteNotificationsTokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfiguration,
+                                                                                                appVersion: BundleAppVersionProviding.shared,
+                                                                                                firebaseAdapter: FirebaseMessagingAdapter(),
+                                                                                                fcmRegistration: fcmRegistration)
+
+        app = EurofurenceApplicationBuilder()
+            .with(remoteNotificationsTokenRegistration)
+            .build() as? EurofurenceApplication
+
+        let director = DirectorBuilder().build()
+        self.director = director
+        app.setExternalContentHandler(director)
 
         window?.makeKeyAndVisible()
         ReviewPromptController.initialize()

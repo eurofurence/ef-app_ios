@@ -10,12 +10,12 @@ import Foundation
 
 class RemoteNotificationRegistrationController {
 
-    private let remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
+    private let remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?
     private var deviceToken: Data?
     private var authenticationToken: String?
 
     init(eventBus: EventBus,
-         remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration) {
+         remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?) {
         self.remoteNotificationsTokenRegistration = remoteNotificationsTokenRegistration
 
         eventBus.subscribe(consumer: BlockEventConsumer(block: remoteNotificationRegistrationSucceeded))
@@ -23,7 +23,7 @@ class RemoteNotificationRegistrationController {
     }
 
     private func reregisterNotificationToken() {
-        remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(deviceToken, userAuthenticationToken: authenticationToken) { (_) in
+        remoteNotificationsTokenRegistration?.registerRemoteNotificationsDeviceToken(deviceToken, userAuthenticationToken: authenticationToken) { (_) in
 
         }
     }

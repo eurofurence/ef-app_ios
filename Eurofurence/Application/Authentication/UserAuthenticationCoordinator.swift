@@ -14,7 +14,7 @@ class UserAuthenticationCoordinator {
     private let clock: Clock
     private let credentialStore: CredentialStore
     private let loginAPI: LoginAPI
-    private let remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
+    private let remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?
     private var userAuthenticationToken: String?
     private var registeredDeviceToken: Data?
     private var loggedInUser: User?
@@ -23,7 +23,7 @@ class UserAuthenticationCoordinator {
     init(eventBus: EventBus,
          clock: Clock,
          credentialStore: CredentialStore,
-         remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
+         remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?,
          loginAPI: LoginAPI) {
         self.eventBus = eventBus
         self.clock = clock
@@ -52,7 +52,7 @@ class UserAuthenticationCoordinator {
     }
 
     func logout(completionHandler: @escaping (LogoutResult) -> Void) {
-        remoteNotificationsTokenRegistration.registerRemoteNotificationsDeviceToken(registeredDeviceToken,
+        remoteNotificationsTokenRegistration?.registerRemoteNotificationsDeviceToken(registeredDeviceToken,
                                                                                     userAuthenticationToken: nil) { error in
             if error != nil {
                 completionHandler(.failure)

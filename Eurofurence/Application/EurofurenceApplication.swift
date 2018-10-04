@@ -55,7 +55,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
     init(userPreferences: UserPreferences,
          dataStore: EurofurenceDataStore,
-         remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration,
+         remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?,
          pushPermissionsRequester: PushPermissionsRequester,
          clock: Clock,
          credentialStore: CredentialStore,

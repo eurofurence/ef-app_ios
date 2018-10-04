@@ -12,7 +12,7 @@ public class EurofurenceApplicationBuilder {
 
     private var userPreferences: UserPreferences
     private var dataStore: EurofurenceDataStore
-    private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration
+    private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?
     private var pushPermissionsRequester: PushPermissionsRequester
     private var clock: Clock
     private var credentialStore: CredentialStore
@@ -38,15 +38,9 @@ public class EurofurenceApplicationBuilder {
         userPreferences = UserDefaultsPreferences()
         dataStore = CoreDataEurofurenceDataStore()
 
-        let jsonSession = URLSessionBasedJSONSession()
+        let jsonSession = URLSessionBasedJSONSession.shared
         let buildConfiguration = PreprocessorBuildConfigurationProviding()
         let apiUrl = BuildConfigurationV2ApiUrlProviding(buildConfiguration)
-
-        let fcmRegistration = EurofurenceFCMDeviceRegistration(JSONSession: jsonSession, urlProviding: apiUrl)
-        remoteNotificationsTokenRegistration = FirebaseRemoteNotificationsTokenRegistration(buildConfiguration: buildConfiguration,
-                                                                                            appVersion: BundleAppVersionProviding.shared,
-                                                                                            firebaseAdapter: FirebaseMessagingAdapter(),
-                                                                                            fcmRegistration: fcmRegistration)
 
         pushPermissionsRequester = ApplicationPushPermissionsRequester.shared
         clock = SystemClock.shared
