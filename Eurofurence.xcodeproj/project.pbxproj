@@ -2735,7 +2735,7 @@
 			path = Tutorial;
 			sourceTree = "<group>";
 		};
-		781A94311F1A1981002DE70F /* Firebase */ = {
+		781A94311F1A1981002DE70F /* Firebase Notification Registration */ = {
 			isa = PBXGroup;
 			children = (
 				781A942F1F1A1972002DE70F /* FirebaseAdapter.swift */,
@@ -2744,7 +2744,7 @@
 				781A943F1F1A1A72002DE70F /* FirebaseMessagingAdapter.swift */,
 				78FE77CB1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift */,
 			);
-			path = Firebase;
+			path = "Firebase Notification Registration";
 			sourceTree = "<group>";
 		};
 		781A94341F1A19A2002DE70F /* Application */ = {
@@ -2781,19 +2781,18 @@
 		781A94431F1A1DC6002DE70F /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
-				781A94441F1A1DCE002DE70F /* Firebase */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
 		};
-		781A94441F1A1DCE002DE70F /* Firebase */ = {
+		781A94441F1A1DCE002DE70F /* Firebase Notification Registration */ = {
 			isa = PBXGroup;
 			children = (
 				781A94471F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift */,
 				781A94451F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift */,
 				6EEC6DA01F1BF79F00205F2D /* FirebaseTopicTests.swift */,
 			);
-			path = Firebase;
+			path = "Firebase Notification Registration";
 			sourceTree = "<group>";
 		};
 		7820A70A1F179487004C0FB5 /* Actions */ = {
@@ -2977,8 +2976,6 @@
 			isa = PBXGroup;
 			children = (
 				CA8D97D4201613010074838F /* RemoteNotificationRegistrationController.swift */,
-				781A94311F1A1981002DE70F /* Firebase */,
-				CA2D04FC20EE910600CF54E1 /* Reminders */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -3094,6 +3091,7 @@
 				7820A6F51F16B123004C0FB5 /* UserDefaultsUserAcknowledgedPushPermissionsRequestStateProvidingTests.swift */,
 				78D7EEB31F195E8B005372A9 /* Application Tests */,
 				CAF7055F1F82CBC800A9FEA2 /* Director */,
+				781A94441F1A1DCE002DE70F /* Firebase Notification Registration */,
 				78C86D5B1F12355C003A20E6 /* Module Tests */,
 				CA82409B212498E6007E4A70 /* Review Prompt */,
 				78FE77D41F1B9F8A00E9A0BE /* Services Tests */,
@@ -3879,13 +3877,6 @@
 				CA283AD320EAC84300F7D195 /* WhenPreparingViewModel_AnnouncementsInteractorShould.swift */,
 			);
 			path = "Interactor Tests";
-			sourceTree = "<group>";
-		};
-		CA2D04FC20EE910600CF54E1 /* Reminders */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Reminders;
 			sourceTree = "<group>";
 		};
 		CA2D07FE1FE94AD200BFD785 /* Root */ = {
@@ -6120,6 +6111,7 @@
 				CA283A5920E6E24300F7D195 /* CocoaTouchLongRunningTaskManager.swift */,
 				CA2A586C20F76F03002C69B6 /* CocoaTouchMapCoordinateRender.swift */,
 				CAA6060620EEB4F200075A4E /* UserNotificationsNotificationService.swift */,
+				781A94311F1A1981002DE70F /* Firebase Notification Registration */,
 			);
 			path = "Application Adapter Implementations";
 			sourceTree = "<group>";
