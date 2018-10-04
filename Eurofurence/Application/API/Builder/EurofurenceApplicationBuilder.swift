@@ -13,7 +13,7 @@ public class EurofurenceApplicationBuilder {
     private var userPreferences: UserPreferences
     private var dataStore: EurofurenceDataStore
     private var remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?
-    private var pushPermissionsRequester: PushPermissionsRequester
+    private var pushPermissionsRequester: PushPermissionsRequester?
     private var clock: Clock
     private var credentialStore: CredentialStore
     private var loginAPI: LoginAPI
@@ -42,7 +42,6 @@ public class EurofurenceApplicationBuilder {
         let buildConfiguration = PreprocessorBuildConfigurationProviding()
         let apiUrl = BuildConfigurationV2ApiUrlProviding(buildConfiguration)
 
-        pushPermissionsRequester = ApplicationPushPermissionsRequester.shared
         clock = SystemClock.shared
         credentialStore = KeychainCredentialStore()
         loginAPI = V2LoginAPI(jsonSession: jsonSession, apiUrl: apiUrl)

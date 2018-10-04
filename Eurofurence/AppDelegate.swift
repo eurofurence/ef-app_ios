@@ -33,8 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                                                                                 firebaseAdapter: FirebaseMessagingAdapter(),
                                                                                                 fcmRegistration: fcmRegistration)
 
+        let pushPermissionsRequester = ApplicationPushPermissionsRequester.shared
+
         app = EurofurenceApplicationBuilder()
             .with(remoteNotificationsTokenRegistration)
+            .with(pushPermissionsRequester)
             .build() as? EurofurenceApplication
 
         let director = DirectorBuilder().build()

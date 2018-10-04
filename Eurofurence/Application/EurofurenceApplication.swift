@@ -56,7 +56,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     init(userPreferences: UserPreferences,
          dataStore: EurofurenceDataStore,
          remoteNotificationsTokenRegistration: RemoteNotificationsTokenRegistration?,
-         pushPermissionsRequester: PushPermissionsRequester,
+         pushPermissionsRequester: PushPermissionsRequester?,
          clock: Clock,
          credentialStore: CredentialStore,
          loginAPI: LoginAPI,
@@ -88,7 +88,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         self.forceRefreshRequired = forceRefreshRequired
         self.imageRepository = imageRepository
 
-        pushPermissionsRequester.requestPushPermissions()
+        pushPermissionsRequester?.requestPushPermissions()
 
         remoteNotificationRegistrationController = RemoteNotificationRegistrationController(eventBus: eventBus,
                                                                                             remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration)
