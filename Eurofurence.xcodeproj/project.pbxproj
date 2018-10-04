@@ -8557,6 +8557,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5DA10E85459A9FF65734F794 /* Pods-EurofurenceAppCore.debug.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
@@ -8591,6 +8592,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7714221AEEEF332DF8EA8909 /* Pods-EurofurenceAppCore.screenshots.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
@@ -8624,6 +8626,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F87DF4B6472522002C993E1C /* Pods-EurofurenceAppCore.release.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
@@ -8657,6 +8660,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 27BA6F7C4F3A768302E136E8 /* Pods-EurofurenceAppCore.profiling.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
