@@ -74,7 +74,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
          longRunningTaskManager: LongRunningTaskManager?,
          notificationsService: NotificationsService?,
          hoursDateFormatter: HoursDateFormatter,
-         mapCoordinateRender: MapCoordinateRender,
+         mapCoordinateRender: MapCoordinateRender?,
          forceRefreshRequired: ForceRefreshRequired) {
         self.userPreferences = userPreferences
         self.dataStore = dataStore

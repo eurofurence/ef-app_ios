@@ -72,12 +72,12 @@ class Dealers: DealersService {
     private let eventBus: EventBus
     private let dataStore: EurofurenceDataStore
     private let imageCache: ImagesCache
-    private let mapCoordinateRender: MapCoordinateRender
+    private let mapCoordinateRender: MapCoordinateRender?
 
     init(eventBus: EventBus,
          dataStore: EurofurenceDataStore,
          imageCache: ImagesCache,
-         mapCoordinateRender: MapCoordinateRender) {
+         mapCoordinateRender: MapCoordinateRender?) {
         self.eventBus = eventBus
         self.dataStore = dataStore
         self.imageCache = imageCache
@@ -122,7 +122,7 @@ class Dealers: DealersService {
 
         var dealerMapLocationData: Data?
         if let (map, entry) = fetchMapData(for: dealer), let mapData = imageCache.cachedImageData(for: map.imageIdentifier) {
-            dealerMapLocationData = mapCoordinateRender.render(x: entry.x, y: entry.y, radius: entry.tapRadius, onto: mapData)
+            dealerMapLocationData = mapCoordinateRender?.render(x: entry.x, y: entry.y, radius: entry.tapRadius, onto: mapData)
         }
 
         var artistImagePNGData: Data?

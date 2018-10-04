@@ -45,6 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         let notificationsService = UserNotificationsNotificationService()
 
+        let mapCoordinateRender = CocoaTouchMapCoordinateRender()
+
         app = EurofurenceApplicationBuilder()
             .with(remoteNotificationsTokenRegistration)
             .with(pushPermissionsRequester)
@@ -53,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             .with(urlOpener)
             .with(longRunningTaskManager)
             .with(notificationsService)
+            .with(mapCoordinateRender)
             .build() as? EurofurenceApplication
 
         let director = DirectorBuilder().build()

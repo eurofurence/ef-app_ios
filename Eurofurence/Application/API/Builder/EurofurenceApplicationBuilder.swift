@@ -31,7 +31,7 @@ public class EurofurenceApplicationBuilder {
     private var longRunningTaskManager: LongRunningTaskManager?
     private var notificationsService: NotificationsService?
     private var hoursDateFormatter: HoursDateFormatter
-    private var mapCoordinateRender: MapCoordinateRender
+    private var mapCoordinateRender: MapCoordinateRender?
     private var forceRefreshRequired: ForceRefreshRequired
 
     public init() {
@@ -54,7 +54,6 @@ public class EurofurenceApplicationBuilder {
         imageRepository = PersistentImageRepository()
         collectThemAllRequestFactory = DefaultCollectThemAllRequestFactory()
         hoursDateFormatter = FoundationHoursDateFormatter.shared
-        mapCoordinateRender = CocoaTouchMapCoordinateRender()
         forceRefreshRequired = UserDefaultsForceRefreshRequired()
     }
 
