@@ -1,5 +1,5 @@
 //
-//  CocoaTouchMapCoordinateRender.swift
+//  UIKitMapCoordinateRender.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 12/07/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct CocoaTouchMapCoordinateRender: MapCoordinateRender {
+struct UIKitMapCoordinateRender: MapCoordinateRender {
 
     func render(x: Int, y: Int, radius: Int, onto data: Data) -> Data {
         guard let image = UIImage(data: data), let cgImage = image.cgImage else { return Data() }

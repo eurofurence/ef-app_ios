@@ -41,11 +41,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         let urlOpener = AppURLOpener()
 
-        let longRunningTaskManager = CocoaTouchLongRunningTaskManager()
+        let longRunningTaskManager = ApplicationLongRunningTaskManager()
 
         let notificationsService = UserNotificationsNotificationService()
 
-        let mapCoordinateRender = CocoaTouchMapCoordinateRender()
+        let mapCoordinateRender = UIKitMapCoordinateRender()
 
         app = EurofurenceApplicationBuilder()
             .with(remoteNotificationsTokenRegistration)

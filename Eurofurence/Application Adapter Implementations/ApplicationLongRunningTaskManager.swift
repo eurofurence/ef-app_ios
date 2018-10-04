@@ -1,5 +1,5 @@
 //
-//  CocoaTouchLongRunningTaskManager.swift
+//  ApplicationLongRunningTaskManager.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 29/06/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct CocoaTouchLongRunningTaskManager: LongRunningTaskManager {
+struct ApplicationLongRunningTaskManager: LongRunningTaskManager {
 
     private let app = UIApplication.shared
 

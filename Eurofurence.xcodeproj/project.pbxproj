@@ -362,7 +362,7 @@
 		CA2761D420E03B88000E52AC /* LoggedOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761D320E03B88000E52AC /* LoggedOut.swift */; };
 		CA281B641F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */; };
 		CA283A5820E6E23200F7D195 /* LongRunningTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A5720E6E23200F7D195 /* LongRunningTaskManager.swift */; };
-		CA283A5A20E6E24300F7D195 /* CocoaTouchLongRunningTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A5920E6E24300F7D195 /* CocoaTouchLongRunningTaskManager.swift */; };
+		CA283A5A20E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A5920E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift */; };
 		CA283A5C20E6E40500F7D195 /* BeforeSyncInitiated_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A5B20E6E40500F7D195 /* BeforeSyncInitiated_ApplicationShould.swift */; };
 		CA283A5E20E6E9FB00F7D195 /* WhenSceneInstigatesPullToRefresh_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A5D20E6E9FB00F7D195 /* WhenSceneInstigatesPullToRefresh_NewsPresenterShould.swift */; };
 		CA283A6020E6ECD300F7D195 /* WhenToldToRefresh_NewsInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA283A5F20E6ECD300F7D195 /* WhenToldToRefresh_NewsInteractorShould.swift */; };
@@ -431,7 +431,7 @@
 		CA2A586720F698D1002C69B6 /* WhenPreparingDealerMapGraphic_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586620F698D1002C69B6 /* WhenPreparingDealerMapGraphic_ApplicationShould.swift */; };
 		CA2A586920F69EA1002C69B6 /* CapturingMapCoordinateRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586820F69EA1002C69B6 /* CapturingMapCoordinateRender.swift */; };
 		CA2A586B20F69EB7002C69B6 /* MapCoordinateRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586A20F69EB7002C69B6 /* MapCoordinateRender.swift */; };
-		CA2A586D20F76F03002C69B6 /* CocoaTouchMapCoordinateRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586C20F76F03002C69B6 /* CocoaTouchMapCoordinateRender.swift */; };
+		CA2A586D20F76F03002C69B6 /* UIKitMapCoordinateRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586C20F76F03002C69B6 /* UIKitMapCoordinateRender.swift */; };
 		CA2A586F20F7F137002C69B6 /* AnnouncementDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586E20F7F137002C69B6 /* AnnouncementDateFormatter.swift */; };
 		CA2A587120F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A587020F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift */; };
 		CA2B4FA41F1E9FA600F007E1 /* WhenLoggingIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */; };
@@ -1660,7 +1660,7 @@
 		CA2761D320E03B88000E52AC /* LoggedOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOut.swift; sourceTree = "<group>"; };
 		CA281B631F1FE62D0002A4E5 /* UserAuthenticationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		CA283A5720E6E23200F7D195 /* LongRunningTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongRunningTaskManager.swift; sourceTree = "<group>"; };
-		CA283A5920E6E24300F7D195 /* CocoaTouchLongRunningTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaTouchLongRunningTaskManager.swift; sourceTree = "<group>"; };
+		CA283A5920E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationLongRunningTaskManager.swift; sourceTree = "<group>"; };
 		CA283A5B20E6E40500F7D195 /* BeforeSyncInitiated_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeSyncInitiated_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA283A5D20E6E9FB00F7D195 /* WhenSceneInstigatesPullToRefresh_NewsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSceneInstigatesPullToRefresh_NewsPresenterShould.swift; sourceTree = "<group>"; };
 		CA283A5F20E6ECD300F7D195 /* WhenToldToRefresh_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenToldToRefresh_NewsInteractorShould.swift; sourceTree = "<group>"; };
@@ -1729,7 +1729,7 @@
 		CA2A586620F698D1002C69B6 /* WhenPreparingDealerMapGraphic_ApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingDealerMapGraphic_ApplicationShould.swift; sourceTree = "<group>"; };
 		CA2A586820F69EA1002C69B6 /* CapturingMapCoordinateRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingMapCoordinateRender.swift; sourceTree = "<group>"; };
 		CA2A586A20F69EB7002C69B6 /* MapCoordinateRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinateRender.swift; sourceTree = "<group>"; };
-		CA2A586C20F76F03002C69B6 /* CocoaTouchMapCoordinateRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaTouchMapCoordinateRender.swift; sourceTree = "<group>"; };
+		CA2A586C20F76F03002C69B6 /* UIKitMapCoordinateRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitMapCoordinateRender.swift; sourceTree = "<group>"; };
 		CA2A586E20F7F137002C69B6 /* AnnouncementDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDateFormatter.swift; sourceTree = "<group>"; };
 		CA2A587020F7F369002C69B6 /* FoundationAnnouncementDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationAnnouncementDateFormatter.swift; sourceTree = "<group>"; };
 		CA2B4FA31F1E9FA600F007E1 /* WhenLoggingIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhenLoggingIn.swift; sourceTree = "<group>"; };
@@ -3606,7 +3606,6 @@
 				CA8E7EF51FB08E2500F0BF10 /* PhoneWindowWireframe.swift */,
 				CA1FE99A1FA0B3EB009C7DF3 /* WindowWireframe.swift */,
 				CAD3BDBE205AA69600C91E6E /* LinkLookupService.swift */,
-				CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */,
 				CA063B4320F3862500241CC9 /* ModuleOrderingPolicy.swift */,
 				CA063B4720F3E27000241CC9 /* RestorationIdentifierOrderingPolicy.swift */,
 			);
@@ -6142,10 +6141,11 @@
 		CAF1A674211E4B3600513226 /* Application Adapter Implementations */ = {
 			isa = PBXGroup;
 			children = (
+				CA283A5920E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift */,
 				CAB3A72E1F7533AE005DF77B /* ApplicationPushPermissionsRequester.swift */,
 				CA52C68020D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift */,
-				CA283A5920E6E24300F7D195 /* CocoaTouchLongRunningTaskManager.swift */,
-				CA2A586C20F76F03002C69B6 /* CocoaTouchMapCoordinateRender.swift */,
+				CAD3BDCA2061394700C91E6E /* AppURLOpener.swift */,
+				CA2A586C20F76F03002C69B6 /* UIKitMapCoordinateRender.swift */,
 				CAA6060620EEB4F200075A4E /* UserNotificationsNotificationService.swift */,
 				781A94311F1A1981002DE70F /* Firebase Notification Registration */,
 			);
@@ -6914,7 +6914,7 @@
 				CA162E7E20A4B9CD004AFED6 /* EF24StartDateRepository.swift in Sources */,
 				CA73AEEB201A0896004E77BF /* KnowledgeListSceneFactory.swift in Sources */,
 				CA162EB820AA2FB9004AFED6 /* APIEvent.swift in Sources */,
-				CA2A586D20F76F03002C69B6 /* CocoaTouchMapCoordinateRender.swift in Sources */,
+				CA2A586D20F76F03002C69B6 /* UIKitMapCoordinateRender.swift in Sources */,
 				CA283A5820E6E23200F7D195 /* LongRunningTaskManager.swift in Sources */,
 				78D7EEB81F196B30005372A9 /* BuildConfigurationProviding.swift in Sources */,
 				CA27618220DF932C000E52AC /* AspectRatioConstrainedImageView.swift in Sources */,
@@ -7307,7 +7307,7 @@
 				CA162E7C20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift in Sources */,
 				CA6AA0011FD6C5FD0092C6DB /* LoginModuleBuilder.swift in Sources */,
 				CACF1E6F20B1CDC300D904B5 /* EventDetailViewModel.swift in Sources */,
-				CA283A5A20E6E24300F7D195 /* CocoaTouchLongRunningTaskManager.swift in Sources */,
+				CA283A5A20E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift in Sources */,
 				CABA439F1FD578E1009CB5B0 /* NewsModuleBuilder.swift in Sources */,
 				CA6EC4892051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift in Sources */,
 				CA6A8DA020E2CAB7007536CD /* Map2.swift in Sources */,
