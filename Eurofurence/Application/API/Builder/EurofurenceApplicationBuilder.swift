@@ -28,7 +28,7 @@ public class EurofurenceApplicationBuilder {
     private var significantTimeChangeAdapter: SignificantTimeChangeAdapter?
     private var urlOpener: URLOpener?
     private var collectThemAllRequestFactory: CollectThemAllRequestFactory
-    private var longRunningTaskManager: LongRunningTaskManager
+    private var longRunningTaskManager: LongRunningTaskManager?
     private var notificationsService: NotificationsService
     private var hoursDateFormatter: HoursDateFormatter
     private var mapCoordinateRender: MapCoordinateRender
@@ -53,7 +53,6 @@ public class EurofurenceApplicationBuilder {
         timeIntervalForUpcomingEventsSinceNow = 3600
         imageRepository = PersistentImageRepository()
         collectThemAllRequestFactory = DefaultCollectThemAllRequestFactory()
-        longRunningTaskManager = CocoaTouchLongRunningTaskManager()
         notificationsService = UserNotificationsNotificationService()
         hoursDateFormatter = FoundationHoursDateFormatter.shared
         mapCoordinateRender = CocoaTouchMapCoordinateRender()

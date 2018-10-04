@@ -41,12 +41,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         let urlOpener = AppURLOpener()
 
+        let longRunningTaskManager = CocoaTouchLongRunningTaskManager()
+
         app = EurofurenceApplicationBuilder()
             .with(remoteNotificationsTokenRegistration)
             .with(pushPermissionsRequester)
             .with(significantTimeChangeEventSource)
             .with(significantTimeChangeAdapter)
             .with(urlOpener)
+            .with(longRunningTaskManager)
             .build() as? EurofurenceApplication
 
         let director = DirectorBuilder().build()

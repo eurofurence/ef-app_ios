@@ -38,7 +38,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
     private let collectThemAllRequestFactory: CollectThemAllRequestFactory
     private let credentialStore: CredentialStore
-    private let longRunningTaskManager: LongRunningTaskManager
+    private let longRunningTaskManager: LongRunningTaskManager?
     private let forceRefreshRequired: ForceRefreshRequired
     private let imageRepository: ImageRepository
 
@@ -71,7 +71,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
          significantTimeChangeAdapter: SignificantTimeChangeAdapter?,
          urlOpener: URLOpener?,
          collectThemAllRequestFactory: CollectThemAllRequestFactory,
-         longRunningTaskManager: LongRunningTaskManager,
+         longRunningTaskManager: LongRunningTaskManager?,
          notificationsService: NotificationsService,
          hoursDateFormatter: HoursDateFormatter,
          mapCoordinateRender: MapCoordinateRender,
@@ -314,7 +314,12 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
 
         refreshObservers.forEach({ $0.refreshServiceDidBeginRefreshing() })
 
-        let longRunningTask = longRunningTaskManager.beginLongRunningTask()
+        let longRunningTask = longRunningTaskManager?.beginLongRunningTask()
+        let finishLongRunningTask: () -> Void = {
+            if let taskManager = self.longRunningTaskManager, let task = longRunningTask {
+                taskManager.finishLongRunningTask(token: task)
+            }
+        }
 
         let progress = Progress()
         progress.totalUnitCount = -1
@@ -329,7 +334,8 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         let existingMaps = dataStore.getSavedMaps().or([])
         syncAPI.fetchLatestData(lastSyncTime: lastSyncTime) { (response) in
             guard let response = response else {
-                self.longRunningTaskManager.finishLongRunningTask(token: longRunningTask)
+                finishLongRunningTask()
+
                 self.refreshObservers.forEach({ $0.refreshServiceDidFinishRefreshing() })
                 completionHandler(SyncError.failedToLoadResponse)
                 return
@@ -448,7 +454,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
                 self.privateMessagesController.fetchPrivateMessages { (_) in
                     completionHandler(nil)
                     self.refreshObservers.forEach({ $0.refreshServiceDidFinishRefreshing() })
-                    self.longRunningTaskManager.finishLongRunningTask(token: longRunningTask)
+                    finishLongRunningTask()
                 }
             }
         }
