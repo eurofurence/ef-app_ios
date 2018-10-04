@@ -161,7 +161,7 @@ class Schedule: ClockDelegate {
     private let clock: Clock
     private let timeIntervalForUpcomingEventsSinceNow: TimeInterval
     private let eventBus: EventBus
-    private let notificationsService: NotificationsService
+    private let notificationsService: NotificationsService?
     private let userPreferences: UserPreferences
     private let hoursDateFormatter: HoursDateFormatter
 
@@ -213,7 +213,7 @@ class Schedule: ClockDelegate {
          imageCache: ImagesCache,
          clock: Clock,
          timeIntervalForUpcomingEventsSinceNow: TimeInterval,
-         notificationsService: NotificationsService,
+         notificationsService: NotificationsService?,
          userPreferences: UserPreferences,
          hoursDateFormatter: HoursDateFormatter) {
         self.dataStore = dataStore
@@ -273,11 +273,11 @@ class Schedule: ClockDelegate {
             .notificationContentIdentifier: identifier.rawValue
         ]
 
-        notificationsService.scheduleReminderForEvent(identifier: identifier,
-                                                      scheduledFor: reminderDate,
-                                                      title: event.title,
-                                                      body: body,
-                                                      userInfo: userInfo)
+        notificationsService?.scheduleReminderForEvent(identifier: identifier,
+                                                       scheduledFor: reminderDate,
+                                                       title: event.title,
+                                                       body: body,
+                                                       userInfo: userInfo)
     }
 
     func unfavouriteEvent(identifier: Event2.Identifier) {
@@ -286,7 +286,7 @@ class Schedule: ClockDelegate {
         }
 
         favouriteEventIdentifiers.index(of: identifier).let({ favouriteEventIdentifiers.remove(at: $0) })
-        notificationsService.removeEventReminder(for: identifier)
+        notificationsService?.removeEventReminder(for: identifier)
 
         let event = EventUnfavouritedEvent(identifier: identifier)
         eventBus.post(event)

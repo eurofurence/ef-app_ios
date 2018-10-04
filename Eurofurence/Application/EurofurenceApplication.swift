@@ -72,7 +72,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
          urlOpener: URLOpener?,
          collectThemAllRequestFactory: CollectThemAllRequestFactory,
          longRunningTaskManager: LongRunningTaskManager?,
-         notificationsService: NotificationsService,
+         notificationsService: NotificationsService?,
          hoursDateFormatter: HoursDateFormatter,
          mapCoordinateRender: MapCoordinateRender,
          forceRefreshRequired: ForceRefreshRequired) {
