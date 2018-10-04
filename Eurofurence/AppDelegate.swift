@@ -39,11 +39,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         let significantTimeChangeAdapter = ApplicationSignificantTimeChangeAdapter()
 
+        let urlOpener = AppURLOpener()
+
         app = EurofurenceApplicationBuilder()
             .with(remoteNotificationsTokenRegistration)
             .with(pushPermissionsRequester)
             .with(significantTimeChangeEventSource)
             .with(significantTimeChangeAdapter)
+            .with(urlOpener)
             .build() as? EurofurenceApplication
 
         let director = DirectorBuilder().build()

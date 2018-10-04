@@ -69,7 +69,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
          timeIntervalForUpcomingEventsSinceNow: TimeInterval,
          imageRepository: ImageRepository,
          significantTimeChangeAdapter: SignificantTimeChangeAdapter?,
-         urlOpener: URLOpener,
+         urlOpener: URLOpener?,
          collectThemAllRequestFactory: CollectThemAllRequestFactory,
          longRunningTaskManager: LongRunningTaskManager,
          notificationsService: NotificationsService,

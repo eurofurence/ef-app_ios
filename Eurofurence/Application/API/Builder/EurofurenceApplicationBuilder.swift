@@ -26,7 +26,7 @@ public class EurofurenceApplicationBuilder {
     private var imageAPI: ImageAPI
     private var imageRepository: ImageRepository
     private var significantTimeChangeAdapter: SignificantTimeChangeAdapter?
-    private var urlOpener: URLOpener
+    private var urlOpener: URLOpener?
     private var collectThemAllRequestFactory: CollectThemAllRequestFactory
     private var longRunningTaskManager: LongRunningTaskManager
     private var notificationsService: NotificationsService
@@ -52,7 +52,6 @@ public class EurofurenceApplicationBuilder {
         conventionStartDateRepository = EF24StartDateRepository()
         timeIntervalForUpcomingEventsSinceNow = 3600
         imageRepository = PersistentImageRepository()
-        urlOpener = AppURLOpener()
         collectThemAllRequestFactory = DefaultCollectThemAllRequestFactory()
         longRunningTaskManager = CocoaTouchLongRunningTaskManager()
         notificationsService = UserNotificationsNotificationService()
