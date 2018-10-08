@@ -5,7 +5,9 @@
 //  Created by Thomas Sherwood on 08/07/2018.
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
+
 @testable import Eurofurence
+import EurofurenceAppCore
 import XCTest
 
 class WhenToldToHandleNotification_ThatConcludesWithAnnouncement_DirectorShould: XCTestCase {

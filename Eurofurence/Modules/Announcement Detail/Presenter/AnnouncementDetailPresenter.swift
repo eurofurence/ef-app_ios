@@ -6,6 +6,8 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import EurofurenceAppCore
+
 struct AnnouncementDetailPresenter: AnnouncementDetailSceneDelegate {
 
     private let scene: AnnouncementDetailScene

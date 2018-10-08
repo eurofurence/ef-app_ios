@@ -6,6 +6,8 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
+import EurofurenceAppCore
+
 protocol PrivateMessagesService {
 
     func add(_ observer: PrivateMessagesServiceObserver)

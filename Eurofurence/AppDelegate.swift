@@ -8,12 +8,13 @@
 import UIKit
 import Firebase
 import UserNotifications
+import EurofurenceAppCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
 	var window: UIWindow? = UIWindow()
-    var app: EurofurenceApplication!
+    var app: EurofurenceApplicationProtocol!
     private var director: ApplicationDirector?
 
 	func application(_ application: UIApplication,
@@ -56,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             .with(longRunningTaskManager)
             .with(notificationsService)
             .with(mapCoordinateRender)
-            .build() as? EurofurenceApplication
+            .build()
 
         let director = DirectorBuilder().build()
         self.director = director

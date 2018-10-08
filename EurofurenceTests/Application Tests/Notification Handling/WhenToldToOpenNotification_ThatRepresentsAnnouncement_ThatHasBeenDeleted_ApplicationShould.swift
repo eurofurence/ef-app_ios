@@ -6,7 +6,7 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-import Eurofurence
+import EurofurenceAppCore
 import XCTest
 
 class WhenToldToOpenNotification_ThatRepresentsAnnouncement_ThatHasBeenDeleted_ApplicationShould: XCTestCase {

@@ -6,6 +6,8 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
+import EurofurenceAppCore
+
 class EurofurencePrivateMessagesService: PrivateMessagesService, PrivateMessagesObserver {
 
     static var shared = EurofurencePrivateMessagesService(app: EurofurenceApplication.shared)

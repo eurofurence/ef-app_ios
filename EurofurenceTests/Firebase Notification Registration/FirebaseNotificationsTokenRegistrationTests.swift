@@ -7,6 +7,7 @@
 //
 
 import Eurofurence
+import EurofurenceAppCore
 import XCTest
 
 class FirebaseRemoteNotificationsTokenRegistrationTests: XCTestCase {

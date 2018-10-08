@@ -7,6 +7,7 @@
 //
 
 @testable import Eurofurence
+import EurofurenceAppCore
 import XCTest
 
 class WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailInteractorShould: XCTestCase {

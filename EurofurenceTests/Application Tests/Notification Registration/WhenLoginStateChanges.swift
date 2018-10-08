@@ -6,7 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-import Eurofurence
+import EurofurenceAppCore
 import XCTest
 
 class WhenLoginStateChanges: XCTestCase {

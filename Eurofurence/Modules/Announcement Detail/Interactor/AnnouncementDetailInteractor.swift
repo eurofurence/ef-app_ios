@@ -6,6 +6,8 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import EurofurenceAppCore
+
 protocol AnnouncementDetailInteractor {
 
     func makeViewModel(for announcement: Announcement2.Identifier, completionHandler: @escaping (AnnouncementViewModel) -> Void)

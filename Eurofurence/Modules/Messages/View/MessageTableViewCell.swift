@@ -6,6 +6,7 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
+import EurofurenceAppCore
 import UIKit
 
 class MessageTableViewCell: UITableViewCell, MessageItemScene {

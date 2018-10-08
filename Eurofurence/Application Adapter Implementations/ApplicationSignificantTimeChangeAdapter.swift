@@ -6,6 +6,7 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import EurofurenceAppCore
 import UIKit
 
 // TODO: Why are there two of these?

@@ -7,6 +7,7 @@
 //
 
 @testable import Eurofurence
+import EurofurenceAppCore
 import XCTest
 
 class WhenToldToFavouriteEvent_FromSearchViewModel_InteractorShould: XCTestCase {

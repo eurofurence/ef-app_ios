@@ -6,7 +6,7 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-import Eurofurence
+import EurofurenceAppCore
 import XCTest
 
 class WhenFetchingImagesForKnowledgeEntry_WhenEntryHasNoImages_ApplicationShould: XCTestCase {

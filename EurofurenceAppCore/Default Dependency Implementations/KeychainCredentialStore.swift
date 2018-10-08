@@ -8,11 +8,11 @@
 
 import Locksmith
 
-struct KeychainCredentialStore: CredentialStore {
+public struct KeychainCredentialStore: CredentialStore {
 
     private var userAccount: String
 
-    var persistedCredential: Credential? {
+    public var persistedCredential: Credential? {
         guard let data = Locksmith.loadDataForUserAccount(userAccount: userAccount) else {
             return nil
         }
@@ -20,11 +20,11 @@ struct KeychainCredentialStore: CredentialStore {
         return Credential(keychainData: data)
     }
 
-    init(userAccount: String = "Eurofurence") {
+    public init(userAccount: String = "Eurofurence") {
         self.userAccount = userAccount
     }
 
-    func store(_ credential: Credential) {
+    public func store(_ credential: Credential) {
         do {
             try Locksmith.updateData(data: credential.keychainData, forUserAccount: userAccount)
         } catch {
@@ -32,7 +32,7 @@ struct KeychainCredentialStore: CredentialStore {
         }
     }
 
-    func deletePersistedToken() {
+    public func deletePersistedToken() {
         do {
             try Locksmith.deleteDataForUserAccount(userAccount: userAccount)
         } catch {

@@ -6,6 +6,8 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import EurofurenceAppCore
+
 protocol KnowledgeDetailModuleDelegate {
 
     func knowledgeDetailModuleDidSelectLink(_ link: Link)

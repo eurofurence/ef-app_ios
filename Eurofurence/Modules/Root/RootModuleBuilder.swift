@@ -6,6 +6,8 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
+import EurofurenceAppCore
+
 class RootModuleBuilder {
 
     private var app: EurofurenceApplicationProtocol

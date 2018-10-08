@@ -9,9 +9,9 @@
 import Foundation
 import Reachability
 
-struct SwiftNetworkReachability: NetworkReachability {
+public struct SwiftNetworkReachability: NetworkReachability {
 
-    static let shared = SwiftNetworkReachability()
+    public static let shared = SwiftNetworkReachability()
     private var reachability: Reachability
 
     private init() {
@@ -22,7 +22,7 @@ struct SwiftNetworkReachability: NetworkReachability {
         self.reachability = reachability
     }
 
-    var wifiReachable: Bool {
+    public var wifiReachable: Bool {
         return reachability.connection == .wifi
     }
 

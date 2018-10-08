@@ -6,7 +6,7 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-@testable import Eurofurence
+import EurofurenceAppCore
 
 struct StubV2ApiUrlProviding : V2ApiUrlProviding {
     let url = "https://api.example.com/v2/"

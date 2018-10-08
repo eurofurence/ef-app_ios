@@ -6,7 +6,7 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-import Eurofurence
+import EurofurenceAppCore
 import Foundation
 
 class CapturingConventionCountdownServiceObserver: ConventionCountdownServiceObserver {

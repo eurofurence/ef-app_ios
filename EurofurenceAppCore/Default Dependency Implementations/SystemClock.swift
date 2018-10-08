@@ -8,21 +8,21 @@
 
 import Foundation
 
-class SystemClock: Clock {
+public class SystemClock: Clock {
 
-    static let shared = SystemClock()
+    public static let shared = SystemClock()
     private var timer: Timer?
 
     private init() {
         timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true, block: timerFired)
     }
 
-    var currentDate: Date {
+    public var currentDate: Date {
         return Date()
     }
 
     private var delegate: ClockDelegate?
-    func setDelegate(_ delegate: ClockDelegate) {
+    public func setDelegate(_ delegate: ClockDelegate) {
         self.delegate = delegate
     }
 

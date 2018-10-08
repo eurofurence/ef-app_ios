@@ -6,6 +6,7 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
+import EurofurenceAppCore
 import Foundation
 
 class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {

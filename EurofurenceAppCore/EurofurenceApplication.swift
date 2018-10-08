@@ -19,9 +19,10 @@ public enum PrivateMessageResult {
     case userNotAuthenticated
 }
 
-class EurofurenceApplication: EurofurenceApplicationProtocol {
+// TODO: Temporarily made public to aid migration, should be internal
+public class EurofurenceApplication: EurofurenceApplicationProtocol {
 
-    static var shared: EurofurenceApplicationProtocol = EurofurenceApplicationBuilder().build()
+    public static var shared: EurofurenceApplicationProtocol = EurofurenceApplicationBuilder().build()
 
     private let eventBus = EventBus()
     private let userPreferences: UserPreferences
@@ -128,7 +129,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         fetchPrivateMessages { (_) in }
     }
 
-    func handleRemoteNotification(payload: [String: String], completionHandler: @escaping (ApplicationPushActionResult) -> Void) {
+    public func handleRemoteNotification(payload: [String: String], completionHandler: @escaping (ApplicationPushActionResult) -> Void) {
         if payload[ApplicationNotificationKey.notificationContentKind.rawValue] == ApplicationNotificationContentKind.event.rawValue {
             guard let identifier = payload[ApplicationNotificationKey.notificationContentIdentifier.rawValue] else {
                 completionHandler(.unknown)
@@ -165,11 +166,11 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
     }
 
     private var refreshObservers = [RefreshServiceObserver]()
-    func add(_ observer: RefreshServiceObserver) {
+    public func add(_ observer: RefreshServiceObserver) {
         refreshObservers.append(observer)
     }
 
-    func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
+    public func resolveDataStoreState(completionHandler: @escaping (EurofurenceDataStoreState) -> Void) {
         let shouldPerformForceRefresh: Bool = forceRefreshRequired.isForceRefreshRequired
         let state: EurofurenceDataStoreState = {
             guard dataStore.getLastRefreshDate() != nil else { return .absent }
@@ -181,129 +182,129 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         completionHandler(state)
     }
 
-    func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {
+    public func login(_ arguments: LoginArguments, completionHandler: @escaping (LoginResult) -> Void) {
         authenticationCoordinator.login(arguments, completionHandler: completionHandler)
     }
 
-    func logout(completionHandler: @escaping (LogoutResult) -> Void) {
+    public func logout(completionHandler: @escaping (LogoutResult) -> Void) {
         authenticationCoordinator.logout(completionHandler: completionHandler)
     }
 
-    func storeRemoteNotificationsToken(_ deviceToken: Data) {
+    public func storeRemoteNotificationsToken(_ deviceToken: Data) {
         eventBus.post(DomainEvent.RemoteNotificationRegistrationSucceeded(deviceToken: deviceToken))
     }
 
-    var localPrivateMessages: [Message] { return privateMessagesController.localPrivateMessages }
+    public var localPrivateMessages: [Message] { return privateMessagesController.localPrivateMessages }
 
-    func add(_ observer: PrivateMessagesObserver) {
+    public func add(_ observer: PrivateMessagesObserver) {
         privateMessagesController.add(observer)
     }
 
-    func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {
+    public func fetchPrivateMessages(completionHandler: @escaping (PrivateMessageResult) -> Void) {
         privateMessagesController.fetchPrivateMessages(completionHandler: completionHandler)
     }
 
-    func markMessageAsRead(_ message: Message) {
+    public func markMessageAsRead(_ message: Message) {
         privateMessagesController.markMessageAsRead(message)
     }
 
-    func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void) {
+    public func retrieveCurrentUser(completionHandler: @escaping (User?) -> Void) {
         authenticationCoordinator.retrieveCurrentUser(completionHandler: completionHandler)
     }
 
-    func add(_ observer: KnowledgeServiceObserver) {
+    public func add(_ observer: KnowledgeServiceObserver) {
         knowledge.add(observer)
     }
 
-    func fetchKnowledgeEntry(for identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping (KnowledgeEntry2) -> Void) {
+    public func fetchKnowledgeEntry(for identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping (KnowledgeEntry2) -> Void) {
         knowledge.fetchKnowledgeEntry(for: identifier, completionHandler: completionHandler)
     }
 
-    func fetchKnowledgeGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping (KnowledgeGroup2) -> Void) {
+    public func fetchKnowledgeGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping (KnowledgeGroup2) -> Void) {
         knowledge.fetchKnowledgeGroup(identifier: identifier, completionHandler: completionHandler)
     }
 
-    func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping ([Data]) -> Void) {
+    public func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping ([Data]) -> Void) {
         knowledge.fetchImagesForKnowledgeEntry(identifier: identifier, completionHandler: completionHandler)
     }
 
-    func add(_ observer: EventsServiceObserver) {
+    public func add(_ observer: EventsServiceObserver) {
         schedule.add(observer)
     }
 
-    func favouriteEvent(identifier: Event2.Identifier) {
+    public func favouriteEvent(identifier: Event2.Identifier) {
         schedule.favouriteEvent(identifier: identifier)
     }
 
-    func unfavouriteEvent(identifier: Event2.Identifier) {
+    public func unfavouriteEvent(identifier: Event2.Identifier) {
         schedule.unfavouriteEvent(identifier: identifier)
     }
 
-    func makeEventsSchedule() -> EventsSchedule {
+    public func makeEventsSchedule() -> EventsSchedule {
         return schedule.makeScheduleAdapter()
     }
 
-    func makeEventsSearchController() -> EventsSearchController {
+    public func makeEventsSearchController() -> EventsSearchController {
         return schedule.makeEventsSearchController()
     }
 
-    func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2?) -> Void) {
+    public func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2?) -> Void) {
         schedule.fetchEvent(for: identifier, completionHandler: completionHandler)
     }
 
-    func makeDealersIndex() -> DealersIndex {
+    public func makeDealersIndex() -> DealersIndex {
         return dealers.makeDealersIndex()
     }
 
-    func fetchIconPNGData(for identifier: Dealer2.Identifier, completionHandler: @escaping (Data?) -> Void) {
+    public func fetchIconPNGData(for identifier: Dealer2.Identifier, completionHandler: @escaping (Data?) -> Void) {
         dealers.fetchIconPNGData(for: identifier, completionHandler: completionHandler)
     }
 
-    func fetchExtendedDealerData(for dealer: Dealer2.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
+    public func fetchExtendedDealerData(for dealer: Dealer2.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
         dealers.fetchExtendedDealerData(for: dealer, completionHandler: completionHandler)
     }
 
-    func openWebsite(for identifier: Dealer2.Identifier) {
+    public func openWebsite(for identifier: Dealer2.Identifier) {
         dealers.openWebsite(for: identifier)
     }
 
-    func openTwitter(for identifier: Dealer2.Identifier) {
+    public func openTwitter(for identifier: Dealer2.Identifier) {
         dealers.openTwitter(for: identifier)
     }
 
-    func openTelegram(for identifier: Dealer2.Identifier) {
+    public func openTelegram(for identifier: Dealer2.Identifier) {
         dealers.openTelegram(for: identifier)
     }
 
-    func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler) {
+    public func setExternalContentHandler(_ externalContentHandler: ExternalContentHandler) {
         urlHandler.externalContentHandler = externalContentHandler
     }
 
-    func subscribe(_ observer: CollectThemAllURLObserver) {
+    public func subscribe(_ observer: CollectThemAllURLObserver) {
         collectThemAll.subscribe(observer)
     }
 
-    func add(_ observer: MapsObserver) {
+    public func add(_ observer: MapsObserver) {
         maps.add(observer)
     }
 
-    func fetchImagePNGDataForMap(identifier: Map2.Identifier, completionHandler: @escaping (Data) -> Void) {
+    public func fetchImagePNGDataForMap(identifier: Map2.Identifier, completionHandler: @escaping (Data) -> Void) {
         maps.fetchImagePNGDataForMap(identifier: identifier, completionHandler: completionHandler)
     }
 
-    func fetchContent(for identifier: Map2.Identifier,
+    public func fetchContent(for identifier: Map2.Identifier,
                       atX x: Int,
                       y: Int,
                       completionHandler: @escaping (Map2.Content) -> Void) {
         maps.fetchContent(for: identifier, atX: x, y: y, completionHandler: completionHandler)
     }
 
-    func performFullStoreRefresh(completionHandler: @escaping (Error?) -> Void) -> Progress {
+    public func performFullStoreRefresh(completionHandler: @escaping (Error?) -> Void) -> Progress {
         return performSync(lastSyncTime: nil, completionHandler: completionHandler)
     }
 
     @discardableResult
-    func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
+    public func refreshLocalStore(completionHandler: @escaping (Error?) -> Void) -> Progress {
         return performSync(lastSyncTime: dataStore.getLastRefreshDate(), completionHandler: completionHandler)
     }
 
@@ -462,7 +463,7 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         return progress
     }
 
-    func lookupContent(for link: Link) -> LinkContentLookupResult? {
+    public func lookupContent(for link: Link) -> LinkContentLookupResult? {
         guard let urlString = link.contents as? String, let url = URL(string: urlString) else { return nil }
 
         if let scheme = url.scheme, scheme == "https" || scheme == "http" {
@@ -472,23 +473,23 @@ class EurofurenceApplication: EurofurenceApplicationProtocol {
         return .externalURL(url)
     }
 
-    func add(_ observer: AnnouncementsServiceObserver) {
+    public func add(_ observer: AnnouncementsServiceObserver) {
         announcements.add(observer)
     }
 
-    func openAnnouncement(identifier: Announcement2.Identifier, completionHandler: @escaping (Announcement2) -> Void) {
+    public func openAnnouncement(identifier: Announcement2.Identifier, completionHandler: @escaping (Announcement2) -> Void) {
         announcements.openAnnouncement(identifier: identifier, completionHandler: completionHandler)
     }
 
-    func fetchAnnouncementImage(identifier: Announcement2.Identifier, completionHandler: @escaping (Data?) -> Void) {
+    public func fetchAnnouncementImage(identifier: Announcement2.Identifier, completionHandler: @escaping (Data?) -> Void) {
         announcements.fetchAnnouncementImage(identifier: identifier, completionHandler: completionHandler)
     }
 
-    func add(_ observer: ConventionCountdownServiceObserver) {
+    public func add(_ observer: ConventionCountdownServiceObserver) {
         conventionCountdownController.observeDaysUntilConvention(using: observer)
     }
 
-    func add(_ observer: AuthenticationStateObserver) {
+    public func add(_ observer: AuthenticationStateObserver) {
         authenticationCoordinator.add(observer)
     }
 

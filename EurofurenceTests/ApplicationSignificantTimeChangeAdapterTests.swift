@@ -6,7 +6,7 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-import Eurofurence
+@testable import Eurofurence
 import XCTest
 
 class ApplicationSignificantTimeChangeAdapterTests: XCTestCase {

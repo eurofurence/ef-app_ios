@@ -6,7 +6,8 @@
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-@testable import Eurofurence
+import EurofurenceAppCore
+import EurofurenceAppCore
 import Foundation
 
 extension APISyncResponse {

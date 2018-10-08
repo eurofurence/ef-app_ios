@@ -8,17 +8,21 @@
 
 import Foundation
 
-struct URLSessionBasedJSONSession: JSONSession {
+public struct URLSessionBasedJSONSession: JSONSession {
 
-    static let shared = URLSessionBasedJSONSession()
+    public static let shared = URLSessionBasedJSONSession()
 
-    var session: URLSession = .shared
+    private let session: URLSession
+    
+    public init(session: URLSession = .shared) {
+        self.session = session
+    }
 
-    func get(_ request: JSONRequest, completionHandler: @escaping (Data?, Error?) -> Void) {
+    public func get(_ request: JSONRequest, completionHandler: @escaping (Data?, Error?) -> Void) {
         perform(request, method: "GET", completionHandler: completionHandler)
     }
 
-    func post(_ request: JSONRequest, completionHandler: @escaping (Data?, Error?) -> Void) {
+    public func post(_ request: JSONRequest, completionHandler: @escaping (Data?, Error?) -> Void) {
         perform(request, method: "POST", completionHandler: completionHandler)
     }
 

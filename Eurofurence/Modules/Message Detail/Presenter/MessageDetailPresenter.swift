@@ -6,6 +6,8 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
+import EurofurenceAppCore
+
 struct MessageDetailPresenter: MessageDetailSceneDelegate {
 
     private let message: Message

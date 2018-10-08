@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol NetworkReachability {
+public protocol NetworkReachability {
 
     var wifiReachable: Bool { get }
 
