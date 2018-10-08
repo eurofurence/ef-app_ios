@@ -2728,10 +2728,8 @@
 				CAF3C74D1F9FC72C0008F027 /* StubNewsSceneFactory.swift */,
 				7820A6DA1F13F4DE004C0FB5 /* StubPresentationAssets.swift */,
 				78C86D591F1234F0003A20E6 /* StubRouters.swift */,
-				781A94341F1A19A2002DE70F /* Application */,
 				78C86D5E1F12384C003A20E6 /* Scenes */,
 				78FE77D01F1A2E9500E9A0BE /* Services */,
-				C61870DF20DAD8E00089E836 /* StubV2ApiUrlProviding.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -2802,35 +2800,12 @@
 			path = "Firebase Notification Registration";
 			sourceTree = "<group>";
 		};
-		781A94341F1A19A2002DE70F /* Application */ = {
-			isa = PBXGroup;
-			children = (
-				CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */,
-				CA2B4FA91F1F7F1200F007E1 /* CapturingLoginObserver.swift */,
-				CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */,
-				CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */,
-				CA30EAA41F2129B70053DBF6 /* API */,
-				781A94351F1A19A8002DE70F /* Notifications */,
-			);
-			path = Application;
-			sourceTree = "<group>";
-		};
 		781A94351F1A19A8002DE70F /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
 				781A94411F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift */,
-				781A94361F1A19AE002DE70F /* Firebase */,
 			);
 			path = Notifications;
-			sourceTree = "<group>";
-		};
-		781A94361F1A19AE002DE70F /* Firebase */ = {
-			isa = PBXGroup;
-			children = (
-				781A94391F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift */,
-				781A94371F1A19BD002DE70F /* CapturingFirebaseAdapter.swift */,
-			);
-			path = Firebase;
 			sourceTree = "<group>";
 		};
 		781A94441F1A1DCE002DE70F /* Firebase Notification Registration */ = {
@@ -2839,6 +2814,7 @@
 				781A94471F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift */,
 				781A94451F1A1E1C002DE70F /* FirebaseNotificationsTokenRegistrationTests.swift */,
 				6EEC6DA01F1BF79F00205F2D /* FirebaseTopicTests.swift */,
+				CAEA0E9B216BF5DB00B0C7A6 /* Test Doubles */,
 			);
 			path = "Firebase Notification Registration";
 			sourceTree = "<group>";
@@ -3000,18 +2976,8 @@
 			isa = PBXGroup;
 			children = (
 				CAD780471F1D51DB002A8333 /* Clock */,
-				78FE77D11F1A2E9C00E9A0BE /* HTTP */,
-				CAD780441F1D4DF7002A8333 /* Login */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		78FE77D11F1A2E9C00E9A0BE /* HTTP */ = {
-			isa = PBXGroup;
-			children = (
-				78FE77D21F1A2EB000E9A0BE /* CapturingJSONSession.swift */,
-			);
-			path = HTTP;
 			sourceTree = "<group>";
 		};
 		9ACF992B1EBE172D006FC958 = {
@@ -3338,21 +3304,30 @@
 		CA162E7420A4B6C2004AFED6 /* Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
-				CA162E7520A4B6CE004AFED6 /* StubDateDistanceCalculator.swift */,
-				CA162E7720A4B6E0004AFED6 /* StubConventionStartDateRepository.swift */,
-				CA162E7920A4B6F5004AFED6 /* CapturingConventionCountdownServiceObserver.swift */,
-				CA162E8320A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift */,
-				CA162EA720AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift */,
 				CA162EAB20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift */,
-				CA162EB320AA2E12004AFED6 /* CapturingEventsServiceObserver.swift */,
-				CA08159B20D47BEA00F750D4 /* CapturingEventsScheduleDelegate.swift */,
-				CA52C68420D59A5B009D3A9E /* CapturingSignificantTimeChangeAdapterDelegate.swift */,
-				CA36A44220D703FA00EE6537 /* CapturingEventsSearchControllerDelegate.swift */,
-				CA36A4A920D985FD00EE6537 /* CapturingDealersIndexDelegate.swift */,
-				CA2761CB20E034BD000E52AC /* StubCollectThemAllRequestFactory.swift */,
+				CA162EA720AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift */,
 				CA2761CD20E034CB000E52AC /* CapturingCollectThemAllURLObserver.swift */,
-				CA2A586820F69EA1002C69B6 /* CapturingMapCoordinateRender.swift */,
+				CA162E7920A4B6F5004AFED6 /* CapturingConventionCountdownServiceObserver.swift */,
+				CAD780511F1E2D2E002A8333 /* CapturingCredentialStore.swift */,
+				CA36A4A920D985FD00EE6537 /* CapturingDealersIndexDelegate.swift */,
+				CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */,
+				CA08159B20D47BEA00F750D4 /* CapturingEventsScheduleDelegate.swift */,
+				CA36A44220D703FA00EE6537 /* CapturingEventsSearchControllerDelegate.swift */,
+				CA162EB320AA2E12004AFED6 /* CapturingEventsServiceObserver.swift */,
+				78FE77D21F1A2EB000E9A0BE /* CapturingJSONSession.swift */,
 				CAB258E22120431A00909C79 /* CapturingKnowledgeServiceObserver.swift */,
+				CA2B4FA91F1F7F1200F007E1 /* CapturingLoginObserver.swift */,
+				CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */,
+				CA2A586820F69EA1002C69B6 /* CapturingMapCoordinateRender.swift */,
+				CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */,
+				CA52C68420D59A5B009D3A9E /* CapturingSignificantTimeChangeAdapterDelegate.swift */,
+				CA162E8320A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift */,
+				CA2761CB20E034BD000E52AC /* StubCollectThemAllRequestFactory.swift */,
+				CA162E7720A4B6E0004AFED6 /* StubConventionStartDateRepository.swift */,
+				CA162E7520A4B6CE004AFED6 /* StubDateDistanceCalculator.swift */,
+				C61870DF20DAD8E00089E836 /* StubV2ApiUrlProviding.swift */,
+				CA30EAA41F2129B70053DBF6 /* API */,
+				781A94351F1A19A8002DE70F /* Notifications */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -5911,14 +5886,6 @@
 			path = "Presenter Tests";
 			sourceTree = "<group>";
 		};
-		CAD780441F1D4DF7002A8333 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				CAD780511F1E2D2E002A8333 /* CapturingCredentialStore.swift */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
 		CAD780471F1D51DB002A8333 /* Clock */ = {
 			isa = PBXGroup;
 			children = (
@@ -6049,6 +6016,15 @@
 				CA71A3532041B6DA00C847C3 /* Foundation */,
 			);
 			path = RandomDataGeneration;
+			sourceTree = "<group>";
+		};
+		CAEA0E9B216BF5DB00B0C7A6 /* Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				781A94391F1A19D8002DE70F /* CapturingFCMDeviceRegistration.swift */,
+				781A94371F1A19BD002DE70F /* CapturingFirebaseAdapter.swift */,
+			);
+			path = "Test Doubles";
 			sourceTree = "<group>";
 		};
 		CAEAEBF21FDEB53800C0EE7C /* Message Detail */ = {
