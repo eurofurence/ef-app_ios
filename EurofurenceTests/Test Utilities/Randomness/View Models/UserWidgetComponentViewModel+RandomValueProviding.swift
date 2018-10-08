@@ -7,10 +7,11 @@
 //
 
 @testable import Eurofurence
+import RandomDataGeneration
 
 extension UserWidgetComponentViewModel: RandomValueProviding {
     
-    static var random: UserWidgetComponentViewModel {
+    public static var random: UserWidgetComponentViewModel {
         return UserWidgetComponentViewModel(prompt: .random, detailedPrompt: .random, hasUnreadMessages: .random)
     }
     

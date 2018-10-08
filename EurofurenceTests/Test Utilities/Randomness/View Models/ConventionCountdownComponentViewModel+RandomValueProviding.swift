@@ -7,10 +7,11 @@
 //
 
 @testable import Eurofurence
+import RandomDataGeneration
 
 extension ConventionCountdownComponentViewModel: RandomValueProviding {
     
-    static var random: ConventionCountdownComponentViewModel {
+    public static var random: ConventionCountdownComponentViewModel {
         return ConventionCountdownComponentViewModel(timeUntilConvention: .random)
     }
     

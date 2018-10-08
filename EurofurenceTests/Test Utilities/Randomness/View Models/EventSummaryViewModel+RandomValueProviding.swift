@@ -8,10 +8,11 @@
 
 @testable import Eurofurence
 import Foundation
+import RandomDataGeneration
 
 extension EventSummaryViewModel: RandomValueProviding {
     
-    static var random: EventSummaryViewModel {
+    public static var random: EventSummaryViewModel {
         return EventSummaryViewModel(title: .random,
                                      subtitle: .random,
                                      abstract: .random,

@@ -10,7 +10,7 @@ import Foundation
 
 extension Data: RandomValueProviding {
     
-    static var random: Data {
+    public static var random: Data {
         return String.random.data(using: .utf8)!
     }
     

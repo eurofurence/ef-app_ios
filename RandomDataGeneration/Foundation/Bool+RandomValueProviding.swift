@@ -10,7 +10,7 @@ import Foundation
 
 extension Bool: RandomValueProviding {
     
-    static var random: Bool {
+    public static var random: Bool {
         return Int.random(upperLimit: 100) % 2 == 0
     }
     

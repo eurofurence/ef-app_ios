@@ -10,7 +10,7 @@ import Foundation
 
 extension IndexPath: RandomValueProviding {
     
-    static var random: IndexPath {
+    public static var random: IndexPath {
         return IndexPath(item: .random, section: .random)
     }
     

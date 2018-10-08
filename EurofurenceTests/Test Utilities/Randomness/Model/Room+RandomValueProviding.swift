@@ -8,10 +8,11 @@
 
 import EurofurenceAppCore
 import Foundation
+import RandomDataGeneration
 
 extension Room: RandomValueProviding {
     
-    static var random: Room {
+    public static var random: Room {
         return Room(name: .random)
     }
     

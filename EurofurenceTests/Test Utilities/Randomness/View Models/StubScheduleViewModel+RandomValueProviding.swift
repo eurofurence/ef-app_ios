@@ -8,10 +8,11 @@
 
 @testable import Eurofurence
 import Foundation
+import RandomDataGeneration
 
 extension CapturingScheduleViewModel: RandomValueProviding {
     
-    static var random: CapturingScheduleViewModel {
+    public static var random: CapturingScheduleViewModel {
         return CapturingScheduleViewModel(days: .random, events: .random, currentDay: .random)
     }
     
@@ -19,7 +20,7 @@ extension CapturingScheduleViewModel: RandomValueProviding {
 
 extension ScheduleEventGroupViewModel: RandomValueProviding {
     
-    static var random: ScheduleEventGroupViewModel {
+    public static var random: ScheduleEventGroupViewModel {
         return ScheduleEventGroupViewModel(title: .random, events: .random)
     }
     
@@ -27,7 +28,7 @@ extension ScheduleEventGroupViewModel: RandomValueProviding {
 
 extension ScheduleEventViewModel: RandomValueProviding {
     
-    static var random: ScheduleEventViewModel {
+    public static var random: ScheduleEventViewModel {
         return ScheduleEventViewModel(title: .random,
                                       startTime: .random,
                                       endTime: .random,
@@ -47,7 +48,7 @@ extension ScheduleEventViewModel: RandomValueProviding {
 
 extension ScheduleDayViewModel: RandomValueProviding {
     
-    static var random: ScheduleDayViewModel {
+    public static var random: ScheduleDayViewModel {
         return ScheduleDayViewModel(title: .random)
     }
     

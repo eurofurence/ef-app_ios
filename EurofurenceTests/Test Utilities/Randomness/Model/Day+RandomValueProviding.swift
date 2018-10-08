@@ -8,10 +8,11 @@
 
 import EurofurenceAppCore
 import Foundation
+import RandomDataGeneration
 
 extension Day: RandomValueProviding {
     
-    static var random: Day {
+    public static var random: Day {
         return Day(date: .random)
     }
     

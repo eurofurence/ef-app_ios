@@ -8,10 +8,11 @@
 
 @testable import Eurofurence
 import Foundation
+import RandomDataGeneration
 
 extension CapturingDealersViewModel: RandomValueProviding {
     
-    static var random: CapturingDealersViewModel {
+    public static var random: CapturingDealersViewModel {
         return CapturingDealersViewModel(dealerGroups: .random)
     }
     

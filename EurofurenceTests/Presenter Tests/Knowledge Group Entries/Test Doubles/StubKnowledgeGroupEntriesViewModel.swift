@@ -9,6 +9,7 @@
 @testable import Eurofurence
 import EurofurenceAppCore
 import Foundation
+import RandomDataGeneration
 
 struct StubKnowledgeGroupEntriesViewModel: KnowledgeGroupEntriesViewModel {
     

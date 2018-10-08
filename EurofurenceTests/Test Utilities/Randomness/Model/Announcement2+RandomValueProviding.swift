@@ -7,10 +7,11 @@
 //
 
 import EurofurenceAppCore
+import RandomDataGeneration
 
 extension Announcement2: RandomValueProviding {
     
-    static var random: Announcement2 {
+    public static var random: Announcement2 {
         return Announcement2(identifier: .random,
                              title: .random,
                              content: .random,
@@ -21,7 +22,7 @@ extension Announcement2: RandomValueProviding {
 
 extension Announcement2.Identifier: RandomValueProviding {
     
-    static var random: Announcement2.Identifier {
+    public static var random: Announcement2.Identifier {
         return Announcement2.Identifier(.random)
     }
     

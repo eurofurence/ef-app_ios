@@ -8,13 +8,13 @@
 
 import Foundation
 
-extension BinaryFloatingPoint {
+public extension BinaryFloatingPoint {
     
-    static var random: Self {
+    public static var random: Self {
         return Self(arc4random())
     }
     
-    static func random(upperLimit: UInt32) -> Self {
+    public static func random(upperLimit: UInt32) -> Self {
         return Self(arc4random_uniform(upperLimit))
     }
     

@@ -8,11 +8,12 @@
 
 import Darwin
 @testable import Eurofurence
+import RandomDataGeneration
 import UIKit.UIImage
 
 extension KnowledgeListGroupViewModel: RandomValueProviding {
     
-    static var random: KnowledgeListGroupViewModel {
+    public static var random: KnowledgeListGroupViewModel {
         return KnowledgeListGroupViewModel(title: .random,
                                            fontAwesomeCharacter: .random,
                                            groupDescription: .random,
@@ -23,7 +24,7 @@ extension KnowledgeListGroupViewModel: RandomValueProviding {
 
 extension KnowledgeListEntryViewModel: RandomValueProviding {
     
-    static var random: KnowledgeListEntryViewModel {
+    public static var random: KnowledgeListEntryViewModel {
         return KnowledgeListEntryViewModel(title: .random)
     }
     

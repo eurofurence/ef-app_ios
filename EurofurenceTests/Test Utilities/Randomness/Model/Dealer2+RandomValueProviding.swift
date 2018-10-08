@@ -8,10 +8,11 @@
 
 import EurofurenceAppCore
 import Foundation
+import RandomDataGeneration
 
 extension Dealer2: RandomValueProviding {
     
-    static var random: Dealer2 {
+    public static var random: Dealer2 {
         return Dealer2(identifier: .random,
                        preferredName: .random,
                        alternateName: .random,
@@ -25,7 +26,7 @@ extension Dealer2: RandomValueProviding {
 
 extension Dealer2.Identifier: RandomValueProviding {
     
-    static var random: Dealer2.Identifier {
+    public static var random: Dealer2.Identifier {
         return Dealer2.Identifier(.random)
     }
     

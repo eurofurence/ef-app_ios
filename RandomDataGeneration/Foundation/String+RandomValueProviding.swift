@@ -10,7 +10,7 @@ import Foundation
 
 extension String: RandomValueProviding {
     
-    static var random: String {
+    public static var random: String {
         return "\(arc4random())"
     }
     

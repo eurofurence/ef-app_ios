@@ -10,7 +10,7 @@ import Foundation
 
 extension URL: RandomValueProviding {
     
-    static var random: URL {
+    public static var random: URL {
         return URL(string: "https://\(String.random)")!
     }
     

@@ -8,6 +8,7 @@
 
 @testable import Eurofurence
 import EurofurenceAppCore
+import RandomDataGeneration
 import XCTest
 
 struct StubEventDescriptionViewModel: EventDetailViewModel {

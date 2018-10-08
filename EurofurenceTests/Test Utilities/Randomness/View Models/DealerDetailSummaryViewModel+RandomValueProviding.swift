@@ -8,10 +8,11 @@
 
 @testable import Eurofurence
 import Foundation
+import RandomDataGeneration
 
 extension DealerDetailSummaryViewModel: RandomValueProviding {
     
-    static var random: DealerDetailSummaryViewModel {
+    public static var random: DealerDetailSummaryViewModel {
         return DealerDetailSummaryViewModel(artistImagePNGData: .random,
                                             title: .random,
                                             subtitle: .random,

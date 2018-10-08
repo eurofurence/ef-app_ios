@@ -7,8 +7,8 @@
 //
 
 import EurofurenceAppCore
-import EurofurenceAppCore
 import Foundation
+import RandomDataGeneration
 
 extension APISyncResponse {
     
@@ -69,7 +69,7 @@ extension APISyncResponse {
 
 extension APIKnowledgeGroup: RandomValueProviding {
     
-    static var random: APIKnowledgeGroup {
+    public static var random: APIKnowledgeGroup {
         return APIKnowledgeGroup(identifier: .random,
                                  order: .random,
                                  groupName: .random,
@@ -99,7 +99,7 @@ extension APIKnowledgeGroup: RandomValueProviding {
 
 extension APIKnowledgeEntry: RandomValueProviding {
     
-    static var random: APIKnowledgeEntry {
+    public static var random: APIKnowledgeEntry {
         let links = [APILink].random.sorted()
         return APIKnowledgeEntry(identifier: .random,
                                  groupIdentifier: .random,
@@ -114,7 +114,7 @@ extension APIKnowledgeEntry: RandomValueProviding {
 
 extension APILink: RandomValueProviding {
     
-    static var random: APILink {
+    public static var random: APILink {
         return APILink(name: .random, fragmentType: .random, target: .random)
     }
     
@@ -122,7 +122,7 @@ extension APILink: RandomValueProviding {
 
 extension APILink.FragmentType: RandomValueProviding {
     
-    static var random: APILink.FragmentType {
+    public static var random: APILink.FragmentType {
         return .WebExternal
     }
     
@@ -130,7 +130,7 @@ extension APILink.FragmentType: RandomValueProviding {
 
 extension APIAnnouncement: RandomValueProviding {
     
-    static var random: APIAnnouncement {
+    public static var random: APIAnnouncement {
         return APIAnnouncement(identifier: .random,
                                title: .random,
                                content: .random,
@@ -142,7 +142,7 @@ extension APIAnnouncement: RandomValueProviding {
 
 extension APIRoom: RandomValueProviding {
     
-    static var random: APIRoom {
+    public static var random: APIRoom {
         return APIRoom(roomIdentifier: .random, name: .random)
     }
     
@@ -150,7 +150,7 @@ extension APIRoom: RandomValueProviding {
 
 extension APITrack: RandomValueProviding {
     
-    static var random: APITrack {
+    public static var random: APITrack {
         return APITrack(trackIdentifier: .random, name: .random)
     }
     
@@ -158,7 +158,7 @@ extension APITrack: RandomValueProviding {
 
 extension APIEvent: RandomValueProviding {
     
-    static var random: APIEvent {
+    public static var random: APIEvent {
         return APIEvent(identifier: .random,
                         roomIdentifier: .random,
                         trackIdentifier: .random,
@@ -179,7 +179,7 @@ extension APIEvent: RandomValueProviding {
 
 extension APIConferenceDay: RandomValueProviding {
     
-    static var random: APIConferenceDay {
+    public static var random: APIConferenceDay {
         return APIConferenceDay(identifier: .random, date: .random)
     }
     
@@ -187,7 +187,7 @@ extension APIConferenceDay: RandomValueProviding {
 
 extension APIDealer: RandomValueProviding {
     
-    static var random: APIDealer {
+    public static var random: APIDealer {
         return APIDealer(identifier: .random,
                          displayName: .random,
                          attendeeNickname: .random,
@@ -212,7 +212,7 @@ extension APIDealer: RandomValueProviding {
 
 extension APIMap: RandomValueProviding {
     
-    static var random: APIMap {
+    public static var random: APIMap {
         return APIMap(identifier: .random, imageIdentifier: .random, mapDescription: .random, entries: .random)
     }
     
@@ -220,7 +220,7 @@ extension APIMap: RandomValueProviding {
 
 extension APIMap.Entry: RandomValueProviding {
     
-    static var random: APIMap.Entry {
+    public static var random: APIMap.Entry {
         return APIMap.Entry(identifier: .random, x: .random, y: .random, tapRadius: .random, links: .random)
     }
     
@@ -228,7 +228,7 @@ extension APIMap.Entry: RandomValueProviding {
 
 extension APIMap.Entry.Link: RandomValueProviding {
     
-    static var random: APIMap.Entry.Link {
+    public static var random: APIMap.Entry.Link {
         return APIMap.Entry.Link(type: .random, name: .random, target: .random)
     }
     
@@ -236,7 +236,7 @@ extension APIMap.Entry.Link: RandomValueProviding {
 
 extension APIMap.Entry.Link.FragmentType: RandomValueProviding {
     
-    static var random: APIMap.Entry.Link.FragmentType {
+    public static var random: APIMap.Entry.Link.FragmentType {
         let cases: [APIMap.Entry.Link.FragmentType] = [.conferenceRoom, .mapEntry, .dealerDetail]
         return cases.randomElement().element
     }
@@ -245,7 +245,7 @@ extension APIMap.Entry.Link.FragmentType: RandomValueProviding {
 
 extension APIImage: RandomValueProviding {
     
-    static var random: APIImage {
+    public static var random: APIImage {
         return APIImage(identifier: .random, internalReference: .random)
     }
     

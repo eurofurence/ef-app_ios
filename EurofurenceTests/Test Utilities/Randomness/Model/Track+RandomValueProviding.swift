@@ -8,10 +8,11 @@
 
 import EurofurenceAppCore
 import Foundation
+import RandomDataGeneration
 
 extension Track: RandomValueProviding {
     
-    static var random: Track {
+    public static var random: Track {
         return Track(name: .random)
     }
     

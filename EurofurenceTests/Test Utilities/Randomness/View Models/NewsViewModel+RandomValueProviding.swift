@@ -7,10 +7,11 @@
 //
 
 @testable import Eurofurence
+import RandomDataGeneration
 
 extension StubNewsViewModel: RandomValueProviding {
     
-    static var random: StubNewsViewModel {
+    public static var random: StubNewsViewModel {
         return StubNewsViewModel(components: .random)
     }
     
@@ -18,7 +19,7 @@ extension StubNewsViewModel: RandomValueProviding {
 
 extension StubNewsViewModel.Component: RandomValueProviding {
     
-    static var random: StubNewsViewModel.Component {
+    public static var random: StubNewsViewModel.Component {
         return StubNewsViewModel.Component(title: .random, numberOfItems: .random)
     }
     

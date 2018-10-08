@@ -277,7 +277,6 @@
 		CA2725502110F12F004C6D0A /* StubKnowledgeGroupsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27254F2110F12F004C6D0A /* StubKnowledgeGroupsListViewModel.swift */; };
 		CA2725522110FA40004C6D0A /* WhenSelectingKnowledgeGroup_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2725512110FA40004C6D0A /* WhenSelectingKnowledgeGroup_DirectorShould.swift */; };
 		CA2725542110FBAF004C6D0A /* WhenBuildingKnowledgeGroupEntriesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2725532110FBAF004C6D0A /* WhenBuildingKnowledgeGroupEntriesModule.swift */; };
-		CA272556211102F1004C6D0A /* Character+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA272555211102F1004C6D0A /* Character+RandomValueProviding.swift */; };
 		CA27255C2112525E004C6D0A /* CapturingKnowledgeEntryImageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27255B2112525E004C6D0A /* CapturingKnowledgeEntryImageScene.swift */; };
 		CA27255E21125393004C6D0A /* KnowledgeEntryImageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27255D21125393004C6D0A /* KnowledgeEntryImageScene.swift */; };
 		CA2725602112542D004C6D0A /* KnowledgentryImagesBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27255F2112542D004C6D0A /* KnowledgentryImagesBinder.swift */; };
@@ -560,7 +559,6 @@
 		CA52C68F20D6AB47009D3A9E /* ScheduleModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68E20D6AB47009D3A9E /* ScheduleModuleDelegate.swift */; };
 		CA52C69120D6AB53009D3A9E /* CapturingScheduleModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69020D6AB53009D3A9E /* CapturingScheduleModuleDelegate.swift */; };
 		CA52C69520D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69420D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift */; };
-		CA52C69720D6B24A009D3A9E /* IndexPath+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69620D6B24A009D3A9E /* IndexPath+RandomValueProviding.swift */; };
 		CA52C69920D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69820D6B87E009D3A9E /* HideNavigationBarShadowForSpecificViewControllerDelegate.swift */; };
 		CA5BF9D51F7AF9160045DBC0 /* PreloadPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5BF9D41F7AF9160045DBC0 /* PreloadPresenterTests.swift */; };
 		CA60BFE32078E42800697566 /* User+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */; };
@@ -598,7 +596,6 @@
 		CA637576208CD96A00536BE2 /* WhenMessagesModuleRequestsUserResolution_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637575208CD96A00536BE2 /* WhenMessagesModuleRequestsUserResolution_DirectorShould.swift */; };
 		CA637578208CDB4700536BE2 /* WhenUserSelectsMessage_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637577208CDB4700536BE2 /* WhenUserSelectsMessage_DirectorShould.swift */; };
 		CA63757A208CDB7B00536BE2 /* Message+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637579208CDB7B00536BE2 /* Message+RandomValueProviding.swift */; };
-		CA63757C208CDBAA00536BE2 /* Date+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63757B208CDBAA00536BE2 /* Date+RandomValueProviding.swift */; };
 		CA63757E208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63757D208CDC2000536BE2 /* WhenUserSelectsKnowledgeEntry_DirectorShould.swift */; };
 		CA637582208CDE2000536BE2 /* ScheduleModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637581208CDE2000536BE2 /* ScheduleModuleProviding.swift */; };
 		CA637584208CDE3F00536BE2 /* ScheduleModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637583208CDE3F00536BE2 /* ScheduleModuleBuilder.swift */; };
@@ -737,12 +734,6 @@
 		CA6EC4892051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC4882051CD9C00402894 /* StoryboardKnowledgeDetailSceneFactory.swift */; };
 		CA6EC48B2051CDC800402894 /* KnowledgeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC48A2051CDC800402894 /* KnowledgeDetailViewController.swift */; };
 		CA6EC48E2051D97600402894 /* KnowledgeDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EC48D2051D97600402894 /* KnowledgeDetailPresenter.swift */; };
-		CA71A348204031F700C847C3 /* RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A347204031F700C847C3 /* RandomValueProviding.swift */; };
-		CA71A34A2040320A00C847C3 /* String+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */; };
-		CA71A34C204032FC00C847C3 /* Integer+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A34B204032FC00C847C3 /* Integer+RandomValueProviding.swift */; };
-		CA71A34E2040349300C847C3 /* RandomRangedValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A34D2040349300C847C3 /* RandomRangedValueProviding.swift */; };
-		CA71A3502040371D00C847C3 /* FloatingPoint+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A34F2040371D00C847C3 /* FloatingPoint+RandomValueProviding.swift */; };
-		CA71A3522041B59600C847C3 /* Array+RandomConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A3512041B59600C847C3 /* Array+RandomConvenience.swift */; };
 		CA728437209C7DE1007D912A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA728436209C7DE1007D912A /* Settings.bundle */; };
 		CA728439209CEE97007D912A /* StubConventionCountdownService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA728438209CEE97007D912A /* StubConventionCountdownService.swift */; };
 		CA72843D209CF07A007D912A /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CA72843C209CF07A007D912A /* Localizable.stringsdict */; };
@@ -962,7 +953,6 @@
 		CACF1EAE20B5C2E500D904B5 /* EventDetailInteractorTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EAD20B5C2E500D904B5 /* EventDetailInteractorTestBuilder.swift */; };
 		CACF1EB020B5F86700D904B5 /* WhenBindingEventBanner_EventDetailPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EAF20B5F86700D904B5 /* WhenBindingEventBanner_EventDetailPresenterShould.swift */; };
 		CACF1EB220B5FF9900D904B5 /* EventGraphicViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EB120B5FF9900D904B5 /* EventGraphicViewModel+RandomValueProviding.swift */; };
-		CACF1EB420B5FFB600D904B5 /* Data+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EB320B5FFB600D904B5 /* Data+RandomValueProviding.swift */; };
 		CACF1EB620B600F200D904B5 /* EventGraphicComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EB520B600F200D904B5 /* EventGraphicComponent.swift */; };
 		CACF1EBA20B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EB920B6073100D904B5 /* WhenPreparingViewModel_ForEventWithNoPoster_EventDetailInteractorShould.swift */; };
 		CACF1EC020B60D2B00D904B5 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EBF20B60D2B00D904B5 /* WhenSyncFinishesForEventWithPoster_WhenImageAPIIsSlow_ApplicationShould.swift */; };
@@ -994,7 +984,6 @@
 		CAD3BDB72059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB62059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift */; };
 		CAD3BDB92059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB82059539D00C91E6E /* KnowledgeDetailModuleDelegate.swift */; };
 		CAD3BDBB205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDBA205953AD00C91E6E /* CapturingKnowledgeDetailModuleDelegate.swift */; };
-		CAD3BDBD205AA61B00C91E6E /* URL+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDBC205AA61B00C91E6E /* URL+RandomValueProviding.swift */; };
 		CAD3BDC2205AA7BE00C91E6E /* WebModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC1205AA7BE00C91E6E /* WebModuleProviding.swift */; };
 		CAD3BDC5205FE42A00C91E6E /* WhenLookingUpWebLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC4205FE42A00C91E6E /* WhenLookingUpWebLinks.swift */; };
 		CAD3BDC7205FE88900C91E6E /* SafariWebModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC6205FE88900C91E6E /* SafariWebModuleProviding.swift */; };
@@ -1003,7 +992,6 @@
 		CAD68828208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD68827208A0E7A00B31F5F /* WhenBindingUser_NewsPresenterShould.swift */; };
 		CAD6882A208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD68829208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift */; };
 		CAD6882C208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6882B208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift */; };
-		CAD6882E208A13D400B31F5F /* Bool+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6882D208A13D400B31F5F /* Bool+RandomValueProviding.swift */; };
 		CAD68830208A144800B31F5F /* WhenBindingUserWithNoUnreadMessages_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6882F208A144800B31F5F /* WhenBindingUserWithNoUnreadMessages_NewsPresenterShould.swift */; };
 		CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */; };
 		CAD780491F1D51EB002A8333 /* StubClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780481F1D51EB002A8333 /* StubClock.swift */; };
@@ -1172,6 +1160,18 @@
 		CAEA0E87216BEF7C00B0C7A6 /* RandomDataGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CAEA0E85216BEF7C00B0C7A6 /* RandomDataGeneration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CAEA0E8D216BEFC300B0C7A6 /* RandomDataGeneration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0E83216BEF7C00B0C7A6 /* RandomDataGeneration.framework */; };
 		CAEA0E8E216BEFC800B0C7A6 /* RandomDataGeneration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0E83216BEF7C00B0C7A6 /* RandomDataGeneration.framework */; };
+		CAEA0E8F216BF02800B0C7A6 /* RandomRangedValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A34D2040349300C847C3 /* RandomRangedValueProviding.swift */; };
+		CAEA0E90216BF02800B0C7A6 /* RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A347204031F700C847C3 /* RandomValueProviding.swift */; };
+		CAEA0E91216BF34F00B0C7A6 /* Array+RandomConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A3512041B59600C847C3 /* Array+RandomConvenience.swift */; };
+		CAEA0E92216BF34F00B0C7A6 /* Bool+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6882D208A13D400B31F5F /* Bool+RandomValueProviding.swift */; };
+		CAEA0E93216BF34F00B0C7A6 /* Character+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA272555211102F1004C6D0A /* Character+RandomValueProviding.swift */; };
+		CAEA0E94216BF34F00B0C7A6 /* Data+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1EB320B5FFB600D904B5 /* Data+RandomValueProviding.swift */; };
+		CAEA0E95216BF34F00B0C7A6 /* Date+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63757B208CDBAA00536BE2 /* Date+RandomValueProviding.swift */; };
+		CAEA0E96216BF34F00B0C7A6 /* FloatingPoint+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A34F2040371D00C847C3 /* FloatingPoint+RandomValueProviding.swift */; };
+		CAEA0E97216BF34F00B0C7A6 /* IndexPath+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C69620D6B24A009D3A9E /* IndexPath+RandomValueProviding.swift */; };
+		CAEA0E98216BF34F00B0C7A6 /* Integer+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A34B204032FC00C847C3 /* Integer+RandomValueProviding.swift */; };
+		CAEA0E99216BF34F00B0C7A6 /* String+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */; };
+		CAEA0E9A216BF34F00B0C7A6 /* URL+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDBC205AA61B00C91E6E /* URL+RandomValueProviding.swift */; };
 		CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */; };
 		CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */; };
 		CAEAEBFA1FE0037700C0EE7C /* MessageDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF91FE0037700C0EE7C /* MessageDetailPresenterTests.swift */; };
@@ -4885,9 +4885,6 @@
 		CA71A346204031E800C847C3 /* Randomness */ = {
 			isa = PBXGroup;
 			children = (
-				CA71A34D2040349300C847C3 /* RandomRangedValueProviding.swift */,
-				CA71A347204031F700C847C3 /* RandomValueProviding.swift */,
-				CA71A3532041B6DA00C847C3 /* Foundation */,
 				CABF03BF2041C2E10028BD62 /* Model */,
 				CA71A3542041B6E400C847C3 /* View Models */,
 			);
@@ -6047,6 +6044,9 @@
 			children = (
 				CAEA0E85216BEF7C00B0C7A6 /* RandomDataGeneration.h */,
 				CAEA0E86216BEF7C00B0C7A6 /* Info.plist */,
+				CA71A34D2040349300C847C3 /* RandomRangedValueProviding.swift */,
+				CA71A347204031F700C847C3 /* RandomValueProviding.swift */,
+				CA71A3532041B6DA00C847C3 /* Foundation */,
 			);
 			path = RandomDataGeneration;
 			sourceTree = "<group>";
@@ -7288,7 +7288,6 @@
 				CA6A8D9420E2C596007536CD /* WhenBindingMap_MapsPresenterShould.swift in Sources */,
 				CA8E17F11F817AA2003C348C /* CapturingPreloadModuleDelegate.swift in Sources */,
 				CACF1EAC20B5C14F00D904B5 /* WhenPreparingViewModelForEventWithIdenticalAbstractAndDescription_EventDetailInteractorShould.swift in Sources */,
-				CA71A34A2040320A00C847C3 /* String+RandomValueProviding.swift in Sources */,
 				CA2A586920F69EA1002C69B6 /* CapturingMapCoordinateRender.swift in Sources */,
 				CA52C69520D6B001009D3A9E /* WhenScheduleModuleSelectsEvent_DirectorShould.swift in Sources */,
 				CADABEFC2116211E0023C3B6 /* WhenFetchingMapContent_ThatRevealMultipleOptions_ApplicationShould.swift in Sources */,
@@ -7299,7 +7298,6 @@
 				CA728485209F88E0007D912A /* DefaultAnnouncementDetailInteractorShould.swift in Sources */,
 				CA283ADC20EB9FD000F7D195 /* WhenAnnouncementsModuleSelectsAnnouncement_DirectorShould.swift in Sources */,
 				CAD234311F5D7156004BB959 /* MessagesPresenterTestContext.swift in Sources */,
-				CA71A3502040371D00C847C3 /* FloatingPoint+RandomValueProviding.swift in Sources */,
 				781A94421F1A1D8B002DE70F /* CapturingRemoteNotificationsTokenRegistration.swift in Sources */,
 				CAB3A72A1F7532A2005DF77B /* CapturingPushPermissionsRequester.swift in Sources */,
 				CA728492209F9540007D912A /* StubMarkdownRenderer.swift in Sources */,
@@ -7349,10 +7347,8 @@
 				CA283A8220E93F9600F7D195 /* WhenBindingUnreadAnnouncements_NewsPresenterShould.swift in Sources */,
 				CA6A8E0120E50008007536CD /* WhenSceneTapsMap_ThatRevealsAnotherPartOfTheMap_MapDetailPresenterShould.swift in Sources */,
 				CA283A5E20E6E9FB00F7D195 /* WhenSceneInstigatesPullToRefresh_NewsPresenterShould.swift in Sources */,
-				CA63757C208CDBAA00536BE2 /* Date+RandomValueProviding.swift in Sources */,
 				CA00AE5C20D171F200C2FBB0 /* CapturingScheduleEventGroupHeader.swift in Sources */,
 				CA250DE220D6EB0300E7513C /* FakeEventsSearchController.swift in Sources */,
-				CAD3BDBD205AA61B00C91E6E /* URL+RandomValueProviding.swift in Sources */,
 				CA65A21C2091121D0078A4A7 /* WhenAddingAnnouncementsObserverBeforeLoadingAnything.swift in Sources */,
 				CA283A9E20EA9FB900F7D195 /* WhenBuildingAnnouncementsModule_AnnouncementsPresenterShould.swift in Sources */,
 				CABA840720D0671E00DD0795 /* WhenScheduleSceneLoads_SchedulePresenterShould.swift in Sources */,
@@ -7362,7 +7358,6 @@
 				CA36A4D820DAE2CE00EE6537 /* CapturingDealersModuleDelegate.swift in Sources */,
 				CA283AAE20EAA18D00F7D195 /* CapturingAnnouncementsScene.swift in Sources */,
 				78455B521F1179F4005BE2D7 /* StoryboardTutorialRouterTests.swift in Sources */,
-				CACF1EB420B5FFB600D904B5 /* Data+RandomValueProviding.swift in Sources */,
 				CA6A8D8220E2BA6C007536CD /* WhenMapsSceneLoads_MapsPresenterShould.swift in Sources */,
 				CAD234421F5F2FA8004BB959 /* AppDataBuilder.swift in Sources */,
 				CA283A8020E93CBC00F7D195 /* WhenBindingReadAnnouncements_NewsPresenterShould.swift in Sources */,
@@ -7386,7 +7381,6 @@
 				CA40109321107F7C0056E16C /* CapturingKnowledgeGroupEntriesModuleDelegate.swift in Sources */,
 				CA36A44720D7065800EE6537 /* WhenSearchingForEvents_ApplicationShould.swift in Sources */,
 				CA680F7E20CD8263006ACD3D /* WhenBuiltWithAlreadyPrimedApp_DirectorShould.swift in Sources */,
-				CA71A3522041B59600C847C3 /* Array+RandomConvenience.swift in Sources */,
 				CA1F7D6120CB82F600FB87F5 /* WhenAddingAnnouncementsObserver_ThenRefreshSucceeds_ApplicationShould.swift in Sources */,
 				CA36A47B20D854E200EE6537 /* WhenBindingDealerComponent_ForDealerPresentOnAllDays_DealersPresenterShould.swift in Sources */,
 				CA063B3820F2318A00241CC9 /* WhenToldToHandleNotification_ThatConcludesWithSuccessfulSync_DirectorShould.swift in Sources */,
@@ -7542,9 +7536,7 @@
 				CA1ECB411FE333BF0076083A /* WhenViewingMessageWhileLoggedInWithLocalMessage.swift in Sources */,
 				CACF1E5F20AE2EF400D904B5 /* StubEventDetailSceneFactory.swift in Sources */,
 				CA8240A521249A80007E4A70 /* CapturingReviewPromptAction.swift in Sources */,
-				CA71A34E2040349300C847C3 /* RandomRangedValueProviding.swift in Sources */,
 				CAF3C74E1F9FC72C0008F027 /* StubNewsSceneFactory.swift in Sources */,
-				CAD6882E208A13D400B31F5F /* Bool+RandomValueProviding.swift in Sources */,
 				CAD3BDB72059500400C91E6E /* WhenUserSelectsKnowledgeLink.swift in Sources */,
 				CA27258421139A1D004C6D0A /* SchedulePresenterSponsorIconBindingTests.swift in Sources */,
 				CA2B4FAA1F1F7F1200F007E1 /* CapturingLoginObserver.swift in Sources */,
@@ -7611,7 +7603,6 @@
 				CA637558208CBC1D00536BE2 /* StubKnowledgeListModuleProviding.swift in Sources */,
 				CA4FBE101F73047700D29405 /* CapturingDateFormatter.swift in Sources */,
 				781A94481F1A1E5D002DE70F /* EurofurenceFCMDeviceRegistrationTests.swift in Sources */,
-				CA71A348204031F700C847C3 /* RandomValueProviding.swift in Sources */,
 				CA27619420DFF66F000E52AC /* WhenApplicationRequestsHandlingOfExternalContent_DirectorShould.swift in Sources */,
 				CA44C376211C6617003C1C4E /* SchedulePresenterDealersDenIconBindingTests.swift in Sources */,
 				7820A6FD1F16C0C8004C0FB5 /* AcknowledgedPushPermissionsRequestTestDoubles.swift in Sources */,
@@ -7620,7 +7611,6 @@
 				CA27619020DFF0A5000E52AC /* WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould.swift in Sources */,
 				CA00AE8520D2320700C2FBB0 /* StubScheduleViewModel.swift in Sources */,
 				CACF26D120FE5B8300EDE150 /* WhenToldToFilterToFavouriteEvents_ScheduleInteractorShould.swift in Sources */,
-				CA71A34C204032FC00C847C3 /* Integer+RandomValueProviding.swift in Sources */,
 				CA283A7A20E91A7900F7D195 /* WhenInstigatingPullToRefreshAction_SchedulePresenterShould.swift in Sources */,
 				CABEB0D420C891CA000BEE66 /* WhenSyncCompletesWithEvents_ApplicationShould.swift in Sources */,
 				CA283ADE20EC00F100F7D195 /* WhenBindingFavouriteEvent_SchedulePresenterShould.swift in Sources */,
@@ -7649,7 +7639,6 @@
 				CA728445209D00B7007D912A /* StubAnnouncementDetailModuleFactory.swift in Sources */,
 				CA36A4D020DAC08100EE6537 /* WhenDealersIndexProducesNewSearchResults_DealersInteractorShould.swift in Sources */,
 				CA1B6F3720DD1C2F00ADF414 /* WhenBindingDealerLocationAndAvailability_DealerDetailPresenterShould.swift in Sources */,
-				CA52C69720D6B24A009D3A9E /* IndexPath+RandomValueProviding.swift in Sources */,
 				CABF03CA20421B490028BD62 /* WhenFetchingKnowledgeGroupsWithoutLoadingAnything.swift in Sources */,
 				CA00AE7D20D1C08B00C2FBB0 /* WhenBindingDay_SchedulePresenterShould.swift in Sources */,
 				CA728458209D058A007D912A /* StubAnnouncementDetailSceneFactory.swift in Sources */,
@@ -7855,7 +7844,6 @@
 				CAD3BDB520587DD800C91E6E /* WhenShowingKnowledgeEntryWithoutLinks.swift in Sources */,
 				CA637568208CC9C700536BE2 /* WhenTutorialFinished_DirectorShould.swift in Sources */,
 				CA250DDC20D6E85700E7513C /* WhenSearching_ScheduleInteractorShould.swift in Sources */,
-				CA272556211102F1004C6D0A /* Character+RandomValueProviding.swift in Sources */,
 				CA162E9820A8886C004AFED6 /* Room+RandomValueProviding.swift in Sources */,
 				CA6A8DDB20E41844007536CD /* MapDetailPresenterTestBuilder.swift in Sources */,
 				CA162E9420A87D3D004AFED6 /* Event2+RandomValueProviding.swift in Sources */,
@@ -8068,6 +8056,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAEA0E8F216BF02800B0C7A6 /* RandomRangedValueProviding.swift in Sources */,
+				CAEA0E94216BF34F00B0C7A6 /* Data+RandomValueProviding.swift in Sources */,
+				CAEA0E99216BF34F00B0C7A6 /* String+RandomValueProviding.swift in Sources */,
+				CAEA0E97216BF34F00B0C7A6 /* IndexPath+RandomValueProviding.swift in Sources */,
+				CAEA0E95216BF34F00B0C7A6 /* Date+RandomValueProviding.swift in Sources */,
+				CAEA0E92216BF34F00B0C7A6 /* Bool+RandomValueProviding.swift in Sources */,
+				CAEA0E96216BF34F00B0C7A6 /* FloatingPoint+RandomValueProviding.swift in Sources */,
+				CAEA0E9A216BF34F00B0C7A6 /* URL+RandomValueProviding.swift in Sources */,
+				CAEA0E91216BF34F00B0C7A6 /* Array+RandomConvenience.swift in Sources */,
+				CAEA0E90216BF02800B0C7A6 /* RandomValueProviding.swift in Sources */,
+				CAEA0E98216BF34F00B0C7A6 /* Integer+RandomValueProviding.swift in Sources */,
+				CAEA0E93216BF34F00B0C7A6 /* Character+RandomValueProviding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8867,7 +8867,6 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = RandomDataGeneration/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -8900,7 +8899,6 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = RandomDataGeneration/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.RandomDataGeneration;
@@ -8932,7 +8930,6 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = RandomDataGeneration/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.RandomDataGeneration;
@@ -8964,7 +8961,6 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = RandomDataGeneration/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.RandomDataGeneration;

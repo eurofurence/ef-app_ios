@@ -8,10 +8,11 @@
 
 import EurofurenceAppCore
 import Foundation
+import RandomDataGeneration
 
 extension Map2: RandomValueProviding {
     
-    static var random: Map2 {
+    public static var random: Map2 {
         return Map2(identifier: .random, location: .random)
     }
     
@@ -19,7 +20,7 @@ extension Map2: RandomValueProviding {
 
 extension Map2.Identifier: RandomValueProviding {
     
-    static var random: Map2.Identifier {
+    public static var random: Map2.Identifier {
         return Map2.Identifier(.random)
     }
     

@@ -9,6 +9,7 @@
 @testable import Eurofurence
 import EurofurenceAppCore
 import Foundation
+import RandomDataGeneration
 
 struct StubKnowledgeEntryDetailViewModel: KnowledgeEntryDetailViewModel {
     
@@ -49,7 +50,7 @@ extension StubKnowledgeEntryDetailViewModel: RandomValueProviding {
 
 extension LinkViewModel: RandomValueProviding {
     
-    static var random: LinkViewModel {
+    public static var random: LinkViewModel {
         return LinkViewModel(name: .random)
     }
     
@@ -57,7 +58,7 @@ extension LinkViewModel: RandomValueProviding {
 
 extension KnowledgeEntryImageViewModel: RandomValueProviding {
     
-    static var random: KnowledgeEntryImageViewModel {
+    public static var random: KnowledgeEntryImageViewModel {
         return KnowledgeEntryImageViewModel(imagePNGData: .random)
     }
     

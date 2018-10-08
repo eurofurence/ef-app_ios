@@ -8,10 +8,11 @@
 
 import EurofurenceAppCore
 import Foundation
+import RandomDataGeneration
 
 extension Event2: RandomValueProviding {
     
-    static var random: Event2 {
+    public static var random: Event2 {
         let startDate = Date.random
         return Event2(identifier: .random,
                       title: .random,
@@ -51,7 +52,7 @@ extension Event2: RandomValueProviding {
 
 extension Event2.Identifier: RandomValueProviding {
     
-    static var random: Event2.Identifier {
+    public static var random: Event2.Identifier {
         return Event2.Identifier(.random)
     }
     

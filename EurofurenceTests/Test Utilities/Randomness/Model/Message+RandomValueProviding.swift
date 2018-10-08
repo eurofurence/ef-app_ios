@@ -7,10 +7,11 @@
 //
 
 import EurofurenceAppCore
+import RandomDataGeneration
 
 extension Message: RandomValueProviding {
     
-    static var random: Message {
+    public static var random: Message {
         return Message(identifier: .random,
                        authorName: .random,
                        receivedDateTime: .random,

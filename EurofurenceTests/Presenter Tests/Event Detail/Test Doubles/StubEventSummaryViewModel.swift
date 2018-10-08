@@ -7,6 +7,7 @@
 //
 
 @testable import Eurofurence
+import RandomDataGeneration
 import Foundation
 
 struct StubEventSummaryViewModel: EventDetailViewModel {

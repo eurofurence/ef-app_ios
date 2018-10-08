@@ -10,7 +10,7 @@ import Foundation
 
 extension Character: RandomValueProviding {
     
-    static var random: Character {
+    public static var random: Character {
         return String.random.first!
     }
     

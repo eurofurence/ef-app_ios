@@ -10,7 +10,7 @@ import Foundation
 
 extension Date: RandomValueProviding {
     
-    static var random: Date {
+    public static var random: Date {
         return Date(timeIntervalSince1970: .random)
     }
     

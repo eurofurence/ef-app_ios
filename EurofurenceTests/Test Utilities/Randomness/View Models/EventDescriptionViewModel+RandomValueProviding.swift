@@ -7,10 +7,11 @@
 //
 
 @testable import Eurofurence
+import RandomDataGeneration
 
 extension EventDescriptionViewModel: RandomValueProviding {
     
-    static var random: EventDescriptionViewModel {
+    public static var random: EventDescriptionViewModel {
         return EventDescriptionViewModel(contents: .random)
     }
     

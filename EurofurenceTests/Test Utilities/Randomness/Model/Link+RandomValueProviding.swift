@@ -8,10 +8,11 @@
 
 import EurofurenceAppCore
 import Foundation
+import RandomDataGeneration
 
 extension Link: RandomValueProviding {
     
-    static var random: Link {
+    public static var random: Link {
         return Link(name: .random, type: .webExternal, contents: Int.random)
     }
     

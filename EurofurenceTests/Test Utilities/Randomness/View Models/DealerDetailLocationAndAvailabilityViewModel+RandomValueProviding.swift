@@ -7,10 +7,11 @@
 //
 
 @testable import Eurofurence
+import RandomDataGeneration
 
 extension DealerDetailLocationAndAvailabilityViewModel: RandomValueProviding {
     
-    static var random: DealerDetailLocationAndAvailabilityViewModel {
+    public static var random: DealerDetailLocationAndAvailabilityViewModel {
         return DealerDetailLocationAndAvailabilityViewModel(title: .random,
                                                             mapPNGGraphicData: .random,
                                                             limitedAvailabilityWarning: .random,

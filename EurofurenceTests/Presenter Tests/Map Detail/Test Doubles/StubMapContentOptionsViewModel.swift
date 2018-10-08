@@ -8,6 +8,7 @@
 
 @testable import Eurofurence
 import Foundation
+import RandomDataGeneration
 
 final class StubMapContentOptionsViewModel: MapContentOptionsViewModel {
     

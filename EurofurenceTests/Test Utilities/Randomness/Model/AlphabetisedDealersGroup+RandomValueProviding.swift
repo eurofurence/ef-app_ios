@@ -8,10 +8,11 @@
 
 import EurofurenceAppCore
 import Foundation
+import RandomDataGeneration
 
 extension AlphabetisedDealersGroup: RandomValueProviding {
     
-    static var random: AlphabetisedDealersGroup {
+    public static var random: AlphabetisedDealersGroup {
         return AlphabetisedDealersGroup(indexingString: .random, dealers: .random)
     }
     
