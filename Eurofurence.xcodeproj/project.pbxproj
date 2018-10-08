@@ -1170,6 +1170,8 @@
 		CAEA0E13216BDE5700B0C7A6 /* EventBus+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A87420990C9500B72533 /* EventBus+Convenience.swift */; };
 		CAEA0E14216BDE9B00B0C7A6 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27254D2110DEE2004C6D0A /* Optional+Extensions.swift */; };
 		CAEA0E87216BEF7C00B0C7A6 /* RandomDataGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = CAEA0E85216BEF7C00B0C7A6 /* RandomDataGeneration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CAEA0E8D216BEFC300B0C7A6 /* RandomDataGeneration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0E83216BEF7C00B0C7A6 /* RandomDataGeneration.framework */; };
+		CAEA0E8E216BEFC800B0C7A6 /* RandomDataGeneration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0E83216BEF7C00B0C7A6 /* RandomDataGeneration.framework */; };
 		CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */; };
 		CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */; };
 		CAEAEBFA1FE0037700C0EE7C /* MessageDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF91FE0037700C0EE7C /* MessageDetailPresenterTests.swift */; };
@@ -2557,6 +2559,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAEA0E8D216BEFC300B0C7A6 /* RandomDataGeneration.framework in Frameworks */,
 				DE53838D7196118A73CF0A5B /* Pods_EurofurenceTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2580,6 +2583,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAEA0E8E216BEFC800B0C7A6 /* RandomDataGeneration.framework in Frameworks */,
 				CAEA0B832165626900B0C7A6 /* EurofurenceAppCore.framework in Frameworks */,
 				5AFB57EE7360769D027F9F9D /* Pods_EurofurenceAppCoreTests.framework in Frameworks */,
 			);
