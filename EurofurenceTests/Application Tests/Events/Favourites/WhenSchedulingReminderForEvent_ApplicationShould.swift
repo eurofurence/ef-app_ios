@@ -67,7 +67,7 @@ class WhenSchedulingReminderForEvent_ApplicationShould: XCTestCase {
         context.application.favouriteEvent(identifier: identifier)
         let expectedTimeString = context.hoursDateFormatter.hoursString(from: event.startDateTime)
         let expectedLocationString = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier })!.name
-        let expected = String.eventReminderBody(timeString: expectedTimeString, roomName: expectedLocationString)
+        let expected = AppCoreStrings.eventReminderBody(timeString: expectedTimeString, roomName: expectedLocationString)
         
         XCTAssertEqual(expected, context.notificationsService.capturedEventNotificationBody)
     }

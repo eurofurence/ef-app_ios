@@ -1158,6 +1158,8 @@
 		CAEA0B8C2165626900B0C7A6 /* EurofurenceAppCore.h in Headers */ = {isa = PBXBuildFile; fileRef = CAEA0B7C2165626900B0C7A6 /* EurofurenceAppCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CAEA0B8F2165626900B0C7A6 /* EurofurenceAppCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0B7A2165626900B0C7A6 /* EurofurenceAppCore.framework */; };
 		CAEA0B902165626900B0C7A6 /* EurofurenceAppCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0B7A2165626900B0C7A6 /* EurofurenceAppCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CAEA0D84216BDC5100B0C7A6 /* AppCoreStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAEA0D83216BDC5100B0C7A6 /* AppCoreStrings.strings */; };
+		CAEA0D86216BDC7D00B0C7A6 /* AppCoreStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA0D85216BDC7D00B0C7A6 /* AppCoreStrings.swift */; };
 		CAEAEBE71FDC94F800C0EE7C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */; };
 		CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */; };
 		CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */; };
@@ -2460,6 +2462,8 @@
 		CAEA0B822165626900B0C7A6 /* EurofurenceAppCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceAppCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAEA0B892165626900B0C7A6 /* EurofurenceAppCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceAppCoreTests.swift; sourceTree = "<group>"; };
 		CAEA0B8B2165626900B0C7A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAEA0D83216BDC5100B0C7A6 /* AppCoreStrings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = AppCoreStrings.strings; sourceTree = "<group>"; };
+		CAEA0D85216BDC7D00B0C7A6 /* AppCoreStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoreStrings.swift; sourceTree = "<group>"; };
 		CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailModuleProviding.swift; sourceTree = "<group>"; };
 		CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailModuleBuilder.swift; sourceTree = "<group>"; };
@@ -3003,6 +3007,7 @@
 				CAEA0D812166B3F700B0C7A6 /* Formatters */,
 				78D7EEB91F196B40005372A9 /* Notifications */,
 				CA72849920A1C332007D912A /* Observers */,
+				CAEA0D82216BDC2900B0C7A6 /* Resources */,
 				CA804DCF1F20CE5F00E07A4A /* Server Client */,
 				CAB3A72B1F7532DF005DF77B /* System Services */,
 			);
@@ -6050,6 +6055,15 @@
 			path = Formatters;
 			sourceTree = "<group>";
 		};
+		CAEA0D82216BDC2900B0C7A6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CAEA0D83216BDC5100B0C7A6 /* AppCoreStrings.strings */,
+				CAEA0D85216BDC7D00B0C7A6 /* AppCoreStrings.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		CAEAEBF21FDEB53800C0EE7C /* Message Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -6565,6 +6579,7 @@
 				9ACF99421EBE172D006FC958 /* LaunchScreen.storyboard in Resources */,
 				CA36A48320D8C89700EE6537 /* DealerComponentTableViewCell.xib in Resources */,
 				CA283ACF20EAC18500F7D195 /* AnnouncementTableViewCell.xib in Resources */,
+				CAEA0D84216BDC5100B0C7A6 /* AppCoreStrings.strings in Resources */,
 				CA6EC4872051CD8F00402894 /* KnowledgeDetail.storyboard in Resources */,
 				9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */,
 				CA72843D209CF07A007D912A /* Localizable.stringsdict in Resources */,
@@ -7305,6 +7320,7 @@
 				CA6A8D9220E2C554007536CD /* MapCollectionViewCell.swift in Sources */,
 				CADABEF021147D560023C3B6 /* EventInformationBannerTableViewCell.swift in Sources */,
 				CA162E7C20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift in Sources */,
+				CAEA0D86216BDC7D00B0C7A6 /* AppCoreStrings.swift in Sources */,
 				CA6AA0011FD6C5FD0092C6DB /* LoginModuleBuilder.swift in Sources */,
 				CACF1E6F20B1CDC300D904B5 /* EventDetailViewModel.swift in Sources */,
 				CA283A5A20E6E24300F7D195 /* ApplicationLongRunningTaskManager.swift in Sources */,

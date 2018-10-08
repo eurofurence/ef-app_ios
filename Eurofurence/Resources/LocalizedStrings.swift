@@ -167,9 +167,6 @@ public extension String {
     public static let maps = NSLocalizedString("Maps",
                                                comment: "Title for the view containing the list of available convention maps")
 
-    private static let eventReminderBodyFormat = NSLocalizedString("EventReminderBodyFormat",
-                                                                   comment: "Format string used for event reminder notifications to tell the user when and where an upcoming event is taking place")
-
     public static let downloadingLatestData = NSLocalizedString("DownloadingLatestData",
                                                                 comment: "Placeholder string displayed on the preload page to indicate to the user the app is updating")
 
@@ -232,10 +229,6 @@ public extension String {
 
     static func formattedOnlyPresentOnDaysString(_ days: [String]) -> String {
         return localizedStringWithFormat(onlyPresentOnSpecificDaysFormat, days.joined(separator: ", "))
-    }
-
-    static func eventReminderBody(timeString: String, roomName: String) -> String {
-        return localizedStringWithFormat(eventReminderBodyFormat, timeString, roomName)
     }
 
     static func restrictEventsAccessibilityHint(date: String) -> String {

@@ -267,7 +267,7 @@ class Schedule: ClockDelegate {
         let waitInterval = userPreferences.upcomingEventReminderInterval * -1
         let reminderDate = event.startDate.addingTimeInterval(waitInterval)
         let startTimeString = hoursDateFormatter.hoursString(from: event.startDate)
-        let body = String.eventReminderBody(timeString: startTimeString, roomName: event.room.name)
+        let body = AppCoreStrings.eventReminderBody(timeString: startTimeString, roomName: event.room.name)
         let userInfo: [ApplicationNotificationKey: String] = [
             .notificationContentKind: ApplicationNotificationContentKind.event.rawValue,
             .notificationContentIdentifier: identifier.rawValue
