@@ -7,6 +7,7 @@
 //
 
 import Eurofurence
+import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class EurofurenceFCMDeviceRegistrationTests: XCTestCase {

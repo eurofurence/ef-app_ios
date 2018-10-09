@@ -7,6 +7,7 @@
 //
 
 import EurofurenceAppCore
+import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class V2SyncAPITests: XCTestCase {

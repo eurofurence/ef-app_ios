@@ -7,6 +7,8 @@
 //
 
 import EurofurenceAppCore
+import EurofurenceAppCoreTestDoubles
+import RandomDataGeneration
 import XCTest
 
 class V2ImageAPITests: XCTestCase {
