@@ -987,7 +987,6 @@
 		CAD6882C208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6882B208A12F700B31F5F /* WhenBindingUserWithUnreadMessages_NewsPresenterShould.swift */; };
 		CAD68830208A144800B31F5F /* WhenBindingUserWithNoUnreadMessages_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6882F208A144800B31F5F /* WhenBindingUserWithNoUnreadMessages_NewsPresenterShould.swift */; };
 		CAD780401F1D4C2A002A8333 /* WhenLoginStateChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7803F1F1D4C2A002A8333 /* WhenLoginStateChanges.swift */; };
-		CAD780491F1D51EB002A8333 /* StubClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780481F1D51EB002A8333 /* StubClock.swift */; };
 		CAD780521F1E2D2E002A8333 /* CapturingCredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780511F1E2D2E002A8333 /* CapturingCredentialStore.swift */; };
 		CAD7805D1F1E8EB0002A8333 /* KeychainCredentialStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7805C1F1E8EB0002A8333 /* KeychainCredentialStoreTests.swift */; };
 		CADABEF021147D560023C3B6 /* EventInformationBannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADABEEF21147D560023C3B6 /* EventInformationBannerTableViewCell.swift */; };
@@ -1179,6 +1178,7 @@
 		CAEA0F71216D2C0900B0C7A6 /* WhenSyncSucceeds_SyncAPIShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA65A21E2091F1EC0078A4A7 /* WhenSyncSucceeds_SyncAPIShould.swift */; };
 		CAEA0F75216D2CE400B0C7A6 /* CapturingJSONSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D21F1A2EB000E9A0BE /* CapturingJSONSession.swift */; };
 		CAEA0F76216D2CE800B0C7A6 /* StubV2ApiUrlProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61870DF20DAD8E00089E836 /* StubV2ApiUrlProviding.swift */; };
+		CAEA0F7A216D341600B0C7A6 /* StubClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780481F1D51EB002A8333 /* StubClock.swift */; };
 		CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */; };
 		CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */; };
 		CAEAEBFA1FE0037700C0EE7C /* MessageDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF91FE0037700C0EE7C /* MessageDetailPresenterTests.swift */; };
@@ -2757,7 +2757,6 @@
 				7820A6DA1F13F4DE004C0FB5 /* StubPresentationAssets.swift */,
 				78C86D591F1234F0003A20E6 /* StubRouters.swift */,
 				78C86D5E1F12384C003A20E6 /* Scenes */,
-				78FE77D01F1A2E9500E9A0BE /* Services */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -2997,14 +2996,6 @@
 				6EEC6DA41F1BFC7700205F2D /* AppVersionProviding.swift */,
 			);
 			path = "Build Config";
-			sourceTree = "<group>";
-		};
-		78FE77D01F1A2E9500E9A0BE /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				CAD780471F1D51DB002A8333 /* Clock */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		9ACF992B1EBE172D006FC958 = {
@@ -5893,14 +5884,6 @@
 			path = "Presenter Tests";
 			sourceTree = "<group>";
 		};
-		CAD780471F1D51DB002A8333 /* Clock */ = {
-			isa = PBXGroup;
-			children = (
-				CAD780481F1D51EB002A8333 /* StubClock.swift */,
-			);
-			path = Clock;
-			sourceTree = "<group>";
-		};
 		CADABF072119BE630023C3B6 /* Upgrade Path */ = {
 			isa = PBXGroup;
 			children = (
@@ -6042,6 +6025,7 @@
 				CAEA0F5F216D294000B0C7A6 /* Info.plist */,
 				78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */,
 				78FE77D21F1A2EB000E9A0BE /* CapturingJSONSession.swift */,
+				CAD780481F1D51EB002A8333 /* StubClock.swift */,
 				C61870DF20DAD8E00089E836 /* StubV2ApiUrlProviding.swift */,
 			);
 			path = EurofurenceAppCoreTestDoubles;
@@ -7715,7 +7699,6 @@
 				CA162EE220AC55EB004AFED6 /* WhenObservingRunningEvents_ThenLoadSucceeds.swift in Sources */,
 				CA283AB620EAA39800F7D195 /* WhenAnnouncementsSceneLoads_AnnouncementsPresenterShould.swift in Sources */,
 				CADABEFA211504310023C3B6 /* WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorShould.swift in Sources */,
-				CAD780491F1D51EB002A8333 /* StubClock.swift in Sources */,
 				CA1F7D6B20CBB9DA00FB87F5 /* WhenApplicationInitialises_WithAnnouncementsSavedToStore.swift in Sources */,
 				CA1ECB451FE3A2880076083A /* WhenInitialMessageLoadCompletesWithMessages.swift in Sources */,
 				CA283AE220EC05B700F7D195 /* WhenPreparingViewModelForFavouritedEvent_ScheduleInteractorShould.swift in Sources */,
@@ -8142,6 +8125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAEA0F7A216D341600B0C7A6 /* StubClock.swift in Sources */,
 				CAEA0F76216D2CE800B0C7A6 /* StubV2ApiUrlProviding.swift in Sources */,
 				CAEA0F75216D2CE400B0C7A6 /* CapturingJSONSession.swift in Sources */,
 				CAEA0F66216D29FD00B0C7A6 /* StubBuildConfigurationProviding.swift in Sources */,

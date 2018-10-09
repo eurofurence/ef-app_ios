@@ -20,7 +20,7 @@ class WhenSignificantTimeChanges_ScheduleShould: XCTestCase {
         let schedule = context.application.makeEventsSchedule()
         let delegate = CapturingEventsScheduleDelegate()
         schedule.setDelegate(delegate)
-        context.clock.currentDate = .distantPast
+        context.clock.tickTime(to: .distantPast)
         context.simulateSignificantTimeChange()
         
         XCTAssertNil(delegate.capturedCurrentDay)

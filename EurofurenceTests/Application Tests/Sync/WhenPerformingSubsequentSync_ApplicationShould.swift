@@ -14,7 +14,7 @@ class WhenPerformingSubsequentSync_ApplicationShould: XCTestCase {
     func testProvideTheLastSyncTimeToTheSyncAPI() {
         let context = ApplicationTestBuilder().build()
         let expected = Date.random
-        context.clock.currentDate = expected
+        context.clock.tickTime(to: expected)
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(.randomWithoutDeletions)
         context.refreshLocalStore()
@@ -25,7 +25,7 @@ class WhenPerformingSubsequentSync_ApplicationShould: XCTestCase {
     func testCompleteSyncWhenNotRedownloadingAnyImages() {
         let context = ApplicationTestBuilder().build()
         let expected = Date.random
-        context.clock.currentDate = expected
+        context.clock.tickTime(to: expected)
         context.refreshLocalStore()
         let syncResponse = APISyncResponse.randomWithoutDeletions
         context.syncAPI.simulateSuccessfulSync(syncResponse)
@@ -39,7 +39,7 @@ class WhenPerformingSubsequentSync_ApplicationShould: XCTestCase {
     func testIndicateCompleteProgressIfNothingToDownload() {
         let context = ApplicationTestBuilder().build()
         let expected = Date.random
-        context.clock.currentDate = expected
+        context.clock.tickTime(to: expected)
         context.refreshLocalStore()
         let syncResponse = APISyncResponse.randomWithoutDeletions
         context.syncAPI.simulateSuccessfulSync(syncResponse)

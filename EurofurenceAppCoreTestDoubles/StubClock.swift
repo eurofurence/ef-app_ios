@@ -9,24 +9,24 @@
 import EurofurenceAppCore
 import Foundation
 
-class StubClock: Clock {
+public class StubClock: Clock {
     
-    var currentDate: Date
+    public private(set) var currentDate: Date
     
-    init(currentDate: Date = Date()) {
+    public init(currentDate: Date = Date()) {
         self.currentDate = currentDate
     }
     
     fileprivate var delegate: ClockDelegate?
-    func setDelegate(_ delegate: ClockDelegate) {
+    public func setDelegate(_ delegate: ClockDelegate) {
         self.delegate = delegate
     }
     
 }
 
-extension StubClock {
+public extension StubClock {
     
-    func tickTime(to time: Date) {
+    public func tickTime(to time: Date) {
         currentDate = time
         delegate?.clockDidTick(to: time)
     }

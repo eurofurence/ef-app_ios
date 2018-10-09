@@ -56,7 +56,7 @@ class WhenPerformingSyncThatSucceeds: XCTestCase {
         let context = ApplicationTestBuilder().build()
         context.refreshLocalStore()
         let randomTime = Date.random
-        context.clock.currentDate = randomTime
+        context.clock.tickTime(to: randomTime)
         context.syncAPI.simulateSuccessfulSync(.randomWithoutDeletions)
         
         XCTAssertTrue(context.dataStore.didSaveLastRefreshTime(randomTime))
