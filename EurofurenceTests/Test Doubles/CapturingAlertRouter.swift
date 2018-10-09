@@ -7,6 +7,7 @@
 //
 
 @testable import Eurofurence
+import EurofurenceAppCore
 
 class CapturingAlertRouter: AlertRouter {
     

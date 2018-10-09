@@ -8,6 +8,7 @@
 
 @testable import Eurofurence
 import EurofurenceAppCore
+import EurofurenceAppCore
 import XCTest
 
 class WhenPreparingViewModelForFavouritedEvent_ScheduleInteractorShould: XCTestCase {

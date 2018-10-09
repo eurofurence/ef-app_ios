@@ -8,6 +8,7 @@
 
 @testable import Eurofurence
 import EurofurenceAppCore
+import EurofurenceAppCore
 import XCTest
 
 class WhenToldToHandleNotification_ThatConcludesWithAnnouncement_DirectorShould: XCTestCase {

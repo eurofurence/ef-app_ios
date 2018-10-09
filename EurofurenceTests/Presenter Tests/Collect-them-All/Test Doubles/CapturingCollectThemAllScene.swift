@@ -7,6 +7,7 @@
 //
 
 @testable import Eurofurence
+import EurofurenceAppCore
 import UIKit
 
 class CapturingCollectThemAllScene: UIViewController, CollectThemAllScene {

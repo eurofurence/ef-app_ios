@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import EurofurenceAppCore
+import EurofurenceAppCore
 
 class EurofurenceAppCoreTests: XCTestCase {
 

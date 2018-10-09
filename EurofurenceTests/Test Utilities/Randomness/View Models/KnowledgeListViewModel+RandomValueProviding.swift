@@ -8,6 +8,7 @@
 
 import Darwin
 @testable import Eurofurence
+import EurofurenceAppCore
 import RandomDataGeneration
 import UIKit.UIImage
 

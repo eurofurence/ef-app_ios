@@ -8,6 +8,7 @@
 
 @testable import Eurofurence
 import EurofurenceAppCore
+import EurofurenceAppCore
 import UIKit
 
 class StubEventDetailModuleFactory: EventDetailModuleProviding {

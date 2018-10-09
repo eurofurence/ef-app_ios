@@ -8,6 +8,7 @@
 
 @testable import Eurofurence
 import EurofurenceAppCore
+import EurofurenceAppCore
 import Foundation
 
 class FakeDealerDetailInteractor: DealerDetailInteractor {

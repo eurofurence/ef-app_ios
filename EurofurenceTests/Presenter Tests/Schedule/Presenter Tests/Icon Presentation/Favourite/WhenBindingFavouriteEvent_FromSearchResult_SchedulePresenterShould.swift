@@ -7,6 +7,7 @@
 //
 
 @testable import Eurofurence
+import EurofurenceAppCore
 import XCTest
 
 class WhenBindingFavouriteEvent_FromSearchResult_SchedulePresenterShould: XCTestCase {

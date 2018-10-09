@@ -7,6 +7,7 @@
 //
 
 @testable import Eurofurence
+import EurofurenceAppCore
 import XCTest
 
 class WhenSceneChangesSearchScopeToFavouriteEvents_SchedulePresenterShould: XCTestCase {
