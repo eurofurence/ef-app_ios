@@ -59,7 +59,6 @@
 		78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */; };
 		78D7EEA41F17F40C005372A9 /* EurofurenceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEA31F17F40C005372A9 /* EurofurenceUITests.swift */; };
 		78D7EEB51F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEB41F195EA2005372A9 /* WhenRegisteredForPushNotifications.swift */; };
-		78D7EEBF1F196B77005372A9 /* StubBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */; };
 		78FE77CC1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77CB1F1A2E6700E9A0BE /* EurofurenceFCMDeviceRegistration.swift */; };
 		78FE77D31F1A2EB000E9A0BE /* CapturingJSONSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D21F1A2EB000E9A0BE /* CapturingJSONSession.swift */; };
 		78FE77D71F1B9FA500E9A0BE /* URLSessionBasedJSONSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D61F1B9FA500E9A0BE /* URLSessionBasedJSONSessionTests.swift */; };
@@ -1174,6 +1173,9 @@
 		CAEA0E99216BF34F00B0C7A6 /* String+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71A3492040320A00C847C3 /* String+RandomValueProviding.swift */; };
 		CAEA0E9A216BF34F00B0C7A6 /* URL+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDBC205AA61B00C91E6E /* URL+RandomValueProviding.swift */; };
 		CAEA0F60216D294000B0C7A6 /* EurofurenceAppCoreTestDoubles.h in Headers */ = {isa = PBXBuildFile; fileRef = CAEA0F5E216D294000B0C7A6 /* EurofurenceAppCoreTestDoubles.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CAEA0F66216D29FD00B0C7A6 /* StubBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */; };
+		CAEA0F67216D2A1D00B0C7A6 /* EurofurenceAppCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0B7A2165626900B0C7A6 /* EurofurenceAppCore.framework */; };
+		CAEA0F68216D2A2700B0C7A6 /* EurofurenceAppCoreTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0F5C216D294000B0C7A6 /* EurofurenceAppCoreTestDoubles.framework */; };
 		CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */; };
 		CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */; };
 		CAEAEBFA1FE0037700C0EE7C /* MessageDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF91FE0037700C0EE7C /* MessageDetailPresenterTests.swift */; };
@@ -2569,6 +2571,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAEA0F68216D2A2700B0C7A6 /* EurofurenceAppCoreTestDoubles.framework in Frameworks */,
 				CAEA0E8D216BEFC300B0C7A6 /* RandomDataGeneration.framework in Frameworks */,
 				DE53838D7196118A73CF0A5B /* Pods_EurofurenceTests.framework in Frameworks */,
 			);
@@ -2610,6 +2613,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAEA0F67216D2A1D00B0C7A6 /* EurofurenceAppCore.framework in Frameworks */,
 				8819DD70CC5D59EA92261E3D /* Pods_EurofurenceAppCoreTestDoubles.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2745,7 +2749,6 @@
 				CA60BFFD207CDC1700697566 /* FakeAuthenticationService.swift */,
 				7820A6E01F13FC7F004C0FB5 /* NetworkReachabilityTestDoubles.swift */,
 				6EEC6DA21F1BFC5000205F2D /* StubAppVersionProviding.swift */,
-				78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */,
 				78455B4C1F1177CF005BE2D7 /* StubFirstTimeLaunchStateProvider.swift */,
 				CABA43961FCE0A5C009CB5B0 /* StubLoginSceneFactory.swift */,
 				CAF3C74D1F9FC72C0008F027 /* StubNewsSceneFactory.swift */,
@@ -6057,6 +6060,7 @@
 			children = (
 				CAEA0F5E216D294000B0C7A6 /* EurofurenceAppCoreTestDoubles.h */,
 				CAEA0F5F216D294000B0C7A6 /* Info.plist */,
+				78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */,
 			);
 			path = EurofurenceAppCoreTestDoubles;
 			sourceTree = "<group>";
@@ -7333,7 +7337,6 @@
 				CACF1EAE20B5C2E500D904B5 /* EventDetailInteractorTestBuilder.swift in Sources */,
 				CA283A7E20E9211400F7D195 /* WhenApplicationRefreshStateChanges_ScheduleInteractorShould.swift in Sources */,
 				CAF5979D20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift in Sources */,
-				78D7EEBF1F196B77005372A9 /* StubBuildConfigurationProviding.swift in Sources */,
 				CA2761C120E02C68000E52AC /* BeforeCollectThemAllSceneLoads_PresenterShould.swift in Sources */,
 				CA17FE712056B070005A4C05 /* KnowledgeDetailPresenterTestBuilder.swift in Sources */,
 				CA6A8D5F20E16BB3007536CD /* WhenShowingMessagesModuleAlerts_DirectorShould.swift in Sources */,
@@ -8147,6 +8150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAEA0F66216D29FD00B0C7A6 /* StubBuildConfigurationProviding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
