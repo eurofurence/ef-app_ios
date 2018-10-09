@@ -95,7 +95,6 @@
 		A034379A14212C5E996E6321 /* Pods_Eurofurence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81694C40AA0176899E15028 /* Pods_Eurofurence.framework */; };
 		AF4A956010879F8B4E26FB61 /* Pods-EurofurenceTests-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 977F50DE0F3E7ACD20CDD40D /* Pods-EurofurenceTests-metadata.plist */; };
 		C61870E020DAD8E00089E836 /* StubV2ApiUrlProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61870DF20DAD8E00089E836 /* StubV2ApiUrlProviding.swift */; };
-		C61870E220DAE28D0089E836 /* BuildConfigurationV2ApiUrlProvidingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61870E120DAE28D0089E836 /* BuildConfigurationV2ApiUrlProvidingTest.swift */; };
 		C74800FDD10051941095AB9F /* Pods-Eurofurence-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7E8E02928B7F019466A32E8B /* Pods-Eurofurence-metadata.plist */; };
 		C7AAAA556744E3B45227BD90 /* Pods-EurofurenceAppCoreTests-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 502917EFC4168DE2BBDCC1E5 /* Pods-EurofurenceAppCoreTests-metadata.plist */; };
 		CA00AE4520D16BBD00C2FBB0 /* ScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE4420D16BBD00C2FBB0 /* ScheduleInteractor.swift */; };
@@ -1176,6 +1175,8 @@
 		CAEA0F66216D29FD00B0C7A6 /* StubBuildConfigurationProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */; };
 		CAEA0F67216D2A1D00B0C7A6 /* EurofurenceAppCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0B7A2165626900B0C7A6 /* EurofurenceAppCore.framework */; };
 		CAEA0F68216D2A2700B0C7A6 /* EurofurenceAppCoreTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0F5C216D294000B0C7A6 /* EurofurenceAppCoreTestDoubles.framework */; };
+		CAEA0F6A216D2B5E00B0C7A6 /* BuildConfigurationV2ApiUrlProvidingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61870E120DAE28D0089E836 /* BuildConfigurationV2ApiUrlProvidingTest.swift */; };
+		CAEA0F6B216D2B8600B0C7A6 /* EurofurenceAppCoreTestDoubles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEA0F5C216D294000B0C7A6 /* EurofurenceAppCoreTestDoubles.framework */; };
 		CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */; };
 		CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */; };
 		CAEAEBFA1FE0037700C0EE7C /* MessageDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF91FE0037700C0EE7C /* MessageDetailPresenterTests.swift */; };
@@ -2596,6 +2597,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAEA0F6B216D2B8600B0C7A6 /* EurofurenceAppCoreTestDoubles.framework in Frameworks */,
 				CAEA0E8E216BEFC800B0C7A6 /* RandomDataGeneration.framework in Frameworks */,
 				CAEA0B832165626900B0C7A6 /* EurofurenceAppCore.framework in Frameworks */,
 				5AFB57EE7360769D027F9F9D /* Pods_EurofurenceAppCoreTests.framework in Frameworks */,
@@ -5232,7 +5234,6 @@
 				CA804DD91F20D2F500E07A4A /* V2LoginAPITests.swift */,
 				CA30EAC91F267D3C0053DBF6 /* V2PrivateMessagesAPITests.swift */,
 				CA65A21D2091F16C0078A4A7 /* Sync */,
-				C61870E120DAE28D0089E836 /* BuildConfigurationV2ApiUrlProvidingTest.swift */,
 			);
 			path = v2;
 			sourceTree = "<group>";
@@ -6010,6 +6011,7 @@
 		CAEA0B882165626900B0C7A6 /* EurofurenceAppCoreTests */ = {
 			isa = PBXGroup;
 			children = (
+				CAEA0F69216D2B4500B0C7A6 /* Client API */,
 				CAEA0B892165626900B0C7A6 /* EurofurenceAppCoreTests.swift */,
 				CAEA0B8B2165626900B0C7A6 /* Info.plist */,
 			);
@@ -6063,6 +6065,14 @@
 				78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */,
 			);
 			path = EurofurenceAppCoreTestDoubles;
+			sourceTree = "<group>";
+		};
+		CAEA0F69216D2B4500B0C7A6 /* Client API */ = {
+			isa = PBXGroup;
+			children = (
+				C61870E120DAE28D0089E836 /* BuildConfigurationV2ApiUrlProvidingTest.swift */,
+			);
+			path = "Client API";
 			sourceTree = "<group>";
 		};
 		CAEAEBF21FDEB53800C0EE7C /* Message Detail */ = {
@@ -7906,7 +7916,6 @@
 				CA0F762520322E07009DA079 /* CapturingKnowledgeGroupHeaderScene.swift in Sources */,
 				CA44C36B211B70B2003C1C4E /* SchedulePresenterKageIconBindingTests.swift in Sources */,
 				CAD260A120C03350007E3618 /* WhenSceneTapsFavouriteEventButton_EventDetailPresenterShould.swift in Sources */,
-				C61870E220DAE28D0089E836 /* BuildConfigurationV2ApiUrlProvidingTest.swift in Sources */,
 				CA65A881209B7E1000B72533 /* WhenLoggedInBeforeConvention_ThenPersonalMessageIsReceived_NewsInteractorShould.swift in Sources */,
 				CA44C33F211A2B60003C1C4E /* SchedulePresenterArtShowIconBindingTests.swift in Sources */,
 				CA6A8D8B20E2BBB1007536CD /* FakeMapsInteractor.swift in Sources */,
@@ -8124,6 +8133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAEA0B8A2165626900B0C7A6 /* EurofurenceAppCoreTests.swift in Sources */,
+				CAEA0F6A216D2B5E00B0C7A6 /* BuildConfigurationV2ApiUrlProvidingTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8841,7 +8851,6 @@
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceAppCoreTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -8868,7 +8877,6 @@
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceAppCoreTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceAppCoreTests;
@@ -8894,7 +8902,6 @@
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceAppCoreTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceAppCoreTests;
@@ -8920,7 +8927,6 @@
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = EurofurenceAppCoreTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceAppCoreTests;
