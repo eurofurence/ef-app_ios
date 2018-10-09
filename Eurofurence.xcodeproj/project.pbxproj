@@ -1179,6 +1179,7 @@
 		CAEA0F75216D2CE400B0C7A6 /* CapturingJSONSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE77D21F1A2EB000E9A0BE /* CapturingJSONSession.swift */; };
 		CAEA0F76216D2CE800B0C7A6 /* StubV2ApiUrlProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61870DF20DAD8E00089E836 /* StubV2ApiUrlProviding.swift */; };
 		CAEA0F7A216D341600B0C7A6 /* StubClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780481F1D51EB002A8333 /* StubClock.swift */; };
+		CAEA0F7C216D370600B0C7A6 /* FakeHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */; };
 		CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */; };
 		CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */; };
 		CAEAEBFA1FE0037700C0EE7C /* MessageDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF91FE0037700C0EE7C /* MessageDetailPresenterTests.swift */; };
@@ -2481,6 +2482,7 @@
 		CAEA0F5C216D294000B0C7A6 /* EurofurenceAppCoreTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EurofurenceAppCoreTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAEA0F5E216D294000B0C7A6 /* EurofurenceAppCoreTestDoubles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EurofurenceAppCoreTestDoubles.h; sourceTree = "<group>"; };
 		CAEA0F5F216D294000B0C7A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeHoursDateFormatter.swift; sourceTree = "<group>"; };
 		CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailModuleProviding.swift; sourceTree = "<group>"; };
 		CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailModuleBuilder.swift; sourceTree = "<group>"; };
@@ -6023,8 +6025,9 @@
 			children = (
 				CAEA0F5E216D294000B0C7A6 /* EurofurenceAppCoreTestDoubles.h */,
 				CAEA0F5F216D294000B0C7A6 /* Info.plist */,
-				78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */,
 				78FE77D21F1A2EB000E9A0BE /* CapturingJSONSession.swift */,
+				CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */,
+				78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */,
 				CAD780481F1D51EB002A8333 /* StubClock.swift */,
 				C61870DF20DAD8E00089E836 /* StubV2ApiUrlProviding.swift */,
 			);
@@ -8126,6 +8129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAEA0F7A216D341600B0C7A6 /* StubClock.swift in Sources */,
+				CAEA0F7C216D370600B0C7A6 /* FakeHoursDateFormatter.swift in Sources */,
 				CAEA0F76216D2CE800B0C7A6 /* StubV2ApiUrlProviding.swift in Sources */,
 				CAEA0F75216D2CE400B0C7A6 /* CapturingJSONSession.swift in Sources */,
 				CAEA0F66216D29FD00B0C7A6 /* StubBuildConfigurationProviding.swift in Sources */,
