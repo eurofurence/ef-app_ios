@@ -34,6 +34,10 @@ target :EurofurenceAppCore do
         inherit! :search_paths
     end
     
+    target :EurofurenceAppCoreTestDoubles do
+        inherit! :search_paths
+    end
+    
 end
 
 post_install do |installer|

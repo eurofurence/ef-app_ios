@@ -1,0 +1,6 @@
+framework module Pods_EurofurenceAppCoreTestDoubles {
+  umbrella header "Pods-EurofurenceAppCoreTestDoubles-umbrella.h"
+
+  export *
+  module * { export * }
+}
