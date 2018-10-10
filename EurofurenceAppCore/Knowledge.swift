@@ -15,7 +15,7 @@ class Knowledge {
     private let dataStore: EurofurenceDataStore
     private let imageRepository: ImageRepository
     private var observers = [KnowledgeServiceObserver]()
-    var models = [KnowledgeGroup2]() {
+    var models = [KnowledgeGroup]() {
         didSet {
             observers.forEach { $0.knowledgeGroupsDidChange(to: models) }
         }
@@ -42,7 +42,7 @@ class Knowledge {
         models.reduce([], { $0 + $1.entries }).first(where: { $0.identifier == identifier }).let(completionHandler)
     }
 
-    func fetchKnowledgeGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping (KnowledgeGroup2) -> Void) {
+    func fetchKnowledgeGroup(identifier: KnowledgeGroup.Identifier, completionHandler: @escaping (KnowledgeGroup) -> Void) {
         models.first(where: { $0.identifier == identifier }).let(completionHandler)
     }
 
@@ -66,7 +66,7 @@ class Knowledge {
                 return
         }
 
-        models = KnowledgeGroup2.fromServerModels(groups: groups, entries: entries)
+        models = KnowledgeGroup.fromServerModels(groups: groups, entries: entries)
     }
 
 }

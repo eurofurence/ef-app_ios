@@ -17,7 +17,7 @@ class WhenSelectingKnowledgeGroup_DirectorShould: XCTestCase {
         let context = ApplicationDirectorTestBuilder().build()
         context.navigateToTabController()
         let knowledgeNavigationController = context.navigationController(for: context.knowledgeListModule.stubInterface)
-        let identifier = KnowledgeGroup2.Identifier.random
+        let identifier = KnowledgeGroup.Identifier.random
         context.knowledgeListModule.simulateKnowledgeGroupSelected(identifier)
         
         XCTAssertEqual(context.knowledgeGroupEntriesModule.stubInterface, knowledgeNavigationController?.topViewController)

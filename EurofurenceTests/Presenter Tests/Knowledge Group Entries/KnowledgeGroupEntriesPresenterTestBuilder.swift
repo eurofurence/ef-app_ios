@@ -23,7 +23,7 @@ class KnowledgeGroupEntriesPresenterTestBuilder {
     
     func build() -> Context {
         let viewModel = StubKnowledgeGroupEntriesViewModel.random
-        let groupIdentifier = KnowledgeGroup2.Identifier.random
+        let groupIdentifier = KnowledgeGroup.Identifier.random
         let interactor = FakeKnowledgeGroupEntriesInteractor(for: groupIdentifier, viewModel: viewModel)
         let sceneFactory = StubKnowledgeGroupEntriesSceneFactory()
         let delegate = CapturingKnowledgeGroupEntriesModuleDelegate()

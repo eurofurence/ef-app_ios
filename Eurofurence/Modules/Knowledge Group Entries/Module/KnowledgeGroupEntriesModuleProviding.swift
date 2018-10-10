@@ -12,6 +12,6 @@ import UIKit
 
 protocol KnowledgeGroupEntriesModuleProviding {
 
-    func makeKnowledgeGroupEntriesModule(_ groupIdentifier: KnowledgeGroup2.Identifier, delegate: KnowledgeGroupEntriesModuleDelegate) -> UIViewController
+    func makeKnowledgeGroupEntriesModule(_ groupIdentifier: KnowledgeGroup.Identifier, delegate: KnowledgeGroupEntriesModuleDelegate) -> UIViewController
 
 }

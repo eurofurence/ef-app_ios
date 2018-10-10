@@ -1,5 +1,5 @@
 //
-//  KnowledgeGroup2.swift
+//  KnowledgeGroup.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 23/02/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct KnowledgeGroup2: Comparable, Equatable {
+public struct KnowledgeGroup: Comparable, Equatable {
 
     public struct Identifier: Comparable, Equatable, Hashable, RawRepresentable {
 
@@ -24,20 +24,20 @@ public struct KnowledgeGroup2: Comparable, Equatable {
 
         public var rawValue: String
 
-        public static func < (lhs: KnowledgeGroup2.Identifier, rhs: KnowledgeGroup2.Identifier) -> Bool {
+        public static func < (lhs: KnowledgeGroup.Identifier, rhs: KnowledgeGroup.Identifier) -> Bool {
             return lhs.rawValue < rhs.rawValue
         }
 
     }
 
-    public var identifier: KnowledgeGroup2.Identifier
+    public var identifier: KnowledgeGroup.Identifier
     public var title: String
     public var groupDescription: String
     public var fontAwesomeCharacterAddress: Character
     public var order: Int
     public var entries: [KnowledgeEntry]
 
-    public init(identifier: KnowledgeGroup2.Identifier, title: String, groupDescription: String, fontAwesomeCharacterAddress: Character, order: Int, entries: [KnowledgeEntry]) {
+    public init(identifier: KnowledgeGroup.Identifier, title: String, groupDescription: String, fontAwesomeCharacterAddress: Character, order: Int, entries: [KnowledgeEntry]) {
         self.identifier = identifier
         self.title = title
         self.groupDescription = groupDescription
@@ -46,16 +46,16 @@ public struct KnowledgeGroup2: Comparable, Equatable {
         self.entries = entries
     }
 
-    public static func <(lhs: KnowledgeGroup2, rhs: KnowledgeGroup2) -> Bool {
+    public static func <(lhs: KnowledgeGroup, rhs: KnowledgeGroup) -> Bool {
         return lhs.order < rhs.order
     }
 
 }
 
-public extension KnowledgeGroup2 {
+public extension KnowledgeGroup {
 
-    public static func fromServerModels(groups: [APIKnowledgeGroup], entries: [APIKnowledgeEntry]) -> [KnowledgeGroup2] {
-        return groups.map({ (group) -> KnowledgeGroup2 in
+    public static func fromServerModels(groups: [APIKnowledgeGroup], entries: [APIKnowledgeEntry]) -> [KnowledgeGroup] {
+        return groups.map({ (group) -> KnowledgeGroup in
             let entries = entries.filter({ $0.groupIdentifier == group.identifier }).map(KnowledgeEntry.fromServerModel).sorted()
             let defaultFontAwesomeBackupCharacter: Character = " "
             let fontAwesomeCharacter: Character = Int(group.fontAwesomeCharacterAddress, radix: 16)
@@ -63,7 +63,7 @@ public extension KnowledgeGroup2 {
                 .let(Character.init)
                 .or(defaultFontAwesomeBackupCharacter)
 
-            return KnowledgeGroup2(identifier: KnowledgeGroup2.Identifier(group.identifier),
+            return KnowledgeGroup(identifier: KnowledgeGroup.Identifier(group.identifier),
                                    title: group.groupName,
                                    groupDescription: group.groupDescription,
                                    fontAwesomeCharacterAddress: fontAwesomeCharacter,

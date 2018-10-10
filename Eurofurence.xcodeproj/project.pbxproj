@@ -878,7 +878,7 @@
 		CAEA0DB5216BDE2300B0C7A6 /* Event2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9120A652B5004AFED6 /* Event2.swift */; };
 		CAEA0DB6216BDE2300B0C7A6 /* ExtendedDealerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7620DDAD6F00898C52 /* ExtendedDealerData.swift */; };
 		CAEA0DB7216BDE2300B0C7A6 /* KnowledgeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03B82041C2B00028BD62 /* KnowledgeEntry.swift */; };
-		CAEA0DB8216BDE2300B0C7A6 /* KnowledgeGroup2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03B92041C2B00028BD62 /* KnowledgeGroup2.swift */; };
+		CAEA0DB8216BDE2300B0C7A6 /* KnowledgeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03B92041C2B00028BD62 /* KnowledgeGroup.swift */; };
 		CAEA0DB9216BDE2300B0C7A6 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDAE205870B500C91E6E /* Link.swift */; };
 		CAEA0DBA216BDE2300B0C7A6 /* LoginArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */; };
 		CAEA0DBB216BDE2300B0C7A6 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D9F20E2CAB7007536CD /* Map.swift */; };
@@ -1007,7 +1007,7 @@
 		CAEA0F81216E1AE200B0C7A6 /* Day+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */; };
 		CAEA0F82216E1AE200B0C7A6 /* Event2+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9320A87D3D004AFED6 /* Event2+RandomValueProviding.swift */; };
 		CAEA0F83216E1AE200B0C7A6 /* KnowledgeEntry+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03C22041C2FD0028BD62 /* KnowledgeEntry+RandomValueProviding.swift */; };
-		CAEA0F84216E1AE200B0C7A6 /* KnowledgeGroup2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03C02041C2EC0028BD62 /* KnowledgeGroup2.swift */; };
+		CAEA0F84216E1AE200B0C7A6 /* KnowledgeGroup+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03C02041C2EC0028BD62 /* KnowledgeGroup+RandomValueProviding.swift */; };
 		CAEA0F85216E1AE200B0C7A6 /* Link+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */; };
 		CAEA0F86216E1AE200B0C7A6 /* Message+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637579208CDB7B00536BE2 /* Message+RandomValueProviding.swift */; };
 		CAEA0F87216E1AE200B0C7A6 /* Room+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9720A8886C004AFED6 /* Room+RandomValueProviding.swift */; };
@@ -2327,9 +2327,9 @@
 		CABF03B32041BC870028BD62 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		CABF03B62041C2150028BD62 /* DefaultKnowledgeGroupsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeGroupsInteractorTests.swift; sourceTree = "<group>"; };
 		CABF03B82041C2B00028BD62 /* KnowledgeEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeEntry.swift; sourceTree = "<group>"; };
-		CABF03B92041C2B00028BD62 /* KnowledgeGroup2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeGroup2.swift; sourceTree = "<group>"; };
+		CABF03B92041C2B00028BD62 /* KnowledgeGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeGroup.swift; sourceTree = "<group>"; };
 		CABF03BC2041C2B70028BD62 /* KnowledgeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeService.swift; sourceTree = "<group>"; };
-		CABF03C02041C2EC0028BD62 /* KnowledgeGroup2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeGroup2.swift; sourceTree = "<group>"; };
+		CABF03C02041C2EC0028BD62 /* KnowledgeGroup+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KnowledgeGroup+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CABF03C22041C2FD0028BD62 /* KnowledgeEntry+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KnowledgeEntry+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CABF03C42041C31A0028BD62 /* DefaultKnowledgeGroupsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKnowledgeGroupsInteractor.swift; sourceTree = "<group>"; };
 		CABF03C62041C3270028BD62 /* StubKnowledgeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubKnowledgeService.swift; sourceTree = "<group>"; };
@@ -3407,7 +3407,7 @@
 				CA162E9120A652B5004AFED6 /* Event2.swift */,
 				CAF81C7620DDAD6F00898C52 /* ExtendedDealerData.swift */,
 				CABF03B82041C2B00028BD62 /* KnowledgeEntry.swift */,
-				CABF03B92041C2B00028BD62 /* KnowledgeGroup2.swift */,
+				CABF03B92041C2B00028BD62 /* KnowledgeGroup.swift */,
 				CAD3BDAE205870B500C91E6E /* Link.swift */,
 				CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */,
 				CA6A8D9F20E2CAB7007536CD /* Map.swift */,
@@ -6032,7 +6032,7 @@
 				CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */,
 				CA162E9320A87D3D004AFED6 /* Event2+RandomValueProviding.swift */,
 				CABF03C22041C2FD0028BD62 /* KnowledgeEntry+RandomValueProviding.swift */,
-				CABF03C02041C2EC0028BD62 /* KnowledgeGroup2.swift */,
+				CABF03C02041C2EC0028BD62 /* KnowledgeGroup+RandomValueProviding.swift */,
 				CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */,
 				CA637579208CDB7B00536BE2 /* Message+RandomValueProviding.swift */,
 				CA162E9720A8886C004AFED6 /* Room+RandomValueProviding.swift */,
@@ -7897,7 +7897,7 @@
 				CAEA0DD6216BDE2300B0C7A6 /* ConferenceDayEntity+Adaptation.swift in Sources */,
 				CAEA0DE4216BDE2300B0C7A6 /* ImageDownloadedEvent.swift in Sources */,
 				CAEA0DA5216BDE2300B0C7A6 /* ForceRefreshRequired.swift in Sources */,
-				CAEA0DB8216BDE2300B0C7A6 /* KnowledgeGroup2.swift in Sources */,
+				CAEA0DB8216BDE2300B0C7A6 /* KnowledgeGroup.swift in Sources */,
 				CAEA0DFE216BDE3100B0C7A6 /* APIImage.swift in Sources */,
 				CAEA0DF5216BDE3100B0C7A6 /* APIDealer.swift in Sources */,
 				CAEA0DA1216BDE2300B0C7A6 /* ConventionStartDateRepository.swift in Sources */,
@@ -8228,7 +8228,7 @@
 				CAEA103D216E1D8700B0C7A6 /* StubAppVersionProviding.swift in Sources */,
 				CAEA0F81216E1AE200B0C7A6 /* Day+RandomValueProviding.swift in Sources */,
 				CAEA0F87216E1AE200B0C7A6 /* Room+RandomValueProviding.swift in Sources */,
-				CAEA0F84216E1AE200B0C7A6 /* KnowledgeGroup2.swift in Sources */,
+				CAEA0F84216E1AE200B0C7A6 /* KnowledgeGroup+RandomValueProviding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

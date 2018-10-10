@@ -12,8 +12,8 @@ import EurofurenceAppCoreTestDoubles
 
 class CapturingKnowledgeGroupsListModuleDelegate: KnowledgeGroupsListModuleDelegate {
     
-    private(set) var capturedKnowledgeGroupToPresent: KnowledgeGroup2.Identifier?
-    func knowledgeListModuleDidSelectKnowledgeGroup(_ knowledgeGroup: KnowledgeGroup2.Identifier) {
+    private(set) var capturedKnowledgeGroupToPresent: KnowledgeGroup.Identifier?
+    func knowledgeListModuleDidSelectKnowledgeGroup(_ knowledgeGroup: KnowledgeGroup.Identifier) {
         capturedKnowledgeGroupToPresent = knowledgeGroup
     }
     

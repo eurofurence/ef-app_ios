@@ -13,13 +13,13 @@ public protocol KnowledgeService {
     func add(_ observer: KnowledgeServiceObserver)
 
     func fetchKnowledgeEntry(for identifier: KnowledgeEntry.Identifier, completionHandler: @escaping (KnowledgeEntry) -> Void)
-    func fetchKnowledgeGroup(identifier: KnowledgeGroup2.Identifier, completionHandler: @escaping (KnowledgeGroup2) -> Void)
+    func fetchKnowledgeGroup(identifier: KnowledgeGroup.Identifier, completionHandler: @escaping (KnowledgeGroup) -> Void)
     func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry.Identifier, completionHandler: @escaping ([Data]) -> Void)
 
 }
 
 public protocol KnowledgeServiceObserver {
 
-    func knowledgeGroupsDidChange(to groups: [KnowledgeGroup2])
+    func knowledgeGroupsDidChange(to groups: [KnowledgeGroup])
 
 }

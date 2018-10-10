@@ -164,13 +164,13 @@ class ApplicationTestBuilder {
             }).sorted(by: { $0.location < $1.location })
         }
         
-        func expectedKnowledgeGroups(from syncResponse: APISyncResponse) -> [KnowledgeGroup2] {
-            return syncResponse.knowledgeGroups.changed.map({ (group) -> KnowledgeGroup2 in
+        func expectedKnowledgeGroups(from syncResponse: APISyncResponse) -> [KnowledgeGroup] {
+            return syncResponse.knowledgeGroups.changed.map({ (group) -> KnowledgeGroup in
                 return expectedKnowledgeGroup(from: group, syncResponse: syncResponse)
             }).sorted(by: { $0.order < $1.order })
         }
         
-        func expectedKnowledgeGroup(from group: APIKnowledgeGroup, syncResponse: APISyncResponse) -> KnowledgeGroup2 {
+        func expectedKnowledgeGroup(from group: APIKnowledgeGroup, syncResponse: APISyncResponse) -> KnowledgeGroup {
             let entries = syncResponse.knowledgeEntries.changed.filter({ $0.groupIdentifier == group.identifier }).map { (entry) in
                 return KnowledgeEntry(identifier: KnowledgeEntry.Identifier(entry.identifier),
                                        title: entry.title,
@@ -184,7 +184,7 @@ class ApplicationTestBuilder {
             let unicodeScalar = UnicodeScalar(intValue)!
             let character = Character(unicodeScalar)
             
-            return KnowledgeGroup2(identifier: KnowledgeGroup2.Identifier(group.identifier),
+            return KnowledgeGroup(identifier: KnowledgeGroup.Identifier(group.identifier),
                                    title: group.groupName,
                                    groupDescription: group.groupDescription,
                                    fontAwesomeCharacterAddress: character,

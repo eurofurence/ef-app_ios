@@ -12,7 +12,7 @@ import UIKit.UIImage
 protocol KnowledgeGroupsListViewModel {
 
     func setDelegate(_ delegate: KnowledgeGroupsListViewModelDelegate)
-    func fetchIdentifierForGroup(at index: Int, completionHandler: @escaping (KnowledgeGroup2.Identifier) -> Void)
+    func fetchIdentifierForGroup(at index: Int, completionHandler: @escaping (KnowledgeGroup.Identifier) -> Void)
 
 }
 

@@ -22,7 +22,7 @@ class CapturingKnowledgeGroupsListViewModelDelegate: KnowledgeGroupsListViewMode
 
 class DefaultKnowledgeGroupsInteractorTests: XCTestCase {
     
-    private func expectedViewModelForGroup(_ group: KnowledgeGroup2) -> KnowledgeListGroupViewModel {
+    private func expectedViewModelForGroup(_ group: KnowledgeGroup) -> KnowledgeListGroupViewModel {
         let entriesViewModels = group.entries.map(expectedViewModelForEntry)
         return KnowledgeListGroupViewModel(title: group.title,
                                            fontAwesomeCharacter: group.fontAwesomeCharacterAddress,
@@ -42,7 +42,7 @@ class DefaultKnowledgeGroupsInteractorTests: XCTestCase {
         let delegate = CapturingKnowledgeGroupsListViewModelDelegate()
         viewModel?.setDelegate(delegate)
         
-        let models: [KnowledgeGroup2] = .random
+        let models: [KnowledgeGroup] = .random
         let expected = models.map(expectedViewModelForGroup)
         service.simulateFetchSucceeded(models)
         
@@ -54,7 +54,7 @@ class DefaultKnowledgeGroupsInteractorTests: XCTestCase {
         let interactor = DefaultKnowledgeGroupsInteractor(service: service)
         var viewModel: KnowledgeGroupsListViewModel?
         interactor.prepareViewModel { viewModel = $0 }
-        let models: [KnowledgeGroup2] = .random
+        let models: [KnowledgeGroup] = .random
         let expected = models.map(expectedViewModelForGroup)
         service.simulateFetchSucceeded(models)
         
@@ -69,12 +69,12 @@ class DefaultKnowledgeGroupsInteractorTests: XCTestCase {
         let interactor = DefaultKnowledgeGroupsInteractor(service: service)
         var viewModel: KnowledgeGroupsListViewModel?
         interactor.prepareViewModel { viewModel = $0 }
-        let models: [KnowledgeGroup2] = .random
+        let models: [KnowledgeGroup] = .random
         service.simulateFetchSucceeded(models)
         
         let randomGroup = models.randomElement()
         let expected = randomGroup.element.identifier
-        var actual: KnowledgeGroup2.Identifier?
+        var actual: KnowledgeGroup.Identifier?
         viewModel?.fetchIdentifierForGroup(at: randomGroup.index) { actual = $0 }
         
         XCTAssertEqual(expected, actual)

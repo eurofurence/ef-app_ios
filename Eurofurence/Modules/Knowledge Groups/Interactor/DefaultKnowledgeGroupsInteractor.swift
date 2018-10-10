@@ -13,11 +13,11 @@ struct DefaultKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
 
     private class ViewModel: KnowledgeGroupsListViewModel, KnowledgeServiceObserver {
 
-        private var groups = [KnowledgeGroup2]()
+        private var groups = [KnowledgeGroup]()
         private var knowledgeGroups: [KnowledgeListGroupViewModel] = []
         private var delegate: KnowledgeGroupsListViewModelDelegate?
 
-        func knowledgeGroupsDidChange(to groups: [KnowledgeGroup2]) {
+        func knowledgeGroupsDidChange(to groups: [KnowledgeGroup]) {
             self.groups = groups
             knowledgeGroups = groups.map { (group) -> KnowledgeListGroupViewModel in
                 let entries = group.entries.map { (entry) -> KnowledgeListEntryViewModel in
@@ -38,7 +38,7 @@ struct DefaultKnowledgeGroupsInteractor: KnowledgeGroupsInteractor {
             delegate.knowledgeGroupsViewModelsDidUpdate(to: knowledgeGroups)
         }
 
-        func fetchIdentifierForGroup(at index: Int, completionHandler: @escaping (KnowledgeGroup2.Identifier) -> Void) {
+        func fetchIdentifierForGroup(at index: Int, completionHandler: @escaping (KnowledgeGroup.Identifier) -> Void) {
             completionHandler(groups[index].identifier)
         }
 

@@ -63,7 +63,7 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
         return transaction.persistedImages
     }
     
-    private(set) var capturedKnowledgeGroupsToSave: [KnowledgeGroup2]?
+    private(set) var capturedKnowledgeGroupsToSave: [KnowledgeGroup]?
     var transactionInvokedBlock: (() -> Void)?
     let transaction = CapturingEurofurenceDataStoreTransaction()
     func performTransaction(_ block: @escaping (EurofurenceDataStoreTransaction) -> Void) {
