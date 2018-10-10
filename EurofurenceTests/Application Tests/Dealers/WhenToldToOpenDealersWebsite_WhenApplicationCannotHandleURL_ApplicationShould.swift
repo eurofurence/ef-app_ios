@@ -7,15 +7,8 @@
 //
 
 import EurofurenceAppCore
+import EurofurenceAppCoreTestDoubles
 import XCTest
-
-class UnhappyPathURLOpener: CapturingURLOpener {
-    
-    override func canOpen(_ url: URL) -> Bool {
-        return false
-    }
-    
-}
 
 class CapturingExternalContentHandler: ExternalContentHandler {
     

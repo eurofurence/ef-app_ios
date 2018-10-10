@@ -7,6 +7,7 @@
 //
 
 import EurofurenceAppCore
+import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenToldToOpenDealersTelegram_WhenApplicationCanHandleURL_ApplicationShould: XCTestCase {

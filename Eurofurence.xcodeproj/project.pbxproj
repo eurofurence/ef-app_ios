@@ -579,7 +579,6 @@
 		CA63755A208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637559208CBC2C00536BE2 /* StubKnowledgeDetailModuleProviding.swift */; };
 		CA63755C208CBC3C00536BE2 /* StubLinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755B208CBC3C00536BE2 /* StubLinkRouter.swift */; };
 		CA63755E208CBC4E00536BE2 /* StubWebMobuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755D208CBC4E00536BE2 /* StubWebMobuleProviding.swift */; };
-		CA637560208CBC5F00536BE2 /* CapturingURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */; };
 		CA637562208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637561208CC88200536BE2 /* ApplicationDirectorTestBuilder.swift */; };
 		CA637564208CC8F800536BE2 /* WhenBuilt_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637563208CC8F800536BE2 /* WhenBuilt_DirectorShould.swift */; };
 		CA637566208CC94E00536BE2 /* WhenShowingTutorial_DirectorShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA637565208CC94E00536BE2 /* WhenShowingTutorial_DirectorShould.swift */; };
@@ -1180,6 +1179,7 @@
 		CAEA0F76216D2CE800B0C7A6 /* StubV2ApiUrlProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61870DF20DAD8E00089E836 /* StubV2ApiUrlProviding.swift */; };
 		CAEA0F7A216D341600B0C7A6 /* StubClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780481F1D51EB002A8333 /* StubClock.swift */; };
 		CAEA0F7C216D370600B0C7A6 /* FakeHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */; };
+		CAEA0F7D216E188C00B0C7A6 /* CapturingURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */; };
 		CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */; };
 		CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */; };
 		CAEAEBFA1FE0037700C0EE7C /* MessageDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF91FE0037700C0EE7C /* MessageDetailPresenterTests.swift */; };
@@ -4188,7 +4188,6 @@
 			isa = PBXGroup;
 			children = (
 				CA63753F208CBB0E00536BE2 /* CapturingNavigationController.swift */,
-				CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */,
 				CA637553208CBBBF00536BE2 /* CapturingWindowWireframe.swift */,
 				CA63754D208CBB8600536BE2 /* FakeViewController.swift */,
 				CA728444209D00B7007D912A /* StubAnnouncementDetailModuleFactory.swift */,
@@ -6026,6 +6025,7 @@
 				CAEA0F5E216D294000B0C7A6 /* EurofurenceAppCoreTestDoubles.h */,
 				CAEA0F5F216D294000B0C7A6 /* Info.plist */,
 				78FE77D21F1A2EB000E9A0BE /* CapturingJSONSession.swift */,
+				CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */,
 				CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */,
 				78D7EEBE1F196B77005372A9 /* StubBuildConfigurationProviding.swift */,
 				CAD780481F1D51EB002A8333 /* StubClock.swift */,
@@ -7445,7 +7445,6 @@
 				CA40109F211083610056E16C /* DefaultKnowledgeGroupEntriesInteractorShould.swift in Sources */,
 				7820A6DB1F13F4DE004C0FB5 /* StubPresentationAssets.swift in Sources */,
 				CA250DD020D6D4F500E7513C /* CapturingScheduleSearchViewModel.swift in Sources */,
-				CA637560208CBC5F00536BE2 /* CapturingURLOpener.swift in Sources */,
 				CA6A8DF320E425E2007536CD /* WhenPreparingViewModel_MapDetailInteractorShould.swift in Sources */,
 				78C86D601F123859003A20E6 /* CapturingTutorialScene.swift in Sources */,
 				CADABF092119BE770023C3B6 /* WhenUpgradingBetweenAppVersions_ApplicationShould.swift in Sources */,
@@ -8128,6 +8127,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAEA0F7D216E188C00B0C7A6 /* CapturingURLOpener.swift in Sources */,
 				CAEA0F7A216D341600B0C7A6 /* StubClock.swift in Sources */,
 				CAEA0F7C216D370600B0C7A6 /* FakeHoursDateFormatter.swift in Sources */,
 				CAEA0F76216D2CE800B0C7A6 /* StubV2ApiUrlProviding.swift in Sources */,

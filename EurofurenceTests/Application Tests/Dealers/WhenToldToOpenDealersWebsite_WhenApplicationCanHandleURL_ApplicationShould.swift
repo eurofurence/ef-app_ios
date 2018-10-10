@@ -7,15 +7,8 @@
 //
 
 import EurofurenceAppCore
+import EurofurenceAppCoreTestDoubles
 import XCTest
-
-class HappyPathURLOpener: CapturingURLOpener {
-    
-    override func canOpen(_ url: URL) -> Bool {
-        return true
-    }
-    
-}
 
 class WhenToldToOpenDealersWebsite_WhenApplicationCanHandleURL_ApplicationShould: XCTestCase {
     
