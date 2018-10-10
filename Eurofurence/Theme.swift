@@ -14,51 +14,51 @@ struct Theme {
         let whiteTextAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white]
         let pantone330UColourImage = makePantone330UShadowImage()
 
-        let navigationBarAppearance = UINavigationBar.appearance()
-        navigationBarAppearance.isTranslucent = false
-        navigationBarAppearance.barTintColor = .pantone330U
-        navigationBarAppearance.tintColor = .white
-        navigationBarAppearance.titleTextAttributes = whiteTextAttributes
-        navigationBarAppearance.setBackgroundImage(pantone330UColourImage, for: .default)
-        navigationBarAppearance.shadowImage = pantone330UColourImage
+        let navigationBar = UINavigationBar.appearance()
+        navigationBar.isTranslucent = false
+        navigationBar.barTintColor = .pantone330U
+        navigationBar.tintColor = .white
+        navigationBar.titleTextAttributes = whiteTextAttributes
+        navigationBar.setBackgroundImage(pantone330UColourImage, for: .default)
+        navigationBar.shadowImage = pantone330UColourImage
 
-        let tabBarAppearance = UITabBar.appearance()
-        tabBarAppearance.isTranslucent = false
-        tabBarAppearance.barTintColor = .pantone330U
-        tabBarAppearance.tintColor = .white
-        tabBarAppearance.backgroundImage = pantone330UColourImage
-        tabBarAppearance.shadowImage = pantone330UColourImage
+        let tabBar = UITabBar.appearance()
+        tabBar.isTranslucent = false
+        tabBar.barTintColor = .pantone330U
+        tabBar.tintColor = .white
+        tabBar.backgroundImage = pantone330UColourImage
+        tabBar.shadowImage = pantone330UColourImage
 
         let buttonInsideTableView = UIButton.appearance(whenContainedInInstancesOf: [UITableViewCell.self])
         buttonInsideTableView.setTitleColor(.pantone330U, for: .normal)
 
-        let tableViewProxy = UITableView.appearance()
-        tableViewProxy.sectionIndexColor = .pantone330U
+        let tableView = UITableView.appearance()
+        tableView.sectionIndexColor = .pantone330U
 
-        let tabBarItemAppearance = UITabBarItem.appearance()
-        tabBarItemAppearance.setTitleTextAttributes(whiteTextAttributes, for: .normal)
+        let tabBarItem = UITabBarItem.appearance()
+        tabBarItem.setTitleTextAttributes(whiteTextAttributes, for: .normal)
 
-        let buttonsInsideNavigationBarAppearance = UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self])
-        buttonsInsideNavigationBarAppearance.tintColor = .white
+        let buttonsInsideNavigationBar = UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self])
+        buttonsInsideNavigationBar.tintColor = .white
 
-        let navigationBarExtensionAppearance = NavigationBarViewExtensionContainer.appearance()
-        navigationBarExtensionAppearance.backgroundColor = .pantone330U
+        let navigationBarExtension = NavigationBarViewExtensionContainer.appearance()
+        navigationBarExtension.backgroundColor = .pantone330U
 
-        let labelsInsideNavigationBarExtensionAppearance = UILabel.appearance(whenContainedInInstancesOf: [NavigationBarViewExtensionContainer.self])
-        labelsInsideNavigationBarExtensionAppearance.textColor = .white
+        let labelsInsideNavigationBarExtension = UILabel.appearance(whenContainedInInstancesOf: [NavigationBarViewExtensionContainer.self])
+        labelsInsideNavigationBarExtension.textColor = .white
 
-        let searchBarAppearance = UISearchBar.appearance()
-        searchBarAppearance.barTintColor = .pantone330U
-        searchBarAppearance.isTranslucent = false
+        let searchBar = UISearchBar.appearance()
+        searchBar.barTintColor = .pantone330U
+        searchBar.isTranslucent = false
 
-        let textFieldAppearance = UITextField.appearance()
-        textFieldAppearance.tintColor = .pantone330U
+        let textField = UITextField.appearance()
+        textField.tintColor = .pantone330U
 
-        let buttonsInsideSearchBarAppearance = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])
-        buttonsInsideSearchBarAppearance.setTitleTextAttributes(whiteTextAttributes, for: .normal)
+        let buttonsInsideSearchBar = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])
+        buttonsInsideSearchBar.setTitleTextAttributes(whiteTextAttributes, for: .normal)
 
-        let segmentControlAppearance = UISegmentedControl.appearance()
-        segmentControlAppearance.tintColor = .white
+        let segmentControl = UISegmentedControl.appearance()
+        segmentControl.tintColor = .white
     }
 
     private static func makePantone330UShadowImage() -> UIImage {
