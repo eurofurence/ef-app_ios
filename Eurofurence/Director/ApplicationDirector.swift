@@ -394,7 +394,7 @@ class ApplicationDirector: ExternalContentHandler,
 
     // MARK: MapsModuleDelegate
 
-    func mapsModuleDidSelectMap(identifier: Map2.Identifier) {
+    func mapsModuleDidSelectMap(identifier: Map.Identifier) {
         let detailModule = mapDetailModuleProviding.makeMapDetailModule(for: identifier, delegate: self)
         mapsModule?.navigationController?.pushViewController(detailModule, animated: animate)
     }

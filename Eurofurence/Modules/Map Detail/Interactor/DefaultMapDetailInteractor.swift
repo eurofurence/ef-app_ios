@@ -14,7 +14,7 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
     private struct ViewModel: MapDetailViewModel {
 
         var mapsService: MapsService
-        var mapIdentifier: Map2.Identifier
+        var mapIdentifier: Map.Identifier
         var mapImagePNGData: Data
         var mapName: String
 
@@ -29,7 +29,7 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
             var y: Float
             var visitor: MapContentVisitor
 
-            func handle(_ content: Map2.Content) {
+            func handle(_ content: Map.Content) {
                 switch content {
                 case .location(let altX, let altY, let name):
 					let coordinate = MapCoordinate(x: altX, y: altY)
@@ -59,10 +59,10 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
 
         private struct OptionsViewModel: MapContentOptionsViewModel {
 
-            private let contents: [Map2.Content]
+            private let contents: [Map.Content]
             private let handler: ContentHandler
 
-            init(contents: [Map2.Content], handler: ContentHandler) {
+            init(contents: [Map.Content], handler: ContentHandler) {
                 self.contents = contents
                 self.handler = handler
                 optionsHeading = .selectAnOption
@@ -93,7 +93,7 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
     }
 
     private let mapsService: MapsService
-    private var maps = [Map2]()
+    private var maps = [Map]()
 
     convenience init() {
         self.init(mapsService: EurofurenceApplication.shared)
@@ -104,7 +104,7 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
         mapsService.add(self)
     }
 
-    func makeViewModelForMap(identifier: Map2.Identifier, completionHandler: @escaping (MapDetailViewModel) -> Void) {
+    func makeViewModelForMap(identifier: Map.Identifier, completionHandler: @escaping (MapDetailViewModel) -> Void) {
         guard let map = maps.first(where: { $0.identifier == identifier }) else { return }
 
         mapsService.fetchImagePNGDataForMap(identifier: identifier) { (mapGraphicData) in
@@ -116,7 +116,7 @@ class DefaultMapDetailInteractor: MapDetailInteractor, MapsObserver {
         }
     }
 
-    func mapsServiceDidChangeMaps(_ maps: [Map2]) {
+    func mapsServiceDidChangeMaps(_ maps: [Map]) {
         self.maps = maps
     }
 

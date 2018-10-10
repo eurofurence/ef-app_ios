@@ -13,14 +13,14 @@ import Foundation
 
 class FakeMapDetailInteractor: MapDetailInteractor {
     
-    private let expectedMapIdentifier: Map2.Identifier
+    private let expectedMapIdentifier: Map.Identifier
     
-    init(expectedMapIdentifier: Map2.Identifier = .random) {
+    init(expectedMapIdentifier: Map.Identifier = .random) {
         self.expectedMapIdentifier = expectedMapIdentifier
     }
     
     let viewModel = FakeMapDetailViewModel()
-    func makeViewModelForMap(identifier: Map2.Identifier, completionHandler: @escaping (MapDetailViewModel) -> Void) {
+    func makeViewModelForMap(identifier: Map.Identifier, completionHandler: @escaping (MapDetailViewModel) -> Void) {
         guard identifier == expectedMapIdentifier else { return }
         completionHandler(viewModel)
     }

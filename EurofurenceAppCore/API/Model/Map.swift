@@ -1,5 +1,5 @@
 //
-//  Map2.swift
+//  Map.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 26/06/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Map2: Equatable {
+public struct Map: Equatable {
 
     public struct Identifier: Comparable, Equatable, Hashable, RawRepresentable {
 
@@ -24,7 +24,7 @@ public struct Map2: Equatable {
 
         public var rawValue: String
 
-        public static func < (lhs: Map2.Identifier, rhs: Map2.Identifier) -> Bool {
+        public static func < (lhs: Map.Identifier, rhs: Map.Identifier) -> Bool {
             return lhs.rawValue < rhs.rawValue
         }
 
@@ -35,9 +35,9 @@ public struct Map2: Equatable {
 		case location(x: Float, y: Float, name: String?)
         case room(Room)
         case dealer(Dealer)
-        indirect case multiple([Map2.Content])
+        indirect case multiple([Map.Content])
 
-        public static func + (lhs: inout Map2.Content, rhs: Map2.Content) {
+        public static func + (lhs: inout Map.Content, rhs: Map.Content) {
             switch lhs {
             case .multiple(let inner):
                 lhs = .multiple(inner + [rhs])
@@ -52,10 +52,10 @@ public struct Map2: Equatable {
 
     }
 
-    public var identifier: Map2.Identifier
+    public var identifier: Map.Identifier
     public var location: String
 
-    public init(identifier: Map2.Identifier, location: String) {
+    public init(identifier: Map.Identifier, location: String) {
         self.identifier = identifier
         self.location = location
     }

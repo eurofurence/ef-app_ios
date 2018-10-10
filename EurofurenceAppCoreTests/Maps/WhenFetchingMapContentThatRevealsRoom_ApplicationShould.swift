@@ -35,14 +35,14 @@ class WhenFetchingMapContentThatRevealsRoom_ApplicationShould: XCTestCase {
         context.performSuccessfulSync(response: syncResponse)
     }
     
-    private func fetchContent(atX x: Int, y: Int) -> Map2.Content? {
-        var content: Map2.Content?
-        context.application.fetchContent(for: Map2.Identifier(map.identifier), atX: x, y: y) { content = $0 }
+    private func fetchContent(atX x: Int, y: Int) -> Map.Content? {
+        var content: Map.Content?
+        context.application.fetchContent(for: Map.Identifier(map.identifier), atX: x, y: y) { content = $0 }
         return content
     }
     
     func testProvideTheRoomAsTheMapContent() {
-        let expected = Map2.Content.room(Room(name: room.name))
+        let expected = Map.Content.room(Room(name: room.name))
         let content = fetchContent(atX: x, y: y)
         
         XCTAssertEqual(expected, content)
@@ -50,7 +50,7 @@ class WhenFetchingMapContentThatRevealsRoom_ApplicationShould: XCTestCase {
     
     func testNotProvideTheRoomWhenOutsideOfTheTapToleranceHorizontally_Positive() {
         let horizontalOffset = x + tapRadius + 1
-        let expected = Map2.Content.none
+        let expected = Map.Content.none
         let content = fetchContent(atX: horizontalOffset, y: y)
         
         XCTAssertEqual(expected, content)
@@ -58,7 +58,7 @@ class WhenFetchingMapContentThatRevealsRoom_ApplicationShould: XCTestCase {
     
     func testProvideTheRoomWhenJustInsideTheTapToleranceHorizontally_Positive() {
         let horizontalOffset = x + tapRadius - 1
-        let expected = Map2.Content.room(Room(name: room.name))
+        let expected = Map.Content.room(Room(name: room.name))
         let content = fetchContent(atX: horizontalOffset, y: y)
         
         XCTAssertEqual(expected, content)
@@ -66,7 +66,7 @@ class WhenFetchingMapContentThatRevealsRoom_ApplicationShould: XCTestCase {
     
     func testNotProvideTheRoomWhenOutsideOfTheTapToleranceVertically_Positive() {
         let verticalOffset = y + tapRadius + 1
-        let expected = Map2.Content.none
+        let expected = Map.Content.none
         let content = fetchContent(atX: x, y: verticalOffset)
         
         XCTAssertEqual(expected, content)
@@ -74,7 +74,7 @@ class WhenFetchingMapContentThatRevealsRoom_ApplicationShould: XCTestCase {
     
     func testNotProvideTheRoomWhenOutsideOfTheTapToleranceHorizontally_Negative() {
         let horizontalOffset = x - tapRadius - 1
-        let expected = Map2.Content.none
+        let expected = Map.Content.none
         let content = fetchContent(atX: horizontalOffset, y: y)
         
         XCTAssertEqual(expected, content)
@@ -82,7 +82,7 @@ class WhenFetchingMapContentThatRevealsRoom_ApplicationShould: XCTestCase {
     
     func testNotProvideTheRoomWhenOutsideOfTheTapToleranceVertically_Negative() {
         let verticalOffset = y - tapRadius - 1
-        let expected = Map2.Content.none
+        let expected = Map.Content.none
         let content = fetchContent(atX: x, y: verticalOffset)
         
         XCTAssertEqual(expected, content)
@@ -91,7 +91,7 @@ class WhenFetchingMapContentThatRevealsRoom_ApplicationShould: XCTestCase {
     func testNotProvideTheRoomWhenOutsideOfTheTapToleranceDiagonally() {
         let horizontalOffset = x + tapRadius - 1
         let verticalOffet = y + tapRadius - 1
-        let expected = Map2.Content.none
+        let expected = Map.Content.none
         let content = fetchContent(atX: horizontalOffset, y: verticalOffet)
         
         XCTAssertEqual(expected, content)

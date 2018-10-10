@@ -11,16 +11,16 @@ import Foundation
 public protocol MapsService {
 
     func add(_ observer: MapsObserver)
-    func fetchImagePNGDataForMap(identifier: Map2.Identifier, completionHandler: @escaping (Data) -> Void)
-    func fetchContent(for identifier: Map2.Identifier,
+    func fetchImagePNGDataForMap(identifier: Map.Identifier, completionHandler: @escaping (Data) -> Void)
+    func fetchContent(for identifier: Map.Identifier,
                       atX x: Int,
                       y: Int,
-                      completionHandler: @escaping (Map2.Content) -> Void)
+                      completionHandler: @escaping (Map.Content) -> Void)
 
 }
 
 public protocol MapsObserver {
 
-    func mapsServiceDidChangeMaps(_ maps: [Map2])
+    func mapsServiceDidChangeMaps(_ maps: [Map])
 
 }

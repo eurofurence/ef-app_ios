@@ -39,10 +39,10 @@ public class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
-    public func fetchContent(for identifier: Map2.Identifier,
+    public func fetchContent(for identifier: Map.Identifier,
                       atX x: Int,
                       y: Int,
-                      completionHandler: @escaping (Map2.Content) -> Void) {
+                      completionHandler: @escaping (Map.Content) -> Void) {
         
     }
     
@@ -50,7 +50,7 @@ public class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
-    public func fetchImagePNGDataForMap(identifier: Map2.Identifier, completionHandler: @escaping (Data) -> Void) {
+    public func fetchImagePNGDataForMap(identifier: Map.Identifier, completionHandler: @escaping (Data) -> Void) {
         
     }
     

@@ -16,7 +16,7 @@ class WhenMapsDetailModuleSelectsDealer_DirectorShould: XCTestCase {
     func testPresentTheDealerDetailModuleOntoTheMapsNavigationController() {
         let context = ApplicationDirectorTestBuilder().build()
         context.navigateToTabController()
-        let map = Map2.Identifier.random
+        let map = Map.Identifier.random
         context.mapsModule.simulateDidSelectMap(map)
         let mapsNavigationController = context.navigationController(for: context.mapsModule.stubInterface)
         let dealer = Dealer.Identifier.random

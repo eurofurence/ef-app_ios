@@ -13,10 +13,10 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
 
     private struct ViewModel: MapsViewModel {
 
-        private let maps: [Map2]
+        private let maps: [Map]
         private let mapsService: MapsService
 
-        init(maps: [Map2], mapsService: MapsService) {
+        init(maps: [Map], mapsService: MapsService) {
             self.maps = maps
             self.mapsService = mapsService
         }
@@ -30,7 +30,7 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
             return SingleViewModel(map: map, mapsService: mapsService)
         }
 
-        func identifierForMap(at index: Int) -> Map2.Identifier? {
+        func identifierForMap(at index: Int) -> Map.Identifier? {
             return maps[index].identifier
         }
 
@@ -38,10 +38,10 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
 
     private struct SingleViewModel: MapViewModel2 {
 
-        private let map: Map2
+        private let map: Map
         private let mapsService: MapsService
 
-        init(map: Map2, mapsService: MapsService) {
+        init(map: Map, mapsService: MapsService) {
             self.map = map
             self.mapsService = mapsService
         }
@@ -57,7 +57,7 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
     }
 
     private let mapsService: MapsService
-    private var maps = [Map2]()
+    private var maps = [Map]()
 
     convenience init() {
         self.init(mapsService: EurofurenceApplication.shared)
@@ -68,7 +68,7 @@ class DefaultMapsInteractor: MapsInteractor, MapsObserver {
         mapsService.add(self)
     }
 
-    func mapsServiceDidChangeMaps(_ maps: [Map2]) {
+    func mapsServiceDidChangeMaps(_ maps: [Map]) {
         self.maps = maps
     }
 

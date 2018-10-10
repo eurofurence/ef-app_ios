@@ -881,7 +881,7 @@
 		CAEA0DB8216BDE2300B0C7A6 /* KnowledgeGroup2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03B92041C2B00028BD62 /* KnowledgeGroup2.swift */; };
 		CAEA0DB9216BDE2300B0C7A6 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDAE205870B500C91E6E /* Link.swift */; };
 		CAEA0DBA216BDE2300B0C7A6 /* LoginArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */; };
-		CAEA0DBB216BDE2300B0C7A6 /* Map2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D9F20E2CAB7007536CD /* Map2.swift */; };
+		CAEA0DBB216BDE2300B0C7A6 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8D9F20E2CAB7007536CD /* Map.swift */; };
 		CAEA0DBC216BDE2300B0C7A6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAC31F2672BF0053DBF6 /* Message.swift */; };
 		CAEA0DBD216BDE2300B0C7A6 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9520A88854004AFED6 /* Room.swift */; };
 		CAEA0DBE216BDE2300B0C7A6 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E8F20B36B5800D904B5 /* Track.swift */; };
@@ -1016,7 +1016,7 @@
 		CAEA0F8A216E1AE200B0C7A6 /* Dealer+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A49420D92EE600EE6537 /* Dealer+RandomValueProviding.swift */; };
 		CAEA0F8B216E1AE200B0C7A6 /* AlphabetisedDealersGroup+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A49A20D9779C00EE6537 /* AlphabetisedDealersGroup+RandomValueProviding.swift */; };
 		CAEA0F8C216E1AE200B0C7A6 /* ExtendedDealerData+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7820DDAEAA00898C52 /* ExtendedDealerData+RandomValueProviding.swift */; };
-		CAEA0F8D216E1AE200B0C7A6 /* Map2+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DA820E2CE2C007536CD /* Map2+RandomValueProviding.swift */; };
+		CAEA0F8D216E1AE200B0C7A6 /* Map+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DA820E2CE2C007536CD /* Map+RandomValueProviding.swift */; };
 		CAEA0F8F216E1C2D00B0C7A6 /* APISyncResponse+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5979C20449A5300089BE8 /* APISyncResponse+RandomValueProviding.swift */; };
 		CAEA0F90216E1C4C00B0C7A6 /* ApplicationTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4FA51F1EA1B300F007E1 /* ApplicationTestBuilder.swift */; };
 		CAEA0F91216E1C4C00B0C7A6 /* WhenRequestingCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9461F50B95F00628833 /* WhenRequestingCurrentUser.swift */; };
@@ -2078,11 +2078,11 @@
 		CA6A8D9720E2C634007536CD /* MapComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapComponent.swift; sourceTree = "<group>"; };
 		CA6A8D9920E2C678007536CD /* MapsBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsBinder.swift; sourceTree = "<group>"; };
 		CA6A8D9D20E2CA58007536CD /* WhenSelectingMap_MapsPresenterShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenSelectingMap_MapsPresenterShould.swift; sourceTree = "<group>"; };
-		CA6A8D9F20E2CAB7007536CD /* Map2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map2.swift; sourceTree = "<group>"; };
+		CA6A8D9F20E2CAB7007536CD /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		CA6A8DA120E2CB5C007536CD /* MapsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsModuleDelegate.swift; sourceTree = "<group>"; };
 		CA6A8DA320E2CB66007536CD /* CapturingMapsModuleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingMapsModuleDelegate.swift; sourceTree = "<group>"; };
 		CA6A8DA620E2CD6E007536CD /* WhenPreparingViewModel_MapsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenPreparingViewModel_MapsInteractorShould.swift; sourceTree = "<group>"; };
-		CA6A8DA820E2CE2C007536CD /* Map2+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map2+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA6A8DA820E2CE2C007536CD /* Map+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Map+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA6A8DAA20E2CF6D007536CD /* FakeMapsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMapsService.swift; sourceTree = "<group>"; };
 		CA6A8DAD20E2CF87007536CD /* MapsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsService.swift; sourceTree = "<group>"; };
 		CA6A8DAF20E2CF97007536CD /* DefaultMapsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMapsInteractor.swift; sourceTree = "<group>"; };
@@ -3410,7 +3410,7 @@
 				CABF03B92041C2B00028BD62 /* KnowledgeGroup2.swift */,
 				CAD3BDAE205870B500C91E6E /* Link.swift */,
 				CA2B4FA71F1EA72A00F007E1 /* LoginArguments.swift */,
-				CA6A8D9F20E2CAB7007536CD /* Map2.swift */,
+				CA6A8D9F20E2CAB7007536CD /* Map.swift */,
 				CA30EAC31F2672BF0053DBF6 /* Message.swift */,
 				CA162E9520A88854004AFED6 /* Room.swift */,
 				CACF1E8F20B36B5800D904B5 /* Track.swift */,
@@ -6041,7 +6041,7 @@
 				CA36A49420D92EE600EE6537 /* Dealer+RandomValueProviding.swift */,
 				CA36A49A20D9779C00EE6537 /* AlphabetisedDealersGroup+RandomValueProviding.swift */,
 				CAF81C7820DDAEAA00898C52 /* ExtendedDealerData+RandomValueProviding.swift */,
-				CA6A8DA820E2CE2C007536CD /* Map2+RandomValueProviding.swift */,
+				CA6A8DA820E2CE2C007536CD /* Map+RandomValueProviding.swift */,
 			);
 			path = "Random Value Generation";
 			sourceTree = "<group>";
@@ -7957,7 +7957,7 @@
 				CAEA0DC5216BDE2300B0C7A6 /* EventsService.swift in Sources */,
 				CAEA0DE1216BDE2300B0C7A6 /* RoomEntity+Adaptation.swift in Sources */,
 				CAEA0E0F216BDE5700B0C7A6 /* EventBusRegistration.swift in Sources */,
-				CAEA0DBB216BDE2300B0C7A6 /* Map2.swift in Sources */,
+				CAEA0DBB216BDE2300B0C7A6 /* Map.swift in Sources */,
 				CAEA0E07216BDE3100B0C7A6 /* V2SyncAPI.swift in Sources */,
 				CAEA0DCA216BDE2300B0C7A6 /* UserAuthenticationCoordinator.swift in Sources */,
 				CAEA0DC1216BDE2300B0C7A6 /* AuthenticationService.swift in Sources */,
@@ -8220,7 +8220,7 @@
 				CAEA0F82216E1AE200B0C7A6 /* Event2+RandomValueProviding.swift in Sources */,
 				CAEA0F75216D2CE400B0C7A6 /* CapturingJSONSession.swift in Sources */,
 				CAEA103F216E1E5000B0C7A6 /* StubDateDistanceCalculator.swift in Sources */,
-				CAEA0F8D216E1AE200B0C7A6 /* Map2+RandomValueProviding.swift in Sources */,
+				CAEA0F8D216E1AE200B0C7A6 /* Map+RandomValueProviding.swift in Sources */,
 				CAEA103E216E1DA600B0C7A6 /* CapturingPushPermissionsRequester.swift in Sources */,
 				CAEA1040216E1E7D00B0C7A6 /* AppDataBuilder.swift in Sources */,
 				CAEA0F85216E1AE200B0C7A6 /* Link+RandomValueProviding.swift in Sources */,

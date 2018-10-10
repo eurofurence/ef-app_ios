@@ -23,8 +23,8 @@ class FakeMapsViewModel: MapsViewModel {
         return maps[index]
     }
     
-    func identifierForMap(at index: Int) -> Map2.Identifier? {
-        return Map2.Identifier("\(index)")
+    func identifierForMap(at index: Int) -> Map.Identifier? {
+        return Map.Identifier("\(index)")
     }
     
 }

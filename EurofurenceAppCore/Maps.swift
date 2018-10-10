@@ -18,7 +18,7 @@ class Maps {
     private var roomServerModels = [APIRoom]()
     private var dealerServerModels = [APIDealer]()
 
-    private var models = [Map2]() {
+    private var models = [Map]() {
         didSet {
             observers.forEach({ $0.mapsServiceDidChangeMaps(models) })
         }
@@ -43,18 +43,18 @@ class Maps {
         observer.mapsServiceDidChangeMaps(models)
     }
 
-    func fetchImagePNGDataForMap(identifier: Map2.Identifier, completionHandler: @escaping (Data) -> Void) {
+    func fetchImagePNGDataForMap(identifier: Map.Identifier, completionHandler: @escaping (Data) -> Void) {
         serverModels
             .first(where: { $0.identifier == identifier.rawValue })
             .let({ imageRepository.loadImage(identifier: $0.imageIdentifier) })
             .let({ completionHandler($0.pngImageData) })
     }
 
-    func fetchContent(for identifier: Map2.Identifier,
+    func fetchContent(for identifier: Map.Identifier,
                       atX x: Int,
                       y: Int,
-                      completionHandler: @escaping (Map2.Content) -> Void) {
-        var content: Map2.Content = .none
+                      completionHandler: @escaping (Map.Content) -> Void) {
+        var content: Map.Content = .none
         defer { completionHandler(content) }
 
         guard let model = serverModels.first(where: { $0.identifier == identifier.rawValue }) else { return }
@@ -77,7 +77,7 @@ class Maps {
 
         guard let entry = model.entries.compactMap(tappedWithinEntry).sorted(by: { $0.displacement < $1.displacement }).first?.entry else { return }
 
-        let contentFromLink: (APIMap.Entry.Link) -> Map2.Content? = { (link) in
+        let contentFromLink: (APIMap.Entry.Link) -> Map.Content? = { (link) in
             if let room = self.roomServerModels.first(where: { $0.roomIdentifier == link.target }) {
                 return .room(Room(name: room.name))
             }
@@ -94,8 +94,8 @@ class Maps {
         }
 
         let links = entry.links
-        let contents: [Map2.Content] = links.compactMap(contentFromLink)
-        content = contents.reduce(into: Map2.Content.none, +)
+        let contents: [Map.Content] = links.compactMap(contentFromLink)
+        content = contents.reduce(into: Map.Content.none, +)
     }
 
     private func reloadMapsFromDataStore() {
@@ -109,8 +109,8 @@ class Maps {
         roomServerModels = rooms
         dealerServerModels = dealers
 
-        models = serverModels.map({ (map) -> Map2 in
-            return Map2(identifier: Map2.Identifier(map.identifier), location: map.mapDescription)
+        models = serverModels.map({ (map) -> Map in
+            return Map(identifier: Map.Identifier(map.identifier), location: map.mapDescription)
         }).sorted(by: { (first, second) -> Bool in
             return first.location < second.location
         })

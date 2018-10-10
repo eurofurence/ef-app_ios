@@ -33,7 +33,7 @@ class StubMapsModuleProviding: MapsModuleProviding {
 
 extension StubMapsModuleProviding {
     
-    func simulateDidSelectMap(_ map: Map2.Identifier) {
+    func simulateDidSelectMap(_ map: Map.Identifier) {
         delegate?.mapsModuleDidSelectMap(identifier: map)
     }
     
@@ -42,9 +42,9 @@ extension StubMapsModuleProviding {
 class StubMapDetailModuleProviding: MapDetailModuleProviding {
     
     let stubInterface = UIViewController()
-    private(set) var capturedModel: Map2.Identifier?
+    private(set) var capturedModel: Map.Identifier?
     private(set) var delegate: MapDetailModuleDelegate?
-    func makeMapDetailModule(for map: Map2.Identifier, delegate: MapDetailModuleDelegate) -> UIViewController {
+    func makeMapDetailModule(for map: Map.Identifier, delegate: MapDetailModuleDelegate) -> UIViewController {
         capturedModel = map
         self.delegate = delegate
         return stubInterface

@@ -11,12 +11,12 @@ import Foundation
 
 class FakeMapsService: MapsService {
     
-    let maps = [Map2].random
+    let maps = [Map].random
     func add(_ observer: MapsObserver) {
         observer.mapsServiceDidChangeMaps(maps)
     }
     
-    func fetchImagePNGDataForMap(identifier: Map2.Identifier, completionHandler: @escaping (Data) -> Void) {
+    func fetchImagePNGDataForMap(identifier: Map.Identifier, completionHandler: @escaping (Data) -> Void) {
         completionHandler(imagePNGDataForMap(identifier: identifier))
     }
     
@@ -25,17 +25,17 @@ class FakeMapsService: MapsService {
             return lhs.identifier == rhs.identifier && lhs.x == rhs.x && lhs.y == rhs.y
         }
         
-        var identifier: Map2.Identifier
+        var identifier: Map.Identifier
         var x: Int
         var y: Int
-        var completionHandler: (Map2.Content) -> Void
+        var completionHandler: (Map.Content) -> Void
     }
     
     fileprivate var requests = [ContentRequest]()
-    func fetchContent(for identifier: Map2.Identifier,
+    func fetchContent(for identifier: Map.Identifier,
                       atX x: Int,
                       y: Int,
-                      completionHandler: @escaping (Map2.Content) -> Void) {
+                      completionHandler: @escaping (Map.Content) -> Void) {
         requests.append(ContentRequest(identifier: identifier, x: x, y: y, completionHandler: completionHandler))
     }
     
@@ -43,11 +43,11 @@ class FakeMapsService: MapsService {
 
 extension FakeMapsService {
     
-    func imagePNGDataForMap(identifier: Map2.Identifier) -> Data {
+    func imagePNGDataForMap(identifier: Map.Identifier) -> Data {
         return identifier.rawValue.data(using: .utf8)!
     }
     
-    func resolveMapContents(identifier: Map2.Identifier, atX x: Int, y: Int, with mapContent: Map2.Content) {
+    func resolveMapContents(identifier: Map.Identifier, atX x: Int, y: Int, with mapContent: Map.Content) {
         guard let request = requests.first(where: { $0.identifier == identifier && $0.x == x && $0.y == y }) else { return }
         request.completionHandler(mapContent)
     }

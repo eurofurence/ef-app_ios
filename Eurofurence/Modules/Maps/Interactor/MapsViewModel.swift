@@ -13,7 +13,7 @@ protocol MapsViewModel {
 
     var numberOfMaps: Int { get }
     func mapViewModel(at index: Int) -> MapViewModel2
-    func identifierForMap(at index: Int) -> Map2.Identifier?
+    func identifierForMap(at index: Int) -> Map.Identifier?
 
 }
 

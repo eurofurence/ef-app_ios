@@ -17,7 +17,7 @@ class WhenSelectingMap_DirectorShould: XCTestCase {
         let context = ApplicationDirectorTestBuilder().build()
         context.navigateToTabController()
         let mapsNavigationController = context.navigationController(for: context.mapsModule.stubInterface)
-        let map = Map2.Identifier.random
+        let map = Map.Identifier.random
         context.mapsModule.simulateDidSelectMap(map)
         
         XCTAssertEqual(context.mapDetailModule.stubInterface, mapsNavigationController?.topViewController)
