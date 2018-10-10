@@ -9,8 +9,6 @@
 import EurofurenceAppCore
 import UIKit
 
-// TODO: Why are there two of these?
-
 public class ApplicationSignificantTimeChangeAdapter: SignificantTimeChangeAdapter {
 
     private var notificationRegistration: NSObjectProtocol?
@@ -24,29 +22,6 @@ public class ApplicationSignificantTimeChangeAdapter: SignificantTimeChangeAdapt
     private var delegate: SignificantTimeChangeAdapterDelegate?
     public func setDelegate(_ delegate: SignificantTimeChangeAdapterDelegate) {
         self.delegate = delegate
-    }
-
-}
-
-class ApplicationSignificantTimeChangeEventSource: SignificantTimeChangeEventSource {
-
-    static let shared = ApplicationSignificantTimeChangeEventSource()
-    private var observers = [SignificantTimeChangeEventObserver]()
-    private var notificationHandler: NSObjectProtocol?
-
-    private init() {
-        notificationHandler = NotificationCenter.default.addObserver(forName: UIApplication.significantTimeChangeNotification,
-                                                                     object: UIApplication.shared,
-                                                                     queue: .main,
-                                                                     using: significationTimeChangeNotificationHandler)
-    }
-
-    func add(_ observer: SignificantTimeChangeEventObserver) {
-        observers.append(observer)
-    }
-
-    private func significationTimeChangeNotificationHandler(_ notification: Notification) {
-        observers.forEach({ $0.significantTimeChangeDidOccur() })
     }
 
 }

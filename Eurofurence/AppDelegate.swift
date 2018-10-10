@@ -36,8 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         let pushPermissionsRequester = ApplicationPushPermissionsRequester.shared
 
-        let significantTimeChangeEventSource = ApplicationSignificantTimeChangeEventSource.shared
-
         let significantTimeChangeAdapter = ApplicationSignificantTimeChangeAdapter()
 
         let urlOpener = AppURLOpener()

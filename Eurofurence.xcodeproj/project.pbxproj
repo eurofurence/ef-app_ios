@@ -869,7 +869,6 @@
 		CAEA0DAB216BDE2300B0C7A6 /* PushPermissionsRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */; };
 		CAEA0DAC216BDE2300B0C7A6 /* RemoteNotificationsTokenRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781A943B1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift */; };
 		CAEA0DAD216BDE2300B0C7A6 /* SignificantTimeChangeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C67A20D59457009D3A9E /* SignificantTimeChangeAdapter.swift */; };
-		CAEA0DAE216BDE2300B0C7A6 /* SignificantTimeChangeEventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8120A5B7BC004AFED6 /* SignificantTimeChangeEventSource.swift */; };
 		CAEA0DAF216BDE2300B0C7A6 /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC82061382000C91E6E /* URLOpener.swift */; };
 		CAEA0DB0216BDE2300B0C7A6 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */; };
 		CAEA0DB1216BDE2300B0C7A6 /* Announcement2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E520E208F4BDF005259FE /* Announcement2.swift */; };
@@ -1173,7 +1172,6 @@
 		CAEA102E216E1CE800B0C7A6 /* CapturingLogoutObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */; };
 		CAEA102F216E1CE800B0C7A6 /* CapturingMapCoordinateRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A586820F69EA1002C69B6 /* CapturingMapCoordinateRender.swift */; };
 		CAEA1030216E1CE800B0C7A6 /* CapturingPrivateMessagesObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */; };
-		CAEA1032216E1CE800B0C7A6 /* FakeSignificantTimeChangeEventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E8320A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift */; };
 		CAEA1033216E1CE800B0C7A6 /* StubCollectThemAllRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2761CB20E034BD000E52AC /* StubCollectThemAllRequestFactory.swift */; };
 		CAEA1034216E1CE800B0C7A6 /* StubConventionStartDateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E7720A4B6E0004AFED6 /* StubConventionStartDateRepository.swift */; };
 		CAEA1036216E1CE800B0C7A6 /* CapturingLoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30EAA51F2129C60053DBF6 /* CapturingLoginAPI.swift */; };
@@ -1531,8 +1529,6 @@
 		CA162E7B20A4B8EA004AFED6 /* FoundationDateDistanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationDateDistanceCalculator.swift; sourceTree = "<group>"; };
 		CA162E7D20A4B9CD004AFED6 /* EF24StartDateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EF24StartDateRepository.swift; sourceTree = "<group>"; };
 		CA162E7F20A5B738004AFED6 /* WhenObservingConventionCountdown_AndSignificantTimeChangeOccurs_EurofurenceApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingConventionCountdown_AndSignificantTimeChangeOccurs_EurofurenceApplicationShould.swift; sourceTree = "<group>"; };
-		CA162E8120A5B7BC004AFED6 /* SignificantTimeChangeEventSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignificantTimeChangeEventSource.swift; sourceTree = "<group>"; };
-		CA162E8320A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSignificantTimeChangeEventSource.swift; sourceTree = "<group>"; };
 		CA162E8520A5BB85004AFED6 /* ConventionCountdownController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConventionCountdownController.swift; sourceTree = "<group>"; };
 		CA162E8A20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutDuringConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA162E8C20A64C8C004AFED6 /* WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift; sourceTree = "<group>"; };
@@ -3356,7 +3352,6 @@
 				CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */,
 				CAEA1089216E818A00B0C7A6 /* CapturingSignificantTimeChangeAdapter.swift */,
 				CAEA108B216E819B00B0C7A6 /* FakeLongRunningTaskManager.swift */,
-				CA162E8320A5B7DC004AFED6 /* FakeSignificantTimeChangeEventSource.swift */,
 				CA2761CB20E034BD000E52AC /* StubCollectThemAllRequestFactory.swift */,
 				CA162E7720A4B6E0004AFED6 /* StubConventionStartDateRepository.swift */,
 				CAEA10A3216E8BA800B0C7A6 /* StubForceRefreshRequired.swift */,
@@ -5427,7 +5422,6 @@
 				CAB3A72C1F753308005DF77B /* PushPermissionsRequester.swift */,
 				781A943B1F1A19F1002DE70F /* RemoteNotificationsTokenRegistration.swift */,
 				CA52C67A20D59457009D3A9E /* SignificantTimeChangeAdapter.swift */,
-				CA162E8120A5B7BC004AFED6 /* SignificantTimeChangeEventSource.swift */,
 				CAD3BDC82061382000C91E6E /* URLOpener.swift */,
 				CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */,
 			);
@@ -7876,7 +7870,6 @@
 				CAEA0DC7216BDE2300B0C7A6 /* LinkLookupService.swift in Sources */,
 				CAEA0E03216BDE3100B0C7A6 /* ImageAPI.swift in Sources */,
 				CAEA0DF2216BDE3100B0C7A6 /* AppCoreStrings.swift in Sources */,
-				CAEA0DAE216BDE2300B0C7A6 /* SignificantTimeChangeEventSource.swift in Sources */,
 				CAEA0DB4216BDE2300B0C7A6 /* Dealer2.swift in Sources */,
 				CAEA0DAA216BDE2300B0C7A6 /* NotificationsService.swift in Sources */,
 				CAEA0D9B216BDDF000B0C7A6 /* EurofurenceApplicationModel.xcdatamodeld in Sources */,
@@ -8061,7 +8054,6 @@
 				CAEA100D216E1CE800B0C7A6 /* WhenRetrievingLocalPrivateMessages.swift in Sources */,
 				CAEA1006216E1CE800B0C7A6 /* WhenToldToOpenNotification_ThatRepresentsSyncEvent_ApplicationShould.swift in Sources */,
 				CAEA0FE3216E1CE700B0C7A6 /* InOrderToSupportMainStageTag_ApplicationShould.swift in Sources */,
-				CAEA1032216E1CE800B0C7A6 /* FakeSignificantTimeChangeEventSource.swift in Sources */,
 				CAEA1088216E817700B0C7A6 /* CapturingImageRepository.swift in Sources */,
 				CAEA0FB3216E1CC000B0C7A6 /* WhenFetchingIconDataForDealerWithArtwork_ApplicationShould.swift in Sources */,
 				CAEA0FB8216E1CC000B0C7A6 /* WhenObservingDealersIndexThenSyncOccurs_ApplicationShould.swift in Sources */,
