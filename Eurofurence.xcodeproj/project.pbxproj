@@ -3329,35 +3329,13 @@
 		CA162E7420A4B6C2004AFED6 /* Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
-				CA162EAB20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift */,
-				CA162EA720AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift */,
-				CA2761CD20E034CB000E52AC /* CapturingCollectThemAllURLObserver.swift */,
-				CA162E7920A4B6F5004AFED6 /* CapturingConventionCountdownServiceObserver.swift */,
-				CAD780511F1E2D2E002A8333 /* CapturingCredentialStore.swift */,
 				CA36A4A920D985FD00EE6537 /* CapturingDealersIndexDelegate.swift */,
-				CAEA109B216E8AE800B0C7A6 /* CapturingEurofurenceDataStore.swift */,
-				CAEA109D216E8B1600B0C7A6 /* CapturingEurofurenceDataStoreTransaction.swift */,
 				CA08159B20D47BEA00F750D4 /* CapturingEventsScheduleDelegate.swift */,
 				CA36A44220D703FA00EE6537 /* CapturingEventsSearchControllerDelegate.swift */,
-				CA162EB320AA2E12004AFED6 /* CapturingEventsServiceObserver.swift */,
-				CAEA10A1216E8B8100B0C7A6 /* CapturingExternalContentHandler.swift */,
-				CAEA10A5216E8BB600B0C7A6 /* CapturingForceRefreshRequired.swift */,
-				CAEA1087216E817700B0C7A6 /* CapturingImageRepository.swift */,
-				CAB258E22120431A00909C79 /* CapturingKnowledgeServiceObserver.swift */,
-				CA2B4FA91F1F7F1200F007E1 /* CapturingLoginObserver.swift */,
-				CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */,
-				CA2A586820F69EA1002C69B6 /* CapturingMapCoordinateRender.swift */,
-				CAEA1097216E8A9900B0C7A6 /* CapturingMapsObserver.swift */,
-				CAEA108D216E81AA00B0C7A6 /* CapturingNotificationsService.swift */,
-				CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */,
-				CAEA1089216E818A00B0C7A6 /* CapturingSignificantTimeChangeAdapter.swift */,
-				CAEA108B216E819B00B0C7A6 /* FakeLongRunningTaskManager.swift */,
-				CA2761CB20E034BD000E52AC /* StubCollectThemAllRequestFactory.swift */,
-				CA162E7720A4B6E0004AFED6 /* StubConventionStartDateRepository.swift */,
-				CAEA10A3216E8BA800B0C7A6 /* StubForceRefreshRequired.swift */,
-				CAEA109F216E8B2D00B0C7A6 /* StubUserPreferences.swift */,
 				CA30EAA41F2129B70053DBF6 /* API */,
+				CAEA10A8216E90F000B0C7A6 /* Configurable Dependencies */,
 				781A94351F1A19A8002DE70F /* Notifications */,
+				CAEA10A7216E90B100B0C7A6 /* Observers */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -6109,6 +6087,44 @@
 				CAEA1092216E824C00B0C7A6 /* TestURLProtocol.swift */,
 			);
 			path = "Network Layer Stubbing";
+			sourceTree = "<group>";
+		};
+		CAEA10A7216E90B100B0C7A6 /* Observers */ = {
+			isa = PBXGroup;
+			children = (
+				CA162EAB20AA2977004AFED6 /* CapturingAnnouncementsServiceObserver.swift */,
+				CA162EA720AA080D004AFED6 /* CapturingAuthenticationStateObserver.swift */,
+				CA2761CD20E034CB000E52AC /* CapturingCollectThemAllURLObserver.swift */,
+				CA162E7920A4B6F5004AFED6 /* CapturingConventionCountdownServiceObserver.swift */,
+				CA162EB320AA2E12004AFED6 /* CapturingEventsServiceObserver.swift */,
+				CAB258E22120431A00909C79 /* CapturingKnowledgeServiceObserver.swift */,
+				CA2B4FA91F1F7F1200F007E1 /* CapturingLoginObserver.swift */,
+				CACE1B061F2BBEC900DFCB60 /* CapturingLogoutObserver.swift */,
+				CAEA1097216E8A9900B0C7A6 /* CapturingMapsObserver.swift */,
+				CA30EAB91F26174B0053DBF6 /* CapturingPrivateMessagesObserver.swift */,
+			);
+			path = Observers;
+			sourceTree = "<group>";
+		};
+		CAEA10A8216E90F000B0C7A6 /* Configurable Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				CAD780511F1E2D2E002A8333 /* CapturingCredentialStore.swift */,
+				CAEA109B216E8AE800B0C7A6 /* CapturingEurofurenceDataStore.swift */,
+				CAEA109D216E8B1600B0C7A6 /* CapturingEurofurenceDataStoreTransaction.swift */,
+				CAEA10A1216E8B8100B0C7A6 /* CapturingExternalContentHandler.swift */,
+				CAEA10A5216E8BB600B0C7A6 /* CapturingForceRefreshRequired.swift */,
+				CAEA1087216E817700B0C7A6 /* CapturingImageRepository.swift */,
+				CA2A586820F69EA1002C69B6 /* CapturingMapCoordinateRender.swift */,
+				CAEA108D216E81AA00B0C7A6 /* CapturingNotificationsService.swift */,
+				CAEA1089216E818A00B0C7A6 /* CapturingSignificantTimeChangeAdapter.swift */,
+				CAEA108B216E819B00B0C7A6 /* FakeLongRunningTaskManager.swift */,
+				CA2761CB20E034BD000E52AC /* StubCollectThemAllRequestFactory.swift */,
+				CA162E7720A4B6E0004AFED6 /* StubConventionStartDateRepository.swift */,
+				CAEA10A3216E8BA800B0C7A6 /* StubForceRefreshRequired.swift */,
+				CAEA109F216E8B2D00B0C7A6 /* StubUserPreferences.swift */,
+			);
+			path = "Configurable Dependencies";
 			sourceTree = "<group>";
 		};
 		CAEAEBF21FDEB53800C0EE7C /* Message Detail */ = {
