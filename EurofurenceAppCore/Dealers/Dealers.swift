@@ -22,7 +22,7 @@ class Dealers: DealersService {
 
         func performSearch(term: String) {
             let matches = alphebetisedDealers.compactMap { (group) -> AlphabetisedDealersGroup? in
-                let matchingDealers = group.dealers.compactMap { (dealer) -> Dealer2? in
+                let matchingDealers = group.dealers.compactMap { (dealer) -> Dealer? in
                     let preferredNameMatches = dealer.preferredName.localizedCaseInsensitiveContains(term)
                     var alternateNameMatches = false
                     if let alternateName = dealer.alternateName {
@@ -67,7 +67,7 @@ class Dealers: DealersService {
 
     private struct UpdatedEvent {}
 
-    private var dealerModels = [Dealer2]()
+    private var dealerModels = [Dealer]()
     private var models = [APIDealer]()
     private let eventBus: EventBus
     private let dataStore: EurofurenceDataStore
@@ -91,7 +91,7 @@ class Dealers: DealersService {
         return Index(dealers: self, eventBus: eventBus)
     }
 
-    func fetchIconPNGData(for identifier: Dealer2.Identifier, completionHandler: @escaping (Data?) -> Void) {
+    func fetchIconPNGData(for identifier: Dealer.Identifier, completionHandler: @escaping (Data?) -> Void) {
         guard let dealer = fetchDealer(identifier) else { return }
 
         var iconData: Data?
@@ -102,7 +102,7 @@ class Dealers: DealersService {
         completionHandler(iconData)
     }
 
-    private func fetchMapData(for identifier: Dealer2.Identifier) -> (map: APIMap, entry: APIMap.Entry)? {
+    private func fetchMapData(for identifier: Dealer.Identifier) -> (map: APIMap, entry: APIMap.Entry)? {
         guard let maps = dataStore.getSavedMaps() else { return nil }
 
         for map in maps {
@@ -116,7 +116,7 @@ class Dealers: DealersService {
         return nil
     }
 
-    func fetchExtendedDealerData(for dealer: Dealer2.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
+    func fetchExtendedDealerData(for dealer: Dealer.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
         guard let dealerModel = dealerModels.first(where: { $0.identifier == dealer }) else { return }
         guard let model = fetchDealer(dealer) else { return }
 
@@ -157,7 +157,7 @@ class Dealers: DealersService {
         completionHandler(extendedData)
     }
 
-    func openWebsite(for identifier: Dealer2.Identifier) {
+    func openWebsite(for identifier: Dealer.Identifier) {
         guard let dealer = fetchDealer(identifier) else { return }
         guard let externalLink = dealer.links?.first(where: { $0.fragmentType == .WebExternal }) else { return }
         guard let url = URL(string: externalLink.target) else { return }
@@ -165,14 +165,14 @@ class Dealers: DealersService {
         open(url)
     }
 
-    func openTwitter(for identifier: Dealer2.Identifier) {
+    func openTwitter(for identifier: Dealer.Identifier) {
         guard let dealer = fetchDealer(identifier), dealer.twitterHandle.isEmpty == false else { return }
         guard let url = URL(string: "https://twitter.com/")?.appendingPathComponent(dealer.twitterHandle) else { return }
 
         open(url)
     }
 
-    func openTelegram(for identifier: Dealer2.Identifier) {
+    func openTelegram(for identifier: Dealer.Identifier) {
         guard let dealer = fetchDealer(identifier), dealer.telegramHandle.isEmpty == false else { return }
         guard let url = URL(string: "https://t.me/")?.appendingPathComponent(dealer.twitterHandle) else { return }
 
@@ -183,7 +183,7 @@ class Dealers: DealersService {
         eventBus.post(DomainEvent.OpenURL(url: url))
     }
 
-    private func fetchDealer(_ identifier: Dealer2.Identifier) -> APIDealer? {
+    private func fetchDealer(_ identifier: Dealer.Identifier) -> APIDealer? {
         return models.first(where: { $0.identifier == identifier.rawValue })
     }
 
@@ -191,7 +191,7 @@ class Dealers: DealersService {
         guard let dealers = dataStore.getSavedDealers() else { return }
 
         models = dealers
-        dealerModels = models.map { (dealer) -> Dealer2 in
+        dealerModels = models.map { (dealer) -> Dealer in
             var preferredName = dealer.displayName
             if preferredName.isEmpty {
                 preferredName = dealer.attendeeNickname
@@ -200,7 +200,7 @@ class Dealers: DealersService {
                 }
             }
 
-            return Dealer2(identifier: Dealer2.Identifier(dealer.identifier),
+            return Dealer(identifier: Dealer.Identifier(dealer.identifier),
                            preferredName: preferredName,
                            alternateName: dealer.attendeeNickname == dealer.displayName ? nil : dealer.attendeeNickname,
                            isAttendingOnThursday: dealer.attendsOnThursday,
@@ -212,7 +212,7 @@ class Dealers: DealersService {
         eventBus.post(Dealers.UpdatedEvent())
     }
 
-    func dealer(for identifier: String) -> Dealer2? {
+    func dealer(for identifier: String) -> Dealer? {
         return dealerModels.first(where: { $0.identifier.rawValue == identifier })
     }
 

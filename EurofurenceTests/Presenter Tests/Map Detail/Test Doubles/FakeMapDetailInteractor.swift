@@ -51,7 +51,7 @@ extension FakeMapDetailViewModel {
         contentsVisitor?.visit(content)
     }
     
-    func resolvePositionalContent(with dealer: Dealer2.Identifier) {
+    func resolvePositionalContent(with dealer: Dealer.Identifier) {
         contentsVisitor?.visit(dealer)
     }
     

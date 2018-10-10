@@ -131,8 +131,8 @@ class ApplicationTestBuilder {
             return response.conferenceDays.changed.map(makeExpectedDay).sorted(by: { $0.date < $1.date })
         }
         
-        func makeExpectedDealer(from dealer: APIDealer) -> Dealer2 {
-            return Dealer2(identifier: Dealer2.Identifier(dealer.identifier),
+        func makeExpectedDealer(from dealer: APIDealer) -> Dealer {
+            return Dealer(identifier: Dealer.Identifier(dealer.identifier),
                            preferredName: dealer.displayName,
                            alternateName: dealer.attendeeNickname == dealer.displayName ? nil : dealer.attendeeNickname,
                            isAttendingOnThursday: dealer.attendsOnThursday,
@@ -144,7 +144,7 @@ class ApplicationTestBuilder {
         func makeExpectedAlphabetisedDealers(from response: APISyncResponse) -> [AlphabetisedDealersGroup] {
             let dealers: [APIDealer] = response.dealers.changed
             let indexTitles = dealers.map({ String($0.displayName.first!) })
-            var dealersByIndexBuckets = [String : [Dealer2]]()
+            var dealersByIndexBuckets = [String : [Dealer]]()
             for title in indexTitles {
                 let dealersInBucket = dealers.filter({ $0.displayName.hasPrefix(title) })
                     .sorted(by: { $0.displayName < $1.displayName })

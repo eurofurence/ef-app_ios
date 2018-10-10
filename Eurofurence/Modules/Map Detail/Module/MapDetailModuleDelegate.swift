@@ -11,6 +11,6 @@ import Foundation
 
 protocol MapDetailModuleDelegate {
 
-    func mapDetailModuleDidSelectDealer(_ identifier: Dealer2.Identifier)
+    func mapDetailModuleDidSelectDealer(_ identifier: Dealer.Identifier)
 
 }

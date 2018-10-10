@@ -76,7 +76,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
         return (groups: groups, titles: indexTitles)
     }
 
-    private func makeDealerViewModel(for dealer: Dealer2) -> DealerVM {
+    private func makeDealerViewModel(for dealer: Dealer) -> DealerVM {
         return DealerVM(dealer: dealer, dealersService: dealersService, defaultIconData: defaultIconData)
     }
 
@@ -128,7 +128,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
             delegate.dealerGroupsDidChange(groups, indexTitles: indexTitles)
         }
 
-        func identifierForDealer(at indexPath: IndexPath) -> Dealer2.Identifier? {
+        func identifierForDealer(at indexPath: IndexPath) -> Dealer.Identifier? {
             return rawGroups[indexPath.section].dealers[indexPath.item].identifier
         }
 
@@ -176,7 +176,7 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
             index.performSearch(term: query)
         }
 
-        func identifierForDealer(at indexPath: IndexPath) -> Dealer2.Identifier? {
+        func identifierForDealer(at indexPath: IndexPath) -> Dealer.Identifier? {
             return rawGroups[indexPath.section].dealers[indexPath.item].identifier
         }
 
@@ -192,11 +192,11 @@ struct DefaultDealersInteractor: DealersInteractor, DealersIndexDelegate {
 
     private struct DealerVM: DealerViewModel {
 
-        private let dealer: Dealer2
+        private let dealer: Dealer
         private let dealersService: DealersService
         private let defaultIconData: Data
 
-        init(dealer: Dealer2, dealersService: DealersService, defaultIconData: Data) {
+        init(dealer: Dealer, dealersService: DealersService, defaultIconData: Data) {
             self.dealer = dealer
             self.dealersService = dealersService
             self.defaultIconData = defaultIconData

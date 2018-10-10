@@ -24,7 +24,7 @@ class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
         context.refreshLocalStore()
         context.syncAPI.simulateSuccessfulSync(response)
         randomDealer = response.dealers.changed.randomElement().element
-        let identifier = Dealer2.Identifier(randomDealer.identifier)
+        let identifier = Dealer.Identifier(randomDealer.identifier)
         context.application.fetchExtendedDealerData(for: identifier) { self.dealerData = $0 }
     }
     
@@ -32,7 +32,7 @@ class WhenFetchingExtendedDealerData_ApplicationShould: XCTestCase {
         let index = context.application.makeDealersIndex()
         let delegate = CapturingDealersIndexDelegate()
         index.setDelegate(delegate)
-        let shortFormModel = delegate.capturedDealer(for: Dealer2.Identifier(randomDealer.identifier))
+        let shortFormModel = delegate.capturedDealer(for: Dealer.Identifier(randomDealer.identifier))
         
         XCTAssertEqual(shortFormModel?.preferredName, dealerData?.preferredName)
         XCTAssertEqual(shortFormModel?.alternateName, dealerData?.alternateName)

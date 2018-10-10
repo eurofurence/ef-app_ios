@@ -22,7 +22,7 @@ class WhenFetchingIconDataForDealerWithoutArtwork_ApplicationShould: XCTestCase 
         let delegate = CapturingDealersIndexDelegate()
         dealersIndex.setDelegate(delegate)
         var invokedFetchHandlerWithNilData = false
-        context.application.fetchIconPNGData(for: Dealer2.Identifier(dealer.identifier)) { invokedFetchHandlerWithNilData = $0 == nil }
+        context.application.fetchIconPNGData(for: Dealer.Identifier(dealer.identifier)) { invokedFetchHandlerWithNilData = $0 == nil }
         
         XCTAssertTrue(invokedFetchHandlerWithNilData)
     }

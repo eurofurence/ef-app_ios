@@ -11,11 +11,11 @@ import Foundation
 public protocol DealersService {
 
     func makeDealersIndex() -> DealersIndex
-    func fetchIconPNGData(for identifier: Dealer2.Identifier, completionHandler: @escaping (Data?) -> Void)
-    func fetchExtendedDealerData(for dealer: Dealer2.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void)
-    func openWebsite(for identifier: Dealer2.Identifier)
-    func openTwitter(for identifier: Dealer2.Identifier)
-    func openTelegram(for identifier: Dealer2.Identifier)
+    func fetchIconPNGData(for identifier: Dealer.Identifier, completionHandler: @escaping (Data?) -> Void)
+    func fetchExtendedDealerData(for dealer: Dealer.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void)
+    func openWebsite(for identifier: Dealer.Identifier)
+    func openTwitter(for identifier: Dealer.Identifier)
+    func openTelegram(for identifier: Dealer.Identifier)
 
 }
 
@@ -36,9 +36,9 @@ public protocol DealersIndexDelegate {
 public struct AlphabetisedDealersGroup: Equatable {
 
     public var indexingString: String
-    public var dealers: [Dealer2]
+    public var dealers: [Dealer]
 
-    public init(indexingString: String, dealers: [Dealer2]) {
+    public init(indexingString: String, dealers: [Dealer]) {
         self.indexingString = indexingString
         self.dealers = dealers
     }

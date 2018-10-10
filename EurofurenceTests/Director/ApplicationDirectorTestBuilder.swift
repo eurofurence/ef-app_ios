@@ -54,7 +54,7 @@ class StubMapDetailModuleProviding: MapDetailModuleProviding {
 
 extension StubMapDetailModuleProviding {
     
-    func simulateDidSelectDealer(_ dealer: Dealer2.Identifier) {
+    func simulateDidSelectDealer(_ dealer: Dealer.Identifier) {
         delegate?.mapDetailModuleDidSelectDealer(dealer)
     }
     

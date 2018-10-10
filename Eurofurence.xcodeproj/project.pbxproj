@@ -874,7 +874,7 @@
 		CAEA0DB1216BDE2300B0C7A6 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E520E208F4BDF005259FE /* Announcement.swift */; };
 		CAEA0DB2216BDE2300B0C7A6 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780421F1D4CA3002A8333 /* Credential.swift */; };
 		CAEA0DB3216BDE2300B0C7A6 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8820D28AAD00C2FBB0 /* Day.swift */; };
-		CAEA0DB4216BDE2300B0C7A6 /* Dealer2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A49220D92ED400EE6537 /* Dealer2.swift */; };
+		CAEA0DB4216BDE2300B0C7A6 /* Dealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A49220D92ED400EE6537 /* Dealer.swift */; };
 		CAEA0DB5216BDE2300B0C7A6 /* Event2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9120A652B5004AFED6 /* Event2.swift */; };
 		CAEA0DB6216BDE2300B0C7A6 /* ExtendedDealerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7620DDAD6F00898C52 /* ExtendedDealerData.swift */; };
 		CAEA0DB7216BDE2300B0C7A6 /* KnowledgeEntry2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03B82041C2B00028BD62 /* KnowledgeEntry2.swift */; };
@@ -1013,7 +1013,7 @@
 		CAEA0F87216E1AE200B0C7A6 /* Room+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9720A8886C004AFED6 /* Room+RandomValueProviding.swift */; };
 		CAEA0F88216E1AE200B0C7A6 /* Track+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACF1E9120B36BC800D904B5 /* Track+RandomValueProviding.swift */; };
 		CAEA0F89216E1AE200B0C7A6 /* User+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */; };
-		CAEA0F8A216E1AE200B0C7A6 /* Dealer2+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A49420D92EE600EE6537 /* Dealer2+RandomValueProviding.swift */; };
+		CAEA0F8A216E1AE200B0C7A6 /* Dealer+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A49420D92EE600EE6537 /* Dealer+RandomValueProviding.swift */; };
 		CAEA0F8B216E1AE200B0C7A6 /* AlphabetisedDealersGroup+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A49A20D9779C00EE6537 /* AlphabetisedDealersGroup+RandomValueProviding.swift */; };
 		CAEA0F8C216E1AE200B0C7A6 /* ExtendedDealerData+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7820DDAEAA00898C52 /* ExtendedDealerData+RandomValueProviding.swift */; };
 		CAEA0F8D216E1AE200B0C7A6 /* Map2+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A8DA820E2CE2C007536CD /* Map2+RandomValueProviding.swift */; };
@@ -1827,8 +1827,8 @@
 		CA36A48B20D92E9000EE6537 /* DefaultDealersInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDealersInteractor.swift; sourceTree = "<group>"; };
 		CA36A48E20D92EAA00EE6537 /* DealersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersService.swift; sourceTree = "<group>"; };
 		CA36A49020D92EC100EE6537 /* FakeDealersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDealersService.swift; sourceTree = "<group>"; };
-		CA36A49220D92ED400EE6537 /* Dealer2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dealer2.swift; sourceTree = "<group>"; };
-		CA36A49420D92EE600EE6537 /* Dealer2+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dealer2+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA36A49220D92ED400EE6537 /* Dealer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dealer.swift; sourceTree = "<group>"; };
+		CA36A49420D92EE600EE6537 /* Dealer+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dealer+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA36A49620D92EF700EE6537 /* CapturingDealersViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturingDealersViewModelDelegate.swift; sourceTree = "<group>"; };
 		CA36A49820D9778400EE6537 /* FakeDealersIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDealersIndex.swift; sourceTree = "<group>"; };
 		CA36A49A20D9779C00EE6537 /* AlphabetisedDealersGroup+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlphabetisedDealersGroup+RandomValueProviding.swift"; sourceTree = "<group>"; };
@@ -3403,7 +3403,7 @@
 				CA0E520E208F4BDF005259FE /* Announcement.swift */,
 				CAD780421F1D4CA3002A8333 /* Credential.swift */,
 				CA00AE8820D28AAD00C2FBB0 /* Day.swift */,
-				CA36A49220D92ED400EE6537 /* Dealer2.swift */,
+				CA36A49220D92ED400EE6537 /* Dealer.swift */,
 				CA162E9120A652B5004AFED6 /* Event2.swift */,
 				CAF81C7620DDAD6F00898C52 /* ExtendedDealerData.swift */,
 				CABF03B82041C2B00028BD62 /* KnowledgeEntry2.swift */,
@@ -6038,7 +6038,7 @@
 				CA162E9720A8886C004AFED6 /* Room+RandomValueProviding.swift */,
 				CACF1E9120B36BC800D904B5 /* Track+RandomValueProviding.swift */,
 				CA60BFE22078E42800697566 /* User+RandomValueProviding.swift */,
-				CA36A49420D92EE600EE6537 /* Dealer2+RandomValueProviding.swift */,
+				CA36A49420D92EE600EE6537 /* Dealer+RandomValueProviding.swift */,
 				CA36A49A20D9779C00EE6537 /* AlphabetisedDealersGroup+RandomValueProviding.swift */,
 				CAF81C7820DDAEAA00898C52 /* ExtendedDealerData+RandomValueProviding.swift */,
 				CA6A8DA820E2CE2C007536CD /* Map2+RandomValueProviding.swift */,
@@ -7886,7 +7886,7 @@
 				CAEA0DC7216BDE2300B0C7A6 /* LinkLookupService.swift in Sources */,
 				CAEA0E03216BDE3100B0C7A6 /* ImageAPI.swift in Sources */,
 				CAEA0DF2216BDE3100B0C7A6 /* AppCoreStrings.swift in Sources */,
-				CAEA0DB4216BDE2300B0C7A6 /* Dealer2.swift in Sources */,
+				CAEA0DB4216BDE2300B0C7A6 /* Dealer.swift in Sources */,
 				CAEA0DAA216BDE2300B0C7A6 /* NotificationsService.swift in Sources */,
 				CAEA0D9B216BDDF000B0C7A6 /* EurofurenceApplicationModel.xcdatamodeld in Sources */,
 				CAEA0D87216BDD9400B0C7A6 /* Schedule.swift in Sources */,
@@ -8205,7 +8205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAEA0F89216E1AE200B0C7A6 /* User+RandomValueProviding.swift in Sources */,
-				CAEA0F8A216E1AE200B0C7A6 /* Dealer2+RandomValueProviding.swift in Sources */,
+				CAEA0F8A216E1AE200B0C7A6 /* Dealer+RandomValueProviding.swift in Sources */,
 				CAEA0F83216E1AE200B0C7A6 /* KnowledgeEntry2.swift in Sources */,
 				CAEA0F86216E1AE200B0C7A6 /* Message+RandomValueProviding.swift in Sources */,
 				CAEA0F7D216E188C00B0C7A6 /* CapturingURLOpener.swift in Sources */,

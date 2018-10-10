@@ -24,8 +24,8 @@ class FakeDealerDetailInteractor: DealerDetailInteractor {
         self.viewModel = viewModel
     }
     
-    private(set) var capturedIdentifierForProducingViewModel: Dealer2.Identifier?
-    func makeDealerDetailViewModel(for identifier: Dealer2.Identifier, completionHandler: @escaping (DealerDetailViewModel) -> Void) {
+    private(set) var capturedIdentifierForProducingViewModel: Dealer.Identifier?
+    func makeDealerDetailViewModel(for identifier: Dealer.Identifier, completionHandler: @escaping (DealerDetailViewModel) -> Void) {
         capturedIdentifierForProducingViewModel = identifier
         completionHandler(viewModel)
     }

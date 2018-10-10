@@ -17,11 +17,11 @@ class DealerDetailInteractorTestBuilder {
         var interactor: DefaultDealerDetailInteractor
         var dealersService: FakeDealersService
         var dealerData: ExtendedDealerData
-        var dealerIdentifier: Dealer2.Identifier
+        var dealerIdentifier: Dealer.Identifier
     }
     
     func build(data: ExtendedDealerData = .random) -> Context {
-        let identifier = Dealer2.Identifier.random
+        let identifier = Dealer.Identifier.random
         let dealersService = FakeDealersService()
         dealersService.stub(data, for: identifier)
         let interactor = DefaultDealerDetailInteractor(dealersService: dealersService)

@@ -15,7 +15,7 @@ class WhenSceneSelectsDealer_DealersPresenterShould: XCTestCase {
     
     func testTellTheModuleDelegateTheDealerIdentifierForTheIndexPathWasSelected() {
         let viewModel = CapturingDealersViewModel()
-        let identifier = Dealer2.Identifier.random
+        let identifier = Dealer.Identifier.random
         let indexPath = IndexPath.random
         viewModel.stub(identifier, forDealerAt: indexPath)
         let interactor = FakeDealersInteractor(viewModel: viewModel)

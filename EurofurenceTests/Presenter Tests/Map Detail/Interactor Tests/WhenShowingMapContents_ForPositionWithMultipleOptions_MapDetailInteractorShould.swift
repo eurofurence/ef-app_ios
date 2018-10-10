@@ -23,7 +23,7 @@ class WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorS
         let (x, y) = (Float.random, Float.random)
         let visitor = CapturingMapContentVisitor()
         viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)
-        let dealer = Dealer2.random
+        let dealer = Dealer.random
         let room = Room.random
         let content: Map2.Content = .multiple([.dealer(dealer), .room(room)])
         mapsService.resolveMapContents(identifier: randomMap.element.identifier, atX: Int(x), y: Int(y), with: content)
@@ -42,7 +42,7 @@ class WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorS
         let (x, y) = (Float.random, Float.random)
         let visitor = CapturingMapContentVisitor()
         viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)
-        let dealer = Dealer2.random
+        let dealer = Dealer.random
         let room = Room.random
         let content: Map2.Content = .multiple([.dealer(dealer), .room(room)])
         mapsService.resolveMapContents(identifier: randomMap.element.identifier, atX: Int(x), y: Int(y), with: content)
@@ -60,7 +60,7 @@ class WhenShowingMapContents_ForPositionWithMultipleOptions_MapDetailInteractorS
         let (x, y) = (Float.random, Float.random)
         let visitor = CapturingMapContentVisitor()
         viewModel?.showContentsAtPosition(x: x, y: y, describingTo: visitor)
-        let dealer = Dealer2.random
+        let dealer = Dealer.random
         let room = Room.random
         let contents: [Map2.Content] = [.dealer(dealer), .room(room)]
         let content: Map2.Content = .multiple(contents)

@@ -255,23 +255,23 @@ public class EurofurenceApplication: EurofurenceApplicationProtocol {
         return dealers.makeDealersIndex()
     }
 
-    public func fetchIconPNGData(for identifier: Dealer2.Identifier, completionHandler: @escaping (Data?) -> Void) {
+    public func fetchIconPNGData(for identifier: Dealer.Identifier, completionHandler: @escaping (Data?) -> Void) {
         dealers.fetchIconPNGData(for: identifier, completionHandler: completionHandler)
     }
 
-    public func fetchExtendedDealerData(for dealer: Dealer2.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
+    public func fetchExtendedDealerData(for dealer: Dealer.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
         dealers.fetchExtendedDealerData(for: dealer, completionHandler: completionHandler)
     }
 
-    public func openWebsite(for identifier: Dealer2.Identifier) {
+    public func openWebsite(for identifier: Dealer.Identifier) {
         dealers.openWebsite(for: identifier)
     }
 
-    public func openTwitter(for identifier: Dealer2.Identifier) {
+    public func openTwitter(for identifier: Dealer.Identifier) {
         dealers.openTwitter(for: identifier)
     }
 
-    public func openTelegram(for identifier: Dealer2.Identifier) {
+    public func openTelegram(for identifier: Dealer.Identifier) {
         dealers.openTelegram(for: identifier)
     }
 

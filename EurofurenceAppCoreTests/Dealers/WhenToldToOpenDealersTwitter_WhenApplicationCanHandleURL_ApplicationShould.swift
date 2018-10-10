@@ -18,7 +18,7 @@ class WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould
         let urlOpener = HappyPathURLOpener()
         let context = ApplicationTestBuilder().with(urlOpener).build()
         context.performSuccessfulSync(response: syncResponse)
-        let dealerIdentifier = Dealer2.Identifier(dealer.identifier)
+        let dealerIdentifier = Dealer.Identifier(dealer.identifier)
         context.application.openTwitter(for: dealerIdentifier)
         let expected = URL(string: "https://twitter.com/")!.appendingPathComponent(dealer.twitterHandle)
         
@@ -33,7 +33,7 @@ class WhenToldToOpenDealersTwitter_WhenApplicationCanHandleURL_ApplicationShould
         let urlOpener = HappyPathURLOpener()
         let context = ApplicationTestBuilder().with(urlOpener).build()
         context.performSuccessfulSync(response: syncResponse)
-        let dealerIdentifier = Dealer2.Identifier(dealer.identifier)
+        let dealerIdentifier = Dealer.Identifier(dealer.identifier)
         context.application.openTwitter(for: dealerIdentifier)
         
         XCTAssertNil(urlOpener.capturedURLToOpen)

@@ -1,5 +1,5 @@
 //
-//  Dealer2+RandomValueProviding.swift
+//  Dealer+RandomValueProviding.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 19/06/2018.
@@ -10,10 +10,10 @@ import EurofurenceAppCore
 import Foundation
 import RandomDataGeneration
 
-extension Dealer2: RandomValueProviding {
+extension Dealer: RandomValueProviding {
     
-    public static var random: Dealer2 {
-        return Dealer2(identifier: .random,
+    public static var random: Dealer {
+        return Dealer(identifier: .random,
                        preferredName: .random,
                        alternateName: .random,
                        isAttendingOnThursday: .random,
@@ -24,10 +24,10 @@ extension Dealer2: RandomValueProviding {
     
 }
 
-extension Dealer2.Identifier: RandomValueProviding {
+extension Dealer.Identifier: RandomValueProviding {
     
-    public static var random: Dealer2.Identifier {
-        return Dealer2.Identifier(.random)
+    public static var random: Dealer.Identifier {
+        return Dealer.Identifier(.random)
     }
     
 }

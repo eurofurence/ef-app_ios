@@ -58,19 +58,19 @@ public class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
-    public func openTelegram(for identifier: Dealer2.Identifier) {
+    public func openTelegram(for identifier: Dealer.Identifier) {
         
     }
     
-    public func openTwitter(for identifier: Dealer2.Identifier) {
+    public func openTwitter(for identifier: Dealer.Identifier) {
         
     }
     
-    public func openWebsite(for identifier: Dealer2.Identifier) {
+    public func openWebsite(for identifier: Dealer.Identifier) {
         
     }
     
-    public func fetchExtendedDealerData(for dealer: Dealer2.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
+    public func fetchExtendedDealerData(for dealer: Dealer.Identifier, completionHandler: @escaping (ExtendedDealerData) -> Void) {
         
     }
     
@@ -88,7 +88,7 @@ public class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         return DummyDealersIndex()
     }
     
-    public func fetchIconPNGData(for identifier: Dealer2.Identifier, completionHandler: @escaping (Data?) -> Void) {
+    public func fetchIconPNGData(for identifier: Dealer.Identifier, completionHandler: @escaping (Data?) -> Void) {
         
     }
     

@@ -14,7 +14,7 @@ struct DealerDetailModule: DealerDetailModuleProviding {
     var dealerDetailSceneFactory: DealerDetailSceneFactory
     var dealerDetailInteractor: DealerDetailInteractor
 
-    func makeDealerDetailModule(for dealer: Dealer2.Identifier) -> UIViewController {
+    func makeDealerDetailModule(for dealer: Dealer.Identifier) -> UIViewController {
         dealerDetailInteractor.makeDealerDetailViewModel(for: dealer) { (_) in }
         let scene = dealerDetailSceneFactory.makeDealerDetailScene()
         _ = DealerDetailPresenter(scene: scene, interactor: dealerDetailInteractor, dealer: dealer)

@@ -20,7 +20,7 @@ class WhenSceneTapsMapDetail_ThatRepresentsDealer_MapsPresenterShould: XCTestCas
         context.simulateSceneDidLoad()
         let randomLocation = MapCoordinate(x: Float.random, y: Float.random)
         context.simulateSceneDidDidTapMap(at: randomLocation)
-        let dealerIdentifier = Dealer2.Identifier.random
+        let dealerIdentifier = Dealer.Identifier.random
         interactor.viewModel.resolvePositionalContent(with: dealerIdentifier)
         
         XCTAssertEqual(dealerIdentifier, context.delegate.capturedDealerToShow)

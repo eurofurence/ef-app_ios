@@ -1,5 +1,5 @@
 //
-//  Dealer2.swift
+//  Dealer.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 19/06/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Dealer2: Equatable {
+public struct Dealer: Equatable {
 
     public struct Identifier: Equatable, Hashable, RawRepresentable {
 
@@ -26,7 +26,7 @@ public struct Dealer2: Equatable {
 
     }
 
-    public var identifier: Dealer2.Identifier
+    public var identifier: Dealer.Identifier
 
     public var preferredName: String
     public var alternateName: String?
@@ -37,7 +37,7 @@ public struct Dealer2: Equatable {
 
     public var isAfterDark: Bool
 
-    public init(identifier: Dealer2.Identifier, preferredName: String, alternateName: String?, isAttendingOnThursday: Bool, isAttendingOnFriday: Bool, isAttendingOnSaturday: Bool, isAfterDark: Bool) {
+    public init(identifier: Dealer.Identifier, preferredName: String, alternateName: String?, isAttendingOnThursday: Bool, isAttendingOnFriday: Bool, isAttendingOnSaturday: Bool, isAfterDark: Bool) {
         self.identifier = identifier
         self.preferredName = preferredName
         self.alternateName = alternateName

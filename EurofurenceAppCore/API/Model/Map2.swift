@@ -34,7 +34,7 @@ public struct Map2: Equatable {
         case none
 		case location(x: Float, y: Float, name: String?)
         case room(Room)
-        case dealer(Dealer2)
+        case dealer(Dealer)
         indirect case multiple([Map2.Content])
 
         public static func + (lhs: inout Map2.Content, rhs: Map2.Content) {

@@ -20,7 +20,7 @@ class WhenToldToOpenDealersWebsite_WhenApplicationCannotHandleURL_ApplicationSho
         let urlOpener = UnhappyPathURLOpener()
         let context = ApplicationTestBuilder().with(urlOpener).build()
         context.performSuccessfulSync(response: syncResponse)
-        let dealerIdentifier = Dealer2.Identifier(dealer.identifier)
+        let dealerIdentifier = Dealer.Identifier(dealer.identifier)
         context.application.openWebsite(for: dealerIdentifier)
         
         XCTAssertNil(urlOpener.capturedURLToOpen)
@@ -36,7 +36,7 @@ class WhenToldToOpenDealersWebsite_WhenApplicationCannotHandleURL_ApplicationSho
         let externalContentHandler = CapturingExternalContentHandler()
         context.application.setExternalContentHandler(externalContentHandler)
         context.performSuccessfulSync(response: syncResponse)
-        let dealerIdentifier = Dealer2.Identifier(dealer.identifier)
+        let dealerIdentifier = Dealer.Identifier(dealer.identifier)
         context.application.openWebsite(for: dealerIdentifier)
         let expected = URL(string: "https://www.eurofurence.org")!
         

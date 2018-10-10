@@ -14,8 +14,8 @@ import UIKit
 class StubDealerDetailModuleProviding: DealerDetailModuleProviding {
     
     let stubInterface = UIViewController()
-    private(set) var capturedModel: Dealer2.Identifier?
-    func makeDealerDetailModule(for dealer: Dealer2.Identifier) -> UIViewController {
+    private(set) var capturedModel: Dealer.Identifier?
+    func makeDealerDetailModule(for dealer: Dealer.Identifier) -> UIViewController {
         capturedModel = dealer
         return stubInterface
     }

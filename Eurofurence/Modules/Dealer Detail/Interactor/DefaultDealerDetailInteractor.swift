@@ -80,10 +80,10 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
         }
 
         private var components = [DetailViewModelComponent]()
-        private let dealerIdentifier: Dealer2.Identifier
+        private let dealerIdentifier: Dealer.Identifier
         private let dealersService: DealersService
 
-        init(data: ExtendedDealerData, dealerIdentifier: Dealer2.Identifier, dealersService: DealersService) {
+        init(data: ExtendedDealerData, dealerIdentifier: Dealer.Identifier, dealersService: DealersService) {
             self.dealerIdentifier = dealerIdentifier
             self.dealersService = dealersService
 
@@ -188,7 +188,7 @@ class DefaultDealerDetailInteractor: DealerDetailInteractor {
         self.dealersService = dealersService
     }
 
-    func makeDealerDetailViewModel(for identifier: Dealer2.Identifier,
+    func makeDealerDetailViewModel(for identifier: Dealer.Identifier,
                                    completionHandler: @escaping (DealerDetailViewModel) -> Void) {
         dealersService.fetchExtendedDealerData(for: identifier) { (data) in
             completionHandler(ViewModel(data: data, dealerIdentifier: identifier, dealersService: self.dealersService))
