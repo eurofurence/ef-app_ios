@@ -1190,6 +1190,7 @@
 		CAEA1041216E1EE600B0C7A6 /* CapturingEurofurenceApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */; };
 		CAEA1042216E1FB400B0C7A6 /* CapturingSignificantTimeChangeAdapterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68420D59A5B009D3A9E /* CapturingSignificantTimeChangeAdapterDelegate.swift */; };
 		CAEA1044216E775300B0C7A6 /* ScreenshotAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */; };
+		CAEA1046216E77DE00B0C7A6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA1045216E77DE00B0C7A6 /* Theme.swift */; };
 		CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */; };
 		CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */; };
 		CAEAEBFA1FE0037700C0EE7C /* MessageDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF91FE0037700C0EE7C /* MessageDetailPresenterTests.swift */; };
@@ -2483,6 +2484,7 @@
 		CAEA0F5E216D294000B0C7A6 /* EurofurenceAppCoreTestDoubles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EurofurenceAppCoreTestDoubles.h; sourceTree = "<group>"; };
 		CAEA0F5F216D294000B0C7A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeHoursDateFormatter.swift; sourceTree = "<group>"; };
+		CAEA1045216E77DE00B0C7A6 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		CAEAEBE61FDC94F800C0EE7C /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailModuleProviding.swift; sourceTree = "<group>"; };
 		CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailModuleBuilder.swift; sourceTree = "<group>"; };
@@ -3015,6 +3017,7 @@
 				9ACF99431EBE172D006FC958 /* Info.plist */,
 				9ACF99371EBE172D006FC958 /* AppDelegate.swift */,
 				CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */,
+				CAEA1045216E77DE00B0C7A6 /* Theme.swift */,
 				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
 				CAF1A674211E4B3600513226 /* Application Adapter Implementations */,
 				CA1FE99C1FA0B3F2009C7DF3 /* Director */,
@@ -7079,6 +7082,7 @@
 				CAF81C6020DD92E900898C52 /* DealerAboutTheArtistComponent.swift in Sources */,
 				CA36A44920D76FA500EE6537 /* FoundationShortFormDayAndTimeFormatter.swift in Sources */,
 				CA250DCE20D6D4E500E7513C /* ScheduleSearchViewModel.swift in Sources */,
+				CAEA1046216E77DE00B0C7A6 /* Theme.swift in Sources */,
 				CA36A4CA20DA7B1B00EE6537 /* DealersSearchResultsBinder.swift in Sources */,
 				CA00AE8120D1C15900C2FBB0 /* ScheduleDaysBinder.swift in Sources */,
 				CA17FE8120580082005A4C05 /* LinkScene.swift in Sources */,
