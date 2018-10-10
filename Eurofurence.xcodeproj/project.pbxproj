@@ -1404,7 +1404,7 @@
 		9AB64BCE1F02665D004E8D91 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		9ACF99341EBE172D006FC958 /* Eurofurence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eurofurence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ACF99371EBE172D006FC958 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9ACF993E1EBE172D006FC958 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Eurofurence/Assets.xcassets; sourceTree = "<group>"; };
+		9ACF993E1EBE172D006FC958 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9ACF99411EBE172D006FC958 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9ACF99431EBE172D006FC958 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9ACF99481EBE172D006FC958 /* EurofurenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2979,7 +2979,6 @@
 			children = (
 				CAEA0E84216BEF7C00B0C7A6 /* RandomDataGeneration */,
 				9ACF99361EBE172D006FC958 /* Eurofurence */,
-				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
 				78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */,
 				CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */,
 				9ACF994B1EBE172D006FC958 /* EurofurenceTests */,
@@ -3013,6 +3012,7 @@
 		9ACF99361EBE172D006FC958 /* Eurofurence */ = {
 			isa = PBXGroup;
 			children = (
+				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
 				CA728436209C7DE1007D912A /* Settings.bundle */,
 				9ACF99431EBE172D006FC958 /* Info.plist */,
 				9ACF99371EBE172D006FC958 /* AppDelegate.swift */,
