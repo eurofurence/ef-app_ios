@@ -8,7 +8,7 @@
 
 @testable import Eurofurence
 import EurofurenceAppCore
-import EurofurenceAppCore
+import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenScheduleIndicatesCurrentDayHasChanged_NewsInteractorShould: XCTestCase {

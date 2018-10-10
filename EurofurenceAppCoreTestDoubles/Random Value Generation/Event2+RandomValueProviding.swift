@@ -35,7 +35,7 @@ extension Event2: RandomValueProviding {
                       isPhotoshoot: .random)
     }
     
-    static var randomStandardEvent: Event2 {
+    public static var randomStandardEvent: Event2 {
         var event = Event2.random
         event.isSponsorOnly = false
         event.isSuperSponsorOnly = false

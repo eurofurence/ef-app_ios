@@ -8,7 +8,7 @@
 
 @testable import Eurofurence
 import EurofurenceAppCore
-import EurofurenceAppCore
+import EurofurenceAppCoreTestDoubles
 
 class CapturingMessagesModuleDelegate: MessagesModuleDelegate {
     

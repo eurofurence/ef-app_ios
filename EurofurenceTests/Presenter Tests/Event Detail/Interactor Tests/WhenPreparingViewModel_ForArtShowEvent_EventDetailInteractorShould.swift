@@ -8,7 +8,7 @@
 
 @testable import Eurofurence
 import EurofurenceAppCore
-import EurofurenceAppCore
+import EurofurenceAppCoreTestDoubles
 import XCTest
 
 class WhenPreparingViewModel_ForArtShowEvent_EventDetailInteractorShould: XCTestCase {
