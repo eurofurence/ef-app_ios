@@ -9,15 +9,6 @@
 import EurofurenceAppCore
 import XCTest
 
-class CapturingMapsObserver: MapsObserver {
-    
-    private(set) var capturedMaps: [Map2] = []
-    func mapsServiceDidChangeMaps(_ maps: [Map2]) {
-        capturedMaps = maps
-    }
-    
-}
-
 class WhenObservingMaps_AfterSyncSucceeds_ApplicationShould: XCTestCase {
     
     func testProvideTheMapsToTheObserverInAlphabeticalOrder() {

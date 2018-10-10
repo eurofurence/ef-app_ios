@@ -9,22 +9,6 @@
 import EurofurenceAppCore
 import XCTest
 
-struct StubForceRefreshRequired: ForceRefreshRequired {
-    
-    var isForceRefreshRequired: Bool
-    
-}
-
-class CapturingForceRefreshRequired: ForceRefreshRequired {
-    
-    private(set) var wasEnquiredWhetherForceRefreshRequired = false
-    var isForceRefreshRequired: Bool {
-        wasEnquiredWhetherForceRefreshRequired = true
-        return true
-    }
-    
-}
-
 class WhenUpgradingBetweenAppVersions_ApplicationShould: XCTestCase {
     
     func testIndicateStoreIsStale() {

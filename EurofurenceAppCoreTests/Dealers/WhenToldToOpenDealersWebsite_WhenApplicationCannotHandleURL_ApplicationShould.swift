@@ -10,15 +10,6 @@ import EurofurenceAppCore
 import EurofurenceAppCoreTestDoubles
 import XCTest
 
-class CapturingExternalContentHandler: ExternalContentHandler {
-    
-    private(set) var capturedExternalContentURL: URL?
-    func handleExternalContent(url: URL) {
-        capturedExternalContentURL = url
-    }
-    
-}
-
 class WhenToldToOpenDealersWebsite_WhenApplicationCannotHandleURL_ApplicationShould: XCTestCase {
     
     func testNotTellTheApplicationToOpenTheURL() {
