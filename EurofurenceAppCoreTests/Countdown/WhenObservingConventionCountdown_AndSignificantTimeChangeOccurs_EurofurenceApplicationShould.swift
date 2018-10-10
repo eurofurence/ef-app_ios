@@ -20,7 +20,7 @@ class WhenObservingConventionCountdown_AndSignificantTimeChangeOccurs_Eurofurenc
         context.application.add(observer)
         expected = .random
         context.dateDistanceCalculator.stubDistance(between: clockTime, and: context.conventionStartDateRepository.conventionStartDate, with: expected)
-        context.significantTimeChangeEventSource.simulateSignificantTimeChange()
+        context.significantTimeChangeAdapter.simulateSignificantTimeChange()
         
         XCTAssertEqual(expected, observer.capturedDaysRemaining)
     }

@@ -100,7 +100,7 @@ public class EurofurenceApplication: EurofurenceApplicationProtocol {
                                                                   remoteNotificationsTokenRegistration: remoteNotificationsTokenRegistration,
                                                                   loginAPI: loginAPI)
 
-        conventionCountdownController = ConventionCountdownController(significantTimeChangeEventSource: significantTimeChangeEventSource,
+        conventionCountdownController = ConventionCountdownController(eventBus: eventBus,
                                                                       conventionStartDateRepository: conventionStartDateRepository,
                                                                       dateDistanceCalculator: dateDistanceCalculator,
                                                                       clock: clock)
