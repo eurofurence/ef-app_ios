@@ -30,7 +30,7 @@ class DefaultKnowledgeGroupsInteractorTests: XCTestCase {
                                            knowledgeEntries: entriesViewModels)
     }
     
-    private func expectedViewModelForEntry(_ entry: KnowledgeEntry2) -> KnowledgeListEntryViewModel {
+    private func expectedViewModelForEntry(_ entry: KnowledgeEntry) -> KnowledgeListEntryViewModel {
         return KnowledgeListEntryViewModel(title: entry.title)
     }
     

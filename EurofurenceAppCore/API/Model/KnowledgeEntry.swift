@@ -1,12 +1,12 @@
 //
-//  KnowledgeEntry2.swift
+//  KnowledgeEntry.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 23/02/2018.
 //  Copyright © 2018 Eurofurence. All rights reserved.
 //
 
-public struct KnowledgeEntry2: Comparable, Equatable {
+public struct KnowledgeEntry: Comparable, Equatable {
 
     public struct Identifier: Comparable, Equatable, Hashable, RawRepresentable {
 
@@ -22,19 +22,19 @@ public struct KnowledgeEntry2: Comparable, Equatable {
 
         public var rawValue: String
 
-        public static func < (lhs: KnowledgeEntry2.Identifier, rhs: KnowledgeEntry2.Identifier) -> Bool {
+        public static func < (lhs: KnowledgeEntry.Identifier, rhs: KnowledgeEntry.Identifier) -> Bool {
             return lhs.rawValue < rhs.rawValue
         }
 
     }
 
-    public var identifier: KnowledgeEntry2.Identifier
+    public var identifier: KnowledgeEntry.Identifier
     public var title: String
     public var order: Int
     public var contents: String
     public var links: [Link]
 
-    public init(identifier: KnowledgeEntry2.Identifier, title: String, order: Int, contents: String, links: [Link]) {
+    public init(identifier: KnowledgeEntry.Identifier, title: String, order: Int, contents: String, links: [Link]) {
         self.identifier = identifier
         self.title = title
         self.order = order
@@ -42,16 +42,16 @@ public struct KnowledgeEntry2: Comparable, Equatable {
         self.links = links
     }
 
-    public static func <(lhs: KnowledgeEntry2, rhs: KnowledgeEntry2) -> Bool {
+    public static func <(lhs: KnowledgeEntry, rhs: KnowledgeEntry) -> Bool {
         return lhs.order < rhs.order
     }
 
 }
 
-public extension KnowledgeEntry2 {
+public extension KnowledgeEntry {
 
-    public static func fromServerModel(_ entry: APIKnowledgeEntry) -> KnowledgeEntry2 {
-        return KnowledgeEntry2(identifier: KnowledgeEntry2.Identifier(entry.identifier),
+    public static func fromServerModel(_ entry: APIKnowledgeEntry) -> KnowledgeEntry {
+        return KnowledgeEntry(identifier: KnowledgeEntry.Identifier(entry.identifier),
                                title: entry.title,
                                order: entry.order,
                                contents: entry.text,

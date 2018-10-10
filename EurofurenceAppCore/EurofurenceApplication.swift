@@ -215,7 +215,7 @@ public class EurofurenceApplication: EurofurenceApplicationProtocol {
         knowledge.add(observer)
     }
 
-    public func fetchKnowledgeEntry(for identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping (KnowledgeEntry2) -> Void) {
+    public func fetchKnowledgeEntry(for identifier: KnowledgeEntry.Identifier, completionHandler: @escaping (KnowledgeEntry) -> Void) {
         knowledge.fetchKnowledgeEntry(for: identifier, completionHandler: completionHandler)
     }
 
@@ -223,7 +223,7 @@ public class EurofurenceApplication: EurofurenceApplicationProtocol {
         knowledge.fetchKnowledgeGroup(identifier: identifier, completionHandler: completionHandler)
     }
 
-    public func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping ([Data]) -> Void) {
+    public func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry.Identifier, completionHandler: @escaping ([Data]) -> Void) {
         knowledge.fetchImagesForKnowledgeEntry(identifier: identifier, completionHandler: completionHandler)
     }
 

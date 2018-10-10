@@ -19,7 +19,7 @@ class WhenFetchingImagesForKnowledgeEntry_WhenEntryHasImages_ApplicationShould: 
         let images = randomEntry.imageIdentifiers
         let expected = images.compactMap(context.imageRepository.loadImage).map({ $0.pngImageData })
         var actual: [Data]?
-        context.application.fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry2.Identifier(randomEntry.identifier)) { actual = $0 }
+        context.application.fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry.Identifier(randomEntry.identifier)) { actual = $0 }
         
         XCTAssertEqual(expected, actual)
     }

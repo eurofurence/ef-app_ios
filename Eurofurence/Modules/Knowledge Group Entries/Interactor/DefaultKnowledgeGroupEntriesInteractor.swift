@@ -14,7 +14,7 @@ struct DefaultKnowledgeGroupEntriesInteractor: KnowledgeGroupEntriesInteractor {
     private struct ViewModel: KnowledgeGroupEntriesViewModel {
 
         var title: String
-        var entries: [KnowledgeEntry2]
+        var entries: [KnowledgeEntry]
 
         var numberOfEntries: Int { return entries.count }
 
@@ -23,7 +23,7 @@ struct DefaultKnowledgeGroupEntriesInteractor: KnowledgeGroupEntriesInteractor {
             return KnowledgeListEntryViewModel(title: entry.title)
         }
 
-        func identifierForKnowledgeEntry(at index: Int) -> KnowledgeEntry2.Identifier {
+        func identifierForKnowledgeEntry(at index: Int) -> KnowledgeEntry.Identifier {
             return entries[index].identifier
         }
 

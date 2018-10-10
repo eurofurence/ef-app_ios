@@ -172,7 +172,7 @@ class ApplicationTestBuilder {
         
         func expectedKnowledgeGroup(from group: APIKnowledgeGroup, syncResponse: APISyncResponse) -> KnowledgeGroup2 {
             let entries = syncResponse.knowledgeEntries.changed.filter({ $0.groupIdentifier == group.identifier }).map { (entry) in
-                return KnowledgeEntry2(identifier: KnowledgeEntry2.Identifier(entry.identifier),
+                return KnowledgeEntry(identifier: KnowledgeEntry.Identifier(entry.identifier),
                                        title: entry.title,
                                        order: entry.order,
                                        contents: entry.text,

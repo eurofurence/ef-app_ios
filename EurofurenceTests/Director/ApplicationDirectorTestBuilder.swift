@@ -94,7 +94,7 @@ class StubKnowledgeGroupEntriesModuleProviding: KnowledgeGroupEntriesModuleProvi
 
 extension StubKnowledgeGroupEntriesModuleProviding {
     
-    func simulateKnowledgeEntrySelected(_ entry: KnowledgeEntry2.Identifier) {
+    func simulateKnowledgeEntrySelected(_ entry: KnowledgeEntry.Identifier) {
         delegate?.knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: entry)
     }
     

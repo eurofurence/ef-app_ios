@@ -11,6 +11,6 @@ import Foundation
 
 protocol KnowledgeGroupEntriesModuleDelegate {
 
-    func knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: KnowledgeEntry2.Identifier)
+    func knowledgeGroupEntriesModuleDidSelectKnowledgeEntry(identifier: KnowledgeEntry.Identifier)
 
 }

@@ -35,9 +35,9 @@ public struct KnowledgeGroup2: Comparable, Equatable {
     public var groupDescription: String
     public var fontAwesomeCharacterAddress: Character
     public var order: Int
-    public var entries: [KnowledgeEntry2]
+    public var entries: [KnowledgeEntry]
 
-    public init(identifier: KnowledgeGroup2.Identifier, title: String, groupDescription: String, fontAwesomeCharacterAddress: Character, order: Int, entries: [KnowledgeEntry2]) {
+    public init(identifier: KnowledgeGroup2.Identifier, title: String, groupDescription: String, fontAwesomeCharacterAddress: Character, order: Int, entries: [KnowledgeEntry]) {
         self.identifier = identifier
         self.title = title
         self.groupDescription = groupDescription
@@ -56,7 +56,7 @@ public extension KnowledgeGroup2 {
 
     public static func fromServerModels(groups: [APIKnowledgeGroup], entries: [APIKnowledgeEntry]) -> [KnowledgeGroup2] {
         return groups.map({ (group) -> KnowledgeGroup2 in
-            let entries = entries.filter({ $0.groupIdentifier == group.identifier }).map(KnowledgeEntry2.fromServerModel).sorted()
+            let entries = entries.filter({ $0.groupIdentifier == group.identifier }).map(KnowledgeEntry.fromServerModel).sorted()
             let defaultFontAwesomeBackupCharacter: Character = " "
             let fontAwesomeCharacter: Character = Int(group.fontAwesomeCharacterAddress, radix: 16)
                 .let(UnicodeScalar.init)

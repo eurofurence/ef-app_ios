@@ -12,13 +12,13 @@ class KnowledgeDetailPresenter: KnowledgeDetailSceneDelegate {
 
     private let delegate: KnowledgeDetailModuleDelegate
     private let knowledgeDetailScene: KnowledgeDetailScene
-    private let identifier: KnowledgeEntry2.Identifier
+    private let identifier: KnowledgeEntry.Identifier
     private let knowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor
     private var viewModel: KnowledgeEntryDetailViewModel?
 
     init(delegate: KnowledgeDetailModuleDelegate,
          knowledgeDetailScene: KnowledgeDetailScene,
-         identifier: KnowledgeEntry2.Identifier,
+         identifier: KnowledgeEntry.Identifier,
          knowledgeDetailSceneInteractor: KnowledgeDetailSceneInteractor) {
         self.delegate = delegate
         self.knowledgeDetailScene = knowledgeDetailScene

@@ -17,12 +17,12 @@ class FakeKnowledgeService: KnowledgeService {
         
     }
     
-    private var stubbedKnowledgeEntries = [KnowledgeEntry2.Identifier : KnowledgeEntry2]()
-    func fetchKnowledgeEntry(for identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping (KnowledgeEntry2) -> Void) {
+    private var stubbedKnowledgeEntries = [KnowledgeEntry.Identifier : KnowledgeEntry]()
+    func fetchKnowledgeEntry(for identifier: KnowledgeEntry.Identifier, completionHandler: @escaping (KnowledgeEntry) -> Void) {
         completionHandler(stubbedKnowledgeEntry(for: identifier))
     }
     
-    func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry2.Identifier, completionHandler: @escaping ([Data]) -> Void) {
+    func fetchImagesForKnowledgeEntry(identifier: KnowledgeEntry.Identifier, completionHandler: @escaping ([Data]) -> Void) {
         completionHandler(stubbedKnowledgeEntryImages(for: identifier))
     }
     
@@ -35,12 +35,12 @@ class FakeKnowledgeService: KnowledgeService {
 
 extension FakeKnowledgeService {
     
-    func stubbedKnowledgeEntry(for identifier: KnowledgeEntry2.Identifier) -> KnowledgeEntry2 {
+    func stubbedKnowledgeEntry(for identifier: KnowledgeEntry.Identifier) -> KnowledgeEntry {
         if let entry = stubbedKnowledgeEntries[identifier] {
             return entry
         }
         
-        var randomEntry = KnowledgeEntry2.random
+        var randomEntry = KnowledgeEntry.random
         randomEntry.identifier = identifier
         stubbedKnowledgeEntries[identifier] = randomEntry
         
@@ -51,7 +51,7 @@ extension FakeKnowledgeService {
         stubbedGroups.append(group)
     }
     
-    func stubbedKnowledgeEntryImages(for identifier: KnowledgeEntry2.Identifier) -> [Data] {
+    func stubbedKnowledgeEntryImages(for identifier: KnowledgeEntry.Identifier) -> [Data] {
         return [identifier.rawValue.data(using: .utf8)!]
     }
     
@@ -73,7 +73,7 @@ class DefaultKnowledgeDetailSceneInteractorTests: XCTestCase {
     }
     
     func testProducingViewModelConvertsKnowledgeEntryContentsViaWikiRenderer() {
-        let entry = KnowledgeEntry2.random
+        let entry = KnowledgeEntry.random
         var viewModel: KnowledgeEntryDetailViewModel?
         interactor.makeViewModel(for: entry.identifier) { viewModel = $0 }
         let randomizedEntry = knowledgeService.stubbedKnowledgeEntry(for: entry.identifier)
@@ -83,7 +83,7 @@ class DefaultKnowledgeDetailSceneInteractorTests: XCTestCase {
     }
     
     func testProducingViewModelConvertsLinksIntoViewModels() {
-        let entry = KnowledgeEntry2.random
+        let entry = KnowledgeEntry.random
         var viewModel: KnowledgeEntryDetailViewModel?
         interactor.makeViewModel(for: entry.identifier) { viewModel = $0 }
         let randomizedEntry = knowledgeService.stubbedKnowledgeEntry(for: entry.identifier)
@@ -93,7 +93,7 @@ class DefaultKnowledgeDetailSceneInteractorTests: XCTestCase {
     }
     
     func testRequestingLinkAtIndexReturnsExpectedLink() {
-        let entry = KnowledgeEntry2.random
+        let entry = KnowledgeEntry.random
         var viewModel: KnowledgeEntryDetailViewModel?
         interactor.makeViewModel(for: entry.identifier) { viewModel = $0 }
         let randomizedEntry = knowledgeService.stubbedKnowledgeEntry(for: entry.identifier)
@@ -105,7 +105,7 @@ class DefaultKnowledgeDetailSceneInteractorTests: XCTestCase {
     }
     
     func testUsesTitlesOfEntryAsTitle() {
-        let entry = KnowledgeEntry2.random
+        let entry = KnowledgeEntry.random
         var viewModel: KnowledgeEntryDetailViewModel?
         interactor.makeViewModel(for: entry.identifier) { viewModel = $0 }
         let randomizedEntry = knowledgeService.stubbedKnowledgeEntry(for: entry.identifier)
@@ -114,7 +114,7 @@ class DefaultKnowledgeDetailSceneInteractorTests: XCTestCase {
     }
     
     func testAdaptsImagesFromService() {
-        let entry = KnowledgeEntry2.random
+        let entry = KnowledgeEntry.random
         var viewModel: KnowledgeEntryDetailViewModel?
         interactor.makeViewModel(for: entry.identifier) { viewModel = $0 }
         let expected = knowledgeService.stubbedKnowledgeEntryImages(for: entry.identifier).map(KnowledgeEntryImageViewModel.init)
