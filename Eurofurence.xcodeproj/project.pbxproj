@@ -4847,12 +4847,29 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		CA71A346204031E800C847C3 /* Randomness */ = {
+		CA71A346204031E800C847C3 /* Random Value Generation */ = {
 			isa = PBXGroup;
 			children = (
-				CA71A3542041B6E400C847C3 /* View Models */,
+				CA89CBBD208531FB00570D54 /* AnnouncementComponentViewModel+RandomValueProviding.swift */,
+				CA72846B209D1457007D912A /* AnnouncementViewModel+RandomValueProviding.swift */,
+				CA36A46620D84A9B00EE6537 /* CapturingDealersViewModel+RandomValueProviding.swift */,
+				CA0E521A208FC107005259FE /* ConventionCountdownComponentViewModel+RandomValueProviding.swift */,
+				CAF81C6120DD95BC00898C52 /* DealerDetailAboutTheArtistViewModel+RandomValueProviding.swift */,
+				CAF81C6920DDA10C00898C52 /* DealerDetailAboutTheArtViewModel+RandomValueProviding.swift */,
+				CA1B6F3820DD1D9D00ADF414 /* DealerDetailLocationAndAvailabilityViewModel+RandomValueProviding.swift */,
+				CA1B6F3020DB91F500ADF414 /* DealerDetailSummaryViewModel+RandomValueProviding.swift */,
+				CA36A46820D84AA900EE6537 /* DealersGroupViewModel+RandomValueProviding.swift */,
+				CA9AC16C2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift */,
+				CACF1EA120B59C3A00D904B5 /* EventDescriptionViewModel+RandomValueProviding.swift */,
+				CACF1EB120B5FF9900D904B5 /* EventGraphicViewModel+RandomValueProviding.swift */,
+				CACF1E9F20B43D0900D904B5 /* EventSummaryViewModel+RandomValueProviding.swift */,
+				CA0F7620203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift */,
+				CA89CBAA207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift */,
+				CA36A46A20D84AB600EE6537 /* StubDealerViewModel+RandomValueProviding.swift */,
+				CA00AE4A20D16BF300C2FBB0 /* StubScheduleViewModel+RandomValueProviding.swift */,
+				CAD68829208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift */,
 			);
-			path = Randomness;
+			path = "Random Value Generation";
 			sourceTree = "<group>";
 		};
 		CA71A3532041B6DA00C847C3 /* Foundation */ = {
@@ -4870,31 +4887,6 @@
 				CAD3BDBC205AA61B00C91E6E /* URL+RandomValueProviding.swift */,
 			);
 			path = Foundation;
-			sourceTree = "<group>";
-		};
-		CA71A3542041B6E400C847C3 /* View Models */ = {
-			isa = PBXGroup;
-			children = (
-				CA89CBBD208531FB00570D54 /* AnnouncementComponentViewModel+RandomValueProviding.swift */,
-				CA72846B209D1457007D912A /* AnnouncementViewModel+RandomValueProviding.swift */,
-				CA0E521A208FC107005259FE /* ConventionCountdownComponentViewModel+RandomValueProviding.swift */,
-				CA9AC16C2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift */,
-				CACF1EA120B59C3A00D904B5 /* EventDescriptionViewModel+RandomValueProviding.swift */,
-				CACF1EB120B5FF9900D904B5 /* EventGraphicViewModel+RandomValueProviding.swift */,
-				CACF1E9F20B43D0900D904B5 /* EventSummaryViewModel+RandomValueProviding.swift */,
-				CA0F7620203229E4009DA079 /* KnowledgeListViewModel+RandomValueProviding.swift */,
-				CA89CBAA207F7FE900570D54 /* NewsViewModel+RandomValueProviding.swift */,
-				CAD68829208A107500B31F5F /* UserWidgetComponentViewModel+RandomValueProviding.swift */,
-				CA00AE4A20D16BF300C2FBB0 /* StubScheduleViewModel+RandomValueProviding.swift */,
-				CA36A46620D84A9B00EE6537 /* CapturingDealersViewModel+RandomValueProviding.swift */,
-				CA36A46820D84AA900EE6537 /* DealersGroupViewModel+RandomValueProviding.swift */,
-				CA36A46A20D84AB600EE6537 /* StubDealerViewModel+RandomValueProviding.swift */,
-				CA1B6F3020DB91F500ADF414 /* DealerDetailSummaryViewModel+RandomValueProviding.swift */,
-				CA1B6F3820DD1D9D00ADF414 /* DealerDetailLocationAndAvailabilityViewModel+RandomValueProviding.swift */,
-				CAF81C6120DD95BC00898C52 /* DealerDetailAboutTheArtistViewModel+RandomValueProviding.swift */,
-				CAF81C6920DDA10C00898C52 /* DealerDetailAboutTheArtViewModel+RandomValueProviding.swift */,
-			);
-			path = "View Models";
 			sourceTree = "<group>";
 		};
 		CA728446209D0119007D912A /* Announcement Detail */ = {
@@ -6280,7 +6272,7 @@
 		CAF9A94F1F558E6200628833 /* Test Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				CA71A346204031E800C847C3 /* Randomness */,
+				CA71A346204031E800C847C3 /* Random Value Generation */,
 			);
 			path = "Test Utilities";
 			sourceTree = "<group>";
