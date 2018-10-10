@@ -9,10 +9,14 @@
 import EurofurenceAppCore
 import Foundation
 
-class CapturingPushPermissionsRequester: PushPermissionsRequester {
+public class CapturingPushPermissionsRequester: PushPermissionsRequester {
     
-    private(set) var wasToldToRequestPushPermissions = false
-    func requestPushPermissions() {
+    public init() {
+        
+    }
+    
+    private(set) public var wasToldToRequestPushPermissions = false
+    public func requestPushPermissions() {
         wasToldToRequestPushPermissions = true
     }
     

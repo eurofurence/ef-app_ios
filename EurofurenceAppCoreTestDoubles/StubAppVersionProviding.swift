@@ -9,8 +9,12 @@
 import EurofurenceAppCore
 import Foundation
 
-struct StubAppVersionProviding: AppVersionProviding {
+public struct StubAppVersionProviding: AppVersionProviding {
     
-    var version: String
+    public var version: String
+
+    public init(version: String) {
+        self.version = version
+    }
     
 }

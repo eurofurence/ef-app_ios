@@ -6,7 +6,6 @@
 //  Copyright © 2017 Eurofurence. All rights reserved.
 //
 
-@testable import Eurofurence
 import EurofurenceAppCore
 import EurofurenceAppCoreTestDoubles
 import XCTest

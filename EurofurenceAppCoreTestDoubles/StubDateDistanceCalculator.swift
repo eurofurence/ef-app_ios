@@ -9,9 +9,13 @@
 import EurofurenceAppCore
 import Foundation
 
-class StubDateDistanceCalculator: DateDistanceCalculator {
+public class StubDateDistanceCalculator: DateDistanceCalculator {
     
-    func calculateDays(between first: Date, and second: Date) -> Int {
+    public init() {
+        
+    }
+    
+    public func calculateDays(between first: Date, and second: Date) -> Int {
         let input = Input(first: first, second: second)
         return stubbedValues[input] ?? .random
     }
@@ -30,7 +34,7 @@ class StubDateDistanceCalculator: DateDistanceCalculator {
     }
     
     private var stubbedValues = [Input : Int]()
-    func stubDistance(between first: Date, and second: Date, with days: Int) {
+    public func stubDistance(between first: Date, and second: Date, with days: Int) {
         stubbedValues[Input(first: first, second: second)] = days
     }
     
