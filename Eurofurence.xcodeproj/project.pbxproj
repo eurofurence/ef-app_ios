@@ -4439,6 +4439,7 @@
 		CA680F8320CDAD32006ACD3D /* Adapter Tests */ = {
 			isa = PBXGroup;
 			children = (
+				CABEB0D820C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift */,
 				CAD7805C1F1E8EB0002A8333 /* KeychainCredentialStoreTests.swift */,
 				CA680F8420CDAE2F006ACD3D /* PersistentImageRepositoryTests.swift */,
 				78FE77D61F1B9FA500E9A0BE /* URLSessionBasedJSONSessionTests.swift */,
@@ -5529,15 +5530,6 @@
 			path = Favourites;
 			sourceTree = "<group>";
 		};
-		CABEB0D720C8A7C1000BEE66 /* Data Store */ = {
-			isa = PBXGroup;
-			children = (
-				CABEB0D820C8A7E7000BEE66 /* CoreDataEurofurenceDataStoreShould.swift */,
-				CADABEFD211778740023C3B6 /* WhenSyncFinishes_ApplicationShould.swift */,
-			);
-			path = "Data Store";
-			sourceTree = "<group>";
-		};
 		CABEB0DA20C9C79B000BEE66 /* Core Data Store */ = {
 			isa = PBXGroup;
 			children = (
@@ -5928,7 +5920,6 @@
 				CAEA0F69216D2B4500B0C7A6 /* Client API */,
 				CA2761C220E02D57000E52AC /* Collect-them-All */,
 				CA162E6C20A468C4004AFED6 /* Countdown */,
-				CABEB0D720C8A7C1000BEE66 /* Data Store */,
 				CA08157B20D3D45A00F750D4 /* Days */,
 				CA36A4A420D9845A00EE6537 /* Dealers */,
 				CA734D6B2109F35100221886 /* Deletions */,
@@ -6203,6 +6194,7 @@
 			isa = PBXGroup;
 			children = (
 				CA283A5B20E6E40500F7D195 /* BeforeSyncInitiated_ApplicationShould.swift */,
+				CA66C025212595B700F87AFE /* WhenPerformingFullStoreRefresh_ApplicationShould.swift */,
 				CABA83F120CE332500DD0795 /* WhenPerformingSubsequentSync_ApplicationShould.swift */,
 				CA283A6620E6F61B00F7D195 /* WhenPerformingSync_ApplicationShould.swift */,
 				CACF1EC120B6B92F00D904B5 /* WhenPerformingSync_BeforeImageDownload.swift */,
@@ -6210,9 +6202,9 @@
 				CA8276B7204F19CA006A7419 /* WhenPerformingSyncThatFails.swift */,
 				CAF597A120458D1000089BE8 /* WhenPerformingSyncThatSucceeds.swift */,
 				CA8276B9204F1C5F006A7419 /* WhenSavingSuccessfulSyncResponse.swift */,
+				CADABEFD211778740023C3B6 /* WhenSyncFinishes_ApplicationShould.swift */,
 				CA72849720A1C091007D912A /* WhenSyncingWhileLoggedIn.swift */,
 				CAFD012720C6F2A2004F3935 /* WhenSyncSucceeds_ForEmptyDataStore_ApplicationShould.swift */,
-				CA66C025212595B700F87AFE /* WhenPerformingFullStoreRefresh_ApplicationShould.swift */,
 			);
 			path = Sync;
 			sourceTree = "<group>";
