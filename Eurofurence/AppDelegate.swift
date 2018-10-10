@@ -51,7 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         app = EurofurenceApplicationBuilder()
             .with(remoteNotificationsTokenRegistration)
             .with(pushPermissionsRequester)
-            .with(significantTimeChangeEventSource)
             .with(significantTimeChangeAdapter)
             .with(urlOpener)
             .with(longRunningTaskManager)

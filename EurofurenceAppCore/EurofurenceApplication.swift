@@ -66,7 +66,6 @@ public class EurofurenceApplication: EurofurenceApplicationProtocol {
          imageAPI: ImageAPI,
          dateDistanceCalculator: DateDistanceCalculator,
          conventionStartDateRepository: ConventionStartDateRepository,
-         significantTimeChangeEventSource: SignificantTimeChangeEventSource?,
          timeIntervalForUpcomingEventsSinceNow: TimeInterval,
          imageRepository: ImageRepository,
          significantTimeChangeAdapter: SignificantTimeChangeAdapter?,

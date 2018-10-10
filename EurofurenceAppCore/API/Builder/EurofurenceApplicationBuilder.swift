@@ -21,7 +21,6 @@ public class EurofurenceApplicationBuilder {
     private var syncAPI: SyncAPI
     private var dateDistanceCalculator: DateDistanceCalculator
     private var conventionStartDateRepository: ConventionStartDateRepository
-    private var significantTimeChangeEventSource: SignificantTimeChangeEventSource?
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
     private var imageAPI: ImageAPI
     private var imageRepository: ImageRepository
@@ -124,12 +123,6 @@ public class EurofurenceApplicationBuilder {
     }
 
     @discardableResult
-    public func with(_ significantTimeChangeEventSource: SignificantTimeChangeEventSource) -> EurofurenceApplicationBuilder {
-        self.significantTimeChangeEventSource = significantTimeChangeEventSource
-        return self
-    }
-
-    @discardableResult
     public func with(timeIntervalForUpcomingEventsSinceNow: TimeInterval) -> EurofurenceApplicationBuilder {
         self.timeIntervalForUpcomingEventsSinceNow = timeIntervalForUpcomingEventsSinceNow
         return self
@@ -208,7 +201,6 @@ public class EurofurenceApplicationBuilder {
                                       imageAPI: imageAPI,
                                       dateDistanceCalculator: dateDistanceCalculator,
                                       conventionStartDateRepository: conventionStartDateRepository,
-                                      significantTimeChangeEventSource: significantTimeChangeEventSource,
                                       timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow,
                                       imageRepository: imageRepository,
                                       significantTimeChangeAdapter: significantTimeChangeAdapter,

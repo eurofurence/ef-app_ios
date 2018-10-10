@@ -23,7 +23,6 @@ class ApplicationTestBuilder {
         var dataStore: CapturingEurofurenceDataStore
         var dateDistanceCalculator: StubDateDistanceCalculator
         var conventionStartDateRepository: StubConventionStartDateRepository
-        var significantTimeChangeEventSource: FakeSignificantTimeChangeEventSource
         var imageAPI: FakeImageAPI
         var imageRepository: CapturingImageRepository
         var significantTimeChangeAdapter: CapturingSignificantTimeChangeAdapter
@@ -290,7 +289,6 @@ class ApplicationTestBuilder {
     func build() -> Context {
         let dateDistanceCalculator = StubDateDistanceCalculator()
         let conventionStartDateRepository = StubConventionStartDateRepository()
-        let significantTimeChangeEventSource = FakeSignificantTimeChangeEventSource()
         let significantTimeChangeAdapter = CapturingSignificantTimeChangeAdapter()
         let longRunningTaskManager = FakeLongRunningTaskManager()
         let notificationsService = CapturingNotificationsService()
@@ -308,7 +306,6 @@ class ApplicationTestBuilder {
             .with(syncAPI)
             .with(dateDistanceCalculator)
             .with(conventionStartDateRepository)
-            .with(significantTimeChangeEventSource)
             .with(timeIntervalForUpcomingEventsSinceNow: timeIntervalForUpcomingEventsSinceNow)
             .with(imageAPI)
             .with(imageRepository)
@@ -332,7 +329,6 @@ class ApplicationTestBuilder {
                        dataStore: dataStore,
                        dateDistanceCalculator: dateDistanceCalculator,
                        conventionStartDateRepository: conventionStartDateRepository,
-                       significantTimeChangeEventSource: significantTimeChangeEventSource,
                        imageAPI: imageAPI,
                        imageRepository: imageRepository,
                        significantTimeChangeAdapter: significantTimeChangeAdapter,
