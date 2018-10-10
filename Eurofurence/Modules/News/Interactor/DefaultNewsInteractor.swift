@@ -37,8 +37,8 @@ class DefaultNewsInteractor: NewsInteractor,
     private var daysUntilConvention: Int?
     private var runningEvents = [Event2]()
     private var upcomingEvents = [Event2]()
-    private var announcements = [Announcement2]()
-    private var readAnnouncements = [Announcement2.Identifier]()
+    private var announcements = [Announcement]()
+    private var readAnnouncements = [Announcement.Identifier]()
     private var currentUser: User?
     private let dateDistanceCalculator: DateDistanceCalculator
     private let clock: Clock
@@ -109,12 +109,12 @@ class DefaultNewsInteractor: NewsInteractor,
 
     // MARK: AnnouncementsServiceObserver
 
-    func eurofurenceApplicationDidChangeAnnouncements(_ announcements: [Announcement2]) {
+    func eurofurenceApplicationDidChangeAnnouncements(_ announcements: [Announcement]) {
         self.announcements = Array(announcements.prefix(3))
         regenerateViewModel()
     }
 
-    func announcementsServiceDidUpdateReadAnnouncements(_ readAnnouncements: [Announcement2.Identifier]) {
+    func announcementsServiceDidUpdateReadAnnouncements(_ readAnnouncements: [Announcement.Identifier]) {
         self.readAnnouncements = readAnnouncements
         regenerateViewModel()
     }
@@ -331,11 +331,11 @@ class DefaultNewsInteractor: NewsInteractor,
 
     private struct AnnouncementsComponent: NewsViewModelComponent {
 
-        private let announcements: [Announcement2]
+        private let announcements: [Announcement]
         private let viewModels: [AnnouncementComponentViewModel]
 
-        init(announcements: [Announcement2],
-             readAnnouncements: [Announcement2.Identifier],
+        init(announcements: [Announcement],
+             readAnnouncements: [Announcement.Identifier],
              announcementsDateFormatter: AnnouncementDateFormatter,
 			 markdownRenderer: MarkdownRenderer) {
             self.announcements = announcements

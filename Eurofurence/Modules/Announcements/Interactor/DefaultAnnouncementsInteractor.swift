@@ -39,8 +39,8 @@ struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
 
         private let announcementDateFormatter: AnnouncementDateFormatter
 		private let markdownRenderer: MarkdownRenderer
-        private var announcements = [Announcement2]()
-        private var readAnnouncements = [Announcement2.Identifier]()
+        private var announcements = [Announcement]()
+        private var readAnnouncements = [Announcement.Identifier]()
 
         init(announcementsService: AnnouncementsService, announcementDateFormatter: AnnouncementDateFormatter,
 			 markdownRenderer: MarkdownRenderer) {
@@ -70,16 +70,16 @@ struct DefaultAnnouncementsInteractor: AnnouncementsInteractor {
                                                   isRead: isRead)
         }
 
-        func identifierForAnnouncement(at index: Int) -> Announcement2.Identifier {
+        func identifierForAnnouncement(at index: Int) -> Announcement.Identifier {
             return announcements[index].identifier
         }
 
-        func eurofurenceApplicationDidChangeAnnouncements(_ announcements: [Announcement2]) {
+        func eurofurenceApplicationDidChangeAnnouncements(_ announcements: [Announcement]) {
             self.announcements = announcements
             delegate?.announcementsViewModelDidChangeAnnouncements()
         }
 
-        func announcementsServiceDidUpdateReadAnnouncements(_ readAnnouncements: [Announcement2.Identifier]) {
+        func announcementsServiceDidUpdateReadAnnouncements(_ readAnnouncements: [Announcement.Identifier]) {
             self.readAnnouncements = readAnnouncements
             delegate?.announcementsViewModelDidChangeAnnouncements()
         }

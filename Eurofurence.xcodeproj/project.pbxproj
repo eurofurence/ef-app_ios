@@ -871,7 +871,7 @@
 		CAEA0DAD216BDE2300B0C7A6 /* SignificantTimeChangeAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C67A20D59457009D3A9E /* SignificantTimeChangeAdapter.swift */; };
 		CAEA0DAF216BDE2300B0C7A6 /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDC82061382000C91E6E /* URLOpener.swift */; };
 		CAEA0DB0216BDE2300B0C7A6 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D07FC1FE904CD00BFD785 /* UserPreferences.swift */; };
-		CAEA0DB1216BDE2300B0C7A6 /* Announcement2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E520E208F4BDF005259FE /* Announcement2.swift */; };
+		CAEA0DB1216BDE2300B0C7A6 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E520E208F4BDF005259FE /* Announcement.swift */; };
 		CAEA0DB2216BDE2300B0C7A6 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780421F1D4CA3002A8333 /* Credential.swift */; };
 		CAEA0DB3216BDE2300B0C7A6 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8820D28AAD00C2FBB0 /* Day.swift */; };
 		CAEA0DB4216BDE2300B0C7A6 /* Dealer2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A49220D92ED400EE6537 /* Dealer2.swift */; };
@@ -1003,7 +1003,7 @@
 		CAEA0F7A216D341600B0C7A6 /* StubClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780481F1D51EB002A8333 /* StubClock.swift */; };
 		CAEA0F7C216D370600B0C7A6 /* FakeHoursDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA0F7B216D370600B0C7A6 /* FakeHoursDateFormatter.swift */; };
 		CAEA0F7D216E188C00B0C7A6 /* CapturingURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */; };
-		CAEA0F7F216E1AE200B0C7A6 /* Announcement2+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5210208F4BF3005259FE /* Announcement2+RandomValueProviding.swift */; };
+		CAEA0F7F216E1AE200B0C7A6 /* Announcement+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5210208F4BF3005259FE /* Announcement+RandomValueProviding.swift */; };
 		CAEA0F81216E1AE200B0C7A6 /* Day+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */; };
 		CAEA0F82216E1AE200B0C7A6 /* Event2+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9320A87D3D004AFED6 /* Event2+RandomValueProviding.swift */; };
 		CAEA0F83216E1AE200B0C7A6 /* KnowledgeEntry2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03C22041C2FD0028BD62 /* KnowledgeEntry2.swift */; };
@@ -1495,8 +1495,8 @@
 		CA0E5206208E700E005259FE /* DealersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersViewController.swift; sourceTree = "<group>"; };
 		CA0E5208208E7020005259FE /* Dealers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dealers.storyboard; sourceTree = "<group>"; };
 		CA0E520C208E759F005259FE /* DefaultNewsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNewsInteractor.swift; sourceTree = "<group>"; };
-		CA0E520E208F4BDF005259FE /* Announcement2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcement2.swift; sourceTree = "<group>"; };
-		CA0E5210208F4BF3005259FE /* Announcement2+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Announcement2+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA0E520E208F4BDF005259FE /* Announcement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
+		CA0E5210208F4BF3005259FE /* Announcement+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Announcement+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA0E5212208F4CD7005259FE /* AnnouncementsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsService.swift; sourceTree = "<group>"; };
 		CA0E5214208F52ED005259FE /* CapturingNewsInteractorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturingNewsInteractorDelegate.swift; sourceTree = "<group>"; };
 		CA0E5216208FBEA9005259FE /* StubAnnouncementsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAnnouncementsService.swift; sourceTree = "<group>"; };
@@ -3400,7 +3400,7 @@
 		CA18B3451F49AF4500038E52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CA0E520E208F4BDF005259FE /* Announcement2.swift */,
+				CA0E520E208F4BDF005259FE /* Announcement.swift */,
 				CAD780421F1D4CA3002A8333 /* Credential.swift */,
 				CA00AE8820D28AAD00C2FBB0 /* Day.swift */,
 				CA36A49220D92ED400EE6537 /* Dealer2.swift */,
@@ -6028,7 +6028,7 @@
 			isa = PBXGroup;
 			children = (
 				CAD234411F5F2FA8004BB959 /* AppDataBuilder.swift */,
-				CA0E5210208F4BF3005259FE /* Announcement2+RandomValueProviding.swift */,
+				CA0E5210208F4BF3005259FE /* Announcement+RandomValueProviding.swift */,
 				CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */,
 				CA162E9320A87D3D004AFED6 /* Event2+RandomValueProviding.swift */,
 				CABF03C22041C2FD0028BD62 /* KnowledgeEntry2.swift */,
@@ -7925,7 +7925,7 @@
 				CAEA0DCF216BDE2300B0C7A6 /* FoundationHoursDateFormatter.swift in Sources */,
 				CAEA0DD4216BDE2300B0C7A6 /* CoreDataEurofurenceDataStore.swift in Sources */,
 				CAEA0DC4216BDE2300B0C7A6 /* DealersService.swift in Sources */,
-				CAEA0DB1216BDE2300B0C7A6 /* Announcement2.swift in Sources */,
+				CAEA0DB1216BDE2300B0C7A6 /* Announcement.swift in Sources */,
 				CAEA0D8D216BDD9500B0C7A6 /* PrivateMessagesController.swift in Sources */,
 				CAEA0DFD216BDE3100B0C7A6 /* APITrack.swift in Sources */,
 				CAEA0DE8216BDE2300B0C7A6 /* OpenURL.swift in Sources */,
@@ -8212,7 +8212,7 @@
 				CAEA1041216E1EE600B0C7A6 /* CapturingEurofurenceApplication.swift in Sources */,
 				CAEA0F7A216D341600B0C7A6 /* StubClock.swift in Sources */,
 				CAEA0F7C216D370600B0C7A6 /* FakeHoursDateFormatter.swift in Sources */,
-				CAEA0F7F216E1AE200B0C7A6 /* Announcement2+RandomValueProviding.swift in Sources */,
+				CAEA0F7F216E1AE200B0C7A6 /* Announcement+RandomValueProviding.swift in Sources */,
 				CAEA0F88216E1AE200B0C7A6 /* Track+RandomValueProviding.swift in Sources */,
 				CAEA0F8B216E1AE200B0C7A6 /* AlphabetisedDealersGroup+RandomValueProviding.swift in Sources */,
 				CAEA0F76216D2CE800B0C7A6 /* StubV2ApiUrlProviding.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  Announcement2.swift
+//  Announcement.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 24/04/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Announcement2: Equatable {
+public struct Announcement: Equatable {
 
     public struct Identifier: Comparable, Equatable, Hashable, RawRepresentable {
 
@@ -24,7 +24,7 @@ public struct Announcement2: Equatable {
 
         public var rawValue: String
 
-        public static func < (lhs: Announcement2.Identifier, rhs: Announcement2.Identifier) -> Bool {
+        public static func < (lhs: Announcement.Identifier, rhs: Announcement.Identifier) -> Bool {
             return lhs.rawValue < rhs.rawValue
         }
 
@@ -44,14 +44,14 @@ public struct Announcement2: Equatable {
 
 }
 
-public extension Announcement2 {
+public extension Announcement {
 
-    public static func fromServerModels(_ models: [APIAnnouncement]) -> [Announcement2] {
-        return models.map(Announcement2.init)
+    public static func fromServerModels(_ models: [APIAnnouncement]) -> [Announcement] {
+        return models.map(Announcement.init)
     }
 
     public init(serverModel: APIAnnouncement) {
-        identifier = Announcement2.Identifier(serverModel.identifier)
+        identifier = Announcement.Identifier(serverModel.identifier)
         title = serverModel.title
         content = serverModel.content
         date = serverModel.lastChangedDateTime

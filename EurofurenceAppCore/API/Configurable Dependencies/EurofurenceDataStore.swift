@@ -23,7 +23,7 @@ public protocol EurofurenceDataStore {
     func getSavedFavouriteEventIdentifiers() -> [Event2.Identifier]?
     func getSavedDealers() -> [APIDealer]?
     func getSavedMaps() -> [APIMap]?
-    func getSavedReadAnnouncementIdentifiers() -> [Announcement2.Identifier]?
+    func getSavedReadAnnouncementIdentifiers() -> [Announcement.Identifier]?
     func getSavedImages() -> [APIImage]?
 
 }
@@ -41,7 +41,7 @@ public protocol EurofurenceDataStoreTransaction {
     func saveFavouriteEventIdentifier(_ identifier: Event2.Identifier)
     func saveDealers(_ dealers: [APIDealer])
     func saveMaps(_ maps: [APIMap])
-    func saveReadAnnouncements(_ announcements: [Announcement2.Identifier])
+    func saveReadAnnouncements(_ announcements: [Announcement.Identifier])
     func saveImages(_ images: [APIImage])
 
     func deleteFavouriteEventIdentifier(_ identifier: Event2.Identifier)

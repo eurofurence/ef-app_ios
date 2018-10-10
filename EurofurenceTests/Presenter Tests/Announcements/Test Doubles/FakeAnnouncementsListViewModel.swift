@@ -32,8 +32,8 @@ class FakeAnnouncementsListViewModel: AnnouncementsListViewModel {
         return announcements[index]
     }
     
-    func identifierForAnnouncement(at index: Int) -> Announcement2.Identifier {
-        return Announcement2.Identifier("\(index)")
+    func identifierForAnnouncement(at index: Int) -> Announcement.Identifier {
+        return Announcement.Identifier("\(index)")
     }
     
 }

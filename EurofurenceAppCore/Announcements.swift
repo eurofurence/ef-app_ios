@@ -14,9 +14,9 @@ class Announcements {
 
     private let dataStore: EurofurenceDataStore
     private let imageRepository: ImageRepository
-    private var readAnnouncementIdentifiers = [Announcement2.Identifier]()
+    private var readAnnouncementIdentifiers = [Announcement.Identifier]()
 
-    var models = [Announcement2]() {
+    var models = [Announcement]() {
         didSet {
             announcementsObservers.forEach(provideLatestData)
         }
@@ -42,7 +42,7 @@ class Announcements {
         announcementsObservers.append(observer)
     }
 
-    func openAnnouncement(identifier: Announcement2.Identifier, completionHandler: @escaping (Announcement2) -> Void) {
+    func openAnnouncement(identifier: Announcement.Identifier, completionHandler: @escaping (Announcement) -> Void) {
         guard let model = models.first(where: { $0.identifier == identifier }) else { return }
         completionHandler(model)
 
@@ -54,7 +54,7 @@ class Announcements {
         }
     }
 
-    func fetchAnnouncementImage(identifier: Announcement2.Identifier, completionHandler: @escaping (Data?) -> Void) {
+    func fetchAnnouncementImage(identifier: Announcement.Identifier, completionHandler: @escaping (Data?) -> Void) {
         let announcement = dataStore.getSavedAnnouncements()?.first(where: { $0.identifier == identifier.rawValue })
         let imageData: Data? = announcement.let { (announcement) in
             let entity: ImageEntity? = announcement.imageIdentifier.let(imageRepository.loadImage)
@@ -68,7 +68,7 @@ class Announcements {
 
     private func reloadAnnouncementsFromStore() {
         guard let announcements = dataStore.getSavedAnnouncements() else { return }
-        models = announcements.sorted(by: isLastEditTimeAscending).map(Announcement2.init)
+        models = announcements.sorted(by: isLastEditTimeAscending).map(Announcement.init)
     }
 
     private func isLastEditTimeAscending(_ first: APIAnnouncement, _ second: APIAnnouncement) -> Bool {

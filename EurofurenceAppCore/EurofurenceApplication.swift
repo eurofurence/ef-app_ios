@@ -149,7 +149,7 @@ public class EurofurenceApplication: EurofurenceApplicationProtocol {
         refreshLocalStore { (error) in
             if error == nil {
                 if let announcementIdentifier = payload["announcement_id"] {
-                    let identifier = Announcement2.Identifier(announcementIdentifier)
+                    let identifier = Announcement.Identifier(announcementIdentifier)
                     if self.announcements.models.contains(where: { $0.identifier == identifier }) {
                         completionHandler(.announcement(identifier))
                     } else {
@@ -476,11 +476,11 @@ public class EurofurenceApplication: EurofurenceApplicationProtocol {
         announcements.add(observer)
     }
 
-    public func openAnnouncement(identifier: Announcement2.Identifier, completionHandler: @escaping (Announcement2) -> Void) {
+    public func openAnnouncement(identifier: Announcement.Identifier, completionHandler: @escaping (Announcement) -> Void) {
         announcements.openAnnouncement(identifier: identifier, completionHandler: completionHandler)
     }
 
-    public func fetchAnnouncementImage(identifier: Announcement2.Identifier, completionHandler: @escaping (Data?) -> Void) {
+    public func fetchAnnouncementImage(identifier: Announcement.Identifier, completionHandler: @escaping (Data?) -> Void) {
         announcements.fetchAnnouncementImage(identifier: identifier, completionHandler: completionHandler)
     }
 

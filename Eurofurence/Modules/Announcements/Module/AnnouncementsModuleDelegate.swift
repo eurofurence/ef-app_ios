@@ -11,6 +11,6 @@ import Foundation
 
 protocol AnnouncementsModuleDelegate {
 
-    func announcementsModuleDidSelectAnnouncement(_ announcement: Announcement2.Identifier)
+    func announcementsModuleDidSelectAnnouncement(_ announcement: Announcement.Identifier)
 
 }

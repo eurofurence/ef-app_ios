@@ -10,6 +10,6 @@ import EurofurenceAppCore
 
 protocol AnnouncementDetailInteractor {
 
-    func makeViewModel(for announcement: Announcement2.Identifier, completionHandler: @escaping (AnnouncementViewModel) -> Void)
+    func makeViewModel(for announcement: Announcement.Identifier, completionHandler: @escaping (AnnouncementViewModel) -> Void)
 
 }

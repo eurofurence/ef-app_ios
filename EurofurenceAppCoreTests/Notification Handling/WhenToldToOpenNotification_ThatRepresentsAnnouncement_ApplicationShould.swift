@@ -20,7 +20,7 @@ class WhenToldToOpenNotification_ThatRepresentsAnnouncement_ApplicationShould: X
         context.application.handleRemoteNotification(payload: payload) { result = $0 }
         context.syncAPI.simulateSuccessfulSync(syncResponse)
         
-        let expected = ApplicationPushActionResult.announcement(Announcement2.Identifier(randomAnnouncement.identifier))
+        let expected = ApplicationPushActionResult.announcement(Announcement.Identifier(randomAnnouncement.identifier))
         XCTAssertEqual(expected, result)
     }
     

@@ -69,23 +69,23 @@ class ApplicationTestBuilder {
             syncAPI.simulateSuccessfulSync(response)
         }
         
-        func expectedUnreadAnnouncements(from syncResponse: APISyncResponse) -> [Announcement2] {
+        func expectedUnreadAnnouncements(from syncResponse: APISyncResponse) -> [Announcement] {
             // TODO: Needs to take into account any unread status information
             return expectedAnnouncements(from: syncResponse)
         }
         
-        func expectedAnnouncements(from syncResponse: APISyncResponse) -> [Announcement2] {
+        func expectedAnnouncements(from syncResponse: APISyncResponse) -> [Announcement] {
             return expectedAnnouncements(from: syncResponse.announcements.changed)
         }
         
-        func expectedAnnouncements(from announcements: [APIAnnouncement]) -> [Announcement2] {
-            return Announcement2.fromServerModels(announcements.sorted { (first, second) -> Bool in
+        func expectedAnnouncements(from announcements: [APIAnnouncement]) -> [Announcement] {
+            return Announcement.fromServerModels(announcements.sorted { (first, second) -> Bool in
                 return first.lastChangedDateTime.compare(second.lastChangedDateTime) == .orderedDescending
             })
         }
         
-        func expectedAnnouncement(from announcement: APIAnnouncement) -> Announcement2 {
-            return Announcement2(identifier: Announcement2.Identifier(announcement.identifier),
+        func expectedAnnouncement(from announcement: APIAnnouncement) -> Announcement {
+            return Announcement(identifier: Announcement.Identifier(announcement.identifier),
                                  title: announcement.title,
                                  content: announcement.content,
                                  date: announcement.lastChangedDateTime)

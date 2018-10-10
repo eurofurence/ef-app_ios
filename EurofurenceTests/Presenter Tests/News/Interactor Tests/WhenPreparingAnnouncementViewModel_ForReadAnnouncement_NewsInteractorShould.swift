@@ -14,7 +14,7 @@ import XCTest
 class WhenPreparingAnnouncementViewModel_ForReadAnnouncement_NewsInteractorShould: XCTestCase {
     
     func testPrepareViewModelWithReadStatus() {
-        let announcement = Announcement2.random
+        let announcement = Announcement.random
         let announcementsService = StubAnnouncementsService(announcements: [announcement],
                                                             stubbedReadAnnouncements: [announcement.identifier])
         let context = DefaultNewsInteractorTestBuilder().with(announcementsService).build()

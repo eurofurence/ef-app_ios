@@ -11,10 +11,10 @@ import Foundation
 
 class StubAnnouncementsService: AnnouncementsService {
     
-    var announcements: [Announcement2]
-    var stubbedReadAnnouncements: [Announcement2.Identifier]
+    var announcements: [Announcement]
+    var stubbedReadAnnouncements: [Announcement.Identifier]
     
-    init(announcements: [Announcement2], stubbedReadAnnouncements: [Announcement2.Identifier] = []) {
+    init(announcements: [Announcement], stubbedReadAnnouncements: [Announcement.Identifier] = []) {
         self.announcements = announcements
         self.stubbedReadAnnouncements = stubbedReadAnnouncements
     }
@@ -26,12 +26,12 @@ class StubAnnouncementsService: AnnouncementsService {
         observer.announcementsServiceDidUpdateReadAnnouncements(stubbedReadAnnouncements)
     }
     
-    func openAnnouncement(identifier: Announcement2.Identifier, completionHandler: @escaping (Announcement2) -> Void) {
+    func openAnnouncement(identifier: Announcement.Identifier, completionHandler: @escaping (Announcement) -> Void) {
         guard let announcement = announcements.first(where: { $0.identifier == identifier }) else { return }
         completionHandler(announcement)
     }
     
-    func fetchAnnouncementImage(identifier: Announcement2.Identifier, completionHandler: @escaping (Data?) -> Void) {
+    func fetchAnnouncementImage(identifier: Announcement.Identifier, completionHandler: @escaping (Data?) -> Void) {
         completionHandler(stubbedAnnouncementImageData(for: identifier))
     }
     
@@ -39,15 +39,15 @@ class StubAnnouncementsService: AnnouncementsService {
 
 extension StubAnnouncementsService {
     
-    func updateAnnouncements(_ announcements: [Announcement2]) {
+    func updateAnnouncements(_ announcements: [Announcement]) {
         observers.forEach({ $0.eurofurenceApplicationDidChangeAnnouncements(announcements) })
     }
     
-    func updateReadAnnouncements(_ readAnnouncements: [Announcement2.Identifier]) {
+    func updateReadAnnouncements(_ readAnnouncements: [Announcement.Identifier]) {
         observers.forEach({ $0.announcementsServiceDidUpdateReadAnnouncements(readAnnouncements) })
     }
     
-    func stubbedAnnouncementImageData(for announcement: Announcement2.Identifier) -> Data {
+    func stubbedAnnouncementImageData(for announcement: Announcement.Identifier) -> Data {
         return announcement.rawValue.data(using: .utf8)!
     }
     

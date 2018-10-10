@@ -1,5 +1,5 @@
 //
-//  Announcement2+RandomValueProviding.swift
+//  Announcement+RandomValueProviding.swift
 //  EurofurenceTests
 //
 //  Created by Thomas Sherwood on 24/04/2018.
@@ -9,10 +9,10 @@
 import EurofurenceAppCore
 import RandomDataGeneration
 
-extension Announcement2: RandomValueProviding {
+extension Announcement: RandomValueProviding {
     
-    public static var random: Announcement2 {
-        return Announcement2(identifier: .random,
+    public static var random: Announcement {
+        return Announcement(identifier: .random,
                              title: .random,
                              content: .random,
                              date: .random)
@@ -20,10 +20,10 @@ extension Announcement2: RandomValueProviding {
     
 }
 
-extension Announcement2.Identifier: RandomValueProviding {
+extension Announcement.Identifier: RandomValueProviding {
     
-    public static var random: Announcement2.Identifier {
-        return Announcement2.Identifier(.random)
+    public static var random: Announcement.Identifier {
+        return Announcement.Identifier(.random)
     }
     
 }

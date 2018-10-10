@@ -286,7 +286,7 @@ class ApplicationDirector: ExternalContentHandler,
         newsController?.navigationController?.pushViewController(messagesModuleProviding.makeMessagesModule(self), animated: animate)
     }
 
-    func newsModuleDidSelectAnnouncement(_ announcement: Announcement2.Identifier) {
+    func newsModuleDidSelectAnnouncement(_ announcement: Announcement.Identifier) {
         let module = announcementDetailModuleProviding.makeAnnouncementDetailModule(for: announcement)
         newsController?.navigationController?.pushViewController(module, animated: animate)
     }
@@ -408,7 +408,7 @@ class ApplicationDirector: ExternalContentHandler,
 
     // MARK: AnnouncementsModuleDelegate
 
-    func announcementsModuleDidSelectAnnouncement(_ announcement: Announcement2.Identifier) {
+    func announcementsModuleDidSelectAnnouncement(_ announcement: Announcement.Identifier) {
         let module = announcementDetailModuleProviding.makeAnnouncementDetailModule(for: announcement)
         newsController?.navigationController?.pushViewController(module, animated: animate)
     }

@@ -16,12 +16,12 @@ class AnnouncementDetailInteractorTestBuilder {
     struct Context {
         var interactor: AnnouncementDetailInteractor
         var markdownRenderer: StubMarkdownRenderer
-        var announcement: Announcement2
+        var announcement: Announcement
         var announcementsService: StubAnnouncementsService
     }
     
-    func build(for identifier: Announcement2.Identifier = .random) -> Context {
-        var announcement = Announcement2.random
+    func build(for identifier: Announcement.Identifier = .random) -> Context {
+        var announcement = Announcement.random
         announcement.identifier = identifier
         let announcementsService = StubAnnouncementsService(announcements: [announcement])
         let markdownRenderer = StubMarkdownRenderer()

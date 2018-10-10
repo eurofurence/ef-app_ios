@@ -15,7 +15,7 @@ protocol AnnouncementsListViewModel {
 
     func setDelegate(_ delegate: AnnouncementsListViewModelDelegate)
     func announcementViewModel(at index: Int) -> AnnouncementComponentViewModel
-    func identifierForAnnouncement(at index: Int) -> Announcement2.Identifier
+    func identifierForAnnouncement(at index: Int) -> Announcement.Identifier
 
 }
 

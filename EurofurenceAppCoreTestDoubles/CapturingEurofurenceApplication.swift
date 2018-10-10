@@ -23,11 +23,11 @@ public class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
-    public func openAnnouncement(identifier: Announcement2.Identifier, completionHandler: @escaping (Announcement2) -> Void) {
+    public func openAnnouncement(identifier: Announcement.Identifier, completionHandler: @escaping (Announcement) -> Void) {
         
     }
     
-    public func fetchAnnouncementImage(identifier: Announcement2.Identifier, completionHandler: @escaping (Data?) -> Void) {
+    public func fetchAnnouncementImage(identifier: Announcement.Identifier, completionHandler: @escaping (Data?) -> Void) {
         
     }
     
@@ -199,7 +199,7 @@ public class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         
     }
     
-    public func fetchAnnouncements(completionHandler: @escaping ([Announcement2]) -> Void) {
+    public func fetchAnnouncements(completionHandler: @escaping ([Announcement]) -> Void) {
         
     }
     

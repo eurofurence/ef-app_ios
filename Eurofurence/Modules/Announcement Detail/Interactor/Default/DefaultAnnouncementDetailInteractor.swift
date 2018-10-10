@@ -24,7 +24,7 @@ struct DefaultAnnouncementDetailInteractor: AnnouncementDetailInteractor {
         self.markdownRenderer = markdownRenderer
     }
 
-    func makeViewModel(for identifier: Announcement2.Identifier, completionHandler: @escaping (AnnouncementViewModel) -> Void) {
+    func makeViewModel(for identifier: Announcement.Identifier, completionHandler: @escaping (AnnouncementViewModel) -> Void) {
         let service = announcementsService
         service.openAnnouncement(identifier: identifier) { (announcement) in
             service.fetchAnnouncementImage(identifier: identifier) { (imageData) in

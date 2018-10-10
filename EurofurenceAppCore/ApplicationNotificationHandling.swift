@@ -12,7 +12,7 @@ public enum ApplicationPushActionResult: Equatable {
     case successfulSync
     case failedSync
     case unknown
-    case announcement(Announcement2.Identifier)
+    case announcement(Announcement.Identifier)
     case invalidatedAnnouncement
     case event(Event2.Identifier)
 }
