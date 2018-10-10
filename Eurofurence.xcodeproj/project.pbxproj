@@ -699,7 +699,6 @@
 		CA957B601F705AF9004DFD5A /* MessagesViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA957B5E1F705AF9004DFD5A /* MessagesViewControllerV2.swift */; };
 		CA9845CA1F2907A800E8821D /* ScreenshotGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */; };
 		CA9845D31F2909DB00E8821D /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */; };
-		CA9845DA1F29199E00E8821D /* ScreenshotAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */; };
 		CA9845DE1F2B01BA00E8821D /* UnreadMessageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845DD1F2B01BA00E8821D /* UnreadMessageIndicator.swift */; };
 		CA9AC16B208546530039C0C2 /* WhenBindingEvent_NewsPresenterShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9AC16A208546530039C0C2 /* WhenBindingEvent_NewsPresenterShould.swift */; };
 		CA9AC16D2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9AC16C2085476E0039C0C2 /* EventComponentViewModel+RandomValueProviding.swift */; };
@@ -1190,6 +1189,7 @@
 		CAEA1040216E1E7D00B0C7A6 /* AppDataBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD234411F5F2FA8004BB959 /* AppDataBuilder.swift */; };
 		CAEA1041216E1EE600B0C7A6 /* CapturingEurofurenceApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9A9441F50B89000628833 /* CapturingEurofurenceApplication.swift */; };
 		CAEA1042216E1FB400B0C7A6 /* CapturingSignificantTimeChangeAdapterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA52C68420D59A5B009D3A9E /* CapturingSignificantTimeChangeAdapterDelegate.swift */; };
+		CAEA1044216E775300B0C7A6 /* ScreenshotAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */; };
 		CAEAEBF51FDEB56000C0EE7C /* MessageDetailModuleProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF41FDEB56000C0EE7C /* MessageDetailModuleProviding.swift */; };
 		CAEAEBF71FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF61FDEB61100C0EE7C /* MessageDetailModuleBuilder.swift */; };
 		CAEAEBFA1FE0037700C0EE7C /* MessageDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEAEBF91FE0037700C0EE7C /* MessageDetailPresenterTests.swift */; };
@@ -2980,7 +2980,6 @@
 				CAEA0E84216BEF7C00B0C7A6 /* RandomDataGeneration */,
 				9ACF99361EBE172D006FC958 /* Eurofurence */,
 				78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */,
-				CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */,
 				9ACF994B1EBE172D006FC958 /* EurofurenceTests */,
 				78D7EEA21F17F40C005372A9 /* EurofurenceUITests */,
 				CA9845C81F2907A800E8821D /* ScreenshotGenerator */,
@@ -3012,10 +3011,11 @@
 		9ACF99361EBE172D006FC958 /* Eurofurence */ = {
 			isa = PBXGroup;
 			children = (
-				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
 				CA728436209C7DE1007D912A /* Settings.bundle */,
 				9ACF99431EBE172D006FC958 /* Info.plist */,
 				9ACF99371EBE172D006FC958 /* AppDelegate.swift */,
+				CA9845D91F29199E00E8821D /* ScreenshotAssistant.swift */,
+				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
 				CAF1A674211E4B3600513226 /* Application Adapter Implementations */,
 				CA1FE99C1FA0B3F2009C7DF3 /* Director */,
 				CABF03B22041BC770028BD62 /* Extensions */,
@@ -5299,9 +5299,9 @@
 		CA9845C81F2907A800E8821D /* ScreenshotGenerator */ = {
 			isa = PBXGroup;
 			children = (
-				CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */,
-				CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */,
 				CA9845CB1F2907A800E8821D /* Info.plist */,
+				CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */,
+				CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */,
 			);
 			path = ScreenshotGenerator;
 			sourceTree = "<group>";
@@ -6984,6 +6984,7 @@
 				CA36A45A20D8472300EE6537 /* DealersInteractor.swift in Sources */,
 				9A861EBF1F25551400B75A8C /* PresentationAssets.swift in Sources */,
 				CA52C68120D597E1009D3A9E /* ApplicationSignificantTimeChangeAdapter.swift in Sources */,
+				CAEA1044216E775300B0C7A6 /* ScreenshotAssistant.swift in Sources */,
 				CAF7056A1F82D15D00A9FEA2 /* PreloadModuleProviding.swift in Sources */,
 				CA36A47320D84DC900EE6537 /* DealerComponent.swift in Sources */,
 				CAD2343E1F5D7211004BB959 /* MessagesPresenter.swift in Sources */,
@@ -7248,7 +7249,6 @@
 				CABA438D1FBCDBDF009CB5B0 /* LoginPresenter.swift in Sources */,
 				CA6375A8208E011C00536BE2 /* DealersModuleBuilder.swift in Sources */,
 				CA637586208CDE5D00536BE2 /* ScheduleModule.swift in Sources */,
-				CA9845DA1F29199E00E8821D /* ScreenshotAssistant.swift in Sources */,
 				CAC1E12B1F5040E100195513 /* NewsScene.swift in Sources */,
 				CA6A8D7120E2649C007536CD /* MapsModule.swift in Sources */,
 				CA8276B3204EC013006A7419 /* ApplicationPreloadInteractor.swift in Sources */,
