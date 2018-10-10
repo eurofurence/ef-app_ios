@@ -10,18 +10,18 @@ import EurofurenceAppCore
 import EurofurenceAppCoreTestDoubles
 import XCTest
 
-class CapturingV2LoginObserver {
-    
-    private(set) var capturedLoginResponse: LoginResponse?
-    private(set) var notifiedLoginFailed = false
-    func observe(_ result: LoginResponse?) {
-        capturedLoginResponse = result
-        notifiedLoginFailed = result == nil
-    }
-    
-}
-
 class V2LoginAPITests: XCTestCase {
+    
+    class CapturingV2LoginObserver {
+        
+        private(set) var capturedLoginResponse: LoginResponse?
+        private(set) var notifiedLoginFailed = false
+        func observe(_ result: LoginResponse?) {
+            capturedLoginResponse = result
+            notifiedLoginFailed = result == nil
+        }
+        
+    }
     
     var api: V2LoginAPI!
     var jsonSession: CapturingJSONSession!

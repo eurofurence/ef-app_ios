@@ -44,12 +44,3 @@ class AnnouncementRemoveAllBeforeInsertTests: XCTestCase {
     }
     
 }
-
-extension Array where Element: Equatable {
-    
-    func equalsIgnoringOrder(_ other: [Element]) -> Bool {
-        guard count == other.count else { return false }
-        return other.filter(contains).count == count
-    }
-    
-}
