@@ -8511,7 +8511,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7B35D29A24C86C9717A690E6 /* Pods-Eurofurence.profiling.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -8530,7 +8529,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4A31159EA20CC82848488181 /* Pods-EurofurenceTests.profiling.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = EurofurenceTests/Info.plist;
@@ -8672,7 +8670,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 513BAD2C582D99F2993B8162 /* Pods-Eurofurence.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -8692,7 +8689,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 27C948D12455A352D46AF5B6 /* Pods-Eurofurence.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -8711,7 +8707,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B4939A463603D9F022E19825 /* Pods-EurofurenceTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = EurofurenceTests/Info.plist;
@@ -8727,7 +8722,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A5BC6AE61AB3CCDF97473815 /* Pods-EurofurenceTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = EurofurenceTests/Info.plist;
@@ -8845,7 +8839,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 62AD5BCA61ABA2B7A2D6087A /* Pods-Eurofurence.screenshots.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eurofurence/Eurofurence.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -8865,7 +8858,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F7C381F180747E276F94C9BD /* Pods-EurofurenceTests.screenshots.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 557SGQG5H4;
 				INFOPLIST_FILE = EurofurenceTests/Info.plist;
@@ -9046,7 +9038,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 545AD650CF0F4584A7006744 /* Pods-EurofurenceAppCoreTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
@@ -9072,7 +9063,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 568FBBE84493D008DC08BB79 /* Pods-EurofurenceAppCoreTests.screenshots.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
@@ -9097,7 +9087,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3F7D636338E9A1190AC04400 /* Pods-EurofurenceAppCoreTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
@@ -9122,7 +9111,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A44D8DC6F327D9659B4A72F9 /* Pods-EurofurenceAppCoreTests.profiling.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
