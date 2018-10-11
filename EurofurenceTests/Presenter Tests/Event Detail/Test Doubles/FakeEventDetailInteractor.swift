@@ -14,14 +14,14 @@ import Foundation
 struct FakeEventDetailInteractor: EventDetailInteractor {
     
     private let viewModel: EventDetailViewModel
-    private let event: Event2
+    private let event: Event
     
-    init(viewModel: EventDetailViewModel, for event: Event2) {
+    init(viewModel: EventDetailViewModel, for event: Event) {
         self.viewModel = viewModel
         self.event = event
     }
     
-    func makeViewModel(for event: Event2.Identifier, completionHandler: @escaping (EventDetailViewModel) -> Void) {
+    func makeViewModel(for event: Event.Identifier, completionHandler: @escaping (EventDetailViewModel) -> Void) {
         if event == self.event.identifier {
             completionHandler(viewModel)
         }

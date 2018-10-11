@@ -11,12 +11,12 @@ import Foundation
 
 class FakeEventsService: EventsService {
     
-    var runningEvents: [Event2] = []
-    var upcomingEvents: [Event2] = []
-    var allEvents: [Event2] = []
-    var favourites: [Event2.Identifier] = []
+    var runningEvents: [Event] = []
+    var upcomingEvents: [Event] = []
+    var allEvents: [Event] = []
+    var favourites: [Event.Identifier] = []
     
-    init(favourites: [Event2.Identifier] = []) {
+    init(favourites: [Event.Identifier] = []) {
         self.favourites = favourites
     }
     
@@ -30,15 +30,15 @@ class FakeEventsService: EventsService {
         observer.favouriteEventsDidChange(favourites)
     }
     
-    private(set) var favouritedEventIdentifier: Event2.Identifier?
-    func favouriteEvent(identifier: Event2.Identifier) {
+    private(set) var favouritedEventIdentifier: Event.Identifier?
+    func favouriteEvent(identifier: Event.Identifier) {
         favouritedEventIdentifier = identifier
         favourites.append(identifier)
         observers.forEach { $0.favouriteEventsDidChange(favourites) }
     }
     
-    private(set) var unfavouritedEventIdentifier: Event2.Identifier?
-    func unfavouriteEvent(identifier: Event2.Identifier) {
+    private(set) var unfavouritedEventIdentifier: Event.Identifier?
+    func unfavouriteEvent(identifier: Event.Identifier) {
         unfavouritedEventIdentifier = identifier
         if let idx = favourites.index(of: identifier) {
             favourites.remove(at: idx)
@@ -61,8 +61,8 @@ class FakeEventsService: EventsService {
         return searchController
     }
     
-    fileprivate var stubbedEvents = [Event2.Identifier : Event2]()
-    func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2?) -> Void) {
+    fileprivate var stubbedEvents = [Event.Identifier : Event]()
+    func fetchEvent(for identifier: Event.Identifier, completionHandler: @escaping (Event?) -> Void) {
         completionHandler(stubbedEvents[identifier])
     }
     
@@ -70,7 +70,7 @@ class FakeEventsService: EventsService {
 
 extension FakeEventsService {
     
-    func stub(_ event: Event2, for identifier: Event2.Identifier) {
+    func stub(_ event: Event, for identifier: Event.Identifier) {
         stubbedEvents[identifier] = event
     }
     
@@ -79,17 +79,17 @@ extension FakeEventsService {
         favourites = Array(allEvents.dropFirst()).map({ $0.identifier })
     }
     
-    func simulateEventFavourited(identifier: Event2.Identifier) {
+    func simulateEventFavourited(identifier: Event.Identifier) {
         favourites.append(identifier)
         observers.forEach { $0.favouriteEventsDidChange(favourites) }
     }
     
-    func simulateEventFavouritesChanged(to identifiers: [Event2.Identifier]) {
+    func simulateEventFavouritesChanged(to identifiers: [Event.Identifier]) {
         favourites = identifiers
         observers.forEach { $0.favouriteEventsDidChange(favourites) }
     }
     
-    func simulateEventUnfavourited(identifier: Event2.Identifier) {
+    func simulateEventUnfavourited(identifier: Event.Identifier) {
         if let idx = favourites.index(of: identifier) {
             favourites.remove(at: idx)
         }
@@ -97,7 +97,7 @@ extension FakeEventsService {
         observers.forEach { $0.favouriteEventsDidChange(favourites) }
     }
     
-    func simulateEventsChanged(_ events: [Event2]) {
+    func simulateEventsChanged(_ events: [Event]) {
         lastProducedSchedule?.simulateEventsChanged(events)
     }
     

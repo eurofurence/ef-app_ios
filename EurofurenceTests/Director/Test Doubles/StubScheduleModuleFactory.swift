@@ -24,7 +24,7 @@ class StubScheduleModuleFactory: ScheduleModuleProviding {
 
 extension StubScheduleModuleFactory {
     
-    func simulateDidSelectEvent(_ identifier: Event2.Identifier) {
+    func simulateDidSelectEvent(_ identifier: Event.Identifier) {
         delegate?.scheduleModuleDidSelectEvent(identifier: identifier)
     }
     

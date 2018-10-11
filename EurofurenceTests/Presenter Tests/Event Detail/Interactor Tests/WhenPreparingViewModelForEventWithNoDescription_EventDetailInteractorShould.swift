@@ -14,7 +14,7 @@ import XCTest
 class WhenPreparingViewModelForEventWithNoDescription_EventDetailInteractorShould: XCTestCase {
     
     func testNotContainDescription() {
-        var event = Event2.random
+        var event = Event.random
         event.eventDescription = ""
         
         let context = EventDetailInteractorTestBuilder().build(for: event)

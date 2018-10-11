@@ -35,8 +35,8 @@ class DefaultNewsInteractor: NewsInteractor,
     private var delegate: NewsInteractorDelegate?
     private var unreadMessagesCount = 0
     private var daysUntilConvention: Int?
-    private var runningEvents = [Event2]()
-    private var upcomingEvents = [Event2]()
+    private var runningEvents = [Event]()
+    private var upcomingEvents = [Event]()
     private var announcements = [Announcement]()
     private var readAnnouncements = [Announcement.Identifier]()
     private var currentUser: User?
@@ -44,7 +44,7 @@ class DefaultNewsInteractor: NewsInteractor,
     private let clock: Clock
     private let refreshService: RefreshService
     private let favouritesSchedule: EventsSchedule
-    private var todaysEvents = [Event2]()
+    private var todaysEvents = [Event]()
     private var currentDay: Day?
     private let announcementsDateFormatter: AnnouncementDateFormatter
 	private let announcementsMarkdownRenderer: MarkdownRenderer
@@ -162,32 +162,32 @@ class DefaultNewsInteractor: NewsInteractor,
 
     // MARK: EventsServiceObserver
 
-    private var allEvents = [Event2]()
-    private var favouriteEvents = [Event2]()
-    private var favouriteEventIdentifiers = [Event2.Identifier]()
-    func eventsDidChange(to events: [Event2]) {
+    private var allEvents = [Event]()
+    private var favouriteEvents = [Event]()
+    private var favouriteEventIdentifiers = [Event.Identifier]()
+    func eventsDidChange(to events: [Event]) {
         allEvents = events
         regenerateFavouriteEvents()
     }
 
-    func runningEventsDidChange(to events: [Event2]) {
+    func runningEventsDidChange(to events: [Event]) {
         runningEvents = events
         regenerateViewModel()
     }
 
-    func upcomingEventsDidChange(to events: [Event2]) {
+    func upcomingEventsDidChange(to events: [Event]) {
         upcomingEvents = events
         regenerateViewModel()
     }
 
-    func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) {
+    func favouriteEventsDidChange(_ identifiers: [Event.Identifier]) {
         favouriteEventIdentifiers = identifiers
         regenerateFavouriteEvents()
     }
 
     // MARK: EventsScheduleDelegate
 
-    func scheduleEventsDidChange(to events: [Event2]) {
+    func scheduleEventsDidChange(to events: [Event]) {
         todaysEvents = events
         regenerateViewModel()
     }
@@ -376,13 +376,13 @@ class DefaultNewsInteractor: NewsInteractor,
 
     private struct EventsComponent: NewsViewModelComponent {
 
-        private let events: [Event2]
+        private let events: [Event]
         private let viewModels: [EventComponentViewModel]
 
         init(title: String,
-             events: [Event2],
-             favouriteEventIdentifiers: [Event2.Identifier],
-             startTimeFormatter: (Event2) -> String,
+             events: [Event],
+             favouriteEventIdentifiers: [Event.Identifier],
+             startTimeFormatter: (Event) -> String,
              hoursDateFormatter: HoursDateFormatter) {
             self.title = title
             self.events = events

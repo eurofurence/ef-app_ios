@@ -123,15 +123,15 @@ public class CapturingEurofurenceApplication: EurofurenceApplicationProtocol {
         return DummyEventsSearchController()
     }
     
-    public func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2?) -> Void) {
+    public func fetchEvent(for identifier: Event.Identifier, completionHandler: @escaping (Event?) -> Void) {
         
     }
     
-    public func favouriteEvent(identifier: Event2.Identifier) {
+    public func favouriteEvent(identifier: Event.Identifier) {
         
     }
     
-    public func unfavouriteEvent(identifier: Event2.Identifier) {
+    public func unfavouriteEvent(identifier: Event.Identifier) {
         
     }
     

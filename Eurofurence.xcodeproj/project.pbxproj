@@ -875,7 +875,7 @@
 		CAEA0DB2216BDE2300B0C7A6 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD780421F1D4CA3002A8333 /* Credential.swift */; };
 		CAEA0DB3216BDE2300B0C7A6 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8820D28AAD00C2FBB0 /* Day.swift */; };
 		CAEA0DB4216BDE2300B0C7A6 /* Dealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA36A49220D92ED400EE6537 /* Dealer.swift */; };
-		CAEA0DB5216BDE2300B0C7A6 /* Event2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9120A652B5004AFED6 /* Event2.swift */; };
+		CAEA0DB5216BDE2300B0C7A6 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9120A652B5004AFED6 /* Event.swift */; };
 		CAEA0DB6216BDE2300B0C7A6 /* ExtendedDealerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF81C7620DDAD6F00898C52 /* ExtendedDealerData.swift */; };
 		CAEA0DB7216BDE2300B0C7A6 /* KnowledgeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03B82041C2B00028BD62 /* KnowledgeEntry.swift */; };
 		CAEA0DB8216BDE2300B0C7A6 /* KnowledgeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03B92041C2B00028BD62 /* KnowledgeGroup.swift */; };
@@ -1005,7 +1005,7 @@
 		CAEA0F7D216E188C00B0C7A6 /* CapturingURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63755F208CBC5F00536BE2 /* CapturingURLOpener.swift */; };
 		CAEA0F7F216E1AE200B0C7A6 /* Announcement+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0E5210208F4BF3005259FE /* Announcement+RandomValueProviding.swift */; };
 		CAEA0F81216E1AE200B0C7A6 /* Day+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */; };
-		CAEA0F82216E1AE200B0C7A6 /* Event2+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9320A87D3D004AFED6 /* Event2+RandomValueProviding.swift */; };
+		CAEA0F82216E1AE200B0C7A6 /* Event+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA162E9320A87D3D004AFED6 /* Event+RandomValueProviding.swift */; };
 		CAEA0F83216E1AE200B0C7A6 /* KnowledgeEntry+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03C22041C2FD0028BD62 /* KnowledgeEntry+RandomValueProviding.swift */; };
 		CAEA0F84216E1AE200B0C7A6 /* KnowledgeGroup+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF03C02041C2EC0028BD62 /* KnowledgeGroup+RandomValueProviding.swift */; };
 		CAEA0F85216E1AE200B0C7A6 /* Link+RandomValueProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */; };
@@ -1533,8 +1533,8 @@
 		CA162E8A20A64352004AFED6 /* WhenLoggedOutDuringConvention_NewsInteractorShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenLoggedOutDuringConvention_NewsInteractorShould.swift; sourceTree = "<group>"; };
 		CA162E8C20A64C8C004AFED6 /* WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenObservingConventionCountdownAfterConventionStarts_EurofurenceApplicationShould.swift; sourceTree = "<group>"; };
 		CA162E8F20A652AA004AFED6 /* EventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsService.swift; sourceTree = "<group>"; };
-		CA162E9120A652B5004AFED6 /* Event2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event2.swift; sourceTree = "<group>"; };
-		CA162E9320A87D3D004AFED6 /* Event2+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event2+RandomValueProviding.swift"; sourceTree = "<group>"; };
+		CA162E9120A652B5004AFED6 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		CA162E9320A87D3D004AFED6 /* Event+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA162E9520A88854004AFED6 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		CA162E9720A8886C004AFED6 /* Room+RandomValueProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Room+RandomValueProviding.swift"; sourceTree = "<group>"; };
 		CA162E9920A88A71004AFED6 /* RelativeTimeIntervalCountdownFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeTimeIntervalCountdownFormatter.swift; sourceTree = "<group>"; };
@@ -3404,7 +3404,7 @@
 				CAD780421F1D4CA3002A8333 /* Credential.swift */,
 				CA00AE8820D28AAD00C2FBB0 /* Day.swift */,
 				CA36A49220D92ED400EE6537 /* Dealer.swift */,
-				CA162E9120A652B5004AFED6 /* Event2.swift */,
+				CA162E9120A652B5004AFED6 /* Event.swift */,
 				CAF81C7620DDAD6F00898C52 /* ExtendedDealerData.swift */,
 				CABF03B82041C2B00028BD62 /* KnowledgeEntry.swift */,
 				CABF03B92041C2B00028BD62 /* KnowledgeGroup.swift */,
@@ -6030,7 +6030,7 @@
 				CAD234411F5F2FA8004BB959 /* AppDataBuilder.swift */,
 				CA0E5210208F4BF3005259FE /* Announcement+RandomValueProviding.swift */,
 				CA00AE8A20D28AF400C2FBB0 /* Day+RandomValueProviding.swift */,
-				CA162E9320A87D3D004AFED6 /* Event2+RandomValueProviding.swift */,
+				CA162E9320A87D3D004AFED6 /* Event+RandomValueProviding.swift */,
 				CABF03C22041C2FD0028BD62 /* KnowledgeEntry+RandomValueProviding.swift */,
 				CABF03C02041C2EC0028BD62 /* KnowledgeGroup+RandomValueProviding.swift */,
 				CAD3BDB02058719300C91E6E /* Link+RandomValueProviding.swift */,
@@ -7861,7 +7861,7 @@
 				CAEA0D90216BDD9500B0C7A6 /* Announcements.swift in Sources */,
 				CAEA0DEA216BDE2300B0C7A6 /* SignificantTimePassedEvent.swift in Sources */,
 				CAEA0DA6216BDE2300B0C7A6 /* HoursDateFormatter.swift in Sources */,
-				CAEA0DB5216BDE2300B0C7A6 /* Event2.swift in Sources */,
+				CAEA0DB5216BDE2300B0C7A6 /* Event.swift in Sources */,
 				CAEA0DD8216BDE2300B0C7A6 /* EntityAdapting.swift in Sources */,
 				CAEA0DD3216BDE2300B0C7A6 /* UserDefaultsPreferences.swift in Sources */,
 				CAEA0DCB216BDE2300B0C7A6 /* BuildConfigurationProviding.swift in Sources */,
@@ -8217,7 +8217,7 @@
 				CAEA0F8B216E1AE200B0C7A6 /* AlphabetisedDealersGroup+RandomValueProviding.swift in Sources */,
 				CAEA0F76216D2CE800B0C7A6 /* StubV2ApiUrlProviding.swift in Sources */,
 				CAEA0F8C216E1AE200B0C7A6 /* ExtendedDealerData+RandomValueProviding.swift in Sources */,
-				CAEA0F82216E1AE200B0C7A6 /* Event2+RandomValueProviding.swift in Sources */,
+				CAEA0F82216E1AE200B0C7A6 /* Event+RandomValueProviding.swift in Sources */,
 				CAEA0F75216D2CE400B0C7A6 /* CapturingJSONSession.swift in Sources */,
 				CAEA103F216E1E5000B0C7A6 /* StubDateDistanceCalculator.swift in Sources */,
 				CAEA0F8D216E1AE200B0C7A6 /* Map+RandomValueProviding.swift in Sources */,

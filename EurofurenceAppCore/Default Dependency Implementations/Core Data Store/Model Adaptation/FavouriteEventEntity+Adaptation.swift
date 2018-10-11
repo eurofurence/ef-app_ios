@@ -10,10 +10,10 @@ import Foundation
 
 extension FavouriteEventEntity: EntityAdapting {
 
-    typealias AdaptedType = Event2.Identifier
+    typealias AdaptedType = Event.Identifier
 
-    func asAdaptedType() -> Event2.Identifier {
-        return Event2.Identifier(eventIdentifier!)
+    func asAdaptedType() -> Event.Identifier {
+        return Event.Identifier(eventIdentifier!)
     }
 
 }

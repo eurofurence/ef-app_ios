@@ -13,8 +13,8 @@ import Foundation
 
 class CapturingScheduleModuleDelegate: ScheduleModuleDelegate {
     
-    private(set) var capturedEventIdentifier: Event2.Identifier?
-    func scheduleModuleDidSelectEvent(identifier: Event2.Identifier) {
+    private(set) var capturedEventIdentifier: Event.Identifier?
+    func scheduleModuleDidSelectEvent(identifier: Event.Identifier) {
         capturedEventIdentifier = identifier
     }
     

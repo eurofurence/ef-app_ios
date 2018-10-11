@@ -13,7 +13,7 @@ import EurofurenceAppCoreTestDoubles
 class EventDetailInteractorTestBuilder {
     
     struct Context {
-        var event: Event2
+        var event: Event
         var dateRangeFormatter: FakeDateRangeFormatter
         var interactor: DefaultEventDetailInteractor
         var viewModel: EventDetailViewModel?
@@ -33,7 +33,7 @@ class EventDetailInteractorTestBuilder {
         return self
     }
     
-    func build(for event: Event2 = .randomStandardEvent) -> Context {
+    func build(for event: Event = .randomStandardEvent) -> Context {
         let dateRangeFormatter = FakeDateRangeFormatter()
 		let markdownRenderer = StubMarkdownRenderer()
         eventsService.stub(event, for: event.identifier)

@@ -20,7 +20,7 @@ public protocol EurofurenceDataStore {
     func getSavedEvents() -> [APIEvent]?
     func getSavedAnnouncements() -> [APIAnnouncement]?
     func getSavedConferenceDays() -> [APIConferenceDay]?
-    func getSavedFavouriteEventIdentifiers() -> [Event2.Identifier]?
+    func getSavedFavouriteEventIdentifiers() -> [Event.Identifier]?
     func getSavedDealers() -> [APIDealer]?
     func getSavedMaps() -> [APIMap]?
     func getSavedReadAnnouncementIdentifiers() -> [Announcement.Identifier]?
@@ -38,13 +38,13 @@ public protocol EurofurenceDataStoreTransaction {
     func saveRooms(_ rooms: [APIRoom])
     func saveTracks(_ tracks: [APITrack])
     func saveConferenceDays(_ conferenceDays: [APIConferenceDay])
-    func saveFavouriteEventIdentifier(_ identifier: Event2.Identifier)
+    func saveFavouriteEventIdentifier(_ identifier: Event.Identifier)
     func saveDealers(_ dealers: [APIDealer])
     func saveMaps(_ maps: [APIMap])
     func saveReadAnnouncements(_ announcements: [Announcement.Identifier])
     func saveImages(_ images: [APIImage])
 
-    func deleteFavouriteEventIdentifier(_ identifier: Event2.Identifier)
+    func deleteFavouriteEventIdentifier(_ identifier: Event.Identifier)
     func deleteKnowledgeGroup(identifier: String)
     func deleteKnowledgeEntry(identifier: String)
     func deleteAnnouncement(identifier: String)

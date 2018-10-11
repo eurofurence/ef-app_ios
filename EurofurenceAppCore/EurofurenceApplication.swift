@@ -35,7 +35,7 @@ public class EurofurenceApplication: EurofurenceApplicationProtocol {
     private let imageAPI: ImageAPI
     private let conventionCountdownController: ConventionCountdownController
     private var syncResponse: APISyncResponse?
-    private var events = [Event2]()
+    private var events = [Event]()
     private var timeIntervalForUpcomingEventsSinceNow: TimeInterval
     private let collectThemAllRequestFactory: CollectThemAllRequestFactory
     private let credentialStore: CredentialStore
@@ -140,7 +140,7 @@ public class EurofurenceApplication: EurofurenceApplicationProtocol {
                 return
             }
 
-            let action = ApplicationPushActionResult.event(Event2.Identifier(identifier))
+            let action = ApplicationPushActionResult.event(Event.Identifier(identifier))
             completionHandler(action)
 
             return
@@ -231,11 +231,11 @@ public class EurofurenceApplication: EurofurenceApplicationProtocol {
         schedule.add(observer)
     }
 
-    public func favouriteEvent(identifier: Event2.Identifier) {
+    public func favouriteEvent(identifier: Event.Identifier) {
         schedule.favouriteEvent(identifier: identifier)
     }
 
-    public func unfavouriteEvent(identifier: Event2.Identifier) {
+    public func unfavouriteEvent(identifier: Event.Identifier) {
         schedule.unfavouriteEvent(identifier: identifier)
     }
 
@@ -247,7 +247,7 @@ public class EurofurenceApplication: EurofurenceApplicationProtocol {
         return schedule.makeEventsSearchController()
     }
 
-    public func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2?) -> Void) {
+    public func fetchEvent(for identifier: Event.Identifier, completionHandler: @escaping (Event?) -> Void) {
         schedule.fetchEvent(for: identifier, completionHandler: completionHandler)
     }
 

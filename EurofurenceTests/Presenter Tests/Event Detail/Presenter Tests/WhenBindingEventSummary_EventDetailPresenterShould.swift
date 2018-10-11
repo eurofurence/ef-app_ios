@@ -22,7 +22,7 @@ class WhenBindingEventSummary_EventDetailPresenterShould: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let event = Event2.random
+        let event = Event.random
         summary = .random
         index = .random
         viewModel = StubEventSummaryViewModel(summary: summary, at: index)

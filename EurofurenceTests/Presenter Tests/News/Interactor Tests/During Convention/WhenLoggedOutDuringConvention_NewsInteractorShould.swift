@@ -15,8 +15,8 @@ class WhenLoggedOutDuringConvention_NewsInteractorShould: XCTestCase {
     
     func testProduceViewModelWithMessagesPrompt_Announcements_RunningEvents_UpcomingEvents_AndFavouriteEvents() {
         let eventsService = FakeEventsService()
-        let runningEvents = [Event2].random(minimum: 3)
-        let upcomingEvents = [Event2].random(minimum: 3)
+        let runningEvents = [Event].random(minimum: 3)
+        let upcomingEvents = [Event].random(minimum: 3)
         eventsService.runningEvents = runningEvents
         eventsService.upcomingEvents = upcomingEvents
         eventsService.stubSomeFavouriteEvents()
@@ -40,7 +40,7 @@ class WhenLoggedOutDuringConvention_NewsInteractorShould: XCTestCase {
     
     func testFetchTheUpcomingEventAtTheSpecifiedIndexPath() {
         let eventsService = FakeEventsService()
-        let upcomingEvents = [Event2].random
+        let upcomingEvents = [Event].random
         eventsService.upcomingEvents = upcomingEvents
         let context = DefaultNewsInteractorTestBuilder()
             .with(FakeAuthenticationService.loggedOutService())

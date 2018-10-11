@@ -14,7 +14,7 @@ public enum ApplicationPushActionResult: Equatable {
     case unknown
     case announcement(Announcement.Identifier)
     case invalidatedAnnouncement
-    case event(Event2.Identifier)
+    case event(Event.Identifier)
 }
 
 public protocol ApplicationNotificationHandling {

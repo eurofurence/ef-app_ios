@@ -55,7 +55,7 @@ class ReviewPromptControllerTests: XCTestCase {
     }
     
     private func simulateFavouritingEnoughEventsToSatisfyPromptRequirement() {
-        let identifiers = (0..<config.requiredNumberOfFavouriteEvents).map({ (_) in Event2.Identifier.random })
+        let identifiers = (0..<config.requiredNumberOfFavouriteEvents).map({ (_) in Event.Identifier.random })
         eventsService.simulateEventFavouritesChanged(to: identifiers)
     }
     

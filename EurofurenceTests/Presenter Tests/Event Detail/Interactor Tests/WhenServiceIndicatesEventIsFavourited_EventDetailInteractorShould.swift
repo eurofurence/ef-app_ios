@@ -14,7 +14,7 @@ import XCTest
 class WhenServiceIndicatesEventIsFavourited_EventDetailInteractorShould: XCTestCase {
     
     func testTellTheViewModelDelegateTheEventIsFavourited() {
-        let event = Event2.random
+        let event = Event.random
         let service = FakeEventsService(favourites: [])
         let context = EventDetailInteractorTestBuilder().with(service).build(for: event)
         let delegate = CapturingEventDetailViewModelDelegate()
@@ -25,7 +25,7 @@ class WhenServiceIndicatesEventIsFavourited_EventDetailInteractorShould: XCTestC
     }
     
     func testNotTellTheViewModelDelegateTheEventIsFavouritedWhenNotInFavouriteIdentifiers() {
-        let event = Event2.random
+        let event = Event.random
         let service = FakeEventsService(favourites: [])
         let context = EventDetailInteractorTestBuilder().with(service).build(for: event)
         let delegate = CapturingEventDetailViewModelDelegate()

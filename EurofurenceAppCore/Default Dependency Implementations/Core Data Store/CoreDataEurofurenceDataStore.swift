@@ -102,7 +102,7 @@ public struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
         return getModels(fetchRequest: ConferenceDayEntity.fetchRequest())
     }
 
-    public func getSavedFavouriteEventIdentifiers() -> [Event2.Identifier]? {
+    public func getSavedFavouriteEventIdentifiers() -> [Event.Identifier]? {
         return getModels(fetchRequest: FavouriteEventEntity.fetchRequest())
     }
 
@@ -278,7 +278,7 @@ public struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
             }
         }
 
-        func saveFavouriteEventIdentifier(_ identifier: Event2.Identifier) {
+        func saveFavouriteEventIdentifier(_ identifier: Event.Identifier) {
             mutations.append { (context) in
                 let favouriteEventIdentifierPredicate = NSPredicate(format: "eventIdentifier == %@", identifier.rawValue)
                 let entity: FavouriteEventEntity = self.makeEntity(in: context, uniquelyIdentifiedBy: favouriteEventIdentifierPredicate)
@@ -286,7 +286,7 @@ public struct CoreDataEurofurenceDataStore: EurofurenceDataStore {
             }
         }
 
-        func deleteFavouriteEventIdentifier(_ identifier: Event2.Identifier) {
+        func deleteFavouriteEventIdentifier(_ identifier: Event.Identifier) {
             mutations.append { (context) in
                 let fetchRequest: NSFetchRequest<FavouriteEventEntity> = FavouriteEventEntity.fetchRequest()
                 fetchRequest.predicate = NSPredicate(format: "eventIdentifier == %@", identifier.rawValue)

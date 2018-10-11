@@ -18,8 +18,8 @@ class WhenResolvingEventByIdentifier_ForEventThatExists_ApplicationShould: XCTes
         context.syncAPI.simulateSuccessfulSync(response)
         let event = response.events.changed.randomElement().element
         let expected = context.makeExpectedEvent(from: event, response: response)
-        var actual: Event2?
-        context.application.fetchEvent(for: Event2.Identifier(event.identifier)) { actual = $0 }
+        var actual: Event?
+        context.application.fetchEvent(for: Event.Identifier(event.identifier)) { actual = $0 }
         
         XCTAssertEqual(expected, actual)
     }

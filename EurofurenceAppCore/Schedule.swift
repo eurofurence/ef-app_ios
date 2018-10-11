@@ -18,7 +18,7 @@ class EventsScheduleAdapter: EventsSchedule, EventConsumer {
 
     private let schedule: Schedule
     private let clock: Clock
-    private var events = [Event2]()
+    private var events = [EurofurenceAppCore.Event]()
     private var days = [Day]()
     private var filters = [EventFilter]()
     private var currentDay: Day? {
@@ -150,7 +150,7 @@ class Schedule: ClockDelegate {
     struct ChangedEvent {}
 
     struct EventUnfavouritedEvent {
-        var identifier: Event2.Identifier
+        var identifier: Event.Identifier
     }
 
     // MARK: Properties
@@ -170,7 +170,7 @@ class Schedule: ClockDelegate {
     private(set) var tracks = [APITrack]()
     private(set) var days = [APIConferenceDay]()
 
-    private(set) var eventModels = [Event2]() {
+    private(set) var eventModels = [Event]() {
         didSet {
             updateObserversWithLatestScheduleInformation()
         }
@@ -178,7 +178,7 @@ class Schedule: ClockDelegate {
 
     private(set) var dayModels = [Day]()
 
-    private(set) var favouriteEventIdentifiers = [Event2.Identifier]() {
+    private(set) var favouriteEventIdentifiers = [Event.Identifier]() {
         didSet {
             favouriteEventIdentifiers.sort { (first, second) -> Bool in
                 guard let firstEvent = eventModels.first(where: { $0.identifier == first }) else { return false }
@@ -191,14 +191,14 @@ class Schedule: ClockDelegate {
         }
     }
 
-    var runningEvents: [Event2] {
+    var runningEvents: [Event] {
         let now = clock.currentDate
         return eventModels.filter { (event) -> Bool in
             return DateInterval(start: event.startDate, end: event.endDate).contains(now)
         }
     }
 
-    var upcomingEvents: [Event2] {
+    var upcomingEvents: [Event] {
         let now = clock.currentDate
         let range = DateInterval(start: now, end: now.addingTimeInterval(timeIntervalForUpcomingEventsSinceNow))
         return eventModels.filter { (event) -> Bool in
@@ -245,7 +245,7 @@ class Schedule: ClockDelegate {
         return InMemoryEventsSearchController(schedule: self, eventBus: eventBus)
     }
 
-    func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2?) -> Void) {
+    func fetchEvent(for identifier: Event.Identifier, completionHandler: @escaping (Event?) -> Void) {
         let event = eventModels.first(where: { $0.identifier == identifier })
         completionHandler(event)
     }
@@ -255,7 +255,7 @@ class Schedule: ClockDelegate {
         provideScheduleInformation(to: observer)
     }
 
-    func favouriteEvent(identifier: Event2.Identifier) {
+    func favouriteEvent(identifier: Event.Identifier) {
         dataStore.performTransaction { (transaction) in
             transaction.saveFavouriteEventIdentifier(identifier)
         }
@@ -280,7 +280,7 @@ class Schedule: ClockDelegate {
                                                        userInfo: userInfo)
     }
 
-    func unfavouriteEvent(identifier: Event2.Identifier) {
+    func unfavouriteEvent(identifier: Event.Identifier) {
         dataStore.performTransaction { (transaction) in
             transaction.deleteFavouriteEventIdentifier(identifier)
         }
@@ -334,7 +334,7 @@ class Schedule: ClockDelegate {
         }
     }
 
-    fileprivate func makeEventModel(from event: APIEvent) -> Event2? {
+    fileprivate func makeEventModel(from event: APIEvent) -> Event? {
         guard let room = rooms.first(where: { $0.roomIdentifier == event.roomIdentifier }) else { return nil }
         guard let track = tracks.first(where: { $0.trackIdentifier == event.trackIdentifier }) else { return nil }
 
@@ -352,7 +352,7 @@ class Schedule: ClockDelegate {
             }
         }()
 
-        return Event2(identifier: Event2.Identifier(event.identifier),
+        return Event(identifier: Event.Identifier(event.identifier),
                       title: title,
                       subtitle: event.subtitle,
                       abstract: event.abstract,
@@ -377,11 +377,11 @@ class Schedule: ClockDelegate {
         favouriteEventIdentifiers = dataStore.getSavedFavouriteEventIdentifiers().or([])
     }
 
-    private func isFavourite(_ event: Event2) -> Bool {
+    private func isFavourite(_ event: Event) -> Bool {
         return favouriteEventIdentifiers.contains(event.identifier)
     }
 
-    private func compareEventsByStartDate(_ first: Event2, second: Event2) -> Bool {
+    private func compareEventsByStartDate(_ first: Event, second: Event) -> Bool {
         return first.startDate < second.startDate
     }
 

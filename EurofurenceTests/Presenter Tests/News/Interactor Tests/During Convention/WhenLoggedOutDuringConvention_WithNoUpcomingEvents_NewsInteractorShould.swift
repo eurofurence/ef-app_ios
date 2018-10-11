@@ -15,7 +15,7 @@ class WhenLoggedOutDuringConvention_WithNoUpcomingEvents_NewsInteractorShould: X
     
     func testProduceViewModelWithMessagesPrompt_Announcements_RunningEvents_AndFavouriteEvents() {
         let eventsService = FakeEventsService()
-        let upcomingEvents = [Event2]()
+        let upcomingEvents = [Event]()
         eventsService.runningEvents = .random(minimum: 3)
         eventsService.upcomingEvents = upcomingEvents
         eventsService.stubSomeFavouriteEvents()

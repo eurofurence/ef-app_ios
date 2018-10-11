@@ -13,9 +13,9 @@ import XCTest
 
 class WhenGroupingEventsByStartTime_ScheduleInteractorShould: XCTestCase {
     
-    var firstGroupEvents: [Event2]!
-    var secondGroupEvents: [Event2]!
-    var events: [Event2]!
+    var firstGroupEvents: [Event]!
+    var secondGroupEvents: [Event]!
+    var events: [Event]!
     var eventsService: FakeEventsService!
     var context: ScheduleInteractorTestBuilder.Context!
     var expectedEventViewModels: [ScheduleEventGroupViewModel]!
@@ -24,18 +24,18 @@ class WhenGroupingEventsByStartTime_ScheduleInteractorShould: XCTestCase {
         super.setUp()
         
         let firstGroupDate = Date.random
-        var a = Event2.random
+        var a = Event.random
         a.startDate = firstGroupDate
-        var b = Event2.random
+        var b = Event.random
         b.startDate = firstGroupDate
-        var c = Event2.random
+        var c = Event.random
         c.startDate = firstGroupDate
         firstGroupEvents = [a, b, c].sorted(by: { $0.title < $1.title })
         
         let secondGroupDate = firstGroupDate.addingTimeInterval(100)
-        var d = Event2.random
+        var d = Event.random
         d.startDate = secondGroupDate
-        var e = Event2.random
+        var e = Event.random
         e.startDate = secondGroupDate
         secondGroupEvents = [d, e].sorted(by: { $0.title < $1.title })
         

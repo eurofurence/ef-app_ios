@@ -14,7 +14,7 @@ protocol ScheduleViewModel {
     func setDelegate(_ delegate: ScheduleViewModelDelegate)
     func refresh()
     func showEventsForDay(at index: Int)
-    func identifierForEvent(at indexPath: IndexPath) -> Event2.Identifier?
+    func identifierForEvent(at indexPath: IndexPath) -> Event.Identifier?
     func favouriteEvent(at indexPath: IndexPath)
     func unfavouriteEvent(at indexPath: IndexPath)
 

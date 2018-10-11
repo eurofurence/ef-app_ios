@@ -11,27 +11,27 @@ import Foundation
 
 class CapturingEventsServiceObserver: EventsServiceObserver {
     
-    private(set) var allEvents = [Event2]()
-    func eventsDidChange(to events: [Event2]) {
+    private(set) var allEvents = [Event]()
+    func eventsDidChange(to events: [Event]) {
         allEvents = events
     }
     
     private(set) var wasProvidedWithEmptyRunningEvents = false
-    private(set) var runningEvents = [Event2]()
-    func runningEventsDidChange(to events: [Event2]) {
+    private(set) var runningEvents = [Event]()
+    func runningEventsDidChange(to events: [Event]) {
         wasProvidedWithEmptyRunningEvents = wasProvidedWithEmptyRunningEvents || events.isEmpty
         runningEvents = events
     }
     
     private(set) var wasProvidedWithEmptyUpcomingEvents = false
-    private(set) var upcomingEvents = [Event2]()
-    func upcomingEventsDidChange(to events: [Event2]) {
+    private(set) var upcomingEvents = [Event]()
+    func upcomingEventsDidChange(to events: [Event]) {
         wasProvidedWithEmptyUpcomingEvents = wasProvidedWithEmptyUpcomingEvents || events.isEmpty
         upcomingEvents = events
     }
     
-    private(set) var capturedFavouriteEventIdentifiers = [Event2.Identifier]()
-    func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) {
+    private(set) var capturedFavouriteEventIdentifiers = [Event.Identifier]()
+    func favouriteEventsDidChange(_ identifiers: [Event.Identifier]) {
         capturedFavouriteEventIdentifiers = identifiers
     }
     

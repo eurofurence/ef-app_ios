@@ -14,7 +14,7 @@ import XCTest
 class WhenFavouritingEventViewModel_EventDetailInteractorShould: XCTestCase {
     
     func testTellTheEventServiceToFavouriteTheEventByIdentifier() {
-        let event = Event2.random
+        let event = Event.random
         let context = EventDetailInteractorTestBuilder().build(for: event)
         context.viewModel?.favourite()
         

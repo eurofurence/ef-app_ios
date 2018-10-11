@@ -17,7 +17,7 @@ class WhenToldToHandleNotification_ThatConcludesWithEvent_DirectorShould: XCTest
         let context = ApplicationDirectorTestBuilder().build()
         context.navigateToTabController()
         let payload = [String.random : String.random]
-        let event = Event2.Identifier.random
+        let event = Event.Identifier.random
         context.notificationHandling.stub(.event(event), for: payload)
         var result: UIBackgroundFetchResult?
         context.director.handleRemoteNotification(payload) { result = $0 }

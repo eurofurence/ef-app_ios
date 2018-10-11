@@ -15,7 +15,7 @@ class WhenPreparingViewModelForFavouritedEvent_ScheduleInteractorShould: XCTestC
     
     func testIndicateTheEventIsFavourited() {
         let eventsService = FakeEventsService()
-        let events = [Event2].random
+        let events = [Event].random
         let favouriteEvents = events.map({ $0.identifier })
         eventsService.allEvents = events
         eventsService.favourites = favouriteEvents

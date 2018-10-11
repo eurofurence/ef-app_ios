@@ -25,7 +25,7 @@ enum NewsViewModelValue: Equatable {
     case messages
     case announcement(Announcement.Identifier)
     case allAnnouncements
-    case event(Event2)
+    case event(Event)
 
     static func ==(lhs: NewsViewModelValue, rhs: NewsViewModelValue) -> Bool {
         switch (lhs, rhs) {

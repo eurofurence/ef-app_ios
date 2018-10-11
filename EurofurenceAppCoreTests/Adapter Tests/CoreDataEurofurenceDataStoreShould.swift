@@ -315,7 +315,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
     
     func testSaveFavouriteEventIdentifiers() {
-        let exected = [Event2.Identifier].random
+        let exected = [Event.Identifier].random
         store.performTransaction { (transaction) in
             exected.forEach(transaction.saveFavouriteEventIdentifier)
         }
@@ -327,7 +327,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
     
     func testNotDuplicatedSavedFavouriteEventIdentifiers() {
-        let expected = [Event2.Identifier].random
+        let expected = [Event.Identifier].random
         store.performTransaction { (transaction) in
             expected.forEach(transaction.saveFavouriteEventIdentifier)
         }
@@ -343,7 +343,7 @@ class CoreDataEurofurenceDataStoreShould: XCTestCase {
     }
     
     func testDeleteSavedFavouriteEventIdentifiers() {
-        let identifier = Event2.Identifier.random
+        let identifier = Event.Identifier.random
         store.performTransaction { (transaction) in
             transaction.saveFavouriteEventIdentifier(identifier)
         }

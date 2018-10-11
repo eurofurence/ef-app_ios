@@ -291,7 +291,7 @@ class ApplicationDirector: ExternalContentHandler,
         newsController?.navigationController?.pushViewController(module, animated: animate)
     }
 
-    func newsModuleDidSelectEvent(_ event: Event2) {
+    func newsModuleDidSelectEvent(_ event: Event) {
         let module = eventDetailModuleProviding.makeEventDetailModule(for: event.identifier)
         newsController?.navigationController?.pushViewController(module, animated: animate)
     }
@@ -303,7 +303,7 @@ class ApplicationDirector: ExternalContentHandler,
 
     // MARK: ScheduleModuleDelegate
 
-    func scheduleModuleDidSelectEvent(identifier: Event2.Identifier) {
+    func scheduleModuleDidSelectEvent(identifier: Event.Identifier) {
         let module = eventDetailModuleProviding.makeEventDetailModule(for: identifier)
         scheduleViewController?.navigationController?.pushViewController(module, animated: animate)
     }

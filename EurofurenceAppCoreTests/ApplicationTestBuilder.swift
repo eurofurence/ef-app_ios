@@ -91,14 +91,14 @@ class ApplicationTestBuilder {
                                  date: announcement.lastChangedDateTime)
         }
         
-        func makeExpectedEvent(from event: APIEvent, response: APISyncResponse) -> Event2 {
+        func makeExpectedEvent(from event: APIEvent, response: APISyncResponse) -> Event {
             let expectedRoom = response.rooms.changed.first(where: { $0.roomIdentifier == event.roomIdentifier })!
             let expectedTrack = response.tracks.changed.first(where: { $0.trackIdentifier == event.trackIdentifier })!
             let expectedPosterGraphic = imageAPI.stubbedImage(for: event.posterImageId)
             let expectedBannerGraphic = imageAPI.stubbedImage(for: event.bannerImageId)
             let tags = event.tags.or([])
             
-            return Event2(identifier: Event2.Identifier(event.identifier),
+            return Event(identifier: Event.Identifier(event.identifier),
                           title: event.title,
                           subtitle: event.subtitle,
                           abstract: event.abstract,
@@ -119,7 +119,7 @@ class ApplicationTestBuilder {
                           isPhotoshoot: tags.contains("photshoot"))
         }
         
-        func makeExpectedEvents(from events: [APIEvent], response: APISyncResponse) -> [Event2] {
+        func makeExpectedEvents(from events: [APIEvent], response: APISyncResponse) -> [Event] {
             return events.map { makeExpectedEvent(from: $0, response: response) }
         }
         

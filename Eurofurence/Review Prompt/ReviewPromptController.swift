@@ -49,7 +49,7 @@ struct ReviewPromptController: EventsServiceObserver {
         eventsService.add(self)
     }
 
-    func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) {
+    func favouriteEventsDidChange(_ identifiers: [Event.Identifier]) {
         let minimumNumberOfEventsFavourited: Bool = identifiers.count >= config.requiredNumberOfFavouriteEvents
         let runningDifferentAppVersionSinceLastPrompt: Bool = versionProviding.version != reviewPromptAppVersionRepository.lastPromptedAppVersion
 
@@ -59,8 +59,8 @@ struct ReviewPromptController: EventsServiceObserver {
         }
     }
 
-    func eventsDidChange(to events: [Event2]) { }
-    func runningEventsDidChange(to events: [Event2]) { }
-    func upcomingEventsDidChange(to events: [Event2]) { }
+    func eventsDidChange(to events: [Event]) { }
+    func runningEventsDidChange(to events: [Event]) { }
+    func upcomingEventsDidChange(to events: [Event]) { }
 
 }

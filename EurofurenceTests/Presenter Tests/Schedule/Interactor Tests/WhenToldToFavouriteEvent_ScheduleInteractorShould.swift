@@ -15,7 +15,7 @@ class WhenToldToFavouriteEvent_ScheduleInteractorShould: XCTestCase {
     
     func testTellTheEventsServiceToFavouriteTheEvent() {
         let eventsService = FakeEventsService()
-        let events = [Event2].random
+        let events = [Event].random
         eventsService.allEvents = events
         let context = ScheduleInteractorTestBuilder().with(eventsService).build()
         let viewModel = context.makeViewModel()

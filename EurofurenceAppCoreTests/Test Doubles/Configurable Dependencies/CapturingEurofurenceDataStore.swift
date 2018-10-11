@@ -43,7 +43,7 @@ class CapturingEurofurenceDataStore: EurofurenceDataStore {
         return transaction.persistedEvents
     }
     
-    func getSavedFavouriteEventIdentifiers() -> [Event2.Identifier]? {
+    func getSavedFavouriteEventIdentifiers() -> [Event.Identifier]? {
         return transaction.persistedFavouriteEvents
     }
     
@@ -120,7 +120,7 @@ extension CapturingEurofurenceDataStore {
         return lastRefreshTime == transaction.persistedLastRefreshDate
     }
     
-    func didFavouriteEvent(_ identifier: Event2.Identifier) -> Bool {
+    func didFavouriteEvent(_ identifier: Event.Identifier) -> Bool {
         return transaction.persistedFavouriteEvents.contains(identifier)
     }
     
@@ -128,7 +128,7 @@ extension CapturingEurofurenceDataStore {
         return transaction.persistedDealers.contains(elementsFrom: dealers)
     }
     
-    func didDeleteFavouriteEvent(_ identifier: Event2.Identifier) -> Bool {
+    func didDeleteFavouriteEvent(_ identifier: Event.Identifier) -> Bool {
         return transaction.deletedFavouriteEvents.contains(identifier)
     }
     

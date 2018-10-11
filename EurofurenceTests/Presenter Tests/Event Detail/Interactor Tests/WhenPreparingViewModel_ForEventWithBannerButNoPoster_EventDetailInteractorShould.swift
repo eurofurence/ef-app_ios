@@ -14,7 +14,7 @@ import XCTest
 class WhenPreparingViewModel_ForEventWithBannerButNoPoster_EventDetailInteractorShould: XCTestCase {
     
     func testProduceGraphicComponentUsingBannerData() {
-        var event = Event2.random
+        var event = Event.random
         let bannerGraphicData = Data.random
         event.posterGraphicPNGData = nil
         event.bannerGraphicPNGData = bannerGraphicData

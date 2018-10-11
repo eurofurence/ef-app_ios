@@ -21,7 +21,7 @@ class WhenSceneSelectsEvent_SchedulePresenterShould: XCTestCase {
         let randomGroup = viewModel.events.randomElement()
         let randomEvent = randomGroup.element.events.randomElement()
         let indexPath = IndexPath(item: randomEvent.index, section: randomGroup.index)
-        let selectedIdentifier = Event2.Identifier.random
+        let selectedIdentifier = Event.Identifier.random
         viewModel.stub(selectedIdentifier, at: indexPath)
         context.simulateSceneDidSelectEvent(at: indexPath)
         

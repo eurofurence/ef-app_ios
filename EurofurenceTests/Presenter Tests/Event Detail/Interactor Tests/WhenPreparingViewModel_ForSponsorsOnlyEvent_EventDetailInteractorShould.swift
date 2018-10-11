@@ -14,7 +14,7 @@ import XCTest
 class WhenPreparingViewModel_ForSponsorsOnlyEvent_EventDetailInteractorShould: XCTestCase {
     
     func testProduceSponsorsOnlyComponentHeadingAfterDescriptionComponent() {
-        var event = Event2.random
+        var event = Event.random
         event.isSponsorOnly = true
         let context = EventDetailInteractorTestBuilder().build(for: event)
         let visitor = CapturingEventDetailViewModelVisitor()

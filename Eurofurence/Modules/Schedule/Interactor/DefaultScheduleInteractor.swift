@@ -58,14 +58,14 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
 
     // MARK: EventsServiceObserver
 
-    func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) {
+    func favouriteEventsDidChange(_ identifiers: [Event.Identifier]) {
         viewModel.favouriteEventsDidChange(identifiers)
         searchViewModel.favouriteEventsDidChange(identifiers)
     }
 
-    func eventsDidChange(to events: [Event2]) {}
-    func runningEventsDidChange(to events: [Event2]) {}
-    func upcomingEventsDidChange(to events: [Event2]) {}
+    func eventsDidChange(to events: [Event]) {}
+    func runningEventsDidChange(to events: [Event]) {}
+    func upcomingEventsDidChange(to events: [Event]) {}
 
     // MARK: Private
 
@@ -77,7 +77,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             }
 
             var date: Date
-            var events: [Event2]
+            var events: [Event]
         }
 
         private var delegate: ScheduleViewModelDelegate?
@@ -101,8 +101,8 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         private let hoursDateFormatter: HoursDateFormatter
         private let shortFormDateFormatter: ShortFormDateFormatter
         private let refreshService: RefreshService
-        private var events = [Event2]()
-        private var favouriteEvents = [Event2.Identifier]()
+        private var events = [Event]()
+        private var favouriteEvents = [Event.Identifier]()
 
         init(schedule: EventsSchedule,
              eventsService: EventsService,
@@ -146,7 +146,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             }
         }
 
-        func scheduleEventsDidChange(to events: [Event2]) {
+        func scheduleEventsDidChange(to events: [Event]) {
             self.events = events
             regenerateEventViewModels()
         }
@@ -183,7 +183,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             schedule.restrictEvents(to: day)
         }
 
-        func identifierForEvent(at indexPath: IndexPath) -> Event2.Identifier? {
+        func identifierForEvent(at indexPath: IndexPath) -> Event.Identifier? {
             return rawModelGroups[indexPath.section].events[indexPath.row].identifier
         }
 
@@ -205,7 +205,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             delegate?.scheduleViewModelDidFinishRefreshing()
         }
 
-        func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) {
+        func favouriteEventsDidChange(_ identifiers: [Event.Identifier]) {
             favouriteEvents = identifiers
             regenerateEventViewModels()
         }
@@ -220,7 +220,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             }
 
             var date: Date
-            var events: [Event2]
+            var events: [Event]
         }
 
         private let searchController: EventsSearchController
@@ -228,8 +228,8 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
         private let shortFormDayAndTimeFormatter: ShortFormDayAndTimeFormatter
         private let hoursDateFormatter: HoursDateFormatter
         private var rawModelGroups = [EventsGroupedByDate]()
-        private var searchResults = [Event2]()
-        private var favouriteEvents = [Event2.Identifier]()
+        private var searchResults = [Event]()
+        private var favouriteEvents = [Event.Identifier]()
 
         init(searchController: EventsSearchController,
              eventsService: EventsService,
@@ -252,7 +252,7 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             searchController.changeSearchTerm(input)
         }
 
-        func identifierForEvent(at indexPath: IndexPath) -> Event2.Identifier? {
+        func identifierForEvent(at indexPath: IndexPath) -> Event.Identifier? {
             return rawModelGroups[indexPath.section].events[indexPath.row].identifier
         }
 
@@ -264,12 +264,12 @@ class DefaultScheduleInteractor: ScheduleInteractor, EventsServiceObserver {
             searchController.removeFavouritesEventsRestriction()
         }
 
-        func searchResultsDidUpdate(to results: [Event2]) {
+        func searchResultsDidUpdate(to results: [Event]) {
             searchResults = results
             regenerateViewModel()
         }
 
-        func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) {
+        func favouriteEventsDidChange(_ identifiers: [Event.Identifier]) {
             favouriteEvents = identifiers
             regenerateViewModel()
         }

@@ -37,7 +37,7 @@ class WhenObservingUpcomingEvents_ThenLoadSucceeds: XCTestCase {
             return event.startDateTime > simulatedTime
         }
         
-        let expected = expectedEvents.map { (event) -> Event2 in
+        let expected = expectedEvents.map { (event) -> Event in
             return context.makeExpectedEvent(from: event, response: syncResponse)
         }
         

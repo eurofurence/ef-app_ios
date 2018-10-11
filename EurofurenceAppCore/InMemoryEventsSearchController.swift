@@ -12,7 +12,7 @@ class InMemoryEventsSearchController: EventsSearchController {
 
     private class Filter {
 
-        func include(event: Event2) -> Bool {
+        func include(event: Event) -> Bool {
             return true
         }
 
@@ -26,7 +26,7 @@ class InMemoryEventsSearchController: EventsSearchController {
             self.filters = filters
         }
 
-        override func include(event: Event2) -> Bool {
+        override func include(event: Event) -> Bool {
             for filter in filters {
                 guard filter.include(event: event) else { return false }
             }
@@ -40,7 +40,7 @@ class InMemoryEventsSearchController: EventsSearchController {
 
         var query: String = ""
 
-        override func include(event: Event2) -> Bool {
+        override func include(event: Event) -> Bool {
             guard query.isEmpty == false else { return true }
             return event.title.localizedCaseInsensitiveContains(query)
         }
@@ -56,7 +56,7 @@ class InMemoryEventsSearchController: EventsSearchController {
             self.schedule = schedule
         }
 
-        override func include(event: Event2) -> Bool {
+        override func include(event: Event) -> Bool {
             guard enabled else { return true }
             return schedule.favouriteEventIdentifiers.contains(event.identifier)
         }
@@ -116,7 +116,7 @@ class InMemoryEventsSearchController: EventsSearchController {
     }
 
     private func regenerateSearchResults() {
-        var matches = [Event2]()
+        var matches = [Event]()
         for event in schedule.eventModels {
             guard filters.include(event: event) else { continue }
             matches.append(event)

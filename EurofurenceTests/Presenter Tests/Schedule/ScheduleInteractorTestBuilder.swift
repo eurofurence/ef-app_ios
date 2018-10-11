@@ -111,7 +111,7 @@ extension ScheduleInteractorTestBuilder.Context {
         return searchViewModel
     }
     
-    func makeExpectedEventViewModel(from event: Event2) -> ScheduleEventViewModel {
+    func makeExpectedEventViewModel(from event: Event) -> ScheduleEventViewModel {
         return ScheduleEventViewModel(title: event.title,
                                       startTime: hoursFormatter.hoursString(from: event.startDate),
                                       endTime: hoursFormatter.hoursString(from: event.endDate),

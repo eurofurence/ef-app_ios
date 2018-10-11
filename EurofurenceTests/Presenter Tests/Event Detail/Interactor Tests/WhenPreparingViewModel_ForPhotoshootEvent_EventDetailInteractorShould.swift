@@ -14,7 +14,7 @@ import XCTest
 class WhenPreparingViewModel_ForPhotoshootEvent_EventDetailInteractorShould: XCTestCase {
     
     func testProducePhotoshootHeadingAfterDescriptionComponent() {
-        var event = Event2.randomStandardEvent
+        var event = Event.randomStandardEvent
         event.isPhotoshoot = true
         let context = EventDetailInteractorTestBuilder().build(for: event)
         let visitor = CapturingEventDetailViewModelVisitor()

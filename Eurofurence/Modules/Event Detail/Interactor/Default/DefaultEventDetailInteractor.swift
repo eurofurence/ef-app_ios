@@ -104,12 +104,12 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
         }
 
         private let components: [EventDetailViewModelComponent]
-        private let event: Event2
+        private let event: Event
         private let eventsService: EventsService
         private var isFavourite = false
 
         init(components: [EventDetailViewModelComponent],
-             event: Event2,
+             event: Event,
              eventsService: EventsService) {
             self.components = components
             self.event = event
@@ -141,11 +141,11 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
             eventsService.unfavouriteEvent(identifier: event.identifier)
         }
 
-        func eventsDidChange(to events: [Event2]) { }
-        func runningEventsDidChange(to events: [Event2]) { }
-        func upcomingEventsDidChange(to events: [Event2]) { }
+        func eventsDidChange(to events: [Event]) { }
+        func runningEventsDidChange(to events: [Event]) { }
+        func upcomingEventsDidChange(to events: [Event]) { }
 
-        func favouriteEventsDidChange(_ identifiers: [Event2.Identifier]) {
+        func favouriteEventsDidChange(_ identifiers: [Event.Identifier]) {
             isFavourite = identifiers.contains(event.identifier)
             informDelegateAboutEventFavouriteState()
         }
@@ -176,7 +176,7 @@ class DefaultEventDetailInteractor: EventDetailInteractor {
 		self.markdownRenderer = markdownRenderer
     }
 
-    func makeViewModel(for identifier: Event2.Identifier, completionHandler: @escaping (EventDetailViewModel) -> Void) {
+    func makeViewModel(for identifier: Event.Identifier, completionHandler: @escaping (EventDetailViewModel) -> Void) {
         eventsService.fetchEvent(for: identifier) { (event) in
             guard let event = event else { return }
             var components = [EventDetailViewModelComponent]()

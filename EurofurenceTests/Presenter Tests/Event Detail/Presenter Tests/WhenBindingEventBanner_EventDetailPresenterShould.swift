@@ -44,7 +44,7 @@ class StubEventGraphicViewModel: EventDetailViewModel {
 class WhenBindingEventBanner_EventDetailPresenterShould: XCTestCase {
     
     func testApplyTheBannerGraphicDataOntoTheScene() {
-        let event = Event2.random
+        let event = Event.random
         let graphic = EventGraphicViewModel.random
         let index = Int.random
         let viewModel = StubEventGraphicViewModel(graphic: graphic, at: index)
@@ -57,7 +57,7 @@ class WhenBindingEventBanner_EventDetailPresenterShould: XCTestCase {
     }
     
     func testReturnTheBoundGraphicComponent() {
-        let event = Event2.random
+        let event = Event.random
         let graphic = EventGraphicViewModel.random
         let index = Int.random
         let viewModel = StubEventGraphicViewModel(graphic: graphic, at: index)

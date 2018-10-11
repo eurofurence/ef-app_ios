@@ -37,7 +37,7 @@ class WhenToldToOpenNotification_ThatRepresentsEventReminder_ApplicationShould: 
         var result: ApplicationPushActionResult?
         context.application.handleRemoteNotification(payload: payload) { result = $0 }
         
-        XCTAssertEqual(ApplicationPushActionResult.event(Event2.Identifier(event.identifier)), result)
+        XCTAssertEqual(ApplicationPushActionResult.event(Event.Identifier(event.identifier)), result)
     }
     
     func testProvideUnknownActionWhenMissingContentIdentifierKey() {

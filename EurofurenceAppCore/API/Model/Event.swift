@@ -1,5 +1,5 @@
 //
-//  Event2.swift
+//  Event.swift
 //  Eurofurence
 //
 //  Created by Thomas Sherwood on 11/05/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Event2: Equatable {
+public struct Event: Equatable {
 
     public struct Identifier: Comparable, Equatable, Hashable, RawRepresentable {
 
@@ -24,13 +24,13 @@ public struct Event2: Equatable {
 
         public var rawValue: String
 
-        public static func < (lhs: Event2.Identifier, rhs: Event2.Identifier) -> Bool {
+        public static func < (lhs: Event.Identifier, rhs: Event.Identifier) -> Bool {
             return lhs.rawValue < rhs.rawValue
         }
 
     }
 
-    public var identifier: Event2.Identifier
+    public var identifier: Event.Identifier
     public var title: String
     public var subtitle: String
     public var abstract: String
@@ -50,7 +50,7 @@ public struct Event2: Equatable {
     public var isMainStage: Bool
     public var isPhotoshoot: Bool
 
-    public init(identifier: Event2.Identifier, title: String, subtitle: String, abstract: String, room: Room, track: Track, hosts: String, startDate: Date, endDate: Date, eventDescription: String, posterGraphicPNGData: Data?, bannerGraphicPNGData: Data?, isSponsorOnly: Bool, isSuperSponsorOnly: Bool, isArtShow: Bool, isKageEvent: Bool, isDealersDen: Bool, isMainStage: Bool, isPhotoshoot: Bool) {
+    public init(identifier: Event.Identifier, title: String, subtitle: String, abstract: String, room: Room, track: Track, hosts: String, startDate: Date, endDate: Date, eventDescription: String, posterGraphicPNGData: Data?, bannerGraphicPNGData: Data?, isSponsorOnly: Bool, isSuperSponsorOnly: Bool, isArtShow: Bool, isKageEvent: Bool, isDealersDen: Bool, isMainStage: Bool, isPhotoshoot: Bool) {
         self.identifier = identifier
         self.title = title
         self.subtitle = subtitle

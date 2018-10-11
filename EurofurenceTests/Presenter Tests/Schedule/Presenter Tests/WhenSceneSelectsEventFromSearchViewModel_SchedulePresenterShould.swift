@@ -23,7 +23,7 @@ class WhenSceneSelectsEventFromSearchViewModel_SchedulePresenterShould: XCTestCa
         let randomGroup = results.randomElement()
         let randomEvent = randomGroup.element.events.randomElement()
         let indexPath = IndexPath(item: randomEvent.index, section: randomGroup.index)
-        let selectedIdentifier = Event2.Identifier.random
+        let selectedIdentifier = Event.Identifier.random
         searchViewModel.stub(selectedIdentifier, at: indexPath)
         context.simulateSceneDidSelectSearchResult(at: indexPath)
         

@@ -17,7 +17,7 @@ public protocol EventsSchedule {
 
 public protocol EventsScheduleDelegate {
 
-    func scheduleEventsDidChange(to events: [Event2])
+    func scheduleEventsDidChange(to events: [Event])
     func eventDaysDidChange(to days: [Day])
     func currentEventDayDidChange(to day: Day?)
 
@@ -26,19 +26,19 @@ public protocol EventsScheduleDelegate {
 public protocol EventsService {
 
     func add(_ observer: EventsServiceObserver)
-    func favouriteEvent(identifier: Event2.Identifier)
-    func unfavouriteEvent(identifier: Event2.Identifier)
+    func favouriteEvent(identifier: Event.Identifier)
+    func unfavouriteEvent(identifier: Event.Identifier)
     func makeEventsSchedule() -> EventsSchedule
     func makeEventsSearchController() -> EventsSearchController
-    func fetchEvent(for identifier: Event2.Identifier, completionHandler: @escaping (Event2?) -> Void)
+    func fetchEvent(for identifier: Event.Identifier, completionHandler: @escaping (Event?) -> Void)
 
 }
 
 public protocol EventsServiceObserver {
 
-    func eventsDidChange(to events: [Event2])
-    func runningEventsDidChange(to events: [Event2])
-    func upcomingEventsDidChange(to events: [Event2])
-    func favouriteEventsDidChange(_ identifiers: [Event2.Identifier])
+    func eventsDidChange(to events: [Event])
+    func runningEventsDidChange(to events: [Event])
+    func upcomingEventsDidChange(to events: [Event])
+    func favouriteEventsDidChange(_ identifiers: [Event.Identifier])
 
 }
